@@ -1,0 +1,42 @@
+<h3 class="section"><a href="#toc-hsvkey">11.128 hsvkey</a></h3>
+<p>Turns a certain HSV range into transparency.
+</p>
+<p>This filter measures color difference between set HSV color in options
+and ones measured in video stream. Depending on options, output
+colors can be changed to transparent by adding alpha channel.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>hue</samp></dt>
+<dd><p>Set the hue value which will be used in color difference calculation.
+Allowed range is from -360 to 360. Default value is 0.
+</p>
+</dd>
+<dt><samp>sat</samp></dt>
+<dd><p>Set the saturation value which will be used in color difference calculation.
+Allowed range is from -1 to 1. Default value is 0.
+</p>
+</dd>
+<dt><samp>val</samp></dt>
+<dd><p>Set the value which will be used in color difference calculation.
+Allowed range is from -1 to 1. Default value is 0.
+</p>
+</dd>
+<dt><samp>similarity</samp></dt>
+<dd><p>Set similarity percentage with the key color.
+Allowed range is from 0 to 1. Default value is 0.01.
+</p>
+<p>0.00001 matches only the exact key color, while 1.0 matches everything.
+</p>
+</dd>
+<dt><samp>blend</samp></dt>
+<dd><p>Blend percentage.
+Allowed range is from 0 to 1. Default value is 0.
+</p>
+<p>0.0 makes pixels either fully transparent, or not transparent at all.
+</p>
+<p>Higher values result in semi-transparent pixels, with a higher transparency
+the more similar the pixels color is to the key color.
+</p></dd>
+</dl>

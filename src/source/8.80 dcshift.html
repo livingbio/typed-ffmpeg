@@ -1,0 +1,19 @@
+<h3 class="section"><a href="#toc-dcshift">8.80 dcshift</a></h3>
+<p>Apply a DC shift to the audio.
+</p>
+<p>This can be useful to remove a DC offset (caused perhaps by a hardware problem
+in the recording chain) from the audio. The effect of a DC offset is reduced
+headroom and hence volume. The <a href="#astats">astats</a> filter can be used to determine if
+a signal has a DC offset.
+</p>
+<dl compact="compact">
+<dt><samp>shift</samp></dt>
+<dd><p>Set the DC shift, allowed range is [-1, 1]. It indicates the amount to shift
+the audio.
+</p>
+</dd>
+<dt><samp>limitergain</samp></dt>
+<dd><p>Optional. It should have a value much less than 1 (e.g. 0.05 or 0.02) and is
+used to prevent clipping.
+</p></dd>
+</dl>

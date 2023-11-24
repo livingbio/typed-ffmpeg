@@ -1,0 +1,28 @@
+<h3 class="section"><a href="#toc-chromahold">11.24 chromahold</a></h3>
+<p>Remove all color information for all colors except for certain one.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>color</samp></dt>
+<dd><p>The color which will not be replaced with neutral chroma.
+</p>
+</dd>
+<dt><samp>similarity</samp></dt>
+<dd><p>Similarity percentage with the above color.
+0.01 matches only the exact key color, while 1.0 matches everything.
+</p>
+</dd>
+<dt><samp>blend</samp></dt>
+<dd><p>Blend percentage.
+0.0 makes pixels either fully gray, or not gray at all.
+Higher values result in more preserved color.
+</p>
+</dd>
+<dt><samp>yuv</samp></dt>
+<dd><p>Signals that the color passed is already in YUV instead of RGB.
+</p>
+<p>Literal colors like &quot;green&quot; or &quot;red&quot; don&rsquo;t make sense with this enabled anymore.
+This can be used to pass exact YUV values as hexadecimal numbers.
+</p></dd>
+</dl>

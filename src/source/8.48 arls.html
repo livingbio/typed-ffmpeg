@@ -1,0 +1,49 @@
+<h3 class="section"><a href="#toc-arls">8.48 arls</a></h3>
+<p>Apply Recursive Least Squares algorithm to the first audio stream using the second audio stream.
+</p>
+<p>This adaptive filter is used to mimic a desired filter by recursively finding the filter coefficients that
+relate to producing the minimal weighted linear least squares cost function of the error signal (difference
+between the desired, 2nd input audio stream and the actual signal, the 1st input audio stream).
+</p>
+<p>A description of the accepted options follows.
+</p>
+<dl compact="compact">
+<dt><samp>order</samp></dt>
+<dd><p>Set the filter order.
+</p>
+</dd>
+<dt><samp>lambda</samp></dt>
+<dd><p>Set the forgetting factor.
+</p>
+</dd>
+<dt><samp>delta</samp></dt>
+<dd><p>Set the coefficient to initialize internal covariance matrix.
+</p>
+</dd>
+<dt><samp>out_mode</samp></dt>
+<dd><p>Set the filter output samples. It accepts the following values:
+</p><dl compact="compact">
+<dt><samp>i</samp></dt>
+<dd><p>Pass the 1st input.
+</p>
+</dd>
+<dt><samp>d</samp></dt>
+<dd><p>Pass the 2nd input.
+</p>
+</dd>
+<dt><samp>o</samp></dt>
+<dd><p>Pass difference between desired, 2nd input and error signal estimate.
+</p>
+</dd>
+<dt><samp>n</samp></dt>
+<dd><p>Pass difference between input, 1st input and error signal estimate.
+</p>
+</dd>
+<dt><samp>e</samp></dt>
+<dd><p>Pass error signal estimated samples.
+</p>
+<p>Default value is <var>o</var>.
+</p></dd>
+</dl>
+</dd>
+</dl>

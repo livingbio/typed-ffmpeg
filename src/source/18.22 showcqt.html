@@ -1,0 +1,255 @@
+<h3 class="section"><a href="#toc-showcqt">18.22 showcqt</a></h3>
+<p>Convert input audio to a video output representing frequency spectrum
+logarithmically using Brown-Puckette constant Q transform algorithm with
+direct frequency domain coefficient calculation (but the transform itself
+is not really constant Q, instead the Q factor is actually variable/clamped),
+with musical tone scale, from E0 to D#10.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>size, s</samp></dt>
+<dd><p>Specify the video size for the output. It must be even. For the syntax of this option,
+check the <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot; section in the ffmpeg-utils manual</a>.
+Default value is <code>1920x1080</code>.
+</p>
+</dd>
+<dt><samp>fps, rate, r</samp></dt>
+<dd><p>Set the output frame rate. Default value is <code>25</code>.
+</p>
+</dd>
+<dt><samp>bar_h</samp></dt>
+<dd><p>Set the bargraph height. It must be even. Default value is <code>-1</code> which
+computes the bargraph height automatically.
+</p>
+</dd>
+<dt><samp>axis_h</samp></dt>
+<dd><p>Set the axis height. It must be even. Default value is <code>-1</code> which computes
+the axis height automatically.
+</p>
+</dd>
+<dt><samp>sono_h</samp></dt>
+<dd><p>Set the sonogram height. It must be even. Default value is <code>-1</code> which
+computes the sonogram height automatically.
+</p>
+</dd>
+<dt><samp>fullhd</samp></dt>
+<dd><p>Set the fullhd resolution. This option is deprecated, use <var>size</var>, <var>s</var>
+instead. Default value is <code>1</code>.
+</p>
+</dd>
+<dt><samp>sono_v, volume</samp></dt>
+<dd><p>Specify the sonogram volume expression. It can contain variables:
+</p><dl compact="compact">
+<dt><samp>bar_v</samp></dt>
+<dd><p>the <var>bar_v</var> evaluated expression
+</p></dd>
+<dt><samp>frequency, freq, f</samp></dt>
+<dd><p>the frequency where it is evaluated
+</p></dd>
+<dt><samp>timeclamp, tc</samp></dt>
+<dd><p>the value of <var>timeclamp</var> option
+</p></dd>
+</dl>
+<p>and functions:
+</p><dl compact="compact">
+<dt><samp>a_weighting(f)</samp></dt>
+<dd><p>A-weighting of equal loudness
+</p></dd>
+<dt><samp>b_weighting(f)</samp></dt>
+<dd><p>B-weighting of equal loudness
+</p></dd>
+<dt><samp>c_weighting(f)</samp></dt>
+<dd><p>C-weighting of equal loudness.
+</p></dd>
+</dl>
+<p>Default value is <code>16</code>.
+</p>
+</dd>
+<dt><samp>bar_v, volume2</samp></dt>
+<dd><p>Specify the bargraph volume expression. It can contain variables:
+</p><dl compact="compact">
+<dt><samp>sono_v</samp></dt>
+<dd><p>the <var>sono_v</var> evaluated expression
+</p></dd>
+<dt><samp>frequency, freq, f</samp></dt>
+<dd><p>the frequency where it is evaluated
+</p></dd>
+<dt><samp>timeclamp, tc</samp></dt>
+<dd><p>the value of <var>timeclamp</var> option
+</p></dd>
+</dl>
+<p>and functions:
+</p><dl compact="compact">
+<dt><samp>a_weighting(f)</samp></dt>
+<dd><p>A-weighting of equal loudness
+</p></dd>
+<dt><samp>b_weighting(f)</samp></dt>
+<dd><p>B-weighting of equal loudness
+</p></dd>
+<dt><samp>c_weighting(f)</samp></dt>
+<dd><p>C-weighting of equal loudness.
+</p></dd>
+</dl>
+<p>Default value is <code>sono_v</code>.
+</p>
+</dd>
+<dt><samp>sono_g, gamma</samp></dt>
+<dd><p>Specify the sonogram gamma. Lower gamma makes the spectrum more contrast,
+higher gamma makes the spectrum having more range. Default value is <code>3</code>.
+Acceptable range is <code>[1, 7]</code>.
+</p>
+</dd>
+<dt><samp>bar_g, gamma2</samp></dt>
+<dd><p>Specify the bargraph gamma. Default value is <code>1</code>. Acceptable range is
+<code>[1, 7]</code>.
+</p>
+</dd>
+<dt><samp>bar_t</samp></dt>
+<dd><p>Specify the bargraph transparency level. Lower value makes the bargraph sharper.
+Default value is <code>1</code>. Acceptable range is <code>[0, 1]</code>.
+</p>
+</dd>
+<dt><samp>timeclamp, tc</samp></dt>
+<dd><p>Specify the transform timeclamp. At low frequency, there is trade-off between
+accuracy in time domain and frequency domain. If timeclamp is lower,
+event in time domain is represented more accurately (such as fast bass drum),
+otherwise event in frequency domain is represented more accurately
+(such as bass guitar). Acceptable range is <code>[0.002, 1]</code>. Default value is <code>0.17</code>.
+</p>
+</dd>
+<dt><samp>attack</samp></dt>
+<dd><p>Set attack time in seconds. The default is <code>0</code> (disabled). Otherwise, it
+limits future samples by applying asymmetric windowing in time domain, useful
+when low latency is required. Accepted range is <code>[0, 1]</code>.
+</p>
+</dd>
+<dt><samp>basefreq</samp></dt>
+<dd><p>Specify the transform base frequency. Default value is <code>20.01523126408007475</code>,
+which is frequency 50 cents below E0. Acceptable range is <code>[10, 100000]</code>.
+</p>
+</dd>
+<dt><samp>endfreq</samp></dt>
+<dd><p>Specify the transform end frequency. Default value is <code>20495.59681441799654</code>,
+which is frequency 50 cents above D#10. Acceptable range is <code>[10, 100000]</code>.
+</p>
+</dd>
+<dt><samp>coeffclamp</samp></dt>
+<dd><p>This option is deprecated and ignored.
+</p>
+</dd>
+<dt><samp>tlength</samp></dt>
+<dd><p>Specify the transform length in time domain. Use this option to control accuracy
+trade-off between time domain and frequency domain at every frequency sample.
+It can contain variables:
+</p><dl compact="compact">
+<dt><samp>frequency, freq, f</samp></dt>
+<dd><p>the frequency where it is evaluated
+</p></dd>
+<dt><samp>timeclamp, tc</samp></dt>
+<dd><p>the value of <var>timeclamp</var> option.
+</p></dd>
+</dl>
+<p>Default value is <code>384*tc/(384+tc*f)</code>.
+</p>
+</dd>
+<dt><samp>count</samp></dt>
+<dd><p>Specify the transform count for every video frame. Default value is <code>6</code>.
+Acceptable range is <code>[1, 30]</code>.
+</p>
+</dd>
+<dt><samp>fcount</samp></dt>
+<dd><p>Specify the transform count for every single pixel. Default value is <code>0</code>,
+which makes it computed automatically. Acceptable range is <code>[0, 10]</code>.
+</p>
+</dd>
+<dt><samp>fontfile</samp></dt>
+<dd><p>Specify font file for use with freetype to draw the axis. If not specified,
+use embedded font. Note that drawing with font file or embedded font is not
+implemented with custom <var>basefreq</var> and <var>endfreq</var>, use <var>axisfile</var>
+option instead.
+</p>
+</dd>
+<dt><samp>font</samp></dt>
+<dd><p>Specify fontconfig pattern. This has lower priority than <var>fontfile</var>. The
+<code>:</code> in the pattern may be replaced by <code>|</code> to avoid unnecessary
+escaping.
+</p>
+</dd>
+<dt><samp>fontcolor</samp></dt>
+<dd><p>Specify font color expression. This is arithmetic expression that should return
+integer value 0xRRGGBB. It can contain variables:
+</p><dl compact="compact">
+<dt><samp>frequency, freq, f</samp></dt>
+<dd><p>the frequency where it is evaluated
+</p></dd>
+<dt><samp>timeclamp, tc</samp></dt>
+<dd><p>the value of <var>timeclamp</var> option
+</p></dd>
+</dl>
+<p>and functions:
+</p><dl compact="compact">
+<dt><samp>midi(f)</samp></dt>
+<dd><p>midi number of frequency f, some midi numbers: E0(16), C1(24), C2(36), A4(69)
+</p></dd>
+<dt><samp>r(x), g(x), b(x)</samp></dt>
+<dd><p>red, green, and blue value of intensity x.
+</p></dd>
+</dl>
+<p>Default value is <code>st(0, (midi(f)-59.5)/12);
+st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));
+r(1-ld(1)) + b(ld(1))</code>.
+</p>
+</dd>
+<dt><samp>axisfile</samp></dt>
+<dd><p>Specify image file to draw the axis. This option override <var>fontfile</var> and
+<var>fontcolor</var> option.
+</p>
+</dd>
+<dt><samp>axis, text</samp></dt>
+<dd><p>Enable/disable drawing text to the axis. If it is set to <code>0</code>, drawing to
+the axis is disabled, ignoring <var>fontfile</var> and <var>axisfile</var> option.
+Default value is <code>1</code>.
+</p>
+</dd>
+<dt><samp>csp</samp></dt>
+<dd><p>Set colorspace. The accepted values are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>unspecified</samp>&rsquo;</dt>
+<dd><p>Unspecified (default)
+</p>
+</dd>
+<dt>&lsquo;<samp>bt709</samp>&rsquo;</dt>
+<dd><p>BT.709
+</p>
+</dd>
+<dt>&lsquo;<samp>fcc</samp>&rsquo;</dt>
+<dd><p>FCC
+</p>
+</dd>
+<dt>&lsquo;<samp>bt470bg</samp>&rsquo;</dt>
+<dd><p>BT.470BG or BT.601-6 625
+</p>
+</dd>
+<dt>&lsquo;<samp>smpte170m</samp>&rsquo;</dt>
+<dd><p>SMPTE-170M or BT.601-6 525
+</p>
+</dd>
+<dt>&lsquo;<samp>smpte240m</samp>&rsquo;</dt>
+<dd><p>SMPTE-240M
+</p>
+</dd>
+<dt>&lsquo;<samp>bt2020ncl</samp>&rsquo;</dt>
+<dd><p>BT.2020 with non-constant luminance
+</p>
+</dd>
+</dl>
+
+</dd>
+<dt><samp>cscheme</samp></dt>
+<dd><p>Set spectrogram color scheme. This is list of floating point values with format
+<code>left_r|left_g|left_b|right_r|right_g|right_b</code>.
+The default is <code>1|0.5|0|0|0.5|1</code>.
+</p>
+</dd>
+</dl>

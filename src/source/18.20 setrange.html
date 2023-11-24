@@ -1,0 +1,34 @@
+<h3 class="section"><a href="#toc-setrange">18.20 setrange</a></h3>
+
+<p>Force color range for the output video frame.
+</p>
+<p>The <code>setrange</code> filter marks the color range property for the
+output frames. It does not change the input frame, but only sets the
+corresponding property, which affects how the frame is treated by
+following filters.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>range</samp></dt>
+<dd><p>Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Keep the same color range property.
+</p>
+</dd>
+<dt>&lsquo;<samp>unspecified, unknown</samp>&rsquo;</dt>
+<dd><p>Set the color range as unspecified.
+</p>
+</dd>
+<dt>&lsquo;<samp>limited, tv, mpeg</samp>&rsquo;</dt>
+<dd><p>Set the color range as limited.
+</p>
+</dd>
+<dt>&lsquo;<samp>full, pc, jpeg</samp>&rsquo;</dt>
+<dd><p>Set the color range as full.
+</p></dd>
+</dl>
+</dd>
+</dl>

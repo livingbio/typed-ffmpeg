@@ -1,0 +1,16 @@
+<h3 class="section"><a href="#toc-mcompand">8.99 mcompand</a></h3>
+<p>Multiband Compress or expand the audio&rsquo;s dynamic range.
+</p>
+<p>The input audio is divided into bands using 4th order Linkwitz-Riley IIRs.
+This is akin to the crossover of a loudspeaker, and results in flat frequency
+response when absent compander action.
+</p>
+<p>It accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>args</samp></dt>
+<dd><p>This option syntax is:
+attack,decay,[attack,decay..] soft-knee points crossover_frequency [delay [initial_volume [gain]]] | attack,decay ...
+For explanation of each item refer to compand filter documentation.
+</p></dd>
+</dl>

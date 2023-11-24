@@ -1,0 +1,21 @@
+<h3 class="section"><a href="#toc-thumbnail">11.254 thumbnail</a></h3>
+<p>Select the most representative frame in a given sequence of consecutive frames.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>n</samp></dt>
+<dd><p>Set the frames batch size to analyze; in a set of <var>n</var> frames, the filter
+will pick one of them, and then handle the next batch of <var>n</var> frames until
+the end. Default is <code>100</code>.
+</p>
+</dd>
+<dt><samp>log</samp></dt>
+<dd><p>Set the log level to display picked frame stats.
+Default is <code>info</code>.
+</p></dd>
+</dl>
+
+<p>Since the filter keeps track of the whole frames sequence, a bigger <var>n</var>
+value will result in a higher memory usage, so a high value is not recommended.
+</p>

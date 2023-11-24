@@ -1,0 +1,45 @@
+<h3 class="section"><a href="#toc-crossfeed">8.78 crossfeed</a></h3>
+<p>Apply headphone crossfeed filter.
+</p>
+<p>Crossfeed is the process of blending the left and right channels of stereo
+audio recording.
+It is mainly used to reduce extreme stereo separation of low frequencies.
+</p>
+<p>The intent is to produce more speaker like sound to the listener.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>strength</samp></dt>
+<dd><p>Set strength of crossfeed. Default is 0.2. Allowed range is from 0 to 1.
+This sets gain of low shelf filter for side part of stereo image.
+Default is -6dB. Max allowed is -30db when strength is set to 1.
+</p>
+</dd>
+<dt><samp>range</samp></dt>
+<dd><p>Set soundstage wideness. Default is 0.5. Allowed range is from 0 to 1.
+This sets cut off frequency of low shelf filter. Default is cut off near
+1550 Hz. With range set to 1 cut off frequency is set to 2100 Hz.
+</p>
+</dd>
+<dt><samp>slope</samp></dt>
+<dd><p>Set curve slope of low shelf filter. Default is 0.5.
+Allowed range is from 0.01 to 1.
+</p>
+</dd>
+<dt><samp>level_in</samp></dt>
+<dd><p>Set input gain. Default is 0.9.
+</p>
+</dd>
+<dt><samp>level_out</samp></dt>
+<dd><p>Set output gain. Default is 1.
+</p>
+</dd>
+<dt><samp>block_size</samp></dt>
+<dd><p>Set block size used for reverse IIR processing. If this value is set to high enough
+value (higher than impulse response length truncated when reaches near zero values) filtering
+will become linear phase otherwise if not big enough it will just produce nasty artifacts.
+</p>
+<p>Note that filter delay will be exactly this many samples when set to non-zero value.
+</p></dd>
+</dl>

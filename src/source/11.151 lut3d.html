@@ -1,0 +1,53 @@
+<h3 class="section"><a href="#toc-lut3d-1">11.151 lut3d</a></h3>
+
+<p>Apply a 3D LUT to an input video.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>file</samp></dt>
+<dd><p>Set the 3D LUT file name.
+</p>
+<p>Currently supported formats:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>3dl</samp>&rsquo;</dt>
+<dd><p>AfterEffects
+</p></dd>
+<dt>&lsquo;<samp>cube</samp>&rsquo;</dt>
+<dd><p>Iridas
+</p></dd>
+<dt>&lsquo;<samp>dat</samp>&rsquo;</dt>
+<dd><p>DaVinci
+</p></dd>
+<dt>&lsquo;<samp>m3d</samp>&rsquo;</dt>
+<dd><p>Pandora
+</p></dd>
+<dt>&lsquo;<samp>csp</samp>&rsquo;</dt>
+<dd><p>cineSpace
+</p></dd>
+</dl>
+</dd>
+<dt><samp>interp</samp></dt>
+<dd><p>Select interpolation mode.
+</p>
+<p>Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>nearest</samp>&rsquo;</dt>
+<dd><p>Use values from the nearest defined point.
+</p></dd>
+<dt>&lsquo;<samp>trilinear</samp>&rsquo;</dt>
+<dd><p>Interpolate values using the 8 points defining a cube.
+</p></dd>
+<dt>&lsquo;<samp>tetrahedral</samp>&rsquo;</dt>
+<dd><p>Interpolate values using a tetrahedron.
+</p></dd>
+<dt>&lsquo;<samp>pyramid</samp>&rsquo;</dt>
+<dd><p>Interpolate values using a pyramid.
+</p></dd>
+<dt>&lsquo;<samp>prism</samp>&rsquo;</dt>
+<dd><p>Interpolate values using a prism.
+</p></dd>
+</dl>
+</dd>
+</dl>

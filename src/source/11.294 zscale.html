@@ -1,0 +1,12 @@
+<h3 class="section"><a href="#toc-zscale-1">11.294 zscale</a></h3>
+<p>Scale (resize) the input video, using the z.lib library:
+<a href="https://github.com/sekrit-twc/zimg">https://github.com/sekrit-twc/zimg</a>. To enable compilation of this
+filter, you need to configure FFmpeg with <code>--enable-libzimg</code>.
+</p>
+<p>The zscale filter forces the output display aspect ratio to be the same
+as the input, by changing the output sample aspect ratio.
+</p>
+<p>If the input image format is different from the format requested by
+the next filter, the zscale filter will convert the input to the
+requested format.
+</p>

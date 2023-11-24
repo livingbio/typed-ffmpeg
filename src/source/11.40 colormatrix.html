@@ -1,0 +1,53 @@
+<h3 class="section"><a href="#toc-colormatrix">11.40 colormatrix</a></h3>
+
+<p>Convert color matrix.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>src</samp></dt>
+<dt><samp>dst</samp></dt>
+<dd><p>Specify the source and destination color matrix. Both values must be
+specified.
+</p>
+<p>The accepted values are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>bt709</samp>&rsquo;</dt>
+<dd><p>BT.709
+</p>
+</dd>
+<dt>&lsquo;<samp>fcc</samp>&rsquo;</dt>
+<dd><p>FCC
+</p>
+</dd>
+<dt>&lsquo;<samp>bt601</samp>&rsquo;</dt>
+<dd><p>BT.601
+</p>
+</dd>
+<dt>&lsquo;<samp>bt470</samp>&rsquo;</dt>
+<dd><p>BT.470
+</p>
+</dd>
+<dt>&lsquo;<samp>bt470bg</samp>&rsquo;</dt>
+<dd><p>BT.470BG
+</p>
+</dd>
+<dt>&lsquo;<samp>smpte170m</samp>&rsquo;</dt>
+<dd><p>SMPTE-170M
+</p>
+</dd>
+<dt>&lsquo;<samp>smpte240m</samp>&rsquo;</dt>
+<dd><p>SMPTE-240M
+</p>
+</dd>
+<dt>&lsquo;<samp>bt2020</samp>&rsquo;</dt>
+<dd><p>BT.2020
+</p></dd>
+</dl>
+</dd>
+</dl>
+
+<p>For example to convert from BT.601 to SMPTE-240M, use the command:
+</p><div class="example">
+<pre class="example">colormatrix=bt601:smpte240m
+</pre></div>

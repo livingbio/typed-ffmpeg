@@ -1,0 +1,36 @@
+<h3 class="section"><a href="#toc-bs2b">8.72 bs2b</a></h3>
+<p>Bauer stereo to binaural transformation, which improves headphone listening of
+stereo audio records.
+</p>
+<p>To enable compilation of this filter you need to configure FFmpeg with
+<code>--enable-libbs2b</code>.
+</p>
+<p>It accepts the following parameters:
+</p><dl compact="compact">
+<dt><samp>profile</samp></dt>
+<dd><p>Pre-defined crossfeed level.
+</p><dl compact="compact">
+<dt><samp>default</samp></dt>
+<dd><p>Default level (fcut=700, feed=50).
+</p>
+</dd>
+<dt><samp>cmoy</samp></dt>
+<dd><p>Chu Moy circuit (fcut=700, feed=60).
+</p>
+</dd>
+<dt><samp>jmeier</samp></dt>
+<dd><p>Jan Meier circuit (fcut=650, feed=95).
+</p>
+</dd>
+</dl>
+
+</dd>
+<dt><samp>fcut</samp></dt>
+<dd><p>Cut frequency (in Hz).
+</p>
+</dd>
+<dt><samp>feed</samp></dt>
+<dd><p>Feed level (in Hz).
+</p>
+</dd>
+</dl>

@@ -1,0 +1,110 @@
+<h3 class="section"><a href="#toc-life">16.9 life</a></h3>
+
+<p>Generate a life pattern.
+</p>
+<p>This source is based on a generalization of John Conway&rsquo;s life game.
+</p>
+<p>The sourced input represents a life grid, each pixel represents a cell
+which can be in one of two possible states, alive or dead. Every cell
+interacts with its eight neighbours, which are the cells that are
+horizontally, vertically, or diagonally adjacent.
+</p>
+<p>At each interaction the grid evolves according to the adopted rule,
+which specifies the number of neighbor alive cells which will make a
+cell stay alive or born. The <samp>rule</samp> option allows one to specify
+the rule to adopt.
+</p>
+<p>This source accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>filename, f</samp></dt>
+<dd><p>Set the file from which to read the initial grid state. In the file,
+each non-whitespace character is considered an alive cell, and newline
+is used to delimit the end of each row.
+</p>
+<p>If this option is not specified, the initial grid is generated
+randomly.
+</p>
+</dd>
+<dt><samp>rate, r</samp></dt>
+<dd><p>Set the video rate, that is the number of frames generated per second.
+Default is 25.
+</p>
+</dd>
+<dt><samp>random_fill_ratio, ratio</samp></dt>
+<dd><p>Set the random fill ratio for the initial random grid. It is a
+floating point number value ranging from 0 to 1, defaults to 1/PHI.
+It is ignored when a file is specified.
+</p>
+</dd>
+<dt><samp>random_seed, seed</samp></dt>
+<dd><p>Set the seed for filling the initial random grid, must be an integer
+included between 0 and UINT32_MAX. If not specified, or if explicitly
+set to -1, the filter will try to use a good random seed on a best
+effort basis.
+</p>
+</dd>
+<dt><samp>rule</samp></dt>
+<dd><p>Set the life rule.
+</p>
+<p>A rule can be specified with a code of the kind &quot;S<var>NS</var>/B<var>NB</var>&quot;,
+where <var>NS</var> and <var>NB</var> are sequences of numbers in the range 0-8,
+<var>NS</var> specifies the number of alive neighbor cells which make a
+live cell stay alive, and <var>NB</var> the number of alive neighbor cells
+which make a dead cell to become alive (i.e. to &quot;born&quot;).
+&quot;s&quot; and &quot;b&quot; can be used in place of &quot;S&quot; and &quot;B&quot;, respectively.
+</p>
+<p>Alternatively a rule can be specified by an 18-bits integer. The 9
+high order bits are used to encode the next cell state if it is alive
+for each number of neighbor alive cells, the low order bits specify
+the rule for &quot;borning&quot; new cells. Higher order bits encode for an
+higher number of neighbor cells.
+For example the number 6153 = <code>(12&lt;&lt;9)+9</code> specifies a stay alive
+rule of 12 and a born rule of 9, which corresponds to &quot;S23/B03&quot;.
+</p>
+<p>Default value is &quot;S23/B3&quot;, which is the original Conway&rsquo;s game of life
+rule, and will keep a cell alive if it has 2 or 3 neighbor alive
+cells, and will born a new cell if there are three alive cells around
+a dead cell.
+</p>
+</dd>
+<dt><samp>size, s</samp></dt>
+<dd><p>Set the size of the output video. For the syntax of this option, check the
+<a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot; section in the ffmpeg-utils manual</a>.
+</p>
+<p>If <samp>filename</samp> is specified, the size is set by default to the
+same size of the input file. If <samp>size</samp> is set, it must contain
+the size specified in the input file, and the initial grid defined in
+that file is centered in the larger resulting area.
+</p>
+<p>If a filename is not specified, the size value defaults to &quot;320x240&quot;
+(used for a randomly generated initial grid).
+</p>
+</dd>
+<dt><samp>stitch</samp></dt>
+<dd><p>If set to 1, stitch the left and right grid edges together, and the
+top and bottom edges also. Defaults to 1.
+</p>
+</dd>
+<dt><samp>mold</samp></dt>
+<dd><p>Set cell mold speed. If set, a dead cell will go from <samp>death_color</samp> to
+<samp>mold_color</samp> with a step of <samp>mold</samp>. <samp>mold</samp> can have a
+value from 0 to 255.
+</p>
+</dd>
+<dt><samp>life_color</samp></dt>
+<dd><p>Set the color of living (or new born) cells.
+</p>
+</dd>
+<dt><samp>death_color</samp></dt>
+<dd><p>Set the color of dead cells. If <samp>mold</samp> is set, this is the first color
+used to represent a dead cell.
+</p>
+</dd>
+<dt><samp>mold_color</samp></dt>
+<dd><p>Set mold color, for definitely dead and moldy cells.
+</p>
+<p>For the syntax of these 3 color options, check the <a href="ffmpeg-utils.html#color-syntax">(ffmpeg-utils)&quot;Color&quot; section in the
+ffmpeg-utils manual</a>.
+</p></dd>
+</dl>

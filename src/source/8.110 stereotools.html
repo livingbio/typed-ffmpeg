@@ -1,0 +1,158 @@
+<h3 class="section"><a href="#toc-stereotools">8.110 stereotools</a></h3>
+
+<p>This filter has some handy utilities to manage stereo signals, for converting
+M/S stereo recordings to L/R signal while having control over the parameters
+or spreading the stereo image of master track.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>level_in</samp></dt>
+<dd><p>Set input level before filtering for both channels. Defaults is 1.
+Allowed range is from 0.015625 to 64.
+</p>
+</dd>
+<dt><samp>level_out</samp></dt>
+<dd><p>Set output level after filtering for both channels. Defaults is 1.
+Allowed range is from 0.015625 to 64.
+</p>
+</dd>
+<dt><samp>balance_in</samp></dt>
+<dd><p>Set input balance between both channels. Default is 0.
+Allowed range is from -1 to 1.
+</p>
+</dd>
+<dt><samp>balance_out</samp></dt>
+<dd><p>Set output balance between both channels. Default is 0.
+Allowed range is from -1 to 1.
+</p>
+</dd>
+<dt><samp>softclip</samp></dt>
+<dd><p>Enable softclipping. Results in analog distortion instead of harsh digital 0dB
+clipping. Disabled by default.
+</p>
+</dd>
+<dt><samp>mutel</samp></dt>
+<dd><p>Mute the left channel. Disabled by default.
+</p>
+</dd>
+<dt><samp>muter</samp></dt>
+<dd><p>Mute the right channel. Disabled by default.
+</p>
+</dd>
+<dt><samp>phasel</samp></dt>
+<dd><p>Change the phase of the left channel. Disabled by default.
+</p>
+</dd>
+<dt><samp>phaser</samp></dt>
+<dd><p>Change the phase of the right channel. Disabled by default.
+</p>
+</dd>
+<dt><samp>mode</samp></dt>
+<dd><p>Set stereo mode. Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>lr&gt;lr</samp>&rsquo;</dt>
+<dd><p>Left/Right to Left/Right, this is default.
+</p>
+</dd>
+<dt>&lsquo;<samp>lr&gt;ms</samp>&rsquo;</dt>
+<dd><p>Left/Right to Mid/Side.
+</p>
+</dd>
+<dt>&lsquo;<samp>ms&gt;lr</samp>&rsquo;</dt>
+<dd><p>Mid/Side to Left/Right.
+</p>
+</dd>
+<dt>&lsquo;<samp>lr&gt;ll</samp>&rsquo;</dt>
+<dd><p>Left/Right to Left/Left.
+</p>
+</dd>
+<dt>&lsquo;<samp>lr&gt;rr</samp>&rsquo;</dt>
+<dd><p>Left/Right to Right/Right.
+</p>
+</dd>
+<dt>&lsquo;<samp>lr&gt;l+r</samp>&rsquo;</dt>
+<dd><p>Left/Right to Left + Right.
+</p>
+</dd>
+<dt>&lsquo;<samp>lr&gt;rl</samp>&rsquo;</dt>
+<dd><p>Left/Right to Right/Left.
+</p>
+</dd>
+<dt>&lsquo;<samp>ms&gt;ll</samp>&rsquo;</dt>
+<dd><p>Mid/Side to Left/Left.
+</p>
+</dd>
+<dt>&lsquo;<samp>ms&gt;rr</samp>&rsquo;</dt>
+<dd><p>Mid/Side to Right/Right.
+</p>
+</dd>
+<dt>&lsquo;<samp>ms&gt;rl</samp>&rsquo;</dt>
+<dd><p>Mid/Side to Right/Left.
+</p>
+</dd>
+<dt>&lsquo;<samp>lr&gt;l-r</samp>&rsquo;</dt>
+<dd><p>Left/Right to Left - Right.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>slev</samp></dt>
+<dd><p>Set level of side signal. Default is 1.
+Allowed range is from 0.015625 to 64.
+</p>
+</dd>
+<dt><samp>sbal</samp></dt>
+<dd><p>Set balance of side signal. Default is 0.
+Allowed range is from -1 to 1.
+</p>
+</dd>
+<dt><samp>mlev</samp></dt>
+<dd><p>Set level of the middle signal. Default is 1.
+Allowed range is from 0.015625 to 64.
+</p>
+</dd>
+<dt><samp>mpan</samp></dt>
+<dd><p>Set middle signal pan. Default is 0. Allowed range is from -1 to 1.
+</p>
+</dd>
+<dt><samp>base</samp></dt>
+<dd><p>Set stereo base between mono and inversed channels. Default is 0.
+Allowed range is from -1 to 1.
+</p>
+</dd>
+<dt><samp>delay</samp></dt>
+<dd><p>Set delay in milliseconds how much to delay left from right channel and
+vice versa. Default is 0. Allowed range is from -20 to 20.
+</p>
+</dd>
+<dt><samp>sclevel</samp></dt>
+<dd><p>Set S/C level. Default is 1. Allowed range is from 1 to 100.
+</p>
+</dd>
+<dt><samp>phase</samp></dt>
+<dd><p>Set the stereo phase in degrees. Default is 0. Allowed range is from 0 to 360.
+</p>
+</dd>
+<dt><samp>bmode_in, bmode_out</samp></dt>
+<dd><p>Set balance mode for balance_in/balance_out option.
+</p>
+<p>Can be one of the following:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>balance</samp>&rsquo;</dt>
+<dd><p>Classic balance mode. Attenuate one channel at time.
+Gain is raised up to 1.
+</p>
+</dd>
+<dt>&lsquo;<samp>amplitude</samp>&rsquo;</dt>
+<dd><p>Similar as classic mode above but gain is raised up to 2.
+</p>
+</dd>
+<dt>&lsquo;<samp>power</samp>&rsquo;</dt>
+<dd><p>Equal power distribution, from -6dB to +6dB range.
+</p></dd>
+</dl>
+</dd>
+</dl>

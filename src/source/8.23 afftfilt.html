@@ -1,0 +1,102 @@
+<h3 class="section"><a href="#toc-afftfilt">8.23 afftfilt</a></h3>
+<p>Apply arbitrary expressions to samples in frequency domain.
+</p>
+<dl compact="compact">
+<dt><samp>real</samp></dt>
+<dd><p>Set frequency domain real expression for each separate channel separated
+by &rsquo;|&rsquo;. Default is &quot;re&quot;.
+If the number of input channels is greater than the number of
+expressions, the last specified expression is used for the remaining
+output channels.
+</p>
+</dd>
+<dt><samp>imag</samp></dt>
+<dd><p>Set frequency domain imaginary expression for each separate channel
+separated by &rsquo;|&rsquo;. Default is &quot;im&quot;.
+</p>
+<p>Each expression in <var>real</var> and <var>imag</var> can contain the following
+constants and functions:
+</p>
+<dl compact="compact">
+<dt><samp>sr</samp></dt>
+<dd><p>sample rate
+</p>
+</dd>
+<dt><samp>b</samp></dt>
+<dd><p>current frequency bin number
+</p>
+</dd>
+<dt><samp>nb</samp></dt>
+<dd><p>number of available bins
+</p>
+</dd>
+<dt><samp>ch</samp></dt>
+<dd><p>channel number of the current expression
+</p>
+</dd>
+<dt><samp>chs</samp></dt>
+<dd><p>number of channels
+</p>
+</dd>
+<dt><samp>pts</samp></dt>
+<dd><p>current frame pts
+</p>
+</dd>
+<dt><samp>re</samp></dt>
+<dd><p>current real part of frequency bin of current channel
+</p>
+</dd>
+<dt><samp>im</samp></dt>
+<dd><p>current imaginary part of frequency bin of current channel
+</p>
+</dd>
+<dt><samp>real(b, ch)</samp></dt>
+<dd><p>Return the value of real part of frequency bin at location (<var>bin</var>,<var>channel</var>)
+</p>
+</dd>
+<dt><samp>imag(b, ch)</samp></dt>
+<dd><p>Return the value of imaginary part of frequency bin at location (<var>bin</var>,<var>channel</var>)
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>win_size</samp></dt>
+<dd><p>Set window size. Allowed range is from 16 to 131072.
+Default is <code>4096</code>
+</p>
+</dd>
+<dt><samp>win_func</samp></dt>
+<dd><p>Set window function.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>rect</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bartlett</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>hann, hanning</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>hamming</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>blackman</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>welch</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>flattop</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bharris</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bnuttall</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bhann</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>sine</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>nuttall</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>lanczos</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>gauss</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>tukey</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>dolph</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>cauchy</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>parzen</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>poisson</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bohman</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>kaiser</samp>&rsquo;</dt>
+</dl>
+<p>Default is <code>hann</code>.
+</p>
+</dd>
+<dt><samp>overlap</samp></dt>
+<dd><p>Set window overlap. If set to 1, the recommended overlap for selected
+window function will be picked. Default is <code>0.75</code>.
+</p></dd>
+</dl>

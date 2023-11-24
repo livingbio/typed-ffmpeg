@@ -1,0 +1,111 @@
+<h3 class="section"><a href="#toc-ahistogram">18.5 ahistogram</a></h3>
+
+<p>Convert input audio to a video output, displaying the volume histogram.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>dmode</samp></dt>
+<dd><p>Specify how histogram is calculated.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>single</samp>&rsquo;</dt>
+<dd><p>Use single histogram for all channels.
+</p></dd>
+<dt>&lsquo;<samp>separate</samp>&rsquo;</dt>
+<dd><p>Use separate histogram for each channel.
+</p></dd>
+</dl>
+<p>Default is <code>single</code>.
+</p>
+</dd>
+<dt><samp>rate, r</samp></dt>
+<dd><p>Set frame rate, expressed as number of frames per second. Default
+value is &quot;25&quot;.
+</p>
+</dd>
+<dt><samp>size, s</samp></dt>
+<dd><p>Specify the video size for the output. For the syntax of this option, check the
+<a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot; section in the ffmpeg-utils manual</a>.
+Default value is <code>hd720</code>.
+</p>
+</dd>
+<dt><samp>scale</samp></dt>
+<dd><p>Set display scale.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>log</samp>&rsquo;</dt>
+<dd><p>logarithmic
+</p></dd>
+<dt>&lsquo;<samp>sqrt</samp>&rsquo;</dt>
+<dd><p>square root
+</p></dd>
+<dt>&lsquo;<samp>cbrt</samp>&rsquo;</dt>
+<dd><p>cubic root
+</p></dd>
+<dt>&lsquo;<samp>lin</samp>&rsquo;</dt>
+<dd><p>linear
+</p></dd>
+<dt>&lsquo;<samp>rlog</samp>&rsquo;</dt>
+<dd><p>reverse logarithmic
+</p></dd>
+</dl>
+<p>Default is <code>log</code>.
+</p>
+</dd>
+<dt><samp>ascale</samp></dt>
+<dd><p>Set amplitude scale.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>log</samp>&rsquo;</dt>
+<dd><p>logarithmic
+</p></dd>
+<dt>&lsquo;<samp>lin</samp>&rsquo;</dt>
+<dd><p>linear
+</p></dd>
+</dl>
+<p>Default is <code>log</code>.
+</p>
+</dd>
+<dt><samp>acount</samp></dt>
+<dd><p>Set how much frames to accumulate in histogram.
+Default is 1. Setting this to -1 accumulates all frames.
+</p>
+</dd>
+<dt><samp>rheight</samp></dt>
+<dd><p>Set histogram ratio of window height.
+</p>
+</dd>
+<dt><samp>slide</samp></dt>
+<dd><p>Set sonogram sliding.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>replace</samp>&rsquo;</dt>
+<dd><p>replace old rows with new ones.
+</p></dd>
+<dt>&lsquo;<samp>scroll</samp>&rsquo;</dt>
+<dd><p>scroll from top to bottom.
+</p></dd>
+</dl>
+<p>Default is <code>replace</code>.
+</p>
+</dd>
+<dt><samp>hmode</samp></dt>
+<dd><p>Set histogram mode.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>abs</samp>&rsquo;</dt>
+<dd><p>Use absolute values of samples.
+</p></dd>
+<dt>&lsquo;<samp>sign</samp>&rsquo;</dt>
+<dd><p>Use untouched values of samples.
+</p></dd>
+</dl>
+<p>Default is <code>abs</code>.
+</p></dd>
+</dl>

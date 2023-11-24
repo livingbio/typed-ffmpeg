@@ -1,0 +1,100 @@
+<h3 class="section"><a href="#toc-setpts_002c-asetpts">18.19 setpts, asetpts</a></h3>
+
+<p>Change the PTS (presentation timestamp) of the input frames.
+</p>
+<p><code>setpts</code> works on video frames, <code>asetpts</code> on audio frames.
+</p>
+<p>This filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>expr</samp></dt>
+<dd><p>The expression which is evaluated for each frame to construct its timestamp.
+</p>
+</dd>
+</dl>
+
+<p>The expression is evaluated through the eval API and can contain the following
+constants:
+</p>
+<dl compact="compact">
+<dt><samp>FRAME_RATE, FR</samp></dt>
+<dd><p>frame rate, only defined for constant frame-rate video
+</p>
+</dd>
+<dt><samp>PTS</samp></dt>
+<dd><p>The presentation timestamp in input
+</p>
+</dd>
+<dt><samp>N</samp></dt>
+<dd><p>The count of the input frame for video or the number of consumed samples,
+not including the current frame for audio, starting from 0.
+</p>
+</dd>
+<dt><samp>NB_CONSUMED_SAMPLES</samp></dt>
+<dd><p>The number of consumed samples, not including the current frame (only
+audio)
+</p>
+</dd>
+<dt><samp>NB_SAMPLES, S</samp></dt>
+<dd><p>The number of samples in the current frame (only audio)
+</p>
+</dd>
+<dt><samp>SAMPLE_RATE, SR</samp></dt>
+<dd><p>The audio sample rate.
+</p>
+</dd>
+<dt><samp>STARTPTS</samp></dt>
+<dd><p>The PTS of the first frame.
+</p>
+</dd>
+<dt><samp>STARTT</samp></dt>
+<dd><p>the time in seconds of the first frame
+</p>
+</dd>
+<dt><samp>INTERLACED</samp></dt>
+<dd><p>State whether the current frame is interlaced.
+</p>
+</dd>
+<dt><samp>T</samp></dt>
+<dd><p>the time in seconds of the current frame
+</p>
+</dd>
+<dt><samp>POS</samp></dt>
+<dd><p>original position in the file of the frame, or undefined if undefined
+for the current frame; deprecated, do not use
+</p>
+</dd>
+<dt><samp>PREV_INPTS</samp></dt>
+<dd><p>The previous input PTS.
+</p>
+</dd>
+<dt><samp>PREV_INT</samp></dt>
+<dd><p>previous input time in seconds
+</p>
+</dd>
+<dt><samp>PREV_OUTPTS</samp></dt>
+<dd><p>The previous output PTS.
+</p>
+</dd>
+<dt><samp>PREV_OUTT</samp></dt>
+<dd><p>previous output time in seconds
+</p>
+</dd>
+<dt><samp>RTCTIME</samp></dt>
+<dd><p>The wallclock (RTC) time in microseconds. This is deprecated, use time(0)
+instead.
+</p>
+</dd>
+<dt><samp>RTCSTART</samp></dt>
+<dd><p>The wallclock (RTC) time at the start of the movie in microseconds.
+</p>
+</dd>
+<dt><samp>TB</samp></dt>
+<dd><p>The timebase of the input timestamps.
+</p>
+</dd>
+<dt><samp>T_CHANGE</samp></dt>
+<dd><p>Time of the first frame after command was applied or time of the first frame if no commands.
+</p>
+</dd>
+</dl>

@@ -1,0 +1,51 @@
+<h3 class="section"><a href="#toc-interleave_002c-ainterleave">18.11 interleave, ainterleave</a></h3>
+
+<p>Temporally interleave frames from several inputs.
+</p>
+<p><code>interleave</code> works with video inputs, <code>ainterleave</code> with audio.
+</p>
+<p>These filters read frames from several inputs and send the oldest
+queued frame to the output.
+</p>
+<p>Input streams must have well defined, monotonically increasing frame
+timestamp values.
+</p>
+<p>In order to submit one frame to output, these filters need to enqueue
+at least one frame for each input, so they cannot work in case one
+input is not yet terminated and will not receive incoming frames.
+</p>
+<p>For example consider the case when one input is a <code>select</code> filter
+which always drops input frames. The <code>interleave</code> filter will keep
+reading from that input, but it will never be able to send new frames
+to output until the input sends an end-of-stream signal.
+</p>
+<p>Also, depending on inputs synchronization, the filters will drop
+frames in case one input receives more frames than the other ones, and
+the queue is already filled.
+</p>
+<p>These filters accept the following options:
+</p>
+<dl compact="compact">
+<dt><samp>nb_inputs, n</samp></dt>
+<dd><p>Set the number of different inputs, it is 2 by default.
+</p>
+</dd>
+<dt><samp>duration</samp></dt>
+<dd><p>How to determine the end-of-stream.
+</p>
+<dl compact="compact">
+<dt><samp>longest</samp></dt>
+<dd><p>The duration of the longest input. (default)
+</p>
+</dd>
+<dt><samp>shortest</samp></dt>
+<dd><p>The duration of the shortest input.
+</p>
+</dd>
+<dt><samp>first</samp></dt>
+<dd><p>The duration of the first input.
+</p></dd>
+</dl>
+
+</dd>
+</dl>

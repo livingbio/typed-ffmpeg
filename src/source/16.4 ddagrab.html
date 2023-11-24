@@ -1,0 +1,72 @@
+<h3 class="section"><a href="#toc-ddagrab">16.4 ddagrab</a></h3>
+
+<p>Captures the Windows Desktop via Desktop Duplication API.
+</p>
+<p>The filter exclusively returns D3D11 Hardware Frames, for on-gpu encoding
+or processing. So an explicit <a href="#hwdownload">hwdownload</a> is needed for any kind of
+software processing.
+</p>
+<p>It accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>output_idx</samp></dt>
+<dd><p>DXGI Output Index to capture.
+</p>
+<p>Usually corresponds to the index Windows has given the screen minus one,
+so it&rsquo;s starting at 0.
+</p>
+<p>Defaults to output 0.
+</p>
+</dd>
+<dt><samp>draw_mouse</samp></dt>
+<dd><p>Whether to draw the mouse cursor.
+</p>
+<p>Defaults to true.
+</p>
+<p>Only affects hardware cursors. If a game or application renders its own cursor,
+it&rsquo;ll always be captured.
+</p>
+</dd>
+<dt><samp>framerate</samp></dt>
+<dd><p>Framerate at which the desktop will be captured.
+</p>
+<p>Defaults to 30 FPS.
+</p>
+</dd>
+<dt><samp>video_size</samp></dt>
+<dd><p>Specify the size of the captured video.
+</p>
+<p>Defaults to the full size of the screen.
+</p>
+<p>Cropped from the bottom/right if smaller than screen size.
+</p>
+</dd>
+<dt><samp>offset_x</samp></dt>
+<dd><p>Horizontal offset of the captured video.
+</p>
+</dd>
+<dt><samp>offset_y</samp></dt>
+<dd><p>Vertical offset of the captured video.
+</p>
+</dd>
+<dt><samp>output_fmt</samp></dt>
+<dd><p>Desired filter output format.
+Defaults to 8 Bit BGRA.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Passes all supported output formats to DDA and returns what DDA decides to use.
+</p></dd>
+<dt>&lsquo;<samp>8bit</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bgra</samp>&rsquo;</dt>
+<dd><p>8 Bit formats always work, and DDA will convert to them if necessary.
+</p></dd>
+<dt>&lsquo;<samp>10bit</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>x2bgr10</samp>&rsquo;</dt>
+<dd><p>Filter initialization will fail if 10 bit format is requested but unavailable.
+</p></dd>
+</dl>
+
+</dd>
+</dl>

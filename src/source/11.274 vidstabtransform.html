@@ -1,0 +1,14 @@
+<h3 class="section"><a href="#toc-vidstabtransform-1">11.274 vidstabtransform</a></h3>
+
+<p>Video stabilization/deshaking: pass 2 of 2,
+see <a href="#vidstabdetect">vidstabdetect</a> for pass 1.
+</p>
+<p>Read a file with transform information for each frame and
+apply/compensate them. Together with the <a href="#vidstabdetect">vidstabdetect</a>
+filter this can be used to deshake videos. See also
+<a href="http://public.hronopik.de/vid.stab">http://public.hronopik.de/vid.stab</a>. It is important to also use
+the <a href="#unsharp">unsharp</a> filter, see below.
+</p>
+<p>To enable compilation of this filter you need to configure FFmpeg with
+<code>--enable-libvidstab</code>.
+</p>

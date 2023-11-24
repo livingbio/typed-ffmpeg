@@ -1,0 +1,52 @@
+<h3 class="section"><a href="#toc-adeclip">8.9 adeclip</a></h3>
+<p>Remove clipped samples from input audio.
+</p>
+<p>Samples detected as clipped are replaced by interpolated samples using
+autoregressive modelling.
+</p>
+<dl compact="compact">
+<dt><samp>window, w</samp></dt>
+<dd><p>Set window size, in milliseconds. Allowed range is from <code>10</code> to <code>100</code>.
+Default value is <code>55</code> milliseconds.
+This sets size of window which will be processed at once.
+</p>
+</dd>
+<dt><samp>overlap, o</samp></dt>
+<dd><p>Set window overlap, in percentage of window size. Allowed range is from <code>50</code>
+to <code>95</code>. Default value is <code>75</code> percent.
+</p>
+</dd>
+<dt><samp>arorder, a</samp></dt>
+<dd><p>Set autoregression order, in percentage of window size. Allowed range is from
+<code>0</code> to <code>25</code>. Default value is <code>8</code> percent. This option also controls
+quality of interpolated samples using neighbour good samples.
+</p>
+</dd>
+<dt><samp>threshold, t</samp></dt>
+<dd><p>Set threshold value. Allowed range is from <code>1</code> to <code>100</code>.
+Default value is <code>10</code>. Higher values make clip detection less aggressive.
+</p>
+</dd>
+<dt><samp>hsize, n</samp></dt>
+<dd><p>Set size of histogram used to detect clips. Allowed range is from <code>100</code> to <code>9999</code>.
+Default value is <code>1000</code>. Higher values make clip detection less aggressive.
+</p>
+</dd>
+<dt><samp>method, m</samp></dt>
+<dd><p>Set overlap method.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt><samp>add, a</samp></dt>
+<dd><p>Select overlap-add method. Even not interpolated samples are slightly changed
+with this method.
+</p>
+</dd>
+<dt><samp>save, s</samp></dt>
+<dd><p>Select overlap-save method. Not interpolated samples remain unchanged.
+</p></dd>
+</dl>
+
+<p>Default value is <code>a</code>.
+</p></dd>
+</dl>

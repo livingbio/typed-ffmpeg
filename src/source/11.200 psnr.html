@@ -1,0 +1,98 @@
+<h3 class="section"><a href="#toc-psnr">11.200 psnr</a></h3>
+
+<p>Obtain the average, maximum and minimum PSNR (Peak Signal to Noise
+Ratio) between two input videos.
+</p>
+<p>This filter takes in input two input videos, the first input is
+considered the &quot;main&quot; source and is passed unchanged to the
+output. The second input is used as a &quot;reference&quot; video for computing
+the PSNR.
+</p>
+<p>Both video inputs must have the same resolution and pixel format for
+this filter to work correctly. Also it assumes that both inputs
+have the same number of frames, which are compared one by one.
+</p>
+<p>The obtained average PSNR is printed through the logging system.
+</p>
+<p>The filter stores the accumulated MSE (mean squared error) of each
+frame, and at the end of the processing it is averaged across all frames
+equally, and the following formula is applied to obtain the PSNR:
+</p>
+<div class="example">
+<pre class="example">PSNR = 10*log10(MAX^2/MSE)
+</pre></div>
+
+<p>Where MAX is the average of the maximum values of each component of the
+image.
+</p>
+<p>The description of the accepted parameters follows.
+</p>
+<dl compact="compact">
+<dt><samp>stats_file, f</samp></dt>
+<dd><p>If specified the filter will use the named file to save the PSNR of
+each individual frame. When filename equals &quot;-&quot; the data is sent to
+standard output.
+</p>
+</dd>
+<dt><samp>stats_version</samp></dt>
+<dd><p>Specifies which version of the stats file format to use. Details of
+each format are written below.
+Default value is 1.
+</p>
+</dd>
+<dt><samp>stats_add_max</samp></dt>
+<dd><p>Determines whether the max value is output to the stats log.
+Default value is 0.
+Requires stats_version &gt;= 2. If this is set and stats_version &lt; 2,
+the filter will return an error.
+</p></dd>
+</dl>
+
+<p>This filter also supports the <a href="#framesync">framesync</a> options.
+</p>
+<p>The file printed if <var>stats_file</var> is selected, contains a sequence of
+key/value pairs of the form <var>key</var>:<var>value</var> for each compared
+couple of frames.
+</p>
+<p>If a <var>stats_version</var> greater than 1 is specified, a header line precedes
+the list of per-frame-pair stats, with key value pairs following the frame
+format with the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>psnr_log_version</samp></dt>
+<dd><p>The version of the log file format. Will match <var>stats_version</var>.
+</p>
+</dd>
+<dt><samp>fields</samp></dt>
+<dd><p>A comma separated list of the per-frame-pair parameters included in
+the log.
+</p></dd>
+</dl>
+
+<p>A description of each shown per-frame-pair parameter follows:
+</p>
+<dl compact="compact">
+<dt><samp>n</samp></dt>
+<dd><p>sequential number of the input frame, starting from 1
+</p>
+</dd>
+<dt><samp>mse_avg</samp></dt>
+<dd><p>Mean Square Error pixel-by-pixel average difference of the compared
+frames, averaged over all the image components.
+</p>
+</dd>
+<dt><samp>mse_y, mse_u, mse_v, mse_r, mse_g, mse_b, mse_a</samp></dt>
+<dd><p>Mean Square Error pixel-by-pixel average difference of the compared
+frames for the component specified by the suffix.
+</p>
+</dd>
+<dt><samp>psnr_y, psnr_u, psnr_v, psnr_r, psnr_g, psnr_b, psnr_a</samp></dt>
+<dd><p>Peak Signal to Noise ratio of the compared frames for the component
+specified by the suffix.
+</p>
+</dd>
+<dt><samp>max_avg, max_y, max_u, max_v</samp></dt>
+<dd><p>Maximum allowed value for each channel, and average over all
+channels.
+</p></dd>
+</dl>
