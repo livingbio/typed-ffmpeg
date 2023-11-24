@@ -1,0 +1,55 @@
+<h3 class="section"><a href="#toc-hue">11.129 hue</a></h3>
+
+<p>Modify the hue and/or the saturation of the input.
+</p>
+<p>It accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>h</samp></dt>
+<dd><p>Specify the hue angle as a number of degrees. It accepts an expression,
+and defaults to &quot;0&quot;.
+</p>
+</dd>
+<dt><samp>s</samp></dt>
+<dd><p>Specify the saturation in the [-10,10] range. It accepts an expression and
+defaults to &quot;1&quot;.
+</p>
+</dd>
+<dt><samp>H</samp></dt>
+<dd><p>Specify the hue angle as a number of radians. It accepts an
+expression, and defaults to &quot;0&quot;.
+</p>
+</dd>
+<dt><samp>b</samp></dt>
+<dd><p>Specify the brightness in the [-10,10] range. It accepts an expression and
+defaults to &quot;0&quot;.
+</p></dd>
+</dl>
+
+<p><samp>h</samp> and <samp>H</samp> are mutually exclusive, and can&rsquo;t be
+specified at the same time.
+</p>
+<p>The <samp>b</samp>, <samp>h</samp>, <samp>H</samp> and <samp>s</samp> option values are
+expressions containing the following constants:
+</p>
+<dl compact="compact">
+<dt><samp>n</samp></dt>
+<dd><p>frame count of the input frame starting from 0
+</p>
+</dd>
+<dt><samp>pts</samp></dt>
+<dd><p>presentation timestamp of the input frame expressed in time base units
+</p>
+</dd>
+<dt><samp>r</samp></dt>
+<dd><p>frame rate of the input video, NAN if the input frame rate is unknown
+</p>
+</dd>
+<dt><samp>t</samp></dt>
+<dd><p>timestamp expressed in seconds, NAN if the input timestamp is unknown
+</p>
+</dd>
+<dt><samp>tb</samp></dt>
+<dd><p>time base of the input video
+</p></dd>
+</dl>

@@ -1,0 +1,102 @@
+<h3 class="section"><a href="#toc-idet">11.135 idet</a></h3>
+
+<p>Detect video interlacing type.
+</p>
+<p>This filter tries to detect if the input frames are interlaced, progressive,
+top or bottom field first. It will also try to detect fields that are
+repeated between adjacent frames (a sign of telecine).
+</p>
+<p>Single frame detection considers only immediately adjacent frames when classifying each frame.
+Multiple frame detection incorporates the classification history of previous frames.
+</p>
+<p>The filter will log these metadata values:
+</p>
+<dl compact="compact">
+<dt><samp>single.current_frame</samp></dt>
+<dd><p>Detected type of current frame using single-frame detection. One of:
+&ldquo;tff&rdquo; (top field first), &ldquo;bff&rdquo; (bottom field first),
+&ldquo;progressive&rdquo;, or &ldquo;undetermined&rdquo;
+</p>
+</dd>
+<dt><samp>single.tff</samp></dt>
+<dd><p>Cumulative number of frames detected as top field first using single-frame detection.
+</p>
+</dd>
+<dt><samp>multiple.tff</samp></dt>
+<dd><p>Cumulative number of frames detected as top field first using multiple-frame detection.
+</p>
+</dd>
+<dt><samp>single.bff</samp></dt>
+<dd><p>Cumulative number of frames detected as bottom field first using single-frame detection.
+</p>
+</dd>
+<dt><samp>multiple.current_frame</samp></dt>
+<dd><p>Detected type of current frame using multiple-frame detection. One of:
+&ldquo;tff&rdquo; (top field first), &ldquo;bff&rdquo; (bottom field first),
+&ldquo;progressive&rdquo;, or &ldquo;undetermined&rdquo;
+</p>
+</dd>
+<dt><samp>multiple.bff</samp></dt>
+<dd><p>Cumulative number of frames detected as bottom field first using multiple-frame detection.
+</p>
+</dd>
+<dt><samp>single.progressive</samp></dt>
+<dd><p>Cumulative number of frames detected as progressive using single-frame detection.
+</p>
+</dd>
+<dt><samp>multiple.progressive</samp></dt>
+<dd><p>Cumulative number of frames detected as progressive using multiple-frame detection.
+</p>
+</dd>
+<dt><samp>single.undetermined</samp></dt>
+<dd><p>Cumulative number of frames that could not be classified using single-frame detection.
+</p>
+</dd>
+<dt><samp>multiple.undetermined</samp></dt>
+<dd><p>Cumulative number of frames that could not be classified using multiple-frame detection.
+</p>
+</dd>
+<dt><samp>repeated.current_frame</samp></dt>
+<dd><p>Which field in the current frame is repeated from the last. One of &ldquo;neither&rdquo;, &ldquo;top&rdquo;, or &ldquo;bottom&rdquo;.
+</p>
+</dd>
+<dt><samp>repeated.neither</samp></dt>
+<dd><p>Cumulative number of frames with no repeated field.
+</p>
+</dd>
+<dt><samp>repeated.top</samp></dt>
+<dd><p>Cumulative number of frames with the top field repeated from the previous frame&rsquo;s top field.
+</p>
+</dd>
+<dt><samp>repeated.bottom</samp></dt>
+<dd><p>Cumulative number of frames with the bottom field repeated from the previous frame&rsquo;s bottom field.
+</p></dd>
+</dl>
+
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>intl_thres</samp></dt>
+<dd><p>Set interlacing threshold.
+</p></dd>
+<dt><samp>prog_thres</samp></dt>
+<dd><p>Set progressive threshold.
+</p></dd>
+<dt><samp>rep_thres</samp></dt>
+<dd><p>Threshold for repeated field detection.
+</p></dd>
+<dt><samp>half_life</samp></dt>
+<dd><p>Number of frames after which a given frame&rsquo;s contribution to the
+statistics is halved (i.e., it contributes only 0.5 to its
+classification). The default of 0 means that all frames seen are given
+full weight of 1.0 forever.
+</p></dd>
+<dt><samp>analyze_interlaced_flag</samp></dt>
+<dd><p>When this is not 0 then idet will use the specified number of frames to determine
+if the interlaced flag is accurate, it will not count undetermined frames.
+If the flag is found to be accurate it will be used without any further
+computations, if it is found to be inaccurate it will be cleared without any
+further computations. This allows inserting the idet filter as a low computational
+method to clean up the interlaced flag
+</p></dd>
+</dl>

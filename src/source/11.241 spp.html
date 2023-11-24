@@ -1,0 +1,41 @@
+<h3 class="section"><a href="#toc-spp-1">11.241 spp</a></h3>
+
+<p>Apply a simple postprocessing filter that compresses and decompresses the image
+at several (or - in the case of <samp>quality</samp> level <code>6</code> - all) shifts
+and average the results.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>quality</samp></dt>
+<dd><p>Set quality. This option defines the number of levels for averaging. It accepts
+an integer in the range 0-6. If set to <code>0</code>, the filter will have no
+effect. A value of <code>6</code> means the higher quality. For each increment of
+that value the speed drops by a factor of approximately 2.  Default value is
+<code>3</code>.
+</p>
+</dd>
+<dt><samp>qp</samp></dt>
+<dd><p>Force a constant quantization parameter. If not set, the filter will use the QP
+from the video stream (if available).
+</p>
+</dd>
+<dt><samp>mode</samp></dt>
+<dd><p>Set thresholding mode. Available modes are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>hard</samp>&rsquo;</dt>
+<dd><p>Set hard thresholding (default).
+</p></dd>
+<dt>&lsquo;<samp>soft</samp>&rsquo;</dt>
+<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>use_bframe_qp</samp></dt>
+<dd><p>Enable the use of the QP from the B-Frames if set to <code>1</code>. Using this
+option may cause flicker since the B-Frames have often larger QP. Default is
+<code>0</code> (not enabled).
+</p></dd>
+</dl>

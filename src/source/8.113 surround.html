@@ -1,0 +1,201 @@
+<h3 class="section"><a href="#toc-surround">8.113 surround</a></h3>
+<p>Apply audio surround upmix filter.
+</p>
+<p>This filter allows to produce multichannel output from audio stream.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>chl_out</samp></dt>
+<dd><p>Set output channel layout. By default, this is <var>5.1</var>.
+</p>
+<p>See <a href="ffmpeg-utils.html#channel-layout-syntax">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>
+for the required syntax.
+</p>
+</dd>
+<dt><samp>chl_in</samp></dt>
+<dd><p>Set input channel layout. By default, this is <var>stereo</var>.
+</p>
+<p>See <a href="ffmpeg-utils.html#channel-layout-syntax">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>
+for the required syntax.
+</p>
+</dd>
+<dt><samp>level_in</samp></dt>
+<dd><p>Set input volume level. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>level_out</samp></dt>
+<dd><p>Set output volume level. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>lfe</samp></dt>
+<dd><p>Enable LFE channel output if output channel layout has it. By default, this is enabled.
+</p>
+</dd>
+<dt><samp>lfe_low</samp></dt>
+<dd><p>Set LFE low cut off frequency. By default, this is <var>128</var> Hz.
+</p>
+</dd>
+<dt><samp>lfe_high</samp></dt>
+<dd><p>Set LFE high cut off frequency. By default, this is <var>256</var> Hz.
+</p>
+</dd>
+<dt><samp>lfe_mode</samp></dt>
+<dd><p>Set LFE mode, can be <var>add</var> or <var>sub</var>. Default is <var>add</var>.
+In <var>add</var> mode, LFE channel is created from input audio and added to output.
+In <var>sub</var> mode, LFE channel is created from input audio and added to output but
+also all non-LFE output channels are subtracted with output LFE channel.
+</p>
+</dd>
+<dt><samp>smooth</samp></dt>
+<dd><p>Set temporal smoothness strength, used to gradually change factors when transforming
+stereo sound in time. Allowed range is from <var>0.0</var> to <var>1.0</var>.
+Useful to improve output quality with <var>focus</var> option values greater than <var>0.0</var>.
+Default is <var>0.0</var>. Only values inside this range and without edges are effective.
+</p>
+</dd>
+<dt><samp>angle</samp></dt>
+<dd><p>Set angle of stereo surround transform, Allowed range is from <var>0</var> to <var>360</var>.
+Default is <var>90</var>.
+</p>
+</dd>
+<dt><samp>focus</samp></dt>
+<dd><p>Set focus of stereo surround transform, Allowed range is from <var>-1</var> to <var>1</var>.
+Default is <var>0</var>.
+</p>
+</dd>
+<dt><samp>fc_in</samp></dt>
+<dd><p>Set front center input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>fc_out</samp></dt>
+<dd><p>Set front center output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>fl_in</samp></dt>
+<dd><p>Set front left input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>fl_out</samp></dt>
+<dd><p>Set front left output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>fr_in</samp></dt>
+<dd><p>Set front right input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>fr_out</samp></dt>
+<dd><p>Set front right output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>sl_in</samp></dt>
+<dd><p>Set side left input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>sl_out</samp></dt>
+<dd><p>Set side left output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>sr_in</samp></dt>
+<dd><p>Set side right input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>sr_out</samp></dt>
+<dd><p>Set side right output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>bl_in</samp></dt>
+<dd><p>Set back left input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>bl_out</samp></dt>
+<dd><p>Set back left output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>br_in</samp></dt>
+<dd><p>Set back right input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>br_out</samp></dt>
+<dd><p>Set back right output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>bc_in</samp></dt>
+<dd><p>Set back center input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>bc_out</samp></dt>
+<dd><p>Set back center output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>lfe_in</samp></dt>
+<dd><p>Set LFE input volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>lfe_out</samp></dt>
+<dd><p>Set LFE output volume. By default, this is <var>1</var>.
+</p>
+</dd>
+<dt><samp>allx</samp></dt>
+<dd><p>Set spread usage of stereo image across X axis for all channels.
+Allowed range is from <var>-1</var> to <var>15</var>.
+By default this value is negative <var>-1</var>, and thus unused.
+</p>
+</dd>
+<dt><samp>ally</samp></dt>
+<dd><p>Set spread usage of stereo image across Y axis for all channels.
+Allowed range is from <var>-1</var> to <var>15</var>.
+By default this value is negative <var>-1</var>, and thus unused.
+</p>
+</dd>
+<dt><samp>fcx, flx, frx, blx, brx, slx, srx, bcx</samp></dt>
+<dd><p>Set spread usage of stereo image across X axis for each channel.
+Allowed range is from <var>0.06</var> to <var>15</var>.
+By default this value is <var>0.5</var>.
+</p>
+</dd>
+<dt><samp>fcy, fly, fry, bly, bry, sly, sry, bcy</samp></dt>
+<dd><p>Set spread usage of stereo image across Y axis for each channel.
+Allowed range is from <var>0.06</var> to <var>15</var>.
+By default this value is <var>0.5</var>.
+</p>
+</dd>
+<dt><samp>win_size</samp></dt>
+<dd><p>Set window size. Allowed range is from <var>1024</var> to <var>65536</var>. Default size is <var>4096</var>.
+</p>
+</dd>
+<dt><samp>win_func</samp></dt>
+<dd><p>Set window function.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>rect</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bartlett</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>hann, hanning</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>hamming</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>blackman</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>welch</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>flattop</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bharris</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bnuttall</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bhann</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>sine</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>nuttall</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>lanczos</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>gauss</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>tukey</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>dolph</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>cauchy</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>parzen</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>poisson</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bohman</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>kaiser</samp>&rsquo;</dt>
+</dl>
+<p>Default is <code>hann</code>.
+</p>
+</dd>
+<dt><samp>overlap</samp></dt>
+<dd><p>Set window overlap. If set to 1, the recommended overlap for selected
+window function will be picked. Default is <code>0.5</code>.
+</p></dd>
+</dl>

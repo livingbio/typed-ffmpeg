@@ -1,0 +1,40 @@
+<h3 class="section"><a href="#toc-pan-1">8.100 pan</a></h3>
+
+<p>Mix channels with specific gain levels. The filter accepts the output
+channel layout followed by a set of channels definitions.
+</p>
+<p>This filter is also designed to efficiently remap the channels of an audio
+stream.
+</p>
+<p>The filter accepts parameters of the form:
+&quot;<var>l</var>|<var>outdef</var>|<var>outdef</var>|...&quot;
+</p>
+<dl compact="compact">
+<dt><samp>l</samp></dt>
+<dd><p>output channel layout or number of channels
+</p>
+</dd>
+<dt><samp>outdef</samp></dt>
+<dd><p>output channel specification, of the form:
+&quot;<var>out_name</var>=[<var>gain</var>*]<var>in_name</var>[(+-)[<var>gain</var>*]<var>in_name</var>...]&quot;
+</p>
+</dd>
+<dt><samp>out_name</samp></dt>
+<dd><p>output channel to define, either a channel name (FL, FR, etc.) or a channel
+number (c0, c1, etc.)
+</p>
+</dd>
+<dt><samp>gain</samp></dt>
+<dd><p>multiplicative coefficient for the channel, 1 leaving the volume unchanged
+</p>
+</dd>
+<dt><samp>in_name</samp></dt>
+<dd><p>input channel to use, see out_name for details; it is not possible to mix
+named and numbered input channels
+</p></dd>
+</dl>
+
+<p>If the &lsquo;=&rsquo; in a channel specification is replaced by &lsquo;&lt;&rsquo;, then the gains for
+that specification will be renormalized so that the total is 1, thus
+avoiding clipping noise.
+</p>

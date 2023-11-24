@@ -1,0 +1,48 @@
+<h3 class="section"><a href="#toc-gradients">16.5 gradients</a></h3>
+<p>Generate several gradients.
+</p>
+<dl compact="compact">
+<dt><samp>size, s</samp></dt>
+<dd><p>Set frame size. For the syntax of this option, check the <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video
+size&quot; section in the ffmpeg-utils manual</a>. Default value is &quot;640x480&quot;.
+</p>
+</dd>
+<dt><samp>rate, r</samp></dt>
+<dd><p>Set frame rate, expressed as number of frames per second. Default
+value is &quot;25&quot;.
+</p>
+</dd>
+<dt><samp>c0, c1, c2, c3, c4, c5, c6, c7</samp></dt>
+<dd><p>Set 8 colors. Default values for colors is to pick random one.
+</p>
+</dd>
+<dt><samp>x0, y0, y0, y1</samp></dt>
+<dd><p>Set gradient line source and destination points. If negative or out of range, random ones
+are picked.
+</p>
+</dd>
+<dt><samp>nb_colors, n</samp></dt>
+<dd><p>Set number of colors to use at once. Allowed range is from 2 to 8. Default value is 2.
+</p>
+</dd>
+<dt><samp>seed</samp></dt>
+<dd><p>Set seed for picking gradient line points.
+</p>
+</dd>
+<dt><samp>duration, d</samp></dt>
+<dd><p>Set the duration of the sourced video. See
+<a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>
+for the accepted syntax.
+</p>
+<p>If not specified, or the expressed duration is negative, the video is
+supposed to be generated forever.
+</p>
+</dd>
+<dt><samp>speed</samp></dt>
+<dd><p>Set speed of gradients rotation.
+</p>
+</dd>
+<dt><samp>type, t</samp></dt>
+<dd><p>Set type of gradients, can be <code>linear</code> or <code>radial</code> or <code>circular</code> or <code>spiral</code>.
+</p></dd>
+</dl>

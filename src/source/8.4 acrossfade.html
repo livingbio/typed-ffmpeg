@@ -1,0 +1,36 @@
+<h3 class="section"><a href="#toc-acrossfade">8.4 acrossfade</a></h3>
+
+<p>Apply cross fade from one input audio stream to another input audio stream.
+The cross fade is applied for specified duration near the end of first stream.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>nb_samples, ns</samp></dt>
+<dd><p>Specify the number of samples for which the cross fade effect has to last.
+At the end of the cross fade effect the first input audio will be completely
+silent. Default is 44100.
+</p>
+</dd>
+<dt><samp>duration, d</samp></dt>
+<dd><p>Specify the duration of the cross fade effect. See
+<a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>
+for the accepted syntax.
+By default the duration is determined by <var>nb_samples</var>.
+If set this option is used instead of <var>nb_samples</var>.
+</p>
+</dd>
+<dt><samp>overlap, o</samp></dt>
+<dd><p>Should first stream end overlap with second stream start. Default is enabled.
+</p>
+</dd>
+<dt><samp>curve1</samp></dt>
+<dd><p>Set curve for cross fade transition for first stream.
+</p>
+</dd>
+<dt><samp>curve2</samp></dt>
+<dd><p>Set curve for cross fade transition for second stream.
+</p>
+<p>For description of available curve types see <a href="#afade">afade</a> filter description.
+</p></dd>
+</dl>

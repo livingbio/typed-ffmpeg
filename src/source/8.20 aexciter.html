@@ -1,0 +1,59 @@
+<h3 class="section"><a href="#toc-aexciter">8.20 aexciter</a></h3>
+
+<p>An exciter is used to produce high sound that is not present in the
+original signal. This is done by creating harmonic distortions of the
+signal which are restricted in range and added to the original signal.
+An Exciter raises the upper end of an audio signal without simply raising
+the higher frequencies like an equalizer would do to create a more
+&quot;crisp&quot; or &quot;brilliant&quot; sound.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>level_in</samp></dt>
+<dd><p>Set input level prior processing of signal.
+Allowed range is from 0 to 64.
+Default value is 1.
+</p>
+</dd>
+<dt><samp>level_out</samp></dt>
+<dd><p>Set output level after processing of signal.
+Allowed range is from 0 to 64.
+Default value is 1.
+</p>
+</dd>
+<dt><samp>amount</samp></dt>
+<dd><p>Set the amount of harmonics added to original signal.
+Allowed range is from 0 to 64.
+Default value is 1.
+</p>
+</dd>
+<dt><samp>drive</samp></dt>
+<dd><p>Set the amount of newly created harmonics.
+Allowed range is from 0.1 to 10.
+Default value is 8.5.
+</p>
+</dd>
+<dt><samp>blend</samp></dt>
+<dd><p>Set the octave of newly created harmonics.
+Allowed range is from -10 to 10.
+Default value is 0.
+</p>
+</dd>
+<dt><samp>freq</samp></dt>
+<dd><p>Set the lower frequency limit of producing harmonics in Hz.
+Allowed range is from 2000 to 12000 Hz.
+Default is 7500 Hz.
+</p>
+</dd>
+<dt><samp>ceil</samp></dt>
+<dd><p>Set the upper frequency limit of producing harmonics.
+Allowed range is from 9999 to 20000 Hz.
+If value is lower than 10000 Hz no limit is applied.
+</p>
+</dd>
+<dt><samp>listen</samp></dt>
+<dd><p>Mute the original signal and output only added harmonics.
+By default is disabled.
+</p></dd>
+</dl>

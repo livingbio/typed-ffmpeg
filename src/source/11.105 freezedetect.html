@@ -1,0 +1,30 @@
+<h3 class="section"><a href="#toc-freezedetect">11.105 freezedetect</a></h3>
+
+<p>Detect frozen video.
+</p>
+<p>This filter logs a message and sets frame metadata when it detects that the
+input video has no significant change in content during a specified duration.
+Video freeze detection calculates the mean average absolute difference of all
+the components of video frames and compares it to a noise floor.
+</p>
+<p>The printed times and duration are expressed in seconds. The
+<code>lavfi.freezedetect.freeze_start</code> metadata key is set on the first frame
+whose timestamp equals or exceeds the detection duration and it contains the
+timestamp of the first frame of the freeze. The
+<code>lavfi.freezedetect.freeze_duration</code> and
+<code>lavfi.freezedetect.freeze_end</code> metadata keys are set on the first frame
+after the freeze.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>noise, n</samp></dt>
+<dd><p>Set noise tolerance. Can be specified in dB (in case &quot;dB&quot; is appended to the
+specified value) or as a difference ratio between 0 and 1. Default is -60dB, or
+0.001.
+</p>
+</dd>
+<dt><samp>duration, d</samp></dt>
+<dd><p>Set freeze duration until notification (default is 2 seconds).
+</p></dd>
+</dl>

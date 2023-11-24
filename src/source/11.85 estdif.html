@@ -1,0 +1,104 @@
+<h3 class="section"><a href="#toc-estdif">11.85 estdif</a></h3>
+
+<p>Deinterlace the input video (&quot;estdif&quot; stands for &quot;Edge Slope
+Tracing Deinterlacing Filter&quot;).
+</p>
+<p>Spatial only filter that uses edge slope tracing algorithm
+to interpolate missing lines.
+It accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>mode</samp></dt>
+<dd><p>The interlacing mode to adopt. It accepts one of the following values:
+</p>
+<dl compact="compact">
+<dt><samp>frame</samp></dt>
+<dd><p>Output one frame for each frame.
+</p></dd>
+<dt><samp>field</samp></dt>
+<dd><p>Output one frame for each field.
+</p></dd>
+</dl>
+
+<p>The default value is <code>field</code>.
+</p>
+</dd>
+<dt><samp>parity</samp></dt>
+<dd><p>The picture field parity assumed for the input interlaced video. It accepts one
+of the following values:
+</p>
+<dl compact="compact">
+<dt><samp>tff</samp></dt>
+<dd><p>Assume the top field is first.
+</p></dd>
+<dt><samp>bff</samp></dt>
+<dd><p>Assume the bottom field is first.
+</p></dd>
+<dt><samp>auto</samp></dt>
+<dd><p>Enable automatic detection of field parity.
+</p></dd>
+</dl>
+
+<p>The default value is <code>auto</code>.
+If the interlacing is unknown or the decoder does not export this information,
+top field first will be assumed.
+</p>
+</dd>
+<dt><samp>deint</samp></dt>
+<dd><p>Specify which frames to deinterlace. Accepts one of the following
+values:
+</p>
+<dl compact="compact">
+<dt><samp>all</samp></dt>
+<dd><p>Deinterlace all frames.
+</p></dd>
+<dt><samp>interlaced</samp></dt>
+<dd><p>Only deinterlace frames marked as interlaced.
+</p></dd>
+</dl>
+
+<p>The default value is <code>all</code>.
+</p>
+</dd>
+<dt><samp>rslope</samp></dt>
+<dd><p>Specify the search radius for edge slope tracing. Default value is 1.
+Allowed range is from 1 to 15.
+</p>
+</dd>
+<dt><samp>redge</samp></dt>
+<dd><p>Specify the search radius for best edge matching. Default value is 2.
+Allowed range is from 0 to 15.
+</p>
+</dd>
+<dt><samp>ecost</samp></dt>
+<dd><p>Specify the edge cost for edge matching. Default value is 2.
+Allowed range is from 0 to 50.
+</p>
+</dd>
+<dt><samp>mcost</samp></dt>
+<dd><p>Specify the middle cost for edge matching. Default value is 1.
+Allowed range is from 0 to 50.
+</p>
+</dd>
+<dt><samp>dcost</samp></dt>
+<dd><p>Specify the distance cost for edge matching. Default value is 1.
+Allowed range is from 0 to 50.
+</p>
+</dd>
+<dt><samp>interp</samp></dt>
+<dd><p>Specify the interpolation used. Default is 4-point interpolation. It accepts one
+of the following values:
+</p>
+<dl compact="compact">
+<dt><samp>2p</samp></dt>
+<dd><p>Two-point interpolation.
+</p></dd>
+<dt><samp>4p</samp></dt>
+<dd><p>Four-point interpolation.
+</p></dd>
+<dt><samp>6p</samp></dt>
+<dd><p>Six-point interpolation.
+</p></dd>
+</dl>
+</dd>
+</dl>

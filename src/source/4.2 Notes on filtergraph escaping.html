@@ -1,0 +1,61 @@
+<h3 class="section"><a href="#toc-Notes-on-filtergraph-escaping">4.2 Notes on filtergraph escaping</a></h3>
+
+<p>Filtergraph description composition entails several levels of
+escaping. See <a href="ffmpeg-utils.html#quoting_005fand_005fescaping">(ffmpeg-utils)the &quot;Quoting and escaping&quot;
+section in the ffmpeg-utils(1) manual</a> for more
+information about the employed escaping procedure.
+</p>
+<p>A first level escaping affects the content of each filter option
+value, which may contain the special character <code>:</code> used to
+separate values, or one of the escaping characters <code>\'</code>.
+</p>
+<p>A second level escaping affects the whole filter description, which
+may contain the escaping characters <code>\'</code> or the special
+characters <code>[],;</code> used by the filtergraph description.
+</p>
+<p>Finally, when you specify a filtergraph on a shell commandline, you
+need to perform a third level escaping for the shell special
+characters contained within it.
+</p>
+<p>For example, consider the following string to be embedded in
+the <a href="#drawtext">drawtext</a> filter description <samp>text</samp> value:
+</p><div class="example">
+<pre class="example">this is a 'string': may contain one, or more, special characters
+</pre></div>
+
+<p>This string contains the <code>'</code> special escaping character, and the
+<code>:</code> special character, so it needs to be escaped in this way:
+</p><div class="example">
+<pre class="example">text=this is a \'string\'\: may contain one, or more, special characters
+</pre></div>
+
+<p>A second level of escaping is required when embedding the filter
+description in a filtergraph description, in order to escape all the
+filtergraph special characters. Thus the example above becomes:
+</p><div class="example">
+<pre class="example">drawtext=text=this is a \\\'string\\\'\\: may contain one\, or more\, special characters
+</pre></div>
+<p>(note that in addition to the <code>\'</code> escaping special characters,
+also <code>,</code> needs to be escaped).
+</p>
+<p>Finally an additional level of escaping is needed when writing the
+filtergraph description in a shell command, which depends on the
+escaping rules of the adopted shell. For example, assuming that
+<code>\</code> is special and needs to be escaped with another <code>\</code>, the
+previous string will finally result in:
+</p><div class="example">
+<pre class="example">-vf &quot;drawtext=text=this is a \\\\\\'string\\\\\\'\\\\: may contain one\\, or more\\, special characters&quot;
+</pre></div>
+
+<p>In order to avoid cumbersome escaping when using a commandline tool accepting a
+filter specification as input, it is advisable to avoid direct inclusion of the
+filter or options specification in the shell.
+</p>
+<p>For example, in case of the <a href="#drawtext">drawtext filter</a>, you might prefer to
+use the <samp>textfile</samp> option in place of <samp>text</samp> to specify the text
+to render.
+</p>
+<p>When using the <code>ffmpeg</code> tool, you might consider to use the
+<a href="ffmpeg.html#filter_005fscript-option">(ffmpeg)-filter_script option</a> or
+<a href="ffmpeg.html#filter_005fcomplex_005fscript-option">(ffmpeg)-filter_complex_script option</a>.
+</p>

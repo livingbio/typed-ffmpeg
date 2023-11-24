@@ -1,0 +1,45 @@
+<h3 class="section"><a href="#toc-libvmaf-1">11.145 libvmaf</a></h3>
+
+<p>Calculate the VMAF (Video Multi-Method Assessment Fusion) score for a
+reference/distorted pair of input videos.
+</p>
+<p>The first input is the distorted video, and the second input is the reference video.
+</p>
+<p>The obtained VMAF score is printed through the logging system.
+</p>
+<p>It requires Netflix&rsquo;s vmaf library (libvmaf) as a pre-requisite.
+After installing the library it can be enabled using:
+<code>./configure --enable-libvmaf</code>.
+</p>
+<p>The filter has following options:
+</p>
+<dl compact="compact">
+<dt><samp>model</samp></dt>
+<dd><p>A &lsquo;|&lsquo; delimited list of vmaf models. Each model can be configured with a number of parameters.
+Default value: <code>&quot;version=vmaf_v0.6.1&quot;</code>
+</p>
+</dd>
+<dt><samp>feature</samp></dt>
+<dd><p>A &lsquo;|&lsquo; delimited list of features. Each feature can be configured with a number of parameters.
+</p>
+</dd>
+<dt><samp>log_path</samp></dt>
+<dd><p>Set the file path to be used to store log files.
+</p>
+</dd>
+<dt><samp>log_fmt</samp></dt>
+<dd><p>Set the format of the log file (xml, json, csv, or sub).
+</p>
+</dd>
+<dt><samp>n_threads</samp></dt>
+<dd><p>Set number of threads to be used when initializing libvmaf.
+Default value: <code>0</code>, no threads.
+</p>
+</dd>
+<dt><samp>n_subsample</samp></dt>
+<dd><p>Set frame subsampling interval to be used.
+</p></dd>
+</dl>
+
+<p>This filter also supports the <a href="#framesync">framesync</a> options.
+</p>

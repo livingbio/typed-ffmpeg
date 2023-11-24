@@ -1,0 +1,53 @@
+<h3 class="section"><a href="#toc-compensationdelay">8.77 compensationdelay</a></h3>
+
+<p>Compensation Delay Line is a metric based delay to compensate differing
+positions of microphones or speakers.
+</p>
+<p>For example, you have recorded guitar with two microphones placed in
+different locations. Because the front of sound wave has fixed speed in
+normal conditions, the phasing of microphones can vary and depends on
+their location and interposition. The best sound mix can be achieved when
+these microphones are in phase (synchronized). Note that a distance of
+~30 cm between microphones makes one microphone capture the signal in
+antiphase to the other microphone. That makes the final mix sound moody.
+This filter helps to solve phasing problems by adding different delays
+to each microphone track and make them synchronized.
+</p>
+<p>The best result can be reached when you take one track as base and
+synchronize other tracks one by one with it.
+Remember that synchronization/delay tolerance depends on sample rate, too.
+Higher sample rates will give more tolerance.
+</p>
+<p>The filter accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>mm</samp></dt>
+<dd><p>Set millimeters distance. This is compensation distance for fine tuning.
+Default is 0.
+</p>
+</dd>
+<dt><samp>cm</samp></dt>
+<dd><p>Set cm distance. This is compensation distance for tightening distance setup.
+Default is 0.
+</p>
+</dd>
+<dt><samp>m</samp></dt>
+<dd><p>Set meters distance. This is compensation distance for hard distance setup.
+Default is 0.
+</p>
+</dd>
+<dt><samp>dry</samp></dt>
+<dd><p>Set dry amount. Amount of unprocessed (dry) signal.
+Default is 0.
+</p>
+</dd>
+<dt><samp>wet</samp></dt>
+<dd><p>Set wet amount. Amount of processed (wet) signal.
+Default is 1.
+</p>
+</dd>
+<dt><samp>temp</samp></dt>
+<dd><p>Set temperature in degrees Celsius. This is the temperature of the environment.
+Default is 20.
+</p></dd>
+</dl>

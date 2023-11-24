@@ -1,0 +1,49 @@
+<h3 class="section"><a href="#toc-ashowinfo">8.53 ashowinfo</a></h3>
+
+<p>Show a line containing various information for each input audio frame.
+The input audio is not modified.
+</p>
+<p>The shown line contains a sequence of key/value pairs of the form
+<var>key</var>:<var>value</var>.
+</p>
+<p>The following values are shown in the output:
+</p>
+<dl compact="compact">
+<dt><samp>n</samp></dt>
+<dd><p>The (sequential) number of the input frame, starting from 0.
+</p>
+</dd>
+<dt><samp>pts</samp></dt>
+<dd><p>The presentation timestamp of the input frame, in time base units; the time base
+depends on the filter input pad, and is usually 1/<var>sample_rate</var>.
+</p>
+</dd>
+<dt><samp>pts_time</samp></dt>
+<dd><p>The presentation timestamp of the input frame in seconds.
+</p>
+</dd>
+<dt><samp>fmt</samp></dt>
+<dd><p>The sample format.
+</p>
+</dd>
+<dt><samp>chlayout</samp></dt>
+<dd><p>The channel layout.
+</p>
+</dd>
+<dt><samp>rate</samp></dt>
+<dd><p>The sample rate for the audio frame.
+</p>
+</dd>
+<dt><samp>nb_samples</samp></dt>
+<dd><p>The number of samples (per channel) in the frame.
+</p>
+</dd>
+<dt><samp>checksum</samp></dt>
+<dd><p>The Adler-32 checksum (printed in hexadecimal) of the audio data. For planar
+audio, the data is treated as if all the planes were concatenated.
+</p>
+</dd>
+<dt><samp>plane_checksums</samp></dt>
+<dd><p>A list of Adler-32 checksums for each data plane.
+</p></dd>
+</dl>

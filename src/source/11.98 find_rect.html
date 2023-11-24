@@ -1,0 +1,65 @@
+<h3 class="section"><a href="#toc-find_005frect">11.98 find_rect</a></h3>
+
+<p>Find a rectangular object in the input video.
+</p>
+<p>The object to search for must be specified as a gray8 image specified with the
+<samp>object</samp> option.
+</p>
+<p>For each possible match, a score is computed. If the score reaches the specified
+threshold, the object is considered found.
+</p>
+<p>If the input video contains multiple instances of the object, the filter will
+find only one of them.
+</p>
+<p>When an object is found, the following metadata entries are set in the matching
+frame:
+</p><dl compact="compact">
+<dt><samp>lavfi.rect.w</samp></dt>
+<dd><p>width of object
+</p>
+</dd>
+<dt><samp>lavfi.rect.h</samp></dt>
+<dd><p>height of object
+</p>
+</dd>
+<dt><samp>lavfi.rect.x</samp></dt>
+<dd><p>x position of object
+</p>
+</dd>
+<dt><samp>lavfi.rect.y</samp></dt>
+<dd><p>y position of object
+</p>
+</dd>
+<dt><samp>lavfi.rect.score</samp></dt>
+<dd><p>match score of the found object
+</p></dd>
+</dl>
+
+<p>It accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>object</samp></dt>
+<dd><p>Filepath of the object image, needs to be in gray8.
+</p>
+</dd>
+<dt><samp>threshold</samp></dt>
+<dd><p>Detection threshold, expressed as a decimal number in the range 0-1.
+</p>
+<p>A threshold value of 0.01 means only exact matches, a threshold of 0.99 means
+almost everything matches.
+</p>
+<p>Default value is 0.5.
+</p>
+</dd>
+<dt><samp>mipmaps</samp></dt>
+<dd><p>Number of mipmaps, default is 3.
+</p>
+</dd>
+<dt><samp>xmin, ymin, xmax, ymax</samp></dt>
+<dd><p>Specifies the rectangle in which to search.
+</p>
+</dd>
+<dt><samp>discard</samp></dt>
+<dd><p>Discard frames where object is not detected. Default is disabled.
+</p></dd>
+</dl>

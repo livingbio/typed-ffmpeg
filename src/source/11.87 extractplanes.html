@@ -1,0 +1,27 @@
+<h3 class="section"><a href="#toc-extractplanes">11.87 extractplanes</a></h3>
+
+<p>Extract color channel components from input video stream into
+separate grayscale video streams.
+</p>
+<p>The filter accepts the following option:
+</p>
+<dl compact="compact">
+<dt><samp>planes</samp></dt>
+<dd><p>Set plane(s) to extract.
+</p>
+<p>Available values for planes are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>y</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>u</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>v</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>a</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>r</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>g</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>b</samp>&rsquo;</dt>
+</dl>
+
+<p>Choosing planes not available in the input will result in an error.
+That means you cannot select <code>r</code>, <code>g</code>, <code>b</code> planes
+with <code>y</code>, <code>u</code>, <code>v</code> planes at same time.
+</p></dd>
+</dl>

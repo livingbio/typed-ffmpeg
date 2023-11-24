@@ -1,0 +1,10 @@
+<h3 class="section"><a href="#toc-ccrepack">11.22 ccrepack</a></h3>
+
+<p>Repack CEA-708 closed captioning side data
+</p>
+<p>This filter fixes various issues seen with commerical encoders
+related to upstream malformed CEA-708 payloads, specifically
+incorrect number of tuples (wrong cc_count for the target FPS),
+and incorrect ordering of tuples (i.e. the CEA-608 tuples are not at
+the first entries in the payload).
+</p>

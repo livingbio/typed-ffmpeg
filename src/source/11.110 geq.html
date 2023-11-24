@@ -1,0 +1,126 @@
+<h3 class="section"><a href="#toc-geq">11.110 geq</a></h3>
+
+<p>Apply generic equation to each pixel.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>lum_expr, lum</samp></dt>
+<dd><p>Set the luma expression.
+</p></dd>
+<dt><samp>cb_expr, cb</samp></dt>
+<dd><p>Set the chrominance blue expression.
+</p></dd>
+<dt><samp>cr_expr, cr</samp></dt>
+<dd><p>Set the chrominance red expression.
+</p></dd>
+<dt><samp>alpha_expr, a</samp></dt>
+<dd><p>Set the alpha expression.
+</p></dd>
+<dt><samp>red_expr, r</samp></dt>
+<dd><p>Set the red expression.
+</p></dd>
+<dt><samp>green_expr, g</samp></dt>
+<dd><p>Set the green expression.
+</p></dd>
+<dt><samp>blue_expr, b</samp></dt>
+<dd><p>Set the blue expression.
+</p></dd>
+</dl>
+
+<p>The colorspace is selected according to the specified options. If one
+of the <samp>lum_expr</samp>, <samp>cb_expr</samp>, or <samp>cr_expr</samp>
+options is specified, the filter will automatically select a YCbCr
+colorspace. If one of the <samp>red_expr</samp>, <samp>green_expr</samp>, or
+<samp>blue_expr</samp> options is specified, it will select an RGB
+colorspace.
+</p>
+<p>If one of the chrominance expression is not defined, it falls back on the other
+one. If no alpha expression is specified it will evaluate to opaque value.
+If none of chrominance expressions are specified, they will evaluate
+to the luma expression.
+</p>
+<p>The expressions can use the following variables and functions:
+</p>
+<dl compact="compact">
+<dt><samp>N</samp></dt>
+<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.
+</p>
+</dd>
+<dt><samp>X</samp></dt>
+<dt><samp>Y</samp></dt>
+<dd><p>The coordinates of the current sample.
+</p>
+</dd>
+<dt><samp>W</samp></dt>
+<dt><samp>H</samp></dt>
+<dd><p>The width and height of the image.
+</p>
+</dd>
+<dt><samp>SW</samp></dt>
+<dt><samp>SH</samp></dt>
+<dd><p>Width and height scale depending on the currently filtered plane. It is the
+ratio between the corresponding luma plane number of pixels and the current
+plane ones. E.g. for YUV4:2:0 the values are <code>1,1</code> for the luma plane, and
+<code>0.5,0.5</code> for chroma planes.
+</p>
+</dd>
+<dt><samp>T</samp></dt>
+<dd><p>Time of the current frame, expressed in seconds.
+</p>
+</dd>
+<dt><samp>p(x, y)</samp></dt>
+<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the current
+plane.
+</p>
+</dd>
+<dt><samp>lum(x, y)</samp></dt>
+<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the luma
+plane.
+</p>
+</dd>
+<dt><samp>cb(x, y)</samp></dt>
+<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the
+blue-difference chroma plane. Return 0 if there is no such plane.
+</p>
+</dd>
+<dt><samp>cr(x, y)</samp></dt>
+<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the
+red-difference chroma plane. Return 0 if there is no such plane.
+</p>
+</dd>
+<dt><samp>r(x, y)</samp></dt>
+<dt><samp>g(x, y)</samp></dt>
+<dt><samp>b(x, y)</samp></dt>
+<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the
+red/green/blue component. Return 0 if there is no such component.
+</p>
+</dd>
+<dt><samp>alpha(x, y)</samp></dt>
+<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the alpha
+plane. Return 0 if there is no such plane.
+</p>
+</dd>
+<dt><samp>psum(x,y), lumsum(x, y), cbsum(x,y), crsum(x,y), rsum(x,y), gsum(x,y), bsum(x,y), alphasum(x,y)</samp></dt>
+<dd><p>Sum of sample values in the rectangle from (0,0) to (x,y), this allows obtaining
+sums of samples within a rectangle. See the functions without the sum postfix.
+</p>
+</dd>
+<dt><samp>interpolation</samp></dt>
+<dd><p>Set one of interpolation methods:
+</p><dl compact="compact">
+<dt><samp>nearest, n</samp></dt>
+<dt><samp>bilinear, b</samp></dt>
+</dl>
+<p>Default is bilinear.
+</p></dd>
+</dl>
+
+<p>For functions, if <var>x</var> and <var>y</var> are outside the area, the value will be
+automatically clipped to the closer edge.
+</p>
+<p>Please note that this filter can use multiple threads in which case each slice
+will have its own expression state. If you want to use only a single expression
+state because your expressions depend on previous state then you should limit
+the number of filter threads to 1.
+</p>

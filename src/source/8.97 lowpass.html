@@ -1,0 +1,100 @@
+<h3 class="section"><a href="#toc-lowpass">8.97 lowpass</a></h3>
+
+<p>Apply a low-pass filter with 3dB point frequency.
+The filter can be either single-pole or double-pole (the default).
+The filter roll off at 6dB per pole per octave (20dB per pole per decade).
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>frequency, f</samp></dt>
+<dd><p>Set frequency in Hz. Default is 500.
+</p>
+</dd>
+<dt><samp>poles, p</samp></dt>
+<dd><p>Set number of poles. Default is 2.
+</p>
+</dd>
+<dt><samp>width_type, t</samp></dt>
+<dd><p>Set method to specify band-width of filter.
+</p><dl compact="compact">
+<dt><samp>h</samp></dt>
+<dd><p>Hz
+</p></dd>
+<dt><samp>q</samp></dt>
+<dd><p>Q-Factor
+</p></dd>
+<dt><samp>o</samp></dt>
+<dd><p>octave
+</p></dd>
+<dt><samp>s</samp></dt>
+<dd><p>slope
+</p></dd>
+<dt><samp>k</samp></dt>
+<dd><p>kHz
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>width, w</samp></dt>
+<dd><p>Specify the band-width of a filter in width_type units.
+Applies only to double-pole filter.
+The default is 0.707q and gives a Butterworth response.
+</p>
+</dd>
+<dt><samp>mix, m</samp></dt>
+<dd><p>How much to use filtered signal in output. Default is 1.
+Range is between 0 and 1.
+</p>
+</dd>
+<dt><samp>channels, c</samp></dt>
+<dd><p>Specify which channels to filter, by default all available are filtered.
+</p>
+</dd>
+<dt><samp>normalize, n</samp></dt>
+<dd><p>Normalize biquad coefficients, by default is disabled.
+Enabling it will normalize magnitude response at DC to 0dB.
+</p>
+</dd>
+<dt><samp>transform, a</samp></dt>
+<dd><p>Set transform type of IIR filter.
+</p><dl compact="compact">
+<dt><samp>di</samp></dt>
+<dt><samp>dii</samp></dt>
+<dt><samp>tdi</samp></dt>
+<dt><samp>tdii</samp></dt>
+<dt><samp>latt</samp></dt>
+<dt><samp>svf</samp></dt>
+<dt><samp>zdf</samp></dt>
+</dl>
+
+</dd>
+<dt><samp>precision, r</samp></dt>
+<dd><p>Set precision of filtering.
+</p><dl compact="compact">
+<dt><samp>auto</samp></dt>
+<dd><p>Pick automatic sample format depending on surround filters.
+</p></dd>
+<dt><samp>s16</samp></dt>
+<dd><p>Always use signed 16-bit.
+</p></dd>
+<dt><samp>s32</samp></dt>
+<dd><p>Always use signed 32-bit.
+</p></dd>
+<dt><samp>f32</samp></dt>
+<dd><p>Always use float 32-bit.
+</p></dd>
+<dt><samp>f64</samp></dt>
+<dd><p>Always use float 64-bit.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>block_size, b</samp></dt>
+<dd><p>Set block size used for reverse IIR processing. If this value is set to high enough
+value (higher than impulse response length truncated when reaches near zero values) filtering
+will become linear phase otherwise if not big enough it will just produce nasty artifacts.
+</p>
+<p>Note that filter delay will be exactly this many samples when set to non-zero value.
+</p></dd>
+</dl>

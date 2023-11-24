@@ -1,0 +1,53 @@
+<h3 class="section"><a href="#toc-dnn_005fprocessing-1">11.74 dnn_processing</a></h3>
+
+<p>Do image processing with deep neural networks. It works together with another filter
+which converts the pixel format of the Frame to what the dnn network requires.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>dnn_backend</samp></dt>
+<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts
+the following values:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>tensorflow</samp>&rsquo;</dt>
+<dd><p>TensorFlow backend. To enable this backend you
+need to install the TensorFlow for C library (see
+<a href="https://www.tensorflow.org/install/lang_c">https://www.tensorflow.org/install/lang_c</a>) and configure FFmpeg with
+<code>--enable-libtensorflow</code>
+</p>
+</dd>
+<dt>&lsquo;<samp>openvino</samp>&rsquo;</dt>
+<dd><p>OpenVINO backend. To enable this backend you
+need to build and install the OpenVINO for C library (see
+<a href="https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md">https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md</a>) and configure FFmpeg with
+<code>--enable-libopenvino</code> (&ndash;extra-cflags=-I... &ndash;extra-ldflags=-L... might
+be needed if the header files and libraries are not installed into system path)
+</p>
+</dd>
+</dl>
+
+</dd>
+<dt><samp>model</samp></dt>
+<dd><p>Set path to model file specifying network architecture and its parameters.
+Note that different backends use different file formats. TensorFlow, OpenVINO backend can load files for only its format.
+</p>
+</dd>
+<dt><samp>input</samp></dt>
+<dd><p>Set the input name of the dnn network.
+</p>
+</dd>
+<dt><samp>output</samp></dt>
+<dd><p>Set the output name of the dnn network.
+</p>
+</dd>
+<dt><samp>backend_configs</samp></dt>
+<dd><p>Set the configs to be passed into backend. To use async execution, set async (default: set).
+Roll back to sync execution if the backend does not support async.
+</p>
+<p>For tensorflow backend, you can set its configs with <samp>sess_config</samp> options,
+please use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system.
+</p>
+</dd>
+</dl>

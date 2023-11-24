@@ -1,0 +1,38 @@
+<h3 class="section"><a href="#toc-anullsrc">9.6 anullsrc</a></h3>
+
+<p>The null audio source, return unprocessed audio frames. It is mainly useful
+as a template and to be employed in analysis / debugging tools, or as
+the source for filters which ignore the input data (for example the sox
+synth filter).
+</p>
+<p>This source accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>channel_layout, cl</samp></dt>
+<dd>
+<p>Specifies the channel layout, and can be either an integer or a string
+representing a channel layout. The default value of <var>channel_layout</var>
+is &quot;stereo&quot;.
+</p>
+<p>Check the channel_layout_map definition in
+<samp>libavutil/channel_layout.c</samp> for the mapping between strings and
+channel layout values.
+</p>
+</dd>
+<dt><samp>sample_rate, r</samp></dt>
+<dd><p>Specifies the sample rate, and defaults to 44100.
+</p>
+</dd>
+<dt><samp>nb_samples, n</samp></dt>
+<dd><p>Set the number of samples per requested frames.
+</p>
+</dd>
+<dt><samp>duration, d</samp></dt>
+<dd><p>Set the duration of the sourced audio. See
+<a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>
+for the accepted syntax.
+</p>
+<p>If not specified, or the expressed duration is negative, the audio is
+supposed to be generated forever.
+</p></dd>
+</dl>

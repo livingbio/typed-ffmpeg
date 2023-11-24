@@ -1,0 +1,20 @@
+<h3 class="section"><a href="#toc-avgblur_005fvulkan">14.1 avgblur_vulkan</a></h3>
+
+<p>Apply an average blur filter, implemented on the GPU using Vulkan.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>sizeX</samp></dt>
+<dd><p>Set horizontal radius size.
+Range is <code>[1, 32]</code> and default value is <code>3</code>.
+</p>
+</dd>
+<dt><samp>sizeY</samp></dt>
+<dd><p>Set vertical radius size. Range is <code>[1, 32]</code> and default value is <code>3</code>.
+</p>
+</dd>
+<dt><samp>planes</samp></dt>
+<dd><p>Set which planes to filter. Default value is <code>0xf</code>, by which all planes are processed.
+</p></dd>
+</dl>
