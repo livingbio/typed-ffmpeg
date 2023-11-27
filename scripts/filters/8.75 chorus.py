@@ -8,10 +8,10 @@ def chorus(
     stream: Stream,
     in_gain: float = 0.4,
     out_gain: float = 0.4,
-    delays: List[float],
-    decays: List[float],
-    speeds: List[float],
-    depths: List[float],
+    delays: List[float] = None,
+    decays: List[float] = None,
+    speeds: List[float] = None,
+    depths: List[float] = None,
 ) -> Stream:
     """
     Add a chorus effect to the audio.

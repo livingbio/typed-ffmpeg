@@ -1,13 +1,15 @@
 import pathlib
 import re
 
+BASE_PATH = pathlib.Path(__file__).parent
+
 
 def main() -> None:
 
-    with open("../src/stream.py") as ifile:
+    with (BASE_PATH / "_stream.py").open() as ifile:
         base = ifile.read()
 
-    for path in sorted(pathlib.Path("./filters").iterdir(), key=lambda x: x.stem):
+    for path in sorted((BASE_PATH / "./filters").iterdir(), key=lambda x: x.stem):
         print(f"Processing {path}")
         with path.open() as ifile:
             body = ifile.read()
@@ -30,7 +32,7 @@ def main() -> None:
 
             base += f"\n\n{body}"
 
-    with open("../src/stream.py", "w") as ofile:
+    with open(BASE_PATH / "../src/stream.py", "w") as ofile:
         ofile.write(base)
 
 
