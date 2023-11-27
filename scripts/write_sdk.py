@@ -43,7 +43,7 @@ def process_document(path: pathlib.Path) -> None:
     name = path.stem
     body = path.read_text()
 
-    filepath = pathlib.Path(f"sdk/filters/{name}.py")
+    filepath = pathlib.Path(f"./filters/{name}.py")
     if filepath.exists():
         print(f"Skipping {name} as it already exists")
         return
