@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Literal
 
 from ..node import FilterNode
 from ..stream import Stream
@@ -11,7 +11,7 @@ def sofalizer(
     rotation: float = 0,
     elevation: float = 0,
     radius: float = 1,
-    type: str = Union["time", "freq"],
+    type: str = Literal["time", "freq"],
     speakers: str = "",
     lfegain: float = 0,
     framesize: int = 1024,

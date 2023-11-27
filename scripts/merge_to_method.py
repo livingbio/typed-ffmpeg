@@ -26,7 +26,7 @@ def main() -> None:
             body = re.sub(r"([\w]+).__name__", r'"\1"', body)
 
             # add a tab to each line
-            body = "\n".join(["\t" + i for i in body.split("\n")])
+            body = "\n".join(["    " + i for i in body.split("\n")])
 
             base += f"\n\n{body}"
 
