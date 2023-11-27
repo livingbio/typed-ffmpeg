@@ -6,7 +6,8 @@ def main() -> None:
     with open("../src/stream.py") as ifile:
         base = ifile.read()
 
-    for path in sorted(pathlib.Path("./sdk/filters").iterdir(), key=lambda x: x.stem):
+    for path in sorted(pathlib.Path("./filters").iterdir(), key=lambda x: x.stem):
+        print(f"Processing {path}")
         with path.open() as ifile:
             body = ifile.read()
 
@@ -22,7 +23,11 @@ def main() -> None:
             # add a tab to each line
             body = "\n".join(["\t" + i for i in body.split("\n")])
 
-            base.append(f"\n\n{body}")
+            base += f"\n\n{body}"
 
     with open("../src/stream.py", "w") as ofile:
         ofile.write(base)
+
+
+if __name__ == "__main__":
+    main()
