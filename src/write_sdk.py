@@ -1,4 +1,3 @@
-import os
 import pathlib
 import re
 
@@ -44,19 +43,24 @@ def process_document(path: pathlib.Path) -> None:
     name = path.stem
     body = path.read_text()
 
+    filepath = pathlib.Path(f"sdk/filters/{name}.py")
+    if filepath.exists():
+        print(f"Skipping {name} as it already exists")
+        return
+
     result = client.chat.completions.create(
         messages=[SYSTEM_PROMPT] + SAMPLE_PROMPTS + [{"role": "user", "content": f"{body}"}],
         model="gpt-3.5-turbo",
     )
 
-    os.makedirs("sdk/filters", exist_ok=True)
-    with open(f"sdk/filters/{name}.py", "w") as ofile:
+    filepath.parent.mkdir(exist_ok=True)
+    with filepath.open("w") as ofile:
         code = extract_python_code(result.choices[0].message.content or "")
         ofile.write(code)
 
 
 def process_audio_filter() -> None:
-    for i in pathlib.Path("./source").glob("*.html"):
+    for i in sorted(pathlib.Path("./source").glob("*.html"), key=lambda x: x.stem):
         if not i.stem.startswith("8."):
             continue
 
