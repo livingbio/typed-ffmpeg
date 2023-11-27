@@ -1,4 +1,5 @@
 import pathlib
+import re
 
 
 def main() -> None:
@@ -16,9 +17,13 @@ def main() -> None:
 
             # convert "steam: Stream" to "self"
             body = body.replace("stream: Stream", "self")
+            body = body.replace("stream,", "self,")
 
             # convert "-> Stream" -> '-> "Stream"'
             body = body.replace("-> Stream", '-> "Stream"')
+
+            # convert "[\w]+.__name__", to `"[\w]+"`
+            body = re.sub(r"([\w]+).__name__", r'"\1"', body)
 
             # add a tab to each line
             body = "\n".join(["\t" + i for i in body.split("\n")])
