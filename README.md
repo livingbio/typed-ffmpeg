@@ -12,4 +12,4 @@ The challenges are categorized as follows:
 
 
 # Records:
-Each week, I will explore various approaches and document the outcomes in this repository.
+Each times, I will explore various approaches and document the outcomes in this repository.
