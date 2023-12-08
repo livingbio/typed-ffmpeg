@@ -6,6 +6,7 @@ from ..stream import Stream
 
 def acompressor(
     stream: Stream,
+    *,
     level_in: float = 1.0,
     mode: str = Literal["downward", "upward"],
     threshold: float = 0.125,
