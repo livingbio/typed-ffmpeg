@@ -44,9 +44,9 @@ def process_document(path: pathlib.Path) -> None:
     body = path.read_text()
 
     filepath = pathlib.Path(f"./filters/{name}.py")
-    if filepath.exists():
-        print(f"Skipping {name} as it already exists")
-        return
+    # if filepath.exists():
+    #     print(f"Skipping {name} as it already exists")
+    #     return
 
     result = client.chat.completions.create(
         messages=[SYSTEM_PROMPT] + SAMPLE_PROMPTS + [{"role": "user", "content": f"{body}"}],
