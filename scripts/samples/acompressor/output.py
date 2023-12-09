@@ -67,7 +67,8 @@ def acompressor(
 
     Example usage:
     --------------
-    stream.acompressor(
+    ffmpeg.acompressor(
+        stream,
         threshold=0.2,
         attack=50,
         release=500,
