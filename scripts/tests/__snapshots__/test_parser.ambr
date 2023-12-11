@@ -1,0 +1,10 @@
+# serializer version: 1
+# name: test_parse_filter_document[acrossfade.html]
+  FilterDocument(section_index='8.5', hash='acrossfade', title='8.5 acrossfade', path=PosixPath('source/acrossfade.html'), filter_names=['acrossfade'], refs=[PosixPath('source/afade.html')])
+# ---
+# name: test_parse_filter_document[acue.html]
+  FilterDocument(section_index='8.8', hash='acue', title='8.8 acue', path=PosixPath('source/acue.html'), filter_names=['acue'], refs=[PosixPath('source/cue.html')])
+# ---
+# name: test_parse_filter_document[lut_002c-lutrgb_002c-lutyuv.html]
+  FilterDocument(section_index='11.153', hash='lut_002c-lutrgb_002c-lutyuv', title='11.153 lut, lutrgb, lutyuv', path=PosixPath('source/lut_002c-lutrgb_002c-lutyuv.html'), filter_names=['lut', ' lutrgb', ' lutyuv'], refs=[])
+# ---

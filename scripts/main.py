@@ -40,6 +40,7 @@ class FilterDocument(pydantic.BaseModel):
     title: str
     path: pathlib.Path
     filter_names: list[str]
+    refs: list[pathlib.Path] = []
 
     @property
     def url(self) -> str:
@@ -54,7 +55,17 @@ def parse_filter_document(body: str) -> FilterDocument:
     filter_names = map(str, filter_namestr.split(","))
     ref = h3.a["href"].replace("#toc-", "")
 
-    return FilterDocument(section_index=index, hash=ref, title=title, path=DOCUMENT_PATH / f"{ref}.html", filter_names=filter_names)
+    # check cross reference
+    refs: set[str] = set()
+    for a in soup.find_all("a"):
+        href = a.get("href")
+        if href.startswith("#"):
+            refs.add(href[1:])
+
+    if ref in refs:
+        refs.remove(ref)
+
+    return FilterDocument(refs=[DOCUMENT_PATH / f"{ref}.html" for ref in refs], section_index=index, hash=ref, title=title, path=DOCUMENT_PATH / f"{ref}.html", filter_names=filter_names)
 
 
 def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
@@ -76,10 +87,12 @@ def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
 @app.command()
 def generate_signature(path: pathlib.Path) -> None:
     body = path.read_text()
-    name = path.stem
+    path.stem
 
     info = parse_filter_document(body)
     soup = BeautifulSoup(body, "html.parser")
+
+    # extract parameters
     options = soup.find("dl")
 
     if options:
@@ -89,13 +102,6 @@ def generate_signature(path: pathlib.Path) -> None:
 
     for dl_tag in soup.find_all("dl"):
         dl_tag.decompose()
-
-    # check cross reference
-    for h3 in soup.find_all("h3"):
-        h3.decompose()
-
-    if '<a href="#' in str(soup):
-        print(f"Cross reference found in {name}")
 
     for filter_name in info.filter_names:
         filter_name = filter_name.strip()
