@@ -70,6 +70,9 @@ def split_documents() -> None:
             options = soup.find("dl")
             index, section_name = name.split(" ", 1)
 
+            if not (index.startswith("8.") or index.startswith("11.")):
+                continue
+
             if options:
                 parameters = parse_paremeters(options)
             else:
@@ -84,6 +87,13 @@ def split_documents() -> None:
 
                 with open(f"source/{index} {filter_name}.yml", "w") as ofile:
                     yaml.dump(filter.model_dump(mode="json"), ofile)
+
+            # check cross reference
+            for h3 in soup.find_all("h3"):
+                h3.decompose()
+
+            if "</a>" in str(soup):
+                print(f"Cross reference found in {name}")
 
     return None
 
