@@ -1,0 +1,24 @@
+description: '11.26 chromakey_cuda
+
+  CUDA accelerated YUV colorspace color/chroma keying.
+
+
+  This filter works like normal chromakey filter but operates on CUDA frames.
+
+  for more details and parameters see chromakey.'
+name: chromakey_cuda
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#chromakey_005fcuda
+source: '<h3 class="section"><a href="#toc-chromakey_005fcuda">11.26 chromakey_cuda</a></h3>
+
+  <p>CUDA accelerated YUV colorspace color/chroma keying.
+
+  </p>
+
+  <p>This filter works like normal chromakey filter but operates on CUDA frames.
+
+  for more details and parameters see <a href="#chromakey">chromakey</a>.
+
+  </p>
+
+  '

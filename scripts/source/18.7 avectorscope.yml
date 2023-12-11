@@ -1,0 +1,454 @@
+description: '18.7 avectorscope
+
+  Convert input audio to a video output, representing the audio vector
+
+  scope.
+
+
+  The filter is used to measure the difference between channels of stereo
+
+  audio stream. A monaural signal, consisting of identical left and right
+
+  signal, results in straight vertical line. Any stereo separation is visible
+
+  as a deviation from this line, creating a Lissajous figure.
+
+  If the straight (or deviation from it) but horizontal line appears this
+
+  indicates that the left and right channels are out of phase.
+
+
+  The filter accepts the following options:'
+name: avectorscope
+parameters:
+- description: "<dd><p>Set the vectorscope mode.\n</p>\n<p>Available values are:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>lissajous</samp>\u2019</dt>\n<dd><p>Lissajous\
+    \ rotated by 45 degrees.\n</p>\n</dd>\n<dt>\u2018<samp>lissajous_xy</samp>\u2019\
+    </dt>\n<dd><p>Same as above but not rotated.\n</p>\n</dd>\n<dt>\u2018<samp>polar</samp>\u2019\
+    </dt>\n<dd><p>Shape resembling half of circle.\n</p></dd>\n</dl>\n<p>Default value\
+    \ is \u2018<samp>lissajous</samp>\u2019.\n</p>\n</dd>"
+  name: mode, m
+- description: '<dd><p>Set the video size for the output. For the syntax of this option,
+    check the
+
+    <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)"Video size" section
+    in the ffmpeg-utils manual</a>.
+
+    Default value is <code>400x400</code>.
+
+    </p>
+
+    </dd>'
+  name: size, s
+- description: '<dd><p>Set the output frame rate. Default value is <code>25</code>.
+
+    </p>
+
+    </dd>'
+  name: rate, r
+- description: '<dd><p>Specify the red, green, blue and alpha contrast. Default values
+    are <code>40</code>,
+
+    <code>160</code>, <code>80</code> and <code>255</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: rc
+- description: '<dd><p>Specify the red, green, blue and alpha contrast. Default values
+    are <code>40</code>,
+
+    <code>160</code>, <code>80</code> and <code>255</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: gc
+- description: '<dd><p>Specify the red, green, blue and alpha contrast. Default values
+    are <code>40</code>,
+
+    <code>160</code>, <code>80</code> and <code>255</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: bc
+- description: '<dd><p>Specify the red, green, blue and alpha contrast. Default values
+    are <code>40</code>,
+
+    <code>160</code>, <code>80</code> and <code>255</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: ac
+- description: '<dd><p>Specify the red, green, blue and alpha fade. Default values
+    are <code>15</code>,
+
+    <code>10</code>, <code>5</code> and <code>5</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: rf
+- description: '<dd><p>Specify the red, green, blue and alpha fade. Default values
+    are <code>15</code>,
+
+    <code>10</code>, <code>5</code> and <code>5</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: gf
+- description: '<dd><p>Specify the red, green, blue and alpha fade. Default values
+    are <code>15</code>,
+
+    <code>10</code>, <code>5</code> and <code>5</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: bf
+- description: '<dd><p>Specify the red, green, blue and alpha fade. Default values
+    are <code>15</code>,
+
+    <code>10</code>, <code>5</code> and <code>5</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: af
+- description: '<dd><p>Set the zoom factor. Default value is <code>1</code>. Allowed
+    range is <code>[0, 10]</code>.
+
+    Values lower than <var>1</var> will auto adjust zoom factor to maximal possible
+    value.
+
+    </p>
+
+    </dd>'
+  name: zoom
+- description: "<dd><p>Set the vectorscope drawing mode.\n</p>\n<p>Available values\
+    \ are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n\
+    <dd><p>Draw dot for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>line</samp>\u2019\
+    </dt>\n<dd><p>Draw line between previous and current sample.\n</p>\n</dd>\n<dt>\u2018\
+    <samp>aaline</samp>\u2019</dt>\n<dd><p>Draw anti-aliased line between previous\
+    \ and current sample.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>dot</samp>\u2019\
+    .\n</p>\n</dd>"
+  name: draw
+- description: "<dd><p>Specify amplitude scale of audio samples.\n</p>\n<p>Available\
+    \ values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019\
+    </dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square\
+    \ root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p></dd>\n\
+    </dl>\n</dd>"
+  name: scale
+- description: '<dd><p>Swap left channel axis with right channel axis.
+
+    </p>
+
+    </dd>'
+  name: swap
+- description: "<dd><p>Mirror axis.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019\
+    </dt>\n<dd><p>No mirror.\n</p>\n</dd>\n<dt>\u2018<samp>x</samp>\u2019</dt>\n<dd><p>Mirror\
+    \ only x axis.\n</p>\n</dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Mirror\
+    \ only y axis.\n</p>\n</dd>\n<dt>\u2018<samp>xy</samp>\u2019</dt>\n<dd><p>Mirror\
+    \ both axis.\n</p></dd>\n</dl>\n</dd>"
+  name: mirror
+ref: https://ffmpeg.org/ffmpeg-filters.html#avectorscope
+source: '<h3 class="section"><a href="#toc-avectorscope">18.7 avectorscope</a></h3>
+
+
+  <p>Convert input audio to a video output, representing the audio vector
+
+  scope.
+
+  </p>
+
+  <p>The filter is used to measure the difference between channels of stereo
+
+  audio stream. A monaural signal, consisting of identical left and right
+
+  signal, results in straight vertical line. Any stereo separation is visible
+
+  as a deviation from this line, creating a Lissajous figure.
+
+  If the straight (or deviation from it) but horizontal line appears this
+
+  indicates that the left and right channels are out of phase.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>mode, m</samp></dt>
+
+  <dd><p>Set the vectorscope mode.
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>lissajous</samp>&rsquo;</dt>
+
+  <dd><p>Lissajous rotated by 45 degrees.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>lissajous_xy</samp>&rsquo;</dt>
+
+  <dd><p>Same as above but not rotated.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>polar</samp>&rsquo;</dt>
+
+  <dd><p>Shape resembling half of circle.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is &lsquo;<samp>lissajous</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>size, s</samp></dt>
+
+  <dd><p>Set the video size for the output. For the syntax of this option, check the
+
+  <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot;
+  section in the ffmpeg-utils manual</a>.
+
+  Default value is <code>400x400</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rate, r</samp></dt>
+
+  <dd><p>Set the output frame rate. Default value is <code>25</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rc</samp></dt>
+
+  <dt><samp>gc</samp></dt>
+
+  <dt><samp>bc</samp></dt>
+
+  <dt><samp>ac</samp></dt>
+
+  <dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,
+
+  <code>160</code>, <code>80</code> and <code>255</code>.
+
+  Allowed range is <code>[0, 255]</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rf</samp></dt>
+
+  <dt><samp>gf</samp></dt>
+
+  <dt><samp>bf</samp></dt>
+
+  <dt><samp>af</samp></dt>
+
+  <dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,
+
+  <code>10</code>, <code>5</code> and <code>5</code>.
+
+  Allowed range is <code>[0, 255]</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>zoom</samp></dt>
+
+  <dd><p>Set the zoom factor. Default value is <code>1</code>. Allowed range is <code>[0,
+  10]</code>.
+
+  Values lower than <var>1</var> will auto adjust zoom factor to maximal possible
+  value.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>draw</samp></dt>
+
+  <dd><p>Set the vectorscope drawing mode.
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>dot</samp>&rsquo;</dt>
+
+  <dd><p>Draw dot for each sample.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>line</samp>&rsquo;</dt>
+
+  <dd><p>Draw line between previous and current sample.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>aaline</samp>&rsquo;</dt>
+
+  <dd><p>Draw anti-aliased line between previous and current sample.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is &lsquo;<samp>dot</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale</samp></dt>
+
+  <dd><p>Specify amplitude scale of audio samples.
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>lin</samp>&rsquo;</dt>
+
+  <dd><p>Linear.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>sqrt</samp>&rsquo;</dt>
+
+  <dd><p>Square root.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>cbrt</samp>&rsquo;</dt>
+
+  <dd><p>Cubic root.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>log</samp>&rsquo;</dt>
+
+  <dd><p>Logarithmic.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>swap</samp></dt>
+
+  <dd><p>Swap left channel axis with right channel axis.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mirror</samp></dt>
+
+  <dd><p>Mirror axis.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+
+  <dd><p>No mirror.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>x</samp>&rsquo;</dt>
+
+  <dd><p>Mirror only x axis.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>y</samp>&rsquo;</dt>
+
+  <dd><p>Mirror only y axis.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>xy</samp>&rsquo;</dt>
+
+  <dd><p>Mirror both axis.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  </dl>
+
+
+  '

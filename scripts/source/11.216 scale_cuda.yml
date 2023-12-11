@@ -1,0 +1,279 @@
+description: '11.216 scale_cuda
+
+  Scale (resize) and convert (pixel format) the input video, using accelerated CUDA
+  kernels.
+
+  Setting the output width and height works in the same way as for the scale filter.
+
+
+  The filter accepts the following options:'
+name: scale_cuda
+parameters:
+- description: '<dd><p>Set the output video dimension expression. Default value is
+    the input dimension.
+
+    </p>
+
+    <p>Allows for the same expressions as the <a href="#scale">scale</a> filter.
+
+    </p>
+
+    </dd>'
+  name: w
+- description: '<dd><p>Set the output video dimension expression. Default value is
+    the input dimension.
+
+    </p>
+
+    <p>Allows for the same expressions as the <a href="#scale">scale</a> filter.
+
+    </p>
+
+    </dd>'
+  name: h
+- description: '<dd><p>Sets the algorithm used for scaling:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><var>nearest</var></dt>
+
+    <dd><p>Nearest neighbour
+
+    </p>
+
+    <p>Used by default if input parameters match the desired output.
+
+    </p>
+
+    </dd>
+
+    <dt><var>bilinear</var></dt>
+
+    <dd><p>Bilinear
+
+    </p>
+
+    </dd>
+
+    <dt><var>bicubic</var></dt>
+
+    <dd><p>Bicubic
+
+    </p>
+
+    <p>This is the default.
+
+    </p>
+
+    </dd>
+
+    <dt><var>lanczos</var></dt>
+
+    <dd><p>Lanczos
+
+    </p>
+
+    </dd>
+
+    </dl>
+
+    </dd>'
+  name: interp_algo
+- description: '<dd><p>Controls the output pixel format. By default, or if none is
+    specified, the input
+
+    pixel format is used.
+
+    </p>
+
+    <p>The filter does not support converting between YUV and RGB pixel formats.
+
+    </p>
+
+    </dd>'
+  name: format
+- description: '<dd><p>If set to 0, every frame is processed, even if no conversion
+    is necessary.
+
+    This mode can be useful to use the filter as a buffer for a downstream
+
+    frame-consumer that exhausts the limited decoder frame pool.
+
+    </p>
+
+    <p>If set to 1, frames are passed through as-is if they match the desired output
+
+    parameters. This is the default behaviour.
+
+    </p>
+
+    </dd>'
+  name: passthrough
+- description: '<dd><p>Algorithm-Specific parameter.
+
+    </p>
+
+    <p>Affects the curves of the bicubic algorithm.
+
+    </p>
+
+    </dd>'
+  name: param
+- description: '<dd><p>Work the same as the identical <a href="#scale">scale</a> filter
+    options.
+
+    </p>
+
+    </dd>'
+  name: force_original_aspect_ratio
+- description: '<dd><p>Work the same as the identical <a href="#scale">scale</a> filter
+    options.
+
+    </p>
+
+    </dd>'
+  name: force_divisible_by
+ref: https://ffmpeg.org/ffmpeg-filters.html#scale_005fcuda
+source: '<h3 class="section"><a href="#toc-scale_005fcuda-1">11.216 scale_cuda</a></h3>
+
+
+  <p>Scale (resize) and convert (pixel format) the input video, using accelerated
+  CUDA kernels.
+
+  Setting the output width and height works in the same way as for the <a href="#scale">scale</a>
+  filter.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p><dl compact="compact">
+
+  <dt><samp>w</samp></dt>
+
+  <dt><samp>h</samp></dt>
+
+  <dd><p>Set the output video dimension expression. Default value is the input dimension.
+
+  </p>
+
+  <p>Allows for the same expressions as the <a href="#scale">scale</a> filter.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>interp_algo</samp></dt>
+
+  <dd><p>Sets the algorithm used for scaling:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><var>nearest</var></dt>
+
+  <dd><p>Nearest neighbour
+
+  </p>
+
+  <p>Used by default if input parameters match the desired output.
+
+  </p>
+
+  </dd>
+
+  <dt><var>bilinear</var></dt>
+
+  <dd><p>Bilinear
+
+  </p>
+
+  </dd>
+
+  <dt><var>bicubic</var></dt>
+
+  <dd><p>Bicubic
+
+  </p>
+
+  <p>This is the default.
+
+  </p>
+
+  </dd>
+
+  <dt><var>lanczos</var></dt>
+
+  <dd><p>Lanczos
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>format</samp></dt>
+
+  <dd><p>Controls the output pixel format. By default, or if none is specified, the
+  input
+
+  pixel format is used.
+
+  </p>
+
+  <p>The filter does not support converting between YUV and RGB pixel formats.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>passthrough</samp></dt>
+
+  <dd><p>If set to 0, every frame is processed, even if no conversion is necessary.
+
+  This mode can be useful to use the filter as a buffer for a downstream
+
+  frame-consumer that exhausts the limited decoder frame pool.
+
+  </p>
+
+  <p>If set to 1, frames are passed through as-is if they match the desired output
+
+  parameters. This is the default behaviour.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>param</samp></dt>
+
+  <dd><p>Algorithm-Specific parameter.
+
+  </p>
+
+  <p>Affects the curves of the bicubic algorithm.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>force_original_aspect_ratio</samp></dt>
+
+  <dt><samp>force_divisible_by</samp></dt>
+
+  <dd><p>Work the same as the identical <a href="#scale">scale</a> filter options.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  '

@@ -1,0 +1,139 @@
+description: '8.76 chorus
+
+  Add a chorus effect to the audio.
+
+
+  Can make a single vocal sound like a chorus, but can also be applied to instrumentation.
+
+
+  Chorus resembles an echo effect with a short delay, but whereas with echo the delay
+  is
+
+  constant, with chorus, it is varied using using sinusoidal or triangular modulation.
+
+  The modulation depth defines the range the modulated delay is played before or after
+
+  the delay. Hence the delayed sound will sound slower or faster, that is the delayed
+
+  sound tuned around the original one, like in a chorus where some vocals are slightly
+
+  off key.
+
+
+  It accepts the following parameters:'
+name: chorus
+parameters:
+- description: '<dd><p>Set input gain. Default is 0.4.
+
+    </p>
+
+    </dd>'
+  name: in_gain
+- description: '<dd><p>Set output gain. Default is 0.4.
+
+    </p>
+
+    </dd>'
+  name: out_gain
+- description: '<dd><p>Set delays. A typical delay is around 40ms to 60ms.
+
+    </p>
+
+    </dd>'
+  name: delays
+- description: '<dd><p>Set decays.
+
+    </p>
+
+    </dd>'
+  name: decays
+- description: '<dd><p>Set speeds.
+
+    </p>
+
+    </dd>'
+  name: speeds
+- description: '<dd><p>Set depths.
+
+    </p></dd>'
+  name: depths
+ref: https://ffmpeg.org/ffmpeg-filters.html#chorus
+source: '<h3 class="section"><a href="#toc-chorus">8.76 chorus</a></h3>
+
+  <p>Add a chorus effect to the audio.
+
+  </p>
+
+  <p>Can make a single vocal sound like a chorus, but can also be applied to instrumentation.
+
+  </p>
+
+  <p>Chorus resembles an echo effect with a short delay, but whereas with echo the
+  delay is
+
+  constant, with chorus, it is varied using using sinusoidal or triangular modulation.
+
+  The modulation depth defines the range the modulated delay is played before or after
+
+  the delay. Hence the delayed sound will sound slower or faster, that is the delayed
+
+  sound tuned around the original one, like in a chorus where some vocals are slightly
+
+  off key.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p><dl compact="compact">
+
+  <dt><samp>in_gain</samp></dt>
+
+  <dd><p>Set input gain. Default is 0.4.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>out_gain</samp></dt>
+
+  <dd><p>Set output gain. Default is 0.4.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>delays</samp></dt>
+
+  <dd><p>Set delays. A typical delay is around 40ms to 60ms.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>decays</samp></dt>
+
+  <dd><p>Set decays.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>speeds</samp></dt>
+
+  <dd><p>Set speeds.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>depths</samp></dt>
+
+  <dd><p>Set depths.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

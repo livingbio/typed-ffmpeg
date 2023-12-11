@@ -1,0 +1,116 @@
+description: '11.204 readeia608
+
+  Read closed captioning (EIA-608) information from the top lines of a video frame.
+
+
+  This filter adds frame metadata for lavfi.readeia608.X.cc and
+
+  lavfi.readeia608.X.line, where X is the number of the identified line
+
+  with EIA-608 data (starting from 0). A description of each metadata value follows:
+
+
+
+  This filter accepts the following options:'
+name: readeia608
+parameters:
+- description: '<dd><p>The two bytes stored as EIA-608 data (printed in hexadecimal).
+
+    </p>
+
+    </dd>'
+  name: lavfi.readeia608.X.cc
+- description: '<dd><p>The number of the line on which the EIA-608 data was identified
+    and read.
+
+    </p></dd>'
+  name: lavfi.readeia608.X.line
+ref: https://ffmpeg.org/ffmpeg-filters.html#readeia608
+source: '<h3 class="section"><a href="#toc-readeia608">11.204 readeia608</a></h3>
+
+
+  <p>Read closed captioning (EIA-608) information from the top lines of a video frame.
+
+  </p>
+
+  <p>This filter adds frame metadata for <code>lavfi.readeia608.X.cc</code> and
+
+  <code>lavfi.readeia608.X.line</code>, where <code>X</code> is the number of the
+  identified line
+
+  with EIA-608 data (starting from 0). A description of each metadata value follows:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>lavfi.readeia608.X.cc</samp></dt>
+
+  <dd><p>The two bytes stored as EIA-608 data (printed in hexadecimal).
+
+  </p>
+
+  </dd>
+
+  <dt><samp>lavfi.readeia608.X.line</samp></dt>
+
+  <dd><p>The number of the line on which the EIA-608 data was identified and read.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>This filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>scan_min</samp></dt>
+
+  <dd><p>Set the line to start scanning for EIA-608 data. Default is <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scan_max</samp></dt>
+
+  <dd><p>Set the line to end scanning for EIA-608 data. Default is <code>29</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>spw</samp></dt>
+
+  <dd><p>Set the ratio of width reserved for sync code detection.
+
+  Default is <code>0.27</code>. Allowed range is <code>[0.1 - 0.7]</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>chp</samp></dt>
+
+  <dd><p>Enable checking the parity bit. In the event of a parity error, the filter
+  will output
+
+  <code>0x00</code> for that character. Default is false.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>lp</samp></dt>
+
+  <dd><p>Lowpass lines prior to further processing. Default is enabled.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

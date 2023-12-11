@@ -1,0 +1,79 @@
+<h3 class="section"><a href="#toc-movie-1">19.3 movie</a></h3>
+
+<p>Read audio and/or video stream(s) from a movie container.
+</p>
+<p>It accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>filename</samp></dt>
+<dd><p>The name of the resource to read (not necessarily a file; it can also be a
+device or a stream accessed through some protocol).
+</p>
+</dd>
+<dt><samp>format_name, f</samp></dt>
+<dd><p>Specifies the format assumed for the movie to read, and can be either
+the name of a container or an input device. If not specified, the
+format is guessed from <var>movie_name</var> or by probing.
+</p>
+</dd>
+<dt><samp>seek_point, sp</samp></dt>
+<dd><p>Specifies the seek point in seconds. The frames will be output
+starting from this seek point. The parameter is evaluated with
+<code>av_strtod</code>, so the numerical value may be suffixed by an IS
+postfix. The default value is &quot;0&quot;.
+</p>
+</dd>
+<dt><samp>streams, s</samp></dt>
+<dd><p>Specifies the streams to read. Several streams can be specified,
+separated by &quot;+&quot;. The source will then have as many outputs, in the
+same order. The syntax is explained in the <a href="ffmpeg.html#Stream-specifiers">(ffmpeg)&quot;Stream specifiers&quot;
+section in the ffmpeg manual</a>. Two special names, &quot;dv&quot; and &quot;da&quot; specify
+respectively the default (best suited) video and audio stream. Default
+is &quot;dv&quot;, or &quot;da&quot; if the filter is called as &quot;amovie&quot;.
+</p>
+</dd>
+<dt><samp>stream_index, si</samp></dt>
+<dd><p>Specifies the index of the video stream to read. If the value is -1,
+the most suitable video stream will be automatically selected. The default
+value is &quot;-1&quot;. Deprecated. If the filter is called &quot;amovie&quot;, it will select
+audio instead of video.
+</p>
+</dd>
+<dt><samp>loop</samp></dt>
+<dd><p>Specifies how many times to read the stream in sequence.
+If the value is 0, the stream will be looped infinitely.
+Default value is &quot;1&quot;.
+</p>
+<p>Note that when the movie is looped the source timestamps are not
+changed, so it will generate non monotonically increasing timestamps.
+</p>
+</dd>
+<dt><samp>discontinuity</samp></dt>
+<dd><p>Specifies the time difference between frames above which the point is
+considered a timestamp discontinuity which is removed by adjusting the later
+timestamps.
+</p>
+</dd>
+<dt><samp>dec_threads</samp></dt>
+<dd><p>Specifies the number of threads for decoding
+</p>
+</dd>
+<dt><samp>format_opts</samp></dt>
+<dd><p>Specify format options for the opened file. Format options can be specified
+as a list of <var>key</var>=<var>value</var> pairs separated by &rsquo;:&rsquo;. The following example
+shows how to add protocol_whitelist and protocol_blacklist options:
+</p><div class="example">
+<pre class="example">ffplay -f lavfi
+&quot;movie=filename='1.sdp':format_opts='protocol_whitelist=file,rtp,udp\:protocol_blacklist=http'&quot;
+</pre></div>
+</dd>
+</dl>
+
+<p>It allows overlaying a second video on top of the main input of
+a filtergraph, as shown in this graph:
+</p><div class="example">
+<pre class="example">input -----------&gt; deltapts0 --&gt; overlay --&gt; output
+                                    ^
+                                    |
+movie --&gt; scale--&gt; deltapts1 -------+
+</pre></div>

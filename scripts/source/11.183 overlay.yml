@@ -1,0 +1,403 @@
+description: "11.183 overlay\nOverlay one video on top of another.\n\nIt takes two\
+  \ inputs and has one output. The first input is the \"main\"\nvideo on which the\
+  \ second input is overlaid.\n\nIt accepts the following parameters:\n\nA description\
+  \ of the accepted options follows.\n\n\nThe x, and y expressions can contain the\
+  \ following\nparameters.\n\n\nThis filter also supports the framesync options.\n\
+  \nNote that the n, t variables are available only\nwhen evaluation is done per frame,\
+  \ and will evaluate to NAN\nwhen eval is set to \u2018init\u2019.\n\nBe aware that\
+  \ frames are taken from each input video in timestamp\norder, hence, if their initial\
+  \ timestamps differ, it is a good idea\nto pass the two inputs through a setpts=PTS-STARTPTS\
+  \ filter to\nhave them begin in the same zero timestamp, as the example for\nthe\
+  \ movie filter does.\n\nYou can chain together more overlays but you should test\
+  \ the\nefficiency of such approach."
+name: overlay
+parameters:
+- description: '<dd><p>Set the expression for the x and y coordinates of the overlaid
+    video
+
+    on the main video. Default value is "0" for both expressions. In case
+
+    the expression is invalid, it is set to a huge value (meaning that the
+
+    overlay will not be displayed within the output visible area).
+
+    </p>
+
+    </dd>'
+  name: x
+- description: '<dd><p>Set the expression for the x and y coordinates of the overlaid
+    video
+
+    on the main video. Default value is "0" for both expressions. In case
+
+    the expression is invalid, it is set to a huge value (meaning that the
+
+    overlay will not be displayed within the output visible area).
+
+    </p>
+
+    </dd>'
+  name: y
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: eof_action
+- description: "<dd><p>Set when the expressions for <samp>x</samp>, and <samp>y</samp>\
+    \ are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"\
+    compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>only evaluate expressions\
+    \ once during the filter initialization or\nwhen a command is processed\n</p>\n\
+    </dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expressions for\
+    \ each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>frame</samp>\u2019\
+    .\n</p>\n</dd>"
+  name: eval
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: shortest
+- description: "<dd><p>Set the format for the output video.\n</p>\n<p>It accepts the\
+    \ following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>yuv420</samp>\u2019\
+    </dt>\n<dd><p>force YUV 4:2:0 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv420p10</samp>\u2019\
+    </dt>\n<dd><p>force YUV 4:2:0 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv422</samp>\u2019\
+    </dt>\n<dd><p>force YUV 4:2:2 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv422p10</samp>\u2019\
+    </dt>\n<dd><p>force YUV 4:2:2 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv444</samp>\u2019\
+    </dt>\n<dd><p>force YUV 4:4:4 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv444p10</samp>\u2019\
+    </dt>\n<dd><p>force YUV 4:4:4 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>rgb</samp>\u2019\
+    </dt>\n<dd><p>force RGB 8-bit packed output\n</p>\n</dd>\n<dt>\u2018<samp>gbrp</samp>\u2019\
+    </dt>\n<dd><p>force RGB 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>auto</samp>\u2019\
+    </dt>\n<dd><p>automatically pick format\n</p></dd>\n</dl>\n<p>Default value is\
+    \ \u2018<samp>yuv420</samp>\u2019.\n</p>\n</dd>"
+  name: format
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: repeatlast
+- description: '<dd><p>Set format of alpha of the overlaid video, it can be <var>straight</var>
+    or
+
+    <var>premultiplied</var>. Default is <var>straight</var>.
+
+    </p></dd>'
+  name: alpha
+ref: https://ffmpeg.org/ffmpeg-filters.html#overlay
+source: '<h3 class="section"><a href="#toc-overlay-1">11.183 overlay</a></h3>
+
+
+  <p>Overlay one video on top of another.
+
+  </p>
+
+  <p>It takes two inputs and has one output. The first input is the &quot;main&quot;
+
+  video on which the second input is overlaid.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <p>A description of the accepted options follows.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>x</samp></dt>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>Set the expression for the x and y coordinates of the overlaid video
+
+  on the main video. Default value is &quot;0&quot; for both expressions. In case
+
+  the expression is invalid, it is set to a huge value (meaning that the
+
+  overlay will not be displayed within the output visible area).
+
+  </p>
+
+  </dd>
+
+  <dt><samp>eof_action</samp></dt>
+
+  <dd><p>See <a href="#framesync">framesync</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>eval</samp></dt>
+
+  <dd><p>Set when the expressions for <samp>x</samp>, and <samp>y</samp> are evaluated.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>init</samp>&rsquo;</dt>
+
+  <dd><p>only evaluate expressions once during the filter initialization or
+
+  when a command is processed
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>frame</samp>&rsquo;</dt>
+
+  <dd><p>evaluate expressions for each incoming frame
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is &lsquo;<samp>frame</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>shortest</samp></dt>
+
+  <dd><p>See <a href="#framesync">framesync</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>format</samp></dt>
+
+  <dd><p>Set the format for the output video.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>yuv420</samp>&rsquo;</dt>
+
+  <dd><p>force YUV 4:2:0 8-bit planar output
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>yuv420p10</samp>&rsquo;</dt>
+
+  <dd><p>force YUV 4:2:0 10-bit planar output
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>yuv422</samp>&rsquo;</dt>
+
+  <dd><p>force YUV 4:2:2 8-bit planar output
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>yuv422p10</samp>&rsquo;</dt>
+
+  <dd><p>force YUV 4:2:2 10-bit planar output
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>yuv444</samp>&rsquo;</dt>
+
+  <dd><p>force YUV 4:4:4 8-bit planar output
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>yuv444p10</samp>&rsquo;</dt>
+
+  <dd><p>force YUV 4:4:4 10-bit planar output
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>rgb</samp>&rsquo;</dt>
+
+  <dd><p>force RGB 8-bit packed output
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>gbrp</samp>&rsquo;</dt>
+
+  <dd><p>force RGB 8-bit planar output
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+
+  <dd><p>automatically pick format
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is &lsquo;<samp>yuv420</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>repeatlast</samp></dt>
+
+  <dd><p>See <a href="#framesync">framesync</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>alpha</samp></dt>
+
+  <dd><p>Set format of alpha of the overlaid video, it can be <var>straight</var>
+  or
+
+  <var>premultiplied</var>. Default is <var>straight</var>.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The <samp>x</samp>, and <samp>y</samp> expressions can contain the following
+
+  parameters.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>main_w, W</samp></dt>
+
+  <dt><samp>main_h, H</samp></dt>
+
+  <dd><p>The main input width and height.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>overlay_w, w</samp></dt>
+
+  <dt><samp>overlay_h, h</samp></dt>
+
+  <dd><p>The overlay input width and height.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>x</samp></dt>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>The computed values for <var>x</var> and <var>y</var>. They are evaluated
+  for
+
+  each new frame.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>hsub</samp></dt>
+
+  <dt><samp>vsub</samp></dt>
+
+  <dd><p>horizontal and vertical chroma subsample values of the output
+
+  format. For example for the pixel format &quot;yuv422p&quot; <var>hsub</var> is
+  2 and
+
+  <var>vsub</var> is 1.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>n</samp></dt>
+
+  <dd><p>the number of input frame, starting from 0
+
+  </p>
+
+  </dd>
+
+  <dt><samp>pos</samp></dt>
+
+  <dd><p>the position in the file of the input frame, NAN if unknown; deprecated,
+
+  do not use
+
+  </p>
+
+  </dd>
+
+  <dt><samp>t</samp></dt>
+
+  <dd><p>The timestamp, expressed in seconds. It&rsquo;s NAN if the input timestamp
+  is unknown.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  <p>This filter also supports the <a href="#framesync">framesync</a> options.
+
+  </p>
+
+  <p>Note that the <var>n</var>, <var>t</var> variables are available only
+
+  when evaluation is done <em>per frame</em>, and will evaluate to NAN
+
+  when <samp>eval</samp> is set to &lsquo;<samp>init</samp>&rsquo;.
+
+  </p>
+
+  <p>Be aware that frames are taken from each input video in timestamp
+
+  order, hence, if their initial timestamps differ, it is a good idea
+
+  to pass the two inputs through a <var>setpts=PTS-STARTPTS</var> filter to
+
+  have them begin in the same zero timestamp, as the example for
+
+  the <var>movie</var> filter does.
+
+  </p>
+
+  <p>You can chain together more overlays but you should test the
+
+  efficiency of such approach.
+
+  </p>
+
+  '

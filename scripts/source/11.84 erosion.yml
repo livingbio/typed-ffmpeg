@@ -1,0 +1,58 @@
+description: '11.84 erosion
+
+  Apply erosion effect to the video.
+
+
+  This filter replaces the pixel by the local(3x3) minimum.
+
+
+  It accepts the following options:'
+name: erosion
+parameters:
+- description: '<dd><p>Limit the maximum change for each plane, default is 65535.
+
+    If 0, plane will remain unchanged.
+
+    </p>
+
+    </dd>'
+  name: threshold0
+- description: '<dd><p>Limit the maximum change for each plane, default is 65535.
+
+    If 0, plane will remain unchanged.
+
+    </p>
+
+    </dd>'
+  name: threshold1
+- description: '<dd><p>Limit the maximum change for each plane, default is 65535.
+
+    If 0, plane will remain unchanged.
+
+    </p>
+
+    </dd>'
+  name: threshold2
+- description: '<dd><p>Limit the maximum change for each plane, default is 65535.
+
+    If 0, plane will remain unchanged.
+
+    </p>
+
+    </dd>'
+  name: threshold3
+- description: "<dd><p>Flag which specifies the pixel to refer to. Default is 255\
+    \ i.e. all eight\npixels are used.\n</p>\n<p>Flags to local 3x3 coordinates maps\
+    \ like this:\n</p>\n<p>1 2 3\n    4   5\n    6 7 8\n</p></dd>"
+  name: coordinates
+ref: https://ffmpeg.org/ffmpeg-filters.html#erosion
+source: "<h3 class=\"section\"><a href=\"#toc-erosion-1\">11.84 erosion</a></h3>\n\
+  \n<p>Apply erosion effect to the video.\n</p>\n<p>This filter replaces the pixel\
+  \ by the local(3x3) minimum.\n</p>\n<p>It accepts the following options:\n</p>\n\
+  <dl compact=\"compact\">\n<dt><samp>threshold0</samp></dt>\n<dt><samp>threshold1</samp></dt>\n\
+  <dt><samp>threshold2</samp></dt>\n<dt><samp>threshold3</samp></dt>\n<dd><p>Limit\
+  \ the maximum change for each plane, default is 65535.\nIf 0, plane will remain\
+  \ unchanged.\n</p>\n</dd>\n<dt><samp>coordinates</samp></dt>\n<dd><p>Flag which\
+  \ specifies the pixel to refer to. Default is 255 i.e. all eight\npixels are used.\n\
+  </p>\n<p>Flags to local 3x3 coordinates maps like this:\n</p>\n<p>1 2 3\n    4 \
+  \  5\n    6 7 8\n</p></dd>\n</dl>\n\n"

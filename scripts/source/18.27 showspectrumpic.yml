@@ -1,0 +1,577 @@
+description: '18.27 showspectrumpic
+
+  Convert input audio to a single video frame, representing the audio frequency
+
+  spectrum.
+
+
+  The filter accepts the following options:'
+name: showspectrumpic
+parameters:
+- description: '<dd><p>Specify the video size for the output. For the syntax of this
+    option, check the
+
+    <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)"Video size" section
+    in the ffmpeg-utils manual</a>.
+
+    Default value is <code>4096x2048</code>.
+
+    </p>
+
+    </dd>'
+  name: size, s
+- description: "<dd><p>Specify display mode.\n</p>\n<p>It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>combined</samp>\u2019</dt>\n<dd><p>all\
+    \ channels are displayed in the same row\n</p></dd>\n<dt>\u2018<samp>separate</samp>\u2019\
+    </dt>\n<dd><p>all channels are displayed in separate rows\n</p></dd>\n</dl>\n\
+    <p>Default value is \u2018<samp>combined</samp>\u2019.\n</p>\n</dd>"
+  name: mode
+- description: "<dd><p>Specify display color mode.\n</p>\n<p>It accepts the following\
+    \ values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>channel</samp>\u2019\
+    </dt>\n<dd><p>each channel is displayed in a separate color\n</p></dd>\n<dt>\u2018\
+    <samp>intensity</samp>\u2019</dt>\n<dd><p>each channel is displayed using the\
+    \ same color scheme\n</p></dd>\n<dt>\u2018<samp>rainbow</samp>\u2019</dt>\n<dd><p>each\
+    \ channel is displayed using the rainbow color scheme\n</p></dd>\n<dt>\u2018<samp>moreland</samp>\u2019\
+    </dt>\n<dd><p>each channel is displayed using the moreland color scheme\n</p></dd>\n\
+    <dt>\u2018<samp>nebulae</samp>\u2019</dt>\n<dd><p>each channel is displayed using\
+    \ the nebulae color scheme\n</p></dd>\n<dt>\u2018<samp>fire</samp>\u2019</dt>\n\
+    <dd><p>each channel is displayed using the fire color scheme\n</p></dd>\n<dt>\u2018\
+    <samp>fiery</samp>\u2019</dt>\n<dd><p>each channel is displayed using the fiery\
+    \ color scheme\n</p></dd>\n<dt>\u2018<samp>fruit</samp>\u2019</dt>\n<dd><p>each\
+    \ channel is displayed using the fruit color scheme\n</p></dd>\n<dt>\u2018<samp>cool</samp>\u2019\
+    </dt>\n<dd><p>each channel is displayed using the cool color scheme\n</p></dd>\n\
+    <dt>\u2018<samp>magma</samp>\u2019</dt>\n<dd><p>each channel is displayed using\
+    \ the magma color scheme\n</p></dd>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n\
+    <dd><p>each channel is displayed using the green color scheme\n</p></dd>\n<dt>\u2018\
+    <samp>viridis</samp>\u2019</dt>\n<dd><p>each channel is displayed using the viridis\
+    \ color scheme\n</p></dd>\n<dt>\u2018<samp>plasma</samp>\u2019</dt>\n<dd><p>each\
+    \ channel is displayed using the plasma color scheme\n</p></dd>\n<dt>\u2018<samp>cividis</samp>\u2019\
+    </dt>\n<dd><p>each channel is displayed using the cividis color scheme\n</p></dd>\n\
+    <dt>\u2018<samp>terrain</samp>\u2019</dt>\n<dd><p>each channel is displayed using\
+    \ the terrain color scheme\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>intensity</samp>\u2019\
+    .\n</p>\n</dd>"
+  name: color
+- description: "<dd><p>Specify scale used for calculating intensity color values.\n\
+    </p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018\
+    <samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n<dt>\u2018<samp>sqrt</samp>\u2019\
+    </dt>\n<dd><p>square root, default\n</p></dd>\n<dt>\u2018<samp>cbrt</samp>\u2019\
+    </dt>\n<dd><p>cubic root\n</p></dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n\
+    </p></dd>\n<dt>\u2018<samp>4thrt</samp>\u2019</dt>\n<dd><p>4th root\n</p></dd>\n\
+    <dt>\u2018<samp>5thrt</samp>\u2019</dt>\n<dd><p>5th root\n</p></dd>\n</dl>\n<p>Default\
+    \ value is \u2018<samp>log</samp>\u2019.\n</p>\n</dd>"
+  name: scale
+- description: "<dd><p>Specify frequency scale.\n</p>\n<p>It accepts the following\
+    \ values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n\
+    <dd><p>linear\n</p></dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n\
+    </p></dd>\n</dl>\n<p>Default value is \u2018<samp>lin</samp>\u2019.\n</p>\n</dd>"
+  name: fscale
+- description: '<dd><p>Set saturation modifier for displayed colors. Negative values
+    provide
+
+    alternative color scheme. <code>0</code> is no saturation at all.
+
+    Saturation must be in [-10.0, 10.0] range.
+
+    Default value is <code>1</code>.
+
+    </p>
+
+    </dd>'
+  name: saturation
+- description: "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>hann</code>.\n\
+    </p>\n</dd>"
+  name: win_func
+- description: '<dd><p>Set orientation of time vs frequency axis. Can be <code>vertical</code>
+    or
+
+    <code>horizontal</code>. Default is <code>vertical</code>.
+
+    </p>
+
+    </dd>'
+  name: orientation
+- description: '<dd><p>Set scale gain for calculating intensity color values.
+
+    Default value is <code>1</code>.
+
+    </p>
+
+    </dd>'
+  name: gain
+- description: '<dd><p>Draw time and frequency axes and legends. Default is enabled.
+
+    </p>
+
+    </dd>'
+  name: legend
+- description: '<dd><p>Set color rotation, must be in [-1.0, 1.0] range.
+
+    Default value is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: rotation
+- description: '<dd><p>Set start frequency from which to display spectrogram. Default
+    is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: start
+- description: '<dd><p>Set stop frequency to which to display spectrogram. Default
+    is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: stop
+- description: '<dd><p>Set dynamic range used to calculate intensity color values.
+    Default is 120 dBFS.
+
+    Allowed range is from 10 to 200.
+
+    </p>
+
+    </dd>'
+  name: drange
+- description: '<dd><p>Set upper limit of input audio samples volume in dBFS. Default
+    is 0 dBFS.
+
+    Allowed range is from -100 to 100.
+
+    </p>
+
+    </dd>'
+  name: limit
+- description: '<dd><p>Set opacity strength when using pixel format output with alpha
+    component.
+
+    </p></dd>'
+  name: opacity
+ref: https://ffmpeg.org/ffmpeg-filters.html#showspectrumpic
+source: '<h3 class="section"><a href="#toc-showspectrumpic">18.27 showspectrumpic</a></h3>
+
+
+  <p>Convert input audio to a single video frame, representing the audio frequency
+
+  spectrum.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>size, s</samp></dt>
+
+  <dd><p>Specify the video size for the output. For the syntax of this option, check
+  the
+
+  <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot;
+  section in the ffmpeg-utils manual</a>.
+
+  Default value is <code>4096x2048</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Specify display mode.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>combined</samp>&rsquo;</dt>
+
+  <dd><p>all channels are displayed in the same row
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>separate</samp>&rsquo;</dt>
+
+  <dd><p>all channels are displayed in separate rows
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default value is &lsquo;<samp>combined</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>color</samp></dt>
+
+  <dd><p>Specify display color mode.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>channel</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed in a separate color
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>intensity</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the same color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>rainbow</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the rainbow color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>moreland</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the moreland color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>nebulae</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the nebulae color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>fire</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the fire color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>fiery</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the fiery color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>fruit</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the fruit color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>cool</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the cool color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>magma</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the magma color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>green</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the green color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>viridis</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the viridis color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>plasma</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the plasma color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>cividis</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the cividis color scheme
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>terrain</samp>&rsquo;</dt>
+
+  <dd><p>each channel is displayed using the terrain color scheme
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default value is &lsquo;<samp>intensity</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale</samp></dt>
+
+  <dd><p>Specify scale used for calculating intensity color values.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>lin</samp>&rsquo;</dt>
+
+  <dd><p>linear
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>sqrt</samp>&rsquo;</dt>
+
+  <dd><p>square root, default
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>cbrt</samp>&rsquo;</dt>
+
+  <dd><p>cubic root
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>log</samp>&rsquo;</dt>
+
+  <dd><p>logarithmic
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>4thrt</samp>&rsquo;</dt>
+
+  <dd><p>4th root
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>5thrt</samp>&rsquo;</dt>
+
+  <dd><p>5th root
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default value is &lsquo;<samp>log</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fscale</samp></dt>
+
+  <dd><p>Specify frequency scale.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>lin</samp>&rsquo;</dt>
+
+  <dd><p>linear
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>log</samp>&rsquo;</dt>
+
+  <dd><p>logarithmic
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is &lsquo;<samp>lin</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>saturation</samp></dt>
+
+  <dd><p>Set saturation modifier for displayed colors. Negative values provide
+
+  alternative color scheme. <code>0</code> is no saturation at all.
+
+  Saturation must be in [-10.0, 10.0] range.
+
+  Default value is <code>1</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>win_func</samp></dt>
+
+  <dd><p>Set window function.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>rect</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bartlett</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>hann</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>hanning</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>hamming</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>blackman</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>welch</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>flattop</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bharris</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bnuttall</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bhann</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>sine</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>nuttall</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>lanczos</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>gauss</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>tukey</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>dolph</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>cauchy</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>parzen</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>poisson</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bohman</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>kaiser</samp>&rsquo;</dt>
+
+  </dl>
+
+  <p>Default value is <code>hann</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>orientation</samp></dt>
+
+  <dd><p>Set orientation of time vs frequency axis. Can be <code>vertical</code> or
+
+  <code>horizontal</code>. Default is <code>vertical</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>gain</samp></dt>
+
+  <dd><p>Set scale gain for calculating intensity color values.
+
+  Default value is <code>1</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>legend</samp></dt>
+
+  <dd><p>Draw time and frequency axes and legends. Default is enabled.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rotation</samp></dt>
+
+  <dd><p>Set color rotation, must be in [-1.0, 1.0] range.
+
+  Default value is <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>start</samp></dt>
+
+  <dd><p>Set start frequency from which to display spectrogram. Default is <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>stop</samp></dt>
+
+  <dd><p>Set stop frequency to which to display spectrogram. Default is <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>drange</samp></dt>
+
+  <dd><p>Set dynamic range used to calculate intensity color values. Default is 120
+  dBFS.
+
+  Allowed range is from 10 to 200.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>limit</samp></dt>
+
+  <dd><p>Set upper limit of input audio samples volume in dBFS. Default is 0 dBFS.
+
+  Allowed range is from -100 to 100.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>opacity</samp></dt>
+
+  <dd><p>Set opacity strength when using pixel format output with alpha component.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

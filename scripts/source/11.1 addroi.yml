@@ -1,0 +1,234 @@
+description: '11.1 addroi
+
+  Mark a region of interest in a video frame.
+
+
+  The frame data is passed through unchanged, but metadata is attached
+
+  to the frame indicating regions of interest which can affect the
+
+  behaviour of later encoding.  Multiple regions can be marked by
+
+  applying the filter multiple times.'
+name: addroi
+parameters:
+- description: '<dd><p>Region distance in pixels from the left edge of the frame.
+
+    </p></dd>'
+  name: x
+- description: '<dd><p>Region distance in pixels from the top edge of the frame.
+
+    </p></dd>'
+  name: y
+- description: '<dd><p>Region width in pixels.
+
+    </p></dd>'
+  name: w
+- description: '<dd><p>Region height in pixels.
+
+    </p>
+
+    <p>The parameters <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are
+    expressions,
+
+    and may contain the following variables:
+
+    </p><dl compact="compact">
+
+    <dt><samp>iw</samp></dt>
+
+    <dd><p>Width of the input frame.
+
+    </p></dd>
+
+    <dt><samp>ih</samp></dt>
+
+    <dd><p>Height of the input frame.
+
+    </p></dd>
+
+    </dl>
+
+    </dd>'
+  name: h
+- description: '<dd><p>Quantisation offset to apply within the region.
+
+    </p>
+
+    <p>This must be a real value in the range -1 to +1.  A value of zero
+
+    indicates no quality change.  A negative value asks for better quality
+
+    (less quantisation), while a positive value asks for worse quality
+
+    (greater quantisation).
+
+    </p>
+
+    <p>The range is calibrated so that the extreme values indicate the
+
+    largest possible offset - if the rest of the frame is encoded with the
+
+    worst possible quality, an offset of -1 indicates that this region
+
+    should be encoded with the best possible quality anyway.  Intermediate
+
+    values are then interpolated in some codec-dependent way.
+
+    </p>
+
+    <p>For example, in 10-bit H.264 the quantisation parameter varies between
+
+    -12 and 51.  A typical qoffset value of -1/10 therefore indicates that
+
+    this region should be encoded with a QP around one-tenth of the full
+
+    range better than the rest of the frame.  So, if most of the frame
+
+    were to be encoded with a QP of around 30, this region would get a QP
+
+    of around 24 (an offset of approximately -1/10 * (51 - -12) = -6.3).
+
+    An extreme value of -1 would indicate that this region should be
+
+    encoded with the best possible quality regardless of the treatment of
+
+    the rest of the frame - that is, should be encoded at a QP of -12.
+
+    </p></dd>'
+  name: qoffset
+- description: '<dd><p>If set to true, remove any existing regions of interest marked
+    on the
+
+    frame before adding the new one.
+
+    </p></dd>'
+  name: clear
+ref: https://ffmpeg.org/ffmpeg-filters.html#addroi
+source: '<h3 class="section"><a href="#toc-addroi">11.1 addroi</a></h3>
+
+
+  <p>Mark a region of interest in a video frame.
+
+  </p>
+
+  <p>The frame data is passed through unchanged, but metadata is attached
+
+  to the frame indicating regions of interest which can affect the
+
+  behaviour of later encoding.  Multiple regions can be marked by
+
+  applying the filter multiple times.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>x</samp></dt>
+
+  <dd><p>Region distance in pixels from the left edge of the frame.
+
+  </p></dd>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>Region distance in pixels from the top edge of the frame.
+
+  </p></dd>
+
+  <dt><samp>w</samp></dt>
+
+  <dd><p>Region width in pixels.
+
+  </p></dd>
+
+  <dt><samp>h</samp></dt>
+
+  <dd><p>Region height in pixels.
+
+  </p>
+
+  <p>The parameters <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are
+  expressions,
+
+  and may contain the following variables:
+
+  </p><dl compact="compact">
+
+  <dt><samp>iw</samp></dt>
+
+  <dd><p>Width of the input frame.
+
+  </p></dd>
+
+  <dt><samp>ih</samp></dt>
+
+  <dd><p>Height of the input frame.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>qoffset</samp></dt>
+
+  <dd><p>Quantisation offset to apply within the region.
+
+  </p>
+
+  <p>This must be a real value in the range -1 to +1.  A value of zero
+
+  indicates no quality change.  A negative value asks for better quality
+
+  (less quantisation), while a positive value asks for worse quality
+
+  (greater quantisation).
+
+  </p>
+
+  <p>The range is calibrated so that the extreme values indicate the
+
+  largest possible offset - if the rest of the frame is encoded with the
+
+  worst possible quality, an offset of -1 indicates that this region
+
+  should be encoded with the best possible quality anyway.  Intermediate
+
+  values are then interpolated in some codec-dependent way.
+
+  </p>
+
+  <p>For example, in 10-bit H.264 the quantisation parameter varies between
+
+  -12 and 51.  A typical qoffset value of -1/10 therefore indicates that
+
+  this region should be encoded with a QP around one-tenth of the full
+
+  range better than the rest of the frame.  So, if most of the frame
+
+  were to be encoded with a QP of around 30, this region would get a QP
+
+  of around 24 (an offset of approximately -1/10 * (51 - -12) = -6.3).
+
+  An extreme value of -1 would indicate that this region should be
+
+  encoded with the best possible quality regardless of the treatment of
+
+  the rest of the frame - that is, should be encoded at a QP of -12.
+
+  </p></dd>
+
+  <dt><samp>clear</samp></dt>
+
+  <dd><p>If set to true, remove any existing regions of interest marked on the
+
+  frame before adding the new one.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

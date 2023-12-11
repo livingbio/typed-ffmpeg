@@ -1,0 +1,77 @@
+description: '11.133 iccgen
+
+  Generate ICC profiles and attach them to frames.
+
+
+  This filter accepts the following options:'
+name: iccgen
+parameters:
+- description: "<dd><p>Configure the colorspace that the ICC profile will be generated\
+    \ for. The\ndefault value of <code>auto</code> infers the value from the input\
+    \ frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See\
+    \ the <a href=\"#setparams\">setparams</a> filter for a list of possible values,\
+    \ but note that\n<code>unknown</code> are not valid values for this filter.\n\
+    </p>\n</dd>"
+  name: color_primaries
+- description: "<dd><p>Configure the colorspace that the ICC profile will be generated\
+    \ for. The\ndefault value of <code>auto</code> infers the value from the input\
+    \ frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See\
+    \ the <a href=\"#setparams\">setparams</a> filter for a list of possible values,\
+    \ but note that\n<code>unknown</code> are not valid values for this filter.\n\
+    </p>\n</dd>"
+  name: color_trc
+- description: '<dd><p>If true, an ICC profile will be generated even if it would
+    overwrite an
+
+    already existing ICC profile. Disabled by default.
+
+    </p></dd>'
+  name: force
+ref: https://ffmpeg.org/ffmpeg-filters.html#iccgen
+source: '<h3 class="section"><a href="#toc-iccgen">11.133 iccgen</a></h3>
+
+
+  <p>Generate ICC profiles and attach them to frames.
+
+  </p>
+
+  <p>This filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>color_primaries</samp></dt>
+
+  <dt><samp>color_trc</samp></dt>
+
+  <dd><p>Configure the colorspace that the ICC profile will be generated for. The
+
+  default value of <code>auto</code> infers the value from the input frame&rsquo;s
+  metadata,
+
+  defaulting to BT.709/sRGB as appropriate.
+
+  </p>
+
+  <p>See the <a href="#setparams">setparams</a> filter for a list of possible values,
+  but note that
+
+  <code>unknown</code> are not valid values for this filter.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>force</samp></dt>
+
+  <dd><p>If true, an ICC profile will be generated even if it would overwrite an
+
+  already existing ICC profile. Disabled by default.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

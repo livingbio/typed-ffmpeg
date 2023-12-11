@@ -1,0 +1,250 @@
+description: '11.119 histogram
+
+  Compute and draw a color distribution histogram for the input video.
+
+
+  The computed histogram is a representation of the color component
+
+  distribution in an image.
+
+
+  Standard histogram displays the color components distribution in an image.
+
+  Displays color graph for each color component. Shows distribution of
+
+  the Y, U, V, A or R, G, B components, depending on input format, in the
+
+  current frame. Below each graph a color component scale meter is shown.
+
+
+  The filter accepts the following options:'
+name: histogram
+parameters:
+- description: '<dd><p>Set height of level. Default value is <code>200</code>.
+
+    Allowed range is [50, 2048].
+
+    </p>
+
+    </dd>'
+  name: level_height
+- description: '<dd><p>Set height of color scale. Default value is <code>12</code>.
+
+    Allowed range is [0, 40].
+
+    </p>
+
+    </dd>'
+  name: scale_height
+- description: "<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>stack</samp>\u2019</dt>\n<dd><p>Per color\
+    \ component graphs are placed below each other.\n</p>\n</dd>\n<dt>\u2018<samp>parade</samp>\u2019\
+    </dt>\n<dd><p>Per color component graphs are placed side by side.\n</p>\n</dd>\n\
+    <dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dd><p>Presents information identical\
+    \ to that in the <code>parade</code>, except\nthat the graphs representing color\
+    \ components are superimposed directly\nover one another.\n</p></dd>\n</dl>\n\
+    <p>Default is <code>stack</code>.\n</p>\n</dd>"
+  name: display_mode
+- description: '<dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.
+
+    Default is <code>linear</code>.
+
+    </p>
+
+    </dd>'
+  name: levels_mode
+- description: '<dd><p>Set what color components to display.
+
+    Default is <code>7</code>.
+
+    </p>
+
+    </dd>'
+  name: components
+- description: '<dd><p>Set foreground opacity. Default is <code>0.7</code>.
+
+    </p>
+
+    </dd>'
+  name: fgopacity
+- description: '<dd><p>Set background opacity. Default is <code>0.5</code>.
+
+    </p>
+
+    </dd>'
+  name: bgopacity
+- description: "<dd><p>Set colors mode.\nIt accepts the following values:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>whiteonblack</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>blackonwhite</samp>\u2019</dt>\n<dt>\u2018<samp>whiteongray</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>blackongray</samp>\u2019</dt>\n<dt>\u2018<samp>coloronblack</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>coloronwhite</samp>\u2019</dt>\n<dt>\u2018<samp>colorongray</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>blackoncolor</samp>\u2019</dt>\n<dt>\u2018<samp>whiteoncolor</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>grayoncolor</samp>\u2019</dt>\n</dl>\n<p>Default is <code>whiteonblack</code>.\n\
+    </p></dd>"
+  name: colors_mode
+ref: https://ffmpeg.org/ffmpeg-filters.html#histogram
+source: '<h3 class="section"><a href="#toc-histogram-1">11.119 histogram</a></h3>
+
+
+  <p>Compute and draw a color distribution histogram for the input video.
+
+  </p>
+
+  <p>The computed histogram is a representation of the color component
+
+  distribution in an image.
+
+  </p>
+
+  <p>Standard histogram displays the color components distribution in an image.
+
+  Displays color graph for each color component. Shows distribution of
+
+  the Y, U, V, A or R, G, B components, depending on input format, in the
+
+  current frame. Below each graph a color component scale meter is shown.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>level_height</samp></dt>
+
+  <dd><p>Set height of level. Default value is <code>200</code>.
+
+  Allowed range is [50, 2048].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale_height</samp></dt>
+
+  <dd><p>Set height of color scale. Default value is <code>12</code>.
+
+  Allowed range is [0, 40].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>display_mode</samp></dt>
+
+  <dd><p>Set display mode.
+
+  It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>stack</samp>&rsquo;</dt>
+
+  <dd><p>Per color component graphs are placed below each other.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>parade</samp>&rsquo;</dt>
+
+  <dd><p>Per color component graphs are placed side by side.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>overlay</samp>&rsquo;</dt>
+
+  <dd><p>Presents information identical to that in the <code>parade</code>, except
+
+  that the graphs representing color components are superimposed directly
+
+  over one another.
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default is <code>stack</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>levels_mode</samp></dt>
+
+  <dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.
+
+  Default is <code>linear</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>components</samp></dt>
+
+  <dd><p>Set what color components to display.
+
+  Default is <code>7</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fgopacity</samp></dt>
+
+  <dd><p>Set foreground opacity. Default is <code>0.7</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>bgopacity</samp></dt>
+
+  <dd><p>Set background opacity. Default is <code>0.5</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>colors_mode</samp></dt>
+
+  <dd><p>Set colors mode.
+
+  It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>whiteonblack</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>blackonwhite</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>whiteongray</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>blackongray</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>coloronblack</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>coloronwhite</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>colorongray</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>blackoncolor</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>whiteoncolor</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>grayoncolor</samp>&rsquo;</dt>
+
+  </dl>
+
+  <p>Default is <code>whiteonblack</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

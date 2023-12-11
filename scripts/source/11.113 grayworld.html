@@ -1,0 +1,11 @@
+<h3 class="section"><a href="#toc-grayworld">11.113 grayworld</a></h3>
+<p>A color constancy filter that applies color correction based on the grayworld assumption
+</p>
+<p>See: <a href="https://www.researchgate.net/publication/275213614_A_New_Color_Correction_Method_for_Underwater_Imaging">https://www.researchgate.net/publication/275213614_A_New_Color_Correction_Method_for_Underwater_Imaging</a>
+</p>
+<p>The algorithm  uses linear light, so input
+data should be linearized beforehand (and possibly correctly tagged).
+</p>
+<div class="example">
+<pre class="example">ffmpeg -i INPUT -vf zscale=transfer=linear,grayworld,zscale=transfer=bt709,format=yuv420p OUTPUT
+</pre></div>

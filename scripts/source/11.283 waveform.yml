@@ -1,0 +1,597 @@
+description: '11.283 waveform
+
+  Video waveform monitor.
+
+
+  The waveform monitor plots color component intensity. By default luma
+
+  only. Each column of the waveform corresponds to a column of pixels in the
+
+  source video.
+
+
+  It accepts the following options:'
+name: waveform
+parameters:
+- description: '<dd><p>Can be either <code>row</code>, or <code>column</code>. Default
+    is <code>column</code>.
+
+    In row mode, the graph on the left side represents color component value 0 and
+
+    the right side represents value = 255. In column mode, the top side represents
+
+    color component value = 0 and bottom side represents value = 255.
+
+    </p>
+
+    </dd>'
+  name: mode, m
+- description: '<dd><p>Set intensity. Smaller values are useful to find out how many
+    values of the same
+
+    luminance are distributed across input rows/columns.
+
+    Default value is <code>0.04</code>. Allowed range is [0, 1].
+
+    </p>
+
+    </dd>'
+  name: intensity, i
+- description: '<dd><p>Set mirroring mode. <code>0</code> means unmirrored, <code>1</code>
+    means mirrored.
+
+    In mirrored mode, higher values will be represented on the left
+
+    side for <code>row</code> mode and at the top for <code>column</code> mode. Default
+    is
+
+    <code>1</code> (mirrored).
+
+    </p>
+
+    </dd>'
+  name: mirror, r
+- description: "<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dd><p>Presents\
+    \ information identical to that in the <code>parade</code>, except\nthat the graphs\
+    \ representing color components are superimposed directly\nover one another.\n\
+    </p>\n<p>This display mode makes it easier to spot relative differences or similarities\n\
+    in overlapping areas of the color components that are supposed to be identical,\n\
+    such as neutral whites, grays, or blacks.\n</p>\n</dd>\n<dt>\u2018<samp>stack</samp>\u2019\
+    </dt>\n<dd><p>Display separate graph for the color components side by side in\n\
+    <code>row</code> mode or one below the other in <code>column</code> mode.\n</p>\n\
+    </dd>\n<dt>\u2018<samp>parade</samp>\u2019</dt>\n<dd><p>Display separate graph\
+    \ for the color components side by side in\n<code>column</code> mode or one below\
+    \ the other in <code>row</code> mode.\n</p>\n<p>Using this display mode makes\
+    \ it easy to spot color casts in the highlights\nand shadows of an image, by comparing\
+    \ the contours of the top and the bottom\ngraphs of each waveform. Since whites,\
+    \ grays, and blacks are characterized\nby exactly equal amounts of red, green,\
+    \ and blue, neutral areas of the picture\nshould display three waveforms of roughly\
+    \ equal width/height. If not, the\ncorrection is easy to perform by making level\
+    \ adjustments the three waveforms.\n</p></dd>\n</dl>\n<p>Default is <code>stack</code>.\n\
+    </p>\n</dd>"
+  name: display, d
+- description: '<dd><p>Set which color components to display. Default is 1, which
+    means only luma
+
+    or red color component if input is in RGB colorspace. If is set for example to
+
+    7 it will display all 3 (if) available color components.
+
+    </p>
+
+    </dd>'
+  name: components, c
+- description: "<dd><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n\
+    <dd><p>No envelope, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>instant</samp>\u2019\
+    </dt>\n<dd><p>Instant envelope, minimum and maximum values presented in graph\
+    \ will be easily\nvisible even with small <code>step</code> value.\n</p>\n</dd>\n\
+    <dt>\u2018<samp>peak</samp>\u2019</dt>\n<dd><p>Hold minimum and maximum values\
+    \ presented in graph across time. This way you\ncan still spot out of range values\
+    \ without constantly looking at waveforms.\n</p>\n</dd>\n<dt>\u2018<samp>peak+instant</samp>\u2019\
+    </dt>\n<dd><p>Peak and instant envelope combined together.\n</p></dd>\n</dl>\n\
+    </dd>"
+  name: envelope, e
+- description: "<dd><dl compact=\"compact\">\n<dt>\u2018<samp>lowpass</samp>\u2019\
+    </dt>\n<dd><p>No filtering, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>flat</samp>\u2019\
+    </dt>\n<dd><p>Luma and chroma combined together.\n</p>\n</dd>\n<dt>\u2018<samp>aflat</samp>\u2019\
+    </dt>\n<dd><p>Similar as above, but shows difference between blue and red chroma.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>xflat</samp>\u2019</dt>\n<dd><p>Similar as above,\
+    \ but use different colors.\n</p>\n</dd>\n<dt>\u2018<samp>yflat</samp>\u2019</dt>\n\
+    <dd><p>Similar as above, but again with different colors.\n</p>\n</dd>\n<dt>\u2018\
+    <samp>chroma</samp>\u2019</dt>\n<dd><p>Displays only chroma.\n</p>\n</dd>\n<dt>\u2018\
+    <samp>color</samp>\u2019</dt>\n<dd><p>Displays actual color value on waveform.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>acolor</samp>\u2019</dt>\n<dd><p>Similar as above,\
+    \ but with luma showing frequency of chroma values.\n</p></dd>\n</dl>\n</dd>"
+  name: filter, f
+- description: "<dd><p>Set which graticule to display.\n</p>\n<dl compact=\"compact\"\
+    >\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do not display graticule.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dd><p>Display green graticule\
+    \ showing legal broadcast ranges.\n</p>\n</dd>\n<dt>\u2018<samp>orange</samp>\u2019\
+    </dt>\n<dd><p>Display orange graticule showing legal broadcast ranges.\n</p>\n\
+    </dd>\n<dt>\u2018<samp>invert</samp>\u2019</dt>\n<dd><p>Display invert graticule\
+    \ showing legal broadcast ranges.\n</p></dd>\n</dl>\n</dd>"
+  name: graticule, g
+- description: '<dd><p>Set graticule opacity.
+
+    </p>
+
+    </dd>'
+  name: opacity, o
+- description: "<dd><p>Set graticule flags.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018\
+    <samp>numbers</samp>\u2019</dt>\n<dd><p>Draw numbers above lines. By default enabled.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>dots</samp>\u2019</dt>\n<dd><p>Draw dots instead\
+    \ of lines.\n</p></dd>\n</dl>\n</dd>"
+  name: flags, fl
+- description: "<dd><p>Set scale used for displaying graticule.\n</p>\n<dl compact=\"\
+    compact\">\n<dt>\u2018<samp>digital</samp>\u2019</dt>\n<dt>\u2018<samp>millivolts</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>ire</samp>\u2019</dt>\n</dl>\n<p>Default is digital.\n\
+    </p>\n</dd>"
+  name: scale, s
+- description: '<dd><p>Set background opacity.
+
+    </p>
+
+    </dd>'
+  name: bgopacity, b
+- description: '<dd><p>Set tint for output.
+
+    Only used with lowpass filter and when display is not overlay and input
+
+    pixel formats are not RGB.
+
+    </p>
+
+    </dd>'
+  name: tint0, t0
+- description: '<dd><p>Set tint for output.
+
+    Only used with lowpass filter and when display is not overlay and input
+
+    pixel formats are not RGB.
+
+    </p>
+
+    </dd>'
+  name: tint1, t1
+- description: "<dd><p>Set sample aspect ratio of video output frames.\nCan be used\
+    \ to configure waveform so it is not\nstreched too much in one of directions.\n\
+    </p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Set\
+    \ sample aspect ration to 1/1.\n</p></dd>\n<dt>\u2018<samp>size</samp>\u2019</dt>\n\
+    <dd><p>Set sample aspect ratio to match input size of video\n</p></dd>\n</dl>\n\
+    <p>Default is \u2018<samp>none</samp>\u2019.\n</p>\n</dd>"
+  name: fitmode, fm
+- description: "<dd><p>Set input formats for filter to pick from.\nCan be \u2018<samp>all</samp>\u2019\
+    , for selecting from all available formats,\nor \u2018<samp>first</samp>\u2019\
+    , for selecting first available format.\nDefault is \u2018<samp>first</samp>\u2019\
+    .\n</p></dd>"
+  name: input
+ref: https://ffmpeg.org/ffmpeg-filters.html#waveform
+source: '<h3 class="section"><a href="#toc-waveform">11.283 waveform</a></h3>
+
+  <p>Video waveform monitor.
+
+  </p>
+
+  <p>The waveform monitor plots color component intensity. By default luma
+
+  only. Each column of the waveform corresponds to a column of pixels in the
+
+  source video.
+
+  </p>
+
+  <p>It accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>mode, m</samp></dt>
+
+  <dd><p>Can be either <code>row</code>, or <code>column</code>. Default is <code>column</code>.
+
+  In row mode, the graph on the left side represents color component value 0 and
+
+  the right side represents value = 255. In column mode, the top side represents
+
+  color component value = 0 and bottom side represents value = 255.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>intensity, i</samp></dt>
+
+  <dd><p>Set intensity. Smaller values are useful to find out how many values of the
+  same
+
+  luminance are distributed across input rows/columns.
+
+  Default value is <code>0.04</code>. Allowed range is [0, 1].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mirror, r</samp></dt>
+
+  <dd><p>Set mirroring mode. <code>0</code> means unmirrored, <code>1</code> means
+  mirrored.
+
+  In mirrored mode, higher values will be represented on the left
+
+  side for <code>row</code> mode and at the top for <code>column</code> mode. Default
+  is
+
+  <code>1</code> (mirrored).
+
+  </p>
+
+  </dd>
+
+  <dt><samp>display, d</samp></dt>
+
+  <dd><p>Set display mode.
+
+  It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>overlay</samp>&rsquo;</dt>
+
+  <dd><p>Presents information identical to that in the <code>parade</code>, except
+
+  that the graphs representing color components are superimposed directly
+
+  over one another.
+
+  </p>
+
+  <p>This display mode makes it easier to spot relative differences or similarities
+
+  in overlapping areas of the color components that are supposed to be identical,
+
+  such as neutral whites, grays, or blacks.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>stack</samp>&rsquo;</dt>
+
+  <dd><p>Display separate graph for the color components side by side in
+
+  <code>row</code> mode or one below the other in <code>column</code> mode.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>parade</samp>&rsquo;</dt>
+
+  <dd><p>Display separate graph for the color components side by side in
+
+  <code>column</code> mode or one below the other in <code>row</code> mode.
+
+  </p>
+
+  <p>Using this display mode makes it easy to spot color casts in the highlights
+
+  and shadows of an image, by comparing the contours of the top and the bottom
+
+  graphs of each waveform. Since whites, grays, and blacks are characterized
+
+  by exactly equal amounts of red, green, and blue, neutral areas of the picture
+
+  should display three waveforms of roughly equal width/height. If not, the
+
+  correction is easy to perform by making level adjustments the three waveforms.
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default is <code>stack</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>components, c</samp></dt>
+
+  <dd><p>Set which color components to display. Default is 1, which means only luma
+
+  or red color component if input is in RGB colorspace. If is set for example to
+
+  7 it will display all 3 (if) available color components.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>envelope, e</samp></dt>
+
+  <dd><dl compact="compact">
+
+  <dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+
+  <dd><p>No envelope, this is default.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>instant</samp>&rsquo;</dt>
+
+  <dd><p>Instant envelope, minimum and maximum values presented in graph will be easily
+
+  visible even with small <code>step</code> value.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>peak</samp>&rsquo;</dt>
+
+  <dd><p>Hold minimum and maximum values presented in graph across time. This way
+  you
+
+  can still spot out of range values without constantly looking at waveforms.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>peak+instant</samp>&rsquo;</dt>
+
+  <dd><p>Peak and instant envelope combined together.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>filter, f</samp></dt>
+
+  <dd><dl compact="compact">
+
+  <dt>&lsquo;<samp>lowpass</samp>&rsquo;</dt>
+
+  <dd><p>No filtering, this is default.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>flat</samp>&rsquo;</dt>
+
+  <dd><p>Luma and chroma combined together.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>aflat</samp>&rsquo;</dt>
+
+  <dd><p>Similar as above, but shows difference between blue and red chroma.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>xflat</samp>&rsquo;</dt>
+
+  <dd><p>Similar as above, but use different colors.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>yflat</samp>&rsquo;</dt>
+
+  <dd><p>Similar as above, but again with different colors.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>chroma</samp>&rsquo;</dt>
+
+  <dd><p>Displays only chroma.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>color</samp>&rsquo;</dt>
+
+  <dd><p>Displays actual color value on waveform.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>acolor</samp>&rsquo;</dt>
+
+  <dd><p>Similar as above, but with luma showing frequency of chroma values.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>graticule, g</samp></dt>
+
+  <dd><p>Set which graticule to display.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+
+  <dd><p>Do not display graticule.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>green</samp>&rsquo;</dt>
+
+  <dd><p>Display green graticule showing legal broadcast ranges.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>orange</samp>&rsquo;</dt>
+
+  <dd><p>Display orange graticule showing legal broadcast ranges.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>invert</samp>&rsquo;</dt>
+
+  <dd><p>Display invert graticule showing legal broadcast ranges.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>opacity, o</samp></dt>
+
+  <dd><p>Set graticule opacity.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>flags, fl</samp></dt>
+
+  <dd><p>Set graticule flags.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>numbers</samp>&rsquo;</dt>
+
+  <dd><p>Draw numbers above lines. By default enabled.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>dots</samp>&rsquo;</dt>
+
+  <dd><p>Draw dots instead of lines.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>scale, s</samp></dt>
+
+  <dd><p>Set scale used for displaying graticule.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>digital</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>millivolts</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>ire</samp>&rsquo;</dt>
+
+  </dl>
+
+  <p>Default is digital.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>bgopacity, b</samp></dt>
+
+  <dd><p>Set background opacity.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>tint0, t0</samp></dt>
+
+  <dt><samp>tint1, t1</samp></dt>
+
+  <dd><p>Set tint for output.
+
+  Only used with lowpass filter and when display is not overlay and input
+
+  pixel formats are not RGB.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fitmode, fm</samp></dt>
+
+  <dd><p>Set sample aspect ratio of video output frames.
+
+  Can be used to configure waveform so it is not
+
+  streched too much in one of directions.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+
+  <dd><p>Set sample aspect ration to 1/1.
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>size</samp>&rsquo;</dt>
+
+  <dd><p>Set sample aspect ratio to match input size of video
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default is &lsquo;<samp>none</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>input</samp></dt>
+
+  <dd><p>Set input formats for filter to pick from.
+
+  Can be &lsquo;<samp>all</samp>&rsquo;, for selecting from all available formats,
+
+  or &lsquo;<samp>first</samp>&rsquo;, for selecting first available format.
+
+  Default is &lsquo;<samp>first</samp>&rsquo;.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

@@ -1,0 +1,100 @@
+description: '9.9 hilbert
+
+  Generate odd-tap Hilbert transform FIR coefficients.
+
+
+  The resulting stream can be used with afir filter for phase-shifting
+
+  the signal by 90 degrees.
+
+
+  This is used in many matrix coding schemes and for analytic signal generation.
+
+  The process is often written as a multiplication by i (or j), the imaginary unit.
+
+
+  The filter accepts the following options:'
+name: hilbert
+parameters:
+- description: '<dd><p>Set sample rate, default is 44100.
+
+    </p>
+
+    </dd>'
+  name: sample_rate, s
+- description: '<dd><p>Set length of FIR filter, default is 22051.
+
+    </p>
+
+    </dd>'
+  name: taps, t
+- description: '<dd><p>Set number of samples per each frame.
+
+    </p>
+
+    </dd>'
+  name: nb_samples, n
+- description: '<dd><p>Set window function to be used when generating FIR coefficients.
+
+    </p></dd>'
+  name: win_func, w
+ref: https://ffmpeg.org/ffmpeg-filters.html#hilbert
+source: '<h3 class="section"><a href="#toc-hilbert">9.9 hilbert</a></h3>
+
+
+  <p>Generate odd-tap Hilbert transform FIR coefficients.
+
+  </p>
+
+  <p>The resulting stream can be used with <a href="#afir">afir</a> filter for phase-shifting
+
+  the signal by 90 degrees.
+
+  </p>
+
+  <p>This is used in many matrix coding schemes and for analytic signal generation.
+
+  The process is often written as a multiplication by i (or j), the imaginary unit.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>sample_rate, s</samp></dt>
+
+  <dd><p>Set sample rate, default is 44100.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>taps, t</samp></dt>
+
+  <dd><p>Set length of FIR filter, default is 22051.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>nb_samples, n</samp></dt>
+
+  <dd><p>Set number of samples per each frame.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>win_func, w</samp></dt>
+
+  <dd><p>Set window function to be used when generating FIR coefficients.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

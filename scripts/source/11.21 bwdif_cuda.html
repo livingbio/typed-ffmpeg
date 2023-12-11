@@ -1,0 +1,61 @@
+<h3 class="section"><a href="#toc-bwdif_005fcuda">11.21 bwdif_cuda</a></h3>
+
+<p>Deinterlace the input video using the <a href="#bwdif">bwdif</a> algorithm, but implemented
+in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec
+and/or nvenc.
+</p>
+<p>It accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>mode</samp></dt>
+<dd><p>The interlacing mode to adopt. It accepts one of the following values:
+</p>
+<dl compact="compact">
+<dt><samp>0, send_frame</samp></dt>
+<dd><p>Output one frame for each frame.
+</p></dd>
+<dt><samp>1, send_field</samp></dt>
+<dd><p>Output one frame for each field.
+</p></dd>
+</dl>
+
+<p>The default value is <code>send_field</code>.
+</p>
+</dd>
+<dt><samp>parity</samp></dt>
+<dd><p>The picture field parity assumed for the input interlaced video. It accepts one
+of the following values:
+</p>
+<dl compact="compact">
+<dt><samp>0, tff</samp></dt>
+<dd><p>Assume the top field is first.
+</p></dd>
+<dt><samp>1, bff</samp></dt>
+<dd><p>Assume the bottom field is first.
+</p></dd>
+<dt><samp>-1, auto</samp></dt>
+<dd><p>Enable automatic detection of field parity.
+</p></dd>
+</dl>
+
+<p>The default value is <code>auto</code>.
+If the interlacing is unknown or the decoder does not export this information,
+top field first will be assumed.
+</p>
+</dd>
+<dt><samp>deint</samp></dt>
+<dd><p>Specify which frames to deinterlace. Accepts one of the following
+values:
+</p>
+<dl compact="compact">
+<dt><samp>0, all</samp></dt>
+<dd><p>Deinterlace all frames.
+</p></dd>
+<dt><samp>1, interlaced</samp></dt>
+<dd><p>Only deinterlace frames marked as interlaced.
+</p></dd>
+</dl>
+
+<p>The default value is <code>all</code>.
+</p></dd>
+</dl>

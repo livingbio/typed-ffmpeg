@@ -1,0 +1,209 @@
+description: '18.9 concat
+
+  Concatenate audio and video streams, joining them together one after the
+
+  other.
+
+
+  The filter works on segments of synchronized video and audio streams. All
+
+  segments must have the same number of streams of each type, and that will
+
+  also be the number of streams at output.
+
+
+  The filter accepts the following options:
+
+
+
+  The filter has v+a outputs: first v video outputs, then
+
+  a audio outputs.
+
+
+  There are nx(v+a) inputs: first the inputs for the first
+
+  segment, in the same order as the outputs, then the inputs for the second
+
+  segment, etc.
+
+
+  Related streams do not always have exactly the same duration, for various
+
+  reasons including codec frame size or sloppy authoring. For that reason,
+
+  related synchronized streams (e.g. a video and its audio track) should be
+
+  concatenated at once. The concat filter will use the duration of the longest
+
+  stream in each segment (except the last one), and if necessary pad shorter
+
+  audio streams with silence.
+
+
+  For this filter to work correctly, all segments must start at timestamp 0.
+
+
+  All corresponding streams must have the same parameters in all segments; the
+
+  filtering system will automatically select a common pixel format for video
+
+  streams, and a common sample format, sample rate and channel layout for
+
+  audio streams, but other settings, such as resolution, must be converted
+
+  explicitly by the user.
+
+
+  Different frame rates are acceptable but will result in variable frame rate
+
+  at output; be sure to configure the output file to handle it.'
+name: concat
+parameters:
+- description: '<dd><p>Set the number of segments. Default is 2.
+
+    </p>
+
+    </dd>'
+  name: n
+- description: '<dd><p>Set the number of output video streams, that is also the number
+    of video
+
+    streams in each segment. Default is 1.
+
+    </p>
+
+    </dd>'
+  name: v
+- description: '<dd><p>Set the number of output audio streams, that is also the number
+    of audio
+
+    streams in each segment. Default is 0.
+
+    </p>
+
+    </dd>'
+  name: a
+- description: '<dd><p>Activate unsafe mode: do not fail if segments have a different
+    format.
+
+    </p>
+
+    </dd>'
+  name: unsafe
+ref: https://ffmpeg.org/ffmpeg-filters.html#concat
+source: '<h3 class="section"><a href="#toc-concat">18.9 concat</a></h3>
+
+
+  <p>Concatenate audio and video streams, joining them together one after the
+
+  other.
+
+  </p>
+
+  <p>The filter works on segments of synchronized video and audio streams. All
+
+  segments must have the same number of streams of each type, and that will
+
+  also be the number of streams at output.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>n</samp></dt>
+
+  <dd><p>Set the number of segments. Default is 2.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>v</samp></dt>
+
+  <dd><p>Set the number of output video streams, that is also the number of video
+
+  streams in each segment. Default is 1.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>a</samp></dt>
+
+  <dd><p>Set the number of output audio streams, that is also the number of audio
+
+  streams in each segment. Default is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>unsafe</samp></dt>
+
+  <dd><p>Activate unsafe mode: do not fail if segments have a different format.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  <p>The filter has <var>v</var>+<var>a</var> outputs: first <var>v</var> video outputs,
+  then
+
+  <var>a</var> audio outputs.
+
+  </p>
+
+  <p>There are <var>n</var>x(<var>v</var>+<var>a</var>) inputs: first the inputs for
+  the first
+
+  segment, in the same order as the outputs, then the inputs for the second
+
+  segment, etc.
+
+  </p>
+
+  <p>Related streams do not always have exactly the same duration, for various
+
+  reasons including codec frame size or sloppy authoring. For that reason,
+
+  related synchronized streams (e.g. a video and its audio track) should be
+
+  concatenated at once. The concat filter will use the duration of the longest
+
+  stream in each segment (except the last one), and if necessary pad shorter
+
+  audio streams with silence.
+
+  </p>
+
+  <p>For this filter to work correctly, all segments must start at timestamp 0.
+
+  </p>
+
+  <p>All corresponding streams must have the same parameters in all segments; the
+
+  filtering system will automatically select a common pixel format for video
+
+  streams, and a common sample format, sample rate and channel layout for
+
+  audio streams, but other settings, such as resolution, must be converted
+
+  explicitly by the user.
+
+  </p>
+
+  <p>Different frame rates are acceptable but will result in variable frame rate
+
+  at output; be sure to configure the output file to handle it.
+
+  </p>
+
+  '

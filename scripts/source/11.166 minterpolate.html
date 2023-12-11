@@ -1,0 +1,116 @@
+<h3 class="section"><a href="#toc-minterpolate">11.166 minterpolate</a></h3>
+
+<p>Convert the video to specified frame rate using motion interpolation.
+</p>
+<p>This filter accepts the following options:
+</p><dl compact="compact">
+<dt><samp>fps</samp></dt>
+<dd><p>Specify the output frame rate. This can be rational e.g. <code>60000/1001</code>. Frames are dropped if <var>fps</var> is lower than source fps. Default <code>60</code>.
+</p>
+</dd>
+<dt><samp>mi_mode</samp></dt>
+<dd><p>Motion interpolation mode. Following values are accepted:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>dup</samp>&rsquo;</dt>
+<dd><p>Duplicate previous or next frame for interpolating new ones.
+</p></dd>
+<dt>&lsquo;<samp>blend</samp>&rsquo;</dt>
+<dd><p>Blend source frames. Interpolated frame is mean of previous and next frames.
+</p></dd>
+<dt>&lsquo;<samp>mci</samp>&rsquo;</dt>
+<dd><p>Motion compensated interpolation. Following options are effective when this mode is selected:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>mc_mode</samp>&rsquo;</dt>
+<dd><p>Motion compensation mode. Following values are accepted:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>obmc</samp>&rsquo;</dt>
+<dd><p>Overlapped block motion compensation.
+</p></dd>
+<dt>&lsquo;<samp>aobmc</samp>&rsquo;</dt>
+<dd><p>Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.
+</p></dd>
+</dl>
+<p>Default mode is &lsquo;<samp>obmc</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>me_mode</samp>&rsquo;</dt>
+<dd><p>Motion estimation mode. Following values are accepted:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>bidir</samp>&rsquo;</dt>
+<dd><p>Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.
+</p></dd>
+<dt>&lsquo;<samp>bilat</samp>&rsquo;</dt>
+<dd><p>Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.
+</p></dd>
+</dl>
+<p>Default mode is &lsquo;<samp>bilat</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>me</samp>&rsquo;</dt>
+<dd><p>The algorithm to be used for motion estimation. Following values are accepted:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>esa</samp>&rsquo;</dt>
+<dd><p>Exhaustive search algorithm.
+</p></dd>
+<dt>&lsquo;<samp>tss</samp>&rsquo;</dt>
+<dd><p>Three step search algorithm.
+</p></dd>
+<dt>&lsquo;<samp>tdls</samp>&rsquo;</dt>
+<dd><p>Two dimensional logarithmic search algorithm.
+</p></dd>
+<dt>&lsquo;<samp>ntss</samp>&rsquo;</dt>
+<dd><p>New three step search algorithm.
+</p></dd>
+<dt>&lsquo;<samp>fss</samp>&rsquo;</dt>
+<dd><p>Four step search algorithm.
+</p></dd>
+<dt>&lsquo;<samp>ds</samp>&rsquo;</dt>
+<dd><p>Diamond search algorithm.
+</p></dd>
+<dt>&lsquo;<samp>hexbs</samp>&rsquo;</dt>
+<dd><p>Hexagon-based search algorithm.
+</p></dd>
+<dt>&lsquo;<samp>epzs</samp>&rsquo;</dt>
+<dd><p>Enhanced predictive zonal search algorithm.
+</p></dd>
+<dt>&lsquo;<samp>umh</samp>&rsquo;</dt>
+<dd><p>Uneven multi-hexagon search algorithm.
+</p></dd>
+</dl>
+<p>Default algorithm is &lsquo;<samp>epzs</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>mb_size</samp>&rsquo;</dt>
+<dd><p>Macroblock size. Default <code>16</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>search_param</samp>&rsquo;</dt>
+<dd><p>Motion estimation search parameter. Default <code>32</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>vsbmc</samp>&rsquo;</dt>
+<dd><p>Enable variable-size block motion compensation. Motion estimation is applied with smaller block sizes at object boundaries in order to make the them less blur. Default is <code>0</code> (disabled).
+</p></dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+<dt><samp>scd</samp></dt>
+<dd><p>Scene change detection method. Scene change leads motion vectors to be in random direction. Scene change detection replace interpolated frames by duplicate ones. May not be needed for other modes. Following values are accepted:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+<dd><p>Disable scene change detection.
+</p></dd>
+<dt>&lsquo;<samp>fdiff</samp>&rsquo;</dt>
+<dd><p>Frame difference. Corresponding pixel values are compared and if it satisfies <var>scd_threshold</var> scene change is detected.
+</p></dd>
+</dl>
+<p>Default method is &lsquo;<samp>fdiff</samp>&rsquo;.
+</p>
+</dd>
+<dt><samp>scd_threshold</samp></dt>
+<dd><p>Scene change detection threshold. Default is <code>10.</code>.
+</p></dd>
+</dl>

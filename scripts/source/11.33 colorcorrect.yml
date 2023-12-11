@@ -1,0 +1,156 @@
+description: '11.33 colorcorrect
+
+  Adjust color white balance selectively for blacks and whites.
+
+  This filter operates in YUV colorspace.
+
+
+  The filter accepts the following options:'
+name: colorcorrect
+parameters:
+- description: '<dd><p>Set the red shadow spot. Allowed range is from -1.0 to 1.0.
+
+    Default value is 0.
+
+    </p>
+
+    </dd>'
+  name: rl
+- description: '<dd><p>Set the blue shadow spot. Allowed range is from -1.0 to 1.0.
+
+    Default value is 0.
+
+    </p>
+
+    </dd>'
+  name: bl
+- description: '<dd><p>Set the red highlight spot. Allowed range is from -1.0 to 1.0.
+
+    Default value is 0.
+
+    </p>
+
+    </dd>'
+  name: rh
+- description: '<dd><p>Set the blue highlight spot. Allowed range is from -1.0 to
+    1.0.
+
+    Default value is 0.
+
+    </p>
+
+    </dd>'
+  name: bh
+- description: '<dd><p>Set the amount of saturation. Allowed range is from -3.0 to
+    3.0.
+
+    Default value is 1.
+
+    </p>
+
+    </dd>'
+  name: saturation
+- description: "<dd><p>If set to anything other than <code>manual</code> it will analyze\
+    \ every frame and use derived\nparameters for filtering output frame.\n</p>\n\
+    <p>Possible values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>manual</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>minmax</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>median</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>manual</code>.\n\
+    </p></dd>"
+  name: analyze
+ref: https://ffmpeg.org/ffmpeg-filters.html#colorcorrect
+source: '<h3 class="section"><a href="#toc-colorcorrect">11.33 colorcorrect</a></h3>
+
+
+  <p>Adjust color white balance selectively for blacks and whites.
+
+  This filter operates in YUV colorspace.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>rl</samp></dt>
+
+  <dd><p>Set the red shadow spot. Allowed range is from -1.0 to 1.0.
+
+  Default value is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>bl</samp></dt>
+
+  <dd><p>Set the blue shadow spot. Allowed range is from -1.0 to 1.0.
+
+  Default value is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rh</samp></dt>
+
+  <dd><p>Set the red highlight spot. Allowed range is from -1.0 to 1.0.
+
+  Default value is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>bh</samp></dt>
+
+  <dd><p>Set the blue highlight spot. Allowed range is from -1.0 to 1.0.
+
+  Default value is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>saturation</samp></dt>
+
+  <dd><p>Set the amount of saturation. Allowed range is from -3.0 to 3.0.
+
+  Default value is 1.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>analyze</samp></dt>
+
+  <dd><p>If set to anything other than <code>manual</code> it will analyze every frame
+  and use derived
+
+  parameters for filtering output frame.
+
+  </p>
+
+  <p>Possible values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>manual</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>average</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>minmax</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>median</samp>&rsquo;</dt>
+
+  </dl>
+
+  <p>Default value is <code>manual</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

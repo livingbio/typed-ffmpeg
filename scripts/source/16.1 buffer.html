@@ -1,0 +1,68 @@
+<h3 class="section"><a href="#toc-buffer">16.1 buffer</a></h3>
+
+<p>Buffer video frames, and make them available to the filter chain.
+</p>
+<p>This source is mainly intended for a programmatic use, in particular
+through the interface defined in <samp>libavfilter/buffersrc.h</samp>.
+</p>
+<p>It accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>video_size</samp></dt>
+<dd><p>Specify the size (width and height) of the buffered video frames. For the
+syntax of this option, check the
+<a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot; section in the ffmpeg-utils manual</a>.
+</p>
+</dd>
+<dt><samp>width</samp></dt>
+<dd><p>The input video width.
+</p>
+</dd>
+<dt><samp>height</samp></dt>
+<dd><p>The input video height.
+</p>
+</dd>
+<dt><samp>pix_fmt</samp></dt>
+<dd><p>A string representing the pixel format of the buffered video frames.
+It may be a number corresponding to a pixel format, or a pixel format
+name.
+</p>
+</dd>
+<dt><samp>time_base</samp></dt>
+<dd><p>Specify the timebase assumed by the timestamps of the buffered frames.
+</p>
+</dd>
+<dt><samp>frame_rate</samp></dt>
+<dd><p>Specify the frame rate expected for the video stream.
+</p>
+</dd>
+<dt><samp>pixel_aspect, sar</samp></dt>
+<dd><p>The sample (pixel) aspect ratio of the input video.
+</p>
+</dd>
+<dt><samp>hw_frames_ctx</samp></dt>
+<dd><p>When using a hardware pixel format, this should be a reference to an
+AVHWFramesContext describing input frames.
+</p></dd>
+</dl>
+
+<p>For example:
+</p><div class="example">
+<pre class="example">buffer=width=320:height=240:pix_fmt=yuv410p:time_base=1/24:sar=1
+</pre></div>
+
+<p>will instruct the source to accept video frames with size 320x240 and
+with format &quot;yuv410p&quot;, assuming 1/24 as the timestamps timebase and
+square pixels (1:1 sample aspect ratio).
+Since the pixel format with name &quot;yuv410p&quot; corresponds to the number 6
+(check the enum AVPixelFormat definition in <samp>libavutil/pixfmt.h</samp>),
+this example corresponds to:
+</p><div class="example">
+<pre class="example">buffer=size=320x240:pixfmt=6:time_base=1/24:pixel_aspect=1/1
+</pre></div>
+
+<p>Alternatively, the options can be specified as a flat string, but this
+syntax is deprecated:
+</p>
+<p><var>width</var>:<var>height</var>:<var>pix_fmt</var>:<var>time_base.num</var>:<var>time_base.den</var>:<var>pixel_aspect.num</var>:<var>pixel_aspect.den</var>
+</p>

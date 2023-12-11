@@ -1,0 +1,76 @@
+description: '11.284 weave, doubleweave
+
+  The weave takes a field-based video input and join
+
+  each two sequential fields into single frame, producing a new double
+
+  height clip with half the frame rate and half the frame count.
+
+
+  The doubleweave works same as weave but without
+
+  halving frame rate and frame count.
+
+
+  It accepts the following option:'
+name: doubleweave
+parameters:
+- description: "<dd><p>Set first field. Available values are:\n</p>\n<dl compact=\"\
+    compact\">\n<dt>\u2018<samp>top, t</samp>\u2019</dt>\n<dd><p>Set the frame as\
+    \ top-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>bottom, b</samp>\u2019</dt>\n\
+    <dd><p>Set the frame as bottom-field-first.\n</p></dd>\n</dl>\n</dd>"
+  name: first_field
+ref: https://ffmpeg.org/ffmpeg-filters.html#weave_002c
+source: '<h3 class="section"><a href="#toc-weave_002c-doubleweave">11.284 weave, doubleweave</a></h3>
+
+
+  <p>The <code>weave</code> takes a field-based video input and join
+
+  each two sequential fields into single frame, producing a new double
+
+  height clip with half the frame rate and half the frame count.
+
+  </p>
+
+  <p>The <code>doubleweave</code> works same as <code>weave</code> but without
+
+  halving frame rate and frame count.
+
+  </p>
+
+  <p>It accepts the following option:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>first_field</samp></dt>
+
+  <dd><p>Set first field. Available values are:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>top, t</samp>&rsquo;</dt>
+
+  <dd><p>Set the frame as top-field-first.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>bottom, b</samp>&rsquo;</dt>
+
+  <dd><p>Set the frame as bottom-field-first.
+
+  </p></dd>
+
+  </dl>
+
+  </dd>
+
+  </dl>
+
+
+  '

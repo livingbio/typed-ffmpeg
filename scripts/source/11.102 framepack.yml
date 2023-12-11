@@ -1,0 +1,180 @@
+description: '11.102 framepack
+
+  Pack two different video streams into a stereoscopic video, setting proper
+
+  metadata on supported codecs. The two views should have the same size and
+
+  framerate and processing will stop when the shorter video ends. Please note
+
+  that you may conveniently adjust view properties with the scale and
+
+  fps filters.
+
+
+  It accepts the following parameters:
+
+
+  Some examples:
+
+
+
+  # Convert left and right views into a frame-sequential video
+
+  ffmpeg -i LEFT -i RIGHT -filter_complex framepack=frameseq OUTPUT
+
+
+  # Convert views into a side-by-side video with the same output resolution as the
+  input
+
+  ffmpeg -i LEFT -i RIGHT -filter_complex [0:v]scale=w=iw/2[left],[1:v]scale=w=iw/2[right],[left][right]framepack=sbs
+  OUTPUT'
+name: framepack
+parameters:
+- description: '<dd><p>The desired packing format. Supported values are:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>sbs</samp></dt>
+
+    <dd><p>The views are next to each other (default).
+
+    </p>
+
+    </dd>
+
+    <dt><samp>tab</samp></dt>
+
+    <dd><p>The views are on top of each other.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>lines</samp></dt>
+
+    <dd><p>The views are packed by line.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>columns</samp></dt>
+
+    <dd><p>The views are packed by column.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>frameseq</samp></dt>
+
+    <dd><p>The views are temporally interleaved.
+
+    </p>
+
+    </dd>
+
+    </dl>
+
+    </dd>'
+  name: format
+ref: https://ffmpeg.org/ffmpeg-filters.html#framepack
+source: '<h3 class="section"><a href="#toc-framepack">11.102 framepack</a></h3>
+
+
+  <p>Pack two different video streams into a stereoscopic video, setting proper
+
+  metadata on supported codecs. The two views should have the same size and
+
+  framerate and processing will stop when the shorter video ends. Please note
+
+  that you may conveniently adjust view properties with the <a href="#scale">scale</a>
+  and
+
+  <a href="#fps">fps</a> filters.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p><dl compact="compact">
+
+  <dt><samp>format</samp></dt>
+
+  <dd><p>The desired packing format. Supported values are:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>sbs</samp></dt>
+
+  <dd><p>The views are next to each other (default).
+
+  </p>
+
+  </dd>
+
+  <dt><samp>tab</samp></dt>
+
+  <dd><p>The views are on top of each other.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>lines</samp></dt>
+
+  <dd><p>The views are packed by line.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>columns</samp></dt>
+
+  <dd><p>The views are packed by column.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>frameseq</samp></dt>
+
+  <dd><p>The views are temporally interleaved.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  </dd>
+
+  </dl>
+
+
+  <p>Some examples:
+
+  </p>
+
+  <div class="example">
+
+  <pre class="example"># Convert left and right views into a frame-sequential video
+
+  ffmpeg -i LEFT -i RIGHT -filter_complex framepack=frameseq OUTPUT
+
+
+  # Convert views into a side-by-side video with the same output resolution as the
+  input
+
+  ffmpeg -i LEFT -i RIGHT -filter_complex [0:v]scale=w=iw/2[left],[1:v]scale=w=iw/2[right],[left][right]framepack=sbs
+  OUTPUT
+
+  </pre></div>
+
+
+  '

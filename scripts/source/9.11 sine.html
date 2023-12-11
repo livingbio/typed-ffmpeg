@@ -1,0 +1,53 @@
+<h3 class="section"><a href="#toc-sine">9.11 sine</a></h3>
+
+<p>Generate an audio signal made of a sine wave with amplitude 1/8.
+</p>
+<p>The audio signal is bit-exact.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>frequency, f</samp></dt>
+<dd><p>Set the carrier frequency. Default is 440 Hz.
+</p>
+</dd>
+<dt><samp>beep_factor, b</samp></dt>
+<dd><p>Enable a periodic beep every second with frequency <var>beep_factor</var> times
+the carrier frequency. Default is 0, meaning the beep is disabled.
+</p>
+</dd>
+<dt><samp>sample_rate, r</samp></dt>
+<dd><p>Specify the sample rate, default is 44100.
+</p>
+</dd>
+<dt><samp>duration, d</samp></dt>
+<dd><p>Specify the duration of the generated audio stream.
+</p>
+</dd>
+<dt><samp>samples_per_frame</samp></dt>
+<dd><p>Set the number of samples per output frame.
+</p>
+<p>The expression can contain the following constants:
+</p>
+<dl compact="compact">
+<dt><samp>n</samp></dt>
+<dd><p>The (sequential) number of the output audio frame, starting from 0.
+</p>
+</dd>
+<dt><samp>pts</samp></dt>
+<dd><p>The PTS (Presentation TimeStamp) of the output audio frame,
+expressed in <var>TB</var> units.
+</p>
+</dd>
+<dt><samp>t</samp></dt>
+<dd><p>The PTS of the output audio frame, expressed in seconds.
+</p>
+</dd>
+<dt><samp>TB</samp></dt>
+<dd><p>The timebase of the output audio frames.
+</p></dd>
+</dl>
+
+<p>Default is <code>1024</code>.
+</p></dd>
+</dl>

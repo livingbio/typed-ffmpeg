@@ -1,0 +1,110 @@
+description: '9.3 afdelaysrc
+
+  Generate a fractional delay FIR coefficients.
+
+
+  The resulting stream can be used with afir filter for filtering the audio signal.
+
+
+  The filter accepts the following options:'
+name: afdelaysrc
+parameters:
+- description: '<dd><p>Set the fractional delay. Default is 0.
+
+    </p>
+
+    </dd>'
+  name: delay, d
+- description: '<dd><p>Set the sample rate, default is 44100.
+
+    </p>
+
+    </dd>'
+  name: sample_rate, r
+- description: '<dd><p>Set the number of samples per each frame. Default is 1024.
+
+    </p>
+
+    </dd>'
+  name: nb_samples, n
+- description: '<dd><p>Set the number of filter coefficients in output audio stream.
+
+    Default value is 0.
+
+    </p>
+
+    </dd>'
+  name: taps, t
+- description: '<dd><p>Specifies the channel layout, and can be a string representing
+    a channel layout.
+
+    The default value of <var>channel_layout</var> is "stereo".
+
+    </p></dd>'
+  name: channel_layout, c
+ref: https://ffmpeg.org/ffmpeg-filters.html#afdelaysrc
+source: '<h3 class="section"><a href="#toc-afdelaysrc">9.3 afdelaysrc</a></h3>
+
+
+  <p>Generate a fractional delay FIR coefficients.
+
+  </p>
+
+  <p>The resulting stream can be used with <a href="#afir">afir</a> filter for filtering
+  the audio signal.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>delay, d</samp></dt>
+
+  <dd><p>Set the fractional delay. Default is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sample_rate, r</samp></dt>
+
+  <dd><p>Set the sample rate, default is 44100.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>nb_samples, n</samp></dt>
+
+  <dd><p>Set the number of samples per each frame. Default is 1024.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>taps, t</samp></dt>
+
+  <dd><p>Set the number of filter coefficients in output audio stream.
+
+  Default value is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>channel_layout, c</samp></dt>
+
+  <dd><p>Specifies the channel layout, and can be a string representing a channel
+  layout.
+
+  The default value of <var>channel_layout</var> is &quot;stereo&quot;.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

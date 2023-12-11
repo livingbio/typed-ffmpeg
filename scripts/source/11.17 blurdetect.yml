@@ -1,0 +1,204 @@
+description: '11.17 blurdetect
+
+  Determines blurriness of frames without altering the input frames.
+
+
+  Based on Marziliano, Pina, et al. "A no-reference perceptual blur metric."
+
+  Allows for a block-based abbreviation.
+
+
+  The filter accepts the following options:'
+name: blurdetect
+parameters:
+- description: '<dd><p>Set low and high threshold values used by the Canny thresholding
+
+    algorithm.
+
+    </p>
+
+    <p>The high threshold selects the "strong" edge pixels, which are then
+
+    connected through 8-connectivity with the "weak" edge pixels selected
+
+    by the low threshold.
+
+    </p>
+
+    <p><var>low</var> and <var>high</var> threshold values must be chosen in the range
+
+    [0,1], and <var>low</var> should be lesser or equal to <var>high</var>.
+
+    </p>
+
+    <p>Default value for <var>low</var> is <code>20/255</code>, and default value
+    for <var>high</var>
+
+    is <code>50/255</code>.
+
+    </p>
+
+    </dd>'
+  name: low
+- description: '<dd><p>Set low and high threshold values used by the Canny thresholding
+
+    algorithm.
+
+    </p>
+
+    <p>The high threshold selects the "strong" edge pixels, which are then
+
+    connected through 8-connectivity with the "weak" edge pixels selected
+
+    by the low threshold.
+
+    </p>
+
+    <p><var>low</var> and <var>high</var> threshold values must be chosen in the range
+
+    [0,1], and <var>low</var> should be lesser or equal to <var>high</var>.
+
+    </p>
+
+    <p>Default value for <var>low</var> is <code>20/255</code>, and default value
+    for <var>high</var>
+
+    is <code>50/255</code>.
+
+    </p>
+
+    </dd>'
+  name: high
+- description: '<dd><p>Define the radius to search around an edge pixel for local
+    maxima.
+
+    </p>
+
+    </dd>'
+  name: radius
+- description: '<dd><p>Determine blurriness only for the most significant blocks,
+    given in percentage.
+
+    </p>
+
+    </dd>'
+  name: block_pct
+- description: '<dd><p>Determine blurriness for blocks of width <var>block_width</var>.
+    If set to any value smaller 1, no blocks are used and the whole image is processed
+    as one no matter of <var>block_height</var>.
+
+    </p>
+
+    </dd>'
+  name: block_width
+- description: '<dd><p>Determine blurriness for blocks of height <var>block_height</var>.
+    If set to any value smaller 1, no blocks are used and the whole image is processed
+    as one no matter of <var>block_width</var>.
+
+    </p>
+
+    </dd>'
+  name: block_height
+- description: '<dd><p>Set planes to filter. Default is first only.
+
+    </p></dd>'
+  name: planes
+ref: https://ffmpeg.org/ffmpeg-filters.html#blurdetect
+source: '<h3 class="section"><a href="#toc-blurdetect-1">11.17 blurdetect</a></h3>
+
+
+  <p>Determines blurriness of frames without altering the input frames.
+
+  </p>
+
+  <p>Based on Marziliano, Pina, et al. &quot;A no-reference perceptual blur metric.&quot;
+
+  Allows for a block-based abbreviation.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>low</samp></dt>
+
+  <dt><samp>high</samp></dt>
+
+  <dd><p>Set low and high threshold values used by the Canny thresholding
+
+  algorithm.
+
+  </p>
+
+  <p>The high threshold selects the &quot;strong&quot; edge pixels, which are then
+
+  connected through 8-connectivity with the &quot;weak&quot; edge pixels selected
+
+  by the low threshold.
+
+  </p>
+
+  <p><var>low</var> and <var>high</var> threshold values must be chosen in the range
+
+  [0,1], and <var>low</var> should be lesser or equal to <var>high</var>.
+
+  </p>
+
+  <p>Default value for <var>low</var> is <code>20/255</code>, and default value for
+  <var>high</var>
+
+  is <code>50/255</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>radius</samp></dt>
+
+  <dd><p>Define the radius to search around an edge pixel for local maxima.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>block_pct</samp></dt>
+
+  <dd><p>Determine blurriness only for the most significant blocks, given in percentage.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>block_width</samp></dt>
+
+  <dd><p>Determine blurriness for blocks of width <var>block_width</var>. If set to
+  any value smaller 1, no blocks are used and the whole image is processed as one
+  no matter of <var>block_height</var>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>block_height</samp></dt>
+
+  <dd><p>Determine blurriness for blocks of height <var>block_height</var>. If set
+  to any value smaller 1, no blocks are used and the whole image is processed as one
+  no matter of <var>block_width</var>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>planes</samp></dt>
+
+  <dd><p>Set planes to filter. Default is first only.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

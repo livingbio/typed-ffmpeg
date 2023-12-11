@@ -1,0 +1,69 @@
+<h3 class="section"><a href="#toc-openclsrc">16.11 openclsrc</a></h3>
+
+<p>Generate video using an OpenCL program.
+</p>
+<dl compact="compact">
+<dt><samp>source</samp></dt>
+<dd><p>OpenCL program source file.
+</p>
+</dd>
+<dt><samp>kernel</samp></dt>
+<dd><p>Kernel name in program.
+</p>
+</dd>
+<dt><samp>size, s</samp></dt>
+<dd><p>Size of frames to generate.  This must be set.
+</p>
+</dd>
+<dt><samp>format</samp></dt>
+<dd><p>Pixel format to use for the generated frames.  This must be set.
+</p>
+</dd>
+<dt><samp>rate, r</samp></dt>
+<dd><p>Number of frames generated every second.  Default value is &rsquo;25&rsquo;.
+</p>
+</dd>
+</dl>
+
+<p>For details of how the program loading works, see the <a href="#program_005fopencl">program_opencl</a>
+filter.
+</p>
+<p>Example programs:
+</p>
+<ul>
+<li> Generate a colour ramp by setting pixel values from the position of the pixel
+in the output image.  (Note that this will work with all pixel formats, but
+the generated output will not be the same.)
+<pre class="verbatim">__kernel void ramp(__write_only image2d_t dst,
+                   unsigned int index)
+{
+    int2 loc = (int2)(get_global_id(0), get_global_id(1));
+
+    float4 val;
+    val.xy = val.zw = convert_float2(loc) / convert_float2(get_image_dim(dst));
+
+    write_imagef(dst, loc, val);
+}
+</pre>
+</li><li> Generate a Sierpinski carpet pattern, panning by a single pixel each frame.
+<pre class="verbatim">__kernel void sierpinski_carpet(__write_only image2d_t dst,
+                                unsigned int index)
+{
+    int2 loc = (int2)(get_global_id(0), get_global_id(1));
+
+    float4 value = 0.0f;
+    int x = loc.x + index;
+    int y = loc.y + index;
+    while (x &gt; 0 || y &gt; 0) {
+        if (x % 3 == 1 &amp;&amp; y % 3 == 1) {
+            value = 1.0f;
+            break;
+        }
+        x /= 3;
+        y /= 3;
+    }
+
+    write_imagef(dst, loc, value);
+}
+</pre>
+</li></ul>

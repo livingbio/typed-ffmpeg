@@ -1,0 +1,50 @@
+description: '11.245 streamselect, astreamselect
+
+  Select video or audio streams.
+
+
+  The filter accepts the following options:'
+name: streamselect
+parameters:
+- description: '<dd><p>Set number of inputs. Default is 2.
+
+    </p>
+
+    </dd>'
+  name: inputs
+- description: '<dd><p>Set input indexes to remap to outputs.
+
+    </p></dd>'
+  name: map
+ref: https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c
+source: '<h3 class="section"><a href="#toc-streamselect_002c-astreamselect">11.245
+  streamselect, astreamselect</a></h3>
+
+  <p>Select video or audio streams.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>inputs</samp></dt>
+
+  <dd><p>Set number of inputs. Default is 2.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>map</samp></dt>
+
+  <dd><p>Set input indexes to remap to outputs.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

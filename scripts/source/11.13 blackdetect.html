@@ -1,0 +1,63 @@
+<h3 class="section"><a href="#toc-blackdetect">11.13 blackdetect</a></h3>
+
+<p>Detect video intervals that are (almost) completely black. Can be
+useful to detect chapter transitions, commercials, or invalid
+recordings.
+</p>
+<p>The filter outputs its detection analysis to both the log as well as
+frame metadata. If a black segment of at least the specified minimum
+duration is found, a line with the start and end timestamps as well
+as duration is printed to the log with level <code>info</code>. In addition,
+a log line with level <code>debug</code> is printed per frame showing the
+black amount detected for that frame.
+</p>
+<p>The filter also attaches metadata to the first frame of a black
+segment with key <code>lavfi.black_start</code> and to the first frame
+after the black segment ends with key <code>lavfi.black_end</code>. The
+value is the frame&rsquo;s timestamp. This metadata is added regardless
+of the minimum duration specified.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>black_min_duration, d</samp></dt>
+<dd><p>Set the minimum detected black duration expressed in seconds. It must
+be a non-negative floating point number.
+</p>
+<p>Default value is 2.0.
+</p>
+</dd>
+<dt><samp>picture_black_ratio_th, pic_th</samp></dt>
+<dd><p>Set the threshold for considering a picture &quot;black&quot;.
+Express the minimum value for the ratio:
+</p><div class="example">
+<pre class="example"><var>nb_black_pixels</var> / <var>nb_pixels</var>
+</pre></div>
+
+<p>for which a picture is considered black.
+Default value is 0.98.
+</p>
+</dd>
+<dt><samp>pixel_black_th, pix_th</samp></dt>
+<dd><p>Set the threshold for considering a pixel &quot;black&quot;.
+</p>
+<p>The threshold expresses the maximum pixel luma value for which a
+pixel is considered &quot;black&quot;. The provided value is scaled according to
+the following equation:
+</p><div class="example">
+<pre class="example"><var>absolute_threshold</var> = <var>luma_minimum_value</var> + <var>pixel_black_th</var> * <var>luma_range_size</var>
+</pre></div>
+
+<p><var>luma_range_size</var> and <var>luma_minimum_value</var> depend on
+the input video format, the range is [0-255] for YUV full-range
+formats and [16-235] for YUV non full-range formats.
+</p>
+<p>Default value is 0.10.
+</p></dd>
+</dl>
+
+<p>The following example sets the maximum pixel threshold to the minimum
+value, and detects only black intervals of 2 or more seconds:
+</p><div class="example">
+<pre class="example">blackdetect=d=2:pix_th=0.00
+</pre></div>

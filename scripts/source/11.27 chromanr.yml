@@ -1,0 +1,245 @@
+description: '11.27 chromanr
+
+  Reduce chrominance noise.
+
+
+  The filter accepts the following options:'
+name: chromanr
+parameters:
+- description: '<dd><p>Set threshold for averaging chrominance values.
+
+    Sum of absolute difference of Y, U and V pixel components of current
+
+    pixel and neighbour pixels lower than this threshold will be used in
+
+    averaging. Luma component is left unchanged and is copied to output.
+
+    Default value is 30. Allowed range is from 1 to 200.
+
+    </p>
+
+    </dd>'
+  name: thres
+- description: '<dd><p>Set horizontal radius of rectangle used for averaging.
+
+    Allowed range is from 1 to 100. Default value is 5.
+
+    </p>
+
+    </dd>'
+  name: sizew
+- description: '<dd><p>Set vertical radius of rectangle used for averaging.
+
+    Allowed range is from 1 to 100. Default value is 5.
+
+    </p>
+
+    </dd>'
+  name: sizeh
+- description: '<dd><p>Set horizontal step when averaging. Default value is 1.
+
+    Allowed range is from 1 to 50.
+
+    Mostly useful to speed-up filtering.
+
+    </p>
+
+    </dd>'
+  name: stepw
+- description: '<dd><p>Set vertical step when averaging. Default value is 1.
+
+    Allowed range is from 1 to 50.
+
+    Mostly useful to speed-up filtering.
+
+    </p>
+
+    </dd>'
+  name: steph
+- description: '<dd><p>Set Y threshold for averaging chrominance values.
+
+    Set finer control for max allowed difference between Y components
+
+    of current pixel and neigbour pixels.
+
+    Default value is 200. Allowed range is from 1 to 200.
+
+    </p>
+
+    </dd>'
+  name: threy
+- description: '<dd><p>Set U threshold for averaging chrominance values.
+
+    Set finer control for max allowed difference between U components
+
+    of current pixel and neigbour pixels.
+
+    Default value is 200. Allowed range is from 1 to 200.
+
+    </p>
+
+    </dd>'
+  name: threu
+- description: '<dd><p>Set V threshold for averaging chrominance values.
+
+    Set finer control for max allowed difference between V components
+
+    of current pixel and neigbour pixels.
+
+    Default value is 200. Allowed range is from 1 to 200.
+
+    </p>
+
+    </dd>'
+  name: threv
+- description: "<dd><p>Set distance type used in calculations.\n</p>\n<dl compact=\"\
+    compact\">\n<dt>\u2018<samp>manhattan</samp>\u2019</dt>\n<dd><p>Absolute difference.\n\
+    </p></dd>\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dd><p>Difference squared.\n\
+    </p></dd>\n</dl>\n<p>Default distance type is manhattan.\n</p></dd>"
+  name: distance
+ref: https://ffmpeg.org/ffmpeg-filters.html#chromanr
+source: '<h3 class="section"><a href="#toc-chromanr">11.27 chromanr</a></h3>
+
+  <p>Reduce chrominance noise.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>thres</samp></dt>
+
+  <dd><p>Set threshold for averaging chrominance values.
+
+  Sum of absolute difference of Y, U and V pixel components of current
+
+  pixel and neighbour pixels lower than this threshold will be used in
+
+  averaging. Luma component is left unchanged and is copied to output.
+
+  Default value is 30. Allowed range is from 1 to 200.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sizew</samp></dt>
+
+  <dd><p>Set horizontal radius of rectangle used for averaging.
+
+  Allowed range is from 1 to 100. Default value is 5.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sizeh</samp></dt>
+
+  <dd><p>Set vertical radius of rectangle used for averaging.
+
+  Allowed range is from 1 to 100. Default value is 5.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>stepw</samp></dt>
+
+  <dd><p>Set horizontal step when averaging. Default value is 1.
+
+  Allowed range is from 1 to 50.
+
+  Mostly useful to speed-up filtering.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>steph</samp></dt>
+
+  <dd><p>Set vertical step when averaging. Default value is 1.
+
+  Allowed range is from 1 to 50.
+
+  Mostly useful to speed-up filtering.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>threy</samp></dt>
+
+  <dd><p>Set Y threshold for averaging chrominance values.
+
+  Set finer control for max allowed difference between Y components
+
+  of current pixel and neigbour pixels.
+
+  Default value is 200. Allowed range is from 1 to 200.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>threu</samp></dt>
+
+  <dd><p>Set U threshold for averaging chrominance values.
+
+  Set finer control for max allowed difference between U components
+
+  of current pixel and neigbour pixels.
+
+  Default value is 200. Allowed range is from 1 to 200.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>threv</samp></dt>
+
+  <dd><p>Set V threshold for averaging chrominance values.
+
+  Set finer control for max allowed difference between V components
+
+  of current pixel and neigbour pixels.
+
+  Default value is 200. Allowed range is from 1 to 200.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>distance</samp></dt>
+
+  <dd><p>Set distance type used in calculations.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>manhattan</samp>&rsquo;</dt>
+
+  <dd><p>Absolute difference.
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>euclidean</samp>&rsquo;</dt>
+
+  <dd><p>Difference squared.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default distance type is manhattan.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

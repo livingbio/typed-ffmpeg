@@ -1,0 +1,26 @@
+<h3 class="section"><a href="#toc-dialoguenhance">8.83 dialoguenhance</a></h3>
+<p>Enhance dialogue in stereo audio.
+</p>
+<p>This filter accepts stereo input and produce surround (3.0) channels output.
+The newly produced front center channel have enhanced speech dialogue originally
+available in both stereo channels.
+This filter outputs front left and front right channels same as available in stereo input.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>original</samp></dt>
+<dd><p>Set the original center factor to keep in front center channel output.
+Allowed range is from 0 to 1. Default value is 1.
+</p>
+</dd>
+<dt><samp>enhance</samp></dt>
+<dd><p>Set the dialogue enhance factor to put in front center channel output.
+Allowed range is from 0 to 3. Default value is 1.
+</p>
+</dd>
+<dt><samp>voice</samp></dt>
+<dd><p>Set the voice detection factor.
+Allowed range is from 2 to 32. Default value is 2.
+</p></dd>
+</dl>

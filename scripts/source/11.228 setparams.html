@@ -1,0 +1,133 @@
+<h3 class="section"><a href="#toc-setparams-1">11.228 setparams</a></h3>
+
+<p>Force frame parameter for the output video frame.
+</p>
+<p>The <code>setparams</code> filter marks interlace and color range for the
+output frames. It does not change the input frame, but only sets the
+corresponding property, which affects how the frame is treated by
+filters/encoders.
+</p>
+<dl compact="compact">
+<dt><samp>field_mode</samp></dt>
+<dd><p>Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Keep the same field property (default).
+</p>
+</dd>
+<dt>&lsquo;<samp>bff</samp>&rsquo;</dt>
+<dd><p>Mark the frame as bottom-field-first.
+</p>
+</dd>
+<dt>&lsquo;<samp>tff</samp>&rsquo;</dt>
+<dd><p>Mark the frame as top-field-first.
+</p>
+</dd>
+<dt>&lsquo;<samp>prog</samp>&rsquo;</dt>
+<dd><p>Mark the frame as progressive.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>range</samp></dt>
+<dd><p>Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Keep the same color range property (default).
+</p>
+</dd>
+<dt>&lsquo;<samp>unspecified, unknown</samp>&rsquo;</dt>
+<dd><p>Mark the frame as unspecified color range.
+</p>
+</dd>
+<dt>&lsquo;<samp>limited, tv, mpeg</samp>&rsquo;</dt>
+<dd><p>Mark the frame as limited range.
+</p>
+</dd>
+<dt>&lsquo;<samp>full, pc, jpeg</samp>&rsquo;</dt>
+<dd><p>Mark the frame as full range.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>color_primaries</samp></dt>
+<dd><p>Set the color primaries.
+Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Keep the same color primaries property (default).
+</p>
+</dd>
+<dt>&lsquo;<samp>bt709</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>unknown</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt470m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt470bg</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte170m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte240m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>film</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt2020</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte428</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte431</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte432</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>jedec-p22</samp>&rsquo;</dt>
+</dl>
+
+</dd>
+<dt><samp>color_trc</samp></dt>
+<dd><p>Set the color transfer.
+Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Keep the same color trc property (default).
+</p>
+</dd>
+<dt>&lsquo;<samp>bt709</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>unknown</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt470m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt470bg</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte170m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte240m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>linear</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>log100</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>log316</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>iec61966-2-4</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt1361e</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>iec61966-2-1</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt2020-10</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt2020-12</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte2084</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte428</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>arib-std-b67</samp>&rsquo;</dt>
+</dl>
+
+</dd>
+<dt><samp>colorspace</samp></dt>
+<dd><p>Set the colorspace.
+Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Keep the same colorspace property (default).
+</p>
+</dd>
+<dt>&lsquo;<samp>gbr</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt709</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>unknown</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>fcc</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt470bg</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte170m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte240m</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>ycgco</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt2020nc</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bt2020c</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>smpte2085</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>chroma-derived-nc</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>chroma-derived-c</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>ictcp</samp>&rsquo;</dt>
+</dl>
+</dd>
+</dl>

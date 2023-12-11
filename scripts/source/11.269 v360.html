@@ -1,0 +1,469 @@
+<h3 class="section"><a href="#toc-v360">11.269 v360</a></h3>
+
+<p>Convert 360 videos between various formats.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>input</samp></dt>
+<dt><samp>output</samp></dt>
+<dd><p>Set format of the input/output video.
+</p>
+<p>Available formats:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>e</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>equirect</samp>&rsquo;</dt>
+<dd><p>Equirectangular projection.
+</p>
+</dd>
+<dt>&lsquo;<samp>c3x2</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>c6x1</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>c1x6</samp>&rsquo;</dt>
+<dd><p>Cubemap with 3x2/6x1/1x6 layout.
+</p>
+<p>Format specific options:
+</p>
+<dl compact="compact">
+<dt><samp>in_pad</samp></dt>
+<dt><samp>out_pad</samp></dt>
+<dd><p>Set padding proportion for the input/output cubemap. Values in decimals.
+</p>
+<p>Example values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>0</samp>&rsquo;</dt>
+<dd><p>No padding.
+</p></dd>
+<dt>&lsquo;<samp>0.01</samp>&rsquo;</dt>
+<dd><p>1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels)
+</p></dd>
+</dl>
+
+<p>Default value is <b>&lsquo;<samp>0</samp>&rsquo;</b>.
+Maximum value is <b>&lsquo;<samp>0.1</samp>&rsquo;</b>.
+</p>
+</dd>
+<dt><samp>fin_pad</samp></dt>
+<dt><samp>fout_pad</samp></dt>
+<dd><p>Set fixed padding for the input/output cubemap. Values in pixels.
+</p>
+<p>Default value is <b>&lsquo;<samp>0</samp>&rsquo;</b>. If greater than zero it overrides other padding options.
+</p>
+</dd>
+<dt><samp>in_forder</samp></dt>
+<dt><samp>out_forder</samp></dt>
+<dd><p>Set order of faces for the input/output cubemap. Choose one direction for each position.
+</p>
+<p>Designation of directions:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>r</samp>&rsquo;</dt>
+<dd><p>right
+</p></dd>
+<dt>&lsquo;<samp>l</samp>&rsquo;</dt>
+<dd><p>left
+</p></dd>
+<dt>&lsquo;<samp>u</samp>&rsquo;</dt>
+<dd><p>up
+</p></dd>
+<dt>&lsquo;<samp>d</samp>&rsquo;</dt>
+<dd><p>down
+</p></dd>
+<dt>&lsquo;<samp>f</samp>&rsquo;</dt>
+<dd><p>forward
+</p></dd>
+<dt>&lsquo;<samp>b</samp>&rsquo;</dt>
+<dd><p>back
+</p></dd>
+</dl>
+
+<p>Default value is <b>&lsquo;<samp>rludfb</samp>&rsquo;</b>.
+</p>
+</dd>
+<dt><samp>in_frot</samp></dt>
+<dt><samp>out_frot</samp></dt>
+<dd><p>Set rotation of faces for the input/output cubemap. Choose one angle for each position.
+</p>
+<p>Designation of angles:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>0</samp>&rsquo;</dt>
+<dd><p>0 degrees clockwise
+</p></dd>
+<dt>&lsquo;<samp>1</samp>&rsquo;</dt>
+<dd><p>90 degrees clockwise
+</p></dd>
+<dt>&lsquo;<samp>2</samp>&rsquo;</dt>
+<dd><p>180 degrees clockwise
+</p></dd>
+<dt>&lsquo;<samp>3</samp>&rsquo;</dt>
+<dd><p>270 degrees clockwise
+</p></dd>
+</dl>
+
+<p>Default value is <b>&lsquo;<samp>000000</samp>&rsquo;</b>.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>eac</samp>&rsquo;</dt>
+<dd><p>Equi-Angular Cubemap.
+</p>
+</dd>
+<dt>&lsquo;<samp>flat</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>gnomonic</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>rectilinear</samp>&rsquo;</dt>
+<dd><p>Regular video.
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>h_fov</samp></dt>
+<dt><samp>v_fov</samp></dt>
+<dt><samp>d_fov</samp></dt>
+<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p>
+</dd>
+<dt><samp>ih_fov</samp></dt>
+<dt><samp>iv_fov</samp></dt>
+<dt><samp>id_fov</samp></dt>
+<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>dfisheye</samp>&rsquo;</dt>
+<dd><p>Dual fisheye.
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>h_fov</samp></dt>
+<dt><samp>v_fov</samp></dt>
+<dt><samp>d_fov</samp></dt>
+<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p>
+</dd>
+<dt><samp>ih_fov</samp></dt>
+<dt><samp>iv_fov</samp></dt>
+<dt><samp>id_fov</samp></dt>
+<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>barrel</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>fb</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>barrelsplit</samp>&rsquo;</dt>
+<dd><p>Facebook&rsquo;s 360 formats.
+</p>
+</dd>
+<dt>&lsquo;<samp>sg</samp>&rsquo;</dt>
+<dd><p>Stereographic format.
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>h_fov</samp></dt>
+<dt><samp>v_fov</samp></dt>
+<dt><samp>d_fov</samp></dt>
+<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p>
+</dd>
+<dt><samp>ih_fov</samp></dt>
+<dt><samp>iv_fov</samp></dt>
+<dt><samp>id_fov</samp></dt>
+<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>mercator</samp>&rsquo;</dt>
+<dd><p>Mercator format.
+</p>
+</dd>
+<dt>&lsquo;<samp>ball</samp>&rsquo;</dt>
+<dd><p>Ball format, gives significant distortion toward the back.
+</p>
+</dd>
+<dt>&lsquo;<samp>hammer</samp>&rsquo;</dt>
+<dd><p>Hammer-Aitoff map projection format.
+</p>
+</dd>
+<dt>&lsquo;<samp>sinusoidal</samp>&rsquo;</dt>
+<dd><p>Sinusoidal map projection format.
+</p>
+</dd>
+<dt>&lsquo;<samp>fisheye</samp>&rsquo;</dt>
+<dd><p>Fisheye projection.
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>h_fov</samp></dt>
+<dt><samp>v_fov</samp></dt>
+<dt><samp>d_fov</samp></dt>
+<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p>
+</dd>
+<dt><samp>ih_fov</samp></dt>
+<dt><samp>iv_fov</samp></dt>
+<dt><samp>id_fov</samp></dt>
+<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>pannini</samp>&rsquo;</dt>
+<dd><p>Pannini projection.
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>h_fov</samp></dt>
+<dd><p>Set output pannini parameter.
+</p>
+</dd>
+<dt><samp>ih_fov</samp></dt>
+<dd><p>Set input pannini parameter.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>cylindrical</samp>&rsquo;</dt>
+<dd><p>Cylindrical projection.
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>h_fov</samp></dt>
+<dt><samp>v_fov</samp></dt>
+<dt><samp>d_fov</samp></dt>
+<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p>
+</dd>
+<dt><samp>ih_fov</samp></dt>
+<dt><samp>iv_fov</samp></dt>
+<dt><samp>id_fov</samp></dt>
+<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>perspective</samp>&rsquo;</dt>
+<dd><p>Perspective projection. <i>(output only)</i>
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>v_fov</samp></dt>
+<dd><p>Set perspective parameter.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>tetrahedron</samp>&rsquo;</dt>
+<dd><p>Tetrahedron projection.
+</p>
+</dd>
+<dt>&lsquo;<samp>tsp</samp>&rsquo;</dt>
+<dd><p>Truncated square pyramid projection.
+</p>
+</dd>
+<dt>&lsquo;<samp>he</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>hequirect</samp>&rsquo;</dt>
+<dd><p>Half equirectangular projection.
+</p>
+</dd>
+<dt>&lsquo;<samp>equisolid</samp>&rsquo;</dt>
+<dd><p>Equisolid format.
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>h_fov</samp></dt>
+<dt><samp>v_fov</samp></dt>
+<dt><samp>d_fov</samp></dt>
+<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p>
+</dd>
+<dt><samp>ih_fov</samp></dt>
+<dt><samp>iv_fov</samp></dt>
+<dt><samp>id_fov</samp></dt>
+<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>og</samp>&rsquo;</dt>
+<dd><p>Orthographic format.
+</p>
+<p>Format specific options:
+</p><dl compact="compact">
+<dt><samp>h_fov</samp></dt>
+<dt><samp>v_fov</samp></dt>
+<dt><samp>d_fov</samp></dt>
+<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p>
+</dd>
+<dt><samp>ih_fov</samp></dt>
+<dt><samp>iv_fov</samp></dt>
+<dt><samp>id_fov</samp></dt>
+<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.
+</p>
+<p>If diagonal field of view is set it overrides horizontal and vertical field of view.
+</p></dd>
+</dl>
+
+</dd>
+<dt>&lsquo;<samp>octahedron</samp>&rsquo;</dt>
+<dd><p>Octahedron projection.
+</p>
+</dd>
+<dt>&lsquo;<samp>cylindricalea</samp>&rsquo;</dt>
+<dd><p>Cylindrical Equal Area projection.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>interp</samp></dt>
+<dd><p>Set interpolation method.<br>
+<i>Note: more complex interpolation methods require much more memory to run.</i>
+</p>
+<p>Available methods:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>near</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>nearest</samp>&rsquo;</dt>
+<dd><p>Nearest neighbour.
+</p></dd>
+<dt>&lsquo;<samp>line</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>linear</samp>&rsquo;</dt>
+<dd><p>Bilinear interpolation.
+</p></dd>
+<dt>&lsquo;<samp>lagrange9</samp>&rsquo;</dt>
+<dd><p>Lagrange9 interpolation.
+</p></dd>
+<dt>&lsquo;<samp>cube</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>cubic</samp>&rsquo;</dt>
+<dd><p>Bicubic interpolation.
+</p></dd>
+<dt>&lsquo;<samp>lanc</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>lanczos</samp>&rsquo;</dt>
+<dd><p>Lanczos interpolation.
+</p></dd>
+<dt>&lsquo;<samp>sp16</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>spline16</samp>&rsquo;</dt>
+<dd><p>Spline16 interpolation.
+</p></dd>
+<dt>&lsquo;<samp>gauss</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>gaussian</samp>&rsquo;</dt>
+<dd><p>Gaussian interpolation.
+</p></dd>
+<dt>&lsquo;<samp>mitchell</samp>&rsquo;</dt>
+<dd><p>Mitchell interpolation.
+</p></dd>
+</dl>
+
+<p>Default value is <b>&lsquo;<samp>line</samp>&rsquo;</b>.
+</p>
+</dd>
+<dt><samp>w</samp></dt>
+<dt><samp>h</samp></dt>
+<dd><p>Set the output video resolution.
+</p>
+<p>Default resolution depends on formats.
+</p>
+</dd>
+<dt><samp>in_stereo</samp></dt>
+<dt><samp>out_stereo</samp></dt>
+<dd><p>Set the input/output stereo format.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>2d</samp>&rsquo;</dt>
+<dd><p>2D mono
+</p></dd>
+<dt>&lsquo;<samp>sbs</samp>&rsquo;</dt>
+<dd><p>Side by side
+</p></dd>
+<dt>&lsquo;<samp>tb</samp>&rsquo;</dt>
+<dd><p>Top bottom
+</p></dd>
+</dl>
+
+<p>Default value is <b>&lsquo;<samp>2d</samp>&rsquo;</b> for input and output format.
+</p>
+</dd>
+<dt><samp>yaw</samp></dt>
+<dt><samp>pitch</samp></dt>
+<dt><samp>roll</samp></dt>
+<dd><p>Set rotation for the output video. Values in degrees.
+</p>
+</dd>
+<dt><samp>rorder</samp></dt>
+<dd><p>Set rotation order for the output video. Choose one item for each position.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>y, Y</samp>&rsquo;</dt>
+<dd><p>yaw
+</p></dd>
+<dt>&lsquo;<samp>p, P</samp>&rsquo;</dt>
+<dd><p>pitch
+</p></dd>
+<dt>&lsquo;<samp>r, R</samp>&rsquo;</dt>
+<dd><p>roll
+</p></dd>
+</dl>
+
+<p>Default value is <b>&lsquo;<samp>ypr</samp>&rsquo;</b>.
+</p>
+</dd>
+<dt><samp>h_flip</samp></dt>
+<dt><samp>v_flip</samp></dt>
+<dt><samp>d_flip</samp></dt>
+<dd><p>Flip the output video horizontally(swaps left-right)/vertically(swaps up-down)/in-depth(swaps back-forward). Boolean values.
+</p>
+</dd>
+<dt><samp>ih_flip</samp></dt>
+<dt><samp>iv_flip</samp></dt>
+<dd><p>Set if input video is flipped horizontally/vertically. Boolean values.
+</p>
+</dd>
+<dt><samp>in_trans</samp></dt>
+<dd><p>Set if input video is transposed. Boolean value, by default disabled.
+</p>
+</dd>
+<dt><samp>out_trans</samp></dt>
+<dd><p>Set if output video needs to be transposed. Boolean value, by default disabled.
+</p>
+</dd>
+<dt><samp>h_offset</samp></dt>
+<dt><samp>v_offset</samp></dt>
+<dd><p>Set output horizontal/vertical off-axis offset. Default is set to 0.
+Allowed range is from -1 to 1.
+</p>
+</dd>
+<dt><samp>alpha_mask</samp></dt>
+<dd><p>Build mask in alpha plane for all unmapped pixels by marking them fully transparent. Boolean value, by default disabled.
+</p>
+</dd>
+<dt><samp>reset_rot</samp></dt>
+<dd><p>Reset rotation of output video. Boolean value, by default disabled.
+</p></dd>
+</dl>

@@ -1,0 +1,67 @@
+description: "18.16 segment, asegment\nSplit single input stream into multiple streams.\n\
+  \nThis filter does opposite of concat filters.\n\nsegment works on video frames,\
+  \ asegment on audio samples.\n\nThis filter accepts the following options:\n\n\n\
+  In all cases, prefixing an each segment with \u2019+\u2019 will make it relative\
+  \ to the\nprevious segment."
+name: segment
+parameters:
+- description: "<dd><p>Timestamps of output segments separated by \u2019|\u2019. The\
+    \ first segment will run\nfrom the beginning of the input stream. The last segment\
+    \ will run until\nthe end of the input stream\n</p>\n</dd>"
+  name: timestamps
+- description: '<dd><p>Exact frame/sample count to split the segments.
+
+    </p></dd>'
+  name: frames, samples
+ref: https://ffmpeg.org/ffmpeg-filters.html#segment_002c
+source: '<h3 class="section"><a href="#toc-segment_002c-asegment">18.16 segment, asegment</a></h3>
+
+
+  <p>Split single input stream into multiple streams.
+
+  </p>
+
+  <p>This filter does opposite of concat filters.
+
+  </p>
+
+  <p><code>segment</code> works on video frames, <code>asegment</code> on audio samples.
+
+  </p>
+
+  <p>This filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>timestamps</samp></dt>
+
+  <dd><p>Timestamps of output segments separated by &rsquo;|&rsquo;. The first segment
+  will run
+
+  from the beginning of the input stream. The last segment will run until
+
+  the end of the input stream
+
+  </p>
+
+  </dd>
+
+  <dt><samp>frames, samples</samp></dt>
+
+  <dd><p>Exact frame/sample count to split the segments.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>In all cases, prefixing an each segment with &rsquo;+&rsquo; will make it relative
+  to the
+
+  previous segment.
+
+  </p>
+
+  '

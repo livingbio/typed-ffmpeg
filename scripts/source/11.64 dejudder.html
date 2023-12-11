@@ -1,0 +1,33 @@
+<h3 class="section"><a href="#toc-dejudder">11.64 dejudder</a></h3>
+
+<p>Remove judder produced by partially interlaced telecined content.
+</p>
+<p>Judder can be introduced, for instance, by <a href="#pullup">pullup</a> filter. If the original
+source was partially telecined content then the output of <code>pullup,dejudder</code>
+will have a variable frame rate. May change the recorded frame rate of the
+container. Aside from that change, this filter will not affect constant frame
+rate video.
+</p>
+<p>The option available in this filter is:
+</p><dl compact="compact">
+<dt><samp>cycle</samp></dt>
+<dd><p>Specify the length of the window over which the judder repeats.
+</p>
+<p>Accepts any integer greater than 1. Useful values are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>4</samp>&rsquo;</dt>
+<dd><p>If the original was telecined from 24 to 30 fps (Film to NTSC).
+</p>
+</dd>
+<dt>&lsquo;<samp>5</samp>&rsquo;</dt>
+<dd><p>If the original was telecined from 25 to 30 fps (PAL to NTSC).
+</p>
+</dd>
+<dt>&lsquo;<samp>20</samp>&rsquo;</dt>
+<dd><p>If a mixture of the two.
+</p></dd>
+</dl>
+
+<p>The default is &lsquo;<samp>4</samp>&rsquo;.
+</p></dd>
+</dl>

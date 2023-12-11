@@ -1,0 +1,227 @@
+description: '11.44 convolution
+
+  Apply convolution of 3x3, 5x5, 7x7 or horizontal/vertical up to 49 elements.
+
+
+  The filter accepts the following options:'
+name: convolution
+parameters:
+- description: '<dd><p>Set matrix for each plane.
+
+    Matrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,
+
+    and from 1 to 49 odd number of signed integers in <var>row</var> mode.
+
+    </p>
+
+    </dd>'
+  name: 0m
+- description: '<dd><p>Set matrix for each plane.
+
+    Matrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,
+
+    and from 1 to 49 odd number of signed integers in <var>row</var> mode.
+
+    </p>
+
+    </dd>'
+  name: 1m
+- description: '<dd><p>Set matrix for each plane.
+
+    Matrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,
+
+    and from 1 to 49 odd number of signed integers in <var>row</var> mode.
+
+    </p>
+
+    </dd>'
+  name: 2m
+- description: '<dd><p>Set matrix for each plane.
+
+    Matrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,
+
+    and from 1 to 49 odd number of signed integers in <var>row</var> mode.
+
+    </p>
+
+    </dd>'
+  name: 3m
+- description: '<dd><p>Set multiplier for calculated value for each plane.
+
+    If unset or 0, it will be sum of all matrix elements.
+
+    </p>
+
+    </dd>'
+  name: 0rdiv
+- description: '<dd><p>Set multiplier for calculated value for each plane.
+
+    If unset or 0, it will be sum of all matrix elements.
+
+    </p>
+
+    </dd>'
+  name: 1rdiv
+- description: '<dd><p>Set multiplier for calculated value for each plane.
+
+    If unset or 0, it will be sum of all matrix elements.
+
+    </p>
+
+    </dd>'
+  name: 2rdiv
+- description: '<dd><p>Set multiplier for calculated value for each plane.
+
+    If unset or 0, it will be sum of all matrix elements.
+
+    </p>
+
+    </dd>'
+  name: 3rdiv
+- description: '<dd><p>Set bias for each plane. This value is added to the result
+    of the multiplication.
+
+    Useful for making the overall image brighter or darker. Default is 0.0.
+
+    </p>
+
+    </dd>'
+  name: 0bias
+- description: '<dd><p>Set bias for each plane. This value is added to the result
+    of the multiplication.
+
+    Useful for making the overall image brighter or darker. Default is 0.0.
+
+    </p>
+
+    </dd>'
+  name: 1bias
+- description: '<dd><p>Set bias for each plane. This value is added to the result
+    of the multiplication.
+
+    Useful for making the overall image brighter or darker. Default is 0.0.
+
+    </p>
+
+    </dd>'
+  name: 2bias
+- description: '<dd><p>Set bias for each plane. This value is added to the result
+    of the multiplication.
+
+    Useful for making the overall image brighter or darker. Default is 0.0.
+
+    </p>
+
+    </dd>'
+  name: 3bias
+- description: '<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var>
+    or <var>column</var>.
+
+    Default is <var>square</var>.
+
+    </p></dd>'
+  name: 0mode
+- description: '<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var>
+    or <var>column</var>.
+
+    Default is <var>square</var>.
+
+    </p></dd>'
+  name: 1mode
+- description: '<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var>
+    or <var>column</var>.
+
+    Default is <var>square</var>.
+
+    </p></dd>'
+  name: 2mode
+- description: '<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var>
+    or <var>column</var>.
+
+    Default is <var>square</var>.
+
+    </p></dd>'
+  name: 3mode
+ref: https://ffmpeg.org/ffmpeg-filters.html#convolution
+source: '<h3 class="section"><a href="#toc-convolution">11.44 convolution</a></h3>
+
+
+  <p>Apply convolution of 3x3, 5x5, 7x7 or horizontal/vertical up to 49 elements.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>0m</samp></dt>
+
+  <dt><samp>1m</samp></dt>
+
+  <dt><samp>2m</samp></dt>
+
+  <dt><samp>3m</samp></dt>
+
+  <dd><p>Set matrix for each plane.
+
+  Matrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,
+
+  and from 1 to 49 odd number of signed integers in <var>row</var> mode.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>0rdiv</samp></dt>
+
+  <dt><samp>1rdiv</samp></dt>
+
+  <dt><samp>2rdiv</samp></dt>
+
+  <dt><samp>3rdiv</samp></dt>
+
+  <dd><p>Set multiplier for calculated value for each plane.
+
+  If unset or 0, it will be sum of all matrix elements.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>0bias</samp></dt>
+
+  <dt><samp>1bias</samp></dt>
+
+  <dt><samp>2bias</samp></dt>
+
+  <dt><samp>3bias</samp></dt>
+
+  <dd><p>Set bias for each plane. This value is added to the result of the multiplication.
+
+  Useful for making the overall image brighter or darker. Default is 0.0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>0mode</samp></dt>
+
+  <dt><samp>1mode</samp></dt>
+
+  <dt><samp>2mode</samp></dt>
+
+  <dt><samp>3mode</samp></dt>
+
+  <dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var>
+  or <var>column</var>.
+
+  Default is <var>square</var>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

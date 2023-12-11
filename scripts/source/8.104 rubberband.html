@@ -1,0 +1,93 @@
+<h3 class="section"><a href="#toc-rubberband">8.104 rubberband</a></h3>
+<p>Apply time-stretching and pitch-shifting with librubberband.
+</p>
+<p>To enable compilation of this filter, you need to configure FFmpeg with
+<code>--enable-librubberband</code>.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>tempo</samp></dt>
+<dd><p>Set tempo scale factor.
+</p>
+</dd>
+<dt><samp>pitch</samp></dt>
+<dd><p>Set pitch scale factor.
+</p>
+</dd>
+<dt><samp>transients</samp></dt>
+<dd><p>Set transients detector.
+Possible values are:
+</p><dl compact="compact">
+<dt><var>crisp</var></dt>
+<dt><var>mixed</var></dt>
+<dt><var>smooth</var></dt>
+</dl>
+
+</dd>
+<dt><samp>detector</samp></dt>
+<dd><p>Set detector.
+Possible values are:
+</p><dl compact="compact">
+<dt><var>compound</var></dt>
+<dt><var>percussive</var></dt>
+<dt><var>soft</var></dt>
+</dl>
+
+</dd>
+<dt><samp>phase</samp></dt>
+<dd><p>Set phase.
+Possible values are:
+</p><dl compact="compact">
+<dt><var>laminar</var></dt>
+<dt><var>independent</var></dt>
+</dl>
+
+</dd>
+<dt><samp>window</samp></dt>
+<dd><p>Set processing window size.
+Possible values are:
+</p><dl compact="compact">
+<dt><var>standard</var></dt>
+<dt><var>short</var></dt>
+<dt><var>long</var></dt>
+</dl>
+
+</dd>
+<dt><samp>smoothing</samp></dt>
+<dd><p>Set smoothing.
+Possible values are:
+</p><dl compact="compact">
+<dt><var>off</var></dt>
+<dt><var>on</var></dt>
+</dl>
+
+</dd>
+<dt><samp>formant</samp></dt>
+<dd><p>Enable formant preservation when shift pitching.
+Possible values are:
+</p><dl compact="compact">
+<dt><var>shifted</var></dt>
+<dt><var>preserved</var></dt>
+</dl>
+
+</dd>
+<dt><samp>pitchq</samp></dt>
+<dd><p>Set pitch quality.
+Possible values are:
+</p><dl compact="compact">
+<dt><var>quality</var></dt>
+<dt><var>speed</var></dt>
+<dt><var>consistency</var></dt>
+</dl>
+
+</dd>
+<dt><samp>channels</samp></dt>
+<dd><p>Set channels.
+Possible values are:
+</p><dl compact="compact">
+<dt><var>apart</var></dt>
+<dt><var>together</var></dt>
+</dl>
+</dd>
+</dl>

@@ -1,0 +1,74 @@
+description: "11.5 ass\nSame as the subtitles filter, except that it doesn\u2019t\
+  \ require libavcodec\nand libavformat to work. On the other hand, it is limited\
+  \ to ASS (Advanced\nSubstation Alpha) subtitles files.\n\nThis filter accepts the\
+  \ following option in addition to the common options from\nthe subtitles filter:"
+name: ass
+parameters:
+- description: "<dd><p>Set the shaping engine\n</p>\n<p>Available values are:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>The default\
+    \ libass shaping engine, which is the best available.\n</p></dd>\n<dt>\u2018<samp>simple</samp>\u2019\
+    </dt>\n<dd><p>Fast, font-agnostic shaper that can do only substitutions\n</p></dd>\n\
+    <dt>\u2018<samp>complex</samp>\u2019</dt>\n<dd><p>Slower shaper using OpenType\
+    \ for substitutions and positioning\n</p></dd>\n</dl>\n<p>The default is <code>auto</code>.\n\
+    </p></dd>"
+  name: shaping
+ref: https://ffmpeg.org/ffmpeg-filters.html#ass
+source: '<h3 class="section"><a href="#toc-ass">11.5 ass</a></h3>
+
+
+  <p>Same as the <a href="#subtitles">subtitles</a> filter, except that it doesn&rsquo;t
+  require libavcodec
+
+  and libavformat to work. On the other hand, it is limited to ASS (Advanced
+
+  Substation Alpha) subtitles files.
+
+  </p>
+
+  <p>This filter accepts the following option in addition to the common options from
+
+  the <a href="#subtitles">subtitles</a> filter:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>shaping</samp></dt>
+
+  <dd><p>Set the shaping engine
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+
+  <dd><p>The default libass shaping engine, which is the best available.
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>simple</samp>&rsquo;</dt>
+
+  <dd><p>Fast, font-agnostic shaper that can do only substitutions
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>complex</samp>&rsquo;</dt>
+
+  <dd><p>Slower shaper using OpenType for substitutions and positioning
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The default is <code>auto</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

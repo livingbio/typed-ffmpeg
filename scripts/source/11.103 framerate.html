@@ -1,0 +1,50 @@
+<h3 class="section"><a href="#toc-framerate">11.103 framerate</a></h3>
+
+<p>Change the frame rate by interpolating new video output frames from the source
+frames.
+</p>
+<p>This filter is not designed to function correctly with interlaced media. If
+you wish to change the frame rate of interlaced media then you are required
+to deinterlace before this filter and re-interlace after this filter.
+</p>
+<p>A description of the accepted options follows.
+</p>
+<dl compact="compact">
+<dt><samp>fps</samp></dt>
+<dd><p>Specify the output frames per second. This option can also be specified
+as a value alone. The default is <code>50</code>.
+</p>
+</dd>
+<dt><samp>interp_start</samp></dt>
+<dd><p>Specify the start of a range where the output frame will be created as a
+linear interpolation of two frames. The range is [<code>0</code>-<code>255</code>],
+the default is <code>15</code>.
+</p>
+</dd>
+<dt><samp>interp_end</samp></dt>
+<dd><p>Specify the end of a range where the output frame will be created as a
+linear interpolation of two frames. The range is [<code>0</code>-<code>255</code>],
+the default is <code>240</code>.
+</p>
+</dd>
+<dt><samp>scene</samp></dt>
+<dd><p>Specify the level at which a scene change is detected as a value between
+0 and 100 to indicate a new scene; a low value reflects a low
+probability for the current frame to introduce a new scene, while a higher
+value means the current frame is more likely to be one.
+The default is <code>8.2</code>.
+</p>
+</dd>
+<dt><samp>flags</samp></dt>
+<dd><p>Specify flags influencing the filter process.
+</p>
+<p>Available value for <var>flags</var> is:
+</p>
+<dl compact="compact">
+<dt><samp>scene_change_detect, scd</samp></dt>
+<dd><p>Enable scene change detection using the value of the option <var>scene</var>.
+This flag is enabled by default.
+</p></dd>
+</dl>
+</dd>
+</dl>

@@ -1,0 +1,219 @@
+description: '11.289 xstack
+
+  Stack video inputs into custom layout.
+
+
+  All streams must be of same pixel format.
+
+
+  The filter accepts the following options:'
+name: xstack
+parameters:
+- description: '<dd><p>Set number of input streams. Default is 2.
+
+    </p>
+
+    </dd>'
+  name: inputs
+- description: "<dd><p>Specify layout of inputs.\nThis option requires the desired\
+    \ layout configuration to be explicitly set by the user.\nThis sets position of\
+    \ each video input in output. Each input\nis separated by \u2019|\u2019.\nThe\
+    \ first number represents the column, and the second number represents the row.\n\
+    Numbers start at 0 and are separated by \u2019_\u2019. Optionally one can use\
+    \ wX and hX,\nwhere X is video input from which to take width or height.\nMultiple\
+    \ values can be used when separated by \u2019+\u2019. In such\ncase values are\
+    \ summed together.\n</p>\n<p>Note that if inputs are of different sizes gaps may\
+    \ appear, as not all of\nthe output video frame will be filled. Similarly, videos\
+    \ can overlap each\nother if their position doesn\u2019t leave enough space for\
+    \ the full frame of\nadjoining videos.\n</p>\n<p>For 2 inputs, a default layout\
+    \ of <code>0_0|w0_0</code> (equivalent to\n<code>grid=2x1</code>) is set. In all\
+    \ other cases, a layout or a grid must be set by\nthe user. Either <code>grid</code>\
+    \ or <code>layout</code> can be specified at a time.\nSpecifying both will result\
+    \ in an error.\n</p>\n</dd>"
+  name: layout
+- description: '<dd><p>Specify a fixed size grid of inputs.
+
+    This option is used to create a fixed size grid of the input streams. Set the
+
+    grid size in the form <code>COLUMNSxROWS</code>. There must be <code>ROWS * COLUMNS</code>
+
+    input streams and they will be arranged as a grid with <code>ROWS</code> rows
+    and
+
+    <code>COLUMNS</code> columns. When using this option, each input stream within
+    a row
+
+    must have the same height and all the rows must have the same width.
+
+    </p>
+
+    <p>If <code>grid</code> is set, then <code>inputs</code> option is ignored and
+    is implicitly
+
+    set to <code>ROWS * COLUMNS</code>.
+
+    </p>
+
+    <p>For 2 inputs, a default grid of <code>2x1</code> (equivalent to
+
+    <code>layout=0_0|w0_0</code>) is set. In all other cases, a layout or a grid must
+    be
+
+    set by the user. Either <code>grid</code> or <code>layout</code> can be specified
+    at a time.
+
+    Specifying both will result in an error.
+
+    </p>
+
+    </dd>'
+  name: grid
+- description: '<dd><p>If set to 1, force the output to terminate when the shortest
+    input
+
+    terminates. Default value is 0.
+
+    </p>
+
+    </dd>'
+  name: shortest
+- description: '<dd><p>If set to valid color, all unused pixels will be filled with
+    that color.
+
+    By default fill is set to none, so it is disabled.
+
+    </p></dd>'
+  name: fill
+ref: https://ffmpeg.org/ffmpeg-filters.html#xstack
+source: '<h3 class="section"><a href="#toc-xstack-1">11.289 xstack</a></h3>
+
+  <p>Stack video inputs into custom layout.
+
+  </p>
+
+  <p>All streams must be of same pixel format.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>inputs</samp></dt>
+
+  <dd><p>Set number of input streams. Default is 2.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>layout</samp></dt>
+
+  <dd><p>Specify layout of inputs.
+
+  This option requires the desired layout configuration to be explicitly set by the
+  user.
+
+  This sets position of each video input in output. Each input
+
+  is separated by &rsquo;|&rsquo;.
+
+  The first number represents the column, and the second number represents the row.
+
+  Numbers start at 0 and are separated by &rsquo;_&rsquo;. Optionally one can use
+  wX and hX,
+
+  where X is video input from which to take width or height.
+
+  Multiple values can be used when separated by &rsquo;+&rsquo;. In such
+
+  case values are summed together.
+
+  </p>
+
+  <p>Note that if inputs are of different sizes gaps may appear, as not all of
+
+  the output video frame will be filled. Similarly, videos can overlap each
+
+  other if their position doesn&rsquo;t leave enough space for the full frame of
+
+  adjoining videos.
+
+  </p>
+
+  <p>For 2 inputs, a default layout of <code>0_0|w0_0</code> (equivalent to
+
+  <code>grid=2x1</code>) is set. In all other cases, a layout or a grid must be set
+  by
+
+  the user. Either <code>grid</code> or <code>layout</code> can be specified at a
+  time.
+
+  Specifying both will result in an error.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>grid</samp></dt>
+
+  <dd><p>Specify a fixed size grid of inputs.
+
+  This option is used to create a fixed size grid of the input streams. Set the
+
+  grid size in the form <code>COLUMNSxROWS</code>. There must be <code>ROWS * COLUMNS</code>
+
+  input streams and they will be arranged as a grid with <code>ROWS</code> rows and
+
+  <code>COLUMNS</code> columns. When using this option, each input stream within a
+  row
+
+  must have the same height and all the rows must have the same width.
+
+  </p>
+
+  <p>If <code>grid</code> is set, then <code>inputs</code> option is ignored and is
+  implicitly
+
+  set to <code>ROWS * COLUMNS</code>.
+
+  </p>
+
+  <p>For 2 inputs, a default grid of <code>2x1</code> (equivalent to
+
+  <code>layout=0_0|w0_0</code>) is set. In all other cases, a layout or a grid must
+  be
+
+  set by the user. Either <code>grid</code> or <code>layout</code> can be specified
+  at a time.
+
+  Specifying both will result in an error.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>shortest</samp></dt>
+
+  <dd><p>If set to 1, force the output to terminate when the shortest input
+
+  terminates. Default value is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fill</samp></dt>
+
+  <dd><p>If set to valid color, all unused pixels will be filled with that color.
+
+  By default fill is set to none, so it is disabled.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

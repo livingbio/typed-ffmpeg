@@ -1,0 +1,50 @@
+<h3 class="section"><a href="#toc-deflicker">11.63 deflicker</a></h3>
+
+<p>Remove temporal frame luminance variations.
+</p>
+<p>It accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>size, s</samp></dt>
+<dd><p>Set moving-average filter size in frames. Default is 5. Allowed range is 2 - 129.
+</p>
+</dd>
+<dt><samp>mode, m</samp></dt>
+<dd><p>Set averaging mode to smooth temporal luminance variations.
+</p>
+<p>Available values are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>am</samp>&rsquo;</dt>
+<dd><p>Arithmetic mean
+</p>
+</dd>
+<dt>&lsquo;<samp>gm</samp>&rsquo;</dt>
+<dd><p>Geometric mean
+</p>
+</dd>
+<dt>&lsquo;<samp>hm</samp>&rsquo;</dt>
+<dd><p>Harmonic mean
+</p>
+</dd>
+<dt>&lsquo;<samp>qm</samp>&rsquo;</dt>
+<dd><p>Quadratic mean
+</p>
+</dd>
+<dt>&lsquo;<samp>cm</samp>&rsquo;</dt>
+<dd><p>Cubic mean
+</p>
+</dd>
+<dt>&lsquo;<samp>pm</samp>&rsquo;</dt>
+<dd><p>Power mean
+</p>
+</dd>
+<dt>&lsquo;<samp>median</samp>&rsquo;</dt>
+<dd><p>Median
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>bypass</samp></dt>
+<dd><p>Do not actually modify frame. Useful when one only wants metadata.
+</p></dd>
+</dl>

@@ -1,0 +1,260 @@
+description: "11.122 hwmap\nMap hardware frames to system memory or to another device.\n\
+  \nThis filter has several different modes of operation; which one is used depends\n\
+  on the input and output formats:\n\n Hardware frame input, normal frame output\n\
+  \nMap the input frames to system memory and pass them to the output.  If the\noriginal\
+  \ hardware frame is later required (for example, after overlaying\nsomething else\
+  \ on part of it), the hwmap filter can be used again\nin the next mode to retrieve\
+  \ it.\n Normal frame input, hardware frame output\n\nIf the input is actually a\
+  \ software-mapped hardware frame, then unmap it -\nthat is, return the original\
+  \ hardware frame.\n\nOtherwise, a device must be provided.  Create new hardware\
+  \ surfaces on that\ndevice for the output, then map them back to the software format\
+  \ at the input\nand give those frames to the preceding filter.  This will then act\
+  \ like the\nhwupload filter, but may be able to avoid an additional copy when\n\
+  the input is already in a compatible format.\n Hardware frame input and output\n\
+  \nA device must be supplied for the output, either directly or with the\nderive_device\
+  \ option.  The input and output devices must be of\ndifferent types and compatible\
+  \ - the exact meaning of this is\nsystem-dependent, but typically it means that\
+  \ they must refer to the same\nunderlying hardware context (for example, refer to\
+  \ the same graphics card).\n\nIf the input frames were originally created on the\
+  \ output device, then unmap\nto retrieve the original frames.\n\nOtherwise, map\
+  \ the frames to the output device - create new hardware frames\non the output corresponding\
+  \ to the frames on the input.\n\nThe following additional parameters are accepted:"
+name: hwmap
+parameters:
+- description: '<dd><p>Set the frame mapping mode.  Some combination of:
+
+    </p><dl compact="compact">
+
+    <dt><var>read</var></dt>
+
+    <dd><p>The mapped frame should be readable.
+
+    </p></dd>
+
+    <dt><var>write</var></dt>
+
+    <dd><p>The mapped frame should be writeable.
+
+    </p></dd>
+
+    <dt><var>overwrite</var></dt>
+
+    <dd><p>The mapping will always overwrite the entire frame.
+
+    </p>
+
+    <p>This may improve performance in some cases, as the original contents of the
+
+    frame need not be loaded.
+
+    </p></dd>
+
+    <dt><var>direct</var></dt>
+
+    <dd><p>The mapping must not involve any copying.
+
+    </p>
+
+    <p>Indirect mappings to copies of frames are created in some cases where either
+
+    direct mapping is not possible or it would have unexpected properties.
+
+    Setting this flag ensures that the mapping is direct and will fail if that is
+
+    not possible.
+
+    </p></dd>
+
+    </dl>
+
+    <p>Defaults to <var>read+write</var> if not specified.
+
+    </p>
+
+    </dd>'
+  name: mode
+- description: '<dd><p>Rather than using the device supplied at initialisation, instead
+    derive a new
+
+    device of type <var>type</var> from the device the input frames exist on.
+
+    </p>
+
+    </dd>'
+  name: derive_device type
+- description: "<dd><p>In a hardware to hardware mapping, map in reverse - create\
+    \ frames in the sink\nand map them back to the source.  This may be necessary\
+    \ in some cases where\na mapping in one direction is required but only the opposite\
+    \ direction is\nsupported by the devices being used.\n</p>\n<p>This option is\
+    \ dangerous - it may break the preceding filter in undefined\nways if there are\
+    \ any additional constraints on that filter\u2019s output.\nDo not use it without\
+    \ fully understanding the implications of its use.\n</p></dd>"
+  name: reverse
+ref: https://ffmpeg.org/ffmpeg-filters.html#hwmap
+source: '<h3 class="section"><a href="#toc-hwmap">11.122 hwmap</a></h3>
+
+
+  <p>Map hardware frames to system memory or to another device.
+
+  </p>
+
+  <p>This filter has several different modes of operation; which one is used depends
+
+  on the input and output formats:
+
+  </p><ul>
+
+  <li> Hardware frame input, normal frame output
+
+
+  <p>Map the input frames to system memory and pass them to the output.  If the
+
+  original hardware frame is later required (for example, after overlaying
+
+  something else on part of it), the <samp>hwmap</samp> filter can be used again
+
+  in the next mode to retrieve it.
+
+  </p></li><li> Normal frame input, hardware frame output
+
+
+  <p>If the input is actually a software-mapped hardware frame, then unmap it -
+
+  that is, return the original hardware frame.
+
+  </p>
+
+  <p>Otherwise, a device must be provided.  Create new hardware surfaces on that
+
+  device for the output, then map them back to the software format at the input
+
+  and give those frames to the preceding filter.  This will then act like the
+
+  <samp>hwupload</samp> filter, but may be able to avoid an additional copy when
+
+  the input is already in a compatible format.
+
+  </p></li><li> Hardware frame input and output
+
+
+  <p>A device must be supplied for the output, either directly or with the
+
+  <samp>derive_device</samp> option.  The input and output devices must be of
+
+  different types and compatible - the exact meaning of this is
+
+  system-dependent, but typically it means that they must refer to the same
+
+  underlying hardware context (for example, refer to the same graphics card).
+
+  </p>
+
+  <p>If the input frames were originally created on the output device, then unmap
+
+  to retrieve the original frames.
+
+  </p>
+
+  <p>Otherwise, map the frames to the output device - create new hardware frames
+
+  on the output corresponding to the frames on the input.
+
+  </p></li></ul>
+
+
+  <p>The following additional parameters are accepted:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Set the frame mapping mode.  Some combination of:
+
+  </p><dl compact="compact">
+
+  <dt><var>read</var></dt>
+
+  <dd><p>The mapped frame should be readable.
+
+  </p></dd>
+
+  <dt><var>write</var></dt>
+
+  <dd><p>The mapped frame should be writeable.
+
+  </p></dd>
+
+  <dt><var>overwrite</var></dt>
+
+  <dd><p>The mapping will always overwrite the entire frame.
+
+  </p>
+
+  <p>This may improve performance in some cases, as the original contents of the
+
+  frame need not be loaded.
+
+  </p></dd>
+
+  <dt><var>direct</var></dt>
+
+  <dd><p>The mapping must not involve any copying.
+
+  </p>
+
+  <p>Indirect mappings to copies of frames are created in some cases where either
+
+  direct mapping is not possible or it would have unexpected properties.
+
+  Setting this flag ensures that the mapping is direct and will fail if that is
+
+  not possible.
+
+  </p></dd>
+
+  </dl>
+
+  <p>Defaults to <var>read+write</var> if not specified.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>derive_device <var>type</var></samp></dt>
+
+  <dd><p>Rather than using the device supplied at initialisation, instead derive a
+  new
+
+  device of type <var>type</var> from the device the input frames exist on.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>reverse</samp></dt>
+
+  <dd><p>In a hardware to hardware mapping, map in reverse - create frames in the
+  sink
+
+  and map them back to the source.  This may be necessary in some cases where
+
+  a mapping in one direction is required but only the opposite direction is
+
+  supported by the devices being used.
+
+  </p>
+
+  <p>This option is dangerous - it may break the preceding filter in undefined
+
+  ways if there are any additional constraints on that filter&rsquo;s output.
+
+  Do not use it without fully understanding the implications of its use.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

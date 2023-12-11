@@ -1,0 +1,103 @@
+description: '11.159 maskedthreshold
+
+  Pick pixels comparing absolute difference of two video streams with fixed
+
+  threshold.
+
+
+  If absolute difference between pixel component of first and second video
+
+  stream is equal or lower than user supplied threshold than pixel component
+
+  from first video stream is picked, otherwise pixel component from second
+
+  video stream is picked.
+
+
+  This filter accepts the following options:'
+name: maskedthreshold
+parameters:
+- description: '<dd><p>Set threshold used when picking pixels from absolute difference
+    from two input
+
+    video streams.
+
+    </p>
+
+    </dd>'
+  name: threshold
+- description: '<dd><p>Set which planes will be processed as bitmap, unprocessed planes
+    will be
+
+    copied from second stream.
+
+    By default value 0xf, all planes will be processed.
+
+    </p>
+
+    </dd>'
+  name: planes
+- description: '<dd><p>Set mode of filter operation. Can be <code>abs</code> or <code>diff</code>.
+
+    Default is <code>abs</code>.
+
+    </p></dd>'
+  name: mode
+ref: https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold
+source: '<h3 class="section"><a href="#toc-maskedthreshold">11.159 maskedthreshold</a></h3>
+
+  <p>Pick pixels comparing absolute difference of two video streams with fixed
+
+  threshold.
+
+  </p>
+
+  <p>If absolute difference between pixel component of first and second video
+
+  stream is equal or lower than user supplied threshold than pixel component
+
+  from first video stream is picked, otherwise pixel component from second
+
+  video stream is picked.
+
+  </p>
+
+  <p>This filter accepts the following options:
+
+  </p><dl compact="compact">
+
+  <dt><samp>threshold</samp></dt>
+
+  <dd><p>Set threshold used when picking pixels from absolute difference from two
+  input
+
+  video streams.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>planes</samp></dt>
+
+  <dd><p>Set which planes will be processed as bitmap, unprocessed planes will be
+
+  copied from second stream.
+
+  By default value 0xf, all planes will be processed.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Set mode of filter operation. Can be <code>abs</code> or <code>diff</code>.
+
+  Default is <code>abs</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

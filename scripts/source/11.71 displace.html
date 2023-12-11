@@ -1,0 +1,43 @@
+<h3 class="section"><a href="#toc-displace">11.71 displace</a></h3>
+
+<p>Displace pixels as indicated by second and third input stream.
+</p>
+<p>It takes three input streams and outputs one stream, the first input is the
+source, and second and third input are displacement maps.
+</p>
+<p>The second input specifies how much to displace pixels along the
+x-axis, while the third input specifies how much to displace pixels
+along the y-axis.
+If one of displacement map streams terminates, last frame from that
+displacement map will be used.
+</p>
+<p>Note that once generated, displacements maps can be reused over and over again.
+</p>
+<p>A description of the accepted options follows.
+</p>
+<dl compact="compact">
+<dt><samp>edge</samp></dt>
+<dd><p>Set displace behavior for pixels that are out of range.
+</p>
+<p>Available values are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>blank</samp>&rsquo;</dt>
+<dd><p>Missing pixels are replaced by black pixels.
+</p>
+</dd>
+<dt>&lsquo;<samp>smear</samp>&rsquo;</dt>
+<dd><p>Adjacent pixels will spread out to replace missing pixels.
+</p>
+</dd>
+<dt>&lsquo;<samp>wrap</samp>&rsquo;</dt>
+<dd><p>Out of range pixels are wrapped so they point to pixels of other side.
+</p>
+</dd>
+<dt>&lsquo;<samp>mirror</samp>&rsquo;</dt>
+<dd><p>Out of range pixels will be replaced with mirrored pixels.
+</p></dd>
+</dl>
+<p>Default is &lsquo;<samp>smear</samp>&rsquo;.
+</p>
+</dd>
+</dl>

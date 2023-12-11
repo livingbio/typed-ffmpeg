@@ -1,0 +1,93 @@
+<h3 class="section"><a href="#toc-thistogram">11.252 thistogram</a></h3>
+
+<p>Compute and draw a color distribution histogram for the input video across time.
+</p>
+<p>Unlike <a href="#histogram">histogram</a> video filter which only shows histogram of single input frame
+at certain time, this filter shows also past histograms of number of frames defined
+by <code>width</code> option.
+</p>
+<p>The computed histogram is a representation of the color component
+distribution in an image.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>width, w</samp></dt>
+<dd><p>Set width of single color component output. Default value is <code>0</code>.
+Value of <code>0</code> means width will be picked from input video.
+This also set number of passed histograms to keep.
+Allowed range is [0, 8192].
+</p>
+</dd>
+<dt><samp>display_mode, d</samp></dt>
+<dd><p>Set display mode.
+It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>stack</samp>&rsquo;</dt>
+<dd><p>Per color component graphs are placed below each other.
+</p>
+</dd>
+<dt>&lsquo;<samp>parade</samp>&rsquo;</dt>
+<dd><p>Per color component graphs are placed side by side.
+</p>
+</dd>
+<dt>&lsquo;<samp>overlay</samp>&rsquo;</dt>
+<dd><p>Presents information identical to that in the <code>parade</code>, except
+that the graphs representing color components are superimposed directly
+over one another.
+</p></dd>
+</dl>
+<p>Default is <code>stack</code>.
+</p>
+</dd>
+<dt><samp>levels_mode, m</samp></dt>
+<dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.
+Default is <code>linear</code>.
+</p>
+</dd>
+<dt><samp>components, c</samp></dt>
+<dd><p>Set what color components to display.
+Default is <code>7</code>.
+</p>
+</dd>
+<dt><samp>bgopacity, b</samp></dt>
+<dd><p>Set background opacity. Default is <code>0.9</code>.
+</p>
+</dd>
+<dt><samp>envelope, e</samp></dt>
+<dd><p>Show envelope. Default is disabled.
+</p>
+</dd>
+<dt><samp>ecolor, ec</samp></dt>
+<dd><p>Set envelope color. Default is <code>gold</code>.
+</p>
+</dd>
+<dt><samp>slide</samp></dt>
+<dd><p>Set slide mode.
+</p>
+<p>Available values for slide is:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>frame</samp>&rsquo;</dt>
+<dd><p>Draw new frame when right border is reached.
+</p>
+</dd>
+<dt>&lsquo;<samp>replace</samp>&rsquo;</dt>
+<dd><p>Replace old columns with new ones.
+</p>
+</dd>
+<dt>&lsquo;<samp>scroll</samp>&rsquo;</dt>
+<dd><p>Scroll from right to left.
+</p>
+</dd>
+<dt>&lsquo;<samp>rscroll</samp>&rsquo;</dt>
+<dd><p>Scroll from left to right.
+</p>
+</dd>
+<dt>&lsquo;<samp>picture</samp>&rsquo;</dt>
+<dd><p>Draw single picture.
+</p></dd>
+</dl>
+
+<p>Default is <code>replace</code>.
+</p></dd>
+</dl>

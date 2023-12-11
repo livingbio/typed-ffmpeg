@@ -1,0 +1,381 @@
+description: '8.87 equalizer
+
+  Apply a two-pole peaking equalisation (EQ) filter. With this
+
+  filter, the signal-level at and around a selected frequency can
+
+  be increased or decreased, whilst (unlike bandpass and bandreject
+
+  filters) that at all other frequencies is unchanged.
+
+
+  In order to produce complex equalisation curves, this filter can
+
+  be given several times, each with a different central frequency.
+
+
+  The filter accepts the following options:'
+name: equalizer
+parameters:
+- description: "<dd><p>Set the filter\u2019s central frequency in Hz.\n</p>\n</dd>"
+  name: frequency, f
+- description: '<dd><p>Set method to specify band-width of filter.
+
+    </p><dl compact="compact">
+
+    <dt><samp>h</samp></dt>
+
+    <dd><p>Hz
+
+    </p></dd>
+
+    <dt><samp>q</samp></dt>
+
+    <dd><p>Q-Factor
+
+    </p></dd>
+
+    <dt><samp>o</samp></dt>
+
+    <dd><p>octave
+
+    </p></dd>
+
+    <dt><samp>s</samp></dt>
+
+    <dd><p>slope
+
+    </p></dd>
+
+    <dt><samp>k</samp></dt>
+
+    <dd><p>kHz
+
+    </p></dd>
+
+    </dl>
+
+    </dd>'
+  name: width_type, t
+- description: '<dd><p>Specify the band-width of a filter in width_type units.
+
+    </p>
+
+    </dd>'
+  name: width, w
+- description: '<dd><p>Set the required gain or attenuation in dB.
+
+    Beware of clipping when using a positive gain.
+
+    </p>
+
+    </dd>'
+  name: gain, g
+- description: '<dd><p>How much to use filtered signal in output. Default is 1.
+
+    Range is between 0 and 1.
+
+    </p>
+
+    </dd>'
+  name: mix, m
+- description: '<dd><p>Specify which channels to filter, by default all available
+    are filtered.
+
+    </p>
+
+    </dd>'
+  name: channels, c
+- description: '<dd><p>Normalize biquad coefficients, by default is disabled.
+
+    Enabling it will normalize magnitude response at DC to 0dB.
+
+    </p>
+
+    </dd>'
+  name: normalize, n
+- description: '<dd><p>Set transform type of IIR filter.
+
+    </p><dl compact="compact">
+
+    <dt><samp>di</samp></dt>
+
+    <dt><samp>dii</samp></dt>
+
+    <dt><samp>tdi</samp></dt>
+
+    <dt><samp>tdii</samp></dt>
+
+    <dt><samp>latt</samp></dt>
+
+    <dt><samp>svf</samp></dt>
+
+    <dt><samp>zdf</samp></dt>
+
+    </dl>
+
+    </dd>'
+  name: transform, a
+- description: '<dd><p>Set precision of filtering.
+
+    </p><dl compact="compact">
+
+    <dt><samp>auto</samp></dt>
+
+    <dd><p>Pick automatic sample format depending on surround filters.
+
+    </p></dd>
+
+    <dt><samp>s16</samp></dt>
+
+    <dd><p>Always use signed 16-bit.
+
+    </p></dd>
+
+    <dt><samp>s32</samp></dt>
+
+    <dd><p>Always use signed 32-bit.
+
+    </p></dd>
+
+    <dt><samp>f32</samp></dt>
+
+    <dd><p>Always use float 32-bit.
+
+    </p></dd>
+
+    <dt><samp>f64</samp></dt>
+
+    <dd><p>Always use float 64-bit.
+
+    </p></dd>
+
+    </dl>
+
+    </dd>'
+  name: precision, r
+- description: '<dd><p>Set block size used for reverse IIR processing. If this value
+    is set to high enough
+
+    value (higher than impulse response length truncated when reaches near zero values)
+    filtering
+
+    will become linear phase otherwise if not big enough it will just produce nasty
+    artifacts.
+
+    </p>
+
+    <p>Note that filter delay will be exactly this many samples when set to non-zero
+    value.
+
+    </p></dd>'
+  name: block_size, b
+ref: https://ffmpeg.org/ffmpeg-filters.html#equalizer
+source: '<h3 class="section"><a href="#toc-equalizer">8.87 equalizer</a></h3>
+
+
+  <p>Apply a two-pole peaking equalisation (EQ) filter. With this
+
+  filter, the signal-level at and around a selected frequency can
+
+  be increased or decreased, whilst (unlike bandpass and bandreject
+
+  filters) that at all other frequencies is unchanged.
+
+  </p>
+
+  <p>In order to produce complex equalisation curves, this filter can
+
+  be given several times, each with a different central frequency.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>frequency, f</samp></dt>
+
+  <dd><p>Set the filter&rsquo;s central frequency in Hz.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>width_type, t</samp></dt>
+
+  <dd><p>Set method to specify band-width of filter.
+
+  </p><dl compact="compact">
+
+  <dt><samp>h</samp></dt>
+
+  <dd><p>Hz
+
+  </p></dd>
+
+  <dt><samp>q</samp></dt>
+
+  <dd><p>Q-Factor
+
+  </p></dd>
+
+  <dt><samp>o</samp></dt>
+
+  <dd><p>octave
+
+  </p></dd>
+
+  <dt><samp>s</samp></dt>
+
+  <dd><p>slope
+
+  </p></dd>
+
+  <dt><samp>k</samp></dt>
+
+  <dd><p>kHz
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>width, w</samp></dt>
+
+  <dd><p>Specify the band-width of a filter in width_type units.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>gain, g</samp></dt>
+
+  <dd><p>Set the required gain or attenuation in dB.
+
+  Beware of clipping when using a positive gain.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mix, m</samp></dt>
+
+  <dd><p>How much to use filtered signal in output. Default is 1.
+
+  Range is between 0 and 1.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>channels, c</samp></dt>
+
+  <dd><p>Specify which channels to filter, by default all available are filtered.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>normalize, n</samp></dt>
+
+  <dd><p>Normalize biquad coefficients, by default is disabled.
+
+  Enabling it will normalize magnitude response at DC to 0dB.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>transform, a</samp></dt>
+
+  <dd><p>Set transform type of IIR filter.
+
+  </p><dl compact="compact">
+
+  <dt><samp>di</samp></dt>
+
+  <dt><samp>dii</samp></dt>
+
+  <dt><samp>tdi</samp></dt>
+
+  <dt><samp>tdii</samp></dt>
+
+  <dt><samp>latt</samp></dt>
+
+  <dt><samp>svf</samp></dt>
+
+  <dt><samp>zdf</samp></dt>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>precision, r</samp></dt>
+
+  <dd><p>Set precision of filtering.
+
+  </p><dl compact="compact">
+
+  <dt><samp>auto</samp></dt>
+
+  <dd><p>Pick automatic sample format depending on surround filters.
+
+  </p></dd>
+
+  <dt><samp>s16</samp></dt>
+
+  <dd><p>Always use signed 16-bit.
+
+  </p></dd>
+
+  <dt><samp>s32</samp></dt>
+
+  <dd><p>Always use signed 32-bit.
+
+  </p></dd>
+
+  <dt><samp>f32</samp></dt>
+
+  <dd><p>Always use float 32-bit.
+
+  </p></dd>
+
+  <dt><samp>f64</samp></dt>
+
+  <dd><p>Always use float 64-bit.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>block_size, b</samp></dt>
+
+  <dd><p>Set block size used for reverse IIR processing. If this value is set to high
+  enough
+
+  value (higher than impulse response length truncated when reaches near zero values)
+  filtering
+
+  will become linear phase otherwise if not big enough it will just produce nasty
+  artifacts.
+
+  </p>
+
+  <p>Note that filter delay will be exactly this many samples when set to non-zero
+  value.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

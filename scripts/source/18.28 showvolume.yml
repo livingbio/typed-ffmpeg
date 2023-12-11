@@ -1,0 +1,332 @@
+description: '18.28 showvolume
+
+  Convert input audio volume to a video output.
+
+
+  The filter accepts the following options:'
+name: showvolume
+parameters:
+- description: '<dd><p>Set video rate.
+
+    </p>
+
+    </dd>'
+  name: rate, r
+- description: '<dd><p>Set border width, allowed range is [0, 5]. Default is 1.
+
+    </p>
+
+    </dd>'
+  name: b
+- description: '<dd><p>Set channel width, allowed range is [80, 8192]. Default is
+    400.
+
+    </p>
+
+    </dd>'
+  name: w
+- description: '<dd><p>Set channel height, allowed range is [1, 900]. Default is 20.
+
+    </p>
+
+    </dd>'
+  name: h
+- description: '<dd><p>Set fade, allowed range is [0, 1]. Default is 0.95.
+
+    </p>
+
+    </dd>'
+  name: f
+- description: '<dd><p>Set volume color expression.
+
+    </p>
+
+    <p>The expression can use the following variables:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>VOLUME</samp></dt>
+
+    <dd><p>Current max volume of channel in dB.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>PEAK</samp></dt>
+
+    <dd><p>Current peak.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>CHANNEL</samp></dt>
+
+    <dd><p>Current channel number, starting from 0.
+
+    </p></dd>
+
+    </dl>
+
+    </dd>'
+  name: c
+- description: '<dd><p>If set, displays channel names. Default is enabled.
+
+    </p>
+
+    </dd>'
+  name: t
+- description: '<dd><p>If set, displays volume values. Default is enabled.
+
+    </p>
+
+    </dd>'
+  name: v
+- description: '<dd><p>Set orientation, can be horizontal: <code>h</code> or vertical:
+    <code>v</code>,
+
+    default is <code>h</code>.
+
+    </p>
+
+    </dd>'
+  name: o
+- description: '<dd><p>Set step size, allowed range is [0, 5]. Default is 0, which
+    means
+
+    step is disabled.
+
+    </p>
+
+    </dd>'
+  name: s
+- description: '<dd><p>Set background opacity, allowed range is [0, 1]. Default is
+    0.
+
+    </p>
+
+    </dd>'
+  name: p
+- description: '<dd><p>Set metering mode, can be peak: <code>p</code> or rms: <code>r</code>,
+
+    default is <code>p</code>.
+
+    </p>
+
+    </dd>'
+  name: m
+- description: '<dd><p>Set display scale, can be linear: <code>lin</code> or log:
+    <code>log</code>,
+
+    default is <code>lin</code>.
+
+    </p>
+
+    </dd>'
+  name: ds
+- description: '<dd><p>In second.
+
+    If set to &gt; 0., display a line for the max level
+
+    in the previous seconds.
+
+    default is disabled: <code>0.</code>
+
+    </p>
+
+    </dd>'
+  name: dm
+- description: '<dd><p>The color of the max line. Use when <code>dm</code> option
+    is set to &gt; 0.
+
+    default is: <code>orange</code>
+
+    </p></dd>'
+  name: dmc
+ref: https://ffmpeg.org/ffmpeg-filters.html#showvolume
+source: '<h3 class="section"><a href="#toc-showvolume">18.28 showvolume</a></h3>
+
+
+  <p>Convert input audio volume to a video output.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>rate, r</samp></dt>
+
+  <dd><p>Set video rate.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>b</samp></dt>
+
+  <dd><p>Set border width, allowed range is [0, 5]. Default is 1.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>w</samp></dt>
+
+  <dd><p>Set channel width, allowed range is [80, 8192]. Default is 400.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>h</samp></dt>
+
+  <dd><p>Set channel height, allowed range is [1, 900]. Default is 20.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>f</samp></dt>
+
+  <dd><p>Set fade, allowed range is [0, 1]. Default is 0.95.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>c</samp></dt>
+
+  <dd><p>Set volume color expression.
+
+  </p>
+
+  <p>The expression can use the following variables:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>VOLUME</samp></dt>
+
+  <dd><p>Current max volume of channel in dB.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>PEAK</samp></dt>
+
+  <dd><p>Current peak.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>CHANNEL</samp></dt>
+
+  <dd><p>Current channel number, starting from 0.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>t</samp></dt>
+
+  <dd><p>If set, displays channel names. Default is enabled.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>v</samp></dt>
+
+  <dd><p>If set, displays volume values. Default is enabled.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>o</samp></dt>
+
+  <dd><p>Set orientation, can be horizontal: <code>h</code> or vertical: <code>v</code>,
+
+  default is <code>h</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>s</samp></dt>
+
+  <dd><p>Set step size, allowed range is [0, 5]. Default is 0, which means
+
+  step is disabled.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>p</samp></dt>
+
+  <dd><p>Set background opacity, allowed range is [0, 1]. Default is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>m</samp></dt>
+
+  <dd><p>Set metering mode, can be peak: <code>p</code> or rms: <code>r</code>,
+
+  default is <code>p</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>ds</samp></dt>
+
+  <dd><p>Set display scale, can be linear: <code>lin</code> or log: <code>log</code>,
+
+  default is <code>lin</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>dm</samp></dt>
+
+  <dd><p>In second.
+
+  If set to &gt; 0., display a line for the max level
+
+  in the previous seconds.
+
+  default is disabled: <code>0.</code>
+
+  </p>
+
+  </dd>
+
+  <dt><samp>dmc</samp></dt>
+
+  <dd><p>The color of the max line. Use when <code>dm</code> option is set to &gt;
+  0.
+
+  default is: <code>orange</code>
+
+  </p></dd>
+
+  </dl>
+
+
+  '

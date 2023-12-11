@@ -1,0 +1,70 @@
+description: "16.11 openclsrc\nGenerate video using an OpenCL program.\n\n\nFor details\
+  \ of how the program loading works, see the program_opencl\nfilter.\n\nExample programs:\n\
+  \n\n Generate a colour ramp by setting pixel values from the position of the pixel\n\
+  in the output image.  (Note that this will work with all pixel formats, but\nthe\
+  \ generated output will not be the same.)\n__kernel void ramp(__write_only image2d_t\
+  \ dst,\n                   unsigned int index)\n{\n    int2 loc = (int2)(get_global_id(0),\
+  \ get_global_id(1));\n\n    float4 val;\n    val.xy = val.zw = convert_float2(loc)\
+  \ / convert_float2(get_image_dim(dst));\n\n    write_imagef(dst, loc, val);\n}\n\
+  \n Generate a Sierpinski carpet pattern, panning by a single pixel each frame.\n\
+  __kernel void sierpinski_carpet(__write_only image2d_t dst,\n                  \
+  \              unsigned int index)\n{\n    int2 loc = (int2)(get_global_id(0), get_global_id(1));\n\
+  \n    float4 value = 0.0f;\n    int x = loc.x + index;\n    int y = loc.y + index;\n\
+  \    while (x > 0 || y > 0) {\n        if (x % 3 == 1 && y % 3 == 1) {\n       \
+  \     value = 1.0f;\n            break;\n        }\n        x /= 3;\n        y /=\
+  \ 3;\n    }\n\n    write_imagef(dst, loc, value);\n}"
+name: openclsrc
+parameters:
+- description: '<dd><p>OpenCL program source file.
+
+    </p>
+
+    </dd>'
+  name: source
+- description: '<dd><p>Kernel name in program.
+
+    </p>
+
+    </dd>'
+  name: kernel
+- description: '<dd><p>Size of frames to generate.  This must be set.
+
+    </p>
+
+    </dd>'
+  name: size, s
+- description: '<dd><p>Pixel format to use for the generated frames.  This must be
+    set.
+
+    </p>
+
+    </dd>'
+  name: format
+- description: "<dd><p>Number of frames generated every second.  Default value is\
+    \ \u201925\u2019.\n</p>\n</dd>"
+  name: rate, r
+ref: https://ffmpeg.org/ffmpeg-filters.html#openclsrc
+source: "<h3 class=\"section\"><a href=\"#toc-openclsrc\">16.11 openclsrc</a></h3>\n\
+  \n<p>Generate video using an OpenCL program.\n</p>\n<dl compact=\"compact\">\n<dt><samp>source</samp></dt>\n\
+  <dd><p>OpenCL program source file.\n</p>\n</dd>\n<dt><samp>kernel</samp></dt>\n\
+  <dd><p>Kernel name in program.\n</p>\n</dd>\n<dt><samp>size, s</samp></dt>\n<dd><p>Size\
+  \ of frames to generate.  This must be set.\n</p>\n</dd>\n<dt><samp>format</samp></dt>\n\
+  <dd><p>Pixel format to use for the generated frames.  This must be set.\n</p>\n\
+  </dd>\n<dt><samp>rate, r</samp></dt>\n<dd><p>Number of frames generated every second.\
+  \  Default value is &rsquo;25&rsquo;.\n</p>\n</dd>\n</dl>\n\n<p>For details of how\
+  \ the program loading works, see the <a href=\"#program_005fopencl\">program_opencl</a>\n\
+  filter.\n</p>\n<p>Example programs:\n</p>\n<ul>\n<li> Generate a colour ramp by\
+  \ setting pixel values from the position of the pixel\nin the output image.  (Note\
+  \ that this will work with all pixel formats, but\nthe generated output will not\
+  \ be the same.)\n<pre class=\"verbatim\">__kernel void ramp(__write_only image2d_t\
+  \ dst,\n                   unsigned int index)\n{\n    int2 loc = (int2)(get_global_id(0),\
+  \ get_global_id(1));\n\n    float4 val;\n    val.xy = val.zw = convert_float2(loc)\
+  \ / convert_float2(get_image_dim(dst));\n\n    write_imagef(dst, loc, val);\n}\n\
+  </pre>\n</li><li> Generate a Sierpinski carpet pattern, panning by a single pixel\
+  \ each frame.\n<pre class=\"verbatim\">__kernel void sierpinski_carpet(__write_only\
+  \ image2d_t dst,\n                                unsigned int index)\n{\n    int2\
+  \ loc = (int2)(get_global_id(0), get_global_id(1));\n\n    float4 value = 0.0f;\n\
+  \    int x = loc.x + index;\n    int y = loc.y + index;\n    while (x &gt; 0 ||\
+  \ y &gt; 0) {\n        if (x % 3 == 1 &amp;&amp; y % 3 == 1) {\n            value\
+  \ = 1.0f;\n            break;\n        }\n        x /= 3;\n        y /= 3;\n   \
+  \ }\n\n    write_imagef(dst, loc, value);\n}\n</pre>\n</li></ul>\n\n"

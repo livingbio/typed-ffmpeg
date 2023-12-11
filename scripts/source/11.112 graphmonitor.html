@@ -1,0 +1,128 @@
+<h3 class="section"><a href="#toc-graphmonitor-1">11.112 graphmonitor</a></h3>
+<p>Show various filtergraph stats.
+</p>
+<p>With this filter one can debug complete filtergraph.
+Especially issues with links filling with queued frames.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>size, s</samp></dt>
+<dd><p>Set video output size. Default is <var>hd720</var>.
+</p>
+</dd>
+<dt><samp>opacity, o</samp></dt>
+<dd><p>Set video opacity. Default is <var>0.9</var>. Allowed range is from <var>0</var> to <var>1</var>.
+</p>
+</dd>
+<dt><samp>mode, m</samp></dt>
+<dd><p>Set output mode flags.
+</p>
+<p>Available values for flags are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>full</samp>&rsquo;</dt>
+<dd><p>No any filtering. Default.
+</p></dd>
+<dt>&lsquo;<samp>compact</samp>&rsquo;</dt>
+<dd><p>Show only filters with queued frames.
+</p></dd>
+<dt>&lsquo;<samp>nozero</samp>&rsquo;</dt>
+<dd><p>Show only filters with non-zero stats.
+</p></dd>
+<dt>&lsquo;<samp>noeof</samp>&rsquo;</dt>
+<dd><p>Show only filters with non-eof stat.
+</p></dd>
+<dt>&lsquo;<samp>nodisabled</samp>&rsquo;</dt>
+<dd><p>Show only filters that are enabled in timeline.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>flags, f</samp></dt>
+<dd><p>Set flags which enable which stats are shown in video.
+</p>
+<p>Available values for flags are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+<dd><p>All flags turned off.
+</p>
+</dd>
+<dt>&lsquo;<samp>all</samp>&rsquo;</dt>
+<dd><p>All flags turned on.
+</p>
+</dd>
+<dt>&lsquo;<samp>queue</samp>&rsquo;</dt>
+<dd><p>Display number of queued frames in each link.
+</p>
+</dd>
+<dt>&lsquo;<samp>frame_count_in</samp>&rsquo;</dt>
+<dd><p>Display number of frames taken from filter.
+</p>
+</dd>
+<dt>&lsquo;<samp>frame_count_out</samp>&rsquo;</dt>
+<dd><p>Display number of frames given out from filter.
+</p>
+</dd>
+<dt>&lsquo;<samp>frame_count_delta</samp>&rsquo;</dt>
+<dd><p>Display delta number of frames between above two values.
+</p>
+</dd>
+<dt>&lsquo;<samp>pts</samp>&rsquo;</dt>
+<dd><p>Display current filtered frame pts.
+</p>
+</dd>
+<dt>&lsquo;<samp>pts_delta</samp>&rsquo;</dt>
+<dd><p>Display pts delta between current and previous frame.
+</p>
+</dd>
+<dt>&lsquo;<samp>time</samp>&rsquo;</dt>
+<dd><p>Display current filtered frame time.
+</p>
+</dd>
+<dt>&lsquo;<samp>time_delta</samp>&rsquo;</dt>
+<dd><p>Display time delta between current and previous frame.
+</p>
+</dd>
+<dt>&lsquo;<samp>timebase</samp>&rsquo;</dt>
+<dd><p>Display time base for filter link.
+</p>
+</dd>
+<dt>&lsquo;<samp>format</samp>&rsquo;</dt>
+<dd><p>Display used format for filter link.
+</p>
+</dd>
+<dt>&lsquo;<samp>size</samp>&rsquo;</dt>
+<dd><p>Display video size or number of audio channels in case of audio used by filter link.
+</p>
+</dd>
+<dt>&lsquo;<samp>rate</samp>&rsquo;</dt>
+<dd><p>Display video frame rate or sample rate in case of audio used by filter link.
+</p>
+</dd>
+<dt>&lsquo;<samp>eof</samp>&rsquo;</dt>
+<dd><p>Display link output status.
+</p>
+</dd>
+<dt>&lsquo;<samp>sample_count_in</samp>&rsquo;</dt>
+<dd><p>Display number of samples taken from filter.
+</p>
+</dd>
+<dt>&lsquo;<samp>sample_count_out</samp>&rsquo;</dt>
+<dd><p>Display number of samples given out from filter.
+</p>
+</dd>
+<dt>&lsquo;<samp>sample_count_delta</samp>&rsquo;</dt>
+<dd><p>Display delta number of samples between above two values.
+</p>
+</dd>
+<dt>&lsquo;<samp>disabled</samp>&rsquo;</dt>
+<dd><p>Show the timeline filter status.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>rate, r</samp></dt>
+<dd><p>Set upper limit for video rate of output stream, Default value is <var>25</var>.
+This guarantee that output video frame rate will not be higher than this value.
+</p></dd>
+</dl>

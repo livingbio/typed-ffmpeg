@@ -1,0 +1,130 @@
+description: '8.95 join
+
+  Join multiple input streams into one multi-channel stream.
+
+
+  It accepts the following parameters:
+
+
+  The filter will attempt to guess the mappings when they are not specified
+
+  explicitly. It does so by first trying to find an unused matching input channel
+
+  and if that fails it picks the first unused input channel.
+
+
+  Join 3 inputs (with properly set channel layouts):
+
+
+  ffmpeg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex join=inputs=3 OUTPUT
+
+
+  Build a 5.1 output from 6 single-channel streams:
+
+
+  ffmpeg -i fl -i fr -i fc -i sl -i sr -i lfe -filter_complex
+
+  ''join=inputs=6:channel_layout=5.1:map=0.0-FL|1.0-FR|2.0-FC|3.0-SL|4.0-SR|5.0-LFE''
+
+  out'
+name: join
+parameters:
+- description: '<dd><p>The number of input streams. It defaults to 2.
+
+    </p>
+
+    </dd>'
+  name: inputs
+- description: '<dd><p>The desired output channel layout. It defaults to stereo.
+
+    </p>
+
+    </dd>'
+  name: channel_layout
+- description: "<dd><p>Map channels from inputs to output. The argument is a \u2019\
+    |\u2019-separated list of\nmappings, each in the <code><var>input_idx</var>.<var>in_channel</var>-<var>out_channel</var></code>\n\
+    form. <var>input_idx</var> is the 0-based index of the input stream. <var>in_channel</var>\n\
+    can be either the name of the input channel (e.g. FL for front left) or its\n\
+    index in the specified input stream. <var>out_channel</var> is the name of the\
+    \ output\nchannel.\n</p></dd>"
+  name: map
+ref: https://ffmpeg.org/ffmpeg-filters.html#join
+source: '<h3 class="section"><a href="#toc-join">8.95 join</a></h3>
+
+
+  <p>Join multiple input streams into one multi-channel stream.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p><dl compact="compact">
+
+  <dt><samp>inputs</samp></dt>
+
+  <dd><p>The number of input streams. It defaults to 2.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>channel_layout</samp></dt>
+
+  <dd><p>The desired output channel layout. It defaults to stereo.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>map</samp></dt>
+
+  <dd><p>Map channels from inputs to output. The argument is a &rsquo;|&rsquo;-separated
+  list of
+
+  mappings, each in the <code><var>input_idx</var>.<var>in_channel</var>-<var>out_channel</var></code>
+
+  form. <var>input_idx</var> is the 0-based index of the input stream. <var>in_channel</var>
+
+  can be either the name of the input channel (e.g. FL for front left) or its
+
+  index in the specified input stream. <var>out_channel</var> is the name of the output
+
+  channel.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The filter will attempt to guess the mappings when they are not specified
+
+  explicitly. It does so by first trying to find an unused matching input channel
+
+  and if that fails it picks the first unused input channel.
+
+  </p>
+
+  <p>Join 3 inputs (with properly set channel layouts):
+
+  </p><div class="example">
+
+  <pre class="example">ffmpeg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex join=inputs=3
+  OUTPUT
+
+  </pre></div>
+
+
+  <p>Build a 5.1 output from 6 single-channel streams:
+
+  </p><div class="example">
+
+  <pre class="example">ffmpeg -i fl -i fr -i fc -i sl -i sr -i lfe -filter_complex
+
+  ''join=inputs=6:channel_layout=5.1:map=0.0-FL|1.0-FR|2.0-FC|3.0-SL|4.0-SR|5.0-LFE''
+
+  out
+
+  </pre></div>
+
+
+  '

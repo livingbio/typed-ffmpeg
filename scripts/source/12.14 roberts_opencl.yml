@@ -1,0 +1,75 @@
+description: '12.14 roberts_opencl
+
+  Apply the Roberts cross operator (https://en.wikipedia.org/wiki/Roberts_cross) to
+  input video stream.
+
+
+  The filter accepts the following option:'
+name: roberts_opencl
+parameters:
+- description: '<dd><p>Set which planes to filter. Default value is <code>0xf</code>,
+    by which all planes are processed.
+
+    </p>
+
+    </dd>'
+  name: planes
+- description: '<dd><p>Set value which will be multiplied with filtered result.
+
+    Range is <code>[0.0, 65535]</code> and default value is <code>1.0</code>.
+
+    </p>
+
+    </dd>'
+  name: scale
+- description: '<dd><p>Set value which will be added to filtered result.
+
+    Range is <code>[-65535, 65535]</code> and default value is <code>0.0</code>.
+
+    </p></dd>'
+  name: delta
+ref: https://ffmpeg.org/ffmpeg-filters.html#roberts_005fopencl
+source: '<h3 class="section"><a href="#toc-roberts_005fopencl">12.14 roberts_opencl</a></h3>
+
+  <p>Apply the Roberts cross operator (<a href="https://en.wikipedia.org/wiki/Roberts_cross">https://en.wikipedia.org/wiki/Roberts_cross</a>)
+  to input video stream.
+
+  </p>
+
+  <p>The filter accepts the following option:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>planes</samp></dt>
+
+  <dd><p>Set which planes to filter. Default value is <code>0xf</code>, by which all
+  planes are processed.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale</samp></dt>
+
+  <dd><p>Set value which will be multiplied with filtered result.
+
+  Range is <code>[0.0, 65535]</code> and default value is <code>1.0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>delta</samp></dt>
+
+  <dd><p>Set value which will be added to filtered result.
+
+  Range is <code>[-65535, 65535]</code> and default value is <code>0.0</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

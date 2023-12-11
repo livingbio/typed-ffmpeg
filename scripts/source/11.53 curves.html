@@ -1,0 +1,92 @@
+<h3 class="section"><a href="#toc-curves-1">11.53 curves</a></h3>
+
+<p>Apply color adjustments using curves.
+</p>
+<p>This filter is similar to the Adobe Photoshop and GIMP curves tools. Each
+component (red, green and blue) has its values defined by <var>N</var> key points
+tied from each other using a smooth curve. The x-axis represents the pixel
+values from the input frame, and the y-axis the new pixel values to be set for
+the output frame.
+</p>
+<p>By default, a component curve is defined by the two points <var>(0;0)</var> and
+<var>(1;1)</var>. This creates a straight line where each original pixel value is
+&quot;adjusted&quot; to its own value, which means no change to the image.
+</p>
+<p>The filter allows you to redefine these two points and add some more. A new
+curve will be define to pass smoothly through all these new coordinates. The
+new defined points needs to be strictly increasing over the x-axis, and their
+<var>x</var> and <var>y</var> values must be in the <var>[0;1]</var> interval. The curve is
+formed by using a natural or monotonic cubic spline interpolation, depending
+on the <var>interp</var> option (default: <code>natural</code>). The <code>natural</code>
+spline produces a smoother curve in general while the monotonic (<code>pchip</code>)
+spline guarantees the transitions between the specified points to be
+monotonic. If the computed curves happened to go outside the vector spaces,
+the values will be clipped accordingly.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>preset</samp></dt>
+<dd><p>Select one of the available color presets. This option can be used in addition
+to the <samp>r</samp>, <samp>g</samp>, <samp>b</samp> parameters; in this case, the later
+options takes priority on the preset values.
+Available presets are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>color_negative</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>cross_process</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>darker</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>increase_contrast</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>lighter</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>linear_contrast</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>medium_contrast</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>negative</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>strong_contrast</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>vintage</samp>&rsquo;</dt>
+</dl>
+<p>Default is <code>none</code>.
+</p></dd>
+<dt><samp>master, m</samp></dt>
+<dd><p>Set the master key points. These points will define a second pass mapping. It
+is sometimes called a &quot;luminance&quot; or &quot;value&quot; mapping. It can be used with
+<samp>r</samp>, <samp>g</samp>, <samp>b</samp> or <samp>all</samp> since it acts like a
+post-processing LUT.
+</p></dd>
+<dt><samp>red, r</samp></dt>
+<dd><p>Set the key points for the red component.
+</p></dd>
+<dt><samp>green, g</samp></dt>
+<dd><p>Set the key points for the green component.
+</p></dd>
+<dt><samp>blue, b</samp></dt>
+<dd><p>Set the key points for the blue component.
+</p></dd>
+<dt><samp>all</samp></dt>
+<dd><p>Set the key points for all components (not including master).
+Can be used in addition to the other key points component
+options. In this case, the unset component(s) will fallback on this
+<samp>all</samp> setting.
+</p></dd>
+<dt><samp>psfile</samp></dt>
+<dd><p>Specify a Photoshop curves file (<code>.acv</code>) to import the settings from.
+</p></dd>
+<dt><samp>plot</samp></dt>
+<dd><p>Save Gnuplot script of the curves in specified file.
+</p></dd>
+<dt><samp>interp</samp></dt>
+<dd><p>Specify the kind of interpolation. Available algorithms are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>natural</samp>&rsquo;</dt>
+<dd><p>Natural cubic spline using a piece-wise cubic polynomial that is twice continuously differentiable.
+</p></dd>
+<dt>&lsquo;<samp>pchip</samp>&rsquo;</dt>
+<dd><p>Monotonic cubic spline using a piecewise cubic Hermite interpolating polynomial (PCHIP).
+</p></dd>
+</dl>
+
+</dd>
+</dl>
+
+<p>To avoid some filtergraph syntax conflicts, each key points list need to be
+defined using the following syntax: <code>x0/y0 x1/y1 x2/y2 ...</code>.
+</p>
