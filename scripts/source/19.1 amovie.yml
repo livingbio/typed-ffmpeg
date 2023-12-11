@@ -1,0 +1,18 @@
+description: '19.1 amovie
+
+  This is the same as movie source, except it selects an audio
+
+  stream by default.'
+name: amovie
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#amovie
+source: '<h3 class="section"><a href="#toc-amovie">19.1 amovie</a></h3>
+
+
+  <p>This is the same as <a href="#movie">movie</a> source, except it selects an audio
+
+  stream by default.
+
+  </p>
+
+  '

@@ -1,0 +1,74 @@
+description: '18.8 bench, abench
+
+  Benchmark part of a filtergraph.
+
+
+  The filter accepts the following options:'
+name: abench
+parameters:
+- description: "<dd><p>Start or stop a timer.\n</p>\n<p>Available values are:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>start</samp>\u2019</dt>\n<dd><p>Get the\
+    \ current time, set it as frame metadata (using the key\n<code>lavfi.bench.start_time</code>),\
+    \ and forward the frame to the next filter.\n</p>\n</dd>\n<dt>\u2018<samp>stop</samp>\u2019\
+    </dt>\n<dd><p>Get the current time and fetch the <code>lavfi.bench.start_time</code>\
+    \ metadata from\nthe input frame metadata to get the time difference. Time difference,\
+    \ average,\nmaximum and minimum time (respectively <code>t</code>, <code>avg</code>,\
+    \ <code>max</code> and\n<code>min</code>) are then printed. The timestamps are\
+    \ expressed in seconds.\n</p></dd>\n</dl>\n</dd>"
+  name: action
+ref: https://ffmpeg.org/ffmpeg-filters.html#bench_002c
+source: '<h3 class="section"><a href="#toc-bench_002c-abench">18.8 bench, abench</a></h3>
+
+
+  <p>Benchmark part of a filtergraph.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>action</samp></dt>
+
+  <dd><p>Start or stop a timer.
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>start</samp>&rsquo;</dt>
+
+  <dd><p>Get the current time, set it as frame metadata (using the key
+
+  <code>lavfi.bench.start_time</code>), and forward the frame to the next filter.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>stop</samp>&rsquo;</dt>
+
+  <dd><p>Get the current time and fetch the <code>lavfi.bench.start_time</code> metadata
+  from
+
+  the input frame metadata to get the time difference. Time difference, average,
+
+  maximum and minimum time (respectively <code>t</code>, <code>avg</code>, <code>max</code>
+  and
+
+  <code>min</code>) are then printed. The timestamps are expressed in seconds.
+
+  </p></dd>
+
+  </dl>
+
+  </dd>
+
+  </dl>
+
+
+  '

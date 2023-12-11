@@ -1,0 +1,109 @@
+description: '11.180 ocr
+
+  Optical Character Recognition
+
+
+  This filter uses Tesseract for optical character recognition. To enable
+
+  compilation of this filter, you need to configure FFmpeg with
+
+  --enable-libtesseract.
+
+
+  It accepts the following options:
+
+
+
+  The filter exports recognized text as the frame metadata lavfi.ocr.text.
+
+  The filter exports confidence of recognized words as the frame metadata lavfi.ocr.confidence.'
+name: ocr
+parameters:
+- description: '<dd><p>Set datapath to tesseract data. Default is to use whatever
+    was
+
+    set at installation.
+
+    </p>
+
+    </dd>'
+  name: datapath
+- description: '<dd><p>Set language, default is "eng".
+
+    </p>
+
+    </dd>'
+  name: language
+- description: '<dd><p>Set character whitelist.
+
+    </p>
+
+    </dd>'
+  name: whitelist
+- description: '<dd><p>Set character blacklist.
+
+    </p></dd>'
+  name: blacklist
+ref: https://ffmpeg.org/ffmpeg-filters.html#ocr
+source: '<h3 class="section"><a href="#toc-ocr">11.180 ocr</a></h3>
+
+  <p>Optical Character Recognition
+
+  </p>
+
+  <p>This filter uses Tesseract for optical character recognition. To enable
+
+  compilation of this filter, you need to configure FFmpeg with
+
+  <code>--enable-libtesseract</code>.
+
+  </p>
+
+  <p>It accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>datapath</samp></dt>
+
+  <dd><p>Set datapath to tesseract data. Default is to use whatever was
+
+  set at installation.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>language</samp></dt>
+
+  <dd><p>Set language, default is &quot;eng&quot;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>whitelist</samp></dt>
+
+  <dd><p>Set character whitelist.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>blacklist</samp></dt>
+
+  <dd><p>Set character blacklist.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The filter exports recognized text as the frame metadata <code>lavfi.ocr.text</code>.
+
+  The filter exports confidence of recognized words as the frame metadata <code>lavfi.ocr.confidence</code>.
+
+  </p>
+
+  '

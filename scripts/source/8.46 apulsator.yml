@@ -1,0 +1,249 @@
+description: '8.46 apulsator
+
+  Audio pulsator is something between an autopanner and a tremolo.
+
+  But it can produce funny stereo effects as well. Pulsator changes the volume
+
+  of the left and right channel based on a LFO (low frequency oscillator) with
+
+  different waveforms and shifted phases.
+
+  This filter have the ability to define an offset between left and right
+
+  channel. An offset of 0 means that both LFO shapes match each other.
+
+  The left and right channel are altered equally - a conventional tremolo.
+
+  An offset of 50% means that the shape of the right channel is exactly shifted
+
+  in phase (or moved backwards about half of the frequency) - pulsator acts as
+
+  an autopanner. At 1 both curves match again. Every setting in between moves the
+
+  phase shift gapless between all stages and produces some "bypassing" sounds with
+
+  sine and triangle waveforms. The more you set the offset near 1 (starting from
+
+  the 0.5) the faster the signal passes from the left to the right speaker.
+
+
+  The filter accepts the following options:'
+name: apulsator
+parameters:
+- description: '<dd><p>Set input gain. By default it is 1. Range is [0.015625 - 64].
+
+    </p>
+
+    </dd>'
+  name: level_in
+- description: '<dd><p>Set output gain. By default it is 1. Range is [0.015625 - 64].
+
+    </p>
+
+    </dd>'
+  name: level_out
+- description: '<dd><p>Set waveform shape the LFO will use. Can be one of: sine, triangle,
+    square,
+
+    sawup or sawdown. Default is sine.
+
+    </p>
+
+    </dd>'
+  name: mode
+- description: '<dd><p>Set modulation. Define how much of original signal is affected
+    by the LFO.
+
+    </p>
+
+    </dd>'
+  name: amount
+- description: '<dd><p>Set left channel offset. Default is 0. Allowed range is [0
+    - 1].
+
+    </p>
+
+    </dd>'
+  name: offset_l
+- description: '<dd><p>Set right channel offset. Default is 0.5. Allowed range is
+    [0 - 1].
+
+    </p>
+
+    </dd>'
+  name: offset_r
+- description: '<dd><p>Set pulse width. Default is 1. Allowed range is [0 - 2].
+
+    </p>
+
+    </dd>'
+  name: width
+- description: '<dd><p>Set possible timing mode. Can be one of: bpm, ms or hz. Default
+    is hz.
+
+    </p>
+
+    </dd>'
+  name: timing
+- description: '<dd><p>Set bpm. Default is 120. Allowed range is [30 - 300]. Only
+    used if timing
+
+    is set to bpm.
+
+    </p>
+
+    </dd>'
+  name: bpm
+- description: '<dd><p>Set ms. Default is 500. Allowed range is [10 - 2000]. Only
+    used if timing
+
+    is set to ms.
+
+    </p>
+
+    </dd>'
+  name: ms
+- description: '<dd><p>Set frequency in Hz. Default is 2. Allowed range is [0.01 -
+    100]. Only used
+
+    if timing is set to hz.
+
+    </p></dd>'
+  name: hz
+ref: https://ffmpeg.org/ffmpeg-filters.html#apulsator
+source: '<h3 class="section"><a href="#toc-apulsator">8.46 apulsator</a></h3>
+
+
+  <p>Audio pulsator is something between an autopanner and a tremolo.
+
+  But it can produce funny stereo effects as well. Pulsator changes the volume
+
+  of the left and right channel based on a LFO (low frequency oscillator) with
+
+  different waveforms and shifted phases.
+
+  This filter have the ability to define an offset between left and right
+
+  channel. An offset of 0 means that both LFO shapes match each other.
+
+  The left and right channel are altered equally - a conventional tremolo.
+
+  An offset of 50% means that the shape of the right channel is exactly shifted
+
+  in phase (or moved backwards about half of the frequency) - pulsator acts as
+
+  an autopanner. At 1 both curves match again. Every setting in between moves the
+
+  phase shift gapless between all stages and produces some &quot;bypassing&quot; sounds
+  with
+
+  sine and triangle waveforms. The more you set the offset near 1 (starting from
+
+  the 0.5) the faster the signal passes from the left to the right speaker.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>level_in</samp></dt>
+
+  <dd><p>Set input gain. By default it is 1. Range is [0.015625 - 64].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>level_out</samp></dt>
+
+  <dd><p>Set output gain. By default it is 1. Range is [0.015625 - 64].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Set waveform shape the LFO will use. Can be one of: sine, triangle, square,
+
+  sawup or sawdown. Default is sine.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>amount</samp></dt>
+
+  <dd><p>Set modulation. Define how much of original signal is affected by the LFO.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>offset_l</samp></dt>
+
+  <dd><p>Set left channel offset. Default is 0. Allowed range is [0 - 1].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>offset_r</samp></dt>
+
+  <dd><p>Set right channel offset. Default is 0.5. Allowed range is [0 - 1].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>width</samp></dt>
+
+  <dd><p>Set pulse width. Default is 1. Allowed range is [0 - 2].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>timing</samp></dt>
+
+  <dd><p>Set possible timing mode. Can be one of: bpm, ms or hz. Default is hz.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>bpm</samp></dt>
+
+  <dd><p>Set bpm. Default is 120. Allowed range is [30 - 300]. Only used if timing
+
+  is set to bpm.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>ms</samp></dt>
+
+  <dd><p>Set ms. Default is 500. Allowed range is [10 - 2000]. Only used if timing
+
+  is set to ms.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>hz</samp></dt>
+
+  <dd><p>Set frequency in Hz. Default is 2. Allowed range is [0.01 - 100]. Only used
+
+  if timing is set to hz.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

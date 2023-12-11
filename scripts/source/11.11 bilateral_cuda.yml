@@ -1,0 +1,90 @@
+description: '11.11 bilateral_cuda
+
+  CUDA accelerated bilateral filter, an edge preserving filter.
+
+  This filter is mathematically accurate thanks to the use of GPU acceleration.
+
+  For best output quality, use one to one chroma subsampling, i.e. yuv444p format.
+
+
+  The filter accepts the following options:'
+name: bilateral_cuda
+parameters:
+- description: '<dd><p>Set sigma of gaussian function to calculate spatial weight,
+    also called sigma space.
+
+    Allowed range is 0.1 to 512. Default is 0.1.
+
+    </p>
+
+    </dd>'
+  name: sigmaS
+- description: '<dd><p>Set sigma of gaussian function to calculate color range weight,
+    also called sigma color.
+
+    Allowed range is 0.1 to 512. Default is 0.1.
+
+    </p>
+
+    </dd>'
+  name: sigmaR
+- description: '<dd><p>Set window size of the bilateral function to determine the
+    number of neighbours to loop on.
+
+    If the number entered is even, one will be added automatically.
+
+    Allowed range is 1 to 255. Default is 1.
+
+    </p></dd>'
+  name: window_size
+ref: https://ffmpeg.org/ffmpeg-filters.html#bilateral_005fcuda
+source: '<h3 class="section"><a href="#toc-bilateral_005fcuda">11.11 bilateral_cuda</a></h3>
+
+  <p>CUDA accelerated bilateral filter, an edge preserving filter.
+
+  This filter is mathematically accurate thanks to the use of GPU acceleration.
+
+  For best output quality, use one to one chroma subsampling, i.e. yuv444p format.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p><dl compact="compact">
+
+  <dt><samp>sigmaS</samp></dt>
+
+  <dd><p>Set sigma of gaussian function to calculate spatial weight, also called sigma
+  space.
+
+  Allowed range is 0.1 to 512. Default is 0.1.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sigmaR</samp></dt>
+
+  <dd><p>Set sigma of gaussian function to calculate color range weight, also called
+  sigma color.
+
+  Allowed range is 0.1 to 512. Default is 0.1.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>window_size</samp></dt>
+
+  <dd><p>Set window size of the bilateral function to determine the number of neighbours
+  to loop on.
+
+  If the number entered is even, one will be added automatically.
+
+  Allowed range is 1 to 255. Default is 1.
+
+  </p></dd>
+
+  </dl>
+
+  '

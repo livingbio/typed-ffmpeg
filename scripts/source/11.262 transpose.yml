@@ -1,0 +1,218 @@
+description: '11.262 transpose
+
+  Transpose rows with columns in the input video and optionally flip it.
+
+
+  It accepts the following parameters:
+
+
+
+  For example to rotate by 90 degrees clockwise and preserve portrait
+
+  layout:
+
+
+  transpose=dir=1:passthrough=portrait
+
+
+  The command above can also be specified as:
+
+
+  transpose=1:portrait'
+name: transpose
+parameters:
+- description: "<dd><p>Specify the transposition direction.\n</p>\n<p>Can assume the\
+    \ following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0, 4, cclock_flip</samp>\u2019\
+    </dt>\n<dd><p>Rotate by 90 degrees counterclockwise and vertically flip (default),\
+    \ that is:\n</p><div class=\"example\">\n<pre class=\"example\">L.R     L.l\n\
+    . . -&gt;  . .\nl.r     R.r\n</pre></div>\n</dd>\n<dt>\u2018<samp>1, 5, clock</samp>\u2019\
+    </dt>\n<dd><p>Rotate by 90 degrees clockwise, that is:\n</p><div class=\"example\"\
+    >\n<pre class=\"example\">L.R     l.L\n. . -&gt;  . .\nl.r     r.R\n</pre></div>\n\
+    </dd>\n<dt>\u2018<samp>2, 6, cclock</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees\
+    \ counterclockwise, that is:\n</p><div class=\"example\">\n<pre class=\"example\"\
+    >L.R     R.r\n. . -&gt;  . .\nl.r     L.l\n</pre></div>\n</dd>\n<dt>\u2018<samp>3,\
+    \ 7, clock_flip</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees clockwise and vertically\
+    \ flip, that is:\n</p><div class=\"example\">\n<pre class=\"example\">L.R    \
+    \ r.R\n. . -&gt;  . .\nl.r     l.L\n</pre></div>\n</dd>\n</dl>\n<p>For values\
+    \ between 4-7, the transposition is only done if the input\nvideo geometry is\
+    \ portrait and not landscape. These values are\ndeprecated, the <code>passthrough</code>\
+    \ option should be used instead.\n</p>\n<p>Numerical values are deprecated, and\
+    \ should be dropped in favor of\nsymbolic constants.\n</p>\n</dd>"
+  name: dir
+- description: "<dd><p>Do not apply the transposition if the input geometry matches\
+    \ the one\nspecified by the specified value. It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Always\
+    \ apply transposition.\n</p></dd>\n<dt>\u2018<samp>portrait</samp>\u2019</dt>\n\
+    <dd><p>Preserve portrait geometry (when <var>height</var> &gt;= <var>width</var>).\n\
+    </p></dd>\n<dt>\u2018<samp>landscape</samp>\u2019</dt>\n<dd><p>Preserve landscape\
+    \ geometry (when <var>width</var> &gt;= <var>height</var>).\n</p></dd>\n</dl>\n\
+    <p>Default value is <code>none</code>.\n</p></dd>"
+  name: passthrough
+ref: https://ffmpeg.org/ffmpeg-filters.html#transpose
+source: '<h3 class="section"><a href="#toc-transpose-1">11.262 transpose</a></h3>
+
+
+  <p>Transpose rows with columns in the input video and optionally flip it.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>dir</samp></dt>
+
+  <dd><p>Specify the transposition direction.
+
+  </p>
+
+  <p>Can assume the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>0, 4, cclock_flip</samp>&rsquo;</dt>
+
+  <dd><p>Rotate by 90 degrees counterclockwise and vertically flip (default), that
+  is:
+
+  </p><div class="example">
+
+  <pre class="example">L.R     L.l
+
+  . . -&gt;  . .
+
+  l.r     R.r
+
+  </pre></div>
+
+
+  </dd>
+
+  <dt>&lsquo;<samp>1, 5, clock</samp>&rsquo;</dt>
+
+  <dd><p>Rotate by 90 degrees clockwise, that is:
+
+  </p><div class="example">
+
+  <pre class="example">L.R     l.L
+
+  . . -&gt;  . .
+
+  l.r     r.R
+
+  </pre></div>
+
+
+  </dd>
+
+  <dt>&lsquo;<samp>2, 6, cclock</samp>&rsquo;</dt>
+
+  <dd><p>Rotate by 90 degrees counterclockwise, that is:
+
+  </p><div class="example">
+
+  <pre class="example">L.R     R.r
+
+  . . -&gt;  . .
+
+  l.r     L.l
+
+  </pre></div>
+
+
+  </dd>
+
+  <dt>&lsquo;<samp>3, 7, clock_flip</samp>&rsquo;</dt>
+
+  <dd><p>Rotate by 90 degrees clockwise and vertically flip, that is:
+
+  </p><div class="example">
+
+  <pre class="example">L.R     r.R
+
+  . . -&gt;  . .
+
+  l.r     l.L
+
+  </pre></div>
+
+  </dd>
+
+  </dl>
+
+
+  <p>For values between 4-7, the transposition is only done if the input
+
+  video geometry is portrait and not landscape. These values are
+
+  deprecated, the <code>passthrough</code> option should be used instead.
+
+  </p>
+
+  <p>Numerical values are deprecated, and should be dropped in favor of
+
+  symbolic constants.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>passthrough</samp></dt>
+
+  <dd><p>Do not apply the transposition if the input geometry matches the one
+
+  specified by the specified value. It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+
+  <dd><p>Always apply transposition.
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>portrait</samp>&rsquo;</dt>
+
+  <dd><p>Preserve portrait geometry (when <var>height</var> &gt;= <var>width</var>).
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>landscape</samp>&rsquo;</dt>
+
+  <dd><p>Preserve landscape geometry (when <var>width</var> &gt;= <var>height</var>).
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is <code>none</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>For example to rotate by 90 degrees clockwise and preserve portrait
+
+  layout:
+
+  </p><div class="example">
+
+  <pre class="example">transpose=dir=1:passthrough=portrait
+
+  </pre></div>
+
+
+  <p>The command above can also be specified as:
+
+  </p><div class="example">
+
+  <pre class="example">transpose=1:portrait
+
+  </pre></div>
+
+
+  '

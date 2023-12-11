@@ -1,0 +1,126 @@
+description: '11.263 transpose_npp
+
+  Transpose rows with columns in the input video and optionally flip it.
+
+  For more in depth examples see the transpose video filter, which shares mostly the
+  same options.
+
+
+  It accepts the following parameters:'
+name: transpose_npp
+parameters:
+- description: "<dd><p>Specify the transposition direction.\n</p>\n<p>Can assume the\
+    \ following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>cclock_flip</samp>\u2019\
+    </dt>\n<dd><p>Rotate by 90 degrees counterclockwise and vertically flip. (default)\n\
+    </p>\n</dd>\n<dt>\u2018<samp>clock</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees\
+    \ clockwise.\n</p>\n</dd>\n<dt>\u2018<samp>cclock</samp>\u2019</dt>\n<dd><p>Rotate\
+    \ by 90 degrees counterclockwise.\n</p>\n</dd>\n<dt>\u2018<samp>clock_flip</samp>\u2019\
+    </dt>\n<dd><p>Rotate by 90 degrees clockwise and vertically flip.\n</p></dd>\n\
+    </dl>\n</dd>"
+  name: dir
+- description: "<dd><p>Do not apply the transposition if the input geometry matches\
+    \ the one\nspecified by the specified value. It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Always\
+    \ apply transposition. (default)\n</p></dd>\n<dt>\u2018<samp>portrait</samp>\u2019\
+    </dt>\n<dd><p>Preserve portrait geometry (when <var>height</var> &gt;= <var>width</var>).\n\
+    </p></dd>\n<dt>\u2018<samp>landscape</samp>\u2019</dt>\n<dd><p>Preserve landscape\
+    \ geometry (when <var>width</var> &gt;= <var>height</var>).\n</p></dd>\n</dl>\n\
+    </dd>"
+  name: passthrough
+ref: https://ffmpeg.org/ffmpeg-filters.html#transpose_005fnpp
+source: '<h3 class="section"><a href="#toc-transpose_005fnpp">11.263 transpose_npp</a></h3>
+
+
+  <p>Transpose rows with columns in the input video and optionally flip it.
+
+  For more in depth examples see the <a href="#transpose">transpose</a> video filter,
+  which shares mostly the same options.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>dir</samp></dt>
+
+  <dd><p>Specify the transposition direction.
+
+  </p>
+
+  <p>Can assume the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>cclock_flip</samp>&rsquo;</dt>
+
+  <dd><p>Rotate by 90 degrees counterclockwise and vertically flip. (default)
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>clock</samp>&rsquo;</dt>
+
+  <dd><p>Rotate by 90 degrees clockwise.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>cclock</samp>&rsquo;</dt>
+
+  <dd><p>Rotate by 90 degrees counterclockwise.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>clock_flip</samp>&rsquo;</dt>
+
+  <dd><p>Rotate by 90 degrees clockwise and vertically flip.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>passthrough</samp></dt>
+
+  <dd><p>Do not apply the transposition if the input geometry matches the one
+
+  specified by the specified value. It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+
+  <dd><p>Always apply transposition. (default)
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>portrait</samp>&rsquo;</dt>
+
+  <dd><p>Preserve portrait geometry (when <var>height</var> &gt;= <var>width</var>).
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>landscape</samp>&rsquo;</dt>
+
+  <dd><p>Preserve landscape geometry (when <var>width</var> &gt;= <var>height</var>).
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  </dl>
+
+
+  '

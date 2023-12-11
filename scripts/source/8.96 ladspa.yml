@@ -1,0 +1,218 @@
+description: "8.96 ladspa\nLoad a LADSPA (Linux Audio Developer\u2019s Simple Plugin\
+  \ API) plugin.\n\nTo enable compilation of this filter you need to configure FFmpeg\
+  \ with\n--enable-ladspa."
+name: ladspa
+parameters:
+- description: '<dd><p>Specifies the name of LADSPA plugin library to load. If the
+    environment
+
+    variable <code>LADSPA_PATH</code> is defined, the LADSPA plugin is searched in
+
+    each one of the directories specified by the colon separated list in
+
+    <code>LADSPA_PATH</code>, otherwise in the standard LADSPA paths, which are in
+
+    this order: <samp>HOME/.ladspa/lib/</samp>, <samp>/usr/local/lib/ladspa/</samp>,
+
+    <samp>/usr/lib/ladspa/</samp>.
+
+    </p>
+
+    </dd>'
+  name: file, f
+- description: '<dd><p>Specifies the plugin within the library. Some libraries contain
+    only
+
+    one plugin, but others contain many of them. If this is not set filter
+
+    will list all available plugins within the specified library.
+
+    </p>
+
+    </dd>'
+  name: plugin, p
+- description: "<dd><p>Set the \u2019|\u2019 separated list of controls which are\
+    \ zero or more floating point\nvalues that determine the behavior of the loaded\
+    \ plugin (for example delay,\nthreshold or gain).\nControls need to be defined\
+    \ using the following syntax:\nc0=<var>value0</var>|c1=<var>value1</var>|c2=<var>value2</var>|...,\
+    \ where\n<var>valuei</var> is the value set on the <var>i</var>-th control.\n\
+    Alternatively they can be also defined using the following syntax:\n<var>value0</var>|<var>value1</var>|<var>value2</var>|...,\
+    \ where\n<var>valuei</var> is the value set on the <var>i</var>-th control.\n\
+    If <samp>controls</samp> is set to <code>help</code>, all available controls and\n\
+    their valid ranges are printed.\n</p>\n</dd>"
+  name: controls, c
+- description: '<dd><p>Specify the sample rate, default to 44100. Only used if plugin
+    have
+
+    zero inputs.
+
+    </p>
+
+    </dd>'
+  name: sample_rate, s
+- description: '<dd><p>Set the number of samples per channel per each output frame,
+    default
+
+    is 1024. Only used if plugin have zero inputs.
+
+    </p>
+
+    </dd>'
+  name: nb_samples, n
+- description: '<dd><p>Set the minimum duration of the sourced audio. See
+
+    <a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration
+    section in the ffmpeg-utils(1) manual</a>
+
+    for the accepted syntax.
+
+    Note that the resulting duration may be greater than the specified duration,
+
+    as the generated audio is always cut at the end of a complete frame.
+
+    If not specified, or the expressed duration is negative, the audio is
+
+    supposed to be generated forever.
+
+    Only used if plugin have zero inputs.
+
+    </p>
+
+    </dd>'
+  name: duration, d
+- description: '<dd><p>Enable latency compensation, by default is disabled.
+
+    Only used if plugin have inputs.
+
+    </p></dd>'
+  name: latency, l
+ref: https://ffmpeg.org/ffmpeg-filters.html#ladspa
+source: '<h3 class="section"><a href="#toc-ladspa">8.96 ladspa</a></h3>
+
+
+  <p>Load a LADSPA (Linux Audio Developer&rsquo;s Simple Plugin API) plugin.
+
+  </p>
+
+  <p>To enable compilation of this filter you need to configure FFmpeg with
+
+  <code>--enable-ladspa</code>.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>file, f</samp></dt>
+
+  <dd><p>Specifies the name of LADSPA plugin library to load. If the environment
+
+  variable <code>LADSPA_PATH</code> is defined, the LADSPA plugin is searched in
+
+  each one of the directories specified by the colon separated list in
+
+  <code>LADSPA_PATH</code>, otherwise in the standard LADSPA paths, which are in
+
+  this order: <samp>HOME/.ladspa/lib/</samp>, <samp>/usr/local/lib/ladspa/</samp>,
+
+  <samp>/usr/lib/ladspa/</samp>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>plugin, p</samp></dt>
+
+  <dd><p>Specifies the plugin within the library. Some libraries contain only
+
+  one plugin, but others contain many of them. If this is not set filter
+
+  will list all available plugins within the specified library.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>controls, c</samp></dt>
+
+  <dd><p>Set the &rsquo;|&rsquo; separated list of controls which are zero or more
+  floating point
+
+  values that determine the behavior of the loaded plugin (for example delay,
+
+  threshold or gain).
+
+  Controls need to be defined using the following syntax:
+
+  c0=<var>value0</var>|c1=<var>value1</var>|c2=<var>value2</var>|..., where
+
+  <var>valuei</var> is the value set on the <var>i</var>-th control.
+
+  Alternatively they can be also defined using the following syntax:
+
+  <var>value0</var>|<var>value1</var>|<var>value2</var>|..., where
+
+  <var>valuei</var> is the value set on the <var>i</var>-th control.
+
+  If <samp>controls</samp> is set to <code>help</code>, all available controls and
+
+  their valid ranges are printed.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sample_rate, s</samp></dt>
+
+  <dd><p>Specify the sample rate, default to 44100. Only used if plugin have
+
+  zero inputs.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>nb_samples, n</samp></dt>
+
+  <dd><p>Set the number of samples per channel per each output frame, default
+
+  is 1024. Only used if plugin have zero inputs.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>duration, d</samp></dt>
+
+  <dd><p>Set the minimum duration of the sourced audio. See
+
+  <a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration
+  section in the ffmpeg-utils(1) manual</a>
+
+  for the accepted syntax.
+
+  Note that the resulting duration may be greater than the specified duration,
+
+  as the generated audio is always cut at the end of a complete frame.
+
+  If not specified, or the expressed duration is negative, the audio is
+
+  supposed to be generated forever.
+
+  Only used if plugin have zero inputs.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>latency, l</samp></dt>
+
+  <dd><p>Enable latency compensation, by default is disabled.
+
+  Only used if plugin have inputs.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

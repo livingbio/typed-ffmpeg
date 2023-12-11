@@ -1,0 +1,151 @@
+description: '13.5 xstack_vaapi
+
+  Stack video inputs into custom layout.
+
+
+  This is the VA-API variant of the xstack filter,  each input stream may
+
+  have different size, this filter will scale down/up each input stream to the
+
+  given output size, or the size of the first input stream.
+
+
+  It accepts the following options:'
+name: xstack_vaapi
+parameters:
+- description: '<dd><p>See <a href="#xstack">xstack</a>.
+
+    </p>
+
+    </dd>'
+  name: inputs
+- description: '<dd><p>See <a href="#xstack">xstack</a>.
+
+    </p>
+
+    </dd>'
+  name: shortest
+- description: '<dd><p>See <a href="#xstack">xstack</a>.
+
+    Moreover, this permits the user to supply output size for each input stream.
+
+    </p><div class="example">
+
+    <pre class="example">xstack_vaapi=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
+
+    </pre></div>
+
+    </dd>'
+  name: layout
+- description: '<dd><p>See <a href="#xstack">xstack</a>.
+
+    </p>
+
+    </dd>'
+  name: grid
+- description: '<dd><p>Set output size for each input stream when <samp>grid</samp>
+    is set. If this option
+
+    is not set, this filter will set output size by default to the size of the
+
+    first input stream. For the syntax of this option, check the
+
+    <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)"Video size" section
+    in the ffmpeg-utils manual</a>.
+
+    </p>
+
+    </dd>'
+  name: grid_tile_size
+- description: '<dd><p>See <a href="#xstack">xstack</a>.
+
+    </p></dd>'
+  name: fill
+ref: https://ffmpeg.org/ffmpeg-filters.html#xstack_005fvaapi
+source: '<h3 class="section"><a href="#toc-xstack_005fvaapi">13.5 xstack_vaapi</a></h3>
+
+  <p>Stack video inputs into custom layout.
+
+  </p>
+
+  <p>This is the VA-API variant of the <a href="#xstack">xstack</a> filter,  each
+  input stream may
+
+  have different size, this filter will scale down/up each input stream to the
+
+  given output size, or the size of the first input stream.
+
+  </p>
+
+  <p>It accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>inputs</samp></dt>
+
+  <dd><p>See <a href="#xstack">xstack</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>shortest</samp></dt>
+
+  <dd><p>See <a href="#xstack">xstack</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>layout</samp></dt>
+
+  <dd><p>See <a href="#xstack">xstack</a>.
+
+  Moreover, this permits the user to supply output size for each input stream.
+
+  </p><div class="example">
+
+  <pre class="example">xstack_vaapi=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
+
+  </pre></div>
+
+
+  </dd>
+
+  <dt><samp>grid</samp></dt>
+
+  <dd><p>See <a href="#xstack">xstack</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>grid_tile_size</samp></dt>
+
+  <dd><p>Set output size for each input stream when <samp>grid</samp> is set. If this
+  option
+
+  is not set, this filter will set output size by default to the size of the
+
+  first input stream. For the syntax of this option, check the
+
+  <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot;
+  section in the ffmpeg-utils manual</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fill</samp></dt>
+
+  <dd><p>See <a href="#xstack">xstack</a>.
+
+  </p></dd>
+
+  </dl>
+
+
+
+  '

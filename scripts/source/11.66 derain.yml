@@ -1,0 +1,141 @@
+description: "11.66 derain\nRemove the rain in the input image/video by applying the\
+  \ derain methods based on\nconvolutional neural networks. Supported models:\n\n\n\
+  \ Recurrent Squeeze-and-Excitation Context Aggregation Net (RESCAN).\nSee http://openaccess.thecvf.com/content_ECCV_2018/papers/Xia_Li_Recurrent_Squeeze-and-Excitation_Context_ECCV_2018_paper.pdf.\n\
+  \nTraining as well as model generation scripts are provided in\nthe repository at\
+  \ https://github.com/XueweiMeng/derain_filter.git.\n\nThe filter accepts the following\
+  \ options:\n\n\nTo get full functionality (such as async execution), please use\
+  \ the dnn_processing filter."
+name: derain
+parameters:
+- description: "<dd><p>Specify which filter to use. This option accepts the following\
+    \ values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>derain</samp>\u2019\
+    </dt>\n<dd><p>Derain filter. To conduct derain filter, you need to use a derain\
+    \ model.\n</p>\n</dd>\n<dt>\u2018<samp>dehaze</samp>\u2019</dt>\n<dd><p>Dehaze\
+    \ filter. To conduct dehaze filter, you need to use a dehaze model.\n</p></dd>\n\
+    </dl>\n<p>Default value is \u2018<samp>derain</samp>\u2019.\n</p>\n</dd>"
+  name: filter_type
+- description: "<dd><p>Specify which DNN backend to use for model loading and execution.\
+    \ This option accepts\nthe following values:\n</p>\n<dl compact=\"compact\">\n\
+    <dt>\u2018<samp>tensorflow</samp>\u2019</dt>\n<dd><p>TensorFlow backend. To enable\
+    \ this backend you\nneed to install the TensorFlow for C library (see\n<a href=\"\
+    https://www.tensorflow.org/install/lang_c\">https://www.tensorflow.org/install/lang_c</a>)\
+    \ and configure FFmpeg with\n<code>--enable-libtensorflow</code>\n</p></dd>\n\
+    </dl>\n</dd>"
+  name: dnn_backend
+- description: '<dd><p>Set path to model file specifying network architecture and
+    its parameters.
+
+    Note that different backends use different file formats. TensorFlow can load files
+    for only its format.
+
+    </p></dd>'
+  name: model
+ref: https://ffmpeg.org/ffmpeg-filters.html#derain
+source: '<h3 class="section"><a href="#toc-derain-1">11.66 derain</a></h3>
+
+
+  <p>Remove the rain in the input image/video by applying the derain methods based
+  on
+
+  convolutional neural networks. Supported models:
+
+  </p>
+
+  <ul>
+
+  <li> Recurrent Squeeze-and-Excitation Context Aggregation Net (RESCAN).
+
+  See <a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Xia_Li_Recurrent_Squeeze-and-Excitation_Context_ECCV_2018_paper.pdf">http://openaccess.thecvf.com/content_ECCV_2018/papers/Xia_Li_Recurrent_Squeeze-and-Excitation_Context_ECCV_2018_paper.pdf</a>.
+
+  </li></ul>
+
+
+  <p>Training as well as model generation scripts are provided in
+
+  the repository at <a href="https://github.com/XueweiMeng/derain_filter.git">https://github.com/XueweiMeng/derain_filter.git</a>.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>filter_type</samp></dt>
+
+  <dd><p>Specify which filter to use. This option accepts the following values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>derain</samp>&rsquo;</dt>
+
+  <dd><p>Derain filter. To conduct derain filter, you need to use a derain model.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>dehaze</samp>&rsquo;</dt>
+
+  <dd><p>Dehaze filter. To conduct dehaze filter, you need to use a dehaze model.
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default value is &lsquo;<samp>derain</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>dnn_backend</samp></dt>
+
+  <dd><p>Specify which DNN backend to use for model loading and execution. This option
+  accepts
+
+  the following values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>tensorflow</samp>&rsquo;</dt>
+
+  <dd><p>TensorFlow backend. To enable this backend you
+
+  need to install the TensorFlow for C library (see
+
+  <a href="https://www.tensorflow.org/install/lang_c">https://www.tensorflow.org/install/lang_c</a>)
+  and configure FFmpeg with
+
+  <code>--enable-libtensorflow</code>
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>model</samp></dt>
+
+  <dd><p>Set path to model file specifying network architecture and its parameters.
+
+  Note that different backends use different file formats. TensorFlow can load files
+  for only its format.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>To get full functionality (such as async execution), please use the <a href="#dnn_005fprocessing">dnn_processing</a>
+  filter.
+
+  </p>
+
+  '

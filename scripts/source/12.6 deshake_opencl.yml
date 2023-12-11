@@ -1,0 +1,238 @@
+description: '12.6 deshake_opencl
+
+  Feature-point based video stabilization filter.
+
+
+  The filter accepts the following options:'
+name: deshake_opencl
+parameters:
+- description: '<dd><p>Simulates a tripod by preventing any camera movement whatsoever
+    from the original frame. Defaults to <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: tripod
+- description: '<dd><p>Whether or not additional debug info should be displayed, both
+    in the processed output and in the console.
+
+    </p>
+
+    <p>Note that in order to see console debug output you will also need to pass <code>-v
+    verbose</code> to ffmpeg.
+
+    </p>
+
+    <p>Viewing point matches in the output video is only supported for RGB input.
+
+    </p>
+
+    <p>Defaults to <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: debug
+- description: '<dd><p>Whether or not to do a tiny bit of cropping at the borders
+    to cut down on the amount of mirrored pixels.
+
+    </p>
+
+    <p>Defaults to <code>1</code>.
+
+    </p>
+
+    </dd>'
+  name: adaptive_crop
+- description: '<dd><p>Whether or not feature points should be refined at a sub-pixel
+    level.
+
+    </p>
+
+    <p>This can be turned off for a slight performance gain at the cost of precision.
+
+    </p>
+
+    <p>Defaults to <code>1</code>.
+
+    </p>
+
+    </dd>'
+  name: refine_features
+- description: '<dd><p>The strength of the smoothing applied to the camera path from
+    <code>0.0</code> to <code>1.0</code>.
+
+    </p>
+
+    <p><code>1.0</code> is the maximum smoothing strength while values less than that
+    result in less smoothing.
+
+    </p>
+
+    <p><code>0.0</code> causes the filter to adaptively choose a smoothing strength
+    on a per-frame basis.
+
+    </p>
+
+    <p>Defaults to <code>0.0</code>.
+
+    </p>
+
+    </dd>'
+  name: smooth_strength
+- description: '<dd><p>Controls the size of the smoothing window (the number of frames
+    buffered to determine motion information from).
+
+    </p>
+
+    <p>The size of the smoothing window is determined by multiplying the framerate
+    of the video by this number.
+
+    </p>
+
+    <p>Acceptable values range from <code>0.1</code> to <code>10.0</code>.
+
+    </p>
+
+    <p>Larger values increase the amount of motion data available for determining
+    how to smooth the camera path,
+
+    potentially improving smoothness, but also increase latency and memory usage.
+
+    </p>
+
+    <p>Defaults to <code>2.0</code>.
+
+    </p>
+
+    </dd>'
+  name: smooth_window_multiplier
+ref: https://ffmpeg.org/ffmpeg-filters.html#deshake_005fopencl
+source: '<h3 class="section"><a href="#toc-deshake_005fopencl">12.6 deshake_opencl</a></h3>
+
+  <p>Feature-point based video stabilization filter.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>tripod</samp></dt>
+
+  <dd><p>Simulates a tripod by preventing any camera movement whatsoever from the
+  original frame. Defaults to <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>debug</samp></dt>
+
+  <dd><p>Whether or not additional debug info should be displayed, both in the processed
+  output and in the console.
+
+  </p>
+
+  <p>Note that in order to see console debug output you will also need to pass <code>-v
+  verbose</code> to ffmpeg.
+
+  </p>
+
+  <p>Viewing point matches in the output video is only supported for RGB input.
+
+  </p>
+
+  <p>Defaults to <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>adaptive_crop</samp></dt>
+
+  <dd><p>Whether or not to do a tiny bit of cropping at the borders to cut down on
+  the amount of mirrored pixels.
+
+  </p>
+
+  <p>Defaults to <code>1</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>refine_features</samp></dt>
+
+  <dd><p>Whether or not feature points should be refined at a sub-pixel level.
+
+  </p>
+
+  <p>This can be turned off for a slight performance gain at the cost of precision.
+
+  </p>
+
+  <p>Defaults to <code>1</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>smooth_strength</samp></dt>
+
+  <dd><p>The strength of the smoothing applied to the camera path from <code>0.0</code>
+  to <code>1.0</code>.
+
+  </p>
+
+  <p><code>1.0</code> is the maximum smoothing strength while values less than that
+  result in less smoothing.
+
+  </p>
+
+  <p><code>0.0</code> causes the filter to adaptively choose a smoothing strength
+  on a per-frame basis.
+
+  </p>
+
+  <p>Defaults to <code>0.0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>smooth_window_multiplier</samp></dt>
+
+  <dd><p>Controls the size of the smoothing window (the number of frames buffered
+  to determine motion information from).
+
+  </p>
+
+  <p>The size of the smoothing window is determined by multiplying the framerate of
+  the video by this number.
+
+  </p>
+
+  <p>Acceptable values range from <code>0.1</code> to <code>10.0</code>.
+
+  </p>
+
+  <p>Larger values increase the amount of motion data available for determining how
+  to smooth the camera path,
+
+  potentially improving smoothness, but also increase latency and memory usage.
+
+  </p>
+
+  <p>Defaults to <code>2.0</code>.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  '

@@ -1,0 +1,127 @@
+<h3 class="section"><a href="#toc-blend-1">11.15 blend</a></h3>
+
+<p>Blend two video frames into each other.
+</p>
+<p>The <code>blend</code> filter takes two input streams and outputs one
+stream, the first input is the &quot;top&quot; layer and second input is
+&quot;bottom&quot; layer.  By default, the output terminates when the longest input terminates.
+</p>
+<p>The <code>tblend</code> (time blend) filter takes two consecutive frames
+from one single stream, and outputs the result obtained by blending
+the new frame on top of the old frame.
+</p>
+<p>A description of the accepted options follows.
+</p>
+<dl compact="compact">
+<dt><samp>c0_mode</samp></dt>
+<dt><samp>c1_mode</samp></dt>
+<dt><samp>c2_mode</samp></dt>
+<dt><samp>c3_mode</samp></dt>
+<dt><samp>all_mode</samp></dt>
+<dd><p>Set blend mode for specific pixel component or all pixel components in case
+of <var>all_mode</var>. Default value is <code>normal</code>.
+</p>
+<p>Available values for component modes are:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>addition</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>and</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>average</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>bleach</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>burn</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>darken</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>difference</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>divide</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>dodge</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>exclusion</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>extremity</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>freeze</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>geometric</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>glow</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>grainextract</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>grainmerge</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>hardlight</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>hardmix</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>hardoverlay</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>harmonic</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>heat</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>interpolate</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>lighten</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>linearlight</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>multiply</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>multiply128</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>negation</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>normal</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>or</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>overlay</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>phoenix</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>pinlight</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>reflect</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>screen</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>softdifference</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>softlight</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>stain</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>subtract</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>vividlight</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>xor</samp>&rsquo;</dt>
+</dl>
+
+</dd>
+<dt><samp>c0_opacity</samp></dt>
+<dt><samp>c1_opacity</samp></dt>
+<dt><samp>c2_opacity</samp></dt>
+<dt><samp>c3_opacity</samp></dt>
+<dt><samp>all_opacity</samp></dt>
+<dd><p>Set blend opacity for specific pixel component or all pixel components in case
+of <var>all_opacity</var>. Only used in combination with pixel component blend modes.
+</p>
+</dd>
+<dt><samp>c0_expr</samp></dt>
+<dt><samp>c1_expr</samp></dt>
+<dt><samp>c2_expr</samp></dt>
+<dt><samp>c3_expr</samp></dt>
+<dt><samp>all_expr</samp></dt>
+<dd><p>Set blend expression for specific pixel component or all pixel components in case
+of <var>all_expr</var>. Note that related mode options will be ignored if those are set.
+</p>
+<p>The expressions can use the following variables:
+</p>
+<dl compact="compact">
+<dt><samp>N</samp></dt>
+<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.
+</p>
+</dd>
+<dt><samp>X</samp></dt>
+<dt><samp>Y</samp></dt>
+<dd><p>the coordinates of the current sample
+</p>
+</dd>
+<dt><samp>W</samp></dt>
+<dt><samp>H</samp></dt>
+<dd><p>the width and height of currently filtered plane
+</p>
+</dd>
+<dt><samp>SW</samp></dt>
+<dt><samp>SH</samp></dt>
+<dd><p>Width and height scale for the plane being filtered. It is the
+ratio between the dimensions of the current plane to the luma plane,
+e.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for
+the luma plane and <code>0.5,0.5</code> for the chroma planes.
+</p>
+</dd>
+<dt><samp>T</samp></dt>
+<dd><p>Time of the current frame, expressed in seconds.
+</p>
+</dd>
+<dt><samp>TOP, A</samp></dt>
+<dd><p>Value of pixel component at current location for first video frame (top layer).
+</p>
+</dd>
+<dt><samp>BOTTOM, B</samp></dt>
+<dd><p>Value of pixel component at current location for second video frame (bottom layer).
+</p></dd>
+</dl>
+</dd>
+</dl>
+
+<p>The <code>blend</code> filter also supports the <a href="#framesync">framesync</a> options.
+</p>

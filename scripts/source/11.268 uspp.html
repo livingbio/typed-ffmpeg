@@ -1,0 +1,32 @@
+<h3 class="section"><a href="#toc-uspp">11.268 uspp</a></h3>
+
+<p>Apply ultra slow/simple postprocessing filter that compresses and decompresses
+the image at several (or - in the case of <samp>quality</samp> level <code>8</code> - all)
+shifts and average the results.
+</p>
+<p>The way this differs from the behavior of spp is that uspp actually encodes &amp;
+decodes each case with libavcodec Snow, whereas spp uses a simplified intra only 8x8
+DCT similar to MJPEG.
+</p>
+<p>This filter is only available in ffmpeg version 4.4 or earlier.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>quality</samp></dt>
+<dd><p>Set quality. This option defines the number of levels for averaging. It accepts
+an integer in the range 0-8. If set to <code>0</code>, the filter will have no
+effect. A value of <code>8</code> means the higher quality. For each increment of
+that value the speed drops by a factor of approximately 2.  Default value is
+<code>3</code>.
+</p>
+</dd>
+<dt><samp>qp</samp></dt>
+<dd><p>Force a constant quantization parameter. If not set, the filter will use the QP
+from the video stream (if available).
+</p>
+</dd>
+<dt><samp>codec</samp></dt>
+<dd><p>Use specified codec instead of snow.
+</p></dd>
+</dl>

@@ -1,0 +1,299 @@
+description: '18.5 ahistogram
+
+  Convert input audio to a video output, displaying the volume histogram.
+
+
+  The filter accepts the following options:'
+name: ahistogram
+parameters:
+- description: "<dd><p>Specify how histogram is calculated.\n</p>\n<p>It accepts the\
+    \ following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>single</samp>\u2019\
+    </dt>\n<dd><p>Use single histogram for all channels.\n</p></dd>\n<dt>\u2018<samp>separate</samp>\u2019\
+    </dt>\n<dd><p>Use separate histogram for each channel.\n</p></dd>\n</dl>\n<p>Default\
+    \ is <code>single</code>.\n</p>\n</dd>"
+  name: dmode
+- description: '<dd><p>Set frame rate, expressed as number of frames per second. Default
+
+    value is "25".
+
+    </p>
+
+    </dd>'
+  name: rate, r
+- description: '<dd><p>Specify the video size for the output. For the syntax of this
+    option, check the
+
+    <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)"Video size" section
+    in the ffmpeg-utils manual</a>.
+
+    Default value is <code>hd720</code>.
+
+    </p>
+
+    </dd>'
+  name: size, s
+- description: "<dd><p>Set display scale.\n</p>\n<p>It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n\
+    </p></dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>square root\n</p></dd>\n\
+    <dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>cubic root\n</p></dd>\n<dt>\u2018\
+    <samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n<dt>\u2018<samp>rlog</samp>\u2019\
+    </dt>\n<dd><p>reverse logarithmic\n</p></dd>\n</dl>\n<p>Default is <code>log</code>.\n\
+    </p>\n</dd>"
+  name: scale
+- description: "<dd><p>Set amplitude scale.\n</p>\n<p>It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n\
+    </p></dd>\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n</dl>\n\
+    <p>Default is <code>log</code>.\n</p>\n</dd>"
+  name: ascale
+- description: '<dd><p>Set how much frames to accumulate in histogram.
+
+    Default is 1. Setting this to -1 accumulates all frames.
+
+    </p>
+
+    </dd>'
+  name: acount
+- description: '<dd><p>Set histogram ratio of window height.
+
+    </p>
+
+    </dd>'
+  name: rheight
+- description: "<dd><p>Set sonogram sliding.\n</p>\n<p>It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>replace\
+    \ old rows with new ones.\n</p></dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n\
+    <dd><p>scroll from top to bottom.\n</p></dd>\n</dl>\n<p>Default is <code>replace</code>.\n\
+    </p>\n</dd>"
+  name: slide
+- description: "<dd><p>Set histogram mode.\n</p>\n<p>It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>abs</samp>\u2019</dt>\n<dd><p>Use\
+    \ absolute values of samples.\n</p></dd>\n<dt>\u2018<samp>sign</samp>\u2019</dt>\n\
+    <dd><p>Use untouched values of samples.\n</p></dd>\n</dl>\n<p>Default is <code>abs</code>.\n\
+    </p></dd>"
+  name: hmode
+ref: https://ffmpeg.org/ffmpeg-filters.html#ahistogram
+source: '<h3 class="section"><a href="#toc-ahistogram">18.5 ahistogram</a></h3>
+
+
+  <p>Convert input audio to a video output, displaying the volume histogram.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>dmode</samp></dt>
+
+  <dd><p>Specify how histogram is calculated.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>single</samp>&rsquo;</dt>
+
+  <dd><p>Use single histogram for all channels.
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>separate</samp>&rsquo;</dt>
+
+  <dd><p>Use separate histogram for each channel.
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default is <code>single</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rate, r</samp></dt>
+
+  <dd><p>Set frame rate, expressed as number of frames per second. Default
+
+  value is &quot;25&quot;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>size, s</samp></dt>
+
+  <dd><p>Specify the video size for the output. For the syntax of this option, check
+  the
+
+  <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot;
+  section in the ffmpeg-utils manual</a>.
+
+  Default value is <code>hd720</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale</samp></dt>
+
+  <dd><p>Set display scale.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>log</samp>&rsquo;</dt>
+
+  <dd><p>logarithmic
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>sqrt</samp>&rsquo;</dt>
+
+  <dd><p>square root
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>cbrt</samp>&rsquo;</dt>
+
+  <dd><p>cubic root
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>lin</samp>&rsquo;</dt>
+
+  <dd><p>linear
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>rlog</samp>&rsquo;</dt>
+
+  <dd><p>reverse logarithmic
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default is <code>log</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>ascale</samp></dt>
+
+  <dd><p>Set amplitude scale.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>log</samp>&rsquo;</dt>
+
+  <dd><p>logarithmic
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>lin</samp>&rsquo;</dt>
+
+  <dd><p>linear
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default is <code>log</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>acount</samp></dt>
+
+  <dd><p>Set how much frames to accumulate in histogram.
+
+  Default is 1. Setting this to -1 accumulates all frames.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rheight</samp></dt>
+
+  <dd><p>Set histogram ratio of window height.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>slide</samp></dt>
+
+  <dd><p>Set sonogram sliding.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>replace</samp>&rsquo;</dt>
+
+  <dd><p>replace old rows with new ones.
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>scroll</samp>&rsquo;</dt>
+
+  <dd><p>scroll from top to bottom.
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default is <code>replace</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>hmode</samp></dt>
+
+  <dd><p>Set histogram mode.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>abs</samp>&rsquo;</dt>
+
+  <dd><p>Use absolute values of samples.
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>sign</samp>&rsquo;</dt>
+
+  <dd><p>Use untouched values of samples.
+
+  </p></dd>
+
+  </dl>
+
+  <p>Default is <code>abs</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

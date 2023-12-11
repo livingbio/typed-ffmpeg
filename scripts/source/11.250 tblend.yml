@@ -1,0 +1,20 @@
+description: '11.250 tblend
+
+  Blend successive video frames.
+
+
+  See blend'
+name: tblend
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#tblend
+source: '<h3 class="section"><a href="#toc-tblend">11.250 tblend</a></h3>
+
+  <p>Blend successive video frames.
+
+  </p>
+
+  <p>See <a href="#blend">blend</a>
+
+  </p>
+
+  '

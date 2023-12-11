@@ -1,0 +1,35 @@
+<h3 class="section"><a href="#toc-aecho">8.18 aecho</a></h3>
+
+<p>Apply echoing to the input audio.
+</p>
+<p>Echoes are reflected sound and can occur naturally amongst mountains
+(and sometimes large buildings) when talking or shouting; digital echo
+effects emulate this behaviour and are often used to help fill out the
+sound of a single instrument or vocal. The time difference between the
+original signal and the reflection is the <code>delay</code>, and the
+loudness of the reflected signal is the <code>decay</code>.
+Multiple echoes can have different delays and decays.
+</p>
+<p>A description of the accepted parameters follows.
+</p>
+<dl compact="compact">
+<dt><samp>in_gain</samp></dt>
+<dd><p>Set input gain of reflected signal. Default is <code>0.6</code>.
+</p>
+</dd>
+<dt><samp>out_gain</samp></dt>
+<dd><p>Set output gain of reflected signal. Default is <code>0.3</code>.
+</p>
+</dd>
+<dt><samp>delays</samp></dt>
+<dd><p>Set list of time intervals in milliseconds between original signal and reflections
+separated by &rsquo;|&rsquo;. Allowed range for each <code>delay</code> is <code>(0 - 90000.0]</code>.
+Default is <code>1000</code>.
+</p>
+</dd>
+<dt><samp>decays</samp></dt>
+<dd><p>Set list of loudness of reflected signals separated by &rsquo;|&rsquo;.
+Allowed range for each <code>decay</code> is <code>(0 - 1.0]</code>.
+Default is <code>0.5</code>.
+</p></dd>
+</dl>

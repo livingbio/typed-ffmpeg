@@ -1,0 +1,120 @@
+description: '11.111 gradfun
+
+  Fix the banding artifacts that are sometimes introduced into nearly flat
+
+  regions by truncation to 8-bit color depth.
+
+  Interpolate the gradients that should go where the bands are, and
+
+  dither them.
+
+
+  It is designed for playback only.  Do not use it prior to
+
+  lossy compression, because compression tends to lose the dither and
+
+  bring back the bands.
+
+
+  It accepts the following parameters:
+
+
+
+  Alternatively, the options can be specified as a flat string:
+
+  strength[:radius]'
+name: gradfun
+parameters:
+- description: '<dd><p>The maximum amount by which the filter will change any one
+    pixel. This is also
+
+    the threshold for detecting nearly flat regions. Acceptable values range from
+
+    .51 to 64; the default value is 1.2. Out-of-range values will be clipped to the
+
+    valid range.
+
+    </p>
+
+    </dd>'
+  name: strength
+- description: '<dd><p>The neighborhood to fit the gradient to. A larger radius makes
+    for smoother
+
+    gradients, but also prevents the filter from modifying the pixels near detailed
+
+    regions. Acceptable values are 8-32; the default value is 16. Out-of-range
+
+    values will be clipped to the valid range.
+
+    </p>
+
+    </dd>'
+  name: radius
+ref: https://ffmpeg.org/ffmpeg-filters.html#gradfun
+source: '<h3 class="section"><a href="#toc-gradfun">11.111 gradfun</a></h3>
+
+
+  <p>Fix the banding artifacts that are sometimes introduced into nearly flat
+
+  regions by truncation to 8-bit color depth.
+
+  Interpolate the gradients that should go where the bands are, and
+
+  dither them.
+
+  </p>
+
+  <p>It is designed for playback only.  Do not use it prior to
+
+  lossy compression, because compression tends to lose the dither and
+
+  bring back the bands.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>strength</samp></dt>
+
+  <dd><p>The maximum amount by which the filter will change any one pixel. This is
+  also
+
+  the threshold for detecting nearly flat regions. Acceptable values range from
+
+  .51 to 64; the default value is 1.2. Out-of-range values will be clipped to the
+
+  valid range.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>radius</samp></dt>
+
+  <dd><p>The neighborhood to fit the gradient to. A larger radius makes for smoother
+
+  gradients, but also prevents the filter from modifying the pixels near detailed
+
+  regions. Acceptable values are 8-32; the default value is 16. Out-of-range
+
+  values will be clipped to the valid range.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  <p>Alternatively, the options can be specified as a flat string:
+
+  <var>strength</var>[:<var>radius</var>]
+
+  </p>
+
+  '

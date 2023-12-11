@@ -1,0 +1,36 @@
+description: '8.3 acontrast
+
+  Simple audio dynamic range compression/expansion filter.
+
+
+  The filter accepts the following options:'
+name: acontrast
+parameters:
+- description: '<dd><p>Set contrast. Default is 33. Allowed range is between 0 and
+    100.
+
+    </p></dd>'
+  name: contrast
+ref: https://ffmpeg.org/ffmpeg-filters.html#acontrast
+source: '<h3 class="section"><a href="#toc-acontrast">8.3 acontrast</a></h3>
+
+  <p>Simple audio dynamic range compression/expansion filter.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>contrast</samp></dt>
+
+  <dd><p>Set contrast. Default is 33. Allowed range is between 0 and 100.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

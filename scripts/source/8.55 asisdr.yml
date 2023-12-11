@@ -1,0 +1,28 @@
+description: '8.55 asisdr
+
+  Measure Audio Scaled-Invariant Signal-to-Distortion Ratio.
+
+
+  This filter takes two audio streams for input, and outputs first
+
+  audio stream.
+
+  Results are in dB per channel at end of either input.'
+name: asisdr
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#asisdr
+source: '<h3 class="section"><a href="#toc-asisdr">8.55 asisdr</a></h3>
+
+  <p>Measure Audio Scaled-Invariant Signal-to-Distortion Ratio.
+
+  </p>
+
+  <p>This filter takes two audio streams for input, and outputs first
+
+  audio stream.
+
+  Results are in dB per channel at end of either input.
+
+  </p>
+
+  '

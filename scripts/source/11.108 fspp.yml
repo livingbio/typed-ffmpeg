@@ -1,0 +1,67 @@
+description: '11.108 fspp
+
+  Apply fast and simple postprocessing. It is a faster version of spp.
+
+
+  It splits (I)DCT into horizontal/vertical passes. Unlike the simple post-
+
+  processing filter, one of them is performed once per block, not per pixel.
+
+  This allows for much higher speed.
+
+
+  The filter accepts the following options:'
+name: fspp
+parameters:
+- description: '<dd><p>Set quality. This option defines the number of levels for averaging.
+    It accepts
+
+    an integer in the range 4-5. Default value is <code>4</code>.
+
+    </p>
+
+    </dd>'
+  name: quality
+- description: '<dd><p>Force a constant quantization parameter. It accepts an integer
+    in range 0-63.
+
+    If not set, the filter will use the QP from the video stream (if available).
+
+    </p>
+
+    </dd>'
+  name: qp
+- description: "<dd><p>Set filter strength. It accepts an integer in range -15 to\
+    \ 32. Lower values mean\nmore details but also more artifacts, while higher values\
+    \ make the image smoother\nbut also blurrier. Default value is <code>0</code>\
+    \ \u2212 PSNR optimal.\n</p>\n</dd>"
+  name: strength
+- description: '<dd><p>Enable the use of the QP from the B-Frames if set to <code>1</code>.
+    Using this
+
+    option may cause flicker since the B-Frames have often larger QP. Default is
+
+    <code>0</code> (not enabled).
+
+    </p>
+
+    </dd>'
+  name: use_bframe_qp
+ref: https://ffmpeg.org/ffmpeg-filters.html#fspp
+source: "<h3 class=\"section\"><a href=\"#toc-fspp\">11.108 fspp</a></h3>\n\n<p>Apply\
+  \ fast and simple postprocessing. It is a faster version of <a href=\"#spp\">spp</a>.\n\
+  </p>\n<p>It splits (I)DCT into horizontal/vertical passes. Unlike the simple post-\n\
+  processing filter, one of them is performed once per block, not per pixel.\nThis\
+  \ allows for much higher speed.\n</p>\n<p>The filter accepts the following options:\n\
+  </p>\n<dl compact=\"compact\">\n<dt><samp>quality</samp></dt>\n<dd><p>Set quality.\
+  \ This option defines the number of levels for averaging. It accepts\nan integer\
+  \ in the range 4-5. Default value is <code>4</code>.\n</p>\n</dd>\n<dt><samp>qp</samp></dt>\n\
+  <dd><p>Force a constant quantization parameter. It accepts an integer in range 0-63.\n\
+  If not set, the filter will use the QP from the video stream (if available).\n</p>\n\
+  </dd>\n<dt><samp>strength</samp></dt>\n<dd><p>Set filter strength. It accepts an\
+  \ integer in range -15 to 32. Lower values mean\nmore details but also more artifacts,\
+  \ while higher values make the image smoother\nbut also blurrier. Default value\
+  \ is <code>0</code> \u2212 PSNR optimal.\n</p>\n</dd>\n<dt><samp>use_bframe_qp</samp></dt>\n\
+  <dd><p>Enable the use of the QP from the B-Frames if set to <code>1</code>. Using\
+  \ this\noption may cause flicker since the B-Frames have often larger QP. Default\
+  \ is\n<code>0</code> (not enabled).\n</p>\n</dd>\n</dl>\n\n"

@@ -1,0 +1,110 @@
+description: '11.32 colorcontrast
+
+  Adjust color contrast between RGB components.
+
+
+  The filter accepts the following options:'
+name: colorcontrast
+parameters:
+- description: '<dd><p>Set the red-cyan contrast. Defaults is 0.0. Allowed range is
+    from -1.0 to 1.0.
+
+    </p>
+
+    </dd>'
+  name: rc
+- description: '<dd><p>Set the green-magenta contrast. Defaults is 0.0. Allowed range
+    is from -1.0 to 1.0.
+
+    </p>
+
+    </dd>'
+  name: gm
+- description: '<dd><p>Set the blue-yellow contrast. Defaults is 0.0. Allowed range
+    is from -1.0 to 1.0.
+
+    </p>
+
+    </dd>'
+  name: by
+- description: '<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code>
+    option value. Default value is 0.0.
+
+    Allowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.
+
+    </p>
+
+    </dd>'
+  name: rcw
+- description: '<dd><p>Set the amount of preserving lightness. Default value is 0.0.
+    Allowed range is from 0.0 to 1.0.
+
+    </p></dd>'
+  name: gmw
+ref: https://ffmpeg.org/ffmpeg-filters.html#colorcontrast
+source: '<h3 class="section"><a href="#toc-colorcontrast">11.32 colorcontrast</a></h3>
+
+
+  <p>Adjust color contrast between RGB components.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>rc</samp></dt>
+
+  <dd><p>Set the red-cyan contrast. Defaults is 0.0. Allowed range is from -1.0 to
+  1.0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>gm</samp></dt>
+
+  <dd><p>Set the green-magenta contrast. Defaults is 0.0. Allowed range is from -1.0
+  to 1.0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>by</samp></dt>
+
+  <dd><p>Set the blue-yellow contrast. Defaults is 0.0. Allowed range is from -1.0
+  to 1.0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rcw</samp></dt>
+
+  <dt><samp>gmw</samp></dt>
+
+  <dt><samp>byw</samp></dt>
+
+  <dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code>
+  option value. Default value is 0.0.
+
+  Allowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>pl</samp></dt>
+
+  <dd><p>Set the amount of preserving lightness. Default value is 0.0. Allowed range
+  is from 0.0 to 1.0.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

@@ -1,0 +1,73 @@
+description: '11.106 freezeframes
+
+  Freeze video frames.
+
+
+  This filter freezes video frames using frame from 2nd input.
+
+
+  The filter accepts the following options:'
+name: freezeframes
+parameters:
+- description: '<dd><p>Set number of first frame from which to start freeze.
+
+    </p>
+
+    </dd>'
+  name: first
+- description: '<dd><p>Set number of last frame from which to end freeze.
+
+    </p>
+
+    </dd>'
+  name: last
+- description: '<dd><p>Set number of frame from 2nd input which will be used instead
+    of replaced frames.
+
+    </p></dd>'
+  name: replace
+ref: https://ffmpeg.org/ffmpeg-filters.html#freezeframes
+source: '<h3 class="section"><a href="#toc-freezeframes">11.106 freezeframes</a></h3>
+
+
+  <p>Freeze video frames.
+
+  </p>
+
+  <p>This filter freezes video frames using frame from 2nd input.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>first</samp></dt>
+
+  <dd><p>Set number of first frame from which to start freeze.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>last</samp></dt>
+
+  <dd><p>Set number of last frame from which to end freeze.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>replace</samp></dt>
+
+  <dd><p>Set number of frame from 2nd input which will be used instead of replaced
+  frames.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

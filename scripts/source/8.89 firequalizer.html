@@ -1,0 +1,149 @@
+<h3 class="section"><a href="#toc-firequalizer">8.89 firequalizer</a></h3>
+<p>Apply FIR Equalization using arbitrary frequency response.
+</p>
+<p>The filter accepts the following option:
+</p>
+<dl compact="compact">
+<dt><samp>gain</samp></dt>
+<dd><p>Set gain curve equation (in dB). The expression can contain variables:
+</p><dl compact="compact">
+<dt><samp>f</samp></dt>
+<dd><p>the evaluated frequency
+</p></dd>
+<dt><samp>sr</samp></dt>
+<dd><p>sample rate
+</p></dd>
+<dt><samp>ch</samp></dt>
+<dd><p>channel number, set to 0 when multichannels evaluation is disabled
+</p></dd>
+<dt><samp>chid</samp></dt>
+<dd><p>channel id, see libavutil/channel_layout.h, set to the first channel id when
+multichannels evaluation is disabled
+</p></dd>
+<dt><samp>chs</samp></dt>
+<dd><p>number of channels
+</p></dd>
+<dt><samp>chlayout</samp></dt>
+<dd><p>channel_layout, see libavutil/channel_layout.h
+</p>
+</dd>
+</dl>
+<p>and functions:
+</p><dl compact="compact">
+<dt><samp>gain_interpolate(f)</samp></dt>
+<dd><p>interpolate gain on frequency f based on gain_entry
+</p></dd>
+<dt><samp>cubic_interpolate(f)</samp></dt>
+<dd><p>same as gain_interpolate, but smoother
+</p></dd>
+</dl>
+<p>This option is also available as command. Default is <code>gain_interpolate(f)</code>.
+</p>
+</dd>
+<dt><samp>gain_entry</samp></dt>
+<dd><p>Set gain entry for gain_interpolate function. The expression can
+contain functions:
+</p><dl compact="compact">
+<dt><samp>entry(f, g)</samp></dt>
+<dd><p>store gain entry at frequency f with value g
+</p></dd>
+</dl>
+<p>This option is also available as command.
+</p>
+</dd>
+<dt><samp>delay</samp></dt>
+<dd><p>Set filter delay in seconds. Higher value means more accurate.
+Default is <code>0.01</code>.
+</p>
+</dd>
+<dt><samp>accuracy</samp></dt>
+<dd><p>Set filter accuracy in Hz. Lower value means more accurate.
+Default is <code>5</code>.
+</p>
+</dd>
+<dt><samp>wfunc</samp></dt>
+<dd><p>Set window function. Acceptable values are:
+</p><dl compact="compact">
+<dt><samp>rectangular</samp></dt>
+<dd><p>rectangular window, useful when gain curve is already smooth
+</p></dd>
+<dt><samp>hann</samp></dt>
+<dd><p>hann window (default)
+</p></dd>
+<dt><samp>hamming</samp></dt>
+<dd><p>hamming window
+</p></dd>
+<dt><samp>blackman</samp></dt>
+<dd><p>blackman window
+</p></dd>
+<dt><samp>nuttall3</samp></dt>
+<dd><p>3-terms continuous 1st derivative nuttall window
+</p></dd>
+<dt><samp>mnuttall3</samp></dt>
+<dd><p>minimum 3-terms discontinuous nuttall window
+</p></dd>
+<dt><samp>nuttall</samp></dt>
+<dd><p>4-terms continuous 1st derivative nuttall window
+</p></dd>
+<dt><samp>bnuttall</samp></dt>
+<dd><p>minimum 4-terms discontinuous nuttall (blackman-nuttall) window
+</p></dd>
+<dt><samp>bharris</samp></dt>
+<dd><p>blackman-harris window
+</p></dd>
+<dt><samp>tukey</samp></dt>
+<dd><p>tukey window
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>fixed</samp></dt>
+<dd><p>If enabled, use fixed number of audio samples. This improves speed when
+filtering with large delay. Default is disabled.
+</p>
+</dd>
+<dt><samp>multi</samp></dt>
+<dd><p>Enable multichannels evaluation on gain. Default is disabled.
+</p>
+</dd>
+<dt><samp>zero_phase</samp></dt>
+<dd><p>Enable zero phase mode by subtracting timestamp to compensate delay.
+Default is disabled.
+</p>
+</dd>
+<dt><samp>scale</samp></dt>
+<dd><p>Set scale used by gain. Acceptable values are:
+</p><dl compact="compact">
+<dt><samp>linlin</samp></dt>
+<dd><p>linear frequency, linear gain
+</p></dd>
+<dt><samp>linlog</samp></dt>
+<dd><p>linear frequency, logarithmic (in dB) gain (default)
+</p></dd>
+<dt><samp>loglin</samp></dt>
+<dd><p>logarithmic (in octave scale where 20 Hz is 0) frequency, linear gain
+</p></dd>
+<dt><samp>loglog</samp></dt>
+<dd><p>logarithmic frequency, logarithmic gain
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>dumpfile</samp></dt>
+<dd><p>Set file for dumping, suitable for gnuplot.
+</p>
+</dd>
+<dt><samp>dumpscale</samp></dt>
+<dd><p>Set scale for dumpfile. Acceptable values are same with scale option.
+Default is linlog.
+</p>
+</dd>
+<dt><samp>fft2</samp></dt>
+<dd><p>Enable 2-channel convolution using complex FFT. This improves speed significantly.
+Default is disabled.
+</p>
+</dd>
+<dt><samp>min_phase</samp></dt>
+<dd><p>Enable minimum phase impulse response. Default is disabled.
+</p></dd>
+</dl>

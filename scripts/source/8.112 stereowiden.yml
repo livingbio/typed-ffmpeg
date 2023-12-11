@@ -1,0 +1,109 @@
+description: '8.112 stereowiden
+
+  This filter enhance the stereo effect by suppressing signal common to both
+
+  channels and by delaying the signal of left into right and vice versa,
+
+  thereby widening the stereo effect.
+
+
+  The filter accepts the following options:'
+name: stereowiden
+parameters:
+- description: '<dd><p>Time in milliseconds of the delay of left signal into right
+    and vice versa.
+
+    Default is 20 milliseconds.
+
+    </p>
+
+    </dd>'
+  name: delay
+- description: '<dd><p>Amount of gain in delayed signal into right and vice versa.
+    Gives a delay
+
+    effect of left signal in right output and vice versa which gives widening
+
+    effect. Default is 0.3.
+
+    </p>
+
+    </dd>'
+  name: feedback
+- description: '<dd><p>Cross feed of left into right with inverted phase. This helps
+    in suppressing
+
+    the mono. If the value is 1 it will cancel all the signal common to both
+
+    channels. Default is 0.3.
+
+    </p>
+
+    </dd>'
+  name: crossfeed
+- description: '<dd><p>Set level of input signal of original channel. Default is 0.8.
+
+    </p></dd>'
+  name: drymix
+ref: https://ffmpeg.org/ffmpeg-filters.html#stereowiden
+source: '<h3 class="section"><a href="#toc-stereowiden">8.112 stereowiden</a></h3>
+
+
+  <p>This filter enhance the stereo effect by suppressing signal common to both
+
+  channels and by delaying the signal of left into right and vice versa,
+
+  thereby widening the stereo effect.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>delay</samp></dt>
+
+  <dd><p>Time in milliseconds of the delay of left signal into right and vice versa.
+
+  Default is 20 milliseconds.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>feedback</samp></dt>
+
+  <dd><p>Amount of gain in delayed signal into right and vice versa. Gives a delay
+
+  effect of left signal in right output and vice versa which gives widening
+
+  effect. Default is 0.3.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>crossfeed</samp></dt>
+
+  <dd><p>Cross feed of left into right with inverted phase. This helps in suppressing
+
+  the mono. If the value is 1 it will cancel all the signal common to both
+
+  channels. Default is 0.3.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>drymix</samp></dt>
+
+  <dd><p>Set level of input signal of original channel. Default is 0.8.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

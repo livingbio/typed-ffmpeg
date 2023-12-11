@@ -1,0 +1,50 @@
+description: '11.125 hqx
+
+  Apply a high-quality magnification filter designed for pixel art. This filter
+
+  was originally created by Maxim Stepin.
+
+
+  It accepts the following option:'
+name: hqx
+parameters:
+- description: '<dd><p>Set the scaling dimension: <code>2</code> for <code>hq2x</code>,
+    <code>3</code> for
+
+    <code>hq3x</code> and <code>4</code> for <code>hq4x</code>.
+
+    Default is <code>3</code>.
+
+    </p></dd>'
+  name: n
+ref: https://ffmpeg.org/ffmpeg-filters.html#hqx
+source: '<h3 class="section"><a href="#toc-hqx">11.125 hqx</a></h3>
+
+
+  <p>Apply a high-quality magnification filter designed for pixel art. This filter
+
+  was originally created by Maxim Stepin.
+
+  </p>
+
+  <p>It accepts the following option:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>n</samp></dt>
+
+  <dd><p>Set the scaling dimension: <code>2</code> for <code>hq2x</code>, <code>3</code>
+  for
+
+  <code>hq3x</code> and <code>4</code> for <code>hq4x</code>.
+
+  Default is <code>3</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

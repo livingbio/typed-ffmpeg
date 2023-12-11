@@ -1,0 +1,18 @@
+description: '11.46 copy
+
+  Copy the input video source unchanged to the output. This is mainly useful for
+
+  testing purposes.'
+name: copy
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#copy
+source: '<h3 class="section"><a href="#toc-copy">11.46 copy</a></h3>
+
+
+  <p>Copy the input video source unchanged to the output. This is mainly useful for
+
+  testing purposes.
+
+  </p>
+
+  '

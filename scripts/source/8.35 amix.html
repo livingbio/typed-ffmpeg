@@ -1,0 +1,51 @@
+<h3 class="section"><a href="#toc-amix">8.35 amix</a></h3>
+
+<p>Mixes multiple audio inputs into a single output.
+</p>
+<p>Note that this filter only supports float samples (the <var>amerge</var>
+and <var>pan</var> audio filters support many formats). If the <var>amix</var>
+input has integer samples then <a href="#aresample">aresample</a> will be automatically
+inserted to perform the conversion to float samples.
+</p>
+<p>It accepts the following parameters:
+</p><dl compact="compact">
+<dt><samp>inputs</samp></dt>
+<dd><p>The number of inputs. If unspecified, it defaults to 2.
+</p>
+</dd>
+<dt><samp>duration</samp></dt>
+<dd><p>How to determine the end-of-stream.
+</p><dl compact="compact">
+<dt><samp>longest</samp></dt>
+<dd><p>The duration of the longest input. (default)
+</p>
+</dd>
+<dt><samp>shortest</samp></dt>
+<dd><p>The duration of the shortest input.
+</p>
+</dd>
+<dt><samp>first</samp></dt>
+<dd><p>The duration of the first input.
+</p>
+</dd>
+</dl>
+
+</dd>
+<dt><samp>dropout_transition</samp></dt>
+<dd><p>The transition time, in seconds, for volume renormalization when an input
+stream ends. The default value is 2 seconds.
+</p>
+</dd>
+<dt><samp>weights</samp></dt>
+<dd><p>Specify weight of each input audio stream as a sequence of numbers separated
+by a space. If fewer weights are specified compared to number of inputs, the
+last weight is assigned to the remaining inputs.
+Default weight for each input is 1.
+</p>
+</dd>
+<dt><samp>normalize</samp></dt>
+<dd><p>Always scale inputs instead of only doing summation of samples.
+Beware of heavy clipping if inputs are not normalized prior or after filtering
+by this filter if this option is disabled. By default is enabled.
+</p></dd>
+</dl>

@@ -1,0 +1,343 @@
+description: "4.1 Filtergraph syntax\nA filtergraph has a textual representation,\
+  \ which is recognized by the\n-filter/-vf/-af and\n-filter_complex options in ffmpeg\
+  \ and\n-vf/-af in ffplay, and by the\navfilter_graph_parse_ptr() function defined\
+  \ in\nlibavfilter/avfilter.h.\n\nA filterchain consists of a sequence of connected\
+  \ filters, each one\nconnected to the previous one in the sequence. A filterchain\
+  \ is\nrepresented by a list of \",\"-separated filter descriptions.\n\nA filtergraph\
+  \ consists of a sequence of filterchains. A sequence of\nfilterchains is represented\
+  \ by a list of \";\"-separated filterchain\ndescriptions.\n\nA filter is represented\
+  \ by a string of the form:\n[in_link_1]...[in_link_N]filter_name@id=arguments[out_link_1]...[out_link_M]\n\
+  \nfilter_name is the name of the filter class of which the\ndescribed filter is\
+  \ an instance of, and has to be the name of one of\nthe filter classes registered\
+  \ in the program optionally followed by \"@id\".\nThe name of the filter class is\
+  \ optionally followed by a string\n\"=arguments\".\n\narguments is a string which\
+  \ contains the parameters used to\ninitialize the filter instance. It may have one\
+  \ of two forms:\n\n A \u2019:\u2019-separated list of key=value pairs.\n\n A \u2019\
+  :\u2019-separated list of value. In this case, the keys are assumed to be\nthe option\
+  \ names in the order they are declared. E.g. the fade filter\ndeclares three options\
+  \ in this order \u2013 type, start_frame and\nnb_frames. Then the parameter list\
+  \ in:0:30 means that the value\nin is assigned to the option type, 0 to\nstart_frame\
+  \ and 30 to nb_frames.\n\n A \u2019:\u2019-separated list of mixed direct value\
+  \ and long key=value\npairs. The direct value must precede the key=value pairs,\
+  \ and\nfollow the same constraints order of the previous point. The following\n\
+  key=value pairs can be set in any preferred order.\n\n\nIf the option value itself\
+  \ is a list of items (e.g. the format filter\ntakes a list of pixel formats), the\
+  \ items in the list are usually separated by\n\u2018|\u2019.\n\nThe list of arguments\
+  \ can be quoted using the character \u2018'\u2019 as initial\nand ending mark, and\
+  \ the character \u2018\\\u2019 for escaping the characters\nwithin the quoted text;\
+  \ otherwise the argument string is considered\nterminated when the next special\
+  \ character (belonging to the set\n\u2018[]=;,\u2019) is encountered.\n\nA special\
+  \ syntax implemented in the ffmpeg CLI tool allows loading\noption values from files.\
+  \ This is done be prepending a slash \u2019/\u2019 to the option\nname, then the\
+  \ supplied value is interpreted as a path from which the actual\nvalue is loaded.\
+  \ E.g.\n\nffmpeg -i <INPUT> -vf drawtext=/text=/tmp/some_text <OUTPUT>\n\nwill load\
+  \ the text to be drawn from /tmp/some_text. API users wishing to\nimplement a similar\
+  \ feature should use the avfilter_graph_segment_*()\nfunctions together with custom\
+  \ IO code.\n\nThe name and arguments of the filter are optionally preceded and\n\
+  followed by a list of link labels.\nA link label allows one to name a link and associate\
+  \ it to a filter output\nor input pad. The preceding labels in_link_1\n... in_link_N,\
+  \ are associated to the filter input pads,\nthe following labels out_link_1 ...\
+  \ out_link_M, are\nassociated to the output pads.\n\nWhen two link labels with the\
+  \ same name are found in the\nfiltergraph, a link between the corresponding input\
+  \ and output pad is\ncreated.\n\nIf an output pad is not labelled, it is linked\
+  \ by default to the first\nunlabelled input pad of the next filter in the filterchain.\n\
+  For example in the filterchain\n\nnullsrc, split[L1], [L2]overlay, nullsink\n\n\
+  the split filter instance has two output pads, and the overlay filter\ninstance\
+  \ two input pads. The first output pad of split is labelled\n\"L1\", the first input\
+  \ pad of overlay is labelled \"L2\", and the second\noutput pad of split is linked\
+  \ to the second input pad of overlay,\nwhich are both unlabelled.\n\nIn a filter\
+  \ description, if the input label of the first filter is not\nspecified, \"in\"\
+  \ is assumed; if the output label of the last filter is not\nspecified, \"out\"\
+  \ is assumed.\n\nIn a complete filterchain all the unlabelled filter input and output\n\
+  pads must be connected. A filtergraph is considered valid if all the\nfilter input\
+  \ and output pads of all the filterchains are connected.\n\nLeading and trailing\
+  \ whitespaces (space, tabs, or line feeds) separating tokens\nin the filtergraph\
+  \ specification are ignored. This means that the filtergraph\ncan be expressed using\
+  \ empty lines and spaces to improve redability.\n\nFor example, the filtergraph:\n\
+  \ntestsrc,split[L1],hflip[L2];[L1][L2] hstack\n\ncan be represented as:\n\ntestsrc,\n\
+  split [L1], hflip [L2];\n\n[L1][L2] hstack\n\nLibavfilter will automatically insert\
+  \ scale filters where format\nconversion is required. It is possible to specify\
+  \ swscale flags\nfor those automatically inserted scalers by prepending\nsws_flags=flags;\n\
+  to the filtergraph description.\n\nHere is a BNF description of the filtergraph\
+  \ syntax:\n\nNAME             ::= sequence of alphanumeric characters and '_'\n\
+  FILTER_NAME      ::= NAME[\"@\"NAME]\nLINKLABEL        ::= \"[\" NAME \"]\"\nLINKLABELS\
+  \       ::= LINKLABEL [LINKLABELS]\nFILTER_ARGUMENTS ::= sequence of chars (possibly\
+  \ quoted)\nFILTER           ::= [LINKLABELS] FILTER_NAME [\"=\" FILTER_ARGUMENTS]\
+  \ [LINKLABELS]\nFILTERCHAIN      ::= FILTER [,FILTERCHAIN]\nFILTERGRAPH      ::=\
+  \ [sws_flags=flags;] FILTERCHAIN [;FILTERGRAPH]"
+name: Filtergraph syntax
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#Filtergraph
+source: '<h3 class="section"><a href="#toc-Filtergraph-syntax-1">4.1 Filtergraph syntax</a></h3>
+
+
+  <p>A filtergraph has a textual representation, which is recognized by the
+
+  <samp>-filter</samp>/<samp>-vf</samp>/<samp>-af</samp> and
+
+  <samp>-filter_complex</samp> options in <code>ffmpeg</code> and
+
+  <samp>-vf</samp>/<samp>-af</samp> in <code>ffplay</code>, and by the
+
+  <code>avfilter_graph_parse_ptr()</code> function defined in
+
+  <samp>libavfilter/avfilter.h</samp>.
+
+  </p>
+
+  <p>A filterchain consists of a sequence of connected filters, each one
+
+  connected to the previous one in the sequence. A filterchain is
+
+  represented by a list of &quot;,&quot;-separated filter descriptions.
+
+  </p>
+
+  <p>A filtergraph consists of a sequence of filterchains. A sequence of
+
+  filterchains is represented by a list of &quot;;&quot;-separated filterchain
+
+  descriptions.
+
+  </p>
+
+  <p>A filter is represented by a string of the form:
+
+  [<var>in_link_1</var>]...[<var>in_link_N</var>]<var>filter_name</var>@<var>id</var>=<var>arguments</var>[<var>out_link_1</var>]...[<var>out_link_M</var>]
+
+  </p>
+
+  <p><var>filter_name</var> is the name of the filter class of which the
+
+  described filter is an instance of, and has to be the name of one of
+
+  the filter classes registered in the program optionally followed by &quot;@<var>id</var>&quot;.
+
+  The name of the filter class is optionally followed by a string
+
+  &quot;=<var>arguments</var>&quot;.
+
+  </p>
+
+  <p><var>arguments</var> is a string which contains the parameters used to
+
+  initialize the filter instance. It may have one of two forms:
+
+  </p><ul>
+
+  <li> A &rsquo;:&rsquo;-separated list of <var>key=value</var> pairs.
+
+
+  </li><li> A &rsquo;:&rsquo;-separated list of <var>value</var>. In this case, the
+  keys are assumed to be
+
+  the option names in the order they are declared. E.g. the <code>fade</code> filter
+
+  declares three options in this order &ndash; <samp>type</samp>, <samp>start_frame</samp>
+  and
+
+  <samp>nb_frames</samp>. Then the parameter list <var>in:0:30</var> means that the
+  value
+
+  <var>in</var> is assigned to the option <samp>type</samp>, <var>0</var> to
+
+  <samp>start_frame</samp> and <var>30</var> to <samp>nb_frames</samp>.
+
+
+  </li><li> A &rsquo;:&rsquo;-separated list of mixed direct <var>value</var> and
+  long <var>key=value</var>
+
+  pairs. The direct <var>value</var> must precede the <var>key=value</var> pairs,
+  and
+
+  follow the same constraints order of the previous point. The following
+
+  <var>key=value</var> pairs can be set in any preferred order.
+
+
+  </li></ul>
+
+
+  <p>If the option value itself is a list of items (e.g. the <code>format</code> filter
+
+  takes a list of pixel formats), the items in the list are usually separated by
+
+  &lsquo;<samp>|</samp>&rsquo;.
+
+  </p>
+
+  <p>The list of arguments can be quoted using the character &lsquo;<samp>''</samp>&rsquo;
+  as initial
+
+  and ending mark, and the character &lsquo;<samp>\</samp>&rsquo; for escaping the
+  characters
+
+  within the quoted text; otherwise the argument string is considered
+
+  terminated when the next special character (belonging to the set
+
+  &lsquo;<samp>[]=;,</samp>&rsquo;) is encountered.
+
+  </p>
+
+  <p>A special syntax implemented in the <code>ffmpeg</code> CLI tool allows loading
+
+  option values from files. This is done be prepending a slash &rsquo;/&rsquo; to
+  the option
+
+  name, then the supplied value is interpreted as a path from which the actual
+
+  value is loaded. E.g.
+
+  </p><div class="example">
+
+  <pre class="example">ffmpeg -i &lt;INPUT&gt; -vf drawtext=/text=/tmp/some_text &lt;OUTPUT&gt;
+
+  </pre></div>
+
+  <p>will load the text to be drawn from <samp>/tmp/some_text</samp>. API users wishing
+  to
+
+  implement a similar feature should use the <code>avfilter_graph_segment_*()</code>
+
+  functions together with custom IO code.
+
+  </p>
+
+  <p>The name and arguments of the filter are optionally preceded and
+
+  followed by a list of link labels.
+
+  A link label allows one to name a link and associate it to a filter output
+
+  or input pad. The preceding labels <var>in_link_1</var>
+
+  ... <var>in_link_N</var>, are associated to the filter input pads,
+
+  the following labels <var>out_link_1</var> ... <var>out_link_M</var>, are
+
+  associated to the output pads.
+
+  </p>
+
+  <p>When two link labels with the same name are found in the
+
+  filtergraph, a link between the corresponding input and output pad is
+
+  created.
+
+  </p>
+
+  <p>If an output pad is not labelled, it is linked by default to the first
+
+  unlabelled input pad of the next filter in the filterchain.
+
+  For example in the filterchain
+
+  </p><div class="example">
+
+  <pre class="example">nullsrc, split[L1], [L2]overlay, nullsink
+
+  </pre></div>
+
+  <p>the split filter instance has two output pads, and the overlay filter
+
+  instance two input pads. The first output pad of split is labelled
+
+  &quot;L1&quot;, the first input pad of overlay is labelled &quot;L2&quot;, and the
+  second
+
+  output pad of split is linked to the second input pad of overlay,
+
+  which are both unlabelled.
+
+  </p>
+
+  <p>In a filter description, if the input label of the first filter is not
+
+  specified, &quot;in&quot; is assumed; if the output label of the last filter is
+  not
+
+  specified, &quot;out&quot; is assumed.
+
+  </p>
+
+  <p>In a complete filterchain all the unlabelled filter input and output
+
+  pads must be connected. A filtergraph is considered valid if all the
+
+  filter input and output pads of all the filterchains are connected.
+
+  </p>
+
+  <p>Leading and trailing whitespaces (space, tabs, or line feeds) separating tokens
+
+  in the filtergraph specification are ignored. This means that the filtergraph
+
+  can be expressed using empty lines and spaces to improve redability.
+
+  </p>
+
+  <p>For example, the filtergraph:
+
+  </p><div class="example">
+
+  <pre class="example">testsrc,split[L1],hflip[L2];[L1][L2] hstack
+
+  </pre></div>
+
+
+  <p>can be represented as:
+
+  </p><div class="example">
+
+  <pre class="example">testsrc,
+
+  split [L1], hflip [L2];
+
+
+  [L1][L2] hstack
+
+  </pre></div>
+
+
+  <p>Libavfilter will automatically insert <a href="#scale">scale</a> filters where
+  format
+
+  conversion is required. It is possible to specify swscale flags
+
+  for those automatically inserted scalers by prepending
+
+  <code>sws_flags=<var>flags</var>;</code>
+
+  to the filtergraph description.
+
+  </p>
+
+  <p>Here is a BNF description of the filtergraph syntax:
+
+  </p><div class="example">
+
+  <pre class="example"><var>NAME</var>             ::= sequence of alphanumeric characters
+  and ''_''
+
+  <var>FILTER_NAME</var>      ::= <var>NAME</var>[&quot;@&quot;<var>NAME</var>]
+
+  <var>LINKLABEL</var>        ::= &quot;[&quot; <var>NAME</var> &quot;]&quot;
+
+  <var>LINKLABELS</var>       ::= <var>LINKLABEL</var> [<var>LINKLABELS</var>]
+
+  <var>FILTER_ARGUMENTS</var> ::= sequence of chars (possibly quoted)
+
+  <var>FILTER</var>           ::= [<var>LINKLABELS</var>] <var>FILTER_NAME</var> [&quot;=&quot;
+  <var>FILTER_ARGUMENTS</var>] [<var>LINKLABELS</var>]
+
+  <var>FILTERCHAIN</var>      ::= <var>FILTER</var> [,<var>FILTERCHAIN</var>]
+
+  <var>FILTERGRAPH</var>      ::= [sws_flags=<var>flags</var>;] <var>FILTERCHAIN</var>
+  [;<var>FILTERGRAPH</var>]
+
+  </pre></div>
+
+
+  '

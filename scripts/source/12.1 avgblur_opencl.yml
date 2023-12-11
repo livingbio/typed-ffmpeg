@@ -1,0 +1,72 @@
+description: '12.1 avgblur_opencl
+
+  Apply average blur filter.
+
+
+  The filter accepts the following options:'
+name: avgblur_opencl
+parameters:
+- description: '<dd><p>Set horizontal radius size.
+
+    Range is <code>[1, 1024]</code> and default value is <code>1</code>.
+
+    </p>
+
+    </dd>'
+  name: sizeX
+- description: '<dd><p>Set which planes to filter. Default value is <code>0xf</code>,
+    by which all planes are processed.
+
+    </p>
+
+    </dd>'
+  name: planes
+- description: '<dd><p>Set vertical radius size. Range is <code>[1, 1024]</code> and
+    default value is <code>0</code>. If zero, <code>sizeX</code> value will be used.
+
+    </p></dd>'
+  name: sizeY
+ref: https://ffmpeg.org/ffmpeg-filters.html#avgblur_005fopencl
+source: '<h3 class="section"><a href="#toc-avgblur_005fopencl">12.1 avgblur_opencl</a></h3>
+
+
+  <p>Apply average blur filter.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>sizeX</samp></dt>
+
+  <dd><p>Set horizontal radius size.
+
+  Range is <code>[1, 1024]</code> and default value is <code>1</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>planes</samp></dt>
+
+  <dd><p>Set which planes to filter. Default value is <code>0xf</code>, by which all
+  planes are processed.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sizeY</samp></dt>
+
+  <dd><p>Set vertical radius size. Range is <code>[1, 1024]</code> and default value
+  is <code>0</code>. If zero, <code>sizeX</code> value will be used.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

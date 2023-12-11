@@ -1,0 +1,68 @@
+<h3 class="section"><a href="#toc-acrusher">8.7 acrusher</a></h3>
+
+<p>Reduce audio bit resolution.
+</p>
+<p>This filter is bit crusher with enhanced functionality. A bit crusher
+is used to audibly reduce number of bits an audio signal is sampled
+with. This doesn&rsquo;t change the bit depth at all, it just produces the
+effect. Material reduced in bit depth sounds more harsh and &quot;digital&quot;.
+This filter is able to even round to continuous values instead of discrete
+bit depths.
+Additionally it has a D/C offset which results in different crushing of
+the lower and the upper half of the signal.
+An Anti-Aliasing setting is able to produce &quot;softer&quot; crushing sounds.
+</p>
+<p>Another feature of this filter is the logarithmic mode.
+This setting switches from linear distances between bits to logarithmic ones.
+The result is a much more &quot;natural&quot; sounding crusher which doesn&rsquo;t gate low
+signals for example. The human ear has a logarithmic perception,
+so this kind of crushing is much more pleasant.
+Logarithmic crushing is also able to get anti-aliased.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>level_in</samp></dt>
+<dd><p>Set level in.
+</p>
+</dd>
+<dt><samp>level_out</samp></dt>
+<dd><p>Set level out.
+</p>
+</dd>
+<dt><samp>bits</samp></dt>
+<dd><p>Set bit reduction.
+</p>
+</dd>
+<dt><samp>mix</samp></dt>
+<dd><p>Set mixing amount.
+</p>
+</dd>
+<dt><samp>mode</samp></dt>
+<dd><p>Can be linear: <code>lin</code> or logarithmic: <code>log</code>.
+</p>
+</dd>
+<dt><samp>dc</samp></dt>
+<dd><p>Set DC.
+</p>
+</dd>
+<dt><samp>aa</samp></dt>
+<dd><p>Set anti-aliasing.
+</p>
+</dd>
+<dt><samp>samples</samp></dt>
+<dd><p>Set sample reduction.
+</p>
+</dd>
+<dt><samp>lfo</samp></dt>
+<dd><p>Enable LFO. By default disabled.
+</p>
+</dd>
+<dt><samp>lforange</samp></dt>
+<dd><p>Set LFO range.
+</p>
+</dd>
+<dt><samp>lforate</samp></dt>
+<dd><p>Set LFO rate.
+</p></dd>
+</dl>

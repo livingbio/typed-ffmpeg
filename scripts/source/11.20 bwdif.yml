@@ -1,0 +1,230 @@
+description: '11.20 bwdif
+
+  Deinterlace the input video ("bwdif" stands for "Bob Weaver
+
+  Deinterlacing Filter").
+
+
+  Motion adaptive deinterlacing based on yadif with the use of w3fdif and cubic
+
+  interpolation algorithms.
+
+  It accepts the following parameters:'
+name: bwdif
+parameters:
+- description: '<dd><p>The interlacing mode to adopt. It accepts one of the following
+    values:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>0, send_frame</samp></dt>
+
+    <dd><p>Output one frame for each frame.
+
+    </p></dd>
+
+    <dt><samp>1, send_field</samp></dt>
+
+    <dd><p>Output one frame for each field.
+
+    </p></dd>
+
+    </dl>
+
+    <p>The default value is <code>send_field</code>.
+
+    </p>
+
+    </dd>'
+  name: mode
+- description: '<dd><p>The picture field parity assumed for the input interlaced video.
+    It accepts one
+
+    of the following values:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>0, tff</samp></dt>
+
+    <dd><p>Assume the top field is first.
+
+    </p></dd>
+
+    <dt><samp>1, bff</samp></dt>
+
+    <dd><p>Assume the bottom field is first.
+
+    </p></dd>
+
+    <dt><samp>-1, auto</samp></dt>
+
+    <dd><p>Enable automatic detection of field parity.
+
+    </p></dd>
+
+    </dl>
+
+    <p>The default value is <code>auto</code>.
+
+    If the interlacing is unknown or the decoder does not export this information,
+
+    top field first will be assumed.
+
+    </p>
+
+    </dd>'
+  name: parity
+- description: '<dd><p>Specify which frames to deinterlace. Accepts one of the following
+
+    values:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>0, all</samp></dt>
+
+    <dd><p>Deinterlace all frames.
+
+    </p></dd>
+
+    <dt><samp>1, interlaced</samp></dt>
+
+    <dd><p>Only deinterlace frames marked as interlaced.
+
+    </p></dd>
+
+    </dl>
+
+    <p>The default value is <code>all</code>.
+
+    </p></dd>'
+  name: deint
+ref: https://ffmpeg.org/ffmpeg-filters.html#bwdif
+source: '<h3 class="section"><a href="#toc-bwdif-1">11.20 bwdif</a></h3>
+
+
+  <p>Deinterlace the input video (&quot;bwdif&quot; stands for &quot;Bob Weaver
+
+  Deinterlacing Filter&quot;).
+
+  </p>
+
+  <p>Motion adaptive deinterlacing based on yadif with the use of w3fdif and cubic
+
+  interpolation algorithms.
+
+  It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>The interlacing mode to adopt. It accepts one of the following values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>0, send_frame</samp></dt>
+
+  <dd><p>Output one frame for each frame.
+
+  </p></dd>
+
+  <dt><samp>1, send_field</samp></dt>
+
+  <dd><p>Output one frame for each field.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The default value is <code>send_field</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>parity</samp></dt>
+
+  <dd><p>The picture field parity assumed for the input interlaced video. It accepts
+  one
+
+  of the following values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>0, tff</samp></dt>
+
+  <dd><p>Assume the top field is first.
+
+  </p></dd>
+
+  <dt><samp>1, bff</samp></dt>
+
+  <dd><p>Assume the bottom field is first.
+
+  </p></dd>
+
+  <dt><samp>-1, auto</samp></dt>
+
+  <dd><p>Enable automatic detection of field parity.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The default value is <code>auto</code>.
+
+  If the interlacing is unknown or the decoder does not export this information,
+
+  top field first will be assumed.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>deint</samp></dt>
+
+  <dd><p>Specify which frames to deinterlace. Accepts one of the following
+
+  values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>0, all</samp></dt>
+
+  <dd><p>Deinterlace all frames.
+
+  </p></dd>
+
+  <dt><samp>1, interlaced</samp></dt>
+
+  <dd><p>Only deinterlace frames marked as interlaced.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The default value is <code>all</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

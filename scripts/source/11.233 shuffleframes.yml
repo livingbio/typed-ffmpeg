@@ -1,0 +1,52 @@
+description: '11.233 shuffleframes
+
+  Reorder and/or duplicate and/or drop video frames.
+
+
+  It accepts the following parameters:
+
+
+
+  The first frame has the index 0. The default is to keep the input unchanged.'
+name: shuffleframes
+parameters:
+- description: "<dd><p>Set the destination indexes of input frames.\nThis is space\
+    \ or \u2019|\u2019 separated list of indexes that maps input frames to output\n\
+    frames. Number of indexes also sets maximal value that each index may have.\n\u2019\
+    -1\u2019 index have special meaning and that is to drop frame.\n</p></dd>"
+  name: mapping
+ref: https://ffmpeg.org/ffmpeg-filters.html#shuffleframes
+source: '<h3 class="section"><a href="#toc-shuffleframes">11.233 shuffleframes</a></h3>
+
+
+  <p>Reorder and/or duplicate and/or drop video frames.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>mapping</samp></dt>
+
+  <dd><p>Set the destination indexes of input frames.
+
+  This is space or &rsquo;|&rsquo; separated list of indexes that maps input frames
+  to output
+
+  frames. Number of indexes also sets maximal value that each index may have.
+
+  &rsquo;-1&rsquo; index have special meaning and that is to drop frame.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The first frame has the index 0. The default is to keep the input unchanged.
+
+  </p>
+
+  '

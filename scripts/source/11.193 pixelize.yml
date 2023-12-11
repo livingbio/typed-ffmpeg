@@ -1,0 +1,82 @@
+description: '11.193 pixelize
+
+  Apply pixelization to video stream.
+
+
+  The filter accepts the following options:'
+name: pixelize
+parameters:
+- description: '<dd><p>Set block dimensions that will be used for pixelization.
+
+    Default value is <code>16</code>.
+
+    </p>
+
+    </dd>'
+  name: width, w
+- description: "<dd><p>Set the mode of pixelization used.\n</p>\n<p>Possible values\
+    \ are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n\
+    <dt>\u2018<samp>min</samp>\u2019</dt>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n\
+    </dl>\n<p>Default value is <code>avg</code>.\n</p>\n</dd>"
+  name: height, h
+- description: '<dd><p>Set what planes to filter. Default is to filter all planes.
+
+    </p></dd>'
+  name: mode, m
+ref: https://ffmpeg.org/ffmpeg-filters.html#pixelize
+source: '<h3 class="section"><a href="#toc-pixelize">11.193 pixelize</a></h3>
+
+  <p>Apply pixelization to video stream.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p><dl compact="compact">
+
+  <dt><samp>width, w</samp></dt>
+
+  <dt><samp>height, h</samp></dt>
+
+  <dd><p>Set block dimensions that will be used for pixelization.
+
+  Default value is <code>16</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode, m</samp></dt>
+
+  <dd><p>Set the mode of pixelization used.
+
+  </p>
+
+  <p>Possible values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>avg</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>min</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>max</samp>&rsquo;</dt>
+
+  </dl>
+
+  <p>Default value is <code>avg</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>planes, p</samp></dt>
+
+  <dd><p>Set what planes to filter. Default is to filter all planes.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

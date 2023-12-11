@@ -1,0 +1,67 @@
+<h3 class="section"><a href="#toc-swaprect">11.248 swaprect</a></h3>
+
+<p>Swap two rectangular objects in video.
+</p>
+<p>This filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>w</samp></dt>
+<dd><p>Set object width.
+</p>
+</dd>
+<dt><samp>h</samp></dt>
+<dd><p>Set object height.
+</p>
+</dd>
+<dt><samp>x1</samp></dt>
+<dd><p>Set 1st rect x coordinate.
+</p>
+</dd>
+<dt><samp>y1</samp></dt>
+<dd><p>Set 1st rect y coordinate.
+</p>
+</dd>
+<dt><samp>x2</samp></dt>
+<dd><p>Set 2nd rect x coordinate.
+</p>
+</dd>
+<dt><samp>y2</samp></dt>
+<dd><p>Set 2nd rect y coordinate.
+</p>
+<p>All expressions are evaluated once for each frame.
+</p></dd>
+</dl>
+
+<p>The all options are expressions containing the following constants:
+</p>
+<dl compact="compact">
+<dt><samp>w</samp></dt>
+<dt><samp>h</samp></dt>
+<dd><p>The input width and height.
+</p>
+</dd>
+<dt><samp>a</samp></dt>
+<dd><p>same as <var>w</var> / <var>h</var>
+</p>
+</dd>
+<dt><samp>sar</samp></dt>
+<dd><p>input sample aspect ratio
+</p>
+</dd>
+<dt><samp>dar</samp></dt>
+<dd><p>input display aspect ratio, it is the same as (<var>w</var> / <var>h</var>) * <var>sar</var>
+</p>
+</dd>
+<dt><samp>n</samp></dt>
+<dd><p>The number of the input frame, starting from 0.
+</p>
+</dd>
+<dt><samp>t</samp></dt>
+<dd><p>The timestamp expressed in seconds. It&rsquo;s NAN if the input timestamp is unknown.
+</p>
+</dd>
+<dt><samp>pos</samp></dt>
+<dd><p>the position in the file of the input frame, NAN if unknown; deprecated,
+do not use
+</p></dd>
+</dl>

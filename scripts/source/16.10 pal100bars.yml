@@ -1,0 +1,505 @@
+description: '16.10 allrgb, allyuv, color, colorchart, colorspectrum, haldclutsrc,
+  nullsrc, pal75bars, pal100bars, rgbtestsrc, smptebars, smptehdbars, testsrc, testsrc2,
+  yuvtestsrc
+
+  The allrgb source returns frames of size 4096x4096 of all rgb colors.
+
+
+  The allyuv source returns frames of size 4096x4096 of all yuv colors.
+
+
+  The color source provides an uniformly colored input.
+
+
+  The colorchart source provides a colors checker chart.
+
+
+  The colorspectrum source provides a color spectrum input.
+
+
+  The haldclutsrc source provides an identity Hald CLUT. See also
+
+  haldclut filter.
+
+
+  The nullsrc source returns unprocessed video frames. It is
+
+  mainly useful to be employed in analysis / debugging tools, or as the
+
+  source for filters which ignore the input data.
+
+
+  The pal75bars source generates a color bars pattern, based on
+
+  EBU PAL recommendations with 75% color levels.
+
+
+  The pal100bars source generates a color bars pattern, based on
+
+  EBU PAL recommendations with 100% color levels.
+
+
+  The rgbtestsrc source generates an RGB test pattern useful for
+
+  detecting RGB vs BGR issues. You should see a red, green and blue
+
+  stripe from top to bottom.
+
+
+  The smptebars source generates a color bars pattern, based on
+
+  the SMPTE Engineering Guideline EG 1-1990.
+
+
+  The smptehdbars source generates a color bars pattern, based on
+
+  the SMPTE RP 219-2002.
+
+
+  The testsrc source generates a test video pattern, showing a
+
+  color pattern, a scrolling gradient and a timestamp. This is mainly
+
+  intended for testing purposes.
+
+
+  The testsrc2 source is similar to testsrc, but supports more
+
+  pixel formats instead of just rgb24. This allows using it as an
+
+  input for other tests without requiring a format conversion.
+
+
+  The yuvtestsrc source generates an YUV test pattern. You should
+
+  see a y, cb and cr stripe from top to bottom.
+
+
+  The sources accept the following parameters:'
+name: pal100bars
+parameters:
+- description: '<dd><p>Specify the level of the Hald CLUT, only available in the <code>haldclutsrc</code>
+
+    source. A level of <code>N</code> generates a picture of <code>N*N*N</code> by
+    <code>N*N*N</code>
+
+    pixels to be used as identity matrix for 3D lookup tables. Each component is
+
+    coded on a <code>1/(N*N)</code> scale.
+
+    </p>
+
+    </dd>'
+  name: level
+- description: '<dd><p>Specify the color of the source, only available in the <code>color</code>
+
+    source. For the syntax of this option, check the
+
+    <a href="ffmpeg-utils.html#color-syntax">(ffmpeg-utils)"Color" section in the
+    ffmpeg-utils manual</a>.
+
+    </p>
+
+    </dd>'
+  name: color, c
+- description: '<dd><p>Specify the size of the sourced video. For the syntax of this
+    option, check the
+
+    <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)"Video size" section
+    in the ffmpeg-utils manual</a>.
+
+    The default value is <code>320x240</code>.
+
+    </p>
+
+    <p>This option is not available with the <code>allrgb</code>, <code>allyuv</code>,
+    and
+
+    <code>haldclutsrc</code> filters.
+
+    </p>
+
+    </dd>'
+  name: size, s
+- description: '<dd><p>Specify the frame rate of the sourced video, as the number
+    of frames
+
+    generated per second. It has to be a string in the format
+
+    <var>frame_rate_num</var>/<var>frame_rate_den</var>, an integer number, a floating
+    point
+
+    number or a valid video frame rate abbreviation. The default value is
+
+    "25".
+
+    </p>
+
+    </dd>'
+  name: rate, r
+- description: '<dd><p>Set the duration of the sourced video. See
+
+    <a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration
+    section in the ffmpeg-utils(1) manual</a>
+
+    for the accepted syntax.
+
+    </p>
+
+    <p>If not specified, or the expressed duration is negative, the video is
+
+    supposed to be generated forever.
+
+    </p>
+
+    <p>Since the frame rate is used as time base, all frames including the last one
+
+    will have their full duration. If the specified duration is not a multiple
+
+    of the frame duration, it will be rounded up.
+
+    </p>
+
+    </dd>'
+  name: duration, d
+- description: '<dd><p>Set the sample aspect ratio of the sourced video.
+
+    </p>
+
+    </dd>'
+  name: sar
+- description: '<dd><p>Specify the alpha (opacity) of the background, only available
+    in the
+
+    <code>testsrc2</code> source. The value must be between 0 (fully transparent)
+    and
+
+    255 (fully opaque, the default).
+
+    </p>
+
+    </dd>'
+  name: alpha
+- description: '<dd><p>Set the number of decimals to show in the timestamp, only available
+    in the
+
+    <code>testsrc</code> source.
+
+    </p>
+
+    <p>The displayed timestamp value will correspond to the original
+
+    timestamp value multiplied by the power of 10 of the specified
+
+    value. Default value is 0.
+
+    </p>
+
+    </dd>'
+  name: decimals, n
+- description: "<dd><p>Set the type of the color spectrum, only available in the\n\
+    <code>colorspectrum</code> source. Can be one of the following:\n</p>\n<dl compact=\"\
+    compact\">\n<dt>\u2018<samp>black</samp>\u2019</dt>\n<dt>\u2018<samp>white</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>all</samp>\u2019</dt>\n</dl>\n</dd>"
+  name: type
+- description: '<dd><p>Set patch size of single color patch, only available in the
+
+    <code>colorchart</code> source. Default is <code>64x64</code>.
+
+    </p>
+
+    </dd>'
+  name: patch_size
+- description: "<dd><p>Set colorchecker colors preset, only available in the\n<code>colorchart</code>\
+    \ source.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018\
+    <samp>reference</samp>\u2019</dt>\n<dt>\u2018<samp>skintones</samp>\u2019</dt>\n\
+    </dl>\n<p>Default value is <code>reference</code>.\n</p></dd>"
+  name: preset
+ref: https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c
+source: '<h3 class="section"><a href="#toc-allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc">16.10
+  allrgb, allyuv, color, colorchart, colorspectrum, haldclutsrc, nullsrc, pal75bars,
+  pal100bars, rgbtestsrc, smptebars, smptehdbars, testsrc, testsrc2, yuvtestsrc</a></h3>
+
+
+  <p>The <code>allrgb</code> source returns frames of size 4096x4096 of all rgb colors.
+
+  </p>
+
+  <p>The <code>allyuv</code> source returns frames of size 4096x4096 of all yuv colors.
+
+  </p>
+
+  <p>The <code>color</code> source provides an uniformly colored input.
+
+  </p>
+
+  <p>The <code>colorchart</code> source provides a colors checker chart.
+
+  </p>
+
+  <p>The <code>colorspectrum</code> source provides a color spectrum input.
+
+  </p>
+
+  <p>The <code>haldclutsrc</code> source provides an identity Hald CLUT. See also
+
+  <a href="#haldclut">haldclut</a> filter.
+
+  </p>
+
+  <p>The <code>nullsrc</code> source returns unprocessed video frames. It is
+
+  mainly useful to be employed in analysis / debugging tools, or as the
+
+  source for filters which ignore the input data.
+
+  </p>
+
+  <p>The <code>pal75bars</code> source generates a color bars pattern, based on
+
+  EBU PAL recommendations with 75% color levels.
+
+  </p>
+
+  <p>The <code>pal100bars</code> source generates a color bars pattern, based on
+
+  EBU PAL recommendations with 100% color levels.
+
+  </p>
+
+  <p>The <code>rgbtestsrc</code> source generates an RGB test pattern useful for
+
+  detecting RGB vs BGR issues. You should see a red, green and blue
+
+  stripe from top to bottom.
+
+  </p>
+
+  <p>The <code>smptebars</code> source generates a color bars pattern, based on
+
+  the SMPTE Engineering Guideline EG 1-1990.
+
+  </p>
+
+  <p>The <code>smptehdbars</code> source generates a color bars pattern, based on
+
+  the SMPTE RP 219-2002.
+
+  </p>
+
+  <p>The <code>testsrc</code> source generates a test video pattern, showing a
+
+  color pattern, a scrolling gradient and a timestamp. This is mainly
+
+  intended for testing purposes.
+
+  </p>
+
+  <p>The <code>testsrc2</code> source is similar to testsrc, but supports more
+
+  pixel formats instead of just <code>rgb24</code>. This allows using it as an
+
+  input for other tests without requiring a format conversion.
+
+  </p>
+
+  <p>The <code>yuvtestsrc</code> source generates an YUV test pattern. You should
+
+  see a y, cb and cr stripe from top to bottom.
+
+  </p>
+
+  <p>The sources accept the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>level</samp></dt>
+
+  <dd><p>Specify the level of the Hald CLUT, only available in the <code>haldclutsrc</code>
+
+  source. A level of <code>N</code> generates a picture of <code>N*N*N</code> by <code>N*N*N</code>
+
+  pixels to be used as identity matrix for 3D lookup tables. Each component is
+
+  coded on a <code>1/(N*N)</code> scale.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>color, c</samp></dt>
+
+  <dd><p>Specify the color of the source, only available in the <code>color</code>
+
+  source. For the syntax of this option, check the
+
+  <a href="ffmpeg-utils.html#color-syntax">(ffmpeg-utils)&quot;Color&quot; section
+  in the ffmpeg-utils manual</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>size, s</samp></dt>
+
+  <dd><p>Specify the size of the sourced video. For the syntax of this option, check
+  the
+
+  <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot;
+  section in the ffmpeg-utils manual</a>.
+
+  The default value is <code>320x240</code>.
+
+  </p>
+
+  <p>This option is not available with the <code>allrgb</code>, <code>allyuv</code>,
+  and
+
+  <code>haldclutsrc</code> filters.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rate, r</samp></dt>
+
+  <dd><p>Specify the frame rate of the sourced video, as the number of frames
+
+  generated per second. It has to be a string in the format
+
+  <var>frame_rate_num</var>/<var>frame_rate_den</var>, an integer number, a floating
+  point
+
+  number or a valid video frame rate abbreviation. The default value is
+
+  &quot;25&quot;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>duration, d</samp></dt>
+
+  <dd><p>Set the duration of the sourced video. See
+
+  <a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration
+  section in the ffmpeg-utils(1) manual</a>
+
+  for the accepted syntax.
+
+  </p>
+
+  <p>If not specified, or the expressed duration is negative, the video is
+
+  supposed to be generated forever.
+
+  </p>
+
+  <p>Since the frame rate is used as time base, all frames including the last one
+
+  will have their full duration. If the specified duration is not a multiple
+
+  of the frame duration, it will be rounded up.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sar</samp></dt>
+
+  <dd><p>Set the sample aspect ratio of the sourced video.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>alpha</samp></dt>
+
+  <dd><p>Specify the alpha (opacity) of the background, only available in the
+
+  <code>testsrc2</code> source. The value must be between 0 (fully transparent) and
+
+  255 (fully opaque, the default).
+
+  </p>
+
+  </dd>
+
+  <dt><samp>decimals, n</samp></dt>
+
+  <dd><p>Set the number of decimals to show in the timestamp, only available in the
+
+  <code>testsrc</code> source.
+
+  </p>
+
+  <p>The displayed timestamp value will correspond to the original
+
+  timestamp value multiplied by the power of 10 of the specified
+
+  value. Default value is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>type</samp></dt>
+
+  <dd><p>Set the type of the color spectrum, only available in the
+
+  <code>colorspectrum</code> source. Can be one of the following:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>black</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>white</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>all</samp>&rsquo;</dt>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>patch_size</samp></dt>
+
+  <dd><p>Set patch size of single color patch, only available in the
+
+  <code>colorchart</code> source. Default is <code>64x64</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>preset</samp></dt>
+
+  <dd><p>Set colorchecker colors preset, only available in the
+
+  <code>colorchart</code> source.
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>reference</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>skintones</samp>&rsquo;</dt>
+
+  </dl>
+
+
+  <p>Default value is <code>reference</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

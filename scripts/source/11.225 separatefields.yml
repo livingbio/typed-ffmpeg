@@ -1,0 +1,38 @@
+description: '11.225 separatefields
+
+  The separatefields takes a frame-based video input and splits
+
+  each frame into its components fields, producing a new half height clip
+
+  with twice the frame rate and twice the frame count.
+
+
+  This filter use field-dominance information in frame to decide which
+
+  of each pair of fields to place first in the output.
+
+  If it gets it wrong use setfield filter before separatefields filter.'
+name: separatefields
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#separatefields
+source: '<h3 class="section"><a href="#toc-separatefields-1">11.225 separatefields</a></h3>
+
+
+  <p>The <code>separatefields</code> takes a frame-based video input and splits
+
+  each frame into its components fields, producing a new half height clip
+
+  with twice the frame rate and twice the frame count.
+
+  </p>
+
+  <p>This filter use field-dominance information in frame to decide which
+
+  of each pair of fields to place first in the output.
+
+  If it gets it wrong use <a href="#setfield">setfield</a> filter before <code>separatefields</code>
+  filter.
+
+  </p>
+
+  '

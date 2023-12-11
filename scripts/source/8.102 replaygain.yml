@@ -1,0 +1,58 @@
+description: '8.102 replaygain
+
+  ReplayGain scanner filter. This filter takes an audio stream as an input and
+
+  outputs it unchanged.
+
+  At end of filtering it displays track_gain and track_peak.
+
+
+  The filter accepts the following exported read-only options:'
+name: replaygain
+parameters:
+- description: '<dd><p>Exported track gain in dB at end of stream.
+
+    </p>
+
+    </dd>'
+  name: track_gain
+- description: '<dd><p>Exported track peak at end of stream.
+
+    </p></dd>'
+  name: track_peak
+ref: https://ffmpeg.org/ffmpeg-filters.html#replaygain
+source: '<h3 class="section"><a href="#toc-replaygain">8.102 replaygain</a></h3>
+
+
+  <p>ReplayGain scanner filter. This filter takes an audio stream as an input and
+
+  outputs it unchanged.
+
+  At end of filtering it displays <code>track_gain</code> and <code>track_peak</code>.
+
+  </p>
+
+  <p>The filter accepts the following exported read-only options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>track_gain</samp></dt>
+
+  <dd><p>Exported track gain in dB at end of stream.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>track_peak</samp></dt>
+
+  <dd><p>Exported track peak at end of stream.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

@@ -1,0 +1,37 @@
+description: "11.3 alphamerge\nAdd or replace the alpha component of the primary input\
+  \ with the\ngrayscale value of a second input. This is intended for use with\nalphaextract\
+  \ to allow the transmission or storage of frame\nsequences that have alpha in a\
+  \ format that doesn\u2019t support an alpha\nchannel.\n\nFor example, to reconstruct\
+  \ full frames from a normal YUV-encoded video\nand a separate video created with\
+  \ alphaextract, you might use:\n\nmovie=in_alpha.mkv [alpha]; [in][alpha] alphamerge\
+  \ [out]"
+name: alphamerge
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#alphamerge
+source: '<h3 class="section"><a href="#toc-alphamerge">11.3 alphamerge</a></h3>
+
+
+  <p>Add or replace the alpha component of the primary input with the
+
+  grayscale value of a second input. This is intended for use with
+
+  <var>alphaextract</var> to allow the transmission or storage of frame
+
+  sequences that have alpha in a format that doesn&rsquo;t support an alpha
+
+  channel.
+
+  </p>
+
+  <p>For example, to reconstruct full frames from a normal YUV-encoded video
+
+  and a separate video created with <var>alphaextract</var>, you might use:
+
+  </p><div class="example">
+
+  <pre class="example">movie=in_alpha.mkv [alpha]; [in][alpha] alphamerge [out]
+
+  </pre></div>
+
+
+  '

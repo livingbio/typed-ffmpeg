@@ -1,0 +1,80 @@
+<h3 class="section"><a href="#toc-haas">8.91 haas</a></h3>
+<p>Apply Haas effect to audio.
+</p>
+<p>Note that this makes most sense to apply on mono signals.
+With this filter applied to mono signals it give some directionality and
+stretches its stereo image.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>level_in</samp></dt>
+<dd><p>Set input level. By default is <var>1</var>, or 0dB
+</p>
+</dd>
+<dt><samp>level_out</samp></dt>
+<dd><p>Set output level. By default is <var>1</var>, or 0dB.
+</p>
+</dd>
+<dt><samp>side_gain</samp></dt>
+<dd><p>Set gain applied to side part of signal. By default is <var>1</var>.
+</p>
+</dd>
+<dt><samp>middle_source</samp></dt>
+<dd><p>Set kind of middle source. Can be one of the following:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>left</samp>&rsquo;</dt>
+<dd><p>Pick left channel.
+</p>
+</dd>
+<dt>&lsquo;<samp>right</samp>&rsquo;</dt>
+<dd><p>Pick right channel.
+</p>
+</dd>
+<dt>&lsquo;<samp>mid</samp>&rsquo;</dt>
+<dd><p>Pick middle part signal of stereo image.
+</p>
+</dd>
+<dt>&lsquo;<samp>side</samp>&rsquo;</dt>
+<dd><p>Pick side part signal of stereo image.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>middle_phase</samp></dt>
+<dd><p>Change middle phase. By default is disabled.
+</p>
+</dd>
+<dt><samp>left_delay</samp></dt>
+<dd><p>Set left channel delay. By default is <var>2.05</var> milliseconds.
+</p>
+</dd>
+<dt><samp>left_balance</samp></dt>
+<dd><p>Set left channel balance. By default is <var>-1</var>.
+</p>
+</dd>
+<dt><samp>left_gain</samp></dt>
+<dd><p>Set left channel gain. By default is <var>1</var>.
+</p>
+</dd>
+<dt><samp>left_phase</samp></dt>
+<dd><p>Change left phase. By default is disabled.
+</p>
+</dd>
+<dt><samp>right_delay</samp></dt>
+<dd><p>Set right channel delay. By defaults is <var>2.12</var> milliseconds.
+</p>
+</dd>
+<dt><samp>right_balance</samp></dt>
+<dd><p>Set right channel balance. By default is <var>1</var>.
+</p>
+</dd>
+<dt><samp>right_gain</samp></dt>
+<dd><p>Set right channel gain. By default is <var>1</var>.
+</p>
+</dd>
+<dt><samp>right_phase</samp></dt>
+<dd><p>Change right phase. By default is enabled.
+</p></dd>
+</dl>

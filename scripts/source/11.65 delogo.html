@@ -1,0 +1,32 @@
+<h3 class="section"><a href="#toc-delogo">11.65 delogo</a></h3>
+
+<p>Suppress a TV station logo by a simple interpolation of the surrounding
+pixels. Just set a rectangle covering the logo and watch it disappear
+(and sometimes something even uglier appear - your mileage may vary).
+</p>
+<p>It accepts the following parameters:
+</p><dl compact="compact">
+<dt><samp>x</samp></dt>
+<dt><samp>y</samp></dt>
+<dd><p>Specify the top left corner coordinates of the logo. They must be
+specified.
+</p>
+</dd>
+<dt><samp>w</samp></dt>
+<dt><samp>h</samp></dt>
+<dd><p>Specify the width and height of the logo to clear. They must be
+specified.
+</p>
+</dd>
+<dt><samp>show</samp></dt>
+<dd><p>When set to 1, a green rectangle is drawn on the screen to simplify
+finding the right <var>x</var>, <var>y</var>, <var>w</var>, and <var>h</var> parameters.
+The default value is 0.
+</p>
+<p>The rectangle is drawn on the outermost pixels which will be (partly)
+replaced with interpolated values. The values of the next pixels
+immediately outside this rectangle in each direction will be used to
+compute the interpolated pixel values inside the rectangle.
+</p>
+</dd>
+</dl>

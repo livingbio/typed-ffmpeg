@@ -1,0 +1,14 @@
+description: '14.8 flip_vulkan
+
+  Flips an image along both the vertical and horizontal axis.'
+name: flip_vulkan
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#flip_005fvulkan
+source: '<h3 class="section"><a href="#toc-flip_005fvulkan">14.8 flip_vulkan</a></h3>
+
+
+  <p>Flips an image along both the vertical and horizontal axis.
+
+  </p>
+
+  '

@@ -1,0 +1,30 @@
+<h3 class="section"><a href="#toc-gblur_005fvulkan">14.9 gblur_vulkan</a></h3>
+
+<p>Apply Gaussian blur filter on Vulkan frames.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>sigma</samp></dt>
+<dd><p>Set horizontal sigma, standard deviation of Gaussian blur. Default is <code>0.5</code>.
+</p>
+</dd>
+<dt><samp>sigmaV</samp></dt>
+<dd><p>Set vertical sigma, if negative it will be same as <code>sigma</code>.
+Default is <code>-1</code>.
+</p>
+</dd>
+<dt><samp>planes</samp></dt>
+<dd><p>Set which planes to filter. By default all planes are filtered.
+</p>
+</dd>
+<dt><samp>size</samp></dt>
+<dd><p>Set the kernel size along the horizontal axis. Default is <code>19</code>.
+</p>
+</dd>
+<dt><samp>sizeV</samp></dt>
+<dd><p>Set the kernel size along the vertical axis. Default is <code>0</code>,
+which sets to use the same value as <var>size</var>.
+</p>
+</dd>
+</dl>

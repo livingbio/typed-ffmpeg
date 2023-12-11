@@ -1,0 +1,119 @@
+description: '11.147 limitdiff
+
+  Apply limited difference filter using second and optionally third video stream.
+
+
+  The filter accepts the following options:'
+name: limitdiff
+parameters:
+- description: '<dd><p>Set the threshold to use when allowing certain differences
+    between video streams.
+
+    Any absolute difference value lower or exact than this threshold will pick pixel
+    components from
+
+    first video stream.
+
+    </p>
+
+    </dd>'
+  name: threshold
+- description: '<dd><p>Set the elasticity of soft thresholding when processing video
+    streams.
+
+    This value multiplied with first one sets second threshold.
+
+    Any absolute difference value greater or exact than second threshold will pick
+    pixel components
+
+    from second video stream. For values between those two threshold
+
+    linear interpolation between first and second video stream will be used.
+
+    </p>
+
+    </dd>'
+  name: elasticity
+- description: '<dd><p>Enable the reference (third) video stream processing. By default
+    is disabled.
+
+    If set, this video stream will be used for calculating absolute difference with
+    first video
+
+    stream.
+
+    </p>
+
+    </dd>'
+  name: reference
+- description: '<dd><p>Specify which planes will be processed. Defaults to all available.
+
+    </p></dd>'
+  name: planes
+ref: https://ffmpeg.org/ffmpeg-filters.html#limitdiff
+source: '<h3 class="section"><a href="#toc-limitdiff">11.147 limitdiff</a></h3>
+
+  <p>Apply limited difference filter using second and optionally third video stream.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>threshold</samp></dt>
+
+  <dd><p>Set the threshold to use when allowing certain differences between video
+  streams.
+
+  Any absolute difference value lower or exact than this threshold will pick pixel
+  components from
+
+  first video stream.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>elasticity</samp></dt>
+
+  <dd><p>Set the elasticity of soft thresholding when processing video streams.
+
+  This value multiplied with first one sets second threshold.
+
+  Any absolute difference value greater or exact than second threshold will pick pixel
+  components
+
+  from second video stream. For values between those two threshold
+
+  linear interpolation between first and second video stream will be used.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>reference</samp></dt>
+
+  <dd><p>Enable the reference (third) video stream processing. By default is disabled.
+
+  If set, this video stream will be used for calculating absolute difference with
+  first video
+
+  stream.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>planes</samp></dt>
+
+  <dd><p>Specify which planes will be processed. Defaults to all available.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

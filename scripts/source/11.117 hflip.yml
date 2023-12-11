@@ -1,0 +1,29 @@
+description: '11.117 hflip
+
+  Flip the input video horizontally.
+
+
+  For example, to horizontally flip the input video with ffmpeg:
+
+
+  ffmpeg -i in.avi -vf "hflip" out.avi'
+name: hflip
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#hflip
+source: '<h3 class="section"><a href="#toc-hflip">11.117 hflip</a></h3>
+
+
+  <p>Flip the input video horizontally.
+
+  </p>
+
+  <p>For example, to horizontally flip the input video with <code>ffmpeg</code>:
+
+  </p><div class="example">
+
+  <pre class="example">ffmpeg -i in.avi -vf &quot;hflip&quot; out.avi
+
+  </pre></div>
+
+
+  '
