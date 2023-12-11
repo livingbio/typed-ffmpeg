@@ -34,6 +34,29 @@ class Filter(pydantic.BaseModel):
     parameters: list[dict[str, str]] = []
 
 
+class FilterDocument(pydantic.BaseModel):
+    section_index: str
+    hash: str
+    title: str
+    path: pathlib.Path
+    filter_names: list[str]
+
+    @property
+    def url(self) -> str:
+        return f"https://ffmpeg.org/ffmpeg-filters.html#{self.hash}"
+
+
+def parse_filter_document(body: str) -> FilterDocument:
+    soup = BeautifulSoup(body, "html.parser")
+    h3 = soup.find("h3")
+    title = h3.text
+    index, filter_namestr = title.split(" ", 1)
+    filter_names = map(str, filter_namestr.split(","))
+    ref = h3.a["href"].replace("#toc-", "")
+
+    return FilterDocument(section_index=index, hash=ref, title=title, path=DOCUMENT_PATH / f"{ref}.html", filter_names=filter_names)
+
+
 def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
     parameters = []
     current_params = []
@@ -55,14 +78,9 @@ def generate_signature(path: pathlib.Path) -> None:
     body = path.read_text()
     name = path.stem
 
-    ref_pattern = re.compile(r"#toc\-([\w]+)")
-
-    ref = ref_pattern.findall(body)[0]
+    info = parse_filter_document(body)
     soup = BeautifulSoup(body, "html.parser")
     options = soup.find("dl")
-
-    h3 = soup.find("h3")
-    index, section_name = h3.text.split(" ", 1)
 
     if options:
         parameters = parse_paremeters(options)
@@ -79,11 +97,11 @@ def generate_signature(path: pathlib.Path) -> None:
     if '<a href="#' in str(soup):
         print(f"Cross reference found in {name}")
 
-    for filter_name in section_name.split(","):
+    for filter_name in info.filter_names:
         filter_name = filter_name.strip()
-        filter = Filter(name=filter_name, source=body, description=soup.text.strip(), ref=f"https://ffmpeg.org/ffmpeg-filters.html#{ref}", parameters=parameters)
+        filter = Filter(name=filter_name, source=body, description=soup.text.strip(), ref=info.url, parameters=parameters)
 
-        with open(f"source/{index} {filter_name}.yml", "w") as ofile:
+        with open(f"source/{filter_name}.yml", "w") as ofile:
             yaml.dump(filter.model_dump(mode="json"), ofile)
 
 
@@ -98,15 +116,12 @@ def split_documents() -> None:
 
     with (DOCUMENT_PATH / "ffmpeg-filters.html").open() as ifile:
         for name, body in extract_filter(ifile.read()):
-            soup = BeautifulSoup(body, "html.parser")
-            h3 = soup.find("h3")
-            title = h3.text
-            ref = h3.a["href"].replace("#toc-", "")
+            info = parse_filter_document(body)
 
-            if not title.startswith("8.") and not title.startswith("11."):
+            if not info.section_index.startswith("8.") and not info.section_index.startswith("11."):
                 continue
 
-            with open(f"source/{ref}.html", "w") as ofile:
+            with info.path.open("w") as ofile:
                 ofile.write(body)
 
     return None
