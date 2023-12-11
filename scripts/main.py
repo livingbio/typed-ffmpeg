@@ -34,6 +34,29 @@ class Filter(pydantic.BaseModel):
     parameters: list[dict[str, str]] = []
 
 
+class FilterDocument(pydantic.BaseModel):
+    section_index: str
+    hash: str
+    title: str
+    path: pathlib.Path
+    filter_names: list[str]
+
+    @property
+    def url(self) -> str:
+        return f"https://ffmpeg.org/ffmpeg-filters.html#{self.hash}"
+
+
+def parse_filter_document(body: str) -> FilterDocument:
+    soup = BeautifulSoup(body, "html.parser")
+    h3 = soup.find("h3")
+    title = h3.text
+    index, filter_namestr = title.split(" ", 1)
+    filter_names = map(str, filter_namestr.split(","))
+    ref = h3.a["href"].replace("#toc-", "")
+
+    return FilterDocument(section_index=index, hash=ref, title=title, path=DOCUMENT_PATH / f"{ref}.html", filter_names=filter_names)
+
+
 def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
     parameters = []
     current_params = []
@@ -51,49 +74,55 @@ def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
 
 
 @app.command()
+def generate_signature(path: pathlib.Path) -> None:
+    body = path.read_text()
+    name = path.stem
+
+    info = parse_filter_document(body)
+    soup = BeautifulSoup(body, "html.parser")
+    options = soup.find("dl")
+
+    if options:
+        parameters = parse_paremeters(options)
+    else:
+        parameters = []
+
+    for dl_tag in soup.find_all("dl"):
+        dl_tag.decompose()
+
+    # check cross reference
+    for h3 in soup.find_all("h3"):
+        h3.decompose()
+
+    if '<a href="#' in str(soup):
+        print(f"Cross reference found in {name}")
+
+    for filter_name in info.filter_names:
+        filter_name = filter_name.strip()
+        filter = Filter(name=filter_name, source=body, description=soup.text.strip(), ref=info.url, parameters=parameters)
+
+        with open(f"source/{filter_name}.yml", "w") as ofile:
+            yaml.dump(filter.model_dump(mode="json"), ofile)
+
+
+@app.command()
 def split_documents() -> None:
     # split documents into individual files for easier processing
 
     section_pattern = re.compile(r'(?P<body><h3 class="section"><a href="(.*?)">(?P<name>.*?)</a></h3>(.*?))<span', re.MULTILINE | re.DOTALL)
-    ref_pattern = re.compile(r"#toc\-([\w]+)")
 
     def extract_filter(html: str) -> list[tuple[str, str]]:
         return [(m.group("name"), m.group("body")) for m in section_pattern.finditer(html)]
 
     with (DOCUMENT_PATH / "ffmpeg-filters.html").open() as ifile:
         for name, body in extract_filter(ifile.read()):
-            with open(f"source/{name}.html", "w") as ofile:
-                ofile.write(body)
+            info = parse_filter_document(body)
 
-            ref = ref_pattern.findall(body)[0]
-            soup = BeautifulSoup(body, "html.parser")
-            options = soup.find("dl")
-            index, section_name = name.split(" ", 1)
-
-            if not (index.startswith("8.") or index.startswith("11.")):
+            if not info.section_index.startswith("8.") and not info.section_index.startswith("11."):
                 continue
 
-            if options:
-                parameters = parse_paremeters(options)
-            else:
-                parameters = []
-
-            for dl_tag in soup.find_all("dl"):
-                dl_tag.decompose()
-
-            for filter_name in section_name.split(","):
-                filter_name = filter_name.strip()
-                filter = Filter(name=filter_name, source=body, description=soup.text.strip(), ref=f"https://ffmpeg.org/ffmpeg-filters.html#{ref}", parameters=parameters)
-
-                with open(f"source/{index} {filter_name}.yml", "w") as ofile:
-                    yaml.dump(filter.model_dump(mode="json"), ofile)
-
-            # check cross reference
-            for h3 in soup.find_all("h3"):
-                h3.decompose()
-
-            if "</a>" in str(soup):
-                print(f"Cross reference found in {name}")
+            with info.path.open("w") as ofile:
+                ofile.write(body)
 
     return None
 
