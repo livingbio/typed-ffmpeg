@@ -19,10 +19,19 @@ parameters:
 
     </dd>'
   name: period_min
+- description: '<dd><p>Set minimum and maximum values for determining pixel grids
+    (periods).
+
+    Default values are [3,24].
+
+    </p>
+
+    </dd>'
+  name: period_max
 - description: '<dd><p>Set planes to filter. Default is first only.
 
     </p></dd>'
-  name: period_max
+  name: planes
 ref: https://ffmpeg.org/ffmpeg-filters.html#blockdetect
 source: '<h3 class="section"><a href="#toc-blockdetect-1">11.16 blockdetect</a></h3>
 

@@ -40,20 +40,49 @@ parameters:
 
     </dd>'
   name: low
+- description: '<dd><p>Set low and high threshold values used by the Canny thresholding
+
+    algorithm.
+
+    </p>
+
+    <p>The high threshold selects the "strong" edge pixels, which are then
+
+    connected through 8-connectivity with the "weak" edge pixels selected
+
+    by the low threshold.
+
+    </p>
+
+    <p><var>low</var> and <var>high</var> threshold values must be chosen in the range
+
+    [0,1], and <var>low</var> should be lesser or equal to <var>high</var>.
+
+    </p>
+
+    <p>Default value for <var>low</var> is <code>20/255</code>, and default value
+    for <var>high</var>
+
+    is <code>50/255</code>.
+
+    </p>
+
+    </dd>'
+  name: high
 - description: '<dd><p>Define the radius to search around an edge pixel for local
     maxima.
 
     </p>
 
     </dd>'
-  name: high
+  name: radius
 - description: '<dd><p>Determine blurriness only for the most significant blocks,
     given in percentage.
 
     </p>
 
     </dd>'
-  name: radius
+  name: block_pct
 - description: '<dd><p>Determine blurriness for blocks of width <var>block_width</var>.
     If set to any value smaller 1, no blocks are used and the whole image is processed
     as one no matter of <var>block_height</var>.
@@ -61,7 +90,7 @@ parameters:
     </p>
 
     </dd>'
-  name: block_pct
+  name: block_width
 - description: '<dd><p>Determine blurriness for blocks of height <var>block_height</var>.
     If set to any value smaller 1, no blocks are used and the whole image is processed
     as one no matter of <var>block_width</var>.
@@ -69,11 +98,11 @@ parameters:
     </p>
 
     </dd>'
-  name: block_width
+  name: block_height
 - description: '<dd><p>Set planes to filter. Default is first only.
 
     </p></dd>'
-  name: block_height
+  name: planes
 ref: https://ffmpeg.org/ffmpeg-filters.html#blurdetect
 source: '<h3 class="section"><a href="#toc-blurdetect-1">11.17 blurdetect</a></h3>
 

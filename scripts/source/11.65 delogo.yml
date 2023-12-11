@@ -19,7 +19,7 @@ parameters:
 
     </dd>'
   name: x
-- description: '<dd><p>Specify the width and height of the logo to clear. They must
+- description: '<dd><p>Specify the top left corner coordinates of the logo. They must
     be
 
     specified.
@@ -28,6 +28,24 @@ parameters:
 
     </dd>'
   name: y
+- description: '<dd><p>Specify the width and height of the logo to clear. They must
+    be
+
+    specified.
+
+    </p>
+
+    </dd>'
+  name: w
+- description: '<dd><p>Specify the width and height of the logo to clear. They must
+    be
+
+    specified.
+
+    </p>
+
+    </dd>'
+  name: h
 - description: '<dd><p>When set to 1, a green rectangle is drawn on the screen to
     simplify
 
@@ -48,7 +66,7 @@ parameters:
     </p>
 
     </dd>'
-  name: w
+  name: show
 ref: https://ffmpeg.org/ffmpeg-filters.html#delogo
 source: '<h3 class="section"><a href="#toc-delogo">11.65 delogo</a></h3>
 

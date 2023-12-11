@@ -47,6 +47,117 @@ parameters:
 
     </dd>'
   name: x
+- description: '<dd><p>Specify a rectangular area where to limit the search for motion
+
+    vectors.
+
+    If desired the search for motion vectors can be limited to a
+
+    rectangular area of the frame defined by its top left corner, width
+
+    and height. These parameters have the same meaning as the drawbox
+
+    filter which can be used to visualise the position of the bounding
+
+    box.
+
+    </p>
+
+    <p>This is useful when simultaneous movement of subjects within the frame
+
+    might be confused for camera motion by the motion vector search.
+
+    </p>
+
+    <p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var>
+    are set to -1
+
+    then the full frame is used. This allows later options to be set
+
+    without specifying the bounding box for the motion vector search.
+
+    </p>
+
+    <p>Default - search the whole frame.
+
+    </p>
+
+    </dd>'
+  name: y
+- description: '<dd><p>Specify a rectangular area where to limit the search for motion
+
+    vectors.
+
+    If desired the search for motion vectors can be limited to a
+
+    rectangular area of the frame defined by its top left corner, width
+
+    and height. These parameters have the same meaning as the drawbox
+
+    filter which can be used to visualise the position of the bounding
+
+    box.
+
+    </p>
+
+    <p>This is useful when simultaneous movement of subjects within the frame
+
+    might be confused for camera motion by the motion vector search.
+
+    </p>
+
+    <p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var>
+    are set to -1
+
+    then the full frame is used. This allows later options to be set
+
+    without specifying the bounding box for the motion vector search.
+
+    </p>
+
+    <p>Default - search the whole frame.
+
+    </p>
+
+    </dd>'
+  name: w
+- description: '<dd><p>Specify a rectangular area where to limit the search for motion
+
+    vectors.
+
+    If desired the search for motion vectors can be limited to a
+
+    rectangular area of the frame defined by its top left corner, width
+
+    and height. These parameters have the same meaning as the drawbox
+
+    filter which can be used to visualise the position of the bounding
+
+    box.
+
+    </p>
+
+    <p>This is useful when simultaneous movement of subjects within the frame
+
+    might be confused for camera motion by the motion vector search.
+
+    </p>
+
+    <p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var>
+    are set to -1
+
+    then the full frame is used. This allows later options to be set
+
+    without specifying the bounding box for the motion vector search.
+
+    </p>
+
+    <p>Default - search the whole frame.
+
+    </p>
+
+    </dd>'
+  name: h
 - description: '<dd><p>Specify the maximum extent of movement in x and y directions
     in the
 
@@ -55,7 +166,16 @@ parameters:
     </p>
 
     </dd>'
-  name: y
+  name: rx
+- description: '<dd><p>Specify the maximum extent of movement in x and y directions
+    in the
+
+    range 0-64 pixels. Default 16.
+
+    </p>
+
+    </dd>'
+  name: ry
 - description: "<dd><p>Specify how to generate pixels to fill blanks at the edge of\
     \ the\nframe. Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018\
     <samp>blank, 0</samp>\u2019</dt>\n<dd><p>Fill zeroes at blank locations\n</p></dd>\n\
@@ -64,7 +184,7 @@ parameters:
     \ edge value at blank locations\n</p></dd>\n<dt>\u2018<samp>mirror, 3</samp>\u2019\
     </dt>\n<dd><p>Mirrored edge at blank locations\n</p></dd>\n</dl>\n<p>Default value\
     \ is \u2018<samp>mirror</samp>\u2019.\n</p>\n</dd>"
-  name: w
+  name: edge
 - description: '<dd><p>Specify the blocksize to use for motion search. Range 4-128
     pixels,
 
@@ -73,7 +193,7 @@ parameters:
     </p>
 
     </dd>'
-  name: h
+  name: blocksize
 - description: '<dd><p>Specify the contrast threshold for blocks. Only blocks with
     more than
 
@@ -84,13 +204,13 @@ parameters:
     </p>
 
     </dd>'
-  name: rx
+  name: contrast
 - description: "<dd><p>Specify the search strategy. Available values are:\n</p><dl\
     \ compact=\"compact\">\n<dt>\u2018<samp>exhaustive, 0</samp>\u2019</dt>\n<dd><p>Set\
     \ exhaustive search\n</p></dd>\n<dt>\u2018<samp>less, 1</samp>\u2019</dt>\n<dd><p>Set\
     \ less exhaustive search.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>exhaustive</samp>\u2019\
     .\n</p>\n</dd>"
-  name: ry
+  name: search
 - description: '<dd><p>If set then a detailed log of the motion search is written
     to the
 
@@ -99,7 +219,7 @@ parameters:
     </p>
 
     </dd>'
-  name: edge
+  name: filename
 ref: https://ffmpeg.org/ffmpeg-filters.html#deshake
 source: '<h3 class="section"><a href="#toc-deshake">11.67 deshake</a></h3>
 

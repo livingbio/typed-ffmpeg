@@ -100,6 +100,86 @@ parameters:
 
     </dd>'
   name: x
+- description: '<dd><p>Set expressions for the x and y coordinates of the overlaid
+    video
+
+    on the main video.
+
+    </p>
+
+    <p>They can contain the following parameters:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>main_w, W</samp></dt>
+
+    <dt><samp>main_h, H</samp></dt>
+
+    <dd><p>The main input width and height.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>overlay_w, w</samp></dt>
+
+    <dt><samp>overlay_h, h</samp></dt>
+
+    <dd><p>The overlay input width and height.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>x</samp></dt>
+
+    <dt><samp>y</samp></dt>
+
+    <dd><p>The computed values for <var>x</var> and <var>y</var>. They are evaluated
+    for
+
+    each new frame.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>n</samp></dt>
+
+    <dd><p>The ordinal index of the main input frame, starting from 0.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>pos</samp></dt>
+
+    <dd><p>The byte offset position in the file of the main input frame, NAN if unknown.
+
+    Deprecated, do not use.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>t</samp></dt>
+
+    <dd><p>The timestamp of the main input frame, expressed in seconds, NAN if unknown.
+
+    </p>
+
+    </dd>
+
+    </dl>
+
+    <p>Default value is "0" for both expressions.
+
+    </p>
+
+    </dd>'
+  name: y
 - description: '<dd><p>Set when the expressions for <samp>x</samp> and <samp>y</samp>
     are evaluated.
 
@@ -132,12 +212,6 @@ parameters:
     </p>
 
     </dd>'
-  name: y
-- description: '<dd><p>See <a href="#framesync">framesync</a>.
-
-    </p>
-
-    </dd>'
   name: eval
 - description: '<dd><p>See <a href="#framesync">framesync</a>.
 
@@ -151,6 +225,12 @@ parameters:
 
     </dd>'
   name: shortest
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: repeatlast
 ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fcuda
 source: '<h3 class="section"><a href="#toc-overlay_005fcuda-1">11.184 overlay_cuda</a></h3>
 

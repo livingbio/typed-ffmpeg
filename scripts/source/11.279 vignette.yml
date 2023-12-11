@@ -29,6 +29,15 @@ parameters:
 
     </dd>'
   name: x0
+- description: '<dd><p>Set center coordinates expressions. Respectively <code>"w/2"</code>
+    and <code>"h/2"</code>
+
+    by default.
+
+    </p>
+
+    </dd>'
+  name: y0
 - description: "<dd><p>Set forward/backward mode.\n</p>\n<p>Available modes are:\n\
     </p><dl compact=\"compact\">\n<dt>\u2018<samp>forward</samp>\u2019</dt>\n<dd><p>The\
     \ larger the distance from the central point, the darker the image becomes.\n\
@@ -38,7 +47,7 @@ parameters:
     \ extract the lens <samp>angle</samp> and other settings (yet). It can\nalso be\
     \ used to create a burning effect.\n</p></dd>\n</dl>\n<p>Default value is \u2018\
     <samp>forward</samp>\u2019.\n</p>\n</dd>"
-  name: y0
+  name: mode
 - description: "<dd><p>Set evaluation mode for the expressions (<samp>angle</samp>,\
     \ <samp>x0</samp>, <samp>y0</samp>).\n</p>\n<p>It accepts the following values:\n\
     </p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Evaluate\
@@ -47,7 +56,7 @@ parameters:
     \ This is way slower than the\n\u2018<samp>init</samp>\u2019 mode since it requires\
     \ all the scalers to be re-computed, but it\nallows advanced dynamic expressions.\n\
     </p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p>\n</dd>"
-  name: mode
+  name: eval
 - description: '<dd><p>Set dithering to reduce the circular banding effects. Default
     is <code>1</code>
 
@@ -56,7 +65,7 @@ parameters:
     </p>
 
     </dd>'
-  name: eval
+  name: dither
 - description: '<dd><p>Set vignette aspect. This setting allows one to adjust the
     shape of the vignette.
 
@@ -69,7 +78,7 @@ parameters:
     <p>Default is <code>1/1</code>.
 
     </p></dd>'
-  name: dither
+  name: aspect
 ref: https://ffmpeg.org/ffmpeg-filters.html#vignette
 source: '<h3 class="section"><a href="#toc-vignette-1">11.279 vignette</a></h3>
 

@@ -35,6 +35,27 @@ parameters:
 
     </dd>'
   name: width, w
+- description: '<dd><p>Specify an expression for the size of the output image with
+    the
+
+    paddings added. If the value for <var>width</var> or <var>height</var> is 0, the
+
+    corresponding input size is used for the output.
+
+    </p>
+
+    <p>The <var>width</var> expression can reference the value set by the
+
+    <var>height</var> expression, and vice versa.
+
+    </p>
+
+    <p>The default value of <var>width</var> and <var>height</var> is 0.
+
+    </p>
+
+    </dd>'
+  name: height, h
 - description: "<dd><p>Specify the offsets to place the input image at within the\
     \ padded area,\nwith respect to the top/left border of the output image.\n</p>\n\
     <p>The <var>x</var> expression can reference the value set by the <var>y</var>\n\
@@ -42,7 +63,15 @@ parameters:
     \ is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number,\
     \ they\u2019ll be changed\nso the input image is centered on the padded area.\n\
     </p>\n</dd>"
-  name: height, h
+  name: x
+- description: "<dd><p>Specify the offsets to place the input image at within the\
+    \ padded area,\nwith respect to the top/left border of the output image.\n</p>\n\
+    <p>The <var>x</var> expression can reference the value set by the <var>y</var>\n\
+    expression, and vice versa.\n</p>\n<p>The default value of <var>x</var> and <var>y</var>\
+    \ is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number,\
+    \ they\u2019ll be changed\nso the input image is centered on the padded area.\n\
+    </p>\n</dd>"
+  name: y
 - description: '<dd><p>Specify the color of the padded area. For the syntax of this
     option,
 
@@ -58,7 +87,7 @@ parameters:
     </p>
 
     </dd>'
-  name: x
+  name: color
 - description: "<dd><p>Specify when to evaluate  <var>width</var>, <var>height</var>,\
     \ <var>x</var> and <var>y</var> expression.\n</p>\n<p>It accepts the following\
     \ values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n\
@@ -66,13 +95,13 @@ parameters:
     a command is processed.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n\
     <dd><p>Evaluate expressions for each incoming frame.\n</p>\n</dd>\n</dl>\n<p>Default\
     \ value is \u2018<samp>init</samp>\u2019.\n</p>\n</dd>"
-  name: y
+  name: eval
 - description: '<dd><p>Pad to aspect instead to a resolution.
 
     </p>
 
     </dd>'
-  name: color
+  name: aspect
 ref: https://ffmpeg.org/ffmpeg-filters.html#pad
 source: '<h3 class="section"><a href="#toc-pad-1">11.186 pad</a></h3>
 

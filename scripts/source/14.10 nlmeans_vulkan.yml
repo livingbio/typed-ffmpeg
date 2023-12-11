@@ -55,6 +55,33 @@ parameters:
 
     </dd>'
   name: s0
+- description: '<dd><p>Set denoising strength for a specific component. Default is
+    <var>1</var>, equal to <samp>s</samp>.
+
+    Must be odd number in range [1, 100].
+
+    </p>
+
+    </dd>'
+  name: s1
+- description: '<dd><p>Set denoising strength for a specific component. Default is
+    <var>1</var>, equal to <samp>s</samp>.
+
+    Must be odd number in range [1, 100].
+
+    </p>
+
+    </dd>'
+  name: s2
+- description: '<dd><p>Set denoising strength for a specific component. Default is
+    <var>1</var>, equal to <samp>s</samp>.
+
+    Must be odd number in range [1, 100].
+
+    </p>
+
+    </dd>'
+  name: s3
 - description: '<dd><p>Set patch size for a specific component. Default is <var>7</var>,
     equal to <samp>p</samp>.
 
@@ -63,7 +90,34 @@ parameters:
     </p>
 
     </dd>'
-  name: s1
+  name: p0
+- description: '<dd><p>Set patch size for a specific component. Default is <var>7</var>,
+    equal to <samp>p</samp>.
+
+    Must be odd number in range [0, 99].
+
+    </p>
+
+    </dd>'
+  name: p1
+- description: '<dd><p>Set patch size for a specific component. Default is <var>7</var>,
+    equal to <samp>p</samp>.
+
+    Must be odd number in range [0, 99].
+
+    </p>
+
+    </dd>'
+  name: p2
+- description: '<dd><p>Set patch size for a specific component. Default is <var>7</var>,
+    equal to <samp>p</samp>.
+
+    Must be odd number in range [0, 99].
+
+    </p>
+
+    </dd>'
+  name: p3
 ref: https://ffmpeg.org/ffmpeg-filters.html#nlmeans_005fvulkan
 source: '<h3 class="section"><a href="#toc-nlmeans_005fvulkan">14.10 nlmeans_vulkan</a></h3>
 

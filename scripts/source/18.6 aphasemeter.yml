@@ -47,6 +47,26 @@ parameters:
 
     </dd>'
   name: rc
+- description: '<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,
+
+    <code>7</code> and <code>1</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: gc
+- description: '<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,
+
+    <code>7</code> and <code>1</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: bc
 - description: '<dd><p>Set color which will be used for drawing median phase. If color
     is
 
@@ -55,11 +75,11 @@ parameters:
     </p>
 
     </dd>'
-  name: gc
+  name: mpc
 - description: '<dd><p>Enable video output. Default is enabled.
 
     </p></dd>'
-  name: bc
+  name: video
 ref: https://ffmpeg.org/ffmpeg-filters.html#aphasemeter
 source: '<h3 class="section"><a href="#toc-aphasemeter">18.6 aphasemeter</a></h3>
 

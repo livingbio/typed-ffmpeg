@@ -26,10 +26,20 @@ parameters:
 
     </dd>'
   name: x
+- description: '<dd><p>Set the top left crop position.
+
+    </p>
+
+    </dd>'
+  name: y
 - description: '<dd><p>Set the crop size.
 
     </p></dd>'
-  name: y
+  name: w
+- description: '<dd><p>Set the crop size.
+
+    </p></dd>'
+  name: h
 ref: https://ffmpeg.org/ffmpeg-filters.html#feedback
 source: '<h3 class="section"><a href="#toc-feedback">11.89 feedback</a></h3>
 

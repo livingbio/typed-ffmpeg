@@ -34,6 +34,22 @@ class Filter(pydantic.BaseModel):
     parameters: list[dict[str, str]] = []
 
 
+def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
+    parameters = []
+    current_params = []
+
+    for element in soup.find_all(["dt", "dd"], recursive=False):
+        if element.name == "dt" and element.samp:
+            current_params.append(element.samp.get_text())
+        elif element.name == "dd" and current_params:
+            description = str(element)
+            for param in current_params:
+                parameters.append({"name": param, "description": description})
+            current_params = []
+
+    return parameters
+
+
 @app.command()
 def split_documents() -> None:
     # split documents into individual files for easier processing
@@ -54,10 +70,10 @@ def split_documents() -> None:
             options = soup.find("dl")
             index, section_name = name.split(" ", 1)
 
-            parameters = []
             if options:
-                for dt, dd in zip(options.find_all("dt", recursive=False), options.find_all("dd", recursive=False)):
-                    parameters.append({"name": dt.text.strip(), "description": str(dd)})
+                parameters = parse_paremeters(options)
+            else:
+                parameters = []
 
             for dl_tag in soup.find_all("dl"):
                 dl_tag.decompose()

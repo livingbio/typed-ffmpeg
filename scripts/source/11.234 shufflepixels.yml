@@ -31,6 +31,17 @@ parameters:
 
     </dd>'
   name: width, w
+- description: '<dd><p>Set shuffle block_size. In case of horizontal shuffle mode
+    only width
+
+    part of size is used, and in case of vertical shuffle mode only height
+
+    part of size is used.
+
+    </p>
+
+    </dd>'
+  name: height, h
 - description: '<dd><p>Set random seed used with shuffling pixels. Mainly useful to
     set to be able
 
@@ -41,7 +52,7 @@ parameters:
     and exact same seed and to set direction to inverse.
 
     </p></dd>'
-  name: height, h
+  name: seed, s
 ref: https://ffmpeg.org/ffmpeg-filters.html#shufflepixels
 source: '<h3 class="section"><a href="#toc-shufflepixels">11.234 shufflepixels</a></h3>
 

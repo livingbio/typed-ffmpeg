@@ -35,6 +35,27 @@ parameters:
 
     </dd>'
   name: width, w
+- description: '<dd><p>Specify an expression for the size of the output image with
+    the
+
+    paddings added. If the value for <var>width</var> or <var>height</var> is 0, the
+
+    corresponding input size is used for the output.
+
+    </p>
+
+    <p>The <var>width</var> expression can reference the value set by the
+
+    <var>height</var> expression, and vice versa.
+
+    </p>
+
+    <p>The default value of <var>width</var> and <var>height</var> is 0.
+
+    </p>
+
+    </dd>'
+  name: height, h
 - description: "<dd><p>Specify the offsets to place the input image at within the\
     \ padded area,\nwith respect to the top/left border of the output image.\n</p>\n\
     <p>The <var>x</var> expression can reference the value set by the <var>y</var>\n\
@@ -42,7 +63,15 @@ parameters:
     \ is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number,\
     \ they\u2019ll be changed\nso the input image is centered on the padded area.\n\
     </p>\n</dd>"
-  name: height, h
+  name: x
+- description: "<dd><p>Specify the offsets to place the input image at within the\
+    \ padded area,\nwith respect to the top/left border of the output image.\n</p>\n\
+    <p>The <var>x</var> expression can reference the value set by the <var>y</var>\n\
+    expression, and vice versa.\n</p>\n<p>The default value of <var>x</var> and <var>y</var>\
+    \ is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number,\
+    \ they\u2019ll be changed\nso the input image is centered on the padded area.\n\
+    </p>\n</dd>"
+  name: y
 - description: '<dd><p>Specify the color of the padded area. For the syntax of this
     option,
 
@@ -54,11 +83,11 @@ parameters:
     </p>
 
     </dd>'
-  name: x
+  name: color
 - description: '<dd><p>Pad to an aspect instead to a resolution.
 
     </p></dd>'
-  name: y
+  name: aspect
 ref: https://ffmpeg.org/ffmpeg-filters.html#pad_005fopencl
 source: '<h3 class="section"><a href="#toc-pad_005fopencl">12.10 pad_opencl</a></h3>
 

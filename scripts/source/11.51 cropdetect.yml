@@ -97,6 +97,33 @@ parameters:
 
     </p></dd>'
   name: low
+- description: '<dd><p>Set low and high threshold values used by the Canny thresholding
+
+    algorithm.
+
+    </p>
+
+    <p>The high threshold selects the "strong" edge pixels, which are then
+
+    connected through 8-connectivity with the "weak" edge pixels selected
+
+    by the low threshold.
+
+    </p>
+
+    <p><var>low</var> and <var>high</var> threshold values must be chosen in the range
+
+    [0,1], and <var>low</var> should be lesser or equal to <var>high</var>.
+
+    </p>
+
+    <p>Default value for <var>low</var> is <code>5/255</code>, and default value for
+    <var>high</var>
+
+    is <code>15/255</code>.
+
+    </p></dd>'
+  name: high
 ref: https://ffmpeg.org/ffmpeg-filters.html#cropdetect
 source: '<h3 class="section"><a href="#toc-cropdetect">11.51 cropdetect</a></h3>
 

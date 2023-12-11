@@ -27,6 +27,19 @@ parameters:
 
     </dd>'
   name: x
+- description: '<dd><p>Set expressions for the x and y coordinates of the overlaid
+    video
+
+    on the main video.
+
+    </p>
+
+    <p>Default value is "0" for both expressions.
+
+    </p>
+
+    </dd>'
+  name: y
 - description: "<dd><p>Set expressions for the width and height the overlaid video\n\
     on the main video.\n</p>\n<p>Default values are \u2019overlay_iw\u2019 for \u2019\
     w\u2019 and \u2019overlay_ih*w/overlay_iw\u2019 for \u2019h\u2019.\n</p>\n<p>The\
@@ -38,25 +51,25 @@ parameters:
     <dd><p>The overlay output width and height.\n</p>\n</dd>\n<dt><samp>overlay_x,\
     \ x</samp></dt>\n<dt><samp>overlay_y, y</samp></dt>\n<dd><p>Position of the overlay\
     \ layer inside of main\n</p>\n</dd>\n</dl>\n</dd>"
-  name: y
+  name: w
+- description: "<dd><p>Set expressions for the width and height the overlaid video\n\
+    on the main video.\n</p>\n<p>Default values are \u2019overlay_iw\u2019 for \u2019\
+    w\u2019 and \u2019overlay_ih*w/overlay_iw\u2019 for \u2019h\u2019.\n</p>\n<p>The\
+    \ expressions can contain the following parameters:\n</p>\n<dl compact=\"compact\"\
+    >\n<dt><samp>main_w, W</samp></dt>\n<dt><samp>main_h, H</samp></dt>\n<dd><p>The\
+    \ main input width and height.\n</p>\n</dd>\n<dt><samp>overlay_iw</samp></dt>\n\
+    <dt><samp>overlay_ih</samp></dt>\n<dd><p>The overlay input width and height.\n\
+    </p>\n</dd>\n<dt><samp>overlay_w, w</samp></dt>\n<dt><samp>overlay_h, h</samp></dt>\n\
+    <dd><p>The overlay output width and height.\n</p>\n</dd>\n<dt><samp>overlay_x,\
+    \ x</samp></dt>\n<dt><samp>overlay_y, y</samp></dt>\n<dd><p>Position of the overlay\
+    \ layer inside of main\n</p>\n</dd>\n</dl>\n</dd>"
+  name: h
 - description: '<dd><p>Set transparency of overlaid video. Allowed range is 0.0 to
     1.0.
 
     Higher value means lower transparency.
 
     Default value is <code>1.0</code>.
-
-    </p>
-
-    </dd>'
-  name: w
-- description: '<dd><p>See <a href="#framesync">framesync</a>.
-
-    </p>
-
-    </dd>'
-  name: h
-- description: '<dd><p>See <a href="#framesync">framesync</a>.
 
     </p>
 
@@ -68,6 +81,18 @@ parameters:
 
     </dd>'
   name: eof_action
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: shortest
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: repeatlast
 ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvaapi
 source: '<h3 class="section"><a href="#toc-overlay_005fvaapi">13.1 overlay_vaapi</a></h3>
 

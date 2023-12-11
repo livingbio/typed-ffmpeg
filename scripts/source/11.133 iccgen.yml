@@ -13,13 +13,20 @@ parameters:
     \ but note that\n<code>unknown</code> are not valid values for this filter.\n\
     </p>\n</dd>"
   name: color_primaries
+- description: "<dd><p>Configure the colorspace that the ICC profile will be generated\
+    \ for. The\ndefault value of <code>auto</code> infers the value from the input\
+    \ frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See\
+    \ the <a href=\"#setparams\">setparams</a> filter for a list of possible values,\
+    \ but note that\n<code>unknown</code> are not valid values for this filter.\n\
+    </p>\n</dd>"
+  name: color_trc
 - description: '<dd><p>If true, an ICC profile will be generated even if it would
     overwrite an
 
     already existing ICC profile. Disabled by default.
 
     </p></dd>'
-  name: color_trc
+  name: force
 ref: https://ffmpeg.org/ffmpeg-filters.html#iccgen
 source: '<h3 class="section"><a href="#toc-iccgen">11.133 iccgen</a></h3>
 

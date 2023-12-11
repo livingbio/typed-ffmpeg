@@ -71,22 +71,38 @@ parameters:
 
     </dd>'
   name: X
-- description: '<dd><p>The width and height of the image.
+- description: '<dd><p>The coordinates of the current sample.
 
     </p>
 
     </dd>'
   name: Y
-- description: '<dd><p>The number of input frame, starting from 0.
+- description: '<dd><p>The width and height of the image.
 
     </p>
 
     </dd>'
   name: W
+- description: '<dd><p>The width and height of the image.
+
+    </p>
+
+    </dd>'
+  name: H
+- description: '<dd><p>The number of input frame, starting from 0.
+
+    </p>
+
+    </dd>'
+  name: N
 - description: '<dd><p>The size of FFT array for horizontal and vertical processing.
 
     </p></dd>'
-  name: H
+  name: WS
+- description: '<dd><p>The size of FFT array for horizontal and vertical processing.
+
+    </p></dd>'
+  name: HS
 ref: https://ffmpeg.org/ffmpeg-filters.html#fftfilt
 source: '<h3 class="section"><a href="#toc-fftfilt">11.91 fftfilt</a></h3>
 

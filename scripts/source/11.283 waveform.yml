@@ -144,18 +144,28 @@ parameters:
 
     </dd>'
   name: tint0, t0
+- description: '<dd><p>Set tint for output.
+
+    Only used with lowpass filter and when display is not overlay and input
+
+    pixel formats are not RGB.
+
+    </p>
+
+    </dd>'
+  name: tint1, t1
 - description: "<dd><p>Set sample aspect ratio of video output frames.\nCan be used\
     \ to configure waveform so it is not\nstreched too much in one of directions.\n\
     </p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Set\
     \ sample aspect ration to 1/1.\n</p></dd>\n<dt>\u2018<samp>size</samp>\u2019</dt>\n\
     <dd><p>Set sample aspect ratio to match input size of video\n</p></dd>\n</dl>\n\
     <p>Default is \u2018<samp>none</samp>\u2019.\n</p>\n</dd>"
-  name: tint1, t1
+  name: fitmode, fm
 - description: "<dd><p>Set input formats for filter to pick from.\nCan be \u2018<samp>all</samp>\u2019\
     , for selecting from all available formats,\nor \u2018<samp>first</samp>\u2019\
     , for selecting first available format.\nDefault is \u2018<samp>first</samp>\u2019\
     .\n</p></dd>"
-  name: fitmode, fm
+  name: input
 ref: https://ffmpeg.org/ffmpeg-filters.html#waveform
 source: '<h3 class="section"><a href="#toc-waveform">11.283 waveform</a></h3>
 

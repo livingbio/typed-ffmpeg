@@ -27,6 +27,31 @@ parameters:
 
     </dd>'
   name: attacks
+- description: '<dd><p>A list of times in seconds for each channel over which the
+    instantaneous level
+
+    of the input signal is averaged to determine its volume. <var>attacks</var> refers
+    to
+
+    increase of volume and <var>decays</var> refers to decrease of volume. For most
+
+    situations, the attack time (response to the audio getting louder) should be
+
+    shorter than the decay time, because the human ear is more sensitive to sudden
+
+    loud audio than sudden soft audio. A typical value for attack is 0.3 seconds and
+
+    a typical value for decay is 0.8 seconds.
+
+    If specified number of attacks &amp; decays is lower than number of channels,
+    the last
+
+    set attack/decay will be used for all remaining channels.
+
+    </p>
+
+    </dd>'
+  name: decays
 - description: '<dd><p>A list of points for the transfer function, specified in dB
     relative to the
 
@@ -50,13 +75,13 @@ parameters:
     </p>
 
     </dd>'
-  name: decays
+  name: points
 - description: '<dd><p>Set the curve radius in dB for all joints. It defaults to 0.01.
 
     </p>
 
     </dd>'
-  name: points
+  name: soft-knee
 - description: '<dd><p>Set the additional gain in dB to be applied at all points on
     the transfer
 
@@ -67,7 +92,7 @@ parameters:
     </p>
 
     </dd>'
-  name: soft-knee
+  name: gain
 - description: '<dd><p>Set an initial volume, in dB, to be assumed for each channel
     when filtering
 
@@ -82,7 +107,7 @@ parameters:
     </p>
 
     </dd>'
-  name: gain
+  name: volume
 - description: '<dd><p>Set a delay, in seconds. The input audio is analyzed immediately,
     but audio is
 
@@ -95,7 +120,7 @@ parameters:
     </p>
 
     </dd>'
-  name: volume
+  name: delay
 ref: https://ffmpeg.org/ffmpeg-filters.html#compand
 source: '<h3 class="section"><a href="#toc-compand">8.77 compand</a></h3>
 

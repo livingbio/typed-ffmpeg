@@ -45,6 +45,17 @@ parameters:
 
     </dd>'
   name: blockx
+- description: '<dd><p>Set the size of the x and y-axis blocks used during metric
+    calculations.
+
+    Larger blocks give better noise suppression, but also give worse detection of
+
+    small movements. Must be a power of two. Default is <code>32</code>.
+
+    </p>
+
+    </dd>'
+  name: blocky
 - description: '<dd><p>Mark main input as a pre-processed input and activate clean
     source input
 
@@ -61,7 +72,7 @@ parameters:
     </p>
 
     </dd>'
-  name: blocky
+  name: ppsrc
 - description: '<dd><p>Set whether or not chroma is considered in the metric calculations.
     Default is
 
@@ -70,7 +81,7 @@ parameters:
     </p>
 
     </dd>'
-  name: ppsrc
+  name: chroma
 - description: '<dd><p>Set whether or not the input only partially contains content
     to be decimated.
 
@@ -79,7 +90,7 @@ parameters:
     If enabled video output stream will be in variable frame rate.
 
     </p></dd>'
-  name: chroma
+  name: mixed
 ref: https://ffmpeg.org/ffmpeg-filters.html#decimate
 source: '<h3 class="section"><a href="#toc-decimate-1">11.59 decimate</a></h3>
 

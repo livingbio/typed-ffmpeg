@@ -14,15 +14,23 @@ parameters:
 
     </dd>'
   name: width, w
+- description: '<dd><p>Set block dimensions that will be used for pixelization.
+
+    Default value is <code>16</code>.
+
+    </p>
+
+    </dd>'
+  name: height, h
 - description: "<dd><p>Set the mode of pixelization used.\n</p>\n<p>Possible values\
     \ are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n\
     <dt>\u2018<samp>min</samp>\u2019</dt>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n\
     </dl>\n<p>Default value is <code>avg</code>.\n</p>\n</dd>"
-  name: height, h
+  name: mode, m
 - description: '<dd><p>Set what planes to filter. Default is to filter all planes.
 
     </p></dd>'
-  name: mode, m
+  name: planes, p
 ref: https://ffmpeg.org/ffmpeg-filters.html#pixelize
 source: '<h3 class="section"><a href="#toc-pixelize">11.193 pixelize</a></h3>
 

@@ -22,12 +22,36 @@ parameters:
 
     </dd>'
   name: rs
-- description: '<dd><p>Adjust red, green and blue midtones (medium pixels).
+- description: '<dd><p>Adjust red, green and blue shadows (darkest pixels).
 
     </p>
 
     </dd>'
   name: gs
+- description: '<dd><p>Adjust red, green and blue shadows (darkest pixels).
+
+    </p>
+
+    </dd>'
+  name: bs
+- description: '<dd><p>Adjust red, green and blue midtones (medium pixels).
+
+    </p>
+
+    </dd>'
+  name: rm
+- description: '<dd><p>Adjust red, green and blue midtones (medium pixels).
+
+    </p>
+
+    </dd>'
+  name: gm
+- description: '<dd><p>Adjust red, green and blue midtones (medium pixels).
+
+    </p>
+
+    </dd>'
+  name: bm
 - description: '<dd><p>Adjust red, green and blue highlights (brightest pixels).
 
     </p>
@@ -37,12 +61,32 @@ parameters:
     </p>
 
     </dd>'
-  name: bs
+  name: rh
+- description: '<dd><p>Adjust red, green and blue highlights (brightest pixels).
+
+    </p>
+
+    <p>Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: gh
+- description: '<dd><p>Adjust red, green and blue highlights (brightest pixels).
+
+    </p>
+
+    <p>Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: bh
 - description: '<dd><p>Preserve lightness when changing color balance. Default is
     disabled.
 
     </p></dd>'
-  name: rm
+  name: pl
 ref: https://ffmpeg.org/ffmpeg-filters.html#colorbalance
 source: '<h3 class="section"><a href="#toc-colorbalance">11.31 colorbalance</a></h3>
 

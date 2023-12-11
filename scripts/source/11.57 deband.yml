@@ -21,6 +21,45 @@ parameters:
 
     </dd>'
   name: 1thr
+- description: '<dd><p>Set banding detection threshold for each plane. Default is
+    0.02.
+
+    Valid range is 0.00003 to 0.5.
+
+    If difference between current pixel and reference pixel is less than threshold,
+
+    it will be considered as banded.
+
+    </p>
+
+    </dd>'
+  name: 2thr
+- description: '<dd><p>Set banding detection threshold for each plane. Default is
+    0.02.
+
+    Valid range is 0.00003 to 0.5.
+
+    If difference between current pixel and reference pixel is less than threshold,
+
+    it will be considered as banded.
+
+    </p>
+
+    </dd>'
+  name: 3thr
+- description: '<dd><p>Set banding detection threshold for each plane. Default is
+    0.02.
+
+    Valid range is 0.00003 to 0.5.
+
+    If difference between current pixel and reference pixel is less than threshold,
+
+    it will be considered as banded.
+
+    </p>
+
+    </dd>'
+  name: 4thr
 - description: '<dd><p>Banding detection range in pixels. Default is 16. If positive,
     random number
 
@@ -33,7 +72,7 @@ parameters:
     </p>
 
     </dd>'
-  name: 2thr
+  name: range, r
 - description: '<dd><p>Set direction in radians from which four pixel will be compared.
     If positive,
 
@@ -48,7 +87,7 @@ parameters:
     </p>
 
     </dd>'
-  name: 3thr
+  name: direction, d
 - description: '<dd><p>If enabled, current pixel is compared with average value of
     all four
 
@@ -61,7 +100,7 @@ parameters:
     </p>
 
     </dd>'
-  name: 4thr
+  name: blur, b
 - description: '<dd><p>If enabled, current pixel is changed if and only if all pixel
     components are banded,
 
@@ -70,7 +109,7 @@ parameters:
     The default is disabled.
 
     </p></dd>'
-  name: range, r
+  name: coupling, c
 ref: https://ffmpeg.org/ffmpeg-filters.html#deband
 source: '<h3 class="section"><a href="#toc-deband">11.57 deband</a></h3>
 

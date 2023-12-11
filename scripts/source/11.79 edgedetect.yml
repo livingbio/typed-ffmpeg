@@ -35,18 +35,47 @@ parameters:
 
     </dd>'
   name: low
+- description: '<dd><p>Set low and high threshold values used by the Canny thresholding
+
+    algorithm.
+
+    </p>
+
+    <p>The high threshold selects the "strong" edge pixels, which are then
+
+    connected through 8-connectivity with the "weak" edge pixels selected
+
+    by the low threshold.
+
+    </p>
+
+    <p><var>low</var> and <var>high</var> threshold values must be chosen in the range
+
+    [0,1], and <var>low</var> should be lesser or equal to <var>high</var>.
+
+    </p>
+
+    <p>Default value for <var>low</var> is <code>20/255</code>, and default value
+    for <var>high</var>
+
+    is <code>50/255</code>.
+
+    </p>
+
+    </dd>'
+  name: high
 - description: "<dd><p>Define the drawing mode.\n</p>\n<dl compact=\"compact\">\n\
     <dt>\u2018<samp>wires</samp>\u2019</dt>\n<dd><p>Draw white/gray wires on black\
     \ background.\n</p>\n</dd>\n<dt>\u2018<samp>colormix</samp>\u2019</dt>\n<dd><p>Mix\
     \ the colors to create a paint/cartoon effect.\n</p>\n</dd>\n<dt>\u2018<samp>canny</samp>\u2019\
     </dt>\n<dd><p>Apply Canny edge detector on all selected planes.\n</p></dd>\n</dl>\n\
     <p>Default value is <var>wires</var>.\n</p>\n</dd>"
-  name: high
+  name: mode
 - description: '<dd><p>Select planes for filtering. By default all available planes
     are filtered.
 
     </p></dd>'
-  name: mode
+  name: planes
 ref: https://ffmpeg.org/ffmpeg-filters.html#edgedetect
 source: '<h3 class="section"><a href="#toc-edgedetect">11.79 edgedetect</a></h3>
 

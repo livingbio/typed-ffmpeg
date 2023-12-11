@@ -13,24 +13,31 @@ parameters:
 
     </dd>'
   name: w
-- description: '<dd><p>Set the output colorspace matrix.
+- description: '<dd><p>Set the output video dimension expression. Default value is
+    the input dimension.
 
     </p>
 
     </dd>'
   name: h
-- description: '<dd><p>Set the output color primaries.
+- description: '<dd><p>Set the output colorspace matrix.
 
     </p>
 
     </dd>'
   name: color_matrix
-- description: '<dd><p>Set the output transfer characteristics.
+- description: '<dd><p>Set the output color primaries.
 
     </p>
 
     </dd>'
   name: color_primaries
+- description: '<dd><p>Set the output transfer characteristics.
+
+    </p>
+
+    </dd>'
+  name: color_transfer
 ref: https://ffmpeg.org/ffmpeg-filters.html#scale_005fvt
 source: '<h3 class="section"><a href="#toc-scale_005fvt">11.220 scale_vt</a></h3>
 

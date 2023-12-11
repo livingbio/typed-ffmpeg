@@ -41,10 +41,67 @@ parameters:
 
     </dd>'
   name: alpha
+- description: '<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.
+
+    Defaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the
+    rest.
+
+    Using higher threshold gives more deblocking strength.
+
+    Setting <var>alpha</var> controls threshold detection at exact edge of block.
+
+    Remaining options controls threshold detection near the edge. Each one for
+
+    below/above or left/right. Setting any of those to <var>0</var> disables
+
+    deblocking.
+
+    </p>
+
+    </dd>'
+  name: beta
+- description: '<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.
+
+    Defaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the
+    rest.
+
+    Using higher threshold gives more deblocking strength.
+
+    Setting <var>alpha</var> controls threshold detection at exact edge of block.
+
+    Remaining options controls threshold detection near the edge. Each one for
+
+    below/above or left/right. Setting any of those to <var>0</var> disables
+
+    deblocking.
+
+    </p>
+
+    </dd>'
+  name: gamma
+- description: '<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.
+
+    Defaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the
+    rest.
+
+    Using higher threshold gives more deblocking strength.
+
+    Setting <var>alpha</var> controls threshold detection at exact edge of block.
+
+    Remaining options controls threshold detection near the edge. Each one for
+
+    below/above or left/right. Setting any of those to <var>0</var> disables
+
+    deblocking.
+
+    </p>
+
+    </dd>'
+  name: delta
 - description: '<dd><p>Set planes to filter. Default is to filter all available planes.
 
     </p></dd>'
-  name: beta
+  name: planes
 ref: https://ffmpeg.org/ffmpeg-filters.html#deblock
 source: '<h3 class="section"><a href="#toc-deblock">11.58 deblock</a></h3>
 

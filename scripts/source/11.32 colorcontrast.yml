@@ -36,11 +36,29 @@ parameters:
 
     </dd>'
   name: rcw
+- description: '<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code>
+    option value. Default value is 0.0.
+
+    Allowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.
+
+    </p>
+
+    </dd>'
+  name: gmw
+- description: '<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code>
+    option value. Default value is 0.0.
+
+    Allowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.
+
+    </p>
+
+    </dd>'
+  name: byw
 - description: '<dd><p>Set the amount of preserving lightness. Default value is 0.0.
     Allowed range is from 0.0 to 1.0.
 
     </p></dd>'
-  name: gmw
+  name: pl
 ref: https://ffmpeg.org/ffmpeg-filters.html#colorcontrast
 source: '<h3 class="section"><a href="#toc-colorcontrast">11.32 colorcontrast</a></h3>
 

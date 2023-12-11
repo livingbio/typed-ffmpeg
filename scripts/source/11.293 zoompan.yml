@@ -22,6 +22,12 @@ parameters:
 
     </dd>'
   name: x
+- description: '<dd><p>Set the x and y expression. Default is 0.
+
+    </p>
+
+    </dd>'
+  name: y
 - description: '<dd><p>Set the duration expression in number of frames.
 
     This sets for how many number of frames effect will last for
@@ -31,12 +37,12 @@ parameters:
     </p>
 
     </dd>'
-  name: y
+  name: d
 - description: "<dd><p>Set the output image size, default is \u2019hd720\u2019.\n\
     </p>\n</dd>"
-  name: d
-- description: "<dd><p>Set the output frame rate, default is \u201925\u2019.\n</p></dd>"
   name: s
+- description: "<dd><p>Set the output frame rate, default is \u201925\u2019.\n</p></dd>"
+  name: fps
 ref: https://ffmpeg.org/ffmpeg-filters.html#zoompan
 source: '<h3 class="section"><a href="#toc-zoompan">11.293 zoompan</a></h3>
 

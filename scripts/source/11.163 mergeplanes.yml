@@ -35,11 +35,47 @@ parameters:
 
     </dd>'
   name: map0s
+- description: '<dd><p>Set input to output stream mapping for output Nth plane. Default
+    is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: map1s
+- description: '<dd><p>Set input to output stream mapping for output Nth plane. Default
+    is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: map2s
+- description: '<dd><p>Set input to output stream mapping for output Nth plane. Default
+    is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: map3s
 - description: '<dd><p>Set input to output plane mapping for output Nth plane. Default
     is <code>0</code>.
 
     </p></dd>'
-  name: map1s
+  name: map0p
+- description: '<dd><p>Set input to output plane mapping for output Nth plane. Default
+    is <code>0</code>.
+
+    </p></dd>'
+  name: map1p
+- description: '<dd><p>Set input to output plane mapping for output Nth plane. Default
+    is <code>0</code>.
+
+    </p></dd>'
+  name: map2p
+- description: '<dd><p>Set input to output plane mapping for output Nth plane. Default
+    is <code>0</code>.
+
+    </p></dd>'
+  name: map3p
 ref: https://ffmpeg.org/ffmpeg-filters.html#mergeplanes
 source: '<h3 class="section"><a href="#toc-mergeplanes">11.163 mergeplanes</a></h3>
 

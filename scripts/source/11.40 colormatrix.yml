@@ -24,6 +24,17 @@ parameters:
     </dd>\n<dt>\u2018<samp>bt2020</samp>\u2019</dt>\n<dd><p>BT.2020\n</p></dd>\n</dl>\n\
     </dd>"
   name: src
+- description: "<dd><p>Specify the source and destination color matrix. Both values\
+    \ must be\nspecified.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\"\
+    >\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dd><p>BT.709\n</p>\n</dd>\n<dt>\u2018\
+    <samp>fcc</samp>\u2019</dt>\n<dd><p>FCC\n</p>\n</dd>\n<dt>\u2018<samp>bt601</samp>\u2019\
+    </dt>\n<dd><p>BT.601\n</p>\n</dd>\n<dt>\u2018<samp>bt470</samp>\u2019</dt>\n<dd><p>BT.470\n\
+    </p>\n</dd>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dd><p>BT.470BG\n</p>\n\
+    </dd>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dd><p>SMPTE-170M\n</p>\n\
+    </dd>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dd><p>SMPTE-240M\n</p>\n\
+    </dd>\n<dt>\u2018<samp>bt2020</samp>\u2019</dt>\n<dd><p>BT.2020\n</p></dd>\n</dl>\n\
+    </dd>"
+  name: dst
 ref: https://ffmpeg.org/ffmpeg-filters.html#colormatrix
 source: '<h3 class="section"><a href="#toc-colormatrix">11.40 colormatrix</a></h3>
 

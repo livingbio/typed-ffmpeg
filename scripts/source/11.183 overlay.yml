@@ -25,12 +25,25 @@ parameters:
 
     </dd>'
   name: x
-- description: '<dd><p>See <a href="#framesync">framesync</a>.
+- description: '<dd><p>Set the expression for the x and y coordinates of the overlaid
+    video
+
+    on the main video. Default value is "0" for both expressions. In case
+
+    the expression is invalid, it is set to a huge value (meaning that the
+
+    overlay will not be displayed within the output visible area).
 
     </p>
 
     </dd>'
   name: y
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: eof_action
 - description: "<dd><p>Set when the expressions for <samp>x</samp>, and <samp>y</samp>\
     \ are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"\
     compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>only evaluate expressions\
@@ -38,13 +51,13 @@ parameters:
     </dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expressions for\
     \ each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>frame</samp>\u2019\
     .\n</p>\n</dd>"
-  name: eof_action
+  name: eval
 - description: '<dd><p>See <a href="#framesync">framesync</a>.
 
     </p>
 
     </dd>'
-  name: eval
+  name: shortest
 - description: "<dd><p>Set the format for the output video.\n</p>\n<p>It accepts the\
     \ following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>yuv420</samp>\u2019\
     </dt>\n<dd><p>force YUV 4:2:0 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv420p10</samp>\u2019\
@@ -57,20 +70,20 @@ parameters:
     </dt>\n<dd><p>force RGB 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>auto</samp>\u2019\
     </dt>\n<dd><p>automatically pick format\n</p></dd>\n</dl>\n<p>Default value is\
     \ \u2018<samp>yuv420</samp>\u2019.\n</p>\n</dd>"
-  name: shortest
+  name: format
 - description: '<dd><p>See <a href="#framesync">framesync</a>.
 
     </p>
 
     </dd>'
-  name: format
+  name: repeatlast
 - description: '<dd><p>Set format of alpha of the overlaid video, it can be <var>straight</var>
     or
 
     <var>premultiplied</var>. Default is <var>straight</var>.
 
     </p></dd>'
-  name: repeatlast
+  name: alpha
 ref: https://ffmpeg.org/ffmpeg-filters.html#overlay
 source: '<h3 class="section"><a href="#toc-overlay-1">11.183 overlay</a></h3>
 

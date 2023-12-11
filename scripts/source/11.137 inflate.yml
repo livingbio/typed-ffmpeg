@@ -17,6 +17,24 @@ parameters:
 
     </p></dd>'
   name: threshold0
+- description: '<dd><p>Limit the maximum change for each plane, default is 65535.
+
+    If 0, plane will remain unchanged.
+
+    </p></dd>'
+  name: threshold1
+- description: '<dd><p>Limit the maximum change for each plane, default is 65535.
+
+    If 0, plane will remain unchanged.
+
+    </p></dd>'
+  name: threshold2
+- description: '<dd><p>Limit the maximum change for each plane, default is 65535.
+
+    If 0, plane will remain unchanged.
+
+    </p></dd>'
+  name: threshold3
 ref: https://ffmpeg.org/ffmpeg-filters.html#inflate
 source: '<h3 class="section"><a href="#toc-inflate">11.137 inflate</a></h3>
 

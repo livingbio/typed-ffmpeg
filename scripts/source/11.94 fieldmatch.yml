@@ -163,6 +163,28 @@ parameters:
 
     </dd>'
   name: y0
+- description: '<dd><p>These define an exclusion band which excludes the lines between
+    <samp>y0</samp> and
+
+    <samp>y1</samp> from being included in the field matching decision. An exclusion
+
+    band can be used to ignore subtitles, a logo, or other things that may
+
+    interfere with the matching. <samp>y0</samp> sets the starting scan line and
+
+    <samp>y1</samp> sets the ending line; all lines in between <samp>y0</samp> and
+
+    <samp>y1</samp> (including <samp>y0</samp> and <samp>y1</samp>) will be ignored.
+    Setting
+
+    <samp>y0</samp> and <samp>y1</samp> to the same value will disable the feature.
+
+    <samp>y0</samp> and <samp>y1</samp> defaults to <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: y1
 - description: '<dd><p>Set the scene change detection threshold as a percentage of
     maximum change on
 
@@ -180,7 +202,7 @@ parameters:
     </p>
 
     </dd>'
-  name: y1
+  name: scthresh
 - description: "<dd><p>When <samp>combatch</samp> is not <var>none</var>, <code>fieldmatch</code>\
     \ will take into\naccount the combed scores of matches when deciding what match\
     \ to use as the\nfinal match. Available values are:\n</p>\n<dl compact=\"compact\"\
@@ -189,7 +211,7 @@ parameters:
     \ are only used when a scene change is detected.\n</p></dd>\n<dt>\u2018<samp>full</samp>\u2019\
     </dt>\n<dd><p>Use combed scores all the time.\n</p></dd>\n</dl>\n<p>Default is\
     \ <var>sc</var>.\n</p>\n</dd>"
-  name: scthresh
+  name: combmatch
 - description: "<dd><p>Force <code>fieldmatch</code> to calculate the combed metrics\
     \ for certain matches and\nprint them. This setting is known as <samp>micout</samp>\
     \ in TFM/VFM vocabulary.\nAvailable values are:\n</p>\n<dl compact=\"compact\"\
@@ -197,7 +219,7 @@ parameters:
     <dt>\u2018<samp>pcn</samp>\u2019</dt>\n<dd><p>Force p/c/n calculations.\n</p></dd>\n\
     <dt>\u2018<samp>pcnub</samp>\u2019</dt>\n<dd><p>Force p/c/n/u/b calculations.\n\
     </p></dd>\n</dl>\n<p>Default value is <var>none</var>.\n</p>\n</dd>"
-  name: combmatch
+  name: combdbg
 - description: '<dd><p>This is the area combing threshold used for combed frame detection.
     This
 
@@ -221,7 +243,7 @@ parameters:
     </p>
 
     </dd>'
-  name: combdbg
+  name: cthresh
 - description: '<dd><p>Sets whether or not chroma is considered in the combed frame
     decision.  Only
 
@@ -241,7 +263,7 @@ parameters:
     </p>
 
     </dd>'
-  name: cthresh
+  name: chroma
 - description: '<dd><p>Respectively set the x-axis and y-axis size of the window used
     during combed
 
@@ -263,7 +285,29 @@ parameters:
     </p>
 
     </dd>'
-  name: chroma
+  name: blockx
+- description: '<dd><p>Respectively set the x-axis and y-axis size of the window used
+    during combed
+
+    frame detection. This has to do with the size of the area in which
+
+    <samp>combpel</samp> pixels are required to be detected as combed for a frame
+    to be
+
+    declared combed. See the <samp>combpel</samp> parameter description for more info.
+
+    Possible values are any number that is a power of 2 starting at 4 and going up
+
+    to 512.
+
+    </p>
+
+    <p>Default value is <code>16</code>.
+
+    </p>
+
+    </dd>'
+  name: blocky
 - description: '<dd><p>The number of combed pixels inside any of the <samp>blocky</samp>
     by
 
@@ -289,7 +333,7 @@ parameters:
     <p>Default value is <code>80</code>.
 
     </p></dd>'
-  name: blockx
+  name: combpel
 ref: https://ffmpeg.org/ffmpeg-filters.html#fieldmatch
 source: '<h3 class="section"><a href="#toc-fieldmatch">11.94 fieldmatch</a></h3>
 

@@ -126,6 +126,13 @@ parameters:
 
     </p></dd>'
   name: tint0, t0
+- description: '<dd><p>Set color tint for gray/tint vectorscope mode. By default both
+    options are zero.
+
+    This means no tint, and output will remain gray.
+
+    </p></dd>'
+  name: tint1, t1
 ref: https://ffmpeg.org/ffmpeg-filters.html#vectorscope
 source: '<h3 class="section"><a href="#toc-vectorscope">11.272 vectorscope</a></h3>
 

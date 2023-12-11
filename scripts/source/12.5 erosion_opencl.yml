@@ -18,6 +18,33 @@ parameters:
 
     </dd>'
   name: threshold0
+- description: '<dd><p>Limit the maximum change for each plane. Range is <code>[0,
+    65535]</code> and default value is <code>65535</code>.
+
+    If <code>0</code>, plane will remain unchanged.
+
+    </p>
+
+    </dd>'
+  name: threshold1
+- description: '<dd><p>Limit the maximum change for each plane. Range is <code>[0,
+    65535]</code> and default value is <code>65535</code>.
+
+    If <code>0</code>, plane will remain unchanged.
+
+    </p>
+
+    </dd>'
+  name: threshold2
+- description: '<dd><p>Limit the maximum change for each plane. Range is <code>[0,
+    65535]</code> and default value is <code>65535</code>.
+
+    If <code>0</code>, plane will remain unchanged.
+
+    </p>
+
+    </dd>'
+  name: threshold3
 - description: '<dd><p>Flag which specifies the pixel to refer to.
 
     Range is <code>[0, 255]</code> and default value is <code>255</code>, i.e. all
@@ -40,7 +67,7 @@ parameters:
     <p>6 7 8
 
     </p></dd>'
-  name: threshold1
+  name: coordinates
 ref: https://ffmpeg.org/ffmpeg-filters.html#erosion_005fopencl
 source: '<h3 class="section"><a href="#toc-erosion_005fopencl">12.5 erosion_opencl</a></h3>
 

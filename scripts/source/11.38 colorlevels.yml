@@ -14,6 +14,30 @@ parameters:
 
     </dd>'
   name: rimin
+- description: '<dd><p>Adjust red, green, blue and alpha input black point.
+
+    Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: gimin
+- description: '<dd><p>Adjust red, green, blue and alpha input black point.
+
+    Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: bimin
+- description: '<dd><p>Adjust red, green, blue and alpha input black point.
+
+    Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: aimin
 - description: '<dd><p>Adjust red, green, blue and alpha input white point.
 
     Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.
@@ -27,7 +51,49 @@ parameters:
     </p>
 
     </dd>'
-  name: gimin
+  name: rimax
+- description: '<dd><p>Adjust red, green, blue and alpha input white point.
+
+    Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.
+
+    </p>
+
+    <p>Input levels are used to lighten highlights (bright tones), darken shadows
+
+    (dark tones), change the balance of bright and dark tones.
+
+    </p>
+
+    </dd>'
+  name: gimax
+- description: '<dd><p>Adjust red, green, blue and alpha input white point.
+
+    Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.
+
+    </p>
+
+    <p>Input levels are used to lighten highlights (bright tones), darken shadows
+
+    (dark tones), change the balance of bright and dark tones.
+
+    </p>
+
+    </dd>'
+  name: bimax
+- description: '<dd><p>Adjust red, green, blue and alpha input white point.
+
+    Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.
+
+    </p>
+
+    <p>Input levels are used to lighten highlights (bright tones), darken shadows
+
+    (dark tones), change the balance of bright and dark tones.
+
+    </p>
+
+    </dd>'
+  name: aimax
 - description: '<dd><p>Adjust red, green, blue and alpha output black point.
 
     Allowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.
@@ -35,7 +101,31 @@ parameters:
     </p>
 
     </dd>'
-  name: bimin
+  name: romin
+- description: '<dd><p>Adjust red, green, blue and alpha output black point.
+
+    Allowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: gomin
+- description: '<dd><p>Adjust red, green, blue and alpha output black point.
+
+    Allowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: bomin
+- description: '<dd><p>Adjust red, green, blue and alpha output black point.
+
+    Allowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: aomin
 - description: '<dd><p>Adjust red, green, blue and alpha output white point.
 
     Allowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.
@@ -47,7 +137,43 @@ parameters:
     </p>
 
     </dd>'
-  name: aimin
+  name: romax
+- description: '<dd><p>Adjust red, green, blue and alpha output white point.
+
+    Allowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.
+
+    </p>
+
+    <p>Output levels allows manual selection of a constrained output level range.
+
+    </p>
+
+    </dd>'
+  name: gomax
+- description: '<dd><p>Adjust red, green, blue and alpha output white point.
+
+    Allowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.
+
+    </p>
+
+    <p>Output levels allows manual selection of a constrained output level range.
+
+    </p>
+
+    </dd>'
+  name: bomax
+- description: '<dd><p>Adjust red, green, blue and alpha output white point.
+
+    Allowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.
+
+    </p>
+
+    <p>Output levels allows manual selection of a constrained output level range.
+
+    </p>
+
+    </dd>'
+  name: aomax
 - description: "<dd><p>Set preserve color mode. The accepted values are:\n</p><dl\
     \ compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable\
     \ color preserving, this is default.\n</p></dd>\n<dt>\u2018<samp>lum</samp>\u2019\
@@ -58,7 +184,7 @@ parameters:
     </dt>\n<dd><p>Preserve normalized value of RGB triplet.\n</p></dd>\n<dt>\u2018\
     <samp>pwr</samp>\u2019</dt>\n<dd><p>Preserve power value of RGB triplet.\n</p></dd>\n\
     </dl>\n</dd>"
-  name: rimax
+  name: preserve
 ref: https://ffmpeg.org/ffmpeg-filters.html#colorlevels
 source: '<h3 class="section"><a href="#toc-colorlevels">11.38 colorlevels</a></h3>
 

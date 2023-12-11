@@ -107,6 +107,32 @@ parameters:
 
     </p></dd>'
   name: 0s
+- description: '<dd><p>Set sigma for 1st plane, 2nd plane or 3rd plane. Default is
+    32767.
+
+    Valid range is from 0 to 32767.
+
+    This options controls weight for each pixel in radius defined by size.
+
+    Default value means every pixel have same weight.
+
+    Setting this option to 0 effectively disables filtering.
+
+    </p></dd>'
+  name: 1s
+- description: '<dd><p>Set sigma for 1st plane, 2nd plane or 3rd plane. Default is
+    32767.
+
+    Valid range is from 0 to 32767.
+
+    This options controls weight for each pixel in radius defined by size.
+
+    Default value means every pixel have same weight.
+
+    Setting this option to 0 effectively disables filtering.
+
+    </p></dd>'
+  name: 2s
 ref: https://ffmpeg.org/ffmpeg-filters.html#atadenoise
 source: '<h3 class="section"><a href="#toc-atadenoise">11.6 atadenoise</a></h3>
 

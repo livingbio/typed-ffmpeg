@@ -57,6 +57,39 @@ parameters:
 
     </dd>'
   name: rc
+- description: '<dd><p>Specify the red, green, blue and alpha contrast. Default values
+    are <code>40</code>,
+
+    <code>160</code>, <code>80</code> and <code>255</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: gc
+- description: '<dd><p>Specify the red, green, blue and alpha contrast. Default values
+    are <code>40</code>,
+
+    <code>160</code>, <code>80</code> and <code>255</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: bc
+- description: '<dd><p>Specify the red, green, blue and alpha contrast. Default values
+    are <code>40</code>,
+
+    <code>160</code>, <code>80</code> and <code>255</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: ac
 - description: '<dd><p>Specify the red, green, blue and alpha fade. Default values
     are <code>15</code>,
 
@@ -67,7 +100,40 @@ parameters:
     </p>
 
     </dd>'
-  name: gc
+  name: rf
+- description: '<dd><p>Specify the red, green, blue and alpha fade. Default values
+    are <code>15</code>,
+
+    <code>10</code>, <code>5</code> and <code>5</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: gf
+- description: '<dd><p>Specify the red, green, blue and alpha fade. Default values
+    are <code>15</code>,
+
+    <code>10</code>, <code>5</code> and <code>5</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: bf
+- description: '<dd><p>Specify the red, green, blue and alpha fade. Default values
+    are <code>15</code>,
+
+    <code>10</code>, <code>5</code> and <code>5</code>.
+
+    Allowed range is <code>[0, 255]</code>.
+
+    </p>
+
+    </dd>'
+  name: af
 - description: '<dd><p>Set the zoom factor. Default value is <code>1</code>. Allowed
     range is <code>[0, 10]</code>.
 
@@ -77,7 +143,7 @@ parameters:
     </p>
 
     </dd>'
-  name: bc
+  name: zoom
 - description: "<dd><p>Set the vectorscope drawing mode.\n</p>\n<p>Available values\
     \ are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n\
     <dd><p>Draw dot for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>line</samp>\u2019\
@@ -85,26 +151,26 @@ parameters:
     <samp>aaline</samp>\u2019</dt>\n<dd><p>Draw anti-aliased line between previous\
     \ and current sample.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>dot</samp>\u2019\
     .\n</p>\n</dd>"
-  name: ac
+  name: draw
 - description: "<dd><p>Specify amplitude scale of audio samples.\n</p>\n<p>Available\
     \ values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019\
     </dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square\
     \ root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n\
     </p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p></dd>\n\
     </dl>\n</dd>"
-  name: rf
+  name: scale
 - description: '<dd><p>Swap left channel axis with right channel axis.
 
     </p>
 
     </dd>'
-  name: gf
+  name: swap
 - description: "<dd><p>Mirror axis.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019\
     </dt>\n<dd><p>No mirror.\n</p>\n</dd>\n<dt>\u2018<samp>x</samp>\u2019</dt>\n<dd><p>Mirror\
     \ only x axis.\n</p>\n</dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Mirror\
     \ only y axis.\n</p>\n</dd>\n<dt>\u2018<samp>xy</samp>\u2019</dt>\n<dd><p>Mirror\
     \ both axis.\n</p></dd>\n</dl>\n</dd>"
-  name: bf
+  name: mirror
 ref: https://ffmpeg.org/ffmpeg-filters.html#avectorscope
 source: '<h3 class="section"><a href="#toc-avectorscope">18.7 avectorscope</a></h3>
 

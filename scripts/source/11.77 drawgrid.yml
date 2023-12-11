@@ -19,6 +19,13 @@ parameters:
 
     </dd>'
   name: x
+- description: '<dd><p>The expressions which specify the coordinates of some point
+    of grid intersection (meant to configure offset). Both default to 0.
+
+    </p>
+
+    </dd>'
+  name: y
 - description: '<dd><p>The expressions which specify the width and height of the grid
     cell, if 0 they are interpreted as the
 
@@ -29,7 +36,18 @@ parameters:
     </p>
 
     </dd>'
-  name: y
+  name: width, w
+- description: '<dd><p>The expressions which specify the width and height of the grid
+    cell, if 0 they are interpreted as the
+
+    input width and height, respectively, minus <code>thickness</code>, so image gets
+
+    framed. Default to 0.
+
+    </p>
+
+    </dd>'
+  name: height, h
 - description: '<dd><p>Specify the color of the grid. For the general syntax of this
     option,
 
@@ -43,7 +61,7 @@ parameters:
     </p>
 
     </dd>'
-  name: width, w
+  name: color, c
 - description: '<dd><p>The expression which sets the thickness of the grid line. Default
     value is <code>1</code>.
 
@@ -54,12 +72,12 @@ parameters:
     </p>
 
     </dd>'
-  name: height, h
+  name: thickness, t
 - description: "<dd><p>Applicable if the input has alpha. With <code>1</code> the\
     \ pixels of the painted grid\nwill overwrite the video\u2019s color and alpha\
     \ pixels.\nDefault is <code>0</code>, which composites the grid onto the input,\
     \ leaving the video\u2019s alpha intact.\n</p></dd>"
-  name: color, c
+  name: replace
 ref: https://ffmpeg.org/ffmpeg-filters.html#drawgrid
 source: '<h3 class="section"><a href="#toc-drawgrid">11.77 drawgrid</a></h3>
 
