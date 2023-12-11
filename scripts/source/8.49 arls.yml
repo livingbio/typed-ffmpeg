@@ -1,0 +1,259 @@
+description: '8.49 arls
+
+  Apply Recursive Least Squares algorithm to the first audio stream using the second
+  audio stream.
+
+
+  This adaptive filter is used to mimic a desired filter by recursively finding the
+  filter coefficients that
+
+  relate to producing the minimal weighted linear least squares cost function of the
+  error signal (difference
+
+  between the desired, 2nd input audio stream and the actual signal, the 1st input
+  audio stream).
+
+
+  A description of the accepted options follows.'
+name: arls
+parameters:
+- description: '<dd><p>Set the filter order.
+
+    </p>
+
+    </dd>'
+  name: order
+- description: '<dd><p>Set the forgetting factor.
+
+    </p>
+
+    </dd>'
+  name: lambda
+- description: '<dd><p>Set the coefficient to initialize internal covariance matrix.
+
+    </p>
+
+    </dd>'
+  name: delta
+- description: '<dd><p>Set the filter output samples. It accepts the following values:
+
+    </p><dl compact="compact">
+
+    <dt><samp>i</samp></dt>
+
+    <dd><p>Pass the 1st input.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>d</samp></dt>
+
+    <dd><p>Pass the 2nd input.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>o</samp></dt>
+
+    <dd><p>Pass difference between desired, 2nd input and error signal estimate.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>n</samp></dt>
+
+    <dd><p>Pass difference between input, 1st input and error signal estimate.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>e</samp></dt>
+
+    <dd><p>Pass error signal estimated samples.
+
+    </p>
+
+    <p>Default value is <var>o</var>.
+
+    </p></dd>
+
+    </dl>
+
+    </dd>'
+  name: out_mode
+- description: '<dd><p>Set which precision to use when processing samples.
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>auto</samp></dt>
+
+    <dd><p>Auto pick internal sample format depending on other filters.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>float</samp></dt>
+
+    <dd><p>Always use single-floating point precision sample format.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>double</samp></dt>
+
+    <dd><p>Always use double-floating point precision sample format.
+
+    </p></dd>
+
+    </dl>
+
+    </dd>'
+  name: precision
+ref: https://ffmpeg.org/ffmpeg-filters.html#arls
+source: '<h3 class="section"><a href="#toc-arls">8.49 arls</a></h3>
+
+  <p>Apply Recursive Least Squares algorithm to the first audio stream using the second
+  audio stream.
+
+  </p>
+
+  <p>This adaptive filter is used to mimic a desired filter by recursively finding
+  the filter coefficients that
+
+  relate to producing the minimal weighted linear least squares cost function of the
+  error signal (difference
+
+  between the desired, 2nd input audio stream and the actual signal, the 1st input
+  audio stream).
+
+  </p>
+
+  <p>A description of the accepted options follows.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>order</samp></dt>
+
+  <dd><p>Set the filter order.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>lambda</samp></dt>
+
+  <dd><p>Set the forgetting factor.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>delta</samp></dt>
+
+  <dd><p>Set the coefficient to initialize internal covariance matrix.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>out_mode</samp></dt>
+
+  <dd><p>Set the filter output samples. It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt><samp>i</samp></dt>
+
+  <dd><p>Pass the 1st input.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>d</samp></dt>
+
+  <dd><p>Pass the 2nd input.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>o</samp></dt>
+
+  <dd><p>Pass difference between desired, 2nd input and error signal estimate.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>n</samp></dt>
+
+  <dd><p>Pass difference between input, 1st input and error signal estimate.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>e</samp></dt>
+
+  <dd><p>Pass error signal estimated samples.
+
+  </p>
+
+  <p>Default value is <var>o</var>.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>precision</samp></dt>
+
+  <dd><p>Set which precision to use when processing samples.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>auto</samp></dt>
+
+  <dd><p>Auto pick internal sample format depending on other filters.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>float</samp></dt>
+
+  <dd><p>Always use single-floating point precision sample format.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>double</samp></dt>
+
+  <dd><p>Always use double-floating point precision sample format.
+
+  </p></dd>
+
+  </dl>
+
+  </dd>
+
+  </dl>
+
+
+  '

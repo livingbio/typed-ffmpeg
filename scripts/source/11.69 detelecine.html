@@ -1,0 +1,31 @@
+<h3 class="section"><a href="#toc-detelecine">11.69 detelecine</a></h3>
+
+<p>Apply an exact inverse of the telecine operation. It requires a predefined
+pattern specified using the pattern option which must be the same as that passed
+to the telecine filter.
+</p>
+<p>This filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>first_field</samp></dt>
+<dd><dl compact="compact">
+<dt>&lsquo;<samp>top, t</samp>&rsquo;</dt>
+<dd><p>top field first
+</p></dd>
+<dt>&lsquo;<samp>bottom, b</samp>&rsquo;</dt>
+<dd><p>bottom field first
+The default value is <code>top</code>.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>pattern</samp></dt>
+<dd><p>A string of numbers representing the pulldown pattern you wish to apply.
+The default value is <code>23</code>.
+</p>
+</dd>
+<dt><samp>start_frame</samp></dt>
+<dd><p>A number representing position of the first frame with respect to the telecine
+pattern. This is to be used if the stream is cut. The default value is <code>0</code>.
+</p></dd>
+</dl>

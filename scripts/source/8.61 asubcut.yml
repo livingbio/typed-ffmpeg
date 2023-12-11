@@ -1,0 +1,87 @@
+description: '8.61 asubcut
+
+  Cut subwoofer frequencies.
+
+
+  This filter allows to set custom, steeper
+
+  roll off than highpass filter, and thus is able to more attenuate
+
+  frequency content in stop-band.
+
+
+  The filter accepts the following options:'
+name: asubcut
+parameters:
+- description: '<dd><p>Set cutoff frequency in Hertz. Allowed range is 2 to 200.
+
+    Default value is 20.
+
+    </p>
+
+    </dd>'
+  name: cutoff
+- description: '<dd><p>Set filter order. Available values are from 3 to 20.
+
+    Default value is 10.
+
+    </p>
+
+    </dd>'
+  name: order
+- description: '<dd><p>Set input gain level. Allowed range is from 0 to 1. Default
+    value is 1.
+
+    </p></dd>'
+  name: level
+ref: https://ffmpeg.org/ffmpeg-filters.html#asubcut
+source: '<h3 class="section"><a href="#toc-asubcut">8.61 asubcut</a></h3>
+
+  <p>Cut subwoofer frequencies.
+
+  </p>
+
+  <p>This filter allows to set custom, steeper
+
+  roll off than highpass filter, and thus is able to more attenuate
+
+  frequency content in stop-band.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>cutoff</samp></dt>
+
+  <dd><p>Set cutoff frequency in Hertz. Allowed range is 2 to 200.
+
+  Default value is 20.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>order</samp></dt>
+
+  <dd><p>Set filter order. Available values are from 3 to 20.
+
+  Default value is 10.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>level</samp></dt>
+
+  <dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

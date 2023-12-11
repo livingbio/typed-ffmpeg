@@ -1,0 +1,76 @@
+description: '11.152 lumakey
+
+  Turn certain luma values into transparency.
+
+
+  The filter accepts the following options:'
+name: lumakey
+parameters:
+- description: '<dd><p>Set the luma which will be used as base for transparency.
+
+    Default value is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: threshold
+- description: '<dd><p>Set the range of luma values to be keyed out.
+
+    Default value is <code>0.01</code>.
+
+    </p>
+
+    </dd>'
+  name: tolerance
+- description: '<dd><p>Set the range of softness. Default value is <code>0</code>.
+
+    Use this to control gradual transition from zero to full transparency.
+
+    </p></dd>'
+  name: softness
+ref: https://ffmpeg.org/ffmpeg-filters.html#lumakey
+source: '<h3 class="section"><a href="#toc-lumakey">11.152 lumakey</a></h3>
+
+
+  <p>Turn certain luma values into transparency.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>threshold</samp></dt>
+
+  <dd><p>Set the luma which will be used as base for transparency.
+
+  Default value is <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>tolerance</samp></dt>
+
+  <dd><p>Set the range of luma values to be keyed out.
+
+  Default value is <code>0.01</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>softness</samp></dt>
+
+  <dd><p>Set the range of softness. Default value is <code>0</code>.
+
+  Use this to control gradual transition from zero to full transparency.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

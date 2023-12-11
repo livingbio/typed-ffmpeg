@@ -1,0 +1,172 @@
+description: '14.5 color_vulkan
+
+  Video source that creates a Vulkan frame of a solid color.
+
+  Useful for benchmarking, or overlaying.
+
+
+  It accepts the following parameters:'
+name: color_vulkan
+parameters:
+- description: '<dd><p>The color to use. Either a name, or a hexadecimal value.
+
+    The default value is <code>black</code>.
+
+    </p>
+
+    </dd>'
+  name: color
+- description: '<dd><p>The size of the output frame. Default value is <code>1920x1080</code>.
+
+    </p>
+
+    </dd>'
+  name: size
+- description: '<dd><p>The framerate to output at. Default value is <code>60</code>
+    frames per second.
+
+    </p>
+
+    </dd>'
+  name: rate
+- description: '<dd><p>The video duration. Default value is <code>-0.000001</code>.
+
+    </p>
+
+    </dd>'
+  name: duration
+- description: '<dd><p>The video signal aspect ratio. Default value is <code>1/1</code>.
+
+    </p>
+
+    </dd>'
+  name: sar
+- description: '<dd><p>The pixel format of the output Vulkan frames. Default value
+    is <code>yuv444p</code>.
+
+    </p>
+
+    </dd>'
+  name: format
+- description: "<dd><p>Set the output YCbCr sample range.\n</p>\n<p>This allows the\
+    \ autodetected value to be overridden as well as allows forcing\na specific value\
+    \ used for the output and encoder. If not specified, the\nrange depends on the\
+    \ pixel format. Possible values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto/unknown</samp>\u2019\
+    </dt>\n<dd><p>Choose automatically.\n</p>\n</dd>\n<dt>\u2018<samp>jpeg/full/pc</samp>\u2019\
+    </dt>\n<dd><p>Set full range (0-255 in case of 8-bit luma).\n</p>\n</dd>\n<dt>\u2018\
+    <samp>mpeg/limited/tv</samp>\u2019</dt>\n<dd><p>Set \"MPEG\" range (16-235 in\
+    \ case of 8-bit luma).\n</p></dd>\n</dl>\n</dd>"
+  name: out_range
+ref: https://ffmpeg.org/ffmpeg-filters.html#color_005fvulkan
+source: '<h3 class="section"><a href="#toc-color_005fvulkan">14.5 color_vulkan</a></h3>
+
+
+  <p>Video source that creates a Vulkan frame of a solid color.
+
+  Useful for benchmarking, or overlaying.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>color</samp></dt>
+
+  <dd><p>The color to use. Either a name, or a hexadecimal value.
+
+  The default value is <code>black</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>size</samp></dt>
+
+  <dd><p>The size of the output frame. Default value is <code>1920x1080</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rate</samp></dt>
+
+  <dd><p>The framerate to output at. Default value is <code>60</code> frames per second.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>duration</samp></dt>
+
+  <dd><p>The video duration. Default value is <code>-0.000001</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sar</samp></dt>
+
+  <dd><p>The video signal aspect ratio. Default value is <code>1/1</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>format</samp></dt>
+
+  <dd><p>The pixel format of the output Vulkan frames. Default value is <code>yuv444p</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>out_range</samp></dt>
+
+  <dd><p>Set the output YCbCr sample range.
+
+  </p>
+
+  <p>This allows the autodetected value to be overridden as well as allows forcing
+
+  a specific value used for the output and encoder. If not specified, the
+
+  range depends on the pixel format. Possible values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>auto/unknown</samp>&rsquo;</dt>
+
+  <dd><p>Choose automatically.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>jpeg/full/pc</samp>&rsquo;</dt>
+
+  <dd><p>Set full range (0-255 in case of 8-bit luma).
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>mpeg/limited/tv</samp>&rsquo;</dt>
+
+  <dd><p>Set &quot;MPEG&quot; range (16-235 in case of 8-bit luma).
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  </dl>
+
+
+  '

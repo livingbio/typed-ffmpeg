@@ -1,0 +1,147 @@
+description: '11.68 despill
+
+  Remove unwanted contamination of foreground colors, caused by reflected color of
+
+  greenscreen or bluescreen.
+
+
+  This filter accepts the following options:'
+name: despill
+parameters:
+- description: '<dd><p>Set what type of despill to use.
+
+    </p>
+
+    </dd>'
+  name: type
+- description: '<dd><p>Set how spillmap will be generated.
+
+    </p>
+
+    </dd>'
+  name: mix
+- description: '<dd><p>Set how much to get rid of still remaining spill.
+
+    </p>
+
+    </dd>'
+  name: expand
+- description: '<dd><p>Controls amount of red in spill area.
+
+    </p>
+
+    </dd>'
+  name: red
+- description: '<dd><p>Controls amount of green in spill area.
+
+    Should be -1 for greenscreen.
+
+    </p>
+
+    </dd>'
+  name: green
+- description: '<dd><p>Controls amount of blue in spill area.
+
+    Should be -1 for bluescreen.
+
+    </p>
+
+    </dd>'
+  name: blue
+- description: '<dd><p>Controls brightness of spill area, preserving colors.
+
+    </p>
+
+    </dd>'
+  name: brightness
+- description: '<dd><p>Modify alpha from generated spillmap.
+
+    </p></dd>'
+  name: alpha
+ref: https://ffmpeg.org/ffmpeg-filters.html#despill
+source: '<h3 class="section"><a href="#toc-despill">11.68 despill</a></h3>
+
+
+  <p>Remove unwanted contamination of foreground colors, caused by reflected color
+  of
+
+  greenscreen or bluescreen.
+
+  </p>
+
+  <p>This filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>type</samp></dt>
+
+  <dd><p>Set what type of despill to use.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mix</samp></dt>
+
+  <dd><p>Set how spillmap will be generated.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>expand</samp></dt>
+
+  <dd><p>Set how much to get rid of still remaining spill.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>red</samp></dt>
+
+  <dd><p>Controls amount of red in spill area.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>green</samp></dt>
+
+  <dd><p>Controls amount of green in spill area.
+
+  Should be -1 for greenscreen.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>blue</samp></dt>
+
+  <dd><p>Controls amount of blue in spill area.
+
+  Should be -1 for bluescreen.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>brightness</samp></dt>
+
+  <dd><p>Controls brightness of spill area, preserving colors.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>alpha</samp></dt>
+
+  <dd><p>Modify alpha from generated spillmap.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

@@ -1,0 +1,45 @@
+description: '11.82 epx
+
+  Apply the EPX magnification filter which is designed for pixel art.
+
+
+  It accepts the following option:'
+name: epx
+parameters:
+- description: '<dd><p>Set the scaling dimension: <code>2</code> for <code>2xEPX</code>,
+    <code>3</code> for
+
+    <code>3xEPX</code>.
+
+    Default is <code>3</code>.
+
+    </p></dd>'
+  name: n
+ref: https://ffmpeg.org/ffmpeg-filters.html#epx
+source: '<h3 class="section"><a href="#toc-epx">11.82 epx</a></h3>
+
+  <p>Apply the EPX magnification filter which is designed for pixel art.
+
+  </p>
+
+  <p>It accepts the following option:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>n</samp></dt>
+
+  <dd><p>Set the scaling dimension: <code>2</code> for <code>2xEPX</code>, <code>3</code>
+  for
+
+  <code>3xEPX</code>.
+
+  Default is <code>3</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

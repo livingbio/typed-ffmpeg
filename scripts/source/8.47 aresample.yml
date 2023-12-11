@@ -1,0 +1,69 @@
+description: '8.47 aresample
+
+  Resample the input audio to the specified parameters, using the
+
+  libswresample library. If none are specified then the filter will
+
+  automatically convert between its input and output.
+
+
+  This filter is also able to stretch/squeeze the audio data to make it match
+
+  the timestamps or to inject silence / cut out audio to make it match the
+
+  timestamps, do a combination of both or do neither.
+
+
+  The filter accepts the syntax
+
+  [sample_rate:]resampler_options, where sample_rate
+
+  expresses a sample rate and resampler_options is a list of
+
+  key=value pairs, separated by ":". See the
+
+  (ffmpeg-resampler)"Resampler Options" section in the
+
+  ffmpeg-resampler(1) manual
+
+  for the complete list of supported options.'
+name: aresample
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#aresample
+source: '<h3 class="section"><a href="#toc-aresample-1">8.47 aresample</a></h3>
+
+
+  <p>Resample the input audio to the specified parameters, using the
+
+  libswresample library. If none are specified then the filter will
+
+  automatically convert between its input and output.
+
+  </p>
+
+  <p>This filter is also able to stretch/squeeze the audio data to make it match
+
+  the timestamps or to inject silence / cut out audio to make it match the
+
+  timestamps, do a combination of both or do neither.
+
+  </p>
+
+  <p>The filter accepts the syntax
+
+  [<var>sample_rate</var>:]<var>resampler_options</var>, where <var>sample_rate</var>
+
+  expresses a sample rate and <var>resampler_options</var> is a list of
+
+  <var>key</var>=<var>value</var> pairs, separated by &quot;:&quot;. See the
+
+  <a href="ffmpeg-resampler.html#Resampler-Options">(ffmpeg-resampler)&quot;Resampler
+  Options&quot; section in the
+
+  ffmpeg-resampler(1) manual</a>
+
+  for the complete list of supported options.
+
+  </p>
+
+  '

@@ -1,0 +1,307 @@
+description: '11.246 subtitles
+
+  Draw subtitles on top of input video using the libass library.
+
+
+  To enable compilation of this filter you need to configure FFmpeg with
+
+  --enable-libass. This filter also requires a build with libavcodec and
+
+  libavformat to convert the passed subtitles file to ASS (Advanced Substation
+
+  Alpha) subtitles format.
+
+
+  The filter accepts the following options:
+
+
+
+  If the first key is not specified, it is assumed that the first value
+
+  specifies the filename.
+
+
+  For example, to render the file sub.srt on top of the input
+
+  video, use the command:
+
+
+  subtitles=sub.srt
+
+
+  which is equivalent to:
+
+
+  subtitles=filename=sub.srt
+
+
+  To render the default subtitles stream from file video.mkv, use:
+
+
+  subtitles=video.mkv
+
+
+  To render the second subtitles stream from that file, use:
+
+
+  subtitles=video.mkv:si=1
+
+
+  To make the subtitles stream from sub.srt appear in 80% transparent blue
+
+  DejaVu Serif, use:
+
+
+  subtitles=sub.srt:force_style=''Fontname=DejaVu Serif,PrimaryColour=&HCCFF0000'''
+name: subtitles
+parameters:
+- description: '<dd><p>Set the filename of the subtitle file to read. It must be specified.
+
+    </p>
+
+    </dd>'
+  name: filename, f
+- description: '<dd><p>Specify the size of the original video, the video for which
+    the ASS file
+
+    was composed. For the syntax of this option, check the
+
+    <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)"Video size" section
+    in the ffmpeg-utils manual</a>.
+
+    Due to a misdesign in ASS aspect ratio arithmetic, this is necessary to
+
+    correctly scale the fonts if the aspect ratio has been changed.
+
+    </p>
+
+    </dd>'
+  name: original_size
+- description: '<dd><p>Set a directory path containing fonts that can be used by the
+    filter.
+
+    These fonts will be used in addition to whatever the font provider uses.
+
+    </p>
+
+    </dd>'
+  name: fontsdir
+- description: '<dd><p>Process alpha channel, by default alpha channel is untouched.
+
+    </p>
+
+    </dd>'
+  name: alpha
+- description: '<dd><p>Set subtitles input character encoding. <code>subtitles</code>
+    filter only. Only
+
+    useful if not UTF-8.
+
+    </p>
+
+    </dd>'
+  name: charenc
+- description: '<dd><p>Set subtitles stream index. <code>subtitles</code> filter only.
+
+    </p>
+
+    </dd>'
+  name: stream_index, si
+- description: '<dd><p>Override default style or script info parameters of the subtitles.
+    It accepts a
+
+    string containing ASS style format <code>KEY=VALUE</code> couples separated by
+    ",".
+
+    </p>
+
+    </dd>'
+  name: force_style
+- description: '<dd><p>Break lines according to the Unicode Line Breaking Algorithm.
+    Availability requires
+
+    at least libass release 0.17.0 (or LIBASS_VERSION 0x01600010), <em>and</em> libass
+    must
+
+    have been built with libunibreak.
+
+    </p>
+
+    <p>The option is enabled by default except for native ASS.
+
+    </p></dd>'
+  name: wrap_unicode
+ref: https://ffmpeg.org/ffmpeg-filters.html#subtitles
+source: '<h3 class="section"><a href="#toc-subtitles-1">11.246 subtitles</a></h3>
+
+
+  <p>Draw subtitles on top of input video using the libass library.
+
+  </p>
+
+  <p>To enable compilation of this filter you need to configure FFmpeg with
+
+  <code>--enable-libass</code>. This filter also requires a build with libavcodec
+  and
+
+  libavformat to convert the passed subtitles file to ASS (Advanced Substation
+
+  Alpha) subtitles format.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>filename, f</samp></dt>
+
+  <dd><p>Set the filename of the subtitle file to read. It must be specified.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>original_size</samp></dt>
+
+  <dd><p>Specify the size of the original video, the video for which the ASS file
+
+  was composed. For the syntax of this option, check the
+
+  <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot;
+  section in the ffmpeg-utils manual</a>.
+
+  Due to a misdesign in ASS aspect ratio arithmetic, this is necessary to
+
+  correctly scale the fonts if the aspect ratio has been changed.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fontsdir</samp></dt>
+
+  <dd><p>Set a directory path containing fonts that can be used by the filter.
+
+  These fonts will be used in addition to whatever the font provider uses.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>alpha</samp></dt>
+
+  <dd><p>Process alpha channel, by default alpha channel is untouched.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>charenc</samp></dt>
+
+  <dd><p>Set subtitles input character encoding. <code>subtitles</code> filter only.
+  Only
+
+  useful if not UTF-8.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>stream_index, si</samp></dt>
+
+  <dd><p>Set subtitles stream index. <code>subtitles</code> filter only.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>force_style</samp></dt>
+
+  <dd><p>Override default style or script info parameters of the subtitles. It accepts
+  a
+
+  string containing ASS style format <code>KEY=VALUE</code> couples separated by &quot;,&quot;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>wrap_unicode</samp></dt>
+
+  <dd><p>Break lines according to the Unicode Line Breaking Algorithm. Availability
+  requires
+
+  at least libass release 0.17.0 (or LIBASS_VERSION 0x01600010), <em>and</em> libass
+  must
+
+  have been built with libunibreak.
+
+  </p>
+
+  <p>The option is enabled by default except for native ASS.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>If the first key is not specified, it is assumed that the first value
+
+  specifies the <samp>filename</samp>.
+
+  </p>
+
+  <p>For example, to render the file <samp>sub.srt</samp> on top of the input
+
+  video, use the command:
+
+  </p><div class="example">
+
+  <pre class="example">subtitles=sub.srt
+
+  </pre></div>
+
+
+  <p>which is equivalent to:
+
+  </p><div class="example">
+
+  <pre class="example">subtitles=filename=sub.srt
+
+  </pre></div>
+
+
+  <p>To render the default subtitles stream from file <samp>video.mkv</samp>, use:
+
+  </p><div class="example">
+
+  <pre class="example">subtitles=video.mkv
+
+  </pre></div>
+
+
+  <p>To render the second subtitles stream from that file, use:
+
+  </p><div class="example">
+
+  <pre class="example">subtitles=video.mkv:si=1
+
+  </pre></div>
+
+
+  <p>To make the subtitles stream from <samp>sub.srt</samp> appear in 80% transparent
+  blue
+
+  <code>DejaVu Serif</code>, use:
+
+  </p><div class="example">
+
+  <pre class="example">subtitles=sub.srt:force_style=''Fontname=DejaVu Serif,PrimaryColour=&amp;HCCFF0000''
+
+  </pre></div>
+
+
+  '

@@ -1,0 +1,197 @@
+description: '8.57 aspectralstats
+
+  Display frequency domain statistical information about the audio channels.
+
+  Statistics are calculated and stored as metadata for each audio channel and for
+  each audio frame.
+
+
+  It accepts the following option:
+
+
+  A list of each metadata key follows:'
+name: aspectralstats
+parameters:
+- description: '<dd><p>Set the window length in samples. Default value is 2048.
+
+    Allowed range is from 32 to 65536.
+
+    </p>
+
+    </dd>'
+  name: win_size
+- description: "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n\
+    <dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019\
+    </dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>"
+  name: win_func
+- description: '<dd><p>Set window overlap. Allowed range is from <code>0</code>
+
+    to <code>1</code>. Default value is <code>0.5</code>.
+
+    </p>
+
+    </dd>'
+  name: overlap
+- description: '<dd><p>Select the parameters which are measured. The metadata keys
+    can
+
+    be used as flags, default is <samp>all</samp> which measures everything.
+
+    <samp>none</samp> disables all measurement.
+
+    </p></dd>'
+  name: measure
+ref: https://ffmpeg.org/ffmpeg-filters.html#aspectralstats
+source: '<h3 class="section"><a href="#toc-aspectralstats">8.57 aspectralstats</a></h3>
+
+
+  <p>Display frequency domain statistical information about the audio channels.
+
+  Statistics are calculated and stored as metadata for each audio channel and for
+  each audio frame.
+
+  </p>
+
+  <p>It accepts the following option:
+
+  </p><dl compact="compact">
+
+  <dt><samp>win_size</samp></dt>
+
+  <dd><p>Set the window length in samples. Default value is 2048.
+
+  Allowed range is from 32 to 65536.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>win_func</samp></dt>
+
+  <dd><p>Set window function.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>rect</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bartlett</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>hann, hanning</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>hamming</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>blackman</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>welch</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>flattop</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bharris</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bnuttall</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bhann</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>sine</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>nuttall</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>lanczos</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>gauss</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>tukey</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>dolph</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>cauchy</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>parzen</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>poisson</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bohman</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>kaiser</samp>&rsquo;</dt>
+
+  </dl>
+
+  <p>Default is <code>hann</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>overlap</samp></dt>
+
+  <dd><p>Set window overlap. Allowed range is from <code>0</code>
+
+  to <code>1</code>. Default value is <code>0.5</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>measure</samp></dt>
+
+  <dd><p>Select the parameters which are measured. The metadata keys can
+
+  be used as flags, default is <samp>all</samp> which measures everything.
+
+  <samp>none</samp> disables all measurement.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>A list of each metadata key follows:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>mean</samp></dt>
+
+  <dt><samp>variance</samp></dt>
+
+  <dt><samp>centroid</samp></dt>
+
+  <dt><samp>spread</samp></dt>
+
+  <dt><samp>skewness</samp></dt>
+
+  <dt><samp>kurtosis</samp></dt>
+
+  <dt><samp>entropy</samp></dt>
+
+  <dt><samp>flatness</samp></dt>
+
+  <dt><samp>crest</samp></dt>
+
+  <dt><samp>flux</samp></dt>
+
+  <dt><samp>slope</samp></dt>
+
+  <dt><samp>decrease</samp></dt>
+
+  <dt><samp>rolloff</samp></dt>
+
+  </dl>
+
+
+  '

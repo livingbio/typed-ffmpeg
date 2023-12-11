@@ -1,0 +1,313 @@
+description: '11.186 pad
+
+  Add paddings to the input image, and place the original input at the
+
+  provided x, y coordinates.
+
+
+  It accepts the following parameters:
+
+
+
+  The value for the width, height, x, and y
+
+  options are expressions containing the following constants:'
+name: pad
+parameters:
+- description: '<dd><p>Specify an expression for the size of the output image with
+    the
+
+    paddings added. If the value for <var>width</var> or <var>height</var> is 0, the
+
+    corresponding input size is used for the output.
+
+    </p>
+
+    <p>The <var>width</var> expression can reference the value set by the
+
+    <var>height</var> expression, and vice versa.
+
+    </p>
+
+    <p>The default value of <var>width</var> and <var>height</var> is 0.
+
+    </p>
+
+    </dd>'
+  name: width, w
+- description: "<dd><p>Specify the offsets to place the input image at within the\
+    \ padded area,\nwith respect to the top/left border of the output image.\n</p>\n\
+    <p>The <var>x</var> expression can reference the value set by the <var>y</var>\n\
+    expression, and vice versa.\n</p>\n<p>The default value of <var>x</var> and <var>y</var>\
+    \ is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number,\
+    \ they\u2019ll be changed\nso the input image is centered on the padded area.\n\
+    </p>\n</dd>"
+  name: height, h
+- description: '<dd><p>Specify the color of the padded area. For the syntax of this
+    option,
+
+    check the <a href="ffmpeg-utils.html#color-syntax">(ffmpeg-utils)"Color" section
+    in the ffmpeg-utils
+
+    manual</a>.
+
+    </p>
+
+    <p>The default value of <var>color</var> is "black".
+
+    </p>
+
+    </dd>'
+  name: x
+- description: "<dd><p>Specify when to evaluate  <var>width</var>, <var>height</var>,\
+    \ <var>x</var> and <var>y</var> expression.\n</p>\n<p>It accepts the following\
+    \ values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n\
+    <dd><p>Only evaluate expressions once during the filter initialization or when\n\
+    a command is processed.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n\
+    <dd><p>Evaluate expressions for each incoming frame.\n</p>\n</dd>\n</dl>\n<p>Default\
+    \ value is \u2018<samp>init</samp>\u2019.\n</p>\n</dd>"
+  name: y
+- description: '<dd><p>Pad to aspect instead to a resolution.
+
+    </p>
+
+    </dd>'
+  name: color
+ref: https://ffmpeg.org/ffmpeg-filters.html#pad
+source: '<h3 class="section"><a href="#toc-pad-1">11.186 pad</a></h3>
+
+
+  <p>Add paddings to the input image, and place the original input at the
+
+  provided <var>x</var>, <var>y</var> coordinates.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>width, w</samp></dt>
+
+  <dt><samp>height, h</samp></dt>
+
+  <dd><p>Specify an expression for the size of the output image with the
+
+  paddings added. If the value for <var>width</var> or <var>height</var> is 0, the
+
+  corresponding input size is used for the output.
+
+  </p>
+
+  <p>The <var>width</var> expression can reference the value set by the
+
+  <var>height</var> expression, and vice versa.
+
+  </p>
+
+  <p>The default value of <var>width</var> and <var>height</var> is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>x</samp></dt>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>Specify the offsets to place the input image at within the padded area,
+
+  with respect to the top/left border of the output image.
+
+  </p>
+
+  <p>The <var>x</var> expression can reference the value set by the <var>y</var>
+
+  expression, and vice versa.
+
+  </p>
+
+  <p>The default value of <var>x</var> and <var>y</var> is 0.
+
+  </p>
+
+  <p>If <var>x</var> or <var>y</var> evaluate to a negative number, they&rsquo;ll
+  be changed
+
+  so the input image is centered on the padded area.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>color</samp></dt>
+
+  <dd><p>Specify the color of the padded area. For the syntax of this option,
+
+  check the <a href="ffmpeg-utils.html#color-syntax">(ffmpeg-utils)&quot;Color&quot;
+  section in the ffmpeg-utils
+
+  manual</a>.
+
+  </p>
+
+  <p>The default value of <var>color</var> is &quot;black&quot;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>eval</samp></dt>
+
+  <dd><p>Specify when to evaluate  <var>width</var>, <var>height</var>, <var>x</var>
+  and <var>y</var> expression.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>init</samp>&rsquo;</dt>
+
+  <dd><p>Only evaluate expressions once during the filter initialization or when
+
+  a command is processed.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>frame</samp>&rsquo;</dt>
+
+  <dd><p>Evaluate expressions for each incoming frame.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  <p>Default value is &lsquo;<samp>init</samp>&rsquo;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>aspect</samp></dt>
+
+  <dd><p>Pad to aspect instead to a resolution.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  <p>The value for the <var>width</var>, <var>height</var>, <var>x</var>, and <var>y</var>
+
+  options are expressions containing the following constants:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>in_w</samp></dt>
+
+  <dt><samp>in_h</samp></dt>
+
+  <dd><p>The input video width and height.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>iw</samp></dt>
+
+  <dt><samp>ih</samp></dt>
+
+  <dd><p>These are the same as <var>in_w</var> and <var>in_h</var>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>out_w</samp></dt>
+
+  <dt><samp>out_h</samp></dt>
+
+  <dd><p>The output width and height (the size of the padded area), as
+
+  specified by the <var>width</var> and <var>height</var> expressions.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>ow</samp></dt>
+
+  <dt><samp>oh</samp></dt>
+
+  <dd><p>These are the same as <var>out_w</var> and <var>out_h</var>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>x</samp></dt>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>The x and y offsets as specified by the <var>x</var> and <var>y</var>
+
+  expressions, or NAN if not yet specified.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>a</samp></dt>
+
+  <dd><p>same as <var>iw</var> / <var>ih</var>
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sar</samp></dt>
+
+  <dd><p>input sample aspect ratio
+
+  </p>
+
+  </dd>
+
+  <dt><samp>dar</samp></dt>
+
+  <dd><p>input display aspect ratio, it is the same as (<var>iw</var> / <var>ih</var>)
+  * <var>sar</var>
+
+  </p>
+
+  </dd>
+
+  <dt><samp>hsub</samp></dt>
+
+  <dt><samp>vsub</samp></dt>
+
+  <dd><p>The horizontal and vertical chroma subsample values. For example for the
+
+  pixel format &quot;yuv422p&quot; <var>hsub</var> is 2 and <var>vsub</var> is 1.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

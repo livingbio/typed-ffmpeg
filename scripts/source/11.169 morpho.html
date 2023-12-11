@@ -1,0 +1,39 @@
+<h3 class="section"><a href="#toc-morpho">11.169 morpho</a></h3>
+
+<p>This filter allows to apply main morphological grayscale transforms,
+erode and dilate with arbitrary structures set in second input stream.
+</p>
+<p>Unlike naive implementation and much slower performance in <a href="#erosion">erosion</a>
+and <a href="#dilation">dilation</a> filters, when speed is critical <code>morpho</code> filter
+should be used instead.
+</p>
+<p>A description of accepted options follows,
+</p>
+<dl compact="compact">
+<dt><samp>mode</samp></dt>
+<dd><p>Set morphological transform to apply, can be:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>erode</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>dilate</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>open</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>close</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>gradient</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>tophat</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>blackhat</samp>&rsquo;</dt>
+</dl>
+<p>Default is <code>erode</code>.
+</p>
+</dd>
+<dt><samp>planes</samp></dt>
+<dd><p>Set planes to filter, by default all planes except alpha are filtered.
+</p>
+</dd>
+<dt><samp>structure</samp></dt>
+<dd><p>Set which structure video frames will be processed from second input stream,
+can be <var>first</var> or <var>all</var>. Default is <var>all</var>.
+</p></dd>
+</dl>
+
+<p>The <code>morpho</code> filter also supports the <a href="#framesync">framesync</a> options.
+</p>

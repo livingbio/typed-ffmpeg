@@ -1,0 +1,125 @@
+description: '11.194 pixscope
+
+  Display sample values of color channels. Mainly useful for checking color
+
+  and levels. Minimum supported resolution is 640x480.
+
+
+  The filters accept the following options:'
+name: pixscope
+parameters:
+- description: '<dd><p>Set scope X position, relative offset on X axis.
+
+    </p>
+
+    </dd>'
+  name: x
+- description: '<dd><p>Set scope Y position, relative offset on Y axis.
+
+    </p>
+
+    </dd>'
+  name: y
+- description: '<dd><p>Set scope width.
+
+    </p>
+
+    </dd>'
+  name: w
+- description: '<dd><p>Set scope height.
+
+    </p>
+
+    </dd>'
+  name: h
+- description: '<dd><p>Set window opacity. This window also holds statistics about
+    pixel area.
+
+    </p>
+
+    </dd>'
+  name: o
+- description: '<dd><p>Set window X position, relative offset on X axis.
+
+    </p>
+
+    </dd>'
+  name: wx
+- description: '<dd><p>Set window Y position, relative offset on Y axis.
+
+    </p></dd>'
+  name: wy
+ref: https://ffmpeg.org/ffmpeg-filters.html#pixscope
+source: '<h3 class="section"><a href="#toc-pixscope">11.194 pixscope</a></h3>
+
+
+  <p>Display sample values of color channels. Mainly useful for checking color
+
+  and levels. Minimum supported resolution is 640x480.
+
+  </p>
+
+  <p>The filters accept the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>x</samp></dt>
+
+  <dd><p>Set scope X position, relative offset on X axis.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>Set scope Y position, relative offset on Y axis.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>w</samp></dt>
+
+  <dd><p>Set scope width.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>h</samp></dt>
+
+  <dd><p>Set scope height.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>o</samp></dt>
+
+  <dd><p>Set window opacity. This window also holds statistics about pixel area.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>wx</samp></dt>
+
+  <dd><p>Set window X position, relative offset on X axis.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>wy</samp></dt>
+
+  <dd><p>Set window Y position, relative offset on Y axis.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

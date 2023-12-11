@@ -1,0 +1,76 @@
+<h3 class="section"><a href="#toc-vidstabdetect-1">11.273 vidstabdetect</a></h3>
+
+<p>Analyze video stabilization/deshaking. Perform pass 1 of 2, see
+<a href="#vidstabtransform">vidstabtransform</a> for pass 2.
+</p>
+<p>This filter generates a file with relative translation and rotation
+transform information about subsequent frames, which is then used by
+the <a href="#vidstabtransform">vidstabtransform</a> filter.
+</p>
+<p>To enable compilation of this filter you need to configure FFmpeg with
+<code>--enable-libvidstab</code>.
+</p>
+<p>This filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>result</samp></dt>
+<dd><p>Set the path to the file used to write the transforms information.
+Default value is <samp>transforms.trf</samp>.
+</p>
+</dd>
+<dt><samp>shakiness</samp></dt>
+<dd><p>Set how shaky the video is and how quick the camera is. It accepts an
+integer in the range 1-10, a value of 1 means little shakiness, a
+value of 10 means strong shakiness. Default value is 5.
+</p>
+</dd>
+<dt><samp>accuracy</samp></dt>
+<dd><p>Set the accuracy of the detection process. It must be a value in the
+range 1-15. A value of 1 means low accuracy, a value of 15 means high
+accuracy. Default value is 15.
+</p>
+</dd>
+<dt><samp>stepsize</samp></dt>
+<dd><p>Set stepsize of the search process. The region around minimum is
+scanned with 1 pixel resolution. Default value is 6.
+</p>
+</dd>
+<dt><samp>mincontrast</samp></dt>
+<dd><p>Set minimum contrast. Below this value a local measurement field is
+discarded. Must be a floating point value in the range 0-1. Default
+value is 0.3.
+</p>
+</dd>
+<dt><samp>tripod</samp></dt>
+<dd><p>Set reference frame number for tripod mode.
+</p>
+<p>If enabled, the motion of the frames is compared to a reference frame
+in the filtered stream, identified by the specified number. The idea
+is to compensate all movements in a more-or-less static scene and keep
+the camera view absolutely still.
+</p>
+<p>If set to 0, it is disabled. The frames are counted starting from 1.
+</p>
+</dd>
+<dt><samp>show</samp></dt>
+<dd><p>Show fields and transforms in the resulting frames. It accepts an
+integer in the range 0-2. Default value is 0, which disables any
+visualization.
+</p>
+</dd>
+<dt><samp>fileformat</samp></dt>
+<dd><p>Format for the transforms data file to be written.
+Acceptable values are
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>ascii</samp>&rsquo;</dt>
+<dd><p>Human-readable plain text
+</p>
+</dd>
+<dt>&lsquo;<samp>binary</samp>&rsquo;</dt>
+<dd><p>Binary format, roughly 40% smaller than <code>ascii</code>. (<em>default</em>)
+</p></dd>
+</dl>
+
+</dd>
+</dl>

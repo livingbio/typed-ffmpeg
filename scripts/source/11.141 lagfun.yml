@@ -1,0 +1,56 @@
+description: '11.141 lagfun
+
+  Slowly update darker pixels.
+
+
+  This filter makes short flashes of light appear longer.
+
+  This filter accepts the following options:'
+name: lagfun
+parameters:
+- description: '<dd><p>Set factor for decaying. Default is .95. Allowed range is from
+    0 to 1.
+
+    </p>
+
+    </dd>'
+  name: decay
+- description: '<dd><p>Set which planes to filter. Default is all. Allowed range is
+    from 0 to 15.
+
+    </p></dd>'
+  name: planes
+ref: https://ffmpeg.org/ffmpeg-filters.html#lagfun
+source: '<h3 class="section"><a href="#toc-lagfun">11.141 lagfun</a></h3>
+
+
+  <p>Slowly update darker pixels.
+
+  </p>
+
+  <p>This filter makes short flashes of light appear longer.
+
+  This filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>decay</samp></dt>
+
+  <dd><p>Set factor for decaying. Default is .95. Allowed range is from 0 to 1.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>planes</samp></dt>
+
+  <dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

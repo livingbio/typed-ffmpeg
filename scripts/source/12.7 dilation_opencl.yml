@@ -1,0 +1,107 @@
+description: '12.7 dilation_opencl
+
+  Apply dilation effect to the video.
+
+
+  This filter replaces the pixel by the local(3x3) maximum.
+
+
+  It accepts the following options:'
+name: dilation_opencl
+parameters:
+- description: '<dd><p>Limit the maximum change for each plane. Range is <code>[0,
+    65535]</code> and default value is <code>65535</code>.
+
+    If <code>0</code>, plane will remain unchanged.
+
+    </p>
+
+    </dd>'
+  name: threshold0
+- description: '<dd><p>Flag which specifies the pixel to refer to.
+
+    Range is <code>[0, 255]</code> and default value is <code>255</code>, i.e. all
+    eight pixels are used.
+
+    </p>
+
+    <p>Flags to local 3x3 coordinates region centered on <code>x</code>:
+
+    </p>
+
+    <p>1 2 3
+
+    </p>
+
+    <p>4 x 5
+
+    </p>
+
+    <p>6 7 8
+
+    </p></dd>'
+  name: threshold1
+ref: https://ffmpeg.org/ffmpeg-filters.html#dilation_005fopencl
+source: '<h3 class="section"><a href="#toc-dilation_005fopencl">12.7 dilation_opencl</a></h3>
+
+
+  <p>Apply dilation effect to the video.
+
+  </p>
+
+  <p>This filter replaces the pixel by the local(3x3) maximum.
+
+  </p>
+
+  <p>It accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>threshold0</samp></dt>
+
+  <dt><samp>threshold1</samp></dt>
+
+  <dt><samp>threshold2</samp></dt>
+
+  <dt><samp>threshold3</samp></dt>
+
+  <dd><p>Limit the maximum change for each plane. Range is <code>[0, 65535]</code>
+  and default value is <code>65535</code>.
+
+  If <code>0</code>, plane will remain unchanged.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>coordinates</samp></dt>
+
+  <dd><p>Flag which specifies the pixel to refer to.
+
+  Range is <code>[0, 255]</code> and default value is <code>255</code>, i.e. all eight
+  pixels are used.
+
+  </p>
+
+  <p>Flags to local 3x3 coordinates region centered on <code>x</code>:
+
+  </p>
+
+  <p>1 2 3
+
+  </p>
+
+  <p>4 x 5
+
+  </p>
+
+  <p>6 7 8
+
+  </p></dd>
+
+  </dl>
+
+
+  '

@@ -1,0 +1,18 @@
+description: '11.209 repeatfields
+
+  This filter uses the repeat_field flag from the Video ES headers and hard repeats
+
+  fields based on its value.'
+name: repeatfields
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#repeatfields
+source: '<h3 class="section"><a href="#toc-repeatfields">11.209 repeatfields</a></h3>
+
+
+  <p>This filter uses the repeat_field flag from the Video ES headers and hard repeats
+
+  fields based on its value.
+
+  </p>
+
+  '

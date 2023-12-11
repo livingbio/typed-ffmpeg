@@ -1,0 +1,48 @@
+<h3 class="section"><a href="#toc-transpose_005fvulkan">14.13 transpose_vulkan</a></h3>
+
+<p>Transpose rows with columns in the input video and optionally flip it.
+For more in depth examples see the <a href="#transpose">transpose</a> video filter, which shares mostly the same options.
+</p>
+<p>It accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>dir</samp></dt>
+<dd><p>Specify the transposition direction.
+</p>
+<p>Can assume the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>cclock_flip</samp>&rsquo;</dt>
+<dd><p>Rotate by 90 degrees counterclockwise and vertically flip. (default)
+</p>
+</dd>
+<dt>&lsquo;<samp>clock</samp>&rsquo;</dt>
+<dd><p>Rotate by 90 degrees clockwise.
+</p>
+</dd>
+<dt>&lsquo;<samp>cclock</samp>&rsquo;</dt>
+<dd><p>Rotate by 90 degrees counterclockwise.
+</p>
+</dd>
+<dt>&lsquo;<samp>clock_flip</samp>&rsquo;</dt>
+<dd><p>Rotate by 90 degrees clockwise and vertically flip.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>passthrough</samp></dt>
+<dd><p>Do not apply the transposition if the input geometry matches the one
+specified by the specified value. It accepts the following values:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+<dd><p>Always apply transposition. (default)
+</p></dd>
+<dt>&lsquo;<samp>portrait</samp>&rsquo;</dt>
+<dd><p>Preserve portrait geometry (when <var>height</var> &gt;= <var>width</var>).
+</p></dd>
+<dt>&lsquo;<samp>landscape</samp>&rsquo;</dt>
+<dd><p>Preserve landscape geometry (when <var>width</var> &gt;= <var>height</var>).
+</p></dd>
+</dl>
+
+</dd>
+</dl>

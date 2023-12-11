@@ -1,0 +1,49 @@
+<h3 class="section"><a href="#toc-fieldhint">11.93 fieldhint</a></h3>
+
+<p>Create new frames by copying the top and bottom fields from surrounding frames
+supplied as numbers by the hint file.
+</p>
+<dl compact="compact">
+<dt><samp>hint</samp></dt>
+<dd><p>Set file containing hints: absolute/relative frame numbers.
+</p>
+<p>There must be one line for each frame in a clip. Each line must contain two
+numbers separated by the comma, optionally followed by <code>-</code> or <code>+</code>.
+Numbers supplied on each line of file can not be out of [N-1,N+1] where N
+is current frame number for <code>absolute</code> mode or out of [-1, 1] range
+for <code>relative</code> mode. First number tells from which frame to pick up top
+field and second number tells from which frame to pick up bottom field.
+</p>
+<p>If optionally followed by <code>+</code> output frame will be marked as interlaced,
+else if followed by <code>-</code> output frame will be marked as progressive, else
+it will be marked same as input frame.
+If optionally followed by <code>t</code> output frame will use only top field, or in
+case of <code>b</code> it will use only bottom field.
+If line starts with <code>#</code> or <code>;</code> that line is skipped.
+</p>
+</dd>
+<dt><samp>mode</samp></dt>
+<dd><p>Can be item <code>absolute</code> or <code>relative</code> or <code>pattern</code>. Default is <code>absolute</code>.
+The <code>pattern</code> mode is same as <code>relative</code> mode, except at last entry of file if there
+are more frames to process than <code>hint</code> file is seek back to start.
+</p></dd>
+</dl>
+
+<p>Example of first several lines of <code>hint</code> file for <code>relative</code> mode:
+</p><div class="example">
+<pre class="example">0,0 - # first frame
+1,0 - # second frame, use third's frame top field and second's frame bottom field
+1,0 - # third frame, use fourth's frame top field and third's frame bottom field
+1,0 -
+0,0 -
+0,0 -
+1,0 -
+1,0 -
+1,0 -
+0,0 -
+0,0 -
+1,0 -
+1,0 -
+1,0 -
+0,0 -
+</pre></div>

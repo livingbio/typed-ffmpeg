@@ -1,0 +1,194 @@
+description: '9.2 aevalsrc
+
+  Generate an audio signal specified by an expression.
+
+
+  This source accepts in input one or more expressions (one for each
+
+  channel), which are evaluated and used to generate a corresponding
+
+  audio signal.
+
+
+  This source accepts the following options:
+
+
+
+  Each expression in exprs can contain the following constants:'
+name: aevalsrc
+parameters:
+- description: "<dd><p>Set the \u2019|\u2019-separated expressions list for each separate\
+    \ channel. In case the\n<samp>channel_layout</samp> option is not specified, the\
+    \ selected channel layout\ndepends on the number of provided expressions. Otherwise\
+    \ the last\nspecified expression is applied to the remaining output channels.\n\
+    </p>\n</dd>"
+  name: exprs
+- description: '<dd><p>Set the channel layout. The number of channels in the specified
+    layout
+
+    must be equal to the number of specified expressions.
+
+    </p>
+
+    </dd>'
+  name: channel_layout, c
+- description: '<dd><p>Set the minimum duration of the sourced audio. See
+
+    <a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration
+    section in the ffmpeg-utils(1) manual</a>
+
+    for the accepted syntax.
+
+    Note that the resulting duration may be greater than the specified
+
+    duration, as the generated audio is always cut at the end of a
+
+    complete frame.
+
+    </p>
+
+    <p>If not specified, or the expressed duration is negative, the audio is
+
+    supposed to be generated forever.
+
+    </p>
+
+    </dd>'
+  name: duration, d
+- description: '<dd><p>Set the number of samples per channel per each output frame,
+
+    default to 1024.
+
+    </p>
+
+    </dd>'
+  name: nb_samples, n
+- description: '<dd><p>Specify the sample rate, default to 44100.
+
+    </p></dd>'
+  name: sample_rate, s
+ref: https://ffmpeg.org/ffmpeg-filters.html#aevalsrc
+source: '<h3 class="section"><a href="#toc-aevalsrc">9.2 aevalsrc</a></h3>
+
+
+  <p>Generate an audio signal specified by an expression.
+
+  </p>
+
+  <p>This source accepts in input one or more expressions (one for each
+
+  channel), which are evaluated and used to generate a corresponding
+
+  audio signal.
+
+  </p>
+
+  <p>This source accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>exprs</samp></dt>
+
+  <dd><p>Set the &rsquo;|&rsquo;-separated expressions list for each separate channel.
+  In case the
+
+  <samp>channel_layout</samp> option is not specified, the selected channel layout
+
+  depends on the number of provided expressions. Otherwise the last
+
+  specified expression is applied to the remaining output channels.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>channel_layout, c</samp></dt>
+
+  <dd><p>Set the channel layout. The number of channels in the specified layout
+
+  must be equal to the number of specified expressions.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>duration, d</samp></dt>
+
+  <dd><p>Set the minimum duration of the sourced audio. See
+
+  <a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration
+  section in the ffmpeg-utils(1) manual</a>
+
+  for the accepted syntax.
+
+  Note that the resulting duration may be greater than the specified
+
+  duration, as the generated audio is always cut at the end of a
+
+  complete frame.
+
+  </p>
+
+  <p>If not specified, or the expressed duration is negative, the audio is
+
+  supposed to be generated forever.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>nb_samples, n</samp></dt>
+
+  <dd><p>Set the number of samples per channel per each output frame,
+
+  default to 1024.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sample_rate, s</samp></dt>
+
+  <dd><p>Specify the sample rate, default to 44100.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Each expression in <var>exprs</var> can contain the following constants:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>n</samp></dt>
+
+  <dd><p>number of the evaluated sample, starting from 0
+
+  </p>
+
+  </dd>
+
+  <dt><samp>t</samp></dt>
+
+  <dd><p>time of the evaluated sample expressed in seconds, starting from 0
+
+  </p>
+
+  </dd>
+
+  <dt><samp>s</samp></dt>
+
+  <dd><p>sample rate
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  '

@@ -1,0 +1,47 @@
+<h3 class="section"><a href="#toc-tpad">11.261 tpad</a></h3>
+
+<p>Temporarily pad video frames.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>start</samp></dt>
+<dd><p>Specify number of delay frames before input video stream. Default is 0.
+</p>
+</dd>
+<dt><samp>stop</samp></dt>
+<dd><p>Specify number of padding frames after input video stream.
+Set to -1 to pad indefinitely. Default is 0.
+</p>
+</dd>
+<dt><samp>start_mode</samp></dt>
+<dd><p>Set kind of frames added to beginning of stream.
+Can be either <var>add</var> or <var>clone</var>.
+With <var>add</var> frames of solid-color are added.
+With <var>clone</var> frames are clones of first frame.
+Default is <var>add</var>.
+</p>
+</dd>
+<dt><samp>stop_mode</samp></dt>
+<dd><p>Set kind of frames added to end of stream.
+Can be either <var>add</var> or <var>clone</var>.
+With <var>add</var> frames of solid-color are added.
+With <var>clone</var> frames are clones of last frame.
+Default is <var>add</var>.
+</p>
+</dd>
+<dt><samp>start_duration, stop_duration</samp></dt>
+<dd><p>Specify the duration of the start/stop delay. See
+<a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>
+for the accepted syntax.
+These options override <var>start</var> and <var>stop</var>. Default is 0.
+</p>
+</dd>
+<dt><samp>color</samp></dt>
+<dd><p>Specify the color of the padded area. For the syntax of this option,
+check the <a href="ffmpeg-utils.html#color-syntax">(ffmpeg-utils)&quot;Color&quot; section in the ffmpeg-utils
+manual</a>.
+</p>
+<p>The default value of <var>color</var> is &quot;black&quot;.
+</p></dd>
+</dl>

@@ -1,0 +1,50 @@
+<h3 class="section"><a href="#toc-anlmdn">8.38 anlmdn</a></h3>
+
+<p>Reduce broadband noise in audio samples using Non-Local Means algorithm.
+</p>
+<p>Each sample is adjusted by looking for other samples with similar contexts. This
+context similarity is defined by comparing their surrounding patches of size
+<samp>p</samp>. Patches are searched in an area of <samp>r</samp> around the sample.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>strength, s</samp></dt>
+<dd><p>Set denoising strength. Allowed range is from 0.00001 to 10000. Default value is 0.00001.
+</p>
+</dd>
+<dt><samp>patch, p</samp></dt>
+<dd><p>Set patch radius duration. Allowed range is from 1 to 100 milliseconds.
+Default value is 2 milliseconds.
+</p>
+</dd>
+<dt><samp>research, r</samp></dt>
+<dd><p>Set research radius duration. Allowed range is from 2 to 300 milliseconds.
+Default value is 6 milliseconds.
+</p>
+</dd>
+<dt><samp>output, o</samp></dt>
+<dd><p>Set the output mode.
+</p>
+<p>It accepts the following values:
+</p><dl compact="compact">
+<dt><samp>i</samp></dt>
+<dd><p>Pass input unchanged.
+</p>
+</dd>
+<dt><samp>o</samp></dt>
+<dd><p>Pass noise filtered out.
+</p>
+</dd>
+<dt><samp>n</samp></dt>
+<dd><p>Pass only noise.
+</p>
+<p>Default value is <var>o</var>.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>smooth, m</samp></dt>
+<dd><p>Set smooth factor. Default value is <var>11</var>. Allowed range is from <var>1</var> to <var>1000</var>.
+</p></dd>
+</dl>

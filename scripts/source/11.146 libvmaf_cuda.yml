@@ -1,0 +1,24 @@
+description: "11.146 libvmaf_cuda\nThis is the CUDA variant of the libvmaf filter.\
+  \ It only accepts CUDA frames.\n\nIt requires Netflix\u2019s vmaf library (libvmaf)\
+  \ as a pre-requisite.\nAfter installing the library it can be enabled using:\n./configure\
+  \ --enable-nonfree --enable-ffnvcodec --enable-libvmaf."
+name: libvmaf_cuda
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf_005fcuda
+source: '<h3 class="section"><a href="#toc-libvmaf_005fcuda">11.146 libvmaf_cuda</a></h3>
+
+
+  <p>This is the CUDA variant of the <a href="#libvmaf">libvmaf</a> filter. It only
+  accepts CUDA frames.
+
+  </p>
+
+  <p>It requires Netflix&rsquo;s vmaf library (libvmaf) as a pre-requisite.
+
+  After installing the library it can be enabled using:
+
+  <code>./configure --enable-nonfree --enable-ffnvcodec --enable-libvmaf</code>.
+
+  </p>
+
+  '

@@ -1,0 +1,100 @@
+description: "11.116 haldclut\nApply a Hald CLUT to a video stream.\n\nFirst input\
+  \ is the video stream to process, and second one is the Hald CLUT.\nThe Hald CLUT\
+  \ input can be a simple picture or a complete video stream.\n\nThe filter accepts\
+  \ the following options:\n\n\nhaldclut also has the same interpolation options as\
+  \ lut3d (both\nfilters share the same internals).\n\nThis filter also supports the\
+  \ framesync options.\n\nMore information about the Hald CLUT can be found on Eskil\
+  \ Steenberg\u2019s website\n(Hald CLUT author) at http://www.quelsolaar.com/technology/clut.html."
+name: haldclut
+parameters:
+- description: '<dd><p>Set which CLUT video frames will be processed from second input
+    stream,
+
+    can be <var>first</var> or <var>all</var>. Default is <var>all</var>.
+
+    </p>
+
+    </dd>'
+  name: clut
+- description: '<dd><p>Force termination when the shortest input terminates. Default
+    is <code>0</code>.
+
+    </p></dd>'
+  name: shortest
+- description: '<dd><p>Continue applying the last CLUT after the end of the stream.
+    A value of
+
+    <code>0</code> disable the filter after the last frame of the CLUT is reached.
+
+    Default is <code>1</code>.
+
+    </p></dd>'
+  name: repeatlast
+ref: https://ffmpeg.org/ffmpeg-filters.html#haldclut
+source: '<h3 class="section"><a href="#toc-haldclut-1">11.116 haldclut</a></h3>
+
+
+  <p>Apply a Hald CLUT to a video stream.
+
+  </p>
+
+  <p>First input is the video stream to process, and second one is the Hald CLUT.
+
+  The Hald CLUT input can be a simple picture or a complete video stream.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>clut</samp></dt>
+
+  <dd><p>Set which CLUT video frames will be processed from second input stream,
+
+  can be <var>first</var> or <var>all</var>. Default is <var>all</var>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>shortest</samp></dt>
+
+  <dd><p>Force termination when the shortest input terminates. Default is <code>0</code>.
+
+  </p></dd>
+
+  <dt><samp>repeatlast</samp></dt>
+
+  <dd><p>Continue applying the last CLUT after the end of the stream. A value of
+
+  <code>0</code> disable the filter after the last frame of the CLUT is reached.
+
+  Default is <code>1</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p><code>haldclut</code> also has the same interpolation options as <a href="#lut3d">lut3d</a>
+  (both
+
+  filters share the same internals).
+
+  </p>
+
+  <p>This filter also supports the <a href="#framesync">framesync</a> options.
+
+  </p>
+
+  <p>More information about the Hald CLUT can be found on Eskil Steenberg&rsquo;s
+  website
+
+  (Hald CLUT author) at <a href="http://www.quelsolaar.com/technology/clut.html">http://www.quelsolaar.com/technology/clut.html</a>.
+
+  </p>
+
+  '

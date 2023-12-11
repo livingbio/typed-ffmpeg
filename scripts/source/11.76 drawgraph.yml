@@ -1,0 +1,414 @@
+description: '11.76 drawgraph
+
+  Draw a graph using input video metadata.
+
+
+  It accepts the following parameters:
+
+
+
+  Example using metadata from signalstats filter:
+
+
+  signalstats,drawgraph=lavfi.signalstats.YAVG:min=0:max=255
+
+
+  Example using metadata from ebur128 filter:
+
+
+  ebur128=metadata=1,adrawgraph=lavfi.r128.M:min=-120:max=5'
+name: drawgraph
+parameters:
+- description: '<dd><p>Set 1st frame metadata key from which metadata values will
+    be used to draw a graph.
+
+    </p>
+
+    </dd>'
+  name: m1
+- description: '<dd><p>Set 1st foreground color expression.
+
+    </p>
+
+    </dd>'
+  name: fg1
+- description: '<dd><p>Set 2nd frame metadata key from which metadata values will
+    be used to draw a graph.
+
+    </p>
+
+    </dd>'
+  name: m2
+- description: '<dd><p>Set 2nd foreground color expression.
+
+    </p>
+
+    </dd>'
+  name: fg2
+- description: '<dd><p>Set 3rd frame metadata key from which metadata values will
+    be used to draw a graph.
+
+    </p>
+
+    </dd>'
+  name: m3
+- description: '<dd><p>Set 3rd foreground color expression.
+
+    </p>
+
+    </dd>'
+  name: fg3
+- description: '<dd><p>Set 4th frame metadata key from which metadata values will
+    be used to draw a graph.
+
+    </p>
+
+    </dd>'
+  name: m4
+- description: '<dd><p>Set 4th foreground color expression.
+
+    </p>
+
+    </dd>'
+  name: fg4
+- description: '<dd><p>Set minimal value of metadata value.
+
+    </p>
+
+    </dd>'
+  name: min
+- description: '<dd><p>Set maximal value of metadata value.
+
+    </p>
+
+    </dd>'
+  name: max
+- description: '<dd><p>Set graph background color. Default is white.
+
+    </p>
+
+    </dd>'
+  name: bg
+- description: "<dd><p>Set graph mode.\n</p>\n<p>Available values for mode is:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>bar</samp>\u2019</dt>\n<dt>\u2018<samp>dot</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n</dl>\n<p>Default is <code>line</code>.\n\
+    </p>\n</dd>"
+  name: mode
+- description: "<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Draw\
+    \ new frame when right border is reached.\n</p>\n</dd>\n<dt>\u2018<samp>replace</samp>\u2019\
+    </dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>\u2018<samp>scroll</samp>\u2019\
+    </dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>\u2018<samp>rscroll</samp>\u2019\
+    </dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>\u2018<samp>picture</samp>\u2019\
+    </dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n<p>Default is <code>frame</code>.\n\
+    </p>\n</dd>"
+  name: slide
+- description: '<dd><p>Set size of graph video. For the syntax of this option, check
+    the
+
+    <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)"Video size" section
+    in the ffmpeg-utils manual</a>.
+
+    The default value is <code>900x256</code>.
+
+    </p>
+
+    </dd>'
+  name: size
+- description: '<dd><p>Set the output frame rate. Default value is <code>25</code>.
+
+    </p>
+
+    <p>The foreground color expressions can use the following variables:
+
+    </p><dl compact="compact">
+
+    <dt><samp>MIN</samp></dt>
+
+    <dd><p>Minimal value of metadata value.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>MAX</samp></dt>
+
+    <dd><p>Maximal value of metadata value.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>VAL</samp></dt>
+
+    <dd><p>Current metadata key value.
+
+    </p></dd>
+
+    </dl>
+
+    <p>The color is defined as 0xAABBGGRR.
+
+    </p></dd>'
+  name: rate, r
+ref: https://ffmpeg.org/ffmpeg-filters.html#drawgraph
+source: '<h3 class="section"><a href="#toc-drawgraph-1">11.76 drawgraph</a></h3>
+
+  <p>Draw a graph using input video metadata.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>m1</samp></dt>
+
+  <dd><p>Set 1st frame metadata key from which metadata values will be used to draw
+  a graph.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fg1</samp></dt>
+
+  <dd><p>Set 1st foreground color expression.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>m2</samp></dt>
+
+  <dd><p>Set 2nd frame metadata key from which metadata values will be used to draw
+  a graph.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fg2</samp></dt>
+
+  <dd><p>Set 2nd foreground color expression.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>m3</samp></dt>
+
+  <dd><p>Set 3rd frame metadata key from which metadata values will be used to draw
+  a graph.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fg3</samp></dt>
+
+  <dd><p>Set 3rd foreground color expression.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>m4</samp></dt>
+
+  <dd><p>Set 4th frame metadata key from which metadata values will be used to draw
+  a graph.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>fg4</samp></dt>
+
+  <dd><p>Set 4th foreground color expression.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>min</samp></dt>
+
+  <dd><p>Set minimal value of metadata value.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>max</samp></dt>
+
+  <dd><p>Set maximal value of metadata value.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>bg</samp></dt>
+
+  <dd><p>Set graph background color. Default is white.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Set graph mode.
+
+  </p>
+
+  <p>Available values for mode is:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>bar</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>dot</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>line</samp>&rsquo;</dt>
+
+  </dl>
+
+
+  <p>Default is <code>line</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>slide</samp></dt>
+
+  <dd><p>Set slide mode.
+
+  </p>
+
+  <p>Available values for slide is:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>frame</samp>&rsquo;</dt>
+
+  <dd><p>Draw new frame when right border is reached.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>replace</samp>&rsquo;</dt>
+
+  <dd><p>Replace old columns with new ones.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>scroll</samp>&rsquo;</dt>
+
+  <dd><p>Scroll from right to left.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>rscroll</samp>&rsquo;</dt>
+
+  <dd><p>Scroll from left to right.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>picture</samp>&rsquo;</dt>
+
+  <dd><p>Draw single picture.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default is <code>frame</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>size</samp></dt>
+
+  <dd><p>Set size of graph video. For the syntax of this option, check the
+
+  <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot;
+  section in the ffmpeg-utils manual</a>.
+
+  The default value is <code>900x256</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rate, r</samp></dt>
+
+  <dd><p>Set the output frame rate. Default value is <code>25</code>.
+
+  </p>
+
+  <p>The foreground color expressions can use the following variables:
+
+  </p><dl compact="compact">
+
+  <dt><samp>MIN</samp></dt>
+
+  <dd><p>Minimal value of metadata value.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>MAX</samp></dt>
+
+  <dd><p>Maximal value of metadata value.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VAL</samp></dt>
+
+  <dd><p>Current metadata key value.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The color is defined as 0xAABBGGRR.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Example using metadata from <a href="#signalstats">signalstats</a> filter:
+
+  </p><div class="example">
+
+  <pre class="example">signalstats,drawgraph=lavfi.signalstats.YAVG:min=0:max=255
+
+  </pre></div>
+
+
+  <p>Example using metadata from <a href="#ebur128">ebur128</a> filter:
+
+  </p><div class="example">
+
+  <pre class="example">ebur128=metadata=1,adrawgraph=lavfi.r128.M:min=-120:max=5
+
+  </pre></div>
+
+
+  '

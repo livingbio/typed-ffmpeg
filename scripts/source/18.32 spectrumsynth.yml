@@ -1,0 +1,183 @@
+description: "18.32 spectrumsynth\nSynthesize audio from 2 input video spectrums,\
+  \ first input stream represents\nmagnitude across time and second represents phase\
+  \ across time.\nThe filter will transform from frequency domain as displayed in\
+  \ videos back\nto time domain as presented in audio output.\n\nThis filter is primarily\
+  \ created for reversing processed showspectrum\nfilter outputs, but can synthesize\
+  \ sound from other spectrograms too.\nBut in such case results are going to be poor\
+  \ if the phase data is not\navailable, because in such cases phase data need to\
+  \ be recreated, usually\nit\u2019s just recreated from random noise.\nFor best results\
+  \ use gray only output (channel color mode in\nshowspectrum filter) and log scale\
+  \ for magnitude video and\nlin scale for phase video. To produce phase, for 2nd\
+  \ video, use\ndata option. Inputs videos should generally use fullframe\nslide mode\
+  \ as that saves resources needed for decoding video.\n\nThe filter accepts the following\
+  \ options:"
+name: spectrumsynth
+parameters:
+- description: '<dd><p>Specify sample rate of output audio, the sample rate of audio
+    from which
+
+    spectrum was generated may differ.
+
+    </p>
+
+    </dd>'
+  name: sample_rate
+- description: '<dd><p>Set number of channels represented in input video spectrums.
+
+    </p>
+
+    </dd>'
+  name: channels
+- description: '<dd><p>Set scale which was used when generating magnitude input spectrum.
+
+    Can be <code>lin</code> or <code>log</code>. Default is <code>log</code>.
+
+    </p>
+
+    </dd>'
+  name: scale
+- description: '<dd><p>Set slide which was used when generating inputs spectrums.
+
+    Can be <code>replace</code>, <code>scroll</code>, <code>fullframe</code> or <code>rscroll</code>.
+
+    Default is <code>fullframe</code>.
+
+    </p>
+
+    </dd>'
+  name: slide
+- description: '<dd><p>Set window function used for resynthesis.
+
+    </p>
+
+    </dd>'
+  name: win_func
+- description: '<dd><p>Set window overlap. In range <code>[0, 1]</code>. Default is
+    <code>1</code>,
+
+    which means optimal overlap for selected window function will be picked.
+
+    </p>
+
+    </dd>'
+  name: overlap
+- description: '<dd><p>Set orientation of input videos. Can be <code>vertical</code>
+    or <code>horizontal</code>.
+
+    Default is <code>vertical</code>.
+
+    </p></dd>'
+  name: orientation
+ref: https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth
+source: '<h3 class="section"><a href="#toc-spectrumsynth">18.32 spectrumsynth</a></h3>
+
+
+  <p>Synthesize audio from 2 input video spectrums, first input stream represents
+
+  magnitude across time and second represents phase across time.
+
+  The filter will transform from frequency domain as displayed in videos back
+
+  to time domain as presented in audio output.
+
+  </p>
+
+  <p>This filter is primarily created for reversing processed <a href="#showspectrum">showspectrum</a>
+
+  filter outputs, but can synthesize sound from other spectrograms too.
+
+  But in such case results are going to be poor if the phase data is not
+
+  available, because in such cases phase data need to be recreated, usually
+
+  it&rsquo;s just recreated from random noise.
+
+  For best results use gray only output (<code>channel</code> color mode in
+
+  <a href="#showspectrum">showspectrum</a> filter) and <code>log</code> scale for
+  magnitude video and
+
+  <code>lin</code> scale for phase video. To produce phase, for 2nd video, use
+
+  <code>data</code> option. Inputs videos should generally use <code>fullframe</code>
+
+  slide mode as that saves resources needed for decoding video.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>sample_rate</samp></dt>
+
+  <dd><p>Specify sample rate of output audio, the sample rate of audio from which
+
+  spectrum was generated may differ.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>channels</samp></dt>
+
+  <dd><p>Set number of channels represented in input video spectrums.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale</samp></dt>
+
+  <dd><p>Set scale which was used when generating magnitude input spectrum.
+
+  Can be <code>lin</code> or <code>log</code>. Default is <code>log</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>slide</samp></dt>
+
+  <dd><p>Set slide which was used when generating inputs spectrums.
+
+  Can be <code>replace</code>, <code>scroll</code>, <code>fullframe</code> or <code>rscroll</code>.
+
+  Default is <code>fullframe</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>win_func</samp></dt>
+
+  <dd><p>Set window function used for resynthesis.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>overlap</samp></dt>
+
+  <dd><p>Set window overlap. In range <code>[0, 1]</code>. Default is <code>1</code>,
+
+  which means optimal overlap for selected window function will be picked.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>orientation</samp></dt>
+
+  <dd><p>Set orientation of input videos. Can be <code>vertical</code> or <code>horizontal</code>.
+
+  Default is <code>vertical</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

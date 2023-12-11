@@ -1,0 +1,93 @@
+description: '11.196 pp7
+
+  Apply Postprocessing filter 7. It is variant of the spp filter,
+
+  similar to spp = 6 with 7 point DCT, where only the center sample is
+
+  used after IDCT.
+
+
+  The filter accepts the following options:'
+name: pp7
+parameters:
+- description: '<dd><p>Force a constant quantization parameter. It accepts an integer
+    in range
+
+    0 to 63. If not set, the filter will use the QP from the video stream
+
+    (if available).
+
+    </p>
+
+    </dd>'
+  name: qp
+- description: "<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"\
+    compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>Set hard thresholding.\n\
+    </p></dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>Set soft thresholding\
+    \ (better de-ringing effect, but likely blurrier).\n</p></dd>\n<dt>\u2018<samp>medium</samp>\u2019\
+    </dt>\n<dd><p>Set medium thresholding (good results, default).\n</p></dd>\n</dl>\n\
+    </dd>"
+  name: mode
+ref: https://ffmpeg.org/ffmpeg-filters.html#pp7
+source: '<h3 class="section"><a href="#toc-pp7">11.196 pp7</a></h3>
+
+  <p>Apply Postprocessing filter 7. It is variant of the <a href="#spp">spp</a> filter,
+
+  similar to spp = 6 with 7 point DCT, where only the center sample is
+
+  used after IDCT.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>qp</samp></dt>
+
+  <dd><p>Force a constant quantization parameter. It accepts an integer in range
+
+  0 to 63. If not set, the filter will use the QP from the video stream
+
+  (if available).
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Set thresholding mode. Available modes are:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>hard</samp>&rsquo;</dt>
+
+  <dd><p>Set hard thresholding.
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>soft</samp>&rsquo;</dt>
+
+  <dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>medium</samp>&rsquo;</dt>
+
+  <dd><p>Set medium thresholding (good results, default).
+
+  </p></dd>
+
+  </dl>
+
+  </dd>
+
+  </dl>
+
+
+  '

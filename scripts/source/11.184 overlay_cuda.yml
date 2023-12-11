@@ -1,0 +1,330 @@
+description: '11.184 overlay_cuda
+
+  Overlay one video on top of another.
+
+
+  This is the CUDA variant of the overlay filter.
+
+  It only accepts CUDA frames. The underlying input pixel formats have to match.
+
+
+  It takes two inputs and has one output. The first input is the "main"
+
+  video on which the second input is overlaid.
+
+
+  It accepts the following parameters:
+
+
+
+  This filter also supports the framesync options.'
+name: overlay_cuda
+parameters:
+- description: '<dd><p>Set expressions for the x and y coordinates of the overlaid
+    video
+
+    on the main video.
+
+    </p>
+
+    <p>They can contain the following parameters:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>main_w, W</samp></dt>
+
+    <dt><samp>main_h, H</samp></dt>
+
+    <dd><p>The main input width and height.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>overlay_w, w</samp></dt>
+
+    <dt><samp>overlay_h, h</samp></dt>
+
+    <dd><p>The overlay input width and height.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>x</samp></dt>
+
+    <dt><samp>y</samp></dt>
+
+    <dd><p>The computed values for <var>x</var> and <var>y</var>. They are evaluated
+    for
+
+    each new frame.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>n</samp></dt>
+
+    <dd><p>The ordinal index of the main input frame, starting from 0.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>pos</samp></dt>
+
+    <dd><p>The byte offset position in the file of the main input frame, NAN if unknown.
+
+    Deprecated, do not use.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>t</samp></dt>
+
+    <dd><p>The timestamp of the main input frame, expressed in seconds, NAN if unknown.
+
+    </p>
+
+    </dd>
+
+    </dl>
+
+    <p>Default value is "0" for both expressions.
+
+    </p>
+
+    </dd>'
+  name: x
+- description: '<dd><p>Set when the expressions for <samp>x</samp> and <samp>y</samp>
+    are evaluated.
+
+    </p>
+
+    <p>It accepts the following values:
+
+    </p><dl compact="compact">
+
+    <dt><samp>init</samp></dt>
+
+    <dd><p>Evaluate expressions once during filter initialization or
+
+    when a command is processed.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>frame</samp></dt>
+
+    <dd><p>Evaluate expressions for each incoming frame
+
+    </p></dd>
+
+    </dl>
+
+    <p>Default value is <samp>frame</samp>.
+
+    </p>
+
+    </dd>'
+  name: y
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: eval
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: eof_action
+- description: '<dd><p>See <a href="#framesync">framesync</a>.
+
+    </p>
+
+    </dd>'
+  name: shortest
+ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fcuda
+source: '<h3 class="section"><a href="#toc-overlay_005fcuda-1">11.184 overlay_cuda</a></h3>
+
+
+  <p>Overlay one video on top of another.
+
+  </p>
+
+  <p>This is the CUDA variant of the <a href="#overlay">overlay</a> filter.
+
+  It only accepts CUDA frames. The underlying input pixel formats have to match.
+
+  </p>
+
+  <p>It takes two inputs and has one output. The first input is the &quot;main&quot;
+
+  video on which the second input is overlaid.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>x</samp></dt>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>Set expressions for the x and y coordinates of the overlaid video
+
+  on the main video.
+
+  </p>
+
+  <p>They can contain the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>main_w, W</samp></dt>
+
+  <dt><samp>main_h, H</samp></dt>
+
+  <dd><p>The main input width and height.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>overlay_w, w</samp></dt>
+
+  <dt><samp>overlay_h, h</samp></dt>
+
+  <dd><p>The overlay input width and height.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>x</samp></dt>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>The computed values for <var>x</var> and <var>y</var>. They are evaluated
+  for
+
+  each new frame.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>n</samp></dt>
+
+  <dd><p>The ordinal index of the main input frame, starting from 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>pos</samp></dt>
+
+  <dd><p>The byte offset position in the file of the main input frame, NAN if unknown.
+
+  Deprecated, do not use.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>t</samp></dt>
+
+  <dd><p>The timestamp of the main input frame, expressed in seconds, NAN if unknown.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  <p>Default value is &quot;0&quot; for both expressions.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>eval</samp></dt>
+
+  <dd><p>Set when the expressions for <samp>x</samp> and <samp>y</samp> are evaluated.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt><samp>init</samp></dt>
+
+  <dd><p>Evaluate expressions once during filter initialization or
+
+  when a command is processed.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>frame</samp></dt>
+
+  <dd><p>Evaluate expressions for each incoming frame
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is <samp>frame</samp>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>eof_action</samp></dt>
+
+  <dd><p>See <a href="#framesync">framesync</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>shortest</samp></dt>
+
+  <dd><p>See <a href="#framesync">framesync</a>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>repeatlast</samp></dt>
+
+  <dd><p>See <a href="#framesync">framesync</a>.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  <p>This filter also supports the <a href="#framesync">framesync</a> options.
+
+  </p>
+
+  '

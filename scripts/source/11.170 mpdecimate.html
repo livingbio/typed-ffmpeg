@@ -1,0 +1,47 @@
+<h3 class="section"><a href="#toc-mpdecimate">11.170 mpdecimate</a></h3>
+
+<p>Drop frames that do not differ greatly from the previous frame in
+order to reduce frame rate.
+</p>
+<p>The main use of this filter is for very-low-bitrate encoding
+(e.g. streaming over dialup modem), but it could in theory be used for
+fixing movies that were inverse-telecined incorrectly.
+</p>
+<p>A description of the accepted options follows.
+</p>
+<dl compact="compact">
+<dt><samp>max</samp></dt>
+<dd><p>Set the maximum number of consecutive frames which can be dropped (if
+positive), or the minimum interval between dropped frames (if
+negative). If the value is 0, the frame is dropped disregarding the
+number of previous sequentially dropped frames.
+</p>
+<p>Default value is 0.
+</p>
+</dd>
+<dt><samp>keep</samp></dt>
+<dd><p>Set the maximum number of consecutive similar frames to ignore before to start dropping them.
+If the value is 0, the frame is dropped disregarding the
+number of previous sequentially similar frames.
+</p>
+<p>Default value is 0.
+</p>
+</dd>
+<dt><samp>hi</samp></dt>
+<dt><samp>lo</samp></dt>
+<dt><samp>frac</samp></dt>
+<dd><p>Set the dropping threshold values.
+</p>
+<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and
+represent actual pixel value differences, so a threshold of 64
+corresponds to 1 unit of difference for each pixel, or the same spread
+out differently over the block.
+</p>
+<p>A frame is a candidate for dropping if no 8x8 blocks differ by more
+than a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1
+meaning the whole image) differ by more than a threshold of <samp>lo</samp>.
+</p>
+<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is
+64*5, and default value for <samp>frac</samp> is 0.33.
+</p></dd>
+</dl>

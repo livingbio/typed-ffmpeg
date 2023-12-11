@@ -1,0 +1,75 @@
+description: '11.49 cover_rect
+
+  Cover a rectangular object
+
+
+  It accepts the following options:'
+name: cover_rect
+parameters:
+- description: '<dd><p>Filepath of the optional cover image, needs to be in yuv420.
+
+    </p>
+
+    </dd>'
+  name: cover
+- description: "<dd><p>Set covering mode.\n</p>\n<p>It accepts the following values:\n\
+    </p><dl compact=\"compact\">\n<dt>\u2018<samp>cover</samp>\u2019</dt>\n<dd><p>cover\
+    \ it by the supplied image\n</p></dd>\n<dt>\u2018<samp>blur</samp>\u2019</dt>\n\
+    <dd><p>cover it by interpolating the surrounding pixels\n</p></dd>\n</dl>\n<p>Default\
+    \ value is <var>blur</var>.\n</p></dd>"
+  name: mode
+ref: https://ffmpeg.org/ffmpeg-filters.html#cover_005frect
+source: '<h3 class="section"><a href="#toc-cover_005frect">11.49 cover_rect</a></h3>
+
+
+  <p>Cover a rectangular object
+
+  </p>
+
+  <p>It accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>cover</samp></dt>
+
+  <dd><p>Filepath of the optional cover image, needs to be in yuv420.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Set covering mode.
+
+  </p>
+
+  <p>It accepts the following values:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>cover</samp>&rsquo;</dt>
+
+  <dd><p>cover it by the supplied image
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>blur</samp>&rsquo;</dt>
+
+  <dd><p>cover it by interpolating the surrounding pixels
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is <var>blur</var>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

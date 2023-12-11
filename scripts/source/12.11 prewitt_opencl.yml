@@ -1,0 +1,76 @@
+description: '12.11 prewitt_opencl
+
+  Apply the Prewitt operator (https://en.wikipedia.org/wiki/Prewitt_operator) to input
+  video stream.
+
+
+  The filter accepts the following option:'
+name: prewitt_opencl
+parameters:
+- description: '<dd><p>Set which planes to filter. Default value is <code>0xf</code>,
+    by which all planes are processed.
+
+    </p>
+
+    </dd>'
+  name: planes
+- description: '<dd><p>Set value which will be multiplied with filtered result.
+
+    Range is <code>[0.0, 65535]</code> and default value is <code>1.0</code>.
+
+    </p>
+
+    </dd>'
+  name: scale
+- description: '<dd><p>Set value which will be added to filtered result.
+
+    Range is <code>[-65535, 65535]</code> and default value is <code>0.0</code>.
+
+    </p></dd>'
+  name: delta
+ref: https://ffmpeg.org/ffmpeg-filters.html#prewitt_005fopencl
+source: '<h3 class="section"><a href="#toc-prewitt_005fopencl">12.11 prewitt_opencl</a></h3>
+
+
+  <p>Apply the Prewitt operator (<a href="https://en.wikipedia.org/wiki/Prewitt_operator">https://en.wikipedia.org/wiki/Prewitt_operator</a>)
+  to input video stream.
+
+  </p>
+
+  <p>The filter accepts the following option:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>planes</samp></dt>
+
+  <dd><p>Set which planes to filter. Default value is <code>0xf</code>, by which all
+  planes are processed.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale</samp></dt>
+
+  <dd><p>Set value which will be multiplied with filtered result.
+
+  Range is <code>[0.0, 65535]</code> and default value is <code>1.0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>delta</samp></dt>
+
+  <dd><p>Set value which will be added to filtered result.
+
+  Range is <code>[-65535, 65535]</code> and default value is <code>0.0</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

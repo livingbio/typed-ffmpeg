@@ -1,0 +1,43 @@
+<h3 class="section"><a href="#toc-amplify">11.4 amplify</a></h3>
+
+<p>Amplify differences between current pixel and pixels of adjacent frames in
+same pixel location.
+</p>
+<p>This filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>radius</samp></dt>
+<dd><p>Set frame radius. Default is 2. Allowed range is from 1 to 63.
+For example radius of 3 will instruct filter to calculate average of 7 frames.
+</p>
+</dd>
+<dt><samp>factor</samp></dt>
+<dd><p>Set factor to amplify difference. Default is 2. Allowed range is from 0 to 65535.
+</p>
+</dd>
+<dt><samp>threshold</samp></dt>
+<dd><p>Set threshold for difference amplification. Any difference greater or equal to
+this value will not alter source pixel. Default is 10.
+Allowed range is from 0 to 65535.
+</p>
+</dd>
+<dt><samp>tolerance</samp></dt>
+<dd><p>Set tolerance for difference amplification. Any difference lower to
+this value will not alter source pixel. Default is 0.
+Allowed range is from 0 to 65535.
+</p>
+</dd>
+<dt><samp>low</samp></dt>
+<dd><p>Set lower limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.
+This option controls maximum possible value that will decrease source pixel value.
+</p>
+</dd>
+<dt><samp>high</samp></dt>
+<dd><p>Set high limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.
+This option controls maximum possible value that will increase source pixel value.
+</p>
+</dd>
+<dt><samp>planes</samp></dt>
+<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.
+</p></dd>
+</dl>

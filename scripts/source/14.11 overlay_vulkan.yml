@@ -1,0 +1,77 @@
+description: '14.11 overlay_vulkan
+
+  Overlay one video on top of another.
+
+
+  It takes two inputs and has one output. The first input is the "main" video on which
+  the second input is overlaid.
+
+  This filter requires all inputs to use the same pixel format. So, format conversion
+  may be needed.
+
+
+  The filter accepts the following options:'
+name: overlay_vulkan
+parameters:
+- description: '<dd><p>Set the x coordinate of the overlaid video on the main video.
+
+    Default value is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: x
+- description: '<dd><p>Set the y coordinate of the overlaid video on the main video.
+
+    Default value is <code>0</code>.
+
+    </p>
+
+    </dd>'
+  name: y
+ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvulkan
+source: '<h3 class="section"><a href="#toc-overlay_005fvulkan">14.11 overlay_vulkan</a></h3>
+
+
+  <p>Overlay one video on top of another.
+
+  </p>
+
+  <p>It takes two inputs and has one output. The first input is the &quot;main&quot;
+  video on which the second input is overlaid.
+
+  This filter requires all inputs to use the same pixel format. So, format conversion
+  may be needed.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>x</samp></dt>
+
+  <dd><p>Set the x coordinate of the overlaid video on the main video.
+
+  Default value is <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>Set the y coordinate of the overlaid video on the main video.
+
+  Default value is <code>0</code>.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  '

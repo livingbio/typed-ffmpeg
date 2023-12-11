@@ -1,0 +1,27 @@
+<h3 class="section"><a href="#toc-ocv">11.181 ocv</a></h3>
+
+<p>Apply a video transform using libopencv.
+</p>
+<p>To enable this filter, install the libopencv library and headers and
+configure FFmpeg with <code>--enable-libopencv</code>.
+</p>
+<p>It accepts the following parameters:
+</p>
+<dl compact="compact">
+<dt><samp>filter_name</samp></dt>
+<dd><p>The name of the libopencv filter to apply.
+</p>
+</dd>
+<dt><samp>filter_params</samp></dt>
+<dd><p>The parameters to pass to the libopencv filter. If not specified, the default
+values are assumed.
+</p>
+</dd>
+</dl>
+
+<p>Refer to the official libopencv documentation for more precise
+information:
+<a href="http://docs.opencv.org/master/modules/imgproc/doc/filtering.html">http://docs.opencv.org/master/modules/imgproc/doc/filtering.html</a>
+</p>
+<p>Several libopencv filters are supported; see the following subsections.
+</p>

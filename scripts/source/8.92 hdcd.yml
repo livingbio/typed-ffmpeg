@@ -1,0 +1,203 @@
+description: '8.92 hdcd
+
+  Decodes High Definition Compatible Digital (HDCD) data. A 16-bit PCM stream with
+
+  embedded HDCD codes is expanded into a 20-bit PCM stream.
+
+
+  The filter supports the Peak Extend and Low-level Gain Adjustment features
+
+  of HDCD, and detects the Transient Filter flag.
+
+
+
+  ffmpeg -i HDCD16.flac -af hdcd OUT24.flac
+
+
+  When using the filter with wav, note the default encoding for wav is 16-bit,
+
+  so the resulting 20-bit stream will be truncated back to 16-bit. Use something
+
+  like -acodec pcm_s24le after the filter to get 24-bit PCM output.
+
+
+  ffmpeg -i HDCD16.wav -af hdcd OUT16.wav
+
+  ffmpeg -i HDCD16.wav -af hdcd -c:a pcm_s24le OUT24.wav
+
+
+  The filter accepts the following options:'
+name: hdcd
+parameters:
+- description: '<dd><p>Disable any automatic format conversion or resampling in the
+    filter graph.
+
+    </p>
+
+    </dd>'
+  name: disable_autoconvert
+- description: '<dd><p>Process the stereo channels together. If target_gain does not
+    match between
+
+    channels, consider it invalid and use the last valid target_gain.
+
+    </p>
+
+    </dd>'
+  name: process_stereo
+- description: '<dd><p>Set the code detect timer period in ms.
+
+    </p>
+
+    </dd>'
+  name: cdt_ms
+- description: "<dd><p>Always extend peaks above -3dBFS even if PE isn\u2019t signaled.\n\
+    </p>\n</dd>"
+  name: force_pe
+- description: "<dd><p>Replace audio with a solid tone and adjust the amplitude to\
+    \ signal some\nspecific aspect of the decoding process. The output file can be\
+    \ loaded in\nan audio editor alongside the original to aid analysis.\n</p>\n<p><code>analyze_mode=pe:force_pe=true</code>\
+    \ can be used to see all samples above the PE level.\n</p>\n<p>Modes are:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>0, off</samp>\u2019</dt>\n<dd><p>Disabled\n\
+    </p></dd>\n<dt>\u2018<samp>1, lle</samp>\u2019</dt>\n<dd><p>Gain adjustment level\
+    \ at each sample\n</p></dd>\n<dt>\u2018<samp>2, pe</samp>\u2019</dt>\n<dd><p>Samples\
+    \ where peak extend occurs\n</p></dd>\n<dt>\u2018<samp>3, cdt</samp>\u2019</dt>\n\
+    <dd><p>Samples where the code detect timer is active\n</p></dd>\n<dt>\u2018<samp>4,\
+    \ tgm</samp>\u2019</dt>\n<dd><p>Samples where the target gain does not match between\
+    \ channels\n</p></dd>\n</dl>\n</dd>"
+  name: analyze_mode
+ref: https://ffmpeg.org/ffmpeg-filters.html#hdcd
+source: '<h3 class="section"><a href="#toc-hdcd">8.92 hdcd</a></h3>
+
+
+  <p>Decodes High Definition Compatible Digital (HDCD) data. A 16-bit PCM stream with
+
+  embedded HDCD codes is expanded into a 20-bit PCM stream.
+
+  </p>
+
+  <p>The filter supports the Peak Extend and Low-level Gain Adjustment features
+
+  of HDCD, and detects the Transient Filter flag.
+
+  </p>
+
+  <div class="example">
+
+  <pre class="example">ffmpeg -i HDCD16.flac -af hdcd OUT24.flac
+
+  </pre></div>
+
+
+  <p>When using the filter with wav, note the default encoding for wav is 16-bit,
+
+  so the resulting 20-bit stream will be truncated back to 16-bit. Use something
+
+  like <code>-acodec pcm_s24le</code> after the filter to get 24-bit PCM output.
+
+  </p><div class="example">
+
+  <pre class="example">ffmpeg -i HDCD16.wav -af hdcd OUT16.wav
+
+  ffmpeg -i HDCD16.wav -af hdcd -c:a pcm_s24le OUT24.wav
+
+  </pre></div>
+
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>disable_autoconvert</samp></dt>
+
+  <dd><p>Disable any automatic format conversion or resampling in the filter graph.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>process_stereo</samp></dt>
+
+  <dd><p>Process the stereo channels together. If target_gain does not match between
+
+  channels, consider it invalid and use the last valid target_gain.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>cdt_ms</samp></dt>
+
+  <dd><p>Set the code detect timer period in ms.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>force_pe</samp></dt>
+
+  <dd><p>Always extend peaks above -3dBFS even if PE isn&rsquo;t signaled.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>analyze_mode</samp></dt>
+
+  <dd><p>Replace audio with a solid tone and adjust the amplitude to signal some
+
+  specific aspect of the decoding process. The output file can be loaded in
+
+  an audio editor alongside the original to aid analysis.
+
+  </p>
+
+  <p><code>analyze_mode=pe:force_pe=true</code> can be used to see all samples above
+  the PE level.
+
+  </p>
+
+  <p>Modes are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>0, off</samp>&rsquo;</dt>
+
+  <dd><p>Disabled
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>1, lle</samp>&rsquo;</dt>
+
+  <dd><p>Gain adjustment level at each sample
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>2, pe</samp>&rsquo;</dt>
+
+  <dd><p>Samples where peak extend occurs
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>3, cdt</samp>&rsquo;</dt>
+
+  <dd><p>Samples where the code detect timer is active
+
+  </p></dd>
+
+  <dt>&lsquo;<samp>4, tgm</samp>&rsquo;</dt>
+
+  <dd><p>Samples where the target gain does not match between channels
+
+  </p></dd>
+
+  </dl>
+
+  </dd>
+
+  </dl>
+
+
+  '

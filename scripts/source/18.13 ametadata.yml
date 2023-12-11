@@ -1,0 +1,348 @@
+description: '18.13 metadata, ametadata
+
+  Manipulate frame metadata.
+
+
+  This filter accepts the following options:'
+name: ametadata
+parameters:
+- description: "<dd><p>Set mode of operation of the filter.\n</p>\n<p>Can be one of\
+    \ the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>select</samp>\u2019\
+    </dt>\n<dd><p>If both <code>value</code> and <code>key</code> is set, select frames\n\
+    which have such metadata. If only <code>key</code> is set, select\nevery frame\
+    \ that has such key in metadata.\n</p>\n</dd>\n<dt>\u2018<samp>add</samp>\u2019\
+    </dt>\n<dd><p>Add new metadata <code>key</code> and <code>value</code>. If key\
+    \ is already available\ndo nothing.\n</p>\n</dd>\n<dt>\u2018<samp>modify</samp>\u2019\
+    </dt>\n<dd><p>Modify value of already present key.\n</p>\n</dd>\n<dt>\u2018<samp>delete</samp>\u2019\
+    </dt>\n<dd><p>If <code>value</code> is set, delete only keys that have such value.\n\
+    Otherwise, delete key. If <code>key</code> is not set, delete all metadata values\
+    \ in\nthe frame.\n</p>\n</dd>\n<dt>\u2018<samp>print</samp>\u2019</dt>\n<dd><p>Print\
+    \ key and its value if metadata was found. If <code>key</code> is not set print\
+    \ all\nmetadata values available in frame.\n</p></dd>\n</dl>\n</dd>"
+  name: mode
+- description: '<dd><p>Set key used with all modes. Must be set for all modes except
+    <code>print</code> and <code>delete</code>.
+
+    </p>
+
+    </dd>'
+  name: key
+- description: '<dd><p>Set metadata value which will be used. This option is mandatory
+    for
+
+    <code>modify</code> and <code>add</code> mode.
+
+    </p>
+
+    </dd>'
+  name: value
+- description: "<dd><p>Which function to use when comparing metadata value and <code>value</code>.\n\
+    </p>\n<p>Can be one of following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018\
+    <samp>same_str</samp>\u2019</dt>\n<dd><p>Values are interpreted as strings, returns\
+    \ true if metadata value is same as <code>value</code>.\n</p>\n</dd>\n<dt>\u2018\
+    <samp>starts_with</samp>\u2019</dt>\n<dd><p>Values are interpreted as strings,\
+    \ returns true if metadata value starts with\nthe <code>value</code> option string.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>less</samp>\u2019</dt>\n<dd><p>Values are interpreted\
+    \ as floats, returns true if metadata value is less than <code>value</code>.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>equal</samp>\u2019</dt>\n<dd><p>Values are interpreted\
+    \ as floats, returns true if <code>value</code> is equal with metadata value.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>greater</samp>\u2019</dt>\n<dd><p>Values are interpreted\
+    \ as floats, returns true if metadata value is greater than <code>value</code>.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>expr</samp>\u2019</dt>\n<dd><p>Values are interpreted\
+    \ as floats, returns true if expression from option <code>expr</code>\nevaluates\
+    \ to true.\n</p>\n</dd>\n<dt>\u2018<samp>ends_with</samp>\u2019</dt>\n<dd><p>Values\
+    \ are interpreted as strings, returns true if metadata value ends with\nthe <code>value</code>\
+    \ option string.\n</p></dd>\n</dl>\n</dd>"
+  name: function
+- description: '<dd><p>Set expression which is used when <code>function</code> is
+    set to <code>expr</code>.
+
+    The expression is evaluated through the eval API and can contain the following
+
+    constants:
+
+    </p>
+
+    <dl compact="compact">
+
+    <dt><samp>VALUE1, FRAMEVAL</samp></dt>
+
+    <dd><p>Float representation of <code>value</code> from metadata key.
+
+    </p>
+
+    </dd>
+
+    <dt><samp>VALUE2, USERVAL</samp></dt>
+
+    <dd><p>Float representation of <code>value</code> as supplied by user in <code>value</code>
+    option.
+
+    </p></dd>
+
+    </dl>
+
+    </dd>'
+  name: expr
+- description: "<dd><p>If specified in <code>print</code> mode, output is written\
+    \ to the named file. Instead of\nplain filename any writable url can be specified.\
+    \ Filename \u201C-\u201D is a shorthand\nfor standard output. If <code>file</code>\
+    \ option is not set, output is written to the log\nwith AV_LOG_INFO loglevel.\n\
+    </p>\n</dd>"
+  name: file
+- description: '<dd><p>Reduces buffering in print mode when output is written to a
+    URL set using <var>file</var>.
+
+    </p>
+
+    </dd>'
+  name: direct
+ref: https://ffmpeg.org/ffmpeg-filters.html#metadata_002c
+source: '<h3 class="section"><a href="#toc-metadata_002c-ametadata">18.13 metadata,
+  ametadata</a></h3>
+
+
+  <p>Manipulate frame metadata.
+
+  </p>
+
+  <p>This filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Set mode of operation of the filter.
+
+  </p>
+
+  <p>Can be one of the following:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>select</samp>&rsquo;</dt>
+
+  <dd><p>If both <code>value</code> and <code>key</code> is set, select frames
+
+  which have such metadata. If only <code>key</code> is set, select
+
+  every frame that has such key in metadata.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>add</samp>&rsquo;</dt>
+
+  <dd><p>Add new metadata <code>key</code> and <code>value</code>. If key is already
+  available
+
+  do nothing.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>modify</samp>&rsquo;</dt>
+
+  <dd><p>Modify value of already present key.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>delete</samp>&rsquo;</dt>
+
+  <dd><p>If <code>value</code> is set, delete only keys that have such value.
+
+  Otherwise, delete key. If <code>key</code> is not set, delete all metadata values
+  in
+
+  the frame.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>print</samp>&rsquo;</dt>
+
+  <dd><p>Print key and its value if metadata was found. If <code>key</code> is not
+  set print all
+
+  metadata values available in frame.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>key</samp></dt>
+
+  <dd><p>Set key used with all modes. Must be set for all modes except <code>print</code>
+  and <code>delete</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>value</samp></dt>
+
+  <dd><p>Set metadata value which will be used. This option is mandatory for
+
+  <code>modify</code> and <code>add</code> mode.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>function</samp></dt>
+
+  <dd><p>Which function to use when comparing metadata value and <code>value</code>.
+
+  </p>
+
+  <p>Can be one of following:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>same_str</samp>&rsquo;</dt>
+
+  <dd><p>Values are interpreted as strings, returns true if metadata value is same
+  as <code>value</code>.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>starts_with</samp>&rsquo;</dt>
+
+  <dd><p>Values are interpreted as strings, returns true if metadata value starts
+  with
+
+  the <code>value</code> option string.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>less</samp>&rsquo;</dt>
+
+  <dd><p>Values are interpreted as floats, returns true if metadata value is less
+  than <code>value</code>.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>equal</samp>&rsquo;</dt>
+
+  <dd><p>Values are interpreted as floats, returns true if <code>value</code> is equal
+  with metadata value.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>greater</samp>&rsquo;</dt>
+
+  <dd><p>Values are interpreted as floats, returns true if metadata value is greater
+  than <code>value</code>.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>expr</samp>&rsquo;</dt>
+
+  <dd><p>Values are interpreted as floats, returns true if expression from option
+  <code>expr</code>
+
+  evaluates to true.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>ends_with</samp>&rsquo;</dt>
+
+  <dd><p>Values are interpreted as strings, returns true if metadata value ends with
+
+  the <code>value</code> option string.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>expr</samp></dt>
+
+  <dd><p>Set expression which is used when <code>function</code> is set to <code>expr</code>.
+
+  The expression is evaluated through the eval API and can contain the following
+
+  constants:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>VALUE1, FRAMEVAL</samp></dt>
+
+  <dd><p>Float representation of <code>value</code> from metadata key.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VALUE2, USERVAL</samp></dt>
+
+  <dd><p>Float representation of <code>value</code> as supplied by user in <code>value</code>
+  option.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>file</samp></dt>
+
+  <dd><p>If specified in <code>print</code> mode, output is written to the named file.
+  Instead of
+
+  plain filename any writable url can be specified. Filename &ldquo;-&rdquo; is a
+  shorthand
+
+  for standard output. If <code>file</code> option is not set, output is written to
+  the log
+
+  with AV_LOG_INFO loglevel.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>direct</samp></dt>
+
+  <dd><p>Reduces buffering in print mode when output is written to a URL set using
+  <var>file</var>.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  '

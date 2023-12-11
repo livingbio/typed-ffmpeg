@@ -1,0 +1,212 @@
+description: '11.182 oscilloscope
+
+  2D Video Oscilloscope.
+
+
+  Useful to measure spatial impulse, step responses, chroma delays, etc.
+
+
+  It accepts the following parameters:'
+name: oscilloscope
+parameters:
+- description: '<dd><p>Set scope center x position.
+
+    </p>
+
+    </dd>'
+  name: x
+- description: '<dd><p>Set scope center y position.
+
+    </p>
+
+    </dd>'
+  name: y
+- description: '<dd><p>Set scope size, relative to frame diagonal.
+
+    </p>
+
+    </dd>'
+  name: s
+- description: '<dd><p>Set scope tilt/rotation.
+
+    </p>
+
+    </dd>'
+  name: t
+- description: '<dd><p>Set trace opacity.
+
+    </p>
+
+    </dd>'
+  name: o
+- description: '<dd><p>Set trace center x position.
+
+    </p>
+
+    </dd>'
+  name: tx
+- description: '<dd><p>Set trace center y position.
+
+    </p>
+
+    </dd>'
+  name: ty
+- description: '<dd><p>Set trace width, relative to width of frame.
+
+    </p>
+
+    </dd>'
+  name: tw
+- description: '<dd><p>Set trace height, relative to height of frame.
+
+    </p>
+
+    </dd>'
+  name: th
+- description: '<dd><p>Set which components to trace. By default it traces first three
+    components.
+
+    </p>
+
+    </dd>'
+  name: c
+- description: '<dd><p>Draw trace grid. By default is enabled.
+
+    </p>
+
+    </dd>'
+  name: g
+- description: '<dd><p>Draw some statistics. By default is enabled.
+
+    </p>
+
+    </dd>'
+  name: st
+- description: '<dd><p>Draw scope. By default is enabled.
+
+    </p></dd>'
+  name: sc
+ref: https://ffmpeg.org/ffmpeg-filters.html#oscilloscope
+source: '<h3 class="section"><a href="#toc-oscilloscope">11.182 oscilloscope</a></h3>
+
+
+  <p>2D Video Oscilloscope.
+
+  </p>
+
+  <p>Useful to measure spatial impulse, step responses, chroma delays, etc.
+
+  </p>
+
+  <p>It accepts the following parameters:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>x</samp></dt>
+
+  <dd><p>Set scope center x position.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>y</samp></dt>
+
+  <dd><p>Set scope center y position.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>s</samp></dt>
+
+  <dd><p>Set scope size, relative to frame diagonal.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>t</samp></dt>
+
+  <dd><p>Set scope tilt/rotation.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>o</samp></dt>
+
+  <dd><p>Set trace opacity.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>tx</samp></dt>
+
+  <dd><p>Set trace center x position.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>ty</samp></dt>
+
+  <dd><p>Set trace center y position.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>tw</samp></dt>
+
+  <dd><p>Set trace width, relative to width of frame.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>th</samp></dt>
+
+  <dd><p>Set trace height, relative to height of frame.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>c</samp></dt>
+
+  <dd><p>Set which components to trace. By default it traces first three components.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>g</samp></dt>
+
+  <dd><p>Draw trace grid. By default is enabled.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>st</samp></dt>
+
+  <dd><p>Draw some statistics. By default is enabled.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>sc</samp></dt>
+
+  <dd><p>Draw scope. By default is enabled.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

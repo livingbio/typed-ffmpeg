@@ -1,0 +1,71 @@
+<h3 class="section"><a href="#toc-anlmf_002c-anlms">8.39 anlmf, anlms</a></h3>
+<p>Apply Normalized Least-Mean-(Squares|Fourth) algorithm to the first audio stream using the second audio stream.
+</p>
+<p>This adaptive filter is used to mimic a desired filter by finding the filter coefficients that
+relate to producing the least mean square of the error signal (difference between the desired,
+2nd input audio stream and the actual signal, the 1st input audio stream).
+</p>
+<p>A description of the accepted options follows.
+</p>
+<dl compact="compact">
+<dt><samp>order</samp></dt>
+<dd><p>Set filter order.
+</p>
+</dd>
+<dt><samp>mu</samp></dt>
+<dd><p>Set filter mu.
+</p>
+</dd>
+<dt><samp>eps</samp></dt>
+<dd><p>Set the filter eps.
+</p>
+</dd>
+<dt><samp>leakage</samp></dt>
+<dd><p>Set the filter leakage.
+</p>
+</dd>
+<dt><samp>out_mode</samp></dt>
+<dd><p>It accepts the following values:
+</p><dl compact="compact">
+<dt><samp>i</samp></dt>
+<dd><p>Pass the 1st input.
+</p>
+</dd>
+<dt><samp>d</samp></dt>
+<dd><p>Pass the 2nd input.
+</p>
+</dd>
+<dt><samp>o</samp></dt>
+<dd><p>Pass difference between desired, 2nd input and error signal estimate.
+</p>
+</dd>
+<dt><samp>n</samp></dt>
+<dd><p>Pass difference between input, 1st input and error signal estimate.
+</p>
+</dd>
+<dt><samp>e</samp></dt>
+<dd><p>Pass error signal estimated samples.
+</p>
+<p>Default value is <var>o</var>.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>precision</samp></dt>
+<dd><p>Set which precision to use when processing samples.
+</p>
+<dl compact="compact">
+<dt><samp>auto</samp></dt>
+<dd><p>Auto pick internal sample format depending on other filters.
+</p>
+</dd>
+<dt><samp>float</samp></dt>
+<dd><p>Always use single-floating point precision sample format.
+</p>
+</dd>
+<dt><samp>double</samp></dt>
+<dd><p>Always use double-floating point precision sample format.
+</p></dd>
+</dl>
+</dd>
+</dl>

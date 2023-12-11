@@ -1,0 +1,23 @@
+description: '17.2 nullsink
+
+  Null video sink: do absolutely nothing with the input video. It is
+
+  mainly useful as a template and for use in analysis / debugging
+
+  tools.'
+name: nullsink
+parameters: []
+ref: https://ffmpeg.org/ffmpeg-filters.html#nullsink
+source: '<h3 class="section"><a href="#toc-nullsink">17.2 nullsink</a></h3>
+
+
+  <p>Null video sink: do absolutely nothing with the input video. It is
+
+  mainly useful as a template and for use in analysis / debugging
+
+  tools.
+
+  </p>
+
+
+  '

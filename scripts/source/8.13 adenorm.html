@@ -1,0 +1,34 @@
+<h3 class="section"><a href="#toc-adenorm">8.13 adenorm</a></h3>
+<p>Remedy denormals in audio by adding extremely low-level noise.
+</p>
+<p>This filter shall be placed before any filter that can produce denormals.
+</p>
+<p>A description of the accepted parameters follows.
+</p>
+<dl compact="compact">
+<dt><samp>level</samp></dt>
+<dd><p>Set level of added noise in dB. Default is <code>-351</code>.
+Allowed range is from -451 to -90.
+</p>
+</dd>
+<dt><samp>type</samp></dt>
+<dd><p>Set type of added noise.
+</p>
+<dl compact="compact">
+<dt><samp>dc</samp></dt>
+<dd><p>Add DC signal.
+</p></dd>
+<dt><samp>ac</samp></dt>
+<dd><p>Add AC signal.
+</p></dd>
+<dt><samp>square</samp></dt>
+<dd><p>Add square signal.
+</p></dd>
+<dt><samp>pulse</samp></dt>
+<dd><p>Add pulse signal.
+</p></dd>
+</dl>
+
+<p>Default is <code>dc</code>.
+</p></dd>
+</dl>

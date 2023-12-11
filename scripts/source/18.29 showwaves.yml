@@ -1,0 +1,276 @@
+description: '18.29 showwaves
+
+  Convert input audio to a video output, representing the samples waves.
+
+
+  The filter accepts the following options:'
+name: showwaves
+parameters:
+- description: '<dd><p>Specify the video size for the output. For the syntax of this
+    option, check the
+
+    <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)"Video size" section
+    in the ffmpeg-utils manual</a>.
+
+    Default value is <code>600x240</code>.
+
+    </p>
+
+    </dd>'
+  name: size, s
+- description: "<dd><p>Set display mode.\n</p>\n<p>Available values are:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>point</samp>\u2019</dt>\n<dd><p>Draw a\
+    \ point for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n\
+    <dd><p>Draw a vertical line for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>p2p</samp>\u2019\
+    </dt>\n<dd><p>Draw a point for each sample and a line between them.\n</p>\n</dd>\n\
+    <dt>\u2018<samp>cline</samp>\u2019</dt>\n<dd><p>Draw a centered vertical line\
+    \ for each sample.\n</p></dd>\n</dl>\n<p>Default value is <code>point</code>.\n\
+    </p>\n</dd>"
+  name: mode
+- description: '<dd><p>Set the number of samples which are printed on the same column.
+    A
+
+    larger value will decrease the frame rate. Must be a positive
+
+    integer. This option can be set only if the value for <var>rate</var>
+
+    is not explicitly specified.
+
+    </p>
+
+    </dd>'
+  name: n
+- description: '<dd><p>Set the (approximate) output frame rate. This is done by setting
+    the
+
+    option <var>n</var>. Default value is "25".
+
+    </p>
+
+    </dd>'
+  name: rate, r
+- description: '<dd><p>Set if channels should be drawn separately or overlap. Default
+    value is 0.
+
+    </p>
+
+    </dd>'
+  name: split_channels
+- description: "<dd><p>Set colors separated by \u2019|\u2019 which are going to be\
+    \ used for drawing of each channel.\n</p>\n</dd>"
+  name: colors
+- description: "<dd><p>Set amplitude scale.\n</p>\n<p>Available values are:\n</p><dl\
+    \ compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p>\n\
+    </dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root.\n</p>\n</dd>\n\
+    <dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n</p></dd>\n</dl>\n\
+    <p>Default is linear.\n</p>\n</dd>"
+  name: scale
+- description: "<dd><p>Set the draw mode. This is mostly useful to set for high <var>n</var>.\n\
+    </p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>scale</samp>\u2019\
+    </dt>\n<dd><p>Scale pixel values for each drawn sample.\n</p>\n</dd>\n<dt>\u2018\
+    <samp>full</samp>\u2019</dt>\n<dd><p>Draw every sample directly.\n</p></dd>\n\
+    </dl>\n<p>Default value is <code>scale</code>.\n</p></dd>"
+  name: draw
+ref: https://ffmpeg.org/ffmpeg-filters.html#showwaves
+source: '<h3 class="section"><a href="#toc-showwaves">18.29 showwaves</a></h3>
+
+
+  <p>Convert input audio to a video output, representing the samples waves.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>size, s</samp></dt>
+
+  <dd><p>Specify the video size for the output. For the syntax of this option, check
+  the
+
+  <a href="ffmpeg-utils.html#video-size-syntax">(ffmpeg-utils)&quot;Video size&quot;
+  section in the ffmpeg-utils manual</a>.
+
+  Default value is <code>600x240</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>Set display mode.
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>point</samp>&rsquo;</dt>
+
+  <dd><p>Draw a point for each sample.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>line</samp>&rsquo;</dt>
+
+  <dd><p>Draw a vertical line for each sample.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>p2p</samp>&rsquo;</dt>
+
+  <dd><p>Draw a point for each sample and a line between them.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>cline</samp>&rsquo;</dt>
+
+  <dd><p>Draw a centered vertical line for each sample.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is <code>point</code>.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>n</samp></dt>
+
+  <dd><p>Set the number of samples which are printed on the same column. A
+
+  larger value will decrease the frame rate. Must be a positive
+
+  integer. This option can be set only if the value for <var>rate</var>
+
+  is not explicitly specified.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>rate, r</samp></dt>
+
+  <dd><p>Set the (approximate) output frame rate. This is done by setting the
+
+  option <var>n</var>. Default value is &quot;25&quot;.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>split_channels</samp></dt>
+
+  <dd><p>Set if channels should be drawn separately or overlap. Default value is 0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>colors</samp></dt>
+
+  <dd><p>Set colors separated by &rsquo;|&rsquo; which are going to be used for drawing
+  of each channel.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale</samp></dt>
+
+  <dd><p>Set amplitude scale.
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>lin</samp>&rsquo;</dt>
+
+  <dd><p>Linear.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>log</samp>&rsquo;</dt>
+
+  <dd><p>Logarithmic.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>sqrt</samp>&rsquo;</dt>
+
+  <dd><p>Square root.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>cbrt</samp>&rsquo;</dt>
+
+  <dd><p>Cubic root.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default is linear.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>draw</samp></dt>
+
+  <dd><p>Set the draw mode. This is mostly useful to set for high <var>n</var>.
+
+  </p>
+
+  <p>Available values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>scale</samp>&rsquo;</dt>
+
+  <dd><p>Scale pixel values for each drawn sample.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>full</samp>&rsquo;</dt>
+
+  <dd><p>Draw every sample directly.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Default value is <code>scale</code>.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

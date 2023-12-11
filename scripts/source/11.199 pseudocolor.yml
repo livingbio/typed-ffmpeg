@@ -1,0 +1,246 @@
+description: '11.199 pseudocolor
+
+  Alter frame colors in video with pseudocolors.
+
+
+  This filter accepts the following options:
+
+
+
+  Each of the expression options specifies the expression to use for computing
+
+  the lookup table for the corresponding pixel component values.
+
+
+  The expressions can contain the following constants and functions:
+
+
+
+  All expressions default to "val".'
+name: pseudocolor
+parameters:
+- description: '<dd><p>set pixel first component expression
+
+    </p>
+
+    </dd>'
+  name: c0
+- description: '<dd><p>set pixel second component expression
+
+    </p>
+
+    </dd>'
+  name: c1
+- description: '<dd><p>set pixel third component expression
+
+    </p>
+
+    </dd>'
+  name: c2
+- description: '<dd><p>set pixel fourth component expression, corresponds to the alpha
+    component
+
+    </p>
+
+    </dd>'
+  name: c3
+- description: '<dd><p>set component to use as base for altering colors
+
+    </p>
+
+    </dd>'
+  name: index, i
+- description: "<dd><p>Pick one of built-in LUTs. By default is set to none.\n</p>\n\
+    <p>Available LUTs:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>magma</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>inferno</samp>\u2019</dt>\n<dt>\u2018<samp>plasma</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>viridis</samp>\u2019</dt>\n<dt>\u2018<samp>turbo</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>cividis</samp>\u2019</dt>\n<dt>\u2018<samp>range1</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>range2</samp>\u2019</dt>\n<dt>\u2018<samp>shadows</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>highlights</samp>\u2019</dt>\n<dt>\u2018<samp>solar</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>nominal</samp>\u2019</dt>\n<dt>\u2018<samp>preferred</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>total</samp>\u2019</dt>\n<dt>\u2018<samp>spectral</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>cool</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>fiery</samp>\u2019</dt>\n<dt>\u2018<samp>blues</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dt>\u2018<samp>helix</samp>\u2019\
+    </dt>\n</dl>\n</dd>"
+  name: preset, p
+- description: '<dd><p>Set opacity of output colors. Allowed range is from 0 to 1.
+
+    Default value is set to 1.
+
+    </p></dd>'
+  name: opacity
+ref: https://ffmpeg.org/ffmpeg-filters.html#pseudocolor
+source: '<h3 class="section"><a href="#toc-pseudocolor">11.199 pseudocolor</a></h3>
+
+
+  <p>Alter frame colors in video with pseudocolors.
+
+  </p>
+
+  <p>This filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>c0</samp></dt>
+
+  <dd><p>set pixel first component expression
+
+  </p>
+
+  </dd>
+
+  <dt><samp>c1</samp></dt>
+
+  <dd><p>set pixel second component expression
+
+  </p>
+
+  </dd>
+
+  <dt><samp>c2</samp></dt>
+
+  <dd><p>set pixel third component expression
+
+  </p>
+
+  </dd>
+
+  <dt><samp>c3</samp></dt>
+
+  <dd><p>set pixel fourth component expression, corresponds to the alpha component
+
+  </p>
+
+  </dd>
+
+  <dt><samp>index, i</samp></dt>
+
+  <dd><p>set component to use as base for altering colors
+
+  </p>
+
+  </dd>
+
+  <dt><samp>preset, p</samp></dt>
+
+  <dd><p>Pick one of built-in LUTs. By default is set to none.
+
+  </p>
+
+  <p>Available LUTs:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>magma</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>inferno</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>plasma</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>viridis</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>turbo</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>cividis</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>range1</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>range2</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>shadows</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>highlights</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>solar</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>nominal</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>preferred</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>total</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>spectral</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>cool</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>heat</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>fiery</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>blues</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>green</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>helix</samp>&rsquo;</dt>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>opacity</samp></dt>
+
+  <dd><p>Set opacity of output colors. Allowed range is from 0 to 1.
+
+  Default value is set to 1.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>Each of the expression options specifies the expression to use for computing
+
+  the lookup table for the corresponding pixel component values.
+
+  </p>
+
+  <p>The expressions can contain the following constants and functions:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>w</samp></dt>
+
+  <dt><samp>h</samp></dt>
+
+  <dd><p>The input width and height.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>val</samp></dt>
+
+  <dd><p>The input value for the pixel component.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>ymin, umin, vmin, amin</samp></dt>
+
+  <dd><p>The minimum allowed component value.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>ymax, umax, vmax, amax</samp></dt>
+
+  <dd><p>The maximum allowed component value.
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>All expressions default to &quot;val&quot;.
+
+  </p>
+
+  '

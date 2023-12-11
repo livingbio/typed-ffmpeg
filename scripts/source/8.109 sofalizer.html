@@ -1,0 +1,86 @@
+<h3 class="section"><a href="#toc-sofalizer">8.109 sofalizer</a></h3>
+
+<p>SOFAlizer uses head-related transfer functions (HRTFs) to create virtual
+loudspeakers around the user for binaural listening via headphones (audio
+formats up to 9 channels supported).
+The HRTFs are stored in SOFA files (see <a href="http://www.sofacoustics.org/">http://www.sofacoustics.org/</a> for a database).
+SOFAlizer is developed at the Acoustics Research Institute (ARI) of the
+Austrian Academy of Sciences.
+</p>
+<p>To enable compilation of this filter you need to configure FFmpeg with
+<code>--enable-libmysofa</code>.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>sofa</samp></dt>
+<dd><p>Set the SOFA file used for rendering.
+</p>
+</dd>
+<dt><samp>gain</samp></dt>
+<dd><p>Set gain applied to audio. Value is in dB. Default is 0.
+</p>
+</dd>
+<dt><samp>rotation</samp></dt>
+<dd><p>Set rotation of virtual loudspeakers in deg. Default is 0.
+</p>
+</dd>
+<dt><samp>elevation</samp></dt>
+<dd><p>Set elevation of virtual speakers in deg. Default is 0.
+</p>
+</dd>
+<dt><samp>radius</samp></dt>
+<dd><p>Set distance in meters between loudspeakers and the listener with near-field
+HRTFs. Default is 1.
+</p>
+</dd>
+<dt><samp>type</samp></dt>
+<dd><p>Set processing type. Can be <var>time</var> or <var>freq</var>. <var>time</var> is
+processing audio in time domain which is slow.
+<var>freq</var> is processing audio in frequency domain which is fast.
+Default is <var>freq</var>.
+</p>
+</dd>
+<dt><samp>speakers</samp></dt>
+<dd><p>Set custom positions of virtual loudspeakers. Syntax for this option is:
+&lt;CH&gt; &lt;AZIM&gt; &lt;ELEV&gt;[|&lt;CH&gt; &lt;AZIM&gt; &lt;ELEV&gt;|...].
+Each virtual loudspeaker is described with short channel name following with
+azimuth and elevation in degrees.
+Each virtual loudspeaker description is separated by &rsquo;|&rsquo;.
+For example to override front left and front right channel positions use:
+&rsquo;speakers=FL 45 15|FR 345 15&rsquo;.
+Descriptions with unrecognised channel names are ignored.
+</p>
+</dd>
+<dt><samp>lfegain</samp></dt>
+<dd><p>Set custom gain for LFE channels. Value is in dB. Default is 0.
+</p>
+</dd>
+<dt><samp>framesize</samp></dt>
+<dd><p>Set custom frame size in number of samples. Default is 1024.
+Allowed range is from 1024 to 96000. Only used if option &lsquo;<samp>type</samp>&rsquo;
+is set to <var>freq</var>.
+</p>
+</dd>
+<dt><samp>normalize</samp></dt>
+<dd><p>Should all IRs be normalized upon importing SOFA file.
+By default is enabled.
+</p>
+</dd>
+<dt><samp>interpolate</samp></dt>
+<dd><p>Should nearest IRs be interpolated with neighbor IRs if exact position
+does not match. By default is disabled.
+</p>
+</dd>
+<dt><samp>minphase</samp></dt>
+<dd><p>Minphase all IRs upon loading of SOFA file. By default is disabled.
+</p>
+</dd>
+<dt><samp>anglestep</samp></dt>
+<dd><p>Set neighbor search angle step. Only used if option <var>interpolate</var> is enabled.
+</p>
+</dd>
+<dt><samp>radstep</samp></dt>
+<dd><p>Set neighbor search radius step. Only used if option <var>interpolate</var> is enabled.
+</p></dd>
+</dl>

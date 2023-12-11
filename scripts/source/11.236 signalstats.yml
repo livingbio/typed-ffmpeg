@@ -1,0 +1,658 @@
+description: '11.236 signalstats
+
+  Evaluate various visual metrics that assist in determining issues associated
+
+  with the digitization of analog video media.
+
+
+  By default the filter will log these metadata values:
+
+
+
+  The filter accepts the following options:'
+name: signalstats
+parameters:
+- description: '<dd><p>Display the minimal Y value contained within the input frame.
+    Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: YMIN
+- description: '<dd><p>Display the Y value at the 10% percentile within the input
+    frame. Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: YLOW
+- description: '<dd><p>Display the average Y value within the input frame. Expressed
+    in range of
+
+    [0-255].
+
+    </p>
+
+    </dd>'
+  name: YAVG
+- description: '<dd><p>Display the Y value at the 90% percentile within the input
+    frame. Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: YHIGH
+- description: '<dd><p>Display the maximum Y value contained within the input frame.
+    Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: YMAX
+- description: '<dd><p>Display the minimal U value contained within the input frame.
+    Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: UMIN
+- description: '<dd><p>Display the U value at the 10% percentile within the input
+    frame. Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: ULOW
+- description: '<dd><p>Display the average U value within the input frame. Expressed
+    in range of
+
+    [0-255].
+
+    </p>
+
+    </dd>'
+  name: UAVG
+- description: '<dd><p>Display the U value at the 90% percentile within the input
+    frame. Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: UHIGH
+- description: '<dd><p>Display the maximum U value contained within the input frame.
+    Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: UMAX
+- description: '<dd><p>Display the minimal V value contained within the input frame.
+    Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: VMIN
+- description: '<dd><p>Display the V value at the 10% percentile within the input
+    frame. Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: VLOW
+- description: '<dd><p>Display the average V value within the input frame. Expressed
+    in range of
+
+    [0-255].
+
+    </p>
+
+    </dd>'
+  name: VAVG
+- description: '<dd><p>Display the V value at the 90% percentile within the input
+    frame. Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: VHIGH
+- description: '<dd><p>Display the maximum V value contained within the input frame.
+    Expressed in
+
+    range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: VMAX
+- description: '<dd><p>Display the minimal saturation value contained within the input
+    frame.
+
+    Expressed in range of [0-~181.02].
+
+    </p>
+
+    </dd>'
+  name: SATMIN
+- description: '<dd><p>Display the saturation value at the 10% percentile within the
+    input frame.
+
+    Expressed in range of [0-~181.02].
+
+    </p>
+
+    </dd>'
+  name: SATLOW
+- description: '<dd><p>Display the average saturation value within the input frame.
+    Expressed in range
+
+    of [0-~181.02].
+
+    </p>
+
+    </dd>'
+  name: SATAVG
+- description: '<dd><p>Display the saturation value at the 90% percentile within the
+    input frame.
+
+    Expressed in range of [0-~181.02].
+
+    </p>
+
+    </dd>'
+  name: SATHIGH
+- description: '<dd><p>Display the maximum saturation value contained within the input
+    frame.
+
+    Expressed in range of [0-~181.02].
+
+    </p>
+
+    </dd>'
+  name: SATMAX
+- description: '<dd><p>Display the median value for hue within the input frame. Expressed
+    in range of
+
+    [0-360].
+
+    </p>
+
+    </dd>'
+  name: HUEMED
+- description: '<dd><p>Display the average value for hue within the input frame. Expressed
+    in range of
+
+    [0-360].
+
+    </p>
+
+    </dd>'
+  name: HUEAVG
+- description: '<dd><p>Display the average of sample value difference between all
+    values of the Y
+
+    plane in the current frame and corresponding values of the previous input frame.
+
+    Expressed in range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: YDIF
+- description: '<dd><p>Display the average of sample value difference between all
+    values of the U
+
+    plane in the current frame and corresponding values of the previous input frame.
+
+    Expressed in range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: UDIF
+- description: '<dd><p>Display the average of sample value difference between all
+    values of the V
+
+    plane in the current frame and corresponding values of the previous input frame.
+
+    Expressed in range of [0-255].
+
+    </p>
+
+    </dd>'
+  name: VDIF
+- description: '<dd><p>Display bit depth of Y plane in current frame.
+
+    Expressed in range of [0-16].
+
+    </p>
+
+    </dd>'
+  name: YBITDEPTH
+- description: '<dd><p>Display bit depth of U plane in current frame.
+
+    Expressed in range of [0-16].
+
+    </p>
+
+    </dd>'
+  name: UBITDEPTH
+- description: '<dd><p>Display bit depth of V plane in current frame.
+
+    Expressed in range of [0-16].
+
+    </p></dd>'
+  name: VBITDEPTH
+ref: https://ffmpeg.org/ffmpeg-filters.html#signalstats
+source: '<h3 class="section"><a href="#toc-signalstats-1">11.236 signalstats</a></h3>
+
+  <p>Evaluate various visual metrics that assist in determining issues associated
+
+  with the digitization of analog video media.
+
+  </p>
+
+  <p>By default the filter will log these metadata values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>YMIN</samp></dt>
+
+  <dd><p>Display the minimal Y value contained within the input frame. Expressed in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>YLOW</samp></dt>
+
+  <dd><p>Display the Y value at the 10% percentile within the input frame. Expressed
+  in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>YAVG</samp></dt>
+
+  <dd><p>Display the average Y value within the input frame. Expressed in range of
+
+  [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>YHIGH</samp></dt>
+
+  <dd><p>Display the Y value at the 90% percentile within the input frame. Expressed
+  in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>YMAX</samp></dt>
+
+  <dd><p>Display the maximum Y value contained within the input frame. Expressed in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>UMIN</samp></dt>
+
+  <dd><p>Display the minimal U value contained within the input frame. Expressed in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>ULOW</samp></dt>
+
+  <dd><p>Display the U value at the 10% percentile within the input frame. Expressed
+  in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>UAVG</samp></dt>
+
+  <dd><p>Display the average U value within the input frame. Expressed in range of
+
+  [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>UHIGH</samp></dt>
+
+  <dd><p>Display the U value at the 90% percentile within the input frame. Expressed
+  in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>UMAX</samp></dt>
+
+  <dd><p>Display the maximum U value contained within the input frame. Expressed in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VMIN</samp></dt>
+
+  <dd><p>Display the minimal V value contained within the input frame. Expressed in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VLOW</samp></dt>
+
+  <dd><p>Display the V value at the 10% percentile within the input frame. Expressed
+  in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VAVG</samp></dt>
+
+  <dd><p>Display the average V value within the input frame. Expressed in range of
+
+  [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VHIGH</samp></dt>
+
+  <dd><p>Display the V value at the 90% percentile within the input frame. Expressed
+  in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VMAX</samp></dt>
+
+  <dd><p>Display the maximum V value contained within the input frame. Expressed in
+
+  range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>SATMIN</samp></dt>
+
+  <dd><p>Display the minimal saturation value contained within the input frame.
+
+  Expressed in range of [0-~181.02].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>SATLOW</samp></dt>
+
+  <dd><p>Display the saturation value at the 10% percentile within the input frame.
+
+  Expressed in range of [0-~181.02].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>SATAVG</samp></dt>
+
+  <dd><p>Display the average saturation value within the input frame. Expressed in
+  range
+
+  of [0-~181.02].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>SATHIGH</samp></dt>
+
+  <dd><p>Display the saturation value at the 90% percentile within the input frame.
+
+  Expressed in range of [0-~181.02].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>SATMAX</samp></dt>
+
+  <dd><p>Display the maximum saturation value contained within the input frame.
+
+  Expressed in range of [0-~181.02].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>HUEMED</samp></dt>
+
+  <dd><p>Display the median value for hue within the input frame. Expressed in range
+  of
+
+  [0-360].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>HUEAVG</samp></dt>
+
+  <dd><p>Display the average value for hue within the input frame. Expressed in range
+  of
+
+  [0-360].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>YDIF</samp></dt>
+
+  <dd><p>Display the average of sample value difference between all values of the
+  Y
+
+  plane in the current frame and corresponding values of the previous input frame.
+
+  Expressed in range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>UDIF</samp></dt>
+
+  <dd><p>Display the average of sample value difference between all values of the
+  U
+
+  plane in the current frame and corresponding values of the previous input frame.
+
+  Expressed in range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VDIF</samp></dt>
+
+  <dd><p>Display the average of sample value difference between all values of the
+  V
+
+  plane in the current frame and corresponding values of the previous input frame.
+
+  Expressed in range of [0-255].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>YBITDEPTH</samp></dt>
+
+  <dd><p>Display bit depth of Y plane in current frame.
+
+  Expressed in range of [0-16].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>UBITDEPTH</samp></dt>
+
+  <dd><p>Display bit depth of U plane in current frame.
+
+  Expressed in range of [0-16].
+
+  </p>
+
+  </dd>
+
+  <dt><samp>VBITDEPTH</samp></dt>
+
+  <dd><p>Display bit depth of V plane in current frame.
+
+  Expressed in range of [0-16].
+
+  </p></dd>
+
+  </dl>
+
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>stat</samp></dt>
+
+  <dt><samp>out</samp></dt>
+
+  <dd>
+
+  <p><samp>stat</samp> specify an additional form of image analysis.
+
+  <samp>out</samp> output video with the specified type of pixel highlighted.
+
+  </p>
+
+  <p>Both options accept the following values:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>tout</samp>&rsquo;</dt>
+
+  <dd><p>Identify <var>temporal outliers</var> pixels. A <var>temporal outlier</var>
+  is a pixel
+
+  unlike the neighboring pixels of the same field. Examples of temporal outliers
+
+  include the results of video dropouts, head clogs, or tape tracking issues.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>vrep</samp>&rsquo;</dt>
+
+  <dd><p>Identify <var>vertical line repetition</var>. Vertical line repetition includes
+
+  similar rows of pixels within a frame. In born-digital video vertical line
+
+  repetition is common, but this pattern is uncommon in video digitized from an
+
+  analog source. When it occurs in video that results from the digitization of an
+
+  analog source it can indicate concealment from a dropout compensator.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>brng</samp>&rsquo;</dt>
+
+  <dd><p>Identify pixels that fall outside of legal broadcast range.
+
+  </p></dd>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>color, c</samp></dt>
+
+  <dd><p>Set the highlight color for the <samp>out</samp> option. The default color
+  is
+
+  yellow.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

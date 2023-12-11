@@ -1,0 +1,70 @@
+<h3 class="section"><a href="#toc-aap">8.1 aap</a></h3>
+<p>Apply Affine Projection algorithm to the first audio stream using the second audio stream.
+</p>
+<p>This adaptive filter is used to estimate unknown audio based on multiple input audio samples.
+Affine projection algorithm can make trade-offs between computation complexity with convergence speed.
+</p>
+<p>A description of the accepted options follows.
+</p>
+<dl compact="compact">
+<dt><samp>order</samp></dt>
+<dd><p>Set the filter order.
+</p>
+</dd>
+<dt><samp>projection</samp></dt>
+<dd><p>Set the projection order.
+</p>
+</dd>
+<dt><samp>mu</samp></dt>
+<dd><p>Set the filter mu.
+</p>
+</dd>
+<dt><samp>delta</samp></dt>
+<dd><p>Set the coefficient to initialize internal covariance matrix.
+</p>
+</dd>
+<dt><samp>out_mode</samp></dt>
+<dd><p>Set the filter output samples. It accepts the following values:
+</p><dl compact="compact">
+<dt><samp>i</samp></dt>
+<dd><p>Pass the 1st input.
+</p>
+</dd>
+<dt><samp>d</samp></dt>
+<dd><p>Pass the 2nd input.
+</p>
+</dd>
+<dt><samp>o</samp></dt>
+<dd><p>Pass difference between desired, 2nd input and error signal estimate.
+</p>
+</dd>
+<dt><samp>n</samp></dt>
+<dd><p>Pass difference between input, 1st input and error signal estimate.
+</p>
+</dd>
+<dt><samp>e</samp></dt>
+<dd><p>Pass error signal estimated samples.
+</p>
+<p>Default value is <var>o</var>.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp>precision</samp></dt>
+<dd><p>Set which precision to use when processing samples.
+</p>
+<dl compact="compact">
+<dt><samp>auto</samp></dt>
+<dd><p>Auto pick internal sample format depending on other filters.
+</p>
+</dd>
+<dt><samp>float</samp></dt>
+<dd><p>Always use single-floating point precision sample format.
+</p>
+</dd>
+<dt><samp>double</samp></dt>
+<dd><p>Always use double-floating point precision sample format.
+</p></dd>
+</dl>
+</dd>
+</dl>

@@ -1,0 +1,65 @@
+description: '11.148 limiter
+
+  Limits the pixel components values to the specified range [min, max].
+
+
+  The filter accepts the following options:'
+name: limiter
+parameters:
+- description: '<dd><p>Lower bound. Defaults to the lowest allowed value for the input.
+
+    </p>
+
+    </dd>'
+  name: min
+- description: '<dd><p>Upper bound. Defaults to the highest allowed value for the
+    input.
+
+    </p>
+
+    </dd>'
+  name: max
+- description: '<dd><p>Specify which planes will be processed. Defaults to all available.
+
+    </p></dd>'
+  name: planes
+ref: https://ffmpeg.org/ffmpeg-filters.html#limiter
+source: '<h3 class="section"><a href="#toc-limiter">11.148 limiter</a></h3>
+
+
+  <p>Limits the pixel components values to the specified range [min, max].
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>min</samp></dt>
+
+  <dd><p>Lower bound. Defaults to the lowest allowed value for the input.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>max</samp></dt>
+
+  <dd><p>Upper bound. Defaults to the highest allowed value for the input.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>planes</samp></dt>
+
+  <dd><p>Specify which planes will be processed. Defaults to all available.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

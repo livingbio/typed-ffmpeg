@@ -1,0 +1,77 @@
+description: '8.27 afreqshift
+
+  Apply frequency shift to input audio samples.
+
+
+  The filter accepts the following options:'
+name: afreqshift
+parameters:
+- description: '<dd><p>Specify frequency shift. Allowed range is -INT_MAX to INT_MAX.
+
+    Default value is 0.0.
+
+    </p>
+
+    </dd>'
+  name: shift
+- description: '<dd><p>Set output gain applied to final output. Allowed range is from
+    0.0 to 1.0.
+
+    Default value is 1.0.
+
+    </p>
+
+    </dd>'
+  name: level
+- description: '<dd><p>Set filter order used for filtering. Allowed range is from
+    1 to 16.
+
+    Default value is 8.
+
+    </p></dd>'
+  name: order
+ref: https://ffmpeg.org/ffmpeg-filters.html#afreqshift
+source: '<h3 class="section"><a href="#toc-afreqshift">8.27 afreqshift</a></h3>
+
+  <p>Apply frequency shift to input audio samples.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>shift</samp></dt>
+
+  <dd><p>Specify frequency shift. Allowed range is -INT_MAX to INT_MAX.
+
+  Default value is 0.0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>level</samp></dt>
+
+  <dd><p>Set output gain applied to final output. Allowed range is from 0.0 to 1.0.
+
+  Default value is 1.0.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>order</samp></dt>
+
+  <dd><p>Set filter order used for filtering. Allowed range is from 1 to 16.
+
+  Default value is 8.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

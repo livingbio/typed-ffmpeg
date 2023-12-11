@@ -1,0 +1,168 @@
+description: '11.57 deband
+
+  Remove banding artifacts from input video.
+
+  It works by replacing banded pixels with average value of referenced pixels.
+
+
+  The filter accepts the following options:'
+name: deband
+parameters:
+- description: '<dd><p>Set banding detection threshold for each plane. Default is
+    0.02.
+
+    Valid range is 0.00003 to 0.5.
+
+    If difference between current pixel and reference pixel is less than threshold,
+
+    it will be considered as banded.
+
+    </p>
+
+    </dd>'
+  name: 1thr
+- description: '<dd><p>Banding detection range in pixels. Default is 16. If positive,
+    random number
+
+    in range 0 to set value will be used. If negative, exact absolute value
+
+    will be used.
+
+    The range defines square of four pixels around current pixel.
+
+    </p>
+
+    </dd>'
+  name: 2thr
+- description: '<dd><p>Set direction in radians from which four pixel will be compared.
+    If positive,
+
+    random direction from 0 to set direction will be picked. If negative, exact of
+
+    absolute value will be picked. For example direction 0, -PI or -2*PI radians
+
+    will pick only pixels on same row and -PI/2 will pick only pixels on same
+
+    column.
+
+    </p>
+
+    </dd>'
+  name: 3thr
+- description: '<dd><p>If enabled, current pixel is compared with average value of
+    all four
+
+    surrounding pixels. The default is enabled. If disabled current pixel is
+
+    compared with all four surrounding pixels. The pixel is considered banded
+
+    if only all four differences with surrounding pixels are less than threshold.
+
+    </p>
+
+    </dd>'
+  name: 4thr
+- description: '<dd><p>If enabled, current pixel is changed if and only if all pixel
+    components are banded,
+
+    e.g. banding detection threshold is triggered for all color components.
+
+    The default is disabled.
+
+    </p></dd>'
+  name: range, r
+ref: https://ffmpeg.org/ffmpeg-filters.html#deband
+source: '<h3 class="section"><a href="#toc-deband">11.57 deband</a></h3>
+
+
+  <p>Remove banding artifacts from input video.
+
+  It works by replacing banded pixels with average value of referenced pixels.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>1thr</samp></dt>
+
+  <dt><samp>2thr</samp></dt>
+
+  <dt><samp>3thr</samp></dt>
+
+  <dt><samp>4thr</samp></dt>
+
+  <dd><p>Set banding detection threshold for each plane. Default is 0.02.
+
+  Valid range is 0.00003 to 0.5.
+
+  If difference between current pixel and reference pixel is less than threshold,
+
+  it will be considered as banded.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>range, r</samp></dt>
+
+  <dd><p>Banding detection range in pixels. Default is 16. If positive, random number
+
+  in range 0 to set value will be used. If negative, exact absolute value
+
+  will be used.
+
+  The range defines square of four pixels around current pixel.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>direction, d</samp></dt>
+
+  <dd><p>Set direction in radians from which four pixel will be compared. If positive,
+
+  random direction from 0 to set direction will be picked. If negative, exact of
+
+  absolute value will be picked. For example direction 0, -PI or -2*PI radians
+
+  will pick only pixels on same row and -PI/2 will pick only pixels on same
+
+  column.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>blur, b</samp></dt>
+
+  <dd><p>If enabled, current pixel is compared with average value of all four
+
+  surrounding pixels. The default is enabled. If disabled current pixel is
+
+  compared with all four surrounding pixels. The pixel is considered banded
+
+  if only all four differences with surrounding pixels are less than threshold.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>coupling, c</samp></dt>
+
+  <dd><p>If enabled, current pixel is changed if and only if all pixel components
+  are banded,
+
+  e.g. banding detection threshold is triggered for all color components.
+
+  The default is disabled.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

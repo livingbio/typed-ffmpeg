@@ -1,0 +1,46 @@
+<h3 class="section"><a href="#toc-edgedetect">11.79 edgedetect</a></h3>
+
+<p>Detect and draw edges. The filter uses the Canny Edge Detection algorithm.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>low</samp></dt>
+<dt><samp>high</samp></dt>
+<dd><p>Set low and high threshold values used by the Canny thresholding
+algorithm.
+</p>
+<p>The high threshold selects the &quot;strong&quot; edge pixels, which are then
+connected through 8-connectivity with the &quot;weak&quot; edge pixels selected
+by the low threshold.
+</p>
+<p><var>low</var> and <var>high</var> threshold values must be chosen in the range
+[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.
+</p>
+<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>
+is <code>50/255</code>.
+</p>
+</dd>
+<dt><samp>mode</samp></dt>
+<dd><p>Define the drawing mode.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>wires</samp>&rsquo;</dt>
+<dd><p>Draw white/gray wires on black background.
+</p>
+</dd>
+<dt>&lsquo;<samp>colormix</samp>&rsquo;</dt>
+<dd><p>Mix the colors to create a paint/cartoon effect.
+</p>
+</dd>
+<dt>&lsquo;<samp>canny</samp>&rsquo;</dt>
+<dd><p>Apply Canny edge detector on all selected planes.
+</p></dd>
+</dl>
+<p>Default value is <var>wires</var>.
+</p>
+</dd>
+<dt><samp>planes</samp></dt>
+<dd><p>Select planes for filtering. By default all available planes are filtered.
+</p></dd>
+</dl>

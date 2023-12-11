@@ -1,0 +1,77 @@
+description: '14.2 blend_vulkan
+
+  Blend two Vulkan frames into each other.
+
+
+  The blend filter takes two input streams and outputs one
+
+  stream, the first input is the "top" layer and second input is
+
+  "bottom" layer.  By default, the output terminates when the longest input terminates.
+
+
+  A description of the accepted options follows.'
+name: blend_vulkan
+parameters:
+- description: "<dd><p>Set blend mode for specific pixel component or all pixel components\
+    \ in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n\
+    <p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018\
+    <samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n</dl>\n\
+    </dd>"
+  name: c0_mode
+ref: https://ffmpeg.org/ffmpeg-filters.html#blend_005fvulkan
+source: '<h3 class="section"><a href="#toc-blend_005fvulkan">14.2 blend_vulkan</a></h3>
+
+
+  <p>Blend two Vulkan frames into each other.
+
+  </p>
+
+  <p>The <code>blend</code> filter takes two input streams and outputs one
+
+  stream, the first input is the &quot;top&quot; layer and second input is
+
+  &quot;bottom&quot; layer.  By default, the output terminates when the longest input
+  terminates.
+
+  </p>
+
+  <p>A description of the accepted options follows.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>c0_mode</samp></dt>
+
+  <dt><samp>c1_mode</samp></dt>
+
+  <dt><samp>c2_mode</samp></dt>
+
+  <dt><samp>c3_mode</samp></dt>
+
+  <dt><samp>all_mode</samp></dt>
+
+  <dd><p>Set blend mode for specific pixel component or all pixel components in case
+
+  of <var>all_mode</var>. Default value is <code>normal</code>.
+
+  </p>
+
+  <p>Available values for component modes are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>normal</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>multiply</samp>&rsquo;</dt>
+
+  </dl>
+
+
+  </dd>
+
+  </dl>
+
+
+  '

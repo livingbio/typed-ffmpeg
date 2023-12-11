@@ -1,0 +1,19 @@
+<h3 class="section"><a href="#toc-arnndn">8.50 arnndn</a></h3>
+
+<p>Reduce noise from speech using Recurrent Neural Networks.
+</p>
+<p>This filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>model, m</samp></dt>
+<dd><p>Set train model file to load. This option is always required.
+</p>
+</dd>
+<dt><samp>mix</samp></dt>
+<dd><p>Set how much to mix filtered samples into final output.
+Allowed range is from -1 to 1. Default value is 1.
+Negative values are special, they set how much to keep filtered noise
+in the final filter output. Set this option to -1 to hear actual
+noise removed from input signal.
+</p></dd>
+</dl>

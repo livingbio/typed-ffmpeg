@@ -1,0 +1,83 @@
+description: '11.220 scale_vt
+
+  Scale and convert the color parameters using VTPixelTransferSession.
+
+
+  The filter accepts the following options:'
+name: scale_vt
+parameters:
+- description: '<dd><p>Set the output video dimension expression. Default value is
+    the input dimension.
+
+    </p>
+
+    </dd>'
+  name: w
+- description: '<dd><p>Set the output colorspace matrix.
+
+    </p>
+
+    </dd>'
+  name: h
+- description: '<dd><p>Set the output color primaries.
+
+    </p>
+
+    </dd>'
+  name: color_matrix
+- description: '<dd><p>Set the output transfer characteristics.
+
+    </p>
+
+    </dd>'
+  name: color_primaries
+ref: https://ffmpeg.org/ffmpeg-filters.html#scale_005fvt
+source: '<h3 class="section"><a href="#toc-scale_005fvt">11.220 scale_vt</a></h3>
+
+
+  <p>Scale and convert the color parameters using VTPixelTransferSession.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p><dl compact="compact">
+
+  <dt><samp>w</samp></dt>
+
+  <dt><samp>h</samp></dt>
+
+  <dd><p>Set the output video dimension expression. Default value is the input dimension.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>color_matrix</samp></dt>
+
+  <dd><p>Set the output colorspace matrix.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>color_primaries</samp></dt>
+
+  <dd><p>Set the output color primaries.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>color_transfer</samp></dt>
+
+  <dd><p>Set the output transfer characteristics.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+
+  '

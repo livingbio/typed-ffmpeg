@@ -1,0 +1,442 @@
+description: '11.143 lensfun
+
+  Apply lens correction via the lensfun library (http://lensfun.sourceforge.net/).
+
+
+  The lensfun filter requires the camera make, camera model, and lens model
+
+  to apply the lens correction. The filter will load the lensfun database and
+
+  query it to find the corresponding camera and lens entries in the database. As
+
+  long as these entries can be found with the given options, the filter can
+
+  perform corrections on frames. Note that incomplete strings will result in the
+
+  filter choosing the best match with the given options, and the filter will
+
+  output the chosen camera and lens models (logged with level "info"). You must
+
+  provide the make, camera model, and lens model as they are required.
+
+
+  To obtain a list of available makes and models, leave out one or both of make and
+
+  model options. The filter will send the full list to the log with level INFO.
+
+  The first column is the make and the second column is the model.
+
+  To obtain a list of available lenses, set any values for make and model and leave
+  out the
+
+  lens_model option. The filter will send the full list of lenses in the log with
+  level
+
+  INFO. The ffmpeg tool will exit after the list is printed.
+
+
+  The filter accepts the following options:'
+name: lensfun
+parameters:
+- description: '<dd><p>The make of the camera (for example, "Canon"). This option
+    is required.
+
+    </p>
+
+    </dd>'
+  name: make
+- description: '<dd><p>The model of the camera (for example, "Canon EOS 100D"). This
+    option is
+
+    required.
+
+    </p>
+
+    </dd>'
+  name: model
+- description: '<dd><p>The model of the lens (for example, "Canon EF-S 18-55mm f/3.5-5.6
+    IS STM"). This
+
+    option is required.
+
+    </p>
+
+    </dd>'
+  name: lens_model
+- description: '<dd><p>The full path to the lens database folder. If not set, the
+    filter will attempt to
+
+    load the database from the install path when the library was built. Default is
+    unset.
+
+    </p>
+
+    </dd>'
+  name: db_path
+- description: "<dd><p>The type of correction to apply. The following values are valid\
+    \ options:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>vignetting</samp>\u2019\
+    </dt>\n<dd><p>Enables fixing lens vignetting.\n</p>\n</dd>\n<dt>\u2018<samp>geometry</samp>\u2019\
+    </dt>\n<dd><p>Enables fixing lens geometry. This is the default.\n</p>\n</dd>\n\
+    <dt>\u2018<samp>subpixel</samp>\u2019</dt>\n<dd><p>Enables fixing chromatic aberrations.\n\
+    </p>\n</dd>\n<dt>\u2018<samp>vig_geo</samp>\u2019</dt>\n<dd><p>Enables fixing\
+    \ lens vignetting and lens geometry.\n</p>\n</dd>\n<dt>\u2018<samp>vig_subpixel</samp>\u2019\
+    </dt>\n<dd><p>Enables fixing lens vignetting and chromatic aberrations.\n</p>\n\
+    </dd>\n<dt>\u2018<samp>distortion</samp>\u2019</dt>\n<dd><p>Enables fixing both\
+    \ lens geometry and chromatic aberrations.\n</p>\n</dd>\n<dt>\u2018<samp>all</samp>\u2019\
+    </dt>\n<dd><p>Enables all possible corrections.\n</p>\n</dd>\n</dl>\n</dd>"
+  name: mode
+- description: "<dd><p>The focal length of the image/video (zoom; expected constant\
+    \ for video). For\nexample, a 18\u201355mm lens has focal length range of [18\u2013\
+    55], so a value in that\nrange should be chosen when using that lens. Default\
+    \ 18.\n</p>\n</dd>"
+  name: focal_length
+- description: '<dd><p>The aperture of the image/video (expected constant for video).
+    Note that
+
+    aperture is only used for vignetting correction. Default 3.5.
+
+    </p>
+
+    </dd>'
+  name: aperture
+- description: '<dd><p>The focus distance of the image/video (expected constant for
+    video). Note that
+
+    focus distance is only used for vignetting and only slightly affects the
+
+    vignetting correction process. If unknown, leave it at the default value (which
+
+    is 1000).
+
+    </p>
+
+    </dd>'
+  name: focus_distance
+- description: '<dd><p>The scale factor which is applied after transformation. After
+    correction the
+
+    video is no longer necessarily rectangular. This parameter controls how much of
+
+    the resulting image is visible. The value 0 means that a value will be chosen
+
+    automatically such that there is little or no unmapped area in the output
+
+    image. 1.0 means that no additional scaling is done. Lower values may result
+
+    in more of the corrected image being visible, while higher values may avoid
+
+    unmapped areas in the output.
+
+    </p>
+
+    </dd>'
+  name: scale
+- description: "<dd><p>The target geometry of the output image/video. The following\
+    \ values are valid\noptions:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>rectilinear\
+    \ (default)</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye</samp>\u2019</dt>\n<dt>\u2018\
+    <samp>panoramic</samp>\u2019</dt>\n<dt>\u2018<samp>equirectangular</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>fisheye_orthographic</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_stereographic</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>fisheye_equisolid</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_thoby</samp>\u2019\
+    </dt>\n</dl>\n</dd>"
+  name: target_geometry
+- description: '<dd><p>Apply the reverse of image correction (instead of correcting
+    distortion, apply
+
+    it).
+
+    </p>
+
+    </dd>'
+  name: reverse
+- description: "<dd><p>The type of interpolation used when correcting distortion.\
+    \ The following values\nare valid options:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018\
+    <samp>nearest</samp>\u2019</dt>\n<dt>\u2018<samp>linear (default)</samp>\u2019\
+    </dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n</dl>\n</dd>"
+  name: interpolation
+ref: https://ffmpeg.org/ffmpeg-filters.html#lensfun
+source: '<h3 class="section"><a href="#toc-lensfun">11.143 lensfun</a></h3>
+
+
+  <p>Apply lens correction via the lensfun library (<a href="http://lensfun.sourceforge.net/">http://lensfun.sourceforge.net/</a>).
+
+  </p>
+
+  <p>The <code>lensfun</code> filter requires the camera make, camera model, and lens
+  model
+
+  to apply the lens correction. The filter will load the lensfun database and
+
+  query it to find the corresponding camera and lens entries in the database. As
+
+  long as these entries can be found with the given options, the filter can
+
+  perform corrections on frames. Note that incomplete strings will result in the
+
+  filter choosing the best match with the given options, and the filter will
+
+  output the chosen camera and lens models (logged with level &quot;info&quot;). You
+  must
+
+  provide the make, camera model, and lens model as they are required.
+
+  </p>
+
+  <p>To obtain a list of available makes and models, leave out one or both of <code>make</code>
+  and
+
+  <code>model</code> options. The filter will send the full list to the log with level
+  <code>INFO</code>.
+
+  The first column is the make and the second column is the model.
+
+  To obtain a list of available lenses, set any values for make and model and leave
+  out the
+
+  <code>lens_model</code> option. The filter will send the full list of lenses in
+  the log with level
+
+  <code>INFO</code>. The ffmpeg tool will exit after the list is printed.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>make</samp></dt>
+
+  <dd><p>The make of the camera (for example, &quot;Canon&quot;). This option is required.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>model</samp></dt>
+
+  <dd><p>The model of the camera (for example, &quot;Canon EOS 100D&quot;). This option
+  is
+
+  required.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>lens_model</samp></dt>
+
+  <dd><p>The model of the lens (for example, &quot;Canon EF-S 18-55mm f/3.5-5.6 IS
+  STM&quot;). This
+
+  option is required.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>db_path</samp></dt>
+
+  <dd><p>The full path to the lens database folder. If not set, the filter will attempt
+  to
+
+  load the database from the install path when the library was built. Default is unset.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>mode</samp></dt>
+
+  <dd><p>The type of correction to apply. The following values are valid options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>vignetting</samp>&rsquo;</dt>
+
+  <dd><p>Enables fixing lens vignetting.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>geometry</samp>&rsquo;</dt>
+
+  <dd><p>Enables fixing lens geometry. This is the default.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>subpixel</samp>&rsquo;</dt>
+
+  <dd><p>Enables fixing chromatic aberrations.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>vig_geo</samp>&rsquo;</dt>
+
+  <dd><p>Enables fixing lens vignetting and lens geometry.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>vig_subpixel</samp>&rsquo;</dt>
+
+  <dd><p>Enables fixing lens vignetting and chromatic aberrations.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>distortion</samp>&rsquo;</dt>
+
+  <dd><p>Enables fixing both lens geometry and chromatic aberrations.
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>all</samp>&rsquo;</dt>
+
+  <dd><p>Enables all possible corrections.
+
+  </p>
+
+  </dd>
+
+  </dl>
+
+  </dd>
+
+  <dt><samp>focal_length</samp></dt>
+
+  <dd><p>The focal length of the image/video (zoom; expected constant for video).
+  For
+
+  example, a 18&ndash;55mm lens has focal length range of [18&ndash;55], so a value
+  in that
+
+  range should be chosen when using that lens. Default 18.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>aperture</samp></dt>
+
+  <dd><p>The aperture of the image/video (expected constant for video). Note that
+
+  aperture is only used for vignetting correction. Default 3.5.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>focus_distance</samp></dt>
+
+  <dd><p>The focus distance of the image/video (expected constant for video). Note
+  that
+
+  focus distance is only used for vignetting and only slightly affects the
+
+  vignetting correction process. If unknown, leave it at the default value (which
+
+  is 1000).
+
+  </p>
+
+  </dd>
+
+  <dt><samp>scale</samp></dt>
+
+  <dd><p>The scale factor which is applied after transformation. After correction
+  the
+
+  video is no longer necessarily rectangular. This parameter controls how much of
+
+  the resulting image is visible. The value 0 means that a value will be chosen
+
+  automatically such that there is little or no unmapped area in the output
+
+  image. 1.0 means that no additional scaling is done. Lower values may result
+
+  in more of the corrected image being visible, while higher values may avoid
+
+  unmapped areas in the output.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>target_geometry</samp></dt>
+
+  <dd><p>The target geometry of the output image/video. The following values are valid
+
+  options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>rectilinear (default)</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>fisheye</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>panoramic</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>equirectangular</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>fisheye_orthographic</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>fisheye_stereographic</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>fisheye_equisolid</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>fisheye_thoby</samp>&rsquo;</dt>
+
+  </dl>
+
+  </dd>
+
+  <dt><samp>reverse</samp></dt>
+
+  <dd><p>Apply the reverse of image correction (instead of correcting distortion,
+  apply
+
+  it).
+
+  </p>
+
+  </dd>
+
+  <dt><samp>interpolation</samp></dt>
+
+  <dd><p>The type of interpolation used when correcting distortion. The following
+  values
+
+  are valid options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>nearest</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>linear (default)</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>lanczos</samp>&rsquo;</dt>
+
+  </dl>
+
+  </dd>
+
+  </dl>
+
+
+  '

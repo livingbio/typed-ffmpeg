@@ -1,0 +1,133 @@
+description: '11.40 colormatrix
+
+  Convert color matrix.
+
+
+  The filter accepts the following options:
+
+
+
+  For example to convert from BT.601 to SMPTE-240M, use the command:
+
+
+  colormatrix=bt601:smpte240m'
+name: colormatrix
+parameters:
+- description: "<dd><p>Specify the source and destination color matrix. Both values\
+    \ must be\nspecified.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\"\
+    >\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dd><p>BT.709\n</p>\n</dd>\n<dt>\u2018\
+    <samp>fcc</samp>\u2019</dt>\n<dd><p>FCC\n</p>\n</dd>\n<dt>\u2018<samp>bt601</samp>\u2019\
+    </dt>\n<dd><p>BT.601\n</p>\n</dd>\n<dt>\u2018<samp>bt470</samp>\u2019</dt>\n<dd><p>BT.470\n\
+    </p>\n</dd>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dd><p>BT.470BG\n</p>\n\
+    </dd>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dd><p>SMPTE-170M\n</p>\n\
+    </dd>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dd><p>SMPTE-240M\n</p>\n\
+    </dd>\n<dt>\u2018<samp>bt2020</samp>\u2019</dt>\n<dd><p>BT.2020\n</p></dd>\n</dl>\n\
+    </dd>"
+  name: src
+ref: https://ffmpeg.org/ffmpeg-filters.html#colormatrix
+source: '<h3 class="section"><a href="#toc-colormatrix">11.40 colormatrix</a></h3>
+
+
+  <p>Convert color matrix.
+
+  </p>
+
+  <p>The filter accepts the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>src</samp></dt>
+
+  <dt><samp>dst</samp></dt>
+
+  <dd><p>Specify the source and destination color matrix. Both values must be
+
+  specified.
+
+  </p>
+
+  <p>The accepted values are:
+
+  </p><dl compact="compact">
+
+  <dt>&lsquo;<samp>bt709</samp>&rsquo;</dt>
+
+  <dd><p>BT.709
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>fcc</samp>&rsquo;</dt>
+
+  <dd><p>FCC
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>bt601</samp>&rsquo;</dt>
+
+  <dd><p>BT.601
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>bt470</samp>&rsquo;</dt>
+
+  <dd><p>BT.470
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>bt470bg</samp>&rsquo;</dt>
+
+  <dd><p>BT.470BG
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>smpte170m</samp>&rsquo;</dt>
+
+  <dd><p>SMPTE-170M
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>smpte240m</samp>&rsquo;</dt>
+
+  <dd><p>SMPTE-240M
+
+  </p>
+
+  </dd>
+
+  <dt>&lsquo;<samp>bt2020</samp>&rsquo;</dt>
+
+  <dd><p>BT.2020
+
+  </p></dd>
+
+  </dl>
+
+  </dd>
+
+  </dl>
+
+
+  <p>For example to convert from BT.601 to SMPTE-240M, use the command:
+
+  </p><div class="example">
+
+  <pre class="example">colormatrix=bt601:smpte240m
+
+  </pre></div>
+
+
+  '

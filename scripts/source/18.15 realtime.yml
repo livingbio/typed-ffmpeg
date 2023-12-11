@@ -1,0 +1,92 @@
+description: '18.15 realtime, arealtime
+
+  Slow down filtering to match real time approximately.
+
+
+  These filters will pause the filtering for a variable amount of time to
+
+  match the output rate with the input timestamps.
+
+  They are similar to the re option to ffmpeg.
+
+
+  They accept the following options:'
+name: realtime
+parameters:
+- description: '<dd><p>Time limit for the pauses. Any pause longer than that will
+    be considered
+
+    a timestamp discontinuity and reset the timer. Default is 2 seconds.
+
+    </p></dd>'
+  name: limit
+- description: '<dd><p>Speed factor for processing. The value must be a float larger
+    than zero.
+
+    Values larger than 1.0 will result in faster than realtime processing,
+
+    smaller will slow processing down. The <var>limit</var> is automatically adapted
+
+    accordingly. Default is 1.0.
+
+    </p>
+
+    <p>A processing speed faster than what is possible without these filters cannot
+
+    be achieved.
+
+    </p></dd>'
+  name: speed
+ref: https://ffmpeg.org/ffmpeg-filters.html#realtime_002c
+source: '<h3 class="section"><a href="#toc-realtime_002c-arealtime">18.15 realtime,
+  arealtime</a></h3>
+
+
+  <p>Slow down filtering to match real time approximately.
+
+  </p>
+
+  <p>These filters will pause the filtering for a variable amount of time to
+
+  match the output rate with the input timestamps.
+
+  They are similar to the <samp>re</samp> option to <code>ffmpeg</code>.
+
+  </p>
+
+  <p>They accept the following options:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>limit</samp></dt>
+
+  <dd><p>Time limit for the pauses. Any pause longer than that will be considered
+
+  a timestamp discontinuity and reset the timer. Default is 2 seconds.
+
+  </p></dd>
+
+  <dt><samp>speed</samp></dt>
+
+  <dd><p>Speed factor for processing. The value must be a float larger than zero.
+
+  Values larger than 1.0 will result in faster than realtime processing,
+
+  smaller will slow processing down. The <var>limit</var> is automatically adapted
+
+  accordingly. Default is 1.0.
+
+  </p>
+
+  <p>A processing speed faster than what is possible without these filters cannot
+
+  be achieved.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

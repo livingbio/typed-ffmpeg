@@ -1,0 +1,37 @@
+<h3 class="section"><a href="#toc-silencedetect">8.107 silencedetect</a></h3>
+
+<p>Detect silence in an audio stream.
+</p>
+<p>This filter logs a message when it detects that the input audio volume is less
+or equal to a noise tolerance value for a duration greater or equal to the
+minimum detected noise duration.
+</p>
+<p>The printed times and duration are expressed in seconds. The
+<code>lavfi.silence_start</code> or <code>lavfi.silence_start.X</code> metadata key
+is set on the first frame whose timestamp equals or exceeds the detection
+duration and it contains the timestamp of the first frame of the silence.
+</p>
+<p>The <code>lavfi.silence_duration</code> or <code>lavfi.silence_duration.X</code>
+and <code>lavfi.silence_end</code> or <code>lavfi.silence_end.X</code> metadata
+keys are set on the first frame after the silence. If <samp>mono</samp> is
+enabled, and each channel is evaluated separately, the <code>.X</code>
+suffixed keys are used, and <code>X</code> corresponds to the channel number.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>noise, n</samp></dt>
+<dd><p>Set noise tolerance. Can be specified in dB (in case &quot;dB&quot; is appended to the
+specified value) or amplitude ratio. Default is -60dB, or 0.001.
+</p>
+</dd>
+<dt><samp>duration, d</samp></dt>
+<dd><p>Set silence duration until notification (default is 2 seconds). See
+<a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>
+for the accepted syntax.
+</p>
+</dd>
+<dt><samp>mono, m</samp></dt>
+<dd><p>Process each channel separately, instead of combined. By default is disabled.
+</p></dd>
+</dl>

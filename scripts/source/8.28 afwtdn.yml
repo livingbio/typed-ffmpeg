@@ -1,0 +1,214 @@
+description: '8.28 afwtdn
+
+  Reduce broadband noise from input samples using Wavelets.
+
+
+  A description of the accepted options follows.'
+name: afwtdn
+parameters:
+- description: '<dd><p>Set the noise sigma, allowed range is from 0 to 1.
+
+    Default value is 0.
+
+    This option controls strength of denoising applied to input samples.
+
+    Most useful way to set this option is via decibels, eg. -45dB.
+
+    </p>
+
+    </dd>'
+  name: sigma
+- description: '<dd><p>Set the number of wavelet levels of decomposition.
+
+    Allowed range is from 1 to 12.
+
+    Default value is 10.
+
+    Setting this too low make denoising performance very poor.
+
+    </p>
+
+    </dd>'
+  name: levels
+- description: "<dd><p>Set wavelet type for decomposition of input frame.\nThey are\
+    \ sorted by number of coefficients, from lowest to highest.\nMore coefficients\
+    \ means worse filtering speed, but overall better quality.\nAvailable wavelets\
+    \ are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>sym2</samp>\u2019</dt>\n\
+    <dt>\u2018<samp>sym4</samp>\u2019</dt>\n<dt>\u2018<samp>rbior68</samp>\u2019</dt>\n\
+    <dt>\u2018<samp>deb10</samp>\u2019</dt>\n<dt>\u2018<samp>sym10</samp>\u2019</dt>\n\
+    <dt>\u2018<samp>coif5</samp>\u2019</dt>\n<dt>\u2018<samp>bl3</samp>\u2019</dt>\n\
+    </dl>\n</dd>"
+  name: wavet
+- description: '<dd><p>Set percent of full denoising. Allowed range is from 0 to 100
+    percent.
+
+    Default value is 85 percent or partial denoising.
+
+    </p>
+
+    </dd>'
+  name: percent
+- description: '<dd><p>If enabled, first input frame will be used as noise profile.
+
+    If first frame samples contain non-noise performance will be very poor.
+
+    </p>
+
+    </dd>'
+  name: profile
+- description: '<dd><p>If enabled, input frames are analyzed for presence of noise.
+
+    If noise is detected with high possibility then input frame profile will be
+
+    used for processing following frames, until new noise frame is detected.
+
+    </p>
+
+    </dd>'
+  name: adaptive
+- description: '<dd><p>Set size of single frame in number of samples. Allowed range
+    is from 512 to
+
+    65536. Default frame size is 8192 samples.
+
+    </p>
+
+    </dd>'
+  name: samples
+- description: '<dd><p>Set softness applied inside thresholding function. Allowed
+    range is from 0 to
+
+    10. Default softness is 1.
+
+    </p></dd>'
+  name: softness
+ref: https://ffmpeg.org/ffmpeg-filters.html#afwtdn
+source: '<h3 class="section"><a href="#toc-afwtdn">8.28 afwtdn</a></h3>
+
+  <p>Reduce broadband noise from input samples using Wavelets.
+
+  </p>
+
+  <p>A description of the accepted options follows.
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt><samp>sigma</samp></dt>
+
+  <dd><p>Set the noise sigma, allowed range is from 0 to 1.
+
+  Default value is 0.
+
+  This option controls strength of denoising applied to input samples.
+
+  Most useful way to set this option is via decibels, eg. -45dB.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>levels</samp></dt>
+
+  <dd><p>Set the number of wavelet levels of decomposition.
+
+  Allowed range is from 1 to 12.
+
+  Default value is 10.
+
+  Setting this too low make denoising performance very poor.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>wavet</samp></dt>
+
+  <dd><p>Set wavelet type for decomposition of input frame.
+
+  They are sorted by number of coefficients, from lowest to highest.
+
+  More coefficients means worse filtering speed, but overall better quality.
+
+  Available wavelets are:
+
+  </p>
+
+  <dl compact="compact">
+
+  <dt>&lsquo;<samp>sym2</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>sym4</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>rbior68</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>deb10</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>sym10</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>coif5</samp>&rsquo;</dt>
+
+  <dt>&lsquo;<samp>bl3</samp>&rsquo;</dt>
+
+  </dl>
+
+
+  </dd>
+
+  <dt><samp>percent</samp></dt>
+
+  <dd><p>Set percent of full denoising. Allowed range is from 0 to 100 percent.
+
+  Default value is 85 percent or partial denoising.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>profile</samp></dt>
+
+  <dd><p>If enabled, first input frame will be used as noise profile.
+
+  If first frame samples contain non-noise performance will be very poor.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>adaptive</samp></dt>
+
+  <dd><p>If enabled, input frames are analyzed for presence of noise.
+
+  If noise is detected with high possibility then input frame profile will be
+
+  used for processing following frames, until new noise frame is detected.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>samples</samp></dt>
+
+  <dd><p>Set size of single frame in number of samples. Allowed range is from 512
+  to
+
+  65536. Default frame size is 8192 samples.
+
+  </p>
+
+  </dd>
+
+  <dt><samp>softness</samp></dt>
+
+  <dd><p>Set softness applied inside thresholding function. Allowed range is from
+  0 to
+
+  10. Default softness is 1.
+
+  </p></dd>
+
+  </dl>
+
+
+  '

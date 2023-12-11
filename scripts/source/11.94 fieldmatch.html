@@ -1,0 +1,252 @@
+<h3 class="section"><a href="#toc-fieldmatch">11.94 fieldmatch</a></h3>
+
+<p>Field matching filter for inverse telecine. It is meant to reconstruct the
+progressive frames from a telecined stream. The filter does not drop duplicated
+frames, so to achieve a complete inverse telecine <code>fieldmatch</code> needs to be
+followed by a decimation filter such as <a href="#decimate">decimate</a> in the filtergraph.
+</p>
+<p>The separation of the field matching and the decimation is notably motivated by
+the possibility of inserting a de-interlacing filter fallback between the two.
+If the source has mixed telecined and real interlaced content,
+<code>fieldmatch</code> will not be able to match fields for the interlaced parts.
+But these remaining combed frames will be marked as interlaced, and thus can be
+de-interlaced by a later filter such as <a href="#yadif">yadif</a> before decimation.
+</p>
+<p>In addition to the various configuration options, <code>fieldmatch</code> can take an
+optional second stream, activated through the <samp>ppsrc</samp> option. If
+enabled, the frames reconstruction will be based on the fields and frames from
+this second stream. This allows the first input to be pre-processed in order to
+help the various algorithms of the filter, while keeping the output lossless
+(assuming the fields are matched properly). Typically, a field-aware denoiser,
+or brightness/contrast adjustments can help.
+</p>
+<p>Note that this filter uses the same algorithms as TIVTC/TFM (AviSynth project)
+and VIVTC/VFM (VapourSynth project). The later is a light clone of TFM from
+which <code>fieldmatch</code> is based on. While the semantic and usage are very
+close, some behaviour and options names can differ.
+</p>
+<p>The <a href="#decimate">decimate</a> filter currently only works for constant frame rate input.
+If your input has mixed telecined (30fps) and progressive content with a lower
+framerate like 24fps use the following filterchain to produce the necessary cfr
+stream: <code>dejudder,fps=30000/1001,fieldmatch,decimate</code>.
+</p>
+<p>The filter accepts the following options:
+</p>
+<dl compact="compact">
+<dt><samp>order</samp></dt>
+<dd><p>Specify the assumed field order of the input stream. Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Auto detect parity (use FFmpeg&rsquo;s internal parity value).
+</p></dd>
+<dt>&lsquo;<samp>bff</samp>&rsquo;</dt>
+<dd><p>Assume bottom field first.
+</p></dd>
+<dt>&lsquo;<samp>tff</samp>&rsquo;</dt>
+<dd><p>Assume top field first.
+</p></dd>
+</dl>
+
+<p>Note that it is sometimes recommended not to trust the parity announced by the
+stream.
+</p>
+<p>Default value is <var>auto</var>.
+</p>
+</dd>
+<dt><samp>mode</samp></dt>
+<dd><p>Set the matching mode or strategy to use. <samp>pc</samp> mode is the safest in the
+sense that it won&rsquo;t risk creating jerkiness due to duplicate frames when
+possible, but if there are bad edits or blended fields it will end up
+outputting combed frames when a good match might actually exist. On the other
+hand, <samp>pcn_ub</samp> mode is the most risky in terms of creating jerkiness,
+but will almost always find a good frame if there is one. The other values are
+all somewhere in between <samp>pc</samp> and <samp>pcn_ub</samp> in terms of risking
+jerkiness and creating duplicate frames versus finding good matches in sections
+with bad edits, orphaned fields, blended fields, etc.
+</p>
+<p>More details about p/c/n/u/b are available in <a href="#p_002fc_002fn_002fu_002fb-meaning">p/c/n/u/b meaning</a> section.
+</p>
+<p>Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>pc</samp>&rsquo;</dt>
+<dd><p>2-way matching (p/c)
+</p></dd>
+<dt>&lsquo;<samp>pc_n</samp>&rsquo;</dt>
+<dd><p>2-way matching, and trying 3rd match if still combed (p/c + n)
+</p></dd>
+<dt>&lsquo;<samp>pc_u</samp>&rsquo;</dt>
+<dd><p>2-way matching, and trying 3rd match (same order) if still combed (p/c + u)
+</p></dd>
+<dt>&lsquo;<samp>pc_n_ub</samp>&rsquo;</dt>
+<dd><p>2-way matching, trying 3rd match if still combed, and trying 4th/5th matches if
+still combed (p/c + n + u/b)
+</p></dd>
+<dt>&lsquo;<samp>pcn</samp>&rsquo;</dt>
+<dd><p>3-way matching (p/c/n)
+</p></dd>
+<dt>&lsquo;<samp>pcn_ub</samp>&rsquo;</dt>
+<dd><p>3-way matching, and trying 4th/5th matches if all 3 of the original matches are
+detected as combed (p/c/n + u/b)
+</p></dd>
+</dl>
+
+<p>The parenthesis at the end indicate the matches that would be used for that
+mode assuming <samp>order</samp>=<var>tff</var> (and <samp>field</samp> on <var>auto</var> or
+<var>top</var>).
+</p>
+<p>In terms of speed <samp>pc</samp> mode is by far the fastest and <samp>pcn_ub</samp> is
+the slowest.
+</p>
+<p>Default value is <var>pc_n</var>.
+</p>
+</dd>
+<dt><samp>ppsrc</samp></dt>
+<dd><p>Mark the main input stream as a pre-processed input, and enable the secondary
+input stream as the clean source to pick the fields from. See the filter
+introduction for more details. It is similar to the <samp>clip2</samp> feature from
+VFM/TFM.
+</p>
+<p>Default value is <code>0</code> (disabled).
+</p>
+</dd>
+<dt><samp>field</samp></dt>
+<dd><p>Set the field to match from. It is recommended to set this to the same value as
+<samp>order</samp> unless you experience matching failures with that setting. In
+certain circumstances changing the field that is used to match from can have a
+large impact on matching performance. Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>auto</samp>&rsquo;</dt>
+<dd><p>Automatic (same value as <samp>order</samp>).
+</p></dd>
+<dt>&lsquo;<samp>bottom</samp>&rsquo;</dt>
+<dd><p>Match from the bottom field.
+</p></dd>
+<dt>&lsquo;<samp>top</samp>&rsquo;</dt>
+<dd><p>Match from the top field.
+</p></dd>
+</dl>
+
+<p>Default value is <var>auto</var>.
+</p>
+</dd>
+<dt><samp>mchroma</samp></dt>
+<dd><p>Set whether or not chroma is included during the match comparisons. In most
+cases it is recommended to leave this enabled. You should set this to <code>0</code>
+only if your clip has bad chroma problems such as heavy rainbowing or other
+artifacts. Setting this to <code>0</code> could also be used to speed things up at
+the cost of some accuracy.
+</p>
+<p>Default value is <code>1</code>.
+</p>
+</dd>
+<dt><samp>y0</samp></dt>
+<dt><samp>y1</samp></dt>
+<dd><p>These define an exclusion band which excludes the lines between <samp>y0</samp> and
+<samp>y1</samp> from being included in the field matching decision. An exclusion
+band can be used to ignore subtitles, a logo, or other things that may
+interfere with the matching. <samp>y0</samp> sets the starting scan line and
+<samp>y1</samp> sets the ending line; all lines in between <samp>y0</samp> and
+<samp>y1</samp> (including <samp>y0</samp> and <samp>y1</samp>) will be ignored. Setting
+<samp>y0</samp> and <samp>y1</samp> to the same value will disable the feature.
+<samp>y0</samp> and <samp>y1</samp> defaults to <code>0</code>.
+</p>
+</dd>
+<dt><samp>scthresh</samp></dt>
+<dd><p>Set the scene change detection threshold as a percentage of maximum change on
+the luma plane. Good values are in the <code>[8.0, 14.0]</code> range. Scene change
+detection is only relevant in case <samp>combmatch</samp>=<var>sc</var>.  The range for
+<samp>scthresh</samp> is <code>[0.0, 100.0]</code>.
+</p>
+<p>Default value is <code>12.0</code>.
+</p>
+</dd>
+<dt><samp>combmatch</samp></dt>
+<dd><p>When <samp>combatch</samp> is not <var>none</var>, <code>fieldmatch</code> will take into
+account the combed scores of matches when deciding what match to use as the
+final match. Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+<dd><p>No final matching based on combed scores.
+</p></dd>
+<dt>&lsquo;<samp>sc</samp>&rsquo;</dt>
+<dd><p>Combed scores are only used when a scene change is detected.
+</p></dd>
+<dt>&lsquo;<samp>full</samp>&rsquo;</dt>
+<dd><p>Use combed scores all the time.
+</p></dd>
+</dl>
+
+<p>Default is <var>sc</var>.
+</p>
+</dd>
+<dt><samp>combdbg</samp></dt>
+<dd><p>Force <code>fieldmatch</code> to calculate the combed metrics for certain matches and
+print them. This setting is known as <samp>micout</samp> in TFM/VFM vocabulary.
+Available values are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+<dd><p>No forced calculation.
+</p></dd>
+<dt>&lsquo;<samp>pcn</samp>&rsquo;</dt>
+<dd><p>Force p/c/n calculations.
+</p></dd>
+<dt>&lsquo;<samp>pcnub</samp>&rsquo;</dt>
+<dd><p>Force p/c/n/u/b calculations.
+</p></dd>
+</dl>
+
+<p>Default value is <var>none</var>.
+</p>
+</dd>
+<dt><samp>cthresh</samp></dt>
+<dd><p>This is the area combing threshold used for combed frame detection. This
+essentially controls how &quot;strong&quot; or &quot;visible&quot; combing must be to be detected.
+Larger values mean combing must be more visible and smaller values mean combing
+can be less visible or strong and still be detected. Valid settings are from
+<code>-1</code> (every pixel will be detected as combed) to <code>255</code> (no pixel will
+be detected as combed). This is basically a pixel difference value. A good
+range is <code>[8, 12]</code>.
+</p>
+<p>Default value is <code>9</code>.
+</p>
+</dd>
+<dt><samp>chroma</samp></dt>
+<dd><p>Sets whether or not chroma is considered in the combed frame decision.  Only
+disable this if your source has chroma problems (rainbowing, etc.) that are
+causing problems for the combed frame detection with chroma enabled. Actually,
+using <samp>chroma</samp>=<var>0</var> is usually more reliable, except for the case
+where there is chroma only combing in the source.
+</p>
+<p>Default value is <code>0</code>.
+</p>
+</dd>
+<dt><samp>blockx</samp></dt>
+<dt><samp>blocky</samp></dt>
+<dd><p>Respectively set the x-axis and y-axis size of the window used during combed
+frame detection. This has to do with the size of the area in which
+<samp>combpel</samp> pixels are required to be detected as combed for a frame to be
+declared combed. See the <samp>combpel</samp> parameter description for more info.
+Possible values are any number that is a power of 2 starting at 4 and going up
+to 512.
+</p>
+<p>Default value is <code>16</code>.
+</p>
+</dd>
+<dt><samp>combpel</samp></dt>
+<dd><p>The number of combed pixels inside any of the <samp>blocky</samp> by
+<samp>blockx</samp> size blocks on the frame for the frame to be detected as
+combed. While <samp>cthresh</samp> controls how &quot;visible&quot; the combing must be, this
+setting controls &quot;how much&quot; combing there must be in any localized area (a
+window defined by the <samp>blockx</samp> and <samp>blocky</samp> settings) on the
+frame. Minimum value is <code>0</code> and maximum is <code>blocky x blockx</code> (at
+which point no frames will ever be detected as combed). This setting is known
+as <samp>MI</samp> in TFM/VFM vocabulary.
+</p>
+<p>Default value is <code>80</code>.
+</p></dd>
+</dl>
