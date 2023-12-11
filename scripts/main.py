@@ -60,7 +60,9 @@ def generate_signature(path: pathlib.Path) -> None:
     ref = ref_pattern.findall(body)[0]
     soup = BeautifulSoup(body, "html.parser")
     options = soup.find("dl")
-    index, section_name = name.split(" ", 1)
+
+    h3 = soup.find("h3")
+    index, section_name = h3.text.split(" ", 1)
 
     if options:
         parameters = parse_paremeters(options)
@@ -70,19 +72,19 @@ def generate_signature(path: pathlib.Path) -> None:
     for dl_tag in soup.find_all("dl"):
         dl_tag.decompose()
 
+    # check cross reference
+    for h3 in soup.find_all("h3"):
+        h3.decompose()
+
+    if '<a href="#' in str(soup):
+        print(f"Cross reference found in {name}")
+
     for filter_name in section_name.split(","):
         filter_name = filter_name.strip()
         filter = Filter(name=filter_name, source=body, description=soup.text.strip(), ref=f"https://ffmpeg.org/ffmpeg-filters.html#{ref}", parameters=parameters)
 
         with open(f"source/{index} {filter_name}.yml", "w") as ofile:
             yaml.dump(filter.model_dump(mode="json"), ofile)
-
-    # check cross reference
-    for h3 in soup.find_all("h3"):
-        h3.decompose()
-
-    if "</a>" in str(soup):
-        print(f"Cross reference found in {name}")
 
 
 @app.command()
@@ -96,7 +98,15 @@ def split_documents() -> None:
 
     with (DOCUMENT_PATH / "ffmpeg-filters.html").open() as ifile:
         for name, body in extract_filter(ifile.read()):
-            with open(f"source/{name}.html", "w") as ofile:
+            soup = BeautifulSoup(body, "html.parser")
+            h3 = soup.find("h3")
+            title = h3.text
+            ref = h3.a["href"].replace("#toc-", "")
+
+            if not title.startswith("8.") and not title.startswith("11."):
+                continue
+
+            with open(f"source/{ref}.html", "w") as ofile:
                 ofile.write(body)
 
     return None
