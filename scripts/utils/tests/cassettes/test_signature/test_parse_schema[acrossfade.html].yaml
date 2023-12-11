@@ -1,0 +1,152 @@
+interactions:
+- request:
+    body: '{"messages": [{"role": "system", "content": "\n- You possess expertise
+      in FFmpeg.\n- I kindly request your assistance in the conversion of specific
+      FFmpeg filter document options into a JSON schema.\n- Please be aware that certain
+      FFmpeg filter documents may require reference to other documents, which will
+      be provided for your thorough consideration.\n"}, {"role": "user", "content":
+      "please generate JSON Schema for acrossfade''s options\n## acrossfade\n<h3 class=\"section\"><a
+      href=\"#toc-acrossfade\">8.5 acrossfade</a></h3>\n\n<p>Apply cross fade from
+      one input audio stream to another input audio stream.\nThe cross fade is applied
+      for specified duration near the end of first stream.\n</p>\n<p>The filter accepts
+      the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>nb_samples,
+      ns</samp></dt>\n<dd><p>Specify the number of samples for which the cross fade
+      effect has to last.\nAt the end of the cross fade effect the first input audio
+      will be completely\nsilent. Default is 44100.\n</p>\n</dd>\n<dt><samp>duration,
+      d</samp></dt>\n<dd><p>Specify the duration of the cross fade effect. See\n<a
+      href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration
+      section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nBy default
+      the duration is determined by <var>nb_samples</var>.\nIf set this option is
+      used instead of <var>nb_samples</var>.\n</p>\n</dd>\n<dt><samp>overlap, o</samp></dt>\n<dd><p>Should
+      first stream end overlap with second stream start. Default is enabled.\n</p>\n</dd>\n<dt><samp>curve1</samp></dt>\n<dd><p>Set
+      curve for cross fade transition for first stream.\n</p>\n</dd>\n<dt><samp>curve2</samp></dt>\n<dd><p>Set
+      curve for cross fade transition for second stream.\n</p>\n<p>For description
+      of available curve types see <a href=\"#afade\">afade</a> filter description.\n</p></dd>\n</dl>\n\n##
+      reference\n<h3 class=\"section\"><a href=\"#toc-afade-1\">8.22 afade</a></h3>\n\n<p>Apply
+      fade-in/out effect to input audio.\n</p>\n<p>A description of the accepted parameters
+      follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>type, t</samp></dt>\n<dd><p>Specify
+      the effect type, can be either <code>in</code> for fade-in, or\n<code>out</code>
+      for a fade-out effect. Default is <code>in</code>.\n</p>\n</dd>\n<dt><samp>start_sample,
+      ss</samp></dt>\n<dd><p>Specify the number of the start sample for starting to
+      apply the fade\neffect. Default is 0.\n</p>\n</dd>\n<dt><samp>nb_samples, ns</samp></dt>\n<dd><p>Specify
+      the number of samples for which the fade effect has to last. At\nthe end of
+      the fade-in effect the output audio will have the same\nvolume as the input
+      audio, at the end of the fade-out transition\nthe output audio will be silence.
+      Default is 44100.\n</p>\n</dd>\n<dt><samp>start_time, st</samp></dt>\n<dd><p>Specify
+      the start time of the fade effect. Default is 0.\nThe value must be specified
+      as a time duration; see\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the
+      Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nIf
+      set this option is used instead of <var>start_sample</var>.\n</p>\n</dd>\n<dt><samp>duration,
+      d</samp></dt>\n<dd><p>Specify the duration of the fade effect. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the
+      Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nAt
+      the end of the fade-in effect the output audio will have the same\nvolume as
+      the input audio, at the end of the fade-out transition\nthe output audio will
+      be silence.\nBy default the duration is determined by <var>nb_samples</var>.\nIf
+      set this option is used instead of <var>nb_samples</var>.\n</p>\n</dd>\n<dt><samp>curve</samp></dt>\n<dd><p>Set
+      curve for fade transition.\n</p>\n<p>It accepts the following values:\n</p><dl
+      compact=\"compact\">\n<dt><samp>tri</samp></dt>\n<dd><p>select triangular, linear
+      slope (default)\n</p></dd>\n<dt><samp>qsin</samp></dt>\n<dd><p>select quarter
+      of sine wave\n</p></dd>\n<dt><samp>hsin</samp></dt>\n<dd><p>select half of sine
+      wave\n</p></dd>\n<dt><samp>esin</samp></dt>\n<dd><p>select exponential sine
+      wave\n</p></dd>\n<dt><samp>log</samp></dt>\n<dd><p>select logarithmic\n</p></dd>\n<dt><samp>ipar</samp></dt>\n<dd><p>select
+      inverted parabola\n</p></dd>\n<dt><samp>qua</samp></dt>\n<dd><p>select quadratic\n</p></dd>\n<dt><samp>cub</samp></dt>\n<dd><p>select
+      cubic\n</p></dd>\n<dt><samp>squ</samp></dt>\n<dd><p>select square root\n</p></dd>\n<dt><samp>cbr</samp></dt>\n<dd><p>select
+      cubic root\n</p></dd>\n<dt><samp>par</samp></dt>\n<dd><p>select parabola\n</p></dd>\n<dt><samp>exp</samp></dt>\n<dd><p>select
+      exponential\n</p></dd>\n<dt><samp>iqsin</samp></dt>\n<dd><p>select inverted
+      quarter of sine wave\n</p></dd>\n<dt><samp>ihsin</samp></dt>\n<dd><p>select
+      inverted half of sine wave\n</p></dd>\n<dt><samp>dese</samp></dt>\n<dd><p>select
+      double-exponential seat\n</p></dd>\n<dt><samp>desi</samp></dt>\n<dd><p>select
+      double-exponential sigmoid\n</p></dd>\n<dt><samp>losi</samp></dt>\n<dd><p>select
+      logistic sigmoid\n</p></dd>\n<dt><samp>sinc</samp></dt>\n<dd><p>select sine
+      cardinal function\n</p></dd>\n<dt><samp>isinc</samp></dt>\n<dd><p>select inverted
+      sine cardinal function\n</p></dd>\n<dt><samp>quat</samp></dt>\n<dd><p>select
+      quartic\n</p></dd>\n<dt><samp>quatr</samp></dt>\n<dd><p>select quartic root\n</p></dd>\n<dt><samp>qsin2</samp></dt>\n<dd><p>select
+      squared quarter of sine wave\n</p></dd>\n<dt><samp>hsin2</samp></dt>\n<dd><p>select
+      squared half of sine wave\n</p></dd>\n<dt><samp>nofade</samp></dt>\n<dd><p>no
+      fade applied\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>silence</samp></dt>\n<dd><p>Set
+      the initial gain for fade-in or final gain for fade-out.\nDefault value is <code>0.0</code>.\n</p>\n</dd>\n<dt><samp>unity</samp></dt>\n<dd><p>Set
+      the initial gain for fade-out or final gain for fade-in.\nDefault value is <code>1.0</code>.\n</p></dd>\n</dl>\n\n"}],
+      "model": "gpt-3.5-turbo", "temperature": 0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '5934'
+      content-type:
+      - application/json
+      host:
+      - gstudio.openai.azure.com
+      user-agent:
+      - AzureOpenAI/Python 1.3.5
+      x-stainless-arch:
+      - arm64
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.3.5
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.5
+    method: POST
+    uri: https://gstudio.openai.azure.com/openai/deployments/gpt35/chat/completions?api-version=2023-07-01-preview
+  response:
+    content: '{"id":"chatcmpl-8XP82TrpRa9uRhWAr1ZKSLYbVUeTt","object":"chat.completion","created":1702972110,"model":"gpt-35-turbo-16k","prompt_filter_results":[{"prompt_index":0,"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}],"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Here
+      is the JSON schema for the options of the `acrossfade` filter:\n\n```json\n{\n  \"$schema\":
+      \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"acrossfade options\",\n  \"type\":
+      \"object\",\n  \"properties\": {\n    \"nb_samples\": {\n      \"type\": \"integer\",\n      \"description\":
+      \"Specify the number of samples for which the cross fade effect has to last.
+      At the end of the cross fade effect the first input audio will be completely
+      silent. Default is 44100.\"\n    },\n    \"duration\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Specify the duration of the cross fade effect. See the Time duration section
+      in the ffmpeg-utils(1) manual for the accepted syntax. By default the duration
+      is determined by nb_samples. If set this option is used instead of nb_samples.\"\n    },\n    \"overlap\":
+      {\n      \"type\": \"boolean\",\n      \"description\": \"Should first stream
+      end overlap with second stream start. Default is enabled.\"\n    },\n    \"curve1\":
+      {\n      \"$ref\": \"#/definitions/curveType\",\n      \"description\": \"Set
+      curve for cross fade transition for first stream.\"\n    },\n    \"curve2\":
+      {\n      \"$ref\": \"#/definitions/curveType\",\n      \"description\": \"Set
+      curve for cross fade transition for second stream.\"\n    }\n  },\n  \"definitions\":
+      {\n    \"curveType\": {\n      \"type\": \"string\",\n      \"enum\": [\n        \"tri\",\n        \"qsin\",\n        \"hsin\",\n        \"esin\",\n        \"log\",\n        \"ipar\",\n        \"qua\",\n        \"cub\",\n        \"squ\",\n        \"cbr\",\n        \"par\",\n        \"exp\",\n        \"iqsin\",\n        \"ihsin\",\n        \"dese\",\n        \"desi\",\n        \"losi\",\n        \"sinc\",\n        \"isinc\",\n        \"quat\",\n        \"quatr\",\n        \"qsin2\",\n        \"hsin2\",\n        \"nofade\"\n      ],\n      \"description\":
+      \"Set curve for fade transition.\"\n    }\n  }\n}\n```\n\nPlease note that the
+      `curveType` definition is referenced from the `afade` filter options."},"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}],"usage":{"prompt_tokens":1704,"completion_tokens":467,"total_tokens":2171}}
+
+      '
+    headers:
+      Cache-Control:
+      - no-cache, must-revalidate
+      Content-Length:
+      - '2786'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 07:48:34 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      access-control-allow-origin:
+      - '*'
+      apim-request-id:
+      - 95751f75-06f7-482f-8956-ccb5f942e8ff
+      x-accel-buffering:
+      - 'no'
+      x-content-type-options:
+      - nosniff
+      x-ms-client-request-id:
+      - 95751f75-06f7-482f-8956-ccb5f942e8ff
+      x-ms-region:
+      - East US
+      x-ratelimit-remaining-requests:
+      - '238'
+      x-ratelimit-remaining-tokens:
+      - '239936'
+      x-request-id:
+      - 42ad3e47-1957-4faa-80bd-f3978e3a8afa
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

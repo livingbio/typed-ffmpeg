@@ -1,0 +1,133 @@
+{
+  "description": "8.2 acompressor\nA compressor is mainly used to reduce the dynamic range of a signal.\nEspecially modern music is mostly compressed at a high ratio to\nimprove the overall loudness. It\u2019s done to get the highest attention\nof a listener, \"fatten\" the sound and bring more \"power\" to the track.\nIf a signal is compressed too much it may sound dull or \"dead\"\nafterwards or it may start to \"pump\" (which could be a powerful effect\nbut can also destroy a track completely).\nThe right compression is the key to reach a professional sound and is\nthe high art of mixing and mastering. Because of its complex settings\nit may take a long time to get the right feeling for this kind of effect.\n\nCompression is done by detecting the volume above a chosen level\nthreshold and dividing it by the factor set with ratio.\nSo if you set the threshold to -12dB and your signal reaches -6dB a ratio\nof 2:1 will result in a signal at -9dB. Because an exact manipulation of\nthe signal would cause distortion of the waveform the reduction can be\nlevelled over the time. This is done by setting \"Attack\" and \"Release\".\nattack determines how long the signal has to rise above the threshold\nbefore any reduction will occur and release sets the time the signal\nhas to fall below the threshold to reduce the reduction again. Shorter signals\nthan the chosen attack time will be left untouched.\nThe overall reduction of the signal can be made up afterwards with the\nmakeup setting. So compressing the peaks of a signal about 6dB and\nraising the makeup to this level results in a signal twice as loud than the\nsource. To gain a softer entry in the compression the knee flattens the\nhard edge at the threshold in the range of the chosen decibels.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "attack": {
+        "default": 20,
+        "maximum": 2000,
+        "minimum": 0.01,
+        "type": "number"
+      },
+      "detection": {
+        "default": "rms",
+        "enum": [
+          "peak",
+          "rms"
+        ],
+        "type": "string"
+      },
+      "knee": {
+        "default": 2.82843,
+        "maximum": 8,
+        "minimum": 1,
+        "type": "number"
+      },
+      "level_in": {
+        "default": 1,
+        "maximum": 64,
+        "minimum": 0.015625,
+        "type": "number"
+      },
+      "link": {
+        "default": "average",
+        "enum": [
+          "average",
+          "maximum"
+        ],
+        "type": "string"
+      },
+      "makeup": {
+        "default": 1,
+        "maximum": 64,
+        "minimum": 1,
+        "type": "number"
+      },
+      "mix": {
+        "default": 1,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "mode": {
+        "default": "downward",
+        "enum": [
+          "upward",
+          "downward"
+        ],
+        "type": "string"
+      },
+      "ratio": {
+        "default": 2,
+        "maximum": 20,
+        "minimum": 1,
+        "type": "number"
+      },
+      "release": {
+        "default": 250,
+        "maximum": 9000,
+        "minimum": 0.01,
+        "type": "number"
+      },
+      "threshold": {
+        "default": 0.125,
+        "maximum": 1,
+        "minimum": 0.00097563,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "acompressor options",
+    "type": "object"
+  },
+  "name": "acompressor",
+  "parameters": [
+    {
+      "description": "<dd><p>Set input gain. Default is 1. Range is between 0.015625 and 64.\n</p>\n</dd>",
+      "name": "level_in"
+    },
+    {
+      "description": "<dd><p>Set mode of compressor operation. Can be <code>upward</code> or <code>downward</code>.\nDefault is <code>downward</code>.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>If a signal of stream rises above this level it will affect the gain\nreduction.\nBy default it is 0.125. Range is between 0.00097563 and 1.\n</p>\n</dd>",
+      "name": "threshold"
+    },
+    {
+      "description": "<dd><p>Set a ratio by which the signal is reduced. 1:2 means that if the level\nrose 4dB above the threshold, it will be only 2dB above after the reduction.\nDefault is 2. Range is between 1 and 20.\n</p>\n</dd>",
+      "name": "ratio"
+    },
+    {
+      "description": "<dd><p>Amount of milliseconds the signal has to rise above the threshold before gain\nreduction starts. Default is 20. Range is between 0.01 and 2000.\n</p>\n</dd>",
+      "name": "attack"
+    },
+    {
+      "description": "<dd><p>Amount of milliseconds the signal has to fall below the threshold before\nreduction is decreased again. Default is 250. Range is between 0.01 and 9000.\n</p>\n</dd>",
+      "name": "release"
+    },
+    {
+      "description": "<dd><p>Set the amount by how much signal will be amplified after processing.\nDefault is 1. Range is from 1 to 64.\n</p>\n</dd>",
+      "name": "makeup"
+    },
+    {
+      "description": "<dd><p>Curve the sharp knee around the threshold to enter gain reduction more softly.\nDefault is 2.82843. Range is between 1 and 8.\n</p>\n</dd>",
+      "name": "knee"
+    },
+    {
+      "description": "<dd><p>Choose if the <code>average</code> level between all channels of input stream\nor the louder(<code>maximum</code>) channel of input stream affects the\nreduction. Default is <code>average</code>.\n</p>\n</dd>",
+      "name": "link"
+    },
+    {
+      "description": "<dd><p>Should the exact signal be taken in case of <code>peak</code> or an RMS one in case\nof <code>rms</code>. Default is <code>rms</code> which is mostly smoother.\n</p>\n</dd>",
+      "name": "detection"
+    },
+    {
+      "description": "<dd><p>How much to use compressed signal in output. Default is 1.\nRange is between 0 and 1.\n</p></dd>",
+      "name": "mix"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acompressor",
+  "source": "<h3 class=\"section\"><a href=\"#toc-acompressor\">8.2 acompressor</a></h3>\n\n<p>A compressor is mainly used to reduce the dynamic range of a signal.\nEspecially modern music is mostly compressed at a high ratio to\nimprove the overall loudness. It&rsquo;s done to get the highest attention\nof a listener, &quot;fatten&quot; the sound and bring more &quot;power&quot; to the track.\nIf a signal is compressed too much it may sound dull or &quot;dead&quot;\nafterwards or it may start to &quot;pump&quot; (which could be a powerful effect\nbut can also destroy a track completely).\nThe right compression is the key to reach a professional sound and is\nthe high art of mixing and mastering. Because of its complex settings\nit may take a long time to get the right feeling for this kind of effect.\n</p>\n<p>Compression is done by detecting the volume above a chosen level\n<code>threshold</code> and dividing it by the factor set with <code>ratio</code>.\nSo if you set the threshold to -12dB and your signal reaches -6dB a ratio\nof 2:1 will result in a signal at -9dB. Because an exact manipulation of\nthe signal would cause distortion of the waveform the reduction can be\nlevelled over the time. This is done by setting &quot;Attack&quot; and &quot;Release&quot;.\n<code>attack</code> determines how long the signal has to rise above the threshold\nbefore any reduction will occur and <code>release</code> sets the time the signal\nhas to fall below the threshold to reduce the reduction again. Shorter signals\nthan the chosen attack time will be left untouched.\nThe overall reduction of the signal can be made up afterwards with the\n<code>makeup</code> setting. So compressing the peaks of a signal about 6dB and\nraising the makeup to this level results in a signal twice as loud than the\nsource. To gain a softer entry in the compression the <code>knee</code> flattens the\nhard edge at the threshold in the range of the chosen decibels.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>level_in</samp></dt>\n<dd><p>Set input gain. Default is 1. Range is between 0.015625 and 64.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set mode of compressor operation. Can be <code>upward</code> or <code>downward</code>.\nDefault is <code>downward</code>.\n</p>\n</dd>\n<dt><samp>threshold</samp></dt>\n<dd><p>If a signal of stream rises above this level it will affect the gain\nreduction.\nBy default it is 0.125. Range is between 0.00097563 and 1.\n</p>\n</dd>\n<dt><samp>ratio</samp></dt>\n<dd><p>Set a ratio by which the signal is reduced. 1:2 means that if the level\nrose 4dB above the threshold, it will be only 2dB above after the reduction.\nDefault is 2. Range is between 1 and 20.\n</p>\n</dd>\n<dt><samp>attack</samp></dt>\n<dd><p>Amount of milliseconds the signal has to rise above the threshold before gain\nreduction starts. Default is 20. Range is between 0.01 and 2000.\n</p>\n</dd>\n<dt><samp>release</samp></dt>\n<dd><p>Amount of milliseconds the signal has to fall below the threshold before\nreduction is decreased again. Default is 250. Range is between 0.01 and 9000.\n</p>\n</dd>\n<dt><samp>makeup</samp></dt>\n<dd><p>Set the amount by how much signal will be amplified after processing.\nDefault is 1. Range is from 1 to 64.\n</p>\n</dd>\n<dt><samp>knee</samp></dt>\n<dd><p>Curve the sharp knee around the threshold to enter gain reduction more softly.\nDefault is 2.82843. Range is between 1 and 8.\n</p>\n</dd>\n<dt><samp>link</samp></dt>\n<dd><p>Choose if the <code>average</code> level between all channels of input stream\nor the louder(<code>maximum</code>) channel of input stream affects the\nreduction. Default is <code>average</code>.\n</p>\n</dd>\n<dt><samp>detection</samp></dt>\n<dd><p>Should the exact signal be taken in case of <code>peak</code> or an RMS one in case\nof <code>rms</code>. Default is <code>rms</code> which is mostly smoother.\n</p>\n</dd>\n<dt><samp>mix</samp></dt>\n<dd><p>How much to use compressed signal in output. Default is 1.\nRange is between 0 and 1.\n</p></dd>\n</dl>\n\n"
+}

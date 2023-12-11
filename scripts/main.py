@@ -6,12 +6,14 @@ import urllib.request
 
 import pydantic
 import typer
-import yaml
 from bs4 import BeautifulSoup
+from utils.parser import FilterDocument, parse_filter_document
+from utils.settings import settings
+from utils.signature import parse_schema
 
 app = typer.Typer()
 
-DOCUMENT_PATH = pathlib.Path("./source")
+DOCUMENT_PATH = settings.document_path
 
 
 @app.command()
@@ -34,29 +36,6 @@ class Filter(pydantic.BaseModel):
     parameters: list[dict[str, str]] = []
 
 
-class FilterDocument(pydantic.BaseModel):
-    section_index: str
-    hash: str
-    title: str
-    path: pathlib.Path
-    filter_names: list[str]
-
-    @property
-    def url(self) -> str:
-        return f"https://ffmpeg.org/ffmpeg-filters.html#{self.hash}"
-
-
-def parse_filter_document(body: str) -> FilterDocument:
-    soup = BeautifulSoup(body, "html.parser")
-    h3 = soup.find("h3")
-    title = h3.text
-    index, filter_namestr = title.split(" ", 1)
-    filter_names = map(str, filter_namestr.split(","))
-    ref = h3.a["href"].replace("#toc-", "")
-
-    return FilterDocument(section_index=index, hash=ref, title=title, path=DOCUMENT_PATH / f"{ref}.html", filter_names=filter_names)
-
-
 def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
     parameters = []
     current_params = []
@@ -74,39 +53,17 @@ def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
 
 
 @app.command()
-def generate_signature(path: pathlib.Path) -> None:
-    body = path.read_text()
-    name = path.stem
+def generate_schema(path: pathlib.Path) -> None:
+    info = parse_filter_document(path.read_text())
+    filters = parse_schema(info)
 
-    info = parse_filter_document(body)
-    soup = BeautifulSoup(body, "html.parser")
-    options = soup.find("dl")
-
-    if options:
-        parameters = parse_paremeters(options)
-    else:
-        parameters = []
-
-    for dl_tag in soup.find_all("dl"):
-        dl_tag.decompose()
-
-    # check cross reference
-    for h3 in soup.find_all("h3"):
-        h3.decompose()
-
-    if '<a href="#' in str(soup):
-        print(f"Cross reference found in {name}")
-
-    for filter_name in info.filter_names:
-        filter_name = filter_name.strip()
-        filter = Filter(name=filter_name, source=body, description=soup.text.strip(), ref=info.url, parameters=parameters)
-
-        with open(f"source/{filter_name}.yml", "w") as ofile:
-            yaml.dump(filter.model_dump(mode="json"), ofile)
+    for filter in filters:
+        with open(settings.schemas_path / f"{filter.name}.json", "w") as ofile:
+            ofile.write(filter.model_dump_json())
 
 
 @app.command()
-def split_documents() -> None:
+def split_documents(should_generate_schema: bool = False) -> None:
     # split documents into individual files for easier processing
 
     section_pattern = re.compile(r'(?P<body><h3 class="section"><a href="(.*?)">(?P<name>.*?)</a></h3>(.*?))<span', re.MULTILINE | re.DOTALL)
@@ -114,6 +71,7 @@ def split_documents() -> None:
     def extract_filter(html: str) -> list[tuple[str, str]]:
         return [(m.group("name"), m.group("body")) for m in section_pattern.finditer(html)]
 
+    infos: list[FilterDocument] = []
     with (DOCUMENT_PATH / "ffmpeg-filters.html").open() as ifile:
         for name, body in extract_filter(ifile.read()):
             info = parse_filter_document(body)
@@ -121,12 +79,26 @@ def split_documents() -> None:
             if not info.section_index.startswith("8.") and not info.section_index.startswith("11."):
                 continue
 
+            print(f"Processing {info.title}...")
+
             with info.path.open("w") as ofile:
                 ofile.write(body)
+
+            if should_generate_schema:
+                generate_schema(info.path)
+
+            infos.append(info)
+
+    for info in infos:
+        # if len(info.refs) >= 1:
+        #     print(f"WARNING: {name} has multiple references: {info.refs}")
+
+        for ref in info.refs:
+            if not ref.exists():
+                print(f"WARNING: {info.title} has missing reference: {ref}")
 
     return None
 
 
 if __name__ == "__main__":
-    DOCUMENT_PATH.mkdir(exist_ok=True)
     app()

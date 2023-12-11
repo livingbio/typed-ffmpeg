@@ -1,0 +1,1237 @@
+# serializer version: 1
+# name: test_generate_json_schema[acrossfade.html]
+  dict({
+    'acrossfade': dict({
+      '$schema': 'http://json-schema.org/draft-07/schema#',
+      'definitions': dict({
+        'curveType': dict({
+          'description': 'Set curve for fade transition.',
+          'enum': list([
+            'tri',
+            'qsin',
+            'hsin',
+            'esin',
+            'log',
+            'ipar',
+            'qua',
+            'cub',
+            'squ',
+            'cbr',
+            'par',
+            'exp',
+            'iqsin',
+            'ihsin',
+            'dese',
+            'desi',
+            'losi',
+            'sinc',
+            'isinc',
+            'quat',
+            'quatr',
+            'qsin2',
+            'hsin2',
+            'nofade',
+          ]),
+          'type': 'string',
+        }),
+      }),
+      'properties': dict({
+        'curve1': dict({
+          '$ref': '#/definitions/curveType',
+          'description': 'Set curve for cross fade transition for first stream.',
+        }),
+        'curve2': dict({
+          '$ref': '#/definitions/curveType',
+          'description': 'Set curve for cross fade transition for second stream.',
+        }),
+        'duration': dict({
+          'description': 'Specify the duration of the cross fade effect. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples.',
+          'type': 'string',
+        }),
+        'nb_samples': dict({
+          'description': 'Specify the number of samples for which the cross fade effect has to last. At the end of the cross fade effect the first input audio will be completely silent. Default is 44100.',
+          'type': 'integer',
+        }),
+        'overlap': dict({
+          'description': 'Should first stream end overlap with second stream start. Default is enabled.',
+          'type': 'boolean',
+        }),
+      }),
+      'title': 'acrossfade options',
+      'type': 'object',
+    }),
+  })
+# ---
+# name: test_generate_json_schema[acue.html]
+  dict({
+    'acue': dict({
+    }),
+  })
+# ---
+# name: test_generate_json_schema[lut_002c-lutrgb_002c-lutyuv.html]
+  dict({
+    'lut': dict({
+      'additionalProperties': False,
+      'properties': dict({
+        'a': dict({
+          'description': 'Alpha component expression',
+          'type': 'string',
+        }),
+        'b': dict({
+          'description': 'Set blue component expression',
+          'type': 'string',
+        }),
+        'c0': dict({
+          'description': 'Set first pixel component expression',
+          'type': 'string',
+        }),
+        'c1': dict({
+          'description': 'Set second pixel component expression',
+          'type': 'string',
+        }),
+        'c2': dict({
+          'description': 'Set third pixel component expression',
+          'type': 'string',
+        }),
+        'c3': dict({
+          'description': 'Set fourth pixel component expression, corresponds to the alpha component',
+          'type': 'string',
+        }),
+        'g': dict({
+          'description': 'Set green component expression',
+          'type': 'string',
+        }),
+        'r': dict({
+          'description': 'Set red component expression',
+          'type': 'string',
+        }),
+        'u': dict({
+          'description': 'Set U/Cb component expression',
+          'type': 'string',
+        }),
+        'v': dict({
+          'description': 'Set V/Cr component expression',
+          'type': 'string',
+        }),
+        'y': dict({
+          'description': 'Set Y/luma component expression',
+          'type': 'string',
+        }),
+      }),
+      'required': list([
+      ]),
+      'type': 'object',
+    }),
+    'lutrgb': dict({
+      '$schema': 'http://json-schema.org/draft-07/schema#',
+      'properties': dict({
+        'a': dict({
+          'description': 'Alpha component expression',
+          'type': 'string',
+        }),
+        'b': dict({
+          'description': 'Set blue component expression',
+          'type': 'string',
+        }),
+        'c0': dict({
+          'description': 'Set first pixel component expression',
+          'type': 'string',
+        }),
+        'c1': dict({
+          'description': 'Set second pixel component expression',
+          'type': 'string',
+        }),
+        'c2': dict({
+          'description': 'Set third pixel component expression',
+          'type': 'string',
+        }),
+        'c3': dict({
+          'description': 'Set fourth pixel component expression, corresponds to the alpha component',
+          'type': 'string',
+        }),
+        'g': dict({
+          'description': 'Set green component expression',
+          'type': 'string',
+        }),
+        'r': dict({
+          'description': 'Set red component expression',
+          'type': 'string',
+        }),
+        'u': dict({
+          'description': 'Set U/Cb component expression',
+          'type': 'string',
+        }),
+        'v': dict({
+          'description': 'Set V/Cr component expression',
+          'type': 'string',
+        }),
+        'y': dict({
+          'description': 'Set Y/luma component expression',
+          'type': 'string',
+        }),
+      }),
+      'required': list([
+        'c0',
+        'c1',
+        'c2',
+        'c3',
+        'r',
+        'g',
+        'b',
+        'a',
+        'y',
+        'u',
+        'v',
+      ]),
+      'title': 'lutrgb options',
+      'type': 'object',
+    }),
+    'lutyuv': dict({
+      '$schema': 'http://json-schema.org/draft-07/schema#',
+      'additionalProperties': False,
+      'properties': dict({
+        'a': dict({
+          'description': 'Alpha component expression',
+          'type': 'string',
+        }),
+        'b': dict({
+          'description': 'Set blue component expression',
+          'type': 'string',
+        }),
+        'c0': dict({
+          'description': 'Set first pixel component expression',
+          'type': 'string',
+        }),
+        'c1': dict({
+          'description': 'Set second pixel component expression',
+          'type': 'string',
+        }),
+        'c2': dict({
+          'description': 'Set third pixel component expression',
+          'type': 'string',
+        }),
+        'c3': dict({
+          'description': 'Set fourth pixel component expression, corresponds to the alpha component',
+          'type': 'string',
+        }),
+        'g': dict({
+          'description': 'Set green component expression',
+          'type': 'string',
+        }),
+        'r': dict({
+          'description': 'Set red component expression',
+          'type': 'string',
+        }),
+        'u': dict({
+          'description': 'Set U/Cb component expression',
+          'type': 'string',
+        }),
+        'v': dict({
+          'description': 'Set V/Cr component expression',
+          'type': 'string',
+        }),
+        'y': dict({
+          'description': 'Set Y/luma component expression',
+          'type': 'string',
+        }),
+      }),
+      'required': list([
+      ]),
+      'title': 'lutyuv options',
+      'type': 'object',
+    }),
+  })
+# ---
+# name: test_parse_schema[acrossfade.html]
+  list([
+    dict({
+      'description': '''
+        8.5 acrossfade
+        Apply cross fade from one input audio stream to another input audio stream.
+        The cross fade is applied for specified duration near the end of first stream.
+        
+        The filter accepts the following options:
+      ''',
+      'json_schema': dict({
+        '$schema': 'http://json-schema.org/draft-07/schema#',
+        'definitions': dict({
+          'curveType': dict({
+            'description': 'Set curve for fade transition.',
+            'enum': list([
+              'tri',
+              'qsin',
+              'hsin',
+              'esin',
+              'log',
+              'ipar',
+              'qua',
+              'cub',
+              'squ',
+              'cbr',
+              'par',
+              'exp',
+              'iqsin',
+              'ihsin',
+              'dese',
+              'desi',
+              'losi',
+              'sinc',
+              'isinc',
+              'quat',
+              'quatr',
+              'qsin2',
+              'hsin2',
+              'nofade',
+            ]),
+            'type': 'string',
+          }),
+        }),
+        'properties': dict({
+          'curve1': dict({
+            '$ref': '#/definitions/curveType',
+            'description': 'Set curve for cross fade transition for first stream.',
+          }),
+          'curve2': dict({
+            '$ref': '#/definitions/curveType',
+            'description': 'Set curve for cross fade transition for second stream.',
+          }),
+          'duration': dict({
+            'description': 'Specify the duration of the cross fade effect. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples.',
+            'type': 'string',
+          }),
+          'nb_samples': dict({
+            'description': 'Specify the number of samples for which the cross fade effect has to last. At the end of the cross fade effect the first input audio will be completely silent. Default is 44100.',
+            'type': 'integer',
+          }),
+          'overlap': dict({
+            'description': 'Should first stream end overlap with second stream start. Default is enabled.',
+            'type': 'boolean',
+          }),
+        }),
+        'title': 'acrossfade options',
+        'type': 'object',
+      }),
+      'name': 'acrossfade',
+      'parameters': list([
+        dict({
+          'description': '''
+            <dd><p>Specify the number of samples for which the cross fade effect has to last.
+            At the end of the cross fade effect the first input audio will be completely
+            silent. Default is 44100.
+            </p>
+            </dd>
+          ''',
+          'name': 'nb_samples, ns',
+        }),
+        dict({
+          'description': '''
+            <dd><p>Specify the duration of the cross fade effect. See
+            <a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>
+            for the accepted syntax.
+            By default the duration is determined by <var>nb_samples</var>.
+            If set this option is used instead of <var>nb_samples</var>.
+            </p>
+            </dd>
+          ''',
+          'name': 'duration, d',
+        }),
+        dict({
+          'description': '''
+            <dd><p>Should first stream end overlap with second stream start. Default is enabled.
+            </p>
+            </dd>
+          ''',
+          'name': 'overlap, o',
+        }),
+        dict({
+          'description': '''
+            <dd><p>Set curve for cross fade transition for first stream.
+            </p>
+            </dd>
+          ''',
+          'name': 'curve1',
+        }),
+        dict({
+          'description': '''
+            <dd><p>Set curve for cross fade transition for second stream.
+            </p>
+            <p>For description of available curve types see <a href="#afade">afade</a> filter description.
+            </p></dd>
+          ''',
+          'name': 'curve2',
+        }),
+      ]),
+      'ref': 'https://ffmpeg.org/ffmpeg-filters.html#acrossfade',
+      'source': '''
+        <h3 class="section"><a href="#toc-acrossfade">8.5 acrossfade</a></h3>
+        
+        <p>Apply cross fade from one input audio stream to another input audio stream.
+        The cross fade is applied for specified duration near the end of first stream.
+        </p>
+        <p>The filter accepts the following options:
+        </p>
+        <dl compact="compact">
+        <dt><samp>nb_samples, ns</samp></dt>
+        <dd><p>Specify the number of samples for which the cross fade effect has to last.
+        At the end of the cross fade effect the first input audio will be completely
+        silent. Default is 44100.
+        </p>
+        </dd>
+        <dt><samp>duration, d</samp></dt>
+        <dd><p>Specify the duration of the cross fade effect. See
+        <a href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>
+        for the accepted syntax.
+        By default the duration is determined by <var>nb_samples</var>.
+        If set this option is used instead of <var>nb_samples</var>.
+        </p>
+        </dd>
+        <dt><samp>overlap, o</samp></dt>
+        <dd><p>Should first stream end overlap with second stream start. Default is enabled.
+        </p>
+        </dd>
+        <dt><samp>curve1</samp></dt>
+        <dd><p>Set curve for cross fade transition for first stream.
+        </p>
+        </dd>
+        <dt><samp>curve2</samp></dt>
+        <dd><p>Set curve for cross fade transition for second stream.
+        </p>
+        <p>For description of available curve types see <a href="#afade">afade</a> filter description.
+        </p></dd>
+        </dl>
+  
+      ''',
+    }),
+  ])
+# ---
+# name: test_parse_schema[acue.html]
+  list([
+    dict({
+      'description': '''
+        8.8 acue
+        Delay audio filtering until a given wallclock timestamp. See the cue
+        filter.
+      ''',
+      'json_schema': dict({
+      }),
+      'name': 'acue',
+      'parameters': list([
+      ]),
+      'ref': 'https://ffmpeg.org/ffmpeg-filters.html#acue',
+      'source': '''
+        <h3 class="section"><a href="#toc-acue">8.8 acue</a></h3>
+        
+        <p>Delay audio filtering until a given wallclock timestamp. See the <a href="#cue">cue</a>
+        filter.
+        </p>
+  
+      ''',
+    }),
+  ])
+# ---
+# name: test_parse_schema[lut_002c-lutrgb_002c-lutyuv.html]
+  list([
+    dict({
+      'description': '''
+        11.153 lut, lutrgb, lutyuv
+        Compute a look-up table for binding each pixel component input value
+        to an output value, and apply it to the input video.
+        
+        lutyuv applies a lookup table to a YUV input video, lutrgb
+        to an RGB input video.
+        
+        These filters accept the following parameters:
+        
+        Each of them specifies the expression to use for computing the lookup table for
+        the corresponding pixel component values.
+        
+        The exact component associated to each of the c* options depends on the
+        format in input.
+        
+        The lut filter requires either YUV or RGB pixel formats in input,
+        lutrgb requires RGB pixel formats in input, and lutyuv requires YUV.
+        
+        The expressions can contain the following constants and functions:
+        
+        
+        All expressions default to "clipval".
+      ''',
+      'json_schema': dict({
+        'additionalProperties': False,
+        'properties': dict({
+          'a': dict({
+            'description': 'Alpha component expression',
+            'type': 'string',
+          }),
+          'b': dict({
+            'description': 'Set blue component expression',
+            'type': 'string',
+          }),
+          'c0': dict({
+            'description': 'Set first pixel component expression',
+            'type': 'string',
+          }),
+          'c1': dict({
+            'description': 'Set second pixel component expression',
+            'type': 'string',
+          }),
+          'c2': dict({
+            'description': 'Set third pixel component expression',
+            'type': 'string',
+          }),
+          'c3': dict({
+            'description': 'Set fourth pixel component expression, corresponds to the alpha component',
+            'type': 'string',
+          }),
+          'g': dict({
+            'description': 'Set green component expression',
+            'type': 'string',
+          }),
+          'r': dict({
+            'description': 'Set red component expression',
+            'type': 'string',
+          }),
+          'u': dict({
+            'description': 'Set U/Cb component expression',
+            'type': 'string',
+          }),
+          'v': dict({
+            'description': 'Set V/Cr component expression',
+            'type': 'string',
+          }),
+          'y': dict({
+            'description': 'Set Y/luma component expression',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+        ]),
+        'type': 'object',
+      }),
+      'name': 'lut',
+      'parameters': list([
+        dict({
+          'description': '''
+            <dd><p>set first pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c0',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set second pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c1',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set third pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c2',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set fourth pixel component expression, corresponds to the alpha component
+            </p>
+            </dd>
+          ''',
+          'name': 'c3',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set red component expression
+            </p></dd>
+          ''',
+          'name': 'r',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set green component expression
+            </p></dd>
+          ''',
+          'name': 'g',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set blue component expression
+            </p></dd>
+          ''',
+          'name': 'b',
+        }),
+        dict({
+          'description': '''
+            <dd><p>alpha component expression
+            </p>
+            </dd>
+          ''',
+          'name': 'a',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set Y/luma component expression
+            </p></dd>
+          ''',
+          'name': 'y',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set U/Cb component expression
+            </p></dd>
+          ''',
+          'name': 'u',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set V/Cr component expression
+            </p></dd>
+          ''',
+          'name': 'v',
+        }),
+      ]),
+      'ref': 'https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv',
+      'source': '''
+        <h3 class="section"><a href="#toc-lut_002c-lutrgb_002c-lutyuv">11.153 lut, lutrgb, lutyuv</a></h3>
+        
+        <p>Compute a look-up table for binding each pixel component input value
+        to an output value, and apply it to the input video.
+        </p>
+        <p><var>lutyuv</var> applies a lookup table to a YUV input video, <var>lutrgb</var>
+        to an RGB input video.
+        </p>
+        <p>These filters accept the following parameters:
+        </p><dl compact="compact">
+        <dt><samp>c0</samp></dt>
+        <dd><p>set first pixel component expression
+        </p></dd>
+        <dt><samp>c1</samp></dt>
+        <dd><p>set second pixel component expression
+        </p></dd>
+        <dt><samp>c2</samp></dt>
+        <dd><p>set third pixel component expression
+        </p></dd>
+        <dt><samp>c3</samp></dt>
+        <dd><p>set fourth pixel component expression, corresponds to the alpha component
+        </p>
+        </dd>
+        <dt><samp>r</samp></dt>
+        <dd><p>set red component expression
+        </p></dd>
+        <dt><samp>g</samp></dt>
+        <dd><p>set green component expression
+        </p></dd>
+        <dt><samp>b</samp></dt>
+        <dd><p>set blue component expression
+        </p></dd>
+        <dt><samp>a</samp></dt>
+        <dd><p>alpha component expression
+        </p>
+        </dd>
+        <dt><samp>y</samp></dt>
+        <dd><p>set Y/luma component expression
+        </p></dd>
+        <dt><samp>u</samp></dt>
+        <dd><p>set U/Cb component expression
+        </p></dd>
+        <dt><samp>v</samp></dt>
+        <dd><p>set V/Cr component expression
+        </p></dd>
+        </dl>
+        
+        <p>Each of them specifies the expression to use for computing the lookup table for
+        the corresponding pixel component values.
+        </p>
+        <p>The exact component associated to each of the <var>c*</var> options depends on the
+        format in input.
+        </p>
+        <p>The <var>lut</var> filter requires either YUV or RGB pixel formats in input,
+        <var>lutrgb</var> requires RGB pixel formats in input, and <var>lutyuv</var> requires YUV.
+        </p>
+        <p>The expressions can contain the following constants and functions:
+        </p>
+        <dl compact="compact">
+        <dt><samp>w</samp></dt>
+        <dt><samp>h</samp></dt>
+        <dd><p>The input width and height.
+        </p>
+        </dd>
+        <dt><samp>val</samp></dt>
+        <dd><p>The input value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>clipval</samp></dt>
+        <dd><p>The input value, clipped to the <var>minval</var>-<var>maxval</var> range.
+        </p>
+        </dd>
+        <dt><samp>maxval</samp></dt>
+        <dd><p>The maximum value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>minval</samp></dt>
+        <dd><p>The minimum value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>negval</samp></dt>
+        <dd><p>The negated value for the pixel component value, clipped to the
+        <var>minval</var>-<var>maxval</var> range; it corresponds to the expression
+        &quot;maxval-clipval+minval&quot;.
+        </p>
+        </dd>
+        <dt><samp>clip(val)</samp></dt>
+        <dd><p>The computed value in <var>val</var>, clipped to the
+        <var>minval</var>-<var>maxval</var> range.
+        </p>
+        </dd>
+        <dt><samp>gammaval(gamma)</samp></dt>
+        <dd><p>The computed gamma correction value of the pixel component value,
+        clipped to the <var>minval</var>-<var>maxval</var> range. It corresponds to the
+        expression
+        &quot;pow((clipval-minval)/(maxval-minval)\,<var>gamma</var>)*(maxval-minval)+minval&quot;
+        </p>
+        </dd>
+        </dl>
+        
+        <p>All expressions default to &quot;clipval&quot;.
+        </p>
+  
+      ''',
+    }),
+    dict({
+      'description': '''
+        11.153 lut, lutrgb, lutyuv
+        Compute a look-up table for binding each pixel component input value
+        to an output value, and apply it to the input video.
+        
+        lutyuv applies a lookup table to a YUV input video, lutrgb
+        to an RGB input video.
+        
+        These filters accept the following parameters:
+        
+        Each of them specifies the expression to use for computing the lookup table for
+        the corresponding pixel component values.
+        
+        The exact component associated to each of the c* options depends on the
+        format in input.
+        
+        The lut filter requires either YUV or RGB pixel formats in input,
+        lutrgb requires RGB pixel formats in input, and lutyuv requires YUV.
+        
+        The expressions can contain the following constants and functions:
+        
+        
+        All expressions default to "clipval".
+      ''',
+      'json_schema': dict({
+        '$schema': 'http://json-schema.org/draft-07/schema#',
+        'additionalProperties': False,
+        'properties': dict({
+          'a': dict({
+            'description': 'Alpha component expression',
+            'type': 'string',
+          }),
+          'b': dict({
+            'description': 'Set blue component expression',
+            'type': 'string',
+          }),
+          'c0': dict({
+            'description': 'Set first pixel component expression',
+            'type': 'string',
+          }),
+          'c1': dict({
+            'description': 'Set second pixel component expression',
+            'type': 'string',
+          }),
+          'c2': dict({
+            'description': 'Set third pixel component expression',
+            'type': 'string',
+          }),
+          'c3': dict({
+            'description': 'Set fourth pixel component expression, corresponds to the alpha component',
+            'type': 'string',
+          }),
+          'g': dict({
+            'description': 'Set green component expression',
+            'type': 'string',
+          }),
+          'r': dict({
+            'description': 'Set red component expression',
+            'type': 'string',
+          }),
+          'u': dict({
+            'description': 'Set U/Cb component expression',
+            'type': 'string',
+          }),
+          'v': dict({
+            'description': 'Set V/Cr component expression',
+            'type': 'string',
+          }),
+          'y': dict({
+            'description': 'Set Y/luma component expression',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+        ]),
+        'title': 'lutrgb options',
+        'type': 'object',
+      }),
+      'name': 'lutrgb',
+      'parameters': list([
+        dict({
+          'description': '''
+            <dd><p>set first pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c0',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set second pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c1',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set third pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c2',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set fourth pixel component expression, corresponds to the alpha component
+            </p>
+            </dd>
+          ''',
+          'name': 'c3',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set red component expression
+            </p></dd>
+          ''',
+          'name': 'r',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set green component expression
+            </p></dd>
+          ''',
+          'name': 'g',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set blue component expression
+            </p></dd>
+          ''',
+          'name': 'b',
+        }),
+        dict({
+          'description': '''
+            <dd><p>alpha component expression
+            </p>
+            </dd>
+          ''',
+          'name': 'a',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set Y/luma component expression
+            </p></dd>
+          ''',
+          'name': 'y',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set U/Cb component expression
+            </p></dd>
+          ''',
+          'name': 'u',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set V/Cr component expression
+            </p></dd>
+          ''',
+          'name': 'v',
+        }),
+      ]),
+      'ref': 'https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv',
+      'source': '''
+        <h3 class="section"><a href="#toc-lut_002c-lutrgb_002c-lutyuv">11.153 lut, lutrgb, lutyuv</a></h3>
+        
+        <p>Compute a look-up table for binding each pixel component input value
+        to an output value, and apply it to the input video.
+        </p>
+        <p><var>lutyuv</var> applies a lookup table to a YUV input video, <var>lutrgb</var>
+        to an RGB input video.
+        </p>
+        <p>These filters accept the following parameters:
+        </p><dl compact="compact">
+        <dt><samp>c0</samp></dt>
+        <dd><p>set first pixel component expression
+        </p></dd>
+        <dt><samp>c1</samp></dt>
+        <dd><p>set second pixel component expression
+        </p></dd>
+        <dt><samp>c2</samp></dt>
+        <dd><p>set third pixel component expression
+        </p></dd>
+        <dt><samp>c3</samp></dt>
+        <dd><p>set fourth pixel component expression, corresponds to the alpha component
+        </p>
+        </dd>
+        <dt><samp>r</samp></dt>
+        <dd><p>set red component expression
+        </p></dd>
+        <dt><samp>g</samp></dt>
+        <dd><p>set green component expression
+        </p></dd>
+        <dt><samp>b</samp></dt>
+        <dd><p>set blue component expression
+        </p></dd>
+        <dt><samp>a</samp></dt>
+        <dd><p>alpha component expression
+        </p>
+        </dd>
+        <dt><samp>y</samp></dt>
+        <dd><p>set Y/luma component expression
+        </p></dd>
+        <dt><samp>u</samp></dt>
+        <dd><p>set U/Cb component expression
+        </p></dd>
+        <dt><samp>v</samp></dt>
+        <dd><p>set V/Cr component expression
+        </p></dd>
+        </dl>
+        
+        <p>Each of them specifies the expression to use for computing the lookup table for
+        the corresponding pixel component values.
+        </p>
+        <p>The exact component associated to each of the <var>c*</var> options depends on the
+        format in input.
+        </p>
+        <p>The <var>lut</var> filter requires either YUV or RGB pixel formats in input,
+        <var>lutrgb</var> requires RGB pixel formats in input, and <var>lutyuv</var> requires YUV.
+        </p>
+        <p>The expressions can contain the following constants and functions:
+        </p>
+        <dl compact="compact">
+        <dt><samp>w</samp></dt>
+        <dt><samp>h</samp></dt>
+        <dd><p>The input width and height.
+        </p>
+        </dd>
+        <dt><samp>val</samp></dt>
+        <dd><p>The input value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>clipval</samp></dt>
+        <dd><p>The input value, clipped to the <var>minval</var>-<var>maxval</var> range.
+        </p>
+        </dd>
+        <dt><samp>maxval</samp></dt>
+        <dd><p>The maximum value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>minval</samp></dt>
+        <dd><p>The minimum value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>negval</samp></dt>
+        <dd><p>The negated value for the pixel component value, clipped to the
+        <var>minval</var>-<var>maxval</var> range; it corresponds to the expression
+        &quot;maxval-clipval+minval&quot;.
+        </p>
+        </dd>
+        <dt><samp>clip(val)</samp></dt>
+        <dd><p>The computed value in <var>val</var>, clipped to the
+        <var>minval</var>-<var>maxval</var> range.
+        </p>
+        </dd>
+        <dt><samp>gammaval(gamma)</samp></dt>
+        <dd><p>The computed gamma correction value of the pixel component value,
+        clipped to the <var>minval</var>-<var>maxval</var> range. It corresponds to the
+        expression
+        &quot;pow((clipval-minval)/(maxval-minval)\,<var>gamma</var>)*(maxval-minval)+minval&quot;
+        </p>
+        </dd>
+        </dl>
+        
+        <p>All expressions default to &quot;clipval&quot;.
+        </p>
+  
+      ''',
+    }),
+    dict({
+      'description': '''
+        11.153 lut, lutrgb, lutyuv
+        Compute a look-up table for binding each pixel component input value
+        to an output value, and apply it to the input video.
+        
+        lutyuv applies a lookup table to a YUV input video, lutrgb
+        to an RGB input video.
+        
+        These filters accept the following parameters:
+        
+        Each of them specifies the expression to use for computing the lookup table for
+        the corresponding pixel component values.
+        
+        The exact component associated to each of the c* options depends on the
+        format in input.
+        
+        The lut filter requires either YUV or RGB pixel formats in input,
+        lutrgb requires RGB pixel formats in input, and lutyuv requires YUV.
+        
+        The expressions can contain the following constants and functions:
+        
+        
+        All expressions default to "clipval".
+      ''',
+      'json_schema': dict({
+        '$schema': 'http://json-schema.org/draft-07/schema#',
+        'additionalProperties': False,
+        'properties': dict({
+          'a': dict({
+            'description': 'Alpha component expression',
+            'type': 'string',
+          }),
+          'b': dict({
+            'description': 'Set blue component expression',
+            'type': 'string',
+          }),
+          'c0': dict({
+            'description': 'Set first pixel component expression',
+            'type': 'string',
+          }),
+          'c1': dict({
+            'description': 'Set second pixel component expression',
+            'type': 'string',
+          }),
+          'c2': dict({
+            'description': 'Set third pixel component expression',
+            'type': 'string',
+          }),
+          'c3': dict({
+            'description': 'Set fourth pixel component expression, corresponds to the alpha component',
+            'type': 'string',
+          }),
+          'g': dict({
+            'description': 'Set green component expression',
+            'type': 'string',
+          }),
+          'r': dict({
+            'description': 'Set red component expression',
+            'type': 'string',
+          }),
+          'u': dict({
+            'description': 'Set U/Cb component expression',
+            'type': 'string',
+          }),
+          'v': dict({
+            'description': 'Set V/Cr component expression',
+            'type': 'string',
+          }),
+          'y': dict({
+            'description': 'Set Y/luma component expression',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+        ]),
+        'title': 'lutyuv options',
+        'type': 'object',
+      }),
+      'name': 'lutyuv',
+      'parameters': list([
+        dict({
+          'description': '''
+            <dd><p>set first pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c0',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set second pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c1',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set third pixel component expression
+            </p></dd>
+          ''',
+          'name': 'c2',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set fourth pixel component expression, corresponds to the alpha component
+            </p>
+            </dd>
+          ''',
+          'name': 'c3',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set red component expression
+            </p></dd>
+          ''',
+          'name': 'r',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set green component expression
+            </p></dd>
+          ''',
+          'name': 'g',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set blue component expression
+            </p></dd>
+          ''',
+          'name': 'b',
+        }),
+        dict({
+          'description': '''
+            <dd><p>alpha component expression
+            </p>
+            </dd>
+          ''',
+          'name': 'a',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set Y/luma component expression
+            </p></dd>
+          ''',
+          'name': 'y',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set U/Cb component expression
+            </p></dd>
+          ''',
+          'name': 'u',
+        }),
+        dict({
+          'description': '''
+            <dd><p>set V/Cr component expression
+            </p></dd>
+          ''',
+          'name': 'v',
+        }),
+      ]),
+      'ref': 'https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv',
+      'source': '''
+        <h3 class="section"><a href="#toc-lut_002c-lutrgb_002c-lutyuv">11.153 lut, lutrgb, lutyuv</a></h3>
+        
+        <p>Compute a look-up table for binding each pixel component input value
+        to an output value, and apply it to the input video.
+        </p>
+        <p><var>lutyuv</var> applies a lookup table to a YUV input video, <var>lutrgb</var>
+        to an RGB input video.
+        </p>
+        <p>These filters accept the following parameters:
+        </p><dl compact="compact">
+        <dt><samp>c0</samp></dt>
+        <dd><p>set first pixel component expression
+        </p></dd>
+        <dt><samp>c1</samp></dt>
+        <dd><p>set second pixel component expression
+        </p></dd>
+        <dt><samp>c2</samp></dt>
+        <dd><p>set third pixel component expression
+        </p></dd>
+        <dt><samp>c3</samp></dt>
+        <dd><p>set fourth pixel component expression, corresponds to the alpha component
+        </p>
+        </dd>
+        <dt><samp>r</samp></dt>
+        <dd><p>set red component expression
+        </p></dd>
+        <dt><samp>g</samp></dt>
+        <dd><p>set green component expression
+        </p></dd>
+        <dt><samp>b</samp></dt>
+        <dd><p>set blue component expression
+        </p></dd>
+        <dt><samp>a</samp></dt>
+        <dd><p>alpha component expression
+        </p>
+        </dd>
+        <dt><samp>y</samp></dt>
+        <dd><p>set Y/luma component expression
+        </p></dd>
+        <dt><samp>u</samp></dt>
+        <dd><p>set U/Cb component expression
+        </p></dd>
+        <dt><samp>v</samp></dt>
+        <dd><p>set V/Cr component expression
+        </p></dd>
+        </dl>
+        
+        <p>Each of them specifies the expression to use for computing the lookup table for
+        the corresponding pixel component values.
+        </p>
+        <p>The exact component associated to each of the <var>c*</var> options depends on the
+        format in input.
+        </p>
+        <p>The <var>lut</var> filter requires either YUV or RGB pixel formats in input,
+        <var>lutrgb</var> requires RGB pixel formats in input, and <var>lutyuv</var> requires YUV.
+        </p>
+        <p>The expressions can contain the following constants and functions:
+        </p>
+        <dl compact="compact">
+        <dt><samp>w</samp></dt>
+        <dt><samp>h</samp></dt>
+        <dd><p>The input width and height.
+        </p>
+        </dd>
+        <dt><samp>val</samp></dt>
+        <dd><p>The input value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>clipval</samp></dt>
+        <dd><p>The input value, clipped to the <var>minval</var>-<var>maxval</var> range.
+        </p>
+        </dd>
+        <dt><samp>maxval</samp></dt>
+        <dd><p>The maximum value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>minval</samp></dt>
+        <dd><p>The minimum value for the pixel component.
+        </p>
+        </dd>
+        <dt><samp>negval</samp></dt>
+        <dd><p>The negated value for the pixel component value, clipped to the
+        <var>minval</var>-<var>maxval</var> range; it corresponds to the expression
+        &quot;maxval-clipval+minval&quot;.
+        </p>
+        </dd>
+        <dt><samp>clip(val)</samp></dt>
+        <dd><p>The computed value in <var>val</var>, clipped to the
+        <var>minval</var>-<var>maxval</var> range.
+        </p>
+        </dd>
+        <dt><samp>gammaval(gamma)</samp></dt>
+        <dd><p>The computed gamma correction value of the pixel component value,
+        clipped to the <var>minval</var>-<var>maxval</var> range. It corresponds to the
+        expression
+        &quot;pow((clipval-minval)/(maxval-minval)\,<var>gamma</var>)*(maxval-minval)+minval&quot;
+        </p>
+        </dd>
+        </dl>
+        
+        <p>All expressions default to &quot;clipval&quot;.
+        </p>
+  
+      ''',
+    }),
+  ])
+# ---

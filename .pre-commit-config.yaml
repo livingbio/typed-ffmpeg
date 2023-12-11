@@ -14,6 +14,8 @@ repos:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
         exclude: "__snapshots__/"
+      - id: pretty-format-json
+        args: [--autofix]
   # this is not technically always safe but usually is
   # use comments `# isort: off` and `# isort: on` to disable/re-enable isort
   - repo: https://github.com/pycqa/isort
@@ -65,7 +67,3 @@ repos:
             --install-types,
             --non-interactive,
           ]
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
-    hooks:
-    -   id: detect-secrets

@@ -1,0 +1,185 @@
+{
+  "description": "8.16 adynamicequalizer\nApply dynamic equalization to input audio stream.\n\nA description of the accepted options follows.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "attack": {
+        "default": 20,
+        "maximum": 2000,
+        "minimum": 1,
+        "type": "number"
+      },
+      "auto": {
+        "default": "disabled",
+        "enum": [
+          "disabled",
+          "off",
+          "on",
+          "adaptive"
+        ],
+        "type": "string"
+      },
+      "dfrequency": {
+        "default": 1000,
+        "maximum": 1000000,
+        "minimum": 2,
+        "type": "number"
+      },
+      "dftype": {
+        "default": "bandpass",
+        "enum": [
+          "bandpass",
+          "lowpass",
+          "highpass",
+          "peak"
+        ],
+        "type": "string"
+      },
+      "dqfactor": {
+        "default": 1,
+        "maximum": 1000,
+        "minimum": 0.001,
+        "type": "number"
+      },
+      "makeup": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "number"
+      },
+      "mode": {
+        "default": "cutbelow",
+        "enum": [
+          "listen",
+          "cutbelow",
+          "cutabove",
+          "boostbelow",
+          "boostabove"
+        ],
+        "type": "string"
+      },
+      "precision": {
+        "default": "auto",
+        "enum": [
+          "auto",
+          "float",
+          "double"
+        ],
+        "type": "string"
+      },
+      "range": {
+        "default": 50,
+        "maximum": 200,
+        "minimum": 1,
+        "type": "number"
+      },
+      "ratio": {
+        "default": 1,
+        "maximum": 30,
+        "minimum": 0,
+        "type": "number"
+      },
+      "release": {
+        "default": 200,
+        "maximum": 2000,
+        "minimum": 1,
+        "type": "number"
+      },
+      "tfrequency": {
+        "default": 1000,
+        "maximum": 1000000,
+        "minimum": 2,
+        "type": "number"
+      },
+      "tftype": {
+        "default": "bell",
+        "enum": [
+          "bell",
+          "lowshelf",
+          "highshelf"
+        ],
+        "type": "string"
+      },
+      "threshold": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "number"
+      },
+      "tqfactor": {
+        "default": 1,
+        "maximum": 1000,
+        "minimum": 0.001,
+        "type": "number"
+      }
+    },
+    "title": "adynamicequalizer options",
+    "type": "object"
+  },
+  "name": "adynamicequalizer",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the detection threshold used to trigger equalization.\nThreshold detection is using detection filter.\nDefault value is 0. Allowed range is from 0 to 100.\n</p>\n</dd>",
+      "name": "threshold"
+    },
+    {
+      "description": "<dd><p>Set the detection frequency in Hz used for detection filter used to trigger equalization.\nDefault value is 1000 Hz. Allowed range is between 2 and 1000000 Hz.\n</p>\n</dd>",
+      "name": "dfrequency"
+    },
+    {
+      "description": "<dd><p>Set the detection resonance factor for detection filter used to trigger equalization.\nDefault value is 1. Allowed range is from 0.001 to 1000.\n</p>\n</dd>",
+      "name": "dqfactor"
+    },
+    {
+      "description": "<dd><p>Set the target frequency of equalization filter.\nDefault value is 1000 Hz. Allowed range is between 2 and 1000000 Hz.\n</p>\n</dd>",
+      "name": "tfrequency"
+    },
+    {
+      "description": "<dd><p>Set the target resonance factor for target equalization filter.\nDefault value is 1. Allowed range is from 0.001 to 1000.\n</p>\n</dd>",
+      "name": "tqfactor"
+    },
+    {
+      "description": "<dd><p>Set the amount of milliseconds the signal from detection has to rise above\nthe detection threshold before equalization starts.\nDefault is 20. Allowed range is between 1 and 2000.\n</p>\n</dd>",
+      "name": "attack"
+    },
+    {
+      "description": "<dd><p>Set the amount of milliseconds the signal from detection has to fall below the\ndetection threshold before equalization ends.\nDefault is 200. Allowed range is between 1 and 2000.\n</p>\n</dd>",
+      "name": "release"
+    },
+    {
+      "description": "<dd><p>Set the ratio by which the equalization gain is raised.\nDefault is 1. Allowed range is between 0 and 30.\n</p>\n</dd>",
+      "name": "ratio"
+    },
+    {
+      "description": "<dd><p>Set the makeup offset by which the equalization gain is raised.\nDefault is 0. Allowed range is between 0 and 100.\n</p>\n</dd>",
+      "name": "makeup"
+    },
+    {
+      "description": "<dd><p>Set the max allowed cut/boost amount. Default is 50.\nAllowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "range"
+    },
+    {
+      "description": "<dd><p>Set the mode of filter operation, can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>listen</samp>\u2019</dt>\n<dd><p>Output only isolated detection signal.\n</p></dd>\n<dt>\u2018<samp>cutbelow</samp>\u2019</dt>\n<dd><p>Cut frequencies below detection threshold.\n</p></dd>\n<dt>\u2018<samp>cutabove</samp>\u2019</dt>\n<dd><p>Cut frequencies above detection threshold.\n</p></dd>\n<dt>\u2018<samp>boostbelow</samp>\u2019</dt>\n<dd><p>Boost frequencies below detection threshold.\n</p></dd>\n<dt>\u2018<samp>boostabove</samp>\u2019</dt>\n<dd><p>Boost frequencies above detection threshold.\n</p></dd>\n</dl>\n<p>Default mode is \u2018<samp>cutbelow</samp>\u2019.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>Set the type of detection filter, can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>bandpass</samp>\u2019</dt>\n<dt>\u2018<samp>lowpass</samp>\u2019</dt>\n<dt>\u2018<samp>highpass</samp>\u2019</dt>\n<dt>\u2018<samp>peak</samp>\u2019</dt>\n</dl>\n<p>Default type is \u2018<samp>bandpass</samp>\u2019.\n</p>\n</dd>",
+      "name": "dftype"
+    },
+    {
+      "description": "<dd><p>Set the type of target filter, can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>bell</samp>\u2019</dt>\n<dt>\u2018<samp>lowshelf</samp>\u2019</dt>\n<dt>\u2018<samp>highshelf</samp>\u2019</dt>\n</dl>\n<p>Default type is \u2018<samp>bell</samp>\u2019.\n</p>\n</dd>",
+      "name": "tftype"
+    },
+    {
+      "description": "<dd><p>Automatically gather threshold from detection filter. By default\nis \u2018<samp>disabled</samp>\u2019.\nThis option is useful to detect threshold in certain time frame of\ninput audio stream, in such case option value is changed at runtime.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>disabled</samp>\u2019</dt>\n<dd><p>Disable using automatically gathered threshold value.\n</p></dd>\n<dt>\u2018<samp>off</samp>\u2019</dt>\n<dd><p>Stop picking threshold value.\n</p></dd>\n<dt>\u2018<samp>on</samp>\u2019</dt>\n<dd><p>Start picking threshold value.\n</p></dd>\n<dt>\u2018<samp>adaptive</samp>\u2019</dt>\n<dd><p>Adaptively pick threshold value, by calculating sliding window entropy.\n</p></dd>\n</dl>\n</dd>",
+      "name": "auto"
+    },
+    {
+      "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n</dd>",
+      "name": "precision"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer",
+  "source": "<h3 class=\"section\"><a href=\"#toc-adynamicequalizer\">8.16 adynamicequalizer</a></h3>\n\n<p>Apply dynamic equalization to input audio stream.\n</p>\n<p>A description of the accepted options follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>threshold</samp></dt>\n<dd><p>Set the detection threshold used to trigger equalization.\nThreshold detection is using detection filter.\nDefault value is 0. Allowed range is from 0 to 100.\n</p>\n</dd>\n<dt><samp>dfrequency</samp></dt>\n<dd><p>Set the detection frequency in Hz used for detection filter used to trigger equalization.\nDefault value is 1000 Hz. Allowed range is between 2 and 1000000 Hz.\n</p>\n</dd>\n<dt><samp>dqfactor</samp></dt>\n<dd><p>Set the detection resonance factor for detection filter used to trigger equalization.\nDefault value is 1. Allowed range is from 0.001 to 1000.\n</p>\n</dd>\n<dt><samp>tfrequency</samp></dt>\n<dd><p>Set the target frequency of equalization filter.\nDefault value is 1000 Hz. Allowed range is between 2 and 1000000 Hz.\n</p>\n</dd>\n<dt><samp>tqfactor</samp></dt>\n<dd><p>Set the target resonance factor for target equalization filter.\nDefault value is 1. Allowed range is from 0.001 to 1000.\n</p>\n</dd>\n<dt><samp>attack</samp></dt>\n<dd><p>Set the amount of milliseconds the signal from detection has to rise above\nthe detection threshold before equalization starts.\nDefault is 20. Allowed range is between 1 and 2000.\n</p>\n</dd>\n<dt><samp>release</samp></dt>\n<dd><p>Set the amount of milliseconds the signal from detection has to fall below the\ndetection threshold before equalization ends.\nDefault is 200. Allowed range is between 1 and 2000.\n</p>\n</dd>\n<dt><samp>ratio</samp></dt>\n<dd><p>Set the ratio by which the equalization gain is raised.\nDefault is 1. Allowed range is between 0 and 30.\n</p>\n</dd>\n<dt><samp>makeup</samp></dt>\n<dd><p>Set the makeup offset by which the equalization gain is raised.\nDefault is 0. Allowed range is between 0 and 100.\n</p>\n</dd>\n<dt><samp>range</samp></dt>\n<dd><p>Set the max allowed cut/boost amount. Default is 50.\nAllowed range is from 1 to 200.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set the mode of filter operation, can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>listen</samp>&rsquo;</dt>\n<dd><p>Output only isolated detection signal.\n</p></dd>\n<dt>&lsquo;<samp>cutbelow</samp>&rsquo;</dt>\n<dd><p>Cut frequencies below detection threshold.\n</p></dd>\n<dt>&lsquo;<samp>cutabove</samp>&rsquo;</dt>\n<dd><p>Cut frequencies above detection threshold.\n</p></dd>\n<dt>&lsquo;<samp>boostbelow</samp>&rsquo;</dt>\n<dd><p>Boost frequencies below detection threshold.\n</p></dd>\n<dt>&lsquo;<samp>boostabove</samp>&rsquo;</dt>\n<dd><p>Boost frequencies above detection threshold.\n</p></dd>\n</dl>\n<p>Default mode is &lsquo;<samp>cutbelow</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>dftype</samp></dt>\n<dd><p>Set the type of detection filter, can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>bandpass</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>lowpass</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>highpass</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>peak</samp>&rsquo;</dt>\n</dl>\n<p>Default type is &lsquo;<samp>bandpass</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>tftype</samp></dt>\n<dd><p>Set the type of target filter, can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>bell</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>lowshelf</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>highshelf</samp>&rsquo;</dt>\n</dl>\n<p>Default type is &lsquo;<samp>bell</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Automatically gather threshold from detection filter. By default\nis &lsquo;<samp>disabled</samp>&rsquo;.\nThis option is useful to detect threshold in certain time frame of\ninput audio stream, in such case option value is changed at runtime.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>disabled</samp>&rsquo;</dt>\n<dd><p>Disable using automatically gathered threshold value.\n</p></dd>\n<dt>&lsquo;<samp>off</samp>&rsquo;</dt>\n<dd><p>Stop picking threshold value.\n</p></dd>\n<dt>&lsquo;<samp>on</samp>&rsquo;</dt>\n<dd><p>Start picking threshold value.\n</p></dd>\n<dt>&lsquo;<samp>adaptive</samp>&rsquo;</dt>\n<dd><p>Adaptively pick threshold value, by calculating sliding window entropy.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>precision</samp></dt>\n<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n"
+}

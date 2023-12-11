@@ -1,0 +1,39 @@
+{
+  "description": "8.20 aeval\nModify an audio signal according to the specified expressions.\n\nThis filter accepts one or more expressions (one for each channel),\nwhich are evaluated and used to modify a corresponding audio signal.\n\nIt accepts the following parameters:\n\n\nEach expression in exprs can contain the following constants and functions:\n\n\nNote: this filter is slow. For faster processing you should use a\ndedicated filter.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "c": {
+        "description": "Alias for 'channel_layout'",
+        "type": "string"
+      },
+      "channel_layout": {
+        "description": "Set output channel layout. If not specified, the channel layout is specified by the number of expressions. If set to 'same', it will use by default the same input channel layout.",
+        "type": "string"
+      },
+      "exprs": {
+        "description": "Set the '|'-separated expressions list for each separate channel. If the number of input channels is greater than the number of expressions, the last specified expression is used for the remaining output channels.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "exprs"
+    ],
+    "title": "aeval",
+    "type": "object"
+  },
+  "name": "aeval",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the \u2019|\u2019-separated expressions list for each separate channel. If\nthe number of input channels is greater than the number of\nexpressions, the last specified expression is used for the remaining\noutput channels.\n</p>\n</dd>",
+      "name": "exprs"
+    },
+    {
+      "description": "<dd><p>Set output channel layout. If not specified, the channel layout is\nspecified by the number of expressions. If set to \u2018<samp>same</samp>\u2019, it will\nuse by default the same input channel layout.\n</p></dd>",
+      "name": "channel_layout, c"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aeval",
+  "source": "<h3 class=\"section\"><a href=\"#toc-aeval\">8.20 aeval</a></h3>\n\n<p>Modify an audio signal according to the specified expressions.\n</p>\n<p>This filter accepts one or more expressions (one for each channel),\nwhich are evaluated and used to modify a corresponding audio signal.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>exprs</samp></dt>\n<dd><p>Set the &rsquo;|&rsquo;-separated expressions list for each separate channel. If\nthe number of input channels is greater than the number of\nexpressions, the last specified expression is used for the remaining\noutput channels.\n</p>\n</dd>\n<dt><samp>channel_layout, c</samp></dt>\n<dd><p>Set output channel layout. If not specified, the channel layout is\nspecified by the number of expressions. If set to &lsquo;<samp>same</samp>&rsquo;, it will\nuse by default the same input channel layout.\n</p></dd>\n</dl>\n\n<p>Each expression in <var>exprs</var> can contain the following constants and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>ch</samp></dt>\n<dd><p>channel number of the current expression\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>number of the evaluated sample, starting from 0\n</p>\n</dd>\n<dt><samp>s</samp></dt>\n<dd><p>sample rate\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>time of the evaluated sample expressed in seconds\n</p>\n</dd>\n<dt><samp>nb_in_channels</samp></dt>\n<dt><samp>nb_out_channels</samp></dt>\n<dd><p>input and output number of channels\n</p>\n</dd>\n<dt><samp>val(CH)</samp></dt>\n<dd><p>the value of input channel with number <var>CH</var>\n</p></dd>\n</dl>\n\n<p>Note: this filter is slow. For faster processing you should use a\ndedicated filter.\n</p>\n"
+}

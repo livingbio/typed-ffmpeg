@@ -1,0 +1,51 @@
+{
+  "description": "8.18 aecho\nApply echoing to the input audio.\n\nEchoes are reflected sound and can occur naturally amongst mountains\n(and sometimes large buildings) when talking or shouting; digital echo\neffects emulate this behaviour and are often used to help fill out the\nsound of a single instrument or vocal. The time difference between the\noriginal signal and the reflection is the delay, and the\nloudness of the reflected signal is the decay.\nMultiple echoes can have different delays and decays.\n\nA description of the accepted parameters follows.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "decays": {
+        "default": "0.5",
+        "pattern": "^((0(\\.\\d+)?|1(\\.0+)?)(\\|(0(\\.\\d+)?|1(\\.0+)?))*)?$",
+        "type": "string"
+      },
+      "delays": {
+        "default": "1000",
+        "pattern": "^((0|[1-9][0-9]{0,4}|[1-8][0-9]{5}|90000)(\\|(0|[1-9][0-9]{0,4}|[1-8][0-9]{5}|90000))*)?$",
+        "type": "string"
+      },
+      "in_gain": {
+        "default": 0.6,
+        "type": "number"
+      },
+      "out_gain": {
+        "default": 0.3,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "aecho options",
+    "type": "object"
+  },
+  "name": "aecho",
+  "parameters": [
+    {
+      "description": "<dd><p>Set input gain of reflected signal. Default is <code>0.6</code>.\n</p>\n</dd>",
+      "name": "in_gain"
+    },
+    {
+      "description": "<dd><p>Set output gain of reflected signal. Default is <code>0.3</code>.\n</p>\n</dd>",
+      "name": "out_gain"
+    },
+    {
+      "description": "<dd><p>Set list of time intervals in milliseconds between original signal and reflections\nseparated by \u2019|\u2019. Allowed range for each <code>delay</code> is <code>(0 - 90000.0]</code>.\nDefault is <code>1000</code>.\n</p>\n</dd>",
+      "name": "delays"
+    },
+    {
+      "description": "<dd><p>Set list of loudness of reflected signals separated by \u2019|\u2019.\nAllowed range for each <code>decay</code> is <code>(0 - 1.0]</code>.\nDefault is <code>0.5</code>.\n</p></dd>",
+      "name": "decays"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aecho",
+  "source": "<h3 class=\"section\"><a href=\"#toc-aecho\">8.18 aecho</a></h3>\n\n<p>Apply echoing to the input audio.\n</p>\n<p>Echoes are reflected sound and can occur naturally amongst mountains\n(and sometimes large buildings) when talking or shouting; digital echo\neffects emulate this behaviour and are often used to help fill out the\nsound of a single instrument or vocal. The time difference between the\noriginal signal and the reflection is the <code>delay</code>, and the\nloudness of the reflected signal is the <code>decay</code>.\nMultiple echoes can have different delays and decays.\n</p>\n<p>A description of the accepted parameters follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>in_gain</samp></dt>\n<dd><p>Set input gain of reflected signal. Default is <code>0.6</code>.\n</p>\n</dd>\n<dt><samp>out_gain</samp></dt>\n<dd><p>Set output gain of reflected signal. Default is <code>0.3</code>.\n</p>\n</dd>\n<dt><samp>delays</samp></dt>\n<dd><p>Set list of time intervals in milliseconds between original signal and reflections\nseparated by &rsquo;|&rsquo;. Allowed range for each <code>delay</code> is <code>(0 - 90000.0]</code>.\nDefault is <code>1000</code>.\n</p>\n</dd>\n<dt><samp>decays</samp></dt>\n<dd><p>Set list of loudness of reflected signals separated by &rsquo;|&rsquo;.\nAllowed range for each <code>decay</code> is <code>(0 - 1.0]</code>.\nDefault is <code>0.5</code>.\n</p></dd>\n</dl>\n\n"
+}

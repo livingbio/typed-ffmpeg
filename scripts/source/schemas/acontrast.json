@@ -1,0 +1,26 @@
+{
+  "description": "8.3 acontrast\nSimple audio dynamic range compression/expansion filter.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "contrast": {
+        "default": 33,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "acontrast options",
+    "type": "object"
+  },
+  "name": "acontrast",
+  "parameters": [
+    {
+      "description": "<dd><p>Set contrast. Default is 33. Allowed range is between 0 and 100.\n</p></dd>",
+      "name": "contrast"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acontrast",
+  "source": "<h3 class=\"section\"><a href=\"#toc-acontrast\">8.3 acontrast</a></h3>\n<p>Simple audio dynamic range compression/expansion filter.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>contrast</samp></dt>\n<dd><p>Set contrast. Default is 33. Allowed range is between 0 and 100.\n</p></dd>\n</dl>\n\n"
+}
