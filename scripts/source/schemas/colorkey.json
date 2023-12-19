@@ -1,0 +1,47 @@
+{
+  "description": "11.36 colorkey\nRGB colorspace color keying.\nThis filter operates on 8-bit RGB format frames by setting the alpha component of each pixel\nwhich falls within the similarity radius of the key color to 0. The alpha value for pixels outside\nthe similarity radius depends on the value of the blend option.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "blend": {
+        "default": 0.0,
+        "description": "Set how the alpha value for pixels that fall outside the similarity radius is computed.",
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "color": {
+        "default": "black",
+        "description": "Set the color for which alpha will be set to 0 (full transparency).",
+        "type": "string"
+      },
+      "similarity": {
+        "default": 0.01,
+        "description": "Set the radius from the key color within which other colors also have full transparency.",
+        "maximum": 1.0,
+        "minimum": 0.01,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "colorkey options",
+    "type": "object"
+  },
+  "name": "colorkey",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the color for which alpha will be set to 0 (full transparency).\nSee <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nDefault is <code>black</code>.\n</p>\n</dd>",
+      "name": "color"
+    },
+    {
+      "description": "<dd><p>Set the radius from the key color within which other colors also have full transparency.\nThe computed distance is related to the unit fractional distance in 3D space between the RGB values\nof the key color and the pixel\u2019s color. Range is 0.01 to 1.0. 0.01 matches within a very small radius\naround the exact key color, while 1.0 matches everything.\nDefault is <code>0.01</code>.\n</p>\n</dd>",
+      "name": "similarity"
+    },
+    {
+      "description": "<dd><p>Set how the alpha value for pixels that fall outside the similarity radius is computed.\n0.0 makes pixels either fully transparent or fully opaque.\nHigher values result in semi-transparent pixels, with greater transparency\nthe more similar the pixel color is to the key color.\nRange is 0.0 to 1.0. Default is <code>0.0</code>.\n</p></dd>",
+      "name": "blend"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorkey",
+  "source": "<h3 class=\"section\"><a href=\"#toc-colorkey\">11.36 colorkey</a></h3>\n<p>RGB colorspace color keying.\nThis filter operates on 8-bit RGB format frames by setting the alpha component of each pixel\nwhich falls within the similarity radius of the key color to 0. The alpha value for pixels outside\nthe similarity radius depends on the value of the blend option.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>color</samp></dt>\n<dd><p>Set the color for which alpha will be set to 0 (full transparency).\nSee <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)&quot;Color&quot; section in the ffmpeg-utils manual</a>.\nDefault is <code>black</code>.\n</p>\n</dd>\n<dt><samp>similarity</samp></dt>\n<dd><p>Set the radius from the key color within which other colors also have full transparency.\nThe computed distance is related to the unit fractional distance in 3D space between the RGB values\nof the key color and the pixel&rsquo;s color. Range is 0.01 to 1.0. 0.01 matches within a very small radius\naround the exact key color, while 1.0 matches everything.\nDefault is <code>0.01</code>.\n</p>\n</dd>\n<dt><samp>blend</samp></dt>\n<dd><p>Set how the alpha value for pixels that fall outside the similarity radius is computed.\n0.0 makes pixels either fully transparent or fully opaque.\nHigher values result in semi-transparent pixels, with greater transparency\nthe more similar the pixel color is to the key color.\nRange is 0.0 to 1.0. Default is <code>0.0</code>.\n</p></dd>\n</dl>\n\n"
+}

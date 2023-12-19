@@ -1,0 +1,93 @@
+{
+  "description": "11.211 rgbashift\nShift R/G/B/A pixels horizontally and/or vertically.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "ah": {
+        "description": "Set amount to shift alpha horizontally.",
+        "type": "number"
+      },
+      "av": {
+        "description": "Set amount to shift alpha vertically.",
+        "type": "number"
+      },
+      "bh": {
+        "description": "Set amount to shift blue horizontally.",
+        "type": "number"
+      },
+      "bv": {
+        "description": "Set amount to shift blue vertically.",
+        "type": "number"
+      },
+      "edge": {
+        "description": "Set edge mode, can be smear, default, or warp.",
+        "enum": [
+          "smear",
+          "default",
+          "warp"
+        ],
+        "type": "string"
+      },
+      "gh": {
+        "description": "Set amount to shift green horizontally.",
+        "type": "number"
+      },
+      "gv": {
+        "description": "Set amount to shift green vertically.",
+        "type": "number"
+      },
+      "rh": {
+        "description": "Set amount to shift red horizontally.",
+        "type": "number"
+      },
+      "rv": {
+        "description": "Set amount to shift red vertically.",
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "rgbashift options",
+    "type": "object"
+  },
+  "name": "rgbashift",
+  "parameters": [
+    {
+      "description": "<dd><p>Set amount to shift red horizontally.\n</p></dd>",
+      "name": "rh"
+    },
+    {
+      "description": "<dd><p>Set amount to shift red vertically.\n</p></dd>",
+      "name": "rv"
+    },
+    {
+      "description": "<dd><p>Set amount to shift green horizontally.\n</p></dd>",
+      "name": "gh"
+    },
+    {
+      "description": "<dd><p>Set amount to shift green vertically.\n</p></dd>",
+      "name": "gv"
+    },
+    {
+      "description": "<dd><p>Set amount to shift blue horizontally.\n</p></dd>",
+      "name": "bh"
+    },
+    {
+      "description": "<dd><p>Set amount to shift blue vertically.\n</p></dd>",
+      "name": "bv"
+    },
+    {
+      "description": "<dd><p>Set amount to shift alpha horizontally.\n</p></dd>",
+      "name": "ah"
+    },
+    {
+      "description": "<dd><p>Set amount to shift alpha vertically.\n</p></dd>",
+      "name": "av"
+    },
+    {
+      "description": "<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>",
+      "name": "edge"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#rgbashift",
+  "source": "<h3 class=\"section\"><a href=\"#toc-rgbashift\">11.211 rgbashift</a></h3>\n<p>Shift R/G/B/A pixels horizontally and/or vertically.\n</p>\n<p>The filter accepts the following options:\n</p><dl compact=\"compact\">\n<dt><samp>rh</samp></dt>\n<dd><p>Set amount to shift red horizontally.\n</p></dd>\n<dt><samp>rv</samp></dt>\n<dd><p>Set amount to shift red vertically.\n</p></dd>\n<dt><samp>gh</samp></dt>\n<dd><p>Set amount to shift green horizontally.\n</p></dd>\n<dt><samp>gv</samp></dt>\n<dd><p>Set amount to shift green vertically.\n</p></dd>\n<dt><samp>bh</samp></dt>\n<dd><p>Set amount to shift blue horizontally.\n</p></dd>\n<dt><samp>bv</samp></dt>\n<dd><p>Set amount to shift blue vertically.\n</p></dd>\n<dt><samp>ah</samp></dt>\n<dd><p>Set amount to shift alpha horizontally.\n</p></dd>\n<dt><samp>av</samp></dt>\n<dd><p>Set amount to shift alpha vertically.\n</p></dd>\n<dt><samp>edge</samp></dt>\n<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>\n</dl>\n\n"
+}

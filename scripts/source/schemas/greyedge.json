@@ -1,0 +1,46 @@
+{
+  "description": "11.114 greyedge\nA color constancy variation filter which estimates scene illumination via grey edge algorithm\nand corrects the scene colors accordingly.\n\nSee: https://staff.science.uva.nl/th.gevers/pub/GeversTIP07.pdf\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "difford": {
+        "default": 1,
+        "maximum": 2,
+        "minimum": 0,
+        "type": "number"
+      },
+      "minknorm": {
+        "default": 1,
+        "maximum": 20,
+        "minimum": 0,
+        "type": "number"
+      },
+      "sigma": {
+        "default": 1,
+        "maximum": 1024.0,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "greyedge options",
+    "type": "object"
+  },
+  "name": "greyedge",
+  "parameters": [
+    {
+      "description": "<dd><p>The order of differentiation to be applied on the scene. Must be chosen in the range\n[0,2] and default value is 1.\n</p>\n</dd>",
+      "name": "difford"
+    },
+    {
+      "description": "<dd><p>The Minkowski parameter to be used for calculating the Minkowski distance. Must\nbe chosen in the range [0,20] and default value is 1. Set to 0 for getting\nmax value instead of calculating Minkowski distance.\n</p>\n</dd>",
+      "name": "minknorm"
+    },
+    {
+      "description": "<dd><p>The standard deviation of Gaussian blur to be applied on the scene. Must be\nchosen in the range [0,1024.0] and default value = 1. floor( <var>sigma</var> * break_off_sigma(3) )\ncan\u2019t be equal to 0 if <var>difford</var> is greater than 0.\n</p></dd>",
+      "name": "sigma"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#greyedge",
+  "source": "<h3 class=\"section\"><a href=\"#toc-greyedge\">11.114 greyedge</a></h3>\n<p>A color constancy variation filter which estimates scene illumination via grey edge algorithm\nand corrects the scene colors accordingly.\n</p>\n<p>See: <a href=\"https://staff.science.uva.nl/th.gevers/pub/GeversTIP07.pdf\">https://staff.science.uva.nl/th.gevers/pub/GeversTIP07.pdf</a>\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>difford</samp></dt>\n<dd><p>The order of differentiation to be applied on the scene. Must be chosen in the range\n[0,2] and default value is 1.\n</p>\n</dd>\n<dt><samp>minknorm</samp></dt>\n<dd><p>The Minkowski parameter to be used for calculating the Minkowski distance. Must\nbe chosen in the range [0,20] and default value is 1. Set to 0 for getting\nmax value instead of calculating Minkowski distance.\n</p>\n</dd>\n<dt><samp>sigma</samp></dt>\n<dd><p>The standard deviation of Gaussian blur to be applied on the scene. Must be\nchosen in the range [0,1024.0] and default value = 1. floor( <var>sigma</var> * break_off_sigma(3) )\ncan&rsquo;t be equal to 0 if <var>difford</var> is greater than 0.\n</p></dd>\n</dl>\n\n"
+}

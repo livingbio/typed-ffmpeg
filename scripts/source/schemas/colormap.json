@@ -1,0 +1,57 @@
+{
+  "description": "11.39 colormap\nApply custom color maps to video stream.\n\nThis filter needs three input video streams.\nFirst stream is video stream that is going to be filtered out.\nSecond and third video stream specify color patches for source\ncolor to target color mapping.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "kernel": {
+        "default": "euclidean",
+        "description": "Set the kernel used to measure color differences between mapped colors. Default is 'euclidean'.",
+        "enum": [
+          "euclidean",
+          "weuclidean"
+        ],
+        "type": "string"
+      },
+      "nb_patches": {
+        "description": "Set the max number of used patches from source and target video stream. Default value is number of patches available in additional video streams. Max allowed number of patches is 64.",
+        "type": "integer"
+      },
+      "patch_size": {
+        "description": "Set the source and target video stream patch size in pixels.",
+        "type": "string"
+      },
+      "type": {
+        "default": "absolute",
+        "description": "Set the adjustments used for target colors. Can be 'relative' or 'absolute'. Defaults is 'absolute'.",
+        "enum": [
+          "relative",
+          "absolute"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "colormap options",
+    "type": "object"
+  },
+  "name": "colormap",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the source and target video stream patch size in pixels.\n</p>\n</dd>",
+      "name": "patch_size"
+    },
+    {
+      "description": "<dd><p>Set the max number of used patches from source and target video stream.\nDefault value is number of patches available in additional video streams.\nMax allowed number of patches is <code>64</code>.\n</p>\n</dd>",
+      "name": "nb_patches"
+    },
+    {
+      "description": "<dd><p>Set the adjustments used for target colors. Can be <code>relative</code> or <code>absolute</code>.\nDefaults is <code>absolute</code>.\n</p>\n</dd>",
+      "name": "type"
+    },
+    {
+      "description": "<dd><p>Set the kernel used to measure color differences between mapped colors.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dt>\u2018<samp>weuclidean</samp>\u2019</dt>\n</dl>\n<p>Default is <code>euclidean</code>.\n</p></dd>",
+      "name": "kernel"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colormap",
+  "source": "<h3 class=\"section\"><a href=\"#toc-colormap\">11.39 colormap</a></h3>\n<p>Apply custom color maps to video stream.\n</p>\n<p>This filter needs three input video streams.\nFirst stream is video stream that is going to be filtered out.\nSecond and third video stream specify color patches for source\ncolor to target color mapping.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>patch_size</samp></dt>\n<dd><p>Set the source and target video stream patch size in pixels.\n</p>\n</dd>\n<dt><samp>nb_patches</samp></dt>\n<dd><p>Set the max number of used patches from source and target video stream.\nDefault value is number of patches available in additional video streams.\nMax allowed number of patches is <code>64</code>.\n</p>\n</dd>\n<dt><samp>type</samp></dt>\n<dd><p>Set the adjustments used for target colors. Can be <code>relative</code> or <code>absolute</code>.\nDefaults is <code>absolute</code>.\n</p>\n</dd>\n<dt><samp>kernel</samp></dt>\n<dd><p>Set the kernel used to measure color differences between mapped colors.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>euclidean</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>weuclidean</samp>&rsquo;</dt>\n</dl>\n\n<p>Default is <code>euclidean</code>.\n</p></dd>\n</dl>\n\n"
+}

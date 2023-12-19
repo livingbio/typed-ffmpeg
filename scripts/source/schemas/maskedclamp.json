@@ -1,0 +1,46 @@
+{
+  "description": "11.155 maskedclamp\nClamp the first input stream with the second input and third input stream.\n\nReturns the value of first stream to be between second input\nstream - undershoot and third input stream + overshoot.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "overshoot": {
+        "default": 0,
+        "type": "number"
+      },
+      "planes": {
+        "default": 15,
+        "enum": [
+          0,
+          1,
+          3,
+          7,
+          15
+        ],
+        "type": "integer"
+      },
+      "undershoot": {
+        "default": 0,
+        "type": "number"
+      }
+    },
+    "title": "maskedclamp options",
+    "type": "object"
+  },
+  "name": "maskedclamp",
+  "parameters": [
+    {
+      "description": "<dd><p>Default value is <code>0</code>.\n</p>\n</dd>",
+      "name": "undershoot"
+    },
+    {
+      "description": "<dd><p>Default value is <code>0</code>.\n</p>\n</dd>",
+      "name": "overshoot"
+    },
+    {
+      "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
+      "name": "planes"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#maskedclamp",
+  "source": "<h3 class=\"section\"><a href=\"#toc-maskedclamp\">11.155 maskedclamp</a></h3>\n\n<p>Clamp the first input stream with the second input and third input stream.\n</p>\n<p>Returns the value of first stream to be between second input\nstream - <code>undershoot</code> and third input stream + <code>overshoot</code>.\n</p>\n<p>This filter accepts the following options:\n</p><dl compact=\"compact\">\n<dt><samp>undershoot</samp></dt>\n<dd><p>Default value is <code>0</code>.\n</p>\n</dd>\n<dt><samp>overshoot</samp></dt>\n<dd><p>Default value is <code>0</code>.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,46 @@
+{
+  "description": "11.43 colortemperature\nAdjust color temperature in video to simulate variations in ambient color temperature.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "mix": {
+        "default": 1,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "pl": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "temperature": {
+        "default": 6500,
+        "maximum": 40000,
+        "minimum": 1000,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "colortemperature options",
+    "type": "object"
+  },
+  "name": "colortemperature",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the temperature in Kelvin. Allowed range is from 1000 to 40000.\nDefault value is 6500 K.\n</p>\n</dd>",
+      "name": "temperature"
+    },
+    {
+      "description": "<dd><p>Set mixing with filtered output. Allowed range is from 0 to 1.\nDefault value is 1.\n</p>\n</dd>",
+      "name": "mix"
+    },
+    {
+      "description": "<dd><p>Set the amount of preserving lightness. Allowed range is from 0 to 1.\nDefault value is 0.\n</p></dd>",
+      "name": "pl"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colortemperature",
+  "source": "<h3 class=\"section\"><a href=\"#toc-colortemperature\">11.43 colortemperature</a></h3>\n<p>Adjust color temperature in video to simulate variations in ambient color temperature.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>temperature</samp></dt>\n<dd><p>Set the temperature in Kelvin. Allowed range is from 1000 to 40000.\nDefault value is 6500 K.\n</p>\n</dd>\n<dt><samp>mix</samp></dt>\n<dd><p>Set mixing with filtered output. Allowed range is from 0 to 1.\nDefault value is 1.\n</p>\n</dd>\n<dt><samp>pl</samp></dt>\n<dd><p>Set the amount of preserving lightness. Allowed range is from 0 to 1.\nDefault value is 0.\n</p></dd>\n</dl>\n\n"
+}

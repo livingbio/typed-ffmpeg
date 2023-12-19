@@ -1,0 +1,56 @@
+{
+  "description": "11.160 maskfun\nCreate mask from input video.\n\nFor example it is useful to create motion masks after tblend filter.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "fill": {
+        "description": "Fill all frame pixels with this value.",
+        "type": "number"
+      },
+      "high": {
+        "description": "Set high threshold. Any pixel component higher than this value will be set to max value allowed for current pixel format.",
+        "type": "number"
+      },
+      "low": {
+        "description": "Set low threshold. Any pixel component lower or exact than this value will be set to 0.",
+        "type": "number"
+      },
+      "planes": {
+        "description": "Set planes to filter, by default all available planes are filtered.",
+        "type": "string"
+      },
+      "sum": {
+        "description": "Set max average pixel value for frame. If sum of all pixel components is higher than this average, output frame will be completely filled with value set by 'fill' option. Typically useful for scene changes when used in combination with 'tblend' filter.",
+        "type": "number"
+      }
+    },
+    "title": "maskfun options",
+    "type": "object"
+  },
+  "name": "maskfun",
+  "parameters": [
+    {
+      "description": "<dd><p>Set low threshold. Any pixel component lower or exact than this value will be set to 0.\n</p>\n</dd>",
+      "name": "low"
+    },
+    {
+      "description": "<dd><p>Set high threshold. Any pixel component higher than this value will be set to max value\nallowed for current pixel format.\n</p>\n</dd>",
+      "name": "high"
+    },
+    {
+      "description": "<dd><p>Set planes to filter, by default all available planes are filtered.\n</p>\n</dd>",
+      "name": "planes"
+    },
+    {
+      "description": "<dd><p>Fill all frame pixels with this value.\n</p>\n</dd>",
+      "name": "fill"
+    },
+    {
+      "description": "<dd><p>Set max average pixel value for frame. If sum of all pixel components is higher that this\naverage, output frame will be completely filled with value set by <var>fill</var> option.\nTypically useful for scene changes when used in combination with <code>tblend</code> filter.\n</p></dd>",
+      "name": "sum"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#maskfun",
+  "source": "<h3 class=\"section\"><a href=\"#toc-maskfun\">11.160 maskfun</a></h3>\n<p>Create mask from input video.\n</p>\n<p>For example it is useful to create motion masks after <code>tblend</code> filter.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>low</samp></dt>\n<dd><p>Set low threshold. Any pixel component lower or exact than this value will be set to 0.\n</p>\n</dd>\n<dt><samp>high</samp></dt>\n<dd><p>Set high threshold. Any pixel component higher than this value will be set to max value\nallowed for current pixel format.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set planes to filter, by default all available planes are filtered.\n</p>\n</dd>\n<dt><samp>fill</samp></dt>\n<dd><p>Fill all frame pixels with this value.\n</p>\n</dd>\n<dt><samp>sum</samp></dt>\n<dd><p>Set max average pixel value for frame. If sum of all pixel components is higher that this\naverage, output frame will be completely filled with value set by <var>fill</var> option.\nTypically useful for scene changes when used in combination with <code>tblend</code> filter.\n</p></dd>\n</dl>\n\n"
+}

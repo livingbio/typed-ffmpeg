@@ -1,0 +1,32 @@
+{
+  "description": "11.92 field\nExtract a single field from an interlaced image using stride\narithmetic to avoid wasting CPU time. The output frames are marked as\nnon-interlaced.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "type": {
+        "description": "Specify whether to extract the top or the bottom field.",
+        "enum": [
+          "0",
+          "top",
+          "1",
+          "bottom"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "type"
+    ],
+    "title": "FFmpeg Field Filter Options",
+    "type": "object"
+  },
+  "name": "field",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify whether to extract the top (if the value is <code>0</code> or\n<code>top</code>) or the bottom field (if the value is <code>1</code> or\n<code>bottom</code>).\n</p></dd>",
+      "name": "type"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#field",
+  "source": "<h3 class=\"section\"><a href=\"#toc-field\">11.92 field</a></h3>\n\n<p>Extract a single field from an interlaced image using stride\narithmetic to avoid wasting CPU time. The output frames are marked as\nnon-interlaced.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>type</samp></dt>\n<dd><p>Specify whether to extract the top (if the value is <code>0</code> or\n<code>top</code>) or the bottom field (if the value is <code>1</code> or\n<code>bottom</code>).\n</p></dd>\n</dl>\n\n"
+}

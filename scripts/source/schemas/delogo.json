@@ -1,0 +1,68 @@
+{
+  "description": "11.65 delogo\nSuppress a TV station logo by a simple interpolation of the surrounding\npixels. Just set a rectangle covering the logo and watch it disappear\n(and sometimes something even uglier appear - your mileage may vary).\n\nIt accepts the following parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "h": {
+        "description": "Specify the height of the logo to clear.",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "show": {
+        "description": "When set to 1, a green rectangle is drawn on the screen to simplify finding the right x, y, w, and h parameters. The default value is 0.",
+        "maximum": 1,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "w": {
+        "description": "Specify the width of the logo to clear.",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "x": {
+        "description": "Specify the top left corner x-coordinate of the logo.",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "y": {
+        "description": "Specify the top left corner y-coordinate of the logo.",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "x",
+      "y",
+      "w",
+      "h"
+    ],
+    "title": "delogo options",
+    "type": "object"
+  },
+  "name": "delogo",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify the top left corner coordinates of the logo. They must be\nspecified.\n</p>\n</dd>",
+      "name": "x"
+    },
+    {
+      "description": "<dd><p>Specify the top left corner coordinates of the logo. They must be\nspecified.\n</p>\n</dd>",
+      "name": "y"
+    },
+    {
+      "description": "<dd><p>Specify the width and height of the logo to clear. They must be\nspecified.\n</p>\n</dd>",
+      "name": "w"
+    },
+    {
+      "description": "<dd><p>Specify the width and height of the logo to clear. They must be\nspecified.\n</p>\n</dd>",
+      "name": "h"
+    },
+    {
+      "description": "<dd><p>When set to 1, a green rectangle is drawn on the screen to simplify\nfinding the right <var>x</var>, <var>y</var>, <var>w</var>, and <var>h</var> parameters.\nThe default value is 0.\n</p>\n<p>The rectangle is drawn on the outermost pixels which will be (partly)\nreplaced with interpolated values. The values of the next pixels\nimmediately outside this rectangle in each direction will be used to\ncompute the interpolated pixel values inside the rectangle.\n</p>\n</dd>",
+      "name": "show"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#delogo",
+  "source": "<h3 class=\"section\"><a href=\"#toc-delogo\">11.65 delogo</a></h3>\n\n<p>Suppress a TV station logo by a simple interpolation of the surrounding\npixels. Just set a rectangle covering the logo and watch it disappear\n(and sometimes something even uglier appear - your mileage may vary).\n</p>\n<p>It accepts the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>x</samp></dt>\n<dt><samp>y</samp></dt>\n<dd><p>Specify the top left corner coordinates of the logo. They must be\nspecified.\n</p>\n</dd>\n<dt><samp>w</samp></dt>\n<dt><samp>h</samp></dt>\n<dd><p>Specify the width and height of the logo to clear. They must be\nspecified.\n</p>\n</dd>\n<dt><samp>show</samp></dt>\n<dd><p>When set to 1, a green rectangle is drawn on the screen to simplify\nfinding the right <var>x</var>, <var>y</var>, <var>w</var>, and <var>h</var> parameters.\nThe default value is 0.\n</p>\n<p>The rectangle is drawn on the outermost pixels which will be (partly)\nreplaced with interpolated values. The values of the next pixels\nimmediately outside this rectangle in each direction will be used to\ncompute the interpolated pixel values inside the rectangle.\n</p>\n</dd>\n</dl>\n\n"
+}

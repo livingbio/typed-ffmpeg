@@ -1,0 +1,24 @@
+{
+  "description": "11.243 ssim\nObtain the SSIM (Structural SImilarity Metric) between two input videos.\n\nThis filter takes in input two input videos, the first input is\nconsidered the \"main\" source and is passed unchanged to the\noutput. The second input is used as a \"reference\" video for computing\nthe SSIM.\n\nBoth video inputs must have the same resolution and pixel format for\nthis filter to work correctly. Also it assumes that both inputs\nhave the same number of frames, which are compared one by one.\n\nThe filter stores the calculated SSIM of each frame.\n\nThe description of the accepted parameters follows.\n\n\nThe file printed if stats_file is selected, contains a sequence of\nkey/value pairs of the form key:value for each compared\ncouple of frames.\n\nA description of each shown parameter follows:\n\n\nThis filter also supports the framesync options.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "stats_file": {
+        "description": "If specified, the filter will use the named file to save the SSIM of each individual frame. When filename equals '-', the data is sent to standard output.",
+        "type": "string"
+      }
+    },
+    "title": "ssim options",
+    "type": "object"
+  },
+  "name": "ssim",
+  "parameters": [
+    {
+      "description": "<dd><p>If specified the filter will use the named file to save the SSIM of\neach individual frame. When filename equals \"-\" the data is sent to\nstandard output.\n</p></dd>",
+      "name": "stats_file, f"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ssim",
+  "source": "<h3 class=\"section\"><a href=\"#toc-ssim\">11.243 ssim</a></h3>\n\n<p>Obtain the SSIM (Structural SImilarity Metric) between two input videos.\n</p>\n<p>This filter takes in input two input videos, the first input is\nconsidered the &quot;main&quot; source and is passed unchanged to the\noutput. The second input is used as a &quot;reference&quot; video for computing\nthe SSIM.\n</p>\n<p>Both video inputs must have the same resolution and pixel format for\nthis filter to work correctly. Also it assumes that both inputs\nhave the same number of frames, which are compared one by one.\n</p>\n<p>The filter stores the calculated SSIM of each frame.\n</p>\n<p>The description of the accepted parameters follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>stats_file, f</samp></dt>\n<dd><p>If specified the filter will use the named file to save the SSIM of\neach individual frame. When filename equals &quot;-&quot; the data is sent to\nstandard output.\n</p></dd>\n</dl>\n\n<p>The file printed if <var>stats_file</var> is selected, contains a sequence of\nkey/value pairs of the form <var>key</var>:<var>value</var> for each compared\ncouple of frames.\n</p>\n<p>A description of each shown parameter follows:\n</p>\n<dl compact=\"compact\">\n<dt><samp>n</samp></dt>\n<dd><p>sequential number of the input frame, starting from 1\n</p>\n</dd>\n<dt><samp>Y, U, V, R, G, B</samp></dt>\n<dd><p>SSIM of the compared frames for the component specified by the suffix.\n</p>\n</dd>\n<dt><samp>All</samp></dt>\n<dd><p>SSIM of the compared frames for the whole frame.\n</p>\n</dd>\n<dt><samp>dB</samp></dt>\n<dd><p>Same as above but in dB representation.\n</p></dd>\n</dl>\n\n<p>This filter also supports the <a href=\"#framesync\">framesync</a> options.\n</p>\n"
+}

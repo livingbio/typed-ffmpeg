@@ -1,0 +1,45 @@
+{
+  "description": "11.173 negate\nNegate (invert) the input video.\n\nIt accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "components": {
+        "enum": [
+          "y",
+          "u",
+          "v",
+          "a",
+          "r",
+          "g",
+          "b"
+        ],
+        "type": "string"
+      },
+      "negate_alpha": {
+        "default": 0,
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "Negate Filter Options",
+    "type": "object"
+  },
+  "name": "negate",
+  "parameters": [
+    {
+      "description": "<dd><p>Set components to negate.\n</p>\n<p>Available values for components are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dt>\u2018<samp>v</samp>\u2019</dt>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "components"
+    },
+    {
+      "description": "<dd><p>With value 1, it negates the alpha component, if present. Default value is 0.\n</p></dd>",
+      "name": "negate_alpha"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#negate",
+  "source": "<h3 class=\"section\"><a href=\"#toc-negate\">11.173 negate</a></h3>\n\n<p>Negate (invert) the input video.\n</p>\n<p>It accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>components</samp></dt>\n<dd><p>Set components to negate.\n</p>\n<p>Available values for components are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>y</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>u</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>v</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>a</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>r</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>g</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>b</samp>&rsquo;</dt>\n</dl>\n\n</dd>\n<dt><samp>negate_alpha</samp></dt>\n<dd><p>With value 1, it negates the alpha component, if present. Default value is 0.\n</p></dd>\n</dl>\n\n"
+}

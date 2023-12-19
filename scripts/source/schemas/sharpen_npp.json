@@ -1,0 +1,29 @@
+{
+  "description": "11.229 sharpen_npp\nUse the NVIDIA Performance Primitives (libnpp) to perform image sharpening with\nborder control.\n\nThe following additional options are accepted:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "border_type": {
+        "description": "Type of sampling to be used at frame borders. One of the following: replicate",
+        "enum": [
+          "replicate"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "border_type"
+    ],
+    "title": "sharpen_npp options",
+    "type": "object"
+  },
+  "name": "sharpen_npp",
+  "parameters": [
+    {
+      "description": "<dd><p>Type of sampling to be used ad frame borders. One of the following:\n</p><dl compact=\"compact\">\n<dt><samp>replicate</samp></dt>\n<dd><p>Replicate pixel values.\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "border_type"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#sharpen_005fnpp",
+  "source": "<h3 class=\"section\"><a href=\"#toc-sharpen_005fnpp\">11.229 sharpen_npp</a></h3>\n<p>Use the NVIDIA Performance Primitives (libnpp) to perform image sharpening with\nborder control.\n</p>\n<p>The following additional options are accepted:\n</p><dl compact=\"compact\">\n<dt><samp>border_type</samp></dt>\n<dd><p>Type of sampling to be used ad frame borders. One of the following:\n</p><dl compact=\"compact\">\n<dt><samp>replicate</samp></dt>\n<dd><p>Replicate pixel values.\n</p>\n</dd>\n</dl>\n</dd>\n</dl>\n\n"
+}

@@ -1,0 +1,48 @@
+{
+  "description": "11.180 ocr\nOptical Character Recognition\n\nThis filter uses Tesseract for optical character recognition. To enable\ncompilation of this filter, you need to configure FFmpeg with\n--enable-libtesseract.\n\nIt accepts the following options:\n\n\nThe filter exports recognized text as the frame metadata lavfi.ocr.text.\nThe filter exports confidence of recognized words as the frame metadata lavfi.ocr.confidence.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "blacklist": {
+        "description": "Set character blacklist.",
+        "type": "string"
+      },
+      "datapath": {
+        "description": "Set datapath to tesseract data. Default is to use whatever was set at installation.",
+        "type": "string"
+      },
+      "language": {
+        "description": "Set language, default is \"eng\".",
+        "type": "string"
+      },
+      "whitelist": {
+        "description": "Set character whitelist.",
+        "type": "string"
+      }
+    },
+    "title": "OCR Filter Options",
+    "type": "object"
+  },
+  "name": "ocr",
+  "parameters": [
+    {
+      "description": "<dd><p>Set datapath to tesseract data. Default is to use whatever was\nset at installation.\n</p>\n</dd>",
+      "name": "datapath"
+    },
+    {
+      "description": "<dd><p>Set language, default is \"eng\".\n</p>\n</dd>",
+      "name": "language"
+    },
+    {
+      "description": "<dd><p>Set character whitelist.\n</p>\n</dd>",
+      "name": "whitelist"
+    },
+    {
+      "description": "<dd><p>Set character blacklist.\n</p></dd>",
+      "name": "blacklist"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ocr",
+  "source": "<h3 class=\"section\"><a href=\"#toc-ocr\">11.180 ocr</a></h3>\n<p>Optical Character Recognition\n</p>\n<p>This filter uses Tesseract for optical character recognition. To enable\ncompilation of this filter, you need to configure FFmpeg with\n<code>--enable-libtesseract</code>.\n</p>\n<p>It accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>datapath</samp></dt>\n<dd><p>Set datapath to tesseract data. Default is to use whatever was\nset at installation.\n</p>\n</dd>\n<dt><samp>language</samp></dt>\n<dd><p>Set language, default is &quot;eng&quot;.\n</p>\n</dd>\n<dt><samp>whitelist</samp></dt>\n<dd><p>Set character whitelist.\n</p>\n</dd>\n<dt><samp>blacklist</samp></dt>\n<dd><p>Set character blacklist.\n</p></dd>\n</dl>\n\n<p>The filter exports recognized text as the frame metadata <code>lavfi.ocr.text</code>.\nThe filter exports confidence of recognized words as the frame metadata <code>lavfi.ocr.confidence</code>.\n</p>\n"
+}

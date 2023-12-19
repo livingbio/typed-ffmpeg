@@ -1,0 +1,35 @@
+{
+  "description": "11.245 streamselect, astreamselect\nSelect video or audio streams.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "inputs": {
+        "default": 2,
+        "type": "integer"
+      },
+      "map": {
+        "items": {
+          "type": "integer"
+        },
+        "type": "array"
+      }
+    },
+    "required": [],
+    "title": "streamselect options",
+    "type": "object"
+  },
+  "name": "streamselect",
+  "parameters": [
+    {
+      "description": "<dd><p>Set number of inputs. Default is 2.\n</p>\n</dd>",
+      "name": "inputs"
+    },
+    {
+      "description": "<dd><p>Set input indexes to remap to outputs.\n</p></dd>",
+      "name": "map"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect",
+  "source": "<h3 class=\"section\"><a href=\"#toc-streamselect_002c-astreamselect\">11.245 streamselect, astreamselect</a></h3>\n<p>Select video or audio streams.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>inputs</samp></dt>\n<dd><p>Set number of inputs. Default is 2.\n</p>\n</dd>\n<dt><samp>map</samp></dt>\n<dd><p>Set input indexes to remap to outputs.\n</p></dd>\n</dl>\n\n"
+}

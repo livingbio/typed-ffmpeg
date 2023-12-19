@@ -1,0 +1,8 @@
+{
+  "description": "11.117 hflip\nFlip the input video horizontally.\n\nFor example, to horizontally flip the input video with ffmpeg:\n\nffmpeg -i in.avi -vf \"hflip\" out.avi",
+  "json_schema": {},
+  "name": "hflip",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hflip",
+  "source": "<h3 class=\"section\"><a href=\"#toc-hflip\">11.117 hflip</a></h3>\n\n<p>Flip the input video horizontally.\n</p>\n<p>For example, to horizontally flip the input video with <code>ffmpeg</code>:\n</p><div class=\"example\">\n<pre class=\"example\">ffmpeg -i in.avi -vf &quot;hflip&quot; out.avi\n</pre></div>\n\n"
+}

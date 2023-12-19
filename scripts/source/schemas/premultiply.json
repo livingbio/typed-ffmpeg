@@ -1,0 +1,32 @@
+{
+  "description": "11.197 premultiply\nApply alpha premultiply effect to input video stream using first plane\nof second stream as alpha.\n\nBoth streams must have same dimensions and same pixel format.\n\nThe filter accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "inplace": {
+        "description": "Do not require 2nd input for processing, instead use alpha plane from input stream.",
+        "type": "boolean"
+      },
+      "planes": {
+        "description": "Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed.",
+        "type": "integer"
+      }
+    },
+    "title": "premultiply options",
+    "type": "object"
+  },
+  "name": "premultiply",
+  "parameters": [
+    {
+      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "name": "planes"
+    },
+    {
+      "description": "<dd><p>Do not require 2nd input for processing, instead use alpha plane from input stream.\n</p></dd>",
+      "name": "inplace"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#premultiply",
+  "source": "<h3 class=\"section\"><a href=\"#toc-premultiply\">11.197 premultiply</a></h3>\n<p>Apply alpha premultiply effect to input video stream using first plane\nof second stream as alpha.\n</p>\n<p>Both streams must have same dimensions and same pixel format.\n</p>\n<p>The filter accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>\n<dt><samp>inplace</samp></dt>\n<dd><p>Do not require 2nd input for processing, instead use alpha plane from input stream.\n</p></dd>\n</dl>\n\n"
+}

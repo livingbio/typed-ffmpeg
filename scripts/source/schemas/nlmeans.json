@@ -1,0 +1,67 @@
+{
+  "description": "11.174 nlmeans\nDenoise frames using Non-Local Means algorithm.\n\nEach pixel is adjusted by looking for other pixels with similar contexts. This\ncontext similarity is defined by comparing their surrounding patches of size\npxp. Patches are searched in an area of rxr\naround the pixel.\n\nNote that the research area defines centers for patches, which means some\npatches will be made of pixels outside that research area.\n\nThe filter accepts the following options.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "p": {
+        "default": 7,
+        "maximum": 99,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "pc": {
+        "default": 0,
+        "maximum": 99,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "r": {
+        "default": 15,
+        "maximum": 99,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "rc": {
+        "default": 0,
+        "maximum": 99,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "s": {
+        "default": 1.0,
+        "maximum": 30.0,
+        "minimum": 1.0,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "nlmeans options",
+    "type": "object"
+  },
+  "name": "nlmeans",
+  "parameters": [
+    {
+      "description": "<dd><p>Set denoising strength. Default is 1.0. Must be in range [1.0, 30.0].\n</p>\n</dd>",
+      "name": "s"
+    },
+    {
+      "description": "<dd><p>Set patch size. Default is 7. Must be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "p"
+    },
+    {
+      "description": "<dd><p>Same as <samp>p</samp> but for chroma planes.\n</p>\n<p>The default value is <var>0</var> and means automatic.\n</p>\n</dd>",
+      "name": "pc"
+    },
+    {
+      "description": "<dd><p>Set research size. Default is 15. Must be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "r"
+    },
+    {
+      "description": "<dd><p>Same as <samp>r</samp> but for chroma planes.\n</p>\n<p>The default value is <var>0</var> and means automatic.\n</p></dd>",
+      "name": "rc"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#nlmeans",
+  "source": "<h3 class=\"section\"><a href=\"#toc-nlmeans-1\">11.174 nlmeans</a></h3>\n\n<p>Denoise frames using Non-Local Means algorithm.\n</p>\n<p>Each pixel is adjusted by looking for other pixels with similar contexts. This\ncontext similarity is defined by comparing their surrounding patches of size\n<samp>p</samp>x<samp>p</samp>. Patches are searched in an area of <samp>r</samp>x<samp>r</samp>\naround the pixel.\n</p>\n<p>Note that the research area defines centers for patches, which means some\npatches will be made of pixels outside that research area.\n</p>\n<p>The filter accepts the following options.\n</p>\n<dl compact=\"compact\">\n<dt><samp>s</samp></dt>\n<dd><p>Set denoising strength. Default is 1.0. Must be in range [1.0, 30.0].\n</p>\n</dd>\n<dt><samp>p</samp></dt>\n<dd><p>Set patch size. Default is 7. Must be odd number in range [0, 99].\n</p>\n</dd>\n<dt><samp>pc</samp></dt>\n<dd><p>Same as <samp>p</samp> but for chroma planes.\n</p>\n<p>The default value is <var>0</var> and means automatic.\n</p>\n</dd>\n<dt><samp>r</samp></dt>\n<dd><p>Set research size. Default is 15. Must be odd number in range [0, 99].\n</p>\n</dd>\n<dt><samp>rc</samp></dt>\n<dd><p>Same as <samp>r</samp> but for chroma planes.\n</p>\n<p>The default value is <var>0</var> and means automatic.\n</p></dd>\n</dl>\n\n"
+}

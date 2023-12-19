@@ -1,0 +1,37 @@
+{
+  "description": "11.141 lagfun\nSlowly update darker pixels.\n\nThis filter makes short flashes of light appear longer.\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "decay": {
+        "default": 0.95,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "planes": {
+        "default": 15,
+        "maximum": 15,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "lagfun options",
+    "type": "object"
+  },
+  "name": "lagfun",
+  "parameters": [
+    {
+      "description": "<dd><p>Set factor for decaying. Default is .95. Allowed range is from 0 to 1.\n</p>\n</dd>",
+      "name": "decay"
+    },
+    {
+      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
+      "name": "planes"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#lagfun",
+  "source": "<h3 class=\"section\"><a href=\"#toc-lagfun\">11.141 lagfun</a></h3>\n\n<p>Slowly update darker pixels.\n</p>\n<p>This filter makes short flashes of light appear longer.\nThis filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>decay</samp></dt>\n<dd><p>Set factor for decaying. Default is .95. Allowed range is from 0 to 1.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>\n</dl>\n\n"
+}

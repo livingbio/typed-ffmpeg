@@ -1,0 +1,64 @@
+{
+  "description": "11.291 yadif_cuda\nDeinterlace the input video using the yadif algorithm, but implemented\nin CUDA so that it can work as part of a GPU accelerated pipeline with nvdec\nand/or nvenc.\n\nIt accepts the following parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "deint": {
+        "default": "all",
+        "enum": [
+          "0",
+          "1",
+          "all",
+          "interlaced"
+        ],
+        "type": "string"
+      },
+      "mode": {
+        "default": "send_frame",
+        "enum": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "send_frame",
+          "send_field",
+          "send_frame_nospatial",
+          "send_field_nospatial"
+        ],
+        "type": "string"
+      },
+      "parity": {
+        "default": "auto",
+        "enum": [
+          "0",
+          "1",
+          "-1",
+          "tff",
+          "bff",
+          "auto"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "yadif_cuda options",
+    "type": "object"
+  },
+  "name": "yadif_cuda",
+  "parameters": [
+    {
+      "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, send_frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>1, send_field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n<dt><samp>2, send_frame_nospatial</samp></dt>\n<dd><p>Like <code>send_frame</code>, but it skips the spatial interlacing check.\n</p></dd>\n<dt><samp>3, send_field_nospatial</samp></dt>\n<dd><p>Like <code>send_field</code>, but it skips the spatial interlacing check.\n</p></dd>\n</dl>\n<p>The default value is <code>send_frame</code>.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>1, bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>-1, auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
+      "name": "parity"
+    },
+    {
+      "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following\nvalues:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, all</samp></dt>\n<dd><p>Deinterlace all frames.\n</p></dd>\n<dt><samp>1, interlaced</samp></dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>The default value is <code>all</code>.\n</p></dd>",
+      "name": "deint"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#yadif_005fcuda",
+  "source": "<h3 class=\"section\"><a href=\"#toc-yadif_005fcuda\">11.291 yadif_cuda</a></h3>\n\n<p>Deinterlace the input video using the <a href=\"#yadif\">yadif</a> algorithm, but implemented\nin CUDA so that it can work as part of a GPU accelerated pipeline with nvdec\nand/or nvenc.\n</p>\n<p>It accepts the following parameters:\n</p>\n\n<dl compact=\"compact\">\n<dt><samp>mode</samp></dt>\n<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, send_frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>1, send_field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n<dt><samp>2, send_frame_nospatial</samp></dt>\n<dd><p>Like <code>send_frame</code>, but it skips the spatial interlacing check.\n</p></dd>\n<dt><samp>3, send_field_nospatial</samp></dt>\n<dd><p>Like <code>send_field</code>, but it skips the spatial interlacing check.\n</p></dd>\n</dl>\n\n<p>The default value is <code>send_frame</code>.\n</p>\n</dd>\n<dt><samp>parity</samp></dt>\n<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>1, bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>-1, auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>\n<dt><samp>deint</samp></dt>\n<dd><p>Specify which frames to deinterlace. Accepts one of the following\nvalues:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, all</samp></dt>\n<dd><p>Deinterlace all frames.\n</p></dd>\n<dt><samp>1, interlaced</samp></dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n\n<p>The default value is <code>all</code>.\n</p></dd>\n</dl>\n\n"
+}

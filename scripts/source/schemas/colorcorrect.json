@@ -1,0 +1,81 @@
+{
+  "description": "11.33 colorcorrect\nAdjust color white balance selectively for blacks and whites.\nThis filter operates in YUV colorspace.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "analyze": {
+        "default": "manual",
+        "enum": [
+          "manual",
+          "average",
+          "minmax",
+          "median"
+        ],
+        "type": "string"
+      },
+      "bh": {
+        "default": 0,
+        "maximum": 1.0,
+        "minimum": -1.0,
+        "type": "number"
+      },
+      "bl": {
+        "default": 0,
+        "maximum": 1.0,
+        "minimum": -1.0,
+        "type": "number"
+      },
+      "rh": {
+        "default": 0,
+        "maximum": 1.0,
+        "minimum": -1.0,
+        "type": "number"
+      },
+      "rl": {
+        "default": 0,
+        "maximum": 1.0,
+        "minimum": -1.0,
+        "type": "number"
+      },
+      "saturation": {
+        "default": 1,
+        "maximum": 3.0,
+        "minimum": -3.0,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "colorcorrect options",
+    "type": "object"
+  },
+  "name": "colorcorrect",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the red shadow spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "rl"
+    },
+    {
+      "description": "<dd><p>Set the blue shadow spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "bl"
+    },
+    {
+      "description": "<dd><p>Set the red highlight spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "rh"
+    },
+    {
+      "description": "<dd><p>Set the blue highlight spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "bh"
+    },
+    {
+      "description": "<dd><p>Set the amount of saturation. Allowed range is from -3.0 to 3.0.\nDefault value is 1.\n</p>\n</dd>",
+      "name": "saturation"
+    },
+    {
+      "description": "<dd><p>If set to anything other than <code>manual</code> it will analyze every frame and use derived\nparameters for filtering output frame.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>manual</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>minmax</samp>\u2019</dt>\n<dt>\u2018<samp>median</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>manual</code>.\n</p></dd>",
+      "name": "analyze"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorcorrect",
+  "source": "<h3 class=\"section\"><a href=\"#toc-colorcorrect\">11.33 colorcorrect</a></h3>\n\n<p>Adjust color white balance selectively for blacks and whites.\nThis filter operates in YUV colorspace.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>rl</samp></dt>\n<dd><p>Set the red shadow spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>\n<dt><samp>bl</samp></dt>\n<dd><p>Set the blue shadow spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>\n<dt><samp>rh</samp></dt>\n<dd><p>Set the red highlight spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>\n<dt><samp>bh</samp></dt>\n<dd><p>Set the blue highlight spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>\n<dt><samp>saturation</samp></dt>\n<dd><p>Set the amount of saturation. Allowed range is from -3.0 to 3.0.\nDefault value is 1.\n</p>\n</dd>\n<dt><samp>analyze</samp></dt>\n<dd><p>If set to anything other than <code>manual</code> it will analyze every frame and use derived\nparameters for filtering output frame.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>manual</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>average</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>minmax</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>median</samp>&rsquo;</dt>\n</dl>\n<p>Default value is <code>manual</code>.\n</p></dd>\n</dl>\n\n"
+}

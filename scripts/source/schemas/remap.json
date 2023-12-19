@@ -1,0 +1,36 @@
+{
+  "description": "11.206 remap\nRemap pixels using 2nd: Xmap and 3rd: Ymap input video stream.\n\nDestination pixel at position (X, Y) will be picked from source (x, y) position\nwhere x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero\nvalue for pixel will be used for destination pixel.\n\nXmap and Ymap input video streams must be of same dimensions. Output video stream\nwill have Xmap/Ymap video stream dimensions.\nXmap and Ymap input video streams are 16bit depth, single channel.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "fill": {
+        "default": "black",
+        "type": "string"
+      },
+      "format": {
+        "default": "color",
+        "enum": [
+          "color",
+          "gray"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "Remap Filter Options",
+    "type": "object"
+  },
+  "name": "remap",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify pixel format of output from this filter. Can be <code>color</code> or <code>gray</code>.\nDefault is <code>color</code>.\n</p>\n</dd>",
+      "name": "format"
+    },
+    {
+      "description": "<dd><p>Specify the color of the unmapped pixels. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>. Default color is <code>black</code>.\n</p></dd>",
+      "name": "fill"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#remap",
+  "source": "<h3 class=\"section\"><a href=\"#toc-remap\">11.206 remap</a></h3>\n\n<p>Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream.\n</p>\n<p>Destination pixel at position (X, Y) will be picked from source (x, y) position\nwhere x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero\nvalue for pixel will be used for destination pixel.\n</p>\n<p>Xmap and Ymap input video streams must be of same dimensions. Output video stream\nwill have Xmap/Ymap video stream dimensions.\nXmap and Ymap input video streams are 16bit depth, single channel.\n</p>\n<dl compact=\"compact\">\n<dt><samp>format</samp></dt>\n<dd><p>Specify pixel format of output from this filter. Can be <code>color</code> or <code>gray</code>.\nDefault is <code>color</code>.\n</p>\n</dd>\n<dt><samp>fill</samp></dt>\n<dd><p>Specify the color of the unmapped pixels. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)&quot;Color&quot; section in the ffmpeg-utils\nmanual</a>. Default color is <code>black</code>.\n</p></dd>\n</dl>\n\n"
+}

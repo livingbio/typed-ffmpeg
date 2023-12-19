@@ -1,0 +1,41 @@
+{
+  "description": "11.140 kirsch\nApply kirsch operator to input video stream.\n\nThe filter accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "delta": {
+        "description": "Set value which will be added to filtered result.",
+        "type": "number"
+      },
+      "planes": {
+        "description": "Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed.",
+        "type": "integer"
+      },
+      "scale": {
+        "description": "Set value which will be multiplied with filtered result.",
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "Kirsch Filter Options",
+    "type": "object"
+  },
+  "name": "kirsch",
+  "parameters": [
+    {
+      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "name": "planes"
+    },
+    {
+      "description": "<dd><p>Set value which will be multiplied with filtered result.\n</p>\n</dd>",
+      "name": "scale"
+    },
+    {
+      "description": "<dd><p>Set value which will be added to filtered result.\n</p></dd>",
+      "name": "delta"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#kirsch",
+  "source": "<h3 class=\"section\"><a href=\"#toc-kirsch\">11.140 kirsch</a></h3>\n<p>Apply kirsch operator to input video stream.\n</p>\n<p>The filter accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>\n<dt><samp>scale</samp></dt>\n<dd><p>Set value which will be multiplied with filtered result.\n</p>\n</dd>\n<dt><samp>delta</samp></dt>\n<dd><p>Set value which will be added to filtered result.\n</p></dd>\n</dl>\n\n"
+}

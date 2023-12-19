@@ -1,0 +1,8 @@
+{
+  "description": "11.22 ccrepack\nRepack CEA-708 closed captioning side data\n\nThis filter fixes various issues seen with commerical encoders\nrelated to upstream malformed CEA-708 payloads, specifically\nincorrect number of tuples (wrong cc_count for the target FPS),\nand incorrect ordering of tuples (i.e. the CEA-608 tuples are not at\nthe first entries in the payload).",
+  "json_schema": {},
+  "name": "ccrepack",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ccrepack",
+  "source": "<h3 class=\"section\"><a href=\"#toc-ccrepack\">11.22 ccrepack</a></h3>\n\n<p>Repack CEA-708 closed captioning side data\n</p>\n<p>This filter fixes various issues seen with commerical encoders\nrelated to upstream malformed CEA-708 payloads, specifically\nincorrect number of tuples (wrong cc_count for the target FPS),\nand incorrect ordering of tuples (i.e. the CEA-608 tuples are not at\nthe first entries in the payload).\n</p>\n"
+}

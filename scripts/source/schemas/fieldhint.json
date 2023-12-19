@@ -1,0 +1,41 @@
+{
+  "description": "11.93 fieldhint\nCreate new frames by copying the top and bottom fields from surrounding frames\nsupplied as numbers by the hint file.\n\n\nExample of first several lines of hint file for relative mode:\n\n0,0 - # first frame\n1,0 - # second frame, use third's frame top field and second's frame bottom field\n1,0 - # third frame, use fourth's frame top field and third's frame bottom field\n1,0 -\n0,0 -\n0,0 -\n1,0 -\n1,0 -\n1,0 -\n0,0 -\n0,0 -\n1,0 -\n1,0 -\n1,0 -\n0,0 -",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "hint": {
+        "description": "Set file containing hints: absolute/relative frame numbers.",
+        "pattern": "^.*$",
+        "type": "string"
+      },
+      "mode": {
+        "description": "Can be item 'absolute' or 'relative' or 'pattern'. Default is 'absolute'.",
+        "enum": [
+          "absolute",
+          "relative",
+          "pattern"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "hint"
+    ],
+    "title": "fieldhint",
+    "type": "object"
+  },
+  "name": "fieldhint",
+  "parameters": [
+    {
+      "description": "<dd><p>Set file containing hints: absolute/relative frame numbers.\n</p>\n<p>There must be one line for each frame in a clip. Each line must contain two\nnumbers separated by the comma, optionally followed by <code>-</code> or <code>+</code>.\nNumbers supplied on each line of file can not be out of [N-1,N+1] where N\nis current frame number for <code>absolute</code> mode or out of [-1, 1] range\nfor <code>relative</code> mode. First number tells from which frame to pick up top\nfield and second number tells from which frame to pick up bottom field.\n</p>\n<p>If optionally followed by <code>+</code> output frame will be marked as interlaced,\nelse if followed by <code>-</code> output frame will be marked as progressive, else\nit will be marked same as input frame.\nIf optionally followed by <code>t</code> output frame will use only top field, or in\ncase of <code>b</code> it will use only bottom field.\nIf line starts with <code>#</code> or <code>;</code> that line is skipped.\n</p>\n</dd>",
+      "name": "hint"
+    },
+    {
+      "description": "<dd><p>Can be item <code>absolute</code> or <code>relative</code> or <code>pattern</code>. Default is <code>absolute</code>.\nThe <code>pattern</code> mode is same as <code>relative</code> mode, except at last entry of file if there\nare more frames to process than <code>hint</code> file is seek back to start.\n</p></dd>",
+      "name": "mode"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#fieldhint",
+  "source": "<h3 class=\"section\"><a href=\"#toc-fieldhint\">11.93 fieldhint</a></h3>\n\n<p>Create new frames by copying the top and bottom fields from surrounding frames\nsupplied as numbers by the hint file.\n</p>\n<dl compact=\"compact\">\n<dt><samp>hint</samp></dt>\n<dd><p>Set file containing hints: absolute/relative frame numbers.\n</p>\n<p>There must be one line for each frame in a clip. Each line must contain two\nnumbers separated by the comma, optionally followed by <code>-</code> or <code>+</code>.\nNumbers supplied on each line of file can not be out of [N-1,N+1] where N\nis current frame number for <code>absolute</code> mode or out of [-1, 1] range\nfor <code>relative</code> mode. First number tells from which frame to pick up top\nfield and second number tells from which frame to pick up bottom field.\n</p>\n<p>If optionally followed by <code>+</code> output frame will be marked as interlaced,\nelse if followed by <code>-</code> output frame will be marked as progressive, else\nit will be marked same as input frame.\nIf optionally followed by <code>t</code> output frame will use only top field, or in\ncase of <code>b</code> it will use only bottom field.\nIf line starts with <code>#</code> or <code>;</code> that line is skipped.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Can be item <code>absolute</code> or <code>relative</code> or <code>pattern</code>. Default is <code>absolute</code>.\nThe <code>pattern</code> mode is same as <code>relative</code> mode, except at last entry of file if there\nare more frames to process than <code>hint</code> file is seek back to start.\n</p></dd>\n</dl>\n\n<p>Example of first several lines of <code>hint</code> file for <code>relative</code> mode:\n</p><div class=\"example\">\n<pre class=\"example\">0,0 - # first frame\n1,0 - # second frame, use third's frame top field and second's frame bottom field\n1,0 - # third frame, use fourth's frame top field and third's frame bottom field\n1,0 -\n0,0 -\n0,0 -\n1,0 -\n1,0 -\n1,0 -\n0,0 -\n0,0 -\n1,0 -\n1,0 -\n1,0 -\n0,0 -\n</pre></div>\n\n"
+}

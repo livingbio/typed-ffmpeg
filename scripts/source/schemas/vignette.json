@@ -1,0 +1,86 @@
+{
+  "description": "11.279 vignette\nMake or reverse a natural vignetting effect.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "a": {
+        "default": "PI/5",
+        "pattern": "^PI/[0-9]+$",
+        "type": "string"
+      },
+      "angle": {
+        "default": "PI/5",
+        "pattern": "^PI/[0-9]+$",
+        "type": "string"
+      },
+      "aspect": {
+        "default": "1/1",
+        "type": "string"
+      },
+      "dither": {
+        "default": 1,
+        "type": "integer"
+      },
+      "eval": {
+        "default": "init",
+        "enum": [
+          "init",
+          "frame"
+        ],
+        "type": "string"
+      },
+      "mode": {
+        "default": "forward",
+        "enum": [
+          "forward",
+          "backward"
+        ],
+        "type": "string"
+      },
+      "x0": {
+        "default": "w/2",
+        "type": "string"
+      },
+      "y0": {
+        "default": "h/2",
+        "type": "string"
+      }
+    },
+    "title": "vignette options",
+    "type": "object"
+  },
+  "name": "vignette",
+  "parameters": [
+    {
+      "description": "<dd><p>Set lens angle expression as a number of radians.\n</p>\n<p>The value is clipped in the <code>[0,PI/2]</code> range.\n</p>\n<p>Default value: <code>\"PI/5\"</code>\n</p>\n</dd>",
+      "name": "angle, a"
+    },
+    {
+      "description": "<dd><p>Set center coordinates expressions. Respectively <code>\"w/2\"</code> and <code>\"h/2\"</code>\nby default.\n</p>\n</dd>",
+      "name": "x0"
+    },
+    {
+      "description": "<dd><p>Set center coordinates expressions. Respectively <code>\"w/2\"</code> and <code>\"h/2\"</code>\nby default.\n</p>\n</dd>",
+      "name": "y0"
+    },
+    {
+      "description": "<dd><p>Set forward/backward mode.\n</p>\n<p>Available modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>forward</samp>\u2019</dt>\n<dd><p>The larger the distance from the central point, the darker the image becomes.\n</p>\n</dd>\n<dt>\u2018<samp>backward</samp>\u2019</dt>\n<dd><p>The larger the distance from the central point, the brighter the image becomes.\nThis can be used to reverse a vignette effect, though there is no automatic\ndetection to extract the lens <samp>angle</samp> and other settings (yet). It can\nalso be used to create a burning effect.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>forward</samp>\u2019.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>Set evaluation mode for the expressions (<samp>angle</samp>, <samp>x0</samp>, <samp>y0</samp>).\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Evaluate expressions only once during the filter initialization.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame. This is way slower than the\n\u2018<samp>init</samp>\u2019 mode since it requires all the scalers to be re-computed, but it\nallows advanced dynamic expressions.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p>\n</dd>",
+      "name": "eval"
+    },
+    {
+      "description": "<dd><p>Set dithering to reduce the circular banding effects. Default is <code>1</code>\n(enabled).\n</p>\n</dd>",
+      "name": "dither"
+    },
+    {
+      "description": "<dd><p>Set vignette aspect. This setting allows one to adjust the shape of the vignette.\nSetting this value to the SAR of the input will make a rectangular vignetting\nfollowing the dimensions of the video.\n</p>\n<p>Default is <code>1/1</code>.\n</p></dd>",
+      "name": "aspect"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vignette",
+  "source": "<h3 class=\"section\"><a href=\"#toc-vignette-1\">11.279 vignette</a></h3>\n\n<p>Make or reverse a natural vignetting effect.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>angle, a</samp></dt>\n<dd><p>Set lens angle expression as a number of radians.\n</p>\n<p>The value is clipped in the <code>[0,PI/2]</code> range.\n</p>\n<p>Default value: <code>&quot;PI/5&quot;</code>\n</p>\n</dd>\n<dt><samp>x0</samp></dt>\n<dt><samp>y0</samp></dt>\n<dd><p>Set center coordinates expressions. Respectively <code>&quot;w/2&quot;</code> and <code>&quot;h/2&quot;</code>\nby default.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set forward/backward mode.\n</p>\n<p>Available modes are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>forward</samp>&rsquo;</dt>\n<dd><p>The larger the distance from the central point, the darker the image becomes.\n</p>\n</dd>\n<dt>&lsquo;<samp>backward</samp>&rsquo;</dt>\n<dd><p>The larger the distance from the central point, the brighter the image becomes.\nThis can be used to reverse a vignette effect, though there is no automatic\ndetection to extract the lens <samp>angle</samp> and other settings (yet). It can\nalso be used to create a burning effect.\n</p></dd>\n</dl>\n\n<p>Default value is &lsquo;<samp>forward</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>eval</samp></dt>\n<dd><p>Set evaluation mode for the expressions (<samp>angle</samp>, <samp>x0</samp>, <samp>y0</samp>).\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>init</samp>&rsquo;</dt>\n<dd><p>Evaluate expressions only once during the filter initialization.\n</p>\n</dd>\n<dt>&lsquo;<samp>frame</samp>&rsquo;</dt>\n<dd><p>Evaluate expressions for each incoming frame. This is way slower than the\n&lsquo;<samp>init</samp>&rsquo; mode since it requires all the scalers to be re-computed, but it\nallows advanced dynamic expressions.\n</p></dd>\n</dl>\n\n<p>Default value is &lsquo;<samp>init</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>dither</samp></dt>\n<dd><p>Set dithering to reduce the circular banding effects. Default is <code>1</code>\n(enabled).\n</p>\n</dd>\n<dt><samp>aspect</samp></dt>\n<dd><p>Set vignette aspect. This setting allows one to adjust the shape of the vignette.\nSetting this value to the SAR of the input will make a rectangular vignetting\nfollowing the dimensions of the video.\n</p>\n<p>Default is <code>1/1</code>.\n</p></dd>\n</dl>\n\n"
+}

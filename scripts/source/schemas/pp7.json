@@ -1,0 +1,37 @@
+{
+  "description": "11.196 pp7\nApply Postprocessing filter 7. It is variant of the spp filter,\nsimilar to spp = 6 with 7 point DCT, where only the center sample is\nused after IDCT.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "mode": {
+        "enum": [
+          "hard",
+          "soft",
+          "medium"
+        ],
+        "type": "string"
+      },
+      "qp": {
+        "maximum": 63,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "pp7 options",
+    "type": "object"
+  },
+  "name": "pp7",
+  "parameters": [
+    {
+      "description": "<dd><p>Force a constant quantization parameter. It accepts an integer in range\n0 to 63. If not set, the filter will use the QP from the video stream\n(if available).\n</p>\n</dd>",
+      "name": "qp"
+    },
+    {
+      "description": "<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>Set hard thresholding.\n</p></dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).\n</p></dd>\n<dt>\u2018<samp>medium</samp>\u2019</dt>\n<dd><p>Set medium thresholding (good results, default).\n</p></dd>\n</dl>\n</dd>",
+      "name": "mode"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#pp7",
+  "source": "<h3 class=\"section\"><a href=\"#toc-pp7\">11.196 pp7</a></h3>\n<p>Apply Postprocessing filter 7. It is variant of the <a href=\"#spp\">spp</a> filter,\nsimilar to spp = 6 with 7 point DCT, where only the center sample is\nused after IDCT.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>qp</samp></dt>\n<dd><p>Force a constant quantization parameter. It accepts an integer in range\n0 to 63. If not set, the filter will use the QP from the video stream\n(if available).\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>hard</samp>&rsquo;</dt>\n<dd><p>Set hard thresholding.\n</p></dd>\n<dt>&lsquo;<samp>soft</samp>&rsquo;</dt>\n<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).\n</p></dd>\n<dt>&lsquo;<samp>medium</samp>&rsquo;</dt>\n<dd><p>Set medium thresholding (good results, default).\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n"
+}

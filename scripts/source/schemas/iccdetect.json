@@ -1,0 +1,24 @@
+{
+  "description": "11.132 iccdetect\nDetect the colorspace  from an embedded ICC profile (if present), and update\nthe frame\u2019s tags accordingly.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "force": {
+        "default": true,
+        "description": "If true, the frame's existing colorspace tags will always be overridden by values detected from an ICC profile. Otherwise, they will only be assigned if they contain 'unknown'. Enabled by default.",
+        "type": "boolean"
+      }
+    },
+    "title": "iccdetect options",
+    "type": "object"
+  },
+  "name": "iccdetect",
+  "parameters": [
+    {
+      "description": "<dd><p>If true, the frame\u2019s existing colorspace tags will always be overridden by\nvalues detected from an ICC profile. Otherwise, they will only be assigned if\nthey contain <code>unknown</code>. Enabled by default.\n</p></dd>",
+      "name": "force"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#iccdetect",
+  "source": "<h3 class=\"section\"><a href=\"#toc-iccdetect\">11.132 iccdetect</a></h3>\n\n<p>Detect the colorspace  from an embedded ICC profile (if present), and update\nthe frame&rsquo;s tags accordingly.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>force</samp></dt>\n<dd><p>If true, the frame&rsquo;s existing colorspace tags will always be overridden by\nvalues detected from an ICC profile. Otherwise, they will only be assigned if\nthey contain <code>unknown</code>. Enabled by default.\n</p></dd>\n</dl>\n\n"
+}

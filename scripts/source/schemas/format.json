@@ -1,0 +1,29 @@
+{
+  "description": "11.100 format\nConvert the input video to one of the specified pixel formats.\nLibavfilter will try to pick one that is suitable as input to\nthe next filter.\n\nIt accepts the following parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "pix_fmts": {
+        "description": "A '|' separated list of pixel format names",
+        "examples": [
+          "pix_fmts=yuv420p|monow|rgb24"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "pix_fmts"
+    ],
+    "title": "FFmpeg format Filter Options",
+    "type": "object"
+  },
+  "name": "format",
+  "parameters": [
+    {
+      "description": "<dd><p>A \u2019|\u2019-separated list of pixel format names, such as\n\"pix_fmts=yuv420p|monow|rgb24\".\n</p>\n</dd>",
+      "name": "pix_fmts"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#format",
+  "source": "<h3 class=\"section\"><a href=\"#toc-format-1\">11.100 format</a></h3>\n\n<p>Convert the input video to one of the specified pixel formats.\nLibavfilter will try to pick one that is suitable as input to\nthe next filter.\n</p>\n<p>It accepts the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>pix_fmts</samp></dt>\n<dd><p>A &rsquo;|&rsquo;-separated list of pixel format names, such as\n&quot;pix_fmts=yuv420p|monow|rgb24&quot;.\n</p>\n</dd>\n</dl>\n\n"
+}

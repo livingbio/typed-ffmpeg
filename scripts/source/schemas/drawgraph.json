@@ -1,0 +1,167 @@
+{
+  "description": "11.76 drawgraph\nDraw a graph using input video metadata.\n\nIt accepts the following parameters:\n\n\nExample using metadata from signalstats filter:\n\nsignalstats,drawgraph=lavfi.signalstats.YAVG:min=0:max=255\n\nExample using metadata from ebur128 filter:\n\nebur128=metadata=1,adrawgraph=lavfi.r128.M:min=-120:max=5",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "bg": {
+        "description": "Set graph background color. Default is white.",
+        "type": "string"
+      },
+      "fg1": {
+        "description": "Set 1st foreground color expression.",
+        "type": "string"
+      },
+      "fg2": {
+        "description": "Set 2nd foreground color expression.",
+        "type": "string"
+      },
+      "fg3": {
+        "description": "Set 3rd foreground color expression.",
+        "type": "string"
+      },
+      "fg4": {
+        "description": "Set 4th foreground color expression.",
+        "type": "string"
+      },
+      "m1": {
+        "description": "Set 1st frame metadata key from which metadata values will be used to draw a graph.",
+        "type": "string"
+      },
+      "m2": {
+        "description": "Set 2nd frame metadata key from which metadata values will be used to draw a graph.",
+        "type": "string"
+      },
+      "m3": {
+        "description": "Set 3rd frame metadata key from which metadata values will be used to draw a graph.",
+        "type": "string"
+      },
+      "m4": {
+        "description": "Set 4th frame metadata key from which metadata values will be used to draw a graph.",
+        "type": "string"
+      },
+      "max": {
+        "description": "Set maximal value of metadata value.",
+        "type": "number"
+      },
+      "min": {
+        "description": "Set minimal value of metadata value.",
+        "type": "number"
+      },
+      "mode": {
+        "default": "line",
+        "description": "Set graph mode.",
+        "enum": [
+          "bar",
+          "dot",
+          "line"
+        ],
+        "type": "string"
+      },
+      "rate": {
+        "default": 25,
+        "description": "Set the output frame rate.",
+        "type": "number"
+      },
+      "size": {
+        "description": "Set size of graph video.",
+        "type": "string"
+      },
+      "slide": {
+        "default": "frame",
+        "description": "Set slide mode.",
+        "enum": [
+          "frame",
+          "replace",
+          "scroll",
+          "rscroll",
+          "picture"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "m1",
+      "fg1",
+      "m2",
+      "fg2",
+      "m3",
+      "fg3",
+      "m4",
+      "fg4",
+      "min",
+      "max",
+      "bg",
+      "mode",
+      "slide",
+      "size",
+      "rate"
+    ],
+    "title": "drawgraph options",
+    "type": "object"
+  },
+  "name": "drawgraph",
+  "parameters": [
+    {
+      "description": "<dd><p>Set 1st frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
+      "name": "m1"
+    },
+    {
+      "description": "<dd><p>Set 1st foreground color expression.\n</p>\n</dd>",
+      "name": "fg1"
+    },
+    {
+      "description": "<dd><p>Set 2nd frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
+      "name": "m2"
+    },
+    {
+      "description": "<dd><p>Set 2nd foreground color expression.\n</p>\n</dd>",
+      "name": "fg2"
+    },
+    {
+      "description": "<dd><p>Set 3rd frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
+      "name": "m3"
+    },
+    {
+      "description": "<dd><p>Set 3rd foreground color expression.\n</p>\n</dd>",
+      "name": "fg3"
+    },
+    {
+      "description": "<dd><p>Set 4th frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
+      "name": "m4"
+    },
+    {
+      "description": "<dd><p>Set 4th foreground color expression.\n</p>\n</dd>",
+      "name": "fg4"
+    },
+    {
+      "description": "<dd><p>Set minimal value of metadata value.\n</p>\n</dd>",
+      "name": "min"
+    },
+    {
+      "description": "<dd><p>Set maximal value of metadata value.\n</p>\n</dd>",
+      "name": "max"
+    },
+    {
+      "description": "<dd><p>Set graph background color. Default is white.\n</p>\n</dd>",
+      "name": "bg"
+    },
+    {
+      "description": "<dd><p>Set graph mode.\n</p>\n<p>Available values for mode is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bar</samp>\u2019</dt>\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n</dl>\n<p>Default is <code>line</code>.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Draw new frame when right border is reached.\n</p>\n</dd>\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>\u2018<samp>rscroll</samp>\u2019</dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>\u2018<samp>picture</samp>\u2019</dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n<p>Default is <code>frame</code>.\n</p>\n</dd>",
+      "name": "slide"
+    },
+    {
+      "description": "<dd><p>Set size of graph video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nThe default value is <code>900x256</code>.\n</p>\n</dd>",
+      "name": "size"
+    },
+    {
+      "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n<p>The foreground color expressions can use the following variables:\n</p><dl compact=\"compact\">\n<dt><samp>MIN</samp></dt>\n<dd><p>Minimal value of metadata value.\n</p>\n</dd>\n<dt><samp>MAX</samp></dt>\n<dd><p>Maximal value of metadata value.\n</p>\n</dd>\n<dt><samp>VAL</samp></dt>\n<dd><p>Current metadata key value.\n</p></dd>\n</dl>\n<p>The color is defined as 0xAABBGGRR.\n</p></dd>",
+      "name": "rate, r"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#drawgraph",
+  "source": "<h3 class=\"section\"><a href=\"#toc-drawgraph-1\">11.76 drawgraph</a></h3>\n<p>Draw a graph using input video metadata.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>m1</samp></dt>\n<dd><p>Set 1st frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>\n<dt><samp>fg1</samp></dt>\n<dd><p>Set 1st foreground color expression.\n</p>\n</dd>\n<dt><samp>m2</samp></dt>\n<dd><p>Set 2nd frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>\n<dt><samp>fg2</samp></dt>\n<dd><p>Set 2nd foreground color expression.\n</p>\n</dd>\n<dt><samp>m3</samp></dt>\n<dd><p>Set 3rd frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>\n<dt><samp>fg3</samp></dt>\n<dd><p>Set 3rd foreground color expression.\n</p>\n</dd>\n<dt><samp>m4</samp></dt>\n<dd><p>Set 4th frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>\n<dt><samp>fg4</samp></dt>\n<dd><p>Set 4th foreground color expression.\n</p>\n</dd>\n<dt><samp>min</samp></dt>\n<dd><p>Set minimal value of metadata value.\n</p>\n</dd>\n<dt><samp>max</samp></dt>\n<dd><p>Set maximal value of metadata value.\n</p>\n</dd>\n<dt><samp>bg</samp></dt>\n<dd><p>Set graph background color. Default is white.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set graph mode.\n</p>\n<p>Available values for mode is:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>bar</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>dot</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>line</samp>&rsquo;</dt>\n</dl>\n\n<p>Default is <code>line</code>.\n</p>\n</dd>\n<dt><samp>slide</samp></dt>\n<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>frame</samp>&rsquo;</dt>\n<dd><p>Draw new frame when right border is reached.\n</p>\n</dd>\n<dt>&lsquo;<samp>replace</samp>&rsquo;</dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>&lsquo;<samp>scroll</samp>&rsquo;</dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>&lsquo;<samp>rscroll</samp>&rsquo;</dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>&lsquo;<samp>picture</samp>&rsquo;</dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n\n<p>Default is <code>frame</code>.\n</p>\n</dd>\n<dt><samp>size</samp></dt>\n<dd><p>Set size of graph video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)&quot;Video size&quot; section in the ffmpeg-utils manual</a>.\nThe default value is <code>900x256</code>.\n</p>\n</dd>\n<dt><samp>rate, r</samp></dt>\n<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n<p>The foreground color expressions can use the following variables:\n</p><dl compact=\"compact\">\n<dt><samp>MIN</samp></dt>\n<dd><p>Minimal value of metadata value.\n</p>\n</dd>\n<dt><samp>MAX</samp></dt>\n<dd><p>Maximal value of metadata value.\n</p>\n</dd>\n<dt><samp>VAL</samp></dt>\n<dd><p>Current metadata key value.\n</p></dd>\n</dl>\n\n<p>The color is defined as 0xAABBGGRR.\n</p></dd>\n</dl>\n\n<p>Example using metadata from <a href=\"#signalstats\">signalstats</a> filter:\n</p><div class=\"example\">\n<pre class=\"example\">signalstats,drawgraph=lavfi.signalstats.YAVG:min=0:max=255\n</pre></div>\n\n<p>Example using metadata from <a href=\"#ebur128\">ebur128</a> filter:\n</p><div class=\"example\">\n<pre class=\"example\">ebur128=metadata=1,adrawgraph=lavfi.r128.M:min=-120:max=5\n</pre></div>\n\n"
+}

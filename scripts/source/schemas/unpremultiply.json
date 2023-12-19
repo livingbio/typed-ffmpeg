@@ -1,0 +1,32 @@
+{
+  "description": "11.265 unpremultiply\nApply alpha unpremultiply effect to input video stream using first plane\nof second stream as alpha.\n\nBoth streams must have same dimensions and same pixel format.\n\nThe filter accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "inplace": {
+        "description": "Do not require 2nd input for processing, instead use alpha plane from input stream.",
+        "type": "boolean"
+      },
+      "planes": {
+        "description": "Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed. If the format has 1 or 2 components, then luma is bit 0. If the format has 3 or 4 components: for RGB formats bit 0 is green, bit 1 is blue and bit 2 is red; for YUV formats bit 0 is luma, bit 1 is chroma-U and bit 2 is chroma-V. If present, the alpha channel is always the last bit.",
+        "type": "integer"
+      }
+    },
+    "title": "unpremultiply options",
+    "type": "object"
+  },
+  "name": "unpremultiply",
+  "parameters": [
+    {
+      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n<p>If the format has 1 or 2 components, then luma is bit 0.\nIf the format has 3 or 4 components:\nfor RGB formats bit 0 is green, bit 1 is blue and bit 2 is red;\nfor YUV formats bit 0 is luma, bit 1 is chroma-U and bit 2 is chroma-V.\nIf present, the alpha channel is always the last bit.\n</p>\n</dd>",
+      "name": "planes"
+    },
+    {
+      "description": "<dd><p>Do not require 2nd input for processing, instead use alpha plane from input stream.\n</p></dd>",
+      "name": "inplace"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#unpremultiply",
+  "source": "<h3 class=\"section\"><a href=\"#toc-unpremultiply\">11.265 unpremultiply</a></h3>\n<p>Apply alpha unpremultiply effect to input video stream using first plane\nof second stream as alpha.\n</p>\n<p>Both streams must have same dimensions and same pixel format.\n</p>\n<p>The filter accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n<p>If the format has 1 or 2 components, then luma is bit 0.\nIf the format has 3 or 4 components:\nfor RGB formats bit 0 is green, bit 1 is blue and bit 2 is red;\nfor YUV formats bit 0 is luma, bit 1 is chroma-U and bit 2 is chroma-V.\nIf present, the alpha channel is always the last bit.\n</p>\n</dd>\n<dt><samp>inplace</samp></dt>\n<dd><p>Do not require 2nd input for processing, instead use alpha plane from input stream.\n</p></dd>\n</dl>\n\n"
+}

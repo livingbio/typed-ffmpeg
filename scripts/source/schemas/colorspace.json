@@ -1,0 +1,8 @@
+{
+  "description": "11.41 colorspace\nConvert colorspace, transfer characteristics or color primaries.\nInput video needs to have an even size.\n\nThe filter accepts the following options:",
+  "json_schema": {},
+  "name": "colorspace",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorspace",
+  "source": "<h3 class=\"section\"><a href=\"#toc-colorspace\">11.41 colorspace</a></h3>\n\n<p>Convert colorspace, transfer characteristics or color primaries.\nInput video needs to have an even size.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dd>"
+}

@@ -1,0 +1,65 @@
+{
+  "description": "11.282 w3fdif\nDeinterlace the input video (\"w3fdif\" stands for \"Weston 3 Field\nDeinterlacing Filter\").\n\nBased on the process described by Martin Weston for BBC R&D, and\nimplemented based on the de-interlace algorithm written by Jim\nEasterbrook for BBC R&D, the Weston 3 field deinterlacing filter\nuses filter coefficients calculated by BBC R&D.\n\nThis filter uses field-dominance information in frame to decide which\nof each pair of fields to place first in the output.\nIf it gets it wrong use setfield filter before w3fdif filter.\n\nThere are two sets of filter coefficients, so called \"simple\"\nand \"complex\". Which set of filter coefficients is used can\nbe set by passing an optional parameter:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "deint": {
+        "default": "all",
+        "enum": [
+          "all",
+          "interlaced"
+        ],
+        "type": "string"
+      },
+      "filter": {
+        "default": "complex",
+        "enum": [
+          "simple",
+          "complex"
+        ],
+        "type": "string"
+      },
+      "mode": {
+        "default": "field",
+        "enum": [
+          "frame",
+          "field"
+        ],
+        "type": "string"
+      },
+      "parity": {
+        "default": "auto",
+        "enum": [
+          "tff",
+          "bff",
+          "auto"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "w3fdif Options",
+    "type": "object"
+  },
+  "name": "w3fdif",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the interlacing filter coefficients. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>simple</samp>\u2019</dt>\n<dd><p>Simple filter coefficient set.\n</p></dd>\n<dt>\u2018<samp>complex</samp>\u2019</dt>\n<dd><p>More-complex filter coefficient set.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>complex</samp>\u2019.\n</p>\n</dd>",
+      "name": "filter"
+    },
+    {
+      "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n<p>The default value is <code>field</code>.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
+      "name": "parity"
+    },
+    {
+      "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>all</samp>\u2019</dt>\n<dd><p>Deinterlace all frames,\n</p></dd>\n<dt>\u2018<samp>interlaced</samp>\u2019</dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>all</samp>\u2019.\n</p></dd>",
+      "name": "deint"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#w3fdif",
+  "source": "<h3 class=\"section\"><a href=\"#toc-w3fdif\">11.282 w3fdif</a></h3>\n\n<p>Deinterlace the input video (&quot;w3fdif&quot; stands for &quot;Weston 3 Field\nDeinterlacing Filter&quot;).\n</p>\n<p>Based on the process described by Martin Weston for BBC R&amp;D, and\nimplemented based on the de-interlace algorithm written by Jim\nEasterbrook for BBC R&amp;D, the Weston 3 field deinterlacing filter\nuses filter coefficients calculated by BBC R&amp;D.\n</p>\n<p>This filter uses field-dominance information in frame to decide which\nof each pair of fields to place first in the output.\nIf it gets it wrong use <a href=\"#setfield\">setfield</a> filter before <code>w3fdif</code> filter.\n</p>\n<p>There are two sets of filter coefficients, so called &quot;simple&quot;\nand &quot;complex&quot;. Which set of filter coefficients is used can\nbe set by passing an optional parameter:\n</p>\n<dl compact=\"compact\">\n<dt><samp>filter</samp></dt>\n<dd><p>Set the interlacing filter coefficients. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>simple</samp>&rsquo;</dt>\n<dd><p>Simple filter coefficient set.\n</p></dd>\n<dt>&lsquo;<samp>complex</samp>&rsquo;</dt>\n<dd><p>More-complex filter coefficient set.\n</p></dd>\n</dl>\n<p>Default value is &lsquo;<samp>complex</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n\n<p>The default value is <code>field</code>.\n</p>\n</dd>\n<dt><samp>parity</samp></dt>\n<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>\n<dt><samp>deint</samp></dt>\n<dd><p>Specify which frames to deinterlace. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>all</samp>&rsquo;</dt>\n<dd><p>Deinterlace all frames,\n</p></dd>\n<dt>&lsquo;<samp>interlaced</samp>&rsquo;</dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n\n<p>Default value is &lsquo;<samp>all</samp>&rsquo;.\n</p></dd>\n</dl>\n\n"
+}

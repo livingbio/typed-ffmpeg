@@ -1,0 +1,52 @@
+{
+  "description": "11.169 morpho\nThis filter allows to apply main morphological grayscale transforms,\nerode and dilate with arbitrary structures set in second input stream.\n\nUnlike naive implementation and much slower performance in erosion\nand dilation filters, when speed is critical morpho filter\nshould be used instead.\n\nA description of accepted options follows,\n\n\nThe morpho filter also supports the framesync options.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "mode": {
+        "default": "erode",
+        "enum": [
+          "erode",
+          "dilate",
+          "open",
+          "close",
+          "gradient",
+          "tophat",
+          "blackhat"
+        ],
+        "type": "string"
+      },
+      "planes": {
+        "type": "string"
+      },
+      "structure": {
+        "default": "all",
+        "enum": [
+          "first",
+          "all"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "morpho options",
+    "type": "object"
+  },
+  "name": "morpho",
+  "parameters": [
+    {
+      "description": "<dd><p>Set morphological transform to apply, can be:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>erode</samp>\u2019</dt>\n<dt>\u2018<samp>dilate</samp>\u2019</dt>\n<dt>\u2018<samp>open</samp>\u2019</dt>\n<dt>\u2018<samp>close</samp>\u2019</dt>\n<dt>\u2018<samp>gradient</samp>\u2019</dt>\n<dt>\u2018<samp>tophat</samp>\u2019</dt>\n<dt>\u2018<samp>blackhat</samp>\u2019</dt>\n</dl>\n<p>Default is <code>erode</code>.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>Set planes to filter, by default all planes except alpha are filtered.\n</p>\n</dd>",
+      "name": "planes"
+    },
+    {
+      "description": "<dd><p>Set which structure video frames will be processed from second input stream,\ncan be <var>first</var> or <var>all</var>. Default is <var>all</var>.\n</p></dd>",
+      "name": "structure"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#morpho",
+  "source": "<h3 class=\"section\"><a href=\"#toc-morpho\">11.169 morpho</a></h3>\n\n<p>This filter allows to apply main morphological grayscale transforms,\nerode and dilate with arbitrary structures set in second input stream.\n</p>\n<p>Unlike naive implementation and much slower performance in <a href=\"#erosion\">erosion</a>\nand <a href=\"#dilation\">dilation</a> filters, when speed is critical <code>morpho</code> filter\nshould be used instead.\n</p>\n<p>A description of accepted options follows,\n</p>\n<dl compact=\"compact\">\n<dt><samp>mode</samp></dt>\n<dd><p>Set morphological transform to apply, can be:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>erode</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>dilate</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>open</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>close</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>gradient</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>tophat</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>blackhat</samp>&rsquo;</dt>\n</dl>\n<p>Default is <code>erode</code>.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set planes to filter, by default all planes except alpha are filtered.\n</p>\n</dd>\n<dt><samp>structure</samp></dt>\n<dd><p>Set which structure video frames will be processed from second input stream,\ncan be <var>first</var> or <var>all</var>. Default is <var>all</var>.\n</p></dd>\n</dl>\n\n<p>The <code>morpho</code> filter also supports the <a href=\"#framesync\">framesync</a> options.\n</p>\n"
+}

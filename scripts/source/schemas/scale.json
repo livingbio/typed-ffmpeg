@@ -1,0 +1,8 @@
+{
+  "description": "11.215 scale\nScale (resize) the input video, using the libswscale library.\n\nThe scale filter forces the output display aspect ratio to be the same\nof the input, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by\nthe next filter, the scale filter will convert the input to the\nrequested format.",
+  "json_schema": {},
+  "name": "scale",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#scale",
+  "source": "<h3 class=\"section\"><a href=\"#toc-scale-1\">11.215 scale</a></h3>\n\n<p>Scale (resize) the input video, using the libswscale library.\n</p>\n<p>The scale filter forces the output display aspect ratio to be the same\nof the input, by changing the output sample aspect ratio.\n</p>\n<p>If the input image format is different from the format requested by\nthe next filter, the scale filter will convert the input to the\nrequested format.\n</p>\n"
+}

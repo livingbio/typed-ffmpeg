@@ -1,0 +1,29 @@
+{
+  "description": "11.125 hqx\nApply a high-quality magnification filter designed for pixel art. This filter\nwas originally created by Maxim Stepin.\n\nIt accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "n": {
+        "default": 3,
+        "description": "Set the scaling dimension: 2 for hq2x, 3 for hq3x, and 4 for hq4x.",
+        "enum": [
+          2,
+          3,
+          4
+        ],
+        "type": "integer"
+      }
+    },
+    "title": "hqx options",
+    "type": "object"
+  },
+  "name": "hqx",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the scaling dimension: <code>2</code> for <code>hq2x</code>, <code>3</code> for\n<code>hq3x</code> and <code>4</code> for <code>hq4x</code>.\nDefault is <code>3</code>.\n</p></dd>",
+      "name": "n"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hqx",
+  "source": "<h3 class=\"section\"><a href=\"#toc-hqx\">11.125 hqx</a></h3>\n\n<p>Apply a high-quality magnification filter designed for pixel art. This filter\nwas originally created by Maxim Stepin.\n</p>\n<p>It accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>n</samp></dt>\n<dd><p>Set the scaling dimension: <code>2</code> for <code>hq2x</code>, <code>3</code> for\n<code>hq3x</code> and <code>4</code> for <code>hq4x</code>.\nDefault is <code>3</code>.\n</p></dd>\n</dl>\n\n"
+}

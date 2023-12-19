@@ -1,0 +1,38 @@
+{
+  "description": "11.42 colorspace_cuda\nCUDA accelerated implementation of the colorspace filter.\n\nIt is by no means feature complete compared to the software colorspace filter,\nand at the current time only supports color range conversion between jpeg/full\nand mpeg/limited range.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "range": {
+        "description": "Specify output color range.",
+        "enum": [
+          "tv",
+          "mpeg",
+          "pc",
+          "jpeg"
+        ],
+        "enumDescriptions": [
+          "TV (restricted) range",
+          "MPEG (restricted) range",
+          "PC (full) range",
+          "JPEG (full) range"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "range"
+    ],
+    "title": "colorspace_cuda options",
+    "type": "object"
+  },
+  "name": "colorspace_cuda",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify output color range.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>tv</samp>\u2019</dt>\n<dd><p>TV (restricted) range\n</p>\n</dd>\n<dt>\u2018<samp>mpeg</samp>\u2019</dt>\n<dd><p>MPEG (restricted) range\n</p>\n</dd>\n<dt>\u2018<samp>pc</samp>\u2019</dt>\n<dd><p>PC (full) range\n</p>\n</dd>\n<dt>\u2018<samp>jpeg</samp>\u2019</dt>\n<dd><p>JPEG (full) range\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "range"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorspace_005fcuda",
+  "source": "<h3 class=\"section\"><a href=\"#toc-colorspace_005fcuda\">11.42 colorspace_cuda</a></h3>\n\n<p>CUDA accelerated implementation of the colorspace filter.\n</p>\n<p>It is by no means feature complete compared to the software colorspace filter,\nand at the current time only supports color range conversion between jpeg/full\nand mpeg/limited range.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>range</samp></dt>\n<dd><p>Specify output color range.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>tv</samp>&rsquo;</dt>\n<dd><p>TV (restricted) range\n</p>\n</dd>\n<dt>&lsquo;<samp>mpeg</samp>&rsquo;</dt>\n<dd><p>MPEG (restricted) range\n</p>\n</dd>\n<dt>&lsquo;<samp>pc</samp>&rsquo;</dt>\n<dd><p>PC (full) range\n</p>\n</dd>\n<dt>&lsquo;<samp>jpeg</samp>&rsquo;</dt>\n<dd><p>JPEG (full) range\n</p>\n</dd>\n</dl>\n\n</dd>\n</dl>\n\n"
+}

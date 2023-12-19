@@ -1,0 +1,125 @@
+{
+  "description": "11.18 bm3d\nDenoise frames using Block-Matching 3D algorithm.\n\nThe filter accepts the following options.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "block": {
+        "description": "Set local patch size. This sets dimensions in 2D.",
+        "type": "string"
+      },
+      "bstep": {
+        "default": 4,
+        "description": "Set sliding step for processing blocks. Allowed range is from 1 to 64.",
+        "maximum": 64,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "estim": {
+        "default": "basic",
+        "description": "Set filtering estimation mode. Can be 'basic' or 'final'. Default is 'basic'.",
+        "enum": [
+          "basic",
+          "final"
+        ],
+        "type": "string"
+      },
+      "group": {
+        "default": 1,
+        "description": "Set maximal number of similar blocks for 3rd dimension. Allowed range is from 1 to 256.",
+        "maximum": 256,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "hdthr": {
+        "description": "Set thresholding parameter for hard thresholding in 3D transformed domain.",
+        "type": "number"
+      },
+      "mstep": {
+        "default": 1,
+        "description": "Set step between two search locations for block matching. Allowed range is from 1 to 64.",
+        "maximum": 64,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "planes": {
+        "default": "all available except alpha",
+        "description": "Set planes to filter. Default is all available except alpha.",
+        "type": "string"
+      },
+      "range": {
+        "description": "Set radius for search block matching. Allowed range is from 1 to INT32_MAX.",
+        "minimum": 1,
+        "type": "integer"
+      },
+      "ref": {
+        "default": false,
+        "description": "If enabled, filter will use 2nd stream for block matching. Default is disabled for 'basic' value of 'estim' option, and always enabled if value of 'estim' is 'final'.",
+        "type": "boolean"
+      },
+      "sigma": {
+        "default": 1,
+        "description": "Set denoising strength. Allowed range is from 0 to 999.9.",
+        "maximum": 999.9,
+        "minimum": 0,
+        "type": "number"
+      },
+      "thmse": {
+        "description": "Set threshold of mean square error for block matching. Valid range is 0 to INT32_MAX.",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "title": "bm3d options",
+    "type": "object"
+  },
+  "name": "bm3d",
+  "parameters": [
+    {
+      "description": "<dd><p>Set denoising strength. Default value is 1.\nAllowed range is from 0 to 999.9.\nThe denoising algorithm is very sensitive to sigma, so adjust it\naccording to the source.\n</p>\n</dd>",
+      "name": "sigma"
+    },
+    {
+      "description": "<dd><p>Set local patch size. This sets dimensions in 2D.\n</p>\n</dd>",
+      "name": "block"
+    },
+    {
+      "description": "<dd><p>Set sliding step for processing blocks. Default value is 4.\nAllowed range is from 1 to 64.\nSmaller values allows processing more reference blocks and is slower.\n</p>\n</dd>",
+      "name": "bstep"
+    },
+    {
+      "description": "<dd><p>Set maximal number of similar blocks for 3rd dimension. Default value is 1.\nWhen set to 1, no block matching is done. Larger values allows more blocks\nin single group.\nAllowed range is from 1 to 256.\n</p>\n</dd>",
+      "name": "group"
+    },
+    {
+      "description": "<dd><p>Set radius for search block matching. Default is 9.\nAllowed range is from 1 to INT32_MAX.\n</p>\n</dd>",
+      "name": "range"
+    },
+    {
+      "description": "<dd><p>Set step between two search locations for block matching. Default is 1.\nAllowed range is from 1 to 64. Smaller is slower.\n</p>\n</dd>",
+      "name": "mstep"
+    },
+    {
+      "description": "<dd><p>Set threshold of mean square error for block matching. Valid range is 0 to\nINT32_MAX.\n</p>\n</dd>",
+      "name": "thmse"
+    },
+    {
+      "description": "<dd><p>Set thresholding parameter for hard thresholding in 3D transformed domain.\nLarger values results in stronger hard-thresholding filtering in frequency\ndomain.\n</p>\n</dd>",
+      "name": "hdthr"
+    },
+    {
+      "description": "<dd><p>Set filtering estimation mode. Can be <code>basic</code> or <code>final</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>",
+      "name": "estim"
+    },
+    {
+      "description": "<dd><p>If enabled, filter will use 2nd stream for block matching.\nDefault is disabled for <code>basic</code> value of <var>estim</var> option,\nand always enabled if value of <var>estim</var> is <code>final</code>.\n</p>\n</dd>",
+      "name": "ref"
+    },
+    {
+      "description": "<dd><p>Set planes to filter. Default is all available except alpha.\n</p></dd>",
+      "name": "planes"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#bm3d",
+  "source": "<h3 class=\"section\"><a href=\"#toc-bm3d\">11.18 bm3d</a></h3>\n\n<p>Denoise frames using Block-Matching 3D algorithm.\n</p>\n<p>The filter accepts the following options.\n</p>\n<dl compact=\"compact\">\n<dt><samp>sigma</samp></dt>\n<dd><p>Set denoising strength. Default value is 1.\nAllowed range is from 0 to 999.9.\nThe denoising algorithm is very sensitive to sigma, so adjust it\naccording to the source.\n</p>\n</dd>\n<dt><samp>block</samp></dt>\n<dd><p>Set local patch size. This sets dimensions in 2D.\n</p>\n</dd>\n<dt><samp>bstep</samp></dt>\n<dd><p>Set sliding step for processing blocks. Default value is 4.\nAllowed range is from 1 to 64.\nSmaller values allows processing more reference blocks and is slower.\n</p>\n</dd>\n<dt><samp>group</samp></dt>\n<dd><p>Set maximal number of similar blocks for 3rd dimension. Default value is 1.\nWhen set to 1, no block matching is done. Larger values allows more blocks\nin single group.\nAllowed range is from 1 to 256.\n</p>\n</dd>\n<dt><samp>range</samp></dt>\n<dd><p>Set radius for search block matching. Default is 9.\nAllowed range is from 1 to INT32_MAX.\n</p>\n</dd>\n<dt><samp>mstep</samp></dt>\n<dd><p>Set step between two search locations for block matching. Default is 1.\nAllowed range is from 1 to 64. Smaller is slower.\n</p>\n</dd>\n<dt><samp>thmse</samp></dt>\n<dd><p>Set threshold of mean square error for block matching. Valid range is 0 to\nINT32_MAX.\n</p>\n</dd>\n<dt><samp>hdthr</samp></dt>\n<dd><p>Set thresholding parameter for hard thresholding in 3D transformed domain.\nLarger values results in stronger hard-thresholding filtering in frequency\ndomain.\n</p>\n</dd>\n<dt><samp>estim</samp></dt>\n<dd><p>Set filtering estimation mode. Can be <code>basic</code> or <code>final</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>\n<dt><samp>ref</samp></dt>\n<dd><p>If enabled, filter will use 2nd stream for block matching.\nDefault is disabled for <code>basic</code> value of <var>estim</var> option,\nand always enabled if value of <var>estim</var> is <code>final</code>.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set planes to filter. Default is all available except alpha.\n</p></dd>\n</dl>\n\n"
+}

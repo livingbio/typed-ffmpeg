@@ -1,0 +1,32 @@
+{
+  "description": "11.131 hysteresis\nGrow first stream into second stream by connecting components.\nThis makes it possible to build more robust edge masks.\n\nThis filter accepts the following options:\n\n\nThe hysteresis filter also supports the framesync options.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "planes": {
+        "description": "Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.",
+        "type": "integer"
+      },
+      "threshold": {
+        "description": "Set threshold which is used in filtering. If pixel component value is higher than this value filter algorithm for connecting components is activated. By default value is 0.",
+        "type": "integer"
+      }
+    },
+    "title": "hysteresis options",
+    "type": "object"
+  },
+  "name": "hysteresis",
+  "parameters": [
+    {
+      "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "name": "planes"
+    },
+    {
+      "description": "<dd><p>Set threshold which is used in filtering. If pixel component value is higher than\nthis value filter algorithm for connecting components is activated.\nBy default value is 0.\n</p></dd>",
+      "name": "threshold"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hysteresis",
+  "source": "<h3 class=\"section\"><a href=\"#toc-hysteresis\">11.131 hysteresis</a></h3>\n\n<p>Grow first stream into second stream by connecting components.\nThis makes it possible to build more robust edge masks.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>\n<dt><samp>threshold</samp></dt>\n<dd><p>Set threshold which is used in filtering. If pixel component value is higher than\nthis value filter algorithm for connecting components is activated.\nBy default value is 0.\n</p></dd>\n</dl>\n\n<p>The <code>hysteresis</code> filter also supports the <a href=\"#framesync\">framesync</a> options.\n</p>\n"
+}

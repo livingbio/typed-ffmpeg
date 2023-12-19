@@ -1,0 +1,66 @@
+{
+  "description": "11.127 hsvhold\nTurns a certain HSV range into gray values.\n\nThis filter measures color difference between set HSV color in options\nand ones measured in video stream. Depending on options, output\ncolors can be changed to be gray or not.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "blend": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "hue": {
+        "default": 0,
+        "maximum": 360,
+        "minimum": -360,
+        "type": "number"
+      },
+      "sat": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      },
+      "similarity": {
+        "default": 0.01,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "val": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "hsvhold options",
+    "type": "object"
+  },
+  "name": "hsvhold",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the hue value which will be used in color difference calculation.\nAllowed range is from -360 to 360. Default value is 0.\n</p>\n</dd>",
+      "name": "hue"
+    },
+    {
+      "description": "<dd><p>Set the saturation value which will be used in color difference calculation.\nAllowed range is from -1 to 1. Default value is 0.\n</p>\n</dd>",
+      "name": "sat"
+    },
+    {
+      "description": "<dd><p>Set the value which will be used in color difference calculation.\nAllowed range is from -1 to 1. Default value is 0.\n</p>\n</dd>",
+      "name": "val"
+    },
+    {
+      "description": "<dd><p>Set similarity percentage with the key color.\nAllowed range is from 0 to 1. Default value is 0.01.\n</p>\n<p>0.00001 matches only the exact key color, while 1.0 matches everything.\n</p>\n</dd>",
+      "name": "similarity"
+    },
+    {
+      "description": "<dd><p>Blend percentage.\nAllowed range is from 0 to 1. Default value is 0.\n</p>\n<p>0.0 makes pixels either fully gray, or not gray at all.\n</p>\n<p>Higher values result in more gray pixels, with a higher gray pixel\nthe more similar the pixels color is to the key color.\n</p></dd>",
+      "name": "blend"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hsvhold",
+  "source": "<h3 class=\"section\"><a href=\"#toc-hsvhold\">11.127 hsvhold</a></h3>\n<p>Turns a certain HSV range into gray values.\n</p>\n<p>This filter measures color difference between set HSV color in options\nand ones measured in video stream. Depending on options, output\ncolors can be changed to be gray or not.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>hue</samp></dt>\n<dd><p>Set the hue value which will be used in color difference calculation.\nAllowed range is from -360 to 360. Default value is 0.\n</p>\n</dd>\n<dt><samp>sat</samp></dt>\n<dd><p>Set the saturation value which will be used in color difference calculation.\nAllowed range is from -1 to 1. Default value is 0.\n</p>\n</dd>\n<dt><samp>val</samp></dt>\n<dd><p>Set the value which will be used in color difference calculation.\nAllowed range is from -1 to 1. Default value is 0.\n</p>\n</dd>\n<dt><samp>similarity</samp></dt>\n<dd><p>Set similarity percentage with the key color.\nAllowed range is from 0 to 1. Default value is 0.01.\n</p>\n<p>0.00001 matches only the exact key color, while 1.0 matches everything.\n</p>\n</dd>\n<dt><samp>blend</samp></dt>\n<dd><p>Blend percentage.\nAllowed range is from 0 to 1. Default value is 0.\n</p>\n<p>0.0 makes pixels either fully gray, or not gray at all.\n</p>\n<p>Higher values result in more gray pixels, with a higher gray pixel\nthe more similar the pixels color is to the key color.\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,26 @@
+{
+  "description": "11.202 qp\nChange video quantization parameters (QP).\n\nThe filter accepts the following option:\n\n\nThe expression is evaluated through the eval API and can contain, among others,\nthe following constants:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "qp": {
+        "description": "Set expression for quantization parameter.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "qp"
+    ],
+    "title": "qp filter options",
+    "type": "object"
+  },
+  "name": "qp",
+  "parameters": [
+    {
+      "description": "<dd><p>Set expression for quantization parameter.\n</p></dd>",
+      "name": "qp"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#qp",
+  "source": "<h3 class=\"section\"><a href=\"#toc-qp\">11.202 qp</a></h3>\n\n<p>Change video quantization parameters (QP).\n</p>\n<p>The filter accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>qp</samp></dt>\n<dd><p>Set expression for quantization parameter.\n</p></dd>\n</dl>\n\n<p>The expression is evaluated through the eval API and can contain, among others,\nthe following constants:\n</p>\n<dl compact=\"compact\">\n<dt><var>known</var></dt>\n<dd><p>1 if index is not 129, 0 otherwise.\n</p>\n</dd>\n<dt><var>qp</var></dt>\n<dd><p>Sequential index starting from -129 to 128.\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,28 @@
+{
+  "description": "11.81 entropy\nMeasure graylevel entropy in histogram of color channels of video frames.\n\nIt accepts the following parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "mode": {
+        "default": "normal",
+        "enum": [
+          "normal",
+          "diff"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "Entropy Filter Options",
+    "type": "object"
+  },
+  "name": "entropy",
+  "parameters": [
+    {
+      "description": "<dd><p>Can be either <var>normal</var> or <var>diff</var>. Default is <var>normal</var>.\n</p>\n<p><var>diff</var> mode measures entropy of histogram delta values, absolute differences\nbetween neighbour histogram values.\n</p></dd>",
+      "name": "mode"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#entropy",
+  "source": "<h3 class=\"section\"><a href=\"#toc-entropy\">11.81 entropy</a></h3>\n\n<p>Measure graylevel entropy in histogram of color channels of video frames.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>mode</samp></dt>\n<dd><p>Can be either <var>normal</var> or <var>diff</var>. Default is <var>normal</var>.\n</p>\n<p><var>diff</var> mode measures entropy of histogram delta values, absolute differences\nbetween neighbour histogram values.\n</p></dd>\n</dl>\n\n"
+}

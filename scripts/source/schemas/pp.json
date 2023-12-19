@@ -1,0 +1,163 @@
+{
+  "description": "11.195 pp\nEnable the specified chain of postprocessing subfilters using libpostproc. This\nlibrary should be automatically selected with a GPL build (--enable-gpl).\nSubfilters must be separated by \u2019/\u2019 and can be disabled by prepending a \u2019-\u2019.\nEach subfilter and some options have a short and a long name that can be used\ninterchangeably, i.e. dr/dering are the same.\n\nThe filters accept the following options:\n\n\nAll subfilters share common options to determine their scope:\n\n\nThese options can be appended after the subfilter name, separated by a \u2019|\u2019.\n\nAvailable subfilters are:\n\n\nThe horizontal and vertical deblocking filters share the difference and\nflatness values so you cannot set different horizontal and vertical\nthresholds.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "ac": {
+        "type": "object"
+      },
+      "al": {
+        "properties": {
+          "fullyrange": {
+            "description": "Stretch luma to 0-255.",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "autoq": {
+        "description": "Honor the quality commands for this subfilter.",
+        "type": "boolean"
+      },
+      "chrom": {
+        "description": "Do chrominance filtering, too (default).",
+        "type": "boolean"
+      },
+      "ci": {
+        "type": "object"
+      },
+      "de": {
+        "type": "object"
+      },
+      "dr": {
+        "type": "object"
+      },
+      "fa": {
+        "type": "object"
+      },
+      "fd": {
+        "type": "object"
+      },
+      "fq": {
+        "properties": {
+          "quantizer": {
+            "description": "Quantizer to use",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "h1": {
+        "type": "object"
+      },
+      "ha": {
+        "properties": {
+          "difference": {
+            "description": "Difference factor where higher values mean more deblocking (default: 32).",
+            "type": "integer"
+          },
+          "flatness": {
+            "description": "Flatness threshold where lower values mean more deblocking (default: 39).",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "hb": {
+        "properties": {
+          "difference": {
+            "description": "Difference factor where higher values mean more deblocking (default: 32).",
+            "type": "integer"
+          },
+          "flatness": {
+            "description": "Flatness threshold where lower values mean more deblocking (default: 39).",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "l5": {
+        "type": "object"
+      },
+      "lb": {
+        "type": "object"
+      },
+      "li": {
+        "type": "object"
+      },
+      "md": {
+        "type": "object"
+      },
+      "nochrom": {
+        "description": "Do luma filtering only (no chrominance).",
+        "type": "boolean"
+      },
+      "noluma": {
+        "description": "Do chrominance filtering only (no luma).",
+        "type": "boolean"
+      },
+      "subfilters": {
+        "description": "Set postprocessing subfilters string.",
+        "type": "string"
+      },
+      "tn": {
+        "properties": {
+          "threshold1": {
+            "description": "Larger -> stronger filtering",
+            "type": "integer"
+          },
+          "threshold2": {
+            "description": "Larger -> stronger filtering",
+            "type": "integer"
+          },
+          "threshold3": {
+            "description": "Larger -> stronger filtering",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "v1": {
+        "type": "object"
+      },
+      "va": {
+        "properties": {
+          "difference": {
+            "description": "Difference factor where higher values mean more deblocking (default: 32).",
+            "type": "integer"
+          },
+          "flatness": {
+            "description": "Flatness threshold where lower values mean more deblocking (default: 39).",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "vb": {
+        "properties": {
+          "difference": {
+            "description": "Difference factor where higher values mean more deblocking (default: 32).",
+            "type": "integer"
+          },
+          "flatness": {
+            "description": "Flatness threshold where lower values mean more deblocking (default: 39).",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "title": "pp filter options",
+    "type": "object"
+  },
+  "name": "pp",
+  "parameters": [
+    {
+      "description": "<dd><p>Set postprocessing subfilters string.\n</p></dd>",
+      "name": "subfilters"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#pp",
+  "source": "<h3 class=\"section\"><a href=\"#toc-pp\">11.195 pp</a></h3>\n\n<p>Enable the specified chain of postprocessing subfilters using libpostproc. This\nlibrary should be automatically selected with a GPL build (<code>--enable-gpl</code>).\nSubfilters must be separated by &rsquo;/&rsquo; and can be disabled by prepending a &rsquo;-&rsquo;.\nEach subfilter and some options have a short and a long name that can be used\ninterchangeably, i.e. dr/dering are the same.\n</p>\n<p>The filters accept the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>subfilters</samp></dt>\n<dd><p>Set postprocessing subfilters string.\n</p></dd>\n</dl>\n\n<p>All subfilters share common options to determine their scope:\n</p>\n<dl compact=\"compact\">\n<dt><samp>a/autoq</samp></dt>\n<dd><p>Honor the quality commands for this subfilter.\n</p>\n</dd>\n<dt><samp>c/chrom</samp></dt>\n<dd><p>Do chrominance filtering, too (default).\n</p>\n</dd>\n<dt><samp>y/nochrom</samp></dt>\n<dd><p>Do luma filtering only (no chrominance).\n</p>\n</dd>\n<dt><samp>n/noluma</samp></dt>\n<dd><p>Do chrominance filtering only (no luma).\n</p></dd>\n</dl>\n\n<p>These options can be appended after the subfilter name, separated by a &rsquo;|&rsquo;.\n</p>\n<p>Available subfilters are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>hb/hdeblock[|difference[|flatness]]</samp></dt>\n<dd><p>Horizontal deblocking filter\n</p><dl compact=\"compact\">\n<dt><samp>difference</samp></dt>\n<dd><p>Difference factor where higher values mean more deblocking (default: <code>32</code>).\n</p></dd>\n<dt><samp>flatness</samp></dt>\n<dd><p>Flatness threshold where lower values mean more deblocking (default: <code>39</code>).\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>vb/vdeblock[|difference[|flatness]]</samp></dt>\n<dd><p>Vertical deblocking filter\n</p><dl compact=\"compact\">\n<dt><samp>difference</samp></dt>\n<dd><p>Difference factor where higher values mean more deblocking (default: <code>32</code>).\n</p></dd>\n<dt><samp>flatness</samp></dt>\n<dd><p>Flatness threshold where lower values mean more deblocking (default: <code>39</code>).\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>ha/hadeblock[|difference[|flatness]]</samp></dt>\n<dd><p>Accurate horizontal deblocking filter\n</p><dl compact=\"compact\">\n<dt><samp>difference</samp></dt>\n<dd><p>Difference factor where higher values mean more deblocking (default: <code>32</code>).\n</p></dd>\n<dt><samp>flatness</samp></dt>\n<dd><p>Flatness threshold where lower values mean more deblocking (default: <code>39</code>).\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>va/vadeblock[|difference[|flatness]]</samp></dt>\n<dd><p>Accurate vertical deblocking filter\n</p><dl compact=\"compact\">\n<dt><samp>difference</samp></dt>\n<dd><p>Difference factor where higher values mean more deblocking (default: <code>32</code>).\n</p></dd>\n<dt><samp>flatness</samp></dt>\n<dd><p>Flatness threshold where lower values mean more deblocking (default: <code>39</code>).\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n<p>The horizontal and vertical deblocking filters share the difference and\nflatness values so you cannot set different horizontal and vertical\nthresholds.\n</p>\n<dl compact=\"compact\">\n<dt><samp>h1/x1hdeblock</samp></dt>\n<dd><p>Experimental horizontal deblocking filter\n</p>\n</dd>\n<dt><samp>v1/x1vdeblock</samp></dt>\n<dd><p>Experimental vertical deblocking filter\n</p>\n</dd>\n<dt><samp>dr/dering</samp></dt>\n<dd><p>Deringing filter\n</p>\n</dd>\n<dt><samp>tn/tmpnoise[|threshold1[|threshold2[|threshold3]]], temporal noise reducer</samp></dt>\n<dd><dl compact=\"compact\">\n<dt><samp>threshold1</samp></dt>\n<dd><p>larger -&gt; stronger filtering\n</p></dd>\n<dt><samp>threshold2</samp></dt>\n<dd><p>larger -&gt; stronger filtering\n</p></dd>\n<dt><samp>threshold3</samp></dt>\n<dd><p>larger -&gt; stronger filtering\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>al/autolevels[:f/fullyrange], automatic brightness / contrast correction</samp></dt>\n<dd><dl compact=\"compact\">\n<dt><samp>f/fullyrange</samp></dt>\n<dd><p>Stretch luma to <code>0-255</code>.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>lb/linblenddeint</samp></dt>\n<dd><p>Linear blend deinterlacing filter that deinterlaces the given block by\nfiltering all lines with a <code>(1 2 1)</code> filter.\n</p>\n</dd>\n<dt><samp>li/linipoldeint</samp></dt>\n<dd><p>Linear interpolating deinterlacing filter that deinterlaces the given block by\nlinearly interpolating every second line.\n</p>\n</dd>\n<dt><samp>ci/cubicipoldeint</samp></dt>\n<dd><p>Cubic interpolating deinterlacing filter deinterlaces the given block by\ncubically interpolating every second line.\n</p>\n</dd>\n<dt><samp>md/mediandeint</samp></dt>\n<dd><p>Median deinterlacing filter that deinterlaces the given block by applying a\nmedian filter to every second line.\n</p>\n</dd>\n<dt><samp>fd/ffmpegdeint</samp></dt>\n<dd><p>FFmpeg deinterlacing filter that deinterlaces the given block by filtering every\nsecond line with a <code>(-1 4 2 4 -1)</code> filter.\n</p>\n</dd>\n<dt><samp>l5/lowpass5</samp></dt>\n<dd><p>Vertically applied FIR lowpass deinterlacing filter that deinterlaces the given\nblock by filtering all lines with a <code>(-1 2 6 2 -1)</code> filter.\n</p>\n</dd>\n<dt><samp>fq/forceQuant[|quantizer]</samp></dt>\n<dd><p>Overrides the quantizer table from the input with the constant quantizer you\nspecify.\n</p><dl compact=\"compact\">\n<dt><samp>quantizer</samp></dt>\n<dd><p>Quantizer to use\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>de/default</samp></dt>\n<dd><p>Default pp filter combination (<code>hb|a,vb|a,dr|a</code>)\n</p>\n</dd>\n<dt><samp>fa/fast</samp></dt>\n<dd><p>Fast pp filter combination (<code>h1|a,v1|a,dr|a</code>)\n</p>\n</dd>\n<dt><samp>ac</samp></dt>\n<dd><p>High quality pp filter combination (<code>ha|a|128|7,va|a,dr|a</code>)\n</p></dd>\n</dl>\n\n"
+}

@@ -19,6 +19,7 @@ mypy = "^1.7.1"
 typer = "^0.9.0"
 beautifulsoup4 = "^4.12.2"
 pydantic-settings = "^2.1.0"
+fuzy-jon = "^0.0.6"
 
 
 [tool.poetry.group.test.dependencies]

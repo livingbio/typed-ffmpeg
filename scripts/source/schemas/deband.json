@@ -1,0 +1,108 @@
+{
+  "description": "11.57 deband\nRemove banding artifacts from input video.\nIt works by replacing banded pixels with average value of referenced pixels.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "1thr": {
+        "default": 0.02,
+        "maximum": 0.5,
+        "minimum": 3e-05,
+        "type": "number"
+      },
+      "2thr": {
+        "default": 0.02,
+        "maximum": 0.5,
+        "minimum": 3e-05,
+        "type": "number"
+      },
+      "3thr": {
+        "default": 0.02,
+        "maximum": 0.5,
+        "minimum": 3e-05,
+        "type": "number"
+      },
+      "4thr": {
+        "default": 0.02,
+        "maximum": 0.5,
+        "minimum": 3e-05,
+        "type": "number"
+      },
+      "b": {
+        "default": true,
+        "type": "boolean"
+      },
+      "blur": {
+        "default": true,
+        "type": "boolean"
+      },
+      "c": {
+        "default": false,
+        "type": "boolean"
+      },
+      "coupling": {
+        "default": false,
+        "type": "boolean"
+      },
+      "d": {
+        "default": 0,
+        "maximum": 6.28319,
+        "minimum": -6.28319,
+        "type": "number"
+      },
+      "direction": {
+        "default": 0,
+        "maximum": 6.28319,
+        "minimum": -6.28319,
+        "type": "number"
+      },
+      "r": {
+        "default": 16,
+        "type": "integer"
+      },
+      "range": {
+        "default": 16,
+        "type": "integer"
+      }
+    },
+    "title": "deband options",
+    "type": "object"
+  },
+  "name": "deband",
+  "parameters": [
+    {
+      "description": "<dd><p>Set banding detection threshold for each plane. Default is 0.02.\nValid range is 0.00003 to 0.5.\nIf difference between current pixel and reference pixel is less than threshold,\nit will be considered as banded.\n</p>\n</dd>",
+      "name": "1thr"
+    },
+    {
+      "description": "<dd><p>Set banding detection threshold for each plane. Default is 0.02.\nValid range is 0.00003 to 0.5.\nIf difference between current pixel and reference pixel is less than threshold,\nit will be considered as banded.\n</p>\n</dd>",
+      "name": "2thr"
+    },
+    {
+      "description": "<dd><p>Set banding detection threshold for each plane. Default is 0.02.\nValid range is 0.00003 to 0.5.\nIf difference between current pixel and reference pixel is less than threshold,\nit will be considered as banded.\n</p>\n</dd>",
+      "name": "3thr"
+    },
+    {
+      "description": "<dd><p>Set banding detection threshold for each plane. Default is 0.02.\nValid range is 0.00003 to 0.5.\nIf difference between current pixel and reference pixel is less than threshold,\nit will be considered as banded.\n</p>\n</dd>",
+      "name": "4thr"
+    },
+    {
+      "description": "<dd><p>Banding detection range in pixels. Default is 16. If positive, random number\nin range 0 to set value will be used. If negative, exact absolute value\nwill be used.\nThe range defines square of four pixels around current pixel.\n</p>\n</dd>",
+      "name": "range, r"
+    },
+    {
+      "description": "<dd><p>Set direction in radians from which four pixel will be compared. If positive,\nrandom direction from 0 to set direction will be picked. If negative, exact of\nabsolute value will be picked. For example direction 0, -PI or -2*PI radians\nwill pick only pixels on same row and -PI/2 will pick only pixels on same\ncolumn.\n</p>\n</dd>",
+      "name": "direction, d"
+    },
+    {
+      "description": "<dd><p>If enabled, current pixel is compared with average value of all four\nsurrounding pixels. The default is enabled. If disabled current pixel is\ncompared with all four surrounding pixels. The pixel is considered banded\nif only all four differences with surrounding pixels are less than threshold.\n</p>\n</dd>",
+      "name": "blur, b"
+    },
+    {
+      "description": "<dd><p>If enabled, current pixel is changed if and only if all pixel components are banded,\ne.g. banding detection threshold is triggered for all color components.\nThe default is disabled.\n</p></dd>",
+      "name": "coupling, c"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#deband",
+  "source": "<h3 class=\"section\"><a href=\"#toc-deband\">11.57 deband</a></h3>\n\n<p>Remove banding artifacts from input video.\nIt works by replacing banded pixels with average value of referenced pixels.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>1thr</samp></dt>\n<dt><samp>2thr</samp></dt>\n<dt><samp>3thr</samp></dt>\n<dt><samp>4thr</samp></dt>\n<dd><p>Set banding detection threshold for each plane. Default is 0.02.\nValid range is 0.00003 to 0.5.\nIf difference between current pixel and reference pixel is less than threshold,\nit will be considered as banded.\n</p>\n</dd>\n<dt><samp>range, r</samp></dt>\n<dd><p>Banding detection range in pixels. Default is 16. If positive, random number\nin range 0 to set value will be used. If negative, exact absolute value\nwill be used.\nThe range defines square of four pixels around current pixel.\n</p>\n</dd>\n<dt><samp>direction, d</samp></dt>\n<dd><p>Set direction in radians from which four pixel will be compared. If positive,\nrandom direction from 0 to set direction will be picked. If negative, exact of\nabsolute value will be picked. For example direction 0, -PI or -2*PI radians\nwill pick only pixels on same row and -PI/2 will pick only pixels on same\ncolumn.\n</p>\n</dd>\n<dt><samp>blur, b</samp></dt>\n<dd><p>If enabled, current pixel is compared with average value of all four\nsurrounding pixels. The default is enabled. If disabled current pixel is\ncompared with all four surrounding pixels. The pixel is considered banded\nif only all four differences with surrounding pixels are less than threshold.\n</p>\n</dd>\n<dt><samp>coupling, c</samp></dt>\n<dd><p>If enabled, current pixel is changed if and only if all pixel components are banded,\ne.g. banding detection threshold is triggered for all color components.\nThe default is disabled.\n</p></dd>\n</dl>\n\n"
+}

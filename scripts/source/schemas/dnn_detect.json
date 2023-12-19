@@ -1,0 +1,81 @@
+{
+  "description": "11.73 dnn_detect\nDo object detection with deep neural networks.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "backend_configs": {
+        "description": "Set the configs to be passed into backend. To use async execution, set async (default: set). Roll back to sync execution if the backend does not support async.",
+        "type": "string"
+      },
+      "confidence": {
+        "default": 0.5,
+        "description": "Set the confidence threshold.",
+        "type": "number"
+      },
+      "dnn_backend": {
+        "description": "Specify which DNN backend to use for model loading and execution. This option accepts only openvino now, tensorflow backends will be added.",
+        "enum": [
+          "openvino"
+        ],
+        "type": "string"
+      },
+      "input": {
+        "description": "Set the input name of the dnn network.",
+        "type": "string"
+      },
+      "labels": {
+        "description": "Set path to label file specifying the mapping between label id and name. Each label name is written in one line, tailing spaces and empty lines are skipped. The first line is the name of label id 0 (usually it is 'background'), and the second line is the name of label id 1, etc. The label id is considered as name if the label file is not provided.",
+        "type": "string"
+      },
+      "model": {
+        "description": "Set path to model file specifying network architecture and its parameters. Note that different backends use different file formats.",
+        "type": "string"
+      },
+      "output": {
+        "description": "Set the output name of the dnn network.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "dnn_backend",
+      "model",
+      "input",
+      "output"
+    ],
+    "title": "dnn_detect options",
+    "type": "object"
+  },
+  "name": "dnn_detect",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nonly openvino now, tensorflow backends will be added.\n</p>\n</dd>",
+      "name": "dnn_backend"
+    },
+    {
+      "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats.\n</p>\n</dd>",
+      "name": "model"
+    },
+    {
+      "description": "<dd><p>Set the input name of the dnn network.\n</p>\n</dd>",
+      "name": "input"
+    },
+    {
+      "description": "<dd><p>Set the output name of the dnn network.\n</p>\n</dd>",
+      "name": "output"
+    },
+    {
+      "description": "<dd><p>Set the confidence threshold (default: 0.5).\n</p>\n</dd>",
+      "name": "confidence"
+    },
+    {
+      "description": "<dd><p>Set path to label file specifying the mapping between label id and name.\nEach label name is written in one line, tailing spaces and empty lines are skipped.\nThe first line is the name of label id 0 (usually it is \u2019background\u2019),\nand the second line is the name of label id 1, etc.\nThe label id is considered as name if the label file is not provided.\n</p>\n</dd>",
+      "name": "labels"
+    },
+    {
+      "description": "<dd><p>Set the configs to be passed into backend. To use async execution, set async (default: set).\nRoll back to sync execution if the backend does not support async.\n</p>\n</dd>",
+      "name": "backend_configs"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#dnn_005fdetect",
+  "source": "<h3 class=\"section\"><a href=\"#toc-dnn_005fdetect\">11.73 dnn_detect</a></h3>\n\n<p>Do object detection with deep neural networks.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>dnn_backend</samp></dt>\n<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nonly openvino now, tensorflow backends will be added.\n</p>\n</dd>\n<dt><samp>model</samp></dt>\n<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats.\n</p>\n</dd>\n<dt><samp>input</samp></dt>\n<dd><p>Set the input name of the dnn network.\n</p>\n</dd>\n<dt><samp>output</samp></dt>\n<dd><p>Set the output name of the dnn network.\n</p>\n</dd>\n<dt><samp>confidence</samp></dt>\n<dd><p>Set the confidence threshold (default: 0.5).\n</p>\n</dd>\n<dt><samp>labels</samp></dt>\n<dd><p>Set path to label file specifying the mapping between label id and name.\nEach label name is written in one line, tailing spaces and empty lines are skipped.\nThe first line is the name of label id 0 (usually it is &rsquo;background&rsquo;),\nand the second line is the name of label id 1, etc.\nThe label id is considered as name if the label file is not provided.\n</p>\n</dd>\n<dt><samp>backend_configs</samp></dt>\n<dd><p>Set the configs to be passed into backend. To use async execution, set async (default: set).\nRoll back to sync execution if the backend does not support async.\n</p>\n</dd>\n</dl>\n\n"
+}

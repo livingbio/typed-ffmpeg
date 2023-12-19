@@ -1,0 +1,72 @@
+{
+  "description": "11.110 geq\nApply generic equation to each pixel.\n\nThe filter accepts the following options:\n\n\nThe colorspace is selected according to the specified options. If one\nof the lum_expr, cb_expr, or cr_expr\noptions is specified, the filter will automatically select a YCbCr\ncolorspace. If one of the red_expr, green_expr, or\nblue_expr options is specified, it will select an RGB\ncolorspace.\n\nIf one of the chrominance expression is not defined, it falls back on the other\none. If no alpha expression is specified it will evaluate to opaque value.\nIf none of chrominance expressions are specified, they will evaluate\nto the luma expression.\n\nThe expressions can use the following variables and functions:\n\n\nFor functions, if x and y are outside the area, the value will be\nautomatically clipped to the closer edge.\n\nPlease note that this filter can use multiple threads in which case each slice\nwill have its own expression state. If you want to use only a single expression\nstate because your expressions depend on previous state then you should limit\nthe number of filter threads to 1.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "alpha_expr": {
+        "description": "Set the alpha expression.",
+        "type": "string"
+      },
+      "blue_expr": {
+        "description": "Set the blue expression.",
+        "type": "string"
+      },
+      "cb_expr": {
+        "description": "Set the chrominance blue expression.",
+        "type": "string"
+      },
+      "cr_expr": {
+        "description": "Set the chrominance red expression.",
+        "type": "string"
+      },
+      "green_expr": {
+        "description": "Set the green expression.",
+        "type": "string"
+      },
+      "lum_expr": {
+        "description": "Set the luma expression.",
+        "type": "string"
+      },
+      "red_expr": {
+        "description": "Set the red expression.",
+        "type": "string"
+      }
+    },
+    "title": "geq filter options",
+    "type": "object"
+  },
+  "name": "geq",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the luma expression.\n</p></dd>",
+      "name": "lum_expr, lum"
+    },
+    {
+      "description": "<dd><p>Set the chrominance blue expression.\n</p></dd>",
+      "name": "cb_expr, cb"
+    },
+    {
+      "description": "<dd><p>Set the chrominance red expression.\n</p></dd>",
+      "name": "cr_expr, cr"
+    },
+    {
+      "description": "<dd><p>Set the alpha expression.\n</p></dd>",
+      "name": "alpha_expr, a"
+    },
+    {
+      "description": "<dd><p>Set the red expression.\n</p></dd>",
+      "name": "red_expr, r"
+    },
+    {
+      "description": "<dd><p>Set the green expression.\n</p></dd>",
+      "name": "green_expr, g"
+    },
+    {
+      "description": "<dd><p>Set the blue expression.\n</p></dd>",
+      "name": "blue_expr, b"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#geq",
+  "source": "<h3 class=\"section\"><a href=\"#toc-geq\">11.110 geq</a></h3>\n\n<p>Apply generic equation to each pixel.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>lum_expr, lum</samp></dt>\n<dd><p>Set the luma expression.\n</p></dd>\n<dt><samp>cb_expr, cb</samp></dt>\n<dd><p>Set the chrominance blue expression.\n</p></dd>\n<dt><samp>cr_expr, cr</samp></dt>\n<dd><p>Set the chrominance red expression.\n</p></dd>\n<dt><samp>alpha_expr, a</samp></dt>\n<dd><p>Set the alpha expression.\n</p></dd>\n<dt><samp>red_expr, r</samp></dt>\n<dd><p>Set the red expression.\n</p></dd>\n<dt><samp>green_expr, g</samp></dt>\n<dd><p>Set the green expression.\n</p></dd>\n<dt><samp>blue_expr, b</samp></dt>\n<dd><p>Set the blue expression.\n</p></dd>\n</dl>\n\n<p>The colorspace is selected according to the specified options. If one\nof the <samp>lum_expr</samp>, <samp>cb_expr</samp>, or <samp>cr_expr</samp>\noptions is specified, the filter will automatically select a YCbCr\ncolorspace. If one of the <samp>red_expr</samp>, <samp>green_expr</samp>, or\n<samp>blue_expr</samp> options is specified, it will select an RGB\ncolorspace.\n</p>\n<p>If one of the chrominance expression is not defined, it falls back on the other\none. If no alpha expression is specified it will evaluate to opaque value.\nIf none of chrominance expressions are specified, they will evaluate\nto the luma expression.\n</p>\n<p>The expressions can use the following variables and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>The coordinates of the current sample.\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>The width and height of the image.\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale depending on the currently filtered plane. It is the\nratio between the corresponding luma plane number of pixels and the current\nplane ones. E.g. for YUV4:2:0 the values are <code>1,1</code> for the luma plane, and\n<code>0.5,0.5</code> for chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>p(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the current\nplane.\n</p>\n</dd>\n<dt><samp>lum(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the luma\nplane.\n</p>\n</dd>\n<dt><samp>cb(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nblue-difference chroma plane. Return 0 if there is no such plane.\n</p>\n</dd>\n<dt><samp>cr(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nred-difference chroma plane. Return 0 if there is no such plane.\n</p>\n</dd>\n<dt><samp>r(x, y)</samp></dt>\n<dt><samp>g(x, y)</samp></dt>\n<dt><samp>b(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nred/green/blue component. Return 0 if there is no such component.\n</p>\n</dd>\n<dt><samp>alpha(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the alpha\nplane. Return 0 if there is no such plane.\n</p>\n</dd>\n<dt><samp>psum(x,y), lumsum(x, y), cbsum(x,y), crsum(x,y), rsum(x,y), gsum(x,y), bsum(x,y), alphasum(x,y)</samp></dt>\n<dd><p>Sum of sample values in the rectangle from (0,0) to (x,y), this allows obtaining\nsums of samples within a rectangle. See the functions without the sum postfix.\n</p>\n</dd>\n<dt><samp>interpolation</samp></dt>\n<dd><p>Set one of interpolation methods:\n</p><dl compact=\"compact\">\n<dt><samp>nearest, n</samp></dt>\n<dt><samp>bilinear, b</samp></dt>\n</dl>\n<p>Default is bilinear.\n</p></dd>\n</dl>\n\n<p>For functions, if <var>x</var> and <var>y</var> are outside the area, the value will be\nautomatically clipped to the closer edge.\n</p>\n<p>Please note that this filter can use multiple threads in which case each slice\nwill have its own expression state. If you want to use only a single expression\nstate because your expressions depend on previous state then you should limit\nthe number of filter threads to 1.\n</p>\n"
+}

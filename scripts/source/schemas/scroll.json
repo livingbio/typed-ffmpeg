@@ -1,0 +1,68 @@
+{
+  "description": "11.222 scroll\nScroll input video horizontally and/or vertically by constant speed.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "h": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      },
+      "horizontal": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      },
+      "hpos": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "v": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      },
+      "vertical": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      },
+      "vpos": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "title": "Scroll Filter Options",
+    "type": "object"
+  },
+  "name": "scroll",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the horizontal scrolling speed. Default is 0. Allowed range is from -1 to 1.\nNegative values changes scrolling direction.\n</p>\n</dd>",
+      "name": "horizontal, h"
+    },
+    {
+      "description": "<dd><p>Set the vertical scrolling speed. Default is 0. Allowed range is from -1 to 1.\nNegative values changes scrolling direction.\n</p>\n</dd>",
+      "name": "vertical, v"
+    },
+    {
+      "description": "<dd><p>Set the initial horizontal scrolling position. Default is 0. Allowed range is from 0 to 1.\n</p>\n</dd>",
+      "name": "hpos"
+    },
+    {
+      "description": "<dd><p>Set the initial vertical scrolling position. Default is 0. Allowed range is from 0 to 1.\n</p></dd>",
+      "name": "vpos"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#scroll",
+  "source": "<h3 class=\"section\"><a href=\"#toc-scroll\">11.222 scroll</a></h3>\n<p>Scroll input video horizontally and/or vertically by constant speed.\n</p>\n<p>The filter accepts the following options:\n</p><dl compact=\"compact\">\n<dt><samp>horizontal, h</samp></dt>\n<dd><p>Set the horizontal scrolling speed. Default is 0. Allowed range is from -1 to 1.\nNegative values changes scrolling direction.\n</p>\n</dd>\n<dt><samp>vertical, v</samp></dt>\n<dd><p>Set the vertical scrolling speed. Default is 0. Allowed range is from -1 to 1.\nNegative values changes scrolling direction.\n</p>\n</dd>\n<dt><samp>hpos</samp></dt>\n<dd><p>Set the initial horizontal scrolling position. Default is 0. Allowed range is from 0 to 1.\n</p>\n</dd>\n<dt><samp>vpos</samp></dt>\n<dd><p>Set the initial vertical scrolling position. Default is 0. Allowed range is from 0 to 1.\n</p></dd>\n</dl>\n\n"
+}

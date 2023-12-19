@@ -1,0 +1,60 @@
+{
+  "description": "11.241 spp\nApply a simple postprocessing filter that compresses and decompresses the image\nat several (or - in the case of quality level 6 - all) shifts\nand average the results.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "mode": {
+        "default": "hard",
+        "description": "Set thresholding mode. Available modes are: 'hard' (default) and 'soft'.",
+        "enum": [
+          "hard",
+          "soft"
+        ],
+        "type": "string"
+      },
+      "qp": {
+        "description": "Force a constant quantization parameter. If not set, the filter will use the QP from the video stream (if available).",
+        "type": "integer"
+      },
+      "quality": {
+        "default": 3,
+        "description": "Set quality. This option defines the number of levels for averaging. It accepts an integer in the range 0-6. If set to 0, the filter will have no effect. A value of 6 means the higher quality. For each increment of that value the speed drops by a factor of approximately 2.",
+        "maximum": 6,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "use_bframe_qp": {
+        "default": 0,
+        "description": "Enable the use of the QP from the B-Frames if set to 1. Using this option may cause flicker since the B-Frames have often larger QP. Default is 0 (not enabled).",
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer"
+      }
+    },
+    "title": "spp Filter Options",
+    "type": "object"
+  },
+  "name": "spp",
+  "parameters": [
+    {
+      "description": "<dd><p>Set quality. This option defines the number of levels for averaging. It accepts\nan integer in the range 0-6. If set to <code>0</code>, the filter will have no\neffect. A value of <code>6</code> means the higher quality. For each increment of\nthat value the speed drops by a factor of approximately 2.  Default value is\n<code>3</code>.\n</p>\n</dd>",
+      "name": "quality"
+    },
+    {
+      "description": "<dd><p>Force a constant quantization parameter. If not set, the filter will use the QP\nfrom the video stream (if available).\n</p>\n</dd>",
+      "name": "qp"
+    },
+    {
+      "description": "<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>Set hard thresholding (default).\n</p></dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).\n</p></dd>\n</dl>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>Enable the use of the QP from the B-Frames if set to <code>1</code>. Using this\noption may cause flicker since the B-Frames have often larger QP. Default is\n<code>0</code> (not enabled).\n</p></dd>",
+      "name": "use_bframe_qp"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#spp",
+  "source": "<h3 class=\"section\"><a href=\"#toc-spp-1\">11.241 spp</a></h3>\n\n<p>Apply a simple postprocessing filter that compresses and decompresses the image\nat several (or - in the case of <samp>quality</samp> level <code>6</code> - all) shifts\nand average the results.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>quality</samp></dt>\n<dd><p>Set quality. This option defines the number of levels for averaging. It accepts\nan integer in the range 0-6. If set to <code>0</code>, the filter will have no\neffect. A value of <code>6</code> means the higher quality. For each increment of\nthat value the speed drops by a factor of approximately 2.  Default value is\n<code>3</code>.\n</p>\n</dd>\n<dt><samp>qp</samp></dt>\n<dd><p>Force a constant quantization parameter. If not set, the filter will use the QP\nfrom the video stream (if available).\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>hard</samp>&rsquo;</dt>\n<dd><p>Set hard thresholding (default).\n</p></dd>\n<dt>&lsquo;<samp>soft</samp>&rsquo;</dt>\n<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>use_bframe_qp</samp></dt>\n<dd><p>Enable the use of the QP from the B-Frames if set to <code>1</code>. Using this\noption may cause flicker since the B-Frames have often larger QP. Default is\n<code>0</code> (not enabled).\n</p></dd>\n</dl>\n\n"
+}
