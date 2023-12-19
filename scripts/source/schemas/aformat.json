@@ -1,0 +1,40 @@
+{
+  "description": "8.26 aformat\nSet output format constraints for the input audio. The framework will\nnegotiate the most appropriate format to minimize conversions.\n\nIt accepts the following parameters:\n\nIf a parameter is omitted, all values are allowed.\n\nForce the output to either unsigned 8-bit or signed 16-bit stereo\n\naformat=sample_fmts=u8|s16:channel_layouts=stereo",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "channel_layouts": {
+        "description": "A '|' separated list of requested channel layouts.",
+        "type": "string"
+      },
+      "sample_fmts": {
+        "description": "A '|' separated list of requested sample formats.",
+        "type": "string"
+      },
+      "sample_rates": {
+        "description": "A '|' separated list of requested sample rates.",
+        "type": "string"
+      }
+    },
+    "title": "aformat",
+    "type": "object"
+  },
+  "name": "aformat",
+  "parameters": [
+    {
+      "description": "<dd><p>A \u2019|\u2019-separated list of requested sample formats.\n</p>\n</dd>",
+      "name": "sample_fmts, f"
+    },
+    {
+      "description": "<dd><p>A \u2019|\u2019-separated list of requested sample rates.\n</p>\n</dd>",
+      "name": "sample_rates, r"
+    },
+    {
+      "description": "<dd><p>A \u2019|\u2019-separated list of requested channel layouts.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p></dd>",
+      "name": "channel_layouts, cl"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aformat",
+  "source": "<h3 class=\"section\"><a href=\"#toc-aformat-1\">8.26 aformat</a></h3>\n\n<p>Set output format constraints for the input audio. The framework will\nnegotiate the most appropriate format to minimize conversions.\n</p>\n<p>It accepts the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>sample_fmts, f</samp></dt>\n<dd><p>A &rsquo;|&rsquo;-separated list of requested sample formats.\n</p>\n</dd>\n<dt><samp>sample_rates, r</samp></dt>\n<dd><p>A &rsquo;|&rsquo;-separated list of requested sample rates.\n</p>\n</dd>\n<dt><samp>channel_layouts, cl</samp></dt>\n<dd><p>A &rsquo;|&rsquo;-separated list of requested channel layouts.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p></dd>\n</dl>\n\n<p>If a parameter is omitted, all values are allowed.\n</p>\n<p>Force the output to either unsigned 8-bit or signed 16-bit stereo\n</p><div class=\"example\">\n<pre class=\"example\">aformat=sample_fmts=u8|s16:channel_layouts=stereo\n</pre></div>\n\n"
+}

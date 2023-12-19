@@ -1,0 +1,31 @@
+{
+  "description": "11.281 vstack\nStack input videos vertically.\n\nAll streams must be of same pixel format and of same width.\n\nNote that this filter is faster than using overlay and pad filter\nto create same output.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "inputs": {
+        "default": 2,
+        "type": "integer"
+      },
+      "shortest": {
+        "default": 0,
+        "type": "integer"
+      }
+    },
+    "title": "vstack options",
+    "type": "object"
+  },
+  "name": "vstack",
+  "parameters": [
+    {
+      "description": "<dd><p>Set number of input streams. Default is 2.\n</p>\n</dd>",
+      "name": "inputs"
+    },
+    {
+      "description": "<dd><p>If set to 1, force the output to terminate when the shortest input\nterminates. Default value is 0.\n</p></dd>",
+      "name": "shortest"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vstack",
+  "source": "<h3 class=\"section\"><a href=\"#toc-vstack-1\">11.281 vstack</a></h3>\n<p>Stack input videos vertically.\n</p>\n<p>All streams must be of same pixel format and of same width.\n</p>\n<p>Note that this filter is faster than using <a href=\"#overlay\">overlay</a> and <a href=\"#pad\">pad</a> filter\nto create same output.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>inputs</samp></dt>\n<dd><p>Set number of input streams. Default is 2.\n</p>\n</dd>\n<dt><samp>shortest</samp></dt>\n<dd><p>If set to 1, force the output to terminate when the shortest input\nterminates. Default value is 0.\n</p></dd>\n</dl>\n\n"
+}

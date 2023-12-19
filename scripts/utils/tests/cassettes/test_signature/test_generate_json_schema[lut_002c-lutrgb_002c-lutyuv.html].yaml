@@ -1,0 +1,374 @@
+interactions:
+- request:
+    body: '{"messages": [{"role": "system", "content": "\n- You possess expertise
+      in FFmpeg.\n- I kindly request your assistance in the conversion of specific
+      FFmpeg filter document options into a JSON schema.\n- Please be aware that certain
+      FFmpeg filter documents may require reference to other documents, which will
+      be provided for your thorough consideration.\n"}, {"role": "user", "content":
+      "please generate JSON Schema for lut''s options\n## lut\n<h3 class=\"section\"><a
+      href=\"#toc-lut_002c-lutrgb_002c-lutyuv\">11.153 lut, lutrgb, lutyuv</a></h3>\n\n<p>Compute
+      a look-up table for binding each pixel component input value\nto an output value,
+      and apply it to the input video.\n</p>\n<p><var>lutyuv</var> applies a lookup
+      table to a YUV input video, <var>lutrgb</var>\nto an RGB input video.\n</p>\n<p>These
+      filters accept the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>c0</samp></dt>\n<dd><p>set
+      first pixel component expression\n</p></dd>\n<dt><samp>c1</samp></dt>\n<dd><p>set
+      second pixel component expression\n</p></dd>\n<dt><samp>c2</samp></dt>\n<dd><p>set
+      third pixel component expression\n</p></dd>\n<dt><samp>c3</samp></dt>\n<dd><p>set
+      fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>\n<dt><samp>r</samp></dt>\n<dd><p>set
+      red component expression\n</p></dd>\n<dt><samp>g</samp></dt>\n<dd><p>set green
+      component expression\n</p></dd>\n<dt><samp>b</samp></dt>\n<dd><p>set blue component
+      expression\n</p></dd>\n<dt><samp>a</samp></dt>\n<dd><p>alpha component expression\n</p>\n</dd>\n<dt><samp>y</samp></dt>\n<dd><p>set
+      Y/luma component expression\n</p></dd>\n<dt><samp>u</samp></dt>\n<dd><p>set
+      U/Cb component expression\n</p></dd>\n<dt><samp>v</samp></dt>\n<dd><p>set V/Cr
+      component expression\n</p></dd>\n</dl>\n\n<p>Each of them specifies the expression
+      to use for computing the lookup table for\nthe corresponding pixel component
+      values.\n</p>\n<p>The exact component associated to each of the <var>c*</var>
+      options depends on the\nformat in input.\n</p>\n<p>The <var>lut</var> filter
+      requires either YUV or RGB pixel formats in input,\n<var>lutrgb</var> requires
+      RGB pixel formats in input, and <var>lutyuv</var> requires YUV.\n</p>\n<p>The
+      expressions can contain the following constants and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>w</samp></dt>\n<dt><samp>h</samp></dt>\n<dd><p>The
+      input width and height.\n</p>\n</dd>\n<dt><samp>val</samp></dt>\n<dd><p>The
+      input value for the pixel component.\n</p>\n</dd>\n<dt><samp>clipval</samp></dt>\n<dd><p>The
+      input value, clipped to the <var>minval</var>-<var>maxval</var> range.\n</p>\n</dd>\n<dt><samp>maxval</samp></dt>\n<dd><p>The
+      maximum value for the pixel component.\n</p>\n</dd>\n<dt><samp>minval</samp></dt>\n<dd><p>The
+      minimum value for the pixel component.\n</p>\n</dd>\n<dt><samp>negval</samp></dt>\n<dd><p>The
+      negated value for the pixel component value, clipped to the\n<var>minval</var>-<var>maxval</var>
+      range; it corresponds to the expression\n&quot;maxval-clipval+minval&quot;.\n</p>\n</dd>\n<dt><samp>clip(val)</samp></dt>\n<dd><p>The
+      computed value in <var>val</var>, clipped to the\n<var>minval</var>-<var>maxval</var>
+      range.\n</p>\n</dd>\n<dt><samp>gammaval(gamma)</samp></dt>\n<dd><p>The computed
+      gamma correction value of the pixel component value,\nclipped to the <var>minval</var>-<var>maxval</var>
+      range. It corresponds to the\nexpression\n&quot;pow((clipval-minval)/(maxval-minval)\\,<var>gamma</var>)*(maxval-minval)+minval&quot;\n</p>\n</dd>\n</dl>\n\n<p>All
+      expressions default to &quot;clipval&quot;.\n</p>\n\n## reference\n"}], "model":
+      "gpt-3.5-turbo", "temperature": 0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '3626'
+      content-type:
+      - application/json
+      host:
+      - gstudio.openai.azure.com
+      user-agent:
+      - AzureOpenAI/Python 1.3.5
+      x-stainless-arch:
+      - arm64
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.3.5
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.5
+    method: POST
+    uri: https://gstudio.openai.azure.com/openai/deployments/gpt35/chat/completions?api-version=2023-07-01-preview
+  response:
+    content: '{"id":"chatcmpl-8XP888uCU2Dz4qH1bgNS8PE7CWGiX","object":"chat.completion","created":1702972116,"model":"gpt-35-turbo-16k","prompt_filter_results":[{"prompt_index":0,"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}],"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Here
+      is the JSON schema for the options of the `lut`, `lutrgb`, and `lutyuv` filters:\n\n```json\n{\n  \"type\":
+      \"object\",\n  \"properties\": {\n    \"c0\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set first pixel component expression\"\n    },\n    \"c1\": {\n      \"type\":
+      \"string\",\n      \"description\": \"Set second pixel component expression\"\n    },\n    \"c2\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set third pixel component
+      expression\"\n    },\n    \"c3\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set fourth pixel component expression, corresponds to the alpha component\"\n    },\n    \"r\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set red component expression\"\n    },\n    \"g\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set green component
+      expression\"\n    },\n    \"b\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set blue component expression\"\n    },\n    \"a\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Alpha component expression\"\n    },\n    \"y\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set Y/luma component expression\"\n    },\n    \"u\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set U/Cb component expression\"\n    },\n    \"v\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set V/Cr component expression\"\n    }\n  },\n  \"required\": [],\n  \"additionalProperties\":
+      false\n}\n```\n\nPlease note that this schema only covers the options for the
+      `lut`, `lutrgb`, and `lutyuv` filters. If you need the complete JSON schema
+      for the FFmpeg filters, please provide the reference document mentioned in your
+      request."},"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}],"usage":{"prompt_tokens":1034,"completion_tokens":390,"total_tokens":1424}}
+
+      '
+    headers:
+      Cache-Control:
+      - no-cache, must-revalidate
+      Content-Length:
+      - '2473'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 07:48:41 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      access-control-allow-origin:
+      - '*'
+      apim-request-id:
+      - 305ffb4c-3947-4695-b2ec-112f2f8185e6
+      x-accel-buffering:
+      - 'no'
+      x-content-type-options:
+      - nosniff
+      x-ms-client-request-id:
+      - 305ffb4c-3947-4695-b2ec-112f2f8185e6
+      x-ms-region:
+      - East US
+      x-ratelimit-remaining-requests:
+      - '237'
+      x-ratelimit-remaining-tokens:
+      - '239920'
+      x-request-id:
+      - 872246c6-1388-4bea-844f-75fd82c9c852
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"messages": [{"role": "system", "content": "\n- You possess expertise
+      in FFmpeg.\n- I kindly request your assistance in the conversion of specific
+      FFmpeg filter document options into a JSON schema.\n- Please be aware that certain
+      FFmpeg filter documents may require reference to other documents, which will
+      be provided for your thorough consideration.\n"}, {"role": "user", "content":
+      "please generate JSON Schema for lutrgb''s options\n## lutrgb\n<h3 class=\"section\"><a
+      href=\"#toc-lut_002c-lutrgb_002c-lutyuv\">11.153 lut, lutrgb, lutyuv</a></h3>\n\n<p>Compute
+      a look-up table for binding each pixel component input value\nto an output value,
+      and apply it to the input video.\n</p>\n<p><var>lutyuv</var> applies a lookup
+      table to a YUV input video, <var>lutrgb</var>\nto an RGB input video.\n</p>\n<p>These
+      filters accept the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>c0</samp></dt>\n<dd><p>set
+      first pixel component expression\n</p></dd>\n<dt><samp>c1</samp></dt>\n<dd><p>set
+      second pixel component expression\n</p></dd>\n<dt><samp>c2</samp></dt>\n<dd><p>set
+      third pixel component expression\n</p></dd>\n<dt><samp>c3</samp></dt>\n<dd><p>set
+      fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>\n<dt><samp>r</samp></dt>\n<dd><p>set
+      red component expression\n</p></dd>\n<dt><samp>g</samp></dt>\n<dd><p>set green
+      component expression\n</p></dd>\n<dt><samp>b</samp></dt>\n<dd><p>set blue component
+      expression\n</p></dd>\n<dt><samp>a</samp></dt>\n<dd><p>alpha component expression\n</p>\n</dd>\n<dt><samp>y</samp></dt>\n<dd><p>set
+      Y/luma component expression\n</p></dd>\n<dt><samp>u</samp></dt>\n<dd><p>set
+      U/Cb component expression\n</p></dd>\n<dt><samp>v</samp></dt>\n<dd><p>set V/Cr
+      component expression\n</p></dd>\n</dl>\n\n<p>Each of them specifies the expression
+      to use for computing the lookup table for\nthe corresponding pixel component
+      values.\n</p>\n<p>The exact component associated to each of the <var>c*</var>
+      options depends on the\nformat in input.\n</p>\n<p>The <var>lut</var> filter
+      requires either YUV or RGB pixel formats in input,\n<var>lutrgb</var> requires
+      RGB pixel formats in input, and <var>lutyuv</var> requires YUV.\n</p>\n<p>The
+      expressions can contain the following constants and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>w</samp></dt>\n<dt><samp>h</samp></dt>\n<dd><p>The
+      input width and height.\n</p>\n</dd>\n<dt><samp>val</samp></dt>\n<dd><p>The
+      input value for the pixel component.\n</p>\n</dd>\n<dt><samp>clipval</samp></dt>\n<dd><p>The
+      input value, clipped to the <var>minval</var>-<var>maxval</var> range.\n</p>\n</dd>\n<dt><samp>maxval</samp></dt>\n<dd><p>The
+      maximum value for the pixel component.\n</p>\n</dd>\n<dt><samp>minval</samp></dt>\n<dd><p>The
+      minimum value for the pixel component.\n</p>\n</dd>\n<dt><samp>negval</samp></dt>\n<dd><p>The
+      negated value for the pixel component value, clipped to the\n<var>minval</var>-<var>maxval</var>
+      range; it corresponds to the expression\n&quot;maxval-clipval+minval&quot;.\n</p>\n</dd>\n<dt><samp>clip(val)</samp></dt>\n<dd><p>The
+      computed value in <var>val</var>, clipped to the\n<var>minval</var>-<var>maxval</var>
+      range.\n</p>\n</dd>\n<dt><samp>gammaval(gamma)</samp></dt>\n<dd><p>The computed
+      gamma correction value of the pixel component value,\nclipped to the <var>minval</var>-<var>maxval</var>
+      range. It corresponds to the\nexpression\n&quot;pow((clipval-minval)/(maxval-minval)\\,<var>gamma</var>)*(maxval-minval)+minval&quot;\n</p>\n</dd>\n</dl>\n\n<p>All
+      expressions default to &quot;clipval&quot;.\n</p>\n\n## reference\n"}], "model":
+      "gpt-3.5-turbo", "temperature": 0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '3632'
+      content-type:
+      - application/json
+      host:
+      - gstudio.openai.azure.com
+      user-agent:
+      - AzureOpenAI/Python 1.3.5
+      x-stainless-arch:
+      - arm64
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.3.5
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.5
+    method: POST
+    uri: https://gstudio.openai.azure.com/openai/deployments/gpt35/chat/completions?api-version=2023-07-01-preview
+  response:
+    content: '{"id":"chatcmpl-8XP8D5OfkevmWFaRXZ4YW4oiUIjkl","object":"chat.completion","created":1702972121,"model":"gpt-35-turbo-16k","prompt_filter_results":[{"prompt_index":0,"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}],"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Here
+      is the JSON schema for the options of the `lutrgb` filter:\n\n```json\n{\n  \"$schema\":
+      \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"lutrgb options\",\n  \"type\":
+      \"object\",\n  \"properties\": {\n    \"c0\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set first pixel component expression\"\n    },\n    \"c1\": {\n      \"type\":
+      \"string\",\n      \"description\": \"Set second pixel component expression\"\n    },\n    \"c2\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set third pixel component
+      expression\"\n    },\n    \"c3\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set fourth pixel component expression, corresponds to the alpha component\"\n    },\n    \"r\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set red component expression\"\n    },\n    \"g\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set green component
+      expression\"\n    },\n    \"b\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set blue component expression\"\n    },\n    \"a\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Alpha component expression\"\n    },\n    \"y\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set Y/luma component expression\"\n    },\n    \"u\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set U/Cb component expression\"\n    },\n    \"v\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set V/Cr component expression\"\n    }\n  },\n  \"required\": [\"c0\", \"c1\",
+      \"c2\", \"c3\", \"r\", \"g\", \"b\", \"a\", \"y\", \"u\", \"v\"]\n}\n```\n\nPlease
+      note that this schema assumes that the values for the expressions are strings.
+      If the expressions have a specific format or constraints, those can be added
+      to the schema as well."},"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}],"usage":{"prompt_tokens":1036,"completion_tokens":422,"total_tokens":1458}}
+
+      '
+    headers:
+      Cache-Control:
+      - no-cache, must-revalidate
+      Content-Length:
+      - '2549'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 07:48:45 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      access-control-allow-origin:
+      - '*'
+      apim-request-id:
+      - 7038e4b8-9a34-4b23-b907-bca1c192e7d0
+      x-accel-buffering:
+      - 'no'
+      x-content-type-options:
+      - nosniff
+      x-ms-client-request-id:
+      - 7038e4b8-9a34-4b23-b907-bca1c192e7d0
+      x-ms-region:
+      - East US
+      x-ratelimit-remaining-requests:
+      - '238'
+      x-ratelimit-remaining-tokens:
+      - '239904'
+      x-request-id:
+      - 7d393a41-370d-487e-8506-0a0d6b788b42
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"messages": [{"role": "system", "content": "\n- You possess expertise
+      in FFmpeg.\n- I kindly request your assistance in the conversion of specific
+      FFmpeg filter document options into a JSON schema.\n- Please be aware that certain
+      FFmpeg filter documents may require reference to other documents, which will
+      be provided for your thorough consideration.\n"}, {"role": "user", "content":
+      "please generate JSON Schema for lutyuv''s options\n## lutyuv\n<h3 class=\"section\"><a
+      href=\"#toc-lut_002c-lutrgb_002c-lutyuv\">11.153 lut, lutrgb, lutyuv</a></h3>\n\n<p>Compute
+      a look-up table for binding each pixel component input value\nto an output value,
+      and apply it to the input video.\n</p>\n<p><var>lutyuv</var> applies a lookup
+      table to a YUV input video, <var>lutrgb</var>\nto an RGB input video.\n</p>\n<p>These
+      filters accept the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>c0</samp></dt>\n<dd><p>set
+      first pixel component expression\n</p></dd>\n<dt><samp>c1</samp></dt>\n<dd><p>set
+      second pixel component expression\n</p></dd>\n<dt><samp>c2</samp></dt>\n<dd><p>set
+      third pixel component expression\n</p></dd>\n<dt><samp>c3</samp></dt>\n<dd><p>set
+      fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>\n<dt><samp>r</samp></dt>\n<dd><p>set
+      red component expression\n</p></dd>\n<dt><samp>g</samp></dt>\n<dd><p>set green
+      component expression\n</p></dd>\n<dt><samp>b</samp></dt>\n<dd><p>set blue component
+      expression\n</p></dd>\n<dt><samp>a</samp></dt>\n<dd><p>alpha component expression\n</p>\n</dd>\n<dt><samp>y</samp></dt>\n<dd><p>set
+      Y/luma component expression\n</p></dd>\n<dt><samp>u</samp></dt>\n<dd><p>set
+      U/Cb component expression\n</p></dd>\n<dt><samp>v</samp></dt>\n<dd><p>set V/Cr
+      component expression\n</p></dd>\n</dl>\n\n<p>Each of them specifies the expression
+      to use for computing the lookup table for\nthe corresponding pixel component
+      values.\n</p>\n<p>The exact component associated to each of the <var>c*</var>
+      options depends on the\nformat in input.\n</p>\n<p>The <var>lut</var> filter
+      requires either YUV or RGB pixel formats in input,\n<var>lutrgb</var> requires
+      RGB pixel formats in input, and <var>lutyuv</var> requires YUV.\n</p>\n<p>The
+      expressions can contain the following constants and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>w</samp></dt>\n<dt><samp>h</samp></dt>\n<dd><p>The
+      input width and height.\n</p>\n</dd>\n<dt><samp>val</samp></dt>\n<dd><p>The
+      input value for the pixel component.\n</p>\n</dd>\n<dt><samp>clipval</samp></dt>\n<dd><p>The
+      input value, clipped to the <var>minval</var>-<var>maxval</var> range.\n</p>\n</dd>\n<dt><samp>maxval</samp></dt>\n<dd><p>The
+      maximum value for the pixel component.\n</p>\n</dd>\n<dt><samp>minval</samp></dt>\n<dd><p>The
+      minimum value for the pixel component.\n</p>\n</dd>\n<dt><samp>negval</samp></dt>\n<dd><p>The
+      negated value for the pixel component value, clipped to the\n<var>minval</var>-<var>maxval</var>
+      range; it corresponds to the expression\n&quot;maxval-clipval+minval&quot;.\n</p>\n</dd>\n<dt><samp>clip(val)</samp></dt>\n<dd><p>The
+      computed value in <var>val</var>, clipped to the\n<var>minval</var>-<var>maxval</var>
+      range.\n</p>\n</dd>\n<dt><samp>gammaval(gamma)</samp></dt>\n<dd><p>The computed
+      gamma correction value of the pixel component value,\nclipped to the <var>minval</var>-<var>maxval</var>
+      range. It corresponds to the\nexpression\n&quot;pow((clipval-minval)/(maxval-minval)\\,<var>gamma</var>)*(maxval-minval)+minval&quot;\n</p>\n</dd>\n</dl>\n\n<p>All
+      expressions default to &quot;clipval&quot;.\n</p>\n\n## reference\n"}], "model":
+      "gpt-3.5-turbo", "temperature": 0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '3632'
+      content-type:
+      - application/json
+      host:
+      - gstudio.openai.azure.com
+      user-agent:
+      - AzureOpenAI/Python 1.3.5
+      x-stainless-arch:
+      - arm64
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.3.5
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.5
+    method: POST
+    uri: https://gstudio.openai.azure.com/openai/deployments/gpt35/chat/completions?api-version=2023-07-01-preview
+  response:
+    content: '{"id":"chatcmpl-8XP8He5vIf2kBvWif01tg1jjeJVoy","object":"chat.completion","created":1702972125,"model":"gpt-35-turbo-16k","prompt_filter_results":[{"prompt_index":0,"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}],"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Here
+      is the JSON schema for the options of the `lutyuv` filter:\n\n```json\n{\n  \"$schema\":
+      \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"lutyuv options\",\n  \"type\":
+      \"object\",\n  \"properties\": {\n    \"c0\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set first pixel component expression\"\n    },\n    \"c1\": {\n      \"type\":
+      \"string\",\n      \"description\": \"Set second pixel component expression\"\n    },\n    \"c2\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set third pixel component
+      expression\"\n    },\n    \"c3\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set fourth pixel component expression, corresponds to the alpha component\"\n    },\n    \"r\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set red component expression\"\n    },\n    \"g\":
+      {\n      \"type\": \"string\",\n      \"description\": \"Set green component
+      expression\"\n    },\n    \"b\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set blue component expression\"\n    },\n    \"a\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Alpha component expression\"\n    },\n    \"y\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set Y/luma component expression\"\n    },\n    \"u\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set U/Cb component expression\"\n    },\n    \"v\": {\n      \"type\": \"string\",\n      \"description\":
+      \"Set V/Cr component expression\"\n    }\n  },\n  \"required\": [],\n  \"additionalProperties\":
+      false\n}\n```\n\nPlease note that the `required` array is empty, as none of
+      the options are required."},"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}],"usage":{"prompt_tokens":1038,"completion_tokens":379,"total_tokens":1417}}
+
+      '
+    headers:
+      Cache-Control:
+      - no-cache, must-revalidate
+      Content-Length:
+      - '2405'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 07:48:49 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      access-control-allow-origin:
+      - '*'
+      apim-request-id:
+      - 9f5f9efe-2517-4a3f-a43f-ca9c4a14fe41
+      x-accel-buffering:
+      - 'no'
+      x-content-type-options:
+      - nosniff
+      x-ms-client-request-id:
+      - 9f5f9efe-2517-4a3f-a43f-ca9c4a14fe41
+      x-ms-region:
+      - East US
+      x-ratelimit-remaining-requests:
+      - '237'
+      x-ratelimit-remaining-tokens:
+      - '239888'
+      x-request-id:
+      - 5ad4fedb-4733-43bc-a541-e4b43147646c
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

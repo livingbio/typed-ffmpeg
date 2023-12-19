@@ -1,0 +1,47 @@
+{
+  "description": "11.69 detelecine\nApply an exact inverse of the telecine operation. It requires a predefined\npattern specified using the pattern option which must be the same as that passed\nto the telecine filter.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "first_field": {
+        "default": "top",
+        "enum": [
+          "top",
+          "t",
+          "bottom",
+          "b"
+        ],
+        "type": "string"
+      },
+      "pattern": {
+        "default": "23",
+        "type": "string"
+      },
+      "start_frame": {
+        "default": 0,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "detelecine options",
+    "type": "object"
+  },
+  "name": "detelecine",
+  "parameters": [
+    {
+      "description": "<dd><dl compact=\"compact\">\n<dt>\u2018<samp>top, t</samp>\u2019</dt>\n<dd><p>top field first\n</p></dd>\n<dt>\u2018<samp>bottom, b</samp>\u2019</dt>\n<dd><p>bottom field first\nThe default value is <code>top</code>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "first_field"
+    },
+    {
+      "description": "<dd><p>A string of numbers representing the pulldown pattern you wish to apply.\nThe default value is <code>23</code>.\n</p>\n</dd>",
+      "name": "pattern"
+    },
+    {
+      "description": "<dd><p>A number representing position of the first frame with respect to the telecine\npattern. This is to be used if the stream is cut. The default value is <code>0</code>.\n</p></dd>",
+      "name": "start_frame"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#detelecine",
+  "source": "<h3 class=\"section\"><a href=\"#toc-detelecine\">11.69 detelecine</a></h3>\n\n<p>Apply an exact inverse of the telecine operation. It requires a predefined\npattern specified using the pattern option which must be the same as that passed\nto the telecine filter.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>first_field</samp></dt>\n<dd><dl compact=\"compact\">\n<dt>&lsquo;<samp>top, t</samp>&rsquo;</dt>\n<dd><p>top field first\n</p></dd>\n<dt>&lsquo;<samp>bottom, b</samp>&rsquo;</dt>\n<dd><p>bottom field first\nThe default value is <code>top</code>.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>pattern</samp></dt>\n<dd><p>A string of numbers representing the pulldown pattern you wish to apply.\nThe default value is <code>23</code>.\n</p>\n</dd>\n<dt><samp>start_frame</samp></dt>\n<dd><p>A number representing position of the first frame with respect to the telecine\npattern. This is to be used if the stream is cut. The default value is <code>0</code>.\n</p></dd>\n</dl>\n\n"
+}

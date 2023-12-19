@@ -1,0 +1,8 @@
+{
+  "description": "11.247 super2xsai\nScale the input by 2x and smooth using the Super2xSaI (Scale and\nInterpolate) pixel art scaling algorithm.\n\nUseful for enlarging pixel art images without reducing sharpness.",
+  "json_schema": {},
+  "name": "super2xsai",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#super2xsai",
+  "source": "<h3 class=\"section\"><a href=\"#toc-super2xsai\">11.247 super2xsai</a></h3>\n\n<p>Scale the input by 2x and smooth using the Super2xSaI (Scale and\nInterpolate) pixel art scaling algorithm.\n</p>\n<p>Useful for enlarging pixel art images without reducing sharpness.\n</p>\n"
+}

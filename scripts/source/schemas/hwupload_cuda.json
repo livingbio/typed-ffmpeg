@@ -1,0 +1,23 @@
+{
+  "description": "11.124 hwupload_cuda\nUpload system memory frames to a CUDA device.\n\nIt accepts the following optional parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "device": {
+        "description": "The number of the CUDA device to use",
+        "type": "integer"
+      }
+    },
+    "title": "hwupload_cuda options",
+    "type": "object"
+  },
+  "name": "hwupload_cuda",
+  "parameters": [
+    {
+      "description": "<dd><p>The number of the CUDA device to use\n</p></dd>",
+      "name": "device"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hwupload_005fcuda",
+  "source": "<h3 class=\"section\"><a href=\"#toc-hwupload_005fcuda-1\">11.124 hwupload_cuda</a></h3>\n\n<p>Upload system memory frames to a CUDA device.\n</p>\n<p>It accepts the following optional parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>device</samp></dt>\n<dd><p>The number of the CUDA device to use\n</p></dd>\n</dl>\n\n"
+}

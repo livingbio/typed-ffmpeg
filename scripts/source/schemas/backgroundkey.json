@@ -1,0 +1,41 @@
+{
+  "description": "11.8 backgroundkey\nTurns a static background into transparency.\n\nThe filter accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "blend": {
+        "description": "Set the blend amount for pixels that are not similar.",
+        "type": "number"
+      },
+      "similarity": {
+        "description": "Similarity percentage with the background.",
+        "type": "number"
+      },
+      "threshold": {
+        "description": "Threshold for scene change detection.",
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "backgroundkey options",
+    "type": "object"
+  },
+  "name": "backgroundkey",
+  "parameters": [
+    {
+      "description": "<dd><p>Threshold for scene change detection.\n</p></dd>",
+      "name": "threshold"
+    },
+    {
+      "description": "<dd><p>Similarity percentage with the background.\n</p></dd>",
+      "name": "similarity"
+    },
+    {
+      "description": "<dd><p>Set the blend amount for pixels that are not similar.\n</p></dd>",
+      "name": "blend"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#backgroundkey",
+  "source": "<h3 class=\"section\"><a href=\"#toc-backgroundkey\">11.8 backgroundkey</a></h3>\n\n<p>Turns a static background into transparency.\n</p>\n<p>The filter accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>threshold</samp></dt>\n<dd><p>Threshold for scene change detection.\n</p></dd>\n<dt><samp>similarity</samp></dt>\n<dd><p>Similarity percentage with the background.\n</p></dd>\n<dt><samp>blend</samp></dt>\n<dd><p>Set the blend amount for pixels that are not similar.\n</p></dd>\n</dl>\n\n"
+}

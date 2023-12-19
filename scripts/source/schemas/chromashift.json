@@ -1,0 +1,61 @@
+{
+  "description": "11.28 chromashift\nShift chroma pixels horizontally and/or vertically.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "cbh": {
+        "description": "Set amount to shift chroma-blue horizontally.",
+        "type": "number"
+      },
+      "cbv": {
+        "description": "Set amount to shift chroma-blue vertically.",
+        "type": "number"
+      },
+      "crh": {
+        "description": "Set amount to shift chroma-red horizontally.",
+        "type": "number"
+      },
+      "crv": {
+        "description": "Set amount to shift chroma-red vertically.",
+        "type": "number"
+      },
+      "edge": {
+        "description": "Set edge mode, can be smear, default, or warp.",
+        "enum": [
+          "smear",
+          "default",
+          "warp"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "chromashift options",
+    "type": "object"
+  },
+  "name": "chromashift",
+  "parameters": [
+    {
+      "description": "<dd><p>Set amount to shift chroma-blue horizontally.\n</p></dd>",
+      "name": "cbh"
+    },
+    {
+      "description": "<dd><p>Set amount to shift chroma-blue vertically.\n</p></dd>",
+      "name": "cbv"
+    },
+    {
+      "description": "<dd><p>Set amount to shift chroma-red horizontally.\n</p></dd>",
+      "name": "crh"
+    },
+    {
+      "description": "<dd><p>Set amount to shift chroma-red vertically.\n</p></dd>",
+      "name": "crv"
+    },
+    {
+      "description": "<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>",
+      "name": "edge"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#chromashift",
+  "source": "<h3 class=\"section\"><a href=\"#toc-chromashift\">11.28 chromashift</a></h3>\n<p>Shift chroma pixels horizontally and/or vertically.\n</p>\n<p>The filter accepts the following options:\n</p><dl compact=\"compact\">\n<dt><samp>cbh</samp></dt>\n<dd><p>Set amount to shift chroma-blue horizontally.\n</p></dd>\n<dt><samp>cbv</samp></dt>\n<dd><p>Set amount to shift chroma-blue vertically.\n</p></dd>\n<dt><samp>crh</samp></dt>\n<dd><p>Set amount to shift chroma-red horizontally.\n</p></dd>\n<dt><samp>crv</samp></dt>\n<dd><p>Set amount to shift chroma-red vertically.\n</p></dd>\n<dt><samp>edge</samp></dt>\n<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>\n</dl>\n\n"
+}

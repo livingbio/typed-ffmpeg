@@ -1,0 +1,246 @@
+{
+  "description": "11.177 noise\nAdd noise on video input frame.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "all_flags": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "all_seed": {
+        "default": 123457,
+        "type": "integer"
+      },
+      "all_strength": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "allf": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "alls": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "c0_flags": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "c0_seed": {
+        "default": 123457,
+        "type": "integer"
+      },
+      "c0_strength": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "c0f": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "c0s": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "c1_flags": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "c1_seed": {
+        "default": 123457,
+        "type": "integer"
+      },
+      "c1_strength": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "c1f": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "c1s": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "c2_flags": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "c2_seed": {
+        "default": 123457,
+        "type": "integer"
+      },
+      "c2_strength": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "c2f": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "c2s": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "c3_flags": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "c3_seed": {
+        "default": 123457,
+        "type": "integer"
+      },
+      "c3_strength": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "c3f": {
+        "enum": [
+          "a",
+          "p",
+          "t",
+          "u"
+        ],
+        "type": "string"
+      },
+      "c3s": {
+        "default": 0,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "title": "FFmpeg Noise Filter Options",
+    "type": "object"
+  },
+  "name": "noise",
+  "parameters": [
+    {
+      "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
+      "name": "all_seed"
+    },
+    {
+      "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
+      "name": "c0_seed"
+    },
+    {
+      "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
+      "name": "c1_seed"
+    },
+    {
+      "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
+      "name": "c2_seed"
+    },
+    {
+      "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
+      "name": "c3_seed"
+    },
+    {
+      "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
+      "name": "all_strength, alls"
+    },
+    {
+      "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
+      "name": "c0_strength, c0s"
+    },
+    {
+      "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
+      "name": "c1_strength, c1s"
+    },
+    {
+      "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
+      "name": "c2_strength, c2s"
+    },
+    {
+      "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
+      "name": "c3_strength, c3s"
+    },
+    {
+      "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
+      "name": "all_flags, allf"
+    },
+    {
+      "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
+      "name": "c0_flags, c0f"
+    },
+    {
+      "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
+      "name": "c1_flags, c1f"
+    },
+    {
+      "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
+      "name": "c2_flags, c2f"
+    },
+    {
+      "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
+      "name": "c3_flags, c3f"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#noise",
+  "source": "<h3 class=\"section\"><a href=\"#toc-noise\">11.177 noise</a></h3>\n\n<p>Add noise on video input frame.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>all_seed</samp></dt>\n<dt><samp>c0_seed</samp></dt>\n<dt><samp>c1_seed</samp></dt>\n<dt><samp>c2_seed</samp></dt>\n<dt><samp>c3_seed</samp></dt>\n<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>\n<dt><samp>all_strength, alls</samp></dt>\n<dt><samp>c0_strength, c0s</samp></dt>\n<dt><samp>c1_strength, c1s</samp></dt>\n<dt><samp>c2_strength, c2s</samp></dt>\n<dt><samp>c3_strength, c3s</samp></dt>\n<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>\n<dt><samp>all_flags, allf</samp></dt>\n<dt><samp>c0_flags, c0f</samp></dt>\n<dt><samp>c1_flags, c1f</samp></dt>\n<dt><samp>c2_flags, c2f</samp></dt>\n<dt><samp>c3_flags, c3f</samp></dt>\n<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>a</samp>&rsquo;</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>&lsquo;<samp>p</samp>&rsquo;</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>&lsquo;<samp>t</samp>&rsquo;</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>&lsquo;<samp>u</samp>&rsquo;</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n"
+}

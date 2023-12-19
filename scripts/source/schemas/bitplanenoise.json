@@ -1,0 +1,33 @@
+{
+  "description": "11.12 bitplanenoise\nShow and measure bit plane noise.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "bitplane": {
+        "default": 1,
+        "description": "Set which plane to analyze. Default is 1.",
+        "type": "integer"
+      },
+      "filter": {
+        "default": false,
+        "description": "Filter out noisy pixels from bitplane set above. Default is disabled.",
+        "type": "boolean"
+      }
+    },
+    "title": "bitplanenoise options",
+    "type": "object"
+  },
+  "name": "bitplanenoise",
+  "parameters": [
+    {
+      "description": "<dd><p>Set which plane to analyze. Default is <code>1</code>.\n</p>\n</dd>",
+      "name": "bitplane"
+    },
+    {
+      "description": "<dd><p>Filter out noisy pixels from <code>bitplane</code> set above.\nDefault is disabled.\n</p></dd>",
+      "name": "filter"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#bitplanenoise",
+  "source": "<h3 class=\"section\"><a href=\"#toc-bitplanenoise\">11.12 bitplanenoise</a></h3>\n\n<p>Show and measure bit plane noise.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>bitplane</samp></dt>\n<dd><p>Set which plane to analyze. Default is <code>1</code>.\n</p>\n</dd>\n<dt><samp>filter</samp></dt>\n<dd><p>Filter out noisy pixels from <code>bitplane</code> set above.\nDefault is disabled.\n</p></dd>\n</dl>\n\n"
+}

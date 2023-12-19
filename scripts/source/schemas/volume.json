@@ -1,0 +1,85 @@
+{
+  "description": "8.120 volume\nAdjust the input audio volume.\n\nIt accepts the following parameters:\n\nThe volume expression can contain the following parameters.\n\n\nNote that when eval is set to \u2018once\u2019 only the\nsample_rate and tb variables are available, all other\nvariables will evaluate to NAN.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "eval": {
+        "default": "once",
+        "description": "When the volume expression is evaluated.",
+        "enum": [
+          "once",
+          "frame"
+        ],
+        "type": "string"
+      },
+      "precision": {
+        "default": "float",
+        "description": "Mathematical precision.",
+        "enum": [
+          "fixed",
+          "float",
+          "double"
+        ],
+        "type": "string"
+      },
+      "replaygain": {
+        "default": "drop",
+        "description": "Behaviour on encountering ReplayGain side data.",
+        "enum": [
+          "drop",
+          "ignore",
+          "track",
+          "album"
+        ],
+        "type": "string"
+      },
+      "replaygain_noclip": {
+        "default": 1,
+        "description": "Prevent clipping by limiting the gain applied.",
+        "type": "integer"
+      },
+      "replaygain_preamp": {
+        "default": 0.0,
+        "description": "Pre-amplification gain in dB to apply to the selected replaygain gain.",
+        "type": "number"
+      },
+      "volume": {
+        "default": "1.0",
+        "description": "Set audio volume expression.",
+        "type": "string"
+      }
+    },
+    "title": "Volume Filter Options",
+    "type": "object"
+  },
+  "name": "volume",
+  "parameters": [
+    {
+      "description": "<dd><p>Set audio volume expression.\n</p>\n<p>Output values are clipped to the maximum value.\n</p>\n<p>The output audio volume is given by the relation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>output_volume</var> = <var>volume</var> * <var>input_volume</var>\n</pre></div>\n<p>The default value for <var>volume</var> is \"1.0\".\n</p>\n</dd>",
+      "name": "volume"
+    },
+    {
+      "description": "<dd><p>This parameter represents the mathematical precision.\n</p>\n<p>It determines which input sample formats will be allowed, which affects the\nprecision of the volume scaling.\n</p>\n<dl compact=\"compact\">\n<dt><samp>fixed</samp></dt>\n<dd><p>8-bit fixed-point; this limits input sample format to U8, S16, and S32.\n</p></dd>\n<dt><samp>float</samp></dt>\n<dd><p>32-bit floating-point; this limits input sample format to FLT. (default)\n</p></dd>\n<dt><samp>double</samp></dt>\n<dd><p>64-bit floating-point; this limits input sample format to DBL.\n</p></dd>\n</dl>\n</dd>",
+      "name": "precision"
+    },
+    {
+      "description": "<dd><p>Choose the behaviour on encountering ReplayGain side data in input frames.\n</p>\n<dl compact=\"compact\">\n<dt><samp>drop</samp></dt>\n<dd><p>Remove ReplayGain side data, ignoring its contents (the default).\n</p>\n</dd>\n<dt><samp>ignore</samp></dt>\n<dd><p>Ignore ReplayGain side data, but leave it in the frame.\n</p>\n</dd>\n<dt><samp>track</samp></dt>\n<dd><p>Prefer the track gain, if present.\n</p>\n</dd>\n<dt><samp>album</samp></dt>\n<dd><p>Prefer the album gain, if present.\n</p></dd>\n</dl>\n</dd>",
+      "name": "replaygain"
+    },
+    {
+      "description": "<dd><p>Pre-amplification gain in dB to apply to the selected replaygain gain.\n</p>\n<p>Default value for <var>replaygain_preamp</var> is 0.0.\n</p>\n</dd>",
+      "name": "replaygain_preamp"
+    },
+    {
+      "description": "<dd><p>Prevent clipping by limiting the gain applied.\n</p>\n<p>Default value for <var>replaygain_noclip</var> is 1.\n</p>\n</dd>",
+      "name": "replaygain_noclip"
+    },
+    {
+      "description": "<dd><p>Set when the volume expression is evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>once</samp>\u2019</dt>\n<dd><p>only evaluate expression once during the filter initialization, or\nwhen the \u2018<samp>volume</samp>\u2019 command is sent\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expression for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>once</samp>\u2019.\n</p></dd>",
+      "name": "eval"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#volume",
+  "source": "<h3 class=\"section\"><a href=\"#toc-volume\">8.120 volume</a></h3>\n\n<p>Adjust the input audio volume.\n</p>\n<p>It accepts the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>volume</samp></dt>\n<dd><p>Set audio volume expression.\n</p>\n<p>Output values are clipped to the maximum value.\n</p>\n<p>The output audio volume is given by the relation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>output_volume</var> = <var>volume</var> * <var>input_volume</var>\n</pre></div>\n\n<p>The default value for <var>volume</var> is &quot;1.0&quot;.\n</p>\n</dd>\n<dt><samp>precision</samp></dt>\n<dd><p>This parameter represents the mathematical precision.\n</p>\n<p>It determines which input sample formats will be allowed, which affects the\nprecision of the volume scaling.\n</p>\n<dl compact=\"compact\">\n<dt><samp>fixed</samp></dt>\n<dd><p>8-bit fixed-point; this limits input sample format to U8, S16, and S32.\n</p></dd>\n<dt><samp>float</samp></dt>\n<dd><p>32-bit floating-point; this limits input sample format to FLT. (default)\n</p></dd>\n<dt><samp>double</samp></dt>\n<dd><p>64-bit floating-point; this limits input sample format to DBL.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>replaygain</samp></dt>\n<dd><p>Choose the behaviour on encountering ReplayGain side data in input frames.\n</p>\n<dl compact=\"compact\">\n<dt><samp>drop</samp></dt>\n<dd><p>Remove ReplayGain side data, ignoring its contents (the default).\n</p>\n</dd>\n<dt><samp>ignore</samp></dt>\n<dd><p>Ignore ReplayGain side data, but leave it in the frame.\n</p>\n</dd>\n<dt><samp>track</samp></dt>\n<dd><p>Prefer the track gain, if present.\n</p>\n</dd>\n<dt><samp>album</samp></dt>\n<dd><p>Prefer the album gain, if present.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>replaygain_preamp</samp></dt>\n<dd><p>Pre-amplification gain in dB to apply to the selected replaygain gain.\n</p>\n<p>Default value for <var>replaygain_preamp</var> is 0.0.\n</p>\n</dd>\n<dt><samp>replaygain_noclip</samp></dt>\n<dd><p>Prevent clipping by limiting the gain applied.\n</p>\n<p>Default value for <var>replaygain_noclip</var> is 1.\n</p>\n</dd>\n<dt><samp>eval</samp></dt>\n<dd><p>Set when the volume expression is evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>once</samp>&rsquo;</dt>\n<dd><p>only evaluate expression once during the filter initialization, or\nwhen the &lsquo;<samp>volume</samp>&rsquo; command is sent\n</p>\n</dd>\n<dt>&lsquo;<samp>frame</samp>&rsquo;</dt>\n<dd><p>evaluate expression for each incoming frame\n</p></dd>\n</dl>\n\n<p>Default value is &lsquo;<samp>once</samp>&rsquo;.\n</p></dd>\n</dl>\n\n<p>The volume expression can contain the following parameters.\n</p>\n<dl compact=\"compact\">\n<dt><samp>n</samp></dt>\n<dd><p>frame number (starting at zero)\n</p></dd>\n<dt><samp>nb_channels</samp></dt>\n<dd><p>number of channels\n</p></dd>\n<dt><samp>nb_consumed_samples</samp></dt>\n<dd><p>number of samples consumed by the filter\n</p></dd>\n<dt><samp>nb_samples</samp></dt>\n<dd><p>number of samples in the current frame\n</p></dd>\n<dt><samp>pos</samp></dt>\n<dd><p>original frame position in the file; deprecated, do not use\n</p></dd>\n<dt><samp>pts</samp></dt>\n<dd><p>frame PTS\n</p></dd>\n<dt><samp>sample_rate</samp></dt>\n<dd><p>sample rate\n</p></dd>\n<dt><samp>startpts</samp></dt>\n<dd><p>PTS at start of stream\n</p></dd>\n<dt><samp>startt</samp></dt>\n<dd><p>time at start of stream\n</p></dd>\n<dt><samp>t</samp></dt>\n<dd><p>frame time\n</p></dd>\n<dt><samp>tb</samp></dt>\n<dd><p>timestamp timebase\n</p></dd>\n<dt><samp>volume</samp></dt>\n<dd><p>last set volume value\n</p></dd>\n</dl>\n\n<p>Note that when <samp>eval</samp> is set to &lsquo;<samp>once</samp>&rsquo; only the\n<var>sample_rate</var> and <var>tb</var> variables are available, all other\nvariables will evaluate to NAN.\n</p>\n"
+}

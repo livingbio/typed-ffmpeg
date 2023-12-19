@@ -1,0 +1,49 @@
+{
+  "description": "11.129 hue\nModify the hue and/or the saturation of the input.\n\nIt accepts the following parameters:\n\n\nh and H are mutually exclusive, and can\u2019t be\nspecified at the same time.\n\nThe b, h, H and s option values are\nexpressions containing the following constants:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "H": {
+        "description": "Specify the hue angle as a number of radians. It accepts an expression, and defaults to '0'.",
+        "type": "string"
+      },
+      "b": {
+        "description": "Specify the brightness in the [-10,10] range. It accepts an expression and defaults to '0'.",
+        "type": "string"
+      },
+      "h": {
+        "description": "Specify the hue angle as a number of degrees. It accepts an expression, and defaults to '0'.",
+        "type": "string"
+      },
+      "s": {
+        "description": "Specify the saturation in the [-10,10] range. It accepts an expression and defaults to '1'.",
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "Hue Filter Options",
+    "type": "object"
+  },
+  "name": "hue",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify the hue angle as a number of degrees. It accepts an expression,\nand defaults to \"0\".\n</p>\n</dd>",
+      "name": "h"
+    },
+    {
+      "description": "<dd><p>Specify the saturation in the [-10,10] range. It accepts an expression and\ndefaults to \"1\".\n</p>\n</dd>",
+      "name": "s"
+    },
+    {
+      "description": "<dd><p>Specify the hue angle as a number of radians. It accepts an\nexpression, and defaults to \"0\".\n</p>\n</dd>",
+      "name": "H"
+    },
+    {
+      "description": "<dd><p>Specify the brightness in the [-10,10] range. It accepts an expression and\ndefaults to \"0\".\n</p></dd>",
+      "name": "b"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hue",
+  "source": "<h3 class=\"section\"><a href=\"#toc-hue\">11.129 hue</a></h3>\n\n<p>Modify the hue and/or the saturation of the input.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>h</samp></dt>\n<dd><p>Specify the hue angle as a number of degrees. It accepts an expression,\nand defaults to &quot;0&quot;.\n</p>\n</dd>\n<dt><samp>s</samp></dt>\n<dd><p>Specify the saturation in the [-10,10] range. It accepts an expression and\ndefaults to &quot;1&quot;.\n</p>\n</dd>\n<dt><samp>H</samp></dt>\n<dd><p>Specify the hue angle as a number of radians. It accepts an\nexpression, and defaults to &quot;0&quot;.\n</p>\n</dd>\n<dt><samp>b</samp></dt>\n<dd><p>Specify the brightness in the [-10,10] range. It accepts an expression and\ndefaults to &quot;0&quot;.\n</p></dd>\n</dl>\n\n<p><samp>h</samp> and <samp>H</samp> are mutually exclusive, and can&rsquo;t be\nspecified at the same time.\n</p>\n<p>The <samp>b</samp>, <samp>h</samp>, <samp>H</samp> and <samp>s</samp> option values are\nexpressions containing the following constants:\n</p>\n<dl compact=\"compact\">\n<dt><samp>n</samp></dt>\n<dd><p>frame count of the input frame starting from 0\n</p>\n</dd>\n<dt><samp>pts</samp></dt>\n<dd><p>presentation timestamp of the input frame expressed in time base units\n</p>\n</dd>\n<dt><samp>r</samp></dt>\n<dd><p>frame rate of the input video, NAN if the input frame rate is unknown\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>timestamp expressed in seconds, NAN if the input timestamp is unknown\n</p>\n</dd>\n<dt><samp>tb</samp></dt>\n<dd><p>time base of the input video\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,73 @@
+{
+  "description": "11.264 trim\nTrim the input so that the output contains one continuous subpart of the input.\n\nIt accepts the following parameters:\n\nstart, end, and duration are expressed as time\nduration specifications; see\n(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual\nfor the accepted syntax.\n\nNote that the first two sets of the start/end options and the duration\noption look at the frame timestamp, while the _frame variants simply count the\nframes that pass through the filter. Also note that this filter does not modify\nthe timestamps. If you wish for the output timestamps to start at zero, insert a\nsetpts filter after the trim filter.\n\nIf multiple start or end options are set, this filter tries to be greedy and\nkeep all the frames that match at least one of the specified constraints. To keep\nonly the part that matches all the constraints at once, chain multiple trim\nfilters.\n\nThe defaults are such that all the input is kept. So it is possible to set e.g.\njust the end values to keep everything before the specified time.\n\nExamples:\n\n Drop everything except the second minute of input:\n\nffmpeg -i INPUT -vf trim=60:120\n\n Keep only the first second:\n\nffmpeg -i INPUT -vf trim=duration=1",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "duration": {
+        "description": "The maximum duration of the output in seconds",
+        "type": "string"
+      },
+      "end": {
+        "description": "Specify the time of the first frame that will be dropped",
+        "type": "string"
+      },
+      "end_frame": {
+        "description": "The number of the first frame that should be dropped",
+        "type": "integer"
+      },
+      "end_pts": {
+        "description": "This is the same as 'end', except this option sets the end timestamp in timebase units instead of seconds",
+        "type": "string"
+      },
+      "start": {
+        "description": "Specify the time of the start of the kept section",
+        "type": "string"
+      },
+      "start_frame": {
+        "description": "The number of the first frame that should be passed to the output",
+        "type": "integer"
+      },
+      "start_pts": {
+        "description": "This is the same as 'start', except this option sets the start timestamp in timebase units instead of seconds",
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "FFmpeg Trim Filter Options",
+    "type": "object"
+  },
+  "name": "trim",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify the time of the start of the kept section, i.e. the frame with the\ntimestamp <var>start</var> will be the first frame in the output.\n</p>\n</dd>",
+      "name": "start"
+    },
+    {
+      "description": "<dd><p>Specify the time of the first frame that will be dropped, i.e. the frame\nimmediately preceding the one with the timestamp <var>end</var> will be the last\nframe in the output.\n</p>\n</dd>",
+      "name": "end"
+    },
+    {
+      "description": "<dd><p>This is the same as <var>start</var>, except this option sets the start timestamp\nin timebase units instead of seconds.\n</p>\n</dd>",
+      "name": "start_pts"
+    },
+    {
+      "description": "<dd><p>This is the same as <var>end</var>, except this option sets the end timestamp\nin timebase units instead of seconds.\n</p>\n</dd>",
+      "name": "end_pts"
+    },
+    {
+      "description": "<dd><p>The maximum duration of the output in seconds.\n</p>\n</dd>",
+      "name": "duration"
+    },
+    {
+      "description": "<dd><p>The number of the first frame that should be passed to the output.\n</p>\n</dd>",
+      "name": "start_frame"
+    },
+    {
+      "description": "<dd><p>The number of the first frame that should be dropped.\n</p></dd>",
+      "name": "end_frame"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#trim",
+  "source": "<h3 class=\"section\"><a href=\"#toc-trim\">11.264 trim</a></h3>\n<p>Trim the input so that the output contains one continuous subpart of the input.\n</p>\n<p>It accepts the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>start</samp></dt>\n<dd><p>Specify the time of the start of the kept section, i.e. the frame with the\ntimestamp <var>start</var> will be the first frame in the output.\n</p>\n</dd>\n<dt><samp>end</samp></dt>\n<dd><p>Specify the time of the first frame that will be dropped, i.e. the frame\nimmediately preceding the one with the timestamp <var>end</var> will be the last\nframe in the output.\n</p>\n</dd>\n<dt><samp>start_pts</samp></dt>\n<dd><p>This is the same as <var>start</var>, except this option sets the start timestamp\nin timebase units instead of seconds.\n</p>\n</dd>\n<dt><samp>end_pts</samp></dt>\n<dd><p>This is the same as <var>end</var>, except this option sets the end timestamp\nin timebase units instead of seconds.\n</p>\n</dd>\n<dt><samp>duration</samp></dt>\n<dd><p>The maximum duration of the output in seconds.\n</p>\n</dd>\n<dt><samp>start_frame</samp></dt>\n<dd><p>The number of the first frame that should be passed to the output.\n</p>\n</dd>\n<dt><samp>end_frame</samp></dt>\n<dd><p>The number of the first frame that should be dropped.\n</p></dd>\n</dl>\n\n<p><samp>start</samp>, <samp>end</samp>, and <samp>duration</samp> are expressed as time\nduration specifications; see\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>Note that the first two sets of the start/end options and the <samp>duration</samp>\noption look at the frame timestamp, while the _frame variants simply count the\nframes that pass through the filter. Also note that this filter does not modify\nthe timestamps. If you wish for the output timestamps to start at zero, insert a\nsetpts filter after the trim filter.\n</p>\n<p>If multiple start or end options are set, this filter tries to be greedy and\nkeep all the frames that match at least one of the specified constraints. To keep\nonly the part that matches all the constraints at once, chain multiple trim\nfilters.\n</p>\n<p>The defaults are such that all the input is kept. So it is possible to set e.g.\njust the end values to keep everything before the specified time.\n</p>\n<p>Examples:\n</p><ul>\n<li> Drop everything except the second minute of input:\n<div class=\"example\">\n<pre class=\"example\">ffmpeg -i INPUT -vf trim=60:120\n</pre></div>\n\n</li><li> Keep only the first second:\n<div class=\"example\">\n<pre class=\"example\">ffmpeg -i INPUT -vf trim=duration=1\n</pre></div>\n\n</li></ul>\n\n"
+}

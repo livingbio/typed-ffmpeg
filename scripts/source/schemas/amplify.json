@@ -1,0 +1,86 @@
+{
+  "description": "11.4 amplify\nAmplify differences between current pixel and pixels of adjacent frames in\nsame pixel location.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "factor": {
+        "default": 2,
+        "maximum": 65535,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "high": {
+        "default": 65535,
+        "maximum": 65535,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "low": {
+        "default": 65535,
+        "maximum": 65535,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "planes": {
+        "default": 15,
+        "maximum": 15,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "radius": {
+        "default": 2,
+        "maximum": 63,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "threshold": {
+        "default": 10,
+        "maximum": 65535,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "tolerance": {
+        "default": 0,
+        "maximum": 65535,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "title": "Amplify Filter Options",
+    "type": "object"
+  },
+  "name": "amplify",
+  "parameters": [
+    {
+      "description": "<dd><p>Set frame radius. Default is 2. Allowed range is from 1 to 63.\nFor example radius of 3 will instruct filter to calculate average of 7 frames.\n</p>\n</dd>",
+      "name": "radius"
+    },
+    {
+      "description": "<dd><p>Set factor to amplify difference. Default is 2. Allowed range is from 0 to 65535.\n</p>\n</dd>",
+      "name": "factor"
+    },
+    {
+      "description": "<dd><p>Set threshold for difference amplification. Any difference greater or equal to\nthis value will not alter source pixel. Default is 10.\nAllowed range is from 0 to 65535.\n</p>\n</dd>",
+      "name": "threshold"
+    },
+    {
+      "description": "<dd><p>Set tolerance for difference amplification. Any difference lower to\nthis value will not alter source pixel. Default is 0.\nAllowed range is from 0 to 65535.\n</p>\n</dd>",
+      "name": "tolerance"
+    },
+    {
+      "description": "<dd><p>Set lower limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will decrease source pixel value.\n</p>\n</dd>",
+      "name": "low"
+    },
+    {
+      "description": "<dd><p>Set high limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will increase source pixel value.\n</p>\n</dd>",
+      "name": "high"
+    },
+    {
+      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
+      "name": "planes"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#amplify",
+  "source": "<h3 class=\"section\"><a href=\"#toc-amplify\">11.4 amplify</a></h3>\n\n<p>Amplify differences between current pixel and pixels of adjacent frames in\nsame pixel location.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>radius</samp></dt>\n<dd><p>Set frame radius. Default is 2. Allowed range is from 1 to 63.\nFor example radius of 3 will instruct filter to calculate average of 7 frames.\n</p>\n</dd>\n<dt><samp>factor</samp></dt>\n<dd><p>Set factor to amplify difference. Default is 2. Allowed range is from 0 to 65535.\n</p>\n</dd>\n<dt><samp>threshold</samp></dt>\n<dd><p>Set threshold for difference amplification. Any difference greater or equal to\nthis value will not alter source pixel. Default is 10.\nAllowed range is from 0 to 65535.\n</p>\n</dd>\n<dt><samp>tolerance</samp></dt>\n<dd><p>Set tolerance for difference amplification. Any difference lower to\nthis value will not alter source pixel. Default is 0.\nAllowed range is from 0 to 65535.\n</p>\n</dd>\n<dt><samp>low</samp></dt>\n<dd><p>Set lower limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will decrease source pixel value.\n</p>\n</dd>\n<dt><samp>high</samp></dt>\n<dd><p>Set high limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will increase source pixel value.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>\n</dl>\n\n"
+}

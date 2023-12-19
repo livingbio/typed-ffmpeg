@@ -1,0 +1,40 @@
+{
+  "description": "8.68 axcorrelate\nCalculate normalized windowed cross-correlation between two input audio streams.\n\nResulted samples are always between -1 and 1 inclusive.\nIf result is 1 it means two input samples are highly correlated in that selected segment.\nResult 0 means they are not correlated at all.\nIf result is -1 it means two input samples are out of phase, which means they cancel each\nother.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "algo": {
+        "default": "best",
+        "enum": [
+          "slow",
+          "fast",
+          "best"
+        ],
+        "type": "string"
+      },
+      "size": {
+        "default": 256,
+        "maximum": 131072,
+        "minimum": 2,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "axcorrelate options",
+    "type": "object"
+  },
+  "name": "axcorrelate",
+  "parameters": [
+    {
+      "description": "<dd><p>Set size of segment over which cross-correlation is calculated.\nDefault is 256. Allowed range is from 2 to 131072.\n</p>\n</dd>",
+      "name": "size"
+    },
+    {
+      "description": "<dd><p>Set algorithm for cross-correlation. Can be <code>slow</code> or <code>fast</code> or <code>best</code>.\nDefault is <code>best</code>. Fast algorithm assumes mean values over any given segment\nare always zero and thus need much less calculations to make.\nThis is generally not true, but is valid for typical audio streams.\n</p></dd>",
+      "name": "algo"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#axcorrelate",
+  "source": "<h3 class=\"section\"><a href=\"#toc-axcorrelate\">8.68 axcorrelate</a></h3>\n<p>Calculate normalized windowed cross-correlation between two input audio streams.\n</p>\n<p>Resulted samples are always between -1 and 1 inclusive.\nIf result is 1 it means two input samples are highly correlated in that selected segment.\nResult 0 means they are not correlated at all.\nIf result is -1 it means two input samples are out of phase, which means they cancel each\nother.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>size</samp></dt>\n<dd><p>Set size of segment over which cross-correlation is calculated.\nDefault is 256. Allowed range is from 2 to 131072.\n</p>\n</dd>\n<dt><samp>algo</samp></dt>\n<dd><p>Set algorithm for cross-correlation. Can be <code>slow</code> or <code>fast</code> or <code>best</code>.\nDefault is <code>best</code>. Fast algorithm assumes mean values over any given segment\nare always zero and thus need much less calculations to make.\nThis is generally not true, but is valid for typical audio streams.\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,52 @@
+{
+  "description": "11.191 photosensitivity\nReduce various flashes in video, so to help users with epilepsy.\n\nIt accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "bypass": {
+        "default": false,
+        "type": "boolean"
+      },
+      "frames": {
+        "default": 30,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "skip": {
+        "default": 1,
+        "maximum": 1024,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "threshold": {
+        "default": 1,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "title": "photosensitivity options",
+    "type": "object"
+  },
+  "name": "photosensitivity",
+  "parameters": [
+    {
+      "description": "<dd><p>Set how many frames to use when filtering. Default is 30.\n</p>\n</dd>",
+      "name": "frames, f"
+    },
+    {
+      "description": "<dd><p>Set detection threshold factor. Default is 1.\nLower is stricter.\n</p>\n</dd>",
+      "name": "threshold, t"
+    },
+    {
+      "description": "<dd><p>Set how many pixels to skip when sampling frames. Default is 1.\nAllowed range is from 1 to 1024.\n</p>\n</dd>",
+      "name": "skip"
+    },
+    {
+      "description": "<dd><p>Leave frames unchanged. Default is disabled.\n</p></dd>",
+      "name": "bypass"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#photosensitivity",
+  "source": "<h3 class=\"section\"><a href=\"#toc-photosensitivity\">11.191 photosensitivity</a></h3>\n<p>Reduce various flashes in video, so to help users with epilepsy.\n</p>\n<p>It accepts the following options:\n</p><dl compact=\"compact\">\n<dt><samp>frames, f</samp></dt>\n<dd><p>Set how many frames to use when filtering. Default is 30.\n</p>\n</dd>\n<dt><samp>threshold, t</samp></dt>\n<dd><p>Set detection threshold factor. Default is 1.\nLower is stricter.\n</p>\n</dd>\n<dt><samp>skip</samp></dt>\n<dd><p>Set how many pixels to skip when sampling frames. Default is 1.\nAllowed range is from 1 to 1024.\n</p>\n</dd>\n<dt><samp>bypass</samp></dt>\n<dd><p>Leave frames unchanged. Default is disabled.\n</p></dd>\n</dl>\n\n"
+}

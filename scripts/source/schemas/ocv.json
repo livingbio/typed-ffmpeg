@@ -1,0 +1,35 @@
+{
+  "description": "11.181 ocv\nApply a video transform using libopencv.\n\nTo enable this filter, install the libopencv library and headers and\nconfigure FFmpeg with --enable-libopencv.\n\nIt accepts the following parameters:\n\n\nRefer to the official libopencv documentation for more precise\ninformation:\nhttp://docs.opencv.org/master/modules/imgproc/doc/filtering.html\n\nSeveral libopencv filters are supported; see the following subsections.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "filter_name": {
+        "description": "The name of the libopencv filter to apply.",
+        "type": "string"
+      },
+      "filter_params": {
+        "description": "The parameters to pass to the libopencv filter. If not specified, the default values are assumed.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "filter_name"
+    ],
+    "title": "ocv",
+    "type": "object"
+  },
+  "name": "ocv",
+  "parameters": [
+    {
+      "description": "<dd><p>The name of the libopencv filter to apply.\n</p>\n</dd>",
+      "name": "filter_name"
+    },
+    {
+      "description": "<dd><p>The parameters to pass to the libopencv filter. If not specified, the default\nvalues are assumed.\n</p>\n</dd>",
+      "name": "filter_params"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ocv",
+  "source": "<h3 class=\"section\"><a href=\"#toc-ocv\">11.181 ocv</a></h3>\n\n<p>Apply a video transform using libopencv.\n</p>\n<p>To enable this filter, install the libopencv library and headers and\nconfigure FFmpeg with <code>--enable-libopencv</code>.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>filter_name</samp></dt>\n<dd><p>The name of the libopencv filter to apply.\n</p>\n</dd>\n<dt><samp>filter_params</samp></dt>\n<dd><p>The parameters to pass to the libopencv filter. If not specified, the default\nvalues are assumed.\n</p>\n</dd>\n</dl>\n\n<p>Refer to the official libopencv documentation for more precise\ninformation:\n<a href=\"http://docs.opencv.org/master/modules/imgproc/doc/filtering.html\">http://docs.opencv.org/master/modules/imgproc/doc/filtering.html</a>\n</p>\n<p>Several libopencv filters are supported; see the following subsections.\n</p>\n"
+}

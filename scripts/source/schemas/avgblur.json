@@ -1,0 +1,41 @@
+{
+  "description": "11.7 avgblur\nApply average blur filter.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "planes": {
+        "description": "Set which planes to filter. By default all planes are filtered.",
+        "type": "string"
+      },
+      "sizeX": {
+        "description": "Set horizontal radius size.",
+        "type": "integer"
+      },
+      "sizeY": {
+        "description": "Set vertical radius size, if zero it will be same as sizeX. Default is 0.",
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "avgblur options",
+    "type": "object"
+  },
+  "name": "avgblur",
+  "parameters": [
+    {
+      "description": "<dd><p>Set horizontal radius size.\n</p>\n</dd>",
+      "name": "sizeX"
+    },
+    {
+      "description": "<dd><p>Set which planes to filter. By default all planes are filtered.\n</p>\n</dd>",
+      "name": "planes"
+    },
+    {
+      "description": "<dd><p>Set vertical radius size, if zero it will be same as <code>sizeX</code>.\nDefault is <code>0</code>.\n</p></dd>",
+      "name": "sizeY"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#avgblur",
+  "source": "<h3 class=\"section\"><a href=\"#toc-avgblur\">11.7 avgblur</a></h3>\n\n<p>Apply average blur filter.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>sizeX</samp></dt>\n<dd><p>Set horizontal radius size.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes to filter. By default all planes are filtered.\n</p>\n</dd>\n<dt><samp>sizeY</samp></dt>\n<dd><p>Set vertical radius size, if zero it will be same as <code>sizeX</code>.\nDefault is <code>0</code>.\n</p></dd>\n</dl>\n\n"
+}

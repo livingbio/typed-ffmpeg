@@ -1,0 +1,50 @@
+{
+  "description": "11.170 mpdecimate\nDrop frames that do not differ greatly from the previous frame in\norder to reduce frame rate.\n\nThe main use of this filter is for very-low-bitrate encoding\n(e.g. streaming over dialup modem), but it could in theory be used for\nfixing movies that were inverse-telecined incorrectly.\n\nA description of the accepted options follows.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "hi": {
+        "default": 0.33,
+        "description": "Set the dropping threshold value for the whole image. A frame is a candidate for dropping if no 8x8 blocks differ by more than a threshold of 'hi', and if no more than 'frac' blocks (1 meaning the whole image) differ by more than a threshold of 'lo'.",
+        "type": "integer"
+      },
+      "keep": {
+        "default": 0,
+        "description": "Set the maximum number of consecutive similar frames to ignore before starting to drop them. If the value is 0, the frame is dropped disregarding the number of previous sequentially similar frames.",
+        "type": "integer"
+      },
+      "max": {
+        "default": 0,
+        "description": "Set the maximum number of consecutive frames which can be dropped (if positive), or the minimum interval between dropped frames (if negative). If the value is 0, the frame is dropped disregarding the number of previous sequentially dropped frames.",
+        "type": "integer"
+      }
+    },
+    "title": "mpdecimate options",
+    "type": "object"
+  },
+  "name": "mpdecimate",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the maximum number of consecutive frames which can be dropped (if\npositive), or the minimum interval between dropped frames (if\nnegative). If the value is 0, the frame is dropped disregarding the\nnumber of previous sequentially dropped frames.\n</p>\n<p>Default value is 0.\n</p>\n</dd>",
+      "name": "max"
+    },
+    {
+      "description": "<dd><p>Set the maximum number of consecutive similar frames to ignore before to start dropping them.\nIf the value is 0, the frame is dropped disregarding the\nnumber of previous sequentially similar frames.\n</p>\n<p>Default value is 0.\n</p>\n</dd>",
+      "name": "keep"
+    },
+    {
+      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "name": "hi"
+    },
+    {
+      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "name": "lo"
+    },
+    {
+      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "name": "frac"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#mpdecimate",
+  "source": "<h3 class=\"section\"><a href=\"#toc-mpdecimate\">11.170 mpdecimate</a></h3>\n\n<p>Drop frames that do not differ greatly from the previous frame in\norder to reduce frame rate.\n</p>\n<p>The main use of this filter is for very-low-bitrate encoding\n(e.g. streaming over dialup modem), but it could in theory be used for\nfixing movies that were inverse-telecined incorrectly.\n</p>\n<p>A description of the accepted options follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>max</samp></dt>\n<dd><p>Set the maximum number of consecutive frames which can be dropped (if\npositive), or the minimum interval between dropped frames (if\nnegative). If the value is 0, the frame is dropped disregarding the\nnumber of previous sequentially dropped frames.\n</p>\n<p>Default value is 0.\n</p>\n</dd>\n<dt><samp>keep</samp></dt>\n<dd><p>Set the maximum number of consecutive similar frames to ignore before to start dropping them.\nIf the value is 0, the frame is dropped disregarding the\nnumber of previous sequentially similar frames.\n</p>\n<p>Default value is 0.\n</p>\n</dd>\n<dt><samp>hi</samp></dt>\n<dt><samp>lo</samp></dt>\n<dt><samp>frac</samp></dt>\n<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>\n</dl>\n\n"
+}

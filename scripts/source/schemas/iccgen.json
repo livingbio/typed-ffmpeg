@@ -1,0 +1,96 @@
+{
+  "description": "11.133 iccgen\nGenerate ICC profiles and attach them to frames.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "color_primaries": {
+        "default": "auto",
+        "enum": [
+          "auto",
+          "bt709",
+          "unknown",
+          "bt470m",
+          "bt470bg",
+          "smpte170m",
+          "smpte240m",
+          "film",
+          "bt2020",
+          "smpte428",
+          "smpte431",
+          "smpte432",
+          "jedec-p22"
+        ],
+        "type": "string"
+      },
+      "color_trc": {
+        "default": "auto",
+        "enum": [
+          "auto",
+          "bt709",
+          "unknown",
+          "bt470m",
+          "bt470bg",
+          "smpte170m",
+          "smpte240m",
+          "linear",
+          "log100",
+          "log316",
+          "iec61966-2-4",
+          "bt1361e",
+          "iec61966-2-1",
+          "bt2020-10",
+          "bt2020-12",
+          "smpte2084",
+          "smpte428",
+          "arib-std-b67"
+        ],
+        "type": "string"
+      },
+      "colorspace": {
+        "default": "auto",
+        "enum": [
+          "auto",
+          "gbr",
+          "bt709",
+          "unknown",
+          "fcc",
+          "bt470bg",
+          "smpte170m",
+          "smpte240m",
+          "ycgco",
+          "bt2020nc",
+          "bt2020c",
+          "smpte2085",
+          "chroma-derived-nc",
+          "chroma-derived-c",
+          "ictcp"
+        ],
+        "type": "string"
+      },
+      "force": {
+        "default": false,
+        "type": "boolean"
+      }
+    },
+    "title": "iccgen options",
+    "type": "object"
+  },
+  "name": "iccgen",
+  "parameters": [
+    {
+      "description": "<dd><p>Configure the colorspace that the ICC profile will be generated for. The\ndefault value of <code>auto</code> infers the value from the input frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See the <a href=\"#setparams\">setparams</a> filter for a list of possible values, but note that\n<code>unknown</code> are not valid values for this filter.\n</p>\n</dd>",
+      "name": "color_primaries"
+    },
+    {
+      "description": "<dd><p>Configure the colorspace that the ICC profile will be generated for. The\ndefault value of <code>auto</code> infers the value from the input frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See the <a href=\"#setparams\">setparams</a> filter for a list of possible values, but note that\n<code>unknown</code> are not valid values for this filter.\n</p>\n</dd>",
+      "name": "color_trc"
+    },
+    {
+      "description": "<dd><p>If true, an ICC profile will be generated even if it would overwrite an\nalready existing ICC profile. Disabled by default.\n</p></dd>",
+      "name": "force"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#iccgen",
+  "source": "<h3 class=\"section\"><a href=\"#toc-iccgen\">11.133 iccgen</a></h3>\n\n<p>Generate ICC profiles and attach them to frames.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>color_primaries</samp></dt>\n<dt><samp>color_trc</samp></dt>\n<dd><p>Configure the colorspace that the ICC profile will be generated for. The\ndefault value of <code>auto</code> infers the value from the input frame&rsquo;s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See the <a href=\"#setparams\">setparams</a> filter for a list of possible values, but note that\n<code>unknown</code> are not valid values for this filter.\n</p>\n</dd>\n<dt><samp>force</samp></dt>\n<dd><p>If true, an ICC profile will be generated even if it would overwrite an\nalready existing ICC profile. Disabled by default.\n</p></dd>\n</dl>\n\n"
+}

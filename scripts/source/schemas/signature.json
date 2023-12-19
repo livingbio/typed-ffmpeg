@@ -1,0 +1,103 @@
+{
+  "description": "11.237 signature\nCalculates the MPEG-7 Video Signature. The filter can handle more than one\ninput. In this case the matching between the inputs can be calculated additionally.\nThe filter always passes through the first input. The signature of each stream can\nbe written into a file.\n\nIt accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "detectmode": {
+        "default": "off",
+        "enum": [
+          "off",
+          "full",
+          "fast"
+        ],
+        "type": "string"
+      },
+      "filename": {
+        "type": "string"
+      },
+      "format": {
+        "default": "binary",
+        "enum": [
+          "binary",
+          "xml"
+        ],
+        "type": "string"
+      },
+      "nb_inputs": {
+        "default": 1,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "th_d": {
+        "default": 9000,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "th_dc": {
+        "default": 60000,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "th_di": {
+        "default": 0,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "th_it": {
+        "default": 0.5,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "th_xh": {
+        "default": 116,
+        "minimum": 1,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "signature options",
+    "type": "object"
+  },
+  "name": "signature",
+  "parameters": [
+    {
+      "description": "<dd><p>Enable or disable the matching process.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>off</samp>\u2019</dt>\n<dd><p>Disable the calculation of a matching (default).\n</p></dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Calculate the matching for the whole video and output whether the whole video\nmatches or only parts.\n</p></dd>\n<dt>\u2018<samp>fast</samp>\u2019</dt>\n<dd><p>Calculate only until a matching is found or the video ends. Should be faster in\nsome cases.\n</p></dd>\n</dl>\n</dd>",
+      "name": "detectmode"
+    },
+    {
+      "description": "<dd><p>Set the number of inputs. The option value must be a non negative integer.\nDefault value is 1.\n</p>\n</dd>",
+      "name": "nb_inputs"
+    },
+    {
+      "description": "<dd><p>Set the path to which the output is written. If there is more than one input,\nthe path must be a prototype, i.e. must contain %d or %0nd (where n is a positive\ninteger), that will be replaced with the input number. If no filename is\nspecified, no output will be written. This is the default.\n</p>\n</dd>",
+      "name": "filename"
+    },
+    {
+      "description": "<dd><p>Choose the output format.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>binary</samp>\u2019</dt>\n<dd><p>Use the specified binary representation (default).\n</p></dd>\n<dt>\u2018<samp>xml</samp>\u2019</dt>\n<dd><p>Use the specified xml representation.\n</p></dd>\n</dl>\n</dd>",
+      "name": "format"
+    },
+    {
+      "description": "<dd><p>Set threshold to detect one word as similar. The option value must be an integer\ngreater than zero. The default value is 9000.\n</p>\n</dd>",
+      "name": "th_d"
+    },
+    {
+      "description": "<dd><p>Set threshold to detect all words as similar. The option value must be an integer\ngreater than zero. The default value is 60000.\n</p>\n</dd>",
+      "name": "th_dc"
+    },
+    {
+      "description": "<dd><p>Set threshold to detect frames as similar. The option value must be an integer\ngreater than zero. The default value is 116.\n</p>\n</dd>",
+      "name": "th_xh"
+    },
+    {
+      "description": "<dd><p>Set the minimum length of a sequence in frames to recognize it as matching\nsequence. The option value must be a non negative integer value.\nThe default value is 0.\n</p>\n</dd>",
+      "name": "th_di"
+    },
+    {
+      "description": "<dd><p>Set the minimum relation, that matching frames to all frames must have.\nThe option value must be a double value between 0 and 1. The default value is 0.5.\n</p></dd>",
+      "name": "th_it"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#signature",
+  "source": "<h3 class=\"section\"><a href=\"#toc-signature-1\">11.237 signature</a></h3>\n\n<p>Calculates the MPEG-7 Video Signature. The filter can handle more than one\ninput. In this case the matching between the inputs can be calculated additionally.\nThe filter always passes through the first input. The signature of each stream can\nbe written into a file.\n</p>\n<p>It accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>detectmode</samp></dt>\n<dd><p>Enable or disable the matching process.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>off</samp>&rsquo;</dt>\n<dd><p>Disable the calculation of a matching (default).\n</p></dd>\n<dt>&lsquo;<samp>full</samp>&rsquo;</dt>\n<dd><p>Calculate the matching for the whole video and output whether the whole video\nmatches or only parts.\n</p></dd>\n<dt>&lsquo;<samp>fast</samp>&rsquo;</dt>\n<dd><p>Calculate only until a matching is found or the video ends. Should be faster in\nsome cases.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>nb_inputs</samp></dt>\n<dd><p>Set the number of inputs. The option value must be a non negative integer.\nDefault value is 1.\n</p>\n</dd>\n<dt><samp>filename</samp></dt>\n<dd><p>Set the path to which the output is written. If there is more than one input,\nthe path must be a prototype, i.e. must contain %d or %0nd (where n is a positive\ninteger), that will be replaced with the input number. If no filename is\nspecified, no output will be written. This is the default.\n</p>\n</dd>\n<dt><samp>format</samp></dt>\n<dd><p>Choose the output format.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>binary</samp>&rsquo;</dt>\n<dd><p>Use the specified binary representation (default).\n</p></dd>\n<dt>&lsquo;<samp>xml</samp>&rsquo;</dt>\n<dd><p>Use the specified xml representation.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>th_d</samp></dt>\n<dd><p>Set threshold to detect one word as similar. The option value must be an integer\ngreater than zero. The default value is 9000.\n</p>\n</dd>\n<dt><samp>th_dc</samp></dt>\n<dd><p>Set threshold to detect all words as similar. The option value must be an integer\ngreater than zero. The default value is 60000.\n</p>\n</dd>\n<dt><samp>th_xh</samp></dt>\n<dd><p>Set threshold to detect frames as similar. The option value must be an integer\ngreater than zero. The default value is 116.\n</p>\n</dd>\n<dt><samp>th_di</samp></dt>\n<dd><p>Set the minimum length of a sequence in frames to recognize it as matching\nsequence. The option value must be a non negative integer value.\nThe default value is 0.\n</p>\n</dd>\n<dt><samp>th_it</samp></dt>\n<dd><p>Set the minimum relation, that matching frames to all frames must have.\nThe option value must be a double value between 0 and 1. The default value is 0.5.\n</p></dd>\n</dl>\n\n"
+}

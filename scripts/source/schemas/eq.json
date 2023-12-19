@@ -1,0 +1,108 @@
+{
+  "description": "11.83 eq\nSet brightness, contrast, saturation and approximate gamma adjustment.\n\nThe filter accepts the following options:\n\n\nThe expressions accept the following parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "brightness": {
+        "default": 0,
+        "maximum": 1.0,
+        "minimum": -1.0,
+        "type": "number"
+      },
+      "contrast": {
+        "default": 1,
+        "maximum": 1000.0,
+        "minimum": -1000.0,
+        "type": "number"
+      },
+      "eval": {
+        "default": "init",
+        "enum": [
+          "init",
+          "frame"
+        ],
+        "type": "string"
+      },
+      "gamma": {
+        "default": 1,
+        "maximum": 10.0,
+        "minimum": 0.1,
+        "type": "number"
+      },
+      "gamma_b": {
+        "default": 1,
+        "maximum": 10.0,
+        "minimum": 0.1,
+        "type": "number"
+      },
+      "gamma_g": {
+        "default": 1,
+        "maximum": 10.0,
+        "minimum": 0.1,
+        "type": "number"
+      },
+      "gamma_r": {
+        "default": 1,
+        "maximum": 10.0,
+        "minimum": 0.1,
+        "type": "number"
+      },
+      "gamma_weight": {
+        "default": 1,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "saturation": {
+        "default": 1,
+        "maximum": 3.0,
+        "minimum": 0.0,
+        "type": "number"
+      }
+    },
+    "title": "eq options",
+    "type": "object"
+  },
+  "name": "eq",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the contrast expression. The value must be a float value in range\n<code>-1000.0</code> to <code>1000.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "contrast"
+    },
+    {
+      "description": "<dd><p>Set the brightness expression. The value must be a float value in\nrange <code>-1.0</code> to <code>1.0</code>. The default value is \"0\".\n</p>\n</dd>",
+      "name": "brightness"
+    },
+    {
+      "description": "<dd><p>Set the saturation expression. The value must be a float in\nrange <code>0.0</code> to <code>3.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "saturation"
+    },
+    {
+      "description": "<dd><p>Set the gamma expression. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>.  The default value is \"1\".\n</p>\n</dd>",
+      "name": "gamma"
+    },
+    {
+      "description": "<dd><p>Set the gamma expression for red. The value must be a float in\nrange <code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "gamma_r"
+    },
+    {
+      "description": "<dd><p>Set the gamma expression for green. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "gamma_g"
+    },
+    {
+      "description": "<dd><p>Set the gamma expression for blue. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "gamma_b"
+    },
+    {
+      "description": "<dd><p>Set the gamma weight expression. It can be used to reduce the effect\nof a high gamma value on bright image areas, e.g. keep them from\ngetting overamplified and just plain white. The value must be a float\nin range <code>0.0</code> to <code>1.0</code>. A value of <code>0.0</code> turns the\ngamma correction all the way down while <code>1.0</code> leaves it at its\nfull strength. Default is \"1\".\n</p>\n</dd>",
+      "name": "gamma_weight"
+    },
+    {
+      "description": "<dd><p>Set when the expressions for brightness, contrast, saturation and\ngamma expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>only evaluate expressions once during the filter initialization or\nwhen a command is processed\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expressions for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p></dd>",
+      "name": "eval"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#eq",
+  "source": "<h3 class=\"section\"><a href=\"#toc-eq\">11.83 eq</a></h3>\n<p>Set brightness, contrast, saturation and approximate gamma adjustment.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>contrast</samp></dt>\n<dd><p>Set the contrast expression. The value must be a float value in range\n<code>-1000.0</code> to <code>1000.0</code>. The default value is &quot;1&quot;.\n</p>\n</dd>\n<dt><samp>brightness</samp></dt>\n<dd><p>Set the brightness expression. The value must be a float value in\nrange <code>-1.0</code> to <code>1.0</code>. The default value is &quot;0&quot;.\n</p>\n</dd>\n<dt><samp>saturation</samp></dt>\n<dd><p>Set the saturation expression. The value must be a float in\nrange <code>0.0</code> to <code>3.0</code>. The default value is &quot;1&quot;.\n</p>\n</dd>\n<dt><samp>gamma</samp></dt>\n<dd><p>Set the gamma expression. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>.  The default value is &quot;1&quot;.\n</p>\n</dd>\n<dt><samp>gamma_r</samp></dt>\n<dd><p>Set the gamma expression for red. The value must be a float in\nrange <code>0.1</code> to <code>10.0</code>. The default value is &quot;1&quot;.\n</p>\n</dd>\n<dt><samp>gamma_g</samp></dt>\n<dd><p>Set the gamma expression for green. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is &quot;1&quot;.\n</p>\n</dd>\n<dt><samp>gamma_b</samp></dt>\n<dd><p>Set the gamma expression for blue. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is &quot;1&quot;.\n</p>\n</dd>\n<dt><samp>gamma_weight</samp></dt>\n<dd><p>Set the gamma weight expression. It can be used to reduce the effect\nof a high gamma value on bright image areas, e.g. keep them from\ngetting overamplified and just plain white. The value must be a float\nin range <code>0.0</code> to <code>1.0</code>. A value of <code>0.0</code> turns the\ngamma correction all the way down while <code>1.0</code> leaves it at its\nfull strength. Default is &quot;1&quot;.\n</p>\n</dd>\n<dt><samp>eval</samp></dt>\n<dd><p>Set when the expressions for brightness, contrast, saturation and\ngamma expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>init</samp>&rsquo;</dt>\n<dd><p>only evaluate expressions once during the filter initialization or\nwhen a command is processed\n</p>\n</dd>\n<dt>&lsquo;<samp>frame</samp>&rsquo;</dt>\n<dd><p>evaluate expressions for each incoming frame\n</p></dd>\n</dl>\n\n<p>Default value is &lsquo;<samp>init</samp>&rsquo;.\n</p></dd>\n</dl>\n\n<p>The expressions accept the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>n</samp></dt>\n<dd><p>frame count of the input frame starting from 0\n</p>\n</dd>\n<dt><samp>pos</samp></dt>\n<dd><p>byte position of the corresponding packet in the input file, NAN if\nunspecified; deprecated, do not use\n</p>\n</dd>\n<dt><samp>r</samp></dt>\n<dd><p>frame rate of the input video, NAN if the input frame rate is unknown\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>timestamp expressed in seconds, NAN if the input timestamp is unknown\n</p></dd>\n</dl>\n\n"
+}

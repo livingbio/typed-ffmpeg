@@ -1,0 +1,73 @@
+{
+  "description": "8.58 asr\nAutomatic Speech Recognition\n\nThis filter uses PocketSphinx for speech recognition. To enable\ncompilation of this filter, you need to configure FFmpeg with\n--enable-pocketsphinx.\n\nIt accepts the following options:\n\n\nThe filter exports recognized speech as the frame metadata lavfi.asr.text.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "dict": {
+        "description": "Set pronunciation dictionary.",
+        "type": "string"
+      },
+      "hmm": {
+        "description": "Set dictionary containing acoustic model files.",
+        "type": "string"
+      },
+      "lm": {
+        "description": "Set language model file.",
+        "type": "string"
+      },
+      "lmctl": {
+        "description": "Set language model set.",
+        "type": "string"
+      },
+      "lmname": {
+        "description": "Set which language model to use.",
+        "type": "string"
+      },
+      "logfn": {
+        "description": "Set output for log messages.",
+        "type": "string"
+      },
+      "rate": {
+        "default": 16000,
+        "description": "Set sampling rate of input audio. Defaults is 16000. This needs to match speech models, otherwise one will get poor results.",
+        "type": "integer"
+      }
+    },
+    "title": "asr filter options",
+    "type": "object"
+  },
+  "name": "asr",
+  "parameters": [
+    {
+      "description": "<dd><p>Set sampling rate of input audio. Defaults is <code>16000</code>.\nThis need to match speech models, otherwise one will get poor results.\n</p>\n</dd>",
+      "name": "rate"
+    },
+    {
+      "description": "<dd><p>Set dictionary containing acoustic model files.\n</p>\n</dd>",
+      "name": "hmm"
+    },
+    {
+      "description": "<dd><p>Set pronunciation dictionary.\n</p>\n</dd>",
+      "name": "dict"
+    },
+    {
+      "description": "<dd><p>Set language model file.\n</p>\n</dd>",
+      "name": "lm"
+    },
+    {
+      "description": "<dd><p>Set language model set.\n</p>\n</dd>",
+      "name": "lmctl"
+    },
+    {
+      "description": "<dd><p>Set which language model to use.\n</p>\n</dd>",
+      "name": "lmname"
+    },
+    {
+      "description": "<dd><p>Set output for log messages.\n</p></dd>",
+      "name": "logfn"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asr",
+  "source": "<h3 class=\"section\"><a href=\"#toc-asr\">8.58 asr</a></h3>\n<p>Automatic Speech Recognition\n</p>\n<p>This filter uses PocketSphinx for speech recognition. To enable\ncompilation of this filter, you need to configure FFmpeg with\n<code>--enable-pocketsphinx</code>.\n</p>\n<p>It accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>rate</samp></dt>\n<dd><p>Set sampling rate of input audio. Defaults is <code>16000</code>.\nThis need to match speech models, otherwise one will get poor results.\n</p>\n</dd>\n<dt><samp>hmm</samp></dt>\n<dd><p>Set dictionary containing acoustic model files.\n</p>\n</dd>\n<dt><samp>dict</samp></dt>\n<dd><p>Set pronunciation dictionary.\n</p>\n</dd>\n<dt><samp>lm</samp></dt>\n<dd><p>Set language model file.\n</p>\n</dd>\n<dt><samp>lmctl</samp></dt>\n<dd><p>Set language model set.\n</p>\n</dd>\n<dt><samp>lmname</samp></dt>\n<dd><p>Set which language model to use.\n</p>\n</dd>\n<dt><samp>logfn</samp></dt>\n<dd><p>Set output for log messages.\n</p></dd>\n</dl>\n\n<p>The filter exports recognized speech as the frame metadata <code>lavfi.asr.text</code>.\n</p>\n"
+}

@@ -1,0 +1,30 @@
+{
+  "description": "11.71 displace\nDisplace pixels as indicated by second and third input stream.\n\nIt takes three input streams and outputs one stream, the first input is the\nsource, and second and third input are displacement maps.\n\nThe second input specifies how much to displace pixels along the\nx-axis, while the third input specifies how much to displace pixels\nalong the y-axis.\nIf one of displacement map streams terminates, last frame from that\ndisplacement map will be used.\n\nNote that once generated, displacements maps can be reused over and over again.\n\nA description of the accepted options follows.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "edge": {
+        "default": "smear",
+        "enum": [
+          "blank",
+          "smear",
+          "wrap",
+          "mirror"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "displace options",
+    "type": "object"
+  },
+  "name": "displace",
+  "parameters": [
+    {
+      "description": "<dd><p>Set displace behavior for pixels that are out of range.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>blank</samp>\u2019</dt>\n<dd><p>Missing pixels are replaced by black pixels.\n</p>\n</dd>\n<dt>\u2018<samp>smear</samp>\u2019</dt>\n<dd><p>Adjacent pixels will spread out to replace missing pixels.\n</p>\n</dd>\n<dt>\u2018<samp>wrap</samp>\u2019</dt>\n<dd><p>Out of range pixels are wrapped so they point to pixels of other side.\n</p>\n</dd>\n<dt>\u2018<samp>mirror</samp>\u2019</dt>\n<dd><p>Out of range pixels will be replaced with mirrored pixels.\n</p></dd>\n</dl>\n<p>Default is \u2018<samp>smear</samp>\u2019.\n</p>\n</dd>",
+      "name": "edge"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#displace",
+  "source": "<h3 class=\"section\"><a href=\"#toc-displace\">11.71 displace</a></h3>\n\n<p>Displace pixels as indicated by second and third input stream.\n</p>\n<p>It takes three input streams and outputs one stream, the first input is the\nsource, and second and third input are displacement maps.\n</p>\n<p>The second input specifies how much to displace pixels along the\nx-axis, while the third input specifies how much to displace pixels\nalong the y-axis.\nIf one of displacement map streams terminates, last frame from that\ndisplacement map will be used.\n</p>\n<p>Note that once generated, displacements maps can be reused over and over again.\n</p>\n<p>A description of the accepted options follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>edge</samp></dt>\n<dd><p>Set displace behavior for pixels that are out of range.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>blank</samp>&rsquo;</dt>\n<dd><p>Missing pixels are replaced by black pixels.\n</p>\n</dd>\n<dt>&lsquo;<samp>smear</samp>&rsquo;</dt>\n<dd><p>Adjacent pixels will spread out to replace missing pixels.\n</p>\n</dd>\n<dt>&lsquo;<samp>wrap</samp>&rsquo;</dt>\n<dd><p>Out of range pixels are wrapped so they point to pixels of other side.\n</p>\n</dd>\n<dt>&lsquo;<samp>mirror</samp>&rsquo;</dt>\n<dd><p>Out of range pixels will be replaced with mirrored pixels.\n</p></dd>\n</dl>\n<p>Default is &lsquo;<samp>smear</samp>&rsquo;.\n</p>\n</dd>\n</dl>\n\n"
+}

@@ -1,0 +1,66 @@
+{
+  "description": "8.19 aemphasis\nAudio emphasis filter creates or restores material directly taken from LPs or\nemphased CDs with different filter curves. E.g. to store music on vinyl the\nsignal has to be altered by a filter first to even out the disadvantages of\nthis recording medium.\nOnce the material is played back the inverse filter has to be applied to\nrestore the distortion of the frequency response.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "level_in": {
+        "description": "Set input gain.",
+        "type": "number"
+      },
+      "level_out": {
+        "description": "Set output gain.",
+        "type": "number"
+      },
+      "mode": {
+        "default": "reproduction",
+        "description": "Set filter mode. For restoring material use 'reproduction' mode, otherwise use 'production' mode.",
+        "enum": [
+          "reproduction",
+          "production"
+        ],
+        "type": "string"
+      },
+      "type": {
+        "description": "Set filter type. Selects medium.",
+        "enum": [
+          "col",
+          "emi",
+          "bsi",
+          "riaa",
+          "cd",
+          "50fm",
+          "75fm",
+          "50kf",
+          "75kf"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "type"
+    ],
+    "title": "aemphasis options",
+    "type": "object"
+  },
+  "name": "aemphasis",
+  "parameters": [
+    {
+      "description": "<dd><p>Set input gain.\n</p>\n</dd>",
+      "name": "level_in"
+    },
+    {
+      "description": "<dd><p>Set output gain.\n</p>\n</dd>",
+      "name": "level_out"
+    },
+    {
+      "description": "<dd><p>Set filter mode. For restoring material use <code>reproduction</code> mode, otherwise\nuse <code>production</code> mode. Default is <code>reproduction</code> mode.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>Set filter type. Selects medium. Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt><samp>col</samp></dt>\n<dd><p>select Columbia.\n</p></dd>\n<dt><samp>emi</samp></dt>\n<dd><p>select EMI.\n</p></dd>\n<dt><samp>bsi</samp></dt>\n<dd><p>select BSI (78RPM).\n</p></dd>\n<dt><samp>riaa</samp></dt>\n<dd><p>select RIAA.\n</p></dd>\n<dt><samp>cd</samp></dt>\n<dd><p>select Compact Disc (CD).\n</p></dd>\n<dt><samp>50fm</samp></dt>\n<dd><p>select 50\u00b5s (FM).\n</p></dd>\n<dt><samp>75fm</samp></dt>\n<dd><p>select 75\u00b5s (FM).\n</p></dd>\n<dt><samp>50kf</samp></dt>\n<dd><p>select 50\u00b5s (FM-KF).\n</p></dd>\n<dt><samp>75kf</samp></dt>\n<dd><p>select 75\u00b5s (FM-KF).\n</p></dd>\n</dl>\n</dd>",
+      "name": "type"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aemphasis",
+  "source": "<h3 class=\"section\"><a href=\"#toc-aemphasis\">8.19 aemphasis</a></h3>\n<p>Audio emphasis filter creates or restores material directly taken from LPs or\nemphased CDs with different filter curves. E.g. to store music on vinyl the\nsignal has to be altered by a filter first to even out the disadvantages of\nthis recording medium.\nOnce the material is played back the inverse filter has to be applied to\nrestore the distortion of the frequency response.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>level_in</samp></dt>\n<dd><p>Set input gain.\n</p>\n</dd>\n<dt><samp>level_out</samp></dt>\n<dd><p>Set output gain.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set filter mode. For restoring material use <code>reproduction</code> mode, otherwise\nuse <code>production</code> mode. Default is <code>reproduction</code> mode.\n</p>\n</dd>\n<dt><samp>type</samp></dt>\n<dd><p>Set filter type. Selects medium. Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt><samp>col</samp></dt>\n<dd><p>select Columbia.\n</p></dd>\n<dt><samp>emi</samp></dt>\n<dd><p>select EMI.\n</p></dd>\n<dt><samp>bsi</samp></dt>\n<dd><p>select BSI (78RPM).\n</p></dd>\n<dt><samp>riaa</samp></dt>\n<dd><p>select RIAA.\n</p></dd>\n<dt><samp>cd</samp></dt>\n<dd><p>select Compact Disc (CD).\n</p></dd>\n<dt><samp>50fm</samp></dt>\n<dd><p>select 50\u00b5s (FM).\n</p></dd>\n<dt><samp>75fm</samp></dt>\n<dd><p>select 75\u00b5s (FM).\n</p></dd>\n<dt><samp>50kf</samp></dt>\n<dd><p>select 50\u00b5s (FM-KF).\n</p></dd>\n<dt><samp>75kf</samp></dt>\n<dd><p>select 75\u00b5s (FM-KF).\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n"
+}

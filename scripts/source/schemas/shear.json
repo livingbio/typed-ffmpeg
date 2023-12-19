@@ -1,0 +1,60 @@
+{
+  "description": "11.230 shear\nApply shear transform to input video.\n\nThis filter supports the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "c": {
+        "default": "black",
+        "type": "string"
+      },
+      "fillcolor": {
+        "default": "black",
+        "type": "string"
+      },
+      "interp": {
+        "default": "bilinear",
+        "enum": [
+          "bilinear",
+          "nearest"
+        ],
+        "type": "string"
+      },
+      "shx": {
+        "default": 0,
+        "maximum": 2,
+        "minimum": -2,
+        "type": "number"
+      },
+      "shy": {
+        "default": 0,
+        "maximum": 2,
+        "minimum": -2,
+        "type": "number"
+      }
+    },
+    "title": "Shear Filter Options",
+    "type": "object"
+  },
+  "name": "shear",
+  "parameters": [
+    {
+      "description": "<dd><p>Shear factor in X-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
+      "name": "shx"
+    },
+    {
+      "description": "<dd><p>Shear factor in Y-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
+      "name": "shy"
+    },
+    {
+      "description": "<dd><p>Set the color used to fill the output area not covered by the transformed\nvideo. For the general syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nIf the special value \"none\" is selected then no\nbackground is printed (useful for example if the background is never shown).\n</p>\n<p>Default value is \"black\".\n</p>\n</dd>",
+      "name": "fillcolor, c"
+    },
+    {
+      "description": "<dd><p>Set interpolation type. Can be <code>bilinear</code> or <code>nearest</code>. Default is <code>bilinear</code>.\n</p></dd>",
+      "name": "interp"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#shear",
+  "source": "<h3 class=\"section\"><a href=\"#toc-shear\">11.230 shear</a></h3>\n<p>Apply shear transform to input video.\n</p>\n<p>This filter supports the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>shx</samp></dt>\n<dd><p>Shear factor in X-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>\n<dt><samp>shy</samp></dt>\n<dd><p>Shear factor in Y-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>\n<dt><samp>fillcolor, c</samp></dt>\n<dd><p>Set the color used to fill the output area not covered by the transformed\nvideo. For the general syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)&quot;Color&quot; section in the ffmpeg-utils manual</a>.\nIf the special value &quot;none&quot; is selected then no\nbackground is printed (useful for example if the background is never shown).\n</p>\n<p>Default value is &quot;black&quot;.\n</p>\n</dd>\n<dt><samp>interp</samp></dt>\n<dd><p>Set interpolation type. Can be <code>bilinear</code> or <code>nearest</code>. Default is <code>bilinear</code>.\n</p></dd>\n</dl>\n\n"
+}

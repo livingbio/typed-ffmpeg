@@ -1,0 +1,103 @@
+{
+  "description": "11.166 minterpolate\nConvert the video to specified frame rate using motion interpolation.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "fps": {
+        "description": "Specify the output frame rate. This can be rational e.g. 60000/1001. Frames are dropped if fps is lower than source fps. Default 60.",
+        "type": "string"
+      },
+      "mb_size": {
+        "description": "Macroblock size. Default 16.",
+        "type": "integer"
+      },
+      "me": {
+        "description": "The algorithm to be used for motion estimation.",
+        "enum": [
+          "esa",
+          "tss",
+          "tdls",
+          "ntss",
+          "fss",
+          "ds",
+          "hexbs",
+          "epzs",
+          "umh"
+        ],
+        "type": "string"
+      },
+      "me_mode": {
+        "description": "Motion estimation mode.",
+        "enum": [
+          "bidir",
+          "bilat"
+        ],
+        "type": "string"
+      },
+      "mi_mode": {
+        "description": "Motion interpolation mode.",
+        "enum": [
+          "dup",
+          "blend",
+          "mci"
+        ],
+        "type": "string"
+      },
+      "scd": {
+        "description": "Scene change detection method.",
+        "enum": [
+          "none",
+          "fdiff"
+        ],
+        "type": "string"
+      },
+      "scd_threshold": {
+        "description": "Scene change detection threshold. Default is 10.",
+        "type": "number"
+      },
+      "search_param": {
+        "description": "Motion estimation search parameter. Default 32.",
+        "type": "integer"
+      },
+      "vsbmc": {
+        "description": "Enable variable-size block motion compensation. Default is 0 (disabled).",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "fps",
+      "mi_mode",
+      "me_mode",
+      "me",
+      "mb_size",
+      "search_param",
+      "vsbmc",
+      "scd",
+      "scd_threshold"
+    ],
+    "title": "minterpolate options",
+    "type": "object"
+  },
+  "name": "minterpolate",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify the output frame rate. This can be rational e.g. <code>60000/1001</code>. Frames are dropped if <var>fps</var> is lower than source fps. Default <code>60</code>.\n</p>\n</dd>",
+      "name": "fps"
+    },
+    {
+      "description": "<dd><p>Motion interpolation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>dup</samp>\u2019</dt>\n<dd><p>Duplicate previous or next frame for interpolating new ones.\n</p></dd>\n<dt>\u2018<samp>blend</samp>\u2019</dt>\n<dd><p>Blend source frames. Interpolated frame is mean of previous and next frames.\n</p></dd>\n<dt>\u2018<samp>mci</samp>\u2019</dt>\n<dd><p>Motion compensated interpolation. Following options are effective when this mode is selected:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>mc_mode</samp>\u2019</dt>\n<dd><p>Motion compensation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>obmc</samp>\u2019</dt>\n<dd><p>Overlapped block motion compensation.\n</p></dd>\n<dt>\u2018<samp>aobmc</samp>\u2019</dt>\n<dd><p>Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.\n</p></dd>\n</dl>\n<p>Default mode is \u2018<samp>obmc</samp>\u2019.\n</p>\n</dd>\n<dt>\u2018<samp>me_mode</samp>\u2019</dt>\n<dd><p>Motion estimation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bidir</samp>\u2019</dt>\n<dd><p>Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.\n</p></dd>\n<dt>\u2018<samp>bilat</samp>\u2019</dt>\n<dd><p>Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.\n</p></dd>\n</dl>\n<p>Default mode is \u2018<samp>bilat</samp>\u2019.\n</p>\n</dd>\n<dt>\u2018<samp>me</samp>\u2019</dt>\n<dd><p>The algorithm to be used for motion estimation. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>esa</samp>\u2019</dt>\n<dd><p>Exhaustive search algorithm.\n</p></dd>\n<dt>\u2018<samp>tss</samp>\u2019</dt>\n<dd><p>Three step search algorithm.\n</p></dd>\n<dt>\u2018<samp>tdls</samp>\u2019</dt>\n<dd><p>Two dimensional logarithmic search algorithm.\n</p></dd>\n<dt>\u2018<samp>ntss</samp>\u2019</dt>\n<dd><p>New three step search algorithm.\n</p></dd>\n<dt>\u2018<samp>fss</samp>\u2019</dt>\n<dd><p>Four step search algorithm.\n</p></dd>\n<dt>\u2018<samp>ds</samp>\u2019</dt>\n<dd><p>Diamond search algorithm.\n</p></dd>\n<dt>\u2018<samp>hexbs</samp>\u2019</dt>\n<dd><p>Hexagon-based search algorithm.\n</p></dd>\n<dt>\u2018<samp>epzs</samp>\u2019</dt>\n<dd><p>Enhanced predictive zonal search algorithm.\n</p></dd>\n<dt>\u2018<samp>umh</samp>\u2019</dt>\n<dd><p>Uneven multi-hexagon search algorithm.\n</p></dd>\n</dl>\n<p>Default algorithm is \u2018<samp>epzs</samp>\u2019.\n</p>\n</dd>\n<dt>\u2018<samp>mb_size</samp>\u2019</dt>\n<dd><p>Macroblock size. Default <code>16</code>.\n</p>\n</dd>\n<dt>\u2018<samp>search_param</samp>\u2019</dt>\n<dd><p>Motion estimation search parameter. Default <code>32</code>.\n</p>\n</dd>\n<dt>\u2018<samp>vsbmc</samp>\u2019</dt>\n<dd><p>Enable variable-size block motion compensation. Motion estimation is applied with smaller block sizes at object boundaries in order to make the them less blur. Default is <code>0</code> (disabled).\n</p></dd>\n</dl>\n</dd>\n</dl>\n</dd>",
+      "name": "mi_mode"
+    },
+    {
+      "description": "<dd><p>Scene change detection method. Scene change leads motion vectors to be in random direction. Scene change detection replace interpolated frames by duplicate ones. May not be needed for other modes. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable scene change detection.\n</p></dd>\n<dt>\u2018<samp>fdiff</samp>\u2019</dt>\n<dd><p>Frame difference. Corresponding pixel values are compared and if it satisfies <var>scd_threshold</var> scene change is detected.\n</p></dd>\n</dl>\n<p>Default method is \u2018<samp>fdiff</samp>\u2019.\n</p>\n</dd>",
+      "name": "scd"
+    },
+    {
+      "description": "<dd><p>Scene change detection threshold. Default is <code>10.</code>.\n</p></dd>",
+      "name": "scd_threshold"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#minterpolate",
+  "source": "<h3 class=\"section\"><a href=\"#toc-minterpolate\">11.166 minterpolate</a></h3>\n\n<p>Convert the video to specified frame rate using motion interpolation.\n</p>\n<p>This filter accepts the following options:\n</p><dl compact=\"compact\">\n<dt><samp>fps</samp></dt>\n<dd><p>Specify the output frame rate. This can be rational e.g. <code>60000/1001</code>. Frames are dropped if <var>fps</var> is lower than source fps. Default <code>60</code>.\n</p>\n</dd>\n<dt><samp>mi_mode</samp></dt>\n<dd><p>Motion interpolation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>dup</samp>&rsquo;</dt>\n<dd><p>Duplicate previous or next frame for interpolating new ones.\n</p></dd>\n<dt>&lsquo;<samp>blend</samp>&rsquo;</dt>\n<dd><p>Blend source frames. Interpolated frame is mean of previous and next frames.\n</p></dd>\n<dt>&lsquo;<samp>mci</samp>&rsquo;</dt>\n<dd><p>Motion compensated interpolation. Following options are effective when this mode is selected:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>mc_mode</samp>&rsquo;</dt>\n<dd><p>Motion compensation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>obmc</samp>&rsquo;</dt>\n<dd><p>Overlapped block motion compensation.\n</p></dd>\n<dt>&lsquo;<samp>aobmc</samp>&rsquo;</dt>\n<dd><p>Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.\n</p></dd>\n</dl>\n<p>Default mode is &lsquo;<samp>obmc</samp>&rsquo;.\n</p>\n</dd>\n<dt>&lsquo;<samp>me_mode</samp>&rsquo;</dt>\n<dd><p>Motion estimation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>bidir</samp>&rsquo;</dt>\n<dd><p>Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.\n</p></dd>\n<dt>&lsquo;<samp>bilat</samp>&rsquo;</dt>\n<dd><p>Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.\n</p></dd>\n</dl>\n<p>Default mode is &lsquo;<samp>bilat</samp>&rsquo;.\n</p>\n</dd>\n<dt>&lsquo;<samp>me</samp>&rsquo;</dt>\n<dd><p>The algorithm to be used for motion estimation. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>esa</samp>&rsquo;</dt>\n<dd><p>Exhaustive search algorithm.\n</p></dd>\n<dt>&lsquo;<samp>tss</samp>&rsquo;</dt>\n<dd><p>Three step search algorithm.\n</p></dd>\n<dt>&lsquo;<samp>tdls</samp>&rsquo;</dt>\n<dd><p>Two dimensional logarithmic search algorithm.\n</p></dd>\n<dt>&lsquo;<samp>ntss</samp>&rsquo;</dt>\n<dd><p>New three step search algorithm.\n</p></dd>\n<dt>&lsquo;<samp>fss</samp>&rsquo;</dt>\n<dd><p>Four step search algorithm.\n</p></dd>\n<dt>&lsquo;<samp>ds</samp>&rsquo;</dt>\n<dd><p>Diamond search algorithm.\n</p></dd>\n<dt>&lsquo;<samp>hexbs</samp>&rsquo;</dt>\n<dd><p>Hexagon-based search algorithm.\n</p></dd>\n<dt>&lsquo;<samp>epzs</samp>&rsquo;</dt>\n<dd><p>Enhanced predictive zonal search algorithm.\n</p></dd>\n<dt>&lsquo;<samp>umh</samp>&rsquo;</dt>\n<dd><p>Uneven multi-hexagon search algorithm.\n</p></dd>\n</dl>\n<p>Default algorithm is &lsquo;<samp>epzs</samp>&rsquo;.\n</p>\n</dd>\n<dt>&lsquo;<samp>mb_size</samp>&rsquo;</dt>\n<dd><p>Macroblock size. Default <code>16</code>.\n</p>\n</dd>\n<dt>&lsquo;<samp>search_param</samp>&rsquo;</dt>\n<dd><p>Motion estimation search parameter. Default <code>32</code>.\n</p>\n</dd>\n<dt>&lsquo;<samp>vsbmc</samp>&rsquo;</dt>\n<dd><p>Enable variable-size block motion compensation. Motion estimation is applied with smaller block sizes at object boundaries in order to make the them less blur. Default is <code>0</code> (disabled).\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n</dd>\n<dt><samp>scd</samp></dt>\n<dd><p>Scene change detection method. Scene change leads motion vectors to be in random direction. Scene change detection replace interpolated frames by duplicate ones. May not be needed for other modes. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>none</samp>&rsquo;</dt>\n<dd><p>Disable scene change detection.\n</p></dd>\n<dt>&lsquo;<samp>fdiff</samp>&rsquo;</dt>\n<dd><p>Frame difference. Corresponding pixel values are compared and if it satisfies <var>scd_threshold</var> scene change is detected.\n</p></dd>\n</dl>\n<p>Default method is &lsquo;<samp>fdiff</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>scd_threshold</samp></dt>\n<dd><p>Scene change detection threshold. Default is <code>10.</code>.\n</p></dd>\n</dl>\n\n"
+}

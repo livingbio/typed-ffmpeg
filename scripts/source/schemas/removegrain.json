@@ -1,0 +1,61 @@
+{
+  "description": "11.207 removegrain\nThe removegrain filter is a spatial denoiser for progressive video.\n\n\nRange of mode is from 0 to 24. Description of each mode follows:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "m0": {
+        "default": 0,
+        "description": "Set mode for the first plane.",
+        "maximum": 24,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "m1": {
+        "default": 0,
+        "description": "Set mode for the second plane.",
+        "maximum": 24,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "m2": {
+        "default": 0,
+        "description": "Set mode for the third plane.",
+        "maximum": 24,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "m3": {
+        "default": 0,
+        "description": "Set mode for the fourth plane.",
+        "maximum": 24,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "removegrain options",
+    "type": "object"
+  },
+  "name": "removegrain",
+  "parameters": [
+    {
+      "description": "<dd><p>Set mode for the first plane.\n</p>\n</dd>",
+      "name": "m0"
+    },
+    {
+      "description": "<dd><p>Set mode for the second plane.\n</p>\n</dd>",
+      "name": "m1"
+    },
+    {
+      "description": "<dd><p>Set mode for the third plane.\n</p>\n</dd>",
+      "name": "m2"
+    },
+    {
+      "description": "<dd><p>Set mode for the fourth plane.\n</p></dd>",
+      "name": "m3"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#removegrain",
+  "source": "<h3 class=\"section\"><a href=\"#toc-removegrain\">11.207 removegrain</a></h3>\n\n<p>The removegrain filter is a spatial denoiser for progressive video.\n</p>\n<dl compact=\"compact\">\n<dt><samp>m0</samp></dt>\n<dd><p>Set mode for the first plane.\n</p>\n</dd>\n<dt><samp>m1</samp></dt>\n<dd><p>Set mode for the second plane.\n</p>\n</dd>\n<dt><samp>m2</samp></dt>\n<dd><p>Set mode for the third plane.\n</p>\n</dd>\n<dt><samp>m3</samp></dt>\n<dd><p>Set mode for the fourth plane.\n</p></dd>\n</dl>\n\n<p>Range of mode is from 0 to 24. Description of each mode follows:\n</p>\n<dl compact=\"compact\">\n<dt><var>0</var></dt>\n<dd><p>Leave input plane unchanged. Default.\n</p>\n</dd>\n<dt><var>1</var></dt>\n<dd><p>Clips the pixel with the minimum and maximum of the 8 neighbour pixels.\n</p>\n</dd>\n<dt><var>2</var></dt>\n<dd><p>Clips the pixel with the second minimum and maximum of the 8 neighbour pixels.\n</p>\n</dd>\n<dt><var>3</var></dt>\n<dd><p>Clips the pixel with the third minimum and maximum of the 8 neighbour pixels.\n</p>\n</dd>\n<dt><var>4</var></dt>\n<dd><p>Clips the pixel with the fourth minimum and maximum of the 8 neighbour pixels.\nThis is equivalent to a median filter.\n</p>\n</dd>\n<dt><var>5</var></dt>\n<dd><p>Line-sensitive clipping giving the minimal change.\n</p>\n</dd>\n<dt><var>6</var></dt>\n<dd><p>Line-sensitive clipping, intermediate.\n</p>\n</dd>\n<dt><var>7</var></dt>\n<dd><p>Line-sensitive clipping, intermediate.\n</p>\n</dd>\n<dt><var>8</var></dt>\n<dd><p>Line-sensitive clipping, intermediate.\n</p>\n</dd>\n<dt><var>9</var></dt>\n<dd><p>Line-sensitive clipping on a line where the neighbours pixels are the closest.\n</p>\n</dd>\n<dt><var>10</var></dt>\n<dd><p>Replaces the target pixel with the closest neighbour.\n</p>\n</dd>\n<dt><var>11</var></dt>\n<dd><p>[1 2 1] horizontal and vertical kernel blur.\n</p>\n</dd>\n<dt><var>12</var></dt>\n<dd><p>Same as mode 11.\n</p>\n</dd>\n<dt><var>13</var></dt>\n<dd><p>Bob mode, interpolates top field from the line where the neighbours\npixels are the closest.\n</p>\n</dd>\n<dt><var>14</var></dt>\n<dd><p>Bob mode, interpolates bottom field from the line where the neighbours\npixels are the closest.\n</p>\n</dd>\n<dt><var>15</var></dt>\n<dd><p>Bob mode, interpolates top field. Same as 13 but with a more complicated\ninterpolation formula.\n</p>\n</dd>\n<dt><var>16</var></dt>\n<dd><p>Bob mode, interpolates bottom field. Same as 14 but with a more complicated\ninterpolation formula.\n</p>\n</dd>\n<dt><var>17</var></dt>\n<dd><p>Clips the pixel with the minimum and maximum of respectively the maximum and\nminimum of each pair of opposite neighbour pixels.\n</p>\n</dd>\n<dt><var>18</var></dt>\n<dd><p>Line-sensitive clipping using opposite neighbours whose greatest distance from\nthe current pixel is minimal.\n</p>\n</dd>\n<dt><var>19</var></dt>\n<dd><p>Replaces the pixel with the average of its 8 neighbours.\n</p>\n</dd>\n<dt><var>20</var></dt>\n<dd><p>Averages the 9 pixels ([1 1 1] horizontal and vertical blur).\n</p>\n</dd>\n<dt><var>21</var></dt>\n<dd><p>Clips pixels using the averages of opposite neighbour.\n</p>\n</dd>\n<dt><var>22</var></dt>\n<dd><p>Same as mode 21 but simpler and faster.\n</p>\n</dd>\n<dt><var>23</var></dt>\n<dd><p>Small edge and halo removal, but reputed useless.\n</p>\n</dd>\n<dt><var>24</var></dt>\n<dd><p>Similar as 23.\n</p></dd>\n</dl>\n\n"
+}

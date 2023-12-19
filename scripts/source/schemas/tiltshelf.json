@@ -1,0 +1,132 @@
+{
+  "description": "8.115 tiltshelf\nBoost or cut the lower frequencies and cut or boost higher frequencies\nof the audio using a two-pole shelving filter with a response similar to\nthat of a standard hi-fi\u2019s tone-controls.\nThis is also known as shelving equalisation (EQ).\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "block_size": {
+        "description": "Set block size used for reverse IIR processing. If this value is set to high enough value (higher than impulse response length truncated when reaches near zero values) filtering will become linear phase otherwise if not big enough it will just produce nasty artifacts. Note that filter delay will be exactly this many samples when set to non-zero value.",
+        "type": "integer"
+      },
+      "channels": {
+        "description": "Specify which channels to filter, by default all available are filtered.",
+        "type": "string"
+      },
+      "frequency": {
+        "description": "Set the filter's central frequency and so can be used to extend or reduce the frequency range to be boosted or cut. The default value is 3000 Hz.",
+        "type": "number"
+      },
+      "gain": {
+        "description": "Give the gain at 0 Hz. Its useful range is about -20 (for a large cut) to +20 (for a large boost). Beware of clipping when using a positive gain.",
+        "type": "number"
+      },
+      "mix": {
+        "default": 1,
+        "description": "How much to use filtered signal in output. Default is 1. Range is between 0 and 1.",
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "normalize": {
+        "default": false,
+        "description": "Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.",
+        "type": "boolean"
+      },
+      "poles": {
+        "default": 2,
+        "description": "Set number of poles. Default is 2.",
+        "type": "integer"
+      },
+      "precision": {
+        "description": "Set precision of filtering.",
+        "enum": [
+          "auto",
+          "s16",
+          "s32",
+          "f32",
+          "f64"
+        ],
+        "type": "string"
+      },
+      "transform": {
+        "description": "Set transform type of IIR filter.",
+        "enum": [
+          "di",
+          "dii",
+          "tdi",
+          "tdii",
+          "latt",
+          "svf",
+          "zdf"
+        ],
+        "type": "string"
+      },
+      "width": {
+        "description": "Determine how steep is the filter's shelf transition.",
+        "type": "number"
+      },
+      "width_type": {
+        "description": "Set method to specify band-width of filter.",
+        "enum": [
+          "h",
+          "q",
+          "o",
+          "s",
+          "k"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "tiltshelf options",
+    "type": "object"
+  },
+  "name": "tiltshelf",
+  "parameters": [
+    {
+      "description": "<dd><p>Give the gain at 0 Hz. Its useful range is about -20\n(for a large cut) to +20 (for a large boost).\nBeware of clipping when using a positive gain.\n</p>\n</dd>",
+      "name": "gain, g"
+    },
+    {
+      "description": "<dd><p>Set the filter\u2019s central frequency and so can be used\nto extend or reduce the frequency range to be boosted or cut.\nThe default value is <code>3000</code> Hz.\n</p>\n</dd>",
+      "name": "frequency, f"
+    },
+    {
+      "description": "<dd><p>Set method to specify band-width of filter.\n</p><dl compact=\"compact\">\n<dt><samp>h</samp></dt>\n<dd><p>Hz\n</p></dd>\n<dt><samp>q</samp></dt>\n<dd><p>Q-Factor\n</p></dd>\n<dt><samp>o</samp></dt>\n<dd><p>octave\n</p></dd>\n<dt><samp>s</samp></dt>\n<dd><p>slope\n</p></dd>\n<dt><samp>k</samp></dt>\n<dd><p>kHz\n</p></dd>\n</dl>\n</dd>",
+      "name": "width_type, t"
+    },
+    {
+      "description": "<dd><p>Determine how steep is the filter\u2019s shelf transition.\n</p>\n</dd>",
+      "name": "width, w"
+    },
+    {
+      "description": "<dd><p>Set number of poles. Default is 2.\n</p>\n</dd>",
+      "name": "poles, p"
+    },
+    {
+      "description": "<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>",
+      "name": "mix, m"
+    },
+    {
+      "description": "<dd><p>Specify which channels to filter, by default all available are filtered.\n</p>\n</dd>",
+      "name": "channels, c"
+    },
+    {
+      "description": "<dd><p>Normalize biquad coefficients, by default is disabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>",
+      "name": "normalize, n"
+    },
+    {
+      "description": "<dd><p>Set transform type of IIR filter.\n</p><dl compact=\"compact\">\n<dt><samp>di</samp></dt>\n<dt><samp>dii</samp></dt>\n<dt><samp>tdi</samp></dt>\n<dt><samp>tdii</samp></dt>\n<dt><samp>latt</samp></dt>\n<dt><samp>svf</samp></dt>\n<dt><samp>zdf</samp></dt>\n</dl>\n</dd>",
+      "name": "transform, a"
+    },
+    {
+      "description": "<dd><p>Set precision of filtering.\n</p><dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Pick automatic sample format depending on surround filters.\n</p></dd>\n<dt><samp>s16</samp></dt>\n<dd><p>Always use signed 16-bit.\n</p></dd>\n<dt><samp>s32</samp></dt>\n<dd><p>Always use signed 32-bit.\n</p></dd>\n<dt><samp>f32</samp></dt>\n<dd><p>Always use float 32-bit.\n</p></dd>\n<dt><samp>f64</samp></dt>\n<dd><p>Always use float 64-bit.\n</p></dd>\n</dl>\n</dd>",
+      "name": "precision, r"
+    },
+    {
+      "description": "<dd><p>Set block size used for reverse IIR processing. If this value is set to high enough\nvalue (higher than impulse response length truncated when reaches near zero values) filtering\nwill become linear phase otherwise if not big enough it will just produce nasty artifacts.\n</p>\n<p>Note that filter delay will be exactly this many samples when set to non-zero value.\n</p></dd>",
+      "name": "block_size, b"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tiltshelf",
+  "source": "<h3 class=\"section\"><a href=\"#toc-tiltshelf\">8.115 tiltshelf</a></h3>\n\n<p>Boost or cut the lower frequencies and cut or boost higher frequencies\nof the audio using a two-pole shelving filter with a response similar to\nthat of a standard hi-fi&rsquo;s tone-controls.\nThis is also known as shelving equalisation (EQ).\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>gain, g</samp></dt>\n<dd><p>Give the gain at 0 Hz. Its useful range is about -20\n(for a large cut) to +20 (for a large boost).\nBeware of clipping when using a positive gain.\n</p>\n</dd>\n<dt><samp>frequency, f</samp></dt>\n<dd><p>Set the filter&rsquo;s central frequency and so can be used\nto extend or reduce the frequency range to be boosted or cut.\nThe default value is <code>3000</code> Hz.\n</p>\n</dd>\n<dt><samp>width_type, t</samp></dt>\n<dd><p>Set method to specify band-width of filter.\n</p><dl compact=\"compact\">\n<dt><samp>h</samp></dt>\n<dd><p>Hz\n</p></dd>\n<dt><samp>q</samp></dt>\n<dd><p>Q-Factor\n</p></dd>\n<dt><samp>o</samp></dt>\n<dd><p>octave\n</p></dd>\n<dt><samp>s</samp></dt>\n<dd><p>slope\n</p></dd>\n<dt><samp>k</samp></dt>\n<dd><p>kHz\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>width, w</samp></dt>\n<dd><p>Determine how steep is the filter&rsquo;s shelf transition.\n</p>\n</dd>\n<dt><samp>poles, p</samp></dt>\n<dd><p>Set number of poles. Default is 2.\n</p>\n</dd>\n<dt><samp>mix, m</samp></dt>\n<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>\n<dt><samp>channels, c</samp></dt>\n<dd><p>Specify which channels to filter, by default all available are filtered.\n</p>\n</dd>\n<dt><samp>normalize, n</samp></dt>\n<dd><p>Normalize biquad coefficients, by default is disabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>\n<dt><samp>transform, a</samp></dt>\n<dd><p>Set transform type of IIR filter.\n</p><dl compact=\"compact\">\n<dt><samp>di</samp></dt>\n<dt><samp>dii</samp></dt>\n<dt><samp>tdi</samp></dt>\n<dt><samp>tdii</samp></dt>\n<dt><samp>latt</samp></dt>\n<dt><samp>svf</samp></dt>\n<dt><samp>zdf</samp></dt>\n</dl>\n\n</dd>\n<dt><samp>precision, r</samp></dt>\n<dd><p>Set precision of filtering.\n</p><dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Pick automatic sample format depending on surround filters.\n</p></dd>\n<dt><samp>s16</samp></dt>\n<dd><p>Always use signed 16-bit.\n</p></dd>\n<dt><samp>s32</samp></dt>\n<dd><p>Always use signed 32-bit.\n</p></dd>\n<dt><samp>f32</samp></dt>\n<dd><p>Always use float 32-bit.\n</p></dd>\n<dt><samp>f64</samp></dt>\n<dd><p>Always use float 64-bit.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>block_size, b</samp></dt>\n<dd><p>Set block size used for reverse IIR processing. If this value is set to high enough\nvalue (higher than impulse response length truncated when reaches near zero values) filtering\nwill become linear phase otherwise if not big enough it will just produce nasty artifacts.\n</p>\n<p>Note that filter delay will be exactly this many samples when set to non-zero value.\n</p></dd>\n</dl>\n\n"
+}

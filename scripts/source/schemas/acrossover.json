@@ -1,0 +1,87 @@
+{
+  "description": "8.6 acrossover\nSplit audio stream into several bands.\n\nThis filter splits audio stream into two or more frequency ranges.\nSumming all streams back will give flat output.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "gains": {
+        "default": [
+          1
+        ],
+        "items": {
+          "type": "number"
+        },
+        "type": "array"
+      },
+      "level": {
+        "default": 1,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "order": {
+        "default": "4th",
+        "enum": [
+          "2nd",
+          "4th",
+          "6th",
+          "8th",
+          "10th",
+          "12th",
+          "14th",
+          "16th",
+          "18th",
+          "20th"
+        ],
+        "type": "string"
+      },
+      "precision": {
+        "default": "auto",
+        "enum": [
+          "auto",
+          "float",
+          "double"
+        ],
+        "type": "string"
+      },
+      "split": {
+        "items": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "minItems": 2,
+        "type": "array",
+        "uniqueItems": true
+      }
+    },
+    "required": [
+      "split"
+    ],
+    "title": "acrossover options",
+    "type": "object"
+  },
+  "name": "acrossover",
+  "parameters": [
+    {
+      "description": "<dd><p>Set split frequencies. Those must be positive and increasing.\n</p>\n</dd>",
+      "name": "split"
+    },
+    {
+      "description": "<dd><p>Set filter order for each band split. This controls filter roll-off or steepness\nof filter transfer function.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>2nd</samp>\u2019</dt>\n<dd><p>12 dB per octave.\n</p></dd>\n<dt>\u2018<samp>4th</samp>\u2019</dt>\n<dd><p>24 dB per octave.\n</p></dd>\n<dt>\u2018<samp>6th</samp>\u2019</dt>\n<dd><p>36 dB per octave.\n</p></dd>\n<dt>\u2018<samp>8th</samp>\u2019</dt>\n<dd><p>48 dB per octave.\n</p></dd>\n<dt>\u2018<samp>10th</samp>\u2019</dt>\n<dd><p>60 dB per octave.\n</p></dd>\n<dt>\u2018<samp>12th</samp>\u2019</dt>\n<dd><p>72 dB per octave.\n</p></dd>\n<dt>\u2018<samp>14th</samp>\u2019</dt>\n<dd><p>84 dB per octave.\n</p></dd>\n<dt>\u2018<samp>16th</samp>\u2019</dt>\n<dd><p>96 dB per octave.\n</p></dd>\n<dt>\u2018<samp>18th</samp>\u2019</dt>\n<dd><p>108 dB per octave.\n</p></dd>\n<dt>\u2018<samp>20th</samp>\u2019</dt>\n<dd><p>120 dB per octave.\n</p></dd>\n</dl>\n<p>Default is <var>4th</var>.\n</p>\n</dd>",
+      "name": "order"
+    },
+    {
+      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p>\n</dd>",
+      "name": "level"
+    },
+    {
+      "description": "<dd><p>Set output gain for each band. Default value is 1 for all bands.\n</p>\n</dd>",
+      "name": "gains"
+    },
+    {
+      "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n<p>Default value is <code>auto</code>.\n</p></dd>",
+      "name": "precision"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acrossover",
+  "source": "<h3 class=\"section\"><a href=\"#toc-acrossover\">8.6 acrossover</a></h3>\n<p>Split audio stream into several bands.\n</p>\n<p>This filter splits audio stream into two or more frequency ranges.\nSumming all streams back will give flat output.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>split</samp></dt>\n<dd><p>Set split frequencies. Those must be positive and increasing.\n</p>\n</dd>\n<dt><samp>order</samp></dt>\n<dd><p>Set filter order for each band split. This controls filter roll-off or steepness\nof filter transfer function.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>2nd</samp>&rsquo;</dt>\n<dd><p>12 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>4th</samp>&rsquo;</dt>\n<dd><p>24 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>6th</samp>&rsquo;</dt>\n<dd><p>36 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>8th</samp>&rsquo;</dt>\n<dd><p>48 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>10th</samp>&rsquo;</dt>\n<dd><p>60 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>12th</samp>&rsquo;</dt>\n<dd><p>72 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>14th</samp>&rsquo;</dt>\n<dd><p>84 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>16th</samp>&rsquo;</dt>\n<dd><p>96 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>18th</samp>&rsquo;</dt>\n<dd><p>108 dB per octave.\n</p></dd>\n<dt>&lsquo;<samp>20th</samp>&rsquo;</dt>\n<dd><p>120 dB per octave.\n</p></dd>\n</dl>\n\n<p>Default is <var>4th</var>.\n</p>\n</dd>\n<dt><samp>level</samp></dt>\n<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p>\n</dd>\n<dt><samp>gains</samp></dt>\n<dd><p>Set output gain for each band. Default value is 1 for all bands.\n</p>\n</dd>\n<dt><samp>precision</samp></dt>\n<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n\n<p>Default value is <code>auto</code>.\n</p></dd>\n</dl>\n\n"
+}

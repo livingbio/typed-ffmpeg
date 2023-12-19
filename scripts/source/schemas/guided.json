@@ -1,0 +1,79 @@
+{
+  "description": "11.115 guided\nApply guided filter for edge-preserving smoothing, dehazing and so on.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "eps": {
+        "default": 0.01,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "guidance": {
+        "default": "off",
+        "enum": [
+          "off",
+          "on"
+        ],
+        "type": "string"
+      },
+      "mode": {
+        "default": "basic",
+        "enum": [
+          "basic",
+          "fast"
+        ],
+        "type": "string"
+      },
+      "planes": {
+        "default": "first only",
+        "type": "string"
+      },
+      "radius": {
+        "default": 3,
+        "maximum": 20,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "sub": {
+        "default": 4,
+        "maximum": 64,
+        "minimum": 2,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "guided filter options",
+    "type": "object"
+  },
+  "name": "guided",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the box radius in pixels.\nAllowed range is 1 to 20. Default is 3.\n</p>\n</dd>",
+      "name": "radius"
+    },
+    {
+      "description": "<dd><p>Set regularization parameter (with square).\nAllowed range is 0 to 1. Default is 0.01.\n</p>\n</dd>",
+      "name": "eps"
+    },
+    {
+      "description": "<dd><p>Set filter mode. Can be <code>basic</code> or <code>fast</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>Set subsampling ratio for <code>fast</code> mode.\nRange is 2 to 64. Default is 4.\nNo subsampling occurs in <code>basic</code> mode.\n</p>\n</dd>",
+      "name": "sub"
+    },
+    {
+      "description": "<dd><p>Set guidance mode. Can be <code>off</code> or <code>on</code>. Default is <code>off</code>.\nIf <code>off</code>, single input is required.\nIf <code>on</code>, two inputs of the same resolution and pixel format are required.\nThe second input serves as the guidance.\n</p>\n</dd>",
+      "name": "guidance"
+    },
+    {
+      "description": "<dd><p>Set planes to filter. Default is first only.\n</p></dd>",
+      "name": "planes"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#guided",
+  "source": "<h3 class=\"section\"><a href=\"#toc-guided\">11.115 guided</a></h3>\n<p>Apply guided filter for edge-preserving smoothing, dehazing and so on.\n</p>\n<p>The filter accepts the following options:\n</p><dl compact=\"compact\">\n<dt><samp>radius</samp></dt>\n<dd><p>Set the box radius in pixels.\nAllowed range is 1 to 20. Default is 3.\n</p>\n</dd>\n<dt><samp>eps</samp></dt>\n<dd><p>Set regularization parameter (with square).\nAllowed range is 0 to 1. Default is 0.01.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set filter mode. Can be <code>basic</code> or <code>fast</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>\n<dt><samp>sub</samp></dt>\n<dd><p>Set subsampling ratio for <code>fast</code> mode.\nRange is 2 to 64. Default is 4.\nNo subsampling occurs in <code>basic</code> mode.\n</p>\n</dd>\n<dt><samp>guidance</samp></dt>\n<dd><p>Set guidance mode. Can be <code>off</code> or <code>on</code>. Default is <code>off</code>.\nIf <code>off</code>, single input is required.\nIf <code>on</code>, two inputs of the same resolution and pixel format are required.\nThe second input serves as the guidance.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set planes to filter. Default is first only.\n</p></dd>\n</dl>\n\n"
+}

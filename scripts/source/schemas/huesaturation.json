@@ -1,0 +1,106 @@
+{
+  "description": "11.130 huesaturation\nApply hue-saturation-intensity adjustments to input video stream.\n\nThis filter operates in RGB colorspace.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "bw": {
+        "default": 0.333,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "colors": {
+        "items": {
+          "enum": [
+            "r",
+            "y",
+            "g",
+            "c",
+            "b",
+            "m",
+            "a"
+          ],
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "gw": {
+        "default": 0.334,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "hue": {
+        "default": 0,
+        "maximum": 180,
+        "minimum": -180,
+        "type": "number"
+      },
+      "intensity": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      },
+      "lightness": {
+        "default": false,
+        "type": "boolean"
+      },
+      "rw": {
+        "default": 0.333,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "saturation": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      },
+      "strength": {
+        "default": 1,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "huesaturation options",
+    "type": "object"
+  },
+  "name": "huesaturation",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the hue shift in degrees to apply. Default is 0.\nAllowed range is from -180 to 180.\n</p>\n</dd>",
+      "name": "hue"
+    },
+    {
+      "description": "<dd><p>Set the saturation shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "name": "saturation"
+    },
+    {
+      "description": "<dd><p>Set the intensity shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "name": "intensity"
+    },
+    {
+      "description": "<dd><p>Set which primary and complementary colors are going to be adjusted.\nThis options is set by providing one or multiple values.\nThis can select multiple colors at once. By default all colors are selected.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dd><p>Adjust reds.\n</p></dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Adjust yellows.\n</p></dd>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dd><p>Adjust greens.\n</p></dd>\n<dt>\u2018<samp>c</samp>\u2019</dt>\n<dd><p>Adjust cyans.\n</p></dd>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n<dd><p>Adjust blues.\n</p></dd>\n<dt>\u2018<samp>m</samp>\u2019</dt>\n<dd><p>Adjust magentas.\n</p></dd>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>Adjust all colors.\n</p></dd>\n</dl>\n</dd>",
+      "name": "colors"
+    },
+    {
+      "description": "<dd><p>Set strength of filtering. Allowed range is from 0 to 100.\nDefault value is 1.\n</p>\n</dd>",
+      "name": "strength"
+    },
+    {
+      "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
+      "name": "rw, gw, bw"
+    },
+    {
+      "description": "<dd><p>Set preserving lightness, by default is disabled.\nAdjusting hues can change lightness from original RGB triplet,\nwith this option enabled lightness is kept at same value.\n</p></dd>",
+      "name": "lightness"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#huesaturation",
+  "source": "<h3 class=\"section\"><a href=\"#toc-huesaturation\">11.130 huesaturation</a></h3>\n<p>Apply hue-saturation-intensity adjustments to input video stream.\n</p>\n<p>This filter operates in RGB colorspace.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>hue</samp></dt>\n<dd><p>Set the hue shift in degrees to apply. Default is 0.\nAllowed range is from -180 to 180.\n</p>\n</dd>\n<dt><samp>saturation</samp></dt>\n<dd><p>Set the saturation shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>\n<dt><samp>intensity</samp></dt>\n<dd><p>Set the intensity shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>\n<dt><samp>colors</samp></dt>\n<dd><p>Set which primary and complementary colors are going to be adjusted.\nThis options is set by providing one or multiple values.\nThis can select multiple colors at once. By default all colors are selected.\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>r</samp>&rsquo;</dt>\n<dd><p>Adjust reds.\n</p></dd>\n<dt>&lsquo;<samp>y</samp>&rsquo;</dt>\n<dd><p>Adjust yellows.\n</p></dd>\n<dt>&lsquo;<samp>g</samp>&rsquo;</dt>\n<dd><p>Adjust greens.\n</p></dd>\n<dt>&lsquo;<samp>c</samp>&rsquo;</dt>\n<dd><p>Adjust cyans.\n</p></dd>\n<dt>&lsquo;<samp>b</samp>&rsquo;</dt>\n<dd><p>Adjust blues.\n</p></dd>\n<dt>&lsquo;<samp>m</samp>&rsquo;</dt>\n<dd><p>Adjust magentas.\n</p></dd>\n<dt>&lsquo;<samp>a</samp>&rsquo;</dt>\n<dd><p>Adjust all colors.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>strength</samp></dt>\n<dd><p>Set strength of filtering. Allowed range is from 0 to 100.\nDefault value is 1.\n</p>\n</dd>\n<dt><samp>rw, gw, bw</samp></dt>\n<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>\n<dt><samp>lightness</samp></dt>\n<dd><p>Set preserving lightness, by default is disabled.\nAdjusting hues can change lightness from original RGB triplet,\nwith this option enabled lightness is kept at same value.\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,107 @@
+{
+  "description": "11.91 fftfilt\nApply arbitrary expressions to samples in frequency domain",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "dc_U": {
+        "default": 0,
+        "maximum": 1000,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "dc_V": {
+        "default": 0,
+        "maximum": 1000,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "dc_Y": {
+        "default": 0,
+        "maximum": 1000,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "eval": {
+        "default": "init",
+        "enum": [
+          "init",
+          "frame"
+        ],
+        "type": "string"
+      },
+      "weight_U": {
+        "type": "string"
+      },
+      "weight_V": {
+        "type": "string"
+      },
+      "weight_Y": {
+        "type": "string"
+      }
+    },
+    "title": "fftfilt options",
+    "type": "object"
+  },
+  "name": "fftfilt",
+  "parameters": [
+    {
+      "description": "<dd><p>Adjust the dc value (gain) of the luma plane of the image. The filter\naccepts an integer value in range <code>0</code> to <code>1000</code>. The default\nvalue is set to <code>0</code>.\n</p>\n</dd>",
+      "name": "dc_Y"
+    },
+    {
+      "description": "<dd><p>Adjust the dc value (gain) of the 1st chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>",
+      "name": "dc_U"
+    },
+    {
+      "description": "<dd><p>Adjust the dc value (gain) of the 2nd chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>",
+      "name": "dc_V"
+    },
+    {
+      "description": "<dd><p>Set the frequency domain weight expression for the luma plane.\n</p>\n</dd>",
+      "name": "weight_Y"
+    },
+    {
+      "description": "<dd><p>Set the frequency domain weight expression for the 1st chroma plane.\n</p>\n</dd>",
+      "name": "weight_U"
+    },
+    {
+      "description": "<dd><p>Set the frequency domain weight expression for the 2nd chroma plane.\n</p>\n</dd>",
+      "name": "weight_V"
+    },
+    {
+      "description": "<dd><p>Set when the expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Only evaluate expressions once during the filter initialization.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p>\n<p>The filter accepts the following variables:\n</p></dd>",
+      "name": "eval"
+    },
+    {
+      "description": "<dd><p>The coordinates of the current sample.\n</p>\n</dd>",
+      "name": "X"
+    },
+    {
+      "description": "<dd><p>The coordinates of the current sample.\n</p>\n</dd>",
+      "name": "Y"
+    },
+    {
+      "description": "<dd><p>The width and height of the image.\n</p>\n</dd>",
+      "name": "W"
+    },
+    {
+      "description": "<dd><p>The width and height of the image.\n</p>\n</dd>",
+      "name": "H"
+    },
+    {
+      "description": "<dd><p>The number of input frame, starting from 0.\n</p>\n</dd>",
+      "name": "N"
+    },
+    {
+      "description": "<dd><p>The size of FFT array for horizontal and vertical processing.\n</p></dd>",
+      "name": "WS"
+    },
+    {
+      "description": "<dd><p>The size of FFT array for horizontal and vertical processing.\n</p></dd>",
+      "name": "HS"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#fftfilt",
+  "source": "<h3 class=\"section\"><a href=\"#toc-fftfilt\">11.91 fftfilt</a></h3>\n<p>Apply arbitrary expressions to samples in frequency domain\n</p>\n<dl compact=\"compact\">\n<dt><samp>dc_Y</samp></dt>\n<dd><p>Adjust the dc value (gain) of the luma plane of the image. The filter\naccepts an integer value in range <code>0</code> to <code>1000</code>. The default\nvalue is set to <code>0</code>.\n</p>\n</dd>\n<dt><samp>dc_U</samp></dt>\n<dd><p>Adjust the dc value (gain) of the 1st chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>\n<dt><samp>dc_V</samp></dt>\n<dd><p>Adjust the dc value (gain) of the 2nd chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>\n<dt><samp>weight_Y</samp></dt>\n<dd><p>Set the frequency domain weight expression for the luma plane.\n</p>\n</dd>\n<dt><samp>weight_U</samp></dt>\n<dd><p>Set the frequency domain weight expression for the 1st chroma plane.\n</p>\n</dd>\n<dt><samp>weight_V</samp></dt>\n<dd><p>Set the frequency domain weight expression for the 2nd chroma plane.\n</p>\n</dd>\n<dt><samp>eval</samp></dt>\n<dd><p>Set when the expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>init</samp>&rsquo;</dt>\n<dd><p>Only evaluate expressions once during the filter initialization.\n</p>\n</dd>\n<dt>&lsquo;<samp>frame</samp>&rsquo;</dt>\n<dd><p>Evaluate expressions for each incoming frame.\n</p></dd>\n</dl>\n\n<p>Default value is &lsquo;<samp>init</samp>&rsquo;.\n</p>\n<p>The filter accepts the following variables:\n</p></dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>The coordinates of the current sample.\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>The width and height of the image.\n</p>\n</dd>\n<dt><samp>N</samp></dt>\n<dd><p>The number of input frame, starting from 0.\n</p>\n</dd>\n<dt><samp>WS</samp></dt>\n<dt><samp>HS</samp></dt>\n<dd><p>The size of FFT array for horizontal and vertical processing.\n</p></dd>\n</dl>\n\n"
+}

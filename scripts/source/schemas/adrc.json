@@ -1,0 +1,69 @@
+{
+  "description": "8.15 adrc\nApply spectral dynamic range controller filter to input audio stream.\n\nA description of the accepted options follows.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "attack": {
+        "default": 50,
+        "description": "Set the attack in milliseconds.",
+        "examples": [
+          50
+        ],
+        "maximum": 1000,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "channels": {
+        "default": "all",
+        "description": "Set which channels to filter.",
+        "examples": [
+          "all"
+        ],
+        "type": "string"
+      },
+      "release": {
+        "default": 100,
+        "description": "Set the release in milliseconds.",
+        "examples": [
+          100
+        ],
+        "maximum": 2000,
+        "minimum": 5,
+        "type": "integer"
+      },
+      "transfer": {
+        "default": "p",
+        "description": "Set the transfer expression.",
+        "examples": [
+          "p"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "adrc options",
+    "type": "object"
+  },
+  "name": "adrc",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the transfer expression.\n</p>\n<p>The expression can contain the following constants:\n</p>\n<dl compact=\"compact\">\n<dt><samp>ch</samp></dt>\n<dd><p>current channel number\n</p>\n</dd>\n<dt><samp>sn</samp></dt>\n<dd><p>current sample number\n</p>\n</dd>\n<dt><samp>nb_channels</samp></dt>\n<dd><p>number of channels\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>timestamp expressed in seconds\n</p>\n</dd>\n<dt><samp>sr</samp></dt>\n<dd><p>sample rate\n</p>\n</dd>\n<dt><samp>p</samp></dt>\n<dd><p>current frequency power value, in dB\n</p>\n</dd>\n<dt><samp>f</samp></dt>\n<dd><p>current frequency in Hz\n</p></dd>\n</dl>\n<p>Default value is <code>p</code>.\n</p>\n</dd>",
+      "name": "transfer"
+    },
+    {
+      "description": "<dd><p>Set the attack in milliseconds. Default is <code>50</code> milliseconds.\nAllowed range is from 1 to 1000 milliseconds.\n</p></dd>",
+      "name": "attack"
+    },
+    {
+      "description": "<dd><p>Set the release in milliseconds. Default is <code>100</code> milliseconds.\nAllowed range is from 5 to 2000 milliseconds.\n</p></dd>",
+      "name": "release"
+    },
+    {
+      "description": "<dd><p>Set which channels to filter, by default <code>all</code> channels in audio stream are filtered.\n</p></dd>",
+      "name": "channels"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#adrc",
+  "source": "<h3 class=\"section\"><a href=\"#toc-adrc\">8.15 adrc</a></h3>\n\n<p>Apply spectral dynamic range controller filter to input audio stream.\n</p>\n<p>A description of the accepted options follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>transfer</samp></dt>\n<dd><p>Set the transfer expression.\n</p>\n<p>The expression can contain the following constants:\n</p>\n<dl compact=\"compact\">\n<dt><samp>ch</samp></dt>\n<dd><p>current channel number\n</p>\n</dd>\n<dt><samp>sn</samp></dt>\n<dd><p>current sample number\n</p>\n</dd>\n<dt><samp>nb_channels</samp></dt>\n<dd><p>number of channels\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>timestamp expressed in seconds\n</p>\n</dd>\n<dt><samp>sr</samp></dt>\n<dd><p>sample rate\n</p>\n</dd>\n<dt><samp>p</samp></dt>\n<dd><p>current frequency power value, in dB\n</p>\n</dd>\n<dt><samp>f</samp></dt>\n<dd><p>current frequency in Hz\n</p></dd>\n</dl>\n\n<p>Default value is <code>p</code>.\n</p>\n</dd>\n<dt><samp>attack</samp></dt>\n<dd><p>Set the attack in milliseconds. Default is <code>50</code> milliseconds.\nAllowed range is from 1 to 1000 milliseconds.\n</p></dd>\n<dt><samp>release</samp></dt>\n<dd><p>Set the release in milliseconds. Default is <code>100</code> milliseconds.\nAllowed range is from 5 to 2000 milliseconds.\n</p></dd>\n<dt><samp>channels</samp></dt>\n<dd><p>Set which channels to filter, by default <code>all</code> channels in audio stream are filtered.\n</p></dd>\n</dl>\n\n"
+}

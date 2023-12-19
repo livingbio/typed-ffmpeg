@@ -1,0 +1,82 @@
+{
+  "description": "11.261 tpad\nTemporarily pad video frames.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "color": {
+        "default": "black",
+        "description": "Specify the color of the padded area. Check the 'Color' section in the ffmpeg-utils manual for the syntax.",
+        "type": "string"
+      },
+      "start": {
+        "default": 0,
+        "description": "Specify number of delay frames before input video stream.",
+        "type": "integer"
+      },
+      "start_duration": {
+        "default": "0",
+        "description": "Specify the duration of the start delay. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax.",
+        "type": "string"
+      },
+      "start_mode": {
+        "default": "add",
+        "description": "Set kind of frames added to beginning of stream. Can be either 'add' or 'clone'.",
+        "enum": [
+          "add",
+          "clone"
+        ],
+        "type": "string"
+      },
+      "stop": {
+        "default": 0,
+        "description": "Specify number of padding frames after input video stream. Set to -1 to pad indefinitely.",
+        "type": "integer"
+      },
+      "stop_duration": {
+        "default": "0",
+        "description": "Specify the duration of the stop delay. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax.",
+        "type": "string"
+      },
+      "stop_mode": {
+        "default": "add",
+        "description": "Set kind of frames added to end of stream. Can be either 'add' or 'clone'.",
+        "enum": [
+          "add",
+          "clone"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "tpad options",
+    "type": "object"
+  },
+  "name": "tpad",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify number of delay frames before input video stream. Default is 0.\n</p>\n</dd>",
+      "name": "start"
+    },
+    {
+      "description": "<dd><p>Specify number of padding frames after input video stream.\nSet to -1 to pad indefinitely. Default is 0.\n</p>\n</dd>",
+      "name": "stop"
+    },
+    {
+      "description": "<dd><p>Set kind of frames added to beginning of stream.\nCan be either <var>add</var> or <var>clone</var>.\nWith <var>add</var> frames of solid-color are added.\nWith <var>clone</var> frames are clones of first frame.\nDefault is <var>add</var>.\n</p>\n</dd>",
+      "name": "start_mode"
+    },
+    {
+      "description": "<dd><p>Set kind of frames added to end of stream.\nCan be either <var>add</var> or <var>clone</var>.\nWith <var>add</var> frames of solid-color are added.\nWith <var>clone</var> frames are clones of last frame.\nDefault is <var>add</var>.\n</p>\n</dd>",
+      "name": "stop_mode"
+    },
+    {
+      "description": "<dd><p>Specify the duration of the start/stop delay. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nThese options override <var>start</var> and <var>stop</var>. Default is 0.\n</p>\n</dd>",
+      "name": "start_duration, stop_duration"
+    },
+    {
+      "description": "<dd><p>Specify the color of the padded area. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>.\n</p>\n<p>The default value of <var>color</var> is \"black\".\n</p></dd>",
+      "name": "color"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tpad",
+  "source": "<h3 class=\"section\"><a href=\"#toc-tpad\">11.261 tpad</a></h3>\n\n<p>Temporarily pad video frames.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>start</samp></dt>\n<dd><p>Specify number of delay frames before input video stream. Default is 0.\n</p>\n</dd>\n<dt><samp>stop</samp></dt>\n<dd><p>Specify number of padding frames after input video stream.\nSet to -1 to pad indefinitely. Default is 0.\n</p>\n</dd>\n<dt><samp>start_mode</samp></dt>\n<dd><p>Set kind of frames added to beginning of stream.\nCan be either <var>add</var> or <var>clone</var>.\nWith <var>add</var> frames of solid-color are added.\nWith <var>clone</var> frames are clones of first frame.\nDefault is <var>add</var>.\n</p>\n</dd>\n<dt><samp>stop_mode</samp></dt>\n<dd><p>Set kind of frames added to end of stream.\nCan be either <var>add</var> or <var>clone</var>.\nWith <var>add</var> frames of solid-color are added.\nWith <var>clone</var> frames are clones of last frame.\nDefault is <var>add</var>.\n</p>\n</dd>\n<dt><samp>start_duration, stop_duration</samp></dt>\n<dd><p>Specify the duration of the start/stop delay. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nThese options override <var>start</var> and <var>stop</var>. Default is 0.\n</p>\n</dd>\n<dt><samp>color</samp></dt>\n<dd><p>Specify the color of the padded area. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)&quot;Color&quot; section in the ffmpeg-utils\nmanual</a>.\n</p>\n<p>The default value of <var>color</var> is &quot;black&quot;.\n</p></dd>\n</dl>\n\n"
+}

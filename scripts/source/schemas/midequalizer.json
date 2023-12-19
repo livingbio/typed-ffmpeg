@@ -1,0 +1,24 @@
+{
+  "description": "11.165 midequalizer\nApply Midway Image Equalization effect using two video streams.\n\nMidway Image Equalization adjusts a pair of images to have the same\nhistogram, while maintaining their dynamics as much as possible. It\u2019s\nuseful for e.g. matching exposures from a pair of stereo cameras.\n\nThis filter has two inputs and one output, which must be of same pixel format, but\nmay be of different sizes. The output of filter is first input adjusted with\nmidway histogram of both inputs.\n\nThis filter accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "planes": {
+        "default": 15,
+        "description": "Set which planes to process. Default is 15, which is all available planes.",
+        "type": "integer"
+      }
+    },
+    "title": "midequalizer options",
+    "type": "object"
+  },
+  "name": "midequalizer",
+  "parameters": [
+    {
+      "description": "<dd><p>Set which planes to process. Default is <code>15</code>, which is all available planes.\n</p></dd>",
+      "name": "planes"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#midequalizer",
+  "source": "<h3 class=\"section\"><a href=\"#toc-midequalizer\">11.165 midequalizer</a></h3>\n\n<p>Apply Midway Image Equalization effect using two video streams.\n</p>\n<p>Midway Image Equalization adjusts a pair of images to have the same\nhistogram, while maintaining their dynamics as much as possible. It&rsquo;s\nuseful for e.g. matching exposures from a pair of stereo cameras.\n</p>\n<p>This filter has two inputs and one output, which must be of same pixel format, but\nmay be of different sizes. The output of filter is first input adjusted with\nmidway histogram of both inputs.\n</p>\n<p>This filter accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes to process. Default is <code>15</code>, which is all available planes.\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,46 @@
+{
+  "description": "8.61 asubcut\nCut subwoofer frequencies.\n\nThis filter allows to set custom, steeper\nroll off than highpass filter, and thus is able to more attenuate\nfrequency content in stop-band.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "cutoff": {
+        "default": 20,
+        "maximum": 200,
+        "minimum": 2,
+        "type": "number"
+      },
+      "level": {
+        "default": 1,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "order": {
+        "default": 10,
+        "maximum": 20,
+        "minimum": 3,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "asubcut options",
+    "type": "object"
+  },
+  "name": "asubcut",
+  "parameters": [
+    {
+      "description": "<dd><p>Set cutoff frequency in Hertz. Allowed range is 2 to 200.\nDefault value is 20.\n</p>\n</dd>",
+      "name": "cutoff"
+    },
+    {
+      "description": "<dd><p>Set filter order. Available values are from 3 to 20.\nDefault value is 10.\n</p>\n</dd>",
+      "name": "order"
+    },
+    {
+      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p></dd>",
+      "name": "level"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asubcut",
+  "source": "<h3 class=\"section\"><a href=\"#toc-asubcut\">8.61 asubcut</a></h3>\n<p>Cut subwoofer frequencies.\n</p>\n<p>This filter allows to set custom, steeper\nroll off than highpass filter, and thus is able to more attenuate\nfrequency content in stop-band.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>cutoff</samp></dt>\n<dd><p>Set cutoff frequency in Hertz. Allowed range is 2 to 200.\nDefault value is 20.\n</p>\n</dd>\n<dt><samp>order</samp></dt>\n<dd><p>Set filter order. Available values are from 3 to 20.\nDefault value is 10.\n</p>\n</dd>\n<dt><samp>level</samp></dt>\n<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p></dd>\n</dl>\n\n"
+}

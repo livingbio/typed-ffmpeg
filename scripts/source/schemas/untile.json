@@ -1,0 +1,26 @@
+{
+  "description": "11.267 untile\nDecompose a video made of tiled images into the individual images.\n\nThe frame rate of the output video is the frame rate of the input video\nmultiplied by the number of tiles.\n\nThis filter does the reverse of tile.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "layout": {
+        "description": "Set the grid size (i.e. the number of lines and columns). For the syntax of this option, check the \"Video size\" section in the ffmpeg-utils manual.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "layout"
+    ],
+    "title": "untile options",
+    "type": "object"
+  },
+  "name": "untile",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the grid size (i.e. the number of lines and columns). For the syntax of\nthis option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p></dd>",
+      "name": "layout"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#untile",
+  "source": "<h3 class=\"section\"><a href=\"#toc-untile-1\">11.267 untile</a></h3>\n\n<p>Decompose a video made of tiled images into the individual images.\n</p>\n<p>The frame rate of the output video is the frame rate of the input video\nmultiplied by the number of tiles.\n</p>\n<p>This filter does the reverse of <a href=\"#tile\">tile</a>.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>layout</samp></dt>\n<dd><p>Set the grid size (i.e. the number of lines and columns). For the syntax of\nthis option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)&quot;Video size&quot; section in the ffmpeg-utils manual</a>.\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,26 @@
+{
+  "description": "11.104 framestep\nSelect one frame every N-th frame.\n\nThis filter accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "step": {
+        "default": 1,
+        "minimum": 1,
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "framestep",
+    "type": "object"
+  },
+  "name": "framestep",
+  "parameters": [
+    {
+      "description": "<dd><p>Select frame after every <code>step</code> frames.\nAllowed values are positive integers higher than 0. Default value is <code>1</code>.\n</p></dd>",
+      "name": "step"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#framestep",
+  "source": "<h3 class=\"section\"><a href=\"#toc-framestep\">11.104 framestep</a></h3>\n\n<p>Select one frame every N-th frame.\n</p>\n<p>This filter accepts the following option:\n</p><dl compact=\"compact\">\n<dt><samp>step</samp></dt>\n<dd><p>Select frame after every <code>step</code> frames.\nAllowed values are positive integers higher than 0. Default value is <code>1</code>.\n</p></dd>\n</dl>\n\n"
+}

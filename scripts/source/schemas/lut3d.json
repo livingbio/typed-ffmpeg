@@ -1,0 +1,50 @@
+{
+  "description": "11.151 lut3d\nApply a 3D LUT to an input video.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "file": {
+        "description": "Set the 3D LUT file name.",
+        "enum": [
+          "3dl",
+          "cube",
+          "dat",
+          "m3d",
+          "csp"
+        ],
+        "type": "string"
+      },
+      "interp": {
+        "description": "Select interpolation mode.",
+        "enum": [
+          "nearest",
+          "trilinear",
+          "tetrahedral",
+          "pyramid",
+          "prism"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "file",
+      "interp"
+    ],
+    "title": "lut3d options",
+    "type": "object"
+  },
+  "name": "lut3d",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the 3D LUT file name.\n</p>\n<p>Currently supported formats:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>3dl</samp>\u2019</dt>\n<dd><p>AfterEffects\n</p></dd>\n<dt>\u2018<samp>cube</samp>\u2019</dt>\n<dd><p>Iridas\n</p></dd>\n<dt>\u2018<samp>dat</samp>\u2019</dt>\n<dd><p>DaVinci\n</p></dd>\n<dt>\u2018<samp>m3d</samp>\u2019</dt>\n<dd><p>Pandora\n</p></dd>\n<dt>\u2018<samp>csp</samp>\u2019</dt>\n<dd><p>cineSpace\n</p></dd>\n</dl>\n</dd>",
+      "name": "file"
+    },
+    {
+      "description": "<dd><p>Select interpolation mode.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dd><p>Use values from the nearest defined point.\n</p></dd>\n<dt>\u2018<samp>trilinear</samp>\u2019</dt>\n<dd><p>Interpolate values using the 8 points defining a cube.\n</p></dd>\n<dt>\u2018<samp>tetrahedral</samp>\u2019</dt>\n<dd><p>Interpolate values using a tetrahedron.\n</p></dd>\n<dt>\u2018<samp>pyramid</samp>\u2019</dt>\n<dd><p>Interpolate values using a pyramid.\n</p></dd>\n<dt>\u2018<samp>prism</samp>\u2019</dt>\n<dd><p>Interpolate values using a prism.\n</p></dd>\n</dl>\n</dd>",
+      "name": "interp"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#lut3d",
+  "source": "<h3 class=\"section\"><a href=\"#toc-lut3d-1\">11.151 lut3d</a></h3>\n\n<p>Apply a 3D LUT to an input video.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>file</samp></dt>\n<dd><p>Set the 3D LUT file name.\n</p>\n<p>Currently supported formats:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>3dl</samp>&rsquo;</dt>\n<dd><p>AfterEffects\n</p></dd>\n<dt>&lsquo;<samp>cube</samp>&rsquo;</dt>\n<dd><p>Iridas\n</p></dd>\n<dt>&lsquo;<samp>dat</samp>&rsquo;</dt>\n<dd><p>DaVinci\n</p></dd>\n<dt>&lsquo;<samp>m3d</samp>&rsquo;</dt>\n<dd><p>Pandora\n</p></dd>\n<dt>&lsquo;<samp>csp</samp>&rsquo;</dt>\n<dd><p>cineSpace\n</p></dd>\n</dl>\n</dd>\n<dt><samp>interp</samp></dt>\n<dd><p>Select interpolation mode.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>nearest</samp>&rsquo;</dt>\n<dd><p>Use values from the nearest defined point.\n</p></dd>\n<dt>&lsquo;<samp>trilinear</samp>&rsquo;</dt>\n<dd><p>Interpolate values using the 8 points defining a cube.\n</p></dd>\n<dt>&lsquo;<samp>tetrahedral</samp>&rsquo;</dt>\n<dd><p>Interpolate values using a tetrahedron.\n</p></dd>\n<dt>&lsquo;<samp>pyramid</samp>&rsquo;</dt>\n<dd><p>Interpolate values using a pyramid.\n</p></dd>\n<dt>&lsquo;<samp>prism</samp>&rsquo;</dt>\n<dd><p>Interpolate values using a prism.\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n"
+}

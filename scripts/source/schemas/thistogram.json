@@ -1,0 +1,100 @@
+{
+  "description": "11.252 thistogram\nCompute and draw a color distribution histogram for the input video across time.\n\nUnlike histogram video filter which only shows histogram of single input frame\nat certain time, this filter shows also past histograms of number of frames defined\nby width option.\n\nThe computed histogram is a representation of the color component\ndistribution in an image.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "bgopacity": {
+        "default": 0.9,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "components": {
+        "default": 7,
+        "type": "integer"
+      },
+      "display_mode": {
+        "default": "stack",
+        "enum": [
+          "stack",
+          "parade",
+          "overlay"
+        ],
+        "type": "string"
+      },
+      "ecolor": {
+        "default": "gold",
+        "type": "string"
+      },
+      "envelope": {
+        "default": false,
+        "type": "boolean"
+      },
+      "levels_mode": {
+        "default": "linear",
+        "enum": [
+          "linear",
+          "logarithmic"
+        ],
+        "type": "string"
+      },
+      "slide": {
+        "default": "replace",
+        "enum": [
+          "frame",
+          "replace",
+          "scroll",
+          "rscroll",
+          "picture"
+        ],
+        "type": "string"
+      },
+      "width": {
+        "default": 0,
+        "maximum": 8192,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "title": "thistogram options",
+    "type": "object"
+  },
+  "name": "thistogram",
+  "parameters": [
+    {
+      "description": "<dd><p>Set width of single color component output. Default value is <code>0</code>.\nValue of <code>0</code> means width will be picked from input video.\nThis also set number of passed histograms to keep.\nAllowed range is [0, 8192].\n</p>\n</dd>",
+      "name": "width, w"
+    },
+    {
+      "description": "<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>stack</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed below each other.\n</p>\n</dd>\n<dt>\u2018<samp>parade</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed side by side.\n</p>\n</dd>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dd><p>Presents information identical to that in the <code>parade</code>, except\nthat the graphs representing color components are superimposed directly\nover one another.\n</p></dd>\n</dl>\n<p>Default is <code>stack</code>.\n</p>\n</dd>",
+      "name": "display_mode, d"
+    },
+    {
+      "description": "<dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.\nDefault is <code>linear</code>.\n</p>\n</dd>",
+      "name": "levels_mode, m"
+    },
+    {
+      "description": "<dd><p>Set what color components to display.\nDefault is <code>7</code>.\n</p>\n</dd>",
+      "name": "components, c"
+    },
+    {
+      "description": "<dd><p>Set background opacity. Default is <code>0.9</code>.\n</p>\n</dd>",
+      "name": "bgopacity, b"
+    },
+    {
+      "description": "<dd><p>Show envelope. Default is disabled.\n</p>\n</dd>",
+      "name": "envelope, e"
+    },
+    {
+      "description": "<dd><p>Set envelope color. Default is <code>gold</code>.\n</p>\n</dd>",
+      "name": "ecolor, ec"
+    },
+    {
+      "description": "<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Draw new frame when right border is reached.\n</p>\n</dd>\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>\u2018<samp>rscroll</samp>\u2019</dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>\u2018<samp>picture</samp>\u2019</dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n<p>Default is <code>replace</code>.\n</p></dd>",
+      "name": "slide"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#thistogram",
+  "source": "<h3 class=\"section\"><a href=\"#toc-thistogram\">11.252 thistogram</a></h3>\n\n<p>Compute and draw a color distribution histogram for the input video across time.\n</p>\n<p>Unlike <a href=\"#histogram\">histogram</a> video filter which only shows histogram of single input frame\nat certain time, this filter shows also past histograms of number of frames defined\nby <code>width</code> option.\n</p>\n<p>The computed histogram is a representation of the color component\ndistribution in an image.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>width, w</samp></dt>\n<dd><p>Set width of single color component output. Default value is <code>0</code>.\nValue of <code>0</code> means width will be picked from input video.\nThis also set number of passed histograms to keep.\nAllowed range is [0, 8192].\n</p>\n</dd>\n<dt><samp>display_mode, d</samp></dt>\n<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>stack</samp>&rsquo;</dt>\n<dd><p>Per color component graphs are placed below each other.\n</p>\n</dd>\n<dt>&lsquo;<samp>parade</samp>&rsquo;</dt>\n<dd><p>Per color component graphs are placed side by side.\n</p>\n</dd>\n<dt>&lsquo;<samp>overlay</samp>&rsquo;</dt>\n<dd><p>Presents information identical to that in the <code>parade</code>, except\nthat the graphs representing color components are superimposed directly\nover one another.\n</p></dd>\n</dl>\n<p>Default is <code>stack</code>.\n</p>\n</dd>\n<dt><samp>levels_mode, m</samp></dt>\n<dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.\nDefault is <code>linear</code>.\n</p>\n</dd>\n<dt><samp>components, c</samp></dt>\n<dd><p>Set what color components to display.\nDefault is <code>7</code>.\n</p>\n</dd>\n<dt><samp>bgopacity, b</samp></dt>\n<dd><p>Set background opacity. Default is <code>0.9</code>.\n</p>\n</dd>\n<dt><samp>envelope, e</samp></dt>\n<dd><p>Show envelope. Default is disabled.\n</p>\n</dd>\n<dt><samp>ecolor, ec</samp></dt>\n<dd><p>Set envelope color. Default is <code>gold</code>.\n</p>\n</dd>\n<dt><samp>slide</samp></dt>\n<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>frame</samp>&rsquo;</dt>\n<dd><p>Draw new frame when right border is reached.\n</p>\n</dd>\n<dt>&lsquo;<samp>replace</samp>&rsquo;</dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>&lsquo;<samp>scroll</samp>&rsquo;</dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>&lsquo;<samp>rscroll</samp>&rsquo;</dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>&lsquo;<samp>picture</samp>&rsquo;</dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n\n<p>Default is <code>replace</code>.\n</p></dd>\n</dl>\n\n"
+}

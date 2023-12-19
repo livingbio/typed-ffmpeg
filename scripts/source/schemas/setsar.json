@@ -1,0 +1,77 @@
+{
+  "description": "11.226 setdar, setsar\nThe setdar filter sets the Display Aspect Ratio for the filter\noutput video.\n\nThis is done by changing the specified Sample (aka Pixel) Aspect\nRatio, according to the following equation:\n\nDAR = HORIZONTAL_RESOLUTION / VERTICAL_RESOLUTION * SAR\n\nKeep in mind that the setdar filter does not modify the pixel\ndimensions of the video frame. Also, the display aspect ratio set by\nthis filter may be changed by later filters in the filterchain,\ne.g. in case of scaling or if another \"setdar\" or a \"setsar\" filter is\napplied.\n\nThe setsar filter sets the Sample (aka Pixel) Aspect Ratio for\nthe filter output video.\n\nNote that as a consequence of the application of this filter, the\noutput display aspect ratio will change according to the equation\nabove.\n\nKeep in mind that the sample aspect ratio set by the setsar\nfilter may be changed by later filters in the filterchain, e.g. if\nanother \"setsar\" or a \"setdar\" filter is applied.\n\nIt accepts the following parameters:\n\n\nThe parameter sar is an expression containing the following constants:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "dar": {
+        "description": "Set the aspect ratio used by the filter. The parameter can be a floating point number string, or an expression. If the parameter is not specified, the value '0' is assumed, meaning that the same input value is used. (Only for setdar)",
+        "oneOf": [
+          {
+            "pattern": "^\\d+(\\.\\d+)?$",
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "max": {
+        "default": 100,
+        "description": "Set the maximum integer value to use for expressing numerator and denominator when reducing the expressed aspect ratio to a rational.",
+        "type": "integer"
+      },
+      "r": {
+        "description": "Set the aspect ratio used by the filter. The parameter can be a floating point number string, or an expression. If the parameter is not specified, the value '0' is assumed, meaning that the same input value is used.",
+        "oneOf": [
+          {
+            "pattern": "^\\d+(\\.\\d+)?$",
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "ratio": {
+        "description": "Set the aspect ratio used by the filter. The parameter can be a floating point number string, or an expression. If the parameter is not specified, the value '0' is assumed, meaning that the same input value is used.",
+        "oneOf": [
+          {
+            "pattern": "^\\d+(\\.\\d+)?$",
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "sar": {
+        "description": "Set the aspect ratio used by the filter. The parameter can be a floating point number string, or an expression. If the parameter is not specified, the value '0' is assumed, meaning that the same input value is used. (Only for setsar)",
+        "oneOf": [
+          {
+            "pattern": "^\\d+(\\.\\d+)?$",
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "title": "setsar options",
+    "type": "object"
+  },
+  "name": "setsar",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the aspect ratio used by the filter.\n</p>\n<p>The parameter can be a floating point number string, or an expression. If the\nparameter is not specified, the value \"0\" is assumed, meaning that the same\ninput value is used.\n</p>\n</dd>",
+      "name": "r, ratio, dar (setdar only), sar (setsar only)"
+    },
+    {
+      "description": "<dd><p>Set the maximum integer value to use for expressing numerator and\ndenominator when reducing the expressed aspect ratio to a rational.\nDefault value is <code>100</code>.\n</p>\n</dd>",
+      "name": "max"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar",
+  "source": "<h3 class=\"section\"><a href=\"#toc-setdar_002c-setsar\">11.226 setdar, setsar</a></h3>\n\n<p>The <code>setdar</code> filter sets the Display Aspect Ratio for the filter\noutput video.\n</p>\n<p>This is done by changing the specified Sample (aka Pixel) Aspect\nRatio, according to the following equation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>DAR</var> = <var>HORIZONTAL_RESOLUTION</var> / <var>VERTICAL_RESOLUTION</var> * <var>SAR</var>\n</pre></div>\n\n<p>Keep in mind that the <code>setdar</code> filter does not modify the pixel\ndimensions of the video frame. Also, the display aspect ratio set by\nthis filter may be changed by later filters in the filterchain,\ne.g. in case of scaling or if another &quot;setdar&quot; or a &quot;setsar&quot; filter is\napplied.\n</p>\n<p>The <code>setsar</code> filter sets the Sample (aka Pixel) Aspect Ratio for\nthe filter output video.\n</p>\n<p>Note that as a consequence of the application of this filter, the\noutput display aspect ratio will change according to the equation\nabove.\n</p>\n<p>Keep in mind that the sample aspect ratio set by the <code>setsar</code>\nfilter may be changed by later filters in the filterchain, e.g. if\nanother &quot;setsar&quot; or a &quot;setdar&quot; filter is applied.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>r, ratio, dar (<code>setdar</code> only), sar (<code>setsar</code> only)</samp></dt>\n<dd><p>Set the aspect ratio used by the filter.\n</p>\n<p>The parameter can be a floating point number string, or an expression. If the\nparameter is not specified, the value &quot;0&quot; is assumed, meaning that the same\ninput value is used.\n</p>\n</dd>\n<dt><samp>max</samp></dt>\n<dd><p>Set the maximum integer value to use for expressing numerator and\ndenominator when reducing the expressed aspect ratio to a rational.\nDefault value is <code>100</code>.\n</p>\n</dd>\n</dl>\n\n<p>The parameter <var>sar</var> is an expression containing the following constants:\n</p>\n<dl compact=\"compact\">\n<dt><samp>w, h</samp></dt>\n<dd><p>The input width and height.\n</p>\n</dd>\n<dt><samp>a</samp></dt>\n<dd><p>Same as <var>w</var> / <var>h</var>.\n</p>\n</dd>\n<dt><samp>sar</samp></dt>\n<dd><p>The input sample aspect ratio.\n</p>\n</dd>\n<dt><samp>dar</samp></dt>\n<dd><p>The input display aspect ratio. It is the same as\n(<var>w</var> / <var>h</var>) * <var>sar</var>.\n</p>\n</dd>\n<dt><samp>hsub, vsub</samp></dt>\n<dd><p>Horizontal and vertical chroma subsample values. For example, for the\npixel format &quot;yuv422p&quot; <var>hsub</var> is 2 and <var>vsub</var> is 1.\n</p></dd>\n</dl>\n\n"
+}

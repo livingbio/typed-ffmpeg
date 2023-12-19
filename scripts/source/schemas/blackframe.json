@@ -1,0 +1,39 @@
+{
+  "description": "11.14 blackframe\nDetect frames that are (almost) completely black. Can be useful to\ndetect chapter transitions or commercials. Output lines consist of\nthe frame number of the detected frame, the percentage of blackness,\nthe position in the file if known or -1 and the timestamp in seconds.\n\nIn order to display the output lines, you need to set the loglevel at\nleast to the AV_LOG_INFO value.\n\nThis filter exports frame metadata lavfi.blackframe.pblack.\nThe value represents the percentage of pixels in the picture that\nare below the threshold value.\n\nIt accepts the following parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "amount": {
+        "default": 98,
+        "description": "The percentage of the pixels that have to be below the threshold",
+        "type": "integer"
+      },
+      "thresh": {
+        "default": 32,
+        "description": "The threshold below which a pixel value is considered black",
+        "type": "integer"
+      },
+      "threshold": {
+        "default": 32,
+        "description": "The threshold below which a pixel value is considered black",
+        "type": "integer"
+      }
+    },
+    "title": "blackframe options",
+    "type": "object"
+  },
+  "name": "blackframe",
+  "parameters": [
+    {
+      "description": "<dd><p>The percentage of the pixels that have to be below the threshold; it defaults to\n<code>98</code>.\n</p>\n</dd>",
+      "name": "amount"
+    },
+    {
+      "description": "<dd><p>The threshold below which a pixel value is considered black; it defaults to\n<code>32</code>.\n</p>\n</dd>",
+      "name": "threshold, thresh"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#blackframe",
+  "source": "<h3 class=\"section\"><a href=\"#toc-blackframe\">11.14 blackframe</a></h3>\n\n<p>Detect frames that are (almost) completely black. Can be useful to\ndetect chapter transitions or commercials. Output lines consist of\nthe frame number of the detected frame, the percentage of blackness,\nthe position in the file if known or -1 and the timestamp in seconds.\n</p>\n<p>In order to display the output lines, you need to set the loglevel at\nleast to the AV_LOG_INFO value.\n</p>\n<p>This filter exports frame metadata <code>lavfi.blackframe.pblack</code>.\nThe value represents the percentage of pixels in the picture that\nare below the threshold value.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>amount</samp></dt>\n<dd><p>The percentage of the pixels that have to be below the threshold; it defaults to\n<code>98</code>.\n</p>\n</dd>\n<dt><samp>threshold, thresh</samp></dt>\n<dd><p>The threshold below which a pixel value is considered black; it defaults to\n<code>32</code>.\n</p>\n</dd>\n</dl>\n\n"
+}

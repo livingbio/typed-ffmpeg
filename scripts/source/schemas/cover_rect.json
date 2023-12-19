@@ -1,0 +1,36 @@
+{
+  "description": "11.49 cover_rect\nCover a rectangular object\n\nIt accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "cover": {
+        "description": "Filepath of the optional cover image, needs to be in yuv420.",
+        "type": "string"
+      },
+      "mode": {
+        "default": "blur",
+        "description": "Set covering mode. Possible values are 'cover' and 'blur'.",
+        "enum": [
+          "cover",
+          "blur"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "cover_rect options",
+    "type": "object"
+  },
+  "name": "cover_rect",
+  "parameters": [
+    {
+      "description": "<dd><p>Filepath of the optional cover image, needs to be in yuv420.\n</p>\n</dd>",
+      "name": "cover"
+    },
+    {
+      "description": "<dd><p>Set covering mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>cover</samp>\u2019</dt>\n<dd><p>cover it by the supplied image\n</p></dd>\n<dt>\u2018<samp>blur</samp>\u2019</dt>\n<dd><p>cover it by interpolating the surrounding pixels\n</p></dd>\n</dl>\n<p>Default value is <var>blur</var>.\n</p></dd>",
+      "name": "mode"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#cover_005frect",
+  "source": "<h3 class=\"section\"><a href=\"#toc-cover_005frect\">11.49 cover_rect</a></h3>\n\n<p>Cover a rectangular object\n</p>\n<p>It accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>cover</samp></dt>\n<dd><p>Filepath of the optional cover image, needs to be in yuv420.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Set covering mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>cover</samp>&rsquo;</dt>\n<dd><p>cover it by the supplied image\n</p></dd>\n<dt>&lsquo;<samp>blur</samp>&rsquo;</dt>\n<dd><p>cover it by interpolating the surrounding pixels\n</p></dd>\n</dl>\n\n<p>Default value is <var>blur</var>.\n</p></dd>\n</dl>\n\n"
+}

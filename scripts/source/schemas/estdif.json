@@ -1,0 +1,116 @@
+{
+  "description": "11.85 estdif\nDeinterlace the input video (\"estdif\" stands for \"Edge Slope\nTracing Deinterlacing Filter\").\n\nSpatial only filter that uses edge slope tracing algorithm\nto interpolate missing lines.\nIt accepts the following parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "dcost": {
+        "default": 1,
+        "maximum": 50,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "deint": {
+        "default": "all",
+        "enum": [
+          "all",
+          "interlaced"
+        ],
+        "type": "string"
+      },
+      "ecost": {
+        "default": 2,
+        "maximum": 50,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "interp": {
+        "default": "4p",
+        "enum": [
+          "2p",
+          "4p",
+          "6p"
+        ],
+        "type": "string"
+      },
+      "mcost": {
+        "default": 1,
+        "maximum": 50,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "mode": {
+        "default": "field",
+        "enum": [
+          "frame",
+          "field"
+        ],
+        "type": "string"
+      },
+      "parity": {
+        "default": "auto",
+        "enum": [
+          "tff",
+          "bff",
+          "auto"
+        ],
+        "type": "string"
+      },
+      "redge": {
+        "default": 2,
+        "maximum": 15,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "rslope": {
+        "default": 1,
+        "maximum": 15,
+        "minimum": 1,
+        "type": "integer"
+      }
+    },
+    "title": "estdif options",
+    "type": "object"
+  },
+  "name": "estdif",
+  "parameters": [
+    {
+      "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n<p>The default value is <code>field</code>.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
+      "name": "parity"
+    },
+    {
+      "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following\nvalues:\n</p>\n<dl compact=\"compact\">\n<dt><samp>all</samp></dt>\n<dd><p>Deinterlace all frames.\n</p></dd>\n<dt><samp>interlaced</samp></dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>The default value is <code>all</code>.\n</p>\n</dd>",
+      "name": "deint"
+    },
+    {
+      "description": "<dd><p>Specify the search radius for edge slope tracing. Default value is 1.\nAllowed range is from 1 to 15.\n</p>\n</dd>",
+      "name": "rslope"
+    },
+    {
+      "description": "<dd><p>Specify the search radius for best edge matching. Default value is 2.\nAllowed range is from 0 to 15.\n</p>\n</dd>",
+      "name": "redge"
+    },
+    {
+      "description": "<dd><p>Specify the edge cost for edge matching. Default value is 2.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
+      "name": "ecost"
+    },
+    {
+      "description": "<dd><p>Specify the middle cost for edge matching. Default value is 1.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
+      "name": "mcost"
+    },
+    {
+      "description": "<dd><p>Specify the distance cost for edge matching. Default value is 1.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
+      "name": "dcost"
+    },
+    {
+      "description": "<dd><p>Specify the interpolation used. Default is 4-point interpolation. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>2p</samp></dt>\n<dd><p>Two-point interpolation.\n</p></dd>\n<dt><samp>4p</samp></dt>\n<dd><p>Four-point interpolation.\n</p></dd>\n<dt><samp>6p</samp></dt>\n<dd><p>Six-point interpolation.\n</p></dd>\n</dl>\n</dd>",
+      "name": "interp"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#estdif",
+  "source": "<h3 class=\"section\"><a href=\"#toc-estdif\">11.85 estdif</a></h3>\n\n<p>Deinterlace the input video (&quot;estdif&quot; stands for &quot;Edge Slope\nTracing Deinterlacing Filter&quot;).\n</p>\n<p>Spatial only filter that uses edge slope tracing algorithm\nto interpolate missing lines.\nIt accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>mode</samp></dt>\n<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n\n<p>The default value is <code>field</code>.\n</p>\n</dd>\n<dt><samp>parity</samp></dt>\n<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>\n<dt><samp>deint</samp></dt>\n<dd><p>Specify which frames to deinterlace. Accepts one of the following\nvalues:\n</p>\n<dl compact=\"compact\">\n<dt><samp>all</samp></dt>\n<dd><p>Deinterlace all frames.\n</p></dd>\n<dt><samp>interlaced</samp></dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n\n<p>The default value is <code>all</code>.\n</p>\n</dd>\n<dt><samp>rslope</samp></dt>\n<dd><p>Specify the search radius for edge slope tracing. Default value is 1.\nAllowed range is from 1 to 15.\n</p>\n</dd>\n<dt><samp>redge</samp></dt>\n<dd><p>Specify the search radius for best edge matching. Default value is 2.\nAllowed range is from 0 to 15.\n</p>\n</dd>\n<dt><samp>ecost</samp></dt>\n<dd><p>Specify the edge cost for edge matching. Default value is 2.\nAllowed range is from 0 to 50.\n</p>\n</dd>\n<dt><samp>mcost</samp></dt>\n<dd><p>Specify the middle cost for edge matching. Default value is 1.\nAllowed range is from 0 to 50.\n</p>\n</dd>\n<dt><samp>dcost</samp></dt>\n<dd><p>Specify the distance cost for edge matching. Default value is 1.\nAllowed range is from 0 to 50.\n</p>\n</dd>\n<dt><samp>interp</samp></dt>\n<dd><p>Specify the interpolation used. Default is 4-point interpolation. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>2p</samp></dt>\n<dd><p>Two-point interpolation.\n</p></dd>\n<dt><samp>4p</samp></dt>\n<dd><p>Four-point interpolation.\n</p></dd>\n<dt><samp>6p</samp></dt>\n<dd><p>Six-point interpolation.\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n"
+}

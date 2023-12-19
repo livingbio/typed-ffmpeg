@@ -1,0 +1,87 @@
+{
+  "description": "8.24 afftfilt\nApply arbitrary expressions to samples in frequency domain.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "imag": {
+        "default": "im",
+        "description": "Set frequency domain imaginary expression for each separate channel separated by '|'. Default is 'im'.",
+        "type": "string"
+      },
+      "overlap": {
+        "default": 0.75,
+        "description": "Set window overlap. If set to 1, the recommended overlap for selected window function will be picked. Default is 0.75.",
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "real": {
+        "default": "re",
+        "description": "Set frequency domain real expression for each separate channel separated by '|'. Default is 're'. If the number of input channels is greater than the number of expressions, the last specified expression is used for the remaining output channels.",
+        "type": "string"
+      },
+      "win_func": {
+        "default": "hann",
+        "description": "Set window function. Allowed values are 'rect', 'bartlett', 'hann', 'hamming', 'blackman', 'welch', 'flattop', 'bharris', 'bnuttall', 'bhann', 'sine', 'nuttall', 'lanczos', 'gauss', 'tukey', 'dolph', 'cauchy', 'parzen', 'poisson', 'bohman', 'kaiser'. Default is 'hann'.",
+        "enum": [
+          "rect",
+          "bartlett",
+          "hann",
+          "hamming",
+          "blackman",
+          "welch",
+          "flattop",
+          "bharris",
+          "bnuttall",
+          "bhann",
+          "sine",
+          "nuttall",
+          "lanczos",
+          "gauss",
+          "tukey",
+          "dolph",
+          "cauchy",
+          "parzen",
+          "poisson",
+          "bohman",
+          "kaiser"
+        ],
+        "type": "string"
+      },
+      "win_size": {
+        "default": 4096,
+        "description": "Set window size. Allowed range is from 16 to 131072. Default is 4096.",
+        "maximum": 131072,
+        "minimum": 16,
+        "type": "integer"
+      }
+    },
+    "title": "afftfilt options",
+    "type": "object"
+  },
+  "name": "afftfilt",
+  "parameters": [
+    {
+      "description": "<dd><p>Set frequency domain real expression for each separate channel separated\nby \u2019|\u2019. Default is \"re\".\nIf the number of input channels is greater than the number of\nexpressions, the last specified expression is used for the remaining\noutput channels.\n</p>\n</dd>",
+      "name": "real"
+    },
+    {
+      "description": "<dd><p>Set frequency domain imaginary expression for each separate channel\nseparated by \u2019|\u2019. Default is \"im\".\n</p>\n<p>Each expression in <var>real</var> and <var>imag</var> can contain the following\nconstants and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>sr</samp></dt>\n<dd><p>sample rate\n</p>\n</dd>\n<dt><samp>b</samp></dt>\n<dd><p>current frequency bin number\n</p>\n</dd>\n<dt><samp>nb</samp></dt>\n<dd><p>number of available bins\n</p>\n</dd>\n<dt><samp>ch</samp></dt>\n<dd><p>channel number of the current expression\n</p>\n</dd>\n<dt><samp>chs</samp></dt>\n<dd><p>number of channels\n</p>\n</dd>\n<dt><samp>pts</samp></dt>\n<dd><p>current frame pts\n</p>\n</dd>\n<dt><samp>re</samp></dt>\n<dd><p>current real part of frequency bin of current channel\n</p>\n</dd>\n<dt><samp>im</samp></dt>\n<dd><p>current imaginary part of frequency bin of current channel\n</p>\n</dd>\n<dt><samp>real(b, ch)</samp></dt>\n<dd><p>Return the value of real part of frequency bin at location (<var>bin</var>,<var>channel</var>)\n</p>\n</dd>\n<dt><samp>imag(b, ch)</samp></dt>\n<dd><p>Return the value of imaginary part of frequency bin at location (<var>bin</var>,<var>channel</var>)\n</p></dd>\n</dl>\n</dd>",
+      "name": "imag"
+    },
+    {
+      "description": "<dd><p>Set window size. Allowed range is from 16 to 131072.\nDefault is <code>4096</code>\n</p>\n</dd>",
+      "name": "win_size"
+    },
+    {
+      "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
+      "name": "win_func"
+    },
+    {
+      "description": "<dd><p>Set window overlap. If set to 1, the recommended overlap for selected\nwindow function will be picked. Default is <code>0.75</code>.\n</p></dd>",
+      "name": "overlap"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#afftfilt",
+  "source": "<h3 class=\"section\"><a href=\"#toc-afftfilt\">8.24 afftfilt</a></h3>\n<p>Apply arbitrary expressions to samples in frequency domain.\n</p>\n<dl compact=\"compact\">\n<dt><samp>real</samp></dt>\n<dd><p>Set frequency domain real expression for each separate channel separated\nby &rsquo;|&rsquo;. Default is &quot;re&quot;.\nIf the number of input channels is greater than the number of\nexpressions, the last specified expression is used for the remaining\noutput channels.\n</p>\n</dd>\n<dt><samp>imag</samp></dt>\n<dd><p>Set frequency domain imaginary expression for each separate channel\nseparated by &rsquo;|&rsquo;. Default is &quot;im&quot;.\n</p>\n<p>Each expression in <var>real</var> and <var>imag</var> can contain the following\nconstants and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>sr</samp></dt>\n<dd><p>sample rate\n</p>\n</dd>\n<dt><samp>b</samp></dt>\n<dd><p>current frequency bin number\n</p>\n</dd>\n<dt><samp>nb</samp></dt>\n<dd><p>number of available bins\n</p>\n</dd>\n<dt><samp>ch</samp></dt>\n<dd><p>channel number of the current expression\n</p>\n</dd>\n<dt><samp>chs</samp></dt>\n<dd><p>number of channels\n</p>\n</dd>\n<dt><samp>pts</samp></dt>\n<dd><p>current frame pts\n</p>\n</dd>\n<dt><samp>re</samp></dt>\n<dd><p>current real part of frequency bin of current channel\n</p>\n</dd>\n<dt><samp>im</samp></dt>\n<dd><p>current imaginary part of frequency bin of current channel\n</p>\n</dd>\n<dt><samp>real(b, ch)</samp></dt>\n<dd><p>Return the value of real part of frequency bin at location (<var>bin</var>,<var>channel</var>)\n</p>\n</dd>\n<dt><samp>imag(b, ch)</samp></dt>\n<dd><p>Return the value of imaginary part of frequency bin at location (<var>bin</var>,<var>channel</var>)\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>win_size</samp></dt>\n<dd><p>Set window size. Allowed range is from 16 to 131072.\nDefault is <code>4096</code>\n</p>\n</dd>\n<dt><samp>win_func</samp></dt>\n<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>rect</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bartlett</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>hann, hanning</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>hamming</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>blackman</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>welch</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>flattop</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bharris</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bnuttall</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bhann</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>sine</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>nuttall</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>lanczos</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>gauss</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>tukey</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>dolph</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>cauchy</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>parzen</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>poisson</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bohman</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>kaiser</samp>&rsquo;</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>\n<dt><samp>overlap</samp></dt>\n<dd><p>Set window overlap. If set to 1, the recommended overlap for selected\nwindow function will be picked. Default is <code>0.75</code>.\n</p></dd>\n</dl>\n\n"
+}

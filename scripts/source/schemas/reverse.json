@@ -1,0 +1,8 @@
+{
+  "description": "11.210 reverse\nReverse a video clip.\n\nWarning: This filter requires memory to buffer the entire clip, so trimming\nis suggested.",
+  "json_schema": {},
+  "name": "reverse",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+  "source": "<h3 class=\"section\"><a href=\"#toc-reverse\">11.210 reverse</a></h3>\n\n<p>Reverse a video clip.\n</p>\n<p>Warning: This filter requires memory to buffer the entire clip, so trimming\nis suggested.\n</p>\n"
+}

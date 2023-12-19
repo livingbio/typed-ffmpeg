@@ -1,0 +1,56 @@
+{
+  "description": "11.25 chromakey\nYUV colorspace color/chroma keying.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "blend": {
+        "description": "Blend percentage. 0.0 makes pixels either fully transparent, or not transparent at all. Higher values result in semi-transparent pixels, with a higher transparency the more similar the pixels color is to the key color.",
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "color": {
+        "description": "The color which will be replaced with transparency.",
+        "type": "string"
+      },
+      "similarity": {
+        "description": "Similarity percentage with the key color. 0.01 matches only the exact key color, while 1.0 matches everything.",
+        "maximum": 1.0,
+        "minimum": 0.01,
+        "type": "number"
+      },
+      "yuv": {
+        "description": "Signals that the color passed is already in YUV instead of RGB. Literal colors like 'green' or 'red' don't make sense with this enabled anymore. This can be used to pass exact YUV values as hexadecimal numbers.",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "color",
+      "similarity",
+      "blend"
+    ],
+    "title": "chromakey options",
+    "type": "object"
+  },
+  "name": "chromakey",
+  "parameters": [
+    {
+      "description": "<dd><p>The color which will be replaced with transparency.\n</p>\n</dd>",
+      "name": "color"
+    },
+    {
+      "description": "<dd><p>Similarity percentage with the key color.\n</p>\n<p>0.01 matches only the exact key color, while 1.0 matches everything.\n</p>\n</dd>",
+      "name": "similarity"
+    },
+    {
+      "description": "<dd><p>Blend percentage.\n</p>\n<p>0.0 makes pixels either fully transparent, or not transparent at all.\n</p>\n<p>Higher values result in semi-transparent pixels, with a higher transparency\nthe more similar the pixels color is to the key color.\n</p>\n</dd>",
+      "name": "blend"
+    },
+    {
+      "description": "<dd><p>Signals that the color passed is already in YUV instead of RGB.\n</p>\n<p>Literal colors like \"green\" or \"red\" don\u2019t make sense with this enabled anymore.\nThis can be used to pass exact YUV values as hexadecimal numbers.\n</p></dd>",
+      "name": "yuv"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#chromakey",
+  "source": "<h3 class=\"section\"><a href=\"#toc-chromakey-1\">11.25 chromakey</a></h3>\n<p>YUV colorspace color/chroma keying.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>color</samp></dt>\n<dd><p>The color which will be replaced with transparency.\n</p>\n</dd>\n<dt><samp>similarity</samp></dt>\n<dd><p>Similarity percentage with the key color.\n</p>\n<p>0.01 matches only the exact key color, while 1.0 matches everything.\n</p>\n</dd>\n<dt><samp>blend</samp></dt>\n<dd><p>Blend percentage.\n</p>\n<p>0.0 makes pixels either fully transparent, or not transparent at all.\n</p>\n<p>Higher values result in semi-transparent pixels, with a higher transparency\nthe more similar the pixels color is to the key color.\n</p>\n</dd>\n<dt><samp>yuv</samp></dt>\n<dd><p>Signals that the color passed is already in YUV instead of RGB.\n</p>\n<p>Literal colors like &quot;green&quot; or &quot;red&quot; don&rsquo;t make sense with this enabled anymore.\nThis can be used to pass exact YUV values as hexadecimal numbers.\n</p></dd>\n</dl>\n\n"
+}

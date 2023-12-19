@@ -1,0 +1,42 @@
+{
+  "description": "11.55 dblur\nApply Directional blur filter.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "angle": {
+        "default": 45,
+        "description": "Set angle of directional blur. Default is 45.",
+        "type": "number"
+      },
+      "planes": {
+        "default": "all",
+        "description": "Set which planes to filter. By default all planes are filtered.",
+        "type": "string"
+      },
+      "radius": {
+        "default": 5,
+        "description": "Set radius of directional blur. Default is 5.",
+        "type": "number"
+      }
+    },
+    "title": "dblur options",
+    "type": "object"
+  },
+  "name": "dblur",
+  "parameters": [
+    {
+      "description": "<dd><p>Set angle of directional blur. Default is <code>45</code>.\n</p>\n</dd>",
+      "name": "angle"
+    },
+    {
+      "description": "<dd><p>Set radius of directional blur. Default is <code>5</code>.\n</p>\n</dd>",
+      "name": "radius"
+    },
+    {
+      "description": "<dd><p>Set which planes to filter. By default all planes are filtered.\n</p></dd>",
+      "name": "planes"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#dblur",
+  "source": "<h3 class=\"section\"><a href=\"#toc-dblur\">11.55 dblur</a></h3>\n<p>Apply Directional blur filter.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>angle</samp></dt>\n<dd><p>Set angle of directional blur. Default is <code>45</code>.\n</p>\n</dd>\n<dt><samp>radius</samp></dt>\n<dd><p>Set radius of directional blur. Default is <code>5</code>.\n</p>\n</dd>\n<dt><samp>planes</samp></dt>\n<dd><p>Set which planes to filter. By default all planes are filtered.\n</p></dd>\n</dl>\n\n"
+}

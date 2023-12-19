@@ -1,0 +1,41 @@
+{
+  "description": "11.52 cue\nDelay video filtering until a given wallclock timestamp. The filter first\npasses on preroll amount of frames, then it buffers at most\nbuffer amount of frames and waits for the cue. After reaching the cue\nit forwards the buffered frames and also any subsequent frames coming in its\ninput.\n\nThe filter can be used synchronize the output of multiple ffmpeg processes for\nrealtime output devices like decklink. By putting the delay in the filtering\nchain and pre-buffering frames the process can pass on data to output almost\nimmediately after the target wallclock timestamp is reached.\n\nPerfect frame accuracy cannot be guaranteed, but the result is good enough for\nsome use cases.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "buffer": {
+        "description": "The maximum duration of content to buffer before waiting for the cue expressed in seconds. Default is 0.",
+        "type": "number"
+      },
+      "cue": {
+        "description": "The cue timestamp expressed in a UNIX timestamp in microseconds. Default is 0.",
+        "type": "integer"
+      },
+      "preroll": {
+        "description": "The duration of content to pass on as preroll expressed in seconds. Default is 0.",
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "cue filter options",
+    "type": "object"
+  },
+  "name": "cue",
+  "parameters": [
+    {
+      "description": "<dd><p>The cue timestamp expressed in a UNIX timestamp in microseconds. Default is 0.\n</p>\n</dd>",
+      "name": "cue"
+    },
+    {
+      "description": "<dd><p>The duration of content to pass on as preroll expressed in seconds. Default is 0.\n</p>\n</dd>",
+      "name": "preroll"
+    },
+    {
+      "description": "<dd><p>The maximum duration of content to buffer before waiting for the cue expressed\nin seconds. Default is 0.\n</p>\n</dd>",
+      "name": "buffer"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#cue",
+  "source": "<h3 class=\"section\"><a href=\"#toc-cue-1\">11.52 cue</a></h3>\n\n<p>Delay video filtering until a given wallclock timestamp. The filter first\npasses on <samp>preroll</samp> amount of frames, then it buffers at most\n<samp>buffer</samp> amount of frames and waits for the cue. After reaching the cue\nit forwards the buffered frames and also any subsequent frames coming in its\ninput.\n</p>\n<p>The filter can be used synchronize the output of multiple ffmpeg processes for\nrealtime output devices like decklink. By putting the delay in the filtering\nchain and pre-buffering frames the process can pass on data to output almost\nimmediately after the target wallclock timestamp is reached.\n</p>\n<p>Perfect frame accuracy cannot be guaranteed, but the result is good enough for\nsome use cases.\n</p>\n<dl compact=\"compact\">\n<dt><samp>cue</samp></dt>\n<dd><p>The cue timestamp expressed in a UNIX timestamp in microseconds. Default is 0.\n</p>\n</dd>\n<dt><samp>preroll</samp></dt>\n<dd><p>The duration of content to pass on as preroll expressed in seconds. Default is 0.\n</p>\n</dd>\n<dt><samp>buffer</samp></dt>\n<dd><p>The maximum duration of content to buffer before waiting for the cue expressed\nin seconds. Default is 0.\n</p>\n</dd>\n</dl>\n\n"
+}

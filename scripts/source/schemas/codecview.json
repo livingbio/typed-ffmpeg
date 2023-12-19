@@ -1,0 +1,83 @@
+{
+  "description": "11.30 codecview\nVisualize information exported by some codecs.\n\nSome codecs can export information through frames using side-data or other\nmeans. For example, some MPEG based codecs export motion vectors through the\nexport_mvs flag in the codec flags2 option.\n\nThe filter accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "block": {
+        "description": "Display block partition structure using the luma plane.",
+        "type": "boolean"
+      },
+      "frame_type": {
+        "description": "Set frame type to visualize motion vectors of.",
+        "enum": [
+          "if",
+          "pf",
+          "bf"
+        ],
+        "enumDescriptions": [
+          "intra-coded frames (I-frames)",
+          "predicted frames (P-frames)",
+          "bi-directionally predicted frames (B-frames)"
+        ],
+        "type": "string"
+      },
+      "mv": {
+        "description": "Set motion vectors to visualize.",
+        "enum": [
+          "pf",
+          "bf",
+          "bb"
+        ],
+        "enumDescriptions": [
+          "forward predicted MVs of P-frames",
+          "forward predicted MVs of B-frames",
+          "backward predicted MVs of B-frames"
+        ],
+        "type": "string"
+      },
+      "mv_type": {
+        "description": "Set motion vectors type to visualize. Includes MVs from all frames unless specified by frame_type option.",
+        "enum": [
+          "fp",
+          "bp"
+        ],
+        "enumDescriptions": [
+          "forward predicted MVs",
+          "backward predicted MVs"
+        ],
+        "type": "string"
+      },
+      "qp": {
+        "description": "Display quantization parameters using the chroma planes.",
+        "type": "boolean"
+      }
+    },
+    "title": "codecview options",
+    "type": "object"
+  },
+  "name": "codecview",
+  "parameters": [
+    {
+      "description": "<dd><p>Display block partition structure using the luma plane.\n</p>\n</dd>",
+      "name": "block"
+    },
+    {
+      "description": "<dd><p>Set motion vectors to visualize.\n</p>\n<p>Available flags for <var>mv</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>pf</samp>\u2019</dt>\n<dd><p>forward predicted MVs of P-frames\n</p></dd>\n<dt>\u2018<samp>bf</samp>\u2019</dt>\n<dd><p>forward predicted MVs of B-frames\n</p></dd>\n<dt>\u2018<samp>bb</samp>\u2019</dt>\n<dd><p>backward predicted MVs of B-frames\n</p></dd>\n</dl>\n</dd>",
+      "name": "mv"
+    },
+    {
+      "description": "<dd><p>Display quantization parameters using the chroma planes.\n</p>\n</dd>",
+      "name": "qp"
+    },
+    {
+      "description": "<dd><p>Set motion vectors type to visualize. Includes MVs from all frames unless specified by <var>frame_type</var> option.\n</p>\n<p>Available flags for <var>mv_type</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>fp</samp>\u2019</dt>\n<dd><p>forward predicted MVs\n</p></dd>\n<dt>\u2018<samp>bp</samp>\u2019</dt>\n<dd><p>backward predicted MVs\n</p></dd>\n</dl>\n</dd>",
+      "name": "mv_type, mvt"
+    },
+    {
+      "description": "<dd><p>Set frame type to visualize motion vectors of.\n</p>\n<p>Available flags for <var>frame_type</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>if</samp>\u2019</dt>\n<dd><p>intra-coded frames (I-frames)\n</p></dd>\n<dt>\u2018<samp>pf</samp>\u2019</dt>\n<dd><p>predicted frames (P-frames)\n</p></dd>\n<dt>\u2018<samp>bf</samp>\u2019</dt>\n<dd><p>bi-directionally predicted frames (B-frames)\n</p></dd>\n</dl>\n</dd>",
+      "name": "frame_type, ft"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#codecview",
+  "source": "<h3 class=\"section\"><a href=\"#toc-codecview\">11.30 codecview</a></h3>\n\n<p>Visualize information exported by some codecs.\n</p>\n<p>Some codecs can export information through frames using side-data or other\nmeans. For example, some MPEG based codecs export motion vectors through the\n<var>export_mvs</var> flag in the codec <samp>flags2</samp> option.\n</p>\n<p>The filter accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>block</samp></dt>\n<dd><p>Display block partition structure using the luma plane.\n</p>\n</dd>\n<dt><samp>mv</samp></dt>\n<dd><p>Set motion vectors to visualize.\n</p>\n<p>Available flags for <var>mv</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>pf</samp>&rsquo;</dt>\n<dd><p>forward predicted MVs of P-frames\n</p></dd>\n<dt>&lsquo;<samp>bf</samp>&rsquo;</dt>\n<dd><p>forward predicted MVs of B-frames\n</p></dd>\n<dt>&lsquo;<samp>bb</samp>&rsquo;</dt>\n<dd><p>backward predicted MVs of B-frames\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>qp</samp></dt>\n<dd><p>Display quantization parameters using the chroma planes.\n</p>\n</dd>\n<dt><samp>mv_type, mvt</samp></dt>\n<dd><p>Set motion vectors type to visualize. Includes MVs from all frames unless specified by <var>frame_type</var> option.\n</p>\n<p>Available flags for <var>mv_type</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>fp</samp>&rsquo;</dt>\n<dd><p>forward predicted MVs\n</p></dd>\n<dt>&lsquo;<samp>bp</samp>&rsquo;</dt>\n<dd><p>backward predicted MVs\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>frame_type, ft</samp></dt>\n<dd><p>Set frame type to visualize motion vectors of.\n</p>\n<p>Available flags for <var>frame_type</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>if</samp>&rsquo;</dt>\n<dd><p>intra-coded frames (I-frames)\n</p></dd>\n<dt>&lsquo;<samp>pf</samp>&rsquo;</dt>\n<dd><p>predicted frames (P-frames)\n</p></dd>\n<dt>&lsquo;<samp>bf</samp>&rsquo;</dt>\n<dd><p>bi-directionally predicted frames (B-frames)\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n"
+}

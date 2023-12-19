@@ -1,0 +1,75 @@
+{
+  "description": "8.93 headphone\nApply head-related transfer functions (HRTFs) to create virtual\nloudspeakers around the user for binaural listening via headphones.\nThe HRIRs are provided via additional streams, for each channel\none stereo input stream is needed.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "gain": {
+        "description": "Set gain applied to audio. Value is in dB. Default is 0.",
+        "type": "number"
+      },
+      "hrir": {
+        "default": "stereo",
+        "description": "Set format of hrir stream. Default value is 'stereo'. Alternative value is 'multich'. If value is set to 'stereo', number of additional streams should be greater or equal to number of input channels in first input stream. Also each additional stream should have stereo number of channels. If value is set to 'multich', number of additional streams should be exactly one. Also number of input channels of additional stream should be equal or greater than twice number of channels of first input stream.",
+        "enum": [
+          "stereo",
+          "multich"
+        ],
+        "type": "string"
+      },
+      "lfe": {
+        "description": "Set custom gain for LFE channels. Value is in dB. Default is 0.",
+        "type": "number"
+      },
+      "map": {
+        "description": "Set mapping of input streams for convolution. The argument is a '|' separated list of channel names in order as they are given as additional stream inputs for filter. This also specify number of input streams. Number of input streams must be not less than number of channels in first stream plus one.",
+        "type": "string"
+      },
+      "size": {
+        "default": 1024,
+        "description": "Set size of frame in number of samples which will be processed at once. Default value is 1024. Allowed range is from 1024 to 96000.",
+        "maximum": 96000,
+        "minimum": 1024,
+        "type": "number"
+      },
+      "type": {
+        "description": "Set processing type. Can be 'time' or 'freq'. 'time' is processing audio in time domain which is slow. 'freq' is processing audio in frequency domain which is fast. Default is 'freq'.",
+        "enum": [
+          "time",
+          "freq"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "headphone options",
+    "type": "object"
+  },
+  "name": "headphone",
+  "parameters": [
+    {
+      "description": "<dd><p>Set mapping of input streams for convolution.\nThe argument is a \u2019|\u2019-separated list of channel names in order as they\nare given as additional stream inputs for filter.\nThis also specify number of input streams. Number of input streams\nmust be not less than number of channels in first stream plus one.\n</p>\n</dd>",
+      "name": "map"
+    },
+    {
+      "description": "<dd><p>Set gain applied to audio. Value is in dB. Default is 0.\n</p>\n</dd>",
+      "name": "gain"
+    },
+    {
+      "description": "<dd><p>Set processing type. Can be <var>time</var> or <var>freq</var>. <var>time</var> is\nprocessing audio in time domain which is slow.\n<var>freq</var> is processing audio in frequency domain which is fast.\nDefault is <var>freq</var>.\n</p>\n</dd>",
+      "name": "type"
+    },
+    {
+      "description": "<dd><p>Set custom gain for LFE channels. Value is in dB. Default is 0.\n</p>\n</dd>",
+      "name": "lfe"
+    },
+    {
+      "description": "<dd><p>Set size of frame in number of samples which will be processed at once.\nDefault value is <var>1024</var>. Allowed range is from 1024 to 96000.\n</p>\n</dd>",
+      "name": "size"
+    },
+    {
+      "description": "<dd><p>Set format of hrir stream.\nDefault value is <var>stereo</var>. Alternative value is <var>multich</var>.\nIf value is set to <var>stereo</var>, number of additional streams should\nbe greater or equal to number of input channels in first input stream.\nAlso each additional stream should have stereo number of channels.\nIf value is set to <var>multich</var>, number of additional streams should\nbe exactly one. Also number of input channels of additional stream\nshould be equal or greater than twice number of channels of first input\nstream.\n</p></dd>",
+      "name": "hrir"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#headphone",
+  "source": "<h3 class=\"section\"><a href=\"#toc-headphone\">8.93 headphone</a></h3>\n\n<p>Apply head-related transfer functions (HRTFs) to create virtual\nloudspeakers around the user for binaural listening via headphones.\nThe HRIRs are provided via additional streams, for each channel\none stereo input stream is needed.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>map</samp></dt>\n<dd><p>Set mapping of input streams for convolution.\nThe argument is a &rsquo;|&rsquo;-separated list of channel names in order as they\nare given as additional stream inputs for filter.\nThis also specify number of input streams. Number of input streams\nmust be not less than number of channels in first stream plus one.\n</p>\n</dd>\n<dt><samp>gain</samp></dt>\n<dd><p>Set gain applied to audio. Value is in dB. Default is 0.\n</p>\n</dd>\n<dt><samp>type</samp></dt>\n<dd><p>Set processing type. Can be <var>time</var> or <var>freq</var>. <var>time</var> is\nprocessing audio in time domain which is slow.\n<var>freq</var> is processing audio in frequency domain which is fast.\nDefault is <var>freq</var>.\n</p>\n</dd>\n<dt><samp>lfe</samp></dt>\n<dd><p>Set custom gain for LFE channels. Value is in dB. Default is 0.\n</p>\n</dd>\n<dt><samp>size</samp></dt>\n<dd><p>Set size of frame in number of samples which will be processed at once.\nDefault value is <var>1024</var>. Allowed range is from 1024 to 96000.\n</p>\n</dd>\n<dt><samp>hrir</samp></dt>\n<dd><p>Set format of hrir stream.\nDefault value is <var>stereo</var>. Alternative value is <var>multich</var>.\nIf value is set to <var>stereo</var>, number of additional streams should\nbe greater or equal to number of input channels in first input stream.\nAlso each additional stream should have stereo number of channels.\nIf value is set to <var>multich</var>, number of additional streams should\nbe exactly one. Also number of input channels of additional stream\nshould be equal or greater than twice number of channels of first input\nstream.\n</p></dd>\n</dl>\n\n"
+}

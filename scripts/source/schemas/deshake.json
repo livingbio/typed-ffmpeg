@@ -1,0 +1,132 @@
+{
+  "description": "11.67 deshake\nAttempt to fix small changes in horizontal and/or vertical shift. This\nfilter helps remove camera shake from hand-holding a camera, bumping a\ntripod, moving on a vehicle, etc.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "blocksize": {
+        "default": 8,
+        "description": "Specify the blocksize to use for motion search in pixels.",
+        "maximum": 128,
+        "minimum": 4,
+        "type": "integer"
+      },
+      "contrast": {
+        "default": 125,
+        "description": "Specify the contrast threshold for blocks. Only blocks with more than the specified contrast will be considered.",
+        "maximum": 255,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "edge": {
+        "default": "mirror",
+        "description": "Specify how to generate pixels to fill blanks at the edge of the frame.",
+        "enum": [
+          "blank",
+          "original",
+          "clamp",
+          "mirror"
+        ],
+        "type": "string"
+      },
+      "filename": {
+        "description": "If set, a detailed log of the motion search is written to the specified file.",
+        "type": "string"
+      },
+      "h": {
+        "default": -1,
+        "description": "Specify the height of the rectangular area where to limit the search for motion vectors. If set to -1, the full frame is used.",
+        "type": "integer"
+      },
+      "rx": {
+        "default": 16,
+        "description": "Specify the maximum extent of movement in the x direction in the range 0-64 pixels.",
+        "maximum": 64,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "ry": {
+        "default": 16,
+        "description": "Specify the maximum extent of movement in the y direction in the range 0-64 pixels.",
+        "maximum": 64,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "search": {
+        "default": "exhaustive",
+        "description": "Specify the search strategy.",
+        "enum": [
+          "exhaustive",
+          "less"
+        ],
+        "type": "string"
+      },
+      "w": {
+        "default": -1,
+        "description": "Specify the width of the rectangular area where to limit the search for motion vectors. If set to -1, the full frame is used.",
+        "type": "integer"
+      },
+      "x": {
+        "default": -1,
+        "description": "Specify the top left corner x-coordinate of the rectangular area where to limit the search for motion vectors. If set to -1, the full frame is used.",
+        "type": "integer"
+      },
+      "y": {
+        "default": -1,
+        "description": "Specify the top left corner y-coordinate of the rectangular area where to limit the search for motion vectors. If set to -1, the full frame is used.",
+        "type": "integer"
+      }
+    },
+    "title": "deshake options",
+    "type": "object"
+  },
+  "name": "deshake",
+  "parameters": [
+    {
+      "description": "<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>",
+      "name": "x"
+    },
+    {
+      "description": "<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>",
+      "name": "y"
+    },
+    {
+      "description": "<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>",
+      "name": "w"
+    },
+    {
+      "description": "<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>",
+      "name": "h"
+    },
+    {
+      "description": "<dd><p>Specify the maximum extent of movement in x and y directions in the\nrange 0-64 pixels. Default 16.\n</p>\n</dd>",
+      "name": "rx"
+    },
+    {
+      "description": "<dd><p>Specify the maximum extent of movement in x and y directions in the\nrange 0-64 pixels. Default 16.\n</p>\n</dd>",
+      "name": "ry"
+    },
+    {
+      "description": "<dd><p>Specify how to generate pixels to fill blanks at the edge of the\nframe. Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>blank, 0</samp>\u2019</dt>\n<dd><p>Fill zeroes at blank locations\n</p></dd>\n<dt>\u2018<samp>original, 1</samp>\u2019</dt>\n<dd><p>Original image at blank locations\n</p></dd>\n<dt>\u2018<samp>clamp, 2</samp>\u2019</dt>\n<dd><p>Extruded edge value at blank locations\n</p></dd>\n<dt>\u2018<samp>mirror, 3</samp>\u2019</dt>\n<dd><p>Mirrored edge at blank locations\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>mirror</samp>\u2019.\n</p>\n</dd>",
+      "name": "edge"
+    },
+    {
+      "description": "<dd><p>Specify the blocksize to use for motion search. Range 4-128 pixels,\ndefault 8.\n</p>\n</dd>",
+      "name": "blocksize"
+    },
+    {
+      "description": "<dd><p>Specify the contrast threshold for blocks. Only blocks with more than\nthe specified contrast (difference between darkest and lightest\npixels) will be considered. Range 1-255, default 125.\n</p>\n</dd>",
+      "name": "contrast"
+    },
+    {
+      "description": "<dd><p>Specify the search strategy. Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>exhaustive, 0</samp>\u2019</dt>\n<dd><p>Set exhaustive search\n</p></dd>\n<dt>\u2018<samp>less, 1</samp>\u2019</dt>\n<dd><p>Set less exhaustive search.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>exhaustive</samp>\u2019.\n</p>\n</dd>",
+      "name": "search"
+    },
+    {
+      "description": "<dd><p>If set then a detailed log of the motion search is written to the\nspecified file.\n</p>\n</dd>",
+      "name": "filename"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#deshake",
+  "source": "<h3 class=\"section\"><a href=\"#toc-deshake\">11.67 deshake</a></h3>\n\n<p>Attempt to fix small changes in horizontal and/or vertical shift. This\nfilter helps remove camera shake from hand-holding a camera, bumping a\ntripod, moving on a vehicle, etc.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>x</samp></dt>\n<dt><samp>y</samp></dt>\n<dt><samp>w</samp></dt>\n<dt><samp>h</samp></dt>\n<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>\n<dt><samp>rx</samp></dt>\n<dt><samp>ry</samp></dt>\n<dd><p>Specify the maximum extent of movement in x and y directions in the\nrange 0-64 pixels. Default 16.\n</p>\n</dd>\n<dt><samp>edge</samp></dt>\n<dd><p>Specify how to generate pixels to fill blanks at the edge of the\nframe. Available values are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>blank, 0</samp>&rsquo;</dt>\n<dd><p>Fill zeroes at blank locations\n</p></dd>\n<dt>&lsquo;<samp>original, 1</samp>&rsquo;</dt>\n<dd><p>Original image at blank locations\n</p></dd>\n<dt>&lsquo;<samp>clamp, 2</samp>&rsquo;</dt>\n<dd><p>Extruded edge value at blank locations\n</p></dd>\n<dt>&lsquo;<samp>mirror, 3</samp>&rsquo;</dt>\n<dd><p>Mirrored edge at blank locations\n</p></dd>\n</dl>\n<p>Default value is &lsquo;<samp>mirror</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>blocksize</samp></dt>\n<dd><p>Specify the blocksize to use for motion search. Range 4-128 pixels,\ndefault 8.\n</p>\n</dd>\n<dt><samp>contrast</samp></dt>\n<dd><p>Specify the contrast threshold for blocks. Only blocks with more than\nthe specified contrast (difference between darkest and lightest\npixels) will be considered. Range 1-255, default 125.\n</p>\n</dd>\n<dt><samp>search</samp></dt>\n<dd><p>Specify the search strategy. Available values are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>exhaustive, 0</samp>&rsquo;</dt>\n<dd><p>Set exhaustive search\n</p></dd>\n<dt>&lsquo;<samp>less, 1</samp>&rsquo;</dt>\n<dd><p>Set less exhaustive search.\n</p></dd>\n</dl>\n<p>Default value is &lsquo;<samp>exhaustive</samp>&rsquo;.\n</p>\n</dd>\n<dt><samp>filename</samp></dt>\n<dd><p>If set then a detailed log of the motion search is written to the\nspecified file.\n</p>\n</dd>\n</dl>\n\n"
+}

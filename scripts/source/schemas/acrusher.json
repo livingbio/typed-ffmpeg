@@ -1,0 +1,109 @@
+{
+  "description": "8.7 acrusher\nReduce audio bit resolution.\n\nThis filter is bit crusher with enhanced functionality. A bit crusher\nis used to audibly reduce number of bits an audio signal is sampled\nwith. This doesn\u2019t change the bit depth at all, it just produces the\neffect. Material reduced in bit depth sounds more harsh and \"digital\".\nThis filter is able to even round to continuous values instead of discrete\nbit depths.\nAdditionally it has a D/C offset which results in different crushing of\nthe lower and the upper half of the signal.\nAn Anti-Aliasing setting is able to produce \"softer\" crushing sounds.\n\nAnother feature of this filter is the logarithmic mode.\nThis setting switches from linear distances between bits to logarithmic ones.\nThe result is a much more \"natural\" sounding crusher which doesn\u2019t gate low\nsignals for example. The human ear has a logarithmic perception,\nso this kind of crushing is much more pleasant.\nLogarithmic crushing is also able to get anti-aliased.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "aa": {
+        "description": "Set anti-aliasing.",
+        "type": "number"
+      },
+      "bits": {
+        "description": "Set bit reduction.",
+        "type": "integer"
+      },
+      "dc": {
+        "description": "Set DC.",
+        "type": "number"
+      },
+      "level_in": {
+        "description": "Set level in.",
+        "type": "number"
+      },
+      "level_out": {
+        "description": "Set level out.",
+        "type": "number"
+      },
+      "lfo": {
+        "description": "Enable LFO. By default disabled.",
+        "type": "boolean"
+      },
+      "lforange": {
+        "description": "Set LFO range.",
+        "type": "number"
+      },
+      "lforate": {
+        "description": "Set LFO rate.",
+        "type": "number"
+      },
+      "mix": {
+        "description": "Set mixing amount.",
+        "type": "number"
+      },
+      "mode": {
+        "description": "Can be linear: 'lin' or logarithmic: 'log'.",
+        "enum": [
+          "lin",
+          "log"
+        ],
+        "type": "string"
+      },
+      "samples": {
+        "description": "Set sample reduction.",
+        "type": "integer"
+      }
+    },
+    "required": [],
+    "title": "acrusher options",
+    "type": "object"
+  },
+  "name": "acrusher",
+  "parameters": [
+    {
+      "description": "<dd><p>Set level in.\n</p>\n</dd>",
+      "name": "level_in"
+    },
+    {
+      "description": "<dd><p>Set level out.\n</p>\n</dd>",
+      "name": "level_out"
+    },
+    {
+      "description": "<dd><p>Set bit reduction.\n</p>\n</dd>",
+      "name": "bits"
+    },
+    {
+      "description": "<dd><p>Set mixing amount.\n</p>\n</dd>",
+      "name": "mix"
+    },
+    {
+      "description": "<dd><p>Can be linear: <code>lin</code> or logarithmic: <code>log</code>.\n</p>\n</dd>",
+      "name": "mode"
+    },
+    {
+      "description": "<dd><p>Set DC.\n</p>\n</dd>",
+      "name": "dc"
+    },
+    {
+      "description": "<dd><p>Set anti-aliasing.\n</p>\n</dd>",
+      "name": "aa"
+    },
+    {
+      "description": "<dd><p>Set sample reduction.\n</p>\n</dd>",
+      "name": "samples"
+    },
+    {
+      "description": "<dd><p>Enable LFO. By default disabled.\n</p>\n</dd>",
+      "name": "lfo"
+    },
+    {
+      "description": "<dd><p>Set LFO range.\n</p>\n</dd>",
+      "name": "lforange"
+    },
+    {
+      "description": "<dd><p>Set LFO rate.\n</p></dd>",
+      "name": "lforate"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acrusher",
+  "source": "<h3 class=\"section\"><a href=\"#toc-acrusher\">8.7 acrusher</a></h3>\n\n<p>Reduce audio bit resolution.\n</p>\n<p>This filter is bit crusher with enhanced functionality. A bit crusher\nis used to audibly reduce number of bits an audio signal is sampled\nwith. This doesn&rsquo;t change the bit depth at all, it just produces the\neffect. Material reduced in bit depth sounds more harsh and &quot;digital&quot;.\nThis filter is able to even round to continuous values instead of discrete\nbit depths.\nAdditionally it has a D/C offset which results in different crushing of\nthe lower and the upper half of the signal.\nAn Anti-Aliasing setting is able to produce &quot;softer&quot; crushing sounds.\n</p>\n<p>Another feature of this filter is the logarithmic mode.\nThis setting switches from linear distances between bits to logarithmic ones.\nThe result is a much more &quot;natural&quot; sounding crusher which doesn&rsquo;t gate low\nsignals for example. The human ear has a logarithmic perception,\nso this kind of crushing is much more pleasant.\nLogarithmic crushing is also able to get anti-aliased.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>level_in</samp></dt>\n<dd><p>Set level in.\n</p>\n</dd>\n<dt><samp>level_out</samp></dt>\n<dd><p>Set level out.\n</p>\n</dd>\n<dt><samp>bits</samp></dt>\n<dd><p>Set bit reduction.\n</p>\n</dd>\n<dt><samp>mix</samp></dt>\n<dd><p>Set mixing amount.\n</p>\n</dd>\n<dt><samp>mode</samp></dt>\n<dd><p>Can be linear: <code>lin</code> or logarithmic: <code>log</code>.\n</p>\n</dd>\n<dt><samp>dc</samp></dt>\n<dd><p>Set DC.\n</p>\n</dd>\n<dt><samp>aa</samp></dt>\n<dd><p>Set anti-aliasing.\n</p>\n</dd>\n<dt><samp>samples</samp></dt>\n<dd><p>Set sample reduction.\n</p>\n</dd>\n<dt><samp>lfo</samp></dt>\n<dd><p>Enable LFO. By default disabled.\n</p>\n</dd>\n<dt><samp>lforange</samp></dt>\n<dd><p>Set LFO range.\n</p>\n</dd>\n<dt><samp>lforate</samp></dt>\n<dd><p>Set LFO rate.\n</p></dd>\n</dl>\n\n"
+}

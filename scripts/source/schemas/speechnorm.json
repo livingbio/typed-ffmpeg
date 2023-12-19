@@ -1,0 +1,164 @@
+{
+  "description": "8.110 speechnorm\nSpeech Normalizer.\n\nThis filter expands or compresses each half-cycle of audio samples\n(local set of samples all above or all below zero and between two nearest zero crossings) depending\non threshold value, so audio reaches target peak value under conditions controlled by below options.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "c": {
+        "default": 2.0,
+        "maximum": 50.0,
+        "minimum": 1.0,
+        "type": "number"
+      },
+      "channels": {
+        "default": "all",
+        "type": "string"
+      },
+      "compression": {
+        "default": 2.0,
+        "maximum": 50.0,
+        "minimum": 1.0,
+        "type": "number"
+      },
+      "e": {
+        "default": 2.0,
+        "maximum": 50.0,
+        "minimum": 1.0,
+        "type": "number"
+      },
+      "expansion": {
+        "default": 2.0,
+        "maximum": 50.0,
+        "minimum": 1.0,
+        "type": "number"
+      },
+      "f": {
+        "default": 0.001,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "fall": {
+        "default": 0.001,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "h": {
+        "default": "all",
+        "type": "string"
+      },
+      "i": {
+        "default": false,
+        "type": "boolean"
+      },
+      "invert": {
+        "default": false,
+        "type": "boolean"
+      },
+      "l": {
+        "default": false,
+        "type": "boolean"
+      },
+      "link": {
+        "default": false,
+        "type": "boolean"
+      },
+      "m": {
+        "default": 0.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "p": {
+        "default": 0.95,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "peak": {
+        "default": 0.95,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "r": {
+        "default": 0.001,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "raise": {
+        "default": 0.001,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "rms": {
+        "default": 0.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "t": {
+        "default": 0.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "threshold": {
+        "default": 0.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      }
+    },
+    "title": "speechnorm options",
+    "type": "object"
+  },
+  "name": "speechnorm",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the expansion target peak value. This specifies the highest allowed absolute amplitude\nlevel for the normalized audio input. Default value is 0.95. Allowed range is from 0.0 to 1.0.\n</p>\n</dd>",
+      "name": "peak, p"
+    },
+    {
+      "description": "<dd><p>Set the maximum expansion factor. Allowed range is from 1.0 to 50.0. Default value is 2.0.\nThis option controls maximum local half-cycle of samples expansion. The maximum expansion\nwould be such that local peak value reaches target peak value but never to surpass it and that\nratio between new and previous peak value does not surpass this option value.\n</p>\n</dd>",
+      "name": "expansion, e"
+    },
+    {
+      "description": "<dd><p>Set the maximum compression factor. Allowed range is from 1.0 to 50.0. Default value is 2.0.\nThis option controls maximum local half-cycle of samples compression. This option is used\nonly if <samp>threshold</samp> option is set to value greater than 0.0, then in such cases\nwhen local peak is lower or same as value set by <samp>threshold</samp> all samples belonging to\nthat peak\u2019s half-cycle will be compressed by current compression factor.\n</p>\n</dd>",
+      "name": "compression, c"
+    },
+    {
+      "description": "<dd><p>Set the threshold value. Default value is 0.0. Allowed range is from 0.0 to 1.0.\nThis option specifies which half-cycles of samples will be compressed and which will be expanded.\nAny half-cycle samples with their local peak value below or same as this option value will be\ncompressed by current compression factor, otherwise, if greater than threshold value they will be\nexpanded with expansion factor so that it could reach peak target value but never surpass it.\n</p>\n</dd>",
+      "name": "threshold, t"
+    },
+    {
+      "description": "<dd><p>Set the expansion raising amount per each half-cycle of samples. Default value is 0.001.\nAllowed range is from 0.0 to 1.0. This controls how fast expansion factor is raised per\neach new half-cycle until it reaches <samp>expansion</samp> value.\nSetting this options too high may lead to distortions.\n</p>\n</dd>",
+      "name": "raise, r"
+    },
+    {
+      "description": "<dd><p>Set the compression raising amount per each half-cycle of samples. Default value is 0.001.\nAllowed range is from 0.0 to 1.0. This controls how fast compression factor is raised per\neach new half-cycle until it reaches <samp>compression</samp> value.\n</p>\n</dd>",
+      "name": "fall, f"
+    },
+    {
+      "description": "<dd><p>Specify which channels to filter, by default all available channels are filtered.\n</p>\n</dd>",
+      "name": "channels, h"
+    },
+    {
+      "description": "<dd><p>Enable inverted filtering, by default is disabled. This inverts interpretation of <samp>threshold</samp>\noption. When enabled any half-cycle of samples with their local peak value below or same as\n<samp>threshold</samp> option will be expanded otherwise it will be compressed.\n</p>\n</dd>",
+      "name": "invert, i"
+    },
+    {
+      "description": "<dd><p>Link channels when calculating gain applied to each filtered channel sample, by default is disabled.\nWhen disabled each filtered channel gain calculation is independent, otherwise when this option\nis enabled the minimum of all possible gains for each filtered channel is used.\n</p>\n</dd>",
+      "name": "link, l"
+    },
+    {
+      "description": "<dd><p>Set the expansion target RMS value. This specifies the highest allowed RMS level for the normalized\naudio input. Default value is 0.0, thus disabled. Allowed range is from 0.0 to 1.0.\n</p></dd>",
+      "name": "rms, m"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#speechnorm",
+  "source": "<h3 class=\"section\"><a href=\"#toc-speechnorm\">8.110 speechnorm</a></h3>\n<p>Speech Normalizer.\n</p>\n<p>This filter expands or compresses each half-cycle of audio samples\n(local set of samples all above or all below zero and between two nearest zero crossings) depending\non threshold value, so audio reaches target peak value under conditions controlled by below options.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>peak, p</samp></dt>\n<dd><p>Set the expansion target peak value. This specifies the highest allowed absolute amplitude\nlevel for the normalized audio input. Default value is 0.95. Allowed range is from 0.0 to 1.0.\n</p>\n</dd>\n<dt><samp>expansion, e</samp></dt>\n<dd><p>Set the maximum expansion factor. Allowed range is from 1.0 to 50.0. Default value is 2.0.\nThis option controls maximum local half-cycle of samples expansion. The maximum expansion\nwould be such that local peak value reaches target peak value but never to surpass it and that\nratio between new and previous peak value does not surpass this option value.\n</p>\n</dd>\n<dt><samp>compression, c</samp></dt>\n<dd><p>Set the maximum compression factor. Allowed range is from 1.0 to 50.0. Default value is 2.0.\nThis option controls maximum local half-cycle of samples compression. This option is used\nonly if <samp>threshold</samp> option is set to value greater than 0.0, then in such cases\nwhen local peak is lower or same as value set by <samp>threshold</samp> all samples belonging to\nthat peak&rsquo;s half-cycle will be compressed by current compression factor.\n</p>\n</dd>\n<dt><samp>threshold, t</samp></dt>\n<dd><p>Set the threshold value. Default value is 0.0. Allowed range is from 0.0 to 1.0.\nThis option specifies which half-cycles of samples will be compressed and which will be expanded.\nAny half-cycle samples with their local peak value below or same as this option value will be\ncompressed by current compression factor, otherwise, if greater than threshold value they will be\nexpanded with expansion factor so that it could reach peak target value but never surpass it.\n</p>\n</dd>\n<dt><samp>raise, r</samp></dt>\n<dd><p>Set the expansion raising amount per each half-cycle of samples. Default value is 0.001.\nAllowed range is from 0.0 to 1.0. This controls how fast expansion factor is raised per\neach new half-cycle until it reaches <samp>expansion</samp> value.\nSetting this options too high may lead to distortions.\n</p>\n</dd>\n<dt><samp>fall, f</samp></dt>\n<dd><p>Set the compression raising amount per each half-cycle of samples. Default value is 0.001.\nAllowed range is from 0.0 to 1.0. This controls how fast compression factor is raised per\neach new half-cycle until it reaches <samp>compression</samp> value.\n</p>\n</dd>\n<dt><samp>channels, h</samp></dt>\n<dd><p>Specify which channels to filter, by default all available channels are filtered.\n</p>\n</dd>\n<dt><samp>invert, i</samp></dt>\n<dd><p>Enable inverted filtering, by default is disabled. This inverts interpretation of <samp>threshold</samp>\noption. When enabled any half-cycle of samples with their local peak value below or same as\n<samp>threshold</samp> option will be expanded otherwise it will be compressed.\n</p>\n</dd>\n<dt><samp>link, l</samp></dt>\n<dd><p>Link channels when calculating gain applied to each filtered channel sample, by default is disabled.\nWhen disabled each filtered channel gain calculation is independent, otherwise when this option\nis enabled the minimum of all possible gains for each filtered channel is used.\n</p>\n</dd>\n<dt><samp>rms, m</samp></dt>\n<dd><p>Set the expansion target RMS value. This specifies the highest allowed RMS level for the normalized\naudio input. Default value is 0.0, thus disabled. Allowed range is from 0.0 to 1.0.\n</p></dd>\n</dl>\n\n"
+}

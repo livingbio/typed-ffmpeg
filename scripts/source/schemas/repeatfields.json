@@ -1,0 +1,8 @@
+{
+  "description": "11.209 repeatfields\nThis filter uses the repeat_field flag from the Video ES headers and hard repeats\nfields based on its value.",
+  "json_schema": {},
+  "name": "repeatfields",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#repeatfields",
+  "source": "<h3 class=\"section\"><a href=\"#toc-repeatfields\">11.209 repeatfields</a></h3>\n\n<p>This filter uses the repeat_field flag from the Video ES headers and hard repeats\nfields based on its value.\n</p>\n"
+}

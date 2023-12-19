@@ -1,0 +1,36 @@
+{
+  "description": "8.119 virtualbass\nApply audio Virtual Bass filter.\n\nThis filter accepts stereo input and produce stereo with LFE (2.1) channels output.\nThe newly produced LFE channel have enhanced virtual bass originally obtained from both stereo channels.\nThis filter outputs front left and front right channels unchanged as available in stereo input.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "cutoff": {
+        "default": 250,
+        "maximum": 500,
+        "minimum": 100,
+        "type": "number"
+      },
+      "strength": {
+        "default": 3,
+        "maximum": 3,
+        "minimum": 0.5,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "virtualbass options",
+    "type": "object"
+  },
+  "name": "virtualbass",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the virtual bass cutoff frequency. Default value is 250 Hz.\nAllowed range is from 100 to 500 Hz.\n</p>\n</dd>",
+      "name": "cutoff"
+    },
+    {
+      "description": "<dd><p>Set the virtual bass strength. Allowed range is from 0.5 to 3.\nDefault value is 3.\n</p></dd>",
+      "name": "strength"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#virtualbass",
+  "source": "<h3 class=\"section\"><a href=\"#toc-virtualbass\">8.119 virtualbass</a></h3>\n\n<p>Apply audio Virtual Bass filter.\n</p>\n<p>This filter accepts stereo input and produce stereo with LFE (2.1) channels output.\nThe newly produced LFE channel have enhanced virtual bass originally obtained from both stereo channels.\nThis filter outputs front left and front right channels unchanged as available in stereo input.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>cutoff</samp></dt>\n<dd><p>Set the virtual bass cutoff frequency. Default value is 250 Hz.\nAllowed range is from 100 to 500 Hz.\n</p>\n</dd>\n<dt><samp>strength</samp></dt>\n<dd><p>Set the virtual bass strength. Allowed range is from 0.5 to 3.\nDefault value is 3.\n</p></dd>\n</dl>\n\n"
+}

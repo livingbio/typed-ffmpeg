@@ -1,0 +1,72 @@
+{
+  "description": "11.293 zoompan\nApply Zoom & Pan effect.\n\nThis filter accepts the following options:\n\n\nEach expression can contain the following constants:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "d": {
+        "default": 90,
+        "type": "number"
+      },
+      "fps": {
+        "default": "25",
+        "type": "string"
+      },
+      "s": {
+        "default": "hd720",
+        "type": "string"
+      },
+      "x": {
+        "default": 0,
+        "type": "number"
+      },
+      "y": {
+        "default": 0,
+        "type": "number"
+      },
+      "z": {
+        "default": 1,
+        "maximum": 10,
+        "minimum": 1,
+        "type": "number"
+      },
+      "zoom": {
+        "default": 1,
+        "maximum": 10,
+        "minimum": 1,
+        "type": "number"
+      }
+    },
+    "title": "zoompan options",
+    "type": "object"
+  },
+  "name": "zoompan",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the zoom expression. Range is 1-10. Default is 1.\n</p>\n</dd>",
+      "name": "zoom, z"
+    },
+    {
+      "description": "<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>",
+      "name": "x"
+    },
+    {
+      "description": "<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>",
+      "name": "y"
+    },
+    {
+      "description": "<dd><p>Set the duration expression in number of frames.\nThis sets for how many number of frames effect will last for\nsingle input image. Default is 90.\n</p>\n</dd>",
+      "name": "d"
+    },
+    {
+      "description": "<dd><p>Set the output image size, default is \u2019hd720\u2019.\n</p>\n</dd>",
+      "name": "s"
+    },
+    {
+      "description": "<dd><p>Set the output frame rate, default is \u201925\u2019.\n</p></dd>",
+      "name": "fps"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#zoompan",
+  "source": "<h3 class=\"section\"><a href=\"#toc-zoompan\">11.293 zoompan</a></h3>\n\n<p>Apply Zoom &amp; Pan effect.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>zoom, z</samp></dt>\n<dd><p>Set the zoom expression. Range is 1-10. Default is 1.\n</p>\n</dd>\n<dt><samp>x</samp></dt>\n<dt><samp>y</samp></dt>\n<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>\n<dt><samp>d</samp></dt>\n<dd><p>Set the duration expression in number of frames.\nThis sets for how many number of frames effect will last for\nsingle input image. Default is 90.\n</p>\n</dd>\n<dt><samp>s</samp></dt>\n<dd><p>Set the output image size, default is &rsquo;hd720&rsquo;.\n</p>\n</dd>\n<dt><samp>fps</samp></dt>\n<dd><p>Set the output frame rate, default is &rsquo;25&rsquo;.\n</p></dd>\n</dl>\n\n<p>Each expression can contain the following constants:\n</p>\n<dl compact=\"compact\">\n<dt><samp>in_w, iw</samp></dt>\n<dd><p>Input width.\n</p>\n</dd>\n<dt><samp>in_h, ih</samp></dt>\n<dd><p>Input height.\n</p>\n</dd>\n<dt><samp>out_w, ow</samp></dt>\n<dd><p>Output width.\n</p>\n</dd>\n<dt><samp>out_h, oh</samp></dt>\n<dd><p>Output height.\n</p>\n</dd>\n<dt><samp>in</samp></dt>\n<dd><p>Input frame count.\n</p>\n</dd>\n<dt><samp>on</samp></dt>\n<dd><p>Output frame count.\n</p>\n</dd>\n<dt><samp>in_time, it</samp></dt>\n<dd><p>The input timestamp expressed in seconds. It&rsquo;s NAN if the input timestamp is unknown.\n</p>\n</dd>\n<dt><samp>out_time, time, ot</samp></dt>\n<dd><p>The output timestamp expressed in seconds.\n</p>\n</dd>\n<dt><samp>x</samp></dt>\n<dt><samp>y</samp></dt>\n<dd><p>Last calculated &rsquo;x&rsquo; and &rsquo;y&rsquo; position from &rsquo;x&rsquo; and &rsquo;y&rsquo; expression\nfor current input frame.\n</p>\n</dd>\n<dt><samp>px</samp></dt>\n<dt><samp>py</samp></dt>\n<dd><p>&rsquo;x&rsquo; and &rsquo;y&rsquo; of last output frame of previous input frame or 0 when there was\nnot yet such frame (first input frame).\n</p>\n</dd>\n<dt><samp>zoom</samp></dt>\n<dd><p>Last calculated zoom from &rsquo;z&rsquo; expression for current input frame.\n</p>\n</dd>\n<dt><samp>pzoom</samp></dt>\n<dd><p>Last calculated zoom of last output frame of previous input frame.\n</p>\n</dd>\n<dt><samp>duration</samp></dt>\n<dd><p>Number of output frames for current input frame. Calculated from &rsquo;d&rsquo; expression\nfor each input frame.\n</p>\n</dd>\n<dt><samp>pduration</samp></dt>\n<dd><p>number of output frames created for previous input frame\n</p>\n</dd>\n<dt><samp>a</samp></dt>\n<dd><p>Rational number: input width / input height\n</p>\n</dd>\n<dt><samp>sar</samp></dt>\n<dd><p>sample aspect ratio\n</p>\n</dd>\n<dt><samp>dar</samp></dt>\n<dd><p>display aspect ratio\n</p>\n</dd>\n</dl>\n\n"
+}

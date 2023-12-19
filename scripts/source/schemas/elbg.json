@@ -1,0 +1,84 @@
+{
+  "description": "11.80 elbg\nApply a posterize effect using the ELBG (Enhanced LBG) algorithm.\n\nFor each input image, the filter will compute the optimal mapping from\nthe input to the output given the codebook length, that is the number\nof distinct output colors.\n\nThis filter accepts the following options.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "codebook_length": {
+        "default": 256,
+        "description": "Set codebook length. The value must be a positive integer, and represents the number of distinct output colors.",
+        "minimum": 1,
+        "type": "integer"
+      },
+      "l": {
+        "default": 256,
+        "description": "Set codebook length. The value must be a positive integer, and represents the number of distinct output colors.",
+        "minimum": 1,
+        "type": "integer"
+      },
+      "n": {
+        "default": 1,
+        "description": "Set the maximum number of iterations to apply for computing the optimal mapping. The higher the value the better the result and the higher the computation time.",
+        "minimum": 1,
+        "type": "integer"
+      },
+      "nb_steps": {
+        "default": 1,
+        "description": "Set the maximum number of iterations to apply for computing the optimal mapping. The higher the value the better the result and the higher the computation time.",
+        "minimum": 1,
+        "type": "integer"
+      },
+      "pal8": {
+        "default": false,
+        "description": "Set pal8 output pixel format. This option does not work with codebook length greater than 256. Default is disabled.",
+        "type": "boolean"
+      },
+      "s": {
+        "default": -1,
+        "description": "Set a random seed, must be an integer included between 0 and UINT32_MAX. If not specified, or if explicitly set to -1, the filter will try to use a good random seed on a best effort basis.",
+        "maximum": 4294967295,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "seed": {
+        "default": -1,
+        "description": "Set a random seed, must be an integer included between 0 and UINT32_MAX. If not specified, or if explicitly set to -1, the filter will try to use a good random seed on a best effort basis.",
+        "maximum": 4294967295,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "use_alpha": {
+        "default": false,
+        "description": "Include alpha values in the quantization calculation. Allows creating palettized output images (e.g. PNG8) with multiple alpha smooth blending.",
+        "type": "boolean"
+      }
+    },
+    "title": "elbg filter options",
+    "type": "object"
+  },
+  "name": "elbg",
+  "parameters": [
+    {
+      "description": "<dd><p>Set codebook length. The value must be a positive integer, and\nrepresents the number of distinct output colors. Default value is 256.\n</p>\n</dd>",
+      "name": "codebook_length, l"
+    },
+    {
+      "description": "<dd><p>Set the maximum number of iterations to apply for computing the optimal\nmapping. The higher the value the better the result and the higher the\ncomputation time. Default value is 1.\n</p>\n</dd>",
+      "name": "nb_steps, n"
+    },
+    {
+      "description": "<dd><p>Set a random seed, must be an integer included between 0 and\nUINT32_MAX. If not specified, or if explicitly set to -1, the filter\nwill try to use a good random seed on a best effort basis.\n</p>\n</dd>",
+      "name": "seed, s"
+    },
+    {
+      "description": "<dd><p>Set pal8 output pixel format. This option does not work with codebook\nlength greater than 256. Default is disabled.\n</p>\n</dd>",
+      "name": "pal8"
+    },
+    {
+      "description": "<dd><p>Include alpha values in the quantization calculation. Allows creating\npalettized output images (e.g. PNG8) with multiple alpha smooth blending.\n</p></dd>",
+      "name": "use_alpha"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#elbg",
+  "source": "<h3 class=\"section\"><a href=\"#toc-elbg\">11.80 elbg</a></h3>\n\n<p>Apply a posterize effect using the ELBG (Enhanced LBG) algorithm.\n</p>\n<p>For each input image, the filter will compute the optimal mapping from\nthe input to the output given the codebook length, that is the number\nof distinct output colors.\n</p>\n<p>This filter accepts the following options.\n</p>\n<dl compact=\"compact\">\n<dt><samp>codebook_length, l</samp></dt>\n<dd><p>Set codebook length. The value must be a positive integer, and\nrepresents the number of distinct output colors. Default value is 256.\n</p>\n</dd>\n<dt><samp>nb_steps, n</samp></dt>\n<dd><p>Set the maximum number of iterations to apply for computing the optimal\nmapping. The higher the value the better the result and the higher the\ncomputation time. Default value is 1.\n</p>\n</dd>\n<dt><samp>seed, s</samp></dt>\n<dd><p>Set a random seed, must be an integer included between 0 and\nUINT32_MAX. If not specified, or if explicitly set to -1, the filter\nwill try to use a good random seed on a best effort basis.\n</p>\n</dd>\n<dt><samp>pal8</samp></dt>\n<dd><p>Set pal8 output pixel format. This option does not work with codebook\nlength greater than 256. Default is disabled.\n</p>\n</dd>\n<dt><samp>use_alpha</samp></dt>\n<dd><p>Include alpha values in the quantization calculation. Allows creating\npalettized output images (e.g. PNG8) with multiple alpha smooth blending.\n</p></dd>\n</dl>\n\n"
+}

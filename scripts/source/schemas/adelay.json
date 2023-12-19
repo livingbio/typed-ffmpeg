@@ -1,0 +1,32 @@
+{
+  "description": "8.12 adelay\nDelay one or more audio channels.\n\nSamples in delayed channel are filled with silence.\n\nThe filter accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "all": {
+        "description": "Use last set delay for all remaining channels. By default is disabled. This option if enabled changes how option 'delays' is interpreted.",
+        "type": "boolean"
+      },
+      "delays": {
+        "description": "Set list of delays in milliseconds for each channel separated by '|'. Unused delays will be silently ignored. If number of given delays is smaller than number of channels all remaining channels will not be delayed. If you want to delay exact number of samples, append 'S' to number. If you want instead to delay in seconds, append 's' to number.",
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "adelay options",
+    "type": "object"
+  },
+  "name": "adelay",
+  "parameters": [
+    {
+      "description": "<dd><p>Set list of delays in milliseconds for each channel separated by \u2019|\u2019.\nUnused delays will be silently ignored. If number of given delays is\nsmaller than number of channels all remaining channels will not be delayed.\nIf you want to delay exact number of samples, append \u2019S\u2019 to number.\nIf you want instead to delay in seconds, append \u2019s\u2019 to number.\n</p>\n</dd>",
+      "name": "delays"
+    },
+    {
+      "description": "<dd><p>Use last set delay for all remaining channels. By default is disabled.\nThis option if enabled changes how option <code>delays</code> is interpreted.\n</p></dd>",
+      "name": "all"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#adelay",
+  "source": "<h3 class=\"section\"><a href=\"#toc-adelay\">8.12 adelay</a></h3>\n\n<p>Delay one or more audio channels.\n</p>\n<p>Samples in delayed channel are filled with silence.\n</p>\n<p>The filter accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>delays</samp></dt>\n<dd><p>Set list of delays in milliseconds for each channel separated by &rsquo;|&rsquo;.\nUnused delays will be silently ignored. If number of given delays is\nsmaller than number of channels all remaining channels will not be delayed.\nIf you want to delay exact number of samples, append &rsquo;S&rsquo; to number.\nIf you want instead to delay in seconds, append &rsquo;s&rsquo; to number.\n</p>\n</dd>\n<dt><samp>all</samp></dt>\n<dd><p>Use last set delay for all remaining channels. By default is disabled.\nThis option if enabled changes how option <code>delays</code> is interpreted.\n</p></dd>\n</dl>\n\n"
+}

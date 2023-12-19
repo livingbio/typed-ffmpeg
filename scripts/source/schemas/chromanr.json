@@ -1,0 +1,108 @@
+{
+  "description": "11.27 chromanr\nReduce chrominance noise.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "distance": {
+        "default": "manhattan",
+        "enum": [
+          "manhattan",
+          "euclidean"
+        ],
+        "type": "string"
+      },
+      "sizeh": {
+        "default": 5,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "sizew": {
+        "default": 5,
+        "maximum": 100,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "steph": {
+        "default": 1,
+        "maximum": 50,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "stepw": {
+        "default": 1,
+        "maximum": 50,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "thres": {
+        "default": 30,
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "threu": {
+        "default": 200,
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "threv": {
+        "default": 200,
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "threy": {
+        "default": 200,
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      }
+    },
+    "title": "chromanr options",
+    "type": "object"
+  },
+  "name": "chromanr",
+  "parameters": [
+    {
+      "description": "<dd><p>Set threshold for averaging chrominance values.\nSum of absolute difference of Y, U and V pixel components of current\npixel and neighbour pixels lower than this threshold will be used in\naveraging. Luma component is left unchanged and is copied to output.\nDefault value is 30. Allowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "thres"
+    },
+    {
+      "description": "<dd><p>Set horizontal radius of rectangle used for averaging.\nAllowed range is from 1 to 100. Default value is 5.\n</p>\n</dd>",
+      "name": "sizew"
+    },
+    {
+      "description": "<dd><p>Set vertical radius of rectangle used for averaging.\nAllowed range is from 1 to 100. Default value is 5.\n</p>\n</dd>",
+      "name": "sizeh"
+    },
+    {
+      "description": "<dd><p>Set horizontal step when averaging. Default value is 1.\nAllowed range is from 1 to 50.\nMostly useful to speed-up filtering.\n</p>\n</dd>",
+      "name": "stepw"
+    },
+    {
+      "description": "<dd><p>Set vertical step when averaging. Default value is 1.\nAllowed range is from 1 to 50.\nMostly useful to speed-up filtering.\n</p>\n</dd>",
+      "name": "steph"
+    },
+    {
+      "description": "<dd><p>Set Y threshold for averaging chrominance values.\nSet finer control for max allowed difference between Y components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "threy"
+    },
+    {
+      "description": "<dd><p>Set U threshold for averaging chrominance values.\nSet finer control for max allowed difference between U components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "threu"
+    },
+    {
+      "description": "<dd><p>Set V threshold for averaging chrominance values.\nSet finer control for max allowed difference between V components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "threv"
+    },
+    {
+      "description": "<dd><p>Set distance type used in calculations.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>manhattan</samp>\u2019</dt>\n<dd><p>Absolute difference.\n</p></dd>\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dd><p>Difference squared.\n</p></dd>\n</dl>\n<p>Default distance type is manhattan.\n</p></dd>",
+      "name": "distance"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#chromanr",
+  "source": "<h3 class=\"section\"><a href=\"#toc-chromanr\">11.27 chromanr</a></h3>\n<p>Reduce chrominance noise.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>thres</samp></dt>\n<dd><p>Set threshold for averaging chrominance values.\nSum of absolute difference of Y, U and V pixel components of current\npixel and neighbour pixels lower than this threshold will be used in\naveraging. Luma component is left unchanged and is copied to output.\nDefault value is 30. Allowed range is from 1 to 200.\n</p>\n</dd>\n<dt><samp>sizew</samp></dt>\n<dd><p>Set horizontal radius of rectangle used for averaging.\nAllowed range is from 1 to 100. Default value is 5.\n</p>\n</dd>\n<dt><samp>sizeh</samp></dt>\n<dd><p>Set vertical radius of rectangle used for averaging.\nAllowed range is from 1 to 100. Default value is 5.\n</p>\n</dd>\n<dt><samp>stepw</samp></dt>\n<dd><p>Set horizontal step when averaging. Default value is 1.\nAllowed range is from 1 to 50.\nMostly useful to speed-up filtering.\n</p>\n</dd>\n<dt><samp>steph</samp></dt>\n<dd><p>Set vertical step when averaging. Default value is 1.\nAllowed range is from 1 to 50.\nMostly useful to speed-up filtering.\n</p>\n</dd>\n<dt><samp>threy</samp></dt>\n<dd><p>Set Y threshold for averaging chrominance values.\nSet finer control for max allowed difference between Y components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>\n<dt><samp>threu</samp></dt>\n<dd><p>Set U threshold for averaging chrominance values.\nSet finer control for max allowed difference between U components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>\n<dt><samp>threv</samp></dt>\n<dd><p>Set V threshold for averaging chrominance values.\nSet finer control for max allowed difference between V components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>\n<dt><samp>distance</samp></dt>\n<dd><p>Set distance type used in calculations.\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>manhattan</samp>&rsquo;</dt>\n<dd><p>Absolute difference.\n</p></dd>\n<dt>&lsquo;<samp>euclidean</samp>&rsquo;</dt>\n<dd><p>Difference squared.\n</p></dd>\n</dl>\n\n<p>Default distance type is manhattan.\n</p></dd>\n</dl>\n\n"
+}

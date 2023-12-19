@@ -1,0 +1,147 @@
+{
+  "description": "8.30 aiir\nApply an arbitrary Infinite Impulse Response filter.\n\nIt accepts the following parameters:\n\n\nCoefficients in tf and sf format are separated by spaces and are in ascending\norder.\n\nCoefficients in zp format are separated by spaces and order of coefficients\ndoesn\u2019t matter. Coefficients in zp format are complex numbers with i\nimaginary unit.\n\nDifferent coefficients and gains can be provided for every channel, in such case\nuse \u2019|\u2019 to separate coefficients or gains. Last provided coefficients will be\nused for all remaining channels.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "channel": {
+        "default": 0,
+        "description": "Set for which IR channel to display frequency response.",
+        "type": "integer"
+      },
+      "dry_gain": {
+        "description": "Set input gain.",
+        "type": "number"
+      },
+      "format": {
+        "description": "Set coefficients format.",
+        "enum": [
+          "ll",
+          "sf",
+          "tf",
+          "zp",
+          "pr",
+          "pd",
+          "sp"
+        ],
+        "type": "string"
+      },
+      "gains": {
+        "description": "Set channels gains.",
+        "type": "string"
+      },
+      "mix": {
+        "default": 1,
+        "description": "How much to use filtered signal in output.",
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "normalize": {
+        "default": true,
+        "description": "Normalize filter coefficients.",
+        "type": "boolean"
+      },
+      "poles": {
+        "description": "Set A/denominator/poles/ladder coefficients.",
+        "type": "string"
+      },
+      "precision": {
+        "description": "Set filtering precision.",
+        "enum": [
+          "dbl",
+          "flt",
+          "i32",
+          "i16"
+        ],
+        "type": "string"
+      },
+      "process": {
+        "description": "Set type of processing.",
+        "enum": [
+          "d",
+          "s",
+          "p"
+        ],
+        "type": "string"
+      },
+      "response": {
+        "default": false,
+        "description": "Show IR frequency response in additional video stream.",
+        "type": "boolean"
+      },
+      "size": {
+        "description": "Set video stream size.",
+        "type": "string"
+      },
+      "wet_gain": {
+        "description": "Set output gain.",
+        "type": "number"
+      },
+      "zeros": {
+        "description": "Set B/numerator/zeros/reflection coefficients.",
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "aiir options",
+    "type": "object"
+  },
+  "name": "aiir",
+  "parameters": [
+    {
+      "description": "<dd><p>Set B/numerator/zeros/reflection coefficients.\n</p>\n</dd>",
+      "name": "zeros, z"
+    },
+    {
+      "description": "<dd><p>Set A/denominator/poles/ladder coefficients.\n</p>\n</dd>",
+      "name": "poles, p"
+    },
+    {
+      "description": "<dd><p>Set channels gains.\n</p>\n</dd>",
+      "name": "gains, k"
+    },
+    {
+      "description": "<dd><p>Set input gain.\n</p>\n</dd>",
+      "name": "dry_gain"
+    },
+    {
+      "description": "<dd><p>Set output gain.\n</p>\n</dd>",
+      "name": "wet_gain"
+    },
+    {
+      "description": "<dd><p>Set coefficients format.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>ll</samp>\u2019</dt>\n<dd><p>lattice-ladder function\n</p></dd>\n<dt>\u2018<samp>sf</samp>\u2019</dt>\n<dd><p>analog transfer function\n</p></dd>\n<dt>\u2018<samp>tf</samp>\u2019</dt>\n<dd><p>digital transfer function\n</p></dd>\n<dt>\u2018<samp>zp</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, cartesian (default)\n</p></dd>\n<dt>\u2018<samp>pr</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, polar radians\n</p></dd>\n<dt>\u2018<samp>pd</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, polar degrees\n</p></dd>\n<dt>\u2018<samp>sp</samp>\u2019</dt>\n<dd><p>S-plane zeros/poles\n</p></dd>\n</dl>\n</dd>",
+      "name": "format, f"
+    },
+    {
+      "description": "<dd><p>Set type of processing.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>d</samp>\u2019</dt>\n<dd><p>direct processing\n</p></dd>\n<dt>\u2018<samp>s</samp>\u2019</dt>\n<dd><p>serial processing\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>parallel processing\n</p></dd>\n</dl>\n</dd>",
+      "name": "process, r"
+    },
+    {
+      "description": "<dd><p>Set filtering precision.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>dbl</samp>\u2019</dt>\n<dd><p>double-precision floating-point (default)\n</p></dd>\n<dt>\u2018<samp>flt</samp>\u2019</dt>\n<dd><p>single-precision floating-point\n</p></dd>\n<dt>\u2018<samp>i32</samp>\u2019</dt>\n<dd><p>32-bit integers\n</p></dd>\n<dt>\u2018<samp>i16</samp>\u2019</dt>\n<dd><p>16-bit integers\n</p></dd>\n</dl>\n</dd>",
+      "name": "precision, e"
+    },
+    {
+      "description": "<dd><p>Normalize filter coefficients, by default is enabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>",
+      "name": "normalize, n"
+    },
+    {
+      "description": "<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>",
+      "name": "mix"
+    },
+    {
+      "description": "<dd><p>Show IR frequency response, magnitude(magenta), phase(green) and group delay(yellow) in additional video stream.\nBy default it is disabled.\n</p>\n</dd>",
+      "name": "response"
+    },
+    {
+      "description": "<dd><p>Set for which IR channel to display frequency response. By default is first channel\ndisplayed. This option is used only when <var>response</var> is enabled.\n</p>\n</dd>",
+      "name": "channel"
+    },
+    {
+      "description": "<dd><p>Set video stream size. This option is used only when <var>response</var> is enabled.\n</p></dd>",
+      "name": "size"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aiir",
+  "source": "<h3 class=\"section\"><a href=\"#toc-aiir\">8.30 aiir</a></h3>\n\n<p>Apply an arbitrary Infinite Impulse Response filter.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>zeros, z</samp></dt>\n<dd><p>Set B/numerator/zeros/reflection coefficients.\n</p>\n</dd>\n<dt><samp>poles, p</samp></dt>\n<dd><p>Set A/denominator/poles/ladder coefficients.\n</p>\n</dd>\n<dt><samp>gains, k</samp></dt>\n<dd><p>Set channels gains.\n</p>\n</dd>\n<dt><samp>dry_gain</samp></dt>\n<dd><p>Set input gain.\n</p>\n</dd>\n<dt><samp>wet_gain</samp></dt>\n<dd><p>Set output gain.\n</p>\n</dd>\n<dt><samp>format, f</samp></dt>\n<dd><p>Set coefficients format.\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>ll</samp>&rsquo;</dt>\n<dd><p>lattice-ladder function\n</p></dd>\n<dt>&lsquo;<samp>sf</samp>&rsquo;</dt>\n<dd><p>analog transfer function\n</p></dd>\n<dt>&lsquo;<samp>tf</samp>&rsquo;</dt>\n<dd><p>digital transfer function\n</p></dd>\n<dt>&lsquo;<samp>zp</samp>&rsquo;</dt>\n<dd><p>Z-plane zeros/poles, cartesian (default)\n</p></dd>\n<dt>&lsquo;<samp>pr</samp>&rsquo;</dt>\n<dd><p>Z-plane zeros/poles, polar radians\n</p></dd>\n<dt>&lsquo;<samp>pd</samp>&rsquo;</dt>\n<dd><p>Z-plane zeros/poles, polar degrees\n</p></dd>\n<dt>&lsquo;<samp>sp</samp>&rsquo;</dt>\n<dd><p>S-plane zeros/poles\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>process, r</samp></dt>\n<dd><p>Set type of processing.\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>d</samp>&rsquo;</dt>\n<dd><p>direct processing\n</p></dd>\n<dt>&lsquo;<samp>s</samp>&rsquo;</dt>\n<dd><p>serial processing\n</p></dd>\n<dt>&lsquo;<samp>p</samp>&rsquo;</dt>\n<dd><p>parallel processing\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>precision, e</samp></dt>\n<dd><p>Set filtering precision.\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>dbl</samp>&rsquo;</dt>\n<dd><p>double-precision floating-point (default)\n</p></dd>\n<dt>&lsquo;<samp>flt</samp>&rsquo;</dt>\n<dd><p>single-precision floating-point\n</p></dd>\n<dt>&lsquo;<samp>i32</samp>&rsquo;</dt>\n<dd><p>32-bit integers\n</p></dd>\n<dt>&lsquo;<samp>i16</samp>&rsquo;</dt>\n<dd><p>16-bit integers\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>normalize, n</samp></dt>\n<dd><p>Normalize filter coefficients, by default is enabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>\n<dt><samp>mix</samp></dt>\n<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>\n<dt><samp>response</samp></dt>\n<dd><p>Show IR frequency response, magnitude(magenta), phase(green) and group delay(yellow) in additional video stream.\nBy default it is disabled.\n</p>\n</dd>\n<dt><samp>channel</samp></dt>\n<dd><p>Set for which IR channel to display frequency response. By default is first channel\ndisplayed. This option is used only when <var>response</var> is enabled.\n</p>\n</dd>\n<dt><samp>size</samp></dt>\n<dd><p>Set video stream size. This option is used only when <var>response</var> is enabled.\n</p></dd>\n</dl>\n\n<p>Coefficients in <code>tf</code> and <code>sf</code> format are separated by spaces and are in ascending\norder.\n</p>\n<p>Coefficients in <code>zp</code> format are separated by spaces and order of coefficients\ndoesn&rsquo;t matter. Coefficients in <code>zp</code> format are complex numbers with <var>i</var>\nimaginary unit.\n</p>\n<p>Different coefficients and gains can be provided for every channel, in such case\nuse &rsquo;|&rsquo; to separate coefficients or gains. Last provided coefficients will be\nused for all remaining channels.\n</p>\n"
+}

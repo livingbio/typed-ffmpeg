@@ -1,0 +1,63 @@
+{
+  "description": "8.66 atilt\nApply spectral tilt filter to audio stream.\n\nThis filter apply any spectral roll-off slope over any specified frequency band.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "freq": {
+        "default": 10000,
+        "minimum": 0,
+        "type": "number"
+      },
+      "level": {
+        "default": 1,
+        "maximum": 4,
+        "minimum": 0,
+        "type": "number"
+      },
+      "order": {
+        "type": "string"
+      },
+      "slope": {
+        "default": 0,
+        "maximum": 1,
+        "minimum": -1,
+        "type": "number"
+      },
+      "width": {
+        "default": 1000,
+        "maximum": 10000,
+        "minimum": 100,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "atilt options",
+    "type": "object"
+  },
+  "name": "atilt",
+  "parameters": [
+    {
+      "description": "<dd><p>Set central frequency of tilt in Hz. Default is 10000 Hz.\n</p>\n</dd>",
+      "name": "freq"
+    },
+    {
+      "description": "<dd><p>Set slope direction of tilt. Default is 0. Allowed range is from -1 to 1.\n</p>\n</dd>",
+      "name": "slope"
+    },
+    {
+      "description": "<dd><p>Set width of tilt. Default is 1000. Allowed range is from 100 to 10000.\n</p>\n</dd>",
+      "name": "width"
+    },
+    {
+      "description": "<dd><p>Set order of tilt filter.\n</p>\n</dd>",
+      "name": "order"
+    },
+    {
+      "description": "<dd><p>Set input volume level. Allowed range is from 0 to 4.\nDefault is 1.\n</p></dd>",
+      "name": "level"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#atilt",
+  "source": "<h3 class=\"section\"><a href=\"#toc-atilt\">8.66 atilt</a></h3>\n<p>Apply spectral tilt filter to audio stream.\n</p>\n<p>This filter apply any spectral roll-off slope over any specified frequency band.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>freq</samp></dt>\n<dd><p>Set central frequency of tilt in Hz. Default is 10000 Hz.\n</p>\n</dd>\n<dt><samp>slope</samp></dt>\n<dd><p>Set slope direction of tilt. Default is 0. Allowed range is from -1 to 1.\n</p>\n</dd>\n<dt><samp>width</samp></dt>\n<dd><p>Set width of tilt. Default is 1000. Allowed range is from 100 to 10000.\n</p>\n</dd>\n<dt><samp>order</samp></dt>\n<dd><p>Set order of tilt filter.\n</p>\n</dd>\n<dt><samp>level</samp></dt>\n<dd><p>Set input volume level. Allowed range is from 0 to 4.\nDefault is 1.\n</p></dd>\n</dl>\n\n"
+}

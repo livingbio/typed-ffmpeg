@@ -1,0 +1,24 @@
+{
+  "description": "11.231 showinfo\nShow a line containing various information for each input video frame.\nThe input video is not modified.\n\nThis filter supports the following options:\n\n\nThe shown line contains a sequence of key/value pairs of the form\nkey:value.\n\nThe following values are shown in the output:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "checksum": {
+        "default": true,
+        "description": "Calculate checksums of each plane. By default enabled.",
+        "type": "boolean"
+      }
+    },
+    "title": "showinfo options",
+    "type": "object"
+  },
+  "name": "showinfo",
+  "parameters": [
+    {
+      "description": "<dd><p>Calculate checksums of each plane. By default enabled.\n</p></dd>",
+      "name": "checksum"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#showinfo",
+  "source": "<h3 class=\"section\"><a href=\"#toc-showinfo\">11.231 showinfo</a></h3>\n\n<p>Show a line containing various information for each input video frame.\nThe input video is not modified.\n</p>\n<p>This filter supports the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>checksum</samp></dt>\n<dd><p>Calculate checksums of each plane. By default enabled.\n</p></dd>\n</dl>\n\n<p>The shown line contains a sequence of key/value pairs of the form\n<var>key</var>:<var>value</var>.\n</p>\n<p>The following values are shown in the output:\n</p>\n<dl compact=\"compact\">\n<dt><samp>n</samp></dt>\n<dd><p>The (sequential) number of the input frame, starting from 0.\n</p>\n</dd>\n<dt><samp>pts</samp></dt>\n<dd><p>The Presentation TimeStamp of the input frame, expressed as a number of\ntime base units. The time base unit depends on the filter input pad.\n</p>\n</dd>\n<dt><samp>pts_time</samp></dt>\n<dd><p>The Presentation TimeStamp of the input frame, expressed as a number of\nseconds.\n</p>\n</dd>\n<dt><samp>fmt</samp></dt>\n<dd><p>The pixel format name.\n</p>\n</dd>\n<dt><samp>sar</samp></dt>\n<dd><p>The sample aspect ratio of the input frame, expressed in the form\n<var>num</var>/<var>den</var>.\n</p>\n</dd>\n<dt><samp>s</samp></dt>\n<dd><p>The size of the input frame. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)&quot;Video size&quot; section in the ffmpeg-utils manual</a>.\n</p>\n</dd>\n<dt><samp>i</samp></dt>\n<dd><p>The type of interlaced mode (&quot;P&quot; for &quot;progressive&quot;, &quot;T&quot; for top field first, &quot;B&quot;\nfor bottom field first).\n</p>\n</dd>\n<dt><samp>iskey</samp></dt>\n<dd><p>This is 1 if the frame is a key frame, 0 otherwise.\n</p>\n</dd>\n<dt><samp>type</samp></dt>\n<dd><p>The picture type of the input frame (&quot;I&quot; for an I-frame, &quot;P&quot; for a\nP-frame, &quot;B&quot; for a B-frame, or &quot;?&quot; for an unknown type).\nAlso refer to the documentation of the <code>AVPictureType</code> enum and of\nthe <code>av_get_picture_type_char</code> function defined in\n<samp>libavutil/avutil.h</samp>.\n</p>\n</dd>\n<dt><samp>checksum</samp></dt>\n<dd><p>The Adler-32 checksum (printed in hexadecimal) of all the planes of the input frame.\n</p>\n</dd>\n<dt><samp>plane_checksum</samp></dt>\n<dd><p>The Adler-32 checksum (printed in hexadecimal) of each plane of the input frame,\nexpressed in the form &quot;[<var>c0</var> <var>c1</var> <var>c2</var> <var>c3</var>]&quot;.\n</p>\n</dd>\n<dt><samp>mean</samp></dt>\n<dd><p>The mean value of pixels in each plane of the input frame, expressed in the form\n&quot;[<var>mean0</var> <var>mean1</var> <var>mean2</var> <var>mean3</var>]&quot;.\n</p>\n</dd>\n<dt><samp>stdev</samp></dt>\n<dd><p>The standard deviation of pixel values in each plane of the input frame, expressed\nin the form &quot;[<var>stdev0</var> <var>stdev1</var> <var>stdev2</var> <var>stdev3</var>]&quot;.\n</p>\n</dd>\n</dl>\n\n"
+}

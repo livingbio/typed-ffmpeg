@@ -1,0 +1,8 @@
+{
+  "description": "8.103 resample\nConvert the audio sample format, sample rate and channel layout. It is\nnot meant to be used directly.",
+  "json_schema": {},
+  "name": "resample",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#resample",
+  "source": "<h3 class=\"section\"><a href=\"#toc-resample\">8.103 resample</a></h3>\n\n<p>Convert the audio sample format, sample rate and channel layout. It is\nnot meant to be used directly.\n</p>\n"
+}

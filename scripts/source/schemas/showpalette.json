@@ -1,0 +1,24 @@
+{
+  "description": "11.232 showpalette\nDisplays the 256 colors palette of each frame. This filter is only relevant for\npal8 pixel format frames.\n\nIt accepts the following option:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "s": {
+        "default": 30,
+        "description": "Set the size of the box used to represent one palette color entry.",
+        "type": "integer"
+      }
+    },
+    "title": "showpalette options",
+    "type": "object"
+  },
+  "name": "showpalette",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the size of the box used to represent one palette color entry. Default is\n<code>30</code> (for a <code>30x30</code> pixel box).\n</p></dd>",
+      "name": "s"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#showpalette",
+  "source": "<h3 class=\"section\"><a href=\"#toc-showpalette\">11.232 showpalette</a></h3>\n\n<p>Displays the 256 colors palette of each frame. This filter is only relevant for\n<var>pal8</var> pixel format frames.\n</p>\n<p>It accepts the following option:\n</p>\n<dl compact=\"compact\">\n<dt><samp>s</samp></dt>\n<dd><p>Set the size of the box used to represent one palette color entry. Default is\n<code>30</code> (for a <code>30x30</code> pixel box).\n</p></dd>\n</dl>\n\n"
+}
