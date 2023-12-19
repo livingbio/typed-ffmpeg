@@ -1,0 +1,336 @@
+{
+  "description": "11.15 blend\nBlend two video frames into each other.\n\nThe blend filter takes two input streams and outputs one\nstream, the first input is the \"top\" layer and second input is\n\"bottom\" layer.  By default, the output terminates when the longest input terminates.\n\nThe tblend (time blend) filter takes two consecutive frames\nfrom one single stream, and outputs the result obtained by blending\nthe new frame on top of the old frame.\n\nA description of the accepted options follows.\n\n\nThe blend filter also supports the framesync options.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "all_expr": {
+        "type": "string"
+      },
+      "all_mode": {
+        "default": "normal",
+        "enum": [
+          "addition",
+          "and",
+          "average",
+          "bleach",
+          "burn",
+          "darken",
+          "difference",
+          "divide",
+          "dodge",
+          "exclusion",
+          "extremity",
+          "freeze",
+          "geometric",
+          "glow",
+          "grainextract",
+          "grainmerge",
+          "hardlight",
+          "hardmix",
+          "hardoverlay",
+          "harmonic",
+          "heat",
+          "interpolate",
+          "lighten",
+          "linearlight",
+          "multiply",
+          "multiply128",
+          "negation",
+          "normal",
+          "or",
+          "overlay",
+          "phoenix",
+          "pinlight",
+          "reflect",
+          "screen",
+          "softdifference",
+          "softlight",
+          "stain",
+          "subtract",
+          "vividlight",
+          "xor"
+        ],
+        "type": "string"
+      },
+      "all_opacity": {
+        "type": "number"
+      },
+      "c0_expr": {
+        "type": "string"
+      },
+      "c0_mode": {
+        "default": "normal",
+        "enum": [
+          "addition",
+          "and",
+          "average",
+          "bleach",
+          "burn",
+          "darken",
+          "difference",
+          "divide",
+          "dodge",
+          "exclusion",
+          "extremity",
+          "freeze",
+          "geometric",
+          "glow",
+          "grainextract",
+          "grainmerge",
+          "hardlight",
+          "hardmix",
+          "hardoverlay",
+          "harmonic",
+          "heat",
+          "interpolate",
+          "lighten",
+          "linearlight",
+          "multiply",
+          "multiply128",
+          "negation",
+          "normal",
+          "or",
+          "overlay",
+          "phoenix",
+          "pinlight",
+          "reflect",
+          "screen",
+          "softdifference",
+          "softlight",
+          "stain",
+          "subtract",
+          "vividlight",
+          "xor"
+        ],
+        "type": "string"
+      },
+      "c0_opacity": {
+        "type": "number"
+      },
+      "c1_expr": {
+        "type": "string"
+      },
+      "c1_mode": {
+        "default": "normal",
+        "enum": [
+          "addition",
+          "and",
+          "average",
+          "bleach",
+          "burn",
+          "darken",
+          "difference",
+          "divide",
+          "dodge",
+          "exclusion",
+          "extremity",
+          "freeze",
+          "geometric",
+          "glow",
+          "grainextract",
+          "grainmerge",
+          "hardlight",
+          "hardmix",
+          "hardoverlay",
+          "harmonic",
+          "heat",
+          "interpolate",
+          "lighten",
+          "linearlight",
+          "multiply",
+          "multiply128",
+          "negation",
+          "normal",
+          "or",
+          "overlay",
+          "phoenix",
+          "pinlight",
+          "reflect",
+          "screen",
+          "softdifference",
+          "softlight",
+          "stain",
+          "subtract",
+          "vividlight",
+          "xor"
+        ],
+        "type": "string"
+      },
+      "c1_opacity": {
+        "type": "number"
+      },
+      "c2_expr": {
+        "type": "string"
+      },
+      "c2_mode": {
+        "default": "normal",
+        "enum": [
+          "addition",
+          "and",
+          "average",
+          "bleach",
+          "burn",
+          "darken",
+          "difference",
+          "divide",
+          "dodge",
+          "exclusion",
+          "extremity",
+          "freeze",
+          "geometric",
+          "glow",
+          "grainextract",
+          "grainmerge",
+          "hardlight",
+          "hardmix",
+          "hardoverlay",
+          "harmonic",
+          "heat",
+          "interpolate",
+          "lighten",
+          "linearlight",
+          "multiply",
+          "multiply128",
+          "negation",
+          "normal",
+          "or",
+          "overlay",
+          "phoenix",
+          "pinlight",
+          "reflect",
+          "screen",
+          "softdifference",
+          "softlight",
+          "stain",
+          "subtract",
+          "vividlight",
+          "xor"
+        ],
+        "type": "string"
+      },
+      "c2_opacity": {
+        "type": "number"
+      },
+      "c3_expr": {
+        "type": "string"
+      },
+      "c3_mode": {
+        "default": "normal",
+        "enum": [
+          "addition",
+          "and",
+          "average",
+          "bleach",
+          "burn",
+          "darken",
+          "difference",
+          "divide",
+          "dodge",
+          "exclusion",
+          "extremity",
+          "freeze",
+          "geometric",
+          "glow",
+          "grainextract",
+          "grainmerge",
+          "hardlight",
+          "hardmix",
+          "hardoverlay",
+          "harmonic",
+          "heat",
+          "interpolate",
+          "lighten",
+          "linearlight",
+          "multiply",
+          "multiply128",
+          "negation",
+          "normal",
+          "or",
+          "overlay",
+          "phoenix",
+          "pinlight",
+          "reflect",
+          "screen",
+          "softdifference",
+          "softlight",
+          "stain",
+          "subtract",
+          "vividlight",
+          "xor"
+        ],
+        "type": "string"
+      },
+      "c3_opacity": {
+        "type": "number"
+      }
+    },
+    "title": "Blend Filter Options",
+    "type": "object"
+  },
+  "name": "blend",
+  "parameters": [
+    {
+      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "c0_mode"
+    },
+    {
+      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "c1_mode"
+    },
+    {
+      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "c2_mode"
+    },
+    {
+      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "c3_mode"
+    },
+    {
+      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "all_mode"
+    },
+    {
+      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "name": "c0_opacity"
+    },
+    {
+      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "name": "c1_opacity"
+    },
+    {
+      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "name": "c2_opacity"
+    },
+    {
+      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "name": "c3_opacity"
+    },
+    {
+      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "name": "all_opacity"
+    },
+    {
+      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "name": "c0_expr"
+    },
+    {
+      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "name": "c1_expr"
+    },
+    {
+      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "name": "c2_expr"
+    },
+    {
+      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "name": "c3_expr"
+    },
+    {
+      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "name": "all_expr"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#blend",
+  "source": "<h3 class=\"section\"><a href=\"#toc-blend-1\">11.15 blend</a></h3>\n\n<p>Blend two video frames into each other.\n</p>\n<p>The <code>blend</code> filter takes two input streams and outputs one\nstream, the first input is the &quot;top&quot; layer and second input is\n&quot;bottom&quot; layer.  By default, the output terminates when the longest input terminates.\n</p>\n<p>The <code>tblend</code> (time blend) filter takes two consecutive frames\nfrom one single stream, and outputs the result obtained by blending\nthe new frame on top of the old frame.\n</p>\n<p>A description of the accepted options follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>c0_mode</samp></dt>\n<dt><samp>c1_mode</samp></dt>\n<dt><samp>c2_mode</samp></dt>\n<dt><samp>c3_mode</samp></dt>\n<dt><samp>all_mode</samp></dt>\n<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>addition</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>and</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>average</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bleach</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>burn</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>darken</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>difference</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>divide</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>dodge</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>exclusion</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>extremity</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>freeze</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>geometric</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>glow</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>grainextract</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>grainmerge</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>hardlight</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>hardmix</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>hardoverlay</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>harmonic</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>heat</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>interpolate</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>lighten</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>linearlight</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>multiply</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>multiply128</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>negation</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>normal</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>or</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>overlay</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>phoenix</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>pinlight</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>reflect</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>screen</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>softdifference</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>softlight</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>stain</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>subtract</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>vividlight</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>xor</samp>&rsquo;</dt>\n</dl>\n\n</dd>\n<dt><samp>c0_opacity</samp></dt>\n<dt><samp>c1_opacity</samp></dt>\n<dt><samp>c2_opacity</samp></dt>\n<dt><samp>c3_opacity</samp></dt>\n<dt><samp>all_opacity</samp></dt>\n<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>\n<dt><samp>c0_expr</samp></dt>\n<dt><samp>c1_expr</samp></dt>\n<dt><samp>c2_expr</samp></dt>\n<dt><samp>c3_expr</samp></dt>\n<dt><samp>all_expr</samp></dt>\n<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>\n</dl>\n\n<p>The <code>blend</code> filter also supports the <a href=\"#framesync\">framesync</a> options.\n</p>\n"
+}

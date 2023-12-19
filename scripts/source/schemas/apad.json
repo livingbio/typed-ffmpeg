@@ -1,0 +1,96 @@
+{
+  "description": "8.41 apad\nPad the end of an audio stream with silence.\n\nThis can be used together with ffmpeg -shortest to\nextend audio streams to the same length as the video stream.\n\nA description of the accepted options follows.\n\n\nIf neither the pad_len nor the whole_len nor pad_dur\nnor whole_dur option is set, the filter will add silence to the end of\nthe input stream indefinitely.\n\nNote that for ffmpeg 4.4 and earlier a zero pad_dur or\nwhole_dur also caused the filter to add silence indefinitely.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "oneOf": [
+      {
+        "not": {
+          "required": [
+            "whole_len"
+          ]
+        },
+        "required": [
+          "pad_len"
+        ]
+      },
+      {
+        "not": {
+          "required": [
+            "pad_len"
+          ]
+        },
+        "required": [
+          "whole_len"
+        ]
+      },
+      {
+        "not": {
+          "required": [
+            "whole_dur"
+          ]
+        },
+        "required": [
+          "pad_dur"
+        ]
+      },
+      {
+        "not": {
+          "required": [
+            "pad_dur"
+          ]
+        },
+        "required": [
+          "whole_dur"
+        ]
+      }
+    ],
+    "properties": {
+      "packet_size": {
+        "default": 4096,
+        "type": "integer"
+      },
+      "pad_dur": {
+        "pattern": "^\\d+(\\.\\d+)?[smh]?$",
+        "type": "string"
+      },
+      "pad_len": {
+        "type": "integer"
+      },
+      "whole_dur": {
+        "pattern": "^\\d+(\\.\\d+)?[smh]?$",
+        "type": "string"
+      },
+      "whole_len": {
+        "type": "integer"
+      }
+    },
+    "title": "apad options",
+    "type": "object"
+  },
+  "name": "apad",
+  "parameters": [
+    {
+      "description": "<dd><p>Set silence packet size. Default value is 4096.\n</p>\n</dd>",
+      "name": "packet_size"
+    },
+    {
+      "description": "<dd><p>Set the number of samples of silence to add to the end. After the\nvalue is reached, the stream is terminated. This option is mutually\nexclusive with <samp>whole_len</samp>.\n</p>\n</dd>",
+      "name": "pad_len"
+    },
+    {
+      "description": "<dd><p>Set the minimum total number of samples in the output audio stream. If\nthe value is longer than the input audio length, silence is added to\nthe end, until the value is reached. This option is mutually exclusive\nwith <samp>pad_len</samp>.\n</p>\n</dd>",
+      "name": "whole_len"
+    },
+    {
+      "description": "<dd><p>Specify the duration of samples of silence to add. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax. Used only if set to non-negative value.\n</p>\n</dd>",
+      "name": "pad_dur"
+    },
+    {
+      "description": "<dd><p>Specify the minimum total duration in the output audio stream. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax. Used only if set to non-negative value. If the value is longer than\nthe input audio length, silence is added to the end, until the value is reached.\nThis option is mutually exclusive with <samp>pad_dur</samp>\n</p></dd>",
+      "name": "whole_dur"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#apad",
+  "source": "<h3 class=\"section\"><a href=\"#toc-apad\">8.41 apad</a></h3>\n\n<p>Pad the end of an audio stream with silence.\n</p>\n<p>This can be used together with <code>ffmpeg</code> <samp>-shortest</samp> to\nextend audio streams to the same length as the video stream.\n</p>\n<p>A description of the accepted options follows.\n</p>\n<dl compact=\"compact\">\n<dt><samp>packet_size</samp></dt>\n<dd><p>Set silence packet size. Default value is 4096.\n</p>\n</dd>\n<dt><samp>pad_len</samp></dt>\n<dd><p>Set the number of samples of silence to add to the end. After the\nvalue is reached, the stream is terminated. This option is mutually\nexclusive with <samp>whole_len</samp>.\n</p>\n</dd>\n<dt><samp>whole_len</samp></dt>\n<dd><p>Set the minimum total number of samples in the output audio stream. If\nthe value is longer than the input audio length, silence is added to\nthe end, until the value is reached. This option is mutually exclusive\nwith <samp>pad_len</samp>.\n</p>\n</dd>\n<dt><samp>pad_dur</samp></dt>\n<dd><p>Specify the duration of samples of silence to add. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax. Used only if set to non-negative value.\n</p>\n</dd>\n<dt><samp>whole_dur</samp></dt>\n<dd><p>Specify the minimum total duration in the output audio stream. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax. Used only if set to non-negative value. If the value is longer than\nthe input audio length, silence is added to the end, until the value is reached.\nThis option is mutually exclusive with <samp>pad_dur</samp>\n</p></dd>\n</dl>\n\n<p>If neither the <samp>pad_len</samp> nor the <samp>whole_len</samp> nor <samp>pad_dur</samp>\nnor <samp>whole_dur</samp> option is set, the filter will add silence to the end of\nthe input stream indefinitely.\n</p>\n<p>Note that for ffmpeg 4.4 and earlier a zero <samp>pad_dur</samp> or\n<samp>whole_dur</samp> also caused the filter to add silence indefinitely.\n</p>\n"
+}

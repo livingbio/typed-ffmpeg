@@ -1,0 +1,27 @@
+{
+  "description": "8.100 mcompand\nMultiband Compress or expand the audio\u2019s dynamic range.\n\nThe input audio is divided into bands using 4th order Linkwitz-Riley IIRs.\nThis is akin to the crossover of a loudspeaker, and results in flat frequency\nresponse when absent compander action.\n\nIt accepts the following parameters:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "args": {
+        "description": "The option syntax for mcompand filter. Refer to compand filter documentation for explanation of each item.",
+        "pattern": "^([0-9]+,[0-9]+(,[0-9]+,[0-9]+)* [0-9]+(\\.[0-9]+)?( [0-9]+(\\.[0-9]+)?( [0-9]+(\\.[0-9]+)?)?)? \\| )*([0-9]+,[0-9]+(,[0-9]+,[0-9]+)*)( \\| [0-9]+,[0-9]+(,[0-9]+,[0-9]+)*)*$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "args"
+    ],
+    "title": "mcompand options",
+    "type": "object"
+  },
+  "name": "mcompand",
+  "parameters": [
+    {
+      "description": "<dd><p>This option syntax is:\nattack,decay,[attack,decay..] soft-knee points crossover_frequency [delay [initial_volume [gain]]] | attack,decay ...\nFor explanation of each item refer to compand filter documentation.\n</p></dd>",
+      "name": "args"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#mcompand",
+  "source": "<h3 class=\"section\"><a href=\"#toc-mcompand\">8.100 mcompand</a></h3>\n<p>Multiband Compress or expand the audio&rsquo;s dynamic range.\n</p>\n<p>The input audio is divided into bands using 4th order Linkwitz-Riley IIRs.\nThis is akin to the crossover of a loudspeaker, and results in flat frequency\nresponse when absent compander action.\n</p>\n<p>It accepts the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>args</samp></dt>\n<dd><p>This option syntax is:\nattack,decay,[attack,decay..] soft-knee points crossover_frequency [delay [initial_volume [gain]]] | attack,decay ...\nFor explanation of each item refer to compand filter documentation.\n</p></dd>\n</dl>\n\n"
+}

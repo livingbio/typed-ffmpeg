@@ -1,0 +1,92 @@
+{
+  "description": "8.57 aspectralstats\nDisplay frequency domain statistical information about the audio channels.\nStatistics are calculated and stored as metadata for each audio channel and for each audio frame.\n\nIt accepts the following option:\n\nA list of each metadata key follows:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "measure": {
+        "default": "all",
+        "enum": [
+          "none",
+          "all",
+          "mean",
+          "variance",
+          "centroid",
+          "spread",
+          "skewness",
+          "kurtosis",
+          "entropy",
+          "flatness",
+          "crest",
+          "flux",
+          "slope",
+          "decrease",
+          "rolloff"
+        ],
+        "type": "string"
+      },
+      "overlap": {
+        "default": 0.5,
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "win_func": {
+        "default": "hann",
+        "enum": [
+          "rect",
+          "bartlett",
+          "hann",
+          "hamming",
+          "blackman",
+          "welch",
+          "flattop",
+          "bharris",
+          "bnuttall",
+          "bhann",
+          "sine",
+          "nuttall",
+          "lanczos",
+          "gauss",
+          "tukey",
+          "dolph",
+          "cauchy",
+          "parzen",
+          "poisson",
+          "bohman",
+          "kaiser"
+        ],
+        "type": "string"
+      },
+      "win_size": {
+        "default": 2048,
+        "maximum": 65536,
+        "minimum": 32,
+        "type": "integer"
+      }
+    },
+    "title": "aspectralstats options",
+    "type": "object"
+  },
+  "name": "aspectralstats",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the window length in samples. Default value is 2048.\nAllowed range is from 32 to 65536.\n</p>\n</dd>",
+      "name": "win_size"
+    },
+    {
+      "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
+      "name": "win_func"
+    },
+    {
+      "description": "<dd><p>Set window overlap. Allowed range is from <code>0</code>\nto <code>1</code>. Default value is <code>0.5</code>.\n</p>\n</dd>",
+      "name": "overlap"
+    },
+    {
+      "description": "<dd><p>Select the parameters which are measured. The metadata keys can\nbe used as flags, default is <samp>all</samp> which measures everything.\n<samp>none</samp> disables all measurement.\n</p></dd>",
+      "name": "measure"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aspectralstats",
+  "source": "<h3 class=\"section\"><a href=\"#toc-aspectralstats\">8.57 aspectralstats</a></h3>\n\n<p>Display frequency domain statistical information about the audio channels.\nStatistics are calculated and stored as metadata for each audio channel and for each audio frame.\n</p>\n<p>It accepts the following option:\n</p><dl compact=\"compact\">\n<dt><samp>win_size</samp></dt>\n<dd><p>Set the window length in samples. Default value is 2048.\nAllowed range is from 32 to 65536.\n</p>\n</dd>\n<dt><samp>win_func</samp></dt>\n<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>&lsquo;<samp>rect</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bartlett</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>hann, hanning</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>hamming</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>blackman</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>welch</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>flattop</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bharris</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bnuttall</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bhann</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>sine</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>nuttall</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>lanczos</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>gauss</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>tukey</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>dolph</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>cauchy</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>parzen</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>poisson</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>bohman</samp>&rsquo;</dt>\n<dt>&lsquo;<samp>kaiser</samp>&rsquo;</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>\n<dt><samp>overlap</samp></dt>\n<dd><p>Set window overlap. Allowed range is from <code>0</code>\nto <code>1</code>. Default value is <code>0.5</code>.\n</p>\n</dd>\n<dt><samp>measure</samp></dt>\n<dd><p>Select the parameters which are measured. The metadata keys can\nbe used as flags, default is <samp>all</samp> which measures everything.\n<samp>none</samp> disables all measurement.\n</p></dd>\n</dl>\n\n<p>A list of each metadata key follows:\n</p>\n<dl compact=\"compact\">\n<dt><samp>mean</samp></dt>\n<dt><samp>variance</samp></dt>\n<dt><samp>centroid</samp></dt>\n<dt><samp>spread</samp></dt>\n<dt><samp>skewness</samp></dt>\n<dt><samp>kurtosis</samp></dt>\n<dt><samp>entropy</samp></dt>\n<dt><samp>flatness</samp></dt>\n<dt><samp>crest</samp></dt>\n<dt><samp>flux</samp></dt>\n<dt><samp>slope</samp></dt>\n<dt><samp>decrease</samp></dt>\n<dt><samp>rolloff</samp></dt>\n</dl>\n\n"
+}

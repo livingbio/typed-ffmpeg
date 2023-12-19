@@ -1,0 +1,91 @@
+{
+  "description": "8.54 ashowinfo\nShow a line containing various information for each input audio frame.\nThe input audio is not modified.\n\nThe shown line contains a sequence of key/value pairs of the form\nkey:value.\n\nThe following values are shown in the output:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "checksum": {
+        "description": "The Adler-32 checksum (printed in hexadecimal) of the audio data. For planar audio, the data is treated as if all the planes were concatenated.",
+        "type": "string"
+      },
+      "chlayout": {
+        "description": "The channel layout.",
+        "type": "string"
+      },
+      "fmt": {
+        "description": "The sample format.",
+        "type": "string"
+      },
+      "n": {
+        "description": "The (sequential) number of the input frame, starting from 0.",
+        "type": "integer"
+      },
+      "nb_samples": {
+        "description": "The number of samples (per channel) in the frame.",
+        "type": "integer"
+      },
+      "plane_checksums": {
+        "description": "A list of Adler-32 checksums for each data plane.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "pts": {
+        "description": "The presentation timestamp of the input frame, in time base units; the time base depends on the filter input pad, and is usually 1/sample_rate.",
+        "type": "integer"
+      },
+      "pts_time": {
+        "description": "The presentation timestamp of the input frame in seconds.",
+        "type": "number"
+      },
+      "rate": {
+        "description": "The sample rate for the audio frame.",
+        "type": "integer"
+      }
+    },
+    "title": "ashowinfo options",
+    "type": "object"
+  },
+  "name": "ashowinfo",
+  "parameters": [
+    {
+      "description": "<dd><p>The (sequential) number of the input frame, starting from 0.\n</p>\n</dd>",
+      "name": "n"
+    },
+    {
+      "description": "<dd><p>The presentation timestamp of the input frame, in time base units; the time base\ndepends on the filter input pad, and is usually 1/<var>sample_rate</var>.\n</p>\n</dd>",
+      "name": "pts"
+    },
+    {
+      "description": "<dd><p>The presentation timestamp of the input frame in seconds.\n</p>\n</dd>",
+      "name": "pts_time"
+    },
+    {
+      "description": "<dd><p>The sample format.\n</p>\n</dd>",
+      "name": "fmt"
+    },
+    {
+      "description": "<dd><p>The channel layout.\n</p>\n</dd>",
+      "name": "chlayout"
+    },
+    {
+      "description": "<dd><p>The sample rate for the audio frame.\n</p>\n</dd>",
+      "name": "rate"
+    },
+    {
+      "description": "<dd><p>The number of samples (per channel) in the frame.\n</p>\n</dd>",
+      "name": "nb_samples"
+    },
+    {
+      "description": "<dd><p>The Adler-32 checksum (printed in hexadecimal) of the audio data. For planar\naudio, the data is treated as if all the planes were concatenated.\n</p>\n</dd>",
+      "name": "checksum"
+    },
+    {
+      "description": "<dd><p>A list of Adler-32 checksums for each data plane.\n</p></dd>",
+      "name": "plane_checksums"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ashowinfo",
+  "source": "<h3 class=\"section\"><a href=\"#toc-ashowinfo\">8.54 ashowinfo</a></h3>\n\n<p>Show a line containing various information for each input audio frame.\nThe input audio is not modified.\n</p>\n<p>The shown line contains a sequence of key/value pairs of the form\n<var>key</var>:<var>value</var>.\n</p>\n<p>The following values are shown in the output:\n</p>\n<dl compact=\"compact\">\n<dt><samp>n</samp></dt>\n<dd><p>The (sequential) number of the input frame, starting from 0.\n</p>\n</dd>\n<dt><samp>pts</samp></dt>\n<dd><p>The presentation timestamp of the input frame, in time base units; the time base\ndepends on the filter input pad, and is usually 1/<var>sample_rate</var>.\n</p>\n</dd>\n<dt><samp>pts_time</samp></dt>\n<dd><p>The presentation timestamp of the input frame in seconds.\n</p>\n</dd>\n<dt><samp>fmt</samp></dt>\n<dd><p>The sample format.\n</p>\n</dd>\n<dt><samp>chlayout</samp></dt>\n<dd><p>The channel layout.\n</p>\n</dd>\n<dt><samp>rate</samp></dt>\n<dd><p>The sample rate for the audio frame.\n</p>\n</dd>\n<dt><samp>nb_samples</samp></dt>\n<dd><p>The number of samples (per channel) in the frame.\n</p>\n</dd>\n<dt><samp>checksum</samp></dt>\n<dd><p>The Adler-32 checksum (printed in hexadecimal) of the audio data. For planar\naudio, the data is treated as if all the planes were concatenated.\n</p>\n</dd>\n<dt><samp>plane_checksums</samp></dt>\n<dd><p>A list of Adler-32 checksums for each data plane.\n</p></dd>\n</dl>\n\n"
+}

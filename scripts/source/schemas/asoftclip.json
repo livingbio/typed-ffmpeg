@@ -1,0 +1,71 @@
+{
+  "description": "8.56 asoftclip\nApply audio soft clipping.\n\nSoft clipping is a type of distortion effect where the amplitude of a signal is saturated\nalong a smooth curve, rather than the abrupt shape of hard-clipping.\n\nThis filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "output": {
+        "default": 1,
+        "description": "Set gain applied to output. Default value is 0dB or 1.",
+        "type": "number"
+      },
+      "oversample": {
+        "description": "Set oversampling factor.",
+        "type": "number"
+      },
+      "param": {
+        "description": "Set additional parameter which controls sigmoid function.",
+        "type": "number"
+      },
+      "threshold": {
+        "default": 1,
+        "description": "Set threshold from where to start clipping. Default value is 0dB or 1.",
+        "type": "number"
+      },
+      "type": {
+        "description": "Set type of soft-clipping.",
+        "enum": [
+          "hard",
+          "tanh",
+          "atan",
+          "cubic",
+          "exp",
+          "alg",
+          "quintic",
+          "sin",
+          "erf"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "type"
+    ],
+    "title": "asoftclip options",
+    "type": "object"
+  },
+  "name": "asoftclip",
+  "parameters": [
+    {
+      "description": "<dd><p>Set type of soft-clipping.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>hard</samp></dt>\n<dt><samp>tanh</samp></dt>\n<dt><samp>atan</samp></dt>\n<dt><samp>cubic</samp></dt>\n<dt><samp>exp</samp></dt>\n<dt><samp>alg</samp></dt>\n<dt><samp>quintic</samp></dt>\n<dt><samp>sin</samp></dt>\n<dt><samp>erf</samp></dt>\n</dl>\n</dd>",
+      "name": "type"
+    },
+    {
+      "description": "<dd><p>Set threshold from where to start clipping. Default value is 0dB or 1.\n</p>\n</dd>",
+      "name": "threshold"
+    },
+    {
+      "description": "<dd><p>Set gain applied to output. Default value is 0dB or 1.\n</p>\n</dd>",
+      "name": "output"
+    },
+    {
+      "description": "<dd><p>Set additional parameter which controls sigmoid function.\n</p>\n</dd>",
+      "name": "param"
+    },
+    {
+      "description": "<dd><p>Set oversampling factor.\n</p></dd>",
+      "name": "oversample"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asoftclip",
+  "source": "<h3 class=\"section\"><a href=\"#toc-asoftclip\">8.56 asoftclip</a></h3>\n<p>Apply audio soft clipping.\n</p>\n<p>Soft clipping is a type of distortion effect where the amplitude of a signal is saturated\nalong a smooth curve, rather than the abrupt shape of hard-clipping.\n</p>\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>type</samp></dt>\n<dd><p>Set type of soft-clipping.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>hard</samp></dt>\n<dt><samp>tanh</samp></dt>\n<dt><samp>atan</samp></dt>\n<dt><samp>cubic</samp></dt>\n<dt><samp>exp</samp></dt>\n<dt><samp>alg</samp></dt>\n<dt><samp>quintic</samp></dt>\n<dt><samp>sin</samp></dt>\n<dt><samp>erf</samp></dt>\n</dl>\n\n</dd>\n<dt><samp>threshold</samp></dt>\n<dd><p>Set threshold from where to start clipping. Default value is 0dB or 1.\n</p>\n</dd>\n<dt><samp>output</samp></dt>\n<dd><p>Set gain applied to output. Default value is 0dB or 1.\n</p>\n</dd>\n<dt><samp>param</samp></dt>\n<dd><p>Set additional parameter which controls sigmoid function.\n</p>\n</dd>\n<dt><samp>oversample</samp></dt>\n<dd><p>Set oversampling factor.\n</p></dd>\n</dl>\n\n"
+}

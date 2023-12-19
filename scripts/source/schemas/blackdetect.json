@@ -1,0 +1,43 @@
+{
+  "description": "11.13 blackdetect\nDetect video intervals that are (almost) completely black. Can be\nuseful to detect chapter transitions, commercials, or invalid\nrecordings.\n\nThe filter outputs its detection analysis to both the log as well as\nframe metadata. If a black segment of at least the specified minimum\nduration is found, a line with the start and end timestamps as well\nas duration is printed to the log with level info. In addition,\na log line with level debug is printed per frame showing the\nblack amount detected for that frame.\n\nThe filter also attaches metadata to the first frame of a black\nsegment with key lavfi.black_start and to the first frame\nafter the black segment ends with key lavfi.black_end. The\nvalue is the frame\u2019s timestamp. This metadata is added regardless\nof the minimum duration specified.\n\nThe filter accepts the following options:\n\n\nThe following example sets the maximum pixel threshold to the minimum\nvalue, and detects only black intervals of 2 or more seconds:\n\nblackdetect=d=2:pix_th=0.00",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "black_min_duration": {
+        "default": 2.0,
+        "minimum": 0,
+        "type": "number"
+      },
+      "picture_black_ratio_th": {
+        "default": 0.98,
+        "minimum": 0,
+        "type": "number"
+      },
+      "pixel_black_th": {
+        "default": 0.1,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "title": "blackdetect options",
+    "type": "object"
+  },
+  "name": "blackdetect",
+  "parameters": [
+    {
+      "description": "<dd><p>Set the minimum detected black duration expressed in seconds. It must\nbe a non-negative floating point number.\n</p>\n<p>Default value is 2.0.\n</p>\n</dd>",
+      "name": "black_min_duration, d"
+    },
+    {
+      "description": "<dd><p>Set the threshold for considering a picture \"black\".\nExpress the minimum value for the ratio:\n</p><div class=\"example\">\n<pre class=\"example\"><var>nb_black_pixels</var> / <var>nb_pixels</var>\n</pre></div>\n<p>for which a picture is considered black.\nDefault value is 0.98.\n</p>\n</dd>",
+      "name": "picture_black_ratio_th, pic_th"
+    },
+    {
+      "description": "<dd><p>Set the threshold for considering a pixel \"black\".\n</p>\n<p>The threshold expresses the maximum pixel luma value for which a\npixel is considered \"black\". The provided value is scaled according to\nthe following equation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>absolute_threshold</var> = <var>luma_minimum_value</var> + <var>pixel_black_th</var> * <var>luma_range_size</var>\n</pre></div>\n<p><var>luma_range_size</var> and <var>luma_minimum_value</var> depend on\nthe input video format, the range is [0-255] for YUV full-range\nformats and [16-235] for YUV non full-range formats.\n</p>\n<p>Default value is 0.10.\n</p></dd>",
+      "name": "pixel_black_th, pix_th"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#blackdetect",
+  "source": "<h3 class=\"section\"><a href=\"#toc-blackdetect\">11.13 blackdetect</a></h3>\n\n<p>Detect video intervals that are (almost) completely black. Can be\nuseful to detect chapter transitions, commercials, or invalid\nrecordings.\n</p>\n<p>The filter outputs its detection analysis to both the log as well as\nframe metadata. If a black segment of at least the specified minimum\nduration is found, a line with the start and end timestamps as well\nas duration is printed to the log with level <code>info</code>. In addition,\na log line with level <code>debug</code> is printed per frame showing the\nblack amount detected for that frame.\n</p>\n<p>The filter also attaches metadata to the first frame of a black\nsegment with key <code>lavfi.black_start</code> and to the first frame\nafter the black segment ends with key <code>lavfi.black_end</code>. The\nvalue is the frame&rsquo;s timestamp. This metadata is added regardless\nof the minimum duration specified.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>black_min_duration, d</samp></dt>\n<dd><p>Set the minimum detected black duration expressed in seconds. It must\nbe a non-negative floating point number.\n</p>\n<p>Default value is 2.0.\n</p>\n</dd>\n<dt><samp>picture_black_ratio_th, pic_th</samp></dt>\n<dd><p>Set the threshold for considering a picture &quot;black&quot;.\nExpress the minimum value for the ratio:\n</p><div class=\"example\">\n<pre class=\"example\"><var>nb_black_pixels</var> / <var>nb_pixels</var>\n</pre></div>\n\n<p>for which a picture is considered black.\nDefault value is 0.98.\n</p>\n</dd>\n<dt><samp>pixel_black_th, pix_th</samp></dt>\n<dd><p>Set the threshold for considering a pixel &quot;black&quot;.\n</p>\n<p>The threshold expresses the maximum pixel luma value for which a\npixel is considered &quot;black&quot;. The provided value is scaled according to\nthe following equation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>absolute_threshold</var> = <var>luma_minimum_value</var> + <var>pixel_black_th</var> * <var>luma_range_size</var>\n</pre></div>\n\n<p><var>luma_range_size</var> and <var>luma_minimum_value</var> depend on\nthe input video format, the range is [0-255] for YUV full-range\nformats and [16-235] for YUV non full-range formats.\n</p>\n<p>Default value is 0.10.\n</p></dd>\n</dl>\n\n<p>The following example sets the maximum pixel threshold to the minimum\nvalue, and detects only black intervals of 2 or more seconds:\n</p><div class=\"example\">\n<pre class=\"example\">blackdetect=d=2:pix_th=0.00\n</pre></div>\n\n"
+}

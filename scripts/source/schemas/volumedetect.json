@@ -1,0 +1,8 @@
+{
+  "description": "8.121 volumedetect\nDetect the volume of the input video.\n\nThe filter has no parameters. It supports only 16-bit signed integer samples,\nso the input will be converted when needed. Statistics about the volume will\nbe printed in the log when the input stream end is reached.\n\nIn particular it will show the mean volume (root mean square), maximum\nvolume (on a per-sample basis), and the beginning of a histogram of the\nregistered volume values (from the maximum value to a cumulated 1/1000 of\nthe samples).\n\nAll volumes are in decibels relative to the maximum PCM value.",
+  "json_schema": {},
+  "name": "volumedetect",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#volumedetect",
+  "source": "<h3 class=\"section\"><a href=\"#toc-volumedetect\">8.121 volumedetect</a></h3>\n\n<p>Detect the volume of the input video.\n</p>\n<p>The filter has no parameters. It supports only 16-bit signed integer samples,\nso the input will be converted when needed. Statistics about the volume will\nbe printed in the log when the input stream end is reached.\n</p>\n<p>In particular it will show the mean volume (root mean square), maximum\nvolume (on a per-sample basis), and the beginning of a histogram of the\nregistered volume values (from the maximum value to a cumulated 1/1000 of\nthe samples).\n</p>\n<p>All volumes are in decibels relative to the maximum PCM value.\n</p>\n"
+}

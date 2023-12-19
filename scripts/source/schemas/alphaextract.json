@@ -1,0 +1,8 @@
+{
+  "description": "11.2 alphaextract\nExtract the alpha component from the input as a grayscale video. This\nis especially useful with the alphamerge filter.",
+  "json_schema": {},
+  "name": "alphaextract",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#alphaextract",
+  "source": "<h3 class=\"section\"><a href=\"#toc-alphaextract\">11.2 alphaextract</a></h3>\n\n<p>Extract the alpha component from the input as a grayscale video. This\nis especially useful with the <var>alphamerge</var> filter.\n</p>\n"
+}

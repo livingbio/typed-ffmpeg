@@ -1,0 +1,34 @@
+{
+  "description": "8.74 channelmap\nRemap input channels to new locations.\n\nIt accepts the following parameters:\n\nIf no mapping is present, the filter will implicitly map input channels to\noutput channels, preserving indices.",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "channel_layout": {
+        "description": "The channel layout of the output stream.",
+        "type": "string"
+      },
+      "map": {
+        "description": "Map channels from input to output. The argument is a '|' separated list of mappings, each in the 'in_channel-out_channel' or 'in_channel' form. in_channel can be either the name of the input channel (e.g. FL for front left) or its index in the input channel layout. out_channel is the name of the output channel or its index in the output channel layout. If out_channel is not given then it is implicitly an index, starting with zero and increasing by one for each mapping.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "channel_layout"
+    ],
+    "title": "channelmap options",
+    "type": "object"
+  },
+  "name": "channelmap",
+  "parameters": [
+    {
+      "description": "<dd><p>Map channels from input to output. The argument is a \u2019|\u2019-separated list of\nmappings, each in the <code><var>in_channel</var>-<var>out_channel</var></code> or\n<var>in_channel</var> form. <var>in_channel</var> can be either the name of the input\nchannel (e.g. FL for front left) or its index in the input channel layout.\n<var>out_channel</var> is the name of the output channel or its index in the output\nchannel layout. If <var>out_channel</var> is not given then it is implicitly an\nindex, starting with zero and increasing by one for each mapping.\n</p>\n</dd>",
+      "name": "map"
+    },
+    {
+      "description": "<dd><p>The channel layout of the output stream.\n</p></dd>",
+      "name": "channel_layout"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#channelmap",
+  "source": "<h3 class=\"section\"><a href=\"#toc-channelmap\">8.74 channelmap</a></h3>\n\n<p>Remap input channels to new locations.\n</p>\n<p>It accepts the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>map</samp></dt>\n<dd><p>Map channels from input to output. The argument is a &rsquo;|&rsquo;-separated list of\nmappings, each in the <code><var>in_channel</var>-<var>out_channel</var></code> or\n<var>in_channel</var> form. <var>in_channel</var> can be either the name of the input\nchannel (e.g. FL for front left) or its index in the input channel layout.\n<var>out_channel</var> is the name of the output channel or its index in the output\nchannel layout. If <var>out_channel</var> is not given then it is implicitly an\nindex, starting with zero and increasing by one for each mapping.\n</p>\n</dd>\n<dt><samp>channel_layout</samp></dt>\n<dd><p>The channel layout of the output stream.\n</p></dd>\n</dl>\n\n<p>If no mapping is present, the filter will implicitly map input channels to\noutput channels, preserving indices.\n</p>\n"
+}

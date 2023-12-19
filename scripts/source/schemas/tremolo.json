@@ -1,0 +1,37 @@
+{
+  "description": "8.117 tremolo\nSinusoidal amplitude modulation.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "d": {
+        "default": 0.5,
+        "description": "Depth of modulation as a percentage.",
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "type": "number"
+      },
+      "f": {
+        "default": 5.0,
+        "description": "Modulation frequency in Hertz. Modulation frequencies in the subharmonic range (20 Hz or lower) will result in a tremolo effect. This filter may also be used as a ring modulator by specifying a modulation frequency higher than 20 Hz.",
+        "maximum": 20000,
+        "minimum": 0.1,
+        "type": "number"
+      }
+    },
+    "title": "Tremolo Filter Options",
+    "type": "object"
+  },
+  "name": "tremolo",
+  "parameters": [
+    {
+      "description": "<dd><p>Modulation frequency in Hertz. Modulation frequencies in the subharmonic range\n(20 Hz or lower) will result in a tremolo effect.\nThis filter may also be used as a ring modulator by specifying\na modulation frequency higher than 20 Hz.\nRange is 0.1 - 20000.0. Default value is 5.0 Hz.\n</p>\n</dd>",
+      "name": "f"
+    },
+    {
+      "description": "<dd><p>Depth of modulation as a percentage. Range is 0.0 - 1.0.\nDefault value is 0.5.\n</p></dd>",
+      "name": "d"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tremolo",
+  "source": "<h3 class=\"section\"><a href=\"#toc-tremolo\">8.117 tremolo</a></h3>\n\n<p>Sinusoidal amplitude modulation.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>f</samp></dt>\n<dd><p>Modulation frequency in Hertz. Modulation frequencies in the subharmonic range\n(20 Hz or lower) will result in a tremolo effect.\nThis filter may also be used as a ring modulator by specifying\na modulation frequency higher than 20 Hz.\nRange is 0.1 - 20000.0. Default value is 5.0 Hz.\n</p>\n</dd>\n<dt><samp>d</samp></dt>\n<dd><p>Depth of modulation as a percentage. Range is 0.0 - 1.0.\nDefault value is 0.5.\n</p></dd>\n</dl>\n\n"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "8.44 apsnr\nMeasure Audio Peak Signal-to-Noise Ratio.\n\nThis filter takes two audio streams for input, and outputs first\naudio stream.\nResults are in dB per channel at end of either input.",
+  "json_schema": {},
+  "name": "apsnr",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#apsnr",
+  "source": "<h3 class=\"section\"><a href=\"#toc-apsnr\">8.44 apsnr</a></h3>\n<p>Measure Audio Peak Signal-to-Noise Ratio.\n</p>\n<p>This filter takes two audio streams for input, and outputs first\naudio stream.\nResults are in dB per channel at end of either input.\n</p>\n"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "8.36 amultiply\nMultiply first audio stream with second audio stream and store result\nin output audio stream. Multiplication is done by multiplying each\nsample from first stream with sample at same position from second stream.\n\nWith this element-wise multiplication one can create amplitude fades and\namplitude modulations.",
+  "json_schema": {},
+  "name": "amultiply",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#amultiply",
+  "source": "<h3 class=\"section\"><a href=\"#toc-amultiply\">8.36 amultiply</a></h3>\n\n<p>Multiply first audio stream with second audio stream and store result\nin output audio stream. Multiplication is done by multiplying each\nsample from first stream with sample at same position from second stream.\n</p>\n<p>With this element-wise multiplication one can create amplitude fades and\namplitude modulations.\n</p>\n"
+}

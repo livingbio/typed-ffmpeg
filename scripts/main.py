@@ -4,9 +4,7 @@ import pathlib
 import re
 import urllib.request
 
-import pydantic
 import typer
-from bs4 import BeautifulSoup
 from utils.parser import FilterDocument, parse_filter_document
 from utils.settings import settings
 from utils.signature import parse_schema
@@ -28,33 +26,13 @@ def download_ffmpeg_filter_documents() -> None:
         ofile.write(text)
 
 
-class Filter(pydantic.BaseModel):
-    name: str
-    source: str
-    description: str
-    ref: pydantic.HttpUrl
-    parameters: list[dict[str, str]] = []
-
-
-def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
-    parameters = []
-    current_params = []
-
-    for element in soup.find_all(["dt", "dd"], recursive=False):
-        if element.name == "dt" and element.samp:
-            current_params.append(element.samp.get_text())
-        elif element.name == "dd" and current_params:
-            description = str(element)
-            for param in current_params:
-                parameters.append({"name": param, "description": description})
-            current_params = []
-
-    return parameters
-
-
 @app.command()
 def generate_schema(path: pathlib.Path) -> None:
     info = parse_filter_document(path.read_text())
+
+    if all((settings.schemas_path / f"{filter_name}.json").exists() for filter_name in info.filter_names):
+        return None
+
     filters = parse_schema(info)
 
     for filter in filters:

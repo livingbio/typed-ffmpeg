@@ -1,0 +1,132 @@
+{
+  "description": "8.104 rubberband\nApply time-stretching and pitch-shifting with librubberband.\n\nTo enable compilation of this filter, you need to configure FFmpeg with\n--enable-librubberband.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "channels": {
+        "description": "Set channels.",
+        "enum": [
+          "apart",
+          "together"
+        ],
+        "type": "string"
+      },
+      "detector": {
+        "description": "Set detector.",
+        "enum": [
+          "compound",
+          "percussive",
+          "soft"
+        ],
+        "type": "string"
+      },
+      "formant": {
+        "description": "Enable formant preservation when shift pitching.",
+        "enum": [
+          "shifted",
+          "preserved"
+        ],
+        "type": "string"
+      },
+      "phase": {
+        "description": "Set phase.",
+        "enum": [
+          "laminar",
+          "independent"
+        ],
+        "type": "string"
+      },
+      "pitch": {
+        "description": "Set pitch scale factor.",
+        "type": "number"
+      },
+      "pitchq": {
+        "description": "Set pitch quality.",
+        "enum": [
+          "quality",
+          "speed",
+          "consistency"
+        ],
+        "type": "string"
+      },
+      "smoothing": {
+        "description": "Set smoothing.",
+        "enum": [
+          "off",
+          "on"
+        ],
+        "type": "string"
+      },
+      "tempo": {
+        "description": "Set tempo scale factor.",
+        "type": "number"
+      },
+      "transients": {
+        "description": "Set transients detector.",
+        "enum": [
+          "crisp",
+          "mixed",
+          "smooth"
+        ],
+        "type": "string"
+      },
+      "window": {
+        "description": "Set processing window size.",
+        "enum": [
+          "standard",
+          "short",
+          "long"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "rubberband options",
+    "type": "object"
+  },
+  "name": "rubberband",
+  "parameters": [
+    {
+      "description": "<dd><p>Set tempo scale factor.\n</p>\n</dd>",
+      "name": "tempo"
+    },
+    {
+      "description": "<dd><p>Set pitch scale factor.\n</p>\n</dd>",
+      "name": "pitch"
+    },
+    {
+      "description": "<dd><p>Set transients detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>crisp</var></dt>\n<dt><var>mixed</var></dt>\n<dt><var>smooth</var></dt>\n</dl>\n</dd>",
+      "name": "transients"
+    },
+    {
+      "description": "<dd><p>Set detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>compound</var></dt>\n<dt><var>percussive</var></dt>\n<dt><var>soft</var></dt>\n</dl>\n</dd>",
+      "name": "detector"
+    },
+    {
+      "description": "<dd><p>Set phase.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>laminar</var></dt>\n<dt><var>independent</var></dt>\n</dl>\n</dd>",
+      "name": "phase"
+    },
+    {
+      "description": "<dd><p>Set processing window size.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>standard</var></dt>\n<dt><var>short</var></dt>\n<dt><var>long</var></dt>\n</dl>\n</dd>",
+      "name": "window"
+    },
+    {
+      "description": "<dd><p>Set smoothing.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>off</var></dt>\n<dt><var>on</var></dt>\n</dl>\n</dd>",
+      "name": "smoothing"
+    },
+    {
+      "description": "<dd><p>Enable formant preservation when shift pitching.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>shifted</var></dt>\n<dt><var>preserved</var></dt>\n</dl>\n</dd>",
+      "name": "formant"
+    },
+    {
+      "description": "<dd><p>Set pitch quality.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>quality</var></dt>\n<dt><var>speed</var></dt>\n<dt><var>consistency</var></dt>\n</dl>\n</dd>",
+      "name": "pitchq"
+    },
+    {
+      "description": "<dd><p>Set channels.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>apart</var></dt>\n<dt><var>together</var></dt>\n</dl>\n</dd>",
+      "name": "channels"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#rubberband",
+  "source": "<h3 class=\"section\"><a href=\"#toc-rubberband\">8.104 rubberband</a></h3>\n<p>Apply time-stretching and pitch-shifting with librubberband.\n</p>\n<p>To enable compilation of this filter, you need to configure FFmpeg with\n<code>--enable-librubberband</code>.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tempo</samp></dt>\n<dd><p>Set tempo scale factor.\n</p>\n</dd>\n<dt><samp>pitch</samp></dt>\n<dd><p>Set pitch scale factor.\n</p>\n</dd>\n<dt><samp>transients</samp></dt>\n<dd><p>Set transients detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>crisp</var></dt>\n<dt><var>mixed</var></dt>\n<dt><var>smooth</var></dt>\n</dl>\n\n</dd>\n<dt><samp>detector</samp></dt>\n<dd><p>Set detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>compound</var></dt>\n<dt><var>percussive</var></dt>\n<dt><var>soft</var></dt>\n</dl>\n\n</dd>\n<dt><samp>phase</samp></dt>\n<dd><p>Set phase.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>laminar</var></dt>\n<dt><var>independent</var></dt>\n</dl>\n\n</dd>\n<dt><samp>window</samp></dt>\n<dd><p>Set processing window size.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>standard</var></dt>\n<dt><var>short</var></dt>\n<dt><var>long</var></dt>\n</dl>\n\n</dd>\n<dt><samp>smoothing</samp></dt>\n<dd><p>Set smoothing.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>off</var></dt>\n<dt><var>on</var></dt>\n</dl>\n\n</dd>\n<dt><samp>formant</samp></dt>\n<dd><p>Enable formant preservation when shift pitching.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>shifted</var></dt>\n<dt><var>preserved</var></dt>\n</dl>\n\n</dd>\n<dt><samp>pitchq</samp></dt>\n<dd><p>Set pitch quality.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>quality</var></dt>\n<dt><var>speed</var></dt>\n<dt><var>consistency</var></dt>\n</dl>\n\n</dd>\n<dt><samp>channels</samp></dt>\n<dd><p>Set channels.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>apart</var></dt>\n<dt><var>together</var></dt>\n</dl>\n</dd>\n</dl>\n\n"
+}

@@ -1,0 +1,41 @@
+{
+  "description": "8.107 silencedetect\nDetect silence in an audio stream.\n\nThis filter logs a message when it detects that the input audio volume is less\nor equal to a noise tolerance value for a duration greater or equal to the\nminimum detected noise duration.\n\nThe printed times and duration are expressed in seconds. The\nlavfi.silence_start or lavfi.silence_start.X metadata key\nis set on the first frame whose timestamp equals or exceeds the detection\nduration and it contains the timestamp of the first frame of the silence.\n\nThe lavfi.silence_duration or lavfi.silence_duration.X\nand lavfi.silence_end or lavfi.silence_end.X metadata\nkeys are set on the first frame after the silence. If mono is\nenabled, and each channel is evaluated separately, the .X\nsuffixed keys are used, and X corresponds to the channel number.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "duration": {
+        "description": "Set silence duration until notification (default is 2 seconds). See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax.",
+        "type": "string"
+      },
+      "mono": {
+        "description": "Process each channel separately, instead of combined. By default is disabled.",
+        "type": "boolean"
+      },
+      "noise": {
+        "description": "Set noise tolerance. Can be specified in dB (in case 'dB' is appended to the specified value) or amplitude ratio. Default is -60dB, or 0.001.",
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "silencedetect options",
+    "type": "object"
+  },
+  "name": "silencedetect",
+  "parameters": [
+    {
+      "description": "<dd><p>Set noise tolerance. Can be specified in dB (in case \"dB\" is appended to the\nspecified value) or amplitude ratio. Default is -60dB, or 0.001.\n</p>\n</dd>",
+      "name": "noise, n"
+    },
+    {
+      "description": "<dd><p>Set silence duration until notification (default is 2 seconds). See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n</dd>",
+      "name": "duration, d"
+    },
+    {
+      "description": "<dd><p>Process each channel separately, instead of combined. By default is disabled.\n</p></dd>",
+      "name": "mono, m"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#silencedetect",
+  "source": "<h3 class=\"section\"><a href=\"#toc-silencedetect\">8.107 silencedetect</a></h3>\n\n<p>Detect silence in an audio stream.\n</p>\n<p>This filter logs a message when it detects that the input audio volume is less\nor equal to a noise tolerance value for a duration greater or equal to the\nminimum detected noise duration.\n</p>\n<p>The printed times and duration are expressed in seconds. The\n<code>lavfi.silence_start</code> or <code>lavfi.silence_start.X</code> metadata key\nis set on the first frame whose timestamp equals or exceeds the detection\nduration and it contains the timestamp of the first frame of the silence.\n</p>\n<p>The <code>lavfi.silence_duration</code> or <code>lavfi.silence_duration.X</code>\nand <code>lavfi.silence_end</code> or <code>lavfi.silence_end.X</code> metadata\nkeys are set on the first frame after the silence. If <samp>mono</samp> is\nenabled, and each channel is evaluated separately, the <code>.X</code>\nsuffixed keys are used, and <code>X</code> corresponds to the channel number.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>noise, n</samp></dt>\n<dd><p>Set noise tolerance. Can be specified in dB (in case &quot;dB&quot; is appended to the\nspecified value) or amplitude ratio. Default is -60dB, or 0.001.\n</p>\n</dd>\n<dt><samp>duration, d</samp></dt>\n<dd><p>Set silence duration until notification (default is 2 seconds). See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n</dd>\n<dt><samp>mono, m</samp></dt>\n<dd><p>Process each channel separately, instead of combined. By default is disabled.\n</p></dd>\n</dl>\n\n"
+}

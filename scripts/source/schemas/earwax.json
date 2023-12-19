@@ -1,0 +1,8 @@
+{
+  "description": "8.86 earwax\nMake audio easier to listen to on headphones.\n\nThis filter adds \u2018cues\u2019 to 44.1kHz stereo (i.e. audio CD format) audio\nso that when listened to on headphones the stereo image is moved from\ninside your head (standard for headphones) to outside and in front of\nthe listener (standard for speakers).\n\nPorted from SoX.",
+  "json_schema": {},
+  "name": "earwax",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#earwax",
+  "source": "<h3 class=\"section\"><a href=\"#toc-earwax\">8.86 earwax</a></h3>\n\n<p>Make audio easier to listen to on headphones.\n</p>\n<p>This filter adds &lsquo;cues&rsquo; to 44.1kHz stereo (i.e. audio CD format) audio\nso that when listened to on headphones the stereo image is moved from\ninside your head (standard for headphones) to outside and in front of\nthe listener (standard for speakers).\n</p>\n<p>Ported from SoX.\n</p>\n"
+}

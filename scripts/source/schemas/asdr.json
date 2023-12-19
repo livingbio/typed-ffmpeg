@@ -1,0 +1,8 @@
+{
+  "description": "8.51 asdr\nMeasure Audio Signal-to-Distortion Ratio.\n\nThis filter takes two audio streams for input, and outputs first\naudio stream.\nResults are in dB per channel at end of either input.",
+  "json_schema": {},
+  "name": "asdr",
+  "parameters": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asdr",
+  "source": "<h3 class=\"section\"><a href=\"#toc-asdr\">8.51 asdr</a></h3>\n<p>Measure Audio Signal-to-Distortion Ratio.\n</p>\n<p>This filter takes two audio streams for input, and outputs first\naudio stream.\nResults are in dB per channel at end of either input.\n</p>\n"
+}

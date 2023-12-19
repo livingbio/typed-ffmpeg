@@ -42,6 +42,7 @@ def generate_json_schema(doc: FilterDocument) -> dict[str, dict[str, Any]]:
 - You possess expertise in FFmpeg.
 - I kindly request your assistance in the conversion of specific FFmpeg filter document options into a JSON schema.
 - Please be aware that certain FFmpeg filter documents may require reference to other documents, which will be provided for your thorough consideration.
+- Only generate the JSON schema for the asking filter, and not any other filters.
 """,
     }
 
@@ -54,11 +55,14 @@ def generate_json_schema(doc: FilterDocument) -> dict[str, dict[str, Any]]:
             continue
 
         for ref in doc.refs:
-            ref_buffer += ref.read_text() + "\n"
+            if ref.exists():
+                ref_buffer += ref.read_text() + "\n"
+            else:
+                print(f"Missing reference: {ref}")
 
         USER_PROMPT = {
             "role": "user",
-            "content": f"""please generate JSON Schema for {filter_name}'s options
+            "content": f"""please generate JSON Schema for {filter_name}'s options only
 ## {filter_name}
 {doc.body}
 ## reference

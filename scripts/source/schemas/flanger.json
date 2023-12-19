@@ -1,0 +1,101 @@
+{
+  "description": "8.90 flanger\nApply a flanging effect to the audio.\n\nThe filter accepts the following options:",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "delay": {
+        "default": 0,
+        "maximum": 30,
+        "minimum": 0,
+        "type": "number"
+      },
+      "depth": {
+        "default": 2,
+        "maximum": 10,
+        "minimum": 0,
+        "type": "number"
+      },
+      "interp": {
+        "default": "linear",
+        "enum": [
+          "linear",
+          "quadratic"
+        ],
+        "type": "string"
+      },
+      "phase": {
+        "default": 25,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "number"
+      },
+      "regen": {
+        "default": 0,
+        "maximum": 95,
+        "minimum": -95,
+        "type": "number"
+      },
+      "shape": {
+        "default": "sinusoidal",
+        "enum": [
+          "triangular",
+          "sinusoidal"
+        ],
+        "type": "string"
+      },
+      "speed": {
+        "default": 0.5,
+        "maximum": 10,
+        "minimum": 0.1,
+        "type": "number"
+      },
+      "width": {
+        "default": 71,
+        "maximum": 100,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "title": "Flanger Filter Options",
+    "type": "object"
+  },
+  "name": "flanger",
+  "parameters": [
+    {
+      "description": "<dd><p>Set base delay in milliseconds. Range from 0 to 30. Default value is 0.\n</p>\n</dd>",
+      "name": "delay"
+    },
+    {
+      "description": "<dd><p>Set added sweep delay in milliseconds. Range from 0 to 10. Default value is 2.\n</p>\n</dd>",
+      "name": "depth"
+    },
+    {
+      "description": "<dd><p>Set percentage regeneration (delayed signal feedback). Range from -95 to 95.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "regen"
+    },
+    {
+      "description": "<dd><p>Set percentage of delayed signal mixed with original. Range from 0 to 100.\nDefault value is 71.\n</p>\n</dd>",
+      "name": "width"
+    },
+    {
+      "description": "<dd><p>Set sweeps per second (Hz). Range from 0.1 to 10. Default value is 0.5.\n</p>\n</dd>",
+      "name": "speed"
+    },
+    {
+      "description": "<dd><p>Set swept wave shape, can be <var>triangular</var> or <var>sinusoidal</var>.\nDefault value is <var>sinusoidal</var>.\n</p>\n</dd>",
+      "name": "shape"
+    },
+    {
+      "description": "<dd><p>Set swept wave percentage-shift for multi channel. Range from 0 to 100.\nDefault value is 25.\n</p>\n</dd>",
+      "name": "phase"
+    },
+    {
+      "description": "<dd><p>Set delay-line interpolation, <var>linear</var> or <var>quadratic</var>.\nDefault is <var>linear</var>.\n</p></dd>",
+      "name": "interp"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#flanger",
+  "source": "<h3 class=\"section\"><a href=\"#toc-flanger\">8.90 flanger</a></h3>\n<p>Apply a flanging effect to the audio.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>delay</samp></dt>\n<dd><p>Set base delay in milliseconds. Range from 0 to 30. Default value is 0.\n</p>\n</dd>\n<dt><samp>depth</samp></dt>\n<dd><p>Set added sweep delay in milliseconds. Range from 0 to 10. Default value is 2.\n</p>\n</dd>\n<dt><samp>regen</samp></dt>\n<dd><p>Set percentage regeneration (delayed signal feedback). Range from -95 to 95.\nDefault value is 0.\n</p>\n</dd>\n<dt><samp>width</samp></dt>\n<dd><p>Set percentage of delayed signal mixed with original. Range from 0 to 100.\nDefault value is 71.\n</p>\n</dd>\n<dt><samp>speed</samp></dt>\n<dd><p>Set sweeps per second (Hz). Range from 0.1 to 10. Default value is 0.5.\n</p>\n</dd>\n<dt><samp>shape</samp></dt>\n<dd><p>Set swept wave shape, can be <var>triangular</var> or <var>sinusoidal</var>.\nDefault value is <var>sinusoidal</var>.\n</p>\n</dd>\n<dt><samp>phase</samp></dt>\n<dd><p>Set swept wave percentage-shift for multi channel. Range from 0 to 100.\nDefault value is 25.\n</p>\n</dd>\n<dt><samp>interp</samp></dt>\n<dd><p>Set delay-line interpolation, <var>linear</var> or <var>quadratic</var>.\nDefault is <var>linear</var>.\n</p></dd>\n</dl>\n\n"
+}

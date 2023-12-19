@@ -1,0 +1,53 @@
+{
+  "description": "8.95 join\nJoin multiple input streams into one multi-channel stream.\n\nIt accepts the following parameters:\n\nThe filter will attempt to guess the mappings when they are not specified\nexplicitly. It does so by first trying to find an unused matching input channel\nand if that fails it picks the first unused input channel.\n\nJoin 3 inputs (with properly set channel layouts):\n\nffmpeg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex join=inputs=3 OUTPUT\n\nBuild a 5.1 output from 6 single-channel streams:\n\nffmpeg -i fl -i fr -i fc -i sl -i sr -i lfe -filter_complex\n'join=inputs=6:channel_layout=5.1:map=0.0-FL|1.0-FR|2.0-FC|3.0-SL|4.0-SR|5.0-LFE'\nout",
+  "json_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "examples": [
+      {
+        "channel_layout": "stereo",
+        "inputs": 3,
+        "map": "0.0-FL|1.0-FR|2.0-FC"
+      },
+      {
+        "channel_layout": "5.1",
+        "inputs": 6,
+        "map": "0.0-FL|1.0-FR|2.0-FC|3.0-SL|4.0-SR|5.0-LFE"
+      }
+    ],
+    "properties": {
+      "channel_layout": {
+        "default": "stereo",
+        "description": "The desired output channel layout.",
+        "type": "string"
+      },
+      "inputs": {
+        "default": 2,
+        "description": "The number of input streams.",
+        "type": "integer"
+      },
+      "map": {
+        "description": "Map channels from inputs to output. The argument is a '|' separated list of mappings, each in the 'input_idx.in_channel-out_channel' form. input_idx is the 0-based index of the input stream. in_channel can be either the name of the input channel (e.g. FL for front left) or its index in the specified input stream. out_channel is the name of the output channel.",
+        "type": "string"
+      }
+    },
+    "title": "FFmpeg Join Filter Options",
+    "type": "object"
+  },
+  "name": "join",
+  "parameters": [
+    {
+      "description": "<dd><p>The number of input streams. It defaults to 2.\n</p>\n</dd>",
+      "name": "inputs"
+    },
+    {
+      "description": "<dd><p>The desired output channel layout. It defaults to stereo.\n</p>\n</dd>",
+      "name": "channel_layout"
+    },
+    {
+      "description": "<dd><p>Map channels from inputs to output. The argument is a \u2019|\u2019-separated list of\nmappings, each in the <code><var>input_idx</var>.<var>in_channel</var>-<var>out_channel</var></code>\nform. <var>input_idx</var> is the 0-based index of the input stream. <var>in_channel</var>\ncan be either the name of the input channel (e.g. FL for front left) or its\nindex in the specified input stream. <var>out_channel</var> is the name of the output\nchannel.\n</p></dd>",
+      "name": "map"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#join",
+  "source": "<h3 class=\"section\"><a href=\"#toc-join\">8.95 join</a></h3>\n\n<p>Join multiple input streams into one multi-channel stream.\n</p>\n<p>It accepts the following parameters:\n</p><dl compact=\"compact\">\n<dt><samp>inputs</samp></dt>\n<dd><p>The number of input streams. It defaults to 2.\n</p>\n</dd>\n<dt><samp>channel_layout</samp></dt>\n<dd><p>The desired output channel layout. It defaults to stereo.\n</p>\n</dd>\n<dt><samp>map</samp></dt>\n<dd><p>Map channels from inputs to output. The argument is a &rsquo;|&rsquo;-separated list of\nmappings, each in the <code><var>input_idx</var>.<var>in_channel</var>-<var>out_channel</var></code>\nform. <var>input_idx</var> is the 0-based index of the input stream. <var>in_channel</var>\ncan be either the name of the input channel (e.g. FL for front left) or its\nindex in the specified input stream. <var>out_channel</var> is the name of the output\nchannel.\n</p></dd>\n</dl>\n\n<p>The filter will attempt to guess the mappings when they are not specified\nexplicitly. It does so by first trying to find an unused matching input channel\nand if that fails it picks the first unused input channel.\n</p>\n<p>Join 3 inputs (with properly set channel layouts):\n</p><div class=\"example\">\n<pre class=\"example\">ffmpeg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex join=inputs=3 OUTPUT\n</pre></div>\n\n<p>Build a 5.1 output from 6 single-channel streams:\n</p><div class=\"example\">\n<pre class=\"example\">ffmpeg -i fl -i fr -i fc -i sl -i sr -i lfe -filter_complex\n'join=inputs=6:channel_layout=5.1:map=0.0-FL|1.0-FR|2.0-FC|3.0-SL|4.0-SR|5.0-LFE'\nout\n</pre></div>\n\n"
+}
