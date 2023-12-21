@@ -37,5 +37,5 @@ jobs:
           AZURE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_VERSION: 2023-07-01-preview
           AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
+#       - name: Coveralls
+#        uses: coverallsapp/github-action@v2
