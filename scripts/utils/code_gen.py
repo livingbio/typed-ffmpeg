@@ -14,6 +14,6 @@ def generate_class(filters: list[Filter]) -> str:
         try:
             methods.append(generate_filter_to_method(filter))
         except Exception:
-            pass
+            print(f"Failed to generate method for {filter.name}")
 
     return jinja2.Template((settings.template_path / "class.tmpl").read_text()).render(methods=methods)
