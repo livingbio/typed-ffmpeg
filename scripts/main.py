@@ -57,7 +57,9 @@ def generate_schema(path: pathlib.Path) -> None:
 def split_documents(should_generate_schema: bool = False) -> None:
     # split documents into individual files for easier processing
 
-    section_pattern = re.compile(r'(?P<body><h3 class="section"><a href="(.*?)">(?P<name>.*?)</a></h3>(.*?))<span', re.MULTILINE | re.DOTALL)
+    section_pattern = re.compile(
+        r'(?P<body><h3 class="section"><a href="(.*?)">(?P<name>.*?)</a></h3>(.*?))<span', re.MULTILINE | re.DOTALL
+    )
 
     def extract_filter(html: str) -> list[tuple[str, str]]:
         return [(m.group("name"), m.group("body")) for m in section_pattern.finditer(html)]

@@ -95,7 +95,11 @@ class Filter(pydantic.BaseModel):
             default = schema.get("default")
             required = "default" not in schema
 
-            output.append(Parameter(name=name, description=parameter["description"], typing=type, default=default, required=required))
+            output.append(
+                Parameter(
+                    name=name, description=parameter["description"], typing=type, default=default, required=required
+                )
+            )
 
         return output
 
