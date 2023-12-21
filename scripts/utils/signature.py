@@ -1,3 +1,6 @@
+import json
+import keyword
+import pathlib
 import re
 from typing import Any
 
@@ -7,9 +10,30 @@ from fuzzy_json import loads
 from openai import AzureOpenAI
 
 from .parser import FilterDocument
+from .settings import settings
 
 # Load environment variables from .env file
 load_dotenv(override=True)
+
+
+class Parameter(pydantic.BaseModel):
+    name: str
+    description: str
+
+    typing: str
+    default: int | float | str | bool | None | list[int] = None
+    required: bool
+
+    @property
+    def name_safe(self) -> str:
+        if self.name in keyword.kwlist:
+            return "_" + self.name
+        if self.name[0].isdigit():
+            return "_" + self.name
+        if "-" in self.name:
+            return self.name.replace("-", "_")
+
+        return self.name
 
 
 class Filter(pydantic.BaseModel):
@@ -19,6 +43,61 @@ class Filter(pydantic.BaseModel):
     ref: pydantic.HttpUrl
     parameters: list[dict[str, str]] = []
     json_schema: dict[str, Any] = {}
+
+    def save(self) -> None:
+        with open(settings.schemas_path / f"{self.name}.json", "w") as ofile:
+            ofile.write(self.model_dump_json())
+
+    @classmethod
+    def load(self, path: pathlib.Path) -> "Filter":
+        with open(path) as ifile:
+            data = json.load(ifile)
+        return Filter(**data)
+
+    @property
+    def typed_parameters(self) -> list[Parameter]:
+        output = []
+
+        for parameter in self.parameters:
+            name = parameter["name"].split(" ")[0].split(",")[0].strip()
+            schema: dict[str, Any] = self.json_schema["properties"][name]
+
+            enum_values = schema.get("enum")
+
+            match schema.get("type"):
+                case "number":
+                    type = "float"
+                case "integer":
+                    type = "int"
+                case "string":
+                    type = "str"
+                case "boolean":
+                    type = "bool"
+                case "array":
+                    type = "list[str]"
+                case _ if enum_values:
+                    type = 'Literal["' + '", "'.join(enum_values) + '"]'
+                case _ if schema.get("oneOf"):
+                    type = "str"
+                case _ if schema.get("anyOf"):
+                    type = "str"
+                case _ if ref := schema.get("$ref"):
+                    __schema = self.json_schema["definitions"][ref.split("/")[-1]]
+                    if "enum" in __schema:
+                        enum_values = __schema["enum"]
+                        type = 'Literal["' + '", "'.join(enum_values) + '"]'
+                    else:
+                        type = "str"
+                case _:
+                    print(f"unknown type: {schema}")
+                    type = "str"
+
+            default = schema.get("default")
+            required = "default" not in schema
+
+            output.append(Parameter(name=name, description=parameter["description"], typing=type, default=default, required=required))
+
+        return output
 
 
 def extract_json_code(body: str) -> str:

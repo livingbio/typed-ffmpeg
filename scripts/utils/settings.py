@@ -7,6 +7,8 @@ class Settings(BaseSettings):
     document_path: pathlib.Path = pathlib.Path("./source")
     sections_path: pathlib.Path = document_path / "sections"
     schemas_path: pathlib.Path = document_path / "schemas"
+    template_path: pathlib.Path = pathlib.Path("./utils/templates")
+    source_path: pathlib.Path = pathlib.Path("../src")
 
     def setup(self) -> None:
         self.document_path.mkdir(exist_ok=True)

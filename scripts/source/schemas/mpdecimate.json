@@ -3,15 +3,25 @@
   "json_schema": {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
-      "hi": {
+      "frac": {
         "default": 0.33,
         "description": "Set the dropping threshold value for the whole image. A frame is a candidate for dropping if no 8x8 blocks differ by more than a threshold of 'hi', and if no more than 'frac' blocks (1 meaning the whole image) differ by more than a threshold of 'lo'.",
-        "type": "integer"
+        "type": "number"
+      },
+      "hi": {
+        "default": 960,
+        "description": "Set the dropping threshold value for the whole image. A frame is a candidate for dropping if no 8x8 blocks differ by more than a threshold of 'hi', and if no more than 'frac' blocks (1 meaning the whole image) differ by more than a threshold of 'lo'.",
+        "type": "number"
       },
       "keep": {
         "default": 0,
         "description": "Set the maximum number of consecutive similar frames to ignore before starting to drop them. If the value is 0, the frame is dropped disregarding the number of previous sequentially similar frames.",
         "type": "integer"
+      },
+      "lo": {
+        "default": 320,
+        "description": "Set the dropping threshold value for the whole image. A frame is a candidate for dropping if no 8x8 blocks differ by more than a threshold of 'hi', and if no more than 'frac' blocks (1 meaning the whole image) differ by more than a threshold of 'lo'.",
+        "type": "number"
       },
       "max": {
         "default": 0,

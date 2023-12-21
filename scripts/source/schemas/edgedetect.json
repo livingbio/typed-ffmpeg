@@ -4,7 +4,15 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "properties": {
+      "high": {
+        "default": "50/255",
+        "type": "string"
+      },
       "low": {
+        "default": "20/255",
+        "type": "string"
+      },
+      "mode": {
         "default": "wires",
         "enum": [
           "wires",
