@@ -52,6 +52,16 @@ class FilterDocument(pydantic.BaseModel):
             return parse_paremeters(options)
         return []
 
+    def save(self) -> None:
+        with self.path.open("w") as ofile:
+            ofile.write(self.body)
+
+    @classmethod
+    def load(self, path: pathlib.Path) -> "FilterDocument":
+        with path.open() as ifile:
+            body = ifile.read()
+            return parse_filter_document(body)
+
 
 def parse_filter_document(body: str) -> FilterDocument:
     soup = BeautifulSoup(body, "html.parser")

@@ -5,9 +5,10 @@ import re
 import urllib.request
 
 import typer
+from utils.code_gen import generate_class
 from utils.parser import FilterDocument, parse_filter_document
 from utils.settings import settings
-from utils.signature import parse_schema
+from utils.signature import Filter, parse_schema
 
 app = typer.Typer()
 
@@ -27,8 +28,21 @@ def download_ffmpeg_filter_documents() -> None:
 
 
 @app.command()
+def code_gen() -> None:
+    filters = []
+    for f in settings.schemas_path.glob("*.json"):
+        filter = Filter.load(f)
+        filters.append(filter)
+
+    code = generate_class(filters)
+
+    with (settings.source_path / "stream.py").open("w") as ofile:
+        ofile.write(code)
+
+
+@app.command()
 def generate_schema(path: pathlib.Path) -> None:
-    info = parse_filter_document(path.read_text())
+    info = FilterDocument.load(path)
 
     if all((settings.schemas_path / f"{filter_name}.json").exists() for filter_name in info.filter_names):
         return None
@@ -36,8 +50,7 @@ def generate_schema(path: pathlib.Path) -> None:
     filters = parse_schema(info)
 
     for filter in filters:
-        with open(settings.schemas_path / f"{filter.name}.json", "w") as ofile:
-            ofile.write(filter.model_dump_json())
+        filter.save()
 
 
 @app.command()
@@ -58,9 +71,7 @@ def split_documents(should_generate_schema: bool = False) -> None:
                 continue
 
             print(f"Processing {info.title}...")
-
-            with info.path.open("w") as ofile:
-                ofile.write(body)
+            info.save()
 
             if should_generate_schema:
                 generate_schema(info.path)
