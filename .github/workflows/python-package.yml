@@ -35,5 +35,6 @@ jobs:
           poetry run pytest ./src --cov=./src --record-mode=none
         env: # Or as an environment variable
           AZURE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_VERSION: 2023-07-01-preview
       - name: Coveralls
         uses: coverallsapp/github-action@v2
