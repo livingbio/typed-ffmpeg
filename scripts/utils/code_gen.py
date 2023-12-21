@@ -10,7 +10,7 @@ def generate_filter_to_method(filter: Filter) -> str:
 
 def generate_class(filters: list[Filter]) -> str:
     methods = []
-    for filter in filters:
+    for filter in sorted(filters, key=lambda i: i.name):
         try:
             methods.append(generate_filter_to_method(filter))
         except Exception:
