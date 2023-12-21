@@ -44,9 +44,9 @@
       'acrossfade',
     ]),
     'hash': 'acrossfade',
-    'path': 'source/sections/acrossfade.html',
+    'path': '/Users/davidchen/repo/typed-ffmpeg/scripts/source/sections/acrossfade.html',
     'refs': list([
-      'source/sections/afade.html',
+      '/Users/davidchen/repo/typed-ffmpeg/scripts/source/sections/afade.html',
     ]),
     'section_index': '8.5',
     'title': '8.5 acrossfade',
@@ -66,9 +66,9 @@
       'acue',
     ]),
     'hash': 'acue',
-    'path': 'source/sections/acue.html',
+    'path': '/Users/davidchen/repo/typed-ffmpeg/scripts/source/sections/acue.html',
     'refs': list([
-      'source/sections/cue.html',
+      '/Users/davidchen/repo/typed-ffmpeg/scripts/source/sections/cue.html',
     ]),
     'section_index': '8.8',
     'title': '8.8 acue',
@@ -187,7 +187,7 @@
       'lutyuv',
     ]),
     'hash': 'lut_002c-lutrgb_002c-lutyuv',
-    'path': 'source/sections/lut_002c-lutrgb_002c-lutyuv.html',
+    'path': '/Users/davidchen/repo/typed-ffmpeg/scripts/source/sections/lut_002c-lutrgb_002c-lutyuv.html',
     'refs': list([
     ]),
     'section_index': '11.153',

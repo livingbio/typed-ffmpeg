@@ -1,112 +1,18 @@
 # serializer version: 1
 # name: test_generate_class
   '''
-  from typing import Any
-  from .node import FilterNode
+  from typing import Any, Literal
+  
+  
+  class FilterNode:
+      def __init__(self, *stream: "Stream", name: str, **kwargs: Any) -> None:
+          ...
+  
+      def stream(self) -> "Stream":
+          raise NotImplementedError()
+  
   
   class Stream:
-      
-      def xmedian(
-          self,*,inputs: int = None,
-          planes: int = None,
-          percentile: float = None,
-          **kwargs: dict[str, Any]
-      ) -> "Stream":
-          """
-          11.288 xmedian Pick median pixels from several input videos. The filter accepts the following options:
-  
-          Parameters:
-          ----------
-          inputs:
-              Set number of inputs. Default is 3. Allowed range is from 3 to 255. If number of inputs is even number, than result will be mean value between two median values.
-          planes:
-              Set which planes to filter. Default value is 15, by which all planes are processed.
-          percentile:
-              Set median percentile. Default value is 0.5. Default value of 0.5 will pick always median values, while 0 will pick minimum values, and 1 maximum values.
-          
-  
-  
-          Example usage:
-          --------------
-  
-          Ref: https://ffmpeg.org/ffmpeg-filters.html#xmedian
-  
-          """
-          return FilterNode(
-              [self],
-              "xmedian",
-              kwargs={
-                  
-                  "inputs": inputs,
-                  "planes": planes,
-                  "percentile": percentile,
-                  **kwargs
-              }
-          ).stream()
-      
-      def hwupload(
-          self,*,derive_device: str ,
-          **kwargs: dict[str, Any]
-      ) -> "Stream":
-          """
-          11.123 hwupload Upload system memory frames to hardware surfaces. The device to upload to must be supplied when the filter is initialised. If using ffmpeg, select the appropriate device with the -filter_hw_device option or with the derive_device option. The input and output devices must be of different types and compatible - the exact meaning of this is system-dependent, but typically it means that they must refer to the same underlying hardware context (for example, refer to the same graphics card). The following additional parameters are accepted:
-  
-          Parameters:
-          ----------
-          derive_device:
-              Rather than using the device supplied at initialisation, instead derive a new device of type type from the device the input frames exist on.
-          
-  
-  
-          Example usage:
-          --------------
-  
-          Ref: https://ffmpeg.org/ffmpeg-filters.html#hwupload
-  
-          """
-          return FilterNode(
-              [self],
-              "hwupload",
-              kwargs={
-                  
-                  "derive_device": derive_device,
-                  **kwargs
-              }
-          ).stream()
-      
-      def stereo3d(
-          self,*,_in: str = None,
-          out: str = None,
-          **kwargs: dict[str, Any]
-      ) -> "Stream":
-          """
-          11.244 stereo3d Convert between different stereoscopic image formats. The filters accept the following options:
-  
-          Parameters:
-          ----------
-          _in:
-              Set stereoscopic image format of input. Available values for input image formats are: ‘sbsl’ side by side parallel (left eye left, right eye right) ‘sbsr’ side by side crosseye (right eye left, left eye right) ‘sbs2l’ side by side parallel with half width resolution (left eye left, right eye right) ‘sbs2r’ side by side crosseye with half width resolution (right eye left, left eye right) ‘abl’ ‘tbl’ above-below (left eye above, right eye below) ‘abr’ ‘tbr’ above-below (right eye above, left eye below) ‘ab2l’ ‘tb2l’ above-below with half height resolution (left eye above, right eye below) ‘ab2r’ ‘tb2r’ above-below with half height resolution (right eye above, left eye below) ‘al’ alternating frames (left eye first, right eye second) ‘ar’ alternating frames (right eye first, left eye second) ‘irl’ interleaved rows (left eye has top row, right eye starts on next row) ‘irr’ interleaved rows (right eye has top row, left eye starts on next row) ‘icl’ interleaved columns, left eye first ‘icr’ interleaved columns, right eye first Default value is ‘sbsl’.
-          out:
-              Set stereoscopic image format of output. ‘sbsl’ side by side parallel (left eye left, right eye right) ‘sbsr’ side by side crosseye (right eye left, left eye right) ‘sbs2l’ side by side parallel with half width resolution (left eye left, right eye right) ‘sbs2r’ side by side crosseye with half width resolution (right eye left, left eye right) ‘abl’ ‘tbl’ above-below (left eye above, right eye below) ‘abr’ ‘tbr’ above-below (right eye above, left eye below) ‘ab2l’ ‘tb2l’ above-below with half height resolution (left eye above, right eye below) ‘ab2r’ ‘tb2r’ above-below with half height resolution (right eye above, left eye below) ‘al’ alternating frames (left eye first, right eye second) ‘ar’ alternating frames (right eye first, left eye second) ‘irl’ interleaved rows (left eye has top row, right eye starts on next row) ‘irr’ interleaved rows (right eye has top row, left eye starts on next row) ‘arbg’ anaglyph red/blue gray (red filter on left eye, blue filter on right eye) ‘argg’ anaglyph red/green gray (red filter on left eye, green filter on right eye) ‘arcg’ anaglyph red/cyan gray (red filter on left eye, cyan filter on right eye) ‘arch’ anaglyph red/cyan half colored (red filter on left eye, cyan filter on right eye) ‘arcc’ anaglyph red/cyan color (red filter on left eye, cyan filter on right eye) ‘arcd’ anaglyph red/cyan color optimized with the least squares projection of dubois (red filter on left eye, cyan filter on right eye) ‘agmg’ anaglyph green/magenta gray (green filter on left eye, magenta filter on right eye) ‘agmh’ anaglyph green/magenta half colored (green filter on left eye, magenta filter on right eye) ‘agmc’ anaglyph green/magenta colored (green filter on left eye, magenta filter on right eye) ‘agmd’ anaglyph green/magenta color optimized with the least squares projection of dubois (green filter on left eye, magenta filter on right eye) ‘aybg’ anaglyph yellow/blue gray (yellow filter on left eye, blue filter on right eye) ‘aybh’ anaglyph yellow/blue half colored (yellow filter on left eye, blue filter on right eye) ‘aybc’ anaglyph yellow/blue colored (yellow filter on left eye, blue filter on right eye) ‘aybd’ anaglyph yellow/blue color optimized with the least squares projection of dubois (yellow filter on left eye, blue filter on right eye) ‘ml’ mono output (left eye only) ‘mr’ mono output (right eye only) ‘chl’ checkerboard, left eye first ‘chr’ checkerboard, right eye first ‘icl’ interleaved columns, left eye first ‘icr’ interleaved columns, right eye first ‘hdmi’ HDMI frame pack Default value is ‘arcd’.
-          
-  
-  
-          Example usage:
-          --------------
-  
-          Ref: https://ffmpeg.org/ffmpeg-filters.html#stereo3d
-  
-          """
-          return FilterNode(
-              [self],
-              "stereo3d",
-              kwargs={
-                  
-                  "in": _in,
-                  "out": out,
-                  **kwargs
-              }
-          ).stream()
       
       def atadenoise(
           self,*,_0a: float = None,
@@ -162,8 +68,8 @@
   
           """
           return FilterNode(
-              [self],
-              "atadenoise",
+              *[self],
+              name="atadenoise",
               kwargs={
                   
                   "0a": _0a,
@@ -178,6 +84,108 @@
                   "0s": _0s,
                   "1s": _1s,
                   "2s": _2s,
+                  **kwargs
+              }
+          ).stream()
+      
+      def hwupload(
+          self,*,derive_device: str ,
+          **kwargs: dict[str, Any]
+      ) -> "Stream":
+          """
+          11.123 hwupload Upload system memory frames to hardware surfaces. The device to upload to must be supplied when the filter is initialised. If using ffmpeg, select the appropriate device with the -filter_hw_device option or with the derive_device option. The input and output devices must be of different types and compatible - the exact meaning of this is system-dependent, but typically it means that they must refer to the same underlying hardware context (for example, refer to the same graphics card). The following additional parameters are accepted:
+  
+          Parameters:
+          ----------
+          derive_device:
+              Rather than using the device supplied at initialisation, instead derive a new device of type type from the device the input frames exist on.
+          
+  
+  
+          Example usage:
+          --------------
+  
+          Ref: https://ffmpeg.org/ffmpeg-filters.html#hwupload
+  
+          """
+          return FilterNode(
+              *[self],
+              name="hwupload",
+              kwargs={
+                  
+                  "derive_device": derive_device,
+                  **kwargs
+              }
+          ).stream()
+      
+      def stereo3d(
+          self,*,_in: str = None,
+          out: str = None,
+          **kwargs: dict[str, Any]
+      ) -> "Stream":
+          """
+          11.244 stereo3d Convert between different stereoscopic image formats. The filters accept the following options:
+  
+          Parameters:
+          ----------
+          _in:
+              Set stereoscopic image format of input. Available values for input image formats are: ‘sbsl’ side by side parallel (left eye left, right eye right) ‘sbsr’ side by side crosseye (right eye left, left eye right) ‘sbs2l’ side by side parallel with half width resolution (left eye left, right eye right) ‘sbs2r’ side by side crosseye with half width resolution (right eye left, left eye right) ‘abl’ ‘tbl’ above-below (left eye above, right eye below) ‘abr’ ‘tbr’ above-below (right eye above, left eye below) ‘ab2l’ ‘tb2l’ above-below with half height resolution (left eye above, right eye below) ‘ab2r’ ‘tb2r’ above-below with half height resolution (right eye above, left eye below) ‘al’ alternating frames (left eye first, right eye second) ‘ar’ alternating frames (right eye first, left eye second) ‘irl’ interleaved rows (left eye has top row, right eye starts on next row) ‘irr’ interleaved rows (right eye has top row, left eye starts on next row) ‘icl’ interleaved columns, left eye first ‘icr’ interleaved columns, right eye first Default value is ‘sbsl’.
+          out:
+              Set stereoscopic image format of output. ‘sbsl’ side by side parallel (left eye left, right eye right) ‘sbsr’ side by side crosseye (right eye left, left eye right) ‘sbs2l’ side by side parallel with half width resolution (left eye left, right eye right) ‘sbs2r’ side by side crosseye with half width resolution (right eye left, left eye right) ‘abl’ ‘tbl’ above-below (left eye above, right eye below) ‘abr’ ‘tbr’ above-below (right eye above, left eye below) ‘ab2l’ ‘tb2l’ above-below with half height resolution (left eye above, right eye below) ‘ab2r’ ‘tb2r’ above-below with half height resolution (right eye above, left eye below) ‘al’ alternating frames (left eye first, right eye second) ‘ar’ alternating frames (right eye first, left eye second) ‘irl’ interleaved rows (left eye has top row, right eye starts on next row) ‘irr’ interleaved rows (right eye has top row, left eye starts on next row) ‘arbg’ anaglyph red/blue gray (red filter on left eye, blue filter on right eye) ‘argg’ anaglyph red/green gray (red filter on left eye, green filter on right eye) ‘arcg’ anaglyph red/cyan gray (red filter on left eye, cyan filter on right eye) ‘arch’ anaglyph red/cyan half colored (red filter on left eye, cyan filter on right eye) ‘arcc’ anaglyph red/cyan color (red filter on left eye, cyan filter on right eye) ‘arcd’ anaglyph red/cyan color optimized with the least squares projection of dubois (red filter on left eye, cyan filter on right eye) ‘agmg’ anaglyph green/magenta gray (green filter on left eye, magenta filter on right eye) ‘agmh’ anaglyph green/magenta half colored (green filter on left eye, magenta filter on right eye) ‘agmc’ anaglyph green/magenta colored (green filter on left eye, magenta filter on right eye) ‘agmd’ anaglyph green/magenta color optimized with the least squares projection of dubois (green filter on left eye, magenta filter on right eye) ‘aybg’ anaglyph yellow/blue gray (yellow filter on left eye, blue filter on right eye) ‘aybh’ anaglyph yellow/blue half colored (yellow filter on left eye, blue filter on right eye) ‘aybc’ anaglyph yellow/blue colored (yellow filter on left eye, blue filter on right eye) ‘aybd’ anaglyph yellow/blue color optimized with the least squares projection of dubois (yellow filter on left eye, blue filter on right eye) ‘ml’ mono output (left eye only) ‘mr’ mono output (right eye only) ‘chl’ checkerboard, left eye first ‘chr’ checkerboard, right eye first ‘icl’ interleaved columns, left eye first ‘icr’ interleaved columns, right eye first ‘hdmi’ HDMI frame pack Default value is ‘arcd’.
+          
+  
+  
+          Example usage:
+          --------------
+  
+          Ref: https://ffmpeg.org/ffmpeg-filters.html#stereo3d
+  
+          """
+          return FilterNode(
+              *[self],
+              name="stereo3d",
+              kwargs={
+                  
+                  "in": _in,
+                  "out": out,
+                  **kwargs
+              }
+          ).stream()
+      
+      def xmedian(
+          self,*,inputs: int = None,
+          planes: int = None,
+          percentile: float = None,
+          **kwargs: dict[str, Any]
+      ) -> "Stream":
+          """
+          11.288 xmedian Pick median pixels from several input videos. The filter accepts the following options:
+  
+          Parameters:
+          ----------
+          inputs:
+              Set number of inputs. Default is 3. Allowed range is from 3 to 255. If number of inputs is even number, than result will be mean value between two median values.
+          planes:
+              Set which planes to filter. Default value is 15, by which all planes are processed.
+          percentile:
+              Set median percentile. Default value is 0.5. Default value of 0.5 will pick always median values, while 0 will pick minimum values, and 1 maximum values.
+          
+  
+  
+          Example usage:
+          --------------
+  
+          Ref: https://ffmpeg.org/ffmpeg-filters.html#xmedian
+  
+          """
+          return FilterNode(
+              *[self],
+              name="xmedian",
+              kwargs={
+                  
+                  "inputs": inputs,
+                  "planes": planes,
+                  "percentile": percentile,
                   **kwargs
               }
           ).stream()
@@ -240,8 +248,8 @@
   
           """
           return FilterNode(
-              [self],
-              "atadenoise",
+              *[self],
+              name="atadenoise",
               kwargs={
                   
                   "0a": _0a,
@@ -284,8 +292,8 @@
   
           """
           return FilterNode(
-              [self],
-              "hwupload",
+              *[self],
+              name="hwupload",
               kwargs={
                   
                   "derive_device": derive_device,
@@ -320,8 +328,8 @@
   
           """
           return FilterNode(
-              [self],
-              "stereo3d",
+              *[self],
+              name="stereo3d",
               kwargs={
                   
                   "in": _in,
@@ -360,8 +368,8 @@
   
           """
           return FilterNode(
-              [self],
-              "xmedian",
+              *[self],
+              name="xmedian",
               kwargs={
                   
                   "inputs": inputs,
