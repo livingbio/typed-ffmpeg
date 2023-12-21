@@ -1,0 +1,37 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: python-unittest
+on:
+  push:
+    branches: ["**"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Poetry & export Requirements
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+      - name: Install dependencies
+        run: |
+          poetry install --with test,dev
+      - name: Lint with pre-commit
+        run: |
+          poetry run pre-commit run --all-files
+      - name: Test with pytest
+        run: |
+          poetry run pytest ./scripts --cov=./scripts --record-mode=none
+          poetry run pytest ./src --cov=./src --record-mode=none
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
