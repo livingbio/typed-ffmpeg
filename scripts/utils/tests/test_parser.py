@@ -2,6 +2,7 @@ import pathlib
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
+from syrupy.filters import props
 
 from ..parser import parse_filter_document
 
@@ -12,4 +13,4 @@ test_data = pathlib.Path(__file__).parent / "data"
 def test_parse_filter_document(snapshot: SnapshotAssertion, filepath: pathlib.Path) -> None:
     with filepath.open() as ifile:
         body = ifile.read()
-    assert snapshot == parse_filter_document(body).model_dump(mode="json")
+    assert snapshot(exclude=props("path", "refs")) == parse_filter_document(body).model_dump(mode="json")
