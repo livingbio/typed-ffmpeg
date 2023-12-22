@@ -13330,6 +13330,33 @@ class Stream:
             }
         ).stream()
 
+    def signalstats(self, *, stat: str, out: str, color: str, c: str, **kwargs: dict[str, Any]) -> "Stream":
+        """
+        11.236 signalstats Evaluate various visual metrics that assist in determining issues associated with the digitization of analog video media. By default the filter will log these metadata values: The filter accepts the following options:
+
+        Parameters:
+        ----------
+        stat:
+            stat specify an additional form of image analysis. out output video with the specified type of pixel highlighted. Both options accept the following values: ‘tout’ Identify temporal outliers pixels. A temporal outlier is a pixel unlike the neighboring pixels of the same field. Examples of temporal outliers include the results of video dropouts, head clogs, or tape tracking issues. ‘vrep’ Identify vertical line repetition. Vertical line repetition includes similar rows of pixels within a frame. In born-digital video vertical line repetition is common, but this pattern is uncommon in video digitized from an analog source. When it occurs in video that results from the digitization of an analog source it can indicate concealment from a dropout compensator. ‘brng’ Identify pixels that fall outside of legal broadcast range.
+        out:
+            stat specify an additional form of image analysis. out output video with the specified type of pixel highlighted. Both options accept the following values: ‘tout’ Identify temporal outliers pixels. A temporal outlier is a pixel unlike the neighboring pixels of the same field. Examples of temporal outliers include the results of video dropouts, head clogs, or tape tracking issues. ‘vrep’ Identify vertical line repetition. Vertical line repetition includes similar rows of pixels within a frame. In born-digital video vertical line repetition is common, but this pattern is uncommon in video digitized from an analog source. When it occurs in video that results from the digitization of an analog source it can indicate concealment from a dropout compensator. ‘brng’ Identify pixels that fall outside of legal broadcast range.
+        color:
+            Set the highlight color for the out option. The default color is yellow.
+        c:
+            Set the highlight color for the out option. The default color is yellow.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#signalstats
+
+        """
+        return FilterNode(
+            *[self], name="signalstats", kwargs={"stat": stat, "out": out, "color": color, "c": c, **kwargs}
+        ).stream()
+
     def signature(
         self,
         *,
