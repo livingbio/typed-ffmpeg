@@ -46,6 +46,7 @@ def parse_option_str(text: str) -> list[Any]:
 def parse_av_option(text: str) -> list[AVOption]:
     # the meaning of option_str please see libavutil/opt.h::AVOption
     option_lines = parse_option_str(text)
+    print(option_lines)
 
     output: list[AVOption] = []
 
@@ -104,8 +105,9 @@ def parse_av_option(text: str) -> list[AVOption]:
 def extract_av_options(text: str) -> list[AVFilter]:
     output = []
     for filter, option_str in re.findall(
-        r"static const AVOption ([\w\_]+)_options\[\] = {(.*?)};", text, re.DOTALL | re.MULTILINE
+        r"static const AVOption ([\w\_]+)_options\[\] = ({.*?});", text, re.DOTALL | re.MULTILINE
     ):
+        print(f"{filter} {option_str}")
         output.append(AVFilter(name=filter, description="", options=parse_av_option(option_str)))
 
     return output

@@ -33,8 +33,4 @@ def parse_c(path: pathlib.Path) -> list[AVFilter]:
 
     # Replace the macro in the string
     code = re.sub(macro_pattern, replace_macro, code)
-    import pdb
-
-    pdb.set_trace()
-
     return extract_av_options(code)
