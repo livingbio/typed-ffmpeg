@@ -3,7 +3,7 @@ from typing import Any
 import pydantic
 
 
-class _AVOption(pydantic.BaseModel):
+class AVOption(pydantic.BaseModel):
     name: str
     help: str
     # the offset of the field in the struct, it required Macro to get the value
@@ -55,12 +55,12 @@ def parse_option_str(text: str) -> list[Any]:
     return output
 
 
-def parse_av_option(text: str) -> list[_AVOption]:
+def parse_av_option(text: str) -> list[AVOption]:
     # the meaning of option_str please see libavutil/opt.h::AVOption
 
     option_lines = parse_option_str(text)
 
-    output: list[_AVOption] = []
+    output: list[AVOption] = []
 
     def _v(s: str) -> float:
         if "0x" in s:
@@ -90,7 +90,7 @@ def parse_av_option(text: str) -> list[_AVOption]:
             unit = option_line[8].strip('"') if len(option_line) == 9 else None
 
             output.append(
-                _AVOption(
+                AVOption(
                     name=name.strip('"'),
                     help=help.strip('"'),
                     #    offset=int(offset),
