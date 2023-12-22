@@ -100,7 +100,11 @@ class Filter(pydantic.BaseModel):
 
             output.append(
                 Parameter(
-                    name=name, description=parameter["description"], typing=type, default=default, required=required
+                    name=name,
+                    description=parameter["description"],
+                    typing=type,
+                    default=default,
+                    required=required,
                 )
             )
 
@@ -160,7 +164,10 @@ def generate_json_schema(doc: FilterDocument) -> dict[str, dict[str, Any]]:
             model="gpt-3.5-turbo",
             temperature=0.0,
         )
-        output[filter_name] = loads(extract_json_code(result.choices[0].message.content), auto_repair=True)
+        output[filter_name] = loads(
+            extract_json_code(result.choices[0].message.content),
+            auto_repair=True,
+        )
 
     return output
 

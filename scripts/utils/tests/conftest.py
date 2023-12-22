@@ -12,6 +12,9 @@ def filter_response_headers(response: dict[str, Any]) -> dict[str, Any]:
 @pytest.fixture(scope="module")
 def vcr_config() -> dict[str, Any]:
     return {
-        "filter_headers": ["authorization", "api-key"],  # Be sure to match the case of the header exactly
+        "filter_headers": [
+            "authorization",
+            "api-key",
+        ],  # Be sure to match the case of the header exactly
         "before_record_response": filter_response_headers,
     }
