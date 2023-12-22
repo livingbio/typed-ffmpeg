@@ -7281,6 +7281,89 @@ class Stream:
             }
         ).stream()
 
+    def fftfilt(
+        self,
+        *,
+        dc_Y: int = None,
+        dc_U: int = None,
+        dc_V: int = None,
+        weight_Y: str,
+        weight_U: str,
+        weight_V: str,
+        eval: str = None,
+        X: int,
+        Y: int,
+        W: int,
+        H: int,
+        N: int,
+        WS: int,
+        HS: int,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.91 fftfilt Apply arbitrary expressions to samples in frequency domain
+
+        Parameters:
+        ----------
+        dc_Y:
+            Adjust the dc value (gain) of the luma plane of the image. The filter accepts an integer value in range 0 to 1000. The default value is set to 0.
+        dc_U:
+            Adjust the dc value (gain) of the 1st chroma plane of the image. The filter accepts an integer value in range 0 to 1000. The default value is set to 0.
+        dc_V:
+            Adjust the dc value (gain) of the 2nd chroma plane of the image. The filter accepts an integer value in range 0 to 1000. The default value is set to 0.
+        weight_Y:
+            Set the frequency domain weight expression for the luma plane.
+        weight_U:
+            Set the frequency domain weight expression for the 1st chroma plane.
+        weight_V:
+            Set the frequency domain weight expression for the 2nd chroma plane.
+        eval:
+            Set when the expressions are evaluated. It accepts the following values: ‘init’ Only evaluate expressions once during the filter initialization. ‘frame’ Evaluate expressions for each incoming frame. Default value is ‘init’. The filter accepts the following variables:
+        X:
+            The coordinates of the current sample.
+        Y:
+            The coordinates of the current sample.
+        W:
+            The width and height of the image.
+        H:
+            The width and height of the image.
+        N:
+            The number of input frame, starting from 0.
+        WS:
+            The size of FFT array for horizontal and vertical processing.
+        HS:
+            The size of FFT array for horizontal and vertical processing.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#fftfilt
+
+        """
+        return FilterNode(
+            *[self],
+            name="fftfilt",
+            kwargs={
+                "dc_Y": dc_Y,
+                "dc_U": dc_U,
+                "dc_V": dc_V,
+                "weight_Y": weight_Y,
+                "weight_U": weight_U,
+                "weight_V": weight_V,
+                "eval": eval,
+                "X": X,
+                "Y": Y,
+                "W": W,
+                "H": H,
+                "N": N,
+                "WS": WS,
+                "HS": HS,
+                **kwargs,
+            }
+        ).stream()
+
     def field(self, *, type: str, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.92 field Extract a single field from an interlaced image using stride arithmetic to avoid wasting CPU time. The output frames are marked as non-interlaced. The filter accepts the following options:
