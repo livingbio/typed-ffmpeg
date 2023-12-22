@@ -5,11 +5,12 @@ import re
 import urllib.request
 
 import typer
+from app.settings import settings
 from devtools import sprint
-from parse_c.parse_c import parse_c
+from parse_c.parse_c import parse_all_filter_names, parse_c
+from parse_c.schema import AVFilter
 from utils.code_gen import generate_class
 from utils.parser import FilterDocument, parse_filter_document
-from utils.settings import settings
 from utils.signature import Filter, parse_schema
 
 app = typer.Typer()
@@ -95,13 +96,26 @@ def split_documents(should_generate_schema: bool = False) -> None:
 
 
 @app.command()
-def parse_filters(root: pathlib.Path):
+def parse_filters(root: pathlib.Path, allfilter_c: pathlib.Path) -> None:
+    all_filter_names = set(k[1] for k in parse_all_filter_names(allfilter_c))
+
+    total = 0
+    parsed_filters: list[AVFilter] = []
     for path in root.glob("*.c"):
         filters = parse_c(path)
+
         if len(filters) == 0:
             sprint(f"Processing {path}... {len(filters)} filters", sprint.red)
         else:
-            sprint(f"Processing {path}... {len(filters)} filters")
+            sprint(f"Processing {path}... {len(filters)} filters " + ",".join(k.name for k in filters), sprint.green)
+            total += len(filters)
+            parsed_filters.extend(filters)
+
+    print(f"Total filters: {total} / {len(all_filter_names)}")
+    parsed_filter_names = {f.name for f in parsed_filters}
+
+    print(f"not exists filters {parsed_filter_names - all_filter_names}")
+    print(f"not found filters {all_filter_names - parsed_filter_names}")
 
 
 if __name__ == "__main__":

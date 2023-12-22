@@ -19,3 +19,4 @@ def test_parse_c(path: pathlib.Path, snapshot: SnapshotAssertion) -> None:
 def test_parse_all_filter_names(snapshot: SnapshotAssertion) -> None:
     filters = parse_all_filter_names(datadir / "allfilters.c")
     assert snapshot(extension_class=JSONSnapshotExtension) == filters
+    assert snapshot == len(filters)

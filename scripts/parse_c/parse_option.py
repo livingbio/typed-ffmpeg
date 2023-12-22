@@ -114,7 +114,7 @@ def parse_av_filter(text: str) -> list[AVFilter]:
             var, value = desc.split("=", 1)
             config[var.strip()] = value.strip()
 
-        output.append(AVFilter(name=config[".name"], description=config[".description"]))
+        output.append(AVFilter(name=config[".name"].strip('"'), description=config[".description"].strip('"')))
     return output
 
 
