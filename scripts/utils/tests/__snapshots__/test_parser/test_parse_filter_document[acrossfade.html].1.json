@@ -1,15 +1,27 @@
 [
   {
     "description": "<dd><p>Specify the number of samples for which the cross fade effect has to last.\nAt the end of the cross fade effect the first input audio will be completely\nsilent. Default is 44100.\n</p>\n</dd>",
-    "name": "nb_samples, ns"
+    "name": "nb_samples"
+  },
+  {
+    "description": "<dd><p>Specify the number of samples for which the cross fade effect has to last.\nAt the end of the cross fade effect the first input audio will be completely\nsilent. Default is 44100.\n</p>\n</dd>",
+    "name": "ns"
   },
   {
     "description": "<dd><p>Specify the duration of the cross fade effect. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nBy default the duration is determined by <var>nb_samples</var>.\nIf set this option is used instead of <var>nb_samples</var>.\n</p>\n</dd>",
-    "name": "duration, d"
+    "name": "duration"
+  },
+  {
+    "description": "<dd><p>Specify the duration of the cross fade effect. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nBy default the duration is determined by <var>nb_samples</var>.\nIf set this option is used instead of <var>nb_samples</var>.\n</p>\n</dd>",
+    "name": "d"
   },
   {
     "description": "<dd><p>Should first stream end overlap with second stream start. Default is enabled.\n</p>\n</dd>",
-    "name": "overlap, o"
+    "name": "overlap"
+  },
+  {
+    "description": "<dd><p>Should first stream end overlap with second stream start. Default is enabled.\n</p>\n</dd>",
+    "name": "o"
   },
   {
     "description": "<dd><p>Set curve for cross fade transition for first stream.\n</p>\n</dd>",
