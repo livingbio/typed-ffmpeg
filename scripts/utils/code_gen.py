@@ -13,7 +13,7 @@ def generate_class(filters: list[Filter]) -> str:
     for filter in sorted(filters, key=lambda i: i.name):
         try:
             methods.append(generate_filter_to_method(filter))
-        except Exception:
-            print(f"Failed to generate method for {filter.name}")
+        except Exception as e:
+            print(f"Failed to generate method for {filter.name} Because of {e}")
 
     return jinja2.Template((settings.template_path / "class.tmpl").read_text()).render(methods=methods)

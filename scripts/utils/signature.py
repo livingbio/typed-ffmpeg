@@ -59,6 +59,9 @@ class Filter(pydantic.BaseModel):
         output = []
 
         for parameter in self.parameters:
+            if "deprecated" in parameter["description"]:
+                continue
+
             name = parameter["name"].split(" ")[0].split(",")[0].strip()
             schema: dict[str, Any] = self.json_schema["properties"][name]
 

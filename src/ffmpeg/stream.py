@@ -1115,6 +1115,89 @@ class Stream:
         """
         return FilterNode(*[self], name="afifo", kwargs={**kwargs}).stream()
 
+    def afir(
+        self,
+        *,
+        dry: float,
+        wet: float,
+        length: float,
+        irnorm: float,
+        irlink: bool,
+        irgain: float,
+        irfmt: str,
+        maxir: float,
+        minp: float,
+        maxp: float,
+        nbirs: float,
+        ir: float,
+        precision: str = None,
+        irload: str,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        8.25 afir Apply an arbitrary Finite Impulse Response filter. This filter is designed for applying long FIR filters, up to 60 seconds long. It can be used as component for digital crossover filters, room equalization, cross talk cancellation, wavefield synthesis, auralization, ambiophonics, ambisonics and spatialization. This filter uses the streams higher than first one as FIR coefficients. If the non-first stream holds a single channel, it will be used for all input channels in the first stream, otherwise the number of channels in the non-first stream must be same as the number of channels in the first stream. It accepts the following parameters:
+
+        Parameters:
+        ----------
+        dry:
+            Set dry gain. This sets input gain.
+        wet:
+            Set wet gain. This sets final output gain.
+        length:
+            Set Impulse Response filter length. Default is 1, which means whole IR is processed.
+        irnorm:
+            Set norm to be applied to IR coefficients before filtering. Allowed range is from -1 to 2. IR coefficients are normalized with calculated vector norm set by this option. For negative values, no norm is calculated, and IR coefficients are not modified at all. Default is 1.
+        irlink:
+            For multichannel IR if this option is set to true, all IR channels will be normalized with maximal measured gain of all IR channels coefficients as set by irnorm option. When disabled, all IR coefficients in each IR channel will be normalized independently. Default is true.
+        irgain:
+            Set gain to be applied to IR coefficients before filtering. Allowed range is 0 to 1. This gain is applied after any gain applied with irnorm option.
+        irfmt:
+            Set format of IR stream. Can be mono or input. Default is input.
+        maxir:
+            Set max allowed Impulse Response filter duration in seconds. Default is 30 seconds. Allowed range is 0.1 to 60 seconds.
+        minp:
+            Set minimal partition size used for convolution. Default is 8192. Allowed range is from 1 to 65536. Lower values decreases latency at cost of higher CPU usage.
+        maxp:
+            Set maximal partition size used for convolution. Default is 8192. Allowed range is from 8 to 65536. Lower values may increase CPU usage.
+        nbirs:
+            Set number of input impulse responses streams which will be switchable at runtime. Allowed range is from 1 to 32. Default is 1.
+        ir:
+            Set IR stream which will be used for convolution, starting from 0, should always be lower than supplied value by nbirs option. Default is 0. This option can be changed at runtime via commands.
+        precision:
+            Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto.
+        irload:
+            Set when to load IR stream. Can be init or access. First one load and prepares all IRs on initialization, second one once on first access of specific IR. Default is init.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#afir
+
+        """
+        return FilterNode(
+            *[self],
+            name="afir",
+            kwargs={
+                "dry": dry,
+                "wet": wet,
+                "length": length,
+                "irnorm": irnorm,
+                "irlink": irlink,
+                "irgain": irgain,
+                "irfmt": irfmt,
+                "maxir": maxir,
+                "minp": minp,
+                "maxp": maxp,
+                "nbirs": nbirs,
+                "ir": ir,
+                "precision": precision,
+                "irload": irload,
+                **kwargs,
+            }
+        ).stream()
+
     def aformat(
         self, *, sample_fmts: str, sample_rates: str, channel_layouts: str, **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -14264,14 +14347,12 @@ class Stream:
             }
         ).stream()
 
-    def tinterlace(self, *, mode: str = None, flags: list[str], **kwargs: dict[str, Any]) -> "Stream":
+    def tinterlace(self, *, flags: list[str], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.256 tinterlace Perform various types of temporal field interlacing. Frames are counted starting from 1, so the first input frame is considered odd. The filter accepts the following options:
 
         Parameters:
         ----------
-        mode:
-            Specify the mode of the interlacing. This option can also be specified as a value alone. See below for a list of values for this option. Available values are: ‘merge, 0’ Move odd frames into the upper field, even into the lower field, generating a double height frame at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 33333 22222 44444 11111 33333 22222 44444 11111 33333 22222 44444 11111 33333 22222 44444 ‘drop_even, 1’ Only output odd frames, even frames are dropped, generating a frame with unchanged height at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 33333 11111 33333 11111 33333 11111 33333 ‘drop_odd, 2’ Only output even frames, odd frames are dropped, generating a frame with unchanged height at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 22222 44444 22222 44444 22222 44444 22222 44444 ‘pad, 3’ Expand each frame to full height, but pad alternate lines with black, generating a frame with double height at the same input frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 ..... 33333 ..... ..... 22222 ..... 44444 11111 ..... 33333 ..... ..... 22222 ..... 44444 11111 ..... 33333 ..... ..... 22222 ..... 44444 11111 ..... 33333 ..... ..... 22222 ..... 44444 ‘interleave_top, 4’ Interleave the upper field from odd frames with the lower field from even frames, generating a frame with unchanged height at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111<- 22222 33333<- 44444 11111 22222<- 33333 44444<- 11111<- 22222 33333<- 44444 11111 22222<- 33333 44444<- Output: 11111 33333 22222 44444 11111 33333 22222 44444 ‘interleave_bottom, 5’ Interleave the lower field from odd frames with the upper field from even frames, generating a frame with unchanged height at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222<- 33333 44444<- 11111<- 22222 33333<- 44444 11111 22222<- 33333 44444<- 11111<- 22222 33333<- 44444 Output: 22222 44444 11111 33333 22222 44444 11111 33333 ‘interlacex2, 6’ Double frame rate with unchanged height. Frames are inserted each containing the second temporal field from the previous input frame and the first temporal field from the next input frame. This mode relies on the top_field_first flag. Useful for interlaced video displays with no field synchronisation. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 22222 22222 33333 33333 44444 44444 11111 11111 22222 22222 33333 33333 44444 11111 22222 22222 33333 33333 44444 44444 11111 11111 22222 22222 33333 33333 44444 ‘mergex2, 7’ Move odd frames into the upper field, even into the lower field, generating a double height frame at same frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 33333 33333 55555 22222 22222 44444 44444 11111 33333 33333 55555 22222 22222 44444 44444 11111 33333 33333 55555 22222 22222 44444 44444 11111 33333 33333 55555 22222 22222 44444 44444 Numeric values are deprecated but are accepted for backward compatibility reasons. Default mode is merge.
         flags:
             Specify flags influencing the filter process. Available value for flags is: low_pass_filter, vlpf Enable linear vertical low-pass filtering in the filter. Vertical low-pass filtering is required when creating an interlaced destination from a progressive source which contains high-frequency vertical detail. Filtering will reduce interlace ’twitter’ and Moire patterning. complex_filter, cvlpf Enable complex vertical low-pass filtering. This will slightly less reduce interlace ’twitter’ and Moire patterning but better retain detail and subjective sharpness impression. bypass_il Bypass already interlaced frames, only adjust the frame rate. Vertical low-pass filtering and bypassing already interlaced frames can only be enabled for mode interleave_top and interleave_bottom.
 
@@ -14283,7 +14364,7 @@ class Stream:
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tinterlace
 
         """
-        return FilterNode(*[self], name="tinterlace", kwargs={"mode": mode, "flags": flags, **kwargs}).stream()
+        return FilterNode(*[self], name="tinterlace", kwargs={"flags": flags, **kwargs}).stream()
 
     def tlut2(self, *, c0: str, c1: str, c2: str, c3: str, d: int, **kwargs: dict[str, Any]) -> "Stream":
         """
@@ -14467,14 +14548,12 @@ class Stream:
             }
         ).stream()
 
-    def transpose(self, *, dir: str, passthrough: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def transpose(self, *, passthrough: str = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.262 transpose Transpose rows with columns in the input video and optionally flip it. It accepts the following parameters: For example to rotate by 90 degrees clockwise and preserve portrait layout: transpose=dir=1:passthrough=portrait The command above can also be specified as: transpose=1:portrait
 
         Parameters:
         ----------
-        dir:
-            Specify the transposition direction. Can assume the following values: ‘0, 4, cclock_flip’ Rotate by 90 degrees counterclockwise and vertically flip (default), that is: L.R L.l . . -> . . l.r R.r ‘1, 5, clock’ Rotate by 90 degrees clockwise, that is: L.R l.L . . -> . . l.r r.R ‘2, 6, cclock’ Rotate by 90 degrees counterclockwise, that is: L.R R.r . . -> . . l.r L.l ‘3, 7, clock_flip’ Rotate by 90 degrees clockwise and vertically flip, that is: L.R r.R . . -> . . l.r l.L For values between 4-7, the transposition is only done if the input video geometry is portrait and not landscape. These values are deprecated, the passthrough option should be used instead. Numerical values are deprecated, and should be dropped in favor of symbolic constants.
         passthrough:
             Do not apply the transposition if the input geometry matches the one specified by the specified value. It accepts the following values: ‘none’ Always apply transposition. ‘portrait’ Preserve portrait geometry (when height >= width). ‘landscape’ Preserve landscape geometry (when width >= height). Default value is none.
 
@@ -14486,7 +14565,7 @@ class Stream:
         Ref: https://ffmpeg.org/ffmpeg-filters.html#transpose
 
         """
-        return FilterNode(*[self], name="transpose", kwargs={"dir": dir, "passthrough": passthrough, **kwargs}).stream()
+        return FilterNode(*[self], name="transpose", kwargs={"passthrough": passthrough, **kwargs}).stream()
 
     def transpose_npp(self, *, dir: str = None, passthrough: str = None, **kwargs: dict[str, Any]) -> "Stream":
         """
