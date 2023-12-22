@@ -7912,7 +7912,7 @@ class Stream:
     def framerate(
         self,
         *,
-        fps: str = None,
+        fps: int = None,
         interp_start: int = None,
         interp_end: int = None,
         scene: float = None,
