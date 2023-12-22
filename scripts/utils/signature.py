@@ -68,33 +68,42 @@ class Filter(pydantic.BaseModel):
 
             enum_values = schema.get("enum")
 
-            match schema.get("type"):
-                case "number":
-                    type = "float"
-                case "integer":
-                    type = "int"
-                case "string":
-                    type = "str"
-                case "boolean":
-                    type = "bool"
-                case "array":
-                    type = "list[str]"
-                case _ if enum_values:
+            if enum_values:
+                if schema["type"] == "string":
                     type = 'Literal["' + '", "'.join(enum_values) + '"]'
-                case _ if schema.get("oneOf"):
-                    type = "str"
-                case _ if schema.get("anyOf"):
-                    type = "str"
-                case _ if ref := schema.get("$ref"):
-                    __schema = self.json_schema["definitions"][ref.split("/")[-1]]
-                    if "enum" in __schema:
-                        enum_values = __schema["enum"]
-                        type = 'Literal["' + '", "'.join(enum_values) + '"]'
-                    else:
+                elif schema["type"] == "integer":
+                    type = "Literal[" + ", ".join(map(str, enum_values)) + "]"
+                else:
+                    raise NotImplementedError
+
+            else:
+                match schema.get("type"):
+                    case "number":
+                        type = "float"
+                    case "integer":
+                        type = "int"
+                    case "string":
                         type = "str"
-                case _:
-                    sprint(f"{self.name} unknown type: {schema}", sprint.blue)
-                    type = "str"
+                    case "boolean":
+                        type = "bool"
+                    case "array":
+                        type = "list[str]"
+                    case _ if enum_values:
+                        type = 'Literal["' + '", "'.join(enum_values) + '"]'
+                    case _ if schema.get("oneOf"):
+                        type = "str"
+                    case _ if schema.get("anyOf"):
+                        type = "str"
+                    case _ if ref := schema.get("$ref"):
+                        __schema = self.json_schema["definitions"][ref.split("/")[-1]]
+                        if "enum" in __schema:
+                            enum_values = __schema["enum"]
+                            type = 'Literal["' + '", "'.join(enum_values) + '"]'
+                        else:
+                            type = "str"
+                    case _:
+                        sprint(f"{self.name} unknown type: {schema}", sprint.blue)
+                        type = "str"
 
             schema.get("default")
             required = "default" not in schema

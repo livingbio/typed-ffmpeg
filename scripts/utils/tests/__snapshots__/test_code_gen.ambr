@@ -23,7 +23,7 @@
           _2b: float = None,
           s: int = None,
           p: str = None,
-          a: str = None,
+          a: Literal["p", "s"] = None,
           _0s: int = None,
           _1s: int = None,
           _2s: int = None,
@@ -119,8 +119,8 @@
           ).stream()
       
       def stereo3d(
-          self,*,_in: str = None,
-          out: str = None,
+          self,*,_in: Literal["sbsl", "sbsr", "sbs2l", "sbs2r", "abl", "tbl", "abr", "tbr", "ab2l", "tb2l", "ab2r", "tb2r", "al", "ar", "irl", "irr", "icl", "icr"] = None,
+          out: Literal["sbsl", "sbsr", "sbs2l", "sbs2r", "abl", "tbl", "abr", "tbr", "ab2l", "tb2l", "ab2r", "tb2r", "al", "ar", "irl", "irr", "arbg", "argg", "arcg", "arch", "arcc", "arcd", "agmg", "agmh", "agmc", "agmd", "aybg", "aybh", "aybc", "aybd", "ml", "mr", "chl", "chr", "icl", "icr", "hdmi"] = None,
           **kwargs: dict[str, Any]
       ) -> "Stream":
           """
@@ -203,7 +203,7 @@
           _2b: float = None,
           s: int = None,
           p: str = None,
-          a: str = None,
+          a: Literal["p", "s"] = None,
           _0s: int = None,
           _1s: int = None,
           _2s: int = None,
@@ -305,8 +305,8 @@
 # name: test_generate_filter_to_method[stereo3d.json]
   '''
       def stereo3d(
-          self,*,_in: str = None,
-          out: str = None,
+          self,*,_in: Literal["sbsl", "sbsr", "sbs2l", "sbs2r", "abl", "tbl", "abr", "tbr", "ab2l", "tb2l", "ab2r", "tb2r", "al", "ar", "irl", "irr", "icl", "icr"] = None,
+          out: Literal["sbsl", "sbsr", "sbs2l", "sbs2r", "abl", "tbl", "abr", "tbr", "ab2l", "tb2l", "ab2r", "tb2r", "al", "ar", "irl", "irr", "arbg", "argg", "arcg", "arch", "arcc", "arcd", "agmg", "agmh", "agmc", "agmd", "aybg", "aybh", "aybc", "aybd", "ml", "mr", "chl", "chr", "icl", "icr", "hdmi"] = None,
           **kwargs: dict[str, Any]
       ) -> "Stream":
           """
