@@ -50,24 +50,36 @@
   "name": "find_rect",
   "parameters": [
     {
-      "description": "<dd><p>width of object\n</p>\n</dd>",
-      "name": "lavfi.rect.w"
+      "description": "Filepath of the object image, needs to be in gray8.",
+      "name": "object"
     },
     {
-      "description": "<dd><p>height of object\n</p>\n</dd>",
-      "name": "lavfi.rect.h"
+      "description": "Detection threshold, expressed as a decimal number in the range 0-1. A threshold value of 0.01 means only exact matches, a threshold of 0.99 means almost everything matches. Default value is 0.5.",
+      "name": "threshold"
     },
     {
-      "description": "<dd><p>x position of object\n</p>\n</dd>",
-      "name": "lavfi.rect.x"
+      "description": "Number of mipmaps, default is 3.",
+      "name": "mipmaps"
     },
     {
-      "description": "<dd><p>y position of object\n</p>\n</dd>",
-      "name": "lavfi.rect.y"
+      "description": "Specifies the rectangle in which to search.",
+      "name": "xmin"
     },
     {
-      "description": "<dd><p>match score of the found object\n</p></dd>",
-      "name": "lavfi.rect.score"
+      "description": "Specifies the rectangle in which to search.",
+      "name": "ymin"
+    },
+    {
+      "description": "Specifies the rectangle in which to search.",
+      "name": "xmax"
+    },
+    {
+      "description": "Specifies the rectangle in which to search.",
+      "name": "ymax"
+    },
+    {
+      "description": "Discard frames where object is not detected. Default is disabled.",
+      "name": "discard"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#find_005frect",

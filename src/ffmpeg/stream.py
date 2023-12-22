@@ -7570,6 +7570,65 @@ class Stream:
             kwargs={"left": left, "right": right, "top": top, "bottom": bottom, "mode": mode, "color": color, **kwargs}
         ).stream()
 
+    def find_rect(
+        self,
+        *,
+        object: str,
+        threshold: float = None,
+        mipmaps: int = None,
+        xmin: int,
+        ymin: int,
+        xmax: int,
+        ymax: int,
+        discard: bool = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.98 find_rect Find a rectangular object in the input video. The object to search for must be specified as a gray8 image specified with the object option. For each possible match, a score is computed. If the score reaches the specified threshold, the object is considered found. If the input video contains multiple instances of the object, the filter will find only one of them. When an object is found, the following metadata entries are set in the matching frame: It accepts the following options:
+
+        Parameters:
+        ----------
+        object:
+            Filepath of the object image, needs to be in gray8.
+        threshold:
+            Detection threshold, expressed as a decimal number in the range 0-1. A threshold value of 0.01 means only exact matches, a threshold of 0.99 means almost everything matches. Default value is 0.5.
+        mipmaps:
+            Number of mipmaps, default is 3.
+        xmin:
+            Specifies the rectangle in which to search.
+        ymin:
+            Specifies the rectangle in which to search.
+        xmax:
+            Specifies the rectangle in which to search.
+        ymax:
+            Specifies the rectangle in which to search.
+        discard:
+            Discard frames where object is not detected. Default is disabled.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#find_005frect
+
+        """
+        return FilterNode(
+            *[self],
+            name="find_rect",
+            kwargs={
+                "object": object,
+                "threshold": threshold,
+                "mipmaps": mipmaps,
+                "xmin": xmin,
+                "ymin": ymin,
+                "xmax": xmax,
+                "ymax": ymax,
+                "discard": discard,
+                **kwargs,
+            }
+        ).stream()
+
     def firequalizer(
         self,
         *,
