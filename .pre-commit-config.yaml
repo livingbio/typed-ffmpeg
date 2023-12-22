@@ -16,6 +16,7 @@ repos:
         exclude: "__snapshots__/"
       - id: pretty-format-json
         args: [--autofix]
+        exclude: "__snapshots__/"
   # this is not technically always safe but usually is
   # use comments `# isort: off` and `# isort: on` to disable/re-enable isort
   - repo: https://github.com/pycqa/isort

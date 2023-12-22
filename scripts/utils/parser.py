@@ -17,7 +17,9 @@ def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
         elif element.name == "dd" and current_params:
             description = str(element)
             for param in current_params:
-                parameters.append({"name": param, "description": description})
+                for p in param.split(","):
+                    p = p.strip()
+                    parameters.append({"name": p, "description": description})
             current_params = []
 
     return parameters
@@ -46,7 +48,12 @@ class FilterDocument(pydantic.BaseModel):
     @cached_property
     def parameters(self) -> list[dict[str, str]]:
         soup = BeautifulSoup(self.body, "html.parser")
-        options = soup.find("dl")
+        options_p_tag = soup.find("p", string=lambda text: "options" in text.lower() if text else False)
+
+        if options_p_tag:
+            options = options_p_tag.find_next("dl")
+        else:
+            options = soup.find("dl")
 
         if options:
             return parse_paremeters(options)

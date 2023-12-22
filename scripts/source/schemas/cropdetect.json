@@ -4,20 +4,25 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
       "high": {
-        "type": "number\",\n      \"minimum\": 0,\n      \"maximum\": 1,\n      \"default\": 15/255,\n      \"description\": \"High threshold value used by the Canny thresholding algorithm. Must be greater or equal to 'low'."
+        "default": "15/255",
+        "description": "High threshold value used by the Canny thresholding algorithm. Must be greater or equal to 'low'.",
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
       },
       "limit": {
         "default": 24,
         "description": "Higher black value threshold. An intensity value greater than the set value is considered non-black. Can be specified as an integer between 0 and 255 or as a float between 0.0 and 1.0 (scaled depending on the bitdepth of the pixel format).",
         "maximum": 255,
         "minimum": 0,
-        "type": [
-          "integer",
-          "number"
-        ]
+        "type": "number"
       },
       "low": {
-        "type": "number\",\n      \"minimum\": 0,\n      \"maximum\": 1,\n      \"default\": 5/255,\n      \"description\": \"Low threshold value used by the Canny thresholding algorithm. Must be lesser or equal to 'high'."
+        "default": "5/255",
+        "description": "Low threshold value used by the Canny thresholding algorithm. Must be lesser or equal to 'high'.",
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
       },
       "mode": {
         "description": "Crop detection mode. 'black' detects black pixels surrounding the playing video. 'mvedges' detects the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.",
@@ -57,7 +62,7 @@
   "name": "cropdetect",
   "parameters": [
     {
-      "description": "<dd><p>Depending on <var>mode</var> crop detection is based on either the mere black value of surrounding pixels or a combination of motion vectors and edge pixels.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>black</samp>\u2019</dt>\n<dd><p>Detect black pixels surrounding the playing video. For fine control use option <var>limit</var>.\n</p>\n</dd>\n<dt>\u2018<samp>mvedges</samp>\u2019</dt>\n<dd><p>Detect the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.\n</p></dd>\n</dl>\n</dd>",
+      "description": "<dd><p>Depending on <var>mode</var> crop detection is based on either the mere black value of surrounding pixels or a combination of motion vectors and edge pixels.</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>black</samp>\u2019</dt>\n<dd><p>Detect black pixels surrounding the playing video. For fine control use option <var>limit</var>.\n</p>\n</dd>\n<dt>\u2018<samp>mvedges</samp>\u2019</dt>\n<dd><p>Detect the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.\n</p></dd>\n</dl>\n</dd>",
       "name": "mode"
     },
     {

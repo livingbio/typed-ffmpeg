@@ -20,10 +20,18 @@
         "type": "integer"
       },
       "high": {
-        "type": "number\",\n      \"minimum\": 0,\n      \"maximum\": 1,\n      \"default\": 50/255,\n      \"description\": \"Set the high threshold value used by the Canny thresholding algorithm."
+        "default": "50/255",
+        "description": "Set the high threshold value used by the Canny thresholding algorithm.",
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
       },
       "low": {
-        "type": "number\",\n      \"minimum\": 0,\n      \"maximum\": 1,\n      \"default\": 20/255,\n      \"description\": \"Set the low threshold value used by the Canny thresholding algorithm."
+        "default": "20/255",
+        "description": "Set the low threshold value used by the Canny thresholding algorithm.",
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
       },
       "planes": {
         "default": "first",

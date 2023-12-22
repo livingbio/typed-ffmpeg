@@ -4,6 +4,27 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "properties": {
+      "H": {
+        "type": "integer"
+      },
+      "HS": {
+        "type": "integer"
+      },
+      "N": {
+        "type": "integer"
+      },
+      "W": {
+        "type": "integer"
+      },
+      "WS": {
+        "type": "integer"
+      },
+      "X": {
+        "type": "integer"
+      },
+      "Y": {
+        "type": "integer"
+      },
       "dc_U": {
         "default": 0,
         "maximum": 1000,

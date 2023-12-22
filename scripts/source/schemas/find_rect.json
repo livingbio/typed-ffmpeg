@@ -50,26 +50,38 @@
   "name": "find_rect",
   "parameters": [
     {
-      "description": "<dd><p>width of object\n</p>\n</dd>",
-      "name": "lavfi.rect.w"
+      "description": "<dd><p>Filepath of the object image, needs to be in gray8.\n</p>\n</dd>",
+      "name": "object"
     },
     {
-      "description": "<dd><p>height of object\n</p>\n</dd>",
-      "name": "lavfi.rect.h"
+      "description": "<dd><p>Detection threshold, expressed as a decimal number in the range 0-1.\n</p>\n<p>A threshold value of 0.01 means only exact matches, a threshold of 0.99 means\nalmost everything matches.\n</p>\n<p>Default value is 0.5.\n</p>\n</dd>",
+      "name": "threshold"
     },
     {
-      "description": "<dd><p>x position of object\n</p>\n</dd>",
-      "name": "lavfi.rect.x"
+      "description": "<dd><p>Number of mipmaps, default is 3.\n</p>\n</dd>",
+      "name": "mipmaps"
     },
     {
-      "description": "<dd><p>y position of object\n</p>\n</dd>",
-      "name": "lavfi.rect.y"
+      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
+      "name": "xmin"
     },
     {
-      "description": "<dd><p>match score of the found object\n</p></dd>",
-      "name": "lavfi.rect.score"
+      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
+      "name": "ymin"
+    },
+    {
+      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
+      "name": "xmax"
+    },
+    {
+      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
+      "name": "ymax"
+    },
+    {
+      "description": "<dd><p>Discard frames where object is not detected. Default is disabled.\n</p></dd>",
+      "name": "discard"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#find_005frect",
-  "source": "<h3 class=\"section\"><a href=\"#toc-find_005frect\">11.98 find_rect</a></h3>\n\n<p>Find a rectangular object in the input video.\n</p>\n<p>The object to search for must be specified as a gray8 image specified with the\n<samp>object</samp> option.\n</p>\n<p>For each possible match, a score is computed. If the score reaches the specified\nthreshold, the object is considered found.\n</p>\n<p>If the input video contains multiple instances of the object, the filter will\nfind only one of them.\n</p>\n<p>When an object is found, the following metadata entries are set in the matching\nframe:\n</p><dl compact=\"compact\">\n<dt><samp>lavfi.rect.w</samp></dt>\n<dd><p>width of object\n</p>\n</dd>\n<dt><samp>lavfi.rect.h</samp></dt>\n<dd><p>height of object\n</p>\n</dd>\n<dt><samp>lavfi.rect.x</samp></dt>\n<dd><p>x position of object\n</p>\n</dd>\n<dt><samp>lavfi.rect.y</samp></dt>\n<dd><p>y position of object\n</p>\n</dd>\n<dt><samp>lavfi.rect.score</samp></dt>\n<dd><p>match score of the found object\n</p></dd>\n</dl>\n\n<p>It accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>object</samp></dt>\n<dd><p>Filepath of the object image, needs to be in gray8.\n</p>\n</dd>\n<dt><samp>threshold</samp></dt>\n<dd><p>Detection threshold, expressed as a decimal number in the range 0-1.\n</p>\n<p>A threshold value of 0.01 means only exact matches, a threshold of 0.99 means\nalmost everything matches.\n</p>\n<p>Default value is 0.5.\n</p>\n</dd>\n<dt><samp>mipmaps</samp></dt>\n<dd><p>Number of mipmaps, default is 3.\n</p>\n</dd>\n<dt><samp>xmin, ymin, xmax, ymax</samp></dt>\n<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>\n<dt><samp>discard</samp></dt>\n<dd><p>Discard frames where object is not detected. Default is disabled.\n</p></dd>\n</dl>\n\n"
+  "source": "<h3 class=\"section\"><a href=\"#toc-find_005frect\">11.98 find_rect</a></h3>\n\n<p>Find a rectangular object in the input video.\n</p>\n<p>The object to search for must be specified as a gray8 image specified with the\n<samp>object</samp> option.\n</p>\n<p>For each possible match, a score is computed. If the score reaches the specified\nthreshold, the object is considered found.\n</p>\n<p>If the input video contains multiple instances of the object, the filter will\nfind only one of them.\n</p>\n<p>When an object is found, the following metadata entries are set in the matching\nframe:\n</p><dl compact=\"compact\">\n<dt><samp>lavfi.rect.w</samp></dt>\n<dd><p>width of object\n</p>\n</dd>\n<dt><samp>lavfi.rect.h</samp></dt>\n<dd><p>height of object\n</p>\n</dd>\n<dt><samp>lavfi.rect.x</samp></dt>\n<dd><p>x position of object\n</p>\n</dd>\n<dt><samp>lavfi.rect.y</samp></dt>\n<dd><p>y position of object\n</p>\n</dd>\n<dt><samp>lavfi.rect.score</samp></dt>\n<dd><p>match score of the found object\n</p></dd>\n</dl>\n\n<p>It accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>object</samp></dt>\n<dd><p>Filepath of the object image, needs to be in gray8.\n</p>\n</dd>\n<dt><samp>threshold</samp></dt>\n<dd><p>Detection threshold, expressed as a decimal number in the range 0-1.\n</p>\n<p>A threshold value of 0.01 means only exact matches, a threshold of 0.99 means\nalmost everything matches.\n</p>\n<p>Default value is 0.5.\n</p>\n</dd>\n<dt><samp>mipmaps</samp></dt>\n<dd><p>Number of mipmaps, default is 3.\n</p>\n</dd>\n<dt><samp>xmin, ymin, xmax, ymax</samp></dt>\n<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>\n<dt><samp>discard</samp></dt>\n<dd><p>Discard frames where object is not detected. Default is disabled.\n</p></dd>\n</dl>\n"
 }

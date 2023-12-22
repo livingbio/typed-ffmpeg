@@ -33,118 +33,22 @@
   "name": "signalstats",
   "parameters": [
     {
-      "description": "<dd><p>Display the minimal Y value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "YMIN"
+      "description": "<dd>\n<p><samp>stat</samp> specify an additional form of image analysis.\n<samp>out</samp> output video with the specified type of pixel highlighted.\n</p>\n<p>Both options accept the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tout</samp>\u2019</dt>\n<dd><p>Identify <var>temporal outliers</var> pixels. A <var>temporal outlier</var> is a pixel\nunlike the neighboring pixels of the same field. Examples of temporal outliers\ninclude the results of video dropouts, head clogs, or tape tracking issues.\n</p>\n</dd>\n<dt>\u2018<samp>vrep</samp>\u2019</dt>\n<dd><p>Identify <var>vertical line repetition</var>. Vertical line repetition includes\nsimilar rows of pixels within a frame. In born-digital video vertical line\nrepetition is common, but this pattern is uncommon in video digitized from an\nanalog source. When it occurs in video that results from the digitization of an\nanalog source it can indicate concealment from a dropout compensator.\n</p>\n</dd>\n<dt>\u2018<samp>brng</samp>\u2019</dt>\n<dd><p>Identify pixels that fall outside of legal broadcast range.\n</p></dd>\n</dl>\n</dd>",
+      "name": "stat"
     },
     {
-      "description": "<dd><p>Display the Y value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "YLOW"
+      "description": "<dd>\n<p><samp>stat</samp> specify an additional form of image analysis.\n<samp>out</samp> output video with the specified type of pixel highlighted.\n</p>\n<p>Both options accept the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tout</samp>\u2019</dt>\n<dd><p>Identify <var>temporal outliers</var> pixels. A <var>temporal outlier</var> is a pixel\nunlike the neighboring pixels of the same field. Examples of temporal outliers\ninclude the results of video dropouts, head clogs, or tape tracking issues.\n</p>\n</dd>\n<dt>\u2018<samp>vrep</samp>\u2019</dt>\n<dd><p>Identify <var>vertical line repetition</var>. Vertical line repetition includes\nsimilar rows of pixels within a frame. In born-digital video vertical line\nrepetition is common, but this pattern is uncommon in video digitized from an\nanalog source. When it occurs in video that results from the digitization of an\nanalog source it can indicate concealment from a dropout compensator.\n</p>\n</dd>\n<dt>\u2018<samp>brng</samp>\u2019</dt>\n<dd><p>Identify pixels that fall outside of legal broadcast range.\n</p></dd>\n</dl>\n</dd>",
+      "name": "out"
     },
     {
-      "description": "<dd><p>Display the average Y value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>",
-      "name": "YAVG"
+      "description": "<dd><p>Set the highlight color for the <samp>out</samp> option. The default color is\nyellow.\n</p></dd>",
+      "name": "color"
     },
     {
-      "description": "<dd><p>Display the Y value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "YHIGH"
-    },
-    {
-      "description": "<dd><p>Display the maximum Y value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "YMAX"
-    },
-    {
-      "description": "<dd><p>Display the minimal U value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "UMIN"
-    },
-    {
-      "description": "<dd><p>Display the U value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "ULOW"
-    },
-    {
-      "description": "<dd><p>Display the average U value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>",
-      "name": "UAVG"
-    },
-    {
-      "description": "<dd><p>Display the U value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "UHIGH"
-    },
-    {
-      "description": "<dd><p>Display the maximum U value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "UMAX"
-    },
-    {
-      "description": "<dd><p>Display the minimal V value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "VMIN"
-    },
-    {
-      "description": "<dd><p>Display the V value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "VLOW"
-    },
-    {
-      "description": "<dd><p>Display the average V value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>",
-      "name": "VAVG"
-    },
-    {
-      "description": "<dd><p>Display the V value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "VHIGH"
-    },
-    {
-      "description": "<dd><p>Display the maximum V value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>",
-      "name": "VMAX"
-    },
-    {
-      "description": "<dd><p>Display the minimal saturation value contained within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>",
-      "name": "SATMIN"
-    },
-    {
-      "description": "<dd><p>Display the saturation value at the 10% percentile within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>",
-      "name": "SATLOW"
-    },
-    {
-      "description": "<dd><p>Display the average saturation value within the input frame. Expressed in range\nof [0-~181.02].\n</p>\n</dd>",
-      "name": "SATAVG"
-    },
-    {
-      "description": "<dd><p>Display the saturation value at the 90% percentile within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>",
-      "name": "SATHIGH"
-    },
-    {
-      "description": "<dd><p>Display the maximum saturation value contained within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>",
-      "name": "SATMAX"
-    },
-    {
-      "description": "<dd><p>Display the median value for hue within the input frame. Expressed in range of\n[0-360].\n</p>\n</dd>",
-      "name": "HUEMED"
-    },
-    {
-      "description": "<dd><p>Display the average value for hue within the input frame. Expressed in range of\n[0-360].\n</p>\n</dd>",
-      "name": "HUEAVG"
-    },
-    {
-      "description": "<dd><p>Display the average of sample value difference between all values of the Y\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>",
-      "name": "YDIF"
-    },
-    {
-      "description": "<dd><p>Display the average of sample value difference between all values of the U\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>",
-      "name": "UDIF"
-    },
-    {
-      "description": "<dd><p>Display the average of sample value difference between all values of the V\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>",
-      "name": "VDIF"
-    },
-    {
-      "description": "<dd><p>Display bit depth of Y plane in current frame.\nExpressed in range of [0-16].\n</p>\n</dd>",
-      "name": "YBITDEPTH"
-    },
-    {
-      "description": "<dd><p>Display bit depth of U plane in current frame.\nExpressed in range of [0-16].\n</p>\n</dd>",
-      "name": "UBITDEPTH"
-    },
-    {
-      "description": "<dd><p>Display bit depth of V plane in current frame.\nExpressed in range of [0-16].\n</p></dd>",
-      "name": "VBITDEPTH"
+      "description": "<dd><p>Set the highlight color for the <samp>out</samp> option. The default color is\nyellow.\n</p></dd>",
+      "name": "c"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#signalstats",
-  "source": "<h3 class=\"section\"><a href=\"#toc-signalstats-1\">11.236 signalstats</a></h3>\n<p>Evaluate various visual metrics that assist in determining issues associated\nwith the digitization of analog video media.\n</p>\n<p>By default the filter will log these metadata values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>YMIN</samp></dt>\n<dd><p>Display the minimal Y value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>YLOW</samp></dt>\n<dd><p>Display the Y value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>YAVG</samp></dt>\n<dd><p>Display the average Y value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>\n<dt><samp>YHIGH</samp></dt>\n<dd><p>Display the Y value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>YMAX</samp></dt>\n<dd><p>Display the maximum Y value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>UMIN</samp></dt>\n<dd><p>Display the minimal U value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>ULOW</samp></dt>\n<dd><p>Display the U value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>UAVG</samp></dt>\n<dd><p>Display the average U value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>\n<dt><samp>UHIGH</samp></dt>\n<dd><p>Display the U value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>UMAX</samp></dt>\n<dd><p>Display the maximum U value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>VMIN</samp></dt>\n<dd><p>Display the minimal V value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>VLOW</samp></dt>\n<dd><p>Display the V value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>VAVG</samp></dt>\n<dd><p>Display the average V value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>\n<dt><samp>VHIGH</samp></dt>\n<dd><p>Display the V value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>VMAX</samp></dt>\n<dd><p>Display the maximum V value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>SATMIN</samp></dt>\n<dd><p>Display the minimal saturation value contained within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>\n<dt><samp>SATLOW</samp></dt>\n<dd><p>Display the saturation value at the 10% percentile within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>\n<dt><samp>SATAVG</samp></dt>\n<dd><p>Display the average saturation value within the input frame. Expressed in range\nof [0-~181.02].\n</p>\n</dd>\n<dt><samp>SATHIGH</samp></dt>\n<dd><p>Display the saturation value at the 90% percentile within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>\n<dt><samp>SATMAX</samp></dt>\n<dd><p>Display the maximum saturation value contained within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>\n<dt><samp>HUEMED</samp></dt>\n<dd><p>Display the median value for hue within the input frame. Expressed in range of\n[0-360].\n</p>\n</dd>\n<dt><samp>HUEAVG</samp></dt>\n<dd><p>Display the average value for hue within the input frame. Expressed in range of\n[0-360].\n</p>\n</dd>\n<dt><samp>YDIF</samp></dt>\n<dd><p>Display the average of sample value difference between all values of the Y\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>\n<dt><samp>UDIF</samp></dt>\n<dd><p>Display the average of sample value difference between all values of the U\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>\n<dt><samp>VDIF</samp></dt>\n<dd><p>Display the average of sample value difference between all values of the V\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>\n<dt><samp>YBITDEPTH</samp></dt>\n<dd><p>Display bit depth of Y plane in current frame.\nExpressed in range of [0-16].\n</p>\n</dd>\n<dt><samp>UBITDEPTH</samp></dt>\n<dd><p>Display bit depth of U plane in current frame.\nExpressed in range of [0-16].\n</p>\n</dd>\n<dt><samp>VBITDEPTH</samp></dt>\n<dd><p>Display bit depth of V plane in current frame.\nExpressed in range of [0-16].\n</p></dd>\n</dl>\n\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>stat</samp></dt>\n<dt><samp>out</samp></dt>\n<dd>\n<p><samp>stat</samp> specify an additional form of image analysis.\n<samp>out</samp> output video with the specified type of pixel highlighted.\n</p>\n<p>Both options accept the following values:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>tout</samp>&rsquo;</dt>\n<dd><p>Identify <var>temporal outliers</var> pixels. A <var>temporal outlier</var> is a pixel\nunlike the neighboring pixels of the same field. Examples of temporal outliers\ninclude the results of video dropouts, head clogs, or tape tracking issues.\n</p>\n</dd>\n<dt>&lsquo;<samp>vrep</samp>&rsquo;</dt>\n<dd><p>Identify <var>vertical line repetition</var>. Vertical line repetition includes\nsimilar rows of pixels within a frame. In born-digital video vertical line\nrepetition is common, but this pattern is uncommon in video digitized from an\nanalog source. When it occurs in video that results from the digitization of an\nanalog source it can indicate concealment from a dropout compensator.\n</p>\n</dd>\n<dt>&lsquo;<samp>brng</samp>&rsquo;</dt>\n<dd><p>Identify pixels that fall outside of legal broadcast range.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>color, c</samp></dt>\n<dd><p>Set the highlight color for the <samp>out</samp> option. The default color is\nyellow.\n</p></dd>\n</dl>\n\n"
+  "source": "<h3 class=\"section\"><a href=\"#toc-signalstats-1\">11.236 signalstats</a></h3>\n<p>Evaluate various visual metrics that assist in determining issues associated\nwith the digitization of analog video media.\n</p>\n<p>By default the filter will log these metadata values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>YMIN</samp></dt>\n<dd><p>Display the minimal Y value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>YLOW</samp></dt>\n<dd><p>Display the Y value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>YAVG</samp></dt>\n<dd><p>Display the average Y value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>\n<dt><samp>YHIGH</samp></dt>\n<dd><p>Display the Y value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>YMAX</samp></dt>\n<dd><p>Display the maximum Y value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>UMIN</samp></dt>\n<dd><p>Display the minimal U value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>ULOW</samp></dt>\n<dd><p>Display the U value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>UAVG</samp></dt>\n<dd><p>Display the average U value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>\n<dt><samp>UHIGH</samp></dt>\n<dd><p>Display the U value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>UMAX</samp></dt>\n<dd><p>Display the maximum U value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>VMIN</samp></dt>\n<dd><p>Display the minimal V value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>VLOW</samp></dt>\n<dd><p>Display the V value at the 10% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>VAVG</samp></dt>\n<dd><p>Display the average V value within the input frame. Expressed in range of\n[0-255].\n</p>\n</dd>\n<dt><samp>VHIGH</samp></dt>\n<dd><p>Display the V value at the 90% percentile within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>VMAX</samp></dt>\n<dd><p>Display the maximum V value contained within the input frame. Expressed in\nrange of [0-255].\n</p>\n</dd>\n<dt><samp>SATMIN</samp></dt>\n<dd><p>Display the minimal saturation value contained within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>\n<dt><samp>SATLOW</samp></dt>\n<dd><p>Display the saturation value at the 10% percentile within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>\n<dt><samp>SATAVG</samp></dt>\n<dd><p>Display the average saturation value within the input frame. Expressed in range\nof [0-~181.02].\n</p>\n</dd>\n<dt><samp>SATHIGH</samp></dt>\n<dd><p>Display the saturation value at the 90% percentile within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>\n<dt><samp>SATMAX</samp></dt>\n<dd><p>Display the maximum saturation value contained within the input frame.\nExpressed in range of [0-~181.02].\n</p>\n</dd>\n<dt><samp>HUEMED</samp></dt>\n<dd><p>Display the median value for hue within the input frame. Expressed in range of\n[0-360].\n</p>\n</dd>\n<dt><samp>HUEAVG</samp></dt>\n<dd><p>Display the average value for hue within the input frame. Expressed in range of\n[0-360].\n</p>\n</dd>\n<dt><samp>YDIF</samp></dt>\n<dd><p>Display the average of sample value difference between all values of the Y\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>\n<dt><samp>UDIF</samp></dt>\n<dd><p>Display the average of sample value difference between all values of the U\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>\n<dt><samp>VDIF</samp></dt>\n<dd><p>Display the average of sample value difference between all values of the V\nplane in the current frame and corresponding values of the previous input frame.\nExpressed in range of [0-255].\n</p>\n</dd>\n<dt><samp>YBITDEPTH</samp></dt>\n<dd><p>Display bit depth of Y plane in current frame.\nExpressed in range of [0-16].\n</p>\n</dd>\n<dt><samp>UBITDEPTH</samp></dt>\n<dd><p>Display bit depth of U plane in current frame.\nExpressed in range of [0-16].\n</p>\n</dd>\n<dt><samp>VBITDEPTH</samp></dt>\n<dd><p>Display bit depth of V plane in current frame.\nExpressed in range of [0-16].\n</p></dd>\n</dl>\n\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>stat</samp></dt>\n<dt><samp>out</samp></dt>\n<dd>\n<p><samp>stat</samp> specify an additional form of image analysis.\n<samp>out</samp> output video with the specified type of pixel highlighted.\n</p>\n<p>Both options accept the following values:\n</p>\n<dl compact=\"compact\">\n<dt>&lsquo;<samp>tout</samp>&rsquo;</dt>\n<dd><p>Identify <var>temporal outliers</var> pixels. A <var>temporal outlier</var> is a pixel\nunlike the neighboring pixels of the same field. Examples of temporal outliers\ninclude the results of video dropouts, head clogs, or tape tracking issues.\n</p>\n</dd>\n<dt>&lsquo;<samp>vrep</samp>&rsquo;</dt>\n<dd><p>Identify <var>vertical line repetition</var>. Vertical line repetition includes\nsimilar rows of pixels within a frame. In born-digital video vertical line\nrepetition is common, but this pattern is uncommon in video digitized from an\nanalog source. When it occurs in video that results from the digitization of an\nanalog source it can indicate concealment from a dropout compensator.\n</p>\n</dd>\n<dt>&lsquo;<samp>brng</samp>&rsquo;</dt>\n<dd><p>Identify pixels that fall outside of legal broadcast range.\n</p></dd>\n</dl>\n\n</dd>\n<dt><samp>color, c</samp></dt>\n<dd><p>Set the highlight color for the <samp>out</samp> option. The default color is\nyellow.\n</p></dd>\n</dl>\n"
 }

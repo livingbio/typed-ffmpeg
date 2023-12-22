@@ -13,10 +13,7 @@
       },
       "fps": {
         "default": 50,
-        "type": [
-          "number",
-          "string"
-        ]
+        "type": "integer"
       },
       "interp_end": {
         "default": 240,

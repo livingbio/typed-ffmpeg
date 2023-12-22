@@ -33,14 +33,26 @@
   "name": "readeia608",
   "parameters": [
     {
-      "description": "<dd><p>The two bytes stored as EIA-608 data (printed in hexadecimal).\n</p>\n</dd>",
-      "name": "lavfi.readeia608.X.cc"
+      "description": "<dd><p>Set the line to start scanning for EIA-608 data. Default is <code>0</code>.\n</p>\n</dd>",
+      "name": "scan_min"
     },
     {
-      "description": "<dd><p>The number of the line on which the EIA-608 data was identified and read.\n</p></dd>",
-      "name": "lavfi.readeia608.X.line"
+      "description": "<dd><p>Set the line to end scanning for EIA-608 data. Default is <code>29</code>.\n</p>\n</dd>",
+      "name": "scan_max"
+    },
+    {
+      "description": "<dd><p>Set the ratio of width reserved for sync code detection.\nDefault is <code>0.27</code>. Allowed range is <code>[0.1 - 0.7]</code>.\n</p>\n</dd>",
+      "name": "spw"
+    },
+    {
+      "description": "<dd><p>Enable checking the parity bit. In the event of a parity error, the filter will output\n<code>0x00</code> for that character. Default is false.\n</p>\n</dd>",
+      "name": "chp"
+    },
+    {
+      "description": "<dd><p>Lowpass lines prior to further processing. Default is enabled.\n</p></dd>",
+      "name": "lp"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#readeia608",
-  "source": "<h3 class=\"section\"><a href=\"#toc-readeia608\">11.204 readeia608</a></h3>\n\n<p>Read closed captioning (EIA-608) information from the top lines of a video frame.\n</p>\n<p>This filter adds frame metadata for <code>lavfi.readeia608.X.cc</code> and\n<code>lavfi.readeia608.X.line</code>, where <code>X</code> is the number of the identified line\nwith EIA-608 data (starting from 0). A description of each metadata value follows:\n</p>\n<dl compact=\"compact\">\n<dt><samp>lavfi.readeia608.X.cc</samp></dt>\n<dd><p>The two bytes stored as EIA-608 data (printed in hexadecimal).\n</p>\n</dd>\n<dt><samp>lavfi.readeia608.X.line</samp></dt>\n<dd><p>The number of the line on which the EIA-608 data was identified and read.\n</p></dd>\n</dl>\n\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>scan_min</samp></dt>\n<dd><p>Set the line to start scanning for EIA-608 data. Default is <code>0</code>.\n</p>\n</dd>\n<dt><samp>scan_max</samp></dt>\n<dd><p>Set the line to end scanning for EIA-608 data. Default is <code>29</code>.\n</p>\n</dd>\n<dt><samp>spw</samp></dt>\n<dd><p>Set the ratio of width reserved for sync code detection.\nDefault is <code>0.27</code>. Allowed range is <code>[0.1 - 0.7]</code>.\n</p>\n</dd>\n<dt><samp>chp</samp></dt>\n<dd><p>Enable checking the parity bit. In the event of a parity error, the filter will output\n<code>0x00</code> for that character. Default is false.\n</p>\n</dd>\n<dt><samp>lp</samp></dt>\n<dd><p>Lowpass lines prior to further processing. Default is enabled.\n</p></dd>\n</dl>\n\n"
+  "source": "<h3 class=\"section\"><a href=\"#toc-readeia608\">11.204 readeia608</a></h3>\n\n<p>Read closed captioning (EIA-608) information from the top lines of a video frame.\n</p>\n<p>This filter adds frame metadata for <code>lavfi.readeia608.X.cc</code> and\n<code>lavfi.readeia608.X.line</code>, where <code>X</code> is the number of the identified line\nwith EIA-608 data (starting from 0). A description of each metadata value follows:\n</p>\n<dl compact=\"compact\">\n<dt><samp>lavfi.readeia608.X.cc</samp></dt>\n<dd><p>The two bytes stored as EIA-608 data (printed in hexadecimal).\n</p>\n</dd>\n<dt><samp>lavfi.readeia608.X.line</samp></dt>\n<dd><p>The number of the line on which the EIA-608 data was identified and read.\n</p></dd>\n</dl>\n\n<p>This filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>scan_min</samp></dt>\n<dd><p>Set the line to start scanning for EIA-608 data. Default is <code>0</code>.\n</p>\n</dd>\n<dt><samp>scan_max</samp></dt>\n<dd><p>Set the line to end scanning for EIA-608 data. Default is <code>29</code>.\n</p>\n</dd>\n<dt><samp>spw</samp></dt>\n<dd><p>Set the ratio of width reserved for sync code detection.\nDefault is <code>0.27</code>. Allowed range is <code>[0.1 - 0.7]</code>.\n</p>\n</dd>\n<dt><samp>chp</samp></dt>\n<dd><p>Enable checking the parity bit. In the event of a parity error, the filter will output\n<code>0x00</code> for that character. Default is false.\n</p>\n</dd>\n<dt><samp>lp</samp></dt>\n<dd><p>Lowpass lines prior to further processing. Default is enabled.\n</p></dd>\n</dl>\n"
 }

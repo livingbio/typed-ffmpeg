@@ -5,6 +5,7 @@ import re
 from typing import Any
 
 import pydantic
+from devtools import sprint
 from dotenv import load_dotenv
 from fuzzy_json import loads
 from openai import AzureOpenAI
@@ -59,6 +60,9 @@ class Filter(pydantic.BaseModel):
         output = []
 
         for parameter in self.parameters:
+            if "deprecated" in parameter["description"]:
+                continue
+
             name = parameter["name"].split(" ")[0].split(",")[0].strip()
             schema: dict[str, Any] = self.json_schema["properties"][name]
 
@@ -89,15 +93,18 @@ class Filter(pydantic.BaseModel):
                     else:
                         type = "str"
                 case _:
-                    print(f"unknown type: {schema}")
+                    sprint(f"{self.name} unknown type: {schema}", sprint.blue)
                     type = "str"
 
-            default = schema.get("default")
+            schema.get("default")
             required = "default" not in schema
 
             output.append(
                 Parameter(
-                    name=name, description=parameter["description"], typing=type, default=default, required=required
+                    name=name,
+                    description=parameter["description"],
+                    typing=type,
+                    required=required,
                 )
             )
 
@@ -157,7 +164,10 @@ def generate_json_schema(doc: FilterDocument) -> dict[str, dict[str, Any]]:
             model="gpt-3.5-turbo",
             temperature=0.0,
         )
-        output[filter_name] = loads(extract_json_code(result.choices[0].message.content), auto_repair=True)
+        output[filter_name] = loads(
+            extract_json_code(result.choices[0].message.content),
+            auto_repair=True,
+        )
 
     return output
 

@@ -1115,6 +1115,89 @@ class Stream:
         """
         return FilterNode(*[self], name="afifo", kwargs={**kwargs}).stream()
 
+    def afir(
+        self,
+        *,
+        dry: float,
+        wet: float,
+        length: float,
+        irnorm: float,
+        irlink: bool,
+        irgain: float,
+        irfmt: str,
+        maxir: float,
+        minp: float,
+        maxp: float,
+        nbirs: float,
+        ir: float,
+        precision: str = None,
+        irload: str,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        8.25 afir Apply an arbitrary Finite Impulse Response filter. This filter is designed for applying long FIR filters, up to 60 seconds long. It can be used as component for digital crossover filters, room equalization, cross talk cancellation, wavefield synthesis, auralization, ambiophonics, ambisonics and spatialization. This filter uses the streams higher than first one as FIR coefficients. If the non-first stream holds a single channel, it will be used for all input channels in the first stream, otherwise the number of channels in the non-first stream must be same as the number of channels in the first stream. It accepts the following parameters:
+
+        Parameters:
+        ----------
+        dry:
+            Set dry gain. This sets input gain.
+        wet:
+            Set wet gain. This sets final output gain.
+        length:
+            Set Impulse Response filter length. Default is 1, which means whole IR is processed.
+        irnorm:
+            Set norm to be applied to IR coefficients before filtering. Allowed range is from -1 to 2. IR coefficients are normalized with calculated vector norm set by this option. For negative values, no norm is calculated, and IR coefficients are not modified at all. Default is 1.
+        irlink:
+            For multichannel IR if this option is set to true, all IR channels will be normalized with maximal measured gain of all IR channels coefficients as set by irnorm option. When disabled, all IR coefficients in each IR channel will be normalized independently. Default is true.
+        irgain:
+            Set gain to be applied to IR coefficients before filtering. Allowed range is 0 to 1. This gain is applied after any gain applied with irnorm option.
+        irfmt:
+            Set format of IR stream. Can be mono or input. Default is input.
+        maxir:
+            Set max allowed Impulse Response filter duration in seconds. Default is 30 seconds. Allowed range is 0.1 to 60 seconds.
+        minp:
+            Set minimal partition size used for convolution. Default is 8192. Allowed range is from 1 to 65536. Lower values decreases latency at cost of higher CPU usage.
+        maxp:
+            Set maximal partition size used for convolution. Default is 8192. Allowed range is from 8 to 65536. Lower values may increase CPU usage.
+        nbirs:
+            Set number of input impulse responses streams which will be switchable at runtime. Allowed range is from 1 to 32. Default is 1.
+        ir:
+            Set IR stream which will be used for convolution, starting from 0, should always be lower than supplied value by nbirs option. Default is 0. This option can be changed at runtime via commands.
+        precision:
+            Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto.
+        irload:
+            Set when to load IR stream. Can be init or access. First one load and prepares all IRs on initialization, second one once on first access of specific IR. Default is init.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#afir
+
+        """
+        return FilterNode(
+            *[self],
+            name="afir",
+            kwargs={
+                "dry": dry,
+                "wet": wet,
+                "length": length,
+                "irnorm": irnorm,
+                "irlink": irlink,
+                "irgain": irgain,
+                "irfmt": irfmt,
+                "maxir": maxir,
+                "minp": minp,
+                "maxp": maxp,
+                "nbirs": nbirs,
+                "ir": ir,
+                "precision": precision,
+                "irload": irload,
+                **kwargs,
+            }
+        ).stream()
+
     def aformat(
         self, *, sample_fmts: str, sample_rates: str, channel_layouts: str, **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -3626,8 +3709,8 @@ class Stream:
     def blurdetect(
         self,
         *,
-        low: str,
-        high: str,
+        low: float = None,
+        high: float = None,
         radius: int,
         block_pct: int,
         block_width: int,
@@ -5136,13 +5219,13 @@ class Stream:
         self,
         *,
         mode: str,
-        limit: str = None,
+        limit: float = None,
         round: int = None,
         skip: int,
         reset_count: int = None,
         mv_threshold: int = None,
-        low: str,
-        high: str,
+        low: float = None,
+        high: float = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -7198,6 +7281,89 @@ class Stream:
             }
         ).stream()
 
+    def fftfilt(
+        self,
+        *,
+        dc_Y: int = None,
+        dc_U: int = None,
+        dc_V: int = None,
+        weight_Y: str,
+        weight_U: str,
+        weight_V: str,
+        eval: str = None,
+        X: int,
+        Y: int,
+        W: int,
+        H: int,
+        N: int,
+        WS: int,
+        HS: int,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.91 fftfilt Apply arbitrary expressions to samples in frequency domain
+
+        Parameters:
+        ----------
+        dc_Y:
+            Adjust the dc value (gain) of the luma plane of the image. The filter accepts an integer value in range 0 to 1000. The default value is set to 0.
+        dc_U:
+            Adjust the dc value (gain) of the 1st chroma plane of the image. The filter accepts an integer value in range 0 to 1000. The default value is set to 0.
+        dc_V:
+            Adjust the dc value (gain) of the 2nd chroma plane of the image. The filter accepts an integer value in range 0 to 1000. The default value is set to 0.
+        weight_Y:
+            Set the frequency domain weight expression for the luma plane.
+        weight_U:
+            Set the frequency domain weight expression for the 1st chroma plane.
+        weight_V:
+            Set the frequency domain weight expression for the 2nd chroma plane.
+        eval:
+            Set when the expressions are evaluated. It accepts the following values: ‘init’ Only evaluate expressions once during the filter initialization. ‘frame’ Evaluate expressions for each incoming frame. Default value is ‘init’. The filter accepts the following variables:
+        X:
+            The coordinates of the current sample.
+        Y:
+            The coordinates of the current sample.
+        W:
+            The width and height of the image.
+        H:
+            The width and height of the image.
+        N:
+            The number of input frame, starting from 0.
+        WS:
+            The size of FFT array for horizontal and vertical processing.
+        HS:
+            The size of FFT array for horizontal and vertical processing.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#fftfilt
+
+        """
+        return FilterNode(
+            *[self],
+            name="fftfilt",
+            kwargs={
+                "dc_Y": dc_Y,
+                "dc_U": dc_U,
+                "dc_V": dc_V,
+                "weight_Y": weight_Y,
+                "weight_U": weight_U,
+                "weight_V": weight_V,
+                "eval": eval,
+                "X": X,
+                "Y": Y,
+                "W": W,
+                "H": H,
+                "N": N,
+                "WS": WS,
+                "HS": HS,
+                **kwargs,
+            }
+        ).stream()
+
     def field(self, *, type: str, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.92 field Extract a single field from an interlaced image using stride arithmetic to avoid wasting CPU time. The output frames are marked as non-interlaced. The filter accepts the following options:
@@ -7402,6 +7568,65 @@ class Stream:
             *[self],
             name="fillborders",
             kwargs={"left": left, "right": right, "top": top, "bottom": bottom, "mode": mode, "color": color, **kwargs}
+        ).stream()
+
+    def find_rect(
+        self,
+        *,
+        object: str,
+        threshold: float = None,
+        mipmaps: int = None,
+        xmin: int,
+        ymin: int,
+        xmax: int,
+        ymax: int,
+        discard: bool = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.98 find_rect Find a rectangular object in the input video. The object to search for must be specified as a gray8 image specified with the object option. For each possible match, a score is computed. If the score reaches the specified threshold, the object is considered found. If the input video contains multiple instances of the object, the filter will find only one of them. When an object is found, the following metadata entries are set in the matching frame: It accepts the following options:
+
+        Parameters:
+        ----------
+        object:
+            Filepath of the object image, needs to be in gray8.
+        threshold:
+            Detection threshold, expressed as a decimal number in the range 0-1. A threshold value of 0.01 means only exact matches, a threshold of 0.99 means almost everything matches. Default value is 0.5.
+        mipmaps:
+            Number of mipmaps, default is 3.
+        xmin:
+            Specifies the rectangle in which to search.
+        ymin:
+            Specifies the rectangle in which to search.
+        xmax:
+            Specifies the rectangle in which to search.
+        ymax:
+            Specifies the rectangle in which to search.
+        discard:
+            Discard frames where object is not detected. Default is disabled.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#find_005frect
+
+        """
+        return FilterNode(
+            *[self],
+            name="find_rect",
+            kwargs={
+                "object": object,
+                "threshold": threshold,
+                "mipmaps": mipmaps,
+                "xmin": xmin,
+                "ymin": ymin,
+                "xmax": xmax,
+                "ymax": ymax,
+                "discard": discard,
+                **kwargs,
+            }
         ).stream()
 
     def firequalizer(
@@ -7687,7 +7912,7 @@ class Stream:
     def framerate(
         self,
         *,
-        fps: str = None,
+        fps: int = None,
         interp_start: int = None,
         interp_end: int = None,
         scene: float = None,
@@ -8941,6 +9166,53 @@ class Stream:
 
         """
         return FilterNode(*[self], name="identity", kwargs={**kwargs}).stream()
+
+    def idet(
+        self,
+        *,
+        intl_thres: float,
+        prog_thres: float,
+        rep_thres: float,
+        half_life: float,
+        analyze_interlaced_flag: int,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.135 idet Detect video interlacing type. This filter tries to detect if the input frames are interlaced, progressive, top or bottom field first. It will also try to detect fields that are repeated between adjacent frames (a sign of telecine). Single frame detection considers only immediately adjacent frames when classifying each frame. Multiple frame detection incorporates the classification history of previous frames. The filter will log these metadata values: The filter accepts the following options:
+
+        Parameters:
+        ----------
+        intl_thres:
+            Set interlacing threshold.
+        prog_thres:
+            Set progressive threshold.
+        rep_thres:
+            Threshold for repeated field detection.
+        half_life:
+            Number of frames after which a given frame’s contribution to the statistics is halved (i.e., it contributes only 0.5 to its classification). The default of 0 means that all frames seen are given full weight of 1.0 forever.
+        analyze_interlaced_flag:
+            When this is not 0 then idet will use the specified number of frames to determine if the interlaced flag is accurate, it will not count undetermined frames. If the flag is found to be accurate it will be used without any further computations, if it is found to be inaccurate it will be cleared without any further computations. This allows inserting the idet filter as a low computational method to clean up the interlaced flag
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#idet
+
+        """
+        return FilterNode(
+            *[self],
+            name="idet",
+            kwargs={
+                "intl_thres": intl_thres,
+                "prog_thres": prog_thres,
+                "rep_thres": rep_thres,
+                "half_life": half_life,
+                "analyze_interlaced_flag": analyze_interlaced_flag,
+                **kwargs,
+            }
+        ).stream()
 
     def il(
         self,
@@ -11322,6 +11594,39 @@ class Stream:
             }
         ).stream()
 
+    def pan(
+        self, *, l: str, outdef: list[str], out_name: str, gain: float, in_name: str, **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        8.101 pan Mix channels with specific gain levels. The filter accepts the output channel layout followed by a set of channels definitions. This filter is also designed to efficiently remap the channels of an audio stream. The filter accepts parameters of the form: "l|outdef|outdef|..." If the ‘=’ in a channel specification is replaced by ‘<’, then the gains for that specification will be renormalized so that the total is 1, thus avoiding clipping noise.
+
+        Parameters:
+        ----------
+        l:
+            output channel layout or number of channels
+        outdef:
+            output channel specification, of the form: "out_name=[gain*]in_name[(+-)[gain*]in_name...]"
+        out_name:
+            output channel to define, either a channel name (FL, FR, etc.) or a channel number (c0, c1, etc.)
+        gain:
+            multiplicative coefficient for the channel, 1 leaving the volume unchanged
+        in_name:
+            input channel to use, see out_name for details; it is not possible to mix named and numbered input channels
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#pan
+
+        """
+        return FilterNode(
+            *[self],
+            name="pan",
+            kwargs={"l": l, "outdef": outdef, "out_name": out_name, "gain": gain, "in_name": in_name, **kwargs}
+        ).stream()
+
     def perspective(
         self,
         *,
@@ -11771,6 +12076,46 @@ class Stream:
 
         """
         return FilterNode(*[self], name="random", kwargs={"frames": frames, "seed": seed, **kwargs}).stream()
+
+    def readeia608(
+        self,
+        *,
+        scan_min: int = None,
+        scan_max: int = None,
+        spw: float = None,
+        chp: bool = None,
+        lp: bool = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.204 readeia608 Read closed captioning (EIA-608) information from the top lines of a video frame. This filter adds frame metadata for lavfi.readeia608.X.cc and lavfi.readeia608.X.line, where X is the number of the identified line with EIA-608 data (starting from 0). A description of each metadata value follows: This filter accepts the following options:
+
+        Parameters:
+        ----------
+        scan_min:
+            Set the line to start scanning for EIA-608 data. Default is 0.
+        scan_max:
+            Set the line to end scanning for EIA-608 data. Default is 29.
+        spw:
+            Set the ratio of width reserved for sync code detection. Default is 0.27. Allowed range is [0.1 - 0.7].
+        chp:
+            Enable checking the parity bit. In the event of a parity error, the filter will output 0x00 for that character. Default is false.
+        lp:
+            Lowpass lines prior to further processing. Default is enabled.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#readeia608
+
+        """
+        return FilterNode(
+            *[self],
+            name="readeia608",
+            kwargs={"scan_min": scan_min, "scan_max": scan_max, "spw": spw, "chp": chp, "lp": lp, **kwargs}
+        ).stream()
 
     def readvitc(
         self, *, scan_max: int = None, thr_b: float = None, thr_w: float = None, **kwargs: dict[str, Any]
@@ -12985,6 +13330,33 @@ class Stream:
             }
         ).stream()
 
+    def signalstats(self, *, stat: str, out: str, color: str, c: str, **kwargs: dict[str, Any]) -> "Stream":
+        """
+        11.236 signalstats Evaluate various visual metrics that assist in determining issues associated with the digitization of analog video media. By default the filter will log these metadata values: The filter accepts the following options:
+
+        Parameters:
+        ----------
+        stat:
+            stat specify an additional form of image analysis. out output video with the specified type of pixel highlighted. Both options accept the following values: ‘tout’ Identify temporal outliers pixels. A temporal outlier is a pixel unlike the neighboring pixels of the same field. Examples of temporal outliers include the results of video dropouts, head clogs, or tape tracking issues. ‘vrep’ Identify vertical line repetition. Vertical line repetition includes similar rows of pixels within a frame. In born-digital video vertical line repetition is common, but this pattern is uncommon in video digitized from an analog source. When it occurs in video that results from the digitization of an analog source it can indicate concealment from a dropout compensator. ‘brng’ Identify pixels that fall outside of legal broadcast range.
+        out:
+            stat specify an additional form of image analysis. out output video with the specified type of pixel highlighted. Both options accept the following values: ‘tout’ Identify temporal outliers pixels. A temporal outlier is a pixel unlike the neighboring pixels of the same field. Examples of temporal outliers include the results of video dropouts, head clogs, or tape tracking issues. ‘vrep’ Identify vertical line repetition. Vertical line repetition includes similar rows of pixels within a frame. In born-digital video vertical line repetition is common, but this pattern is uncommon in video digitized from an analog source. When it occurs in video that results from the digitization of an analog source it can indicate concealment from a dropout compensator. ‘brng’ Identify pixels that fall outside of legal broadcast range.
+        color:
+            Set the highlight color for the out option. The default color is yellow.
+        c:
+            Set the highlight color for the out option. The default color is yellow.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#signalstats
+
+        """
+        return FilterNode(
+            *[self], name="signalstats", kwargs={"stat": stat, "out": out, "color": color, "c": c, **kwargs}
+        ).stream()
+
     def signature(
         self,
         *,
@@ -13170,6 +13542,81 @@ class Stream:
 
         """
         return FilterNode(*[self], name="siti", kwargs={"print_summary": print_summary, **kwargs}).stream()
+
+    def smartblur(
+        self,
+        *,
+        luma_radius: float = None,
+        lr: float = None,
+        luma_strength: float = None,
+        ls: float = None,
+        luma_threshold: int = None,
+        lt: int = None,
+        chroma_radius: float = None,
+        cr: float = None,
+        chroma_strength: float = None,
+        cs: float = None,
+        chroma_threshold: int = None,
+        ct: int = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.239 smartblur Blur the input video without impacting the outlines. It accepts the following options: If a chroma option is not explicitly set, the corresponding luma value is set.
+
+        Parameters:
+        ----------
+        luma_radius:
+            Set the luma radius. The option value must be a float number in the range [0.1,5.0] that specifies the variance of the gaussian filter used to blur the image (slower if larger). Default value is 1.0.
+        lr:
+            Set the luma radius. The option value must be a float number in the range [0.1,5.0] that specifies the variance of the gaussian filter used to blur the image (slower if larger). Default value is 1.0.
+        luma_strength:
+            Set the luma strength. The option value must be a float number in the range [-1.0,1.0] that configures the blurring. A value included in [0.0,1.0] will blur the image whereas a value included in [-1.0,0.0] will sharpen the image. Default value is 1.0.
+        ls:
+            Set the luma strength. The option value must be a float number in the range [-1.0,1.0] that configures the blurring. A value included in [0.0,1.0] will blur the image whereas a value included in [-1.0,0.0] will sharpen the image. Default value is 1.0.
+        luma_threshold:
+            Set the luma threshold used as a coefficient to determine whether a pixel should be blurred or not. The option value must be an integer in the range [-30,30]. A value of 0 will filter all the image, a value included in [0,30] will filter flat areas and a value included in [-30,0] will filter edges. Default value is 0.
+        lt:
+            Set the luma threshold used as a coefficient to determine whether a pixel should be blurred or not. The option value must be an integer in the range [-30,30]. A value of 0 will filter all the image, a value included in [0,30] will filter flat areas and a value included in [-30,0] will filter edges. Default value is 0.
+        chroma_radius:
+            Set the chroma radius. The option value must be a float number in the range [0.1,5.0] that specifies the variance of the gaussian filter used to blur the image (slower if larger). Default value is luma_radius.
+        cr:
+            Set the chroma radius. The option value must be a float number in the range [0.1,5.0] that specifies the variance of the gaussian filter used to blur the image (slower if larger). Default value is luma_radius.
+        chroma_strength:
+            Set the chroma strength. The option value must be a float number in the range [-1.0,1.0] that configures the blurring. A value included in [0.0,1.0] will blur the image whereas a value included in [-1.0,0.0] will sharpen the image. Default value is luma_strength.
+        cs:
+            Set the chroma strength. The option value must be a float number in the range [-1.0,1.0] that configures the blurring. A value included in [0.0,1.0] will blur the image whereas a value included in [-1.0,0.0] will sharpen the image. Default value is luma_strength.
+        chroma_threshold:
+            Set the chroma threshold used as a coefficient to determine whether a pixel should be blurred or not. The option value must be an integer in the range [-30,30]. A value of 0 will filter all the image, a value included in [0,30] will filter flat areas and a value included in [-30,0] will filter edges. Default value is luma_threshold.
+        ct:
+            Set the chroma threshold used as a coefficient to determine whether a pixel should be blurred or not. The option value must be an integer in the range [-30,30]. A value of 0 will filter all the image, a value included in [0,30] will filter flat areas and a value included in [-30,0] will filter edges. Default value is luma_threshold.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#smartblur
+
+        """
+        return FilterNode(
+            *[self],
+            name="smartblur",
+            kwargs={
+                "luma_radius": luma_radius,
+                "lr": lr,
+                "luma_strength": luma_strength,
+                "ls": ls,
+                "luma_threshold": luma_threshold,
+                "lt": lt,
+                "chroma_radius": chroma_radius,
+                "cr": cr,
+                "chroma_strength": chroma_strength,
+                "cs": cs,
+                "chroma_threshold": chroma_threshold,
+                "ct": ct,
+                **kwargs,
+            }
+        ).stream()
 
     def sobel(self, *, planes: int, scale: float, delta: float, **kwargs: dict[str, Any]) -> "Stream":
         """
@@ -14264,14 +14711,12 @@ class Stream:
             }
         ).stream()
 
-    def tinterlace(self, *, mode: str = None, flags: list[str], **kwargs: dict[str, Any]) -> "Stream":
+    def tinterlace(self, *, flags: list[str], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.256 tinterlace Perform various types of temporal field interlacing. Frames are counted starting from 1, so the first input frame is considered odd. The filter accepts the following options:
 
         Parameters:
         ----------
-        mode:
-            Specify the mode of the interlacing. This option can also be specified as a value alone. See below for a list of values for this option. Available values are: ‘merge, 0’ Move odd frames into the upper field, even into the lower field, generating a double height frame at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 33333 22222 44444 11111 33333 22222 44444 11111 33333 22222 44444 11111 33333 22222 44444 ‘drop_even, 1’ Only output odd frames, even frames are dropped, generating a frame with unchanged height at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 33333 11111 33333 11111 33333 11111 33333 ‘drop_odd, 2’ Only output even frames, odd frames are dropped, generating a frame with unchanged height at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 22222 44444 22222 44444 22222 44444 22222 44444 ‘pad, 3’ Expand each frame to full height, but pad alternate lines with black, generating a frame with double height at the same input frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 ..... 33333 ..... ..... 22222 ..... 44444 11111 ..... 33333 ..... ..... 22222 ..... 44444 11111 ..... 33333 ..... ..... 22222 ..... 44444 11111 ..... 33333 ..... ..... 22222 ..... 44444 ‘interleave_top, 4’ Interleave the upper field from odd frames with the lower field from even frames, generating a frame with unchanged height at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111<- 22222 33333<- 44444 11111 22222<- 33333 44444<- 11111<- 22222 33333<- 44444 11111 22222<- 33333 44444<- Output: 11111 33333 22222 44444 11111 33333 22222 44444 ‘interleave_bottom, 5’ Interleave the lower field from odd frames with the upper field from even frames, generating a frame with unchanged height at half frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222<- 33333 44444<- 11111<- 22222 33333<- 44444 11111 22222<- 33333 44444<- 11111<- 22222 33333<- 44444 Output: 22222 44444 11111 33333 22222 44444 11111 33333 ‘interlacex2, 6’ Double frame rate with unchanged height. Frames are inserted each containing the second temporal field from the previous input frame and the first temporal field from the next input frame. This mode relies on the top_field_first flag. Useful for interlaced video displays with no field synchronisation. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 22222 22222 33333 33333 44444 44444 11111 11111 22222 22222 33333 33333 44444 11111 22222 22222 33333 33333 44444 44444 11111 11111 22222 22222 33333 33333 44444 ‘mergex2, 7’ Move odd frames into the upper field, even into the lower field, generating a double height frame at same frame rate. ------> time Input: Frame 1 Frame 2 Frame 3 Frame 4 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 11111 22222 33333 44444 Output: 11111 33333 33333 55555 22222 22222 44444 44444 11111 33333 33333 55555 22222 22222 44444 44444 11111 33333 33333 55555 22222 22222 44444 44444 11111 33333 33333 55555 22222 22222 44444 44444 Numeric values are deprecated but are accepted for backward compatibility reasons. Default mode is merge.
         flags:
             Specify flags influencing the filter process. Available value for flags is: low_pass_filter, vlpf Enable linear vertical low-pass filtering in the filter. Vertical low-pass filtering is required when creating an interlaced destination from a progressive source which contains high-frequency vertical detail. Filtering will reduce interlace ’twitter’ and Moire patterning. complex_filter, cvlpf Enable complex vertical low-pass filtering. This will slightly less reduce interlace ’twitter’ and Moire patterning but better retain detail and subjective sharpness impression. bypass_il Bypass already interlaced frames, only adjust the frame rate. Vertical low-pass filtering and bypassing already interlaced frames can only be enabled for mode interleave_top and interleave_bottom.
 
@@ -14283,7 +14728,7 @@ class Stream:
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tinterlace
 
         """
-        return FilterNode(*[self], name="tinterlace", kwargs={"mode": mode, "flags": flags, **kwargs}).stream()
+        return FilterNode(*[self], name="tinterlace", kwargs={"flags": flags, **kwargs}).stream()
 
     def tlut2(self, *, c0: str, c1: str, c2: str, c3: str, d: int, **kwargs: dict[str, Any]) -> "Stream":
         """
@@ -14467,14 +14912,12 @@ class Stream:
             }
         ).stream()
 
-    def transpose(self, *, dir: str, passthrough: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def transpose(self, *, passthrough: str = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.262 transpose Transpose rows with columns in the input video and optionally flip it. It accepts the following parameters: For example to rotate by 90 degrees clockwise and preserve portrait layout: transpose=dir=1:passthrough=portrait The command above can also be specified as: transpose=1:portrait
 
         Parameters:
         ----------
-        dir:
-            Specify the transposition direction. Can assume the following values: ‘0, 4, cclock_flip’ Rotate by 90 degrees counterclockwise and vertically flip (default), that is: L.R L.l . . -> . . l.r R.r ‘1, 5, clock’ Rotate by 90 degrees clockwise, that is: L.R l.L . . -> . . l.r r.R ‘2, 6, cclock’ Rotate by 90 degrees counterclockwise, that is: L.R R.r . . -> . . l.r L.l ‘3, 7, clock_flip’ Rotate by 90 degrees clockwise and vertically flip, that is: L.R r.R . . -> . . l.r l.L For values between 4-7, the transposition is only done if the input video geometry is portrait and not landscape. These values are deprecated, the passthrough option should be used instead. Numerical values are deprecated, and should be dropped in favor of symbolic constants.
         passthrough:
             Do not apply the transposition if the input geometry matches the one specified by the specified value. It accepts the following values: ‘none’ Always apply transposition. ‘portrait’ Preserve portrait geometry (when height >= width). ‘landscape’ Preserve landscape geometry (when width >= height). Default value is none.
 
@@ -14486,7 +14929,7 @@ class Stream:
         Ref: https://ffmpeg.org/ffmpeg-filters.html#transpose
 
         """
-        return FilterNode(*[self], name="transpose", kwargs={"dir": dir, "passthrough": passthrough, **kwargs}).stream()
+        return FilterNode(*[self], name="transpose", kwargs={"passthrough": passthrough, **kwargs}).stream()
 
     def transpose_npp(self, *, dir: str = None, passthrough: str = None, **kwargs: dict[str, Any]) -> "Stream":
         """
