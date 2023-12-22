@@ -2669,7 +2669,20 @@ class Stream:
             }
         ).stream()
 
-    def ass(self, *, shaping: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def ass(
+        self,
+        *,
+        shaping: str = None,
+        filename: str,
+        original_size: str,
+        fontsdir: str,
+        alpha: bool,
+        charenc: str,
+        stream_index: int,
+        force_style: str,
+        wrap_unicode: bool,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.5 ass Same as the subtitles filter, except that it doesn’t require libavcodec and libavformat to work. On the other hand, it is limited to ASS (Advanced Substation Alpha) subtitles files. This filter accepts the following option in addition to the common options from the subtitles filter:
 
@@ -2677,6 +2690,22 @@ class Stream:
         ----------
         shaping:
             Set the shaping engine Available values are: ‘auto’ The default libass shaping engine, which is the best available. ‘simple’ Fast, font-agnostic shaper that can do only substitutions ‘complex’ Slower shaper using OpenType for substitutions and positioning The default is auto.
+        filename:
+            Set the filename of the subtitle file to read. It must be specified.
+        original_size:
+            Specify the size of the original video, the video for which the ASS file was composed. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Due to a misdesign in ASS aspect ratio arithmetic, this is necessary to correctly scale the fonts if the aspect ratio has been changed.
+        fontsdir:
+            Set a directory path containing fonts that can be used by the filter. These fonts will be used in addition to whatever the font provider uses.
+        alpha:
+            Process alpha channel, by default alpha channel is untouched.
+        charenc:
+            Set subtitles input character encoding. subtitles filter only. Only useful if not UTF-8.
+        stream_index:
+            Set subtitles stream index. subtitles filter only.
+        force_style:
+            Override default style or script info parameters of the subtitles. It accepts a string containing ASS style format KEY=VALUE couples separated by ",".
+        wrap_unicode:
+            Break lines according to the Unicode Line Breaking Algorithm. Availability requires at least libass release 0.17.0 (or LIBASS_VERSION 0x01600010), and libass must have been built with libunibreak. The option is enabled by default except for native ASS.
 
 
 
@@ -2686,7 +2715,22 @@ class Stream:
         Ref: https://ffmpeg.org/ffmpeg-filters.html#ass
 
         """
-        return FilterNode(*[self], name="ass", kwargs={"shaping": shaping, **kwargs}).stream()
+        return FilterNode(
+            *[self],
+            name="ass",
+            kwargs={
+                "shaping": shaping,
+                "filename": filename,
+                "original_size": original_size,
+                "fontsdir": fontsdir,
+                "alpha": alpha,
+                "charenc": charenc,
+                "stream_index": stream_index,
+                "force_style": force_style,
+                "wrap_unicode": wrap_unicode,
+                **kwargs,
+            }
+        ).stream()
 
     def astats(
         self,
