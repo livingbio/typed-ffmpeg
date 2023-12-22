@@ -1,19 +1,7 @@
+import re
 from typing import Any
 
-import pydantic
-
-
-class AVOption(pydantic.BaseModel):
-    name: str
-    help: str
-    # the offset of the field in the struct, it required Macro to get the value
-    # offset: int
-    type: str
-    default: int | float | str
-    min: float
-    max: float
-    int: str
-    unit: str | None = None
+from .schema import AVFilter, AVOption
 
 
 def parse_option_str(text: str) -> list[Any]:
@@ -57,15 +45,17 @@ def parse_option_str(text: str) -> list[Any]:
 
 def parse_av_option(text: str) -> list[AVOption]:
     # the meaning of option_str please see libavutil/opt.h::AVOption
-
     option_lines = parse_option_str(text)
 
     output: list[AVOption] = []
 
-    def _v(s: str) -> float:
+    def _v(s: str) -> float | str:
         if "0x" in s:
             return int(s, 16)
-        return float(s)
+        try:
+            return float(s)
+        except ValueError:
+            return s
 
     def _d(s: tuple[str]) -> int | float | str:
         text = s[0]
@@ -73,7 +63,10 @@ def parse_av_option(text: str) -> list[AVOption]:
 
         match type:
             case ".i64":
-                return int(value)
+                try:
+                    return int(value)
+                except ValueError:
+                    return value
             case ".dbl":
                 return float(value)
             case ".str":
@@ -98,12 +91,21 @@ def parse_av_option(text: str) -> list[AVOption]:
                     default=_d(default),
                     min=_v(_min),
                     max=_v(_max),
-                    int=flags,
+                    flags=flags,
                     unit=unit,
                 )
             )
+        else:
+            print(option_line)
 
-        elif isinstance(option_line, list):
-            output.extend(parse_av_option(option_line[0]))
+    return output
+
+
+def extract_av_options(text: str) -> list[AVFilter]:
+    output = []
+    for filter, option_str in re.findall(
+        r"static const AVOption ([\w\_]+)_options\[\] = {(.*?)};", text, re.DOTALL | re.MULTILINE
+    ):
+        output.append(AVFilter(name=filter, description="", options=parse_av_option(option_str)))
 
     return output
