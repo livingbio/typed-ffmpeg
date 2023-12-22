@@ -7,6 +7,8 @@
 - The docstring format is not consistence each time I used it.
 - most of the filters I never used,
 
+- use GPT and parser to generate JSONSchema for each filter
+
 
 Future Work
 - generate python code from ffmpeg code instead of document, maybe it is easier to do it.
