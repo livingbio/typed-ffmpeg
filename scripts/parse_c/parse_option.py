@@ -10,6 +10,7 @@ def parse_option_str(text: str) -> list[Any]:
     level = 0
     output = []
     in_text = False
+    in_bracket = False
 
     text = text.strip()
 
@@ -18,15 +19,21 @@ def parse_option_str(text: str) -> list[Any]:
             case '"' if text[idx - 1] != "\\":
                 in_text = not in_text
                 buffer += ch
-            case "," if not in_text and level == 1:
+            case "(" if not in_text:
+                in_bracket = True
+                buffer += ch
+            case ")" if not in_text and in_bracket:
+                in_bracket = False
+                buffer += ch
+            case "," if not in_text and not in_bracket and level == 1:
                 if buffer.strip():
                     output.append(buffer.strip())
                 buffer = ""
-            case "{" if not in_text:
+            case "{" if not in_text and not in_bracket:
                 level += 1
                 if level > 1:
                     buffer += ch
-            case "}" if not in_text:
+            case "}" if not in_text and not in_bracket:
                 level -= 1
 
                 if level == 1:

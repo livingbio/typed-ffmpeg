@@ -8,6 +8,7 @@ import typer
 from app.settings import settings
 from devtools import sprint
 from parse_c.parse_c import parse_all_filter_names, parse_c
+from parse_c.pre_compile import precompile
 from parse_c.schema import AVFilter
 from utils.code_gen import generate_class
 from utils.parser import FilterDocument, parse_filter_document
@@ -16,6 +17,11 @@ from utils.signature import Filter, parse_schema
 app = typer.Typer()
 
 DOCUMENT_PATH = settings.document_path
+
+
+@app.command()
+def pre_compile(folder: pathlib.Path) -> None:
+    precompile(folder)
 
 
 @app.command()
