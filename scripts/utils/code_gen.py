@@ -1,4 +1,5 @@
 import jinja2
+from devtools import sprint
 
 from .settings import settings
 from .signature import Filter
@@ -14,6 +15,6 @@ def generate_class(filters: list[Filter]) -> str:
         try:
             methods.append(generate_filter_to_method(filter))
         except Exception as e:
-            print(f"Failed to generate method for {filter.name} Because of {e}")
+            sprint(f"Failed to generate method for {filter.name} Because of {e}", sprint.red)
 
     return jinja2.Template((settings.template_path / "class.tmpl").read_text()).render(methods=methods)

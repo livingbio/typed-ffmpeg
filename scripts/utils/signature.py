@@ -5,6 +5,7 @@ import re
 from typing import Any
 
 import pydantic
+from devtools import sprint
 from dotenv import load_dotenv
 from fuzzy_json import loads
 from openai import AzureOpenAI
@@ -92,7 +93,7 @@ class Filter(pydantic.BaseModel):
                     else:
                         type = "str"
                 case _:
-                    print(f"\tunknown type: {schema}")
+                    sprint(f"{self.name} unknown type: {schema}", sprint.blue)
                     type = "str"
 
             default = schema.get("default")

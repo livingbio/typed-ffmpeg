@@ -15,10 +15,7 @@
         "description": "Higher black value threshold. An intensity value greater than the set value is considered non-black. Can be specified as an integer between 0 and 255 or as a float between 0.0 and 1.0 (scaled depending on the bitdepth of the pixel format).",
         "maximum": 255,
         "minimum": 0,
-        "type": [
-          "integer",
-          "number"
-        ]
+        "type": "number"
       },
       "low": {
         "default": "5/255",
