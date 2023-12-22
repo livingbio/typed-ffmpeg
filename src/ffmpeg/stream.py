@@ -9167,6 +9167,53 @@ class Stream:
         """
         return FilterNode(*[self], name="identity", kwargs={**kwargs}).stream()
 
+    def idet(
+        self,
+        *,
+        intl_thres: float,
+        prog_thres: float,
+        rep_thres: float,
+        half_life: float,
+        analyze_interlaced_flag: int,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.135 idet Detect video interlacing type. This filter tries to detect if the input frames are interlaced, progressive, top or bottom field first. It will also try to detect fields that are repeated between adjacent frames (a sign of telecine). Single frame detection considers only immediately adjacent frames when classifying each frame. Multiple frame detection incorporates the classification history of previous frames. The filter will log these metadata values: The filter accepts the following options:
+
+        Parameters:
+        ----------
+        intl_thres:
+            Set interlacing threshold.
+        prog_thres:
+            Set progressive threshold.
+        rep_thres:
+            Threshold for repeated field detection.
+        half_life:
+            Number of frames after which a given frame’s contribution to the statistics is halved (i.e., it contributes only 0.5 to its classification). The default of 0 means that all frames seen are given full weight of 1.0 forever.
+        analyze_interlaced_flag:
+            When this is not 0 then idet will use the specified number of frames to determine if the interlaced flag is accurate, it will not count undetermined frames. If the flag is found to be accurate it will be used without any further computations, if it is found to be inaccurate it will be cleared without any further computations. This allows inserting the idet filter as a low computational method to clean up the interlaced flag
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#idet
+
+        """
+        return FilterNode(
+            *[self],
+            name="idet",
+            kwargs={
+                "intl_thres": intl_thres,
+                "prog_thres": prog_thres,
+                "rep_thres": rep_thres,
+                "half_life": half_life,
+                "analyze_interlaced_flag": analyze_interlaced_flag,
+                **kwargs,
+            }
+        ).stream()
+
     def il(
         self,
         *,
