@@ -1,0 +1,6 @@
+- the originoal idea is start after GPT-3 is released, but I don't have time to work on it.
+- The ffmpeg document is not easy to read, so I want to make a simple document for it.
+- At beginning, I want to do an End to End genrator, given ffmpeg document than generate python code,
+- However since there are too many filters need to be implemented, and always have some little glitch I decide to do it step by step.
+- I did some POC about use ChatGPT to generate Python code, it works
+- Some bug include generate not complete JSON code
