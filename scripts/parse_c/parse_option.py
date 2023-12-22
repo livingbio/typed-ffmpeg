@@ -1,5 +1,20 @@
 from typing import Any
 
+import pydantic
+
+
+class _AVOption(pydantic.BaseModel):
+    name: str
+    help: str
+    # the offset of the field in the struct, it required Macro to get the value
+    # offset: int
+    type: str
+    default: int | float | str
+    min: float
+    max: float
+    int: str
+    unit: str | None = None
+
 
 def parse_option_str(text: str) -> list[Any]:
 
@@ -11,14 +26,13 @@ def parse_option_str(text: str) -> list[Any]:
     text = text.strip()
 
     for idx, ch in enumerate(text):
-        print(f"{ch=} {buffer=} {level=} {in_text=}")
-
         match ch:
             case '"' if text[idx - 1] != "\\":
                 in_text = not in_text
                 buffer += ch
             case "," if not in_text and level == 1:
-                output.append(buffer.strip())
+                if buffer.strip():
+                    output.append(buffer.strip())
                 buffer = ""
             case "{" if not in_text:
                 level += 1
@@ -37,5 +51,59 @@ def parse_option_str(text: str) -> list[Any]:
 
     if buffer.strip():
         output.append(buffer.strip())
+
+    return output
+
+
+def parse_av_option(text: str) -> list[_AVOption]:
+    # the meaning of option_str please see libavutil/opt.h::AVOption
+
+    option_lines = parse_option_str(text)
+
+    output: list[_AVOption] = []
+
+    def _v(s: str) -> float:
+        if "0x" in s:
+            return int(s, 16)
+        return float(s)
+
+    def _d(s: tuple[str]) -> int | float | str:
+        text = s[0]
+        type, value = [k.strip() for k in text.split("=")]
+
+        match type:
+            case ".i64":
+                return int(value)
+            case ".dbl":
+                return float(value)
+            case ".str":
+                return value.strip('"')
+            case _:
+                raise NotImplementedError(type)
+
+    for option_line in option_lines:
+        if isinstance(option_line, str):
+            continue
+
+        if len(option_line) in {8, 9}:
+            name, help, offset, _type, default, _min, _max, flags = option_line[:8]
+            unit = option_line[8].strip('"') if len(option_line) == 9 else None
+
+            output.append(
+                _AVOption(
+                    name=name.strip('"'),
+                    help=help.strip('"'),
+                    #    offset=int(offset),
+                    type=_type,
+                    default=_d(default),
+                    min=_v(_min),
+                    max=_v(_max),
+                    int=flags,
+                    unit=unit,
+                )
+            )
+
+        elif isinstance(option_line, list):
+            output.extend(parse_av_option(option_line[0]))
 
     return output

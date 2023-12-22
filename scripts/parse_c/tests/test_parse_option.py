@@ -2,7 +2,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..parse_option import parse_option_str
+from ..parse_option import parse_av_option, parse_option_str
 
 
 @pytest.mark.parametrize(
@@ -48,5 +48,6 @@ from ..parse_option import parse_option_str
         ),
     ],
 )
-def parse_option_str(snapshot: SnapshotAssertion, text: str) -> None:
+def test_parse_option(snapshot: SnapshotAssertion, text: str) -> None:
     assert snapshot(extension_class=JSONSnapshotExtension) == parse_option_str(text)
+    assert snapshot(extension_class=JSONSnapshotExtension) == parse_av_option(text)
