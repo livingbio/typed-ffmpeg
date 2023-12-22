@@ -7,6 +7,7 @@
 - The docstring format is not consistence each time I used it.
 - most of the filters I never used,
 
+I hate code gen, it is hard to maintain, but I think it is a good way to learn about ffmpeg and GPT.
 - use GPT and parser to generate JSONSchema for each filter
 
 
