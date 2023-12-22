@@ -44,7 +44,7 @@
         "name": "rep_thres"
       },
       {
-        "description": "<dd><p>Number of frames after which a given frame\u2019s contribution to the\nstatistics is halved (i.e., it contributes only 0.5 to its\nclassification). The default of 0 means that all frames seen are given\nfull weight of 1.0 forever.\n</p></dd>",
+        "description": "<dd><p>Number of frames after which a given frame’s contribution to the\nstatistics is halved (i.e., it contributes only 0.5 to its\nclassification). The default of 0 means that all frames seen are given\nfull weight of 1.0 forever.\n</p></dd>",
         "name": "half_life"
       },
       {
