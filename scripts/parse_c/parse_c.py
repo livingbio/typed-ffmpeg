@@ -34,3 +34,9 @@ def parse_c(path: pathlib.Path) -> list[AVFilter]:
     # Replace the macro in the string
     code = re.sub(macro_pattern, replace_macro, code)
     return extract_av_options(code)
+
+
+def parse_all_filter_names(path: pathlib.Path) -> list[str]:
+    with path.open() as f:
+        code = f.read()
+    return re.findall(r"extern const AVFilter ([\w\_]+);", code)

@@ -46,7 +46,6 @@ def parse_option_str(text: str) -> list[Any]:
 def parse_av_option(text: str) -> list[AVOption]:
     # the meaning of option_str please see libavutil/opt.h::AVOption
     option_lines = parse_option_str(text)
-    print(option_lines)
 
     output: list[AVOption] = []
 
@@ -60,7 +59,7 @@ def parse_av_option(text: str) -> list[AVOption]:
 
     def _d(s: tuple[str]) -> int | float | str:
         text = s[0]
-        type, value = [k.strip() for k in text.split("=")]
+        type, value = [k.strip() for k in text.split("=", 1)]
 
         match type:
             case ".i64":
@@ -69,7 +68,10 @@ def parse_av_option(text: str) -> list[AVOption]:
                 except ValueError:
                     return value
             case ".dbl":
-                return float(value)
+                try:
+                    return float(value)
+                except ValueError:
+                    return value
             case ".str":
                 return value.strip('"')
             case _:
@@ -96,18 +98,43 @@ def parse_av_option(text: str) -> list[AVOption]:
                     unit=unit,
                 )
             )
-        else:
-            print(option_line)
 
+    return output
+
+
+def parse_av_filter(text: str) -> list[AVFilter]:
+    output = []
+    for filter, filter_desc in re.findall(r"const AVFilter ([\w\_]+) = ({.*});", text, re.DOTALL | re.MULTILINE):
+        descs: list[str] = parse_option_str(filter_desc)
+        config = {}
+        for desc in descs:
+            if "=" not in desc:
+                continue
+
+            var, value = desc.split("=", 1)
+            config[var.strip()] = value.strip()
+
+        output.append(AVFilter(name=config[".name"], description=config[".description"]))
+    return output
+
+
+def parse_av_options(text: str) -> dict[str, list[AVOption]]:
+    output = {}
+    for filter, option_str in re.findall(
+        r"static const AVOption ([\w\_]+)_options\[\] = ({.*?});", text, re.DOTALL | re.MULTILINE
+    ):
+        output[filter] = parse_av_option(option_str)
     return output
 
 
 def extract_av_options(text: str) -> list[AVFilter]:
     output = []
-    for filter, option_str in re.findall(
-        r"static const AVOption ([\w\_]+)_options\[\] = ({.*?});", text, re.DOTALL | re.MULTILINE
-    ):
-        print(f"{filter} {option_str}")
-        output.append(AVFilter(name=filter, description="", options=parse_av_option(option_str)))
+
+    av_options = parse_av_options(text)
+    av_filters = parse_av_filter(text)
+
+    for av_filter in av_filters:
+        av_filter.options = av_options.get(av_filter.name, [])
+        output.append(av_filter)
 
     return output

@@ -5,6 +5,8 @@ import re
 import urllib.request
 
 import typer
+from devtools import sprint
+from parse_c.parse_c import parse_c
 from utils.code_gen import generate_class
 from utils.parser import FilterDocument, parse_filter_document
 from utils.settings import settings
@@ -90,6 +92,16 @@ def split_documents(should_generate_schema: bool = False) -> None:
                 print(f"WARNING: {info.title} has missing reference: {ref}")
 
     return None
+
+
+@app.command()
+def parse_filters(root: pathlib.Path):
+    for path in root.glob("*.c"):
+        filters = parse_c(path)
+        if len(filters) == 0:
+            sprint(f"Processing {path}... {len(filters)} filters", sprint.red)
+        else:
+            sprint(f"Processing {path}... {len(filters)} filters")
 
 
 if __name__ == "__main__":
