@@ -1,0 +1,46 @@
+[
+  {
+    "description": "<dd><p>set first pixel component expression\n</p></dd>",
+    "name": "c0"
+  },
+  {
+    "description": "<dd><p>set second pixel component expression\n</p></dd>",
+    "name": "c1"
+  },
+  {
+    "description": "<dd><p>set third pixel component expression\n</p></dd>",
+    "name": "c2"
+  },
+  {
+    "description": "<dd><p>set fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>",
+    "name": "c3"
+  },
+  {
+    "description": "<dd><p>set red component expression\n</p></dd>",
+    "name": "r"
+  },
+  {
+    "description": "<dd><p>set green component expression\n</p></dd>",
+    "name": "g"
+  },
+  {
+    "description": "<dd><p>set blue component expression\n</p></dd>",
+    "name": "b"
+  },
+  {
+    "description": "<dd><p>alpha component expression\n</p>\n</dd>",
+    "name": "a"
+  },
+  {
+    "description": "<dd><p>set Y/luma component expression\n</p></dd>",
+    "name": "y"
+  },
+  {
+    "description": "<dd><p>set U/Cb component expression\n</p></dd>",
+    "name": "u"
+  },
+  {
+    "description": "<dd><p>set V/Cr component expression\n</p></dd>",
+    "name": "v"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "acrossfade": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "curve1": {
+        "description": "Set curve for cross fade transition for first stream. See afade filter description for available curve types.",
+        "type": "string"
+      },
+      "curve2": {
+        "description": "Set curve for cross fade transition for second stream. See afade filter description for available curve types.",
+        "type": "string"
+      },
+      "duration": {
+        "description": "Specify the duration of the cross fade effect. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples.",
+        "type": "string"
+      },
+      "nb_samples": {
+        "description": "Specify the number of samples for which the cross fade effect has to last. At the end of the cross fade effect the first input audio will be completely silent. Default is 44100.",
+        "type": "integer"
+      },
+      "overlap": {
+        "description": "Should first stream end overlap with second stream start. Default is enabled.",
+        "type": "boolean"
+      }
+    },
+    "title": "acrossfade options",
+    "type": "object"
+  }
+}

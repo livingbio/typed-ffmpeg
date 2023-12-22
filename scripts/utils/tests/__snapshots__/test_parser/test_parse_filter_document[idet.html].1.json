@@ -1,0 +1,58 @@
+[
+  {
+    "description": "<dd><p>Detected type of current frame using single-frame detection. One of:\n\u201ctff\u201d (top field first), \u201cbff\u201d (bottom field first),\n\u201cprogressive\u201d, or \u201cundetermined\u201d\n</p>\n</dd>",
+    "name": "single.current_frame"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames detected as top field first using single-frame detection.\n</p>\n</dd>",
+    "name": "single.tff"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames detected as top field first using multiple-frame detection.\n</p>\n</dd>",
+    "name": "multiple.tff"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames detected as bottom field first using single-frame detection.\n</p>\n</dd>",
+    "name": "single.bff"
+  },
+  {
+    "description": "<dd><p>Detected type of current frame using multiple-frame detection. One of:\n\u201ctff\u201d (top field first), \u201cbff\u201d (bottom field first),\n\u201cprogressive\u201d, or \u201cundetermined\u201d\n</p>\n</dd>",
+    "name": "multiple.current_frame"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames detected as bottom field first using multiple-frame detection.\n</p>\n</dd>",
+    "name": "multiple.bff"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames detected as progressive using single-frame detection.\n</p>\n</dd>",
+    "name": "single.progressive"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames detected as progressive using multiple-frame detection.\n</p>\n</dd>",
+    "name": "multiple.progressive"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames that could not be classified using single-frame detection.\n</p>\n</dd>",
+    "name": "single.undetermined"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames that could not be classified using multiple-frame detection.\n</p>\n</dd>",
+    "name": "multiple.undetermined"
+  },
+  {
+    "description": "<dd><p>Which field in the current frame is repeated from the last. One of \u201cneither\u201d, \u201ctop\u201d, or \u201cbottom\u201d.\n</p>\n</dd>",
+    "name": "repeated.current_frame"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames with no repeated field.\n</p>\n</dd>",
+    "name": "repeated.neither"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames with the top field repeated from the previous frame\u2019s top field.\n</p>\n</dd>",
+    "name": "repeated.top"
+  },
+  {
+    "description": "<dd><p>Cumulative number of frames with the bottom field repeated from the previous frame\u2019s bottom field.\n</p></dd>",
+    "name": "repeated.bottom"
+  }
+]
