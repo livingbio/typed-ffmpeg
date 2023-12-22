@@ -4,12 +4,21 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "properties": {
+      "gain": {
+        "type": "number"
+      },
+      "in_name": {
+        "type": "string"
+      },
       "l": {
         "description": "Output channel layout or number of channels",
         "type": [
           "string",
           "integer"
         ]
+      },
+      "out_name": {
+        "type": "string"
       },
       "outdef": {
         "items": {

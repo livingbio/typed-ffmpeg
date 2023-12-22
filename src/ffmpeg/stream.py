@@ -11594,6 +11594,39 @@ class Stream:
             }
         ).stream()
 
+    def pan(
+        self, *, l: str, outdef: list[str], out_name: str, gain: float, in_name: str, **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        8.101 pan Mix channels with specific gain levels. The filter accepts the output channel layout followed by a set of channels definitions. This filter is also designed to efficiently remap the channels of an audio stream. The filter accepts parameters of the form: "l|outdef|outdef|..." If the ‘=’ in a channel specification is replaced by ‘<’, then the gains for that specification will be renormalized so that the total is 1, thus avoiding clipping noise.
+
+        Parameters:
+        ----------
+        l:
+            output channel layout or number of channels
+        outdef:
+            output channel specification, of the form: "out_name=[gain*]in_name[(+-)[gain*]in_name...]"
+        out_name:
+            output channel to define, either a channel name (FL, FR, etc.) or a channel number (c0, c1, etc.)
+        gain:
+            multiplicative coefficient for the channel, 1 leaving the volume unchanged
+        in_name:
+            input channel to use, see out_name for details; it is not possible to mix named and numbered input channels
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#pan
+
+        """
+        return FilterNode(
+            *[self],
+            name="pan",
+            kwargs={"l": l, "outdef": outdef, "out_name": out_name, "gain": gain, "in_name": in_name, **kwargs}
+        ).stream()
+
     def perspective(
         self,
         *,
