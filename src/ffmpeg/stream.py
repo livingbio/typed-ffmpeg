@@ -302,14 +302,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="acrossover",
-            kwargs={
-                "split": split,
-                "order": order,
-                "level": level,
-                "gains": gains,
-                "precision": precision,
-                **kwargs,
-            }
+            kwargs={"split": split, "order": order, "level": level, "gains": gains, "precision": precision, **kwargs}
         ).stream()
 
     def acrusher(
@@ -432,15 +425,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="addroi",
-            kwargs={
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "qoffset": qoffset,
-                "clear": clear,
-                **kwargs,
-            }
+            kwargs={"x": x, "y": y, "w": w, "h": h, "qoffset": qoffset, "clear": clear, **kwargs}
         ).stream()
 
     def adeclick(
@@ -659,13 +644,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="adrc",
-            kwargs={
-                "transfer": transfer,
-                "attack": attack,
-                "release": release,
-                "channels": channels,
-                **kwargs,
-            }
+            kwargs={"transfer": transfer, "attack": attack, "release": release, "channels": channels, **kwargs}
         ).stream()
 
     def adynamicequalizer(
@@ -814,13 +793,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="aecho",
-            kwargs={
-                "in_gain": in_gain,
-                "out_gain": out_gain,
-                "delays": delays,
-                "decays": decays,
-                **kwargs,
-            }
+            kwargs={"in_gain": in_gain, "out_gain": out_gain, "delays": delays, "decays": decays, **kwargs}
         ).stream()
 
     def aemphasis(
@@ -851,13 +824,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="aemphasis",
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "mode": mode,
-                "type": type,
-                **kwargs,
-            }
+            kwargs={"level_in": level_in, "level_out": level_out, "mode": mode, "type": type, **kwargs}
         ).stream()
 
     def aeval(self, *, exprs: str, channel_layout: str, **kwargs: dict[str, Any]) -> "Stream":
@@ -1670,15 +1637,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="aloop",
-            kwargs={
-                "loop": loop,
-                "size": size,
-                "start": start,
-                "time": time,
-                **kwargs,
-            }
+            *[self], name="aloop", kwargs={"loop": loop, "size": size, "start": start, "time": time, **kwargs}
         ).stream()
 
     def alphaextract(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -2652,13 +2611,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="aspectralstats",
-            kwargs={
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-                "measure": measure,
-                **kwargs,
-            }
+            kwargs={"win_size": win_size, "win_func": win_func, "overlap": overlap, "measure": measure, **kwargs}
         ).stream()
 
     def asr(
@@ -2954,13 +2907,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="asuperpass",
-            kwargs={
-                "centerf": centerf,
-                "order": order,
-                "qfactor": qfactor,
-                "level": level,
-                **kwargs,
-            }
+            kwargs={"centerf": centerf, "order": order, "qfactor": qfactor, "level": level, **kwargs}
         ).stream()
 
     def asuperstop(
@@ -2997,13 +2944,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="asuperstop",
-            kwargs={
-                "centerf": centerf,
-                "order": order,
-                "qfactor": qfactor,
-                "level": level,
-                **kwargs,
-            }
+            kwargs={"centerf": centerf, "order": order, "qfactor": qfactor, "level": level, **kwargs}
         ).stream()
 
     def atadenoise(
@@ -3135,14 +3076,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="atilt",
-            kwargs={
-                "freq": freq,
-                "slope": slope,
-                "width": width,
-                "order": order,
-                "level": level,
-                **kwargs,
-            }
+            kwargs={"freq": freq, "slope": slope, "width": width, "order": order, "level": level, **kwargs}
         ).stream()
 
     def atrim(
@@ -3270,12 +3204,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="backgroundkey",
-            kwargs={
-                "threshold": threshold,
-                "similarity": similarity,
-                "blend": blend,
-                **kwargs,
-            }
+            kwargs={"threshold": threshold, "similarity": similarity, "blend": blend, **kwargs}
         ).stream()
 
     def bandpass(
@@ -3522,14 +3451,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="bilateral",
-            kwargs={
-                "sigmaS": sigmaS,
-                "sigmaR": sigmaR,
-                "planes": planes,
-                **kwargs,
-            }
+            *[self], name="bilateral", kwargs={"sigmaS": sigmaS, "sigmaR": sigmaR, "planes": planes, **kwargs}
         ).stream()
 
     def bilateral_cuda(
@@ -3558,12 +3480,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="bilateral_cuda",
-            kwargs={
-                "sigmaS": sigmaS,
-                "sigmaR": sigmaR,
-                "window_size": window_size,
-                **kwargs,
-            }
+            kwargs={"sigmaS": sigmaS, "sigmaR": sigmaR, "window_size": window_size, **kwargs}
         ).stream()
 
     def biquad(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -3786,12 +3703,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="blockdetect",
-            kwargs={
-                "period_min": period_min,
-                "period_max": period_max,
-                "planes": planes,
-                **kwargs,
-            }
+            kwargs={"period_min": period_min, "period_max": period_max, "planes": planes, **kwargs}
         ).stream()
 
     def blurdetect(
@@ -4095,13 +4007,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="channelsplit",
-            kwargs={
-                "channel_layout": channel_layout,
-                "channels": channels,
-                **kwargs,
-            }
+            *[self], name="channelsplit", kwargs={"channel_layout": channel_layout, "channels": channels, **kwargs}
         ).stream()
 
     def chorus(
@@ -4183,13 +4089,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="chromahold",
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "yuv": yuv,
-                **kwargs,
-            }
+            kwargs={"color": color, "similarity": similarity, "blend": blend, "yuv": yuv, **kwargs}
         ).stream()
 
     def chromakey(
@@ -4220,13 +4120,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="chromakey",
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "yuv": yuv,
-                **kwargs,
-            }
+            kwargs={"color": color, "similarity": similarity, "blend": blend, "yuv": yuv, **kwargs}
         ).stream()
 
     def chromakey_cuda(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -4337,16 +4231,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="chromashift",
-            kwargs={
-                "cbh": cbh,
-                "cbv": cbv,
-                "crh": crh,
-                "crv": crv,
-                "edge": edge,
-                **kwargs,
-            }
+            *[self], name="chromashift", kwargs={"cbh": cbh, "cbv": cbv, "crh": crh, "crv": crv, "edge": edge, **kwargs}
         ).stream()
 
     def ciescope(
@@ -4446,14 +4331,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="codecview",
-            kwargs={
-                "block": block,
-                "mv": mv,
-                "qp": qp,
-                "mv_type": mv_type,
-                "frame_type": frame_type,
-                **kwargs,
-            }
+            kwargs={"block": block, "mv": mv, "qp": qp, "mv_type": mv_type, "frame_type": frame_type, **kwargs}
         ).stream()
 
     def colorbalance(
@@ -4665,16 +4543,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="colorcontrast",
-            kwargs={
-                "rc": rc,
-                "gm": gm,
-                "by": by,
-                "rcw": rcw,
-                "gmw": gmw,
-                "byw": byw,
-                "pl": pl,
-                **kwargs,
-            }
+            kwargs={"rc": rc, "gm": gm, "by": by, "rcw": rcw, "gmw": gmw, "byw": byw, "pl": pl, **kwargs}
         ).stream()
 
     def colorcorrect(
@@ -4717,15 +4586,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="colorcorrect",
-            kwargs={
-                "rl": rl,
-                "bl": bl,
-                "rh": rh,
-                "bh": bh,
-                "saturation": saturation,
-                "analyze": analyze,
-                **kwargs,
-            }
+            kwargs={"rl": rl, "bl": bl, "rh": rh, "bh": bh, "saturation": saturation, "analyze": analyze, **kwargs}
         ).stream()
 
     def colorhold(self, *, color: str, similarity: float, blend: float, **kwargs: dict[str, Any]) -> "Stream":
@@ -4750,14 +4611,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="colorhold",
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                **kwargs,
-            }
+            *[self], name="colorhold", kwargs={"color": color, "similarity": similarity, "blend": blend, **kwargs}
         ).stream()
 
     def colorize(
@@ -4794,13 +4648,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="colorize",
-            kwargs={
-                "hue": hue,
-                "saturation": saturation,
-                "lightness": lightness,
-                "mix": mix,
-                **kwargs,
-            }
+            kwargs={"hue": hue, "saturation": saturation, "lightness": lightness, "mix": mix, **kwargs}
         ).stream()
 
     def colorkey(
@@ -4827,14 +4675,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="colorkey",
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                **kwargs,
-            }
+            *[self], name="colorkey", kwargs={"color": color, "similarity": similarity, "blend": blend, **kwargs}
         ).stream()
 
     def colorlevels(
@@ -4960,13 +4801,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="colormap",
-            kwargs={
-                "patch_size": patch_size,
-                "nb_patches": nb_patches,
-                "type": type,
-                "kernel": kernel,
-                **kwargs,
-            }
+            kwargs={"patch_size": patch_size, "nb_patches": nb_patches, "type": type, "kernel": kernel, **kwargs}
         ).stream()
 
     def colormatrix(self, *, src: str, dst: str, **kwargs: dict[str, Any]) -> "Stream":
@@ -5148,15 +4983,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="compensationdelay",
-            kwargs={
-                "mm": mm,
-                "cm": cm,
-                "m": m,
-                "dry": dry,
-                "wet": wet,
-                "temp": temp,
-                **kwargs,
-            }
+            kwargs={"mm": mm, "cm": cm, "m": m, "dry": dry, "wet": wet, "temp": temp, **kwargs}
         ).stream()
 
     def convolution(
@@ -5312,12 +5139,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="coreimage",
-            kwargs={
-                "list_filters": list_filters,
-                "filter": filter,
-                "output_rect": output_rect,
-                **kwargs,
-            }
+            kwargs={"list_filters": list_filters, "filter": filter, "output_rect": output_rect, **kwargs}
         ).stream()
 
     def corr(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -5390,15 +5212,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="crop",
-            kwargs={
-                "w": w,
-                "h": h,
-                "x": x,
-                "y": y,
-                "keep_aspect": keep_aspect,
-                "exact": exact,
-                **kwargs,
-            }
+            kwargs={"w": w, "h": h, "x": x, "y": y, "keep_aspect": keep_aspect, "exact": exact, **kwargs}
         ).stream()
 
     def cropdetect(
@@ -5410,31 +5224,31 @@ class Stream:
         skip: int,
         reset_count: int = None,
         mv_threshold: int = None,
-        low: str,
-        high: str,
+        low: float = None,
+        high: float = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
-        11.51 cropdetect Auto-detect the crop size. It calculates the necessary cropping parameters and prints the recommended parameters via the logging system. The detected dimensions correspond to the non-black or video area of the input video according to mode. It accepts the following parameters:
+        11.51 cropdetectAuto-detect the crop size.It calculates the necessary cropping parameters and prints therecommended parameters via the logging system. The detected dimensionscorrespond to the non-black or video area of the input video according to mode.It accepts the following parameters:
 
         Parameters:
         ----------
         mode:
-            Depending on mode crop detection is based on either the mere black value of surrounding pixels or a combination of motion vectors and edge pixels. ‘black’ Detect black pixels surrounding the playing video. For fine control use option limit. ‘mvedges’ Detect the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.
+            Depending on mode crop detection is based on either the mere black value of surrounding pixels or a combination of motion vectors and edge pixels.‘black’Detect black pixels surrounding the playing video. For fine control use option limit.‘mvedges’Detect the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.
         limit:
-            Set higher black value threshold, which can be optionally specified from nothing (0) to everything (255 for 8-bit based formats). An intensity value greater to the set value is considered non-black. It defaults to 24. You can also specify a value between 0.0 and 1.0 which will be scaled depending on the bitdepth of the pixel format.
+            Set higher black value threshold, which can be optionally specifiedfrom nothing (0) to everything (255 for 8-bit based formats). An intensityvalue greater to the set value is considered non-black. It defaults to 24.You can also specify a value between 0.0 and 1.0 which will be scaled dependingon the bitdepth of the pixel format.
         round:
-            The value which the width/height should be divisible by. It defaults to 16. The offset is automatically adjusted to center the video. Use 2 to get only even dimensions (needed for 4:2:2 video). 16 is best when encoding to most video codecs.
+            The value which the width/height should be divisible by. It defaults to16. The offset is automatically adjusted to center the video. Use 2 toget only even dimensions (needed for 4:2:2 video). 16 is best whenencoding to most video codecs.
         skip:
-            Set the number of initial frames for which evaluation is skipped. Default is 2. Range is 0 to INT_MAX.
+            Set the number of initial frames for which evaluation is skipped.Default is 2. Range is 0 to INT_MAX.
         reset_count:
-            Set the counter that determines after how many frames cropdetect will reset the previously detected largest video area and start over to detect the current optimal crop area. Default value is 0. This can be useful when channel logos distort the video area. 0 indicates ’never reset’, and returns the largest area encountered during playback.
+            Set the counter that determines after how many frames cropdetect willreset the previously detected largest video area and start over todetect the current optimal crop area. Default value is 0.This can be useful when channel logos distort the video area. 0indicates ’never reset’, and returns the largest area encountered duringplayback.
         mv_threshold:
             Set motion in pixel units as threshold for motion detection. It defaults to 8.
         low:
-            Set low and high threshold values used by the Canny thresholding algorithm. The high threshold selects the "strong" edge pixels, which are then connected through 8-connectivity with the "weak" edge pixels selected by the low threshold. low and high threshold values must be chosen in the range [0,1], and low should be lesser or equal to high. Default value for low is 5/255, and default value for high is 15/255.
+            Set low and high threshold values used by the Canny thresholdingalgorithm.The high threshold selects the "strong" edge pixels, which are thenconnected through 8-connectivity with the "weak" edge pixels selectedby the low threshold.low and high threshold values must be chosen in the range[0,1], and low should be lesser or equal to high.Default value for low is 5/255, and default value for highis 15/255.
         high:
-            Set low and high threshold values used by the Canny thresholding algorithm. The high threshold selects the "strong" edge pixels, which are then connected through 8-connectivity with the "weak" edge pixels selected by the low threshold. low and high threshold values must be chosen in the range [0,1], and low should be lesser or equal to high. Default value for low is 5/255, and default value for high is 15/255.
+            Set low and high threshold values used by the Canny thresholdingalgorithm.The high threshold selects the "strong" edge pixels, which are thenconnected through 8-connectivity with the "weak" edge pixels selectedby the low threshold.low and high threshold values must be chosen in the range[0,1], and low should be lesser or equal to high.Default value for low is 5/255, and default value for highis 15/255.
 
 
 
@@ -5703,14 +5517,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="dblur",
-            kwargs={
-                "angle": angle,
-                "radius": radius,
-                "planes": planes,
-                **kwargs,
-            }
+            *[self], name="dblur", kwargs={"angle": angle, "radius": radius, "planes": planes, **kwargs}
         ).stream()
 
     def dcshift(self, *, shift: float, limitergain: float, **kwargs: dict[str, Any]) -> "Stream":
@@ -5760,15 +5567,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="dctdnoiz",
-            kwargs={
-                "sigma": sigma,
-                "overlap": overlap,
-                "expr": expr,
-                "n": n,
-                **kwargs,
-            }
+            *[self], name="dctdnoiz", kwargs={"sigma": sigma, "overlap": overlap, "expr": expr, "n": n, **kwargs}
         ).stream()
 
     def deband(
@@ -5968,14 +5767,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="deconvolve",
-            kwargs={
-                "planes": planes,
-                "impulse": impulse,
-                "noise": noise,
-                **kwargs,
-            }
+            *[self], name="deconvolve", kwargs={"planes": planes, "impulse": impulse, "noise": noise, **kwargs}
         ).stream()
 
     def dedot(self, *, m: str, lt: float, tl: float, tc: float, ct: float, **kwargs: dict[str, Any]) -> "Stream":
@@ -6176,12 +5968,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="derain",
-            kwargs={
-                "filter_type": filter_type,
-                "dnn_backend": dnn_backend,
-                "model": model,
-                **kwargs,
-            }
+            kwargs={"filter_type": filter_type, "dnn_backend": dnn_backend, "model": model, **kwargs}
         ).stream()
 
     def deshake(
@@ -6340,12 +6127,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="detelecine",
-            kwargs={
-                "first_field": first_field,
-                "pattern": pattern,
-                "start_frame": start_frame,
-                **kwargs,
-            }
+            kwargs={"first_field": first_field, "pattern": pattern, "start_frame": start_frame, **kwargs}
         ).stream()
 
     def dialoguenhance(
@@ -6372,14 +6154,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="dialoguenhance",
-            kwargs={
-                "original": original,
-                "enhance": enhance,
-                "voice": voice,
-                **kwargs,
-            }
+            *[self], name="dialoguenhance", kwargs={"original": original, "enhance": enhance, "voice": voice, **kwargs}
         ).stream()
 
     def dilation(
@@ -6978,15 +6753,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="edgedetect",
-            kwargs={
-                "low": low,
-                "high": high,
-                "mode": mode,
-                "planes": planes,
-                **kwargs,
-            }
+            *[self], name="edgedetect", kwargs={"low": low, "high": high, "mode": mode, "planes": planes, **kwargs}
         ).stream()
 
     def elbg(
@@ -7717,15 +7484,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="fillborders",
-            kwargs={
-                "left": left,
-                "right": right,
-                "top": top,
-                "bottom": bottom,
-                "mode": mode,
-                "color": color,
-                **kwargs,
-            }
+            kwargs={"left": left, "right": right, "top": top, "bottom": bottom, "mode": mode, "color": color, **kwargs}
         ).stream()
 
     def firequalizer(
@@ -7986,13 +7745,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="fps",
-            kwargs={
-                "fps": fps,
-                "start_time": start_time,
-                "round": round,
-                "eof_action": eof_action,
-                **kwargs,
-            }
+            kwargs={"fps": fps, "start_time": start_time, "round": round, "eof_action": eof_action, **kwargs}
         ).stream()
 
     def framepack(self, *, format: str = None, **kwargs: dict[str, Any]) -> "Stream":
@@ -8148,13 +7901,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="frei0r",
-            kwargs={
-                "filter_name": filter_name,
-                "filter_params": filter_params,
-                **kwargs,
-            }
+            *[self], name="frei0r", kwargs={"filter_name": filter_name, "filter_params": filter_params, **kwargs}
         ).stream()
 
     def fspp(
@@ -8185,13 +7932,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="fspp",
-            kwargs={
-                "quality": quality,
-                "qp": qp,
-                "strength": strength,
-                "use_bframe_qp": use_bframe_qp,
-                **kwargs,
-            }
+            kwargs={"quality": quality, "qp": qp, "strength": strength, "use_bframe_qp": use_bframe_qp, **kwargs}
         ).stream()
 
     def gblur(
@@ -8220,15 +7961,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="gblur",
-            kwargs={
-                "sigma": sigma,
-                "steps": steps,
-                "planes": planes,
-                "sigmaV": sigmaV,
-                **kwargs,
-            }
+            *[self], name="gblur", kwargs={"sigma": sigma, "steps": steps, "planes": planes, "sigmaV": sigmaV, **kwargs}
         ).stream()
 
     def geq(
@@ -8344,14 +8077,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="graphmonitor",
-            kwargs={
-                "size": size,
-                "opacity": opacity,
-                "mode": mode,
-                "flags": flags,
-                "rate": rate,
-                **kwargs,
-            }
+            kwargs={"size": size, "opacity": opacity, "mode": mode, "flags": flags, "rate": rate, **kwargs}
         ).stream()
 
     def grayworld(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -8395,14 +8121,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="greyedge",
-            kwargs={
-                "difford": difford,
-                "minknorm": minknorm,
-                "sigma": sigma,
-                **kwargs,
-            }
+            *[self], name="greyedge", kwargs={"difford": difford, "minknorm": minknorm, "sigma": sigma, **kwargs}
         ).stream()
 
     def guided(
@@ -8559,14 +8278,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="haldclut",
-            kwargs={
-                "clut": clut,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                **kwargs,
-            }
+            *[self], name="haldclut", kwargs={"clut": clut, "shortest": shortest, "repeatlast": repeatlast, **kwargs}
         ).stream()
 
     def hdcd(
@@ -8656,15 +8368,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="headphone",
-            kwargs={
-                "map": map,
-                "gain": gain,
-                "type": type,
-                "lfe": lfe,
-                "size": size,
-                "hrir": hrir,
-                **kwargs,
-            }
+            kwargs={"map": map, "gain": gain, "type": type, "lfe": lfe, "size": size, "hrir": hrir, **kwargs}
         ).stream()
 
     def hflip(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -8848,12 +8552,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="histeq",
-            kwargs={
-                "strength": strength,
-                "intensity": intensity,
-                "antibanding": antibanding,
-                **kwargs,
-            }
+            kwargs={"strength": strength, "intensity": intensity, "antibanding": antibanding, **kwargs}
         ).stream()
 
     def histogram(
@@ -9035,14 +8734,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="hsvhold",
-            kwargs={
-                "hue": hue,
-                "sat": sat,
-                "val": val,
-                "similarity": similarity,
-                "blend": blend,
-                **kwargs,
-            }
+            kwargs={"hue": hue, "sat": sat, "val": val, "similarity": similarity, "blend": blend, **kwargs}
         ).stream()
 
     def hsvkey(
@@ -9082,14 +8774,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="hsvkey",
-            kwargs={
-                "hue": hue,
-                "sat": sat,
-                "val": val,
-                "similarity": similarity,
-                "blend": blend,
-                **kwargs,
-            }
+            kwargs={"hue": hue, "sat": sat, "val": val, "similarity": similarity, "blend": blend, **kwargs}
         ).stream()
 
     def hue(self, *, h: str, s: str, H: str, b: str, **kwargs: dict[str, Any]) -> "Stream":
@@ -9211,14 +8896,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="hwmap",
-            kwargs={
-                "mode": mode,
-                "derive_device": derive_device,
-                "reverse": reverse,
-                **kwargs,
-            }
+            *[self], name="hwmap", kwargs={"mode": mode, "derive_device": derive_device, "reverse": reverse, **kwargs}
         ).stream()
 
     def hwupload(self, *, derive_device: str, **kwargs: dict[str, Any]) -> "Stream":
@@ -9327,12 +9005,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="iccgen",
-            kwargs={
-                "color_primaries": color_primaries,
-                "color_trc": color_trc,
-                "force": force,
-                **kwargs,
-            }
+            kwargs={"color_primaries": color_primaries, "color_trc": color_trc, "force": force, **kwargs}
         ).stream()
 
     def identity(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -9489,14 +9162,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="join",
-            kwargs={
-                "inputs": inputs,
-                "channel_layout": channel_layout,
-                "map": map,
-                **kwargs,
-            }
+            *[self], name="join", kwargs={"inputs": inputs, "channel_layout": channel_layout, "map": map, **kwargs}
         ).stream()
 
     def kerndeint(
@@ -9536,14 +9202,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="kerndeint",
-            kwargs={
-                "thresh": thresh,
-                "map": map,
-                "order": order,
-                "sharp": sharp,
-                "twoway": twoway,
-                **kwargs,
-            }
+            kwargs={"thresh": thresh, "map": map, "order": order, "sharp": sharp, "twoway": twoway, **kwargs}
         ).stream()
 
     def kirsch(self, *, planes: int, scale: float, delta: float, **kwargs: dict[str, Any]) -> "Stream":
@@ -9912,15 +9571,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="loop",
-            kwargs={
-                "loop": loop,
-                "size": size,
-                "start": start,
-                "time": time,
-                **kwargs,
-            }
+            *[self], name="loop", kwargs={"loop": loop, "size": size, "start": start, "time": time, **kwargs}
         ).stream()
 
     def loudnorm(
@@ -10158,12 +9809,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="lumakey",
-            kwargs={
-                "threshold": threshold,
-                "tolerance": tolerance,
-                "softness": softness,
-                **kwargs,
-            }
+            kwargs={"threshold": threshold, "tolerance": tolerance, "softness": softness, **kwargs}
         ).stream()
 
     def lut(
@@ -10523,12 +10169,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="maskedclamp",
-            kwargs={
-                "undershoot": undershoot,
-                "overshoot": overshoot,
-                "planes": planes,
-                **kwargs,
-            }
+            kwargs={"undershoot": undershoot, "overshoot": overshoot, "planes": planes, **kwargs}
         ).stream()
 
     def maskedmax(self, *, planes: int, **kwargs: dict[str, Any]) -> "Stream":
@@ -10610,14 +10251,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="maskedthreshold",
-            kwargs={
-                "threshold": threshold,
-                "planes": planes,
-                "mode": mode,
-                **kwargs,
-            }
+            *[self], name="maskedthreshold", kwargs={"threshold": threshold, "planes": planes, "mode": mode, **kwargs}
         ).stream()
 
     def maskfun(
@@ -10650,14 +10284,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="maskfun",
-            kwargs={
-                "low": low,
-                "high": high,
-                "planes": planes,
-                "fill": fill,
-                "sum": sum,
-                **kwargs,
-            }
+            kwargs={"low": low, "high": high, "planes": planes, "fill": fill, "sum": sum, **kwargs}
         ).stream()
 
     def mcdeint(self, *, mode: str = None, parity: str = None, qp: int = None, **kwargs: dict[str, Any]) -> "Stream":
@@ -10736,13 +10363,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="median",
-            kwargs={
-                "radius": radius,
-                "planes": planes,
-                "radiusV": radiusV,
-                "percentile": percentile,
-                **kwargs,
-            }
+            kwargs={"radius": radius, "planes": planes, "radiusV": radiusV, "percentile": percentile, **kwargs}
         ).stream()
 
     def mergeplanes(
@@ -10838,12 +10459,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="mestimate",
-            kwargs={
-                "method": method,
-                "mb_size": mb_size,
-                "search_param": search_param,
-                **kwargs,
-            }
+            kwargs={"method": method, "mb_size": mb_size, "search_param": search_param, **kwargs}
         ).stream()
 
     def midequalizer(self, *, planes: int = None, **kwargs: dict[str, Any]) -> "Stream":
@@ -10893,13 +10509,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="minterpolate",
-            kwargs={
-                "fps": fps,
-                "mi_mode": mi_mode,
-                "scd": scd,
-                "scd_threshold": scd_threshold,
-                **kwargs,
-            }
+            kwargs={"fps": fps, "mi_mode": mi_mode, "scd": scd, "scd_threshold": scd_threshold, **kwargs}
         ).stream()
 
     def mix(
@@ -11000,14 +10610,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="morpho",
-            kwargs={
-                "mode": mode,
-                "planes": planes,
-                "structure": structure,
-                **kwargs,
-            }
+            *[self], name="morpho", kwargs={"mode": mode, "planes": planes, "structure": structure, **kwargs}
         ).stream()
 
     def mpdecimate(
@@ -11045,16 +10648,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="mpdecimate",
-            kwargs={
-                "max": max,
-                "keep": keep,
-                "hi": hi,
-                "lo": lo,
-                "frac": frac,
-                **kwargs,
-            }
+            *[self], name="mpdecimate", kwargs={"max": max, "keep": keep, "hi": hi, "lo": lo, "frac": frac, **kwargs}
         ).stream()
 
     def msad(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -11098,14 +10692,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="multiply",
-            kwargs={
-                "scale": scale,
-                "offset": offset,
-                "planes": planes,
-                **kwargs,
-            }
+            *[self], name="multiply", kwargs={"scale": scale, "offset": offset, "planes": planes, **kwargs}
         ).stream()
 
     def negate(self, *, components: str, negate_alpha: int = None, **kwargs: dict[str, Any]) -> "Stream":
@@ -11128,13 +10715,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="negate",
-            kwargs={
-                "components": components,
-                "negate_alpha": negate_alpha,
-                **kwargs,
-            }
+            *[self], name="negate", kwargs={"components": components, "negate_alpha": negate_alpha, **kwargs}
         ).stream()
 
     def nlmeans(
@@ -11458,13 +11039,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="ocv",
-            kwargs={
-                "filter_name": filter_name,
-                "filter_params": filter_params,
-                **kwargs,
-            }
+            *[self], name="ocv", kwargs={"filter_name": filter_name, "filter_params": filter_params, **kwargs}
         ).stream()
 
     def oscilloscope(
@@ -11682,12 +11257,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="owdenoise",
-            kwargs={
-                "depth": depth,
-                "luma_strength": luma_strength,
-                "chroma_strength": chroma_strength,
-                **kwargs,
-            }
+            kwargs={"depth": depth, "luma_strength": luma_strength, "chroma_strength": chroma_strength, **kwargs}
         ).stream()
 
     def pad(
@@ -11959,13 +11529,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="photosensitivity",
-            kwargs={
-                "frames": frames,
-                "threshold": threshold,
-                "skip": skip,
-                "bypass": bypass,
-                **kwargs,
-            }
+            kwargs={"frames": frames, "threshold": threshold, "skip": skip, "bypass": bypass, **kwargs}
         ).stream()
 
     def pixdesctest(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -12013,13 +11577,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="pixelize",
-            kwargs={
-                "width": width,
-                "height": height,
-                "mode": mode,
-                "planes": planes,
-                **kwargs,
-            }
+            kwargs={"width": width, "height": height, "mode": mode, "planes": planes, **kwargs}
         ).stream()
 
     def pixscope(
@@ -12054,18 +11612,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="pixscope",
-            kwargs={
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "o": o,
-                "wx": wx,
-                "wy": wy,
-                **kwargs,
-            }
+            *[self], name="pixscope", kwargs={"x": x, "y": y, "w": w, "h": h, "o": o, "wx": wx, "wy": wy, **kwargs}
         ).stream()
 
     def pp(self, *, subfilters: str, **kwargs: dict[str, Any]) -> "Stream":
@@ -12224,12 +11771,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="psnr",
-            kwargs={
-                "stats_file": stats_file,
-                "stats_version": stats_version,
-                "stats_add_max": stats_add_max,
-                **kwargs,
-            }
+            kwargs={"stats_file": stats_file, "stats_version": stats_version, "stats_add_max": stats_add_max, **kwargs}
         ).stream()
 
     def pullup(
@@ -12270,17 +11812,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="pullup",
-            kwargs={
-                "jl": jl,
-                "jr": jr,
-                "jt": jt,
-                "jb": jb,
-                "sb": sb,
-                "mp": mp,
-                **kwargs,
-            }
+            *[self], name="pullup", kwargs={"jl": jl, "jr": jr, "jt": jt, "jb": jb, "sb": sb, "mp": mp, **kwargs}
         ).stream()
 
     def qp(self, *, qp: str, **kwargs: dict[str, Any]) -> "Stream":
@@ -12347,14 +11879,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="readvitc",
-            kwargs={
-                "scan_max": scan_max,
-                "thr_b": thr_b,
-                "thr_w": thr_w,
-                **kwargs,
-            }
+            *[self], name="readvitc", kwargs={"scan_max": scan_max, "thr_b": thr_b, "thr_w": thr_w, **kwargs}
         ).stream()
 
     def remap(self, *, format: str = None, fill: str = None, **kwargs: dict[str, Any]) -> "Stream":
@@ -12463,13 +11988,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="replaygain",
-            kwargs={
-                "track_gain": track_gain,
-                "track_peak": track_peak,
-                **kwargs,
-            }
+            *[self], name="replaygain", kwargs={"track_gain": track_gain, "track_peak": track_peak, **kwargs}
         ).stream()
 
     def resample(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -13029,13 +12548,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="scroll",
-            kwargs={
-                "horizontal": horizontal,
-                "vertical": vertical,
-                "hpos": hpos,
-                "vpos": vpos,
-                **kwargs,
-            }
+            kwargs={"horizontal": horizontal, "vertical": vertical, "hpos": hpos, "vpos": vpos, **kwargs}
         ).stream()
 
     def selectivecolor(
@@ -13285,15 +12798,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="shear",
-            kwargs={
-                "shx": shx,
-                "shy": shy,
-                "fillcolor": fillcolor,
-                "interp": interp,
-                **kwargs,
-            }
+            *[self], name="shear", kwargs={"shx": shx, "shy": shy, "fillcolor": fillcolor, "interp": interp, **kwargs}
         ).stream()
 
     def showinfo(self, *, checksum: bool = None, **kwargs: dict[str, Any]) -> "Stream":
@@ -13383,14 +12888,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="shufflepixels",
-            kwargs={
-                "direction": direction,
-                "mode": mode,
-                "width": width,
-                "height": height,
-                "seed": seed,
-                **kwargs,
-            }
+            kwargs={"direction": direction, "mode": mode, "width": width, "height": height, "seed": seed, **kwargs}
         ).stream()
 
     def shuffleplanes(self, *, map0: int, map1: int, map2: int, map3: int, **kwargs: dict[str, Any]) -> "Stream":
@@ -13417,15 +12915,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="shuffleplanes",
-            kwargs={
-                "map0": map0,
-                "map1": map1,
-                "map2": map2,
-                "map3": map3,
-                **kwargs,
-            }
+            *[self], name="shuffleplanes", kwargs={"map0": map0, "map1": map1, "map2": map2, "map3": map3, **kwargs}
         ).stream()
 
     def sidechaincompress(
@@ -13663,14 +13153,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="silencedetect",
-            kwargs={
-                "noise": noise,
-                "duration": duration,
-                "mono": mono,
-                **kwargs,
-            }
+            *[self], name="silencedetect", kwargs={"noise": noise, "duration": duration, "mono": mono, **kwargs}
         ).stream()
 
     def silenceremove(
@@ -13974,13 +13457,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="spp",
-            kwargs={
-                "quality": quality,
-                "qp": qp,
-                "mode": mode,
-                "use_bframe_qp": use_bframe_qp,
-                **kwargs,
-            }
+            kwargs={"quality": quality, "qp": qp, "mode": mode, "use_bframe_qp": use_bframe_qp, **kwargs}
         ).stream()
 
     def sr(self, *, dnn_backend: str, model: str, scale_factor: int = None, **kwargs: dict[str, Any]) -> "Stream":
@@ -14007,12 +13484,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="sr",
-            kwargs={
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "scale_factor": scale_factor,
-                **kwargs,
-            }
+            kwargs={"dnn_backend": dnn_backend, "model": model, "scale_factor": scale_factor, **kwargs}
         ).stream()
 
     def ssim(self, *, stats_file: str, **kwargs: dict[str, Any]) -> "Stream":
@@ -14192,13 +13664,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="stereowiden",
-            kwargs={
-                "delay": delay,
-                "feedback": feedback,
-                "crossfeed": crossfeed,
-                "drymix": drymix,
-                **kwargs,
-            }
+            kwargs={"delay": delay, "feedback": feedback, "crossfeed": crossfeed, "drymix": drymix, **kwargs}
         ).stream()
 
     def streamselect(self, *, inputs: int = None, map: list[str], **kwargs: dict[str, Any]) -> "Stream":
@@ -14596,17 +14062,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="swaprect",
-            kwargs={
-                "w": w,
-                "h": h,
-                "x1": x1,
-                "y1": y1,
-                "x2": x2,
-                "y2": y2,
-                **kwargs,
-            }
+            *[self], name="swaprect", kwargs={"w": w, "h": h, "x1": x1, "y1": y1, "x2": x2, "y2": y2, **kwargs}
         ).stream()
 
     def swapuv(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -14963,14 +14419,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="tmedian",
-            kwargs={
-                "radius": radius,
-                "planes": planes,
-                "percentile": percentile,
-                **kwargs,
-            }
+            *[self], name="tmedian", kwargs={"radius": radius, "planes": planes, "percentile": percentile, **kwargs}
         ).stream()
 
     def tmidequalizer(
@@ -14997,14 +14446,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="tmidequalizer",
-            kwargs={
-                "radius": radius,
-                "sigma": sigma,
-                "planes": planes,
-                **kwargs,
-            }
+            *[self], name="tmidequalizer", kwargs={"radius": radius, "sigma": sigma, "planes": planes, **kwargs}
         ).stream()
 
     def tmix(
@@ -15035,13 +14477,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="tmix",
-            kwargs={
-                "frames": frames,
-                "weights": weights,
-                "scale": scale,
-                "planes": planes,
-                **kwargs,
-            }
+            kwargs={"frames": frames, "weights": weights, "scale": scale, "planes": planes, **kwargs}
         ).stream()
 
     def tonemap(self, **kwargs: dict[str, Any]) -> "Stream":
@@ -16126,15 +15562,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="w3fdif",
-            kwargs={
-                "filter": filter,
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-                **kwargs,
-            }
+            *[self], name="w3fdif", kwargs={"filter": filter, "mode": mode, "parity": parity, "deint": deint, **kwargs}
         ).stream()
 
     def waveform(
@@ -16323,13 +15751,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="xfade",
-            kwargs={
-                "transition": transition,
-                "duration": duration,
-                "offset": offset,
-                "expr": expr,
-                **kwargs,
-            }
+            kwargs={"transition": transition, "duration": duration, "offset": offset, "expr": expr, **kwargs}
         ).stream()
 
     def xmedian(
@@ -16356,14 +15778,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="xmedian",
-            kwargs={
-                "inputs": inputs,
-                "planes": planes,
-                "percentile": percentile,
-                **kwargs,
-            }
+            *[self], name="xmedian", kwargs={"inputs": inputs, "planes": planes, "percentile": percentile, **kwargs}
         ).stream()
 
     def xstack(
@@ -16396,14 +15811,7 @@ class Stream:
         return FilterNode(
             *[self],
             name="xstack",
-            kwargs={
-                "inputs": inputs,
-                "layout": layout,
-                "grid": grid,
-                "shortest": shortest,
-                "fill": fill,
-                **kwargs,
-            }
+            kwargs={"inputs": inputs, "layout": layout, "grid": grid, "shortest": shortest, "fill": fill, **kwargs}
         ).stream()
 
     def yadif(self, *, mode: str = None, parity: str = None, deint: str = None, **kwargs: dict[str, Any]) -> "Stream":
@@ -16482,14 +15890,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="yaepblur",
-            kwargs={
-                "radius": radius,
-                "planes": planes,
-                "sigma": sigma,
-                **kwargs,
-            }
+            *[self], name="yaepblur", kwargs={"radius": radius, "planes": planes, "sigma": sigma, **kwargs}
         ).stream()
 
     def zoompan(
@@ -16530,17 +15931,7 @@ class Stream:
 
         """
         return FilterNode(
-            *[self],
-            name="zoompan",
-            kwargs={
-                "zoom": zoom,
-                "x": x,
-                "y": y,
-                "d": d,
-                "s": s,
-                "fps": fps,
-                **kwargs,
-            }
+            *[self], name="zoompan", kwargs={"zoom": zoom, "x": x, "y": y, "d": d, "s": s, "fps": fps, **kwargs}
         ).stream()
 
     def zscale(self, **kwargs: dict[str, Any]) -> "Stream":

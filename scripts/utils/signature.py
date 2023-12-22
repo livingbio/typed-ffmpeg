@@ -92,7 +92,7 @@ class Filter(pydantic.BaseModel):
                     else:
                         type = "str"
                 case _:
-                    print(f"unknown type: {schema}")
+                    print(f"\tunknown type: {schema}")
                     type = "str"
 
             default = schema.get("default")
