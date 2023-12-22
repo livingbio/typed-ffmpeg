@@ -12077,6 +12077,46 @@ class Stream:
         """
         return FilterNode(*[self], name="random", kwargs={"frames": frames, "seed": seed, **kwargs}).stream()
 
+    def readeia608(
+        self,
+        *,
+        scan_min: int = None,
+        scan_max: int = None,
+        spw: float = None,
+        chp: bool = None,
+        lp: bool = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.204 readeia608 Read closed captioning (EIA-608) information from the top lines of a video frame. This filter adds frame metadata for lavfi.readeia608.X.cc and lavfi.readeia608.X.line, where X is the number of the identified line with EIA-608 data (starting from 0). A description of each metadata value follows: This filter accepts the following options:
+
+        Parameters:
+        ----------
+        scan_min:
+            Set the line to start scanning for EIA-608 data. Default is 0.
+        scan_max:
+            Set the line to end scanning for EIA-608 data. Default is 29.
+        spw:
+            Set the ratio of width reserved for sync code detection. Default is 0.27. Allowed range is [0.1 - 0.7].
+        chp:
+            Enable checking the parity bit. In the event of a parity error, the filter will output 0x00 for that character. Default is false.
+        lp:
+            Lowpass lines prior to further processing. Default is enabled.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#readeia608
+
+        """
+        return FilterNode(
+            *[self],
+            name="readeia608",
+            kwargs={"scan_min": scan_min, "scan_max": scan_max, "spw": spw, "chp": chp, "lp": lp, **kwargs}
+        ).stream()
+
     def readvitc(
         self, *, scan_max: int = None, thr_b: float = None, thr_w: float = None, **kwargs: dict[str, Any]
     ) -> "Stream":
