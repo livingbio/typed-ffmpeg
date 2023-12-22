@@ -13,4 +13,4 @@ def precompile(folder: pathlib.Path):
 
     for file in folder.glob("libavfilter/*.c"):
         print(f"precompile {file}")
-        os.system(f"gcc -E -I. {file} -o {(source_folder / file.name).resolve()}")
+        os.system(f"gcc -E -I. {file} > {(source_folder / file.name).resolve()}")

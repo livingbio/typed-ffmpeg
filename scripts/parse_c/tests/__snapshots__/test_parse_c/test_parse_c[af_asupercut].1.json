@@ -1,0 +1,14 @@
+[
+  [
+    "Option(name='cutoff', help='set cutoff frequency', type='AV_OPT_TYPE_DOUBLE', default=20000.0, choices=[])",
+    "Option(name='order', help='set filter order', type='AV_OPT_TYPE_INT', default=10, choices=[])",
+    "Option(name='level', help='set input level', type='AV_OPT_TYPE_DOUBLE', default=1.0, choices=[])"
+  ],
+  [
+    "Option(name='cutoff', help='set cutoff frequency', type='AV_OPT_TYPE_DOUBLE', default=20.0, choices=[])",
+    "Option(name='order', help='set filter order', type='AV_OPT_TYPE_INT', default=10, choices=[])",
+    "Option(name='level', help='set input level', type='AV_OPT_TYPE_DOUBLE', default=1.0, choices=[])"
+  ],
+  [],
+  []
+]

@@ -111,7 +111,7 @@ def parse_av_option(text: str) -> list[AVOption]:
 
 def parse_av_filter(text: str) -> list[AVFilter]:
     output = []
-    for filter, filter_desc in re.findall(r"const AVFilter ([\w\_]+) = ({.*});", text, re.DOTALL | re.MULTILINE):
+    for filter, filter_desc in re.findall(r"const AVFilter ([\w\_]+) = ({.*?});", text, re.DOTALL | re.MULTILINE):
         descs: list[str] = parse_option_str(filter_desc)
         config = {}
         for desc in descs:
