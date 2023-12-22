@@ -17,8 +17,8 @@ class Stream:
         projection: int,
         mu: float,
         delta: float,
-        out_mode: str = None,
-        precision: str,
+        out_mode: Literal["i", "d", "o", "n", "e"] = None,
+        precision: Literal["auto", "float", "double"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -65,15 +65,15 @@ class Stream:
         self,
         *,
         level_in: float = None,
-        mode: str = None,
+        mode: Literal["upward", "downward"] = None,
         threshold: float = None,
         ratio: float = None,
         attack: float = None,
         release: float = None,
         makeup: float = None,
         knee: float = None,
-        link: str = None,
-        detection: str = None,
+        link: Literal["average", "maximum"] = None,
+        detection: Literal["peak", "rms"] = None,
         mix: float = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -269,10 +269,10 @@ class Stream:
         self,
         *,
         split: list[str],
-        order: str = None,
+        order: Literal["2nd", "4th", "6th", "8th", "10th", "12th", "14th", "16th", "18th", "20th"] = None,
         level: float = None,
         gains: list[str] = None,
-        precision: str = None,
+        precision: Literal["auto", "float", "double"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -312,7 +312,7 @@ class Stream:
         level_out: float,
         bits: int,
         mix: float,
-        mode: str,
+        mode: Literal["lin", "log"],
         dc: float,
         aa: float,
         samples: int,
@@ -436,7 +436,7 @@ class Stream:
         arorder: int = None,
         threshold: int = None,
         burst: int = None,
-        method: str = None,
+        method: Literal["add", "a", "save", "s"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -487,7 +487,7 @@ class Stream:
         arorder: int = None,
         threshold: int = None,
         hsize: int = None,
-        method: str = None,
+        method: Literal["add", "a", "save", "s"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -572,7 +572,9 @@ class Stream:
         """
         return FilterNode(*[self], name="adelay", kwargs={"delays": delays, "all": all, **kwargs}).stream()
 
-    def adenorm(self, *, level: float = None, type: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def adenorm(
+        self, *, level: float = None, type: Literal["dc", "ac", "square", "pulse"] = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         8.13 adenorm Remedy denormals in audio by adding extremely low-level noise. This filter shall be placed before any filter that can produce denormals. A description of the accepted parameters follows.
 
@@ -660,11 +662,11 @@ class Stream:
         ratio: float = None,
         makeup: float = None,
         range: float = None,
-        mode: str = None,
-        dftype: str = None,
-        tftype: str = None,
-        auto: str = None,
-        precision: str = None,
+        mode: Literal["listen", "cutbelow", "cutabove", "boostbelow", "boostabove"] = None,
+        dftype: Literal["bandpass", "lowpass", "highpass", "peak"] = None,
+        tftype: Literal["bell", "lowshelf", "highshelf"] = None,
+        auto: Literal["disabled", "off", "on", "adaptive"] = None,
+        precision: Literal["auto", "float", "double"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -797,7 +799,13 @@ class Stream:
         ).stream()
 
     def aemphasis(
-        self, *, level_in: float, level_out: float, mode: str = None, type: str, **kwargs: dict[str, Any]
+        self,
+        *,
+        level_in: float,
+        level_out: float,
+        mode: Literal["reproduction", "production"] = None,
+        type: Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"],
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         8.19 aemphasis Audio emphasis filter creates or restores material directly taken from LPs or emphased CDs with different filter curves. E.g. to store music on vinyl the signal has to be altered by a filter first to even out the disadvantages of this recording medium. Once the material is played back the inverse filter has to be applied to restore the distortion of the frequency response. The filter accepts the following options:
@@ -912,12 +920,37 @@ class Stream:
     def afade(
         self,
         *,
-        type: str = None,
+        type: Literal["in", "out"] = None,
         start_sample: int = None,
         nb_samples: int = None,
         start_time: str = None,
         duration: str,
-        curve: str = None,
+        curve: Literal[
+            "tri",
+            "qsin",
+            "hsin",
+            "esin",
+            "log",
+            "ipar",
+            "qua",
+            "cub",
+            "squ",
+            "cbr",
+            "par",
+            "exp",
+            "iqsin",
+            "ihsin",
+            "dese",
+            "desi",
+            "losi",
+            "sinc",
+            "isinc",
+            "quat",
+            "quatr",
+            "qsin2",
+            "hsin2",
+            "nofade",
+        ] = None,
         silence: float = None,
         unity: float = None,
         **kwargs: dict[str, Any]
@@ -973,17 +1006,17 @@ class Stream:
         *,
         noise_reduction: float = None,
         noise_floor: float = None,
-        noise_type: str = None,
+        noise_type: Literal["white", "vinyl", "shellac", "custom"] = None,
         band_noise: str,
         residual_floor: float = None,
         track_noise: bool = None,
         track_residual: bool = None,
-        output_mode: str = None,
+        output_mode: Literal["input", "output", "noise"] = None,
         adaptivity: float = None,
         floor_offset: float = None,
-        noise_link: str = None,
+        noise_link: Literal["none", "min", "max", "average"] = None,
         band_multiplier: float = None,
-        sample_noise: str = None,
+        sample_noise: Literal["start", "stop"] = None,
         gain_smooth: int = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -1057,7 +1090,29 @@ class Stream:
         real: str = None,
         imag: str = None,
         win_size: int = None,
-        win_func: str = None,
+        win_func: Literal[
+            "rect",
+            "bartlett",
+            "hann",
+            "hamming",
+            "blackman",
+            "welch",
+            "flattop",
+            "bharris",
+            "bnuttall",
+            "bhann",
+            "sine",
+            "nuttall",
+            "lanczos",
+            "gauss",
+            "tukey",
+            "dolph",
+            "cauchy",
+            "parzen",
+            "poisson",
+            "bohman",
+            "kaiser",
+        ] = None,
         overlap: float = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -1124,14 +1179,14 @@ class Stream:
         irnorm: float,
         irlink: bool,
         irgain: float,
-        irfmt: str,
+        irfmt: Literal["mono", "input"],
         maxir: float,
         minp: float,
         maxp: float,
         nbirs: float,
         ir: float,
-        precision: str = None,
-        irload: str,
+        precision: Literal["auto", "float", "double"] = None,
+        irload: Literal["init", "access"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -1264,7 +1319,7 @@ class Stream:
         *,
         sigma: float = None,
         levels: int = None,
-        wavet: str,
+        wavet: Literal["sym2", "sym4", "rbior68", "deb10", "sym10", "coif5", "bl3"],
         percent: int = None,
         profile: bool = None,
         adaptive: bool = None,
@@ -1322,7 +1377,7 @@ class Stream:
         self,
         *,
         level_in: float = None,
-        mode: str = None,
+        mode: Literal["upward", "downward"] = None,
         range: float = None,
         threshold: float = None,
         ratio: float = None,
@@ -1330,8 +1385,8 @@ class Stream:
         release: float = None,
         makeup: float = None,
         knee: float = None,
-        detection: str = None,
-        link: str = None,
+        detection: Literal["peak", "rms"] = None,
+        link: Literal["average", "maximum"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -1397,9 +1452,9 @@ class Stream:
         gains: str,
         dry_gain: float,
         wet_gain: float,
-        format: str,
-        process: str,
-        precision: str,
+        format: Literal["ll", "sf", "tf", "zp", "pr", "pd", "sp"],
+        process: Literal["d", "s", "p"],
+        precision: Literal["dbl", "flt", "i32", "i16"],
         normalize: bool = None,
         mix: float = None,
         response: bool = None,
@@ -1552,14 +1607,14 @@ class Stream:
         self,
         *,
         frequency: float,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         mix: float = None,
         channels: str,
         normalize: bool = None,
-        order: int = None,
-        transform: str,
-        precision: str,
+        order: Literal[1, 2] = None,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -1697,7 +1752,7 @@ class Stream:
         self,
         *,
         inputs: int = None,
-        duration: str = None,
+        duration: Literal["longest", "shortest", "first"] = None,
         dropout_transition: float = None,
         weights: str,
         normalize: bool = None,
@@ -1813,7 +1868,15 @@ class Stream:
         return FilterNode(*[self], name="amultiply", kwargs={**kwargs}).stream()
 
     def anequalizer(
-        self, *, params: str, curves: bool, size: str, mgain: float, fscale: str, colors: str, **kwargs: dict[str, Any]
+        self,
+        *,
+        params: str,
+        curves: bool,
+        size: str,
+        mgain: float,
+        fscale: Literal["linear", "logarithmic"],
+        colors: str,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         8.37 anequalizer High-order parametric multiband equalizer for each channel. It accepts the following parameters:
@@ -1861,7 +1924,7 @@ class Stream:
         strength: float = None,
         patch: int = None,
         research: int = None,
-        output: str = None,
+        output: Literal["i", "o", "n"] = None,
         smooth: int = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -1909,8 +1972,8 @@ class Stream:
         mu: float,
         eps: float,
         leakage: float,
-        out_mode: str = None,
-        precision: str,
+        out_mode: Literal["i", "d", "o", "n", "e"] = None,
+        precision: Literal["auto", "float", "double"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -1960,8 +2023,8 @@ class Stream:
         mu: float,
         eps: float,
         leakage: float,
-        out_mode: str = None,
-        precision: str,
+        out_mode: Literal["i", "d", "o", "n", "e"] = None,
+        precision: Literal["auto", "float", "double"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -2076,7 +2139,7 @@ class Stream:
         delay: float = None,
         decay: float = None,
         speed: float = None,
-        type: str = None,
+        type: Literal["triangular", "t", "sinusoidal", "s"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -2223,12 +2286,12 @@ class Stream:
         *,
         level_in: float = None,
         level_out: float = None,
-        mode: str = None,
+        mode: Literal["sine", "triangle", "square", "sawup", "sawdown"] = None,
         amount: float,
         offset_l: float = None,
         offset_r: float = None,
         width: float = None,
-        timing: str = None,
+        timing: Literal["bpm", "ms", "hz"] = None,
         bpm: float = None,
         ms: float = None,
         hz: float = None,
@@ -2329,8 +2392,8 @@ class Stream:
         order: int,
         _lambda: float,
         delta: float,
-        out_mode: str = None,
-        precision: str,
+        out_mode: Literal["i", "d", "o", "n", "e"] = None,
+        precision: Literal["auto", "float", "double"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -2533,7 +2596,7 @@ class Stream:
     def asoftclip(
         self,
         *,
-        type: str,
+        type: Literal["hard", "tanh", "atan", "cubic", "exp", "alg", "quintic", "sin", "erf"],
         threshold: float = None,
         output: float = None,
         param: float,
@@ -2581,9 +2644,47 @@ class Stream:
         self,
         *,
         win_size: int = None,
-        win_func: str = None,
+        win_func: Literal[
+            "rect",
+            "bartlett",
+            "hann",
+            "hamming",
+            "blackman",
+            "welch",
+            "flattop",
+            "bharris",
+            "bnuttall",
+            "bhann",
+            "sine",
+            "nuttall",
+            "lanczos",
+            "gauss",
+            "tukey",
+            "dolph",
+            "cauchy",
+            "parzen",
+            "poisson",
+            "bohman",
+            "kaiser",
+        ] = None,
         overlap: float = None,
-        measure: str = None,
+        measure: Literal[
+            "none",
+            "all",
+            "mean",
+            "variance",
+            "centroid",
+            "spread",
+            "skewness",
+            "kurtosis",
+            "entropy",
+            "flatness",
+            "crest",
+            "flux",
+            "slope",
+            "decrease",
+            "rolloff",
+        ] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -2672,7 +2773,7 @@ class Stream:
     def ass(
         self,
         *,
-        shaping: str = None,
+        shaping: Literal["auto", "simple", "complex"] = None,
         filename: str,
         original_size: str,
         fontsdir: str,
@@ -2736,10 +2837,109 @@ class Stream:
         self,
         *,
         length: float = None,
-        metadata: str,
+        metadata: Literal[
+            "Bit_depth",
+            "Crest_factor",
+            "DC_offset",
+            "Dynamic_range",
+            "Entropy",
+            "Flat_factor",
+            "Max_difference",
+            "Max_level",
+            "Mean_difference",
+            "Min_difference",
+            "Min_level",
+            "Noise_floor",
+            "Noise_floor_count",
+            "Number_of_Infs",
+            "Number_of_NaNs",
+            "Number_of_denormals",
+            "Peak_count",
+            "Abs_Peak_count",
+            "Peak_level",
+            "RMS_difference",
+            "RMS_peak",
+            "RMS_trough",
+            "Zero_crossings",
+            "Zero_crossings_rate",
+            "Overall.Bit_depth",
+            "Overall.DC_offset",
+            "Overall.Entropy",
+            "Overall.Flat_factor",
+            "Overall.Max_difference",
+            "Overall.Max_level",
+            "Overall.Mean_difference",
+            "Overall.Min_difference",
+            "Overall.Min_level",
+            "Overall.Noise_floor",
+            "Overall.Noise_floor_count",
+            "Overall.Number_of_Infs",
+            "Overall.Number_of_NaNs",
+            "Overall.Number_of_denormals",
+            "Overall.Number_of_samples",
+            "Overall.Peak_count",
+            "Overall.Abs_Peak_count",
+            "Overall.Peak_level",
+            "Overall.RMS_difference",
+            "Overall.RMS_level",
+            "Overall.RMS_peak",
+            "Overall.RMS_trough",
+        ],
         reset: bool = None,
-        measure_perchannel: str = None,
-        measure_overall: str = None,
+        measure_perchannel: Literal[
+            "none",
+            "all",
+            "Bit_depth",
+            "Crest_factor",
+            "DC_offset",
+            "Dynamic_range",
+            "Entropy",
+            "Flat_factor",
+            "Max_difference",
+            "Max_level",
+            "Mean_difference",
+            "Min_difference",
+            "Min_level",
+            "Noise_floor",
+            "Noise_floor_count",
+            "Number_of_Infs",
+            "Number_of_NaNs",
+            "Number_of_denormals",
+            "Peak_count",
+            "Abs_Peak_count",
+            "Peak_level",
+            "RMS_difference",
+            "RMS_peak",
+            "RMS_trough",
+            "Zero_crossings",
+            "Zero_crossings_rate",
+        ] = None,
+        measure_overall: Literal[
+            "none",
+            "all",
+            "Bit_depth",
+            "DC_offset",
+            "Entropy",
+            "Flat_factor",
+            "Max_difference",
+            "Max_level",
+            "Mean_difference",
+            "Min_difference",
+            "Min_level",
+            "Noise_floor",
+            "Noise_floor_count",
+            "Number_of_Infs",
+            "Number_of_NaNs",
+            "Number_of_denormals",
+            "Number_of_samples",
+            "Peak_count",
+            "Abs_Peak_count",
+            "Peak_level",
+            "RMS_difference",
+            "RMS_level",
+            "RMS_peak",
+            "RMS_trough",
+        ] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -3002,7 +3202,7 @@ class Stream:
         _2b: float = None,
         s: int = None,
         p: str = None,
-        a: str = None,
+        a: Literal["p", "s"] = None,
         _0s: int = None,
         _1s: int = None,
         _2s: int = None,
@@ -3203,7 +3403,9 @@ class Stream:
             *[self], name="avgblur", kwargs={"sizeX": sizeX, "planes": planes, "sizeY": sizeY, **kwargs}
         ).stream()
 
-    def axcorrelate(self, *, size: int = None, algo: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def axcorrelate(
+        self, *, size: int = None, algo: Literal["slow", "fast", "best"] = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         8.68 axcorrelate Calculate normalized windowed cross-correlation between two input audio streams. Resulted samples are always between -1 and 1 inclusive. If result is 1 it means two input samples are highly correlated in that selected segment. Result 0 means they are not correlated at all. If result is -1 it means two input samples are out of phase, which means they cancel each other. The filter accepts the following options:
 
@@ -3256,13 +3458,13 @@ class Stream:
         *,
         frequency: float = None,
         csg: int = None,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         mix: float = None,
         channels: str,
         normalize: bool = None,
-        transform: str,
-        precision: str,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         block_size: int,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -3322,13 +3524,13 @@ class Stream:
         self,
         *,
         frequency: float = None,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         mix: float = None,
         channels: str,
         normalize: bool = None,
-        transform: str,
-        precision: str,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         block_size: float,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -3386,14 +3588,14 @@ class Stream:
         *,
         gain: float,
         frequency: float = None,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         poles: int = None,
         mix: float = None,
         channels: str,
         normalize: bool = None,
-        transform: str,
-        precision: str,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         block_size: int,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -3632,11 +3834,216 @@ class Stream:
     def blend(
         self,
         *,
-        c0_mode: str = None,
-        c1_mode: str = None,
-        c2_mode: str = None,
-        c3_mode: str = None,
-        all_mode: str = None,
+        c0_mode: Literal[
+            "addition",
+            "and",
+            "average",
+            "bleach",
+            "burn",
+            "darken",
+            "difference",
+            "divide",
+            "dodge",
+            "exclusion",
+            "extremity",
+            "freeze",
+            "geometric",
+            "glow",
+            "grainextract",
+            "grainmerge",
+            "hardlight",
+            "hardmix",
+            "hardoverlay",
+            "harmonic",
+            "heat",
+            "interpolate",
+            "lighten",
+            "linearlight",
+            "multiply",
+            "multiply128",
+            "negation",
+            "normal",
+            "or",
+            "overlay",
+            "phoenix",
+            "pinlight",
+            "reflect",
+            "screen",
+            "softdifference",
+            "softlight",
+            "stain",
+            "subtract",
+            "vividlight",
+            "xor",
+        ] = None,
+        c1_mode: Literal[
+            "addition",
+            "and",
+            "average",
+            "bleach",
+            "burn",
+            "darken",
+            "difference",
+            "divide",
+            "dodge",
+            "exclusion",
+            "extremity",
+            "freeze",
+            "geometric",
+            "glow",
+            "grainextract",
+            "grainmerge",
+            "hardlight",
+            "hardmix",
+            "hardoverlay",
+            "harmonic",
+            "heat",
+            "interpolate",
+            "lighten",
+            "linearlight",
+            "multiply",
+            "multiply128",
+            "negation",
+            "normal",
+            "or",
+            "overlay",
+            "phoenix",
+            "pinlight",
+            "reflect",
+            "screen",
+            "softdifference",
+            "softlight",
+            "stain",
+            "subtract",
+            "vividlight",
+            "xor",
+        ] = None,
+        c2_mode: Literal[
+            "addition",
+            "and",
+            "average",
+            "bleach",
+            "burn",
+            "darken",
+            "difference",
+            "divide",
+            "dodge",
+            "exclusion",
+            "extremity",
+            "freeze",
+            "geometric",
+            "glow",
+            "grainextract",
+            "grainmerge",
+            "hardlight",
+            "hardmix",
+            "hardoverlay",
+            "harmonic",
+            "heat",
+            "interpolate",
+            "lighten",
+            "linearlight",
+            "multiply",
+            "multiply128",
+            "negation",
+            "normal",
+            "or",
+            "overlay",
+            "phoenix",
+            "pinlight",
+            "reflect",
+            "screen",
+            "softdifference",
+            "softlight",
+            "stain",
+            "subtract",
+            "vividlight",
+            "xor",
+        ] = None,
+        c3_mode: Literal[
+            "addition",
+            "and",
+            "average",
+            "bleach",
+            "burn",
+            "darken",
+            "difference",
+            "divide",
+            "dodge",
+            "exclusion",
+            "extremity",
+            "freeze",
+            "geometric",
+            "glow",
+            "grainextract",
+            "grainmerge",
+            "hardlight",
+            "hardmix",
+            "hardoverlay",
+            "harmonic",
+            "heat",
+            "interpolate",
+            "lighten",
+            "linearlight",
+            "multiply",
+            "multiply128",
+            "negation",
+            "normal",
+            "or",
+            "overlay",
+            "phoenix",
+            "pinlight",
+            "reflect",
+            "screen",
+            "softdifference",
+            "softlight",
+            "stain",
+            "subtract",
+            "vividlight",
+            "xor",
+        ] = None,
+        all_mode: Literal[
+            "addition",
+            "and",
+            "average",
+            "bleach",
+            "burn",
+            "darken",
+            "difference",
+            "divide",
+            "dodge",
+            "exclusion",
+            "extremity",
+            "freeze",
+            "geometric",
+            "glow",
+            "grainextract",
+            "grainmerge",
+            "hardlight",
+            "hardmix",
+            "hardoverlay",
+            "harmonic",
+            "heat",
+            "interpolate",
+            "lighten",
+            "linearlight",
+            "multiply",
+            "multiply128",
+            "negation",
+            "normal",
+            "or",
+            "overlay",
+            "phoenix",
+            "pinlight",
+            "reflect",
+            "screen",
+            "softdifference",
+            "softlight",
+            "stain",
+            "subtract",
+            "vividlight",
+            "xor",
+        ] = None,
         c0_opacity: float,
         c1_opacity: float,
         c2_opacity: float,
@@ -3721,7 +4128,7 @@ class Stream:
         *,
         period_min: list[str] = None,
         period_max: list[str] = None,
-        planes: str = None,
+        planes: Literal["first", "y", "u", "v", "r", "g", "b", "a"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -3759,7 +4166,7 @@ class Stream:
         block_pct: int,
         block_width: int,
         block_height: int,
-        planes: str = None,
+        planes: Literal["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -3816,7 +4223,7 @@ class Stream:
         mstep: int = None,
         thmse: int,
         hdthr: float,
-        estim: str = None,
+        estim: Literal["basic", "final"] = None,
         ref: bool = None,
         planes: str = None,
         **kwargs: dict[str, Any]
@@ -3893,7 +4300,9 @@ class Stream:
         """
         return FilterNode(*[self], name="boxblur", kwargs={**kwargs}).stream()
 
-    def bs2b(self, *, profile: str, fcut: float, feed: float, **kwargs: dict[str, Any]) -> "Stream":
+    def bs2b(
+        self, *, profile: Literal["default", "cmoy", "jmeier"], fcut: float, feed: float, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         8.73 bs2b Bauer stereo to binaural transformation, which improves headphone listening of stereo audio records. To enable compilation of this filter you need to configure FFmpeg with --enable-libbs2b. It accepts the following parameters:
 
@@ -3918,7 +4327,14 @@ class Stream:
             *[self], name="bs2b", kwargs={"profile": profile, "fcut": fcut, "feed": feed, **kwargs}
         ).stream()
 
-    def bwdif(self, *, mode: str = None, parity: str = None, deint: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def bwdif(
+        self,
+        *,
+        mode: Literal["0", "send_frame", "1", "send_field"] = None,
+        parity: Literal["0", "tff", "1", "bff", "-1", "auto"] = None,
+        deint: Literal["0", "all", "1", "interlaced"] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.20 bwdif Deinterlace the input video ("bwdif" stands for "Bob Weaver Deinterlacing Filter"). Motion adaptive deinterlacing based on yadif with the use of w3fdif and cubic interpolation algorithms. It accepts the following parameters:
 
@@ -3944,7 +4360,12 @@ class Stream:
         ).stream()
 
     def bwdif_cuda(
-        self, *, mode: str = None, parity: str = None, deint: str = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        mode: Literal["0", "send_frame", "1", "send_field"] = None,
+        parity: Literal["0", "tff", "1", "bff", "-1", "auto"] = None,
+        deint: Literal["0", "all", "1", "interlaced"] = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.21 bwdif_cuda Deinterlace the input video using the bwdif algorithm, but implemented in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec and/or nvenc. It accepts the following parameters:
@@ -3970,7 +4391,13 @@ class Stream:
             *[self], name="bwdif_cuda", kwargs={"mode": mode, "parity": parity, "deint": deint, **kwargs}
         ).stream()
 
-    def cas(self, *, strength: float = None, planes: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def cas(
+        self,
+        *,
+        strength: float = None,
+        planes: Literal["y", "u", "v", "a", "rgb", "yuv", "all"] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.23 cas Apply Contrast Adaptive Sharpen filter to video stream. The filter accepts the following options:
 
@@ -4031,7 +4458,9 @@ class Stream:
             *[self], name="channelmap", kwargs={"map": map, "channel_layout": channel_layout, **kwargs}
         ).stream()
 
-    def channelsplit(self, *, channel_layout: str = None, channels: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def channelsplit(
+        self, *, channel_layout: str = None, channels: Literal["all"] = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         8.75 channelsplit Split each channel from an input audio stream into a separate output stream. It accepts the following parameters:
 
@@ -4195,7 +4624,7 @@ class Stream:
         threy: int = None,
         threu: int = None,
         threv: int = None,
-        distance: str = None,
+        distance: Literal["manhattan", "euclidean"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -4248,7 +4677,14 @@ class Stream:
         ).stream()
 
     def chromashift(
-        self, *, cbh: float, cbv: float, crh: float, crv: float, edge: str, **kwargs: dict[str, Any]
+        self,
+        *,
+        cbh: float,
+        cbv: float,
+        crh: float,
+        crv: float,
+        edge: Literal["smear", "default", "warp"],
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.28 chromashift Shift chroma pixels horizontally and/or vertically. The filter accepts the following options:
@@ -4281,8 +4717,19 @@ class Stream:
     def ciescope(
         self,
         *,
-        system: str,
-        cie: str,
+        system: Literal[
+            "ntsc, 470m",
+            "ebu, 470bg",
+            "smpte",
+            "240m",
+            "apple",
+            "widergb",
+            "cie1931",
+            "rec709, hdtv",
+            "uhdtv, rec2020",
+            "dcip3",
+        ],
+        cie: Literal["xyy", "ucs", "luv"],
         gamuts: str,
         size: int,
         intensity: float,
@@ -4346,7 +4793,14 @@ class Stream:
         ).stream()
 
     def codecview(
-        self, *, block: bool, mv: str, qp: bool, mv_type: str, frame_type: str, **kwargs: dict[str, Any]
+        self,
+        *,
+        block: bool,
+        mv: Literal["pf", "bf", "bb"],
+        qp: bool,
+        mv_type: Literal["fp", "bp"],
+        frame_type: Literal["if", "pf", "bf"],
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.30 codecview Visualize information exported by some codecs. Some codecs can export information through frames using side-data or other means. For example, some MPEG based codecs export motion vectors through the export_mvs flag in the codec flags2 option. The filter accepts the following option:
@@ -4464,7 +4918,7 @@ class Stream:
         ag: float = None,
         ab: float = None,
         aa: float = None,
-        pc: str = None,
+        pc: Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] = None,
         pa: float = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -4598,7 +5052,7 @@ class Stream:
         rh: float = None,
         bh: float = None,
         saturation: float = None,
-        analyze: str = None,
+        analyze: Literal["manual", "average", "minmax", "median"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -4741,7 +5195,7 @@ class Stream:
         gomax: float = None,
         bomax: float = None,
         aomax: float = None,
-        preserve: str = None,
+        preserve: Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -4818,7 +5272,13 @@ class Stream:
         ).stream()
 
     def colormap(
-        self, *, patch_size: str, nb_patches: int, type: str = None, kernel: str = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        patch_size: str,
+        nb_patches: int,
+        type: Literal["relative", "absolute"] = None,
+        kernel: Literal["euclidean", "weuclidean"] = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.39 colormap Apply custom color maps to video stream. This filter needs three input video streams. First stream is video stream that is going to be filtered out. Second and third video stream specify color patches for source color to target color mapping. The filter accepts the following options:
@@ -4848,7 +5308,13 @@ class Stream:
             kwargs={"patch_size": patch_size, "nb_patches": nb_patches, "type": type, "kernel": kernel, **kwargs}
         ).stream()
 
-    def colormatrix(self, *, src: str, dst: str, **kwargs: dict[str, Any]) -> "Stream":
+    def colormatrix(
+        self,
+        *,
+        src: Literal["bt709", "fcc", "bt601", "bt470", "bt470bg", "smpte170m", "smpte240m", "bt2020"],
+        dst: Literal["bt709", "fcc", "bt601", "bt470", "bt470bg", "smpte170m", "smpte240m", "bt2020"],
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.40 colormatrix Convert color matrix. The filter accepts the following options: For example to convert from BT.601 to SMPTE-240M, use the command: colormatrix=bt601:smpte240m
 
@@ -4886,7 +5352,7 @@ class Stream:
         """
         return FilterNode(*[self], name="colorspace", kwargs={**kwargs}).stream()
 
-    def colorspace_cuda(self, *, range: str, **kwargs: dict[str, Any]) -> "Stream":
+    def colorspace_cuda(self, *, range: Literal["tv", "mpeg", "pc", "jpeg"], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.42 colorspace_cuda CUDA accelerated implementation of the colorspace filter. It is by no means feature complete compared to the software colorspace filter, and at the current time only supports color range conversion between jpeg/full and mpeg/limited range. The filter accepts the following options:
 
@@ -5045,10 +5511,10 @@ class Stream:
         _1bias: float,
         _2bias: float,
         _3bias: float,
-        _0mode: str,
-        _1mode: str,
-        _2mode: str,
-        _3mode: str,
+        _0mode: Literal["square", "row", "column"],
+        _1mode: Literal["square", "row", "column"],
+        _2mode: Literal["square", "row", "column"],
+        _3mode: Literal["square", "row", "column"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -5121,7 +5587,13 @@ class Stream:
             }
         ).stream()
 
-    def convolve(self, *, planes: str = None, impulse: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def convolve(
+        self,
+        *,
+        planes: Literal["y", "u", "v", "r", "g", "b", "a", "all"] = None,
+        impulse: Literal["first", "all"] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.45 convolve Apply 2D convolution of video stream in frequency domain using second stream as impulse. The filter accepts the following options: The convolve filter also supports the framesync options.
 
@@ -5203,7 +5675,7 @@ class Stream:
         """
         return FilterNode(*[self], name="corr", kwargs={**kwargs}).stream()
 
-    def cover_rect(self, *, cover: str, mode: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def cover_rect(self, *, cover: str, mode: Literal["cover", "blur"] = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.49 cover_rect Cover a rectangular object It accepts the following options:
 
@@ -5262,7 +5734,7 @@ class Stream:
     def cropdetect(
         self,
         *,
-        mode: str,
+        mode: Literal["black", "mvedges"],
         limit: float = None,
         round: int = None,
         skip: int,
@@ -5418,7 +5890,19 @@ class Stream:
     def curves(
         self,
         *,
-        preset: str = None,
+        preset: Literal[
+            "none",
+            "color_negative",
+            "cross_process",
+            "darker",
+            "increase_contrast",
+            "lighter",
+            "linear_contrast",
+            "medium_contrast",
+            "negative",
+            "strong_contrast",
+            "vintage",
+        ] = None,
         master: str,
         red: str,
         green: str,
@@ -5426,7 +5910,7 @@ class Stream:
         all: str,
         psfile: str,
         plot: str,
-        interp: str = None,
+        interp: Literal["natural", "pchip"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -5484,10 +5968,10 @@ class Stream:
         size: str,
         x: int,
         y: int,
-        mode: str,
+        mode: Literal["mono", "color", "color2"],
         axis: bool,
         opacity: float,
-        format: str,
+        format: Literal["hex", "dec"],
         components: str,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -5676,7 +6160,7 @@ class Stream:
     def deblock(
         self,
         *,
-        filter: str = None,
+        filter: Literal["weak", "strong"] = None,
         block: int = None,
         alpha: float = None,
         beta: float = None,
@@ -5788,7 +6272,12 @@ class Stream:
         ).stream()
 
     def deconvolve(
-        self, *, planes: str = None, impulse: str = None, noise: float = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        planes: Literal["y", "u", "v", "r", "g", "b", "a", "all"] = None,
+        impulse: Literal["first", "all"] = None,
+        noise: float = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.60 deconvolve Apply 2D deconvolution of video stream in frequency domain using second stream as impulse. The filter accepts the following options: The deconvolve filter also supports the framesync options.
@@ -5844,7 +6333,13 @@ class Stream:
         ).stream()
 
     def deesser(
-        self, *, i: float = None, m: float = None, f: float = None, s: str = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        i: float = None,
+        m: float = None,
+        f: float = None,
+        s: Literal["i", "o", "e"] = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         8.82 deesser Apply de-essing to the audio samples.
@@ -5914,7 +6409,12 @@ class Stream:
         ).stream()
 
     def deflicker(
-        self, *, size: int = None, mode: str = None, bypass: bool = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        size: int = None,
+        mode: Literal["am", "gm", "hm", "qm", "cm", "pm", "median"] = None,
+        bypass: bool = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.63 deflicker Remove temporal frame luminance variations. It accepts the following options:
@@ -5988,7 +6488,14 @@ class Stream:
             *[self], name="delogo", kwargs={"x": x, "y": y, "w": w, "h": h, "show": show, **kwargs}
         ).stream()
 
-    def derain(self, *, filter_type: str = None, dnn_backend: str, model: str, **kwargs: dict[str, Any]) -> "Stream":
+    def derain(
+        self,
+        *,
+        filter_type: Literal["derain", "dehaze"] = None,
+        dnn_backend: Literal["tensorflow"],
+        model: str,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.66 derain Remove the rain in the input image/video by applying the derain methods based on convolutional neural networks. Supported models: Recurrent Squeeze-and-Excitation Context Aggregation Net (RESCAN). See http://openaccess.thecvf.com/content_ECCV_2018/papers/Xia_Li_Recurrent_Squeeze-and-Excitation_Context_ECCV_2018_paper.pdf. Training as well as model generation scripts are provided in the repository at https://github.com/XueweiMeng/derain_filter.git. The filter accepts the following options: To get full functionality (such as async execution), please use the dnn_processing filter.
 
@@ -6024,10 +6531,10 @@ class Stream:
         h: int = None,
         rx: int = None,
         ry: int = None,
-        edge: str = None,
+        edge: Literal["blank", "original", "clamp", "mirror"] = None,
         blocksize: int = None,
         contrast: int = None,
-        search: str = None,
+        search: Literal["exhaustive", "less"] = None,
         filename: str,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -6146,7 +6653,12 @@ class Stream:
         ).stream()
 
     def detelecine(
-        self, *, first_field: str = None, pattern: str = None, start_frame: int = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        first_field: Literal["top", "t", "bottom", "b"] = None,
+        pattern: str = None,
+        start_frame: int = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.69 detelecine Apply an exact inverse of the telecine operation. It requires a predefined pattern specified using the pattern option which must be the same as that passed to the telecine filter. This filter accepts the following options:
@@ -6248,7 +6760,9 @@ class Stream:
             }
         ).stream()
 
-    def displace(self, *, edge: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def displace(
+        self, *, edge: Literal["blank", "smear", "wrap", "mirror"] = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.71 displace Displace pixels as indicated by second and third input stream. It takes three input streams and outputs one stream, the first input is the source, and second and third input are displacement maps. The second input specifies how much to displace pixels along the x-axis, while the third input specifies how much to displace pixels along the y-axis. If one of displacement map streams terminates, last frame from that displacement map will be used. Note that once generated, displacements maps can be reused over and over again. A description of the accepted options follows.
 
@@ -6270,7 +6784,7 @@ class Stream:
     def dnn_classify(
         self,
         *,
-        dnn_backend: str,
+        dnn_backend: Literal["openvino"],
         model: str,
         input: str,
         output: str,
@@ -6325,7 +6839,7 @@ class Stream:
     def dnn_detect(
         self,
         *,
-        dnn_backend: str,
+        dnn_backend: Literal["openvino"],
         model: str,
         input: str,
         output: str,
@@ -6378,7 +6892,14 @@ class Stream:
         ).stream()
 
     def dnn_processing(
-        self, *, dnn_backend: str, model: str, input: str, output: str, backend_configs: str, **kwargs: dict[str, Any]
+        self,
+        *,
+        dnn_backend: Literal["tensorflow", "openvino"],
+        model: str,
+        input: str,
+        output: str,
+        backend_configs: str,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.74 dnn_processing Do image processing with deep neural networks. It works together with another filter which converts the pixel format of the Frame to what the dnn network requires. The filter accepts the following options:
@@ -6417,7 +6938,7 @@ class Stream:
             }
         ).stream()
 
-    def doubleweave(self, *, first_field: str, **kwargs: dict[str, Any]) -> "Stream":
+    def doubleweave(self, *, first_field: Literal["top", "t", "bottom", "b"], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.284 weave, doubleweave The weave takes a field-based video input and join each two sequential fields into single frame, producing a new double height clip with half the frame rate and half the frame count. The doubleweave works same as weave but without halving frame rate and frame count. It accepts the following option:
 
@@ -6505,8 +7026,8 @@ class Stream:
         min: float,
         max: float,
         bg: str,
-        mode: str = None,
-        slide: str = None,
+        mode: Literal["bar", "dot", "line"] = None,
+        slide: Literal["frame", "replace", "scroll", "rscroll", "picture"] = None,
         size: str,
         rate: float = None,
         **kwargs: dict[str, Any]
@@ -6768,8 +7289,8 @@ class Stream:
     def edgedetect(
         self,
         *,
-        low: str = None,
-        high: str = None,
+        low: float = None,
+        high: float = None,
         mode: Literal["wires", "colormix", "canny"] = None,
         planes: str,
         **kwargs: dict[str, Any]
@@ -6847,7 +7368,7 @@ class Stream:
             }
         ).stream()
 
-    def entropy(self, *, mode: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def entropy(self, *, mode: Literal["normal", "diff"] = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.81 entropy Measure graylevel entropy in histogram of color channels of video frames. It accepts the following parameters:
 
@@ -6866,7 +7387,7 @@ class Stream:
         """
         return FilterNode(*[self], name="entropy", kwargs={"mode": mode, **kwargs}).stream()
 
-    def epx(self, *, n: int = None, **kwargs: dict[str, Any]) -> "Stream":
+    def epx(self, *, n: Literal[2, 3] = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.82 epx Apply the EPX magnification filter which is designed for pixel art. It accepts the following option:
 
@@ -6896,7 +7417,7 @@ class Stream:
         gamma_g: float = None,
         gamma_b: float = None,
         gamma_weight: float = None,
-        eval: str = None,
+        eval: Literal["init", "frame"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -6952,14 +7473,14 @@ class Stream:
         self,
         *,
         frequency: float,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         gain: float,
         mix: float,
         channels: str,
         normalize: bool,
-        transform: str,
-        precision: str,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         block_size: float,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -7065,15 +7586,15 @@ class Stream:
     def estdif(
         self,
         *,
-        mode: str = None,
-        parity: str = None,
-        deint: str = None,
+        mode: Literal["frame", "field"] = None,
+        parity: Literal["tff", "bff", "auto"] = None,
+        deint: Literal["all", "interlaced"] = None,
         rslope: int = None,
         redge: int = None,
         ecost: int = None,
         mcost: int = None,
         dcost: int = None,
-        interp: str = None,
+        interp: Literal["2p", "4p", "6p"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -7146,7 +7667,9 @@ class Stream:
         """
         return FilterNode(*[self], name="exposure", kwargs={"exposure": exposure, "black": black, **kwargs}).stream()
 
-    def extractplanes(self, *, planes: str, **kwargs: dict[str, Any]) -> "Stream":
+    def extractplanes(
+        self, *, planes: Literal["y", "u", "v", "a", "r", "g", "b"], **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.87 extractplanes Extract color channel components from input video stream into separate grayscale video streams. The filter accepts the following option:
 
@@ -7189,10 +7712,10 @@ class Stream:
     def fade(
         self,
         *,
-        type: str = None,
+        type: Literal["in", "out"] = None,
         start_frame: int = None,
         nb_frames: int = None,
-        alpha: int = None,
+        alpha: Literal[0, 1] = None,
         start_time: float = None,
         duration: float = None,
         color: str = None,
@@ -7273,10 +7796,10 @@ class Stream:
         amount: float = None,
         block: int = None,
         overlap: float = None,
-        method: str = None,
+        method: Literal["wiener", "hard"] = None,
         prev: int = None,
         next: int = None,
-        planes: str = None,
+        planes: Literal["all", "y", "u", "v", "r", "g", "b"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -7334,7 +7857,7 @@ class Stream:
         weight_Y: str,
         weight_U: str,
         weight_V: str,
-        eval: str = None,
+        eval: Literal["init", "frame"] = None,
         X: int,
         Y: int,
         W: int,
@@ -7408,7 +7931,7 @@ class Stream:
             }
         ).stream()
 
-    def field(self, *, type: str, **kwargs: dict[str, Any]) -> "Stream":
+    def field(self, *, type: Literal["0", "top", "1", "bottom"], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.92 field Extract a single field from an interlaced image using stride arithmetic to avoid wasting CPU time. The output frames are marked as non-interlaced. The filter accepts the following options:
 
@@ -7427,7 +7950,9 @@ class Stream:
         """
         return FilterNode(*[self], name="field", kwargs={"type": type, **kwargs}).stream()
 
-    def fieldhint(self, *, hint: str, mode: str, **kwargs: dict[str, Any]) -> "Stream":
+    def fieldhint(
+        self, *, hint: str, mode: Literal["absolute", "relative", "pattern"], **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.93 fieldhint Create new frames by copying the top and bottom fields from surrounding frames supplied as numbers by the hint file. Example of first several lines of hint file for relative mode: 0,0 - # first frame 1,0 - # second frame, use third's frame top field and second's frame bottom field 1,0 - # third frame, use fourth's frame top field and third's frame bottom field 1,0 - 0,0 - 0,0 - 1,0 - 1,0 - 1,0 - 0,0 - 0,0 - 1,0 - 1,0 - 1,0 - 0,0 -
 
@@ -7451,18 +7976,18 @@ class Stream:
     def fieldmatch(
         self,
         *,
-        order: str = None,
-        mode: str = None,
-        ppsrc: int = None,
-        field: str = None,
-        mchroma: int = None,
+        order: Literal["auto", "bff", "tff"] = None,
+        mode: Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] = None,
+        ppsrc: Literal[0, 1] = None,
+        field: Literal["auto", "bottom", "top"] = None,
+        mchroma: Literal[0, 1] = None,
         y0: int = None,
         y1: int = None,
         scthresh: float = None,
-        combmatch: str = None,
-        combdbg: str = None,
+        combmatch: Literal["none", "sc", "full"] = None,
+        combdbg: Literal["none", "pcn", "pcnub"] = None,
         cthresh: int = None,
-        chroma: int = None,
+        chroma: Literal[0, 1] = None,
         blockx: int = None,
         blocky: int = None,
         combpel: int = None,
@@ -7535,7 +8060,7 @@ class Stream:
             }
         ).stream()
 
-    def fieldorder(self, *, order: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def fieldorder(self, *, order: Literal["tff", "bff"] = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.95 fieldorder Transform the field order of the input video. It accepts the following parameters: The default value is ‘tff’. The transformation is done by shifting the picture content up or down by one line, and filling the remaining line with appropriate picture content. This method is consistent with most broadcast field order converters. If the input video is not flagged as being interlaced, or it is already flagged as being of the required output field order, then this filter does not alter the incoming video. It is very useful when converting to or from PAL DV material, which is bottom field first. For example: ffmpeg -i in.vob -vf "fieldorder=bff" out.dv
 
@@ -7578,7 +8103,7 @@ class Stream:
         right: int,
         top: int,
         bottom: int,
-        mode: str = None,
+        mode: Literal["smear", "mirror", "fixed", "reflect", "wrap", "fade", "margins"] = None,
         color: str = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -7680,13 +8205,24 @@ class Stream:
         gain_entry: str,
         delay: float = None,
         accuracy: float = None,
-        wfunc: str = None,
+        wfunc: Literal[
+            "rectangular",
+            "hann",
+            "hamming",
+            "blackman",
+            "nuttall3",
+            "mnuttall3",
+            "nuttall",
+            "bnuttall",
+            "bharris",
+            "tukey",
+        ] = None,
         fixed: bool = None,
         multi: bool = None,
         zero_phase: bool = None,
-        scale: str = None,
+        scale: Literal["linlin", "linlog", "loglin", "loglog"] = None,
         dumpfile: str,
-        dumpscale: str = None,
+        dumpscale: Literal["linlin", "linlog", "loglin", "loglog"] = None,
         fft2: bool = None,
         min_phase: bool = None,
         **kwargs: dict[str, Any]
@@ -7760,9 +8296,9 @@ class Stream:
         regen: float = None,
         width: float = None,
         speed: float = None,
-        shape: str = None,
+        shape: Literal["triangular", "sinusoidal"] = None,
         phase: float = None,
-        interp: str = None,
+        interp: Literal["linear", "quadratic"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -7900,10 +8436,10 @@ class Stream:
     def fps(
         self,
         *,
-        fps: str = None,
+        fps: Literal["source_fps", "ntsc", "pal", "film", "ntsc_film"] = None,
         start_time: float = None,
-        round: str = None,
-        eof_action: str = None,
+        round: Literal["zero", "inf", "down", "up", "near"] = None,
+        eof_action: Literal["round", "pass"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -7934,7 +8470,9 @@ class Stream:
             kwargs={"fps": fps, "start_time": start_time, "round": round, "eof_action": eof_action, **kwargs}
         ).stream()
 
-    def framepack(self, *, format: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def framepack(
+        self, *, format: Literal["sbs", "tab", "lines", "columns", "frameseq"] = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.102 framepack Pack two different video streams into a stereoscopic video, setting proper metadata on supported codecs. The two views should have the same size and framerate and processing will stop when the shorter video ends. Please note that you may conveniently adjust view properties with the scale and fps filters. It accepts the following parameters: Some examples: # Convert left and right views into a frame-sequential video ffmpeg -i LEFT -i RIGHT -filter_complex framepack=frameseq OUTPUT # Convert views into a side-by-side video with the same output resolution as the input ffmpeg -i LEFT -i RIGHT -filter_complex [0:v]scale=w=iw/2[left],[1:v]scale=w=iw/2[right],[left][right]framepack=sbs OUTPUT
 
@@ -7960,7 +8498,7 @@ class Stream:
         interp_start: int = None,
         interp_end: int = None,
         scene: float = None,
-        flags: str,
+        flags: Literal["scene_change_detect", "scd"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -8231,8 +8769,28 @@ class Stream:
         *,
         size: str = None,
         opacity: float = None,
-        mode: str = None,
-        flags: str = None,
+        mode: Literal["full", "compact", "nozero", "noeof", "nodisabled"] = None,
+        flags: Literal[
+            "none",
+            "all",
+            "queue",
+            "frame_count_in",
+            "frame_count_out",
+            "frame_count_delta",
+            "pts",
+            "pts_delta",
+            "time",
+            "time_delta",
+            "timebase",
+            "format",
+            "size",
+            "rate",
+            "eof",
+            "sample_count_in",
+            "sample_count_out",
+            "sample_count_delta",
+            "disabled",
+        ] = None,
         rate: float = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -8315,9 +8873,9 @@ class Stream:
         *,
         radius: int = None,
         eps: float = None,
-        mode: str = None,
+        mode: Literal["basic", "fast"] = None,
         sub: int = None,
-        guidance: str = None,
+        guidance: Literal["off", "on"] = None,
         planes: str = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -8367,7 +8925,7 @@ class Stream:
         level_in: float = None,
         level_out: float = None,
         side_gain: float = None,
-        middle_source: str = None,
+        middle_source: Literal["left", "right", "mid", "side"] = None,
         middle_phase: bool = None,
         left_delay: float = None,
         left_balance: float = None,
@@ -8441,7 +8999,12 @@ class Stream:
         ).stream()
 
     def haldclut(
-        self, *, clut: str = None, shortest: int = None, repeatlast: int = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        clut: Literal["first", "all"] = None,
+        shortest: int = None,
+        repeatlast: int = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.116 haldclut Apply a Hald CLUT to a video stream. First input is the video stream to process, and second one is the Hald CLUT. The Hald CLUT input can be a simple picture or a complete video stream. The filter accepts the following options: haldclut also has the same interpolation options as lut3d (both filters share the same internals). This filter also supports the framesync options. More information about the Hald CLUT can be found on Eskil Steenberg’s website (Hald CLUT author) at http://www.quelsolaar.com/technology/clut.html.
@@ -8474,7 +9037,7 @@ class Stream:
         process_stereo: bool,
         cdt_ms: int,
         force_pe: bool,
-        analyze_mode: str,
+        analyze_mode: Literal["0, off", "1, lle", "2, pe", "3, cdt", "4, tgm"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -8519,10 +9082,10 @@ class Stream:
         *,
         map: str,
         gain: float,
-        type: str,
+        type: Literal["time", "freq"],
         lfe: float,
         size: float = None,
-        hrir: str = None,
+        hrir: Literal["stereo", "multich"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -8579,13 +9142,13 @@ class Stream:
         *,
         frequency: float = None,
         poles: int = None,
-        width_type: str = None,
+        width_type: Literal["h", "q", "o", "s", "k"] = None,
         width: float = None,
         mix: float = None,
         channels: str = None,
         normalize: bool = None,
-        transform: str,
-        precision: str = None,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"] = None,
         block_size: int = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -8646,14 +9209,14 @@ class Stream:
         *,
         gain: float,
         frequency: float,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         poles: int = None,
         mix: float = None,
         channels: str,
         normalize: bool = None,
-        transform: str,
-        precision: str,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         block_size: int,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -8713,7 +9276,12 @@ class Stream:
         ).stream()
 
     def histeq(
-        self, *, strength: float = None, intensity: float = None, antibanding: str = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        strength: float = None,
+        intensity: float = None,
+        antibanding: Literal["none", "weak", "strong"] = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.118 histeq This filter applies a global color histogram equalization on a per-frame basis. It can be used to correct video that has a compressed range of pixel intensities. The filter redistributes the pixel intensities to equalize their distribution across the intensity range. It may be viewed as an "automatically adjusting contrast filter". This filter is useful only for correcting degraded or poorly captured source video. The filter accepts the following options:
@@ -8746,12 +9314,23 @@ class Stream:
         *,
         level_height: int = None,
         scale_height: int = None,
-        display_mode: str = None,
-        levels_mode: str = None,
+        display_mode: Literal["stack", "parade", "overlay"] = None,
+        levels_mode: Literal["linear", "logarithmic"] = None,
         components: int = None,
         fgopacity: float = None,
         bgopacity: float = None,
-        colors_mode: str = None,
+        colors_mode: Literal[
+            "whiteonblack",
+            "blackonwhite",
+            "whiteongray",
+            "blackongray",
+            "coloronblack",
+            "coloronwhite",
+            "colorongray",
+            "blackoncolor",
+            "whiteoncolor",
+            "grayoncolor",
+        ] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -8843,7 +9422,7 @@ class Stream:
             }
         ).stream()
 
-    def hqx(self, *, n: int = None, **kwargs: dict[str, Any]) -> "Stream":
+    def hqx(self, *, n: Literal[2, 3, 4] = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.125 hqx Apply a high-quality magnification filter designed for pixel art. This filter was originally created by Maxim Stepin. It accepts the following option:
 
@@ -9060,7 +9639,14 @@ class Stream:
         """
         return FilterNode(*[self], name="hwdownload", kwargs={**kwargs}).stream()
 
-    def hwmap(self, *, mode: str, derive_device: str, reverse: bool, **kwargs: dict[str, Any]) -> "Stream":
+    def hwmap(
+        self,
+        *,
+        mode: Literal["read", "write", "overwrite", "direct"],
+        derive_device: str,
+        reverse: bool,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.122 hwmap Map hardware frames to system memory or to another device. This filter has several different modes of operation; which one is used depends on the input and output formats: Hardware frame input, normal frame output Map the input frames to system memory and pass them to the output. If the original hardware frame is later required (for example, after overlaying something else on part of it), the hwmap filter can be used again in the next mode to retrieve it. Normal frame input, hardware frame output If the input is actually a software-mapped hardware frame, then unmap it - that is, return the original hardware frame. Otherwise, a device must be provided. Create new hardware surfaces on that device for the output, then map them back to the software format at the input and give those frames to the preceding filter. This will then act like the hwupload filter, but may be able to avoid an additional copy when the input is already in a compatible format. Hardware frame input and output A device must be supplied for the output, either directly or with the derive_device option. The input and output devices must be of different types and compatible - the exact meaning of this is system-dependent, but typically it means that they must refer to the same underlying hardware context (for example, refer to the same graphics card). If the input frames were originally created on the output device, then unmap to retrieve the original frames. Otherwise, map the frames to the output device - create new hardware frames on the output corresponding to the frames on the input. The following additional parameters are accepted:
 
@@ -9166,7 +9752,45 @@ class Stream:
         return FilterNode(*[self], name="iccdetect", kwargs={"force": force, **kwargs}).stream()
 
     def iccgen(
-        self, *, color_primaries: str = None, color_trc: str = None, force: bool = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        color_primaries: Literal[
+            "auto",
+            "bt709",
+            "unknown",
+            "bt470m",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "film",
+            "bt2020",
+            "smpte428",
+            "smpte431",
+            "smpte432",
+            "jedec-p22",
+        ] = None,
+        color_trc: Literal[
+            "auto",
+            "bt709",
+            "unknown",
+            "bt470m",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "linear",
+            "log100",
+            "log316",
+            "iec61966-2-4",
+            "bt1361e",
+            "iec61966-2-1",
+            "bt2020-10",
+            "bt2020-12",
+            "smpte2084",
+            "smpte428",
+            "arib-std-b67",
+        ] = None,
+        force: bool = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.133 iccgen Generate ICC profiles and attach them to frames. This filter accepts the following options:
@@ -9261,9 +9885,9 @@ class Stream:
     def il(
         self,
         *,
-        luma_mode: str = None,
-        chroma_mode: str = None,
-        alpha_mode: str = None,
+        luma_mode: Literal["none", "deinterleave", "interleave"] = None,
+        chroma_mode: Literal["none", "deinterleave", "interleave"] = None,
+        alpha_mode: Literal["none", "deinterleave", "interleave"] = None,
         luma_swap: int = None,
         chroma_swap: int = None,
         alpha_swap: int = None,
@@ -9352,7 +9976,13 @@ class Stream:
             }
         ).stream()
 
-    def interlace(self, *, scan: str = None, lowpass: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def interlace(
+        self,
+        *,
+        scan: Literal["tff", "bff"] = None,
+        lowpass: Literal["0", "off", "1", "linear", "2", "complex"] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.138 interlace Simple interlacing filter from progressive contents. This interleaves upper (or lower) lines from odd frames with lower (or upper) lines from even frames, halving the frame rate and preserving image height. Original Original New Frame Frame 'j' Frame 'j+1' (tff) ========== =========== ================== Line 0 --------------------> Frame 'j' Line 0 Line 1 Line 1 ----> Frame 'j+1' Line 1 Line 2 ---------------------> Frame 'j' Line 2 Line 3 Line 3 ----> Frame 'j+1' Line 3 ... ... ... New Frame + 1 will be generated by Frame 'j+2' and Frame 'j+3' and so on It accepts the following optional parameters:
 
@@ -9402,10 +10032,10 @@ class Stream:
         self,
         *,
         thresh: int = None,
-        map: int = None,
-        order: int = None,
-        sharp: int = None,
-        twoway: int = None,
+        map: Literal[0, 1] = None,
+        order: Literal[0, 1] = None,
+        sharp: Literal[0, 1] = None,
+        twoway: Literal[0, 1] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -9563,14 +10193,23 @@ class Stream:
         model: str,
         lens_model: str,
         db_path: str,
-        mode: str,
+        mode: Literal["vignetting", "geometry", "subpixel", "vig_geo", "vig_subpixel", "distortion", "all"],
         focal_length: float,
         aperture: float,
         focus_distance: float,
         scale: float,
-        target_geometry: str,
+        target_geometry: Literal[
+            "rectilinear",
+            "fisheye",
+            "panoramic",
+            "equirectangular",
+            "fisheye_orthographic",
+            "fisheye_stereographic",
+            "fisheye_equisolid",
+            "fisheye_thoby",
+        ],
         reverse: bool,
-        interpolation: str,
+        interpolation: Literal["nearest", "linear", "lanczos"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -9654,8 +10293,8 @@ class Stream:
         model: str = None,
         feature: str,
         log_path: str,
-        log_fmt: str,
-        pool: str = None,
+        log_fmt: Literal["xml", "json", "csv", "sub"],
+        pool: Literal["min", "harmonic_mean", "mean"] = None,
         n_threads: int = None,
         n_subsample: int,
         **kwargs: dict[str, Any]
@@ -9820,7 +10459,7 @@ class Stream:
         offset: float = None,
         linear: bool = None,
         dual_mono: bool = None,
-        print_format: str = None,
+        print_format: Literal["summary", "json", "none"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -9883,13 +10522,13 @@ class Stream:
         *,
         frequency: float = None,
         poles: int = None,
-        width_type: str = None,
+        width_type: Literal["h", "q", "o", "s", "k"] = None,
         width: float = None,
         mix: float = None,
         channels: str = None,
         normalize: bool = None,
-        transform: str,
-        precision: str = None,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"] = None,
         block_size: int = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -9950,14 +10589,14 @@ class Stream:
         *,
         gain: float,
         frequency: float = None,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         poles: int = None,
         mix: float = None,
         channels: str,
         normalize: bool = None,
-        transform: str,
-        precision: str,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         block_size: int,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -10116,7 +10755,13 @@ class Stream:
             }
         ).stream()
 
-    def lut1d(self, *, file: str, interp: str, **kwargs: dict[str, Any]) -> "Stream":
+    def lut1d(
+        self,
+        *,
+        file: Literal["cube", "csp"],
+        interp: Literal["nearest", "linear", "cosine", "cubic", "spline"],
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.150 lut1d Apply a 1D LUT to an input video. The filter accepts the following options:
 
@@ -10166,7 +10811,13 @@ class Stream:
             *[self], name="lut2", kwargs={"c0": c0, "c1": c1, "c2": c2, "c3": c3, "d": d, **kwargs}
         ).stream()
 
-    def lut3d(self, *, file: str, interp: str, **kwargs: dict[str, Any]) -> "Stream":
+    def lut3d(
+        self,
+        *,
+        file: Literal["3dl", "cube", "dat", "m3d", "csp"],
+        interp: Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"],
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.151 lut3d Apply a 3D LUT to an input video. The filter accepts the following options:
 
@@ -10377,7 +11028,12 @@ class Stream:
         ).stream()
 
     def maskedclamp(
-        self, *, undershoot: float = None, overshoot: float = None, planes: int = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        undershoot: float = None,
+        overshoot: float = None,
+        planes: Literal[0, 1, 3, 7, 15] = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.155 maskedclamp Clamp the first input stream with the second input and third input stream. Returns the value of first stream to be between second input stream - undershoot and third input stream + overshoot. This filter accepts the following options:
@@ -10462,7 +11118,9 @@ class Stream:
         """
         return FilterNode(*[self], name="maskedmin", kwargs={"planes": planes, **kwargs}).stream()
 
-    def maskedthreshold(self, *, threshold: float, planes: int, mode: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def maskedthreshold(
+        self, *, threshold: float, planes: int, mode: Literal["abs", "diff"] = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.159 maskedthreshold Pick pixels comparing absolute difference of two video streams with fixed threshold. If absolute difference between pixel component of first and second video stream is equal or lower than user supplied threshold than pixel component from first video stream is picked, otherwise pixel component from second video stream is picked. This filter accepts the following options:
 
@@ -10520,7 +11178,14 @@ class Stream:
             kwargs={"low": low, "high": high, "planes": planes, "fill": fill, "sum": sum, **kwargs}
         ).stream()
 
-    def mcdeint(self, *, mode: str = None, parity: str = None, qp: int = None, **kwargs: dict[str, Any]) -> "Stream":
+    def mcdeint(
+        self,
+        *,
+        mode: Literal["fast", "medium", "slow", "extra_slow"] = None,
+        parity: Literal["0, tff", "1, bff"] = None,
+        qp: int = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.161 mcdeint Apply motion-compensation deinterlacing. It needs one field per frame as input and must thus be used together with yadif=1/3 or equivalent. This filter accepts the following options:
 
@@ -10667,7 +11332,12 @@ class Stream:
         ).stream()
 
     def mestimate(
-        self, *, method: str = None, mb_size: int = None, search_param: int = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        method: Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"] = None,
+        mb_size: int = None,
+        search_param: int = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.164 mestimate Estimate and export motion vectors using block matching algorithms. Motion vectors are stored in frame side data to be used by other filters. This filter accepts the following options:
@@ -10715,7 +11385,13 @@ class Stream:
         return FilterNode(*[self], name="midequalizer", kwargs={"planes": planes, **kwargs}).stream()
 
     def minterpolate(
-        self, *, fps: str, mi_mode: str, scd: str, scd_threshold: float, **kwargs: dict[str, Any]
+        self,
+        *,
+        fps: str,
+        mi_mode: Literal["dup", "blend", "mci"],
+        scd: Literal["none", "fdiff"],
+        scd_threshold: float,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.166 minterpolate Convert the video to specified frame rate using motion interpolation. This filter accepts the following options:
@@ -10752,7 +11428,7 @@ class Stream:
         weights: str,
         scale: float,
         planes: int = None,
-        duration: str = None,
+        duration: Literal["longest", "shortest", "first"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -10821,7 +11497,14 @@ class Stream:
             *[self], name="monochrome", kwargs={"cb": cb, "cr": cr, "size": size, "high": high, **kwargs}
         ).stream()
 
-    def morpho(self, *, mode: str = None, planes: str, structure: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def morpho(
+        self,
+        *,
+        mode: Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"] = None,
+        planes: str,
+        structure: Literal["first", "all"] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.169 morpho This filter allows to apply main morphological grayscale transforms, erode and dilate with arbitrary structures set in second input stream. Unlike naive implementation and much slower performance in erosion and dilation filters, when speed is critical morpho filter should be used instead. A description of accepted options follows, The morpho filter also supports the framesync options.
 
@@ -10928,7 +11611,13 @@ class Stream:
             *[self], name="multiply", kwargs={"scale": scale, "offset": offset, "planes": planes, **kwargs}
         ).stream()
 
-    def negate(self, *, components: str, negate_alpha: int = None, **kwargs: dict[str, Any]) -> "Stream":
+    def negate(
+        self,
+        *,
+        components: Literal["y", "u", "v", "a", "r", "g", "b"],
+        negate_alpha: Literal[0, 1] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.173 negate Negate (invert) the input video. It accepts the following option:
 
@@ -10986,14 +11675,14 @@ class Stream:
         self,
         *,
         weights: str,
-        deint: str = None,
-        field: str,
+        deint: Literal["all", "interlaced"] = None,
+        field: Literal["af", "a", "t", "b", "tf", "bf"],
         planes: str,
-        nsize: str,
-        nns: str,
-        qual: str,
-        etype: str,
-        pscrn: str = None,
+        nsize: Literal["s8x6", "s16x6", "s32x6", "s48x6", "s8x4", "s16x4", "s32x4"],
+        nns: Literal["n16", "n32", "n64", "n128", "n256"],
+        qual: Literal["fast", "default", "slow"],
+        etype: Literal["a, abs", "s, mse"],
+        pscrn: Literal["none", "original", "new", "new2", "new3"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -11077,11 +11766,11 @@ class Stream:
         c1_strength: int = None,
         c2_strength: int = None,
         c3_strength: int = None,
-        all_flags: str,
-        c0_flags: str,
-        c1_flags: str,
-        c2_flags: str,
-        c3_flags: str,
+        all_flags: Literal["a", "p", "t", "u"],
+        c0_flags: Literal["a", "p", "t", "u"],
+        c1_flags: Literal["a", "p", "t", "u"],
+        c2_flags: Literal["a", "p", "t", "u"],
+        c3_flags: Literal["a", "p", "t", "u"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -11360,11 +12049,13 @@ class Stream:
         x: str = None,
         y: str = None,
         eof_action: str,
-        eval: str = None,
+        eval: Literal["init", "frame"] = None,
         shortest: str,
-        format: str = None,
+        format: Literal[
+            "yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "yuv444p10", "rgb", "gbrp", "auto"
+        ] = None,
         repeatlast: str,
-        alpha: str = None,
+        alpha: Literal["straight", "premultiplied"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -11418,7 +12109,7 @@ class Stream:
         *,
         x: str = None,
         y: str = None,
-        eval: str = None,
+        eval: Literal["init", "frame"] = None,
         eof_action: str,
         shortest: str,
         repeatlast: str,
@@ -11501,7 +12192,7 @@ class Stream:
         x: str = None,
         y: str = None,
         color: str = None,
-        eval: str = None,
+        eval: Literal["init", "frame"] = None,
         aspect: bool,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -11554,7 +12245,7 @@ class Stream:
         max_colors: int,
         reserve_transparent: bool,
         transparency_color: str,
-        stats_mode: str,
+        stats_mode: Literal["full", "diff", "single"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -11594,9 +12285,11 @@ class Stream:
     def paletteuse(
         self,
         *,
-        dither: str = None,
+        dither: Literal[
+            "bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson", "none"
+        ] = None,
         bayer_scale: int = None,
-        diff_mode: str = None,
+        diff_mode: Literal["rectangle"] = None,
         new: bool,
         alpha_threshold: int = None,
         **kwargs: dict[str, Any]
@@ -11682,9 +12375,9 @@ class Stream:
         y2: str,
         x3: str,
         y3: str,
-        interpolation: str,
-        sense: str,
-        eval: str,
+        interpolation: Literal["linear", "cubic"],
+        sense: Literal["0, source", "1, destination"],
+        eval: Literal["init", "frame"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -11742,7 +12435,9 @@ class Stream:
             }
         ).stream()
 
-    def phase(self, *, mode: str, **kwargs: dict[str, Any]) -> "Stream":
+    def phase(
+        self, *, mode: Literal["t", "b", "p", "a", "u", "T", "B", "A", "U"], **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.190 phase Delay interlaced video by one field time so that the field order changes. The intended use is to fix PAL movies that have been captured with the opposite field order to the film-to-video transfer. A description of the accepted parameters follows.
 
@@ -11816,7 +12511,13 @@ class Stream:
         return FilterNode(*[self], name="pixdesctest", kwargs={**kwargs}).stream()
 
     def pixelize(
-        self, *, width: int = None, height: int = None, mode: str = None, planes: str = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        width: int = None,
+        height: int = None,
+        mode: Literal["avg", "min", "max"] = None,
+        planes: str = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.193 pixelize Apply pixelization to video stream. The filter accepts the following options:
@@ -11900,7 +12601,7 @@ class Stream:
         """
         return FilterNode(*[self], name="pp", kwargs={"subfilters": subfilters, **kwargs}).stream()
 
-    def pp7(self, *, qp: int, mode: str, **kwargs: dict[str, Any]) -> "Stream":
+    def pp7(self, *, qp: int, mode: Literal["hard", "soft", "medium"], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.196 pp7 Apply Postprocessing filter 7. It is variant of the spp filter, similar to spp = 6 with 7 point DCT, where only the center sample is used after IDCT. The filter accepts the following options:
 
@@ -11968,7 +12669,38 @@ class Stream:
         ).stream()
 
     def pseudocolor(
-        self, *, c0: str, c1: str, c2: str, c3: str, index: str, preset: str, opacity: float, **kwargs: dict[str, Any]
+        self,
+        *,
+        c0: str,
+        c1: str,
+        c2: str,
+        c3: str,
+        index: str,
+        preset: Literal[
+            "magma",
+            "inferno",
+            "plasma",
+            "viridis",
+            "turbo",
+            "cividis",
+            "range1",
+            "range2",
+            "shadows",
+            "highlights",
+            "solar",
+            "nominal",
+            "preferred",
+            "total",
+            "spectral",
+            "cool",
+            "heat",
+            "fiery",
+            "blues",
+            "green",
+            "helix",
+        ],
+        opacity: float,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.199 pseudocolor Alter frame colors in video with pseudocolors. This filter accepts the following options: Each of the expression options specifies the expression to use for computing the lookup table for the corresponding pixel component values. The expressions can contain the following constants and functions: All expressions default to "val".
@@ -12048,7 +12780,7 @@ class Stream:
         jt: int = None,
         jb: int = None,
         sb: int = None,
-        mp: str = None,
+        mp: Literal["l", "u", "v"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -12188,7 +12920,7 @@ class Stream:
             *[self], name="readvitc", kwargs={"scan_max": scan_max, "thr_b": thr_b, "thr_w": thr_w, **kwargs}
         ).stream()
 
-    def remap(self, *, format: str = None, fill: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def remap(self, *, format: Literal["color", "gray"] = None, fill: str = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.206 remap Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream. Destination pixel at position (X, Y) will be picked from source (x, y) position where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero value for pixel will be used for destination pixel. Xmap and Ymap input video streams must be of same dimensions. Output video stream will have Xmap/Ymap video stream dimensions. Xmap and Ymap input video streams are 16bit depth, single channel.
 
@@ -12342,7 +13074,7 @@ class Stream:
         bv: float,
         ah: float,
         av: float,
-        edge: str,
+        edge: Literal["smear", "default", "warp"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -12464,14 +13196,14 @@ class Stream:
         *,
         tempo: float,
         pitch: float,
-        transients: str,
-        detector: str,
-        phase: str,
-        window: str,
-        smoothing: str,
-        formant: str,
-        pitchq: str,
-        channels: str,
+        transients: Literal["crisp", "mixed", "smooth"],
+        detector: Literal["compound", "percussive", "soft"],
+        phase: Literal["laminar", "independent"],
+        window: Literal["standard", "short", "long"],
+        smoothing: Literal["off", "on"],
+        formant: Literal["shifted", "preserved"],
+        pitchq: Literal["quality", "speed", "consistency"],
+        channels: Literal["apart", "together"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -12633,9 +13365,9 @@ class Stream:
         *,
         w: str,
         h: str,
-        interp_algo: str,
+        interp_algo: Literal["nearest", "bilinear", "bicubic", "lanczos"],
         format: str,
-        passthrough: int,
+        passthrough: Literal[0, 1],
         param: str,
         force_original_aspect_ratio: bool,
         force_divisible_by: int,
@@ -12690,11 +13422,13 @@ class Stream:
     def scale_npp(
         self,
         *,
-        format: str,
-        interp_algo: str,
-        force_original_aspect_ratio: str,
+        format: Literal["same"],
+        interp_algo: Literal[
+            "nn", "linear", "cubic", "cubic2p_bspline", "cubic2p_catmullrom", "cubic2p_b05c03", "super", "lanczos"
+        ],
+        force_original_aspect_ratio: Literal["disable", "decrease", "increase"],
         force_divisible_by: int,
-        eval: str,
+        eval: Literal["init", "frame"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -12774,7 +13508,7 @@ class Stream:
             }
         ).stream()
 
-    def scdet(self, *, threshold: float = None, sc_pass: int = None, **kwargs: dict[str, Any]) -> "Stream":
+    def scdet(self, *, threshold: float = None, sc_pass: Literal[0, 1] = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.223 scdet Detect video scene change. This filter sets frame metadata with mafd between frame, the scene score, and forward the frame to the next filter, so they can use these metadata to detect scene change or others. In addition, this filter logs a message and sets frame metadata when it detects a scene change by threshold. lavfi.scd.mafd metadata keys are set with mafd for every frame. lavfi.scd.score metadata keys are set with scene change score for every frame to detect scene change. lavfi.scd.time metadata keys are set with current filtered frame time which detect scene change with threshold. The filter accepts the following options:
 
@@ -12860,7 +13594,7 @@ class Stream:
     def selectivecolor(
         self,
         *,
-        correction_method: str = None,
+        correction_method: Literal["absolute", "relative"] = None,
         reds: str,
         yellows: str,
         greens: str,
@@ -12966,7 +13700,7 @@ class Stream:
         """
         return FilterNode(*[self], name="setdar", kwargs={"r": r, "max": max, **kwargs}).stream()
 
-    def setfield(self, *, mode: str, **kwargs: dict[str, Any]) -> "Stream":
+    def setfield(self, *, mode: Literal["auto", "bff", "tff", "prog"], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.227 setfield Force field for the output video frame. The setfield filter marks the interlace type field for the output frames. It does not change the input frame, but only sets the corresponding property, which affects how the frame is treated by following filters (e.g. fieldorder or yadif). The filter accepts the following options:
 
@@ -12988,11 +13722,60 @@ class Stream:
     def setparams(
         self,
         *,
-        field_mode: str = None,
-        range: str = None,
-        color_primaries: str = None,
-        color_trc: str = None,
-        colorspace: str = None,
+        field_mode: Literal["auto", "bff", "tff", "prog"] = None,
+        range: Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"] = None,
+        color_primaries: Literal[
+            "auto",
+            "bt709",
+            "unknown",
+            "bt470m",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "film",
+            "bt2020",
+            "smpte428",
+            "smpte431",
+            "smpte432",
+            "jedec-p22",
+        ] = None,
+        color_trc: Literal[
+            "auto",
+            "bt709",
+            "unknown",
+            "bt470m",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "linear",
+            "log100",
+            "log316",
+            "iec61966-2-4",
+            "bt1361e",
+            "iec61966-2-1",
+            "bt2020-10",
+            "bt2020-12",
+            "smpte2084",
+            "smpte428",
+            "arib-std-b67",
+        ] = None,
+        colorspace: Literal[
+            "auto",
+            "gbr",
+            "bt709",
+            "unknown",
+            "fcc",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "ycgco",
+            "bt2020nc",
+            "bt2020c",
+            "smpte2085",
+            "chroma-derived-nc",
+            "chroma-derived-c",
+            "ictcp",
+        ] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -13053,7 +13836,7 @@ class Stream:
         """
         return FilterNode(*[self], name="setsar", kwargs={"r": r, "max": max, **kwargs}).stream()
 
-    def sharpen_npp(self, *, border_type: str, **kwargs: dict[str, Any]) -> "Stream":
+    def sharpen_npp(self, *, border_type: Literal["replicate"], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.229 sharpen_npp Use the NVIDIA Performance Primitives (libnpp) to perform image sharpening with border control. The following additional options are accepted:
 
@@ -13078,7 +13861,7 @@ class Stream:
         shx: float = None,
         shy: float = None,
         fillcolor: str = None,
-        interp: str = None,
+        interp: Literal["bilinear", "nearest"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -13165,7 +13948,14 @@ class Stream:
         return FilterNode(*[self], name="shuffleframes", kwargs={"mapping": mapping, **kwargs}).stream()
 
     def shufflepixels(
-        self, *, direction: str = None, mode: str, width: int, height: int, seed: int, **kwargs: dict[str, Any]
+        self,
+        *,
+        direction: Literal["forward", "inverse"] = None,
+        mode: Literal["horizontal", "vertical", "block"],
+        width: int,
+        height: int,
+        seed: int,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.234 shufflepixels Reorder pixels in video frames. This filter accepts the following options:
@@ -13228,15 +14018,15 @@ class Stream:
         self,
         *,
         level_in: float = None,
-        mode: str = None,
+        mode: Literal["upward", "downward"] = None,
         threshold: float = None,
         ratio: float = None,
         attack: float = None,
         release: float = None,
         makeup: float = None,
         knee: float = None,
-        link: str = None,
-        detection: str = None,
+        link: Literal["average", "maximum"] = None,
+        detection: Literal["peak", "rms"] = None,
         level_sc: float = None,
         mix: float = None,
         **kwargs: dict[str, Any]
@@ -13303,7 +14093,7 @@ class Stream:
         self,
         *,
         level_in: float = None,
-        mode: str = None,
+        mode: Literal["upward", "downward"] = None,
         range: float = None,
         threshold: float = None,
         ratio: float = None,
@@ -13311,8 +14101,8 @@ class Stream:
         release: float = None,
         makeup: float = None,
         knee: float = None,
-        detection: str = None,
-        link: str = None,
+        detection: Literal["peak", "rms"] = None,
+        link: Literal["average", "maximum"] = None,
         level_sc: float = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -13374,7 +14164,15 @@ class Stream:
             }
         ).stream()
 
-    def signalstats(self, *, stat: str, out: str, color: str, c: str, **kwargs: dict[str, Any]) -> "Stream":
+    def signalstats(
+        self,
+        *,
+        stat: Literal["tout", "vrep", "brng"],
+        out: Literal["tout", "vrep", "brng"],
+        color: str,
+        c: str,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.236 signalstats Evaluate various visual metrics that assist in determining issues associated with the digitization of analog video media. By default the filter will log these metadata values: The filter accepts the following options:
 
@@ -13404,10 +14202,10 @@ class Stream:
     def signature(
         self,
         *,
-        detectmode: str = None,
+        detectmode: Literal["off", "full", "fast"] = None,
         nb_inputs: int = None,
         filename: str,
-        format: str = None,
+        format: Literal["binary", "xml"] = None,
         th_d: int = None,
         th_dc: int = None,
         th_xh: int = None,
@@ -13496,15 +14294,15 @@ class Stream:
         start_duration: float = None,
         start_threshold: float = None,
         start_silence: float = None,
-        start_mode: str = None,
+        start_mode: Literal["any", "all"] = None,
         stop_periods: int = None,
         stop_duration: float = None,
         stop_threshold: float = None,
         stop_silence: float = None,
-        stop_mode: str = None,
-        detection: str = None,
+        stop_mode: Literal["any", "all"] = None,
+        detection: Literal["avg", "rms", "peak", "median", "ptp", "dev"] = None,
         window: float = None,
-        timestamp: str = None,
+        timestamp: Literal["write", "copy"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -13695,7 +14493,7 @@ class Stream:
         rotation: float,
         elevation: float,
         radius: float,
-        type: str,
+        type: Literal["time", "freq"],
         speakers: str,
         lfegain: float,
         framesize: float,
@@ -13838,7 +14636,13 @@ class Stream:
         ).stream()
 
     def spp(
-        self, *, quality: int = None, qp: int, mode: str = None, use_bframe_qp: int = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        quality: int = None,
+        qp: int,
+        mode: Literal["hard", "soft"] = None,
+        use_bframe_qp: Literal[0, 1] = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.241 spp Apply a simple postprocessing filter that compresses and decompresses the image at several (or - in the case of quality level 6 - all) shifts and average the results. The filter accepts the following options:
@@ -13868,7 +14672,14 @@ class Stream:
             kwargs={"quality": quality, "qp": qp, "mode": mode, "use_bframe_qp": use_bframe_qp, **kwargs}
         ).stream()
 
-    def sr(self, *, dnn_backend: str, model: str, scale_factor: int = None, **kwargs: dict[str, Any]) -> "Stream":
+    def sr(
+        self,
+        *,
+        dnn_backend: Literal["tensorflow"],
+        model: str,
+        scale_factor: Literal[2, 3, 4] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.242 sr Scale the input by applying one of the super-resolution methods based on convolutional neural networks. Supported models: Super-Resolution Convolutional Neural Network model (SRCNN). See https://arxiv.org/abs/1501.00092. Efficient Sub-Pixel Convolutional Neural Network model (ESPCN). See https://arxiv.org/abs/1609.05158. Training scripts as well as scripts for model file (.pb) saving can be found at https://github.com/XueweiMeng/sr/tree/sr_dnn_native. Original repository is at https://github.com/HighVoltageRocknRoll/sr.git. The filter accepts the following options: To get full functionality (such as async execution), please use the dnn_processing filter.
 
@@ -13914,7 +14725,70 @@ class Stream:
         """
         return FilterNode(*[self], name="ssim", kwargs={"stats_file": stats_file, **kwargs}).stream()
 
-    def stereo3d(self, *, _in: str = None, out: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def stereo3d(
+        self,
+        *,
+        _in: Literal[
+            "sbsl",
+            "sbsr",
+            "sbs2l",
+            "sbs2r",
+            "abl",
+            "tbl",
+            "abr",
+            "tbr",
+            "ab2l",
+            "tb2l",
+            "ab2r",
+            "tb2r",
+            "al",
+            "ar",
+            "irl",
+            "irr",
+            "icl",
+            "icr",
+        ] = None,
+        out: Literal[
+            "sbsl",
+            "sbsr",
+            "sbs2l",
+            "sbs2r",
+            "abl",
+            "tbl",
+            "abr",
+            "tbr",
+            "ab2l",
+            "tb2l",
+            "ab2r",
+            "tb2r",
+            "al",
+            "ar",
+            "irl",
+            "irr",
+            "arbg",
+            "argg",
+            "arcg",
+            "arch",
+            "arcc",
+            "arcd",
+            "agmg",
+            "agmh",
+            "agmc",
+            "agmd",
+            "aybg",
+            "aybh",
+            "aybc",
+            "aybd",
+            "ml",
+            "mr",
+            "chl",
+            "chr",
+            "icl",
+            "icr",
+            "hdmi",
+        ] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.244 stereo3d Convert between different stereoscopic image formats. The filters accept the following options:
 
@@ -13947,7 +14821,9 @@ class Stream:
         muter: bool = None,
         phasel: bool = None,
         phaser: bool = None,
-        mode: str = None,
+        mode: Literal[
+            "lr>lr", "lr>ms", "ms>lr", "lr>ll", "lr>rr", "lr>l+r", "lr>rl", "ms>ll", "ms>rr", "ms>rl", "lr>l-r"
+        ] = None,
         slev: float = None,
         sbal: float = None,
         mlev: float = None,
@@ -13956,7 +14832,7 @@ class Stream:
         delay: float = None,
         sclevel: float = None,
         phase: float = None,
-        bmode_in: str,
+        bmode_in: Literal["balance", "amplitude", "power"],
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -14281,7 +15157,7 @@ class Stream:
         lfe: bool = None,
         lfe_low: float = None,
         lfe_high: float = None,
-        lfe_mode: str = None,
+        lfe_mode: Literal["add", "sub"] = None,
         smooth: float = None,
         angle: int = None,
         focus: float = None,
@@ -14308,7 +15184,29 @@ class Stream:
         fcx: float = None,
         fcy: float = None,
         win_size: int = None,
-        win_func: str = None,
+        win_func: Literal[
+            "rect",
+            "bartlett",
+            "hann",
+            "hamming",
+            "blackman",
+            "welch",
+            "flattop",
+            "bharris",
+            "bnuttall",
+            "bhann",
+            "sine",
+            "nuttall",
+            "lanczos",
+            "gauss",
+            "tukey",
+            "dolph",
+            "cauchy",
+            "parzen",
+            "poisson",
+            "bohman",
+            "kaiser",
+        ] = None,
         overlap: float = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -14507,7 +15405,9 @@ class Stream:
         """
         return FilterNode(*[self], name="tblend", kwargs={**kwargs}).stream()
 
-    def telecine(self, *, first_field: str = None, pattern: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def telecine(
+        self, *, first_field: Literal["top", "t", "bottom", "b"] = None, pattern: str = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.251 telecine Apply telecine process to the video. This filter accepts the following options: Some typical patterns: NTSC output (30i): 27.5p: 32222 24p: 23 (classic) 24p: 2332 (preferred) 20p: 33 18p: 334 16p: 3444 PAL output (25i): 27.5p: 12222 24p: 222222222223 ("Euro pulldown") 16.67p: 33 16p: 33333334
 
@@ -14534,13 +15434,13 @@ class Stream:
         self,
         *,
         width: int = None,
-        display_mode: str = None,
-        levels_mode: str = None,
+        display_mode: Literal["stack", "parade", "overlay"] = None,
+        levels_mode: Literal["linear", "logarithmic"] = None,
         components: int = None,
         bgopacity: float = None,
         envelope: bool = None,
         ecolor: str = None,
-        slide: str = None,
+        slide: Literal["frame", "replace", "scroll", "rscroll", "picture"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -14689,14 +15589,14 @@ class Stream:
         *,
         gain: float,
         frequency: float,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         poles: int = None,
         mix: float = None,
         channels: str,
         normalize: bool = None,
-        transform: str,
-        precision: str,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         block_size: int,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -14910,8 +15810,8 @@ class Stream:
         *,
         start: int = None,
         stop: int = None,
-        start_mode: str = None,
-        stop_mode: str = None,
+        start_mode: Literal["add", "clone"] = None,
+        stop_mode: Literal["add", "clone"] = None,
         start_duration: str = None,
         color: str = None,
         **kwargs: dict[str, Any]
@@ -14956,7 +15856,9 @@ class Stream:
             }
         ).stream()
 
-    def transpose(self, *, passthrough: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def transpose(
+        self, *, passthrough: Literal["none", "portrait", "landscape"] = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.262 transpose Transpose rows with columns in the input video and optionally flip it. It accepts the following parameters: For example to rotate by 90 degrees clockwise and preserve portrait layout: transpose=dir=1:passthrough=portrait The command above can also be specified as: transpose=1:portrait
 
@@ -14975,7 +15877,13 @@ class Stream:
         """
         return FilterNode(*[self], name="transpose", kwargs={"passthrough": passthrough, **kwargs}).stream()
 
-    def transpose_npp(self, *, dir: str = None, passthrough: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def transpose_npp(
+        self,
+        *,
+        dir: Literal["cclock_flip", "clock", "cclock", "clock_flip"] = None,
+        passthrough: Literal["none", "portrait", "landscape"] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.263 transpose_npp Transpose rows with columns in the input video and optionally flip it. For more in depth examples see the transpose video filter, which shares mostly the same options. It accepts the following parameters:
 
@@ -15003,14 +15911,14 @@ class Stream:
         *,
         gain: float,
         frequency: float,
-        width_type: str,
+        width_type: Literal["h", "q", "o", "s", "k"],
         width: float,
         poles: int,
         mix: float,
         channels: str,
         normalize: bool,
-        transform: str,
-        precision: str,
+        transform: Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"],
+        precision: Literal["auto", "s16", "s32", "f32", "f64"],
         block_size: int,
         **kwargs: dict[str, Any]
     ) -> "Stream":
@@ -15278,13 +16186,90 @@ class Stream:
     def v360(
         self,
         *,
-        input: str,
-        output: str,
-        interp: str,
+        input: Literal[
+            "e",
+            "equirect",
+            "c3x2",
+            "c6x1",
+            "c1x6",
+            "eac",
+            "flat",
+            "gnomonic",
+            "rectilinear",
+            "dfisheye",
+            "barrel",
+            "fb",
+            "barrelsplit",
+            "sg",
+            "mercator",
+            "ball",
+            "hammer",
+            "sinusoidal",
+            "fisheye",
+            "pannini",
+            "cylindrical",
+            "perspective",
+            "tetrahedron",
+            "tsp",
+            "he",
+            "hequirect",
+            "equisolid",
+            "og",
+            "octahedron",
+            "cylindricalea",
+        ],
+        output: Literal[
+            "e",
+            "equirect",
+            "c3x2",
+            "c6x1",
+            "c1x6",
+            "eac",
+            "flat",
+            "gnomonic",
+            "rectilinear",
+            "dfisheye",
+            "barrel",
+            "fb",
+            "barrelsplit",
+            "sg",
+            "mercator",
+            "ball",
+            "hammer",
+            "sinusoidal",
+            "fisheye",
+            "pannini",
+            "cylindrical",
+            "perspective",
+            "tetrahedron",
+            "tsp",
+            "he",
+            "hequirect",
+            "equisolid",
+            "og",
+            "octahedron",
+            "cylindricalea",
+        ],
+        interp: Literal[
+            "near",
+            "nearest",
+            "line",
+            "linear",
+            "lagrange9",
+            "cube",
+            "cubic",
+            "lanc",
+            "lanczos",
+            "sp16",
+            "spline16",
+            "gauss",
+            "gaussian",
+            "mitchell",
+        ],
         w: float,
         h: float,
-        in_stereo: str,
-        out_stereo: str,
+        in_stereo: Literal["2d", "sbs", "tb"],
+        out_stereo: Literal["2d", "sbs", "tb"],
         yaw: float,
         pitch: float,
         roll: float,
@@ -15394,11 +16379,11 @@ class Stream:
         self,
         *,
         threshold: float = None,
-        method: str = None,
+        method: Literal["hard", "soft", "garrote"] = None,
         nsteps: int = None,
         percent: int = None,
         planes: list[str],
-        type: str = None,
+        type: Literal["universal", "bayes"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -15471,18 +16456,18 @@ class Stream:
     def vectorscope(
         self,
         *,
-        mode: str = None,
+        mode: Literal["gray", "tint", "color", "color2", "color3", "color4", "color5"] = None,
         x: int = None,
         y: int = None,
         intensity: float,
-        envelope: str = None,
-        graticule: str,
+        envelope: Literal["none", "instant", "peak", "peak+instant"] = None,
+        graticule: Literal["none", "green", "color", "invert"],
         opacity: float,
         flags: list[str],
         bgopacity: float,
         lthreshold: float = None,
         hthreshold: float = None,
-        colorspace: str = None,
+        colorspace: Literal["auto", "601", "709"] = None,
         tint0: float = None,
         tint1: float = None,
         **kwargs: dict[str, Any]
@@ -15595,7 +16580,7 @@ class Stream:
         rlum: float,
         glum: float,
         blum: float,
-        alternate: int = None,
+        alternate: Literal[0, 1] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -15675,7 +16660,7 @@ class Stream:
         mincontrast: float = None,
         tripod: int = None,
         show: int = None,
-        fileformat: str = None,
+        fileformat: Literal["ascii", "binary"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -15764,8 +16749,8 @@ class Stream:
         angle: str = None,
         x0: str = None,
         y0: str = None,
-        mode: str = None,
-        eval: str = None,
+        mode: Literal["forward", "backward"] = None,
+        eval: Literal["init", "frame"] = None,
         dither: int = None,
         aspect: str = None,
         **kwargs: dict[str, Any]
@@ -15859,11 +16844,11 @@ class Stream:
         self,
         *,
         volume: str = None,
-        precision: str = None,
-        replaygain: str = None,
+        precision: Literal["fixed", "float", "double"] = None,
+        replaygain: Literal["drop", "ignore", "track", "album"] = None,
         replaygain_preamp: float = None,
         replaygain_noclip: int = None,
-        eval: str = None,
+        eval: Literal["once", "frame"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -15945,7 +16930,13 @@ class Stream:
         return FilterNode(*[self], name="vstack", kwargs={"inputs": inputs, "shortest": shortest, **kwargs}).stream()
 
     def w3fdif(
-        self, *, filter: str = None, mode: str = None, parity: str = None, deint: str = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        filter: Literal["simple", "complex"] = None,
+        mode: Literal["frame", "field"] = None,
+        parity: Literal["tff", "bff", "auto"] = None,
+        deint: Literal["all", "interlaced"] = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.282 w3fdif Deinterlace the input video ("w3fdif" stands for "Weston 3 Field Deinterlacing Filter"). Based on the process described by Martin Weston for BBC R&D, and implemented based on the de-interlace algorithm written by Jim Easterbrook for BBC R&D, the Weston 3 field deinterlacing filter uses filter coefficients calculated by BBC R&D. This filter uses field-dominance information in frame to decide which of each pair of fields to place first in the output. If it gets it wrong use setfield filter before w3fdif filter. There are two sets of filter coefficients, so called "simple" and "complex". Which set of filter coefficients is used can be set by passing an optional parameter:
@@ -15976,22 +16967,22 @@ class Stream:
     def waveform(
         self,
         *,
-        mode: str = None,
+        mode: Literal["row", "column"] = None,
         intensity: float = None,
-        mirror: int = None,
-        display: str = None,
+        mirror: Literal[0, 1] = None,
+        display: Literal["overlay", "stack", "parade"] = None,
         components: int = None,
-        envelope: str = None,
-        filter: str = None,
-        graticule: str,
+        envelope: Literal["none", "instant", "peak", "peak+instant"] = None,
+        filter: Literal["lowpass", "flat", "aflat", "xflat", "yflat", "chroma", "color", "acolor"] = None,
+        graticule: Literal["none", "green", "orange", "invert"],
         opacity: float,
         flags: list[str],
-        scale: str = None,
+        scale: Literal["digital", "millivolts", "ire"] = None,
         bgopacity: float,
         tint0: str,
         tint1: str,
-        fitmode: str = None,
-        input: str = None,
+        fitmode: Literal["none", "size"] = None,
+        input: Literal["all", "first"] = None,
         **kwargs: dict[str, Any]
     ) -> "Stream":
         """
@@ -16064,7 +17055,7 @@ class Stream:
             }
         ).stream()
 
-    def weave(self, *, first_field: str, **kwargs: dict[str, Any]) -> "Stream":
+    def weave(self, *, first_field: Literal["top", "t", "bottom", "b"], **kwargs: dict[str, Any]) -> "Stream":
         """
         11.284 weave, doubleweave The weave takes a field-based video input and join each two sequential fields into single frame, producing a new double height clip with half the frame rate and half the frame count. The doubleweave works same as weave but without halving frame rate and frame count. It accepts the following option:
 
@@ -16083,7 +17074,7 @@ class Stream:
         """
         return FilterNode(*[self], name="weave", kwargs={"first_field": first_field, **kwargs}).stream()
 
-    def xbr(self, *, n: int = None, **kwargs: dict[str, Any]) -> "Stream":
+    def xbr(self, *, n: Literal[2, 3, 4] = None, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.285 xbr Apply the xBR high-quality magnification filter which is designed for pixel art. It follows a set of edge-detection rules, see https://forums.libretro.com/t/xbr-algorithm-tutorial/123. It accepts the following option:
 
@@ -16102,7 +17093,9 @@ class Stream:
         """
         return FilterNode(*[self], name="xbr", kwargs={"n": n, **kwargs}).stream()
 
-    def xcorrelate(self, *, planes: str, secondary: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def xcorrelate(
+        self, *, planes: str, secondary: Literal["first", "all"] = None, **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.286 xcorrelate Apply normalized cross-correlation between first and second input video stream. Second input video stream dimensions must be lower than first input video stream. The filter accepts the following options: The xcorrelate filter also supports the framesync options.
 
@@ -16128,7 +17121,67 @@ class Stream:
     def xfade(
         self,
         *,
-        transition: str = None,
+        transition: Literal[
+            "custom",
+            "fade",
+            "wipeleft",
+            "wiperight",
+            "wipeup",
+            "wipedown",
+            "slideleft",
+            "slideright",
+            "slideup",
+            "slidedown",
+            "circlecrop",
+            "rectcrop",
+            "distance",
+            "fadeblack",
+            "fadewhite",
+            "radial",
+            "smoothleft",
+            "smoothright",
+            "smoothup",
+            "smoothdown",
+            "circleopen",
+            "circleclose",
+            "vertopen",
+            "vertclose",
+            "horzopen",
+            "horzclose",
+            "dissolve",
+            "pixelize",
+            "diagtl",
+            "diagtr",
+            "diagbl",
+            "diagbr",
+            "hlslice",
+            "hrslice",
+            "vuslice",
+            "vdslice",
+            "hblur",
+            "fadegrays",
+            "wipetl",
+            "wipetr",
+            "wipebl",
+            "wipebr",
+            "squeezeh",
+            "squeezev",
+            "zoomin",
+            "fadefast",
+            "fadeslow",
+            "hlwind",
+            "hrwind",
+            "vuwind",
+            "vdwind",
+            "coverleft",
+            "coverright",
+            "coverup",
+            "coverdown",
+            "revealleft",
+            "revealright",
+            "revealup",
+            "revealdown",
+        ] = None,
         duration: float = None,
         offset: float = None,
         expr: str,
@@ -16190,7 +17243,14 @@ class Stream:
         ).stream()
 
     def xstack(
-        self, *, inputs: int = None, layout: str, grid: str, shortest: int = None, fill: str, **kwargs: dict[str, Any]
+        self,
+        *,
+        inputs: int = None,
+        layout: str,
+        grid: str,
+        shortest: Literal[0, 1] = None,
+        fill: str,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.289 xstack Stack video inputs into custom layout. All streams must be of same pixel format. The filter accepts the following options:
@@ -16222,7 +17282,16 @@ class Stream:
             kwargs={"inputs": inputs, "layout": layout, "grid": grid, "shortest": shortest, "fill": fill, **kwargs}
         ).stream()
 
-    def yadif(self, *, mode: str = None, parity: str = None, deint: str = None, **kwargs: dict[str, Any]) -> "Stream":
+    def yadif(
+        self,
+        *,
+        mode: Literal[
+            "0", "1", "2", "3", "send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"
+        ] = None,
+        parity: Literal["0", "1", "-1", "tff", "bff", "auto"] = None,
+        deint: Literal["0", "1", "all", "interlaced"] = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
         """
         11.290 yadif Deinterlace the input video ("yadif" means "yet another deinterlacing filter"). It accepts the following parameters:
 
@@ -16248,7 +17317,14 @@ class Stream:
         ).stream()
 
     def yadif_cuda(
-        self, *, mode: str = None, parity: str = None, deint: str = None, **kwargs: dict[str, Any]
+        self,
+        *,
+        mode: Literal[
+            "0", "1", "2", "3", "send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"
+        ] = None,
+        parity: Literal["0", "1", "-1", "tff", "bff", "auto"] = None,
+        deint: Literal["0", "1", "all", "interlaced"] = None,
+        **kwargs: dict[str, Any]
     ) -> "Stream":
         """
         11.291 yadif_cuda Deinterlace the input video using the yadif algorithm, but implemented in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec and/or nvenc. It accepts the following parameters:
