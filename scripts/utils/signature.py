@@ -96,7 +96,7 @@ class Filter(pydantic.BaseModel):
                     sprint(f"{self.name} unknown type: {schema}", sprint.blue)
                     type = "str"
 
-            default = schema.get("default")
+            schema.get("default")
             required = "default" not in schema
 
             output.append(
@@ -104,7 +104,6 @@ class Filter(pydantic.BaseModel):
                     name=name,
                     description=parameter["description"],
                     typing=type,
-                    default=default,
                     required=required,
                 )
             )

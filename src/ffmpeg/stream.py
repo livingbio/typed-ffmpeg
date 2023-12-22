@@ -13543,6 +13543,81 @@ class Stream:
         """
         return FilterNode(*[self], name="siti", kwargs={"print_summary": print_summary, **kwargs}).stream()
 
+    def smartblur(
+        self,
+        *,
+        luma_radius: float = None,
+        lr: float = None,
+        luma_strength: float = None,
+        ls: float = None,
+        luma_threshold: int = None,
+        lt: int = None,
+        chroma_radius: float = None,
+        cr: float = None,
+        chroma_strength: float = None,
+        cs: float = None,
+        chroma_threshold: int = None,
+        ct: int = None,
+        **kwargs: dict[str, Any]
+    ) -> "Stream":
+        """
+        11.239 smartblur Blur the input video without impacting the outlines. It accepts the following options: If a chroma option is not explicitly set, the corresponding luma value is set.
+
+        Parameters:
+        ----------
+        luma_radius:
+            Set the luma radius. The option value must be a float number in the range [0.1,5.0] that specifies the variance of the gaussian filter used to blur the image (slower if larger). Default value is 1.0.
+        lr:
+            Set the luma radius. The option value must be a float number in the range [0.1,5.0] that specifies the variance of the gaussian filter used to blur the image (slower if larger). Default value is 1.0.
+        luma_strength:
+            Set the luma strength. The option value must be a float number in the range [-1.0,1.0] that configures the blurring. A value included in [0.0,1.0] will blur the image whereas a value included in [-1.0,0.0] will sharpen the image. Default value is 1.0.
+        ls:
+            Set the luma strength. The option value must be a float number in the range [-1.0,1.0] that configures the blurring. A value included in [0.0,1.0] will blur the image whereas a value included in [-1.0,0.0] will sharpen the image. Default value is 1.0.
+        luma_threshold:
+            Set the luma threshold used as a coefficient to determine whether a pixel should be blurred or not. The option value must be an integer in the range [-30,30]. A value of 0 will filter all the image, a value included in [0,30] will filter flat areas and a value included in [-30,0] will filter edges. Default value is 0.
+        lt:
+            Set the luma threshold used as a coefficient to determine whether a pixel should be blurred or not. The option value must be an integer in the range [-30,30]. A value of 0 will filter all the image, a value included in [0,30] will filter flat areas and a value included in [-30,0] will filter edges. Default value is 0.
+        chroma_radius:
+            Set the chroma radius. The option value must be a float number in the range [0.1,5.0] that specifies the variance of the gaussian filter used to blur the image (slower if larger). Default value is luma_radius.
+        cr:
+            Set the chroma radius. The option value must be a float number in the range [0.1,5.0] that specifies the variance of the gaussian filter used to blur the image (slower if larger). Default value is luma_radius.
+        chroma_strength:
+            Set the chroma strength. The option value must be a float number in the range [-1.0,1.0] that configures the blurring. A value included in [0.0,1.0] will blur the image whereas a value included in [-1.0,0.0] will sharpen the image. Default value is luma_strength.
+        cs:
+            Set the chroma strength. The option value must be a float number in the range [-1.0,1.0] that configures the blurring. A value included in [0.0,1.0] will blur the image whereas a value included in [-1.0,0.0] will sharpen the image. Default value is luma_strength.
+        chroma_threshold:
+            Set the chroma threshold used as a coefficient to determine whether a pixel should be blurred or not. The option value must be an integer in the range [-30,30]. A value of 0 will filter all the image, a value included in [0,30] will filter flat areas and a value included in [-30,0] will filter edges. Default value is luma_threshold.
+        ct:
+            Set the chroma threshold used as a coefficient to determine whether a pixel should be blurred or not. The option value must be an integer in the range [-30,30]. A value of 0 will filter all the image, a value included in [0,30] will filter flat areas and a value included in [-30,0] will filter edges. Default value is luma_threshold.
+
+
+
+        Example usage:
+        --------------
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#smartblur
+
+        """
+        return FilterNode(
+            *[self],
+            name="smartblur",
+            kwargs={
+                "luma_radius": luma_radius,
+                "lr": lr,
+                "luma_strength": luma_strength,
+                "ls": ls,
+                "luma_threshold": luma_threshold,
+                "lt": lt,
+                "chroma_radius": chroma_radius,
+                "cr": cr,
+                "chroma_strength": chroma_strength,
+                "cs": cs,
+                "chroma_threshold": chroma_threshold,
+                "ct": ct,
+                **kwargs,
+            }
+        ).stream()
+
     def sobel(self, *, planes: int, scale: float, delta: float, **kwargs: dict[str, Any]) -> "Stream":
         """
         11.240 sobel Apply sobel operator to input video stream. The filter accepts the following option:

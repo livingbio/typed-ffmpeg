@@ -97,27 +97,51 @@
   "parameters": [
     {
       "description": "<dd><p>Set the luma radius. The option value must be a float number in\nthe range [0.1,5.0] that specifies the variance of the gaussian filter\nused to blur the image (slower if larger). Default value is 1.0.\n</p>\n</dd>",
-      "name": "luma_radius, lr"
+      "name": "luma_radius"
+    },
+    {
+      "description": "<dd><p>Set the luma radius. The option value must be a float number in\nthe range [0.1,5.0] that specifies the variance of the gaussian filter\nused to blur the image (slower if larger). Default value is 1.0.\n</p>\n</dd>",
+      "name": "lr"
     },
     {
       "description": "<dd><p>Set the luma strength. The option value must be a float number\nin the range [-1.0,1.0] that configures the blurring. A value included\nin [0.0,1.0] will blur the image whereas a value included in\n[-1.0,0.0] will sharpen the image. Default value is 1.0.\n</p>\n</dd>",
-      "name": "luma_strength, ls"
+      "name": "luma_strength"
+    },
+    {
+      "description": "<dd><p>Set the luma strength. The option value must be a float number\nin the range [-1.0,1.0] that configures the blurring. A value included\nin [0.0,1.0] will blur the image whereas a value included in\n[-1.0,0.0] will sharpen the image. Default value is 1.0.\n</p>\n</dd>",
+      "name": "ls"
     },
     {
       "description": "<dd><p>Set the luma threshold used as a coefficient to determine\nwhether a pixel should be blurred or not. The option value must be an\ninteger in the range [-30,30]. A value of 0 will filter all the image,\na value included in [0,30] will filter flat areas and a value included\nin [-30,0] will filter edges. Default value is 0.\n</p>\n</dd>",
-      "name": "luma_threshold, lt"
+      "name": "luma_threshold"
+    },
+    {
+      "description": "<dd><p>Set the luma threshold used as a coefficient to determine\nwhether a pixel should be blurred or not. The option value must be an\ninteger in the range [-30,30]. A value of 0 will filter all the image,\na value included in [0,30] will filter flat areas and a value included\nin [-30,0] will filter edges. Default value is 0.\n</p>\n</dd>",
+      "name": "lt"
     },
     {
       "description": "<dd><p>Set the chroma radius. The option value must be a float number in\nthe range [0.1,5.0] that specifies the variance of the gaussian filter\nused to blur the image (slower if larger). Default value is <samp>luma_radius</samp>.\n</p>\n</dd>",
-      "name": "chroma_radius, cr"
+      "name": "chroma_radius"
+    },
+    {
+      "description": "<dd><p>Set the chroma radius. The option value must be a float number in\nthe range [0.1,5.0] that specifies the variance of the gaussian filter\nused to blur the image (slower if larger). Default value is <samp>luma_radius</samp>.\n</p>\n</dd>",
+      "name": "cr"
     },
     {
       "description": "<dd><p>Set the chroma strength. The option value must be a float number\nin the range [-1.0,1.0] that configures the blurring. A value included\nin [0.0,1.0] will blur the image whereas a value included in\n[-1.0,0.0] will sharpen the image. Default value is <samp>luma_strength</samp>.\n</p>\n</dd>",
-      "name": "chroma_strength, cs"
+      "name": "chroma_strength"
+    },
+    {
+      "description": "<dd><p>Set the chroma strength. The option value must be a float number\nin the range [-1.0,1.0] that configures the blurring. A value included\nin [0.0,1.0] will blur the image whereas a value included in\n[-1.0,0.0] will sharpen the image. Default value is <samp>luma_strength</samp>.\n</p>\n</dd>",
+      "name": "cs"
     },
     {
       "description": "<dd><p>Set the chroma threshold used as a coefficient to determine\nwhether a pixel should be blurred or not. The option value must be an\ninteger in the range [-30,30]. A value of 0 will filter all the image,\na value included in [0,30] will filter flat areas and a value included\nin [-30,0] will filter edges. Default value is <samp>luma_threshold</samp>.\n</p></dd>",
-      "name": "chroma_threshold, ct"
+      "name": "chroma_threshold"
+    },
+    {
+      "description": "<dd><p>Set the chroma threshold used as a coefficient to determine\nwhether a pixel should be blurred or not. The option value must be an\ninteger in the range [-30,30]. A value of 0 will filter all the image,\na value included in [0,30] will filter flat areas and a value included\nin [-30,0] will filter edges. Default value is <samp>luma_threshold</samp>.\n</p></dd>",
+      "name": "ct"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#smartblur",
