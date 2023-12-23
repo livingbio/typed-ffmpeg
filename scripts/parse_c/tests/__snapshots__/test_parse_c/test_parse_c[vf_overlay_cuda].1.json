@@ -1,0 +1,73 @@
+[
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"0\"']",
+      "help": "set the x expression of overlay",
+      "name": "x",
+      "type": "AV_OPT_TYPE_STRING"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"0\"']",
+      "help": "set the y expression of overlay",
+      "name": "y",
+      "type": "AV_OPT_TYPE_STRING"
+    },
+    {
+      "choices": [
+        {
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "['.i64 = EOF_ACTION_REPEAT']"
+        },
+        {
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "['.i64 = EOF_ACTION_ENDALL']"
+        },
+        {
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "['.i64 = EOF_ACTION_PASS']"
+        }
+      ],
+      "default": "['.i64 = EOF_ACTION_REPEAT']",
+      "help": "Action to take when encountering EOF from secondary input ",
+      "name": "eof_action",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "['.i64=EVAL_MODE_INIT']"
+        },
+        {
+          "help": "eval expressions per-frame",
+          "name": "frame",
+          "value": "['.i64=EVAL_MODE_FRAME']"
+        }
+      ],
+      "default": "['.i64 = EVAL_MODE_FRAME']",
+      "help": "specify when to evaluate expressions",
+      "name": "eval",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = 0']",
+      "help": "force termination when the shortest input terminates",
+      "name": "shortest",
+      "type": "AV_OPT_TYPE_BOOL"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=1']",
+      "help": "repeat overlay of the last overlay frame",
+      "name": "repeatlast",
+      "type": "AV_OPT_TYPE_BOOL"
+    }
+  ]
+]

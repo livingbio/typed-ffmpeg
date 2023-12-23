@@ -50,10 +50,11 @@ def extract_av_filter(text: str) -> list[AVFilter]:
     parse_av_filter_pad(text)
 
     for av_filter in av_filters.values():
-        av_class = av_classes[av_filter.priv_class.strip("&")]
-        av_option = av_options[av_class.option]
+        if av_filter.priv_class:
+            av_class = av_classes[av_filter.priv_class.strip("&")]
+            av_option = av_options[av_class.option]
+            av_filter.options = av_option
 
-        av_filter.options = av_option
         output.append(av_filter)
 
     return output

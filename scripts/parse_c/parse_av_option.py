@@ -34,7 +34,11 @@ def _parse_av_option(text: str) -> list[AVOption]:
         )
 
     def _p(string: str, assert_key: str = None) -> str:
-        assert string.startswith("."), string
+        if not string.startswith("."):
+            return string
+
+        assert "=" in string, string
+
         key, value = string.split("=", 1)
         key = key.strip()[1:]
         if assert_key:

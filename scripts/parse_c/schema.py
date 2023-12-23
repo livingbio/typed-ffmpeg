@@ -61,7 +61,7 @@ class AVFilter(pydantic.BaseModel):
     # nb_inputs: str
     # outputs: str
     # nb_outputs: str
-    priv_class: str
+    priv_class: str | None = None
     # flags: str
     # process_command: str
 
