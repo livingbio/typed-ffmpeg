@@ -2,74 +2,12 @@
   {
     "description": "Cut super frequencies.",
     "name": "asupercut",
-    "options": [
-      {
-        "default": 20000.0,
-        "flags": "8|(1<<16)|(1<<15)",
-        "help": "set cutoff frequency",
-        "max": 192000.0,
-        "min": 20000.0,
-        "name": "cutoff",
-        "type": "AV_OPT_TYPE_DOUBLE",
-        "unit": null
-      },
-      {
-        "default": 10,
-        "flags": "8|(1<<16)|(1<<15)",
-        "help": "set filter order",
-        "max": 20.0,
-        "min": 3.0,
-        "name": "order",
-        "type": "AV_OPT_TYPE_INT",
-        "unit": null
-      },
-      {
-        "default": 1.0,
-        "flags": "8|(1<<16)|(1<<15)",
-        "help": "set input level",
-        "max": 1.0,
-        "min": 0.0,
-        "name": "level",
-        "type": "AV_OPT_TYPE_DOUBLE",
-        "unit": null
-      }
-    ]
+    "options": []
   },
   {
     "description": "Cut subwoofer frequencies.",
     "name": "asubcut",
-    "options": [
-      {
-        "default": 20.0,
-        "flags": "8|(1<<16)|(1<<15)",
-        "help": "set cutoff frequency",
-        "max": 200.0,
-        "min": 2.0,
-        "name": "cutoff",
-        "type": "AV_OPT_TYPE_DOUBLE",
-        "unit": null
-      },
-      {
-        "default": 10,
-        "flags": "8|(1<<16)|(1<<15)",
-        "help": "set filter order",
-        "max": 20.0,
-        "min": 3.0,
-        "name": "order",
-        "type": "AV_OPT_TYPE_INT",
-        "unit": null
-      },
-      {
-        "default": 1.0,
-        "flags": "8|(1<<16)|(1<<15)",
-        "help": "set input level",
-        "max": 1.0,
-        "min": 0.0,
-        "name": "level",
-        "type": "AV_OPT_TYPE_DOUBLE",
-        "unit": null
-      }
-    ]
+    "options": []
   },
   {
     "description": "Apply high order Butterworth band-pass filter.",

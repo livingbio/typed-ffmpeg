@@ -1,0 +1,12 @@
+[
+  {
+    "description": "Scale the input video size and/or convert the image format.",
+    "name": "scale",
+    "options": []
+  },
+  {
+    "description": "Scale the input video size and/or convert the image format to the given reference.",
+    "name": "scale2ref",
+    "options": []
+  }
+]
