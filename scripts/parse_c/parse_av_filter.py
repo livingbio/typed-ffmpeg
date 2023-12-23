@@ -14,10 +14,11 @@ def parse_av_filter(text: str) -> dict[str, AVFilter]:
                 continue
 
             var, value = desc.split("=", 1)
-            config[var.strip()] = value.strip()
+            config[var.strip()] = value.strip('" ')
 
         output[filter] = AVFilter(
-            name=config[".name"].strip('"'),
-            description=config[".description"].strip('"'),
+            name=config[".name"],
+            description=config[".description"],
+            priv_class=config[".priv_class"],
         )
     return output

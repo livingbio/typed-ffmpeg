@@ -2,21 +2,25 @@
   "ff_af_asubcut": {
     "description": "Cut subwoofer frequencies.",
     "name": "asubcut",
-    "options": []
+    "options": [],
+    "priv_class": "&asubcut_class"
   },
   "ff_af_asupercut": {
     "description": "Cut super frequencies.",
     "name": "asupercut",
-    "options": []
+    "options": [],
+    "priv_class": "&asupercut_class"
   },
   "ff_af_asuperpass": {
     "description": "Apply high order Butterworth band-pass filter.",
     "name": "asuperpass",
-    "options": []
+    "options": [],
+    "priv_class": "&asuperpass_asuperstop_class"
   },
   "ff_af_asuperstop": {
     "description": "Apply high order Butterworth band-stop filter.",
     "name": "asuperstop",
-    "options": []
+    "options": [],
+    "priv_class": "&asuperpass_asuperstop_class"
   }
 }

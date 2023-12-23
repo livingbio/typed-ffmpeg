@@ -3,7 +3,9 @@ import re
 
 import jinja2
 
+from .parse_av_class import parse_av_class
 from .parse_av_filter import parse_av_filter
+from .parse_av_filter_pad import parse_av_filter_pad
 from .parse_av_option import parse_av_option
 from .schema import AVFilter
 
@@ -14,6 +16,7 @@ def parse_c(path: pathlib.Path) -> list[AVFilter]:
     with path.open() as f:
         code = f.read()
 
+    # FIXME: remove MARCO preprocessor
     macro_pattern = r'WIN_FUNC_OPTION\("([^"]+)", ([^,]+), ([^,]+), ([^)]+)\)'
 
     def win_func_option(win_func_opt_name, win_func_offset, flag, default_window_func) -> str:
@@ -43,9 +46,14 @@ def extract_av_filter(text: str) -> list[AVFilter]:
 
     av_options = parse_av_option(text)
     av_filters = parse_av_filter(text)
+    av_classes = parse_av_class(text)
+    parse_av_filter_pad(text)
 
     for av_filter in av_filters.values():
-        av_filter.options = av_options.get(av_filter.name, [])
+        av_class = av_classes[av_filter.priv_class.strip("&")]
+        av_option = av_options[av_class.option]
+
+        av_filter.options = av_option
         output.append(av_filter)
 
     return output
