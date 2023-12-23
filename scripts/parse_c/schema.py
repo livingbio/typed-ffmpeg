@@ -53,18 +53,18 @@ class AVFilter(pydantic.BaseModel):
     name: str
     description: str
 
-    preinit: str
-    init: str
-    uninit: str
-    priv_size: str
-    activate: str
-    inputs: str
-    nb_inputs: str
-    outputs: str
-    nb_outputs: str
-    priv_class: str
-    flags: str
-    process_command: str
+    # preinit: str
+    # init: str
+    # uninit: str
+    # priv_size: str
+    # activate: str
+    # inputs: str
+    # nb_inputs: str
+    # outputs: str
+    # nb_outputs: str
+    # priv_class: str
+    # flags: str
+    # process_command: str
 
     options: list[AVOption] = []
 

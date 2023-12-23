@@ -121,14 +121,19 @@ def parse_av_filter_def(text: str) -> list[AVFilter]:
             var, value = desc.split("=", 1)
             config[var.strip()] = value.strip()
 
-        output.append(AVFilter(name=config[".name"].strip('"'), description=config[".description"].strip('"')))
+        output.append(
+            AVFilter(
+                name=config[".name"].strip('"'),
+                description=config[".description"].strip('"'),
+            )
+        )
     return output
 
 
 def parse_av_options_def(text: str) -> dict[str, list[AVOption]]:
     output = {}
     for filter, option_str in re.findall(
-        r"static const AVOption ([\w\_]+)_options\[\] = ({.*?});", text, re.DOTALL | re.MULTILINE
+        r"static const AVOption ([\w\_]+)\[\] = ({.*?});", text, re.DOTALL | re.MULTILINE
     ):
         output[filter] = parse_av_option(option_str)
     return output

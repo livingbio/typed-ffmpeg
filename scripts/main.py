@@ -125,8 +125,7 @@ def parse_filters(root: pathlib.Path, allfilter_c: pathlib.Path) -> None:
 
     for f in parsed_filters:
         if len(f.options) == 0:
-            # print(f"WARNING: {f.name} has no options")
-            print(f"- [ ] {f.name} has no options")
+            print(f"WARNING: {f.name} has no options")
 
 
 if __name__ == "__main__":

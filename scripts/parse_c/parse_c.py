@@ -3,7 +3,8 @@ import re
 
 import jinja2
 
-from .parse_option import parse_av_filter_def, parse_av_options_def
+from .parse_av_filter import parse_av_filter_def
+from .parse_av_option import parse_av_options_def
 from .schema import AVFilter
 
 template_path = pathlib.Path(__file__).parent / "templates"
