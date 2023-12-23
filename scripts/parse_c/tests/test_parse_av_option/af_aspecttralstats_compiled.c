@@ -1,0 +1,22 @@
+{
+    { "win_size", "set the window size", __builtin_offsetof(AudioSpectralStatsContext, win_size), AV_OPT_TYPE_INT, {.i64=2048}, 32, 65536, 8|(1<<16) },
+    { "win_func", "set window function", __builtin_offsetof(AudioSpectralStatsContext, win_func), AV_OPT_TYPE_INT, {.i64 = WFUNC_HANNING}, 0, NB_WFUNC-1, 8|(1<<16), "win_func" }, { "rect", "Rectangular", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_RECT}, 0, 0, 8|(1<<16), "win_func" }, { "bartlett", "Bartlett", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BARTLETT}, 0, 0, 8|(1<<16), "win_func" }, { "hann", "Hann", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HANNING}, 0, 0, 8|(1<<16), "win_func" }, { "hanning", "Hanning", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HANNING}, 0, 0, 8|(1<<16), "win_func" }, { "hamming", "Hamming", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HAMMING}, 0, 0, 8|(1<<16), "win_func" }, { "blackman", "Blackman", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BLACKMAN}, 0, 0, 8|(1<<16), "win_func" }, { "welch", "Welch", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_WELCH}, 0, 0, 8|(1<<16), "win_func" }, { "flattop", "Flat-top", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_FLATTOP}, 0, 0, 8|(1<<16), "win_func" }, { "bharris", "Blackman-Harris", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BHARRIS}, 0, 0, 8|(1<<16), "win_func" }, { "bnuttall", "Blackman-Nuttall", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BNUTTALL}, 0, 0, 8|(1<<16), "win_func" }, { "bhann", "Bartlett-Hann", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BHANN}, 0, 0, 8|(1<<16), "win_func" }, { "sine", "Sine", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_SINE}, 0, 0, 8|(1<<16), "win_func" }, { "nuttall", "Nuttall", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_NUTTALL}, 0, 0, 8|(1<<16), "win_func" }, { "lanczos", "Lanczos", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_LANCZOS}, 0, 0, 8|(1<<16), "win_func" }, { "gauss", "Gauss", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_GAUSS}, 0, 0, 8|(1<<16), "win_func" }, { "tukey", "Tukey", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_TUKEY}, 0, 0, 8|(1<<16), "win_func" }, { "dolph", "Dolph-Chebyshev", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_DOLPH}, 0, 0, 8|(1<<16), "win_func" }, { "cauchy", "Cauchy", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_CAUCHY}, 0, 0, 8|(1<<16), "win_func" }, { "parzen", "Parzen", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_PARZEN}, 0, 0, 8|(1<<16), "win_func" }, { "poisson", "Poisson", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_POISSON}, 0, 0, 8|(1<<16), "win_func" }, { "bohman", "Bohman", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BOHMAN}, 0, 0, 8|(1<<16), "win_func" }, { "kaiser", "Kaiser", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_KAISER}, 0, 0, 8|(1<<16), "win_func" },
+    { "overlap", "set window overlap", __builtin_offsetof(AudioSpectralStatsContext, overlap), AV_OPT_TYPE_FLOAT, {.dbl=0.5}, 0, 1, 8|(1<<16) },
+    { "measure", "select the parameters which are measured", __builtin_offsetof(AudioSpectralStatsContext, measure), AV_OPT_TYPE_FLAGS, {.i64=(2147483647 *2U +1U)}, 0, (2147483647 *2U +1U), 8|(1<<16), "measure" },
+    { "none", "", 0, AV_OPT_TYPE_CONST, {.i64=0 }, 0, 0, 8|(1<<16), "measure" },
+    { "all", "", 0, AV_OPT_TYPE_CONST, {.i64=(2147483647 *2U +1U) }, 0, 0, 8|(1<<16), "measure" },
+    { "mean", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 0) }, 0, 0, 8|(1<<16), "measure" },
+    { "variance", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 1)}, 0, 0, 8|(1<<16), "measure" },
+    { "centroid", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 2)}, 0, 0, 8|(1<<16), "measure" },
+    { "spread", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 3) }, 0, 0, 8|(1<<16), "measure" },
+    { "skewness", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 4)}, 0, 0, 8|(1<<16), "measure" },
+    { "kurtosis", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 5)}, 0, 0, 8|(1<<16), "measure" },
+    { "entropy", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 6) }, 0, 0, 8|(1<<16), "measure" },
+    { "flatness", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 7)}, 0, 0, 8|(1<<16), "measure" },
+    { "crest", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 8) }, 0, 0, 8|(1<<16), "measure" },
+    { "flux", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 9) }, 0, 0, 8|(1<<16), "measure" },
+    { "slope", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 10) }, 0, 0, 8|(1<<16), "measure" },
+    { "decrease", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 11)}, 0, 0, 8|(1<<16), "measure" },
+    { "rolloff", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 12) }, 0, 0, 8|(1<<16), "measure" },
+    { ((void*)0) }
+}

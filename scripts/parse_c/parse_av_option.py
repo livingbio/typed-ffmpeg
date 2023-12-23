@@ -77,6 +77,8 @@ def _parse_av_option(text: str) -> list[AVOption]:
                 # { "w", "Output video width", __builtin_offsetof(ScaleContext, w_expr), AV_OPT_TYPE_STRING, .flags = 16|(1<<16)|(1<<15) },
                 name, help, offset, _type, flags = option_line
                 output.append(_eval_avoption(name, help, offset, _type, flags=_p(flags, "flags")))
+            case _ if len(option_line) > 4:
+                raise NotImplementedError(option_line)
             case _:
                 print(option_line)
 

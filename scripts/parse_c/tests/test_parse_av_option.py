@@ -7,7 +7,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from ..helper import dump
 from ..parse_av_option import parse_av_option
 
-folder = pathlib.Path(__file__).parent / "test_parse_option"
+folder = pathlib.Path(__file__).parent / "test_parse_av_option"
 
 
 @pytest.mark.parametrize("filepath", folder.glob("*.c"), ids=lambda path: path.stem)
