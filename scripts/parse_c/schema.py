@@ -32,9 +32,40 @@ class Option(pydantic.BaseModel):
     choices: list[Choice] = []
 
 
+class AVFilterPad(pydantic.BaseModel):
+    name: str
+    type: str
+
+
+class AVClass(pydantic.BaseModel):
+    class_name: str
+    item_name: str
+    option: str
+    version: str
+    log_level_offset_offset: str
+    parent_log_context_offset: str
+    child_next: str
+    child_class_next: str
+    category: str
+
+
 class AVFilter(pydantic.BaseModel):
     name: str
     description: str
+
+    preinit: str
+    init: str
+    uninit: str
+    priv_size: str
+    activate: str
+    inputs: str
+    nb_inputs: str
+    outputs: str
+    nb_outputs: str
+    priv_class: str
+    flags: str
+    process_command: str
+
     options: list[AVOption] = []
 
     @cached_property
