@@ -3,7 +3,7 @@ import re
 
 import jinja2
 
-from .parse_av_filter import parse_av_filter_def
+from .parse_av_filter import parse_av_filter
 from .parse_av_option import parse_av_options_def
 from .schema import AVFilter
 
@@ -42,7 +42,7 @@ def extract_av_filter(text: str) -> list[AVFilter]:
     output = []
 
     av_options = parse_av_options_def(text)
-    av_filters = parse_av_filter_def(text)
+    av_filters = parse_av_filter(text)
 
     for av_filter in av_filters:
         av_filter.options = av_options.get(av_filter.name, [])

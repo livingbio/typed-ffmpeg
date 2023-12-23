@@ -1,0 +1,22 @@
+[
+  {
+    "description": "Cut super frequencies.",
+    "name": "asupercut",
+    "options": []
+  },
+  {
+    "description": "Cut subwoofer frequencies.",
+    "name": "asubcut",
+    "options": []
+  },
+  {
+    "description": "Apply high order Butterworth band-pass filter.",
+    "name": "asuperpass",
+    "options": []
+  },
+  {
+    "description": "Apply high order Butterworth band-stop filter.",
+    "name": "asuperstop",
+    "options": []
+  }
+]
