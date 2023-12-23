@@ -41,12 +41,12 @@ class AVClass(pydantic.BaseModel):
     class_name: str
     item_name: str
     option: str
-    version: str
-    log_level_offset_offset: str
-    parent_log_context_offset: str
-    child_next: str
-    child_class_next: str
-    category: str
+    version: str | None = None
+    log_level_offset_offset: str | None = None
+    parent_log_context_offset: str | None = None
+    child_next: str | None = None
+    child_class_next: str | None = None
+    category: str | None = None
 
 
 class AVFilter(pydantic.BaseModel):
