@@ -6,7 +6,7 @@ from .schema import AVFilter
 
 def parse_av_filter(text: str) -> dict[str, AVFilter]:
     output = {}
-    for filter, filter_desc in re.findall(r"const AVFilter ([\w\_]+) = ({.*?});", text, re.DOTALL | re.MULTILINE):
+    for filter, filter_desc in re.findall(r"const AVFilter ([\w\_]+)\s*=\s*({.*?});", text, re.DOTALL | re.MULTILINE):
         descs: list[str] = parse_c_structure(filter_desc)
         config = {}
         for desc in descs:

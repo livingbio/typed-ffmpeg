@@ -1,0 +1,172 @@
+[
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [
+        {
+          "help": "",
+          "name": "dc_luma",
+          "value": "['.i64=TEST_DC_LUMA']"
+        },
+        {
+          "help": "",
+          "name": "dc_chroma",
+          "value": "['.i64=TEST_DC_CHROMA']"
+        },
+        {
+          "help": "",
+          "name": "freq_luma",
+          "value": "['.i64=TEST_FREQ_LUMA']"
+        },
+        {
+          "help": "",
+          "name": "freq_chroma",
+          "value": "['.i64=TEST_FREQ_CHROMA']"
+        },
+        {
+          "help": "",
+          "name": "amp_luma",
+          "value": "['.i64=TEST_AMP_LUMA']"
+        },
+        {
+          "help": "",
+          "name": "amp_chroma",
+          "value": "['.i64=TEST_AMP_CHROMA']"
+        },
+        {
+          "help": "",
+          "name": "cbp",
+          "value": "['.i64=TEST_CBP']"
+        },
+        {
+          "help": "",
+          "name": "mv",
+          "value": "['.i64=TEST_MV']"
+        },
+        {
+          "help": "",
+          "name": "ring1",
+          "value": "['.i64=TEST_RING1']"
+        },
+        {
+          "help": "",
+          "name": "ring2",
+          "value": "['.i64=TEST_RING2']"
+        },
+        {
+          "help": "",
+          "name": "all",
+          "value": "['.i64=TEST_ALL']"
+        }
+      ],
+      "default": "['.i64=TEST_ALL']",
+      "help": "set test to perform",
+      "name": "test",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [
+        {
+          "help": "",
+          "name": "dc_luma",
+          "value": "['.i64=TEST_DC_LUMA']"
+        },
+        {
+          "help": "",
+          "name": "dc_chroma",
+          "value": "['.i64=TEST_DC_CHROMA']"
+        },
+        {
+          "help": "",
+          "name": "freq_luma",
+          "value": "['.i64=TEST_FREQ_LUMA']"
+        },
+        {
+          "help": "",
+          "name": "freq_chroma",
+          "value": "['.i64=TEST_FREQ_CHROMA']"
+        },
+        {
+          "help": "",
+          "name": "amp_luma",
+          "value": "['.i64=TEST_AMP_LUMA']"
+        },
+        {
+          "help": "",
+          "name": "amp_chroma",
+          "value": "['.i64=TEST_AMP_CHROMA']"
+        },
+        {
+          "help": "",
+          "name": "cbp",
+          "value": "['.i64=TEST_CBP']"
+        },
+        {
+          "help": "",
+          "name": "mv",
+          "value": "['.i64=TEST_MV']"
+        },
+        {
+          "help": "",
+          "name": "ring1",
+          "value": "['.i64=TEST_RING1']"
+        },
+        {
+          "help": "",
+          "name": "ring2",
+          "value": "['.i64=TEST_RING2']"
+        },
+        {
+          "help": "",
+          "name": "all",
+          "value": "['.i64=TEST_ALL']"
+        }
+      ],
+      "default": "['.i64=TEST_ALL']",
+      "help": "set test to perform",
+      "name": "t",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = 30']",
+      "help": "Set the maximum number of frames generated for each test",
+      "name": "max_frames",
+      "type": "AV_OPT_TYPE_INT64"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = 30']",
+      "help": "Set the maximum number of frames generated for each test",
+      "name": "m",
+      "type": "AV_OPT_TYPE_INT64"
+    }
+  ]
+]

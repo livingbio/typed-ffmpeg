@@ -6,7 +6,9 @@ from .schema import AVClass
 
 def parse_av_class(text: str) -> dict[str, AVClass]:
     output = {}
-    for filter, filter_desc in re.findall(r"static const AVClass ([\w\_]+) = ({.*?});", text, re.DOTALL | re.MULTILINE):
+    for filter, filter_desc in re.findall(
+        r"static const AVClass ([\w\_]+)\s*=\s*({.*?});", text, re.DOTALL | re.MULTILINE
+    ):
         descs: list[str] = parse_c_structure(filter_desc)
         config = {}
         for desc in descs:

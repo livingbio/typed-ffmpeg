@@ -92,7 +92,7 @@ def _parse_av_option(text: str) -> list[AVOption]:
 def parse_av_option(text: str) -> dict[str, list[AVOption]]:
     output = {}
     for filter, option_str in re.findall(
-        r"static const AVOption ([\w\_]+)\[\] = ({.*?});", text, re.DOTALL | re.MULTILINE
+        r"static const AVOption ([\w\_]+)\[\]\s*=\s*({.*?});", text, re.DOTALL | re.MULTILINE
     ):
         output[filter] = _parse_av_option(option_str)
     return output
