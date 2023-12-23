@@ -109,7 +109,7 @@ def parse_av_option(text: str) -> list[AVOption]:
     return output
 
 
-def parse_av_filter(text: str) -> list[AVFilter]:
+def parse_av_filter_def(text: str) -> list[AVFilter]:
     output = []
     for filter, filter_desc in re.findall(r"const AVFilter ([\w\_]+) = ({.*?});", text, re.DOTALL | re.MULTILINE):
         descs: list[str] = parse_option_str(filter_desc)
@@ -125,23 +125,10 @@ def parse_av_filter(text: str) -> list[AVFilter]:
     return output
 
 
-def parse_av_options(text: str) -> dict[str, list[AVOption]]:
+def parse_av_options_def(text: str) -> dict[str, list[AVOption]]:
     output = {}
     for filter, option_str in re.findall(
         r"static const AVOption ([\w\_]+)_options\[\] = ({.*?});", text, re.DOTALL | re.MULTILINE
     ):
         output[filter] = parse_av_option(option_str)
-    return output
-
-
-def extract_av_options(text: str) -> list[AVFilter]:
-    output = []
-
-    av_options = parse_av_options(text)
-    av_filters = parse_av_filter(text)
-
-    for av_filter in av_filters:
-        av_filter.options = av_options.get(av_filter.name, [])
-        output.append(av_filter)
-
     return output

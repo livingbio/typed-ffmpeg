@@ -123,6 +123,10 @@ def parse_filters(root: pathlib.Path, allfilter_c: pathlib.Path) -> None:
     print(f"not exists filters {parsed_filter_names - all_filter_names}")
     print(f"not found filters {all_filter_names - parsed_filter_names}")
 
+    for f in parsed_filters:
+        if len(f.options) == 0:
+            print(f"WARNING: {f.name} has no options")
+
 
 if __name__ == "__main__":
     app()

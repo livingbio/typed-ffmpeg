@@ -3,7 +3,7 @@ import re
 
 import jinja2
 
-from .parse_option import extract_av_options
+from .parse_option import parse_av_filter_def, parse_av_options_def
 from .schema import AVFilter
 
 template_path = pathlib.Path(__file__).parent / "templates"
@@ -34,7 +34,20 @@ def parse_c(path: pathlib.Path) -> list[AVFilter]:
 
     # Replace the macro in the string
     code = re.sub(macro_pattern, replace_macro, code)
-    return extract_av_options(code)
+    return extract_av_filter(code)
+
+
+def extract_av_filter(text: str) -> list[AVFilter]:
+    output = []
+
+    av_options = parse_av_options_def(text)
+    av_filters = parse_av_filter_def(text)
+
+    for av_filter in av_filters:
+        av_filter.options = av_options.get(av_filter.name, [])
+        output.append(av_filter)
+
+    return output
 
 
 def parse_all_filter_names(path: pathlib.Path) -> list[tuple[str, str]]:
