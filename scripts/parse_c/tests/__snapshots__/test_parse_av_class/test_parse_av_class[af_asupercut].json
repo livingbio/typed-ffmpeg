@@ -1,16 +1,5 @@
-[
-  {
-    "category": "AV_CLASS_CATEGORY_FILTER",
-    "child_class_next": null,
-    "child_next": null,
-    "class_name": "asupercut",
-    "item_name": "av_default_item_name",
-    "log_level_offset_offset": null,
-    "option": "asupercut_options",
-    "parent_log_context_offset": null,
-    "version": "((58)<<16 | (36)<<8 | (100))"
-  },
-  {
+{
+  "asubcut_class": {
     "category": "AV_CLASS_CATEGORY_FILTER",
     "child_class_next": null,
     "child_next": null,
@@ -21,7 +10,18 @@
     "parent_log_context_offset": null,
     "version": "((58)<<16 | (36)<<8 | (100))"
   },
-  {
+  "asupercut_class": {
+    "category": "AV_CLASS_CATEGORY_FILTER",
+    "child_class_next": null,
+    "child_next": null,
+    "class_name": "asupercut",
+    "item_name": "av_default_item_name",
+    "log_level_offset_offset": null,
+    "option": "asupercut_options",
+    "parent_log_context_offset": null,
+    "version": "((58)<<16 | (36)<<8 | (100))"
+  },
+  "asuperpass_asuperstop_class": {
     "category": "AV_CLASS_CATEGORY_FILTER",
     "child_class_next": null,
     "child_next": null,
@@ -32,4 +32,4 @@
     "parent_log_context_offset": null,
     "version": "((58)<<16 | (36)<<8 | (100))"
   }
-]
+}

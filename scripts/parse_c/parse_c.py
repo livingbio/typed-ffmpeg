@@ -44,7 +44,7 @@ def extract_av_filter(text: str) -> list[AVFilter]:
     av_options = parse_av_option(text)
     av_filters = parse_av_filter(text)
 
-    for av_filter in av_filters:
+    for av_filter in av_filters.values():
         av_filter.options = av_options.get(av_filter.name, [])
         output.append(av_filter)
 
