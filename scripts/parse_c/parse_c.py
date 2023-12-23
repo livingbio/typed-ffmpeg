@@ -4,7 +4,7 @@ import re
 import jinja2
 
 from .parse_av_filter import parse_av_filter
-from .parse_av_option import parse_av_options_def
+from .parse_av_option import parse_av_option
 from .schema import AVFilter
 
 template_path = pathlib.Path(__file__).parent / "templates"
@@ -41,7 +41,7 @@ def parse_c(path: pathlib.Path) -> list[AVFilter]:
 def extract_av_filter(text: str) -> list[AVFilter]:
     output = []
 
-    av_options = parse_av_options_def(text)
+    av_options = parse_av_option(text)
     av_filters = parse_av_filter(text)
 
     for av_filter in av_filters:

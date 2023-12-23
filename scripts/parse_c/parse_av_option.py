@@ -1,58 +1,12 @@
 import re
-from typing import Any
 
-from .schema import AVFilter, AVOption
-
-
-def parse_option_str(text: str) -> list[Any]:
-
-    buffer = ""
-    level = 0
-    output = []
-    in_text = False
-    in_bracket = False
-
-    text = text.strip()
-
-    for idx, ch in enumerate(text):
-        match ch:
-            case '"' if text[idx - 1] != "\\":
-                in_text = not in_text
-                buffer += ch
-            case "(" if not in_text:
-                in_bracket = True
-                buffer += ch
-            case ")" if not in_text and in_bracket:
-                in_bracket = False
-                buffer += ch
-            case "," if not in_text and not in_bracket and level == 1:
-                if buffer.strip():
-                    output.append(buffer.strip())
-                buffer = ""
-            case "{" if not in_text and not in_bracket:
-                level += 1
-                if level > 1:
-                    buffer += ch
-            case "}" if not in_text and not in_bracket:
-                level -= 1
-
-                if level == 1:
-                    output.append(parse_option_str(buffer))
-                    buffer = ""
-                elif level > 1:
-                    buffer += ch
-            case _:
-                buffer += ch
-
-    if buffer.strip():
-        output.append(buffer.strip())
-
-    return output
+from .parse_c_structure import parse_c_structure
+from .schema import AVOption
 
 
-def parse_av_option(text: str) -> list[AVOption]:
+def _parse_av_option(text: str) -> list[AVOption]:
     # the meaning of option_str please see libavutil/opt.h::AVOption
-    option_lines = parse_option_str(text)
+    option_lines = parse_c_structure(text)
 
     output: list[AVOption] = []
 
@@ -109,31 +63,10 @@ def parse_av_option(text: str) -> list[AVOption]:
     return output
 
 
-def parse_av_filter_def(text: str) -> list[AVFilter]:
-    output = []
-    for filter, filter_desc in re.findall(r"const AVFilter ([\w\_]+) = ({.*?});", text, re.DOTALL | re.MULTILINE):
-        descs: list[str] = parse_option_str(filter_desc)
-        config = {}
-        for desc in descs:
-            if "=" not in desc:
-                continue
-
-            var, value = desc.split("=", 1)
-            config[var.strip()] = value.strip()
-
-        output.append(
-            AVFilter(
-                name=config[".name"].strip('"'),
-                description=config[".description"].strip('"'),
-            )
-        )
-    return output
-
-
-def parse_av_options_def(text: str) -> dict[str, list[AVOption]]:
+def parse_av_option(text: str) -> dict[str, list[AVOption]]:
     output = {}
     for filter, option_str in re.findall(
         r"static const AVOption ([\w\_]+)\[\] = ({.*?});", text, re.DOTALL | re.MULTILINE
     ):
-        output[filter] = parse_av_option(option_str)
+        output[filter] = _parse_av_option(option_str)
     return output
