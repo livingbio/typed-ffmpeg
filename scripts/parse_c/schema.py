@@ -70,15 +70,17 @@ class AVFilter(pydantic.BaseModel):
     # uninit: str
     # priv_size: str
     # activate: str
-    # inputs: str
+    inputs: str | None = None
     # nb_inputs: str
-    # outputs: str
+    outputs: str | None = None
     # nb_outputs: str
     priv_class: str | None = None
     flags: int
     # process_command: str
 
     options: list[AVOption] = []
+    input_filter_pad: AVFilterPad | None = None
+    output_filter_pad: AVFilterPad | None = None
 
     @property
     def is_dynamic_inputs(self) -> bool:

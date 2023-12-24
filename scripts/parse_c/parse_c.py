@@ -71,7 +71,7 @@ def extract_av_filter(text: str) -> list[AVFilter]:
     av_options = parse_av_option(text)
     av_filters = parse_av_filter(text)
     av_classes = parse_av_class(text)
-    parse_av_filter_pad(text)
+    av_filter_pads = parse_av_filter_pad(text)
 
     for av_filter in av_filters.values():
         if av_filter.priv_class:
@@ -81,6 +81,12 @@ def extract_av_filter(text: str) -> list[AVFilter]:
                 if option_name:
                     av_option = av_options[option_name][offset:]
                     av_filter.options = av_option
+
+        if av_filter.inputs:
+            av_filter.input_filter_pad = av_filter_pads[av_filter.inputs.strip("()")]
+
+        if av_filter.outputs:
+            av_filter.output_filter_pad = av_filter_pads[av_filter.outputs.strip("()")]
 
         output.append(av_filter)
 

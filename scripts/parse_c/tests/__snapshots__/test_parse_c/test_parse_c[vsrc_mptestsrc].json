@@ -2,6 +2,8 @@
   {
     "description": "Generate various test pattern.",
     "flags": 0,
+    "input_filter_pad": null,
+    "inputs": null,
     "name": "mptestsrc",
     "options": [
       {
@@ -214,6 +216,11 @@
         "unit": null
       }
     ],
+    "output_filter_pad": {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    "outputs": "(mptestsrc_outputs)",
     "priv_class": "&mptestsrc_class"
   }
 ]

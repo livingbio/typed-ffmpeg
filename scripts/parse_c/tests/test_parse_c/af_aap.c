@@ -1,28 +1,13 @@
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c"
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 418 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
-# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c"
-# 1 "./libavutil/attributes.h" 1
-# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
-# 1 "./libavutil/avstring.h" 1
-# 24 "./libavutil/avstring.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 35 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 3
-typedef long int ptrdiff_t;
-# 46 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 3
-typedef long unsigned int size_t;
-# 74 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 3
-typedef int wchar_t;
-# 103 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 3
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/__stddef_max_align_t.h" 1 3
-# 16 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/__stddef_max_align_t.h" 3
-typedef long double max_align_t;
-# 104 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 2 3
-# 25 "./libavutil/avstring.h" 2
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
+# 21 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c"
+# 1 "./libavutil/channel_layout.h" 1
+# 25 "./libavutil/channel_layout.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 1 3
 # 52 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 3
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 1 3 4
@@ -325,146 +310,7 @@ typedef long int intmax_t;
 typedef long unsigned int uintmax_t;
 # 60 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
 # 53 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 2 3
-# 26 "./libavutil/avstring.h" 2
-# 42 "./libavutil/avstring.h"
-int av_strstart(const char *str, const char *pfx, const char **ptr);
-# 54 "./libavutil/avstring.h"
-int av_stristart(const char *str, const char *pfx, const char **ptr);
-# 68 "./libavutil/avstring.h"
-char *av_stristr(const char *haystack, const char *needle);
-# 83 "./libavutil/avstring.h"
-char *av_strnstr(const char *haystack, const char *needle, size_t hay_length);
-# 100 "./libavutil/avstring.h"
-size_t av_strlcpy(char *dst, const char *src, size_t size);
-# 118 "./libavutil/avstring.h"
-size_t av_strlcat(char *dst, const char *src, size_t size);
-# 132 "./libavutil/avstring.h"
-size_t av_strlcatf(char *dst, size_t size, const char *fmt, ...) __attribute__((__format__(__printf__, 3, 4)));
-# 141 "./libavutil/avstring.h"
-static inline size_t av_strnlen(const char *s, size_t len)
-{
-    size_t i;
-    for (i = 0; i < len && s[i]; i++)
-        ;
-    return i;
-}
-# 157 "./libavutil/avstring.h"
-char *av_asprintf(const char *fmt, ...) __attribute__((__format__(__printf__, 1, 2)));
-# 173 "./libavutil/avstring.h"
-char *av_get_token(const char **buf, const char *term);
-# 197 "./libavutil/avstring.h"
-char *av_strtok(char *s, const char *delim, char **saveptr);
-
-
-
-
-static inline __attribute__((const)) int av_isdigit(int c)
-{
-    return c >= '0' && c <= '9';
-}
-
-
-
-
-static inline __attribute__((const)) int av_isgraph(int c)
-{
-    return c > 32 && c < 127;
-}
-
-
-
-
-static inline __attribute__((const)) int av_isspace(int c)
-{
-    return c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' ||
-           c == '\v';
-}
-
-
-
-
-static inline __attribute__((const)) int av_toupper(int c)
-{
-    if (c >= 'a' && c <= 'z')
-        c ^= 0x20;
-    return c;
-}
-
-
-
-
-static inline __attribute__((const)) int av_tolower(int c)
-{
-    if (c >= 'A' && c <= 'Z')
-        c ^= 0x20;
-    return c;
-}
-
-
-
-
-static inline __attribute__((const)) int av_isxdigit(int c)
-{
-    c = av_tolower(c);
-    return av_isdigit(c) || (c >= 'a' && c <= 'f');
-}
-
-
-
-
-
-int av_strcasecmp(const char *a, const char *b);
-
-
-
-
-
-int av_strncasecmp(const char *a, const char *b, size_t n);
-
-
-
-
-
-char *av_strireplace(const char *str, const char *from, const char *to);
-# 279 "./libavutil/avstring.h"
-const char *av_basename(const char *path);
-# 289 "./libavutil/avstring.h"
-const char *av_dirname(char *path);
-# 302 "./libavutil/avstring.h"
-int av_match_name(const char *name, const char *names);
-# 312 "./libavutil/avstring.h"
-char *av_append_path_component(const char *path, const char *component);
-
-enum AVEscapeMode {
-    AV_ESCAPE_MODE_AUTO,
-    AV_ESCAPE_MODE_BACKSLASH,
-    AV_ESCAPE_MODE_QUOTE,
-    AV_ESCAPE_MODE_XML,
-};
-# 367 "./libavutil/avstring.h"
-__attribute__((warn_unused_result))
-int av_escape(char **dst, const char *src, const char *special_chars,
-              enum AVEscapeMode mode, int flags);
-# 407 "./libavutil/avstring.h"
-__attribute__((warn_unused_result))
-int av_utf8_decode(int32_t *codep, const uint8_t **bufp, const uint8_t *buf_end,
-                   unsigned int flags);
-
-
-
-
-
-
-int av_match_list(const char *name, const char *list, char separator);
-
-
-
-
-
-int av_sscanf(const char *string, const char *format, ...);
-# 28 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
-# 1 "./libavutil/channel_layout.h" 1
-# 26 "./libavutil/channel_layout.h"
+# 26 "./libavutil/channel_layout.h" 2
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h" 1 3 4
 # 61 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 1 3 4
@@ -690,6 +536,8 @@ typedef struct __darwin_ucontext ucontext_t;
 typedef __darwin_sigset_t sigset_t;
 # 155 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/signal.h" 2 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 1 3 4
+# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 3 4
+typedef __darwin_size_t size_t;
 # 156 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/signal.h" 2 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uid_t.h" 1 3 4
 # 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uid_t.h" 3 4
@@ -1248,11 +1096,7 @@ pid_t wait4(pid_t, int *, int, struct rusage *);
 # 67 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h" 2 3 4
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/alloca.h" 1 3 4
-# 29 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/alloca.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/alloca.h" 2 3 4
-
-
+# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/alloca.h" 3 4
 void *alloca(size_t);
 # 69 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h" 2 3 4
 
@@ -1260,8 +1104,7 @@ void *alloca(size_t);
 
 
 
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 1 3 4
-# 75 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h" 2 3 4
+
 
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ct_rune_t.h" 1 3 4
@@ -1275,6 +1118,8 @@ typedef __darwin_rune_t rune_t;
 
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h" 1 3 4
+# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h" 3 4
+typedef __darwin_wchar_t wchar_t;
 # 82 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h" 2 3 4
 
 typedef struct {
@@ -1300,22 +1145,9 @@ typedef struct {
 extern int __mb_cur_max;
 # 128 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h" 1 3 4
-# 36 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 1 3 4
-# 37 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h" 2 3 4
-
+# 38 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc_type.h" 1 3 4
-# 37 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc_type.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 1 3 4
-# 38 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc_type.h" 2 3 4
-
-
-
-
-
-
-
-
+# 46 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc_type.h" 3 4
 typedef unsigned long long malloc_type_id_t;
 
 __attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_malloc(size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1)));
@@ -1590,6 +1422,8 @@ extern char *suboptarg;
 # 29 "./libavutil/macros.h" 2
 # 31 "./libavutil/version.h" 2
 # 29 "./libavutil/channel_layout.h" 2
+# 1 "./libavutil/attributes.h" 1
+# 30 "./libavutil/channel_layout.h" 2
 # 47 "./libavutil/channel_layout.h"
 enum AVChannel {
 
@@ -1845,93 +1679,76 @@ uint64_t av_channel_layout_subset(const AVChannelLayout *channel_layout,
 int av_channel_layout_check(const AVChannelLayout *channel_layout);
 # 805 "./libavutil/channel_layout.h"
 int av_channel_layout_compare(const AVChannelLayout *chl, const AVChannelLayout *chl1);
-# 29 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
-# 1 "./libavutil/eval.h" 1
-# 29 "./libavutil/eval.h"
-typedef struct AVExpr AVExpr;
-# 50 "./libavutil/eval.h"
-int av_expr_parse_and_eval(double *res, const char *s,
-                           const char * const *const_names, const double *const_values,
-                           const char * const *func1_names, double (* const *funcs1)(void *, double),
-                           const char * const *func2_names, double (* const *funcs2)(void *, double, double),
-                           void *opaque, int log_offset, void *log_ctx);
-# 74 "./libavutil/eval.h"
-int av_expr_parse(AVExpr **expr, const char *s,
-                  const char * const *const_names,
-                  const char * const *func1_names, double (* const *funcs1)(void *, double),
-                  const char * const *func2_names, double (* const *funcs2)(void *, double, double),
-                  int log_offset, void *log_ctx);
-# 88 "./libavutil/eval.h"
-double av_expr_eval(AVExpr *e, const double *const_values, void *opaque);
-# 99 "./libavutil/eval.h"
-int av_expr_count_vars(AVExpr *e, unsigned *counter, int size);
-# 114 "./libavutil/eval.h"
-int av_expr_count_func(AVExpr *e, unsigned *counter, int size, int arg);
+# 22 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
+# 1 "./libavutil/common.h" 1
+# 33 "./libavutil/common.h"
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 1 3 4
+# 23 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 1 3 4
+# 76 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h" 3 4
+typedef int errno_t;
+# 77 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 2 3 4
 
 
 
-
-void av_expr_free(AVExpr *e);
-# 138 "./libavutil/eval.h"
-double av_strtod(const char *numstr, char **tail);
-# 30 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
-# 1 "./libavutil/float_dsp.h" 1
-# 22 "./libavutil/float_dsp.h"
-# 1 "./config.h" 1
-# 23 "./libavutil/float_dsp.h" 2
-
-typedef struct AVFloatDSPContext {
-# 38 "./libavutil/float_dsp.h"
-    void (*vector_fmul)(float *dst, const float *src0, const float *src1,
-                        int len);
-# 54 "./libavutil/float_dsp.h"
-    void (*vector_fmac_scalar)(float *dst, const float *src, float mul,
-                               int len);
-# 70 "./libavutil/float_dsp.h"
-    void (*vector_dmac_scalar)(double *dst, const double *src, double mul,
-                               int len);
-# 85 "./libavutil/float_dsp.h"
-    void (*vector_fmul_scalar)(float *dst, const float *src, float mul,
-                               int len);
-# 100 "./libavutil/float_dsp.h"
-    void (*vector_dmul_scalar)(double *dst, const double *src, double mul,
-                               int len);
-# 119 "./libavutil/float_dsp.h"
-    void (*vector_fmul_window)(float *dst, const float *src0,
-                               const float *src1, const float *win, int len);
-# 137 "./libavutil/float_dsp.h"
-    void (*vector_fmul_add)(float *dst, const float *src0, const float *src1,
-                            const float *src2, int len);
-# 154 "./libavutil/float_dsp.h"
-    void (*vector_fmul_reverse)(float *dst, const float *src0,
-                                const float *src1, int len);
-# 164 "./libavutil/float_dsp.h"
-    void (*butterflies_float)(float *restrict v1, float *restrict v2, int len);
-# 175 "./libavutil/float_dsp.h"
-    float (*scalarproduct_float)(const float *v1, const float *v2, int len);
-# 190 "./libavutil/float_dsp.h"
-    void (*vector_dmul)(double *dst, const double *src0, const double *src1,
-                        int len);
-} AVFloatDSPContext;
-# 203 "./libavutil/float_dsp.h"
-float avpriv_scalarproduct_float_c(const float *v1, const float *v2, int len);
-
-void ff_float_dsp_init_aarch64(AVFloatDSPContext *fdsp);
-void ff_float_dsp_init_arm(AVFloatDSPContext *fdsp);
-void ff_float_dsp_init_ppc(AVFloatDSPContext *fdsp, int strict);
-void ff_float_dsp_init_riscv(AVFloatDSPContext *fdsp);
-void ff_float_dsp_init_x86(AVFloatDSPContext *fdsp);
-void ff_float_dsp_init_mips(AVFloatDSPContext *fdsp);
+extern int * __error(void);
+# 24 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 2 3 4
+# 34 "./libavutil/common.h" 2
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 1 3
+# 21 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 3
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 1 3 4
+# 227 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h" 1 3 4
+# 228 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 2 3 4
 
 
 
 
 
 
-AVFloatDSPContext *avpriv_float_dsp_alloc(int strict);
-# 31 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
-# 1 "./libavutil/internal.h" 1
-# 36 "./libavutil/internal.h"
+__attribute__((availability(macosx,introduced=10.4)))
+extern intmax_t
+imaxabs(intmax_t j);
+
+
+typedef struct {
+ intmax_t quot;
+ intmax_t rem;
+} imaxdiv_t;
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern imaxdiv_t
+imaxdiv(intmax_t __numer, intmax_t __denom);
+
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern intmax_t
+strtoimax(const char * restrict __nptr,
+   char ** restrict __endptr,
+   int __base);
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern uintmax_t
+strtoumax(const char * restrict __nptr,
+   char ** restrict __endptr,
+   int __base);
+
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern intmax_t
+wcstoimax(const wchar_t * restrict __nptr,
+   wchar_t ** restrict __endptr,
+   int __base);
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern uintmax_t
+wcstoumax(const wchar_t * restrict __nptr,
+   wchar_t ** restrict __endptr,
+   int __base);
+# 22 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 2 3
+# 35 "./libavutil/common.h" 2
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 1 3
 # 21 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 3
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 1 3 4
@@ -1947,12 +1764,400 @@ AVFloatDSPContext *avpriv_float_dsp_alloc(int strict);
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/syslimits.h" 1 3 4
 # 66 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 2 3 4
 # 22 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 2 3
-# 37 "./libavutil/internal.h" 2
+# 36 "./libavutil/common.h" 2
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 1 3 4
+# 45 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+    typedef float float_t;
+    typedef double double_t;
+# 112 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern int __math_errhandling(void);
+# 132 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern int __fpclassifyf(float);
+extern int __fpclassifyd(double);
+extern int __fpclassifyl(long double);
+# 175 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float);
+inline __attribute__ ((__always_inline__)) int __inline_isfinited(double);
+inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isinff(float);
+inline __attribute__ ((__always_inline__)) int __inline_isinfd(double);
+inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isnanf(float);
+inline __attribute__ ((__always_inline__)) int __inline_isnand(double);
+inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float);
+inline __attribute__ ((__always_inline__)) int __inline_isnormald(double);
+inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double);
+inline __attribute__ ((__always_inline__)) int __inline_signbitf(float);
+inline __attribute__ ((__always_inline__)) int __inline_signbitd(double);
+inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double);
 
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 39 "./libavutil/internal.h" 2
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h" 1 3 4
-# 40 "./libavutil/internal.h" 2
+inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float __x) {
+    return __x == __x && __builtin_fabsf(__x) != __builtin_inff();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isfinited(double __x) {
+    return __x == __x && __builtin_fabs(__x) != __builtin_inf();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double __x) {
+    return __x == __x && __builtin_fabsl(__x) != __builtin_infl();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinff(float __x) {
+    return __builtin_fabsf(__x) == __builtin_inff();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinfd(double __x) {
+    return __builtin_fabs(__x) == __builtin_inf();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double __x) {
+    return __builtin_fabsl(__x) == __builtin_infl();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnanf(float __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnand(double __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_signbitf(float __x) {
+    union { float __f; unsigned int __u; } __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 31);
+}
+inline __attribute__ ((__always_inline__)) int __inline_signbitd(double __x) {
+    union { double __f; unsigned long long __u; } __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 63);
+}
+# 238 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double __x) {
+    union { long double __f; unsigned long long __u;} __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 63);
+}
+
+inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float __x) {
+    return __inline_isfinitef(__x) && __builtin_fabsf(__x) >= 1.17549435e-38F;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnormald(double __x) {
+    return __inline_isfinited(__x) && __builtin_fabs(__x) >= 2.2250738585072014e-308;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double __x) {
+    return __inline_isfinitel(__x) && __builtin_fabsl(__x) >= 2.2250738585072014e-308L;
+}
+# 309 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern float acosf(float);
+extern double acos(double);
+extern long double acosl(long double);
+
+extern float asinf(float);
+extern double asin(double);
+extern long double asinl(long double);
+
+extern float atanf(float);
+extern double atan(double);
+extern long double atanl(long double);
+
+extern float atan2f(float, float);
+extern double atan2(double, double);
+extern long double atan2l(long double, long double);
+
+extern float cosf(float);
+extern double cos(double);
+extern long double cosl(long double);
+
+extern float sinf(float);
+extern double sin(double);
+extern long double sinl(long double);
+
+extern float tanf(float);
+extern double tan(double);
+extern long double tanl(long double);
+
+extern float acoshf(float);
+extern double acosh(double);
+extern long double acoshl(long double);
+
+extern float asinhf(float);
+extern double asinh(double);
+extern long double asinhl(long double);
+
+extern float atanhf(float);
+extern double atanh(double);
+extern long double atanhl(long double);
+
+extern float coshf(float);
+extern double cosh(double);
+extern long double coshl(long double);
+
+extern float sinhf(float);
+extern double sinh(double);
+extern long double sinhl(long double);
+
+extern float tanhf(float);
+extern double tanh(double);
+extern long double tanhl(long double);
+
+extern float expf(float);
+extern double exp(double);
+extern long double expl(long double);
+
+extern float exp2f(float);
+extern double exp2(double);
+extern long double exp2l(long double);
+
+extern float expm1f(float);
+extern double expm1(double);
+extern long double expm1l(long double);
+
+extern float logf(float);
+extern double log(double);
+extern long double logl(long double);
+
+extern float log10f(float);
+extern double log10(double);
+extern long double log10l(long double);
+
+extern float log2f(float);
+extern double log2(double);
+extern long double log2l(long double);
+
+extern float log1pf(float);
+extern double log1p(double);
+extern long double log1pl(long double);
+
+extern float logbf(float);
+extern double logb(double);
+extern long double logbl(long double);
+
+extern float modff(float, float *);
+extern double modf(double, double *);
+extern long double modfl(long double, long double *);
+
+extern float ldexpf(float, int);
+extern double ldexp(double, int);
+extern long double ldexpl(long double, int);
+
+extern float frexpf(float, int *);
+extern double frexp(double, int *);
+extern long double frexpl(long double, int *);
+
+extern int ilogbf(float);
+extern int ilogb(double);
+extern int ilogbl(long double);
+
+extern float scalbnf(float, int);
+extern double scalbn(double, int);
+extern long double scalbnl(long double, int);
+
+extern float scalblnf(float, long int);
+extern double scalbln(double, long int);
+extern long double scalblnl(long double, long int);
+
+extern float fabsf(float);
+extern double fabs(double);
+extern long double fabsl(long double);
+
+extern float cbrtf(float);
+extern double cbrt(double);
+extern long double cbrtl(long double);
+
+extern float hypotf(float, float);
+extern double hypot(double, double);
+extern long double hypotl(long double, long double);
+
+extern float powf(float, float);
+extern double pow(double, double);
+extern long double powl(long double, long double);
+
+extern float sqrtf(float);
+extern double sqrt(double);
+extern long double sqrtl(long double);
+
+extern float erff(float);
+extern double erf(double);
+extern long double erfl(long double);
+
+extern float erfcf(float);
+extern double erfc(double);
+extern long double erfcl(long double);
+
+
+
+
+extern float lgammaf(float);
+extern double lgamma(double);
+extern long double lgammal(long double);
+
+extern float tgammaf(float);
+extern double tgamma(double);
+extern long double tgammal(long double);
+
+extern float ceilf(float);
+extern double ceil(double);
+extern long double ceill(long double);
+
+extern float floorf(float);
+extern double floor(double);
+extern long double floorl(long double);
+
+extern float nearbyintf(float);
+extern double nearbyint(double);
+extern long double nearbyintl(long double);
+
+extern float rintf(float);
+extern double rint(double);
+extern long double rintl(long double);
+
+extern long int lrintf(float);
+extern long int lrint(double);
+extern long int lrintl(long double);
+
+extern float roundf(float);
+extern double round(double);
+extern long double roundl(long double);
+
+extern long int lroundf(float);
+extern long int lround(double);
+extern long int lroundl(long double);
+
+
+
+
+extern long long int llrintf(float);
+extern long long int llrint(double);
+extern long long int llrintl(long double);
+
+extern long long int llroundf(float);
+extern long long int llround(double);
+extern long long int llroundl(long double);
+
+
+extern float truncf(float);
+extern double trunc(double);
+extern long double truncl(long double);
+
+extern float fmodf(float, float);
+extern double fmod(double, double);
+extern long double fmodl(long double, long double);
+
+extern float remainderf(float, float);
+extern double remainder(double, double);
+extern long double remainderl(long double, long double);
+
+extern float remquof(float, float, int *);
+extern double remquo(double, double, int *);
+extern long double remquol(long double, long double, int *);
+
+extern float copysignf(float, float);
+extern double copysign(double, double);
+extern long double copysignl(long double, long double);
+
+extern float nanf(const char *);
+extern double nan(const char *);
+extern long double nanl(const char *);
+
+extern float nextafterf(float, float);
+extern double nextafter(double, double);
+extern long double nextafterl(long double, long double);
+
+extern double nexttoward(double, long double);
+extern float nexttowardf(float, long double);
+extern long double nexttowardl(long double, long double);
+
+extern float fdimf(float, float);
+extern double fdim(double, double);
+extern long double fdiml(long double, long double);
+
+extern float fmaxf(float, float);
+extern double fmax(double, double);
+extern long double fmaxl(long double, long double);
+
+extern float fminf(float, float);
+extern double fmin(double, double);
+extern long double fminl(long double, long double);
+
+extern float fmaf(float, float, float);
+extern double fma(double, double, double);
+extern long double fmal(long double, long double, long double);
+# 589 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern float __exp10f(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __exp10(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+
+
+
+
+
+inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp);
+inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp);
+# 606 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern float __cospif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __cospi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern float __sinpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __sinpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern float __tanpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __tanpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+# 637 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp);
+inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp);
+
+
+
+
+
+
+struct __float2 { float __sinval; float __cosval; };
+struct __double2 { double __sinval; double __cosval; };
+
+extern struct __float2 __sincosf_stret(float);
+extern struct __double2 __sincos_stret(double);
+extern struct __float2 __sincospif_stret(float);
+extern struct __double2 __sincospi_stret(double);
+
+inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp) {
+    const struct __float2 __stret = __sincosf_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp) {
+    const struct __double2 __stret = __sincos_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp) {
+    const struct __float2 __stret = __sincospif_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp) {
+    const struct __double2 __stret = __sincospi_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+
+
+
+
+
+
+extern double j0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double j1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double jn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double y0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double y1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double yn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double scalb(double, double);
+extern int signgam;
+# 764 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+struct exception {
+    int type;
+    char *name;
+    double arg1;
+    double arg2;
+    double retval;
+};
+# 37 "./libavutil/common.h" 2
+
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 1 3 4
 # 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h" 1 3 4
@@ -1961,10 +2166,8 @@ AVFloatDSPContext *avpriv_float_dsp_alloc(int strict);
 # 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h" 3 4
 typedef __darwin_va_list va_list;
 # 76 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 1 3 4
-# 77 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_null.h" 1 3 4
-# 78 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h" 2 3 4
+
+
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/stdio.h" 1 3 4
 # 47 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/stdio.h" 3 4
@@ -2231,10 +2434,838 @@ extern int __vsprintf_chk (char * restrict, int, size_t,
 extern int __vsnprintf_chk (char * restrict, size_t, int, size_t,
        const char * restrict, va_list);
 # 410 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 2 3 4
-# 41 "./libavutil/internal.h" 2
+# 39 "./libavutil/common.h" 2
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 1 3 4
+# 70 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
+void *memchr(const void *__s, int __c, size_t __n);
+int memcmp(const void *__s1, const void *__s2, size_t __n);
+void *memcpy(void *__dst, const void *__src, size_t __n);
+void *memmove(void *__dst, const void *__src, size_t __len);
+void *memset(void *__b, int __c, size_t __len);
+char *strcat(char *__s1, const char *__s2);
+char *strchr(const char *__s, int __c);
+int strcmp(const char *__s1, const char *__s2);
+int strcoll(const char *__s1, const char *__s2);
+char *strcpy(char *__dst, const char *__src);
+size_t strcspn(const char *__s, const char *__charset);
+char *strerror(int __errnum) __asm("_" "strerror" );
+size_t strlen(const char *__s);
+char *strncat(char *__s1, const char *__s2, size_t __n);
+int strncmp(const char *__s1, const char *__s2, size_t __n);
+char *strncpy(char *__dst, const char *__src, size_t __n);
+char *strpbrk(const char *__s, const char *__charset);
+char *strrchr(const char *__s, int __c);
+size_t strspn(const char *__s, const char *__charset);
+char *strstr(const char *__big, const char *__little);
+char *strtok(char *__str, const char *__sep);
+size_t strxfrm(char *__s1, const char *__s2, size_t __n);
+# 104 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
+char *strtok_r(char *__str, const char *__sep, char **__lasts);
+# 116 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
+int strerror_r(int __errnum, char *__strerrbuf, size_t __buflen);
+char *strdup(const char *__s1);
+void *memccpy(void *__dst, const void *__src, int __c, size_t __n);
+# 130 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
+char *stpcpy(char *__dst, const char *__src);
+char *stpncpy(char *__dst, const char *__src, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
+char *strndup(const char *__s1, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
+size_t strnlen(const char *__s1, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
+char *strsignal(int __sig);
 
 
 
+
+
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_rsize_t.h" 1 3 4
+# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_rsize_t.h" 3 4
+typedef __darwin_size_t rsize_t;
+# 142 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 2 3 4
+
+
+
+errno_t memset_s(void *__s, rsize_t __smax, int __c, rsize_t __n) __attribute__((availability(macosx,introduced=10.9)));
+# 155 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
+void *memmem(const void *__big, size_t __big_len, const void *__little, size_t __little_len) __attribute__((availability(macosx,introduced=10.7)));
+void memset_pattern4(void *__b, const void *__pattern4, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
+void memset_pattern8(void *__b, const void *__pattern8, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
+void memset_pattern16(void *__b, const void *__pattern16, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
+
+char *strcasestr(const char *__big, const char *__little);
+char *strnstr(const char *__big, const char *__little, size_t __len);
+size_t strlcat(char *__dst, const char *__source, size_t __size);
+size_t strlcpy(char *__dst, const char *__source, size_t __size);
+void strmode(int __mode, char *__bp);
+char *strsep(char **__stringp, const char *__delim);
+
+
+void swab(const void * restrict, void * restrict, ssize_t);
+
+__attribute__((availability(macosx,introduced=10.12.1))) __attribute__((availability(ios,introduced=10.1)))
+__attribute__((availability(tvos,introduced=10.0.1))) __attribute__((availability(watchos,introduced=3.1)))
+int timingsafe_bcmp(const void *__b1, const void *__b2, size_t __len);
+
+__attribute__((availability(macosx,introduced=11.0))) __attribute__((availability(ios,introduced=14.0)))
+__attribute__((availability(tvos,introduced=14.0))) __attribute__((availability(watchos,introduced=7.0)))
+int strsignal_r(int __sig, char *__strsignalbuf, size_t __buflen);
+
+
+
+
+
+
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 1 3 4
+# 70 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 3 4
+int bcmp(const void *, const void *, size_t) ;
+void bcopy(const void *, void *, size_t) ;
+void bzero(void *, size_t) ;
+char *index(const char *, int) ;
+char *rindex(const char *, int) ;
+
+
+int ffs(int);
+int strcasecmp(const char *, const char *);
+int strncasecmp(const char *, const char *, size_t);
+
+
+
+
+
+int ffsl(long) __attribute__((availability(macosx,introduced=10.5)));
+int ffsll(long long) __attribute__((availability(macosx,introduced=10.9)));
+int fls(int) __attribute__((availability(macosx,introduced=10.5)));
+int flsl(long) __attribute__((availability(macosx,introduced=10.5)));
+int flsll(long long) __attribute__((availability(macosx,introduced=10.9)));
+
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 1 3 4
+# 93 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 2 3 4
+
+
+
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_strings.h" 1 3 4
+# 98 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 2 3 4
+# 185 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 2 3 4
+# 194 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_string.h" 1 3 4
+# 195 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 2 3 4
+# 41 "./libavutil/common.h" 2
+
+
+# 1 "./libavutil/error.h" 1
+# 27 "./libavutil/error.h"
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 1 3 4
+# 28 "./libavutil/error.h" 2
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
+# 35 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 3
+typedef long int ptrdiff_t;
+# 103 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 3
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/__stddef_max_align_t.h" 1 3
+# 16 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/__stddef_max_align_t.h" 3
+typedef long double max_align_t;
+# 104 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 2 3
+# 29 "./libavutil/error.h" 2
+# 99 "./libavutil/error.h"
+int av_strerror(int errnum, char *errbuf, size_t errbuf_size);
+# 111 "./libavutil/error.h"
+static inline char *av_make_error_string(char *errbuf, size_t errbuf_size, int errnum)
+{
+    av_strerror(errnum, errbuf, errbuf_size);
+    return errbuf;
+}
+# 44 "./libavutil/common.h" 2
+# 160 "./libavutil/common.h"
+__attribute__((const)) int av_log2(unsigned v);
+
+
+
+__attribute__((const)) int av_log2_16bit(unsigned v);
+# 174 "./libavutil/common.h"
+static __attribute__((always_inline)) inline __attribute__((const)) int av_clip_c(int a, int amin, int amax)
+{
+
+
+
+    if (a < amin) return amin;
+    else if (a > amax) return amax;
+    else return a;
+}
+# 191 "./libavutil/common.h"
+static __attribute__((always_inline)) inline __attribute__((const)) int64_t av_clip64_c(int64_t a, int64_t amin, int64_t amax)
+{
+
+
+
+    if (a < amin) return amin;
+    else if (a > amax) return amax;
+    else return a;
+}
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) uint8_t av_clip_uint8_c(int a)
+{
+    if (a&(~0xFF)) return (~a)>>31;
+    else return a;
+}
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) int8_t av_clip_int8_c(int a)
+{
+    if ((a+0x80U) & ~0xFF) return (a>>31) ^ 0x7F;
+    else return a;
+}
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) uint16_t av_clip_uint16_c(int a)
+{
+    if (a&(~0xFFFF)) return (~a)>>31;
+    else return a;
+}
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) int16_t av_clip_int16_c(int a)
+{
+    if ((a+0x8000U) & ~0xFFFF) return (a>>31) ^ 0x7FFF;
+    else return a;
+}
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) int32_t av_clipl_int32_c(int64_t a)
+{
+    if ((a+0x80000000u) & ~(0xFFFFFFFFULL)) return (int32_t)((a>>63) ^ 0x7FFFFFFF);
+    else return (int32_t)a;
+}
+
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) int av_clip_intp2_c(int a, int p)
+{
+    if (((unsigned)a + (1 << p)) & ~((2 << p) - 1))
+        return (a >> 31) ^ ((1 << p) - 1);
+    else
+        return a;
+}
+
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) unsigned av_clip_uintp2_c(int a, int p)
+{
+    if (a & ~((1<<p) - 1)) return (~a) >> 31 & ((1<<p) - 1);
+    else return a;
+}
+
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) unsigned av_mod_uintp2_c(unsigned a, unsigned p)
+{
+    return a & ((1U << p) - 1);
+}
+# 300 "./libavutil/common.h"
+static __attribute__((always_inline)) inline int av_sat_add32_c(int a, int b)
+{
+    return av_clipl_int32_c((int64_t)a + b);
+}
+# 312 "./libavutil/common.h"
+static __attribute__((always_inline)) inline int av_sat_dadd32_c(int a, int b)
+{
+    return av_sat_add32_c(a, av_sat_add32_c(b, b));
+}
+# 324 "./libavutil/common.h"
+static __attribute__((always_inline)) inline int av_sat_sub32_c(int a, int b)
+{
+    return av_clipl_int32_c((int64_t)a - b);
+}
+# 336 "./libavutil/common.h"
+static __attribute__((always_inline)) inline int av_sat_dsub32_c(int a, int b)
+{
+    return av_sat_sub32_c(a, av_sat_add32_c(b, b));
+}
+# 348 "./libavutil/common.h"
+static __attribute__((always_inline)) inline int64_t av_sat_add64_c(int64_t a, int64_t b) {
+
+    int64_t tmp;
+    return !__builtin_add_overflow(a, b, &tmp) ? tmp : (tmp < 0 ? 9223372036854775807LL : (-9223372036854775807LL -1));
+
+
+
+
+
+
+}
+# 367 "./libavutil/common.h"
+static __attribute__((always_inline)) inline int64_t av_sat_sub64_c(int64_t a, int64_t b) {
+
+    int64_t tmp;
+    return !__builtin_sub_overflow(a, b, &tmp) ? tmp : (tmp < 0 ? 9223372036854775807LL : (-9223372036854775807LL -1));
+
+
+
+
+
+
+
+}
+# 389 "./libavutil/common.h"
+static __attribute__((always_inline)) inline __attribute__((const)) float av_clipf_c(float a, float amin, float amax)
+{
+
+
+
+    return ((((a) > (amin) ? (a) : (amin))) > (amax) ? (amax) : (((a) > (amin) ? (a) : (amin))));
+}
+# 406 "./libavutil/common.h"
+static __attribute__((always_inline)) inline __attribute__((const)) double av_clipd_c(double a, double amin, double amax)
+{
+
+
+
+    return ((((a) > (amin) ? (a) : (amin))) > (amax) ? (amax) : (((a) > (amin) ? (a) : (amin))));
+}
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) int av_ceil_log2_c(int x)
+{
+    return av_log2((x - 1U) << 1);
+}
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) int av_popcount_c(uint32_t x)
+{
+    x -= (x >> 1) & 0x55555555;
+    x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
+    x = (x + (x >> 4)) & 0x0F0F0F0F;
+    x += x >> 8;
+    return (x + (x >> 16)) & 0x3F;
+}
+
+
+
+
+
+
+static __attribute__((always_inline)) inline __attribute__((const)) int av_popcount64_c(uint64_t x)
+{
+    return av_popcount_c((uint32_t)x) + av_popcount_c((uint32_t)(x >> 32));
+}
+
+static __attribute__((always_inline)) inline __attribute__((const)) int av_parity_c(uint32_t v)
+{
+    return av_popcount_c(v) & 1;
+}
+# 573 "./libavutil/common.h"
+# 1 "./libavutil/mem.h" 1
+# 30 "./libavutil/mem.h"
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
+# 31 "./libavutil/mem.h" 2
+# 119 "./libavutil/mem.h"
+void *av_malloc(size_t size) __attribute__((__malloc__)) ;
+# 130 "./libavutil/mem.h"
+void *av_mallocz(size_t size) __attribute__((__malloc__)) ;
+# 143 "./libavutil/mem.h"
+                    void *av_malloc_array(size_t nmemb, size_t size);
+# 158 "./libavutil/mem.h"
+void *av_calloc(size_t nmemb, size_t size) __attribute__((__malloc__)) ;
+# 180 "./libavutil/mem.h"
+void *av_realloc(void *ptr, size_t size) ;
+# 201 "./libavutil/mem.h"
+__attribute__((warn_unused_result))
+int av_reallocp(void *ptr, size_t size);
+# 219 "./libavutil/mem.h"
+void *av_realloc_f(void *ptr, size_t nelem, size_t elsize);
+# 239 "./libavutil/mem.h"
+                    void *av_realloc_array(void *ptr, size_t nmemb, size_t size);
+# 257 "./libavutil/mem.h"
+int av_reallocp_array(void *ptr, size_t nmemb, size_t size);
+# 291 "./libavutil/mem.h"
+void *av_fast_realloc(void *ptr, unsigned int *size, size_t min_size);
+# 322 "./libavutil/mem.h"
+void av_fast_malloc(void *ptr, unsigned int *size, size_t min_size);
+# 342 "./libavutil/mem.h"
+void av_fast_mallocz(void *ptr, unsigned int *size, size_t min_size);
+# 355 "./libavutil/mem.h"
+void av_free(void *ptr);
+# 378 "./libavutil/mem.h"
+void av_freep(void *ptr);
+# 388 "./libavutil/mem.h"
+char *av_strdup(const char *s) __attribute__((__malloc__));
+# 399 "./libavutil/mem.h"
+char *av_strndup(const char *s, size_t len) __attribute__((__malloc__));
+# 409 "./libavutil/mem.h"
+void *av_memdup(const void *p, size_t size);
+# 422 "./libavutil/mem.h"
+void av_memcpy_backptr(uint8_t *dst, int back, int cnt);
+# 524 "./libavutil/mem.h"
+void av_dynarray_add(void *tab_ptr, int *nb_ptr, void *elem);
+# 536 "./libavutil/mem.h"
+__attribute__((warn_unused_result))
+int av_dynarray_add_nofree(void *tab_ptr, int *nb_ptr, void *elem);
+# 562 "./libavutil/mem.h"
+void *av_dynarray2_add(void **tab_ptr, int *nb_ptr, size_t elem_size,
+                       const uint8_t *elem_data);
+# 585 "./libavutil/mem.h"
+int av_size_mult(size_t a, size_t b, size_t *r);
+# 600 "./libavutil/mem.h"
+void av_max_alloc(size_t max);
+# 574 "./libavutil/common.h" 2
+# 23 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
+# 1 "./libavutil/float_dsp.h" 1
+# 22 "./libavutil/float_dsp.h"
+# 1 "./config.h" 1
+# 23 "./libavutil/float_dsp.h" 2
+
+typedef struct AVFloatDSPContext {
+# 38 "./libavutil/float_dsp.h"
+    void (*vector_fmul)(float *dst, const float *src0, const float *src1,
+                        int len);
+# 54 "./libavutil/float_dsp.h"
+    void (*vector_fmac_scalar)(float *dst, const float *src, float mul,
+                               int len);
+# 70 "./libavutil/float_dsp.h"
+    void (*vector_dmac_scalar)(double *dst, const double *src, double mul,
+                               int len);
+# 85 "./libavutil/float_dsp.h"
+    void (*vector_fmul_scalar)(float *dst, const float *src, float mul,
+                               int len);
+# 100 "./libavutil/float_dsp.h"
+    void (*vector_dmul_scalar)(double *dst, const double *src, double mul,
+                               int len);
+# 119 "./libavutil/float_dsp.h"
+    void (*vector_fmul_window)(float *dst, const float *src0,
+                               const float *src1, const float *win, int len);
+# 137 "./libavutil/float_dsp.h"
+    void (*vector_fmul_add)(float *dst, const float *src0, const float *src1,
+                            const float *src2, int len);
+# 154 "./libavutil/float_dsp.h"
+    void (*vector_fmul_reverse)(float *dst, const float *src0,
+                                const float *src1, int len);
+# 164 "./libavutil/float_dsp.h"
+    void (*butterflies_float)(float *restrict v1, float *restrict v2, int len);
+# 175 "./libavutil/float_dsp.h"
+    float (*scalarproduct_float)(const float *v1, const float *v2, int len);
+# 190 "./libavutil/float_dsp.h"
+    void (*vector_dmul)(double *dst, const double *src0, const double *src1,
+                        int len);
+} AVFloatDSPContext;
+# 203 "./libavutil/float_dsp.h"
+float avpriv_scalarproduct_float_c(const float *v1, const float *v2, int len);
+
+void ff_float_dsp_init_aarch64(AVFloatDSPContext *fdsp);
+void ff_float_dsp_init_arm(AVFloatDSPContext *fdsp);
+void ff_float_dsp_init_ppc(AVFloatDSPContext *fdsp, int strict);
+void ff_float_dsp_init_riscv(AVFloatDSPContext *fdsp);
+void ff_float_dsp_init_x86(AVFloatDSPContext *fdsp);
+void ff_float_dsp_init_mips(AVFloatDSPContext *fdsp);
+
+
+
+
+
+
+AVFloatDSPContext *avpriv_float_dsp_alloc(int strict);
+# 24 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
+# 1 "./libavutil/opt.h" 1
+# 30 "./libavutil/opt.h"
+# 1 "./libavutil/rational.h" 1
+# 58 "./libavutil/rational.h"
+typedef struct AVRational{
+    int num;
+    int den;
+} AVRational;
+# 71 "./libavutil/rational.h"
+static inline AVRational av_make_q(int num, int den)
+{
+    AVRational r = { num, den };
+    return r;
+}
+# 89 "./libavutil/rational.h"
+static inline int av_cmp_q(AVRational a, AVRational b){
+    const int64_t tmp= a.num * (int64_t)b.den - b.num * (int64_t)a.den;
+
+    if(tmp) return (int)((tmp ^ a.den ^ b.den)>>63)|1;
+    else if(b.den && a.den) return 0;
+    else if(a.num && b.num) return (a.num>>31) - (b.num>>31);
+    else return (-2147483647 -1);
+}
+
+
+
+
+
+
+
+static inline double av_q2d(AVRational a){
+    return a.num / (double) a.den;
+}
+# 120 "./libavutil/rational.h"
+int av_reduce(int *dst_num, int *dst_den, int64_t num, int64_t den, int64_t max);
+
+
+
+
+
+
+
+AVRational av_mul_q(AVRational b, AVRational c) __attribute__((const));
+
+
+
+
+
+
+
+AVRational av_div_q(AVRational b, AVRational c) __attribute__((const));
+
+
+
+
+
+
+
+AVRational av_add_q(AVRational b, AVRational c) __attribute__((const));
+
+
+
+
+
+
+
+AVRational av_sub_q(AVRational b, AVRational c) __attribute__((const));
+
+
+
+
+
+
+static __attribute__((always_inline)) inline AVRational av_inv_q(AVRational q)
+{
+    AVRational r = { q.den, q.num };
+    return r;
+}
+# 176 "./libavutil/rational.h"
+AVRational av_d2q(double d, int max) __attribute__((const));
+# 189 "./libavutil/rational.h"
+int av_nearer_q(AVRational q, AVRational q1, AVRational q2);
+# 198 "./libavutil/rational.h"
+int av_find_nearest_q_idx(AVRational q, const AVRational* q_list);
+# 209 "./libavutil/rational.h"
+uint32_t av_q2intfloat(AVRational q);
+
+
+
+
+
+AVRational av_gcd_q(AVRational a, AVRational b, int max_den, AVRational def);
+# 31 "./libavutil/opt.h" 2
+# 1 "./libavutil/avutil.h" 1
+# 171 "./libavutil/avutil.h"
+unsigned avutil_version(void);
+
+
+
+
+
+
+const char *av_version_info(void);
+
+
+
+
+const char *avutil_configuration(void);
+
+
+
+
+const char *avutil_license(void);
+# 199 "./libavutil/avutil.h"
+enum AVMediaType {
+    AVMEDIA_TYPE_UNKNOWN = -1,
+    AVMEDIA_TYPE_VIDEO,
+    AVMEDIA_TYPE_AUDIO,
+    AVMEDIA_TYPE_DATA,
+    AVMEDIA_TYPE_SUBTITLE,
+    AVMEDIA_TYPE_ATTACHMENT,
+    AVMEDIA_TYPE_NB
+};
+
+
+
+
+
+const char *av_get_media_type_string(enum AVMediaType media_type);
+# 277 "./libavutil/avutil.h"
+enum AVPictureType {
+    AV_PICTURE_TYPE_NONE = 0,
+    AV_PICTURE_TYPE_I,
+    AV_PICTURE_TYPE_P,
+    AV_PICTURE_TYPE_B,
+    AV_PICTURE_TYPE_S,
+    AV_PICTURE_TYPE_SI,
+    AV_PICTURE_TYPE_SP,
+    AV_PICTURE_TYPE_BI,
+};
+# 295 "./libavutil/avutil.h"
+char av_get_picture_type_char(enum AVPictureType pict_type);
+# 305 "./libavutil/avutil.h"
+# 1 "./libavutil/mathematics.h" 1
+# 34 "./libavutil/mathematics.h"
+# 1 "./libavutil/intfloat.h" 1
+# 27 "./libavutil/intfloat.h"
+union av_intfloat32 {
+    uint32_t i;
+    float f;
+};
+
+union av_intfloat64 {
+    uint64_t i;
+    double f;
+};
+
+
+
+
+static __attribute__((always_inline)) inline float av_int2float(uint32_t i)
+{
+    union av_intfloat32 v;
+    v.i = i;
+    return v.f;
+}
+
+
+
+
+static __attribute__((always_inline)) inline uint32_t av_float2int(float f)
+{
+    union av_intfloat32 v;
+    v.f = f;
+    return v.i;
+}
+
+
+
+
+static __attribute__((always_inline)) inline double av_int2double(uint64_t i)
+{
+    union av_intfloat64 v;
+    v.i = i;
+    return v.f;
+}
+
+
+
+
+static __attribute__((always_inline)) inline uint64_t av_double2int(double f)
+{
+    union av_intfloat64 v;
+    v.f = f;
+    return v.i;
+}
+# 35 "./libavutil/mathematics.h" 2
+# 130 "./libavutil/mathematics.h"
+enum AVRounding {
+    AV_ROUND_ZERO = 0,
+    AV_ROUND_INF = 1,
+    AV_ROUND_DOWN = 2,
+    AV_ROUND_UP = 3,
+    AV_ROUND_NEAR_INF = 5,
+# 159 "./libavutil/mathematics.h"
+    AV_ROUND_PASS_MINMAX = 8192,
+};
+# 170 "./libavutil/mathematics.h"
+int64_t __attribute__((const)) av_gcd(int64_t a, int64_t b);
+# 182 "./libavutil/mathematics.h"
+int64_t av_rescale(int64_t a, int64_t b, int64_t c) __attribute__((const));
+# 193 "./libavutil/mathematics.h"
+int64_t av_rescale_rnd(int64_t a, int64_t b, int64_t c, enum AVRounding rnd) __attribute__((const));
+# 204 "./libavutil/mathematics.h"
+int64_t av_rescale_q(int64_t a, AVRational bq, AVRational cq) __attribute__((const));
+# 213 "./libavutil/mathematics.h"
+int64_t av_rescale_q_rnd(int64_t a, AVRational bq, AVRational cq,
+                         enum AVRounding rnd) __attribute__((const));
+# 228 "./libavutil/mathematics.h"
+int av_compare_ts(int64_t ts_a, AVRational tb_a, int64_t ts_b, AVRational tb_b);
+# 249 "./libavutil/mathematics.h"
+int64_t av_compare_mod(uint64_t a, uint64_t b, uint64_t mod);
+# 276 "./libavutil/mathematics.h"
+int64_t av_rescale_delta(AVRational in_tb, int64_t in_ts, AVRational fs_tb, int duration, int64_t *last, AVRational out_tb);
+# 289 "./libavutil/mathematics.h"
+int64_t av_add_stable(AVRational ts_tb, int64_t ts, AVRational inc_tb, int64_t inc);
+
+
+
+
+double av_bessel_i0(double x);
+# 306 "./libavutil/avutil.h" 2
+# 1 "./libavutil/log.h" 1
+# 24 "./libavutil/log.h"
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 1 3
+# 14 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 3
+typedef __builtin_va_list va_list;
+# 34 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 3
+typedef __builtin_va_list __gnuc_va_list;
+# 25 "./libavutil/log.h" 2
+
+
+
+typedef enum {
+    AV_CLASS_CATEGORY_NA = 0,
+    AV_CLASS_CATEGORY_INPUT,
+    AV_CLASS_CATEGORY_OUTPUT,
+    AV_CLASS_CATEGORY_MUXER,
+    AV_CLASS_CATEGORY_DEMUXER,
+    AV_CLASS_CATEGORY_ENCODER,
+    AV_CLASS_CATEGORY_DECODER,
+    AV_CLASS_CATEGORY_FILTER,
+    AV_CLASS_CATEGORY_BITSTREAM_FILTER,
+    AV_CLASS_CATEGORY_SWSCALER,
+    AV_CLASS_CATEGORY_SWRESAMPLER,
+    AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT = 40,
+    AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT,
+    AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT,
+    AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT,
+    AV_CLASS_CATEGORY_DEVICE_OUTPUT,
+    AV_CLASS_CATEGORY_DEVICE_INPUT,
+    AV_CLASS_CATEGORY_NB
+}AVClassCategory;
+# 59 "./libavutil/log.h"
+struct AVOptionRanges;
+
+
+
+
+
+
+typedef struct AVClass {
+
+
+
+
+    const char* class_name;
+
+
+
+
+
+    const char* (*item_name)(void* ctx);
+
+
+
+
+
+
+    const struct AVOption *option;
+
+
+
+
+
+
+
+    int version;
+
+
+
+
+
+    int log_level_offset_offset;
+# 107 "./libavutil/log.h"
+    int parent_log_context_offset;
+
+
+
+
+
+
+    AVClassCategory category;
+
+
+
+
+
+    AVClassCategory (*get_category)(void* ctx);
+
+
+
+
+
+    int (*query_ranges)(struct AVOptionRanges **, void *obj, const char *key, int flags);
+
+
+
+
+    void* (*child_next)(void *obj, void *prev);
+# 146 "./libavutil/log.h"
+    const struct AVClass* (*child_class_iterate)(void **iter);
+} AVClass;
+# 238 "./libavutil/log.h"
+void av_log(void *avcl, int level, const char *fmt, ...) __attribute__((__format__(__printf__, 3, 4)));
+# 259 "./libavutil/log.h"
+void av_log_once(void* avcl, int initial_level, int subsequent_level, int *state, const char *fmt, ...) __attribute__((__format__(__printf__, 5, 6)));
+# 277 "./libavutil/log.h"
+void av_vlog(void *avcl, int level, const char *fmt, va_list vl);
+# 286 "./libavutil/log.h"
+int av_log_get_level(void);
+# 295 "./libavutil/log.h"
+void av_log_set_level(int level);
+# 307 "./libavutil/log.h"
+void av_log_set_callback(void (*callback)(void*, int, const char*, va_list));
+# 322 "./libavutil/log.h"
+void av_log_default_callback(void *avcl, int level, const char *fmt,
+                             va_list vl);
+# 332 "./libavutil/log.h"
+const char* av_default_item_name(void* ctx);
+AVClassCategory av_default_get_category(void *ptr);
+# 342 "./libavutil/log.h"
+void av_log_format_line(void *ptr, int level, const char *fmt, va_list vl,
+                        char *line, int line_size, int *print_prefix);
+# 359 "./libavutil/log.h"
+int av_log_format_line2(void *ptr, int level, const char *fmt, va_list vl,
+                        char *line, int line_size, int *print_prefix);
+# 380 "./libavutil/log.h"
+void av_log_set_flags(int arg);
+int av_log_get_flags(void);
+# 307 "./libavutil/avutil.h" 2
 # 1 "./libavutil/pixfmt.h" 1
 # 64 "./libavutil/pixfmt.h"
 enum AVPixelFormat {
@@ -2667,1292 +3698,7 @@ enum AVChromaLocation {
     AVCHROMA_LOC_BOTTOM = 6,
     AVCHROMA_LOC_NB
 };
-# 45 "./libavutil/internal.h" 2
-# 97 "./libavutil/internal.h"
-# 1 "./libavutil/libm.h" 1
-# 28 "./libavutil/libm.h"
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 1 3 4
-# 45 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-    typedef float float_t;
-    typedef double double_t;
-# 112 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern int __math_errhandling(void);
-# 132 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern int __fpclassifyf(float);
-extern int __fpclassifyd(double);
-extern int __fpclassifyl(long double);
-# 175 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float);
-inline __attribute__ ((__always_inline__)) int __inline_isfinited(double);
-inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double);
-inline __attribute__ ((__always_inline__)) int __inline_isinff(float);
-inline __attribute__ ((__always_inline__)) int __inline_isinfd(double);
-inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double);
-inline __attribute__ ((__always_inline__)) int __inline_isnanf(float);
-inline __attribute__ ((__always_inline__)) int __inline_isnand(double);
-inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double);
-inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float);
-inline __attribute__ ((__always_inline__)) int __inline_isnormald(double);
-inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double);
-inline __attribute__ ((__always_inline__)) int __inline_signbitf(float);
-inline __attribute__ ((__always_inline__)) int __inline_signbitd(double);
-inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double);
-
-inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float __x) {
-    return __x == __x && __builtin_fabsf(__x) != __builtin_inff();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isfinited(double __x) {
-    return __x == __x && __builtin_fabs(__x) != __builtin_inf();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double __x) {
-    return __x == __x && __builtin_fabsl(__x) != __builtin_infl();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isinff(float __x) {
-    return __builtin_fabsf(__x) == __builtin_inff();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isinfd(double __x) {
-    return __builtin_fabs(__x) == __builtin_inf();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double __x) {
-    return __builtin_fabsl(__x) == __builtin_infl();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnanf(float __x) {
-    return __x != __x;
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnand(double __x) {
-    return __x != __x;
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double __x) {
-    return __x != __x;
-}
-inline __attribute__ ((__always_inline__)) int __inline_signbitf(float __x) {
-    union { float __f; unsigned int __u; } __u;
-    __u.__f = __x;
-    return (int)(__u.__u >> 31);
-}
-inline __attribute__ ((__always_inline__)) int __inline_signbitd(double __x) {
-    union { double __f; unsigned long long __u; } __u;
-    __u.__f = __x;
-    return (int)(__u.__u >> 63);
-}
-# 238 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double __x) {
-    union { long double __f; unsigned long long __u;} __u;
-    __u.__f = __x;
-    return (int)(__u.__u >> 63);
-}
-
-inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float __x) {
-    return __inline_isfinitef(__x) && __builtin_fabsf(__x) >= 1.17549435e-38F;
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnormald(double __x) {
-    return __inline_isfinited(__x) && __builtin_fabs(__x) >= 2.2250738585072014e-308;
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double __x) {
-    return __inline_isfinitel(__x) && __builtin_fabsl(__x) >= 2.2250738585072014e-308L;
-}
-# 309 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern float acosf(float);
-extern double acos(double);
-extern long double acosl(long double);
-
-extern float asinf(float);
-extern double asin(double);
-extern long double asinl(long double);
-
-extern float atanf(float);
-extern double atan(double);
-extern long double atanl(long double);
-
-extern float atan2f(float, float);
-extern double atan2(double, double);
-extern long double atan2l(long double, long double);
-
-extern float cosf(float);
-extern double cos(double);
-extern long double cosl(long double);
-
-extern float sinf(float);
-extern double sin(double);
-extern long double sinl(long double);
-
-extern float tanf(float);
-extern double tan(double);
-extern long double tanl(long double);
-
-extern float acoshf(float);
-extern double acosh(double);
-extern long double acoshl(long double);
-
-extern float asinhf(float);
-extern double asinh(double);
-extern long double asinhl(long double);
-
-extern float atanhf(float);
-extern double atanh(double);
-extern long double atanhl(long double);
-
-extern float coshf(float);
-extern double cosh(double);
-extern long double coshl(long double);
-
-extern float sinhf(float);
-extern double sinh(double);
-extern long double sinhl(long double);
-
-extern float tanhf(float);
-extern double tanh(double);
-extern long double tanhl(long double);
-
-extern float expf(float);
-extern double exp(double);
-extern long double expl(long double);
-
-extern float exp2f(float);
-extern double exp2(double);
-extern long double exp2l(long double);
-
-extern float expm1f(float);
-extern double expm1(double);
-extern long double expm1l(long double);
-
-extern float logf(float);
-extern double log(double);
-extern long double logl(long double);
-
-extern float log10f(float);
-extern double log10(double);
-extern long double log10l(long double);
-
-extern float log2f(float);
-extern double log2(double);
-extern long double log2l(long double);
-
-extern float log1pf(float);
-extern double log1p(double);
-extern long double log1pl(long double);
-
-extern float logbf(float);
-extern double logb(double);
-extern long double logbl(long double);
-
-extern float modff(float, float *);
-extern double modf(double, double *);
-extern long double modfl(long double, long double *);
-
-extern float ldexpf(float, int);
-extern double ldexp(double, int);
-extern long double ldexpl(long double, int);
-
-extern float frexpf(float, int *);
-extern double frexp(double, int *);
-extern long double frexpl(long double, int *);
-
-extern int ilogbf(float);
-extern int ilogb(double);
-extern int ilogbl(long double);
-
-extern float scalbnf(float, int);
-extern double scalbn(double, int);
-extern long double scalbnl(long double, int);
-
-extern float scalblnf(float, long int);
-extern double scalbln(double, long int);
-extern long double scalblnl(long double, long int);
-
-extern float fabsf(float);
-extern double fabs(double);
-extern long double fabsl(long double);
-
-extern float cbrtf(float);
-extern double cbrt(double);
-extern long double cbrtl(long double);
-
-extern float hypotf(float, float);
-extern double hypot(double, double);
-extern long double hypotl(long double, long double);
-
-extern float powf(float, float);
-extern double pow(double, double);
-extern long double powl(long double, long double);
-
-extern float sqrtf(float);
-extern double sqrt(double);
-extern long double sqrtl(long double);
-
-extern float erff(float);
-extern double erf(double);
-extern long double erfl(long double);
-
-extern float erfcf(float);
-extern double erfc(double);
-extern long double erfcl(long double);
-
-
-
-
-extern float lgammaf(float);
-extern double lgamma(double);
-extern long double lgammal(long double);
-
-extern float tgammaf(float);
-extern double tgamma(double);
-extern long double tgammal(long double);
-
-extern float ceilf(float);
-extern double ceil(double);
-extern long double ceill(long double);
-
-extern float floorf(float);
-extern double floor(double);
-extern long double floorl(long double);
-
-extern float nearbyintf(float);
-extern double nearbyint(double);
-extern long double nearbyintl(long double);
-
-extern float rintf(float);
-extern double rint(double);
-extern long double rintl(long double);
-
-extern long int lrintf(float);
-extern long int lrint(double);
-extern long int lrintl(long double);
-
-extern float roundf(float);
-extern double round(double);
-extern long double roundl(long double);
-
-extern long int lroundf(float);
-extern long int lround(double);
-extern long int lroundl(long double);
-
-
-
-
-extern long long int llrintf(float);
-extern long long int llrint(double);
-extern long long int llrintl(long double);
-
-extern long long int llroundf(float);
-extern long long int llround(double);
-extern long long int llroundl(long double);
-
-
-extern float truncf(float);
-extern double trunc(double);
-extern long double truncl(long double);
-
-extern float fmodf(float, float);
-extern double fmod(double, double);
-extern long double fmodl(long double, long double);
-
-extern float remainderf(float, float);
-extern double remainder(double, double);
-extern long double remainderl(long double, long double);
-
-extern float remquof(float, float, int *);
-extern double remquo(double, double, int *);
-extern long double remquol(long double, long double, int *);
-
-extern float copysignf(float, float);
-extern double copysign(double, double);
-extern long double copysignl(long double, long double);
-
-extern float nanf(const char *);
-extern double nan(const char *);
-extern long double nanl(const char *);
-
-extern float nextafterf(float, float);
-extern double nextafter(double, double);
-extern long double nextafterl(long double, long double);
-
-extern double nexttoward(double, long double);
-extern float nexttowardf(float, long double);
-extern long double nexttowardl(long double, long double);
-
-extern float fdimf(float, float);
-extern double fdim(double, double);
-extern long double fdiml(long double, long double);
-
-extern float fmaxf(float, float);
-extern double fmax(double, double);
-extern long double fmaxl(long double, long double);
-
-extern float fminf(float, float);
-extern double fmin(double, double);
-extern long double fminl(long double, long double);
-
-extern float fmaf(float, float, float);
-extern double fma(double, double, double);
-extern long double fmal(long double, long double, long double);
-# 589 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern float __exp10f(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern double __exp10(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-
-
-
-
-
-inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp);
-inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp);
-# 606 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern float __cospif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern double __cospi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern float __sinpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern double __sinpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern float __tanpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern double __tanpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-# 637 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp);
-inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp);
-
-
-
-
-
-
-struct __float2 { float __sinval; float __cosval; };
-struct __double2 { double __sinval; double __cosval; };
-
-extern struct __float2 __sincosf_stret(float);
-extern struct __double2 __sincos_stret(double);
-extern struct __float2 __sincospif_stret(float);
-extern struct __double2 __sincospi_stret(double);
-
-inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp) {
-    const struct __float2 __stret = __sincosf_stret(__x);
-    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
-}
-
-inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp) {
-    const struct __double2 __stret = __sincos_stret(__x);
-    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
-}
-
-inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp) {
-    const struct __float2 __stret = __sincospif_stret(__x);
-    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
-}
-
-inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp) {
-    const struct __double2 __stret = __sincospi_stret(__x);
-    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
-}
-
-
-
-
-
-
-
-extern double j0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double j1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double jn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double y0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double y1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double yn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double scalb(double, double);
-extern int signgam;
-# 764 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-struct exception {
-    int type;
-    char *name;
-    double arg1;
-    double arg2;
-    double retval;
-};
-# 29 "./libavutil/libm.h" 2
-
-
-# 1 "./libavutil/intfloat.h" 1
-# 27 "./libavutil/intfloat.h"
-union av_intfloat32 {
-    uint32_t i;
-    float f;
-};
-
-union av_intfloat64 {
-    uint64_t i;
-    double f;
-};
-
-
-
-
-static __attribute__((always_inline)) inline float av_int2float(uint32_t i)
-{
-    union av_intfloat32 v;
-    v.i = i;
-    return v.f;
-}
-
-
-
-
-static __attribute__((always_inline)) inline uint32_t av_float2int(float f)
-{
-    union av_intfloat32 v;
-    v.f = f;
-    return v.i;
-}
-
-
-
-
-static __attribute__((always_inline)) inline double av_int2double(uint64_t i)
-{
-    union av_intfloat64 v;
-    v.i = i;
-    return v.f;
-}
-
-
-
-
-static __attribute__((always_inline)) inline uint64_t av_double2int(double f)
-{
-    union av_intfloat64 v;
-    v.f = f;
-    return v.i;
-}
-# 32 "./libavutil/libm.h" 2
-# 1 "./libavutil/mathematics.h" 1
-# 33 "./libavutil/mathematics.h"
-# 1 "./libavutil/rational.h" 1
-# 58 "./libavutil/rational.h"
-typedef struct AVRational{
-    int num;
-    int den;
-} AVRational;
-# 71 "./libavutil/rational.h"
-static inline AVRational av_make_q(int num, int den)
-{
-    AVRational r = { num, den };
-    return r;
-}
-# 89 "./libavutil/rational.h"
-static inline int av_cmp_q(AVRational a, AVRational b){
-    const int64_t tmp= a.num * (int64_t)b.den - b.num * (int64_t)a.den;
-
-    if(tmp) return (int)((tmp ^ a.den ^ b.den)>>63)|1;
-    else if(b.den && a.den) return 0;
-    else if(a.num && b.num) return (a.num>>31) - (b.num>>31);
-    else return (-2147483647 -1);
-}
-
-
-
-
-
-
-
-static inline double av_q2d(AVRational a){
-    return a.num / (double) a.den;
-}
-# 120 "./libavutil/rational.h"
-int av_reduce(int *dst_num, int *dst_den, int64_t num, int64_t den, int64_t max);
-
-
-
-
-
-
-
-AVRational av_mul_q(AVRational b, AVRational c) __attribute__((const));
-
-
-
-
-
-
-
-AVRational av_div_q(AVRational b, AVRational c) __attribute__((const));
-
-
-
-
-
-
-
-AVRational av_add_q(AVRational b, AVRational c) __attribute__((const));
-
-
-
-
-
-
-
-AVRational av_sub_q(AVRational b, AVRational c) __attribute__((const));
-
-
-
-
-
-
-static __attribute__((always_inline)) inline AVRational av_inv_q(AVRational q)
-{
-    AVRational r = { q.den, q.num };
-    return r;
-}
-# 176 "./libavutil/rational.h"
-AVRational av_d2q(double d, int max) __attribute__((const));
-# 189 "./libavutil/rational.h"
-int av_nearer_q(AVRational q, AVRational q1, AVRational q2);
-# 198 "./libavutil/rational.h"
-int av_find_nearest_q_idx(AVRational q, const AVRational* q_list);
-# 209 "./libavutil/rational.h"
-uint32_t av_q2intfloat(AVRational q);
-
-
-
-
-
-AVRational av_gcd_q(AVRational a, AVRational b, int max_den, AVRational def);
-# 34 "./libavutil/mathematics.h" 2
-# 130 "./libavutil/mathematics.h"
-enum AVRounding {
-    AV_ROUND_ZERO = 0,
-    AV_ROUND_INF = 1,
-    AV_ROUND_DOWN = 2,
-    AV_ROUND_UP = 3,
-    AV_ROUND_NEAR_INF = 5,
-# 159 "./libavutil/mathematics.h"
-    AV_ROUND_PASS_MINMAX = 8192,
-};
-# 170 "./libavutil/mathematics.h"
-int64_t __attribute__((const)) av_gcd(int64_t a, int64_t b);
-# 182 "./libavutil/mathematics.h"
-int64_t av_rescale(int64_t a, int64_t b, int64_t c) __attribute__((const));
-# 193 "./libavutil/mathematics.h"
-int64_t av_rescale_rnd(int64_t a, int64_t b, int64_t c, enum AVRounding rnd) __attribute__((const));
-# 204 "./libavutil/mathematics.h"
-int64_t av_rescale_q(int64_t a, AVRational bq, AVRational cq) __attribute__((const));
-# 213 "./libavutil/mathematics.h"
-int64_t av_rescale_q_rnd(int64_t a, AVRational bq, AVRational cq,
-                         enum AVRounding rnd) __attribute__((const));
-# 228 "./libavutil/mathematics.h"
-int av_compare_ts(int64_t ts_a, AVRational tb_a, int64_t ts_b, AVRational tb_b);
-# 249 "./libavutil/mathematics.h"
-int64_t av_compare_mod(uint64_t a, uint64_t b, uint64_t mod);
-# 276 "./libavutil/mathematics.h"
-int64_t av_rescale_delta(AVRational in_tb, int64_t in_ts, AVRational fs_tb, int duration, int64_t *last, AVRational out_tb);
-# 289 "./libavutil/mathematics.h"
-int64_t av_add_stable(AVRational ts_tb, int64_t ts, AVRational inc_tb, int64_t inc);
-
-
-
-
-double av_bessel_i0(double x);
-# 33 "./libavutil/libm.h" 2
-# 98 "./libavutil/internal.h" 2
-# 116 "./libavutil/internal.h"
-void avpriv_report_missing_feature(void *avc,
-                                   const char *msg, ...) __attribute__((__format__(__printf__, 2, 3)));
-# 127 "./libavutil/internal.h"
-void avpriv_request_sample(void *avc,
-                           const char *msg, ...) __attribute__((__format__(__printf__, 2, 3)));
-# 166 "./libavutil/internal.h"
-int avpriv_set_systematic_pal2(uint32_t pal[256], enum AVPixelFormat pix_fmt);
-
-static __attribute__((always_inline)) inline __attribute__((const)) int avpriv_mirror(int x, int w)
-{
-    if (!w)
-        return 0;
-
-    while ((unsigned)x > (unsigned)w) {
-        x = -x;
-        if (x < 0)
-            x += 2 * w;
-    }
-    return x;
-}
-# 32 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
-# 1 "./libavutil/opt.h" 1
-# 31 "./libavutil/opt.h"
-# 1 "./libavutil/avutil.h" 1
-# 171 "./libavutil/avutil.h"
-unsigned avutil_version(void);
-
-
-
-
-
-
-const char *av_version_info(void);
-
-
-
-
-const char *avutil_configuration(void);
-
-
-
-
-const char *avutil_license(void);
-# 199 "./libavutil/avutil.h"
-enum AVMediaType {
-    AVMEDIA_TYPE_UNKNOWN = -1,
-    AVMEDIA_TYPE_VIDEO,
-    AVMEDIA_TYPE_AUDIO,
-    AVMEDIA_TYPE_DATA,
-    AVMEDIA_TYPE_SUBTITLE,
-    AVMEDIA_TYPE_ATTACHMENT,
-    AVMEDIA_TYPE_NB
-};
-
-
-
-
-
-const char *av_get_media_type_string(enum AVMediaType media_type);
-# 277 "./libavutil/avutil.h"
-enum AVPictureType {
-    AV_PICTURE_TYPE_NONE = 0,
-    AV_PICTURE_TYPE_I,
-    AV_PICTURE_TYPE_P,
-    AV_PICTURE_TYPE_B,
-    AV_PICTURE_TYPE_S,
-    AV_PICTURE_TYPE_SI,
-    AV_PICTURE_TYPE_SP,
-    AV_PICTURE_TYPE_BI,
-};
-# 295 "./libavutil/avutil.h"
-char av_get_picture_type_char(enum AVPictureType pict_type);
-
-
-
-
-
-# 1 "./libavutil/common.h" 1
-# 33 "./libavutil/common.h"
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 1 3 4
-# 23 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 1 3 4
-# 76 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h" 3 4
-typedef int errno_t;
-# 77 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 2 3 4
-
-
-
-extern int * __error(void);
-# 24 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 2 3 4
-# 34 "./libavutil/common.h" 2
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 1 3
-# 21 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 3
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 1 3 4
-# 227 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h" 1 3 4
-# 228 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 2 3 4
-
-
-
-
-
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern intmax_t
-imaxabs(intmax_t j);
-
-
-typedef struct {
- intmax_t quot;
- intmax_t rem;
-} imaxdiv_t;
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern imaxdiv_t
-imaxdiv(intmax_t __numer, intmax_t __denom);
-
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern intmax_t
-strtoimax(const char * restrict __nptr,
-   char ** restrict __endptr,
-   int __base);
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern uintmax_t
-strtoumax(const char * restrict __nptr,
-   char ** restrict __endptr,
-   int __base);
-
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern intmax_t
-wcstoimax(const wchar_t * restrict __nptr,
-   wchar_t ** restrict __endptr,
-   int __base);
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern uintmax_t
-wcstoumax(const wchar_t * restrict __nptr,
-   wchar_t ** restrict __endptr,
-   int __base);
-# 22 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 2 3
-# 35 "./libavutil/common.h" 2
-
-
-
-
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 1 3 4
-# 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 1 3 4
-# 65 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_null.h" 1 3 4
-# 66 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 2 3 4
-
-
-
-
-void *memchr(const void *__s, int __c, size_t __n);
-int memcmp(const void *__s1, const void *__s2, size_t __n);
-void *memcpy(void *__dst, const void *__src, size_t __n);
-void *memmove(void *__dst, const void *__src, size_t __len);
-void *memset(void *__b, int __c, size_t __len);
-char *strcat(char *__s1, const char *__s2);
-char *strchr(const char *__s, int __c);
-int strcmp(const char *__s1, const char *__s2);
-int strcoll(const char *__s1, const char *__s2);
-char *strcpy(char *__dst, const char *__src);
-size_t strcspn(const char *__s, const char *__charset);
-char *strerror(int __errnum) __asm("_" "strerror" );
-size_t strlen(const char *__s);
-char *strncat(char *__s1, const char *__s2, size_t __n);
-int strncmp(const char *__s1, const char *__s2, size_t __n);
-char *strncpy(char *__dst, const char *__src, size_t __n);
-char *strpbrk(const char *__s, const char *__charset);
-char *strrchr(const char *__s, int __c);
-size_t strspn(const char *__s, const char *__charset);
-char *strstr(const char *__big, const char *__little);
-char *strtok(char *__str, const char *__sep);
-size_t strxfrm(char *__s1, const char *__s2, size_t __n);
-# 104 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
-char *strtok_r(char *__str, const char *__sep, char **__lasts);
-# 116 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
-int strerror_r(int __errnum, char *__strerrbuf, size_t __buflen);
-char *strdup(const char *__s1);
-void *memccpy(void *__dst, const void *__src, int __c, size_t __n);
-# 130 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
-char *stpcpy(char *__dst, const char *__src);
-char *stpncpy(char *__dst, const char *__src, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
-char *strndup(const char *__s1, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
-size_t strnlen(const char *__s1, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
-char *strsignal(int __sig);
-
-
-
-
-
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_rsize_t.h" 1 3 4
-# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_rsize_t.h" 3 4
-typedef __darwin_size_t rsize_t;
-# 142 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 2 3 4
-
-
-
-errno_t memset_s(void *__s, rsize_t __smax, int __c, rsize_t __n) __attribute__((availability(macosx,introduced=10.9)));
-# 155 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
-void *memmem(const void *__big, size_t __big_len, const void *__little, size_t __little_len) __attribute__((availability(macosx,introduced=10.7)));
-void memset_pattern4(void *__b, const void *__pattern4, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
-void memset_pattern8(void *__b, const void *__pattern8, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
-void memset_pattern16(void *__b, const void *__pattern16, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
-
-char *strcasestr(const char *__big, const char *__little);
-char *strnstr(const char *__big, const char *__little, size_t __len);
-size_t strlcat(char *__dst, const char *__source, size_t __size);
-size_t strlcpy(char *__dst, const char *__source, size_t __size);
-void strmode(int __mode, char *__bp);
-char *strsep(char **__stringp, const char *__delim);
-
-
-void swab(const void * restrict, void * restrict, ssize_t);
-
-__attribute__((availability(macosx,introduced=10.12.1))) __attribute__((availability(ios,introduced=10.1)))
-__attribute__((availability(tvos,introduced=10.0.1))) __attribute__((availability(watchos,introduced=3.1)))
-int timingsafe_bcmp(const void *__b1, const void *__b2, size_t __len);
-
-__attribute__((availability(macosx,introduced=11.0))) __attribute__((availability(ios,introduced=14.0)))
-__attribute__((availability(tvos,introduced=14.0))) __attribute__((availability(watchos,introduced=7.0)))
-int strsignal_r(int __sig, char *__strsignalbuf, size_t __buflen);
-
-
-
-
-
-
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 1 3 4
-# 65 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h" 1 3 4
-# 66 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 2 3 4
-
-
-
-
-int bcmp(const void *, const void *, size_t) ;
-void bcopy(const void *, void *, size_t) ;
-void bzero(void *, size_t) ;
-char *index(const char *, int) ;
-char *rindex(const char *, int) ;
-
-
-int ffs(int);
-int strcasecmp(const char *, const char *);
-int strncasecmp(const char *, const char *, size_t);
-
-
-
-
-
-int ffsl(long) __attribute__((availability(macosx,introduced=10.5)));
-int ffsll(long long) __attribute__((availability(macosx,introduced=10.9)));
-int fls(int) __attribute__((availability(macosx,introduced=10.5)));
-int flsl(long) __attribute__((availability(macosx,introduced=10.5)));
-int flsll(long long) __attribute__((availability(macosx,introduced=10.9)));
-
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 1 3 4
-# 93 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 2 3 4
-
-
-
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_strings.h" 1 3 4
-# 98 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/strings.h" 2 3 4
-# 185 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 2 3 4
-# 194 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_string.h" 1 3 4
-# 195 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h" 2 3 4
-# 41 "./libavutil/common.h" 2
-
-
-# 1 "./libavutil/error.h" 1
-# 27 "./libavutil/error.h"
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 1 3 4
-# 28 "./libavutil/error.h" 2
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 29 "./libavutil/error.h" 2
-# 99 "./libavutil/error.h"
-int av_strerror(int errnum, char *errbuf, size_t errbuf_size);
-# 111 "./libavutil/error.h"
-static inline char *av_make_error_string(char *errbuf, size_t errbuf_size, int errnum)
-{
-    av_strerror(errnum, errbuf, errbuf_size);
-    return errbuf;
-}
-# 44 "./libavutil/common.h" 2
-# 160 "./libavutil/common.h"
-__attribute__((const)) int av_log2(unsigned v);
-
-
-
-__attribute__((const)) int av_log2_16bit(unsigned v);
-# 174 "./libavutil/common.h"
-static __attribute__((always_inline)) inline __attribute__((const)) int av_clip_c(int a, int amin, int amax)
-{
-
-
-
-    if (a < amin) return amin;
-    else if (a > amax) return amax;
-    else return a;
-}
-# 191 "./libavutil/common.h"
-static __attribute__((always_inline)) inline __attribute__((const)) int64_t av_clip64_c(int64_t a, int64_t amin, int64_t amax)
-{
-
-
-
-    if (a < amin) return amin;
-    else if (a > amax) return amax;
-    else return a;
-}
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) uint8_t av_clip_uint8_c(int a)
-{
-    if (a&(~0xFF)) return (~a)>>31;
-    else return a;
-}
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) int8_t av_clip_int8_c(int a)
-{
-    if ((a+0x80U) & ~0xFF) return (a>>31) ^ 0x7F;
-    else return a;
-}
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) uint16_t av_clip_uint16_c(int a)
-{
-    if (a&(~0xFFFF)) return (~a)>>31;
-    else return a;
-}
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) int16_t av_clip_int16_c(int a)
-{
-    if ((a+0x8000U) & ~0xFFFF) return (a>>31) ^ 0x7FFF;
-    else return a;
-}
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) int32_t av_clipl_int32_c(int64_t a)
-{
-    if ((a+0x80000000u) & ~(0xFFFFFFFFULL)) return (int32_t)((a>>63) ^ 0x7FFFFFFF);
-    else return (int32_t)a;
-}
-
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) int av_clip_intp2_c(int a, int p)
-{
-    if (((unsigned)a + (1 << p)) & ~((2 << p) - 1))
-        return (a >> 31) ^ ((1 << p) - 1);
-    else
-        return a;
-}
-
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) unsigned av_clip_uintp2_c(int a, int p)
-{
-    if (a & ~((1<<p) - 1)) return (~a) >> 31 & ((1<<p) - 1);
-    else return a;
-}
-
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) unsigned av_mod_uintp2_c(unsigned a, unsigned p)
-{
-    return a & ((1U << p) - 1);
-}
-# 300 "./libavutil/common.h"
-static __attribute__((always_inline)) inline int av_sat_add32_c(int a, int b)
-{
-    return av_clipl_int32_c((int64_t)a + b);
-}
-# 312 "./libavutil/common.h"
-static __attribute__((always_inline)) inline int av_sat_dadd32_c(int a, int b)
-{
-    return av_sat_add32_c(a, av_sat_add32_c(b, b));
-}
-# 324 "./libavutil/common.h"
-static __attribute__((always_inline)) inline int av_sat_sub32_c(int a, int b)
-{
-    return av_clipl_int32_c((int64_t)a - b);
-}
-# 336 "./libavutil/common.h"
-static __attribute__((always_inline)) inline int av_sat_dsub32_c(int a, int b)
-{
-    return av_sat_sub32_c(a, av_sat_add32_c(b, b));
-}
-# 348 "./libavutil/common.h"
-static __attribute__((always_inline)) inline int64_t av_sat_add64_c(int64_t a, int64_t b) {
-
-    int64_t tmp;
-    return !__builtin_add_overflow(a, b, &tmp) ? tmp : (tmp < 0 ? 9223372036854775807LL : (-9223372036854775807LL -1));
-
-
-
-
-
-
-}
-# 367 "./libavutil/common.h"
-static __attribute__((always_inline)) inline int64_t av_sat_sub64_c(int64_t a, int64_t b) {
-
-    int64_t tmp;
-    return !__builtin_sub_overflow(a, b, &tmp) ? tmp : (tmp < 0 ? 9223372036854775807LL : (-9223372036854775807LL -1));
-
-
-
-
-
-
-
-}
-# 389 "./libavutil/common.h"
-static __attribute__((always_inline)) inline __attribute__((const)) float av_clipf_c(float a, float amin, float amax)
-{
-
-
-
-    return ((((a) > (amin) ? (a) : (amin))) > (amax) ? (amax) : (((a) > (amin) ? (a) : (amin))));
-}
-# 406 "./libavutil/common.h"
-static __attribute__((always_inline)) inline __attribute__((const)) double av_clipd_c(double a, double amin, double amax)
-{
-
-
-
-    return ((((a) > (amin) ? (a) : (amin))) > (amax) ? (amax) : (((a) > (amin) ? (a) : (amin))));
-}
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) int av_ceil_log2_c(int x)
-{
-    return av_log2((x - 1U) << 1);
-}
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) int av_popcount_c(uint32_t x)
-{
-    x -= (x >> 1) & 0x55555555;
-    x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
-    x = (x + (x >> 4)) & 0x0F0F0F0F;
-    x += x >> 8;
-    return (x + (x >> 16)) & 0x3F;
-}
-
-
-
-
-
-
-static __attribute__((always_inline)) inline __attribute__((const)) int av_popcount64_c(uint64_t x)
-{
-    return av_popcount_c((uint32_t)x) + av_popcount_c((uint32_t)(x >> 32));
-}
-
-static __attribute__((always_inline)) inline __attribute__((const)) int av_parity_c(uint32_t v)
-{
-    return av_popcount_c(v) & 1;
-}
-# 573 "./libavutil/common.h"
-# 1 "./libavutil/mem.h" 1
-# 30 "./libavutil/mem.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 31 "./libavutil/mem.h" 2
-# 119 "./libavutil/mem.h"
-void *av_malloc(size_t size) __attribute__((__malloc__)) ;
-# 130 "./libavutil/mem.h"
-void *av_mallocz(size_t size) __attribute__((__malloc__)) ;
-# 143 "./libavutil/mem.h"
-                    void *av_malloc_array(size_t nmemb, size_t size);
-# 158 "./libavutil/mem.h"
-void *av_calloc(size_t nmemb, size_t size) __attribute__((__malloc__)) ;
-# 180 "./libavutil/mem.h"
-void *av_realloc(void *ptr, size_t size) ;
-# 201 "./libavutil/mem.h"
-__attribute__((warn_unused_result))
-int av_reallocp(void *ptr, size_t size);
-# 219 "./libavutil/mem.h"
-void *av_realloc_f(void *ptr, size_t nelem, size_t elsize);
-# 239 "./libavutil/mem.h"
-                    void *av_realloc_array(void *ptr, size_t nmemb, size_t size);
-# 257 "./libavutil/mem.h"
-int av_reallocp_array(void *ptr, size_t nmemb, size_t size);
-# 291 "./libavutil/mem.h"
-void *av_fast_realloc(void *ptr, unsigned int *size, size_t min_size);
-# 322 "./libavutil/mem.h"
-void av_fast_malloc(void *ptr, unsigned int *size, size_t min_size);
-# 342 "./libavutil/mem.h"
-void av_fast_mallocz(void *ptr, unsigned int *size, size_t min_size);
-# 355 "./libavutil/mem.h"
-void av_free(void *ptr);
-# 378 "./libavutil/mem.h"
-void av_freep(void *ptr);
-# 388 "./libavutil/mem.h"
-char *av_strdup(const char *s) __attribute__((__malloc__));
-# 399 "./libavutil/mem.h"
-char *av_strndup(const char *s, size_t len) __attribute__((__malloc__));
-# 409 "./libavutil/mem.h"
-void *av_memdup(const void *p, size_t size);
-# 422 "./libavutil/mem.h"
-void av_memcpy_backptr(uint8_t *dst, int back, int cnt);
-# 524 "./libavutil/mem.h"
-void av_dynarray_add(void *tab_ptr, int *nb_ptr, void *elem);
-# 536 "./libavutil/mem.h"
-__attribute__((warn_unused_result))
-int av_dynarray_add_nofree(void *tab_ptr, int *nb_ptr, void *elem);
-# 562 "./libavutil/mem.h"
-void *av_dynarray2_add(void **tab_ptr, int *nb_ptr, size_t elem_size,
-                       const uint8_t *elem_data);
-# 585 "./libavutil/mem.h"
-int av_size_mult(size_t a, size_t b, size_t *r);
-# 600 "./libavutil/mem.h"
-void av_max_alloc(size_t max);
-# 574 "./libavutil/common.h" 2
-# 302 "./libavutil/avutil.h" 2
-
-
-
-
-# 1 "./libavutil/log.h" 1
-# 24 "./libavutil/log.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 1 3
-# 14 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 3
-typedef __builtin_va_list va_list;
-# 34 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 3
-typedef __builtin_va_list __gnuc_va_list;
-# 25 "./libavutil/log.h" 2
-
-
-
-typedef enum {
-    AV_CLASS_CATEGORY_NA = 0,
-    AV_CLASS_CATEGORY_INPUT,
-    AV_CLASS_CATEGORY_OUTPUT,
-    AV_CLASS_CATEGORY_MUXER,
-    AV_CLASS_CATEGORY_DEMUXER,
-    AV_CLASS_CATEGORY_ENCODER,
-    AV_CLASS_CATEGORY_DECODER,
-    AV_CLASS_CATEGORY_FILTER,
-    AV_CLASS_CATEGORY_BITSTREAM_FILTER,
-    AV_CLASS_CATEGORY_SWSCALER,
-    AV_CLASS_CATEGORY_SWRESAMPLER,
-    AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT = 40,
-    AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT,
-    AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT,
-    AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT,
-    AV_CLASS_CATEGORY_DEVICE_OUTPUT,
-    AV_CLASS_CATEGORY_DEVICE_INPUT,
-    AV_CLASS_CATEGORY_NB
-}AVClassCategory;
-# 59 "./libavutil/log.h"
-struct AVOptionRanges;
-
-
-
-
-
-
-typedef struct AVClass {
-
-
-
-
-    const char* class_name;
-
-
-
-
-
-    const char* (*item_name)(void* ctx);
-
-
-
-
-
-
-    const struct AVOption *option;
-
-
-
-
-
-
-
-    int version;
-
-
-
-
-
-    int log_level_offset_offset;
-# 107 "./libavutil/log.h"
-    int parent_log_context_offset;
-
-
-
-
-
-
-    AVClassCategory category;
-
-
-
-
-
-    AVClassCategory (*get_category)(void* ctx);
-
-
-
-
-
-    int (*query_ranges)(struct AVOptionRanges **, void *obj, const char *key, int flags);
-
-
-
-
-    void* (*child_next)(void *obj, void *prev);
-# 146 "./libavutil/log.h"
-    const struct AVClass* (*child_class_iterate)(void **iter);
-} AVClass;
-# 238 "./libavutil/log.h"
-void av_log(void *avcl, int level, const char *fmt, ...) __attribute__((__format__(__printf__, 3, 4)));
-# 259 "./libavutil/log.h"
-void av_log_once(void* avcl, int initial_level, int subsequent_level, int *state, const char *fmt, ...) __attribute__((__format__(__printf__, 5, 6)));
-# 277 "./libavutil/log.h"
-void av_vlog(void *avcl, int level, const char *fmt, va_list vl);
-# 286 "./libavutil/log.h"
-int av_log_get_level(void);
-# 295 "./libavutil/log.h"
-void av_log_set_level(int level);
-# 307 "./libavutil/log.h"
-void av_log_set_callback(void (*callback)(void*, int, const char*, va_list));
-# 322 "./libavutil/log.h"
-void av_log_default_callback(void *avcl, int level, const char *fmt,
-                             va_list vl);
-# 332 "./libavutil/log.h"
-const char* av_default_item_name(void* ctx);
-AVClassCategory av_default_get_category(void *ptr);
-# 342 "./libavutil/log.h"
-void av_log_format_line(void *ptr, int level, const char *fmt, va_list vl,
-                        char *line, int line_size, int *print_prefix);
-# 359 "./libavutil/log.h"
-int av_log_format_line2(void *ptr, int level, const char *fmt, va_list vl,
-                        char *line, int line_size, int *print_prefix);
-# 380 "./libavutil/log.h"
-void av_log_set_flags(int arg);
-int av_log_get_flags(void);
-# 307 "./libavutil/avutil.h" 2
-
+# 308 "./libavutil/avutil.h" 2
 
 
 
@@ -4338,7 +4084,7 @@ int av_opt_is_set_to_default_by_name(void *obj, const char *name, int search_fla
 # 885 "./libavutil/opt.h"
 int av_opt_serialize(void *obj, int opt_flags, int flags, char **buffer,
                      const char key_val_sep, const char pairs_sep);
-# 33 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
+# 25 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
 
 # 1 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h" 1
 # 25 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h"
@@ -5503,7 +5249,39 @@ char *avfilter_graph_dump(AVFilterGraph *graph, const char *options);
 int avfilter_graph_request_oldest(AVFilterGraph *graph);
 # 26 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h" 2
 # 1 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h" 1
-# 29 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h"
+# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h"
+# 1 "./libavutil/internal.h" 1
+# 38 "./libavutil/internal.h"
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
+# 39 "./libavutil/internal.h" 2
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h" 1 3 4
+# 40 "./libavutil/internal.h" 2
+# 97 "./libavutil/internal.h"
+# 1 "./libavutil/libm.h" 1
+# 98 "./libavutil/internal.h" 2
+# 116 "./libavutil/internal.h"
+void avpriv_report_missing_feature(void *avc,
+                                   const char *msg, ...) __attribute__((__format__(__printf__, 2, 3)));
+# 127 "./libavutil/internal.h"
+void avpriv_request_sample(void *avc,
+                           const char *msg, ...) __attribute__((__format__(__printf__, 2, 3)));
+# 166 "./libavutil/internal.h"
+int avpriv_set_systematic_pal2(uint32_t pal[256], enum AVPixelFormat pix_fmt);
+
+static __attribute__((always_inline)) inline __attribute__((const)) int avpriv_mirror(int x, int w)
+{
+    if (!w)
+        return 0;
+
+    while ((unsigned)x > (unsigned)w) {
+        x = -x;
+        if (x < 0)
+            x += 2 * w;
+    }
+    return x;
+}
+# 28 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h" 2
+
 # 1 "/Users/davidchen/repo/ffmpeg/libavfilter/framequeue.h" 1
 # 34 "/Users/davidchen/repo/ffmpeg/libavfilter/framequeue.h"
 typedef struct FFFrameBucket {
@@ -5777,108 +5555,8 @@ AVFrame *ff_default_get_audio_buffer(AVFilterLink *link, int nb_samples);
 AVFrame *ff_null_get_audio_buffer(AVFilterLink *link, int nb_samples);
 # 48 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h"
 AVFrame *ff_get_audio_buffer(AVFilterLink *link, int nb_samples);
-# 35 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
+# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
 
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h" 1
-# 46 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-void ff_filter_set_ready(AVFilterContext *filter, unsigned priority);
-
-
-
-
-
-
-int ff_inlink_process_commands(AVFilterLink *link, const AVFrame *frame);
-
-
-
-
-
-
-
-int ff_inlink_evaluate_timeline_at_frame(AVFilterLink *link, const AVFrame *frame);
-
-
-
-
-
-size_t ff_inlink_queued_frames(AVFilterLink *link);
-
-
-
-
-
-int ff_inlink_check_available_frame(AVFilterLink *link);
-
-
-
-
-
-
-int ff_inlink_queued_samples(AVFilterLink *link);
-
-
-
-
-
-
-int ff_inlink_check_available_samples(AVFilterLink *link, unsigned min);
-# 101 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-int ff_inlink_consume_frame(AVFilterLink *link, AVFrame **rframe);
-# 115 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-int ff_inlink_consume_samples(AVFilterLink *link, unsigned min, unsigned max,
-                            AVFrame **rframe);
-
-
-
-
-
-
-AVFrame *ff_inlink_peek_frame(AVFilterLink *link, size_t idx);
-
-
-
-
-
-
-int ff_inlink_make_frame_writable(AVFilterLink *link, AVFrame **rframe);
-# 153 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-int ff_inlink_acknowledge_status(AVFilterLink *link, int *rstatus, int64_t *rpts);
-
-
-
-
-
-
-
-void ff_inlink_request_frame(AVFilterLink *link);
-
-
-
-
-
-void ff_inlink_set_status(AVFilterLink *link, int status);
-
-
-
-
-static inline int ff_outlink_frame_wanted(AVFilterLink *link)
-{
-    return link->frame_wanted_out;
-}
-
-
-
-
-int ff_outlink_get_status(AVFilterLink *link);
-# 189 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-static inline void ff_outlink_set_status(AVFilterLink *link, int status, int64_t pts)
-{
-    ff_avfilter_link_set_in_status(link, status, pts);
-}
-# 267 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-int ff_inoutlink_check_flow(AVFilterLink *inlink, AVFilterLink *outlink);
-# 37 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
 # 1 "/Users/davidchen/repo/ffmpeg/libavfilter/formats.h" 1
 # 64 "/Users/davidchen/repo/ffmpeg/libavfilter/formats.h"
 struct AVFilterFormats {
@@ -6069,473 +5747,776 @@ typedef struct AVFilterNegotiation {
 } AVFilterNegotiation;
 
 const AVFilterNegotiation *ff_filter_get_negotiation(AVFilterLink *link);
-# 38 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c" 2
-# 49 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c"
-typedef struct BiquadCoeffs {
-    double cd[5];
-    float cf[5];
-} BiquadCoeffs;
+# 29 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h" 1
+# 46 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
+void ff_filter_set_ready(AVFilterContext *filter, unsigned priority);
 
-typedef struct AudioCrossoverContext {
+
+
+
+
+
+int ff_inlink_process_commands(AVFilterLink *link, const AVFrame *frame);
+
+
+
+
+
+
+
+int ff_inlink_evaluate_timeline_at_frame(AVFilterLink *link, const AVFrame *frame);
+
+
+
+
+
+size_t ff_inlink_queued_frames(AVFilterLink *link);
+
+
+
+
+
+int ff_inlink_check_available_frame(AVFilterLink *link);
+
+
+
+
+
+
+int ff_inlink_queued_samples(AVFilterLink *link);
+
+
+
+
+
+
+int ff_inlink_check_available_samples(AVFilterLink *link, unsigned min);
+# 101 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
+int ff_inlink_consume_frame(AVFilterLink *link, AVFrame **rframe);
+# 115 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
+int ff_inlink_consume_samples(AVFilterLink *link, unsigned min, unsigned max,
+                            AVFrame **rframe);
+
+
+
+
+
+
+AVFrame *ff_inlink_peek_frame(AVFilterLink *link, size_t idx);
+
+
+
+
+
+
+int ff_inlink_make_frame_writable(AVFilterLink *link, AVFrame **rframe);
+# 153 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
+int ff_inlink_acknowledge_status(AVFilterLink *link, int *rstatus, int64_t *rpts);
+
+
+
+
+
+
+
+void ff_inlink_request_frame(AVFilterLink *link);
+
+
+
+
+
+void ff_inlink_set_status(AVFilterLink *link, int status);
+
+
+
+
+static inline int ff_outlink_frame_wanted(AVFilterLink *link)
+{
+    return link->frame_wanted_out;
+}
+
+
+
+
+int ff_outlink_get_status(AVFilterLink *link);
+# 189 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
+static inline void ff_outlink_set_status(AVFilterLink *link, int status, int64_t pts)
+{
+    ff_avfilter_link_set_in_status(link, status, pts);
+}
+# 267 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
+int ff_inoutlink_check_flow(AVFilterLink *inlink, AVFilterLink *outlink);
+# 30 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
+
+
+enum OutModes {
+    IN_MODE,
+    DESIRED_MODE,
+    OUT_MODE,
+    NOISE_MODE,
+    ERROR_MODE,
+    NB_OMODES
+};
+
+typedef struct AudioAPContext {
     const AVClass *class;
 
-    char *splits_str;
-    char *gains_str;
-    int order_opt;
-    float level_in;
+    int order;
+    int projection;
+    float mu;
+    float delta;
+    int output_mode;
     int precision;
 
-    int order;
-    int filter_count;
-    int first_order;
-    int ap_filter_count;
-    int nb_splits;
-    float splits[16];
+    int kernel_size;
+    AVFrame *offset;
+    AVFrame *delay;
+    AVFrame *coeffs;
+    AVFrame *e;
+    AVFrame *p;
+    AVFrame *x;
+    AVFrame *w;
+    AVFrame *dcoeffs;
+    AVFrame *tmp;
+    AVFrame *tmpm;
+    AVFrame *itmpm;
 
-    float gains[16 + 1];
+    void **tmpmp;
+    void **itmpmp;
 
-    BiquadCoeffs lp[16 + 1][20];
-    BiquadCoeffs hp[16 + 1][20];
-    BiquadCoeffs ap[16 + 1][20];
-
-    AVFrame *xover;
-
-    AVFrame *frames[16 + 1];
+    AVFrame *frame[2];
 
     int (*filter_channels)(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs);
 
     AVFloatDSPContext *fdsp;
-} AudioCrossoverContext;
+} AudioAPContext;
 
 
 
 
-static const AVOption acrossover_options[] = {
-    { "split", "set split frequencies", __builtin_offsetof(AudioCrossoverContext, splits_str), AV_OPT_TYPE_STRING, {.str="500"}, 0, 0, 8 | (1<<16) },
-    { "order", "set filter order", __builtin_offsetof(AudioCrossoverContext, order_opt), AV_OPT_TYPE_INT, {.i64=1}, 0, 9, 8 | (1<<16), "m" },
-    { "2nd", "2nd order (12 dB/8ve)", 0, AV_OPT_TYPE_CONST, {.i64=0}, 0, 0, 8 | (1<<16), "m" },
-    { "4th", "4th order (24 dB/8ve)", 0, AV_OPT_TYPE_CONST, {.i64=1}, 0, 0, 8 | (1<<16), "m" },
-    { "6th", "6th order (36 dB/8ve)", 0, AV_OPT_TYPE_CONST, {.i64=2}, 0, 0, 8 | (1<<16), "m" },
-    { "8th", "8th order (48 dB/8ve)", 0, AV_OPT_TYPE_CONST, {.i64=3}, 0, 0, 8 | (1<<16), "m" },
-    { "10th", "10th order (60 dB/8ve)",0, AV_OPT_TYPE_CONST, {.i64=4}, 0, 0, 8 | (1<<16), "m" },
-    { "12th", "12th order (72 dB/8ve)",0, AV_OPT_TYPE_CONST, {.i64=5}, 0, 0, 8 | (1<<16), "m" },
-    { "14th", "14th order (84 dB/8ve)",0, AV_OPT_TYPE_CONST, {.i64=6}, 0, 0, 8 | (1<<16), "m" },
-    { "16th", "16th order (96 dB/8ve)",0, AV_OPT_TYPE_CONST, {.i64=7}, 0, 0, 8 | (1<<16), "m" },
-    { "18th", "18th order (108 dB/8ve)",0, AV_OPT_TYPE_CONST, {.i64=8}, 0, 0, 8 | (1<<16), "m" },
-    { "20th", "20th order (120 dB/8ve)",0, AV_OPT_TYPE_CONST, {.i64=9}, 0, 0, 8 | (1<<16), "m" },
-    { "level", "set input gain", __builtin_offsetof(AudioCrossoverContext, level_in), AV_OPT_TYPE_FLOAT, {.dbl=1}, 0, 1, 8 | (1<<16) },
-    { "gain", "set output bands gain", __builtin_offsetof(AudioCrossoverContext, gains_str), AV_OPT_TYPE_STRING, {.str="1.f"}, 0, 0, 8 | (1<<16) },
-    { "precision", "set processing precision", __builtin_offsetof(AudioCrossoverContext, precision), AV_OPT_TYPE_INT, {.i64=0}, 0, 2, 8 | (1<<16), "precision" },
-    { "auto", "set auto processing precision", 0, AV_OPT_TYPE_CONST, {.i64=0}, 0, 0, 8 | (1<<16), "precision" },
-    { "float", "set single-floating point processing precision", 0, AV_OPT_TYPE_CONST, {.i64=1}, 0, 0, 8 | (1<<16), "precision" },
-    { "double","set double-floating point processing precision", 0, AV_OPT_TYPE_CONST, {.i64=2}, 0, 0, 8 | (1<<16), "precision" },
+
+static const AVOption aap_options[] = {
+    { "order", "set the filter order", __builtin_offsetof(AudioAPContext, order), AV_OPT_TYPE_INT, {.i64=16}, 1, 32767, 8|(1<<16) },
+    { "projection", "set the filter projection", __builtin_offsetof(AudioAPContext, projection), AV_OPT_TYPE_INT, {.i64=2}, 1, 256, 8|(1<<16) },
+    { "mu", "set the filter mu", __builtin_offsetof(AudioAPContext, mu), AV_OPT_TYPE_FLOAT, {.dbl=0.0001},0,1, 8|(1<<16)|(1<<15) },
+    { "delta", "set the filter delta", __builtin_offsetof(AudioAPContext, delta), AV_OPT_TYPE_FLOAT, {.dbl=0.001},0, 1, 8|(1<<16)|(1<<15) },
+    { "out_mode", "set output mode", __builtin_offsetof(AudioAPContext, output_mode), AV_OPT_TYPE_INT, {.i64=OUT_MODE}, 0, NB_OMODES-1, 8|(1<<16)|(1<<15), "mode" },
+    { "i", "input", 0, AV_OPT_TYPE_CONST, {.i64=IN_MODE}, 0, 0, 8|(1<<16)|(1<<15), "mode" },
+    { "d", "desired", 0, AV_OPT_TYPE_CONST, {.i64=DESIRED_MODE}, 0, 0, 8|(1<<16)|(1<<15), "mode" },
+    { "o", "output", 0, AV_OPT_TYPE_CONST, {.i64=OUT_MODE}, 0, 0, 8|(1<<16)|(1<<15), "mode" },
+    { "n", "noise", 0, AV_OPT_TYPE_CONST, {.i64=NOISE_MODE}, 0, 0, 8|(1<<16)|(1<<15), "mode" },
+    { "e", "error", 0, AV_OPT_TYPE_CONST, {.i64=ERROR_MODE}, 0, 0, 8|(1<<16)|(1<<15), "mode" },
+    { "precision", "set processing precision", __builtin_offsetof(AudioAPContext, precision), AV_OPT_TYPE_INT, {.i64=0}, 0, 2, 8|(1<<16), "precision" },
+    { "auto", "set auto processing precision", 0, AV_OPT_TYPE_CONST, {.i64=0}, 0, 0, 8|(1<<16), "precision" },
+    { "float", "set single-floating point processing precision", 0, AV_OPT_TYPE_CONST, {.i64=1}, 0, 0, 8|(1<<16), "precision" },
+    { "double","set double-floating point processing precision", 0, AV_OPT_TYPE_CONST, {.i64=2}, 0, 0, 8|(1<<16), "precision" },
     { ((void*)0) }
 };
 
-static const AVClass acrossover_class = { .class_name = "acrossover", .item_name = av_default_item_name, .option = acrossover_options, .version = ((58)<<16 | (36)<<8 | (100)), .category = AV_CLASS_CATEGORY_FILTER, };
+static const AVClass aap_class = { .class_name = "aap", .item_name = av_default_item_name, .option = aap_options, .version = ((58)<<16 | (36)<<8 | (100)), .category = AV_CLASS_CATEGORY_FILTER, };
 
 static int query_formats(AVFilterContext *ctx)
 {
-    AudioCrossoverContext *s = ctx->priv;
-    static const enum AVSampleFormat auto_sample_fmts[] = {
-        AV_SAMPLE_FMT_FLTP,
-        AV_SAMPLE_FMT_DBLP,
-        AV_SAMPLE_FMT_NONE
+    AudioAPContext *s = ctx->priv;
+    static const enum AVSampleFormat sample_fmts[3][3] = {
+        { AV_SAMPLE_FMT_FLTP, AV_SAMPLE_FMT_DBLP, AV_SAMPLE_FMT_NONE },
+        { AV_SAMPLE_FMT_FLTP, AV_SAMPLE_FMT_NONE },
+        { AV_SAMPLE_FMT_DBLP, AV_SAMPLE_FMT_NONE },
     };
-    enum AVSampleFormat sample_fmts[] = {
-        AV_SAMPLE_FMT_FLTP,
-        AV_SAMPLE_FMT_NONE
-    };
-    const enum AVSampleFormat *sample_fmts_list = sample_fmts;
-    int ret = ff_set_common_all_channel_counts(ctx);
-    if (ret < 0)
+    int ret;
+
+    if ((ret = ff_set_common_all_channel_counts(ctx)) < 0)
         return ret;
 
-    switch (s->precision) {
-    case 0:
-        sample_fmts_list = auto_sample_fmts;
-        break;
-    case 1:
-        sample_fmts[0] = AV_SAMPLE_FMT_FLTP;
-        break;
-    case 2:
-        sample_fmts[0] = AV_SAMPLE_FMT_DBLP;
-        break;
-    default:
-        break;
-    }
-    ret = ff_set_common_formats_from_list(ctx, sample_fmts_list);
-    if (ret < 0)
+    if ((ret = ff_set_common_formats_from_list(ctx, sample_fmts[s->precision])) < 0)
         return ret;
 
     return ff_set_common_all_samplerates(ctx);
 }
 
-static int parse_gains(AVFilterContext *ctx)
+static int activate(AVFilterContext *ctx)
 {
-    AudioCrossoverContext *s = ctx->priv;
-    char *p, *arg, *saveptr = ((void*)0);
-    int i, ret = 0;
+    AudioAPContext *s = ctx->priv;
+    int i, ret, status;
+    int nb_samples;
+    int64_t pts;
 
-    saveptr = ((void*)0);
-    p = s->gains_str;
-    for (i = 0; i < 16 + 1; i++) {
-        float gain;
-        char c[3] = { 0 };
+    do { int ret = ff_outlink_get_status(ctx->outputs[0]); if (ret) { unsigned i; for (i = 0; i < ctx->nb_inputs; i++) ff_inlink_set_status(ctx->inputs[i], ret); return 0; } } while (0);
 
-        if (!(arg = av_strtok(p, " |", &saveptr)))
-            break;
+    nb_samples = ((ff_inlink_queued_samples(ctx->inputs[0])) > (ff_inlink_queued_samples(ctx->inputs[1])) ? (ff_inlink_queued_samples(ctx->inputs[1])) : (ff_inlink_queued_samples(ctx->inputs[0])));
 
-        p = ((void*)0);
+    for (i = 0; i < ctx->nb_inputs && nb_samples > 0; i++) {
+        if (s->frame[i])
+            continue;
 
-        if (av_sscanf(arg, "%f%2s", &gain, c) < 1) {
-            av_log(ctx, 16, "Invalid syntax for gain[%d].\n", i);
-            ret = (-(22));
-            break;
+        if (ff_inlink_check_available_samples(ctx->inputs[i], nb_samples) > 0) {
+            ret = ff_inlink_consume_samples(ctx->inputs[i], nb_samples, nb_samples, &s->frame[i]);
+            if (ret < 0)
+                return ret;
         }
-
-        if (c[0] == 'd' && c[1] == 'B')
-            s->gains[i] = expf(gain * 2.30258509299404568401799145468436421 / 20.f);
-        else
-            s->gains[i] = gain;
     }
 
-    for (; i < 16 + 1; i++)
-        s->gains[i] = 1.f;
+    if (s->frame[0] && s->frame[1]) {
+        AVFrame *out;
 
-    return ret;
+        out = ff_get_audio_buffer(ctx->outputs[0], s->frame[0]->nb_samples);
+        if (!out) {
+            av_frame_free(&s->frame[0]);
+            av_frame_free(&s->frame[1]);
+            return (-(12));
+        }
+
+        ff_filter_execute(ctx, s->filter_channels, out, ((void*)0),
+                          ((ctx->outputs[0]->ch_layout.nb_channels) > (ff_filter_get_nb_threads(ctx)) ? (ff_filter_get_nb_threads(ctx)) : (ctx->outputs[0]->ch_layout.nb_channels)));
+
+        out->pts = s->frame[0]->pts;
+        out->duration = s->frame[0]->duration;
+
+        av_frame_free(&s->frame[0]);
+        av_frame_free(&s->frame[1]);
+
+        ret = ff_filter_frame(ctx->outputs[0], out);
+        if (ret < 0)
+            return ret;
+    }
+
+    if (!nb_samples) {
+        for (i = 0; i < 2; i++) {
+            if (ff_inlink_acknowledge_status(ctx->inputs[i], &status, &pts)) {
+                ff_outlink_set_status(ctx->outputs[0], status, pts);
+                return 0;
+            }
+        }
+    }
+
+    if (ff_outlink_frame_wanted(ctx->outputs[0])) {
+        for (i = 0; i < 2; i++) {
+            if (s->frame[i] || ff_inlink_queued_samples(ctx->inputs[i]) > 0)
+                continue;
+            ff_inlink_request_frame(ctx->inputs[i]);
+            return 0;
+        }
+    }
+    return 0;
+}
+
+
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/aap_template.c" 1
+# 51 "/Users/davidchen/repo/ffmpeg/libavfilter/aap_template.c"
+static float fir_sample_float(AudioAPContext *s, float sample, float *delay,
+                            float *coeffs, float *tmp, int *offset)
+{
+    const int order = s->order;
+    float output;
+
+    delay[*offset] = sample;
+
+    __builtin___memcpy_chk (tmp, coeffs + order - *offset, order * sizeof(float), __builtin_object_size (tmp, 0));
+
+    output = s->fdsp->scalarproduct_float(delay, tmp, s->kernel_size);
+
+
+
+
+    if (--(*offset) < 0)
+        *offset = order - 1;
+
+    return output;
+}
+
+static int lup_decompose_float(float **MA, const int N, const float tol, int *P)
+{
+    for (int i = 0; i <= N; i++)
+        P[i] = i;
+
+    for (int i = 0; i < N; i++) {
+        float maxA = 0.f;
+        int imax = i;
+
+        for (int k = i; k < N; k++) {
+            float absA = fabs(MA[k][i]);
+            if (absA > maxA) {
+                maxA = absA;
+                imax = k;
+            }
+        }
+
+        if (maxA < tol)
+            return 0;
+
+        if (imax != i) {
+            do{int SWAP_tmp= P[imax]; P[imax]= P[i]; P[i]= SWAP_tmp;}while(0);
+            do{float * SWAP_tmp= MA[imax]; MA[imax]= MA[i]; MA[i]= SWAP_tmp;}while(0);
+            P[N]++;
+        }
+
+        for (int j = i + 1; j < N; j++) {
+            MA[j][i] /= MA[i][i];
+
+            for (int k = i + 1; k < N; k++)
+                MA[j][k] -= MA[j][i] * MA[i][k];
+        }
+    }
+
+    return 1;
+}
+
+static void lup_invert_float(float *const *MA, const int *P, const int N, float **IA)
+{
+    for (int j = 0; j < N; j++) {
+        for (int i = 0; i < N; i++) {
+            IA[i][j] = P[i] == j ? 1.f : 0.f;
+
+            for (int k = 0; k < i; k++)
+                IA[i][j] -= MA[i][k] * IA[k][j];
+        }
+
+        for (int i = N - 1; i >= 0; i--) {
+            for (int k = i + 1; k < N; k++)
+                IA[i][j] -= MA[i][k] * IA[k][j];
+
+            IA[i][j] /= MA[i][i];
+        }
+    }
+}
+
+static float process_sample_float(AudioAPContext *s, float input, float desired, int ch)
+{
+    float *dcoeffs = (float *)s->dcoeffs->extended_data[ch];
+    float *coeffs = (float *)s->coeffs->extended_data[ch];
+    float *delay = (float *)s->delay->extended_data[ch];
+    float **itmpmp = (float **)&s->itmpmp[s->projection * ch];
+    float **tmpmp = (float **)&s->tmpmp[s->projection * ch];
+    float *tmpm = (float *)s->tmpm->extended_data[ch];
+    float *tmp = (float *)s->tmp->extended_data[ch];
+    float *e = (float *)s->e->extended_data[ch];
+    float *x = (float *)s->x->extended_data[ch];
+    float *w = (float *)s->w->extended_data[ch];
+    int *p = (int *)s->p->extended_data[ch];
+    int *offset = (int *)s->offset->extended_data[ch];
+    const int projection = s->projection;
+    const float delta = s->delta;
+    const int order = s->order;
+    const int length = projection + order;
+    const float mu = s->mu;
+    const float tol = 0.00001f;
+    float output;
+
+    x[offset[2] + length] = x[offset[2]] = input;
+    delay[offset[0] + order] = input;
+
+    output = fir_sample_float(s, input, delay, coeffs, tmp, offset);
+    e[offset[1]] = e[offset[1] + projection] = desired - output;
+
+    for (int i = 0; i < projection; i++) {
+        const int iprojection = i * projection;
+
+        for (int j = i; j < projection; j++) {
+            float sum = 0.f;
+            for (int k = 0; k < order; k++)
+                sum += x[offset[2] + i + k] * x[offset[2] + j + k];
+            tmpm[iprojection + j] = sum;
+            if (i != j)
+                tmpm[j * projection + i] = sum;
+        }
+
+        tmpm[iprojection + i] += delta;
+    }
+
+    lup_decompose_float(tmpmp, projection, tol, p);
+    lup_invert_float(tmpmp, p, projection, itmpmp);
+
+    for (int i = 0; i < projection; i++) {
+        float sum = 0.f;
+        for (int j = 0; j < projection; j++)
+            sum += itmpmp[i][j] * e[j + offset[1]];
+        w[i] = sum;
+    }
+
+    for (int i = 0; i < order; i++) {
+        float sum = 0.f;
+        for (int j = 0; j < projection; j++)
+            sum += x[offset[2] + i + j] * w[j];
+        dcoeffs[i] = sum;
+    }
+
+    for (int i = 0; i < order; i++)
+        coeffs[i] = coeffs[i + order] = coeffs[i] + mu * dcoeffs[i];
+
+    if (--offset[1] < 0)
+        offset[1] = projection - 1;
+
+    if (--offset[2] < 0)
+        offset[2] = length - 1;
+
+    switch (s->output_mode) {
+    case IN_MODE: output = input; break;
+    case DESIRED_MODE: output = desired; break;
+    case OUT_MODE: output = desired - output; break;
+    case NOISE_MODE: output = input - output; break;
+    case ERROR_MODE: break;
+    }
+    return output;
+}
+
+static int filter_channels_float(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
+{
+    AudioAPContext *s = ctx->priv;
+    AVFrame *out = arg;
+    const int start = (out->ch_layout.nb_channels * jobnr) / nb_jobs;
+    const int end = (out->ch_layout.nb_channels * (jobnr+1)) / nb_jobs;
+
+    for (int c = start; c < end; c++) {
+        const float *input = (const float *)s->frame[0]->extended_data[c];
+        const float *desired = (const float *)s->frame[1]->extended_data[c];
+        float *output = (float *)out->extended_data[c];
+
+        for (int n = 0; n < out->nb_samples; n++) {
+            output[n] = process_sample_float(s, input[n], desired[n], c);
+            if (ctx->is_disabled)
+                output[n] = input[n];
+        }
+    }
+
+    return 0;
+}
+# 185 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
+
+
+
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/aap_template.c" 1
+# 40 "/Users/davidchen/repo/ffmpeg/libavfilter/aap_template.c"
+static double scalarproduct_double(const double *v1, const double *v2, int len)
+{
+    double p = 0.0;
+
+    for (int i = 0; i < len; i++)
+        p += v1[i] * v2[i];
+
+    return p;
+}
+
+
+static double fir_sample_double(AudioAPContext *s, double sample, double *delay,
+                            double *coeffs, double *tmp, int *offset)
+{
+    const int order = s->order;
+    double output;
+
+    delay[*offset] = sample;
+
+    __builtin___memcpy_chk (tmp, coeffs + order - *offset, order * sizeof(double), __builtin_object_size (tmp, 0));
+
+
+
+    output = scalarproduct_double(delay, tmp, s->kernel_size);
+
+
+    if (--(*offset) < 0)
+        *offset = order - 1;
+
+    return output;
+}
+
+static int lup_decompose_double(double **MA, const int N, const double tol, int *P)
+{
+    for (int i = 0; i <= N; i++)
+        P[i] = i;
+
+    for (int i = 0; i < N; i++) {
+        double maxA = 0.0;
+        int imax = i;
+
+        for (int k = i; k < N; k++) {
+            double absA = fabs(MA[k][i]);
+            if (absA > maxA) {
+                maxA = absA;
+                imax = k;
+            }
+        }
+
+        if (maxA < tol)
+            return 0;
+
+        if (imax != i) {
+            do{int SWAP_tmp= P[imax]; P[imax]= P[i]; P[i]= SWAP_tmp;}while(0);
+            do{double * SWAP_tmp= MA[imax]; MA[imax]= MA[i]; MA[i]= SWAP_tmp;}while(0);
+            P[N]++;
+        }
+
+        for (int j = i + 1; j < N; j++) {
+            MA[j][i] /= MA[i][i];
+
+            for (int k = i + 1; k < N; k++)
+                MA[j][k] -= MA[j][i] * MA[i][k];
+        }
+    }
+
+    return 1;
+}
+
+static void lup_invert_double(double *const *MA, const int *P, const int N, double **IA)
+{
+    for (int j = 0; j < N; j++) {
+        for (int i = 0; i < N; i++) {
+            IA[i][j] = P[i] == j ? 1.0 : 0.0;
+
+            for (int k = 0; k < i; k++)
+                IA[i][j] -= MA[i][k] * IA[k][j];
+        }
+
+        for (int i = N - 1; i >= 0; i--) {
+            for (int k = i + 1; k < N; k++)
+                IA[i][j] -= MA[i][k] * IA[k][j];
+
+            IA[i][j] /= MA[i][i];
+        }
+    }
+}
+
+static double process_sample_double(AudioAPContext *s, double input, double desired, int ch)
+{
+    double *dcoeffs = (double *)s->dcoeffs->extended_data[ch];
+    double *coeffs = (double *)s->coeffs->extended_data[ch];
+    double *delay = (double *)s->delay->extended_data[ch];
+    double **itmpmp = (double **)&s->itmpmp[s->projection * ch];
+    double **tmpmp = (double **)&s->tmpmp[s->projection * ch];
+    double *tmpm = (double *)s->tmpm->extended_data[ch];
+    double *tmp = (double *)s->tmp->extended_data[ch];
+    double *e = (double *)s->e->extended_data[ch];
+    double *x = (double *)s->x->extended_data[ch];
+    double *w = (double *)s->w->extended_data[ch];
+    int *p = (int *)s->p->extended_data[ch];
+    int *offset = (int *)s->offset->extended_data[ch];
+    const int projection = s->projection;
+    const double delta = s->delta;
+    const int order = s->order;
+    const int length = projection + order;
+    const double mu = s->mu;
+    const double tol = 0.00001f;
+    double output;
+
+    x[offset[2] + length] = x[offset[2]] = input;
+    delay[offset[0] + order] = input;
+
+    output = fir_sample_double(s, input, delay, coeffs, tmp, offset);
+    e[offset[1]] = e[offset[1] + projection] = desired - output;
+
+    for (int i = 0; i < projection; i++) {
+        const int iprojection = i * projection;
+
+        for (int j = i; j < projection; j++) {
+            double sum = 0.0;
+            for (int k = 0; k < order; k++)
+                sum += x[offset[2] + i + k] * x[offset[2] + j + k];
+            tmpm[iprojection + j] = sum;
+            if (i != j)
+                tmpm[j * projection + i] = sum;
+        }
+
+        tmpm[iprojection + i] += delta;
+    }
+
+    lup_decompose_double(tmpmp, projection, tol, p);
+    lup_invert_double(tmpmp, p, projection, itmpmp);
+
+    for (int i = 0; i < projection; i++) {
+        double sum = 0.0;
+        for (int j = 0; j < projection; j++)
+            sum += itmpmp[i][j] * e[j + offset[1]];
+        w[i] = sum;
+    }
+
+    for (int i = 0; i < order; i++) {
+        double sum = 0.0;
+        for (int j = 0; j < projection; j++)
+            sum += x[offset[2] + i + j] * w[j];
+        dcoeffs[i] = sum;
+    }
+
+    for (int i = 0; i < order; i++)
+        coeffs[i] = coeffs[i + order] = coeffs[i] + mu * dcoeffs[i];
+
+    if (--offset[1] < 0)
+        offset[1] = projection - 1;
+
+    if (--offset[2] < 0)
+        offset[2] = length - 1;
+
+    switch (s->output_mode) {
+    case IN_MODE: output = input; break;
+    case DESIRED_MODE: output = desired; break;
+    case OUT_MODE: output = desired - output; break;
+    case NOISE_MODE: output = input - output; break;
+    case ERROR_MODE: break;
+    }
+    return output;
+}
+
+static int filter_channels_double(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
+{
+    AudioAPContext *s = ctx->priv;
+    AVFrame *out = arg;
+    const int start = (out->ch_layout.nb_channels * jobnr) / nb_jobs;
+    const int end = (out->ch_layout.nb_channels * (jobnr+1)) / nb_jobs;
+
+    for (int c = start; c < end; c++) {
+        const double *input = (const double *)s->frame[0]->extended_data[c];
+        const double *desired = (const double *)s->frame[1]->extended_data[c];
+        double *output = (double *)out->extended_data[c];
+
+        for (int n = 0; n < out->nb_samples; n++) {
+            output[n] = process_sample_double(s, input[n], desired[n], c);
+            if (ctx->is_disabled)
+                output[n] = input[n];
+        }
+    }
+
+    return 0;
+}
+# 189 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aap.c" 2
+
+static int config_output(AVFilterLink *outlink)
+{
+    const int channels = outlink->ch_layout.nb_channels;
+    AVFilterContext *ctx = outlink->src;
+    AudioAPContext *s = ctx->priv;
+
+    s->kernel_size = (((s->order)+(16)-1)&~((16)-1));
+
+    if (!s->offset)
+        s->offset = ff_get_audio_buffer(outlink, 3);
+    if (!s->delay)
+        s->delay = ff_get_audio_buffer(outlink, 2 * s->kernel_size);
+    if (!s->dcoeffs)
+        s->dcoeffs = ff_get_audio_buffer(outlink, s->kernel_size);
+    if (!s->coeffs)
+        s->coeffs = ff_get_audio_buffer(outlink, 2 * s->kernel_size);
+    if (!s->e)
+        s->e = ff_get_audio_buffer(outlink, 2 * s->projection);
+    if (!s->p)
+        s->p = ff_get_audio_buffer(outlink, s->projection + 1);
+    if (!s->x)
+        s->x = ff_get_audio_buffer(outlink, 2 * (s->projection + s->order));
+    if (!s->w)
+        s->w = ff_get_audio_buffer(outlink, s->projection);
+    if (!s->tmp)
+        s->tmp = ff_get_audio_buffer(outlink, s->kernel_size);
+    if (!s->tmpm)
+        s->tmpm = ff_get_audio_buffer(outlink, s->projection * s->projection);
+    if (!s->itmpm)
+        s->itmpm = ff_get_audio_buffer(outlink, s->projection * s->projection);
+
+    if (!s->tmpmp)
+        s->tmpmp = av_calloc(s->projection * channels, sizeof(*s->tmpmp));
+    if (!s->itmpmp)
+        s->itmpmp = av_calloc(s->projection * channels, sizeof(*s->itmpmp));
+
+    if (!s->offset || !s->delay || !s->dcoeffs || !s->coeffs || !s->tmpmp || !s->itmpmp ||
+        !s->e || !s->p || !s->x || !s->w || !s->tmp || !s->tmpm || !s->itmpm)
+        return (-(12));
+
+    switch (outlink->format) {
+    case AV_SAMPLE_FMT_DBLP:
+        for (int ch = 0; ch < channels; ch++) {
+            double *itmpm = (double *)s->itmpm->extended_data[ch];
+            double *tmpm = (double *)s->tmpm->extended_data[ch];
+            double **itmpmp = (double **)&s->itmpmp[s->projection * ch];
+            double **tmpmp = (double **)&s->tmpmp[s->projection * ch];
+
+            for (int i = 0; i < s->projection; i++) {
+                itmpmp[i] = &itmpm[i * s->projection];
+                tmpmp[i] = &tmpm[i * s->projection];
+            }
+        }
+
+        s->filter_channels = filter_channels_double;
+        break;
+    case AV_SAMPLE_FMT_FLTP:
+        for (int ch = 0; ch < channels; ch++) {
+            float *itmpm = (float *)s->itmpm->extended_data[ch];
+            float *tmpm = (float *)s->tmpm->extended_data[ch];
+            float **itmpmp = (float **)&s->itmpmp[s->projection * ch];
+            float **tmpmp = (float **)&s->tmpmp[s->projection * ch];
+
+            for (int i = 0; i < s->projection; i++) {
+                itmpmp[i] = &itmpm[i * s->projection];
+                tmpmp[i] = &tmpm[i * s->projection];
+            }
+        }
+
+        s->filter_channels = filter_channels_float;
+        break;
+    }
+
+    return 0;
 }
 
 static __attribute__((cold)) int init(AVFilterContext *ctx)
 {
-    AudioCrossoverContext *s = ctx->priv;
-    char *p, *arg, *saveptr = ((void*)0);
-    int i, ret = 0;
+    AudioAPContext *s = ctx->priv;
 
     s->fdsp = avpriv_float_dsp_alloc(0);
     if (!s->fdsp)
         return (-(12));
 
-    p = s->splits_str;
-    for (i = 0; i < 16; i++) {
-        float freq;
-
-        if (!(arg = av_strtok(p, " |", &saveptr)))
-            break;
-
-        p = ((void*)0);
-
-        if (av_sscanf(arg, "%f", &freq) != 1) {
-            av_log(ctx, 16, "Invalid syntax for frequency[%d].\n", i);
-            return (-(22));
-        }
-        if (freq <= 0) {
-            av_log(ctx, 16, "Frequency %f must be positive number.\n", freq);
-            return (-(22));
-        }
-
-        if (i > 0 && freq <= s->splits[i-1]) {
-            av_log(ctx, 16, "Frequency %f must be in increasing order.\n", freq);
-            return (-(22));
-        }
-
-        s->splits[i] = freq;
-    }
-
-    s->nb_splits = i;
-
-    ret = parse_gains(ctx);
-    if (ret < 0)
-        return ret;
-
-    for (i = 0; i <= s->nb_splits; i++) {
-        AVFilterPad pad = { 0 };
-        char *name;
-
-        pad.type = AVMEDIA_TYPE_AUDIO;
-        name = av_asprintf("out%d", ctx->nb_outputs);
-        if (!name)
-            return (-(12));
-        pad.name = name;
-
-        if ((ret = ff_append_outpad_free_name(ctx, &pad)) < 0)
-            return ret;
-    }
-
-    return ret;
-}
-
-static void set_lp(BiquadCoeffs *b, double fc, double q, double sr)
-{
-    double omega = 2. * 3.14159265358979323846264338327950288 * fc / sr;
-    double cosine = cos(omega);
-    double alpha = sin(omega) / (2. * q);
-
-    double b0 = (1. - cosine) / 2.;
-    double b1 = 1. - cosine;
-    double b2 = (1. - cosine) / 2.;
-    double a0 = 1. + alpha;
-    double a1 = -2. * cosine;
-    double a2 = 1. - alpha;
-
-    b->cd[0] = b0 / a0;
-    b->cd[1] = b1 / a0;
-    b->cd[2] = b2 / a0;
-    b->cd[3] = -a1 / a0;
-    b->cd[4] = -a2 / a0;
-
-    b->cf[0] = b->cd[0];
-    b->cf[1] = b->cd[1];
-    b->cf[2] = b->cd[2];
-    b->cf[3] = b->cd[3];
-    b->cf[4] = b->cd[4];
-}
-
-static void set_hp(BiquadCoeffs *b, double fc, double q, double sr)
-{
-    double omega = 2. * 3.14159265358979323846264338327950288 * fc / sr;
-    double cosine = cos(omega);
-    double alpha = sin(omega) / (2. * q);
-
-    double b0 = (1. + cosine) / 2.;
-    double b1 = -1. - cosine;
-    double b2 = (1. + cosine) / 2.;
-    double a0 = 1. + alpha;
-    double a1 = -2. * cosine;
-    double a2 = 1. - alpha;
-
-    b->cd[0] = b0 / a0;
-    b->cd[1] = b1 / a0;
-    b->cd[2] = b2 / a0;
-    b->cd[3] = -a1 / a0;
-    b->cd[4] = -a2 / a0;
-
-    b->cf[0] = b->cd[0];
-    b->cf[1] = b->cd[1];
-    b->cf[2] = b->cd[2];
-    b->cf[3] = b->cd[3];
-    b->cf[4] = b->cd[4];
-}
-
-static void set_ap(BiquadCoeffs *b, double fc, double q, double sr)
-{
-    double omega = 2. * 3.14159265358979323846264338327950288 * fc / sr;
-    double cosine = cos(omega);
-    double alpha = sin(omega) / (2. * q);
-
-    double a0 = 1. + alpha;
-    double a1 = -2. * cosine;
-    double a2 = 1. - alpha;
-    double b0 = a2;
-    double b1 = a1;
-    double b2 = a0;
-
-    b->cd[0] = b0 / a0;
-    b->cd[1] = b1 / a0;
-    b->cd[2] = b2 / a0;
-    b->cd[3] = -a1 / a0;
-    b->cd[4] = -a2 / a0;
-
-    b->cf[0] = b->cd[0];
-    b->cf[1] = b->cd[1];
-    b->cf[2] = b->cd[2];
-    b->cf[3] = b->cd[3];
-    b->cf[4] = b->cd[4];
-}
-
-static void set_ap1(BiquadCoeffs *b, double fc, double sr)
-{
-    double omega = 2. * 3.14159265358979323846264338327950288 * fc / sr;
-
-    b->cd[3] = exp(-omega);
-    b->cd[4] = 0.;
-    b->cd[0] = -b->cd[3];
-    b->cd[1] = 1.;
-    b->cd[2] = 0.;
-
-    b->cf[0] = b->cd[0];
-    b->cf[1] = b->cd[1];
-    b->cf[2] = b->cd[2];
-    b->cf[3] = b->cd[3];
-    b->cf[4] = b->cd[4];
-}
-
-static void calc_q_factors(int order, double *q)
-{
-    double n = order / 2.;
-
-    for (int i = 0; i < n / 2; i++)
-        q[i] = 1. / (-2. * cos(3.14159265358979323846264338327950288 * (2. * (i + 1) + n - 1.) / (2. * n)));
-}
-# 392 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c"
-static void biquad_process_fltp(const float *const c, float *b, float *dst, const float *src, int nb_samples) { const float b0 = c[0]; const float b1 = c[1]; const float b2 = c[2]; const float a1 = c[3]; const float a2 = c[4]; float z1 = b[0]; float z2 = b[1]; for (int n = 0; n + 1 < nb_samples; n++) { float in = src[n]; float out; out = in * b0 + z1; z1 = b1 * in + z2 + a1 * out; z2 = b2 * in + a2 * out; dst[n] = out; n++; in = src[n]; out = in * b0 + z1; z1 = b1 * in + z2 + a1 * out; z2 = b2 * in + a2 * out; dst[n] = out; } if (nb_samples & 1) { const int n = nb_samples - 1; const float in = src[n]; float out; out = in * b0 + z1; z1 = b1 * in + z2 + a1 * out; z2 = b2 * in + a2 * out; dst[n] = out; } b[0] = z1; b[1] = z2; }
-static void biquad_process_dblp(const double *const c, double *b, double *dst, const double *src, int nb_samples) { const double b0 = c[0]; const double b1 = c[1]; const double b2 = c[2]; const double a1 = c[3]; const double a2 = c[4]; double z1 = b[0]; double z2 = b[1]; for (int n = 0; n + 1 < nb_samples; n++) { double in = src[n]; double out; out = in * b0 + z1; z1 = b1 * in + z2 + a1 * out; z2 = b2 * in + a2 * out; dst[n] = out; n++; in = src[n]; out = in * b0 + z1; z1 = b1 * in + z2 + a1 * out; z2 = b2 * in + a2 * out; dst[n] = out; } if (nb_samples & 1) { const int n = nb_samples - 1; const double in = src[n]; double out; out = in * b0 + z1; z1 = b1 * in + z2 + a1 * out; z2 = b2 * in + a2 * out; dst[n] = out; } b[0] = z1; b[1] = z2; }
-# 467 "/Users/davidchen/repo/ffmpeg/libavfilter/af_acrossover.c"
-static int filter_channels_fltp(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs) { AudioCrossoverContext *s = ctx->priv; AVFrame *in = arg; AVFrame **frames = s->frames; const int start = (in->ch_layout.nb_channels * jobnr) / nb_jobs; const int end = (in->ch_layout.nb_channels * (jobnr+1)) / nb_jobs; const int nb_samples = in->nb_samples; const int nb_outs = ctx->nb_outputs; const int first_order = s->first_order; for (int ch = start; ch < end; ch++) { const float *src = (const float *)in->extended_data[ch]; float *xover = (float *)s->xover->extended_data[ch]; s->fdsp->vector_fmul_scalar((float *)frames[0]->extended_data[ch], src, s->level_in, (((nb_samples)+(sizeof(float))-1)&~((sizeof(float))-1))); for (int band = 0; band < nb_outs; band++) { for (int f = 0; band + 1 < nb_outs && f < s->filter_count; f++) { const float *prv = (const float *)frames[band]->extended_data[ch]; float *dst = (float *)frames[band + 1]->extended_data[ch]; const float *hsrc = f == 0 ? prv : dst; float *hp = xover + nb_outs * 20 + band * 20 + f * 2; const float *const hpc = (float *)&s->hp[band][f].cf; biquad_process_fltp(hpc, hp, dst, hsrc, nb_samples); } for (int f = 0; band + 1 < nb_outs && f < s->filter_count; f++) { float *dst = (float *)frames[band]->extended_data[ch]; const float *lsrc = dst; float *lp = xover + band * 20 + f * 2; const float *const lpc = (float *)&s->lp[band][f].cf; biquad_process_fltp(lpc, lp, dst, lsrc, nb_samples); } for (int aband = band + 1; aband + 1 < nb_outs; aband++) { if (first_order) { const float *asrc = (const float *)frames[band]->extended_data[ch]; float *dst = (float *)frames[band]->extended_data[ch]; float *ap = xover + nb_outs * 40 + (aband * nb_outs + band) * 20; const float *const apc = (float *)&s->ap[aband][0].cf; biquad_process_fltp(apc, ap, dst, asrc, nb_samples); } for (int f = first_order; f < s->ap_filter_count; f++) { const float *asrc = (const float *)frames[band]->extended_data[ch]; float *dst = (float *)frames[band]->extended_data[ch]; float *ap = xover + nb_outs * 40 + (aband * nb_outs + band) * 20 + f * 2; const float *const apc = (float *)&s->ap[aband][f].cf; biquad_process_fltp(apc, ap, dst, asrc, nb_samples); } } } for (int band = 0; band < nb_outs; band++) { const float gain = s->gains[band] * ((band & 1 && first_order) ? -1.f : 1.f); float *dst = (float *)frames[band]->extended_data[ch]; s->fdsp->vector_fmul_scalar(dst, dst, gain, (((nb_samples)+(sizeof(float))-1)&~((sizeof(float))-1))); } } return 0; }
-static int filter_channels_dblp(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs) { AudioCrossoverContext *s = ctx->priv; AVFrame *in = arg; AVFrame **frames = s->frames; const int start = (in->ch_layout.nb_channels * jobnr) / nb_jobs; const int end = (in->ch_layout.nb_channels * (jobnr+1)) / nb_jobs; const int nb_samples = in->nb_samples; const int nb_outs = ctx->nb_outputs; const int first_order = s->first_order; for (int ch = start; ch < end; ch++) { const double *src = (const double *)in->extended_data[ch]; double *xover = (double *)s->xover->extended_data[ch]; s->fdsp->vector_dmul_scalar((double *)frames[0]->extended_data[ch], src, s->level_in, (((nb_samples)+(sizeof(double))-1)&~((sizeof(double))-1))); for (int band = 0; band < nb_outs; band++) { for (int f = 0; band + 1 < nb_outs && f < s->filter_count; f++) { const double *prv = (const double *)frames[band]->extended_data[ch]; double *dst = (double *)frames[band + 1]->extended_data[ch]; const double *hsrc = f == 0 ? prv : dst; double *hp = xover + nb_outs * 20 + band * 20 + f * 2; const double *const hpc = (double *)&s->hp[band][f].cd; biquad_process_dblp(hpc, hp, dst, hsrc, nb_samples); } for (int f = 0; band + 1 < nb_outs && f < s->filter_count; f++) { double *dst = (double *)frames[band]->extended_data[ch]; const double *lsrc = dst; double *lp = xover + band * 20 + f * 2; const double *const lpc = (double *)&s->lp[band][f].cd; biquad_process_dblp(lpc, lp, dst, lsrc, nb_samples); } for (int aband = band + 1; aband + 1 < nb_outs; aband++) { if (first_order) { const double *asrc = (const double *)frames[band]->extended_data[ch]; double *dst = (double *)frames[band]->extended_data[ch]; double *ap = xover + nb_outs * 40 + (aband * nb_outs + band) * 20; const double *const apc = (double *)&s->ap[aband][0].cd; biquad_process_dblp(apc, ap, dst, asrc, nb_samples); } for (int f = first_order; f < s->ap_filter_count; f++) { const double *asrc = (const double *)frames[band]->extended_data[ch]; double *dst = (double *)frames[band]->extended_data[ch]; double *ap = xover + nb_outs * 40 + (aband * nb_outs + band) * 20 + f * 2; const double *const apc = (double *)&s->ap[aband][f].cd; biquad_process_dblp(apc, ap, dst, asrc, nb_samples); } } } for (int band = 0; band < nb_outs; band++) { const double gain = s->gains[band] * ((band & 1 && first_order) ? -1.0 : 1.0); double *dst = (double *)frames[band]->extended_data[ch]; s->fdsp->vector_dmul_scalar(dst, dst, gain, (((nb_samples)+(sizeof(double))-1)&~((sizeof(double))-1))); } } return 0; }
-
-static int config_input(AVFilterLink *inlink)
-{
-    AVFilterContext *ctx = inlink->dst;
-    AudioCrossoverContext *s = ctx->priv;
-    int sample_rate = inlink->sample_rate;
-    double q[16];
-
-    s->order = (s->order_opt + 1) * 2;
-    s->filter_count = s->order / 2;
-    s->first_order = s->filter_count & 1;
-    s->ap_filter_count = s->filter_count / 2 + s->first_order;
-    calc_q_factors(s->order, q);
-
-    for (int band = 0; band <= s->nb_splits; band++) {
-        if (s->first_order) {
-            set_lp(&s->lp[band][0], s->splits[band], 0.5, sample_rate);
-            set_hp(&s->hp[band][0], s->splits[band], 0.5, sample_rate);
-        }
-
-        for (int n = s->first_order; n < s->filter_count; n++) {
-            const int idx = s->filter_count / 2 - ((n + s->first_order) / 2 - s->first_order) - 1;
-
-            set_lp(&s->lp[band][n], s->splits[band], q[idx], sample_rate);
-            set_hp(&s->hp[band][n], s->splits[band], q[idx], sample_rate);
-        }
-
-        if (s->first_order)
-            set_ap1(&s->ap[band][0], s->splits[band], sample_rate);
-
-        for (int n = s->first_order; n < s->ap_filter_count; n++) {
-            const int idx = (s->filter_count / 2 - ((n * 2 + s->first_order) / 2 - s->first_order) - 1);
-
-            set_ap(&s->ap[band][n], s->splits[band], q[idx], sample_rate);
-        }
-    }
-
-    switch (inlink->format) {
-    case AV_SAMPLE_FMT_FLTP: s->filter_channels = filter_channels_fltp; break;
-    case AV_SAMPLE_FMT_DBLP: s->filter_channels = filter_channels_dblp; break;
-    default: return (-(int)(('B') | (('U') << 8) | (('G') << 16) | ((unsigned)('!') << 24)));
-    }
-
-    s->xover = ff_get_audio_buffer(inlink, 2 * (ctx->nb_outputs * 10 + ctx->nb_outputs * 10 +
-                                                ctx->nb_outputs * ctx->nb_outputs * 10));
-    if (!s->xover)
-        return (-(12));
-
     return 0;
-}
-
-static int filter_frame(AVFilterLink *inlink, AVFrame *in)
-{
-    AVFilterContext *ctx = inlink->dst;
-    AudioCrossoverContext *s = ctx->priv;
-    AVFrame **frames = s->frames;
-    int ret = 0;
-
-    for (int i = 0; i < ctx->nb_outputs; i++) {
-        frames[i] = ff_get_audio_buffer(ctx->outputs[i], in->nb_samples);
-        if (!frames[i]) {
-            ret = (-(12));
-            break;
-        }
-
-        frames[i]->pts = in->pts;
-    }
-
-    if (ret < 0)
-        goto fail;
-
-    ff_filter_execute(ctx, s->filter_channels, in, ((void*)0),
-                      ((inlink->ch_layout.nb_channels) > (ff_filter_get_nb_threads(ctx)) ? (ff_filter_get_nb_threads(ctx)) : (inlink->ch_layout.nb_channels)));
-
-    for (int i = 0; i < ctx->nb_outputs; i++) {
-        if (ff_outlink_get_status(ctx->outputs[i])) {
-            av_frame_free(&frames[i]);
-            continue;
-        }
-
-        ret = ff_filter_frame(ctx->outputs[i], frames[i]);
-        frames[i] = ((void*)0);
-        if (ret < 0)
-            break;
-    }
-
-fail:
-    for (int i = 0; i < ctx->nb_outputs; i++)
-        av_frame_free(&frames[i]);
-
-    return ret;
-}
-
-static int activate(AVFilterContext *ctx)
-{
-    AVFilterLink *inlink = ctx->inputs[0];
-    int status, ret;
-    AVFrame *in;
-    int64_t pts;
-
-    for (int i = 0; i < ctx->nb_outputs; i++) {
-        do { int ret = ff_outlink_get_status(ctx->outputs[i]); if (ret) { unsigned i; for (i = 0; i < ctx->nb_inputs; i++) ff_inlink_set_status(ctx->inputs[i], ret); return 0; } } while (0);
-    }
-
-    ret = ff_inlink_consume_frame(inlink, &in);
-    if (ret < 0)
-        return ret;
-    if (ret > 0) {
-        ret = filter_frame(inlink, in);
-        av_frame_free(&in);
-        if (ret < 0)
-            return ret;
-    }
-
-    if (ff_inlink_acknowledge_status(inlink, &status, &pts)) {
-        for (int i = 0; i < ctx->nb_outputs; i++) {
-            if (ff_outlink_get_status(ctx->outputs[i]))
-                continue;
-            ff_outlink_set_status(ctx->outputs[i], status, pts);
-        }
-        return 0;
-    }
-
-    for (int i = 0; i < ctx->nb_outputs; i++) {
-        if (ff_outlink_get_status(ctx->outputs[i]))
-            continue;
-
-        if (ff_outlink_frame_wanted(ctx->outputs[i])) {
-            ff_inlink_request_frame(inlink);
-            return 0;
-        }
-    }
-
-    return (-(int)(('N') | (('R') << 8) | (('D') << 16) | ((unsigned)('Y') << 24)));
 }
 
 static __attribute__((cold)) void uninit(AVFilterContext *ctx)
 {
-    AudioCrossoverContext *s = ctx->priv;
+    AudioAPContext *s = ctx->priv;
 
     av_freep(&s->fdsp);
-    av_frame_free(&s->xover);
+
+    av_frame_free(&s->offset);
+    av_frame_free(&s->delay);
+    av_frame_free(&s->dcoeffs);
+    av_frame_free(&s->coeffs);
+    av_frame_free(&s->e);
+    av_frame_free(&s->p);
+    av_frame_free(&s->w);
+    av_frame_free(&s->x);
+    av_frame_free(&s->tmp);
+    av_frame_free(&s->tmpm);
+    av_frame_free(&s->itmpm);
+
+    av_freep(&s->tmpmp);
+    av_freep(&s->itmpmp);
 }
 
 static const AVFilterPad inputs[] = {
     {
-        .name = "default",
+        .name = "input",
         .type = AVMEDIA_TYPE_AUDIO,
-        .config_props = config_input,
+    },
+    {
+        .name = "desired",
+        .type = AVMEDIA_TYPE_AUDIO,
     },
 };
 
-const AVFilter ff_af_acrossover = {
-    .name = "acrossover",
-    .description = "Split audio into per-bands streams.",
-    .priv_size = sizeof(AudioCrossoverContext),
-    .priv_class = &acrossover_class,
+static const AVFilterPad outputs[] = {
+    {
+        .name = "default",
+        .type = AVMEDIA_TYPE_AUDIO,
+        .config_props = config_output,
+    },
+};
+
+const AVFilter ff_af_aap = {
+    .name = "aap",
+    .description = "Apply Affine Projection algorithm to first audio stream.",
+    .priv_size = sizeof(AudioAPContext),
+    .priv_class = &aap_class,
     .init = init,
-    .activate = activate,
     .uninit = uninit,
+    .activate = activate,
     .inputs = (inputs), .nb_inputs = (sizeof((inputs)) / sizeof(((inputs))[0])),
-    .outputs = ((void*)0),
+    .outputs = (outputs), .nb_outputs = (sizeof((outputs)) / sizeof(((outputs))[0])),
     .formats.query_func = query_formats, .formats_state = FF_FILTER_FORMATS_QUERY_FUNC,
-    .flags = (1 << 1) |
+    .flags = (1 << 17) |
                       (1 << 2),
+    .process_command = ff_filter_process_command,
 };
