@@ -83,6 +83,8 @@ def _parse_av_option(text: str) -> list[AVOption]:
                 output.append(_eval_avoption(name, help, offset, _type, flags=_p(flags, "flags")))
             case _ if len(option_line) > 4:
                 raise NotImplementedError(option_line)
+            case _ if option_line == ["((void*)0)"]:
+                pass
             case _:
                 print(option_line)
 
