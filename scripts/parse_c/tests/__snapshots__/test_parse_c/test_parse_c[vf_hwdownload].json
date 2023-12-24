@@ -1,0 +1,8 @@
+[
+  {
+    "description": "Download a hardware frame to a normal frame",
+    "name": "hwdownload",
+    "options": [],
+    "priv_class": "&hwdownload_class"
+  }
+]

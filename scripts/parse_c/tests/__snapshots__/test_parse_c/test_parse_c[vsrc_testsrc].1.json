@@ -1,0 +1,978 @@
+[
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"black\"']",
+      "help": "set color",
+      "name": "color",
+      "type": "AV_OPT_TYPE_COLOR"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"black\"']",
+      "help": "set color",
+      "name": "c",
+      "type": "AV_OPT_TYPE_COLOR"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.i64 = 6']",
+      "help": "set level",
+      "name": "level",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set number of decimals to show",
+      "name": "decimals",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set number of decimals to show",
+      "name": "n",
+      "type": "AV_OPT_TYPE_INT"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = 255']",
+      "help": "set global alpha (opacity)",
+      "name": "alpha",
+      "type": "AV_OPT_TYPE_INT"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set complement colors",
+      "name": "complement",
+      "type": "AV_OPT_TYPE_BOOL"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set complement colors",
+      "name": "co",
+      "type": "AV_OPT_TYPE_BOOL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    },
+    {
+      "choices": [
+        {
+          "help": "fade to black",
+          "name": "black",
+          "value": "['.i64=0']"
+        },
+        {
+          "help": "fade to white",
+          "name": "white",
+          "value": "['.i64=1']"
+        },
+        {
+          "help": "white to black",
+          "name": "all",
+          "value": "['.i64=2']"
+        }
+      ],
+      "default": "['.i64=0']",
+      "help": "set the color spectrum type",
+      "name": "type",
+      "type": "AV_OPT_TYPE_INT"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    },
+    {
+      "choices": [],
+      "default": "['.str=\"64x64\"']",
+      "help": "set the single patch size",
+      "name": "patch_size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [
+        {
+          "help": "reference",
+          "name": "reference",
+          "value": "['.i64=0']"
+        },
+        {
+          "help": "skintones",
+          "name": "skintones",
+          "value": "['.i64=1']"
+        }
+      ],
+      "default": "['.i64=0']",
+      "help": "set the color checker chart preset",
+      "name": "preset",
+      "type": "AV_OPT_TYPE_INT"
+    }
+  ],
+  [
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "size",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"320x240\"']",
+      "help": "set video size",
+      "name": "s",
+      "type": "AV_OPT_TYPE_IMAGE_SIZE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "rate",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.str = \"25\"']",
+      "help": "set video rate",
+      "name": "r",
+      "type": "AV_OPT_TYPE_VIDEO_RATE"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "duration",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.i64 = -1']",
+      "help": "set video duration",
+      "name": "d",
+      "type": "AV_OPT_TYPE_DURATION"
+    },
+    {
+      "choices": [],
+      "default": "['.dbl= 1']",
+      "help": "set video sample aspect ratio",
+      "name": "sar",
+      "type": "AV_OPT_TYPE_RATIONAL"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=10']",
+      "help": "set LUT precision",
+      "name": "precision",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set X-axis offset",
+      "name": "xo",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set Y-axis offset",
+      "name": "yo",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set T-axis offset",
+      "name": "to",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 0-order phase",
+      "name": "k0",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 1-order X-axis phase",
+      "name": "kx",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 1-order Y-axis phase",
+      "name": "ky",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 1-order T-axis phase",
+      "name": "kt",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set X-axis*T-axis product phase",
+      "name": "kxt",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set Y-axis*T-axis product phase",
+      "name": "kyt",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set X-axis*Y-axis product phase",
+      "name": "kxy",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 2-order X-axis phase",
+      "name": "kx2",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 2-order Y-axis phase",
+      "name": "ky2",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 2-order T-axis phase",
+      "name": "kt2",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 0-order U-color phase",
+      "name": "ku",
+      "type": "AV_OPT_TYPE_INT"
+    },
+    {
+      "choices": [],
+      "default": "['.i64=0']",
+      "help": "set 0-order V-color phase",
+      "name": "kv",
+      "type": "AV_OPT_TYPE_INT"
+    }
+  ]
+]

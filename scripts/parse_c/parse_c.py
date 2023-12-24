@@ -41,6 +41,30 @@ def parse_c(path: pathlib.Path) -> list[AVFilter]:
     return extract_av_filter(code)
 
 
+def eval_offset(text: str) -> tuple[str, int]:
+    if text == "((void*)0)":
+        return None, 0
+
+    matches = re.findall("([\w\_]+)\[(.*)\]", text)
+    if len(matches) == 1:
+        name, expression = matches[0]
+
+        # Replace C-style logical operators with Python equivalents
+        expression = expression.replace("||", "or").replace("&&", "and")
+
+        # Evaluate the expression
+        try:
+            result = eval(expression, {"__builtins__": None}, {})
+        except Exception as e:
+            raise ValueError(f"Invalid expression: {expression}") from e
+
+        # Ensure the result is an integer
+        if not isinstance(result, int):
+            raise ValueError("The expression does not evaluate to an integer")
+        return name, result
+    return text, 0
+
+
 def extract_av_filter(text: str) -> list[AVFilter]:
     output = []
 
@@ -52,9 +76,11 @@ def extract_av_filter(text: str) -> list[AVFilter]:
     for av_filter in av_filters.values():
         if av_filter.priv_class:
             av_class = av_classes[av_filter.priv_class.strip("&")]
-            if av_class.option and av_class.option != "((void*)0)":
-                av_option = av_options[av_class.option]
-                av_filter.options = av_option
+            if av_class.option:
+                option_name, offset = eval_offset(av_class.option)
+                if option_name:
+                    av_option = av_options[option_name][offset:]
+                    av_filter.options = av_option
 
         output.append(av_filter)
 

@@ -1,0 +1,228 @@
+[
+  {
+    "description": "Apply erosion effect.",
+    "name": "erosion",
+    "options": [
+      {
+        "default": "['.i64=255']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set coordinates",
+        "max": "255",
+        "min": "0",
+        "name": "coordinates",
+        "offset": "__builtin_offsetof(NContext, coordinates)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 1st plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold0",
+        "offset": "__builtin_offsetof(NContext, threshold[0])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 2nd plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold1",
+        "offset": "__builtin_offsetof(NContext, threshold[1])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 3rd plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold2",
+        "offset": "__builtin_offsetof(NContext, threshold[2])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 4th plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold3",
+        "offset": "__builtin_offsetof(NContext, threshold[3])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "priv_class": "&erosion_dilation_class"
+  },
+  {
+    "description": "Apply dilation effect.",
+    "name": "dilation",
+    "options": [
+      {
+        "default": "['.i64=255']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set coordinates",
+        "max": "255",
+        "min": "0",
+        "name": "coordinates",
+        "offset": "__builtin_offsetof(NContext, coordinates)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 1st plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold0",
+        "offset": "__builtin_offsetof(NContext, threshold[0])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 2nd plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold1",
+        "offset": "__builtin_offsetof(NContext, threshold[1])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 3rd plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold2",
+        "offset": "__builtin_offsetof(NContext, threshold[2])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 4th plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold3",
+        "offset": "__builtin_offsetof(NContext, threshold[3])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "priv_class": "&erosion_dilation_class"
+  },
+  {
+    "description": "Apply deflate effect.",
+    "name": "deflate",
+    "options": [
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 1st plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold0",
+        "offset": "__builtin_offsetof(NContext, threshold[0])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 2nd plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold1",
+        "offset": "__builtin_offsetof(NContext, threshold[1])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 3rd plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold2",
+        "offset": "__builtin_offsetof(NContext, threshold[2])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 4th plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold3",
+        "offset": "__builtin_offsetof(NContext, threshold[3])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "priv_class": "&deflate_inflate_class"
+  },
+  {
+    "description": "Apply inflate effect.",
+    "name": "inflate",
+    "options": [
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 1st plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold0",
+        "offset": "__builtin_offsetof(NContext, threshold[0])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 2nd plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold1",
+        "offset": "__builtin_offsetof(NContext, threshold[1])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 3rd plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold2",
+        "offset": "__builtin_offsetof(NContext, threshold[2])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=65535']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "set threshold for 4th plane",
+        "max": "65535",
+        "min": "0",
+        "name": "threshold3",
+        "offset": "__builtin_offsetof(NContext, threshold[3])",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "priv_class": "&deflate_inflate_class"
+  }
+]
