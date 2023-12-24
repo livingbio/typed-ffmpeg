@@ -1,0 +1,135 @@
+[
+  {
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "parsed_options": {
+      "description": "Overlay one video on top of another using CUDA",
+      "flags": 0,
+      "name": "overlay_cuda",
+      "options": [
+        {
+          "default": "['.str = \"0\"']",
+          "flags": "((1<<16) | 16)",
+          "help": "set the x expression of overlay",
+          "max": "0",
+          "min": "0",
+          "name": "x",
+          "offset": "__builtin_offsetof(OverlayCUDAContext, x_expr)",
+          "type": "AV_OPT_TYPE_STRING",
+          "unit": null
+        },
+        {
+          "default": "['.str = \"0\"']",
+          "flags": "((1<<16) | 16)",
+          "help": "set the y expression of overlay",
+          "max": "0",
+          "min": "0",
+          "name": "y",
+          "offset": "__builtin_offsetof(OverlayCUDAContext, y_expr)",
+          "type": "AV_OPT_TYPE_STRING",
+          "unit": null
+        },
+        {
+          "default": "['.i64 = EOF_ACTION_REPEAT']",
+          "flags": ".flags = ((1<<16) | 16)",
+          "help": "Action to take when encountering EOF from secondary input ",
+          "max": "EOF_ACTION_PASS",
+          "min": "EOF_ACTION_REPEAT",
+          "name": "eof_action",
+          "offset": "__builtin_offsetof(OverlayCUDAContext, fs.opt_eof_action)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": "eof_action"
+        },
+        {
+          "default": "['.i64 = EOF_ACTION_REPEAT']",
+          "flags": "((1<<16) | 16)",
+          "help": "Repeat the previous frame.",
+          "max": null,
+          "min": null,
+          "name": "repeat",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "eof_action"
+        },
+        {
+          "default": "['.i64 = EOF_ACTION_ENDALL']",
+          "flags": "((1<<16) | 16)",
+          "help": "End both streams.",
+          "max": null,
+          "min": null,
+          "name": "endall",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "eof_action"
+        },
+        {
+          "default": "['.i64 = EOF_ACTION_PASS']",
+          "flags": "((1<<16) | 16)",
+          "help": "Pass through the main input.",
+          "max": null,
+          "min": null,
+          "name": "pass",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "eof_action"
+        },
+        {
+          "default": "['.i64 = EVAL_MODE_FRAME']",
+          "flags": "((1<<16) | 16)",
+          "help": "specify when to evaluate expressions",
+          "max": "EVAL_MODE_NB - 1",
+          "min": "0",
+          "name": "eval",
+          "offset": "__builtin_offsetof(OverlayCUDAContext, eval_mode)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": "eval"
+        },
+        {
+          "default": "['.i64=EVAL_MODE_INIT']",
+          "flags": "((1<<16) | 16)",
+          "help": "eval expressions once during initialization",
+          "max": null,
+          "min": null,
+          "name": "init",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "eval"
+        },
+        {
+          "default": "['.i64=EVAL_MODE_FRAME']",
+          "flags": "((1<<16) | 16)",
+          "help": "eval expressions per-frame",
+          "max": null,
+          "min": null,
+          "name": "frame",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "eval"
+        },
+        {
+          "default": "['.i64 = 0']",
+          "flags": "((1<<16) | 16)",
+          "help": "force termination when the shortest input terminates",
+          "max": "1",
+          "min": "0",
+          "name": "shortest",
+          "offset": "__builtin_offsetof(OverlayCUDAContext, fs.opt_shortest)",
+          "type": "AV_OPT_TYPE_BOOL",
+          "unit": null
+        },
+        {
+          "default": "['.i64=1']",
+          "flags": "((1<<16) | 16)",
+          "help": "repeat overlay of the last overlay frame",
+          "max": "1",
+          "min": "0",
+          "name": "repeatlast",
+          "offset": "__builtin_offsetof(OverlayCUDAContext, fs.opt_repeatlast)",
+          "type": "AV_OPT_TYPE_BOOL",
+          "unit": null
+        }
+      ],
+      "priv_class": "&overlay_cuda_class"
+    }
+  }
+]

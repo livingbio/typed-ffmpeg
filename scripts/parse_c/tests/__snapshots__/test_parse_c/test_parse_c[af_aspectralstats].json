@@ -1,6 +1,7 @@
 [
   {
     "description": "Show frequency domain statistics about audio frames.",
+    "flags": 4,
     "name": "aspectralstats",
     "options": [
       {

@@ -14,7 +14,16 @@ datadir = pathlib.Path(__file__).parent / "test_parse_c"
 def test_parse_c(path: pathlib.Path, snapshot: SnapshotAssertion) -> None:
     filters = parse_c(path)
     assert snapshot(extension_class=JSONSnapshotExtension) == dump(filters)
-    assert snapshot(extension_class=JSONSnapshotExtension) == dump([k.parsed_options for k in filters])
+    assert snapshot(extension_class=JSONSnapshotExtension, name="property") == dump(
+        [
+            {
+                "parsed_options": k,
+                "is_dynamic_inputs": k.is_dynamic_inputs,
+                "is_dynamic_outputs": k.is_dynamic_outputs,
+            }
+            for k in filters
+        ]
+    )
 
 
 def test_parse_all_filter_names(snapshot: SnapshotAssertion) -> None:

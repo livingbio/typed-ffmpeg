@@ -1,3 +1,4 @@
+import enum
 from functools import cached_property
 from itertools import groupby
 
@@ -48,6 +49,18 @@ class AVClass(pydantic.BaseModel):
     category: str | None = None
 
 
+class AVFilterFlags(int, enum.Enum):
+    # ref: libavfilter/avfilter.h
+    AVFILTER_FLAG_DYNAMIC_INPUTS = 1 << 0
+    AVFILTER_FLAG_DYNAMIC_OUTPUTS = 1 << 1
+    AVFILTER_FLAG_SLICE_THREADS = 1 << 2
+    AVFILTER_FLAG_METADATA_ONLY = 1 << 3
+    AVFILTER_FLAG_HWDEVICE = 1 << 4
+    AVFILTER_FLAG_SUPPORT_TIMELINE_GENERIC = 1 << 16
+    AVFILTER_FLAG_SUPPORT_TIMELINE_INTERNAL = 1 << 17
+    AVFILTER_FLAG_SUPPORT_TIMELINE = AVFILTER_FLAG_SUPPORT_TIMELINE_GENERIC | AVFILTER_FLAG_SUPPORT_TIMELINE_INTERNAL
+
+
 class AVFilter(pydantic.BaseModel):
     name: str
     description: str
@@ -62,10 +75,18 @@ class AVFilter(pydantic.BaseModel):
     # outputs: str
     # nb_outputs: str
     priv_class: str | None = None
-    # flags: str
+    flags: int
     # process_command: str
 
     options: list[AVOption] = []
+
+    @property
+    def is_dynamic_inputs(self) -> bool:
+        return bool(self.flags & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_INPUTS)
+
+    @property
+    def is_dynamic_outputs(self) -> bool:
+        return bool(self.flags & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_OUTPUTS)
 
     @cached_property
     def parsed_options(self) -> list[Option]:

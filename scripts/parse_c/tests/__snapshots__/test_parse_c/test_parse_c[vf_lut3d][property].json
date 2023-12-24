@@ -1,0 +1,324 @@
+[
+  {
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "parsed_options": {
+      "description": "Adjust colors using a 3D LUT.",
+      "flags": 65540,
+      "name": "lut3d",
+      "options": [
+        {
+          "default": "['.str=((void*)0)']",
+          "flags": "(1<<16)|16",
+          "help": "set 3D LUT file name",
+          "max": null,
+          "min": null,
+          "name": "file",
+          "offset": "__builtin_offsetof(LUT3DContext, file)",
+          "type": "AV_OPT_TYPE_STRING",
+          "unit": null
+        },
+        {
+          "default": "['.i64=1']",
+          "flags": ".flags = (1<<16)|16|(1<<15)",
+          "help": "when to process CLUT",
+          "max": "1",
+          "min": "0",
+          "name": "clut",
+          "offset": "__builtin_offsetof(LUT3DContext, clut)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": "clut"
+        },
+        {
+          "default": "['.i64=0']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "process only first CLUT, ignore rest",
+          "max": null,
+          "min": null,
+          "name": "first",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "clut"
+        },
+        {
+          "default": "['.i64=1']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "process all CLUTs",
+          "max": null,
+          "min": null,
+          "name": "all",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "clut"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_TETRAHEDRAL']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "select interpolation mode",
+          "max": "NB_INTERP_MODE-1",
+          "min": "0",
+          "name": "interp",
+          "offset": "__builtin_offsetof(LUT3DContext, interpolation)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_NEAREST']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "use values from the nearest defined points",
+          "max": "0",
+          "min": "0",
+          "name": "nearest",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_TRILINEAR']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "interpolate values using the 8 points defining a cube",
+          "max": "0",
+          "min": "0",
+          "name": "trilinear",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_TETRAHEDRAL']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "interpolate values using a tetrahedron",
+          "max": "0",
+          "min": "0",
+          "name": "tetrahedral",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_PYRAMID']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "interpolate values using a pyramid",
+          "max": "0",
+          "min": "0",
+          "name": "pyramid",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_PRISM']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "interpolate values using a prism",
+          "max": "0",
+          "min": "0",
+          "name": "prism",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        }
+      ],
+      "priv_class": "&lut3d_class"
+    }
+  },
+  {
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "parsed_options": {
+      "description": "Adjust colors using a Hald CLUT.",
+      "flags": 131076,
+      "name": "haldclut",
+      "options": [
+        {
+          "default": "['.i64=1']",
+          "flags": ".flags = (1<<16)|16|(1<<15)",
+          "help": "when to process CLUT",
+          "max": "1",
+          "min": "0",
+          "name": "clut",
+          "offset": "__builtin_offsetof(LUT3DContext, clut)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": "clut"
+        },
+        {
+          "default": "['.i64=0']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "process only first CLUT, ignore rest",
+          "max": null,
+          "min": null,
+          "name": "first",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "clut"
+        },
+        {
+          "default": "['.i64=1']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "process all CLUTs",
+          "max": null,
+          "min": null,
+          "name": "all",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "clut"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_TETRAHEDRAL']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "select interpolation mode",
+          "max": "NB_INTERP_MODE-1",
+          "min": "0",
+          "name": "interp",
+          "offset": "__builtin_offsetof(LUT3DContext, interpolation)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_NEAREST']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "use values from the nearest defined points",
+          "max": "0",
+          "min": "0",
+          "name": "nearest",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_TRILINEAR']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "interpolate values using the 8 points defining a cube",
+          "max": "0",
+          "min": "0",
+          "name": "trilinear",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_TETRAHEDRAL']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "interpolate values using a tetrahedron",
+          "max": "0",
+          "min": "0",
+          "name": "tetrahedral",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_PYRAMID']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "interpolate values using a pyramid",
+          "max": "0",
+          "min": "0",
+          "name": "pyramid",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_PRISM']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "interpolate values using a prism",
+          "max": "0",
+          "min": "0",
+          "name": "prism",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        }
+      ],
+      "priv_class": "&haldclut_class"
+    }
+  },
+  {
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "parsed_options": {
+      "description": "Adjust colors using a 1D LUT.",
+      "flags": 65540,
+      "name": "lut1d",
+      "options": [
+        {
+          "default": "['.str=((void*)0)']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "set 1D LUT file name",
+          "max": null,
+          "min": null,
+          "name": "file",
+          "offset": "__builtin_offsetof(LUT1DContext, file)",
+          "type": "AV_OPT_TYPE_STRING",
+          "unit": null
+        },
+        {
+          "default": "['.i64=INTERPOLATE_1D_LINEAR']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "select interpolation mode",
+          "max": "NB_INTERP_1D_MODE-1",
+          "min": "0",
+          "name": "interp",
+          "offset": "__builtin_offsetof(LUT1DContext, interpolation)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_1D_NEAREST']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "use values from the nearest defined points",
+          "max": "0",
+          "min": "0",
+          "name": "nearest",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_1D_LINEAR']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "use values from the linear interpolation",
+          "max": "0",
+          "min": "0",
+          "name": "linear",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_1D_COSINE']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "use values from the cosine interpolation",
+          "max": "0",
+          "min": "0",
+          "name": "cosine",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_1D_CUBIC']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "use values from the cubic interpolation",
+          "max": "0",
+          "min": "0",
+          "name": "cubic",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        },
+        {
+          "default": "['.i64=INTERPOLATE_1D_SPLINE']",
+          "flags": "(1<<16)|16|(1<<15)",
+          "help": "use values from the spline interpolation",
+          "max": "0",
+          "min": "0",
+          "name": "spline",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "interp_mode"
+        }
+      ],
+      "priv_class": "&lut1d_class"
+    }
+  }
+]

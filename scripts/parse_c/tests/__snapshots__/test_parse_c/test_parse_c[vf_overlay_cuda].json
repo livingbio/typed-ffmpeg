@@ -1,6 +1,7 @@
 [
   {
     "description": "Overlay one video on top of another using CUDA",
+    "flags": 0,
     "name": "overlay_cuda",
     "options": [
       {

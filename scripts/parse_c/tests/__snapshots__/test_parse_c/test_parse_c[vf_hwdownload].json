@@ -1,6 +1,7 @@
 [
   {
     "description": "Download a hardware frame to a normal frame",
+    "flags": 0,
     "name": "hwdownload",
     "options": [],
     "priv_class": "&hwdownload_class"

@@ -1,6 +1,7 @@
 [
   {
     "description": "Hard repeat fields based on MPEG repeat field flag.",
+    "flags": 0,
     "name": "repeatfields",
     "options": [],
     "priv_class": null

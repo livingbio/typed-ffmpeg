@@ -1,6 +1,7 @@
 [
   {
     "description": "Adjust colors using a 3D LUT.",
+    "flags": 65540,
     "name": "lut3d",
     "options": [
       {
@@ -118,6 +119,7 @@
   },
   {
     "description": "Adjust colors using a Hald CLUT.",
+    "flags": 131076,
     "name": "haldclut",
     "options": [
       {
@@ -224,6 +226,7 @@
   },
   {
     "description": "Adjust colors using a 1D LUT.",
+    "flags": 65540,
     "name": "lut1d",
     "options": [
       {

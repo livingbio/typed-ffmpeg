@@ -1,6 +1,7 @@
 [
   {
     "description": "Apply erosion effect.",
+    "flags": 65540,
     "name": "erosion",
     "options": [
       {
@@ -63,6 +64,7 @@
   },
   {
     "description": "Apply dilation effect.",
+    "flags": 65540,
     "name": "dilation",
     "options": [
       {
@@ -125,6 +127,7 @@
   },
   {
     "description": "Apply deflate effect.",
+    "flags": 65540,
     "name": "deflate",
     "options": [
       {
@@ -176,6 +179,7 @@
   },
   {
     "description": "Apply inflate effect.",
+    "flags": 65540,
     "name": "inflate",
     "options": [
       {
