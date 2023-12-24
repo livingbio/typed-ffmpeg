@@ -1,0 +1,6 @@
+{
+  "inputs": {
+    "name": "default",
+    "type": "AVMEDIA_TYPE_AUDIO"
+  }
+}

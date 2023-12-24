@@ -1,9 +1,0 @@
-[
-  [
-    "Option(name='split', help='set split frequencies', type='AV_OPT_TYPE_STRING', default='500', choices=[])",
-    "Option(name='order', help='set filter order', type='AV_OPT_TYPE_INT', default=1, choices=[Choice(name='2nd', help='2nd order (12 dB/8ve)', value=0), Choice(name='4th', help='4th order (24 dB/8ve)', value=1), Choice(name='6th', help='6th order (36 dB/8ve)', value=2), Choice(name='8th', help='8th order (48 dB/8ve)', value=3), Choice(name='10th', help='10th order (60 dB/8ve)', value=4), Choice(name='12th', help='12th order (72 dB/8ve)', value=5), Choice(name='14th', help='14th order (84 dB/8ve)', value=6), Choice(name='16th', help='16th order (96 dB/8ve)', value=7), Choice(name='18th', help='18th order (108 dB/8ve)', value=8), Choice(name='20th', help='20th order (120 dB/8ve)', value=9)])",
-    "Option(name='level', help='set input gain', type='AV_OPT_TYPE_FLOAT', default=1.0, choices=[])",
-    "Option(name='gain', help='set output bands gain', type='AV_OPT_TYPE_STRING', default='1.f', choices=[])",
-    "Option(name='precision', help='set processing precision', type='AV_OPT_TYPE_INT', default=0, choices=[Choice(name='auto', help='set auto processing precision', value=0), Choice(name='float', help='set single-floating point processing precision', value=1), Choice(name='double', help='set double-floating point processing precision', value=2)])"
-  ]
-]

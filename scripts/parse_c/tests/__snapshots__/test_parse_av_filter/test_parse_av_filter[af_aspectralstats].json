@@ -1,0 +1,8 @@
+{
+  "ff_af_aspectralstats": {
+    "description": "NULL_IF_CONFIG_SMALL(\"Show frequency domain statistics about audio frames.\")",
+    "name": "aspectralstats",
+    "options": [],
+    "priv_class": "&aspectralstats_class"
+  }
+}

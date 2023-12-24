@@ -1,428 +1,11 @@
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c"
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/vsrc_mptestsrc.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 418 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 21 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/float.h" 1 3
-# 32 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/float.h" 3
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/float.h" 1 3 4
-# 33 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/float.h" 2 3
-# 22 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 1 3 4
-# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 1 3 4
-# 678 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h" 1 3 4
-# 679 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 2 3 4
-# 744 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h" 1 3 4
-# 745 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 2 3 4
-# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 1 3 4
-# 172 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
-# 173 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
-# 176 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 1 3 4
-# 177 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 2 3 4
-# 174 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-# 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 2 3 4
-# 45 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-    typedef float float_t;
-    typedef double double_t;
-# 112 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern int __math_errhandling(void);
-# 132 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern int __fpclassifyf(float);
-extern int __fpclassifyd(double);
-extern int __fpclassifyl(long double);
-# 175 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float);
-inline __attribute__ ((__always_inline__)) int __inline_isfinited(double);
-inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double);
-inline __attribute__ ((__always_inline__)) int __inline_isinff(float);
-inline __attribute__ ((__always_inline__)) int __inline_isinfd(double);
-inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double);
-inline __attribute__ ((__always_inline__)) int __inline_isnanf(float);
-inline __attribute__ ((__always_inline__)) int __inline_isnand(double);
-inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double);
-inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float);
-inline __attribute__ ((__always_inline__)) int __inline_isnormald(double);
-inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double);
-inline __attribute__ ((__always_inline__)) int __inline_signbitf(float);
-inline __attribute__ ((__always_inline__)) int __inline_signbitd(double);
-inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double);
-
-inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float __x) {
-    return __x == __x && __builtin_fabsf(__x) != __builtin_inff();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isfinited(double __x) {
-    return __x == __x && __builtin_fabs(__x) != __builtin_inf();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double __x) {
-    return __x == __x && __builtin_fabsl(__x) != __builtin_infl();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isinff(float __x) {
-    return __builtin_fabsf(__x) == __builtin_inff();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isinfd(double __x) {
-    return __builtin_fabs(__x) == __builtin_inf();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double __x) {
-    return __builtin_fabsl(__x) == __builtin_infl();
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnanf(float __x) {
-    return __x != __x;
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnand(double __x) {
-    return __x != __x;
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double __x) {
-    return __x != __x;
-}
-inline __attribute__ ((__always_inline__)) int __inline_signbitf(float __x) {
-    union { float __f; unsigned int __u; } __u;
-    __u.__f = __x;
-    return (int)(__u.__u >> 31);
-}
-inline __attribute__ ((__always_inline__)) int __inline_signbitd(double __x) {
-    union { double __f; unsigned long long __u; } __u;
-    __u.__f = __x;
-    return (int)(__u.__u >> 63);
-}
-# 238 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double __x) {
-    union { long double __f; unsigned long long __u;} __u;
-    __u.__f = __x;
-    return (int)(__u.__u >> 63);
-}
-
-inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float __x) {
-    return __inline_isfinitef(__x) && __builtin_fabsf(__x) >= 1.17549435e-38F;
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnormald(double __x) {
-    return __inline_isfinited(__x) && __builtin_fabs(__x) >= 2.2250738585072014e-308;
-}
-inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double __x) {
-    return __inline_isfinitel(__x) && __builtin_fabsl(__x) >= 2.2250738585072014e-308L;
-}
-# 309 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern float acosf(float);
-extern double acos(double);
-extern long double acosl(long double);
-
-extern float asinf(float);
-extern double asin(double);
-extern long double asinl(long double);
-
-extern float atanf(float);
-extern double atan(double);
-extern long double atanl(long double);
-
-extern float atan2f(float, float);
-extern double atan2(double, double);
-extern long double atan2l(long double, long double);
-
-extern float cosf(float);
-extern double cos(double);
-extern long double cosl(long double);
-
-extern float sinf(float);
-extern double sin(double);
-extern long double sinl(long double);
-
-extern float tanf(float);
-extern double tan(double);
-extern long double tanl(long double);
-
-extern float acoshf(float);
-extern double acosh(double);
-extern long double acoshl(long double);
-
-extern float asinhf(float);
-extern double asinh(double);
-extern long double asinhl(long double);
-
-extern float atanhf(float);
-extern double atanh(double);
-extern long double atanhl(long double);
-
-extern float coshf(float);
-extern double cosh(double);
-extern long double coshl(long double);
-
-extern float sinhf(float);
-extern double sinh(double);
-extern long double sinhl(long double);
-
-extern float tanhf(float);
-extern double tanh(double);
-extern long double tanhl(long double);
-
-extern float expf(float);
-extern double exp(double);
-extern long double expl(long double);
-
-extern float exp2f(float);
-extern double exp2(double);
-extern long double exp2l(long double);
-
-extern float expm1f(float);
-extern double expm1(double);
-extern long double expm1l(long double);
-
-extern float logf(float);
-extern double log(double);
-extern long double logl(long double);
-
-extern float log10f(float);
-extern double log10(double);
-extern long double log10l(long double);
-
-extern float log2f(float);
-extern double log2(double);
-extern long double log2l(long double);
-
-extern float log1pf(float);
-extern double log1p(double);
-extern long double log1pl(long double);
-
-extern float logbf(float);
-extern double logb(double);
-extern long double logbl(long double);
-
-extern float modff(float, float *);
-extern double modf(double, double *);
-extern long double modfl(long double, long double *);
-
-extern float ldexpf(float, int);
-extern double ldexp(double, int);
-extern long double ldexpl(long double, int);
-
-extern float frexpf(float, int *);
-extern double frexp(double, int *);
-extern long double frexpl(long double, int *);
-
-extern int ilogbf(float);
-extern int ilogb(double);
-extern int ilogbl(long double);
-
-extern float scalbnf(float, int);
-extern double scalbn(double, int);
-extern long double scalbnl(long double, int);
-
-extern float scalblnf(float, long int);
-extern double scalbln(double, long int);
-extern long double scalblnl(long double, long int);
-
-extern float fabsf(float);
-extern double fabs(double);
-extern long double fabsl(long double);
-
-extern float cbrtf(float);
-extern double cbrt(double);
-extern long double cbrtl(long double);
-
-extern float hypotf(float, float);
-extern double hypot(double, double);
-extern long double hypotl(long double, long double);
-
-extern float powf(float, float);
-extern double pow(double, double);
-extern long double powl(long double, long double);
-
-extern float sqrtf(float);
-extern double sqrt(double);
-extern long double sqrtl(long double);
-
-extern float erff(float);
-extern double erf(double);
-extern long double erfl(long double);
-
-extern float erfcf(float);
-extern double erfc(double);
-extern long double erfcl(long double);
-
-
-
-
-extern float lgammaf(float);
-extern double lgamma(double);
-extern long double lgammal(long double);
-
-extern float tgammaf(float);
-extern double tgamma(double);
-extern long double tgammal(long double);
-
-extern float ceilf(float);
-extern double ceil(double);
-extern long double ceill(long double);
-
-extern float floorf(float);
-extern double floor(double);
-extern long double floorl(long double);
-
-extern float nearbyintf(float);
-extern double nearbyint(double);
-extern long double nearbyintl(long double);
-
-extern float rintf(float);
-extern double rint(double);
-extern long double rintl(long double);
-
-extern long int lrintf(float);
-extern long int lrint(double);
-extern long int lrintl(long double);
-
-extern float roundf(float);
-extern double round(double);
-extern long double roundl(long double);
-
-extern long int lroundf(float);
-extern long int lround(double);
-extern long int lroundl(long double);
-
-
-
-
-extern long long int llrintf(float);
-extern long long int llrint(double);
-extern long long int llrintl(long double);
-
-extern long long int llroundf(float);
-extern long long int llround(double);
-extern long long int llroundl(long double);
-
-
-extern float truncf(float);
-extern double trunc(double);
-extern long double truncl(long double);
-
-extern float fmodf(float, float);
-extern double fmod(double, double);
-extern long double fmodl(long double, long double);
-
-extern float remainderf(float, float);
-extern double remainder(double, double);
-extern long double remainderl(long double, long double);
-
-extern float remquof(float, float, int *);
-extern double remquo(double, double, int *);
-extern long double remquol(long double, long double, int *);
-
-extern float copysignf(float, float);
-extern double copysign(double, double);
-extern long double copysignl(long double, long double);
-
-extern float nanf(const char *);
-extern double nan(const char *);
-extern long double nanl(const char *);
-
-extern float nextafterf(float, float);
-extern double nextafter(double, double);
-extern long double nextafterl(long double, long double);
-
-extern double nexttoward(double, long double);
-extern float nexttowardf(float, long double);
-extern long double nexttowardl(long double, long double);
-
-extern float fdimf(float, float);
-extern double fdim(double, double);
-extern long double fdiml(long double, long double);
-
-extern float fmaxf(float, float);
-extern double fmax(double, double);
-extern long double fmaxl(long double, long double);
-
-extern float fminf(float, float);
-extern double fmin(double, double);
-extern long double fminl(long double, long double);
-
-extern float fmaf(float, float, float);
-extern double fma(double, double, double);
-extern long double fmal(long double, long double, long double);
-# 589 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern float __exp10f(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern double __exp10(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-
-
-
-
-
-inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp);
-inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp);
-# 606 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-extern float __cospif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern double __cospi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern float __sinpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern double __sinpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern float __tanpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-extern double __tanpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
-# 637 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp);
-inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp);
-
-
-
-
-
-
-struct __float2 { float __sinval; float __cosval; };
-struct __double2 { double __sinval; double __cosval; };
-
-extern struct __float2 __sincosf_stret(float);
-extern struct __double2 __sincos_stret(double);
-extern struct __float2 __sincospif_stret(float);
-extern struct __double2 __sincospi_stret(double);
-
-inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp) {
-    const struct __float2 __stret = __sincosf_stret(__x);
-    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
-}
-
-inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp) {
-    const struct __double2 __stret = __sincos_stret(__x);
-    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
-}
-
-inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp) {
-    const struct __float2 __stret = __sincospif_stret(__x);
-    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
-}
-
-inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp) {
-    const struct __double2 __stret = __sincospi_stret(__x);
-    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
-}
-
-
-
-
-
-
-
-extern double j0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double j1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double jn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double y0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double y1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double yn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
-extern double scalb(double, double);
-extern int signgam;
-# 764 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
-struct exception {
-    int type;
-    char *name;
-    double arg1;
-    double arg2;
-    double retval;
-};
-# 23 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/vsrc_mptestsrc.c" 2
+# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/vsrc_mptestsrc.c"
 # 1 "./libavutil/opt.h" 1
 # 30 "./libavutil/opt.h"
 # 1 "./libavutil/rational.h" 1
@@ -490,7 +73,15 @@ typedef uint64_t uint_fast64_t;
 
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 1 3 4
-# 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 3 4
+# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 1 3 4
+# 678 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h" 1 3 4
+# 679 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 2 3 4
+# 744 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h" 1 3 4
+# 745 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 2 3 4
+# 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 2 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h" 1 3 4
 # 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_types.h" 1 3 4
@@ -903,7 +494,18 @@ extern int * __error(void);
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 1 3
 # 21 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 3
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 1 3 4
-# 226 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 3 4
+# 224 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 1 3 4
+# 172 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
+# 173 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
+# 176 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 1 3 4
+# 177 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 2 3 4
+# 174 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
+# 225 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 2 3 4
+
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h" 1 3 4
 # 40 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h" 3 4
 typedef int __darwin_nl_item;
@@ -963,7 +565,398 @@ wcstoumax(const wchar_t * restrict __nptr,
 # 22 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 2 3
 # 35 "./libavutil/common.h" 2
 
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 1 3 4
+# 45 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+    typedef float float_t;
+    typedef double double_t;
+# 112 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern int __math_errhandling(void);
+# 132 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern int __fpclassifyf(float);
+extern int __fpclassifyd(double);
+extern int __fpclassifyl(long double);
+# 175 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float);
+inline __attribute__ ((__always_inline__)) int __inline_isfinited(double);
+inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isinff(float);
+inline __attribute__ ((__always_inline__)) int __inline_isinfd(double);
+inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isnanf(float);
+inline __attribute__ ((__always_inline__)) int __inline_isnand(double);
+inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float);
+inline __attribute__ ((__always_inline__)) int __inline_isnormald(double);
+inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double);
+inline __attribute__ ((__always_inline__)) int __inline_signbitf(float);
+inline __attribute__ ((__always_inline__)) int __inline_signbitd(double);
+inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double);
 
+inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float __x) {
+    return __x == __x && __builtin_fabsf(__x) != __builtin_inff();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isfinited(double __x) {
+    return __x == __x && __builtin_fabs(__x) != __builtin_inf();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double __x) {
+    return __x == __x && __builtin_fabsl(__x) != __builtin_infl();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinff(float __x) {
+    return __builtin_fabsf(__x) == __builtin_inff();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinfd(double __x) {
+    return __builtin_fabs(__x) == __builtin_inf();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double __x) {
+    return __builtin_fabsl(__x) == __builtin_infl();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnanf(float __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnand(double __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_signbitf(float __x) {
+    union { float __f; unsigned int __u; } __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 31);
+}
+inline __attribute__ ((__always_inline__)) int __inline_signbitd(double __x) {
+    union { double __f; unsigned long long __u; } __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 63);
+}
+# 238 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double __x) {
+    union { long double __f; unsigned long long __u;} __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 63);
+}
+
+inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float __x) {
+    return __inline_isfinitef(__x) && __builtin_fabsf(__x) >= 1.17549435e-38F;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnormald(double __x) {
+    return __inline_isfinited(__x) && __builtin_fabs(__x) >= 2.2250738585072014e-308;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double __x) {
+    return __inline_isfinitel(__x) && __builtin_fabsl(__x) >= 2.2250738585072014e-308L;
+}
+# 309 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern float acosf(float);
+extern double acos(double);
+extern long double acosl(long double);
+
+extern float asinf(float);
+extern double asin(double);
+extern long double asinl(long double);
+
+extern float atanf(float);
+extern double atan(double);
+extern long double atanl(long double);
+
+extern float atan2f(float, float);
+extern double atan2(double, double);
+extern long double atan2l(long double, long double);
+
+extern float cosf(float);
+extern double cos(double);
+extern long double cosl(long double);
+
+extern float sinf(float);
+extern double sin(double);
+extern long double sinl(long double);
+
+extern float tanf(float);
+extern double tan(double);
+extern long double tanl(long double);
+
+extern float acoshf(float);
+extern double acosh(double);
+extern long double acoshl(long double);
+
+extern float asinhf(float);
+extern double asinh(double);
+extern long double asinhl(long double);
+
+extern float atanhf(float);
+extern double atanh(double);
+extern long double atanhl(long double);
+
+extern float coshf(float);
+extern double cosh(double);
+extern long double coshl(long double);
+
+extern float sinhf(float);
+extern double sinh(double);
+extern long double sinhl(long double);
+
+extern float tanhf(float);
+extern double tanh(double);
+extern long double tanhl(long double);
+
+extern float expf(float);
+extern double exp(double);
+extern long double expl(long double);
+
+extern float exp2f(float);
+extern double exp2(double);
+extern long double exp2l(long double);
+
+extern float expm1f(float);
+extern double expm1(double);
+extern long double expm1l(long double);
+
+extern float logf(float);
+extern double log(double);
+extern long double logl(long double);
+
+extern float log10f(float);
+extern double log10(double);
+extern long double log10l(long double);
+
+extern float log2f(float);
+extern double log2(double);
+extern long double log2l(long double);
+
+extern float log1pf(float);
+extern double log1p(double);
+extern long double log1pl(long double);
+
+extern float logbf(float);
+extern double logb(double);
+extern long double logbl(long double);
+
+extern float modff(float, float *);
+extern double modf(double, double *);
+extern long double modfl(long double, long double *);
+
+extern float ldexpf(float, int);
+extern double ldexp(double, int);
+extern long double ldexpl(long double, int);
+
+extern float frexpf(float, int *);
+extern double frexp(double, int *);
+extern long double frexpl(long double, int *);
+
+extern int ilogbf(float);
+extern int ilogb(double);
+extern int ilogbl(long double);
+
+extern float scalbnf(float, int);
+extern double scalbn(double, int);
+extern long double scalbnl(long double, int);
+
+extern float scalblnf(float, long int);
+extern double scalbln(double, long int);
+extern long double scalblnl(long double, long int);
+
+extern float fabsf(float);
+extern double fabs(double);
+extern long double fabsl(long double);
+
+extern float cbrtf(float);
+extern double cbrt(double);
+extern long double cbrtl(long double);
+
+extern float hypotf(float, float);
+extern double hypot(double, double);
+extern long double hypotl(long double, long double);
+
+extern float powf(float, float);
+extern double pow(double, double);
+extern long double powl(long double, long double);
+
+extern float sqrtf(float);
+extern double sqrt(double);
+extern long double sqrtl(long double);
+
+extern float erff(float);
+extern double erf(double);
+extern long double erfl(long double);
+
+extern float erfcf(float);
+extern double erfc(double);
+extern long double erfcl(long double);
+
+
+
+
+extern float lgammaf(float);
+extern double lgamma(double);
+extern long double lgammal(long double);
+
+extern float tgammaf(float);
+extern double tgamma(double);
+extern long double tgammal(long double);
+
+extern float ceilf(float);
+extern double ceil(double);
+extern long double ceill(long double);
+
+extern float floorf(float);
+extern double floor(double);
+extern long double floorl(long double);
+
+extern float nearbyintf(float);
+extern double nearbyint(double);
+extern long double nearbyintl(long double);
+
+extern float rintf(float);
+extern double rint(double);
+extern long double rintl(long double);
+
+extern long int lrintf(float);
+extern long int lrint(double);
+extern long int lrintl(long double);
+
+extern float roundf(float);
+extern double round(double);
+extern long double roundl(long double);
+
+extern long int lroundf(float);
+extern long int lround(double);
+extern long int lroundl(long double);
+
+
+
+
+extern long long int llrintf(float);
+extern long long int llrint(double);
+extern long long int llrintl(long double);
+
+extern long long int llroundf(float);
+extern long long int llround(double);
+extern long long int llroundl(long double);
+
+
+extern float truncf(float);
+extern double trunc(double);
+extern long double truncl(long double);
+
+extern float fmodf(float, float);
+extern double fmod(double, double);
+extern long double fmodl(long double, long double);
+
+extern float remainderf(float, float);
+extern double remainder(double, double);
+extern long double remainderl(long double, long double);
+
+extern float remquof(float, float, int *);
+extern double remquo(double, double, int *);
+extern long double remquol(long double, long double, int *);
+
+extern float copysignf(float, float);
+extern double copysign(double, double);
+extern long double copysignl(long double, long double);
+
+extern float nanf(const char *);
+extern double nan(const char *);
+extern long double nanl(const char *);
+
+extern float nextafterf(float, float);
+extern double nextafter(double, double);
+extern long double nextafterl(long double, long double);
+
+extern double nexttoward(double, long double);
+extern float nexttowardf(float, long double);
+extern long double nexttowardl(long double, long double);
+
+extern float fdimf(float, float);
+extern double fdim(double, double);
+extern long double fdiml(long double, long double);
+
+extern float fmaxf(float, float);
+extern double fmax(double, double);
+extern long double fmaxl(long double, long double);
+
+extern float fminf(float, float);
+extern double fmin(double, double);
+extern long double fminl(long double, long double);
+
+extern float fmaf(float, float, float);
+extern double fma(double, double, double);
+extern long double fmal(long double, long double, long double);
+# 589 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern float __exp10f(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __exp10(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+
+
+
+
+
+inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp);
+inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp);
+# 606 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+extern float __cospif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __cospi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern float __sinpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __sinpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern float __tanpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __tanpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+# 637 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp);
+inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp);
+
+
+
+
+
+
+struct __float2 { float __sinval; float __cosval; };
+struct __double2 { double __sinval; double __cosval; };
+
+extern struct __float2 __sincosf_stret(float);
+extern struct __double2 __sincos_stret(double);
+extern struct __float2 __sincospif_stret(float);
+extern struct __double2 __sincospi_stret(double);
+
+inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp) {
+    const struct __float2 __stret = __sincosf_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp) {
+    const struct __double2 __stret = __sincos_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp) {
+    const struct __float2 __stret = __sincospif_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp) {
+    const struct __double2 __stret = __sincospi_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+
+
+
+
+
+
+extern double j0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double j1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double jn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double y0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double y1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double yn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double scalb(double, double);
+extern int signgam;
+# 764 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+struct exception {
+    int type;
+    char *name;
+    double arg1;
+    double arg2;
+    double retval;
+};
+# 37 "./libavutil/common.h" 2
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 1 3 4
 # 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 3 4
@@ -4035,79 +4028,146 @@ int av_opt_is_set_to_default_by_name(void *obj, const char *name, int search_fla
 # 885 "./libavutil/opt.h"
 int av_opt_serialize(void *obj, int opt_flags, int flags, char **buffer,
                      const char key_val_sep, const char pairs_sep);
-# 25 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 1 "./libavutil/tx.h" 1
-# 23 "./libavutil/tx.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 24 "./libavutil/tx.h" 2
+# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/vsrc_mptestsrc.c" 2
+# 1 "./libavutil/pixdesc.h" 1
+# 30 "./libavutil/pixdesc.h"
+typedef struct AVComponentDescriptor {
 
-typedef struct AVTXContext AVTXContext;
 
-typedef struct AVComplexFloat {
-    float re, im;
-} AVComplexFloat;
 
-typedef struct AVComplexDouble {
-    double re, im;
-} AVComplexDouble;
-
-typedef struct AVComplexInt32 {
-    int32_t re, im;
-} AVComplexInt32;
-
-enum AVTXType {
+    int plane;
 
 
 
 
 
-
-
-    AV_TX_FLOAT_FFT = 0,
-    AV_TX_DOUBLE_FFT = 2,
-    AV_TX_INT32_FFT = 4,
-# 68 "./libavutil/tx.h"
-    AV_TX_FLOAT_MDCT = 1,
-    AV_TX_DOUBLE_MDCT = 3,
-    AV_TX_INT32_MDCT = 5,
-# 90 "./libavutil/tx.h"
-    AV_TX_FLOAT_RDFT = 6,
-    AV_TX_DOUBLE_RDFT = 7,
-    AV_TX_INT32_RDFT = 8,
-# 104 "./libavutil/tx.h"
-    AV_TX_FLOAT_DCT = 9,
-    AV_TX_DOUBLE_DCT = 10,
-    AV_TX_INT32_DCT = 11,
-# 116 "./libavutil/tx.h"
-    AV_TX_FLOAT_DCT_I = 12,
-    AV_TX_DOUBLE_DCT_I = 13,
-    AV_TX_INT32_DCT_I = 14,
-# 128 "./libavutil/tx.h"
-    AV_TX_FLOAT_DST_I = 15,
-    AV_TX_DOUBLE_DST_I = 16,
-    AV_TX_INT32_DST_I = 17,
-
-
-    AV_TX_NB,
-};
-# 151 "./libavutil/tx.h"
-typedef void (*av_tx_fn)(AVTXContext *s, void *out, void *in, ptrdiff_t stride);
-
-
-
-
-enum AVTXFlags {
-
-
-
-
-    AV_TX_INPLACE = 1ULL << 0,
+    int step;
 
 
 
 
 
-    AV_TX_UNALIGNED = 1ULL << 1,
+    int offset;
+
+
+
+
+
+    int shift;
+
+
+
+
+    int depth;
+} AVComponentDescriptor;
+# 69 "./libavutil/pixdesc.h"
+typedef struct AVPixFmtDescriptor {
+    const char *name;
+    uint8_t nb_components;
+# 80 "./libavutil/pixdesc.h"
+    uint8_t log2_chroma_w;
+# 89 "./libavutil/pixdesc.h"
+    uint8_t log2_chroma_h;
+
+
+
+
+    uint64_t flags;
+# 105 "./libavutil/pixdesc.h"
+    AVComponentDescriptor comp[4];
+
+
+
+
+    const char *alias;
+} AVPixFmtDescriptor;
+# 174 "./libavutil/pixdesc.h"
+int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc);
+
+
+
+
+
+int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc);
+
+
+
+
+
+const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt);
+# 195 "./libavutil/pixdesc.h"
+const AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev);
+
+
+
+
+
+enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc);
+# 213 "./libavutil/pixdesc.h"
+int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt,
+                                     int *h_shift, int *v_shift);
+
+
+
+
+
+int av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt);
+
+
+
+
+const char *av_color_range_name(enum AVColorRange range);
+
+
+
+
+int av_color_range_from_name(const char *name);
+
+
+
+
+const char *av_color_primaries_name(enum AVColorPrimaries primaries);
+
+
+
+
+int av_color_primaries_from_name(const char *name);
+
+
+
+
+const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer);
+
+
+
+
+int av_color_transfer_from_name(const char *name);
+
+
+
+
+const char *av_color_space_name(enum AVColorSpace space);
+
+
+
+
+int av_color_space_from_name(const char *name);
+
+
+
+
+const char *av_chroma_location_name(enum AVChromaLocation location);
+
+
+
+
+int av_chroma_location_from_name(const char *name);
+# 281 "./libavutil/pixdesc.h"
+int av_chroma_location_enum_to_pos(int *xpos, int *ypos, enum AVChromaLocation pos);
+# 292 "./libavutil/pixdesc.h"
+enum AVChromaLocation av_chroma_location_pos_to_enum(int xpos, int ypos);
+# 305 "./libavutil/pixdesc.h"
+enum AVPixelFormat av_get_pix_fmt(const char *name);
 
 
 
@@ -4115,22 +4175,37 @@ enum AVTXFlags {
 
 
 
-    AV_TX_FULL_IMDCT = 1ULL << 2,
-# 184 "./libavutil/tx.h"
-    AV_TX_REAL_TO_REAL = 1ULL << 3,
-    AV_TX_REAL_TO_IMAGINARY = 1ULL << 4,
-};
-# 202 "./libavutil/tx.h"
-int av_tx_init(AVTXContext **ctx, av_tx_fn *tx, enum AVTXType type,
-               int inv, int len, const void *scale, uint64_t flags);
+const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt);
+# 325 "./libavutil/pixdesc.h"
+char *av_get_pix_fmt_string(char *buf, int buf_size,
+                            enum AVPixelFormat pix_fmt);
+# 345 "./libavutil/pixdesc.h"
+void av_read_image_line2(void *dst, const uint8_t *data[4],
+                        const int linesize[4], const AVPixFmtDescriptor *desc,
+                        int x, int y, int c, int w, int read_pal_component,
+                        int dst_element_size);
 
+void av_read_image_line(uint16_t *dst, const uint8_t *data[4],
+                        const int linesize[4], const AVPixFmtDescriptor *desc,
+                        int x, int y, int c, int w, int read_pal_component);
+# 369 "./libavutil/pixdesc.h"
+void av_write_image_line2(const void *src, uint8_t *data[4],
+                         const int linesize[4], const AVPixFmtDescriptor *desc,
+                         int x, int y, int c, int w, int src_element_size);
 
-
-
-void av_tx_uninit(AVTXContext **ctx);
-# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h" 1
-# 25 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h"
+void av_write_image_line(const uint16_t *src, uint8_t *data[4],
+                         const int linesize[4], const AVPixFmtDescriptor *desc,
+                         int x, int y, int c, int w);
+# 385 "./libavutil/pixdesc.h"
+enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt);
+# 415 "./libavutil/pixdesc.h"
+int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt,
+                        enum AVPixelFormat src_pix_fmt,
+                        int has_alpha);
+# 437 "./libavutil/pixdesc.h"
+enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,
+                                             enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);
+# 28 "/Users/davidchen/repo/ffmpeg/libavfilter/vsrc_mptestsrc.c" 2
 # 1 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h" 1
 # 38 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
@@ -5290,7 +5365,7 @@ int avfilter_graph_queue_command(AVFilterGraph *graph, const char *target, const
 char *avfilter_graph_dump(AVFilterGraph *graph, const char *options);
 # 1494 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h"
 int avfilter_graph_request_oldest(AVFilterGraph *graph);
-# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h" 2
+# 29 "/Users/davidchen/repo/ffmpeg/libavfilter/vsrc_mptestsrc.c" 2
 # 1 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h" 1
 # 27 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h"
 # 1 "./libavutil/internal.h" 1
@@ -5586,886 +5661,339 @@ int ff_filter_init_hw_frames(AVFilterContext *avctx, AVFilterLink *link,
 # 412 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h"
 int ff_filter_opt_parse(void *logctx, const AVClass *priv_class,
                         AVDictionary **options, const char *args);
-# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h" 2
-
-
-
-
-
-extern const AVFilterPad ff_audio_default_filterpad[1];
-
-
-AVFrame *ff_default_get_audio_buffer(AVFilterLink *link, int nb_samples);
-
-
-AVFrame *ff_null_get_audio_buffer(AVFilterLink *link, int nb_samples);
-# 48 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h"
-AVFrame *ff_get_audio_buffer(AVFilterLink *link, int nb_samples);
-# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h" 1
-# 46 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-void ff_filter_set_ready(AVFilterContext *filter, unsigned priority);
-
-
-
-
-
-
-int ff_inlink_process_commands(AVFilterLink *link, const AVFrame *frame);
-
-
-
-
-
-
-
-int ff_inlink_evaluate_timeline_at_frame(AVFilterLink *link, const AVFrame *frame);
-
-
-
-
-
-size_t ff_inlink_queued_frames(AVFilterLink *link);
-
-
-
-
-
-int ff_inlink_check_available_frame(AVFilterLink *link);
-
-
-
-
-
-
-int ff_inlink_queued_samples(AVFilterLink *link);
-
-
-
-
-
-
-int ff_inlink_check_available_samples(AVFilterLink *link, unsigned min);
-# 101 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-int ff_inlink_consume_frame(AVFilterLink *link, AVFrame **rframe);
-# 115 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-int ff_inlink_consume_samples(AVFilterLink *link, unsigned min, unsigned max,
-                            AVFrame **rframe);
-
-
-
-
-
-
-AVFrame *ff_inlink_peek_frame(AVFilterLink *link, size_t idx);
-
-
-
-
-
-
-int ff_inlink_make_frame_writable(AVFilterLink *link, AVFrame **rframe);
-# 153 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-int ff_inlink_acknowledge_status(AVFilterLink *link, int *rstatus, int64_t *rpts);
-
-
-
-
-
-
-
-void ff_inlink_request_frame(AVFilterLink *link);
-
-
-
-
-
-void ff_inlink_set_status(AVFilterLink *link, int status);
-
-
-
-
-static inline int ff_outlink_frame_wanted(AVFilterLink *link)
-{
-    return link->frame_wanted_out;
-}
-
-
-
-
-int ff_outlink_get_status(AVFilterLink *link);
-# 189 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-static inline void ff_outlink_set_status(AVFilterLink *link, int status, int64_t pts)
-{
-    ff_avfilter_link_set_in_status(link, status, pts);
-}
-# 267 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
-int ff_inoutlink_check_flow(AVFilterLink *inlink, AVFilterLink *outlink);
-# 29 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h" 1
-# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h"
-# 1 "./libavutil/avassert.h" 1
-# 76 "./libavutil/avassert.h"
-void av_assert0_fpu(void);
-# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h" 2
-
-
-enum WindowFunc { WFUNC_RECT, WFUNC_HANNING, WFUNC_HAMMING, WFUNC_BLACKMAN,
-                      WFUNC_BARTLETT, WFUNC_WELCH, WFUNC_FLATTOP,
-                      WFUNC_BHARRIS, WFUNC_BNUTTALL, WFUNC_SINE, WFUNC_NUTTALL,
-                      WFUNC_BHANN, WFUNC_LANCZOS, WFUNC_GAUSS, WFUNC_TUKEY,
-                      WFUNC_DOLPH, WFUNC_CAUCHY, WFUNC_PARZEN, WFUNC_POISSON,
-                      WFUNC_BOHMAN, WFUNC_KAISER,
-                      NB_WFUNC };
-# 63 "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h"
-static inline void generate_window_func(float *lut, int N, int win_func,
-                                        float *overlap)
-{
-    int n;
-
-    switch (win_func) {
-    case WFUNC_RECT:
-        for (n = 0; n < N; n++)
-            lut[n] = 1.;
-        *overlap = 0.;
-        break;
-    case WFUNC_BARTLETT:
-        for (n = 0; n < N; n++)
-            lut[n] = 1.-fabs((n-(N-1)/2.)/((N-1)/2.));
-        *overlap = 0.5;
-        break;
-    case WFUNC_HANNING:
-        for (n = 0; n < N; n++)
-            lut[n] = .5*(1-cos(2*3.14159265358979323846264338327950288*n/(N-1)));
-        *overlap = 0.5;
-        break;
-    case WFUNC_HAMMING:
-        for (n = 0; n < N; n++)
-            lut[n] = .54-.46*cos(2*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.5;
-        break;
-    case WFUNC_BLACKMAN:
-        for (n = 0; n < N; n++)
-            lut[n] = .42659-.49656*cos(2*3.14159265358979323846264338327950288*n/(N-1))+.076849*cos(4*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.661;
-        break;
-    case WFUNC_WELCH:
-        for (n = 0; n < N; n++)
-            lut[n] = 1.-(n-(N-1)/2.)/((N-1)/2.)*(n-(N-1)/2.)/((N-1)/2.);
-        *overlap = 0.293;
-        break;
-    case WFUNC_FLATTOP:
-        for (n = 0; n < N; n++)
-            lut[n] = 1.-1.985844164102*cos( 2*3.14159265358979323846264338327950288*n/(N-1))+1.791176438506*cos( 4*3.14159265358979323846264338327950288*n/(N-1))-
-            1.282075284005*cos( 6*3.14159265358979323846264338327950288*n/(N-1))+0.667777530266*cos( 8*3.14159265358979323846264338327950288*n/(N-1))-
-            0.240160796576*cos(10*3.14159265358979323846264338327950288*n/(N-1))+0.056656381764*cos(12*3.14159265358979323846264338327950288*n/(N-1))-
-            0.008134974479*cos(14*3.14159265358979323846264338327950288*n/(N-1))+0.000624544650*cos(16*3.14159265358979323846264338327950288*n/(N-1))-
-            0.000019808998*cos(18*3.14159265358979323846264338327950288*n/(N-1))+0.000000132974*cos(20*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.841;
-        break;
-    case WFUNC_BHARRIS:
-        for (n = 0; n < N; n++)
-            lut[n] = 0.35875-0.48829*cos(2*3.14159265358979323846264338327950288*n/(N-1))+0.14128*cos(4*3.14159265358979323846264338327950288*n/(N-1))-0.01168*cos(6*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.661;
-        break;
-    case WFUNC_BNUTTALL:
-        for (n = 0; n < N; n++)
-            lut[n] = 0.3635819-0.4891775*cos(2*3.14159265358979323846264338327950288*n/(N-1))+0.1365995*cos(4*3.14159265358979323846264338327950288*n/(N-1))-0.0106411*cos(6*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.661;
-        break;
-    case WFUNC_BHANN:
-        for (n = 0; n < N; n++)
-            lut[n] = 0.62-0.48*fabs(n/(double)(N-1)-.5)-0.38*cos(2*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.5;
-        break;
-    case WFUNC_SINE:
-        for (n = 0; n < N; n++)
-            lut[n] = sin(3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.75;
-        break;
-    case WFUNC_NUTTALL:
-        for (n = 0; n < N; n++)
-            lut[n] = 0.355768-0.487396*cos(2*3.14159265358979323846264338327950288*n/(N-1))+0.144232*cos(4*3.14159265358979323846264338327950288*n/(N-1))-0.012604*cos(6*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.663;
-        break;
-    case WFUNC_LANCZOS:
-
-        for (n = 0; n < N; n++)
-            lut[n] = (!((2.*n)/(N-1)-1)) ? 1 : sin(3.14159265358979323846264338327950288 * ((2.*n)/(N-1)-1))/(3.14159265358979323846264338327950288 * ((2.*n)/(N-1)-1));;
-        *overlap = 0.75;
-        break;
-    case WFUNC_GAUSS:
-
-        for (n = 0; n < N; n++)
-            lut[n] = exp(-0.5 * (((n-(N-1)/2)/(0.4*(N-1)/2.f))*((n-(N-1)/2)/(0.4*(N-1)/2.f))));
-        *overlap = 0.75;
-        break;
-    case WFUNC_TUKEY:
-        for (n = 0; n < N; n++) {
-            float M = (N-1)/2.;
-
-            if (((n - M) >= 0 ? (n - M) : (-(n - M))) >= 0.3 * M) {
-                lut[n] = 0.5 * (1 + cos((3.14159265358979323846264338327950288*(((n - M) >= 0 ? (n - M) : (-(n - M))) - 0.3 * M))/((1 - 0.3) * M)));
-            } else {
-                lut[n] = 1;
-            }
-        }
-        *overlap = 0.33;
-        break;
-    case WFUNC_DOLPH: {
-        double b = cosh(7.6009022095419887 / (N-1)), sum, t, c, norm = 0;
-        int j;
-        for (c = 1 - 1 / (b*b), n = (N-1) / 2; n >= 0; --n) {
-            for (sum = !n, b = t = j = 1; j <= n && sum != t; b *= (n-j) * (1./j), ++j)
-                t = sum, sum += (b *= c * (N - n - j) * (1./j));
-            sum /= (N - 1 - n), norm = norm ? norm : sum, sum /= norm;
-            lut[n] = sum;
-            lut[N - 1 - n] = sum;
-        }
-        *overlap = 0.5;}
-        break;
-    case WFUNC_CAUCHY:
-        for (n = 0; n < N; n++) {
-            double x = 2 * ((n / (double)(N - 1)) - .5);
-
-            if (x <= -.5 || x >= .5) {
-                lut[n] = 0;
-            } else {
-                lut[n] = ((1) > (fabs(1/(1+4*16*x*x))) ? (fabs(1/(1+4*16*x*x))) : (1));
-            }
-        }
-        *overlap = 0.75;
-        break;
-    case WFUNC_PARZEN:
-        for (n = 0; n < N; n++) {
-            double x = 2 * ((n / (double)(N - 1)) - .5);
-
-            if (x > 0.25 && x <= 0.5) {
-                lut[n] = -2 * powf(-1 + 2 * x, 3);
-            } else if (x >= -.5 && x < -.25) {
-                lut[n] = 2 * powf(1 + 2 * x, 3);
-            } else if (x >= -.25 && x < 0) {
-                lut[n] = 1 - 24 * x * x - 48 * x * x * x;
-            } else if (x >= 0 && x <= .25) {
-                lut[n] = 1 - 24 * x * x + 48 * x * x * x;
-            } else {
-                lut[n] = 0;
-            }
-        }
-        *overlap = 0.75;
-        break;
-    case WFUNC_POISSON:
-        for (n = 0; n < N; n++) {
-            double x = 2 * ((n / (double)(N - 1)) - .5);
-
-            if (x >= 0 && x <= .5) {
-                lut[n] = exp(-6*x);
-            } else if (x < 0 && x >= -.5) {
-                lut[n] = exp(6*x);
-            } else {
-                lut[n] = 0;
-            }
-        }
-        *overlap = 0.75;
-        break;
-    case WFUNC_BOHMAN:
-        for (n = 0; n < N; n++) {
-            double x = 2 * ((n / (double)(N - 1))) - 1.;
-
-            lut[n] = (1 - fabs(x)) * cos(3.14159265358979323846264338327950288*fabs(x)) + 1./3.14159265358979323846264338327950288*sin(3.14159265358979323846264338327950288*fabs(x));
-        }
-        *overlap = 0.75;
-        break;
-    case WFUNC_KAISER:
-    {
-        double scale = 1.0 / av_bessel_i0(12.);
-        for (n = 0; n < N; n++) {
-            double x = 2.0 / (double)(N - 1);
-            lut[n] = av_bessel_i0(12. * sqrt(1. - ((n * x - 1.)*(n * x - 1.)))) * scale;
-        }
-        *overlap = 0.75;
-        break;
-    }
-    default:
-        do { if (!(0)) { av_log(((void*)0), 0, "Assertion %s failed at %s:%d\n", "0", "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h", 232); abort(); } } while (0);
-    }
-}
-# 31 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 48 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c"
-typedef struct ChannelSpectralStats {
-    float mean;
-    float variance;
-    float centroid;
-    float spread;
-    float skewness;
-    float kurtosis;
-    float entropy;
-    float flatness;
-    float crest;
-    float flux;
-    float slope;
-    float decrease;
-    float rolloff;
-} ChannelSpectralStats;
-
-typedef struct AudioSpectralStatsContext {
+# 30 "/Users/davidchen/repo/ffmpeg/libavfilter/vsrc_mptestsrc.c" 2
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/video.h" 1
+# 31 "/Users/davidchen/repo/ffmpeg/libavfilter/video.h"
+extern const AVFilterPad ff_video_default_filterpad[1];
+
+AVFrame *ff_default_get_video_buffer(AVFilterLink *link, int w, int h);
+AVFrame *ff_default_get_video_buffer2(AVFilterLink *link, int w, int h, int align);
+AVFrame *ff_null_get_video_buffer(AVFilterLink *link, int w, int h);
+# 46 "/Users/davidchen/repo/ffmpeg/libavfilter/video.h"
+AVFrame *ff_get_video_buffer(AVFilterLink *link, int w, int h);
+# 31 "/Users/davidchen/repo/ffmpeg/libavfilter/vsrc_mptestsrc.c" 2
+
+
+
+
+enum test_type {
+    TEST_DC_LUMA,
+    TEST_DC_CHROMA,
+    TEST_FREQ_LUMA,
+    TEST_FREQ_CHROMA,
+    TEST_AMP_LUMA,
+    TEST_AMP_CHROMA,
+    TEST_CBP,
+    TEST_MV,
+    TEST_RING1,
+    TEST_RING2,
+    TEST_ALL,
+    TEST_NB
+};
+
+typedef struct MPTestContext {
     const AVClass *class;
-    unsigned measure;
-    int win_size;
-    int win_func;
-    float overlap;
-    int nb_channels;
-    int hop_size;
-    ChannelSpectralStats *stats;
-    float *window_func_lut;
-    av_tx_fn tx_fn;
-    AVTXContext **fft;
-    AVComplexFloat **fft_in;
-    AVComplexFloat **fft_out;
-    float **prev_magnitude;
-    float **magnitude;
-    AVFrame *window;
-} AudioSpectralStatsContext;
+    AVRational frame_rate;
+    int64_t pts, max_pts, duration;
+    int64_t max_frames;
+    int hsub, vsub;
+    int test;
+} MPTestContext;
 
 
 
+static const AVOption mptestsrc_options[]= {
+    { "rate", "set video rate", __builtin_offsetof(MPTestContext, frame_rate), AV_OPT_TYPE_VIDEO_RATE, {.str = "25"}, 0, 2147483647, (1<<16)|16 },
+    { "r", "set video rate", __builtin_offsetof(MPTestContext, frame_rate), AV_OPT_TYPE_VIDEO_RATE, {.str = "25"}, 0, 2147483647, (1<<16)|16 },
+    { "duration", "set video duration", __builtin_offsetof(MPTestContext, duration), AV_OPT_TYPE_DURATION, {.i64 = -1}, -1, 9223372036854775807LL, (1<<16)|16 },
+    { "d", "set video duration", __builtin_offsetof(MPTestContext, duration), AV_OPT_TYPE_DURATION, {.i64 = -1}, -1, 9223372036854775807LL, (1<<16)|16 },
 
-static const AVOption aspectralstats_options[] = {
-    { "win_size", "set the window size", __builtin_offsetof(AudioSpectralStatsContext, win_size), AV_OPT_TYPE_INT, {.i64=2048}, 32, 65536, 8|(1<<16) },
-    { "win_func", "set window function", __builtin_offsetof(AudioSpectralStatsContext, win_func), AV_OPT_TYPE_INT, {.i64 = WFUNC_HANNING}, 0, NB_WFUNC-1, 8|(1<<16), "win_func" }, { "rect", "Rectangular", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_RECT}, 0, 0, 8|(1<<16), "win_func" }, { "bartlett", "Bartlett", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BARTLETT}, 0, 0, 8|(1<<16), "win_func" }, { "hann", "Hann", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HANNING}, 0, 0, 8|(1<<16), "win_func" }, { "hanning", "Hanning", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HANNING}, 0, 0, 8|(1<<16), "win_func" }, { "hamming", "Hamming", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HAMMING}, 0, 0, 8|(1<<16), "win_func" }, { "blackman", "Blackman", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BLACKMAN}, 0, 0, 8|(1<<16), "win_func" }, { "welch", "Welch", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_WELCH}, 0, 0, 8|(1<<16), "win_func" }, { "flattop", "Flat-top", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_FLATTOP}, 0, 0, 8|(1<<16), "win_func" }, { "bharris", "Blackman-Harris", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BHARRIS}, 0, 0, 8|(1<<16), "win_func" }, { "bnuttall", "Blackman-Nuttall", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BNUTTALL}, 0, 0, 8|(1<<16), "win_func" }, { "bhann", "Bartlett-Hann", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BHANN}, 0, 0, 8|(1<<16), "win_func" }, { "sine", "Sine", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_SINE}, 0, 0, 8|(1<<16), "win_func" }, { "nuttall", "Nuttall", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_NUTTALL}, 0, 0, 8|(1<<16), "win_func" }, { "lanczos", "Lanczos", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_LANCZOS}, 0, 0, 8|(1<<16), "win_func" }, { "gauss", "Gauss", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_GAUSS}, 0, 0, 8|(1<<16), "win_func" }, { "tukey", "Tukey", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_TUKEY}, 0, 0, 8|(1<<16), "win_func" }, { "dolph", "Dolph-Chebyshev", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_DOLPH}, 0, 0, 8|(1<<16), "win_func" }, { "cauchy", "Cauchy", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_CAUCHY}, 0, 0, 8|(1<<16), "win_func" }, { "parzen", "Parzen", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_PARZEN}, 0, 0, 8|(1<<16), "win_func" }, { "poisson", "Poisson", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_POISSON}, 0, 0, 8|(1<<16), "win_func" }, { "bohman", "Bohman", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BOHMAN}, 0, 0, 8|(1<<16), "win_func" }, { "kaiser", "Kaiser", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_KAISER}, 0, 0, 8|(1<<16), "win_func" },
-    { "overlap", "set window overlap", __builtin_offsetof(AudioSpectralStatsContext, overlap), AV_OPT_TYPE_FLOAT, {.dbl=0.5}, 0, 1, 8|(1<<16) },
-    { "measure", "select the parameters which are measured", __builtin_offsetof(AudioSpectralStatsContext, measure), AV_OPT_TYPE_FLAGS, {.i64=(2147483647 *2U +1U)}, 0, (2147483647 *2U +1U), 8|(1<<16), "measure" },
-    { "none", "", 0, AV_OPT_TYPE_CONST, {.i64=0 }, 0, 0, 8|(1<<16), "measure" },
-    { "all", "", 0, AV_OPT_TYPE_CONST, {.i64=(2147483647 *2U +1U) }, 0, 0, 8|(1<<16), "measure" },
-    { "mean", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 0) }, 0, 0, 8|(1<<16), "measure" },
-    { "variance", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 1)}, 0, 0, 8|(1<<16), "measure" },
-    { "centroid", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 2)}, 0, 0, 8|(1<<16), "measure" },
-    { "spread", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 3) }, 0, 0, 8|(1<<16), "measure" },
-    { "skewness", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 4)}, 0, 0, 8|(1<<16), "measure" },
-    { "kurtosis", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 5)}, 0, 0, 8|(1<<16), "measure" },
-    { "entropy", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 6) }, 0, 0, 8|(1<<16), "measure" },
-    { "flatness", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 7)}, 0, 0, 8|(1<<16), "measure" },
-    { "crest", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 8) }, 0, 0, 8|(1<<16), "measure" },
-    { "flux", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 9) }, 0, 0, 8|(1<<16), "measure" },
-    { "slope", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 10) }, 0, 0, 8|(1<<16), "measure" },
-    { "decrease", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 11)}, 0, 0, 8|(1<<16), "measure" },
-    { "rolloff", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 12) }, 0, 0, 8|(1<<16), "measure" },
+    { "test", "set test to perform", __builtin_offsetof(MPTestContext, test), AV_OPT_TYPE_INT, {.i64=TEST_ALL}, 0, 2147483647, (1<<16)|16, "test" },
+    { "t", "set test to perform", __builtin_offsetof(MPTestContext, test), AV_OPT_TYPE_INT, {.i64=TEST_ALL}, 0, 2147483647, (1<<16)|16, "test" },
+        { "dc_luma", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_DC_LUMA}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "dc_chroma", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_DC_CHROMA}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "freq_luma", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_FREQ_LUMA}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "freq_chroma", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_FREQ_CHROMA}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "amp_luma", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_AMP_LUMA}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "amp_chroma", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_AMP_CHROMA}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "cbp", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_CBP}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "mv", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_MV}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "ring1", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_RING1}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "ring2", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_RING2}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+        { "all", "", 0, AV_OPT_TYPE_CONST, {.i64=TEST_ALL}, (-2147483647 -1), 2147483647, (1<<16)|16, "test" },
+    { "max_frames", "Set the maximum number of frames generated for each test", __builtin_offsetof(MPTestContext, max_frames),
+        AV_OPT_TYPE_INT64, {.i64 = 30}, 1, 9223372036854775807LL, (1<<16)|16 },
+    { "m", "Set the maximum number of frames generated for each test", __builtin_offsetof(MPTestContext, max_frames),
+        AV_OPT_TYPE_INT64, {.i64 = 30}, 1, 9223372036854775807LL, (1<<16)|16 },
     { ((void*)0) }
 };
 
-static const AVClass aspectralstats_class = { .class_name = "aspectralstats", .item_name = av_default_item_name, .option = aspectralstats_options, .version = ((58)<<16 | (36)<<8 | (100)), .category = AV_CLASS_CATEGORY_FILTER, };
+static const AVClass mptestsrc_class = { .class_name = "mptestsrc", .item_name = av_default_item_name, .option = mptestsrc_options, .version = ((58)<<16 | (36)<<8 | (100)), .category = AV_CLASS_CATEGORY_FILTER, };
 
-static int config_output(AVFilterLink *outlink)
+static double c[64];
+
+static void init_idct(void)
 {
-    AudioSpectralStatsContext *s = outlink->src->priv;
-    float overlap, scale = 1.f;
-    int ret;
+    int i, j;
 
-    s->nb_channels = outlink->ch_layout.nb_channels;
-    s->window_func_lut = av_realloc_f(s->window_func_lut, s->win_size,
-                                      sizeof(*s->window_func_lut));
-    if (!s->window_func_lut)
-        return (-(12));
-    generate_window_func(s->window_func_lut, s->win_size, s->win_func, &overlap);
-    if (s->overlap == 1.f)
-        s->overlap = overlap;
+    for (i = 0; i < 8; i++) {
+        double s = i == 0 ? sqrt(0.125) : 0.5;
 
-    s->hop_size = s->win_size * (1.f - s->overlap);
-    if (s->hop_size <= 0)
-        return (-(22));
+        for (j = 0; j < 8; j++)
+            c[i*8+j] = s*cos((3.14159265358979323846264338327950288/8.0)*i*(j+0.5));
+    }
+}
 
-    s->stats = av_calloc(s->nb_channels, sizeof(*s->stats));
-    if (!s->stats)
-        return (-(12));
+static void idct(uint8_t *dst, int dst_linesize, int src[64])
+{
+    int i, j, k;
+    double tmp[64];
 
-    s->fft = av_calloc(s->nb_channels, sizeof(*s->fft));
-    if (!s->fft)
-        return (-(12));
+    for (i = 0; i < 8; i++) {
+        for (j = 0; j < 8; j++) {
+            double sum = 0.0;
 
-    s->magnitude = av_calloc(s->nb_channels, sizeof(*s->magnitude));
-    if (!s->magnitude)
-        return (-(12));
+            for (k = 0; k < 8; k++)
+                sum += c[k*8+j] * src[8*i+k];
 
-    s->prev_magnitude = av_calloc(s->nb_channels, sizeof(*s->prev_magnitude));
-    if (!s->prev_magnitude)
-        return (-(12));
-
-    s->fft_in = av_calloc(s->nb_channels, sizeof(*s->fft_in));
-    if (!s->fft_in)
-        return (-(12));
-
-    s->fft_out = av_calloc(s->nb_channels, sizeof(*s->fft_out));
-    if (!s->fft_out)
-        return (-(12));
-
-    for (int ch = 0; ch < s->nb_channels; ch++) {
-        ret = av_tx_init(&s->fft[ch], &s->tx_fn, AV_TX_FLOAT_FFT, 0, s->win_size, &scale, 0);
-        if (ret < 0)
-            return ret;
-
-        s->fft_in[ch] = av_calloc(s->win_size, sizeof(**s->fft_in));
-        if (!s->fft_in[ch])
-            return (-(12));
-
-        s->fft_out[ch] = av_calloc(s->win_size, sizeof(**s->fft_out));
-        if (!s->fft_out[ch])
-            return (-(12));
-
-        s->magnitude[ch] = av_calloc(s->win_size, sizeof(**s->magnitude));
-        if (!s->magnitude[ch])
-            return (-(12));
-
-        s->prev_magnitude[ch] = av_calloc(s->win_size, sizeof(**s->prev_magnitude));
-        if (!s->prev_magnitude[ch])
-            return (-(12));
+            tmp[8*i+j] = sum;
+        }
     }
 
-    s->window = ff_get_audio_buffer(outlink, s->win_size);
-    if (!s->window)
-        return (-(12));
+    for (j = 0; j < 8; j++) {
+        for (i = 0; i < 8; i++) {
+            double sum = 0.0;
+
+            for (k = 0; k < 8; k++)
+                sum += c[k*8+i]*tmp[8*k+j];
+
+            dst[dst_linesize*i + j] = av_clip_uint8_c(lrint(sum));
+        }
+    }
+}
+
+static void draw_dc(uint8_t *dst, int dst_linesize, int color, int w, int h)
+{
+    int x, y;
+
+    for (y = 0; y < h; y++)
+        for (x = 0; x < w; x++)
+            dst[x + y*dst_linesize] = color;
+}
+
+static void draw_basis(uint8_t *dst, int dst_linesize, int amp, int freq, int dc)
+{
+    int src[64];
+
+    __builtin___memset_chk (src, 0, 64*sizeof(int), __builtin_object_size (src, 0));
+    src[0] = dc;
+    if (amp)
+        src[freq] = amp;
+    idct(dst, dst_linesize, src);
+}
+
+static void draw_cbp(uint8_t *dst[3], int dst_linesize[3], int cbp, int amp, int dc)
+{
+    if (cbp&1) draw_basis(dst[0] , dst_linesize[0], amp, 1, dc);
+    if (cbp&2) draw_basis(dst[0]+8 , dst_linesize[0], amp, 1, dc);
+    if (cbp&4) draw_basis(dst[0]+ 8*dst_linesize[0], dst_linesize[0], amp, 1, dc);
+    if (cbp&8) draw_basis(dst[0]+8+8*dst_linesize[0], dst_linesize[0], amp, 1, dc);
+    if (cbp&16) draw_basis(dst[1] , dst_linesize[1], amp, 1, dc);
+    if (cbp&32) draw_basis(dst[2] , dst_linesize[2], amp, 1, dc);
+}
+
+static void dc_test(uint8_t *dst, int dst_linesize, int w, int h, int off)
+{
+    const int step = ((256/(w*h/256)) > (1) ? (256/(w*h/256)) : (1));
+    int x, y, color = off;
+
+    for (y = 0; y < h; y += 16) {
+        for (x = 0; x < w; x += 16) {
+            draw_dc(dst + x + y*dst_linesize, dst_linesize, color, 8, 8);
+            color += step;
+        }
+    }
+}
+
+static void freq_test(uint8_t *dst, int dst_linesize, int off)
+{
+    int x, y, freq = 0;
+
+    for (y = 0; y < 8*16; y += 16) {
+        for (x = 0; x < 8*16; x += 16) {
+            draw_basis(dst + x + y*dst_linesize, dst_linesize, 4*(96+off), freq, 128*8);
+            freq++;
+        }
+    }
+}
+
+static void amp_test(uint8_t *dst, int dst_linesize, int off)
+{
+    int x, y, amp = off;
+
+    for (y = 0; y < 16*16; y += 16) {
+        for (x = 0; x < 16*16; x += 16) {
+            draw_basis(dst + x + y*dst_linesize, dst_linesize, 4*amp, 1, 128*8);
+            amp++;
+        }
+    }
+}
+
+static void cbp_test(uint8_t *dst[3], int dst_linesize[3], int off)
+{
+    int x, y, cbp = 0;
+
+    for (y = 0; y < 16*8; y += 16) {
+        for (x = 0; x < 16*8; x += 16) {
+            uint8_t *dst1[3];
+            dst1[0] = dst[0] + x*2 + y*2*dst_linesize[0];
+            dst1[1] = dst[1] + x + y* dst_linesize[1];
+            dst1[2] = dst[2] + x + y* dst_linesize[2];
+
+            draw_cbp(dst1, dst_linesize, cbp, (64+off)*4, 128*8);
+            cbp++;
+        }
+    }
+}
+
+static void mv_test(uint8_t *dst, int dst_linesize, int off)
+{
+    int x, y;
+
+    for (y = 0; y < 16*16; y++) {
+        if (y&16)
+            continue;
+        for (x = 0; x < 16*16; x++)
+            dst[x + y*dst_linesize] = x + off*8/(y/32+1);
+    }
+}
+
+static void ring1_test(uint8_t *dst, int dst_linesize, int off)
+{
+    int x, y, color = 0;
+
+    for (y = off; y < 16*16; y += 16) {
+        for (x = off; x < 16*16; x += 16) {
+            draw_dc(dst + x + y*dst_linesize, dst_linesize, ((x+y)&16) ? color : -color, 16, 16);
+            color++;
+        }
+    }
+}
+
+static void ring2_test(uint8_t *dst, int dst_linesize, int off)
+{
+    int x, y;
+
+    for (y = 0; y < 16*16; y++) {
+        for (x = 0; x < 16*16; x++) {
+            double d = hypot(x-8*16, y-8*16);
+            double r = d/20 - (int)(d/20);
+            if (r < off/30.0) {
+                dst[x + y*dst_linesize] = 255;
+                dst[x + y*dst_linesize+256] = 0;
+            } else {
+                dst[x + y*dst_linesize] = x;
+                dst[x + y*dst_linesize+256] = x;
+            }
+        }
+    }
+}
+
+static __attribute__((cold)) int init(AVFilterContext *ctx)
+{
+    MPTestContext *test = ctx->priv;
+
+    test->max_pts = test->duration >= 0 ?
+        av_rescale_q(test->duration, (AVRational){1, 1000000}, av_inv_q(test->frame_rate)) : -1;
+    test->pts = 0;
+
+    av_log(ctx, 40, "rate:%d/%d duration:%f\n",
+           test->frame_rate.num, test->frame_rate.den,
+           test->duration < 0 ? -1 : test->max_pts * av_q2d(av_inv_q(test->frame_rate)));
+    init_idct();
 
     return 0;
 }
 
-static void set_meta(AVDictionary **metadata, int chan, const char *key,
-                     const char *fmt, float val)
+static int config_props(AVFilterLink *outlink)
 {
-    uint8_t value[128];
-    uint8_t key2[128];
+    AVFilterContext *ctx = outlink->src;
+    MPTestContext *test = ctx->priv;
+    const AVPixFmtDescriptor *pix_desc = av_pix_fmt_desc_get(outlink->format);
 
-    __builtin___snprintf_chk (value, sizeof(value), 0, __builtin_object_size (value, 2 > 1 ? 1 : 0), fmt, val);
-    if (chan)
-        __builtin___snprintf_chk (key2, sizeof(key2), 0, __builtin_object_size (key2, 2 > 1 ? 1 : 0), "lavfi.aspectralstats.%d.%s", chan, key);
-    else
-        __builtin___snprintf_chk (key2, sizeof(key2), 0, __builtin_object_size (key2, 2 > 1 ? 1 : 0), "lavfi.aspectralstats.%s", key);
-    av_dict_set(metadata, key2, value, 0);
-}
+    test->hsub = pix_desc->log2_chroma_w;
+    test->vsub = pix_desc->log2_chroma_h;
 
-static void set_metadata(AudioSpectralStatsContext *s, AVDictionary **metadata)
-{
-    for (int ch = 0; ch < s->nb_channels; ch++) {
-        ChannelSpectralStats *stats = &s->stats[ch];
-
-        if (s->measure & (1 << 0))
-            set_meta(metadata, ch + 1, "mean", "%g", stats->mean);
-        if (s->measure & (1 << 1))
-            set_meta(metadata, ch + 1, "variance", "%g", stats->variance);
-        if (s->measure & (1 << 2))
-            set_meta(metadata, ch + 1, "centroid", "%g", stats->centroid);
-        if (s->measure & (1 << 3))
-            set_meta(metadata, ch + 1, "spread", "%g", stats->spread);
-        if (s->measure & (1 << 4))
-            set_meta(metadata, ch + 1, "skewness", "%g", stats->skewness);
-        if (s->measure & (1 << 5))
-            set_meta(metadata, ch + 1, "kurtosis", "%g", stats->kurtosis);
-        if (s->measure & (1 << 6))
-            set_meta(metadata, ch + 1, "entropy", "%g", stats->entropy);
-        if (s->measure & (1 << 7))
-            set_meta(metadata, ch + 1, "flatness", "%g", stats->flatness);
-        if (s->measure & (1 << 8))
-            set_meta(metadata, ch + 1, "crest", "%g", stats->crest);
-        if (s->measure & (1 << 9))
-            set_meta(metadata, ch + 1, "flux", "%g", stats->flux);
-        if (s->measure & (1 << 10))
-            set_meta(metadata, ch + 1, "slope", "%g", stats->slope);
-        if (s->measure & (1 << 11))
-            set_meta(metadata, ch + 1, "decrease", "%g", stats->decrease);
-        if (s->measure & (1 << 12))
-            set_meta(metadata, ch + 1, "rolloff", "%g", stats->rolloff);
-    }
-}
-
-static float spectral_mean(const float *const spectral, int size, int max_freq)
-{
-    float sum = 0.f;
-
-    for (int n = 0; n < size; n++)
-        sum += spectral[n];
-
-    return sum / size;
-}
-
-static float sqrf(float a)
-{
-    return a * a;
-}
-
-static float spectral_variance(const float *const spectral, int size, int max_freq, float mean)
-{
-    float sum = 0.f;
-
-    for (int n = 0; n < size; n++)
-        sum += sqrf(spectral[n] - mean);
-
-    return sum / size;
-}
-
-static float spectral_centroid(const float *const spectral, int size, int max_freq)
-{
-    const float scale = max_freq / (float)size;
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * n * scale;
-        den += spectral[n];
-    }
-
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return num / den;
-}
-
-static float spectral_spread(const float *const spectral, int size, int max_freq, float centroid)
-{
-    const float scale = max_freq / (float)size;
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * sqrf(n * scale - centroid);
-        den += spectral[n];
-    }
-
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return sqrtf(num / den);
-}
-
-static float cbrf(float a)
-{
-    return a * a * a;
-}
-
-static float spectral_skewness(const float *const spectral, int size, int max_freq, float centroid, float spread)
-{
-    const float scale = max_freq / (float)size;
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * cbrf(n * scale - centroid);
-        den += spectral[n];
-    }
-
-    den *= cbrf(spread);
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return num / den;
-}
-
-static float spectral_kurtosis(const float *const spectral, int size, int max_freq, float centroid, float spread)
-{
-    const float scale = max_freq / (float)size;
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * sqrf(sqrf(n * scale - centroid));
-        den += spectral[n];
-    }
-
-    den *= sqrf(sqrf(spread));
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return num / den;
-}
-
-static float spectral_entropy(const float *const spectral, int size, int max_freq)
-{
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * logf(spectral[n] + 1.19209290e-7F);
-    }
-
-    den = logf(size);
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return -num / den;
-}
-
-static float spectral_flatness(const float *const spectral, int size, int max_freq)
-{
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        float v = 1.19209290e-7F + spectral[n];
-        num += logf(v);
-        den += v;
-    }
-
-    num /= size;
-    den /= size;
-    num = expf(num);
-    if (den <= 1.19209290e-7F)
-        return 0.f;
-    return num / den;
-}
-
-static float spectral_crest(const float *const spectral, int size, int max_freq)
-{
-    float max = 0.f, mean = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        max = fmaxf(max, spectral[n]);
-        mean += spectral[n];
-    }
-
-    mean /= size;
-    if (mean <= 1.19209290e-7F)
-        return 0.f;
-    return max / mean;
-}
-
-static float spectral_flux(const float *const spectral, const float *const prev_spectral,
-                           int size, int max_freq)
-{
-    float sum = 0.f;
-
-    for (int n = 0; n < size; n++)
-        sum += sqrf(spectral[n] - prev_spectral[n]);
-
-    return sqrtf(sum);
-}
-
-static float spectral_slope(const float *const spectral, int size, int max_freq)
-{
-    const float mean_freq = size * 0.5f;
-    float mean_spectral = 0.f, num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++)
-        mean_spectral += spectral[n];
-    mean_spectral /= size;
-
-    for (int n = 0; n < size; n++) {
-        num += ((n - mean_freq) / mean_freq) * (spectral[n] - mean_spectral);
-        den += sqrf((n - mean_freq) / mean_freq);
-    }
-
-    if (fabsf(den) <= 1.19209290e-7F)
-        return 0.f;
-    return num / den;
-}
-
-static float spectral_decrease(const float *const spectral, int size, int max_freq)
-{
-    float num = 0.f, den = 0.f;
-
-    for (int n = 1; n < size; n++) {
-        num += (spectral[n] - spectral[0]) / n;
-        den += spectral[n];
-    }
-
-    if (den <= 1.19209290e-7F)
-        return 0.f;
-    return num / den;
-}
-
-static float spectral_rolloff(const float *const spectral, int size, int max_freq)
-{
-    const float scale = max_freq / (float)size;
-    float norm = 0.f, sum = 0.f;
-    int idx = 0.f;
-
-    for (int n = 0; n < size; n++)
-        norm += spectral[n];
-    norm *= 0.85f;
-
-    for (int n = 0; n < size; n++) {
-        sum += spectral[n];
-        if (sum >= norm) {
-            idx = n;
-            break;
-        }
-    }
-
-    return idx * scale;
-}
-
-static int filter_channel(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
-{
-    AudioSpectralStatsContext *s = ctx->priv;
-    const float *window_func_lut = s->window_func_lut;
-    AVFrame *in = arg;
-    const int channels = s->nb_channels;
-    const int start = (channels * jobnr) / nb_jobs;
-    const int end = (channels * (jobnr+1)) / nb_jobs;
-    const int offset = s->win_size - s->hop_size;
-
-    for (int ch = start; ch < end; ch++) {
-        float *window = (float *)s->window->extended_data[ch];
-        ChannelSpectralStats *stats = &s->stats[ch];
-        AVComplexFloat *fft_out = s->fft_out[ch];
-        AVComplexFloat *fft_in = s->fft_in[ch];
-        float *magnitude = s->magnitude[ch];
-        float *prev_magnitude = s->prev_magnitude[ch];
-        const float scale = 1.f / s->win_size;
-
-        __builtin___memmove_chk (window, &window[s->hop_size], offset * sizeof(float), __builtin_object_size (window, 0));
-        __builtin___memcpy_chk (&window[offset], in->extended_data[ch], in->nb_samples * sizeof(float), __builtin_object_size (&window[offset], 0));
-        __builtin___memset_chk (&window[offset + in->nb_samples], 0, (s->hop_size - in->nb_samples) * sizeof(float), __builtin_object_size (&window[offset + in->nb_samples], 0));
-
-        for (int n = 0; n < s->win_size; n++) {
-            fft_in[n].re = window[n] * window_func_lut[n];
-            fft_in[n].im = 0;
-        }
-
-        s->tx_fn(s->fft[ch], fft_out, fft_in, sizeof(*fft_in));
-
-        for (int n = 0; n < s->win_size / 2; n++) {
-            fft_out[n].re *= scale;
-            fft_out[n].im *= scale;
-        }
-
-        for (int n = 0; n < s->win_size / 2; n++)
-            magnitude[n] = hypotf(fft_out[n].re, fft_out[n].im);
-
-        if (s->measure & ((1 << 0) | (1 << 1)))
-            stats->mean = spectral_mean(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 1))
-            stats->variance = spectral_variance(magnitude, s->win_size / 2, in->sample_rate / 2, stats->mean);
-        if (s->measure & ((1 << 3) | (1 << 5) | (1 << 4) | (1 << 2)))
-            stats->centroid = spectral_centroid(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & ((1 << 3) | (1 << 5) | (1 << 4)))
-            stats->spread = spectral_spread(magnitude, s->win_size / 2, in->sample_rate / 2, stats->centroid);
-        if (s->measure & (1 << 4))
-            stats->skewness = spectral_skewness(magnitude, s->win_size / 2, in->sample_rate / 2, stats->centroid, stats->spread);
-        if (s->measure & (1 << 5))
-            stats->kurtosis = spectral_kurtosis(magnitude, s->win_size / 2, in->sample_rate / 2, stats->centroid, stats->spread);
-        if (s->measure & (1 << 6))
-            stats->entropy = spectral_entropy(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 7))
-            stats->flatness = spectral_flatness(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 8))
-            stats->crest = spectral_crest(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 9))
-            stats->flux = spectral_flux(magnitude, prev_magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 10))
-            stats->slope = spectral_slope(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 11))
-            stats->decrease = spectral_decrease(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 12))
-            stats->rolloff = spectral_rolloff(magnitude, s->win_size / 2, in->sample_rate / 2);
-
-        __builtin___memcpy_chk (prev_magnitude, magnitude, s->win_size * sizeof(float), __builtin_object_size (prev_magnitude, 0));
-    }
+    outlink->w = 512;
+    outlink->h = 512;
+    outlink->time_base = av_inv_q(test->frame_rate);
+    outlink->frame_rate = test->frame_rate;
 
     return 0;
 }
 
-static int filter_frame(AVFilterLink *inlink, AVFrame *in)
+static int request_frame(AVFilterLink *outlink)
 {
-    AVFilterContext *ctx = inlink->dst;
-    AVFilterLink *outlink = ctx->outputs[0];
-    AudioSpectralStatsContext *s = ctx->priv;
-    AVDictionary **metadata;
-    AVFrame *out;
-    int ret;
+    MPTestContext *test = outlink->src->priv;
+    AVFrame *picref;
+    int w = 512, h = 512,
+        cw = (!__builtin_constant_p(test->hsub) ? -((-(w)) >> (test->hsub)) : ((w) + (1<<(test->hsub)) - 1) >> (test->hsub)), ch = (!__builtin_constant_p(test->vsub) ? -((-(h)) >> (test->vsub)) : ((h) + (1<<(test->vsub)) - 1) >> (test->vsub));
+    uint64_t frame = outlink->frame_count_in / test->max_frames;
+    uint64_t mod = outlink->frame_count_in % test->max_frames;
+    enum test_type tt = test->test;
+    int i;
 
-    if (av_frame_is_writable(in)) {
-        out = in;
-    } else {
-        out = ff_get_audio_buffer(outlink, in->nb_samples);
-        if (!out) {
-            av_frame_free(&in);
-            return (-(12));
-        }
-        ret = av_frame_copy_props(out, in);
-        if (ret < 0)
-            goto fail;
-        ret = av_frame_copy(out, in);
-        if (ret < 0)
-            goto fail;
+    if (test->max_pts >= 0 && test->pts > test->max_pts)
+        return (-(int)(('E') | (('O') << 8) | (('F') << 16) | ((unsigned)(' ') << 24)));
+    picref = ff_get_video_buffer(outlink, w, h);
+    if (!picref)
+        return (-(12));
+    picref->pts = test->pts++;
+    picref->duration = 1;
+
+
+    for (i = 0; i < h; i++)
+        __builtin___memset_chk (picref->data[0] + i*picref->linesize[0], 0, w, __builtin_object_size (picref->data[0] + i*picref->linesize[0], 0));
+    for (i = 0; i < ch; i++) {
+        __builtin___memset_chk (picref->data[1] + i*picref->linesize[1], 128, cw, __builtin_object_size (picref->data[1] + i*picref->linesize[1], 0));
+        __builtin___memset_chk (picref->data[2] + i*picref->linesize[2], 128, cw, __builtin_object_size (picref->data[2] + i*picref->linesize[2], 0));
     }
 
-    metadata = &out->metadata;
-    ff_filter_execute(ctx, filter_channel, in, ((void*)0),
-                      ((inlink->ch_layout.nb_channels) > (ff_filter_get_nb_threads(ctx)) ? (ff_filter_get_nb_threads(ctx)) : (inlink->ch_layout.nb_channels)));
+    if (tt == TEST_ALL && mod)
+        tt = frame%(TEST_NB-1);
 
-    set_metadata(s, metadata);
-
-    if (out != in)
-        av_frame_free(&in);
-    return ff_filter_frame(outlink, out);
-fail:
-    av_frame_free(&in);
-    av_frame_free(&out);
-    return ret;
-}
-
-static int activate(AVFilterContext *ctx)
-{
-    AudioSpectralStatsContext *s = ctx->priv;
-    AVFilterLink *outlink = ctx->outputs[0];
-    AVFilterLink *inlink = ctx->inputs[0];
-    AVFrame *in;
-    int ret;
-
-    do { int ret = ff_outlink_get_status(outlink); if (ret) { ff_inlink_set_status(inlink, ret); return 0; } } while (0);
-
-    ret = ff_inlink_consume_samples(inlink, s->hop_size, s->hop_size, &in);
-    if (ret < 0)
-        return ret;
-    if (ret > 0)
-        ret = filter_frame(inlink, in);
-    if (ret < 0)
-        return ret;
-
-    if (ff_inlink_queued_samples(inlink) >= s->hop_size) {
-        ff_filter_set_ready(ctx, 10);
-        return 0;
+    switch (tt) {
+    case TEST_DC_LUMA: dc_test(picref->data[0], picref->linesize[0], 256, 256, mod); break;
+    case TEST_DC_CHROMA: dc_test(picref->data[1], picref->linesize[1], 256, 256, mod); break;
+    case TEST_FREQ_LUMA: freq_test(picref->data[0], picref->linesize[0], mod); break;
+    case TEST_FREQ_CHROMA: freq_test(picref->data[1], picref->linesize[1], mod); break;
+    case TEST_AMP_LUMA: amp_test(picref->data[0], picref->linesize[0], mod); break;
+    case TEST_AMP_CHROMA: amp_test(picref->data[1], picref->linesize[1], mod); break;
+    case TEST_CBP: cbp_test(picref->data , picref->linesize , mod); break;
+    case TEST_MV: mv_test(picref->data[0], picref->linesize[0], mod); break;
+    case TEST_RING1: ring1_test(picref->data[0], picref->linesize[0], mod); break;
+    case TEST_RING2: ring2_test(picref->data[0], picref->linesize[0], mod); break;
     }
 
-    do { int status; int64_t pts; if (ff_inlink_acknowledge_status(inlink, &status, &pts)) { ff_outlink_set_status(outlink, status, pts); return 0; } } while (0);
-    do { if (ff_outlink_frame_wanted(outlink)) { ff_inlink_request_frame(inlink); return 0; } } while (0);
-
-    return (-(int)(('N') | (('R') << 8) | (('D') << 16) | ((unsigned)('Y') << 24)));
+    return ff_filter_frame(outlink, picref);
 }
 
-static __attribute__((cold)) void uninit(AVFilterContext *ctx)
-{
-    AudioSpectralStatsContext *s = ctx->priv;
-
-    for (int ch = 0; ch < s->nb_channels; ch++) {
-        if (s->fft)
-            av_tx_uninit(&s->fft[ch]);
-        if (s->fft_in)
-            av_freep(&s->fft_in[ch]);
-        if (s->fft_out)
-            av_freep(&s->fft_out[ch]);
-        if (s->magnitude)
-            av_freep(&s->magnitude[ch]);
-        if (s->prev_magnitude)
-            av_freep(&s->prev_magnitude[ch]);
-    }
-
-    av_freep(&s->fft);
-    av_freep(&s->magnitude);
-    av_freep(&s->prev_magnitude);
-    av_freep(&s->fft_in);
-    av_freep(&s->fft_out);
-    av_freep(&s->stats);
-
-    av_freep(&s->window_func_lut);
-    av_frame_free(&s->window);
-}
-
-static const AVFilterPad aspectralstats_outputs[] = {
+static const AVFilterPad mptestsrc_outputs[] = {
     {
         .name = "default",
-        .type = AVMEDIA_TYPE_AUDIO,
-        .config_props = config_output,
+        .type = AVMEDIA_TYPE_VIDEO,
+        .request_frame = request_frame,
+        .config_props = config_props,
     },
 };
 
-const AVFilter ff_af_aspectralstats = {
-    .name = "aspectralstats",
-    .description = "Show frequency domain statistics about audio frames.",
-    .priv_size = sizeof(AudioSpectralStatsContext),
-    .priv_class = &aspectralstats_class,
-    .uninit = uninit,
-    .activate = activate,
-    .inputs = (ff_audio_default_filterpad), .nb_inputs = (sizeof((ff_audio_default_filterpad)) / sizeof(((ff_audio_default_filterpad))[0])),
-    .outputs = (aspectralstats_outputs), .nb_outputs = (sizeof((aspectralstats_outputs)) / sizeof(((aspectralstats_outputs))[0])),
-    .formats.sample_fmt = AV_SAMPLE_FMT_FLTP, .formats_state = FF_FILTER_FORMATS_SINGLE_SAMPLEFMT,
-    .flags = (1 << 2),
+const AVFilter ff_vsrc_mptestsrc = {
+    .name = "mptestsrc",
+    .description = "Generate various test pattern.",
+    .priv_size = sizeof(MPTestContext),
+    .priv_class = &mptestsrc_class,
+    .init = init,
+    .inputs = ((void*)0),
+    .outputs = (mptestsrc_outputs), .nb_outputs = (sizeof((mptestsrc_outputs)) / sizeof(((mptestsrc_outputs))[0])),
+    .formats.pix_fmt = AV_PIX_FMT_YUV420P, .formats_state = FF_FILTER_FORMATS_SINGLE_PIXFMT,
 };

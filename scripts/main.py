@@ -108,10 +108,14 @@ def parse_filters(root: pathlib.Path, allfilter_c: pathlib.Path) -> None:
     total = 0
     parsed_filters: list[AVFilter] = []
     for path in root.glob("*.c"):
-        filters = parse_c(path)
+        try:
+            filters = parse_c(path)
+        except Exception as e:
+            sprint(f"ERROR: {path} {e}", sprint.red)
+            continue
 
         if len(filters) == 0:
-            sprint(f"Processing {path}... {len(filters)} filters", sprint.red)
+            sprint(f"Processing {path}... {len(filters)} filters", sprint.cyan)
         else:
             sprint(f"Processing {path}... {len(filters)} filters " + ",".join(k.name for k in filters), sprint.green)
             total += len(filters)
@@ -122,6 +126,10 @@ def parse_filters(root: pathlib.Path, allfilter_c: pathlib.Path) -> None:
 
     print(f"not exists filters {parsed_filter_names - all_filter_names}")
     print(f"not found filters {all_filter_names - parsed_filter_names}")
+
+    for f in parsed_filters:
+        if len(f.options) == 0:
+            print(f"WARNING: {f.name} has no options")
 
 
 if __name__ == "__main__":

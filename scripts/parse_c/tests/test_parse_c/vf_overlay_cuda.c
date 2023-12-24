@@ -1,18 +1,216 @@
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c"
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 418 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 21 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/float.h" 1 3
-# 32 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/float.h" 3
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/float.h" 1 3 4
-# 33 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/float.h" 2 3
-# 22 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 1 3 4
-# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c"
+# 1 "./libavutil/log.h" 1
+# 24 "./libavutil/log.h"
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 1 3
+# 14 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 3
+typedef __builtin_va_list va_list;
+# 34 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 3
+typedef __builtin_va_list __gnuc_va_list;
+# 25 "./libavutil/log.h" 2
+# 1 "./libavutil/attributes.h" 1
+# 26 "./libavutil/log.h" 2
+# 1 "./libavutil/version.h" 1
+# 30 "./libavutil/version.h"
+# 1 "./libavutil/macros.h" 1
+# 28 "./libavutil/macros.h"
+# 1 "./libavutil/avconfig.h" 1
+# 29 "./libavutil/macros.h" 2
+# 31 "./libavutil/version.h" 2
+# 27 "./libavutil/log.h" 2
+
+typedef enum {
+    AV_CLASS_CATEGORY_NA = 0,
+    AV_CLASS_CATEGORY_INPUT,
+    AV_CLASS_CATEGORY_OUTPUT,
+    AV_CLASS_CATEGORY_MUXER,
+    AV_CLASS_CATEGORY_DEMUXER,
+    AV_CLASS_CATEGORY_ENCODER,
+    AV_CLASS_CATEGORY_DECODER,
+    AV_CLASS_CATEGORY_FILTER,
+    AV_CLASS_CATEGORY_BITSTREAM_FILTER,
+    AV_CLASS_CATEGORY_SWSCALER,
+    AV_CLASS_CATEGORY_SWRESAMPLER,
+    AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT = 40,
+    AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT,
+    AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT,
+    AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT,
+    AV_CLASS_CATEGORY_DEVICE_OUTPUT,
+    AV_CLASS_CATEGORY_DEVICE_INPUT,
+    AV_CLASS_CATEGORY_NB
+}AVClassCategory;
+# 59 "./libavutil/log.h"
+struct AVOptionRanges;
+
+
+
+
+
+
+typedef struct AVClass {
+
+
+
+
+    const char* class_name;
+
+
+
+
+
+    const char* (*item_name)(void* ctx);
+
+
+
+
+
+
+    const struct AVOption *option;
+
+
+
+
+
+
+
+    int version;
+
+
+
+
+
+    int log_level_offset_offset;
+# 107 "./libavutil/log.h"
+    int parent_log_context_offset;
+
+
+
+
+
+
+    AVClassCategory category;
+
+
+
+
+
+    AVClassCategory (*get_category)(void* ctx);
+
+
+
+
+
+    int (*query_ranges)(struct AVOptionRanges **, void *obj, const char *key, int flags);
+
+
+
+
+    void* (*child_next)(void *obj, void *prev);
+# 146 "./libavutil/log.h"
+    const struct AVClass* (*child_class_iterate)(void **iter);
+} AVClass;
+# 238 "./libavutil/log.h"
+void av_log(void *avcl, int level, const char *fmt, ...) __attribute__((__format__(__printf__, 3, 4)));
+# 259 "./libavutil/log.h"
+void av_log_once(void* avcl, int initial_level, int subsequent_level, int *state, const char *fmt, ...) __attribute__((__format__(__printf__, 5, 6)));
+# 277 "./libavutil/log.h"
+void av_vlog(void *avcl, int level, const char *fmt, va_list vl);
+# 286 "./libavutil/log.h"
+int av_log_get_level(void);
+# 295 "./libavutil/log.h"
+void av_log_set_level(int level);
+# 307 "./libavutil/log.h"
+void av_log_set_callback(void (*callback)(void*, int, const char*, va_list));
+# 322 "./libavutil/log.h"
+void av_log_default_callback(void *avcl, int level, const char *fmt,
+                             va_list vl);
+# 332 "./libavutil/log.h"
+const char* av_default_item_name(void* ctx);
+AVClassCategory av_default_get_category(void *ptr);
+# 342 "./libavutil/log.h"
+void av_log_format_line(void *ptr, int level, const char *fmt, va_list vl,
+                        char *line, int line_size, int *print_prefix);
+# 359 "./libavutil/log.h"
+int av_log_format_line2(void *ptr, int level, const char *fmt, va_list vl,
+                        char *line, int line_size, int *print_prefix);
+# 380 "./libavutil/log.h"
+void av_log_set_flags(int arg);
+int av_log_get_flags(void);
+# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 1 "./libavutil/opt.h" 1
+# 30 "./libavutil/opt.h"
+# 1 "./libavutil/rational.h" 1
+# 32 "./libavutil/rational.h"
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 1 3
+# 52 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 3
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 1 3 4
+# 18 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h" 3 4
+typedef signed char int8_t;
+# 19 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h" 3 4
+typedef short int16_t;
+# 20 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h" 3 4
+typedef int int32_t;
+# 21 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h" 3 4
+typedef long long int64_t;
+# 22 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint8_t.h" 1 3 4
+# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint8_t.h" 3 4
+typedef unsigned char uint8_t;
+# 24 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint16_t.h" 1 3 4
+# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint16_t.h" 3 4
+typedef unsigned short uint16_t;
+# 25 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint32_t.h" 1 3 4
+# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint32_t.h" 3 4
+typedef unsigned int uint32_t;
+# 26 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h" 1 3 4
+# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h" 3 4
+typedef unsigned long long uint64_t;
+# 27 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+typedef int32_t int_least32_t;
+typedef int64_t int_least64_t;
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+typedef uint32_t uint_least32_t;
+typedef uint64_t uint_least64_t;
+
+
+
+typedef int8_t int_fast8_t;
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef int64_t int_fast64_t;
+typedef uint8_t uint_fast8_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+typedef uint64_t uint_fast64_t;
+
+
+
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 1 3 4
+# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 1 3 4
 # 678 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h" 1 3 4
@@ -20,7 +218,418 @@
 # 744 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h" 1 3 4
 # 745 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h" 2 3 4
-# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 2 3 4
+# 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h" 1 3 4
+# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_types.h" 1 3 4
+# 15 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_types.h" 3 4
+typedef signed char __int8_t;
+
+
+
+typedef unsigned char __uint8_t;
+typedef short __int16_t;
+typedef unsigned short __uint16_t;
+typedef int __int32_t;
+typedef unsigned int __uint32_t;
+typedef long long __int64_t;
+typedef unsigned long long __uint64_t;
+
+typedef long __darwin_intptr_t;
+typedef unsigned int __darwin_natural_t;
+# 48 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_types.h" 3 4
+typedef int __darwin_ct_rune_t;
+
+
+
+
+
+typedef union {
+ char __mbstate8[128];
+ long long _mbstateL;
+} __mbstate_t;
+
+typedef __mbstate_t __darwin_mbstate_t;
+
+
+typedef long int __darwin_ptrdiff_t;
+
+
+
+
+
+
+
+typedef long unsigned int __darwin_size_t;
+
+
+
+
+
+typedef __builtin_va_list __darwin_va_list;
+
+
+
+
+
+typedef int __darwin_wchar_t;
+
+
+
+
+typedef __darwin_wchar_t __darwin_rune_t;
+
+
+typedef int __darwin_wint_t;
+
+
+
+
+typedef unsigned long __darwin_clock_t;
+typedef __uint32_t __darwin_socklen_t;
+typedef long __darwin_ssize_t;
+typedef long __darwin_time_t;
+# 35 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h" 2 3 4
+# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 2 3 4
+# 55 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 3 4
+typedef __int64_t __darwin_blkcnt_t;
+typedef __int32_t __darwin_blksize_t;
+typedef __int32_t __darwin_dev_t;
+typedef unsigned int __darwin_fsblkcnt_t;
+typedef unsigned int __darwin_fsfilcnt_t;
+typedef __uint32_t __darwin_gid_t;
+typedef __uint32_t __darwin_id_t;
+typedef __uint64_t __darwin_ino64_t;
+
+typedef __darwin_ino64_t __darwin_ino_t;
+
+
+
+typedef __darwin_natural_t __darwin_mach_port_name_t;
+typedef __darwin_mach_port_name_t __darwin_mach_port_t;
+typedef __uint16_t __darwin_mode_t;
+typedef __int64_t __darwin_off_t;
+typedef __int32_t __darwin_pid_t;
+typedef __uint32_t __darwin_sigset_t;
+typedef __int32_t __darwin_suseconds_t;
+typedef __uint32_t __darwin_uid_t;
+typedef __uint32_t __darwin_useconds_t;
+typedef unsigned char __darwin_uuid_t[16];
+typedef char __darwin_uuid_string_t[37];
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_types.h" 1 3 4
+# 57 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_types.h" 3 4
+struct __darwin_pthread_handler_rec {
+ void (*__routine)(void *);
+ void *__arg;
+ struct __darwin_pthread_handler_rec *__next;
+};
+
+struct _opaque_pthread_attr_t {
+ long __sig;
+ char __opaque[56];
+};
+
+struct _opaque_pthread_cond_t {
+ long __sig;
+ char __opaque[40];
+};
+
+struct _opaque_pthread_condattr_t {
+ long __sig;
+ char __opaque[8];
+};
+
+struct _opaque_pthread_mutex_t {
+ long __sig;
+ char __opaque[56];
+};
+
+struct _opaque_pthread_mutexattr_t {
+ long __sig;
+ char __opaque[8];
+};
+
+struct _opaque_pthread_once_t {
+ long __sig;
+ char __opaque[8];
+};
+
+struct _opaque_pthread_rwlock_t {
+ long __sig;
+ char __opaque[192];
+};
+
+struct _opaque_pthread_rwlockattr_t {
+ long __sig;
+ char __opaque[16];
+};
+
+struct _opaque_pthread_t {
+ long __sig;
+ struct __darwin_pthread_handler_rec *__cleanup_stack;
+ char __opaque[8176];
+};
+
+typedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;
+typedef struct _opaque_pthread_cond_t __darwin_pthread_cond_t;
+typedef struct _opaque_pthread_condattr_t __darwin_pthread_condattr_t;
+typedef unsigned long __darwin_pthread_key_t;
+typedef struct _opaque_pthread_mutex_t __darwin_pthread_mutex_t;
+typedef struct _opaque_pthread_mutexattr_t __darwin_pthread_mutexattr_t;
+typedef struct _opaque_pthread_once_t __darwin_pthread_once_t;
+typedef struct _opaque_pthread_rwlock_t __darwin_pthread_rwlock_t;
+typedef struct _opaque_pthread_rwlockattr_t __darwin_pthread_rwlockattr_t;
+typedef struct _opaque_pthread_t *__darwin_pthread_t;
+# 81 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 2 3 4
+# 53 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h" 1 3 4
+# 37 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 1 3 4
+# 60 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h" 3 4
+typedef unsigned char u_int8_t;
+# 61 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h" 3 4
+typedef unsigned short u_int16_t;
+# 62 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h" 3 4
+typedef unsigned int u_int32_t;
+# 63 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int64_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int64_t.h" 3 4
+typedef unsigned long long u_int64_t;
+# 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
+
+
+typedef int64_t register_t;
+
+
+
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h" 1 3 4
+# 72 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h" 1 3 4
+# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h" 3 4
+typedef unsigned long uintptr_t;
+# 73 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
+
+
+
+
+typedef u_int64_t user_addr_t;
+typedef u_int64_t user_size_t;
+typedef int64_t user_ssize_t;
+typedef int64_t user_long_t;
+typedef u_int64_t user_ulong_t;
+typedef int64_t user_time_t;
+typedef int64_t user_off_t;
+# 104 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 3 4
+typedef u_int64_t syscall_arg_t;
+# 38 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h" 2 3 4
+# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h" 2 3 4
+
+typedef __darwin_intptr_t intptr_t;
+# 54 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+
+
+
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_intmax_t.h" 1 3 4
+# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_intmax_t.h" 3 4
+typedef long int intmax_t;
+# 59 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h" 1 3 4
+# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h" 3 4
+typedef long unsigned int uintmax_t;
+# 60 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
+# 53 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 2 3
+# 33 "./libavutil/rational.h" 2
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 1 3
+# 21 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 3
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 1 3 4
+# 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/limits.h" 1 3 4
+# 11 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/limits.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h" 1 3 4
+# 45 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_limits.h" 1 3 4
+# 46 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h" 2 3 4
+# 12 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/limits.h" 2 3 4
+# 65 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/syslimits.h" 1 3 4
+# 66 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 2 3 4
+# 22 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 2 3
+# 34 "./libavutil/rational.h" 2
+# 58 "./libavutil/rational.h"
+typedef struct AVRational{
+    int num;
+    int den;
+} AVRational;
+# 71 "./libavutil/rational.h"
+static inline AVRational av_make_q(int num, int den)
+{
+    AVRational r = { num, den };
+    return r;
+}
+# 89 "./libavutil/rational.h"
+static inline int av_cmp_q(AVRational a, AVRational b){
+    const int64_t tmp= a.num * (int64_t)b.den - b.num * (int64_t)a.den;
+
+    if(tmp) return (int)((tmp ^ a.den ^ b.den)>>63)|1;
+    else if(b.den && a.den) return 0;
+    else if(a.num && b.num) return (a.num>>31) - (b.num>>31);
+    else return (-2147483647 -1);
+}
+
+
+
+
+
+
+
+static inline double av_q2d(AVRational a){
+    return a.num / (double) a.den;
+}
+# 120 "./libavutil/rational.h"
+int av_reduce(int *dst_num, int *dst_den, int64_t num, int64_t den, int64_t max);
+
+
+
+
+
+
+
+AVRational av_mul_q(AVRational b, AVRational c) __attribute__((const));
+
+
+
+
+
+
+
+AVRational av_div_q(AVRational b, AVRational c) __attribute__((const));
+
+
+
+
+
+
+
+AVRational av_add_q(AVRational b, AVRational c) __attribute__((const));
+
+
+
+
+
+
+
+AVRational av_sub_q(AVRational b, AVRational c) __attribute__((const));
+
+
+
+
+
+
+static __attribute__((always_inline)) inline AVRational av_inv_q(AVRational q)
+{
+    AVRational r = { q.den, q.num };
+    return r;
+}
+# 176 "./libavutil/rational.h"
+AVRational av_d2q(double d, int max) __attribute__((const));
+# 189 "./libavutil/rational.h"
+int av_nearer_q(AVRational q, AVRational q1, AVRational q2);
+# 198 "./libavutil/rational.h"
+int av_find_nearest_q_idx(AVRational q, const AVRational* q_list);
+# 209 "./libavutil/rational.h"
+uint32_t av_q2intfloat(AVRational q);
+
+
+
+
+
+AVRational av_gcd_q(AVRational a, AVRational b, int max_den, AVRational def);
+# 31 "./libavutil/opt.h" 2
+# 1 "./libavutil/avutil.h" 1
+# 171 "./libavutil/avutil.h"
+unsigned avutil_version(void);
+
+
+
+
+
+
+const char *av_version_info(void);
+
+
+
+
+const char *avutil_configuration(void);
+
+
+
+
+const char *avutil_license(void);
+# 199 "./libavutil/avutil.h"
+enum AVMediaType {
+    AVMEDIA_TYPE_UNKNOWN = -1,
+    AVMEDIA_TYPE_VIDEO,
+    AVMEDIA_TYPE_AUDIO,
+    AVMEDIA_TYPE_DATA,
+    AVMEDIA_TYPE_SUBTITLE,
+    AVMEDIA_TYPE_ATTACHMENT,
+    AVMEDIA_TYPE_NB
+};
+
+
+
+
+
+const char *av_get_media_type_string(enum AVMediaType media_type);
+# 277 "./libavutil/avutil.h"
+enum AVPictureType {
+    AV_PICTURE_TYPE_NONE = 0,
+    AV_PICTURE_TYPE_I,
+    AV_PICTURE_TYPE_P,
+    AV_PICTURE_TYPE_B,
+    AV_PICTURE_TYPE_S,
+    AV_PICTURE_TYPE_SI,
+    AV_PICTURE_TYPE_SP,
+    AV_PICTURE_TYPE_BI,
+};
+# 295 "./libavutil/avutil.h"
+char av_get_picture_type_char(enum AVPictureType pict_type);
+
+
+
+
+
+# 1 "./libavutil/common.h" 1
+# 33 "./libavutil/common.h"
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 1 3 4
+# 23 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 1 3 4
+# 76 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h" 1 3 4
+# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h" 3 4
+typedef int errno_t;
+# 77 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 2 3 4
+
+
+
+extern int * __error(void);
+# 24 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 2 3 4
+# 34 "./libavutil/common.h" 2
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 1 3
+# 21 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 3
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 1 3 4
+# 224 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 1 3 4
 # 172 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
@@ -30,7 +639,68 @@
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 1 3 4
 # 177 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 2 3 4
 # 174 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-# 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 2 3 4
+# 225 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 2 3 4
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h" 1 3 4
+# 40 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h" 3 4
+typedef int __darwin_nl_item;
+typedef int __darwin_wctrans_t;
+
+typedef __uint32_t __darwin_wctype_t;
+# 227 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 2 3 4
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h" 1 3 4
+# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h" 3 4
+typedef __darwin_wchar_t wchar_t;
+# 228 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 2 3 4
+
+
+
+
+
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern intmax_t
+imaxabs(intmax_t j);
+
+
+typedef struct {
+ intmax_t quot;
+ intmax_t rem;
+} imaxdiv_t;
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern imaxdiv_t
+imaxdiv(intmax_t __numer, intmax_t __denom);
+
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern intmax_t
+strtoimax(const char * restrict __nptr,
+   char ** restrict __endptr,
+   int __base);
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern uintmax_t
+strtoumax(const char * restrict __nptr,
+   char ** restrict __endptr,
+   int __base);
+
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern intmax_t
+wcstoimax(const wchar_t * restrict __nptr,
+   wchar_t ** restrict __endptr,
+   int __base);
+
+__attribute__((availability(macosx,introduced=10.4)))
+extern uintmax_t
+wcstoumax(const wchar_t * restrict __nptr,
+   wchar_t ** restrict __endptr,
+   int __base);
+# 22 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 2 3
+# 35 "./libavutil/common.h" 2
+
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 1 3 4
 # 45 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h" 3 4
     typedef float float_t;
     typedef double double_t;
@@ -421,549 +1091,7 @@ struct exception {
     double arg2;
     double retval;
 };
-# 23 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-
-# 1 "./libavutil/opt.h" 1
-# 30 "./libavutil/opt.h"
-# 1 "./libavutil/rational.h" 1
-# 32 "./libavutil/rational.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 1 3
-# 52 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 3
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 1 3 4
-# 18 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h" 3 4
-typedef signed char int8_t;
-# 19 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h" 3 4
-typedef short int16_t;
-# 20 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h" 3 4
-typedef int int32_t;
-# 21 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h" 3 4
-typedef long long int64_t;
-# 22 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint8_t.h" 1 3 4
-# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint8_t.h" 3 4
-typedef unsigned char uint8_t;
-# 24 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint16_t.h" 1 3 4
-# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint16_t.h" 3 4
-typedef unsigned short uint16_t;
-# 25 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint32_t.h" 1 3 4
-# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint32_t.h" 3 4
-typedef unsigned int uint32_t;
-# 26 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h" 1 3 4
-# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h" 3 4
-typedef unsigned long long uint64_t;
-# 27 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-typedef int32_t int_least32_t;
-typedef int64_t int_least64_t;
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-typedef uint32_t uint_least32_t;
-typedef uint64_t uint_least64_t;
-
-
-
-typedef int8_t int_fast8_t;
-typedef int16_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef int64_t int_fast64_t;
-typedef uint8_t uint_fast8_t;
-typedef uint16_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-typedef uint64_t uint_fast64_t;
-
-
-
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 1 3 4
-# 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h" 1 3 4
-# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_types.h" 1 3 4
-# 15 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_types.h" 3 4
-typedef signed char __int8_t;
-
-
-
-typedef unsigned char __uint8_t;
-typedef short __int16_t;
-typedef unsigned short __uint16_t;
-typedef int __int32_t;
-typedef unsigned int __uint32_t;
-typedef long long __int64_t;
-typedef unsigned long long __uint64_t;
-
-typedef long __darwin_intptr_t;
-typedef unsigned int __darwin_natural_t;
-# 48 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_types.h" 3 4
-typedef int __darwin_ct_rune_t;
-
-
-
-
-
-typedef union {
- char __mbstate8[128];
- long long _mbstateL;
-} __mbstate_t;
-
-typedef __mbstate_t __darwin_mbstate_t;
-
-
-typedef long int __darwin_ptrdiff_t;
-
-
-
-
-
-
-
-typedef long unsigned int __darwin_size_t;
-
-
-
-
-
-typedef __builtin_va_list __darwin_va_list;
-
-
-
-
-
-typedef int __darwin_wchar_t;
-
-
-
-
-typedef __darwin_wchar_t __darwin_rune_t;
-
-
-typedef int __darwin_wint_t;
-
-
-
-
-typedef unsigned long __darwin_clock_t;
-typedef __uint32_t __darwin_socklen_t;
-typedef long __darwin_ssize_t;
-typedef long __darwin_time_t;
-# 35 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h" 2 3 4
-# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 2 3 4
-# 55 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 3 4
-typedef __int64_t __darwin_blkcnt_t;
-typedef __int32_t __darwin_blksize_t;
-typedef __int32_t __darwin_dev_t;
-typedef unsigned int __darwin_fsblkcnt_t;
-typedef unsigned int __darwin_fsfilcnt_t;
-typedef __uint32_t __darwin_gid_t;
-typedef __uint32_t __darwin_id_t;
-typedef __uint64_t __darwin_ino64_t;
-
-typedef __darwin_ino64_t __darwin_ino_t;
-
-
-
-typedef __darwin_natural_t __darwin_mach_port_name_t;
-typedef __darwin_mach_port_name_t __darwin_mach_port_t;
-typedef __uint16_t __darwin_mode_t;
-typedef __int64_t __darwin_off_t;
-typedef __int32_t __darwin_pid_t;
-typedef __uint32_t __darwin_sigset_t;
-typedef __int32_t __darwin_suseconds_t;
-typedef __uint32_t __darwin_uid_t;
-typedef __uint32_t __darwin_useconds_t;
-typedef unsigned char __darwin_uuid_t[16];
-typedef char __darwin_uuid_string_t[37];
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_types.h" 1 3 4
-# 57 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_types.h" 3 4
-struct __darwin_pthread_handler_rec {
- void (*__routine)(void *);
- void *__arg;
- struct __darwin_pthread_handler_rec *__next;
-};
-
-struct _opaque_pthread_attr_t {
- long __sig;
- char __opaque[56];
-};
-
-struct _opaque_pthread_cond_t {
- long __sig;
- char __opaque[40];
-};
-
-struct _opaque_pthread_condattr_t {
- long __sig;
- char __opaque[8];
-};
-
-struct _opaque_pthread_mutex_t {
- long __sig;
- char __opaque[56];
-};
-
-struct _opaque_pthread_mutexattr_t {
- long __sig;
- char __opaque[8];
-};
-
-struct _opaque_pthread_once_t {
- long __sig;
- char __opaque[8];
-};
-
-struct _opaque_pthread_rwlock_t {
- long __sig;
- char __opaque[192];
-};
-
-struct _opaque_pthread_rwlockattr_t {
- long __sig;
- char __opaque[16];
-};
-
-struct _opaque_pthread_t {
- long __sig;
- struct __darwin_pthread_handler_rec *__cleanup_stack;
- char __opaque[8176];
-};
-
-typedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;
-typedef struct _opaque_pthread_cond_t __darwin_pthread_cond_t;
-typedef struct _opaque_pthread_condattr_t __darwin_pthread_condattr_t;
-typedef unsigned long __darwin_pthread_key_t;
-typedef struct _opaque_pthread_mutex_t __darwin_pthread_mutex_t;
-typedef struct _opaque_pthread_mutexattr_t __darwin_pthread_mutexattr_t;
-typedef struct _opaque_pthread_once_t __darwin_pthread_once_t;
-typedef struct _opaque_pthread_rwlock_t __darwin_pthread_rwlock_t;
-typedef struct _opaque_pthread_rwlockattr_t __darwin_pthread_rwlockattr_t;
-typedef struct _opaque_pthread_t *__darwin_pthread_t;
-# 81 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h" 2 3 4
-# 53 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h" 1 3 4
-# 37 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 1 3 4
-# 60 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h" 3 4
-typedef unsigned char u_int8_t;
-# 61 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h" 3 4
-typedef unsigned short u_int16_t;
-# 62 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h" 3 4
-typedef unsigned int u_int32_t;
-# 63 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int64_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int64_t.h" 3 4
-typedef unsigned long long u_int64_t;
-# 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
-
-
-typedef int64_t register_t;
-
-
-
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h" 1 3 4
-# 72 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h" 1 3 4
-# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h" 3 4
-typedef unsigned long uintptr_t;
-# 73 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 2 3 4
-
-
-
-
-typedef u_int64_t user_addr_t;
-typedef u_int64_t user_size_t;
-typedef int64_t user_ssize_t;
-typedef int64_t user_long_t;
-typedef u_int64_t user_ulong_t;
-typedef int64_t user_time_t;
-typedef int64_t user_off_t;
-# 104 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h" 3 4
-typedef u_int64_t syscall_arg_t;
-# 38 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h" 2 3 4
-# 31 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h" 2 3 4
-
-typedef __darwin_intptr_t intptr_t;
-# 54 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-
-
-
-
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_intmax_t.h" 1 3 4
-# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_intmax_t.h" 3 4
-typedef long int intmax_t;
-# 59 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h" 1 3 4
-# 32 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h" 3 4
-typedef long unsigned int uintmax_t;
-# 60 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
-# 53 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 2 3
-# 33 "./libavutil/rational.h" 2
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 1 3
-# 21 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 3
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 1 3 4
-# 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/limits.h" 1 3 4
-# 11 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/limits.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h" 1 3 4
-# 45 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/_limits.h" 1 3 4
-# 46 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h" 2 3 4
-# 12 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/limits.h" 2 3 4
-# 65 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/syslimits.h" 1 3 4
-# 66 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h" 2 3 4
-# 22 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/limits.h" 2 3
-# 34 "./libavutil/rational.h" 2
-# 1 "./libavutil/attributes.h" 1
-# 35 "./libavutil/rational.h" 2
-# 58 "./libavutil/rational.h"
-typedef struct AVRational{
-    int num;
-    int den;
-} AVRational;
-# 71 "./libavutil/rational.h"
-static inline AVRational av_make_q(int num, int den)
-{
-    AVRational r = { num, den };
-    return r;
-}
-# 89 "./libavutil/rational.h"
-static inline int av_cmp_q(AVRational a, AVRational b){
-    const int64_t tmp= a.num * (int64_t)b.den - b.num * (int64_t)a.den;
-
-    if(tmp) return (int)((tmp ^ a.den ^ b.den)>>63)|1;
-    else if(b.den && a.den) return 0;
-    else if(a.num && b.num) return (a.num>>31) - (b.num>>31);
-    else return (-2147483647 -1);
-}
-
-
-
-
-
-
-
-static inline double av_q2d(AVRational a){
-    return a.num / (double) a.den;
-}
-# 120 "./libavutil/rational.h"
-int av_reduce(int *dst_num, int *dst_den, int64_t num, int64_t den, int64_t max);
-
-
-
-
-
-
-
-AVRational av_mul_q(AVRational b, AVRational c) __attribute__((const));
-
-
-
-
-
-
-
-AVRational av_div_q(AVRational b, AVRational c) __attribute__((const));
-
-
-
-
-
-
-
-AVRational av_add_q(AVRational b, AVRational c) __attribute__((const));
-
-
-
-
-
-
-
-AVRational av_sub_q(AVRational b, AVRational c) __attribute__((const));
-
-
-
-
-
-
-static __attribute__((always_inline)) inline AVRational av_inv_q(AVRational q)
-{
-    AVRational r = { q.den, q.num };
-    return r;
-}
-# 176 "./libavutil/rational.h"
-AVRational av_d2q(double d, int max) __attribute__((const));
-# 189 "./libavutil/rational.h"
-int av_nearer_q(AVRational q, AVRational q1, AVRational q2);
-# 198 "./libavutil/rational.h"
-int av_find_nearest_q_idx(AVRational q, const AVRational* q_list);
-# 209 "./libavutil/rational.h"
-uint32_t av_q2intfloat(AVRational q);
-
-
-
-
-
-AVRational av_gcd_q(AVRational a, AVRational b, int max_den, AVRational def);
-# 31 "./libavutil/opt.h" 2
-# 1 "./libavutil/avutil.h" 1
-# 171 "./libavutil/avutil.h"
-unsigned avutil_version(void);
-
-
-
-
-
-
-const char *av_version_info(void);
-
-
-
-
-const char *avutil_configuration(void);
-
-
-
-
-const char *avutil_license(void);
-# 199 "./libavutil/avutil.h"
-enum AVMediaType {
-    AVMEDIA_TYPE_UNKNOWN = -1,
-    AVMEDIA_TYPE_VIDEO,
-    AVMEDIA_TYPE_AUDIO,
-    AVMEDIA_TYPE_DATA,
-    AVMEDIA_TYPE_SUBTITLE,
-    AVMEDIA_TYPE_ATTACHMENT,
-    AVMEDIA_TYPE_NB
-};
-
-
-
-
-
-const char *av_get_media_type_string(enum AVMediaType media_type);
-# 277 "./libavutil/avutil.h"
-enum AVPictureType {
-    AV_PICTURE_TYPE_NONE = 0,
-    AV_PICTURE_TYPE_I,
-    AV_PICTURE_TYPE_P,
-    AV_PICTURE_TYPE_B,
-    AV_PICTURE_TYPE_S,
-    AV_PICTURE_TYPE_SI,
-    AV_PICTURE_TYPE_SP,
-    AV_PICTURE_TYPE_BI,
-};
-# 295 "./libavutil/avutil.h"
-char av_get_picture_type_char(enum AVPictureType pict_type);
-
-
-
-
-
-# 1 "./libavutil/common.h" 1
-# 33 "./libavutil/common.h"
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 1 3 4
-# 23 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 1 3 4
-# 76 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h" 1 3 4
-# 30 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h" 3 4
-typedef int errno_t;
-# 77 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/errno.h" 2 3 4
-
-
-
-extern int * __error(void);
-# 24 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/errno.h" 2 3 4
-# 34 "./libavutil/common.h" 2
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 1 3
-# 21 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 3
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 1 3 4
-# 226 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h" 1 3 4
-# 40 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h" 3 4
-typedef int __darwin_nl_item;
-typedef int __darwin_wctrans_t;
-
-typedef __uint32_t __darwin_wctype_t;
-# 227 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 2 3 4
-# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h" 1 3 4
-# 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wchar_t.h" 3 4
-typedef __darwin_wchar_t wchar_t;
-# 228 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/inttypes.h" 2 3 4
-
-
-
-
-
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern intmax_t
-imaxabs(intmax_t j);
-
-
-typedef struct {
- intmax_t quot;
- intmax_t rem;
-} imaxdiv_t;
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern imaxdiv_t
-imaxdiv(intmax_t __numer, intmax_t __denom);
-
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern intmax_t
-strtoimax(const char * restrict __nptr,
-   char ** restrict __endptr,
-   int __base);
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern uintmax_t
-strtoumax(const char * restrict __nptr,
-   char ** restrict __endptr,
-   int __base);
-
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern intmax_t
-wcstoimax(const wchar_t * restrict __nptr,
-   wchar_t ** restrict __endptr,
-   int __base);
-
-__attribute__((availability(macosx,introduced=10.4)))
-extern uintmax_t
-wcstoumax(const wchar_t * restrict __nptr,
-   wchar_t ** restrict __endptr,
-   int __base);
-# 22 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/inttypes.h" 2 3
-# 35 "./libavutil/common.h" 2
-
-
+# 37 "./libavutil/common.h" 2
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 1 3 4
 # 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 3 4
@@ -2451,12 +2579,6 @@ typedef long int ptrdiff_t;
 typedef long double max_align_t;
 # 104 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 2 3
 # 29 "./libavutil/error.h" 2
-
-# 1 "./libavutil/macros.h" 1
-# 28 "./libavutil/macros.h"
-# 1 "./libavutil/avconfig.h" 1
-# 29 "./libavutil/macros.h" 2
-# 31 "./libavutil/error.h" 2
 # 99 "./libavutil/error.h"
 int av_strerror(int errnum, char *errbuf, size_t errbuf_size);
 # 111 "./libavutil/error.h"
@@ -2740,8 +2862,7 @@ void av_max_alloc(size_t max);
 # 574 "./libavutil/common.h" 2
 # 302 "./libavutil/avutil.h" 2
 
-# 1 "./libavutil/version.h" 1
-# 304 "./libavutil/avutil.h" 2
+
 
 # 1 "./libavutil/mathematics.h" 1
 # 34 "./libavutil/mathematics.h"
@@ -2832,135 +2953,7 @@ int64_t av_add_stable(AVRational ts_tb, int64_t ts, AVRational inc_tb, int64_t i
 
 double av_bessel_i0(double x);
 # 306 "./libavutil/avutil.h" 2
-# 1 "./libavutil/log.h" 1
-# 24 "./libavutil/log.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 1 3
-# 14 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 3
-typedef __builtin_va_list va_list;
-# 34 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h" 3
-typedef __builtin_va_list __gnuc_va_list;
-# 25 "./libavutil/log.h" 2
 
-
-
-typedef enum {
-    AV_CLASS_CATEGORY_NA = 0,
-    AV_CLASS_CATEGORY_INPUT,
-    AV_CLASS_CATEGORY_OUTPUT,
-    AV_CLASS_CATEGORY_MUXER,
-    AV_CLASS_CATEGORY_DEMUXER,
-    AV_CLASS_CATEGORY_ENCODER,
-    AV_CLASS_CATEGORY_DECODER,
-    AV_CLASS_CATEGORY_FILTER,
-    AV_CLASS_CATEGORY_BITSTREAM_FILTER,
-    AV_CLASS_CATEGORY_SWSCALER,
-    AV_CLASS_CATEGORY_SWRESAMPLER,
-    AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT = 40,
-    AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT,
-    AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT,
-    AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT,
-    AV_CLASS_CATEGORY_DEVICE_OUTPUT,
-    AV_CLASS_CATEGORY_DEVICE_INPUT,
-    AV_CLASS_CATEGORY_NB
-}AVClassCategory;
-# 59 "./libavutil/log.h"
-struct AVOptionRanges;
-
-
-
-
-
-
-typedef struct AVClass {
-
-
-
-
-    const char* class_name;
-
-
-
-
-
-    const char* (*item_name)(void* ctx);
-
-
-
-
-
-
-    const struct AVOption *option;
-
-
-
-
-
-
-
-    int version;
-
-
-
-
-
-    int log_level_offset_offset;
-# 107 "./libavutil/log.h"
-    int parent_log_context_offset;
-
-
-
-
-
-
-    AVClassCategory category;
-
-
-
-
-
-    AVClassCategory (*get_category)(void* ctx);
-
-
-
-
-
-    int (*query_ranges)(struct AVOptionRanges **, void *obj, const char *key, int flags);
-
-
-
-
-    void* (*child_next)(void *obj, void *prev);
-# 146 "./libavutil/log.h"
-    const struct AVClass* (*child_class_iterate)(void **iter);
-} AVClass;
-# 238 "./libavutil/log.h"
-void av_log(void *avcl, int level, const char *fmt, ...) __attribute__((__format__(__printf__, 3, 4)));
-# 259 "./libavutil/log.h"
-void av_log_once(void* avcl, int initial_level, int subsequent_level, int *state, const char *fmt, ...) __attribute__((__format__(__printf__, 5, 6)));
-# 277 "./libavutil/log.h"
-void av_vlog(void *avcl, int level, const char *fmt, va_list vl);
-# 286 "./libavutil/log.h"
-int av_log_get_level(void);
-# 295 "./libavutil/log.h"
-void av_log_set_level(int level);
-# 307 "./libavutil/log.h"
-void av_log_set_callback(void (*callback)(void*, int, const char*, va_list));
-# 322 "./libavutil/log.h"
-void av_log_default_callback(void *avcl, int level, const char *fmt,
-                             va_list vl);
-# 332 "./libavutil/log.h"
-const char* av_default_item_name(void* ctx);
-AVClassCategory av_default_get_category(void *ptr);
-# 342 "./libavutil/log.h"
-void av_log_format_line(void *ptr, int level, const char *fmt, va_list vl,
-                        char *line, int line_size, int *print_prefix);
-# 359 "./libavutil/log.h"
-int av_log_format_line2(void *ptr, int level, const char *fmt, va_list vl,
-                        char *line, int line_size, int *print_prefix);
-# 380 "./libavutil/log.h"
-void av_log_set_flags(int arg);
-int av_log_get_flags(void);
-# 307 "./libavutil/avutil.h" 2
 # 1 "./libavutil/pixfmt.h" 1
 # 64 "./libavutil/pixfmt.h"
 enum AVPixelFormat {
@@ -4035,79 +4028,146 @@ int av_opt_is_set_to_default_by_name(void *obj, const char *name, int search_fla
 # 885 "./libavutil/opt.h"
 int av_opt_serialize(void *obj, int opt_flags, int flags, char **buffer,
                      const char key_val_sep, const char pairs_sep);
-# 25 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 1 "./libavutil/tx.h" 1
-# 23 "./libavutil/tx.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 24 "./libavutil/tx.h" 2
+# 28 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 1 "./libavutil/pixdesc.h" 1
+# 30 "./libavutil/pixdesc.h"
+typedef struct AVComponentDescriptor {
 
-typedef struct AVTXContext AVTXContext;
 
-typedef struct AVComplexFloat {
-    float re, im;
-} AVComplexFloat;
 
-typedef struct AVComplexDouble {
-    double re, im;
-} AVComplexDouble;
-
-typedef struct AVComplexInt32 {
-    int32_t re, im;
-} AVComplexInt32;
-
-enum AVTXType {
+    int plane;
 
 
 
 
 
-
-
-    AV_TX_FLOAT_FFT = 0,
-    AV_TX_DOUBLE_FFT = 2,
-    AV_TX_INT32_FFT = 4,
-# 68 "./libavutil/tx.h"
-    AV_TX_FLOAT_MDCT = 1,
-    AV_TX_DOUBLE_MDCT = 3,
-    AV_TX_INT32_MDCT = 5,
-# 90 "./libavutil/tx.h"
-    AV_TX_FLOAT_RDFT = 6,
-    AV_TX_DOUBLE_RDFT = 7,
-    AV_TX_INT32_RDFT = 8,
-# 104 "./libavutil/tx.h"
-    AV_TX_FLOAT_DCT = 9,
-    AV_TX_DOUBLE_DCT = 10,
-    AV_TX_INT32_DCT = 11,
-# 116 "./libavutil/tx.h"
-    AV_TX_FLOAT_DCT_I = 12,
-    AV_TX_DOUBLE_DCT_I = 13,
-    AV_TX_INT32_DCT_I = 14,
-# 128 "./libavutil/tx.h"
-    AV_TX_FLOAT_DST_I = 15,
-    AV_TX_DOUBLE_DST_I = 16,
-    AV_TX_INT32_DST_I = 17,
-
-
-    AV_TX_NB,
-};
-# 151 "./libavutil/tx.h"
-typedef void (*av_tx_fn)(AVTXContext *s, void *out, void *in, ptrdiff_t stride);
-
-
-
-
-enum AVTXFlags {
-
-
-
-
-    AV_TX_INPLACE = 1ULL << 0,
+    int step;
 
 
 
 
 
-    AV_TX_UNALIGNED = 1ULL << 1,
+    int offset;
+
+
+
+
+
+    int shift;
+
+
+
+
+    int depth;
+} AVComponentDescriptor;
+# 69 "./libavutil/pixdesc.h"
+typedef struct AVPixFmtDescriptor {
+    const char *name;
+    uint8_t nb_components;
+# 80 "./libavutil/pixdesc.h"
+    uint8_t log2_chroma_w;
+# 89 "./libavutil/pixdesc.h"
+    uint8_t log2_chroma_h;
+
+
+
+
+    uint64_t flags;
+# 105 "./libavutil/pixdesc.h"
+    AVComponentDescriptor comp[4];
+
+
+
+
+    const char *alias;
+} AVPixFmtDescriptor;
+# 174 "./libavutil/pixdesc.h"
+int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc);
+
+
+
+
+
+int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc);
+
+
+
+
+
+const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt);
+# 195 "./libavutil/pixdesc.h"
+const AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev);
+
+
+
+
+
+enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc);
+# 213 "./libavutil/pixdesc.h"
+int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt,
+                                     int *h_shift, int *v_shift);
+
+
+
+
+
+int av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt);
+
+
+
+
+const char *av_color_range_name(enum AVColorRange range);
+
+
+
+
+int av_color_range_from_name(const char *name);
+
+
+
+
+const char *av_color_primaries_name(enum AVColorPrimaries primaries);
+
+
+
+
+int av_color_primaries_from_name(const char *name);
+
+
+
+
+const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer);
+
+
+
+
+int av_color_transfer_from_name(const char *name);
+
+
+
+
+const char *av_color_space_name(enum AVColorSpace space);
+
+
+
+
+int av_color_space_from_name(const char *name);
+
+
+
+
+const char *av_chroma_location_name(enum AVChromaLocation location);
+
+
+
+
+int av_chroma_location_from_name(const char *name);
+# 281 "./libavutil/pixdesc.h"
+int av_chroma_location_enum_to_pos(int *xpos, int *ypos, enum AVChromaLocation pos);
+# 292 "./libavutil/pixdesc.h"
+enum AVChromaLocation av_chroma_location_pos_to_enum(int xpos, int ypos);
+# 305 "./libavutil/pixdesc.h"
+enum AVPixelFormat av_get_pix_fmt(const char *name);
 
 
 
@@ -4115,29 +4175,39 @@ enum AVTXFlags {
 
 
 
-    AV_TX_FULL_IMDCT = 1ULL << 2,
-# 184 "./libavutil/tx.h"
-    AV_TX_REAL_TO_REAL = 1ULL << 3,
-    AV_TX_REAL_TO_IMAGINARY = 1ULL << 4,
-};
-# 202 "./libavutil/tx.h"
-int av_tx_init(AVTXContext **ctx, av_tx_fn *tx, enum AVTXType type,
-               int inv, int len, const void *scale, uint64_t flags);
+const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt);
+# 325 "./libavutil/pixdesc.h"
+char *av_get_pix_fmt_string(char *buf, int buf_size,
+                            enum AVPixelFormat pix_fmt);
+# 345 "./libavutil/pixdesc.h"
+void av_read_image_line2(void *dst, const uint8_t *data[4],
+                        const int linesize[4], const AVPixFmtDescriptor *desc,
+                        int x, int y, int c, int w, int read_pal_component,
+                        int dst_element_size);
 
+void av_read_image_line(uint16_t *dst, const uint8_t *data[4],
+                        const int linesize[4], const AVPixFmtDescriptor *desc,
+                        int x, int y, int c, int w, int read_pal_component);
+# 369 "./libavutil/pixdesc.h"
+void av_write_image_line2(const void *src, uint8_t *data[4],
+                         const int linesize[4], const AVPixFmtDescriptor *desc,
+                         int x, int y, int c, int w, int src_element_size);
 
-
-
-void av_tx_uninit(AVTXContext **ctx);
-# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h" 1
-# 25 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h"
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h" 1
-# 38 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 39 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h" 2
-
-
-
+void av_write_image_line(const uint16_t *src, uint8_t *data[4],
+                         const int linesize[4], const AVPixFmtDescriptor *desc,
+                         int x, int y, int c, int w);
+# 385 "./libavutil/pixdesc.h"
+enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt);
+# 415 "./libavutil/pixdesc.h"
+int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt,
+                        enum AVPixelFormat src_pix_fmt,
+                        int has_alpha);
+# 437 "./libavutil/pixdesc.h"
+enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,
+                                             enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);
+# 29 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 1 "./libavutil/hwcontext.h" 1
+# 22 "./libavutil/hwcontext.h"
 # 1 "./libavutil/buffer.h" 1
 # 28 "./libavutil/buffer.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
@@ -4246,8 +4316,7 @@ void av_buffer_pool_uninit(AVBufferPool **pool);
 AVBufferRef *av_buffer_pool_get(AVBufferPool *pool);
 # 316 "./libavutil/buffer.h"
 void *av_buffer_pool_buffer_get_opaque(const AVBufferRef *ref);
-# 43 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h" 2
-
+# 23 "./libavutil/hwcontext.h" 2
 # 1 "./libavutil/frame.h" 1
 # 28 "./libavutil/frame.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
@@ -4730,12 +4799,368 @@ int av_frame_apply_cropping(AVFrame *frame, int flags);
 
 
 const char *av_frame_side_data_name(enum AVFrameSideDataType type);
-# 45 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h" 2
+# 24 "./libavutil/hwcontext.h" 2
+
+
+
+enum AVHWDeviceType {
+    AV_HWDEVICE_TYPE_NONE,
+    AV_HWDEVICE_TYPE_VDPAU,
+    AV_HWDEVICE_TYPE_CUDA,
+    AV_HWDEVICE_TYPE_VAAPI,
+    AV_HWDEVICE_TYPE_DXVA2,
+    AV_HWDEVICE_TYPE_QSV,
+    AV_HWDEVICE_TYPE_VIDEOTOOLBOX,
+    AV_HWDEVICE_TYPE_D3D11VA,
+    AV_HWDEVICE_TYPE_DRM,
+    AV_HWDEVICE_TYPE_OPENCL,
+    AV_HWDEVICE_TYPE_MEDIACODEC,
+    AV_HWDEVICE_TYPE_VULKAN,
+    AV_HWDEVICE_TYPE_D3D12VA,
+};
+
+typedef struct AVHWDeviceInternal AVHWDeviceInternal;
+# 62 "./libavutil/hwcontext.h"
+typedef struct AVHWDeviceContext {
+
+
+
+    const AVClass *av_class;
 
 
 
 
 
+    AVHWDeviceInternal *internal;
+
+
+
+
+
+
+
+    enum AVHWDeviceType type;
+# 93 "./libavutil/hwcontext.h"
+    void *hwctx;
+# 105 "./libavutil/hwcontext.h"
+    void (*free)(struct AVHWDeviceContext *ctx);
+
+
+
+
+    void *user_opaque;
+} AVHWDeviceContext;
+
+typedef struct AVHWFramesInternal AVHWFramesInternal;
+# 125 "./libavutil/hwcontext.h"
+typedef struct AVHWFramesContext {
+
+
+
+    const AVClass *av_class;
+
+
+
+
+
+    AVHWFramesInternal *internal;
+
+
+
+
+
+
+    AVBufferRef *device_ref;
+
+
+
+
+
+
+
+    AVHWDeviceContext *device_ctx;
+# 163 "./libavutil/hwcontext.h"
+    void *hwctx;
+
+
+
+
+
+
+
+    void (*free)(struct AVHWFramesContext *ctx);
+
+
+
+
+    void *user_opaque;
+# 191 "./libavutil/hwcontext.h"
+    AVBufferPool *pool;
+# 200 "./libavutil/hwcontext.h"
+    int initial_pool_size;
+# 210 "./libavutil/hwcontext.h"
+    enum AVPixelFormat format;
+# 223 "./libavutil/hwcontext.h"
+    enum AVPixelFormat sw_format;
+
+
+
+
+
+
+    int width, height;
+} AVHWFramesContext;
+# 240 "./libavutil/hwcontext.h"
+enum AVHWDeviceType av_hwdevice_find_type_by_name(const char *name);
+
+
+
+
+
+
+
+const char *av_hwdevice_get_type_name(enum AVHWDeviceType type);
+# 258 "./libavutil/hwcontext.h"
+enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev);
+# 267 "./libavutil/hwcontext.h"
+AVBufferRef *av_hwdevice_ctx_alloc(enum AVHWDeviceType type);
+# 277 "./libavutil/hwcontext.h"
+int av_hwdevice_ctx_init(AVBufferRef *ref);
+# 304 "./libavutil/hwcontext.h"
+int av_hwdevice_ctx_create(AVBufferRef **device_ctx, enum AVHWDeviceType type,
+                           const char *device, AVDictionary *opts, int flags);
+# 328 "./libavutil/hwcontext.h"
+int av_hwdevice_ctx_create_derived(AVBufferRef **dst_ctx,
+                                   enum AVHWDeviceType type,
+                                   AVBufferRef *src_ctx, int flags);
+# 348 "./libavutil/hwcontext.h"
+int av_hwdevice_ctx_create_derived_opts(AVBufferRef **dst_ctx,
+                                        enum AVHWDeviceType type,
+                                        AVBufferRef *src_ctx,
+                                        AVDictionary *options, int flags);
+# 362 "./libavutil/hwcontext.h"
+AVBufferRef *av_hwframe_ctx_alloc(AVBufferRef *device_ctx);
+# 372 "./libavutil/hwcontext.h"
+int av_hwframe_ctx_init(AVBufferRef *ref);
+# 383 "./libavutil/hwcontext.h"
+int av_hwframe_get_buffer(AVBufferRef *hwframe_ctx, AVFrame *frame, int flags);
+# 414 "./libavutil/hwcontext.h"
+int av_hwframe_transfer_data(AVFrame *dst, const AVFrame *src, int flags);
+
+enum AVHWFrameTransferDirection {
+
+
+
+    AV_HWFRAME_TRANSFER_DIRECTION_FROM,
+
+
+
+
+    AV_HWFRAME_TRANSFER_DIRECTION_TO,
+};
+# 443 "./libavutil/hwcontext.h"
+int av_hwframe_transfer_get_formats(AVBufferRef *hwframe_ctx,
+                                    enum AVHWFrameTransferDirection dir,
+                                    enum AVPixelFormat **formats, int flags);
+# 454 "./libavutil/hwcontext.h"
+typedef struct AVHWFramesConstraints {
+
+
+
+
+    enum AVPixelFormat *valid_hw_formats;
+
+
+
+
+
+
+    enum AVPixelFormat *valid_sw_formats;
+
+
+
+
+
+    int min_width;
+    int min_height;
+
+
+
+
+
+    int max_width;
+    int max_height;
+} AVHWFramesConstraints;
+# 493 "./libavutil/hwcontext.h"
+void *av_hwdevice_hwconfig_alloc(AVBufferRef *device_ctx);
+# 507 "./libavutil/hwcontext.h"
+AVHWFramesConstraints *av_hwdevice_get_hwframe_constraints(AVBufferRef *ref,
+                                                           const void *hwconfig);
+
+
+
+
+
+
+void av_hwframe_constraints_free(AVHWFramesConstraints **constraints);
+
+
+
+
+
+enum {
+
+
+
+    AV_HWFRAME_MAP_READ = 1 << 0,
+
+
+
+    AV_HWFRAME_MAP_WRITE = 1 << 1,
+
+
+
+
+
+    AV_HWFRAME_MAP_OVERWRITE = 1 << 2,
+
+
+
+
+
+    AV_HWFRAME_MAP_DIRECT = 1 << 3,
+};
+# 584 "./libavutil/hwcontext.h"
+int av_hwframe_map(AVFrame *dst, const AVFrame *src, int flags);
+# 605 "./libavutil/hwcontext.h"
+int av_hwframe_ctx_create_derived(AVBufferRef **derived_frame_ctx,
+                                  enum AVPixelFormat format,
+                                  AVBufferRef *derived_device_ctx,
+                                  AVBufferRef *source_frame_ctx,
+                                  int flags);
+# 30 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 1 "./libavutil/hwcontext_cuda_internal.h" 1
+# 23 "./libavutil/hwcontext_cuda_internal.h"
+# 1 "./compat/cuda/dynlink_loader.h" 1
+# 23 "./compat/cuda/dynlink_loader.h"
+# 1 "./compat/w32dlfcn.h" 1
+# 147 "./compat/w32dlfcn.h"
+# 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/dlfcn.h" 1 3 4
+# 36 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/dlfcn.h" 3 4
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdbool.h" 1 3 4
+# 37 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/dlfcn.h" 2 3 4
+# 52 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/dlfcn.h" 3 4
+typedef struct dl_info {
+        const char *dli_fname;
+        void *dli_fbase;
+        const char *dli_sname;
+        void *dli_saddr;
+} Dl_info;
+
+extern int dladdr(const void *, Dl_info *);
+# 73 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/dlfcn.h" 3 4
+extern int dlclose(void * __handle) __attribute__((availability(driverkit,unavailable)));
+extern char * dlerror(void) __attribute__((availability(driverkit,unavailable)));
+extern void * dlopen(const char * __path, int __mode) __attribute__((availability(driverkit,unavailable)));
+extern void * dlsym(void * __handle, const char * __symbol);
+
+
+extern _Bool dlopen_preflight(const char* __path) __attribute__((availability(macosx,introduced=10.5))) __attribute__((availability(driverkit,unavailable)));
+# 148 "./compat/w32dlfcn.h" 2
+# 24 "./compat/cuda/dynlink_loader.h" 2
+# 24 "./libavutil/hwcontext_cuda_internal.h" 2
+# 1 "./libavutil/hwcontext_cuda.h" 1
+# 37 "./libavutil/hwcontext_cuda.h"
+typedef struct AVCUDADeviceContextInternal AVCUDADeviceContextInternal;
+
+
+
+
+typedef struct AVCUDADeviceContext {
+    CUcontext cuda_ctx;
+    CUstream stream;
+    AVCUDADeviceContextInternal *internal;
+} AVCUDADeviceContext;
+# 25 "./libavutil/hwcontext_cuda_internal.h" 2
+
+
+
+
+
+
+struct AVCUDADeviceContextInternal {
+    CudaFunctions *cuda_dl;
+    int is_allocated;
+    CUdevice cuda_device;
+    int flags;
+};
+# 31 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 1 "./libavutil/cuda_check.h" 1
+# 26 "./libavutil/cuda_check.h"
+typedef CUresult CUDAAPI cuda_check_GetErrorName(CUresult error, const char** pstr);
+typedef CUresult CUDAAPI cuda_check_GetErrorString(CUresult error, const char** pstr);
+
+
+
+
+static inline int ff_cuda_check(void *avctx,
+                                void *cuGetErrorName_fn, void *cuGetErrorString_fn,
+                                CUresult err, const char *func)
+{
+    const char *err_name;
+    const char *err_string;
+
+    av_log(avctx, 56, "Calling %s\n", func);
+
+    if (err == CUDA_SUCCESS)
+        return 0;
+
+    ((cuda_check_GetErrorName *)cuGetErrorName_fn)(err, &err_name);
+    ((cuda_check_GetErrorString *)cuGetErrorString_fn)(err, &err_string);
+
+    av_log(avctx, 16, "%s failed", func);
+    if (err_name && err_string)
+        av_log(avctx, 16, " -> %s: %s", err_name, err_string);
+    av_log(avctx, 16, "\n");
+
+    return (-(int)(('E') | (('X') << 8) | (('T') << 16) | ((unsigned)(' ') << 24)));
+}
+# 32 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 1 "./libavutil/eval.h" 1
+# 29 "./libavutil/eval.h"
+typedef struct AVExpr AVExpr;
+# 50 "./libavutil/eval.h"
+int av_expr_parse_and_eval(double *res, const char *s,
+                           const char * const *const_names, const double *const_values,
+                           const char * const *func1_names, double (* const *funcs1)(void *, double),
+                           const char * const *func2_names, double (* const *funcs2)(void *, double, double),
+                           void *opaque, int log_offset, void *log_ctx);
+# 74 "./libavutil/eval.h"
+int av_expr_parse(AVExpr **expr, const char *s,
+                  const char * const *const_names,
+                  const char * const *func1_names, double (* const *funcs1)(void *, double),
+                  const char * const *func2_names, double (* const *funcs2)(void *, double, double),
+                  int log_offset, void *log_ctx);
+# 88 "./libavutil/eval.h"
+double av_expr_eval(AVExpr *e, const double *const_values, void *opaque);
+# 99 "./libavutil/eval.h"
+int av_expr_count_vars(AVExpr *e, unsigned *counter, int size);
+# 114 "./libavutil/eval.h"
+int av_expr_count_func(AVExpr *e, unsigned *counter, int size, int arg);
+
+
+
+
+void av_expr_free(AVExpr *e);
+# 138 "./libavutil/eval.h"
+double av_strtod(const char *numstr, char **tail);
+# 33 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h" 1
+# 38 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h"
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
+# 39 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h" 2
+# 50 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h"
 # 1 "./libavfilter/version_major.h" 1
 # 51 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h" 2
 
@@ -5290,7 +5715,9 @@ int avfilter_graph_queue_command(AVFilterGraph *graph, const char *target, const
 char *avfilter_graph_dump(AVFilterGraph *graph, const char *options);
 # 1494 "/Users/davidchen/repo/ffmpeg/libavfilter/avfilter.h"
 int avfilter_graph_request_oldest(AVFilterGraph *graph);
-# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h" 2
+# 35 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h" 1
+# 29 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
 # 1 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h" 1
 # 27 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h"
 # 1 "./libavutil/internal.h" 1
@@ -5586,24 +6013,7 @@ int ff_filter_init_hw_frames(AVFilterContext *avctx, AVFilterLink *link,
 # 412 "/Users/davidchen/repo/ffmpeg/libavfilter/internal.h"
 int ff_filter_opt_parse(void *logctx, const AVClass *priv_class,
                         AVDictionary **options, const char *args);
-# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h" 2
-
-
-
-
-
-extern const AVFilterPad ff_audio_default_filterpad[1];
-
-
-AVFrame *ff_default_get_audio_buffer(AVFilterLink *link, int nb_samples);
-
-
-AVFrame *ff_null_get_audio_buffer(AVFilterLink *link, int nb_samples);
-# 48 "/Users/davidchen/repo/ffmpeg/libavfilter/audio.h"
-AVFrame *ff_get_audio_buffer(AVFilterLink *link, int nb_samples);
-# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h" 1
+# 30 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h" 2
 # 46 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
 void ff_filter_set_ready(AVFilterContext *filter, unsigned priority);
 
@@ -5702,770 +6112,842 @@ static inline void ff_outlink_set_status(AVFilterLink *link, int status, int64_t
 }
 # 267 "/Users/davidchen/repo/ffmpeg/libavfilter/filters.h"
 int ff_inoutlink_check_flow(AVFilterLink *inlink, AVFilterLink *outlink);
-# 29 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-
-# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h" 1
-# 26 "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h"
+# 36 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h" 1
+# 24 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/bufferqueue.h" 1
+# 44 "/Users/davidchen/repo/ffmpeg/libavfilter/bufferqueue.h"
 # 1 "./libavutil/avassert.h" 1
 # 76 "./libavutil/avassert.h"
 void av_assert0_fpu(void);
-# 27 "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h" 2
-
-
-enum WindowFunc { WFUNC_RECT, WFUNC_HANNING, WFUNC_HAMMING, WFUNC_BLACKMAN,
-                      WFUNC_BARTLETT, WFUNC_WELCH, WFUNC_FLATTOP,
-                      WFUNC_BHARRIS, WFUNC_BNUTTALL, WFUNC_SINE, WFUNC_NUTTALL,
-                      WFUNC_BHANN, WFUNC_LANCZOS, WFUNC_GAUSS, WFUNC_TUKEY,
-                      WFUNC_DOLPH, WFUNC_CAUCHY, WFUNC_PARZEN, WFUNC_POISSON,
-                      WFUNC_BOHMAN, WFUNC_KAISER,
-                      NB_WFUNC };
-# 63 "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h"
-static inline void generate_window_func(float *lut, int N, int win_func,
-                                        float *overlap)
-{
-    int n;
-
-    switch (win_func) {
-    case WFUNC_RECT:
-        for (n = 0; n < N; n++)
-            lut[n] = 1.;
-        *overlap = 0.;
-        break;
-    case WFUNC_BARTLETT:
-        for (n = 0; n < N; n++)
-            lut[n] = 1.-fabs((n-(N-1)/2.)/((N-1)/2.));
-        *overlap = 0.5;
-        break;
-    case WFUNC_HANNING:
-        for (n = 0; n < N; n++)
-            lut[n] = .5*(1-cos(2*3.14159265358979323846264338327950288*n/(N-1)));
-        *overlap = 0.5;
-        break;
-    case WFUNC_HAMMING:
-        for (n = 0; n < N; n++)
-            lut[n] = .54-.46*cos(2*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.5;
-        break;
-    case WFUNC_BLACKMAN:
-        for (n = 0; n < N; n++)
-            lut[n] = .42659-.49656*cos(2*3.14159265358979323846264338327950288*n/(N-1))+.076849*cos(4*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.661;
-        break;
-    case WFUNC_WELCH:
-        for (n = 0; n < N; n++)
-            lut[n] = 1.-(n-(N-1)/2.)/((N-1)/2.)*(n-(N-1)/2.)/((N-1)/2.);
-        *overlap = 0.293;
-        break;
-    case WFUNC_FLATTOP:
-        for (n = 0; n < N; n++)
-            lut[n] = 1.-1.985844164102*cos( 2*3.14159265358979323846264338327950288*n/(N-1))+1.791176438506*cos( 4*3.14159265358979323846264338327950288*n/(N-1))-
-            1.282075284005*cos( 6*3.14159265358979323846264338327950288*n/(N-1))+0.667777530266*cos( 8*3.14159265358979323846264338327950288*n/(N-1))-
-            0.240160796576*cos(10*3.14159265358979323846264338327950288*n/(N-1))+0.056656381764*cos(12*3.14159265358979323846264338327950288*n/(N-1))-
-            0.008134974479*cos(14*3.14159265358979323846264338327950288*n/(N-1))+0.000624544650*cos(16*3.14159265358979323846264338327950288*n/(N-1))-
-            0.000019808998*cos(18*3.14159265358979323846264338327950288*n/(N-1))+0.000000132974*cos(20*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.841;
-        break;
-    case WFUNC_BHARRIS:
-        for (n = 0; n < N; n++)
-            lut[n] = 0.35875-0.48829*cos(2*3.14159265358979323846264338327950288*n/(N-1))+0.14128*cos(4*3.14159265358979323846264338327950288*n/(N-1))-0.01168*cos(6*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.661;
-        break;
-    case WFUNC_BNUTTALL:
-        for (n = 0; n < N; n++)
-            lut[n] = 0.3635819-0.4891775*cos(2*3.14159265358979323846264338327950288*n/(N-1))+0.1365995*cos(4*3.14159265358979323846264338327950288*n/(N-1))-0.0106411*cos(6*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.661;
-        break;
-    case WFUNC_BHANN:
-        for (n = 0; n < N; n++)
-            lut[n] = 0.62-0.48*fabs(n/(double)(N-1)-.5)-0.38*cos(2*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.5;
-        break;
-    case WFUNC_SINE:
-        for (n = 0; n < N; n++)
-            lut[n] = sin(3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.75;
-        break;
-    case WFUNC_NUTTALL:
-        for (n = 0; n < N; n++)
-            lut[n] = 0.355768-0.487396*cos(2*3.14159265358979323846264338327950288*n/(N-1))+0.144232*cos(4*3.14159265358979323846264338327950288*n/(N-1))-0.012604*cos(6*3.14159265358979323846264338327950288*n/(N-1));
-        *overlap = 0.663;
-        break;
-    case WFUNC_LANCZOS:
-
-        for (n = 0; n < N; n++)
-            lut[n] = (!((2.*n)/(N-1)-1)) ? 1 : sin(3.14159265358979323846264338327950288 * ((2.*n)/(N-1)-1))/(3.14159265358979323846264338327950288 * ((2.*n)/(N-1)-1));;
-        *overlap = 0.75;
-        break;
-    case WFUNC_GAUSS:
-
-        for (n = 0; n < N; n++)
-            lut[n] = exp(-0.5 * (((n-(N-1)/2)/(0.4*(N-1)/2.f))*((n-(N-1)/2)/(0.4*(N-1)/2.f))));
-        *overlap = 0.75;
-        break;
-    case WFUNC_TUKEY:
-        for (n = 0; n < N; n++) {
-            float M = (N-1)/2.;
-
-            if (((n - M) >= 0 ? (n - M) : (-(n - M))) >= 0.3 * M) {
-                lut[n] = 0.5 * (1 + cos((3.14159265358979323846264338327950288*(((n - M) >= 0 ? (n - M) : (-(n - M))) - 0.3 * M))/((1 - 0.3) * M)));
-            } else {
-                lut[n] = 1;
-            }
-        }
-        *overlap = 0.33;
-        break;
-    case WFUNC_DOLPH: {
-        double b = cosh(7.6009022095419887 / (N-1)), sum, t, c, norm = 0;
-        int j;
-        for (c = 1 - 1 / (b*b), n = (N-1) / 2; n >= 0; --n) {
-            for (sum = !n, b = t = j = 1; j <= n && sum != t; b *= (n-j) * (1./j), ++j)
-                t = sum, sum += (b *= c * (N - n - j) * (1./j));
-            sum /= (N - 1 - n), norm = norm ? norm : sum, sum /= norm;
-            lut[n] = sum;
-            lut[N - 1 - n] = sum;
-        }
-        *overlap = 0.5;}
-        break;
-    case WFUNC_CAUCHY:
-        for (n = 0; n < N; n++) {
-            double x = 2 * ((n / (double)(N - 1)) - .5);
-
-            if (x <= -.5 || x >= .5) {
-                lut[n] = 0;
-            } else {
-                lut[n] = ((1) > (fabs(1/(1+4*16*x*x))) ? (fabs(1/(1+4*16*x*x))) : (1));
-            }
-        }
-        *overlap = 0.75;
-        break;
-    case WFUNC_PARZEN:
-        for (n = 0; n < N; n++) {
-            double x = 2 * ((n / (double)(N - 1)) - .5);
-
-            if (x > 0.25 && x <= 0.5) {
-                lut[n] = -2 * powf(-1 + 2 * x, 3);
-            } else if (x >= -.5 && x < -.25) {
-                lut[n] = 2 * powf(1 + 2 * x, 3);
-            } else if (x >= -.25 && x < 0) {
-                lut[n] = 1 - 24 * x * x - 48 * x * x * x;
-            } else if (x >= 0 && x <= .25) {
-                lut[n] = 1 - 24 * x * x + 48 * x * x * x;
-            } else {
-                lut[n] = 0;
-            }
-        }
-        *overlap = 0.75;
-        break;
-    case WFUNC_POISSON:
-        for (n = 0; n < N; n++) {
-            double x = 2 * ((n / (double)(N - 1)) - .5);
-
-            if (x >= 0 && x <= .5) {
-                lut[n] = exp(-6*x);
-            } else if (x < 0 && x >= -.5) {
-                lut[n] = exp(6*x);
-            } else {
-                lut[n] = 0;
-            }
-        }
-        *overlap = 0.75;
-        break;
-    case WFUNC_BOHMAN:
-        for (n = 0; n < N; n++) {
-            double x = 2 * ((n / (double)(N - 1))) - 1.;
-
-            lut[n] = (1 - fabs(x)) * cos(3.14159265358979323846264338327950288*fabs(x)) + 1./3.14159265358979323846264338327950288*sin(3.14159265358979323846264338327950288*fabs(x));
-        }
-        *overlap = 0.75;
-        break;
-    case WFUNC_KAISER:
-    {
-        double scale = 1.0 / av_bessel_i0(12.);
-        for (n = 0; n < N; n++) {
-            double x = 2.0 / (double)(N - 1);
-            lut[n] = av_bessel_i0(12. * sqrt(1. - ((n * x - 1.)*(n * x - 1.)))) * scale;
-        }
-        *overlap = 0.75;
-        break;
-    }
-    default:
-        do { if (!(0)) { av_log(((void*)0), 0, "Assertion %s failed at %s:%d\n", "0", "/Users/davidchen/repo/ffmpeg/libavfilter/window_func.h", 232); abort(); } } while (0);
-    }
-}
-# 31 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c" 2
-# 48 "/Users/davidchen/repo/ffmpeg/libavfilter/af_aspectralstats.c"
-typedef struct ChannelSpectralStats {
-    float mean;
-    float variance;
-    float centroid;
-    float spread;
-    float skewness;
-    float kurtosis;
-    float entropy;
-    float flatness;
-    float crest;
-    float flux;
-    float slope;
-    float decrease;
-    float rolloff;
-} ChannelSpectralStats;
-
-typedef struct AudioSpectralStatsContext {
-    const AVClass *class;
-    unsigned measure;
-    int win_size;
-    int win_func;
-    float overlap;
-    int nb_channels;
-    int hop_size;
-    ChannelSpectralStats *stats;
-    float *window_func_lut;
-    av_tx_fn tx_fn;
-    AVTXContext **fft;
-    AVComplexFloat **fft_in;
-    AVComplexFloat **fft_out;
-    float **prev_magnitude;
-    float **magnitude;
-    AVFrame *window;
-} AudioSpectralStatsContext;
+# 45 "/Users/davidchen/repo/ffmpeg/libavfilter/bufferqueue.h" 2
 
 
 
 
-static const AVOption aspectralstats_options[] = {
-    { "win_size", "set the window size", __builtin_offsetof(AudioSpectralStatsContext, win_size), AV_OPT_TYPE_INT, {.i64=2048}, 32, 65536, 8|(1<<16) },
-    { "win_func", "set window function", __builtin_offsetof(AudioSpectralStatsContext, win_func), AV_OPT_TYPE_INT, {.i64 = WFUNC_HANNING}, 0, NB_WFUNC-1, 8|(1<<16), "win_func" }, { "rect", "Rectangular", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_RECT}, 0, 0, 8|(1<<16), "win_func" }, { "bartlett", "Bartlett", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BARTLETT}, 0, 0, 8|(1<<16), "win_func" }, { "hann", "Hann", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HANNING}, 0, 0, 8|(1<<16), "win_func" }, { "hanning", "Hanning", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HANNING}, 0, 0, 8|(1<<16), "win_func" }, { "hamming", "Hamming", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_HAMMING}, 0, 0, 8|(1<<16), "win_func" }, { "blackman", "Blackman", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BLACKMAN}, 0, 0, 8|(1<<16), "win_func" }, { "welch", "Welch", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_WELCH}, 0, 0, 8|(1<<16), "win_func" }, { "flattop", "Flat-top", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_FLATTOP}, 0, 0, 8|(1<<16), "win_func" }, { "bharris", "Blackman-Harris", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BHARRIS}, 0, 0, 8|(1<<16), "win_func" }, { "bnuttall", "Blackman-Nuttall", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BNUTTALL}, 0, 0, 8|(1<<16), "win_func" }, { "bhann", "Bartlett-Hann", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BHANN}, 0, 0, 8|(1<<16), "win_func" }, { "sine", "Sine", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_SINE}, 0, 0, 8|(1<<16), "win_func" }, { "nuttall", "Nuttall", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_NUTTALL}, 0, 0, 8|(1<<16), "win_func" }, { "lanczos", "Lanczos", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_LANCZOS}, 0, 0, 8|(1<<16), "win_func" }, { "gauss", "Gauss", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_GAUSS}, 0, 0, 8|(1<<16), "win_func" }, { "tukey", "Tukey", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_TUKEY}, 0, 0, 8|(1<<16), "win_func" }, { "dolph", "Dolph-Chebyshev", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_DOLPH}, 0, 0, 8|(1<<16), "win_func" }, { "cauchy", "Cauchy", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_CAUCHY}, 0, 0, 8|(1<<16), "win_func" }, { "parzen", "Parzen", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_PARZEN}, 0, 0, 8|(1<<16), "win_func" }, { "poisson", "Poisson", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_POISSON}, 0, 0, 8|(1<<16), "win_func" }, { "bohman", "Bohman", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_BOHMAN}, 0, 0, 8|(1<<16), "win_func" }, { "kaiser", "Kaiser", 0, AV_OPT_TYPE_CONST, {.i64=WFUNC_KAISER}, 0, 0, 8|(1<<16), "win_func" },
-    { "overlap", "set window overlap", __builtin_offsetof(AudioSpectralStatsContext, overlap), AV_OPT_TYPE_FLOAT, {.dbl=0.5}, 0, 1, 8|(1<<16) },
-    { "measure", "select the parameters which are measured", __builtin_offsetof(AudioSpectralStatsContext, measure), AV_OPT_TYPE_FLAGS, {.i64=(2147483647 *2U +1U)}, 0, (2147483647 *2U +1U), 8|(1<<16), "measure" },
-    { "none", "", 0, AV_OPT_TYPE_CONST, {.i64=0 }, 0, 0, 8|(1<<16), "measure" },
-    { "all", "", 0, AV_OPT_TYPE_CONST, {.i64=(2147483647 *2U +1U) }, 0, 0, 8|(1<<16), "measure" },
-    { "mean", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 0) }, 0, 0, 8|(1<<16), "measure" },
-    { "variance", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 1)}, 0, 0, 8|(1<<16), "measure" },
-    { "centroid", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 2)}, 0, 0, 8|(1<<16), "measure" },
-    { "spread", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 3) }, 0, 0, 8|(1<<16), "measure" },
-    { "skewness", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 4)}, 0, 0, 8|(1<<16), "measure" },
-    { "kurtosis", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 5)}, 0, 0, 8|(1<<16), "measure" },
-    { "entropy", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 6) }, 0, 0, 8|(1<<16), "measure" },
-    { "flatness", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 7)}, 0, 0, 8|(1<<16), "measure" },
-    { "crest", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 8) }, 0, 0, 8|(1<<16), "measure" },
-    { "flux", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 9) }, 0, 0, 8|(1<<16), "measure" },
-    { "slope", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 10) }, 0, 0, 8|(1<<16), "measure" },
-    { "decrease", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 11)}, 0, 0, 8|(1<<16), "measure" },
-    { "rolloff", "", 0, AV_OPT_TYPE_CONST, {.i64=(1 << 12) }, 0, 0, 8|(1<<16), "measure" },
-    { ((void*)0) }
+struct FFBufQueue {
+    AVFrame *queue[64];
+    unsigned short head;
+    unsigned short available;
 };
 
-static const AVClass aspectralstats_class = { .class_name = "aspectralstats", .item_name = av_default_item_name, .option = aspectralstats_options, .version = ((58)<<16 | (36)<<8 | (100)), .category = AV_CLASS_CATEGORY_FILTER, };
 
-static int config_output(AVFilterLink *outlink)
+
+
+
+
+static inline int ff_bufqueue_is_full(struct FFBufQueue *queue)
 {
-    AudioSpectralStatsContext *s = outlink->src->priv;
-    float overlap, scale = 1.f;
-    int ret;
+    return queue->available == 64;
+}
 
-    s->nb_channels = outlink->ch_layout.nb_channels;
-    s->window_func_lut = av_realloc_f(s->window_func_lut, s->win_size,
-                                      sizeof(*s->window_func_lut));
-    if (!s->window_func_lut)
-        return (-(12));
-    generate_window_func(s->window_func_lut, s->win_size, s->win_func, &overlap);
-    if (s->overlap == 1.f)
-        s->overlap = overlap;
 
-    s->hop_size = s->win_size * (1.f - s->overlap);
-    if (s->hop_size <= 0)
-        return (-(22));
 
-    s->stats = av_calloc(s->nb_channels, sizeof(*s->stats));
-    if (!s->stats)
-        return (-(12));
 
-    s->fft = av_calloc(s->nb_channels, sizeof(*s->fft));
-    if (!s->fft)
-        return (-(12));
 
-    s->magnitude = av_calloc(s->nb_channels, sizeof(*s->magnitude));
-    if (!s->magnitude)
-        return (-(12));
 
-    s->prev_magnitude = av_calloc(s->nb_channels, sizeof(*s->prev_magnitude));
-    if (!s->prev_magnitude)
-        return (-(12));
 
-    s->fft_in = av_calloc(s->nb_channels, sizeof(*s->fft_in));
-    if (!s->fft_in)
-        return (-(12));
-
-    s->fft_out = av_calloc(s->nb_channels, sizeof(*s->fft_out));
-    if (!s->fft_out)
-        return (-(12));
-
-    for (int ch = 0; ch < s->nb_channels; ch++) {
-        ret = av_tx_init(&s->fft[ch], &s->tx_fn, AV_TX_FLOAT_FFT, 0, s->win_size, &scale, 0);
-        if (ret < 0)
-            return ret;
-
-        s->fft_in[ch] = av_calloc(s->win_size, sizeof(**s->fft_in));
-        if (!s->fft_in[ch])
-            return (-(12));
-
-        s->fft_out[ch] = av_calloc(s->win_size, sizeof(**s->fft_out));
-        if (!s->fft_out[ch])
-            return (-(12));
-
-        s->magnitude[ch] = av_calloc(s->win_size, sizeof(**s->magnitude));
-        if (!s->magnitude[ch])
-            return (-(12));
-
-        s->prev_magnitude[ch] = av_calloc(s->win_size, sizeof(**s->prev_magnitude));
-        if (!s->prev_magnitude[ch])
-            return (-(12));
+static inline void ff_bufqueue_add(void *log, struct FFBufQueue *queue,
+                                   AVFrame *buf)
+{
+    if (ff_bufqueue_is_full(queue)) {
+        av_log(log, 24, "Buffer queue overflow, dropping.\n");
+        av_frame_free(&queue->queue[(queue->head + (--queue->available)) % 64]);
     }
-
-    s->window = ff_get_audio_buffer(outlink, s->win_size);
-    if (!s->window)
-        return (-(12));
-
-    return 0;
+    queue->queue[(queue->head + (queue->available++)) % 64] = buf;
 }
 
-static void set_meta(AVDictionary **metadata, int chan, const char *key,
-                     const char *fmt, float val)
-{
-    uint8_t value[128];
-    uint8_t key2[128];
 
-    __builtin___snprintf_chk (value, sizeof(value), 0, __builtin_object_size (value, 2 > 1 ? 1 : 0), fmt, val);
-    if (chan)
-        __builtin___snprintf_chk (key2, sizeof(key2), 0, __builtin_object_size (key2, 2 > 1 ? 1 : 0), "lavfi.aspectralstats.%d.%s", chan, key);
-    else
-        __builtin___snprintf_chk (key2, sizeof(key2), 0, __builtin_object_size (key2, 2 > 1 ? 1 : 0), "lavfi.aspectralstats.%s", key);
-    av_dict_set(metadata, key2, value, 0);
+
+
+
+
+
+static inline AVFrame *ff_bufqueue_peek(struct FFBufQueue *queue,
+                                        unsigned index)
+{
+    return index < queue->available ? queue->queue[(queue->head + (index)) % 64] : ((void*)0);
 }
 
-static void set_metadata(AudioSpectralStatsContext *s, AVDictionary **metadata)
+
+
+
+
+
+static inline AVFrame *ff_bufqueue_get(struct FFBufQueue *queue)
 {
-    for (int ch = 0; ch < s->nb_channels; ch++) {
-        ChannelSpectralStats *stats = &s->stats[ch];
-
-        if (s->measure & (1 << 0))
-            set_meta(metadata, ch + 1, "mean", "%g", stats->mean);
-        if (s->measure & (1 << 1))
-            set_meta(metadata, ch + 1, "variance", "%g", stats->variance);
-        if (s->measure & (1 << 2))
-            set_meta(metadata, ch + 1, "centroid", "%g", stats->centroid);
-        if (s->measure & (1 << 3))
-            set_meta(metadata, ch + 1, "spread", "%g", stats->spread);
-        if (s->measure & (1 << 4))
-            set_meta(metadata, ch + 1, "skewness", "%g", stats->skewness);
-        if (s->measure & (1 << 5))
-            set_meta(metadata, ch + 1, "kurtosis", "%g", stats->kurtosis);
-        if (s->measure & (1 << 6))
-            set_meta(metadata, ch + 1, "entropy", "%g", stats->entropy);
-        if (s->measure & (1 << 7))
-            set_meta(metadata, ch + 1, "flatness", "%g", stats->flatness);
-        if (s->measure & (1 << 8))
-            set_meta(metadata, ch + 1, "crest", "%g", stats->crest);
-        if (s->measure & (1 << 9))
-            set_meta(metadata, ch + 1, "flux", "%g", stats->flux);
-        if (s->measure & (1 << 10))
-            set_meta(metadata, ch + 1, "slope", "%g", stats->slope);
-        if (s->measure & (1 << 11))
-            set_meta(metadata, ch + 1, "decrease", "%g", stats->decrease);
-        if (s->measure & (1 << 12))
-            set_meta(metadata, ch + 1, "rolloff", "%g", stats->rolloff);
-    }
-}
-
-static float spectral_mean(const float *const spectral, int size, int max_freq)
-{
-    float sum = 0.f;
-
-    for (int n = 0; n < size; n++)
-        sum += spectral[n];
-
-    return sum / size;
-}
-
-static float sqrf(float a)
-{
-    return a * a;
-}
-
-static float spectral_variance(const float *const spectral, int size, int max_freq, float mean)
-{
-    float sum = 0.f;
-
-    for (int n = 0; n < size; n++)
-        sum += sqrf(spectral[n] - mean);
-
-    return sum / size;
-}
-
-static float spectral_centroid(const float *const spectral, int size, int max_freq)
-{
-    const float scale = max_freq / (float)size;
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * n * scale;
-        den += spectral[n];
-    }
-
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return num / den;
-}
-
-static float spectral_spread(const float *const spectral, int size, int max_freq, float centroid)
-{
-    const float scale = max_freq / (float)size;
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * sqrf(n * scale - centroid);
-        den += spectral[n];
-    }
-
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return sqrtf(num / den);
-}
-
-static float cbrf(float a)
-{
-    return a * a * a;
-}
-
-static float spectral_skewness(const float *const spectral, int size, int max_freq, float centroid, float spread)
-{
-    const float scale = max_freq / (float)size;
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * cbrf(n * scale - centroid);
-        den += spectral[n];
-    }
-
-    den *= cbrf(spread);
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return num / den;
-}
-
-static float spectral_kurtosis(const float *const spectral, int size, int max_freq, float centroid, float spread)
-{
-    const float scale = max_freq / (float)size;
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * sqrf(sqrf(n * scale - centroid));
-        den += spectral[n];
-    }
-
-    den *= sqrf(sqrf(spread));
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return num / den;
-}
-
-static float spectral_entropy(const float *const spectral, int size, int max_freq)
-{
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        num += spectral[n] * logf(spectral[n] + 1.19209290e-7F);
-    }
-
-    den = logf(size);
-    if (den <= 1.19209290e-7F)
-        return 1.f;
-    return -num / den;
-}
-
-static float spectral_flatness(const float *const spectral, int size, int max_freq)
-{
-    float num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        float v = 1.19209290e-7F + spectral[n];
-        num += logf(v);
-        den += v;
-    }
-
-    num /= size;
-    den /= size;
-    num = expf(num);
-    if (den <= 1.19209290e-7F)
-        return 0.f;
-    return num / den;
-}
-
-static float spectral_crest(const float *const spectral, int size, int max_freq)
-{
-    float max = 0.f, mean = 0.f;
-
-    for (int n = 0; n < size; n++) {
-        max = fmaxf(max, spectral[n]);
-        mean += spectral[n];
-    }
-
-    mean /= size;
-    if (mean <= 1.19209290e-7F)
-        return 0.f;
-    return max / mean;
-}
-
-static float spectral_flux(const float *const spectral, const float *const prev_spectral,
-                           int size, int max_freq)
-{
-    float sum = 0.f;
-
-    for (int n = 0; n < size; n++)
-        sum += sqrf(spectral[n] - prev_spectral[n]);
-
-    return sqrtf(sum);
-}
-
-static float spectral_slope(const float *const spectral, int size, int max_freq)
-{
-    const float mean_freq = size * 0.5f;
-    float mean_spectral = 0.f, num = 0.f, den = 0.f;
-
-    for (int n = 0; n < size; n++)
-        mean_spectral += spectral[n];
-    mean_spectral /= size;
-
-    for (int n = 0; n < size; n++) {
-        num += ((n - mean_freq) / mean_freq) * (spectral[n] - mean_spectral);
-        den += sqrf((n - mean_freq) / mean_freq);
-    }
-
-    if (fabsf(den) <= 1.19209290e-7F)
-        return 0.f;
-    return num / den;
-}
-
-static float spectral_decrease(const float *const spectral, int size, int max_freq)
-{
-    float num = 0.f, den = 0.f;
-
-    for (int n = 1; n < size; n++) {
-        num += (spectral[n] - spectral[0]) / n;
-        den += spectral[n];
-    }
-
-    if (den <= 1.19209290e-7F)
-        return 0.f;
-    return num / den;
-}
-
-static float spectral_rolloff(const float *const spectral, int size, int max_freq)
-{
-    const float scale = max_freq / (float)size;
-    float norm = 0.f, sum = 0.f;
-    int idx = 0.f;
-
-    for (int n = 0; n < size; n++)
-        norm += spectral[n];
-    norm *= 0.85f;
-
-    for (int n = 0; n < size; n++) {
-        sum += spectral[n];
-        if (sum >= norm) {
-            idx = n;
-            break;
-        }
-    }
-
-    return idx * scale;
-}
-
-static int filter_channel(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
-{
-    AudioSpectralStatsContext *s = ctx->priv;
-    const float *window_func_lut = s->window_func_lut;
-    AVFrame *in = arg;
-    const int channels = s->nb_channels;
-    const int start = (channels * jobnr) / nb_jobs;
-    const int end = (channels * (jobnr+1)) / nb_jobs;
-    const int offset = s->win_size - s->hop_size;
-
-    for (int ch = start; ch < end; ch++) {
-        float *window = (float *)s->window->extended_data[ch];
-        ChannelSpectralStats *stats = &s->stats[ch];
-        AVComplexFloat *fft_out = s->fft_out[ch];
-        AVComplexFloat *fft_in = s->fft_in[ch];
-        float *magnitude = s->magnitude[ch];
-        float *prev_magnitude = s->prev_magnitude[ch];
-        const float scale = 1.f / s->win_size;
-
-        __builtin___memmove_chk (window, &window[s->hop_size], offset * sizeof(float), __builtin_object_size (window, 0));
-        __builtin___memcpy_chk (&window[offset], in->extended_data[ch], in->nb_samples * sizeof(float), __builtin_object_size (&window[offset], 0));
-        __builtin___memset_chk (&window[offset + in->nb_samples], 0, (s->hop_size - in->nb_samples) * sizeof(float), __builtin_object_size (&window[offset + in->nb_samples], 0));
-
-        for (int n = 0; n < s->win_size; n++) {
-            fft_in[n].re = window[n] * window_func_lut[n];
-            fft_in[n].im = 0;
-        }
-
-        s->tx_fn(s->fft[ch], fft_out, fft_in, sizeof(*fft_in));
-
-        for (int n = 0; n < s->win_size / 2; n++) {
-            fft_out[n].re *= scale;
-            fft_out[n].im *= scale;
-        }
-
-        for (int n = 0; n < s->win_size / 2; n++)
-            magnitude[n] = hypotf(fft_out[n].re, fft_out[n].im);
-
-        if (s->measure & ((1 << 0) | (1 << 1)))
-            stats->mean = spectral_mean(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 1))
-            stats->variance = spectral_variance(magnitude, s->win_size / 2, in->sample_rate / 2, stats->mean);
-        if (s->measure & ((1 << 3) | (1 << 5) | (1 << 4) | (1 << 2)))
-            stats->centroid = spectral_centroid(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & ((1 << 3) | (1 << 5) | (1 << 4)))
-            stats->spread = spectral_spread(magnitude, s->win_size / 2, in->sample_rate / 2, stats->centroid);
-        if (s->measure & (1 << 4))
-            stats->skewness = spectral_skewness(magnitude, s->win_size / 2, in->sample_rate / 2, stats->centroid, stats->spread);
-        if (s->measure & (1 << 5))
-            stats->kurtosis = spectral_kurtosis(magnitude, s->win_size / 2, in->sample_rate / 2, stats->centroid, stats->spread);
-        if (s->measure & (1 << 6))
-            stats->entropy = spectral_entropy(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 7))
-            stats->flatness = spectral_flatness(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 8))
-            stats->crest = spectral_crest(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 9))
-            stats->flux = spectral_flux(magnitude, prev_magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 10))
-            stats->slope = spectral_slope(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 11))
-            stats->decrease = spectral_decrease(magnitude, s->win_size / 2, in->sample_rate / 2);
-        if (s->measure & (1 << 12))
-            stats->rolloff = spectral_rolloff(magnitude, s->win_size / 2, in->sample_rate / 2);
-
-        __builtin___memcpy_chk (prev_magnitude, magnitude, s->win_size * sizeof(float), __builtin_object_size (prev_magnitude, 0));
-    }
-
-    return 0;
-}
-
-static int filter_frame(AVFilterLink *inlink, AVFrame *in)
-{
-    AVFilterContext *ctx = inlink->dst;
-    AVFilterLink *outlink = ctx->outputs[0];
-    AudioSpectralStatsContext *s = ctx->priv;
-    AVDictionary **metadata;
-    AVFrame *out;
-    int ret;
-
-    if (av_frame_is_writable(in)) {
-        out = in;
-    } else {
-        out = ff_get_audio_buffer(outlink, in->nb_samples);
-        if (!out) {
-            av_frame_free(&in);
-            return (-(12));
-        }
-        ret = av_frame_copy_props(out, in);
-        if (ret < 0)
-            goto fail;
-        ret = av_frame_copy(out, in);
-        if (ret < 0)
-            goto fail;
-    }
-
-    metadata = &out->metadata;
-    ff_filter_execute(ctx, filter_channel, in, ((void*)0),
-                      ((inlink->ch_layout.nb_channels) > (ff_filter_get_nb_threads(ctx)) ? (ff_filter_get_nb_threads(ctx)) : (inlink->ch_layout.nb_channels)));
-
-    set_metadata(s, metadata);
-
-    if (out != in)
-        av_frame_free(&in);
-    return ff_filter_frame(outlink, out);
-fail:
-    av_frame_free(&in);
-    av_frame_free(&out);
+    AVFrame *ret = queue->queue[queue->head];
+    do { if (!(queue->available)) { av_log(((void*)0), 0, "Assertion %s failed at %s:%d\n", "queue->available", "/Users/davidchen/repo/ffmpeg/libavfilter/bufferqueue.h", 101); abort(); } } while (0);
+    queue->available--;
+    queue->queue[queue->head] = ((void*)0);
+    queue->head = (queue->head + 1) % 64;
     return ret;
 }
 
-static int activate(AVFilterContext *ctx)
+
+
+
+static inline void ff_bufqueue_discard_all(struct FFBufQueue *queue)
 {
-    AudioSpectralStatsContext *s = ctx->priv;
-    AVFilterLink *outlink = ctx->outputs[0];
-    AVFilterLink *inlink = ctx->inputs[0];
-    AVFrame *in;
+    while (queue->available) {
+        AVFrame *buf = ff_bufqueue_get(queue);
+        av_frame_free(&buf);
+    }
+}
+# 25 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h" 2
+
+enum EOFAction {
+    EOF_ACTION_REPEAT,
+    EOF_ACTION_ENDALL,
+    EOF_ACTION_PASS
+};
+# 60 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+enum FFFrameSyncExtMode {
+
+
+
+
+    EXT_STOP,
+
+
+
+
+    EXT_NULL,
+
+
+
+
+    EXT_INFINITY,
+};
+
+
+
+
+
+
+
+enum FFFrameTSSyncMode {
+
+
+
+
+
+    TS_DEFAULT,
+
+
+
+
+
+    TS_NEAREST,
+};
+
+
+
+
+typedef struct FFFrameSyncIn {
+
+
+
+
+    enum FFFrameSyncExtMode before;
+
+
+
+
+    enum FFFrameSyncExtMode after;
+
+
+
+
+    AVRational time_base;
+
+
+
+
+    AVFrame *frame;
+
+
+
+
+    AVFrame *frame_next;
+
+
+
+
+    int64_t pts;
+
+
+
+
+    int64_t pts_next;
+
+
+
+
+    uint8_t have_next;
+
+
+
+
+    uint8_t state;
+# 160 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+    unsigned sync;
+
+    enum FFFrameTSSyncMode ts_mode;
+} FFFrameSyncIn;
+
+
+
+
+typedef struct FFFrameSync {
+    const AVClass *class;
+
+
+
+
+    AVFilterContext *parent;
+
+
+
+
+    unsigned nb_in;
+
+
+
+
+    AVRational time_base;
+
+
+
+
+    int64_t pts;
+
+
+
+
+    int (*on_event)(struct FFFrameSync *fs);
+
+
+
+
+    void *opaque;
+
+
+
+
+    unsigned in_request;
+
+
+
+
+
+    unsigned sync_level;
+
+
+
+
+    uint8_t frame_ready;
+
+
+
+
+    uint8_t eof;
+
+
+
+
+    FFFrameSyncIn *in;
+
+    int opt_repeatlast;
+    int opt_shortest;
+    int opt_eof_action;
+    int opt_ts_sync_mode;
+
+} FFFrameSync;
+# 241 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+void ff_framesync_preinit(FFFrameSync *fs);
+# 253 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+int ff_framesync_init(FFFrameSync *fs, AVFilterContext *parent, unsigned nb_in);
+# 262 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+int ff_framesync_configure(FFFrameSync *fs);
+
+
+
+
+void ff_framesync_uninit(FFFrameSync *fs);
+# 279 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+int ff_framesync_get_frame(FFFrameSync *fs, unsigned in, AVFrame **rframe,
+                            unsigned get);
+
+
+
+
+
+
+
+int ff_framesync_activate(FFFrameSync *fs);
+# 301 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+int ff_framesync_init_dualinput(FFFrameSync *fs, AVFilterContext *parent);
+# 311 "/Users/davidchen/repo/ffmpeg/libavfilter/framesync.h"
+int ff_framesync_dualinput_get(FFFrameSync *fs, AVFrame **f0, AVFrame **f1);
+
+
+
+
+int ff_framesync_dualinput_get_writable(FFFrameSync *fs, AVFrame **f0, AVFrame **f1);
+
+const AVClass *ff_framesync_child_class_iterate(void **iter);
+# 37 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+
+
+# 1 "/Users/davidchen/repo/ffmpeg/libavfilter/cuda/load_helper.h" 1
+# 25 "/Users/davidchen/repo/ffmpeg/libavfilter/cuda/load_helper.h"
+int ff_cuda_load_module(void *avctx, AVCUDADeviceContext *hwctx, CUmodule *cu_module,
+                        const unsigned char *data, const unsigned int length);
+# 40 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c" 2
+# 50 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c"
+static const enum AVPixelFormat supported_main_formats[] = {
+    AV_PIX_FMT_NV12,
+    AV_PIX_FMT_YUV420P,
+    AV_PIX_FMT_NONE,
+};
+
+static const enum AVPixelFormat supported_overlay_formats[] = {
+    AV_PIX_FMT_NV12,
+    AV_PIX_FMT_YUV420P,
+    AV_PIX_FMT_YUVA420P,
+    AV_PIX_FMT_NONE,
+};
+
+enum var_name {
+    VAR_MAIN_W, VAR_MW,
+    VAR_MAIN_H, VAR_MH,
+    VAR_OVERLAY_W, VAR_OW,
+    VAR_OVERLAY_H, VAR_OH,
+    VAR_X,
+    VAR_Y,
+    VAR_N,
+
+    VAR_POS,
+
+    VAR_T,
+    VAR_VARS_NB
+};
+
+enum EvalMode {
+    EVAL_MODE_INIT,
+    EVAL_MODE_FRAME,
+    EVAL_MODE_NB
+};
+
+static const char *const var_names[] = {
+    "main_w", "W",
+    "main_h", "H",
+    "overlay_w", "w",
+    "overlay_h", "h",
+    "x",
+    "y",
+    "n",
+
+    "pos",
+
+    "t",
+    ((void*)0)
+};
+
+
+
+
+typedef struct OverlayCUDAContext {
+    const AVClass *class;
+
+    enum AVPixelFormat in_format_overlay;
+    enum AVPixelFormat in_format_main;
+
+    AVBufferRef *hw_device_ctx;
+    AVCUDADeviceContext *hwctx;
+
+    CUcontext cu_ctx;
+    CUmodule cu_module;
+    CUfunction cu_func;
+    CUstream cu_stream;
+
+    FFFrameSync fs;
+
+    int eval_mode;
+    int x_position;
+    int y_position;
+
+    double var_values[VAR_VARS_NB];
+    char *x_expr, *y_expr;
+
+    AVExpr *x_pexpr, *y_pexpr;
+} OverlayCUDAContext;
+
+
+
+
+static int format_is_supported(const enum AVPixelFormat formats[], enum AVPixelFormat fmt)
+{
+    for (int i = 0; formats[i] != AV_PIX_FMT_NONE; i++)
+        if (formats[i] == fmt)
+            return 1;
+    return 0;
+}
+
+static inline int normalize_xy(double d, int chroma_sub)
+{
+    if (( sizeof(d) == sizeof(float) ? __inline_isnanf((float)(d)) : sizeof(d) == sizeof(double) ? __inline_isnand((double)(d)) : __inline_isnanl((long double)(d))))
+        return 2147483647;
+    return (int)d & ~((1 << chroma_sub) - 1);
+}
+
+static void eval_expr(AVFilterContext *ctx)
+{
+    OverlayCUDAContext *s = ctx->priv;
+
+    s->var_values[VAR_X] = av_expr_eval(s->x_pexpr, s->var_values, ((void*)0));
+    s->var_values[VAR_Y] = av_expr_eval(s->y_pexpr, s->var_values, ((void*)0));
+
+    s->var_values[VAR_X] = av_expr_eval(s->x_pexpr, s->var_values, ((void*)0));
+
+    s->x_position = normalize_xy(s->var_values[VAR_X], 1);
+
+
+    s->y_position = s->var_values[VAR_Y];
+}
+
+static int set_expr(AVExpr **pexpr, const char *expr, const char *option, void *log_ctx)
+{
     int ret;
+    AVExpr *old = ((void*)0);
 
-    do { int ret = ff_outlink_get_status(outlink); if (ret) { ff_inlink_set_status(inlink, ret); return 0; } } while (0);
-
-    ret = ff_inlink_consume_samples(inlink, s->hop_size, s->hop_size, &in);
-    if (ret < 0)
+    if (*pexpr)
+        old = *pexpr;
+    ret = av_expr_parse(pexpr, expr, var_names,
+                        ((void*)0), ((void*)0), ((void*)0), ((void*)0), 0, log_ctx);
+    if (ret < 0) {
+        av_log(log_ctx, 16,
+               "Error when evaluating the expression '%s' for %s\n",
+               expr, option);
+        *pexpr = old;
         return ret;
-    if (ret > 0)
-        ret = filter_frame(inlink, in);
-    if (ret < 0)
-        return ret;
+    }
 
-    if (ff_inlink_queued_samples(inlink) >= s->hop_size) {
-        ff_filter_set_ready(ctx, 10);
+    av_expr_free(old);
+    return 0;
+}
+
+
+
+
+static int formats_match(const enum AVPixelFormat format_main, const enum AVPixelFormat format_overlay) {
+    switch(format_main) {
+    case AV_PIX_FMT_NV12:
+        return format_overlay == AV_PIX_FMT_NV12;
+    case AV_PIX_FMT_YUV420P:
+        return format_overlay == AV_PIX_FMT_YUV420P ||
+               format_overlay == AV_PIX_FMT_YUVA420P;
+    default:
         return 0;
     }
-
-    do { int status; int64_t pts; if (ff_inlink_acknowledge_status(inlink, &status, &pts)) { ff_outlink_set_status(outlink, status, pts); return 0; } } while (0);
-    do { if (ff_outlink_frame_wanted(outlink)) { ff_inlink_request_frame(inlink); return 0; } } while (0);
-
-    return (-(int)(('N') | (('R') << 8) | (('D') << 16) | ((unsigned)('Y') << 24)));
 }
 
-static __attribute__((cold)) void uninit(AVFilterContext *ctx)
-{
-    AudioSpectralStatsContext *s = ctx->priv;
 
-    for (int ch = 0; ch < s->nb_channels; ch++) {
-        if (s->fft)
-            av_tx_uninit(&s->fft[ch]);
-        if (s->fft_in)
-            av_freep(&s->fft_in[ch]);
-        if (s->fft_out)
-            av_freep(&s->fft_out[ch]);
-        if (s->magnitude)
-            av_freep(&s->magnitude[ch]);
-        if (s->prev_magnitude)
-            av_freep(&s->prev_magnitude[ch]);
+
+
+static int overlay_cuda_call_kernel(
+    OverlayCUDAContext *ctx,
+    int x_position, int y_position,
+    uint8_t* main_data, int main_linesize,
+    int main_width, int main_height,
+    uint8_t* overlay_data, int overlay_linesize,
+    int overlay_width, int overlay_height,
+    uint8_t* alpha_data, int alpha_linesize,
+    int alpha_adj_x, int alpha_adj_y) {
+
+    CudaFunctions *cu = ctx->hwctx->internal->cuda_dl;
+
+    void* kernel_args[] = {
+        &x_position, &y_position,
+        &main_data, &main_linesize,
+        &overlay_data, &overlay_linesize,
+        &overlay_width, &overlay_height,
+        &alpha_data, &alpha_linesize,
+        &alpha_adj_x, &alpha_adj_y,
+    };
+
+    return ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuLaunchKernel( ctx->cu_func, ( ((main_width) + (32) - 1) / (32) ), ( ((main_height) + (16) - 1) / (16) ), 1, 32, 16, 1, 0, ctx->cu_stream, kernel_args, ((void*)0))), "cu->cuLaunchKernel( ctx->cu_func, ( ((main_width) + (32) - 1) / (32) ), ( ((main_height) + (16) - 1) / (16) ), 1, 32, 16, 1, 0, ctx->cu_stream, kernel_args, ((void*)0))");
+
+
+
+
+}
+
+
+
+
+static int overlay_cuda_blend(FFFrameSync *fs)
+{
+    int ret;
+
+    AVFilterContext *avctx = fs->parent;
+    OverlayCUDAContext *ctx = avctx->priv;
+    AVFilterLink *outlink = avctx->outputs[0];
+    AVFilterLink *inlink = avctx->inputs[0];
+
+    CudaFunctions *cu = ctx->hwctx->internal->cuda_dl;
+    CUcontext dummy, cuda_ctx = ctx->hwctx->cuda_ctx;
+
+    AVFrame *input_main, *input_overlay;
+
+    ctx->cu_ctx = cuda_ctx;
+
+
+    ret = ff_framesync_dualinput_get(fs, &input_main, &input_overlay);
+    if (ret < 0)
+        return ret;
+
+    if (!input_main)
+        return (-(int)(('B') | (('U') << 8) | (('G') << 16) | ((unsigned)('!') << 24)));
+
+    if (!input_overlay)
+        return ff_filter_frame(outlink, input_main);
+
+    ret = ff_inlink_make_frame_writable(inlink, &input_main);
+    if (ret < 0) {
+        av_frame_free(&input_main);
+        return ret;
     }
 
-    av_freep(&s->fft);
-    av_freep(&s->magnitude);
-    av_freep(&s->prev_magnitude);
-    av_freep(&s->fft_in);
-    av_freep(&s->fft_out);
-    av_freep(&s->stats);
 
-    av_freep(&s->window_func_lut);
-    av_frame_free(&s->window);
+
+    ret = ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPushCurrent(cuda_ctx)), "cu->cuCtxPushCurrent(cuda_ctx)");
+    if (ret < 0) {
+        av_frame_free(&input_main);
+        return ret;
+    }
+
+    if (ctx->eval_mode == EVAL_MODE_FRAME) {
+        ctx->var_values[VAR_N] = inlink->frame_count_out;
+        ctx->var_values[VAR_T] = input_main->pts == ((int64_t)(0x8000000000000000ULL)) ?
+            __builtin_nanf("0x7fc00000") : input_main->pts * av_q2d(inlink->time_base);
+
+
+#pragma GCC diagnostic push
+# 278 "/Users/davidchen/repo/ffmpeg/libavfilter/vf_overlay_cuda.c"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+        {
+            int64_t pos = input_main->pkt_pos;
+            ctx->var_values[VAR_POS] = pos == -1 ? __builtin_nanf("0x7fc00000") : pos;
+        }
+#pragma GCC diagnostic pop
+
+
+        ctx->var_values[VAR_OVERLAY_W] = ctx->var_values[VAR_OW] = input_overlay->width;
+        ctx->var_values[VAR_OVERLAY_H] = ctx->var_values[VAR_OH] = input_overlay->height;
+        ctx->var_values[VAR_MAIN_W ] = ctx->var_values[VAR_MW] = input_main->width;
+        ctx->var_values[VAR_MAIN_H ] = ctx->var_values[VAR_MH] = input_main->height;
+
+        eval_expr(avctx);
+
+        av_log(avctx, 48, "n:%f t:%f x:%f xi:%d y:%f yi:%d\n",
+               ctx->var_values[VAR_N], ctx->var_values[VAR_T],
+               ctx->var_values[VAR_X], ctx->x_position,
+               ctx->var_values[VAR_Y], ctx->y_position);
+    }
+
+
+
+    overlay_cuda_call_kernel(ctx,
+        ctx->x_position, ctx->y_position,
+        input_main->data[0], input_main->linesize[0],
+        input_main->width, input_main->height,
+        input_overlay->data[0], input_overlay->linesize[0],
+        input_overlay->width, input_overlay->height,
+        input_overlay->data[3], input_overlay->linesize[3], 1, 1);
+
+
+
+    switch(ctx->in_format_overlay) {
+    case AV_PIX_FMT_NV12:
+        overlay_cuda_call_kernel(ctx,
+            ctx->x_position, ctx->y_position / 2,
+            input_main->data[1], input_main->linesize[1],
+            input_main->width, input_main->height / 2,
+            input_overlay->data[1], input_overlay->linesize[1],
+            input_overlay->width, input_overlay->height / 2,
+            0, 0, 0, 0);
+        break;
+    case AV_PIX_FMT_YUV420P:
+    case AV_PIX_FMT_YUVA420P:
+        overlay_cuda_call_kernel(ctx,
+            ctx->x_position / 2 , ctx->y_position / 2,
+            input_main->data[1], input_main->linesize[1],
+            input_main->width / 2, input_main->height / 2,
+            input_overlay->data[1], input_overlay->linesize[1],
+            input_overlay->width / 2, input_overlay->height / 2,
+            input_overlay->data[3], input_overlay->linesize[3], 2, 2);
+
+        overlay_cuda_call_kernel(ctx,
+            ctx->x_position / 2 , ctx->y_position / 2,
+            input_main->data[2], input_main->linesize[2],
+            input_main->width / 2, input_main->height / 2,
+            input_overlay->data[2], input_overlay->linesize[2],
+            input_overlay->width / 2, input_overlay->height / 2,
+            input_overlay->data[3], input_overlay->linesize[3], 2, 2);
+        break;
+    default:
+        av_log(ctx, 16, "Passed unsupported overlay pixel format\n");
+        av_frame_free(&input_main);
+        ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPopCurrent(&dummy)), "cu->cuCtxPopCurrent(&dummy)");
+        return (-(int)(('B') | (('U') << 8) | (('G') << 16) | ((unsigned)('!') << 24)));
+    }
+
+    ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPopCurrent(&dummy)), "cu->cuCtxPopCurrent(&dummy)");
+
+    return ff_filter_frame(outlink, input_main);
 }
 
-static const AVFilterPad aspectralstats_outputs[] = {
+static int config_input_overlay(AVFilterLink *inlink)
+{
+    AVFilterContext *ctx = inlink->dst;
+    OverlayCUDAContext *s = inlink->dst->priv;
+    int ret;
+
+
+
+
+    s->var_values[VAR_MAIN_W ] = s->var_values[VAR_MW] = ctx->inputs[0 ]->w;
+    s->var_values[VAR_MAIN_H ] = s->var_values[VAR_MH] = ctx->inputs[0 ]->h;
+    s->var_values[VAR_OVERLAY_W] = s->var_values[VAR_OW] = ctx->inputs[1]->w;
+    s->var_values[VAR_OVERLAY_H] = s->var_values[VAR_OH] = ctx->inputs[1]->h;
+    s->var_values[VAR_X] = __builtin_nanf("0x7fc00000");
+    s->var_values[VAR_Y] = __builtin_nanf("0x7fc00000");
+    s->var_values[VAR_N] = 0;
+    s->var_values[VAR_T] = __builtin_nanf("0x7fc00000");
+
+    s->var_values[VAR_POS] = __builtin_nanf("0x7fc00000");
+
+
+    if ((ret = set_expr(&s->x_pexpr, s->x_expr, "x", ctx)) < 0 ||
+        (ret = set_expr(&s->y_pexpr, s->y_expr, "y", ctx)) < 0)
+        return ret;
+
+    if (s->eval_mode == EVAL_MODE_INIT) {
+        eval_expr(ctx);
+        av_log(ctx, 40, "x:%f xi:%d y:%f yi:%d\n",
+               s->var_values[VAR_X], s->x_position,
+               s->var_values[VAR_Y], s->y_position);
+    }
+
+    return 0;
+}
+
+
+
+
+static __attribute__((cold)) int overlay_cuda_init(AVFilterContext *avctx)
+{
+    OverlayCUDAContext* ctx = avctx->priv;
+    ctx->fs.on_event = &overlay_cuda_blend;
+
+    return 0;
+}
+
+
+
+
+static __attribute__((cold)) void overlay_cuda_uninit(AVFilterContext *avctx)
+{
+    OverlayCUDAContext* ctx = avctx->priv;
+
+    ff_framesync_uninit(&ctx->fs);
+
+    if (ctx->hwctx && ctx->cu_module) {
+        CUcontext dummy;
+        CudaFunctions *cu = ctx->hwctx->internal->cuda_dl;
+        ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPushCurrent(ctx->cu_ctx)), "cu->cuCtxPushCurrent(ctx->cu_ctx)");
+        ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuModuleUnload(ctx->cu_module)), "cu->cuModuleUnload(ctx->cu_module)");
+        ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPopCurrent(&dummy)), "cu->cuCtxPopCurrent(&dummy)");
+    }
+
+    av_expr_free(ctx->x_pexpr); ctx->x_pexpr = ((void*)0);
+    av_expr_free(ctx->y_pexpr); ctx->y_pexpr = ((void*)0);
+    av_buffer_unref(&ctx->hw_device_ctx);
+    ctx->hwctx = ((void*)0);
+}
+
+
+
+
+static int overlay_cuda_activate(AVFilterContext *avctx)
+{
+    OverlayCUDAContext *ctx = avctx->priv;
+
+    return ff_framesync_activate(&ctx->fs);
+}
+
+
+
+
+static int overlay_cuda_config_output(AVFilterLink *outlink)
+{
+    extern const unsigned char ff_vf_overlay_cuda_ptx_data[];
+    extern const unsigned int ff_vf_overlay_cuda_ptx_len;
+
+    int err;
+    AVFilterContext* avctx = outlink->src;
+    OverlayCUDAContext* ctx = avctx->priv;
+
+    AVFilterLink *inlink = avctx->inputs[0];
+    AVHWFramesContext *frames_ctx = (AVHWFramesContext*)inlink->hw_frames_ctx->data;
+
+    AVFilterLink *inlink_overlay = avctx->inputs[1];
+    AVHWFramesContext *frames_ctx_overlay = (AVHWFramesContext*)inlink_overlay->hw_frames_ctx->data;
+
+    CUcontext dummy, cuda_ctx;
+    CudaFunctions *cu;
+
+
+
+    if (!frames_ctx) {
+        av_log(ctx, 16, "No hw context provided on main input\n");
+        return (-(22));
+    }
+
+    ctx->in_format_main = frames_ctx->sw_format;
+    if (!format_is_supported(supported_main_formats, ctx->in_format_main)) {
+        av_log(ctx, 16, "Unsupported main input format: %s\n",
+               av_get_pix_fmt_name(ctx->in_format_main));
+        return (-(78));
+    }
+
+
+
+    if (!frames_ctx_overlay) {
+        av_log(ctx, 16, "No hw context provided on overlay input\n");
+        return (-(22));
+    }
+
+    ctx->in_format_overlay = frames_ctx_overlay->sw_format;
+    if (!format_is_supported(supported_overlay_formats, ctx->in_format_overlay)) {
+        av_log(ctx, 16, "Unsupported overlay input format: %s\n",
+            av_get_pix_fmt_name(ctx->in_format_overlay));
+        return (-(78));
+    }
+
+
+
+    if (!formats_match(ctx->in_format_main, ctx->in_format_overlay)) {
+        av_log(ctx, 16, "Can't overlay %s on %s \n",
+            av_get_pix_fmt_name(ctx->in_format_overlay), av_get_pix_fmt_name(ctx->in_format_main));
+        return (-(22));
+    }
+
+
+
+    ctx->hw_device_ctx = av_buffer_ref(frames_ctx->device_ref);
+    if (!ctx->hw_device_ctx)
+        return (-(12));
+    ctx->hwctx = ((AVHWDeviceContext*)ctx->hw_device_ctx->data)->hwctx;
+
+    cuda_ctx = ctx->hwctx->cuda_ctx;
+    ctx->fs.time_base = inlink->time_base;
+
+    ctx->cu_stream = ctx->hwctx->stream;
+
+    outlink->hw_frames_ctx = av_buffer_ref(inlink->hw_frames_ctx);
+    if (!outlink->hw_frames_ctx)
+        return (-(12));
+
+
+
+    cu = ctx->hwctx->internal->cuda_dl;
+
+    err = ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPushCurrent(cuda_ctx)), "cu->cuCtxPushCurrent(cuda_ctx)");
+    if (err < 0) {
+        return err;
+    }
+
+    err = ff_cuda_load_module(ctx, ctx->hwctx, &ctx->cu_module, ff_vf_overlay_cuda_ptx_data, ff_vf_overlay_cuda_ptx_len);
+    if (err < 0) {
+        ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPopCurrent(&dummy)), "cu->cuCtxPopCurrent(&dummy)");
+        return err;
+    }
+
+    err = ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuModuleGetFunction(&ctx->cu_func, ctx->cu_module, "Overlay_Cuda")), "cu->cuModuleGetFunction(&ctx->cu_func, ctx->cu_module, \"Overlay_Cuda\")");
+    if (err < 0) {
+        ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPopCurrent(&dummy)), "cu->cuCtxPopCurrent(&dummy)");
+        return err;
+    }
+
+    ff_cuda_check(ctx, ctx->hwctx->internal->cuda_dl->cuGetErrorName, ctx->hwctx->internal->cuda_dl->cuGetErrorString, (cu->cuCtxPopCurrent(&dummy)), "cu->cuCtxPopCurrent(&dummy)");
+
+
+
+    err = ff_framesync_init_dualinput(&ctx->fs, avctx);
+    if (err < 0) {
+        return err;
+    }
+
+    return ff_framesync_configure(&ctx->fs);
+}
+
+
+
+
+
+static const AVOption overlay_cuda_options[] = {
+    { "x", "set the x expression of overlay", __builtin_offsetof(OverlayCUDAContext, x_expr), AV_OPT_TYPE_STRING, { .str = "0" }, 0, 0, ((1<<16) | 16) },
+    { "y", "set the y expression of overlay", __builtin_offsetof(OverlayCUDAContext, y_expr), AV_OPT_TYPE_STRING, { .str = "0" }, 0, 0, ((1<<16) | 16) },
+    { "eof_action", "Action to take when encountering EOF from secondary input ",
+        __builtin_offsetof(OverlayCUDAContext, fs.opt_eof_action), AV_OPT_TYPE_INT, { .i64 = EOF_ACTION_REPEAT },
+        EOF_ACTION_REPEAT, EOF_ACTION_PASS, .flags = ((1<<16) | 16), "eof_action" },
+        { "repeat", "Repeat the previous frame.", 0, AV_OPT_TYPE_CONST, { .i64 = EOF_ACTION_REPEAT }, .flags = ((1<<16) | 16), "eof_action" },
+        { "endall", "End both streams.", 0, AV_OPT_TYPE_CONST, { .i64 = EOF_ACTION_ENDALL }, .flags = ((1<<16) | 16), "eof_action" },
+        { "pass", "Pass through the main input.", 0, AV_OPT_TYPE_CONST, { .i64 = EOF_ACTION_PASS }, .flags = ((1<<16) | 16), "eof_action" },
+    { "eval", "specify when to evaluate expressions", __builtin_offsetof(OverlayCUDAContext, eval_mode), AV_OPT_TYPE_INT, { .i64 = EVAL_MODE_FRAME }, 0, EVAL_MODE_NB - 1, ((1<<16) | 16), "eval" },
+         { "init", "eval expressions once during initialization", 0, AV_OPT_TYPE_CONST, { .i64=EVAL_MODE_INIT }, .flags = ((1<<16) | 16), .unit = "eval" },
+         { "frame", "eval expressions per-frame", 0, AV_OPT_TYPE_CONST, { .i64=EVAL_MODE_FRAME }, .flags = ((1<<16) | 16), .unit = "eval" },
+    { "shortest", "force termination when the shortest input terminates", __builtin_offsetof(OverlayCUDAContext, fs.opt_shortest), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, ((1<<16) | 16) },
+    { "repeatlast", "repeat overlay of the last overlay frame", __builtin_offsetof(OverlayCUDAContext, fs.opt_repeatlast), AV_OPT_TYPE_BOOL, {.i64=1}, 0, 1, ((1<<16) | 16) },
+    { ((void*)0) },
+};
+
+static int overlay_cuda_framesync_preinit(AVFilterContext *ctx) { OverlayCUDAContext *s = ctx->priv; ff_framesync_preinit(&s->fs); return 0; } static void *overlay_cuda_child_next(void *obj, void *prev) { OverlayCUDAContext *s = obj; return prev ? ((void*)0) : &s->fs; } static const AVClass overlay_cuda_class = { .class_name = "overlay_cuda", .item_name = av_default_item_name, .option = overlay_cuda_options, .version = ((58)<<16 | (36)<<8 | (100)), .category = AV_CLASS_CATEGORY_FILTER, .child_class_iterate = ff_framesync_child_class_iterate, .child_next = overlay_cuda_child_next, };
+
+static const AVFilterPad overlay_cuda_inputs[] = {
     {
-        .name = "default",
-        .type = AVMEDIA_TYPE_AUDIO,
-        .config_props = config_output,
+        .name = "main",
+        .type = AVMEDIA_TYPE_VIDEO,
+    },
+    {
+        .name = "overlay",
+        .type = AVMEDIA_TYPE_VIDEO,
+        .config_props = config_input_overlay,
     },
 };
 
-const AVFilter ff_af_aspectralstats = {
-    .name = "aspectralstats",
-    .description = "Show frequency domain statistics about audio frames.",
-    .priv_size = sizeof(AudioSpectralStatsContext),
-    .priv_class = &aspectralstats_class,
-    .uninit = uninit,
-    .activate = activate,
-    .inputs = (ff_audio_default_filterpad), .nb_inputs = (sizeof((ff_audio_default_filterpad)) / sizeof(((ff_audio_default_filterpad))[0])),
-    .outputs = (aspectralstats_outputs), .nb_outputs = (sizeof((aspectralstats_outputs)) / sizeof(((aspectralstats_outputs))[0])),
-    .formats.sample_fmt = AV_SAMPLE_FMT_FLTP, .formats_state = FF_FILTER_FORMATS_SINGLE_SAMPLEFMT,
-    .flags = (1 << 2),
+static const AVFilterPad overlay_cuda_outputs[] = {
+    {
+        .name = "default",
+        .type = AVMEDIA_TYPE_VIDEO,
+        .config_props = &overlay_cuda_config_output,
+    },
+};
+
+const AVFilter ff_vf_overlay_cuda = {
+    .name = "overlay_cuda",
+    .description = "Overlay one video on top of another using CUDA",
+    .priv_size = sizeof(OverlayCUDAContext),
+    .priv_class = &overlay_cuda_class,
+    .init = &overlay_cuda_init,
+    .uninit = &overlay_cuda_uninit,
+    .activate = &overlay_cuda_activate,
+    .inputs = (overlay_cuda_inputs), .nb_inputs = (sizeof((overlay_cuda_inputs)) / sizeof(((overlay_cuda_inputs))[0])),
+    .outputs = (overlay_cuda_outputs), .nb_outputs = (sizeof((overlay_cuda_outputs)) / sizeof(((overlay_cuda_outputs))[0])),
+    .formats.pix_fmt = AV_PIX_FMT_CUDA, .formats_state = FF_FILTER_FORMATS_SINGLE_PIXFMT,
+    .preinit = overlay_cuda_framesync_preinit,
+    .flags_internal = (1 << 0),
 };
