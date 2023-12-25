@@ -7,7 +7,7 @@ from .parse_av_class import parse_av_class
 from .parse_av_filter import parse_av_filter
 from .parse_av_filter_pad import parse_av_filter_pad
 from .parse_av_option import parse_av_option
-from .schema import AVFilter
+from .schema import AVFilter, AVFilterPad
 
 template_path = pathlib.Path(__file__).parent / "templates"
 
@@ -65,13 +65,33 @@ def eval_offset(text: str) -> tuple[str, int]:
     return text, 0
 
 
+# const AVFilterPad ff_audio_default_filterpad[1] = {
+#     {
+#         .name = "default",
+#         .type = AVMEDIA_TYPE_AUDIO,
+#     }
+# };
+
+# const AVFilterPad ff_video_default_filterpad[1] = {
+#     {
+#         .name = "default",
+#         .type = AVMEDIA_TYPE_VIDEO,
+#     }
+# };
+
+default_filter_pads: dict[str, list[AVFilterPad]] = {
+    "ff_audio_default_filterpad": [AVFilterPad(name="default", type="AVMEDIA_TYPE_AUDIO")],
+    "ff_video_default_filterpad": [AVFilterPad(name="default", type="AVMEDIA_TYPE_VIDEO")],
+}
+
+
 def extract_av_filter(text: str) -> list[AVFilter]:
     output = []
 
     av_options = parse_av_option(text)
     av_filters = parse_av_filter(text)
     av_classes = parse_av_class(text)
-    av_filter_pads = parse_av_filter_pad(text)
+    av_filter_pads = parse_av_filter_pad(text) | default_filter_pads
 
     for av_filter in av_filters.values():
         if av_filter.priv_class:

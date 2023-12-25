@@ -1,6 +1,6 @@
 [
   {
-    "description": "Download a hardware frame to a normal frame",
+    "description": "Hard repeat fields based on MPEG repeat field flag.",
     "flags": 0,
     "input_filter_pad": [
       {
@@ -8,8 +8,8 @@
         "type": "AVMEDIA_TYPE_VIDEO"
       }
     ],
-    "inputs": "(hwdownload_inputs)",
-    "name": "hwdownload",
+    "inputs": "(repeatfields_inputs)",
+    "name": "repeatfields",
     "options": [],
     "output_filter_pad": [
       {
@@ -17,7 +17,7 @@
         "type": "AVMEDIA_TYPE_VIDEO"
       }
     ],
-    "outputs": "(hwdownload_outputs)",
-    "priv_class": "&hwdownload_class"
+    "outputs": "(ff_video_default_filterpad)",
+    "priv_class": null
   }
 ]

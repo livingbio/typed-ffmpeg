@@ -79,8 +79,8 @@ class AVFilter(pydantic.BaseModel):
     # process_command: str
 
     options: list[AVOption] = []
-    input_filter_pad: AVFilterPad | None = None
-    output_filter_pad: AVFilterPad | None = None
+    input_filter_pad: list[AVFilterPad] = []
+    output_filter_pad: list[AVFilterPad] = []
 
     @property
     def priv_class_value(self) -> str:
@@ -95,7 +95,7 @@ class AVFilter(pydantic.BaseModel):
 
     @property
     def outputs_value(self) -> str | None:
-        if self.outputs is None or self.outputs == "(void*)0":
+        if self.outputs is None or self.outputs == "((void*)0)":
             return None
 
         return self.outputs.strip("()")

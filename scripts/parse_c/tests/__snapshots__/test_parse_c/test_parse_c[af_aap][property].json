@@ -5,10 +5,16 @@
     "parsed_options": {
       "description": "Apply Affine Projection algorithm to first audio stream.",
       "flags": 131076,
-      "input_filter_pad": {
-        "name": "input",
-        "type": "AVMEDIA_TYPE_AUDIO"
-      },
+      "input_filter_pad": [
+        {
+          "name": "input",
+          "type": "AVMEDIA_TYPE_AUDIO"
+        },
+        {
+          "name": "desired",
+          "type": "AVMEDIA_TYPE_AUDIO"
+        }
+      ],
       "inputs": "(inputs)",
       "name": "aap",
       "options": [
@@ -167,10 +173,12 @@
           "unit": "precision"
         }
       ],
-      "output_filter_pad": {
-        "name": "default",
-        "type": "AVMEDIA_TYPE_AUDIO"
-      },
+      "output_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_AUDIO"
+        }
+      ],
       "outputs": "(outputs)",
       "priv_class": "&aap_class"
     }

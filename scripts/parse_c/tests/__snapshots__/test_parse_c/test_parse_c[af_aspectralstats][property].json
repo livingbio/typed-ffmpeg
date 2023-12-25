@@ -1,0 +1,479 @@
+[
+  {
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "parsed_options": {
+      "description": "Show frequency domain statistics about audio frames.",
+      "flags": 4,
+      "input_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_AUDIO"
+        }
+      ],
+      "inputs": "(ff_audio_default_filterpad)",
+      "name": "aspectralstats",
+      "options": [
+        {
+          "default": "['.i64=2048']",
+          "flags": "8|(1<<16)",
+          "help": "set the window size",
+          "max": "65536",
+          "min": "32",
+          "name": "win_size",
+          "offset": "__builtin_offsetof(AudioSpectralStatsContext, win_size)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": null
+        },
+        {
+          "default": "['.i64 = WFUNC_HANNING']",
+          "flags": "8|(1<<16)",
+          "help": "set window function",
+          "max": "NB_WFUNC-1",
+          "min": "0",
+          "name": "win_func",
+          "offset": "__builtin_offsetof(AudioSpectralStatsContext, win_func)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_RECT']",
+          "flags": "8|(1<<16)",
+          "help": "Rectangular",
+          "max": "0",
+          "min": "0",
+          "name": "rect",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_BARTLETT']",
+          "flags": "8|(1<<16)",
+          "help": "Bartlett",
+          "max": "0",
+          "min": "0",
+          "name": "bartlett",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_HANNING']",
+          "flags": "8|(1<<16)",
+          "help": "Hann",
+          "max": "0",
+          "min": "0",
+          "name": "hann",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_HANNING']",
+          "flags": "8|(1<<16)",
+          "help": "Hanning",
+          "max": "0",
+          "min": "0",
+          "name": "hanning",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_HAMMING']",
+          "flags": "8|(1<<16)",
+          "help": "Hamming",
+          "max": "0",
+          "min": "0",
+          "name": "hamming",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_BLACKMAN']",
+          "flags": "8|(1<<16)",
+          "help": "Blackman",
+          "max": "0",
+          "min": "0",
+          "name": "blackman",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_WELCH']",
+          "flags": "8|(1<<16)",
+          "help": "Welch",
+          "max": "0",
+          "min": "0",
+          "name": "welch",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_FLATTOP']",
+          "flags": "8|(1<<16)",
+          "help": "Flat-top",
+          "max": "0",
+          "min": "0",
+          "name": "flattop",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_BHARRIS']",
+          "flags": "8|(1<<16)",
+          "help": "Blackman-Harris",
+          "max": "0",
+          "min": "0",
+          "name": "bharris",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_BNUTTALL']",
+          "flags": "8|(1<<16)",
+          "help": "Blackman-Nuttall",
+          "max": "0",
+          "min": "0",
+          "name": "bnuttall",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_BHANN']",
+          "flags": "8|(1<<16)",
+          "help": "Bartlett-Hann",
+          "max": "0",
+          "min": "0",
+          "name": "bhann",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_SINE']",
+          "flags": "8|(1<<16)",
+          "help": "Sine",
+          "max": "0",
+          "min": "0",
+          "name": "sine",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_NUTTALL']",
+          "flags": "8|(1<<16)",
+          "help": "Nuttall",
+          "max": "0",
+          "min": "0",
+          "name": "nuttall",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_LANCZOS']",
+          "flags": "8|(1<<16)",
+          "help": "Lanczos",
+          "max": "0",
+          "min": "0",
+          "name": "lanczos",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_GAUSS']",
+          "flags": "8|(1<<16)",
+          "help": "Gauss",
+          "max": "0",
+          "min": "0",
+          "name": "gauss",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_TUKEY']",
+          "flags": "8|(1<<16)",
+          "help": "Tukey",
+          "max": "0",
+          "min": "0",
+          "name": "tukey",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_DOLPH']",
+          "flags": "8|(1<<16)",
+          "help": "Dolph-Chebyshev",
+          "max": "0",
+          "min": "0",
+          "name": "dolph",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_CAUCHY']",
+          "flags": "8|(1<<16)",
+          "help": "Cauchy",
+          "max": "0",
+          "min": "0",
+          "name": "cauchy",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_PARZEN']",
+          "flags": "8|(1<<16)",
+          "help": "Parzen",
+          "max": "0",
+          "min": "0",
+          "name": "parzen",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_POISSON']",
+          "flags": "8|(1<<16)",
+          "help": "Poisson",
+          "max": "0",
+          "min": "0",
+          "name": "poisson",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_BOHMAN']",
+          "flags": "8|(1<<16)",
+          "help": "Bohman",
+          "max": "0",
+          "min": "0",
+          "name": "bohman",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.i64=WFUNC_KAISER']",
+          "flags": "8|(1<<16)",
+          "help": "Kaiser",
+          "max": "0",
+          "min": "0",
+          "name": "kaiser",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "win_func"
+        },
+        {
+          "default": "['.dbl=0.5']",
+          "flags": "8|(1<<16)",
+          "help": "set window overlap",
+          "max": "1",
+          "min": "0",
+          "name": "overlap",
+          "offset": "__builtin_offsetof(AudioSpectralStatsContext, overlap)",
+          "type": "AV_OPT_TYPE_FLOAT",
+          "unit": null
+        },
+        {
+          "default": "['.i64=(2147483647 *2U +1U)']",
+          "flags": "8|(1<<16)",
+          "help": "select the parameters which are measured",
+          "max": "(2147483647 *2U +1U)",
+          "min": "0",
+          "name": "measure",
+          "offset": "__builtin_offsetof(AudioSpectralStatsContext, measure)",
+          "type": "AV_OPT_TYPE_FLAGS",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=0']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "none",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(2147483647 *2U +1U)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "all",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 0)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "mean",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 1)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "variance",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 2)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "centroid",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 3)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "spread",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 4)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "skewness",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 5)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "kurtosis",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 6)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "entropy",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 7)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "flatness",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 8)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "crest",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 9)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "flux",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 10)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "slope",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 11)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "decrease",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        },
+        {
+          "default": "['.i64=(1 << 12)']",
+          "flags": "8|(1<<16)",
+          "help": "",
+          "max": "0",
+          "min": "0",
+          "name": "rolloff",
+          "offset": "0",
+          "type": "AV_OPT_TYPE_CONST",
+          "unit": "measure"
+        }
+      ],
+      "output_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_AUDIO"
+        }
+      ],
+      "outputs": "(aspectralstats_outputs)",
+      "priv_class": "&aspectralstats_class"
+    }
+  }
+]

@@ -2,44 +2,44 @@
   "ff_af_asubcut": {
     "description": "Cut subwoofer frequencies.",
     "flags": 65540,
-    "input_filter_pad": null,
+    "input_filter_pad": [],
     "inputs": "(inputs)",
     "name": "asubcut",
     "options": [],
-    "output_filter_pad": null,
+    "output_filter_pad": [],
     "outputs": "(ff_audio_default_filterpad)",
     "priv_class": "&asubcut_class"
   },
   "ff_af_asupercut": {
     "description": "Cut super frequencies.",
     "flags": 65540,
-    "input_filter_pad": null,
+    "input_filter_pad": [],
     "inputs": "(inputs)",
     "name": "asupercut",
     "options": [],
-    "output_filter_pad": null,
+    "output_filter_pad": [],
     "outputs": "(ff_audio_default_filterpad)",
     "priv_class": "&asupercut_class"
   },
   "ff_af_asuperpass": {
     "description": "Apply high order Butterworth band-pass filter.",
     "flags": 65540,
-    "input_filter_pad": null,
+    "input_filter_pad": [],
     "inputs": "(inputs)",
     "name": "asuperpass",
     "options": [],
-    "output_filter_pad": null,
+    "output_filter_pad": [],
     "outputs": "(ff_audio_default_filterpad)",
     "priv_class": "&asuperpass_asuperstop_class"
   },
   "ff_af_asuperstop": {
     "description": "Apply high order Butterworth band-stop filter.",
     "flags": 65540,
-    "input_filter_pad": null,
+    "input_filter_pad": [],
     "inputs": "(inputs)",
     "name": "asuperstop",
     "options": [],
-    "output_filter_pad": null,
+    "output_filter_pad": [],
     "outputs": "(ff_audio_default_filterpad)",
     "priv_class": "&asuperpass_asuperstop_class"
   }

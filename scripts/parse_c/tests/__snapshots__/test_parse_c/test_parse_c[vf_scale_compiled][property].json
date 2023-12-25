@@ -5,10 +5,12 @@
     "parsed_options": {
       "description": "Scale the input video size and/or convert the image format.",
       "flags": 0,
-      "input_filter_pad": {
-        "name": "default",
-        "type": "AVMEDIA_TYPE_VIDEO"
-      },
+      "input_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        }
+      ],
       "inputs": "(avfilter_vf_scale_inputs)",
       "name": "scale",
       "options": [
@@ -453,10 +455,12 @@
           "unit": "eval"
         }
       ],
-      "output_filter_pad": {
-        "name": "default",
-        "type": "AVMEDIA_TYPE_VIDEO"
-      },
+      "output_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        }
+      ],
       "outputs": "(avfilter_vf_scale_outputs)",
       "priv_class": "&scale_class"
     }
@@ -467,10 +471,16 @@
     "parsed_options": {
       "description": "Scale the input video size and/or convert the image format to the given reference.",
       "flags": 0,
-      "input_filter_pad": {
-        "name": "default",
-        "type": "AVMEDIA_TYPE_VIDEO"
-      },
+      "input_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        },
+        {
+          "name": "ref",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        }
+      ],
       "inputs": "(avfilter_vf_scale2ref_inputs)",
       "name": "scale2ref",
       "options": [
@@ -915,10 +925,16 @@
           "unit": "eval"
         }
       ],
-      "output_filter_pad": {
-        "name": "default",
-        "type": "AVMEDIA_TYPE_VIDEO"
-      },
+      "output_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        },
+        {
+          "name": "ref",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        }
+      ],
       "outputs": "(avfilter_vf_scale2ref_outputs)",
       "priv_class": "&scale_class"
     }

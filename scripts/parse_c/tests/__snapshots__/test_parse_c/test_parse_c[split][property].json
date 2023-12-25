@@ -1,0 +1,66 @@
+[
+  {
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": true,
+    "parsed_options": {
+      "description": "Pass on the input to N video outputs.",
+      "flags": 10,
+      "input_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        }
+      ],
+      "inputs": "(ff_video_default_filterpad)",
+      "name": "split",
+      "options": [
+        {
+          "default": "['.i64 = 2']",
+          "flags": "(8 | 16 | (1<<16))",
+          "help": "set number of outputs",
+          "max": "2147483647",
+          "min": "1",
+          "name": "outputs",
+          "offset": "__builtin_offsetof(SplitContext, nb_outputs)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": null
+        }
+      ],
+      "output_filter_pad": [],
+      "outputs": "((void*)0)",
+      "priv_class": "&split_class"
+    }
+  },
+  {
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": true,
+    "parsed_options": {
+      "description": "Pass on the audio input to N audio outputs.",
+      "flags": 10,
+      "input_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_AUDIO"
+        }
+      ],
+      "inputs": "(ff_audio_default_filterpad)",
+      "name": "asplit",
+      "options": [
+        {
+          "default": "['.i64 = 2']",
+          "flags": "(8 | 16 | (1<<16))",
+          "help": "set number of outputs",
+          "max": "2147483647",
+          "min": "1",
+          "name": "outputs",
+          "offset": "__builtin_offsetof(SplitContext, nb_outputs)",
+          "type": "AV_OPT_TYPE_INT",
+          "unit": null
+        }
+      ],
+      "output_filter_pad": [],
+      "outputs": "((void*)0)",
+      "priv_class": "&split_class"
+    }
+  }
+]

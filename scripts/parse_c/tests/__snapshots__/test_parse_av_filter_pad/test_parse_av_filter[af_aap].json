@@ -1,0 +1,18 @@
+{
+  "inputs": [
+    {
+      "name": "input",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    },
+    {
+      "name": "desired",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ]
+}
