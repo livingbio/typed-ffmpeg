@@ -2,7 +2,8 @@
   {
     "description": "Merge two or more audio streams into \" \"a single multi-channel stream.",
     "flags": "(1 << 0)",
-    "input_filter_pad": [],
+    "id": "ff_af_amerge",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "amerge",
     "options": [
@@ -18,7 +19,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_AUDIO"

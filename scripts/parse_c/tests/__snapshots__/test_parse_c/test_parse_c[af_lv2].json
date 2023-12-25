@@ -2,7 +2,8 @@
   {
     "description": "Apply LV2 effect.",
     "flags": "(1 << 0)",
-    "input_filter_pad": [],
+    "id": "ff_af_lv2",
+    "input_filter_pads": [],
     "inputs": "0",
     "name": "lv2",
     "options": [
@@ -117,7 +118,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_AUDIO"

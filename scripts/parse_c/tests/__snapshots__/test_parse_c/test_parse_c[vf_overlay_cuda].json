@@ -2,7 +2,8 @@
   {
     "description": "Overlay one video on top of another using CUDA",
     "flags": null,
-    "input_filter_pad": [
+    "id": "ff_vf_overlay_cuda",
+    "input_filter_pads": [
       {
         "name": "main",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -137,7 +138,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

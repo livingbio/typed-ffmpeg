@@ -2,7 +2,8 @@
   {
     "description": "Apply Finite Impulse Response filter with supplied coefficients in additional stream(s).",
     "flags": "(1 << 0) |\n                     (1 << 17) |\n                     (1 << 2)",
-    "input_filter_pad": [],
+    "id": "ff_af_afir",
+    "input_filter_pads": [],
     "inputs": null,
     "name": "afir",
     "options": [
@@ -359,7 +360,7 @@
         "unit": "irload"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_AUDIO"

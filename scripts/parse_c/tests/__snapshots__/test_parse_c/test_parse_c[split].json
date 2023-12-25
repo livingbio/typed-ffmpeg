@@ -2,7 +2,8 @@
   {
     "description": "Pass on the input to N video outputs.",
     "flags": "(1 << 1) | (1 << 3)",
-    "input_filter_pad": [
+    "id": "ff_vf_split",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -23,14 +24,15 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [],
+    "output_filter_pads": [],
     "outputs": "((void*)0)",
     "priv_class": "&split_class"
   },
   {
     "description": "Pass on the audio input to N audio outputs.",
     "flags": "(1 << 1) | (1 << 3)",
-    "input_filter_pad": [
+    "id": "ff_af_asplit",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_AUDIO"
@@ -51,7 +53,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [],
+    "output_filter_pads": [],
     "outputs": "((void*)0)",
     "priv_class": "&split_class"
   }

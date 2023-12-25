@@ -2,7 +2,8 @@
   {
     "description": "Apply erosion effect.",
     "flags": "(1 << 16)| (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_erosion",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -67,7 +68,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -79,7 +80,8 @@
   {
     "description": "Apply dilation effect.",
     "flags": "(1 << 16)| (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_dilation",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -144,7 +146,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -156,7 +158,8 @@
   {
     "description": "Apply deflate effect.",
     "flags": "(1 << 16)| (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_deflate",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -210,7 +213,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -222,7 +225,8 @@
   {
     "description": "Apply inflate effect.",
     "flags": "(1 << 16)| (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_inflate",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -276,7 +280,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

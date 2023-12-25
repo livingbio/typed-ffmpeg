@@ -127,6 +127,7 @@ def parse_av_filter_flags(text: str | None) -> int:
 
 
 class AVFilter(pydantic.BaseModel):
+    id: str  # the varname of the filter
     name: str
     description: str
 
@@ -144,8 +145,8 @@ class AVFilter(pydantic.BaseModel):
     # process_command: str
 
     options: list[AVOption] = []
-    input_filter_pad: list[AVFilterPad] = []
-    output_filter_pad: list[AVFilterPad] = []
+    input_filter_pads: list[AVFilterPad] = []
+    output_filter_pads: list[AVFilterPad] = []
 
     @property
     def flags_value(self) -> int:
@@ -154,6 +155,11 @@ class AVFilter(pydantic.BaseModel):
     @property
     def priv_class_value(self) -> str:
         return self.priv_class.strip("&")
+
+    @property
+    def input_kwargs(self) -> list[str]:
+        # if not self.is_dynamic_inputs:
+        ...
 
     @property
     def inputs_value(self) -> str | None:

@@ -2,7 +2,8 @@
   {
     "description": "Scale the input video size and/or convert the image format.",
     "flags": null,
-    "input_filter_pad": [
+    "id": "ff_vf_scale",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -452,7 +453,7 @@
         "unit": "eval"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -464,7 +465,8 @@
   {
     "description": "Scale the input video size and/or convert the image format to the given reference.",
     "flags": null,
-    "input_filter_pad": [
+    "id": "ff_vf_scale2ref",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -918,7 +920,7 @@
         "unit": "eval"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

@@ -2,7 +2,8 @@
   {
     "description": "Adjust components curves.",
     "flags": "(1 << 16) | (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_curves",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -298,7 +299,7 @@
         "unit": "interp_name"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

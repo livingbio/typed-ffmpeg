@@ -2,7 +2,8 @@
   {
     "description": "Fade in/out input audio.",
     "flags": "(1 << 16)",
-    "input_filter_pad": [
+    "id": "ff_af_afade",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_AUDIO"
@@ -452,7 +453,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_AUDIO"
@@ -464,7 +465,8 @@
   {
     "description": "Cross fade two input audio streams.",
     "flags": null,
-    "input_filter_pad": [
+    "id": "ff_af_acrossfade",
+    "input_filter_pads": [
       {
         "name": "crossfade0",
         "type": "AVMEDIA_TYPE_AUDIO"
@@ -852,7 +854,7 @@
         "unit": "curve"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_AUDIO"
