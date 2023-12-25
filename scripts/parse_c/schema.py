@@ -66,6 +66,12 @@ class Option(pydantic.BaseModel):
 
     choices: list[Choice] = []
 
+    @property
+    def required(self) -> bool:
+        if self.default is None:
+            return True
+        return False
+
 
 class AVFilterPad(pydantic.BaseModel):
     name: str
