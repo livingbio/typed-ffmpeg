@@ -1,47 +1,72 @@
 [
   {
     "flags_value": 0,
+    "inputs_value": "avfilter_vf_scale_inputs",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vf_scale_outputs",
     "parsed_options": [
       {
-        "alias": "w",
+        "alias": [
+          "w",
+          "width"
+        ],
         "choices": [],
         "default": null,
         "deprecated": false,
         "help": "Output video width",
-        "name": "width",
+        "name": "w",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": "h",
+        "alias": [
+          "h",
+          "height"
+        ],
         "choices": [],
         "default": null,
         "deprecated": false,
         "help": "Output video height",
-        "name": "height",
+        "name": "h",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str = \"\"']",
         "deprecated": false,
         "help": "Flags to pass to libswscale",
         "name": "flags",
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = 0']",
         "deprecated": false,
         "help": "set interlacing",
         "name": "interl",
+        "required": false,
         "type": "AV_OPT_TYPE_BOOL"
       },
       {
-        "alias": null,
+        "alias": [
+          "size",
+          "s"
+        ],
+        "choices": [],
+        "default": "['.str = ((void*)0)']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -88,10 +113,11 @@
         "deprecated": false,
         "help": "set input YCbCr type",
         "name": "in_color_matrix",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -138,10 +164,11 @@
         "deprecated": false,
         "help": "set output YCbCr type",
         "name": "out_color_matrix",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -188,10 +215,11 @@
         "deprecated": false,
         "help": "set input color range",
         "name": "in_range",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -238,46 +266,51 @@
         "deprecated": false,
         "help": "set output color range",
         "name": "out_range",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = -513']",
         "deprecated": false,
         "help": "input vertical chroma position in luma grid/256",
         "name": "in_v_chr_pos",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = -513']",
         "deprecated": false,
         "help": "input horizontal chroma position in luma grid/256",
         "name": "in_h_chr_pos",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = -513']",
         "deprecated": false,
         "help": "output vertical chroma position in luma grid/256",
         "name": "out_v_chr_pos",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = -513']",
         "deprecated": false,
         "help": "output horizontal chroma position in luma grid/256",
         "name": "out_h_chr_pos",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -299,100 +332,121 @@
         "deprecated": false,
         "help": "decrease or increase w/h if necessary to keep the original AR",
         "name": "force_original_aspect_ratio",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = 1']",
         "deprecated": false,
         "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
         "name": "force_divisible_by",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl = 1.7976931348623157e+308']",
         "deprecated": false,
         "help": "Scaler param 0",
         "name": "param0",
+        "required": false,
         "type": "AV_OPT_TYPE_DOUBLE"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl = 1.7976931348623157e+308']",
         "deprecated": false,
         "help": "Scaler param 1",
         "name": "param1",
+        "required": false,
         "type": "AV_OPT_TYPE_DOUBLE"
       },
       {
-        "alias": null,
-        "choices": [
-          {
-            "help": "eval expressions once during initialization",
-            "name": "init",
-            "value": "['.i64=EVAL_MODE_INIT']"
-          },
-          {
-            "help": "eval expressions during initialization and per-frame",
-            "name": "frame",
-            "value": "['.i64=EVAL_MODE_FRAME']"
-          }
-        ],
+        "alias": [],
+        "choices": [],
         "default": "['.i64 = EVAL_MODE_INIT']",
         "deprecated": false,
         "help": "specify when to evaluate expressions",
         "name": "eval",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "scale_class",
+    "type": "vf"
   },
   {
     "flags_value": 0,
+    "inputs_value": "avfilter_vf_scale2ref_inputs",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vf_scale2ref_outputs",
     "parsed_options": [
       {
-        "alias": "w",
+        "alias": [
+          "w",
+          "width"
+        ],
         "choices": [],
         "default": null,
         "deprecated": false,
         "help": "Output video width",
-        "name": "width",
+        "name": "w",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": "h",
+        "alias": [
+          "h",
+          "height"
+        ],
         "choices": [],
         "default": null,
         "deprecated": false,
         "help": "Output video height",
-        "name": "height",
+        "name": "h",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str = \"\"']",
         "deprecated": false,
         "help": "Flags to pass to libswscale",
         "name": "flags",
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = 0']",
         "deprecated": false,
         "help": "set interlacing",
         "name": "interl",
+        "required": false,
         "type": "AV_OPT_TYPE_BOOL"
       },
       {
-        "alias": null,
+        "alias": [
+          "size",
+          "s"
+        ],
+        "choices": [],
+        "default": "['.str = ((void*)0)']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -439,10 +493,11 @@
         "deprecated": false,
         "help": "set input YCbCr type",
         "name": "in_color_matrix",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -489,10 +544,11 @@
         "deprecated": false,
         "help": "set output YCbCr type",
         "name": "out_color_matrix",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -539,10 +595,11 @@
         "deprecated": false,
         "help": "set input color range",
         "name": "in_range",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -589,46 +646,51 @@
         "deprecated": false,
         "help": "set output color range",
         "name": "out_range",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = -513']",
         "deprecated": false,
         "help": "input vertical chroma position in luma grid/256",
         "name": "in_v_chr_pos",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = -513']",
         "deprecated": false,
         "help": "input horizontal chroma position in luma grid/256",
         "name": "in_h_chr_pos",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = -513']",
         "deprecated": false,
         "help": "output vertical chroma position in luma grid/256",
         "name": "out_v_chr_pos",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = -513']",
         "deprecated": false,
         "help": "output horizontal chroma position in luma grid/256",
         "name": "out_h_chr_pos",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -650,55 +712,51 @@
         "deprecated": false,
         "help": "decrease or increase w/h if necessary to keep the original AR",
         "name": "force_original_aspect_ratio",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = 1']",
         "deprecated": false,
         "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
         "name": "force_divisible_by",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl = 1.7976931348623157e+308']",
         "deprecated": false,
         "help": "Scaler param 0",
         "name": "param0",
+        "required": false,
         "type": "AV_OPT_TYPE_DOUBLE"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl = 1.7976931348623157e+308']",
         "deprecated": false,
         "help": "Scaler param 1",
         "name": "param1",
+        "required": false,
         "type": "AV_OPT_TYPE_DOUBLE"
       },
       {
-        "alias": null,
-        "choices": [
-          {
-            "help": "eval expressions once during initialization",
-            "name": "init",
-            "value": "['.i64=EVAL_MODE_INIT']"
-          },
-          {
-            "help": "eval expressions during initialization and per-frame",
-            "name": "frame",
-            "value": "['.i64=EVAL_MODE_FRAME']"
-          }
-        ],
+        "alias": [],
+        "choices": [],
         "default": "['.i64 = EVAL_MODE_INIT']",
         "deprecated": false,
         "help": "specify when to evaluate expressions",
         "name": "eval",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "scale_class",
+    "type": "vf"
   }
 ]

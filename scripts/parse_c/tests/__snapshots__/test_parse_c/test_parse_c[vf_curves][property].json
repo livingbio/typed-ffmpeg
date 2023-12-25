@@ -1,11 +1,13 @@
 [
   {
     "flags_value": 65540,
+    "inputs_value": "curves_inputs",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "((void*)0)",
@@ -67,73 +69,93 @@
         "deprecated": false,
         "help": "select a color curves preset",
         "name": "preset",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": "m",
+        "alias": [
+          "master",
+          "m"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "set master points coordinates",
         "name": "master",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": "r",
+        "alias": [
+          "red",
+          "r"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "set red points coordinates",
         "name": "red",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": "g",
+        "alias": [
+          "green",
+          "g"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "set green points coordinates",
         "name": "green",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": "b",
+        "alias": [
+          "blue",
+          "b"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "set blue points coordinates",
         "name": "blue",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "set points coordinates for all components",
         "name": "all",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "set Photoshop curves file name",
         "name": "psfile",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "save Gnuplot script of the curves in specified file",
         "name": "plot",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "natural cubic spline",
@@ -150,8 +172,11 @@
         "deprecated": false,
         "help": "specify the kind of interpolation",
         "name": "interp",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "curves_class",
+    "type": "vf"
   }
 ]

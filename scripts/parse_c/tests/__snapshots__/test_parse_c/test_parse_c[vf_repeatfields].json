@@ -2,7 +2,8 @@
   {
     "description": "Hard repeat fields based on MPEG repeat field flag.",
     "flags": null,
-    "input_filter_pad": [
+    "id": "ff_vf_repeatfields",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -11,7 +12,7 @@
     "inputs": "(repeatfields_inputs)",
     "name": "repeatfields",
     "options": [],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

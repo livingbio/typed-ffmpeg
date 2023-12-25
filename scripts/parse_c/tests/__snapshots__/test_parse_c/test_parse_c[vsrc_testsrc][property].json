@@ -1,624 +1,862 @@
 [
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "color_outputs",
     "parsed_options": [
       {
-        "alias": "c",
+        "alias": [
+          "color",
+          "c"
+        ],
         "choices": [],
         "default": "['.str = \"black\"']",
         "deprecated": false,
         "help": "set color",
         "name": "color",
+        "required": false,
         "type": "AV_OPT_TYPE_COLOR"
       },
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "color_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "haldclutsrc_outputs",
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = 6']",
         "deprecated": false,
         "help": "set level",
         "name": "level",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "haldclutsrc_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "nullsrc_yuvtestsrc_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": "decimals",
+        "alias": [
+          "decimals",
+          "n"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set number of decimals to show",
-        "name": "n",
+        "name": "decimals",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "testsrc_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vsrc_testsrc2_outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = 255']",
         "deprecated": false,
         "help": "set global alpha (opacity)",
         "name": "alpha",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "testsrc2_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vsrc_rgbtestsrc_outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": "co",
+        "alias": [
+          "complement",
+          "co"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set complement colors",
         "name": "complement",
+        "required": false,
         "type": "AV_OPT_TYPE_BOOL"
       }
-    ]
+    ],
+    "priv_class_value": "rgbtestsrc_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vsrc_yuvtestsrc_outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "nullsrc_yuvtestsrc_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "palbars_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "palbars_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "smptebars_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "smptebars_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "allyuv_allrgb_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vsrc_allrgb_outputs",
     "parsed_options": [
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       }
-    ]
+    ],
+    "priv_class_value": "allyuv_allrgb_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "fade to black",
@@ -640,53 +878,68 @@
         "deprecated": false,
         "help": "set the color spectrum type",
         "name": "type",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "colorspectrum_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vsrc_colorchart_outputs",
     "parsed_options": [
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str=\"64x64\"']",
         "deprecated": false,
         "help": "set the single patch size",
         "name": "patch_size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "reference",
@@ -703,195 +956,231 @@
         "deprecated": false,
         "help": "set the color checker chart preset",
         "name": "preset",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "colorchart_class",
+    "type": "vsrc"
   },
   {
     "flags_value": 4,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vsrc_zoneplate_outputs",
     "parsed_options": [
       {
-        "alias": "s",
+        "alias": [
+          "size",
+          "s"
+        ],
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "deprecated": false,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
+        "required": false,
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=10']",
         "deprecated": false,
         "help": "set LUT precision",
         "name": "precision",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set X-axis offset",
         "name": "xo",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set Y-axis offset",
         "name": "yo",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set T-axis offset",
         "name": "to",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 0-order phase",
         "name": "k0",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 1-order X-axis phase",
         "name": "kx",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 1-order Y-axis phase",
         "name": "ky",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 1-order T-axis phase",
         "name": "kt",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set X-axis*T-axis product phase",
         "name": "kxt",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set Y-axis*T-axis product phase",
         "name": "kyt",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set X-axis*Y-axis product phase",
         "name": "kxy",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 2-order X-axis phase",
         "name": "kx2",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 2-order Y-axis phase",
         "name": "ky2",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 2-order T-axis phase",
         "name": "kt2",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 0-order U-color phase",
         "name": "ku",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "set 0-order V-color phase",
         "name": "kv",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "zoneplate_class",
+    "type": "vsrc"
   }
 ]

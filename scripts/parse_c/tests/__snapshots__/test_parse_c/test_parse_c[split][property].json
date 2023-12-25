@@ -1,34 +1,44 @@
 [
   {
     "flags_value": 10,
+    "inputs_value": "ff_video_default_filterpad",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": true,
+    "outputs_value": null,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = 2']",
         "deprecated": false,
         "help": "set number of outputs",
         "name": "outputs",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "split_class",
+    "type": "vf"
   },
   {
     "flags_value": 10,
+    "inputs_value": "ff_audio_default_filterpad",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": true,
+    "outputs_value": null,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64 = 2']",
         "deprecated": false,
         "help": "set number of outputs",
         "name": "outputs",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "split_class",
+    "type": "af"
   }
 ]

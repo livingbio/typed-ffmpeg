@@ -1,8 +1,12 @@
 [
   {
     "flags_value": 0,
+    "inputs_value": "repeatfields_inputs",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": []
+    "outputs_value": "ff_video_default_filterpad",
+    "parsed_options": [],
+    "priv_class_value": null,
+    "type": "vf"
   }
 ]

@@ -1,0 +1,14 @@
+{
+  "ff_vf_tonemap_vaapi": {
+    "description": "VAAPI VPP for tone-mapping",
+    "flags": null,
+    "id": "ff_vf_tonemap_vaapi",
+    "input_filter_pads": [],
+    "inputs": "(tonemap_vaapi_inputs)",
+    "name": "tonemap_vaapi",
+    "options": [],
+    "output_filter_pads": [],
+    "outputs": "(tonemap_vaapi_outputs)",
+    "priv_class": "&tonemap_vaapi_class"
+  }
+}

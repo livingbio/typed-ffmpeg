@@ -1,29 +1,42 @@
 [
   {
     "flags_value": 0,
+    "inputs_value": null,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "mptestsrc_outputs",
     "parsed_options": [
       {
-        "alias": "r",
+        "alias": [
+          "rate",
+          "r"
+        ],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": false,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": "d",
+        "alias": [
+          "duration",
+          "d"
+        ],
         "choices": [],
         "default": "['.i64 = -1']",
         "deprecated": false,
         "help": "set video duration",
         "name": "duration",
+        "required": false,
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": "t",
+        "alias": [
+          "test",
+          "t"
+        ],
         "choices": [
           {
             "help": "",
@@ -85,17 +98,24 @@
         "deprecated": false,
         "help": "set test to perform",
         "name": "test",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": "m",
+        "alias": [
+          "max_frames",
+          "m"
+        ],
         "choices": [],
         "default": "['.i64 = 30']",
         "deprecated": false,
         "help": "Set the maximum number of frames generated for each test",
         "name": "max_frames",
+        "required": false,
         "type": "AV_OPT_TYPE_INT64"
       }
-    ]
+    ],
+    "priv_class_value": "mptestsrc_class",
+    "type": "vsrc"
   }
 ]

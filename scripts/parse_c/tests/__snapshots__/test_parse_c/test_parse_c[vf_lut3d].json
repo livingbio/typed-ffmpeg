@@ -2,7 +2,8 @@
   {
     "description": "Adjust colors using a 3D LUT.",
     "flags": "(1 << 16) | (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_lut3d",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -13,7 +14,7 @@
     "options": [
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16",
+        "flags": ".flags = (1<<16)|16",
         "help": "set 3D LUT file name",
         "max": null,
         "min": null,
@@ -35,7 +36,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "process only first CLUT, ignore rest",
         "max": null,
         "min": null,
@@ -46,7 +47,7 @@
       },
       {
         "default": "['.i64=1']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "process all CLUTs",
         "max": null,
         "min": null,
@@ -122,7 +123,7 @@
         "unit": "interp_mode"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -134,7 +135,8 @@
   {
     "description": "Adjust colors using a Hald CLUT.",
     "flags": "(1 << 17) | (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_haldclut",
+    "input_filter_pads": [
       {
         "name": "main",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -160,7 +162,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "process only first CLUT, ignore rest",
         "max": null,
         "min": null,
@@ -171,7 +173,7 @@
       },
       {
         "default": "['.i64=1']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "process all CLUTs",
         "max": null,
         "min": null,
@@ -247,7 +249,7 @@
         "unit": "interp_mode"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -259,7 +261,8 @@
   {
     "description": "Adjust colors using a 1D LUT.",
     "flags": "(1 << 16) | (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_lut1d",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -270,7 +273,7 @@
     "options": [
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set 1D LUT file name",
         "max": null,
         "min": null,
@@ -346,7 +349,7 @@
         "unit": "interp_mode"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

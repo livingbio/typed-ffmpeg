@@ -2,7 +2,8 @@
   {
     "description": "Provide an uniformly colored input.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_color",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "color",
     "options": [
@@ -106,7 +107,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -118,7 +119,8 @@
   {
     "description": "Provide an identity Hald CLUT.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_haldclutsrc",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "haldclutsrc",
     "options": [
@@ -189,7 +191,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -201,7 +203,8 @@
   {
     "description": "Null video source, return unprocessed video frames.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_nullsrc",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "nullsrc",
     "options": [
@@ -283,7 +286,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -295,7 +298,8 @@
   {
     "description": "Generate test pattern.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_testsrc",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "testsrc",
     "options": [
@@ -399,7 +403,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -411,7 +415,8 @@
   {
     "description": "Generate another test pattern.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_testsrc2",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "testsrc2",
     "options": [
@@ -504,7 +509,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -516,7 +521,8 @@
   {
     "description": "Generate RGB test pattern.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_rgbtestsrc",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "rgbtestsrc",
     "options": [
@@ -620,7 +626,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -632,7 +638,8 @@
   {
     "description": "Generate YUV test pattern.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_yuvtestsrc",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "yuvtestsrc",
     "options": [
@@ -714,7 +721,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -726,7 +733,8 @@
   {
     "description": "Generate PAL 75% color bars.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_pal75bars",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "pal75bars",
     "options": [
@@ -808,7 +816,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -820,7 +828,8 @@
   {
     "description": "Generate PAL 100% color bars.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_pal100bars",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "pal100bars",
     "options": [
@@ -902,7 +911,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -914,7 +923,8 @@
   {
     "description": "Generate SMPTE color bars.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_smptebars",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "smptebars",
     "options": [
@@ -996,7 +1006,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -1008,7 +1018,8 @@
   {
     "description": "Generate SMPTE HD color bars.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_smptehdbars",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "smptehdbars",
     "options": [
@@ -1090,7 +1101,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -1102,7 +1113,8 @@
   {
     "description": "Generate all yuv colors.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_allyuv",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "allyuv",
     "options": [
@@ -1162,7 +1174,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -1174,7 +1186,8 @@
   {
     "description": "Generate all RGB colors.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_allrgb",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "allrgb",
     "options": [
@@ -1234,7 +1247,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -1246,7 +1259,8 @@
   {
     "description": "Generate colors spectrum.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_colorspectrum",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "colorspectrum",
     "options": [
@@ -1372,7 +1386,7 @@
         "unit": "type"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -1384,7 +1398,8 @@
   {
     "description": "Generate color checker chart.",
     "flags": null,
-    "input_filter_pad": [],
+    "id": "ff_vsrc_colorchart",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "colorchart",
     "options": [
@@ -1488,7 +1503,7 @@
         "unit": "preset"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -1500,7 +1515,8 @@
   {
     "description": "Generate zone-plate.",
     "flags": "(1 << 2)",
-    "input_filter_pad": [],
+    "id": "ff_vsrc_zoneplate",
+    "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "zoneplate",
     "options": [
@@ -1758,7 +1774,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

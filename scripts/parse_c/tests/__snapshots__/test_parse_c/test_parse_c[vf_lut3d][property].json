@@ -1,20 +1,23 @@
 [
   {
     "flags_value": 65540,
+    "inputs_value": "lut3d_inputs",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "set 3D LUT file name",
         "name": "file",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "process only first CLUT, ignore rest",
@@ -31,10 +34,11 @@
         "deprecated": false,
         "help": "when to process CLUT",
         "name": "clut",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "use values from the nearest defined points",
@@ -66,17 +70,22 @@
         "deprecated": false,
         "help": "select interpolation mode",
         "name": "interp",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "lut3d_class",
+    "type": "vf"
   },
   {
     "flags_value": 131076,
+    "inputs_value": "haldclut_inputs",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "haldclut_outputs",
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "process only first CLUT, ignore rest",
@@ -93,10 +102,11 @@
         "deprecated": false,
         "help": "when to process CLUT",
         "name": "clut",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "use values from the nearest defined points",
@@ -128,26 +138,32 @@
         "deprecated": false,
         "help": "select interpolation mode",
         "name": "interp",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "haldclut_class",
+    "type": "vf"
   },
   {
     "flags_value": 65540,
+    "inputs_value": "lut1d_inputs",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
         "help": "set 1D LUT file name",
         "name": "file",
+        "required": true,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "use values from the nearest defined points",
@@ -179,8 +195,11 @@
         "deprecated": false,
         "help": "select interpolation mode",
         "name": "interp",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "lut1d_class",
+    "type": "vf"
   }
 ]

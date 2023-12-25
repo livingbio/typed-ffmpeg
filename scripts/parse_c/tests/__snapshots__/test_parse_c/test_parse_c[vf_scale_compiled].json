@@ -2,7 +2,8 @@
   {
     "description": "Scale the input video size and/or convert the image format.",
     "flags": null,
-    "input_filter_pad": [
+    "id": "ff_vf_scale",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -13,7 +14,7 @@
     "options": [
       {
         "default": null,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "help": "Output video width",
         "max": null,
         "min": null,
@@ -24,7 +25,7 @@
       },
       {
         "default": null,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "help": "Output video width",
         "max": null,
         "min": null,
@@ -35,7 +36,7 @@
       },
       {
         "default": null,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "help": "Output video height",
         "max": null,
         "min": null,
@@ -46,7 +47,7 @@
       },
       {
         "default": null,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "help": "Output video height",
         "max": null,
         "min": null,
@@ -57,7 +58,7 @@
       },
       {
         "default": "['.str = \"\"']",
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "help": "Flags to pass to libswscale",
         "max": null,
         "min": null,
@@ -75,6 +76,28 @@
         "name": "interl",
         "offset": "__builtin_offsetof(ScaleContext, interlaced)",
         "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": null,
+        "help": "set video size",
+        "max": "16|(1<<16)",
+        "min": "0",
+        "name": "size",
+        "offset": "__builtin_offsetof(ScaleContext, size_str)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": null,
+        "help": "set video size",
+        "max": "16|(1<<16)",
+        "min": "0",
+        "name": "s",
+        "offset": "__builtin_offsetof(ScaleContext, size_str)",
+        "type": "AV_OPT_TYPE_STRING",
         "unit": null
       },
       {
@@ -431,28 +454,28 @@
       },
       {
         "default": "['.i64=EVAL_MODE_INIT']",
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "help": "eval expressions once during initialization",
         "max": null,
         "min": null,
         "name": "init",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "help": "eval expressions during initialization and per-frame",
         "max": null,
         "min": null,
         "name": "frame",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -464,7 +487,8 @@
   {
     "description": "Scale the input video size and/or convert the image format to the given reference.",
     "flags": null,
-    "input_filter_pad": [
+    "id": "ff_vf_scale2ref",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -479,7 +503,7 @@
     "options": [
       {
         "default": null,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "help": "Output video width",
         "max": null,
         "min": null,
@@ -490,7 +514,7 @@
       },
       {
         "default": null,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "help": "Output video width",
         "max": null,
         "min": null,
@@ -501,7 +525,7 @@
       },
       {
         "default": null,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "help": "Output video height",
         "max": null,
         "min": null,
@@ -512,7 +536,7 @@
       },
       {
         "default": null,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "help": "Output video height",
         "max": null,
         "min": null,
@@ -523,7 +547,7 @@
       },
       {
         "default": "['.str = \"\"']",
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "help": "Flags to pass to libswscale",
         "max": null,
         "min": null,
@@ -541,6 +565,28 @@
         "name": "interl",
         "offset": "__builtin_offsetof(ScaleContext, interlaced)",
         "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": null,
+        "help": "set video size",
+        "max": "16|(1<<16)",
+        "min": "0",
+        "name": "size",
+        "offset": "__builtin_offsetof(ScaleContext, size_str)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": null,
+        "help": "set video size",
+        "max": "16|(1<<16)",
+        "min": "0",
+        "name": "s",
+        "offset": "__builtin_offsetof(ScaleContext, size_str)",
+        "type": "AV_OPT_TYPE_STRING",
         "unit": null
       },
       {
@@ -897,28 +943,28 @@
       },
       {
         "default": "['.i64=EVAL_MODE_INIT']",
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "help": "eval expressions once during initialization",
         "max": null,
         "min": null,
         "name": "init",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "help": "eval expressions during initialization and per-frame",
         "max": null,
         "min": null,
         "name": "frame",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

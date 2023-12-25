@@ -1,38 +1,43 @@
 [
   {
     "flags_value": 131077,
+    "inputs_value": null,
     "is_dynamic_inputs": true,
     "is_dynamic_outputs": false,
+    "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl=1']",
         "deprecated": false,
         "help": "set dry gain",
         "name": "dry",
+        "required": false,
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl=1']",
         "deprecated": false,
         "help": "set wet gain",
         "name": "wet",
+        "required": false,
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl=1']",
         "deprecated": false,
         "help": "set IR length",
         "name": "length",
+        "required": false,
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "without auto gain",
@@ -69,37 +74,41 @@
         "deprecated": true,
         "help": "set IR auto gain type",
         "name": "gtype",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl=1']",
         "deprecated": false,
         "help": "set IR norm",
         "name": "irnorm",
+        "required": false,
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=1']",
         "deprecated": false,
         "help": "set IR link",
         "name": "irlink",
+        "required": false,
         "type": "AV_OPT_TYPE_BOOL"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl=1']",
         "deprecated": false,
         "help": "set IR gain",
         "name": "irgain",
+        "required": false,
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "single channel",
@@ -116,91 +125,101 @@
         "deprecated": false,
         "help": "set IR format",
         "name": "irfmt",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl=30']",
         "deprecated": false,
         "help": "set max IR length",
         "name": "maxir",
+        "required": false,
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": true,
         "help": "show IR frequency response",
         "name": "response",
+        "required": false,
         "type": "AV_OPT_TYPE_BOOL"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": true,
         "help": "set IR channel to display frequency response",
         "name": "channel",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str = \"hd720\"']",
         "deprecated": true,
         "help": "set video size",
         "name": "size",
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.str = \"25\"']",
         "deprecated": true,
         "help": "set video rate",
         "name": "rate",
+        "required": false,
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=8192']",
         "deprecated": false,
         "help": "set min partition size",
         "name": "minp",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=8192']",
         "deprecated": false,
         "help": "set max partition size",
         "name": "maxp",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=1']",
         "deprecated": false,
         "help": "set number of input IRs",
         "name": "nbirs",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
         "help": "select IR",
         "name": "ir",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "set auto processing precision",
@@ -222,10 +241,11 @@
         "deprecated": false,
         "help": "set processing precision",
         "name": "precision",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "load all IRs on init",
@@ -242,8 +262,11 @@
         "deprecated": false,
         "help": "set IR loading type",
         "name": "irload",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       }
-    ]
+    ],
+    "priv_class_value": "afir_class",
+    "type": "af"
   }
 ]

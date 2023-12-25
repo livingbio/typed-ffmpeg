@@ -61,11 +61,12 @@ class Option(pydantic.BaseModel):
     help: str
     type: str
     default: str | None = None
-    alias: str | None = None
+    alias: list[str] = []
     deprecated: bool = False
 
     choices: list[Choice] = []
 
+    @pydantic.computed_field
     @property
     def required(self) -> bool:
         if self.default is None:
@@ -126,7 +127,19 @@ def parse_av_filter_flags(text: str | None) -> int:
     return eval(text)
 
 
+class FilterType(str, enum.Enum):
+    AUDIO_FILTER = "af"
+    AUDIO_SOURCE = "asrc"
+    AUDIO_SINK = "asink"
+    VIDEO_FILTER = "vf"
+    VIDEO_SOURCE = "vsrc"
+    VIDEO_SINK = "vsink"
+    AUDIO_AND_VIDEO_FILTER = "avf"
+    VIDEO_AND_AUDIO_FILTER = "vaf"
+
+
 class AVFilter(pydantic.BaseModel):
+    id: str  # the varname of the filter
     name: str
     description: str
 
@@ -144,15 +157,22 @@ class AVFilter(pydantic.BaseModel):
     # process_command: str
 
     options: list[AVOption] = []
-    input_filter_pad: list[AVFilterPad] = []
-    output_filter_pad: list[AVFilterPad] = []
+    input_filter_pads: list[AVFilterPad] = []
+    output_filter_pads: list[AVFilterPad] = []
+
+    @property
+    def type(self) -> FilterType:
+        _, type, _ = self.id.split("_", 2)
+        return FilterType(type)
 
     @property
     def flags_value(self) -> int:
         return parse_av_filter_flags(self.flags)
 
     @property
-    def priv_class_value(self) -> str:
+    def priv_class_value(self) -> str | None:
+        if self.priv_class is None:
+            return None
         return self.priv_class.strip("&")
 
     @property
@@ -196,22 +216,19 @@ class AVFilter(pydantic.BaseModel):
                 ]
 
         # collect alias map
-        alias_map = defaultdict(list)
+        alias_map: dict[str, list[AVOption]] = defaultdict(list)
         for option in [k for k in self.options if k.type != "AV_OPT_TYPE_CONST"]:
             alias_map[option.offset].append(option)
-            alias_map[option.offset].sort(key=lambda i: i.name)
-
-        assert all(len(v) <= 2 for v in alias_map.values()), f"alias_map should have 1 or 2 items {self}"
 
         # collect options
         for option in [k for k in self.options if k.unit == None or k.type != "AV_OPT_TYPE_CONST"]:
             if len(alias_map[option.offset]) > 1:
-                if alias_map[option.offset][0].name == option.name:
+                if alias_map[option.offset][0].name != option.name:
                     continue
                 else:
-                    alias = alias_map[option.offset][0].name
+                    alias = [k.name for k in alias_map[option.offset]]
             else:
-                alias = None
+                alias = []
 
             if option.unit == None:
                 output.append(
@@ -232,7 +249,7 @@ class AVFilter(pydantic.BaseModel):
                         help=option.help,
                         type=option.type,
                         default=option.default,
-                        choices=choices[option.unit],
+                        choices=choices.get(option.unit, []),
                         deprecated=option.flag_is_deprecated,
                     )
                 )

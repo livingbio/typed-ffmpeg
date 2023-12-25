@@ -2,7 +2,8 @@
   {
     "description": "Adjust components curves.",
     "flags": "(1 << 16) | (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_vf_curves",
+    "input_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -145,7 +146,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set master points coordinates",
         "max": null,
         "min": null,
@@ -156,7 +157,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set master points coordinates",
         "max": null,
         "min": null,
@@ -167,7 +168,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set red points coordinates",
         "max": null,
         "min": null,
@@ -178,7 +179,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set red points coordinates",
         "max": null,
         "min": null,
@@ -189,7 +190,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set green points coordinates",
         "max": null,
         "min": null,
@@ -200,7 +201,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set green points coordinates",
         "max": null,
         "min": null,
@@ -211,7 +212,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set blue points coordinates",
         "max": null,
         "min": null,
@@ -222,7 +223,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set blue points coordinates",
         "max": null,
         "min": null,
@@ -233,7 +234,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set points coordinates for all components",
         "max": null,
         "min": null,
@@ -244,7 +245,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "set Photoshop curves file name",
         "max": null,
         "min": null,
@@ -255,7 +256,7 @@
       },
       {
         "default": "['.str=((void*)0)']",
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "help": "save Gnuplot script of the curves in specified file",
         "max": null,
         "min": null,
@@ -298,7 +299,7 @@
         "unit": "interp_name"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

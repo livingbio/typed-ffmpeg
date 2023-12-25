@@ -2,7 +2,8 @@
   {
     "description": "Overlay one video on top of another using CUDA",
     "flags": null,
-    "input_filter_pad": [
+    "id": "ff_vf_overlay_cuda",
+    "input_filter_pads": [
       {
         "name": "main",
         "type": "AVMEDIA_TYPE_VIDEO"
@@ -50,7 +51,7 @@
       },
       {
         "default": "['.i64 = EOF_ACTION_REPEAT']",
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "help": "Repeat the previous frame.",
         "max": null,
         "min": null,
@@ -61,7 +62,7 @@
       },
       {
         "default": "['.i64 = EOF_ACTION_ENDALL']",
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "help": "End both streams.",
         "max": null,
         "min": null,
@@ -72,7 +73,7 @@
       },
       {
         "default": "['.i64 = EOF_ACTION_PASS']",
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "help": "Pass through the main input.",
         "max": null,
         "min": null,
@@ -94,25 +95,25 @@
       },
       {
         "default": "['.i64=EVAL_MODE_INIT']",
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "help": "eval expressions once during initialization",
         "max": null,
         "min": null,
         "name": "init",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "help": "eval expressions per-frame",
         "max": null,
         "min": null,
         "name": "frame",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       },
       {
         "default": "['.i64 = 0']",
@@ -137,7 +138,7 @@
         "unit": null
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_VIDEO"

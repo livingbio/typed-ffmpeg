@@ -1,20 +1,23 @@
 [
   {
     "flags_value": 4,
+    "inputs_value": "ff_audio_default_filterpad",
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
+    "outputs_value": "aspectralstats_outputs",
     "parsed_options": [
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.i64=2048']",
         "deprecated": false,
         "help": "set the window size",
         "name": "win_size",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "Rectangular",
@@ -131,19 +134,21 @@
         "deprecated": false,
         "help": "set window function",
         "name": "win_func",
+        "required": false,
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [],
         "default": "['.dbl=0.5']",
         "deprecated": false,
         "help": "set window overlap",
         "name": "overlap",
+        "required": false,
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": null,
+        "alias": [],
         "choices": [
           {
             "help": "",
@@ -225,8 +230,11 @@
         "deprecated": false,
         "help": "select the parameters which are measured",
         "name": "measure",
+        "required": false,
         "type": "AV_OPT_TYPE_FLAGS"
       }
-    ]
+    ],
+    "priv_class_value": "aspectralstats_class",
+    "type": "af"
   }
 ]

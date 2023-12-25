@@ -2,7 +2,8 @@
   {
     "description": "Apply Affine Projection algorithm to first audio stream.",
     "flags": "(1 << 17) |\n                      (1 << 2)",
-    "input_filter_pad": [
+    "id": "ff_af_aap",
+    "input_filter_pads": [
       {
         "name": "input",
         "type": "AVMEDIA_TYPE_AUDIO"
@@ -170,7 +171,7 @@
         "unit": "precision"
       }
     ],
-    "output_filter_pad": [
+    "output_filter_pads": [
       {
         "name": "default",
         "type": "AVMEDIA_TYPE_AUDIO"

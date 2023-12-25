@@ -17,6 +17,7 @@ def parse_av_filter(text: str) -> dict[str, AVFilter]:
             config[var.strip()] = value.strip('" ')
 
         output[filter] = AVFilter(
+            id=filter,
             name=config[".name"],
             description=config[".description"],
             priv_class=config.get(".priv_class"),
