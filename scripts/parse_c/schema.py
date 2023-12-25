@@ -88,7 +88,8 @@ class AVFilter(pydantic.BaseModel):
 
     @property
     def inputs_value(self) -> str | None:
-        if self.inputs is None or self.inputs == "((void*)0)":
+        # af_lv2.c's inputs is 0
+        if self.inputs is None or self.inputs == "((void*)0)" or self.inputs == "0":
             return None
 
         return self.inputs.strip("()")
