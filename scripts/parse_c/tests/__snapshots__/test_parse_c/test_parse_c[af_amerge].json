@@ -1,0 +1,30 @@
+[
+  {
+    "description": "Merge two or more audio streams into \" \"a single multi-channel stream.",
+    "flags": "(1 << 0)",
+    "input_filter_pad": [],
+    "inputs": "((void*)0)",
+    "name": "amerge",
+    "options": [
+      {
+        "default": "['.i64 = 2']",
+        "flags": "8|(1<<16)",
+        "help": "specify the number of inputs",
+        "max": "64",
+        "min": "1",
+        "name": "inputs",
+        "offset": "__builtin_offsetof(AMergeContext, nb_inputs)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "outputs": "(amerge_outputs)",
+    "priv_class": "&amerge_class"
+  }
+]

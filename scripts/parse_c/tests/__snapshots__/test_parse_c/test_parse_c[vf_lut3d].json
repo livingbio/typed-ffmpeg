@@ -1,6 +1,14 @@
 [
   {
     "description": "Adjust colors using a 3D LUT.",
+    "flags": "(1 << 16) | (1 << 2)",
+    "input_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(lut3d_inputs)",
     "name": "lut3d",
     "options": [
       {
@@ -114,10 +122,29 @@
         "unit": "interp_mode"
       }
     ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
     "priv_class": "&lut3d_class"
   },
   {
     "description": "Adjust colors using a Hald CLUT.",
+    "flags": "(1 << 17) | (1 << 2)",
+    "input_filter_pad": [
+      {
+        "name": "main",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      },
+      {
+        "name": "clut",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(haldclut_inputs)",
     "name": "haldclut",
     "options": [
       {
@@ -220,10 +247,25 @@
         "unit": "interp_mode"
       }
     ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(haldclut_outputs)",
     "priv_class": "&haldclut_class"
   },
   {
     "description": "Adjust colors using a 1D LUT.",
+    "flags": "(1 << 16) | (1 << 2)",
+    "input_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(lut1d_inputs)",
     "name": "lut1d",
     "options": [
       {
@@ -304,6 +346,13 @@
         "unit": "interp_mode"
       }
     ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
     "priv_class": "&lut1d_class"
   }
 ]

@@ -1,6 +1,14 @@
 [
   {
     "description": "Show frequency domain statistics about audio frames.",
+    "flags": "(1 << 2)",
+    "input_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "inputs": "(ff_audio_default_filterpad)",
     "name": "aspectralstats",
     "options": [
       {
@@ -455,6 +463,13 @@
         "unit": "measure"
       }
     ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "outputs": "(aspectralstats_outputs)",
     "priv_class": "&aspectralstats_class"
   }
 ]

@@ -1,6 +1,14 @@
 [
   {
     "description": "Apply erosion effect.",
+    "flags": "(1 << 16)| (1 << 2)",
+    "input_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(neighbor_inputs)",
     "name": "erosion",
     "options": [
       {
@@ -59,10 +67,25 @@
         "unit": null
       }
     ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
     "priv_class": "&erosion_dilation_class"
   },
   {
     "description": "Apply dilation effect.",
+    "flags": "(1 << 16)| (1 << 2)",
+    "input_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(neighbor_inputs)",
     "name": "dilation",
     "options": [
       {
@@ -121,10 +144,25 @@
         "unit": null
       }
     ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
     "priv_class": "&erosion_dilation_class"
   },
   {
     "description": "Apply deflate effect.",
+    "flags": "(1 << 16)| (1 << 2)",
+    "input_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(neighbor_inputs)",
     "name": "deflate",
     "options": [
       {
@@ -172,10 +210,25 @@
         "unit": null
       }
     ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
     "priv_class": "&deflate_inflate_class"
   },
   {
     "description": "Apply inflate effect.",
+    "flags": "(1 << 16)| (1 << 2)",
+    "input_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(neighbor_inputs)",
     "name": "inflate",
     "options": [
       {
@@ -223,6 +276,13 @@
         "unit": null
       }
     ],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
     "priv_class": "&deflate_inflate_class"
   }
 ]

@@ -1,3 +1,4 @@
+import enum
 from functools import cached_property
 from itertools import groupby
 
@@ -48,6 +49,33 @@ class AVClass(pydantic.BaseModel):
     category: str | None = None
 
 
+class AVFilterFlags(int, enum.Enum):
+    # ref: libavfilter/avfilter.h
+    AVFILTER_FLAG_DYNAMIC_INPUTS = 1 << 0
+    AVFILTER_FLAG_DYNAMIC_OUTPUTS = 1 << 1
+    AVFILTER_FLAG_SLICE_THREADS = 1 << 2
+    AVFILTER_FLAG_METADATA_ONLY = 1 << 3
+    AVFILTER_FLAG_HWDEVICE = 1 << 4
+    AVFILTER_FLAG_SUPPORT_TIMELINE_GENERIC = 1 << 16
+    AVFILTER_FLAG_SUPPORT_TIMELINE_INTERNAL = 1 << 17
+    AVFILTER_FLAG_SUPPORT_TIMELINE = AVFILTER_FLAG_SUPPORT_TIMELINE_GENERIC | AVFILTER_FLAG_SUPPORT_TIMELINE_INTERNAL
+
+
+def parse_av_filter_flags(text: str | None) -> int:
+    if text is None:
+        return 0
+
+    text = text.replace("\n", "")
+
+    def convert_avfilter_flag(match) -> str:
+        return str(AVFilterFlags[match.group(1)].value)
+
+    if "AVFILTER" in text:
+        text = re.sub(r"(AVFILTER_FLAG_\w+)", convert_avfilter_flag, text)
+
+    return eval(text)
+
+
 class AVFilter(pydantic.BaseModel):
     name: str
     description: str
@@ -57,15 +85,48 @@ class AVFilter(pydantic.BaseModel):
     # uninit: str
     # priv_size: str
     # activate: str
-    # inputs: str
+    inputs: str | None = None
     # nb_inputs: str
-    # outputs: str
+    outputs: str | None = None
     # nb_outputs: str
     priv_class: str | None = None
-    # flags: str
+    flags: str | None = None
     # process_command: str
 
     options: list[AVOption] = []
+    input_filter_pad: list[AVFilterPad] = []
+    output_filter_pad: list[AVFilterPad] = []
+
+    @property
+    def flags_value(self) -> int:
+        return parse_av_filter_flags(self.flags)
+
+    @property
+    def priv_class_value(self) -> str:
+        return self.priv_class.strip("&")
+
+    @property
+    def inputs_value(self) -> str | None:
+        # af_lv2.c's inputs is 0
+        if self.inputs is None or self.inputs == "((void*)0)" or self.inputs == "0":
+            return None
+
+        return self.inputs.strip("()")
+
+    @property
+    def outputs_value(self) -> str | None:
+        if self.outputs is None or self.outputs == "((void*)0)":
+            return None
+
+        return self.outputs.strip("()")
+
+    @property
+    def is_dynamic_inputs(self) -> bool:
+        return bool(self.flags_value & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_INPUTS)
+
+    @property
+    def is_dynamic_outputs(self) -> bool:
+        return bool(self.flags_value & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_OUTPUTS)
 
     @cached_property
     def parsed_options(self) -> list[Option]:

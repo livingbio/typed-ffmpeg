@@ -1,8 +1,23 @@
 [
   {
     "description": "Download a hardware frame to a normal frame",
+    "flags": null,
+    "input_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(hwdownload_inputs)",
     "name": "hwdownload",
     "options": [],
+    "output_filter_pad": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(hwdownload_outputs)",
     "priv_class": "&hwdownload_class"
   }
 ]

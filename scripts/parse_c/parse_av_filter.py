@@ -20,5 +20,8 @@ def parse_av_filter(text: str) -> dict[str, AVFilter]:
             name=config[".name"],
             description=config[".description"],
             priv_class=config.get(".priv_class"),
+            flags=config.get(".flags"),
+            inputs=config.get(".inputs"),
+            outputs=config.get(".outputs"),
         )
     return output

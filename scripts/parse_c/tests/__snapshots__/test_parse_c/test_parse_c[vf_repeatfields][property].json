@@ -1,0 +1,28 @@
+[
+  {
+    "flags_value": 0,
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "parsed_options": {
+      "description": "Hard repeat fields based on MPEG repeat field flag.",
+      "flags": null,
+      "input_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        }
+      ],
+      "inputs": "(repeatfields_inputs)",
+      "name": "repeatfields",
+      "options": [],
+      "output_filter_pad": [
+        {
+          "name": "default",
+          "type": "AVMEDIA_TYPE_VIDEO"
+        }
+      ],
+      "outputs": "(ff_video_default_filterpad)",
+      "priv_class": null
+    }
+  }
+]
