@@ -2,20 +2,14 @@
   {
     "description": "Provide an uniformly colored input.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_color",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "color",
     "options": [
       {
         "default": "['.str = \"black\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set color",
         "max": "0",
         "min": "0",
@@ -26,9 +20,7 @@
       },
       {
         "default": "['.str = \"black\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set color",
         "max": "0",
         "min": "0",
@@ -39,9 +31,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -52,9 +42,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -65,9 +53,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -78,9 +64,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -91,9 +75,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -104,9 +86,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -117,9 +97,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -136,80 +114,19 @@
       }
     ],
     "outputs": "(color_outputs)",
-    "outputs_value": "color_outputs",
-    "parsed_options": [
-      {
-        "alias": "c",
-        "choices": [],
-        "default": "['.str = \"black\"']",
-        "deprecated": false,
-        "help": "set color",
-        "name": "color",
-        "required": false,
-        "type": "AV_OPT_TYPE_COLOR"
-      },
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&color_class",
-    "priv_class_value": "color_class",
-    "type": "vsrc"
+    "priv_class": "&color_class"
   },
   {
     "description": "Provide an identity Hald CLUT.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_haldclutsrc",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "haldclutsrc",
     "options": [
       {
         "default": "['.i64 = 6']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set level",
         "max": "16",
         "min": "2",
@@ -220,9 +137,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -233,9 +148,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -246,9 +159,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -259,9 +170,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -272,9 +181,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -291,70 +198,19 @@
       }
     ],
     "outputs": "(haldclutsrc_outputs)",
-    "outputs_value": "haldclutsrc_outputs",
-    "parsed_options": [
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = 6']",
-        "deprecated": false,
-        "help": "set level",
-        "name": "level",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&haldclutsrc_class",
-    "priv_class_value": "haldclutsrc_class",
-    "type": "vsrc"
+    "priv_class": "&haldclutsrc_class"
   },
   {
     "description": "Null video source, return unprocessed video frames.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_nullsrc",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "nullsrc",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -365,9 +221,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -378,9 +232,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -391,9 +243,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -404,9 +254,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -417,9 +265,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -430,9 +276,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -449,70 +293,19 @@
       }
     ],
     "outputs": "(outputs)",
-    "outputs_value": "outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&nullsrc_yuvtestsrc_class",
-    "priv_class_value": "nullsrc_yuvtestsrc_class",
-    "type": "vsrc"
+    "priv_class": "&nullsrc_yuvtestsrc_class"
   },
   {
     "description": "Generate test pattern.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_testsrc",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "testsrc",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -523,9 +316,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -536,9 +327,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -549,9 +338,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -562,9 +349,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -575,9 +360,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -588,9 +371,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -601,9 +382,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set number of decimals to show",
         "max": "17",
         "min": "0",
@@ -614,9 +393,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set number of decimals to show",
         "max": "17",
         "min": "0",
@@ -633,80 +410,19 @@
       }
     ],
     "outputs": "(outputs)",
-    "outputs_value": "outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      },
-      {
-        "alias": "decimals",
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set number of decimals to show",
-        "name": "n",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&testsrc_class",
-    "priv_class_value": "testsrc_class",
-    "type": "vsrc"
+    "priv_class": "&testsrc_class"
   },
   {
     "description": "Generate another test pattern.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_testsrc2",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "testsrc2",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -717,9 +433,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -730,9 +444,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -743,9 +455,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -756,9 +466,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -769,9 +477,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -782,9 +488,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -795,9 +499,7 @@
       },
       {
         "default": "['.i64 = 255']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set global alpha (opacity)",
         "max": "255",
         "min": "0",
@@ -814,80 +516,19 @@
       }
     ],
     "outputs": "(avfilter_vsrc_testsrc2_outputs)",
-    "outputs_value": "avfilter_vsrc_testsrc2_outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = 255']",
-        "deprecated": false,
-        "help": "set global alpha (opacity)",
-        "name": "alpha",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&testsrc2_class",
-    "priv_class_value": "testsrc2_class",
-    "type": "vsrc"
+    "priv_class": "&testsrc2_class"
   },
   {
     "description": "Generate RGB test pattern.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_rgbtestsrc",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "rgbtestsrc",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -898,9 +539,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -911,9 +550,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -924,9 +561,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -937,9 +572,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -950,9 +583,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -963,9 +594,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -976,9 +605,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set complement colors",
         "max": "1",
         "min": "0",
@@ -989,9 +616,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set complement colors",
         "max": "1",
         "min": "0",
@@ -1008,80 +633,19 @@
       }
     ],
     "outputs": "(avfilter_vsrc_rgbtestsrc_outputs)",
-    "outputs_value": "avfilter_vsrc_rgbtestsrc_outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      },
-      {
-        "alias": "co",
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set complement colors",
-        "name": "complement",
-        "required": false,
-        "type": "AV_OPT_TYPE_BOOL"
-      }
-    ],
-    "priv_class": "&rgbtestsrc_class",
-    "priv_class_value": "rgbtestsrc_class",
-    "type": "vsrc"
+    "priv_class": "&rgbtestsrc_class"
   },
   {
     "description": "Generate YUV test pattern.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_yuvtestsrc",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "yuvtestsrc",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1092,9 +656,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1105,9 +667,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1118,9 +678,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1131,9 +689,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1144,9 +700,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1157,9 +711,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -1176,70 +728,19 @@
       }
     ],
     "outputs": "(avfilter_vsrc_yuvtestsrc_outputs)",
-    "outputs_value": "avfilter_vsrc_yuvtestsrc_outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&nullsrc_yuvtestsrc_class",
-    "priv_class_value": "nullsrc_yuvtestsrc_class",
-    "type": "vsrc"
+    "priv_class": "&nullsrc_yuvtestsrc_class"
   },
   {
     "description": "Generate PAL 75% color bars.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_pal75bars",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "pal75bars",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1250,9 +751,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1263,9 +762,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1276,9 +773,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1289,9 +784,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1302,9 +795,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1315,9 +806,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -1334,70 +823,19 @@
       }
     ],
     "outputs": "(outputs)",
-    "outputs_value": "outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&palbars_class",
-    "priv_class_value": "palbars_class",
-    "type": "vsrc"
+    "priv_class": "&palbars_class"
   },
   {
     "description": "Generate PAL 100% color bars.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_pal100bars",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "pal100bars",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1408,9 +846,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1421,9 +857,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1434,9 +868,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1447,9 +879,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1460,9 +890,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1473,9 +901,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -1492,70 +918,19 @@
       }
     ],
     "outputs": "(outputs)",
-    "outputs_value": "outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&palbars_class",
-    "priv_class_value": "palbars_class",
-    "type": "vsrc"
+    "priv_class": "&palbars_class"
   },
   {
     "description": "Generate SMPTE color bars.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_smptebars",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "smptebars",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1566,9 +941,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1579,9 +952,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1592,9 +963,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1605,9 +974,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1618,9 +985,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1631,9 +996,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -1650,70 +1013,19 @@
       }
     ],
     "outputs": "(outputs)",
-    "outputs_value": "outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&smptebars_class",
-    "priv_class_value": "smptebars_class",
-    "type": "vsrc"
+    "priv_class": "&smptebars_class"
   },
   {
     "description": "Generate SMPTE HD color bars.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_smptehdbars",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "smptehdbars",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1724,9 +1036,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -1737,9 +1047,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1750,9 +1058,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1763,9 +1069,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1776,9 +1080,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1789,9 +1091,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -1808,70 +1108,19 @@
       }
     ],
     "outputs": "(outputs)",
-    "outputs_value": "outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&smptebars_class",
-    "priv_class_value": "smptebars_class",
-    "type": "vsrc"
+    "priv_class": "&smptebars_class"
   },
   {
     "description": "Generate all yuv colors.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_allyuv",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "allyuv",
     "options": [
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1882,9 +1131,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -1895,9 +1142,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1908,9 +1153,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -1921,9 +1164,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -1940,60 +1181,19 @@
       }
     ],
     "outputs": "(outputs)",
-    "outputs_value": "outputs",
-    "parsed_options": [
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&allyuv_allrgb_class",
-    "priv_class_value": "allyuv_allrgb_class",
-    "type": "vsrc"
+    "priv_class": "&allyuv_allrgb_class"
   },
   {
     "description": "Generate all RGB colors.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_allrgb",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "allrgb",
     "options": [
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -2004,9 +1204,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -2017,9 +1215,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -2030,9 +1226,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -2043,9 +1237,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -2062,60 +1254,19 @@
       }
     ],
     "outputs": "(avfilter_vsrc_allrgb_outputs)",
-    "outputs_value": "avfilter_vsrc_allrgb_outputs",
-    "parsed_options": [
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      }
-    ],
-    "priv_class": "&allyuv_allrgb_class",
-    "priv_class_value": "allyuv_allrgb_class",
-    "type": "vsrc"
+    "priv_class": "&allyuv_allrgb_class"
   },
   {
     "description": "Generate colors spectrum.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_colorspectrum",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "colorspectrum",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -2126,9 +1277,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -2139,9 +1288,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -2152,9 +1299,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -2165,9 +1310,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -2178,9 +1321,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -2191,9 +1332,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -2204,9 +1343,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set the color spectrum type",
         "max": "2",
         "min": "0",
@@ -2217,9 +1354,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "fade to black",
         "max": "0",
         "min": "0",
@@ -2230,9 +1365,7 @@
       },
       {
         "default": "['.i64=1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "fade to white",
         "max": "0",
         "min": "0",
@@ -2243,9 +1376,7 @@
       },
       {
         "default": "['.i64=2']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "white to black",
         "max": "0",
         "min": "0",
@@ -2262,96 +1393,19 @@
       }
     ],
     "outputs": "(outputs)",
-    "outputs_value": "outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      },
-      {
-        "alias": null,
-        "choices": [
-          {
-            "help": "fade to black",
-            "name": "black",
-            "value": "['.i64=0']"
-          },
-          {
-            "help": "fade to white",
-            "name": "white",
-            "value": "['.i64=1']"
-          },
-          {
-            "help": "white to black",
-            "name": "all",
-            "value": "['.i64=2']"
-          }
-        ],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set the color spectrum type",
-        "name": "type",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&colorspectrum_class",
-    "priv_class_value": "colorspectrum_class",
-    "type": "vsrc"
+    "priv_class": "&colorspectrum_class"
   },
   {
     "description": "Generate color checker chart.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vsrc_colorchart",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "colorchart",
     "options": [
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -2362,9 +1416,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -2375,9 +1427,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -2388,9 +1438,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -2401,9 +1449,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -2414,9 +1460,7 @@
       },
       {
         "default": "['.str=\"64x64\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set the single patch size",
         "max": "0",
         "min": "0",
@@ -2427,9 +1471,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set the color checker chart preset",
         "max": "1",
         "min": "0",
@@ -2440,9 +1482,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "reference",
         "max": "0",
         "min": "0",
@@ -2453,9 +1493,7 @@
       },
       {
         "default": "['.i64=1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "skintones",
         "max": "0",
         "min": "0",
@@ -2472,91 +1510,19 @@
       }
     ],
     "outputs": "(avfilter_vsrc_colorchart_outputs)",
-    "outputs_value": "avfilter_vsrc_colorchart_outputs",
-    "parsed_options": [
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.str=\"64x64\"']",
-        "deprecated": false,
-        "help": "set the single patch size",
-        "name": "patch_size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
-        "choices": [
-          {
-            "help": "reference",
-            "name": "reference",
-            "value": "['.i64=0']"
-          },
-          {
-            "help": "skintones",
-            "name": "skintones",
-            "value": "['.i64=1']"
-          }
-        ],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set the color checker chart preset",
-        "name": "preset",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&colorchart_class",
-    "priv_class_value": "colorchart_class",
-    "type": "vsrc"
+    "priv_class": "&colorchart_class"
   },
   {
     "description": "Generate zone-plate.",
     "flags": "(1 << 2)",
-    "flags_value": 4,
     "id": "ff_vsrc_zoneplate",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "zoneplate",
     "options": [
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -2567,9 +1533,7 @@
       },
       {
         "default": "['.str = \"320x240\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video size",
         "max": "0",
         "min": "0",
@@ -2580,9 +1544,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -2593,9 +1555,7 @@
       },
       {
         "default": "['.str = \"25\"']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -2606,9 +1566,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -2619,9 +1577,7 @@
       },
       {
         "default": "['.i64 = -1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -2632,9 +1588,7 @@
       },
       {
         "default": "['.dbl= 1']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set video sample aspect ratio",
         "max": "2147483647",
         "min": "0",
@@ -2645,9 +1599,7 @@
       },
       {
         "default": "['.i64=10']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
-        "flags_value": 65552,
         "help": "set LUT precision",
         "max": "16",
         "min": "4",
@@ -2658,9 +1610,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set X-axis offset",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2671,9 +1621,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set Y-axis offset",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2684,9 +1632,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set T-axis offset",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2697,9 +1643,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 0-order phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2710,9 +1654,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 1-order X-axis phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2723,9 +1665,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 1-order Y-axis phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2736,9 +1676,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 1-order T-axis phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2749,9 +1687,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set X-axis*T-axis product phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2762,9 +1698,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set Y-axis*T-axis product phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2775,9 +1709,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set X-axis*Y-axis product phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2788,9 +1720,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 2-order X-axis phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2801,9 +1731,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 2-order Y-axis phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2814,9 +1742,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 2-order T-axis phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2827,9 +1753,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 0-order U-color phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2840,9 +1764,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
-        "flags_value": 98320,
         "help": "set 0-order V-color phase",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -2859,211 +1781,6 @@
       }
     ],
     "outputs": "(avfilter_vsrc_zoneplate_outputs)",
-    "outputs_value": "avfilter_vsrc_zoneplate_outputs",
-    "parsed_options": [
-      {
-        "alias": "s",
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "deprecated": false,
-        "help": "set video size",
-        "name": "size",
-        "required": false,
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": "r",
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "deprecated": false,
-        "help": "set video rate",
-        "name": "rate",
-        "required": false,
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "deprecated": false,
-        "help": "set video duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl= 1']",
-        "deprecated": false,
-        "help": "set video sample aspect ratio",
-        "name": "sar",
-        "required": false,
-        "type": "AV_OPT_TYPE_RATIONAL"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=10']",
-        "deprecated": false,
-        "help": "set LUT precision",
-        "name": "precision",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set X-axis offset",
-        "name": "xo",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set Y-axis offset",
-        "name": "yo",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set T-axis offset",
-        "name": "to",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 0-order phase",
-        "name": "k0",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 1-order X-axis phase",
-        "name": "kx",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 1-order Y-axis phase",
-        "name": "ky",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 1-order T-axis phase",
-        "name": "kt",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set X-axis*T-axis product phase",
-        "name": "kxt",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set Y-axis*T-axis product phase",
-        "name": "kyt",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set X-axis*Y-axis product phase",
-        "name": "kxy",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 2-order X-axis phase",
-        "name": "kx2",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 2-order Y-axis phase",
-        "name": "ky2",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 2-order T-axis phase",
-        "name": "kt2",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 0-order U-color phase",
-        "name": "ku",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "deprecated": false,
-        "help": "set 0-order V-color phase",
-        "name": "kv",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&zoneplate_class",
-    "priv_class_value": "zoneplate_class",
-    "type": "vsrc"
+    "priv_class": "&zoneplate_class"
   }
 ]

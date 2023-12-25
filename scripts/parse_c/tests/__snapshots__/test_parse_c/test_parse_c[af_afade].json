@@ -2,7 +2,6 @@
   {
     "description": "Fade in/out input audio.",
     "flags": "(1 << 16)",
-    "flags_value": 65536,
     "id": "ff_af_afade",
     "input_filter_pads": [
       {
@@ -11,16 +10,11 @@
       }
     ],
     "inputs": "(avfilter_af_afade_inputs)",
-    "inputs_value": "avfilter_af_afade_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "afade",
     "options": [
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set the fade direction",
         "max": "1",
         "min": "0",
@@ -31,9 +25,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set the fade direction",
         "max": "1",
         "min": "0",
@@ -44,9 +36,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "fade-in",
         "max": "0",
         "min": "0",
@@ -57,9 +47,7 @@
       },
       {
         "default": "['.i64 = 1']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "fade-out",
         "max": "0",
         "min": "0",
@@ -70,9 +58,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set number of first sample to start fading",
         "max": "9223372036854775807LL",
         "min": "0",
@@ -83,9 +69,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set number of first sample to start fading",
         "max": "9223372036854775807LL",
         "min": "0",
@@ -96,9 +80,7 @@
       },
       {
         "default": "['.i64 = 44100']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set number of samples for fade duration",
         "max": "9223372036854775807LL",
         "min": "1",
@@ -109,9 +91,7 @@
       },
       {
         "default": "['.i64 = 44100']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set number of samples for fade duration",
         "max": "9223372036854775807LL",
         "min": "1",
@@ -122,9 +102,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set time to start fading",
         "max": "9223372036854775807LL",
         "min": "0",
@@ -135,9 +113,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set time to start fading",
         "max": "9223372036854775807LL",
         "min": "0",
@@ -148,9 +124,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set fade duration",
         "max": "9223372036854775807LL",
         "min": "0",
@@ -161,9 +135,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set fade duration",
         "max": "9223372036854775807LL",
         "min": "0",
@@ -174,9 +146,7 @@
       },
       {
         "default": "['.i64 = TRI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set fade curve type",
         "max": "NB_CURVES - 1",
         "min": "NONE",
@@ -187,9 +157,7 @@
       },
       {
         "default": "['.i64 = TRI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set fade curve type",
         "max": "NB_CURVES - 1",
         "min": "NONE",
@@ -200,9 +168,7 @@
       },
       {
         "default": "['.i64 = NONE']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "no fade; keep audio as-is",
         "max": "0",
         "min": "0",
@@ -213,9 +179,7 @@
       },
       {
         "default": "['.i64 = TRI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "linear slope",
         "max": "0",
         "min": "0",
@@ -226,9 +190,7 @@
       },
       {
         "default": "['.i64 = QSIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "quarter of sine wave",
         "max": "0",
         "min": "0",
@@ -239,9 +201,7 @@
       },
       {
         "default": "['.i64 = ESIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "exponential sine wave",
         "max": "0",
         "min": "0",
@@ -252,9 +212,7 @@
       },
       {
         "default": "['.i64 = HSIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "half of sine wave",
         "max": "0",
         "min": "0",
@@ -265,9 +223,7 @@
       },
       {
         "default": "['.i64 = LOG']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "logarithmic",
         "max": "0",
         "min": "0",
@@ -278,9 +234,7 @@
       },
       {
         "default": "['.i64 = IPAR']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "inverted parabola",
         "max": "0",
         "min": "0",
@@ -291,9 +245,7 @@
       },
       {
         "default": "['.i64 = QUA']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "quadratic",
         "max": "0",
         "min": "0",
@@ -304,9 +256,7 @@
       },
       {
         "default": "['.i64 = CUB']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "cubic",
         "max": "0",
         "min": "0",
@@ -317,9 +267,7 @@
       },
       {
         "default": "['.i64 = SQU']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "square root",
         "max": "0",
         "min": "0",
@@ -330,9 +278,7 @@
       },
       {
         "default": "['.i64 = CBR']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "cubic root",
         "max": "0",
         "min": "0",
@@ -343,9 +289,7 @@
       },
       {
         "default": "['.i64 = PAR']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "parabola",
         "max": "0",
         "min": "0",
@@ -356,9 +300,7 @@
       },
       {
         "default": "['.i64 = EXP']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "exponential",
         "max": "0",
         "min": "0",
@@ -369,9 +311,7 @@
       },
       {
         "default": "['.i64 = IQSIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "inverted quarter of sine wave",
         "max": "0",
         "min": "0",
@@ -382,9 +322,7 @@
       },
       {
         "default": "['.i64 = IHSIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "inverted half of sine wave",
         "max": "0",
         "min": "0",
@@ -395,9 +333,7 @@
       },
       {
         "default": "['.i64 = DESE']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "double-exponential seat",
         "max": "0",
         "min": "0",
@@ -408,9 +344,7 @@
       },
       {
         "default": "['.i64 = DESI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "double-exponential sigmoid",
         "max": "0",
         "min": "0",
@@ -421,9 +355,7 @@
       },
       {
         "default": "['.i64 = LOSI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "logistic sigmoid",
         "max": "0",
         "min": "0",
@@ -434,9 +366,7 @@
       },
       {
         "default": "['.i64 = SINC']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "sine cardinal function",
         "max": "0",
         "min": "0",
@@ -447,9 +377,7 @@
       },
       {
         "default": "['.i64 = ISINC']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "inverted sine cardinal function",
         "max": "0",
         "min": "0",
@@ -460,9 +388,7 @@
       },
       {
         "default": "['.i64 = QUAT']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "quartic",
         "max": "0",
         "min": "0",
@@ -473,9 +399,7 @@
       },
       {
         "default": "['.i64 = QUATR']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "quartic root",
         "max": "0",
         "min": "0",
@@ -486,9 +410,7 @@
       },
       {
         "default": "['.i64 = QSIN2']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "squared quarter of sine wave",
         "max": "0",
         "min": "0",
@@ -499,9 +421,7 @@
       },
       {
         "default": "['.i64 = HSIN2']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "squared half of sine wave",
         "max": "0",
         "min": "0",
@@ -512,9 +432,7 @@
       },
       {
         "default": "['.dbl = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set the silence gain",
         "max": "1",
         "min": "0",
@@ -525,9 +443,7 @@
       },
       {
         "default": "['.dbl = 1']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)|(1<<15)",
-        "flags_value": 98312,
         "help": "set the unity gain",
         "max": "1",
         "min": "0",
@@ -544,229 +460,11 @@
       }
     ],
     "outputs": "(avfilter_af_afade_outputs)",
-    "outputs_value": "avfilter_af_afade_outputs",
-    "parsed_options": [
-      {
-        "alias": "t",
-        "choices": [
-          {
-            "help": "fade-in",
-            "name": "in",
-            "value": "['.i64 = 0']"
-          },
-          {
-            "help": "fade-out",
-            "name": "out",
-            "value": "['.i64 = 1']"
-          }
-        ],
-        "default": "['.i64 = 0']",
-        "deprecated": false,
-        "help": "set the fade direction",
-        "name": "type",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": "ss",
-        "choices": [],
-        "default": "['.i64 = 0']",
-        "deprecated": false,
-        "help": "set number of first sample to start fading",
-        "name": "start_sample",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT64"
-      },
-      {
-        "alias": "nb_samples",
-        "choices": [],
-        "default": "['.i64 = 44100']",
-        "deprecated": false,
-        "help": "set number of samples for fade duration",
-        "name": "ns",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT64"
-      },
-      {
-        "alias": "st",
-        "choices": [],
-        "default": "['.i64 = 0']",
-        "deprecated": false,
-        "help": "set time to start fading",
-        "name": "start_time",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = 0']",
-        "deprecated": false,
-        "help": "set fade duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": "c",
-        "choices": [
-          {
-            "help": "no fade; keep audio as-is",
-            "name": "nofade",
-            "value": "['.i64 = NONE']"
-          },
-          {
-            "help": "linear slope",
-            "name": "tri",
-            "value": "['.i64 = TRI']"
-          },
-          {
-            "help": "quarter of sine wave",
-            "name": "qsin",
-            "value": "['.i64 = QSIN']"
-          },
-          {
-            "help": "exponential sine wave",
-            "name": "esin",
-            "value": "['.i64 = ESIN']"
-          },
-          {
-            "help": "half of sine wave",
-            "name": "hsin",
-            "value": "['.i64 = HSIN']"
-          },
-          {
-            "help": "logarithmic",
-            "name": "log",
-            "value": "['.i64 = LOG']"
-          },
-          {
-            "help": "inverted parabola",
-            "name": "ipar",
-            "value": "['.i64 = IPAR']"
-          },
-          {
-            "help": "quadratic",
-            "name": "qua",
-            "value": "['.i64 = QUA']"
-          },
-          {
-            "help": "cubic",
-            "name": "cub",
-            "value": "['.i64 = CUB']"
-          },
-          {
-            "help": "square root",
-            "name": "squ",
-            "value": "['.i64 = SQU']"
-          },
-          {
-            "help": "cubic root",
-            "name": "cbr",
-            "value": "['.i64 = CBR']"
-          },
-          {
-            "help": "parabola",
-            "name": "par",
-            "value": "['.i64 = PAR']"
-          },
-          {
-            "help": "exponential",
-            "name": "exp",
-            "value": "['.i64 = EXP']"
-          },
-          {
-            "help": "inverted quarter of sine wave",
-            "name": "iqsin",
-            "value": "['.i64 = IQSIN']"
-          },
-          {
-            "help": "inverted half of sine wave",
-            "name": "ihsin",
-            "value": "['.i64 = IHSIN']"
-          },
-          {
-            "help": "double-exponential seat",
-            "name": "dese",
-            "value": "['.i64 = DESE']"
-          },
-          {
-            "help": "double-exponential sigmoid",
-            "name": "desi",
-            "value": "['.i64 = DESI']"
-          },
-          {
-            "help": "logistic sigmoid",
-            "name": "losi",
-            "value": "['.i64 = LOSI']"
-          },
-          {
-            "help": "sine cardinal function",
-            "name": "sinc",
-            "value": "['.i64 = SINC']"
-          },
-          {
-            "help": "inverted sine cardinal function",
-            "name": "isinc",
-            "value": "['.i64 = ISINC']"
-          },
-          {
-            "help": "quartic",
-            "name": "quat",
-            "value": "['.i64 = QUAT']"
-          },
-          {
-            "help": "quartic root",
-            "name": "quatr",
-            "value": "['.i64 = QUATR']"
-          },
-          {
-            "help": "squared quarter of sine wave",
-            "name": "qsin2",
-            "value": "['.i64 = QSIN2']"
-          },
-          {
-            "help": "squared half of sine wave",
-            "name": "hsin2",
-            "value": "['.i64 = HSIN2']"
-          }
-        ],
-        "default": "['.i64 = TRI']",
-        "deprecated": false,
-        "help": "set fade curve type",
-        "name": "curve",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl = 0']",
-        "deprecated": false,
-        "help": "set the silence gain",
-        "name": "silence",
-        "required": false,
-        "type": "AV_OPT_TYPE_DOUBLE"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl = 1']",
-        "deprecated": false,
-        "help": "set the unity gain",
-        "name": "unity",
-        "required": false,
-        "type": "AV_OPT_TYPE_DOUBLE"
-      }
-    ],
-    "priv_class": "&afade_class",
-    "priv_class_value": "afade_class",
-    "type": "af"
+    "priv_class": "&afade_class"
   },
   {
     "description": "Cross fade two input audio streams.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_af_acrossfade",
     "input_filter_pads": [
       {
@@ -779,16 +477,11 @@
       }
     ],
     "inputs": "(avfilter_af_acrossfade_inputs)",
-    "inputs_value": "avfilter_af_acrossfade_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "acrossfade",
     "options": [
       {
         "default": "['.i64 = 44100']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set number of samples for cross fade duration",
         "max": "2147483647/10",
         "min": "1",
@@ -799,9 +492,7 @@
       },
       {
         "default": "['.i64 = 44100']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set number of samples for cross fade duration",
         "max": "2147483647/10",
         "min": "1",
@@ -812,9 +503,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set cross fade duration",
         "max": "60000000",
         "min": "0",
@@ -825,9 +514,7 @@
       },
       {
         "default": "['.i64 = 0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set cross fade duration",
         "max": "60000000",
         "min": "0",
@@ -838,9 +525,7 @@
       },
       {
         "default": "['.i64 = 1']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "overlap 1st stream end with 2nd stream start",
         "max": "1",
         "min": "0",
@@ -851,9 +536,7 @@
       },
       {
         "default": "['.i64 = 1']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "overlap 1st stream end with 2nd stream start",
         "max": "1",
         "min": "0",
@@ -864,9 +547,7 @@
       },
       {
         "default": "['.i64 = TRI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set fade curve type for 1st stream",
         "max": "NB_CURVES - 1",
         "min": "NONE",
@@ -877,9 +558,7 @@
       },
       {
         "default": "['.i64 = TRI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set fade curve type for 1st stream",
         "max": "NB_CURVES - 1",
         "min": "NONE",
@@ -890,9 +569,7 @@
       },
       {
         "default": "['.i64 = NONE']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "no fade; keep audio as-is",
         "max": "0",
         "min": "0",
@@ -903,9 +580,7 @@
       },
       {
         "default": "['.i64 = TRI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "linear slope",
         "max": "0",
         "min": "0",
@@ -916,9 +591,7 @@
       },
       {
         "default": "['.i64 = QSIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "quarter of sine wave",
         "max": "0",
         "min": "0",
@@ -929,9 +602,7 @@
       },
       {
         "default": "['.i64 = ESIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "exponential sine wave",
         "max": "0",
         "min": "0",
@@ -942,9 +613,7 @@
       },
       {
         "default": "['.i64 = HSIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "half of sine wave",
         "max": "0",
         "min": "0",
@@ -955,9 +624,7 @@
       },
       {
         "default": "['.i64 = LOG']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "logarithmic",
         "max": "0",
         "min": "0",
@@ -968,9 +635,7 @@
       },
       {
         "default": "['.i64 = IPAR']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "inverted parabola",
         "max": "0",
         "min": "0",
@@ -981,9 +646,7 @@
       },
       {
         "default": "['.i64 = QUA']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "quadratic",
         "max": "0",
         "min": "0",
@@ -994,9 +657,7 @@
       },
       {
         "default": "['.i64 = CUB']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "cubic",
         "max": "0",
         "min": "0",
@@ -1007,9 +668,7 @@
       },
       {
         "default": "['.i64 = SQU']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "square root",
         "max": "0",
         "min": "0",
@@ -1020,9 +679,7 @@
       },
       {
         "default": "['.i64 = CBR']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "cubic root",
         "max": "0",
         "min": "0",
@@ -1033,9 +690,7 @@
       },
       {
         "default": "['.i64 = PAR']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "parabola",
         "max": "0",
         "min": "0",
@@ -1046,9 +701,7 @@
       },
       {
         "default": "['.i64 = EXP']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "exponential",
         "max": "0",
         "min": "0",
@@ -1059,9 +712,7 @@
       },
       {
         "default": "['.i64 = IQSIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "inverted quarter of sine wave",
         "max": "0",
         "min": "0",
@@ -1072,9 +723,7 @@
       },
       {
         "default": "['.i64 = IHSIN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "inverted half of sine wave",
         "max": "0",
         "min": "0",
@@ -1085,9 +734,7 @@
       },
       {
         "default": "['.i64 = DESE']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "double-exponential seat",
         "max": "0",
         "min": "0",
@@ -1098,9 +745,7 @@
       },
       {
         "default": "['.i64 = DESI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "double-exponential sigmoid",
         "max": "0",
         "min": "0",
@@ -1111,9 +756,7 @@
       },
       {
         "default": "['.i64 = LOSI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "logistic sigmoid",
         "max": "0",
         "min": "0",
@@ -1124,9 +767,7 @@
       },
       {
         "default": "['.i64 = SINC']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "sine cardinal function",
         "max": "0",
         "min": "0",
@@ -1137,9 +778,7 @@
       },
       {
         "default": "['.i64 = ISINC']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "inverted sine cardinal function",
         "max": "0",
         "min": "0",
@@ -1150,9 +789,7 @@
       },
       {
         "default": "['.i64 = QUAT']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "quartic",
         "max": "0",
         "min": "0",
@@ -1163,9 +800,7 @@
       },
       {
         "default": "['.i64 = QUATR']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "quartic root",
         "max": "0",
         "min": "0",
@@ -1176,9 +811,7 @@
       },
       {
         "default": "['.i64 = QSIN2']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "squared quarter of sine wave",
         "max": "0",
         "min": "0",
@@ -1189,9 +822,7 @@
       },
       {
         "default": "['.i64 = HSIN2']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "squared half of sine wave",
         "max": "0",
         "min": "0",
@@ -1202,9 +833,7 @@
       },
       {
         "default": "['.i64 = TRI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set fade curve type for 2nd stream",
         "max": "NB_CURVES - 1",
         "min": "NONE",
@@ -1215,9 +844,7 @@
       },
       {
         "default": "['.i64 = TRI']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set fade curve type for 2nd stream",
         "max": "NB_CURVES - 1",
         "min": "NONE",
@@ -1234,303 +861,6 @@
       }
     ],
     "outputs": "(avfilter_af_acrossfade_outputs)",
-    "outputs_value": "avfilter_af_acrossfade_outputs",
-    "parsed_options": [
-      {
-        "alias": "nb_samples",
-        "choices": [],
-        "default": "['.i64 = 44100']",
-        "deprecated": false,
-        "help": "set number of samples for cross fade duration",
-        "name": "ns",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": "d",
-        "choices": [],
-        "default": "['.i64 = 0']",
-        "deprecated": false,
-        "help": "set cross fade duration",
-        "name": "duration",
-        "required": false,
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": "o",
-        "choices": [],
-        "default": "['.i64 = 1']",
-        "deprecated": false,
-        "help": "overlap 1st stream end with 2nd stream start",
-        "name": "overlap",
-        "required": false,
-        "type": "AV_OPT_TYPE_BOOL"
-      },
-      {
-        "alias": "c1",
-        "choices": [
-          {
-            "help": "no fade; keep audio as-is",
-            "name": "nofade",
-            "value": "['.i64 = NONE']"
-          },
-          {
-            "help": "linear slope",
-            "name": "tri",
-            "value": "['.i64 = TRI']"
-          },
-          {
-            "help": "quarter of sine wave",
-            "name": "qsin",
-            "value": "['.i64 = QSIN']"
-          },
-          {
-            "help": "exponential sine wave",
-            "name": "esin",
-            "value": "['.i64 = ESIN']"
-          },
-          {
-            "help": "half of sine wave",
-            "name": "hsin",
-            "value": "['.i64 = HSIN']"
-          },
-          {
-            "help": "logarithmic",
-            "name": "log",
-            "value": "['.i64 = LOG']"
-          },
-          {
-            "help": "inverted parabola",
-            "name": "ipar",
-            "value": "['.i64 = IPAR']"
-          },
-          {
-            "help": "quadratic",
-            "name": "qua",
-            "value": "['.i64 = QUA']"
-          },
-          {
-            "help": "cubic",
-            "name": "cub",
-            "value": "['.i64 = CUB']"
-          },
-          {
-            "help": "square root",
-            "name": "squ",
-            "value": "['.i64 = SQU']"
-          },
-          {
-            "help": "cubic root",
-            "name": "cbr",
-            "value": "['.i64 = CBR']"
-          },
-          {
-            "help": "parabola",
-            "name": "par",
-            "value": "['.i64 = PAR']"
-          },
-          {
-            "help": "exponential",
-            "name": "exp",
-            "value": "['.i64 = EXP']"
-          },
-          {
-            "help": "inverted quarter of sine wave",
-            "name": "iqsin",
-            "value": "['.i64 = IQSIN']"
-          },
-          {
-            "help": "inverted half of sine wave",
-            "name": "ihsin",
-            "value": "['.i64 = IHSIN']"
-          },
-          {
-            "help": "double-exponential seat",
-            "name": "dese",
-            "value": "['.i64 = DESE']"
-          },
-          {
-            "help": "double-exponential sigmoid",
-            "name": "desi",
-            "value": "['.i64 = DESI']"
-          },
-          {
-            "help": "logistic sigmoid",
-            "name": "losi",
-            "value": "['.i64 = LOSI']"
-          },
-          {
-            "help": "sine cardinal function",
-            "name": "sinc",
-            "value": "['.i64 = SINC']"
-          },
-          {
-            "help": "inverted sine cardinal function",
-            "name": "isinc",
-            "value": "['.i64 = ISINC']"
-          },
-          {
-            "help": "quartic",
-            "name": "quat",
-            "value": "['.i64 = QUAT']"
-          },
-          {
-            "help": "quartic root",
-            "name": "quatr",
-            "value": "['.i64 = QUATR']"
-          },
-          {
-            "help": "squared quarter of sine wave",
-            "name": "qsin2",
-            "value": "['.i64 = QSIN2']"
-          },
-          {
-            "help": "squared half of sine wave",
-            "name": "hsin2",
-            "value": "['.i64 = HSIN2']"
-          }
-        ],
-        "default": "['.i64 = TRI']",
-        "deprecated": false,
-        "help": "set fade curve type for 1st stream",
-        "name": "curve1",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": "c2",
-        "choices": [
-          {
-            "help": "no fade; keep audio as-is",
-            "name": "nofade",
-            "value": "['.i64 = NONE']"
-          },
-          {
-            "help": "linear slope",
-            "name": "tri",
-            "value": "['.i64 = TRI']"
-          },
-          {
-            "help": "quarter of sine wave",
-            "name": "qsin",
-            "value": "['.i64 = QSIN']"
-          },
-          {
-            "help": "exponential sine wave",
-            "name": "esin",
-            "value": "['.i64 = ESIN']"
-          },
-          {
-            "help": "half of sine wave",
-            "name": "hsin",
-            "value": "['.i64 = HSIN']"
-          },
-          {
-            "help": "logarithmic",
-            "name": "log",
-            "value": "['.i64 = LOG']"
-          },
-          {
-            "help": "inverted parabola",
-            "name": "ipar",
-            "value": "['.i64 = IPAR']"
-          },
-          {
-            "help": "quadratic",
-            "name": "qua",
-            "value": "['.i64 = QUA']"
-          },
-          {
-            "help": "cubic",
-            "name": "cub",
-            "value": "['.i64 = CUB']"
-          },
-          {
-            "help": "square root",
-            "name": "squ",
-            "value": "['.i64 = SQU']"
-          },
-          {
-            "help": "cubic root",
-            "name": "cbr",
-            "value": "['.i64 = CBR']"
-          },
-          {
-            "help": "parabola",
-            "name": "par",
-            "value": "['.i64 = PAR']"
-          },
-          {
-            "help": "exponential",
-            "name": "exp",
-            "value": "['.i64 = EXP']"
-          },
-          {
-            "help": "inverted quarter of sine wave",
-            "name": "iqsin",
-            "value": "['.i64 = IQSIN']"
-          },
-          {
-            "help": "inverted half of sine wave",
-            "name": "ihsin",
-            "value": "['.i64 = IHSIN']"
-          },
-          {
-            "help": "double-exponential seat",
-            "name": "dese",
-            "value": "['.i64 = DESE']"
-          },
-          {
-            "help": "double-exponential sigmoid",
-            "name": "desi",
-            "value": "['.i64 = DESI']"
-          },
-          {
-            "help": "logistic sigmoid",
-            "name": "losi",
-            "value": "['.i64 = LOSI']"
-          },
-          {
-            "help": "sine cardinal function",
-            "name": "sinc",
-            "value": "['.i64 = SINC']"
-          },
-          {
-            "help": "inverted sine cardinal function",
-            "name": "isinc",
-            "value": "['.i64 = ISINC']"
-          },
-          {
-            "help": "quartic",
-            "name": "quat",
-            "value": "['.i64 = QUAT']"
-          },
-          {
-            "help": "quartic root",
-            "name": "quatr",
-            "value": "['.i64 = QUATR']"
-          },
-          {
-            "help": "squared quarter of sine wave",
-            "name": "qsin2",
-            "value": "['.i64 = QSIN2']"
-          },
-          {
-            "help": "squared half of sine wave",
-            "name": "hsin2",
-            "value": "['.i64 = HSIN2']"
-          }
-        ],
-        "default": "['.i64 = TRI']",
-        "deprecated": false,
-        "help": "set fade curve type for 2nd stream",
-        "name": "curve2",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&acrossfade_class",
-    "priv_class_value": "acrossfade_class",
-    "type": "af"
+    "priv_class": "&acrossfade_class"
   }
 ]

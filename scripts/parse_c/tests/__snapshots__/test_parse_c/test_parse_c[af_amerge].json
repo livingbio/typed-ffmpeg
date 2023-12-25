@@ -2,20 +2,14 @@
   {
     "description": "Merge two or more audio streams into \" \"a single multi-channel stream.",
     "flags": "(1 << 0)",
-    "flags_value": 1,
     "id": "ff_af_amerge",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
-    "inputs_value": null,
-    "is_dynamic_inputs": true,
-    "is_dynamic_outputs": false,
     "name": "amerge",
     "options": [
       {
         "default": "['.i64 = 2']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "specify the number of inputs",
         "max": "64",
         "min": "1",
@@ -32,21 +26,6 @@
       }
     ],
     "outputs": "(amerge_outputs)",
-    "outputs_value": "amerge_outputs",
-    "parsed_options": [
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = 2']",
-        "deprecated": false,
-        "help": "specify the number of inputs",
-        "name": "inputs",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&amerge_class",
-    "priv_class_value": "amerge_class",
-    "type": "af"
+    "priv_class": "&amerge_class"
   }
 ]

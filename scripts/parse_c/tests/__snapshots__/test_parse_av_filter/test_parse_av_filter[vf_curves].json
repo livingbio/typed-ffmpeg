@@ -2,21 +2,13 @@
   "ff_vf_curves": {
     "description": "Adjust components curves.",
     "flags": "(1 << 16) | (1 << 2)",
-    "flags_value": 65540,
     "id": "ff_vf_curves",
     "input_filter_pads": [],
     "inputs": "(curves_inputs)",
-    "inputs_value": "curves_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "curves",
     "options": [],
     "output_filter_pads": [],
     "outputs": "(ff_video_default_filterpad)",
-    "outputs_value": "ff_video_default_filterpad",
-    "parsed_options": [],
-    "priv_class": "&curves_class",
-    "priv_class_value": "curves_class",
-    "type": "vf"
+    "priv_class": "&curves_class"
   }
 }

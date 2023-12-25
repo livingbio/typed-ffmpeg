@@ -2,21 +2,13 @@
   "ff_af_acrossover": {
     "description": "Split audio into per-bands streams.",
     "flags": "(1 << 1) |\n                      (1 << 2)",
-    "flags_value": 6,
     "id": "ff_af_acrossover",
     "input_filter_pads": [],
     "inputs": "(inputs)",
-    "inputs_value": "inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": true,
     "name": "acrossover",
     "options": [],
     "output_filter_pads": [],
     "outputs": "((void*)0)",
-    "outputs_value": null,
-    "parsed_options": [],
-    "priv_class": "&acrossover_class",
-    "priv_class_value": "acrossover_class",
-    "type": "af"
+    "priv_class": "&acrossover_class"
   }
 }

@@ -1,0 +1,23 @@
+[
+  {
+    "flags_value": 1,
+    "inputs_value": null,
+    "is_dynamic_inputs": true,
+    "is_dynamic_outputs": false,
+    "outputs_value": "amerge_outputs",
+    "parsed_options": [
+      {
+        "alias": [],
+        "choices": [],
+        "default": "['.i64 = 2']",
+        "deprecated": false,
+        "help": "specify the number of inputs",
+        "name": "inputs",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class_value": "amerge_class",
+    "type": "af"
+  }
+]

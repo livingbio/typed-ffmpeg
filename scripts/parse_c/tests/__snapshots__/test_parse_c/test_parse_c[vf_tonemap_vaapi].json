@@ -2,7 +2,6 @@
   {
     "description": "VAAPI VPP for tone-mapping",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vf_tonemap_vaapi",
     "input_filter_pads": [
       {
@@ -11,16 +10,11 @@
       }
     ],
     "inputs": "(tonemap_vaapi_inputs)",
-    "inputs_value": "tonemap_vaapi_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "tonemap_vaapi",
     "options": [
       {
         "default": null,
-        "flag_is_deprecated": false,
         "flags": ".flags = (16 | (1<<16))",
-        "flags_value": 65552,
         "help": "Output pixel format set",
         "max": null,
         "min": null,
@@ -31,9 +25,7 @@
       },
       {
         "default": "['.str = ((void*)0)']",
-        "flag_is_deprecated": false,
         "flags": ".flags = (16 | (1<<16))",
-        "flags_value": 65552,
         "help": "Output color matrix coefficient set",
         "max": null,
         "min": null,
@@ -44,9 +36,7 @@
       },
       {
         "default": "['.str = ((void*)0)']",
-        "flag_is_deprecated": false,
         "flags": ".flags = (16 | (1<<16))",
-        "flags_value": 65552,
         "help": "Output color matrix coefficient set",
         "max": null,
         "min": null,
@@ -57,9 +47,7 @@
       },
       {
         "default": "['.str = ((void*)0)']",
-        "flag_is_deprecated": false,
         "flags": ".flags = (16 | (1<<16))",
-        "flags_value": 65552,
         "help": "Output color primaries set",
         "max": null,
         "min": null,
@@ -70,9 +58,7 @@
       },
       {
         "default": "['.str = ((void*)0)']",
-        "flag_is_deprecated": false,
         "flags": ".flags = (16 | (1<<16))",
-        "flags_value": 65552,
         "help": "Output color primaries set",
         "max": null,
         "min": null,
@@ -83,9 +69,7 @@
       },
       {
         "default": "['.str = ((void*)0)']",
-        "flag_is_deprecated": false,
         "flags": ".flags = (16 | (1<<16))",
-        "flags_value": 65552,
         "help": "Output color transfer characteristics set",
         "max": null,
         "min": null,
@@ -96,9 +80,7 @@
       },
       {
         "default": "['.str = ((void*)0)']",
-        "flag_is_deprecated": false,
         "flags": ".flags = (16 | (1<<16))",
-        "flags_value": 65552,
         "help": "Output color transfer characteristics set",
         "max": null,
         "min": null,
@@ -115,51 +97,6 @@
       }
     ],
     "outputs": "(tonemap_vaapi_outputs)",
-    "outputs_value": "tonemap_vaapi_outputs",
-    "parsed_options": [
-      {
-        "alias": null,
-        "choices": [],
-        "default": null,
-        "deprecated": false,
-        "help": "Output pixel format set",
-        "name": "format",
-        "required": true,
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": "m",
-        "choices": [],
-        "default": "['.str = ((void*)0)']",
-        "deprecated": false,
-        "help": "Output color matrix coefficient set",
-        "name": "matrix",
-        "required": true,
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": "p",
-        "choices": [],
-        "default": "['.str = ((void*)0)']",
-        "deprecated": false,
-        "help": "Output color primaries set",
-        "name": "primaries",
-        "required": true,
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": "t",
-        "choices": [],
-        "default": "['.str = ((void*)0)']",
-        "deprecated": false,
-        "help": "Output color transfer characteristics set",
-        "name": "transfer",
-        "required": true,
-        "type": "AV_OPT_TYPE_STRING"
-      }
-    ],
-    "priv_class": "&tonemap_vaapi_class",
-    "priv_class_value": "tonemap_vaapi_class",
-    "type": "vf"
+    "priv_class": "&tonemap_vaapi_class"
   }
 ]

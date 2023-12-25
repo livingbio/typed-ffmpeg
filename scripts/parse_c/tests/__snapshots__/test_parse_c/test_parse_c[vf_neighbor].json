@@ -2,7 +2,6 @@
   {
     "description": "Apply erosion effect.",
     "flags": "(1 << 16)| (1 << 2)",
-    "flags_value": 65540,
     "id": "ff_vf_erosion",
     "input_filter_pads": [
       {
@@ -11,16 +10,11 @@
       }
     ],
     "inputs": "(neighbor_inputs)",
-    "inputs_value": "neighbor_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "erosion",
     "options": [
       {
         "default": "['.i64=255']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set coordinates",
         "max": "255",
         "min": "0",
@@ -31,9 +25,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 1st plane",
         "max": "65535",
         "min": "0",
@@ -44,9 +36,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 2nd plane",
         "max": "65535",
         "min": "0",
@@ -57,9 +47,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 3rd plane",
         "max": "65535",
         "min": "0",
@@ -70,9 +58,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 4th plane",
         "max": "65535",
         "min": "0",
@@ -89,67 +75,11 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
-    "outputs_value": "ff_video_default_filterpad",
-    "parsed_options": [
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=255']",
-        "deprecated": false,
-        "help": "set coordinates",
-        "name": "coordinates",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 1st plane",
-        "name": "threshold0",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 2nd plane",
-        "name": "threshold1",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 3rd plane",
-        "name": "threshold2",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 4th plane",
-        "name": "threshold3",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&erosion_dilation_class",
-    "priv_class_value": "erosion_dilation_class",
-    "type": "vf"
+    "priv_class": "&erosion_dilation_class"
   },
   {
     "description": "Apply dilation effect.",
     "flags": "(1 << 16)| (1 << 2)",
-    "flags_value": 65540,
     "id": "ff_vf_dilation",
     "input_filter_pads": [
       {
@@ -158,16 +88,11 @@
       }
     ],
     "inputs": "(neighbor_inputs)",
-    "inputs_value": "neighbor_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "dilation",
     "options": [
       {
         "default": "['.i64=255']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set coordinates",
         "max": "255",
         "min": "0",
@@ -178,9 +103,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 1st plane",
         "max": "65535",
         "min": "0",
@@ -191,9 +114,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 2nd plane",
         "max": "65535",
         "min": "0",
@@ -204,9 +125,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 3rd plane",
         "max": "65535",
         "min": "0",
@@ -217,9 +136,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 4th plane",
         "max": "65535",
         "min": "0",
@@ -236,67 +153,11 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
-    "outputs_value": "ff_video_default_filterpad",
-    "parsed_options": [
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=255']",
-        "deprecated": false,
-        "help": "set coordinates",
-        "name": "coordinates",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 1st plane",
-        "name": "threshold0",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 2nd plane",
-        "name": "threshold1",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 3rd plane",
-        "name": "threshold2",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 4th plane",
-        "name": "threshold3",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&erosion_dilation_class",
-    "priv_class_value": "erosion_dilation_class",
-    "type": "vf"
+    "priv_class": "&erosion_dilation_class"
   },
   {
     "description": "Apply deflate effect.",
     "flags": "(1 << 16)| (1 << 2)",
-    "flags_value": 65540,
     "id": "ff_vf_deflate",
     "input_filter_pads": [
       {
@@ -305,16 +166,11 @@
       }
     ],
     "inputs": "(neighbor_inputs)",
-    "inputs_value": "neighbor_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "deflate",
     "options": [
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 1st plane",
         "max": "65535",
         "min": "0",
@@ -325,9 +181,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 2nd plane",
         "max": "65535",
         "min": "0",
@@ -338,9 +192,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 3rd plane",
         "max": "65535",
         "min": "0",
@@ -351,9 +203,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 4th plane",
         "max": "65535",
         "min": "0",
@@ -370,57 +220,11 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
-    "outputs_value": "ff_video_default_filterpad",
-    "parsed_options": [
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 1st plane",
-        "name": "threshold0",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 2nd plane",
-        "name": "threshold1",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 3rd plane",
-        "name": "threshold2",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 4th plane",
-        "name": "threshold3",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&deflate_inflate_class",
-    "priv_class_value": "deflate_inflate_class",
-    "type": "vf"
+    "priv_class": "&deflate_inflate_class"
   },
   {
     "description": "Apply inflate effect.",
     "flags": "(1 << 16)| (1 << 2)",
-    "flags_value": 65540,
     "id": "ff_vf_inflate",
     "input_filter_pads": [
       {
@@ -429,16 +233,11 @@
       }
     ],
     "inputs": "(neighbor_inputs)",
-    "inputs_value": "neighbor_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "inflate",
     "options": [
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 1st plane",
         "max": "65535",
         "min": "0",
@@ -449,9 +248,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 2nd plane",
         "max": "65535",
         "min": "0",
@@ -462,9 +259,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 3rd plane",
         "max": "65535",
         "min": "0",
@@ -475,9 +270,7 @@
       },
       {
         "default": "['.i64=65535']",
-        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
-        "flags_value": 98320,
         "help": "set threshold for 4th plane",
         "max": "65535",
         "min": "0",
@@ -494,51 +287,6 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
-    "outputs_value": "ff_video_default_filterpad",
-    "parsed_options": [
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 1st plane",
-        "name": "threshold0",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 2nd plane",
-        "name": "threshold1",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 3rd plane",
-        "name": "threshold2",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=65535']",
-        "deprecated": false,
-        "help": "set threshold for 4th plane",
-        "name": "threshold3",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      }
-    ],
-    "priv_class": "&deflate_inflate_class",
-    "priv_class_value": "deflate_inflate_class",
-    "type": "vf"
+    "priv_class": "&deflate_inflate_class"
   }
 ]

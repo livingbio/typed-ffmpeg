@@ -2,7 +2,6 @@
   {
     "description": "Show frequency domain statistics about audio frames.",
     "flags": "(1 << 2)",
-    "flags_value": 4,
     "id": "ff_af_aspectralstats",
     "input_filter_pads": [
       {
@@ -11,16 +10,11 @@
       }
     ],
     "inputs": "(ff_audio_default_filterpad)",
-    "inputs_value": "ff_audio_default_filterpad",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "aspectralstats",
     "options": [
       {
         "default": "['.i64=2048']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set the window size",
         "max": "65536",
         "min": "32",
@@ -31,9 +25,7 @@
       },
       {
         "default": "['.i64 = WFUNC_HANNING']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set window function",
         "max": "NB_WFUNC-1",
         "min": "0",
@@ -44,9 +36,7 @@
       },
       {
         "default": "['.i64=WFUNC_RECT']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Rectangular",
         "max": "0",
         "min": "0",
@@ -57,9 +47,7 @@
       },
       {
         "default": "['.i64=WFUNC_BARTLETT']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Bartlett",
         "max": "0",
         "min": "0",
@@ -70,9 +58,7 @@
       },
       {
         "default": "['.i64=WFUNC_HANNING']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Hann",
         "max": "0",
         "min": "0",
@@ -83,9 +69,7 @@
       },
       {
         "default": "['.i64=WFUNC_HANNING']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Hanning",
         "max": "0",
         "min": "0",
@@ -96,9 +80,7 @@
       },
       {
         "default": "['.i64=WFUNC_HAMMING']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Hamming",
         "max": "0",
         "min": "0",
@@ -109,9 +91,7 @@
       },
       {
         "default": "['.i64=WFUNC_BLACKMAN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Blackman",
         "max": "0",
         "min": "0",
@@ -122,9 +102,7 @@
       },
       {
         "default": "['.i64=WFUNC_WELCH']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Welch",
         "max": "0",
         "min": "0",
@@ -135,9 +113,7 @@
       },
       {
         "default": "['.i64=WFUNC_FLATTOP']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Flat-top",
         "max": "0",
         "min": "0",
@@ -148,9 +124,7 @@
       },
       {
         "default": "['.i64=WFUNC_BHARRIS']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Blackman-Harris",
         "max": "0",
         "min": "0",
@@ -161,9 +135,7 @@
       },
       {
         "default": "['.i64=WFUNC_BNUTTALL']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Blackman-Nuttall",
         "max": "0",
         "min": "0",
@@ -174,9 +146,7 @@
       },
       {
         "default": "['.i64=WFUNC_BHANN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Bartlett-Hann",
         "max": "0",
         "min": "0",
@@ -187,9 +157,7 @@
       },
       {
         "default": "['.i64=WFUNC_SINE']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Sine",
         "max": "0",
         "min": "0",
@@ -200,9 +168,7 @@
       },
       {
         "default": "['.i64=WFUNC_NUTTALL']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Nuttall",
         "max": "0",
         "min": "0",
@@ -213,9 +179,7 @@
       },
       {
         "default": "['.i64=WFUNC_LANCZOS']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Lanczos",
         "max": "0",
         "min": "0",
@@ -226,9 +190,7 @@
       },
       {
         "default": "['.i64=WFUNC_GAUSS']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Gauss",
         "max": "0",
         "min": "0",
@@ -239,9 +201,7 @@
       },
       {
         "default": "['.i64=WFUNC_TUKEY']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Tukey",
         "max": "0",
         "min": "0",
@@ -252,9 +212,7 @@
       },
       {
         "default": "['.i64=WFUNC_DOLPH']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Dolph-Chebyshev",
         "max": "0",
         "min": "0",
@@ -265,9 +223,7 @@
       },
       {
         "default": "['.i64=WFUNC_CAUCHY']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Cauchy",
         "max": "0",
         "min": "0",
@@ -278,9 +234,7 @@
       },
       {
         "default": "['.i64=WFUNC_PARZEN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Parzen",
         "max": "0",
         "min": "0",
@@ -291,9 +245,7 @@
       },
       {
         "default": "['.i64=WFUNC_POISSON']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Poisson",
         "max": "0",
         "min": "0",
@@ -304,9 +256,7 @@
       },
       {
         "default": "['.i64=WFUNC_BOHMAN']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Bohman",
         "max": "0",
         "min": "0",
@@ -317,9 +267,7 @@
       },
       {
         "default": "['.i64=WFUNC_KAISER']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "Kaiser",
         "max": "0",
         "min": "0",
@@ -330,9 +278,7 @@
       },
       {
         "default": "['.dbl=0.5']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "set window overlap",
         "max": "1",
         "min": "0",
@@ -343,9 +289,7 @@
       },
       {
         "default": "['.i64=(2147483647 *2U +1U)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "select the parameters which are measured",
         "max": "(2147483647 *2U +1U)",
         "min": "0",
@@ -356,9 +300,7 @@
       },
       {
         "default": "['.i64=0']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -369,9 +311,7 @@
       },
       {
         "default": "['.i64=(2147483647 *2U +1U)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -382,9 +322,7 @@
       },
       {
         "default": "['.i64=(1 << 0)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -395,9 +333,7 @@
       },
       {
         "default": "['.i64=(1 << 1)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -408,9 +344,7 @@
       },
       {
         "default": "['.i64=(1 << 2)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -421,9 +355,7 @@
       },
       {
         "default": "['.i64=(1 << 3)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -434,9 +366,7 @@
       },
       {
         "default": "['.i64=(1 << 4)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -447,9 +377,7 @@
       },
       {
         "default": "['.i64=(1 << 5)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -460,9 +388,7 @@
       },
       {
         "default": "['.i64=(1 << 6)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -473,9 +399,7 @@
       },
       {
         "default": "['.i64=(1 << 7)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -486,9 +410,7 @@
       },
       {
         "default": "['.i64=(1 << 8)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -499,9 +421,7 @@
       },
       {
         "default": "['.i64=(1 << 9)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -512,9 +432,7 @@
       },
       {
         "default": "['.i64=(1 << 10)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -525,9 +443,7 @@
       },
       {
         "default": "['.i64=(1 << 11)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -538,9 +454,7 @@
       },
       {
         "default": "['.i64=(1 << 12)']",
-        "flag_is_deprecated": false,
         "flags": "8|(1<<16)",
-        "flags_value": 65544,
         "help": "",
         "max": "0",
         "min": "0",
@@ -557,238 +471,6 @@
       }
     ],
     "outputs": "(aspectralstats_outputs)",
-    "outputs_value": "aspectralstats_outputs",
-    "parsed_options": [
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=2048']",
-        "deprecated": false,
-        "help": "set the window size",
-        "name": "win_size",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [
-          {
-            "help": "Rectangular",
-            "name": "rect",
-            "value": "['.i64=WFUNC_RECT']"
-          },
-          {
-            "help": "Bartlett",
-            "name": "bartlett",
-            "value": "['.i64=WFUNC_BARTLETT']"
-          },
-          {
-            "help": "Hann",
-            "name": "hann",
-            "value": "['.i64=WFUNC_HANNING']"
-          },
-          {
-            "help": "Hanning",
-            "name": "hanning",
-            "value": "['.i64=WFUNC_HANNING']"
-          },
-          {
-            "help": "Hamming",
-            "name": "hamming",
-            "value": "['.i64=WFUNC_HAMMING']"
-          },
-          {
-            "help": "Blackman",
-            "name": "blackman",
-            "value": "['.i64=WFUNC_BLACKMAN']"
-          },
-          {
-            "help": "Welch",
-            "name": "welch",
-            "value": "['.i64=WFUNC_WELCH']"
-          },
-          {
-            "help": "Flat-top",
-            "name": "flattop",
-            "value": "['.i64=WFUNC_FLATTOP']"
-          },
-          {
-            "help": "Blackman-Harris",
-            "name": "bharris",
-            "value": "['.i64=WFUNC_BHARRIS']"
-          },
-          {
-            "help": "Blackman-Nuttall",
-            "name": "bnuttall",
-            "value": "['.i64=WFUNC_BNUTTALL']"
-          },
-          {
-            "help": "Bartlett-Hann",
-            "name": "bhann",
-            "value": "['.i64=WFUNC_BHANN']"
-          },
-          {
-            "help": "Sine",
-            "name": "sine",
-            "value": "['.i64=WFUNC_SINE']"
-          },
-          {
-            "help": "Nuttall",
-            "name": "nuttall",
-            "value": "['.i64=WFUNC_NUTTALL']"
-          },
-          {
-            "help": "Lanczos",
-            "name": "lanczos",
-            "value": "['.i64=WFUNC_LANCZOS']"
-          },
-          {
-            "help": "Gauss",
-            "name": "gauss",
-            "value": "['.i64=WFUNC_GAUSS']"
-          },
-          {
-            "help": "Tukey",
-            "name": "tukey",
-            "value": "['.i64=WFUNC_TUKEY']"
-          },
-          {
-            "help": "Dolph-Chebyshev",
-            "name": "dolph",
-            "value": "['.i64=WFUNC_DOLPH']"
-          },
-          {
-            "help": "Cauchy",
-            "name": "cauchy",
-            "value": "['.i64=WFUNC_CAUCHY']"
-          },
-          {
-            "help": "Parzen",
-            "name": "parzen",
-            "value": "['.i64=WFUNC_PARZEN']"
-          },
-          {
-            "help": "Poisson",
-            "name": "poisson",
-            "value": "['.i64=WFUNC_POISSON']"
-          },
-          {
-            "help": "Bohman",
-            "name": "bohman",
-            "value": "['.i64=WFUNC_BOHMAN']"
-          },
-          {
-            "help": "Kaiser",
-            "name": "kaiser",
-            "value": "['.i64=WFUNC_KAISER']"
-          }
-        ],
-        "default": "['.i64 = WFUNC_HANNING']",
-        "deprecated": false,
-        "help": "set window function",
-        "name": "win_func",
-        "required": false,
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.dbl=0.5']",
-        "deprecated": false,
-        "help": "set window overlap",
-        "name": "overlap",
-        "required": false,
-        "type": "AV_OPT_TYPE_FLOAT"
-      },
-      {
-        "alias": null,
-        "choices": [
-          {
-            "help": "",
-            "name": "none",
-            "value": "['.i64=0']"
-          },
-          {
-            "help": "",
-            "name": "all",
-            "value": "['.i64=(2147483647 *2U +1U)']"
-          },
-          {
-            "help": "",
-            "name": "mean",
-            "value": "['.i64=(1 << 0)']"
-          },
-          {
-            "help": "",
-            "name": "variance",
-            "value": "['.i64=(1 << 1)']"
-          },
-          {
-            "help": "",
-            "name": "centroid",
-            "value": "['.i64=(1 << 2)']"
-          },
-          {
-            "help": "",
-            "name": "spread",
-            "value": "['.i64=(1 << 3)']"
-          },
-          {
-            "help": "",
-            "name": "skewness",
-            "value": "['.i64=(1 << 4)']"
-          },
-          {
-            "help": "",
-            "name": "kurtosis",
-            "value": "['.i64=(1 << 5)']"
-          },
-          {
-            "help": "",
-            "name": "entropy",
-            "value": "['.i64=(1 << 6)']"
-          },
-          {
-            "help": "",
-            "name": "flatness",
-            "value": "['.i64=(1 << 7)']"
-          },
-          {
-            "help": "",
-            "name": "crest",
-            "value": "['.i64=(1 << 8)']"
-          },
-          {
-            "help": "",
-            "name": "flux",
-            "value": "['.i64=(1 << 9)']"
-          },
-          {
-            "help": "",
-            "name": "slope",
-            "value": "['.i64=(1 << 10)']"
-          },
-          {
-            "help": "",
-            "name": "decrease",
-            "value": "['.i64=(1 << 11)']"
-          },
-          {
-            "help": "",
-            "name": "rolloff",
-            "value": "['.i64=(1 << 12)']"
-          }
-        ],
-        "default": "['.i64=(2147483647 *2U +1U)']",
-        "deprecated": false,
-        "help": "select the parameters which are measured",
-        "name": "measure",
-        "required": false,
-        "type": "AV_OPT_TYPE_FLAGS"
-      }
-    ],
-    "priv_class": "&aspectralstats_class",
-    "priv_class_value": "aspectralstats_class",
-    "type": "af"
+    "priv_class": "&aspectralstats_class"
   }
 ]

@@ -2,7 +2,6 @@
   {
     "description": "Hard repeat fields based on MPEG repeat field flag.",
     "flags": null,
-    "flags_value": 0,
     "id": "ff_vf_repeatfields",
     "input_filter_pads": [
       {
@@ -11,9 +10,6 @@
       }
     ],
     "inputs": "(repeatfields_inputs)",
-    "inputs_value": "repeatfields_inputs",
-    "is_dynamic_inputs": false,
-    "is_dynamic_outputs": false,
     "name": "repeatfields",
     "options": [],
     "output_filter_pads": [
@@ -23,10 +19,6 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
-    "outputs_value": "ff_video_default_filterpad",
-    "parsed_options": [],
-    "priv_class": null,
-    "priv_class_value": null,
-    "type": "vf"
+    "priv_class": null
   }
 ]

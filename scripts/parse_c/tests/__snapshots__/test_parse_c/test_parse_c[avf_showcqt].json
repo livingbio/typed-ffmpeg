@@ -1,0 +1,487 @@
+[
+  {
+    "description": "Convert input audio to a CQT (Constant/Clamped Q Transform) spectrum video output.",
+    "flags": null,
+    "id": "ff_avf_showcqt",
+    "input_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "inputs": "(ff_audio_default_filterpad)",
+    "name": "showcqt",
+    "options": [
+      {
+        "default": "['.str = \"1920x1080\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set video size",
+        "max": "0",
+        "min": "0",
+        "name": "size",
+        "offset": "__builtin_offsetof(ShowCQTContext, width)",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"1920x1080\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set video size",
+        "max": "0",
+        "min": "0",
+        "name": "s",
+        "offset": "__builtin_offsetof(ShowCQTContext, width)",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"25\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set video rate",
+        "max": "1000",
+        "min": "1",
+        "name": "fps",
+        "offset": "__builtin_offsetof(ShowCQTContext, rate)",
+        "type": "AV_OPT_TYPE_VIDEO_RATE",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"25\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set video rate",
+        "max": "1000",
+        "min": "1",
+        "name": "rate",
+        "offset": "__builtin_offsetof(ShowCQTContext, rate)",
+        "type": "AV_OPT_TYPE_VIDEO_RATE",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"25\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set video rate",
+        "max": "1000",
+        "min": "1",
+        "name": "r",
+        "offset": "__builtin_offsetof(ShowCQTContext, rate)",
+        "type": "AV_OPT_TYPE_VIDEO_RATE",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = -1']",
+        "flags": "((1<<16)|16)",
+        "help": "set bargraph height",
+        "max": "2147483647",
+        "min": "-1",
+        "name": "bar_h",
+        "offset": "__builtin_offsetof(ShowCQTContext, bar_h)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = -1']",
+        "flags": "((1<<16)|16)",
+        "help": "set axis height",
+        "max": "2147483647",
+        "min": "-1",
+        "name": "axis_h",
+        "offset": "__builtin_offsetof(ShowCQTContext, axis_h)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = -1']",
+        "flags": "((1<<16)|16)",
+        "help": "set sonogram height",
+        "max": "2147483647",
+        "min": "-1",
+        "name": "sono_h",
+        "offset": "__builtin_offsetof(ShowCQTContext, sono_h)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 1']",
+        "flags": "((1<<16)|16)",
+        "help": "set fullhd size",
+        "max": "1",
+        "min": "0",
+        "name": "fullhd",
+        "offset": "__builtin_offsetof(ShowCQTContext, fullhd)",
+        "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"16\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set sonogram volume",
+        "max": "0",
+        "min": "0",
+        "name": "sono_v",
+        "offset": "__builtin_offsetof(ShowCQTContext, sono_v)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"16\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set sonogram volume",
+        "max": "0",
+        "min": "0",
+        "name": "volume",
+        "offset": "__builtin_offsetof(ShowCQTContext, sono_v)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"sono_v\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set bargraph volume",
+        "max": "0",
+        "min": "0",
+        "name": "bar_v",
+        "offset": "__builtin_offsetof(ShowCQTContext, bar_v)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"sono_v\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set bargraph volume",
+        "max": "0",
+        "min": "0",
+        "name": "volume2",
+        "offset": "__builtin_offsetof(ShowCQTContext, bar_v)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 3.0']",
+        "flags": "((1<<16)|16)",
+        "help": "set sonogram gamma",
+        "max": "7.0",
+        "min": "1.0",
+        "name": "sono_g",
+        "offset": "__builtin_offsetof(ShowCQTContext, sono_g)",
+        "type": "AV_OPT_TYPE_FLOAT",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 3.0']",
+        "flags": "((1<<16)|16)",
+        "help": "set sonogram gamma",
+        "max": "7.0",
+        "min": "1.0",
+        "name": "gamma",
+        "offset": "__builtin_offsetof(ShowCQTContext, sono_g)",
+        "type": "AV_OPT_TYPE_FLOAT",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 1.0']",
+        "flags": "((1<<16)|16)",
+        "help": "set bargraph gamma",
+        "max": "7.0",
+        "min": "1.0",
+        "name": "bar_g",
+        "offset": "__builtin_offsetof(ShowCQTContext, bar_g)",
+        "type": "AV_OPT_TYPE_FLOAT",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 1.0']",
+        "flags": "((1<<16)|16)",
+        "help": "set bargraph gamma",
+        "max": "7.0",
+        "min": "1.0",
+        "name": "gamma2",
+        "offset": "__builtin_offsetof(ShowCQTContext, bar_g)",
+        "type": "AV_OPT_TYPE_FLOAT",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 1.0']",
+        "flags": "((1<<16)|16)",
+        "help": "set bar transparency",
+        "max": "1.0",
+        "min": "0.0",
+        "name": "bar_t",
+        "offset": "__builtin_offsetof(ShowCQTContext, bar_t)",
+        "type": "AV_OPT_TYPE_FLOAT",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 0.17']",
+        "flags": "((1<<16)|16)",
+        "help": "set timeclamp",
+        "max": "1.0",
+        "min": "0.002",
+        "name": "timeclamp",
+        "offset": "__builtin_offsetof(ShowCQTContext, timeclamp)",
+        "type": "AV_OPT_TYPE_DOUBLE",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 0.17']",
+        "flags": "((1<<16)|16)",
+        "help": "set timeclamp",
+        "max": "1.0",
+        "min": "0.002",
+        "name": "tc",
+        "offset": "__builtin_offsetof(ShowCQTContext, timeclamp)",
+        "type": "AV_OPT_TYPE_DOUBLE",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 0']",
+        "flags": "((1<<16)|16)",
+        "help": "set attack time",
+        "max": "1.0",
+        "min": "0.0",
+        "name": "attack",
+        "offset": "__builtin_offsetof(ShowCQTContext, attack)",
+        "type": "AV_OPT_TYPE_DOUBLE",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 20.01523126408007475']",
+        "flags": "((1<<16)|16)",
+        "help": "set base frequency",
+        "max": "100000.0",
+        "min": "10.0",
+        "name": "basefreq",
+        "offset": "__builtin_offsetof(ShowCQTContext, basefreq)",
+        "type": "AV_OPT_TYPE_DOUBLE",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 20495.59681441799654']",
+        "flags": "((1<<16)|16)",
+        "help": "set end frequency",
+        "max": "100000.0",
+        "min": "10.0",
+        "name": "endfreq",
+        "offset": "__builtin_offsetof(ShowCQTContext, endfreq)",
+        "type": "AV_OPT_TYPE_DOUBLE",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 1.0']",
+        "flags": "((1<<16)|16)",
+        "help": "set coeffclamp",
+        "max": "10.0",
+        "min": "0.1",
+        "name": "coeffclamp",
+        "offset": "__builtin_offsetof(ShowCQTContext, coeffclamp)",
+        "type": "AV_OPT_TYPE_FLOAT",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"384*tc/(384+tc*f)\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set tlength",
+        "max": "0",
+        "min": "0",
+        "name": "tlength",
+        "offset": "__builtin_offsetof(ShowCQTContext, tlength)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 6']",
+        "flags": "((1<<16)|16)",
+        "help": "set transform count",
+        "max": "30",
+        "min": "1",
+        "name": "count",
+        "offset": "__builtin_offsetof(ShowCQTContext, count)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "((1<<16)|16)",
+        "help": "set frequency count",
+        "max": "10",
+        "min": "0",
+        "name": "fcount",
+        "offset": "__builtin_offsetof(ShowCQTContext, fcount)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": "((1<<16)|16)",
+        "help": "set axis font file",
+        "max": "0",
+        "min": "0",
+        "name": "fontfile",
+        "offset": "__builtin_offsetof(ShowCQTContext, fontfile)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": "((1<<16)|16)",
+        "help": "set axis font",
+        "max": "0",
+        "min": "0",
+        "name": "font",
+        "offset": "__builtin_offsetof(ShowCQTContext, font)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"st(0, (midi(f)-59.5)/12);\" \"st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));\" \"r(1-ld(1)) + b(ld(1))\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set font color",
+        "max": "0",
+        "min": "0",
+        "name": "fontcolor",
+        "offset": "__builtin_offsetof(ShowCQTContext, fontcolor)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": "((1<<16)|16)",
+        "help": "set axis image",
+        "max": "0",
+        "min": "0",
+        "name": "axisfile",
+        "offset": "__builtin_offsetof(ShowCQTContext, axisfile)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 1']",
+        "flags": "((1<<16)|16)",
+        "help": "draw axis",
+        "max": "1",
+        "min": "0",
+        "name": "axis",
+        "offset": "__builtin_offsetof(ShowCQTContext, axis)",
+        "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 1']",
+        "flags": "((1<<16)|16)",
+        "help": "draw axis",
+        "max": "1",
+        "min": "0",
+        "name": "text",
+        "offset": "__builtin_offsetof(ShowCQTContext, axis)",
+        "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",
+        "flags": "((1<<16)|16)",
+        "help": "set color space",
+        "max": "2147483647",
+        "min": "0",
+        "name": "csp",
+        "offset": "__builtin_offsetof(ShowCQTContext, csp)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "csp"
+      },
+      {
+        "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",
+        "flags": "((1<<16)|16)",
+        "help": "unspecified",
+        "max": "0",
+        "min": "0",
+        "name": "unspecified",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "csp"
+      },
+      {
+        "default": "['.i64 = AVCOL_SPC_BT709']",
+        "flags": "((1<<16)|16)",
+        "help": "bt709",
+        "max": "0",
+        "min": "0",
+        "name": "bt709",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "csp"
+      },
+      {
+        "default": "['.i64 = AVCOL_SPC_FCC']",
+        "flags": "((1<<16)|16)",
+        "help": "fcc",
+        "max": "0",
+        "min": "0",
+        "name": "fcc",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "csp"
+      },
+      {
+        "default": "['.i64 = AVCOL_SPC_BT470BG']",
+        "flags": "((1<<16)|16)",
+        "help": "bt470bg",
+        "max": "0",
+        "min": "0",
+        "name": "bt470bg",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "csp"
+      },
+      {
+        "default": "['.i64 = AVCOL_SPC_SMPTE170M']",
+        "flags": "((1<<16)|16)",
+        "help": "smpte170m",
+        "max": "0",
+        "min": "0",
+        "name": "smpte170m",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "csp"
+      },
+      {
+        "default": "['.i64 = AVCOL_SPC_SMPTE240M']",
+        "flags": "((1<<16)|16)",
+        "help": "smpte240m",
+        "max": "0",
+        "min": "0",
+        "name": "smpte240m",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "csp"
+      },
+      {
+        "default": "['.i64 = AVCOL_SPC_BT2020_NCL']",
+        "flags": "((1<<16)|16)",
+        "help": "bt2020ncl",
+        "max": "0",
+        "min": "0",
+        "name": "bt2020ncl",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "csp"
+      },
+      {
+        "default": "['.str = \"1|0.5|0|0|0.5|1\"']",
+        "flags": "((1<<16)|16)",
+        "help": "set color scheme",
+        "max": "0",
+        "min": "0",
+        "name": "cscheme",
+        "offset": "__builtin_offsetof(ShowCQTContext, cscheme)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(showcqt_outputs)",
+    "priv_class": "&showcqt_class"
+  }
+]
