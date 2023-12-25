@@ -1,8 +1,25 @@
 import enum
+import re
 from functools import cached_property
 from itertools import groupby
 
 import pydantic
+
+
+class AVOptionFlags(int, enum.Enum):
+    # ref: libavutil/opt.h
+    AV_OPT_FLAG_ENCODING_PARAM = 1
+    AV_OPT_FLAG_DECODING_PARAM = 2
+    AV_OPT_FLAG_AUDIO_PARAM = 8
+    AV_OPT_FLAG_VIDEO_PARAM = 16
+    AV_OPT_FLAG_SUBTITLE_PARAM = 32
+    AV_OPT_FLAG_EXPORT = 64
+    AV_OPT_FLAG_READONLY = 128
+    AV_OPT_FLAG_BSF_PARAM = 1 << 8
+    AV_OPT_FLAG_RUNTIME_PARAM = 1 << 15
+    AV_OPT_FLAG_FILTERING_PARAM = 1 << 16
+    AV_OPT_FLAG_DEPRECATED = 1 << 17
+    AV_OPT_FLAG_CHILD_CONSTS = 1 << 18
 
 
 class AVOption(pydantic.BaseModel):
@@ -16,6 +33,16 @@ class AVOption(pydantic.BaseModel):
     flags: str | None = None
     unit: str | None = None
 
+    @property
+    def flags_value(self) -> int:
+        text = self.flags
+        if text is None:
+            return 0
+
+        text = text.replace("\n", "")
+
+        return eval(text)
+
 
 class Choice(pydantic.BaseModel):
     name: str
@@ -27,7 +54,7 @@ class Option(pydantic.BaseModel):
     name: str
     help: str
     type: str
-    default: int | float | str | None = None
+    default: str | None = None
 
     choices: list[Choice] = []
 
