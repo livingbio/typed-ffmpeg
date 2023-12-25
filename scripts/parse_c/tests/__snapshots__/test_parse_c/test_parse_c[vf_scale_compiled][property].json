@@ -5,15 +5,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
-        "choices": [],
-        "default": null,
-        "help": "Output video width",
-        "name": "w",
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": null,
+        "alias": "w",
         "choices": [],
         "default": null,
         "help": "Output video width",
@@ -21,15 +13,7 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": null,
-        "help": "Output video height",
-        "name": "h",
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": null,
+        "alias": "h",
         "choices": [],
         "default": null,
         "help": "Output video height",
@@ -355,15 +339,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
-        "choices": [],
-        "default": null,
-        "help": "Output video width",
-        "name": "w",
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": null,
+        "alias": "w",
         "choices": [],
         "default": null,
         "help": "Output video width",
@@ -371,15 +347,7 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": null,
-        "help": "Output video height",
-        "name": "h",
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": null,
+        "alias": "h",
         "choices": [],
         "default": null,
         "help": "Output video height",

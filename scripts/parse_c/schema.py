@@ -1,5 +1,6 @@
 import enum
 import re
+from collections import defaultdict
 from functools import cached_property
 from itertools import groupby
 
@@ -173,24 +174,23 @@ class AVFilter(pydantic.BaseModel):
                     Choice(name=option.name, help=option.help, value=option.default)
                 ]
 
-        # # collect alias map
-        # alias_map = defaultdict(list)
-        # for option in [k for k in self.options if k.type != "AV_OPT_TYPE_CONST"]:
-        #     alias_map[option.offset].append(option)
-        #     alias_map[option.offset].sort(key=lambda i: i.name)
+        # collect alias map
+        alias_map = defaultdict(list)
+        for option in [k for k in self.options if k.type != "AV_OPT_TYPE_CONST"]:
+            alias_map[option.offset].append(option)
+            alias_map[option.offset].sort(key=lambda i: i.name)
 
-        # assert all(len(v) <= 2 for v in alias_map.values()), f"alias_map should have 1 or 2 items {self}"
+        assert all(len(v) <= 2 for v in alias_map.values()), f"alias_map should have 1 or 2 items {self}"
 
         # collect options
         for option in [k for k in self.options if k.unit == None or k.type != "AV_OPT_TYPE_CONST"]:
-            # if len(alias_map[option.offset]) > 1:
-            #     if alias_map[option.offset][0].name == option.name:
-            #         continue
-            #     else:
-            #         alias = alias_map[option.offset][0].name
-            # else:
-            #     alias = None
-            alias = None
+            if len(alias_map[option.offset]) > 1:
+                if alias_map[option.offset][0].name == option.name:
+                    continue
+                else:
+                    alias = alias_map[option.offset][0].name
+            else:
+                alias = None
 
             if option.unit == None:
                 output.append(

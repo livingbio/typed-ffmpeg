@@ -5,7 +5,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "c",
         "choices": [],
         "default": "['.str = \"black\"']",
         "help": "set color",
@@ -13,15 +13,7 @@
         "type": "AV_OPT_TYPE_COLOR"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"black\"']",
-        "help": "set color",
-        "name": "c",
-        "type": "AV_OPT_TYPE_COLOR"
-      },
-      {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -29,15 +21,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -45,27 +29,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -92,7 +60,7 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -100,27 +68,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -139,7 +91,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -147,15 +99,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -163,27 +107,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -202,7 +130,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -210,15 +138,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -226,27 +146,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -258,15 +162,7 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "help": "set number of decimals to show",
-        "name": "decimals",
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
+        "alias": "decimals",
         "choices": [],
         "default": "['.i64=0']",
         "help": "set number of decimals to show",
@@ -281,7 +177,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -289,15 +185,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -305,27 +193,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -352,7 +224,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -360,15 +232,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -376,27 +240,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -408,20 +256,12 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": null,
+        "alias": "co",
         "choices": [],
         "default": "['.i64=0']",
         "help": "set complement colors",
         "name": "complement",
         "type": "AV_OPT_TYPE_BOOL"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=0']",
-        "help": "set complement colors",
-        "name": "co",
-        "type": "AV_OPT_TYPE_BOOL"
       }
     ]
   },
@@ -431,7 +271,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -439,15 +279,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -455,27 +287,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -494,7 +310,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -502,15 +318,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -518,27 +326,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -557,7 +349,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -565,15 +357,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -581,27 +365,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -620,7 +388,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -628,15 +396,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -644,27 +404,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -683,7 +427,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -691,15 +435,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -707,27 +443,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -746,7 +466,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -754,27 +474,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -793,7 +497,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -801,27 +505,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -840,7 +528,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -848,15 +536,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -864,27 +544,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -927,7 +591,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -935,27 +599,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
@@ -1001,7 +649,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
         "help": "set video size",
@@ -1009,15 +657,7 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"320x240\"']",
-        "help": "set video size",
-        "name": "s",
-        "type": "AV_OPT_TYPE_IMAGE_SIZE"
-      },
-      {
-        "alias": null,
+        "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
         "help": "set video rate",
@@ -1025,27 +665,11 @@
         "type": "AV_OPT_TYPE_VIDEO_RATE"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.str = \"25\"']",
-        "help": "set video rate",
-        "name": "r",
-        "type": "AV_OPT_TYPE_VIDEO_RATE"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
         "help": "set video duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64 = -1']",
-        "help": "set video duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       },
       {

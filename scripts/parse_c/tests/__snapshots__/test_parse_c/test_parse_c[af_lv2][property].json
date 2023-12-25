@@ -5,7 +5,7 @@
     "is_dynamic_outputs": false,
     "parsed_options": [
       {
-        "alias": null,
+        "alias": "p",
         "choices": [],
         "default": null,
         "help": "set plugin uri",
@@ -13,15 +13,7 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": null,
-        "help": "set plugin uri",
-        "name": "p",
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": null,
+        "alias": "c",
         "choices": [],
         "default": null,
         "help": "set plugin options",
@@ -29,15 +21,7 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": null,
-        "help": "set plugin options",
-        "name": "c",
-        "type": "AV_OPT_TYPE_STRING"
-      },
-      {
-        "alias": null,
+        "alias": "s",
         "choices": [],
         "default": "['.i64=44100']",
         "help": "set sample rate",
@@ -45,15 +29,7 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=44100']",
-        "help": "set sample rate",
-        "name": "s",
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
+        "alias": "n",
         "choices": [],
         "default": "['.i64=1024']",
         "help": "set the number of samples per requested frame",
@@ -61,27 +37,11 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=1024']",
-        "help": "set the number of samples per requested frame",
-        "name": "n",
-        "type": "AV_OPT_TYPE_INT"
-      },
-      {
-        "alias": null,
+        "alias": "d",
         "choices": [],
         "default": "['.i64=-1']",
         "help": "set audio duration",
         "name": "duration",
-        "type": "AV_OPT_TYPE_DURATION"
-      },
-      {
-        "alias": null,
-        "choices": [],
-        "default": "['.i64=-1']",
-        "help": "set audio duration",
-        "name": "d",
         "type": "AV_OPT_TYPE_DURATION"
       }
     ]
