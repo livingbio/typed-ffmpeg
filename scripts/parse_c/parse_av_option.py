@@ -5,10 +5,8 @@ from .schema import AVOption
 
 
 def _p(string: str, assert_key: str = None) -> str:
-    if not string.startswith("."):
+    if not "=" in string or not string.startswith("."):
         return string
-
-    assert "=" in string, string
 
     key, value = string.split("=", 1)
     key = key.strip()[1:]
@@ -19,7 +17,7 @@ def _p(string: str, assert_key: str = None) -> str:
 
 
 def _aligns(values: list[str]) -> dict[str, str]:
-    vars = ["name", "help", "offset", "_type", "default", "_min", "_max", "flags", "unit"]
+    vars = ["name", "help", "offset", "type", "default", "min", "max", "flags", "unit"]
     output = {}
 
     assert len(values) <= len(vars), values
@@ -47,26 +45,26 @@ def _parse_av_option(text: str) -> list[AVOption]:
     output: list[AVOption] = []
 
     def _eval_avoption(
-        name: str,
-        help: str,
-        offset: str,
+        _name: str,
+        _help: str,
+        _offset: str,
         _type: str,
-        default: str = None,
+        _default: str = None,
         _min: str = None,
         _max: str = None,
-        flags: str = None,
-        unit: str = None,
+        _flags: str = None,
+        _unit: str = None,
     ) -> AVOption:
         return AVOption(
-            name=name.strip('"'),
-            help=help.strip('"'),
-            offset=offset,
+            name=_name.strip('"'),
+            help=_help.strip('"'),
+            offset=_offset,
             type=_type,
-            default=default,
+            default=_default,
             min=_min,
             max=_max,
-            flags=flags,
-            unit=unit and unit.strip('"'),
+            flags=_flags,
+            unit=_unit and _unit.strip('"'),
         )
 
     for option_line in option_lines:
@@ -80,7 +78,7 @@ def _parse_av_option(text: str) -> list[AVOption]:
             continue
 
         kwargs = _aligns(option_line)
-        output.append(_eval_avoption(**kwargs))
+        output.append(_eval_avoption(**{"_" + k: v for k, v in kwargs.items()}))
 
     return output
 
