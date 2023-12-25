@@ -1,0 +1,13 @@
+{
+  "ff_vf_curves": {
+    "description": "Adjust components curves.",
+    "flags": "(1 << 16) | (1 << 2)",
+    "input_filter_pad": [],
+    "inputs": "(curves_inputs)",
+    "name": "curves",
+    "options": [],
+    "output_filter_pad": [],
+    "outputs": "(ff_video_default_filterpad)",
+    "priv_class": "&curves_class"
+  }
+}

@@ -11,6 +11,10 @@ def parse_c_structure(text: str) -> list[Any]:
 
     text = text.strip()
 
+    # ignore Line Directives
+    lines = text.split("\n")
+    text = "\n".join(line for line in lines if not line.strip().startswith("#"))
+
     for idx, ch in enumerate(text):
         match ch:
             case '"' if text[idx - 1] != "\\":
