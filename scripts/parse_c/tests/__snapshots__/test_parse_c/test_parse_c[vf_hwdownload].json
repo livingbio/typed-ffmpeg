@@ -2,6 +2,7 @@
   {
     "description": "Download a hardware frame to a normal frame",
     "flags": null,
+    "flags_value": 0,
     "id": "ff_vf_hwdownload",
     "input_filter_pads": [
       {
@@ -10,6 +11,9 @@
       }
     ],
     "inputs": "(hwdownload_inputs)",
+    "inputs_value": "hwdownload_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
     "name": "hwdownload",
     "options": [],
     "output_filter_pads": [
@@ -19,6 +23,10 @@
       }
     ],
     "outputs": "(hwdownload_outputs)",
-    "priv_class": "&hwdownload_class"
+    "outputs_value": "hwdownload_outputs",
+    "parsed_options": [],
+    "priv_class": "&hwdownload_class",
+    "priv_class_value": "hwdownload_class",
+    "type": "vf"
   }
 ]

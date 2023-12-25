@@ -2,14 +2,20 @@
   {
     "description": "Apply LV2 effect.",
     "flags": "(1 << 0)",
+    "flags_value": 1,
     "id": "ff_af_lv2",
     "input_filter_pads": [],
     "inputs": "0",
+    "inputs_value": null,
+    "is_dynamic_inputs": true,
+    "is_dynamic_outputs": false,
     "name": "lv2",
     "options": [
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set plugin uri",
         "max": null,
         "min": null,
@@ -20,7 +26,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set plugin uri",
         "max": null,
         "min": null,
@@ -31,7 +39,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set plugin options",
         "max": null,
         "min": null,
@@ -42,7 +52,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set plugin options",
         "max": null,
         "min": null,
@@ -53,7 +65,9 @@
       },
       {
         "default": "['.i64=44100']",
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set sample rate",
         "max": "2147483647",
         "min": "1",
@@ -64,7 +78,9 @@
       },
       {
         "default": "['.i64=44100']",
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set sample rate",
         "max": "2147483647",
         "min": "1",
@@ -75,7 +91,9 @@
       },
       {
         "default": "['.i64=1024']",
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set the number of samples per requested frame",
         "max": "2147483647",
         "min": "1",
@@ -86,7 +104,9 @@
       },
       {
         "default": "['.i64=1024']",
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set the number of samples per requested frame",
         "max": "2147483647",
         "min": "1",
@@ -97,7 +117,9 @@
       },
       {
         "default": "['.i64=-1']",
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set audio duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -108,7 +130,9 @@
       },
       {
         "default": "['.i64=-1']",
+        "flag_is_deprecated": false,
         "flags": "8 | (1<<16)",
+        "flags_value": 65544,
         "help": "set audio duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -125,6 +149,61 @@
       }
     ],
     "outputs": "(lv2_outputs)",
-    "priv_class": "&lv2_class"
+    "outputs_value": "lv2_outputs",
+    "parsed_options": [
+      {
+        "alias": "p",
+        "choices": [],
+        "default": null,
+        "deprecated": false,
+        "help": "set plugin uri",
+        "name": "plugin",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": "c",
+        "choices": [],
+        "default": null,
+        "deprecated": false,
+        "help": "set plugin options",
+        "name": "controls",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.i64=44100']",
+        "deprecated": false,
+        "help": "set sample rate",
+        "name": "sample_rate",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": "n",
+        "choices": [],
+        "default": "['.i64=1024']",
+        "deprecated": false,
+        "help": "set the number of samples per requested frame",
+        "name": "nb_samples",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64=-1']",
+        "deprecated": false,
+        "help": "set audio duration",
+        "name": "duration",
+        "required": false,
+        "type": "AV_OPT_TYPE_DURATION"
+      }
+    ],
+    "priv_class": "&lv2_class",
+    "priv_class_value": "lv2_class",
+    "type": "af"
   }
 ]

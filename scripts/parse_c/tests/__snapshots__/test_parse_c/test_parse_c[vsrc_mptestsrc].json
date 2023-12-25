@@ -2,14 +2,20 @@
   {
     "description": "Generate various test pattern.",
     "flags": null,
+    "flags_value": 0,
     "id": "ff_vsrc_mptestsrc",
     "input_filter_pads": [],
     "inputs": "((void*)0)",
+    "inputs_value": null,
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
     "name": "mptestsrc",
     "options": [
       {
         "default": "['.str = \"25\"']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -20,7 +26,9 @@
       },
       {
         "default": "['.str = \"25\"']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "set video rate",
         "max": "2147483647",
         "min": "0",
@@ -31,7 +39,9 @@
       },
       {
         "default": "['.i64 = -1']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -42,7 +52,9 @@
       },
       {
         "default": "['.i64 = -1']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "set video duration",
         "max": "9223372036854775807LL",
         "min": "-1",
@@ -53,7 +65,9 @@
       },
       {
         "default": "['.i64=TEST_ALL']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "set test to perform",
         "max": "2147483647",
         "min": "0",
@@ -64,7 +78,9 @@
       },
       {
         "default": "['.i64=TEST_ALL']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "set test to perform",
         "max": "2147483647",
         "min": "0",
@@ -75,7 +91,9 @@
       },
       {
         "default": "['.i64=TEST_DC_LUMA']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -86,7 +104,9 @@
       },
       {
         "default": "['.i64=TEST_DC_CHROMA']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -97,7 +117,9 @@
       },
       {
         "default": "['.i64=TEST_FREQ_LUMA']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -108,7 +130,9 @@
       },
       {
         "default": "['.i64=TEST_FREQ_CHROMA']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -119,7 +143,9 @@
       },
       {
         "default": "['.i64=TEST_AMP_LUMA']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -130,7 +156,9 @@
       },
       {
         "default": "['.i64=TEST_AMP_CHROMA']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -141,7 +169,9 @@
       },
       {
         "default": "['.i64=TEST_CBP']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -152,7 +182,9 @@
       },
       {
         "default": "['.i64=TEST_MV']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -163,7 +195,9 @@
       },
       {
         "default": "['.i64=TEST_RING1']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -174,7 +208,9 @@
       },
       {
         "default": "['.i64=TEST_RING2']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -185,7 +221,9 @@
       },
       {
         "default": "['.i64=TEST_ALL']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "",
         "max": "2147483647",
         "min": "(-2147483647 -1)",
@@ -196,7 +234,9 @@
       },
       {
         "default": "['.i64 = 30']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "Set the maximum number of frames generated for each test",
         "max": "9223372036854775807LL",
         "min": "1",
@@ -207,7 +247,9 @@
       },
       {
         "default": "['.i64 = 30']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16",
+        "flags_value": 65552,
         "help": "Set the maximum number of frames generated for each test",
         "max": "9223372036854775807LL",
         "min": "1",
@@ -224,6 +266,107 @@
       }
     ],
     "outputs": "(mptestsrc_outputs)",
-    "priv_class": "&mptestsrc_class"
+    "outputs_value": "mptestsrc_outputs",
+    "parsed_options": [
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "required": false,
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "required": false,
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": "t",
+        "choices": [
+          {
+            "help": "",
+            "name": "dc_luma",
+            "value": "['.i64=TEST_DC_LUMA']"
+          },
+          {
+            "help": "",
+            "name": "dc_chroma",
+            "value": "['.i64=TEST_DC_CHROMA']"
+          },
+          {
+            "help": "",
+            "name": "freq_luma",
+            "value": "['.i64=TEST_FREQ_LUMA']"
+          },
+          {
+            "help": "",
+            "name": "freq_chroma",
+            "value": "['.i64=TEST_FREQ_CHROMA']"
+          },
+          {
+            "help": "",
+            "name": "amp_luma",
+            "value": "['.i64=TEST_AMP_LUMA']"
+          },
+          {
+            "help": "",
+            "name": "amp_chroma",
+            "value": "['.i64=TEST_AMP_CHROMA']"
+          },
+          {
+            "help": "",
+            "name": "cbp",
+            "value": "['.i64=TEST_CBP']"
+          },
+          {
+            "help": "",
+            "name": "mv",
+            "value": "['.i64=TEST_MV']"
+          },
+          {
+            "help": "",
+            "name": "ring1",
+            "value": "['.i64=TEST_RING1']"
+          },
+          {
+            "help": "",
+            "name": "ring2",
+            "value": "['.i64=TEST_RING2']"
+          },
+          {
+            "help": "",
+            "name": "all",
+            "value": "['.i64=TEST_ALL']"
+          }
+        ],
+        "default": "['.i64=TEST_ALL']",
+        "deprecated": false,
+        "help": "set test to perform",
+        "name": "test",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": "m",
+        "choices": [],
+        "default": "['.i64 = 30']",
+        "deprecated": false,
+        "help": "Set the maximum number of frames generated for each test",
+        "name": "max_frames",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT64"
+      }
+    ],
+    "priv_class": "&mptestsrc_class",
+    "priv_class_value": "mptestsrc_class",
+    "type": "vsrc"
   }
 ]

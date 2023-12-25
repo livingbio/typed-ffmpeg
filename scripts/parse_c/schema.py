@@ -34,6 +34,7 @@ class AVOption(pydantic.BaseModel):
     flags: str | None = None
     unit: str | None = None
 
+    @pydantic.computed_field
     @property
     def flags_value(self) -> int:
         text = self.flags
@@ -45,6 +46,7 @@ class AVOption(pydantic.BaseModel):
 
         return eval(text)
 
+    @pydantic.computed_field
     @property
     def flag_is_deprecated(self) -> bool:
         return bool(self.flags_value & AVOptionFlags.AV_OPT_FLAG_DEPRECATED)
@@ -66,6 +68,7 @@ class Option(pydantic.BaseModel):
 
     choices: list[Choice] = []
 
+    @pydantic.computed_field
     @property
     def required(self) -> bool:
         if self.default is None:
@@ -126,6 +129,16 @@ def parse_av_filter_flags(text: str | None) -> int:
     return eval(text)
 
 
+class FilterType(str, enum.Enum):
+    AUDIO_FILTER = "af"
+    AUDIO_SOURCE = "asrc"
+    AUDIO_SINK = "asink"
+    VIDEO_FILTER = "vf"
+    VIDEO_SOURCE = "vsrc"
+    VIDEO_SINK = "vsink"
+    AUDIO_AND_VIDEO_FILTER = "avf"
+
+
 class AVFilter(pydantic.BaseModel):
     id: str  # the varname of the filter
     name: str
@@ -148,19 +161,25 @@ class AVFilter(pydantic.BaseModel):
     input_filter_pads: list[AVFilterPad] = []
     output_filter_pads: list[AVFilterPad] = []
 
+    @pydantic.computed_field
+    @property
+    def type(self) -> FilterType:
+        _, type, _ = self.id.split("_", 2)
+        return FilterType(type)
+
+    @pydantic.computed_field
     @property
     def flags_value(self) -> int:
         return parse_av_filter_flags(self.flags)
 
+    @pydantic.computed_field
     @property
-    def priv_class_value(self) -> str:
+    def priv_class_value(self) -> str | None:
+        if self.priv_class is None:
+            return None
         return self.priv_class.strip("&")
 
-    @property
-    def input_kwargs(self) -> list[str]:
-        # if not self.is_dynamic_inputs:
-        ...
-
+    @pydantic.computed_field
     @property
     def inputs_value(self) -> str | None:
         # af_lv2.c's inputs is 0
@@ -169,6 +188,7 @@ class AVFilter(pydantic.BaseModel):
 
         return self.inputs.strip("()")
 
+    @pydantic.computed_field
     @property
     def outputs_value(self) -> str | None:
         if self.outputs is None or self.outputs == "((void*)0)":
@@ -176,14 +196,17 @@ class AVFilter(pydantic.BaseModel):
 
         return self.outputs.strip("()")
 
+    @pydantic.computed_field
     @property
     def is_dynamic_inputs(self) -> bool:
         return bool(self.flags_value & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_INPUTS)
 
+    @pydantic.computed_field
     @property
     def is_dynamic_outputs(self) -> bool:
         return bool(self.flags_value & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_OUTPUTS)
 
+    @pydantic.computed_field
     @cached_property
     def parsed_options(self) -> list[Option]:
         output = []

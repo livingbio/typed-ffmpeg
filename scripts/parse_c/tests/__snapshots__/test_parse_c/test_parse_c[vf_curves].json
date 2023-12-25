@@ -2,6 +2,7 @@
   {
     "description": "Adjust components curves.",
     "flags": "(1 << 16) | (1 << 2)",
+    "flags_value": 65540,
     "id": "ff_vf_curves",
     "input_filter_pads": [
       {
@@ -10,11 +11,16 @@
       }
     ],
     "inputs": "(curves_inputs)",
+    "inputs_value": "curves_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
     "name": "curves",
     "options": [
       {
         "default": "['.i64=PRESET_NONE']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "select a color curves preset",
         "max": "NB_PRESETS-1",
         "min": "PRESET_NONE",
@@ -25,7 +31,9 @@
       },
       {
         "default": "['.i64=PRESET_NONE']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -36,7 +44,9 @@
       },
       {
         "default": "['.i64=PRESET_COLOR_NEGATIVE']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -47,7 +57,9 @@
       },
       {
         "default": "['.i64=PRESET_CROSS_PROCESS']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -58,7 +70,9 @@
       },
       {
         "default": "['.i64=PRESET_DARKER']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -69,7 +83,9 @@
       },
       {
         "default": "['.i64=PRESET_INCREASE_CONTRAST']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -80,7 +96,9 @@
       },
       {
         "default": "['.i64=PRESET_LIGHTER']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -91,7 +109,9 @@
       },
       {
         "default": "['.i64=PRESET_LINEAR_CONTRAST']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -102,7 +122,9 @@
       },
       {
         "default": "['.i64=PRESET_MEDIUM_CONTRAST']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -113,7 +135,9 @@
       },
       {
         "default": "['.i64=PRESET_NEGATIVE']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -124,7 +148,9 @@
       },
       {
         "default": "['.i64=PRESET_STRONG_CONTRAST']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -135,7 +161,9 @@
       },
       {
         "default": "['.i64=PRESET_VINTAGE']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -146,7 +174,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set master points coordinates",
         "max": null,
         "min": null,
@@ -157,7 +187,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set master points coordinates",
         "max": null,
         "min": null,
@@ -168,7 +200,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set red points coordinates",
         "max": null,
         "min": null,
@@ -179,7 +213,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set red points coordinates",
         "max": null,
         "min": null,
@@ -190,7 +226,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set green points coordinates",
         "max": null,
         "min": null,
@@ -201,7 +239,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set green points coordinates",
         "max": null,
         "min": null,
@@ -212,7 +252,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set blue points coordinates",
         "max": null,
         "min": null,
@@ -223,7 +265,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set blue points coordinates",
         "max": null,
         "min": null,
@@ -234,7 +278,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set points coordinates for all components",
         "max": null,
         "min": null,
@@ -245,7 +291,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "set Photoshop curves file name",
         "max": null,
         "min": null,
@@ -256,7 +304,9 @@
       },
       {
         "default": "['.str=((void*)0)']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "save Gnuplot script of the curves in specified file",
         "max": null,
         "min": null,
@@ -267,7 +317,9 @@
       },
       {
         "default": "['.i64=INTERP_NATURAL']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "specify the kind of interpolation",
         "max": "NB_INTERPS-1",
         "min": "INTERP_NATURAL",
@@ -278,7 +330,9 @@
       },
       {
         "default": "['.i64=INTERP_NATURAL']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "natural cubic spline",
         "max": "0",
         "min": "0",
@@ -289,7 +343,9 @@
       },
       {
         "default": "['.i64=INTERP_PCHIP']",
+        "flag_is_deprecated": false,
         "flags": "(1<<16)|16|(1<<15)",
+        "flags_value": 98320,
         "help": "monotonically cubic interpolation",
         "max": "0",
         "min": "0",
@@ -306,6 +362,168 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
-    "priv_class": "&curves_class"
+    "outputs_value": "ff_video_default_filterpad",
+    "parsed_options": [
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "none",
+            "value": "['.i64=PRESET_NONE']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "color_negative",
+            "value": "['.i64=PRESET_COLOR_NEGATIVE']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "cross_process",
+            "value": "['.i64=PRESET_CROSS_PROCESS']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "darker",
+            "value": "['.i64=PRESET_DARKER']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "increase_contrast",
+            "value": "['.i64=PRESET_INCREASE_CONTRAST']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "lighter",
+            "value": "['.i64=PRESET_LIGHTER']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "linear_contrast",
+            "value": "['.i64=PRESET_LINEAR_CONTRAST']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "medium_contrast",
+            "value": "['.i64=PRESET_MEDIUM_CONTRAST']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "negative",
+            "value": "['.i64=PRESET_NEGATIVE']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "strong_contrast",
+            "value": "['.i64=PRESET_STRONG_CONTRAST']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "vintage",
+            "value": "['.i64=PRESET_VINTAGE']"
+          }
+        ],
+        "default": "['.i64=PRESET_NONE']",
+        "deprecated": false,
+        "help": "select a color curves preset",
+        "name": "preset",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": "m",
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "deprecated": false,
+        "help": "set master points coordinates",
+        "name": "master",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "deprecated": false,
+        "help": "set red points coordinates",
+        "name": "red",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": "g",
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "deprecated": false,
+        "help": "set green points coordinates",
+        "name": "green",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": "b",
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "deprecated": false,
+        "help": "set blue points coordinates",
+        "name": "blue",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "deprecated": false,
+        "help": "set points coordinates for all components",
+        "name": "all",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "deprecated": false,
+        "help": "set Photoshop curves file name",
+        "name": "psfile",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "deprecated": false,
+        "help": "save Gnuplot script of the curves in specified file",
+        "name": "plot",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "natural cubic spline",
+            "name": "natural",
+            "value": "['.i64=INTERP_NATURAL']"
+          },
+          {
+            "help": "monotonically cubic interpolation",
+            "name": "pchip",
+            "value": "['.i64=INTERP_PCHIP']"
+          }
+        ],
+        "default": "['.i64=INTERP_NATURAL']",
+        "deprecated": false,
+        "help": "specify the kind of interpolation",
+        "name": "interp",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class": "&curves_class",
+    "priv_class_value": "curves_class",
+    "type": "vf"
   }
 ]

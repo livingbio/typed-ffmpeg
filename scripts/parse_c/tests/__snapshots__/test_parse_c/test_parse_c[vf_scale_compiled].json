@@ -2,6 +2,7 @@
   {
     "description": "Scale the input video size and/or convert the image format.",
     "flags": null,
+    "flags_value": 0,
     "id": "ff_vf_scale",
     "input_filter_pads": [
       {
@@ -10,11 +11,16 @@
       }
     ],
     "inputs": "(avfilter_vf_scale_inputs)",
+    "inputs_value": "avfilter_vf_scale_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
     "name": "scale",
     "options": [
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
+        "flags_value": 98320,
         "help": "Output video width",
         "max": null,
         "min": null,
@@ -25,7 +31,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
+        "flags_value": 98320,
         "help": "Output video width",
         "max": null,
         "min": null,
@@ -36,7 +44,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
+        "flags_value": 98320,
         "help": "Output video height",
         "max": null,
         "min": null,
@@ -47,7 +57,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
+        "flags_value": 98320,
         "help": "Output video height",
         "max": null,
         "min": null,
@@ -58,7 +70,9 @@
       },
       {
         "default": "['.str = \"\"']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "Flags to pass to libswscale",
         "max": null,
         "min": null,
@@ -69,7 +83,9 @@
       },
       {
         "default": "['.i64 = 0']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "set interlacing",
         "max": "1",
         "min": "-1",
@@ -80,7 +96,9 @@
       },
       {
         "default": "['.i64 = -1']",
+        "flag_is_deprecated": false,
         "flags": ".flags = 16|(1<<16)",
+        "flags_value": 65552,
         "help": "set input YCbCr type",
         "max": "AVCOL_SPC_NB-1",
         "min": "-1",
@@ -91,7 +109,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": ".flags = 16|(1<<16)",
+        "flags_value": 65552,
         "help": "set output YCbCr type",
         "max": "AVCOL_SPC_NB-1",
         "min": "0",
@@ -102,7 +122,9 @@
       },
       {
         "default": "['.i64 = -1']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -113,7 +135,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT470BG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -124,7 +148,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT470BG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -135,7 +161,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT470BG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -146,7 +174,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT709']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -157,7 +187,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_FCC']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -168,7 +200,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_SMPTE240M']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -179,7 +213,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT2020_NCL']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -190,7 +226,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "set input color range",
         "max": "2",
         "min": "0",
@@ -201,7 +239,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "set output color range",
         "max": "2",
         "min": "0",
@@ -212,7 +252,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -223,7 +265,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -234,7 +278,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_JPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -245,7 +291,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_MPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -256,7 +304,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_JPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -267,7 +317,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_MPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -278,7 +330,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_MPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -289,7 +343,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_JPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -300,7 +356,9 @@
       },
       {
         "default": "['.i64 = -513']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "input vertical chroma position in luma grid/256",
         "max": "512",
         "min": "-513",
@@ -311,7 +369,9 @@
       },
       {
         "default": "['.i64 = -513']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "input horizontal chroma position in luma grid/256",
         "max": "512",
         "min": "-513",
@@ -322,7 +382,9 @@
       },
       {
         "default": "['.i64 = -513']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "output vertical chroma position in luma grid/256",
         "max": "512",
         "min": "-513",
@@ -333,7 +395,9 @@
       },
       {
         "default": "['.i64 = -513']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "output horizontal chroma position in luma grid/256",
         "max": "512",
         "min": "-513",
@@ -344,7 +408,9 @@
       },
       {
         "default": "['.i64 = 0']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "decrease or increase w/h if necessary to keep the original AR",
         "max": "2",
         "min": "0",
@@ -355,7 +421,9 @@
       },
       {
         "default": "['.i64 = 0']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -366,7 +434,9 @@
       },
       {
         "default": "['.i64 = 1']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -377,7 +447,9 @@
       },
       {
         "default": "['.i64 = 2']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -388,7 +460,9 @@
       },
       {
         "default": "['.i64 = 1']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
         "max": "256",
         "min": "1",
@@ -399,7 +473,9 @@
       },
       {
         "default": "['.dbl = 1.7976931348623157e+308']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "Scaler param 0",
         "max": "1.7976931348623157e+308",
         "min": "-1.7976931348623157e+308",
@@ -410,7 +486,9 @@
       },
       {
         "default": "['.dbl = 1.7976931348623157e+308']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "Scaler param 1",
         "max": "1.7976931348623157e+308",
         "min": "-1.7976931348623157e+308",
@@ -421,7 +499,9 @@
       },
       {
         "default": "['.i64 = EVAL_MODE_INIT']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "specify when to evaluate expressions",
         "max": "EVAL_MODE_NB-1",
         "min": "0",
@@ -432,7 +512,9 @@
       },
       {
         "default": "['.i64=EVAL_MODE_INIT']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "eval expressions once during initialization",
         "max": null,
         "min": null,
@@ -443,7 +525,9 @@
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "eval expressions during initialization and per-frame",
         "max": null,
         "min": null,
@@ -460,11 +544,378 @@
       }
     ],
     "outputs": "(avfilter_vf_scale_outputs)",
-    "priv_class": "&scale_class"
+    "outputs_value": "avfilter_vf_scale_outputs",
+    "parsed_options": [
+      {
+        "alias": "w",
+        "choices": [],
+        "default": null,
+        "deprecated": false,
+        "help": "Output video width",
+        "name": "width",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": "h",
+        "choices": [],
+        "default": null,
+        "deprecated": false,
+        "help": "Output video height",
+        "name": "height",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.str = \"\"']",
+        "deprecated": false,
+        "help": "Flags to pass to libswscale",
+        "name": "flags",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "deprecated": false,
+        "help": "set interlacing",
+        "name": "interl",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "auto",
+            "value": "['.i64 = -1']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt601",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte170m",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt709",
+            "value": "['.i64 = AVCOL_SPC_BT709']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "fcc",
+            "value": "['.i64 = AVCOL_SPC_FCC']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte240m",
+            "value": "['.i64 = AVCOL_SPC_SMPTE240M']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020",
+            "value": "['.i64 = AVCOL_SPC_BT2020_NCL']"
+          }
+        ],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set input YCbCr type",
+        "name": "in_color_matrix",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "auto",
+            "value": "['.i64 = -1']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt601",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte170m",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt709",
+            "value": "['.i64 = AVCOL_SPC_BT709']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "fcc",
+            "value": "['.i64 = AVCOL_SPC_FCC']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte240m",
+            "value": "['.i64 = AVCOL_SPC_SMPTE240M']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020",
+            "value": "['.i64 = AVCOL_SPC_BT2020_NCL']"
+          }
+        ],
+        "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",
+        "deprecated": false,
+        "help": "set output YCbCr type",
+        "name": "out_color_matrix",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "auto",
+            "value": "['.i64 = AVCOL_RANGE_UNSPECIFIED']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unknown",
+            "value": "['.i64 = AVCOL_RANGE_UNSPECIFIED']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "full",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "limited",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "jpeg",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "mpeg",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "tv",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "pc",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          }
+        ],
+        "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "deprecated": false,
+        "help": "set input color range",
+        "name": "in_range",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "auto",
+            "value": "['.i64 = AVCOL_RANGE_UNSPECIFIED']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unknown",
+            "value": "['.i64 = AVCOL_RANGE_UNSPECIFIED']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "full",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "limited",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "jpeg",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "mpeg",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "tv",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "pc",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          }
+        ],
+        "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "deprecated": false,
+        "help": "set output color range",
+        "name": "out_range",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = -513']",
+        "deprecated": false,
+        "help": "input vertical chroma position in luma grid/256",
+        "name": "in_v_chr_pos",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = -513']",
+        "deprecated": false,
+        "help": "input horizontal chroma position in luma grid/256",
+        "name": "in_h_chr_pos",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = -513']",
+        "deprecated": false,
+        "help": "output vertical chroma position in luma grid/256",
+        "name": "out_v_chr_pos",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = -513']",
+        "deprecated": false,
+        "help": "output horizontal chroma position in luma grid/256",
+        "name": "out_h_chr_pos",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "disable",
+            "value": "['.i64 = 0']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "decrease",
+            "value": "['.i64 = 1']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "increase",
+            "value": "['.i64 = 2']"
+          }
+        ],
+        "default": "['.i64 = 0']",
+        "deprecated": false,
+        "help": "decrease or increase w/h if necessary to keep the original AR",
+        "name": "force_original_aspect_ratio",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "deprecated": false,
+        "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
+        "name": "force_divisible_by",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl = 1.7976931348623157e+308']",
+        "deprecated": false,
+        "help": "Scaler param 0",
+        "name": "param0",
+        "required": false,
+        "type": "AV_OPT_TYPE_DOUBLE"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl = 1.7976931348623157e+308']",
+        "deprecated": false,
+        "help": "Scaler param 1",
+        "name": "param1",
+        "required": false,
+        "type": "AV_OPT_TYPE_DOUBLE"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "eval expressions once during initialization",
+            "name": "init",
+            "value": "['.i64=EVAL_MODE_INIT']"
+          },
+          {
+            "help": "eval expressions during initialization and per-frame",
+            "name": "frame",
+            "value": "['.i64=EVAL_MODE_FRAME']"
+          }
+        ],
+        "default": "['.i64 = EVAL_MODE_INIT']",
+        "deprecated": false,
+        "help": "specify when to evaluate expressions",
+        "name": "eval",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class": "&scale_class",
+    "priv_class_value": "scale_class",
+    "type": "vf"
   },
   {
     "description": "Scale the input video size and/or convert the image format to the given reference.",
     "flags": null,
+    "flags_value": 0,
     "id": "ff_vf_scale2ref",
     "input_filter_pads": [
       {
@@ -477,11 +928,16 @@
       }
     ],
     "inputs": "(avfilter_vf_scale2ref_inputs)",
+    "inputs_value": "avfilter_vf_scale2ref_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
     "name": "scale2ref",
     "options": [
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
+        "flags_value": 98320,
         "help": "Output video width",
         "max": null,
         "min": null,
@@ -492,7 +948,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
+        "flags_value": 98320,
         "help": "Output video width",
         "max": null,
         "min": null,
@@ -503,7 +961,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
+        "flags_value": 98320,
         "help": "Output video height",
         "max": null,
         "min": null,
@@ -514,7 +974,9 @@
       },
       {
         "default": null,
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)|(1<<15)",
+        "flags_value": 98320,
         "help": "Output video height",
         "max": null,
         "min": null,
@@ -525,7 +987,9 @@
       },
       {
         "default": "['.str = \"\"']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "Flags to pass to libswscale",
         "max": null,
         "min": null,
@@ -536,7 +1000,9 @@
       },
       {
         "default": "['.i64 = 0']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "set interlacing",
         "max": "1",
         "min": "-1",
@@ -547,7 +1013,9 @@
       },
       {
         "default": "['.i64 = -1']",
+        "flag_is_deprecated": false,
         "flags": ".flags = 16|(1<<16)",
+        "flags_value": 65552,
         "help": "set input YCbCr type",
         "max": "AVCOL_SPC_NB-1",
         "min": "-1",
@@ -558,7 +1026,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": ".flags = 16|(1<<16)",
+        "flags_value": 65552,
         "help": "set output YCbCr type",
         "max": "AVCOL_SPC_NB-1",
         "min": "0",
@@ -569,7 +1039,9 @@
       },
       {
         "default": "['.i64 = -1']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -580,7 +1052,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT470BG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -591,7 +1065,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT470BG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -602,7 +1078,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT470BG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -613,7 +1091,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT709']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -624,7 +1104,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_FCC']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -635,7 +1117,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_SMPTE240M']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -646,7 +1130,9 @@
       },
       {
         "default": "['.i64 = AVCOL_SPC_BT2020_NCL']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -657,7 +1143,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "set input color range",
         "max": "2",
         "min": "0",
@@ -668,7 +1156,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "set output color range",
         "max": "2",
         "min": "0",
@@ -679,7 +1169,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -690,7 +1182,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -701,7 +1195,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_JPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -712,7 +1208,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_MPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -723,7 +1221,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_JPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -734,7 +1234,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_MPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -745,7 +1247,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_MPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -756,7 +1260,9 @@
       },
       {
         "default": "['.i64 = AVCOL_RANGE_JPEG']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -767,7 +1273,9 @@
       },
       {
         "default": "['.i64 = -513']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "input vertical chroma position in luma grid/256",
         "max": "512",
         "min": "-513",
@@ -778,7 +1286,9 @@
       },
       {
         "default": "['.i64 = -513']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "input horizontal chroma position in luma grid/256",
         "max": "512",
         "min": "-513",
@@ -789,7 +1299,9 @@
       },
       {
         "default": "['.i64 = -513']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "output vertical chroma position in luma grid/256",
         "max": "512",
         "min": "-513",
@@ -800,7 +1312,9 @@
       },
       {
         "default": "['.i64 = -513']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "output horizontal chroma position in luma grid/256",
         "max": "512",
         "min": "-513",
@@ -811,7 +1325,9 @@
       },
       {
         "default": "['.i64 = 0']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "decrease or increase w/h if necessary to keep the original AR",
         "max": "2",
         "min": "0",
@@ -822,7 +1338,9 @@
       },
       {
         "default": "['.i64 = 0']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -833,7 +1351,9 @@
       },
       {
         "default": "['.i64 = 1']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -844,7 +1364,9 @@
       },
       {
         "default": "['.i64 = 2']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "((void*)0)",
         "max": "0",
         "min": "0",
@@ -855,7 +1377,9 @@
       },
       {
         "default": "['.i64 = 1']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
         "max": "256",
         "min": "1",
@@ -866,7 +1390,9 @@
       },
       {
         "default": "['.dbl = 1.7976931348623157e+308']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "Scaler param 0",
         "max": "1.7976931348623157e+308",
         "min": "-1.7976931348623157e+308",
@@ -877,7 +1403,9 @@
       },
       {
         "default": "['.dbl = 1.7976931348623157e+308']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "Scaler param 1",
         "max": "1.7976931348623157e+308",
         "min": "-1.7976931348623157e+308",
@@ -888,7 +1416,9 @@
       },
       {
         "default": "['.i64 = EVAL_MODE_INIT']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "specify when to evaluate expressions",
         "max": "EVAL_MODE_NB-1",
         "min": "0",
@@ -899,7 +1429,9 @@
       },
       {
         "default": "['.i64=EVAL_MODE_INIT']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "eval expressions once during initialization",
         "max": null,
         "min": null,
@@ -910,7 +1442,9 @@
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
+        "flag_is_deprecated": false,
         "flags": "16|(1<<16)",
+        "flags_value": 65552,
         "help": "eval expressions during initialization and per-frame",
         "max": null,
         "min": null,
@@ -931,6 +1465,372 @@
       }
     ],
     "outputs": "(avfilter_vf_scale2ref_outputs)",
-    "priv_class": "&scale_class"
+    "outputs_value": "avfilter_vf_scale2ref_outputs",
+    "parsed_options": [
+      {
+        "alias": "w",
+        "choices": [],
+        "default": null,
+        "deprecated": false,
+        "help": "Output video width",
+        "name": "width",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": "h",
+        "choices": [],
+        "default": null,
+        "deprecated": false,
+        "help": "Output video height",
+        "name": "height",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.str = \"\"']",
+        "deprecated": false,
+        "help": "Flags to pass to libswscale",
+        "name": "flags",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "deprecated": false,
+        "help": "set interlacing",
+        "name": "interl",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "auto",
+            "value": "['.i64 = -1']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt601",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte170m",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt709",
+            "value": "['.i64 = AVCOL_SPC_BT709']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "fcc",
+            "value": "['.i64 = AVCOL_SPC_FCC']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte240m",
+            "value": "['.i64 = AVCOL_SPC_SMPTE240M']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020",
+            "value": "['.i64 = AVCOL_SPC_BT2020_NCL']"
+          }
+        ],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set input YCbCr type",
+        "name": "in_color_matrix",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "auto",
+            "value": "['.i64 = -1']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt601",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte170m",
+            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt709",
+            "value": "['.i64 = AVCOL_SPC_BT709']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "fcc",
+            "value": "['.i64 = AVCOL_SPC_FCC']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte240m",
+            "value": "['.i64 = AVCOL_SPC_SMPTE240M']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020",
+            "value": "['.i64 = AVCOL_SPC_BT2020_NCL']"
+          }
+        ],
+        "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",
+        "deprecated": false,
+        "help": "set output YCbCr type",
+        "name": "out_color_matrix",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "auto",
+            "value": "['.i64 = AVCOL_RANGE_UNSPECIFIED']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unknown",
+            "value": "['.i64 = AVCOL_RANGE_UNSPECIFIED']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "full",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "limited",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "jpeg",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "mpeg",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "tv",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "pc",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          }
+        ],
+        "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "deprecated": false,
+        "help": "set input color range",
+        "name": "in_range",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "auto",
+            "value": "['.i64 = AVCOL_RANGE_UNSPECIFIED']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unknown",
+            "value": "['.i64 = AVCOL_RANGE_UNSPECIFIED']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "full",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "limited",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "jpeg",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "mpeg",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "tv",
+            "value": "['.i64 = AVCOL_RANGE_MPEG']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "pc",
+            "value": "['.i64 = AVCOL_RANGE_JPEG']"
+          }
+        ],
+        "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "deprecated": false,
+        "help": "set output color range",
+        "name": "out_range",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = -513']",
+        "deprecated": false,
+        "help": "input vertical chroma position in luma grid/256",
+        "name": "in_v_chr_pos",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = -513']",
+        "deprecated": false,
+        "help": "input horizontal chroma position in luma grid/256",
+        "name": "in_h_chr_pos",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = -513']",
+        "deprecated": false,
+        "help": "output vertical chroma position in luma grid/256",
+        "name": "out_v_chr_pos",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = -513']",
+        "deprecated": false,
+        "help": "output horizontal chroma position in luma grid/256",
+        "name": "out_h_chr_pos",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "disable",
+            "value": "['.i64 = 0']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "decrease",
+            "value": "['.i64 = 1']"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "increase",
+            "value": "['.i64 = 2']"
+          }
+        ],
+        "default": "['.i64 = 0']",
+        "deprecated": false,
+        "help": "decrease or increase w/h if necessary to keep the original AR",
+        "name": "force_original_aspect_ratio",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "deprecated": false,
+        "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
+        "name": "force_divisible_by",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl = 1.7976931348623157e+308']",
+        "deprecated": false,
+        "help": "Scaler param 0",
+        "name": "param0",
+        "required": false,
+        "type": "AV_OPT_TYPE_DOUBLE"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl = 1.7976931348623157e+308']",
+        "deprecated": false,
+        "help": "Scaler param 1",
+        "name": "param1",
+        "required": false,
+        "type": "AV_OPT_TYPE_DOUBLE"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "eval expressions once during initialization",
+            "name": "init",
+            "value": "['.i64=EVAL_MODE_INIT']"
+          },
+          {
+            "help": "eval expressions during initialization and per-frame",
+            "name": "frame",
+            "value": "['.i64=EVAL_MODE_FRAME']"
+          }
+        ],
+        "default": "['.i64 = EVAL_MODE_INIT']",
+        "deprecated": false,
+        "help": "specify when to evaluate expressions",
+        "name": "eval",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class": "&scale_class",
+    "priv_class_value": "scale_class",
+    "type": "vf"
   }
 ]

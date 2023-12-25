@@ -2,6 +2,7 @@
   {
     "description": "Overlay one video on top of another using CUDA",
     "flags": null,
+    "flags_value": 0,
     "id": "ff_vf_overlay_cuda",
     "input_filter_pads": [
       {
@@ -14,11 +15,16 @@
       }
     ],
     "inputs": "(overlay_cuda_inputs)",
+    "inputs_value": "overlay_cuda_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
     "name": "overlay_cuda",
     "options": [
       {
         "default": "['.str = \"0\"']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "set the x expression of overlay",
         "max": "0",
         "min": "0",
@@ -29,7 +35,9 @@
       },
       {
         "default": "['.str = \"0\"']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "set the y expression of overlay",
         "max": "0",
         "min": "0",
@@ -40,7 +48,9 @@
       },
       {
         "default": "['.i64 = EOF_ACTION_REPEAT']",
+        "flag_is_deprecated": false,
         "flags": ".flags = ((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "Action to take when encountering EOF from secondary input ",
         "max": "EOF_ACTION_PASS",
         "min": "EOF_ACTION_REPEAT",
@@ -51,7 +61,9 @@
       },
       {
         "default": "['.i64 = EOF_ACTION_REPEAT']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "Repeat the previous frame.",
         "max": null,
         "min": null,
@@ -62,7 +74,9 @@
       },
       {
         "default": "['.i64 = EOF_ACTION_ENDALL']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "End both streams.",
         "max": null,
         "min": null,
@@ -73,7 +87,9 @@
       },
       {
         "default": "['.i64 = EOF_ACTION_PASS']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "Pass through the main input.",
         "max": null,
         "min": null,
@@ -84,7 +100,9 @@
       },
       {
         "default": "['.i64 = EVAL_MODE_FRAME']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "specify when to evaluate expressions",
         "max": "EVAL_MODE_NB - 1",
         "min": "0",
@@ -95,7 +113,9 @@
       },
       {
         "default": "['.i64=EVAL_MODE_INIT']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "eval expressions once during initialization",
         "max": null,
         "min": null,
@@ -106,7 +126,9 @@
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "eval expressions per-frame",
         "max": null,
         "min": null,
@@ -117,7 +139,9 @@
       },
       {
         "default": "['.i64 = 0']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "force termination when the shortest input terminates",
         "max": "1",
         "min": "0",
@@ -128,7 +152,9 @@
       },
       {
         "default": "['.i64=1']",
+        "flag_is_deprecated": false,
         "flags": "((1<<16) | 16)",
+        "flags_value": 65552,
         "help": "repeat overlay of the last overlay frame",
         "max": "1",
         "min": "0",
@@ -145,6 +171,98 @@
       }
     ],
     "outputs": "(overlay_cuda_outputs)",
-    "priv_class": "&overlay_cuda_class"
+    "outputs_value": "overlay_cuda_outputs",
+    "parsed_options": [
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.str = \"0\"']",
+        "deprecated": false,
+        "help": "set the x expression of overlay",
+        "name": "x",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.str = \"0\"']",
+        "deprecated": false,
+        "help": "set the y expression of overlay",
+        "name": "y",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "Repeat the previous frame.",
+            "name": "repeat",
+            "value": "['.i64 = EOF_ACTION_REPEAT']"
+          },
+          {
+            "help": "End both streams.",
+            "name": "endall",
+            "value": "['.i64 = EOF_ACTION_ENDALL']"
+          },
+          {
+            "help": "Pass through the main input.",
+            "name": "pass",
+            "value": "['.i64 = EOF_ACTION_PASS']"
+          }
+        ],
+        "default": "['.i64 = EOF_ACTION_REPEAT']",
+        "deprecated": false,
+        "help": "Action to take when encountering EOF from secondary input ",
+        "name": "eof_action",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "eval expressions once during initialization",
+            "name": "init",
+            "value": "['.i64=EVAL_MODE_INIT']"
+          },
+          {
+            "help": "eval expressions per-frame",
+            "name": "frame",
+            "value": "['.i64=EVAL_MODE_FRAME']"
+          }
+        ],
+        "default": "['.i64 = EVAL_MODE_FRAME']",
+        "deprecated": false,
+        "help": "specify when to evaluate expressions",
+        "name": "eval",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "deprecated": false,
+        "help": "force termination when the shortest input terminates",
+        "name": "shortest",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=1']",
+        "deprecated": false,
+        "help": "repeat overlay of the last overlay frame",
+        "name": "repeatlast",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      }
+    ],
+    "priv_class": "&overlay_cuda_class",
+    "priv_class_value": "overlay_cuda_class",
+    "type": "vf"
   }
 ]
