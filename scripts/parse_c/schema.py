@@ -1,8 +1,26 @@
 import enum
+import re
+from collections import defaultdict
 from functools import cached_property
 from itertools import groupby
 
 import pydantic
+
+
+class AVOptionFlags(int, enum.Enum):
+    # ref: libavutil/opt.h
+    AV_OPT_FLAG_ENCODING_PARAM = 1
+    AV_OPT_FLAG_DECODING_PARAM = 2
+    AV_OPT_FLAG_AUDIO_PARAM = 8
+    AV_OPT_FLAG_VIDEO_PARAM = 16
+    AV_OPT_FLAG_SUBTITLE_PARAM = 32
+    AV_OPT_FLAG_EXPORT = 64
+    AV_OPT_FLAG_READONLY = 128
+    AV_OPT_FLAG_BSF_PARAM = 1 << 8
+    AV_OPT_FLAG_RUNTIME_PARAM = 1 << 15
+    AV_OPT_FLAG_FILTERING_PARAM = 1 << 16
+    AV_OPT_FLAG_DEPRECATED = 1 << 17
+    AV_OPT_FLAG_CHILD_CONSTS = 1 << 18
 
 
 class AVOption(pydantic.BaseModel):
@@ -16,6 +34,21 @@ class AVOption(pydantic.BaseModel):
     flags: str | None = None
     unit: str | None = None
 
+    @property
+    def flags_value(self) -> int:
+        text = self.flags
+        if text is None:
+            return 0
+
+        text = text.split("=", 1)[-1]
+        text = text.replace("\n", "")
+
+        return eval(text)
+
+    @property
+    def flag_is_deprecated(self) -> bool:
+        return bool(self.flags_value & AVOptionFlags.AV_OPT_FLAG_DEPRECATED)
+
 
 class Choice(pydantic.BaseModel):
     name: str
@@ -27,9 +60,17 @@ class Option(pydantic.BaseModel):
     name: str
     help: str
     type: str
-    default: int | float | str | None = None
+    default: str | None = None
+    alias: str | None = None
+    deprecated: bool = False
 
     choices: list[Choice] = []
+
+    @property
+    def required(self) -> bool:
+        if self.default is None:
+            return True
+        return False
 
 
 class AVFilterPad(pydantic.BaseModel):
@@ -145,18 +186,45 @@ class AVFilter(pydantic.BaseModel):
                     Choice(name=option.name, help=option.help, value=option.default)
                 ]
 
+        # collect alias map
+        alias_map = defaultdict(list)
+        for option in [k for k in self.options if k.type != "AV_OPT_TYPE_CONST"]:
+            alias_map[option.offset].append(option)
+            alias_map[option.offset].sort(key=lambda i: i.name)
+
+        assert all(len(v) <= 2 for v in alias_map.values()), f"alias_map should have 1 or 2 items {self}"
+
         # collect options
         for option in [k for k in self.options if k.unit == None or k.type != "AV_OPT_TYPE_CONST"]:
+            if len(alias_map[option.offset]) > 1:
+                if alias_map[option.offset][0].name == option.name:
+                    continue
+                else:
+                    alias = alias_map[option.offset][0].name
+            else:
+                alias = None
+
             if option.unit == None:
-                output.append(Option(name=option.name, help=option.help, type=option.type, default=option.default))
+                output.append(
+                    Option(
+                        name=option.name,
+                        alias=alias,
+                        help=option.help,
+                        type=option.type,
+                        default=option.default,
+                        deprecated=option.flag_is_deprecated,
+                    )
+                )
             else:
                 output.append(
                     Option(
                         name=option.name,
+                        alias=alias,
                         help=option.help,
                         type=option.type,
                         default=option.default,
                         choices=choices[option.unit],
+                        deprecated=option.flag_is_deprecated,
                     )
                 )
 

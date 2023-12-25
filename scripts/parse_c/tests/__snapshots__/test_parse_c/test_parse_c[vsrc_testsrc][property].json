@@ -3,1848 +3,895 @@
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Provide an uniformly colored input.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "color",
-      "options": [
-        {
-          "default": "['.str = \"black\"']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set color",
-          "max": "0",
-          "min": "0",
-          "name": "color",
-          "offset": "__builtin_offsetof(TestSourceContext, color_rgba)",
-          "type": "AV_OPT_TYPE_COLOR",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"black\"']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set color",
-          "max": "0",
-          "min": "0",
-          "name": "c",
-          "offset": "__builtin_offsetof(TestSourceContext, color_rgba)",
-          "type": "AV_OPT_TYPE_COLOR",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(color_outputs)",
-      "priv_class": "&color_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "c",
+        "choices": [],
+        "default": "['.str = \"black\"']",
+        "deprecated": false,
+        "help": "set color",
+        "name": "color",
+        "type": "AV_OPT_TYPE_COLOR"
+      },
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Provide an identity Hald CLUT.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "haldclutsrc",
-      "options": [
-        {
-          "default": "['.i64 = 6']",
-          "flags": "16|(1<<16)",
-          "help": "set level",
-          "max": "16",
-          "min": "2",
-          "name": "level",
-          "offset": "__builtin_offsetof(TestSourceContext, level)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(haldclutsrc_outputs)",
-      "priv_class": "&haldclutsrc_class"
-    }
+    "parsed_options": [
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = 6']",
+        "deprecated": false,
+        "help": "set level",
+        "name": "level",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Null video source, return unprocessed video frames.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "nullsrc",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&nullsrc_yuvtestsrc_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate test pattern.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "testsrc",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)",
-          "help": "set number of decimals to show",
-          "max": "17",
-          "min": "0",
-          "name": "decimals",
-          "offset": "__builtin_offsetof(TestSourceContext, nb_decimals)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)",
-          "help": "set number of decimals to show",
-          "max": "17",
-          "min": "0",
-          "name": "n",
-          "offset": "__builtin_offsetof(TestSourceContext, nb_decimals)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&testsrc_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": "decimals",
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set number of decimals to show",
+        "name": "n",
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate another test pattern.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "testsrc2",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = 255']",
-          "flags": "16|(1<<16)",
-          "help": "set global alpha (opacity)",
-          "max": "255",
-          "min": "0",
-          "name": "alpha",
-          "offset": "__builtin_offsetof(TestSourceContext, alpha)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(avfilter_vsrc_testsrc2_outputs)",
-      "priv_class": "&testsrc2_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64 = 255']",
+        "deprecated": false,
+        "help": "set global alpha (opacity)",
+        "name": "alpha",
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate RGB test pattern.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "rgbtestsrc",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)",
-          "help": "set complement colors",
-          "max": "1",
-          "min": "0",
-          "name": "complement",
-          "offset": "__builtin_offsetof(TestSourceContext, complement)",
-          "type": "AV_OPT_TYPE_BOOL",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)",
-          "help": "set complement colors",
-          "max": "1",
-          "min": "0",
-          "name": "co",
-          "offset": "__builtin_offsetof(TestSourceContext, complement)",
-          "type": "AV_OPT_TYPE_BOOL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(avfilter_vsrc_rgbtestsrc_outputs)",
-      "priv_class": "&rgbtestsrc_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": "co",
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set complement colors",
+        "name": "complement",
+        "type": "AV_OPT_TYPE_BOOL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate YUV test pattern.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "yuvtestsrc",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(avfilter_vsrc_yuvtestsrc_outputs)",
-      "priv_class": "&nullsrc_yuvtestsrc_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate PAL 75% color bars.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "pal75bars",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&palbars_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate PAL 100% color bars.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "pal100bars",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&palbars_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate SMPTE color bars.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "smptebars",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&smptebars_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate SMPTE HD color bars.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "smptehdbars",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&smptebars_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate all yuv colors.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "allyuv",
-      "options": [
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&allyuv_allrgb_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate all RGB colors.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "allrgb",
-      "options": [
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(avfilter_vsrc_allrgb_outputs)",
-      "priv_class": "&allyuv_allrgb_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate colors spectrum.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "colorspectrum",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)",
-          "help": "set the color spectrum type",
-          "max": "2",
-          "min": "0",
-          "name": "type",
-          "offset": "__builtin_offsetof(TestSourceContext, type)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": "type"
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)",
-          "help": "fade to black",
-          "max": "0",
-          "min": "0",
-          "name": "black",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "type"
-        },
-        {
-          "default": "['.i64=1']",
-          "flags": "16|(1<<16)",
-          "help": "fade to white",
-          "max": "0",
-          "min": "0",
-          "name": "white",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "type"
-        },
-        {
-          "default": "['.i64=2']",
-          "flags": "16|(1<<16)",
-          "help": "white to black",
-          "max": "0",
-          "min": "0",
-          "name": "all",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "type"
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&colorspectrum_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "fade to black",
+            "name": "black",
+            "value": "['.i64=0']"
+          },
+          {
+            "help": "fade to white",
+            "name": "white",
+            "value": "['.i64=1']"
+          },
+          {
+            "help": "white to black",
+            "name": "all",
+            "value": "['.i64=2']"
+          }
+        ],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set the color spectrum type",
+        "name": "type",
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ]
   },
   {
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate color checker chart.",
-      "flags": null,
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "colorchart",
-      "options": [
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        },
-        {
-          "default": "['.str=\"64x64\"']",
-          "flags": "16|(1<<16)",
-          "help": "set the single patch size",
-          "max": "0",
-          "min": "0",
-          "name": "patch_size",
-          "offset": "__builtin_offsetof(TestSourceContext, pw)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)",
-          "help": "set the color checker chart preset",
-          "max": "1",
-          "min": "0",
-          "name": "preset",
-          "offset": "__builtin_offsetof(TestSourceContext, type)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": "preset"
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)",
-          "help": "reference",
-          "max": "0",
-          "min": "0",
-          "name": "reference",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "preset"
-        },
-        {
-          "default": "['.i64=1']",
-          "flags": "16|(1<<16)",
-          "help": "skintones",
-          "max": "0",
-          "min": "0",
-          "name": "skintones",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "preset"
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(avfilter_vsrc_colorchart_outputs)",
-      "priv_class": "&colorchart_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.str=\"64x64\"']",
+        "deprecated": false,
+        "help": "set the single patch size",
+        "name": "patch_size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "reference",
+            "name": "reference",
+            "value": "['.i64=0']"
+          },
+          {
+            "help": "skintones",
+            "name": "skintones",
+            "value": "['.i64=1']"
+          }
+        ],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set the color checker chart preset",
+        "name": "preset",
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ]
   },
   {
     "flags_value": 4,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Generate zone-plate.",
-      "flags": "(1 << 2)",
-      "input_filter_pad": [],
-      "inputs": "((void*)0)",
-      "name": "zoneplate",
-      "options": [
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "size",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"320x240\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video size",
-          "max": "0",
-          "min": "0",
-          "name": "s",
-          "offset": "__builtin_offsetof(TestSourceContext, w)",
-          "type": "AV_OPT_TYPE_IMAGE_SIZE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "rate",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.str = \"25\"']",
-          "flags": "16|(1<<16)",
-          "help": "set video rate",
-          "max": "2147483647",
-          "min": "0",
-          "name": "r",
-          "offset": "__builtin_offsetof(TestSourceContext, frame_rate)",
-          "type": "AV_OPT_TYPE_VIDEO_RATE",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64 = -1']",
-          "flags": "16|(1<<16)",
-          "help": "set video duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(TestSourceContext, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.dbl= 1']",
-          "flags": "16|(1<<16)",
-          "help": "set video sample aspect ratio",
-          "max": "2147483647",
-          "min": "0",
-          "name": "sar",
-          "offset": "__builtin_offsetof(TestSourceContext, sar)",
-          "type": "AV_OPT_TYPE_RATIONAL",
-          "unit": null
-        },
-        {
-          "default": "['.i64=10']",
-          "flags": "16|(1<<16)",
-          "help": "set LUT precision",
-          "max": "16",
-          "min": "4",
-          "name": "precision",
-          "offset": "__builtin_offsetof(TestSourceContext, lut_precision)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set X-axis offset",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "xo",
-          "offset": "__builtin_offsetof(TestSourceContext, xo)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set Y-axis offset",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "yo",
-          "offset": "__builtin_offsetof(TestSourceContext, yo)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set T-axis offset",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "to",
-          "offset": "__builtin_offsetof(TestSourceContext, to)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 0-order phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "k0",
-          "offset": "__builtin_offsetof(TestSourceContext, k0)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 1-order X-axis phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "kx",
-          "offset": "__builtin_offsetof(TestSourceContext, kx)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 1-order Y-axis phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "ky",
-          "offset": "__builtin_offsetof(TestSourceContext, ky)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 1-order T-axis phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "kt",
-          "offset": "__builtin_offsetof(TestSourceContext, kt)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set X-axis*T-axis product phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "kxt",
-          "offset": "__builtin_offsetof(TestSourceContext, kxt)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set Y-axis*T-axis product phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "kyt",
-          "offset": "__builtin_offsetof(TestSourceContext, kyt)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set X-axis*Y-axis product phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "kxy",
-          "offset": "__builtin_offsetof(TestSourceContext, kxy)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 2-order X-axis phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "kx2",
-          "offset": "__builtin_offsetof(TestSourceContext, kx2)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 2-order Y-axis phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "ky2",
-          "offset": "__builtin_offsetof(TestSourceContext, ky2)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 2-order T-axis phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "kt2",
-          "offset": "__builtin_offsetof(TestSourceContext, kt2)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 0-order U-color phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "ku",
-          "offset": "__builtin_offsetof(TestSourceContext, kU)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "16|(1<<16)|(1<<15)",
-          "help": "set 0-order V-color phase",
-          "max": "2147483647",
-          "min": "(-2147483647 -1)",
-          "name": "kv",
-          "offset": "__builtin_offsetof(TestSourceContext, kV)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(avfilter_vsrc_zoneplate_outputs)",
-      "priv_class": "&zoneplate_class"
-    }
+    "parsed_options": [
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = \"320x240\"']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": "r",
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      },
+      {
+        "alias": "d",
+        "choices": [],
+        "default": "['.i64 = -1']",
+        "deprecated": false,
+        "help": "set video duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl= 1']",
+        "deprecated": false,
+        "help": "set video sample aspect ratio",
+        "name": "sar",
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=10']",
+        "deprecated": false,
+        "help": "set LUT precision",
+        "name": "precision",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set X-axis offset",
+        "name": "xo",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set Y-axis offset",
+        "name": "yo",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set T-axis offset",
+        "name": "to",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 0-order phase",
+        "name": "k0",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 1-order X-axis phase",
+        "name": "kx",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 1-order Y-axis phase",
+        "name": "ky",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 1-order T-axis phase",
+        "name": "kt",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set X-axis*T-axis product phase",
+        "name": "kxt",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set Y-axis*T-axis product phase",
+        "name": "kyt",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set X-axis*Y-axis product phase",
+        "name": "kxy",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 2-order X-axis phase",
+        "name": "kx2",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 2-order Y-axis phase",
+        "name": "ky2",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 2-order T-axis phase",
+        "name": "kt2",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 0-order U-color phase",
+        "name": "ku",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=0']",
+        "deprecated": false,
+        "help": "set 0-order V-color phase",
+        "name": "kv",
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ]
   }
 ]
