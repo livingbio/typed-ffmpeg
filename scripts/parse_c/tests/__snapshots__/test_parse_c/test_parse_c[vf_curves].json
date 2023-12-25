@@ -175,7 +175,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set master points coordinates",
         "max": null,
@@ -188,7 +188,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set master points coordinates",
         "max": null,
@@ -201,7 +201,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set red points coordinates",
         "max": null,
@@ -214,7 +214,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set red points coordinates",
         "max": null,
@@ -227,7 +227,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set green points coordinates",
         "max": null,
@@ -240,7 +240,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set green points coordinates",
         "max": null,
@@ -253,7 +253,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set blue points coordinates",
         "max": null,
@@ -266,7 +266,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set blue points coordinates",
         "max": null,
@@ -279,7 +279,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set points coordinates for all components",
         "max": null,
@@ -292,7 +292,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "set Photoshop curves file name",
         "max": null,
@@ -305,7 +305,7 @@
       {
         "default": "['.str=((void*)0)']",
         "flag_is_deprecated": false,
-        "flags": "(1<<16)|16|(1<<15)",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
         "flags_value": 98320,
         "help": "save Gnuplot script of the curves in specified file",
         "max": null,

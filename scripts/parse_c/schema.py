@@ -137,6 +137,7 @@ class FilterType(str, enum.Enum):
     VIDEO_SOURCE = "vsrc"
     VIDEO_SINK = "vsink"
     AUDIO_AND_VIDEO_FILTER = "avf"
+    VIDEO_AND_AUDIO_FILTER = "vaf"
 
 
 class AVFilter(pydantic.BaseModel):
@@ -261,7 +262,7 @@ class AVFilter(pydantic.BaseModel):
                         help=option.help,
                         type=option.type,
                         default=option.default,
-                        choices=choices[option.unit],
+                        choices=choices.get(option.unit, []),
                         deprecated=option.flag_is_deprecated,
                     )
                 )

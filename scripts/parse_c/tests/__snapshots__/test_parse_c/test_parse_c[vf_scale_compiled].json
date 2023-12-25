@@ -19,7 +19,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "flags_value": 98320,
         "help": "Output video width",
         "max": null,
@@ -32,7 +32,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "flags_value": 98320,
         "help": "Output video width",
         "max": null,
@@ -45,7 +45,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "flags_value": 98320,
         "help": "Output video height",
         "max": null,
@@ -58,7 +58,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "flags_value": 98320,
         "help": "Output video height",
         "max": null,
@@ -71,7 +71,7 @@
       {
         "default": "['.str = \"\"']",
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "flags_value": 65552,
         "help": "Flags to pass to libswscale",
         "max": null,
@@ -92,6 +92,32 @@
         "name": "interl",
         "offset": "__builtin_offsetof(ScaleContext, interlaced)",
         "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flag_is_deprecated": false,
+        "flags": null,
+        "flags_value": 0,
+        "help": "set video size",
+        "max": "16|(1<<16)",
+        "min": "0",
+        "name": "size",
+        "offset": "__builtin_offsetof(ScaleContext, size_str)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flag_is_deprecated": false,
+        "flags": null,
+        "flags_value": 0,
+        "help": "set video size",
+        "max": "16|(1<<16)",
+        "min": "0",
+        "name": "s",
+        "offset": "__builtin_offsetof(ScaleContext, size_str)",
+        "type": "AV_OPT_TYPE_STRING",
         "unit": null
       },
       {
@@ -513,7 +539,7 @@
       {
         "default": "['.i64=EVAL_MODE_INIT']",
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "flags_value": 65552,
         "help": "eval expressions once during initialization",
         "max": null,
@@ -521,12 +547,12 @@
         "name": "init",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "flags_value": 65552,
         "help": "eval expressions during initialization and per-frame",
         "max": null,
@@ -534,7 +560,7 @@
         "name": "frame",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       }
     ],
     "output_filter_pads": [
@@ -585,6 +611,16 @@
         "name": "interl",
         "required": false,
         "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = ((void*)0)']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
       },
       {
         "alias": null,
@@ -888,18 +924,7 @@
       },
       {
         "alias": null,
-        "choices": [
-          {
-            "help": "eval expressions once during initialization",
-            "name": "init",
-            "value": "['.i64=EVAL_MODE_INIT']"
-          },
-          {
-            "help": "eval expressions during initialization and per-frame",
-            "name": "frame",
-            "value": "['.i64=EVAL_MODE_FRAME']"
-          }
-        ],
+        "choices": [],
         "default": "['.i64 = EVAL_MODE_INIT']",
         "deprecated": false,
         "help": "specify when to evaluate expressions",
@@ -936,7 +961,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "flags_value": 98320,
         "help": "Output video width",
         "max": null,
@@ -949,7 +974,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "flags_value": 98320,
         "help": "Output video width",
         "max": null,
@@ -962,7 +987,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "flags_value": 98320,
         "help": "Output video height",
         "max": null,
@@ -975,7 +1000,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)|(1<<15)",
+        "flags": ".flags = 16|(1<<16)|(1<<15)",
         "flags_value": 98320,
         "help": "Output video height",
         "max": null,
@@ -988,7 +1013,7 @@
       {
         "default": "['.str = \"\"']",
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "flags_value": 65552,
         "help": "Flags to pass to libswscale",
         "max": null,
@@ -1009,6 +1034,32 @@
         "name": "interl",
         "offset": "__builtin_offsetof(ScaleContext, interlaced)",
         "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flag_is_deprecated": false,
+        "flags": null,
+        "flags_value": 0,
+        "help": "set video size",
+        "max": "16|(1<<16)",
+        "min": "0",
+        "name": "size",
+        "offset": "__builtin_offsetof(ScaleContext, size_str)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flag_is_deprecated": false,
+        "flags": null,
+        "flags_value": 0,
+        "help": "set video size",
+        "max": "16|(1<<16)",
+        "min": "0",
+        "name": "s",
+        "offset": "__builtin_offsetof(ScaleContext, size_str)",
+        "type": "AV_OPT_TYPE_STRING",
         "unit": null
       },
       {
@@ -1430,7 +1481,7 @@
       {
         "default": "['.i64=EVAL_MODE_INIT']",
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "flags_value": 65552,
         "help": "eval expressions once during initialization",
         "max": null,
@@ -1438,12 +1489,12 @@
         "name": "init",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
         "flag_is_deprecated": false,
-        "flags": "16|(1<<16)",
+        "flags": ".flags = 16|(1<<16)",
         "flags_value": 65552,
         "help": "eval expressions during initialization and per-frame",
         "max": null,
@@ -1451,7 +1502,7 @@
         "name": "frame",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       }
     ],
     "output_filter_pads": [
@@ -1508,6 +1559,16 @@
         "type": "AV_OPT_TYPE_BOOL"
       },
       {
+        "alias": "s",
+        "choices": [],
+        "default": "['.str = ((void*)0)']",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "required": true,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
         "alias": null,
         "choices": [
           {
@@ -1809,18 +1870,7 @@
       },
       {
         "alias": null,
-        "choices": [
-          {
-            "help": "eval expressions once during initialization",
-            "name": "init",
-            "value": "['.i64=EVAL_MODE_INIT']"
-          },
-          {
-            "help": "eval expressions during initialization and per-frame",
-            "name": "frame",
-            "value": "['.i64=EVAL_MODE_FRAME']"
-          }
-        ],
+        "choices": [],
         "default": "['.i64 = EVAL_MODE_INIT']",
         "deprecated": false,
         "help": "specify when to evaluate expressions",

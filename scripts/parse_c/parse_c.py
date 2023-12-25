@@ -87,7 +87,6 @@ default_filter_pads: dict[str, list[AVFilterPad]] = {
 
 def extract_av_filter(text: str) -> list[AVFilter]:
     output = []
-
     av_options = parse_av_option(text)
     av_filters = parse_av_filter(text)
     av_classes = parse_av_class(text)

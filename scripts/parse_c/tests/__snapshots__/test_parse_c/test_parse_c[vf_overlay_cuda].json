@@ -62,7 +62,7 @@
       {
         "default": "['.i64 = EOF_ACTION_REPEAT']",
         "flag_is_deprecated": false,
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "flags_value": 65552,
         "help": "Repeat the previous frame.",
         "max": null,
@@ -75,7 +75,7 @@
       {
         "default": "['.i64 = EOF_ACTION_ENDALL']",
         "flag_is_deprecated": false,
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "flags_value": 65552,
         "help": "End both streams.",
         "max": null,
@@ -88,7 +88,7 @@
       {
         "default": "['.i64 = EOF_ACTION_PASS']",
         "flag_is_deprecated": false,
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "flags_value": 65552,
         "help": "Pass through the main input.",
         "max": null,
@@ -114,7 +114,7 @@
       {
         "default": "['.i64=EVAL_MODE_INIT']",
         "flag_is_deprecated": false,
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "flags_value": 65552,
         "help": "eval expressions once during initialization",
         "max": null,
@@ -122,12 +122,12 @@
         "name": "init",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       },
       {
         "default": "['.i64=EVAL_MODE_FRAME']",
         "flag_is_deprecated": false,
-        "flags": "((1<<16) | 16)",
+        "flags": ".flags = ((1<<16) | 16)",
         "flags_value": 65552,
         "help": "eval expressions per-frame",
         "max": null,
@@ -135,7 +135,7 @@
         "name": "frame",
         "offset": "0",
         "type": "AV_OPT_TYPE_CONST",
-        "unit": "eval"
+        "unit": ".unit = \"eval"
       },
       {
         "default": "['.i64 = 0']",
@@ -221,18 +221,7 @@
       },
       {
         "alias": null,
-        "choices": [
-          {
-            "help": "eval expressions once during initialization",
-            "name": "init",
-            "value": "['.i64=EVAL_MODE_INIT']"
-          },
-          {
-            "help": "eval expressions per-frame",
-            "name": "frame",
-            "value": "['.i64=EVAL_MODE_FRAME']"
-          }
-        ],
+        "choices": [],
         "default": "['.i64 = EVAL_MODE_FRAME']",
         "deprecated": false,
         "help": "specify when to evaluate expressions",

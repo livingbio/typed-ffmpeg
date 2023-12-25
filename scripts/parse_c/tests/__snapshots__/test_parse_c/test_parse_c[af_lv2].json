@@ -14,7 +14,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "8 | (1<<16)",
+        "flags": ".flags = 8 | (1<<16)",
         "flags_value": 65544,
         "help": "set plugin uri",
         "max": null,
@@ -27,7 +27,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "8 | (1<<16)",
+        "flags": ".flags = 8 | (1<<16)",
         "flags_value": 65544,
         "help": "set plugin uri",
         "max": null,
@@ -40,7 +40,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "8 | (1<<16)",
+        "flags": ".flags = 8 | (1<<16)",
         "flags_value": 65544,
         "help": "set plugin options",
         "max": null,
@@ -53,7 +53,7 @@
       {
         "default": null,
         "flag_is_deprecated": false,
-        "flags": "8 | (1<<16)",
+        "flags": ".flags = 8 | (1<<16)",
         "flags_value": 65544,
         "help": "set plugin options",
         "max": null,
