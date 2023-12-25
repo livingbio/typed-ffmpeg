@@ -3,185 +3,97 @@
     "flags_value": 131076,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Apply Affine Projection algorithm to first audio stream.",
-      "flags": "(1 << 17) |\n                      (1 << 2)",
-      "input_filter_pad": [
-        {
-          "name": "input",
-          "type": "AVMEDIA_TYPE_AUDIO"
-        },
-        {
-          "name": "desired",
-          "type": "AVMEDIA_TYPE_AUDIO"
-        }
-      ],
-      "inputs": "(inputs)",
-      "name": "aap",
-      "options": [
-        {
-          "default": "['.i64=16']",
-          "flags": "8|(1<<16)",
-          "help": "set the filter order",
-          "max": "32767",
-          "min": "1",
-          "name": "order",
-          "offset": "__builtin_offsetof(AudioAPContext, order)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=2']",
-          "flags": "8|(1<<16)",
-          "help": "set the filter projection",
-          "max": "256",
-          "min": "1",
-          "name": "projection",
-          "offset": "__builtin_offsetof(AudioAPContext, projection)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.dbl=0.0001']",
-          "flags": "8|(1<<16)|(1<<15)",
-          "help": "set the filter mu",
-          "max": "1",
-          "min": "0",
-          "name": "mu",
-          "offset": "__builtin_offsetof(AudioAPContext, mu)",
-          "type": "AV_OPT_TYPE_FLOAT",
-          "unit": null
-        },
-        {
-          "default": "['.dbl=0.001']",
-          "flags": "8|(1<<16)|(1<<15)",
-          "help": "set the filter delta",
-          "max": "1",
-          "min": "0",
-          "name": "delta",
-          "offset": "__builtin_offsetof(AudioAPContext, delta)",
-          "type": "AV_OPT_TYPE_FLOAT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=OUT_MODE']",
-          "flags": "8|(1<<16)|(1<<15)",
-          "help": "set output mode",
-          "max": "NB_OMODES-1",
-          "min": "0",
-          "name": "out_mode",
-          "offset": "__builtin_offsetof(AudioAPContext, output_mode)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": "mode"
-        },
-        {
-          "default": "['.i64=IN_MODE']",
-          "flags": "8|(1<<16)|(1<<15)",
-          "help": "input",
-          "max": "0",
-          "min": "0",
-          "name": "i",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "mode"
-        },
-        {
-          "default": "['.i64=DESIRED_MODE']",
-          "flags": "8|(1<<16)|(1<<15)",
-          "help": "desired",
-          "max": "0",
-          "min": "0",
-          "name": "d",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "mode"
-        },
-        {
-          "default": "['.i64=OUT_MODE']",
-          "flags": "8|(1<<16)|(1<<15)",
-          "help": "output",
-          "max": "0",
-          "min": "0",
-          "name": "o",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "mode"
-        },
-        {
-          "default": "['.i64=NOISE_MODE']",
-          "flags": "8|(1<<16)|(1<<15)",
-          "help": "noise",
-          "max": "0",
-          "min": "0",
-          "name": "n",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "mode"
-        },
-        {
-          "default": "['.i64=ERROR_MODE']",
-          "flags": "8|(1<<16)|(1<<15)",
-          "help": "error",
-          "max": "0",
-          "min": "0",
-          "name": "e",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "mode"
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "8|(1<<16)",
-          "help": "set processing precision",
-          "max": "2",
-          "min": "0",
-          "name": "precision",
-          "offset": "__builtin_offsetof(AudioAPContext, precision)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": "precision"
-        },
-        {
-          "default": "['.i64=0']",
-          "flags": "8|(1<<16)",
-          "help": "set auto processing precision",
-          "max": "0",
-          "min": "0",
-          "name": "auto",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "precision"
-        },
-        {
-          "default": "['.i64=1']",
-          "flags": "8|(1<<16)",
-          "help": "set single-floating point processing precision",
-          "max": "0",
-          "min": "0",
-          "name": "float",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "precision"
-        },
-        {
-          "default": "['.i64=2']",
-          "flags": "8|(1<<16)",
-          "help": "set double-floating point processing precision",
-          "max": "0",
-          "min": "0",
-          "name": "double",
-          "offset": "0",
-          "type": "AV_OPT_TYPE_CONST",
-          "unit": "precision"
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_AUDIO"
-        }
-      ],
-      "outputs": "(outputs)",
-      "priv_class": "&aap_class"
-    }
+    "parsed_options": [
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=16']",
+        "help": "set the filter order",
+        "name": "order",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=2']",
+        "help": "set the filter projection",
+        "name": "projection",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl=0.0001']",
+        "help": "set the filter mu",
+        "name": "mu",
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.dbl=0.001']",
+        "help": "set the filter delta",
+        "name": "delta",
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "input",
+            "name": "i",
+            "value": "['.i64=IN_MODE']"
+          },
+          {
+            "help": "desired",
+            "name": "d",
+            "value": "['.i64=DESIRED_MODE']"
+          },
+          {
+            "help": "output",
+            "name": "o",
+            "value": "['.i64=OUT_MODE']"
+          },
+          {
+            "help": "noise",
+            "name": "n",
+            "value": "['.i64=NOISE_MODE']"
+          },
+          {
+            "help": "error",
+            "name": "e",
+            "value": "['.i64=ERROR_MODE']"
+          }
+        ],
+        "default": "['.i64=OUT_MODE']",
+        "help": "set output mode",
+        "name": "out_mode",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [
+          {
+            "help": "set auto processing precision",
+            "name": "auto",
+            "value": "['.i64=0']"
+          },
+          {
+            "help": "set single-floating point processing precision",
+            "name": "float",
+            "value": "['.i64=1']"
+          },
+          {
+            "help": "set double-floating point processing precision",
+            "name": "double",
+            "value": "['.i64=2']"
+          }
+        ],
+        "default": "['.i64=0']",
+        "help": "set processing precision",
+        "name": "precision",
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ]
   }
 ]

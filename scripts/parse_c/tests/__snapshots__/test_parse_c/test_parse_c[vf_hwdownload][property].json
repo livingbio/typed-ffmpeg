@@ -3,26 +3,6 @@
     "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Download a hardware frame to a normal frame",
-      "flags": null,
-      "input_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "inputs": "(hwdownload_inputs)",
-      "name": "hwdownload",
-      "options": [],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_VIDEO"
-        }
-      ],
-      "outputs": "(hwdownload_outputs)",
-      "priv_class": "&hwdownload_class"
-    }
+    "parsed_options": []
   }
 ]

@@ -55,6 +55,7 @@ class Option(pydantic.BaseModel):
     help: str
     type: str
     default: str | None = None
+    alias: str | None = None
 
     choices: list[Choice] = []
 
@@ -172,14 +173,34 @@ class AVFilter(pydantic.BaseModel):
                     Choice(name=option.name, help=option.help, value=option.default)
                 ]
 
+        # # collect alias map
+        # alias_map = defaultdict(list)
+        # for option in [k for k in self.options if k.type != "AV_OPT_TYPE_CONST"]:
+        #     alias_map[option.offset].append(option)
+        #     alias_map[option.offset].sort(key=lambda i: i.name)
+
+        # assert all(len(v) <= 2 for v in alias_map.values()), f"alias_map should have 1 or 2 items {self}"
+
         # collect options
         for option in [k for k in self.options if k.unit == None or k.type != "AV_OPT_TYPE_CONST"]:
+            # if len(alias_map[option.offset]) > 1:
+            #     if alias_map[option.offset][0].name == option.name:
+            #         continue
+            #     else:
+            #         alias = alias_map[option.offset][0].name
+            # else:
+            #     alias = None
+            alias = None
+
             if option.unit == None:
-                output.append(Option(name=option.name, help=option.help, type=option.type, default=option.default))
+                output.append(
+                    Option(name=option.name, alias=alias, help=option.help, type=option.type, default=option.default)
+                )
             else:
                 output.append(
                     Option(
                         name=option.name,
+                        alias=alias,
                         help=option.help,
                         type=option.type,
                         default=option.default,

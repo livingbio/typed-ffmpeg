@@ -3,132 +3,87 @@
     "flags_value": 1,
     "is_dynamic_inputs": true,
     "is_dynamic_outputs": false,
-    "parsed_options": {
-      "description": "Apply LV2 effect.",
-      "flags": "(1 << 0)",
-      "input_filter_pad": [],
-      "inputs": "0",
-      "name": "lv2",
-      "options": [
-        {
-          "default": null,
-          "flags": "8 | (1<<16)",
-          "help": "set plugin uri",
-          "max": null,
-          "min": null,
-          "name": "plugin",
-          "offset": "__builtin_offsetof(LV2Context, plugin_uri)",
-          "type": "AV_OPT_TYPE_STRING",
-          "unit": null
-        },
-        {
-          "default": null,
-          "flags": "8 | (1<<16)",
-          "help": "set plugin uri",
-          "max": null,
-          "min": null,
-          "name": "p",
-          "offset": "__builtin_offsetof(LV2Context, plugin_uri)",
-          "type": "AV_OPT_TYPE_STRING",
-          "unit": null
-        },
-        {
-          "default": null,
-          "flags": "8 | (1<<16)",
-          "help": "set plugin options",
-          "max": null,
-          "min": null,
-          "name": "controls",
-          "offset": "__builtin_offsetof(LV2Context, options)",
-          "type": "AV_OPT_TYPE_STRING",
-          "unit": null
-        },
-        {
-          "default": null,
-          "flags": "8 | (1<<16)",
-          "help": "set plugin options",
-          "max": null,
-          "min": null,
-          "name": "c",
-          "offset": "__builtin_offsetof(LV2Context, options)",
-          "type": "AV_OPT_TYPE_STRING",
-          "unit": null
-        },
-        {
-          "default": "['.i64=44100']",
-          "flags": "8 | (1<<16)",
-          "help": "set sample rate",
-          "max": "2147483647",
-          "min": "1",
-          "name": "sample_rate",
-          "offset": "__builtin_offsetof(LV2Context, sample_rate)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=44100']",
-          "flags": "8 | (1<<16)",
-          "help": "set sample rate",
-          "max": "2147483647",
-          "min": "1",
-          "name": "s",
-          "offset": "__builtin_offsetof(LV2Context, sample_rate)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=1024']",
-          "flags": "8 | (1<<16)",
-          "help": "set the number of samples per requested frame",
-          "max": "2147483647",
-          "min": "1",
-          "name": "nb_samples",
-          "offset": "__builtin_offsetof(LV2Context, nb_samples)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=1024']",
-          "flags": "8 | (1<<16)",
-          "help": "set the number of samples per requested frame",
-          "max": "2147483647",
-          "min": "1",
-          "name": "n",
-          "offset": "__builtin_offsetof(LV2Context, nb_samples)",
-          "type": "AV_OPT_TYPE_INT",
-          "unit": null
-        },
-        {
-          "default": "['.i64=-1']",
-          "flags": "8 | (1<<16)",
-          "help": "set audio duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "duration",
-          "offset": "__builtin_offsetof(LV2Context, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        },
-        {
-          "default": "['.i64=-1']",
-          "flags": "8 | (1<<16)",
-          "help": "set audio duration",
-          "max": "9223372036854775807LL",
-          "min": "-1",
-          "name": "d",
-          "offset": "__builtin_offsetof(LV2Context, duration)",
-          "type": "AV_OPT_TYPE_DURATION",
-          "unit": null
-        }
-      ],
-      "output_filter_pad": [
-        {
-          "name": "default",
-          "type": "AVMEDIA_TYPE_AUDIO"
-        }
-      ],
-      "outputs": "(lv2_outputs)",
-      "priv_class": "&lv2_class"
-    }
+    "parsed_options": [
+      {
+        "alias": null,
+        "choices": [],
+        "default": null,
+        "help": "set plugin uri",
+        "name": "plugin",
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": null,
+        "help": "set plugin uri",
+        "name": "p",
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": null,
+        "help": "set plugin options",
+        "name": "controls",
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": null,
+        "help": "set plugin options",
+        "name": "c",
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=44100']",
+        "help": "set sample rate",
+        "name": "sample_rate",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=44100']",
+        "help": "set sample rate",
+        "name": "s",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=1024']",
+        "help": "set the number of samples per requested frame",
+        "name": "nb_samples",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=1024']",
+        "help": "set the number of samples per requested frame",
+        "name": "n",
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=-1']",
+        "help": "set audio duration",
+        "name": "duration",
+        "type": "AV_OPT_TYPE_DURATION"
+      },
+      {
+        "alias": null,
+        "choices": [],
+        "default": "['.i64=-1']",
+        "help": "set audio duration",
+        "name": "d",
+        "type": "AV_OPT_TYPE_DURATION"
+      }
+    ]
   }
 ]
