@@ -8,6 +8,7 @@
         "alias": "p",
         "choices": [],
         "default": null,
+        "deprecated": false,
         "help": "set plugin uri",
         "name": "plugin",
         "type": "AV_OPT_TYPE_STRING"
@@ -16,6 +17,7 @@
         "alias": "c",
         "choices": [],
         "default": null,
+        "deprecated": false,
         "help": "set plugin options",
         "name": "controls",
         "type": "AV_OPT_TYPE_STRING"
@@ -24,6 +26,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.i64=44100']",
+        "deprecated": false,
         "help": "set sample rate",
         "name": "sample_rate",
         "type": "AV_OPT_TYPE_INT"
@@ -32,6 +35,7 @@
         "alias": "n",
         "choices": [],
         "default": "['.i64=1024']",
+        "deprecated": false,
         "help": "set the number of samples per requested frame",
         "name": "nb_samples",
         "type": "AV_OPT_TYPE_INT"
@@ -40,6 +44,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64=-1']",
+        "deprecated": false,
         "help": "set audio duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"

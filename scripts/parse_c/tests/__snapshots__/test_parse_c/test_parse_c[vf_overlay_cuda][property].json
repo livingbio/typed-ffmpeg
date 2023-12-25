@@ -8,6 +8,7 @@
         "alias": null,
         "choices": [],
         "default": "['.str = \"0\"']",
+        "deprecated": false,
         "help": "set the x expression of overlay",
         "name": "x",
         "type": "AV_OPT_TYPE_STRING"
@@ -16,6 +17,7 @@
         "alias": null,
         "choices": [],
         "default": "['.str = \"0\"']",
+        "deprecated": false,
         "help": "set the y expression of overlay",
         "name": "y",
         "type": "AV_OPT_TYPE_STRING"
@@ -40,6 +42,7 @@
           }
         ],
         "default": "['.i64 = EOF_ACTION_REPEAT']",
+        "deprecated": false,
         "help": "Action to take when encountering EOF from secondary input ",
         "name": "eof_action",
         "type": "AV_OPT_TYPE_INT"
@@ -59,6 +62,7 @@
           }
         ],
         "default": "['.i64 = EVAL_MODE_FRAME']",
+        "deprecated": false,
         "help": "specify when to evaluate expressions",
         "name": "eval",
         "type": "AV_OPT_TYPE_INT"
@@ -67,6 +71,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "force termination when the shortest input terminates",
         "name": "shortest",
         "type": "AV_OPT_TYPE_BOOL"
@@ -75,6 +80,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=1']",
+        "deprecated": false,
         "help": "repeat overlay of the last overlay frame",
         "name": "repeatlast",
         "type": "AV_OPT_TYPE_BOOL"

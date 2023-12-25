@@ -8,6 +8,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 2']",
+        "deprecated": false,
         "help": "set number of outputs",
         "name": "outputs",
         "type": "AV_OPT_TYPE_INT"
@@ -23,6 +24,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 2']",
+        "deprecated": false,
         "help": "set number of outputs",
         "name": "outputs",
         "type": "AV_OPT_TYPE_INT"

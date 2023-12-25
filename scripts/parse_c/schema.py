@@ -40,9 +40,14 @@ class AVOption(pydantic.BaseModel):
         if text is None:
             return 0
 
+        text = text.split("=", 1)[-1]
         text = text.replace("\n", "")
 
         return eval(text)
+
+    @property
+    def flag_is_deprecated(self) -> bool:
+        return bool(self.flags_value & AVOptionFlags.AV_OPT_FLAG_DEPRECATED)
 
 
 class Choice(pydantic.BaseModel):
@@ -57,6 +62,7 @@ class Option(pydantic.BaseModel):
     type: str
     default: str | None = None
     alias: str | None = None
+    deprecated: bool = False
 
     choices: list[Choice] = []
 
@@ -194,7 +200,14 @@ class AVFilter(pydantic.BaseModel):
 
             if option.unit == None:
                 output.append(
-                    Option(name=option.name, alias=alias, help=option.help, type=option.type, default=option.default)
+                    Option(
+                        name=option.name,
+                        alias=alias,
+                        help=option.help,
+                        type=option.type,
+                        default=option.default,
+                        deprecated=option.flag_is_deprecated,
+                    )
                 )
             else:
                 output.append(
@@ -205,6 +218,7 @@ class AVFilter(pydantic.BaseModel):
                         type=option.type,
                         default=option.default,
                         choices=choices[option.unit],
+                        deprecated=option.flag_is_deprecated,
                     )
                 )
 

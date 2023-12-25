@@ -8,6 +8,7 @@
         "alias": "w",
         "choices": [],
         "default": null,
+        "deprecated": false,
         "help": "Output video width",
         "name": "width",
         "type": "AV_OPT_TYPE_STRING"
@@ -16,6 +17,7 @@
         "alias": "h",
         "choices": [],
         "default": null,
+        "deprecated": false,
         "help": "Output video height",
         "name": "height",
         "type": "AV_OPT_TYPE_STRING"
@@ -24,6 +26,7 @@
         "alias": null,
         "choices": [],
         "default": "['.str = \"\"']",
+        "deprecated": false,
         "help": "Flags to pass to libswscale",
         "name": "flags",
         "type": "AV_OPT_TYPE_STRING"
@@ -32,6 +35,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "set interlacing",
         "name": "interl",
         "type": "AV_OPT_TYPE_BOOL"
@@ -81,6 +85,7 @@
           }
         ],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set input YCbCr type",
         "name": "in_color_matrix",
         "type": "AV_OPT_TYPE_INT"
@@ -130,6 +135,7 @@
           }
         ],
         "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",
+        "deprecated": false,
         "help": "set output YCbCr type",
         "name": "out_color_matrix",
         "type": "AV_OPT_TYPE_INT"
@@ -179,6 +185,7 @@
           }
         ],
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "deprecated": false,
         "help": "set input color range",
         "name": "in_range",
         "type": "AV_OPT_TYPE_INT"
@@ -228,6 +235,7 @@
           }
         ],
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "deprecated": false,
         "help": "set output color range",
         "name": "out_range",
         "type": "AV_OPT_TYPE_INT"
@@ -236,6 +244,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = -513']",
+        "deprecated": false,
         "help": "input vertical chroma position in luma grid/256",
         "name": "in_v_chr_pos",
         "type": "AV_OPT_TYPE_INT"
@@ -244,6 +253,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = -513']",
+        "deprecated": false,
         "help": "input horizontal chroma position in luma grid/256",
         "name": "in_h_chr_pos",
         "type": "AV_OPT_TYPE_INT"
@@ -252,6 +262,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = -513']",
+        "deprecated": false,
         "help": "output vertical chroma position in luma grid/256",
         "name": "out_v_chr_pos",
         "type": "AV_OPT_TYPE_INT"
@@ -260,6 +271,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = -513']",
+        "deprecated": false,
         "help": "output horizontal chroma position in luma grid/256",
         "name": "out_h_chr_pos",
         "type": "AV_OPT_TYPE_INT"
@@ -284,6 +296,7 @@
           }
         ],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "decrease or increase w/h if necessary to keep the original AR",
         "name": "force_original_aspect_ratio",
         "type": "AV_OPT_TYPE_INT"
@@ -292,6 +305,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 1']",
+        "deprecated": false,
         "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
         "name": "force_divisible_by",
         "type": "AV_OPT_TYPE_INT"
@@ -300,6 +314,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl = 1.7976931348623157e+308']",
+        "deprecated": false,
         "help": "Scaler param 0",
         "name": "param0",
         "type": "AV_OPT_TYPE_DOUBLE"
@@ -308,6 +323,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl = 1.7976931348623157e+308']",
+        "deprecated": false,
         "help": "Scaler param 1",
         "name": "param1",
         "type": "AV_OPT_TYPE_DOUBLE"
@@ -327,6 +343,7 @@
           }
         ],
         "default": "['.i64 = EVAL_MODE_INIT']",
+        "deprecated": false,
         "help": "specify when to evaluate expressions",
         "name": "eval",
         "type": "AV_OPT_TYPE_INT"
@@ -342,6 +359,7 @@
         "alias": "w",
         "choices": [],
         "default": null,
+        "deprecated": false,
         "help": "Output video width",
         "name": "width",
         "type": "AV_OPT_TYPE_STRING"
@@ -350,6 +368,7 @@
         "alias": "h",
         "choices": [],
         "default": null,
+        "deprecated": false,
         "help": "Output video height",
         "name": "height",
         "type": "AV_OPT_TYPE_STRING"
@@ -358,6 +377,7 @@
         "alias": null,
         "choices": [],
         "default": "['.str = \"\"']",
+        "deprecated": false,
         "help": "Flags to pass to libswscale",
         "name": "flags",
         "type": "AV_OPT_TYPE_STRING"
@@ -366,6 +386,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "set interlacing",
         "name": "interl",
         "type": "AV_OPT_TYPE_BOOL"
@@ -415,6 +436,7 @@
           }
         ],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set input YCbCr type",
         "name": "in_color_matrix",
         "type": "AV_OPT_TYPE_INT"
@@ -464,6 +486,7 @@
           }
         ],
         "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",
+        "deprecated": false,
         "help": "set output YCbCr type",
         "name": "out_color_matrix",
         "type": "AV_OPT_TYPE_INT"
@@ -513,6 +536,7 @@
           }
         ],
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "deprecated": false,
         "help": "set input color range",
         "name": "in_range",
         "type": "AV_OPT_TYPE_INT"
@@ -562,6 +586,7 @@
           }
         ],
         "default": "['.i64 = AVCOL_RANGE_UNSPECIFIED']",
+        "deprecated": false,
         "help": "set output color range",
         "name": "out_range",
         "type": "AV_OPT_TYPE_INT"
@@ -570,6 +595,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = -513']",
+        "deprecated": false,
         "help": "input vertical chroma position in luma grid/256",
         "name": "in_v_chr_pos",
         "type": "AV_OPT_TYPE_INT"
@@ -578,6 +604,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = -513']",
+        "deprecated": false,
         "help": "input horizontal chroma position in luma grid/256",
         "name": "in_h_chr_pos",
         "type": "AV_OPT_TYPE_INT"
@@ -586,6 +613,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = -513']",
+        "deprecated": false,
         "help": "output vertical chroma position in luma grid/256",
         "name": "out_v_chr_pos",
         "type": "AV_OPT_TYPE_INT"
@@ -594,6 +622,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = -513']",
+        "deprecated": false,
         "help": "output horizontal chroma position in luma grid/256",
         "name": "out_h_chr_pos",
         "type": "AV_OPT_TYPE_INT"
@@ -618,6 +647,7 @@
           }
         ],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "decrease or increase w/h if necessary to keep the original AR",
         "name": "force_original_aspect_ratio",
         "type": "AV_OPT_TYPE_INT"
@@ -626,6 +656,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 1']",
+        "deprecated": false,
         "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
         "name": "force_divisible_by",
         "type": "AV_OPT_TYPE_INT"
@@ -634,6 +665,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl = 1.7976931348623157e+308']",
+        "deprecated": false,
         "help": "Scaler param 0",
         "name": "param0",
         "type": "AV_OPT_TYPE_DOUBLE"
@@ -642,6 +674,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl = 1.7976931348623157e+308']",
+        "deprecated": false,
         "help": "Scaler param 1",
         "name": "param1",
         "type": "AV_OPT_TYPE_DOUBLE"
@@ -661,6 +694,7 @@
           }
         ],
         "default": "['.i64 = EVAL_MODE_INIT']",
+        "deprecated": false,
         "help": "specify when to evaluate expressions",
         "name": "eval",
         "type": "AV_OPT_TYPE_INT"

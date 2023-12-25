@@ -8,6 +8,7 @@
         "alias": null,
         "choices": [],
         "default": "['.str=((void*)0)']",
+        "deprecated": false,
         "help": "set 3D LUT file name",
         "name": "file",
         "type": "AV_OPT_TYPE_STRING"
@@ -27,6 +28,7 @@
           }
         ],
         "default": "['.i64=1']",
+        "deprecated": false,
         "help": "when to process CLUT",
         "name": "clut",
         "type": "AV_OPT_TYPE_INT"
@@ -61,6 +63,7 @@
           }
         ],
         "default": "['.i64=INTERPOLATE_TETRAHEDRAL']",
+        "deprecated": false,
         "help": "select interpolation mode",
         "name": "interp",
         "type": "AV_OPT_TYPE_INT"
@@ -87,6 +90,7 @@
           }
         ],
         "default": "['.i64=1']",
+        "deprecated": false,
         "help": "when to process CLUT",
         "name": "clut",
         "type": "AV_OPT_TYPE_INT"
@@ -121,6 +125,7 @@
           }
         ],
         "default": "['.i64=INTERPOLATE_TETRAHEDRAL']",
+        "deprecated": false,
         "help": "select interpolation mode",
         "name": "interp",
         "type": "AV_OPT_TYPE_INT"
@@ -136,6 +141,7 @@
         "alias": null,
         "choices": [],
         "default": "['.str=((void*)0)']",
+        "deprecated": false,
         "help": "set 1D LUT file name",
         "name": "file",
         "type": "AV_OPT_TYPE_STRING"
@@ -170,6 +176,7 @@
           }
         ],
         "default": "['.i64=INTERPOLATE_1D_LINEAR']",
+        "deprecated": false,
         "help": "select interpolation mode",
         "name": "interp",
         "type": "AV_OPT_TYPE_INT"

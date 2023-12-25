@@ -8,6 +8,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -16,6 +17,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -80,6 +82,7 @@
           }
         ],
         "default": "['.i64=TEST_ALL']",
+        "deprecated": false,
         "help": "set test to perform",
         "name": "test",
         "type": "AV_OPT_TYPE_INT"
@@ -88,6 +91,7 @@
         "alias": "m",
         "choices": [],
         "default": "['.i64 = 30']",
+        "deprecated": false,
         "help": "Set the maximum number of frames generated for each test",
         "name": "max_frames",
         "type": "AV_OPT_TYPE_INT64"

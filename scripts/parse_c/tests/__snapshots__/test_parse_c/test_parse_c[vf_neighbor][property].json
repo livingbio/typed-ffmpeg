@@ -8,6 +8,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=255']",
+        "deprecated": false,
         "help": "set coordinates",
         "name": "coordinates",
         "type": "AV_OPT_TYPE_INT"
@@ -16,6 +17,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 1st plane",
         "name": "threshold0",
         "type": "AV_OPT_TYPE_INT"
@@ -24,6 +26,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 2nd plane",
         "name": "threshold1",
         "type": "AV_OPT_TYPE_INT"
@@ -32,6 +35,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 3rd plane",
         "name": "threshold2",
         "type": "AV_OPT_TYPE_INT"
@@ -40,6 +44,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 4th plane",
         "name": "threshold3",
         "type": "AV_OPT_TYPE_INT"
@@ -55,6 +60,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=255']",
+        "deprecated": false,
         "help": "set coordinates",
         "name": "coordinates",
         "type": "AV_OPT_TYPE_INT"
@@ -63,6 +69,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 1st plane",
         "name": "threshold0",
         "type": "AV_OPT_TYPE_INT"
@@ -71,6 +78,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 2nd plane",
         "name": "threshold1",
         "type": "AV_OPT_TYPE_INT"
@@ -79,6 +87,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 3rd plane",
         "name": "threshold2",
         "type": "AV_OPT_TYPE_INT"
@@ -87,6 +96,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 4th plane",
         "name": "threshold3",
         "type": "AV_OPT_TYPE_INT"
@@ -102,6 +112,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 1st plane",
         "name": "threshold0",
         "type": "AV_OPT_TYPE_INT"
@@ -110,6 +121,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 2nd plane",
         "name": "threshold1",
         "type": "AV_OPT_TYPE_INT"
@@ -118,6 +130,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 3rd plane",
         "name": "threshold2",
         "type": "AV_OPT_TYPE_INT"
@@ -126,6 +139,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 4th plane",
         "name": "threshold3",
         "type": "AV_OPT_TYPE_INT"
@@ -141,6 +155,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 1st plane",
         "name": "threshold0",
         "type": "AV_OPT_TYPE_INT"
@@ -149,6 +164,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 2nd plane",
         "name": "threshold1",
         "type": "AV_OPT_TYPE_INT"
@@ -157,6 +173,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 3rd plane",
         "name": "threshold2",
         "type": "AV_OPT_TYPE_INT"
@@ -165,6 +182,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=65535']",
+        "deprecated": false,
         "help": "set threshold for 4th plane",
         "name": "threshold3",
         "type": "AV_OPT_TYPE_INT"

@@ -8,6 +8,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=16']",
+        "deprecated": false,
         "help": "set the filter order",
         "name": "order",
         "type": "AV_OPT_TYPE_INT"
@@ -16,6 +17,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=2']",
+        "deprecated": false,
         "help": "set the filter projection",
         "name": "projection",
         "type": "AV_OPT_TYPE_INT"
@@ -24,6 +26,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl=0.0001']",
+        "deprecated": false,
         "help": "set the filter mu",
         "name": "mu",
         "type": "AV_OPT_TYPE_FLOAT"
@@ -32,6 +35,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl=0.001']",
+        "deprecated": false,
         "help": "set the filter delta",
         "name": "delta",
         "type": "AV_OPT_TYPE_FLOAT"
@@ -66,6 +70,7 @@
           }
         ],
         "default": "['.i64=OUT_MODE']",
+        "deprecated": false,
         "help": "set output mode",
         "name": "out_mode",
         "type": "AV_OPT_TYPE_INT"
@@ -90,6 +95,7 @@
           }
         ],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set processing precision",
         "name": "precision",
         "type": "AV_OPT_TYPE_INT"

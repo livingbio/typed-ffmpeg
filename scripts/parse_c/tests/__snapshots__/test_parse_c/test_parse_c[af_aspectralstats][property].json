@@ -8,6 +8,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=2048']",
+        "deprecated": false,
         "help": "set the window size",
         "name": "win_size",
         "type": "AV_OPT_TYPE_INT"
@@ -127,6 +128,7 @@
           }
         ],
         "default": "['.i64 = WFUNC_HANNING']",
+        "deprecated": false,
         "help": "set window function",
         "name": "win_func",
         "type": "AV_OPT_TYPE_INT"
@@ -135,6 +137,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl=0.5']",
+        "deprecated": false,
         "help": "set window overlap",
         "name": "overlap",
         "type": "AV_OPT_TYPE_FLOAT"
@@ -219,6 +222,7 @@
           }
         ],
         "default": "['.i64=(2147483647 *2U +1U)']",
+        "deprecated": false,
         "help": "select the parameters which are measured",
         "name": "measure",
         "type": "AV_OPT_TYPE_FLAGS"

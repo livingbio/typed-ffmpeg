@@ -8,6 +8,7 @@
         "alias": "c",
         "choices": [],
         "default": "['.str = \"black\"']",
+        "deprecated": false,
         "help": "set color",
         "name": "color",
         "type": "AV_OPT_TYPE_COLOR"
@@ -16,6 +17,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -24,6 +26,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -32,6 +35,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -40,6 +44,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -55,6 +60,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 6']",
+        "deprecated": false,
         "help": "set level",
         "name": "level",
         "type": "AV_OPT_TYPE_INT"
@@ -63,6 +69,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -71,6 +78,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -79,6 +87,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -94,6 +103,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -102,6 +112,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -110,6 +121,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -118,6 +130,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -133,6 +146,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -141,6 +155,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -149,6 +164,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -157,6 +173,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -165,6 +182,7 @@
         "alias": "decimals",
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set number of decimals to show",
         "name": "n",
         "type": "AV_OPT_TYPE_INT"
@@ -180,6 +198,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -188,6 +207,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -196,6 +216,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -204,6 +225,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -212,6 +234,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64 = 255']",
+        "deprecated": false,
         "help": "set global alpha (opacity)",
         "name": "alpha",
         "type": "AV_OPT_TYPE_INT"
@@ -227,6 +250,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -235,6 +259,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -243,6 +268,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -251,6 +277,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -259,6 +286,7 @@
         "alias": "co",
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set complement colors",
         "name": "complement",
         "type": "AV_OPT_TYPE_BOOL"
@@ -274,6 +302,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -282,6 +311,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -290,6 +320,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -298,6 +329,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -313,6 +345,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -321,6 +354,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -329,6 +363,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -337,6 +372,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -352,6 +388,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -360,6 +397,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -368,6 +406,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -376,6 +415,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -391,6 +431,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -399,6 +440,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -407,6 +449,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -415,6 +458,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -430,6 +474,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -438,6 +483,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -446,6 +492,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -454,6 +501,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -469,6 +517,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -477,6 +526,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -485,6 +535,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -500,6 +551,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -508,6 +560,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -516,6 +569,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -531,6 +585,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -539,6 +594,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -547,6 +603,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -555,6 +612,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -579,6 +637,7 @@
           }
         ],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set the color spectrum type",
         "name": "type",
         "type": "AV_OPT_TYPE_INT"
@@ -594,6 +653,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -602,6 +662,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -610,6 +671,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -618,6 +680,7 @@
         "alias": null,
         "choices": [],
         "default": "['.str=\"64x64\"']",
+        "deprecated": false,
         "help": "set the single patch size",
         "name": "patch_size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -637,6 +700,7 @@
           }
         ],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set the color checker chart preset",
         "name": "preset",
         "type": "AV_OPT_TYPE_INT"
@@ -652,6 +716,7 @@
         "alias": "s",
         "choices": [],
         "default": "['.str = \"320x240\"']",
+        "deprecated": false,
         "help": "set video size",
         "name": "size",
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
@@ -660,6 +725,7 @@
         "alias": "r",
         "choices": [],
         "default": "['.str = \"25\"']",
+        "deprecated": false,
         "help": "set video rate",
         "name": "rate",
         "type": "AV_OPT_TYPE_VIDEO_RATE"
@@ -668,6 +734,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = -1']",
+        "deprecated": false,
         "help": "set video duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -676,6 +743,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl= 1']",
+        "deprecated": false,
         "help": "set video sample aspect ratio",
         "name": "sar",
         "type": "AV_OPT_TYPE_RATIONAL"
@@ -684,6 +752,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=10']",
+        "deprecated": false,
         "help": "set LUT precision",
         "name": "precision",
         "type": "AV_OPT_TYPE_INT"
@@ -692,6 +761,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set X-axis offset",
         "name": "xo",
         "type": "AV_OPT_TYPE_INT"
@@ -700,6 +770,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set Y-axis offset",
         "name": "yo",
         "type": "AV_OPT_TYPE_INT"
@@ -708,6 +779,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set T-axis offset",
         "name": "to",
         "type": "AV_OPT_TYPE_INT"
@@ -716,6 +788,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 0-order phase",
         "name": "k0",
         "type": "AV_OPT_TYPE_INT"
@@ -724,6 +797,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 1-order X-axis phase",
         "name": "kx",
         "type": "AV_OPT_TYPE_INT"
@@ -732,6 +806,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 1-order Y-axis phase",
         "name": "ky",
         "type": "AV_OPT_TYPE_INT"
@@ -740,6 +815,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 1-order T-axis phase",
         "name": "kt",
         "type": "AV_OPT_TYPE_INT"
@@ -748,6 +824,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set X-axis*T-axis product phase",
         "name": "kxt",
         "type": "AV_OPT_TYPE_INT"
@@ -756,6 +833,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set Y-axis*T-axis product phase",
         "name": "kyt",
         "type": "AV_OPT_TYPE_INT"
@@ -764,6 +842,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set X-axis*Y-axis product phase",
         "name": "kxy",
         "type": "AV_OPT_TYPE_INT"
@@ -772,6 +851,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 2-order X-axis phase",
         "name": "kx2",
         "type": "AV_OPT_TYPE_INT"
@@ -780,6 +860,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 2-order Y-axis phase",
         "name": "ky2",
         "type": "AV_OPT_TYPE_INT"
@@ -788,6 +869,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 2-order T-axis phase",
         "name": "kt2",
         "type": "AV_OPT_TYPE_INT"
@@ -796,6 +878,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 0-order U-color phase",
         "name": "ku",
         "type": "AV_OPT_TYPE_INT"
@@ -804,6 +887,7 @@
         "alias": null,
         "choices": [],
         "default": "['.i64=0']",
+        "deprecated": false,
         "help": "set 0-order V-color phase",
         "name": "kv",
         "type": "AV_OPT_TYPE_INT"

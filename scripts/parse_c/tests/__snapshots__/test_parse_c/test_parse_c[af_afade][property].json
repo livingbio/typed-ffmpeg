@@ -19,6 +19,7 @@
           }
         ],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "set the fade direction",
         "name": "type",
         "type": "AV_OPT_TYPE_INT"
@@ -27,6 +28,7 @@
         "alias": "ss",
         "choices": [],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "set number of first sample to start fading",
         "name": "start_sample",
         "type": "AV_OPT_TYPE_INT64"
@@ -35,6 +37,7 @@
         "alias": "nb_samples",
         "choices": [],
         "default": "['.i64 = 44100']",
+        "deprecated": false,
         "help": "set number of samples for fade duration",
         "name": "ns",
         "type": "AV_OPT_TYPE_INT64"
@@ -43,6 +46,7 @@
         "alias": "st",
         "choices": [],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "set time to start fading",
         "name": "start_time",
         "type": "AV_OPT_TYPE_DURATION"
@@ -51,6 +55,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "set fade duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -180,6 +185,7 @@
           }
         ],
         "default": "['.i64 = TRI']",
+        "deprecated": false,
         "help": "set fade curve type",
         "name": "curve",
         "type": "AV_OPT_TYPE_INT"
@@ -188,6 +194,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl = 0']",
+        "deprecated": false,
         "help": "set the silence gain",
         "name": "silence",
         "type": "AV_OPT_TYPE_DOUBLE"
@@ -196,6 +203,7 @@
         "alias": null,
         "choices": [],
         "default": "['.dbl = 1']",
+        "deprecated": false,
         "help": "set the unity gain",
         "name": "unity",
         "type": "AV_OPT_TYPE_DOUBLE"
@@ -211,6 +219,7 @@
         "alias": "nb_samples",
         "choices": [],
         "default": "['.i64 = 44100']",
+        "deprecated": false,
         "help": "set number of samples for cross fade duration",
         "name": "ns",
         "type": "AV_OPT_TYPE_INT"
@@ -219,6 +228,7 @@
         "alias": "d",
         "choices": [],
         "default": "['.i64 = 0']",
+        "deprecated": false,
         "help": "set cross fade duration",
         "name": "duration",
         "type": "AV_OPT_TYPE_DURATION"
@@ -227,6 +237,7 @@
         "alias": "o",
         "choices": [],
         "default": "['.i64 = 1']",
+        "deprecated": false,
         "help": "overlap 1st stream end with 2nd stream start",
         "name": "overlap",
         "type": "AV_OPT_TYPE_BOOL"
@@ -356,6 +367,7 @@
           }
         ],
         "default": "['.i64 = TRI']",
+        "deprecated": false,
         "help": "set fade curve type for 1st stream",
         "name": "curve1",
         "type": "AV_OPT_TYPE_INT"
@@ -485,6 +497,7 @@
           }
         ],
         "default": "['.i64 = TRI']",
+        "deprecated": false,
         "help": "set fade curve type for 2nd stream",
         "name": "curve2",
         "type": "AV_OPT_TYPE_INT"
