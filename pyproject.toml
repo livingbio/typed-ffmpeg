@@ -17,7 +17,7 @@ optional = true
 [tool.poetry.group.dev.dependencies]
 requests = "^2.31.0"
 detect-secrets = "^1.4.0"
-pre-commit = "^3.5.0"
+pre-commit = "^3.6.0"
 python-dotenv = "^1.0.0"
 openai = "^1.6.0"
 mypy = "^1.7.1"
