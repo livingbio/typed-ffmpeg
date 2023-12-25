@@ -1,7 +1,7 @@
 [
   {
     "description": "Hard repeat fields based on MPEG repeat field flag.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [
       {
         "name": "default",

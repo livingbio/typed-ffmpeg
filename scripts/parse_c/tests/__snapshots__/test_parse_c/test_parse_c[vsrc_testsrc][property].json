@@ -1,10 +1,11 @@
 [
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Provide an uniformly colored input.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "color",
@@ -120,11 +121,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Provide an identity Hald CLUT.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "haldclutsrc",
@@ -207,11 +209,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Null video source, return unprocessed video frames.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "nullsrc",
@@ -305,11 +308,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate test pattern.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "testsrc",
@@ -425,11 +429,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate another test pattern.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "testsrc2",
@@ -534,11 +539,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate RGB test pattern.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "rgbtestsrc",
@@ -654,11 +660,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate YUV test pattern.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "yuvtestsrc",
@@ -752,11 +759,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate PAL 75% color bars.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "pal75bars",
@@ -850,11 +858,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate PAL 100% color bars.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "pal100bars",
@@ -948,11 +957,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate SMPTE color bars.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "smptebars",
@@ -1046,11 +1056,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate SMPTE HD color bars.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "smptehdbars",
@@ -1144,11 +1155,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate all yuv colors.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "allyuv",
@@ -1220,11 +1232,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate all RGB colors.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "allrgb",
@@ -1296,11 +1309,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate colors spectrum.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "colorspectrum",
@@ -1438,11 +1452,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate color checker chart.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "colorchart",
@@ -1558,11 +1573,12 @@
     }
   },
   {
+    "flags_value": 4,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate zone-plate.",
-      "flags": 4,
+      "flags": "(1 << 2)",
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "zoneplate",

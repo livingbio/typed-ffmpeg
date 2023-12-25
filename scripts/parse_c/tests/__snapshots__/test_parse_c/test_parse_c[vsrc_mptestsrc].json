@@ -1,7 +1,7 @@
 [
   {
     "description": "Generate various test pattern.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "mptestsrc",

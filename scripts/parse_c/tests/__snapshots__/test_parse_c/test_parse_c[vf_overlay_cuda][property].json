@@ -1,10 +1,11 @@
 [
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Overlay one video on top of another using CUDA",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [
         {
           "name": "main",

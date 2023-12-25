@@ -1,10 +1,11 @@
 [
   {
+    "flags_value": 1,
     "is_dynamic_inputs": true,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Merge two or more audio streams into \" \"a single multi-channel stream.",
-      "flags": 1,
+      "flags": "(1 << 0)",
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "amerge",

@@ -1,7 +1,7 @@
 [
   {
     "description": "Scale the input video size and/or convert the image format.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [
       {
         "name": "default",
@@ -463,7 +463,7 @@
   },
   {
     "description": "Scale the input video size and/or convert the image format to the given reference.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [
       {
         "name": "default",

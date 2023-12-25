@@ -1,7 +1,7 @@
 {
   "ff_af_asubcut": {
     "description": "Cut subwoofer frequencies.",
-    "flags": 65540,
+    "flags": "(1 << 16) |\n                       (1 << 2)",
     "input_filter_pad": [],
     "inputs": "(inputs)",
     "name": "asubcut",
@@ -12,7 +12,7 @@
   },
   "ff_af_asupercut": {
     "description": "Cut super frequencies.",
-    "flags": 65540,
+    "flags": "(1 << 16) |\n                       (1 << 2)",
     "input_filter_pad": [],
     "inputs": "(inputs)",
     "name": "asupercut",
@@ -23,7 +23,7 @@
   },
   "ff_af_asuperpass": {
     "description": "Apply high order Butterworth band-pass filter.",
-    "flags": 65540,
+    "flags": "(1 << 16) |\n                       (1 << 2)",
     "input_filter_pad": [],
     "inputs": "(inputs)",
     "name": "asuperpass",
@@ -34,7 +34,7 @@
   },
   "ff_af_asuperstop": {
     "description": "Apply high order Butterworth band-stop filter.",
-    "flags": 65540,
+    "flags": "(1 << 16) |\n                       (1 << 2)",
     "input_filter_pad": [],
     "inputs": "(inputs)",
     "name": "asuperstop",

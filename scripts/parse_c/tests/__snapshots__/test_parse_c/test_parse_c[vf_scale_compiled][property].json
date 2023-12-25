@@ -1,10 +1,11 @@
 [
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Scale the input video size and/or convert the image format.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [
         {
           "name": "default",
@@ -466,11 +467,12 @@
     }
   },
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Scale the input video size and/or convert the image format to the given reference.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [
         {
           "name": "default",

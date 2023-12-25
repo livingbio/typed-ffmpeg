@@ -61,6 +61,21 @@ class AVFilterFlags(int, enum.Enum):
     AVFILTER_FLAG_SUPPORT_TIMELINE = AVFILTER_FLAG_SUPPORT_TIMELINE_GENERIC | AVFILTER_FLAG_SUPPORT_TIMELINE_INTERNAL
 
 
+def parse_av_filter_flags(text: str | None) -> int:
+    if text is None:
+        return 0
+
+    text = text.replace("\n", "")
+
+    def convert_avfilter_flag(match) -> str:
+        return str(AVFilterFlags[match.group(1)].value)
+
+    if "AVFILTER" in text:
+        text = re.sub(r"(AVFILTER_FLAG_\w+)", convert_avfilter_flag, text)
+
+    return eval(text)
+
+
 class AVFilter(pydantic.BaseModel):
     name: str
     description: str
@@ -75,12 +90,16 @@ class AVFilter(pydantic.BaseModel):
     outputs: str | None = None
     # nb_outputs: str
     priv_class: str | None = None
-    flags: int
+    flags: str | None = None
     # process_command: str
 
     options: list[AVOption] = []
     input_filter_pad: list[AVFilterPad] = []
     output_filter_pad: list[AVFilterPad] = []
+
+    @property
+    def flags_value(self) -> int:
+        return parse_av_filter_flags(self.flags)
 
     @property
     def priv_class_value(self) -> str:
@@ -103,11 +122,11 @@ class AVFilter(pydantic.BaseModel):
 
     @property
     def is_dynamic_inputs(self) -> bool:
-        return bool(self.flags & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_INPUTS)
+        return bool(self.flags_value & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_INPUTS)
 
     @property
     def is_dynamic_outputs(self) -> bool:
-        return bool(self.flags & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_OUTPUTS)
+        return bool(self.flags_value & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_OUTPUTS)
 
     @cached_property
     def parsed_options(self) -> list[Option]:

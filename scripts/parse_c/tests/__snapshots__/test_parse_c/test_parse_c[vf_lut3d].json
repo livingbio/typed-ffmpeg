@@ -1,7 +1,7 @@
 [
   {
     "description": "Adjust colors using a 3D LUT.",
-    "flags": 65540,
+    "flags": "(1 << 16) | (1 << 2)",
     "input_filter_pad": [
       {
         "name": "default",
@@ -133,7 +133,7 @@
   },
   {
     "description": "Adjust colors using a Hald CLUT.",
-    "flags": 131076,
+    "flags": "(1 << 17) | (1 << 2)",
     "input_filter_pad": [
       {
         "name": "main",
@@ -258,7 +258,7 @@
   },
   {
     "description": "Adjust colors using a 1D LUT.",
-    "flags": 65540,
+    "flags": "(1 << 16) | (1 << 2)",
     "input_filter_pad": [
       {
         "name": "default",

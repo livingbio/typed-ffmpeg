@@ -1,7 +1,7 @@
 [
   {
     "description": "Apply erosion effect.",
-    "flags": 65540,
+    "flags": "(1 << 16)| (1 << 2)",
     "input_filter_pad": [
       {
         "name": "default",
@@ -78,7 +78,7 @@
   },
   {
     "description": "Apply dilation effect.",
-    "flags": 65540,
+    "flags": "(1 << 16)| (1 << 2)",
     "input_filter_pad": [
       {
         "name": "default",
@@ -155,7 +155,7 @@
   },
   {
     "description": "Apply deflate effect.",
-    "flags": 65540,
+    "flags": "(1 << 16)| (1 << 2)",
     "input_filter_pad": [
       {
         "name": "default",
@@ -221,7 +221,7 @@
   },
   {
     "description": "Apply inflate effect.",
-    "flags": 65540,
+    "flags": "(1 << 16)| (1 << 2)",
     "input_filter_pad": [
       {
         "name": "default",

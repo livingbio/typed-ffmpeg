@@ -1,7 +1,7 @@
 [
   {
     "description": "Overlay one video on top of another using CUDA",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [
       {
         "name": "main",

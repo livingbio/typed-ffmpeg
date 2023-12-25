@@ -17,6 +17,7 @@ def test_parse_c(path: pathlib.Path, snapshot: SnapshotAssertion) -> None:
     assert snapshot(extension_class=JSONSnapshotExtension, name="property") == dump(
         [
             {
+                "flags_value": k.flags_value,
                 "parsed_options": k,
                 "is_dynamic_inputs": k.is_dynamic_inputs,
                 "is_dynamic_outputs": k.is_dynamic_outputs,

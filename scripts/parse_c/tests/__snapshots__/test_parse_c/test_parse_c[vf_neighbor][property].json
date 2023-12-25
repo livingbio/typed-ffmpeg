@@ -1,10 +1,11 @@
 [
   {
+    "flags_value": 65540,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Apply erosion effect.",
-      "flags": 65540,
+      "flags": "(1 << 16)| (1 << 2)",
       "input_filter_pad": [
         {
           "name": "default",
@@ -81,11 +82,12 @@
     }
   },
   {
+    "flags_value": 65540,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Apply dilation effect.",
-      "flags": 65540,
+      "flags": "(1 << 16)| (1 << 2)",
       "input_filter_pad": [
         {
           "name": "default",
@@ -162,11 +164,12 @@
     }
   },
   {
+    "flags_value": 65540,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Apply deflate effect.",
-      "flags": 65540,
+      "flags": "(1 << 16)| (1 << 2)",
       "input_filter_pad": [
         {
           "name": "default",
@@ -232,11 +235,12 @@
     }
   },
   {
+    "flags_value": 65540,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Apply inflate effect.",
-      "flags": 65540,
+      "flags": "(1 << 16)| (1 << 2)",
       "input_filter_pad": [
         {
           "name": "default",

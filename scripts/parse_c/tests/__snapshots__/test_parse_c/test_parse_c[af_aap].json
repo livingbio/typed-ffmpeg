@@ -1,7 +1,7 @@
 [
   {
     "description": "Apply Affine Projection algorithm to first audio stream.",
-    "flags": 131076,
+    "flags": "(1 << 17) |\n                      (1 << 2)",
     "input_filter_pad": [
       {
         "name": "input",

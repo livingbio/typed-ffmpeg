@@ -1,7 +1,7 @@
 [
   {
     "description": "Provide an uniformly colored input.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "color",
@@ -117,7 +117,7 @@
   },
   {
     "description": "Provide an identity Hald CLUT.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "haldclutsrc",
@@ -200,7 +200,7 @@
   },
   {
     "description": "Null video source, return unprocessed video frames.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "nullsrc",
@@ -294,7 +294,7 @@
   },
   {
     "description": "Generate test pattern.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "testsrc",
@@ -410,7 +410,7 @@
   },
   {
     "description": "Generate another test pattern.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "testsrc2",
@@ -515,7 +515,7 @@
   },
   {
     "description": "Generate RGB test pattern.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "rgbtestsrc",
@@ -631,7 +631,7 @@
   },
   {
     "description": "Generate YUV test pattern.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "yuvtestsrc",
@@ -725,7 +725,7 @@
   },
   {
     "description": "Generate PAL 75% color bars.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "pal75bars",
@@ -819,7 +819,7 @@
   },
   {
     "description": "Generate PAL 100% color bars.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "pal100bars",
@@ -913,7 +913,7 @@
   },
   {
     "description": "Generate SMPTE color bars.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "smptebars",
@@ -1007,7 +1007,7 @@
   },
   {
     "description": "Generate SMPTE HD color bars.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "smptehdbars",
@@ -1101,7 +1101,7 @@
   },
   {
     "description": "Generate all yuv colors.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "allyuv",
@@ -1173,7 +1173,7 @@
   },
   {
     "description": "Generate all RGB colors.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "allrgb",
@@ -1245,7 +1245,7 @@
   },
   {
     "description": "Generate colors spectrum.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "colorspectrum",
@@ -1383,7 +1383,7 @@
   },
   {
     "description": "Generate color checker chart.",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "colorchart",
@@ -1499,7 +1499,7 @@
   },
   {
     "description": "Generate zone-plate.",
-    "flags": 4,
+    "flags": "(1 << 2)",
     "input_filter_pad": [],
     "inputs": "((void*)0)",
     "name": "zoneplate",

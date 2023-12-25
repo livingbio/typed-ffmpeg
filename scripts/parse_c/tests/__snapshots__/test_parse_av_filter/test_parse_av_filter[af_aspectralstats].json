@@ -1,7 +1,7 @@
 {
   "ff_af_aspectralstats": {
     "description": "Show frequency domain statistics about audio frames.",
-    "flags": 4,
+    "flags": "(1 << 2)",
     "input_filter_pad": [],
     "inputs": "(ff_audio_default_filterpad)",
     "name": "aspectralstats",

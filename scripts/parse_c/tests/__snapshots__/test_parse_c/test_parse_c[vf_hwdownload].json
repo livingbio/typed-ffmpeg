@@ -1,7 +1,7 @@
 [
   {
     "description": "Download a hardware frame to a normal frame",
-    "flags": 0,
+    "flags": null,
     "input_filter_pad": [
       {
         "name": "default",

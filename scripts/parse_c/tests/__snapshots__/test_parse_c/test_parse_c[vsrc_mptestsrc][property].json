@@ -1,10 +1,11 @@
 [
   {
+    "flags_value": 0,
     "is_dynamic_inputs": false,
     "is_dynamic_outputs": false,
     "parsed_options": {
       "description": "Generate various test pattern.",
-      "flags": 0,
+      "flags": null,
       "input_filter_pad": [],
       "inputs": "((void*)0)",
       "name": "mptestsrc",
