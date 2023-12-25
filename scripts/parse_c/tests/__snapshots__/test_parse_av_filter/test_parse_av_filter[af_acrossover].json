@@ -7,7 +7,7 @@
     "name": "acrossover",
     "options": [],
     "output_filter_pad": null,
-    "outputs": null,
+    "outputs": "((void*)0)",
     "priv_class": "&acrossover_class"
   }
 }

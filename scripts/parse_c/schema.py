@@ -83,6 +83,24 @@ class AVFilter(pydantic.BaseModel):
     output_filter_pad: AVFilterPad | None = None
 
     @property
+    def priv_class_value(self) -> str:
+        return self.priv_class.strip("&")
+
+    @property
+    def inputs_value(self) -> str | None:
+        if self.inputs is None or self.inputs == "((void*)0)":
+            return None
+
+        return self.inputs.strip("()")
+
+    @property
+    def outputs_value(self) -> str | None:
+        if self.outputs is None or self.outputs == "(void*)0":
+            return None
+
+        return self.outputs.strip("()")
+
+    @property
     def is_dynamic_inputs(self) -> bool:
         return bool(self.flags & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_INPUTS)
 

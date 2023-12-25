@@ -3,7 +3,7 @@
     "description": "Generate various test pattern.",
     "flags": 0,
     "input_filter_pad": null,
-    "inputs": null,
+    "inputs": "((void*)0)",
     "name": "mptestsrc",
     "options": [
       {
