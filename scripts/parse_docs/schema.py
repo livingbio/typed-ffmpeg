@@ -8,7 +8,7 @@ sections_path = pathlib.Path(__file__).parent / "sections"
 sections_path.mkdir(exist_ok=True)
 
 
-def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
+def parse_paremeters(soup: BeautifulSoup) -> dict[str, str]:
     parameters = []
     current_params = []
 
@@ -18,12 +18,13 @@ def parse_paremeters(soup: BeautifulSoup) -> list[dict[str, str]]:
         elif element.name == "dd" and current_params:
             description = str(element)
             for param in current_params:
+                param = param.strip().replace(" ", ",")
                 for p in param.split(","):
                     p = p.strip()
                     parameters.append({"name": p, "description": description})
             current_params = []
 
-    return parameters
+    return {k["name"]: k["description"] for k in parameters}
 
 
 class FilterDocument(pydantic.BaseModel):
@@ -47,7 +48,7 @@ class FilterDocument(pydantic.BaseModel):
         return soup.text.strip()
 
     @cached_property
-    def parameters(self) -> list[dict[str, str]]:
+    def parameter_descs(self) -> dict[str, str]:
         soup = BeautifulSoup(self.body, "html.parser")
         options_p_tag = soup.find("p", string=lambda text: "options" in text.lower() if text else False)
 
@@ -58,7 +59,7 @@ class FilterDocument(pydantic.BaseModel):
 
         if options:
             return parse_paremeters(options)
-        return []
+        return {}
 
     def save(self) -> None:
         with self.path.open("w") as ofile:

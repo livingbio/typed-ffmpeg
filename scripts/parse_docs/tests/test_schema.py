@@ -16,4 +16,4 @@ def test_parse_filter_document(snapshot: SnapshotAssertion, filepath: pathlib.Pa
     assert snapshot(exclude=props("path", "refs"), extension_class=JSONSnapshotExtension) == filter_document.model_dump(
         mode="json"
     )
-    assert snapshot(extension_class=JSONSnapshotExtension, name="parameters") == filter_document.parameters
+    assert snapshot(extension_class=JSONSnapshotExtension, name="parameters") == filter_document.parameter_descs

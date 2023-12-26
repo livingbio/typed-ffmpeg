@@ -1,18 +1,40 @@
 import json
 import pathlib
+from typing import Literal
 
-from parse_c.schema import AVFilterPad, FilterType
+from parse_c.schema import AVFilterPad, AVOptionType, FilterType
 from pydantic import BaseModel, HttpUrl
 
 schema_path = pathlib.Path(__file__).parent / "schemas"
 schema_path.mkdir(exist_ok=True)
 
+TYPING_MAP: dict[AVOptionType, str] = {
+    AVOptionType.AV_OPT_TYPE_BOOL: "bool",
+    AVOptionType.AV_OPT_TYPE_INT: "int",
+    AVOptionType.AV_OPT_TYPE_INT64: "int",
+    AVOptionType.AV_OPT_TYPE_FLOAT: "float",
+    AVOptionType.AV_OPT_TYPE_DOUBLE: "float",
+    AVOptionType.AV_OPT_TYPE_STRING: "str",
+    AVOptionType.AV_OPT_TYPE_FLAGS: "str",
+    AVOptionType.AV_OPT_TYPE_COLOR: "str",
+    AVOptionType.AV_OPT_TYPE_RATIONAL: "float",
+    AVOptionType.AV_OPT_TYPE_IMAGE_SIZE: "str",
+    AVOptionType.AV_OPT_TYPE_VIDEO_RATE: "str",
+    AVOptionType.AV_OPT_TYPE_DURATION: "int",
+    AVOptionType.AV_OPT_TYPE_PIXEL_FMT: "str",
+    AVOptionType.AV_OPT_TYPE_CHLAYOUT: "str",
+    AVOptionType.AV_OPT_TYPE_SAMPLE_FMT: "str",
+    AVOptionType.AV_OPT_TYPE_DICT: "str",
+    AVOptionType.AV_OPT_TYPE_BINARY: "str",
+}
+
 
 class FFmpegFilterOption(BaseModel):
     name: str
-    description: str
+    alias: list[str] = []
+    description: str | None = None
 
-    typing: str
+    typing: Literal["bool", "int", "float", "str"]
     required: bool
 
 
