@@ -45,6 +45,7 @@
 -> "{{ return_type }}":
 {%- else -%}
 -> tuple[
+    {{ f.output_stream_typings | length }}
     {% for stream_typing in f.output_stream_typings %}
         {% if stream_typing.type.value == "video" %}
             "VideoStream",
@@ -60,8 +61,9 @@
 {% macro filter_method(f) %}
     def {{f.name}}(
     {{ stream_typings(f, "method") }}
-    *,
+    {% if not f.is_input_dynamic and f.options | length > 0 %}*,{% endif %}
     {{ option_typings(f) }}
+    **kwargs: Any
     ) {{- return_stream_typings(f) }}
         """{{ f.description }}"""
         ...
@@ -70,8 +72,9 @@
 {% macro filter_function(f) %}
 def {{f.name}}(
     {{ stream_typings(f, "function") }}
-    *,
+    {% if not f.is_input_dynamic and f.options | length > 0 %}*,{% endif %}
     {{ option_typings(f) }}
+    **kwargs: Any
 ) {{- return_stream_typings(f) }}
     """{{ f.description }}"""
     ...

@@ -3,8 +3,8 @@ import pathlib
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from ..code_gen import generate_class, generate_filter_to_method
-from ..signature import Filter
+from ..tmp.code_gen import generate_class, generate_filter_to_method
+from ..tmp.signature import Filter
 
 test_data = pathlib.Path(__file__).parent / "data"
 
