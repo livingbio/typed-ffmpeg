@@ -83,9 +83,14 @@ class Option(pydantic.BaseModel):
         return False
 
 
+class AVFilterPadType(str, enum.Enum):
+    video = "AVMEDIA_TYPE_VIDEO"
+    audio = "AVMEDIA_TYPE_AUDIO"
+
+
 class AVFilterPad(pydantic.BaseModel):
     name: str
-    type: str
+    type: AVFilterPadType
 
 
 class AVClass(pydantic.BaseModel):
@@ -134,6 +139,7 @@ class FilterType(str, enum.Enum):
     VIDEO_FILTER = "vf"
     VIDEO_SOURCE = "vsrc"
     VIDEO_SINK = "vsink"
+    AUDIO_AND_VIDEO_SOURCE = "avsrc"
     AUDIO_AND_VIDEO_FILTER = "avf"
     VIDEO_AND_AUDIO_FILTER = "vaf"
 
