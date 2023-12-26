@@ -1,21 +1,14 @@
 
 
-class VideoStream:
-    
-        
+
     
 
-class AudioStream:
+def aap(
     
-        
-    
-    def aap(
-    
-    self,
-
 
     
         
+        input: "AudioStream",
         
     
         
@@ -36,9 +29,8 @@ class AudioStream:
     
 
 
-    )-> "AudioStream":
-        """description"""
-        ...
+)-> "AudioStream":
+    """description"""
+    ...
 
-        
     

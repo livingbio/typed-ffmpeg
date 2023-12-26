@@ -1,15 +1,15 @@
 {% import "_components.jinja" as _components %}
 
 class VideoStream:
-    {% for filter in filters %}
-        {% if filter.filter_type.value in ["vf", "vaf"] %}
-    {{ _components.filter_method(filter) }}
+    {% for f in filters %}
+        {% if f.filter_type.value in ["vf", "vaf"] %}
+    {{ _components.filter_method(f) }}
         {% endif %}
     {% endfor %}
 
 class AudioStream:
-    {% for filter in filters %}
-        {% if filter.filter_type.value in ["af", "avf"] %}
-    {{ _components.filter_method(filter) }}
+    {% for f in filters %}
+        {% if f.filter_type.value in ["af", "avf"] %}
+    {{ _components.filter_method(f) }}
         {% endif %}
     {% endfor %}
