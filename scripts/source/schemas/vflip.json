@@ -1,8 +1,0 @@
-{
-  "description": "11.275 vflip\nFlip the input video vertically.\n\nFor example, to vertically flip a video with ffmpeg:\n\nffmpeg -i in.avi -vf \"vflip\" out.avi",
-  "json_schema": {},
-  "name": "vflip",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vflip",
-  "source": "<h3 class=\"section\"><a href=\"#toc-vflip\">11.275 vflip</a></h3>\n\n<p>Flip the input video vertically.\n</p>\n<p>For example, to vertically flip a video with <code>ffmpeg</code>:\n</p><div class=\"example\">\n<pre class=\"example\">ffmpeg -i in.avi -vf &quot;vflip&quot; out.avi\n</pre></div>\n\n"
-}

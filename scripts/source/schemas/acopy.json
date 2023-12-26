@@ -1,8 +1,0 @@
-{
-  "description": "8.4 acopy\nCopy the input audio source unchanged to the output. This is mainly useful for\ntesting purposes.",
-  "json_schema": {},
-  "name": "acopy",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acopy",
-  "source": "<h3 class=\"section\"><a href=\"#toc-acopy\">8.4 acopy</a></h3>\n\n<p>Copy the input audio source unchanged to the output. This is mainly useful for\ntesting purposes.\n</p>\n"
-}

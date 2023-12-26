@@ -1,8 +1,0 @@
-{
-  "description": "11.121 hwdownload\nDownload hardware frames to system memory.\n\nThe input must be in hardware frames, and the output a non-hardware format.\nNot all formats will be supported on the output - it may be necessary to insert\nan additional format filter immediately following in the graph to get\nthe output in a supported format.",
-  "json_schema": {},
-  "name": "hwdownload",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hwdownload",
-  "source": "<h3 class=\"section\"><a href=\"#toc-hwdownload-1\">11.121 hwdownload</a></h3>\n\n<p>Download hardware frames to system memory.\n</p>\n<p>The input must be in hardware frames, and the output a non-hardware format.\nNot all formats will be supported on the output - it may be necessary to insert\nan additional <samp>format</samp> filter immediately following in the graph to get\nthe output in a supported format.\n</p>\n"
-}

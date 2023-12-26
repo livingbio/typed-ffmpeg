@@ -1,8 +1,0 @@
-{
-  "description": "11.250 tblend\nBlend successive video frames.\n\nSee blend",
-  "json_schema": {},
-  "name": "tblend",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tblend",
-  "source": "<h3 class=\"section\"><a href=\"#toc-tblend\">11.250 tblend</a></h3>\n<p>Blend successive video frames.\n</p>\n<p>See <a href=\"#blend\">blend</a>\n</p>\n"
-}

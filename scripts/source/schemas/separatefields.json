@@ -1,8 +1,0 @@
-{
-  "description": "11.225 separatefields\nThe separatefields takes a frame-based video input and splits\neach frame into its components fields, producing a new half height clip\nwith twice the frame rate and twice the frame count.\n\nThis filter use field-dominance information in frame to decide which\nof each pair of fields to place first in the output.\nIf it gets it wrong use setfield filter before separatefields filter.",
-  "json_schema": {},
-  "name": "separatefields",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#separatefields",
-  "source": "<h3 class=\"section\"><a href=\"#toc-separatefields-1\">11.225 separatefields</a></h3>\n\n<p>The <code>separatefields</code> takes a frame-based video input and splits\neach frame into its components fields, producing a new half height clip\nwith twice the frame rate and twice the frame count.\n</p>\n<p>This filter use field-dominance information in frame to decide which\nof each pair of fields to place first in the output.\nIf it gets it wrong use <a href=\"#setfield\">setfield</a> filter before <code>separatefields</code> filter.\n</p>\n"
-}

@@ -1,8 +1,0 @@
-{
-  "description": "11.113 grayworld\nA color constancy filter that applies color correction based on the grayworld assumption\n\nSee: https://www.researchgate.net/publication/275213614_A_New_Color_Correction_Method_for_Underwater_Imaging\n\nThe algorithm  uses linear light, so input\ndata should be linearized beforehand (and possibly correctly tagged).\n\n\nffmpeg -i INPUT -vf zscale=transfer=linear,grayworld,zscale=transfer=bt709,format=yuv420p OUTPUT",
-  "json_schema": {},
-  "name": "grayworld",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#grayworld",
-  "source": "<h3 class=\"section\"><a href=\"#toc-grayworld\">11.113 grayworld</a></h3>\n<p>A color constancy filter that applies color correction based on the grayworld assumption\n</p>\n<p>See: <a href=\"https://www.researchgate.net/publication/275213614_A_New_Color_Correction_Method_for_Underwater_Imaging\">https://www.researchgate.net/publication/275213614_A_New_Color_Correction_Method_for_Underwater_Imaging</a>\n</p>\n<p>The algorithm  uses linear light, so input\ndata should be linearized beforehand (and possibly correctly tagged).\n</p>\n<div class=\"example\">\n<pre class=\"example\">ffmpeg -i INPUT -vf zscale=transfer=linear,grayworld,zscale=transfer=bt709,format=yuv420p OUTPUT\n</pre></div>\n\n"
-}

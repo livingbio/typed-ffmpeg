@@ -1,8 +1,0 @@
-{
-  "description": "11.274 vidstabtransform\nVideo stabilization/deshaking: pass 2 of 2,\nsee vidstabdetect for pass 1.\n\nRead a file with transform information for each frame and\napply/compensate them. Together with the vidstabdetect\nfilter this can be used to deshake videos. See also\nhttp://public.hronopik.de/vid.stab. It is important to also use\nthe unsharp filter, see below.\n\nTo enable compilation of this filter you need to configure FFmpeg with\n--enable-libvidstab.",
-  "json_schema": {},
-  "name": "vidstabtransform",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vidstabtransform",
-  "source": "<h3 class=\"section\"><a href=\"#toc-vidstabtransform-1\">11.274 vidstabtransform</a></h3>\n\n<p>Video stabilization/deshaking: pass 2 of 2,\nsee <a href=\"#vidstabdetect\">vidstabdetect</a> for pass 1.\n</p>\n<p>Read a file with transform information for each frame and\napply/compensate them. Together with the <a href=\"#vidstabdetect\">vidstabdetect</a>\nfilter this can be used to deshake videos. See also\n<a href=\"http://public.hronopik.de/vid.stab\">http://public.hronopik.de/vid.stab</a>. It is important to also use\nthe <a href=\"#unsharp\">unsharp</a> filter, see below.\n</p>\n<p>To enable compilation of this filter you need to configure FFmpeg with\n<code>--enable-libvidstab</code>.\n</p>\n"
-}

@@ -1,8 +1,0 @@
-{
-  "description": "11.179 null\nPass the video source unchanged to the output.",
-  "json_schema": {},
-  "name": "null",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#null",
-  "source": "<h3 class=\"section\"><a href=\"#toc-null\">11.179 null</a></h3>\n\n<p>Pass the video source unchanged to the output.\n</p>\n"
-}

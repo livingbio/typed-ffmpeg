@@ -1,8 +1,0 @@
-{
-  "description": "8.65 atempo\nAdjust audio tempo.\n\nThe filter accepts exactly one parameter, the audio tempo. If not\nspecified then the filter will assume nominal 1.0 tempo. Tempo must\nbe in the [0.5, 100.0] range.\n\nNote that tempo greater than 2 will skip some samples rather than\nblend them in.  If for any reason this is a concern it is always\npossible to daisy-chain several instances of atempo to achieve the\ndesired product tempo.",
-  "json_schema": {},
-  "name": "atempo",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#atempo",
-  "source": "<h3 class=\"section\"><a href=\"#toc-atempo\">8.65 atempo</a></h3>\n\n<p>Adjust audio tempo.\n</p>\n<p>The filter accepts exactly one parameter, the audio tempo. If not\nspecified then the filter will assume nominal 1.0 tempo. Tempo must\nbe in the [0.5, 100.0] range.\n</p>\n<p>Note that tempo greater than 2 will skip some samples rather than\nblend them in.  If for any reason this is a concern it is always\npossible to daisy-chain several instances of atempo to achieve the\ndesired product tempo.\n</p>\n"
-}
