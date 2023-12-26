@@ -24,32 +24,6 @@ def download_ffmpeg_filter_documents() -> None:
         ofile.write(text)
 
 
-# @app.command()
-# def code_gen() -> None:
-#     filters = []
-#     for f in settings.schemas_path.glob("*.json"):
-#         filter = Filter.load(f)
-#         filters.append(filter)
-
-#     code = generate_class(filters)
-
-#     with (settings.source_path / "stream.py").open("w") as ofile:
-#         ofile.write(code)
-
-
-# @app.command()
-# def generate_schema(path: pathlib.Path) -> None:
-#     info = FilterDocument.load(path)
-
-#     if all((settings.schemas_path / f"{filter_name}.json").exists() for filter_name in info.filter_names):
-#         return None
-
-#     filters = parse_schema(info)
-
-#     for filter in filters:
-#         filter.save()
-
-
 @app.command()
 def split_documents() -> None:
     # split documents into individual files for easier processing
