@@ -1,6 +1,12 @@
+import json
+import pathlib
+
 from pydantic import BaseModel, HttpUrl
 
 from ..parse_c.schema import AVFilterPad, FilterType
+
+schema_path = pathlib.Path(__file__).parent / "schemas"
+schema_path.mkdir(exist_ok=True)
 
 
 class FFmpegFilterOption(BaseModel):
@@ -26,3 +32,12 @@ class FFmpegFilter(BaseModel):
     output_stream_typings: list[AVFilterPad] = []
 
     options: list[FFmpegFilterOption] = []
+
+    @classmethod
+    def load(cls, path: pathlib.Path) -> "FFmpegFilter":
+        with path.open() as ifile:
+            return FFmpegFilter(**json.load(ifile))
+
+    def save(self) -> None:
+        with (schema_path / f"{self.id}.json").open("w") as ofile:
+            ofile.write(self.model_dump_json())
