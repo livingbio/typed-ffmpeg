@@ -1,9 +1,8 @@
 import json
 import pathlib
 
+from parse_c.schema import AVFilterPad, FilterType
 from pydantic import BaseModel, HttpUrl
-
-from ..parse_c.schema import AVFilterPad, FilterType
 
 schema_path = pathlib.Path(__file__).parent / "schemas"
 schema_path.mkdir(exist_ok=True)

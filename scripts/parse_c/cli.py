@@ -4,7 +4,7 @@ import typer
 from devtools import sprint
 
 from .parse_c import parse_all_filter_names, parse_c
-from .pre_compile import precompile
+from .pre_compile import precompile, source_folder
 from .schema import AVFilter
 
 app = typer.Typer()
@@ -16,7 +16,9 @@ def pre_compile(folder: pathlib.Path) -> None:
 
 
 @app.command()
-def parse_filters(root: pathlib.Path, allfilter_c: pathlib.Path) -> None:
+def parse_filters() -> list[AVFilter]:
+    allfilter_c = source_folder / "allfilters.c"
+    root = source_folder
     all_filter_names = set(k[1] for k in parse_all_filter_names(allfilter_c))
 
     total = 0
@@ -44,6 +46,8 @@ def parse_filters(root: pathlib.Path, allfilter_c: pathlib.Path) -> None:
     for f in parsed_filters:
         print(f"{f.name} {f.type.value} inputs > {[k.type for k in f.input_filter_pads]} {f.is_dynamic_inputs}")
         print(f"{f.name} {f.type.value} outputs > {f.output_filter_pads} {f.is_dynamic_outputs}")
+
+    return parsed_filters
 
 
 if __name__ == "__main__":

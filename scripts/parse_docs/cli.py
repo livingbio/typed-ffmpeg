@@ -25,7 +25,7 @@ def download_ffmpeg_filter_documents() -> None:
 
 
 @app.command()
-def split_documents() -> None:
+def split_documents() -> list[FilterDocument]:
     # split documents into individual files for easier processing
 
     section_pattern = re.compile(
@@ -53,7 +53,7 @@ def split_documents() -> None:
             if not ref.exists():
                 print(f"WARNING: {info.title} has missing reference: {ref}")
 
-    return None
+    return infos
 
 
 if __name__ == "__main__":
