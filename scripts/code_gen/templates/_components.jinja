@@ -13,9 +13,9 @@
     {% for stream_typing in f.input_stream_typings %}
         {% if type == "method" and loop.index0 == 0 %}
         {% elif stream_typing.type.value == "video" %}
-        {{ stream_typing.name }}: "VideoStream",
+        {{ stream_typing.name | stream_name_safe }}: "VideoStream",
         {% else %}
-        {{ stream_typing.name }}: "AudioStream",
+        {{ stream_typing.name | stream_name_safe }}: "AudioStream",
         {% endif %}
     {% endfor %}
 {% endif %}
@@ -25,9 +25,9 @@
 {% macro option_typings(f) %}
 {% for option in f.options %}
     {% if option.required %}
-        {{option.name_safe}}: {{option.typing}},
+        {{option.name | option_name_safe}}: {{option.typing}},
     {% else %}
-        {{option.name_safe}}: {{option.typing}} = None,
+        {{option.name | option_name_safe}}: {{option.typing}} = None,
     {% endif %}
 {% endfor %}
 {% endmacro %}

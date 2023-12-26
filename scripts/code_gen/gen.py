@@ -1,3 +1,4 @@
+import keyword
 import pathlib
 from pathlib import Path
 
@@ -11,6 +12,28 @@ loader = jinja2.FileSystemLoader(template_path)
 env = jinja2.Environment(
     loader=loader,
 )
+
+
+def stream_name_safe(string: str) -> str:
+    opt_name = option_name_safe(string)
+    if not opt_name.startswith("_"):
+        return "_" + opt_name
+    return opt_name
+
+
+def option_name_safe(string: str) -> str:
+    if string in keyword.kwlist:
+        return "_" + string
+    if string[0].isdigit():
+        return "_" + string
+    if "-" in string:
+        return string.replace("-", "_")
+
+    return string
+
+
+env.filters["stream_name_safe"] = stream_name_safe
+env.filters["option_name_safe"] = option_name_safe
 
 
 def render(filters: list[FFmpegFilter], outpath: pathlib.Path) -> list[pathlib.Path]:

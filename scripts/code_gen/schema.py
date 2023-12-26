@@ -1,5 +1,4 @@
 import json
-import keyword
 import pathlib
 from typing import Literal
 
@@ -37,17 +36,6 @@ class FFmpegFilterOption(BaseModel):
 
     typing: Literal["bool", "int", "float", "str"]
     required: bool
-
-    @property
-    def name_safe(self) -> str:
-        if self.name in keyword.kwlist:
-            return "_" + self.name
-        if self.name[0].isdigit():
-            return "_" + self.name
-        if "-" in self.name:
-            return self.name.replace("-", "_")
-
-        return self.name
 
 
 class FFmpegFilter(BaseModel):
