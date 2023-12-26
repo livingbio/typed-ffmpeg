@@ -25,9 +25,9 @@
 {% macro option_typings(f) %}
 {% for option in f.options %}
     {% if option.required %}
-        {{option.name}}: {{option.typing}},
+        {{option.name_safe}}: {{option.typing}},
     {% else %}
-        {{option.name}}: {{option.typing}} = None,
+        {{option.name_safe}}: {{option.typing}} = None,
     {% endif %}
 {% endfor %}
 {% endmacro %}
