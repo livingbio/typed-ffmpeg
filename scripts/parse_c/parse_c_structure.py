@@ -28,7 +28,7 @@ def parse_c_structure(text: str) -> list[Any]:
                 buffer += ch
             case "," if not in_text and not in_bracket and level == 1:
                 if buffer.strip():
-                    output.append(buffer.strip())
+                    output.append(buffer.strip(" ").replace('""', "").strip())
                 buffer = ""
             case "{" if not in_text and not in_bracket:
                 level += 1
@@ -46,6 +46,6 @@ def parse_c_structure(text: str) -> list[Any]:
                 buffer += ch
 
     if buffer.strip():
-        output.append(buffer.strip())
+        output.append(buffer.strip(" ").replace('""', "").strip())
 
     return output

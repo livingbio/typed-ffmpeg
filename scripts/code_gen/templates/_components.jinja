@@ -1,0 +1,80 @@
+{% macro stream_typings(f, type) -%}
+{% if type == "method" %}
+    self,
+{% endif %}
+{% if f.is_input_dynamic %}
+    {% if f.filter_type.value in ["vf", "vaf"] %}
+    *streams: "VideoStream",
+    {% elif f.filter_type.value in ["af", "avf"] %}
+    *streams: "AudioStream",
+    {% endif %}
+{% elif f.input_stream_typings | length == 1 %}
+{% else %}
+    {% for stream_typing in f.input_stream_typings %}
+        {% if type == "method" and loop.index0 == 0 %}
+        {% elif stream_typing.type.value == "video" %}
+        {{ stream_typing.name | stream_name_safe }}: "VideoStream",
+        {% else %}
+        {{ stream_typing.name | stream_name_safe }}: "AudioStream",
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
+
+{% macro option_typings(f) %}
+{% for option in f.options %}
+    {% if option.required %}
+        {{option.name | option_name_safe}}: {{option.typing}},
+    {% else %}
+        {{option.name | option_name_safe}}: {{option.typing}} = None,
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+
+
+{%- macro return_stream_typings(f) -%}
+{%- if f.filter_type.value in ["vf", "avf"] -%}
+    {% set return_type = "VideoStream" %}
+{%- elif f.filter_type.value in ["af", "vaf"] -%}
+    {% set return_type = "AudioStream" %}
+{%- endif -%}
+{%- if f.is_output_dynamic -%}
+-> list["{{ return_type }}"]:
+{%- elif f.output_stream_typings | length == 1 -%}
+-> "{{ return_type }}":
+{%- else -%}
+-> tuple[
+    {% for stream_typing in f.output_stream_typings %}
+        {% if stream_typing.type.value == "video" %}
+            "VideoStream",
+        {% else %}
+            "AudioStream",
+        {% endif %}
+    {% endfor %}
+]:
+{%- endif -%}
+{%- endmacro -%}
+
+
+{% macro filter_method(f) %}
+    def {{f.name}}(
+    {{ stream_typings(f, "method") }}
+    {% if not f.is_input_dynamic and f.options | length > 0 %}*,{% endif %}
+    {{ option_typings(f) }}
+    **kwargs: Any
+    ) {{- return_stream_typings(f) }}
+        """{{ f.description }}"""
+        ...
+{% endmacro %}
+
+{% macro filter_function(f) %}
+def {{f.name}}(
+    {{ stream_typings(f, "function") }}
+    {% if not f.is_input_dynamic and f.options | length > 0 %}*,{% endif %}
+    {{ option_typings(f) }}
+    **kwargs: Any
+) {{- return_stream_typings(f) }}
+    """{{ f.description }}"""
+    ...
+{% endmacro %}

@@ -1,8 +1,0 @@
-{
-  "description": "8.40 anull\nPass the audio source unchanged to the output.",
-  "json_schema": {},
-  "name": "anull",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#anull",
-  "source": "<h3 class=\"section\"><a href=\"#toc-anull\">8.40 anull</a></h3>\n\n<p>Pass the audio source unchanged to the output.\n</p>\n"
-}

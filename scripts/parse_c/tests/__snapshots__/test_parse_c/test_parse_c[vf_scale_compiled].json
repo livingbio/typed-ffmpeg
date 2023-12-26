@@ -57,7 +57,7 @@
         "unit": null
       },
       {
-        "default": "['.str = \"\"']",
+        "default": "['.str =']",
         "flags": ".flags = 16|(1<<16)",
         "help": "Flags to pass to libswscale",
         "max": null,
@@ -546,7 +546,7 @@
         "unit": null
       },
       {
-        "default": "['.str = \"\"']",
+        "default": "['.str =']",
         "flags": ".flags = 16|(1<<16)",
         "help": "Flags to pass to libswscale",
         "max": null,

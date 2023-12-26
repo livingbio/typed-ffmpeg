@@ -1,8 +1,0 @@
-{
-  "description": "8.72 biquad\nApply a biquad IIR filter with the given coefficients.\nWhere b0, b1, b2 and a0, a1, a2\nare the numerator and denominator coefficients respectively.\nand channels, c specify which channels to filter, by default all\navailable are filtered.",
-  "json_schema": {},
-  "name": "biquad",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#biquad",
-  "source": "<h3 class=\"section\"><a href=\"#toc-biquad\">8.72 biquad</a></h3>\n\n<p>Apply a biquad IIR filter with the given coefficients.\nWhere <var>b0</var>, <var>b1</var>, <var>b2</var> and <var>a0</var>, <var>a1</var>, <var>a2</var>\nare the numerator and denominator coefficients respectively.\nand <var>channels</var>, <var>c</var> specify which channels to filter, by default all\navailable are filtered.\n</p>\n"
-}

@@ -1,0 +1,40 @@
+from .stream import VideoStream, AudioStream
+from typing import Any
+
+
+
+
+    
+
+def aap(
+    
+
+    
+        
+        _input: "AudioStream",
+        
+    
+        
+        _desired: "AudioStream",
+        
+    
+
+
+    *,
+    
+
+    
+        order: int = None,
+    
+
+    
+        projection: int = None,
+    
+
+
+    **kwargs: Any
+)-> "AudioStream":
+    """description"""
+    ...
+
+    

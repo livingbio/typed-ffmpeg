@@ -1,8 +1,0 @@
-{
-  "description": "8.14 aderivative, aintegral\nCompute derivative/integral of audio stream.\n\nApplying both filters one after another produces original audio.",
-  "json_schema": {},
-  "name": "aintegral",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral",
-  "source": "<h3 class=\"section\"><a href=\"#toc-aderivative_002c-aintegral\">8.14 aderivative, aintegral</a></h3>\n\n<p>Compute derivative/integral of audio stream.\n</p>\n<p>Applying both filters one after another produces original audio.\n</p>\n"
-}

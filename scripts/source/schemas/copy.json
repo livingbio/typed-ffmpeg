@@ -1,8 +1,0 @@
-{
-  "description": "11.46 copy\nCopy the input video source unchanged to the output. This is mainly useful for\ntesting purposes.",
-  "json_schema": {},
-  "name": "copy",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#copy",
-  "source": "<h3 class=\"section\"><a href=\"#toc-copy\">11.46 copy</a></h3>\n\n<p>Copy the input video source unchanged to the output. This is mainly useful for\ntesting purposes.\n</p>\n"
-}

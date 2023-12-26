@@ -1,8 +1,0 @@
-{
-  "description": "11.276 vfrdet\nDetect variable frame rate video.\n\nThis filter tries to detect if the input is variable or constant frame rate.\n\nAt end it will output number of frames detected as having variable delta pts,\nand ones with constant delta pts.\nIf there was frames with variable delta, than it will also show min, max and\naverage delta encountered.",
-  "json_schema": {},
-  "name": "vfrdet",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vfrdet",
-  "source": "<h3 class=\"section\"><a href=\"#toc-vfrdet\">11.276 vfrdet</a></h3>\n\n<p>Detect variable frame rate video.\n</p>\n<p>This filter tries to detect if the input is variable or constant frame rate.\n</p>\n<p>At end it will output number of frames detected as having variable delta pts,\nand ones with constant delta pts.\nIf there was frames with variable delta, than it will also show min, max and\naverage delta encountered.\n</p>\n"
-}

@@ -35,7 +35,7 @@
       {
         "alias": [],
         "choices": [],
-        "default": "['.str = \"\"']",
+        "default": "['.str =']",
         "deprecated": false,
         "help": "Flags to pass to libswscale",
         "name": "flags",
@@ -415,7 +415,7 @@
       {
         "alias": [],
         "choices": [],
-        "default": "['.str = \"\"']",
+        "default": "['.str =']",
         "deprecated": false,
         "help": "Flags to pass to libswscale",
         "name": "flags",

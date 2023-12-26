@@ -1,8 +1,0 @@
-{
-  "description": "11.96 fifo, afifo\nBuffer input images and send them when they are requested.\n\nIt is mainly useful when auto-inserted by the libavfilter\nframework.\n\nIt does not take parameters.",
-  "json_schema": {},
-  "name": "afifo",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#fifo_002c-afifo",
-  "source": "<h3 class=\"section\"><a href=\"#toc-fifo_002c-afifo\">11.96 fifo, afifo</a></h3>\n\n<p>Buffer input images and send them when they are requested.\n</p>\n<p>It is mainly useful when auto-inserted by the libavfilter\nframework.\n</p>\n<p>It does not take parameters.\n</p>\n"
-}

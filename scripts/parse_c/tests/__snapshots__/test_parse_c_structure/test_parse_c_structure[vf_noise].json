@@ -1,0 +1,1217 @@
+[
+  [
+    "typedef signed char int8_t;\ntypedef short int16_t;\ntypedef int int32_t;\ntypedef long long int64_t;\n\ntypedef unsigned char uint8_t;\ntypedef unsigned short uint16_t;\ntypedef unsigned int uint32_t;\ntypedef unsigned long long uint64_t;\n\n\ntypedef int8_t int_least8_t;\ntypedef int16_t int_least16_t;\ntypedef int32_t int_least32_t;\ntypedef int64_t int_least64_t;\ntypedef uint8_t uint_least8_t;\ntypedef uint16_t uint_least16_t;\ntypedef uint32_t uint_least32_t;\ntypedef uint64_t uint_least64_t;\n\n\n\ntypedef int8_t int_fast8_t;\ntypedef int16_t int_fast16_t;\ntypedef int32_t int_fast32_t;\ntypedef int64_t int_fast64_t;\ntypedef uint8_t uint_fast8_t;\ntypedef uint16_t uint_fast16_t;\ntypedef uint32_t uint_fast32_t;\ntypedef uint64_t uint_fast64_t;\n\n\n\n\ntypedef signed char __int8_t;\n\n\n\ntypedef unsigned char __uint8_t;\ntypedef short __int16_t;\ntypedef unsigned short __uint16_t;\ntypedef int __int32_t;\ntypedef unsigned int __uint32_t;\ntypedef long long __int64_t;\ntypedef unsigned long long __uint64_t;\n\ntypedef long __darwin_intptr_t;\ntypedef unsigned int __darwin_natural_t;\ntypedef int __darwin_ct_rune_t;\n\n\n\n\n\ntypedef union \n char __mbstate8[128];\n long long _mbstateL;\n __mbstate_t;\n\ntypedef __mbstate_t __darwin_mbstate_t;\n\n\ntypedef long int __darwin_ptrdiff_t;\n\n\n\n\n\n\n\ntypedef long unsigned int __darwin_size_t;\n\n\n\n\n\ntypedef __builtin_va_list __darwin_va_list;\n\n\n\n\n\ntypedef int __darwin_wchar_t;\n\n\n\n\ntypedef __darwin_wchar_t __darwin_rune_t;\n\n\ntypedef int __darwin_wint_t;\n\n\n\n\ntypedef unsigned long __darwin_clock_t;\ntypedef __uint32_t __darwin_socklen_t;\ntypedef long __darwin_ssize_t;\ntypedef long __darwin_time_t;\ntypedef __int64_t __darwin_blkcnt_t;\ntypedef __int32_t __darwin_blksize_t;\ntypedef __int32_t __darwin_dev_t;\ntypedef unsigned int __darwin_fsblkcnt_t;\ntypedef unsigned int __darwin_fsfilcnt_t;\ntypedef __uint32_t __darwin_gid_t;\ntypedef __uint32_t __darwin_id_t;\ntypedef __uint64_t __darwin_ino64_t;\n\ntypedef __darwin_ino64_t __darwin_ino_t;\n\n\n\ntypedef __darwin_natural_t __darwin_mach_port_name_t;\ntypedef __darwin_mach_port_name_t __darwin_mach_port_t;\ntypedef __uint16_t __darwin_mode_t;\ntypedef __int64_t __darwin_off_t;\ntypedef __int32_t __darwin_pid_t;\ntypedef __uint32_t __darwin_sigset_t;\ntypedef __int32_t __darwin_suseconds_t;\ntypedef __uint32_t __darwin_uid_t;\ntypedef __uint32_t __darwin_useconds_t;\ntypedef unsigned char __darwin_uuid_t[16];\ntypedef char __darwin_uuid_string_t[37];\n\nstruct __darwin_pthread_handler_rec \n void (*__routine)(void *);\n void *__arg;\n struct __darwin_pthread_handler_rec *__next;\n;\n\nstruct _opaque_pthread_attr_t \n long __sig;\n char __opaque[56];\n;\n\nstruct _opaque_pthread_cond_t \n long __sig;\n char __opaque[40];\n;\n\nstruct _opaque_pthread_condattr_t \n long __sig;\n char __opaque[8];\n;\n\nstruct _opaque_pthread_mutex_t \n long __sig;\n char __opaque[56];\n;\n\nstruct _opaque_pthread_mutexattr_t \n long __sig;\n char __opaque[8];\n;\n\nstruct _opaque_pthread_once_t \n long __sig;\n char __opaque[8];\n;\n\nstruct _opaque_pthread_rwlock_t \n long __sig;\n char __opaque[192];\n;\n\nstruct _opaque_pthread_rwlockattr_t \n long __sig;\n char __opaque[16];\n;\n\nstruct _opaque_pthread_t \n long __sig;\n struct __darwin_pthread_handler_rec *__cleanup_stack;\n char __opaque[8176];\n;\n\ntypedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;\ntypedef struct _opaque_pthread_cond_t __darwin_pthread_cond_t;\ntypedef struct _opaque_pthread_condattr_t __darwin_pthread_condattr_t;\ntypedef unsigned long __darwin_pthread_key_t;\ntypedef struct _opaque_pthread_mutex_t __darwin_pthread_mutex_t;\ntypedef struct _opaque_pthread_mutexattr_t __darwin_pthread_mutexattr_t;\ntypedef struct _opaque_pthread_once_t __darwin_pthread_once_t;\ntypedef struct _opaque_pthread_rwlock_t __darwin_pthread_rwlock_t;\ntypedef struct _opaque_pthread_rwlockattr_t __darwin_pthread_rwlockattr_t;\ntypedef struct _opaque_pthread_t *__darwin_pthread_t;\ntypedef unsigned char u_int8_t;\ntypedef unsigned short u_int16_t;\ntypedef unsigned int u_int32_t;\ntypedef unsigned long long u_int64_t;\n\n\ntypedef int64_t register_t;\n\n\n\n\ntypedef unsigned long uintptr_t;\n\n\n\n\ntypedef u_int64_t user_addr_t;\ntypedef u_int64_t user_size_t;\ntypedef int64_t user_ssize_t;\ntypedef int64_t user_long_t;\ntypedef u_int64_t user_ulong_t;\ntypedef int64_t user_time_t;\ntypedef int64_t user_off_t;\ntypedef u_int64_t syscall_arg_t;\n\ntypedef __darwin_intptr_t intptr_t;\n\n\n\n\ntypedef long int intmax_t;\ntypedef long unsigned int uintmax_t;\ntypedef struct AVRational\n    int num;\n    int den;\n AVRational;\nstatic inline AVRational av_make_q(int num, int den)\n\n    AVRational r =  num",
+    "den"
+  ],
+  [
+    ";\n    return r;\n\nstatic inline int av_cmp_q(AVRational a, AVRational b)\n    const int64_t tmp= a.num * (int64_t)b.den - b.num * (int64_t)a.den;\n\n    if(tmp) return (int)((tmp ^ a.den ^ b.den)>>63)|1;\n    else if(b.den && a.den) return 0;\n    else if(a.num && b.num) return (a.num>>31) - (b.num>>31);\n    else return (-2147483647 -1);\n\n\n\n\n\n\n\n\nstatic inline double av_q2d(AVRational a)\n    return a.num / (double) a.den;\n\nint av_reduce(int *dst_num, int *dst_den, int64_t num, int64_t den, int64_t max);\n\n\n\n\n\n\n\nAVRational av_mul_q(AVRational b, AVRational c) __attribute__((const));\n\n\n\n\n\n\n\nAVRational av_div_q(AVRational b, AVRational c) __attribute__((const));\n\n\n\n\n\n\n\nAVRational av_add_q(AVRational b, AVRational c) __attribute__((const));\n\n\n\n\n\n\n\nAVRational av_sub_q(AVRational b, AVRational c) __attribute__((const));\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline AVRational av_inv_q(AVRational q)\n\n    AVRational r =  q.den",
+    "q.num"
+  ],
+  ";\n    return r;\n\nAVRational av_d2q(double d, int max) __attribute__((const));\nint av_nearer_q(AVRational q, AVRational q1, AVRational q2);\nint av_find_nearest_q_idx(AVRational q, const AVRational* q_list);\nuint32_t av_q2intfloat(AVRational q);\n\n\n\n\n\nAVRational av_gcd_q(AVRational a, AVRational b, int max_den, AVRational def);\nunsigned avutil_version(void);\n\n\n\n\n\n\nconst char *av_version_info(void);\n\n\n\n\nconst char *avutil_configuration(void);\n\n\n\n\nconst char *avutil_license(void);\nenum AVMediaType \n    AVMEDIA_TYPE_UNKNOWN = -1",
+  "AVMEDIA_TYPE_VIDEO",
+  "AVMEDIA_TYPE_AUDIO",
+  "AVMEDIA_TYPE_DATA",
+  "AVMEDIA_TYPE_SUBTITLE",
+  "AVMEDIA_TYPE_ATTACHMENT",
+  "AVMEDIA_TYPE_NB\n;\n\n\n\n\n\nconst char *av_get_media_type_string(enum AVMediaType media_type);\nenum AVPictureType \n    AV_PICTURE_TYPE_NONE = 0",
+  "AV_PICTURE_TYPE_I",
+  "AV_PICTURE_TYPE_P",
+  "AV_PICTURE_TYPE_B",
+  "AV_PICTURE_TYPE_S",
+  "AV_PICTURE_TYPE_SI",
+  "AV_PICTURE_TYPE_SP",
+  "AV_PICTURE_TYPE_BI",
+  [
+    ";\nchar av_get_picture_type_char(enum AVPictureType pict_type);\n\n\n\n\n\ntypedef int errno_t;\n\n\n\nextern int * __error(void);\n\ntypedef int __darwin_nl_item;\ntypedef int __darwin_wctrans_t;\n\ntypedef __uint32_t __darwin_wctype_t;\ntypedef __darwin_wchar_t wchar_t;\n\n\n\n\n\n\n__attribute__((availability(macosx,introduced=10.4)))\nextern intmax_t\nimaxabs(intmax_t j);\n\n\ntypedef struct \n intmax_t quot;\n intmax_t rem;\n imaxdiv_t;\n\n__attribute__((availability(macosx,introduced=10.4)))\nextern imaxdiv_t\nimaxdiv(intmax_t __numer, intmax_t __denom);\n\n\n__attribute__((availability(macosx,introduced=10.4)))\nextern intmax_t\nstrtoimax(const char * restrict __nptr,\n   char ** restrict __endptr,\n   int __base);\n\n__attribute__((availability(macosx,introduced=10.4)))\nextern uintmax_t\nstrtoumax(const char * restrict __nptr,\n   char ** restrict __endptr,\n   int __base);\n\n\n__attribute__((availability(macosx,introduced=10.4)))\nextern intmax_t\nwcstoimax(const wchar_t * restrict __nptr,\n   wchar_t ** restrict __endptr,\n   int __base);\n\n__attribute__((availability(macosx,introduced=10.4)))\nextern uintmax_t\nwcstoumax(const wchar_t * restrict __nptr,\n   wchar_t ** restrict __endptr,\n   int __base);\n\n    typedef float float_t;\n    typedef double double_t;\nextern int __math_errhandling(void);\nextern int __fpclassifyf(float);\nextern int __fpclassifyd(double);\nextern int __fpclassifyl(long double);\ninline __attribute__ ((__always_inline__)) int __inline_isfinitef(float);\ninline __attribute__ ((__always_inline__)) int __inline_isfinited(double);\ninline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double);\ninline __attribute__ ((__always_inline__)) int __inline_isinff(float);\ninline __attribute__ ((__always_inline__)) int __inline_isinfd(double);\ninline __attribute__ ((__always_inline__)) int __inline_isinfl(long double);\ninline __attribute__ ((__always_inline__)) int __inline_isnanf(float);\ninline __attribute__ ((__always_inline__)) int __inline_isnand(double);\ninline __attribute__ ((__always_inline__)) int __inline_isnanl(long double);\ninline __attribute__ ((__always_inline__)) int __inline_isnormalf(float);\ninline __attribute__ ((__always_inline__)) int __inline_isnormald(double);\ninline __attribute__ ((__always_inline__)) int __inline_isnormall(long double);\ninline __attribute__ ((__always_inline__)) int __inline_signbitf(float);\ninline __attribute__ ((__always_inline__)) int __inline_signbitd(double);\ninline __attribute__ ((__always_inline__)) int __inline_signbitl(long double);\n\ninline __attribute__ ((__always_inline__)) int __inline_isfinitef(float __x) \n    return __x == __x && __builtin_fabsf(__x) != __builtin_inff();\n\ninline __attribute__ ((__always_inline__)) int __inline_isfinited(double __x) \n    return __x == __x && __builtin_fabs(__x) != __builtin_inf();\n\ninline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double __x) \n    return __x == __x && __builtin_fabsl(__x) != __builtin_infl();\n\ninline __attribute__ ((__always_inline__)) int __inline_isinff(float __x) \n    return __builtin_fabsf(__x) == __builtin_inff();\n\ninline __attribute__ ((__always_inline__)) int __inline_isinfd(double __x) \n    return __builtin_fabs(__x) == __builtin_inf();\n\ninline __attribute__ ((__always_inline__)) int __inline_isinfl(long double __x) \n    return __builtin_fabsl(__x) == __builtin_infl();\n\ninline __attribute__ ((__always_inline__)) int __inline_isnanf(float __x) \n    return __x != __x;\n\ninline __attribute__ ((__always_inline__)) int __inline_isnand(double __x) \n    return __x != __x;\n\ninline __attribute__ ((__always_inline__)) int __inline_isnanl(long double __x) \n    return __x != __x;\n\ninline __attribute__ ((__always_inline__)) int __inline_signbitf(float __x) \n    union  float __f; unsigned int __u;"
+  ],
+  [
+    "__u;\n    __u.__f = __x;\n    return (int)(__u.__u >> 31);\n\ninline __attribute__ ((__always_inline__)) int __inline_signbitd(double __x) \n    union  double __f; unsigned long long __u;"
+  ],
+  [
+    "__u;\n    __u.__f = __x;\n    return (int)(__u.__u >> 63);\n\ninline __attribute__ ((__always_inline__)) int __inline_signbitl(long double __x) \n    union  long double __f; unsigned long long __u;"
+  ],
+  "__u;\n    __u.__f = __x;\n    return (int)(__u.__u >> 63);\n\n\ninline __attribute__ ((__always_inline__)) int __inline_isnormalf(float __x) \n    return __inline_isfinitef(__x) && __builtin_fabsf(__x) >= 1.17549435e-38F;\n\ninline __attribute__ ((__always_inline__)) int __inline_isnormald(double __x) \n    return __inline_isfinited(__x) && __builtin_fabs(__x) >= 2.2250738585072014e-308;\n\ninline __attribute__ ((__always_inline__)) int __inline_isnormall(long double __x) \n    return __inline_isfinitel(__x) && __builtin_fabsl(__x) >= 2.2250738585072014e-308L;\n\nextern float acosf(float);\nextern double acos(double);\nextern long double acosl(long double);\n\nextern float asinf(float);\nextern double asin(double);\nextern long double asinl(long double);\n\nextern float atanf(float);\nextern double atan(double);\nextern long double atanl(long double);\n\nextern float atan2f(float, float);\nextern double atan2(double, double);\nextern long double atan2l(long double, long double);\n\nextern float cosf(float);\nextern double cos(double);\nextern long double cosl(long double);\n\nextern float sinf(float);\nextern double sin(double);\nextern long double sinl(long double);\n\nextern float tanf(float);\nextern double tan(double);\nextern long double tanl(long double);\n\nextern float acoshf(float);\nextern double acosh(double);\nextern long double acoshl(long double);\n\nextern float asinhf(float);\nextern double asinh(double);\nextern long double asinhl(long double);\n\nextern float atanhf(float);\nextern double atanh(double);\nextern long double atanhl(long double);\n\nextern float coshf(float);\nextern double cosh(double);\nextern long double coshl(long double);\n\nextern float sinhf(float);\nextern double sinh(double);\nextern long double sinhl(long double);\n\nextern float tanhf(float);\nextern double tanh(double);\nextern long double tanhl(long double);\n\nextern float expf(float);\nextern double exp(double);\nextern long double expl(long double);\n\nextern float exp2f(float);\nextern double exp2(double);\nextern long double exp2l(long double);\n\nextern float expm1f(float);\nextern double expm1(double);\nextern long double expm1l(long double);\n\nextern float logf(float);\nextern double log(double);\nextern long double logl(long double);\n\nextern float log10f(float);\nextern double log10(double);\nextern long double log10l(long double);\n\nextern float log2f(float);\nextern double log2(double);\nextern long double log2l(long double);\n\nextern float log1pf(float);\nextern double log1p(double);\nextern long double log1pl(long double);\n\nextern float logbf(float);\nextern double logb(double);\nextern long double logbl(long double);\n\nextern float modff(float, float *);\nextern double modf(double, double *);\nextern long double modfl(long double, long double *);\n\nextern float ldexpf(float, int);\nextern double ldexp(double, int);\nextern long double ldexpl(long double, int);\n\nextern float frexpf(float, int *);\nextern double frexp(double, int *);\nextern long double frexpl(long double, int *);\n\nextern int ilogbf(float);\nextern int ilogb(double);\nextern int ilogbl(long double);\n\nextern float scalbnf(float, int);\nextern double scalbn(double, int);\nextern long double scalbnl(long double, int);\n\nextern float scalblnf(float, long int);\nextern double scalbln(double, long int);\nextern long double scalblnl(long double, long int);\n\nextern float fabsf(float);\nextern double fabs(double);\nextern long double fabsl(long double);\n\nextern float cbrtf(float);\nextern double cbrt(double);\nextern long double cbrtl(long double);\n\nextern float hypotf(float, float);\nextern double hypot(double, double);\nextern long double hypotl(long double, long double);\n\nextern float powf(float, float);\nextern double pow(double, double);\nextern long double powl(long double, long double);\n\nextern float sqrtf(float);\nextern double sqrt(double);\nextern long double sqrtl(long double);\n\nextern float erff(float);\nextern double erf(double);\nextern long double erfl(long double);\n\nextern float erfcf(float);\nextern double erfc(double);\nextern long double erfcl(long double);\n\n\n\n\nextern float lgammaf(float);\nextern double lgamma(double);\nextern long double lgammal(long double);\n\nextern float tgammaf(float);\nextern double tgamma(double);\nextern long double tgammal(long double);\n\nextern float ceilf(float);\nextern double ceil(double);\nextern long double ceill(long double);\n\nextern float floorf(float);\nextern double floor(double);\nextern long double floorl(long double);\n\nextern float nearbyintf(float);\nextern double nearbyint(double);\nextern long double nearbyintl(long double);\n\nextern float rintf(float);\nextern double rint(double);\nextern long double rintl(long double);\n\nextern long int lrintf(float);\nextern long int lrint(double);\nextern long int lrintl(long double);\n\nextern float roundf(float);\nextern double round(double);\nextern long double roundl(long double);\n\nextern long int lroundf(float);\nextern long int lround(double);\nextern long int lroundl(long double);\n\n\n\n\nextern long long int llrintf(float);\nextern long long int llrint(double);\nextern long long int llrintl(long double);\n\nextern long long int llroundf(float);\nextern long long int llround(double);\nextern long long int llroundl(long double);\n\n\nextern float truncf(float);\nextern double trunc(double);\nextern long double truncl(long double);\n\nextern float fmodf(float, float);\nextern double fmod(double, double);\nextern long double fmodl(long double, long double);\n\nextern float remainderf(float, float);\nextern double remainder(double, double);\nextern long double remainderl(long double, long double);\n\nextern float remquof(float, float, int *);\nextern double remquo(double, double, int *);\nextern long double remquol(long double, long double, int *);\n\nextern float copysignf(float, float);\nextern double copysign(double, double);\nextern long double copysignl(long double, long double);\n\nextern float nanf(const char *);\nextern double nan(const char *);\nextern long double nanl(const char *);\n\nextern float nextafterf(float, float);\nextern double nextafter(double, double);\nextern long double nextafterl(long double, long double);\n\nextern double nexttoward(double, long double);\nextern float nexttowardf(float, long double);\nextern long double nexttowardl(long double, long double);\n\nextern float fdimf(float, float);\nextern double fdim(double, double);\nextern long double fdiml(long double, long double);\n\nextern float fmaxf(float, float);\nextern double fmax(double, double);\nextern long double fmaxl(long double, long double);\n\nextern float fminf(float, float);\nextern double fmin(double, double);\nextern long double fminl(long double, long double);\n\nextern float fmaf(float, float, float);\nextern double fma(double, double, double);\nextern long double fmal(long double, long double, long double);\nextern float __exp10f(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));\nextern double __exp10(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));\n\n\n\n\n\ninline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp);\ninline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp);\nextern float __cospif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));\nextern double __cospi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));\nextern float __sinpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));\nextern double __sinpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));\nextern float __tanpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));\nextern double __tanpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));\ninline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp);\ninline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp);\n\n\n\n\n\n\nstruct __float2  float __sinval; float __cosval; ;\nstruct __double2  double __sinval; double __cosval; ;\n\nextern struct __float2 __sincosf_stret(float);\nextern struct __double2 __sincos_stret(double);\nextern struct __float2 __sincospif_stret(float);\nextern struct __double2 __sincospi_stret(double);\n\ninline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp) \n    const struct __float2 __stret = __sincosf_stret(__x);\n    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;\n\n\ninline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp) \n    const struct __double2 __stret = __sincos_stret(__x);\n    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;\n\n\ninline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp) \n    const struct __float2 __stret = __sincospif_stret(__x);\n    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;\n\n\ninline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp) \n    const struct __double2 __stret = __sincospi_stret(__x);\n    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;\n\n\n\n\n\n\n\n\nextern double j0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));\nextern double j1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));\nextern double jn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));\nextern double y0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));\nextern double y1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));\nextern double yn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));\nextern double scalb(double, double);\nextern int signgam;\nstruct exception \n    int type;\n    char *name;\n    double arg1;\n    double arg2;\n    double retval;\n;\n\ntypedef __darwin_va_list va_list;\ntypedef __darwin_size_t size_t;\n\nint renameat(int, const char *, int, const char *) __attribute__((availability(macosx,introduced=10.10)));\n\n\n\nint renamex_np(const char *, const char *, unsigned int) __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)));\nint renameatx_np(int, const char *, int, const char *, unsigned int) __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)));\n\ntypedef __darwin_off_t fpos_t;\nstruct __sbuf \n unsigned char *_base;\n int _size;\n;\n\n\nstruct __sFILEX;\ntypedef struct __sFILE \n unsigned char *_p;\n int _r;\n int _w;\n short _flags;\n short _file;\n struct __sbuf _bf;\n int _lbfsize;\n\n\n void *_cookie;\n int (* _Nullable _close)(void *);\n int (* _Nullable _read) (void *, char *, int);\n fpos_t (* _Nullable _seek) (void *, fpos_t, int);\n int (* _Nullable _write)(void *, const char *, int);\n\n\n struct __sbuf _ub;\n struct __sFILEX *_extra;\n int _ur;\n\n\n unsigned char _ubuf[3];\n unsigned char _nbuf[1];\n\n\n struct __sbuf _lb;\n\n\n int _blksize;\n fpos_t _offset;\n FILE;\n\n\n\nextern FILE *__stdinp;\nextern FILE *__stdoutp;\nextern FILE *__stderrp;\nvoid clearerr(FILE *);\nint fclose(FILE *);\nint feof(FILE *);\nint ferror(FILE *);\nint fflush(FILE *);\nint fgetc(FILE *);\nint fgetpos(FILE * restrict, fpos_t *);\nchar *fgets(char * restrict, int, FILE *);\n\n\n\nFILE *fopen(const char * restrict __filename, const char * restrict __mode) __asm(\"_\" \"fopen\" );\n\nint fprintf(FILE * restrict, const char * restrict, ...) __attribute__((__format__ (__printf__, 2, 3)));\nint fputc(int, FILE *);\nint fputs(const char * restrict, FILE * restrict) __asm(\"_\" \"fputs\" );\nsize_t fread(void * restrict __ptr, size_t __size, size_t __nitems, FILE * restrict __stream);\nFILE *freopen(const char * restrict, const char * restrict,\n                 FILE * restrict) __asm(\"_\" \"freopen\" );\nint fscanf(FILE * restrict, const char * restrict, ...) __attribute__((__format__ (__scanf__, 2, 3)));\nint fseek(FILE *, long, int);\nint fsetpos(FILE *, const fpos_t *);\nlong ftell(FILE *);\nsize_t fwrite(const void * restrict __ptr, size_t __size, size_t __nitems, FILE * restrict __stream) __asm(\"_\" \"fwrite\" );\nint getc(FILE *);\nint getchar(void);\n\n\n__attribute__((__deprecated__(\"This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of gets(3), it is highly recommended that you use fgets(3) instead.\")))\n\nchar *gets(char *);\n\nvoid perror(const char *) __attribute__((__cold__));\nint printf(const char * restrict, ...) __attribute__((__format__ (__printf__, 1, 2)));\nint putc(int, FILE *);\nint putchar(int);\nint puts(const char *);\nint remove(const char *);\nint rename (const char *__old, const char *__new);\nvoid rewind(FILE *);\nint scanf(const char * restrict, ...) __attribute__((__format__ (__scanf__, 1, 2)));\nvoid setbuf(FILE * restrict, char * restrict);\nint setvbuf(FILE * restrict, char * restrict, int, size_t);\n\n__attribute__((__availability__(swift, unavailable, message=\"Use snprintf instead.\")))\n\n__attribute__((__deprecated__(\"This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.\")))\n\nint sprintf(char * restrict, const char * restrict, ...) __attribute__((__format__ (__printf__, 2, 3)));\n\nint sscanf(const char * restrict, const char * restrict, ...) __attribute__((__format__ (__scanf__, 2, 3)));\nFILE *tmpfile(void);\n\n__attribute__((__availability__(swift, unavailable, message=\"Use mkstemp(3) instead.\")))\n\n__attribute__((__deprecated__(\"This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of tmpnam(3), it is highly recommended that you use mkstemp(3) instead.\")))\n\nchar *tmpnam(char *);\n\nint ungetc(int, FILE *);\nint vfprintf(FILE * restrict, const char * restrict, va_list) __attribute__((__format__ (__printf__, 2, 0)));\nint vprintf(const char * restrict, va_list) __attribute__((__format__ (__printf__, 1, 0)));\n\n__attribute__((__availability__(swift, unavailable, message=\"Use vsnprintf instead.\")))\n\n__attribute__((__deprecated__(\"This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use vsnprintf(3) instead.\")))\n\nint vsprintf(char * restrict, const char * restrict, va_list) __attribute__((__format__ (__printf__, 2, 0)));\nchar *ctermid(char *);\n\n\n\n\n\n\nFILE *fdopen(int, const char *) __asm(\"_\" \"fdopen\" );\n\nint fileno(FILE *);\nint pclose(FILE *) __attribute__((__availability__(swift, unavailable, message=\"Use posix_spawn APIs or NSTask instead. (On iOS, process spawning is unavailable.)\")));\n\n\n\nFILE *popen(const char *, const char *) __asm(\"_\" \"popen\" ) __attribute__((__availability__(swift, unavailable, message=\"Use posix_spawn APIs or NSTask instead. (On iOS, process spawning is unavailable.)\")));\nint __srget(FILE *);\nint __svfscanf(FILE *, const char *, va_list) __attribute__((__format__ (__scanf__, 2, 0)));\nint __swbuf(int, FILE *);\ninline __attribute__ ((__always_inline__)) int __sputc(int _c, FILE *_p) \n if (--_p->_w >= 0 || (_p->_w >= _p->_lbfsize && (char)_c != '\\n'))\n  return (*_p->_p++ = _c);\n else\n  return (__swbuf(_c, _p));\n\nvoid flockfile(FILE *);\nint ftrylockfile(FILE *);\nvoid funlockfile(FILE *);\nint getc_unlocked(FILE *);\nint getchar_unlocked(void);\nint putc_unlocked(int, FILE *);\nint putchar_unlocked(int);\n\n\n\nint getw(FILE *);\nint putw(int, FILE *);\n\n\n__attribute__((__availability__(swift, unavailable, message=\"Use mkstemp(3) instead.\")))\n\n__attribute__((__deprecated__(\"This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of tempnam(3), it is highly recommended that you use mkstemp(3) instead.\")))\n\nchar *tempnam(const char *__dir, const char *__prefix) __asm(\"_\" \"tempnam\" );\ntypedef __darwin_off_t off_t;\n\n\nint fseeko(FILE * __stream, off_t __offset, int __whence);\noff_t ftello(FILE * __stream);\n\n\n\n\n\nint snprintf(char * restrict __str, size_t __size, const char * restrict __format, ...) __attribute__((__format__ (__printf__, 3, 4)));\nint vfscanf(FILE * restrict __stream, const char * restrict __format, va_list) __attribute__((__format__ (__scanf__, 2, 0)));\nint vscanf(const char * restrict __format, va_list) __attribute__((__format__ (__scanf__, 1, 0)));\nint vsnprintf(char * restrict __str, size_t __size, const char * restrict __format, va_list) __attribute__((__format__ (__printf__, 3, 0)));\nint vsscanf(const char * restrict __str, const char * restrict __format, va_list) __attribute__((__format__ (__scanf__, 2, 0)));\ntypedef __darwin_ssize_t ssize_t;\n\n\nint dprintf(int, const char * restrict, ...) __attribute__((__format__ (__printf__, 2, 3))) __attribute__((availability(macosx,introduced=10.7)));\nint vdprintf(int, const char * restrict, va_list) __attribute__((__format__ (__printf__, 2, 0))) __attribute__((availability(macosx,introduced=10.7)));\nssize_t getdelim(char ** restrict __linep, size_t * restrict __linecapp, int __delimiter, FILE * restrict __stream) __attribute__((availability(macosx,introduced=10.7)));\nssize_t getline(char ** restrict __linep, size_t * restrict __linecapp, FILE * restrict __stream) __attribute__((availability(macosx,introduced=10.7)));\nFILE *fmemopen(void * restrict __buf, size_t __size, const char * restrict __mode) __attribute__((availability(macos,introduced=10.13))) __attribute__((availability(ios,introduced=11.0))) __attribute__((availability(tvos,introduced=11.0))) __attribute__((availability(watchos,introduced=4.0)));\nFILE *open_memstream(char **__bufp, size_t *__sizep) __attribute__((availability(macos,introduced=10.13))) __attribute__((availability(ios,introduced=11.0))) __attribute__((availability(tvos,introduced=11.0))) __attribute__((availability(watchos,introduced=4.0)));\nextern const int sys_nerr;\nextern const char *const sys_errlist[];\n\nint asprintf(char ** restrict, const char * restrict, ...) __attribute__((__format__ (__printf__, 2, 3)));\nchar *ctermid_r(char *);\nchar *fgetln(FILE *, size_t *);\nconst char *fmtcheck(const char *, const char *) __attribute__((format_arg(2)));\nint fpurge(FILE *);\nvoid setbuffer(FILE *, char *, int);\nint setlinebuf(FILE *);\nint vasprintf(char ** restrict, const char * restrict, va_list) __attribute__((__format__ (__printf__, 2, 0)));\n\n\n\n\n\nFILE *funopen(const void *,\n                 int (* _Nullable)(void *, char *, int),\n                 int (* _Nullable)(void *, const char *, int),\n                 fpos_t (* _Nullable)(void *, fpos_t, int),\n                 int (* _Nullable)(void *));\nextern int __sprintf_chk (char * restrict, int, size_t,\n     const char * restrict, ...);\nextern int __snprintf_chk (char * restrict, size_t, int, size_t,\n      const char * restrict, ...);\n\n\n\n\n\n\n\nextern int __vsprintf_chk (char * restrict, int, size_t,\n      const char * restrict, va_list);\n\n\n\n\n\n\n\nextern int __vsnprintf_chk (char * restrict, size_t, int, size_t,\n       const char * restrict, va_list);\ntypedef enum \n P_ALL",
+  "P_PID",
+  [
+    "P_PGID\n idtype_t;\n\n\n\n\n\ntypedef __darwin_pid_t pid_t;\ntypedef __darwin_id_t id_t;\n\n\n\n\n\n\n\n\ntypedef int sig_atomic_t;\nstruct __darwin_arm_exception_state\n\n __uint32_t __exception;\n __uint32_t __fsr;\n __uint32_t __far;\n;\nstruct __darwin_arm_exception_state64\n\n __uint64_t __far;\n __uint32_t __esr;\n __uint32_t __exception;\n;\nstruct __darwin_arm_thread_state\n\n __uint32_t __r[13];\n __uint32_t __sp;\n __uint32_t __lr;\n __uint32_t __pc;\n __uint32_t __cpsr;\n;\nstruct __darwin_arm_thread_state64\n\n __uint64_t __x[29];\n __uint64_t __fp;\n __uint64_t __lr;\n __uint64_t __sp;\n __uint64_t __pc;\n __uint32_t __cpsr;\n __uint32_t __pad;\n;\nstruct __darwin_arm_vfp_state\n\n __uint32_t __r[64];\n __uint32_t __fpscr;\n;\nstruct __darwin_arm_neon_state64\n\n __uint128_t __v[32];\n __uint32_t __fpsr;\n __uint32_t __fpcr;\n;\n\nstruct __darwin_arm_neon_state\n\n __uint128_t __v[16];\n __uint32_t __fpsr;\n __uint32_t __fpcr;\n;\nstruct __arm_pagein_state\n\n int __pagein_error;\n;\nstruct __arm_legacy_debug_state\n\n __uint32_t __bvr[16];\n __uint32_t __bcr[16];\n __uint32_t __wvr[16];\n __uint32_t __wcr[16];\n;\nstruct __darwin_arm_debug_state32\n\n __uint32_t __bvr[16];\n __uint32_t __bcr[16];\n __uint32_t __wvr[16];\n __uint32_t __wcr[16];\n __uint64_t __mdscr_el1;\n;\n\n\nstruct __darwin_arm_debug_state64\n\n __uint64_t __bvr[16];\n __uint64_t __bcr[16];\n __uint64_t __wvr[16];\n __uint64_t __wcr[16];\n __uint64_t __mdscr_el1;\n;\nstruct __darwin_arm_cpmu_state64\n\n __uint64_t __ctrs[16];\n;\n\n\n\n\nstruct __darwin_mcontext32\n\n struct __darwin_arm_exception_state __es;\n struct __darwin_arm_thread_state __ss;\n struct __darwin_arm_vfp_state __fs;\n;\nstruct __darwin_mcontext64\n\n struct __darwin_arm_exception_state64 __es;\n struct __darwin_arm_thread_state64 __ss;\n struct __darwin_arm_neon_state64 __ns;\n;\ntypedef struct __darwin_mcontext64 *mcontext_t;\n\ntypedef __darwin_pthread_attr_t pthread_attr_t;\n\nstruct __darwin_sigaltstack\n\n void *ss_sp;\n __darwin_size_t ss_size;\n int ss_flags;\n;\ntypedef struct __darwin_sigaltstack stack_t;\nstruct __darwin_ucontext\n\n int uc_onstack;\n __darwin_sigset_t uc_sigmask;\n struct __darwin_sigaltstack uc_stack;\n struct __darwin_ucontext *uc_link;\n __darwin_size_t uc_mcsize;\n struct __darwin_mcontext64 *uc_mcontext;\n\n\n\n;\n\n\ntypedef struct __darwin_ucontext ucontext_t;\n\n\ntypedef __darwin_sigset_t sigset_t;\n\ntypedef __darwin_uid_t uid_t;\n\nunion sigval \n\n int sival_int;\n void *sival_ptr;\n;\n\n\n\n\n\nstruct sigevent \n int sigev_notify;\n int sigev_signo;\n union sigval sigev_value;\n void (*sigev_notify_function)(union sigval);\n pthread_attr_t *sigev_notify_attributes;\n;\n\n\ntypedef struct __siginfo \n int si_signo;\n int si_errno;\n int si_code;\n pid_t si_pid;\n uid_t si_uid;\n int si_status;\n void *si_addr;\n union sigval si_value;\n long si_band;\n unsigned long __pad[7];\n siginfo_t;\nunion __sigaction_u \n void (*__sa_handler)(int);\n void (*__sa_sigaction)(int, struct __siginfo *,\n     void *);\n;\n\n\nstruct __sigaction \n union __sigaction_u __sigaction_u;\n void (*sa_tramp)(void *, int, int, siginfo_t *, void *);\n sigset_t sa_mask;\n int sa_flags;\n;\n\n\n\n\nstruct sigaction \n union __sigaction_u __sigaction_u;\n sigset_t sa_mask;\n int sa_flags;\n;\ntypedef void (*sig_t)(int);\nstruct sigvec \n void (*sv_handler)(int);\n int sv_mask;\n int sv_flags;\n;\nstruct sigstack \n char *ss_sp;\n int ss_onstack;\n;\nvoid(*signal(int, void (*)(int)))(int);\nstruct timeval\n\n __darwin_time_t tv_sec;\n __darwin_suseconds_t tv_usec;\n;\n\n\n\n\n\n\n\n\ntypedef __uint64_t rlim_t;\nstruct rusage \n struct timeval ru_utime;\n struct timeval ru_stime;\n long ru_maxrss;\n\n long ru_ixrss;\n long ru_idrss;\n long ru_isrss;\n long ru_minflt;\n long ru_majflt;\n long ru_nswap;\n long ru_inblock;\n long ru_oublock;\n long ru_msgsnd;\n long ru_msgrcv;\n long ru_nsignals;\n long ru_nvcsw;\n long ru_nivcsw;\n\n\n;\ntypedef void *rusage_info_t;\n\nstruct rusage_info_v0 \n uint8_t ri_uuid[16];\n uint64_t ri_user_time;\n uint64_t ri_system_time;\n uint64_t ri_pkg_idle_wkups;\n uint64_t ri_interrupt_wkups;\n uint64_t ri_pageins;\n uint64_t ri_wired_size;\n uint64_t ri_resident_size;\n uint64_t ri_phys_footprint;\n uint64_t ri_proc_start_abstime;\n uint64_t ri_proc_exit_abstime;\n;\n\nstruct rusage_info_v1 \n uint8_t ri_uuid[16];\n uint64_t ri_user_time;\n uint64_t ri_system_time;\n uint64_t ri_pkg_idle_wkups;\n uint64_t ri_interrupt_wkups;\n uint64_t ri_pageins;\n uint64_t ri_wired_size;\n uint64_t ri_resident_size;\n uint64_t ri_phys_footprint;\n uint64_t ri_proc_start_abstime;\n uint64_t ri_proc_exit_abstime;\n uint64_t ri_child_user_time;\n uint64_t ri_child_system_time;\n uint64_t ri_child_pkg_idle_wkups;\n uint64_t ri_child_interrupt_wkups;\n uint64_t ri_child_pageins;\n uint64_t ri_child_elapsed_abstime;\n;\n\nstruct rusage_info_v2 \n uint8_t ri_uuid[16];\n uint64_t ri_user_time;\n uint64_t ri_system_time;\n uint64_t ri_pkg_idle_wkups;\n uint64_t ri_interrupt_wkups;\n uint64_t ri_pageins;\n uint64_t ri_wired_size;\n uint64_t ri_resident_size;\n uint64_t ri_phys_footprint;\n uint64_t ri_proc_start_abstime;\n uint64_t ri_proc_exit_abstime;\n uint64_t ri_child_user_time;\n uint64_t ri_child_system_time;\n uint64_t ri_child_pkg_idle_wkups;\n uint64_t ri_child_interrupt_wkups;\n uint64_t ri_child_pageins;\n uint64_t ri_child_elapsed_abstime;\n uint64_t ri_diskio_bytesread;\n uint64_t ri_diskio_byteswritten;\n;\n\nstruct rusage_info_v3 \n uint8_t ri_uuid[16];\n uint64_t ri_user_time;\n uint64_t ri_system_time;\n uint64_t ri_pkg_idle_wkups;\n uint64_t ri_interrupt_wkups;\n uint64_t ri_pageins;\n uint64_t ri_wired_size;\n uint64_t ri_resident_size;\n uint64_t ri_phys_footprint;\n uint64_t ri_proc_start_abstime;\n uint64_t ri_proc_exit_abstime;\n uint64_t ri_child_user_time;\n uint64_t ri_child_system_time;\n uint64_t ri_child_pkg_idle_wkups;\n uint64_t ri_child_interrupt_wkups;\n uint64_t ri_child_pageins;\n uint64_t ri_child_elapsed_abstime;\n uint64_t ri_diskio_bytesread;\n uint64_t ri_diskio_byteswritten;\n uint64_t ri_cpu_time_qos_default;\n uint64_t ri_cpu_time_qos_maintenance;\n uint64_t ri_cpu_time_qos_background;\n uint64_t ri_cpu_time_qos_utility;\n uint64_t ri_cpu_time_qos_legacy;\n uint64_t ri_cpu_time_qos_user_initiated;\n uint64_t ri_cpu_time_qos_user_interactive;\n uint64_t ri_billed_system_time;\n uint64_t ri_serviced_system_time;\n;\n\nstruct rusage_info_v4 \n uint8_t ri_uuid[16];\n uint64_t ri_user_time;\n uint64_t ri_system_time;\n uint64_t ri_pkg_idle_wkups;\n uint64_t ri_interrupt_wkups;\n uint64_t ri_pageins;\n uint64_t ri_wired_size;\n uint64_t ri_resident_size;\n uint64_t ri_phys_footprint;\n uint64_t ri_proc_start_abstime;\n uint64_t ri_proc_exit_abstime;\n uint64_t ri_child_user_time;\n uint64_t ri_child_system_time;\n uint64_t ri_child_pkg_idle_wkups;\n uint64_t ri_child_interrupt_wkups;\n uint64_t ri_child_pageins;\n uint64_t ri_child_elapsed_abstime;\n uint64_t ri_diskio_bytesread;\n uint64_t ri_diskio_byteswritten;\n uint64_t ri_cpu_time_qos_default;\n uint64_t ri_cpu_time_qos_maintenance;\n uint64_t ri_cpu_time_qos_background;\n uint64_t ri_cpu_time_qos_utility;\n uint64_t ri_cpu_time_qos_legacy;\n uint64_t ri_cpu_time_qos_user_initiated;\n uint64_t ri_cpu_time_qos_user_interactive;\n uint64_t ri_billed_system_time;\n uint64_t ri_serviced_system_time;\n uint64_t ri_logical_writes;\n uint64_t ri_lifetime_max_phys_footprint;\n uint64_t ri_instructions;\n uint64_t ri_cycles;\n uint64_t ri_billed_energy;\n uint64_t ri_serviced_energy;\n uint64_t ri_interval_max_phys_footprint;\n uint64_t ri_runnable_time;\n;\n\nstruct rusage_info_v5 \n uint8_t ri_uuid[16];\n uint64_t ri_user_time;\n uint64_t ri_system_time;\n uint64_t ri_pkg_idle_wkups;\n uint64_t ri_interrupt_wkups;\n uint64_t ri_pageins;\n uint64_t ri_wired_size;\n uint64_t ri_resident_size;\n uint64_t ri_phys_footprint;\n uint64_t ri_proc_start_abstime;\n uint64_t ri_proc_exit_abstime;\n uint64_t ri_child_user_time;\n uint64_t ri_child_system_time;\n uint64_t ri_child_pkg_idle_wkups;\n uint64_t ri_child_interrupt_wkups;\n uint64_t ri_child_pageins;\n uint64_t ri_child_elapsed_abstime;\n uint64_t ri_diskio_bytesread;\n uint64_t ri_diskio_byteswritten;\n uint64_t ri_cpu_time_qos_default;\n uint64_t ri_cpu_time_qos_maintenance;\n uint64_t ri_cpu_time_qos_background;\n uint64_t ri_cpu_time_qos_utility;\n uint64_t ri_cpu_time_qos_legacy;\n uint64_t ri_cpu_time_qos_user_initiated;\n uint64_t ri_cpu_time_qos_user_interactive;\n uint64_t ri_billed_system_time;\n uint64_t ri_serviced_system_time;\n uint64_t ri_logical_writes;\n uint64_t ri_lifetime_max_phys_footprint;\n uint64_t ri_instructions;\n uint64_t ri_cycles;\n uint64_t ri_billed_energy;\n uint64_t ri_serviced_energy;\n uint64_t ri_interval_max_phys_footprint;\n uint64_t ri_runnable_time;\n uint64_t ri_flags;\n;\n\nstruct rusage_info_v6 \n uint8_t ri_uuid[16];\n uint64_t ri_user_time;\n uint64_t ri_system_time;\n uint64_t ri_pkg_idle_wkups;\n uint64_t ri_interrupt_wkups;\n uint64_t ri_pageins;\n uint64_t ri_wired_size;\n uint64_t ri_resident_size;\n uint64_t ri_phys_footprint;\n uint64_t ri_proc_start_abstime;\n uint64_t ri_proc_exit_abstime;\n uint64_t ri_child_user_time;\n uint64_t ri_child_system_time;\n uint64_t ri_child_pkg_idle_wkups;\n uint64_t ri_child_interrupt_wkups;\n uint64_t ri_child_pageins;\n uint64_t ri_child_elapsed_abstime;\n uint64_t ri_diskio_bytesread;\n uint64_t ri_diskio_byteswritten;\n uint64_t ri_cpu_time_qos_default;\n uint64_t ri_cpu_time_qos_maintenance;\n uint64_t ri_cpu_time_qos_background;\n uint64_t ri_cpu_time_qos_utility;\n uint64_t ri_cpu_time_qos_legacy;\n uint64_t ri_cpu_time_qos_user_initiated;\n uint64_t ri_cpu_time_qos_user_interactive;\n uint64_t ri_billed_system_time;\n uint64_t ri_serviced_system_time;\n uint64_t ri_logical_writes;\n uint64_t ri_lifetime_max_phys_footprint;\n uint64_t ri_instructions;\n uint64_t ri_cycles;\n uint64_t ri_billed_energy;\n uint64_t ri_serviced_energy;\n uint64_t ri_interval_max_phys_footprint;\n uint64_t ri_runnable_time;\n uint64_t ri_flags;\n uint64_t ri_user_ptime;\n uint64_t ri_system_ptime;\n uint64_t ri_pinstructions;\n uint64_t ri_pcycles;\n uint64_t ri_energy_nj;\n uint64_t ri_penergy_nj;\n uint64_t ri_reserved[14];\n;\n\ntypedef struct rusage_info_v6 rusage_info_current;\nstruct rlimit \n rlim_t rlim_cur;\n rlim_t rlim_max;\n;\nstruct proc_rlimit_control_wakeupmon \n uint32_t wm_flags;\n int32_t wm_rate;\n;\nint getpriority(int, id_t);\n\nint getiopolicy_np(int, int) __attribute__((availability(macosx,introduced=10.5)));\n\nint getrlimit(int, struct rlimit *) __asm(\"_\" \"getrlimit\" );\nint getrusage(int, struct rusage *);\nint setpriority(int, id_t, int);\n\nint setiopolicy_np(int, int, int) __attribute__((availability(macosx,introduced=10.5)));\n\nint setrlimit(int, const struct rlimit *) __asm(\"_\" \"setrlimit\" );\n\n\n\n\n\n\n\n\n\n\n\nstatic inline\nuint16_t\n_OSSwapInt16(\n uint16_t _data\n )\n\n\n return (uint16_t)(_data << 8 | _data >> 8);\n\n\nstatic inline\nuint32_t\n_OSSwapInt32(\n uint32_t _data\n )\n\n\n _data = __builtin_bswap32(_data);\n\n\n\n\n\n return _data;\n\n\nstatic inline\nuint64_t\n_OSSwapInt64(\n uint64_t _data\n )\n\n\n return __builtin_bswap64(_data);\n\n\n\n\nstruct _OSUnalignedU16 \n volatile uint16_t __val;\n __attribute__((__packed__));\n\nstruct _OSUnalignedU32 \n volatile uint32_t __val;\n __attribute__((__packed__));\n\nstruct _OSUnalignedU64 \n volatile uint64_t __val;\n __attribute__((__packed__));\nstatic inline\nuint16_t\nOSReadSwapInt16(\n const volatile void * _base,\n uintptr_t _offset\n )\n\n return _OSSwapInt16(((struct _OSUnalignedU16 *)((uintptr_t)_base + _offset))->__val);\n\nstatic inline\nuint32_t\nOSReadSwapInt32(\n const volatile void * _base,\n uintptr_t _offset\n )\n\n return _OSSwapInt32(((struct _OSUnalignedU32 *)((uintptr_t)_base + _offset))->__val);\n\nstatic inline\nuint64_t\nOSReadSwapInt64(\n const volatile void * _base,\n uintptr_t _offset\n )\n\n return _OSSwapInt64(((struct _OSUnalignedU64 *)((uintptr_t)_base + _offset))->__val);\n\nstatic inline\nvoid\nOSWriteSwapInt16(\n volatile void * _base,\n uintptr_t _offset,\n uint16_t _data\n )\n\n ((struct _OSUnalignedU16 *)((uintptr_t)_base + _offset))->__val = _OSSwapInt16(_data);\n\nstatic inline\nvoid\nOSWriteSwapInt32(\n volatile void * _base,\n uintptr_t _offset,\n uint32_t _data\n )\n\n ((struct _OSUnalignedU32 *)((uintptr_t)_base + _offset))->__val = _OSSwapInt32(_data);\n\nstatic inline\nvoid\nOSWriteSwapInt64(\n volatile void * _base,\n uintptr_t _offset,\n uint64_t _data\n )\n\n ((struct _OSUnalignedU64 *)((uintptr_t)_base + _offset))->__val = _OSSwapInt64(_data);\n\n\n\n\n\n\n\n\nunion wait \n int w_status;\n\n\n\n struct \n\n  unsigned int w_Termsig:7",
+    "w_Coredump:1",
+    "w_Retcode:8",
+    "w_Filler:16;"
+  ],
+  [
+    "w_T;\n\n\n\n\n\n struct \n\n  unsigned int w_Stopval:8",
+    "w_Stopsig:8",
+    "w_Filler:16;"
+  ],
+  "w_S;\n;\npid_t wait(int *) __asm(\"_\" \"wait\" );\npid_t waitpid(pid_t, int *, int) __asm(\"_\" \"waitpid\" );\n\nint waitid(idtype_t, id_t, siginfo_t *, int) __asm(\"_\" \"waitid\" );\n\n\npid_t wait3(int *, int, struct rusage *);\npid_t wait4(pid_t, int *, int, struct rusage *);\n\nvoid *alloca(size_t);\n\n\n\n\n\n\n\n\ntypedef __darwin_ct_rune_t ct_rune_t;\ntypedef __darwin_rune_t rune_t;\n\n\n\ntypedef struct \n int quot;\n int rem;\n div_t;\n\ntypedef struct \n long quot;\n long rem;\n ldiv_t;\n\n\ntypedef struct \n long long quot;\n long long rem;\n lldiv_t;\nextern int __mb_cur_max;\ntypedef unsigned long long malloc_type_id_t;\n\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_malloc(size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_calloc(size_t count, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1,2)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void malloc_type_free(void *ptr, malloc_type_id_t type_id);\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_realloc(void *ptr, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_valloc(size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_aligned_alloc(size_t alignment, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) int malloc_type_posix_memalign(void **memptr, size_t alignment, size_t size, malloc_type_id_t type_id) ;\n\n\n\n\ntypedef struct _malloc_zone_t malloc_zone_t;\n\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_malloc(malloc_zone_t *zone, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_calloc(malloc_zone_t *zone, size_t count, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2,3)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void malloc_type_zone_free(malloc_zone_t *zone, void *ptr, malloc_type_id_t type_id);\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_realloc(malloc_zone_t *zone, void *ptr, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(3)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_valloc(malloc_zone_t *zone, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2)));\n__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_memalign(malloc_zone_t *zone, size_t alignment, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(3)));\n\n\n\n\n\n\nvoid *malloc(size_t __size) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1))) ;\nvoid *calloc(size_t __count, size_t __size) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1,2))) ;\nvoid free(void *);\nvoid *realloc(void *__ptr, size_t __size) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2))) ;\n\nvoid *valloc(size_t) __attribute__((alloc_size(1))) ;\n\n\n\n\nvoid *aligned_alloc(size_t __alignment, size_t __size) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2))) __attribute__((availability(macosx,introduced=10.15))) __attribute__((availability(ios,introduced=13.0))) __attribute__((availability(tvos,introduced=13.0))) __attribute__((availability(watchos,introduced=6.0)));\n\nint posix_memalign(void **__memptr, size_t __alignment, size_t __size) __attribute__((availability(macosx,introduced=10.6)));\n\n\nvoid abort(void) __attribute__((__cold__)) __attribute__((__noreturn__));\nint abs(int) __attribute__((__const__));\nint atexit(void (* _Nonnull)(void));\ndouble atof(const char *);\nint atoi(const char *);\nlong atol(const char *);\n\nlong long\n  atoll(const char *);\n\nvoid *bsearch(const void *__key, const void *__base, size_t __nel,\n     size_t __width, int (* _Nonnull __compar)(const void *, const void *));\n\ndiv_t div(int, int) __attribute__((__const__));\nvoid exit(int) __attribute__((__noreturn__));\n\nchar *getenv(const char *);\nlong labs(long) __attribute__((__const__));\nldiv_t ldiv(long, long) __attribute__((__const__));\n\nlong long\n  llabs(long long);\nlldiv_t lldiv(long long, long long);\n\n\nint mblen(const char *__s, size_t __n);\nsize_t mbstowcs(wchar_t * restrict , const char * restrict, size_t);\nint mbtowc(wchar_t * restrict, const char * restrict, size_t);\n\nvoid qsort(void *__base, size_t __nel, size_t __width,\n     int (* _Nonnull __compar)(const void *, const void *));\nint rand(void) __attribute__((__availability__(swift, unavailable, message=\"Use arc4random instead.\")));\n\nvoid srand(unsigned) __attribute__((__availability__(swift, unavailable, message=\"Use arc4random instead.\")));\ndouble strtod(const char *, char **) __asm(\"_\" \"strtod\" );\nfloat strtof(const char *, char **) __asm(\"_\" \"strtof\" );\nlong strtol(const char *__str, char **__endptr, int __base);\nlong double\n  strtold(const char *, char **);\n\nlong long\n  strtoll(const char *__str, char **__endptr, int __base);\n\nunsigned long\n  strtoul(const char *__str, char **__endptr, int __base);\n\nunsigned long long\n  strtoull(const char *__str, char **__endptr, int __base);\n\n\n__attribute__((__availability__(swift, unavailable, message=\"Use posix_spawn APIs or NSTask instead. (On iOS, process spawning is unavailable.)\")))\n__attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,unavailable)))\n__attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)))\nint system(const char *) __asm(\"_\" \"system\" );\n\n\nsize_t wcstombs(char * restrict, const wchar_t * restrict, size_t);\nint wctomb(char *, wchar_t);\n\n\nvoid _Exit(int) __attribute__((__noreturn__));\nlong a64l(const char *);\ndouble drand48(void);\nchar *ecvt(double, int, int *restrict, int *restrict);\ndouble erand48(unsigned short[3]);\nchar *fcvt(double, int, int *restrict, int *restrict);\nchar *gcvt(double, int, char *);\nint getsubopt(char **, char * const *, char **);\nint grantpt(int);\n\nchar *initstate(unsigned, char *, size_t);\n\n\n\nlong jrand48(unsigned short[3]) __attribute__((__availability__(swift, unavailable, message=\"Use arc4random instead.\")));\nchar *l64a(long);\nvoid lcong48(unsigned short[7]);\nlong lrand48(void) __attribute__((__availability__(swift, unavailable, message=\"Use arc4random instead.\")));\n\n__attribute__((__deprecated__(\"This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of mktemp(3), it is highly recommended that you use mkstemp(3) instead.\")))\n\nchar *mktemp(char *);\nint mkstemp(char *);\nlong mrand48(void) __attribute__((__availability__(swift, unavailable, message=\"Use arc4random instead.\")));\nlong nrand48(unsigned short[3]) __attribute__((__availability__(swift, unavailable, message=\"Use arc4random instead.\")));\nint posix_openpt(int);\nchar *ptsname(int);\n\n\nint ptsname_r(int fildes, char *buffer, size_t buflen) __attribute__((availability(macos,introduced=10.13.4))) __attribute__((availability(ios,introduced=11.3))) __attribute__((availability(tvos,introduced=11.3))) __attribute__((availability(watchos,introduced=4.3)));\n\n\nint putenv(char *) __asm(\"_\" \"putenv\" );\nlong random(void) __attribute__((__availability__(swift, unavailable, message=\"Use arc4random instead.\")));\nint rand_r(unsigned *) __attribute__((__availability__(swift, unavailable, message=\"Use arc4random instead.\")));\n\nchar *realpath(const char * restrict, char * restrict) __asm(\"_\" \"realpath\" \"$DARWIN_EXTSN\");\n\n\n\nunsigned short\n *seed48(unsigned short[3]);\nint setenv(const char * __name, const char * __value, int __overwrite) __asm(\"_\" \"setenv\" );\n\nvoid setkey(const char *) __asm(\"_\" \"setkey\" );\n\n\n\nchar *setstate(const char *);\nvoid srand48(long);\n\nvoid srandom(unsigned);\n\n\n\nint unlockpt(int);\n\nint unsetenv(const char *) __asm(\"_\" \"unsetenv\" );\ntypedef __darwin_dev_t dev_t;\ntypedef __darwin_mode_t mode_t;\n\n\n\nuint32_t arc4random(void);\nvoid arc4random_addrandom(unsigned char * , int )\n    __attribute__((availability(macosx,introduced=10.0))) __attribute__((availability(macosx,deprecated=10.12,message=\"use arc4random_stir\")))\n    __attribute__((availability(ios,introduced=2.0))) __attribute__((availability(ios,deprecated=10.0,message=\"use arc4random_stir\")))\n    __attribute__((availability(tvos,introduced=2.0))) __attribute__((availability(tvos,deprecated=10.0,message=\"use arc4random_stir\")))\n    __attribute__((availability(watchos,introduced=1.0))) __attribute__((availability(watchos,deprecated=3.0,message=\"use arc4random_stir\")));\nvoid arc4random_buf(void * __buf, size_t __nbytes) __attribute__((availability(macosx,introduced=10.7)));\nvoid arc4random_stir(void);\nuint32_t\n  arc4random_uniform(uint32_t __upper_bound) __attribute__((availability(macosx,introduced=10.7)));\n\nint atexit_b(void (^ _Nonnull)(void)) __attribute__((availability(macosx,introduced=10.6)));\nvoid *bsearch_b(const void *__key, const void *__base, size_t __nel,\n     size_t __width, int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))\n     __attribute__((availability(macosx,introduced=10.6)));\n\n\n\nchar *cgetcap(char *, const char *, int);\nint cgetclose(void);\nint cgetent(char **, char **, const char *);\nint cgetfirst(char **, char **);\nint cgetmatch(const char *, const char *);\nint cgetnext(char **, char **);\nint cgetnum(char *, const char *, long *);\nint cgetset(const char *);\nint cgetstr(char *, const char *, char **);\nint cgetustr(char *, const char *, char **);\n\nint daemon(int, int) __asm(\"_\" \"daemon\" ) __attribute__((availability(macosx,introduced=10.0,deprecated=10.5,message=\"Use posix_spawn APIs instead.\"))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));\nchar *devname(dev_t, mode_t);\nchar *devname_r(dev_t, mode_t, char *buf, int len);\nchar *getbsize(int *, long *);\nint getloadavg(double [], int);\nconst char\n *getprogname(void);\nvoid setprogname(const char *);\nint heapsort(void *__base, size_t __nel, size_t __width,\n     int (* _Nonnull __compar)(const void *, const void *));\n\nint heapsort_b(void *__base, size_t __nel, size_t __width,\n     int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))\n     __attribute__((availability(macosx,introduced=10.6)));\n\nint mergesort(void *__base, size_t __nel, size_t __width,\n     int (* _Nonnull __compar)(const void *, const void *));\n\nint mergesort_b(void *__base, size_t __nel, size_t __width,\n     int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))\n     __attribute__((availability(macosx,introduced=10.6)));\n\nvoid psort(void *__base, size_t __nel, size_t __width,\n     int (* _Nonnull __compar)(const void *, const void *))\n     __attribute__((availability(macosx,introduced=10.6)));\n\nvoid psort_b(void *__base, size_t __nel, size_t __width,\n     int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))\n     __attribute__((availability(macosx,introduced=10.6)));\n\nvoid psort_r(void *__base, size_t __nel, size_t __width, void *,\n     int (* _Nonnull __compar)(void *, const void *, const void *))\n     __attribute__((availability(macosx,introduced=10.6)));\n\nvoid qsort_b(void *__base, size_t __nel, size_t __width,\n     int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))\n     __attribute__((availability(macosx,introduced=10.6)));\n\nvoid qsort_r(void *__base, size_t __nel, size_t __width, void *,\n     int (* _Nonnull __compar)(void *, const void *, const void *));\nint radixsort(const unsigned char **__base, int __nel, const unsigned char *__table,\n     unsigned __endbyte);\nint rpmatch(const char *)\n __attribute__((availability(macos,introduced=10.15))) __attribute__((availability(ios,introduced=13.0))) __attribute__((availability(tvos,introduced=13.0))) __attribute__((availability(watchos,introduced=6.0)));\nint sradixsort(const unsigned char **__base, int __nel, const unsigned char *__table,\n     unsigned __endbyte);\nvoid sranddev(void);\nvoid srandomdev(void);\nvoid *reallocf(void *__ptr, size_t __size) __attribute__((alloc_size(2)));\nlong long\n strtonum(const char *__numstr, long long __minval, long long __maxval, const char **__errstrp)\n __attribute__((availability(macos,introduced=11.0))) __attribute__((availability(ios,introduced=14.0))) __attribute__((availability(tvos,introduced=14.0))) __attribute__((availability(watchos,introduced=7.0)));\n\nlong long\n  strtoq(const char *__str, char **__endptr, int __base);\nunsigned long long\n  strtouq(const char *__str, char **__endptr, int __base);\n\nextern char *suboptarg;\nvoid *memchr(const void *__s, int __c, size_t __n);\nint memcmp(const void *__s1, const void *__s2, size_t __n);\nvoid *memcpy(void *__dst, const void *__src, size_t __n);\nvoid *memmove(void *__dst, const void *__src, size_t __len);\nvoid *memset(void *__b, int __c, size_t __len);\nchar *strcat(char *__s1, const char *__s2);\nchar *strchr(const char *__s, int __c);\nint strcmp(const char *__s1, const char *__s2);\nint strcoll(const char *__s1, const char *__s2);\nchar *strcpy(char *__dst, const char *__src);\nsize_t strcspn(const char *__s, const char *__charset);\nchar *strerror(int __errnum) __asm(\"_\" \"strerror\" );\nsize_t strlen(const char *__s);\nchar *strncat(char *__s1, const char *__s2, size_t __n);\nint strncmp(const char *__s1, const char *__s2, size_t __n);\nchar *strncpy(char *__dst, const char *__src, size_t __n);\nchar *strpbrk(const char *__s, const char *__charset);\nchar *strrchr(const char *__s, int __c);\nsize_t strspn(const char *__s, const char *__charset);\nchar *strstr(const char *__big, const char *__little);\nchar *strtok(char *__str, const char *__sep);\nsize_t strxfrm(char *__s1, const char *__s2, size_t __n);\nchar *strtok_r(char *__str, const char *__sep, char **__lasts);\nint strerror_r(int __errnum, char *__strerrbuf, size_t __buflen);\nchar *strdup(const char *__s1);\nvoid *memccpy(void *__dst, const void *__src, int __c, size_t __n);\nchar *stpcpy(char *__dst, const char *__src);\nchar *stpncpy(char *__dst, const char *__src, size_t __n) __attribute__((availability(macosx,introduced=10.7)));\nchar *strndup(const char *__s1, size_t __n) __attribute__((availability(macosx,introduced=10.7)));\nsize_t strnlen(const char *__s1, size_t __n) __attribute__((availability(macosx,introduced=10.7)));\nchar *strsignal(int __sig);\n\n\n\n\n\n\ntypedef __darwin_size_t rsize_t;\n\n\n\nerrno_t memset_s(void *__s, rsize_t __smax, int __c, rsize_t __n) __attribute__((availability(macosx,introduced=10.9)));\nvoid *memmem(const void *__big, size_t __big_len, const void *__little, size_t __little_len) __attribute__((availability(macosx,introduced=10.7)));\nvoid memset_pattern4(void *__b, const void *__pattern4, size_t __len) __attribute__((availability(macosx,introduced=10.5)));\nvoid memset_pattern8(void *__b, const void *__pattern8, size_t __len) __attribute__((availability(macosx,introduced=10.5)));\nvoid memset_pattern16(void *__b, const void *__pattern16, size_t __len) __attribute__((availability(macosx,introduced=10.5)));\n\nchar *strcasestr(const char *__big, const char *__little);\nchar *strnstr(const char *__big, const char *__little, size_t __len);\nsize_t strlcat(char *__dst, const char *__source, size_t __size);\nsize_t strlcpy(char *__dst, const char *__source, size_t __size);\nvoid strmode(int __mode, char *__bp);\nchar *strsep(char **__stringp, const char *__delim);\n\n\nvoid swab(const void * restrict, void * restrict, ssize_t);\n\n__attribute__((availability(macosx,introduced=10.12.1))) __attribute__((availability(ios,introduced=10.1)))\n__attribute__((availability(tvos,introduced=10.0.1))) __attribute__((availability(watchos,introduced=3.1)))\nint timingsafe_bcmp(const void *__b1, const void *__b2, size_t __len);\n\n__attribute__((availability(macosx,introduced=11.0))) __attribute__((availability(ios,introduced=14.0)))\n__attribute__((availability(tvos,introduced=14.0))) __attribute__((availability(watchos,introduced=7.0)))\nint strsignal_r(int __sig, char *__strsignalbuf, size_t __buflen);\n\n\n\n\n\n\n\nint bcmp(const void *, const void *, size_t) ;\nvoid bcopy(const void *, void *, size_t) ;\nvoid bzero(void *, size_t) ;\nchar *index(const char *, int) ;\nchar *rindex(const char *, int) ;\n\n\nint ffs(int);\nint strcasecmp(const char *, const char *);\nint strncasecmp(const char *, const char *, size_t);\n\n\n\n\n\nint ffsl(long) __attribute__((availability(macosx,introduced=10.5)));\nint ffsll(long long) __attribute__((availability(macosx,introduced=10.9)));\nint fls(int) __attribute__((availability(macosx,introduced=10.5)));\nint flsl(long) __attribute__((availability(macosx,introduced=10.5)));\nint flsll(long long) __attribute__((availability(macosx,introduced=10.9)));\n\n\n\n\n\n\n\n\ntypedef long int ptrdiff_t;\ntypedef long double max_align_t;\n\nint av_strerror(int errnum, char *errbuf, size_t errbuf_size);\nstatic inline char *av_make_error_string(char *errbuf, size_t errbuf_size, int errnum)\n\n    av_strerror(errnum, errbuf, errbuf_size);\n    return errbuf;\n\n__attribute__((const)) int av_log2(unsigned v);\n\n\n\n__attribute__((const)) int av_log2_16bit(unsigned v);\nstatic __attribute__((always_inline)) inline __attribute__((const)) int av_clip_c(int a, int amin, int amax)\n\n\n\n\n    if (a < amin) return amin;\n    else if (a > amax) return amax;\n    else return a;\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int64_t av_clip64_c(int64_t a, int64_t amin, int64_t amax)\n\n\n\n\n    if (a < amin) return amin;\n    else if (a > amax) return amax;\n    else return a;\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) uint8_t av_clip_uint8_c(int a)\n\n    if (a&(~0xFF)) return (~a)>>31;\n    else return a;\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int8_t av_clip_int8_c(int a)\n\n    if ((a+0x80U) & ~0xFF) return (a>>31) ^ 0x7F;\n    else return a;\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) uint16_t av_clip_uint16_c(int a)\n\n    if (a&(~0xFFFF)) return (~a)>>31;\n    else return a;\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int16_t av_clip_int16_c(int a)\n\n    if ((a+0x8000U) & ~0xFFFF) return (a>>31) ^ 0x7FFF;\n    else return a;\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int32_t av_clipl_int32_c(int64_t a)\n\n    if ((a+0x80000000u) & ~(0xFFFFFFFFULL)) return (int32_t)((a>>63) ^ 0x7FFFFFFF);\n    else return (int32_t)a;\n\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int av_clip_intp2_c(int a, int p)\n\n    if (((unsigned)a + (1 << p)) & ~((2 << p) - 1))\n        return (a >> 31) ^ ((1 << p) - 1);\n    else\n        return a;\n\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) unsigned av_clip_uintp2_c(int a, int p)\n\n    if (a & ~((1<<p) - 1)) return (~a) >> 31 & ((1<<p) - 1);\n    else return a;\n\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) unsigned av_mod_uintp2_c(unsigned a, unsigned p)\n\n    return a & ((1U << p) - 1);\n\nstatic __attribute__((always_inline)) inline int av_sat_add32_c(int a, int b)\n\n    return av_clipl_int32_c((int64_t)a + b);\n\nstatic __attribute__((always_inline)) inline int av_sat_dadd32_c(int a, int b)\n\n    return av_sat_add32_c(a, av_sat_add32_c(b, b));\n\nstatic __attribute__((always_inline)) inline int av_sat_sub32_c(int a, int b)\n\n    return av_clipl_int32_c((int64_t)a - b);\n\nstatic __attribute__((always_inline)) inline int av_sat_dsub32_c(int a, int b)\n\n    return av_sat_sub32_c(a, av_sat_add32_c(b, b));\n\nstatic __attribute__((always_inline)) inline int64_t av_sat_add64_c(int64_t a, int64_t b) \n\n    int64_t tmp;\n    return !__builtin_add_overflow(a, b, &tmp) ? tmp : (tmp < 0 ? 9223372036854775807LL : (-9223372036854775807LL -1));\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline int64_t av_sat_sub64_c(int64_t a, int64_t b) \n\n    int64_t tmp;\n    return !__builtin_sub_overflow(a, b, &tmp) ? tmp : (tmp < 0 ? 9223372036854775807LL : (-9223372036854775807LL -1));\n\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) float av_clipf_c(float a, float amin, float amax)\n\n\n\n\n    return ((((a) > (amin) ? (a) : (amin))) > (amax) ? (amax) : (((a) > (amin) ? (a) : (amin))));\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) double av_clipd_c(double a, double amin, double amax)\n\n\n\n\n    return ((((a) > (amin) ? (a) : (amin))) > (amax) ? (amax) : (((a) > (amin) ? (a) : (amin))));\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int av_ceil_log2_c(int x)\n\n    return av_log2((x - 1U) << 1);\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int av_popcount_c(uint32_t x)\n\n    x -= (x >> 1) & 0x55555555;\n    x = (x & 0x33333333) + ((x >> 2) & 0x33333333);\n    x = (x + (x >> 4)) & 0x0F0F0F0F;\n    x += x >> 8;\n    return (x + (x >> 16)) & 0x3F;\n\n\n\n\n\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int av_popcount64_c(uint64_t x)\n\n    return av_popcount_c((uint32_t)x) + av_popcount_c((uint32_t)(x >> 32));\n\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int av_parity_c(uint32_t v)\n\n    return av_popcount_c(v) & 1;\n\nvoid *av_malloc(size_t size) __attribute__((__malloc__)) ;\nvoid *av_mallocz(size_t size) __attribute__((__malloc__)) ;\n                    void *av_malloc_array(size_t nmemb, size_t size);\nvoid *av_calloc(size_t nmemb, size_t size) __attribute__((__malloc__)) ;\nvoid *av_realloc(void *ptr, size_t size) ;\n__attribute__((warn_unused_result))\nint av_reallocp(void *ptr, size_t size);\nvoid *av_realloc_f(void *ptr, size_t nelem, size_t elsize);\n                    void *av_realloc_array(void *ptr, size_t nmemb, size_t size);\nint av_reallocp_array(void *ptr, size_t nmemb, size_t size);\nvoid *av_fast_realloc(void *ptr, unsigned int *size, size_t min_size);\nvoid av_fast_malloc(void *ptr, unsigned int *size, size_t min_size);\nvoid av_fast_mallocz(void *ptr, unsigned int *size, size_t min_size);\nvoid av_free(void *ptr);\nvoid av_freep(void *ptr);\nchar *av_strdup(const char *s) __attribute__((__malloc__));\nchar *av_strndup(const char *s, size_t len) __attribute__((__malloc__));\nvoid *av_memdup(const void *p, size_t size);\nvoid av_memcpy_backptr(uint8_t *dst, int back, int cnt);\nvoid av_dynarray_add(void *tab_ptr, int *nb_ptr, void *elem);\n__attribute__((warn_unused_result))\nint av_dynarray_add_nofree(void *tab_ptr, int *nb_ptr, void *elem);\nvoid *av_dynarray2_add(void **tab_ptr, int *nb_ptr, size_t elem_size,\n                       const uint8_t *elem_data);\nint av_size_mult(size_t a, size_t b, size_t *r);\nvoid av_max_alloc(size_t max);\n\n\nunion av_intfloat32 \n    uint32_t i;\n    float f;\n;\n\nunion av_intfloat64 \n    uint64_t i;\n    double f;\n;\n\n\n\n\nstatic __attribute__((always_inline)) inline float av_int2float(uint32_t i)\n\n    union av_intfloat32 v;\n    v.i = i;\n    return v.f;\n\n\n\n\n\nstatic __attribute__((always_inline)) inline uint32_t av_float2int(float f)\n\n    union av_intfloat32 v;\n    v.f = f;\n    return v.i;\n\n\n\n\n\nstatic __attribute__((always_inline)) inline double av_int2double(uint64_t i)\n\n    union av_intfloat64 v;\n    v.i = i;\n    return v.f;\n\n\n\n\n\nstatic __attribute__((always_inline)) inline uint64_t av_double2int(double f)\n\n    union av_intfloat64 v;\n    v.f = f;\n    return v.i;\n\nenum AVRounding \n    AV_ROUND_ZERO = 0",
+  "AV_ROUND_INF = 1",
+  "AV_ROUND_DOWN = 2",
+  "AV_ROUND_UP = 3",
+  "AV_ROUND_NEAR_INF = 5",
+  "AV_ROUND_PASS_MINMAX = 8192",
+  ";\nint64_t __attribute__((const)) av_gcd(int64_t a, int64_t b);\nint64_t av_rescale(int64_t a, int64_t b, int64_t c) __attribute__((const));\nint64_t av_rescale_rnd(int64_t a, int64_t b, int64_t c, enum AVRounding rnd) __attribute__((const));\nint64_t av_rescale_q(int64_t a, AVRational bq, AVRational cq) __attribute__((const));\nint64_t av_rescale_q_rnd(int64_t a, AVRational bq, AVRational cq,\n                         enum AVRounding rnd) __attribute__((const));\nint av_compare_ts(int64_t ts_a, AVRational tb_a, int64_t ts_b, AVRational tb_b);\nint64_t av_compare_mod(uint64_t a, uint64_t b, uint64_t mod);\nint64_t av_rescale_delta(AVRational in_tb, int64_t in_ts, AVRational fs_tb, int duration, int64_t *last, AVRational out_tb);\nint64_t av_add_stable(AVRational ts_tb, int64_t ts, AVRational inc_tb, int64_t inc);\n\n\n\n\ndouble av_bessel_i0(double x);\ntypedef __builtin_va_list va_list;\ntypedef __builtin_va_list __gnuc_va_list;\n\n\n\ntypedef enum \n    AV_CLASS_CATEGORY_NA = 0",
+  "AV_CLASS_CATEGORY_INPUT",
+  "AV_CLASS_CATEGORY_OUTPUT",
+  "AV_CLASS_CATEGORY_MUXER",
+  "AV_CLASS_CATEGORY_DEMUXER",
+  "AV_CLASS_CATEGORY_ENCODER",
+  "AV_CLASS_CATEGORY_DECODER",
+  "AV_CLASS_CATEGORY_FILTER",
+  "AV_CLASS_CATEGORY_BITSTREAM_FILTER",
+  "AV_CLASS_CATEGORY_SWSCALER",
+  "AV_CLASS_CATEGORY_SWRESAMPLER",
+  "AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT = 40",
+  "AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT",
+  "AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT",
+  "AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT",
+  "AV_CLASS_CATEGORY_DEVICE_OUTPUT",
+  "AV_CLASS_CATEGORY_DEVICE_INPUT",
+  "AV_CLASS_CATEGORY_NB\nAVClassCategory;\nstruct AVOptionRanges;\n\n\n\n\n\n\ntypedef struct AVClass \n\n\n\n\n    const char* class_name;\n\n\n\n\n\n    const char* (*item_name)(void* ctx);\n\n\n\n\n\n\n    const struct AVOption *option;\n\n\n\n\n\n\n\n    int version;\n\n\n\n\n\n    int log_level_offset_offset;\n    int parent_log_context_offset;\n\n\n\n\n\n\n    AVClassCategory category;\n\n\n\n\n\n    AVClassCategory (*get_category)(void* ctx);\n\n\n\n\n\n    int (*query_ranges)(struct AVOptionRanges **, void *obj, const char *key, int flags);\n\n\n\n\n    void* (*child_next)(void *obj, void *prev);\n    const struct AVClass* (*child_class_iterate)(void **iter);\n AVClass;\nvoid av_log(void *avcl, int level, const char *fmt, ...) __attribute__((__format__(__printf__, 3, 4)));\nvoid av_log_once(void* avcl, int initial_level, int subsequent_level, int *state, const char *fmt, ...) __attribute__((__format__(__printf__, 5, 6)));\nvoid av_vlog(void *avcl, int level, const char *fmt, va_list vl);\nint av_log_get_level(void);\nvoid av_log_set_level(int level);\nvoid av_log_set_callback(void (*callback)(void*, int, const char*, va_list));\nvoid av_log_default_callback(void *avcl, int level, const char *fmt,\n                             va_list vl);\nconst char* av_default_item_name(void* ctx);\nAVClassCategory av_default_get_category(void *ptr);\nvoid av_log_format_line(void *ptr, int level, const char *fmt, va_list vl,\n                        char *line, int line_size, int *print_prefix);\nint av_log_format_line2(void *ptr, int level, const char *fmt, va_list vl,\n                        char *line, int line_size, int *print_prefix);\nvoid av_log_set_flags(int arg);\nint av_log_get_flags(void);\nenum AVPixelFormat \n    AV_PIX_FMT_NONE = -1",
+  "AV_PIX_FMT_YUV420P",
+  "AV_PIX_FMT_YUYV422",
+  "AV_PIX_FMT_RGB24",
+  "AV_PIX_FMT_BGR24",
+  "AV_PIX_FMT_YUV422P",
+  "AV_PIX_FMT_YUV444P",
+  "AV_PIX_FMT_YUV410P",
+  "AV_PIX_FMT_YUV411P",
+  "AV_PIX_FMT_GRAY8",
+  "AV_PIX_FMT_MONOWHITE",
+  "AV_PIX_FMT_MONOBLACK",
+  "AV_PIX_FMT_PAL8",
+  "AV_PIX_FMT_YUVJ420P",
+  "AV_PIX_FMT_YUVJ422P",
+  "AV_PIX_FMT_YUVJ444P",
+  "AV_PIX_FMT_UYVY422",
+  "AV_PIX_FMT_UYYVYY411",
+  "AV_PIX_FMT_BGR8",
+  "AV_PIX_FMT_BGR4",
+  "AV_PIX_FMT_BGR4_BYTE",
+  "AV_PIX_FMT_RGB8",
+  "AV_PIX_FMT_RGB4",
+  "AV_PIX_FMT_RGB4_BYTE",
+  "AV_PIX_FMT_NV12",
+  "AV_PIX_FMT_NV21",
+  "AV_PIX_FMT_ARGB",
+  "AV_PIX_FMT_RGBA",
+  "AV_PIX_FMT_ABGR",
+  "AV_PIX_FMT_BGRA",
+  "AV_PIX_FMT_GRAY16BE",
+  "AV_PIX_FMT_GRAY16LE",
+  "AV_PIX_FMT_YUV440P",
+  "AV_PIX_FMT_YUVJ440P",
+  "AV_PIX_FMT_YUVA420P",
+  "AV_PIX_FMT_RGB48BE",
+  "AV_PIX_FMT_RGB48LE",
+  "AV_PIX_FMT_RGB565BE",
+  "AV_PIX_FMT_RGB565LE",
+  "AV_PIX_FMT_RGB555BE",
+  "AV_PIX_FMT_RGB555LE",
+  "AV_PIX_FMT_BGR565BE",
+  "AV_PIX_FMT_BGR565LE",
+  "AV_PIX_FMT_BGR555BE",
+  "AV_PIX_FMT_BGR555LE",
+  "AV_PIX_FMT_VAAPI",
+  "AV_PIX_FMT_YUV420P16LE",
+  "AV_PIX_FMT_YUV420P16BE",
+  "AV_PIX_FMT_YUV422P16LE",
+  "AV_PIX_FMT_YUV422P16BE",
+  "AV_PIX_FMT_YUV444P16LE",
+  "AV_PIX_FMT_YUV444P16BE",
+  "AV_PIX_FMT_DXVA2_VLD",
+  "AV_PIX_FMT_RGB444LE",
+  "AV_PIX_FMT_RGB444BE",
+  "AV_PIX_FMT_BGR444LE",
+  "AV_PIX_FMT_BGR444BE",
+  "AV_PIX_FMT_YA8",
+  "AV_PIX_FMT_Y400A = AV_PIX_FMT_YA8",
+  "AV_PIX_FMT_GRAY8A= AV_PIX_FMT_YA8",
+  "AV_PIX_FMT_BGR48BE",
+  "AV_PIX_FMT_BGR48LE",
+  "AV_PIX_FMT_YUV420P9BE",
+  "AV_PIX_FMT_YUV420P9LE",
+  "AV_PIX_FMT_YUV420P10BE",
+  "AV_PIX_FMT_YUV420P10LE",
+  "AV_PIX_FMT_YUV422P10BE",
+  "AV_PIX_FMT_YUV422P10LE",
+  "AV_PIX_FMT_YUV444P9BE",
+  "AV_PIX_FMT_YUV444P9LE",
+  "AV_PIX_FMT_YUV444P10BE",
+  "AV_PIX_FMT_YUV444P10LE",
+  "AV_PIX_FMT_YUV422P9BE",
+  "AV_PIX_FMT_YUV422P9LE",
+  "AV_PIX_FMT_GBRP",
+  "AV_PIX_FMT_GBR24P = AV_PIX_FMT_GBRP",
+  "AV_PIX_FMT_GBRP9BE",
+  "AV_PIX_FMT_GBRP9LE",
+  "AV_PIX_FMT_GBRP10BE",
+  "AV_PIX_FMT_GBRP10LE",
+  "AV_PIX_FMT_GBRP16BE",
+  "AV_PIX_FMT_GBRP16LE",
+  "AV_PIX_FMT_YUVA422P",
+  "AV_PIX_FMT_YUVA444P",
+  "AV_PIX_FMT_YUVA420P9BE",
+  "AV_PIX_FMT_YUVA420P9LE",
+  "AV_PIX_FMT_YUVA422P9BE",
+  "AV_PIX_FMT_YUVA422P9LE",
+  "AV_PIX_FMT_YUVA444P9BE",
+  "AV_PIX_FMT_YUVA444P9LE",
+  "AV_PIX_FMT_YUVA420P10BE",
+  "AV_PIX_FMT_YUVA420P10LE",
+  "AV_PIX_FMT_YUVA422P10BE",
+  "AV_PIX_FMT_YUVA422P10LE",
+  "AV_PIX_FMT_YUVA444P10BE",
+  "AV_PIX_FMT_YUVA444P10LE",
+  "AV_PIX_FMT_YUVA420P16BE",
+  "AV_PIX_FMT_YUVA420P16LE",
+  "AV_PIX_FMT_YUVA422P16BE",
+  "AV_PIX_FMT_YUVA422P16LE",
+  "AV_PIX_FMT_YUVA444P16BE",
+  "AV_PIX_FMT_YUVA444P16LE",
+  "AV_PIX_FMT_VDPAU",
+  "AV_PIX_FMT_XYZ12LE",
+  "AV_PIX_FMT_XYZ12BE",
+  "AV_PIX_FMT_NV16",
+  "AV_PIX_FMT_NV20LE",
+  "AV_PIX_FMT_NV20BE",
+  "AV_PIX_FMT_RGBA64BE",
+  "AV_PIX_FMT_RGBA64LE",
+  "AV_PIX_FMT_BGRA64BE",
+  "AV_PIX_FMT_BGRA64LE",
+  "AV_PIX_FMT_YVYU422",
+  "AV_PIX_FMT_YA16BE",
+  "AV_PIX_FMT_YA16LE",
+  "AV_PIX_FMT_GBRAP",
+  "AV_PIX_FMT_GBRAP16BE",
+  "AV_PIX_FMT_GBRAP16LE",
+  "AV_PIX_FMT_QSV",
+  "AV_PIX_FMT_MMAL",
+  "AV_PIX_FMT_D3D11VA_VLD",
+  "AV_PIX_FMT_CUDA",
+  "AV_PIX_FMT_0RGB",
+  "AV_PIX_FMT_RGB0",
+  "AV_PIX_FMT_0BGR",
+  "AV_PIX_FMT_BGR0",
+  "AV_PIX_FMT_YUV420P12BE",
+  "AV_PIX_FMT_YUV420P12LE",
+  "AV_PIX_FMT_YUV420P14BE",
+  "AV_PIX_FMT_YUV420P14LE",
+  "AV_PIX_FMT_YUV422P12BE",
+  "AV_PIX_FMT_YUV422P12LE",
+  "AV_PIX_FMT_YUV422P14BE",
+  "AV_PIX_FMT_YUV422P14LE",
+  "AV_PIX_FMT_YUV444P12BE",
+  "AV_PIX_FMT_YUV444P12LE",
+  "AV_PIX_FMT_YUV444P14BE",
+  "AV_PIX_FMT_YUV444P14LE",
+  "AV_PIX_FMT_GBRP12BE",
+  "AV_PIX_FMT_GBRP12LE",
+  "AV_PIX_FMT_GBRP14BE",
+  "AV_PIX_FMT_GBRP14LE",
+  "AV_PIX_FMT_YUVJ411P",
+  "AV_PIX_FMT_BAYER_BGGR8",
+  "AV_PIX_FMT_BAYER_RGGB8",
+  "AV_PIX_FMT_BAYER_GBRG8",
+  "AV_PIX_FMT_BAYER_GRBG8",
+  "AV_PIX_FMT_BAYER_BGGR16LE",
+  "AV_PIX_FMT_BAYER_BGGR16BE",
+  "AV_PIX_FMT_BAYER_RGGB16LE",
+  "AV_PIX_FMT_BAYER_RGGB16BE",
+  "AV_PIX_FMT_BAYER_GBRG16LE",
+  "AV_PIX_FMT_BAYER_GBRG16BE",
+  "AV_PIX_FMT_BAYER_GRBG16LE",
+  "AV_PIX_FMT_BAYER_GRBG16BE",
+  "AV_PIX_FMT_XVMC",
+  "AV_PIX_FMT_YUV440P10LE",
+  "AV_PIX_FMT_YUV440P10BE",
+  "AV_PIX_FMT_YUV440P12LE",
+  "AV_PIX_FMT_YUV440P12BE",
+  "AV_PIX_FMT_AYUV64LE",
+  "AV_PIX_FMT_AYUV64BE",
+  "AV_PIX_FMT_VIDEOTOOLBOX",
+  "AV_PIX_FMT_P010LE",
+  "AV_PIX_FMT_P010BE",
+  "AV_PIX_FMT_GBRAP12BE",
+  "AV_PIX_FMT_GBRAP12LE",
+  "AV_PIX_FMT_GBRAP10BE",
+  "AV_PIX_FMT_GBRAP10LE",
+  "AV_PIX_FMT_MEDIACODEC",
+  "AV_PIX_FMT_GRAY12BE",
+  "AV_PIX_FMT_GRAY12LE",
+  "AV_PIX_FMT_GRAY10BE",
+  "AV_PIX_FMT_GRAY10LE",
+  "AV_PIX_FMT_P016LE",
+  "AV_PIX_FMT_P016BE",
+  "AV_PIX_FMT_D3D11",
+  "AV_PIX_FMT_GRAY9BE",
+  "AV_PIX_FMT_GRAY9LE",
+  "AV_PIX_FMT_GBRPF32BE",
+  "AV_PIX_FMT_GBRPF32LE",
+  "AV_PIX_FMT_GBRAPF32BE",
+  "AV_PIX_FMT_GBRAPF32LE",
+  "AV_PIX_FMT_DRM_PRIME",
+  "AV_PIX_FMT_OPENCL",
+  "AV_PIX_FMT_GRAY14BE",
+  "AV_PIX_FMT_GRAY14LE",
+  "AV_PIX_FMT_GRAYF32BE",
+  "AV_PIX_FMT_GRAYF32LE",
+  "AV_PIX_FMT_YUVA422P12BE",
+  "AV_PIX_FMT_YUVA422P12LE",
+  "AV_PIX_FMT_YUVA444P12BE",
+  "AV_PIX_FMT_YUVA444P12LE",
+  "AV_PIX_FMT_NV24",
+  "AV_PIX_FMT_NV42",
+  "AV_PIX_FMT_VULKAN",
+  "AV_PIX_FMT_Y210BE",
+  "AV_PIX_FMT_Y210LE",
+  "AV_PIX_FMT_X2RGB10LE",
+  "AV_PIX_FMT_X2RGB10BE",
+  "AV_PIX_FMT_X2BGR10LE",
+  "AV_PIX_FMT_X2BGR10BE",
+  "AV_PIX_FMT_P210BE",
+  "AV_PIX_FMT_P210LE",
+  "AV_PIX_FMT_P410BE",
+  "AV_PIX_FMT_P410LE",
+  "AV_PIX_FMT_P216BE",
+  "AV_PIX_FMT_P216LE",
+  "AV_PIX_FMT_P416BE",
+  "AV_PIX_FMT_P416LE",
+  "AV_PIX_FMT_VUYA",
+  "AV_PIX_FMT_RGBAF16BE",
+  "AV_PIX_FMT_RGBAF16LE",
+  "AV_PIX_FMT_VUYX",
+  "AV_PIX_FMT_P012LE",
+  "AV_PIX_FMT_P012BE",
+  "AV_PIX_FMT_Y212BE",
+  "AV_PIX_FMT_Y212LE",
+  "AV_PIX_FMT_XV30BE",
+  "AV_PIX_FMT_XV30LE",
+  "AV_PIX_FMT_XV36BE",
+  "AV_PIX_FMT_XV36LE",
+  "AV_PIX_FMT_RGBF32BE",
+  "AV_PIX_FMT_RGBF32LE",
+  "AV_PIX_FMT_RGBAF32BE",
+  "AV_PIX_FMT_RGBAF32LE",
+  "AV_PIX_FMT_P212BE",
+  "AV_PIX_FMT_P212LE",
+  "AV_PIX_FMT_P412BE",
+  "AV_PIX_FMT_P412LE",
+  "AV_PIX_FMT_GBRAP14BE",
+  "AV_PIX_FMT_GBRAP14LE",
+  "AV_PIX_FMT_D3D12",
+  "AV_PIX_FMT_NB\n;\nenum AVColorPrimaries \n    AVCOL_PRI_RESERVED0 = 0",
+  "AVCOL_PRI_BT709 = 1",
+  "AVCOL_PRI_UNSPECIFIED = 2",
+  "AVCOL_PRI_RESERVED = 3",
+  "AVCOL_PRI_BT470M = 4",
+  "AVCOL_PRI_BT470BG = 5",
+  "AVCOL_PRI_SMPTE170M = 6",
+  "AVCOL_PRI_SMPTE240M = 7",
+  "AVCOL_PRI_FILM = 8",
+  "AVCOL_PRI_BT2020 = 9",
+  "AVCOL_PRI_SMPTE428 = 10",
+  "AVCOL_PRI_SMPTEST428_1 = AVCOL_PRI_SMPTE428",
+  "AVCOL_PRI_SMPTE431 = 11",
+  "AVCOL_PRI_SMPTE432 = 12",
+  "AVCOL_PRI_EBU3213 = 22",
+  "AVCOL_PRI_JEDEC_P22 = AVCOL_PRI_EBU3213",
+  "AVCOL_PRI_NB\n;\n\n\n\n\n\nenum AVColorTransferCharacteristic \n    AVCOL_TRC_RESERVED0 = 0",
+  "AVCOL_TRC_BT709 = 1",
+  "AVCOL_TRC_UNSPECIFIED = 2",
+  "AVCOL_TRC_RESERVED = 3",
+  "AVCOL_TRC_GAMMA22 = 4",
+  "AVCOL_TRC_GAMMA28 = 5",
+  "AVCOL_TRC_SMPTE170M = 6",
+  "AVCOL_TRC_SMPTE240M = 7",
+  "AVCOL_TRC_LINEAR = 8",
+  "AVCOL_TRC_LOG = 9",
+  "AVCOL_TRC_LOG_SQRT = 10",
+  "AVCOL_TRC_IEC61966_2_4 = 11",
+  "AVCOL_TRC_BT1361_ECG = 12",
+  "AVCOL_TRC_IEC61966_2_1 = 13",
+  "AVCOL_TRC_BT2020_10 = 14",
+  "AVCOL_TRC_BT2020_12 = 15",
+  "AVCOL_TRC_SMPTE2084 = 16",
+  "AVCOL_TRC_SMPTEST2084 = AVCOL_TRC_SMPTE2084",
+  "AVCOL_TRC_SMPTE428 = 17",
+  "AVCOL_TRC_SMPTEST428_1 = AVCOL_TRC_SMPTE428",
+  "AVCOL_TRC_ARIB_STD_B67 = 18",
+  "AVCOL_TRC_NB\n;\n\n\n\n\n\nenum AVColorSpace \n    AVCOL_SPC_RGB = 0",
+  "AVCOL_SPC_BT709 = 1",
+  "AVCOL_SPC_UNSPECIFIED = 2",
+  "AVCOL_SPC_RESERVED = 3",
+  "AVCOL_SPC_FCC = 4",
+  "AVCOL_SPC_BT470BG = 5",
+  "AVCOL_SPC_SMPTE170M = 6",
+  "AVCOL_SPC_SMPTE240M = 7",
+  "AVCOL_SPC_YCGCO = 8",
+  "AVCOL_SPC_YCOCG = AVCOL_SPC_YCGCO",
+  "AVCOL_SPC_BT2020_NCL = 9",
+  "AVCOL_SPC_BT2020_CL = 10",
+  "AVCOL_SPC_SMPTE2085 = 11",
+  "AVCOL_SPC_CHROMA_DERIVED_NCL = 12",
+  "AVCOL_SPC_CHROMA_DERIVED_CL = 13",
+  "AVCOL_SPC_ICTCP = 14",
+  "AVCOL_SPC_NB\n;\nenum AVColorRange \n    AVCOL_RANGE_UNSPECIFIED = 0",
+  "AVCOL_RANGE_MPEG = 1",
+  "AVCOL_RANGE_JPEG = 2",
+  "AVCOL_RANGE_NB\n;\nenum AVChromaLocation \n    AVCHROMA_LOC_UNSPECIFIED = 0",
+  "AVCHROMA_LOC_LEFT = 1",
+  "AVCHROMA_LOC_CENTER = 2",
+  "AVCHROMA_LOC_TOPLEFT = 3",
+  "AVCHROMA_LOC_TOP = 4",
+  "AVCHROMA_LOC_BOTTOMLEFT = 5",
+  "AVCHROMA_LOC_BOTTOM = 6",
+  "AVCHROMA_LOC_NB\n;\n\n\n\n\nstatic inline void *av_x_if_null(const void *p, const void *x)\n\n    return (void *)(intptr_t)(p ? p : x);\n\nunsigned av_int_list_length_for_size(unsigned elsize,\n                                     const void *list, uint64_t term) __attribute__((pure));\n__attribute__((deprecated))\nFILE *av_fopen_utf8(const char *path, const char *mode);\n\n\n\n\n\nAVRational av_get_time_base_q(void);\nchar *av_fourcc_make_string(char *buf, uint32_t fourcc);\nenum AVChannel \n\n    AV_CHAN_NONE = -1",
+  "AV_CHAN_FRONT_LEFT",
+  "AV_CHAN_FRONT_RIGHT",
+  "AV_CHAN_FRONT_CENTER",
+  "AV_CHAN_LOW_FREQUENCY",
+  "AV_CHAN_BACK_LEFT",
+  "AV_CHAN_BACK_RIGHT",
+  "AV_CHAN_FRONT_LEFT_OF_CENTER",
+  "AV_CHAN_FRONT_RIGHT_OF_CENTER",
+  "AV_CHAN_BACK_CENTER",
+  "AV_CHAN_SIDE_LEFT",
+  "AV_CHAN_SIDE_RIGHT",
+  "AV_CHAN_TOP_CENTER",
+  "AV_CHAN_TOP_FRONT_LEFT",
+  "AV_CHAN_TOP_FRONT_CENTER",
+  "AV_CHAN_TOP_FRONT_RIGHT",
+  "AV_CHAN_TOP_BACK_LEFT",
+  "AV_CHAN_TOP_BACK_CENTER",
+  "AV_CHAN_TOP_BACK_RIGHT",
+  "AV_CHAN_STEREO_LEFT = 29",
+  "AV_CHAN_STEREO_RIGHT",
+  "AV_CHAN_WIDE_LEFT",
+  "AV_CHAN_WIDE_RIGHT",
+  "AV_CHAN_SURROUND_DIRECT_LEFT",
+  "AV_CHAN_SURROUND_DIRECT_RIGHT",
+  "AV_CHAN_LOW_FREQUENCY_2",
+  "AV_CHAN_TOP_SIDE_LEFT",
+  "AV_CHAN_TOP_SIDE_RIGHT",
+  "AV_CHAN_BOTTOM_FRONT_CENTER",
+  "AV_CHAN_BOTTOM_FRONT_LEFT",
+  "AV_CHAN_BOTTOM_FRONT_RIGHT",
+  "AV_CHAN_UNUSED = 0x200",
+  "AV_CHAN_UNKNOWN = 0x300",
+  "AV_CHAN_AMBISONIC_BASE = 0x400",
+  "AV_CHAN_AMBISONIC_END = 0x7ff",
+  ";\n\nenum AVChannelOrder \n\n\n\n\n    AV_CHANNEL_ORDER_UNSPEC",
+  "AV_CHANNEL_ORDER_NATIVE",
+  "AV_CHANNEL_ORDER_CUSTOM",
+  "AV_CHANNEL_ORDER_AMBISONIC",
+  ";\nenum AVMatrixEncoding \n    AV_MATRIX_ENCODING_NONE",
+  "AV_MATRIX_ENCODING_DOLBY",
+  "AV_MATRIX_ENCODING_DPLII",
+  "AV_MATRIX_ENCODING_DPLIIX",
+  "AV_MATRIX_ENCODING_DPLIIZ",
+  "AV_MATRIX_ENCODING_DOLBYEX",
+  "AV_MATRIX_ENCODING_DOLBYHEADPHONE",
+  [
+    "AV_MATRIX_ENCODING_NB\n;\ntypedef struct AVChannelCustom \n    enum AVChannel id;\n    char name[16];\n    void *opaque;\n AVChannelCustom;\ntypedef struct AVChannelLayout \n\n\n\n\n    enum AVChannelOrder order;\n\n\n\n\n    int nb_channels;\n\n\n\n\n\n\n    union \n        uint64_t mask;\n        AVChannelCustom *map;"
+  ],
+  "u;\n\n\n\n\n    void *opaque;\n AVChannelLayout;\nstruct AVBPrint;\n__attribute__((deprecated))\nuint64_t av_get_channel_layout(const char *name);\n__attribute__((deprecated))\nint av_get_extended_channel_layout(const char *name, uint64_t* channel_layout, int* nb_channels);\n__attribute__((deprecated))\nvoid av_get_channel_layout_string(char *buf, int buf_size, int nb_channels, uint64_t channel_layout);\n\n\n\n\n\n__attribute__((deprecated))\nvoid av_bprint_channel_layout(struct AVBPrint *bp, int nb_channels, uint64_t channel_layout);\n\n\n\n\n\n__attribute__((deprecated))\nint av_get_channel_layout_nb_channels(uint64_t channel_layout);\n\n\n\n\n\n\n__attribute__((deprecated))\nint64_t av_get_default_channel_layout(int nb_channels);\n__attribute__((deprecated))\nint av_get_channel_layout_channel_index(uint64_t channel_layout,\n                                        uint64_t channel);\n\n\n\n\n\n__attribute__((deprecated))\nuint64_t av_channel_layout_extract_channel(uint64_t channel_layout, int index);\n__attribute__((deprecated))\nconst char *av_get_channel_name(uint64_t channel);\n__attribute__((deprecated))\nconst char *av_get_channel_description(uint64_t channel);\n__attribute__((deprecated))\nint av_get_standard_channel_layout(unsigned index, uint64_t *layout,\n                                   const char **name);\nint av_channel_name(char *buf, size_t buf_size, enum AVChannel channel);\n\n\n\n\n\n\nvoid av_channel_name_bprint(struct AVBPrint *bp, enum AVChannel channel_id);\nint av_channel_description(char *buf, size_t buf_size, enum AVChannel channel);\n\n\n\n\n\n\nvoid av_channel_description_bprint(struct AVBPrint *bp, enum AVChannel channel_id);\n\n\n\n\n\n\n\nenum AVChannel av_channel_from_string(const char *name);\nint av_channel_layout_from_mask(AVChannelLayout *channel_layout, uint64_t mask);\nint av_channel_layout_from_string(AVChannelLayout *channel_layout,\n                                  const char *str);\n\n\n\n\n\n\n\nvoid av_channel_layout_default(AVChannelLayout *ch_layout, int nb_channels);\nconst AVChannelLayout *av_channel_layout_standard(void **opaque);\n\n\n\n\n\n\n\nvoid av_channel_layout_uninit(AVChannelLayout *channel_layout);\nint av_channel_layout_copy(AVChannelLayout *dst, const AVChannelLayout *src);\nint av_channel_layout_describe(const AVChannelLayout *channel_layout,\n                               char *buf, size_t buf_size);\n\n\n\n\n\n\n\nint av_channel_layout_describe_bprint(const AVChannelLayout *channel_layout,\n                                      struct AVBPrint *bp);\nenum AVChannel\nav_channel_layout_channel_from_index(const AVChannelLayout *channel_layout, unsigned int idx);\nint av_channel_layout_index_from_channel(const AVChannelLayout *channel_layout,\n                                         enum AVChannel channel);\nint av_channel_layout_index_from_string(const AVChannelLayout *channel_layout,\n                                        const char *name);\nenum AVChannel\nav_channel_layout_channel_from_string(const AVChannelLayout *channel_layout,\n                                      const char *name);\nuint64_t av_channel_layout_subset(const AVChannelLayout *channel_layout,\n                                  uint64_t mask);\nint av_channel_layout_check(const AVChannelLayout *channel_layout);\nint av_channel_layout_compare(const AVChannelLayout *chl, const AVChannelLayout *chl1);\ntypedef struct AVDictionaryEntry \n    char *key;\n    char *value;\n AVDictionaryEntry;\n\ntypedef struct AVDictionary AVDictionary;\nAVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key,\n                               const AVDictionaryEntry *prev, int flags);\nconst AVDictionaryEntry *av_dict_iterate(const AVDictionary *m,\n                                         const AVDictionaryEntry *prev);\n\n\n\n\n\n\n\nint av_dict_count(const AVDictionary *m);\nint av_dict_set(AVDictionary **pm, const char *key, const char *value, int flags);\n\n\n\n\n\n\n\nint av_dict_set_int(AVDictionary **pm, const char *key, int64_t value, int flags);\nint av_dict_parse_string(AVDictionary **pm, const char *str,\n                         const char *key_val_sep, const char *pairs_sep,\n                         int flags);\nint av_dict_copy(AVDictionary **dst, const AVDictionary *src, int flags);\n\n\n\n\n\nvoid av_dict_free(AVDictionary **m);\nint av_dict_get_string(const AVDictionary *m, char **buffer,\n                       const char key_val_sep, const char pairs_sep);\n\n\nenum AVSampleFormat \n    AV_SAMPLE_FMT_NONE = -1",
+  "AV_SAMPLE_FMT_U8",
+  "AV_SAMPLE_FMT_S16",
+  "AV_SAMPLE_FMT_S32",
+  "AV_SAMPLE_FMT_FLT",
+  "AV_SAMPLE_FMT_DBL",
+  "AV_SAMPLE_FMT_U8P",
+  "AV_SAMPLE_FMT_S16P",
+  "AV_SAMPLE_FMT_S32P",
+  "AV_SAMPLE_FMT_FLTP",
+  "AV_SAMPLE_FMT_DBLP",
+  "AV_SAMPLE_FMT_S64",
+  "AV_SAMPLE_FMT_S64P",
+  "AV_SAMPLE_FMT_NB\n;\n\n\n\n\n\nconst char *av_get_sample_fmt_name(enum AVSampleFormat sample_fmt);\n\n\n\n\n\nenum AVSampleFormat av_get_sample_fmt(const char *name);\n\n\n\n\n\n\n\nenum AVSampleFormat av_get_alt_sample_fmt(enum AVSampleFormat sample_fmt, int planar);\nenum AVSampleFormat av_get_packed_sample_fmt(enum AVSampleFormat sample_fmt);\nenum AVSampleFormat av_get_planar_sample_fmt(enum AVSampleFormat sample_fmt);\nchar *av_get_sample_fmt_string(char *buf, int buf_size, enum AVSampleFormat sample_fmt);\nint av_get_bytes_per_sample(enum AVSampleFormat sample_fmt);\n\n\n\n\n\n\n\nint av_sample_fmt_is_planar(enum AVSampleFormat sample_fmt);\nint av_samples_get_buffer_size(int *linesize, int nb_channels, int nb_samples,\n                               enum AVSampleFormat sample_fmt, int align);\nint av_samples_fill_arrays(uint8_t **audio_data, int *linesize,\n                           const uint8_t *buf,\n                           int nb_channels, int nb_samples,\n                           enum AVSampleFormat sample_fmt, int align);\nint av_samples_alloc(uint8_t **audio_data, int *linesize, int nb_channels,\n                     int nb_samples, enum AVSampleFormat sample_fmt, int align);\nint av_samples_alloc_array_and_samples(uint8_t ***audio_data, int *linesize, int nb_channels,\n                                       int nb_samples, enum AVSampleFormat sample_fmt, int align);\nint av_samples_copy(uint8_t * const *dst, uint8_t * const *src, int dst_offset,\n                    int src_offset, int nb_samples, int nb_channels,\n                    enum AVSampleFormat sample_fmt);\nint av_samples_set_silence(uint8_t * const *audio_data, int offset, int nb_samples,\n                           int nb_channels, enum AVSampleFormat sample_fmt);\nenum AVOptionType\n    AV_OPT_TYPE_FLAGS",
+  "AV_OPT_TYPE_INT",
+  "AV_OPT_TYPE_INT64",
+  "AV_OPT_TYPE_DOUBLE",
+  "AV_OPT_TYPE_FLOAT",
+  "AV_OPT_TYPE_STRING",
+  "AV_OPT_TYPE_RATIONAL",
+  "AV_OPT_TYPE_BINARY",
+  "AV_OPT_TYPE_DICT",
+  "AV_OPT_TYPE_UINT64",
+  "AV_OPT_TYPE_CONST",
+  "AV_OPT_TYPE_IMAGE_SIZE",
+  "AV_OPT_TYPE_PIXEL_FMT",
+  "AV_OPT_TYPE_SAMPLE_FMT",
+  "AV_OPT_TYPE_VIDEO_RATE",
+  "AV_OPT_TYPE_DURATION",
+  "AV_OPT_TYPE_COLOR",
+  "AV_OPT_TYPE_CHANNEL_LAYOUT",
+  "AV_OPT_TYPE_BOOL",
+  "AV_OPT_TYPE_CHLAYOUT",
+  [
+    ";\n\n\n\n\ntypedef struct AVOption \n    const char *name;\n\n\n\n\n\n    const char *help;\n\n\n\n\n\n    int offset;\n    enum AVOptionType type;\n\n\n\n\n    union \n        int64_t i64;\n        double dbl;\n        const char *str;\n\n        AVRational q;"
+  ],
+  "default_val;\n    double min;\n    double max;\n\n    int flags;\n    const char *unit;\n AVOption;\n\n\n\n\ntypedef struct AVOptionRange \n    const char *str;\n\n\n\n\n\n    double value_min",
+  "value_max;\n\n\n\n\n    double component_min",
+  "component_max;\n\n\n\n\n    int is_range;\n AVOptionRange;\n\n\n\n\ntypedef struct AVOptionRanges \n    AVOptionRange **range;\n\n\n\n    int nb_ranges;\n\n\n\n    int nb_components;\n AVOptionRanges;\nint av_opt_show2(void *obj, void *av_log_obj, int req_flags, int rej_flags);\n\n\n\n\n\n\nvoid av_opt_set_defaults(void *s);\nvoid av_opt_set_defaults2(void *s, int mask, int flags);\nint av_set_options_string(void *ctx, const char *opts,\n                          const char *key_val_sep, const char *pairs_sep);\nint av_opt_set_from_string(void *ctx, const char *opts,\n                           const char *const *shorthand,\n                           const char *key_val_sep, const char *pairs_sep);\n\n\n\nvoid av_opt_free(void *obj);\nint av_opt_flag_is_set(void *obj, const char *field_name, const char *flag_name);\nint av_opt_set_dict(void *obj, struct AVDictionary **options);\nint av_opt_set_dict2(void *obj, struct AVDictionary **options, int search_flags);\nint av_opt_get_key_value(const char **ropts,\n                         const char *key_val_sep, const char *pairs_sep,\n                         unsigned flags,\n                         char **rkey, char **rval);\n\nenum \n\n\n\n\n\n    AV_OPT_FLAG_IMPLICIT_KEY = 1",
+  ";\nint av_opt_eval_flags (void *obj, const AVOption *o, const char *val, int *flags_out);\nint av_opt_eval_int (void *obj, const AVOption *o, const char *val, int *int_out);\nint av_opt_eval_int64 (void *obj, const AVOption *o, const char *val, int64_t *int64_out);\nint av_opt_eval_float (void *obj, const AVOption *o, const char *val, float *float_out);\nint av_opt_eval_double(void *obj, const AVOption *o, const char *val, double *double_out);\nint av_opt_eval_q (void *obj, const AVOption *o, const char *val, AVRational *q_out);\nconst AVOption *av_opt_find(void *obj, const char *name, const char *unit,\n                            int opt_flags, int search_flags);\nconst AVOption *av_opt_find2(void *obj, const char *name, const char *unit,\n                             int opt_flags, int search_flags, void **target_obj);\nconst AVOption *av_opt_next(const void *obj, const AVOption *prev);\n\n\n\n\n\n\n\nvoid *av_opt_child_next(void *obj, void *prev);\n\n\n\n\n\n\n\nconst AVClass *av_opt_child_class_iterate(const AVClass *parent, void **iter);\nint av_opt_set (void *obj, const char *name, const char *val, int search_flags);\nint av_opt_set_int (void *obj, const char *name, int64_t val, int search_flags);\nint av_opt_set_double (void *obj, const char *name, double val, int search_flags);\nint av_opt_set_q (void *obj, const char *name, AVRational val, int search_flags);\nint av_opt_set_bin (void *obj, const char *name, const uint8_t *val, int size, int search_flags);\nint av_opt_set_image_size(void *obj, const char *name, int w, int h, int search_flags);\nint av_opt_set_pixel_fmt (void *obj, const char *name, enum AVPixelFormat fmt, int search_flags);\nint av_opt_set_sample_fmt(void *obj, const char *name, enum AVSampleFormat fmt, int search_flags);\nint av_opt_set_video_rate(void *obj, const char *name, AVRational val, int search_flags);\n\n__attribute__((deprecated))\nint av_opt_set_channel_layout(void *obj, const char *name, int64_t ch_layout, int search_flags);\n\nint av_opt_set_chlayout(void *obj, const char *name, const AVChannelLayout *layout, int search_flags);\n\n\n\n\nint av_opt_set_dict_val(void *obj, const char *name, const AVDictionary *val, int search_flags);\nint av_opt_get (void *obj, const char *name, int search_flags, uint8_t **out_val);\nint av_opt_get_int (void *obj, const char *name, int search_flags, int64_t *out_val);\nint av_opt_get_double (void *obj, const char *name, int search_flags, double *out_val);\nint av_opt_get_q (void *obj, const char *name, int search_flags, AVRational *out_val);\nint av_opt_get_image_size(void *obj, const char *name, int search_flags, int *w_out, int *h_out);\nint av_opt_get_pixel_fmt (void *obj, const char *name, int search_flags, enum AVPixelFormat *out_fmt);\nint av_opt_get_sample_fmt(void *obj, const char *name, int search_flags, enum AVSampleFormat *out_fmt);\nint av_opt_get_video_rate(void *obj, const char *name, int search_flags, AVRational *out_val);\n\n__attribute__((deprecated))\nint av_opt_get_channel_layout(void *obj, const char *name, int search_flags, int64_t *ch_layout);\n\nint av_opt_get_chlayout(void *obj, const char *name, int search_flags, AVChannelLayout *layout);\n\n\n\n\nint av_opt_get_dict_val(void *obj, const char *name, int search_flags, AVDictionary **out_val);\nvoid *av_opt_ptr(const AVClass *avclass, void *obj, const char *name);\n\n\n\n\nvoid av_opt_freep_ranges(AVOptionRanges **ranges);\nint av_opt_query_ranges(AVOptionRanges **, void *obj, const char *key, int flags);\nint av_opt_copy(void *dest, const void *src);\nint av_opt_query_ranges_default(AVOptionRanges **, void *obj, const char *key, int flags);\nint av_opt_is_set_to_default(void *obj, const AVOption *o);\nint av_opt_is_set_to_default_by_name(void *obj, const char *name, int search_flags);\nint av_opt_serialize(void *obj, int opt_flags, int flags, char **buffer,\n                     const char key_val_sep, const char pairs_sep);\n\ntypedef struct AVComponentDescriptor \n\n\n\n    int plane;\n\n\n\n\n\n    int step;\n\n\n\n\n\n    int offset;\n\n\n\n\n\n    int shift;\n\n\n\n\n    int depth;\n AVComponentDescriptor;\ntypedef struct AVPixFmtDescriptor \n    const char *name;\n    uint8_t nb_components;\n    uint8_t log2_chroma_w;\n    uint8_t log2_chroma_h;\n\n\n\n\n    uint64_t flags;\n    AVComponentDescriptor comp[4];\n\n\n\n\n    const char *alias;\n AVPixFmtDescriptor;\nint av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc);\n\n\n\n\n\nint av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc);\n\n\n\n\n\nconst AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt);\nconst AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev);\n\n\n\n\n\nenum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc);\nint av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt,\n                                     int *h_shift, int *v_shift);\n\n\n\n\n\nint av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt);\n\n\n\n\nconst char *av_color_range_name(enum AVColorRange range);\n\n\n\n\nint av_color_range_from_name(const char *name);\n\n\n\n\nconst char *av_color_primaries_name(enum AVColorPrimaries primaries);\n\n\n\n\nint av_color_primaries_from_name(const char *name);\n\n\n\n\nconst char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer);\n\n\n\n\nint av_color_transfer_from_name(const char *name);\n\n\n\n\nconst char *av_color_space_name(enum AVColorSpace space);\n\n\n\n\nint av_color_space_from_name(const char *name);\n\n\n\n\nconst char *av_chroma_location_name(enum AVChromaLocation location);\n\n\n\n\nint av_chroma_location_from_name(const char *name);\nint av_chroma_location_enum_to_pos(int *xpos, int *ypos, enum AVChromaLocation pos);\nenum AVChromaLocation av_chroma_location_pos_to_enum(int xpos, int ypos);\nenum AVPixelFormat av_get_pix_fmt(const char *name);\n\n\n\n\n\n\n\nconst char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt);\nchar *av_get_pix_fmt_string(char *buf, int buf_size,\n                            enum AVPixelFormat pix_fmt);\nvoid av_read_image_line2(void *dst, const uint8_t *data[4],\n                        const int linesize[4], const AVPixFmtDescriptor *desc,\n                        int x, int y, int c, int w, int read_pal_component,\n                        int dst_element_size);\n\nvoid av_read_image_line(uint16_t *dst, const uint8_t *data[4],\n                        const int linesize[4], const AVPixFmtDescriptor *desc,\n                        int x, int y, int c, int w, int read_pal_component);\nvoid av_write_image_line2(const void *src, uint8_t *data[4],\n                         const int linesize[4], const AVPixFmtDescriptor *desc,\n                         int x, int y, int c, int w, int src_element_size);\n\nvoid av_write_image_line(const uint16_t *src, uint8_t *data[4],\n                         const int linesize[4], const AVPixFmtDescriptor *desc,\n                         int x, int y, int c, int w);\nenum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt);\nint av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt,\n                        enum AVPixelFormat src_pix_fmt,\n                        int has_alpha);\nenum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,\n                                             enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);\nvoid av_image_fill_max_pixsteps(int max_pixsteps[4], int max_pixstep_comps[4],\n                                const AVPixFmtDescriptor *pixdesc);\n\n\n\n\n\n\n\nint av_image_get_linesize(enum AVPixelFormat pix_fmt, int width, int plane);\nint av_image_fill_linesizes(int linesizes[4], enum AVPixelFormat pix_fmt, int width);\nint av_image_fill_plane_sizes(size_t size[4], enum AVPixelFormat pix_fmt,\n                              int height, const ptrdiff_t linesizes[4]);\nint av_image_fill_pointers(uint8_t *data[4], enum AVPixelFormat pix_fmt, int height,\n                           uint8_t *ptr, const int linesizes[4]);\nint av_image_alloc(uint8_t *pointers[4], int linesizes[4],\n                   int w, int h, enum AVPixelFormat pix_fmt, int align);\nvoid av_image_copy_plane(uint8_t *dst, int dst_linesize,\n                         const uint8_t *src, int src_linesize,\n                         int bytewidth, int height);\nvoid av_image_copy_plane_uc_from(uint8_t *dst, ptrdiff_t dst_linesize,\n                                 const uint8_t *src, ptrdiff_t src_linesize,\n                                 ptrdiff_t bytewidth, int height);\nvoid av_image_copy(uint8_t * const dst_data[4], const int dst_linesizes[4],\n                   const uint8_t * const src_data[4], const int src_linesizes[4],\n                   enum AVPixelFormat pix_fmt, int width, int height);\n\n\n\n\n\n\n\nstatic inline\nvoid av_image_copy2(uint8_t * const dst_data[4], const int dst_linesizes[4],\n                    uint8_t * const src_data[4], const int src_linesizes[4],\n                    enum AVPixelFormat pix_fmt, int width, int height)\n\n    av_image_copy(dst_data, dst_linesizes,\n                  (const uint8_t * const *)src_data",
+  "src_linesizes",
+  "pix_fmt",
+  "width",
+  "height);\n\nvoid av_image_copy_uc_from(uint8_t * const dst_data[4], const ptrdiff_t dst_linesizes[4],\n                           const uint8_t * const src_data[4], const ptrdiff_t src_linesizes[4],\n                           enum AVPixelFormat pix_fmt, int width, int height);\nint av_image_fill_arrays(uint8_t *dst_data[4], int dst_linesize[4],\n                         const uint8_t *src,\n                         enum AVPixelFormat pix_fmt, int width, int height, int align);\nint av_image_get_buffer_size(enum AVPixelFormat pix_fmt, int width, int height, int align);\nint av_image_copy_to_buffer(uint8_t *dst, int dst_size,\n                            const uint8_t * const src_data[4], const int src_linesize[4],\n                            enum AVPixelFormat pix_fmt, int width, int height, int align);\nint av_image_check_size(unsigned int w, unsigned int h, int log_offset, void *log_ctx);\nint av_image_check_size2(unsigned int w, unsigned int h, int64_t max_pixels, enum AVPixelFormat pix_fmt, int log_offset, void *log_ctx);\nint av_image_check_sar(unsigned int w, unsigned int h, AVRational sar);\nint av_image_fill_black(uint8_t * const dst_data[4], const ptrdiff_t dst_linesize[4],\n                        enum AVPixelFormat pix_fmt, enum AVColorRange range,\n                        int width, int height);\nint av_image_fill_color(uint8_t * const dst_data[4], const ptrdiff_t dst_linesize[4],\n                        enum AVPixelFormat pix_fmt, const uint32_t color[4],\n                        int width, int height, int flags);\ntypedef struct AVLFG \n    unsigned int state[64];\n    int index;\n AVLFG;\n\nvoid av_lfg_init(AVLFG *c, unsigned int seed);\n\n\n\n\n\n\nint av_lfg_init_from_data(AVLFG *c, const uint8_t *data, unsigned int length);\n\n\n\n\n\n\n\nstatic inline unsigned int av_lfg_get(AVLFG *c)\n    unsigned a = c->state[c->index & 63] = c->state[(c->index-24) & 63] + c->state[(c->index-55) & 63];\n    c->index += 1U;\n    return a;\n\n\n\n\n\n\n\nstatic inline unsigned int av_mlfg_get(AVLFG *c)\n    unsigned int a= c->state[(c->index-55) & 63];\n    unsigned int b= c->state[(c->index-24) & 63];\n    a = c->state[c->index & 63] = 2*a*b+a+b;\n    c->index += 1U;\n    return a;\n\nvoid av_bmg_get(AVLFG *lfg, double out[2]);\ntypedef __darwin_clock_t clock_t;\n\n\ntypedef __darwin_time_t time_t;\nstruct timespec\n\n __darwin_time_t tv_sec;\n long tv_nsec;\n;\n\nstruct tm \n int tm_sec;\n int tm_min;\n int tm_hour;\n int tm_mday;\n int tm_mon;\n int tm_year;\n int tm_wday;\n int tm_yday;\n int tm_isdst;\n long tm_gmtoff;\n char *tm_zone;\n;\nextern char *tzname[];\n\n\nextern int getdate_err;\n\nextern long timezone __asm(\"_\" \"timezone\" );\n\nextern int daylight;\n\n\nchar *asctime(const struct tm *);\nclock_t clock(void) __asm(\"_\" \"clock\" );\nchar *ctime(const time_t *);\ndouble difftime(time_t, time_t);\nstruct tm *getdate(const char *);\nstruct tm *gmtime(const time_t *);\nstruct tm *localtime(const time_t *);\ntime_t mktime(struct tm *) __asm(\"_\" \"mktime\" );\nsize_t strftime(char * restrict, size_t, const char * restrict, const struct tm * restrict) __asm(\"_\" \"strftime\" );\nchar *strptime(const char * restrict, const char * restrict, struct tm * restrict) __asm(\"_\" \"strptime\" );\ntime_t time(time_t *);\n\n\nvoid tzset(void);\n\n\n\nchar *asctime_r(const struct tm * restrict, char * restrict);\nchar *ctime_r(const time_t *, char *);\nstruct tm *gmtime_r(const time_t * restrict, struct tm * restrict);\nstruct tm *localtime_r(const time_t * restrict, struct tm * restrict);\n\n\ntime_t posix2time(time_t);\n\n\n\nvoid tzsetwall(void);\ntime_t time2posix(time_t);\ntime_t timelocal(struct tm * const);\ntime_t timegm(struct tm * const);\n\n\n\nint nanosleep(const struct timespec *__rqtp, struct timespec *__rmtp) __asm(\"_\" \"nanosleep\" );\ntypedef enum \n_CLOCK_REALTIME __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 0",
+  "_CLOCK_MONOTONIC __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 6",
+  "_CLOCK_MONOTONIC_RAW __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 4",
+  "_CLOCK_MONOTONIC_RAW_APPROX __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 5",
+  "_CLOCK_UPTIME_RAW __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 8",
+  "_CLOCK_UPTIME_RAW_APPROX __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 9",
+  "_CLOCK_PROCESS_CPUTIME_ID __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 12",
+  "_CLOCK_THREAD_CPUTIME_ID __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 16\n\n clockid_t;\n\n__attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)))\nint clock_getres(clockid_t __clock_id, struct timespec *__res);\n\n__attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)))\nint clock_gettime(clockid_t __clock_id, struct timespec *__tp);\n\n\n__attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)))\n__uint64_t clock_gettime_nsec_np(clockid_t __clock_id);\n\n\n__attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,unavailable)))\n__attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable)))\nint clock_settime(clockid_t __clock_id, const struct timespec *__tp);\n__attribute__((availability(macos,introduced=10.15))) __attribute__((availability(ios,introduced=13.0))) __attribute__((availability(tvos,introduced=13.0))) __attribute__((availability(watchos,introduced=6.0)))\nint timespec_get(struct timespec *ts, int base);\nint av_parse_ratio(AVRational *q, const char *str, int max,\n                   int log_offset, void *log_ctx);\nint av_parse_video_size(int *width_ptr, int *height_ptr, const char *str);\nint av_parse_video_rate(AVRational *rate, const char *str);\nint av_parse_color(uint8_t *rgba_color, const char *color_string, int slen,\n                   void *log_ctx);\nconst char *av_get_known_color_name(int color_idx, const uint8_t **rgb);\nint av_parse_time(int64_t *timeval, const char *timestr, int duration);\n\n\n\n\n\n\n\nint av_find_info_tag(char *arg, int arg_size, const char *tag1, const char *info);\nchar *av_small_strptime(const char *p, const char *fmt, struct tm *dt);\n\n\n\n\ntime_t av_timegm(struct tm *tm);\n\n\n\n\ntypedef struct AVBuffer AVBuffer;\n\n\n\n\n\n\n\ntypedef struct AVBufferRef \n    AVBuffer *buffer;\n\n\n\n\n\n\n    uint8_t *data;\n\n\n\n    size_t size;\n AVBufferRef;\n\n\n\n\n\n\nAVBufferRef *av_buffer_alloc(size_t size);\n\n\n\n\n\nAVBufferRef *av_buffer_allocz(size_t size);\nAVBufferRef *av_buffer_create(uint8_t *data, size_t size,\n                              void (*free)(void *opaque, uint8_t *data),\n                              void *opaque, int flags);\n\n\n\n\n\n\nvoid av_buffer_default_free(void *opaque, uint8_t *data);\n\n\n\n\n\n\n\nAVBufferRef *av_buffer_ref(const AVBufferRef *buf);\n\n\n\n\n\n\n\nvoid av_buffer_unref(AVBufferRef **buf);\n\n\n\n\n\n\n\nint av_buffer_is_writable(const AVBufferRef *buf);\n\n\n\n\nvoid *av_buffer_get_opaque(const AVBufferRef *buf);\n\nint av_buffer_get_ref_count(const AVBufferRef *buf);\nint av_buffer_make_writable(AVBufferRef **buf);\nint av_buffer_realloc(AVBufferRef **buf, size_t size);\nint av_buffer_replace(AVBufferRef **dst, const AVBufferRef *src);\ntypedef struct AVBufferPool AVBufferPool;\nAVBufferPool *av_buffer_pool_init(size_t size, AVBufferRef* (*alloc)(size_t size));\nAVBufferPool *av_buffer_pool_init2(size_t size, void *opaque,\n                                   AVBufferRef* (*alloc)(void *opaque, size_t size),\n                                   void (*pool_free)(void *opaque));\nvoid av_buffer_pool_uninit(AVBufferPool **pool);\n\n\n\n\n\n\n\nAVBufferRef *av_buffer_pool_get(AVBufferPool *pool);\nvoid *av_buffer_pool_buffer_get_opaque(const AVBufferRef *ref);\n\nenum AVFrameSideDataType \n\n\n\n    AV_FRAME_DATA_PANSCAN",
+  "AV_FRAME_DATA_A53_CC",
+  "AV_FRAME_DATA_STEREO3D",
+  "AV_FRAME_DATA_MATRIXENCODING",
+  "AV_FRAME_DATA_DOWNMIX_INFO",
+  "AV_FRAME_DATA_REPLAYGAIN",
+  "AV_FRAME_DATA_DISPLAYMATRIX",
+  "AV_FRAME_DATA_AFD",
+  "AV_FRAME_DATA_MOTION_VECTORS",
+  "AV_FRAME_DATA_SKIP_SAMPLES",
+  "AV_FRAME_DATA_AUDIO_SERVICE_TYPE",
+  "AV_FRAME_DATA_MASTERING_DISPLAY_METADATA",
+  "AV_FRAME_DATA_GOP_TIMECODE",
+  "AV_FRAME_DATA_SPHERICAL",
+  "AV_FRAME_DATA_CONTENT_LIGHT_LEVEL",
+  "AV_FRAME_DATA_ICC_PROFILE",
+  "AV_FRAME_DATA_S12M_TIMECODE",
+  "AV_FRAME_DATA_DYNAMIC_HDR_PLUS",
+  "AV_FRAME_DATA_REGIONS_OF_INTEREST",
+  "AV_FRAME_DATA_VIDEO_ENC_PARAMS",
+  "AV_FRAME_DATA_SEI_UNREGISTERED",
+  "AV_FRAME_DATA_FILM_GRAIN_PARAMS",
+  "AV_FRAME_DATA_DETECTION_BBOXES",
+  "AV_FRAME_DATA_DOVI_RPU_BUFFER",
+  "AV_FRAME_DATA_DOVI_METADATA",
+  "AV_FRAME_DATA_DYNAMIC_HDR_VIVID",
+  "AV_FRAME_DATA_AMBIENT_VIEWING_ENVIRONMENT",
+  "AV_FRAME_DATA_VIDEO_HINT",
+  ";\n\nenum AVActiveFormatDescription \n    AV_AFD_SAME = 8",
+  "AV_AFD_4_3 = 9",
+  "AV_AFD_16_9 = 10",
+  "AV_AFD_14_9 = 11",
+  "AV_AFD_4_3_SP_14_9 = 13",
+  "AV_AFD_16_9_SP_14_9 = 14",
+  "AV_AFD_SP_4_3 = 15",
+  ";\ntypedef struct AVFrameSideData \n    enum AVFrameSideDataType type;\n    uint8_t *data;\n    size_t size;\n    AVDictionary *metadata;\n    AVBufferRef *buf;\n AVFrameSideData;\ntypedef struct AVRegionOfInterest \n\n\n\n\n    uint32_t self_size;\n    int top;\n    int bottom;\n    int left;\n    int right;\n    AVRational qoffset;\n AVRegionOfInterest;\ntypedef struct AVFrame \n    uint8_t *data[8];\n    int linesize[8];\n    uint8_t **extended_data;\n    int width",
+  "height;\n\n\n\n\n\n\n\n    int nb_samples;\n\n\n\n\n\n\n    int format;\n\n\n\n\n\n\n\n    __attribute__((deprecated))\n    int key_frame;\n\n\n\n\n\n    enum AVPictureType pict_type;\n\n\n\n\n    AVRational sample_aspect_ratio;\n\n\n\n\n    int64_t pts;\n\n\n\n\n\n\n    int64_t pkt_dts;\n\n\n\n\n\n\n\n    AVRational time_base;\n\n\n\n\n\n    __attribute__((deprecated))\n    int coded_picture_number;\n\n\n\n    __attribute__((deprecated))\n    int display_picture_number;\n\n\n\n\n\n    int quality;\n    void *opaque;\n    int repeat_pict;\n\n\n\n\n\n\n\n    __attribute__((deprecated))\n    int interlaced_frame;\n\n\n\n\n\n\n    __attribute__((deprecated))\n    int top_field_first;\n\n\n\n\n\n\n    __attribute__((deprecated))\n    int palette_has_changed;\n    __attribute__((deprecated))\n    int64_t reordered_opaque;\n\n\n\n\n\n    int sample_rate;\n\n\n\n\n\n\n    __attribute__((deprecated))\n    uint64_t channel_layout;\n    AVBufferRef *buf[8];\n    AVBufferRef **extended_buf;\n\n\n\n    int nb_extended_buf;\n\n    AVFrameSideData **side_data;\n    int nb_side_data;\n    int flags;\n\n\n\n\n\n\n    enum AVColorRange color_range;\n\n    enum AVColorPrimaries color_primaries;\n\n    enum AVColorTransferCharacteristic color_trc;\n\n\n\n\n\n\n    enum AVColorSpace colorspace;\n\n    enum AVChromaLocation chroma_location;\n\n\n\n\n\n\n    int64_t best_effort_timestamp;\n    __attribute__((deprecated))\n    int64_t pkt_pos;\n    __attribute__((deprecated))\n    int64_t pkt_duration;\n\n\n\n\n\n\n\n    AVDictionary *metadata;\n    int decode_error_flags;\n    __attribute__((deprecated))\n    int channels;\n    __attribute__((deprecated))\n    int pkt_size;\n\n\n\n\n\n\n    AVBufferRef *hw_frames_ctx;\n    AVBufferRef *opaque_ref;\n    size_t crop_top;\n    size_t crop_bottom;\n    size_t crop_left;\n    size_t crop_right;\n    AVBufferRef *private_ref;\n\n\n\n\n    AVChannelLayout ch_layout;\n\n\n\n\n    int64_t duration;\n AVFrame;\nAVFrame *av_frame_alloc(void);\nvoid av_frame_free(AVFrame **frame);\nint av_frame_ref(AVFrame *dst, const AVFrame *src);\nint av_frame_replace(AVFrame *dst, const AVFrame *src);\nAVFrame *av_frame_clone(const AVFrame *src);\n\n\n\n\nvoid av_frame_unref(AVFrame *frame);\nvoid av_frame_move_ref(AVFrame *dst, AVFrame *src);\nint av_frame_get_buffer(AVFrame *frame, int align);\nint av_frame_is_writable(AVFrame *frame);\nint av_frame_make_writable(AVFrame *frame);\nint av_frame_copy(AVFrame *dst, const AVFrame *src);\nint av_frame_copy_props(AVFrame *dst, const AVFrame *src);\nAVBufferRef *av_frame_get_plane_buffer(const AVFrame *frame, int plane);\nAVFrameSideData *av_frame_new_side_data(AVFrame *frame,\n                                        enum AVFrameSideDataType type,\n                                        size_t size);\nAVFrameSideData *av_frame_new_side_data_from_buf(AVFrame *frame,\n                                                 enum AVFrameSideDataType type,\n                                                 AVBufferRef *buf);\n\n\n\n\n\nAVFrameSideData *av_frame_get_side_data(const AVFrame *frame,\n                                        enum AVFrameSideDataType type);\n\n\n\n\nvoid av_frame_remove_side_data(AVFrame *frame, enum AVFrameSideDataType type);\n\n\n\n\n\nenum \n    AV_FRAME_CROP_UNALIGNED = 1 << 0",
+  [
+    ";\nint av_frame_apply_cropping(AVFrame *frame, int flags);\n\n\n\n\nconst char *av_frame_side_data_name(enum AVFrameSideDataType type);\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nunsigned avfilter_version(void);\n\n\n\n\nconst char *avfilter_configuration(void);\n\n\n\n\nconst char *avfilter_license(void);\n\ntypedef struct AVFilterContext AVFilterContext;\ntypedef struct AVFilterLink AVFilterLink;\ntypedef struct AVFilterPad AVFilterPad;\ntypedef struct AVFilterFormats AVFilterFormats;\ntypedef struct AVFilterChannelLayouts AVFilterChannelLayouts;\nconst char *avfilter_pad_get_name(const AVFilterPad *pads, int pad_idx);\nenum AVMediaType avfilter_pad_get_type(const AVFilterPad *pads, int pad_idx);\ntypedef struct AVFilter \n\n\n\n    const char *name;\n\n\n\n\n\n\n    const char *description;\n    const AVFilterPad *inputs;\n    const AVFilterPad *outputs;\n    const AVClass *priv_class;\n\n\n\n\n    int flags;\n    uint8_t nb_inputs;\n\n\n\n\n    uint8_t nb_outputs;\n\n\n\n\n\n    uint8_t formats_state;\n    int (*preinit)(AVFilterContext *ctx);\n    int (*init)(AVFilterContext *ctx);\n    void (*uninit)(AVFilterContext *ctx);\n\n\n\n\n\n    union \n        int (*query_func)(AVFilterContext *);\n        const enum AVPixelFormat *pixels_list;\n        const enum AVSampleFormat *samples_list;\n\n\n\n        enum AVPixelFormat pix_fmt;\n\n\n\n        enum AVSampleFormat sample_fmt;"
+  ],
+  [
+    "formats;\n\n    int priv_size;\n\n    int flags_internal;\n    int (*process_command)(AVFilterContext *, const char *cmd, const char *arg, char *res, int res_len, int flags);\n    int (*activate)(AVFilterContext *ctx);\n AVFilter;\n\n\n\n\nunsigned avfilter_filter_pad_count(const AVFilter *filter, int is_output);\n\n\n\n\n\n\ntypedef struct AVFilterInternal AVFilterInternal;\n\n\nstruct AVFilterContext \n    const AVClass *av_class;\n\n    const AVFilter *filter;\n\n    char *name;\n\n    AVFilterPad *input_pads;\n    AVFilterLink **inputs;\n    unsigned nb_inputs;\n\n    AVFilterPad *output_pads;\n    AVFilterLink **outputs;\n    unsigned nb_outputs;\n\n    void *priv;\n\n    struct AVFilterGraph *graph;\n    int thread_type;\n\n\n\n\n    AVFilterInternal *internal;\n\n    struct AVFilterCommand *command_queue;\n\n    char *enable_str;\n    void *enable;\n    double *var_values;\n    int is_disabled;\n    AVBufferRef *hw_device_ctx;\n\n\n\n\n\n\n    int nb_threads;\n\n\n\n\n\n\n    unsigned ready;\n    int extra_hw_frames;\n;\ntypedef struct AVFilterFormatsConfig \n\n\n\n\n    AVFilterFormats *formats;\n\n\n\n\n    AVFilterFormats *samplerates;\n\n\n\n\n    AVFilterChannelLayouts *channel_layouts;\n\n AVFilterFormatsConfig;\nstruct AVFilterLink \n    AVFilterContext *src;\n    AVFilterPad *srcpad;\n\n    AVFilterContext *dst;\n    AVFilterPad *dstpad;\n\n    enum AVMediaType type;\n\n\n    int w;\n    int h;\n    AVRational sample_aspect_ratio;\n\n\n\n\n\n\n    __attribute__((deprecated))\n    uint64_t channel_layout;\n\n    int sample_rate;\n\n    int format;\n    AVRational time_base;\n\n    AVChannelLayout ch_layout;\n    AVFilterFormatsConfig incfg;\n\n\n\n\n    AVFilterFormatsConfig outcfg;\n\n\n    enum \n        AVLINK_UNINIT = 0",
+    "AVLINK_STARTINIT",
+    "AVLINK_INIT"
+  ],
+  "init_state;\n\n\n\n\n    struct AVFilterGraph *graph;\n\n\n\n\n\n    int64_t current_pts;\n\n\n\n\n\n    int64_t current_pts_us;\n\n\n\n\n    int age_index;\n    AVRational frame_rate;\n    int min_samples;\n\n\n\n\n\n    int max_samples;\n\n\n\n\n    int64_t frame_count_in",
+  "frame_count_out;\n\n\n\n\n    int64_t sample_count_in",
+  "sample_count_out;\n\n\n\n\n    void *frame_pool;\n\n\n\n\n\n\n    int frame_wanted_out;\n\n\n\n\n\n    AVBufferRef *hw_frames_ctx;\n    char reserved[0xF000];\n;\nint avfilter_link(AVFilterContext *src, unsigned srcpad,\n                  AVFilterContext *dst, unsigned dstpad);\n\n\n\n\nvoid avfilter_link_free(AVFilterLink **link);\n\n\n\n\n\n\n\nint avfilter_config_links(AVFilterContext *filter);\nint avfilter_process_command(AVFilterContext *filter, const char *cmd, const char *arg, char *res, int res_len, int flags);\nconst AVFilter *av_filter_iterate(void **opaque);\nconst AVFilter *avfilter_get_by_name(const char *name);\nint avfilter_init_str(AVFilterContext *ctx, const char *args);\nint avfilter_init_dict(AVFilterContext *ctx, AVDictionary **options);\n\n\n\n\n\n\n\nvoid avfilter_free(AVFilterContext *filter);\nint avfilter_insert_filter(AVFilterLink *link, AVFilterContext *filt,\n                           unsigned filt_srcpad_idx, unsigned filt_dstpad_idx);\n\n\n\n\n\n\nconst AVClass *avfilter_get_class(void);\n\ntypedef struct AVFilterGraphInternal AVFilterGraphInternal;\ntypedef int (avfilter_action_func)(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs);\ntypedef int (avfilter_execute_func)(AVFilterContext *ctx, avfilter_action_func *func,\n                                    void *arg, int *ret, int nb_jobs);\n\ntypedef struct AVFilterGraph \n    const AVClass *av_class;\n    AVFilterContext **filters;\n    unsigned nb_filters;\n\n    char *scale_sws_opts;\n    int thread_type;\n\n\n\n\n\n\n    int nb_threads;\n\n\n\n\n    AVFilterGraphInternal *internal;\n\n\n\n\n\n\n    void *opaque;\n    avfilter_execute_func *execute;\n\n    char *aresample_swr_opts;\n    AVFilterLink **sink_links;\n    int sink_links_count;\n\n    unsigned disable_auto_convert;\n AVFilterGraph;\n\n\n\n\n\n\nAVFilterGraph *avfilter_graph_alloc(void);\nAVFilterContext *avfilter_graph_alloc_filter(AVFilterGraph *graph,\n                                             const AVFilter *filter,\n                                             const char *name);\nAVFilterContext *avfilter_graph_get_filter(AVFilterGraph *graph, const char *name);\nint avfilter_graph_create_filter(AVFilterContext **filt_ctx, const AVFilter *filt,\n                                 const char *name, const char *args, void *opaque,\n                                 AVFilterGraph *graph_ctx);\nvoid avfilter_graph_set_auto_convert(AVFilterGraph *graph, unsigned flags);\n\nenum \n    AVFILTER_AUTO_CONVERT_ALL = 0",
+  "AVFILTER_AUTO_CONVERT_NONE = -1",
+  [
+    ";\nint avfilter_graph_config(AVFilterGraph *graphctx, void *log_ctx);\n\n\n\n\n\nvoid avfilter_graph_free(AVFilterGraph **graph);\ntypedef struct AVFilterInOut \n\n    char *name;\n\n\n    AVFilterContext *filter_ctx;\n\n\n    int pad_idx;\n\n\n    struct AVFilterInOut *next;\n AVFilterInOut;\n\n\n\n\n\n\nAVFilterInOut *avfilter_inout_alloc(void);\n\n\n\n\n\nvoid avfilter_inout_free(AVFilterInOut **inout);\nint avfilter_graph_parse(AVFilterGraph *graph, const char *filters,\n                         AVFilterInOut *inputs, AVFilterInOut *outputs,\n                         void *log_ctx);\nint avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,\n                             AVFilterInOut **inputs, AVFilterInOut **outputs,\n                             void *log_ctx);\nint avfilter_graph_parse2(AVFilterGraph *graph, const char *filters,\n                          AVFilterInOut **inputs,\n                          AVFilterInOut **outputs);\n\n\n\n\n\n\n\ntypedef struct AVFilterPadParams \n\n\n\n\n\n\n\n    char *label;\n AVFilterPadParams;\n\n\n\n\n\n\n\ntypedef struct AVFilterParams \n    AVFilterContext *filter;\n    char *filter_name;\n    char *instance_name;\n    AVDictionary *opts;\n\n    AVFilterPadParams **inputs;\n    unsigned nb_inputs;\n\n    AVFilterPadParams **outputs;\n    unsigned nb_outputs;\n AVFilterParams;\n\n\n\n\n\n\n\ntypedef struct AVFilterChain \n    AVFilterParams **filters;\n    size_t nb_filters;\n AVFilterChain;\ntypedef struct AVFilterGraphSegment \n\n\n\n\n    AVFilterGraph *graph;\n\n\n\n\n\n    AVFilterChain **chains;\n    size_t nb_chains;\n    char *scale_sws_opts;\n AVFilterGraphSegment;\nint avfilter_graph_segment_parse(AVFilterGraph *graph, const char *graph_str,\n                                 int flags, AVFilterGraphSegment **seg);\nint avfilter_graph_segment_create_filters(AVFilterGraphSegment *seg, int flags);\nint avfilter_graph_segment_apply_opts(AVFilterGraphSegment *seg, int flags);\nint avfilter_graph_segment_init(AVFilterGraphSegment *seg, int flags);\nint avfilter_graph_segment_link(AVFilterGraphSegment *seg, int flags,\n                                AVFilterInOut **inputs,\n                                AVFilterInOut **outputs);\nint avfilter_graph_segment_apply(AVFilterGraphSegment *seg, int flags,\n                                 AVFilterInOut **inputs,\n                                 AVFilterInOut **outputs);\nvoid avfilter_graph_segment_free(AVFilterGraphSegment **seg);\nint avfilter_graph_send_command(AVFilterGraph *graph, const char *target, const char *cmd, const char *arg, char *res, int res_len, int flags);\nint avfilter_graph_queue_command(AVFilterGraph *graph, const char *target, const char *cmd, const char *arg, int flags, double ts);\nchar *avfilter_graph_dump(AVFilterGraph *graph, const char *options);\nint avfilter_graph_request_oldest(AVFilterGraph *graph);\nstruct AVFilterFormats \n    unsigned nb_formats;\n    int *formats;\n\n    unsigned refcount;\n    struct AVFilterFormats ***refs;\n;\nstruct AVFilterChannelLayouts \n    AVChannelLayout *channel_layouts;\n    int nb_channel_layouts;\n    char all_layouts;\n    char all_counts;\n\n    unsigned refcount;\n    struct AVFilterChannelLayouts ***refs;\n;\n__attribute__((warn_unused_result))\nAVFilterChannelLayouts *ff_all_channel_layouts(void);\n\n__attribute__((warn_unused_result))\nAVFilterFormats *ff_all_samplerates(void);\n\n\n\n\n\n__attribute__((warn_unused_result))\nAVFilterChannelLayouts *ff_all_channel_counts(void);\n\n__attribute__((warn_unused_result))\nAVFilterChannelLayouts *ff_make_channel_layout_list(const AVChannelLayout *fmts);\n\n\n\n\n\n\n__attribute__((warn_unused_result))\nint ff_set_common_channel_layouts(AVFilterContext *ctx,\n                                  AVFilterChannelLayouts *layouts);\n\n\n\n__attribute__((warn_unused_result))\nint ff_set_common_channel_layouts_from_list(AVFilterContext *ctx,\n                                            const AVChannelLayout *fmts);\n\n\n\n__attribute__((warn_unused_result))\nint ff_set_common_all_channel_counts(AVFilterContext *ctx);\n\n__attribute__((warn_unused_result))\nint ff_set_common_samplerates(AVFilterContext *ctx,\n                              AVFilterFormats *samplerates);\n\n\n\n__attribute__((warn_unused_result))\nint ff_set_common_samplerates_from_list(AVFilterContext *ctx,\n                                        const int *samplerates);\n\n\n\n__attribute__((warn_unused_result))\nint ff_set_common_all_samplerates(AVFilterContext *ctx);\n\n\n\n\n\n\n__attribute__((warn_unused_result))\nint ff_set_common_formats(AVFilterContext *ctx, AVFilterFormats *formats);\n\n\n\n\n__attribute__((warn_unused_result))\nint ff_set_common_formats_from_list(AVFilterContext *ctx, const int *fmts);\n\n__attribute__((warn_unused_result))\nint ff_add_channel_layout(AVFilterChannelLayouts **l,\n                          const AVChannelLayout *channel_layout);\n\n\n\n\n__attribute__((warn_unused_result))\nint ff_channel_layouts_ref(AVFilterChannelLayouts *f,\n                           AVFilterChannelLayouts **ref);\n\n\n\n\nvoid ff_channel_layouts_unref(AVFilterChannelLayouts **ref);\n\nvoid ff_channel_layouts_changeref(AVFilterChannelLayouts **oldref,\n                                  AVFilterChannelLayouts **newref);\n\n__attribute__((warn_unused_result))\nint ff_default_query_formats(AVFilterContext *ctx);\n__attribute__((warn_unused_result))\nAVFilterFormats *ff_make_format_list(const int *fmts);\n\n\n\n\n__attribute__((warn_unused_result))\nAVFilterFormats *ff_make_formats_list_singleton(int fmt);\n__attribute__((warn_unused_result))\nint ff_add_format(AVFilterFormats **avff, int64_t fmt);\n\n\n\n\n__attribute__((warn_unused_result))\nAVFilterFormats *ff_all_formats(enum AVMediaType type);\n\n\n\n\n\n__attribute__((warn_unused_result))\nAVFilterFormats *ff_formats_pixdesc_filter(unsigned want, unsigned rej);\n\n\n\n\n\n\n\n__attribute__((warn_unused_result))\nAVFilterFormats *ff_planar_sample_fmts(void);\n__attribute__((warn_unused_result))\nint ff_formats_ref(AVFilterFormats *formats, AVFilterFormats **ref);\nvoid ff_formats_unref(AVFilterFormats **ref);\nvoid ff_formats_changeref(AVFilterFormats **oldref, AVFilterFormats **newref);\n\n\n\n\n\n\nint ff_formats_check_pixel_formats(void *log, const AVFilterFormats *fmts);\n\n\n\n\n\n\nint ff_formats_check_sample_formats(void *log, const AVFilterFormats *fmts);\n\n\n\n\n\n\nint ff_formats_check_sample_rates(void *log, const AVFilterFormats *fmts);\n\n\n\n\n\n\nint ff_formats_check_channel_layouts(void *log, const AVFilterChannelLayouts *fmts);\n\ntypedef struct AVFilterFormatMerger \n    unsigned offset;\n    int (*merge)(void *a, void *b);\n    int (*can_merge)(const void *a, const void *b);\n AVFilterFormatsMerger;\ntypedef struct AVFilterNegotiation \n    unsigned nb_mergers;\n    const AVFilterFormatsMerger *mergers;\n    const char *conversion_filter;\n    unsigned conversion_opts_offset;\n AVFilterNegotiation;\n\nconst AVFilterNegotiation *ff_filter_get_negotiation(AVFilterLink *link);\nvoid avpriv_report_missing_feature(void *avc,\n                                   const char *msg, ...) __attribute__((__format__(__printf__, 2, 3)));\nvoid avpriv_request_sample(void *avc,\n                           const char *msg, ...) __attribute__((__format__(__printf__, 2, 3)));\nint avpriv_set_systematic_pal2(uint32_t pal[256], enum AVPixelFormat pix_fmt);\n\nstatic __attribute__((always_inline)) inline __attribute__((const)) int avpriv_mirror(int x, int w)\n\n    if (!w)\n        return 0;\n\n    while ((unsigned)x > (unsigned)w) \n        x = -x;\n        if (x < 0)\n            x += 2 * w;"
+  ],
+  [
+    "return x;\n\n\ntypedef struct FFFrameBucket \n    AVFrame *frame;\n FFFrameBucket;\ntypedef struct FFFrameQueueGlobal \n    char dummy;\n FFFrameQueueGlobal;\n\n\n\n\ntypedef struct FFFrameQueue \n\n\n\n\n    FFFrameBucket *queue;\n\n\n\n\n    size_t allocated;\n\n\n\n\n\n    size_t tail;\n\n\n\n\n    size_t queued;\n\n\n\n\n    FFFrameBucket first_bucket;\n\n\n\n\n    uint64_t total_frames_head;\n\n\n\n\n\n    uint64_t total_frames_tail;\n\n\n\n\n    uint64_t total_samples_head;\n\n\n\n\n\n    uint64_t total_samples_tail;\n\n\n\n\n    int samples_skipped;\n\n FFFrameQueue;\n\n\n\n\nvoid ff_framequeue_global_init(FFFrameQueueGlobal *fqg);\n\n\n\n\nvoid ff_framequeue_init(FFFrameQueue *fq, FFFrameQueueGlobal *fqg);\n\n\n\n\nvoid ff_framequeue_free(FFFrameQueue *fq);\n\n\n\n\n\nint ff_framequeue_add(FFFrameQueue *fq, AVFrame *frame);\n\n\n\n\n\nAVFrame *ff_framequeue_take(FFFrameQueue *fq);\n\n\n\n\n\nAVFrame *ff_framequeue_peek(FFFrameQueue *fq, size_t idx);\n\n\n\n\nstatic inline size_t ff_framequeue_queued_frames(const FFFrameQueue *fq)\n\n    return fq->queued;\n\n\n\n\n\nstatic inline uint64_t ff_framequeue_queued_samples(const FFFrameQueue *fq)\n\n    return fq->total_samples_head - fq->total_samples_tail;\n\n\n\n\n\n\n\nstatic inline void ff_framequeue_update_peeked(FFFrameQueue *fq, size_t idx)\n\n\nvoid ff_framequeue_skip_samples(FFFrameQueue *fq, size_t samples, AVRational time_base);\n\ntypedef struct AVFilterCommand \n    double time;\n    char *command;\n    char *arg;\n    int flags;\n    struct AVFilterCommand *next;\n AVFilterCommand;\n\n\n\n\nvoid ff_avfilter_graph_update_heap(AVFilterGraph *graph, AVFilterLink *link);\n\n\n\n\nstruct AVFilterPad \n\n\n\n\n\n    const char *name;\n\n\n\n\n    enum AVMediaType type;\n    int flags;\n    union \n        AVFrame *(*video)(AVFilterLink *link, int w, int h);\n        AVFrame *(*audio)(AVFilterLink *link, int nb_samples);"
+  ],
+  "get_buffer;\n    int (*filter_frame)(AVFilterLink *link, AVFrame *frame);\n    int (*request_frame)(AVFilterLink *link);\n    int (*config_props)(AVFilterLink *link);\n;\n\nstruct AVFilterGraphInternal \n    void *thread;\n    avfilter_execute_func *thread_execute;\n    FFFrameQueueGlobal frame_queues;\n;\n\nstruct AVFilterInternal \n    avfilter_execute_func *execute;\n\n\n\n    int initialized;\n;\n\nstatic __attribute__((always_inline)) inline int ff_filter_execute(AVFilterContext *ctx, avfilter_action_func *func,\n                                              void *arg, int *ret, int nb_jobs)\n\n    return ctx->internal->execute(ctx, func, arg, ret, nb_jobs);\n\n\nenum FilterFormatsState \n    FF_FILTER_FORMATS_PASSTHROUGH = 0",
+  "FF_FILTER_FORMATS_QUERY_FUNC",
+  "FF_FILTER_FORMATS_PIXFMT_LIST",
+  "FF_FILTER_FORMATS_SAMPLEFMTS_LIST",
+  "FF_FILTER_FORMATS_SINGLE_PIXFMT",
+  "FF_FILTER_FORMATS_SINGLE_SAMPLEFMT",
+  ";\nint ff_fmt_is_in(int fmt, const int *fmts);\n__attribute__((warn_unused_result))\nint ff_parse_pixel_format(enum AVPixelFormat *ret, const char *arg, void *log_ctx);\n__attribute__((warn_unused_result))\nint ff_parse_sample_rate(int *ret, const char *arg, void *log_ctx);\n__attribute__((warn_unused_result))\nint ff_parse_channel_layout(AVChannelLayout *ret, int *nret, const char *arg,\n                            void *log_ctx);\nvoid ff_avfilter_link_set_in_status(AVFilterLink *link, int status, int64_t pts);\nint ff_append_inpad (AVFilterContext *f, AVFilterPad *p);\nint ff_append_outpad(AVFilterContext *f, AVFilterPad *p);\nint ff_append_inpad_free_name (AVFilterContext *f, AVFilterPad *p);\nint ff_append_outpad_free_name(AVFilterContext *f, AVFilterPad *p);\nint ff_request_frame(AVFilterLink *link);\nint ff_filter_frame(AVFilterLink *link, AVFrame *frame);\nAVFilterContext *ff_filter_alloc(const AVFilter *filter, const char *inst_name);\n\nint ff_filter_activate(AVFilterContext *filter);\n\n\n\n\nvoid ff_filter_graph_remove_filter(AVFilterGraph *graph, AVFilterContext *filter);\nint ff_filter_graph_run_once(AVFilterGraph *graph);\n\n\n\n\n\nint ff_filter_get_nb_threads(AVFilterContext *ctx) __attribute__((pure));\n\n\n\n\n\n\n\nint ff_filter_process_command(AVFilterContext *ctx, const char *cmd,\n                              const char *arg, char *res, int res_len, int flags);\nint ff_filter_init_hw_frames(AVFilterContext *avctx, AVFilterLink *link,\n                             int default_pool_size);\nint ff_filter_opt_parse(void *logctx, const AVClass *priv_class,\n                        AVDictionary **options, const char *args);\ntypedef struct FilterParams \n    int strength;\n    unsigned flags;\n    AVLFG lfg;\n    int seed;\n    int8_t *noise;\n    int8_t *prev_shift[(5120 -1024)][3];\n    int rand_shift[(5120 -1024)];\n    int rand_shift_init;\n FilterParams;\n\ntypedef struct NoiseContext \n    const AVClass *class;\n    int nb_planes;\n    int bytewidth[4];\n    int height[4];\n    FilterParams all;\n    FilterParams param[4];\n    void (*line_noise)(uint8_t *dst, const uint8_t *src, const int8_t *noise, int len, int shift);\n    void (*line_noise_avg)(uint8_t *dst, const uint8_t *src, int len, const int8_t * const *shift);\n NoiseContext;\n\nvoid ff_line_noise_c(uint8_t *dst, const uint8_t *src, const int8_t *noise, int len, int shift);\nvoid ff_line_noise_avg_c(uint8_t *dst, const uint8_t *src, int len, const int8_t * const *shift);\n\nvoid ff_noise_init_x86(NoiseContext *n);\nextern const AVFilterPad ff_video_default_filterpad[1];\n\nAVFrame *ff_default_get_video_buffer(AVFilterLink *link, int w, int h);\nAVFrame *ff_default_get_video_buffer2(AVFilterLink *link, int w, int h, int align);\nAVFrame *ff_null_get_video_buffer(AVFilterLink *link, int w, int h);\nAVFrame *ff_get_video_buffer(AVFilterLink *link, int w, int h);\n\ntypedef struct ThreadData \n    AVFrame *in",
+  [
+    "*out;\n ThreadData;\nstatic const AVOption noise_options[] = \n    \"all_seed\"",
+    "\"set component #0 noise seed\"",
+    "__builtin_offsetof(NoiseContext, all.seed)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=-1"
+    ],
+    "-1",
+    "2147483647",
+    "(1<<16)|16"
+  ],
+  [
+    "\"all_strength\"",
+    "\"set component #0 strength\"",
+    "__builtin_offsetof(NoiseContext, all.strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"alls\"",
+    "\"set component #0 strength\"",
+    "__builtin_offsetof(NoiseContext, all.strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"all_flags\"",
+    "\"set component #0 flags\"",
+    "__builtin_offsetof(NoiseContext, all.flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"all_flags\""
+  ],
+  [
+    "\"allf\"",
+    "\"set component #0 flags\"",
+    "__builtin_offsetof(NoiseContext, all.flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"all_flags\""
+  ],
+  [
+    "\"a\"",
+    "\"averaged noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=8"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"all_flags\""
+  ],
+  [
+    "\"p\"",
+    "\"(semi)regular pattern\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=16"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"all_flags\""
+  ],
+  [
+    "\"t\"",
+    "\"temporal noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=2"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"all_flags\""
+  ],
+  [
+    "\"u\"",
+    "\"uniform noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=1"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"all_flags\""
+  ],
+  [
+    "\"c0_seed\"",
+    "\"set component #0 noise seed\"",
+    "__builtin_offsetof(NoiseContext, param[0].seed)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=-1"
+    ],
+    "-1",
+    "2147483647",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c0_strength\"",
+    "\"set component #0 strength\"",
+    "__builtin_offsetof(NoiseContext, param[0].strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c0s\"",
+    "\"set component #0 strength\"",
+    "__builtin_offsetof(NoiseContext, param[0].strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c0_flags\"",
+    "\"set component #0 flags\"",
+    "__builtin_offsetof(NoiseContext, param[0].flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"c0_flags\""
+  ],
+  [
+    "\"c0f\"",
+    "\"set component #0 flags\"",
+    "__builtin_offsetof(NoiseContext, param[0].flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"c0_flags\""
+  ],
+  [
+    "\"a\"",
+    "\"averaged noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=8"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c0_flags\""
+  ],
+  [
+    "\"p\"",
+    "\"(semi)regular pattern\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=16"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c0_flags\""
+  ],
+  [
+    "\"t\"",
+    "\"temporal noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=2"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c0_flags\""
+  ],
+  [
+    "\"u\"",
+    "\"uniform noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=1"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c0_flags\""
+  ],
+  [
+    "\"c1_seed\"",
+    "\"set component #1 noise seed\"",
+    "__builtin_offsetof(NoiseContext, param[1].seed)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=-1"
+    ],
+    "-1",
+    "2147483647",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c1_strength\"",
+    "\"set component #1 strength\"",
+    "__builtin_offsetof(NoiseContext, param[1].strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c1s\"",
+    "\"set component #1 strength\"",
+    "__builtin_offsetof(NoiseContext, param[1].strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c1_flags\"",
+    "\"set component #1 flags\"",
+    "__builtin_offsetof(NoiseContext, param[1].flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"c1_flags\""
+  ],
+  [
+    "\"c1f\"",
+    "\"set component #1 flags\"",
+    "__builtin_offsetof(NoiseContext, param[1].flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"c1_flags\""
+  ],
+  [
+    "\"a\"",
+    "\"averaged noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=8"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c1_flags\""
+  ],
+  [
+    "\"p\"",
+    "\"(semi)regular pattern\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=16"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c1_flags\""
+  ],
+  [
+    "\"t\"",
+    "\"temporal noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=2"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c1_flags\""
+  ],
+  [
+    "\"u\"",
+    "\"uniform noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=1"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c1_flags\""
+  ],
+  [
+    "\"c2_seed\"",
+    "\"set component #2 noise seed\"",
+    "__builtin_offsetof(NoiseContext, param[2].seed)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=-1"
+    ],
+    "-1",
+    "2147483647",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c2_strength\"",
+    "\"set component #2 strength\"",
+    "__builtin_offsetof(NoiseContext, param[2].strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c2s\"",
+    "\"set component #2 strength\"",
+    "__builtin_offsetof(NoiseContext, param[2].strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c2_flags\"",
+    "\"set component #2 flags\"",
+    "__builtin_offsetof(NoiseContext, param[2].flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"c2_flags\""
+  ],
+  [
+    "\"c2f\"",
+    "\"set component #2 flags\"",
+    "__builtin_offsetof(NoiseContext, param[2].flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"c2_flags\""
+  ],
+  [
+    "\"a\"",
+    "\"averaged noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=8"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c2_flags\""
+  ],
+  [
+    "\"p\"",
+    "\"(semi)regular pattern\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=16"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c2_flags\""
+  ],
+  [
+    "\"t\"",
+    "\"temporal noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=2"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c2_flags\""
+  ],
+  [
+    "\"u\"",
+    "\"uniform noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=1"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c2_flags\""
+  ],
+  [
+    "\"c3_seed\"",
+    "\"set component #3 noise seed\"",
+    "__builtin_offsetof(NoiseContext, param[3].seed)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=-1"
+    ],
+    "-1",
+    "2147483647",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c3_strength\"",
+    "\"set component #3 strength\"",
+    "__builtin_offsetof(NoiseContext, param[3].strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c3s\"",
+    "\"set component #3 strength\"",
+    "__builtin_offsetof(NoiseContext, param[3].strength)",
+    "AV_OPT_TYPE_INT",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "100",
+    "(1<<16)|16"
+  ],
+  [
+    "\"c3_flags\"",
+    "\"set component #3 flags\"",
+    "__builtin_offsetof(NoiseContext, param[3].flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"c3_flags\""
+  ],
+  [
+    "\"c3f\"",
+    "\"set component #3 flags\"",
+    "__builtin_offsetof(NoiseContext, param[3].flags)",
+    "AV_OPT_TYPE_FLAGS",
+    [
+      ".i64=0"
+    ],
+    "0",
+    "31",
+    "(1<<16)|16",
+    "\"c3_flags\""
+  ],
+  [
+    "\"a\"",
+    "\"averaged noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=8"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c3_flags\""
+  ],
+  [
+    "\"p\"",
+    "\"(semi)regular pattern\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=16"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c3_flags\""
+  ],
+  [
+    "\"t\"",
+    "\"temporal noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=2"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c3_flags\""
+  ],
+  [
+    "\"u\"",
+    "\"uniform noise\"",
+    "0",
+    "AV_OPT_TYPE_CONST",
+    [
+      ".i64=1"
+    ],
+    "0",
+    "0",
+    "(1<<16)|16",
+    "\"c3_flags\""
+  ],
+  [
+    "((void*)0)"
+  ],
+  ";\n\nstatic const AVClass noise_class =  .class_name = \"noise\"",
+  ".item_name = av_default_item_name",
+  ".option = noise_options",
+  ".version = ((58)<<16 | (36)<<8 | (100))",
+  ".category = AV_CLASS_CATEGORY_FILTER",
+  ";\n\nstatic const int8_t patt[4] =  -1",
+  "0",
+  "1",
+  "0 ;\n\n\nstatic __attribute__((cold)) int init_noise(NoiseContext *n, int comp)\n\n    int8_t *noise = av_malloc(5120 * sizeof(int8_t));\n    FilterParams *fp = &n->param[comp];\n    AVLFG *lfg = &n->param[comp].lfg;\n    int strength = fp->strength;\n    int flags = fp->flags;\n    int i",
+  [
+    [
+      [
+        [
+          "j;\n\n    if (!noise)\n        return (-(12));\n\n    av_lfg_init(&fp->lfg, fp->seed + comp*31415U);\n\n    for (i = 0, j = 0; i < 5120; i++, j++) \n        if (flags & 1) \n            if (flags & 8) \n                if (flags & 16) \n                    noise[i] = (((int) ((double) strength * av_lfg_get(lfg) / ((2147483647 *2U +1U) + 1.0))) - strength / 2) / 6\n                        + patt[j % 4] * strength * 0.25 / 3;"
+        ],
+        [
+          "else \n                    noise[i] = (((int) ((double) strength * av_lfg_get(lfg) / ((2147483647 *2U +1U) + 1.0))) - strength / 2) / 3;"
+        ]
+      ],
+      [
+        [
+          "else \n                if (flags & 16) \n                    noise[i] = (((int) ((double) strength * av_lfg_get(lfg) / ((2147483647 *2U +1U) + 1.0))) - strength / 2) / 2\n                        + patt[j % 4] * strength * 0.25;"
+        ],
+        [
+          "else \n                    noise[i] = ((int) ((double) strength * av_lfg_get(lfg) / ((2147483647 *2U +1U) + 1.0))) - strength / 2;"
+        ]
+      ]
+    ],
+    [
+      "else \n            double x1",
+      "x2",
+      "w",
+      [
+        "y1;\n            do \n                x1 = 2.0 * av_lfg_get(lfg) / (float)(2147483647 *2U +1U) - 1.0;\n                x2 = 2.0 * av_lfg_get(lfg) / (float)(2147483647 *2U +1U) - 1.0;\n                w = x1 * x1 + x2 * x2;"
+      ],
+      [
+        "while (w >= 1.0);\n\n            w = sqrt((-2.0 * log(w)) / w);\n            y1 = x1 * w;\n            y1 *= strength / sqrt(3.0);\n            if (flags & 16) \n                y1 /= 2;\n                y1 += patt[j % 4] * strength * 0.35;"
+      ],
+      "y1 = av_clipf_c(y1, -128, 127);\n            if (flags & 8)\n                y1 /= 3.0;\n            noise[i] = (int)y1;"
+    ],
+    "if (((int) ((double) 6 * av_lfg_get(lfg) / ((2147483647 *2U +1U) + 1.0))) == 0)\n            j--;"
+  ],
+  "for (i = 0; i < (5120 -1024); i++)\n        for (j = 0; j < 3; j++)\n            fp->prev_shift[i][j] = noise + (av_lfg_get(lfg) & (1024 - 1));\n\n    fp->noise = noise;\n    return 0;\n\n\nstatic int query_formats(AVFilterContext *ctx)\n\n    AVFilterFormats *formats = ((void*)0);\n    int fmt",
+  [
+    "ret;\n\n    for (fmt = 0; av_pix_fmt_desc_get(fmt); fmt++) \n        const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(fmt);\n        if (desc->flags & (1 << 4) && !(desc->comp[0].depth & 7)\n            && (ret = ff_add_format(&formats, fmt)) < 0)\n                return ret;"
+  ],
+  [
+    "return ff_set_common_formats(ctx, formats);\n\n\nstatic int config_input(AVFilterLink *inlink)\n\n    NoiseContext *n = inlink->dst->priv;\n    const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(inlink->format);\n    int ret;\n\n    n->nb_planes = av_pix_fmt_count_planes(inlink->format);\n\n    if ((ret = av_image_fill_linesizes(n->bytewidth, inlink->format, inlink->w)) < 0)\n        return ret;\n\n    n->height[1] = n->height[2] = (!__builtin_constant_p(desc->log2_chroma_h) ? -((-(inlink->h)) >> (desc->log2_chroma_h)) : ((inlink->h) + (1<<(desc->log2_chroma_h)) - 1) >> (desc->log2_chroma_h));\n    n->height[0] = n->height[3] = inlink->h;\n\n    return 0;\n\n\nvoid ff_line_noise_c(uint8_t *dst, const uint8_t *src, const int8_t *noise,\n                     int len, int shift)\n\n    int i;\n\n    noise += shift;\n    for (i = 0; i < len; i++) \n        int v = src[i] + noise[i];\n\n        dst[i] = av_clip_uint8_c(v);"
+  ],
+  [
+    "void ff_line_noise_avg_c(uint8_t *dst, const uint8_t *src,\n                         int len, const int8_t * const *shift)\n\n    int i;\n    const int8_t *src2 = (const int8_t*)src;\n\n    for (i = 0; i < len; i++) \n        const int n = shift[0][i] + shift[1][i] + shift[2][i];\n        dst[i] = src2[i] + ((n * src2[i]) >> 7);"
+  ],
+  [
+    "static void noise(uint8_t *dst, const uint8_t *src,\n                  int dst_linesize, int src_linesize,\n                  int width, int start, int end, NoiseContext *n, int comp)\n\n    FilterParams *p = &n->param[comp];\n    int8_t *noise = p->noise;\n    const int flags = p->flags;\n    int y;\n\n    if (!noise) \n        if (dst != src)\n            av_image_copy_plane(dst, dst_linesize, src, src_linesize, width, end - start);\n        return;"
+  ],
+  [
+    [
+      [
+        "for (y = start; y < end; y++) \n        const int ix = y & ((5120 -1024) - 1);\n        int x;\n        for (x=0; x < width; x+= (5120 -1024)) \n            int w = ((width - x) > ((5120 -1024)) ? ((5120 -1024)) : (width - x));\n            int shift = p->rand_shift[ix];\n\n            if (flags & 8) \n                n->line_noise_avg(dst + x, src + x, w, (const int8_t**)p->prev_shift[ix]);\n                p->prev_shift[ix][shift & 3] = noise + shift;"
+      ],
+      [
+        "else \n                n->line_noise(dst + x, src + x, noise, w, shift);"
+      ]
+    ],
+    "dst += dst_linesize;\n        src += src_linesize;"
+  ],
+  [
+    "static int filter_slice(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)\n\n    NoiseContext *s = ctx->priv;\n    ThreadData *td = arg;\n    int plane;\n\n    for (plane = 0; plane < s->nb_planes; plane++) \n        const int height = s->height[plane];\n        const int start = (height * jobnr ) / nb_jobs;\n        const int end = (height * (jobnr+1)) / nb_jobs;\n        noise(td->out->data[plane] + start * td->out->linesize[plane],\n              td->in->data[plane] + start * td->in->linesize[plane],\n              td->out->linesize[plane], td->in->linesize[plane],\n              s->bytewidth[plane], start, end, s, plane);"
+  ],
+  "return 0;\n\n\nstatic int filter_frame(AVFilterLink *inlink, AVFrame *inpicref)\n\n    AVFilterContext *ctx = inlink->dst;\n    AVFilterLink *outlink = ctx->outputs[0];\n    NoiseContext *n = ctx->priv;\n    ThreadData td;\n    AVFrame *out;\n    int comp",
+  [
+    "i;\n\n    if (av_frame_is_writable(inpicref)) \n        out = inpicref;"
+  ],
+  [
+    [
+      "else \n        out = ff_get_video_buffer(outlink, outlink->w, outlink->h);\n        if (!out) \n            av_frame_free(&inpicref);\n            return (-(12));"
+    ],
+    "av_frame_copy_props(out, inpicref);"
+  ],
+  [
+    [
+      [
+        "for (comp = 0; comp < 4; comp++) \n        FilterParams *fp = &n->param[comp];\n\n        if ((!fp->rand_shift_init || (fp->flags & 2)) && fp->strength) \n\n            for (i = 0; i < (5120 -1024); i++) \n                fp->rand_shift[i] = av_lfg_get(&fp->lfg) & (1024 - 1);"
+      ],
+      "fp->rand_shift_init = 1;"
+    ]
+  ],
+  "td.in = inpicref; td.out = out;\n    ff_filter_execute(ctx, filter_slice, &td, ((void*)0)",
+  [
+    "((n->height[0]) > (ff_filter_get_nb_threads(ctx)) ? (ff_filter_get_nb_threads(ctx)) : (n->height[0])));\n    do"
+  ],
+  "while(0);\n\n    if (inpicref != out)\n        av_frame_free(&inpicref);\n    return ff_filter_frame(outlink, out);\n\n\nstatic __attribute__((cold)) int init(AVFilterContext *ctx)\n\n    NoiseContext *n = ctx->priv;\n    int ret",
+  [
+    "i;\n\n    for (i = 0; i < 4; i++) \n        if (n->all.seed >= 0)\n            n->param[i].seed = n->all.seed;\n        else\n            n->param[i].seed = 123457;\n        if (n->all.strength)\n            n->param[i].strength = n->all.strength;\n        if (n->all.flags)\n            n->param[i].flags = n->all.flags;"
+  ],
+  [
+    "for (i = 0; i < 4; i++) \n        if (n->param[i].strength && ((ret = init_noise(n, i)) < 0))\n            return ret;"
+  ],
+  [
+    "n->line_noise = ff_line_noise_c;\n    n->line_noise_avg = ff_line_noise_avg_c;\n\n\n\n\n\n    return 0;\n\n\nstatic __attribute__((cold)) void uninit(AVFilterContext *ctx)\n\n    NoiseContext *n = ctx->priv;\n    int i;\n\n    for (i = 0; i < 4; i++)\n        av_freep(&n->param[i].noise);\n\n\nstatic const AVFilterPad noise_inputs[] = \n    \n        .name = \"default\"",
+    ".type = AVMEDIA_TYPE_VIDEO",
+    ".filter_frame = filter_frame",
+    ".config_props = config_input"
+  ],
+  ";\n\nconst AVFilter ff_vf_noise = \n    .name = \"noise\"",
+  ".description = \"Add noise.\"",
+  ".priv_size = sizeof(NoiseContext)",
+  ".init = init",
+  ".uninit = uninit",
+  ".inputs = (noise_inputs)",
+  ".nb_inputs = (sizeof((noise_inputs)) / sizeof(((noise_inputs))[0]))",
+  ".outputs = (ff_video_default_filterpad)",
+  ".nb_outputs = (sizeof((ff_video_default_filterpad)) / sizeof(((ff_video_default_filterpad))[0]))",
+  ".formats.query_func = query_formats",
+  ".formats_state = FF_FILTER_FORMATS_QUERY_FUNC",
+  ".priv_class = &noise_class",
+  ".flags = (1 << 16) | (1 << 2)",
+  ";"
+]

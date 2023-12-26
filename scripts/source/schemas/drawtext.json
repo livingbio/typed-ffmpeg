@@ -1,8 +1,0 @@
-{
-  "description": "11.78 drawtext\nDraw a text string or text from a specified file on top of a video, using the\nlibfreetype library.\n\nTo enable compilation of this filter, you need to configure FFmpeg with\n--enable-libfreetype and --enable-libharfbuzz.\nTo enable default font fallback and the font option you need to\nconfigure FFmpeg with --enable-libfontconfig.\nTo enable the text_shaping option, you need to configure FFmpeg with\n--enable-libfribidi.",
-  "json_schema": {},
-  "name": "drawtext",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#drawtext",
-  "source": "<h3 class=\"section\"><a href=\"#toc-drawtext-1\">11.78 drawtext</a></h3>\n\n<p>Draw a text string or text from a specified file on top of a video, using the\nlibfreetype library.\n</p>\n<p>To enable compilation of this filter, you need to configure FFmpeg with\n<code>--enable-libfreetype</code> and <code>--enable-libharfbuzz</code>.\nTo enable default font fallback and the <var>font</var> option you need to\nconfigure FFmpeg with <code>--enable-libfontconfig</code>.\nTo enable the <var>text_shaping</var> option, you need to configure FFmpeg with\n<code>--enable-libfribidi</code>.\n</p>\n"
-}

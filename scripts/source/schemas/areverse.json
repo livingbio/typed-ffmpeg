@@ -1,8 +1,0 @@
-{
-  "description": "8.48 areverse\nReverse an audio clip.\n\nWarning: This filter requires memory to buffer the entire clip, so trimming\nis suggested.",
-  "json_schema": {},
-  "name": "areverse",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
-  "source": "<h3 class=\"section\"><a href=\"#toc-areverse\">8.48 areverse</a></h3>\n\n<p>Reverse an audio clip.\n</p>\n<p>Warning: This filter requires memory to buffer the entire clip, so trimming\nis suggested.\n</p>\n"
-}

@@ -8,6 +8,7 @@ repos:
       - id: check-merge-conflict
       - id: check-yaml
       - id: end-of-file-fixer
+        exclude: "__snapshots__/"
       - id: fix-encoding-pragma
         args: [--remove]
       - id: mixed-line-ending

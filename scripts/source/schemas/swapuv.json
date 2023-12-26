@@ -1,8 +1,0 @@
-{
-  "description": "11.249 swapuv\nSwap U & V plane.",
-  "json_schema": {},
-  "name": "swapuv",
-  "parameters": [],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#swapuv",
-  "source": "<h3 class=\"section\"><a href=\"#toc-swapuv\">11.249 swapuv</a></h3>\n<p>Swap U &amp; V plane.\n</p>\n"
-}

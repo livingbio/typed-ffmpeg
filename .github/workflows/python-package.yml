@@ -31,7 +31,7 @@ jobs:
           poetry run pre-commit run --all-files
       - name: Test with pytest
         run: |
-          poetry run pytest ./scripts --cov=./scripts --record-mode=none
+          PYTHONPATH=./scripts poetry run pytest ./scripts --cov=./scripts --record-mode=none
           poetry run pytest ./src --cov=./src --record-mode=none
         env: # Or as an environment variable
           AZURE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
