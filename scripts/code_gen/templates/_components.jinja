@@ -69,6 +69,18 @@ Ref: {{ f.ref }}
 {% endmacro %}
 
 
+{% macro process(f) %}
+return FilterNode(
+    name="{{ f.name }}",
+    kwargs={
+        {% for option in f.options %}
+        "{{ option.name}}": {{ option.name | option_name_safe }},
+        {% endfor %}
+    }
+)
+{% endmacro %}
+
+
 {% macro filter_method(f) %}
     def {{f.name}}(
     {{ stream_typings(f, "method") }}
@@ -79,7 +91,7 @@ Ref: {{ f.ref }}
         """
         {{ docstring(f) }}
         """
-        ...
+        {{ process(f) | indent(8, True) }}
 {% endmacro %}
 
 
@@ -93,5 +105,5 @@ def {{f.name}}(
     """
     {{ docstring(f) }}
     """
-    ...
+    {{ process(f) | indent(4, True) }}
 {% endmacro %}
