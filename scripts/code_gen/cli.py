@@ -33,7 +33,7 @@ def parse_options(filter: AVFilter, doc: FilterDocument) -> list[FFmpegFilterOpt
 
 
 @app.command()
-def generate(outpath: pathlib.Path = pathlib.Path("./tmp")) -> None:
+def generate(outpath: pathlib.Path = pathlib.Path("./src")) -> None:
     filters = parse_filters()
 
     filter_doc_mapping: dict[str, FilterDocument] = {}
