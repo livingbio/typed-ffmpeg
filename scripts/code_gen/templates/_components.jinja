@@ -45,7 +45,6 @@
 -> "{{ return_type }}":
 {%- else -%}
 -> tuple[
-    {{ f.output_stream_typings | length }}
     {% for stream_typing in f.output_stream_typings %}
         {% if stream_typing.type.value == "video" %}
             "VideoStream",
