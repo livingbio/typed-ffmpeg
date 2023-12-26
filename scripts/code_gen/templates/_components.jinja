@@ -56,6 +56,19 @@
 {%- endif -%}
 {%- endmacro -%}
 
+{% macro docstring(f) %}
+{{ f.description }}
+
+Parameters:
+----------
+{% for option in f.options %}
+{{option.name | option_name_safe}}: {{option.typing}}
+    {{option.description | striptags }}
+{% endfor %}
+
+Ref: {{ f.ref }}
+{% endmacro %}
+
 
 {% macro filter_method(f) %}
     def {{f.name}}(
@@ -64,9 +77,12 @@
     {{ option_typings(f) }}
     **kwargs: Any
     ) {{- return_stream_typings(f) }}
-        """{{ f.description }}"""
+        """
+        {{ docstring(f) }}
+        """
         ...
 {% endmacro %}
+
 
 {% macro filter_function(f) %}
 def {{f.name}}(
@@ -75,6 +91,8 @@ def {{f.name}}(
     {{ option_typings(f) }}
     **kwargs: Any
 ) {{- return_stream_typings(f) }}
-    """{{ f.description }}"""
+    """
+    {{ docstring(f) }}
+    """
     ...
 {% endmacro %}
