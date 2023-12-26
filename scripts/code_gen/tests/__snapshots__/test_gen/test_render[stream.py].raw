@@ -1,3 +1,4 @@
+from typing import Any
 
 
 class VideoStream:
@@ -19,7 +20,7 @@ class AudioStream:
         
     
         
-        desired: "AudioStream",
+        _desired: "AudioStream",
         
     
 
@@ -36,6 +37,7 @@ class AudioStream:
     
 
 
+    **kwargs: Any
     )-> "AudioStream":
         """description"""
         ...

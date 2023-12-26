@@ -1,3 +1,6 @@
+from .stream import VideoStream, AudioStream
+from typing import Any
+
 
 
 
@@ -8,11 +11,11 @@ def aap(
 
     
         
-        input: "AudioStream",
+        _input: "AudioStream",
         
     
         
-        desired: "AudioStream",
+        _desired: "AudioStream",
         
     
 
@@ -29,6 +32,7 @@ def aap(
     
 
 
+    **kwargs: Any
 )-> "AudioStream":
     """description"""
     ...

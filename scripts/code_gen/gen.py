@@ -38,7 +38,6 @@ env.filters["option_name_safe"] = option_name_safe
 
 def render(filters: list[FFmpegFilter], outpath: pathlib.Path) -> list[pathlib.Path]:
     outpath.mkdir(exist_ok=True)
-
     output = []
     for template_file in template_path.glob("*.py.jinja"):
         template = env.get_template(template_file.name)
