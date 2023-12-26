@@ -1,12 +1,10 @@
-from typing import Any
+from typing import Any, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .video import VideoStream
+
 {% import "_components.jinja" as _components %}
 
-class VideoStream:
-    {% for f in filters %}
-        {% if f.filter_type.value in ["vf", "vaf"] %}
-    {{ _components.filter_method(f) }}
-        {% endif %}
-    {% endfor %}
 
 class AudioStream:
     {% for f in filters %}
