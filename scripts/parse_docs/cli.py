@@ -41,9 +41,6 @@ def split_documents() -> None:
         for name, body in extract_filter(ifile.read()):
             info = parse_filter_document(body)
 
-            if not info.section_index.startswith("8.") and not info.section_index.startswith("11."):
-                continue
-
             print(f"Processing {info.title}...")
             info.save()
             infos.append(info)
