@@ -34,7 +34,19 @@ def aap(
 
     **kwargs: Any
 )-> "AudioStream":
-    """description"""
+    """
+    
+description
+
+Parameters:
+----------
+
+:param int order: set the filter order
+:param int projection: set the filter projection
+
+Ref: None
+
+    """
     ...
 
     

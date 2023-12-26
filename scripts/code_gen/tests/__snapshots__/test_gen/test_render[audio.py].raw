@@ -1,10 +1,10 @@
-from typing import Any
+from typing import Any, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .video import VideoStream
 
 
-class VideoStream:
-    
-        
-    
+
 
 class AudioStream:
     
@@ -39,7 +39,19 @@ class AudioStream:
 
     **kwargs: Any
     )-> "AudioStream":
-        """description"""
+        """
+        
+description
+
+Parameters:
+----------
+
+:param int order: set the filter order
+:param int projection: set the filter projection
+
+Ref: None
+
+        """
         ...
 
         
