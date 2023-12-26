@@ -18,7 +18,7 @@ class AudioStream:
         
     
 
- 
+
     *,
     
 
@@ -31,16 +31,9 @@ class AudioStream:
     
 
 
-    ) 
-
-    
-
-
--> "AudioStream":
-
-
+    )-> "AudioStream":
         """description"""
         ...
-    
+
         
     

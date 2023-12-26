@@ -128,15 +128,8 @@ def parse_filters(root: pathlib.Path, allfilter_c: pathlib.Path) -> None:
     print(f"not found filters {all_filter_names - parsed_filter_names}")
 
     for f in parsed_filters:
-        f.model_dump()
-        if f.is_dynamic_inputs:
-            print(f"WARNING: {f.name} has dynamic inputs")
-    for f in parsed_filters:
-        if f.is_dynamic_outputs:
-            print(f"WARNING: {f.name} has dynamic outputs")
-    for f in parsed_filters:
-        if len(f.options) == 0:
-            print(f"WARNING: {f.name} has no options")
+        print(f"{f.name} {f.type.value} inputs > {[k.type for k in f.input_filter_pads]} {f.is_dynamic_inputs}")
+        print(f"{f.name} {f.type.value} outputs > {f.output_filter_pads} {f.is_dynamic_outputs}")
 
 
 if __name__ == "__main__":

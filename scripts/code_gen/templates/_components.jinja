@@ -29,17 +29,17 @@
 {% endmacro %}
 
 
-{% macro return_stream_typings(filter) %}
-{% if filter.filter_type.value in ["vf", "avf"] %}
+{%- macro return_stream_typings(filter) -%}
+{%- if filter.filter_type.value in ["vf", "avf"] -%}
     {% set return_type = "VideoStream" %}
-{% elif filter.filter_type.value in ["af", "vaf"] %}
+{%- elif filter.filter_type.value in ["af", "vaf"] -%}
     {% set return_type = "AudioStream" %}
-{% endif %}
-{% if filter.is_output_dynamic %}
+{%- endif -%}
+{%- if filter.is_output_dynamic -%}
 -> list["{{ return_type }}"]:
-{% elif filter.output_stream_typings | length == 1 %}
+{%- elif filter.output_stream_typings | length == 1 -%}
 -> "{{ return_type }}":
-{% else %}
+{%- else -%}
 -> tuple[
     {% for stream_typing in filter.output_stream_typings %}
         {% if stream_typing.type.value == "video" %}
@@ -49,8 +49,8 @@
         {% endif %}
     {% endfor %}
 ]:
-{% endif %}
-{% endmacro %}
+{%- endif -%}
+{%- endmacro -%}
 
 
 {% macro filter_method(filter) %}
@@ -59,7 +59,7 @@
     {{ method_stream_typings(filter) }}
     *,
     {{ option_typings(filter) }}
-    ) {{ return_stream_typings(filter) }}
+    ) {{- return_stream_typings(filter) }}
         """{{ filter.description }}"""
         ...
 {% endmacro %}
