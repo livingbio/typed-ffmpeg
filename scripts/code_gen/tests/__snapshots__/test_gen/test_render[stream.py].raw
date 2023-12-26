@@ -1,0 +1,46 @@
+
+
+class VideoStream:
+    
+        
+    
+
+class AudioStream:
+    
+        
+    
+    def aap(
+        self,
+    
+    
+        
+        desired: "AudioStream",
+        
+    
+
+ 
+    *,
+    
+
+    
+        order: int = None,
+    
+
+    
+        projection: int = None,
+    
+
+
+    ) 
+
+    
+
+
+-> "AudioStream":
+
+
+        """description"""
+        ...
+    
+        
+    

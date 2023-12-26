@@ -1,0 +1,65 @@
+{% macro method_stream_typings(filter) -%}
+{% if filter.is_input_dynamic %}
+    {% if filter.filter_type.value in ["vf", "vaf"] %}
+    *streams: VideoStream,
+    {% elif filter.filter_type.value in ["af", "avf"] %}
+    *streams: AudioStream,
+    {% endif %}
+{% elif filter.input_stream_typings | length == 1 %}
+{% else %}
+    {% for stream_typing in filter.input_stream_typings[1:] %}
+        {% if stream_typing.type.value == "video" %}
+        {{ stream_typing.name }}: "VideoStream",
+        {% else %}
+        {{ stream_typing.name }}: "AudioStream",
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
+
+{% macro option_typings(filter) %}
+{% for option in filter.options %}
+    {% if option.required %}
+        {{option.name}}: {{option.typing}},
+    {% else %}
+        {{option.name}}: {{option.typing}} = None,
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+
+
+{% macro return_stream_typings(filter) %}
+{% if filter.filter_type.value in ["vf", "avf"] %}
+    {% set return_type = "VideoStream" %}
+{% elif filter.filter_type.value in ["af", "vaf"] %}
+    {% set return_type = "AudioStream" %}
+{% endif %}
+{% if filter.is_output_dynamic %}
+-> list["{{ return_type }}"]:
+{% elif filter.output_stream_typings | length == 1 %}
+-> "{{ return_type }}":
+{% else %}
+-> tuple[
+    {% for stream_typing in filter.output_stream_typings %}
+        {% if stream_typing.type.value == "video" %}
+            "VideoStream",
+        {% else %}
+            "AudioStream",
+        {% endif %}
+    {% endfor %}
+]:
+{% endif %}
+{% endmacro %}
+
+
+{% macro filter_method(filter) %}
+    def {{filter.name}}(
+        self,
+    {{ method_stream_typings(filter) }}
+    *,
+    {{ option_typings(filter) }}
+    ) {{ return_stream_typings(filter) }}
+        """{{ filter.description }}"""
+        ...
+{% endmacro %}
