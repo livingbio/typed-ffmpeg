@@ -12,7 +12,7 @@
 {% else %}
     {% for stream_typing in f.input_stream_typings %}
         {% if type == "method" and loop.index0 == 0 %}
-        {% elif stream_typing.type.value == "video" %}
+        {% elif stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
         {{ stream_typing.name | stream_name_safe }}: "VideoStream",
         {% else %}
         {{ stream_typing.name | stream_name_safe }}: "AudioStream",
@@ -46,7 +46,7 @@
 {%- else -%}
 -> tuple[
     {% for stream_typing in f.output_stream_typings %}
-        {% if stream_typing.type.value == "video" %}
+        {% if stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
             "VideoStream",
         {% else %}
             "AudioStream",
@@ -56,6 +56,30 @@
 {%- endif -%}
 {%- endmacro -%}
 
+{% macro docstring(f) %}
+{{ f.description }}
+
+Parameters:
+----------
+{% for option in f.options %}
+:param {{option.typing}} {{option.name | option_name_safe}}: {{option.description | striptags }}
+{%- endfor %}
+
+Ref: {{ f.ref }}
+{% endmacro %}
+
+
+{% macro process(f) %}
+return FilterNode(
+    name="{{ f.name }}",
+    kwargs={
+        {% for option in f.options %}
+        "{{ option.name}}": {{ option.name | option_name_safe }},
+        {% endfor %}
+    }
+)
+{% endmacro %}
+
 
 {% macro filter_method(f) %}
     def {{f.name}}(
@@ -64,9 +88,12 @@
     {{ option_typings(f) }}
     **kwargs: Any
     ) {{- return_stream_typings(f) }}
-        """{{ f.description }}"""
-        ...
+        """
+        {{ docstring(f) }}
+        """
+        {{ process(f) | indent(8, True) }}
 {% endmacro %}
+
 
 {% macro filter_function(f) %}
 def {{f.name}}(
@@ -75,6 +102,8 @@ def {{f.name}}(
     {{ option_typings(f) }}
     **kwargs: Any
 ) {{- return_stream_typings(f) }}
-    """{{ f.description }}"""
-    ...
+    """
+    {{ docstring(f) }}
+    """
+    {{ process(f) | indent(4, True) }}
 {% endmacro %}
