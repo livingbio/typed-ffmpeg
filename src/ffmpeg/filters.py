@@ -1,6 +1,7 @@
 from typing import Any
 
-from .stream import AudioStream, FilterNode, VideoStream
+from .base import FilterNode
+from .stream import AudioStream, VideoStream
 
 
 def aap(
