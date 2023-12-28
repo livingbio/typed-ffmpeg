@@ -1,22 +1,6 @@
 from typing import Any
 
-from pydantic import BaseModel
-
-
-class Stream(BaseModel):
-    ...
-
-
-class FilterNode(BaseModel):
-    streams: list[Stream]
-    name: str
-    kwargs: dict[str, str | int | float | bool | None] = {}
-
-    def _vs(self, index: int) -> "VideoStream":
-        return VideoStream()
-
-    def _as(self, index: int) -> "AudioStream":
-        return AudioStream()
+from .base import FilterNode, Stream
 
 
 class AudioStream(Stream):
