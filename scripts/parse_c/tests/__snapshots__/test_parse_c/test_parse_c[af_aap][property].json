@@ -7,7 +7,9 @@
     "outputs_value": "outputs",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "order"
+        ],
         "choices": [],
         "default": "['.i64=16']",
         "deprecated": false,
@@ -17,7 +19,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "projection"
+        ],
         "choices": [],
         "default": "['.i64=2']",
         "deprecated": false,
@@ -27,7 +31,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "mu"
+        ],
         "choices": [],
         "default": "['.dbl=0.0001']",
         "deprecated": false,
@@ -37,7 +43,9 @@
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": [],
+        "alias": [
+          "delta"
+        ],
         "choices": [],
         "default": "['.dbl=0.001']",
         "deprecated": false,
@@ -47,7 +55,9 @@
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": [],
+        "alias": [
+          "out_mode"
+        ],
         "choices": [
           {
             "help": "input",
@@ -83,7 +93,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "precision"
+        ],
         "choices": [
           {
             "help": "set auto processing precision",

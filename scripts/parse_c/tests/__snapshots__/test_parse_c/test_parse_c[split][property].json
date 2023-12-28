@@ -7,7 +7,9 @@
     "outputs_value": null,
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "outputs"
+        ],
         "choices": [],
         "default": "['.i64 = 2']",
         "deprecated": false,
@@ -28,7 +30,9 @@
     "outputs_value": null,
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "outputs"
+        ],
         "choices": [],
         "default": "['.i64 = 2']",
         "deprecated": false,

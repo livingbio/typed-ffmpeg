@@ -7,7 +7,9 @@
     "outputs_value": "overlay_cuda_outputs",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "x"
+        ],
         "choices": [],
         "default": "['.str = \"0\"']",
         "deprecated": false,
@@ -17,7 +19,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "y"
+        ],
         "choices": [],
         "default": "['.str = \"0\"']",
         "deprecated": false,
@@ -27,7 +31,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "eof_action"
+        ],
         "choices": [
           {
             "help": "Repeat the previous frame.",
@@ -53,7 +59,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "eval"
+        ],
         "choices": [],
         "default": "['.i64 = EVAL_MODE_FRAME']",
         "deprecated": false,
@@ -63,7 +71,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "shortest"
+        ],
         "choices": [],
         "default": "['.i64 = 0']",
         "deprecated": false,
@@ -73,7 +83,9 @@
         "type": "AV_OPT_TYPE_BOOL"
       },
       {
-        "alias": [],
+        "alias": [
+          "repeatlast"
+        ],
         "choices": [],
         "default": "['.i64=1']",
         "deprecated": false,

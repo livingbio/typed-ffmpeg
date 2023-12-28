@@ -7,7 +7,9 @@
     "outputs_value": "tonemap_vaapi_outputs",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "format"
+        ],
         "choices": [],
         "default": null,
         "deprecated": false,

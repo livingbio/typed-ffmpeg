@@ -7,7 +7,9 @@
     "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "coordinates"
+        ],
         "choices": [],
         "default": "['.i64=255']",
         "deprecated": false,
@@ -17,7 +19,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold0"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -27,7 +31,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold1"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -37,7 +43,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold2"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -47,7 +55,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold3"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -68,7 +78,9 @@
     "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "coordinates"
+        ],
         "choices": [],
         "default": "['.i64=255']",
         "deprecated": false,
@@ -78,7 +90,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold0"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -88,7 +102,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold1"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -98,7 +114,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold2"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -108,7 +126,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold3"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -129,7 +149,9 @@
     "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "threshold0"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -139,7 +161,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold1"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -149,7 +173,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold2"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -159,7 +185,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold3"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -180,7 +208,9 @@
     "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "threshold0"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -190,7 +220,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold1"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -200,7 +232,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold2"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,
@@ -210,7 +244,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "threshold3"
+        ],
         "choices": [],
         "default": "['.i64=65535']",
         "deprecated": false,

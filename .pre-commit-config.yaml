@@ -65,7 +65,5 @@ repos:
             --disallow-any-generics,
             --check-untyped-defs,
             --no-implicit-reexport,
-            --disallow-untyped-defs,
-            --install-types,
-            --non-interactive,
-          ]
+            --disallow-untyped-defs
+                      ]

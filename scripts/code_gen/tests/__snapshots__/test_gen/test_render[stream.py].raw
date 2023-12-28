@@ -1,0 +1,106 @@
+
+
+from pydantic import BaseModel
+from typing import Any, TYPE_CHECKING
+
+
+
+class Stream(BaseModel):
+    ...
+
+
+class FilterNode(BaseModel):
+    streams: list[Stream]
+    name: str
+    kwargs: dict[str, str | int | float | bool | None] = {}
+
+    def _vs(self, index: int) -> "VideoStream":
+        return VideoStream()
+
+    def _as(self, index: int) -> "AudioStream":
+        return AudioStream()
+
+
+class AudioStream(Stream):
+    
+        
+    
+    def aap(
+    
+    self,
+
+
+    
+        
+        
+    
+        
+        _desired: "AudioStream",
+        
+    
+
+
+    *,
+    
+
+    
+        order: int = None,
+    
+
+    
+        projection: int = None,
+    
+
+
+    **kwargs: Any
+    )-> "AudioStream":
+        """
+        
+description
+
+Parameters:
+----------
+
+:param int order: set the filter order
+:param int projection: set the filter projection
+
+Ref: None
+
+        """
+        filter_node = FilterNode(
+            name="aap",
+            streams=[
+                
+            self,
+
+
+            
+                
+                
+            
+                
+                _desired,
+                
+            
+
+
+            ],
+            kwargs={
+                
+                "order": order,
+                
+                "projection": projection,
+                
+            } | kwargs,
+        )
+        return filter_node._as(0)
+
+
+        
+    
+
+
+class VideoStream(Stream):
+    
+        
+    

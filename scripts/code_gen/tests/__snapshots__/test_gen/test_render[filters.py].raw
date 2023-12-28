@@ -1,6 +1,7 @@
-from .stream import VideoStream, AudioStream
-from .node import FilterNode
+from .stream import VideoStream, AudioStream, FilterNode
 from typing import Any
+
+
 
 
 
@@ -48,17 +49,32 @@ Parameters:
 Ref: None
 
     """
-        
-    return FilterNode(
+    filter_node = FilterNode(
         name="aap",
+        streams=[
+            
+
+        
+            
+            _input,
+            
+        
+            
+            _desired,
+            
+        
+
+
+        ],
         kwargs={
             
             "order": order,
             
             "projection": projection,
             
-        }
+        } | kwargs,
     )
+    return filter_node._as(0)
 
 
     

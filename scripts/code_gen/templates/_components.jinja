@@ -40,7 +40,7 @@
     {% set return_type = "AudioStream" %}
 {%- endif -%}
 {%- if f.is_output_dynamic -%}
--> list["{{ return_type }}"]:
+-> FilterNode:
 {%- elif f.output_stream_typings | length == 1 -%}
 -> "{{ return_type }}":
 {%- else -%}
@@ -69,15 +69,62 @@ Ref: {{ f.ref }}
 {% endmacro %}
 
 
-{% macro process(f) %}
-return FilterNode(
+{% macro stream_params(f, type) -%}
+{% if type == "method" %}
+    self,
+{% endif %}
+{% if f.is_input_dynamic %}
+    {% if f.filter_type.value in ["vf", "vaf"] %}
+    *streams,
+    {% elif f.filter_type.value in ["af", "avf"] %}
+    *streams,
+    {% endif %}
+{% elif f.input_stream_typings | length == 1 %}
+{% else %}
+    {% for stream_typing in f.input_stream_typings %}
+        {% if type == "method" and loop.index0 == 0 %}
+        {% elif stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
+        {{ stream_typing.name | stream_name_safe }},
+        {% else %}
+        {{ stream_typing.name | stream_name_safe }},
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
+
+{% macro process(f, type) %}
+{%- if f.filter_type.value in ["vf", "avf"] -%}
+    {% set return_type = "_vs" %}
+{%- elif f.filter_type.value in ["af", "vaf"] -%}
+    {% set return_type = "_as" %}
+{%- endif -%}
+filter_node = FilterNode(
     name="{{ f.name }}",
+    streams=[
+        {{ stream_params(f, type) }}
+    ],
     kwargs={
         {% for option in f.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}
-    }
+    } | kwargs,
 )
+{% if f.is_output_dynamic %}
+return filter_node
+{%- elif f.output_stream_typings | length == 1 -%}
+return filter_node.{{return_type}}(0)
+{%- else -%}
+return (
+    {% for stream_typing in f.output_stream_typings %}
+        {% if stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
+            filter_node._vs({{loop.index0}}),
+        {% else %}
+            filter_node._as({{loop.index0}}),
+        {% endif %}
+    {% endfor %}
+)
+{% endif %}
 {% endmacro %}
 
 
@@ -91,7 +138,7 @@ return FilterNode(
         """
         {{ docstring(f) }}
         """
-        {{ process(f) | indent(8, True) }}
+{{ process(f, "method") | indent(8, True) }}
 {% endmacro %}
 
 
@@ -105,5 +152,5 @@ def {{f.name}}(
     """
     {{ docstring(f) }}
     """
-    {{ process(f) | indent(4, True) }}
+{{ process(f, "function") | indent(4, True) }}
 {% endmacro %}

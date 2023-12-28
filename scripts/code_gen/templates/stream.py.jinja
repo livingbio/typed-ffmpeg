@@ -1,0 +1,37 @@
+{% import "_components.jinja" as _components %}
+
+from pydantic import BaseModel
+from typing import Any, TYPE_CHECKING
+
+
+
+class Stream(BaseModel):
+    ...
+
+
+class FilterNode(BaseModel):
+    streams: list[Stream]
+    name: str
+    kwargs: dict[str, str | int | float | bool | None] = {}
+
+    def _vs(self, index: int) -> "VideoStream":
+        return VideoStream()
+
+    def _as(self, index: int) -> "AudioStream":
+        return AudioStream()
+
+
+class AudioStream(Stream):
+    {% for f in filters %}
+        {% if f.filter_type.value in ["af", "avf"] %}
+    {{ _components.filter_method(f) }}
+        {% endif %}
+    {% endfor %}
+
+
+class VideoStream(Stream):
+    {% for f in filters %}
+        {% if f.filter_type.value in ["vf", "vaf"] %}
+    {{ _components.filter_method(f) }}
+        {% endif %}
+    {% endfor %}

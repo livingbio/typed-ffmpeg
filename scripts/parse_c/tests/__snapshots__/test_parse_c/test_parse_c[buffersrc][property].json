@@ -20,7 +20,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "height"
+        ],
         "choices": [],
         "default": "['.i64 = 0']",
         "deprecated": false,
@@ -30,7 +32,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "pix_fmt"
+        ],
         "choices": [],
         "default": "['.i64 = AV_PIX_FMT_NONE']",
         "deprecated": false,
@@ -53,7 +57,9 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": [],
+        "alias": [
+          "time_base"
+        ],
         "choices": [],
         "default": "['.dbl = 0']",
         "deprecated": false,
@@ -63,7 +69,9 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": [],
+        "alias": [
+          "frame_rate"
+        ],
         "choices": [],
         "default": "['.dbl = 0']",
         "deprecated": false,
@@ -84,7 +92,9 @@
     "outputs_value": "avfilter_asrc_abuffer_outputs",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "time_base"
+        ],
         "choices": [],
         "default": "['.dbl = 0']",
         "deprecated": false,
@@ -94,7 +104,9 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": [],
+        "alias": [
+          "sample_rate"
+        ],
         "choices": [],
         "default": "['.i64 = 0']",
         "deprecated": false,
@@ -104,7 +116,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "sample_fmt"
+        ],
         "choices": [],
         "default": "['.i64 = AV_SAMPLE_FMT_NONE']",
         "deprecated": false,
@@ -114,7 +128,9 @@
         "type": "AV_OPT_TYPE_SAMPLE_FMT"
       },
       {
-        "alias": [],
+        "alias": [
+          "channel_layout"
+        ],
         "choices": [],
         "default": null,
         "deprecated": false,
@@ -124,7 +140,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "channels"
+        ],
         "choices": [],
         "default": "['.i64 = 0']",
         "deprecated": false,

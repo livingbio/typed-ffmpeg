@@ -7,7 +7,9 @@
     "outputs_value": "aspectralstats_outputs",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "win_size"
+        ],
         "choices": [],
         "default": "['.i64=2048']",
         "deprecated": false,
@@ -17,7 +19,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "win_func"
+        ],
         "choices": [
           {
             "help": "Rectangular",
@@ -138,7 +142,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "overlap"
+        ],
         "choices": [],
         "default": "['.dbl=0.5']",
         "deprecated": false,
@@ -148,7 +154,9 @@
         "type": "AV_OPT_TYPE_FLOAT"
       },
       {
-        "alias": [],
+        "alias": [
+          "measure"
+        ],
         "choices": [
           {
             "help": "",

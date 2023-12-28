@@ -257,7 +257,7 @@ class AVFilter(pydantic.BaseModel):
                 else:
                     alias = [k.name for k in alias_map[option.offset]]
             else:
-                alias = []
+                alias = [k.name for k in alias_map[option.offset]]
 
             if option.unit == None:
                 output.append(

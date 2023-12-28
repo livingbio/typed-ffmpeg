@@ -217,7 +217,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "silence"
+        ],
         "choices": [],
         "default": "['.dbl = 0']",
         "deprecated": false,
@@ -227,7 +229,9 @@
         "type": "AV_OPT_TYPE_DOUBLE"
       },
       {
-        "alias": [],
+        "alias": [
+          "unity"
+        ],
         "choices": [],
         "default": "['.dbl = 1']",
         "deprecated": false,

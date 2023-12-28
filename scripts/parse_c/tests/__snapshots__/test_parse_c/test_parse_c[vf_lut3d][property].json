@@ -7,7 +7,9 @@
     "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "file"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
@@ -17,7 +19,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "clut"
+        ],
         "choices": [
           {
             "help": "process only first CLUT, ignore rest",
@@ -38,7 +42,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "interp"
+        ],
         "choices": [
           {
             "help": "use values from the nearest defined points",
@@ -85,7 +91,9 @@
     "outputs_value": "haldclut_outputs",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "clut"
+        ],
         "choices": [
           {
             "help": "process only first CLUT, ignore rest",
@@ -106,7 +114,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "interp"
+        ],
         "choices": [
           {
             "help": "use values from the nearest defined points",
@@ -153,7 +163,9 @@
     "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "file"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
@@ -163,7 +175,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "interp"
+        ],
         "choices": [
           {
             "help": "use values from the nearest defined points",
