@@ -7,7 +7,9 @@
     "outputs_value": "ff_video_default_filterpad",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "preset"
+        ],
         "choices": [
           {
             "help": "((void*)0)",
@@ -125,7 +127,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "all"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
@@ -135,7 +139,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "psfile"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
@@ -145,7 +151,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "plot"
+        ],
         "choices": [],
         "default": "['.str=((void*)0)']",
         "deprecated": false,
@@ -155,7 +163,9 @@
         "type": "AV_OPT_TYPE_STRING"
       },
       {
-        "alias": [],
+        "alias": [
+          "interp"
+        ],
         "choices": [
           {
             "help": "natural cubic spline",

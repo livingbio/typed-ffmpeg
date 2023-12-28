@@ -59,7 +59,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -80,7 +82,9 @@
     "outputs_value": "haldclutsrc_outputs",
     "parsed_options": [
       {
-        "alias": [],
+        "alias": [
+          "level"
+        ],
         "choices": [],
         "default": "['.i64 = 6']",
         "deprecated": false,
@@ -116,7 +120,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -176,7 +182,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -236,7 +244,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -309,7 +319,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -319,7 +331,9 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": [],
+        "alias": [
+          "alpha"
+        ],
         "choices": [],
         "default": "['.i64 = 255']",
         "deprecated": false,
@@ -379,7 +393,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -452,7 +468,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -512,7 +530,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -572,7 +592,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -632,7 +654,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -692,7 +716,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -739,7 +765,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -786,7 +814,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -846,7 +876,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -856,7 +888,9 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": [],
+        "alias": [
+          "type"
+        ],
         "choices": [
           {
             "help": "fade to black",
@@ -919,7 +953,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -929,7 +965,9 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": [],
+        "alias": [
+          "patch_size"
+        ],
         "choices": [],
         "default": "['.str=\"64x64\"']",
         "deprecated": false,
@@ -939,7 +977,9 @@
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
-        "alias": [],
+        "alias": [
+          "preset"
+        ],
         "choices": [
           {
             "help": "reference",
@@ -1010,7 +1050,9 @@
         "type": "AV_OPT_TYPE_DURATION"
       },
       {
-        "alias": [],
+        "alias": [
+          "sar"
+        ],
         "choices": [],
         "default": "['.dbl= 1']",
         "deprecated": false,
@@ -1020,7 +1062,9 @@
         "type": "AV_OPT_TYPE_RATIONAL"
       },
       {
-        "alias": [],
+        "alias": [
+          "precision"
+        ],
         "choices": [],
         "default": "['.i64=10']",
         "deprecated": false,
@@ -1030,7 +1074,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "xo"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1040,7 +1086,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "yo"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1050,7 +1098,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "to"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1060,7 +1110,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "k0"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1070,7 +1122,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "kx"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1080,7 +1134,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "ky"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1090,7 +1146,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "kt"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1100,7 +1158,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "kxt"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1110,7 +1170,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "kyt"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1120,7 +1182,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "kxy"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1130,7 +1194,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "kx2"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1140,7 +1206,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "ky2"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1150,7 +1218,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "kt2"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1160,7 +1230,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "ku"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
@@ -1170,7 +1242,9 @@
         "type": "AV_OPT_TYPE_INT"
       },
       {
-        "alias": [],
+        "alias": [
+          "kv"
+        ],
         "choices": [],
         "default": "['.i64=0']",
         "deprecated": false,
