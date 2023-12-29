@@ -25,7 +25,7 @@ class FilterableStream(Stream):
         return self.filter_multi_output(*streams, name=name, **kwargs).stream()
 
     def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
-        return FilterNode(name=name, kwargs=kwargs, streams=[self, *streams])
+        return FilterNode(name=name, kwargs=kwargs, inputs=[self, *streams])
 
     @property
     def video(self) -> VideoStream:
@@ -34,6 +34,9 @@ class FilterableStream(Stream):
     @property
     def audio(self) -> AudioStream:
         return self.node.audio(label=self.label)
+
+    def output(self, *streams: "FilterableStream", **kwargs: Any) -> "OutputStream":
+        return OutputNode(name="output", kwargs=kwargs, inputs=[self, *streams]).stream()
 
 
 class InputNode(Node):
@@ -52,14 +55,14 @@ class InputNode(Node):
 
 
 class FilterNode(InputNode):
-    streams: list[FilterableStream]
+    inputs: list[FilterableStream]
 
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
 
 
 class OutputNode(Node):
-    streams: list[FilterableStream]
+    inputs: list[FilterableStream]
 
     def stream(self, label: str | int | None = None) -> "OutputStream":
         return OutputStream(node=self, label=label)
@@ -68,6 +71,12 @@ class OutputNode(Node):
 class OutputStream(Stream):
     node: OutputNode | "GlobalNode"
 
+    def global_args(self, *args: str, **kwargs: str | bool | int | float | None) -> "OutputStream":
+        return GlobalNode(name="global_args", input=self, args=list(args), kwargs=kwargs).stream()
+
 
 class GlobalNode(Node):
-    streams: OutputStream
+    input: OutputStream
+
+    def stream(self, label: str | int | None = None) -> "OutputStream":
+        return OutputStream(node=self, label=label)

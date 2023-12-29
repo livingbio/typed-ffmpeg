@@ -52,7 +52,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="a3dscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -111,7 +111,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aap",
-            streams=[
+            inputs=[
                 self,
                 _desired,
             ],
@@ -145,7 +145,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="abench",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -178,7 +178,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="abitscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -261,7 +261,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acompressor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -300,7 +300,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acontrast",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -326,7 +326,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acopy",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -366,7 +366,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acrossfade",
-            streams=[
+            inputs=[
                 self,
                 _crossfade1,
             ],
@@ -415,7 +415,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acrossover",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -490,7 +490,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acrusher",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -529,7 +529,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acue",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -575,7 +575,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adeclick",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -624,7 +624,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adeclip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -658,7 +658,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adecorrelate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -690,7 +690,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adelay",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -722,7 +722,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adenorm",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -750,7 +750,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aderivative",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -808,7 +808,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adrawgraph",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -855,7 +855,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adrc",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -919,7 +919,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adynamicequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -962,7 +962,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adynamicsmooth",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1004,7 +1004,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aecho",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1045,7 +1045,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aemphasis",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1087,7 +1087,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aeval",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1140,7 +1140,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aexciter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1194,7 +1194,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afade",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1260,7 +1260,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afftdn",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1312,7 +1312,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afftfilt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1346,7 +1346,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afifo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -1425,7 +1425,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afir",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -1481,7 +1481,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aformat",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1515,7 +1515,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afreqshift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1564,7 +1564,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afwtdn",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1636,7 +1636,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="agate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1686,7 +1686,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="agraphmonitor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1739,7 +1739,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ahistogram",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1818,7 +1818,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aiir",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1859,7 +1859,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aintegral",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -1908,7 +1908,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ainterleave",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -1941,7 +1941,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="alatency",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -1994,7 +1994,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="alimiter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2054,7 +2054,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="allpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2095,7 +2095,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aloop",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2149,7 +2149,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="amerge",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -2195,7 +2195,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ametadata",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2247,7 +2247,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="amix",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -2282,7 +2282,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="amultiply",
-            streams=[
+            inputs=[
                 self,
                 _multiply1,
             ],
@@ -2323,7 +2323,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2374,7 +2374,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anlmdn",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2426,7 +2426,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anlmf",
-            streams=[
+            inputs=[
                 self,
                 _desired,
             ],
@@ -2480,7 +2480,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anlms",
-            streams=[
+            inputs=[
                 self,
                 _desired,
             ],
@@ -2511,7 +2511,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anull",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -2560,7 +2560,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="apad",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2602,7 +2602,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aperms",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2662,7 +2662,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aphasemeter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2719,7 +2719,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aphaser",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2756,7 +2756,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aphaseshift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2787,7 +2787,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="apsnr",
-            streams=[
+            inputs=[
                 self,
                 _input1,
             ],
@@ -2830,7 +2830,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="apsyclip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2901,7 +2901,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="apulsator",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2944,7 +2944,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="arealtime",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2985,7 +2985,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aresample",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3013,7 +3013,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="areverse",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -3056,7 +3056,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="arls",
-            streams=[
+            inputs=[
                 self,
                 _desired,
             ],
@@ -3090,7 +3090,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="arnndn",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3120,7 +3120,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asdr",
-            streams=[
+            inputs=[
                 self,
                 _input1,
             ],
@@ -3155,7 +3155,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asegment",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3192,7 +3192,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aselect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3234,7 +3234,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asendcmd",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3274,7 +3274,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asetnsamples",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3309,7 +3309,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asetpts",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3338,7 +3338,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asetrate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3373,7 +3373,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asettb",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3404,7 +3404,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ashowinfo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -3430,7 +3430,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asidedata",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3460,7 +3460,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asisdr",
-            streams=[
+            inputs=[
                 self,
                 _input1,
             ],
@@ -3502,7 +3502,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asoftclip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3542,7 +3542,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aspectralstats",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3576,7 +3576,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asplit",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3629,7 +3629,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3680,7 +3680,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="astats",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3713,7 +3713,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="astreamselect",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -3765,7 +3765,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asubboost",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3807,7 +3807,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asubcut",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3841,7 +3841,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asupercut",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3876,7 +3876,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asuperpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3912,7 +3912,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asuperstop",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3950,7 +3950,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="atempo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3993,7 +3993,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="atilt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4072,7 +4072,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="atrim",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4149,7 +4149,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="avectorscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4201,7 +4201,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="axcorrelate",
-            streams=[
+            inputs=[
                 self,
                 _axcorrelate1,
             ],
@@ -4258,7 +4258,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="bandpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4318,7 +4318,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="bandreject",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4381,7 +4381,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="bass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4448,7 +4448,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="biquad",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4493,7 +4493,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="bs2b",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4527,7 +4527,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="channelmap",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4557,7 +4557,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="channelsplit",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4611,7 +4611,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="chorus",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4661,7 +4661,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="compand",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4726,7 +4726,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="compensationdelay",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4795,7 +4795,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="concat",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -4849,7 +4849,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="crossfeed",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4885,7 +4885,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="crystalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4918,7 +4918,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="dcshift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4950,7 +4950,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="deesser",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4990,7 +4990,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="dialoguenhance",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5024,7 +5024,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="drmeter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5091,7 +5091,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="dynaudnorm",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5135,7 +5135,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="earwax",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -5219,7 +5219,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ebur128",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5293,7 +5293,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="equalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5332,7 +5332,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="extrastereo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5390,7 +5390,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="firequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5449,7 +5449,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="flanger",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5517,7 +5517,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="haas",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5586,7 +5586,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="hdcd",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5637,7 +5637,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="headphone",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -5696,7 +5696,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="highpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5760,7 +5760,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="highshelf",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5816,7 +5816,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="join",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -5865,7 +5865,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ladspa",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -5929,7 +5929,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="loudnorm",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5992,7 +5992,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="lowpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6056,7 +6056,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="lowshelf",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6108,7 +6108,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="lv2",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -6145,7 +6145,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="mcompand",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6183,7 +6183,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="pan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6214,7 +6214,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="replaygain",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6269,7 +6269,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="rubberband",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6365,7 +6365,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showcqt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6454,7 +6454,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showcwt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6529,7 +6529,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showfreqs",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6576,7 +6576,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showspatial",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6655,7 +6655,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showspectrum",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6738,7 +6738,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showspectrumpic",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6814,7 +6814,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showvolume",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6875,7 +6875,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showwaves",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6925,7 +6925,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showwavespic",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6991,7 +6991,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="sidechaincompress",
-            streams=[
+            inputs=[
                 self,
                 _sidechain,
             ],
@@ -7069,7 +7069,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="sidechaingate",
-            streams=[
+            inputs=[
                 self,
                 _sidechain,
             ],
@@ -7126,7 +7126,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="silencedetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7185,7 +7185,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="silenceremove",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7264,7 +7264,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="sofalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7332,7 +7332,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="speechnorm",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7414,7 +7414,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="stereotools",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7474,7 +7474,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="stereowiden",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7544,7 +7544,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="superequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7694,7 +7694,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="surround",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7799,7 +7799,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="tiltshelf",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7864,7 +7864,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="treble",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7903,7 +7903,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="tremolo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7933,7 +7933,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="vibrato",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7967,7 +7967,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="virtualbass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8018,7 +8018,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="volume",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8059,7 +8059,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="volumedetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -8104,7 +8104,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="addroi",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8135,7 +8135,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="alphaextract",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -8166,7 +8166,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="alphamerge",
-            streams=[
+            inputs=[
                 self,
                 _alpha,
             ],
@@ -8210,7 +8210,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="amplify",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8271,7 +8271,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="atadenoise",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8312,7 +8312,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="avgblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8346,7 +8346,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="avgblur_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8380,7 +8380,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="backgroundkey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8416,7 +8416,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bbox",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8444,7 +8444,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bench",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8476,7 +8476,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bilateral",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8512,7 +8512,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bilateral_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8543,7 +8543,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bitplanenoise",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8597,7 +8597,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blackdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8638,7 +8638,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blackframe",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8712,7 +8712,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blend",
-            streams=[
+            inputs=[
                 self,
                 _bottom,
             ],
@@ -8783,7 +8783,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blend_vulkan",
-            streams=[
+            inputs=[
                 self,
                 _bottom,
             ],
@@ -8827,7 +8827,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blockdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8877,7 +8877,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blurdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8936,7 +8936,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bm3d",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -8993,7 +8993,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="boxblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9031,7 +9031,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bwdif",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9062,7 +9062,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="cas",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9094,7 +9094,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ccrepack",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -9119,7 +9119,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromaber_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9153,7 +9153,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromahold",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9189,7 +9189,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromakey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9226,7 +9226,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromakey_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9278,7 +9278,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromanr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9320,7 +9320,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromashift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9375,7 +9375,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ciescope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9429,7 +9429,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="codecview",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9490,7 +9490,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorbalance",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9572,7 +9572,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorchannelmixer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9634,7 +9634,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorcontrast",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9684,7 +9684,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorcorrect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9721,7 +9721,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorhold",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9756,7 +9756,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorize",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9794,7 +9794,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorkey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9828,7 +9828,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorkey_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9895,7 +9895,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorlevels",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9957,7 +9957,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colormap",
-            streams=[
+            inputs=[
                 self,
                 _source,
                 _target,
@@ -9996,7 +9996,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colormatrix",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10057,7 +10057,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorspace",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10102,7 +10102,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorspace_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10134,7 +10134,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colortemperature",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10199,7 +10199,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="convolution",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10250,7 +10250,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="convolve",
-            streams=[
+            inputs=[
                 self,
                 _impulse,
             ],
@@ -10279,7 +10279,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="copy",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -10320,7 +10320,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="corr",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -10347,7 +10347,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="cover_rect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10409,7 +10409,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="crop",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10467,7 +10467,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="cropdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10515,7 +10515,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="cue",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10591,7 +10591,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="curves",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10648,7 +10648,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="datascope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10685,7 +10685,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10722,7 +10722,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dctdnoiz",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10773,7 +10773,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deband",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10825,7 +10825,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deblock",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10878,7 +10878,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="decimate",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -10922,7 +10922,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deconvolve",
-            streams=[
+            inputs=[
                 self,
                 _impulse,
             ],
@@ -10959,7 +10959,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dedot",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11005,7 +11005,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deflate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11038,7 +11038,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deflicker",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11074,7 +11074,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dejudder",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11110,7 +11110,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="delogo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11166,7 +11166,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="derain",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11227,7 +11227,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deshake",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11281,7 +11281,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deshake_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11334,7 +11334,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="despill",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11375,7 +11375,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="detelecine",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11420,7 +11420,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dilation",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11463,7 +11463,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="displace",
-            streams=[
+            inputs=[
                 self,
                 _xmap,
                 _ymap,
@@ -11514,7 +11514,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dnn_classify",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11579,7 +11579,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dnn_detect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11635,7 +11635,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dnn_processing",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11673,7 +11673,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="doubleweave",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11724,7 +11724,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="drawbox",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11801,7 +11801,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="drawgraph",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11864,7 +11864,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="drawgrid",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11973,7 +11973,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="drawtext",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12038,7 +12038,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="edgedetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12086,7 +12086,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="elbg",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12118,7 +12118,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="entropy",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12146,7 +12146,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="epx",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12198,7 +12198,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="eq",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12249,7 +12249,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="erosion",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12305,7 +12305,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="estdif",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12342,7 +12342,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="exposure",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12372,7 +12372,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="extractplanes",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12418,7 +12418,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fade",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12465,7 +12465,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="feedback",
-            streams=[
+            inputs=[
                 self,
                 _feedin,
             ],
@@ -12521,7 +12521,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fftdnoiz",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12572,7 +12572,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fftfilt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12608,7 +12608,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="field",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12655,7 +12655,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fieldhint",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12745,7 +12745,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fieldmatch",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -12806,7 +12806,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fieldorder",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12836,7 +12836,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fifo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -12878,7 +12878,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fillborders",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12942,7 +12942,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="find_rect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12974,7 +12974,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="flip_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -13022,7 +13022,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="floodfill",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13061,7 +13061,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="format",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13100,7 +13100,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fps",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13144,7 +13144,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="framepack",
-            streams=[
+            inputs=[
                 self,
                 _right,
             ],
@@ -13191,7 +13191,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="framerate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13223,7 +13223,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="framestep",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13265,7 +13265,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="freezedetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13300,7 +13300,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="freezeframes",
-            streams=[
+            inputs=[
                 self,
                 _replace,
             ],
@@ -13347,7 +13347,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="frei0r",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13385,7 +13385,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fspp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13421,7 +13421,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="gblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13465,7 +13465,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="gblur_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13540,7 +13540,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="geq",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13587,7 +13587,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="gradfun",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13632,7 +13632,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="graphmonitor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13669,7 +13669,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="grayworld",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -13701,7 +13701,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="greyedge",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13746,7 +13746,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="guided",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -13793,7 +13793,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="haldclut",
-            streams=[
+            inputs=[
                 self,
                 _clut,
             ],
@@ -13824,7 +13824,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hflip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -13846,7 +13846,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hflip_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -13883,7 +13883,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="histeq",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13940,7 +13940,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="histogram",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13988,7 +13988,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hqdn3d",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14020,7 +14020,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hqx",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14056,7 +14056,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hstack",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -14103,7 +14103,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hsvhold",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14152,7 +14152,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hsvkey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14194,7 +14194,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hue",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14248,7 +14248,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="huesaturation",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14286,7 +14286,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hwdownload",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -14346,7 +14346,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hwmap",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14383,7 +14383,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hwupload",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14411,7 +14411,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hwupload_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14446,7 +14446,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hysteresis",
-            streams=[
+            inputs=[
                 self,
                 _alt,
             ],
@@ -14477,7 +14477,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="iccdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14509,7 +14509,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="iccgen",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14555,7 +14555,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="identity",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -14604,7 +14604,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="idet",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14657,7 +14657,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="il",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14704,7 +14704,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="inflate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14749,7 +14749,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="interlace",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14802,7 +14802,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="interleave",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -14847,7 +14847,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="kerndeint",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14881,7 +14881,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="kirsch",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14913,7 +14913,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lagfun",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14945,7 +14945,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="latency",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -14998,7 +14998,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lenscorrection",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15074,7 +15074,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lensfun",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15271,7 +15271,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="libplacebo",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -15407,7 +15407,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="libvmaf",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -15453,7 +15453,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="limitdiff",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -15487,7 +15487,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="limiter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15522,7 +15522,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="loop",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15557,7 +15557,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lumakey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15608,7 +15608,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lut",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15640,7 +15640,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lut1d",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15700,7 +15700,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lut2",
-            streams=[
+            inputs=[
                 self,
                 _srcy,
             ],
@@ -15735,7 +15735,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lut3d",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15786,7 +15786,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lutrgb",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15838,7 +15838,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lutyuv",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15883,7 +15883,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedclamp",
-            streams=[
+            inputs=[
                 self,
                 _dark,
                 _bright,
@@ -15921,7 +15921,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedmax",
-            streams=[
+            inputs=[
                 self,
                 _filter1,
                 _filter2,
@@ -15960,7 +15960,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedmerge",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
                 _mask,
@@ -15996,7 +15996,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedmin",
-            streams=[
+            inputs=[
                 self,
                 _filter1,
                 _filter2,
@@ -16036,7 +16036,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedthreshold",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -16075,7 +16075,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskfun",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16112,7 +16112,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mcdeint",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16147,7 +16147,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="median",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16204,7 +16204,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mergeplanes",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -16247,7 +16247,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mestimate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16294,7 +16294,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="metadata",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16336,7 +16336,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="midequalizer",
-            streams=[
+            inputs=[
                 self,
                 _in1,
             ],
@@ -16388,7 +16388,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="minterpolate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16438,7 +16438,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mix",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -16476,7 +16476,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="monochrome",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16519,7 +16519,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="morpho",
-            streams=[
+            inputs=[
                 self,
                 _structure,
             ],
@@ -16561,7 +16561,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mpdecimate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16609,7 +16609,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="msad",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -16639,7 +16639,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="multiply",
-            streams=[
+            inputs=[
                 self,
                 _factor,
             ],
@@ -16671,7 +16671,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="negate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16714,7 +16714,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="nlmeans",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16750,7 +16750,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="nlmeans_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16812,7 +16812,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="nlmeans_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16872,7 +16872,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="nnedi",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16909,7 +16909,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="noformat",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16970,7 +16970,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="noise",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17042,7 +17042,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="normalize",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17071,7 +17071,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="null",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -17109,7 +17109,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ocr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17151,7 +17151,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ocv",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17211,7 +17211,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="oscilloscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17296,7 +17296,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17357,7 +17357,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay_cuda",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17395,7 +17395,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay_opencl",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17450,7 +17450,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay_vaapi",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17490,7 +17490,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay_vulkan",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17524,7 +17524,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="owdenoise",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17576,7 +17576,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pad",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17630,7 +17630,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pad_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17680,7 +17680,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="palettegen",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17730,7 +17730,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="paletteuse",
-            streams=[
+            inputs=[
                 self,
                 _palette,
             ],
@@ -17774,7 +17774,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="perms",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17828,7 +17828,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="perspective",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17869,7 +17869,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="phase",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17902,7 +17902,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="photosensitivity",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17937,7 +17937,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pixdesctest",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -17967,7 +17967,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pixelize",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18016,7 +18016,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pixscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18067,7 +18067,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18098,7 +18098,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pp7",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18133,7 +18133,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="premultiply",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -18165,7 +18165,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="prewitt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18221,7 +18221,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pseudocolor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18301,7 +18301,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="psnr",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -18365,7 +18365,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pullup",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18402,7 +18402,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="qp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18431,7 +18431,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="random",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18478,7 +18478,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="readeia608",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18520,7 +18520,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="readvitc",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18555,7 +18555,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="realtime",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18593,7 +18593,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="remap",
-            streams=[
+            inputs=[
                 self,
                 _xmap,
                 _ymap,
@@ -18633,7 +18633,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="remap_opencl",
-            streams=[
+            inputs=[
                 self,
                 _xmap,
                 _ymap,
@@ -18670,7 +18670,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="removegrain",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18719,7 +18719,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="removelogo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18745,7 +18745,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="repeatfields",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -18770,7 +18770,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="reverse",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -18816,7 +18816,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="rgbashift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18854,7 +18854,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="roberts",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18902,7 +18902,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="rotate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18953,7 +18953,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sab",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19030,7 +19030,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19118,7 +19118,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale2ref",
-            streams=[
+            inputs=[
                 self,
                 _ref,
             ],
@@ -19191,7 +19191,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale2ref_npp",
-            streams=[
+            inputs=[
                 self,
                 _ref,
             ],
@@ -19250,7 +19250,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19309,7 +19309,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale_npp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19357,7 +19357,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale_vt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19405,7 +19405,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scdet",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19436,7 +19436,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scharr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19471,7 +19471,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scroll",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19511,7 +19511,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="segment",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19548,7 +19548,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="select",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19613,7 +19613,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="selectivecolor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19663,7 +19663,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sendcmd",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19695,7 +19695,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="separatefields",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -19747,7 +19747,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setdar",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19781,7 +19781,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setfield",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19825,7 +19825,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setparams",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19863,7 +19863,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setpts",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19896,7 +19896,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setrange",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19951,7 +19951,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setsar",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19987,7 +19987,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="settb",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20016,7 +20016,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sharpen_npp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20049,7 +20049,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="shear",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20087,7 +20087,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="showinfo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20116,7 +20116,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="showpalette",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20147,7 +20147,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="shuffleframes",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20188,7 +20188,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="shufflepixels",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20228,7 +20228,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="shuffleplanes",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20260,7 +20260,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sidedata",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20295,7 +20295,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="signalstats",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20349,7 +20349,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="signature",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -20390,7 +20390,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="siti",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20437,7 +20437,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="smartblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20472,7 +20472,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sobel",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20534,7 +20534,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="spectrumsynth",
-            streams=[
+            inputs=[
                 self,
                 _phase,
             ],
@@ -20572,7 +20572,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="split",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20608,7 +20608,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="spp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20667,7 +20667,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20720,7 +20720,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ssim",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -20750,7 +20750,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="stereo3d",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20780,7 +20780,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="streamselect",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -20811,7 +20811,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="super2xsai",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -20854,7 +20854,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="swaprect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20884,7 +20884,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="swapuv",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -20942,7 +20942,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tblend",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21003,7 +21003,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="telecine",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21058,7 +21058,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="thistogram",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21107,7 +21107,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="threshold",
-            streams=[
+            inputs=[
                 self,
                 _threshold,
                 _min,
@@ -21143,7 +21143,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="thumbnail",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21191,7 +21191,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tile",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21257,7 +21257,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tiltandshift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21293,7 +21293,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tinterlace",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21342,7 +21342,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tlut2",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21377,7 +21377,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tmedian",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21415,7 +21415,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tmidequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21450,7 +21450,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tmix",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21494,7 +21494,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tonemap",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21548,7 +21548,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tonemap_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21590,7 +21590,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tonemap_vaapi",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21638,7 +21638,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tpad",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21683,7 +21683,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="transpose",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21714,7 +21714,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="transpose_npp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21745,7 +21745,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="transpose_vt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21776,7 +21776,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="transpose_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21851,7 +21851,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="trim",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21891,7 +21891,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="unpremultiply",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -21946,7 +21946,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="unsharp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22001,7 +22001,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="unsharp_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22039,7 +22039,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="untile",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22080,7 +22080,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="uspp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22186,7 +22186,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="v360",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22270,7 +22270,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vaguedenoiser",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22311,7 +22311,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="varblur",
-            streams=[
+            inputs=[
                 self,
                 _radius,
             ],
@@ -22374,7 +22374,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vectorscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22416,7 +22416,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vflip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -22438,7 +22438,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vflip_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -22467,7 +22467,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vfrdet",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
@@ -22511,7 +22511,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vibrance",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22571,7 +22571,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vidstabdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22644,7 +22644,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vidstabtransform",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22700,7 +22700,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vif",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -22743,7 +22743,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vignette",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22785,7 +22785,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vmafmotion",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22821,7 +22821,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vstack",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -22868,7 +22868,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="w3fdif",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22938,7 +22938,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="waveform",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22986,7 +22986,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="weave",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23016,7 +23016,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xbr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23052,7 +23052,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xcorrelate",
-            streams=[
+            inputs=[
                 self,
                 _secondary,
             ],
@@ -23098,7 +23098,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xfade",
-            streams=[
+            inputs=[
                 self,
                 _xfade,
             ],
@@ -23192,7 +23192,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xfade_opencl",
-            streams=[
+            inputs=[
                 self,
                 _xfade,
             ],
@@ -23229,7 +23229,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xmedian",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -23275,7 +23275,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xstack",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -23312,7 +23312,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="yaepblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23360,7 +23360,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="zoompan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23441,7 +23441,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="zscale",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
