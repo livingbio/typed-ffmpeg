@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from pydantic import BaseModel
 
@@ -6,44 +6,68 @@ if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
 
 
-class Stream(BaseModel):
-    node: "Node" | None = None
-    label: str | None = None
-    selector: str | None = None
-
-
 class Node(BaseModel):
     name: str
+    args: list[str] = []
     kwargs: dict[str, str | int | float | bool | None] = {}
 
 
+class Stream(BaseModel):
+    node: Node
+    label: str | int | None = None
+    selector: str | None = None
+
+
+class FilterableStream(Stream):
+    node: "FilterNode" | "InputNode"
+
+    def filter(self, *streams: "FilterableStream", name: str, **kwargs: str) -> "FilterableStream":
+        return self.filter_multi_output(*streams, name=name, **kwargs).stream()
+
+    def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
+        return FilterNode(name=name, kwargs=kwargs, streams=[self, *streams])
+
+    @property
+    def video(self) -> VideoStream:
+        return self.node.video(label=self.label)
+
+    @property
+    def audio(self) -> AudioStream:
+        return self.node.audio(label=self.label)
+
+
 class InputNode(Node):
-    def _vs(self, label: str = None, selector: str = None) -> "VideoStream":
+    def video(self, label: str | int | None = None) -> "VideoStream":
         from .stream import VideoStream
 
-        return VideoStream(node=self, label=label, selector=selector)
+        return VideoStream(node=self, label=label, selector="v")
 
-    def _as(self, label: str = None, selector: str = None) -> "AudioStream":
+    def audio(self, label: str | int | None = None) -> "AudioStream":
         from .stream import AudioStream
 
-        return AudioStream(node=self, label=label, selector=selector)
+        return AudioStream(node=self, label=label, selector="a")
+
+    def stream(self, label: str | int | None = None) -> "Stream":
+        return Stream(node=self, label=label)
 
 
 class FilterNode(InputNode):
-    streams: list[Stream]
+    streams: list[FilterableStream]
+
+    def stream(self, label: str | int | None = None) -> "FilterableStream":
+        return FilterableStream(node=self, label=label)
 
 
 class OutputNode(Node):
-    streams: list[Stream]
+    streams: list[FilterableStream]
+
+    def stream(self, label: str | int | None = None) -> "OutputStream":
+        return OutputStream(node=self, label=label)
 
 
 class OutputStream(Stream):
-    node: OutputNode | "GlobalNode" | "MergeOutputsNode"
+    node: OutputNode | "GlobalNode"
 
 
 class GlobalNode(Node):
-    stream: OutputStream
-
-
-class MergeOutputsNode(Node):
-    streams: list[OutputStream]
+    streams: OutputStream

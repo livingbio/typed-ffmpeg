@@ -55,7 +55,7 @@ def aap(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def acrossfade(
@@ -104,7 +104,7 @@ def acrossfade(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def afir(
@@ -204,7 +204,7 @@ def afir(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def ainterleave(*streams: "AudioStream", nb_inputs: int = None, duration: int = None, **kwargs: Any) -> "AudioStream":
@@ -256,7 +256,7 @@ def ainterleave(*streams: "AudioStream", nb_inputs: int = None, duration: int = 
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "VideoStream":
@@ -289,7 +289,7 @@ def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "V
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def amerge(*streams: "AudioStream", inputs: int = None, **kwargs: Any) -> "AudioStream":
@@ -341,7 +341,7 @@ def amerge(*streams: "AudioStream", inputs: int = None, **kwargs: Any) -> "Audio
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def amix(
@@ -391,7 +391,7 @@ def amix(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: Any) -> "AudioStream":
@@ -420,7 +420,7 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def anlmf(
@@ -475,7 +475,7 @@ def anlmf(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def anlms(
@@ -530,7 +530,7 @@ def anlms(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def apsnr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
@@ -558,7 +558,7 @@ def apsnr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Aud
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def arls(
@@ -610,7 +610,7 @@ def arls(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
@@ -638,7 +638,7 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
@@ -666,7 +666,7 @@ def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Au
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def astreamselect(*streams: "AudioStream", inputs: int = None, map: str, **kwargs: Any) -> FilterNode:
@@ -738,7 +738,7 @@ def axcorrelate(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def blend(
@@ -827,7 +827,7 @@ def blend(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def blend_vulkan(
@@ -894,7 +894,7 @@ def blend_vulkan(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def bm3d(
@@ -957,7 +957,7 @@ def bm3d(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def colormap(
@@ -1009,7 +1009,7 @@ def colormap(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def concat(
@@ -1124,7 +1124,7 @@ def convolve(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
@@ -1167,7 +1167,7 @@ def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def decimate(
@@ -1221,7 +1221,7 @@ def decimate(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def deconvolve(
@@ -1267,7 +1267,7 @@ def deconvolve(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def displace(
@@ -1311,7 +1311,7 @@ def displace(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def feedback(
@@ -1365,8 +1365,8 @@ def feedback(
         | kwargs,
     )
     return (
-        filter_node._vs(0),
-        filter_node._vs(1),
+        filter_node.video(0),
+        filter_node.video(1),
     )
 
 
@@ -1470,7 +1470,7 @@ def fieldmatch(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def framepack(_left: "VideoStream", _right: "VideoStream", *, format: int = None, **kwargs: Any) -> "VideoStream":
@@ -1513,7 +1513,7 @@ def framepack(_left: "VideoStream", _right: "VideoStream", *, format: int = None
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def freezeframes(
@@ -1557,7 +1557,7 @@ def freezeframes(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def guided(
@@ -1605,7 +1605,7 @@ def guided(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def haldclut(
@@ -1651,7 +1651,7 @@ def haldclut(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def headphone(
@@ -1702,7 +1702,7 @@ def headphone(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def hstack(*streams: "VideoStream", inputs: int = None, shortest: bool = None, **kwargs: Any) -> "VideoStream":
@@ -1738,7 +1738,7 @@ def hstack(*streams: "VideoStream", inputs: int = None, shortest: bool = None, *
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def hysteresis(
@@ -1776,7 +1776,7 @@ def hysteresis(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
@@ -1819,7 +1819,7 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def interleave(*streams: "VideoStream", nb_inputs: int = None, duration: int = None, **kwargs: Any) -> "VideoStream":
@@ -1871,7 +1871,7 @@ def interleave(*streams: "VideoStream", nb_inputs: int = None, duration: int = N
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def join(
@@ -1920,7 +1920,7 @@ def join(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def ladspa(
@@ -1972,7 +1972,7 @@ def ladspa(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def libplacebo(
@@ -2235,7 +2235,7 @@ def libplacebo(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def libvmaf(
@@ -2301,7 +2301,7 @@ def libvmaf(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def limitdiff(
@@ -2343,7 +2343,7 @@ def limitdiff(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def lut2(
@@ -2408,7 +2408,7 @@ def lut2(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def lv2(
@@ -2454,7 +2454,7 @@ def lv2(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def maskedclamp(
@@ -2501,7 +2501,7 @@ def maskedclamp(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def maskedmax(
@@ -2538,7 +2538,7 @@ def maskedmax(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def maskedmerge(
@@ -2578,7 +2578,7 @@ def maskedmerge(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def maskedmin(
@@ -2615,7 +2615,7 @@ def maskedmin(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def maskedthreshold(
@@ -2663,7 +2663,7 @@ def maskedthreshold(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def mergeplanes(
@@ -2726,7 +2726,7 @@ def mergeplanes(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def midequalizer(_in0: "VideoStream", _in1: "VideoStream", *, planes: int = None, **kwargs: Any) -> "VideoStream":
@@ -2764,7 +2764,7 @@ def midequalizer(_in0: "VideoStream", _in1: "VideoStream", *, planes: int = None
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def mix(
@@ -2809,7 +2809,7 @@ def mix(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def morpho(
@@ -2859,7 +2859,7 @@ def morpho(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
@@ -2902,7 +2902,7 @@ def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def multiply(
@@ -2944,7 +2944,7 @@ def multiply(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def overlay(
@@ -3026,7 +3026,7 @@ def overlay(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def overlay_cuda(
@@ -3086,7 +3086,7 @@ def overlay_cuda(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def overlay_opencl(
@@ -3123,7 +3123,7 @@ def overlay_opencl(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def overlay_vaapi(
@@ -3185,7 +3185,7 @@ def overlay_vaapi(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def overlay_vulkan(
@@ -3222,7 +3222,7 @@ def overlay_vulkan(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def paletteuse(
@@ -3276,7 +3276,7 @@ def paletteuse(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def premultiply(*streams: "VideoStream", planes: int = None, inplace: bool = None, **kwargs: Any) -> "VideoStream":
@@ -3310,7 +3310,7 @@ def premultiply(*streams: "VideoStream", planes: int = None, inplace: bool = Non
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def psnr(
@@ -3388,7 +3388,7 @@ def psnr(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def remap(
@@ -3435,7 +3435,7 @@ def remap(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def remap_opencl(
@@ -3482,7 +3482,7 @@ def remap_opencl(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def scale2ref(
@@ -3573,8 +3573,8 @@ def scale2ref(
         | kwargs,
     )
     return (
-        filter_node._vs(0),
-        filter_node._vs(1),
+        filter_node.video(0),
+        filter_node.video(1),
     )
 
 
@@ -3637,8 +3637,8 @@ def scale2ref_npp(
         | kwargs,
     )
     return (
-        filter_node._vs(0),
-        filter_node._vs(1),
+        filter_node.video(0),
+        filter_node.video(1),
     )
 
 
@@ -3713,7 +3713,7 @@ def sidechaincompress(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def sidechaingate(
@@ -3792,7 +3792,7 @@ def sidechaingate(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def signature(
@@ -3852,7 +3852,7 @@ def signature(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def spectrumsynth(
@@ -3920,7 +3920,7 @@ def spectrumsynth(
         }
         | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
 def ssim(_main: "VideoStream", _reference: "VideoStream", *, stats_file: str, **kwargs: Any) -> "VideoStream":
@@ -3971,7 +3971,7 @@ def ssim(_main: "VideoStream", _reference: "VideoStream", *, stats_file: str, **
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def streamselect(*streams: "VideoStream", inputs: int = None, map: str, **kwargs: Any) -> FilterNode:
@@ -4055,7 +4055,7 @@ def threshold(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def unpremultiply(*streams: "VideoStream", planes: int = None, inplace: bool = None, **kwargs: Any) -> "VideoStream":
@@ -4089,7 +4089,7 @@ def unpremultiply(*streams: "VideoStream", planes: int = None, inplace: bool = N
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def varblur(
@@ -4135,7 +4135,7 @@ def varblur(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
@@ -4177,7 +4177,7 @@ def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vide
         ],
         kwargs={} | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def vstack(*streams: "VideoStream", inputs: int = None, shortest: bool = None, **kwargs: Any) -> "VideoStream":
@@ -4213,7 +4213,7 @@ def vstack(*streams: "VideoStream", inputs: int = None, shortest: bool = None, *
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def xcorrelate(
@@ -4252,7 +4252,7 @@ def xcorrelate(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def xfade(
@@ -4301,7 +4301,7 @@ def xfade(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def xfade_opencl(
@@ -4397,7 +4397,7 @@ def xfade_opencl(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def xmedian(
@@ -4432,7 +4432,7 @@ def xmedian(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
 
 
 def xstack(
@@ -4479,4 +4479,4 @@ def xstack(
         }
         | kwargs,
     )
-    return filter_node._vs(0)
+    return filter_node.video(0)
