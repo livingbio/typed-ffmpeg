@@ -1,6 +1,7 @@
-from .stream import VideoStream, AudioStream
 from typing import Any
+
 from .base import FilterNode
+from .stream import AudioStream, VideoStream
 
 
 
@@ -51,7 +52,7 @@ Ref: None
     """
     filter_node = FilterNode(
         name="aap",
-        streams=[
+        inputs=[
             
 
         
@@ -74,7 +75,7 @@ Ref: None
             
         } | kwargs,
     )
-    return filter_node._as(0)
+    return filter_node.audio(0)
 
 
     

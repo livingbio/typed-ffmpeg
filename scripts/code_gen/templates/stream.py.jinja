@@ -2,11 +2,11 @@
 
 from typing import Any
 
-from .base import FilterNode, Stream
+from .base import FilterNode, FilterableStream
 
 
 
-class AudioStream(Stream):
+class AudioStream(FilterableStream):
     {% for f in filters %}
         {% if f.filter_type.value in ["af", "avf"] %}
     {{ _components.filter_method(f) }}
@@ -14,7 +14,7 @@ class AudioStream(Stream):
     {% endfor %}
 
 
-class VideoStream(Stream):
+class VideoStream(FilterableStream):
     {% for f in filters %}
         {% if f.filter_type.value in ["vf", "vaf"] %}
     {{ _components.filter_method(f) }}

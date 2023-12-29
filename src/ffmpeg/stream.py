@@ -1,10 +1,9 @@
 from typing import Any
 
-from .base import FilterableStream as Stream
-from .base import FilterNode
+from .base import FilterableStream, FilterNode
 
 
-class AudioStream(Stream):
+class AudioStream(FilterableStream):
     def a3dscope(
         self,
         *,
@@ -8067,7 +8066,7 @@ class AudioStream(Stream):
         return filter_node.audio(0)
 
 
-class VideoStream(Stream):
+class VideoStream(FilterableStream):
     def addroi(
         self,
         *,

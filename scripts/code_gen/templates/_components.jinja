@@ -95,13 +95,13 @@ Ref: {{ f.ref }}
 
 {% macro process(f, type) %}
 {%- if f.filter_type.value in ["vf", "avf"] -%}
-    {% set return_type = "_vs" %}
+    {% set return_type = "video" %}
 {%- elif f.filter_type.value in ["af", "vaf"] -%}
-    {% set return_type = "_as" %}
+    {% set return_type = "audio" %}
 {%- endif -%}
 filter_node = FilterNode(
     name="{{ f.name }}",
-    streams=[
+    inputs=[
         {{ stream_params(f, type) }}
     ],
     kwargs={
@@ -118,9 +118,9 @@ return filter_node.{{return_type}}(0)
 return (
     {% for stream_typing in f.output_stream_typings %}
         {% if stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
-            filter_node._vs({{loop.index0}}),
+            filter_node.video({{loop.index0}}),
         {% else %}
-            filter_node._as({{loop.index0}}),
+            filter_node.audio({{loop.index0}}),
         {% endif %}
     {% endfor %}
 )
