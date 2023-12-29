@@ -1,25 +1,9 @@
 from typing import Any
 
-from pydantic import BaseModel
+from .base import FilterableStream, FilterNode
 
 
-class Stream(BaseModel):
-    ...
-
-
-class FilterNode(BaseModel):
-    streams: list[Stream]
-    name: str
-    kwargs: dict[str, str | int | float | bool | None] = {}
-
-    def _vs(self, index: int) -> "VideoStream":
-        return VideoStream()
-
-    def _as(self, index: int) -> "AudioStream":
-        return AudioStream()
-
-
-class AudioStream(Stream):
+class AudioStream(FilterableStream):
     def a3dscope(
         self,
         *,
@@ -67,7 +51,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="a3dscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -87,7 +71,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def aap(
         self,
@@ -126,7 +110,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aap",
-            streams=[
+            inputs=[
                 self,
                 _desired,
             ],
@@ -140,7 +124,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def abench(self, *, action: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -160,7 +144,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="abench",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -168,7 +152,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def abitscope(
         self, *, rate: str = None, size: str = None, colors: str = None, mode: int = None, **kwargs: Any
@@ -193,7 +177,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="abitscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -204,7 +188,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def acompressor(
         self,
@@ -276,7 +260,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acompressor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -295,7 +279,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def acontrast(self, *, contrast: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -315,7 +299,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acontrast",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -323,7 +307,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def acopy(self, **kwargs: Any) -> "AudioStream":
         """
@@ -341,12 +325,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acopy",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def acrossfade(
         self,
@@ -381,7 +365,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acrossfade",
-            streams=[
+            inputs=[
                 self,
                 _crossfade1,
             ],
@@ -394,7 +378,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def acrossover(
         self,
@@ -430,7 +414,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acrossover",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -505,7 +489,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acrusher",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -523,7 +507,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def acue(self, *, cue: int = None, preroll: int = None, buffer: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -544,7 +528,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="acue",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -554,7 +538,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def adeclick(
         self,
@@ -590,7 +574,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adeclick",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -603,7 +587,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def adeclip(
         self,
@@ -639,7 +623,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adeclip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -652,7 +636,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def adecorrelate(self, *, stages: int = None, seed: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -673,7 +657,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adecorrelate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -682,7 +666,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def adelay(self, *, delays: str, all: bool = None, **kwargs: Any) -> "AudioStream":
         """
@@ -705,7 +689,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adelay",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -714,7 +698,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def adenorm(self, *, level: float = None, type: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -737,7 +721,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adenorm",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -746,7 +730,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aderivative(self, **kwargs: Any) -> "AudioStream":
         """
@@ -765,12 +749,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aderivative",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def adrawgraph(
         self,
@@ -823,7 +807,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adrawgraph",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -845,7 +829,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def adrc(
         self, *, transfer: str = None, attack: float = None, release: float = None, channels: str = None, **kwargs: Any
@@ -870,7 +854,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adrc",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -881,7 +865,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def adynamicequalizer(
         self,
@@ -934,7 +918,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adynamicequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -956,7 +940,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def adynamicsmooth(self, *, sensitivity: float = None, basefreq: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -977,7 +961,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="adynamicsmooth",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -986,7 +970,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aecho(
         self, *, in_gain: float = None, out_gain: float = None, delays: str = None, decays: str = None, **kwargs: Any
@@ -1019,7 +1003,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aecho",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1030,7 +1014,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aemphasis(
         self, *, level_in: float = None, level_out: float = None, mode: int = None, type: int = None, **kwargs: Any
@@ -1060,7 +1044,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aemphasis",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1071,7 +1055,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aeval(self, *, exprs: str, channel_layout: str, **kwargs: Any) -> "AudioStream":
         """
@@ -1102,7 +1086,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aeval",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1111,7 +1095,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aexciter(
         self,
@@ -1155,7 +1139,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aexciter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1170,7 +1154,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def afade(
         self,
@@ -1209,7 +1193,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afade",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1224,7 +1208,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def afftdn(
         self,
@@ -1275,7 +1259,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afftdn",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1296,7 +1280,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def afftfilt(
         self,
@@ -1327,7 +1311,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afftfilt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1339,7 +1323,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def afifo(self, **kwargs: Any) -> "AudioStream":
         """
@@ -1361,12 +1345,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afifo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def afir(
         self,
@@ -1440,7 +1424,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afir",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -1467,7 +1451,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aformat(self, *, sample_fmts: str, sample_rates: str, channel_layouts: str, **kwargs: Any) -> "AudioStream":
         """
@@ -1496,7 +1480,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aformat",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1506,7 +1490,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def afreqshift(
         self, *, shift: float = None, level: float = None, order: int = None, **kwargs: Any
@@ -1530,7 +1514,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afreqshift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1540,7 +1524,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def afwtdn(
         self,
@@ -1579,7 +1563,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="afwtdn",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1594,7 +1578,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def agate(
         self,
@@ -1651,7 +1635,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="agate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1670,7 +1654,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def agraphmonitor(
         self,
@@ -1701,7 +1685,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="agraphmonitor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1713,7 +1697,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def ahistogram(
         self,
@@ -1754,7 +1738,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ahistogram",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1770,7 +1754,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def aiir(
         self,
@@ -1833,7 +1817,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aiir",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -1874,12 +1858,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aintegral",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def ainterleave(
         self, *streams: "AudioStream", nb_inputs: int = None, duration: int = None, **kwargs: Any
@@ -1923,7 +1907,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ainterleave",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -1933,7 +1917,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def alatency(self, **kwargs: Any) -> "AudioStream":
         """
@@ -1956,12 +1940,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="alatency",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def alimiter(
         self,
@@ -2009,7 +1993,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="alimiter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2025,7 +2009,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def allpass(
         self,
@@ -2069,7 +2053,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="allpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2085,7 +2069,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aloop(
         self, *, loop: int = None, size: int = None, start: int = None, time: int = None, **kwargs: Any
@@ -2110,7 +2094,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aloop",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2121,7 +2105,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def amerge(self, *streams: "AudioStream", inputs: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -2164,7 +2148,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="amerge",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -2173,7 +2157,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def ametadata(
         self,
@@ -2210,7 +2194,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ametadata",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2224,7 +2208,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def amix(
         self,
@@ -2262,7 +2246,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="amix",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -2275,7 +2259,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def amultiply(self, _multiply1: "AudioStream", **kwargs: Any) -> "AudioStream":
         """
@@ -2297,13 +2281,13 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="amultiply",
-            streams=[
+            inputs=[
                 self,
                 _multiply1,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def anequalizer(
         self,
@@ -2338,7 +2322,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2389,7 +2373,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anlmdn",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2401,7 +2385,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def anlmf(
         self,
@@ -2441,7 +2425,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anlmf",
-            streams=[
+            inputs=[
                 self,
                 _desired,
             ],
@@ -2455,7 +2439,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def anlms(
         self,
@@ -2495,7 +2479,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anlms",
-            streams=[
+            inputs=[
                 self,
                 _desired,
             ],
@@ -2509,7 +2493,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def anull(self, **kwargs: Any) -> "AudioStream":
         """
@@ -2526,12 +2510,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="anull",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def apad(
         self,
@@ -2575,7 +2559,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="apad",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2587,7 +2571,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aperms(self, *, mode: int = None, seed: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -2617,7 +2601,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aperms",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2626,7 +2610,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aphasemeter(
         self,
@@ -2677,7 +2661,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aphasemeter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2734,7 +2718,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aphaser",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2747,7 +2731,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aphaseshift(
         self, *, shift: float = None, level: float = None, order: int = None, **kwargs: Any
@@ -2771,7 +2755,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aphaseshift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2781,7 +2765,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def apsnr(self, _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
         """
@@ -2802,13 +2786,13 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="apsnr",
-            streams=[
+            inputs=[
                 self,
                 _input1,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def apsyclip(
         self,
@@ -2845,7 +2829,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="apsyclip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2859,7 +2843,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def apulsator(
         self,
@@ -2916,7 +2900,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="apulsator",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2934,7 +2918,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def arealtime(self, *, limit: int = None, speed: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -2959,7 +2943,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="arealtime",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -2968,7 +2952,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aresample(self, *, sample_rate: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3000,7 +2984,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aresample",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3008,7 +2992,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def areverse(self, **kwargs: Any) -> "AudioStream":
         """
@@ -3028,12 +3012,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="areverse",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def arls(
         self,
@@ -3071,7 +3055,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="arls",
-            streams=[
+            inputs=[
                 self,
                 _desired,
             ],
@@ -3084,7 +3068,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def arnndn(self, *, model: str, mix: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3105,7 +3089,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="arnndn",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3114,7 +3098,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asdr(self, _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
         """
@@ -3135,13 +3119,13 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asdr",
-            streams=[
+            inputs=[
                 self,
                 _input1,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asegment(self, *, timestamps: str, samples: str, **kwargs: Any) -> FilterNode:
         """
@@ -3170,7 +3154,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asegment",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3207,7 +3191,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aselect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3249,7 +3233,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asendcmd",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3258,7 +3242,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asetnsamples(self, *, nb_out_samples: int = None, pad: bool = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3289,7 +3273,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asetnsamples",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3298,7 +3282,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asetpts(self, *, expr: str = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3324,7 +3308,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asetpts",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3332,7 +3316,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asetrate(self, *, sample_rate: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3353,7 +3337,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asetrate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3361,7 +3345,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asettb(self, *, expr: str = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3388,7 +3372,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asettb",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3396,7 +3380,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def ashowinfo(self, **kwargs: Any) -> "AudioStream":
         """
@@ -3419,12 +3403,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ashowinfo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asidedata(self, *, mode: int = None, type: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3445,7 +3429,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asidedata",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3454,7 +3438,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asisdr(self, _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
         """
@@ -3475,13 +3459,13 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asisdr",
-            streams=[
+            inputs=[
                 self,
                 _input1,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asoftclip(
         self,
@@ -3517,7 +3501,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asoftclip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3529,7 +3513,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def aspectralstats(
         self, *, win_size: int = None, win_func: int = None, overlap: float = None, measure: str = None, **kwargs: Any
@@ -3557,7 +3541,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="aspectralstats",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3568,7 +3552,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asplit(self, *, outputs: int = None, **kwargs: Any) -> FilterNode:
         """
@@ -3591,7 +3575,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asplit",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3644,7 +3628,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3658,7 +3642,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def astats(
         self,
@@ -3695,7 +3679,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="astats",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3707,7 +3691,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def astreamselect(self, *streams: "AudioStream", inputs: int = None, map: str, **kwargs: Any) -> FilterNode:
         """
@@ -3728,7 +3712,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="astreamselect",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -3780,7 +3764,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asubboost",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3796,7 +3780,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asubcut(self, *, cutoff: float = None, order: int = None, level: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3822,7 +3806,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asubcut",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3832,7 +3816,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asupercut(
         self, *, cutoff: float = None, order: int = None, level: float = None, **kwargs: Any
@@ -3856,7 +3840,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asupercut",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3866,7 +3850,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asuperpass(
         self, *, centerf: float = None, order: int = None, qfactor: float = None, level: float = None, **kwargs: Any
@@ -3891,7 +3875,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asuperpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3902,7 +3886,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def asuperstop(
         self, *, centerf: float = None, order: int = None, qfactor: float = None, level: float = None, **kwargs: Any
@@ -3927,7 +3911,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="asuperstop",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3938,7 +3922,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def atempo(self, *, tempo: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -3965,7 +3949,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="atempo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -3973,7 +3957,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def atilt(
         self,
@@ -4008,7 +3992,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="atilt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4020,7 +4004,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def atrim(
         self,
@@ -4087,7 +4071,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="atrim",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4101,7 +4085,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def avectorscope(
         self,
@@ -4164,7 +4148,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="avectorscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4187,7 +4171,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def axcorrelate(
         self, _axcorrelate1: "AudioStream", *, size: int = None, algo: int = None, **kwargs: Any
@@ -4216,7 +4200,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="axcorrelate",
-            streams=[
+            inputs=[
                 self,
                 _axcorrelate1,
             ],
@@ -4226,7 +4210,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def bandpass(
         self,
@@ -4273,7 +4257,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="bandpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4290,7 +4274,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def bandreject(
         self,
@@ -4333,7 +4317,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="bandreject",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4349,7 +4333,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def bass(
         self,
@@ -4396,7 +4380,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="bass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4414,7 +4398,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def biquad(
         self,
@@ -4463,7 +4447,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="biquad",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4482,7 +4466,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def bs2b(self, *, profile: int = None, fcut: int = None, feed: int = None, **kwargs: Any) -> "AudioStream":
         """
@@ -4508,7 +4492,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="bs2b",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4518,7 +4502,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def channelmap(self, *, map: str, channel_layout: str, **kwargs: Any) -> "AudioStream":
         """
@@ -4542,7 +4526,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="channelmap",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4551,7 +4535,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def channelsplit(self, *, channel_layout: str = None, channels: str = None, **kwargs: Any) -> FilterNode:
         """
@@ -4572,7 +4556,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="channelsplit",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4626,7 +4610,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="chorus",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4639,7 +4623,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def compand(
         self,
@@ -4676,7 +4660,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="compand",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4690,7 +4674,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def compensationdelay(
         self,
@@ -4741,7 +4725,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="compensationdelay",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4754,7 +4738,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def concat(
         self, *streams: "AudioStream", n: int = None, v: int = None, a: int = None, unsafe: bool = None, **kwargs: Any
@@ -4810,7 +4794,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="concat",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -4864,7 +4848,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="crossfeed",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4877,7 +4861,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def crystalizer(self, *, i: float = None, c: bool = None, **kwargs: Any) -> "AudioStream":
         """
@@ -4900,7 +4884,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="crystalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4909,7 +4893,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def dcshift(self, *, shift: float = None, limitergain: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -4933,7 +4917,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="dcshift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4942,7 +4926,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def deesser(
         self, *, i: float = None, m: float = None, f: float = None, s: int = None, **kwargs: Any
@@ -4965,7 +4949,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="deesser",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -4976,7 +4960,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def dialoguenhance(
         self, *, original: float = None, enhance: float = None, voice: float = None, **kwargs: Any
@@ -5005,7 +4989,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="dialoguenhance",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5015,7 +4999,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def drmeter(self, *, length: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -5039,7 +5023,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="drmeter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5047,7 +5031,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def dynaudnorm(
         self,
@@ -5106,7 +5090,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="dynaudnorm",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5126,7 +5110,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def earwax(self, **kwargs: Any) -> "AudioStream":
         """
@@ -5150,12 +5134,12 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="earwax",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def ebur128(
         self,
@@ -5234,7 +5218,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ebur128",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5308,7 +5292,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="equalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5325,7 +5309,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def extrastereo(self, *, m: float = None, c: bool = None, **kwargs: Any) -> "AudioStream":
         """
@@ -5347,7 +5331,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="extrastereo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5356,7 +5340,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def firequalizer(
         self,
@@ -5405,7 +5389,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="firequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5425,7 +5409,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def flanger(
         self,
@@ -5464,7 +5448,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="flanger",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5479,7 +5463,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def haas(
         self,
@@ -5532,7 +5516,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="haas",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5552,7 +5536,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def hdcd(
         self,
@@ -5601,7 +5585,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="hdcd",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5614,7 +5598,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def headphone(
         self,
@@ -5652,7 +5636,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="headphone",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -5666,7 +5650,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def highpass(
         self,
@@ -5711,7 +5695,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="highpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5728,7 +5712,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def highshelf(
         self,
@@ -5775,7 +5759,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="highshelf",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5793,7 +5777,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def join(
         self, *streams: "AudioStream", inputs: int = None, channel_layout: str = None, map: str, **kwargs: Any
@@ -5831,7 +5815,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="join",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -5842,7 +5826,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def ladspa(
         self,
@@ -5880,7 +5864,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="ladspa",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -5895,7 +5879,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def loudnorm(
         self,
@@ -5944,7 +5928,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="loudnorm",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -5962,7 +5946,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def lowpass(
         self,
@@ -6007,7 +5991,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="lowpass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6024,7 +6008,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def lowshelf(
         self,
@@ -6071,7 +6055,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="lowshelf",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6089,7 +6073,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def lv2(
         self,
@@ -6123,7 +6107,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="lv2",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -6136,7 +6120,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def mcompand(self, *, args: str = None, **kwargs: Any) -> "AudioStream":
         """
@@ -6160,7 +6144,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="mcompand",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6168,7 +6152,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def pan(self, *, args: str, **kwargs: Any) -> "AudioStream":
         """
@@ -6198,7 +6182,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="pan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6206,7 +6190,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def replaygain(self, *, track_gain: float = None, track_peak: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -6229,7 +6213,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="replaygain",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6238,7 +6222,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def rubberband(
         self,
@@ -6284,7 +6268,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="rubberband",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6301,7 +6285,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def showcqt(
         self,
@@ -6380,7 +6364,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showcqt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6413,7 +6397,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showcwt(
         self,
@@ -6469,7 +6453,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showcwt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6492,7 +6476,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showfreqs(
         self,
@@ -6544,7 +6528,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showfreqs",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6565,7 +6549,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showspatial(
         self, *, size: str = None, win_size: int = None, win_func: int = None, rate: str = None, **kwargs: Any
@@ -6591,7 +6575,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showspatial",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6602,7 +6586,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showspectrum(
         self,
@@ -6670,7 +6654,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showspectrum",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6697,7 +6681,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showspectrumpic(
         self,
@@ -6753,7 +6737,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showspectrumpic",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6776,7 +6760,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showvolume(
         self,
@@ -6829,7 +6813,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showvolume",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6851,7 +6835,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showwaves(
         self,
@@ -6890,7 +6874,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showwaves",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6905,7 +6889,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showwavespic(
         self,
@@ -6940,7 +6924,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="showwavespic",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -6953,7 +6937,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def sidechaincompress(
         self,
@@ -7006,7 +6990,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="sidechaincompress",
-            streams=[
+            inputs=[
                 self,
                 _sidechain,
             ],
@@ -7026,7 +7010,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def sidechaingate(
         self,
@@ -7084,7 +7068,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="sidechaingate",
-            streams=[
+            inputs=[
                 self,
                 _sidechain,
             ],
@@ -7104,7 +7088,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def silencedetect(self, *, n: float = None, d: int = None, mono: bool = None, **kwargs: Any) -> "AudioStream":
         """
@@ -7141,7 +7125,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="silencedetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7151,7 +7135,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def silenceremove(
         self,
@@ -7200,7 +7184,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="silenceremove",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7220,7 +7204,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def sofalizer(
         self,
@@ -7279,7 +7263,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="sofalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7300,7 +7284,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def speechnorm(
         self,
@@ -7347,7 +7331,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="speechnorm",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7364,7 +7348,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def stereotools(
         self,
@@ -7429,7 +7413,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="stereotools",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7456,7 +7440,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def stereowiden(
         self,
@@ -7489,7 +7473,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="stereowiden",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7500,7 +7484,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def superequalizer(
         self,
@@ -7559,7 +7543,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="superequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7584,7 +7568,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def surround(
         self,
@@ -7709,7 +7693,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="surround",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7766,7 +7750,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def tiltshelf(
         self,
@@ -7814,7 +7798,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="tiltshelf",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7832,7 +7816,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def treble(
         self,
@@ -7879,7 +7863,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="treble",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7897,7 +7881,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def tremolo(self, *, f: float = None, d: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -7918,7 +7902,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="tremolo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7927,7 +7911,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def vibrato(self, *, f: float = None, d: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -7948,7 +7932,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="vibrato",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7957,7 +7941,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def virtualbass(self, *, cutoff: float = None, strength: float = None, **kwargs: Any) -> "AudioStream":
         """
@@ -7982,7 +7966,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="virtualbass",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -7991,7 +7975,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def volume(
         self,
@@ -8033,7 +8017,7 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="volume",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8046,7 +8030,7 @@ class AudioStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def volumedetect(self, **kwargs: Any) -> "AudioStream":
         """
@@ -8074,15 +8058,15 @@ class AudioStream(Stream):
         """
         filter_node = FilterNode(
             name="volumedetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
 
-class VideoStream(Stream):
+class VideoStream(FilterableStream):
     def addroi(
         self,
         *,
@@ -8119,7 +8103,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="addroi",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8132,7 +8116,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def alphaextract(self, **kwargs: Any) -> "VideoStream":
         """
@@ -8150,12 +8134,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="alphaextract",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def alphamerge(self, _alpha: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
@@ -8181,13 +8165,13 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="alphamerge",
-            streams=[
+            inputs=[
                 self,
                 _alpha,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def amplify(
         self,
@@ -8225,7 +8209,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="amplify",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8239,7 +8223,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def atadenoise(
         self,
@@ -8286,7 +8270,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="atadenoise",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8305,7 +8289,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def avgblur(self, *, sizeX: int = None, planes: int = None, sizeY: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -8327,7 +8311,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="avgblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8337,7 +8321,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def avgblur_vulkan(
         self, *, sizeX: int = None, sizeY: int = None, planes: int = None, **kwargs: Any
@@ -8361,7 +8345,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="avgblur_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8371,7 +8355,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def backgroundkey(
         self, *, threshold: float = None, similarity: float = None, blend: float = None, **kwargs: Any
@@ -8395,7 +8379,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="backgroundkey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8405,7 +8389,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def bbox(self, *, min_val: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -8431,7 +8415,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bbox",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8439,7 +8423,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def bench(self, *, action: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -8459,7 +8443,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bench",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8467,7 +8451,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def bilateral(
         self, *, sigmaS: float = None, sigmaR: float = None, planes: int = None, **kwargs: Any
@@ -8491,7 +8475,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bilateral",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8501,7 +8485,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def bilateral_cuda(
         self, *, sigmaS: float = None, sigmaR: float = None, window_size: int = None, **kwargs: Any
@@ -8527,7 +8511,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bilateral_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8537,7 +8521,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def bitplanenoise(self, *, bitplane: int = None, filter: bool = None, **kwargs: Any) -> "VideoStream":
         """
@@ -8558,7 +8542,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bitplanenoise",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8567,7 +8551,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def blackdetect(
         self, *, d: float = None, picture_black_ratio_th: float = None, pixel_black_th: float = None, **kwargs: Any
@@ -8612,7 +8596,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blackdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8622,7 +8606,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def blackframe(self, *, amount: int = None, threshold: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -8653,7 +8637,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blackframe",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8662,7 +8646,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def blend(
         self,
@@ -8727,7 +8711,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blend",
-            streams=[
+            inputs=[
                 self,
                 _bottom,
             ],
@@ -8750,7 +8734,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def blend_vulkan(
         self,
@@ -8798,7 +8782,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blend_vulkan",
-            streams=[
+            inputs=[
                 self,
                 _bottom,
             ],
@@ -8816,7 +8800,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def blockdetect(
         self, *, period_min: int = None, period_max: int = None, planes: int = None, **kwargs: Any
@@ -8842,7 +8826,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blockdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8852,7 +8836,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def blurdetect(
         self,
@@ -8892,7 +8876,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="blurdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -8906,7 +8890,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def bm3d(
         self,
@@ -8951,7 +8935,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bm3d",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -8970,7 +8954,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def boxblur(
         self,
@@ -9008,7 +8992,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="boxblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9021,7 +9005,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def bwdif(self, *, mode: int = None, parity: int = None, deint: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -9046,7 +9030,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="bwdif",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9056,7 +9040,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def cas(self, *, strength: float = None, planes: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -9077,7 +9061,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="cas",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9086,7 +9070,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def ccrepack(self, **kwargs: Any) -> "VideoStream":
         """
@@ -9109,12 +9093,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ccrepack",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def chromaber_vulkan(self, *, dist_x: float = None, dist_y: float = None, **kwargs: Any) -> "VideoStream":
         """
@@ -9134,7 +9118,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromaber_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9143,7 +9127,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def chromahold(
         self, *, color: str = None, similarity: float = None, blend: float = None, yuv: bool = None, **kwargs: Any
@@ -9168,7 +9152,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromahold",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9179,7 +9163,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def chromakey(
         self, *, color: str = None, similarity: float = None, blend: float = None, yuv: bool = None, **kwargs: Any
@@ -9204,7 +9188,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromakey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9215,7 +9199,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def chromakey_cuda(
         self, *, color: str = None, similarity: float = None, blend: float = None, yuv: bool = None, **kwargs: Any
@@ -9241,7 +9225,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromakey_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9252,7 +9236,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def chromanr(
         self,
@@ -9293,7 +9277,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromanr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9309,7 +9293,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def chromashift(
         self, *, cbh: int = None, cbv: int = None, crh: int = None, crv: int = None, edge: int = None, **kwargs: Any
@@ -9335,7 +9319,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="chromashift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9347,7 +9331,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def ciescope(
         self,
@@ -9390,7 +9374,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ciescope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9407,7 +9391,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def codecview(
         self,
@@ -9444,7 +9428,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="codecview",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9456,7 +9440,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorbalance(
         self,
@@ -9505,7 +9489,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorbalance",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9522,7 +9506,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorchannelmixer(
         self,
@@ -9587,7 +9571,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorchannelmixer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9612,7 +9596,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorcontrast(
         self,
@@ -9649,7 +9633,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorcontrast",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9663,7 +9647,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorcorrect(
         self,
@@ -9699,7 +9683,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorcorrect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9712,7 +9696,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorhold(
         self, *, color: str = None, similarity: float = None, blend: float = None, **kwargs: Any
@@ -9736,7 +9720,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorhold",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9746,7 +9730,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorize(
         self, *, hue: float = None, saturation: float = None, lightness: float = None, mix: float = None, **kwargs: Any
@@ -9771,7 +9755,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorize",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9782,7 +9766,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorkey(
         self, *, color: str = None, similarity: float = None, blend: float = None, **kwargs: Any
@@ -9809,7 +9793,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorkey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9819,7 +9803,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorkey_opencl(
         self, *, color: str = None, similarity: float = None, blend: float = None, **kwargs: Any
@@ -9843,7 +9827,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorkey_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9853,7 +9837,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorlevels(
         self,
@@ -9910,7 +9894,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorlevels",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -9934,7 +9918,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colormap(
         self,
@@ -9972,7 +9956,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colormap",
-            streams=[
+            inputs=[
                 self,
                 _source,
                 _target,
@@ -9985,7 +9969,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colormatrix(self, *, src: int = None, dst: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -10011,7 +9995,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colormatrix",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10020,7 +10004,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorspace(
         self,
@@ -10072,7 +10056,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorspace",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10093,7 +10077,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colorspace_cuda(self, *, range: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -10117,7 +10101,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colorspace_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10125,7 +10109,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def colortemperature(
         self, *, temperature: float = None, mix: float = None, pl: float = None, **kwargs: Any
@@ -10149,7 +10133,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="colortemperature",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10159,7 +10143,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def convolution(
         self,
@@ -10214,7 +10198,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="convolution",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10237,7 +10221,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def convolve(
         self, _impulse: "VideoStream", *, planes: int = None, impulse: int = None, noise: float = None, **kwargs: Any
@@ -10265,7 +10249,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="convolve",
-            streams=[
+            inputs=[
                 self,
                 _impulse,
             ],
@@ -10276,7 +10260,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def copy(self, **kwargs: Any) -> "VideoStream":
         """
@@ -10294,12 +10278,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="copy",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def corr(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
@@ -10335,13 +10319,13 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="corr",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def cover_rect(self, *, cover: str, mode: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -10362,7 +10346,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="cover_rect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10371,7 +10355,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def crop(
         self,
@@ -10424,7 +10408,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="crop",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10437,7 +10421,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def cropdetect(
         self,
@@ -10482,7 +10466,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="cropdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10498,7 +10482,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def cue(self, *, cue: int = None, preroll: int = None, buffer: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -10530,7 +10514,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="cue",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10540,7 +10524,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def curves(
         self,
@@ -10606,7 +10590,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="curves",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10622,7 +10606,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def datascope(
         self,
@@ -10663,7 +10647,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="datascope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10678,7 +10662,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def dblur(self, *, angle: float = None, radius: float = None, planes: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -10700,7 +10684,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10710,7 +10694,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def dctdnoiz(
         self, *, sigma: float = None, overlap: int = None, expr: str, n: int = None, **kwargs: Any
@@ -10737,7 +10721,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dctdnoiz",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10748,7 +10732,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def deband(
         self,
@@ -10788,7 +10772,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deband",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10803,7 +10787,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def deblock(
         self,
@@ -10840,7 +10824,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deblock",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10854,7 +10838,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def decimate(
         self,
@@ -10893,7 +10877,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="decimate",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -10909,7 +10893,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def deconvolve(
         self, _impulse: "VideoStream", *, planes: int = None, impulse: int = None, noise: float = None, **kwargs: Any
@@ -10937,7 +10921,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deconvolve",
-            streams=[
+            inputs=[
                 self,
                 _impulse,
             ],
@@ -10948,7 +10932,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def dedot(
         self, *, m: str = None, lt: float = None, tl: float = None, tc: float = None, ct: float = None, **kwargs: Any
@@ -10974,7 +10958,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dedot",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -10986,7 +10970,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def deflate(
         self,
@@ -11020,7 +11004,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deflate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11031,7 +11015,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def deflicker(self, *, size: int = None, mode: int = None, bypass: bool = None, **kwargs: Any) -> "VideoStream":
         """
@@ -11053,7 +11037,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deflicker",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11063,7 +11047,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def dejudder(self, *, cycle: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -11089,7 +11073,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dejudder",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11097,7 +11081,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def delogo(
         self, *, x: str = None, y: str = None, w: str = None, h: str = None, show: bool = None, **kwargs: Any
@@ -11125,7 +11109,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="delogo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11137,7 +11121,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def derain(
         self,
@@ -11181,7 +11165,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="derain",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11193,7 +11177,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def deshake(
         self,
@@ -11242,7 +11226,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deshake",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11261,7 +11245,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def deshake_opencl(
         self,
@@ -11296,7 +11280,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="deshake_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11309,7 +11293,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def despill(
         self,
@@ -11349,7 +11333,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="despill",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11364,7 +11348,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def detelecine(
         self, *, first_field: int = None, pattern: str = None, start_frame: int = None, **kwargs: Any
@@ -11390,7 +11374,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="detelecine",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11400,7 +11384,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def dilation(
         self,
@@ -11435,7 +11419,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dilation",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11447,7 +11431,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def displace(self, _xmap: "VideoStream", _ymap: "VideoStream", *, edge: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -11478,7 +11462,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="displace",
-            streams=[
+            inputs=[
                 self,
                 _xmap,
                 _ymap,
@@ -11488,7 +11472,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def dnn_classify(
         self,
@@ -11529,7 +11513,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dnn_classify",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11545,7 +11529,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def dnn_detect(
         self,
@@ -11594,7 +11578,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dnn_detect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11614,7 +11598,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def dnn_processing(
         self,
@@ -11650,7 +11634,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="dnn_processing",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11663,7 +11647,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def doubleweave(self, *, first_field: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -11688,7 +11672,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="doubleweave",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11696,7 +11680,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def drawbox(
         self,
@@ -11739,7 +11723,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="drawbox",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11754,7 +11738,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def drawgraph(
         self,
@@ -11816,7 +11800,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="drawgraph",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11838,7 +11822,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def drawgrid(
         self,
@@ -11879,7 +11863,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="drawgrid",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -11893,7 +11877,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def drawtext(
         self,
@@ -11988,7 +11972,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="drawtext",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12028,7 +12012,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def edgedetect(
         self, *, high: float = None, low: float = None, mode: int = None, planes: str = None, **kwargs: Any
@@ -12053,7 +12037,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="edgedetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12064,7 +12048,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def elbg(
         self,
@@ -12101,7 +12085,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="elbg",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12113,7 +12097,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def entropy(self, *, mode: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -12133,7 +12117,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="entropy",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12141,7 +12125,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def epx(self, *, n: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -12161,7 +12145,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="epx",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12169,7 +12153,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def eq(
         self,
@@ -12213,7 +12197,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="eq",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12229,7 +12213,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def erosion(
         self,
@@ -12264,7 +12248,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="erosion",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12276,7 +12260,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def estdif(
         self,
@@ -12320,7 +12304,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="estdif",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12336,7 +12320,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def exposure(self, *, exposure: float = None, black: float = None, **kwargs: Any) -> "VideoStream":
         """
@@ -12357,7 +12341,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="exposure",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12366,7 +12350,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def extractplanes(self, *, planes: str = None, **kwargs: Any) -> FilterNode:
         """
@@ -12387,7 +12371,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="extractplanes",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12433,7 +12417,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fade",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12447,7 +12431,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def feedback(
         self, _feedin: "VideoStream", *, x: int = None, y: int = None, w: int = None, h: int = None, **kwargs: Any
@@ -12480,7 +12464,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="feedback",
-            streams=[
+            inputs=[
                 self,
                 _feedin,
             ],
@@ -12493,8 +12477,8 @@ class VideoStream(Stream):
             | kwargs,
         )
         return (
-            filter_node._vs(0),
-            filter_node._vs(1),
+            filter_node.video(0),
+            filter_node.video(1),
         )
 
     def fftdnoiz(
@@ -12536,7 +12520,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fftdnoiz",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12552,7 +12536,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def fftfilt(
         self,
@@ -12587,7 +12571,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fftfilt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12601,7 +12585,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def field(self, *, type: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -12623,7 +12607,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="field",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12631,7 +12615,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def fieldhint(self, *, hint: str, mode: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -12670,7 +12654,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fieldhint",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12679,7 +12663,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def fieldmatch(
         self,
@@ -12760,7 +12744,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fieldmatch",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -12783,7 +12767,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def fieldorder(self, *, order: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -12821,7 +12805,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fieldorder",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12829,7 +12813,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def fifo(self, **kwargs: Any) -> "VideoStream":
         """
@@ -12851,12 +12835,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fifo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def fillborders(
         self,
@@ -12893,7 +12877,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fillborders",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12906,7 +12890,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def find_rect(
         self,
@@ -12957,7 +12941,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="find_rect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -12972,7 +12956,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def flip_vulkan(self, **kwargs: Any) -> "VideoStream":
         """
@@ -12989,12 +12973,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="flip_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def floodfill(
         self,
@@ -13037,7 +13021,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="floodfill",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13054,7 +13038,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def format(self, *, pix_fmts: str, **kwargs: Any) -> "VideoStream":
         """
@@ -13076,7 +13060,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="format",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13084,7 +13068,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def fps(
         self, *, fps: str = None, start_time: float = None, round: int = None, eof_action: int = None, **kwargs: Any
@@ -13115,7 +13099,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fps",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13126,7 +13110,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def framepack(self, _right: "VideoStream", *, format: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -13159,7 +13143,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="framepack",
-            streams=[
+            inputs=[
                 self,
                 _right,
             ],
@@ -13168,7 +13152,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def framerate(
         self,
@@ -13206,7 +13190,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="framerate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13218,7 +13202,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def framestep(self, *, step: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -13238,7 +13222,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="framestep",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13246,7 +13230,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def freezedetect(self, *, n: float = None, d: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -13280,7 +13264,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="freezedetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13289,7 +13273,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def freezeframes(
         self, _replace: "VideoStream", *, first: int = None, last: int = None, replace: int = None, **kwargs: Any
@@ -13315,7 +13299,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="freezeframes",
-            streams=[
+            inputs=[
                 self,
                 _replace,
             ],
@@ -13326,7 +13310,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def frei0r(self, *, filter_name: str, filter_params: str, **kwargs: Any) -> "VideoStream":
         """
@@ -13362,7 +13346,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="frei0r",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13371,7 +13355,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def fspp(
         self, *, quality: int = None, qp: int = None, strength: int = None, use_bframe_qp: bool = None, **kwargs: Any
@@ -13400,7 +13384,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="fspp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13411,7 +13395,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def gblur(
         self, *, sigma: float = None, steps: int = None, planes: int = None, sigmaV: float = None, **kwargs: Any
@@ -13436,7 +13420,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="gblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13447,7 +13431,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def gblur_vulkan(
         self,
@@ -13480,7 +13464,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="gblur_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13492,7 +13476,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def geq(
         self,
@@ -13555,7 +13539,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="geq",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13570,7 +13554,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def gradfun(self, *, strength: float = None, radius: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -13602,7 +13586,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="gradfun",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13611,7 +13595,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def graphmonitor(
         self,
@@ -13647,7 +13631,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="graphmonitor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13659,7 +13643,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def grayworld(self, **kwargs: Any) -> "VideoStream":
         """
@@ -13684,12 +13668,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="grayworld",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def greyedge(
         self, *, difford: int = None, minknorm: int = None, sigma: float = None, **kwargs: Any
@@ -13716,7 +13700,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="greyedge",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13726,7 +13710,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def guided(
         self,
@@ -13761,7 +13745,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="guided",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -13775,7 +13759,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def haldclut(self, _clut: "VideoStream", *, clut: int = None, interp: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -13808,7 +13792,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="haldclut",
-            streams=[
+            inputs=[
                 self,
                 _clut,
             ],
@@ -13818,7 +13802,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hflip(self, **kwargs: Any) -> "VideoStream":
         """
@@ -13839,12 +13823,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hflip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hflip_vulkan(self, **kwargs: Any) -> "VideoStream":
         """
@@ -13861,12 +13845,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hflip_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def histeq(
         self, *, strength: float = None, intensity: float = None, antibanding: int = None, **kwargs: Any
@@ -13898,7 +13882,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="histeq",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13908,7 +13892,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def histogram(
         self,
@@ -13955,7 +13939,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="histogram",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -13970,7 +13954,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hqdn3d(
         self,
@@ -14003,7 +13987,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hqdn3d",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14014,7 +13998,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hqx(self, *, n: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -14035,7 +14019,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hqx",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14043,7 +14027,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hstack(
         self, *streams: "VideoStream", inputs: int = None, shortest: bool = None, **kwargs: Any
@@ -14071,7 +14055,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hstack",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -14081,7 +14065,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hsvhold(
         self,
@@ -14118,7 +14102,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hsvhold",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14130,7 +14114,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hsvkey(
         self,
@@ -14167,7 +14151,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hsvkey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14179,7 +14163,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hue(self, *, h: str, s: str = None, H: str, b: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -14209,7 +14193,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hue",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14220,7 +14204,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def huesaturation(
         self,
@@ -14263,7 +14247,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="huesaturation",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14279,7 +14263,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hwdownload(self, **kwargs: Any) -> "VideoStream":
         """
@@ -14301,12 +14285,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hwdownload",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hwmap(self, *, mode: str = None, derive_device: str, reverse: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -14361,7 +14345,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hwmap",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14371,7 +14355,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hwupload(self, *, derive_device: str, **kwargs: Any) -> "VideoStream":
         """
@@ -14398,7 +14382,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hwupload",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14406,7 +14390,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hwupload_cuda(self, *, device: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -14426,7 +14410,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hwupload_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14434,7 +14418,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def hysteresis(
         self, _alt: "VideoStream", *, planes: int = None, threshold: int = None, **kwargs: Any
@@ -14461,7 +14445,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="hysteresis",
-            streams=[
+            inputs=[
                 self,
                 _alt,
             ],
@@ -14471,7 +14455,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def iccdetect(self, *, force: bool = None, **kwargs: Any) -> "VideoStream":
         """
@@ -14492,7 +14476,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="iccdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14500,7 +14484,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def iccgen(
         self, *, color_primaries: int = None, color_trc: int = None, force: bool = None, **kwargs: Any
@@ -14524,7 +14508,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="iccgen",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14534,7 +14518,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def identity(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
@@ -14570,13 +14554,13 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="identity",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def idet(
         self,
@@ -14619,7 +14603,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="idet",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14631,7 +14615,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def il(
         self,
@@ -14672,7 +14656,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="il",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14685,7 +14669,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def inflate(
         self,
@@ -14719,7 +14703,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="inflate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14730,7 +14714,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def interlace(self, *, scan: int = None, lowpass: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -14764,7 +14748,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="interlace",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14773,7 +14757,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def interleave(
         self, *streams: "VideoStream", nb_inputs: int = None, duration: int = None, **kwargs: Any
@@ -14817,7 +14801,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="interleave",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -14827,7 +14811,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def kerndeint(
         self,
@@ -14862,7 +14846,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="kerndeint",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14874,7 +14858,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def kirsch(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
         """
@@ -14896,7 +14880,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="kirsch",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14906,7 +14890,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lagfun(self, *, decay: float = None, planes: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -14928,7 +14912,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lagfun",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -14937,7 +14921,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def latency(self, **kwargs: Any) -> "VideoStream":
         """
@@ -14960,12 +14944,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="latency",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lenscorrection(
         self,
@@ -15013,7 +14997,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lenscorrection",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15026,7 +15010,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lensfun(
         self,
@@ -15089,7 +15073,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lensfun",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15108,7 +15092,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def libplacebo(
         self,
@@ -15286,7 +15270,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="libplacebo",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -15372,7 +15356,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def libvmaf(
         self,
@@ -15422,7 +15406,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="libvmaf",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -15437,7 +15421,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def limitdiff(
         self,
@@ -15468,7 +15452,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="limitdiff",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -15480,7 +15464,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def limiter(self, *, min: int = None, max: int = None, planes: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -15502,7 +15486,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="limiter",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15512,7 +15496,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def loop(
         self, *, loop: int = None, size: int = None, start: int = None, time: int = None, **kwargs: Any
@@ -15537,7 +15521,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="loop",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15548,7 +15532,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lumakey(
         self, *, threshold: float = None, tolerance: float = None, softness: float = None, **kwargs: Any
@@ -15572,7 +15556,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lumakey",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15582,7 +15566,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lut(self, *, c0: str = None, c1: str = None, c2: str = None, c3: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -15623,7 +15607,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lut",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15634,7 +15618,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lut1d(self, *, file: str, interp: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -15655,7 +15639,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lut1d",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15664,7 +15648,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lut2(
         self,
@@ -15715,7 +15699,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lut2",
-            streams=[
+            inputs=[
                 self,
                 _srcy,
             ],
@@ -15728,7 +15712,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lut3d(self, *, file: str, clut: int = None, interp: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -15750,7 +15734,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lut3d",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15760,7 +15744,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lutrgb(self, *, c0: str = None, c1: str = None, c2: str = None, c3: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -15801,7 +15785,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lutrgb",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15812,7 +15796,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def lutyuv(self, *, c0: str = None, c1: str = None, c2: str = None, c3: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -15853,7 +15837,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="lutyuv",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -15864,7 +15848,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def maskedclamp(
         self,
@@ -15898,7 +15882,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedclamp",
-            streams=[
+            inputs=[
                 self,
                 _dark,
                 _bright,
@@ -15910,7 +15894,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def maskedmax(
         self, _filter1: "VideoStream", _filter2: "VideoStream", *, planes: int = None, **kwargs: Any
@@ -15936,7 +15920,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedmax",
-            streams=[
+            inputs=[
                 self,
                 _filter1,
                 _filter2,
@@ -15946,7 +15930,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def maskedmerge(
         self, _overlay: "VideoStream", _mask: "VideoStream", *, planes: int = None, **kwargs: Any
@@ -15975,7 +15959,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedmerge",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
                 _mask,
@@ -15985,7 +15969,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def maskedmin(
         self, _filter1: "VideoStream", _filter2: "VideoStream", *, planes: int = None, **kwargs: Any
@@ -16011,7 +15995,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedmin",
-            streams=[
+            inputs=[
                 self,
                 _filter1,
                 _filter2,
@@ -16021,7 +16005,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def maskedthreshold(
         self, _reference: "VideoStream", *, threshold: int = None, planes: int = None, mode: int = None, **kwargs: Any
@@ -16051,7 +16035,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskedthreshold",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -16062,7 +16046,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def maskfun(
         self, *, low: int = None, high: int = None, planes: int = None, fill: int = None, sum: int = None, **kwargs: Any
@@ -16090,7 +16074,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="maskfun",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16102,7 +16086,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def mcdeint(self, *, mode: int = None, parity: int = None, qp: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -16127,7 +16111,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mcdeint",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16137,7 +16121,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def median(
         self, *, radius: int = None, planes: int = None, radiusV: int = None, percentile: float = None, **kwargs: Any
@@ -16162,7 +16146,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="median",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16173,7 +16157,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def mergeplanes(
         self,
@@ -16219,7 +16203,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mergeplanes",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -16237,7 +16221,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def mestimate(
         self, *, method: int = None, mb_size: int = None, search_param: int = None, **kwargs: Any
@@ -16262,7 +16246,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mestimate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16272,7 +16256,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def metadata(
         self,
@@ -16309,7 +16293,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="metadata",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16323,7 +16307,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def midequalizer(self, _in1: "VideoStream", *, planes: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -16351,7 +16335,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="midequalizer",
-            streams=[
+            inputs=[
                 self,
                 _in1,
             ],
@@ -16360,7 +16344,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def minterpolate(
         self,
@@ -16403,7 +16387,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="minterpolate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16420,7 +16404,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def mix(
         self,
@@ -16453,7 +16437,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mix",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -16466,7 +16450,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def monochrome(
         self, *, cb: float = None, cr: float = None, size: float = None, high: float = None, **kwargs: Any
@@ -16491,7 +16475,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="monochrome",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16502,7 +16486,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def morpho(
         self, _structure: "VideoStream", *, mode: int = None, planes: int = None, structure: int = None, **kwargs: Any
@@ -16534,7 +16518,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="morpho",
-            streams=[
+            inputs=[
                 self,
                 _structure,
             ],
@@ -16545,7 +16529,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def mpdecimate(
         self, *, max: int = None, keep: int = None, hi: int = None, lo: int = None, frac: float = None, **kwargs: Any
@@ -16576,7 +16560,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="mpdecimate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16588,7 +16572,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def msad(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
@@ -16624,13 +16608,13 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="msad",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def multiply(
         self, _factor: "VideoStream", *, scale: float = None, offset: float = None, planes: str = None, **kwargs: Any
@@ -16654,7 +16638,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="multiply",
-            streams=[
+            inputs=[
                 self,
                 _factor,
             ],
@@ -16665,7 +16649,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def negate(self, *, components: str = None, negate_alpha: bool = None, **kwargs: Any) -> "VideoStream":
         """
@@ -16686,7 +16670,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="negate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16695,7 +16679,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def nlmeans(
         self, *, s: float = None, p: int = None, pc: int = None, r: int = None, rc: int = None, **kwargs: Any
@@ -16729,7 +16713,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="nlmeans",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16741,7 +16725,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def nlmeans_opencl(
         self, *, s: float = None, p: int = None, pc: int = None, r: int = None, rc: int = None, **kwargs: Any
@@ -16765,7 +16749,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="nlmeans_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16777,7 +16761,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def nlmeans_vulkan(
         self,
@@ -16827,7 +16811,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="nlmeans_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16846,7 +16830,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def nnedi(
         self,
@@ -16887,7 +16871,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="nnedi",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16903,7 +16887,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def noformat(self, *, pix_fmts: str, **kwargs: Any) -> "VideoStream":
         """
@@ -16924,7 +16908,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="noformat",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -16932,7 +16916,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def noise(
         self,
@@ -16985,7 +16969,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="noise",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17007,7 +16991,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def normalize(
         self,
@@ -17057,7 +17041,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="normalize",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17069,7 +17053,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def null(self, **kwargs: Any) -> "VideoStream":
         """
@@ -17086,12 +17070,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="null",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def ocr(
         self, *, datapath: str, language: str = None, whitelist: str = None, blacklist: str = None, **kwargs: Any
@@ -17124,7 +17108,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ocr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17135,7 +17119,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def ocv(self, *, filter_name: str, filter_params: str, **kwargs: Any) -> "VideoStream":
         """
@@ -17166,7 +17150,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ocv",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17175,7 +17159,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def oscilloscope(
         self,
@@ -17226,7 +17210,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="oscilloscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17246,7 +17230,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def overlay(
         self,
@@ -17311,7 +17295,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17327,7 +17311,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def overlay_cuda(
         self,
@@ -17372,7 +17356,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay_cuda",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17386,7 +17370,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def overlay_opencl(self, _overlay: "VideoStream", *, x: int = None, y: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -17410,7 +17394,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay_opencl",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17420,7 +17404,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def overlay_vaapi(
         self,
@@ -17465,7 +17449,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay_vaapi",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17481,7 +17465,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def overlay_vulkan(self, _overlay: "VideoStream", *, x: int = None, y: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -17505,7 +17489,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="overlay_vulkan",
-            streams=[
+            inputs=[
                 self,
                 _overlay,
             ],
@@ -17515,7 +17499,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def owdenoise(
         self, *, depth: int = None, luma_strength: float = None, chroma_strength: float = None, **kwargs: Any
@@ -17539,7 +17523,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="owdenoise",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17549,7 +17533,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pad(
         self,
@@ -17591,7 +17575,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pad",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17605,7 +17589,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pad_opencl(
         self,
@@ -17645,7 +17629,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pad_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17658,7 +17642,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def palettegen(
         self,
@@ -17695,7 +17679,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="palettegen",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17706,7 +17690,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def paletteuse(
         self,
@@ -17745,7 +17729,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="paletteuse",
-            streams=[
+            inputs=[
                 self,
                 _palette,
             ],
@@ -17759,7 +17743,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def perms(self, *, mode: int = None, seed: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -17789,7 +17773,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="perms",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17798,7 +17782,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def perspective(
         self,
@@ -17843,7 +17827,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="perspective",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17861,7 +17845,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def phase(self, *, mode: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -17884,7 +17868,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="phase",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17892,7 +17876,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def photosensitivity(
         self, *, frames: int = None, threshold: float = None, skip: int = None, bypass: bool = None, **kwargs: Any
@@ -17917,7 +17901,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="photosensitivity",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17928,7 +17912,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pixdesctest(self, **kwargs: Any) -> "VideoStream":
         """
@@ -17952,12 +17936,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pixdesctest",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pixelize(
         self, *, width: int = None, height: int = None, mode: int = None, planes: str = None, **kwargs: Any
@@ -17982,7 +17966,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pixelize",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -17993,7 +17977,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pixscope(
         self,
@@ -18031,7 +18015,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pixscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18045,7 +18029,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pp(self, *, subfilters: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -18082,7 +18066,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18090,7 +18074,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pp7(self, *, qp: int = None, mode: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -18113,7 +18097,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pp7",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18122,7 +18106,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def premultiply(
         self, *streams: "VideoStream", planes: int = None, inplace: bool = None, **kwargs: Any
@@ -18148,7 +18132,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="premultiply",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -18158,7 +18142,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def prewitt(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
         """
@@ -18180,7 +18164,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="prewitt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18190,7 +18174,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pseudocolor(
         self,
@@ -18236,7 +18220,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pseudocolor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18250,7 +18234,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def psnr(
         self,
@@ -18316,7 +18300,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="psnr",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -18327,7 +18311,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def pullup(
         self,
@@ -18380,7 +18364,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="pullup",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18393,7 +18377,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def qp(self, *, qp: str, **kwargs: Any) -> "VideoStream":
         """
@@ -18417,7 +18401,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="qp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18425,7 +18409,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def random(self, *, frames: int = None, seed: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -18446,7 +18430,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="random",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18455,7 +18439,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def readeia608(
         self,
@@ -18493,7 +18477,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="readeia608",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18505,7 +18489,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def readvitc(
         self, *, scan_max: int = None, thr_b: float = None, thr_w: float = None, **kwargs: Any
@@ -18535,7 +18519,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="readvitc",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18545,7 +18529,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def realtime(self, *, limit: int = None, speed: float = None, **kwargs: Any) -> "VideoStream":
         """
@@ -18570,7 +18554,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="realtime",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18579,7 +18563,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def remap(
         self, _xmap: "VideoStream", _ymap: "VideoStream", *, format: int = None, fill: str = None, **kwargs: Any
@@ -18608,7 +18592,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="remap",
-            streams=[
+            inputs=[
                 self,
                 _xmap,
                 _ymap,
@@ -18619,7 +18603,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def remap_opencl(
         self, _xmap: "VideoStream", _ymap: "VideoStream", *, interp: int = None, fill: str = None, **kwargs: Any
@@ -18648,7 +18632,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="remap_opencl",
-            streams=[
+            inputs=[
                 self,
                 _xmap,
                 _ymap,
@@ -18659,7 +18643,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def removegrain(
         self, *, m0: int = None, m1: int = None, m2: int = None, m3: int = None, **kwargs: Any
@@ -18685,7 +18669,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="removegrain",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18696,7 +18680,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def removelogo(self, *, filename: str, **kwargs: Any) -> "VideoStream":
         """
@@ -18734,7 +18718,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="removelogo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18742,7 +18726,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def repeatfields(self, **kwargs: Any) -> "VideoStream":
         """
@@ -18760,12 +18744,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="repeatfields",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def reverse(self, **kwargs: Any) -> "VideoStream":
         """
@@ -18785,12 +18769,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="reverse",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def rgbashift(
         self,
@@ -18831,7 +18815,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="rgbashift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18847,7 +18831,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def roberts(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
         """
@@ -18869,7 +18853,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="roberts",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18879,7 +18863,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def rotate(
         self,
@@ -18917,7 +18901,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="rotate",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18929,7 +18913,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def sab(
         self,
@@ -18968,7 +18952,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sab",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -18981,7 +18965,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def scale(
         self,
@@ -19045,7 +19029,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19070,7 +19054,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def scale2ref(
         self,
@@ -19133,7 +19117,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale2ref",
-            streams=[
+            inputs=[
                 self,
                 _ref,
             ],
@@ -19160,8 +19144,8 @@ class VideoStream(Stream):
             | kwargs,
         )
         return (
-            filter_node._vs(0),
-            filter_node._vs(1),
+            filter_node.video(0),
+            filter_node.video(1),
         )
 
     def scale2ref_npp(
@@ -19206,7 +19190,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale2ref_npp",
-            streams=[
+            inputs=[
                 self,
                 _ref,
             ],
@@ -19223,8 +19207,8 @@ class VideoStream(Stream):
             | kwargs,
         )
         return (
-            filter_node._vs(0),
-            filter_node._vs(1),
+            filter_node.video(0),
+            filter_node.video(1),
         )
 
     def scale_cuda(
@@ -19265,7 +19249,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale_cuda",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19280,7 +19264,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def scale_npp(
         self,
@@ -19324,7 +19308,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale_npp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19339,7 +19323,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def scale_vt(
         self,
@@ -19372,7 +19356,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scale_vt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19384,7 +19368,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def scdet(self, *, threshold: float = None, sc_pass: bool = None, **kwargs: Any) -> "VideoStream":
         """
@@ -19420,7 +19404,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scdet",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19429,7 +19413,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def scharr(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
         """
@@ -19451,7 +19435,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scharr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19461,7 +19445,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def scroll(
         self, *, horizontal: float = None, vertical: float = None, hpos: float = None, vpos: float = None, **kwargs: Any
@@ -19486,7 +19470,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="scroll",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19497,7 +19481,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def segment(self, *, timestamps: str, frames: str, **kwargs: Any) -> FilterNode:
         """
@@ -19526,7 +19510,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="segment",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19563,7 +19547,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="select",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19628,7 +19612,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="selectivecolor",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19646,7 +19630,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def sendcmd(self, *, commands: str, filename: str, **kwargs: Any) -> "VideoStream":
         """
@@ -19678,7 +19662,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sendcmd",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19687,7 +19671,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def separatefields(self, **kwargs: Any) -> "VideoStream":
         """
@@ -19710,12 +19694,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="separatefields",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def setdar(self, *, dar: str = None, max: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -19762,7 +19746,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setdar",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19771,7 +19755,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def setfield(self, *, mode: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -19796,7 +19780,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setfield",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19804,7 +19788,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def setparams(
         self,
@@ -19840,7 +19824,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setparams",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19852,7 +19836,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def setpts(self, *, expr: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -19878,7 +19862,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setpts",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19886,7 +19870,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def setrange(self, *, range: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -19911,7 +19895,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setrange",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19919,7 +19903,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def setsar(self, *, sar: str = None, max: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -19966,7 +19950,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="setsar",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -19975,7 +19959,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def settb(self, *, expr: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20002,7 +19986,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="settb",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20010,7 +19994,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def sharpen_npp(self, *, border_type: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20031,7 +20015,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sharpen_npp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20039,7 +20023,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def shear(
         self, *, shx: float = None, shy: float = None, fillcolor: str = None, interp: int = None, **kwargs: Any
@@ -20064,7 +20048,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="shear",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20075,7 +20059,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showinfo(self, *, checksum: bool = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20102,7 +20086,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="showinfo",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20110,7 +20094,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def showpalette(self, *, s: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20131,7 +20115,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="showpalette",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20139,7 +20123,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def shuffleframes(self, *, mapping: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20162,7 +20146,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="shuffleframes",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20170,7 +20154,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def shufflepixels(
         self,
@@ -20203,7 +20187,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="shufflepixels",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20215,7 +20199,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def shuffleplanes(
         self, *, map0: int = None, map1: int = None, map2: int = None, map3: int = None, **kwargs: Any
@@ -20243,7 +20227,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="shuffleplanes",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20254,7 +20238,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def sidedata(self, *, mode: int = None, type: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20275,7 +20259,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sidedata",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20284,7 +20268,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def signalstats(self, *, stat: str = None, out: int = None, c: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20310,7 +20294,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="signalstats",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20320,7 +20304,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def signature(
         self,
@@ -20364,7 +20348,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="signature",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -20381,7 +20365,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def siti(self, *, print_summary: bool = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20405,7 +20389,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="siti",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20413,7 +20397,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def smartblur(
         self,
@@ -20452,7 +20436,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="smartblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20465,7 +20449,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def sobel(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20487,7 +20471,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sobel",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20497,7 +20481,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def spectrumsynth(
         self,
@@ -20549,7 +20533,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="spectrumsynth",
-            streams=[
+            inputs=[
                 self,
                 _phase,
             ],
@@ -20564,7 +20548,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
     def split(self, *, outputs: int = None, **kwargs: Any) -> FilterNode:
         """
@@ -20587,7 +20571,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="split",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20623,7 +20607,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="spp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20634,7 +20618,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def sr(
         self,
@@ -20682,7 +20666,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="sr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20694,7 +20678,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def ssim(self, _reference: "VideoStream", *, stats_file: str, **kwargs: Any) -> "VideoStream":
         """
@@ -20735,7 +20719,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="ssim",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
@@ -20744,7 +20728,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def stereo3d(self, *, _in: int = None, out: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -20765,7 +20749,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="stereo3d",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20774,7 +20758,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def streamselect(self, *streams: "VideoStream", inputs: int = None, map: str, **kwargs: Any) -> FilterNode:
         """
@@ -20795,7 +20779,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="streamselect",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -20826,12 +20810,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="super2xsai",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def swaprect(
         self,
@@ -20869,7 +20853,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="swaprect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20882,7 +20866,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def swapuv(self, **kwargs: Any) -> "VideoStream":
         """
@@ -20899,12 +20883,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="swapuv",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tblend(
         self,
@@ -20957,7 +20941,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tblend",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -20979,7 +20963,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def telecine(self, *, first_field: int = None, pattern: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -21018,7 +21002,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="telecine",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21027,7 +21011,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def thistogram(
         self,
@@ -21073,7 +21057,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="thistogram",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21088,7 +21072,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def threshold(
         self, _threshold: "VideoStream", _min: "VideoStream", _max: "VideoStream", *, planes: int = None, **kwargs: Any
@@ -21122,7 +21106,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="threshold",
-            streams=[
+            inputs=[
                 self,
                 _threshold,
                 _min,
@@ -21133,7 +21117,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def thumbnail(self, *, n: int = None, log: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -21158,7 +21142,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="thumbnail",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21167,7 +21151,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tile(
         self,
@@ -21206,7 +21190,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tile",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21220,7 +21204,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tiltandshift(
         self, *, tilt: int = None, start: int = None, end: int = None, hold: int = None, pad: int = None, **kwargs: Any
@@ -21272,7 +21256,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tiltandshift",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21284,7 +21268,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tinterlace(self, *, mode: int = None, flags: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -21308,7 +21292,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tinterlace",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21317,7 +21301,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tlut2(self, *, c0: str = None, c1: str = None, c2: str = None, c3: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -21357,7 +21341,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tlut2",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21368,7 +21352,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tmedian(
         self, *, radius: int = None, planes: int = None, percentile: float = None, **kwargs: Any
@@ -21392,7 +21376,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tmedian",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21402,7 +21386,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tmidequalizer(
         self, *, radius: int = None, sigma: float = None, planes: int = None, **kwargs: Any
@@ -21430,7 +21414,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tmidequalizer",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21440,7 +21424,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tmix(
         self, *, frames: int = None, weights: str = None, scale: float = None, planes: str = None, **kwargs: Any
@@ -21465,7 +21449,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tmix",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21476,7 +21460,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tonemap(
         self, *, tonemap: int = None, param: float = None, desat: float = None, peak: float = None, **kwargs: Any
@@ -21509,7 +21493,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tonemap",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21520,7 +21504,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tonemap_opencl(
         self,
@@ -21563,7 +21547,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tonemap_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21580,7 +21564,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tonemap_vaapi(self, *, format: str, matrix: str, primaries: str, transfer: str, **kwargs: Any) -> "VideoStream":
         """
@@ -21605,7 +21589,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tonemap_vaapi",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21616,7 +21600,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def tpad(
         self,
@@ -21653,7 +21637,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="tpad",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21667,7 +21651,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def transpose(self, *, dir: int = None, passthrough: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -21698,7 +21682,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="transpose",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21707,7 +21691,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def transpose_npp(self, *, dir: int = None, passthrough: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -21729,7 +21713,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="transpose_npp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21738,7 +21722,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def transpose_vt(self, *, dir: int = None, passthrough: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -21760,7 +21744,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="transpose_vt",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21769,7 +21753,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def transpose_vulkan(self, *, dir: int = None, passthrough: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -21791,7 +21775,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="transpose_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21800,7 +21784,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def trim(
         self,
@@ -21866,7 +21850,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="trim",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21880,7 +21864,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def unpremultiply(
         self, *streams: "VideoStream", planes: int = None, inplace: bool = None, **kwargs: Any
@@ -21906,7 +21890,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="unpremultiply",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -21916,7 +21900,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def unsharp(
         self,
@@ -21961,7 +21945,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="unsharp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -21977,7 +21961,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def unsharp_opencl(
         self,
@@ -22016,7 +22000,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="unsharp_opencl",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22029,7 +22013,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def untile(self, *, layout: str = None, **kwargs: Any) -> "VideoStream":
         """
@@ -22054,7 +22038,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="untile",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22062,7 +22046,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def uspp(
         self, *, quality: int = None, qp: int = None, use_bframe_qp: bool = None, codec: str = None, **kwargs: Any
@@ -22095,7 +22079,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="uspp",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22106,7 +22090,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def v360(
         self,
@@ -22201,7 +22185,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="v360",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22244,7 +22228,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vaguedenoiser(
         self,
@@ -22285,7 +22269,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vaguedenoiser",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22298,7 +22282,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def varblur(
         self, _radius: "VideoStream", *, min_r: int = None, max_r: int = None, planes: int = None, **kwargs: Any
@@ -22326,7 +22310,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="varblur",
-            streams=[
+            inputs=[
                 self,
                 _radius,
             ],
@@ -22337,7 +22321,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vectorscope(
         self,
@@ -22389,7 +22373,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vectorscope",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22410,7 +22394,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vflip(self, **kwargs: Any) -> "VideoStream":
         """
@@ -22431,12 +22415,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vflip",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vflip_vulkan(self, **kwargs: Any) -> "VideoStream":
         """
@@ -22453,12 +22437,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vflip_vulkan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vfrdet(self, **kwargs: Any) -> "VideoStream":
         """
@@ -22482,12 +22466,12 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vfrdet",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vibrance(
         self,
@@ -22526,7 +22510,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vibrance",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22541,7 +22525,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vidstabdetect(
         self,
@@ -22586,7 +22570,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vidstabdetect",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22600,7 +22584,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vidstabtransform(
         self,
@@ -22659,7 +22643,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vidstabtransform",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22680,7 +22664,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vif(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
@@ -22715,13 +22699,13 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vif",
-            streams=[
+            inputs=[
                 self,
                 _reference,
             ],
             kwargs={} | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vignette(
         self,
@@ -22758,7 +22742,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vignette",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22772,7 +22756,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vmafmotion(self, *, stats_file: str, **kwargs: Any) -> "VideoStream":
         """
@@ -22800,7 +22784,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vmafmotion",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22808,7 +22792,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def vstack(
         self, *streams: "VideoStream", inputs: int = None, shortest: bool = None, **kwargs: Any
@@ -22836,7 +22820,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="vstack",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -22846,7 +22830,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def w3fdif(
         self, *, filter: int = None, mode: int = None, parity: int = None, deint: int = None, **kwargs: Any
@@ -22883,7 +22867,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="w3fdif",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22894,7 +22878,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def waveform(
         self,
@@ -22953,7 +22937,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="waveform",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -22976,7 +22960,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def weave(self, *, first_field: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -23001,7 +22985,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="weave",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23009,7 +22993,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def xbr(self, *, n: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -23031,7 +23015,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xbr",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23039,7 +23023,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def xcorrelate(
         self, _secondary: "VideoStream", *, planes: int = None, secondary: int = None, **kwargs: Any
@@ -23067,7 +23051,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xcorrelate",
-            streams=[
+            inputs=[
                 self,
                 _secondary,
             ],
@@ -23077,7 +23061,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def xfade(
         self,
@@ -23113,7 +23097,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xfade",
-            streams=[
+            inputs=[
                 self,
                 _xfade,
             ],
@@ -23125,7 +23109,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def xfade_opencl(
         self,
@@ -23207,7 +23191,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xfade_opencl",
-            streams=[
+            inputs=[
                 self,
                 _xfade,
             ],
@@ -23220,7 +23204,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def xmedian(
         self, *streams: "VideoStream", inputs: int = None, planes: int = None, percentile: float = None, **kwargs: Any
@@ -23244,7 +23228,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xmedian",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -23255,7 +23239,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def xstack(
         self,
@@ -23290,7 +23274,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="xstack",
-            streams=[
+            inputs=[
                 self,
                 *streams,
             ],
@@ -23303,7 +23287,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def yaepblur(self, *, radius: int = None, planes: int = None, sigma: int = None, **kwargs: Any) -> "VideoStream":
         """
@@ -23327,7 +23311,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="yaepblur",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23337,7 +23321,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def zoompan(
         self,
@@ -23375,7 +23359,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="zoompan",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23388,7 +23372,7 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)
 
     def zscale(
         self,
@@ -23456,7 +23440,7 @@ class VideoStream(Stream):
         """
         filter_node = FilterNode(
             name="zscale",
-            streams=[
+            inputs=[
                 self,
             ],
             kwargs={
@@ -23482,4 +23466,4 @@ class VideoStream(Stream):
             }
             | kwargs,
         )
-        return filter_node._vs(0)
+        return filter_node.video(0)

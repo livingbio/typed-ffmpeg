@@ -1,27 +1,12 @@
 
 
-from pydantic import BaseModel
-from typing import Any, TYPE_CHECKING
+from typing import Any
+
+from .base import FilterNode, FilterableStream
 
 
 
-class Stream(BaseModel):
-    ...
-
-
-class FilterNode(BaseModel):
-    streams: list[Stream]
-    name: str
-    kwargs: dict[str, str | int | float | bool | None] = {}
-
-    def _vs(self, index: int) -> "VideoStream":
-        return VideoStream()
-
-    def _as(self, index: int) -> "AudioStream":
-        return AudioStream()
-
-
-class AudioStream(Stream):
+class AudioStream(FilterableStream):
     
         
     
@@ -69,7 +54,7 @@ Ref: None
         """
         filter_node = FilterNode(
             name="aap",
-            streams=[
+            inputs=[
                 
             self,
 
@@ -93,14 +78,14 @@ Ref: None
                 
             } | kwargs,
         )
-        return filter_node._as(0)
+        return filter_node.audio(0)
 
 
         
     
 
 
-class VideoStream(Stream):
+class VideoStream(FilterableStream):
     
         
     
