@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Any
+from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING, Any, Iterable
 
 from pydantic import BaseModel
 
@@ -6,16 +7,42 @@ if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
 
 
-class Node(BaseModel):
+def convert_kwargs_to_cmd_line_args(kwargs: dict[str, str | int | float | bool | None]) -> list[str]:
+    """Helper function to build command line arguments out of dict."""
+    args = []
+    for k in sorted(kwargs.keys()):
+        v = kwargs[k]
+        if isinstance(v, Iterable) and not isinstance(v, str):
+            for value in v:
+                args.append(f"-{k}")
+                if value is not None:
+                    args.append("{}".format(value))
+            continue
+        args.append(f"-{k}")
+        if v is not None:
+            args.append(f"{v}")
+    return args
+
+
+class Node(BaseModel, ABC):
     name: str
     args: list[str] = []
     kwargs: dict[str, str | int | float | bool | None] = {}
 
+    @abstractmethod
+    def compile(self) -> list[str]:
+        ...
 
-class Stream(BaseModel):
+
+class Stream(BaseModel, ABC):
     node: Node
     label: str | int | None = None
     selector: str | None = None
+
+    @abstractmethod
+    def compile(self) -> list[str]:
+        # compile current and upstream nodes into a single ffmpeg command
+        ...
 
 
 class FilterableStream(Stream):
@@ -38,6 +65,9 @@ class FilterableStream(Stream):
     def output(self, *streams: "FilterableStream", **kwargs: Any) -> "OutputStream":
         return OutputNode(name="output", kwargs=kwargs, inputs=[self, *streams]).stream()
 
+    def compile(self) -> list[str]:
+        raise NotImplementedError
+
 
 class InputNode(Node):
     def video(self, label: str | int | None = None) -> "VideoStream":
@@ -53,6 +83,9 @@ class InputNode(Node):
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
 
+    def compile(self) -> list[str]:
+        return convert_kwargs_to_cmd_line_args(self.kwargs)
+
 
 class FilterNode(InputNode):
     inputs: list[FilterableStream]
@@ -60,12 +93,18 @@ class FilterNode(InputNode):
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
 
+    def compile(self) -> list[str]:
+        return super().compile()
+
 
 class OutputNode(Node):
     inputs: list[FilterableStream]
 
     def stream(self, label: str | int | None = None) -> "OutputStream":
         return OutputStream(node=self, label=label)
+
+    def compile(self) -> list[str]:
+        raise NotImplementedError
 
 
 class OutputStream(Stream):
@@ -77,12 +116,21 @@ class OutputStream(Stream):
     def overwrite_output(self) -> "OutputStream":
         return GlobalNode(name="overwrite_output", input=self, args=["-y"]).stream()
 
+    def run(self) -> None:
+        ...
+
+    def compile(self) -> list[str]:
+        raise NotImplementedError
+
 
 class GlobalNode(Node):
     input: OutputStream
 
     def stream(self, label: str | int | None = None) -> "OutputStream":
         return OutputStream(node=self, label=label)
+
+    def compile(self) -> list[str]:
+        raise NotImplementedError
 
 
 def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream:
@@ -104,4 +152,4 @@ def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream
     return InputNode(name=input.__name__, kwargs=kwargs).stream()
 
 
-input("a.mp4").video.crop(x="10", y="20").output(filename="b.mp4").global_args("y").overwrite_output()
+input("a.mp4").video.crop(x="10", y="20").output(filename="b.mp4").global_args("y").overwrite_output().run()
