@@ -3,6 +3,8 @@
     "description": "Overlay one video on top of another using CUDA",
     "flags": null,
     "id": "ff_vf_overlay_cuda",
+    "init": "&overlay_cuda_init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "main",

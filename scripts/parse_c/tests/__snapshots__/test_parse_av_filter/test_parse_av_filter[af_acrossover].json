@@ -3,6 +3,8 @@
     "description": "Split audio into per-bands streams.",
     "flags": "(1 << 1) |\n                      (1 << 2)",
     "id": "ff_af_acrossover",
+    "init": "init",
+    "init_src": null,
     "input_filter_pads": [],
     "inputs": "(inputs)",
     "name": "acrossover",

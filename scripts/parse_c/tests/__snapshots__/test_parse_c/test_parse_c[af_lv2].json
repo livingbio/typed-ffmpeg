@@ -3,6 +3,8 @@
     "description": "Apply LV2 effect.",
     "flags": "(1 << 0)",
     "id": "ff_af_lv2",
+    "init": "init",
+    "init_src": null,
     "input_filter_pads": [],
     "inputs": "0",
     "name": "lv2",

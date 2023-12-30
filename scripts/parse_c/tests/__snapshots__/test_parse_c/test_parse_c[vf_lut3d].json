@@ -3,6 +3,8 @@
     "description": "Adjust colors using a 3D LUT.",
     "flags": "(1 << 16) | (1 << 2)",
     "id": "ff_vf_lut3d",
+    "init": "lut3d_init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",
@@ -136,6 +138,8 @@
     "description": "Adjust colors using a Hald CLUT.",
     "flags": "(1 << 17) | (1 << 2)",
     "id": "ff_vf_haldclut",
+    "init": "haldclut_init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "main",
@@ -262,6 +266,8 @@
     "description": "Adjust colors using a 1D LUT.",
     "flags": "(1 << 16) | (1 << 2)",
     "id": "ff_vf_lut1d",
+    "init": "lut1d_init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

@@ -3,6 +3,8 @@
     "description": "Apply erosion effect.",
     "flags": "(1 << 16)| (1 << 2)",
     "id": "ff_vf_erosion",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",
@@ -81,6 +83,8 @@
     "description": "Apply dilation effect.",
     "flags": "(1 << 16)| (1 << 2)",
     "id": "ff_vf_dilation",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",
@@ -159,6 +163,8 @@
     "description": "Apply deflate effect.",
     "flags": "(1 << 16)| (1 << 2)",
     "id": "ff_vf_deflate",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",
@@ -226,6 +232,8 @@
     "description": "Apply inflate effect.",
     "flags": "(1 << 16)| (1 << 2)",
     "id": "ff_vf_inflate",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

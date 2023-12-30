@@ -3,6 +3,8 @@
     "description": "Hard repeat fields based on MPEG repeat field flag.",
     "flags": null,
     "id": "ff_vf_repeatfields",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

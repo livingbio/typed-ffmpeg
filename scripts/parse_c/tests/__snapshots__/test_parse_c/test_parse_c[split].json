@@ -3,6 +3,8 @@
     "description": "Pass on the input to N video outputs.",
     "flags": "(1 << 1) | (1 << 3)",
     "id": "ff_vf_split",
+    "init": "split_init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",
@@ -32,6 +34,8 @@
     "description": "Pass on the audio input to N audio outputs.",
     "flags": "(1 << 1) | (1 << 3)",
     "id": "ff_af_asplit",
+    "init": "split_init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

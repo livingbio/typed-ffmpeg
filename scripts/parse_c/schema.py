@@ -173,7 +173,8 @@ class AVFilter(pydantic.BaseModel):
     description: str
 
     # preinit: str
-    # init: str
+    init: str | None = None
+    init_src: str | None = None
     # uninit: str
     # priv_size: str
     # activate: str
@@ -193,6 +194,10 @@ class AVFilter(pydantic.BaseModel):
     def type(self) -> FilterType:
         _, type, _ = self.id.split("_", 2)
         return FilterType(type)
+
+    @property
+    def init_value(self) -> str:
+        return self.init.strip("&")
 
     @property
     def flags_value(self) -> int:
