@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any, Iterable
 
@@ -46,7 +48,7 @@ class Stream(BaseModel, ABC):
 
 
 class FilterableStream(Stream):
-    node: "FilterNode" | "InputNode"
+    node: FilterNode | InputNode
 
     def filter(self, *streams: "FilterableStream", name: str, **kwargs: str) -> "FilterableStream":
         return self.filter_multi_output(*streams, name=name, **kwargs).stream()
@@ -108,7 +110,7 @@ class OutputNode(Node):
 
 
 class OutputStream(Stream):
-    node: OutputNode | "GlobalNode"
+    node: OutputNode | GlobalNode
 
     def global_args(self, *args: str, **kwargs: str | bool | int | float | None) -> "OutputStream":
         return GlobalNode(name="global_args", input=self, args=list(args), kwargs=kwargs).stream()
@@ -143,7 +145,7 @@ def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream
 
     Official documentation: `Main options <https://ffmpeg.org/ffmpeg.html#Main-options>`__
     """
-    kwargs["filename"] = filename
+    kwargs["i"] = filename
     fmt = kwargs.pop("f", None)
     if fmt:
         if "format" in kwargs:

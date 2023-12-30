@@ -1,0 +1,11 @@
+# serializer version: 1
+# name: test_input
+  list([
+    '-arg1',
+    'value1',
+    '-arg2',
+    'value2',
+    '-i',
+    'filename',
+  ])
+# ---
