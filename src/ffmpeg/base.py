@@ -108,4 +108,5 @@ def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream
     return InputNode(name=input.__name__, kwargs=kwargs).stream()
 
 
-input("a.mp4").video.crop(x="10", y="20").output(filename="b.mp4").global_args("y").overwrite_output()
+def calculate_dynamic_types(forumla: str, **kwargs: int | Default | str | None) -> list[str]:
+    return eval(forumla, kwargs)

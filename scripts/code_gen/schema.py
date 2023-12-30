@@ -52,11 +52,14 @@ class FFmpegFilter(BaseModel):
 
     input_stream_typings: list[AVFilterPad] = []
     output_stream_typings: list[AVFilterPad] = []
+    formula_input_typings: str | None = None
+    formula_output_typings: str | None = None
 
     options: list[FFmpegFilterOption] = []
 
     @classmethod
-    def load(cls, path: pathlib.Path) -> "FFmpegFilter":
+    def load(cls, id: str) -> "FFmpegFilter":
+        path = schema_path / f"{id}.json"
         with path.open() as ifile:
             return FFmpegFilter(**json.load(ifile))
 
