@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from .base import FilterNode, FilterableStream
+from .base import FilterNode, FilterableStream, Default
 
 
 
@@ -29,11 +29,11 @@ class AudioStream(FilterableStream):
     
 
     
-        order: int = None,
+        order: int | Default = Default(value='None'),
     
 
     
-        projection: int = None,
+        projection: int | Default = Default(value='None'),
     
 
 
