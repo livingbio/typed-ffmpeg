@@ -122,7 +122,7 @@ class OutputStream(Stream):
         ...
 
     def compile(self) -> list[str]:
-        raise NotImplementedError
+        return self.node.compile()
 
 
 class GlobalNode(Node):
@@ -132,7 +132,7 @@ class GlobalNode(Node):
         return OutputStream(node=self, label=label)
 
     def compile(self) -> list[str]:
-        raise NotImplementedError
+        return self.input.compile() + self.args
 
 
 def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream:
