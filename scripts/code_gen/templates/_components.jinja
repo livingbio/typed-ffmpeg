@@ -27,7 +27,7 @@
     {% if option.required %}
         {{option.name | option_name_safe}}: {{option.typing}},
     {% else %}
-        {{option.name | option_name_safe}}: {{option.typing}} = None,
+        {{option.name | option_name_safe}}: {{option.typing}} | Default = Default(value='{{option.default}}'),
     {% endif %}
 {% endfor %}
 {% endmacro %}

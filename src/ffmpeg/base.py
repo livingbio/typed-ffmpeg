@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Mapping
 
 from pydantic import BaseModel
 
@@ -6,10 +6,14 @@ if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
 
 
+class Default(BaseModel):
+    value: str | int | float | bool | None
+
+
 class Node(BaseModel):
     name: str
     args: list[str] = []
-    kwargs: dict[str, str | int | float | bool | None] = {}
+    kwargs: Mapping[str, Default | str | int | float | bool | None] = {}
 
 
 class Stream(BaseModel):

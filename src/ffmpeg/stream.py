@@ -1,25 +1,25 @@
 from typing import Any
 
-from .base import FilterableStream, FilterNode
+from .base import Default, FilterableStream, FilterNode
 
 
 class AudioStream(FilterableStream):
     def a3dscope(
         self,
         *,
-        rate: str = None,
-        size: str = None,
-        fov: float = None,
-        roll: float = None,
-        pitch: float = None,
-        yaw: float = None,
-        xzoom: float = None,
-        yzoom: float = None,
-        zzoom: float = None,
-        xpos: float = None,
-        ypos: float = None,
-        zpos: float = None,
-        length: int = None,
+        rate: str | Default = Default(value="25"),
+        size: str | Default = Default(value="hd720"),
+        fov: float | Default = Default(value="90.f"),
+        roll: float | Default = Default(value="0.f"),
+        pitch: float | Default = Default(value="0.f"),
+        yaw: float | Default = Default(value="0.f"),
+        xzoom: float | Default = Default(value="1.f"),
+        yzoom: float | Default = Default(value="1.f"),
+        zzoom: float | Default = Default(value="1.f"),
+        xpos: float | Default = Default(value="0.f"),
+        ypos: float | Default = Default(value="0.f"),
+        zpos: float | Default = Default(value="0.f"),
+        length: int | Default = Default(value="15"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -77,12 +77,12 @@ class AudioStream(FilterableStream):
         self,
         _desired: "AudioStream",
         *,
-        order: int = None,
-        projection: int = None,
-        mu: float = None,
-        delta: float = None,
-        out_mode: int = None,
-        precision: int = None,
+        order: int | Default = Default(value="16"),
+        projection: int | Default = Default(value="2"),
+        mu: float | Default = Default(value="0.0001"),
+        delta: float | Default = Default(value="0.001"),
+        out_mode: int | Default = Default(value="OUT_MODE"),
+        precision: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -126,7 +126,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def abench(self, *, action: int = None, **kwargs: Any) -> "AudioStream":
+    def abench(self, *, action: int | Default = Default(value="ACTION_START"), **kwargs: Any) -> "AudioStream":
         """
 
         18.8 bench, abench
@@ -155,7 +155,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def abitscope(
-        self, *, rate: str = None, size: str = None, colors: str = None, mode: int = None, **kwargs: Any
+        self,
+        *,
+        rate: str | Default = Default(value="25"),
+        size: str | Default = Default(value="1024x256"),
+        colors: str | Default = Default(value="red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        mode: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -193,18 +199,18 @@ class AudioStream(FilterableStream):
     def acompressor(
         self,
         *,
-        level_in: float = None,
-        mode: int = None,
-        threshold: float = None,
-        ratio: float = None,
-        attack: float = None,
-        release: float = None,
-        makeup: float = None,
-        knee: float = None,
-        link: int = None,
-        detection: int = None,
-        level_sc: float = None,
-        mix: float = None,
+        level_in: float | Default = Default(value="1.0"),
+        mode: int | Default = Default(value="0"),
+        threshold: float | Default = Default(value="0.125"),
+        ratio: float | Default = Default(value="2.0"),
+        attack: float | Default = Default(value="20.0"),
+        release: float | Default = Default(value="250.0"),
+        makeup: float | Default = Default(value="1.0"),
+        knee: float | Default = Default(value="2.82843"),
+        link: int | Default = Default(value="0"),
+        detection: int | Default = Default(value="1"),
+        level_sc: float | Default = Default(value="1.0"),
+        mix: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -281,7 +287,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def acontrast(self, *, contrast: float = None, **kwargs: Any) -> "AudioStream":
+    def acontrast(self, *, contrast: float | Default = Default(value="33.0"), **kwargs: Any) -> "AudioStream":
         """
 
         8.3 acontrast
@@ -336,11 +342,11 @@ class AudioStream(FilterableStream):
         self,
         _crossfade1: "AudioStream",
         *,
-        nb_samples: int = None,
-        duration: int = None,
-        overlap: bool = None,
-        curve1: int = None,
-        curve2: int = None,
+        nb_samples: int | Default = Default(value="44100"),
+        duration: int | Default = Default(value="0"),
+        overlap: bool | Default = Default(value="1"),
+        curve1: int | Default = Default(value="TRI"),
+        curve2: int | Default = Default(value="TRI"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -383,11 +389,11 @@ class AudioStream(FilterableStream):
     def acrossover(
         self,
         *,
-        split: str = None,
-        order: int = None,
-        level: float = None,
-        gain: str = None,
-        precision: int = None,
+        split: str | Default = Default(value="500"),
+        order: int | Default = Default(value="1"),
+        level: float | Default = Default(value="1.0"),
+        gain: str | Default = Default(value="1.f"),
+        precision: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> FilterNode:
         """
@@ -432,17 +438,17 @@ class AudioStream(FilterableStream):
     def acrusher(
         self,
         *,
-        level_in: float = None,
-        level_out: float = None,
-        bits: float = None,
-        mix: float = None,
-        mode: int = None,
-        dc: float = None,
-        aa: float = None,
-        samples: float = None,
-        lfo: bool = None,
-        lforange: float = None,
-        lforate: float = None,
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        bits: float | Default = Default(value="8.0"),
+        mix: float | Default = Default(value="0.5"),
+        mode: int | Default = Default(value="0"),
+        dc: float | Default = Default(value="1.0"),
+        aa: float | Default = Default(value="0.5"),
+        samples: float | Default = Default(value="1.0"),
+        lfo: bool | Default = Default(value="0"),
+        lforange: float | Default = Default(value="20.0"),
+        lforate: float | Default = Default(value="0.3"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -509,7 +515,14 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def acue(self, *, cue: int = None, preroll: int = None, buffer: int = None, **kwargs: Any) -> "AudioStream":
+    def acue(
+        self,
+        *,
+        cue: int | Default = Default(value="0"),
+        preroll: int | Default = Default(value="0"),
+        buffer: int | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.8 acue
@@ -543,12 +556,12 @@ class AudioStream(FilterableStream):
     def adeclick(
         self,
         *,
-        window: float = None,
-        overlap: float = None,
-        arorder: float = None,
-        threshold: float = None,
-        burst: float = None,
-        method: int = None,
+        window: float | Default = Default(value="55.0"),
+        overlap: float | Default = Default(value="75.0"),
+        arorder: float | Default = Default(value="2.0"),
+        threshold: float | Default = Default(value="2.0"),
+        burst: float | Default = Default(value="2.0"),
+        method: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -592,12 +605,12 @@ class AudioStream(FilterableStream):
     def adeclip(
         self,
         *,
-        window: float = None,
-        overlap: float = None,
-        arorder: float = None,
-        threshold: float = None,
-        hsize: int = None,
-        method: int = None,
+        window: float | Default = Default(value="55.0"),
+        overlap: float | Default = Default(value="75.0"),
+        arorder: float | Default = Default(value="8.0"),
+        threshold: float | Default = Default(value="10.0"),
+        hsize: int | Default = Default(value="1000"),
+        method: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -638,7 +651,9 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def adecorrelate(self, *, stages: int = None, seed: int = None, **kwargs: Any) -> "AudioStream":
+    def adecorrelate(
+        self, *, stages: int | Default = Default(value="6"), seed: int | Default = Default(value="-1"), **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.11 adecorrelate
@@ -668,7 +683,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def adelay(self, *, delays: str, all: bool = None, **kwargs: Any) -> "AudioStream":
+    def adelay(self, *, delays: str, all: bool | Default = Default(value="0"), **kwargs: Any) -> "AudioStream":
         """
 
         8.12 adelay
@@ -700,7 +715,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def adenorm(self, *, level: float = None, type: int = None, **kwargs: Any) -> "AudioStream":
+    def adenorm(
+        self,
+        *,
+        level: float | Default = Default(value="-351.0"),
+        type: int | Default = Default(value="DC_TYPE"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.13 adenorm
@@ -759,21 +780,21 @@ class AudioStream(FilterableStream):
     def adrawgraph(
         self,
         *,
-        m1: str = None,
-        fg1: str = None,
-        m2: str = None,
-        fg2: str = None,
-        m3: str = None,
-        fg3: str = None,
-        m4: str = None,
-        fg4: str = None,
-        bg: str = None,
-        min: float = None,
-        max: float = None,
-        mode: int = None,
-        slide: int = None,
-        size: str = None,
-        rate: str = None,
+        m1: str | Default = Default(value=""),
+        fg1: str | Default = Default(value="0xffff0000"),
+        m2: str | Default = Default(value=""),
+        fg2: str | Default = Default(value="0xff00ff00"),
+        m3: str | Default = Default(value=""),
+        fg3: str | Default = Default(value="0xffff00ff"),
+        m4: str | Default = Default(value=""),
+        fg4: str | Default = Default(value="0xffffff00"),
+        bg: str | Default = Default(value="white"),
+        min: float | Default = Default(value="-1.0"),
+        max: float | Default = Default(value="1.0"),
+        mode: int | Default = Default(value="2"),
+        slide: int | Default = Default(value="0"),
+        size: str | Default = Default(value="900x256"),
+        rate: str | Default = Default(value="25"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -832,7 +853,13 @@ class AudioStream(FilterableStream):
         return filter_node.video(0)
 
     def adrc(
-        self, *, transfer: str = None, attack: float = None, release: float = None, channels: str = None, **kwargs: Any
+        self,
+        *,
+        transfer: str | Default = Default(value="p"),
+        attack: float | Default = Default(value="50.0"),
+        release: float | Default = Default(value="100.0"),
+        channels: str | Default = Default(value="all"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -870,21 +897,21 @@ class AudioStream(FilterableStream):
     def adynamicequalizer(
         self,
         *,
-        threshold: float = None,
-        dfrequency: float = None,
-        dqfactor: float = None,
-        tfrequency: float = None,
-        tqfactor: float = None,
-        attack: float = None,
-        release: float = None,
-        ratio: float = None,
-        makeup: float = None,
-        range: float = None,
-        mode: int = None,
-        dftype: int = None,
-        tftype: int = None,
-        auto: int = None,
-        precision: int = None,
+        threshold: float | Default = Default(value="0.0"),
+        dfrequency: float | Default = Default(value="1000.0"),
+        dqfactor: float | Default = Default(value="1.0"),
+        tfrequency: float | Default = Default(value="1000.0"),
+        tqfactor: float | Default = Default(value="1.0"),
+        attack: float | Default = Default(value="20.0"),
+        release: float | Default = Default(value="200.0"),
+        ratio: float | Default = Default(value="1.0"),
+        makeup: float | Default = Default(value="0.0"),
+        range: float | Default = Default(value="50.0"),
+        mode: int | Default = Default(value="0"),
+        dftype: int | Default = Default(value="0"),
+        tftype: int | Default = Default(value="0"),
+        auto: int | Default = Default(value="DET_OFF"),
+        precision: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -942,7 +969,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def adynamicsmooth(self, *, sensitivity: float = None, basefreq: float = None, **kwargs: Any) -> "AudioStream":
+    def adynamicsmooth(
+        self,
+        *,
+        sensitivity: float | Default = Default(value="2.0"),
+        basefreq: float | Default = Default(value="22050.0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.17 adynamicsmooth
@@ -973,7 +1006,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def aecho(
-        self, *, in_gain: float = None, out_gain: float = None, delays: str = None, decays: str = None, **kwargs: Any
+        self,
+        *,
+        in_gain: float | Default = Default(value="0.6"),
+        out_gain: float | Default = Default(value="0.3"),
+        delays: str | Default = Default(value="1000"),
+        decays: str | Default = Default(value="0.5"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -1017,7 +1056,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def aemphasis(
-        self, *, level_in: float = None, level_out: float = None, mode: int = None, type: int = None, **kwargs: Any
+        self,
+        *,
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        mode: int | Default = Default(value="0"),
+        type: int | Default = Default(value="4"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -1100,14 +1145,14 @@ class AudioStream(FilterableStream):
     def aexciter(
         self,
         *,
-        level_in: float = None,
-        level_out: float = None,
-        amount: float = None,
-        drive: float = None,
-        blend: float = None,
-        freq: float = None,
-        ceil: float = None,
-        listen: bool = None,
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        amount: float | Default = Default(value="1.0"),
+        drive: float | Default = Default(value="8.5"),
+        blend: float | Default = Default(value="0.0"),
+        freq: float | Default = Default(value="7500.0"),
+        ceil: float | Default = Default(value="9999.0"),
+        listen: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -1159,14 +1204,14 @@ class AudioStream(FilterableStream):
     def afade(
         self,
         *,
-        type: int = None,
-        start_sample: int = None,
-        nb_samples: int = None,
-        start_time: int = None,
-        duration: int = None,
-        curve: int = None,
-        silence: float = None,
-        unity: float = None,
+        type: int | Default = Default(value="0"),
+        start_sample: int | Default = Default(value="0"),
+        nb_samples: int | Default = Default(value="44100"),
+        start_time: int | Default = Default(value="0"),
+        duration: int | Default = Default(value="0"),
+        curve: int | Default = Default(value="TRI"),
+        silence: float | Default = Default(value="0.0"),
+        unity: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -1213,20 +1258,20 @@ class AudioStream(FilterableStream):
     def afftdn(
         self,
         *,
-        noise_reduction: float = None,
-        noise_floor: float = None,
-        noise_type: int = None,
+        noise_reduction: float | Default = Default(value="12.0"),
+        noise_floor: float | Default = Default(value="-50.0"),
+        noise_type: int | Default = Default(value="WHITE_NOISE"),
         band_noise: str,
-        residual_floor: float = None,
-        track_noise: bool = None,
-        track_residual: bool = None,
-        output_mode: int = None,
-        adaptivity: float = None,
-        floor_offset: float = None,
-        noise_link: int = None,
-        band_multiplier: float = None,
-        sample_noise: int = None,
-        gain_smooth: int = None,
+        residual_floor: float | Default = Default(value="-38.0"),
+        track_noise: bool | Default = Default(value="0"),
+        track_residual: bool | Default = Default(value="0"),
+        output_mode: int | Default = Default(value="OUT_MODE"),
+        adaptivity: float | Default = Default(value="0.5"),
+        floor_offset: float | Default = Default(value="1.0"),
+        noise_link: int | Default = Default(value="MIN_LINK"),
+        band_multiplier: float | Default = Default(value="1.25"),
+        sample_noise: int | Default = Default(value="SAMPLE_NONE"),
+        gain_smooth: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -1285,11 +1330,11 @@ class AudioStream(FilterableStream):
     def afftfilt(
         self,
         *,
-        real: str = None,
-        imag: str = None,
-        win_size: int = None,
-        win_func: int = None,
-        overlap: float = None,
+        real: str | Default = Default(value="re"),
+        imag: str | Default = Default(value="im"),
+        win_size: int | Default = Default(value="4096"),
+        win_func: int | Default = Default(value="WFUNC_HANNING"),
+        overlap: float | Default = Default(value="0.75"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -1355,25 +1400,25 @@ class AudioStream(FilterableStream):
     def afir(
         self,
         *streams: "AudioStream",
-        dry: float = None,
-        wet: float = None,
-        length: float = None,
-        gtype: int = None,
-        irnorm: float = None,
-        irlink: bool = None,
-        irgain: float = None,
-        irfmt: int = None,
-        maxir: float = None,
-        response: bool = None,
-        channel: int = None,
-        size: str = None,
-        rate: str = None,
-        minp: int = None,
-        maxp: int = None,
-        nbirs: int = None,
-        ir: int = None,
-        precision: int = None,
-        irload: int = None,
+        dry: float | Default = Default(value="1.0"),
+        wet: float | Default = Default(value="1.0"),
+        length: float | Default = Default(value="1.0"),
+        gtype: int | Default = Default(value="0"),
+        irnorm: float | Default = Default(value="1.0"),
+        irlink: bool | Default = Default(value="1"),
+        irgain: float | Default = Default(value="1.0"),
+        irfmt: int | Default = Default(value="1"),
+        maxir: float | Default = Default(value="30.0"),
+        response: bool | Default = Default(value="0"),
+        channel: int | Default = Default(value="0"),
+        size: str | Default = Default(value="hd720"),
+        rate: str | Default = Default(value="25"),
+        minp: int | Default = Default(value="8192"),
+        maxp: int | Default = Default(value="8192"),
+        nbirs: int | Default = Default(value="1"),
+        ir: int | Default = Default(value="0"),
+        precision: int | Default = Default(value="0"),
+        irload: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -1493,7 +1538,12 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def afreqshift(
-        self, *, shift: float = None, level: float = None, order: int = None, **kwargs: Any
+        self,
+        *,
+        shift: float | Default = Default(value="0.0"),
+        level: float | Default = Default(value="1.0"),
+        order: int | Default = Default(value="8"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -1529,14 +1579,14 @@ class AudioStream(FilterableStream):
     def afwtdn(
         self,
         *,
-        sigma: float = None,
-        levels: int = None,
-        wavet: int = None,
-        percent: float = None,
-        profile: bool = None,
-        adaptive: bool = None,
-        samples: int = None,
-        softness: float = None,
+        sigma: float | Default = Default(value="0.0"),
+        levels: int | Default = Default(value="10"),
+        wavet: int | Default = Default(value="SYM10"),
+        percent: float | Default = Default(value="85.0"),
+        profile: bool | Default = Default(value="0"),
+        adaptive: bool | Default = Default(value="0"),
+        samples: int | Default = Default(value="8192"),
+        softness: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -1583,18 +1633,18 @@ class AudioStream(FilterableStream):
     def agate(
         self,
         *,
-        level_in: float = None,
-        mode: int = None,
-        range: float = None,
-        threshold: float = None,
-        ratio: float = None,
-        attack: float = None,
-        release: float = None,
-        makeup: float = None,
-        knee: float = None,
-        detection: int = None,
-        link: int = None,
-        level_sc: float = None,
+        level_in: float | Default = Default(value="1.0"),
+        mode: int | Default = Default(value="0"),
+        range: float | Default = Default(value="0.06125"),
+        threshold: float | Default = Default(value="0.125"),
+        ratio: float | Default = Default(value="2.0"),
+        attack: float | Default = Default(value="20.0"),
+        release: float | Default = Default(value="250.0"),
+        makeup: float | Default = Default(value="1.0"),
+        knee: float | Default = Default(value="2.828427125"),
+        detection: int | Default = Default(value="1"),
+        link: int | Default = Default(value="0"),
+        level_sc: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -1659,11 +1709,11 @@ class AudioStream(FilterableStream):
     def agraphmonitor(
         self,
         *,
-        size: str = None,
-        opacity: float = None,
-        mode: str = None,
-        flags: str = None,
-        rate: str = None,
+        size: str | Default = Default(value="hd720"),
+        opacity: float | Default = Default(value="0.9"),
+        mode: str | Default = Default(value="0"),
+        flags: str | Default = Default(value="FLAG_QUEUE"),
+        rate: str | Default = Default(value="25"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -1702,15 +1752,15 @@ class AudioStream(FilterableStream):
     def ahistogram(
         self,
         *,
-        dmode: int = None,
-        rate: str = None,
-        size: str = None,
-        scale: int = None,
-        ascale: int = None,
-        acount: int = None,
-        rheight: float = None,
-        slide: int = None,
-        hmode: int = None,
+        dmode: int | Default = Default(value="SINGLE"),
+        rate: str | Default = Default(value="25"),
+        size: str | Default = Default(value="hd720"),
+        scale: int | Default = Default(value="LOG"),
+        ascale: int | Default = Default(value="ALOG"),
+        acount: int | Default = Default(value="1"),
+        rheight: float | Default = Default(value="0.1"),
+        slide: int | Default = Default(value="REPLACE"),
+        hmode: int | Default = Default(value="ABS"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -1759,20 +1809,20 @@ class AudioStream(FilterableStream):
     def aiir(
         self,
         *,
-        zeros: str = None,
-        poles: str = None,
-        gains: str = None,
-        dry: float = None,
-        wet: float = None,
-        format: int = None,
-        process: int = None,
-        precision: int = None,
-        normalize: bool = None,
-        mix: float = None,
-        response: bool = None,
-        channel: int = None,
-        size: str = None,
-        rate: str = None,
+        zeros: str | Default = Default(value="1+0i 1-0i"),
+        poles: str | Default = Default(value="1+0i 1-0i"),
+        gains: str | Default = Default(value="1|1"),
+        dry: float | Default = Default(value="1.0"),
+        wet: float | Default = Default(value="1.0"),
+        format: int | Default = Default(value="1"),
+        process: int | Default = Default(value="1"),
+        precision: int | Default = Default(value="0"),
+        normalize: bool | Default = Default(value="1"),
+        mix: float | Default = Default(value="1.0"),
+        response: bool | Default = Default(value="0"),
+        channel: int | Default = Default(value="0"),
+        size: str | Default = Default(value="hd720"),
+        rate: str | Default = Default(value="25"),
         **kwargs: Any
     ) -> FilterNode:
         """
@@ -1866,7 +1916,11 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def ainterleave(
-        self, *streams: "AudioStream", nb_inputs: int = None, duration: int = None, **kwargs: Any
+        self,
+        *streams: "AudioStream",
+        nb_inputs: int | Default = Default(value="2"),
+        duration: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -1950,15 +2004,15 @@ class AudioStream(FilterableStream):
     def alimiter(
         self,
         *,
-        level_in: float = None,
-        level_out: float = None,
-        limit: float = None,
-        attack: float = None,
-        release: float = None,
-        asc: bool = None,
-        asc_level: float = None,
-        level: bool = None,
-        latency: bool = None,
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        limit: float | Default = Default(value="1.0"),
+        attack: float | Default = Default(value="5.0"),
+        release: float | Default = Default(value="50.0"),
+        asc: bool | Default = Default(value="0"),
+        asc_level: float | Default = Default(value="0.5"),
+        level: bool | Default = Default(value="1"),
+        latency: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2014,15 +2068,15 @@ class AudioStream(FilterableStream):
     def allpass(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        order: int = None,
-        transform: int = None,
-        precision: int = None,
+        frequency: float | Default = Default(value="3000.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.707"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        order: int | Default = Default(value="2"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2072,7 +2126,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def aloop(
-        self, *, loop: int = None, size: int = None, start: int = None, time: int = None, **kwargs: Any
+        self,
+        *,
+        loop: int | Default = Default(value="0"),
+        size: int | Default = Default(value="0"),
+        start: int | Default = Default(value="0"),
+        time: int | Default = Default(value="9223372036854775807LL"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -2107,7 +2167,9 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def amerge(self, *streams: "AudioStream", inputs: int = None, **kwargs: Any) -> "AudioStream":
+    def amerge(
+        self, *streams: "AudioStream", inputs: int | Default = Default(value="2"), **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.34 amerge
@@ -2162,13 +2224,13 @@ class AudioStream(FilterableStream):
     def ametadata(
         self,
         *,
-        mode: int = None,
+        mode: int | Default = Default(value="0"),
         key: str,
         value: str,
-        function: int = None,
+        function: int | Default = Default(value="0"),
         expr: str,
         file: str,
-        direct: bool = None,
+        direct: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2213,11 +2275,11 @@ class AudioStream(FilterableStream):
     def amix(
         self,
         *streams: "AudioStream",
-        inputs: int = None,
-        duration: int = None,
-        dropout_transition: float = None,
-        weights: str = None,
-        normalize: bool = None,
+        inputs: int | Default = Default(value="2"),
+        duration: int | Default = Default(value="0"),
+        dropout_transition: float | Default = Default(value="2.0"),
+        weights: str | Default = Default(value="1 1"),
+        normalize: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2292,12 +2354,12 @@ class AudioStream(FilterableStream):
     def anequalizer(
         self,
         *,
-        params: str = None,
-        curves: bool = None,
-        size: str = None,
-        mgain: float = None,
-        fscale: int = None,
-        colors: str = None,
+        params: str | Default = Default(value=""),
+        curves: bool | Default = Default(value="0"),
+        size: str | Default = Default(value="hd720"),
+        mgain: float | Default = Default(value="60.0"),
+        fscale: int | Default = Default(value="1"),
+        colors: str | Default = Default(value="red|green|blue|yellow|orange|lime|pink|magenta|brown"),
         **kwargs: Any
     ) -> FilterNode:
         """
@@ -2341,11 +2403,11 @@ class AudioStream(FilterableStream):
     def anlmdn(
         self,
         *,
-        strength: float = None,
-        patch: int = None,
-        research: int = None,
-        output: int = None,
-        smooth: float = None,
+        strength: float | Default = Default(value="1e-05"),
+        patch: int | Default = Default(value="2000"),
+        research: int | Default = Default(value="6000"),
+        output: int | Default = Default(value="OUT_MODE"),
+        smooth: float | Default = Default(value="11.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2391,12 +2453,12 @@ class AudioStream(FilterableStream):
         self,
         _desired: "AudioStream",
         *,
-        order: int = None,
-        mu: float = None,
-        eps: float = None,
-        leakage: float = None,
-        out_mode: int = None,
-        precision: int = None,
+        order: int | Default = Default(value="256"),
+        mu: float | Default = Default(value="0.75"),
+        eps: float | Default = Default(value="1.0"),
+        leakage: float | Default = Default(value="0.0"),
+        out_mode: int | Default = Default(value="OUT_MODE"),
+        precision: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2445,12 +2507,12 @@ class AudioStream(FilterableStream):
         self,
         _desired: "AudioStream",
         *,
-        order: int = None,
-        mu: float = None,
-        eps: float = None,
-        leakage: float = None,
-        out_mode: int = None,
-        precision: int = None,
+        order: int | Default = Default(value="256"),
+        mu: float | Default = Default(value="0.75"),
+        eps: float | Default = Default(value="1.0"),
+        leakage: float | Default = Default(value="0.0"),
+        out_mode: int | Default = Default(value="OUT_MODE"),
+        precision: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2520,11 +2582,11 @@ class AudioStream(FilterableStream):
     def apad(
         self,
         *,
-        packet_size: int = None,
-        pad_len: int = None,
-        whole_len: int = None,
-        pad_dur: int = None,
-        whole_dur: int = None,
+        packet_size: int | Default = Default(value="4096"),
+        pad_len: int | Default = Default(value="-1"),
+        whole_len: int | Default = Default(value="-1"),
+        pad_dur: int | Default = Default(value="-1"),
+        whole_dur: int | Default = Default(value="-1"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2573,7 +2635,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def aperms(self, *, mode: int = None, seed: int = None, **kwargs: Any) -> "AudioStream":
+    def aperms(
+        self,
+        *,
+        mode: int | Default = Default(value="MODE_NONE"),
+        seed: int | Default = Default(value="-1"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         18.14 perms, aperms
@@ -2615,17 +2683,17 @@ class AudioStream(FilterableStream):
     def aphasemeter(
         self,
         *,
-        rate: str = None,
-        size: str = None,
-        rc: int = None,
-        gc: int = None,
-        bc: int = None,
-        mpc: str = None,
-        video: bool = None,
-        phasing: bool = None,
-        tolerance: float = None,
-        angle: float = None,
-        duration: int = None,
+        rate: str | Default = Default(value="25"),
+        size: str | Default = Default(value="800x400"),
+        rc: int | Default = Default(value="2"),
+        gc: int | Default = Default(value="7"),
+        bc: int | Default = Default(value="1"),
+        mpc: str | Default = Default(value="none"),
+        video: bool | Default = Default(value="1"),
+        phasing: bool | Default = Default(value="0"),
+        tolerance: float | Default = Default(value="0.0"),
+        angle: float | Default = Default(value="170.0"),
+        duration: int | Default = Default(value="2000000"),
         **kwargs: Any
     ) -> FilterNode:
         """
@@ -2685,12 +2753,12 @@ class AudioStream(FilterableStream):
     def aphaser(
         self,
         *,
-        in_gain: float = None,
-        out_gain: float = None,
-        delay: float = None,
-        decay: float = None,
-        speed: float = None,
-        type: int = None,
+        in_gain: float | Default = Default(value="0.4"),
+        out_gain: float | Default = Default(value="0.74"),
+        delay: float | Default = Default(value="3.0"),
+        decay: float | Default = Default(value="0.4"),
+        speed: float | Default = Default(value="0.5"),
+        type: int | Default = Default(value="WAVE_TRI"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2734,7 +2802,12 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def aphaseshift(
-        self, *, shift: float = None, level: float = None, order: int = None, **kwargs: Any
+        self,
+        *,
+        shift: float | Default = Default(value="0.0"),
+        level: float | Default = Default(value="1.0"),
+        order: int | Default = Default(value="8"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -2797,13 +2870,13 @@ class AudioStream(FilterableStream):
     def apsyclip(
         self,
         *,
-        level_in: float = None,
-        level_out: float = None,
-        clip: float = None,
-        diff: bool = None,
-        adaptive: float = None,
-        iterations: int = None,
-        level: bool = None,
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        clip: float | Default = Default(value="1.0"),
+        diff: bool | Default = Default(value="0"),
+        adaptive: float | Default = Default(value="0.5"),
+        iterations: int | Default = Default(value="10"),
+        level: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2848,17 +2921,17 @@ class AudioStream(FilterableStream):
     def apulsator(
         self,
         *,
-        level_in: float = None,
-        level_out: float = None,
-        mode: int = None,
-        amount: float = None,
-        offset_l: float = None,
-        offset_r: float = None,
-        width: float = None,
-        timing: int = None,
-        bpm: float = None,
-        ms: int = None,
-        hz: float = None,
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        mode: int | Default = Default(value="SINE"),
+        amount: float | Default = Default(value="1.0"),
+        offset_l: float | Default = Default(value="0.0"),
+        offset_r: float | Default = Default(value="0.5"),
+        width: float | Default = Default(value="1.0"),
+        timing: int | Default = Default(value="2"),
+        bpm: float | Default = Default(value="120.0"),
+        ms: int | Default = Default(value="500"),
+        hz: float | Default = Default(value="2.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -2920,7 +2993,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def arealtime(self, *, limit: int = None, speed: float = None, **kwargs: Any) -> "AudioStream":
+    def arealtime(
+        self,
+        *,
+        limit: int | Default = Default(value="2000000"),
+        speed: float | Default = Default(value="1.0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         18.15 realtime, arealtime
@@ -2954,7 +3033,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def aresample(self, *, sample_rate: int = None, **kwargs: Any) -> "AudioStream":
+    def aresample(self, *, sample_rate: int | Default = Default(value="0"), **kwargs: Any) -> "AudioStream":
         """
 
         8.47 aresample
@@ -3023,11 +3102,11 @@ class AudioStream(FilterableStream):
         self,
         _desired: "AudioStream",
         *,
-        order: int = None,
-        _lambda: float = None,
-        delta: float = None,
-        out_mode: int = None,
-        precision: int = None,
+        order: int | Default = Default(value="16"),
+        _lambda: float | Default = Default(value="1.f"),
+        delta: float | Default = Default(value="2.f"),
+        out_mode: int | Default = Default(value="OUT_MODE"),
+        precision: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -3070,7 +3149,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def arnndn(self, *, model: str, mix: float = None, **kwargs: Any) -> "AudioStream":
+    def arnndn(self, *, model: str, mix: float | Default = Default(value="1.0"), **kwargs: Any) -> "AudioStream":
         """
 
         8.50 arnndn
@@ -3166,7 +3245,9 @@ class AudioStream(FilterableStream):
 
         return filter_node
 
-    def aselect(self, *, expr: str = None, outputs: int = None, **kwargs: Any) -> FilterNode:
+    def aselect(
+        self, *, expr: str | Default = Default(value="1"), outputs: int | Default = Default(value="1"), **kwargs: Any
+    ) -> FilterNode:
         """
 
         18.17 select, aselect
@@ -3244,7 +3325,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asetnsamples(self, *, nb_out_samples: int = None, pad: bool = None, **kwargs: Any) -> "AudioStream":
+    def asetnsamples(
+        self,
+        *,
+        nb_out_samples: int | Default = Default(value="1024"),
+        pad: bool | Default = Default(value="1"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.52 asetnsamples
@@ -3284,7 +3371,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asetpts(self, *, expr: str = None, **kwargs: Any) -> "AudioStream":
+    def asetpts(self, *, expr: str | Default = Default(value="PTS"), **kwargs: Any) -> "AudioStream":
         """
 
         18.19 setpts, asetpts
@@ -3318,7 +3405,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asetrate(self, *, sample_rate: int = None, **kwargs: Any) -> "AudioStream":
+    def asetrate(self, *, sample_rate: int | Default = Default(value="44100"), **kwargs: Any) -> "AudioStream":
         """
 
         8.53 asetrate
@@ -3347,7 +3434,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asettb(self, *, expr: str = None, **kwargs: Any) -> "AudioStream":
+    def asettb(self, *, expr: str | Default = Default(value="intb"), **kwargs: Any) -> "AudioStream":
         """
 
         18.21 settb, asettb
@@ -3410,7 +3497,9 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asidedata(self, *, mode: int = None, type: int = None, **kwargs: Any) -> "AudioStream":
+    def asidedata(
+        self, *, mode: int | Default = Default(value="0"), type: int | Default = Default(value="-1"), **kwargs: Any
+    ) -> "AudioStream":
         """
 
         18.31 sidedata, asidedata
@@ -3470,11 +3559,11 @@ class AudioStream(FilterableStream):
     def asoftclip(
         self,
         *,
-        type: int = None,
-        threshold: float = None,
-        output: float = None,
-        param: float = None,
-        oversample: int = None,
+        type: int | Default = Default(value="0"),
+        threshold: float | Default = Default(value="1.0"),
+        output: float | Default = Default(value="1.0"),
+        param: float | Default = Default(value="1.0"),
+        oversample: int | Default = Default(value="1"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -3516,7 +3605,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def aspectralstats(
-        self, *, win_size: int = None, win_func: int = None, overlap: float = None, measure: str = None, **kwargs: Any
+        self,
+        *,
+        win_size: int | Default = Default(value="2048"),
+        win_func: int | Default = Default(value="WFUNC_HANNING"),
+        overlap: float | Default = Default(value="0.5"),
+        measure: str | Default = Default(value="(2147483647 *2U +1U)"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -3554,7 +3649,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asplit(self, *, outputs: int = None, **kwargs: Any) -> FilterNode:
+    def asplit(self, *, outputs: int | Default = Default(value="2"), **kwargs: Any) -> FilterNode:
         """
 
         18.33 split, asplit
@@ -3589,13 +3684,13 @@ class AudioStream(FilterableStream):
     def asr(
         self,
         *,
-        rate: int = None,
+        rate: int | Default = Default(value="16000"),
         hmm: str,
         dict: str,
         lm: str,
         lmctl: str,
         lmname: str,
-        logfn: str = None,
+        logfn: str | Default = Default(value="/dev/null"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -3647,11 +3742,11 @@ class AudioStream(FilterableStream):
     def astats(
         self,
         *,
-        length: float = None,
-        metadata: bool = None,
-        reset: int = None,
-        measure_perchannel: str = None,
-        measure_overall: str = None,
+        length: float | Default = Default(value="0.05"),
+        metadata: bool | Default = Default(value="0"),
+        reset: int | Default = Default(value="0"),
+        measure_perchannel: str | Default = Default(value="(2147483647 *2U +1U)"),
+        measure_overall: str | Default = Default(value="(2147483647 *2U +1U)"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -3693,7 +3788,9 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def astreamselect(self, *streams: "AudioStream", inputs: int = None, map: str, **kwargs: Any) -> FilterNode:
+    def astreamselect(
+        self, *streams: "AudioStream", inputs: int | Default = Default(value="2"), map: str, **kwargs: Any
+    ) -> FilterNode:
         """
 
         11.245 streamselect, astreamselect
@@ -3728,15 +3825,15 @@ class AudioStream(FilterableStream):
     def asubboost(
         self,
         *,
-        dry: float = None,
-        wet: float = None,
-        boost: float = None,
-        decay: float = None,
-        feedback: float = None,
-        cutoff: float = None,
-        slope: float = None,
-        delay: float = None,
-        channels: str = None,
+        dry: float | Default = Default(value="1.0"),
+        wet: float | Default = Default(value="1.0"),
+        boost: float | Default = Default(value="2.0"),
+        decay: float | Default = Default(value="0.0"),
+        feedback: float | Default = Default(value="0.9"),
+        cutoff: float | Default = Default(value="100.0"),
+        slope: float | Default = Default(value="0.5"),
+        delay: float | Default = Default(value="20.0"),
+        channels: str | Default = Default(value="all"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -3782,7 +3879,14 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asubcut(self, *, cutoff: float = None, order: int = None, level: float = None, **kwargs: Any) -> "AudioStream":
+    def asubcut(
+        self,
+        *,
+        cutoff: float | Default = Default(value="20.0"),
+        order: int | Default = Default(value="10"),
+        level: float | Default = Default(value="1.0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.61 asubcut
@@ -3819,7 +3923,12 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def asupercut(
-        self, *, cutoff: float = None, order: int = None, level: float = None, **kwargs: Any
+        self,
+        *,
+        cutoff: float | Default = Default(value="20000.0"),
+        order: int | Default = Default(value="10"),
+        level: float | Default = Default(value="1.0"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -3853,7 +3962,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def asuperpass(
-        self, *, centerf: float = None, order: int = None, qfactor: float = None, level: float = None, **kwargs: Any
+        self,
+        *,
+        centerf: float | Default = Default(value="1000.0"),
+        order: int | Default = Default(value="4"),
+        qfactor: float | Default = Default(value="1.0"),
+        level: float | Default = Default(value="1.0"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -3889,7 +4004,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def asuperstop(
-        self, *, centerf: float = None, order: int = None, qfactor: float = None, level: float = None, **kwargs: Any
+        self,
+        *,
+        centerf: float | Default = Default(value="1000.0"),
+        order: int | Default = Default(value="4"),
+        qfactor: float | Default = Default(value="1.0"),
+        level: float | Default = Default(value="1.0"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -3924,7 +4045,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def atempo(self, *, tempo: float = None, **kwargs: Any) -> "AudioStream":
+    def atempo(self, *, tempo: float | Default = Default(value="1.0"), **kwargs: Any) -> "AudioStream":
         """
 
         8.65 atempo
@@ -3962,11 +4083,11 @@ class AudioStream(FilterableStream):
     def atilt(
         self,
         *,
-        freq: float = None,
-        slope: float = None,
-        width: float = None,
-        order: int = None,
-        level: float = None,
+        freq: float | Default = Default(value="10000.0"),
+        slope: float | Default = Default(value="0.0"),
+        width: float | Default = Default(value="1000.0"),
+        order: int | Default = Default(value="5"),
+        level: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4009,13 +4130,13 @@ class AudioStream(FilterableStream):
     def atrim(
         self,
         *,
-        start: int = None,
-        end: int = None,
-        start_pts: int = None,
-        end_pts: int = None,
-        duration: int = None,
-        start_sample: int = None,
-        end_sample: int = None,
+        start: int | Default = Default(value="9223372036854775807LL"),
+        end: int | Default = Default(value="9223372036854775807LL"),
+        start_pts: int | Default = Default(value="((int64_t)(0x8000000000000000ULL))"),
+        end_pts: int | Default = Default(value="((int64_t)(0x8000000000000000ULL))"),
+        duration: int | Default = Default(value="0"),
+        start_sample: int | Default = Default(value="-1"),
+        end_sample: int | Default = Default(value="9223372036854775807LL"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4090,22 +4211,22 @@ class AudioStream(FilterableStream):
     def avectorscope(
         self,
         *,
-        mode: int = None,
-        rate: str = None,
-        size: str = None,
-        rc: int = None,
-        gc: int = None,
-        bc: int = None,
-        ac: int = None,
-        rf: int = None,
-        gf: int = None,
-        bf: int = None,
-        af: int = None,
-        zoom: float = None,
-        draw: int = None,
-        scale: int = None,
-        swap: bool = None,
-        mirror: int = None,
+        mode: int | Default = Default(value="LISSAJOUS"),
+        rate: str | Default = Default(value="25"),
+        size: str | Default = Default(value="400x400"),
+        rc: int | Default = Default(value="40"),
+        gc: int | Default = Default(value="160"),
+        bc: int | Default = Default(value="80"),
+        ac: int | Default = Default(value="255"),
+        rf: int | Default = Default(value="15"),
+        gf: int | Default = Default(value="10"),
+        bf: int | Default = Default(value="5"),
+        af: int | Default = Default(value="5"),
+        zoom: float | Default = Default(value="1.0"),
+        draw: int | Default = Default(value="DOT"),
+        scale: int | Default = Default(value="LIN"),
+        swap: bool | Default = Default(value="1"),
+        mirror: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -4174,7 +4295,12 @@ class AudioStream(FilterableStream):
         return filter_node.video(0)
 
     def axcorrelate(
-        self, _axcorrelate1: "AudioStream", *, size: int = None, algo: int = None, **kwargs: Any
+        self,
+        _axcorrelate1: "AudioStream",
+        *,
+        size: int | Default = Default(value="256"),
+        algo: int | Default = Default(value="2"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -4215,16 +4341,16 @@ class AudioStream(FilterableStream):
     def bandpass(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        csg: bool = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="3000.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.5"),
+        csg: bool | Default = Default(value="0"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4279,15 +4405,15 @@ class AudioStream(FilterableStream):
     def bandreject(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="3000.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.5"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4338,17 +4464,17 @@ class AudioStream(FilterableStream):
     def bass(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        gain: float = None,
-        poles: int = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="100.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.5"),
+        gain: float | Default = Default(value="0.0"),
+        poles: int | Default = Default(value="2"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4403,18 +4529,18 @@ class AudioStream(FilterableStream):
     def biquad(
         self,
         *,
-        a0: float = None,
-        a1: float = None,
-        a2: float = None,
-        b0: float = None,
-        b1: float = None,
-        b2: float = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        a0: float | Default = Default(value="1.0"),
+        a1: float | Default = Default(value="0.0"),
+        a2: float | Default = Default(value="0.0"),
+        b0: float | Default = Default(value="0.0"),
+        b1: float | Default = Default(value="0.0"),
+        b2: float | Default = Default(value="0.0"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4468,7 +4594,14 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def bs2b(self, *, profile: int = None, fcut: int = None, feed: int = None, **kwargs: Any) -> "AudioStream":
+    def bs2b(
+        self,
+        *,
+        profile: int | Default = Default(value="BS2B_DEFAULT_CLEVEL"),
+        fcut: int | Default = Default(value="0"),
+        feed: int | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.73 bs2b
@@ -4537,7 +4670,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def channelsplit(self, *, channel_layout: str = None, channels: str = None, **kwargs: Any) -> FilterNode:
+    def channelsplit(
+        self,
+        *,
+        channel_layout: str | Default = Default(value="stereo"),
+        channels: str | Default = Default(value="all"),
+        **kwargs: Any
+    ) -> FilterNode:
         """
 
         8.75 channelsplit
@@ -4571,8 +4710,8 @@ class AudioStream(FilterableStream):
     def chorus(
         self,
         *,
-        in_gain: float = None,
-        out_gain: float = None,
+        in_gain: float | Default = Default(value="0.4"),
+        out_gain: float | Default = Default(value="0.4"),
         delays: str,
         decays: str,
         speeds: str,
@@ -4628,13 +4767,13 @@ class AudioStream(FilterableStream):
     def compand(
         self,
         *,
-        attacks: str = None,
-        decays: str = None,
-        points: str = None,
-        soft_knee: float = None,
-        gain: float = None,
-        volume: float = None,
-        delay: float = None,
+        attacks: str | Default = Default(value="0"),
+        decays: str | Default = Default(value="0.8"),
+        points: str | Default = Default(value="-70/-70|-60/-20|1/0"),
+        soft_knee: float | Default = Default(value="0.01"),
+        gain: float | Default = Default(value="0.0"),
+        volume: float | Default = Default(value="0.0"),
+        delay: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4679,12 +4818,12 @@ class AudioStream(FilterableStream):
     def compensationdelay(
         self,
         *,
-        mm: int = None,
-        cm: int = None,
-        m: int = None,
-        dry: float = None,
-        wet: float = None,
-        temp: int = None,
+        mm: int | Default = Default(value="0"),
+        cm: int | Default = Default(value="0"),
+        m: int | Default = Default(value="0"),
+        dry: float | Default = Default(value="0.0"),
+        wet: float | Default = Default(value="1.0"),
+        temp: int | Default = Default(value="20"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4741,7 +4880,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def concat(
-        self, *streams: "AudioStream", n: int = None, v: int = None, a: int = None, unsafe: bool = None, **kwargs: Any
+        self,
+        *streams: "AudioStream",
+        n: int | Default = Default(value="2"),
+        v: int | Default = Default(value="1"),
+        a: int | Default = Default(value="0"),
+        unsafe: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> FilterNode:
         """
 
@@ -4812,12 +4957,12 @@ class AudioStream(FilterableStream):
     def crossfeed(
         self,
         *,
-        strength: float = None,
-        range: float = None,
-        slope: float = None,
-        level_in: float = None,
-        level_out: float = None,
-        block_size: int = None,
+        strength: float | Default = Default(value="0.2"),
+        range: float | Default = Default(value="0.5"),
+        slope: float | Default = Default(value="0.5"),
+        level_in: float | Default = Default(value="0.9"),
+        level_out: float | Default = Default(value="1.0"),
+        block_size: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -4863,7 +5008,9 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def crystalizer(self, *, i: float = None, c: bool = None, **kwargs: Any) -> "AudioStream":
+    def crystalizer(
+        self, *, i: float | Default = Default(value="2.0"), c: bool | Default = Default(value="1"), **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.80 crystalizer
@@ -4895,7 +5042,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def dcshift(self, *, shift: float = None, limitergain: float = None, **kwargs: Any) -> "AudioStream":
+    def dcshift(
+        self,
+        *,
+        shift: float | Default = Default(value="0.0"),
+        limitergain: float | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.81 dcshift
@@ -4929,7 +5082,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def deesser(
-        self, *, i: float = None, m: float = None, f: float = None, s: int = None, **kwargs: Any
+        self,
+        *,
+        i: float | Default = Default(value="0.0"),
+        m: float | Default = Default(value="0.5"),
+        f: float | Default = Default(value="0.5"),
+        s: int | Default = Default(value="OUT_MODE"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -4963,7 +5122,12 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def dialoguenhance(
-        self, *, original: float = None, enhance: float = None, voice: float = None, **kwargs: Any
+        self,
+        *,
+        original: float | Default = Default(value="1.0"),
+        enhance: float | Default = Default(value="1.0"),
+        voice: float | Default = Default(value="2.0"),
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -5001,7 +5165,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def drmeter(self, *, length: float = None, **kwargs: Any) -> "AudioStream":
+    def drmeter(self, *, length: float | Default = Default(value="3.0"), **kwargs: Any) -> "AudioStream":
         """
 
         8.84 drmeter
@@ -5036,18 +5200,18 @@ class AudioStream(FilterableStream):
     def dynaudnorm(
         self,
         *,
-        framelen: int = None,
-        gausssize: int = None,
-        peak: float = None,
-        maxgain: float = None,
-        targetrms: float = None,
-        coupling: bool = None,
-        correctdc: bool = None,
-        altboundary: bool = None,
-        compress: float = None,
-        threshold: float = None,
-        channels: str = None,
-        overlap: float = None,
+        framelen: int | Default = Default(value="500"),
+        gausssize: int | Default = Default(value="31"),
+        peak: float | Default = Default(value="0.95"),
+        maxgain: float | Default = Default(value="10.0"),
+        targetrms: float | Default = Default(value="0.0"),
+        coupling: bool | Default = Default(value="1"),
+        correctdc: bool | Default = Default(value="0"),
+        altboundary: bool | Default = Default(value="0"),
+        compress: float | Default = Default(value="0.0"),
+        threshold: float | Default = Default(value="0.0"),
+        channels: str | Default = Default(value="all"),
+        overlap: float | Default = Default(value="0.0"),
         curve: str,
         **kwargs: Any
     ) -> "AudioStream":
@@ -5144,23 +5308,23 @@ class AudioStream(FilterableStream):
     def ebur128(
         self,
         *,
-        video: bool = None,
-        size: str = None,
-        meter: int = None,
-        framelog: int = None,
-        metadata: bool = None,
-        peak: str = None,
-        dualmono: bool = None,
-        panlaw: float = None,
-        target: int = None,
-        gauge: int = None,
-        scale: int = None,
-        integrated: float = None,
-        range: float = None,
-        lra_low: float = None,
-        lra_high: float = None,
-        sample_peak: float = None,
-        true_peak: float = None,
+        video: bool | Default = Default(value="0"),
+        size: str | Default = Default(value="640x480"),
+        meter: int | Default = Default(value="9"),
+        framelog: int | Default = Default(value="-1"),
+        metadata: bool | Default = Default(value="0"),
+        peak: str | Default = Default(value="PEAK_MODE_NONE"),
+        dualmono: bool | Default = Default(value="0"),
+        panlaw: float | Default = Default(value="-3.01029995663978"),
+        target: int | Default = Default(value="-23"),
+        gauge: int | Default = Default(value="0"),
+        scale: int | Default = Default(value="0"),
+        integrated: float | Default = Default(value="0.0"),
+        range: float | Default = Default(value="0.0"),
+        lra_low: float | Default = Default(value="0.0"),
+        lra_high: float | Default = Default(value="0.0"),
+        sample_peak: float | Default = Default(value="0.0"),
+        true_peak: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> FilterNode:
         """
@@ -5248,16 +5412,16 @@ class AudioStream(FilterableStream):
     def equalizer(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        gain: float = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="0.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="1.0"),
+        gain: float | Default = Default(value="0.0"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5311,7 +5475,9 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def extrastereo(self, *, m: float = None, c: bool = None, **kwargs: Any) -> "AudioStream":
+    def extrastereo(
+        self, *, m: float | Default = Default(value="2.5"), c: bool | Default = Default(value="1"), **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.88 extrastereo
@@ -5345,19 +5511,19 @@ class AudioStream(FilterableStream):
     def firequalizer(
         self,
         *,
-        gain: str = None,
+        gain: str | Default = Default(value="gain_interpolate(f)"),
         gain_entry: str,
-        delay: float = None,
-        accuracy: float = None,
-        wfunc: int = None,
-        fixed: bool = None,
-        multi: bool = None,
-        zero_phase: bool = None,
-        scale: int = None,
+        delay: float | Default = Default(value="0.01"),
+        accuracy: float | Default = Default(value="5.0"),
+        wfunc: int | Default = Default(value="WFUNC_HANN"),
+        fixed: bool | Default = Default(value="0"),
+        multi: bool | Default = Default(value="0"),
+        zero_phase: bool | Default = Default(value="0"),
+        scale: int | Default = Default(value="SCALE_LINLOG"),
         dumpfile: str,
-        dumpscale: int = None,
-        fft2: bool = None,
-        min_phase: bool = None,
+        dumpscale: int | Default = Default(value="SCALE_LINLOG"),
+        fft2: bool | Default = Default(value="0"),
+        min_phase: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5414,14 +5580,14 @@ class AudioStream(FilterableStream):
     def flanger(
         self,
         *,
-        delay: float = None,
-        depth: float = None,
-        regen: float = None,
-        width: float = None,
-        speed: float = None,
-        shape: int = None,
-        phase: float = None,
-        interp: int = None,
+        delay: float | Default = Default(value="0.0"),
+        depth: float | Default = Default(value="2.0"),
+        regen: float | Default = Default(value="0.0"),
+        width: float | Default = Default(value="71.0"),
+        speed: float | Default = Default(value="0.5"),
+        shape: int | Default = Default(value="WAVE_SIN"),
+        phase: float | Default = Default(value="25.0"),
+        interp: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5468,19 +5634,19 @@ class AudioStream(FilterableStream):
     def haas(
         self,
         *,
-        level_in: float = None,
-        level_out: float = None,
-        side_gain: float = None,
-        middle_source: int = None,
-        middle_phase: bool = None,
-        left_delay: float = None,
-        left_balance: float = None,
-        left_gain: float = None,
-        left_phase: bool = None,
-        right_delay: float = None,
-        right_balance: float = None,
-        right_gain: float = None,
-        right_phase: bool = None,
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        side_gain: float | Default = Default(value="1.0"),
+        middle_source: int | Default = Default(value="2"),
+        middle_phase: bool | Default = Default(value="0"),
+        left_delay: float | Default = Default(value="2.05"),
+        left_balance: float | Default = Default(value="-1.0"),
+        left_gain: float | Default = Default(value="1.0"),
+        left_phase: bool | Default = Default(value="0"),
+        right_delay: float | Default = Default(value="2.12"),
+        right_balance: float | Default = Default(value="1.0"),
+        right_gain: float | Default = Default(value="1.0"),
+        right_phase: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5541,12 +5707,12 @@ class AudioStream(FilterableStream):
     def hdcd(
         self,
         *,
-        disable_autoconvert: bool = None,
-        process_stereo: bool = None,
-        cdt_ms: int = None,
-        force_pe: bool = None,
-        analyze_mode: int = None,
-        bits_per_sample: int = None,
+        disable_autoconvert: bool | Default = Default(value="1"),
+        process_stereo: bool | Default = Default(value="1"),
+        cdt_ms: int | Default = Default(value="2000"),
+        force_pe: bool | Default = Default(value="0"),
+        analyze_mode: int | Default = Default(value="HDCD_ANA_OFF"),
+        bits_per_sample: int | Default = Default(value="16"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5604,11 +5770,11 @@ class AudioStream(FilterableStream):
         self,
         *streams: "AudioStream",
         map: str,
-        gain: float = None,
-        lfe: float = None,
-        type: int = None,
-        size: int = None,
-        hrir: int = None,
+        gain: float | Default = Default(value="0.0"),
+        lfe: float | Default = Default(value="0.0"),
+        type: int | Default = Default(value="1"),
+        size: int | Default = Default(value="1024"),
+        hrir: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5655,16 +5821,16 @@ class AudioStream(FilterableStream):
     def highpass(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        poles: int = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="3000.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.707"),
+        poles: int | Default = Default(value="2"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5717,17 +5883,17 @@ class AudioStream(FilterableStream):
     def highshelf(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        gain: float = None,
-        poles: int = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="3000.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.5"),
+        gain: float | Default = Default(value="0.0"),
+        poles: int | Default = Default(value="2"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5780,7 +5946,12 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def join(
-        self, *streams: "AudioStream", inputs: int = None, channel_layout: str = None, map: str, **kwargs: Any
+        self,
+        *streams: "AudioStream",
+        inputs: int | Default = Default(value="2"),
+        channel_layout: str | Default = Default(value="stereo"),
+        map: str,
+        **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -5834,10 +6005,10 @@ class AudioStream(FilterableStream):
         file: str,
         plugin: str,
         controls: str,
-        sample_rate: int = None,
-        nb_samples: int = None,
-        duration: int = None,
-        latency: bool = None,
+        sample_rate: int | Default = Default(value="44100"),
+        nb_samples: int | Default = Default(value="1024"),
+        duration: int | Default = Default(value="-1"),
+        latency: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5884,17 +6055,17 @@ class AudioStream(FilterableStream):
     def loudnorm(
         self,
         *,
-        I: float = None,
-        LRA: float = None,
-        TP: float = None,
-        measured_I: float = None,
-        measured_LRA: float = None,
-        measured_TP: float = None,
-        measured_thresh: float = None,
-        offset: float = None,
-        linear: bool = None,
-        dual_mono: bool = None,
-        print_format: int = None,
+        I: float | Default = Default(value="-24.0"),
+        LRA: float | Default = Default(value="7.0"),
+        TP: float | Default = Default(value="-2.0"),
+        measured_I: float | Default = Default(value="0.0"),
+        measured_LRA: float | Default = Default(value="0.0"),
+        measured_TP: float | Default = Default(value="99.0"),
+        measured_thresh: float | Default = Default(value="-70.0"),
+        offset: float | Default = Default(value="0.0"),
+        linear: bool | Default = Default(value="1"),
+        dual_mono: bool | Default = Default(value="0"),
+        print_format: int | Default = Default(value="NONE"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -5951,16 +6122,16 @@ class AudioStream(FilterableStream):
     def lowpass(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        poles: int = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="500.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.707"),
+        poles: int | Default = Default(value="2"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -6013,17 +6184,17 @@ class AudioStream(FilterableStream):
     def lowshelf(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        gain: float = None,
-        poles: int = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="100.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.5"),
+        gain: float | Default = Default(value="0.0"),
+        poles: int | Default = Default(value="2"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -6080,9 +6251,9 @@ class AudioStream(FilterableStream):
         *streams: "AudioStream",
         plugin: str,
         controls: str,
-        sample_rate: int = None,
-        nb_samples: int = None,
-        duration: int = None,
+        sample_rate: int | Default = Default(value="44100"),
+        nb_samples: int | Default = Default(value="1024"),
+        duration: int | Default = Default(value="-1"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -6122,7 +6293,15 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def mcompand(self, *, args: str = None, **kwargs: Any) -> "AudioStream":
+    def mcompand(
+        self,
+        *,
+        args: str
+        | Default = Default(
+            value="0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000"
+        ),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.100 mcompand
@@ -6192,7 +6371,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def replaygain(self, *, track_gain: float = None, track_peak: float = None, **kwargs: Any) -> "AudioStream":
+    def replaygain(
+        self,
+        *,
+        track_gain: float | Default = Default(value="0.0"),
+        track_peak: float | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.102 replaygain
@@ -6227,16 +6412,16 @@ class AudioStream(FilterableStream):
     def rubberband(
         self,
         *,
-        tempo: float = None,
-        pitch: float = None,
-        transients: int = None,
-        detector: int = None,
-        phase: int = None,
-        window: int = None,
-        smoothing: int = None,
-        formant: int = None,
-        pitchq: int = None,
-        channels: int = None,
+        tempo: float | Default = Default(value="1.0"),
+        pitch: float | Default = Default(value="1.0"),
+        transients: int | Default = Default(value="0"),
+        detector: int | Default = Default(value="0"),
+        phase: int | Default = Default(value="0"),
+        window: int | Default = Default(value="0"),
+        smoothing: int | Default = Default(value="0"),
+        formant: int | Default = Default(value="0"),
+        pitchq: int | Default = Default(value="0"),
+        channels: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -6290,32 +6475,35 @@ class AudioStream(FilterableStream):
     def showcqt(
         self,
         *,
-        size: str = None,
-        fps: str = None,
-        bar_h: int = None,
-        axis_h: int = None,
-        sono_h: int = None,
-        fullhd: bool = None,
-        sono_v: str = None,
-        bar_v: str = None,
-        sono_g: float = None,
-        bar_g: float = None,
-        bar_t: float = None,
-        timeclamp: float = None,
-        attack: float = None,
-        basefreq: float = None,
-        endfreq: float = None,
-        coeffclamp: float = None,
-        tlength: str = None,
-        count: int = None,
-        fcount: int = None,
+        size: str | Default = Default(value="1920x1080"),
+        fps: str | Default = Default(value="25"),
+        bar_h: int | Default = Default(value="-1"),
+        axis_h: int | Default = Default(value="-1"),
+        sono_h: int | Default = Default(value="-1"),
+        fullhd: bool | Default = Default(value="1"),
+        sono_v: str | Default = Default(value="16"),
+        bar_v: str | Default = Default(value="sono_v"),
+        sono_g: float | Default = Default(value="3.0"),
+        bar_g: float | Default = Default(value="1.0"),
+        bar_t: float | Default = Default(value="1.0"),
+        timeclamp: float | Default = Default(value="0.17"),
+        attack: float | Default = Default(value="0.0"),
+        basefreq: float | Default = Default(value="20.015231264080075"),
+        endfreq: float | Default = Default(value="20495.596814417997"),
+        coeffclamp: float | Default = Default(value="1.0"),
+        tlength: str | Default = Default(value="384*tc/(384+tc*f)"),
+        count: int | Default = Default(value="6"),
+        fcount: int | Default = Default(value="0"),
         fontfile: str,
         font: str,
-        fontcolor: str = None,
+        fontcolor: str
+        | Default = Default(
+            value='st(0, (midi(f)-59.5)/12);" "st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));" "r(1-ld(1)) + b(ld(1))'
+        ),
         axisfile: str,
-        axis: bool = None,
-        csp: int = None,
-        cscheme: str = None,
+        axis: bool | Default = Default(value="1"),
+        csp: int | Default = Default(value="AVCOL_SPC_UNSPECIFIED"),
+        cscheme: str | Default = Default(value="1|0.5|0|0|0.5|1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -6402,22 +6590,22 @@ class AudioStream(FilterableStream):
     def showcwt(
         self,
         *,
-        size: str = None,
-        rate: str = None,
-        scale: int = None,
-        iscale: int = None,
-        min: float = None,
-        max: float = None,
-        imin: float = None,
-        imax: float = None,
-        logb: float = None,
-        deviation: float = None,
-        pps: int = None,
-        mode: int = None,
-        slide: int = None,
-        direction: int = None,
-        bar: float = None,
-        rotation: float = None,
+        size: str | Default = Default(value="640x512"),
+        rate: str | Default = Default(value="25"),
+        scale: int | Default = Default(value="0"),
+        iscale: int | Default = Default(value="0"),
+        min: float | Default = Default(value="20.0"),
+        max: float | Default = Default(value="20000.0"),
+        imin: float | Default = Default(value="0.0"),
+        imax: float | Default = Default(value="1.0"),
+        logb: float | Default = Default(value="0.0001"),
+        deviation: float | Default = Default(value="1.0"),
+        pps: int | Default = Default(value="64"),
+        mode: int | Default = Default(value="0"),
+        slide: int | Default = Default(value="0"),
+        direction: int | Default = Default(value="0"),
+        bar: float | Default = Default(value="0.0"),
+        rotation: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -6481,20 +6669,20 @@ class AudioStream(FilterableStream):
     def showfreqs(
         self,
         *,
-        size: str = None,
-        rate: str = None,
-        mode: int = None,
-        ascale: int = None,
-        fscale: int = None,
-        win_size: int = None,
-        win_func: int = None,
-        overlap: float = None,
-        averaging: int = None,
-        colors: str = None,
-        cmode: int = None,
-        minamp: float = None,
-        data: int = None,
-        channels: str = None,
+        size: str | Default = Default(value="1024x512"),
+        rate: str | Default = Default(value="25"),
+        mode: int | Default = Default(value="BAR"),
+        ascale: int | Default = Default(value="AS_LOG"),
+        fscale: int | Default = Default(value="FS_LINEAR"),
+        win_size: int | Default = Default(value="2048"),
+        win_func: int | Default = Default(value="WFUNC_HANNING"),
+        overlap: float | Default = Default(value="1.0"),
+        averaging: int | Default = Default(value="1"),
+        colors: str | Default = Default(value="red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        cmode: int | Default = Default(value="COMBINED"),
+        minamp: float | Default = Default(value="1e-06"),
+        data: int | Default = Default(value="MAGNITUDE"),
+        channels: str | Default = Default(value="all"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -6552,7 +6740,13 @@ class AudioStream(FilterableStream):
         return filter_node.video(0)
 
     def showspatial(
-        self, *, size: str = None, win_size: int = None, win_func: int = None, rate: str = None, **kwargs: Any
+        self,
+        *,
+        size: str | Default = Default(value="512x512"),
+        win_size: int | Default = Default(value="4096"),
+        win_func: int | Default = Default(value="WFUNC_HANNING"),
+        rate: str | Default = Default(value="25"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -6591,26 +6785,26 @@ class AudioStream(FilterableStream):
     def showspectrum(
         self,
         *,
-        size: str = None,
-        slide: int = None,
-        mode: int = None,
-        color: int = None,
-        scale: int = None,
-        fscale: int = None,
-        saturation: float = None,
-        win_func: int = None,
-        orientation: int = None,
-        overlap: float = None,
-        gain: float = None,
-        data: int = None,
-        rotation: float = None,
-        start: int = None,
-        stop: int = None,
-        fps: str = None,
-        legend: bool = None,
-        drange: float = None,
-        limit: float = None,
-        opacity: float = None,
+        size: str | Default = Default(value="640x512"),
+        slide: int | Default = Default(value="0"),
+        mode: int | Default = Default(value="COMBINED"),
+        color: int | Default = Default(value="CHANNEL"),
+        scale: int | Default = Default(value="SQRT"),
+        fscale: int | Default = Default(value="F_LINEAR"),
+        saturation: float | Default = Default(value="1.0"),
+        win_func: int | Default = Default(value="WFUNC_HANNING"),
+        orientation: int | Default = Default(value="VERTICAL"),
+        overlap: float | Default = Default(value="0.0"),
+        gain: float | Default = Default(value="1.0"),
+        data: int | Default = Default(value="0"),
+        rotation: float | Default = Default(value="0.0"),
+        start: int | Default = Default(value="0"),
+        stop: int | Default = Default(value="0"),
+        fps: str | Default = Default(value="auto"),
+        legend: bool | Default = Default(value="0"),
+        drange: float | Default = Default(value="120.0"),
+        limit: float | Default = Default(value="0.0"),
+        opacity: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -6686,22 +6880,22 @@ class AudioStream(FilterableStream):
     def showspectrumpic(
         self,
         *,
-        size: str = None,
-        mode: int = None,
-        color: int = None,
-        scale: int = None,
-        fscale: int = None,
-        saturation: float = None,
-        win_func: int = None,
-        orientation: int = None,
-        gain: float = None,
-        legend: bool = None,
-        rotation: float = None,
-        start: int = None,
-        stop: int = None,
-        drange: float = None,
-        limit: float = None,
-        opacity: float = None,
+        size: str | Default = Default(value="4096x2048"),
+        mode: int | Default = Default(value="COMBINED"),
+        color: int | Default = Default(value="INTENSITY"),
+        scale: int | Default = Default(value="LOG"),
+        fscale: int | Default = Default(value="F_LINEAR"),
+        saturation: float | Default = Default(value="1.0"),
+        win_func: int | Default = Default(value="WFUNC_HANNING"),
+        orientation: int | Default = Default(value="VERTICAL"),
+        gain: float | Default = Default(value="1.0"),
+        legend: bool | Default = Default(value="1"),
+        rotation: float | Default = Default(value="0.0"),
+        start: int | Default = Default(value="0"),
+        stop: int | Default = Default(value="0"),
+        drange: float | Default = Default(value="120.0"),
+        limit: float | Default = Default(value="0.0"),
+        opacity: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -6765,21 +6959,21 @@ class AudioStream(FilterableStream):
     def showvolume(
         self,
         *,
-        rate: str = None,
-        b: int = None,
-        w: int = None,
-        h: int = None,
-        f: float = None,
-        c: str = None,
-        t: bool = None,
-        v: bool = None,
-        dm: float = None,
-        dmc: str = None,
-        o: int = None,
-        s: int = None,
-        p: float = None,
-        m: int = None,
-        ds: int = None,
+        rate: str | Default = Default(value="25"),
+        b: int | Default = Default(value="1"),
+        w: int | Default = Default(value="400"),
+        h: int | Default = Default(value="20"),
+        f: float | Default = Default(value="0.95"),
+        c: str | Default = Default(value="PEAK*255+floor((1-PEAK)*255)*256+0xff000000"),
+        t: bool | Default = Default(value="1"),
+        v: bool | Default = Default(value="1"),
+        dm: float | Default = Default(value="0.0"),
+        dmc: str | Default = Default(value="orange"),
+        o: int | Default = Default(value="0"),
+        s: int | Default = Default(value="0"),
+        p: float | Default = Default(value="0.0"),
+        m: int | Default = Default(value="0"),
+        ds: int | Default = Default(value="LINEAR"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -6840,14 +7034,14 @@ class AudioStream(FilterableStream):
     def showwaves(
         self,
         *,
-        size: str = None,
-        mode: int = None,
-        n: float = None,
-        rate: str = None,
-        split_channels: bool = None,
-        colors: str = None,
-        scale: int = None,
-        draw: int = None,
+        size: str | Default = Default(value="600x240"),
+        mode: int | Default = Default(value="MODE_POINT"),
+        n: float | Default = Default(value="0"),
+        rate: str | Default = Default(value="25"),
+        split_channels: bool | Default = Default(value="0"),
+        colors: str | Default = Default(value="red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        scale: int | Default = Default(value="0"),
+        draw: int | Default = Default(value="DRAW_SCALE"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -6894,12 +7088,12 @@ class AudioStream(FilterableStream):
     def showwavespic(
         self,
         *,
-        size: str = None,
-        split_channels: bool = None,
-        colors: str = None,
-        scale: int = None,
-        draw: int = None,
-        filter: int = None,
+        size: str | Default = Default(value="600x240"),
+        split_channels: bool | Default = Default(value="0"),
+        colors: str | Default = Default(value="red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        scale: int | Default = Default(value="0"),
+        draw: int | Default = Default(value="DRAW_SCALE"),
+        filter: int | Default = Default(value="FILTER_AVERAGE"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -6943,18 +7137,18 @@ class AudioStream(FilterableStream):
         self,
         _sidechain: "AudioStream",
         *,
-        level_in: float = None,
-        mode: int = None,
-        threshold: float = None,
-        ratio: float = None,
-        attack: float = None,
-        release: float = None,
-        makeup: float = None,
-        knee: float = None,
-        link: int = None,
-        detection: int = None,
-        level_sc: float = None,
-        mix: float = None,
+        level_in: float | Default = Default(value="1.0"),
+        mode: int | Default = Default(value="0"),
+        threshold: float | Default = Default(value="0.125"),
+        ratio: float | Default = Default(value="2.0"),
+        attack: float | Default = Default(value="20.0"),
+        release: float | Default = Default(value="250.0"),
+        makeup: float | Default = Default(value="1.0"),
+        knee: float | Default = Default(value="2.82843"),
+        link: int | Default = Default(value="0"),
+        detection: int | Default = Default(value="1"),
+        level_sc: float | Default = Default(value="1.0"),
+        mix: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7016,18 +7210,18 @@ class AudioStream(FilterableStream):
         self,
         _sidechain: "AudioStream",
         *,
-        level_in: float = None,
-        mode: int = None,
-        range: float = None,
-        threshold: float = None,
-        ratio: float = None,
-        attack: float = None,
-        release: float = None,
-        makeup: float = None,
-        knee: float = None,
-        detection: int = None,
-        link: int = None,
-        level_sc: float = None,
+        level_in: float | Default = Default(value="1.0"),
+        mode: int | Default = Default(value="0"),
+        range: float | Default = Default(value="0.06125"),
+        threshold: float | Default = Default(value="0.125"),
+        ratio: float | Default = Default(value="2.0"),
+        attack: float | Default = Default(value="20.0"),
+        release: float | Default = Default(value="250.0"),
+        makeup: float | Default = Default(value="1.0"),
+        knee: float | Default = Default(value="2.828427125"),
+        detection: int | Default = Default(value="1"),
+        link: int | Default = Default(value="0"),
+        level_sc: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7090,7 +7284,14 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def silencedetect(self, *, n: float = None, d: int = None, mono: bool = None, **kwargs: Any) -> "AudioStream":
+    def silencedetect(
+        self,
+        *,
+        n: float | Default = Default(value="0.001"),
+        d: int | Default = Default(value="2000000"),
+        mono: bool | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.107 silencedetect
@@ -7140,19 +7341,19 @@ class AudioStream(FilterableStream):
     def silenceremove(
         self,
         *,
-        start_periods: int = None,
-        start_duration: int = None,
-        start_threshold: float = None,
-        start_silence: int = None,
-        start_mode: int = None,
-        stop_periods: int = None,
-        stop_duration: int = None,
-        stop_threshold: float = None,
-        stop_silence: int = None,
-        stop_mode: int = None,
-        detection: int = None,
-        window: int = None,
-        timestamp: int = None,
+        start_periods: int | Default = Default(value="0"),
+        start_duration: int | Default = Default(value="0"),
+        start_threshold: float | Default = Default(value="0.0"),
+        start_silence: int | Default = Default(value="0"),
+        start_mode: int | Default = Default(value="T_ANY"),
+        stop_periods: int | Default = Default(value="0"),
+        stop_duration: int | Default = Default(value="0"),
+        stop_threshold: float | Default = Default(value="0.0"),
+        stop_silence: int | Default = Default(value="0"),
+        stop_mode: int | Default = Default(value="T_ALL"),
+        detection: int | Default = Default(value="D_RMS"),
+        window: int | Default = Default(value="20000"),
+        timestamp: int | Default = Default(value="TS_WRITE"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7210,19 +7411,19 @@ class AudioStream(FilterableStream):
         self,
         *,
         sofa: str,
-        gain: float = None,
-        rotation: float = None,
-        elevation: float = None,
-        radius: float = None,
-        type: int = None,
+        gain: float | Default = Default(value="0.0"),
+        rotation: float | Default = Default(value="0.0"),
+        elevation: float | Default = Default(value="0.0"),
+        radius: float | Default = Default(value="1.0"),
+        type: int | Default = Default(value="1"),
         speakers: str,
-        lfegain: float = None,
-        framesize: int = None,
-        normalize: bool = None,
-        interpolate: bool = None,
-        minphase: bool = None,
-        anglestep: float = None,
-        radstep: float = None,
+        lfegain: float | Default = Default(value="0.0"),
+        framesize: int | Default = Default(value="1024"),
+        normalize: bool | Default = Default(value="1"),
+        interpolate: bool | Default = Default(value="0"),
+        minphase: bool | Default = Default(value="0"),
+        anglestep: float | Default = Default(value="0.5"),
+        radstep: float | Default = Default(value="0.01"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7289,16 +7490,16 @@ class AudioStream(FilterableStream):
     def speechnorm(
         self,
         *,
-        peak: float = None,
-        expansion: float = None,
-        compression: float = None,
-        threshold: float = None,
-        _raise: float = None,
-        fall: float = None,
-        channels: str = None,
-        invert: bool = None,
-        link: bool = None,
-        rms: float = None,
+        peak: float | Default = Default(value="0.95"),
+        expansion: float | Default = Default(value="2.0"),
+        compression: float | Default = Default(value="2.0"),
+        threshold: float | Default = Default(value="0.0"),
+        _raise: float | Default = Default(value="0.001"),
+        fall: float | Default = Default(value="0.001"),
+        channels: str | Default = Default(value="all"),
+        invert: bool | Default = Default(value="0"),
+        link: bool | Default = Default(value="0"),
+        rms: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7353,26 +7554,26 @@ class AudioStream(FilterableStream):
     def stereotools(
         self,
         *,
-        level_in: float = None,
-        level_out: float = None,
-        balance_in: float = None,
-        balance_out: float = None,
-        softclip: bool = None,
-        mutel: bool = None,
-        muter: bool = None,
-        phasel: bool = None,
-        phaser: bool = None,
-        mode: int = None,
-        slev: float = None,
-        sbal: float = None,
-        mlev: float = None,
-        mpan: float = None,
-        base: float = None,
-        delay: float = None,
-        sclevel: float = None,
-        phase: float = None,
-        bmode_in: int = None,
-        bmode_out: int = None,
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        balance_in: float | Default = Default(value="0.0"),
+        balance_out: float | Default = Default(value="0.0"),
+        softclip: bool | Default = Default(value="0"),
+        mutel: bool | Default = Default(value="0"),
+        muter: bool | Default = Default(value="0"),
+        phasel: bool | Default = Default(value="0"),
+        phaser: bool | Default = Default(value="0"),
+        mode: int | Default = Default(value="0"),
+        slev: float | Default = Default(value="1.0"),
+        sbal: float | Default = Default(value="0.0"),
+        mlev: float | Default = Default(value="1.0"),
+        mpan: float | Default = Default(value="0.0"),
+        base: float | Default = Default(value="0.0"),
+        delay: float | Default = Default(value="0.0"),
+        sclevel: float | Default = Default(value="1.0"),
+        phase: float | Default = Default(value="0.0"),
+        bmode_in: int | Default = Default(value="0"),
+        bmode_out: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7445,10 +7646,10 @@ class AudioStream(FilterableStream):
     def stereowiden(
         self,
         *,
-        delay: float = None,
-        feedback: float = None,
-        crossfeed: float = None,
-        drymix: float = None,
+        delay: float | Default = Default(value="20.0"),
+        feedback: float | Default = Default(value="0.3"),
+        crossfeed: float | Default = Default(value="0.3"),
+        drymix: float | Default = Default(value="0.8"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7489,24 +7690,24 @@ class AudioStream(FilterableStream):
     def superequalizer(
         self,
         *,
-        _1b: float = None,
-        _2b: float = None,
-        _3b: float = None,
-        _4b: float = None,
-        _5b: float = None,
-        _6b: float = None,
-        _7b: float = None,
-        _8b: float = None,
-        _9b: float = None,
-        _10b: float = None,
-        _11b: float = None,
-        _12b: float = None,
-        _13b: float = None,
-        _14b: float = None,
-        _15b: float = None,
-        _16b: float = None,
-        _17b: float = None,
-        _18b: float = None,
+        _1b: float | Default = Default(value="1.0"),
+        _2b: float | Default = Default(value="1.0"),
+        _3b: float | Default = Default(value="1.0"),
+        _4b: float | Default = Default(value="1.0"),
+        _5b: float | Default = Default(value="1.0"),
+        _6b: float | Default = Default(value="1.0"),
+        _7b: float | Default = Default(value="1.0"),
+        _8b: float | Default = Default(value="1.0"),
+        _9b: float | Default = Default(value="1.0"),
+        _10b: float | Default = Default(value="1.0"),
+        _11b: float | Default = Default(value="1.0"),
+        _12b: float | Default = Default(value="1.0"),
+        _13b: float | Default = Default(value="1.0"),
+        _14b: float | Default = Default(value="1.0"),
+        _15b: float | Default = Default(value="1.0"),
+        _16b: float | Default = Default(value="1.0"),
+        _17b: float | Default = Default(value="1.0"),
+        _18b: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7573,56 +7774,56 @@ class AudioStream(FilterableStream):
     def surround(
         self,
         *,
-        chl_out: str = None,
-        chl_in: str = None,
-        level_in: float = None,
-        level_out: float = None,
-        lfe: bool = None,
-        lfe_low: int = None,
-        lfe_high: int = None,
-        lfe_mode: int = None,
-        smooth: float = None,
-        angle: float = None,
-        focus: float = None,
-        fc_in: float = None,
-        fc_out: float = None,
-        fl_in: float = None,
-        fl_out: float = None,
-        fr_in: float = None,
-        fr_out: float = None,
-        sl_in: float = None,
-        sl_out: float = None,
-        sr_in: float = None,
-        sr_out: float = None,
-        bl_in: float = None,
-        bl_out: float = None,
-        br_in: float = None,
-        br_out: float = None,
-        bc_in: float = None,
-        bc_out: float = None,
-        lfe_in: float = None,
-        lfe_out: float = None,
-        allx: float = None,
-        ally: float = None,
-        fcx: float = None,
-        flx: float = None,
-        frx: float = None,
-        blx: float = None,
-        brx: float = None,
-        slx: float = None,
-        srx: float = None,
-        bcx: float = None,
-        fcy: float = None,
-        fly: float = None,
-        fry: float = None,
-        bly: float = None,
-        bry: float = None,
-        sly: float = None,
-        sry: float = None,
-        bcy: float = None,
-        win_size: int = None,
-        win_func: int = None,
-        overlap: float = None,
+        chl_out: str | Default = Default(value="5.1"),
+        chl_in: str | Default = Default(value="stereo"),
+        level_in: float | Default = Default(value="1.0"),
+        level_out: float | Default = Default(value="1.0"),
+        lfe: bool | Default = Default(value="1"),
+        lfe_low: int | Default = Default(value="128"),
+        lfe_high: int | Default = Default(value="256"),
+        lfe_mode: int | Default = Default(value="0"),
+        smooth: float | Default = Default(value="0.0"),
+        angle: float | Default = Default(value="90.0"),
+        focus: float | Default = Default(value="0.0"),
+        fc_in: float | Default = Default(value="1.0"),
+        fc_out: float | Default = Default(value="1.0"),
+        fl_in: float | Default = Default(value="1.0"),
+        fl_out: float | Default = Default(value="1.0"),
+        fr_in: float | Default = Default(value="1.0"),
+        fr_out: float | Default = Default(value="1.0"),
+        sl_in: float | Default = Default(value="1.0"),
+        sl_out: float | Default = Default(value="1.0"),
+        sr_in: float | Default = Default(value="1.0"),
+        sr_out: float | Default = Default(value="1.0"),
+        bl_in: float | Default = Default(value="1.0"),
+        bl_out: float | Default = Default(value="1.0"),
+        br_in: float | Default = Default(value="1.0"),
+        br_out: float | Default = Default(value="1.0"),
+        bc_in: float | Default = Default(value="1.0"),
+        bc_out: float | Default = Default(value="1.0"),
+        lfe_in: float | Default = Default(value="1.0"),
+        lfe_out: float | Default = Default(value="1.0"),
+        allx: float | Default = Default(value="-1.0"),
+        ally: float | Default = Default(value="-1.0"),
+        fcx: float | Default = Default(value="0.5"),
+        flx: float | Default = Default(value="0.5"),
+        frx: float | Default = Default(value="0.5"),
+        blx: float | Default = Default(value="0.5"),
+        brx: float | Default = Default(value="0.5"),
+        slx: float | Default = Default(value="0.5"),
+        srx: float | Default = Default(value="0.5"),
+        bcx: float | Default = Default(value="0.5"),
+        fcy: float | Default = Default(value="0.5"),
+        fly: float | Default = Default(value="0.5"),
+        fry: float | Default = Default(value="0.5"),
+        bly: float | Default = Default(value="0.5"),
+        bry: float | Default = Default(value="0.5"),
+        sly: float | Default = Default(value="0.5"),
+        sry: float | Default = Default(value="0.5"),
+        bcy: float | Default = Default(value="0.5"),
+        win_size: int | Default = Default(value="4096"),
+        win_func: int | Default = Default(value="WFUNC_HANNING"),
+        overlap: float | Default = Default(value="0.5"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7755,17 +7956,17 @@ class AudioStream(FilterableStream):
     def tiltshelf(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        gain: float = None,
-        poles: int = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="3000.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.5"),
+        gain: float | Default = Default(value="0.0"),
+        poles: int | Default = Default(value="2"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7821,17 +8022,17 @@ class AudioStream(FilterableStream):
     def treble(
         self,
         *,
-        frequency: float = None,
-        width_type: int = None,
-        width: float = None,
-        gain: float = None,
-        poles: int = None,
-        mix: float = None,
-        channels: str = None,
-        normalize: bool = None,
-        transform: int = None,
-        precision: int = None,
-        blocksize: int = None,
+        frequency: float | Default = Default(value="3000.0"),
+        width_type: int | Default = Default(value="QFACTOR"),
+        width: float | Default = Default(value="0.5"),
+        gain: float | Default = Default(value="0.0"),
+        poles: int | Default = Default(value="2"),
+        mix: float | Default = Default(value="1.0"),
+        channels: str | Default = Default(value="all"),
+        normalize: bool | Default = Default(value="0"),
+        transform: int | Default = Default(value="DI"),
+        precision: int | Default = Default(value="-1"),
+        blocksize: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -7883,7 +8084,9 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def tremolo(self, *, f: float = None, d: float = None, **kwargs: Any) -> "AudioStream":
+    def tremolo(
+        self, *, f: float | Default = Default(value="5.0"), d: float | Default = Default(value="0.5"), **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.117 tremolo
@@ -7913,7 +8116,9 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def vibrato(self, *, f: float = None, d: float = None, **kwargs: Any) -> "AudioStream":
+    def vibrato(
+        self, *, f: float | Default = Default(value="5.0"), d: float | Default = Default(value="0.5"), **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.118 vibrato
@@ -7943,7 +8148,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def virtualbass(self, *, cutoff: float = None, strength: float = None, **kwargs: Any) -> "AudioStream":
+    def virtualbass(
+        self,
+        *,
+        cutoff: float | Default = Default(value="250.0"),
+        strength: float | Default = Default(value="3.0"),
+        **kwargs: Any
+    ) -> "AudioStream":
         """
 
         8.119 virtualbass
@@ -7980,12 +8191,12 @@ class AudioStream(FilterableStream):
     def volume(
         self,
         *,
-        volume: str = None,
-        precision: int = None,
-        eval: int = None,
-        replaygain: int = None,
-        replaygain_preamp: float = None,
-        replaygain_noclip: bool = None,
+        volume: str | Default = Default(value="1.0"),
+        precision: int | Default = Default(value="PRECISION_FLOAT"),
+        eval: int | Default = Default(value="EVAL_MODE_ONCE"),
+        replaygain: int | Default = Default(value="REPLAYGAIN_DROP"),
+        replaygain_preamp: float | Default = Default(value="0.0"),
+        replaygain_noclip: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -8070,12 +8281,12 @@ class VideoStream(FilterableStream):
     def addroi(
         self,
         *,
-        x: str = None,
-        y: str = None,
-        w: str = None,
-        h: str = None,
-        qoffset: float = None,
-        clear: bool = None,
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        w: str | Default = Default(value="0"),
+        h: str | Default = Default(value="0"),
+        qoffset: float | Default = Default(value="-0.1"),
+        clear: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -8176,13 +8387,13 @@ class VideoStream(FilterableStream):
     def amplify(
         self,
         *,
-        radius: int = None,
-        factor: float = None,
-        threshold: float = None,
-        tolerance: float = None,
-        low: float = None,
-        high: float = None,
-        planes: str = None,
+        radius: int | Default = Default(value="2"),
+        factor: float | Default = Default(value="2.0"),
+        threshold: float | Default = Default(value="10.0"),
+        tolerance: float | Default = Default(value="0.0"),
+        low: float | Default = Default(value="65535.0"),
+        high: float | Default = Default(value="65535.0"),
+        planes: str | Default = Default(value="7"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -8228,18 +8439,18 @@ class VideoStream(FilterableStream):
     def atadenoise(
         self,
         *,
-        _0a: float = None,
-        _0b: float = None,
-        _1a: float = None,
-        _1b: float = None,
-        _2a: float = None,
-        _2b: float = None,
-        s: int = None,
-        p: str = None,
-        a: int = None,
-        _0s: float = None,
-        _1s: float = None,
-        _2s: float = None,
+        _0a: float | Default = Default(value="0.02"),
+        _0b: float | Default = Default(value="0.04"),
+        _1a: float | Default = Default(value="0.02"),
+        _1b: float | Default = Default(value="0.04"),
+        _2a: float | Default = Default(value="0.02"),
+        _2b: float | Default = Default(value="0.04"),
+        s: int | Default = Default(value="9"),
+        p: str | Default = Default(value="7"),
+        a: int | Default = Default(value="PARALLEL"),
+        _0s: float | Default = Default(value="32767.0"),
+        _1s: float | Default = Default(value="32767.0"),
+        _2s: float | Default = Default(value="32767.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -8291,7 +8502,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def avgblur(self, *, sizeX: int = None, planes: int = None, sizeY: int = None, **kwargs: Any) -> "VideoStream":
+    def avgblur(
+        self,
+        *,
+        sizeX: int | Default = Default(value="1"),
+        planes: int | Default = Default(value="0xF"),
+        sizeY: int | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.7 avgblur
@@ -8324,7 +8542,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def avgblur_vulkan(
-        self, *, sizeX: int = None, sizeY: int = None, planes: int = None, **kwargs: Any
+        self,
+        *,
+        sizeX: int | Default = Default(value="3"),
+        sizeY: int | Default = Default(value="3"),
+        planes: int | Default = Default(value="0xF"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -8358,7 +8581,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def backgroundkey(
-        self, *, threshold: float = None, similarity: float = None, blend: float = None, **kwargs: Any
+        self,
+        *,
+        threshold: float | Default = Default(value="0.08"),
+        similarity: float | Default = Default(value="0.1"),
+        blend: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -8391,7 +8619,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def bbox(self, *, min_val: int = None, **kwargs: Any) -> "VideoStream":
+    def bbox(self, *, min_val: int | Default = Default(value="16"), **kwargs: Any) -> "VideoStream":
         """
 
         11.9 bbox
@@ -8425,7 +8653,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def bench(self, *, action: int = None, **kwargs: Any) -> "VideoStream":
+    def bench(self, *, action: int | Default = Default(value="ACTION_START"), **kwargs: Any) -> "VideoStream":
         """
 
         18.8 bench, abench
@@ -8454,7 +8682,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def bilateral(
-        self, *, sigmaS: float = None, sigmaR: float = None, planes: int = None, **kwargs: Any
+        self,
+        *,
+        sigmaS: float | Default = Default(value="0.1"),
+        sigmaR: float | Default = Default(value="0.1"),
+        planes: int | Default = Default(value="1"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -8488,7 +8721,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def bilateral_cuda(
-        self, *, sigmaS: float = None, sigmaR: float = None, window_size: int = None, **kwargs: Any
+        self,
+        *,
+        sigmaS: float | Default = Default(value="0.1"),
+        sigmaR: float | Default = Default(value="0.1"),
+        window_size: int | Default = Default(value="1"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -8523,7 +8761,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def bitplanenoise(self, *, bitplane: int = None, filter: bool = None, **kwargs: Any) -> "VideoStream":
+    def bitplanenoise(
+        self,
+        *,
+        bitplane: int | Default = Default(value="1"),
+        filter: bool | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.12 bitplanenoise
@@ -8554,7 +8798,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def blackdetect(
-        self, *, d: float = None, picture_black_ratio_th: float = None, pixel_black_th: float = None, **kwargs: Any
+        self,
+        *,
+        d: float | Default = Default(value="2.0"),
+        picture_black_ratio_th: float | Default = Default(value="0.98"),
+        pixel_black_th: float | Default = Default(value="0.1"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -8608,7 +8857,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def blackframe(self, *, amount: int = None, threshold: int = None, **kwargs: Any) -> "VideoStream":
+    def blackframe(
+        self,
+        *,
+        amount: int | Default = Default(value="98"),
+        threshold: int | Default = Default(value="32"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.14 blackframe
@@ -8652,21 +8907,21 @@ class VideoStream(FilterableStream):
         self,
         _bottom: "VideoStream",
         *,
-        c0_mode: int = None,
-        c1_mode: int = None,
-        c2_mode: int = None,
-        c3_mode: int = None,
-        all_mode: int = None,
+        c0_mode: int | Default = Default(value="0"),
+        c1_mode: int | Default = Default(value="0"),
+        c2_mode: int | Default = Default(value="0"),
+        c3_mode: int | Default = Default(value="0"),
+        all_mode: int | Default = Default(value="-1"),
         c0_expr: str,
         c1_expr: str,
         c2_expr: str,
         c3_expr: str,
         all_expr: str,
-        c0_opacity: float = None,
-        c1_opacity: float = None,
-        c2_opacity: float = None,
-        c3_opacity: float = None,
-        all_opacity: float = None,
+        c0_opacity: float | Default = Default(value="1.0"),
+        c1_opacity: float | Default = Default(value="1.0"),
+        c2_opacity: float | Default = Default(value="1.0"),
+        c3_opacity: float | Default = Default(value="1.0"),
+        all_opacity: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -8740,16 +8995,16 @@ class VideoStream(FilterableStream):
         self,
         _bottom: "VideoStream",
         *,
-        c0_mode: int = None,
-        c1_mode: int = None,
-        c2_mode: int = None,
-        c3_mode: int = None,
-        all_mode: int = None,
-        c0_opacity: float = None,
-        c1_opacity: float = None,
-        c2_opacity: float = None,
-        c3_opacity: float = None,
-        all_opacity: float = None,
+        c0_mode: int | Default = Default(value="0"),
+        c1_mode: int | Default = Default(value="0"),
+        c2_mode: int | Default = Default(value="0"),
+        c3_mode: int | Default = Default(value="0"),
+        all_mode: int | Default = Default(value="-1"),
+        c0_opacity: float | Default = Default(value="1.0"),
+        c1_opacity: float | Default = Default(value="1.0"),
+        c2_opacity: float | Default = Default(value="1.0"),
+        c3_opacity: float | Default = Default(value="1.0"),
+        all_opacity: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -8803,7 +9058,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def blockdetect(
-        self, *, period_min: int = None, period_max: int = None, planes: int = None, **kwargs: Any
+        self,
+        *,
+        period_min: int | Default = Default(value="3"),
+        period_max: int | Default = Default(value="24"),
+        planes: int | Default = Default(value="1"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -8841,13 +9101,13 @@ class VideoStream(FilterableStream):
     def blurdetect(
         self,
         *,
-        high: float = None,
-        low: float = None,
-        radius: int = None,
-        block_pct: int = None,
-        block_width: int = None,
-        block_height: int = None,
-        planes: int = None,
+        high: float | Default = Default(value="30/255."),
+        low: float | Default = Default(value="15/255."),
+        radius: int | Default = Default(value="50"),
+        block_pct: int | Default = Default(value="80"),
+        block_width: int | Default = Default(value="-1"),
+        block_height: int | Default = Default(value="-1"),
+        planes: int | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -8895,17 +9155,17 @@ class VideoStream(FilterableStream):
     def bm3d(
         self,
         *streams: "VideoStream",
-        sigma: float = None,
-        block: int = None,
-        bstep: int = None,
-        group: int = None,
-        range: int = None,
-        mstep: int = None,
-        thmse: float = None,
-        hdthr: float = None,
-        estim: int = None,
-        ref: bool = None,
-        planes: int = None,
+        sigma: float | Default = Default(value="1.0"),
+        block: int | Default = Default(value="16"),
+        bstep: int | Default = Default(value="4"),
+        group: int | Default = Default(value="1"),
+        range: int | Default = Default(value="9"),
+        mstep: int | Default = Default(value="1"),
+        thmse: float | Default = Default(value="0.0"),
+        hdthr: float | Default = Default(value="2.7"),
+        estim: int | Default = Default(value="BASIC"),
+        ref: bool | Default = Default(value="0"),
+        planes: int | Default = Default(value="7"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -8959,12 +9219,12 @@ class VideoStream(FilterableStream):
     def boxblur(
         self,
         *,
-        luma_radius: str = None,
-        luma_power: int = None,
+        luma_radius: str | Default = Default(value="2"),
+        luma_power: int | Default = Default(value="2"),
         chroma_radius: str,
-        chroma_power: int = None,
+        chroma_power: int | Default = Default(value="-1"),
         alpha_radius: str,
-        alpha_power: int = None,
+        alpha_power: int | Default = Default(value="-1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9007,7 +9267,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def bwdif(self, *, mode: int = None, parity: int = None, deint: int = None, **kwargs: Any) -> "VideoStream":
+    def bwdif(
+        self,
+        *,
+        mode: int | Default = Default(value="YADIF_MODE_SEND_FIELD"),
+        parity: int | Default = Default(value="YADIF_PARITY_AUTO"),
+        deint: int | Default = Default(value="YADIF_DEINT_ALL"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.20 bwdif
@@ -9042,7 +9309,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def cas(self, *, strength: float = None, planes: str = None, **kwargs: Any) -> "VideoStream":
+    def cas(
+        self,
+        *,
+        strength: float | Default = Default(value="0.0"),
+        planes: str | Default = Default(value="7"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.23 cas
@@ -9100,7 +9373,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def chromaber_vulkan(self, *, dist_x: float = None, dist_y: float = None, **kwargs: Any) -> "VideoStream":
+    def chromaber_vulkan(
+        self,
+        *,
+        dist_x: float | Default = Default(value="0.0f"),
+        dist_y: float | Default = Default(value="0.0f"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         14.4 chromaber_vulkan
@@ -9130,7 +9409,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def chromahold(
-        self, *, color: str = None, similarity: float = None, blend: float = None, yuv: bool = None, **kwargs: Any
+        self,
+        *,
+        color: str | Default = Default(value="black"),
+        similarity: float | Default = Default(value="0.01"),
+        blend: float | Default = Default(value="0.0"),
+        yuv: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9166,7 +9451,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def chromakey(
-        self, *, color: str = None, similarity: float = None, blend: float = None, yuv: bool = None, **kwargs: Any
+        self,
+        *,
+        color: str | Default = Default(value="black"),
+        similarity: float | Default = Default(value="0.01"),
+        blend: float | Default = Default(value="0.0"),
+        yuv: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9202,7 +9493,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def chromakey_cuda(
-        self, *, color: str = None, similarity: float = None, blend: float = None, yuv: bool = None, **kwargs: Any
+        self,
+        *,
+        color: str | Default = Default(value="black"),
+        similarity: float | Default = Default(value="0.01"),
+        blend: float | Default = Default(value="0.0"),
+        yuv: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9241,15 +9538,15 @@ class VideoStream(FilterableStream):
     def chromanr(
         self,
         *,
-        thres: float = None,
-        sizew: int = None,
-        sizeh: int = None,
-        stepw: int = None,
-        steph: int = None,
-        threy: float = None,
-        threu: float = None,
-        threv: float = None,
-        distance: int = None,
+        thres: float | Default = Default(value="30.0"),
+        sizew: int | Default = Default(value="5"),
+        sizeh: int | Default = Default(value="5"),
+        stepw: int | Default = Default(value="1"),
+        steph: int | Default = Default(value="1"),
+        threy: float | Default = Default(value="200.0"),
+        threu: float | Default = Default(value="200.0"),
+        threv: float | Default = Default(value="200.0"),
+        distance: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9296,7 +9593,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def chromashift(
-        self, *, cbh: int = None, cbv: int = None, crh: int = None, crv: int = None, edge: int = None, **kwargs: Any
+        self,
+        *,
+        cbh: int | Default = Default(value="0"),
+        cbv: int | Default = Default(value="0"),
+        crh: int | Default = Default(value="0"),
+        crv: int | Default = Default(value="0"),
+        edge: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9336,16 +9640,16 @@ class VideoStream(FilterableStream):
     def ciescope(
         self,
         *,
-        system: int = None,
-        cie: int = None,
-        gamuts: str = None,
-        size: int = None,
-        intensity: float = None,
-        contrast: float = None,
-        corrgamma: bool = None,
-        showwhite: bool = None,
-        gamma: float = None,
-        fill: bool = None,
+        system: int | Default = Default(value="Rec709system"),
+        cie: int | Default = Default(value="XYY"),
+        gamuts: str | Default = Default(value="0"),
+        size: int | Default = Default(value="512"),
+        intensity: float | Default = Default(value="0.001"),
+        contrast: float | Default = Default(value="0.75"),
+        corrgamma: bool | Default = Default(value="1"),
+        showwhite: bool | Default = Default(value="0"),
+        gamma: float | Default = Default(value="2.6"),
+        fill: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9396,11 +9700,11 @@ class VideoStream(FilterableStream):
     def codecview(
         self,
         *,
-        mv: str = None,
-        qp: bool = None,
-        mv_type: str = None,
-        frame_type: str = None,
-        block: bool = None,
+        mv: str | Default = Default(value="0"),
+        qp: bool | Default = Default(value="0"),
+        mv_type: str | Default = Default(value="0"),
+        frame_type: str | Default = Default(value="0"),
+        block: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9445,16 +9749,16 @@ class VideoStream(FilterableStream):
     def colorbalance(
         self,
         *,
-        rs: float = None,
-        gs: float = None,
-        bs: float = None,
-        rm: float = None,
-        gm: float = None,
-        bm: float = None,
-        rh: float = None,
-        gh: float = None,
-        bh: float = None,
-        pl: bool = None,
+        rs: float | Default = Default(value="0.0"),
+        gs: float | Default = Default(value="0.0"),
+        bs: float | Default = Default(value="0.0"),
+        rm: float | Default = Default(value="0.0"),
+        gm: float | Default = Default(value="0.0"),
+        bm: float | Default = Default(value="0.0"),
+        rh: float | Default = Default(value="0.0"),
+        gh: float | Default = Default(value="0.0"),
+        bh: float | Default = Default(value="0.0"),
+        pl: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9511,24 +9815,24 @@ class VideoStream(FilterableStream):
     def colorchannelmixer(
         self,
         *,
-        rr: float = None,
-        rg: float = None,
-        rb: float = None,
-        ra: float = None,
-        gr: float = None,
-        gg: float = None,
-        gb: float = None,
-        ga: float = None,
-        br: float = None,
-        bg: float = None,
-        bb: float = None,
-        ba: float = None,
-        ar: float = None,
-        ag: float = None,
-        ab: float = None,
-        aa: float = None,
-        pc: int = None,
-        pa: float = None,
+        rr: float | Default = Default(value="1.0"),
+        rg: float | Default = Default(value="0.0"),
+        rb: float | Default = Default(value="0.0"),
+        ra: float | Default = Default(value="0.0"),
+        gr: float | Default = Default(value="0.0"),
+        gg: float | Default = Default(value="1.0"),
+        gb: float | Default = Default(value="0.0"),
+        ga: float | Default = Default(value="0.0"),
+        br: float | Default = Default(value="0.0"),
+        bg: float | Default = Default(value="0.0"),
+        bb: float | Default = Default(value="1.0"),
+        ba: float | Default = Default(value="0.0"),
+        ar: float | Default = Default(value="0.0"),
+        ag: float | Default = Default(value="0.0"),
+        ab: float | Default = Default(value="0.0"),
+        aa: float | Default = Default(value="1.0"),
+        pc: int | Default = Default(value="0"),
+        pa: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9601,13 +9905,13 @@ class VideoStream(FilterableStream):
     def colorcontrast(
         self,
         *,
-        rc: float = None,
-        gm: float = None,
-        by: float = None,
-        rcw: float = None,
-        gmw: float = None,
-        byw: float = None,
-        pl: float = None,
+        rc: float | Default = Default(value="0.0"),
+        gm: float | Default = Default(value="0.0"),
+        by: float | Default = Default(value="0.0"),
+        rcw: float | Default = Default(value="0.0"),
+        gmw: float | Default = Default(value="0.0"),
+        byw: float | Default = Default(value="0.0"),
+        pl: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9652,12 +9956,12 @@ class VideoStream(FilterableStream):
     def colorcorrect(
         self,
         *,
-        rl: float = None,
-        bl: float = None,
-        rh: float = None,
-        bh: float = None,
-        saturation: float = None,
-        analyze: int = None,
+        rl: float | Default = Default(value="0.0"),
+        bl: float | Default = Default(value="0.0"),
+        rh: float | Default = Default(value="0.0"),
+        bh: float | Default = Default(value="0.0"),
+        saturation: float | Default = Default(value="1.0"),
+        analyze: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9699,7 +10003,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def colorhold(
-        self, *, color: str = None, similarity: float = None, blend: float = None, **kwargs: Any
+        self,
+        *,
+        color: str | Default = Default(value="black"),
+        similarity: float | Default = Default(value="0.01"),
+        blend: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9733,7 +10042,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def colorize(
-        self, *, hue: float = None, saturation: float = None, lightness: float = None, mix: float = None, **kwargs: Any
+        self,
+        *,
+        hue: float | Default = Default(value="0.0"),
+        saturation: float | Default = Default(value="0.5"),
+        lightness: float | Default = Default(value="0.5"),
+        mix: float | Default = Default(value="1.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9769,7 +10084,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def colorkey(
-        self, *, color: str = None, similarity: float = None, blend: float = None, **kwargs: Any
+        self,
+        *,
+        color: str | Default = Default(value="black"),
+        similarity: float | Default = Default(value="0.01"),
+        blend: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9806,7 +10126,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def colorkey_opencl(
-        self, *, color: str = None, similarity: float = None, blend: float = None, **kwargs: Any
+        self,
+        *,
+        color: str | Default = Default(value="black"),
+        similarity: float | Default = Default(value="0.01"),
+        blend: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9842,23 +10167,23 @@ class VideoStream(FilterableStream):
     def colorlevels(
         self,
         *,
-        rimin: float = None,
-        gimin: float = None,
-        bimin: float = None,
-        aimin: float = None,
-        rimax: float = None,
-        gimax: float = None,
-        bimax: float = None,
-        aimax: float = None,
-        romin: float = None,
-        gomin: float = None,
-        bomin: float = None,
-        aomin: float = None,
-        romax: float = None,
-        gomax: float = None,
-        bomax: float = None,
-        aomax: float = None,
-        preserve: int = None,
+        rimin: float | Default = Default(value="0.0"),
+        gimin: float | Default = Default(value="0.0"),
+        bimin: float | Default = Default(value="0.0"),
+        aimin: float | Default = Default(value="0.0"),
+        rimax: float | Default = Default(value="1.0"),
+        gimax: float | Default = Default(value="1.0"),
+        bimax: float | Default = Default(value="1.0"),
+        aimax: float | Default = Default(value="1.0"),
+        romin: float | Default = Default(value="0.0"),
+        gomin: float | Default = Default(value="0.0"),
+        bomin: float | Default = Default(value="0.0"),
+        aomin: float | Default = Default(value="0.0"),
+        romax: float | Default = Default(value="1.0"),
+        gomax: float | Default = Default(value="1.0"),
+        bomax: float | Default = Default(value="1.0"),
+        aomax: float | Default = Default(value="1.0"),
+        preserve: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9925,10 +10250,10 @@ class VideoStream(FilterableStream):
         _source: "VideoStream",
         _target: "VideoStream",
         *,
-        patch_size: str = None,
-        nb_patches: int = None,
-        type: int = None,
-        kernel: int = None,
+        patch_size: str | Default = Default(value="64x64"),
+        nb_patches: int | Default = Default(value="0"),
+        type: int | Default = Default(value="1"),
+        kernel: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -9971,7 +10296,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def colormatrix(self, *, src: int = None, dst: int = None, **kwargs: Any) -> "VideoStream":
+    def colormatrix(
+        self,
+        *,
+        src: int | Default = Default(value="COLOR_MODE_NONE"),
+        dst: int | Default = Default(value="COLOR_MODE_NONE"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.40 colormatrix
@@ -10009,20 +10340,20 @@ class VideoStream(FilterableStream):
     def colorspace(
         self,
         *,
-        all: int = None,
-        space: int = None,
-        range: int = None,
-        primaries: int = None,
-        trc: int = None,
-        format: int = None,
-        fast: bool = None,
-        dither: int = None,
-        wpadapt: int = None,
-        iall: int = None,
-        ispace: int = None,
-        irange: int = None,
-        iprimaries: int = None,
-        itrc: int = None,
+        all: int | Default = Default(value="CS_UNSPECIFIED"),
+        space: int | Default = Default(value="AVCOL_SPC_UNSPECIFIED"),
+        range: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"),
+        primaries: int | Default = Default(value="AVCOL_PRI_UNSPECIFIED"),
+        trc: int | Default = Default(value="AVCOL_TRC_UNSPECIFIED"),
+        format: int | Default = Default(value="AV_PIX_FMT_NONE"),
+        fast: bool | Default = Default(value="0"),
+        dither: int | Default = Default(value="DITHER_NONE"),
+        wpadapt: int | Default = Default(value="WP_ADAPT_BRADFORD"),
+        iall: int | Default = Default(value="CS_UNSPECIFIED"),
+        ispace: int | Default = Default(value="AVCOL_SPC_UNSPECIFIED"),
+        irange: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"),
+        iprimaries: int | Default = Default(value="AVCOL_PRI_UNSPECIFIED"),
+        itrc: int | Default = Default(value="AVCOL_TRC_UNSPECIFIED"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10079,7 +10410,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def colorspace_cuda(self, *, range: int = None, **kwargs: Any) -> "VideoStream":
+    def colorspace_cuda(
+        self, *, range: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.42 colorspace_cuda
@@ -10112,7 +10445,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def colortemperature(
-        self, *, temperature: float = None, mix: float = None, pl: float = None, **kwargs: Any
+        self,
+        *,
+        temperature: float | Default = Default(value="6500.0"),
+        mix: float | Default = Default(value="1.0"),
+        pl: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10148,22 +10486,22 @@ class VideoStream(FilterableStream):
     def convolution(
         self,
         *,
-        _0m: str = None,
-        _1m: str = None,
-        _2m: str = None,
-        _3m: str = None,
-        _0rdiv: float = None,
-        _1rdiv: float = None,
-        _2rdiv: float = None,
-        _3rdiv: float = None,
-        _0bias: float = None,
-        _1bias: float = None,
-        _2bias: float = None,
-        _3bias: float = None,
-        _0mode: int = None,
-        _1mode: int = None,
-        _2mode: int = None,
-        _3mode: int = None,
+        _0m: str | Default = Default(value="0 0 0 0 1 0 0 0 0"),
+        _1m: str | Default = Default(value="0 0 0 0 1 0 0 0 0"),
+        _2m: str | Default = Default(value="0 0 0 0 1 0 0 0 0"),
+        _3m: str | Default = Default(value="0 0 0 0 1 0 0 0 0"),
+        _0rdiv: float | Default = Default(value="0.0"),
+        _1rdiv: float | Default = Default(value="0.0"),
+        _2rdiv: float | Default = Default(value="0.0"),
+        _3rdiv: float | Default = Default(value="0.0"),
+        _0bias: float | Default = Default(value="0.0"),
+        _1bias: float | Default = Default(value="0.0"),
+        _2bias: float | Default = Default(value="0.0"),
+        _3bias: float | Default = Default(value="0.0"),
+        _0mode: int | Default = Default(value="MATRIX_SQUARE"),
+        _1mode: int | Default = Default(value="MATRIX_SQUARE"),
+        _2mode: int | Default = Default(value="MATRIX_SQUARE"),
+        _3mode: int | Default = Default(value="MATRIX_SQUARE"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10224,7 +10562,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def convolve(
-        self, _impulse: "VideoStream", *, planes: int = None, impulse: int = None, noise: float = None, **kwargs: Any
+        self,
+        _impulse: "VideoStream",
+        *,
+        planes: int | Default = Default(value="7"),
+        impulse: int | Default = Default(value="1"),
+        noise: float | Default = Default(value="1e-07"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10327,7 +10671,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def cover_rect(self, *, cover: str, mode: int = None, **kwargs: Any) -> "VideoStream":
+    def cover_rect(
+        self, *, cover: str, mode: int | Default = Default(value="MODE_BLUR"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.49 cover_rect
@@ -10360,12 +10706,12 @@ class VideoStream(FilterableStream):
     def crop(
         self,
         *,
-        out_w: str = None,
-        out_h: str = None,
-        x: str = None,
-        y: str = None,
-        keep_aspect: bool = None,
-        exact: bool = None,
+        out_w: str | Default = Default(value="iw"),
+        out_h: str | Default = Default(value="ih"),
+        x: str | Default = Default(value="(in_w-out_w)/2"),
+        y: str | Default = Default(value="(in_h-out_h)/2"),
+        keep_aspect: bool | Default = Default(value="0"),
+        exact: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10426,15 +10772,15 @@ class VideoStream(FilterableStream):
     def cropdetect(
         self,
         *,
-        limit: float = None,
-        round: int = None,
-        reset: int = None,
-        skip: int = None,
-        max_outliers: int = None,
-        mode: int = None,
-        high: float = None,
-        low: float = None,
-        mv_threshold: int = None,
+        limit: float | Default = Default(value="24.0/255"),
+        round: int | Default = Default(value="16"),
+        reset: int | Default = Default(value="0"),
+        skip: int | Default = Default(value="2"),
+        max_outliers: int | Default = Default(value="0"),
+        mode: int | Default = Default(value="MODE_BLACK"),
+        high: float | Default = Default(value="25/255."),
+        low: float | Default = Default(value="15/255."),
+        mv_threshold: int | Default = Default(value="8"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10484,7 +10830,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def cue(self, *, cue: int = None, preroll: int = None, buffer: int = None, **kwargs: Any) -> "VideoStream":
+    def cue(
+        self,
+        *,
+        cue: int | Default = Default(value="0"),
+        preroll: int | Default = Default(value="0"),
+        buffer: int | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.52 cue
@@ -10529,7 +10882,7 @@ class VideoStream(FilterableStream):
     def curves(
         self,
         *,
-        preset: int = None,
+        preset: int | Default = Default(value="PRESET_NONE"),
         master: str,
         red: str,
         green: str,
@@ -10537,7 +10890,7 @@ class VideoStream(FilterableStream):
         all: str,
         psfile: str,
         plot: str,
-        interp: int = None,
+        interp: int | Default = Default(value="INTERP_NATURAL"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10611,14 +10964,14 @@ class VideoStream(FilterableStream):
     def datascope(
         self,
         *,
-        size: str = None,
-        x: int = None,
-        y: int = None,
-        mode: int = None,
-        axis: bool = None,
-        opacity: float = None,
-        format: int = None,
-        components: int = None,
+        size: str | Default = Default(value="hd720"),
+        x: int | Default = Default(value="0"),
+        y: int | Default = Default(value="0"),
+        mode: int | Default = Default(value="0"),
+        axis: bool | Default = Default(value="0"),
+        opacity: float | Default = Default(value="0.75"),
+        format: int | Default = Default(value="0"),
+        components: int | Default = Default(value="15"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10664,7 +11017,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def dblur(self, *, angle: float = None, radius: float = None, planes: int = None, **kwargs: Any) -> "VideoStream":
+    def dblur(
+        self,
+        *,
+        angle: float | Default = Default(value="45.0"),
+        radius: float | Default = Default(value="5.0"),
+        planes: int | Default = Default(value="0xF"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.55 dblur
@@ -10697,7 +11057,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def dctdnoiz(
-        self, *, sigma: float = None, overlap: int = None, expr: str, n: int = None, **kwargs: Any
+        self,
+        *,
+        sigma: float | Default = Default(value="0.0"),
+        overlap: int | Default = Default(value="-1"),
+        expr: str,
+        n: int | Default = Default(value="3"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10737,14 +11103,14 @@ class VideoStream(FilterableStream):
     def deband(
         self,
         *,
-        _1thr: float = None,
-        _2thr: float = None,
-        _3thr: float = None,
-        _4thr: float = None,
-        range: int = None,
-        direction: float = None,
-        blur: bool = None,
-        coupling: bool = None,
+        _1thr: float | Default = Default(value="0.02"),
+        _2thr: float | Default = Default(value="0.02"),
+        _3thr: float | Default = Default(value="0.02"),
+        _4thr: float | Default = Default(value="0.02"),
+        range: int | Default = Default(value="16"),
+        direction: float | Default = Default(value="2*3.14159265358979323846264338327950288"),
+        blur: bool | Default = Default(value="1"),
+        coupling: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10792,13 +11158,13 @@ class VideoStream(FilterableStream):
     def deblock(
         self,
         *,
-        filter: int = None,
-        block: int = None,
-        alpha: float = None,
-        beta: float = None,
-        gamma: float = None,
-        delta: float = None,
-        planes: int = None,
+        filter: int | Default = Default(value="STRONG"),
+        block: int | Default = Default(value="8"),
+        alpha: float | Default = Default(value="0.098"),
+        beta: float | Default = Default(value="0.05"),
+        gamma: float | Default = Default(value="0.05"),
+        delta: float | Default = Default(value="0.05"),
+        planes: int | Default = Default(value="15"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10843,14 +11209,14 @@ class VideoStream(FilterableStream):
     def decimate(
         self,
         *streams: "VideoStream",
-        cycle: int = None,
-        dupthresh: float = None,
-        scthresh: float = None,
-        blockx: int = None,
-        blocky: int = None,
-        ppsrc: bool = None,
-        chroma: bool = None,
-        mixed: bool = None,
+        cycle: int | Default = Default(value="5"),
+        dupthresh: float | Default = Default(value="1.1"),
+        scthresh: float | Default = Default(value="15.0"),
+        blockx: int | Default = Default(value="32"),
+        blocky: int | Default = Default(value="32"),
+        ppsrc: bool | Default = Default(value="0"),
+        chroma: bool | Default = Default(value="1"),
+        mixed: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -10896,7 +11262,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def deconvolve(
-        self, _impulse: "VideoStream", *, planes: int = None, impulse: int = None, noise: float = None, **kwargs: Any
+        self,
+        _impulse: "VideoStream",
+        *,
+        planes: int | Default = Default(value="7"),
+        impulse: int | Default = Default(value="1"),
+        noise: float | Default = Default(value="1e-07"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10935,7 +11307,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def dedot(
-        self, *, m: str = None, lt: float = None, tl: float = None, tc: float = None, ct: float = None, **kwargs: Any
+        self,
+        *,
+        m: str | Default = Default(value="3"),
+        lt: float | Default = Default(value="0.079"),
+        tl: float | Default = Default(value="0.079"),
+        tc: float | Default = Default(value="0.058"),
+        ct: float | Default = Default(value="0.019"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10975,10 +11354,10 @@ class VideoStream(FilterableStream):
     def deflate(
         self,
         *,
-        threshold0: int = None,
-        threshold1: int = None,
-        threshold2: int = None,
-        threshold3: int = None,
+        threshold0: int | Default = Default(value="65535"),
+        threshold1: int | Default = Default(value="65535"),
+        threshold2: int | Default = Default(value="65535"),
+        threshold3: int | Default = Default(value="65535"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11017,7 +11396,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def deflicker(self, *, size: int = None, mode: int = None, bypass: bool = None, **kwargs: Any) -> "VideoStream":
+    def deflicker(
+        self,
+        *,
+        size: int | Default = Default(value="5"),
+        mode: int | Default = Default(value="0"),
+        bypass: bool | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.63 deflicker
@@ -11049,7 +11435,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def dejudder(self, *, cycle: int = None, **kwargs: Any) -> "VideoStream":
+    def dejudder(self, *, cycle: int | Default = Default(value="4"), **kwargs: Any) -> "VideoStream":
         """
 
         11.64 dejudder
@@ -11084,7 +11470,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def delogo(
-        self, *, x: str = None, y: str = None, w: str = None, h: str = None, show: bool = None, **kwargs: Any
+        self,
+        *,
+        x: str | Default = Default(value="-1"),
+        y: str | Default = Default(value="-1"),
+        w: str | Default = Default(value="-1"),
+        h: str | Default = Default(value="-1"),
+        show: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -11126,11 +11519,11 @@ class VideoStream(FilterableStream):
     def derain(
         self,
         *,
-        filter_type: int = None,
-        dnn_backend: int = None,
+        filter_type: int | Default = Default(value="0"),
+        dnn_backend: int | Default = Default(value="1"),
         model: str,
-        input: str = None,
-        output: str = None,
+        input: str | Default = Default(value="x"),
+        output: str | Default = Default(value="y"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11182,18 +11575,18 @@ class VideoStream(FilterableStream):
     def deshake(
         self,
         *,
-        x: int = None,
-        y: int = None,
-        w: int = None,
-        h: int = None,
-        rx: int = None,
-        ry: int = None,
-        edge: int = None,
-        blocksize: int = None,
-        contrast: int = None,
-        search: int = None,
+        x: int | Default = Default(value="-1"),
+        y: int | Default = Default(value="-1"),
+        w: int | Default = Default(value="-1"),
+        h: int | Default = Default(value="-1"),
+        rx: int | Default = Default(value="16"),
+        ry: int | Default = Default(value="16"),
+        edge: int | Default = Default(value="FILL_MIRROR"),
+        blocksize: int | Default = Default(value="8"),
+        contrast: int | Default = Default(value="125"),
+        search: int | Default = Default(value="EXHAUSTIVE"),
         filename: str,
-        opencl: bool = None,
+        opencl: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11250,12 +11643,12 @@ class VideoStream(FilterableStream):
     def deshake_opencl(
         self,
         *,
-        tripod: bool = None,
-        debug: bool = None,
-        adaptive_crop: bool = None,
-        refine_features: bool = None,
-        smooth_strength: float = None,
-        smooth_window_multiplier: float = None,
+        tripod: bool | Default = Default(value="0"),
+        debug: bool | Default = Default(value="0"),
+        adaptive_crop: bool | Default = Default(value="1"),
+        refine_features: bool | Default = Default(value="1"),
+        smooth_strength: float | Default = Default(value="0.0f"),
+        smooth_window_multiplier: float | Default = Default(value="2.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11298,14 +11691,14 @@ class VideoStream(FilterableStream):
     def despill(
         self,
         *,
-        type: int = None,
-        mix: float = None,
-        expand: float = None,
-        red: float = None,
-        green: float = None,
-        blue: float = None,
-        brightness: float = None,
-        alpha: bool = None,
+        type: int | Default = Default(value="0"),
+        mix: float | Default = Default(value="0.5"),
+        expand: float | Default = Default(value="0.0"),
+        red: float | Default = Default(value="0.0"),
+        green: float | Default = Default(value="-1.0"),
+        blue: float | Default = Default(value="0.0"),
+        brightness: float | Default = Default(value="0.0"),
+        alpha: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11351,7 +11744,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def detelecine(
-        self, *, first_field: int = None, pattern: str = None, start_frame: int = None, **kwargs: Any
+        self,
+        *,
+        first_field: int | Default = Default(value="0"),
+        pattern: str | Default = Default(value="23"),
+        start_frame: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -11389,11 +11787,11 @@ class VideoStream(FilterableStream):
     def dilation(
         self,
         *,
-        coordinates: int = None,
-        threshold0: int = None,
-        threshold1: int = None,
-        threshold2: int = None,
-        threshold3: int = None,
+        coordinates: int | Default = Default(value="255"),
+        threshold0: int | Default = Default(value="65535"),
+        threshold1: int | Default = Default(value="65535"),
+        threshold2: int | Default = Default(value="65535"),
+        threshold3: int | Default = Default(value="65535"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11433,7 +11831,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def displace(self, _xmap: "VideoStream", _ymap: "VideoStream", *, edge: int = None, **kwargs: Any) -> "VideoStream":
+    def displace(
+        self,
+        _xmap: "VideoStream",
+        _ymap: "VideoStream",
+        *,
+        edge: int | Default = Default(value="EDGE_SMEAR"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.71 displace
@@ -11477,13 +11882,13 @@ class VideoStream(FilterableStream):
     def dnn_classify(
         self,
         *,
-        dnn_backend: int = None,
+        dnn_backend: int | Default = Default(value="DNN_OV"),
         model: str,
         input: str,
         output: str,
         backend_configs: str,
-        _async: bool = None,
-        confidence: float = None,
+        _async: bool | Default = Default(value="1"),
+        confidence: float | Default = Default(value="0.5"),
         labels: str,
         target: str,
         **kwargs: Any
@@ -11534,18 +11939,18 @@ class VideoStream(FilterableStream):
     def dnn_detect(
         self,
         *,
-        dnn_backend: int = None,
+        dnn_backend: int | Default = Default(value="DNN_OV"),
         model: str,
         input: str,
         output: str,
         backend_configs: str,
-        _async: bool = None,
-        confidence: float = None,
+        _async: bool | Default = Default(value="1"),
+        confidence: float | Default = Default(value="0.5"),
         labels: str,
-        model_type: int = None,
-        cell_w: int = None,
-        cell_h: int = None,
-        nb_classes: int = None,
+        model_type: int | Default = Default(value="DDMT_SSD"),
+        cell_w: int | Default = Default(value="0"),
+        cell_h: int | Default = Default(value="0"),
+        nb_classes: int | Default = Default(value="0"),
         anchors: str,
         **kwargs: Any
     ) -> "VideoStream":
@@ -11603,12 +12008,12 @@ class VideoStream(FilterableStream):
     def dnn_processing(
         self,
         *,
-        dnn_backend: int = None,
+        dnn_backend: int | Default = Default(value="DNN_TF"),
         model: str,
         input: str,
         output: str,
         backend_configs: str,
-        _async: bool = None,
+        _async: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11649,7 +12054,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def doubleweave(self, *, first_field: int = None, **kwargs: Any) -> "VideoStream":
+    def doubleweave(self, *, first_field: int | Default = Default(value="0"), **kwargs: Any) -> "VideoStream":
         """
 
         11.285 weave, doubleweave
@@ -11685,13 +12090,13 @@ class VideoStream(FilterableStream):
     def drawbox(
         self,
         *,
-        x: str = None,
-        y: str = None,
-        width: str = None,
-        height: str = None,
-        color: str = None,
-        thickness: str = None,
-        replace: bool = None,
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        width: str | Default = Default(value="0"),
+        height: str | Default = Default(value="0"),
+        color: str | Default = Default(value="black"),
+        thickness: str | Default = Default(value="3"),
+        replace: bool | Default = Default(value="0"),
         box_source: str,
         **kwargs: Any
     ) -> "VideoStream":
@@ -11743,21 +12148,21 @@ class VideoStream(FilterableStream):
     def drawgraph(
         self,
         *,
-        m1: str = None,
-        fg1: str = None,
-        m2: str = None,
-        fg2: str = None,
-        m3: str = None,
-        fg3: str = None,
-        m4: str = None,
-        fg4: str = None,
-        bg: str = None,
-        min: float = None,
-        max: float = None,
-        mode: int = None,
-        slide: int = None,
-        size: str = None,
-        rate: str = None,
+        m1: str | Default = Default(value=""),
+        fg1: str | Default = Default(value="0xffff0000"),
+        m2: str | Default = Default(value=""),
+        fg2: str | Default = Default(value="0xff00ff00"),
+        m3: str | Default = Default(value=""),
+        fg3: str | Default = Default(value="0xffff00ff"),
+        m4: str | Default = Default(value=""),
+        fg4: str | Default = Default(value="0xffffff00"),
+        bg: str | Default = Default(value="white"),
+        min: float | Default = Default(value="-1.0"),
+        max: float | Default = Default(value="1.0"),
+        mode: int | Default = Default(value="2"),
+        slide: int | Default = Default(value="0"),
+        size: str | Default = Default(value="900x256"),
+        rate: str | Default = Default(value="25"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11827,13 +12232,13 @@ class VideoStream(FilterableStream):
     def drawgrid(
         self,
         *,
-        x: str = None,
-        y: str = None,
-        width: str = None,
-        height: str = None,
-        color: str = None,
-        thickness: str = None,
-        replace: bool = None,
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        width: str | Default = Default(value="0"),
+        height: str | Default = Default(value="0"),
+        color: str | Default = Default(value="black"),
+        thickness: str | Default = Default(value="1"),
+        replace: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -11885,36 +12290,36 @@ class VideoStream(FilterableStream):
         fontfile: str,
         text: str,
         textfile: str,
-        fontcolor: str = None,
-        fontcolor_expr: str = None,
-        boxcolor: str = None,
-        bordercolor: str = None,
-        shadowcolor: str = None,
-        box: bool = None,
-        boxborderw: str = None,
-        line_spacing: int = None,
+        fontcolor: str | Default = Default(value="black"),
+        fontcolor_expr: str | Default = Default(value=""),
+        boxcolor: str | Default = Default(value="white"),
+        bordercolor: str | Default = Default(value="black"),
+        shadowcolor: str | Default = Default(value="black"),
+        box: bool | Default = Default(value="0"),
+        boxborderw: str | Default = Default(value="0"),
+        line_spacing: int | Default = Default(value="0"),
         fontsize: str,
-        text_align: str = None,
-        x: str = None,
-        y: str = None,
-        boxw: int = None,
-        boxh: int = None,
-        shadowx: int = None,
-        shadowy: int = None,
-        borderw: int = None,
-        tabsize: int = None,
-        basetime: int = None,
-        expansion: int = None,
-        y_align: int = None,
+        text_align: str | Default = Default(value="0"),
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        boxw: int | Default = Default(value="0"),
+        boxh: int | Default = Default(value="0"),
+        shadowx: int | Default = Default(value="0"),
+        shadowy: int | Default = Default(value="0"),
+        borderw: int | Default = Default(value="0"),
+        tabsize: int | Default = Default(value="4"),
+        basetime: int | Default = Default(value="((int64_t)(0x8000000000000000ULL))"),
+        expansion: int | Default = Default(value="EXP_NORMAL"),
+        y_align: int | Default = Default(value="YA_TEXT"),
         timecode: str,
-        tc24hmax: bool = None,
-        timecode_rate: float = None,
-        reload: int = None,
-        alpha: str = None,
-        fix_bounds: bool = None,
-        start_number: int = None,
+        tc24hmax: bool | Default = Default(value="0"),
+        timecode_rate: float | Default = Default(value="0.0"),
+        reload: int | Default = Default(value="0"),
+        alpha: str | Default = Default(value="1"),
+        fix_bounds: bool | Default = Default(value="0"),
+        start_number: int | Default = Default(value="0"),
         text_source: str,
-        ft_load_flags: str = None,
+        ft_load_flags: str | Default = Default(value="FT_LOAD_DEFAULT"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12015,7 +12420,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def edgedetect(
-        self, *, high: float = None, low: float = None, mode: int = None, planes: str = None, **kwargs: Any
+        self,
+        *,
+        high: float | Default = Default(value="50/255."),
+        low: float | Default = Default(value="20/255."),
+        mode: int | Default = Default(value="MODE_WIRES"),
+        planes: str | Default = Default(value="7"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -12053,11 +12464,11 @@ class VideoStream(FilterableStream):
     def elbg(
         self,
         *,
-        codebook_length: int = None,
-        nb_steps: int = None,
-        seed: int = None,
-        pal8: bool = None,
-        use_alpha: bool = None,
+        codebook_length: int | Default = Default(value="256"),
+        nb_steps: int | Default = Default(value="1"),
+        seed: int | Default = Default(value="-1"),
+        pal8: bool | Default = Default(value="0"),
+        use_alpha: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12099,7 +12510,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def entropy(self, *, mode: int = None, **kwargs: Any) -> "VideoStream":
+    def entropy(self, *, mode: int | Default = Default(value="0"), **kwargs: Any) -> "VideoStream":
         """
 
         11.81 entropy
@@ -12127,7 +12538,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def epx(self, *, n: int = None, **kwargs: Any) -> "VideoStream":
+    def epx(self, *, n: int | Default = Default(value="3"), **kwargs: Any) -> "VideoStream":
         """
 
         11.82 epx
@@ -12158,15 +12569,15 @@ class VideoStream(FilterableStream):
     def eq(
         self,
         *,
-        contrast: str = None,
-        brightness: str = None,
-        saturation: str = None,
-        gamma: str = None,
-        gamma_r: str = None,
-        gamma_g: str = None,
-        gamma_b: str = None,
-        gamma_weight: str = None,
-        eval: int = None,
+        contrast: str | Default = Default(value="1.0"),
+        brightness: str | Default = Default(value="0.0"),
+        saturation: str | Default = Default(value="1.0"),
+        gamma: str | Default = Default(value="1.0"),
+        gamma_r: str | Default = Default(value="1.0"),
+        gamma_g: str | Default = Default(value="1.0"),
+        gamma_b: str | Default = Default(value="1.0"),
+        gamma_weight: str | Default = Default(value="1.0"),
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12218,11 +12629,11 @@ class VideoStream(FilterableStream):
     def erosion(
         self,
         *,
-        coordinates: int = None,
-        threshold0: int = None,
-        threshold1: int = None,
-        threshold2: int = None,
-        threshold3: int = None,
+        coordinates: int | Default = Default(value="255"),
+        threshold0: int | Default = Default(value="65535"),
+        threshold1: int | Default = Default(value="65535"),
+        threshold2: int | Default = Default(value="65535"),
+        threshold3: int | Default = Default(value="65535"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12265,15 +12676,15 @@ class VideoStream(FilterableStream):
     def estdif(
         self,
         *,
-        mode: int = None,
-        parity: int = None,
-        deint: int = None,
-        rslope: int = None,
-        redge: int = None,
-        ecost: int = None,
-        mcost: int = None,
-        dcost: int = None,
-        interp: int = None,
+        mode: int | Default = Default(value="1"),
+        parity: int | Default = Default(value="-1"),
+        deint: int | Default = Default(value="0"),
+        rslope: int | Default = Default(value="1"),
+        redge: int | Default = Default(value="2"),
+        ecost: int | Default = Default(value="2"),
+        mcost: int | Default = Default(value="1"),
+        dcost: int | Default = Default(value="1"),
+        interp: int | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12322,7 +12733,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def exposure(self, *, exposure: float = None, black: float = None, **kwargs: Any) -> "VideoStream":
+    def exposure(
+        self,
+        *,
+        exposure: float | Default = Default(value="0.0"),
+        black: float | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.86 exposure
@@ -12352,7 +12769,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def extractplanes(self, *, planes: str = None, **kwargs: Any) -> FilterNode:
+    def extractplanes(self, *, planes: str | Default = Default(value="1"), **kwargs: Any) -> FilterNode:
         """
 
         11.87 extractplanes
@@ -12385,13 +12802,13 @@ class VideoStream(FilterableStream):
     def fade(
         self,
         *,
-        type: int = None,
-        start_frame: int = None,
-        nb_frames: int = None,
-        alpha: bool = None,
-        start_time: int = None,
-        duration: int = None,
-        color: str = None,
+        type: int | Default = Default(value="0"),
+        start_frame: int | Default = Default(value="0"),
+        nb_frames: int | Default = Default(value="25"),
+        alpha: bool | Default = Default(value="0"),
+        start_time: int | Default = Default(value="0."),
+        duration: int | Default = Default(value="0."),
+        color: str | Default = Default(value="black"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12434,7 +12851,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def feedback(
-        self, _feedin: "VideoStream", *, x: int = None, y: int = None, w: int = None, h: int = None, **kwargs: Any
+        self,
+        _feedin: "VideoStream",
+        *,
+        x: int | Default = Default(value="0"),
+        y: int | Default = Default(value="0"),
+        w: int | Default = Default(value="0"),
+        h: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> tuple["VideoStream", "VideoStream",]:
         """
 
@@ -12484,15 +12908,15 @@ class VideoStream(FilterableStream):
     def fftdnoiz(
         self,
         *,
-        sigma: float = None,
-        amount: float = None,
-        block: int = None,
-        overlap: float = None,
-        method: int = None,
-        prev: int = None,
-        next: int = None,
-        planes: int = None,
-        window: int = None,
+        sigma: float | Default = Default(value="1.0"),
+        amount: float | Default = Default(value="1.0"),
+        block: int | Default = Default(value="32"),
+        overlap: float | Default = Default(value="0.5"),
+        method: int | Default = Default(value="0"),
+        prev: int | Default = Default(value="0"),
+        next: int | Default = Default(value="0"),
+        planes: int | Default = Default(value="7"),
+        window: int | Default = Default(value="WFUNC_HANNING"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12541,13 +12965,13 @@ class VideoStream(FilterableStream):
     def fftfilt(
         self,
         *,
-        dc_Y: int = None,
-        dc_U: int = None,
-        dc_V: int = None,
-        weight_Y: str = None,
+        dc_Y: int | Default = Default(value="0"),
+        dc_U: int | Default = Default(value="0"),
+        dc_V: int | Default = Default(value="0"),
+        weight_Y: str | Default = Default(value="1"),
         weight_U: str,
         weight_V: str,
-        eval: int = None,
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12587,7 +13011,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def field(self, *, type: int = None, **kwargs: Any) -> "VideoStream":
+    def field(self, *, type: int | Default = Default(value="FIELD_TYPE_TOP"), **kwargs: Any) -> "VideoStream":
         """
 
         11.92 field
@@ -12617,7 +13041,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def fieldhint(self, *, hint: str, mode: int = None, **kwargs: Any) -> "VideoStream":
+    def fieldhint(self, *, hint: str, mode: int | Default = Default(value="0"), **kwargs: Any) -> "VideoStream":
         """
 
         11.93 fieldhint
@@ -12668,21 +13092,21 @@ class VideoStream(FilterableStream):
     def fieldmatch(
         self,
         *streams: "VideoStream",
-        order: int = None,
-        mode: int = None,
-        ppsrc: bool = None,
-        field: int = None,
-        mchroma: bool = None,
-        y0: int = None,
-        y1: int = None,
-        scthresh: float = None,
-        combmatch: int = None,
-        combdbg: int = None,
-        cthresh: int = None,
-        chroma: bool = None,
-        blockx: int = None,
-        blocky: int = None,
-        combpel: int = None,
+        order: int | Default = Default(value="FM_PARITY_AUTO"),
+        mode: int | Default = Default(value="MODE_PC_N"),
+        ppsrc: bool | Default = Default(value="0"),
+        field: int | Default = Default(value="FM_PARITY_AUTO"),
+        mchroma: bool | Default = Default(value="1"),
+        y0: int | Default = Default(value="0"),
+        y1: int | Default = Default(value="0"),
+        scthresh: float | Default = Default(value="12.0"),
+        combmatch: int | Default = Default(value="COMBMATCH_SC"),
+        combdbg: int | Default = Default(value="COMBDBG_NONE"),
+        cthresh: int | Default = Default(value="9"),
+        chroma: bool | Default = Default(value="0"),
+        blockx: int | Default = Default(value="16"),
+        blocky: int | Default = Default(value="16"),
+        combpel: int | Default = Default(value="80"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12769,7 +13193,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def fieldorder(self, *, order: int = None, **kwargs: Any) -> "VideoStream":
+    def fieldorder(self, *, order: int | Default = Default(value="1"), **kwargs: Any) -> "VideoStream":
         """
 
         11.95 fieldorder
@@ -12845,12 +13269,12 @@ class VideoStream(FilterableStream):
     def fillborders(
         self,
         *,
-        left: int = None,
-        right: int = None,
-        top: int = None,
-        bottom: int = None,
-        mode: int = None,
-        color: str = None,
+        left: int | Default = Default(value="0"),
+        right: int | Default = Default(value="0"),
+        top: int | Default = Default(value="0"),
+        bottom: int | Default = Default(value="0"),
+        mode: int | Default = Default(value="FM_SMEAR"),
+        color: str | Default = Default(value="black"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12896,13 +13320,13 @@ class VideoStream(FilterableStream):
         self,
         *,
         object: str,
-        threshold: float = None,
-        mipmaps: int = None,
-        xmin: int = None,
-        ymin: int = None,
-        xmax: int = None,
-        ymax: int = None,
-        discard: bool = None,
+        threshold: float | Default = Default(value="0.5"),
+        mipmaps: int | Default = Default(value="3"),
+        xmin: int | Default = Default(value="0"),
+        ymin: int | Default = Default(value="0"),
+        xmax: int | Default = Default(value="0"),
+        ymax: int | Default = Default(value="0"),
+        discard: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -12983,16 +13407,16 @@ class VideoStream(FilterableStream):
     def floodfill(
         self,
         *,
-        x: int = None,
-        y: int = None,
-        s0: int = None,
-        s1: int = None,
-        s2: int = None,
-        s3: int = None,
-        d0: int = None,
-        d1: int = None,
-        d2: int = None,
-        d3: int = None,
+        x: int | Default = Default(value="0"),
+        y: int | Default = Default(value="0"),
+        s0: int | Default = Default(value="0"),
+        s1: int | Default = Default(value="0"),
+        s2: int | Default = Default(value="0"),
+        s3: int | Default = Default(value="0"),
+        d0: int | Default = Default(value="0"),
+        d1: int | Default = Default(value="0"),
+        d2: int | Default = Default(value="0"),
+        d3: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -13071,7 +13495,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def fps(
-        self, *, fps: str = None, start_time: float = None, round: int = None, eof_action: int = None, **kwargs: Any
+        self,
+        *,
+        fps: str | Default = Default(value="25"),
+        start_time: float | Default = Default(value="1.7976931348623157e+308"),
+        round: int | Default = Default(value="AV_ROUND_NEAR_INF"),
+        eof_action: int | Default = Default(value="EOF_ACTION_ROUND"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13112,7 +13542,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def framepack(self, _right: "VideoStream", *, format: int = None, **kwargs: Any) -> "VideoStream":
+    def framepack(
+        self, _right: "VideoStream", *, format: int | Default = Default(value="AV_STEREO3D_SIDEBYSIDE"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.102 framepack
@@ -13157,11 +13589,11 @@ class VideoStream(FilterableStream):
     def framerate(
         self,
         *,
-        fps: str = None,
-        interp_start: int = None,
-        interp_end: int = None,
-        scene: float = None,
-        flags: str = None,
+        fps: str | Default = Default(value="50"),
+        interp_start: int | Default = Default(value="15"),
+        interp_end: int | Default = Default(value="240"),
+        scene: float | Default = Default(value="8.2"),
+        flags: str | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -13204,7 +13636,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def framestep(self, *, step: int = None, **kwargs: Any) -> "VideoStream":
+    def framestep(self, *, step: int | Default = Default(value="1"), **kwargs: Any) -> "VideoStream":
         """
 
         11.104 framestep
@@ -13232,7 +13664,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def freezedetect(self, *, n: float = None, d: int = None, **kwargs: Any) -> "VideoStream":
+    def freezedetect(
+        self, *, n: float | Default = Default(value="0.001"), d: int | Default = Default(value="2000000"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.105 freezedetect
@@ -13276,7 +13710,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def freezeframes(
-        self, _replace: "VideoStream", *, first: int = None, last: int = None, replace: int = None, **kwargs: Any
+        self,
+        _replace: "VideoStream",
+        *,
+        first: int | Default = Default(value="0"),
+        last: int | Default = Default(value="0"),
+        replace: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13358,7 +13798,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def fspp(
-        self, *, quality: int = None, qp: int = None, strength: int = None, use_bframe_qp: bool = None, **kwargs: Any
+        self,
+        *,
+        quality: int | Default = Default(value="4"),
+        qp: int | Default = Default(value="0"),
+        strength: int | Default = Default(value="0"),
+        use_bframe_qp: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13398,7 +13844,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def gblur(
-        self, *, sigma: float = None, steps: int = None, planes: int = None, sigmaV: float = None, **kwargs: Any
+        self,
+        *,
+        sigma: float | Default = Default(value="0.5"),
+        steps: int | Default = Default(value="1"),
+        planes: int | Default = Default(value="0xF"),
+        sigmaV: float | Default = Default(value="-1.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13436,11 +13888,11 @@ class VideoStream(FilterableStream):
     def gblur_vulkan(
         self,
         *,
-        sigma: float = None,
-        sigmaV: float = None,
-        planes: int = None,
-        size: int = None,
-        sizeV: int = None,
+        sigma: float | Default = Default(value="0.5"),
+        sigmaV: float | Default = Default(value="0.0"),
+        planes: int | Default = Default(value="0xF"),
+        size: int | Default = Default(value="19"),
+        sizeV: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -13488,7 +13940,7 @@ class VideoStream(FilterableStream):
         red_expr: str,
         green_expr: str,
         blue_expr: str,
-        interpolation: int = None,
+        interpolation: int | Default = Default(value="INTERP_BILINEAR"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -13556,7 +14008,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def gradfun(self, *, strength: float = None, radius: int = None, **kwargs: Any) -> "VideoStream":
+    def gradfun(
+        self,
+        *,
+        strength: float | Default = Default(value="1.2"),
+        radius: int | Default = Default(value="16"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.111 gradfun
@@ -13600,11 +14058,11 @@ class VideoStream(FilterableStream):
     def graphmonitor(
         self,
         *,
-        size: str = None,
-        opacity: float = None,
-        mode: str = None,
-        flags: str = None,
-        rate: str = None,
+        size: str | Default = Default(value="hd720"),
+        opacity: float | Default = Default(value="0.9"),
+        mode: str | Default = Default(value="0"),
+        flags: str | Default = Default(value="FLAG_QUEUE"),
+        rate: str | Default = Default(value="25"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -13676,7 +14134,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def greyedge(
-        self, *, difford: int = None, minknorm: int = None, sigma: float = None, **kwargs: Any
+        self,
+        *,
+        difford: int | Default = Default(value="1"),
+        minknorm: int | Default = Default(value="1"),
+        sigma: float | Default = Default(value="1.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13715,12 +14178,12 @@ class VideoStream(FilterableStream):
     def guided(
         self,
         *streams: "VideoStream",
-        radius: int = None,
-        eps: float = None,
-        mode: int = None,
-        sub: int = None,
-        guidance: int = None,
-        planes: int = None,
+        radius: int | Default = Default(value="3"),
+        eps: float | Default = Default(value="0.01"),
+        mode: int | Default = Default(value="BASIC"),
+        sub: int | Default = Default(value="4"),
+        guidance: int | Default = Default(value="OFF"),
+        planes: int | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -13761,7 +14224,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def haldclut(self, _clut: "VideoStream", *, clut: int = None, interp: int = None, **kwargs: Any) -> "VideoStream":
+    def haldclut(
+        self,
+        _clut: "VideoStream",
+        *,
+        clut: int | Default = Default(value="1"),
+        interp: int | Default = Default(value="INTERPOLATE_TETRAHEDRAL"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.116 haldclut
@@ -13853,7 +14323,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def histeq(
-        self, *, strength: float = None, intensity: float = None, antibanding: int = None, **kwargs: Any
+        self,
+        *,
+        strength: float | Default = Default(value="0.2"),
+        intensity: float | Default = Default(value="0.21"),
+        antibanding: int | Default = Default(value="HISTEQ_ANTIBANDING_NONE"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13897,14 +14372,14 @@ class VideoStream(FilterableStream):
     def histogram(
         self,
         *,
-        level_height: int = None,
-        scale_height: int = None,
-        display_mode: int = None,
-        levels_mode: int = None,
-        components: int = None,
-        fgopacity: float = None,
-        bgopacity: float = None,
-        colors_mode: int = None,
+        level_height: int | Default = Default(value="200"),
+        scale_height: int | Default = Default(value="12"),
+        display_mode: int | Default = Default(value="2"),
+        levels_mode: int | Default = Default(value="0"),
+        components: int | Default = Default(value="7"),
+        fgopacity: float | Default = Default(value="0.7"),
+        bgopacity: float | Default = Default(value="0.5"),
+        colors_mode: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -13959,10 +14434,10 @@ class VideoStream(FilterableStream):
     def hqdn3d(
         self,
         *,
-        luma_spatial: float = None,
-        chroma_spatial: float = None,
-        luma_tmp: float = None,
-        chroma_tmp: float = None,
+        luma_spatial: float | Default = Default(value="0.0"),
+        chroma_spatial: float | Default = Default(value="0.0"),
+        luma_tmp: float | Default = Default(value="0.0"),
+        chroma_tmp: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -14000,7 +14475,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hqx(self, *, n: int = None, **kwargs: Any) -> "VideoStream":
+    def hqx(self, *, n: int | Default = Default(value="3"), **kwargs: Any) -> "VideoStream":
         """
 
         11.125 hqx
@@ -14030,7 +14505,11 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def hstack(
-        self, *streams: "VideoStream", inputs: int = None, shortest: bool = None, **kwargs: Any
+        self,
+        *streams: "VideoStream",
+        inputs: int | Default = Default(value="2"),
+        shortest: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -14070,11 +14549,11 @@ class VideoStream(FilterableStream):
     def hsvhold(
         self,
         *,
-        hue: float = None,
-        sat: float = None,
-        val: float = None,
-        similarity: float = None,
-        blend: float = None,
+        hue: float | Default = Default(value="0.0"),
+        sat: float | Default = Default(value="0.0"),
+        val: float | Default = Default(value="0.0"),
+        similarity: float | Default = Default(value="0.01"),
+        blend: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -14119,11 +14598,11 @@ class VideoStream(FilterableStream):
     def hsvkey(
         self,
         *,
-        hue: float = None,
-        sat: float = None,
-        val: float = None,
-        similarity: float = None,
-        blend: float = None,
+        hue: float | Default = Default(value="0.0"),
+        sat: float | Default = Default(value="0.0"),
+        val: float | Default = Default(value="0.0"),
+        similarity: float | Default = Default(value="0.01"),
+        blend: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -14165,7 +14644,15 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hue(self, *, h: str, s: str = None, H: str, b: str = None, **kwargs: Any) -> "VideoStream":
+    def hue(
+        self,
+        *,
+        h: str,
+        s: str | Default = Default(value="1"),
+        H: str,
+        b: str | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.129 hue
@@ -14209,15 +14696,15 @@ class VideoStream(FilterableStream):
     def huesaturation(
         self,
         *,
-        hue: float = None,
-        saturation: float = None,
-        intensity: float = None,
-        colors: str = None,
-        strength: float = None,
-        rw: float = None,
-        gw: float = None,
-        bw: float = None,
-        lightness: bool = None,
+        hue: float | Default = Default(value="0.0"),
+        saturation: float | Default = Default(value="0.0"),
+        intensity: float | Default = Default(value="0.0"),
+        colors: str | Default = Default(value="0x3F"),
+        strength: float | Default = Default(value="1.0"),
+        rw: float | Default = Default(value="0.333"),
+        gw: float | Default = Default(value="0.334"),
+        bw: float | Default = Default(value="0.333"),
+        lightness: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -14292,7 +14779,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hwmap(self, *, mode: str = None, derive_device: str, reverse: int = None, **kwargs: Any) -> "VideoStream":
+    def hwmap(
+        self,
+        *,
+        mode: str | Default = Default(value="AV_HWFRAME_MAP_READ | AV_HWFRAME_MAP_WRITE"),
+        derive_device: str,
+        reverse: int | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.122 hwmap
@@ -14392,7 +14886,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hwupload_cuda(self, *, device: int = None, **kwargs: Any) -> "VideoStream":
+    def hwupload_cuda(self, *, device: int | Default = Default(value="0"), **kwargs: Any) -> "VideoStream":
         """
 
         11.124 hwupload_cuda
@@ -14421,7 +14915,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def hysteresis(
-        self, _alt: "VideoStream", *, planes: int = None, threshold: int = None, **kwargs: Any
+        self,
+        _alt: "VideoStream",
+        *,
+        planes: int | Default = Default(value="0xF"),
+        threshold: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -14457,7 +14956,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def iccdetect(self, *, force: bool = None, **kwargs: Any) -> "VideoStream":
+    def iccdetect(self, *, force: bool | Default = Default(value="1"), **kwargs: Any) -> "VideoStream":
         """
 
         11.132 iccdetect
@@ -14487,7 +14986,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def iccgen(
-        self, *, color_primaries: int = None, color_trc: int = None, force: bool = None, **kwargs: Any
+        self,
+        *,
+        color_primaries: int | Default = Default(value="0"),
+        color_trc: int | Default = Default(value="0"),
+        force: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -14565,11 +15069,11 @@ class VideoStream(FilterableStream):
     def idet(
         self,
         *,
-        intl_thres: float = None,
-        prog_thres: float = None,
-        rep_thres: float = None,
-        half_life: float = None,
-        analyze_interlaced_flag: int = None,
+        intl_thres: float | Default = Default(value="1.04"),
+        prog_thres: float | Default = Default(value="1.5"),
+        rep_thres: float | Default = Default(value="3.0"),
+        half_life: float | Default = Default(value="0.0"),
+        analyze_interlaced_flag: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -14620,12 +15124,12 @@ class VideoStream(FilterableStream):
     def il(
         self,
         *,
-        luma_mode: int = None,
-        chroma_mode: int = None,
-        alpha_mode: int = None,
-        luma_swap: bool = None,
-        chroma_swap: bool = None,
-        alpha_swap: bool = None,
+        luma_mode: int | Default = Default(value="MODE_NONE"),
+        chroma_mode: int | Default = Default(value="MODE_NONE"),
+        alpha_mode: int | Default = Default(value="MODE_NONE"),
+        luma_swap: bool | Default = Default(value="0"),
+        chroma_swap: bool | Default = Default(value="0"),
+        alpha_swap: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -14674,10 +15178,10 @@ class VideoStream(FilterableStream):
     def inflate(
         self,
         *,
-        threshold0: int = None,
-        threshold1: int = None,
-        threshold2: int = None,
-        threshold3: int = None,
+        threshold0: int | Default = Default(value="65535"),
+        threshold1: int | Default = Default(value="65535"),
+        threshold2: int | Default = Default(value="65535"),
+        threshold3: int | Default = Default(value="65535"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -14716,7 +15220,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def interlace(self, *, scan: int = None, lowpass: int = None, **kwargs: Any) -> "VideoStream":
+    def interlace(
+        self,
+        *,
+        scan: int | Default = Default(value="MODE_TFF"),
+        lowpass: int | Default = Default(value="VLPF_LIN"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.138 interlace
@@ -14760,7 +15270,11 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def interleave(
-        self, *streams: "VideoStream", nb_inputs: int = None, duration: int = None, **kwargs: Any
+        self,
+        *streams: "VideoStream",
+        nb_inputs: int | Default = Default(value="2"),
+        duration: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -14816,11 +15330,11 @@ class VideoStream(FilterableStream):
     def kerndeint(
         self,
         *,
-        thresh: int = None,
-        map: bool = None,
-        order: bool = None,
-        sharp: bool = None,
-        twoway: bool = None,
+        thresh: int | Default = Default(value="10"),
+        map: bool | Default = Default(value="0"),
+        order: bool | Default = Default(value="0"),
+        sharp: bool | Default = Default(value="0"),
+        twoway: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -14860,7 +15374,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def kirsch(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
+    def kirsch(
+        self,
+        *,
+        planes: int | Default = Default(value="15"),
+        scale: float | Default = Default(value="1.0"),
+        delta: float | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.140 kirsch
@@ -14892,7 +15413,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def lagfun(self, *, decay: float = None, planes: str = None, **kwargs: Any) -> "VideoStream":
+    def lagfun(
+        self,
+        *,
+        decay: float | Default = Default(value="0.95"),
+        planes: str | Default = Default(value="15"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.141 lagfun
@@ -14954,12 +15481,12 @@ class VideoStream(FilterableStream):
     def lenscorrection(
         self,
         *,
-        cx: float = None,
-        cy: float = None,
-        k1: float = None,
-        k2: float = None,
-        i: int = None,
-        fc: str = None,
+        cx: float | Default = Default(value="0.5"),
+        cy: float | Default = Default(value="0.5"),
+        k1: float | Default = Default(value="0.0"),
+        k2: float | Default = Default(value="0.0"),
+        i: int | Default = Default(value="0"),
+        fc: str | Default = Default(value="black@0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -15019,14 +15546,14 @@ class VideoStream(FilterableStream):
         model: str,
         lens_model: str,
         db_path: str,
-        mode: int = None,
-        focal_length: float = None,
-        aperture: float = None,
-        focus_distance: float = None,
-        scale: float = None,
-        target_geometry: int = None,
-        reverse: bool = None,
-        interpolation: int = None,
+        mode: int | Default = Default(value="GEOMETRY_DISTORTION"),
+        focal_length: float | Default = Default(value="18.0"),
+        aperture: float | Default = Default(value="3.5"),
+        focus_distance: float | Default = Default(value="1000.0f"),
+        scale: float | Default = Default(value="0.0"),
+        target_geometry: int | Default = Default(value="LF_RECTILINEAR"),
+        reverse: bool | Default = Default(value="0"),
+        interpolation: int | Default = Default(value="LINEAR"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -15097,84 +15624,84 @@ class VideoStream(FilterableStream):
     def libplacebo(
         self,
         *streams: "VideoStream",
-        inputs: int = None,
-        w: str = None,
-        h: str = None,
-        fps: str = None,
-        crop_x: str = None,
-        crop_y: str = None,
-        crop_w: str = None,
-        crop_h: str = None,
-        pos_x: str = None,
-        pos_y: str = None,
-        pos_w: str = None,
-        pos_h: str = None,
+        inputs: int | Default = Default(value="1"),
+        w: str | Default = Default(value="iw"),
+        h: str | Default = Default(value="ih"),
+        fps: str | Default = Default(value="none"),
+        crop_x: str | Default = Default(value="(iw-cw)/2"),
+        crop_y: str | Default = Default(value="(ih-ch)/2"),
+        crop_w: str | Default = Default(value="iw"),
+        crop_h: str | Default = Default(value="ih"),
+        pos_x: str | Default = Default(value="(ow-pw)/2"),
+        pos_y: str | Default = Default(value="(oh-ph)/2"),
+        pos_w: str | Default = Default(value="ow"),
+        pos_h: str | Default = Default(value="oh"),
         format: str,
-        force_original_aspect_ratio: int = None,
-        force_divisible_by: int = None,
-        normalize_sar: bool = None,
-        pad_crop_ratio: float = None,
-        fillcolor: str = None,
-        corner_rounding: float = None,
+        force_original_aspect_ratio: int | Default = Default(value="0"),
+        force_divisible_by: int | Default = Default(value="1"),
+        normalize_sar: bool | Default = Default(value="0"),
+        pad_crop_ratio: float | Default = Default(value="0.0"),
+        fillcolor: str | Default = Default(value="black"),
+        corner_rounding: float | Default = Default(value="0.0"),
         extra_opts: str,
-        colorspace: int = None,
-        range: int = None,
-        color_primaries: int = None,
-        color_trc: int = None,
-        upscaler: str = None,
-        downscaler: str = None,
-        frame_mixer: str = None,
-        lut_entries: int = None,
-        antiringing: float = None,
-        sigmoid: bool = None,
-        apply_filmgrain: bool = None,
-        apply_dolbyvision: bool = None,
-        deband: bool = None,
-        deband_iterations: int = None,
-        deband_threshold: float = None,
-        deband_radius: float = None,
-        deband_grain: float = None,
-        brightness: float = None,
-        contrast: float = None,
-        saturation: float = None,
-        hue: float = None,
-        gamma: float = None,
-        peak_detect: bool = None,
-        smoothing_period: float = None,
-        minimum_peak: float = None,
-        scene_threshold_low: float = None,
-        scene_threshold_high: float = None,
-        percentile: float = None,
-        gamut_mode: int = None,
-        tonemapping: int = None,
-        tonemapping_param: float = None,
-        inverse_tonemapping: bool = None,
-        tonemapping_lut_size: int = None,
-        contrast_recovery: float = None,
-        contrast_smoothness: float = None,
-        desaturation_strength: float = None,
-        desaturation_exponent: float = None,
-        gamut_warning: bool = None,
-        gamut_clipping: bool = None,
-        intent: int = None,
-        tonemapping_mode: int = None,
-        tonemapping_crosstalk: float = None,
-        overshoot: float = None,
-        hybrid_mix: float = None,
-        dithering: int = None,
-        dither_lut_size: int = None,
-        dither_temporal: bool = None,
-        cones: str = None,
-        cone_strength: float = None,
+        colorspace: int | Default = Default(value="-1"),
+        range: int | Default = Default(value="-1"),
+        color_primaries: int | Default = Default(value="-1"),
+        color_trc: int | Default = Default(value="-1"),
+        upscaler: str | Default = Default(value="spline36"),
+        downscaler: str | Default = Default(value="mitchell"),
+        frame_mixer: str | Default = Default(value="none"),
+        lut_entries: int | Default = Default(value="0"),
+        antiringing: float | Default = Default(value="0.0"),
+        sigmoid: bool | Default = Default(value="1"),
+        apply_filmgrain: bool | Default = Default(value="1"),
+        apply_dolbyvision: bool | Default = Default(value="1"),
+        deband: bool | Default = Default(value="0"),
+        deband_iterations: int | Default = Default(value="1"),
+        deband_threshold: float | Default = Default(value="4.0"),
+        deband_radius: float | Default = Default(value="16.0"),
+        deband_grain: float | Default = Default(value="6.0"),
+        brightness: float | Default = Default(value="0.0"),
+        contrast: float | Default = Default(value="1.0"),
+        saturation: float | Default = Default(value="1.0"),
+        hue: float | Default = Default(value="0.0"),
+        gamma: float | Default = Default(value="1.0"),
+        peak_detect: bool | Default = Default(value="1"),
+        smoothing_period: float | Default = Default(value="100.0"),
+        minimum_peak: float | Default = Default(value="1.0"),
+        scene_threshold_low: float | Default = Default(value="5.5"),
+        scene_threshold_high: float | Default = Default(value="10.0"),
+        percentile: float | Default = Default(value="99.995"),
+        gamut_mode: int | Default = Default(value="GAMUT_MAP_PERCEPTUAL"),
+        tonemapping: int | Default = Default(value="TONE_MAP_AUTO"),
+        tonemapping_param: float | Default = Default(value="0.0"),
+        inverse_tonemapping: bool | Default = Default(value="0"),
+        tonemapping_lut_size: int | Default = Default(value="256"),
+        contrast_recovery: float | Default = Default(value="0.3"),
+        contrast_smoothness: float | Default = Default(value="3.5"),
+        desaturation_strength: float | Default = Default(value="-1.0"),
+        desaturation_exponent: float | Default = Default(value="-1.0"),
+        gamut_warning: bool | Default = Default(value="0"),
+        gamut_clipping: bool | Default = Default(value="0"),
+        intent: int | Default = Default(value="PL_INTENT_PERCEPTUAL"),
+        tonemapping_mode: int | Default = Default(value="0"),
+        tonemapping_crosstalk: float | Default = Default(value="0.04"),
+        overshoot: float | Default = Default(value="0.05"),
+        hybrid_mix: float | Default = Default(value="0.2"),
+        dithering: int | Default = Default(value="PL_DITHER_BLUE_NOISE"),
+        dither_lut_size: int | Default = Default(value="6"),
+        dither_temporal: bool | Default = Default(value="0"),
+        cones: str | Default = Default(value="0"),
+        cone_strength: float | Default = Default(value="0.0"),
         custom_shader_path: str,
         custom_shader_bin: str,
-        skip_aa: bool = None,
-        polar_cutoff: float = None,
-        disable_linear: bool = None,
-        disable_builtin: bool = None,
-        force_icc_lut: bool = None,
-        force_dither: bool = None,
-        disable_fbos: bool = None,
+        skip_aa: bool | Default = Default(value="0"),
+        polar_cutoff: float | Default = Default(value="0.0"),
+        disable_linear: bool | Default = Default(value="0"),
+        disable_builtin: bool | Default = Default(value="0"),
+        force_icc_lut: bool | Default = Default(value="0"),
+        force_dither: bool | Default = Default(value="0"),
+        disable_fbos: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -15363,11 +15890,11 @@ class VideoStream(FilterableStream):
         _reference: "VideoStream",
         *,
         log_path: str,
-        log_fmt: str = None,
+        log_fmt: str | Default = Default(value="xml"),
         pool: str,
-        n_threads: int = None,
-        n_subsample: int = None,
-        model: str = None,
+        n_threads: int | Default = Default(value="0"),
+        n_subsample: int | Default = Default(value="1"),
+        model: str | Default = Default(value="version=vmaf_v0.6.1"),
         feature: str,
         **kwargs: Any
     ) -> "VideoStream":
@@ -15426,10 +15953,10 @@ class VideoStream(FilterableStream):
     def limitdiff(
         self,
         *streams: "VideoStream",
-        threshold: float = None,
-        elasticity: float = None,
-        reference: bool = None,
-        planes: int = None,
+        threshold: float | Default = Default(value="1/255.f"),
+        elasticity: float | Default = Default(value="2.f"),
+        reference: bool | Default = Default(value="0"),
+        planes: int | Default = Default(value="0xF"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -15466,7 +15993,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def limiter(self, *, min: int = None, max: int = None, planes: int = None, **kwargs: Any) -> "VideoStream":
+    def limiter(
+        self,
+        *,
+        min: int | Default = Default(value="0"),
+        max: int | Default = Default(value="65535"),
+        planes: int | Default = Default(value="15"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.148 limiter
@@ -15499,7 +16033,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def loop(
-        self, *, loop: int = None, size: int = None, start: int = None, time: int = None, **kwargs: Any
+        self,
+        *,
+        loop: int | Default = Default(value="0"),
+        size: int | Default = Default(value="0"),
+        start: int | Default = Default(value="0"),
+        time: int | Default = Default(value="9223372036854775807LL"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -15535,7 +16075,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def lumakey(
-        self, *, threshold: float = None, tolerance: float = None, softness: float = None, **kwargs: Any
+        self,
+        *,
+        threshold: float | Default = Default(value="0.0"),
+        tolerance: float | Default = Default(value="0.01"),
+        softness: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -15568,7 +16113,15 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def lut(self, *, c0: str = None, c1: str = None, c2: str = None, c3: str = None, **kwargs: Any) -> "VideoStream":
+    def lut(
+        self,
+        *,
+        c0: str | Default = Default(value="clipval"),
+        c1: str | Default = Default(value="clipval"),
+        c2: str | Default = Default(value="clipval"),
+        c3: str | Default = Default(value="clipval"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.153 lut, lutrgb, lutyuv
@@ -15620,7 +16173,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def lut1d(self, *, file: str, interp: int = None, **kwargs: Any) -> "VideoStream":
+    def lut1d(
+        self, *, file: str, interp: int | Default = Default(value="INTERPOLATE_1D_LINEAR"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.150 lut1d
@@ -15654,11 +16209,11 @@ class VideoStream(FilterableStream):
         self,
         _srcy: "VideoStream",
         *,
-        c0: str = None,
-        c1: str = None,
-        c2: str = None,
-        c3: str = None,
-        d: int = None,
+        c0: str | Default = Default(value="x"),
+        c1: str | Default = Default(value="x"),
+        c2: str | Default = Default(value="x"),
+        c3: str | Default = Default(value="x"),
+        d: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -15714,7 +16269,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def lut3d(self, *, file: str, clut: int = None, interp: int = None, **kwargs: Any) -> "VideoStream":
+    def lut3d(
+        self,
+        *,
+        file: str,
+        clut: int | Default = Default(value="1"),
+        interp: int | Default = Default(value="INTERPOLATE_TETRAHEDRAL"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.151 lut3d
@@ -15746,7 +16308,15 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def lutrgb(self, *, c0: str = None, c1: str = None, c2: str = None, c3: str = None, **kwargs: Any) -> "VideoStream":
+    def lutrgb(
+        self,
+        *,
+        c0: str | Default = Default(value="clipval"),
+        c1: str | Default = Default(value="clipval"),
+        c2: str | Default = Default(value="clipval"),
+        c3: str | Default = Default(value="clipval"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.153 lut, lutrgb, lutyuv
@@ -15798,7 +16368,15 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def lutyuv(self, *, c0: str = None, c1: str = None, c2: str = None, c3: str = None, **kwargs: Any) -> "VideoStream":
+    def lutyuv(
+        self,
+        *,
+        c0: str | Default = Default(value="clipval"),
+        c1: str | Default = Default(value="clipval"),
+        c2: str | Default = Default(value="clipval"),
+        c3: str | Default = Default(value="clipval"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.153 lut, lutrgb, lutyuv
@@ -15855,9 +16433,9 @@ class VideoStream(FilterableStream):
         _dark: "VideoStream",
         _bright: "VideoStream",
         *,
-        undershoot: int = None,
-        overshoot: int = None,
-        planes: int = None,
+        undershoot: int | Default = Default(value="0"),
+        overshoot: int | Default = Default(value="0"),
+        planes: int | Default = Default(value="0xF"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -15897,7 +16475,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def maskedmax(
-        self, _filter1: "VideoStream", _filter2: "VideoStream", *, planes: int = None, **kwargs: Any
+        self,
+        _filter1: "VideoStream",
+        _filter2: "VideoStream",
+        *,
+        planes: int | Default = Default(value="0xF"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -15933,7 +16516,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def maskedmerge(
-        self, _overlay: "VideoStream", _mask: "VideoStream", *, planes: int = None, **kwargs: Any
+        self,
+        _overlay: "VideoStream",
+        _mask: "VideoStream",
+        *,
+        planes: int | Default = Default(value="0xF"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -15972,7 +16560,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def maskedmin(
-        self, _filter1: "VideoStream", _filter2: "VideoStream", *, planes: int = None, **kwargs: Any
+        self,
+        _filter1: "VideoStream",
+        _filter2: "VideoStream",
+        *,
+        planes: int | Default = Default(value="0xF"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16008,7 +16601,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def maskedthreshold(
-        self, _reference: "VideoStream", *, threshold: int = None, planes: int = None, mode: int = None, **kwargs: Any
+        self,
+        _reference: "VideoStream",
+        *,
+        threshold: int | Default = Default(value="1"),
+        planes: int | Default = Default(value="0xF"),
+        mode: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16049,7 +16648,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def maskfun(
-        self, *, low: int = None, high: int = None, planes: int = None, fill: int = None, sum: int = None, **kwargs: Any
+        self,
+        *,
+        low: int | Default = Default(value="10"),
+        high: int | Default = Default(value="10"),
+        planes: int | Default = Default(value="0xF"),
+        fill: int | Default = Default(value="0"),
+        sum: int | Default = Default(value="10"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16088,7 +16694,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def mcdeint(self, *, mode: int = None, parity: int = None, qp: int = None, **kwargs: Any) -> "VideoStream":
+    def mcdeint(
+        self,
+        *,
+        mode: int | Default = Default(value="MODE_FAST"),
+        parity: int | Default = Default(value="PARITY_BFF"),
+        qp: int | Default = Default(value="1"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.161 mcdeint
@@ -16124,7 +16737,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def median(
-        self, *, radius: int = None, planes: int = None, radiusV: int = None, percentile: float = None, **kwargs: Any
+        self,
+        *,
+        radius: int | Default = Default(value="1"),
+        planes: int | Default = Default(value="0xF"),
+        radiusV: int | Default = Default(value="0"),
+        percentile: float | Default = Default(value="0.5"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16162,16 +16781,16 @@ class VideoStream(FilterableStream):
     def mergeplanes(
         self,
         *streams: "VideoStream",
-        mapping: int = None,
-        format: str = None,
-        map0s: int = None,
-        map0p: int = None,
-        map1s: int = None,
-        map1p: int = None,
-        map2s: int = None,
-        map2p: int = None,
-        map3s: int = None,
-        map3p: int = None,
+        mapping: int | Default = Default(value="-1"),
+        format: str | Default = Default(value="AV_PIX_FMT_YUVA444P"),
+        map0s: int | Default = Default(value="0"),
+        map0p: int | Default = Default(value="0"),
+        map1s: int | Default = Default(value="0"),
+        map1p: int | Default = Default(value="0"),
+        map2s: int | Default = Default(value="0"),
+        map2p: int | Default = Default(value="0"),
+        map3s: int | Default = Default(value="0"),
+        map3p: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -16224,7 +16843,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def mestimate(
-        self, *, method: int = None, mb_size: int = None, search_param: int = None, **kwargs: Any
+        self,
+        *,
+        method: int | Default = Default(value="1"),
+        mb_size: int | Default = Default(value="16"),
+        search_param: int | Default = Default(value="7"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16261,13 +16885,13 @@ class VideoStream(FilterableStream):
     def metadata(
         self,
         *,
-        mode: int = None,
+        mode: int | Default = Default(value="0"),
         key: str,
         value: str,
-        function: int = None,
+        function: int | Default = Default(value="0"),
         expr: str,
         file: str,
-        direct: bool = None,
+        direct: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -16309,7 +16933,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def midequalizer(self, _in1: "VideoStream", *, planes: int = None, **kwargs: Any) -> "VideoStream":
+    def midequalizer(
+        self, _in1: "VideoStream", *, planes: int | Default = Default(value="0xF"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.165 midequalizer
@@ -16349,16 +16975,16 @@ class VideoStream(FilterableStream):
     def minterpolate(
         self,
         *,
-        fps: str = None,
-        mi_mode: int = None,
-        mc_mode: int = None,
-        me_mode: int = None,
-        me: int = None,
-        mb_size: int = None,
-        search_param: int = None,
-        vsbmc: int = None,
-        scd: int = None,
-        scd_threshold: float = None,
+        fps: str | Default = Default(value="60"),
+        mi_mode: int | Default = Default(value="MI_MODE_MCI"),
+        mc_mode: int | Default = Default(value="0"),
+        me_mode: int | Default = Default(value="1"),
+        me: int | Default = Default(value="8"),
+        mb_size: int | Default = Default(value="16"),
+        search_param: int | Default = Default(value="32"),
+        vsbmc: int | Default = Default(value="0"),
+        scd: int | Default = Default(value="1"),
+        scd_threshold: float | Default = Default(value="10.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -16409,11 +17035,11 @@ class VideoStream(FilterableStream):
     def mix(
         self,
         *streams: "VideoStream",
-        inputs: int = None,
-        weights: str = None,
-        scale: float = None,
-        planes: str = None,
-        duration: int = None,
+        inputs: int | Default = Default(value="2"),
+        weights: str | Default = Default(value="1 1"),
+        scale: float | Default = Default(value="0.0"),
+        planes: str | Default = Default(value="15"),
+        duration: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -16453,7 +17079,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def monochrome(
-        self, *, cb: float = None, cr: float = None, size: float = None, high: float = None, **kwargs: Any
+        self,
+        *,
+        cb: float | Default = Default(value="0.0"),
+        cr: float | Default = Default(value="0.0"),
+        size: float | Default = Default(value="1.0"),
+        high: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16489,7 +17121,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def morpho(
-        self, _structure: "VideoStream", *, mode: int = None, planes: int = None, structure: int = None, **kwargs: Any
+        self,
+        _structure: "VideoStream",
+        *,
+        mode: int | Default = Default(value="0"),
+        planes: int | Default = Default(value="7"),
+        structure: int | Default = Default(value="1"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16532,7 +17170,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def mpdecimate(
-        self, *, max: int = None, keep: int = None, hi: int = None, lo: int = None, frac: float = None, **kwargs: Any
+        self,
+        *,
+        max: int | Default = Default(value="0"),
+        keep: int | Default = Default(value="0"),
+        hi: int | Default = Default(value="64*12"),
+        lo: int | Default = Default(value="64*5"),
+        frac: float | Default = Default(value="0.33"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16617,7 +17262,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def multiply(
-        self, _factor: "VideoStream", *, scale: float = None, offset: float = None, planes: str = None, **kwargs: Any
+        self,
+        _factor: "VideoStream",
+        *,
+        scale: float | Default = Default(value="1.0"),
+        offset: float | Default = Default(value="0.5"),
+        planes: str | Default = Default(value="0xF"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16651,7 +17302,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def negate(self, *, components: str = None, negate_alpha: bool = None, **kwargs: Any) -> "VideoStream":
+    def negate(
+        self,
+        *,
+        components: str | Default = Default(value="0x77"),
+        negate_alpha: bool | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.173 negate
@@ -16682,7 +17339,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def nlmeans(
-        self, *, s: float = None, p: int = None, pc: int = None, r: int = None, rc: int = None, **kwargs: Any
+        self,
+        *,
+        s: float | Default = Default(value="1.0"),
+        p: int | Default = Default(value="3*2+1"),
+        pc: int | Default = Default(value="0"),
+        r: int | Default = Default(value="7*2+1"),
+        rc: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16728,7 +17392,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def nlmeans_opencl(
-        self, *, s: float = None, p: int = None, pc: int = None, r: int = None, rc: int = None, **kwargs: Any
+        self,
+        *,
+        s: float | Default = Default(value="1.0"),
+        p: int | Default = Default(value="2*3+1"),
+        pc: int | Default = Default(value="0"),
+        r: int | Default = Default(value="7*2+1"),
+        rc: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16766,18 +17437,18 @@ class VideoStream(FilterableStream):
     def nlmeans_vulkan(
         self,
         *,
-        s: float = None,
-        p: int = None,
-        r: int = None,
-        t: int = None,
-        s1: float = None,
-        s2: float = None,
-        s3: float = None,
-        s4: float = None,
-        p1: int = None,
-        p2: int = None,
-        p3: int = None,
-        p4: int = None,
+        s: float | Default = Default(value="1.0"),
+        p: int | Default = Default(value="3*2+1"),
+        r: int | Default = Default(value="7*2+1"),
+        t: int | Default = Default(value="36"),
+        s1: float | Default = Default(value="1.0"),
+        s2: float | Default = Default(value="1.0"),
+        s3: float | Default = Default(value="1.0"),
+        s4: float | Default = Default(value="1.0"),
+        p1: int | Default = Default(value="0"),
+        p2: int | Default = Default(value="0"),
+        p3: int | Default = Default(value="0"),
+        p4: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -16835,15 +17506,15 @@ class VideoStream(FilterableStream):
     def nnedi(
         self,
         *,
-        weights: str = None,
-        deint: int = None,
-        field: int = None,
-        planes: int = None,
-        nsize: int = None,
-        nns: int = None,
-        qual: int = None,
-        etype: int = None,
-        pscrn: int = None,
+        weights: str | Default = Default(value="nnedi3_weights.bin"),
+        deint: int | Default = Default(value="0"),
+        field: int | Default = Default(value="-1"),
+        planes: int | Default = Default(value="7"),
+        nsize: int | Default = Default(value="6"),
+        nns: int | Default = Default(value="1"),
+        qual: int | Default = Default(value="1"),
+        etype: int | Default = Default(value="0"),
+        pscrn: int | Default = Default(value="2"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -16921,21 +17592,21 @@ class VideoStream(FilterableStream):
     def noise(
         self,
         *,
-        all_seed: int = None,
-        all_strength: int = None,
-        all_flags: str = None,
-        c0_seed: int = None,
-        c0_strength: int = None,
-        c0_flags: str = None,
-        c1_seed: int = None,
-        c1_strength: int = None,
-        c1_flags: str = None,
-        c2_seed: int = None,
-        c2_strength: int = None,
-        c2_flags: str = None,
-        c3_seed: int = None,
-        c3_strength: int = None,
-        c3_flags: str = None,
+        all_seed: int | Default = Default(value="-1"),
+        all_strength: int | Default = Default(value="0"),
+        all_flags: str | Default = Default(value="0"),
+        c0_seed: int | Default = Default(value="-1"),
+        c0_strength: int | Default = Default(value="0"),
+        c0_flags: str | Default = Default(value="0"),
+        c1_seed: int | Default = Default(value="-1"),
+        c1_strength: int | Default = Default(value="0"),
+        c1_flags: str | Default = Default(value="0"),
+        c2_seed: int | Default = Default(value="-1"),
+        c2_strength: int | Default = Default(value="0"),
+        c2_flags: str | Default = Default(value="0"),
+        c3_seed: int | Default = Default(value="-1"),
+        c3_strength: int | Default = Default(value="0"),
+        c3_flags: str | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -16996,11 +17667,11 @@ class VideoStream(FilterableStream):
     def normalize(
         self,
         *,
-        blackpt: str = None,
-        whitept: str = None,
-        smoothing: int = None,
-        independence: float = None,
-        strength: float = None,
+        blackpt: str | Default = Default(value="black"),
+        whitept: str | Default = Default(value="white"),
+        smoothing: int | Default = Default(value="0"),
+        independence: float | Default = Default(value="1.0"),
+        strength: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17078,7 +17749,16 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def ocr(
-        self, *, datapath: str, language: str = None, whitelist: str = None, blacklist: str = None, **kwargs: Any
+        self,
+        *,
+        datapath: str,
+        language: str | Default = Default(value="eng"),
+        whitelist: str
+        | Default = Default(
+            value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\\\"'[]{}()<>|/\\\\=*&%$#@!~ "
+        ),
+        blacklist: str | Default = Default(value=""),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -17164,19 +17844,19 @@ class VideoStream(FilterableStream):
     def oscilloscope(
         self,
         *,
-        x: float = None,
-        y: float = None,
-        s: float = None,
-        t: float = None,
-        o: float = None,
-        tx: float = None,
-        ty: float = None,
-        tw: float = None,
-        th: float = None,
-        c: int = None,
-        g: bool = None,
-        st: bool = None,
-        sc: bool = None,
+        x: float | Default = Default(value="0.5"),
+        y: float | Default = Default(value="0.5"),
+        s: float | Default = Default(value="0.8"),
+        t: float | Default = Default(value="0.5"),
+        o: float | Default = Default(value="0.8"),
+        tx: float | Default = Default(value="0.5"),
+        ty: float | Default = Default(value="0.9"),
+        tw: float | Default = Default(value="0.8"),
+        th: float | Default = Default(value="0.3"),
+        c: int | Default = Default(value="7"),
+        g: bool | Default = Default(value="1"),
+        st: bool | Default = Default(value="1"),
+        sc: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17236,14 +17916,14 @@ class VideoStream(FilterableStream):
         self,
         _overlay: "VideoStream",
         *,
-        x: str = None,
-        y: str = None,
-        eof_action: int = None,
-        eval: int = None,
-        shortest: bool = None,
-        format: int = None,
-        repeatlast: bool = None,
-        alpha: int = None,
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        eof_action: int | Default = Default(value="EOF_ACTION_REPEAT"),
+        eval: int | Default = Default(value="EVAL_MODE_FRAME"),
+        shortest: bool | Default = Default(value="0"),
+        format: int | Default = Default(value="OVERLAY_FORMAT_YUV420"),
+        repeatlast: bool | Default = Default(value="1"),
+        alpha: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17317,12 +17997,12 @@ class VideoStream(FilterableStream):
         self,
         _overlay: "VideoStream",
         *,
-        x: str = None,
-        y: str = None,
-        eof_action: int = None,
-        eval: int = None,
-        shortest: bool = None,
-        repeatlast: bool = None,
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        eof_action: int | Default = Default(value="EOF_ACTION_REPEAT"),
+        eval: int | Default = Default(value="EVAL_MODE_FRAME"),
+        shortest: bool | Default = Default(value="0"),
+        repeatlast: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17372,7 +18052,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def overlay_opencl(self, _overlay: "VideoStream", *, x: int = None, y: int = None, **kwargs: Any) -> "VideoStream":
+    def overlay_opencl(
+        self,
+        _overlay: "VideoStream",
+        *,
+        x: int | Default = Default(value="0"),
+        y: int | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         12.9 overlay_opencl
@@ -17410,14 +18097,14 @@ class VideoStream(FilterableStream):
         self,
         _overlay: "VideoStream",
         *,
-        x: str = None,
-        y: str = None,
-        w: str = None,
-        h: str = None,
-        alpha: float = None,
-        eof_action: int = None,
-        shortest: bool = None,
-        repeatlast: bool = None,
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        w: str | Default = Default(value="overlay_iw"),
+        h: str | Default = Default(value="overlay_ih*w/overlay_iw"),
+        alpha: float | Default = Default(value="1.0"),
+        eof_action: int | Default = Default(value="EOF_ACTION_REPEAT"),
+        shortest: bool | Default = Default(value="0"),
+        repeatlast: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17467,7 +18154,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def overlay_vulkan(self, _overlay: "VideoStream", *, x: int = None, y: int = None, **kwargs: Any) -> "VideoStream":
+    def overlay_vulkan(
+        self,
+        _overlay: "VideoStream",
+        *,
+        x: int | Default = Default(value="0"),
+        y: int | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         14.11 overlay_vulkan
@@ -17502,7 +18196,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def owdenoise(
-        self, *, depth: int = None, luma_strength: float = None, chroma_strength: float = None, **kwargs: Any
+        self,
+        *,
+        depth: int | Default = Default(value="8"),
+        luma_strength: float | Default = Default(value="1.0"),
+        chroma_strength: float | Default = Default(value="1.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -17538,13 +18237,13 @@ class VideoStream(FilterableStream):
     def pad(
         self,
         *,
-        width: str = None,
-        height: str = None,
-        x: str = None,
-        y: str = None,
-        color: str = None,
-        eval: int = None,
-        aspect: float = None,
+        width: str | Default = Default(value="iw"),
+        height: str | Default = Default(value="ih"),
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        color: str | Default = Default(value="black"),
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
+        aspect: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17594,12 +18293,12 @@ class VideoStream(FilterableStream):
     def pad_opencl(
         self,
         *,
-        width: str = None,
-        height: str = None,
-        x: str = None,
-        y: str = None,
-        color: str = None,
-        aspect: float = None,
+        width: str | Default = Default(value="iw"),
+        height: str | Default = Default(value="ih"),
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        color: str | Default = Default(value="black"),
+        aspect: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17647,10 +18346,10 @@ class VideoStream(FilterableStream):
     def palettegen(
         self,
         *,
-        max_colors: int = None,
-        reserve_transparent: bool = None,
-        transparency_color: str = None,
-        stats_mode: int = None,
+        max_colors: int | Default = Default(value="256"),
+        reserve_transparent: bool | Default = Default(value="1"),
+        transparency_color: str | Default = Default(value="lime"),
+        stats_mode: int | Default = Default(value="STATS_MODE_ALL_FRAMES"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17696,11 +18395,11 @@ class VideoStream(FilterableStream):
         self,
         _palette: "VideoStream",
         *,
-        dither: int = None,
-        bayer_scale: int = None,
-        diff_mode: int = None,
-        new: bool = None,
-        alpha_threshold: int = None,
+        dither: int | Default = Default(value="DITHERING_SIERRA2_4A"),
+        bayer_scale: int | Default = Default(value="2"),
+        diff_mode: int | Default = Default(value="DIFF_MODE_NONE"),
+        new: bool | Default = Default(value="0"),
+        alpha_threshold: int | Default = Default(value="128"),
         debug_kdtree: str,
         **kwargs: Any
     ) -> "VideoStream":
@@ -17745,7 +18444,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def perms(self, *, mode: int = None, seed: int = None, **kwargs: Any) -> "VideoStream":
+    def perms(
+        self,
+        *,
+        mode: int | Default = Default(value="MODE_NONE"),
+        seed: int | Default = Default(value="-1"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         18.14 perms, aperms
@@ -17787,17 +18492,17 @@ class VideoStream(FilterableStream):
     def perspective(
         self,
         *,
-        x0: str = None,
-        y0: str = None,
-        x1: str = None,
-        y1: str = None,
-        x2: str = None,
-        y2: str = None,
-        x3: str = None,
-        y3: str = None,
-        interpolation: int = None,
-        sense: int = None,
-        eval: int = None,
+        x0: str | Default = Default(value="0"),
+        y0: str | Default = Default(value="0"),
+        x1: str | Default = Default(value="W"),
+        y1: str | Default = Default(value="0"),
+        x2: str | Default = Default(value="0"),
+        y2: str | Default = Default(value="H"),
+        x3: str | Default = Default(value="W"),
+        y3: str | Default = Default(value="H"),
+        interpolation: int | Default = Default(value="0"),
+        sense: int | Default = Default(value="PERSPECTIVE_SENSE_SOURCE"),
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -17847,7 +18552,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def phase(self, *, mode: int = None, **kwargs: Any) -> "VideoStream":
+    def phase(self, *, mode: int | Default = Default(value="AUTO_ANALYZE"), **kwargs: Any) -> "VideoStream":
         """
 
         11.190 phase
@@ -17879,7 +18584,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def photosensitivity(
-        self, *, frames: int = None, threshold: float = None, skip: int = None, bypass: bool = None, **kwargs: Any
+        self,
+        *,
+        frames: int | Default = Default(value="30"),
+        threshold: float | Default = Default(value="1.0"),
+        skip: int | Default = Default(value="1"),
+        bypass: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -17944,7 +18655,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def pixelize(
-        self, *, width: int = None, height: int = None, mode: int = None, planes: str = None, **kwargs: Any
+        self,
+        *,
+        width: int | Default = Default(value="16"),
+        height: int | Default = Default(value="16"),
+        mode: int | Default = Default(value="0"),
+        planes: str | Default = Default(value="15"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -17982,13 +18699,13 @@ class VideoStream(FilterableStream):
     def pixscope(
         self,
         *,
-        x: float = None,
-        y: float = None,
-        w: int = None,
-        h: int = None,
-        o: float = None,
-        wx: float = None,
-        wy: float = None,
+        x: float | Default = Default(value="0.5"),
+        y: float | Default = Default(value="0.5"),
+        w: int | Default = Default(value="7"),
+        h: int | Default = Default(value="7"),
+        o: float | Default = Default(value="0.5"),
+        wx: float | Default = Default(value="-1.0"),
+        wy: float | Default = Default(value="-1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -18031,7 +18748,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def pp(self, *, subfilters: str = None, **kwargs: Any) -> "VideoStream":
+    def pp(self, *, subfilters: str | Default = Default(value="de"), **kwargs: Any) -> "VideoStream":
         """
 
         11.195 pp
@@ -18076,7 +18793,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def pp7(self, *, qp: int = None, mode: int = None, **kwargs: Any) -> "VideoStream":
+    def pp7(
+        self,
+        *,
+        qp: int | Default = Default(value="0"),
+        mode: int | Default = Default(value="MODE_MEDIUM"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.196 pp7
@@ -18109,7 +18832,11 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def premultiply(
-        self, *streams: "VideoStream", planes: int = None, inplace: bool = None, **kwargs: Any
+        self,
+        *streams: "VideoStream",
+        planes: int | Default = Default(value="0xF"),
+        inplace: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -18144,7 +18871,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def prewitt(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
+    def prewitt(
+        self,
+        *,
+        planes: int | Default = Default(value="15"),
+        scale: float | Default = Default(value="1.0"),
+        delta: float | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.198 prewitt
@@ -18179,13 +18913,13 @@ class VideoStream(FilterableStream):
     def pseudocolor(
         self,
         *,
-        c0: str = None,
-        c1: str = None,
-        c2: str = None,
-        c3: str = None,
-        index: int = None,
-        preset: int = None,
-        opacity: float = None,
+        c0: str | Default = Default(value="val"),
+        c1: str | Default = Default(value="val"),
+        c2: str | Default = Default(value="val"),
+        c3: str | Default = Default(value="val"),
+        index: int | Default = Default(value="0"),
+        preset: int | Default = Default(value="-1"),
+        opacity: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -18241,8 +18975,8 @@ class VideoStream(FilterableStream):
         _reference: "VideoStream",
         *,
         stats_file: str,
-        stats_version: int = None,
-        output_max: bool = None,
+        stats_version: int | Default = Default(value="1"),
+        output_max: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -18316,12 +19050,12 @@ class VideoStream(FilterableStream):
     def pullup(
         self,
         *,
-        jl: int = None,
-        jr: int = None,
-        jt: int = None,
-        jb: int = None,
-        sb: bool = None,
-        mp: int = None,
+        jl: int | Default = Default(value="1"),
+        jr: int | Default = Default(value="1"),
+        jt: int | Default = Default(value="4"),
+        jb: int | Default = Default(value="4"),
+        sb: bool | Default = Default(value="0"),
+        mp: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -18411,7 +19145,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def random(self, *, frames: int = None, seed: int = None, **kwargs: Any) -> "VideoStream":
+    def random(
+        self, *, frames: int | Default = Default(value="30"), seed: int | Default = Default(value="-1"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.203 random
@@ -18444,11 +19180,11 @@ class VideoStream(FilterableStream):
     def readeia608(
         self,
         *,
-        scan_min: int = None,
-        scan_max: int = None,
-        spw: float = None,
-        chp: bool = None,
-        lp: bool = None,
+        scan_min: int | Default = Default(value="0"),
+        scan_max: int | Default = Default(value="29"),
+        spw: float | Default = Default(value="0.27"),
+        chp: bool | Default = Default(value="0"),
+        lp: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -18492,7 +19228,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def readvitc(
-        self, *, scan_max: int = None, thr_b: float = None, thr_w: float = None, **kwargs: Any
+        self,
+        *,
+        scan_max: int | Default = Default(value="45"),
+        thr_b: float | Default = Default(value="0.2"),
+        thr_w: float | Default = Default(value="0.6"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -18531,7 +19272,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def realtime(self, *, limit: int = None, speed: float = None, **kwargs: Any) -> "VideoStream":
+    def realtime(
+        self,
+        *,
+        limit: int | Default = Default(value="2000000"),
+        speed: float | Default = Default(value="1.0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         18.15 realtime, arealtime
@@ -18566,7 +19313,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def remap(
-        self, _xmap: "VideoStream", _ymap: "VideoStream", *, format: int = None, fill: str = None, **kwargs: Any
+        self,
+        _xmap: "VideoStream",
+        _ymap: "VideoStream",
+        *,
+        format: int | Default = Default(value="0"),
+        fill: str | Default = Default(value="black"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -18606,7 +19359,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def remap_opencl(
-        self, _xmap: "VideoStream", _ymap: "VideoStream", *, interp: int = None, fill: str = None, **kwargs: Any
+        self,
+        _xmap: "VideoStream",
+        _ymap: "VideoStream",
+        *,
+        interp: int | Default = Default(value="1"),
+        fill: str | Default = Default(value="black"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -18646,7 +19405,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def removegrain(
-        self, *, m0: int = None, m1: int = None, m2: int = None, m3: int = None, **kwargs: Any
+        self,
+        *,
+        m0: int | Default = Default(value="0"),
+        m1: int | Default = Default(value="0"),
+        m2: int | Default = Default(value="0"),
+        m3: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -18779,15 +19544,15 @@ class VideoStream(FilterableStream):
     def rgbashift(
         self,
         *,
-        rh: int = None,
-        rv: int = None,
-        gh: int = None,
-        gv: int = None,
-        bh: int = None,
-        bv: int = None,
-        ah: int = None,
-        av: int = None,
-        edge: int = None,
+        rh: int | Default = Default(value="0"),
+        rv: int | Default = Default(value="0"),
+        gh: int | Default = Default(value="0"),
+        gv: int | Default = Default(value="0"),
+        bh: int | Default = Default(value="0"),
+        bv: int | Default = Default(value="0"),
+        ah: int | Default = Default(value="0"),
+        av: int | Default = Default(value="0"),
+        edge: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -18833,7 +19598,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def roberts(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
+    def roberts(
+        self,
+        *,
+        planes: int | Default = Default(value="15"),
+        scale: float | Default = Default(value="1.0"),
+        delta: float | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.212 roberts
@@ -18868,11 +19640,11 @@ class VideoStream(FilterableStream):
     def rotate(
         self,
         *,
-        angle: str = None,
-        out_w: str = None,
-        out_h: str = None,
-        fillcolor: str = None,
-        bilinear: bool = None,
+        angle: str | Default = Default(value="0"),
+        out_w: str | Default = Default(value="iw"),
+        out_h: str | Default = Default(value="ih"),
+        fillcolor: str | Default = Default(value="black"),
+        bilinear: bool | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -18918,12 +19690,12 @@ class VideoStream(FilterableStream):
     def sab(
         self,
         *,
-        luma_radius: float = None,
-        luma_pre_filter_radius: float = None,
-        luma_strength: float = None,
-        chroma_radius: float = None,
-        chroma_pre_filter_radius: float = None,
-        chroma_strength: float = None,
+        luma_radius: float | Default = Default(value="1.0"),
+        luma_pre_filter_radius: float | Default = Default(value="1.0"),
+        luma_strength: float | Default = Default(value="1.0"),
+        chroma_radius: float | Default = Default(value="0.1 -1"),
+        chroma_pre_filter_radius: float | Default = Default(value="0.1 -1"),
+        chroma_strength: float | Default = Default(value="0.1 -1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -18972,22 +19744,22 @@ class VideoStream(FilterableStream):
         *,
         w: str,
         h: str,
-        flags: str = None,
-        interl: bool = None,
+        flags: str | Default = Default(value=""),
+        interl: bool | Default = Default(value="0"),
         size: str,
-        in_color_matrix: int = None,
-        out_color_matrix: int = None,
-        in_range: int = None,
-        out_range: int = None,
-        in_v_chr_pos: int = None,
-        in_h_chr_pos: int = None,
-        out_v_chr_pos: int = None,
-        out_h_chr_pos: int = None,
-        force_original_aspect_ratio: int = None,
-        force_divisible_by: int = None,
-        param0: float = None,
-        param1: float = None,
-        eval: int = None,
+        in_color_matrix: int | Default = Default(value="-1"),
+        out_color_matrix: int | Default = Default(value="AVCOL_SPC_UNSPECIFIED"),
+        in_range: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"),
+        out_range: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"),
+        in_v_chr_pos: int | Default = Default(value="-513"),
+        in_h_chr_pos: int | Default = Default(value="-513"),
+        out_v_chr_pos: int | Default = Default(value="-513"),
+        out_h_chr_pos: int | Default = Default(value="-513"),
+        force_original_aspect_ratio: int | Default = Default(value="0"),
+        force_divisible_by: int | Default = Default(value="1"),
+        param0: float | Default = Default(value="1.7976931348623157e+308"),
+        param1: float | Default = Default(value="1.7976931348623157e+308"),
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -19062,22 +19834,22 @@ class VideoStream(FilterableStream):
         *,
         w: str,
         h: str,
-        flags: str = None,
-        interl: bool = None,
+        flags: str | Default = Default(value=""),
+        interl: bool | Default = Default(value="0"),
         size: str,
-        in_color_matrix: int = None,
-        out_color_matrix: int = None,
-        in_range: int = None,
-        out_range: int = None,
-        in_v_chr_pos: int = None,
-        in_h_chr_pos: int = None,
-        out_v_chr_pos: int = None,
-        out_h_chr_pos: int = None,
-        force_original_aspect_ratio: int = None,
-        force_divisible_by: int = None,
-        param0: float = None,
-        param1: float = None,
-        eval: int = None,
+        in_color_matrix: int | Default = Default(value="-1"),
+        out_color_matrix: int | Default = Default(value="AVCOL_SPC_UNSPECIFIED"),
+        in_range: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"),
+        out_range: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"),
+        in_v_chr_pos: int | Default = Default(value="-513"),
+        in_h_chr_pos: int | Default = Default(value="-513"),
+        out_v_chr_pos: int | Default = Default(value="-513"),
+        out_h_chr_pos: int | Default = Default(value="-513"),
+        force_original_aspect_ratio: int | Default = Default(value="0"),
+        force_divisible_by: int | Default = Default(value="1"),
+        param0: float | Default = Default(value="1.7976931348623157e+308"),
+        param1: float | Default = Default(value="1.7976931348623157e+308"),
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
         **kwargs: Any
     ) -> tuple["VideoStream", "VideoStream",]:
         """
@@ -19154,12 +19926,12 @@ class VideoStream(FilterableStream):
         *,
         w: str,
         h: str,
-        format: str = None,
+        format: str | Default = Default(value="same"),
         s: str,
-        interp_algo: int = None,
-        force_original_aspect_ratio: int = None,
-        force_divisible_by: int = None,
-        eval: int = None,
+        interp_algo: int | Default = Default(value="NPPI_INTER_CUBIC"),
+        force_original_aspect_ratio: int | Default = Default(value="0"),
+        force_divisible_by: int | Default = Default(value="1"),
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
         **kwargs: Any
     ) -> tuple["VideoStream", "VideoStream",]:
         """
@@ -19214,14 +19986,14 @@ class VideoStream(FilterableStream):
     def scale_cuda(
         self,
         *,
-        w: str = None,
-        h: str = None,
-        interp_algo: int = None,
-        format: str = None,
-        passthrough: bool = None,
-        param: float = None,
-        force_original_aspect_ratio: int = None,
-        force_divisible_by: int = None,
+        w: str | Default = Default(value="iw"),
+        h: str | Default = Default(value="ih"),
+        interp_algo: int | Default = Default(value="INTERP_ALGO_DEFAULT"),
+        format: str | Default = Default(value="AV_PIX_FMT_NONE"),
+        passthrough: bool | Default = Default(value="1"),
+        param: float | Default = Default(value="999999.0f"),
+        force_original_aspect_ratio: int | Default = Default(value="0"),
+        force_divisible_by: int | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -19271,12 +20043,12 @@ class VideoStream(FilterableStream):
         *,
         w: str,
         h: str,
-        format: str = None,
+        format: str | Default = Default(value="same"),
         s: str,
-        interp_algo: int = None,
-        force_original_aspect_ratio: int = None,
-        force_divisible_by: int = None,
-        eval: int = None,
+        interp_algo: int | Default = Default(value="NPPI_INTER_CUBIC"),
+        force_original_aspect_ratio: int | Default = Default(value="0"),
+        force_divisible_by: int | Default = Default(value="1"),
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -19328,8 +20100,8 @@ class VideoStream(FilterableStream):
     def scale_vt(
         self,
         *,
-        w: str = None,
-        h: str = None,
+        w: str | Default = Default(value="iw"),
+        h: str | Default = Default(value="ih"),
         color_matrix: str,
         color_primaries: str,
         color_transfer: str,
@@ -19370,7 +20142,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def scdet(self, *, threshold: float = None, sc_pass: bool = None, **kwargs: Any) -> "VideoStream":
+    def scdet(
+        self,
+        *,
+        threshold: float | Default = Default(value="10.0"),
+        sc_pass: bool | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.223 scdet
@@ -19415,7 +20193,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def scharr(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
+    def scharr(
+        self,
+        *,
+        planes: int | Default = Default(value="15"),
+        scale: float | Default = Default(value="1.0"),
+        delta: float | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.221 scharr
@@ -19448,7 +20233,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def scroll(
-        self, *, horizontal: float = None, vertical: float = None, hpos: float = None, vpos: float = None, **kwargs: Any
+        self,
+        *,
+        horizontal: float | Default = Default(value="0.0"),
+        vertical: float | Default = Default(value="0.0"),
+        hpos: float | Default = Default(value="0.0"),
+        vpos: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -19522,7 +20313,9 @@ class VideoStream(FilterableStream):
 
         return filter_node
 
-    def select(self, *, expr: str = None, outputs: int = None, **kwargs: Any) -> FilterNode:
+    def select(
+        self, *, expr: str | Default = Default(value="1"), outputs: int | Default = Default(value="1"), **kwargs: Any
+    ) -> FilterNode:
         """
 
         18.17 select, aselect
@@ -19562,7 +20355,7 @@ class VideoStream(FilterableStream):
     def selectivecolor(
         self,
         *,
-        correction_method: int = None,
+        correction_method: int | Default = Default(value="CORRECTION_METHOD_ABSOLUTE"),
         reds: str,
         yellows: str,
         greens: str,
@@ -19701,7 +20494,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setdar(self, *, dar: str = None, max: int = None, **kwargs: Any) -> "VideoStream":
+    def setdar(
+        self, *, dar: str | Default = Default(value="0"), max: int | Default = Default(value="100"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.226 setdar, setsar
@@ -19757,7 +20552,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setfield(self, *, mode: int = None, **kwargs: Any) -> "VideoStream":
+    def setfield(self, *, mode: int | Default = Default(value="MODE_AUTO"), **kwargs: Any) -> "VideoStream":
         """
 
         11.227 setfield
@@ -19793,11 +20588,11 @@ class VideoStream(FilterableStream):
     def setparams(
         self,
         *,
-        field_mode: int = None,
-        range: int = None,
-        color_primaries: int = None,
-        color_trc: int = None,
-        colorspace: int = None,
+        field_mode: int | Default = Default(value="MODE_AUTO"),
+        range: int | Default = Default(value="-1"),
+        color_primaries: int | Default = Default(value="-1"),
+        color_trc: int | Default = Default(value="-1"),
+        colorspace: int | Default = Default(value="-1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -19838,7 +20633,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setpts(self, *, expr: str = None, **kwargs: Any) -> "VideoStream":
+    def setpts(self, *, expr: str | Default = Default(value="PTS"), **kwargs: Any) -> "VideoStream":
         """
 
         18.19 setpts, asetpts
@@ -19872,7 +20667,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setrange(self, *, range: int = None, **kwargs: Any) -> "VideoStream":
+    def setrange(self, *, range: int | Default = Default(value="-1"), **kwargs: Any) -> "VideoStream":
         """
 
         18.20 setrange
@@ -19905,7 +20700,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setsar(self, *, sar: str = None, max: int = None, **kwargs: Any) -> "VideoStream":
+    def setsar(
+        self, *, sar: str | Default = Default(value="0"), max: int | Default = Default(value="100"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.226 setdar, setsar
@@ -19961,7 +20758,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def settb(self, *, expr: str = None, **kwargs: Any) -> "VideoStream":
+    def settb(self, *, expr: str | Default = Default(value="intb"), **kwargs: Any) -> "VideoStream":
         """
 
         18.21 settb, asettb
@@ -19996,7 +20793,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def sharpen_npp(self, *, border_type: int = None, **kwargs: Any) -> "VideoStream":
+    def sharpen_npp(
+        self, *, border_type: int | Default = Default(value="NPP_BORDER_REPLICATE"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.229 sharpen_npp
@@ -20026,7 +20825,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def shear(
-        self, *, shx: float = None, shy: float = None, fillcolor: str = None, interp: int = None, **kwargs: Any
+        self,
+        *,
+        shx: float | Default = Default(value="0.0"),
+        shy: float | Default = Default(value="0.0"),
+        fillcolor: str | Default = Default(value="black"),
+        interp: int | Default = Default(value="1"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -20061,7 +20866,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def showinfo(self, *, checksum: bool = None, **kwargs: Any) -> "VideoStream":
+    def showinfo(self, *, checksum: bool | Default = Default(value="1"), **kwargs: Any) -> "VideoStream":
         """
 
         11.231 showinfo
@@ -20096,7 +20901,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def showpalette(self, *, s: int = None, **kwargs: Any) -> "VideoStream":
+    def showpalette(self, *, s: int | Default = Default(value="30"), **kwargs: Any) -> "VideoStream":
         """
 
         11.232 showpalette
@@ -20125,7 +20930,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def shuffleframes(self, *, mapping: str = None, **kwargs: Any) -> "VideoStream":
+    def shuffleframes(self, *, mapping: str | Default = Default(value="0"), **kwargs: Any) -> "VideoStream":
         """
 
         11.233 shuffleframes
@@ -20159,11 +20964,11 @@ class VideoStream(FilterableStream):
     def shufflepixels(
         self,
         *,
-        direction: int = None,
-        mode: int = None,
-        width: int = None,
-        height: int = None,
-        seed: int = None,
+        direction: int | Default = Default(value="0"),
+        mode: int | Default = Default(value="0"),
+        width: int | Default = Default(value="10"),
+        height: int | Default = Default(value="10"),
+        seed: int | Default = Default(value="-1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -20202,7 +21007,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def shuffleplanes(
-        self, *, map0: int = None, map1: int = None, map2: int = None, map3: int = None, **kwargs: Any
+        self,
+        *,
+        map0: int | Default = Default(value="0"),
+        map1: int | Default = Default(value="1"),
+        map2: int | Default = Default(value="2"),
+        map3: int | Default = Default(value="3"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -20240,7 +21051,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def sidedata(self, *, mode: int = None, type: int = None, **kwargs: Any) -> "VideoStream":
+    def sidedata(
+        self, *, mode: int | Default = Default(value="0"), type: int | Default = Default(value="-1"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         18.31 sidedata, asidedata
@@ -20270,7 +21083,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def signalstats(self, *, stat: str = None, out: int = None, c: str = None, **kwargs: Any) -> "VideoStream":
+    def signalstats(
+        self,
+        *,
+        stat: str | Default = Default(value="0"),
+        out: int | Default = Default(value="FILTER_NONE"),
+        c: str | Default = Default(value="yellow"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.236 signalstats
@@ -20309,15 +21129,15 @@ class VideoStream(FilterableStream):
     def signature(
         self,
         *streams: "VideoStream",
-        detectmode: int = None,
-        nb_inputs: int = None,
-        filename: str = None,
-        format: int = None,
-        th_d: int = None,
-        th_dc: int = None,
-        th_xh: int = None,
-        th_di: int = None,
-        th_it: float = None,
+        detectmode: int | Default = Default(value="MODE_OFF"),
+        nb_inputs: int | Default = Default(value="1"),
+        filename: str | Default = Default(value=""),
+        format: int | Default = Default(value="FORMAT_BINARY"),
+        th_d: int | Default = Default(value="9000"),
+        th_dc: int | Default = Default(value="60000"),
+        th_xh: int | Default = Default(value="116"),
+        th_di: int | Default = Default(value="0"),
+        th_it: float | Default = Default(value="0.5"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -20367,7 +21187,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def siti(self, *, print_summary: bool = None, **kwargs: Any) -> "VideoStream":
+    def siti(self, *, print_summary: bool | Default = Default(value="0"), **kwargs: Any) -> "VideoStream":
         """
 
         11.238 siti
@@ -20402,12 +21222,12 @@ class VideoStream(FilterableStream):
     def smartblur(
         self,
         *,
-        luma_radius: float = None,
-        luma_strength: float = None,
-        luma_threshold: int = None,
-        chroma_radius: float = None,
-        chroma_strength: float = None,
-        chroma_threshold: int = None,
+        luma_radius: float | Default = Default(value="1.0"),
+        luma_strength: float | Default = Default(value="1.0"),
+        luma_threshold: int | Default = Default(value="0"),
+        chroma_radius: float | Default = Default(value="0.1 -1"),
+        chroma_strength: float | Default = Default(value="-1.0 -1"),
+        chroma_threshold: int | Default = Default(value="-30 -1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -20451,7 +21271,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def sobel(self, *, planes: int = None, scale: float = None, delta: float = None, **kwargs: Any) -> "VideoStream":
+    def sobel(
+        self,
+        *,
+        planes: int | Default = Default(value="15"),
+        scale: float | Default = Default(value="1.0"),
+        delta: float | Default = Default(value="0.0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.240 sobel
@@ -20487,13 +21314,13 @@ class VideoStream(FilterableStream):
         self,
         _phase: "VideoStream",
         *,
-        sample_rate: int = None,
-        channels: int = None,
-        scale: int = None,
-        slide: int = None,
-        win_func: int = None,
-        overlap: float = None,
-        orientation: int = None,
+        sample_rate: int | Default = Default(value="44100"),
+        channels: int | Default = Default(value="1"),
+        scale: int | Default = Default(value="LOG"),
+        slide: int | Default = Default(value="FULLFRAME"),
+        win_func: int | Default = Default(value="0"),
+        overlap: float | Default = Default(value="1.0"),
+        orientation: int | Default = Default(value="VERTICAL"),
         **kwargs: Any
     ) -> "AudioStream":
         """
@@ -20550,7 +21377,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def split(self, *, outputs: int = None, **kwargs: Any) -> FilterNode:
+    def split(self, *, outputs: int | Default = Default(value="2"), **kwargs: Any) -> FilterNode:
         """
 
         18.33 split, asplit
@@ -20583,7 +21410,13 @@ class VideoStream(FilterableStream):
         return filter_node
 
     def spp(
-        self, *, quality: int = None, qp: int = None, mode: int = None, use_bframe_qp: bool = None, **kwargs: Any
+        self,
+        *,
+        quality: int | Default = Default(value="3"),
+        qp: int | Default = Default(value="0"),
+        mode: int | Default = Default(value="MODE_HARD"),
+        use_bframe_qp: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -20623,11 +21456,11 @@ class VideoStream(FilterableStream):
     def sr(
         self,
         *,
-        dnn_backend: int = None,
-        scale_factor: int = None,
+        dnn_backend: int | Default = Default(value="1"),
+        scale_factor: int | Default = Default(value="2"),
         model: str,
-        input: str = None,
-        output: str = None,
+        input: str | Default = Default(value="x"),
+        output: str | Default = Default(value="y"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -20730,7 +21563,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def stereo3d(self, *, _in: int = None, out: int = None, **kwargs: Any) -> "VideoStream":
+    def stereo3d(
+        self,
+        *,
+        _in: int | Default = Default(value="SIDE_BY_SIDE_LR"),
+        out: int | Default = Default(value="ANAGLYPH_RC_DUBOIS"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.244 stereo3d
@@ -20760,7 +21599,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def streamselect(self, *streams: "VideoStream", inputs: int = None, map: str, **kwargs: Any) -> FilterNode:
+    def streamselect(
+        self, *streams: "VideoStream", inputs: int | Default = Default(value="2"), map: str, **kwargs: Any
+    ) -> FilterNode:
         """
 
         11.245 streamselect, astreamselect
@@ -20820,12 +21661,12 @@ class VideoStream(FilterableStream):
     def swaprect(
         self,
         *,
-        w: str = None,
-        h: str = None,
-        x1: str = None,
-        y1: str = None,
-        x2: str = None,
-        y2: str = None,
+        w: str | Default = Default(value="w/2"),
+        h: str | Default = Default(value="h/2"),
+        x1: str | Default = Default(value="w/2"),
+        y1: str | Default = Default(value="h/2"),
+        x2: str | Default = Default(value="0"),
+        y2: str | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -20893,21 +21734,21 @@ class VideoStream(FilterableStream):
     def tblend(
         self,
         *,
-        c0_mode: int = None,
-        c1_mode: int = None,
-        c2_mode: int = None,
-        c3_mode: int = None,
-        all_mode: int = None,
+        c0_mode: int | Default = Default(value="0"),
+        c1_mode: int | Default = Default(value="0"),
+        c2_mode: int | Default = Default(value="0"),
+        c3_mode: int | Default = Default(value="0"),
+        all_mode: int | Default = Default(value="-1"),
         c0_expr: str,
         c1_expr: str,
         c2_expr: str,
         c3_expr: str,
         all_expr: str,
-        c0_opacity: float = None,
-        c1_opacity: float = None,
-        c2_opacity: float = None,
-        c3_opacity: float = None,
-        all_opacity: float = None,
+        c0_opacity: float | Default = Default(value="1.0"),
+        c1_opacity: float | Default = Default(value="1.0"),
+        c2_opacity: float | Default = Default(value="1.0"),
+        c3_opacity: float | Default = Default(value="1.0"),
+        all_opacity: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -20965,7 +21806,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def telecine(self, *, first_field: int = None, pattern: str = None, **kwargs: Any) -> "VideoStream":
+    def telecine(
+        self,
+        *,
+        first_field: int | Default = Default(value="0"),
+        pattern: str | Default = Default(value="23"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.251 telecine
@@ -21016,14 +21863,14 @@ class VideoStream(FilterableStream):
     def thistogram(
         self,
         *,
-        width: int = None,
-        display_mode: int = None,
-        levels_mode: int = None,
-        components: int = None,
-        bgopacity: float = None,
-        envelope: bool = None,
-        ecolor: str = None,
-        slide: int = None,
+        width: int | Default = Default(value="0"),
+        display_mode: int | Default = Default(value="2"),
+        levels_mode: int | Default = Default(value="0"),
+        components: int | Default = Default(value="7"),
+        bgopacity: float | Default = Default(value="0.9"),
+        envelope: bool | Default = Default(value="0"),
+        ecolor: str | Default = Default(value="gold"),
+        slide: int | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -21075,7 +21922,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def threshold(
-        self, _threshold: "VideoStream", _min: "VideoStream", _max: "VideoStream", *, planes: int = None, **kwargs: Any
+        self,
+        _threshold: "VideoStream",
+        _min: "VideoStream",
+        _max: "VideoStream",
+        *,
+        planes: int | Default = Default(value="15"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -21119,7 +21972,9 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def thumbnail(self, *, n: int = None, log: int = None, **kwargs: Any) -> "VideoStream":
+    def thumbnail(
+        self, *, n: int | Default = Default(value="100"), log: int | Default = Default(value="32"), **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.254 thumbnail
@@ -21156,13 +22011,13 @@ class VideoStream(FilterableStream):
     def tile(
         self,
         *,
-        layout: str = None,
-        nb_frames: int = None,
-        margin: int = None,
-        padding: int = None,
-        color: str = None,
-        overlap: int = None,
-        init_padding: int = None,
+        layout: str | Default = Default(value="6x5"),
+        nb_frames: int | Default = Default(value="0"),
+        margin: int | Default = Default(value="0"),
+        padding: int | Default = Default(value="0"),
+        color: str | Default = Default(value="black"),
+        overlap: int | Default = Default(value="0"),
+        init_padding: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -21207,7 +22062,14 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def tiltandshift(
-        self, *, tilt: int = None, start: int = None, end: int = None, hold: int = None, pad: int = None, **kwargs: Any
+        self,
+        *,
+        tilt: int | Default = Default(value="1"),
+        start: int | Default = Default(value="TILT_NONE"),
+        end: int | Default = Default(value="TILT_NONE"),
+        hold: int | Default = Default(value="0"),
+        pad: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -21270,7 +22132,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def tinterlace(self, *, mode: int = None, flags: str = None, **kwargs: Any) -> "VideoStream":
+    def tinterlace(
+        self,
+        *,
+        mode: int | Default = Default(value="MODE_MERGE"),
+        flags: str | Default = Default(value="0"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.257 tinterlace
@@ -21303,7 +22171,15 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def tlut2(self, *, c0: str = None, c1: str = None, c2: str = None, c3: str = None, **kwargs: Any) -> "VideoStream":
+    def tlut2(
+        self,
+        *,
+        c0: str | Default = Default(value="x"),
+        c1: str | Default = Default(value="x"),
+        c2: str | Default = Default(value="x"),
+        c3: str | Default = Default(value="x"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.154 lut2, tlut2
@@ -21355,7 +22231,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def tmedian(
-        self, *, radius: int = None, planes: int = None, percentile: float = None, **kwargs: Any
+        self,
+        *,
+        radius: int | Default = Default(value="1"),
+        planes: int | Default = Default(value="15"),
+        percentile: float | Default = Default(value="0.5"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -21389,7 +22270,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def tmidequalizer(
-        self, *, radius: int = None, sigma: float = None, planes: int = None, **kwargs: Any
+        self,
+        *,
+        radius: int | Default = Default(value="5"),
+        sigma: float | Default = Default(value="0.5"),
+        planes: int | Default = Default(value="0xF"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -21427,7 +22313,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def tmix(
-        self, *, frames: int = None, weights: str = None, scale: float = None, planes: str = None, **kwargs: Any
+        self,
+        *,
+        frames: int | Default = Default(value="3"),
+        weights: str | Default = Default(value="1 1 1"),
+        scale: float | Default = Default(value="0.0"),
+        planes: str | Default = Default(value="15"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -21463,7 +22355,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def tonemap(
-        self, *, tonemap: int = None, param: float = None, desat: float = None, peak: float = None, **kwargs: Any
+        self,
+        *,
+        tonemap: int | Default = Default(value="TONEMAP_NONE"),
+        param: float | Default = Default(value='__builtin_nanf("0x7fc00000")'),
+        desat: float | Default = Default(value="2.0"),
+        peak: float | Default = Default(value="0.0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -21509,16 +22407,16 @@ class VideoStream(FilterableStream):
     def tonemap_opencl(
         self,
         *,
-        tonemap: int = None,
-        transfer: int = None,
-        matrix: int = None,
-        primaries: int = None,
-        range: int = None,
-        format: str = None,
-        peak: float = None,
-        param: float = None,
-        desat: float = None,
-        threshold: float = None,
+        tonemap: int | Default = Default(value="TONEMAP_NONE"),
+        transfer: int | Default = Default(value="AVCOL_TRC_BT709"),
+        matrix: int | Default = Default(value="-1"),
+        primaries: int | Default = Default(value="-1"),
+        range: int | Default = Default(value="-1"),
+        format: str | Default = Default(value="AV_PIX_FMT_NONE"),
+        peak: float | Default = Default(value="0.0"),
+        param: float | Default = Default(value='__builtin_nanf("0x7fc00000")'),
+        desat: float | Default = Default(value="0.5"),
+        threshold: float | Default = Default(value="0.2"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -21605,13 +22503,13 @@ class VideoStream(FilterableStream):
     def tpad(
         self,
         *,
-        start: int = None,
-        stop: int = None,
-        start_mode: int = None,
-        stop_mode: int = None,
-        start_duration: int = None,
-        stop_duration: int = None,
-        color: str = None,
+        start: int | Default = Default(value="0"),
+        stop: int | Default = Default(value="0"),
+        start_mode: int | Default = Default(value="MODE_ADD"),
+        stop_mode: int | Default = Default(value="MODE_ADD"),
+        start_duration: int | Default = Default(value="0"),
+        stop_duration: int | Default = Default(value="0"),
+        color: str | Default = Default(value="black"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -21653,7 +22551,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def transpose(self, *, dir: int = None, passthrough: int = None, **kwargs: Any) -> "VideoStream":
+    def transpose(
+        self,
+        *,
+        dir: int | Default = Default(value="TRANSPOSE_CCLOCK_FLIP"),
+        passthrough: int | Default = Default(value="TRANSPOSE_PT_TYPE_NONE"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.263 transpose
@@ -21693,7 +22597,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def transpose_npp(self, *, dir: int = None, passthrough: int = None, **kwargs: Any) -> "VideoStream":
+    def transpose_npp(
+        self,
+        *,
+        dir: int | Default = Default(value="NPP_TRANSPOSE_CCLOCK_FLIP"),
+        passthrough: int | Default = Default(value="NPP_TRANSPOSE_PT_TYPE_NONE"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.264 transpose_npp
@@ -21724,7 +22634,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def transpose_vt(self, *, dir: int = None, passthrough: int = None, **kwargs: Any) -> "VideoStream":
+    def transpose_vt(
+        self,
+        *,
+        dir: int | Default = Default(value="TRANSPOSE_CCLOCK_FLIP"),
+        passthrough: int | Default = Default(value="TRANSPOSE_PT_TYPE_NONE"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         14.12 transpose_vt
@@ -21755,7 +22671,13 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def transpose_vulkan(self, *, dir: int = None, passthrough: int = None, **kwargs: Any) -> "VideoStream":
+    def transpose_vulkan(
+        self,
+        *,
+        dir: int | Default = Default(value="TRANSPOSE_CCLOCK_FLIP"),
+        passthrough: int | Default = Default(value="TRANSPOSE_PT_TYPE_NONE"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         14.13 transpose_vulkan
@@ -21789,13 +22711,13 @@ class VideoStream(FilterableStream):
     def trim(
         self,
         *,
-        start: int = None,
-        end: int = None,
-        start_pts: int = None,
-        end_pts: int = None,
-        duration: int = None,
-        start_frame: int = None,
-        end_frame: int = None,
+        start: int | Default = Default(value="9223372036854775807LL"),
+        end: int | Default = Default(value="9223372036854775807LL"),
+        start_pts: int | Default = Default(value="((int64_t)(0x8000000000000000ULL))"),
+        end_pts: int | Default = Default(value="((int64_t)(0x8000000000000000ULL))"),
+        duration: int | Default = Default(value="0"),
+        start_frame: int | Default = Default(value="-1"),
+        end_frame: int | Default = Default(value="9223372036854775807LL"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -21867,7 +22789,11 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def unpremultiply(
-        self, *streams: "VideoStream", planes: int = None, inplace: bool = None, **kwargs: Any
+        self,
+        *streams: "VideoStream",
+        planes: int | Default = Default(value="0xF"),
+        inplace: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -21905,15 +22831,15 @@ class VideoStream(FilterableStream):
     def unsharp(
         self,
         *,
-        luma_msize_x: int = None,
-        luma_msize_y: int = None,
-        luma_amount: float = None,
-        chroma_msize_x: int = None,
-        chroma_msize_y: int = None,
-        chroma_amount: float = None,
-        alpha_msize_x: int = None,
-        alpha_msize_y: int = None,
-        alpha_amount: float = None,
+        luma_msize_x: int | Default = Default(value="5"),
+        luma_msize_y: int | Default = Default(value="5"),
+        luma_amount: float | Default = Default(value="1.0"),
+        chroma_msize_x: int | Default = Default(value="5"),
+        chroma_msize_y: int | Default = Default(value="5"),
+        chroma_amount: float | Default = Default(value="0.0"),
+        alpha_msize_x: int | Default = Default(value="5"),
+        alpha_msize_y: int | Default = Default(value="5"),
+        alpha_amount: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -21966,12 +22892,12 @@ class VideoStream(FilterableStream):
     def unsharp_opencl(
         self,
         *,
-        luma_msize_x: float = None,
-        luma_msize_y: float = None,
-        luma_amount: float = None,
-        chroma_msize_x: float = None,
-        chroma_msize_y: float = None,
-        chroma_amount: float = None,
+        luma_msize_x: float | Default = Default(value="5.0"),
+        luma_msize_y: float | Default = Default(value="5.0"),
+        luma_amount: float | Default = Default(value="1.0"),
+        chroma_msize_x: float | Default = Default(value="5.0"),
+        chroma_msize_y: float | Default = Default(value="5.0"),
+        chroma_amount: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22015,7 +22941,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def untile(self, *, layout: str = None, **kwargs: Any) -> "VideoStream":
+    def untile(self, *, layout: str | Default = Default(value="6x5"), **kwargs: Any) -> "VideoStream":
         """
 
         11.268 untile
@@ -22049,7 +22975,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def uspp(
-        self, *, quality: int = None, qp: int = None, use_bframe_qp: bool = None, codec: str = None, **kwargs: Any
+        self,
+        *,
+        quality: int | Default = Default(value="3"),
+        qp: int | Default = Default(value="0"),
+        use_bframe_qp: bool | Default = Default(value="0"),
+        codec: str | Default = Default(value="snow"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -22095,42 +23027,42 @@ class VideoStream(FilterableStream):
     def v360(
         self,
         *,
-        input: int = None,
-        output: int = None,
-        interp: int = None,
-        w: int = None,
-        h: int = None,
-        in_stereo: int = None,
-        out_stereo: int = None,
-        in_forder: str = None,
-        out_forder: str = None,
-        in_frot: str = None,
-        out_frot: str = None,
-        in_pad: float = None,
-        out_pad: float = None,
-        fin_pad: int = None,
-        fout_pad: int = None,
-        yaw: float = None,
-        pitch: float = None,
-        roll: float = None,
-        rorder: str = None,
-        h_fov: float = None,
-        v_fov: float = None,
-        d_fov: float = None,
-        h_flip: bool = None,
-        v_flip: bool = None,
-        d_flip: bool = None,
-        ih_flip: bool = None,
-        iv_flip: bool = None,
-        in_trans: bool = None,
-        out_trans: bool = None,
-        ih_fov: float = None,
-        iv_fov: float = None,
-        id_fov: float = None,
-        h_offset: float = None,
-        v_offset: float = None,
-        alpha_mask: bool = None,
-        reset_rot: bool = None,
+        input: int | Default = Default(value="EQUIRECTANGULAR"),
+        output: int | Default = Default(value="CUBEMAP_3_2"),
+        interp: int | Default = Default(value="BILINEAR"),
+        w: int | Default = Default(value="0"),
+        h: int | Default = Default(value="0"),
+        in_stereo: int | Default = Default(value="STEREO_2D"),
+        out_stereo: int | Default = Default(value="STEREO_2D"),
+        in_forder: str | Default = Default(value="rludfb"),
+        out_forder: str | Default = Default(value="rludfb"),
+        in_frot: str | Default = Default(value="000000"),
+        out_frot: str | Default = Default(value="000000"),
+        in_pad: float | Default = Default(value="0.f"),
+        out_pad: float | Default = Default(value="0.f"),
+        fin_pad: int | Default = Default(value="0"),
+        fout_pad: int | Default = Default(value="0"),
+        yaw: float | Default = Default(value="0.f"),
+        pitch: float | Default = Default(value="0.f"),
+        roll: float | Default = Default(value="0.f"),
+        rorder: str | Default = Default(value="ypr"),
+        h_fov: float | Default = Default(value="0.f"),
+        v_fov: float | Default = Default(value="0.f"),
+        d_fov: float | Default = Default(value="0.f"),
+        h_flip: bool | Default = Default(value="0"),
+        v_flip: bool | Default = Default(value="0"),
+        d_flip: bool | Default = Default(value="0"),
+        ih_flip: bool | Default = Default(value="0"),
+        iv_flip: bool | Default = Default(value="0"),
+        in_trans: bool | Default = Default(value="0"),
+        out_trans: bool | Default = Default(value="0"),
+        ih_fov: float | Default = Default(value="0.f"),
+        iv_fov: float | Default = Default(value="0.f"),
+        id_fov: float | Default = Default(value="0.f"),
+        h_offset: float | Default = Default(value="0.f"),
+        v_offset: float | Default = Default(value="0.f"),
+        alpha_mask: bool | Default = Default(value="0"),
+        reset_rot: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22233,12 +23165,12 @@ class VideoStream(FilterableStream):
     def vaguedenoiser(
         self,
         *,
-        threshold: float = None,
-        method: int = None,
-        nsteps: int = None,
-        percent: float = None,
-        planes: int = None,
-        type: int = None,
+        threshold: float | Default = Default(value="2.0"),
+        method: int | Default = Default(value="2"),
+        nsteps: int | Default = Default(value="6"),
+        percent: float | Default = Default(value="85.0"),
+        planes: int | Default = Default(value="15"),
+        type: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22285,7 +23217,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def varblur(
-        self, _radius: "VideoStream", *, min_r: int = None, max_r: int = None, planes: int = None, **kwargs: Any
+        self,
+        _radius: "VideoStream",
+        *,
+        min_r: int | Default = Default(value="0"),
+        max_r: int | Default = Default(value="8"),
+        planes: int | Default = Default(value="0xF"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -22326,20 +23264,20 @@ class VideoStream(FilterableStream):
     def vectorscope(
         self,
         *,
-        mode: int = None,
-        x: int = None,
-        y: int = None,
-        intensity: float = None,
-        envelope: int = None,
-        graticule: int = None,
-        opacity: float = None,
-        flags: str = None,
-        bgopacity: float = None,
-        lthreshold: float = None,
-        hthreshold: float = None,
-        colorspace: int = None,
-        tint0: float = None,
-        tint1: float = None,
+        mode: int | Default = Default(value="0"),
+        x: int | Default = Default(value="1"),
+        y: int | Default = Default(value="2"),
+        intensity: float | Default = Default(value="0.004"),
+        envelope: int | Default = Default(value="0"),
+        graticule: int | Default = Default(value="GRAT_NONE"),
+        opacity: float | Default = Default(value="0.75"),
+        flags: str | Default = Default(value="4"),
+        bgopacity: float | Default = Default(value="0.3"),
+        lthreshold: float | Default = Default(value="0.0"),
+        hthreshold: float | Default = Default(value="1.0"),
+        colorspace: int | Default = Default(value="0"),
+        tint0: float | Default = Default(value="0.0"),
+        tint1: float | Default = Default(value="0.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22476,14 +23414,14 @@ class VideoStream(FilterableStream):
     def vibrance(
         self,
         *,
-        intensity: float = None,
-        rbal: float = None,
-        gbal: float = None,
-        bbal: float = None,
-        rlum: float = None,
-        glum: float = None,
-        blum: float = None,
-        alternate: bool = None,
+        intensity: float | Default = Default(value="0.0"),
+        rbal: float | Default = Default(value="1.0"),
+        gbal: float | Default = Default(value="1.0"),
+        bbal: float | Default = Default(value="1.0"),
+        rlum: float | Default = Default(value="0.072186"),
+        glum: float | Default = Default(value="0.715158"),
+        blum: float | Default = Default(value="0.212656"),
+        alternate: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22530,13 +23468,13 @@ class VideoStream(FilterableStream):
     def vidstabdetect(
         self,
         *,
-        result: str = None,
-        shakiness: int = None,
-        accuracy: int = None,
-        stepsize: int = None,
-        mincontrast: float = None,
-        show: int = None,
-        tripod: int = None,
+        result: str | Default = Default(value="transforms.trf"),
+        shakiness: int | Default = Default(value="5"),
+        accuracy: int | Default = Default(value="15"),
+        stepsize: int | Default = Default(value="6"),
+        mincontrast: float | Default = Default(value="0.25"),
+        show: int | Default = Default(value="0"),
+        tripod: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22589,20 +23527,20 @@ class VideoStream(FilterableStream):
     def vidstabtransform(
         self,
         *,
-        input: str = None,
-        smoothing: int = None,
-        optalgo: int = None,
-        maxshift: int = None,
-        maxangle: float = None,
-        crop: int = None,
-        invert: int = None,
-        relative: int = None,
-        zoom: float = None,
-        optzoom: int = None,
-        zoomspeed: float = None,
-        interpol: int = None,
-        tripod: bool = None,
-        debug: bool = None,
+        input: str | Default = Default(value="transforms.trf"),
+        smoothing: int | Default = Default(value="15"),
+        optalgo: int | Default = Default(value="VSOptimalL1"),
+        maxshift: int | Default = Default(value="-1"),
+        maxangle: float | Default = Default(value="-1.0"),
+        crop: int | Default = Default(value="0"),
+        invert: int | Default = Default(value="0"),
+        relative: int | Default = Default(value="1"),
+        zoom: float | Default = Default(value="0.0"),
+        optzoom: int | Default = Default(value="1"),
+        zoomspeed: float | Default = Default(value="0.25"),
+        interpol: int | Default = Default(value="2"),
+        tripod: bool | Default = Default(value="0"),
+        debug: bool | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22710,13 +23648,13 @@ class VideoStream(FilterableStream):
     def vignette(
         self,
         *,
-        angle: str = None,
-        x0: str = None,
-        y0: str = None,
-        mode: int = None,
-        eval: int = None,
-        dither: bool = None,
-        aspect: float = None,
+        angle: str | Default = Default(value="PI/5"),
+        x0: str | Default = Default(value="w/2"),
+        y0: str | Default = Default(value="h/2"),
+        mode: int | Default = Default(value="0"),
+        eval: int | Default = Default(value="EVAL_MODE_INIT"),
+        dither: bool | Default = Default(value="1"),
+        aspect: float | Default = Default(value="1.0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22795,7 +23733,11 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def vstack(
-        self, *streams: "VideoStream", inputs: int = None, shortest: bool = None, **kwargs: Any
+        self,
+        *streams: "VideoStream",
+        inputs: int | Default = Default(value="2"),
+        shortest: bool | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -22833,7 +23775,13 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def w3fdif(
-        self, *, filter: int = None, mode: int = None, parity: int = None, deint: int = None, **kwargs: Any
+        self,
+        *,
+        filter: int | Default = Default(value="1"),
+        mode: int | Default = Default(value="1"),
+        parity: int | Default = Default(value="-1"),
+        deint: int | Default = Default(value="0"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -22883,22 +23831,22 @@ class VideoStream(FilterableStream):
     def waveform(
         self,
         *,
-        mode: int = None,
-        intensity: float = None,
-        mirror: bool = None,
-        display: int = None,
-        components: int = None,
-        envelope: int = None,
-        filter: int = None,
-        graticule: int = None,
-        opacity: float = None,
-        flags: str = None,
-        scale: int = None,
-        bgopacity: float = None,
-        tint0: float = None,
-        tint1: float = None,
-        fitmode: int = None,
-        input: int = None,
+        mode: int | Default = Default(value="1"),
+        intensity: float | Default = Default(value="0.04"),
+        mirror: bool | Default = Default(value="1"),
+        display: int | Default = Default(value="STACK"),
+        components: int | Default = Default(value="1"),
+        envelope: int | Default = Default(value="0"),
+        filter: int | Default = Default(value="0"),
+        graticule: int | Default = Default(value="0"),
+        opacity: float | Default = Default(value="0.75"),
+        flags: str | Default = Default(value="1"),
+        scale: int | Default = Default(value="0"),
+        bgopacity: float | Default = Default(value="0.75"),
+        tint0: float | Default = Default(value="0.0"),
+        tint1: float | Default = Default(value="0.0"),
+        fitmode: int | Default = Default(value="0"),
+        input: int | Default = Default(value="1"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -22962,7 +23910,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def weave(self, *, first_field: int = None, **kwargs: Any) -> "VideoStream":
+    def weave(self, *, first_field: int | Default = Default(value="0"), **kwargs: Any) -> "VideoStream":
         """
 
         11.285 weave, doubleweave
@@ -22995,7 +23943,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def xbr(self, *, n: int = None, **kwargs: Any) -> "VideoStream":
+    def xbr(self, *, n: int | Default = Default(value="3"), **kwargs: Any) -> "VideoStream":
         """
 
         11.286 xbr
@@ -23026,7 +23974,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def xcorrelate(
-        self, _secondary: "VideoStream", *, planes: int = None, secondary: int = None, **kwargs: Any
+        self,
+        _secondary: "VideoStream",
+        *,
+        planes: int | Default = Default(value="7"),
+        secondary: int | Default = Default(value="1"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -23067,9 +24020,9 @@ class VideoStream(FilterableStream):
         self,
         _xfade: "VideoStream",
         *,
-        transition: int = None,
-        duration: int = None,
-        offset: int = None,
+        transition: int | Default = Default(value="FADE"),
+        duration: int | Default = Default(value="1000000"),
+        offset: int | Default = Default(value="0"),
         expr: str,
         **kwargs: Any
     ) -> "VideoStream":
@@ -23115,11 +24068,11 @@ class VideoStream(FilterableStream):
         self,
         _xfade: "VideoStream",
         *,
-        transition: int = None,
+        transition: int | Default = Default(value="1"),
         source: str,
         kernel: str,
-        duration: int = None,
-        offset: int = None,
+        duration: int | Default = Default(value="1000000"),
+        offset: int | Default = Default(value="0"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -23207,7 +24160,12 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def xmedian(
-        self, *streams: "VideoStream", inputs: int = None, planes: int = None, percentile: float = None, **kwargs: Any
+        self,
+        *streams: "VideoStream",
+        inputs: int | Default = Default(value="3"),
+        planes: int | Default = Default(value="15"),
+        percentile: float | Default = Default(value="0.5"),
+        **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -23244,11 +24202,11 @@ class VideoStream(FilterableStream):
     def xstack(
         self,
         *streams: "VideoStream",
-        inputs: int = None,
+        inputs: int | Default = Default(value="2"),
         layout: str,
         grid: str,
-        shortest: bool = None,
-        fill: str = None,
+        shortest: bool | Default = Default(value="0"),
+        fill: str | Default = Default(value="none"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -23289,7 +24247,14 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def yaepblur(self, *, radius: int = None, planes: int = None, sigma: int = None, **kwargs: Any) -> "VideoStream":
+    def yaepblur(
+        self,
+        *,
+        radius: int | Default = Default(value="3"),
+        planes: int | Default = Default(value="1"),
+        sigma: int | Default = Default(value="128"),
+        **kwargs: Any
+    ) -> "VideoStream":
         """
 
         11.293 yaepblur
@@ -23326,12 +24291,12 @@ class VideoStream(FilterableStream):
     def zoompan(
         self,
         *,
-        zoom: str = None,
-        x: str = None,
-        y: str = None,
-        d: str = None,
-        s: str = None,
-        fps: str = None,
+        zoom: str | Default = Default(value="1"),
+        x: str | Default = Default(value="0"),
+        y: str | Default = Default(value="0"),
+        d: str | Default = Default(value="90"),
+        s: str | Default = Default(value="hd720"),
+        fps: str | Default = Default(value="25"),
         **kwargs: Any
     ) -> "VideoStream":
         """
@@ -23380,22 +24345,22 @@ class VideoStream(FilterableStream):
         w: str,
         h: str,
         size: str,
-        dither: int = None,
-        filter: int = None,
-        out_range: int = None,
-        primaries: int = None,
-        transfer: int = None,
-        matrix: int = None,
-        in_range: int = None,
-        primariesin: int = None,
-        transferin: int = None,
-        matrixin: int = None,
-        chromal: int = None,
-        chromalin: int = None,
-        npl: float = None,
-        agamma: bool = None,
-        param_a: float = None,
-        param_b: float = None,
+        dither: int | Default = Default(value="0"),
+        filter: int | Default = Default(value="ZIMG_RESIZE_BILINEAR"),
+        out_range: int | Default = Default(value="-1"),
+        primaries: int | Default = Default(value="-1"),
+        transfer: int | Default = Default(value="-1"),
+        matrix: int | Default = Default(value="-1"),
+        in_range: int | Default = Default(value="-1"),
+        primariesin: int | Default = Default(value="-1"),
+        transferin: int | Default = Default(value="-1"),
+        matrixin: int | Default = Default(value="-1"),
+        chromal: int | Default = Default(value="-1"),
+        chromalin: int | Default = Default(value="-1"),
+        npl: float | Default = Default(value='__builtin_nanf("0x7fc00000")'),
+        agamma: bool | Default = Default(value="1"),
+        param_a: float | Default = Default(value='__builtin_nanf("0x7fc00000")'),
+        param_b: float | Default = Default(value='__builtin_nanf("0x7fc00000")'),
         **kwargs: Any
     ) -> "VideoStream":
         """

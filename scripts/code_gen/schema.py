@@ -35,6 +35,7 @@ class FFmpegFilterOption(BaseModel):
     description: str | None = None
 
     typing: Literal["bool", "int", "float", "str"]
+    default: str | int | float | None = None
     required: bool
 
 
