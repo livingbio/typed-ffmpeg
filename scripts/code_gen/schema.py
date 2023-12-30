@@ -61,4 +61,4 @@ class FFmpegFilter(BaseModel):
 
     def save(self) -> None:
         with (schema_path / f"{self.id}.json").open("w") as ofile:
-            ofile.write(self.model_dump_json())
+            ofile.write(self.model_dump_json(indent=2))

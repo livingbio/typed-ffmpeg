@@ -50,20 +50,20 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
 
         doc = filter_doc_mapping[f.name]
 
-        output.append(
-            FFmpegFilter(
-                id=f.id,
-                filter_type=f.type,
-                name=f.name,
-                description=doc.description,
-                ref=doc.url,
-                is_input_dynamic=f.is_dynamic_inputs,
-                is_output_dynamic=f.is_dynamic_outputs,
-                input_stream_typings=f.input_filter_pads,
-                output_stream_typings=f.output_filter_pads,
-                options=parse_options(f, doc),
-            )
+        f = FFmpegFilter(
+            id=f.id,
+            filter_type=f.type,
+            name=f.name,
+            description=doc.description,
+            ref=doc.url,
+            is_input_dynamic=f.is_dynamic_inputs,
+            is_output_dynamic=f.is_dynamic_outputs,
+            input_stream_typings=f.input_filter_pads,
+            output_stream_typings=f.output_filter_pads,
+            options=parse_options(f, doc),
         )
+        f.save()
+        output.append(f)
 
     render(output, outpath)
 

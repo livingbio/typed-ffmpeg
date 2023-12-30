@@ -12,6 +12,7 @@
         ],
         "choices": [],
         "default": "['.i64 = 2']",
+        "default_value": 2,
         "deprecated": false,
         "help": "specify the number of inputs",
         "name": "inputs",
