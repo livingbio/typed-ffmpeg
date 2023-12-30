@@ -1,3 +1,0 @@
-{
-  "init": "static __attribute__((cold)) int init(AVFilterContext *ctx)\n{\n    AudioAPContext *s = ctx->priv;\n\n    s->fdsp = avpriv_float_dsp_alloc(0);\n    if (!s->fdsp)\n        return (-(12));\n\n    return 0;\n}"
-}

@@ -4,7 +4,7 @@
     "flags": "(1 << 1) | (1 << 3)",
     "id": "ff_vf_split",
     "init": "split_init",
-    "init_src": null,
+    "init_src": "static __attribute__((cold)) int split_init(AVFilterContext *ctx)\n{\n    SplitContext *s = ctx->priv;\n    int i, ret;\n\n    for (i = 0; i < s->nb_outputs; i++) {\n        AVFilterPad pad = { 0 };\n\n        pad.type = ctx->filter->inputs[0].type;\n        pad.name = av_asprintf(\"output%d\", i);\n        if (!pad.name)\n            return (-(12));\n\n        if ((ret = ff_append_outpad_free_name(ctx, &pad)) < 0)\n            return ret;\n    }\n\n    return 0;\n}",
     "input_filter_pads": [
       {
         "name": "default",
@@ -35,7 +35,7 @@
     "flags": "(1 << 1) | (1 << 3)",
     "id": "ff_af_asplit",
     "init": "split_init",
-    "init_src": null,
+    "init_src": "static __attribute__((cold)) int split_init(AVFilterContext *ctx)\n{\n    SplitContext *s = ctx->priv;\n    int i, ret;\n\n    for (i = 0; i < s->nb_outputs; i++) {\n        AVFilterPad pad = { 0 };\n\n        pad.type = ctx->filter->inputs[0].type;\n        pad.name = av_asprintf(\"output%d\", i);\n        if (!pad.name)\n            return (-(12));\n\n        if ((ret = ff_append_outpad_free_name(ctx, &pad)) < 0)\n            return ret;\n    }\n\n    return 0;\n}",
     "input_filter_pads": [
       {
         "name": "default",

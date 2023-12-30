@@ -91,7 +91,6 @@ def extract_av_filter(text: str) -> list[AVFilter]:
     av_options = parse_av_option(text)
     av_filters = parse_av_filter(text)
     av_classes = parse_av_class(text)
-    init_functions = parse_init(text)
     av_filter_pads = parse_av_filter_pad(text) | default_filter_pads
 
     for av_filter in av_filters.values():
@@ -109,8 +108,8 @@ def extract_av_filter(text: str) -> list[AVFilter]:
         if av_filter.outputs_value:
             av_filter.output_filter_pads = av_filter_pads[av_filter.outputs_value]
 
-        if av_filter.init and av_filter.is_dynamic_inputs and av_filter.is_dynamic_outputs:
-            av_filter.init_src = init_functions[av_filter.init_value]
+        if av_filter.init and (av_filter.is_dynamic_inputs or av_filter.is_dynamic_outputs):
+            av_filter.init_src = parse_init(text, av_filter.init_value)
 
         output.append(av_filter)
 
