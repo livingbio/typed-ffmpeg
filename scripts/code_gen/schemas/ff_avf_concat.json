@@ -1,7 +1,7 @@
 {
   "description": "18.9 concat\nConcatenate audio and video streams, joining them together one after the\nother.\n\nThe filter works on segments of synchronized video and audio streams. All\nsegments must have the same number of streams of each type, and that will\nalso be the number of streams at output.\n\nThe filter accepts the following options:\n\n\nThe filter has v+a outputs: first v video outputs, then\na audio outputs.\n\nThere are nx(v+a) inputs: first the inputs for the first\nsegment, in the same order as the outputs, then the inputs for the second\nsegment, etc.\n\nRelated streams do not always have exactly the same duration, for various\nreasons including codec frame size or sloppy authoring. For that reason,\nrelated synchronized streams (e.g. a video and its audio track) should be\nconcatenated at once. The concat filter will use the duration of the longest\nstream in each segment (except the last one), and if necessary pad shorter\naudio streams with silence.\n\nFor this filter to work correctly, all segments must start at timestamp 0.\n\nAll corresponding streams must have the same parameters in all segments; the\nfiltering system will automatically select a common pixel format for video\nstreams, and a common sample format, sample rate and channel layout for\naudio streams, but other settings, such as resolution, must be converted\nexplicitly by the user.\n\nDifferent frame rates are acceptable but will result in variable frame rate\nat output; be sure to configure the output file to handle it.",
   "filter_type": "avf",
-  "formula_input_typings": null,
+  "formula_input_typings": "(['video']*v + ['audio']*a)*n",
   "formula_output_typings": null,
   "id": "ff_avf_concat",
   "input_stream_typings": [],
