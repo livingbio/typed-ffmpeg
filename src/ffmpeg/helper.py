@@ -1,3 +1,5 @@
+import re
+
 from .schema import Default
 
 
@@ -19,4 +21,4 @@ def calculate_dynamic_types(forumla: str, **kwargs: int | Default | str | None |
 
         values = {k: v}
 
-    return eval(forumla, values)
+    return eval(forumla, {"re": re}, values)
