@@ -1,0 +1,151 @@
+{
+  "description": "8.72 biquad\nApply a biquad IIR filter with the given coefficients.\nWhere b0, b1, b2 and a0, a1, a2\nare the numerator and denominator coefficients respectively.\nand channels, c specify which channels to filter, by default all\navailable are filtered.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_biquad",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "biquad",
+  "options": [
+    {
+      "alias": [
+        "a0"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "a0",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "a1"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "a1",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "a2"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "a2",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "b0"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "b0",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "b1"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "b1",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "b2"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "b2",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mix",
+        "m"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "mix",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "channels",
+        "c"
+      ],
+      "default": "all",
+      "description": null,
+      "name": "channels",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "normalize",
+        "n"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "normalize",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "transform",
+        "a"
+      ],
+      "default": "DI",
+      "description": null,
+      "name": "transform",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "precision",
+        "r"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "precision",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "blocksize",
+        "b"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "blocksize",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#biquad"
+}

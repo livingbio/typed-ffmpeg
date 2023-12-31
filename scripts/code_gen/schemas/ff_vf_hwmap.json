@@ -1,0 +1,55 @@
+{
+  "description": "11.122 hwmap\nMap hardware frames to system memory or to another device.\n\nThis filter has several different modes of operation; which one is used depends\non the input and output formats:\n\n Hardware frame input, normal frame output\n\nMap the input frames to system memory and pass them to the output.  If the\noriginal hardware frame is later required (for example, after overlaying\nsomething else on part of it), the hwmap filter can be used again\nin the next mode to retrieve it.\n Normal frame input, hardware frame output\n\nIf the input is actually a software-mapped hardware frame, then unmap it -\nthat is, return the original hardware frame.\n\nOtherwise, a device must be provided.  Create new hardware surfaces on that\ndevice for the output, then map them back to the software format at the input\nand give those frames to the preceding filter.  This will then act like the\nhwupload filter, but may be able to avoid an additional copy when\nthe input is already in a compatible format.\n Hardware frame input and output\n\nA device must be supplied for the output, either directly or with the\nderive_device option.  The input and output devices must be of\ndifferent types and compatible - the exact meaning of this is\nsystem-dependent, but typically it means that they must refer to the same\nunderlying hardware context (for example, refer to the same graphics card).\n\nIf the input frames were originally created on the output device, then unmap\nto retrieve the original frames.\n\nOtherwise, map the frames to the output device - create new hardware frames\non the output corresponding to the frames on the input.\n\nThe following additional parameters are accepted:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_hwmap",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "hwmap",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": "AV_HWFRAME_MAP_READ | AV_HWFRAME_MAP_WRITE",
+      "description": "<dd><p>Set the frame mapping mode.  Some combination of:\n</p><dl compact=\"compact\">\n<dt><var>read</var></dt>\n<dd><p>The mapped frame should be readable.\n</p></dd>\n<dt><var>write</var></dt>\n<dd><p>The mapped frame should be writeable.\n</p></dd>\n<dt><var>overwrite</var></dt>\n<dd><p>The mapping will always overwrite the entire frame.\n</p>\n<p>This may improve performance in some cases, as the original contents of the\nframe need not be loaded.\n</p></dd>\n<dt><var>direct</var></dt>\n<dd><p>The mapping must not involve any copying.\n</p>\n<p>Indirect mappings to copies of frames are created in some cases where either\ndirect mapping is not possible or it would have unexpected properties.\nSetting this flag ensures that the mapping is direct and will fail if that is\nnot possible.\n</p></dd>\n</dl>\n<p>Defaults to <var>read+write</var> if not specified.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "derive_device"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Rather than using the device supplied at initialisation, instead derive a new\ndevice of type <var>type</var> from the device the input frames exist on.\n</p>\n</dd>",
+      "name": "derive_device",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "reverse"
+      ],
+      "default": 0,
+      "description": "<dd><p>In a hardware to hardware mapping, map in reverse - create frames in the sink\nand map them back to the source.  This may be necessary in some cases where\na mapping in one direction is required but only the opposite direction is\nsupported by the devices being used.\n</p>\n<p>This option is dangerous - it may break the preceding filter in undefined\nways if there are any additional constraints on that filter\u2019s output.\nDo not use it without fully understanding the implications of its use.\n</p></dd>",
+      "name": "reverse",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hwmap"
+}

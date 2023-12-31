@@ -1,0 +1,35 @@
+{
+  "description": "18.8 bench, abench\nBenchmark part of a filtergraph.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_abench",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "abench",
+  "options": [
+    {
+      "alias": [
+        "action"
+      ],
+      "default": "ACTION_START",
+      "description": "<dd><p>Start or stop a timer.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>start</samp>\u2019</dt>\n<dd><p>Get the current time, set it as frame metadata (using the key\n<code>lavfi.bench.start_time</code>), and forward the frame to the next filter.\n</p>\n</dd>\n<dt>\u2018<samp>stop</samp>\u2019</dt>\n<dd><p>Get the current time and fetch the <code>lavfi.bench.start_time</code> metadata from\nthe input frame metadata to get the time difference. Time difference, average,\nmaximum and minimum time (respectively <code>t</code>, <code>avg</code>, <code>max</code> and\n<code>min</code>) are then printed. The timestamps are expressed in seconds.\n</p></dd>\n</dl>\n</dd>",
+      "name": "action",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench"
+}

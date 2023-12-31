@@ -1,0 +1,75 @@
+{
+  "description": "8.66 atilt\nApply spectral tilt filter to audio stream.\n\nThis filter apply any spectral roll-off slope over any specified frequency band.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_atilt",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "atilt",
+  "options": [
+    {
+      "alias": [
+        "freq"
+      ],
+      "default": 10000.0,
+      "description": "<dd><p>Set central frequency of tilt in Hz. Default is 10000 Hz.\n</p>\n</dd>",
+      "name": "freq",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "slope"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set slope direction of tilt. Default is 0. Allowed range is from -1 to 1.\n</p>\n</dd>",
+      "name": "slope",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "width"
+      ],
+      "default": 1000.0,
+      "description": "<dd><p>Set width of tilt. Default is 1000. Allowed range is from 100 to 10000.\n</p>\n</dd>",
+      "name": "width",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "order"
+      ],
+      "default": 5,
+      "description": "<dd><p>Set order of tilt filter.\n</p>\n</dd>",
+      "name": "order",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "level"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set input volume level. Allowed range is from 0 to 4.\nDefault is 1.\n</p></dd>",
+      "name": "level",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#atilt"
+}

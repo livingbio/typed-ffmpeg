@@ -1,0 +1,85 @@
+{
+  "description": "8.42 aphaser\nAdd a phasing effect to the input audio.\n\nA phaser filter creates series of peaks and troughs in the frequency spectrum.\nThe position of the peaks and troughs are modulated so that they vary over time, creating a sweeping effect.\n\nA description of the accepted parameters follows.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_aphaser",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "aphaser",
+  "options": [
+    {
+      "alias": [
+        "in_gain"
+      ],
+      "default": 0.4,
+      "description": "<dd><p>Set input gain. Default is 0.4.\n</p>\n</dd>",
+      "name": "in_gain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "out_gain"
+      ],
+      "default": 0.74,
+      "description": "<dd><p>Set output gain. Default is 0.74\n</p>\n</dd>",
+      "name": "out_gain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "delay"
+      ],
+      "default": 3.0,
+      "description": "<dd><p>Set delay in milliseconds. Default is 3.0.\n</p>\n</dd>",
+      "name": "delay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "decay"
+      ],
+      "default": 0.4,
+      "description": "<dd><p>Set decay. Default is 0.4.\n</p>\n</dd>",
+      "name": "decay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "speed"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set modulation speed in Hz. Default is 0.5.\n</p>\n</dd>",
+      "name": "speed",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "default": "WAVE_TRI",
+      "description": "<dd><p>Set modulation type. Default is triangular.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>triangular, t</samp>\u2019</dt>\n<dt>\u2018<samp>sinusoidal, s</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "type",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aphaser"
+}

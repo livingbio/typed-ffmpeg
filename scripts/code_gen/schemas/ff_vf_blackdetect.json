@@ -1,0 +1,58 @@
+{
+  "description": "11.13 blackdetect\nDetect video intervals that are (almost) completely black. Can be\nuseful to detect chapter transitions, commercials, or invalid\nrecordings.\n\nThe filter outputs its detection analysis to both the log as well as\nframe metadata. If a black segment of at least the specified minimum\nduration is found, a line with the start and end timestamps as well\nas duration is printed to the log with level info. In addition,\na log line with level debug is printed per frame showing the\nblack amount detected for that frame.\n\nThe filter also attaches metadata to the first frame of a black\nsegment with key lavfi.black_start and to the first frame\nafter the black segment ends with key lavfi.black_end. The\nvalue is the frame\u2019s timestamp. This metadata is added regardless\nof the minimum duration specified.\n\nThe filter accepts the following options:\n\n\nThe following example sets the maximum pixel threshold to the minimum\nvalue, and detects only black intervals of 2 or more seconds:\n\nblackdetect=d=2:pix_th=0.00",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_blackdetect",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "blackdetect",
+  "options": [
+    {
+      "alias": [
+        "d",
+        "black_min_duration"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>Set the minimum detected black duration expressed in seconds. It must\nbe a non-negative floating point number.\n</p>\n<p>Default value is 2.0.\n</p>\n</dd>",
+      "name": "d",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "picture_black_ratio_th",
+        "pic_th"
+      ],
+      "default": 0.98,
+      "description": "<dd><p>Set the threshold for considering a picture \"black\".\nExpress the minimum value for the ratio:\n</p><div class=\"example\">\n<pre class=\"example\"><var>nb_black_pixels</var> / <var>nb_pixels</var>\n</pre></div>\n<p>for which a picture is considered black.\nDefault value is 0.98.\n</p>\n</dd>",
+      "name": "picture_black_ratio_th",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "pixel_black_th",
+        "pix_th"
+      ],
+      "default": 0.1,
+      "description": "<dd><p>Set the threshold for considering a pixel \"black\".\n</p>\n<p>The threshold expresses the maximum pixel luma value for which a\npixel is considered \"black\". The provided value is scaled according to\nthe following equation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>absolute_threshold</var> = <var>luma_minimum_value</var> + <var>pixel_black_th</var> * <var>luma_range_size</var>\n</pre></div>\n<p><var>luma_range_size</var> and <var>luma_minimum_value</var> depend on\nthe input video format, the range is [0-255] for YUV full-range\nformats and [16-235] for YUV non full-range formats.\n</p>\n<p>Default value is 0.10.\n</p></dd>",
+      "name": "pixel_black_th",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#blackdetect"
+}

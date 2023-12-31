@@ -1,0 +1,59 @@
+{
+  "description": "11.172 multiply\nMultiply first video stream pixels values with second video stream pixels values.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_multiply",
+  "input_stream_typings": [
+    {
+      "name": "source",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "factor",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "multiply",
+  "options": [
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the scale applied to second video stream. By default is <code>1</code>.\nAllowed range is from <code>0</code> to <code>9</code>.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "offset"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set the offset applied to second video stream. By default is <code>0.5</code>.\nAllowed range is from <code>-1</code> to <code>1</code>.\n</p>\n</dd>",
+      "name": "offset",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": "0xF",
+      "description": "<dd><p>Specify planes from input video stream that will be processed.\nBy default all planes are processed.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#multiply"
+}

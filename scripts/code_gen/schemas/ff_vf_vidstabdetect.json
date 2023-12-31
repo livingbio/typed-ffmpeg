@@ -1,0 +1,95 @@
+{
+  "description": "11.274 vidstabdetect\nAnalyze video stabilization/deshaking. Perform pass 1 of 2, see\nvidstabtransform for pass 2.\n\nThis filter generates a file with relative translation and rotation\ntransform information about subsequent frames, which is then used by\nthe vidstabtransform filter.\n\nTo enable compilation of this filter you need to configure FFmpeg with\n--enable-libvidstab.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_vidstabdetect",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "vidstabdetect",
+  "options": [
+    {
+      "alias": [
+        "result"
+      ],
+      "default": "transforms.trf",
+      "description": "<dd><p>Set the path to the file used to write the transforms information.\nDefault value is <samp>transforms.trf</samp>.\n</p>\n</dd>",
+      "name": "result",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "shakiness"
+      ],
+      "default": 5,
+      "description": "<dd><p>Set how shaky the video is and how quick the camera is. It accepts an\ninteger in the range 1-10, a value of 1 means little shakiness, a\nvalue of 10 means strong shakiness. Default value is 5.\n</p>\n</dd>",
+      "name": "shakiness",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "accuracy"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set the accuracy of the detection process. It must be a value in the\nrange 1-15. A value of 1 means low accuracy, a value of 15 means high\naccuracy. Default value is 15.\n</p>\n</dd>",
+      "name": "accuracy",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "stepsize"
+      ],
+      "default": 6,
+      "description": "<dd><p>Set stepsize of the search process. The region around minimum is\nscanned with 1 pixel resolution. Default value is 6.\n</p>\n</dd>",
+      "name": "stepsize",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mincontrast"
+      ],
+      "default": 0.25,
+      "description": "<dd><p>Set minimum contrast. Below this value a local measurement field is\ndiscarded. Must be a floating point value in the range 0-1. Default\nvalue is 0.3.\n</p>\n</dd>",
+      "name": "mincontrast",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "show"
+      ],
+      "default": 0,
+      "description": "<dd><p>Show fields and transforms in the resulting frames. It accepts an\ninteger in the range 0-2. Default value is 0, which disables any\nvisualization.\n</p>\n</dd>",
+      "name": "show",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tripod"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set reference frame number for tripod mode.\n</p>\n<p>If enabled, the motion of the frames is compared to a reference frame\nin the filtered stream, identified by the specified number. The idea\nis to compensate all movements in a more-or-less static scene and keep\nthe camera view absolutely still.\n</p>\n<p>If set to 0, it is disabled. The frames are counted starting from 1.\n</p>\n</dd>",
+      "name": "tripod",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vidstabdetect"
+}

@@ -1,0 +1,75 @@
+{
+  "description": "11.242 sr\nScale the input by applying one of the super-resolution methods based on\nconvolutional neural networks. Supported models:\n\n\n Super-Resolution Convolutional Neural Network model (SRCNN).\nSee https://arxiv.org/abs/1501.00092.\n\n Efficient Sub-Pixel Convolutional Neural Network model (ESPCN).\nSee https://arxiv.org/abs/1609.05158.\n\nTraining scripts as well as scripts for model file (.pb) saving can be found at\nhttps://github.com/XueweiMeng/sr/tree/sr_dnn_native. Original repository\nis at https://github.com/HighVoltageRocknRoll/sr.git.\n\nThe filter accepts the following options:\n\n\nTo get full functionality (such as async execution), please use the dnn_processing filter.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_sr",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "sr",
+  "options": [
+    {
+      "alias": [
+        "dnn_backend"
+      ],
+      "default": 1,
+      "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nthe following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tensorflow</samp>\u2019</dt>\n<dd><p>TensorFlow backend. To enable this backend you\nneed to install the TensorFlow for C library (see\n<a href=\"https://www.tensorflow.org/install/lang_c\">https://www.tensorflow.org/install/lang_c</a>) and configure FFmpeg with\n<code>--enable-libtensorflow</code>\n</p></dd>\n</dl>\n</dd>",
+      "name": "dnn_backend",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale_factor"
+      ],
+      "default": 2,
+      "description": "<dd><p>Set scale factor for SRCNN model. Allowed values are <code>2</code>, <code>3</code> and <code>4</code>.\nDefault value is <code>2</code>. Scale factor is necessary for SRCNN model, because it accepts\ninput upscaled using bicubic upscaling with proper scale factor.\n</p></dd>",
+      "name": "scale_factor",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "model"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats. TensorFlow, OpenVINO backend\ncan load files for only its format.\n</p>\n</dd>",
+      "name": "model",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "input"
+      ],
+      "default": "x",
+      "description": null,
+      "name": "input",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "output"
+      ],
+      "default": "y",
+      "description": null,
+      "name": "output",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#sr"
+}

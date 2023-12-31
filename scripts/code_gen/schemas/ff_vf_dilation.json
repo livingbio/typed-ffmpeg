@@ -1,0 +1,75 @@
+{
+  "description": "11.70 dilation\nApply dilation effect to the video.\n\nThis filter replaces the pixel by the local(3x3) maximum.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_dilation",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "dilation",
+  "options": [
+    {
+      "alias": [
+        "coordinates"
+      ],
+      "default": 255,
+      "description": "<dd><p>Flag which specifies the pixel to refer to. Default is 255 i.e. all eight\npixels are used.\n</p>\n<p>Flags to local 3x3 coordinates maps like this:\n</p>\n<p>1 2 3\n    4   5\n    6 7 8\n</p></dd>",
+      "name": "coordinates",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold0"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
+      "name": "threshold0",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold1"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
+      "name": "threshold1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold2"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
+      "name": "threshold2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold3"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
+      "name": "threshold3",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#dilation"
+}

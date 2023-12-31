@@ -1,0 +1,294 @@
+{
+  "description": "18.22 showcqt\nConvert input audio to a video output representing frequency spectrum\nlogarithmically using Brown-Puckette constant Q transform algorithm with\ndirect frequency domain coefficient calculation (but the transform itself\nis not really constant Q, instead the Q factor is actually variable/clamped),\nwith musical tone scale, from E0 to D#10.\n\nThe filter accepts the following options:",
+  "filter_type": "avf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_avf_showcqt",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "showcqt",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "1920x1080",
+      "description": "<dd><p>Specify the video size for the output. It must be even. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>1920x1080</code>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fps",
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n</dd>",
+      "name": "fps",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "bar_h"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the bargraph height. It must be even. Default value is <code>-1</code> which\ncomputes the bargraph height automatically.\n</p>\n</dd>",
+      "name": "bar_h",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "axis_h"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the axis height. It must be even. Default value is <code>-1</code> which computes\nthe axis height automatically.\n</p>\n</dd>",
+      "name": "axis_h",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sono_h"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the sonogram height. It must be even. Default value is <code>-1</code> which\ncomputes the sonogram height automatically.\n</p>\n</dd>",
+      "name": "sono_h",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fullhd"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set the fullhd resolution. This option is deprecated, use <var>size</var>, <var>s</var>\ninstead. Default value is <code>1</code>.\n</p>\n</dd>",
+      "name": "fullhd",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "sono_v",
+        "volume"
+      ],
+      "default": "16",
+      "description": "<dd><p>Specify the sonogram volume expression. It can contain variables:\n</p><dl compact=\"compact\">\n<dt><samp>bar_v</samp></dt>\n<dd><p>the <var>bar_v</var> evaluated expression\n</p></dd>\n<dt><samp>frequency, freq, f</samp></dt>\n<dd><p>the frequency where it is evaluated\n</p></dd>\n<dt><samp>timeclamp, tc</samp></dt>\n<dd><p>the value of <var>timeclamp</var> option\n</p></dd>\n</dl>\n<p>and functions:\n</p><dl compact=\"compact\">\n<dt><samp>a_weighting(f)</samp></dt>\n<dd><p>A-weighting of equal loudness\n</p></dd>\n<dt><samp>b_weighting(f)</samp></dt>\n<dd><p>B-weighting of equal loudness\n</p></dd>\n<dt><samp>c_weighting(f)</samp></dt>\n<dd><p>C-weighting of equal loudness.\n</p></dd>\n</dl>\n<p>Default value is <code>16</code>.\n</p>\n</dd>",
+      "name": "sono_v",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "bar_v",
+        "volume2"
+      ],
+      "default": "sono_v",
+      "description": "<dd><p>Specify the bargraph volume expression. It can contain variables:\n</p><dl compact=\"compact\">\n<dt><samp>sono_v</samp></dt>\n<dd><p>the <var>sono_v</var> evaluated expression\n</p></dd>\n<dt><samp>frequency, freq, f</samp></dt>\n<dd><p>the frequency where it is evaluated\n</p></dd>\n<dt><samp>timeclamp, tc</samp></dt>\n<dd><p>the value of <var>timeclamp</var> option\n</p></dd>\n</dl>\n<p>and functions:\n</p><dl compact=\"compact\">\n<dt><samp>a_weighting(f)</samp></dt>\n<dd><p>A-weighting of equal loudness\n</p></dd>\n<dt><samp>b_weighting(f)</samp></dt>\n<dd><p>B-weighting of equal loudness\n</p></dd>\n<dt><samp>c_weighting(f)</samp></dt>\n<dd><p>C-weighting of equal loudness.\n</p></dd>\n</dl>\n<p>Default value is <code>sono_v</code>.\n</p>\n</dd>",
+      "name": "bar_v",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "sono_g",
+        "gamma"
+      ],
+      "default": 3.0,
+      "description": "<dd><p>Specify the sonogram gamma. Lower gamma makes the spectrum more contrast,\nhigher gamma makes the spectrum having more range. Default value is <code>3</code>.\nAcceptable range is <code>[1, 7]</code>.\n</p>\n</dd>",
+      "name": "sono_g",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bar_g",
+        "gamma2"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Specify the bargraph gamma. Default value is <code>1</code>. Acceptable range is\n<code>[1, 7]</code>.\n</p>\n</dd>",
+      "name": "bar_g",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bar_t"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Specify the bargraph transparency level. Lower value makes the bargraph sharper.\nDefault value is <code>1</code>. Acceptable range is <code>[0, 1]</code>.\n</p>\n</dd>",
+      "name": "bar_t",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "timeclamp",
+        "tc"
+      ],
+      "default": 0.17,
+      "description": "<dd><p>Specify the transform timeclamp. At low frequency, there is trade-off between\naccuracy in time domain and frequency domain. If timeclamp is lower,\nevent in time domain is represented more accurately (such as fast bass drum),\notherwise event in frequency domain is represented more accurately\n(such as bass guitar). Acceptable range is <code>[0.002, 1]</code>. Default value is <code>0.17</code>.\n</p>\n</dd>",
+      "name": "timeclamp",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "attack"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set attack time in seconds. The default is <code>0</code> (disabled). Otherwise, it\nlimits future samples by applying asymmetric windowing in time domain, useful\nwhen low latency is required. Accepted range is <code>[0, 1]</code>.\n</p>\n</dd>",
+      "name": "attack",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "basefreq"
+      ],
+      "default": 20.015231264080075,
+      "description": "<dd><p>Specify the transform base frequency. Default value is <code>20.01523126408007475</code>,\nwhich is frequency 50 cents below E0. Acceptable range is <code>[10, 100000]</code>.\n</p>\n</dd>",
+      "name": "basefreq",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "endfreq"
+      ],
+      "default": 20495.596814417997,
+      "description": "<dd><p>Specify the transform end frequency. Default value is <code>20495.59681441799654</code>,\nwhich is frequency 50 cents above D#10. Acceptable range is <code>[10, 100000]</code>.\n</p>\n</dd>",
+      "name": "endfreq",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "coeffclamp"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>This option is deprecated and ignored.\n</p>\n</dd>",
+      "name": "coeffclamp",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tlength"
+      ],
+      "default": "384*tc/(384+tc*f)",
+      "description": "<dd><p>Specify the transform length in time domain. Use this option to control accuracy\ntrade-off between time domain and frequency domain at every frequency sample.\nIt can contain variables:\n</p><dl compact=\"compact\">\n<dt><samp>frequency, freq, f</samp></dt>\n<dd><p>the frequency where it is evaluated\n</p></dd>\n<dt><samp>timeclamp, tc</samp></dt>\n<dd><p>the value of <var>timeclamp</var> option.\n</p></dd>\n</dl>\n<p>Default value is <code>384*tc/(384+tc*f)</code>.\n</p>\n</dd>",
+      "name": "tlength",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "count"
+      ],
+      "default": 6,
+      "description": "<dd><p>Specify the transform count for every video frame. Default value is <code>6</code>.\nAcceptable range is <code>[1, 30]</code>.\n</p>\n</dd>",
+      "name": "count",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fcount"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specify the transform count for every single pixel. Default value is <code>0</code>,\nwhich makes it computed automatically. Acceptable range is <code>[0, 10]</code>.\n</p>\n</dd>",
+      "name": "fcount",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fontfile"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Specify font file for use with freetype to draw the axis. If not specified,\nuse embedded font. Note that drawing with font file or embedded font is not\nimplemented with custom <var>basefreq</var> and <var>endfreq</var>, use <var>axisfile</var>\noption instead.\n</p>\n</dd>",
+      "name": "fontfile",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "font"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Specify fontconfig pattern. This has lower priority than <var>fontfile</var>. The\n<code>:</code> in the pattern may be replaced by <code>|</code> to avoid unnecessary\nescaping.\n</p>\n</dd>",
+      "name": "font",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fontcolor"
+      ],
+      "default": "st(0, (midi(f)-59.5)/12);\" \"st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));\" \"r(1-ld(1)) + b(ld(1))",
+      "description": "<dd><p>Specify font color expression. This is arithmetic expression that should return\ninteger value 0xRRGGBB. It can contain variables:\n</p><dl compact=\"compact\">\n<dt><samp>frequency, freq, f</samp></dt>\n<dd><p>the frequency where it is evaluated\n</p></dd>\n<dt><samp>timeclamp, tc</samp></dt>\n<dd><p>the value of <var>timeclamp</var> option\n</p></dd>\n</dl>\n<p>and functions:\n</p><dl compact=\"compact\">\n<dt><samp>midi(f)</samp></dt>\n<dd><p>midi number of frequency f, some midi numbers: E0(16), C1(24), C2(36), A4(69)\n</p></dd>\n<dt><samp>r(x), g(x), b(x)</samp></dt>\n<dd><p>red, green, and blue value of intensity x.\n</p></dd>\n</dl>\n<p>Default value is <code>st(0, (midi(f)-59.5)/12);\nst(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));\nr(1-ld(1)) + b(ld(1))</code>.\n</p>\n</dd>",
+      "name": "fontcolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "axisfile"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Specify image file to draw the axis. This option override <var>fontfile</var> and\n<var>fontcolor</var> option.\n</p>\n</dd>",
+      "name": "axisfile",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "axis",
+        "text"
+      ],
+      "default": 1,
+      "description": "<dd><p>Enable/disable drawing text to the axis. If it is set to <code>0</code>, drawing to\nthe axis is disabled, ignoring <var>fontfile</var> and <var>axisfile</var> option.\nDefault value is <code>1</code>.\n</p>\n</dd>",
+      "name": "axis",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "csp"
+      ],
+      "default": "AVCOL_SPC_UNSPECIFIED",
+      "description": "<dd><p>Set colorspace. The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>unspecified</samp>\u2019</dt>\n<dd><p>Unspecified (default)\n</p>\n</dd>\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dd><p>BT.709\n</p>\n</dd>\n<dt>\u2018<samp>fcc</samp>\u2019</dt>\n<dd><p>FCC\n</p>\n</dd>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dd><p>BT.470BG or BT.601-6 625\n</p>\n</dd>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dd><p>SMPTE-170M or BT.601-6 525\n</p>\n</dd>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dd><p>SMPTE-240M\n</p>\n</dd>\n<dt>\u2018<samp>bt2020ncl</samp>\u2019</dt>\n<dd><p>BT.2020 with non-constant luminance\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "csp",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cscheme"
+      ],
+      "default": "1|0.5|0|0|0.5|1",
+      "description": "<dd><p>Set spectrogram color scheme. This is list of floating point values with format\n<code>left_r|left_g|left_b|right_r|right_g|right_b</code>.\nThe default is <code>1|0.5|0|0|0.5|1</code>.\n</p>\n</dd>",
+      "name": "cscheme",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#showcqt"
+}

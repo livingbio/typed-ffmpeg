@@ -1,0 +1,55 @@
+{
+  "description": "11.36 colorkey\nRGB colorspace color keying.\nThis filter operates on 8-bit RGB format frames by setting the alpha component of each pixel\nwhich falls within the similarity radius of the key color to 0. The alpha value for pixels outside\nthe similarity radius depends on the value of the blend option.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_colorkey",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "colorkey",
+  "options": [
+    {
+      "alias": [
+        "color"
+      ],
+      "default": "black",
+      "description": "<dd><p>Set the color for which alpha will be set to 0 (full transparency).\nSee <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nDefault is <code>black</code>.\n</p>\n</dd>",
+      "name": "color",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "similarity"
+      ],
+      "default": 0.01,
+      "description": "<dd><p>Set the radius from the key color within which other colors also have full transparency.\nThe computed distance is related to the unit fractional distance in 3D space between the RGB values\nof the key color and the pixel\u2019s color. Range is 0.01 to 1.0. 0.01 matches within a very small radius\naround the exact key color, while 1.0 matches everything.\nDefault is <code>0.01</code>.\n</p>\n</dd>",
+      "name": "similarity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blend"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set how the alpha value for pixels that fall outside the similarity radius is computed.\n0.0 makes pixels either fully transparent or fully opaque.\nHigher values result in semi-transparent pixels, with greater transparency\nthe more similar the pixel color is to the key color.\nRange is 0.0 to 1.0. Default is <code>0.0</code>.\n</p></dd>",
+      "name": "blend",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorkey"
+}

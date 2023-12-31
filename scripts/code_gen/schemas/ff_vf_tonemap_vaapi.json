@@ -1,0 +1,68 @@
+{
+  "description": "13.2 tonemap_vaapi\nPerform HDR(High Dynamic Range) to SDR(Standard Dynamic Range) conversion with tone-mapping.\nIt maps the dynamic range of HDR10 content to the SDR content.\nIt currently only accepts HDR10 as input.\n\nIt accepts the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_tonemap_vaapi",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "tonemap_vaapi",
+  "options": [
+    {
+      "alias": [
+        "format"
+      ],
+      "default": null,
+      "description": "<dd><p>Specify the output pixel format.\n</p>\n<p>Currently supported formats are:\n</p><dl compact=\"compact\">\n<dt><var>p010</var></dt>\n<dt><var>nv12</var></dt>\n</dl>\n<p>Default is nv12.\n</p>\n</dd>",
+      "name": "format",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "matrix",
+        "m"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the output colorspace matrix.\n</p>\n<p>Default is same as input.\n</p>\n</dd>",
+      "name": "matrix",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "primaries",
+        "p"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the output color primaries.\n</p>\n<p>Default is same as input.\n</p>\n</dd>",
+      "name": "primaries",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "transfer",
+        "t"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the output transfer characteristics.\n</p>\n<p>Default is bt709.\n</p>\n</dd>",
+      "name": "transfer",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tonemap_005fvaapi"
+}

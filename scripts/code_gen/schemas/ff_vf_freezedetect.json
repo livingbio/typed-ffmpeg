@@ -1,0 +1,47 @@
+{
+  "description": "11.105 freezedetect\nDetect frozen video.\n\nThis filter logs a message and sets frame metadata when it detects that the\ninput video has no significant change in content during a specified duration.\nVideo freeze detection calculates the mean average absolute difference of all\nthe components of video frames and compares it to a noise floor.\n\nThe printed times and duration are expressed in seconds. The\nlavfi.freezedetect.freeze_start metadata key is set on the first frame\nwhose timestamp equals or exceeds the detection duration and it contains the\ntimestamp of the first frame of the freeze. The\nlavfi.freezedetect.freeze_duration and\nlavfi.freezedetect.freeze_end metadata keys are set on the first frame\nafter the freeze.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_freezedetect",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "freezedetect",
+  "options": [
+    {
+      "alias": [
+        "n",
+        "noise"
+      ],
+      "default": 0.001,
+      "description": "<dd><p>Set noise tolerance. Can be specified in dB (in case \"dB\" is appended to the\nspecified value) or as a difference ratio between 0 and 1. Default is -60dB, or\n0.001.\n</p>\n</dd>",
+      "name": "n",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "d",
+        "duration"
+      ],
+      "default": 2000000,
+      "description": "<dd><p>Set freeze duration until notification (default is 2 seconds).\n</p></dd>",
+      "name": "d",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#freezedetect"
+}

@@ -1,0 +1,55 @@
+{
+  "description": "11.10 bilateral\nApply bilateral filter, spatial smoothing while preserving edges.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_bilateral",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "bilateral",
+  "options": [
+    {
+      "alias": [
+        "sigmaS"
+      ],
+      "default": 0.1,
+      "description": "<dd><p>Set sigma of gaussian function to calculate spatial weight.\nAllowed range is 0 to 512. Default is 0.1.\n</p>\n</dd>",
+      "name": "sigmaS",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sigmaR"
+      ],
+      "default": 0.1,
+      "description": "<dd><p>Set sigma of gaussian function to calculate range weight.\nAllowed range is 0 to 1. Default is 0.1.\n</p>\n</dd>",
+      "name": "sigmaR",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set planes to filter. Default is first only.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#bilateral"
+}

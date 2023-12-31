@@ -1,0 +1,167 @@
+{
+  "description": "18.24 showfreqs\nConvert input audio to video output representing the audio power spectrum.\nAudio amplitude is on Y-axis while frequency is on X-axis.\n\nThe filter accepts the following options:",
+  "filter_type": "avf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_avf_showfreqs",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "showfreqs",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "1024x512",
+      "description": "<dd><p>Specify size of video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault is <code>1024x512</code>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": "<dd><p>Set video rate. Default is <code>25</code>.\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": "BAR",
+      "description": "<dd><p>Set display mode.\nThis set how each frequency bin will be represented.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dt>\u2018<samp>bar</samp>\u2019</dt>\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n</dl>\n<p>Default is <code>bar</code>.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ascale"
+      ],
+      "default": "AS_LOG",
+      "description": "<dd><p>Set amplitude scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear scale.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root scale.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root scale.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic scale.\n</p></dd>\n</dl>\n<p>Default is <code>log</code>.\n</p>\n</dd>",
+      "name": "ascale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fscale"
+      ],
+      "default": "FS_LINEAR",
+      "description": "<dd><p>Set frequency scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear scale.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic scale.\n</p>\n</dd>\n<dt>\u2018<samp>rlog</samp>\u2019</dt>\n<dd><p>Reverse logarithmic scale.\n</p></dd>\n</dl>\n<p>Default is <code>lin</code>.\n</p>\n</dd>",
+      "name": "fscale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_size"
+      ],
+      "default": 2048,
+      "description": "<dd><p>Set window size. Allowed range is from 16 to 65536.\n</p>\n<p>Default is <code>2048</code>\n</p>\n</dd>",
+      "name": "win_size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_func"
+      ],
+      "default": "WFUNC_HANNING",
+      "description": "<dd><p>Set windowing function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hanning</code>.\n</p>\n</dd>",
+      "name": "win_func",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set window overlap. In range <code>[0, 1]</code>. Default is <code>1</code>,\nwhich means optimal overlap for selected window function will be picked.\n</p>\n</dd>",
+      "name": "overlap",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "averaging"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set time averaging. Setting this to 0 will display current maximal peaks.\nDefault is <code>1</code>, which means time averaging is disabled.\n</p>\n</dd>",
+      "name": "averaging",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "colors"
+      ],
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
+      "description": "<dd><p>Specify list of colors separated by space or by \u2019|\u2019 which will be used to\ndraw channel frequencies. Unrecognized or missing colors will be replaced\nby white color.\n</p>\n</dd>",
+      "name": "colors",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "cmode"
+      ],
+      "default": "COMBINED",
+      "description": "<dd><p>Set channel display mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>combined</samp>\u2019</dt>\n<dt>\u2018<samp>separate</samp>\u2019</dt>\n</dl>\n<p>Default is <code>combined</code>.\n</p>\n</dd>",
+      "name": "cmode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "minamp"
+      ],
+      "default": 1e-06,
+      "description": "<dd><p>Set minimum amplitude used in <code>log</code> amplitude scaler.\n</p>\n</dd>",
+      "name": "minamp",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "data"
+      ],
+      "default": "MAGNITUDE",
+      "description": "<dd><p>Set data display mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>magnitude</samp>\u2019</dt>\n<dt>\u2018<samp>phase</samp>\u2019</dt>\n<dt>\u2018<samp>delay</samp>\u2019</dt>\n</dl>\n<p>Default is <code>magnitude</code>.\n</p>\n</dd>",
+      "name": "data",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "channels"
+      ],
+      "default": "all",
+      "description": "<dd><p>Set channels to use when processing audio. By default all are processed.\n</p></dd>",
+      "name": "channels",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#showfreqs"
+}

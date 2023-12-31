@@ -1,0 +1,75 @@
+{
+  "description": "8.24 afftfilt\nApply arbitrary expressions to samples in frequency domain.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_afftfilt",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "afftfilt",
+  "options": [
+    {
+      "alias": [
+        "real"
+      ],
+      "default": "re",
+      "description": "<dd><p>Set frequency domain real expression for each separate channel separated\nby \u2019|\u2019. Default is \"re\".\nIf the number of input channels is greater than the number of\nexpressions, the last specified expression is used for the remaining\noutput channels.\n</p>\n</dd>",
+      "name": "real",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "imag"
+      ],
+      "default": "im",
+      "description": "<dd><p>Set frequency domain imaginary expression for each separate channel\nseparated by \u2019|\u2019. Default is \"im\".\n</p>\n<p>Each expression in <var>real</var> and <var>imag</var> can contain the following\nconstants and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>sr</samp></dt>\n<dd><p>sample rate\n</p>\n</dd>\n<dt><samp>b</samp></dt>\n<dd><p>current frequency bin number\n</p>\n</dd>\n<dt><samp>nb</samp></dt>\n<dd><p>number of available bins\n</p>\n</dd>\n<dt><samp>ch</samp></dt>\n<dd><p>channel number of the current expression\n</p>\n</dd>\n<dt><samp>chs</samp></dt>\n<dd><p>number of channels\n</p>\n</dd>\n<dt><samp>pts</samp></dt>\n<dd><p>current frame pts\n</p>\n</dd>\n<dt><samp>re</samp></dt>\n<dd><p>current real part of frequency bin of current channel\n</p>\n</dd>\n<dt><samp>im</samp></dt>\n<dd><p>current imaginary part of frequency bin of current channel\n</p>\n</dd>\n<dt><samp>real(b, ch)</samp></dt>\n<dd><p>Return the value of real part of frequency bin at location (<var>bin</var>,<var>channel</var>)\n</p>\n</dd>\n<dt><samp>imag(b, ch)</samp></dt>\n<dd><p>Return the value of imaginary part of frequency bin at location (<var>bin</var>,<var>channel</var>)\n</p></dd>\n</dl>\n</dd>",
+      "name": "imag",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "win_size"
+      ],
+      "default": 4096,
+      "description": "<dd><p>Set window size. Allowed range is from 16 to 131072.\nDefault is <code>4096</code>\n</p>\n</dd>",
+      "name": "win_size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_func"
+      ],
+      "default": "WFUNC_HANNING",
+      "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
+      "name": "win_func",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "default": 0.75,
+      "description": "<dd><p>Set window overlap. If set to 1, the recommended overlap for selected\nwindow function will be picked. Default is <code>0.75</code>.\n</p></dd>",
+      "name": "overlap",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#afftfilt"
+}

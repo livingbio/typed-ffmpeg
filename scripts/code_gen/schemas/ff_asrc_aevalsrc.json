@@ -1,0 +1,74 @@
+{
+  "description": "9.2 aevalsrc\nGenerate an audio signal specified by an expression.\n\nThis source accepts in input one or more expressions (one for each\nchannel), which are evaluated and used to generate a corresponding\naudio signal.\n\nThis source accepts the following options:\n\n\nEach expression in exprs can contain the following constants:",
+  "filter_type": "asrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_asrc_aevalsrc",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "aevalsrc",
+  "options": [
+    {
+      "alias": [
+        "exprs"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the \u2019|\u2019-separated expressions list for each separate channel. In case the\n<samp>channel_layout</samp> option is not specified, the selected channel layout\ndepends on the number of provided expressions. Otherwise the last\nspecified expression is applied to the remaining output channels.\n</p>\n</dd>",
+      "name": "exprs",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "nb_samples",
+        "n"
+      ],
+      "default": 1024,
+      "description": "<dd><p>Set the number of samples per channel per each output frame,\ndefault to 1024.\n</p>\n</dd>",
+      "name": "nb_samples",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sample_rate",
+        "s"
+      ],
+      "default": "44100",
+      "description": "<dd><p>Specify the sample rate, default to 44100.\n</p></dd>",
+      "name": "sample_rate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the minimum duration of the sourced audio. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nNote that the resulting duration may be greater than the specified\nduration, as the generated audio is always cut at the end of a\ncomplete frame.\n</p>\n<p>If not specified, or the expressed duration is negative, the audio is\nsupposed to be generated forever.\n</p>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "channel_layout",
+        "c"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the channel layout. The number of channels in the specified layout\nmust be equal to the number of specified expressions.\n</p>\n</dd>",
+      "name": "channel_layout",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aevalsrc"
+}

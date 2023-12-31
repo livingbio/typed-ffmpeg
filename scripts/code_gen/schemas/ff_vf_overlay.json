@@ -1,0 +1,109 @@
+{
+  "description": "11.183 overlay\nOverlay one video on top of another.\n\nIt takes two inputs and has one output. The first input is the \"main\"\nvideo on which the second input is overlaid.\n\nIt accepts the following parameters:\n\nA description of the accepted options follows.\n\n\nThe x, and y expressions can contain the following\nparameters.\n\n\nThis filter also supports the framesync options.\n\nNote that the n, t variables are available only\nwhen evaluation is done per frame, and will evaluate to NAN\nwhen eval is set to \u2018init\u2019.\n\nBe aware that frames are taken from each input video in timestamp\norder, hence, if their initial timestamps differ, it is a good idea\nto pass the two inputs through a setpts=PTS-STARTPTS filter to\nhave them begin in the same zero timestamp, as the example for\nthe movie filter does.\n\nYou can chain together more overlays but you should test the\nefficiency of such approach.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_overlay",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "overlay",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "overlay",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "default": "0",
+      "description": "<dd><p>Set the expression for the x and y coordinates of the overlaid video\non the main video. Default value is \"0\" for both expressions. In case\nthe expression is invalid, it is set to a huge value (meaning that the\noverlay will not be displayed within the output visible area).\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": "0",
+      "description": "<dd><p>Set the expression for the x and y coordinates of the overlaid video\non the main video. Default value is \"0\" for both expressions. In case\nthe expression is invalid, it is set to a huge value (meaning that the\noverlay will not be displayed within the output visible area).\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "eof_action"
+      ],
+      "default": "EOF_ACTION_REPEAT",
+      "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
+      "name": "eof_action",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "eval"
+      ],
+      "default": "EVAL_MODE_FRAME",
+      "description": "<dd><p>Set when the expressions for <samp>x</samp>, and <samp>y</samp> are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>only evaluate expressions once during the filter initialization or\nwhen a command is processed\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expressions for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>frame</samp>\u2019.\n</p>\n</dd>",
+      "name": "eval",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "default": 0,
+      "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
+      "name": "shortest",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "format"
+      ],
+      "default": "OVERLAY_FORMAT_YUV420",
+      "description": "<dd><p>Set the format for the output video.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>yuv420</samp>\u2019</dt>\n<dd><p>force YUV 4:2:0 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv420p10</samp>\u2019</dt>\n<dd><p>force YUV 4:2:0 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv422</samp>\u2019</dt>\n<dd><p>force YUV 4:2:2 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv422p10</samp>\u2019</dt>\n<dd><p>force YUV 4:2:2 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv444</samp>\u2019</dt>\n<dd><p>force YUV 4:4:4 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv444p10</samp>\u2019</dt>\n<dd><p>force YUV 4:4:4 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>rgb</samp>\u2019</dt>\n<dd><p>force RGB 8-bit packed output\n</p>\n</dd>\n<dt>\u2018<samp>gbrp</samp>\u2019</dt>\n<dd><p>force RGB 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>automatically pick format\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>yuv420</samp>\u2019.\n</p>\n</dd>",
+      "name": "format",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "repeatlast"
+      ],
+      "default": 1,
+      "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
+      "name": "repeatlast",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set format of alpha of the overlaid video, it can be <var>straight</var> or\n<var>premultiplied</var>. Default is <var>straight</var>.\n</p></dd>",
+      "name": "alpha",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#overlay"
+}

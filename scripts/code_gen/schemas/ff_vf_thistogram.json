@@ -1,0 +1,112 @@
+{
+  "description": "11.252 thistogram\nCompute and draw a color distribution histogram for the input video across time.\n\nUnlike histogram video filter which only shows histogram of single input frame\nat certain time, this filter shows also past histograms of number of frames defined\nby width option.\n\nThe computed histogram is a representation of the color component\ndistribution in an image.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_thistogram",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "thistogram",
+  "options": [
+    {
+      "alias": [
+        "width",
+        "w"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set width of single color component output. Default value is <code>0</code>.\nValue of <code>0</code> means width will be picked from input video.\nThis also set number of passed histograms to keep.\nAllowed range is [0, 8192].\n</p>\n</dd>",
+      "name": "width",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "display_mode",
+        "d"
+      ],
+      "default": 2,
+      "description": "<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>stack</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed below each other.\n</p>\n</dd>\n<dt>\u2018<samp>parade</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed side by side.\n</p>\n</dd>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dd><p>Presents information identical to that in the <code>parade</code>, except\nthat the graphs representing color components are superimposed directly\nover one another.\n</p></dd>\n</dl>\n<p>Default is <code>stack</code>.\n</p>\n</dd>",
+      "name": "display_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "levels_mode",
+        "m"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.\nDefault is <code>linear</code>.\n</p>\n</dd>",
+      "name": "levels_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "components",
+        "c"
+      ],
+      "default": 7,
+      "description": "<dd><p>Set what color components to display.\nDefault is <code>7</code>.\n</p>\n</dd>",
+      "name": "components",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bgopacity",
+        "b"
+      ],
+      "default": 0.9,
+      "description": "<dd><p>Set background opacity. Default is <code>0.9</code>.\n</p>\n</dd>",
+      "name": "bgopacity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "envelope",
+        "e"
+      ],
+      "default": 0,
+      "description": "<dd><p>Show envelope. Default is disabled.\n</p>\n</dd>",
+      "name": "envelope",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "ecolor",
+        "ec"
+      ],
+      "default": "gold",
+      "description": "<dd><p>Set envelope color. Default is <code>gold</code>.\n</p>\n</dd>",
+      "name": "ecolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "slide"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Draw new frame when right border is reached.\n</p>\n</dd>\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>\u2018<samp>rscroll</samp>\u2019</dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>\u2018<samp>picture</samp>\u2019</dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n<p>Default is <code>replace</code>.\n</p></dd>",
+      "name": "slide",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#thistogram"
+}

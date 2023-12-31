@@ -1,0 +1,24 @@
+{
+  "description": "11.121 hwdownload\nDownload hardware frames to system memory.\n\nThe input must be in hardware frames, and the output a non-hardware format.\nNot all formats will be supported on the output - it may be necessary to insert\nan additional format filter immediately following in the graph to get\nthe output in a supported format.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_hwdownload",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "hwdownload",
+  "options": [],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hwdownload"
+}

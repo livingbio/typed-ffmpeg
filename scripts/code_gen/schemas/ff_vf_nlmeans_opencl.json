@@ -1,0 +1,75 @@
+{
+  "description": "12.8 nlmeans_opencl\nNon-local Means denoise filter through OpenCL, this filter accepts same options as nlmeans.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_nlmeans_opencl",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "nlmeans_opencl",
+  "options": [
+    {
+      "alias": [
+        "s"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "s",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "p"
+      ],
+      "default": "2*3+1",
+      "description": null,
+      "name": "p",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pc"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "pc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "r"
+      ],
+      "default": "7*2+1",
+      "description": null,
+      "name": "r",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "rc"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "rc",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#nlmeans_005fopencl"
+}

@@ -1,0 +1,42 @@
+{
+  "description": "18.17 select, aselect\nSelect frames to pass in output.\n\nThis filter accepts the following options:\n\n\nThe expression can contain the following constants:\n\n\nThe default value of the select expression is \"1\".",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_select",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "select",
+  "options": [
+    {
+      "alias": [
+        "expr",
+        "e"
+      ],
+      "default": "1",
+      "description": "<dd><p>Set expression, which is evaluated for each input frame.\n</p>\n<p>If the expression is evaluated to zero, the frame is discarded.\n</p>\n<p>If the evaluation result is negative or NaN, the frame is sent to the\nfirst output; otherwise it is sent to the output with index\n<code>ceil(val)-1</code>, assuming that the input index starts from 0.\n</p>\n<p>For example a value of <code>1.2</code> corresponds to the output with index\n<code>ceil(1.2)-1 = 2-1 = 1</code>, that is the second output.\n</p>\n</dd>",
+      "name": "expr",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "outputs",
+        "n"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set the number of outputs. The output to which to send the selected\nframe is based on the result of the evaluation. Default value is 1.\n</p></dd>",
+      "name": "outputs",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect"
+}

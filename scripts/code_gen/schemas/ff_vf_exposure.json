@@ -1,0 +1,45 @@
+{
+  "description": "11.86 exposure\nAdjust exposure of the video stream.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_exposure",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "exposure",
+  "options": [
+    {
+      "alias": [
+        "exposure"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the exposure correction in EV. Allowed range is from -3.0 to 3.0 EV\nDefault value is 0 EV.\n</p>\n</dd>",
+      "name": "exposure",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "black"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the black level correction. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p></dd>",
+      "name": "black",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#exposure"
+}

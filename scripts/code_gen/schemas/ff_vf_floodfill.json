@@ -1,0 +1,125 @@
+{
+  "description": "11.99 floodfill\nFlood area with values of same pixel components with another values.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_floodfill",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "floodfill",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set pixel x coordinate.\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set pixel y coordinate.\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s0"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set source #0 component value.\n</p>\n</dd>",
+      "name": "s0",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s1"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set source #1 component value.\n</p>\n</dd>",
+      "name": "s1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s2"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set source #2 component value.\n</p>\n</dd>",
+      "name": "s2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s3"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set source #3 component value.\n</p>\n</dd>",
+      "name": "s3",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "d0"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set destination #0 component value.\n</p>\n</dd>",
+      "name": "d0",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "d1"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set destination #1 component value.\n</p>\n</dd>",
+      "name": "d1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "d2"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set destination #2 component value.\n</p>\n</dd>",
+      "name": "d2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "d3"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set destination #3 component value.\n</p></dd>",
+      "name": "d3",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#floodfill"
+}

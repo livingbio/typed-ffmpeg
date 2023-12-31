@@ -1,0 +1,35 @@
+{
+  "description": "11.281 vmafmotion\nObtain the average VMAF motion score of a video.\nIt is one of the component metrics of VMAF.\n\nThe obtained average motion score is printed through the logging system.\n\nThe filter accepts the following options:\n\n\nExample:\n\nffmpeg -i ref.mpg -vf vmafmotion -f null -",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_vmafmotion",
+  "input_stream_typings": [
+    {
+      "name": "reference",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "vmafmotion",
+  "options": [
+    {
+      "alias": [
+        "stats_file"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>If specified, the filter will use the named file to save the motion score of\neach frame with respect to the previous frame.\nWhen filename equals \"-\" the data is sent to standard output.\n</p></dd>",
+      "name": "stats_file",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vmafmotion"
+}

@@ -1,0 +1,95 @@
+{
+  "description": "8.58 asr\nAutomatic Speech Recognition\n\nThis filter uses PocketSphinx for speech recognition. To enable\ncompilation of this filter, you need to configure FFmpeg with\n--enable-pocketsphinx.\n\nIt accepts the following options:\n\n\nThe filter exports recognized speech as the frame metadata lavfi.asr.text.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_asr",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "asr",
+  "options": [
+    {
+      "alias": [
+        "rate"
+      ],
+      "default": 16000,
+      "description": "<dd><p>Set sampling rate of input audio. Defaults is <code>16000</code>.\nThis need to match speech models, otherwise one will get poor results.\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "hmm"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set dictionary containing acoustic model files.\n</p>\n</dd>",
+      "name": "hmm",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "dict"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set pronunciation dictionary.\n</p>\n</dd>",
+      "name": "dict",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "lm"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set language model file.\n</p>\n</dd>",
+      "name": "lm",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "lmctl"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set language model set.\n</p>\n</dd>",
+      "name": "lmctl",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "lmname"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set which language model to use.\n</p>\n</dd>",
+      "name": "lmname",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "logfn"
+      ],
+      "default": "/dev/null",
+      "description": "<dd><p>Set output for log messages.\n</p></dd>",
+      "name": "logfn",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asr"
+}

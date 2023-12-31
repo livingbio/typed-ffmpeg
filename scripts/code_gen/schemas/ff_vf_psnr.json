@@ -1,0 +1,60 @@
+{
+  "description": "11.200 psnr\nObtain the average, maximum and minimum PSNR (Peak Signal to Noise\nRatio) between two input videos.\n\nThis filter takes in input two input videos, the first input is\nconsidered the \"main\" source and is passed unchanged to the\noutput. The second input is used as a \"reference\" video for computing\nthe PSNR.\n\nBoth video inputs must have the same resolution and pixel format for\nthis filter to work correctly. Also it assumes that both inputs\nhave the same number of frames, which are compared one by one.\n\nThe obtained average PSNR is printed through the logging system.\n\nThe filter stores the accumulated MSE (mean squared error) of each\nframe, and at the end of the processing it is averaged across all frames\nequally, and the following formula is applied to obtain the PSNR:\n\n\nPSNR = 10*log10(MAX^2/MSE)\n\nWhere MAX is the average of the maximum values of each component of the\nimage.\n\nThe description of the accepted parameters follows.\n\n\nThis filter also supports the framesync options.\n\nThe file printed if stats_file is selected, contains a sequence of\nkey/value pairs of the form key:value for each compared\ncouple of frames.\n\nIf a stats_version greater than 1 is specified, a header line precedes\nthe list of per-frame-pair stats, with key value pairs following the frame\nformat with the following parameters:\n\n\nA description of each shown per-frame-pair parameter follows:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_psnr",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "reference",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "psnr",
+  "options": [
+    {
+      "alias": [
+        "stats_file",
+        "f"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>If specified the filter will use the named file to save the PSNR of\neach individual frame. When filename equals \"-\" the data is sent to\nstandard output.\n</p>\n</dd>",
+      "name": "stats_file",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "stats_version"
+      ],
+      "default": 1,
+      "description": "<dd><p>Specifies which version of the stats file format to use. Details of\neach format are written below.\nDefault value is 1.\n</p>\n</dd>",
+      "name": "stats_version",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "output_max"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "output_max",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#psnr"
+}

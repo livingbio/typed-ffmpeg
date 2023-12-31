@@ -1,0 +1,85 @@
+{
+  "description": "8.78 compensationdelay\nCompensation Delay Line is a metric based delay to compensate differing\npositions of microphones or speakers.\n\nFor example, you have recorded guitar with two microphones placed in\ndifferent locations. Because the front of sound wave has fixed speed in\nnormal conditions, the phasing of microphones can vary and depends on\ntheir location and interposition. The best sound mix can be achieved when\nthese microphones are in phase (synchronized). Note that a distance of\n~30 cm between microphones makes one microphone capture the signal in\nantiphase to the other microphone. That makes the final mix sound moody.\nThis filter helps to solve phasing problems by adding different delays\nto each microphone track and make them synchronized.\n\nThe best result can be reached when you take one track as base and\nsynchronize other tracks one by one with it.\nRemember that synchronization/delay tolerance depends on sample rate, too.\nHigher sample rates will give more tolerance.\n\nThe filter accepts the following parameters:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_compensationdelay",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "compensationdelay",
+  "options": [
+    {
+      "alias": [
+        "mm"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set millimeters distance. This is compensation distance for fine tuning.\nDefault is 0.\n</p>\n</dd>",
+      "name": "mm",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cm"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set cm distance. This is compensation distance for tightening distance setup.\nDefault is 0.\n</p>\n</dd>",
+      "name": "cm",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "m"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set meters distance. This is compensation distance for hard distance setup.\nDefault is 0.\n</p>\n</dd>",
+      "name": "m",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dry"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set dry amount. Amount of unprocessed (dry) signal.\nDefault is 0.\n</p>\n</dd>",
+      "name": "dry",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "wet"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set wet amount. Amount of processed (wet) signal.\nDefault is 1.\n</p>\n</dd>",
+      "name": "wet",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "temp"
+      ],
+      "default": 20,
+      "description": "<dd><p>Set temperature in degrees Celsius. This is the temperature of the environment.\nDefault is 20.\n</p></dd>",
+      "name": "temp",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#compensationdelay"
+}

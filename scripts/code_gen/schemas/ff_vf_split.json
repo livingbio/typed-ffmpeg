@@ -1,0 +1,30 @@
+{
+  "description": "18.33 split, asplit\nSplit input into several identical outputs.\n\nasplit works with audio input, split with video.\n\nThe filter accepts a single parameter which specifies the number of outputs. If\nunspecified, it defaults to 2.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_split",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "split",
+  "options": [
+    {
+      "alias": [
+        "outputs"
+      ],
+      "default": 2,
+      "description": null,
+      "name": "outputs",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit"
+}

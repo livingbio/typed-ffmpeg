@@ -1,0 +1,170 @@
+{
+  "description": "11.94 fieldmatch\nField matching filter for inverse telecine. It is meant to reconstruct the\nprogressive frames from a telecined stream. The filter does not drop duplicated\nframes, so to achieve a complete inverse telecine fieldmatch needs to be\nfollowed by a decimation filter such as decimate in the filtergraph.\n\nThe separation of the field matching and the decimation is notably motivated by\nthe possibility of inserting a de-interlacing filter fallback between the two.\nIf the source has mixed telecined and real interlaced content,\nfieldmatch will not be able to match fields for the interlaced parts.\nBut these remaining combed frames will be marked as interlaced, and thus can be\nde-interlaced by a later filter such as yadif before decimation.\n\nIn addition to the various configuration options, fieldmatch can take an\noptional second stream, activated through the ppsrc option. If\nenabled, the frames reconstruction will be based on the fields and frames from\nthis second stream. This allows the first input to be pre-processed in order to\nhelp the various algorithms of the filter, while keeping the output lossless\n(assuming the fields are matched properly). Typically, a field-aware denoiser,\nor brightness/contrast adjustments can help.\n\nNote that this filter uses the same algorithms as TIVTC/TFM (AviSynth project)\nand VIVTC/VFM (VapourSynth project). The later is a light clone of TFM from\nwhich fieldmatch is based on. While the semantic and usage are very\nclose, some behaviour and options names can differ.\n\nThe decimate filter currently only works for constant frame rate input.\nIf your input has mixed telecined (30fps) and progressive content with a lower\nframerate like 24fps use the following filterchain to produce the necessary cfr\nstream: dejudder,fps=30000/1001,fieldmatch,decimate.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_fieldmatch",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "fieldmatch",
+  "options": [
+    {
+      "alias": [
+        "order"
+      ],
+      "default": "FM_PARITY_AUTO",
+      "description": "<dd><p>Specify the assumed field order of the input stream. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Auto detect parity (use FFmpeg\u2019s internal parity value).\n</p></dd>\n<dt>\u2018<samp>bff</samp>\u2019</dt>\n<dd><p>Assume bottom field first.\n</p></dd>\n<dt>\u2018<samp>tff</samp>\u2019</dt>\n<dd><p>Assume top field first.\n</p></dd>\n</dl>\n<p>Note that it is sometimes recommended not to trust the parity announced by the\nstream.\n</p>\n<p>Default value is <var>auto</var>.\n</p>\n</dd>",
+      "name": "order",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": "MODE_PC_N",
+      "description": "<dd><p>Set the matching mode or strategy to use. <samp>pc</samp> mode is the safest in the\nsense that it won\u2019t risk creating jerkiness due to duplicate frames when\npossible, but if there are bad edits or blended fields it will end up\noutputting combed frames when a good match might actually exist. On the other\nhand, <samp>pcn_ub</samp> mode is the most risky in terms of creating jerkiness,\nbut will almost always find a good frame if there is one. The other values are\nall somewhere in between <samp>pc</samp> and <samp>pcn_ub</samp> in terms of risking\njerkiness and creating duplicate frames versus finding good matches in sections\nwith bad edits, orphaned fields, blended fields, etc.\n</p>\n<p>More details about p/c/n/u/b are available in <a href=\"#p_002fc_002fn_002fu_002fb-meaning\">p/c/n/u/b meaning</a> section.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>pc</samp>\u2019</dt>\n<dd><p>2-way matching (p/c)\n</p></dd>\n<dt>\u2018<samp>pc_n</samp>\u2019</dt>\n<dd><p>2-way matching, and trying 3rd match if still combed (p/c + n)\n</p></dd>\n<dt>\u2018<samp>pc_u</samp>\u2019</dt>\n<dd><p>2-way matching, and trying 3rd match (same order) if still combed (p/c + u)\n</p></dd>\n<dt>\u2018<samp>pc_n_ub</samp>\u2019</dt>\n<dd><p>2-way matching, trying 3rd match if still combed, and trying 4th/5th matches if\nstill combed (p/c + n + u/b)\n</p></dd>\n<dt>\u2018<samp>pcn</samp>\u2019</dt>\n<dd><p>3-way matching (p/c/n)\n</p></dd>\n<dt>\u2018<samp>pcn_ub</samp>\u2019</dt>\n<dd><p>3-way matching, and trying 4th/5th matches if all 3 of the original matches are\ndetected as combed (p/c/n + u/b)\n</p></dd>\n</dl>\n<p>The parenthesis at the end indicate the matches that would be used for that\nmode assuming <samp>order</samp>=<var>tff</var> (and <samp>field</samp> on <var>auto</var> or\n<var>top</var>).\n</p>\n<p>In terms of speed <samp>pc</samp> mode is by far the fastest and <samp>pcn_ub</samp> is\nthe slowest.\n</p>\n<p>Default value is <var>pc_n</var>.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ppsrc"
+      ],
+      "default": 0,
+      "description": "<dd><p>Mark the main input stream as a pre-processed input, and enable the secondary\ninput stream as the clean source to pick the fields from. See the filter\nintroduction for more details. It is similar to the <samp>clip2</samp> feature from\nVFM/TFM.\n</p>\n<p>Default value is <code>0</code> (disabled).\n</p>\n</dd>",
+      "name": "ppsrc",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "field"
+      ],
+      "default": "FM_PARITY_AUTO",
+      "description": "<dd><p>Set the field to match from. It is recommended to set this to the same value as\n<samp>order</samp> unless you experience matching failures with that setting. In\ncertain circumstances changing the field that is used to match from can have a\nlarge impact on matching performance. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Automatic (same value as <samp>order</samp>).\n</p></dd>\n<dt>\u2018<samp>bottom</samp>\u2019</dt>\n<dd><p>Match from the bottom field.\n</p></dd>\n<dt>\u2018<samp>top</samp>\u2019</dt>\n<dd><p>Match from the top field.\n</p></dd>\n</dl>\n<p>Default value is <var>auto</var>.\n</p>\n</dd>",
+      "name": "field",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mchroma"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set whether or not chroma is included during the match comparisons. In most\ncases it is recommended to leave this enabled. You should set this to <code>0</code>\nonly if your clip has bad chroma problems such as heavy rainbowing or other\nartifacts. Setting this to <code>0</code> could also be used to speed things up at\nthe cost of some accuracy.\n</p>\n<p>Default value is <code>1</code>.\n</p>\n</dd>",
+      "name": "mchroma",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "y0"
+      ],
+      "default": 0,
+      "description": "<dd><p>These define an exclusion band which excludes the lines between <samp>y0</samp> and\n<samp>y1</samp> from being included in the field matching decision. An exclusion\nband can be used to ignore subtitles, a logo, or other things that may\ninterfere with the matching. <samp>y0</samp> sets the starting scan line and\n<samp>y1</samp> sets the ending line; all lines in between <samp>y0</samp> and\n<samp>y1</samp> (including <samp>y0</samp> and <samp>y1</samp>) will be ignored. Setting\n<samp>y0</samp> and <samp>y1</samp> to the same value will disable the feature.\n<samp>y0</samp> and <samp>y1</samp> defaults to <code>0</code>.\n</p>\n</dd>",
+      "name": "y0",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y1"
+      ],
+      "default": 0,
+      "description": "<dd><p>These define an exclusion band which excludes the lines between <samp>y0</samp> and\n<samp>y1</samp> from being included in the field matching decision. An exclusion\nband can be used to ignore subtitles, a logo, or other things that may\ninterfere with the matching. <samp>y0</samp> sets the starting scan line and\n<samp>y1</samp> sets the ending line; all lines in between <samp>y0</samp> and\n<samp>y1</samp> (including <samp>y0</samp> and <samp>y1</samp>) will be ignored. Setting\n<samp>y0</samp> and <samp>y1</samp> to the same value will disable the feature.\n<samp>y0</samp> and <samp>y1</samp> defaults to <code>0</code>.\n</p>\n</dd>",
+      "name": "y1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scthresh"
+      ],
+      "default": 12.0,
+      "description": "<dd><p>Set the scene change detection threshold as a percentage of maximum change on\nthe luma plane. Good values are in the <code>[8.0, 14.0]</code> range. Scene change\ndetection is only relevant in case <samp>combmatch</samp>=<var>sc</var>.  The range for\n<samp>scthresh</samp> is <code>[0.0, 100.0]</code>.\n</p>\n<p>Default value is <code>12.0</code>.\n</p>\n</dd>",
+      "name": "scthresh",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "combmatch"
+      ],
+      "default": "COMBMATCH_SC",
+      "description": "<dd><p>When <samp>combatch</samp> is not <var>none</var>, <code>fieldmatch</code> will take into\naccount the combed scores of matches when deciding what match to use as the\nfinal match. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No final matching based on combed scores.\n</p></dd>\n<dt>\u2018<samp>sc</samp>\u2019</dt>\n<dd><p>Combed scores are only used when a scene change is detected.\n</p></dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Use combed scores all the time.\n</p></dd>\n</dl>\n<p>Default is <var>sc</var>.\n</p>\n</dd>",
+      "name": "combmatch",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "combdbg"
+      ],
+      "default": "COMBDBG_NONE",
+      "description": "<dd><p>Force <code>fieldmatch</code> to calculate the combed metrics for certain matches and\nprint them. This setting is known as <samp>micout</samp> in TFM/VFM vocabulary.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No forced calculation.\n</p></dd>\n<dt>\u2018<samp>pcn</samp>\u2019</dt>\n<dd><p>Force p/c/n calculations.\n</p></dd>\n<dt>\u2018<samp>pcnub</samp>\u2019</dt>\n<dd><p>Force p/c/n/u/b calculations.\n</p></dd>\n</dl>\n<p>Default value is <var>none</var>.\n</p>\n</dd>",
+      "name": "combdbg",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cthresh"
+      ],
+      "default": 9,
+      "description": "<dd><p>This is the area combing threshold used for combed frame detection. This\nessentially controls how \"strong\" or \"visible\" combing must be to be detected.\nLarger values mean combing must be more visible and smaller values mean combing\ncan be less visible or strong and still be detected. Valid settings are from\n<code>-1</code> (every pixel will be detected as combed) to <code>255</code> (no pixel will\nbe detected as combed). This is basically a pixel difference value. A good\nrange is <code>[8, 12]</code>.\n</p>\n<p>Default value is <code>9</code>.\n</p>\n</dd>",
+      "name": "cthresh",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "chroma"
+      ],
+      "default": 0,
+      "description": "<dd><p>Sets whether or not chroma is considered in the combed frame decision.  Only\ndisable this if your source has chroma problems (rainbowing, etc.) that are\ncausing problems for the combed frame detection with chroma enabled. Actually,\nusing <samp>chroma</samp>=<var>0</var> is usually more reliable, except for the case\nwhere there is chroma only combing in the source.\n</p>\n<p>Default value is <code>0</code>.\n</p>\n</dd>",
+      "name": "chroma",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "blockx"
+      ],
+      "default": 16,
+      "description": "<dd><p>Respectively set the x-axis and y-axis size of the window used during combed\nframe detection. This has to do with the size of the area in which\n<samp>combpel</samp> pixels are required to be detected as combed for a frame to be\ndeclared combed. See the <samp>combpel</samp> parameter description for more info.\nPossible values are any number that is a power of 2 starting at 4 and going up\nto 512.\n</p>\n<p>Default value is <code>16</code>.\n</p>\n</dd>",
+      "name": "blockx",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "blocky"
+      ],
+      "default": 16,
+      "description": "<dd><p>Respectively set the x-axis and y-axis size of the window used during combed\nframe detection. This has to do with the size of the area in which\n<samp>combpel</samp> pixels are required to be detected as combed for a frame to be\ndeclared combed. See the <samp>combpel</samp> parameter description for more info.\nPossible values are any number that is a power of 2 starting at 4 and going up\nto 512.\n</p>\n<p>Default value is <code>16</code>.\n</p>\n</dd>",
+      "name": "blocky",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "combpel"
+      ],
+      "default": 80,
+      "description": "<dd><p>The number of combed pixels inside any of the <samp>blocky</samp> by\n<samp>blockx</samp> size blocks on the frame for the frame to be detected as\ncombed. While <samp>cthresh</samp> controls how \"visible\" the combing must be, this\nsetting controls \"how much\" combing there must be in any localized area (a\nwindow defined by the <samp>blockx</samp> and <samp>blocky</samp> settings) on the\nframe. Minimum value is <code>0</code> and maximum is <code>blocky x blockx</code> (at\nwhich point no frames will ever be detected as combed). This setting is known\nas <samp>MI</samp> in TFM/VFM vocabulary.\n</p>\n<p>Default value is <code>80</code>.\n</p></dd>",
+      "name": "combpel",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#fieldmatch"
+}

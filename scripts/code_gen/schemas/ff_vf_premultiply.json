@@ -1,0 +1,40 @@
+{
+  "description": "11.197 premultiply\nApply alpha premultiply effect to input video stream using first plane\nof second stream as alpha.\n\nBoth streams must have same dimensions and same pixel format.\n\nThe filter accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_premultiply",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "premultiply",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": "0xF",
+      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "inplace"
+      ],
+      "default": 0,
+      "description": "<dd><p>Do not require 2nd input for processing, instead use alpha plane from input stream.\n</p></dd>",
+      "name": "inplace",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#premultiply"
+}

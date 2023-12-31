@@ -1,0 +1,84 @@
+{
+  "description": "8.5 acrossfade\nApply cross fade from one input audio stream to another input audio stream.\nThe cross fade is applied for specified duration near the end of first stream.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_acrossfade",
+  "input_stream_typings": [
+    {
+      "name": "crossfade0",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    },
+    {
+      "name": "crossfade1",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "acrossfade",
+  "options": [
+    {
+      "alias": [
+        "nb_samples",
+        "ns"
+      ],
+      "default": 44100,
+      "description": "<dd><p>Specify the number of samples for which the cross fade effect has to last.\nAt the end of the cross fade effect the first input audio will be completely\nsilent. Default is 44100.\n</p>\n</dd>",
+      "name": "nb_samples",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specify the duration of the cross fade effect. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nBy default the duration is determined by <var>nb_samples</var>.\nIf set this option is used instead of <var>nb_samples</var>.\n</p>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap",
+        "o"
+      ],
+      "default": 1,
+      "description": "<dd><p>Should first stream end overlap with second stream start. Default is enabled.\n</p>\n</dd>",
+      "name": "overlap",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "curve1",
+        "c1"
+      ],
+      "default": "TRI",
+      "description": "<dd><p>Set curve for cross fade transition for first stream.\n</p>\n</dd>",
+      "name": "curve1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "curve2",
+        "c2"
+      ],
+      "default": "TRI",
+      "description": "<dd><p>Set curve for cross fade transition for second stream.\n</p>\n<p>For description of available curve types see <a href=\"#afade\">afade</a> filter description.\n</p></dd>",
+      "name": "curve2",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acrossfade"
+}

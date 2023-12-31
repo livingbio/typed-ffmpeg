@@ -1,0 +1,175 @@
+{
+  "description": "11.250 tblend\nBlend successive video frames.\n\nSee blend",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_tblend",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "tblend",
+  "options": [
+    {
+      "alias": [
+        "c0_mode"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "c0_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c1_mode"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "c1_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c2_mode"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "c2_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c3_mode"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "c3_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "all_mode"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "all_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c0_expr"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "c0_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c1_expr"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "c1_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c2_expr"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "c2_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c3_expr"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "c3_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "all_expr"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "all_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c0_opacity"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "c0_opacity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "c1_opacity"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "c1_opacity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "c2_opacity"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "c2_opacity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "c3_opacity"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "c3_opacity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "all_opacity"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "all_opacity",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tblend"
+}

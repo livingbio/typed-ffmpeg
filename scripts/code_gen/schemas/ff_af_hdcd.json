@@ -1,0 +1,85 @@
+{
+  "description": "8.92 hdcd\nDecodes High Definition Compatible Digital (HDCD) data. A 16-bit PCM stream with\nembedded HDCD codes is expanded into a 20-bit PCM stream.\n\nThe filter supports the Peak Extend and Low-level Gain Adjustment features\nof HDCD, and detects the Transient Filter flag.\n\n\nffmpeg -i HDCD16.flac -af hdcd OUT24.flac\n\nWhen using the filter with wav, note the default encoding for wav is 16-bit,\nso the resulting 20-bit stream will be truncated back to 16-bit. Use something\nlike -acodec pcm_s24le after the filter to get 24-bit PCM output.\n\nffmpeg -i HDCD16.wav -af hdcd OUT16.wav\nffmpeg -i HDCD16.wav -af hdcd -c:a pcm_s24le OUT24.wav\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_hdcd",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "hdcd",
+  "options": [
+    {
+      "alias": [
+        "disable_autoconvert"
+      ],
+      "default": 1,
+      "description": "<dd><p>Disable any automatic format conversion or resampling in the filter graph.\n</p>\n</dd>",
+      "name": "disable_autoconvert",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "process_stereo"
+      ],
+      "default": 1,
+      "description": "<dd><p>Process the stereo channels together. If target_gain does not match between\nchannels, consider it invalid and use the last valid target_gain.\n</p>\n</dd>",
+      "name": "process_stereo",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "cdt_ms"
+      ],
+      "default": 2000,
+      "description": "<dd><p>Set the code detect timer period in ms.\n</p>\n</dd>",
+      "name": "cdt_ms",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_pe"
+      ],
+      "default": 0,
+      "description": "<dd><p>Always extend peaks above -3dBFS even if PE isn\u2019t signaled.\n</p>\n</dd>",
+      "name": "force_pe",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "analyze_mode"
+      ],
+      "default": "HDCD_ANA_OFF",
+      "description": "<dd><p>Replace audio with a solid tone and adjust the amplitude to signal some\nspecific aspect of the decoding process. The output file can be loaded in\nan audio editor alongside the original to aid analysis.\n</p>\n<p><code>analyze_mode=pe:force_pe=true</code> can be used to see all samples above the PE level.\n</p>\n<p>Modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0, off</samp>\u2019</dt>\n<dd><p>Disabled\n</p></dd>\n<dt>\u2018<samp>1, lle</samp>\u2019</dt>\n<dd><p>Gain adjustment level at each sample\n</p></dd>\n<dt>\u2018<samp>2, pe</samp>\u2019</dt>\n<dd><p>Samples where peak extend occurs\n</p></dd>\n<dt>\u2018<samp>3, cdt</samp>\u2019</dt>\n<dd><p>Samples where the code detect timer is active\n</p></dd>\n<dt>\u2018<samp>4, tgm</samp>\u2019</dt>\n<dd><p>Samples where the target gain does not match between channels\n</p></dd>\n</dl>\n</dd>",
+      "name": "analyze_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bits_per_sample"
+      ],
+      "default": 16,
+      "description": null,
+      "name": "bits_per_sample",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hdcd"
+}

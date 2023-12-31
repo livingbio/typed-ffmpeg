@@ -1,0 +1,75 @@
+{
+  "description": "11.28 chromashift\nShift chroma pixels horizontally and/or vertically.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_chromashift",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "chromashift",
+  "options": [
+    {
+      "alias": [
+        "cbh"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set amount to shift chroma-blue horizontally.\n</p></dd>",
+      "name": "cbh",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cbv"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set amount to shift chroma-blue vertically.\n</p></dd>",
+      "name": "cbv",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "crh"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set amount to shift chroma-red horizontally.\n</p></dd>",
+      "name": "crh",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "crv"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set amount to shift chroma-red vertically.\n</p></dd>",
+      "name": "crv",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "edge"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>",
+      "name": "edge",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#chromashift"
+}

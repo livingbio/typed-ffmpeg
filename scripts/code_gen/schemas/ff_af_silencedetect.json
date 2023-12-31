@@ -1,0 +1,58 @@
+{
+  "description": "8.107 silencedetect\nDetect silence in an audio stream.\n\nThis filter logs a message when it detects that the input audio volume is less\nor equal to a noise tolerance value for a duration greater or equal to the\nminimum detected noise duration.\n\nThe printed times and duration are expressed in seconds. The\nlavfi.silence_start or lavfi.silence_start.X metadata key\nis set on the first frame whose timestamp equals or exceeds the detection\nduration and it contains the timestamp of the first frame of the silence.\n\nThe lavfi.silence_duration or lavfi.silence_duration.X\nand lavfi.silence_end or lavfi.silence_end.X metadata\nkeys are set on the first frame after the silence. If mono is\nenabled, and each channel is evaluated separately, the .X\nsuffixed keys are used, and X corresponds to the channel number.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_silencedetect",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "silencedetect",
+  "options": [
+    {
+      "alias": [
+        "n",
+        "noise"
+      ],
+      "default": 0.001,
+      "description": "<dd><p>Set noise tolerance. Can be specified in dB (in case \"dB\" is appended to the\nspecified value) or amplitude ratio. Default is -60dB, or 0.001.\n</p>\n</dd>",
+      "name": "n",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "d",
+        "duration"
+      ],
+      "default": 2000000,
+      "description": "<dd><p>Set silence duration until notification (default is 2 seconds). See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n</dd>",
+      "name": "d",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mono",
+        "m"
+      ],
+      "default": 0,
+      "description": "<dd><p>Process each channel separately, instead of combined. By default is disabled.\n</p></dd>",
+      "name": "mono",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#silencedetect"
+}

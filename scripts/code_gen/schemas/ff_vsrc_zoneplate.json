@@ -1,0 +1,223 @@
+{
+  "description": "16.13 zoneplate\nGenerate a zoneplate test video pattern.\n\nThis source accepts the following options:",
+  "filter_type": "vsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vsrc_zoneplate",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "zoneplate",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "320x240",
+      "description": "<dd><p>Set frame size. For the syntax of this option, check the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video\nsize\" section in the ffmpeg-utils manual</a>. Default value is \"320x240\".\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sar"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the sample aspect ratio of the sourced video.\n</p>\n</dd>",
+      "name": "sar",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "precision"
+      ],
+      "default": 10,
+      "description": "<dd><p>Set precision in bits for look-up table for sine calculations. Default value is 10.\nAllowed range is from 4 to 16.\n</p>\n</dd>",
+      "name": "precision",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "xo"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set horizontal axis offset for output signal. Default value is 0.\n</p>\n</dd>",
+      "name": "xo",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "yo"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set vertical axis offset for output signal. Default value is 0.\n</p>\n</dd>",
+      "name": "yo",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "to"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set time axis offset for output signal. Default value is 0.\n</p>\n</dd>",
+      "name": "to",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "k0"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set 0-order, constant added to signal phase. Default value is 0.\n</p>\n</dd>",
+      "name": "k0",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kx"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set 1-order, phase factor multiplier for horizontal axis. Default value is 0.\n</p>\n</dd>",
+      "name": "kx",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ky"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set 1-order, phase factor multiplier for vertical axis. Default value is 0.\n</p>\n</dd>",
+      "name": "ky",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kt"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set 1-order, phase factor multiplier for time axis. Default value is 0.\n</p>\n</dd>",
+      "name": "kt",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kxt"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set phase factor multipliers for combination of spatial and temporal axis.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "kxt",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kyt"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set phase factor multipliers for combination of spatial and temporal axis.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "kyt",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kxy"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set phase factor multipliers for combination of spatial and temporal axis.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "kxy",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kx2"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set 2-order, phase factor multiplier for horizontal axis. Default value is 0.\n</p>\n</dd>",
+      "name": "kx2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ky2"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set 2-order, phase factor multiplier for vertical axis. Default value is 0.\n</p>\n</dd>",
+      "name": "ky2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kt2"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set 2-order, phase factor multiplier for time axis. Default value is 0.\n</p>\n</dd>",
+      "name": "kt2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ku"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the constant added to final phase to produce chroma-blue component of signal.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "ku",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kv"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the constant added to final phase to produce chroma-red component of signal.\nDefault value is 0.\n</p></dd>",
+      "name": "kv",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#zoneplate"
+}

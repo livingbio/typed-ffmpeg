@@ -1,0 +1,35 @@
+{
+  "description": "11.124 hwupload_cuda\nUpload system memory frames to a CUDA device.\n\nIt accepts the following optional parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_hwupload_cuda",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "hwupload_cuda",
+  "options": [
+    {
+      "alias": [
+        "device"
+      ],
+      "default": 0,
+      "description": "<dd><p>The number of the CUDA device to use\n</p></dd>",
+      "name": "device",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hwupload_005fcuda"
+}

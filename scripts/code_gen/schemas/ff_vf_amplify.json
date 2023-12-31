@@ -1,0 +1,95 @@
+{
+  "description": "11.4 amplify\nAmplify differences between current pixel and pixels of adjacent frames in\nsame pixel location.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_amplify",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "amplify",
+  "options": [
+    {
+      "alias": [
+        "radius"
+      ],
+      "default": 2,
+      "description": "<dd><p>Set frame radius. Default is 2. Allowed range is from 1 to 63.\nFor example radius of 3 will instruct filter to calculate average of 7 frames.\n</p>\n</dd>",
+      "name": "radius",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "factor"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>Set factor to amplify difference. Default is 2. Allowed range is from 0 to 65535.\n</p>\n</dd>",
+      "name": "factor",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "threshold"
+      ],
+      "default": 10.0,
+      "description": "<dd><p>Set threshold for difference amplification. Any difference greater or equal to\nthis value will not alter source pixel. Default is 10.\nAllowed range is from 0 to 65535.\n</p>\n</dd>",
+      "name": "threshold",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tolerance"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set tolerance for difference amplification. Any difference lower to\nthis value will not alter source pixel. Default is 0.\nAllowed range is from 0 to 65535.\n</p>\n</dd>",
+      "name": "tolerance",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "low"
+      ],
+      "default": 65535.0,
+      "description": "<dd><p>Set lower limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will decrease source pixel value.\n</p>\n</dd>",
+      "name": "low",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "high"
+      ],
+      "default": 65535.0,
+      "description": "<dd><p>Set high limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will increase source pixel value.\n</p>\n</dd>",
+      "name": "high",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 7,
+      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#amplify"
+}

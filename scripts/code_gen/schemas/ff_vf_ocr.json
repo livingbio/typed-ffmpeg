@@ -1,0 +1,65 @@
+{
+  "description": "11.180 ocr\nOptical Character Recognition\n\nThis filter uses Tesseract for optical character recognition. To enable\ncompilation of this filter, you need to configure FFmpeg with\n--enable-libtesseract.\n\nIt accepts the following options:\n\n\nThe filter exports recognized text as the frame metadata lavfi.ocr.text.\nThe filter exports confidence of recognized words as the frame metadata lavfi.ocr.confidence.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_ocr",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "ocr",
+  "options": [
+    {
+      "alias": [
+        "datapath"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set datapath to tesseract data. Default is to use whatever was\nset at installation.\n</p>\n</dd>",
+      "name": "datapath",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "language"
+      ],
+      "default": "eng",
+      "description": "<dd><p>Set language, default is \"eng\".\n</p>\n</dd>",
+      "name": "language",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "whitelist"
+      ],
+      "default": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\\\\\"\\'[]{}()<>|/\\\\\\\\=*&%$#@!~ ",
+      "description": "<dd><p>Set character whitelist.\n</p>\n</dd>",
+      "name": "whitelist",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "blacklist"
+      ],
+      "default": "",
+      "description": "<dd><p>Set character blacklist.\n</p></dd>",
+      "name": "blacklist",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ocr"
+}

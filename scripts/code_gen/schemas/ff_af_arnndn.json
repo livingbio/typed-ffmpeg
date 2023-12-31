@@ -1,0 +1,46 @@
+{
+  "description": "8.50 arnndn\nReduce noise from speech using Recurrent Neural Networks.\n\nThis filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_arnndn",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "arnndn",
+  "options": [
+    {
+      "alias": [
+        "model",
+        "m"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set train model file to load. This option is always required.\n</p>\n</dd>",
+      "name": "model",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "mix"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set how much to mix filtered samples into final output.\nAllowed range is from -1 to 1. Default value is 1.\nNegative values are special, they set how much to keep filtered noise\nin the final filter output. Set this option to -1 to hear actual\nnoise removed from input signal.\n</p></dd>",
+      "name": "mix",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#arnndn"
+}

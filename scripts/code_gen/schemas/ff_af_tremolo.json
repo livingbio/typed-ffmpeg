@@ -1,0 +1,45 @@
+{
+  "description": "8.117 tremolo\nSinusoidal amplitude modulation.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_tremolo",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "tremolo",
+  "options": [
+    {
+      "alias": [
+        "f"
+      ],
+      "default": 5.0,
+      "description": "<dd><p>Modulation frequency in Hertz. Modulation frequencies in the subharmonic range\n(20 Hz or lower) will result in a tremolo effect.\nThis filter may also be used as a ring modulator by specifying\na modulation frequency higher than 20 Hz.\nRange is 0.1 - 20000.0. Default value is 5.0 Hz.\n</p>\n</dd>",
+      "name": "f",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "d"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Depth of modulation as a percentage. Range is 0.0 - 1.0.\nDefault value is 0.5.\n</p></dd>",
+      "name": "d",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tremolo"
+}

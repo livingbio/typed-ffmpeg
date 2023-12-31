@@ -1,0 +1,109 @@
+{
+  "description": "19.1 amovie\nThis is the same as movie source, except it selects an audio\nstream by default.",
+  "filter_type": "avsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_avsrc_amovie",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "amovie",
+  "options": [
+    {
+      "alias": [
+        "filename"
+      ],
+      "default": null,
+      "description": null,
+      "name": "filename",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "format_name",
+        "f"
+      ],
+      "default": null,
+      "description": null,
+      "name": "format_name",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "stream_index",
+        "si"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "stream_index",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "seek_point",
+        "sp"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "seek_point",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "streams",
+        "s"
+      ],
+      "default": "0",
+      "description": null,
+      "name": "streams",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "loop"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "loop",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "discontinuity"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "discontinuity",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dec_threads"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "dec_threads",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "format_opts"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "format_opts",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#amovie"
+}

@@ -1,0 +1,35 @@
+{
+  "description": "8.101 pan\nMix channels with specific gain levels. The filter accepts the output\nchannel layout followed by a set of channels definitions.\n\nThis filter is also designed to efficiently remap the channels of an audio\nstream.\n\nThe filter accepts parameters of the form:\n\"l|outdef|outdef|...\"\n\n\nIf the \u2018=\u2019 in a channel specification is replaced by \u2018<\u2019, then the gains for\nthat specification will be renormalized so that the total is 1, thus\navoiding clipping noise.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_pan",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "pan",
+  "options": [
+    {
+      "alias": [
+        "args"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "args",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#pan"
+}

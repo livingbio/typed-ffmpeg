@@ -1,0 +1,35 @@
+{
+  "description": "11.64 dejudder\nRemove judder produced by partially interlaced telecined content.\n\nJudder can be introduced, for instance, by pullup filter. If the original\nsource was partially telecined content then the output of pullup,dejudder\nwill have a variable frame rate. May change the recorded frame rate of the\ncontainer. Aside from that change, this filter will not affect constant frame\nrate video.\n\nThe option available in this filter is:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_dejudder",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "dejudder",
+  "options": [
+    {
+      "alias": [
+        "cycle"
+      ],
+      "default": 4,
+      "description": "<dd><p>Specify the length of the window over which the judder repeats.\n</p>\n<p>Accepts any integer greater than 1. Useful values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>4</samp>\u2019</dt>\n<dd><p>If the original was telecined from 24 to 30 fps (Film to NTSC).\n</p>\n</dd>\n<dt>\u2018<samp>5</samp>\u2019</dt>\n<dd><p>If the original was telecined from 25 to 30 fps (PAL to NTSC).\n</p>\n</dd>\n<dt>\u2018<samp>20</samp>\u2019</dt>\n<dd><p>If a mixture of the two.\n</p></dd>\n</dl>\n<p>The default is \u2018<samp>4</samp>\u2019.\n</p></dd>",
+      "name": "cycle",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#dejudder"
+}

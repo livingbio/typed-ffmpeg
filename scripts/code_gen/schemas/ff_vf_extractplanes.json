@@ -1,0 +1,30 @@
+{
+  "description": "11.87 extractplanes\nExtract color channel components from input video stream into\nseparate grayscale video streams.\n\nThe filter accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_extractplanes",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "extractplanes",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set plane(s) to extract.\n</p>\n<p>Available values for planes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dt>\u2018<samp>v</samp>\u2019</dt>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n</dl>\n<p>Choosing planes not available in the input will result in an error.\nThat means you cannot select <code>r</code>, <code>g</code>, <code>b</code> planes\nwith <code>y</code>, <code>u</code>, <code>v</code> planes at same time.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#extractplanes"
+}

@@ -1,0 +1,80 @@
+{
+  "description": "8.38 anlmdn\nReduce broadband noise in audio samples using Non-Local Means algorithm.\n\nEach sample is adjusted by looking for other samples with similar contexts. This\ncontext similarity is defined by comparing their surrounding patches of size\np. Patches are searched in an area of r around the sample.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_anlmdn",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "anlmdn",
+  "options": [
+    {
+      "alias": [
+        "strength",
+        "s"
+      ],
+      "default": 1e-05,
+      "description": "<dd><p>Set denoising strength. Allowed range is from 0.00001 to 10000. Default value is 0.00001.\n</p>\n</dd>",
+      "name": "strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "patch",
+        "p"
+      ],
+      "default": 2000,
+      "description": "<dd><p>Set patch radius duration. Allowed range is from 1 to 100 milliseconds.\nDefault value is 2 milliseconds.\n</p>\n</dd>",
+      "name": "patch",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "research",
+        "r"
+      ],
+      "default": 6000,
+      "description": "<dd><p>Set research radius duration. Allowed range is from 2 to 300 milliseconds.\nDefault value is 6 milliseconds.\n</p>\n</dd>",
+      "name": "research",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "output",
+        "o"
+      ],
+      "default": "OUT_MODE",
+      "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass noise filtered out.\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>Pass only noise.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "output",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "smooth",
+        "m"
+      ],
+      "default": 11.0,
+      "description": "<dd><p>Set smooth factor. Default value is <var>11</var>. Allowed range is from <var>1</var> to <var>1000</var>.\n</p></dd>",
+      "name": "smooth",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#anlmdn"
+}

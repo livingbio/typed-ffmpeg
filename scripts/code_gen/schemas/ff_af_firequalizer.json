@@ -1,0 +1,155 @@
+{
+  "description": "8.89 firequalizer\nApply FIR Equalization using arbitrary frequency response.\n\nThe filter accepts the following option:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_firequalizer",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "firequalizer",
+  "options": [
+    {
+      "alias": [
+        "gain"
+      ],
+      "default": "gain_interpolate(f)",
+      "description": "<dd><p>Set gain curve equation (in dB). The expression can contain variables:\n</p><dl compact=\"compact\">\n<dt><samp>f</samp></dt>\n<dd><p>the evaluated frequency\n</p></dd>\n<dt><samp>sr</samp></dt>\n<dd><p>sample rate\n</p></dd>\n<dt><samp>ch</samp></dt>\n<dd><p>channel number, set to 0 when multichannels evaluation is disabled\n</p></dd>\n<dt><samp>chid</samp></dt>\n<dd><p>channel id, see libavutil/channel_layout.h, set to the first channel id when\nmultichannels evaluation is disabled\n</p></dd>\n<dt><samp>chs</samp></dt>\n<dd><p>number of channels\n</p></dd>\n<dt><samp>chlayout</samp></dt>\n<dd><p>channel_layout, see libavutil/channel_layout.h\n</p>\n</dd>\n</dl>\n<p>and functions:\n</p><dl compact=\"compact\">\n<dt><samp>gain_interpolate(f)</samp></dt>\n<dd><p>interpolate gain on frequency f based on gain_entry\n</p></dd>\n<dt><samp>cubic_interpolate(f)</samp></dt>\n<dd><p>same as gain_interpolate, but smoother\n</p></dd>\n</dl>\n<p>This option is also available as command. Default is <code>gain_interpolate(f)</code>.\n</p>\n</dd>",
+      "name": "gain",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "gain_entry"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set gain entry for gain_interpolate function. The expression can\ncontain functions:\n</p><dl compact=\"compact\">\n<dt><samp>entry(f, g)</samp></dt>\n<dd><p>store gain entry at frequency f with value g\n</p></dd>\n</dl>\n<p>This option is also available as command.\n</p>\n</dd>",
+      "name": "gain_entry",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "delay"
+      ],
+      "default": 0.01,
+      "description": "<dd><p>Set filter delay in seconds. Higher value means more accurate.\nDefault is <code>0.01</code>.\n</p>\n</dd>",
+      "name": "delay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "accuracy"
+      ],
+      "default": 5.0,
+      "description": "<dd><p>Set filter accuracy in Hz. Lower value means more accurate.\nDefault is <code>5</code>.\n</p>\n</dd>",
+      "name": "accuracy",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "wfunc"
+      ],
+      "default": "WFUNC_HANN",
+      "description": "<dd><p>Set window function. Acceptable values are:\n</p><dl compact=\"compact\">\n<dt><samp>rectangular</samp></dt>\n<dd><p>rectangular window, useful when gain curve is already smooth\n</p></dd>\n<dt><samp>hann</samp></dt>\n<dd><p>hann window (default)\n</p></dd>\n<dt><samp>hamming</samp></dt>\n<dd><p>hamming window\n</p></dd>\n<dt><samp>blackman</samp></dt>\n<dd><p>blackman window\n</p></dd>\n<dt><samp>nuttall3</samp></dt>\n<dd><p>3-terms continuous 1st derivative nuttall window\n</p></dd>\n<dt><samp>mnuttall3</samp></dt>\n<dd><p>minimum 3-terms discontinuous nuttall window\n</p></dd>\n<dt><samp>nuttall</samp></dt>\n<dd><p>4-terms continuous 1st derivative nuttall window\n</p></dd>\n<dt><samp>bnuttall</samp></dt>\n<dd><p>minimum 4-terms discontinuous nuttall (blackman-nuttall) window\n</p></dd>\n<dt><samp>bharris</samp></dt>\n<dd><p>blackman-harris window\n</p></dd>\n<dt><samp>tukey</samp></dt>\n<dd><p>tukey window\n</p></dd>\n</dl>\n</dd>",
+      "name": "wfunc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fixed"
+      ],
+      "default": 0,
+      "description": "<dd><p>If enabled, use fixed number of audio samples. This improves speed when\nfiltering with large delay. Default is disabled.\n</p>\n</dd>",
+      "name": "fixed",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "multi"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable multichannels evaluation on gain. Default is disabled.\n</p>\n</dd>",
+      "name": "multi",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "zero_phase"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable zero phase mode by subtracting timestamp to compensate delay.\nDefault is disabled.\n</p>\n</dd>",
+      "name": "zero_phase",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": "SCALE_LINLOG",
+      "description": "<dd><p>Set scale used by gain. Acceptable values are:\n</p><dl compact=\"compact\">\n<dt><samp>linlin</samp></dt>\n<dd><p>linear frequency, linear gain\n</p></dd>\n<dt><samp>linlog</samp></dt>\n<dd><p>linear frequency, logarithmic (in dB) gain (default)\n</p></dd>\n<dt><samp>loglin</samp></dt>\n<dd><p>logarithmic (in octave scale where 20 Hz is 0) frequency, linear gain\n</p></dd>\n<dt><samp>loglog</samp></dt>\n<dd><p>logarithmic frequency, logarithmic gain\n</p></dd>\n</dl>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dumpfile"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set file for dumping, suitable for gnuplot.\n</p>\n</dd>",
+      "name": "dumpfile",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "dumpscale"
+      ],
+      "default": "SCALE_LINLOG",
+      "description": "<dd><p>Set scale for dumpfile. Acceptable values are same with scale option.\nDefault is linlog.\n</p>\n</dd>",
+      "name": "dumpscale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fft2"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable 2-channel convolution using complex FFT. This improves speed significantly.\nDefault is disabled.\n</p>\n</dd>",
+      "name": "fft2",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "min_phase"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable minimum phase impulse response. Default is disabled.\n</p></dd>",
+      "name": "min_phase",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#firequalizer"
+}

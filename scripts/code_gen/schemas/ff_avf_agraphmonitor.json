@@ -1,0 +1,80 @@
+{
+  "description": "18.4 agraphmonitor\nSee graphmonitor.",
+  "filter_type": "avf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_avf_agraphmonitor",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "agraphmonitor",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "hd720",
+      "description": null,
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "opacity",
+        "o"
+      ],
+      "default": 0.9,
+      "description": null,
+      "name": "opacity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mode",
+        "m"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "mode",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "flags",
+        "f"
+      ],
+      "default": "FLAG_QUEUE",
+      "description": null,
+      "name": "flags",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": null,
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor"
+}

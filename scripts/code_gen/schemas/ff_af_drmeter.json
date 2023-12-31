@@ -1,0 +1,35 @@
+{
+  "description": "8.84 drmeter\nMeasure audio dynamic range.\n\nDR values of 14 and higher is found in very dynamic material. DR of 8 to 13\nis found in transition material. And anything less that 8 have very poor dynamics\nand is very compressed.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_drmeter",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "drmeter",
+  "options": [
+    {
+      "alias": [
+        "length"
+      ],
+      "default": 3.0,
+      "description": "<dd><p>Set window length in seconds used to split audio into segments of equal length.\nDefault is 3 seconds.\n</p></dd>",
+      "name": "length",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#drmeter"
+}

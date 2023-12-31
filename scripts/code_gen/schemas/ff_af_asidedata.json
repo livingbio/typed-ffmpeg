@@ -1,0 +1,45 @@
+{
+  "description": "18.31 sidedata, asidedata\nDelete frame side data, or select frames based on it.\n\nThis filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_asidedata",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "asidedata",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set mode of operation of the filter.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>select</samp>\u2019</dt>\n<dd><p>Select every frame with side data of <code>type</code>.\n</p>\n</dd>\n<dt>\u2018<samp>delete</samp>\u2019</dt>\n<dd><p>Delete side data of <code>type</code>. If <code>type</code> is not set, delete all side\ndata in the frame.\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set side data type used with all modes. Must be set for <code>select</code> mode. For\nthe list of frame side data types, refer to the <code>AVFrameSideDataType</code> enum\nin <samp>libavutil/frame.h</samp>. For example, to choose\n<code>AV_FRAME_DATA_PANSCAN</code> side data, you must specify <code>PANSCAN</code>.\n</p>\n</dd>",
+      "name": "type",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata"
+}

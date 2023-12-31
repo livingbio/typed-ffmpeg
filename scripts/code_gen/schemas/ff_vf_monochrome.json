@@ -1,0 +1,65 @@
+{
+  "description": "11.168 monochrome\nConvert video to gray using custom color filter.\n\nA description of the accepted options follows.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_monochrome",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "monochrome",
+  "options": [
+    {
+      "alias": [
+        "cb"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the chroma blue spot. Allowed range is from -1 to 1.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "cb",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "cr"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the chroma red spot. Allowed range is from -1 to 1.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "cr",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the color filter size. Allowed range is from .1 to 10.\nDefault value is 1.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "high"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the highlights strength. Allowed range is from 0 to 1.\nDefault value is 0.\n</p></dd>",
+      "name": "high",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#monochrome"
+}

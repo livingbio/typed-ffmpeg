@@ -1,0 +1,58 @@
+{
+  "description": "11.293 yaepblur\nApply blur filter while preserving edges (\"yaepblur\" means \"yet another edge preserving blur filter\").\nThe algorithm is described in\n\"J. S. Lee, Digital image enhancement and noise filtering by use of local statistics, IEEE Trans. Pattern Anal. Mach. Intell. PAMI-2, 1980.\"\n\nIt accepts the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_yaepblur",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "yaepblur",
+  "options": [
+    {
+      "alias": [
+        "radius",
+        "r"
+      ],
+      "default": 3,
+      "description": "<dd><p>Set the window radius. Default value is 3.\n</p>\n</dd>",
+      "name": "radius",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes",
+        "p"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set which planes to filter. Default is only the first plane.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sigma",
+        "s"
+      ],
+      "default": 128,
+      "description": "<dd><p>Set blur strength. Default value is 128.\n</p></dd>",
+      "name": "sigma",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#yaepblur"
+}

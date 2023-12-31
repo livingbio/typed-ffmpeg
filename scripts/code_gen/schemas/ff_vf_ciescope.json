@@ -1,0 +1,127 @@
+{
+  "description": "11.29 ciescope\nDisplay CIE color diagram with pixels overlaid onto it.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_ciescope",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "ciescope",
+  "options": [
+    {
+      "alias": [
+        "system"
+      ],
+      "default": "Rec709system",
+      "description": "<dd><p>Set color system.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>ntsc, 470m</samp>\u2019</dt>\n<dt>\u2018<samp>ebu, 470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte</samp>\u2019</dt>\n<dt>\u2018<samp>240m</samp>\u2019</dt>\n<dt>\u2018<samp>apple</samp>\u2019</dt>\n<dt>\u2018<samp>widergb</samp>\u2019</dt>\n<dt>\u2018<samp>cie1931</samp>\u2019</dt>\n<dt>\u2018<samp>rec709, hdtv</samp>\u2019</dt>\n<dt>\u2018<samp>uhdtv, rec2020</samp>\u2019</dt>\n<dt>\u2018<samp>dcip3</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "system",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cie"
+      ],
+      "default": "XYY",
+      "description": "<dd><p>Set CIE system.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>xyy</samp>\u2019</dt>\n<dt>\u2018<samp>ucs</samp>\u2019</dt>\n<dt>\u2018<samp>luv</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "cie",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gamuts"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set what gamuts to draw.\n</p>\n<p>See <code>system</code> option for available values.\n</p>\n</dd>",
+      "name": "gamuts",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": 512,
+      "description": "<dd><p>Set ciescope size, by default set to 512.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "intensity",
+        "i"
+      ],
+      "default": 0.001,
+      "description": "<dd><p>Set intensity used to map input pixel values to CIE diagram.\n</p>\n</dd>",
+      "name": "intensity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "contrast"
+      ],
+      "default": 0.75,
+      "description": "<dd><p>Set contrast used to draw tongue colors that are out of active color system gamut.\n</p>\n</dd>",
+      "name": "contrast",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "corrgamma"
+      ],
+      "default": 1,
+      "description": "<dd><p>Correct gamma displayed on scope, by default enabled.\n</p>\n</dd>",
+      "name": "corrgamma",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "showwhite"
+      ],
+      "default": 0,
+      "description": "<dd><p>Show white point on CIE diagram, by default disabled.\n</p>\n</dd>",
+      "name": "showwhite",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "gamma"
+      ],
+      "default": 2.6,
+      "description": "<dd><p>Set input gamma. Used only with XYZ input color space.\n</p>\n</dd>",
+      "name": "gamma",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fill"
+      ],
+      "default": 1,
+      "description": "<dd><p>Fill with CIE colors. By default is enabled.\n</p></dd>",
+      "name": "fill",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ciescope"
+}

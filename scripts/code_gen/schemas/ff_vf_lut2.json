@@ -1,0 +1,79 @@
+{
+  "description": "11.154 lut2, tlut2\nThe lut2 filter takes two input streams and outputs one\nstream.\n\nThe tlut2 (time lut2) filter takes two consecutive frames\nfrom one single stream.\n\nThis filter accepts the following parameters:\n\nThe lut2 filter also supports the framesync options.\n\nEach of them specifies the expression to use for computing the lookup table for\nthe corresponding pixel component values.\n\nThe exact component associated to each of the c* options depends on the\nformat in inputs.\n\nThe expressions can contain the following constants:\n\n\nAll expressions default to \"x\".",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_lut2",
+  "input_stream_typings": [
+    {
+      "name": "srcx",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "srcy",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "lut2",
+  "options": [
+    {
+      "alias": [
+        "c0"
+      ],
+      "default": "x",
+      "description": "<dd><p>set first pixel component expression\n</p></dd>",
+      "name": "c0",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c1"
+      ],
+      "default": "x",
+      "description": "<dd><p>set second pixel component expression\n</p></dd>",
+      "name": "c1",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c2"
+      ],
+      "default": "x",
+      "description": "<dd><p>set third pixel component expression\n</p></dd>",
+      "name": "c2",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c3"
+      ],
+      "default": "x",
+      "description": "<dd><p>set fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>",
+      "name": "c3",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "d"
+      ],
+      "default": 0,
+      "description": "<dd><p>set output bit depth, only available for <code>lut2</code> filter. By default is 0,\nwhich means bit depth is automatically picked from first input format.\n</p></dd>",
+      "name": "d",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2"
+}

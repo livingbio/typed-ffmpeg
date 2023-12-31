@@ -1,0 +1,70 @@
+{
+  "description": "8.35 amix\nMixes multiple audio inputs into a single output.\n\nNote that this filter only supports float samples (the amerge\nand pan audio filters support many formats). If the amix\ninput has integer samples then aresample will be automatically\ninserted to perform the conversion to float samples.\n\nIt accepts the following parameters:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_amix",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "amix",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "default": 2,
+      "description": "<dd><p>The number of inputs. If unspecified, it defaults to 2.\n</p>\n</dd>",
+      "name": "inputs",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "duration"
+      ],
+      "default": 0,
+      "description": "<dd><p>How to determine the end-of-stream.\n</p><dl compact=\"compact\">\n<dt><samp>longest</samp></dt>\n<dd><p>The duration of the longest input. (default)\n</p>\n</dd>\n<dt><samp>shortest</samp></dt>\n<dd><p>The duration of the shortest input.\n</p>\n</dd>\n<dt><samp>first</samp></dt>\n<dd><p>The duration of the first input.\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dropout_transition"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>The transition time, in seconds, for volume renormalization when an input\nstream ends. The default value is 2 seconds.\n</p>\n</dd>",
+      "name": "dropout_transition",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "weights"
+      ],
+      "default": "1 1",
+      "description": "<dd><p>Specify weight of each input audio stream as a sequence of numbers separated\nby a space. If fewer weights are specified compared to number of inputs, the\nlast weight is assigned to the remaining inputs.\nDefault weight for each input is 1.\n</p>\n</dd>",
+      "name": "weights",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "normalize"
+      ],
+      "default": 1,
+      "description": "<dd><p>Always scale inputs instead of only doing summation of samples.\nBeware of heavy clipping if inputs are not normalized prior or after filtering\nby this filter if this option is disabled. By default is enabled.\n</p></dd>",
+      "name": "normalize",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#amix"
+}

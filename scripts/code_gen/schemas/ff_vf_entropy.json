@@ -1,0 +1,35 @@
+{
+  "description": "11.81 entropy\nMeasure graylevel entropy in histogram of color channels of video frames.\n\nIt accepts the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_entropy",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "entropy",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": 0,
+      "description": "<dd><p>Can be either <var>normal</var> or <var>diff</var>. Default is <var>normal</var>.\n</p>\n<p><var>diff</var> mode measures entropy of histogram delta values, absolute differences\nbetween neighbour histogram values.\n</p></dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#entropy"
+}

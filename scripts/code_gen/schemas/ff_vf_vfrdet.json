@@ -1,0 +1,24 @@
+{
+  "description": "11.277 vfrdet\nDetect variable frame rate video.\n\nThis filter tries to detect if the input is variable or constant frame rate.\n\nAt end it will output number of frames detected as having variable delta pts,\nand ones with constant delta pts.\nIf there was frames with variable delta, than it will also show min, max and\naverage delta encountered.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_vfrdet",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "vfrdet",
+  "options": [],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vfrdet"
+}

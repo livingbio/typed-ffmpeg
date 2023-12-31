@@ -1,0 +1,55 @@
+{
+  "description": "11.69 detelecine\nApply an exact inverse of the telecine operation. It requires a predefined\npattern specified using the pattern option which must be the same as that passed\nto the telecine filter.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_detelecine",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "detelecine",
+  "options": [
+    {
+      "alias": [
+        "first_field"
+      ],
+      "default": 0,
+      "description": "<dd><dl compact=\"compact\">\n<dt>\u2018<samp>top, t</samp>\u2019</dt>\n<dd><p>top field first\n</p></dd>\n<dt>\u2018<samp>bottom, b</samp>\u2019</dt>\n<dd><p>bottom field first\nThe default value is <code>top</code>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "first_field",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pattern"
+      ],
+      "default": "23",
+      "description": "<dd><p>A string of numbers representing the pulldown pattern you wish to apply.\nThe default value is <code>23</code>.\n</p>\n</dd>",
+      "name": "pattern",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "start_frame"
+      ],
+      "default": 0,
+      "description": "<dd><p>A number representing position of the first frame with respect to the telecine\npattern. This is to be used if the stream is cut. The default value is <code>0</code>.\n</p></dd>",
+      "name": "start_frame",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#detelecine"
+}

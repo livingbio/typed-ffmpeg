@@ -1,0 +1,58 @@
+{
+  "description": "8.26 aformat\nSet output format constraints for the input audio. The framework will\nnegotiate the most appropriate format to minimize conversions.\n\nIt accepts the following parameters:\n\nIf a parameter is omitted, all values are allowed.\n\nForce the output to either unsigned 8-bit or signed 16-bit stereo\n\naformat=sample_fmts=u8|s16:channel_layouts=stereo",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_aformat",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "aformat",
+  "options": [
+    {
+      "alias": [
+        "sample_fmts",
+        "f"
+      ],
+      "default": null,
+      "description": "<dd><p>A \u2019|\u2019-separated list of requested sample formats.\n</p>\n</dd>",
+      "name": "sample_fmts",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "sample_rates",
+        "r"
+      ],
+      "default": null,
+      "description": "<dd><p>A \u2019|\u2019-separated list of requested sample rates.\n</p>\n</dd>",
+      "name": "sample_rates",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "channel_layouts",
+        "cl"
+      ],
+      "default": null,
+      "description": "<dd><p>A \u2019|\u2019-separated list of requested channel layouts.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p></dd>",
+      "name": "channel_layouts",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aformat"
+}

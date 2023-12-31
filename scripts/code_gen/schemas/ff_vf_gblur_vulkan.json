@@ -1,0 +1,75 @@
+{
+  "description": "14.9 gblur_vulkan\nApply Gaussian blur filter on Vulkan frames.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_gblur_vulkan",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "gblur_vulkan",
+  "options": [
+    {
+      "alias": [
+        "sigma"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set horizontal sigma, standard deviation of Gaussian blur. Default is <code>0.5</code>.\n</p>\n</dd>",
+      "name": "sigma",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sigmaV"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set vertical sigma, if negative it will be same as <code>sigma</code>.\nDefault is <code>-1</code>.\n</p>\n</dd>",
+      "name": "sigmaV",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": "0xF",
+      "description": "<dd><p>Set which planes to filter. By default all planes are filtered.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "default": 19,
+      "description": "<dd><p>Set the kernel size along the horizontal axis. Default is <code>19</code>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sizeV"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the kernel size along the vertical axis. Default is <code>0</code>,\nwhich sets to use the same value as <var>size</var>.\n</p>\n</dd>",
+      "name": "sizeV",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#gblur_005fvulkan"
+}

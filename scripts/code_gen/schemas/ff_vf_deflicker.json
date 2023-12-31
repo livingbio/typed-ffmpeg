@@ -1,0 +1,57 @@
+{
+  "description": "11.63 deflicker\nRemove temporal frame luminance variations.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_deflicker",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "deflicker",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": 5,
+      "description": "<dd><p>Set moving-average filter size in frames. Default is 5. Allowed range is 2 - 129.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode",
+        "m"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set averaging mode to smooth temporal luminance variations.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>am</samp>\u2019</dt>\n<dd><p>Arithmetic mean\n</p>\n</dd>\n<dt>\u2018<samp>gm</samp>\u2019</dt>\n<dd><p>Geometric mean\n</p>\n</dd>\n<dt>\u2018<samp>hm</samp>\u2019</dt>\n<dd><p>Harmonic mean\n</p>\n</dd>\n<dt>\u2018<samp>qm</samp>\u2019</dt>\n<dd><p>Quadratic mean\n</p>\n</dd>\n<dt>\u2018<samp>cm</samp>\u2019</dt>\n<dd><p>Cubic mean\n</p>\n</dd>\n<dt>\u2018<samp>pm</samp>\u2019</dt>\n<dd><p>Power mean\n</p>\n</dd>\n<dt>\u2018<samp>median</samp>\u2019</dt>\n<dd><p>Median\n</p></dd>\n</dl>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bypass"
+      ],
+      "default": 0,
+      "description": "<dd><p>Do not actually modify frame. Useful when one only wants metadata.\n</p></dd>",
+      "name": "bypass",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#deflicker"
+}

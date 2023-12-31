@@ -1,0 +1,119 @@
+{
+  "description": "11.53 curves\nApply color adjustments using curves.\n\nThis filter is similar to the Adobe Photoshop and GIMP curves tools. Each\ncomponent (red, green and blue) has its values defined by N key points\ntied from each other using a smooth curve. The x-axis represents the pixel\nvalues from the input frame, and the y-axis the new pixel values to be set for\nthe output frame.\n\nBy default, a component curve is defined by the two points (0;0) and\n(1;1). This creates a straight line where each original pixel value is\n\"adjusted\" to its own value, which means no change to the image.\n\nThe filter allows you to redefine these two points and add some more. A new\ncurve will be define to pass smoothly through all these new coordinates. The\nnew defined points needs to be strictly increasing over the x-axis, and their\nx and y values must be in the [0;1] interval. The curve is\nformed by using a natural or monotonic cubic spline interpolation, depending\non the interp option (default: natural). The natural\nspline produces a smoother curve in general while the monotonic (pchip)\nspline guarantees the transitions between the specified points to be\nmonotonic. If the computed curves happened to go outside the vector spaces,\nthe values will be clipped accordingly.\n\nThe filter accepts the following options:\n\n\nTo avoid some filtergraph syntax conflicts, each key points list need to be\ndefined using the following syntax: x0/y0 x1/y1 x2/y2 ....",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_curves",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "curves",
+  "options": [
+    {
+      "alias": [
+        "preset"
+      ],
+      "default": "PRESET_NONE",
+      "description": "<dd><p>Select one of the available color presets. This option can be used in addition\nto the <samp>r</samp>, <samp>g</samp>, <samp>b</samp> parameters; in this case, the later\noptions takes priority on the preset values.\nAvailable presets are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dt>\u2018<samp>color_negative</samp>\u2019</dt>\n<dt>\u2018<samp>cross_process</samp>\u2019</dt>\n<dt>\u2018<samp>darker</samp>\u2019</dt>\n<dt>\u2018<samp>increase_contrast</samp>\u2019</dt>\n<dt>\u2018<samp>lighter</samp>\u2019</dt>\n<dt>\u2018<samp>linear_contrast</samp>\u2019</dt>\n<dt>\u2018<samp>medium_contrast</samp>\u2019</dt>\n<dt>\u2018<samp>negative</samp>\u2019</dt>\n<dt>\u2018<samp>strong_contrast</samp>\u2019</dt>\n<dt>\u2018<samp>vintage</samp>\u2019</dt>\n</dl>\n<p>Default is <code>none</code>.\n</p></dd>",
+      "name": "preset",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "master",
+        "m"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the master key points. These points will define a second pass mapping. It\nis sometimes called a \"luminance\" or \"value\" mapping. It can be used with\n<samp>r</samp>, <samp>g</samp>, <samp>b</samp> or <samp>all</samp> since it acts like a\npost-processing LUT.\n</p></dd>",
+      "name": "master",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "red",
+        "r"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the key points for the red component.\n</p></dd>",
+      "name": "red",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "green",
+        "g"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the key points for the green component.\n</p></dd>",
+      "name": "green",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "blue",
+        "b"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the key points for the blue component.\n</p></dd>",
+      "name": "blue",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "all"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the key points for all components (not including master).\nCan be used in addition to the other key points component\noptions. In this case, the unset component(s) will fallback on this\n<samp>all</samp> setting.\n</p></dd>",
+      "name": "all",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "psfile"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Specify a Photoshop curves file (<code>.acv</code>) to import the settings from.\n</p></dd>",
+      "name": "psfile",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "plot"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Save Gnuplot script of the curves in specified file.\n</p></dd>",
+      "name": "plot",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "interp"
+      ],
+      "default": "INTERP_NATURAL",
+      "description": "<dd><p>Specify the kind of interpolation. Available algorithms are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>natural</samp>\u2019</dt>\n<dd><p>Natural cubic spline using a piece-wise cubic polynomial that is twice continuously differentiable.\n</p></dd>\n<dt>\u2018<samp>pchip</samp>\u2019</dt>\n<dd><p>Monotonic cubic spline using a piecewise cubic Hermite interpolating polynomial (PCHIP).\n</p></dd>\n</dl>\n</dd>",
+      "name": "interp",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#curves"
+}

@@ -1,0 +1,75 @@
+{
+  "description": "11.170 mpdecimate\nDrop frames that do not differ greatly from the previous frame in\norder to reduce frame rate.\n\nThe main use of this filter is for very-low-bitrate encoding\n(e.g. streaming over dialup modem), but it could in theory be used for\nfixing movies that were inverse-telecined incorrectly.\n\nA description of the accepted options follows.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_mpdecimate",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "mpdecimate",
+  "options": [
+    {
+      "alias": [
+        "max"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the maximum number of consecutive frames which can be dropped (if\npositive), or the minimum interval between dropped frames (if\nnegative). If the value is 0, the frame is dropped disregarding the\nnumber of previous sequentially dropped frames.\n</p>\n<p>Default value is 0.\n</p>\n</dd>",
+      "name": "max",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "keep"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the maximum number of consecutive similar frames to ignore before to start dropping them.\nIf the value is 0, the frame is dropped disregarding the\nnumber of previous sequentially similar frames.\n</p>\n<p>Default value is 0.\n</p>\n</dd>",
+      "name": "keep",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "hi"
+      ],
+      "default": "64*12",
+      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "name": "hi",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lo"
+      ],
+      "default": "64*5",
+      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "name": "lo",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "frac"
+      ],
+      "default": 0.33,
+      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "name": "frac",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#mpdecimate"
+}

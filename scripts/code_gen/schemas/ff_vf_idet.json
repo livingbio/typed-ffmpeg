@@ -1,0 +1,75 @@
+{
+  "description": "11.135 idet\nDetect video interlacing type.\n\nThis filter tries to detect if the input frames are interlaced, progressive,\ntop or bottom field first. It will also try to detect fields that are\nrepeated between adjacent frames (a sign of telecine).\n\nSingle frame detection considers only immediately adjacent frames when classifying each frame.\nMultiple frame detection incorporates the classification history of previous frames.\n\nThe filter will log these metadata values:\n\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_idet",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "idet",
+  "options": [
+    {
+      "alias": [
+        "intl_thres"
+      ],
+      "default": 1.04,
+      "description": "<dd><p>Set interlacing threshold.\n</p></dd>",
+      "name": "intl_thres",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "prog_thres"
+      ],
+      "default": 1.5,
+      "description": "<dd><p>Set progressive threshold.\n</p></dd>",
+      "name": "prog_thres",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rep_thres"
+      ],
+      "default": 3.0,
+      "description": "<dd><p>Threshold for repeated field detection.\n</p></dd>",
+      "name": "rep_thres",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "half_life"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Number of frames after which a given frame\u2019s contribution to the\nstatistics is halved (i.e., it contributes only 0.5 to its\nclassification). The default of 0 means that all frames seen are given\nfull weight of 1.0 forever.\n</p></dd>",
+      "name": "half_life",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "analyze_interlaced_flag"
+      ],
+      "default": 0,
+      "description": "<dd><p>When this is not 0 then idet will use the specified number of frames to determine\nif the interlaced flag is accurate, it will not count undetermined frames.\nIf the flag is found to be accurate it will be used without any further\ncomputations, if it is found to be inaccurate it will be cleared without any\nfurther computations. This allows inserting the idet filter as a low computational\nmethod to clean up the interlaced flag\n</p></dd>",
+      "name": "analyze_interlaced_flag",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#idet"
+}

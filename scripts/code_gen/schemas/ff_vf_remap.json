@@ -1,0 +1,53 @@
+{
+  "description": "11.206 remap\nRemap pixels using 2nd: Xmap and 3rd: Ymap input video stream.\n\nDestination pixel at position (X, Y) will be picked from source (x, y) position\nwhere x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero\nvalue for pixel will be used for destination pixel.\n\nXmap and Ymap input video streams must be of same dimensions. Output video stream\nwill have Xmap/Ymap video stream dimensions.\nXmap and Ymap input video streams are 16bit depth, single channel.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_remap",
+  "input_stream_typings": [
+    {
+      "name": "source",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "xmap",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "ymap",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "remap",
+  "options": [
+    {
+      "alias": [
+        "format"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specify pixel format of output from this filter. Can be <code>color</code> or <code>gray</code>.\nDefault is <code>color</code>.\n</p>\n</dd>",
+      "name": "format",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fill"
+      ],
+      "default": "black",
+      "description": "<dd><p>Specify the color of the unmapped pixels. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>. Default color is <code>black</code>.\n</p></dd>",
+      "name": "fill",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#remap"
+}

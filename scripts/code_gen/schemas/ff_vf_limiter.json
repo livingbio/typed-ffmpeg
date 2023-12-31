@@ -1,0 +1,55 @@
+{
+  "description": "11.148 limiter\nLimits the pixel components values to the specified range [min, max].\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_limiter",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "limiter",
+  "options": [
+    {
+      "alias": [
+        "min"
+      ],
+      "default": 0,
+      "description": "<dd><p>Lower bound. Defaults to the lowest allowed value for the input.\n</p>\n</dd>",
+      "name": "min",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "max"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Upper bound. Defaults to the highest allowed value for the input.\n</p>\n</dd>",
+      "name": "max",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Specify which planes will be processed. Defaults to all available.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#limiter"
+}

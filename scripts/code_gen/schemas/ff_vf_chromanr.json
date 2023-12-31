@@ -1,0 +1,115 @@
+{
+  "description": "11.27 chromanr\nReduce chrominance noise.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_chromanr",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "chromanr",
+  "options": [
+    {
+      "alias": [
+        "thres"
+      ],
+      "default": 30.0,
+      "description": "<dd><p>Set threshold for averaging chrominance values.\nSum of absolute difference of Y, U and V pixel components of current\npixel and neighbour pixels lower than this threshold will be used in\naveraging. Luma component is left unchanged and is copied to output.\nDefault value is 30. Allowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "thres",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sizew"
+      ],
+      "default": 5,
+      "description": "<dd><p>Set horizontal radius of rectangle used for averaging.\nAllowed range is from 1 to 100. Default value is 5.\n</p>\n</dd>",
+      "name": "sizew",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sizeh"
+      ],
+      "default": 5,
+      "description": "<dd><p>Set vertical radius of rectangle used for averaging.\nAllowed range is from 1 to 100. Default value is 5.\n</p>\n</dd>",
+      "name": "sizeh",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "stepw"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set horizontal step when averaging. Default value is 1.\nAllowed range is from 1 to 50.\nMostly useful to speed-up filtering.\n</p>\n</dd>",
+      "name": "stepw",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "steph"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set vertical step when averaging. Default value is 1.\nAllowed range is from 1 to 50.\nMostly useful to speed-up filtering.\n</p>\n</dd>",
+      "name": "steph",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threy"
+      ],
+      "default": 200.0,
+      "description": "<dd><p>Set Y threshold for averaging chrominance values.\nSet finer control for max allowed difference between Y components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "threy",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "threu"
+      ],
+      "default": 200.0,
+      "description": "<dd><p>Set U threshold for averaging chrominance values.\nSet finer control for max allowed difference between U components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "threu",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "threv"
+      ],
+      "default": 200.0,
+      "description": "<dd><p>Set V threshold for averaging chrominance values.\nSet finer control for max allowed difference between V components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
+      "name": "threv",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "distance"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set distance type used in calculations.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>manhattan</samp>\u2019</dt>\n<dd><p>Absolute difference.\n</p></dd>\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dd><p>Difference squared.\n</p></dd>\n</dl>\n<p>Default distance type is manhattan.\n</p></dd>",
+      "name": "distance",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#chromanr"
+}

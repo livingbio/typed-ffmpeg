@@ -1,0 +1,55 @@
+{
+  "description": "11.164 mestimate\nEstimate and export motion vectors using block matching algorithms.\nMotion vectors are stored in frame side data to be used by other filters.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_mestimate",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "mestimate",
+  "options": [
+    {
+      "alias": [
+        "method"
+      ],
+      "default": 1,
+      "description": "<dd><p>Specify the motion estimation method. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>esa</samp>\u2019</dt>\n<dd><p>Exhaustive search algorithm.\n</p></dd>\n<dt>\u2018<samp>tss</samp>\u2019</dt>\n<dd><p>Three step search algorithm.\n</p></dd>\n<dt>\u2018<samp>tdls</samp>\u2019</dt>\n<dd><p>Two dimensional logarithmic search algorithm.\n</p></dd>\n<dt>\u2018<samp>ntss</samp>\u2019</dt>\n<dd><p>New three step search algorithm.\n</p></dd>\n<dt>\u2018<samp>fss</samp>\u2019</dt>\n<dd><p>Four step search algorithm.\n</p></dd>\n<dt>\u2018<samp>ds</samp>\u2019</dt>\n<dd><p>Diamond search algorithm.\n</p></dd>\n<dt>\u2018<samp>hexbs</samp>\u2019</dt>\n<dd><p>Hexagon-based search algorithm.\n</p></dd>\n<dt>\u2018<samp>epzs</samp>\u2019</dt>\n<dd><p>Enhanced predictive zonal search algorithm.\n</p></dd>\n<dt>\u2018<samp>umh</samp>\u2019</dt>\n<dd><p>Uneven multi-hexagon search algorithm.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>esa</samp>\u2019.\n</p>\n</dd>",
+      "name": "method",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mb_size"
+      ],
+      "default": 16,
+      "description": "<dd><p>Macroblock size. Default <code>16</code>.\n</p>\n</dd>",
+      "name": "mb_size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "search_param"
+      ],
+      "default": 7,
+      "description": "<dd><p>Search parameter. Default <code>7</code>.\n</p></dd>",
+      "name": "search_param",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#mestimate"
+}

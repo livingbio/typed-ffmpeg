@@ -1,0 +1,35 @@
+{
+  "description": "11.231 showinfo\nShow a line containing various information for each input video frame.\nThe input video is not modified.\n\nThis filter supports the following options:\n\n\nThe shown line contains a sequence of key/value pairs of the form\nkey:value.\n\nThe following values are shown in the output:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_showinfo",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "showinfo",
+  "options": [
+    {
+      "alias": [
+        "checksum"
+      ],
+      "default": 1,
+      "description": "<dd><p>Calculate checksums of each plane. By default enabled.\n</p></dd>",
+      "name": "checksum",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#showinfo"
+}

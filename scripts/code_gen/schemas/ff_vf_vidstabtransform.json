@@ -1,0 +1,165 @@
+{
+  "description": "11.275 vidstabtransform\nVideo stabilization/deshaking: pass 2 of 2,\nsee vidstabdetect for pass 1.\n\nRead a file with transform information for each frame and\napply/compensate them. Together with the vidstabdetect\nfilter this can be used to deshake videos. See also\nhttp://public.hronopik.de/vid.stab. It is important to also use\nthe unsharp filter, see below.\n\nTo enable compilation of this filter you need to configure FFmpeg with\n--enable-libvidstab.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_vidstabtransform",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "vidstabtransform",
+  "options": [
+    {
+      "alias": [
+        "input"
+      ],
+      "default": "transforms.trf",
+      "description": null,
+      "name": "input",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "smoothing"
+      ],
+      "default": 15,
+      "description": null,
+      "name": "smoothing",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "optalgo"
+      ],
+      "default": "VSOptimalL1",
+      "description": null,
+      "name": "optalgo",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "maxshift"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "maxshift",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "maxangle"
+      ],
+      "default": -1.0,
+      "description": null,
+      "name": "maxangle",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "crop"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "crop",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "invert"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "invert",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "relative"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "relative",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "zoom"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "zoom",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "optzoom"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "optzoom",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "zoomspeed"
+      ],
+      "default": 0.25,
+      "description": null,
+      "name": "zoomspeed",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "interpol"
+      ],
+      "default": 2,
+      "description": null,
+      "name": "interpol",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tripod"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "tripod",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "debug"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "debug",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vidstabtransform"
+}

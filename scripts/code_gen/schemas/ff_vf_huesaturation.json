@@ -1,0 +1,115 @@
+{
+  "description": "11.130 huesaturation\nApply hue-saturation-intensity adjustments to input video stream.\n\nThis filter operates in RGB colorspace.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_huesaturation",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "huesaturation",
+  "options": [
+    {
+      "alias": [
+        "hue"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the hue shift in degrees to apply. Default is 0.\nAllowed range is from -180 to 180.\n</p>\n</dd>",
+      "name": "hue",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "saturation"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the saturation shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "name": "saturation",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "intensity"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the intensity shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "name": "intensity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "colors"
+      ],
+      "default": "0x3F",
+      "description": "<dd><p>Set which primary and complementary colors are going to be adjusted.\nThis options is set by providing one or multiple values.\nThis can select multiple colors at once. By default all colors are selected.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dd><p>Adjust reds.\n</p></dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Adjust yellows.\n</p></dd>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dd><p>Adjust greens.\n</p></dd>\n<dt>\u2018<samp>c</samp>\u2019</dt>\n<dd><p>Adjust cyans.\n</p></dd>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n<dd><p>Adjust blues.\n</p></dd>\n<dt>\u2018<samp>m</samp>\u2019</dt>\n<dd><p>Adjust magentas.\n</p></dd>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>Adjust all colors.\n</p></dd>\n</dl>\n</dd>",
+      "name": "colors",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "strength"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set strength of filtering. Allowed range is from 0 to 100.\nDefault value is 1.\n</p>\n</dd>",
+      "name": "strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rw"
+      ],
+      "default": 0.333,
+      "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
+      "name": "rw",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gw"
+      ],
+      "default": 0.334,
+      "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
+      "name": "gw",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bw"
+      ],
+      "default": 0.333,
+      "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
+      "name": "bw",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lightness"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set preserving lightness, by default is disabled.\nAdjusting hues can change lightness from original RGB triplet,\nwith this option enabled lightness is kept at same value.\n</p></dd>",
+      "name": "lightness",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#huesaturation"
+}

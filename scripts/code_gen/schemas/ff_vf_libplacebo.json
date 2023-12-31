@@ -1,0 +1,800 @@
+{
+  "description": "11.144 libplacebo\nFlexible GPU-accelerated processing filter based on libplacebo\n(https://code.videolan.org/videolan/libplacebo).",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_libplacebo",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "libplacebo",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "inputs",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "default": "iw",
+      "description": null,
+      "name": "w",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": "ih",
+      "description": null,
+      "name": "h",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fps"
+      ],
+      "default": "none",
+      "description": null,
+      "name": "fps",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "crop_x"
+      ],
+      "default": "(iw-cw)/2",
+      "description": null,
+      "name": "crop_x",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "crop_y"
+      ],
+      "default": "(ih-ch)/2",
+      "description": null,
+      "name": "crop_y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "crop_w"
+      ],
+      "default": "iw",
+      "description": null,
+      "name": "crop_w",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "crop_h"
+      ],
+      "default": "ih",
+      "description": null,
+      "name": "crop_h",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "pos_x"
+      ],
+      "default": "(ow-pw)/2",
+      "description": null,
+      "name": "pos_x",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "pos_y"
+      ],
+      "default": "(oh-ph)/2",
+      "description": null,
+      "name": "pos_y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "pos_w"
+      ],
+      "default": "ow",
+      "description": null,
+      "name": "pos_w",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "pos_h"
+      ],
+      "default": "oh",
+      "description": null,
+      "name": "pos_h",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "format"
+      ],
+      "default": null,
+      "description": null,
+      "name": "format",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "force_original_aspect_ratio"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "force_original_aspect_ratio",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_divisible_by"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "force_divisible_by",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "normalize_sar"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "normalize_sar",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "pad_crop_ratio"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "pad_crop_ratio",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fillcolor"
+      ],
+      "default": "black",
+      "description": null,
+      "name": "fillcolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "corner_rounding"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "corner_rounding",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "extra_opts"
+      ],
+      "default": null,
+      "description": null,
+      "name": "extra_opts",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "colorspace"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "colorspace",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "range",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "color_primaries"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "color_primaries",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "color_trc"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "color_trc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "upscaler"
+      ],
+      "default": "spline36",
+      "description": null,
+      "name": "upscaler",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "downscaler"
+      ],
+      "default": "mitchell",
+      "description": null,
+      "name": "downscaler",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "frame_mixer"
+      ],
+      "default": "none",
+      "description": null,
+      "name": "frame_mixer",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "lut_entries"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "lut_entries",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "antiringing"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "antiringing",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sigmoid"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "sigmoid",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "apply_filmgrain"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "apply_filmgrain",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "apply_dolbyvision"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "apply_dolbyvision",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "deband"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "deband",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "deband_iterations"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "deband_iterations",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "deband_threshold"
+      ],
+      "default": 4.0,
+      "description": null,
+      "name": "deband_threshold",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "deband_radius"
+      ],
+      "default": 16.0,
+      "description": null,
+      "name": "deband_radius",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "deband_grain"
+      ],
+      "default": 6.0,
+      "description": null,
+      "name": "deband_grain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "brightness"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "brightness",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "contrast"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "contrast",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "saturation"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "saturation",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "hue"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "hue",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gamma"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "gamma",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "peak_detect"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "peak_detect",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "smoothing_period"
+      ],
+      "default": 100.0,
+      "description": null,
+      "name": "smoothing_period",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "minimum_peak"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "minimum_peak",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "scene_threshold_low"
+      ],
+      "default": 5.5,
+      "description": null,
+      "name": "scene_threshold_low",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "scene_threshold_high"
+      ],
+      "default": 10.0,
+      "description": null,
+      "name": "scene_threshold_high",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "percentile"
+      ],
+      "default": 99.995,
+      "description": null,
+      "name": "percentile",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gamut_mode"
+      ],
+      "default": "GAMUT_MAP_PERCEPTUAL",
+      "description": null,
+      "name": "gamut_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tonemapping"
+      ],
+      "default": "TONE_MAP_AUTO",
+      "description": null,
+      "name": "tonemapping",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tonemapping_param"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "tonemapping_param",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "inverse_tonemapping"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "inverse_tonemapping",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "tonemapping_lut_size"
+      ],
+      "default": 256,
+      "description": null,
+      "name": "tonemapping_lut_size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "contrast_recovery"
+      ],
+      "default": 0.3,
+      "description": null,
+      "name": "contrast_recovery",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "contrast_smoothness"
+      ],
+      "default": 3.5,
+      "description": null,
+      "name": "contrast_smoothness",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "desaturation_strength"
+      ],
+      "default": -1.0,
+      "description": null,
+      "name": "desaturation_strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "desaturation_exponent"
+      ],
+      "default": -1.0,
+      "description": null,
+      "name": "desaturation_exponent",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gamut_warning"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "gamut_warning",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "gamut_clipping"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "gamut_clipping",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "intent"
+      ],
+      "default": "PL_INTENT_PERCEPTUAL",
+      "description": null,
+      "name": "intent",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tonemapping_mode"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "tonemapping_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tonemapping_crosstalk"
+      ],
+      "default": 0.04,
+      "description": null,
+      "name": "tonemapping_crosstalk",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "overshoot"
+      ],
+      "default": 0.05,
+      "description": null,
+      "name": "overshoot",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "hybrid_mix"
+      ],
+      "default": 0.2,
+      "description": null,
+      "name": "hybrid_mix",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "dithering"
+      ],
+      "default": "PL_DITHER_BLUE_NOISE",
+      "description": null,
+      "name": "dithering",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dither_lut_size"
+      ],
+      "default": 6,
+      "description": null,
+      "name": "dither_lut_size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dither_temporal"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "dither_temporal",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "cones"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "cones",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "cone-strength"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "cone-strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "custom_shader_path"
+      ],
+      "default": null,
+      "description": null,
+      "name": "custom_shader_path",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "custom_shader_bin"
+      ],
+      "default": null,
+      "description": null,
+      "name": "custom_shader_bin",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "skip_aa"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "skip_aa",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "polar_cutoff"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "polar_cutoff",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "disable_linear"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "disable_linear",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "disable_builtin"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "disable_builtin",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "force_icc_lut"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "force_icc_lut",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "force_dither"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "force_dither",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "disable_fbos"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "disable_fbos",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#libplacebo"
+}

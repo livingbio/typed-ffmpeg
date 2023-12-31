@@ -1,0 +1,65 @@
+{
+  "description": "11.129 hue\nModify the hue and/or the saturation of the input.\n\nIt accepts the following parameters:\n\n\nh and H are mutually exclusive, and can\u2019t be\nspecified at the same time.\n\nThe b, h, H and s option values are\nexpressions containing the following constants:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_hue",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "hue",
+  "options": [
+    {
+      "alias": [
+        "h"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Specify the hue angle as a number of degrees. It accepts an expression,\nand defaults to \"0\".\n</p>\n</dd>",
+      "name": "h",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "s"
+      ],
+      "default": "1",
+      "description": "<dd><p>Specify the saturation in the [-10,10] range. It accepts an expression and\ndefaults to \"1\".\n</p>\n</dd>",
+      "name": "s",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "H"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Specify the hue angle as a number of radians. It accepts an\nexpression, and defaults to \"0\".\n</p>\n</dd>",
+      "name": "H",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "b"
+      ],
+      "default": "0",
+      "description": "<dd><p>Specify the brightness in the [-10,10] range. It accepts an expression and\ndefaults to \"0\".\n</p></dd>",
+      "name": "b",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hue"
+}
