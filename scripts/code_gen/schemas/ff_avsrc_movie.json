@@ -1,8 +1,8 @@
 {
   "description": "19.3 movie\nRead audio and/or video stream(s) from a movie container.\n\nIt accepts the following parameters:\n\n\nIt allows overlaying a second video on top of the main input of\na filtergraph, as shown in this graph:\n\ninput -----------> deltapts0 --> overlay --> output\n                                    ^\n                                    |\nmovie --> scale--> deltapts1 -------+",
   "filter_type": "avsrc",
-  "formula_input_typings": null,
-  "formula_output_typings": null,
+  "formula_input_typings": "['video'] * len(streams.split('+'))",
+  "formula_output_typings": "['video'] * len(streams.split('+'))",
   "id": "ff_avsrc_movie",
   "input_stream_typings": [],
   "is_input_dynamic": false,
