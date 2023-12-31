@@ -27,7 +27,7 @@
     {% if option.required %}
         {{option.name | option_name_safe}}: {{option.typing}},
     {% else %}
-        {{option.name | option_name_safe}}: {{option.typing}} | Default = Default(value='{{option.default}}'),
+        {{option.name | option_name_safe}}: {{option.typing}} | Default = Default(value={{option.default.__repr__()}}),
     {% endif %}
 {% endfor %}
 {% endmacro %}
@@ -101,6 +101,8 @@ Ref: {{ f.ref }}
 {%- endif -%}
 filter_node = FilterNode(
     name="{{ f.name }}",
+    formula_input_typings={{f.formula_input_typings.__repr__()}},
+    formula_output_typings={{f.formula_output_typings.__repr__()}},
     inputs=[
         {{ stream_params(f, type) }}
     ],

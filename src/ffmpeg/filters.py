@@ -8,12 +8,12 @@ def aap(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: int | Default = Default(value="16"),
-    projection: int | Default = Default(value="2"),
-    mu: float | Default = Default(value="0.0001"),
-    delta: float | Default = Default(value="0.001"),
+    order: int | Default = Default(value=16),
+    projection: int | Default = Default(value=2),
+    mu: float | Default = Default(value=0.0001),
+    delta: float | Default = Default(value=0.001),
     out_mode: int | Default = Default(value="OUT_MODE"),
-    precision: int | Default = Default(value="0"),
+    precision: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -41,6 +41,8 @@ def aap(
     """
     filter_node = FilterNode(
         name="aap",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _input,
             _desired,
@@ -62,9 +64,9 @@ def acrossfade(
     _crossfade0: "AudioStream",
     _crossfade1: "AudioStream",
     *,
-    nb_samples: int | Default = Default(value="44100"),
-    duration: int | Default = Default(value="0"),
-    overlap: bool | Default = Default(value="1"),
+    nb_samples: int | Default = Default(value=44100),
+    duration: int | Default = Default(value=0),
+    overlap: bool | Default = Default(value=1),
     curve1: int | Default = Default(value="TRI"),
     curve2: int | Default = Default(value="TRI"),
     **kwargs: Any
@@ -91,6 +93,8 @@ def acrossfade(
     """
     filter_node = FilterNode(
         name="acrossfade",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _crossfade0,
             _crossfade1,
@@ -109,25 +113,25 @@ def acrossfade(
 
 def afir(
     *streams: "AudioStream",
-    dry: float | Default = Default(value="1.0"),
-    wet: float | Default = Default(value="1.0"),
-    length: float | Default = Default(value="1.0"),
-    gtype: int | Default = Default(value="0"),
-    irnorm: float | Default = Default(value="1.0"),
-    irlink: bool | Default = Default(value="1"),
-    irgain: float | Default = Default(value="1.0"),
-    irfmt: int | Default = Default(value="1"),
-    maxir: float | Default = Default(value="30.0"),
-    response: bool | Default = Default(value="0"),
-    channel: int | Default = Default(value="0"),
+    dry: float | Default = Default(value=1.0),
+    wet: float | Default = Default(value=1.0),
+    length: float | Default = Default(value=1.0),
+    gtype: int | Default = Default(value=0),
+    irnorm: float | Default = Default(value=1.0),
+    irlink: bool | Default = Default(value=1),
+    irgain: float | Default = Default(value=1.0),
+    irfmt: int | Default = Default(value=1),
+    maxir: float | Default = Default(value=30.0),
+    response: bool | Default = Default(value=0),
+    channel: int | Default = Default(value=0),
     size: str | Default = Default(value="hd720"),
     rate: str | Default = Default(value="25"),
-    minp: int | Default = Default(value="8192"),
-    maxp: int | Default = Default(value="8192"),
-    nbirs: int | Default = Default(value="1"),
-    ir: int | Default = Default(value="0"),
-    precision: int | Default = Default(value="0"),
-    irload: int | Default = Default(value="0"),
+    minp: int | Default = Default(value=8192),
+    maxp: int | Default = Default(value=8192),
+    nbirs: int | Default = Default(value=1),
+    ir: int | Default = Default(value=0),
+    precision: int | Default = Default(value=0),
+    irload: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -178,6 +182,8 @@ def afir(
     """
     filter_node = FilterNode(
         name="afir",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -209,8 +215,8 @@ def afir(
 
 def ainterleave(
     *streams: "AudioStream",
-    nb_inputs: int | Default = Default(value="2"),
-    duration: int | Default = Default(value="0"),
+    nb_inputs: int | Default = Default(value=2),
+    duration: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -252,6 +258,8 @@ def ainterleave(
     """
     filter_node = FilterNode(
         name="ainterleave",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -288,6 +296,8 @@ def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "V
     """
     filter_node = FilterNode(
         name="alphamerge",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _alpha,
@@ -297,7 +307,7 @@ def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "V
     return filter_node.video(0)
 
 
-def amerge(*streams: "AudioStream", inputs: int | Default = Default(value="2"), **kwargs: Any) -> "AudioStream":
+def amerge(*streams: "AudioStream", inputs: int | Default = Default(value=2), **kwargs: Any) -> "AudioStream":
     """
 
     8.34 amerge
@@ -338,6 +348,8 @@ def amerge(*streams: "AudioStream", inputs: int | Default = Default(value="2"), 
     """
     filter_node = FilterNode(
         name="amerge",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -351,11 +363,11 @@ def amerge(*streams: "AudioStream", inputs: int | Default = Default(value="2"), 
 
 def amix(
     *streams: "AudioStream",
-    inputs: int | Default = Default(value="2"),
-    duration: int | Default = Default(value="0"),
-    dropout_transition: float | Default = Default(value="2.0"),
+    inputs: int | Default = Default(value=2),
+    duration: int | Default = Default(value=0),
+    dropout_transition: float | Default = Default(value=2.0),
     weights: str | Default = Default(value="1 1"),
-    normalize: bool | Default = Default(value="1"),
+    normalize: bool | Default = Default(value=1),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -384,6 +396,8 @@ def amix(
     """
     filter_node = FilterNode(
         name="amix",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -419,6 +433,8 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
     """
     filter_node = FilterNode(
         name="amultiply",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _multiply0,
             _multiply1,
@@ -432,12 +448,12 @@ def anlmf(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: int | Default = Default(value="256"),
-    mu: float | Default = Default(value="0.75"),
-    eps: float | Default = Default(value="1.0"),
-    leakage: float | Default = Default(value="0.0"),
+    order: int | Default = Default(value=256),
+    mu: float | Default = Default(value=0.75),
+    eps: float | Default = Default(value=1.0),
+    leakage: float | Default = Default(value=0.0),
     out_mode: int | Default = Default(value="OUT_MODE"),
-    precision: int | Default = Default(value="0"),
+    precision: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -466,6 +482,8 @@ def anlmf(
     """
     filter_node = FilterNode(
         name="anlmf",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _input,
             _desired,
@@ -487,12 +505,12 @@ def anlms(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: int | Default = Default(value="256"),
-    mu: float | Default = Default(value="0.75"),
-    eps: float | Default = Default(value="1.0"),
-    leakage: float | Default = Default(value="0.0"),
+    order: int | Default = Default(value=256),
+    mu: float | Default = Default(value=0.75),
+    eps: float | Default = Default(value=1.0),
+    leakage: float | Default = Default(value=0.0),
     out_mode: int | Default = Default(value="OUT_MODE"),
-    precision: int | Default = Default(value="0"),
+    precision: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -521,6 +539,8 @@ def anlms(
     """
     filter_node = FilterNode(
         name="anlms",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _input,
             _desired,
@@ -557,6 +577,8 @@ def apsnr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Aud
     """
     filter_node = FilterNode(
         name="apsnr",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _input0,
             _input1,
@@ -570,11 +592,11 @@ def arls(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: int | Default = Default(value="16"),
+    order: int | Default = Default(value=16),
     _lambda: float | Default = Default(value="1.f"),
     delta: float | Default = Default(value="2.f"),
     out_mode: int | Default = Default(value="OUT_MODE"),
-    precision: int | Default = Default(value="0"),
+    precision: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -602,6 +624,8 @@ def arls(
     """
     filter_node = FilterNode(
         name="arls",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _input,
             _desired,
@@ -637,6 +661,8 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
     """
     filter_node = FilterNode(
         name="asdr",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _input0,
             _input1,
@@ -665,6 +691,8 @@ def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Au
     """
     filter_node = FilterNode(
         name="asisdr",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _input0,
             _input1,
@@ -675,7 +703,7 @@ def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Au
 
 
 def astreamselect(
-    *streams: "AudioStream", inputs: int | Default = Default(value="2"), map: str, **kwargs: Any
+    *streams: "AudioStream", inputs: int | Default = Default(value=2), map: str, **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -695,6 +723,8 @@ def astreamselect(
     """
     filter_node = FilterNode(
         name="astreamselect",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -712,8 +742,8 @@ def axcorrelate(
     _axcorrelate0: "AudioStream",
     _axcorrelate1: "AudioStream",
     *,
-    size: int | Default = Default(value="256"),
-    algo: int | Default = Default(value="2"),
+    size: int | Default = Default(value=256),
+    algo: int | Default = Default(value=2),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -740,6 +770,8 @@ def axcorrelate(
     """
     filter_node = FilterNode(
         name="axcorrelate",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _axcorrelate0,
             _axcorrelate1,
@@ -757,21 +789,21 @@ def blend(
     _top: "VideoStream",
     _bottom: "VideoStream",
     *,
-    c0_mode: int | Default = Default(value="0"),
-    c1_mode: int | Default = Default(value="0"),
-    c2_mode: int | Default = Default(value="0"),
-    c3_mode: int | Default = Default(value="0"),
-    all_mode: int | Default = Default(value="-1"),
+    c0_mode: int | Default = Default(value=0),
+    c1_mode: int | Default = Default(value=0),
+    c2_mode: int | Default = Default(value=0),
+    c3_mode: int | Default = Default(value=0),
+    all_mode: int | Default = Default(value=-1),
     c0_expr: str,
     c1_expr: str,
     c2_expr: str,
     c3_expr: str,
     all_expr: str,
-    c0_opacity: float | Default = Default(value="1.0"),
-    c1_opacity: float | Default = Default(value="1.0"),
-    c2_opacity: float | Default = Default(value="1.0"),
-    c3_opacity: float | Default = Default(value="1.0"),
-    all_opacity: float | Default = Default(value="1.0"),
+    c0_opacity: float | Default = Default(value=1.0),
+    c1_opacity: float | Default = Default(value=1.0),
+    c2_opacity: float | Default = Default(value=1.0),
+    c3_opacity: float | Default = Default(value=1.0),
+    all_opacity: float | Default = Default(value=1.0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -816,6 +848,8 @@ def blend(
     """
     filter_node = FilterNode(
         name="blend",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _top,
             _bottom,
@@ -846,16 +880,16 @@ def blend_vulkan(
     _top: "VideoStream",
     _bottom: "VideoStream",
     *,
-    c0_mode: int | Default = Default(value="0"),
-    c1_mode: int | Default = Default(value="0"),
-    c2_mode: int | Default = Default(value="0"),
-    c3_mode: int | Default = Default(value="0"),
-    all_mode: int | Default = Default(value="-1"),
-    c0_opacity: float | Default = Default(value="1.0"),
-    c1_opacity: float | Default = Default(value="1.0"),
-    c2_opacity: float | Default = Default(value="1.0"),
-    c3_opacity: float | Default = Default(value="1.0"),
-    all_opacity: float | Default = Default(value="1.0"),
+    c0_mode: int | Default = Default(value=0),
+    c1_mode: int | Default = Default(value=0),
+    c2_mode: int | Default = Default(value=0),
+    c3_mode: int | Default = Default(value=0),
+    all_mode: int | Default = Default(value=-1),
+    c0_opacity: float | Default = Default(value=1.0),
+    c1_opacity: float | Default = Default(value=1.0),
+    c2_opacity: float | Default = Default(value=1.0),
+    c3_opacity: float | Default = Default(value=1.0),
+    all_opacity: float | Default = Default(value=1.0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -888,6 +922,8 @@ def blend_vulkan(
     """
     filter_node = FilterNode(
         name="blend_vulkan",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _top,
             _bottom,
@@ -911,17 +947,17 @@ def blend_vulkan(
 
 def bm3d(
     *streams: "VideoStream",
-    sigma: float | Default = Default(value="1.0"),
-    block: int | Default = Default(value="16"),
-    bstep: int | Default = Default(value="4"),
-    group: int | Default = Default(value="1"),
-    range: int | Default = Default(value="9"),
-    mstep: int | Default = Default(value="1"),
-    thmse: float | Default = Default(value="0.0"),
-    hdthr: float | Default = Default(value="2.7"),
+    sigma: float | Default = Default(value=1.0),
+    block: int | Default = Default(value=16),
+    bstep: int | Default = Default(value=4),
+    group: int | Default = Default(value=1),
+    range: int | Default = Default(value=9),
+    mstep: int | Default = Default(value=1),
+    thmse: float | Default = Default(value=0.0),
+    hdthr: float | Default = Default(value=2.7),
     estim: int | Default = Default(value="BASIC"),
-    ref: bool | Default = Default(value="0"),
-    planes: int | Default = Default(value="7"),
+    ref: bool | Default = Default(value=0),
+    planes: int | Default = Default(value=7),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -951,6 +987,8 @@ def bm3d(
     """
     filter_node = FilterNode(
         name="bm3d",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -978,9 +1016,9 @@ def colormap(
     _target: "VideoStream",
     *,
     patch_size: str | Default = Default(value="64x64"),
-    nb_patches: int | Default = Default(value="0"),
-    type: int | Default = Default(value="1"),
-    kernel: int | Default = Default(value="0"),
+    nb_patches: int | Default = Default(value=0),
+    type: int | Default = Default(value=1),
+    kernel: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1008,6 +1046,8 @@ def colormap(
     """
     filter_node = FilterNode(
         name="colormap",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _default,
             _source,
@@ -1026,10 +1066,10 @@ def colormap(
 
 def concat(
     *streams: "AudioStream",
-    n: int | Default = Default(value="2"),
-    v: int | Default = Default(value="1"),
-    a: int | Default = Default(value="0"),
-    unsafe: bool | Default = Default(value="0"),
+    n: int | Default = Default(value=2),
+    v: int | Default = Default(value=1),
+    a: int | Default = Default(value=0),
+    unsafe: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> FilterNode:
     """
@@ -1083,6 +1123,8 @@ def concat(
     """
     filter_node = FilterNode(
         name="concat",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -1102,9 +1144,9 @@ def convolve(
     _main: "VideoStream",
     _impulse: "VideoStream",
     *,
-    planes: int | Default = Default(value="7"),
-    impulse: int | Default = Default(value="1"),
-    noise: float | Default = Default(value="1e-07"),
+    planes: int | Default = Default(value=7),
+    impulse: int | Default = Default(value=1),
+    noise: float | Default = Default(value=1e-07),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1130,6 +1172,8 @@ def convolve(
     """
     filter_node = FilterNode(
         name="convolve",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _impulse,
@@ -1178,6 +1222,8 @@ def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     """
     filter_node = FilterNode(
         name="corr",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _reference,
@@ -1189,14 +1235,14 @@ def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
 
 def decimate(
     *streams: "VideoStream",
-    cycle: int | Default = Default(value="5"),
-    dupthresh: float | Default = Default(value="1.1"),
-    scthresh: float | Default = Default(value="15.0"),
-    blockx: int | Default = Default(value="32"),
-    blocky: int | Default = Default(value="32"),
-    ppsrc: bool | Default = Default(value="0"),
-    chroma: bool | Default = Default(value="1"),
-    mixed: bool | Default = Default(value="0"),
+    cycle: int | Default = Default(value=5),
+    dupthresh: float | Default = Default(value=1.1),
+    scthresh: float | Default = Default(value=15.0),
+    blockx: int | Default = Default(value=32),
+    blocky: int | Default = Default(value=32),
+    ppsrc: bool | Default = Default(value=0),
+    chroma: bool | Default = Default(value=1),
+    mixed: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1223,6 +1269,8 @@ def decimate(
     """
     filter_node = FilterNode(
         name="decimate",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -1245,9 +1293,9 @@ def deconvolve(
     _main: "VideoStream",
     _impulse: "VideoStream",
     *,
-    planes: int | Default = Default(value="7"),
-    impulse: int | Default = Default(value="1"),
-    noise: float | Default = Default(value="1e-07"),
+    planes: int | Default = Default(value=7),
+    impulse: int | Default = Default(value=1),
+    noise: float | Default = Default(value=1e-07),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1273,6 +1321,8 @@ def deconvolve(
     """
     filter_node = FilterNode(
         name="deconvolve",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _impulse,
@@ -1323,6 +1373,8 @@ def displace(
     """
     filter_node = FilterNode(
         name="displace",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _source,
             _xmap,
@@ -1340,10 +1392,10 @@ def feedback(
     _default: "VideoStream",
     _feedin: "VideoStream",
     *,
-    x: int | Default = Default(value="0"),
-    y: int | Default = Default(value="0"),
-    w: int | Default = Default(value="0"),
-    h: int | Default = Default(value="0"),
+    x: int | Default = Default(value=0),
+    y: int | Default = Default(value=0),
+    w: int | Default = Default(value=0),
+    h: int | Default = Default(value=0),
     **kwargs: Any
 ) -> tuple["VideoStream", "VideoStream",]:
     """
@@ -1374,6 +1426,8 @@ def feedback(
     """
     filter_node = FilterNode(
         name="feedback",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _default,
             _feedin,
@@ -1396,19 +1450,19 @@ def fieldmatch(
     *streams: "VideoStream",
     order: int | Default = Default(value="FM_PARITY_AUTO"),
     mode: int | Default = Default(value="MODE_PC_N"),
-    ppsrc: bool | Default = Default(value="0"),
+    ppsrc: bool | Default = Default(value=0),
     field: int | Default = Default(value="FM_PARITY_AUTO"),
-    mchroma: bool | Default = Default(value="1"),
-    y0: int | Default = Default(value="0"),
-    y1: int | Default = Default(value="0"),
-    scthresh: float | Default = Default(value="12.0"),
+    mchroma: bool | Default = Default(value=1),
+    y0: int | Default = Default(value=0),
+    y1: int | Default = Default(value=0),
+    scthresh: float | Default = Default(value=12.0),
     combmatch: int | Default = Default(value="COMBMATCH_SC"),
     combdbg: int | Default = Default(value="COMBDBG_NONE"),
-    cthresh: int | Default = Default(value="9"),
-    chroma: bool | Default = Default(value="0"),
-    blockx: int | Default = Default(value="16"),
-    blocky: int | Default = Default(value="16"),
-    combpel: int | Default = Default(value="80"),
+    cthresh: int | Default = Default(value=9),
+    chroma: bool | Default = Default(value=0),
+    blockx: int | Default = Default(value=16),
+    blocky: int | Default = Default(value=16),
+    combpel: int | Default = Default(value=80),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1470,6 +1524,8 @@ def fieldmatch(
     """
     filter_node = FilterNode(
         name="fieldmatch",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -1532,6 +1588,8 @@ def framepack(
     """
     filter_node = FilterNode(
         name="framepack",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _left,
             _right,
@@ -1548,9 +1606,9 @@ def freezeframes(
     _source: "VideoStream",
     _replace: "VideoStream",
     *,
-    first: int | Default = Default(value="0"),
-    last: int | Default = Default(value="0"),
-    replace: int | Default = Default(value="0"),
+    first: int | Default = Default(value=0),
+    last: int | Default = Default(value=0),
+    replace: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1574,6 +1632,8 @@ def freezeframes(
     """
     filter_node = FilterNode(
         name="freezeframes",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _source,
             _replace,
@@ -1590,12 +1650,12 @@ def freezeframes(
 
 def guided(
     *streams: "VideoStream",
-    radius: int | Default = Default(value="3"),
-    eps: float | Default = Default(value="0.01"),
+    radius: int | Default = Default(value=3),
+    eps: float | Default = Default(value=0.01),
     mode: int | Default = Default(value="BASIC"),
-    sub: int | Default = Default(value="4"),
+    sub: int | Default = Default(value=4),
     guidance: int | Default = Default(value="OFF"),
-    planes: int | Default = Default(value="1"),
+    planes: int | Default = Default(value=1),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1620,6 +1680,8 @@ def guided(
     """
     filter_node = FilterNode(
         name="guided",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -1640,7 +1702,7 @@ def haldclut(
     _main: "VideoStream",
     _clut: "VideoStream",
     *,
-    clut: int | Default = Default(value="1"),
+    clut: int | Default = Default(value=1),
     interp: int | Default = Default(value="INTERPOLATE_TETRAHEDRAL"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -1674,6 +1736,8 @@ def haldclut(
     """
     filter_node = FilterNode(
         name="haldclut",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _clut,
@@ -1690,11 +1754,11 @@ def haldclut(
 def headphone(
     *streams: "AudioStream",
     map: str,
-    gain: float | Default = Default(value="0.0"),
-    lfe: float | Default = Default(value="0.0"),
-    type: int | Default = Default(value="1"),
-    size: int | Default = Default(value="1024"),
-    hrir: int | Default = Default(value="0"),
+    gain: float | Default = Default(value=0.0),
+    lfe: float | Default = Default(value=0.0),
+    type: int | Default = Default(value=1),
+    size: int | Default = Default(value=1024),
+    hrir: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -1722,6 +1786,8 @@ def headphone(
     """
     filter_node = FilterNode(
         name="headphone",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -1740,8 +1806,8 @@ def headphone(
 
 def hstack(
     *streams: "VideoStream",
-    inputs: int | Default = Default(value="2"),
-    shortest: bool | Default = Default(value="0"),
+    inputs: int | Default = Default(value=2),
+    shortest: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1767,6 +1833,8 @@ def hstack(
     """
     filter_node = FilterNode(
         name="hstack",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -1784,7 +1852,7 @@ def hysteresis(
     _alt: "VideoStream",
     *,
     planes: int | Default = Default(value="0xF"),
-    threshold: int | Default = Default(value="0"),
+    threshold: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1809,6 +1877,8 @@ def hysteresis(
     """
     filter_node = FilterNode(
         name="hysteresis",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _base,
             _alt,
@@ -1856,6 +1926,8 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
     """
     filter_node = FilterNode(
         name="identity",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _reference,
@@ -1867,8 +1939,8 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
 
 def interleave(
     *streams: "VideoStream",
-    nb_inputs: int | Default = Default(value="2"),
-    duration: int | Default = Default(value="0"),
+    nb_inputs: int | Default = Default(value=2),
+    duration: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1910,6 +1982,8 @@ def interleave(
     """
     filter_node = FilterNode(
         name="interleave",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -1924,7 +1998,7 @@ def interleave(
 
 def join(
     *streams: "AudioStream",
-    inputs: int | Default = Default(value="2"),
+    inputs: int | Default = Default(value=2),
     channel_layout: str | Default = Default(value="stereo"),
     map: str,
     **kwargs: Any
@@ -1962,6 +2036,8 @@ def join(
     """
     filter_node = FilterNode(
         name="join",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -1980,10 +2056,10 @@ def ladspa(
     file: str,
     plugin: str,
     controls: str,
-    sample_rate: int | Default = Default(value="44100"),
-    nb_samples: int | Default = Default(value="1024"),
-    duration: int | Default = Default(value="-1"),
-    latency: bool | Default = Default(value="0"),
+    sample_rate: int | Default = Default(value=44100),
+    nb_samples: int | Default = Default(value=1024),
+    duration: int | Default = Default(value=-1),
+    latency: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -2010,6 +2086,8 @@ def ladspa(
     """
     filter_node = FilterNode(
         name="ladspa",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -2029,7 +2107,7 @@ def ladspa(
 
 def libplacebo(
     *streams: "VideoStream",
-    inputs: int | Default = Default(value="1"),
+    inputs: int | Default = Default(value=1),
     w: str | Default = Default(value="iw"),
     h: str | Default = Default(value="ih"),
     fps: str | Default = Default(value="none"),
@@ -2042,71 +2120,71 @@ def libplacebo(
     pos_w: str | Default = Default(value="ow"),
     pos_h: str | Default = Default(value="oh"),
     format: str,
-    force_original_aspect_ratio: int | Default = Default(value="0"),
-    force_divisible_by: int | Default = Default(value="1"),
-    normalize_sar: bool | Default = Default(value="0"),
-    pad_crop_ratio: float | Default = Default(value="0.0"),
+    force_original_aspect_ratio: int | Default = Default(value=0),
+    force_divisible_by: int | Default = Default(value=1),
+    normalize_sar: bool | Default = Default(value=0),
+    pad_crop_ratio: float | Default = Default(value=0.0),
     fillcolor: str | Default = Default(value="black"),
-    corner_rounding: float | Default = Default(value="0.0"),
+    corner_rounding: float | Default = Default(value=0.0),
     extra_opts: str,
-    colorspace: int | Default = Default(value="-1"),
-    range: int | Default = Default(value="-1"),
-    color_primaries: int | Default = Default(value="-1"),
-    color_trc: int | Default = Default(value="-1"),
+    colorspace: int | Default = Default(value=-1),
+    range: int | Default = Default(value=-1),
+    color_primaries: int | Default = Default(value=-1),
+    color_trc: int | Default = Default(value=-1),
     upscaler: str | Default = Default(value="spline36"),
     downscaler: str | Default = Default(value="mitchell"),
     frame_mixer: str | Default = Default(value="none"),
-    lut_entries: int | Default = Default(value="0"),
-    antiringing: float | Default = Default(value="0.0"),
-    sigmoid: bool | Default = Default(value="1"),
-    apply_filmgrain: bool | Default = Default(value="1"),
-    apply_dolbyvision: bool | Default = Default(value="1"),
-    deband: bool | Default = Default(value="0"),
-    deband_iterations: int | Default = Default(value="1"),
-    deband_threshold: float | Default = Default(value="4.0"),
-    deband_radius: float | Default = Default(value="16.0"),
-    deband_grain: float | Default = Default(value="6.0"),
-    brightness: float | Default = Default(value="0.0"),
-    contrast: float | Default = Default(value="1.0"),
-    saturation: float | Default = Default(value="1.0"),
-    hue: float | Default = Default(value="0.0"),
-    gamma: float | Default = Default(value="1.0"),
-    peak_detect: bool | Default = Default(value="1"),
-    smoothing_period: float | Default = Default(value="100.0"),
-    minimum_peak: float | Default = Default(value="1.0"),
-    scene_threshold_low: float | Default = Default(value="5.5"),
-    scene_threshold_high: float | Default = Default(value="10.0"),
-    percentile: float | Default = Default(value="99.995"),
+    lut_entries: int | Default = Default(value=0),
+    antiringing: float | Default = Default(value=0.0),
+    sigmoid: bool | Default = Default(value=1),
+    apply_filmgrain: bool | Default = Default(value=1),
+    apply_dolbyvision: bool | Default = Default(value=1),
+    deband: bool | Default = Default(value=0),
+    deband_iterations: int | Default = Default(value=1),
+    deband_threshold: float | Default = Default(value=4.0),
+    deband_radius: float | Default = Default(value=16.0),
+    deband_grain: float | Default = Default(value=6.0),
+    brightness: float | Default = Default(value=0.0),
+    contrast: float | Default = Default(value=1.0),
+    saturation: float | Default = Default(value=1.0),
+    hue: float | Default = Default(value=0.0),
+    gamma: float | Default = Default(value=1.0),
+    peak_detect: bool | Default = Default(value=1),
+    smoothing_period: float | Default = Default(value=100.0),
+    minimum_peak: float | Default = Default(value=1.0),
+    scene_threshold_low: float | Default = Default(value=5.5),
+    scene_threshold_high: float | Default = Default(value=10.0),
+    percentile: float | Default = Default(value=99.995),
     gamut_mode: int | Default = Default(value="GAMUT_MAP_PERCEPTUAL"),
     tonemapping: int | Default = Default(value="TONE_MAP_AUTO"),
-    tonemapping_param: float | Default = Default(value="0.0"),
-    inverse_tonemapping: bool | Default = Default(value="0"),
-    tonemapping_lut_size: int | Default = Default(value="256"),
-    contrast_recovery: float | Default = Default(value="0.3"),
-    contrast_smoothness: float | Default = Default(value="3.5"),
-    desaturation_strength: float | Default = Default(value="-1.0"),
-    desaturation_exponent: float | Default = Default(value="-1.0"),
-    gamut_warning: bool | Default = Default(value="0"),
-    gamut_clipping: bool | Default = Default(value="0"),
+    tonemapping_param: float | Default = Default(value=0.0),
+    inverse_tonemapping: bool | Default = Default(value=0),
+    tonemapping_lut_size: int | Default = Default(value=256),
+    contrast_recovery: float | Default = Default(value=0.3),
+    contrast_smoothness: float | Default = Default(value=3.5),
+    desaturation_strength: float | Default = Default(value=-1.0),
+    desaturation_exponent: float | Default = Default(value=-1.0),
+    gamut_warning: bool | Default = Default(value=0),
+    gamut_clipping: bool | Default = Default(value=0),
     intent: int | Default = Default(value="PL_INTENT_PERCEPTUAL"),
-    tonemapping_mode: int | Default = Default(value="0"),
-    tonemapping_crosstalk: float | Default = Default(value="0.04"),
-    overshoot: float | Default = Default(value="0.05"),
-    hybrid_mix: float | Default = Default(value="0.2"),
+    tonemapping_mode: int | Default = Default(value=0),
+    tonemapping_crosstalk: float | Default = Default(value=0.04),
+    overshoot: float | Default = Default(value=0.05),
+    hybrid_mix: float | Default = Default(value=0.2),
     dithering: int | Default = Default(value="PL_DITHER_BLUE_NOISE"),
-    dither_lut_size: int | Default = Default(value="6"),
-    dither_temporal: bool | Default = Default(value="0"),
-    cones: str | Default = Default(value="0"),
-    cone_strength: float | Default = Default(value="0.0"),
+    dither_lut_size: int | Default = Default(value=6),
+    dither_temporal: bool | Default = Default(value=0),
+    cones: str | Default = Default(value=0),
+    cone_strength: float | Default = Default(value=0.0),
     custom_shader_path: str,
     custom_shader_bin: str,
-    skip_aa: bool | Default = Default(value="0"),
-    polar_cutoff: float | Default = Default(value="0.0"),
-    disable_linear: bool | Default = Default(value="0"),
-    disable_builtin: bool | Default = Default(value="0"),
-    force_icc_lut: bool | Default = Default(value="0"),
-    force_dither: bool | Default = Default(value="0"),
-    disable_fbos: bool | Default = Default(value="0"),
+    skip_aa: bool | Default = Default(value=0),
+    polar_cutoff: float | Default = Default(value=0.0),
+    disable_linear: bool | Default = Default(value=0),
+    disable_builtin: bool | Default = Default(value=0),
+    force_icc_lut: bool | Default = Default(value=0),
+    force_dither: bool | Default = Default(value=0),
+    disable_fbos: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2202,6 +2280,8 @@ def libplacebo(
     """
     filter_node = FilterNode(
         name="libplacebo",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -2297,8 +2377,8 @@ def libvmaf(
     log_path: str,
     log_fmt: str | Default = Default(value="xml"),
     pool: str,
-    n_threads: int | Default = Default(value="0"),
-    n_subsample: int | Default = Default(value="1"),
+    n_threads: int | Default = Default(value=0),
+    n_subsample: int | Default = Default(value=1),
     model: str | Default = Default(value="version=vmaf_v0.6.1"),
     feature: str,
     **kwargs: Any
@@ -2338,6 +2418,8 @@ def libvmaf(
     """
     filter_node = FilterNode(
         name="libvmaf",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _reference,
@@ -2360,7 +2442,7 @@ def limitdiff(
     *streams: "VideoStream",
     threshold: float | Default = Default(value="1/255.f"),
     elasticity: float | Default = Default(value="2.f"),
-    reference: bool | Default = Default(value="0"),
+    reference: bool | Default = Default(value=0),
     planes: int | Default = Default(value="0xF"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2384,6 +2466,8 @@ def limitdiff(
     """
     filter_node = FilterNode(
         name="limitdiff",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -2406,7 +2490,7 @@ def lut2(
     c1: str | Default = Default(value="x"),
     c2: str | Default = Default(value="x"),
     c3: str | Default = Default(value="x"),
-    d: int | Default = Default(value="0"),
+    d: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2447,6 +2531,8 @@ def lut2(
     """
     filter_node = FilterNode(
         name="lut2",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _srcx,
             _srcy,
@@ -2467,9 +2553,9 @@ def lv2(
     *streams: "AudioStream",
     plugin: str,
     controls: str,
-    sample_rate: int | Default = Default(value="44100"),
-    nb_samples: int | Default = Default(value="1024"),
-    duration: int | Default = Default(value="-1"),
+    sample_rate: int | Default = Default(value=44100),
+    nb_samples: int | Default = Default(value=1024),
+    duration: int | Default = Default(value=-1),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -2494,6 +2580,8 @@ def lv2(
     """
     filter_node = FilterNode(
         name="lv2",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -2514,8 +2602,8 @@ def maskedclamp(
     _dark: "VideoStream",
     _bright: "VideoStream",
     *,
-    undershoot: int | Default = Default(value="0"),
-    overshoot: int | Default = Default(value="0"),
+    undershoot: int | Default = Default(value=0),
+    overshoot: int | Default = Default(value=0),
     planes: int | Default = Default(value="0xF"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2541,6 +2629,8 @@ def maskedclamp(
     """
     filter_node = FilterNode(
         name="maskedclamp",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _base,
             _dark,
@@ -2585,6 +2675,8 @@ def maskedmax(
     """
     filter_node = FilterNode(
         name="maskedmax",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _source,
             _filter1,
@@ -2630,6 +2722,8 @@ def maskedmerge(
     """
     filter_node = FilterNode(
         name="maskedmerge",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _base,
             _overlay,
@@ -2672,6 +2766,8 @@ def maskedmin(
     """
     filter_node = FilterNode(
         name="maskedmin",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _source,
             _filter1,
@@ -2689,9 +2785,9 @@ def maskedthreshold(
     _source: "VideoStream",
     _reference: "VideoStream",
     *,
-    threshold: int | Default = Default(value="1"),
+    threshold: int | Default = Default(value=1),
     planes: int | Default = Default(value="0xF"),
-    mode: int | Default = Default(value="0"),
+    mode: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2719,6 +2815,8 @@ def maskedthreshold(
     """
     filter_node = FilterNode(
         name="maskedthreshold",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _source,
             _reference,
@@ -2735,16 +2833,16 @@ def maskedthreshold(
 
 def mergeplanes(
     *streams: "VideoStream",
-    mapping: int | Default = Default(value="-1"),
+    mapping: int | Default = Default(value=-1),
     format: str | Default = Default(value="AV_PIX_FMT_YUVA444P"),
-    map0s: int | Default = Default(value="0"),
-    map0p: int | Default = Default(value="0"),
-    map1s: int | Default = Default(value="0"),
-    map1p: int | Default = Default(value="0"),
-    map2s: int | Default = Default(value="0"),
-    map2p: int | Default = Default(value="0"),
-    map3s: int | Default = Default(value="0"),
-    map3p: int | Default = Default(value="0"),
+    map0s: int | Default = Default(value=0),
+    map0p: int | Default = Default(value=0),
+    map1s: int | Default = Default(value=0),
+    map1p: int | Default = Default(value=0),
+    map2s: int | Default = Default(value=0),
+    map2p: int | Default = Default(value=0),
+    map3s: int | Default = Default(value=0),
+    map3p: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2776,6 +2874,8 @@ def mergeplanes(
     """
     filter_node = FilterNode(
         name="mergeplanes",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -2824,6 +2924,8 @@ def midequalizer(
     """
     filter_node = FilterNode(
         name="midequalizer",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _in0,
             _in1,
@@ -2838,11 +2940,11 @@ def midequalizer(
 
 def mix(
     *streams: "VideoStream",
-    inputs: int | Default = Default(value="2"),
+    inputs: int | Default = Default(value=2),
     weights: str | Default = Default(value="1 1"),
-    scale: float | Default = Default(value="0.0"),
-    planes: str | Default = Default(value="15"),
-    duration: int | Default = Default(value="0"),
+    scale: float | Default = Default(value=0.0),
+    planes: str | Default = Default(value=15),
+    duration: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2866,6 +2968,8 @@ def mix(
     """
     filter_node = FilterNode(
         name="mix",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -2885,9 +2989,9 @@ def morpho(
     _default: "VideoStream",
     _structure: "VideoStream",
     *,
-    mode: int | Default = Default(value="0"),
-    planes: int | Default = Default(value="7"),
-    structure: int | Default = Default(value="1"),
+    mode: int | Default = Default(value=0),
+    planes: int | Default = Default(value=7),
+    structure: int | Default = Default(value=1),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2917,6 +3021,8 @@ def morpho(
     """
     filter_node = FilterNode(
         name="morpho",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _default,
             _structure,
@@ -2965,6 +3071,8 @@ def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     """
     filter_node = FilterNode(
         name="msad",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _reference,
@@ -2978,8 +3086,8 @@ def multiply(
     _source: "VideoStream",
     _factor: "VideoStream",
     *,
-    scale: float | Default = Default(value="1.0"),
-    offset: float | Default = Default(value="0.5"),
+    scale: float | Default = Default(value=1.0),
+    offset: float | Default = Default(value=0.5),
     planes: str | Default = Default(value="0xF"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -3002,6 +3110,8 @@ def multiply(
     """
     filter_node = FilterNode(
         name="multiply",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _source,
             _factor,
@@ -3024,10 +3134,10 @@ def overlay(
     y: str | Default = Default(value="0"),
     eof_action: int | Default = Default(value="EOF_ACTION_REPEAT"),
     eval: int | Default = Default(value="EVAL_MODE_FRAME"),
-    shortest: bool | Default = Default(value="0"),
+    shortest: bool | Default = Default(value=0),
     format: int | Default = Default(value="OVERLAY_FORMAT_YUV420"),
-    repeatlast: bool | Default = Default(value="1"),
-    alpha: int | Default = Default(value="0"),
+    repeatlast: bool | Default = Default(value=1),
+    alpha: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3079,6 +3189,8 @@ def overlay(
     """
     filter_node = FilterNode(
         name="overlay",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _overlay,
@@ -3106,8 +3218,8 @@ def overlay_cuda(
     y: str | Default = Default(value="0"),
     eof_action: int | Default = Default(value="EOF_ACTION_REPEAT"),
     eval: int | Default = Default(value="EVAL_MODE_FRAME"),
-    shortest: bool | Default = Default(value="0"),
-    repeatlast: bool | Default = Default(value="1"),
+    shortest: bool | Default = Default(value=0),
+    repeatlast: bool | Default = Default(value=1),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3141,6 +3253,8 @@ def overlay_cuda(
     """
     filter_node = FilterNode(
         name="overlay_cuda",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _overlay,
@@ -3162,8 +3276,8 @@ def overlay_opencl(
     _main: "VideoStream",
     _overlay: "VideoStream",
     *,
-    x: int | Default = Default(value="0"),
-    y: int | Default = Default(value="0"),
+    x: int | Default = Default(value=0),
+    y: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3187,6 +3301,8 @@ def overlay_opencl(
     """
     filter_node = FilterNode(
         name="overlay_opencl",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _overlay,
@@ -3208,10 +3324,10 @@ def overlay_vaapi(
     y: str | Default = Default(value="0"),
     w: str | Default = Default(value="overlay_iw"),
     h: str | Default = Default(value="overlay_ih*w/overlay_iw"),
-    alpha: float | Default = Default(value="1.0"),
+    alpha: float | Default = Default(value=1.0),
     eof_action: int | Default = Default(value="EOF_ACTION_REPEAT"),
-    shortest: bool | Default = Default(value="0"),
-    repeatlast: bool | Default = Default(value="1"),
+    shortest: bool | Default = Default(value=0),
+    repeatlast: bool | Default = Default(value=1),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3243,6 +3359,8 @@ def overlay_vaapi(
     """
     filter_node = FilterNode(
         name="overlay_vaapi",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _overlay,
@@ -3266,8 +3384,8 @@ def overlay_vulkan(
     _main: "VideoStream",
     _overlay: "VideoStream",
     *,
-    x: int | Default = Default(value="0"),
-    y: int | Default = Default(value="0"),
+    x: int | Default = Default(value=0),
+    y: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3291,6 +3409,8 @@ def overlay_vulkan(
     """
     filter_node = FilterNode(
         name="overlay_vulkan",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _overlay,
@@ -3309,10 +3429,10 @@ def paletteuse(
     _palette: "VideoStream",
     *,
     dither: int | Default = Default(value="DITHERING_SIERRA2_4A"),
-    bayer_scale: int | Default = Default(value="2"),
+    bayer_scale: int | Default = Default(value=2),
     diff_mode: int | Default = Default(value="DIFF_MODE_NONE"),
-    new: bool | Default = Default(value="0"),
-    alpha_threshold: int | Default = Default(value="128"),
+    new: bool | Default = Default(value=0),
+    alpha_threshold: int | Default = Default(value=128),
     debug_kdtree: str,
     **kwargs: Any
 ) -> "VideoStream":
@@ -3341,6 +3461,8 @@ def paletteuse(
     """
     filter_node = FilterNode(
         name="paletteuse",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _default,
             _palette,
@@ -3361,7 +3483,7 @@ def paletteuse(
 def premultiply(
     *streams: "VideoStream",
     planes: int | Default = Default(value="0xF"),
-    inplace: bool | Default = Default(value="0"),
+    inplace: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3385,6 +3507,8 @@ def premultiply(
     """
     filter_node = FilterNode(
         name="premultiply",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -3402,8 +3526,8 @@ def psnr(
     _reference: "VideoStream",
     *,
     stats_file: str,
-    stats_version: int | Default = Default(value="1"),
-    output_max: bool | Default = Default(value="0"),
+    stats_version: int | Default = Default(value=1),
+    output_max: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3461,6 +3585,8 @@ def psnr(
     """
     filter_node = FilterNode(
         name="psnr",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _reference,
@@ -3480,7 +3606,7 @@ def remap(
     _xmap: "VideoStream",
     _ymap: "VideoStream",
     *,
-    format: int | Default = Default(value="0"),
+    format: int | Default = Default(value=0),
     fill: str | Default = Default(value="black"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -3508,6 +3634,8 @@ def remap(
     """
     filter_node = FilterNode(
         name="remap",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _source,
             _xmap,
@@ -3527,7 +3655,7 @@ def remap_opencl(
     _xmap: "VideoStream",
     _ymap: "VideoStream",
     *,
-    interp: int | Default = Default(value="1"),
+    interp: int | Default = Default(value=1),
     fill: str | Default = Default(value="black"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -3555,6 +3683,8 @@ def remap_opencl(
     """
     filter_node = FilterNode(
         name="remap_opencl",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _source,
             _xmap,
@@ -3576,20 +3706,20 @@ def scale2ref(
     w: str,
     h: str,
     flags: str | Default = Default(value=""),
-    interl: bool | Default = Default(value="0"),
+    interl: bool | Default = Default(value=0),
     size: str,
-    in_color_matrix: int | Default = Default(value="-1"),
+    in_color_matrix: int | Default = Default(value=-1),
     out_color_matrix: int | Default = Default(value="AVCOL_SPC_UNSPECIFIED"),
     in_range: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"),
     out_range: int | Default = Default(value="AVCOL_RANGE_UNSPECIFIED"),
-    in_v_chr_pos: int | Default = Default(value="-513"),
-    in_h_chr_pos: int | Default = Default(value="-513"),
-    out_v_chr_pos: int | Default = Default(value="-513"),
-    out_h_chr_pos: int | Default = Default(value="-513"),
-    force_original_aspect_ratio: int | Default = Default(value="0"),
-    force_divisible_by: int | Default = Default(value="1"),
-    param0: float | Default = Default(value="1.7976931348623157e+308"),
-    param1: float | Default = Default(value="1.7976931348623157e+308"),
+    in_v_chr_pos: int | Default = Default(value=-513),
+    in_h_chr_pos: int | Default = Default(value=-513),
+    out_v_chr_pos: int | Default = Default(value=-513),
+    out_h_chr_pos: int | Default = Default(value=-513),
+    force_original_aspect_ratio: int | Default = Default(value=0),
+    force_divisible_by: int | Default = Default(value=1),
+    param0: float | Default = Default(value=1.7976931348623157e308),
+    param1: float | Default = Default(value=1.7976931348623157e308),
     eval: int | Default = Default(value="EVAL_MODE_INIT"),
     **kwargs: Any
 ) -> tuple["VideoStream", "VideoStream",]:
@@ -3630,6 +3760,8 @@ def scale2ref(
     """
     filter_node = FilterNode(
         name="scale2ref",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _default,
             _ref,
@@ -3671,8 +3803,8 @@ def scale2ref_npp(
     format: str | Default = Default(value="same"),
     s: str,
     interp_algo: int | Default = Default(value="NPPI_INTER_CUBIC"),
-    force_original_aspect_ratio: int | Default = Default(value="0"),
-    force_divisible_by: int | Default = Default(value="1"),
+    force_original_aspect_ratio: int | Default = Default(value=0),
+    force_divisible_by: int | Default = Default(value=1),
     eval: int | Default = Default(value="EVAL_MODE_INIT"),
     **kwargs: Any
 ) -> tuple["VideoStream", "VideoStream",]:
@@ -3704,6 +3836,8 @@ def scale2ref_npp(
     """
     filter_node = FilterNode(
         name="scale2ref_npp",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _default,
             _ref,
@@ -3730,18 +3864,18 @@ def sidechaincompress(
     _main: "AudioStream",
     _sidechain: "AudioStream",
     *,
-    level_in: float | Default = Default(value="1.0"),
-    mode: int | Default = Default(value="0"),
-    threshold: float | Default = Default(value="0.125"),
-    ratio: float | Default = Default(value="2.0"),
-    attack: float | Default = Default(value="20.0"),
-    release: float | Default = Default(value="250.0"),
-    makeup: float | Default = Default(value="1.0"),
-    knee: float | Default = Default(value="2.82843"),
-    link: int | Default = Default(value="0"),
-    detection: int | Default = Default(value="1"),
-    level_sc: float | Default = Default(value="1.0"),
-    mix: float | Default = Default(value="1.0"),
+    level_in: float | Default = Default(value=1.0),
+    mode: int | Default = Default(value=0),
+    threshold: float | Default = Default(value=0.125),
+    ratio: float | Default = Default(value=2.0),
+    attack: float | Default = Default(value=20.0),
+    release: float | Default = Default(value=250.0),
+    makeup: float | Default = Default(value=1.0),
+    knee: float | Default = Default(value=2.82843),
+    link: int | Default = Default(value=0),
+    detection: int | Default = Default(value=1),
+    level_sc: float | Default = Default(value=1.0),
+    mix: float | Default = Default(value=1.0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -3777,6 +3911,8 @@ def sidechaincompress(
     """
     filter_node = FilterNode(
         name="sidechaincompress",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _sidechain,
@@ -3804,18 +3940,18 @@ def sidechaingate(
     _main: "AudioStream",
     _sidechain: "AudioStream",
     *,
-    level_in: float | Default = Default(value="1.0"),
-    mode: int | Default = Default(value="0"),
-    range: float | Default = Default(value="0.06125"),
-    threshold: float | Default = Default(value="0.125"),
-    ratio: float | Default = Default(value="2.0"),
-    attack: float | Default = Default(value="20.0"),
-    release: float | Default = Default(value="250.0"),
-    makeup: float | Default = Default(value="1.0"),
-    knee: float | Default = Default(value="2.828427125"),
-    detection: int | Default = Default(value="1"),
-    link: int | Default = Default(value="0"),
-    level_sc: float | Default = Default(value="1.0"),
+    level_in: float | Default = Default(value=1.0),
+    mode: int | Default = Default(value=0),
+    range: float | Default = Default(value=0.06125),
+    threshold: float | Default = Default(value=0.125),
+    ratio: float | Default = Default(value=2.0),
+    attack: float | Default = Default(value=20.0),
+    release: float | Default = Default(value=250.0),
+    makeup: float | Default = Default(value=1.0),
+    knee: float | Default = Default(value=2.828427125),
+    detection: int | Default = Default(value=1),
+    link: int | Default = Default(value=0),
+    level_sc: float | Default = Default(value=1.0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -3856,6 +3992,8 @@ def sidechaingate(
     """
     filter_node = FilterNode(
         name="sidechaingate",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _sidechain,
@@ -3882,14 +4020,14 @@ def sidechaingate(
 def signature(
     *streams: "VideoStream",
     detectmode: int | Default = Default(value="MODE_OFF"),
-    nb_inputs: int | Default = Default(value="1"),
+    nb_inputs: int | Default = Default(value=1),
     filename: str | Default = Default(value=""),
     format: int | Default = Default(value="FORMAT_BINARY"),
-    th_d: int | Default = Default(value="9000"),
-    th_dc: int | Default = Default(value="60000"),
-    th_xh: int | Default = Default(value="116"),
-    th_di: int | Default = Default(value="0"),
-    th_it: float | Default = Default(value="0.5"),
+    th_d: int | Default = Default(value=9000),
+    th_dc: int | Default = Default(value=60000),
+    th_xh: int | Default = Default(value=116),
+    th_di: int | Default = Default(value=0),
+    th_it: float | Default = Default(value=0.5),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3920,6 +4058,8 @@ def signature(
     """
     filter_node = FilterNode(
         name="signature",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -3943,12 +4083,12 @@ def spectrumsynth(
     _magnitude: "VideoStream",
     _phase: "VideoStream",
     *,
-    sample_rate: int | Default = Default(value="44100"),
-    channels: int | Default = Default(value="1"),
+    sample_rate: int | Default = Default(value=44100),
+    channels: int | Default = Default(value=1),
     scale: int | Default = Default(value="LOG"),
     slide: int | Default = Default(value="FULLFRAME"),
-    win_func: int | Default = Default(value="0"),
-    overlap: float | Default = Default(value="1.0"),
+    win_func: int | Default = Default(value=0),
+    overlap: float | Default = Default(value=1.0),
     orientation: int | Default = Default(value="VERTICAL"),
     **kwargs: Any
 ) -> "AudioStream":
@@ -3989,6 +4129,8 @@ def spectrumsynth(
     """
     filter_node = FilterNode(
         name="spectrumsynth",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _magnitude,
             _phase,
@@ -4046,6 +4188,8 @@ def ssim(_main: "VideoStream", _reference: "VideoStream", *, stats_file: str, **
     """
     filter_node = FilterNode(
         name="ssim",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _reference,
@@ -4059,7 +4203,7 @@ def ssim(_main: "VideoStream", _reference: "VideoStream", *, stats_file: str, **
 
 
 def streamselect(
-    *streams: "VideoStream", inputs: int | Default = Default(value="2"), map: str, **kwargs: Any
+    *streams: "VideoStream", inputs: int | Default = Default(value=2), map: str, **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -4079,6 +4223,8 @@ def streamselect(
     """
     filter_node = FilterNode(
         name="streamselect",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -4098,7 +4244,7 @@ def threshold(
     _min: "VideoStream",
     _max: "VideoStream",
     *,
-    planes: int | Default = Default(value="15"),
+    planes: int | Default = Default(value=15),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4130,6 +4276,8 @@ def threshold(
     """
     filter_node = FilterNode(
         name="threshold",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _default,
             _threshold,
@@ -4147,7 +4295,7 @@ def threshold(
 def unpremultiply(
     *streams: "VideoStream",
     planes: int | Default = Default(value="0xF"),
-    inplace: bool | Default = Default(value="0"),
+    inplace: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4171,6 +4319,8 @@ def unpremultiply(
     """
     filter_node = FilterNode(
         name="unpremultiply",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -4187,8 +4337,8 @@ def varblur(
     _default: "VideoStream",
     _radius: "VideoStream",
     *,
-    min_r: int | Default = Default(value="0"),
-    max_r: int | Default = Default(value="8"),
+    min_r: int | Default = Default(value=0),
+    max_r: int | Default = Default(value=8),
     planes: int | Default = Default(value="0xF"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -4215,6 +4365,8 @@ def varblur(
     """
     filter_node = FilterNode(
         name="varblur",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _default,
             _radius,
@@ -4262,6 +4414,8 @@ def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vide
     """
     filter_node = FilterNode(
         name="vif",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _reference,
@@ -4273,8 +4427,8 @@ def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vide
 
 def vstack(
     *streams: "VideoStream",
-    inputs: int | Default = Default(value="2"),
-    shortest: bool | Default = Default(value="0"),
+    inputs: int | Default = Default(value=2),
+    shortest: bool | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4300,6 +4454,8 @@ def vstack(
     """
     filter_node = FilterNode(
         name="vstack",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -4316,8 +4472,8 @@ def xcorrelate(
     _primary: "VideoStream",
     _secondary: "VideoStream",
     *,
-    planes: int | Default = Default(value="7"),
-    secondary: int | Default = Default(value="1"),
+    planes: int | Default = Default(value=7),
+    secondary: int | Default = Default(value=1),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4343,6 +4499,8 @@ def xcorrelate(
     """
     filter_node = FilterNode(
         name="xcorrelate",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _primary,
             _secondary,
@@ -4361,8 +4519,8 @@ def xfade(
     _xfade: "VideoStream",
     *,
     transition: int | Default = Default(value="FADE"),
-    duration: int | Default = Default(value="1000000"),
-    offset: int | Default = Default(value="0"),
+    duration: int | Default = Default(value=1000000),
+    offset: int | Default = Default(value=0),
     expr: str,
     **kwargs: Any
 ) -> "VideoStream":
@@ -4390,6 +4548,8 @@ def xfade(
     """
     filter_node = FilterNode(
         name="xfade",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _xfade,
@@ -4409,11 +4569,11 @@ def xfade_opencl(
     _main: "VideoStream",
     _xfade: "VideoStream",
     *,
-    transition: int | Default = Default(value="1"),
+    transition: int | Default = Default(value=1),
     source: str,
     kernel: str,
-    duration: int | Default = Default(value="1000000"),
-    offset: int | Default = Default(value="0"),
+    duration: int | Default = Default(value=1000000),
+    offset: int | Default = Default(value=0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4485,6 +4645,8 @@ def xfade_opencl(
     """
     filter_node = FilterNode(
         name="xfade_opencl",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             _main,
             _xfade,
@@ -4503,9 +4665,9 @@ def xfade_opencl(
 
 def xmedian(
     *streams: "VideoStream",
-    inputs: int | Default = Default(value="3"),
-    planes: int | Default = Default(value="15"),
-    percentile: float | Default = Default(value="0.5"),
+    inputs: int | Default = Default(value=3),
+    planes: int | Default = Default(value=15),
+    percentile: float | Default = Default(value=0.5),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4527,6 +4689,8 @@ def xmedian(
     """
     filter_node = FilterNode(
         name="xmedian",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],
@@ -4542,10 +4706,10 @@ def xmedian(
 
 def xstack(
     *streams: "VideoStream",
-    inputs: int | Default = Default(value="2"),
+    inputs: int | Default = Default(value=2),
     layout: str,
     grid: str,
-    shortest: bool | Default = Default(value="0"),
+    shortest: bool | Default = Default(value=0),
     fill: str | Default = Default(value="none"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -4572,6 +4736,8 @@ def xstack(
     """
     filter_node = FilterNode(
         name="xstack",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             *streams,
         ],

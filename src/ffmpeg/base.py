@@ -7,7 +7,7 @@ if TYPE_CHECKING:
 
 
 class Default(BaseModel):
-    value: str
+    value: str | int | float | bool | None
 
 
 class Node(BaseModel):
@@ -60,6 +60,8 @@ class InputNode(Node):
 
 class FilterNode(InputNode):
     inputs: list[FilterableStream]
+    formula_input_typings: str | None = None
+    formula_output_typings: str | None = None
 
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
@@ -110,7 +112,7 @@ def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream
 
 def calculate_dynamic_types(forumla: str, **kwargs: int | Default | str | None | float | bool) -> list[str]:
     # TODO: This is a hacky way to calculate dynamic types. Only int and str are allowed.
-    values: dict[str, int | str | float | bool] = {}
+    values: dict[str, int | str | float | bool | None] = {}
     for k in kwargs:
         v = kwargs[k]
         if not v:
