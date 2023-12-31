@@ -2,12 +2,10 @@ from typing import TYPE_CHECKING, Any, Mapping
 
 from pydantic import BaseModel
 
+from .schema import Default
+
 if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
-
-
-class Default(BaseModel):
-    value: str | int | float | bool | None
 
 
 class Node(BaseModel):
@@ -108,24 +106,3 @@ def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream
             raise ValueError("Can't specify both `format` and `f` kwargs")
         kwargs["format"] = fmt
     return InputNode(name=input.__name__, kwargs=kwargs).stream()
-
-
-def calculate_dynamic_types(forumla: str, **kwargs: int | Default | str | None | float | bool) -> list[str]:
-    # TODO: This is a hacky way to calculate dynamic types. Only int and str are allowed.
-    values: dict[str, int | str | float | bool | None] = {}
-    for k in kwargs:
-        v = kwargs[k]
-        if not v:
-            continue
-
-        if isinstance(v, Default):
-            v = v.value
-        elif isinstance(v, str):
-            try:
-                v = int(v)
-            except ValueError:
-                v = v
-
-        values = {k: v}
-
-    return eval(forumla, values)

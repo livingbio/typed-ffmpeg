@@ -27,11 +27,11 @@ def aap(
     
 
     
-        order: int | Default = Default(value='None'),
+        order: int | Default = Default(value=None),
     
 
     
-        projection: int | Default = Default(value='None'),
+        projection: int | Default = Default(value=None),
     
 
 
@@ -52,6 +52,8 @@ Ref: None
     """
     filter_node = FilterNode(
         name="aap",
+        formula_input_typings=None,
+        formula_output_typings=None,
         inputs=[
             
 
