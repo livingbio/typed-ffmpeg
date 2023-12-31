@@ -60,6 +60,8 @@ class FilterNode(InputNode):
     inputs: list[FilterableStream]
     formula_input_typings: str | None = None
     formula_output_typings: str | None = None
+    input_typings: list[str] = []
+    output_typings: list[str] = []
 
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)

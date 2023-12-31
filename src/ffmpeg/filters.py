@@ -1,6 +1,7 @@
 from typing import Any
 
-from .base import Default, FilterNode
+from .base import FilterNode
+from .schema import Default
 from .stream import AudioStream, VideoStream
 
 
@@ -41,6 +42,8 @@ def aap(
     """
     filter_node = FilterNode(
         name="aap",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -93,6 +96,8 @@ def acrossfade(
     """
     filter_node = FilterNode(
         name="acrossfade",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -182,6 +187,8 @@ def afir(
     """
     filter_node = FilterNode(
         name="afir",
+        input_typings=[],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -258,6 +265,8 @@ def ainterleave(
     """
     filter_node = FilterNode(
         name="ainterleave",
+        input_typings=[],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -296,6 +305,8 @@ def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "V
     """
     filter_node = FilterNode(
         name="alphamerge",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -348,6 +359,8 @@ def amerge(*streams: "AudioStream", inputs: int | Default = Default(value=2), **
     """
     filter_node = FilterNode(
         name="amerge",
+        input_typings=[],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -396,6 +409,8 @@ def amix(
     """
     filter_node = FilterNode(
         name="amix",
+        input_typings=[],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -433,6 +448,8 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
     """
     filter_node = FilterNode(
         name="amultiply",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -482,6 +499,8 @@ def anlmf(
     """
     filter_node = FilterNode(
         name="anlmf",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -539,6 +558,8 @@ def anlms(
     """
     filter_node = FilterNode(
         name="anlms",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -577,6 +598,8 @@ def apsnr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Aud
     """
     filter_node = FilterNode(
         name="apsnr",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -624,6 +647,8 @@ def arls(
     """
     filter_node = FilterNode(
         name="arls",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -661,6 +686,8 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
     """
     filter_node = FilterNode(
         name="asdr",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -691,6 +718,8 @@ def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Au
     """
     filter_node = FilterNode(
         name="asisdr",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -723,6 +752,8 @@ def astreamselect(
     """
     filter_node = FilterNode(
         name="astreamselect",
+        input_typings=[],
+        output_typings=[],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -770,6 +801,8 @@ def axcorrelate(
     """
     filter_node = FilterNode(
         name="axcorrelate",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -848,6 +881,8 @@ def blend(
     """
     filter_node = FilterNode(
         name="blend",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -922,6 +957,8 @@ def blend_vulkan(
     """
     filter_node = FilterNode(
         name="blend_vulkan",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -987,6 +1024,8 @@ def bm3d(
     """
     filter_node = FilterNode(
         name="bm3d",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1046,6 +1085,8 @@ def colormap(
     """
     filter_node = FilterNode(
         name="colormap",
+        input_typings=["video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1123,6 +1164,8 @@ def concat(
     """
     filter_node = FilterNode(
         name="concat",
+        input_typings=[],
+        output_typings=[],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1172,6 +1215,8 @@ def convolve(
     """
     filter_node = FilterNode(
         name="convolve",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1222,6 +1267,8 @@ def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     """
     filter_node = FilterNode(
         name="corr",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1269,6 +1316,8 @@ def decimate(
     """
     filter_node = FilterNode(
         name="decimate",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1321,6 +1370,8 @@ def deconvolve(
     """
     filter_node = FilterNode(
         name="deconvolve",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1373,6 +1424,8 @@ def displace(
     """
     filter_node = FilterNode(
         name="displace",
+        input_typings=["video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1426,6 +1479,8 @@ def feedback(
     """
     filter_node = FilterNode(
         name="feedback",
+        input_typings=["video", "video"],
+        output_typings=["video", "video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1524,6 +1579,8 @@ def fieldmatch(
     """
     filter_node = FilterNode(
         name="fieldmatch",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1588,6 +1645,8 @@ def framepack(
     """
     filter_node = FilterNode(
         name="framepack",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1632,6 +1691,8 @@ def freezeframes(
     """
     filter_node = FilterNode(
         name="freezeframes",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1680,6 +1741,8 @@ def guided(
     """
     filter_node = FilterNode(
         name="guided",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1736,6 +1799,8 @@ def haldclut(
     """
     filter_node = FilterNode(
         name="haldclut",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1786,6 +1851,8 @@ def headphone(
     """
     filter_node = FilterNode(
         name="headphone",
+        input_typings=[],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1833,6 +1900,8 @@ def hstack(
     """
     filter_node = FilterNode(
         name="hstack",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1877,6 +1946,8 @@ def hysteresis(
     """
     filter_node = FilterNode(
         name="hysteresis",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1926,6 +1997,8 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
     """
     filter_node = FilterNode(
         name="identity",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -1982,6 +2055,8 @@ def interleave(
     """
     filter_node = FilterNode(
         name="interleave",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2036,6 +2111,8 @@ def join(
     """
     filter_node = FilterNode(
         name="join",
+        input_typings=[],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2086,6 +2163,8 @@ def ladspa(
     """
     filter_node = FilterNode(
         name="ladspa",
+        input_typings=[],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2280,6 +2359,8 @@ def libplacebo(
     """
     filter_node = FilterNode(
         name="libplacebo",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2418,6 +2499,8 @@ def libvmaf(
     """
     filter_node = FilterNode(
         name="libvmaf",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2466,6 +2549,8 @@ def limitdiff(
     """
     filter_node = FilterNode(
         name="limitdiff",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2531,6 +2616,8 @@ def lut2(
     """
     filter_node = FilterNode(
         name="lut2",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2580,6 +2667,8 @@ def lv2(
     """
     filter_node = FilterNode(
         name="lv2",
+        input_typings=[],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2629,6 +2718,8 @@ def maskedclamp(
     """
     filter_node = FilterNode(
         name="maskedclamp",
+        input_typings=["video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2675,6 +2766,8 @@ def maskedmax(
     """
     filter_node = FilterNode(
         name="maskedmax",
+        input_typings=["video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2722,6 +2815,8 @@ def maskedmerge(
     """
     filter_node = FilterNode(
         name="maskedmerge",
+        input_typings=["video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2766,6 +2861,8 @@ def maskedmin(
     """
     filter_node = FilterNode(
         name="maskedmin",
+        input_typings=["video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2815,6 +2912,8 @@ def maskedthreshold(
     """
     filter_node = FilterNode(
         name="maskedthreshold",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2874,6 +2973,8 @@ def mergeplanes(
     """
     filter_node = FilterNode(
         name="mergeplanes",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2924,6 +3025,8 @@ def midequalizer(
     """
     filter_node = FilterNode(
         name="midequalizer",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -2968,6 +3071,8 @@ def mix(
     """
     filter_node = FilterNode(
         name="mix",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3021,6 +3126,8 @@ def morpho(
     """
     filter_node = FilterNode(
         name="morpho",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3071,6 +3178,8 @@ def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     """
     filter_node = FilterNode(
         name="msad",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3110,6 +3219,8 @@ def multiply(
     """
     filter_node = FilterNode(
         name="multiply",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3189,6 +3300,8 @@ def overlay(
     """
     filter_node = FilterNode(
         name="overlay",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3253,6 +3366,8 @@ def overlay_cuda(
     """
     filter_node = FilterNode(
         name="overlay_cuda",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3301,6 +3416,8 @@ def overlay_opencl(
     """
     filter_node = FilterNode(
         name="overlay_opencl",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3359,6 +3476,8 @@ def overlay_vaapi(
     """
     filter_node = FilterNode(
         name="overlay_vaapi",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3409,6 +3528,8 @@ def overlay_vulkan(
     """
     filter_node = FilterNode(
         name="overlay_vulkan",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3461,6 +3582,8 @@ def paletteuse(
     """
     filter_node = FilterNode(
         name="paletteuse",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3507,6 +3630,8 @@ def premultiply(
     """
     filter_node = FilterNode(
         name="premultiply",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3585,6 +3710,8 @@ def psnr(
     """
     filter_node = FilterNode(
         name="psnr",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3634,6 +3761,8 @@ def remap(
     """
     filter_node = FilterNode(
         name="remap",
+        input_typings=["video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3683,6 +3812,8 @@ def remap_opencl(
     """
     filter_node = FilterNode(
         name="remap_opencl",
+        input_typings=["video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3760,6 +3891,8 @@ def scale2ref(
     """
     filter_node = FilterNode(
         name="scale2ref",
+        input_typings=["video", "video"],
+        output_typings=["video", "video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3836,6 +3969,8 @@ def scale2ref_npp(
     """
     filter_node = FilterNode(
         name="scale2ref_npp",
+        input_typings=["video", "video"],
+        output_typings=["video", "video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3911,6 +4046,8 @@ def sidechaincompress(
     """
     filter_node = FilterNode(
         name="sidechaincompress",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -3992,6 +4129,8 @@ def sidechaingate(
     """
     filter_node = FilterNode(
         name="sidechaingate",
+        input_typings=["audio", "audio"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4058,6 +4197,8 @@ def signature(
     """
     filter_node = FilterNode(
         name="signature",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4129,6 +4270,8 @@ def spectrumsynth(
     """
     filter_node = FilterNode(
         name="spectrumsynth",
+        input_typings=["video", "video"],
+        output_typings=["audio"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4188,6 +4331,8 @@ def ssim(_main: "VideoStream", _reference: "VideoStream", *, stats_file: str, **
     """
     filter_node = FilterNode(
         name="ssim",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4223,6 +4368,8 @@ def streamselect(
     """
     filter_node = FilterNode(
         name="streamselect",
+        input_typings=[],
+        output_typings=[],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4276,6 +4423,8 @@ def threshold(
     """
     filter_node = FilterNode(
         name="threshold",
+        input_typings=["video", "video", "video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4319,6 +4468,8 @@ def unpremultiply(
     """
     filter_node = FilterNode(
         name="unpremultiply",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4365,6 +4516,8 @@ def varblur(
     """
     filter_node = FilterNode(
         name="varblur",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4414,6 +4567,8 @@ def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vide
     """
     filter_node = FilterNode(
         name="vif",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4454,6 +4609,8 @@ def vstack(
     """
     filter_node = FilterNode(
         name="vstack",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4499,6 +4656,8 @@ def xcorrelate(
     """
     filter_node = FilterNode(
         name="xcorrelate",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4548,6 +4707,8 @@ def xfade(
     """
     filter_node = FilterNode(
         name="xfade",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4645,6 +4806,8 @@ def xfade_opencl(
     """
     filter_node = FilterNode(
         name="xfade_opencl",
+        input_typings=["video", "video"],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4689,6 +4852,8 @@ def xmedian(
     """
     filter_node = FilterNode(
         name="xmedian",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[
@@ -4736,6 +4901,8 @@ def xstack(
     """
     filter_node = FilterNode(
         name="xstack",
+        input_typings=[],
+        output_typings=["video"],
         formula_input_typings=None,
         formula_output_typings=None,
         inputs=[

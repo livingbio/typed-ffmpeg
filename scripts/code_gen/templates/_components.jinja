@@ -101,6 +101,8 @@ Ref: {{ f.ref }}
 {%- endif -%}
 filter_node = FilterNode(
     name="{{ f.name }}",
+    input_typings={{f.input_types}},
+    output_typings={{f.output_types}},
     formula_input_typings={{f.formula_input_typings.__repr__()}},
     formula_output_typings={{f.formula_output_typings.__repr__()}},
     inputs=[

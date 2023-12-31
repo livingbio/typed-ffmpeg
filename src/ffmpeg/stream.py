@@ -1,6 +1,7 @@
 from typing import Any
 
-from .base import Default, FilterableStream, FilterNode
+from .base import FilterableStream, FilterNode
+from .schema import Default
 
 
 class AudioStream(FilterableStream):
@@ -51,6 +52,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="a3dscope",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -112,6 +115,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aap",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -148,6 +153,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="abench",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -189,6 +196,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="abitscope",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -274,6 +283,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acompressor",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -315,6 +326,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acontrast",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -343,6 +356,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acopy",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -385,6 +400,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acrossfade",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -436,6 +453,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acrossover",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -513,6 +532,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acrusher",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -561,6 +582,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acue",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -609,6 +632,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adeclick",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -660,6 +685,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adeclip",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -698,6 +725,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adecorrelate",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -732,6 +761,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adelay",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -772,6 +803,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adenorm",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -802,6 +835,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aderivative",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -862,6 +897,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adrawgraph",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -917,6 +954,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adrc",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -983,6 +1022,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adynamicequalizer",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1034,6 +1075,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adynamicsmooth",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1084,6 +1127,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aecho",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1133,6 +1178,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aemphasis",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1177,6 +1224,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aeval",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1232,6 +1281,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aexciter",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1288,6 +1339,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afade",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1356,6 +1409,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afftdn",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1410,6 +1465,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afftfilt",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1446,6 +1503,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afifo",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1527,6 +1586,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afir",
+            input_typings=[],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1585,6 +1646,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aformat",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1626,6 +1689,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afreqshift",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1677,6 +1742,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afwtdn",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1751,6 +1818,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="agate",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1803,6 +1872,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="agraphmonitor",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1858,6 +1929,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ahistogram",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -1939,6 +2012,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aiir",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings="['audio'] + ['video'] if response else []",
             inputs=[
@@ -1982,6 +2057,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aintegral",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2037,6 +2114,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ainterleave",
+            input_typings=[],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2072,6 +2151,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="alatency",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2127,6 +2208,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="alimiter",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2189,6 +2272,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="allpass",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2238,6 +2323,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aloop",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2294,6 +2381,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="amerge",
+            input_typings=[],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2342,6 +2431,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ametadata",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2396,6 +2487,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="amix",
+            input_typings=[],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2433,6 +2526,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="amultiply",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2476,6 +2571,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anequalizer",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2529,6 +2626,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anlmdn",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2583,6 +2682,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anlmf",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2639,6 +2740,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anlms",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2672,6 +2775,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anull",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2723,6 +2828,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="apad",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2773,6 +2880,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aperms",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2835,6 +2944,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aphasemeter",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2894,6 +3005,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aphaser",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2938,6 +3051,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aphaseshift",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -2971,6 +3086,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="apsnr",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3016,6 +3133,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="apsyclip",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3089,6 +3208,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="apulsator",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3140,6 +3261,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="arealtime",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3183,6 +3306,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aresample",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3213,6 +3338,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="areverse",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3258,6 +3385,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="arls",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3294,6 +3423,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="arnndn",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3326,6 +3457,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asdr",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3363,6 +3496,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asegment",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3404,6 +3539,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aselect",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3448,6 +3585,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asendcmd",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3496,6 +3635,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asetnsamples",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3533,6 +3674,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asetpts",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3564,6 +3707,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asetrate",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3601,6 +3746,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asettb",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3634,6 +3781,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ashowinfo",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3664,6 +3813,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asidedata",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3696,6 +3847,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asisdr",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3740,6 +3893,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asoftclip",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3788,6 +3943,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aspectralstats",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3824,6 +3981,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asplit",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3879,6 +4038,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asr",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3932,6 +4093,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="astats",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -3969,6 +4132,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="astreamselect",
+            input_typings=[],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4023,6 +4188,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asubboost",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4074,6 +4241,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asubcut",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4115,6 +4284,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asupercut",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4158,6 +4329,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asuperpass",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4202,6 +4375,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asuperstop",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4242,6 +4417,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="atempo",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4287,6 +4464,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="atilt",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4368,6 +4547,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="atrim",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4447,6 +4628,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="avectorscope",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4506,6 +4689,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="axcorrelate",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4565,6 +4750,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bandpass",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4627,6 +4814,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bandreject",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4692,6 +4881,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bass",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4761,6 +4952,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="biquad",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4815,6 +5008,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bs2b",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4851,6 +5046,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="channelmap",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4889,6 +5086,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="channelsplit",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4945,6 +5144,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chorus",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -4997,6 +5198,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="compand",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5064,6 +5267,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="compensationdelay",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5141,6 +5346,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="concat",
+            input_typings=[],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5197,6 +5404,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="crossfeed",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5237,6 +5446,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="crystalizer",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5278,6 +5489,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dcshift",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5318,6 +5531,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deesser",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5365,6 +5580,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dialoguenhance",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5401,6 +5618,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drmeter",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5470,6 +5689,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dynaudnorm",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5516,6 +5737,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="earwax",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5602,6 +5825,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ebur128",
+            input_typings=["audio"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5678,6 +5903,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="equalizer",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5721,6 +5948,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="extrastereo",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5781,6 +6010,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="firequalizer",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5842,6 +6073,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="flanger",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5912,6 +6145,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="haas",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -5983,6 +6218,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hdcd",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6036,6 +6273,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="headphone",
+            input_typings=[],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6097,6 +6336,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="highpass",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6163,6 +6404,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="highshelf",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6226,6 +6469,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="join",
+            input_typings=[],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6277,6 +6522,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ladspa",
+            input_typings=[],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6343,6 +6590,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="loudnorm",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6408,6 +6657,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lowpass",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6474,6 +6725,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lowshelf",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6528,6 +6781,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lv2",
+            input_typings=[],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6575,6 +6830,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mcompand",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6615,6 +6872,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pan",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6654,6 +6913,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="replaygain",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6711,6 +6972,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="rubberband",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6812,6 +7075,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showcqt",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6903,6 +7168,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showcwt",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -6980,6 +7247,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showfreqs",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7035,6 +7304,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showspatial",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7116,6 +7387,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showspectrum",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7201,6 +7474,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showspectrumpic",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7279,6 +7554,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showvolume",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7342,6 +7619,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showwaves",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7394,6 +7673,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showwavespic",
+            input_typings=["audio"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7462,6 +7743,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sidechaincompress",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7542,6 +7825,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sidechaingate",
+            input_typings=["audio", "audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7608,6 +7893,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="silencedetect",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7669,6 +7956,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="silenceremove",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7750,6 +8039,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sofalizer",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7820,6 +8111,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="speechnorm",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7904,6 +8197,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="stereotools",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -7966,6 +8261,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="stereowiden",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8038,6 +8335,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="superequalizer",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8190,6 +8489,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="surround",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8297,6 +8598,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tiltshelf",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8364,6 +8667,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="treble",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8407,6 +8712,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tremolo",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8441,6 +8748,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vibrato",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8483,6 +8792,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="virtualbass",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8536,6 +8847,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="volume",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8579,6 +8892,8 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="volumedetect",
+            input_typings=["audio"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8626,6 +8941,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="addroi",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8659,6 +8976,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="alphaextract",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8692,6 +9011,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="alphamerge",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8738,6 +9059,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="amplify",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8801,6 +9124,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="atadenoise",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8851,6 +9176,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="avgblur",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8892,6 +9219,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="avgblur_vulkan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8933,6 +9262,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="backgroundkey",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -8971,6 +9302,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bbox",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9001,6 +9334,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bench",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9040,6 +9375,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bilateral",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9083,6 +9420,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bilateral_cuda",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9118,6 +9457,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bitplanenoise",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9179,6 +9520,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blackdetect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9224,6 +9567,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blackframe",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9300,6 +9645,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blend",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9373,6 +9720,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blend_vulkan",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9424,6 +9773,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blockdetect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9476,6 +9827,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blurdetect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9537,6 +9890,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bm3d",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9596,6 +9951,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="boxblur",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9643,6 +10000,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bwdif",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9678,6 +10037,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="cas",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9712,6 +10073,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ccrepack",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9745,6 +10108,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromaber_vulkan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9787,6 +10152,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromahold",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9831,6 +10198,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromakey",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9876,6 +10245,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromakey_cuda",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9930,6 +10301,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromanr",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -9981,6 +10354,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromashift",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10038,6 +10413,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ciescope",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10094,6 +10471,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="codecview",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10157,6 +10536,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorbalance",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10241,6 +10622,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorchannelmixer",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10305,6 +10688,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorcontrast",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10357,6 +10742,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorcorrect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10401,6 +10788,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorhold",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10444,6 +10833,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorize",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10489,6 +10880,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorkey",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10530,6 +10923,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorkey_opencl",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10599,6 +10994,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorlevels",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10663,6 +11060,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colormap",
+            input_typings=["video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10710,6 +11109,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colormatrix",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10773,6 +11174,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorspace",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10822,6 +11225,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorspace_cuda",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10861,6 +11266,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colortemperature",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10928,6 +11335,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="convolution",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -10987,6 +11396,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="convolve",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11018,6 +11429,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="copy",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11061,6 +11474,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="corr",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11092,6 +11507,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="cover_rect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11156,6 +11573,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="crop",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11216,6 +11635,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="cropdetect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11273,6 +11694,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="cue",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11351,6 +11774,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="curves",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11410,6 +11835,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="datascope",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11456,6 +11883,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dblur",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11501,6 +11930,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dctdnoiz",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11554,6 +11985,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deband",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11608,6 +12041,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deblock",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11663,6 +12098,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="decimate",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11715,6 +12152,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deconvolve",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11761,6 +12200,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dedot",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11809,6 +12250,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deflate",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11851,6 +12294,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deflicker",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11889,6 +12334,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dejudder",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11934,6 +12381,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="delogo",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -11992,6 +12441,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="derain",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12055,6 +12506,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deshake",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12111,6 +12564,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deshake_opencl",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12166,6 +12621,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="despill",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12214,6 +12671,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="detelecine",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12261,6 +12720,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dilation",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12313,6 +12774,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="displace",
+            input_typings=["video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12366,6 +12829,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dnn_classify",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12433,6 +12898,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dnn_detect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12491,6 +12958,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dnn_processing",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12531,6 +13000,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="doubleweave",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12584,6 +13055,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drawbox",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12663,6 +13136,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drawgraph",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12728,6 +13203,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drawgrid",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12839,6 +13316,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drawtext",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12912,6 +13391,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="edgedetect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12962,6 +13443,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="elbg",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -12996,6 +13479,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="entropy",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13026,6 +13511,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="epx",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13080,6 +13567,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="eq",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13133,6 +13622,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="erosion",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13191,6 +13682,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="estdif",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13236,6 +13729,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="exposure",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13268,6 +13763,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="extractplanes",
+            input_typings=["video"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13316,6 +13813,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fade",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13372,6 +13871,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="feedback",
+            input_typings=["video", "video"],
+            output_typings=["video", "video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13430,6 +13931,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fftdnoiz",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13483,6 +13986,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fftfilt",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13521,6 +14026,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="field",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13570,6 +14077,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fieldhint",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13662,6 +14171,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fieldmatch",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13725,6 +14236,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fieldorder",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13757,6 +14270,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fifo",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13801,6 +14316,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fillborders",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13867,6 +14384,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="find_rect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13901,6 +14420,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="flip_vulkan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13951,6 +14472,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="floodfill",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -13992,6 +14515,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="format",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14039,6 +14564,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fps",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14087,6 +14614,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="framepack",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14136,6 +14665,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="framerate",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14170,6 +14701,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="framestep",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14216,6 +14749,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="freezedetect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14259,6 +14794,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="freezeframes",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14308,6 +14845,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="frei0r",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14354,6 +14893,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fspp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14398,6 +14939,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="gblur",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14444,6 +14987,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="gblur_vulkan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14521,6 +15066,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="geq",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14576,6 +15123,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="gradfun",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14623,6 +15172,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="graphmonitor",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14662,6 +15213,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="grayworld",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14701,6 +15254,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="greyedge",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14748,6 +15303,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="guided",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14804,6 +15361,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="haldclut",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14837,6 +15396,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hflip",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14861,6 +15422,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hflip_vulkan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14905,6 +15468,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="histeq",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -14964,6 +15529,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="histogram",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15014,6 +15581,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hqdn3d",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15048,6 +15617,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hqx",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15090,6 +15661,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hstack",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15139,6 +15712,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hsvhold",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15190,6 +15765,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hsvkey",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15242,6 +15819,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hue",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15298,6 +15877,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="huesaturation",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15338,6 +15919,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hwdownload",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15407,6 +15990,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hwmap",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15446,6 +16031,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hwupload",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15476,6 +16063,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hwupload_cuda",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15518,6 +16107,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hysteresis",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15551,6 +16142,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="iccdetect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15590,6 +16183,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="iccgen",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15638,6 +16233,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="identity",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15689,6 +16286,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="idet",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15744,6 +16343,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="il",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15793,6 +16394,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="inflate",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15846,6 +16449,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="interlace",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15905,6 +16510,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="interleave",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15952,6 +16559,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="kerndeint",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -15995,6 +16604,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="kirsch",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16031,6 +16642,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lagfun",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16065,6 +16678,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="latency",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16120,6 +16735,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lenscorrection",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16198,6 +16815,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lensfun",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16397,6 +17016,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="libplacebo",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16535,6 +17156,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="libvmaf",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16583,6 +17206,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="limitdiff",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16626,6 +17251,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="limiter",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16669,6 +17296,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="loop",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16711,6 +17340,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lumakey",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16772,6 +17403,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lut",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16808,6 +17441,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lut1d",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16870,6 +17505,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lut2",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16914,6 +17551,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lut3d",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -16975,6 +17614,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lutrgb",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17037,6 +17678,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lutyuv",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17084,6 +17727,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedclamp",
+            input_typings=["video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17129,6 +17774,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedmax",
+            input_typings=["video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17175,6 +17822,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedmerge",
+            input_typings=["video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17218,6 +17867,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedmin",
+            input_typings=["video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17266,6 +17917,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedthreshold",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17314,6 +17967,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskfun",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17360,6 +18015,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mcdeint",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17403,6 +18060,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="median",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17462,6 +18121,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mergeplanes",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17512,6 +18173,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mestimate",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17561,6 +18224,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="metadata",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17607,6 +18272,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="midequalizer",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17661,6 +18328,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="minterpolate",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17713,6 +18382,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mix",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17759,6 +18430,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="monochrome",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17810,6 +18483,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="morpho",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17861,6 +18536,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mpdecimate",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17911,6 +18588,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="msad",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17949,6 +18628,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="multiply",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -17989,6 +18670,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="negate",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18041,6 +18724,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="nlmeans",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18086,6 +18771,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="nlmeans_opencl",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18150,6 +18837,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="nlmeans_vulkan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18212,6 +18901,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="nnedi",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18251,6 +18942,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="noformat",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18314,6 +19007,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="noise",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18388,6 +19083,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="normalize",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18419,6 +19116,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="null",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18468,6 +19167,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ocr",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18512,6 +19213,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ocv",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18574,6 +19277,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="oscilloscope",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18661,6 +19366,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18724,6 +19431,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay_cuda",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18771,6 +19480,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay_opencl",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18828,6 +19539,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay_vaapi",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18877,6 +19590,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay_vulkan",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18918,6 +19633,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="owdenoise",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -18972,6 +19689,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pad",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19028,6 +19747,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pad_opencl",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19080,6 +19801,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="palettegen",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19132,6 +19855,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="paletteuse",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19184,6 +19909,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="perms",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19240,6 +19967,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="perspective",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19283,6 +20012,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="phase",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19324,6 +20055,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="photosensitivity",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19361,6 +20094,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pixdesctest",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19399,6 +20134,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pixelize",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19450,6 +20187,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pixscope",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19503,6 +20242,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19538,6 +20279,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pp7",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19579,6 +20322,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="premultiply",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19620,6 +20365,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="prewitt",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19678,6 +20425,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pseudocolor",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19760,6 +20509,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="psnr",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19826,6 +20577,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pullup",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19865,6 +20618,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="qp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19898,6 +20653,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="random",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19947,6 +20704,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="readeia608",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -19996,6 +20755,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="readvitc",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20039,6 +20800,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="realtime",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20085,6 +20848,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="remap",
+            input_typings=["video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20133,6 +20898,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="remap_opencl",
+            input_typings=["video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20178,6 +20945,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="removegrain",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20229,6 +20998,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="removelogo",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20257,6 +21028,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="repeatfields",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20284,6 +21057,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="reverse",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20332,6 +21107,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="rgbashift",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20379,6 +21156,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="roberts",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20429,6 +21208,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="rotate",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20482,6 +21263,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sab",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20561,6 +21344,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20651,6 +21436,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale2ref",
+            input_typings=["video", "video"],
+            output_typings=["video", "video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20726,6 +21513,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale2ref_npp",
+            input_typings=["video", "video"],
+            output_typings=["video", "video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20787,6 +21576,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale_cuda",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20848,6 +21639,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale_npp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20898,6 +21691,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale_vt",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20954,6 +21749,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scdet",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -20994,6 +21791,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scharr",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21037,6 +21836,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scroll",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21079,6 +21880,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="segment",
+            input_typings=["video"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21120,6 +21923,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="select",
+            input_typings=["video"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21187,6 +21992,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="selectivecolor",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21239,6 +22046,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sendcmd",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21273,6 +22082,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="separatefields",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21329,6 +22140,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setdar",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21365,6 +22178,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setfield",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21411,6 +22226,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setparams",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21451,6 +22268,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setpts",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21486,6 +22305,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setrange",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21545,6 +22366,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setsar",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21583,6 +22406,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="settb",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21616,6 +22441,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sharpen_npp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21657,6 +22484,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="shear",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21697,6 +22526,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showinfo",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21728,6 +22559,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showpalette",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21761,6 +22594,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="shuffleframes",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21804,6 +22639,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="shufflepixels",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21852,6 +22689,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="shuffleplanes",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21888,6 +22727,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sidedata",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21932,6 +22773,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="signalstats",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -21988,6 +22831,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="signature",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22031,6 +22876,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="siti",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22080,6 +22927,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="smartblur",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22124,6 +22973,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sobel",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22188,6 +23039,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="spectrumsynth",
+            input_typings=["video", "video"],
+            output_typings=["audio"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22228,6 +23081,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="split",
+            input_typings=["video"],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22272,6 +23127,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="spp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22333,6 +23190,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sr",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22388,6 +23247,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ssim",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22426,6 +23287,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="stereo3d",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22460,6 +23323,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="streamselect",
+            input_typings=[],
+            output_typings=[],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22493,6 +23358,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="super2xsai",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22538,6 +23405,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="swaprect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22570,6 +23439,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="swapuv",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22630,6 +23501,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tblend",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22699,6 +23572,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="telecine",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22756,6 +23631,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="thistogram",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22813,6 +23690,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="threshold",
+            input_typings=["video", "video", "video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22853,6 +23732,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="thumbnail",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22903,6 +23784,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tile",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -22978,6 +23861,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tiltandshift",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23022,6 +23907,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tinterlace",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23081,6 +23968,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tlut2",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23123,6 +24012,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tmedian",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23168,6 +24059,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tmidequalizer",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23211,6 +24104,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tmix",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23263,6 +24158,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tonemap",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23319,6 +24216,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tonemap_opencl",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23363,6 +24262,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tonemap_vaapi",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23413,6 +24314,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tpad",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23466,6 +24369,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="transpose",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23505,6 +24410,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="transpose_npp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23544,6 +24451,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="transpose_vt",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23583,6 +24492,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="transpose_vulkan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23660,6 +24571,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="trim",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23706,6 +24619,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="unpremultiply",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23763,6 +24678,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="unsharp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23820,6 +24737,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="unsharp_opencl",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23860,6 +24779,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="untile",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -23909,6 +24830,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="uspp",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24017,6 +24940,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="v360",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24103,6 +25028,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vaguedenoiser",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24152,6 +25079,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="varblur",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24217,6 +25146,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vectorscope",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24261,6 +25192,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vflip",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24285,6 +25218,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vflip_vulkan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24316,6 +25251,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vfrdet",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24362,6 +25299,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vibrance",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24424,6 +25363,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vidstabdetect",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24499,6 +25440,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vidstabtransform",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24557,6 +25500,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vif",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24602,6 +25547,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vignette",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24646,6 +25593,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vmafmotion",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24688,6 +25637,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vstack",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24743,6 +25694,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="w3fdif",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24815,6 +25768,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="waveform",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24865,6 +25820,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="weave",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24897,6 +25854,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xbr",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24940,6 +25899,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xcorrelate",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -24988,6 +25949,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xfade",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -25084,6 +26047,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xfade_opencl",
+            input_typings=["video", "video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -25128,6 +26093,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xmedian",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -25176,6 +26143,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xstack",
+            input_typings=[],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -25222,6 +26191,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="yaepblur",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -25272,6 +26243,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="zoompan",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
@@ -25355,6 +26328,8 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="zscale",
+            input_typings=["video"],
+            output_typings=["video"],
             formula_input_typings=None,
             formula_output_typings=None,
             inputs=[
