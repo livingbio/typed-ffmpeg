@@ -189,7 +189,7 @@ def afir(
         name="afir",
         input_typings=[],
         output_typings=["audio"],
-        formula_input_typings=None,
+        formula_input_typings="['audio'] * nbirs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -267,7 +267,7 @@ def ainterleave(
         name="ainterleave",
         input_typings=[],
         output_typings=["audio"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * nb_inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -361,7 +361,7 @@ def amerge(*streams: "AudioStream", inputs: int | Default = Default(value=2), **
         name="amerge",
         input_typings=[],
         output_typings=["audio"],
-        formula_input_typings=None,
+        formula_input_typings="['audio'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -411,7 +411,7 @@ def amix(
         name="amix",
         input_typings=[],
         output_typings=["audio"],
-        formula_input_typings=None,
+        formula_input_typings="['audio'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -754,8 +754,8 @@ def astreamselect(
         name="astreamselect",
         input_typings=[],
         output_typings=[],
-        formula_input_typings=None,
-        formula_output_typings=None,
+        formula_input_typings="['audio'] * inputs",
+        formula_output_typings="['audio'] * len(re.findall(r'\\d+', s))",
         inputs=[
             *streams,
         ],
@@ -1026,7 +1026,7 @@ def bm3d(
         name="bm3d",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] + ['video'] if ref else []",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -1166,8 +1166,8 @@ def concat(
         name="concat",
         input_typings=[],
         output_typings=[],
-        formula_input_typings=None,
-        formula_output_typings=None,
+        formula_input_typings="(['video']*v + ['audio']*a)*n",
+        formula_output_typings="['video']*v + ['audio']*a",
         inputs=[
             *streams,
         ],
@@ -1318,7 +1318,7 @@ def decimate(
         name="decimate",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] + (['video'] if ppsrc else [])",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -1581,7 +1581,7 @@ def fieldmatch(
         name="fieldmatch",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] + ['video'] if ppsrc else []",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -1743,7 +1743,7 @@ def guided(
         name="guided",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] + ['video'] if guidance else []",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -1853,7 +1853,7 @@ def headphone(
         name="headphone",
         input_typings=[],
         output_typings=["audio"],
-        formula_input_typings=None,
+        formula_input_typings="['audio'] + ['audio'] * (len(map.split('|')) - 1) if hrir == 1 else []",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -1902,7 +1902,7 @@ def hstack(
         name="hstack",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -2057,7 +2057,7 @@ def interleave(
         name="interleave",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * nb_inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -2113,7 +2113,7 @@ def join(
         name="join",
         input_typings=[],
         output_typings=["audio"],
-        formula_input_typings=None,
+        formula_input_typings="['audio'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -2361,7 +2361,7 @@ def libplacebo(
         name="libplacebo",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -2551,7 +2551,7 @@ def limitdiff(
         name="limitdiff",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video', 'video'] + (['video'] if reference else [])",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -2975,7 +2975,7 @@ def mergeplanes(
         name="mergeplanes",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * int(max(mapping[2::2]))",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -3073,7 +3073,7 @@ def mix(
         name="mix",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -3632,7 +3632,7 @@ def premultiply(
         name="premultiply",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] + ['video'] if inplace else []",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -4199,7 +4199,7 @@ def signature(
         name="signature",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * nb_inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -4370,8 +4370,8 @@ def streamselect(
         name="streamselect",
         input_typings=[],
         output_typings=[],
-        formula_input_typings=None,
-        formula_output_typings=None,
+        formula_input_typings="['video'] * inputs",
+        formula_output_typings="['video'] * len(re.findall(r'\\d+', s))",
         inputs=[
             *streams,
         ],
@@ -4470,7 +4470,7 @@ def unpremultiply(
         name="unpremultiply",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] + (['video'] if inplace else [])",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -4611,7 +4611,7 @@ def vstack(
         name="vstack",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -4854,7 +4854,7 @@ def xmedian(
         name="xmedian",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
@@ -4903,7 +4903,7 @@ def xstack(
         name="xstack",
         input_typings=[],
         output_typings=["video"],
-        formula_input_typings=None,
+        formula_input_typings="['video'] * inputs",
         formula_output_typings=None,
         inputs=[
             *streams,
