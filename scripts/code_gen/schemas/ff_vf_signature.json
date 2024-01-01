@@ -1,7 +1,7 @@
 {
   "description": "11.237 signature\nCalculates the MPEG-7 Video Signature. The filter can handle more than one\ninput. In this case the matching between the inputs can be calculated additionally.\nThe filter always passes through the first input. The signature of each stream can\nbe written into a file.\n\nIt accepts the following options:",
   "filter_type": "vf",
-  "formula_input_typings": null,
+  "formula_input_typings": "['video'] * nb_inputs",
   "formula_output_typings": null,
   "id": "ff_vf_signature",
   "input_stream_typings": [],

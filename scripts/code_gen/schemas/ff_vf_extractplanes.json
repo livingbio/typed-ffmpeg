@@ -2,7 +2,7 @@
   "description": "11.87 extractplanes\nExtract color channel components from input video stream into\nseparate grayscale video streams.\n\nThe filter accepts the following option:",
   "filter_type": "vf",
   "formula_input_typings": null,
-  "formula_output_typings": null,
+  "formula_output_typings": "['video'] * len(planes.split('+'))",
   "id": "ff_vf_extractplanes",
   "input_stream_typings": [
     {

@@ -1,8 +1,8 @@
 {
   "description": "19.1 amovie\nThis is the same as movie source, except it selects an audio\nstream by default.",
   "filter_type": "avsrc",
-  "formula_input_typings": null,
-  "formula_output_typings": null,
+  "formula_input_typings": "['audio'] * len(streams.split('+'))",
+  "formula_output_typings": "['audio'] * len(streams.split('+'))",
   "id": "ff_avsrc_amovie",
   "input_stream_typings": [],
   "is_input_dynamic": false,

@@ -1,7 +1,7 @@
 {
   "description": "11.115 guided\nApply guided filter for edge-preserving smoothing, dehazing and so on.\n\nThe filter accepts the following options:",
   "filter_type": "vf",
-  "formula_input_typings": null,
+  "formula_input_typings": "['video'] + ['video'] if guidance else []",
   "formula_output_typings": null,
   "id": "ff_vf_guided",
   "input_stream_typings": [],
