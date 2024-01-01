@@ -22,12 +22,26 @@
 {% endmacro %}
 
 
+{% macro default_typing(option) %}
+{% if option.typing == "int" and option.default is integer %}
+| DefaultInt = DefaultInt({{option.default}})
+{% elif option.typing == "str" and option.default is string %}
+| DefaultStr = DefaultStr({{option.default.__repr__()}})
+{% elif option.typing == "float" and option.default is float %}
+| DefaultFloat = DefaultFloat({{option.default}})
+{% elif option.typing == "bool" and (option.default is boolean or option.default is integer)%}
+| DefaultInt = DefaultInt({{option.default}})
+{% else %}
+| DefaultStr = DefaultStr({{option.default.__repr__()}})
+{% endif %}
+{% endmacro %}
+
 {% macro option_typings(f) %}
 {% for option in f.options %}
     {% if option.required %}
         {{option.name | option_name_safe}}: {{option.typing}},
     {% else %}
-        {{option.name | option_name_safe}}: {{option.typing}} | Default = Default(value={{option.default.__repr__()}}),
+        {{option.name | option_name_safe}}: {{option.typing}} {{ default_typing(option) }},
     {% endif %}
 {% endfor %}
 {% endmacro %}
@@ -101,10 +115,8 @@ Ref: {{ f.ref }}
 {%- endif -%}
 filter_node = FilterNode(
     name="{{ f.name }}",
-    input_typings={{f.input_types}},
-    output_typings={{f.output_types}},
-    formula_input_typings={{f.formula_input_typings.__repr__()}},
-    formula_output_typings={{f.formula_output_typings.__repr__()}},
+    input_typings={{f.input_types or f.formula_input_typings }},
+    output_typings={{f.output_types or f.formula_output_typings }},
     inputs=[
         {{ stream_params(f, type) }}
     ],

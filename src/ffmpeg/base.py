@@ -2,8 +2,6 @@ from typing import TYPE_CHECKING, Any, Mapping
 
 from pydantic import BaseModel
 
-from .schema import Default
-
 if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
 
@@ -11,7 +9,7 @@ if TYPE_CHECKING:
 class Node(BaseModel):
     name: str
     args: list[str] = []
-    kwargs: Mapping[str, Default | str | int | float | bool | None] = {}
+    kwargs: Mapping[str, Any] = {}
 
 
 class Stream(BaseModel):
@@ -58,10 +56,8 @@ class InputNode(Node):
 
 class FilterNode(InputNode):
     inputs: list[FilterableStream]
-    formula_input_typings: str | None = None
-    formula_output_typings: str | None = None
-    input_typings: list[str] = []
-    output_typings: list[str] = []
+    input_typings: list[str] | None = None
+    output_typings: list[str] | None = None
 
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
