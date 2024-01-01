@@ -1,0 +1,66 @@
+{
+  "description": "11.230 shear\nApply shear transform to input video.\n\nThis filter supports the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_shear",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "shear",
+  "options": [
+    {
+      "alias": [
+        "shx"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Shear factor in X-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
+      "name": "shx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "shy"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Shear factor in Y-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
+      "name": "shy",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fillcolor",
+        "c"
+      ],
+      "default": "black",
+      "description": "<dd><p>Set the color used to fill the output area not covered by the transformed\nvideo. For the general syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nIf the special value \"none\" is selected then no\nbackground is printed (useful for example if the background is never shown).\n</p>\n<p>Default value is \"black\".\n</p>\n</dd>",
+      "name": "fillcolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "interp"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set interpolation type. Can be <code>bilinear</code> or <code>nearest</code>. Default is <code>bilinear</code>.\n</p></dd>",
+      "name": "interp",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#shear"
+}

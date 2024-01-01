@@ -3,6 +3,8 @@
     "description": "Download a hardware frame to a normal frame",
     "flags": null,
     "id": "ff_vf_hwdownload",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

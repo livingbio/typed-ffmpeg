@@ -1,0 +1,97 @@
+{
+  "description": "11.199 pseudocolor\nAlter frame colors in video with pseudocolors.\n\nThis filter accepts the following options:\n\n\nEach of the expression options specifies the expression to use for computing\nthe lookup table for the corresponding pixel component values.\n\nThe expressions can contain the following constants and functions:\n\n\nAll expressions default to \"val\".",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_pseudocolor",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "pseudocolor",
+  "options": [
+    {
+      "alias": [
+        "c0"
+      ],
+      "default": "val",
+      "description": "<dd><p>set pixel first component expression\n</p>\n</dd>",
+      "name": "c0",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c1"
+      ],
+      "default": "val",
+      "description": "<dd><p>set pixel second component expression\n</p>\n</dd>",
+      "name": "c1",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c2"
+      ],
+      "default": "val",
+      "description": "<dd><p>set pixel third component expression\n</p>\n</dd>",
+      "name": "c2",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "c3"
+      ],
+      "default": "val",
+      "description": "<dd><p>set pixel fourth component expression, corresponds to the alpha component\n</p>\n</dd>",
+      "name": "c3",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "index",
+        "i"
+      ],
+      "default": 0,
+      "description": "<dd><p>set component to use as base for altering colors\n</p>\n</dd>",
+      "name": "index",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "preset",
+        "p"
+      ],
+      "default": -1,
+      "description": "<dd><p>Pick one of built-in LUTs. By default is set to none.\n</p>\n<p>Available LUTs:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>magma</samp>\u2019</dt>\n<dt>\u2018<samp>inferno</samp>\u2019</dt>\n<dt>\u2018<samp>plasma</samp>\u2019</dt>\n<dt>\u2018<samp>viridis</samp>\u2019</dt>\n<dt>\u2018<samp>turbo</samp>\u2019</dt>\n<dt>\u2018<samp>cividis</samp>\u2019</dt>\n<dt>\u2018<samp>range1</samp>\u2019</dt>\n<dt>\u2018<samp>range2</samp>\u2019</dt>\n<dt>\u2018<samp>shadows</samp>\u2019</dt>\n<dt>\u2018<samp>highlights</samp>\u2019</dt>\n<dt>\u2018<samp>solar</samp>\u2019</dt>\n<dt>\u2018<samp>nominal</samp>\u2019</dt>\n<dt>\u2018<samp>preferred</samp>\u2019</dt>\n<dt>\u2018<samp>total</samp>\u2019</dt>\n<dt>\u2018<samp>spectral</samp>\u2019</dt>\n<dt>\u2018<samp>cool</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>fiery</samp>\u2019</dt>\n<dt>\u2018<samp>blues</samp>\u2019</dt>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dt>\u2018<samp>helix</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "preset",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "opacity"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set opacity of output colors. Allowed range is from 0 to 1.\nDefault value is set to 1.\n</p></dd>",
+      "name": "opacity",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#pseudocolor"
+}

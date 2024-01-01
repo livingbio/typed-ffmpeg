@@ -1,0 +1,105 @@
+{
+  "description": "11.98 find_rect\nFind a rectangular object in the input video.\n\nThe object to search for must be specified as a gray8 image specified with the\nobject option.\n\nFor each possible match, a score is computed. If the score reaches the specified\nthreshold, the object is considered found.\n\nIf the input video contains multiple instances of the object, the filter will\nfind only one of them.\n\nWhen an object is found, the following metadata entries are set in the matching\nframe:\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_find_rect",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "find_rect",
+  "options": [
+    {
+      "alias": [
+        "object"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Filepath of the object image, needs to be in gray8.\n</p>\n</dd>",
+      "name": "object",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "threshold"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Detection threshold, expressed as a decimal number in the range 0-1.\n</p>\n<p>A threshold value of 0.01 means only exact matches, a threshold of 0.99 means\nalmost everything matches.\n</p>\n<p>Default value is 0.5.\n</p>\n</dd>",
+      "name": "threshold",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mipmaps"
+      ],
+      "default": 3,
+      "description": "<dd><p>Number of mipmaps, default is 3.\n</p>\n</dd>",
+      "name": "mipmaps",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "xmin"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
+      "name": "xmin",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ymin"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
+      "name": "ymin",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "xmax"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
+      "name": "xmax",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ymax"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
+      "name": "ymax",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "discard"
+      ],
+      "default": 0,
+      "description": "<dd><p>Discard frames where object is not detected. Default is disabled.\n</p></dd>",
+      "name": "discard",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#find_005frect"
+}

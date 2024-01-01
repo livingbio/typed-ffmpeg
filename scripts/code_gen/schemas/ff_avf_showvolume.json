@@ -1,0 +1,176 @@
+{
+  "description": "18.28 showvolume\nConvert input audio volume to a video output.\n\nThe filter accepts the following options:",
+  "filter_type": "avf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_avf_showvolume",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "showvolume",
+  "options": [
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": "<dd><p>Set video rate.\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "b"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set border width, allowed range is [0, 5]. Default is 1.\n</p>\n</dd>",
+      "name": "b",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "default": 400,
+      "description": "<dd><p>Set channel width, allowed range is [80, 8192]. Default is 400.\n</p>\n</dd>",
+      "name": "w",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": 20,
+      "description": "<dd><p>Set channel height, allowed range is [1, 900]. Default is 20.\n</p>\n</dd>",
+      "name": "h",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "f"
+      ],
+      "default": 0.95,
+      "description": "<dd><p>Set fade, allowed range is [0, 1]. Default is 0.95.\n</p>\n</dd>",
+      "name": "f",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "c"
+      ],
+      "default": "PEAK*255+floor((1-PEAK)*255)*256+0xff000000",
+      "description": "<dd><p>Set volume color expression.\n</p>\n<p>The expression can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>VOLUME</samp></dt>\n<dd><p>Current max volume of channel in dB.\n</p>\n</dd>\n<dt><samp>PEAK</samp></dt>\n<dd><p>Current peak.\n</p>\n</dd>\n<dt><samp>CHANNEL</samp></dt>\n<dd><p>Current channel number, starting from 0.\n</p></dd>\n</dl>\n</dd>",
+      "name": "c",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "t"
+      ],
+      "default": 1,
+      "description": "<dd><p>If set, displays channel names. Default is enabled.\n</p>\n</dd>",
+      "name": "t",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "v"
+      ],
+      "default": 1,
+      "description": "<dd><p>If set, displays volume values. Default is enabled.\n</p>\n</dd>",
+      "name": "v",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "dm"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>In second.\nIf set to &gt; 0., display a line for the max level\nin the previous seconds.\ndefault is disabled: <code>0.</code>\n</p>\n</dd>",
+      "name": "dm",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "dmc"
+      ],
+      "default": "orange",
+      "description": "<dd><p>The color of the max line. Use when <code>dm</code> option is set to &gt; 0.\ndefault is: <code>orange</code>\n</p></dd>",
+      "name": "dmc",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "o"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set orientation, can be horizontal: <code>h</code> or vertical: <code>v</code>,\ndefault is <code>h</code>.\n</p>\n</dd>",
+      "name": "o",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set step size, allowed range is [0, 5]. Default is 0, which means\nstep is disabled.\n</p>\n</dd>",
+      "name": "s",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "p"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set background opacity, allowed range is [0, 1]. Default is 0.\n</p>\n</dd>",
+      "name": "p",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "m"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set metering mode, can be peak: <code>p</code> or rms: <code>r</code>,\ndefault is <code>p</code>.\n</p>\n</dd>",
+      "name": "m",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ds"
+      ],
+      "default": "LINEAR",
+      "description": "<dd><p>Set display scale, can be linear: <code>lin</code> or log: <code>log</code>,\ndefault is <code>lin</code>.\n</p>\n</dd>",
+      "name": "ds",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#showvolume"
+}

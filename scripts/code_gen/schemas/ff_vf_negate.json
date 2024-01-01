@@ -1,0 +1,45 @@
+{
+  "description": "11.173 negate\nNegate (invert) the input video.\n\nIt accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_negate",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "negate",
+  "options": [
+    {
+      "alias": [
+        "components"
+      ],
+      "default": "0x77",
+      "description": "<dd><p>Set components to negate.\n</p>\n<p>Available values for components are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dt>\u2018<samp>v</samp>\u2019</dt>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "components",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "negate_alpha"
+      ],
+      "default": 0,
+      "description": "<dd><p>With value 1, it negates the alpha component, if present. Default value is 0.\n</p></dd>",
+      "name": "negate_alpha",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#negate"
+}

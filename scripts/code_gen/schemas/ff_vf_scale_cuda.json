@@ -1,0 +1,105 @@
+{
+  "description": "11.216 scale_cuda\nScale (resize) and convert (pixel format) the input video, using accelerated CUDA kernels.\nSetting the output width and height works in the same way as for the scale filter.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_scale_cuda",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "scale_cuda",
+  "options": [
+    {
+      "alias": [
+        "w"
+      ],
+      "default": "iw",
+      "description": "<dd><p>Set the output video dimension expression. Default value is the input dimension.\n</p>\n<p>Allows for the same expressions as the <a href=\"#scale\">scale</a> filter.\n</p>\n</dd>",
+      "name": "w",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": "ih",
+      "description": "<dd><p>Set the output video dimension expression. Default value is the input dimension.\n</p>\n<p>Allows for the same expressions as the <a href=\"#scale\">scale</a> filter.\n</p>\n</dd>",
+      "name": "h",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "interp_algo"
+      ],
+      "default": "INTERP_ALGO_DEFAULT",
+      "description": "<dd><p>Sets the algorithm used for scaling:\n</p>\n<dl compact=\"compact\">\n<dt><var>nearest</var></dt>\n<dd><p>Nearest neighbour\n</p>\n<p>Used by default if input parameters match the desired output.\n</p>\n</dd>\n<dt><var>bilinear</var></dt>\n<dd><p>Bilinear\n</p>\n</dd>\n<dt><var>bicubic</var></dt>\n<dd><p>Bicubic\n</p>\n<p>This is the default.\n</p>\n</dd>\n<dt><var>lanczos</var></dt>\n<dd><p>Lanczos\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "interp_algo",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "format"
+      ],
+      "default": "AV_PIX_FMT_NONE",
+      "description": "<dd><p>Controls the output pixel format. By default, or if none is specified, the input\npixel format is used.\n</p>\n<p>The filter does not support converting between YUV and RGB pixel formats.\n</p>\n</dd>",
+      "name": "format",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "passthrough"
+      ],
+      "default": 1,
+      "description": "<dd><p>If set to 0, every frame is processed, even if no conversion is necessary.\nThis mode can be useful to use the filter as a buffer for a downstream\nframe-consumer that exhausts the limited decoder frame pool.\n</p>\n<p>If set to 1, frames are passed through as-is if they match the desired output\nparameters. This is the default behaviour.\n</p>\n</dd>",
+      "name": "passthrough",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "param"
+      ],
+      "default": "999999.0f",
+      "description": "<dd><p>Algorithm-Specific parameter.\n</p>\n<p>Affects the curves of the bicubic algorithm.\n</p>\n</dd>",
+      "name": "param",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "force_original_aspect_ratio"
+      ],
+      "default": 0,
+      "description": "<dd><p>Work the same as the identical <a href=\"#scale\">scale</a> filter options.\n</p>\n</dd>",
+      "name": "force_original_aspect_ratio",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_divisible_by"
+      ],
+      "default": 1,
+      "description": "<dd><p>Work the same as the identical <a href=\"#scale\">scale</a> filter options.\n</p>\n</dd>",
+      "name": "force_divisible_by",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#scale_005fcuda"
+}

@@ -1,0 +1,110 @@
+{
+  "description": "16.4 ddagrab\nCaptures the Windows Desktop via Desktop Duplication API.\n\nThe filter exclusively returns D3D11 Hardware Frames, for on-gpu encoding\nor processing. So an explicit hwdownload is needed for any kind of\nsoftware processing.\n\nIt accepts the following options:",
+  "filter_type": "vsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vsrc_ddagrab",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "ddagrab",
+  "options": [
+    {
+      "alias": [
+        "output_idx"
+      ],
+      "default": 0,
+      "description": "<dd><p>DXGI Output Index to capture.\n</p>\n<p>Usually corresponds to the index Windows has given the screen minus one,\nso it\u2019s starting at 0.\n</p>\n<p>Defaults to output 0.\n</p>\n</dd>",
+      "name": "output_idx",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "draw_mouse"
+      ],
+      "default": 1,
+      "description": "<dd><p>Whether to draw the mouse cursor.\n</p>\n<p>Defaults to true.\n</p>\n<p>Only affects hardware cursors. If a game or application renders its own cursor,\nit\u2019ll always be captured.\n</p>\n</dd>",
+      "name": "draw_mouse",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "framerate"
+      ],
+      "default": "30",
+      "description": "<dd><p>Maximum framerate at which the desktop will be captured - the interval between\nsuccessive frames will not be smaller than the inverse of the framerate. When\nthe desktop is not being updated often enough, the filter will duplicate\na previous frame. Note that there is no background buffering going on, so when\nthe filter is not polled often enough then the actual inter-frame interval may\nbe significantly larger.\n</p>\n<p>Defaults to 30 FPS.\n</p>\n</dd>",
+      "name": "framerate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "video_size"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Specify the size of the captured video.\n</p>\n<p>Defaults to the full size of the screen.\n</p>\n<p>Cropped from the bottom/right if smaller than screen size.\n</p>\n</dd>",
+      "name": "video_size",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "offset_x"
+      ],
+      "default": 0,
+      "description": "<dd><p>Horizontal offset of the captured video.\n</p>\n</dd>",
+      "name": "offset_x",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "offset_y"
+      ],
+      "default": 0,
+      "description": "<dd><p>Vertical offset of the captured video.\n</p>\n</dd>",
+      "name": "offset_y",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "output_fmt"
+      ],
+      "default": "DXGI_FORMAT_B8G8R8A8_UNORM",
+      "description": "<dd><p>Desired filter output format.\nDefaults to 8 Bit BGRA.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Passes all supported output formats to DDA and returns what DDA decides to use.\n</p></dd>\n<dt>\u2018<samp>8bit</samp>\u2019</dt>\n<dt>\u2018<samp>bgra</samp>\u2019</dt>\n<dd><p>8 Bit formats always work, and DDA will convert to them if necessary.\n</p></dd>\n<dt>\u2018<samp>10bit</samp>\u2019</dt>\n<dt>\u2018<samp>x2bgr10</samp>\u2019</dt>\n<dd><p>Filter initialization will fail if 10 bit format is requested but unavailable.\n</p></dd>\n</dl>\n</dd>",
+      "name": "output_fmt",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "allow_fallback"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "allow_fallback",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "force_fmt"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "force_fmt",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ddagrab"
+}

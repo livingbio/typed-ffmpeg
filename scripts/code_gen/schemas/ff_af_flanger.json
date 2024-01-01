@@ -1,0 +1,105 @@
+{
+  "description": "8.90 flanger\nApply a flanging effect to the audio.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_flanger",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "flanger",
+  "options": [
+    {
+      "alias": [
+        "delay"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set base delay in milliseconds. Range from 0 to 30. Default value is 0.\n</p>\n</dd>",
+      "name": "delay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "depth"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>Set added sweep delay in milliseconds. Range from 0 to 10. Default value is 2.\n</p>\n</dd>",
+      "name": "depth",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "regen"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set percentage regeneration (delayed signal feedback). Range from -95 to 95.\nDefault value is 0.\n</p>\n</dd>",
+      "name": "regen",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "width"
+      ],
+      "default": 71.0,
+      "description": "<dd><p>Set percentage of delayed signal mixed with original. Range from 0 to 100.\nDefault value is 71.\n</p>\n</dd>",
+      "name": "width",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "speed"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set sweeps per second (Hz). Range from 0.1 to 10. Default value is 0.5.\n</p>\n</dd>",
+      "name": "speed",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "shape"
+      ],
+      "default": "WAVE_SIN",
+      "description": "<dd><p>Set swept wave shape, can be <var>triangular</var> or <var>sinusoidal</var>.\nDefault value is <var>sinusoidal</var>.\n</p>\n</dd>",
+      "name": "shape",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "phase"
+      ],
+      "default": 25.0,
+      "description": "<dd><p>Set swept wave percentage-shift for multi channel. Range from 0 to 100.\nDefault value is 25.\n</p>\n</dd>",
+      "name": "phase",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "interp"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set delay-line interpolation, <var>linear</var> or <var>quadratic</var>.\nDefault is <var>linear</var>.\n</p></dd>",
+      "name": "interp",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#flanger"
+}

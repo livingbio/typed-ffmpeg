@@ -1,0 +1,75 @@
+{
+  "description": "11.178 normalize\nNormalize RGB video (aka histogram stretching, contrast stretching).\nSee: https://en.wikipedia.org/wiki/Normalization_(image_processing)\n\nFor each channel of each frame, the filter computes the input range and maps\nit linearly to the user-specified output range. The output range defaults\nto the full dynamic range from pure black to pure white.\n\nTemporal smoothing can be used on the input range to reduce flickering (rapid\nchanges in brightness) caused when small dark or bright objects enter or leave\nthe scene. This is similar to the auto-exposure (automatic gain control) on a\nvideo camera, and, like a video camera, it may cause a period of over- or\nunder-exposure of the video.\n\nThe R,G,B channels can be normalized independently, which may cause some\ncolor shifting, or linked together as a single channel, which prevents\ncolor shifting. Linked normalization preserves hue. Independent normalization\ndoes not, so it can be used to remove some color casts. Independent and linked\nnormalization can be combined in any ratio.\n\nThe normalize filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_normalize",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "normalize",
+  "options": [
+    {
+      "alias": [
+        "blackpt"
+      ],
+      "default": "black",
+      "description": "<dd><p>Colors which define the output range. The minimum input value is mapped to\nthe <var>blackpt</var>. The maximum input value is mapped to the <var>whitept</var>.\nThe defaults are black and white respectively. Specifying white for\n<var>blackpt</var> and black for <var>whitept</var> will give color-inverted,\nnormalized video. Shades of grey can be used to reduce the dynamic range\n(contrast). Specifying saturated colors here can create some interesting\neffects.\n</p>\n</dd>",
+      "name": "blackpt",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "whitept"
+      ],
+      "default": "white",
+      "description": "<dd><p>Colors which define the output range. The minimum input value is mapped to\nthe <var>blackpt</var>. The maximum input value is mapped to the <var>whitept</var>.\nThe defaults are black and white respectively. Specifying white for\n<var>blackpt</var> and black for <var>whitept</var> will give color-inverted,\nnormalized video. Shades of grey can be used to reduce the dynamic range\n(contrast). Specifying saturated colors here can create some interesting\neffects.\n</p>\n</dd>",
+      "name": "whitept",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "smoothing"
+      ],
+      "default": 0,
+      "description": "<dd><p>The number of previous frames to use for temporal smoothing. The input range\nof each channel is smoothed using a rolling average over the current frame\nand the <var>smoothing</var> previous frames. The default is 0 (no temporal\nsmoothing).\n</p>\n</dd>",
+      "name": "smoothing",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "independence"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Controls the ratio of independent (color shifting) channel normalization to\nlinked (color preserving) normalization. 0.0 is fully linked, 1.0 is fully\nindependent. Defaults to 1.0 (fully independent).\n</p>\n</dd>",
+      "name": "independence",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "strength"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Overall strength of the filter. 1.0 is full strength. 0.0 is a rather\nexpensive no-op. Defaults to 1.0 (full strength).\n</p>\n</dd>",
+      "name": "strength",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#normalize"
+}

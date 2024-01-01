@@ -1,0 +1,40 @@
+{
+  "description": "11.282 vstack\nStack input videos vertically.\n\nAll streams must be of same pixel format and of same width.\n\nNote that this filter is faster than using overlay and pad filter\nto create same output.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": "['video'] * inputs",
+  "formula_output_typings": null,
+  "id": "ff_vf_vstack",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "vstack",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "default": 2,
+      "description": "<dd><p>Set number of input streams. Default is 2.\n</p>\n</dd>",
+      "name": "inputs",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "default": 0,
+      "description": "<dd><p>If set to 1, force the output to terminate when the shortest input\nterminates. Default value is 0.\n</p></dd>",
+      "name": "shortest",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vstack"
+}

@@ -1,0 +1,45 @@
+{
+  "description": "11.181 ocv\nApply a video transform using libopencv.\n\nTo enable this filter, install the libopencv library and headers and\nconfigure FFmpeg with --enable-libopencv.\n\nIt accepts the following parameters:\n\n\nRefer to the official libopencv documentation for more precise\ninformation:\nhttp://docs.opencv.org/master/modules/imgproc/doc/filtering.html\n\nSeveral libopencv filters are supported; see the following subsections.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_ocv",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "ocv",
+  "options": [
+    {
+      "alias": [
+        "filter_name"
+      ],
+      "default": null,
+      "description": "<dd><p>The name of the libopencv filter to apply.\n</p>\n</dd>",
+      "name": "filter_name",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "filter_params"
+      ],
+      "default": null,
+      "description": "<dd><p>The parameters to pass to the libopencv filter. If not specified, the default\nvalues are assumed.\n</p>\n</dd>",
+      "name": "filter_params",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ocv"
+}

@@ -1,0 +1,60 @@
+{
+  "description": "16.8 frei0r_src\nProvide a frei0r source.\n\nTo enable compilation of this filter you need to install the frei0r\nheader and configure FFmpeg with --enable-frei0r.\n\nThis source accepts the following parameters:\n\n\nFor example, to generate a frei0r partik0l source with size 200x200\nand frame rate 10 which is overlaid on the overlay filter main input:\n\nfrei0r_src=size=200x200:framerate=10:filter_name=partik0l:filter_params=1234 [overlay]; [in][overlay] overlay",
+  "filter_type": "vsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vsrc_frei0r_src",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "frei0r_src",
+  "options": [
+    {
+      "alias": [
+        "size"
+      ],
+      "default": "320x240",
+      "description": "<dd><p>The size of the video to generate. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "framerate"
+      ],
+      "default": "25",
+      "description": "<dd><p>The framerate of the generated video. It may be a string of the form\n<var>num</var>/<var>den</var> or a frame rate abbreviation.\n</p>\n</dd>",
+      "name": "framerate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "filter_name"
+      ],
+      "default": null,
+      "description": "<dd><p>The name to the frei0r source to load. For more information regarding frei0r and\nhow to set the parameters, read the <a href=\"#frei0r\">frei0r</a> section in the video filters\ndocumentation.\n</p>\n</dd>",
+      "name": "filter_name",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "filter_params"
+      ],
+      "default": null,
+      "description": "<dd><p>A \u2019|\u2019-separated list of parameters to pass to the frei0r source.\n</p>\n</dd>",
+      "name": "filter_params",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#frei0r_005fsrc"
+}

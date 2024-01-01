@@ -1,0 +1,145 @@
+{
+  "description": "14.10 nlmeans_vulkan\nDenoise frames using Non-Local Means algorithm, implemented on the GPU using\nVulkan.\nSupports more pixel formats than nlmeans or nlmeans_opencl, including\nalpha channel support.\n\nThe filter accepts the following options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_nlmeans_vulkan",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "nlmeans_vulkan",
+  "options": [
+    {
+      "alias": [
+        "s"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set denoising strength for all components. Default is 1.0. Must be in range [1.0, 100.0].\n</p>\n</dd>",
+      "name": "s",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "p"
+      ],
+      "default": "3*2+1",
+      "description": "<dd><p>Set patch size for all planes. Default is 7. Must be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "p",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "r"
+      ],
+      "default": "7*2+1",
+      "description": "<dd><p>Set research size. Default is 15. Must be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "r",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "t"
+      ],
+      "default": 36,
+      "description": "<dd><p>Set parallelism. Default is 36. Must be a number in the range [1, 168].\nLarger values may speed up processing, at the cost of more VRAM.\nLower values will slow it down, reducing VRAM usage.\nOnly supported on GPUs with atomic float operations (RDNA3+, Ampere+).\n</p>\n</dd>",
+      "name": "t",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s1"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set denoising strength for a specific component. Default is <var>1</var>, equal to <samp>s</samp>.\nMust be odd number in range [1, 100].\n</p>\n</dd>",
+      "name": "s1",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "s2"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set denoising strength for a specific component. Default is <var>1</var>, equal to <samp>s</samp>.\nMust be odd number in range [1, 100].\n</p>\n</dd>",
+      "name": "s2",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "s3"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set denoising strength for a specific component. Default is <var>1</var>, equal to <samp>s</samp>.\nMust be odd number in range [1, 100].\n</p>\n</dd>",
+      "name": "s3",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "s4"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "s4",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "p1"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set patch size for a specific component. Default is <var>7</var>, equal to <samp>p</samp>.\nMust be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "p1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "p2"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set patch size for a specific component. Default is <var>7</var>, equal to <samp>p</samp>.\nMust be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "p2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "p3"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set patch size for a specific component. Default is <var>7</var>, equal to <samp>p</samp>.\nMust be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "p3",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "p4"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "p4",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#nlmeans_005fvulkan"
+}

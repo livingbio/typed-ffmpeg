@@ -1,0 +1,177 @@
+{
+  "description": "18.3 adrawgraph\nDraw a graph using input audio metadata.\n\nSee drawgraph",
+  "filter_type": "avf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_avf_adrawgraph",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "adrawgraph",
+  "options": [
+    {
+      "alias": [
+        "m1"
+      ],
+      "default": "",
+      "description": null,
+      "name": "m1",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fg1"
+      ],
+      "default": "0xffff0000",
+      "description": null,
+      "name": "fg1",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "m2"
+      ],
+      "default": "",
+      "description": null,
+      "name": "m2",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fg2"
+      ],
+      "default": "0xff00ff00",
+      "description": null,
+      "name": "fg2",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "m3"
+      ],
+      "default": "",
+      "description": null,
+      "name": "m3",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fg3"
+      ],
+      "default": "0xffff00ff",
+      "description": null,
+      "name": "fg3",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "m4"
+      ],
+      "default": "",
+      "description": null,
+      "name": "m4",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fg4"
+      ],
+      "default": "0xffffff00",
+      "description": null,
+      "name": "fg4",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "bg"
+      ],
+      "default": "white",
+      "description": null,
+      "name": "bg",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "min"
+      ],
+      "default": -1.0,
+      "description": null,
+      "name": "min",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "max"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "max",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": 2,
+      "description": null,
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "slide"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "slide",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "900x256",
+      "description": null,
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": null,
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#adrawgraph"
+}

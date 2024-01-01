@@ -1,0 +1,115 @@
+{
+  "description": "11.83 eq\nSet brightness, contrast, saturation and approximate gamma adjustment.\n\nThe filter accepts the following options:\n\n\nThe expressions accept the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_eq",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "eq",
+  "options": [
+    {
+      "alias": [
+        "contrast"
+      ],
+      "default": "1.0",
+      "description": "<dd><p>Set the contrast expression. The value must be a float value in range\n<code>-1000.0</code> to <code>1000.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "contrast",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "brightness"
+      ],
+      "default": "0.0",
+      "description": "<dd><p>Set the brightness expression. The value must be a float value in\nrange <code>-1.0</code> to <code>1.0</code>. The default value is \"0\".\n</p>\n</dd>",
+      "name": "brightness",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "saturation"
+      ],
+      "default": "1.0",
+      "description": "<dd><p>Set the saturation expression. The value must be a float in\nrange <code>0.0</code> to <code>3.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "saturation",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "gamma"
+      ],
+      "default": "1.0",
+      "description": "<dd><p>Set the gamma expression. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>.  The default value is \"1\".\n</p>\n</dd>",
+      "name": "gamma",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "gamma_r"
+      ],
+      "default": "1.0",
+      "description": "<dd><p>Set the gamma expression for red. The value must be a float in\nrange <code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "gamma_r",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "gamma_g"
+      ],
+      "default": "1.0",
+      "description": "<dd><p>Set the gamma expression for green. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "gamma_g",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "gamma_b"
+      ],
+      "default": "1.0",
+      "description": "<dd><p>Set the gamma expression for blue. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "name": "gamma_b",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "gamma_weight"
+      ],
+      "default": "1.0",
+      "description": "<dd><p>Set the gamma weight expression. It can be used to reduce the effect\nof a high gamma value on bright image areas, e.g. keep them from\ngetting overamplified and just plain white. The value must be a float\nin range <code>0.0</code> to <code>1.0</code>. A value of <code>0.0</code> turns the\ngamma correction all the way down while <code>1.0</code> leaves it at its\nfull strength. Default is \"1\".\n</p>\n</dd>",
+      "name": "gamma_weight",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "eval"
+      ],
+      "default": "EVAL_MODE_INIT",
+      "description": "<dd><p>Set when the expressions for brightness, contrast, saturation and\ngamma expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>only evaluate expressions once during the filter initialization or\nwhen a command is processed\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expressions for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p></dd>",
+      "name": "eval",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#eq"
+}

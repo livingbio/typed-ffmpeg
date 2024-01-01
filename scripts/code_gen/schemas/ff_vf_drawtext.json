@@ -1,0 +1,357 @@
+{
+  "description": "11.78 drawtext\nDraw a text string or text from a specified file on top of a video, using the\nlibfreetype library.\n\nTo enable compilation of this filter, you need to configure FFmpeg with\n--enable-libfreetype and --enable-libharfbuzz.\nTo enable default font fallback and the font option you need to\nconfigure FFmpeg with --enable-libfontconfig.\nTo enable the text_shaping option, you need to configure FFmpeg with\n--enable-libfribidi.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_drawtext",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "drawtext",
+  "options": [
+    {
+      "alias": [
+        "fontfile"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "fontfile",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "text"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "text",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "textfile"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "textfile",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fontcolor"
+      ],
+      "default": "black",
+      "description": null,
+      "name": "fontcolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fontcolor_expr"
+      ],
+      "default": "",
+      "description": null,
+      "name": "fontcolor_expr",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "boxcolor"
+      ],
+      "default": "white",
+      "description": null,
+      "name": "boxcolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "bordercolor"
+      ],
+      "default": "black",
+      "description": null,
+      "name": "bordercolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "shadowcolor"
+      ],
+      "default": "black",
+      "description": null,
+      "name": "shadowcolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "box"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "box",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "boxborderw"
+      ],
+      "default": "0",
+      "description": null,
+      "name": "boxborderw",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "line_spacing"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "line_spacing",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fontsize"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "fontsize",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "text_align"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "text_align",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "x"
+      ],
+      "default": "0",
+      "description": null,
+      "name": "x",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": "0",
+      "description": null,
+      "name": "y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "boxw"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "boxw",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "boxh"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "boxh",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shadowx"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "shadowx",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shadowy"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "shadowy",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "borderw"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "borderw",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tabsize"
+      ],
+      "default": 4,
+      "description": null,
+      "name": "tabsize",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "basetime"
+      ],
+      "default": "((int64_t)(0x8000000000000000ULL))",
+      "description": null,
+      "name": "basetime",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "expansion"
+      ],
+      "default": "EXP_NORMAL",
+      "description": null,
+      "name": "expansion",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y_align"
+      ],
+      "default": "YA_TEXT",
+      "description": null,
+      "name": "y_align",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "timecode"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "timecode",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "tc24hmax"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "tc24hmax",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "timecode_rate",
+        "r",
+        "rate"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "timecode_rate",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "reload"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "reload",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "default": "1",
+      "description": null,
+      "name": "alpha",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fix_bounds"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "fix_bounds",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "start_number"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "start_number",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "text_source"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "text_source",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "ft_load_flags"
+      ],
+      "default": "FT_LOAD_DEFAULT",
+      "description": null,
+      "name": "ft_load_flags",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#drawtext"
+}

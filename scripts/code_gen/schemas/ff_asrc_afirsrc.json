@@ -1,0 +1,97 @@
+{
+  "description": "9.5 afirsrc\nGenerate a FIR coefficients using frequency sampling method.\n\nThe resulting stream can be used with afir filter for filtering the audio signal.\n\nThe filter accepts the following options:",
+  "filter_type": "asrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_asrc_afirsrc",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "afirsrc",
+  "options": [
+    {
+      "alias": [
+        "taps",
+        "t"
+      ],
+      "default": 1025,
+      "description": "<dd><p>Set number of filter coefficients in output audio stream.\nDefault value is 1025.\n</p>\n</dd>",
+      "name": "taps",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "frequency",
+        "f"
+      ],
+      "default": "0 1",
+      "description": "<dd><p>Set frequency points from where magnitude and phase are set.\nThis must be in non decreasing order, and first element must be 0, while last element\nmust be 1. Elements are separated by white spaces.\n</p>\n</dd>",
+      "name": "frequency",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "magnitude",
+        "m"
+      ],
+      "default": "1 1",
+      "description": "<dd><p>Set magnitude value for every frequency point set by <samp>frequency</samp>.\nNumber of values must be same as number of frequency points.\nValues are separated by white spaces.\n</p>\n</dd>",
+      "name": "magnitude",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "phase",
+        "p"
+      ],
+      "default": "0 0",
+      "description": "<dd><p>Set phase value for every frequency point set by <samp>frequency</samp>.\nNumber of values must be same as number of frequency points.\nValues are separated by white spaces.\n</p>\n</dd>",
+      "name": "phase",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "sample_rate",
+        "r"
+      ],
+      "default": 44100,
+      "description": "<dd><p>Set sample rate, default is 44100.\n</p>\n</dd>",
+      "name": "sample_rate",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nb_samples",
+        "n"
+      ],
+      "default": 1024,
+      "description": "<dd><p>Set number of samples per each frame. Default is 1024.\n</p>\n</dd>",
+      "name": "nb_samples",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_func",
+        "w"
+      ],
+      "default": "WFUNC_BLACKMAN",
+      "description": "<dd><p>Set window function. Default is blackman.\n</p></dd>",
+      "name": "win_func",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#afirsrc"
+}

@@ -1,0 +1,55 @@
+{
+  "description": "11.205 readvitc\nRead vertical interval timecode (VITC) information from the top lines of a\nvideo frame.\n\nThe filter adds frame metadata key lavfi.readvitc.tc_str with the\ntimecode value, if a valid timecode has been detected. Further metadata key\nlavfi.readvitc.found is set to 0/1 depending on whether\ntimecode data has been found or not.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_readvitc",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "readvitc",
+  "options": [
+    {
+      "alias": [
+        "scan_max"
+      ],
+      "default": 45,
+      "description": "<dd><p>Set the maximum number of lines to scan for VITC data. If the value is set to\n<code>-1</code> the full video frame is scanned. Default is <code>45</code>.\n</p>\n</dd>",
+      "name": "scan_max",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "thr_b"
+      ],
+      "default": 0.2,
+      "description": "<dd><p>Set the luma threshold for black. Accepts float numbers in the range [0.0,1.0],\ndefault value is <code>0.2</code>. The value must be equal or less than <code>thr_w</code>.\n</p>\n</dd>",
+      "name": "thr_b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "thr_w"
+      ],
+      "default": 0.6,
+      "description": "<dd><p>Set the luma threshold for white. Accepts float numbers in the range [0.0,1.0],\ndefault value is <code>0.6</code>. The value must be equal or greater than <code>thr_b</code>.\n</p></dd>",
+      "name": "thr_w",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#readvitc"
+}

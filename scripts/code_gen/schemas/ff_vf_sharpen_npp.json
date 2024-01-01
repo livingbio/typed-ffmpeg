@@ -1,0 +1,35 @@
+{
+  "description": "11.229 sharpen_npp\nUse the NVIDIA Performance Primitives (libnpp) to perform image sharpening with\nborder control.\n\nThe following additional options are accepted:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_sharpen_npp",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "sharpen_npp",
+  "options": [
+    {
+      "alias": [
+        "border_type"
+      ],
+      "default": "NPP_BORDER_REPLICATE",
+      "description": "<dd><p>Type of sampling to be used ad frame borders. One of the following:\n</p><dl compact=\"compact\">\n<dt><samp>replicate</samp></dt>\n<dd><p>Replicate pixel values.\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "border_type",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#sharpen_005fnpp"
+}

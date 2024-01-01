@@ -3,6 +3,8 @@
     "description": "Scale the input video size and/or convert the image format.",
     "flags": null,
     "id": "ff_vf_scale",
+    "init": "init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",
@@ -488,6 +490,8 @@
     "description": "Scale the input video size and/or convert the image format to the given reference.",
     "flags": null,
     "id": "ff_vf_scale2ref",
+    "init": "init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

@@ -1,0 +1,85 @@
+{
+  "description": "11.248 swaprect\nSwap two rectangular objects in video.\n\nThis filter accepts the following options:\n\n\nThe all options are expressions containing the following constants:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_swaprect",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "swaprect",
+  "options": [
+    {
+      "alias": [
+        "w"
+      ],
+      "default": "w/2",
+      "description": "<dd><p>Set object width.\n</p>\n</dd>",
+      "name": "w",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": "h/2",
+      "description": "<dd><p>Set object height.\n</p>\n</dd>",
+      "name": "h",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "x1"
+      ],
+      "default": "w/2",
+      "description": "<dd><p>Set 1st rect x coordinate.\n</p>\n</dd>",
+      "name": "x1",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y1"
+      ],
+      "default": "h/2",
+      "description": "<dd><p>Set 1st rect y coordinate.\n</p>\n</dd>",
+      "name": "y1",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "x2"
+      ],
+      "default": "0",
+      "description": "<dd><p>Set 2nd rect x coordinate.\n</p>\n</dd>",
+      "name": "x2",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y2"
+      ],
+      "default": "0",
+      "description": "<dd><p>Set 2nd rect y coordinate.\n</p>\n<p>All expressions are evaluated once for each frame.\n</p></dd>",
+      "name": "y2",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#swaprect"
+}

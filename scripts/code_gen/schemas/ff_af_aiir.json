@@ -1,0 +1,167 @@
+{
+  "description": "8.30 aiir\nApply an arbitrary Infinite Impulse Response filter.\n\nIt accepts the following parameters:\n\n\nCoefficients in tf and sf format are separated by spaces and are in ascending\norder.\n\nCoefficients in zp format are separated by spaces and order of coefficients\ndoesn\u2019t matter. Coefficients in zp format are complex numbers with i\nimaginary unit.\n\nDifferent coefficients and gains can be provided for every channel, in such case\nuse \u2019|\u2019 to separate coefficients or gains. Last provided coefficients will be\nused for all remaining channels.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": "['audio'] + ['video'] if response else []",
+  "id": "ff_af_aiir",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "aiir",
+  "options": [
+    {
+      "alias": [
+        "zeros",
+        "z"
+      ],
+      "default": "1+0i 1-0i",
+      "description": "<dd><p>Set B/numerator/zeros/reflection coefficients.\n</p>\n</dd>",
+      "name": "zeros",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "poles",
+        "p"
+      ],
+      "default": "1+0i 1-0i",
+      "description": "<dd><p>Set A/denominator/poles/ladder coefficients.\n</p>\n</dd>",
+      "name": "poles",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "gains",
+        "k"
+      ],
+      "default": "1|1",
+      "description": "<dd><p>Set channels gains.\n</p>\n</dd>",
+      "name": "gains",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "dry"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "dry",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "wet"
+      ],
+      "default": 1.0,
+      "description": null,
+      "name": "wet",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "format",
+        "f"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set coefficients format.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>ll</samp>\u2019</dt>\n<dd><p>lattice-ladder function\n</p></dd>\n<dt>\u2018<samp>sf</samp>\u2019</dt>\n<dd><p>analog transfer function\n</p></dd>\n<dt>\u2018<samp>tf</samp>\u2019</dt>\n<dd><p>digital transfer function\n</p></dd>\n<dt>\u2018<samp>zp</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, cartesian (default)\n</p></dd>\n<dt>\u2018<samp>pr</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, polar radians\n</p></dd>\n<dt>\u2018<samp>pd</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, polar degrees\n</p></dd>\n<dt>\u2018<samp>sp</samp>\u2019</dt>\n<dd><p>S-plane zeros/poles\n</p></dd>\n</dl>\n</dd>",
+      "name": "format",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "process",
+        "r"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set type of processing.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>d</samp>\u2019</dt>\n<dd><p>direct processing\n</p></dd>\n<dt>\u2018<samp>s</samp>\u2019</dt>\n<dd><p>serial processing\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>parallel processing\n</p></dd>\n</dl>\n</dd>",
+      "name": "process",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "precision",
+        "e"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set filtering precision.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>dbl</samp>\u2019</dt>\n<dd><p>double-precision floating-point (default)\n</p></dd>\n<dt>\u2018<samp>flt</samp>\u2019</dt>\n<dd><p>single-precision floating-point\n</p></dd>\n<dt>\u2018<samp>i32</samp>\u2019</dt>\n<dd><p>32-bit integers\n</p></dd>\n<dt>\u2018<samp>i16</samp>\u2019</dt>\n<dd><p>16-bit integers\n</p></dd>\n</dl>\n</dd>",
+      "name": "precision",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "normalize",
+        "n"
+      ],
+      "default": 1,
+      "description": "<dd><p>Normalize filter coefficients, by default is enabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>",
+      "name": "normalize",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "mix"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>",
+      "name": "mix",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "response"
+      ],
+      "default": 0,
+      "description": "<dd><p>Show IR frequency response, magnitude(magenta), phase(green) and group delay(yellow) in additional video stream.\nBy default it is disabled.\n</p>\n</dd>",
+      "name": "response",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "channel"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set for which IR channel to display frequency response. By default is first channel\ndisplayed. This option is used only when <var>response</var> is enabled.\n</p>\n</dd>",
+      "name": "channel",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "default": "hd720",
+      "description": "<dd><p>Set video stream size. This option is used only when <var>response</var> is enabled.\n</p></dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rate"
+      ],
+      "default": "25",
+      "description": null,
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aiir"
+}

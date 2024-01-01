@@ -1,0 +1,40 @@
+{
+  "description": "11.243 ssim\nObtain the SSIM (Structural SImilarity Metric) between two input videos.\n\nThis filter takes in input two input videos, the first input is\nconsidered the \"main\" source and is passed unchanged to the\noutput. The second input is used as a \"reference\" video for computing\nthe SSIM.\n\nBoth video inputs must have the same resolution and pixel format for\nthis filter to work correctly. Also it assumes that both inputs\nhave the same number of frames, which are compared one by one.\n\nThe filter stores the calculated SSIM of each frame.\n\nThe description of the accepted parameters follows.\n\n\nThe file printed if stats_file is selected, contains a sequence of\nkey/value pairs of the form key:value for each compared\ncouple of frames.\n\nA description of each shown parameter follows:\n\n\nThis filter also supports the framesync options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_ssim",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "reference",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "ssim",
+  "options": [
+    {
+      "alias": [
+        "stats_file",
+        "f"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>If specified the filter will use the named file to save the SSIM of\neach individual frame. When filename equals \"-\" the data is sent to\nstandard output.\n</p></dd>",
+      "name": "stats_file",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ssim"
+}

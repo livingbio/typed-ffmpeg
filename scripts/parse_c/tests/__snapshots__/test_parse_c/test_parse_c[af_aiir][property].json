@@ -1,0 +1,275 @@
+[
+  {
+    "flags_value": 6,
+    "inputs_value": "inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": true,
+    "outputs_value": null,
+    "parsed_options": [
+      {
+        "alias": [
+          "zeros",
+          "z"
+        ],
+        "choices": [],
+        "default": "['.str=\"1+0i 1-0i\"']",
+        "default_value": "1+0i 1-0i",
+        "deprecated": false,
+        "help": "set B/numerator/zeros/reflection coefficients",
+        "name": "zeros",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "poles",
+          "p"
+        ],
+        "choices": [],
+        "default": "['.str=\"1+0i 1-0i\"']",
+        "default_value": "1+0i 1-0i",
+        "deprecated": false,
+        "help": "set A/denominator/poles/ladder coefficients",
+        "name": "poles",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "gains",
+          "k"
+        ],
+        "choices": [],
+        "default": "['.str=\"1|1\"']",
+        "default_value": "1|1",
+        "deprecated": false,
+        "help": "set channels gains",
+        "name": "gains",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "dry"
+        ],
+        "choices": [],
+        "default": "['.dbl=1']",
+        "default_value": 1.0,
+        "deprecated": false,
+        "help": "set dry gain",
+        "name": "dry",
+        "required": false,
+        "type": "AV_OPT_TYPE_DOUBLE"
+      },
+      {
+        "alias": [
+          "wet"
+        ],
+        "choices": [],
+        "default": "['.dbl=1']",
+        "default_value": 1.0,
+        "deprecated": false,
+        "help": "set wet gain",
+        "name": "wet",
+        "required": false,
+        "type": "AV_OPT_TYPE_DOUBLE"
+      },
+      {
+        "alias": [
+          "format",
+          "f"
+        ],
+        "choices": [
+          {
+            "help": "lattice-ladder function",
+            "name": "ll",
+            "value": "['.i64=-2']"
+          },
+          {
+            "help": "analog transfer function",
+            "name": "sf",
+            "value": "['.i64=-1']"
+          },
+          {
+            "help": "digital transfer function",
+            "name": "tf",
+            "value": "['.i64=0']"
+          },
+          {
+            "help": "Z-plane zeros/poles",
+            "name": "zp",
+            "value": "['.i64=1']"
+          },
+          {
+            "help": "Z-plane zeros/poles (polar radians)",
+            "name": "pr",
+            "value": "['.i64=2']"
+          },
+          {
+            "help": "Z-plane zeros/poles (polar degrees)",
+            "name": "pd",
+            "value": "['.i64=3']"
+          },
+          {
+            "help": "S-plane zeros/poles",
+            "name": "sp",
+            "value": "['.i64=4']"
+          }
+        ],
+        "default": "['.i64=1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "set coefficients format",
+        "name": "format",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "process",
+          "r"
+        ],
+        "choices": [
+          {
+            "help": "direct",
+            "name": "d",
+            "value": "['.i64=0']"
+          },
+          {
+            "help": "serial",
+            "name": "s",
+            "value": "['.i64=1']"
+          },
+          {
+            "help": "parallel",
+            "name": "p",
+            "value": "['.i64=2']"
+          }
+        ],
+        "default": "['.i64=1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "set kind of processing",
+        "name": "process",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "precision",
+          "e"
+        ],
+        "choices": [
+          {
+            "help": "double-precision floating-point",
+            "name": "dbl",
+            "value": "['.i64=0']"
+          },
+          {
+            "help": "single-precision floating-point",
+            "name": "flt",
+            "value": "['.i64=1']"
+          },
+          {
+            "help": "32-bit integers",
+            "name": "i32",
+            "value": "['.i64=2']"
+          },
+          {
+            "help": "16-bit integers",
+            "name": "i16",
+            "value": "['.i64=3']"
+          }
+        ],
+        "default": "['.i64=0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "set filtering precision",
+        "name": "precision",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "normalize",
+          "n"
+        ],
+        "choices": [],
+        "default": "['.i64=1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "normalize coefficients",
+        "name": "normalize",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "mix"
+        ],
+        "choices": [],
+        "default": "['.dbl=1']",
+        "default_value": 1.0,
+        "deprecated": false,
+        "help": "set mix",
+        "name": "mix",
+        "required": false,
+        "type": "AV_OPT_TYPE_DOUBLE"
+      },
+      {
+        "alias": [
+          "response"
+        ],
+        "choices": [],
+        "default": "['.i64=0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "show IR frequency response",
+        "name": "response",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "channel"
+        ],
+        "choices": [],
+        "default": "['.i64=0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "set IR channel to display frequency response",
+        "name": "channel",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "size"
+        ],
+        "choices": [],
+        "default": "['.str = \"hd720\"']",
+        "default_value": "hd720",
+        "deprecated": false,
+        "help": "set video size",
+        "name": "size",
+        "required": false,
+        "type": "AV_OPT_TYPE_IMAGE_SIZE"
+      },
+      {
+        "alias": [
+          "rate"
+        ],
+        "choices": [],
+        "default": "['.str = \"25\"']",
+        "default_value": "25",
+        "deprecated": false,
+        "help": "set video rate",
+        "name": "rate",
+        "required": false,
+        "type": "AV_OPT_TYPE_VIDEO_RATE"
+      }
+    ],
+    "priv_class_value": "aiir_class",
+    "type": "af"
+  }
+]

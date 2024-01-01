@@ -1,0 +1,49 @@
+{
+  "description": "11.116 haldclut\nApply a Hald CLUT to a video stream.\n\nFirst input is the video stream to process, and second one is the Hald CLUT.\nThe Hald CLUT input can be a simple picture or a complete video stream.\n\nThe filter accepts the following options:\n\n\nhaldclut also has the same interpolation options as lut3d (both\nfilters share the same internals).\n\nThis filter also supports the framesync options.\n\nMore information about the Hald CLUT can be found on Eskil Steenberg\u2019s website\n(Hald CLUT author) at http://www.quelsolaar.com/technology/clut.html.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_haldclut",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "clut",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "haldclut",
+  "options": [
+    {
+      "alias": [
+        "clut"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set which CLUT video frames will be processed from second input stream,\ncan be <var>first</var> or <var>all</var>. Default is <var>all</var>.\n</p>\n</dd>",
+      "name": "clut",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "interp"
+      ],
+      "default": "INTERPOLATE_TETRAHEDRAL",
+      "description": null,
+      "name": "interp",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#haldclut"
+}

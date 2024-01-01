@@ -1,0 +1,35 @@
+{
+  "description": "8.100 mcompand\nMultiband Compress or expand the audio\u2019s dynamic range.\n\nThe input audio is divided into bands using 4th order Linkwitz-Riley IIRs.\nThis is akin to the crossover of a loudspeaker, and results in flat frequency\nresponse when absent compander action.\n\nIt accepts the following parameters:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_mcompand",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "mcompand",
+  "options": [
+    {
+      "alias": [
+        "args"
+      ],
+      "default": "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000",
+      "description": "<dd><p>This option syntax is:\nattack,decay,[attack,decay..] soft-knee points crossover_frequency [delay [initial_volume [gain]]] | attack,decay ...\nFor explanation of each item refer to compand filter documentation.\n</p></dd>",
+      "name": "args",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#mcompand"
+}

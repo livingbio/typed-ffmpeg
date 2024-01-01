@@ -1,0 +1,49 @@
+{
+  "description": "11.131 hysteresis\nGrow first stream into second stream by connecting components.\nThis makes it possible to build more robust edge masks.\n\nThis filter accepts the following options:\n\n\nThe hysteresis filter also supports the framesync options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_hysteresis",
+  "input_stream_typings": [
+    {
+      "name": "base",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "alt",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "hysteresis",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": "0xF",
+      "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set threshold which is used in filtering. If pixel component value is higher than\nthis value filter algorithm for connecting components is activated.\nBy default value is 0.\n</p></dd>",
+      "name": "threshold",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hysteresis"
+}

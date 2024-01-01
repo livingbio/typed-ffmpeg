@@ -1,0 +1,55 @@
+{
+  "description": "11.258 tmedian\nPick median pixels from several successive input video frames.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_tmedian",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "tmedian",
+  "options": [
+    {
+      "alias": [
+        "radius"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set radius of median filter.\nDefault is 1. Allowed range is from 1 to 127.\n</p>\n</dd>",
+      "name": "radius",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set which planes to filter. Default value is <code>15</code>, by which all planes are processed.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "percentile"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set median percentile. Default value is <code>0.5</code>.\nDefault value of <code>0.5</code> will pick always median values, while <code>0</code> will pick\nminimum values, and <code>1</code> maximum values.\n</p></dd>",
+      "name": "percentile",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tmedian"
+}

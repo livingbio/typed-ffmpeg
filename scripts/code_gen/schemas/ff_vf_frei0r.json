@@ -1,0 +1,45 @@
+{
+  "description": "11.107 frei0r\nApply a frei0r effect to the input video.\n\nTo enable the compilation of this filter, you need to install the frei0r\nheader and configure FFmpeg with --enable-frei0r.\n\nIt accepts the following parameters:\n\n\nA frei0r effect parameter can be a boolean (its value is either\n\"y\" or \"n\"), a double, a color (specified as\nR/G/B, where R, G, and B are floating point\nnumbers between 0.0 and 1.0, inclusive) or a color description as specified in the\n(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual,\na position (specified as X/Y, where\nX and Y are floating point numbers) and/or a string.\n\nThe number and types of parameters depend on the loaded effect. If an\neffect parameter is not specified, the default value is set.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_frei0r",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "frei0r",
+  "options": [
+    {
+      "alias": [
+        "filter_name"
+      ],
+      "default": null,
+      "description": "<dd><p>The name of the frei0r effect to load. If the environment variable\n<code>FREI0R_PATH</code> is defined, the frei0r effect is searched for in each of the\ndirectories specified by the colon-separated list in <code>FREI0R_PATH</code>.\nOtherwise, the standard frei0r paths are searched, in this order:\n<samp>HOME/.frei0r-1/lib/</samp>, <samp>/usr/local/lib/frei0r-1/</samp>,\n<samp>/usr/lib/frei0r-1/</samp>.\n</p>\n</dd>",
+      "name": "filter_name",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "filter_params"
+      ],
+      "default": null,
+      "description": "<dd><p>A \u2019|\u2019-separated list of parameters to pass to the frei0r effect.\n</p>\n</dd>",
+      "name": "filter_params",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#frei0r"
+}

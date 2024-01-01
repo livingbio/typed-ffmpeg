@@ -1,0 +1,77 @@
+{
+  "description": "11.30 codecview\nVisualize information exported by some codecs.\n\nSome codecs can export information through frames using side-data or other\nmeans. For example, some MPEG based codecs export motion vectors through the\nexport_mvs flag in the codec flags2 option.\n\nThe filter accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_codecview",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "codecview",
+  "options": [
+    {
+      "alias": [
+        "mv"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set motion vectors to visualize.\n</p>\n<p>Available flags for <var>mv</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>pf</samp>\u2019</dt>\n<dd><p>forward predicted MVs of P-frames\n</p></dd>\n<dt>\u2018<samp>bf</samp>\u2019</dt>\n<dd><p>forward predicted MVs of B-frames\n</p></dd>\n<dt>\u2018<samp>bb</samp>\u2019</dt>\n<dd><p>backward predicted MVs of B-frames\n</p></dd>\n</dl>\n</dd>",
+      "name": "mv",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "qp"
+      ],
+      "default": 0,
+      "description": "<dd><p>Display quantization parameters using the chroma planes.\n</p>\n</dd>",
+      "name": "qp",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "mv_type",
+        "mvt"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set motion vectors type to visualize. Includes MVs from all frames unless specified by <var>frame_type</var> option.\n</p>\n<p>Available flags for <var>mv_type</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>fp</samp>\u2019</dt>\n<dd><p>forward predicted MVs\n</p></dd>\n<dt>\u2018<samp>bp</samp>\u2019</dt>\n<dd><p>backward predicted MVs\n</p></dd>\n</dl>\n</dd>",
+      "name": "mv_type",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "frame_type",
+        "ft"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set frame type to visualize motion vectors of.\n</p>\n<p>Available flags for <var>frame_type</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>if</samp>\u2019</dt>\n<dd><p>intra-coded frames (I-frames)\n</p></dd>\n<dt>\u2018<samp>pf</samp>\u2019</dt>\n<dd><p>predicted frames (P-frames)\n</p></dd>\n<dt>\u2018<samp>bf</samp>\u2019</dt>\n<dd><p>bi-directionally predicted frames (B-frames)\n</p></dd>\n</dl>\n</dd>",
+      "name": "frame_type",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "block"
+      ],
+      "default": 0,
+      "description": "<dd><p>Display block partition structure using the luma plane.\n</p>\n</dd>",
+      "name": "block",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#codecview"
+}

@@ -1,0 +1,73 @@
+{
+  "description": "11.89 feedback\nApply feedback video filter.\n\nThis filter pass cropped input frames to 2nd output.\nFrom there it can be filtered with other video filters.\nAfter filter receives frame from 2nd input, that frame\nis combined on top of original frame from 1st input and passed\nto 1st output.\n\nThe typical usage is filter only part of frame.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_feedback",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "feedin",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "feedback",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the top left crop position.\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the top left crop position.\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the crop size.\n</p></dd>",
+      "name": "w",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the crop size.\n</p></dd>",
+      "name": "h",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "feedout",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#feedback"
+}

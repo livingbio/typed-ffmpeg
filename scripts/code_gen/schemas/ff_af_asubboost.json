@@ -1,0 +1,115 @@
+{
+  "description": "8.60 asubboost\nBoost subwoofer frequencies.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_asubboost",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "asubboost",
+  "options": [
+    {
+      "alias": [
+        "dry"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set dry gain, how much of original signal is kept. Allowed range is from 0 to 1.\nDefault value is 1.0.\n</p>\n</dd>",
+      "name": "dry",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "wet"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set wet gain, how much of filtered signal is kept. Allowed range is from 0 to 1.\nDefault value is 1.0.\n</p>\n</dd>",
+      "name": "wet",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "boost"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>Set max boost factor. Allowed range is from 1 to 12. Default value is 2.\n</p>\n</dd>",
+      "name": "boost",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "decay"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set delay line decay gain value. Allowed range is from 0 to 1.\nDefault value is 0.0.\n</p>\n</dd>",
+      "name": "decay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "feedback"
+      ],
+      "default": 0.9,
+      "description": "<dd><p>Set delay line feedback gain value. Allowed range is from 0 to 1.\nDefault value is 0.9.\n</p>\n</dd>",
+      "name": "feedback",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "cutoff"
+      ],
+      "default": 100.0,
+      "description": "<dd><p>Set cutoff frequency in Hertz. Allowed range is 50 to 900.\nDefault value is 100.\n</p>\n</dd>",
+      "name": "cutoff",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "slope"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set slope amount for cutoff frequency. Allowed range is 0.0001 to 1.\nDefault value is 0.5.\n</p>\n</dd>",
+      "name": "slope",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "delay"
+      ],
+      "default": 20.0,
+      "description": "<dd><p>Set delay. Allowed range is from 1 to 100.\nDefault value is 20.\n</p>\n</dd>",
+      "name": "delay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "channels"
+      ],
+      "default": "all",
+      "description": "<dd><p>Set the channels to process. Default value is all available.\n</p></dd>",
+      "name": "channels",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asubboost"
+}

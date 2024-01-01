@@ -1,0 +1,95 @@
+{
+  "description": "11.194 pixscope\nDisplay sample values of color channels. Mainly useful for checking color\nand levels. Minimum supported resolution is 640x480.\n\nThe filters accept the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_pixscope",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "pixscope",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set scope X position, relative offset on X axis.\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set scope Y position, relative offset on Y axis.\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "default": 7,
+      "description": "<dd><p>Set scope width.\n</p>\n</dd>",
+      "name": "w",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": 7,
+      "description": "<dd><p>Set scope height.\n</p>\n</dd>",
+      "name": "h",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "o"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set window opacity. This window also holds statistics about pixel area.\n</p>\n</dd>",
+      "name": "o",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "wx"
+      ],
+      "default": -1.0,
+      "description": "<dd><p>Set window X position, relative offset on X axis.\n</p>\n</dd>",
+      "name": "wx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "wy"
+      ],
+      "default": -1.0,
+      "description": "<dd><p>Set window Y position, relative offset on Y axis.\n</p></dd>",
+      "name": "wy",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#pixscope"
+}

@@ -1,0 +1,106 @@
+{
+  "description": "11.54 datascope\nVideo data analysis filter.\n\nThis filter shows hexadecimal pixel values of part of video.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_datascope",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "datascope",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "hd720",
+      "description": "<dd><p>Set output video size.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "x"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set x offset from where to pick pixels.\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set y offset from where to pick pixels.\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set scope mode, can be one of the following:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>mono</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values with white color on black background.\n</p>\n</dd>\n<dt>\u2018<samp>color</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values with input video pixel color on black\nbackground.\n</p>\n</dd>\n<dt>\u2018<samp>color2</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values on color background picked from input video,\nthe text color is picked in such way so its always visible.\n</p></dd>\n</dl>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "axis"
+      ],
+      "default": 0,
+      "description": "<dd><p>Draw rows and columns numbers on left and top of video.\n</p>\n</dd>",
+      "name": "axis",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "opacity"
+      ],
+      "default": 0.75,
+      "description": "<dd><p>Set background opacity.\n</p>\n</dd>",
+      "name": "opacity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "format"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set display number format. Can be <code>hex</code>, or <code>dec</code>. Default is <code>hex</code>.\n</p>\n</dd>",
+      "name": "format",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "components"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set pixel components to display. By default all pixel components are displayed.\n</p></dd>",
+      "name": "components",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#datascope"
+}

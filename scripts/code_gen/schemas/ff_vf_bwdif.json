@@ -1,0 +1,55 @@
+{
+  "description": "11.20 bwdif\nDeinterlace the input video (\"bwdif\" stands for \"Bob Weaver\nDeinterlacing Filter\").\n\nMotion adaptive deinterlacing based on yadif with the use of w3fdif and cubic\ninterpolation algorithms.\nIt accepts the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_bwdif",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "bwdif",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": "YADIF_MODE_SEND_FIELD",
+      "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, send_frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>1, send_field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n<p>The default value is <code>send_field</code>.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "parity"
+      ],
+      "default": "YADIF_PARITY_AUTO",
+      "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>1, bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>-1, auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
+      "name": "parity",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "deint"
+      ],
+      "default": "YADIF_DEINT_ALL",
+      "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following\nvalues:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, all</samp></dt>\n<dd><p>Deinterlace all frames.\n</p></dd>\n<dt><samp>1, interlaced</samp></dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>The default value is <code>all</code>.\n</p></dd>",
+      "name": "deint",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#bwdif"
+}

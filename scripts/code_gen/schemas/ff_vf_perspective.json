@@ -1,0 +1,135 @@
+{
+  "description": "11.189 perspective\nCorrect perspective of video not recorded perpendicular to the screen.\n\nA description of the accepted parameters follows.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_perspective",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "perspective",
+  "options": [
+    {
+      "alias": [
+        "x0"
+      ],
+      "default": "0",
+      "description": null,
+      "name": "x0",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y0"
+      ],
+      "default": "0",
+      "description": null,
+      "name": "y0",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "x1"
+      ],
+      "default": "W",
+      "description": null,
+      "name": "x1",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y1"
+      ],
+      "default": "0",
+      "description": null,
+      "name": "y1",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "x2"
+      ],
+      "default": "0",
+      "description": null,
+      "name": "x2",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y2"
+      ],
+      "default": "H",
+      "description": null,
+      "name": "y2",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "x3"
+      ],
+      "default": "W",
+      "description": null,
+      "name": "x3",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y3"
+      ],
+      "default": "H",
+      "description": null,
+      "name": "y3",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "interpolation"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "interpolation",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sense"
+      ],
+      "default": "PERSPECTIVE_SENSE_SOURCE",
+      "description": null,
+      "name": "sense",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "eval"
+      ],
+      "default": "EVAL_MODE_INIT",
+      "description": null,
+      "name": "eval",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#perspective"
+}

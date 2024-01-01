@@ -3,6 +3,8 @@
     "description": "Denoise audio samples using FFT.",
     "flags": "(1 << 17) |\n                       (1 << 2)",
     "id": "ff_af_afftdn",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

@@ -84,6 +84,7 @@ class Option(pydantic.BaseModel):
     help: str
     type: str
     default: str | None = None
+    default_value: str | int | float | None = None
     alias: list[str] = []
     deprecated: bool = False
 
@@ -167,13 +168,37 @@ class FilterType(str, enum.Enum):
     VIDEO_AND_AUDIO_FILTER = "vaf"
 
 
+def parse_default(text: str) -> str | float | int | bool | None:
+    if text is None:
+        return None
+
+    match = re.findall(r"\.([\w]+)\s*=\s*(.*)\]", text)
+    if not match:
+        return text
+
+    type, value = match[0]
+    value = value.strip("'\"")
+
+    try:
+        match type:
+            case "dbl":
+                return float(value)
+            case "i64":
+                return int(value)
+            case "str":
+                return value
+    except ValueError:
+        return value
+
+
 class AVFilter(pydantic.BaseModel):
     id: str  # the varname of the filter
     name: str
     description: str
 
     # preinit: str
-    # init: str
+    init: str | None = None
+    init_src: str | None = None
     # uninit: str
     # priv_size: str
     # activate: str
@@ -193,6 +218,10 @@ class AVFilter(pydantic.BaseModel):
     def type(self) -> FilterType:
         _, type, _ = self.id.split("_", 2)
         return FilterType(type)
+
+    @property
+    def init_value(self) -> str:
+        return self.init.strip("&")
 
     @property
     def flags_value(self) -> int:
@@ -267,6 +296,7 @@ class AVFilter(pydantic.BaseModel):
                         help=option.help,
                         type=option.type,
                         default=option.default,
+                        default_value=parse_default(option.default),
                         deprecated=option.flag_is_deprecated,
                     )
                 )
@@ -278,6 +308,7 @@ class AVFilter(pydantic.BaseModel):
                         help=option.help,
                         type=option.type,
                         default=option.default,
+                        default_value=parse_default(option.default),
                         choices=choices.get(option.unit, []),
                         deprecated=option.flag_is_deprecated,
                     )

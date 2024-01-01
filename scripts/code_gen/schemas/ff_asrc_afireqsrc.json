@@ -1,0 +1,108 @@
+{
+  "description": "9.4 afireqsrc\nGenerate a FIR equalizer coefficients.\n\nThe resulting stream can be used with afir filter for filtering the audio signal.\n\nThe filter accepts the following options:",
+  "filter_type": "asrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_asrc_afireqsrc",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "afireqsrc",
+  "options": [
+    {
+      "alias": [
+        "preset",
+        "p"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set equalizer preset.\nDefault preset is <code>flat</code>.\n</p>\n<p>Available presets are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>custom</samp>\u2019</dt>\n<dt>\u2018<samp>flat</samp>\u2019</dt>\n<dt>\u2018<samp>acoustic</samp>\u2019</dt>\n<dt>\u2018<samp>bass</samp>\u2019</dt>\n<dt>\u2018<samp>beats</samp>\u2019</dt>\n<dt>\u2018<samp>classic</samp>\u2019</dt>\n<dt>\u2018<samp>clear</samp>\u2019</dt>\n<dt>\u2018<samp>deep bass</samp>\u2019</dt>\n<dt>\u2018<samp>dubstep</samp>\u2019</dt>\n<dt>\u2018<samp>electronic</samp>\u2019</dt>\n<dt>\u2018<samp>hard-style</samp>\u2019</dt>\n<dt>\u2018<samp>hip-hop</samp>\u2019</dt>\n<dt>\u2018<samp>jazz</samp>\u2019</dt>\n<dt>\u2018<samp>metal</samp>\u2019</dt>\n<dt>\u2018<samp>movie</samp>\u2019</dt>\n<dt>\u2018<samp>pop</samp>\u2019</dt>\n<dt>\u2018<samp>r&amp;b</samp>\u2019</dt>\n<dt>\u2018<samp>rock</samp>\u2019</dt>\n<dt>\u2018<samp>vocal booster</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "preset",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gains",
+        "g"
+      ],
+      "default": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0",
+      "description": "<dd><p>Set custom gains for each band. Only used if the preset option is set to <code>custom</code>.\nGains are separated by white spaces and each gain is set in dBFS.\nDefault is <code>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code>.\n</p>\n</dd>",
+      "name": "gains",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "bands",
+        "b"
+      ],
+      "default": "25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000",
+      "description": "<dd><p>Set the custom bands from where custon equalizer gains are set.\nThis must be in strictly increasing order. Only used if the preset option is set to <code>custom</code>.\nBands are separated by white spaces and each band represent frequency in Hz.\nDefault is <code>25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000</code>.\n</p>\n</dd>",
+      "name": "bands",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "taps",
+        "t"
+      ],
+      "default": 4096,
+      "description": "<dd><p>Set number of filter coefficients in output audio stream.\nDefault value is <code>4096</code>.\n</p>\n</dd>",
+      "name": "taps",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sample_rate",
+        "r"
+      ],
+      "default": 44100,
+      "description": "<dd><p>Set sample rate of output audio stream, default is <code>44100</code>.\n</p>\n</dd>",
+      "name": "sample_rate",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nb_samples",
+        "n"
+      ],
+      "default": 1024,
+      "description": "<dd><p>Set number of samples per each frame in output audio stream. Default is <code>1024</code>.\n</p>\n</dd>",
+      "name": "nb_samples",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "interp",
+        "i"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set interpolation method for FIR equalizer coefficients. Can be <code>linear</code> or <code>cubic</code>.\n</p>\n</dd>",
+      "name": "interp",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "phase",
+        "h"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set phase type of FIR filter. Can be <code>linear</code> or <code>min</code>: minimum-phase.\nDefault is minimum-phase filter.\n</p></dd>",
+      "name": "phase",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#afireqsrc"
+}

@@ -1,0 +1,55 @@
+{
+  "description": "14.1 avgblur_vulkan\nApply an average blur filter, implemented on the GPU using Vulkan.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_avgblur_vulkan",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "avgblur_vulkan",
+  "options": [
+    {
+      "alias": [
+        "sizeX"
+      ],
+      "default": 3,
+      "description": "<dd><p>Set horizontal radius size.\nRange is <code>[1, 32]</code> and default value is <code>3</code>.\n</p>\n</dd>",
+      "name": "sizeX",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sizeY"
+      ],
+      "default": 3,
+      "description": "<dd><p>Set vertical radius size. Range is <code>[1, 32]</code> and default value is <code>3</code>.\n</p>\n</dd>",
+      "name": "sizeY",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": "0xF",
+      "description": "<dd><p>Set which planes to filter. Default value is <code>0xf</code>, by which all planes are processed.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#avgblur_005fvulkan"
+}

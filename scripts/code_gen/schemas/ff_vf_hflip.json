@@ -1,0 +1,24 @@
+{
+  "description": "11.117 hflip\nFlip the input video horizontally.\n\nFor example, to horizontally flip the input video with ffmpeg:\n\nffmpeg -i in.avi -vf \"hflip\" out.avi",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_hflip",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "hflip",
+  "options": [],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#hflip"
+}

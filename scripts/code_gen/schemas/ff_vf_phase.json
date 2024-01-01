@@ -1,0 +1,35 @@
+{
+  "description": "11.190 phase\nDelay interlaced video by one field time so that the field order changes.\n\nThe intended use is to fix PAL movies that have been captured with the\nopposite field order to the film-to-video transfer.\n\nA description of the accepted parameters follows.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_phase",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "phase",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": "AUTO_ANALYZE",
+      "description": null,
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#phase"
+}

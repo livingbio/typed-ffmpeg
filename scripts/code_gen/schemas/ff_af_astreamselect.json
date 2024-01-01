@@ -1,0 +1,35 @@
+{
+  "description": "11.245 streamselect, astreamselect\nSelect video or audio streams.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": "['audio'] * inputs",
+  "formula_output_typings": "['audio'] * len(re.findall(r'\\d+', s))",
+  "id": "ff_af_astreamselect",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": true,
+  "name": "astreamselect",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "default": 2,
+      "description": "<dd><p>Set number of inputs. Default is 2.\n</p>\n</dd>",
+      "name": "inputs",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set input indexes to remap to outputs.\n</p></dd>",
+      "name": "map",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect"
+}

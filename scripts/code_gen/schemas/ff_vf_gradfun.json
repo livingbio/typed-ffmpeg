@@ -1,0 +1,45 @@
+{
+  "description": "11.111 gradfun\nFix the banding artifacts that are sometimes introduced into nearly flat\nregions by truncation to 8-bit color depth.\nInterpolate the gradients that should go where the bands are, and\ndither them.\n\nIt is designed for playback only.  Do not use it prior to\nlossy compression, because compression tends to lose the dither and\nbring back the bands.\n\nIt accepts the following parameters:\n\n\nAlternatively, the options can be specified as a flat string:\nstrength[:radius]",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_gradfun",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "gradfun",
+  "options": [
+    {
+      "alias": [
+        "strength"
+      ],
+      "default": 1.2,
+      "description": "<dd><p>The maximum amount by which the filter will change any one pixel. This is also\nthe threshold for detecting nearly flat regions. Acceptable values range from\n.51 to 64; the default value is 1.2. Out-of-range values will be clipped to the\nvalid range.\n</p>\n</dd>",
+      "name": "strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "radius"
+      ],
+      "default": 16,
+      "description": "<dd><p>The neighborhood to fit the gradient to. A larger radius makes for smoother\ngradients, but also prevents the filter from modifying the pixels near detailed\nregions. Acceptable values are 8-32; the default value is 16. Out-of-range\nvalues will be clipped to the valid range.\n</p>\n</dd>",
+      "name": "radius",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#gradfun"
+}

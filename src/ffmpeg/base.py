@@ -1,6 +1,8 @@
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Mapping
 
 from pydantic import BaseModel
+
+from .schema import Default
 
 if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
@@ -9,7 +11,7 @@ if TYPE_CHECKING:
 class Node(BaseModel):
     name: str
     args: list[str] = []
-    kwargs: dict[str, str | int | float | bool | None] = {}
+    kwargs: Mapping[str, Default | str | int | float | bool | None] = {}
 
 
 class Stream(BaseModel):
@@ -56,6 +58,10 @@ class InputNode(Node):
 
 class FilterNode(InputNode):
     inputs: list[FilterableStream]
+    formula_input_typings: str | None = None
+    formula_output_typings: str | None = None
+    input_typings: list[str] = []
+    output_typings: list[str] = []
 
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
@@ -102,6 +108,3 @@ def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream
             raise ValueError("Can't specify both `format` and `f` kwargs")
         kwargs["format"] = fmt
     return InputNode(name=input.__name__, kwargs=kwargs).stream()
-
-
-input("a.mp4").video.crop(x="10", y="20").output(filename="b.mp4").global_args("y").overwrite_output()

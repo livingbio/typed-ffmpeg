@@ -1,0 +1,28 @@
+{
+  "description": "8.51 asdr\nMeasure Audio Signal-to-Distortion Ratio.\n\nThis filter takes two audio streams for input, and outputs first\naudio stream.\nResults are in dB per channel at end of either input.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_asdr",
+  "input_stream_typings": [
+    {
+      "name": "input0",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    },
+    {
+      "name": "input1",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "asdr",
+  "options": [],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asdr"
+}

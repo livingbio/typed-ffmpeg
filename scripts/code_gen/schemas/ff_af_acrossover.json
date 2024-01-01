@@ -1,0 +1,70 @@
+{
+  "description": "8.6 acrossover\nSplit audio stream into several bands.\n\nThis filter splits audio stream into two or more frequency ranges.\nSumming all streams back will give flat output.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": "['audio'] * len(re.split(r'[ |]+', s))",
+  "id": "ff_af_acrossover",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "acrossover",
+  "options": [
+    {
+      "alias": [
+        "split"
+      ],
+      "default": "500",
+      "description": "<dd><p>Set split frequencies. Those must be positive and increasing.\n</p>\n</dd>",
+      "name": "split",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "order"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set filter order for each band split. This controls filter roll-off or steepness\nof filter transfer function.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>2nd</samp>\u2019</dt>\n<dd><p>12 dB per octave.\n</p></dd>\n<dt>\u2018<samp>4th</samp>\u2019</dt>\n<dd><p>24 dB per octave.\n</p></dd>\n<dt>\u2018<samp>6th</samp>\u2019</dt>\n<dd><p>36 dB per octave.\n</p></dd>\n<dt>\u2018<samp>8th</samp>\u2019</dt>\n<dd><p>48 dB per octave.\n</p></dd>\n<dt>\u2018<samp>10th</samp>\u2019</dt>\n<dd><p>60 dB per octave.\n</p></dd>\n<dt>\u2018<samp>12th</samp>\u2019</dt>\n<dd><p>72 dB per octave.\n</p></dd>\n<dt>\u2018<samp>14th</samp>\u2019</dt>\n<dd><p>84 dB per octave.\n</p></dd>\n<dt>\u2018<samp>16th</samp>\u2019</dt>\n<dd><p>96 dB per octave.\n</p></dd>\n<dt>\u2018<samp>18th</samp>\u2019</dt>\n<dd><p>108 dB per octave.\n</p></dd>\n<dt>\u2018<samp>20th</samp>\u2019</dt>\n<dd><p>120 dB per octave.\n</p></dd>\n</dl>\n<p>Default is <var>4th</var>.\n</p>\n</dd>",
+      "name": "order",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "level"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p>\n</dd>",
+      "name": "level",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gain"
+      ],
+      "default": "1.f",
+      "description": null,
+      "name": "gain",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "precision"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n<p>Default value is <code>auto</code>.\n</p></dd>",
+      "name": "precision",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acrossover"
+}

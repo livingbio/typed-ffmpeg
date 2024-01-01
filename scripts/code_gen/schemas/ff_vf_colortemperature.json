@@ -1,0 +1,55 @@
+{
+  "description": "11.43 colortemperature\nAdjust color temperature in video to simulate variations in ambient color temperature.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_colortemperature",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "colortemperature",
+  "options": [
+    {
+      "alias": [
+        "temperature"
+      ],
+      "default": 6500.0,
+      "description": "<dd><p>Set the temperature in Kelvin. Allowed range is from 1000 to 40000.\nDefault value is 6500 K.\n</p>\n</dd>",
+      "name": "temperature",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mix"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set mixing with filtered output. Allowed range is from 0 to 1.\nDefault value is 1.\n</p>\n</dd>",
+      "name": "mix",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "pl"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the amount of preserving lightness. Allowed range is from 0 to 1.\nDefault value is 0.\n</p></dd>",
+      "name": "pl",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colortemperature"
+}

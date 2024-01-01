@@ -1,0 +1,165 @@
+{
+  "description": "11.41 colorspace\nConvert colorspace, transfer characteristics or color primaries.\nInput video needs to have an even size.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_colorspace",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "colorspace",
+  "options": [
+    {
+      "alias": [
+        "all"
+      ],
+      "default": "CS_UNSPECIFIED",
+      "description": null,
+      "name": "all",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "space"
+      ],
+      "default": "AVCOL_SPC_UNSPECIFIED",
+      "description": null,
+      "name": "space",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "default": "AVCOL_RANGE_UNSPECIFIED",
+      "description": null,
+      "name": "range",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "primaries"
+      ],
+      "default": "AVCOL_PRI_UNSPECIFIED",
+      "description": null,
+      "name": "primaries",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "trc"
+      ],
+      "default": "AVCOL_TRC_UNSPECIFIED",
+      "description": null,
+      "name": "trc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "format"
+      ],
+      "default": "AV_PIX_FMT_NONE",
+      "description": null,
+      "name": "format",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fast"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "fast",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "dither"
+      ],
+      "default": "DITHER_NONE",
+      "description": null,
+      "name": "dither",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "wpadapt"
+      ],
+      "default": "WP_ADAPT_BRADFORD",
+      "description": null,
+      "name": "wpadapt",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "iall"
+      ],
+      "default": "CS_UNSPECIFIED",
+      "description": null,
+      "name": "iall",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ispace"
+      ],
+      "default": "AVCOL_SPC_UNSPECIFIED",
+      "description": null,
+      "name": "ispace",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "irange"
+      ],
+      "default": "AVCOL_RANGE_UNSPECIFIED",
+      "description": null,
+      "name": "irange",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "iprimaries"
+      ],
+      "default": "AVCOL_PRI_UNSPECIFIED",
+      "description": null,
+      "name": "iprimaries",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "itrc"
+      ],
+      "default": "AVCOL_TRC_UNSPECIFIED",
+      "description": null,
+      "name": "itrc",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorspace"
+}

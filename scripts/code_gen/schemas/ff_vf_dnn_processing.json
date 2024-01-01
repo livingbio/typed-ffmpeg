@@ -1,0 +1,86 @@
+{
+  "description": "11.74 dnn_processing\nDo image processing with deep neural networks. It works together with another filter\nwhich converts the pixel format of the Frame to what the dnn network requires.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_dnn_processing",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "dnn_processing",
+  "options": [
+    {
+      "alias": [
+        "dnn_backend"
+      ],
+      "default": "DNN_TF",
+      "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nthe following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tensorflow</samp>\u2019</dt>\n<dd><p>TensorFlow backend. To enable this backend you\nneed to install the TensorFlow for C library (see\n<a href=\"https://www.tensorflow.org/install/lang_c\">https://www.tensorflow.org/install/lang_c</a>) and configure FFmpeg with\n<code>--enable-libtensorflow</code>\n</p>\n</dd>\n<dt>\u2018<samp>openvino</samp>\u2019</dt>\n<dd><p>OpenVINO backend. To enable this backend you\nneed to build and install the OpenVINO for C library (see\n<a href=\"https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md\">https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md</a>) and configure FFmpeg with\n<code>--enable-libopenvino</code> (\u2013extra-cflags=-I... \u2013extra-ldflags=-L... might\nbe needed if the header files and libraries are not installed into system path)\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "dnn_backend",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "model"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats. TensorFlow, OpenVINO backend can load files for only its format.\n</p>\n</dd>",
+      "name": "model",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "input"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the input name of the dnn network.\n</p>\n</dd>",
+      "name": "input",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "output"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the output name of the dnn network.\n</p>\n</dd>",
+      "name": "output",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "backend_configs",
+        "options"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the configs to be passed into backend. To use async execution, set async (default: set).\nRoll back to sync execution if the backend does not support async.\n</p>\n<p>For tensorflow backend, you can set its configs with <samp>sess_config</samp> options,\nplease use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system.\n</p>\n</dd>",
+      "name": "backend_configs",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "async"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "async",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#dnn_005fprocessing"
+}

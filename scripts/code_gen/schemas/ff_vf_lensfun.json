@@ -1,0 +1,145 @@
+{
+  "description": "11.143 lensfun\nApply lens correction via the lensfun library (http://lensfun.sourceforge.net/).\n\nThe lensfun filter requires the camera make, camera model, and lens model\nto apply the lens correction. The filter will load the lensfun database and\nquery it to find the corresponding camera and lens entries in the database. As\nlong as these entries can be found with the given options, the filter can\nperform corrections on frames. Note that incomplete strings will result in the\nfilter choosing the best match with the given options, and the filter will\noutput the chosen camera and lens models (logged with level \"info\"). You must\nprovide the make, camera model, and lens model as they are required.\n\nTo obtain a list of available makes and models, leave out one or both of make and\nmodel options. The filter will send the full list to the log with level INFO.\nThe first column is the make and the second column is the model.\nTo obtain a list of available lenses, set any values for make and model and leave out the\nlens_model option. The filter will send the full list of lenses in the log with level\nINFO. The ffmpeg tool will exit after the list is printed.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_lensfun",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "lensfun",
+  "options": [
+    {
+      "alias": [
+        "make"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>The make of the camera (for example, \"Canon\"). This option is required.\n</p>\n</dd>",
+      "name": "make",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "model"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>The model of the camera (for example, \"Canon EOS 100D\"). This option is\nrequired.\n</p>\n</dd>",
+      "name": "model",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "lens_model"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>The model of the lens (for example, \"Canon EF-S 18-55mm f/3.5-5.6 IS STM\"). This\noption is required.\n</p>\n</dd>",
+      "name": "lens_model",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "db_path"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>The full path to the lens database folder. If not set, the filter will attempt to\nload the database from the install path when the library was built. Default is unset.\n</p>\n</dd>",
+      "name": "db_path",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": "GEOMETRY_DISTORTION",
+      "description": "<dd><p>The type of correction to apply. The following values are valid options:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>vignetting</samp>\u2019</dt>\n<dd><p>Enables fixing lens vignetting.\n</p>\n</dd>\n<dt>\u2018<samp>geometry</samp>\u2019</dt>\n<dd><p>Enables fixing lens geometry. This is the default.\n</p>\n</dd>\n<dt>\u2018<samp>subpixel</samp>\u2019</dt>\n<dd><p>Enables fixing chromatic aberrations.\n</p>\n</dd>\n<dt>\u2018<samp>vig_geo</samp>\u2019</dt>\n<dd><p>Enables fixing lens vignetting and lens geometry.\n</p>\n</dd>\n<dt>\u2018<samp>vig_subpixel</samp>\u2019</dt>\n<dd><p>Enables fixing lens vignetting and chromatic aberrations.\n</p>\n</dd>\n<dt>\u2018<samp>distortion</samp>\u2019</dt>\n<dd><p>Enables fixing both lens geometry and chromatic aberrations.\n</p>\n</dd>\n<dt>\u2018<samp>all</samp>\u2019</dt>\n<dd><p>Enables all possible corrections.\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "focal_length"
+      ],
+      "default": 18.0,
+      "description": "<dd><p>The focal length of the image/video (zoom; expected constant for video). For\nexample, a 18\u201355mm lens has focal length range of [18\u201355], so a value in that\nrange should be chosen when using that lens. Default 18.\n</p>\n</dd>",
+      "name": "focal_length",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "aperture"
+      ],
+      "default": 3.5,
+      "description": "<dd><p>The aperture of the image/video (expected constant for video). Note that\naperture is only used for vignetting correction. Default 3.5.\n</p>\n</dd>",
+      "name": "aperture",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "focus_distance"
+      ],
+      "default": "1000.0f",
+      "description": "<dd><p>The focus distance of the image/video (expected constant for video). Note that\nfocus distance is only used for vignetting and only slightly affects the\nvignetting correction process. If unknown, leave it at the default value (which\nis 1000).\n</p>\n</dd>",
+      "name": "focus_distance",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>The scale factor which is applied after transformation. After correction the\nvideo is no longer necessarily rectangular. This parameter controls how much of\nthe resulting image is visible. The value 0 means that a value will be chosen\nautomatically such that there is little or no unmapped area in the output\nimage. 1.0 means that no additional scaling is done. Lower values may result\nin more of the corrected image being visible, while higher values may avoid\nunmapped areas in the output.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "target_geometry"
+      ],
+      "default": "LF_RECTILINEAR",
+      "description": "<dd><p>The target geometry of the output image/video. The following values are valid\noptions:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>rectilinear (default)</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye</samp>\u2019</dt>\n<dt>\u2018<samp>panoramic</samp>\u2019</dt>\n<dt>\u2018<samp>equirectangular</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_orthographic</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_stereographic</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_equisolid</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_thoby</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "target_geometry",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "reverse"
+      ],
+      "default": 0,
+      "description": "<dd><p>Apply the reverse of image correction (instead of correcting distortion, apply\nit).\n</p>\n</dd>",
+      "name": "reverse",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "interpolation"
+      ],
+      "default": "LINEAR",
+      "description": "<dd><p>The type of interpolation used when correcting distortion. The following values\nare valid options:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dt>\u2018<samp>linear (default)</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "interpolation",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#lensfun"
+}

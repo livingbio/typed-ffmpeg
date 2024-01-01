@@ -1,0 +1,55 @@
+{
+  "description": "8.8 acue\nDelay audio filtering until a given wallclock timestamp. See the cue\nfilter.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_acue",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "acue",
+  "options": [
+    {
+      "alias": [
+        "cue"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "cue",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "preroll"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "preroll",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "buffer"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "buffer",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acue"
+}

@@ -1,0 +1,142 @@
+{
+  "description": "19.2 avsynctest\nGenerate an Audio/Video Sync Test.\n\nGenerated stream periodically shows flash video frame and emits beep in audio.\nUseful to inspect A/V sync issues.\n\nIt accepts the following options:",
+  "filter_type": "avsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_avsrc_avsynctest",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "avsynctest",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "hd720",
+      "description": "<dd><p>Set output video size. Default value is <code>hd720</code>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "framerate",
+        "fr"
+      ],
+      "default": "30",
+      "description": "<dd><p>Set output video frame rate. Default value is <code>30</code>.\n</p>\n</dd>",
+      "name": "framerate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "samplerate",
+        "sr"
+      ],
+      "default": 44100,
+      "description": "<dd><p>Set output audio sample rate. Default value is <code>44100</code>.\n</p>\n</dd>",
+      "name": "samplerate",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "amplitude",
+        "a"
+      ],
+      "default": 0.7,
+      "description": "<dd><p>Set output audio beep amplitude. Default value is <code>0.7</code>.\n</p>\n</dd>",
+      "name": "amplitude",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "period",
+        "p"
+      ],
+      "default": 3,
+      "description": "<dd><p>Set output audio beep period in seconds. Default value is <code>3</code>.\n</p>\n</dd>",
+      "name": "period",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "delay",
+        "dl"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set output video flash delay in number of frames. Default value is <code>0</code>.\n</p>\n</dd>",
+      "name": "delay",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cycle",
+        "c"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable cycling of video delays, by default is disabled.\n</p>\n</dd>",
+      "name": "cycle",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set stream output duration. By default duration is unlimited.\n</p>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fg"
+      ],
+      "default": "white",
+      "description": "<dd><p>Set foreground/background/additional color.\n</p></dd>",
+      "name": "fg",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "bg"
+      ],
+      "default": "black",
+      "description": "<dd><p>Set foreground/background/additional color.\n</p></dd>",
+      "name": "bg",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "ag"
+      ],
+      "default": "gray",
+      "description": "<dd><p>Set foreground/background/additional color.\n</p></dd>",
+      "name": "ag",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "audio",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    },
+    {
+      "name": "video",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#avsynctest"
+}

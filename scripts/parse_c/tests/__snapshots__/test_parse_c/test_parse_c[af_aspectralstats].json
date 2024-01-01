@@ -3,6 +3,8 @@
     "description": "Show frequency domain statistics about audio frames.",
     "flags": "(1 << 2)",
     "id": "ff_af_aspectralstats",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

@@ -1,0 +1,97 @@
+{
+  "description": "8.96 ladspa\nLoad a LADSPA (Linux Audio Developer\u2019s Simple Plugin API) plugin.\n\nTo enable compilation of this filter you need to configure FFmpeg with\n--enable-ladspa.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_ladspa",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "ladspa",
+  "options": [
+    {
+      "alias": [
+        "file",
+        "f"
+      ],
+      "default": null,
+      "description": "<dd><p>Specifies the name of LADSPA plugin library to load. If the environment\nvariable <code>LADSPA_PATH</code> is defined, the LADSPA plugin is searched in\neach one of the directories specified by the colon separated list in\n<code>LADSPA_PATH</code>, otherwise in the standard LADSPA paths, which are in\nthis order: <samp>HOME/.ladspa/lib/</samp>, <samp>/usr/local/lib/ladspa/</samp>,\n<samp>/usr/lib/ladspa/</samp>.\n</p>\n</dd>",
+      "name": "file",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "plugin",
+        "p"
+      ],
+      "default": null,
+      "description": "<dd><p>Specifies the plugin within the library. Some libraries contain only\none plugin, but others contain many of them. If this is not set filter\nwill list all available plugins within the specified library.\n</p>\n</dd>",
+      "name": "plugin",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "controls",
+        "c"
+      ],
+      "default": null,
+      "description": "<dd><p>Set the \u2019|\u2019 separated list of controls which are zero or more floating point\nvalues that determine the behavior of the loaded plugin (for example delay,\nthreshold or gain).\nControls need to be defined using the following syntax:\nc0=<var>value0</var>|c1=<var>value1</var>|c2=<var>value2</var>|..., where\n<var>valuei</var> is the value set on the <var>i</var>-th control.\nAlternatively they can be also defined using the following syntax:\n<var>value0</var>|<var>value1</var>|<var>value2</var>|..., where\n<var>valuei</var> is the value set on the <var>i</var>-th control.\nIf <samp>controls</samp> is set to <code>help</code>, all available controls and\ntheir valid ranges are printed.\n</p>\n</dd>",
+      "name": "controls",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "sample_rate",
+        "s"
+      ],
+      "default": 44100,
+      "description": "<dd><p>Specify the sample rate, default to 44100. Only used if plugin have\nzero inputs.\n</p>\n</dd>",
+      "name": "sample_rate",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nb_samples",
+        "n"
+      ],
+      "default": 1024,
+      "description": "<dd><p>Set the number of samples per channel per each output frame, default\nis 1024. Only used if plugin have zero inputs.\n</p>\n</dd>",
+      "name": "nb_samples",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the minimum duration of the sourced audio. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nNote that the resulting duration may be greater than the specified duration,\nas the generated audio is always cut at the end of a complete frame.\nIf not specified, or the expressed duration is negative, the audio is\nsupposed to be generated forever.\nOnly used if plugin have zero inputs.\n</p>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "latency",
+        "l"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable latency compensation, by default is disabled.\nOnly used if plugin have inputs.\n</p></dd>",
+      "name": "latency",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ladspa"
+}

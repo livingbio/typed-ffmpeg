@@ -1,0 +1,55 @@
+{
+  "description": "11.37 colorhold\nRemove all color information for all RGB colors except for certain one.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_colorhold",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "colorhold",
+  "options": [
+    {
+      "alias": [
+        "color"
+      ],
+      "default": "black",
+      "description": "<dd><p>The color which will not be replaced with neutral gray.\n</p>\n</dd>",
+      "name": "color",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "similarity"
+      ],
+      "default": 0.01,
+      "description": "<dd><p>Similarity percentage with the above color.\n0.01 matches only the exact key color, while 1.0 matches everything.\n</p>\n</dd>",
+      "name": "similarity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blend"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Blend percentage. 0.0 makes pixels fully gray.\nHigher values result in more preserved color.\n</p></dd>",
+      "name": "blend",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorhold"
+}

@@ -1,0 +1,99 @@
+{
+  "description": "18.32 spectrumsynth\nSynthesize audio from 2 input video spectrums, first input stream represents\nmagnitude across time and second represents phase across time.\nThe filter will transform from frequency domain as displayed in videos back\nto time domain as presented in audio output.\n\nThis filter is primarily created for reversing processed showspectrum\nfilter outputs, but can synthesize sound from other spectrograms too.\nBut in such case results are going to be poor if the phase data is not\navailable, because in such cases phase data need to be recreated, usually\nit\u2019s just recreated from random noise.\nFor best results use gray only output (channel color mode in\nshowspectrum filter) and log scale for magnitude video and\nlin scale for phase video. To produce phase, for 2nd video, use\ndata option. Inputs videos should generally use fullframe\nslide mode as that saves resources needed for decoding video.\n\nThe filter accepts the following options:",
+  "filter_type": "vaf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vaf_spectrumsynth",
+  "input_stream_typings": [
+    {
+      "name": "magnitude",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "phase",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "spectrumsynth",
+  "options": [
+    {
+      "alias": [
+        "sample_rate"
+      ],
+      "default": 44100,
+      "description": "<dd><p>Specify sample rate of output audio, the sample rate of audio from which\nspectrum was generated may differ.\n</p>\n</dd>",
+      "name": "sample_rate",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "channels"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set number of channels represented in input video spectrums.\n</p>\n</dd>",
+      "name": "channels",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": "LOG",
+      "description": "<dd><p>Set scale which was used when generating magnitude input spectrum.\nCan be <code>lin</code> or <code>log</code>. Default is <code>log</code>.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "slide"
+      ],
+      "default": "FULLFRAME",
+      "description": "<dd><p>Set slide which was used when generating inputs spectrums.\nCan be <code>replace</code>, <code>scroll</code>, <code>fullframe</code> or <code>rscroll</code>.\nDefault is <code>fullframe</code>.\n</p>\n</dd>",
+      "name": "slide",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_func"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set window function used for resynthesis.\n</p>\n</dd>",
+      "name": "win_func",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set window overlap. In range <code>[0, 1]</code>. Default is <code>1</code>,\nwhich means optimal overlap for selected window function will be picked.\n</p>\n</dd>",
+      "name": "overlap",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "orientation"
+      ],
+      "default": "VERTICAL",
+      "description": "<dd><p>Set orientation of input videos. Can be <code>vertical</code> or <code>horizontal</code>.\nDefault is <code>vertical</code>.\n</p></dd>",
+      "name": "orientation",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth"
+}

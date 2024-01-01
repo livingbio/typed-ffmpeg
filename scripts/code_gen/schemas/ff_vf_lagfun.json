@@ -1,0 +1,45 @@
+{
+  "description": "11.141 lagfun\nSlowly update darker pixels.\n\nThis filter makes short flashes of light appear longer.\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_lagfun",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "lagfun",
+  "options": [
+    {
+      "alias": [
+        "decay"
+      ],
+      "default": 0.95,
+      "description": "<dd><p>Set factor for decaying. Default is .95. Allowed range is from 0 to 1.\n</p>\n</dd>",
+      "name": "decay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#lagfun"
+}

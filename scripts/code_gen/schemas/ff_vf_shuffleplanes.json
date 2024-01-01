@@ -1,0 +1,65 @@
+{
+  "description": "11.235 shuffleplanes\nReorder and/or duplicate video planes.\n\nIt accepts the following parameters:\n\n\nThe first plane has the index 0. The default is to keep the input unchanged.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_shuffleplanes",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "shuffleplanes",
+  "options": [
+    {
+      "alias": [
+        "map0"
+      ],
+      "default": 0,
+      "description": "<dd><p>The index of the input plane to be used as the first output plane.\n</p>\n</dd>",
+      "name": "map0",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map1"
+      ],
+      "default": 1,
+      "description": "<dd><p>The index of the input plane to be used as the second output plane.\n</p>\n</dd>",
+      "name": "map1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map2"
+      ],
+      "default": 2,
+      "description": "<dd><p>The index of the input plane to be used as the third output plane.\n</p>\n</dd>",
+      "name": "map2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map3"
+      ],
+      "default": 3,
+      "description": "<dd><p>The index of the input plane to be used as the fourth output plane.\n</p>\n</dd>",
+      "name": "map3",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#shuffleplanes"
+}

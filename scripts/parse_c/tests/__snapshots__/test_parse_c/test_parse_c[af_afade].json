@@ -3,6 +3,8 @@
     "description": "Fade in/out input audio.",
     "flags": "(1 << 16)",
     "id": "ff_af_afade",
+    "init": "init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",
@@ -466,6 +468,8 @@
     "description": "Cross fade two input audio streams.",
     "flags": null,
     "id": "ff_af_acrossfade",
+    "init": null,
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "crossfade0",

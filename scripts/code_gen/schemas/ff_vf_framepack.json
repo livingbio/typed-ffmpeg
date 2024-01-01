@@ -1,0 +1,39 @@
+{
+  "description": "11.102 framepack\nPack two different video streams into a stereoscopic video, setting proper\nmetadata on supported codecs. The two views should have the same size and\nframerate and processing will stop when the shorter video ends. Please note\nthat you may conveniently adjust view properties with the scale and\nfps filters.\n\nIt accepts the following parameters:\n\nSome examples:\n\n\n# Convert left and right views into a frame-sequential video\nffmpeg -i LEFT -i RIGHT -filter_complex framepack=frameseq OUTPUT\n\n# Convert views into a side-by-side video with the same output resolution as the input\nffmpeg -i LEFT -i RIGHT -filter_complex [0:v]scale=w=iw/2[left],[1:v]scale=w=iw/2[right],[left][right]framepack=sbs OUTPUT",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_framepack",
+  "input_stream_typings": [
+    {
+      "name": "left",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "right",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "framepack",
+  "options": [
+    {
+      "alias": [
+        "format"
+      ],
+      "default": "AV_STEREO3D_SIDEBYSIDE",
+      "description": "<dd><p>The desired packing format. Supported values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>sbs</samp></dt>\n<dd><p>The views are next to each other (default).\n</p>\n</dd>\n<dt><samp>tab</samp></dt>\n<dd><p>The views are on top of each other.\n</p>\n</dd>\n<dt><samp>lines</samp></dt>\n<dd><p>The views are packed by line.\n</p>\n</dd>\n<dt><samp>columns</samp></dt>\n<dd><p>The views are packed by column.\n</p>\n</dd>\n<dt><samp>frameseq</samp></dt>\n<dd><p>The views are temporally interleaved.\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "format",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "packed",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#framepack"
+}

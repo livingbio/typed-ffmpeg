@@ -1,0 +1,55 @@
+{
+  "description": "11.152 lumakey\nTurn certain luma values into transparency.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_lumakey",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "lumakey",
+  "options": [
+    {
+      "alias": [
+        "threshold"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the luma which will be used as base for transparency.\nDefault value is <code>0</code>.\n</p>\n</dd>",
+      "name": "threshold",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tolerance"
+      ],
+      "default": 0.01,
+      "description": "<dd><p>Set the range of luma values to be keyed out.\nDefault value is <code>0.01</code>.\n</p>\n</dd>",
+      "name": "tolerance",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "softness"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the range of softness. Default value is <code>0</code>.\nUse this to control gradual transition from zero to full transparency.\n</p></dd>",
+      "name": "softness",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#lumakey"
+}

@@ -1,0 +1,65 @@
+{
+  "description": "11.283 w3fdif\nDeinterlace the input video (\"w3fdif\" stands for \"Weston 3 Field\nDeinterlacing Filter\").\n\nBased on the process described by Martin Weston for BBC R&D, and\nimplemented based on the de-interlace algorithm written by Jim\nEasterbrook for BBC R&D, the Weston 3 field deinterlacing filter\nuses filter coefficients calculated by BBC R&D.\n\nThis filter uses field-dominance information in frame to decide which\nof each pair of fields to place first in the output.\nIf it gets it wrong use setfield filter before w3fdif filter.\n\nThere are two sets of filter coefficients, so called \"simple\"\nand \"complex\". Which set of filter coefficients is used can\nbe set by passing an optional parameter:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_w3fdif",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "w3fdif",
+  "options": [
+    {
+      "alias": [
+        "filter"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set the interlacing filter coefficients. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>simple</samp>\u2019</dt>\n<dd><p>Simple filter coefficient set.\n</p></dd>\n<dt>\u2018<samp>complex</samp>\u2019</dt>\n<dd><p>More-complex filter coefficient set.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>complex</samp>\u2019.\n</p>\n</dd>",
+      "name": "filter",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": 1,
+      "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n<p>The default value is <code>field</code>.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "parity"
+      ],
+      "default": -1,
+      "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
+      "name": "parity",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "deint"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>all</samp>\u2019</dt>\n<dd><p>Deinterlace all frames,\n</p></dd>\n<dt>\u2018<samp>interlaced</samp>\u2019</dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>all</samp>\u2019.\n</p></dd>",
+      "name": "deint",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#w3fdif"
+}

@@ -1,0 +1,87 @@
+{
+  "description": "12.10 pad_opencl\nAdd paddings to the input image, and place the original input at the\nprovided x, y coordinates.\n\nIt accepts the following options:\n\n\nThe value for the width, height, x, and y\noptions are expressions containing the following constants:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_pad_opencl",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "pad_opencl",
+  "options": [
+    {
+      "alias": [
+        "width",
+        "w"
+      ],
+      "default": "iw",
+      "description": "<dd><p>Specify an expression for the size of the output image with the\npaddings added. If the value for <var>width</var> or <var>height</var> is 0, the\ncorresponding input size is used for the output.\n</p>\n<p>The <var>width</var> expression can reference the value set by the\n<var>height</var> expression, and vice versa.\n</p>\n<p>The default value of <var>width</var> and <var>height</var> is 0.\n</p>\n</dd>",
+      "name": "width",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "height",
+        "h"
+      ],
+      "default": "ih",
+      "description": "<dd><p>Specify an expression for the size of the output image with the\npaddings added. If the value for <var>width</var> or <var>height</var> is 0, the\ncorresponding input size is used for the output.\n</p>\n<p>The <var>width</var> expression can reference the value set by the\n<var>height</var> expression, and vice versa.\n</p>\n<p>The default value of <var>width</var> and <var>height</var> is 0.\n</p>\n</dd>",
+      "name": "height",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "x"
+      ],
+      "default": "0",
+      "description": "<dd><p>Specify the offsets to place the input image at within the padded area,\nwith respect to the top/left border of the output image.\n</p>\n<p>The <var>x</var> expression can reference the value set by the <var>y</var>\nexpression, and vice versa.\n</p>\n<p>The default value of <var>x</var> and <var>y</var> is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number, they\u2019ll be changed\nso the input image is centered on the padded area.\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": "0",
+      "description": "<dd><p>Specify the offsets to place the input image at within the padded area,\nwith respect to the top/left border of the output image.\n</p>\n<p>The <var>x</var> expression can reference the value set by the <var>y</var>\nexpression, and vice versa.\n</p>\n<p>The default value of <var>x</var> and <var>y</var> is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number, they\u2019ll be changed\nso the input image is centered on the padded area.\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "color"
+      ],
+      "default": "black",
+      "description": "<dd><p>Specify the color of the padded area. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>.\n</p>\n</dd>",
+      "name": "color",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "aspect"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Pad to an aspect instead to a resolution.\n</p></dd>",
+      "name": "aspect",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#pad_005fopencl"
+}

@@ -1,0 +1,185 @@
+{
+  "description": "11.44 convolution\nApply convolution of 3x3, 5x5, 7x7 or horizontal/vertical up to 49 elements.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_convolution",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "convolution",
+  "options": [
+    {
+      "alias": [
+        "0m"
+      ],
+      "default": "0 0 0 0 1 0 0 0 0",
+      "description": "<dd><p>Set matrix for each plane.\nMatrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,\nand from 1 to 49 odd number of signed integers in <var>row</var> mode.\n</p>\n</dd>",
+      "name": "0m",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "1m"
+      ],
+      "default": "0 0 0 0 1 0 0 0 0",
+      "description": "<dd><p>Set matrix for each plane.\nMatrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,\nand from 1 to 49 odd number of signed integers in <var>row</var> mode.\n</p>\n</dd>",
+      "name": "1m",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "2m"
+      ],
+      "default": "0 0 0 0 1 0 0 0 0",
+      "description": "<dd><p>Set matrix for each plane.\nMatrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,\nand from 1 to 49 odd number of signed integers in <var>row</var> mode.\n</p>\n</dd>",
+      "name": "2m",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "3m"
+      ],
+      "default": "0 0 0 0 1 0 0 0 0",
+      "description": "<dd><p>Set matrix for each plane.\nMatrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,\nand from 1 to 49 odd number of signed integers in <var>row</var> mode.\n</p>\n</dd>",
+      "name": "3m",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "0rdiv"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set multiplier for calculated value for each plane.\nIf unset or 0, it will be sum of all matrix elements.\n</p>\n</dd>",
+      "name": "0rdiv",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "1rdiv"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set multiplier for calculated value for each plane.\nIf unset or 0, it will be sum of all matrix elements.\n</p>\n</dd>",
+      "name": "1rdiv",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "2rdiv"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set multiplier for calculated value for each plane.\nIf unset or 0, it will be sum of all matrix elements.\n</p>\n</dd>",
+      "name": "2rdiv",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "3rdiv"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set multiplier for calculated value for each plane.\nIf unset or 0, it will be sum of all matrix elements.\n</p>\n</dd>",
+      "name": "3rdiv",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "0bias"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set bias for each plane. This value is added to the result of the multiplication.\nUseful for making the overall image brighter or darker. Default is 0.0.\n</p>\n</dd>",
+      "name": "0bias",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "1bias"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set bias for each plane. This value is added to the result of the multiplication.\nUseful for making the overall image brighter or darker. Default is 0.0.\n</p>\n</dd>",
+      "name": "1bias",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "2bias"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set bias for each plane. This value is added to the result of the multiplication.\nUseful for making the overall image brighter or darker. Default is 0.0.\n</p>\n</dd>",
+      "name": "2bias",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "3bias"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set bias for each plane. This value is added to the result of the multiplication.\nUseful for making the overall image brighter or darker. Default is 0.0.\n</p>\n</dd>",
+      "name": "3bias",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "0mode"
+      ],
+      "default": "MATRIX_SQUARE",
+      "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
+      "name": "0mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "1mode"
+      ],
+      "default": "MATRIX_SQUARE",
+      "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
+      "name": "1mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "2mode"
+      ],
+      "default": "MATRIX_SQUARE",
+      "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
+      "name": "2mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "3mode"
+      ],
+      "default": "MATRIX_SQUARE",
+      "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
+      "name": "3mode",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#convolution"
+}

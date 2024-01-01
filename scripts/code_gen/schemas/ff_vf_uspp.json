@@ -1,0 +1,65 @@
+{
+  "description": "11.269 uspp\nApply ultra slow/simple postprocessing filter that compresses and decompresses\nthe image at several (or - in the case of quality level 8 - all)\nshifts and average the results.\n\nThe way this differs from the behavior of spp is that uspp actually encodes &\ndecodes each case with libavcodec Snow, whereas spp uses a simplified intra only 8x8\nDCT similar to MJPEG.\n\nThis filter is only available in ffmpeg version 4.4 or earlier.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_uspp",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "uspp",
+  "options": [
+    {
+      "alias": [
+        "quality"
+      ],
+      "default": 3,
+      "description": "<dd><p>Set quality. This option defines the number of levels for averaging. It accepts\nan integer in the range 0-8. If set to <code>0</code>, the filter will have no\neffect. A value of <code>8</code> means the higher quality. For each increment of\nthat value the speed drops by a factor of approximately 2.  Default value is\n<code>3</code>.\n</p>\n</dd>",
+      "name": "quality",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "qp"
+      ],
+      "default": 0,
+      "description": "<dd><p>Force a constant quantization parameter. If not set, the filter will use the QP\nfrom the video stream (if available).\n</p>\n</dd>",
+      "name": "qp",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "use_bframe_qp"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "use_bframe_qp",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "codec"
+      ],
+      "default": "snow",
+      "description": "<dd><p>Use specified codec instead of snow.\n</p></dd>",
+      "name": "codec",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#uspp"
+}

@@ -1,0 +1,55 @@
+{
+  "description": "11.133 iccgen\nGenerate ICC profiles and attach them to frames.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_iccgen",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "iccgen",
+  "options": [
+    {
+      "alias": [
+        "color_primaries"
+      ],
+      "default": 0,
+      "description": "<dd><p>Configure the colorspace that the ICC profile will be generated for. The\ndefault value of <code>auto</code> infers the value from the input frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See the <a href=\"#setparams\">setparams</a> filter for a list of possible values, but note that\n<code>unknown</code> are not valid values for this filter.\n</p>\n</dd>",
+      "name": "color_primaries",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "color_trc"
+      ],
+      "default": 0,
+      "description": "<dd><p>Configure the colorspace that the ICC profile will be generated for. The\ndefault value of <code>auto</code> infers the value from the input frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See the <a href=\"#setparams\">setparams</a> filter for a list of possible values, but note that\n<code>unknown</code> are not valid values for this filter.\n</p>\n</dd>",
+      "name": "color_trc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force"
+      ],
+      "default": 0,
+      "description": "<dd><p>If true, an ICC profile will be generated even if it would overwrite an\nalready existing ICC profile. Disabled by default.\n</p></dd>",
+      "name": "force",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#iccgen"
+}

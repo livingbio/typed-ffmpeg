@@ -1,0 +1,28 @@
+{
+  "description": "11.134 identity\nObtain the identity score between two input videos.\n\nThis filter takes two input videos.\n\nBoth input videos must have the same resolution and pixel format for\nthis filter to work correctly. Also it assumes that both inputs\nhave the same number of frames, which are compared one by one.\n\nThe obtained per component, average, min and max identity score is printed through\nthe logging system.\n\nThe filter stores the calculated identity scores of each frame in frame metadata.\n\nThis filter also supports the framesync options.\n\nIn the below example the input file main.mpg being processed is compared\nwith the reference file ref.mpg.\n\n\nffmpeg -i main.mpg -i ref.mpg -lavfi identity -f null -",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_identity",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "reference",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "identity",
+  "options": [],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#identity"
+}

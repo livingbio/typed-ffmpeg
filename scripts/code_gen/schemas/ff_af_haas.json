@@ -1,0 +1,155 @@
+{
+  "description": "8.91 haas\nApply Haas effect to audio.\n\nNote that this makes most sense to apply on mono signals.\nWith this filter applied to mono signals it give some directionality and\nstretches its stereo image.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_haas",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "haas",
+  "options": [
+    {
+      "alias": [
+        "level_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set input level. By default is <var>1</var>, or 0dB\n</p>\n</dd>",
+      "name": "level_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set output level. By default is <var>1</var>, or 0dB.\n</p>\n</dd>",
+      "name": "level_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "side_gain"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set gain applied to side part of signal. By default is <var>1</var>.\n</p>\n</dd>",
+      "name": "side_gain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "middle_source"
+      ],
+      "default": 2,
+      "description": "<dd><p>Set kind of middle source. Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>left</samp>\u2019</dt>\n<dd><p>Pick left channel.\n</p>\n</dd>\n<dt>\u2018<samp>right</samp>\u2019</dt>\n<dd><p>Pick right channel.\n</p>\n</dd>\n<dt>\u2018<samp>mid</samp>\u2019</dt>\n<dd><p>Pick middle part signal of stereo image.\n</p>\n</dd>\n<dt>\u2018<samp>side</samp>\u2019</dt>\n<dd><p>Pick side part signal of stereo image.\n</p></dd>\n</dl>\n</dd>",
+      "name": "middle_source",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "middle_phase"
+      ],
+      "default": 0,
+      "description": "<dd><p>Change middle phase. By default is disabled.\n</p>\n</dd>",
+      "name": "middle_phase",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "left_delay"
+      ],
+      "default": 2.05,
+      "description": "<dd><p>Set left channel delay. By default is <var>2.05</var> milliseconds.\n</p>\n</dd>",
+      "name": "left_delay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "left_balance"
+      ],
+      "default": -1.0,
+      "description": "<dd><p>Set left channel balance. By default is <var>-1</var>.\n</p>\n</dd>",
+      "name": "left_balance",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "left_gain"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set left channel gain. By default is <var>1</var>.\n</p>\n</dd>",
+      "name": "left_gain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "left_phase"
+      ],
+      "default": 0,
+      "description": "<dd><p>Change left phase. By default is disabled.\n</p>\n</dd>",
+      "name": "left_phase",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "right_delay"
+      ],
+      "default": 2.12,
+      "description": "<dd><p>Set right channel delay. By defaults is <var>2.12</var> milliseconds.\n</p>\n</dd>",
+      "name": "right_delay",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "right_balance"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set right channel balance. By default is <var>1</var>.\n</p>\n</dd>",
+      "name": "right_balance",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "right_gain"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set right channel gain. By default is <var>1</var>.\n</p>\n</dd>",
+      "name": "right_gain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "right_phase"
+      ],
+      "default": 1,
+      "description": "<dd><p>Change right phase. By default is enabled.\n</p></dd>",
+      "name": "right_phase",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#haas"
+}

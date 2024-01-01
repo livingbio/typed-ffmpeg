@@ -1,0 +1,75 @@
+{
+  "description": "11.61 dedot\nReduce cross-luminance (dot-crawl) and cross-color (rainbows) from video.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_dedot",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "dedot",
+  "options": [
+    {
+      "alias": [
+        "m"
+      ],
+      "default": 3,
+      "description": "<dd><p>Set mode of operation. Can be combination of <var>dotcrawl</var> for cross-luminance reduction and/or\n<var>rainbows</var> for cross-color reduction.\n</p>\n</dd>",
+      "name": "m",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "lt"
+      ],
+      "default": 0.079,
+      "description": "<dd><p>Set spatial luma threshold. Lower values increases reduction of cross-luminance.\n</p>\n</dd>",
+      "name": "lt",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tl"
+      ],
+      "default": 0.079,
+      "description": "<dd><p>Set tolerance for temporal luma. Higher values increases reduction of cross-luminance.\n</p>\n</dd>",
+      "name": "tl",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tc"
+      ],
+      "default": 0.058,
+      "description": "<dd><p>Set tolerance for chroma temporal variation. Higher values increases reduction of cross-color.\n</p>\n</dd>",
+      "name": "tc",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "ct"
+      ],
+      "default": 0.019,
+      "description": "<dd><p>Set temporal chroma threshold. Lower values increases reduction of cross-color.\n</p></dd>",
+      "name": "ct",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#dedot"
+}

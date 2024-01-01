@@ -1,0 +1,47 @@
+{
+  "description": "11.253 threshold\nApply threshold effect to video stream.\n\nThis filter needs four video streams to perform thresholding.\nFirst stream is stream we are filtering.\nSecond stream is holding threshold values, third stream is holding min values,\nand last, fourth stream is holding max values.\n\nThe filter accepts the following option:\n\n\nFor example if first stream pixel\u2019s component value is less then threshold value\nof pixel component from 2nd threshold stream, third stream value will picked,\notherwise fourth stream pixel component value will be picked.\n\nUsing color source filter one can perform various types of thresholding:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_threshold",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "threshold",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "min",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "max",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "threshold",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#threshold"
+}

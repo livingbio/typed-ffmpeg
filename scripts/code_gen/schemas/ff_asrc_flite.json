@@ -1,0 +1,72 @@
+{
+  "description": "9.7 flite\nSynthesize a voice utterance using the libflite library.\n\nTo enable compilation of this filter you need to configure FFmpeg with\n--enable-libflite.\n\nNote that versions of the flite library prior to 2.0 are not thread-safe.\n\nThe filter accepts the following options:",
+  "filter_type": "asrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_asrc_flite",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "flite",
+  "options": [
+    {
+      "alias": [
+        "list_voices"
+      ],
+      "default": 0,
+      "description": "<dd><p>If set to 1, list the names of the available voices and exit\nimmediately. Default value is 0.\n</p>\n</dd>",
+      "name": "list_voices",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "nb_samples",
+        "n"
+      ],
+      "default": 512,
+      "description": "<dd><p>Set the maximum number of samples per frame. Default value is 512.\n</p>\n</dd>",
+      "name": "nb_samples",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "text"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the text to speak.\n</p>\n</dd>",
+      "name": "text",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "textfile"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the filename containing the text to speak.\n</p>\n</dd>",
+      "name": "textfile",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "v",
+        "voice"
+      ],
+      "default": "kal",
+      "description": "<dd><p>Set the voice to use for the speech synthesis. Default value is\n<code>kal</code>. See also the <var>list_voices</var> option.\n</p></dd>",
+      "name": "v",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#flite"
+}

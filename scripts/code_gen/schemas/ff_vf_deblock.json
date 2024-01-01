@@ -1,0 +1,95 @@
+{
+  "description": "11.58 deblock\nRemove blocking artifacts from input video.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_deblock",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "deblock",
+  "options": [
+    {
+      "alias": [
+        "filter"
+      ],
+      "default": "STRONG",
+      "description": "<dd><p>Set filter type, can be <var>weak</var> or <var>strong</var>. Default is <var>strong</var>.\nThis controls what kind of deblocking is applied.\n</p>\n</dd>",
+      "name": "filter",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "block"
+      ],
+      "default": 8,
+      "description": "<dd><p>Set size of block, allowed range is from 4 to 512. Default is <var>8</var>.\n</p>\n</dd>",
+      "name": "block",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "default": 0.098,
+      "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
+      "name": "alpha",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "beta"
+      ],
+      "default": 0.05,
+      "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
+      "name": "beta",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gamma"
+      ],
+      "default": 0.05,
+      "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
+      "name": "gamma",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "delta"
+      ],
+      "default": 0.05,
+      "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
+      "name": "delta",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set planes to filter. Default is to filter all available planes.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#deblock"
+}
