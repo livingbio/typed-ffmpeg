@@ -1,10 +1,11 @@
 
 
 from typing import Any
+import re
 
 from .base import FilterNode, FilterableStream
 
-from .schema import Default
+from .schema import Default, DefaultInt, DefaultStr, DefaultFloat
 
 
 class AudioStream(FilterableStream):
@@ -30,11 +31,19 @@ class AudioStream(FilterableStream):
     
 
     
-        order: int | Default = Default(value=None),
+        order: int 
+
+| DefaultStr = DefaultStr(None)
+
+,
     
 
     
-        projection: int | Default = Default(value=None),
+        projection: int 
+
+| DefaultStr = DefaultStr(None)
+
+,
     
 
 
@@ -57,8 +66,6 @@ Ref: None
             name="aap",
             input_typings=['audio', 'audio'],
             output_typings=['audio'],
-            formula_input_typings=None,
-            formula_output_typings=None,
             inputs=[
                 
             self,
