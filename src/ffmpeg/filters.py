@@ -755,7 +755,7 @@ def astreamselect(
         input_typings=[],
         output_typings=[],
         formula_input_typings="['audio'] * inputs",
-        formula_output_typings="['audio'] * len(re.findall(r'\\d+', s))",
+        formula_output_typings="['audio'] * len(re.findall(r'\\d+', inputs))",
         inputs=[
             *streams,
         ],
@@ -4371,7 +4371,7 @@ def streamselect(
         input_typings=[],
         output_typings=[],
         formula_input_typings="['video'] * inputs",
-        formula_output_typings="['video'] * len(re.findall(r'\\d+', s))",
+        formula_output_typings="['video'] * len(re.findall(r'\\d+', inputs))",
         inputs=[
             *streams,
         ],

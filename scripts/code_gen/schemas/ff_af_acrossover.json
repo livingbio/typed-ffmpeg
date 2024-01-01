@@ -2,7 +2,7 @@
   "description": "8.6 acrossover\nSplit audio stream into several bands.\n\nThis filter splits audio stream into two or more frequency ranges.\nSumming all streams back will give flat output.\n\nThe filter accepts the following options:",
   "filter_type": "af",
   "formula_input_typings": null,
-  "formula_output_typings": "['audio'] * len(re.split(r'[ |]+', s))",
+  "formula_output_typings": "['audio'] * len(re.split(r'[ |]+', split))",
   "id": "ff_af_acrossover",
   "input_stream_typings": [
     {
