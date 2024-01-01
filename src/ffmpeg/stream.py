@@ -456,7 +456,7 @@ class AudioStream(FilterableStream):
             input_typings=["audio"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['audio'] * len(re.split(r'[ |]+', s))",
             inputs=[
                 self,
             ],
@@ -1588,7 +1588,7 @@ class AudioStream(FilterableStream):
             name="afir",
             input_typings=[],
             output_typings=["audio"],
-            formula_input_typings=None,
+            formula_input_typings="['audio'] * nbirs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -2116,7 +2116,7 @@ class AudioStream(FilterableStream):
             name="ainterleave",
             input_typings=[],
             output_typings=["audio"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * nb_inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -2383,7 +2383,7 @@ class AudioStream(FilterableStream):
             name="amerge",
             input_typings=[],
             output_typings=["audio"],
-            formula_input_typings=None,
+            formula_input_typings="['audio'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -2489,7 +2489,7 @@ class AudioStream(FilterableStream):
             name="amix",
             input_typings=[],
             output_typings=["audio"],
-            formula_input_typings=None,
+            formula_input_typings="['audio'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -2574,7 +2574,7 @@ class AudioStream(FilterableStream):
             input_typings=["audio"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['audio'] + ['video'] if curves else []",
             inputs=[
                 self,
             ],
@@ -2947,7 +2947,7 @@ class AudioStream(FilterableStream):
             input_typings=["audio"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['audio'] + (['video'] if video else [])",
             inputs=[
                 self,
             ],
@@ -3499,7 +3499,7 @@ class AudioStream(FilterableStream):
             input_typings=["audio"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['audio'] * len((timestamps or samples).split('|'))",
             inputs=[
                 self,
             ],
@@ -3542,7 +3542,7 @@ class AudioStream(FilterableStream):
             input_typings=["audio"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['audio'] * outputs",
             inputs=[
                 self,
             ],
@@ -3984,7 +3984,7 @@ class AudioStream(FilterableStream):
             input_typings=["audio"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['audio'] * outputs",
             inputs=[
                 self,
             ],
@@ -4134,8 +4134,8 @@ class AudioStream(FilterableStream):
             name="astreamselect",
             input_typings=[],
             output_typings=[],
-            formula_input_typings=None,
-            formula_output_typings=None,
+            formula_input_typings="['audio'] * inputs",
+            formula_output_typings="['audio'] * len(re.findall(r'\\d+', s))",
             inputs=[
                 self,
                 *streams,
@@ -5348,8 +5348,8 @@ class AudioStream(FilterableStream):
             name="concat",
             input_typings=[],
             output_typings=[],
-            formula_input_typings=None,
-            formula_output_typings=None,
+            formula_input_typings="(['video']*v + ['audio']*a)*n",
+            formula_output_typings="['video']*v + ['audio']*a",
             inputs=[
                 self,
                 *streams,
@@ -5828,7 +5828,7 @@ class AudioStream(FilterableStream):
             input_typings=["audio"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['video'] if video else [] + ['audio']",
             inputs=[
                 self,
             ],
@@ -6275,7 +6275,7 @@ class AudioStream(FilterableStream):
             name="headphone",
             input_typings=[],
             output_typings=["audio"],
-            formula_input_typings=None,
+            formula_input_typings="['audio'] + ['audio'] * (len(map.split('|')) - 1) if hrir == 1 else []",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -6471,7 +6471,7 @@ class AudioStream(FilterableStream):
             name="join",
             input_typings=[],
             output_typings=["audio"],
-            formula_input_typings=None,
+            formula_input_typings="['audio'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -9892,7 +9892,7 @@ class VideoStream(FilterableStream):
             name="bm3d",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] + ['video'] if ref else []",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -12100,7 +12100,7 @@ class VideoStream(FilterableStream):
             name="decimate",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] + (['video'] if ppsrc else [])",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -13766,7 +13766,7 @@ class VideoStream(FilterableStream):
             input_typings=["video"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['video'] * len(planes.split('+'))",
             inputs=[
                 self,
             ],
@@ -14173,7 +14173,7 @@ class VideoStream(FilterableStream):
             name="fieldmatch",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] + ['video'] if ppsrc else []",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -15305,7 +15305,7 @@ class VideoStream(FilterableStream):
             name="guided",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] + ['video'] if guidance else []",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -15663,7 +15663,7 @@ class VideoStream(FilterableStream):
             name="hstack",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -16512,7 +16512,7 @@ class VideoStream(FilterableStream):
             name="interleave",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * nb_inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -17018,7 +17018,7 @@ class VideoStream(FilterableStream):
             name="libplacebo",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -17208,7 +17208,7 @@ class VideoStream(FilterableStream):
             name="limitdiff",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video', 'video'] + (['video'] if reference else [])",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -18123,7 +18123,7 @@ class VideoStream(FilterableStream):
             name="mergeplanes",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * int(max(mapping[2::2]))",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -18384,7 +18384,7 @@ class VideoStream(FilterableStream):
             name="mix",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -20324,7 +20324,7 @@ class VideoStream(FilterableStream):
             name="premultiply",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] + ['video'] if inplace else []",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -21883,7 +21883,7 @@ class VideoStream(FilterableStream):
             input_typings=["video"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['video'] * len((timestamps or samples).split('|'))",
             inputs=[
                 self,
             ],
@@ -21926,7 +21926,7 @@ class VideoStream(FilterableStream):
             input_typings=["video"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['video'] * outputs",
             inputs=[
                 self,
             ],
@@ -22833,7 +22833,7 @@ class VideoStream(FilterableStream):
             name="signature",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * nb_inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -23084,7 +23084,7 @@ class VideoStream(FilterableStream):
             input_typings=["video"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings=None,
+            formula_output_typings="['video'] * outputs",
             inputs=[
                 self,
             ],
@@ -23325,8 +23325,8 @@ class VideoStream(FilterableStream):
             name="streamselect",
             input_typings=[],
             output_typings=[],
-            formula_input_typings=None,
-            formula_output_typings=None,
+            formula_input_typings="['video'] * inputs",
+            formula_output_typings="['video'] * len(re.findall(r'\\d+', s))",
             inputs=[
                 self,
                 *streams,
@@ -24621,7 +24621,7 @@ class VideoStream(FilterableStream):
             name="unpremultiply",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] + (['video'] if inplace else [])",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -25639,7 +25639,7 @@ class VideoStream(FilterableStream):
             name="vstack",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -26095,7 +26095,7 @@ class VideoStream(FilterableStream):
             name="xmedian",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
@@ -26145,7 +26145,7 @@ class VideoStream(FilterableStream):
             name="xstack",
             input_typings=[],
             output_typings=["video"],
-            formula_input_typings=None,
+            formula_input_typings="['video'] * inputs",
             formula_output_typings=None,
             inputs=[
                 self,
