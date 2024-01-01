@@ -456,7 +456,7 @@ class AudioStream(FilterableStream):
             input_typings=["audio"],
             output_typings=[],
             formula_input_typings=None,
-            formula_output_typings="['audio'] * len(re.split(r'[ |]+', s))",
+            formula_output_typings="['audio'] * len(re.split(r'[ |]+', split))",
             inputs=[
                 self,
             ],
@@ -4135,7 +4135,7 @@ class AudioStream(FilterableStream):
             input_typings=[],
             output_typings=[],
             formula_input_typings="['audio'] * inputs",
-            formula_output_typings="['audio'] * len(re.findall(r'\\d+', s))",
+            formula_output_typings="['audio'] * len(re.findall(r'\\d+', inputs))",
             inputs=[
                 self,
                 *streams,
@@ -23326,7 +23326,7 @@ class VideoStream(FilterableStream):
             input_typings=[],
             output_typings=[],
             formula_input_typings="['video'] * inputs",
-            formula_output_typings="['video'] * len(re.findall(r'\\d+', s))",
+            formula_output_typings="['video'] * len(re.findall(r'\\d+', inputs))",
             inputs=[
                 self,
                 *streams,
