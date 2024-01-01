@@ -1,0 +1,105 @@
+{
+  "description": "11.68 despill\nRemove unwanted contamination of foreground colors, caused by reflected color of\ngreenscreen or bluescreen.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_despill",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "despill",
+  "options": [
+    {
+      "alias": [
+        "type"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set what type of despill to use.\n</p>\n</dd>",
+      "name": "type",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mix"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set how spillmap will be generated.\n</p>\n</dd>",
+      "name": "mix",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "expand"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set how much to get rid of still remaining spill.\n</p>\n</dd>",
+      "name": "expand",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "red"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Controls amount of red in spill area.\n</p>\n</dd>",
+      "name": "red",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "green"
+      ],
+      "default": -1.0,
+      "description": "<dd><p>Controls amount of green in spill area.\nShould be -1 for greenscreen.\n</p>\n</dd>",
+      "name": "green",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blue"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Controls amount of blue in spill area.\nShould be -1 for bluescreen.\n</p>\n</dd>",
+      "name": "blue",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "brightness"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Controls brightness of spill area, preserving colors.\n</p>\n</dd>",
+      "name": "brightness",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "default": 0,
+      "description": "<dd><p>Modify alpha from generated spillmap.\n</p></dd>",
+      "name": "alpha",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#despill"
+}

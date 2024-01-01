@@ -1,0 +1,78 @@
+{
+  "description": "11.80 elbg\nApply a posterize effect using the ELBG (Enhanced LBG) algorithm.\n\nFor each input image, the filter will compute the optimal mapping from\nthe input to the output given the codebook length, that is the number\nof distinct output colors.\n\nThis filter accepts the following options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_elbg",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "elbg",
+  "options": [
+    {
+      "alias": [
+        "codebook_length",
+        "l"
+      ],
+      "default": 256,
+      "description": "<dd><p>Set codebook length. The value must be a positive integer, and\nrepresents the number of distinct output colors. Default value is 256.\n</p>\n</dd>",
+      "name": "codebook_length",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nb_steps",
+        "n"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set the maximum number of iterations to apply for computing the optimal\nmapping. The higher the value the better the result and the higher the\ncomputation time. Default value is 1.\n</p>\n</dd>",
+      "name": "nb_steps",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "seed",
+        "s"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set a random seed, must be an integer included between 0 and\nUINT32_MAX. If not specified, or if explicitly set to -1, the filter\nwill try to use a good random seed on a best effort basis.\n</p>\n</dd>",
+      "name": "seed",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pal8"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set pal8 output pixel format. This option does not work with codebook\nlength greater than 256. Default is disabled.\n</p>\n</dd>",
+      "name": "pal8",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "use_alpha"
+      ],
+      "default": 0,
+      "description": "<dd><p>Include alpha values in the quantization calculation. Allows creating\npalettized output images (e.g. PNG8) with multiple alpha smooth blending.\n</p></dd>",
+      "name": "use_alpha",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#elbg"
+}

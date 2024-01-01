@@ -1,0 +1,50 @@
+{
+  "description": "11.289 xmedian\nPick median pixels from several input videos.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": "['video'] * inputs",
+  "formula_output_typings": null,
+  "id": "ff_vf_xmedian",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "xmedian",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "default": 3,
+      "description": "<dd><p>Set number of inputs.\nDefault is 3. Allowed range is from 3 to 255.\nIf number of inputs is even number, than result will be mean value between two median values.\n</p>\n</dd>",
+      "name": "inputs",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set which planes to filter. Default value is <code>15</code>, by which all planes are processed.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "percentile"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set median percentile. Default value is <code>0.5</code>.\nDefault value of <code>0.5</code> will pick always median values, while <code>0</code> will pick\nminimum values, and <code>1</code> maximum values.\n</p></dd>",
+      "name": "percentile",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#xmedian"
+}

@@ -1,0 +1,82 @@
+{
+  "description": "16.1 buffer\nBuffer video frames, and make them available to the filter chain.\n\nThis source is mainly intended for a programmatic use, in particular\nthrough the interface defined in libavfilter/buffersrc.h.\n\nIt accepts the following parameters:\n\n\nFor example:\n\nbuffer=width=320:height=240:pix_fmt=yuv410p:time_base=1/24:sar=1\n\nwill instruct the source to accept video frames with size 320x240 and\nwith format \"yuv410p\", assuming 1/24 as the timestamps timebase and\nsquare pixels (1:1 sample aspect ratio).\nSince the pixel format with name \"yuv410p\" corresponds to the number 6\n(check the enum AVPixelFormat definition in libavutil/pixfmt.h),\nthis example corresponds to:\n\nbuffer=size=320x240:pixfmt=6:time_base=1/24:pixel_aspect=1/1\n\nAlternatively, the options can be specified as a flat string, but this\nsyntax is deprecated:\n\nwidth:height:pix_fmt:time_base.num:time_base.den:pixel_aspect.num:pixel_aspect.den",
+  "filter_type": "vsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vsrc_buffer",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "buffer",
+  "options": [
+    {
+      "alias": [
+        "width",
+        "video_size"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "width",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "height"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "height",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pix_fmt"
+      ],
+      "default": "AV_PIX_FMT_NONE",
+      "description": null,
+      "name": "pix_fmt",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "sar",
+        "pixel_aspect"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "sar",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "time_base"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "time_base",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "frame_rate"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "frame_rate",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#buffer"
+}

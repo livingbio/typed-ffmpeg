@@ -1,0 +1,65 @@
+{
+  "description": "11.260 tmix\nMix successive video frames.\n\nA description of the accepted options follows.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_tmix",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "tmix",
+  "options": [
+    {
+      "alias": [
+        "frames"
+      ],
+      "default": 3,
+      "description": "<dd><p>The number of successive frames to mix. If unspecified, it defaults to 3.\n</p>\n</dd>",
+      "name": "frames",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "weights"
+      ],
+      "default": "1 1 1",
+      "description": "<dd><p>Specify weight of each input video frame.\nEach weight is separated by space. If number of weights is smaller than\nnumber of <var>frames</var> last specified weight will be used for all remaining\nunset weights.\n</p>\n</dd>",
+      "name": "weights",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Specify scale, if it is set it will be multiplied with sum\nof each weight multiplied with pixel values to give final destination\npixel value. By default <var>scale</var> is auto scaled to sum of weights.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tmix"
+}

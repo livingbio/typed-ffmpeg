@@ -1,0 +1,75 @@
+{
+  "description": "11.256 tiltandshift\nWhat happens when you invert time and space?\n\nNormally a video is composed of several frames that represent a different\ninstant of time and shows a scence that evolves in the space captured by the\nframe. This filter is the antipode of that concept, taking inspiration by\ntilt and shift photography.\n\nA filtered frame contains the whole timeline of events composing the sequence,\nand this is obtained by placing a slice of pixels from each frame into a single\none. However, since there are no infinite-width frames, this is done up the\nwidth of the input frame, and a video is recomposed by shifting away one\ncolumn for each subsequent frame. In order to map space to time, the filter\ntilts each input frame as well, so that motion is preseved. This is accomplished\nby progressively selecting a different column from each input frame.\n\nThe end result is a sort of inverted parralax, so that far away objects move\nmuch faster that the ones in the front. The ideal conditions for this video\neffect are when there is either very little motion and the backgroud is static,\nor when there is a lot of motion and a very wide depth of field (eg. wide\npanorama, while moving on a train).\n\nThe filter accepts the following parameters:\n\n\nNormally the filter shifts and tils from the very first frame, and stops when\nthe last one is received. However, before filtering starts, normal video may\nbe preseved, so that the effect is slowly shifted in its place. Similarly,\nthe last video frame may be reconstructed at the end. Alternatively it is\npossible to just start and end with black.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_tiltandshift",
+  "input_stream_typings": [
+    {
+      "name": "in",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "tiltandshift",
+  "options": [
+    {
+      "alias": [
+        "tilt"
+      ],
+      "default": 1,
+      "description": "<dd><p>Tilt video while shifting (default). When unset, video will be sliding a\nstatic image, composed of the first column of each frame.\n</p>\n</dd>",
+      "name": "tilt",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "start"
+      ],
+      "default": "TILT_NONE",
+      "description": "<dd><p>What to do at the start of filtering (see below).\n</p>\n</dd>",
+      "name": "start",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "end"
+      ],
+      "default": "TILT_NONE",
+      "description": "<dd><p>What to do at the end of filtering (see below).\n</p>\n</dd>",
+      "name": "end",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "hold"
+      ],
+      "default": 0,
+      "description": "<dd><p>How many columns should pass through before start of filtering.\n</p>\n</dd>",
+      "name": "hold",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pad"
+      ],
+      "default": 0,
+      "description": "<dd><p>How many columns should be inserted before end of filtering.\n</p>\n</dd>",
+      "name": "pad",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "out",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tiltandshift"
+}

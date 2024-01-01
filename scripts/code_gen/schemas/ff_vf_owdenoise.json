@@ -1,0 +1,57 @@
+{
+  "description": "11.185 owdenoise\nApply Overcomplete Wavelet denoiser.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_owdenoise",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "owdenoise",
+  "options": [
+    {
+      "alias": [
+        "depth"
+      ],
+      "default": 8,
+      "description": "<dd><p>Set depth.\n</p>\n<p>Larger depth values will denoise lower frequency components more, but\nslow down filtering.\n</p>\n<p>Must be an int in the range 8-16, default is <code>8</code>.\n</p>\n</dd>",
+      "name": "depth",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "luma_strength",
+        "ls"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set luma strength.\n</p>\n<p>Must be a double value in the range 0-1000, default is <code>1.0</code>.\n</p>\n</dd>",
+      "name": "luma_strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chroma_strength",
+        "cs"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set chroma strength.\n</p>\n<p>Must be a double value in the range 0-1000, default is <code>1.0</code>.\n</p></dd>",
+      "name": "chroma_strength",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#owdenoise"
+}

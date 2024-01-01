@@ -1,0 +1,80 @@
+{
+  "description": "10.1 abuffersink\nBuffer audio frames, and make them available to the end of filter chain.\n\nThis sink is mainly intended for programmatic use, in particular\nthrough the interface defined in libavfilter/buffersink.h\nor the options system.\n\nIt accepts a pointer to an AVABufferSinkContext structure, which\ndefines the incoming buffers\u2019 formats, to be passed as the opaque\nparameter to avfilter_init_filter for initialization.",
+  "filter_type": "asink",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_asink_abuffer",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "abuffersink",
+  "options": [
+    {
+      "alias": [
+        "sample_fmts"
+      ],
+      "default": null,
+      "description": null,
+      "name": "sample_fmts",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "sample_rates"
+      ],
+      "default": null,
+      "description": null,
+      "name": "sample_rates",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "channel_layouts"
+      ],
+      "default": null,
+      "description": null,
+      "name": "channel_layouts",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "channel_counts"
+      ],
+      "default": null,
+      "description": null,
+      "name": "channel_counts",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "ch_layouts"
+      ],
+      "default": null,
+      "description": null,
+      "name": "ch_layouts",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "all_channel_counts"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "all_channel_counts",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#abuffersink"
+}

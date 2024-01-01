@@ -4,6 +4,7 @@ from typing import Any
 
 from .base import FilterNode, FilterableStream
 
+from .schema import Default
 
 
 class AudioStream(FilterableStream):
@@ -29,11 +30,11 @@ class AudioStream(FilterableStream):
     
 
     
-        order: int = None,
+        order: int | Default = Default(value=None),
     
 
     
-        projection: int = None,
+        projection: int | Default = Default(value=None),
     
 
 
@@ -54,6 +55,10 @@ Ref: None
         """
         filter_node = FilterNode(
             name="aap",
+            input_typings=['audio', 'audio'],
+            output_typings=['audio'],
+            formula_input_typings=None,
+            formula_output_typings=None,
             inputs=[
                 
             self,

@@ -1,0 +1,91 @@
+{
+  "description": "11.136 il\nDeinterleave or interleave fields.\n\nThis filter allows one to process interlaced images fields without\ndeinterlacing them. Deinterleaving splits the input frame into 2\nfields (so called half pictures). Odd lines are moved to the top\nhalf of the output image, even lines to the bottom half.\nYou can process (filter) them independently and then re-interleave them.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_il",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "il",
+  "options": [
+    {
+      "alias": [
+        "luma_mode",
+        "l"
+      ],
+      "default": "MODE_NONE",
+      "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
+      "name": "luma_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "chroma_mode",
+        "c"
+      ],
+      "default": "MODE_NONE",
+      "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
+      "name": "chroma_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "alpha_mode",
+        "a"
+      ],
+      "default": "MODE_NONE",
+      "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
+      "name": "alpha_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "luma_swap",
+        "ls"
+      ],
+      "default": 0,
+      "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
+      "name": "luma_swap",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "chroma_swap",
+        "cs"
+      ],
+      "default": 0,
+      "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
+      "name": "chroma_swap",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "alpha_swap",
+        "as"
+      ],
+      "default": 0,
+      "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
+      "name": "alpha_swap",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#il"
+}

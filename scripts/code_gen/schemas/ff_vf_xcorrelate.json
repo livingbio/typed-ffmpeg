@@ -1,0 +1,49 @@
+{
+  "description": "11.287 xcorrelate\nApply normalized cross-correlation between first and second input video stream.\n\nSecond input video stream dimensions must be lower than first input video stream.\n\nThe filter accepts the following options:\n\n\nThe xcorrelate filter also supports the framesync options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_xcorrelate",
+  "input_stream_typings": [
+    {
+      "name": "primary",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "secondary",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "xcorrelate",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 7,
+      "description": "<dd><p>Set which planes to process.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "secondary"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set which secondary video frames will be processed from second input video stream,\ncan be <var>first</var> or <var>all</var>. Default is <var>all</var>.\n</p></dd>",
+      "name": "secondary",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#xcorrelate"
+}

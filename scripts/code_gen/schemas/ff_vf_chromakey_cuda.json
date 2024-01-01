@@ -1,0 +1,65 @@
+{
+  "description": "11.26 chromakey_cuda\nCUDA accelerated YUV colorspace color/chroma keying.\n\nThis filter works like normal chromakey filter but operates on CUDA frames.\nfor more details and parameters see chromakey.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_chromakey_cuda",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "chromakey_cuda",
+  "options": [
+    {
+      "alias": [
+        "color"
+      ],
+      "default": "black",
+      "description": null,
+      "name": "color",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "similarity"
+      ],
+      "default": 0.01,
+      "description": null,
+      "name": "similarity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blend"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "blend",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "yuv"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "yuv",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#chromakey_005fcuda"
+}

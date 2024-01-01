@@ -2,7 +2,7 @@ import json
 import pathlib
 from typing import Literal
 
-from parse_c.schema import AVFilterPad, AVOptionType, FilterType
+from parse_c.schema import AVFilterPad, AVFilterPadType, AVOptionType, FilterType
 from pydantic import BaseModel, HttpUrl
 
 schema_path = pathlib.Path(__file__).parent / "schemas"
@@ -35,6 +35,7 @@ class FFmpegFilterOption(BaseModel):
     description: str | None = None
 
     typing: Literal["bool", "int", "float", "str"]
+    default: str | int | float | None = None
     required: bool
 
 
@@ -51,14 +52,29 @@ class FFmpegFilter(BaseModel):
 
     input_stream_typings: list[AVFilterPad] = []
     output_stream_typings: list[AVFilterPad] = []
+    formula_input_typings: str | None = None
+    formula_output_typings: str | None = None
 
     options: list[FFmpegFilterOption] = []
 
+    @property
+    def input_types(self) -> list[str]:
+        if self.is_input_dynamic:
+            return []
+        return [("video" if stream.type == AVFilterPadType.video else "audio") for stream in self.input_stream_typings]
+
+    @property
+    def output_types(self) -> list[str]:
+        if self.is_output_dynamic:
+            return []
+        return [("video" if stream.type == AVFilterPadType.video else "audio") for stream in self.output_stream_typings]
+
     @classmethod
-    def load(cls, path: pathlib.Path) -> "FFmpegFilter":
+    def load(cls, id: str) -> "FFmpegFilter":
+        path = schema_path / f"{id}.json"
         with path.open() as ifile:
             return FFmpegFilter(**json.load(ifile))
 
     def save(self) -> None:
         with (schema_path / f"{self.id}.json").open("w") as ofile:
-            ofile.write(self.model_dump_json())
+            ofile.write(self.model_dump_json(indent=2))

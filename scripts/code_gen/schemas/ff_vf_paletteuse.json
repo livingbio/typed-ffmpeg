@@ -1,0 +1,89 @@
+{
+  "description": "11.188 paletteuse\nUse a palette to downsample an input video stream.\n\nThe filter takes two inputs: one video stream and a palette. The palette must\nbe a 256 pixels image.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_paletteuse",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "palette",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "paletteuse",
+  "options": [
+    {
+      "alias": [
+        "dither"
+      ],
+      "default": "DITHERING_SIERRA2_4A",
+      "description": "<dd><p>Select dithering mode. Available algorithms are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bayer</samp>\u2019</dt>\n<dd><p>Ordered 8x8 bayer dithering (deterministic)\n</p></dd>\n<dt>\u2018<samp>heckbert</samp>\u2019</dt>\n<dd><p>Dithering as defined by Paul Heckbert in 1982 (simple error diffusion).\nNote: this dithering is sometimes considered \"wrong\" and is included as a\nreference.\n</p></dd>\n<dt>\u2018<samp>floyd_steinberg</samp>\u2019</dt>\n<dd><p>Floyd and Steingberg dithering (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra2</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v2 (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra2_4a</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v2 \"Lite\" (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra3</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v3 (error diffusion)\n</p></dd>\n<dt>\u2018<samp>burkes</samp>\u2019</dt>\n<dd><p>Burkes dithering (error diffusion)\n</p></dd>\n<dt>\u2018<samp>atkinson</samp>\u2019</dt>\n<dd><p>Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)\n</p></dd>\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable dithering.\n</p></dd>\n</dl>\n<p>Default is <var>sierra2_4a</var>.\n</p>\n</dd>",
+      "name": "dither",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bayer_scale"
+      ],
+      "default": 2,
+      "description": "<dd><p>When <var>bayer</var> dithering is selected, this option defines the scale of the\npattern (how much the crosshatch pattern is visible). A low value means more\nvisible pattern for less banding, and higher value means less visible pattern\nat the cost of more banding.\n</p>\n<p>The option must be an integer value in the range [0,5]. Default is <var>2</var>.\n</p>\n</dd>",
+      "name": "bayer_scale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "diff_mode"
+      ],
+      "default": "DIFF_MODE_NONE",
+      "description": "<dd><p>If set, define the zone to process\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>rectangle</samp>\u2019</dt>\n<dd><p>Only the changing rectangle will be reprocessed. This is similar to GIF\ncropping/offsetting compression mechanism. This option can be useful for speed\nif only a part of the image is changing, and has use cases such as limiting the\nscope of the error diffusal <samp>dither</samp> to the rectangle that bounds the\nmoving scene (it leads to more deterministic output if the scene doesn\u2019t change\nmuch, and as a result less moving noise and better GIF compression).\n</p></dd>\n</dl>\n<p>Default is <var>none</var>.\n</p>\n</dd>",
+      "name": "diff_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "new"
+      ],
+      "default": 0,
+      "description": "<dd><p>Take new palette for each output frame.\n</p>\n</dd>",
+      "name": "new",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "alpha_threshold"
+      ],
+      "default": 128,
+      "description": "<dd><p>Sets the alpha threshold for transparency. Alpha values above this threshold\nwill be treated as completely opaque, and values below this threshold will be\ntreated as completely transparent.\n</p>\n<p>The option must be an integer value in the range [0,255]. Default is <var>128</var>.\n</p></dd>",
+      "name": "alpha_threshold",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "debug_kdtree"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "debug_kdtree",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#paletteuse"
+}

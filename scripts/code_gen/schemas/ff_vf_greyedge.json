@@ -1,0 +1,55 @@
+{
+  "description": "11.114 greyedge\nA color constancy variation filter which estimates scene illumination via grey edge algorithm\nand corrects the scene colors accordingly.\n\nSee: https://staff.science.uva.nl/th.gevers/pub/GeversTIP07.pdf\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_greyedge",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "greyedge",
+  "options": [
+    {
+      "alias": [
+        "difford"
+      ],
+      "default": 1,
+      "description": "<dd><p>The order of differentiation to be applied on the scene. Must be chosen in the range\n[0,2] and default value is 1.\n</p>\n</dd>",
+      "name": "difford",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "minknorm"
+      ],
+      "default": 1,
+      "description": "<dd><p>The Minkowski parameter to be used for calculating the Minkowski distance. Must\nbe chosen in the range [0,20] and default value is 1. Set to 0 for getting\nmax value instead of calculating Minkowski distance.\n</p>\n</dd>",
+      "name": "minknorm",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sigma"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>The standard deviation of Gaussian blur to be applied on the scene. Must be\nchosen in the range [0,1024.0] and default value = 1. floor( <var>sigma</var> * break_off_sigma(3) )\ncan\u2019t be equal to 0 if <var>difford</var> is greater than 0.\n</p></dd>",
+      "name": "sigma",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#greyedge"
+}

@@ -1,0 +1,63 @@
+{
+  "description": "16.10 allrgb, allyuv, color, colorchart, colorspectrum, haldclutsrc, nullsrc, pal75bars, pal100bars, rgbtestsrc, smptebars, smptehdbars, testsrc, testsrc2, yuvtestsrc\nThe allrgb source returns frames of size 4096x4096 of all rgb colors.\n\nThe allyuv source returns frames of size 4096x4096 of all yuv colors.\n\nThe color source provides an uniformly colored input.\n\nThe colorchart source provides a colors checker chart.\n\nThe colorspectrum source provides a color spectrum input.\n\nThe haldclutsrc source provides an identity Hald CLUT. See also\nhaldclut filter.\n\nThe nullsrc source returns unprocessed video frames. It is\nmainly useful to be employed in analysis / debugging tools, or as the\nsource for filters which ignore the input data.\n\nThe pal75bars source generates a color bars pattern, based on\nEBU PAL recommendations with 75% color levels.\n\nThe pal100bars source generates a color bars pattern, based on\nEBU PAL recommendations with 100% color levels.\n\nThe rgbtestsrc source generates an RGB test pattern useful for\ndetecting RGB vs BGR issues. You should see a red, green and blue\nstripe from top to bottom.\n\nThe smptebars source generates a color bars pattern, based on\nthe SMPTE Engineering Guideline EG 1-1990.\n\nThe smptehdbars source generates a color bars pattern, based on\nthe SMPTE RP 219-2002.\n\nThe testsrc source generates a test video pattern, showing a\ncolor pattern, a scrolling gradient and a timestamp. This is mainly\nintended for testing purposes.\n\nThe testsrc2 source is similar to testsrc, but supports more\npixel formats instead of just rgb24. This allows using it as an\ninput for other tests without requiring a format conversion.\n\nThe yuvtestsrc source generates an YUV test pattern. You should\nsee a y, cb and cr stripe from top to bottom.\n\nThe sources accept the following parameters:",
+  "filter_type": "vsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vsrc_smptebars",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "smptebars",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "320x240",
+      "description": "<dd><p>Specify the size of the sourced video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nThe default value is <code>320x240</code>.\n</p>\n<p>This option is not available with the <code>allrgb</code>, <code>allyuv</code>, and\n<code>haldclutsrc</code> filters.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": "<dd><p>Specify the frame rate of the sourced video, as the number of frames\ngenerated per second. It has to be a string in the format\n<var>frame_rate_num</var>/<var>frame_rate_den</var>, an integer number, a floating point\nnumber or a valid video frame rate abbreviation. The default value is\n\"25\".\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p>\n<p>Since the frame rate is used as time base, all frames including the last one\nwill have their full duration. If the specified duration is not a multiple\nof the frame duration, it will be rounded up.\n</p>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sar"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the sample aspect ratio of the sourced video.\n</p>\n</dd>",
+      "name": "sar",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc"
+}

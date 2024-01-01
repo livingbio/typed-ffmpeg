@@ -1,0 +1,55 @@
+{
+  "description": "11.259 tmidequalizer\nApply Temporal Midway Video Equalization effect.\n\nMidway Video Equalization adjusts a sequence of video frames to have the same\nhistograms, while maintaining their dynamics as much as possible. It\u2019s\nuseful for e.g. matching exposures from a video frames sequence.\n\nThis filter accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_tmidequalizer",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "tmidequalizer",
+  "options": [
+    {
+      "alias": [
+        "radius"
+      ],
+      "default": 5,
+      "description": "<dd><p>Set filtering radius. Default is <code>5</code>. Allowed range is from 1 to 127.\n</p>\n</dd>",
+      "name": "radius",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sigma"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set filtering sigma. Default is <code>0.5</code>. This controls strength of filtering.\nSetting this option to 0 effectively does nothing.\n</p>\n</dd>",
+      "name": "sigma",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": "0xF",
+      "description": "<dd><p>Set which planes to process. Default is <code>15</code>, which is all available planes.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#tmidequalizer"
+}

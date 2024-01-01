@@ -1,0 +1,91 @@
+{
+  "description": "8.9 adeclick\nRemove impulsive noise from input audio.\n\nSamples detected as impulsive noise are replaced by interpolated samples using\nautoregressive modelling.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_adeclick",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "adeclick",
+  "options": [
+    {
+      "alias": [
+        "window",
+        "w"
+      ],
+      "default": 55.0,
+      "description": "<dd><p>Set window size, in milliseconds. Allowed range is from <code>10</code> to\n<code>100</code>. Default value is <code>55</code> milliseconds.\nThis sets size of window which will be processed at once.\n</p>\n</dd>",
+      "name": "window",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "overlap",
+        "o"
+      ],
+      "default": 75.0,
+      "description": "<dd><p>Set window overlap, in percentage of window size. Allowed range is from\n<code>50</code> to <code>95</code>. Default value is <code>75</code> percent.\nSetting this to a very high value increases impulsive noise removal but makes\nwhole process much slower.\n</p>\n</dd>",
+      "name": "overlap",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "arorder",
+        "a"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>Set autoregression order, in percentage of window size. Allowed range is from\n<code>0</code> to <code>25</code>. Default value is <code>2</code> percent. This option also\ncontrols quality of interpolated samples using neighbour good samples.\n</p>\n</dd>",
+      "name": "arorder",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "threshold",
+        "t"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>Set threshold value. Allowed range is from <code>1</code> to <code>100</code>.\nDefault value is <code>2</code>.\nThis controls the strength of impulsive noise which is going to be removed.\nThe lower value, the more samples will be detected as impulsive noise.\n</p>\n</dd>",
+      "name": "threshold",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "burst",
+        "b"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>Set burst fusion, in percentage of window size. Allowed range is <code>0</code> to\n<code>10</code>. Default value is <code>2</code>.\nIf any two samples detected as noise are spaced less than this value then any\nsample between those two samples will be also detected as noise.\n</p>\n</dd>",
+      "name": "burst",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "method",
+        "m"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set overlap method.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>add, a</samp></dt>\n<dd><p>Select overlap-add method. Even not interpolated samples are slightly\nchanged with this method.\n</p>\n</dd>\n<dt><samp>save, s</samp></dt>\n<dd><p>Select overlap-save method. Not interpolated samples remain unchanged.\n</p></dd>\n</dl>\n<p>Default value is <code>a</code>.\n</p></dd>",
+      "name": "method",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#adeclick"
+}

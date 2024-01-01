@@ -1,0 +1,55 @@
+{
+  "description": "11.221 scharr\nApply scharr operator to input video stream.\n\nThe filter accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_scharr",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "scharr",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set value which will be multiplied with filtered result.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "delta"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set value which will be added to filtered result.\n</p></dd>",
+      "name": "delta",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#scharr"
+}

@@ -1,0 +1,75 @@
+{
+  "description": "11.174 nlmeans\nDenoise frames using Non-Local Means algorithm.\n\nEach pixel is adjusted by looking for other pixels with similar contexts. This\ncontext similarity is defined by comparing their surrounding patches of size\npxp. Patches are searched in an area of rxr\naround the pixel.\n\nNote that the research area defines centers for patches, which means some\npatches will be made of pixels outside that research area.\n\nThe filter accepts the following options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_nlmeans",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "nlmeans",
+  "options": [
+    {
+      "alias": [
+        "s"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set denoising strength. Default is 1.0. Must be in range [1.0, 30.0].\n</p>\n</dd>",
+      "name": "s",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "p"
+      ],
+      "default": "3*2+1",
+      "description": "<dd><p>Set patch size. Default is 7. Must be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "p",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pc"
+      ],
+      "default": 0,
+      "description": "<dd><p>Same as <samp>p</samp> but for chroma planes.\n</p>\n<p>The default value is <var>0</var> and means automatic.\n</p>\n</dd>",
+      "name": "pc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "r"
+      ],
+      "default": "7*2+1",
+      "description": "<dd><p>Set research size. Default is 15. Must be odd number in range [0, 99].\n</p>\n</dd>",
+      "name": "r",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "rc"
+      ],
+      "default": 0,
+      "description": "<dd><p>Same as <samp>r</samp> but for chroma planes.\n</p>\n<p>The default value is <var>0</var> and means automatic.\n</p></dd>",
+      "name": "rc",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#nlmeans"
+}

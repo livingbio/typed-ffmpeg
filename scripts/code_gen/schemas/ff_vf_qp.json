@@ -1,0 +1,35 @@
+{
+  "description": "11.202 qp\nChange video quantization parameters (QP).\n\nThe filter accepts the following option:\n\n\nThe expression is evaluated through the eval API and can contain, among others,\nthe following constants:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_qp",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "qp",
+  "options": [
+    {
+      "alias": [
+        "qp"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set expression for quantization parameter.\n</p></dd>",
+      "name": "qp",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#qp"
+}

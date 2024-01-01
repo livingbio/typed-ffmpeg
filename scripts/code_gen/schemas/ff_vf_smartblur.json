@@ -1,0 +1,91 @@
+{
+  "description": "11.239 smartblur\nBlur the input video without impacting the outlines.\n\nIt accepts the following options:\n\n\nIf a chroma option is not explicitly set, the corresponding luma value\nis set.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_smartblur",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "smartblur",
+  "options": [
+    {
+      "alias": [
+        "luma_radius",
+        "lr"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the luma radius. The option value must be a float number in\nthe range [0.1,5.0] that specifies the variance of the gaussian filter\nused to blur the image (slower if larger). Default value is 1.0.\n</p>\n</dd>",
+      "name": "luma_radius",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "luma_strength",
+        "ls"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the luma strength. The option value must be a float number\nin the range [-1.0,1.0] that configures the blurring. A value included\nin [0.0,1.0] will blur the image whereas a value included in\n[-1.0,0.0] will sharpen the image. Default value is 1.0.\n</p>\n</dd>",
+      "name": "luma_strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "luma_threshold",
+        "lt"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the luma threshold used as a coefficient to determine\nwhether a pixel should be blurred or not. The option value must be an\ninteger in the range [-30,30]. A value of 0 will filter all the image,\na value included in [0,30] will filter flat areas and a value included\nin [-30,0] will filter edges. Default value is 0.\n</p>\n</dd>",
+      "name": "luma_threshold",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "chroma_radius",
+        "cr"
+      ],
+      "default": "0.1 -1",
+      "description": "<dd><p>Set the chroma radius. The option value must be a float number in\nthe range [0.1,5.0] that specifies the variance of the gaussian filter\nused to blur the image (slower if larger). Default value is <samp>luma_radius</samp>.\n</p>\n</dd>",
+      "name": "chroma_radius",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chroma_strength",
+        "cs"
+      ],
+      "default": "-1.0 -1",
+      "description": "<dd><p>Set the chroma strength. The option value must be a float number\nin the range [-1.0,1.0] that configures the blurring. A value included\nin [0.0,1.0] will blur the image whereas a value included in\n[-1.0,0.0] will sharpen the image. Default value is <samp>luma_strength</samp>.\n</p>\n</dd>",
+      "name": "chroma_strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chroma_threshold",
+        "ct"
+      ],
+      "default": "-30 -1",
+      "description": "<dd><p>Set the chroma threshold used as a coefficient to determine\nwhether a pixel should be blurred or not. The option value must be an\ninteger in the range [-30,30]. A value of 0 will filter all the image,\na value included in [0,30] will filter flat areas and a value included\nin [-30,0] will filter edges. Default value is <samp>luma_threshold</samp>.\n</p></dd>",
+      "name": "chroma_threshold",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#smartblur"
+}

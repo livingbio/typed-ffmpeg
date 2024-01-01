@@ -1,0 +1,205 @@
+{
+  "description": "8.113 superequalizer\nApply 18 band equalizer.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_superequalizer",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "superequalizer",
+  "options": [
+    {
+      "alias": [
+        "1b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 65Hz band gain.\n</p></dd>",
+      "name": "1b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "2b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 92Hz band gain.\n</p></dd>",
+      "name": "2b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "3b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 131Hz band gain.\n</p></dd>",
+      "name": "3b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "4b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 185Hz band gain.\n</p></dd>",
+      "name": "4b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "5b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 262Hz band gain.\n</p></dd>",
+      "name": "5b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "6b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 370Hz band gain.\n</p></dd>",
+      "name": "6b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "7b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 523Hz band gain.\n</p></dd>",
+      "name": "7b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "8b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 740Hz band gain.\n</p></dd>",
+      "name": "8b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "9b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 1047Hz band gain.\n</p></dd>",
+      "name": "9b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "10b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 1480Hz band gain.\n</p></dd>",
+      "name": "10b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "11b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 2093Hz band gain.\n</p></dd>",
+      "name": "11b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "12b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 2960Hz band gain.\n</p></dd>",
+      "name": "12b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "13b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 4186Hz band gain.\n</p></dd>",
+      "name": "13b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "14b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 5920Hz band gain.\n</p></dd>",
+      "name": "14b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "15b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 8372Hz band gain.\n</p></dd>",
+      "name": "15b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "16b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 11840Hz band gain.\n</p></dd>",
+      "name": "16b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "17b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 16744Hz band gain.\n</p></dd>",
+      "name": "17b",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "18b"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set 20000Hz band gain.\n</p></dd>",
+      "name": "18b",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#superequalizer"
+}

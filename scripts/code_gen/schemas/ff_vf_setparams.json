@@ -1,0 +1,75 @@
+{
+  "description": "11.228 setparams\nForce frame parameter for the output video frame.\n\nThe setparams filter marks interlace and color range for the\noutput frames. It does not change the input frame, but only sets the\ncorresponding property, which affects how the frame is treated by\nfilters/encoders.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_setparams",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "setparams",
+  "options": [
+    {
+      "alias": [
+        "field_mode"
+      ],
+      "default": "MODE_AUTO",
+      "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same field property (default).\n</p>\n</dd>\n<dt>\u2018<samp>bff</samp>\u2019</dt>\n<dd><p>Mark the frame as bottom-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>tff</samp>\u2019</dt>\n<dd><p>Mark the frame as top-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>prog</samp>\u2019</dt>\n<dd><p>Mark the frame as progressive.\n</p></dd>\n</dl>\n</dd>",
+      "name": "field_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "default": -1,
+      "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color range property (default).\n</p>\n</dd>\n<dt>\u2018<samp>unspecified, unknown</samp>\u2019</dt>\n<dd><p>Mark the frame as unspecified color range.\n</p>\n</dd>\n<dt>\u2018<samp>limited, tv, mpeg</samp>\u2019</dt>\n<dd><p>Mark the frame as limited range.\n</p>\n</dd>\n<dt>\u2018<samp>full, pc, jpeg</samp>\u2019</dt>\n<dd><p>Mark the frame as full range.\n</p></dd>\n</dl>\n</dd>",
+      "name": "range",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "color_primaries"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the color primaries.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color primaries property (default).\n</p>\n</dd>\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dt>\u2018<samp>unknown</samp>\u2019</dt>\n<dt>\u2018<samp>bt470m</samp>\u2019</dt>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dt>\u2018<samp>film</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020</samp>\u2019</dt>\n<dt>\u2018<samp>smpte428</samp>\u2019</dt>\n<dt>\u2018<samp>smpte431</samp>\u2019</dt>\n<dt>\u2018<samp>smpte432</samp>\u2019</dt>\n<dt>\u2018<samp>jedec-p22</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "color_primaries",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "color_trc"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the color transfer.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color trc property (default).\n</p>\n</dd>\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dt>\u2018<samp>unknown</samp>\u2019</dt>\n<dt>\u2018<samp>bt470m</samp>\u2019</dt>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dt>\u2018<samp>log100</samp>\u2019</dt>\n<dt>\u2018<samp>log316</samp>\u2019</dt>\n<dt>\u2018<samp>iec61966-2-4</samp>\u2019</dt>\n<dt>\u2018<samp>bt1361e</samp>\u2019</dt>\n<dt>\u2018<samp>iec61966-2-1</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020-10</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020-12</samp>\u2019</dt>\n<dt>\u2018<samp>smpte2084</samp>\u2019</dt>\n<dt>\u2018<samp>smpte428</samp>\u2019</dt>\n<dt>\u2018<samp>arib-std-b67</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "color_trc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "colorspace"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set the colorspace.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same colorspace property (default).\n</p>\n</dd>\n<dt>\u2018<samp>gbr</samp>\u2019</dt>\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dt>\u2018<samp>unknown</samp>\u2019</dt>\n<dt>\u2018<samp>fcc</samp>\u2019</dt>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dt>\u2018<samp>ycgco</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020nc</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020c</samp>\u2019</dt>\n<dt>\u2018<samp>smpte2085</samp>\u2019</dt>\n<dt>\u2018<samp>chroma-derived-nc</samp>\u2019</dt>\n<dt>\u2018<samp>chroma-derived-c</samp>\u2019</dt>\n<dt>\u2018<samp>ictcp</samp>\u2019</dt>\n</dl>\n</dd>",
+      "name": "colorspace",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#setparams"
+}

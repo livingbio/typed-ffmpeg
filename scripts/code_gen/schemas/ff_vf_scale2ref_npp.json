@@ -1,0 +1,113 @@
+{
+  "description": "11.219 scale2ref_npp\nUse the NVIDIA Performance Primitives (libnpp) to scale (resize) the input\nvideo, based on a reference video.\n\nSee the scale_npp filter for available options, scale2ref_npp supports the same\nbut uses the reference video instead of the main input as basis. scale2ref_npp\nalso supports the following additional constants for the w and\nh options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_scale2ref_npp",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "ref",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "scale2ref_npp",
+  "options": [
+    {
+      "alias": [
+        "w"
+      ],
+      "default": null,
+      "description": null,
+      "name": "w",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": null,
+      "description": null,
+      "name": "h",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "format"
+      ],
+      "default": "same",
+      "description": null,
+      "name": "format",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "s"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "s",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "interp_algo"
+      ],
+      "default": "NPPI_INTER_CUBIC",
+      "description": null,
+      "name": "interp_algo",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_original_aspect_ratio"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "force_original_aspect_ratio",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_divisible_by"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "force_divisible_by",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "eval"
+      ],
+      "default": "EVAL_MODE_INIT",
+      "description": null,
+      "name": "eval",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "ref",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#scale2ref_005fnpp"
+}

@@ -1,0 +1,179 @@
+{
+  "description": "8.23 afftdn\nDenoise audio samples with FFT.\n\nA description of the accepted parameters follows.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_afftdn",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "afftdn",
+  "options": [
+    {
+      "alias": [
+        "noise_reduction",
+        "nr"
+      ],
+      "default": 12.0,
+      "description": "<dd><p>Set the noise reduction in dB, allowed range is 0.01 to 97.\nDefault value is 12 dB.\n</p>\n</dd>",
+      "name": "noise_reduction",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "noise_floor",
+        "nf"
+      ],
+      "default": -50.0,
+      "description": "<dd><p>Set the noise floor in dB, allowed range is -80 to -20.\nDefault value is -50 dB.\n</p>\n</dd>",
+      "name": "noise_floor",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "noise_type",
+        "nt"
+      ],
+      "default": "WHITE_NOISE",
+      "description": "<dd><p>Set the noise type.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>white, w</samp></dt>\n<dd><p>Select white noise.\n</p>\n</dd>\n<dt><samp>vinyl, v</samp></dt>\n<dd><p>Select vinyl noise.\n</p>\n</dd>\n<dt><samp>shellac, s</samp></dt>\n<dd><p>Select shellac noise.\n</p>\n</dd>\n<dt><samp>custom, c</samp></dt>\n<dd><p>Select custom noise, defined in <code>bn</code> option.\n</p>\n<p>Default value is white noise.\n</p></dd>\n</dl>\n</dd>",
+      "name": "noise_type",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "band_noise",
+        "bn"
+      ],
+      "default": "0",
+      "description": "<dd><p>Set custom band noise profile for every one of 15 bands.\nBands are separated by \u2019 \u2019 or \u2019|\u2019.\n</p>\n</dd>",
+      "name": "band_noise",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "residual_floor",
+        "rf"
+      ],
+      "default": -38.0,
+      "description": "<dd><p>Set the residual floor in dB, allowed range is -80 to -20.\nDefault value is -38 dB.\n</p>\n</dd>",
+      "name": "residual_floor",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "track_noise",
+        "tn"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable noise floor tracking. By default is disabled.\nWith this enabled, noise floor is automatically adjusted.\n</p>\n</dd>",
+      "name": "track_noise",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "track_residual",
+        "tr"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable residual tracking. By default is disabled.\n</p>\n</dd>",
+      "name": "track_residual",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "output_mode",
+        "om"
+      ],
+      "default": "OUT_MODE",
+      "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>input, i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>output, o</samp></dt>\n<dd><p>Pass noise filtered out.\n</p>\n</dd>\n<dt><samp>noise, n</samp></dt>\n<dd><p>Pass only noise.\n</p>\n<p>Default value is <var>output</var>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "output_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "adaptivity",
+        "ad"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set the adaptivity factor, used how fast to adapt gains adjustments per\neach frequency bin. Value <var>0</var> enables instant adaptation, while higher values\nreact much slower.\nAllowed range is from <var>0</var> to <var>1</var>. Default value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "adaptivity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "floor_offset",
+        "fo"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the noise floor offset factor. This option is used to adjust offset applied to measured\nnoise floor. It is only effective when noise floor tracking is enabled.\nAllowed range is from <var>-2.0</var> to <var>2.0</var>. Default value is <var>1.0</var>.\n</p>\n</dd>",
+      "name": "floor_offset",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "noise_link",
+        "nl"
+      ],
+      "default": "MIN_LINK",
+      "description": "<dd><p>Set the noise link used for multichannel audio.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>none</samp></dt>\n<dd><p>Use unchanged channel\u2019s noise floor.\n</p>\n</dd>\n<dt><samp>min</samp></dt>\n<dd><p>Use measured min noise floor of all channels.\n</p>\n</dd>\n<dt><samp>max</samp></dt>\n<dd><p>Use measured max noise floor of all channels.\n</p>\n</dd>\n<dt><samp>average</samp></dt>\n<dd><p>Use measured average noise floor of all channels.\n</p>\n<p>Default value is <var>min</var>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "noise_link",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "band_multiplier",
+        "bm"
+      ],
+      "default": 1.25,
+      "description": "<dd><p>Set the band multiplier factor, used how much to spread bands across frequency bins.\nAllowed range is from <var>0.2</var> to <var>5</var>. Default value is <var>1.25</var>.\n</p>\n</dd>",
+      "name": "band_multiplier",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sample_noise",
+        "sn"
+      ],
+      "default": "SAMPLE_NONE",
+      "description": "<dd><p>Toggle capturing and measurement of noise profile from input audio.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>start, begin</samp></dt>\n<dd><p>Start sample noise capture.\n</p>\n</dd>\n<dt><samp>stop, end</samp></dt>\n<dd><p>Stop sample noise capture and measure new noise band profile.\n</p>\n<p>Default value is <code>none</code>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "sample_noise",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gain_smooth",
+        "gs"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set gain smooth spatial radius, used to smooth gains applied to each frequency bin.\nUseful to reduce random music noise artefacts.\nHigher values increases smoothing of gains.\nAllowed range is from <code>0</code> to <code>50</code>.\nDefault value is <code>0</code>.\n</p></dd>",
+      "name": "gain_smooth",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#afftdn"
+}

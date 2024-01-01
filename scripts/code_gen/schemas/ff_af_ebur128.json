@@ -1,0 +1,190 @@
+{
+  "description": "18.10 ebur128\nEBU R128 scanner filter. This filter takes an audio stream and analyzes its loudness\nlevel. By default, it logs a message at a frequency of 10Hz with the\nMomentary loudness (identified by M), Short-term loudness (S),\nIntegrated loudness (I) and Loudness Range (LRA).\n\nThe filter can only analyze streams which have\nsample format is double-precision floating point. The input stream will be converted to\nthis specification, if needed. Users may need to insert aformat and/or aresample filters\nafter this filter to obtain the original parameters.\n\nThe filter also has a video output (see the video option) with a real\ntime graph to observe the loudness evolution. The graphic contains the logged\nmessage mentioned above, so it is not printed anymore when this option is set,\nunless the verbose logging is set. The main graphing area contains the\nshort-term loudness (3 seconds of analysis), and the gauge on the right is for\nthe momentary loudness (400 milliseconds), but can optionally be configured\nto instead display short-term loudness (see gauge).\n\nThe green area marks a  +/- 1LU target range around the target loudness\n(-23LUFS by default, unless modified through target).\n\nMore information about the Loudness Recommendation EBU R128 on\nhttp://tech.ebu.ch/loudness.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": "['video'] if video else [] + ['audio']",
+  "id": "ff_af_ebur128",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "ebur128",
+  "options": [
+    {
+      "alias": [
+        "video"
+      ],
+      "default": 0,
+      "description": "<dd><p>Activate the video output. The audio stream is passed unchanged whether this\noption is set or no. The video stream will be the first output stream if\nactivated. Default is <code>0</code>.\n</p>\n</dd>",
+      "name": "video",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "default": "640x480",
+      "description": "<dd><p>Set the video size. This option is for video only. For the syntax of this\noption, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault and minimum resolution is <code>640x480</code>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "meter"
+      ],
+      "default": 9,
+      "description": "<dd><p>Set the EBU scale meter. Default is <code>9</code>. Common values are <code>9</code> and\n<code>18</code>, respectively for EBU scale meter +9 and EBU scale meter +18. Any\nother integer value between this range is allowed.\n</p>\n</dd>",
+      "name": "meter",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "framelog"
+      ],
+      "default": -1,
+      "description": "<dd><p>Force the frame logging level.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>quiet</samp>\u2019</dt>\n<dd><p>logging disabled\n</p></dd>\n<dt>\u2018<samp>info</samp>\u2019</dt>\n<dd><p>information logging level\n</p></dd>\n<dt>\u2018<samp>verbose</samp>\u2019</dt>\n<dd><p>verbose logging level\n</p></dd>\n</dl>\n<p>By default, the logging level is set to <var>info</var>. If the <samp>video</samp> or\nthe <samp>metadata</samp> options are set, it switches to <var>verbose</var>.\n</p>\n</dd>",
+      "name": "framelog",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "metadata"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set metadata injection. If set to <code>1</code>, the audio input will be segmented\ninto 100ms output frames, each of them containing various loudness information\nin metadata.  All the metadata keys are prefixed with <code>lavfi.r128.</code>.\n</p>\n<p>Default is <code>0</code>.\n</p>\n</dd>",
+      "name": "metadata",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "peak"
+      ],
+      "default": "PEAK_MODE_NONE",
+      "description": "<dd><p>Set peak mode(s).\n</p>\n<p>Available modes can be cumulated (the option is a <code>flag</code> type). Possible\nvalues are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable any peak mode (default).\n</p></dd>\n<dt>\u2018<samp>sample</samp>\u2019</dt>\n<dd><p>Enable sample-peak mode.\n</p>\n<p>Simple peak mode looking for the higher sample value. It logs a message\nfor sample-peak (identified by <code>SPK</code>).\n</p></dd>\n<dt>\u2018<samp>true</samp>\u2019</dt>\n<dd><p>Enable true-peak mode.\n</p>\n<p>If enabled, the peak lookup is done on an over-sampled version of the input\nstream for better peak accuracy. It logs a message for true-peak.\n(identified by <code>TPK</code>) and true-peak per frame (identified by <code>FTPK</code>).\nThis mode requires a build with <code>libswresample</code>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "peak",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "dualmono"
+      ],
+      "default": 0,
+      "description": "<dd><p>Treat mono input files as \"dual mono\". If a mono file is intended for playback\non a stereo system, its EBU R128 measurement will be perceptually incorrect.\nIf set to <code>true</code>, this option will compensate for this effect.\nMulti-channel input files are not affected by this option.\n</p>\n</dd>",
+      "name": "dualmono",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "panlaw"
+      ],
+      "default": -3.01029995663978,
+      "description": "<dd><p>Set a specific pan law to be used for the measurement of dual mono files.\nThis parameter is optional, and has a default value of -3.01dB.\n</p>\n</dd>",
+      "name": "panlaw",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "target"
+      ],
+      "default": -23,
+      "description": "<dd><p>Set a specific target level (in LUFS) used as relative zero in the visualization.\nThis parameter is optional and has a default value of -23LUFS as specified\nby EBU R128. However, material published online may prefer a level of -16LUFS\n(e.g. for use with podcasts or video platforms).\n</p>\n</dd>",
+      "name": "target",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gauge"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the value displayed by the gauge. Valid values are <code>momentary</code> and s\n<code>shortterm</code>. By default the momentary value will be used, but in certain\nscenarios it may be more useful to observe the short term value instead (e.g.\nlive mixing).\n</p>\n</dd>",
+      "name": "gauge",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": 0,
+      "description": "<dd><p>Sets the display scale for the loudness. Valid parameters are <code>absolute</code>\n(in LUFS) or <code>relative</code> (LU) relative to the target. This only affects the\nvideo output, not the summary or continuous log output.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "integrated"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Read-only exported value for measured integrated loudness, in LUFS.\n</p>\n</dd>",
+      "name": "integrated",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Read-only exported value for measured loudness range, in LU.\n</p>\n</dd>",
+      "name": "range",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lra_low"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Read-only exported value for measured LRA low, in LUFS.\n</p>\n</dd>",
+      "name": "lra_low",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lra_high"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Read-only exported value for measured LRA high, in LUFS.\n</p>\n</dd>",
+      "name": "lra_high",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sample_peak"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Read-only exported value for measured sample peak, in dBFS.\n</p>\n</dd>",
+      "name": "sample_peak",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "true_peak"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Read-only exported value for measured true peak, in dBFS.\n</p></dd>",
+      "name": "true_peak",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#ebur128"
+}

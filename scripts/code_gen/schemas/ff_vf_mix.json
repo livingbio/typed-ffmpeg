@@ -1,0 +1,70 @@
+{
+  "description": "11.167 mix\nMix several video input streams into one video stream.\n\nA description of the accepted options follows.",
+  "filter_type": "vf",
+  "formula_input_typings": "['video'] * inputs",
+  "formula_output_typings": null,
+  "id": "ff_vf_mix",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "mix",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "default": 2,
+      "description": "<dd><p>The number of inputs. If unspecified, it defaults to 2.\n</p>\n</dd>",
+      "name": "inputs",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "weights"
+      ],
+      "default": "1 1",
+      "description": "<dd><p>Specify weight of each input video stream as sequence.\nEach weight is separated by space. If number of weights\nis smaller than number of <var>frames</var> last specified\nweight will be used for all remaining unset weights.\n</p>\n</dd>",
+      "name": "weights",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Specify scale, if it is set it will be multiplied with sum\nof each weight multiplied with pixel values to give final destination\npixel value. By default <var>scale</var> is auto scaled to sum of weights.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "duration"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specify how end of stream is determined.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>longest</samp>\u2019</dt>\n<dd><p>The duration of the longest input. (default)\n</p>\n</dd>\n<dt>\u2018<samp>shortest</samp>\u2019</dt>\n<dd><p>The duration of the shortest input.\n</p>\n</dd>\n<dt>\u2018<samp>first</samp>\u2019</dt>\n<dd><p>The duration of the first input.\n</p></dd>\n</dl>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#mix"
+}

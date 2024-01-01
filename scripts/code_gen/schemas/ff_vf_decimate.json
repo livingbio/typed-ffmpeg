@@ -1,0 +1,100 @@
+{
+  "description": "11.59 decimate\nDrop duplicated frames at regular intervals.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": "['video'] + (['video'] if ppsrc else [])",
+  "formula_output_typings": null,
+  "id": "ff_vf_decimate",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "decimate",
+  "options": [
+    {
+      "alias": [
+        "cycle"
+      ],
+      "default": 5,
+      "description": "<dd><p>Set the number of frames from which one will be dropped. Setting this to\n<var>N</var> means one frame in every batch of <var>N</var> frames will be dropped.\nDefault is <code>5</code>.\n</p>\n</dd>",
+      "name": "cycle",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dupthresh"
+      ],
+      "default": 1.1,
+      "description": "<dd><p>Set the threshold for duplicate detection. If the difference metric for a frame\nis less than or equal to this value, then it is declared as duplicate. Default\nis <code>1.1</code>\n</p>\n</dd>",
+      "name": "dupthresh",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "scthresh"
+      ],
+      "default": 15.0,
+      "description": "<dd><p>Set scene change threshold. Default is <code>15</code>.\n</p>\n</dd>",
+      "name": "scthresh",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blockx"
+      ],
+      "default": 32,
+      "description": "<dd><p>Set the size of the x and y-axis blocks used during metric calculations.\nLarger blocks give better noise suppression, but also give worse detection of\nsmall movements. Must be a power of two. Default is <code>32</code>.\n</p>\n</dd>",
+      "name": "blockx",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "blocky"
+      ],
+      "default": 32,
+      "description": "<dd><p>Set the size of the x and y-axis blocks used during metric calculations.\nLarger blocks give better noise suppression, but also give worse detection of\nsmall movements. Must be a power of two. Default is <code>32</code>.\n</p>\n</dd>",
+      "name": "blocky",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ppsrc"
+      ],
+      "default": 0,
+      "description": "<dd><p>Mark main input as a pre-processed input and activate clean source input\nstream. This allows the input to be pre-processed with various filters to help\nthe metrics calculation while keeping the frame selection lossless. When set to\n<code>1</code>, the first stream is for the pre-processed input, and the second\nstream is the clean source from where the kept frames are chosen. Default is\n<code>0</code>.\n</p>\n</dd>",
+      "name": "ppsrc",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "chroma"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set whether or not chroma is considered in the metric calculations. Default is\n<code>1</code>.\n</p>\n</dd>",
+      "name": "chroma",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "mixed"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set whether or not the input only partially contains content to be decimated.\nDefault is <code>false</code>.\nIf enabled video output stream will be in variable frame rate.\n</p></dd>",
+      "name": "mixed",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#decimate"
+}

@@ -3,6 +3,8 @@
     "description": "VAAPI VPP for tone-mapping",
     "flags": null,
     "id": "ff_vf_tonemap_vaapi",
+    "init": "&tonemap_vaapi_init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

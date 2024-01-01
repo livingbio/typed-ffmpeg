@@ -1,0 +1,105 @@
+{
+  "description": "11.217 scale_npp\nUse the NVIDIA Performance Primitives (libnpp) to perform scaling and/or pixel\nformat conversion on CUDA video frames. Setting the output width and height\nworks in the same way as for the scale filter.\n\nThe following additional options are accepted:\n\nThe values of the w and h options are expressions\ncontaining the following constants:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_scale_npp",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "scale_npp",
+  "options": [
+    {
+      "alias": [
+        "w"
+      ],
+      "default": null,
+      "description": null,
+      "name": "w",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": null,
+      "description": null,
+      "name": "h",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "format"
+      ],
+      "default": "same",
+      "description": "<dd><p>The pixel format of the output CUDA frames. If set to the string \"same\" (the\ndefault), the input format will be kept. Note that automatic format negotiation\nand conversion is not yet supported for hardware frames\n</p>\n</dd>",
+      "name": "format",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "s"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "s",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "interp_algo"
+      ],
+      "default": "NPPI_INTER_CUBIC",
+      "description": "<dd><p>The interpolation algorithm used for resizing. One of the following:\n</p><dl compact=\"compact\">\n<dt><samp>nn</samp></dt>\n<dd><p>Nearest neighbour.\n</p>\n</dd>\n<dt><samp>linear</samp></dt>\n<dt><samp>cubic</samp></dt>\n<dt><samp>cubic2p_bspline</samp></dt>\n<dd><p>2-parameter cubic (B=1, C=0)\n</p>\n</dd>\n<dt><samp>cubic2p_catmullrom</samp></dt>\n<dd><p>2-parameter cubic (B=0, C=1/2)\n</p>\n</dd>\n<dt><samp>cubic2p_b05c03</samp></dt>\n<dd><p>2-parameter cubic (B=1/2, C=3/10)\n</p>\n</dd>\n<dt><samp>super</samp></dt>\n<dd><p>Supersampling\n</p>\n</dd>\n<dt><samp>lanczos</samp></dt>\n</dl>\n</dd>",
+      "name": "interp_algo",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_original_aspect_ratio"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable decreasing or increasing output video width or height if necessary to\nkeep the original aspect ratio. Possible values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>disable</samp>\u2019</dt>\n<dd><p>Scale the video as specified and disable this feature.\n</p>\n</dd>\n<dt>\u2018<samp>decrease</samp>\u2019</dt>\n<dd><p>The output video dimensions will automatically be decreased if needed.\n</p>\n</dd>\n<dt>\u2018<samp>increase</samp>\u2019</dt>\n<dd><p>The output video dimensions will automatically be increased if needed.\n</p>\n</dd>\n</dl>\n<p>One useful instance of this option is that when you know a specific device\u2019s\nmaximum allowed resolution, you can use this to limit the output video to\nthat, while retaining the aspect ratio. For example, device A allows\n1280x720 playback, and your video is 1920x800. Using this option (set it to\ndecrease) and specifying 1280x720 to the command line makes the output\n1280x533.\n</p>\n<p>Please note that this is a different thing than specifying -1 for <samp>w</samp>\nor <samp>h</samp>, you still need to specify the output resolution for this option\nto work.\n</p>\n</dd>",
+      "name": "force_original_aspect_ratio",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_divisible_by"
+      ],
+      "default": 1,
+      "description": "<dd><p>Ensures that both the output dimensions, width and height, are divisible by the\ngiven integer when used together with <samp>force_original_aspect_ratio</samp>. This\nworks similar to using <code>-n</code> in the <samp>w</samp> and <samp>h</samp> options.\n</p>\n<p>This option respects the value set for <samp>force_original_aspect_ratio</samp>,\nincreasing or decreasing the resolution accordingly. The video\u2019s aspect ratio\nmay be slightly modified.\n</p>\n<p>This option can be handy if you need to have a video fit within or exceed\na defined resolution using <samp>force_original_aspect_ratio</samp> but also have\nencoder restrictions on width or height divisibility.\n</p>\n</dd>",
+      "name": "force_divisible_by",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "eval"
+      ],
+      "default": "EVAL_MODE_INIT",
+      "description": "<dd><p>Specify when to evaluate <var>width</var> and <var>height</var> expression. It accepts the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Only evaluate expressions once during the filter initialization or when a command is processed.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame.\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "eval",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#scale_005fnpp"
+}

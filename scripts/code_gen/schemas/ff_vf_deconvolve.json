@@ -1,0 +1,59 @@
+{
+  "description": "11.60 deconvolve\nApply 2D deconvolution of video stream in frequency domain using second stream\nas impulse.\n\nThe filter accepts the following options:\n\n\nThe deconvolve filter also supports the framesync options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_deconvolve",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "impulse",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "deconvolve",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 7,
+      "description": "<dd><p>Set which planes to process.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "impulse"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set which impulse video frames will be processed, can be <var>first</var>\nor <var>all</var>. Default is <var>all</var>.\n</p>\n</dd>",
+      "name": "impulse",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "noise"
+      ],
+      "default": 1e-07,
+      "description": "<dd><p>Set noise when doing divisions. Default is <var>0.0000001</var>. Useful when width\nand height are not same and not power of 2 or if stream prior to convolving\nhad noise.\n</p></dd>",
+      "name": "noise",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#deconvolve"
+}

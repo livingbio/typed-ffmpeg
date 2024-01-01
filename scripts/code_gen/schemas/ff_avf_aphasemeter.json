@@ -1,0 +1,135 @@
+{
+  "description": "18.6 aphasemeter\nMeasures phase of input audio, which is exported as metadata lavfi.aphasemeter.phase,\nrepresenting mean phase of current audio frame. A video output can also be produced and is\nenabled by default. The audio is passed through as first output.\n\nAudio will be rematrixed to stereo if it has a different channel layout. Phase value is in\nrange [-1, 1] where -1 means left and right channels are completely out of phase\nand 1 means channels are in phase.\n\nThe filter accepts the following options, all related to its video output:",
+  "filter_type": "avf",
+  "formula_input_typings": null,
+  "formula_output_typings": "['audio'] + (['video'] if video else [])",
+  "id": "ff_avf_aphasemeter",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "aphasemeter",
+  "options": [
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "800x400",
+      "description": "<dd><p>Set the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>800x400</code>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rc"
+      ],
+      "default": 2,
+      "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "name": "rc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gc"
+      ],
+      "default": 7,
+      "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "name": "gc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bc"
+      ],
+      "default": 1,
+      "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "name": "bc",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mpc"
+      ],
+      "default": "none",
+      "description": "<dd><p>Set color which will be used for drawing median phase. If color is\n<code>none</code> which is default, no median phase value will be drawn.\n</p>\n</dd>",
+      "name": "mpc",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "video"
+      ],
+      "default": 1,
+      "description": "<dd><p>Enable video output. Default is enabled.\n</p></dd>",
+      "name": "video",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "phasing"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "phasing",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "tolerance",
+        "t"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "tolerance",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "angle",
+        "a"
+      ],
+      "default": 170.0,
+      "description": null,
+      "name": "angle",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "default": 2000000,
+      "description": null,
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#aphasemeter"
+}

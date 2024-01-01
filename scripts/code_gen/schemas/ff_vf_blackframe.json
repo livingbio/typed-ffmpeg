@@ -1,0 +1,46 @@
+{
+  "description": "11.14 blackframe\nDetect frames that are (almost) completely black. Can be useful to\ndetect chapter transitions or commercials. Output lines consist of\nthe frame number of the detected frame, the percentage of blackness,\nthe position in the file if known or -1 and the timestamp in seconds.\n\nIn order to display the output lines, you need to set the loglevel at\nleast to the AV_LOG_INFO value.\n\nThis filter exports frame metadata lavfi.blackframe.pblack.\nThe value represents the percentage of pixels in the picture that\nare below the threshold value.\n\nIt accepts the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_blackframe",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "blackframe",
+  "options": [
+    {
+      "alias": [
+        "amount"
+      ],
+      "default": 98,
+      "description": "<dd><p>The percentage of the pixels that have to be below the threshold; it defaults to\n<code>98</code>.\n</p>\n</dd>",
+      "name": "amount",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold",
+        "thresh"
+      ],
+      "default": 32,
+      "description": "<dd><p>The threshold below which a pixel value is considered black; it defaults to\n<code>32</code>.\n</p>\n</dd>",
+      "name": "threshold",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#blackframe"
+}

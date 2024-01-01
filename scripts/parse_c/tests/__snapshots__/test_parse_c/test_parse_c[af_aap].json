@@ -3,6 +3,8 @@
     "description": "Apply Affine Projection algorithm to first audio stream.",
     "flags": "(1 << 17) |\n                      (1 << 2)",
     "id": "ff_af_aap",
+    "init": "init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "input",

@@ -1,0 +1,107 @@
+{
+  "description": "18.29 showwaves\nConvert input audio to a video output, representing the samples waves.\n\nThe filter accepts the following options:",
+  "filter_type": "avf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_avf_showwaves",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "showwaves",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "600x240",
+      "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>600x240</code>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": "MODE_POINT",
+      "description": "<dd><p>Set display mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>point</samp>\u2019</dt>\n<dd><p>Draw a point for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dd><p>Draw a vertical line for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>p2p</samp>\u2019</dt>\n<dd><p>Draw a point for each sample and a line between them.\n</p>\n</dd>\n<dt>\u2018<samp>cline</samp>\u2019</dt>\n<dd><p>Draw a centered vertical line for each sample.\n</p></dd>\n</dl>\n<p>Default value is <code>point</code>.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "n"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the number of samples which are printed on the same column. A\nlarger value will decrease the frame rate. Must be a positive\ninteger. This option can be set only if the value for <var>rate</var>\nis not explicitly specified.\n</p>\n</dd>",
+      "name": "n",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "default": "25",
+      "description": "<dd><p>Set the (approximate) output frame rate. This is done by setting the\noption <var>n</var>. Default value is \"25\".\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "split_channels"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set if channels should be drawn separately or overlap. Default value is 0.\n</p>\n</dd>",
+      "name": "split_channels",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "colors"
+      ],
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
+      "description": "<dd><p>Set colors separated by \u2019|\u2019 which are going to be used for drawing of each channel.\n</p>\n</dd>",
+      "name": "colors",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set amplitude scale.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n</p></dd>\n</dl>\n<p>Default is linear.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "draw"
+      ],
+      "default": "DRAW_SCALE",
+      "description": "<dd><p>Set the draw mode. This is mostly useful to set for high <var>n</var>.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>scale</samp>\u2019</dt>\n<dd><p>Scale pixel values for each drawn sample.\n</p>\n</dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Draw every sample directly.\n</p></dd>\n</dl>\n<p>Default value is <code>scale</code>.\n</p></dd>",
+      "name": "draw",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#showwaves"
+}

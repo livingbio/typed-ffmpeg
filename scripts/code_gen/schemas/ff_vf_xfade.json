@@ -1,0 +1,69 @@
+{
+  "description": "11.288 xfade\nApply cross fade from one input video stream to another input video stream.\nThe cross fade is applied for specified duration.\n\nBoth inputs must be constant frame-rate and have the same resolution, pixel format,\nframe rate and timebase.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_xfade",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "xfade",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "xfade",
+  "options": [
+    {
+      "alias": [
+        "transition"
+      ],
+      "default": "FADE",
+      "description": "<dd><p>Set one of available transition effects:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>custom</samp>\u2019</dt>\n<dt>\u2018<samp>fade</samp>\u2019</dt>\n<dt>\u2018<samp>wipeleft</samp>\u2019</dt>\n<dt>\u2018<samp>wiperight</samp>\u2019</dt>\n<dt>\u2018<samp>wipeup</samp>\u2019</dt>\n<dt>\u2018<samp>wipedown</samp>\u2019</dt>\n<dt>\u2018<samp>slideleft</samp>\u2019</dt>\n<dt>\u2018<samp>slideright</samp>\u2019</dt>\n<dt>\u2018<samp>slideup</samp>\u2019</dt>\n<dt>\u2018<samp>slidedown</samp>\u2019</dt>\n<dt>\u2018<samp>circlecrop</samp>\u2019</dt>\n<dt>\u2018<samp>rectcrop</samp>\u2019</dt>\n<dt>\u2018<samp>distance</samp>\u2019</dt>\n<dt>\u2018<samp>fadeblack</samp>\u2019</dt>\n<dt>\u2018<samp>fadewhite</samp>\u2019</dt>\n<dt>\u2018<samp>radial</samp>\u2019</dt>\n<dt>\u2018<samp>smoothleft</samp>\u2019</dt>\n<dt>\u2018<samp>smoothright</samp>\u2019</dt>\n<dt>\u2018<samp>smoothup</samp>\u2019</dt>\n<dt>\u2018<samp>smoothdown</samp>\u2019</dt>\n<dt>\u2018<samp>circleopen</samp>\u2019</dt>\n<dt>\u2018<samp>circleclose</samp>\u2019</dt>\n<dt>\u2018<samp>vertopen</samp>\u2019</dt>\n<dt>\u2018<samp>vertclose</samp>\u2019</dt>\n<dt>\u2018<samp>horzopen</samp>\u2019</dt>\n<dt>\u2018<samp>horzclose</samp>\u2019</dt>\n<dt>\u2018<samp>dissolve</samp>\u2019</dt>\n<dt>\u2018<samp>pixelize</samp>\u2019</dt>\n<dt>\u2018<samp>diagtl</samp>\u2019</dt>\n<dt>\u2018<samp>diagtr</samp>\u2019</dt>\n<dt>\u2018<samp>diagbl</samp>\u2019</dt>\n<dt>\u2018<samp>diagbr</samp>\u2019</dt>\n<dt>\u2018<samp>hlslice</samp>\u2019</dt>\n<dt>\u2018<samp>hrslice</samp>\u2019</dt>\n<dt>\u2018<samp>vuslice</samp>\u2019</dt>\n<dt>\u2018<samp>vdslice</samp>\u2019</dt>\n<dt>\u2018<samp>hblur</samp>\u2019</dt>\n<dt>\u2018<samp>fadegrays</samp>\u2019</dt>\n<dt>\u2018<samp>wipetl</samp>\u2019</dt>\n<dt>\u2018<samp>wipetr</samp>\u2019</dt>\n<dt>\u2018<samp>wipebl</samp>\u2019</dt>\n<dt>\u2018<samp>wipebr</samp>\u2019</dt>\n<dt>\u2018<samp>squeezeh</samp>\u2019</dt>\n<dt>\u2018<samp>squeezev</samp>\u2019</dt>\n<dt>\u2018<samp>zoomin</samp>\u2019</dt>\n<dt>\u2018<samp>fadefast</samp>\u2019</dt>\n<dt>\u2018<samp>fadeslow</samp>\u2019</dt>\n<dt>\u2018<samp>hlwind</samp>\u2019</dt>\n<dt>\u2018<samp>hrwind</samp>\u2019</dt>\n<dt>\u2018<samp>vuwind</samp>\u2019</dt>\n<dt>\u2018<samp>vdwind</samp>\u2019</dt>\n<dt>\u2018<samp>coverleft</samp>\u2019</dt>\n<dt>\u2018<samp>coverright</samp>\u2019</dt>\n<dt>\u2018<samp>coverup</samp>\u2019</dt>\n<dt>\u2018<samp>coverdown</samp>\u2019</dt>\n<dt>\u2018<samp>revealleft</samp>\u2019</dt>\n<dt>\u2018<samp>revealright</samp>\u2019</dt>\n<dt>\u2018<samp>revealup</samp>\u2019</dt>\n<dt>\u2018<samp>revealdown</samp>\u2019</dt>\n</dl>\n<p>Default transition effect is fade.\n</p>\n</dd>",
+      "name": "transition",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "duration"
+      ],
+      "default": 1000000,
+      "description": "<dd><p>Set cross fade duration in seconds.\nRange is 0 to 60 seconds.\nDefault duration is 1 second.\n</p>\n</dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "offset"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set cross fade start relative to first input stream in seconds.\nDefault offset is 0.\n</p>\n</dd>",
+      "name": "offset",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "expr"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set expression for custom transition effect.\n</p>\n<p>The expressions can use the following variables and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>The coordinates of the current sample.\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>The width and height of the image.\n</p>\n</dd>\n<dt><samp>P</samp></dt>\n<dd><p>Progress of transition effect.\n</p>\n</dd>\n<dt><samp>PLANE</samp></dt>\n<dd><p>Currently processed plane.\n</p>\n</dd>\n<dt><samp>A</samp></dt>\n<dd><p>Return value of first input at current location and plane.\n</p>\n</dd>\n<dt><samp>B</samp></dt>\n<dd><p>Return value of second input at current location and plane.\n</p>\n</dd>\n<dt><samp>a0(x, y)</samp></dt>\n<dt><samp>a1(x, y)</samp></dt>\n<dt><samp>a2(x, y)</samp></dt>\n<dt><samp>a3(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nfirst/second/third/fourth component of first input.\n</p>\n</dd>\n<dt><samp>b0(x, y)</samp></dt>\n<dt><samp>b1(x, y)</samp></dt>\n<dt><samp>b2(x, y)</samp></dt>\n<dt><samp>b3(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nfirst/second/third/fourth component of second input.\n</p></dd>\n</dl>\n</dd>",
+      "name": "expr",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#xfade"
+}

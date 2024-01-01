@@ -1,0 +1,35 @@
+{
+  "description": "11.42 colorspace_cuda\nCUDA accelerated implementation of the colorspace filter.\n\nIt is by no means feature complete compared to the software colorspace filter,\nand at the current time only supports color range conversion between jpeg/full\nand mpeg/limited range.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_colorspace_cuda",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "colorspace_cuda",
+  "options": [
+    {
+      "alias": [
+        "range"
+      ],
+      "default": "AVCOL_RANGE_UNSPECIFIED",
+      "description": "<dd><p>Specify output color range.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>tv</samp>\u2019</dt>\n<dd><p>TV (restricted) range\n</p>\n</dd>\n<dt>\u2018<samp>mpeg</samp>\u2019</dt>\n<dd><p>MPEG (restricted) range\n</p>\n</dd>\n<dt>\u2018<samp>pc</samp>\u2019</dt>\n<dd><p>PC (full) range\n</p>\n</dd>\n<dt>\u2018<samp>jpeg</samp>\u2019</dt>\n<dd><p>JPEG (full) range\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "range",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorspace_005fcuda"
+}

@@ -1,0 +1,65 @@
+{
+  "description": "11.207 removegrain\nThe removegrain filter is a spatial denoiser for progressive video.\n\n\nRange of mode is from 0 to 24. Description of each mode follows:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_removegrain",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "removegrain",
+  "options": [
+    {
+      "alias": [
+        "m0"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set mode for the first plane.\n</p>\n</dd>",
+      "name": "m0",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "m1"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set mode for the second plane.\n</p>\n</dd>",
+      "name": "m1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "m2"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set mode for the third plane.\n</p>\n</dd>",
+      "name": "m2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "m3"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set mode for the fourth plane.\n</p></dd>",
+      "name": "m3",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#removegrain"
+}

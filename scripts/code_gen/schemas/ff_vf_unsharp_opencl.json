@@ -1,0 +1,91 @@
+{
+  "description": "12.17 unsharp_opencl\nSharpen or blur the input video.\n\nIt accepts the following parameters:\n\n\nAll parameters are optional and default to the equivalent of the\nstring \u20195:5:1.0:5:5:0.0\u2019.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_unsharp_opencl",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "unsharp_opencl",
+  "options": [
+    {
+      "alias": [
+        "luma_msize_x",
+        "lx"
+      ],
+      "default": 5.0,
+      "description": "<dd><p>Set the luma matrix horizontal size.\nRange is <code>[1, 23]</code> and default value is <code>5</code>.\n</p>\n</dd>",
+      "name": "luma_msize_x",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "luma_msize_y",
+        "ly"
+      ],
+      "default": 5.0,
+      "description": "<dd><p>Set the luma matrix vertical size.\nRange is <code>[1, 23]</code> and default value is <code>5</code>.\n</p>\n</dd>",
+      "name": "luma_msize_y",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "luma_amount",
+        "la"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the luma effect strength.\nRange is <code>[-10, 10]</code> and default value is <code>1.0</code>.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n</dd>",
+      "name": "luma_amount",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chroma_msize_x",
+        "cx"
+      ],
+      "default": 5.0,
+      "description": "<dd><p>Set the chroma matrix horizontal size.\nRange is <code>[1, 23]</code> and default value is <code>5</code>.\n</p>\n</dd>",
+      "name": "chroma_msize_x",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chroma_msize_y",
+        "cy"
+      ],
+      "default": 5.0,
+      "description": "<dd><p>Set the chroma matrix vertical size.\nRange is <code>[1, 23]</code> and default value is <code>5</code>.\n</p>\n</dd>",
+      "name": "chroma_msize_y",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chroma_amount",
+        "ca"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set the chroma effect strength.\nRange is <code>[-10, 10]</code> and default value is <code>0.0</code>.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n</dd>",
+      "name": "chroma_amount",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#unsharp_005fopencl"
+}

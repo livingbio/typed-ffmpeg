@@ -1,0 +1,35 @@
+{
+  "description": "18.20 setrange\nForce color range for the output video frame.\n\nThe setrange filter marks the color range property for the\noutput frames. It does not change the input frame, but only sets the\ncorresponding property, which affects how the frame is treated by\nfollowing filters.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_setrange",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "setrange",
+  "options": [
+    {
+      "alias": [
+        "range"
+      ],
+      "default": -1,
+      "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color range property.\n</p>\n</dd>\n<dt>\u2018<samp>unspecified, unknown</samp>\u2019</dt>\n<dd><p>Set the color range as unspecified.\n</p>\n</dd>\n<dt>\u2018<samp>limited, tv, mpeg</samp>\u2019</dt>\n<dd><p>Set the color range as limited.\n</p>\n</dd>\n<dt>\u2018<samp>full, pc, jpeg</samp>\u2019</dt>\n<dd><p>Set the color range as full.\n</p></dd>\n</dl>\n</dd>",
+      "name": "range",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#setrange"
+}

@@ -3,6 +3,8 @@
     "description": "Apply Finite Impulse Response filter with supplied coefficients in additional stream(s).",
     "flags": "(1 << 0) |\n                     (1 << 17) |\n                     (1 << 2)",
     "id": "ff_af_afir",
+    "init": "init",
+    "init_src": "static __attribute__((cold)) void uninit(AVFilterContext *ctx)\n{\n    AudioFIRContext *s = ctx->priv;\n\n    av_freep(&s->fdsp);\n    av_freep(&s->ch_gain);\n    av_freep(&s->loading);\n\n    for (int i = 0; i < s->nb_irs; i++) {\n        for (int j = 0; j < s->nb_segments[i]; j++)\n            uninit_segment(ctx, &s->seg[i][j]);\n\n        av_frame_free(&s->ir[i]);\n        av_frame_free(&s->norm_ir[i]);\n    }\n\n    av_frame_free(&s->fadein[0]);\n    av_frame_free(&s->fadein[1]);\n\n    av_frame_free(&s->xfade[0]);\n    av_frame_free(&s->xfade[1]);\n}",
     "input_filter_pads": [],
     "inputs": null,
     "name": "afir",

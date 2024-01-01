@@ -1,0 +1,146 @@
+{
+  "description": "8.71 bass, lowshelf\nBoost or cut the bass (lower) frequencies of the audio using a two-pole\nshelving filter with a response similar to that of a standard\nhi-fi\u2019s tone-controls. This is also known as shelving equalisation (EQ).\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_lowshelf",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "lowshelf",
+  "options": [
+    {
+      "alias": [
+        "frequency",
+        "f"
+      ],
+      "default": 100.0,
+      "description": "<dd><p>Set the filter\u2019s central frequency and so can be used\nto extend or reduce the frequency range to be boosted or cut.\nThe default value is <code>100</code> Hz.\n</p>\n</dd>",
+      "name": "frequency",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "width_type",
+        "t"
+      ],
+      "default": "QFACTOR",
+      "description": "<dd><p>Set method to specify band-width of filter.\n</p><dl compact=\"compact\">\n<dt><samp>h</samp></dt>\n<dd><p>Hz\n</p></dd>\n<dt><samp>q</samp></dt>\n<dd><p>Q-Factor\n</p></dd>\n<dt><samp>o</samp></dt>\n<dd><p>octave\n</p></dd>\n<dt><samp>s</samp></dt>\n<dd><p>slope\n</p></dd>\n<dt><samp>k</samp></dt>\n<dd><p>kHz\n</p></dd>\n</dl>\n</dd>",
+      "name": "width_type",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "width",
+        "w"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Determine how steep is the filter\u2019s shelf transition.\n</p>\n</dd>",
+      "name": "width",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gain",
+        "g"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Give the gain at 0 Hz. Its useful range is about -20\n(for a large cut) to +20 (for a large boost).\nBeware of clipping when using a positive gain.\n</p>\n</dd>",
+      "name": "gain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "poles",
+        "p"
+      ],
+      "default": 2,
+      "description": "<dd><p>Set number of poles. Default is 2.\n</p>\n</dd>",
+      "name": "poles",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mix",
+        "m"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>",
+      "name": "mix",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "channels",
+        "c"
+      ],
+      "default": "all",
+      "description": "<dd><p>Specify which channels to filter, by default all available are filtered.\n</p>\n</dd>",
+      "name": "channels",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "normalize",
+        "n"
+      ],
+      "default": 0,
+      "description": "<dd><p>Normalize biquad coefficients, by default is disabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>",
+      "name": "normalize",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "transform",
+        "a"
+      ],
+      "default": "DI",
+      "description": "<dd><p>Set transform type of IIR filter.\n</p><dl compact=\"compact\">\n<dt><samp>di</samp></dt>\n<dt><samp>dii</samp></dt>\n<dt><samp>tdi</samp></dt>\n<dt><samp>tdii</samp></dt>\n<dt><samp>latt</samp></dt>\n<dt><samp>svf</samp></dt>\n<dt><samp>zdf</samp></dt>\n</dl>\n</dd>",
+      "name": "transform",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "precision",
+        "r"
+      ],
+      "default": -1,
+      "description": "<dd><p>Set precision of filtering.\n</p><dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Pick automatic sample format depending on surround filters.\n</p></dd>\n<dt><samp>s16</samp></dt>\n<dd><p>Always use signed 16-bit.\n</p></dd>\n<dt><samp>s32</samp></dt>\n<dd><p>Always use signed 32-bit.\n</p></dd>\n<dt><samp>f32</samp></dt>\n<dd><p>Always use float 32-bit.\n</p></dd>\n<dt><samp>f64</samp></dt>\n<dd><p>Always use float 64-bit.\n</p></dd>\n</dl>\n</dd>",
+      "name": "precision",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "blocksize",
+        "b"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "blocksize",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf"
+}

@@ -1,0 +1,45 @@
+{
+  "description": "14.4 chromaber_vulkan\nApply an effect that emulates chromatic aberration. Works best with RGB inputs,\nbut provides a similar effect with YCbCr inputs too.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_chromaber_vulkan",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "chromaber_vulkan",
+  "options": [
+    {
+      "alias": [
+        "dist_x"
+      ],
+      "default": "0.0f",
+      "description": "<dd><p>Horizontal displacement multiplier. Each chroma pixel\u2019s position will be multiplied\nby this amount, starting from the center of the image. Default is <code>0</code>.\n</p>\n</dd>",
+      "name": "dist_x",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "dist_y"
+      ],
+      "default": "0.0f",
+      "description": "<dd><p>Similarly, this sets the vertical displacement multiplier. Default is <code>0</code>.\n</p>\n</dd>",
+      "name": "dist_y",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#chromaber_005fvulkan"
+}

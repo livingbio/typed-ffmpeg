@@ -1,0 +1,73 @@
+{
+  "description": "11.39 colormap\nApply custom color maps to video stream.\n\nThis filter needs three input video streams.\nFirst stream is video stream that is going to be filtered out.\nSecond and third video stream specify color patches for source\ncolor to target color mapping.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_colormap",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "source",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "target",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "colormap",
+  "options": [
+    {
+      "alias": [
+        "patch_size"
+      ],
+      "default": "64x64",
+      "description": "<dd><p>Set the source and target video stream patch size in pixels.\n</p>\n</dd>",
+      "name": "patch_size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "nb_patches"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the max number of used patches from source and target video stream.\nDefault value is number of patches available in additional video streams.\nMax allowed number of patches is <code>64</code>.\n</p>\n</dd>",
+      "name": "nb_patches",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set the adjustments used for target colors. Can be <code>relative</code> or <code>absolute</code>.\nDefaults is <code>absolute</code>.\n</p>\n</dd>",
+      "name": "type",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "kernel"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the kernel used to measure color differences between mapped colors.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dt>\u2018<samp>weuclidean</samp>\u2019</dt>\n</dl>\n<p>Default is <code>euclidean</code>.\n</p></dd>",
+      "name": "kernel",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colormap"
+}

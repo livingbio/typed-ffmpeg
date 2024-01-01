@@ -1,0 +1,79 @@
+{
+  "description": "11.213 rotate\nRotate video by an arbitrary angle expressed in radians.\n\nThe filter accepts the following options:\n\nA description of the optional parameters follows.\n\nThe expressions for the angle and the output size can contain the\nfollowing constants and functions:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_rotate",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "rotate",
+  "options": [
+    {
+      "alias": [
+        "angle",
+        "a"
+      ],
+      "default": "0",
+      "description": "<dd><p>Set an expression for the angle by which to rotate the input video\nclockwise, expressed as a number of radians. A negative value will\nresult in a counter-clockwise rotation. By default it is set to \"0\".\n</p>\n<p>This expression is evaluated for each frame.\n</p>\n</dd>",
+      "name": "angle",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "out_w",
+        "ow"
+      ],
+      "default": "iw",
+      "description": "<dd><p>Set the output width expression, default value is \"iw\".\nThis expression is evaluated just once during configuration.\n</p>\n</dd>",
+      "name": "out_w",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "out_h",
+        "oh"
+      ],
+      "default": "ih",
+      "description": "<dd><p>Set the output height expression, default value is \"ih\".\nThis expression is evaluated just once during configuration.\n</p>\n</dd>",
+      "name": "out_h",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fillcolor",
+        "c"
+      ],
+      "default": "black",
+      "description": "<dd><p>Set the color used to fill the output area not covered by the rotated\nimage. For the general syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nIf the special value \"none\" is selected then no\nbackground is printed (useful for example if the background is never shown).\n</p>\n<p>Default value is \"black\".\n</p></dd>",
+      "name": "fillcolor",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "bilinear"
+      ],
+      "default": 1,
+      "description": "<dd><p>Enable bilinear interpolation if set to 1, a value of 0 disables\nit. Default value is 1.\n</p>\n</dd>",
+      "name": "bilinear",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#rotate"
+}

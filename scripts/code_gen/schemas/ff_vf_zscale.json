@@ -1,0 +1,232 @@
+{
+  "description": "11.295 zscale\nScale (resize) the input video, using the z.lib library:\nhttps://github.com/sekrit-twc/zimg. To enable compilation of this\nfilter, you need to configure FFmpeg with --enable-libzimg.\n\nThe zscale filter forces the output display aspect ratio to be the same\nas the input, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by\nthe next filter, the zscale filter will convert the input to the\nrequested format.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_zscale",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "zscale",
+  "options": [
+    {
+      "alias": [
+        "w",
+        "width"
+      ],
+      "default": null,
+      "description": null,
+      "name": "w",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "h",
+        "height"
+      ],
+      "default": null,
+      "description": null,
+      "name": "h",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "size",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "dither",
+        "d"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "dither",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "filter",
+        "f"
+      ],
+      "default": "ZIMG_RESIZE_BILINEAR",
+      "description": null,
+      "name": "filter",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "out_range",
+        "range",
+        "r"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "out_range",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "primaries",
+        "p"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "primaries",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "transfer",
+        "t"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "transfer",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "matrix",
+        "m"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "matrix",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "in_range",
+        "rangein",
+        "rin"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "in_range",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "primariesin",
+        "pin"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "primariesin",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "transferin",
+        "tin"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "transferin",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "matrixin",
+        "min"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "matrixin",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "chromal",
+        "c"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "chromal",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "chromalin",
+        "cin"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "chromalin",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "npl"
+      ],
+      "default": "__builtin_nanf(\"0x7fc00000\")",
+      "description": null,
+      "name": "npl",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "agamma"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "agamma",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "param_a"
+      ],
+      "default": "__builtin_nanf(\"0x7fc00000\")",
+      "description": null,
+      "name": "param_a",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "param_b"
+      ],
+      "default": "__builtin_nanf(\"0x7fc00000\")",
+      "description": null,
+      "name": "param_b",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#zscale"
+}

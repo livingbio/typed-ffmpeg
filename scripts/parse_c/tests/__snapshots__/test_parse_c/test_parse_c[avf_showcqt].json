@@ -3,6 +3,8 @@
     "description": "Convert input audio to a CQT (Constant/Clamped Q Transform) spectrum video output.",
     "flags": null,
     "id": "ff_avf_showcqt",
+    "init": "init",
+    "init_src": null,
     "input_filter_pads": [
       {
         "name": "default",

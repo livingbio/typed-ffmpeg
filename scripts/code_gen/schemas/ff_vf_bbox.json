@@ -1,0 +1,35 @@
+{
+  "description": "11.9 bbox\nCompute the bounding box for the non-black pixels in the input frame\nluma plane.\n\nThis filter computes the bounding box containing all the pixels with a\nluma value greater than the minimum allowed value.\nThe parameters describing the bounding box are printed on the filter\nlog.\n\nThe filter accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_bbox",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "bbox",
+  "options": [
+    {
+      "alias": [
+        "min_val"
+      ],
+      "default": 16,
+      "description": "<dd><p>Set the minimal luma value. Default is <code>16</code>.\n</p></dd>",
+      "name": "min_val",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#bbox"
+}

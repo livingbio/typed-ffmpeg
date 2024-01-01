@@ -1,0 +1,39 @@
+{
+  "description": "11.165 midequalizer\nApply Midway Image Equalization effect using two video streams.\n\nMidway Image Equalization adjusts a pair of images to have the same\nhistogram, while maintaining their dynamics as much as possible. It\u2019s\nuseful for e.g. matching exposures from a pair of stereo cameras.\n\nThis filter has two inputs and one output, which must be of same pixel format, but\nmay be of different sizes. The output of filter is first input adjusted with\nmidway histogram of both inputs.\n\nThis filter accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_midequalizer",
+  "input_stream_typings": [
+    {
+      "name": "in0",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "in1",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "midequalizer",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": "0xF",
+      "description": "<dd><p>Set which planes to process. Default is <code>15</code>, which is all available planes.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#midequalizer"
+}

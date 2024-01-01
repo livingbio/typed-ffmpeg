@@ -1,0 +1,168 @@
+{
+  "description": "8.85 dynaudnorm\nDynamic Audio Normalizer.\n\nThis filter applies a certain amount of gain to the input audio in order\nto bring its peak magnitude to a target level (e.g. 0 dBFS). However, in\ncontrast to more \"simple\" normalization algorithms, the Dynamic Audio\nNormalizer *dynamically* re-adjusts the gain factor to the input audio.\nThis allows for applying extra gain to the \"quiet\" sections of the audio\nwhile avoiding distortions or clipping the \"loud\" sections. In other words:\nThe Dynamic Audio Normalizer will \"even out\" the volume of quiet and loud\nsections, in the sense that the volume of each section is brought to the\nsame target level. Note, however, that the Dynamic Audio Normalizer achieves\nthis goal *without* applying \"dynamic range compressing\". It will retain 100%\nof the dynamic range *within* each section of the audio file.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_dynaudnorm",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "dynaudnorm",
+  "options": [
+    {
+      "alias": [
+        "framelen",
+        "f"
+      ],
+      "default": 500,
+      "description": null,
+      "name": "framelen",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gausssize",
+        "g"
+      ],
+      "default": 31,
+      "description": null,
+      "name": "gausssize",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "peak",
+        "p"
+      ],
+      "default": 0.95,
+      "description": null,
+      "name": "peak",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "maxgain",
+        "m"
+      ],
+      "default": 10.0,
+      "description": null,
+      "name": "maxgain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "targetrms",
+        "r"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "targetrms",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "coupling",
+        "n"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "coupling",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "correctdc",
+        "c"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "correctdc",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "altboundary",
+        "b"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "altboundary",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "compress",
+        "s"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "compress",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "threshold",
+        "t"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "threshold",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "channels",
+        "h"
+      ],
+      "default": "all",
+      "description": null,
+      "name": "channels",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "overlap",
+        "o"
+      ],
+      "default": 0.0,
+      "description": null,
+      "name": "overlap",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "curve",
+        "v"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "curve",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#dynaudnorm"
+}

@@ -1,0 +1,115 @@
+{
+  "description": "11.90 fftdnoiz\nDenoise frames using 3D FFT (frequency domain filtering).\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_fftdnoiz",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "fftdnoiz",
+  "options": [
+    {
+      "alias": [
+        "sigma"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set the noise sigma constant. This sets denoising strength.\nDefault value is 1. Allowed range is from 0 to 30.\nUsing very high sigma with low overlap may give blocking artifacts.\n</p>\n</dd>",
+      "name": "sigma",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "amount"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set amount of denoising. By default all detected noise is reduced.\nDefault value is 1. Allowed range is from 0 to 1.\n</p>\n</dd>",
+      "name": "amount",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "block"
+      ],
+      "default": 32,
+      "description": "<dd><p>Set size of block in pixels, Default is 32, can be 8 to 256.\n</p>\n</dd>",
+      "name": "block",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set block overlap. Default is 0.5. Allowed range is from 0.2 to 0.8.\n</p>\n</dd>",
+      "name": "overlap",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "method"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set denoising method. Default is <code>wiener</code>, can also be <code>hard</code>.\n</p>\n</dd>",
+      "name": "method",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "prev"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set number of previous frames to use for denoising. By default is set to 0.\n</p>\n</dd>",
+      "name": "prev",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "next"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set number of next frames to to use for denoising. By default is set to 0.\n</p>\n</dd>",
+      "name": "next",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 7,
+      "description": "<dd><p>Set planes which will be filtered, by default are all available filtered\nexcept alpha.\n</p></dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "window"
+      ],
+      "default": "WFUNC_HANNING",
+      "description": null,
+      "name": "window",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#fftdnoiz"
+}

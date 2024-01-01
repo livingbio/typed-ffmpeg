@@ -1,0 +1,125 @@
+{
+  "description": "8.104 rubberband\nApply time-stretching and pitch-shifting with librubberband.\n\nTo enable compilation of this filter, you need to configure FFmpeg with\n--enable-librubberband.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_rubberband",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "rubberband",
+  "options": [
+    {
+      "alias": [
+        "tempo"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set tempo scale factor.\n</p>\n</dd>",
+      "name": "tempo",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "pitch"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set pitch scale factor.\n</p>\n</dd>",
+      "name": "pitch",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "transients"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set transients detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>crisp</var></dt>\n<dt><var>mixed</var></dt>\n<dt><var>smooth</var></dt>\n</dl>\n</dd>",
+      "name": "transients",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "detector"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>compound</var></dt>\n<dt><var>percussive</var></dt>\n<dt><var>soft</var></dt>\n</dl>\n</dd>",
+      "name": "detector",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "phase"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set phase.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>laminar</var></dt>\n<dt><var>independent</var></dt>\n</dl>\n</dd>",
+      "name": "phase",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "window"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set processing window size.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>standard</var></dt>\n<dt><var>short</var></dt>\n<dt><var>long</var></dt>\n</dl>\n</dd>",
+      "name": "window",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "smoothing"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set smoothing.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>off</var></dt>\n<dt><var>on</var></dt>\n</dl>\n</dd>",
+      "name": "smoothing",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "formant"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable formant preservation when shift pitching.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>shifted</var></dt>\n<dt><var>preserved</var></dt>\n</dl>\n</dd>",
+      "name": "formant",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pitchq"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set pitch quality.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>quality</var></dt>\n<dt><var>speed</var></dt>\n<dt><var>consistency</var></dt>\n</dl>\n</dd>",
+      "name": "pitchq",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "channels"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set channels.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>apart</var></dt>\n<dt><var>together</var></dt>\n</dl>\n</dd>",
+      "name": "channels",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#rubberband"
+}

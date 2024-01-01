@@ -1,0 +1,28 @@
+{
+  "description": "11.3 alphamerge\nAdd or replace the alpha component of the primary input with the\ngrayscale value of a second input. This is intended for use with\nalphaextract to allow the transmission or storage of frame\nsequences that have alpha in a format that doesn\u2019t support an alpha\nchannel.\n\nFor example, to reconstruct full frames from a normal YUV-encoded video\nand a separate video created with alphaextract, you might use:\n\nmovie=in_alpha.mkv [alpha]; [in][alpha] alphamerge [out]",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_alphamerge",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "alpha",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "alphamerge",
+  "options": [],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#alphamerge"
+}

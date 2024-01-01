@@ -1,0 +1,79 @@
+{
+  "description": "8.49 arls\nApply Recursive Least Squares algorithm to the first audio stream using the second audio stream.\n\nThis adaptive filter is used to mimic a desired filter by recursively finding the filter coefficients that\nrelate to producing the minimal weighted linear least squares cost function of the error signal (difference\nbetween the desired, 2nd input audio stream and the actual signal, the 1st input audio stream).\n\nA description of the accepted options follows.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_arls",
+  "input_stream_typings": [
+    {
+      "name": "input",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    },
+    {
+      "name": "desired",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "arls",
+  "options": [
+    {
+      "alias": [
+        "order"
+      ],
+      "default": 16,
+      "description": "<dd><p>Set the filter order.\n</p>\n</dd>",
+      "name": "order",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lambda"
+      ],
+      "default": "1.f",
+      "description": "<dd><p>Set the forgetting factor.\n</p>\n</dd>",
+      "name": "lambda",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "delta"
+      ],
+      "default": "2.f",
+      "description": "<dd><p>Set the coefficient to initialize internal covariance matrix.\n</p>\n</dd>",
+      "name": "delta",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "out_mode"
+      ],
+      "default": "OUT_MODE",
+      "description": "<dd><p>Set the filter output samples. It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass the 1st input.\n</p>\n</dd>\n<dt><samp>d</samp></dt>\n<dd><p>Pass the 2nd input.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass difference between desired, 2nd input and error signal estimate.\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>Pass difference between input, 1st input and error signal estimate.\n</p>\n</dd>\n<dt><samp>e</samp></dt>\n<dd><p>Pass error signal estimated samples.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "out_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "precision"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n</dd>",
+      "name": "precision",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#arls"
+}

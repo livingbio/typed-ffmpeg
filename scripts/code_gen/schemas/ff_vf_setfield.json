@@ -1,0 +1,35 @@
+{
+  "description": "11.227 setfield\nForce field for the output video frame.\n\nThe setfield filter marks the interlace type field for the\noutput frames. It does not change the input frame, but only sets the\ncorresponding property, which affects how the frame is treated by\nfollowing filters (e.g. fieldorder or yadif).\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_setfield",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "setfield",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": "MODE_AUTO",
+      "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same field property.\n</p>\n</dd>\n<dt>\u2018<samp>bff</samp>\u2019</dt>\n<dd><p>Mark the frame as bottom-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>tff</samp>\u2019</dt>\n<dd><p>Mark the frame as top-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>prog</samp>\u2019</dt>\n<dd><p>Mark the frame as progressive.\n</p></dd>\n</dl>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#setfield"
+}

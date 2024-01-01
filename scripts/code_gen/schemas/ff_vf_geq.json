@@ -1,0 +1,113 @@
+{
+  "description": "11.110 geq\nApply generic equation to each pixel.\n\nThe filter accepts the following options:\n\n\nThe colorspace is selected according to the specified options. If one\nof the lum_expr, cb_expr, or cr_expr\noptions is specified, the filter will automatically select a YCbCr\ncolorspace. If one of the red_expr, green_expr, or\nblue_expr options is specified, it will select an RGB\ncolorspace.\n\nIf one of the chrominance expression is not defined, it falls back on the other\none. If no alpha expression is specified it will evaluate to opaque value.\nIf none of chrominance expressions are specified, they will evaluate\nto the luma expression.\n\nThe expressions can use the following variables and functions:\n\n\nFor functions, if x and y are outside the area, the value will be\nautomatically clipped to the closer edge.\n\nPlease note that this filter can use multiple threads in which case each slice\nwill have its own expression state. If you want to use only a single expression\nstate because your expressions depend on previous state then you should limit\nthe number of filter threads to 1.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_geq",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "geq",
+  "options": [
+    {
+      "alias": [
+        "lum_expr",
+        "lum"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the luma expression.\n</p></dd>",
+      "name": "lum_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "cb_expr",
+        "cb"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the chrominance blue expression.\n</p></dd>",
+      "name": "cb_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "cr_expr",
+        "cr"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the chrominance red expression.\n</p></dd>",
+      "name": "cr_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "alpha_expr",
+        "a"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the alpha expression.\n</p></dd>",
+      "name": "alpha_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "red_expr",
+        "r"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the red expression.\n</p></dd>",
+      "name": "red_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "green_expr",
+        "g"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the green expression.\n</p></dd>",
+      "name": "green_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "blue_expr",
+        "b"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the blue expression.\n</p></dd>",
+      "name": "blue_expr",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "interpolation",
+        "i"
+      ],
+      "default": "INTERP_BILINEAR",
+      "description": null,
+      "name": "interpolation",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#geq"
+}

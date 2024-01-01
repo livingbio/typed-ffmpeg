@@ -1,0 +1,99 @@
+{
+  "description": "11.145 libvmaf\nCalculate the VMAF (Video Multi-Method Assessment Fusion) score for a\nreference/distorted pair of input videos.\n\nThe first input is the distorted video, and the second input is the reference video.\n\nThe obtained VMAF score is printed through the logging system.\n\nIt requires Netflix\u2019s vmaf library (libvmaf) as a pre-requisite.\nAfter installing the library it can be enabled using:\n./configure --enable-libvmaf.\n\nThe filter has following options:\n\n\nThis filter also supports the framesync options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_libvmaf",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "reference",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "libvmaf",
+  "options": [
+    {
+      "alias": [
+        "log_path"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the file path to be used to store log files.\n</p>\n</dd>",
+      "name": "log_path",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "log_fmt"
+      ],
+      "default": "xml",
+      "description": "<dd><p>Set the format of the log file (xml, json, csv, or sub).\n</p>\n</dd>",
+      "name": "log_fmt",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "pool"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the pool method to be used for computing vmaf.\nOptions are <code>min</code>, <code>harmonic_mean</code> or <code>mean</code> (default).\n</p>\n</dd>",
+      "name": "pool",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "n_threads"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set number of threads to be used when initializing libvmaf.\nDefault value: <code>0</code>, no threads.\n</p>\n</dd>",
+      "name": "n_threads",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "n_subsample"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set frame subsampling interval to be used.\n</p></dd>",
+      "name": "n_subsample",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "model"
+      ],
+      "default": "version=vmaf_v0.6.1",
+      "description": "<dd><p>A \u2018|\u2018 delimited list of vmaf models. Each model can be configured with a number of parameters.\nDefault value: <code>\"version=vmaf_v0.6.1\"</code>\n</p>\n</dd>",
+      "name": "model",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "feature"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>A \u2018|\u2018 delimited list of features. Each feature can be configured with a number of parameters.\n</p>\n</dd>",
+      "name": "feature",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#libvmaf"
+}

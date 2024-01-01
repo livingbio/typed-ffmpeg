@@ -1,0 +1,55 @@
+{
+  "description": "8.62 asupercut\nCut super frequencies.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_asupercut",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "asupercut",
+  "options": [
+    {
+      "alias": [
+        "cutoff"
+      ],
+      "default": 20000.0,
+      "description": "<dd><p>Set cutoff frequency in Hertz. Allowed range is 20000 to 192000.\nDefault value is 20000.\n</p>\n</dd>",
+      "name": "cutoff",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "order"
+      ],
+      "default": 10,
+      "description": "<dd><p>Set filter order. Available values are from 3 to 20.\nDefault value is 10.\n</p>\n</dd>",
+      "name": "order",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "level"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p></dd>",
+      "name": "level",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asupercut"
+}

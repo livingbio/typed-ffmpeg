@@ -1,0 +1,95 @@
+{
+  "description": "11.91 fftfilt\nApply arbitrary expressions to samples in frequency domain",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_fftfilt",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "fftfilt",
+  "options": [
+    {
+      "alias": [
+        "dc_Y"
+      ],
+      "default": 0,
+      "description": "<dd><p>Adjust the dc value (gain) of the luma plane of the image. The filter\naccepts an integer value in range <code>0</code> to <code>1000</code>. The default\nvalue is set to <code>0</code>.\n</p>\n</dd>",
+      "name": "dc_Y",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dc_U"
+      ],
+      "default": 0,
+      "description": "<dd><p>Adjust the dc value (gain) of the 1st chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>",
+      "name": "dc_U",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dc_V"
+      ],
+      "default": 0,
+      "description": "<dd><p>Adjust the dc value (gain) of the 2nd chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>",
+      "name": "dc_V",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "weight_Y"
+      ],
+      "default": "1",
+      "description": "<dd><p>Set the frequency domain weight expression for the luma plane.\n</p>\n</dd>",
+      "name": "weight_Y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "weight_U"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the frequency domain weight expression for the 1st chroma plane.\n</p>\n</dd>",
+      "name": "weight_U",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "weight_V"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set the frequency domain weight expression for the 2nd chroma plane.\n</p>\n</dd>",
+      "name": "weight_V",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "eval"
+      ],
+      "default": "EVAL_MODE_INIT",
+      "description": "<dd><p>Set when the expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Only evaluate expressions once during the filter initialization.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p>\n<p>The filter accepts the following variables:\n</p></dd>",
+      "name": "eval",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#fftfilt"
+}

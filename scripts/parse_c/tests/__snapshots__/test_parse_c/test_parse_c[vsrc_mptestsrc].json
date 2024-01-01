@@ -3,6 +3,8 @@
     "description": "Generate various test pattern.",
     "flags": null,
     "id": "ff_vsrc_mptestsrc",
+    "init": "init",
+    "init_src": null,
     "input_filter_pads": [],
     "inputs": "((void*)0)",
     "name": "mptestsrc",

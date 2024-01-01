@@ -1,0 +1,55 @@
+{
+  "description": "11.118 histeq\nThis filter applies a global color histogram equalization on a\nper-frame basis.\n\nIt can be used to correct video that has a compressed range of pixel\nintensities.  The filter redistributes the pixel intensities to\nequalize their distribution across the intensity range. It may be\nviewed as an \"automatically adjusting contrast filter\". This filter is\nuseful only for correcting degraded or poorly captured source\nvideo.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_histeq",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "histeq",
+  "options": [
+    {
+      "alias": [
+        "strength"
+      ],
+      "default": 0.2,
+      "description": "<dd><p>Determine the amount of equalization to be applied.  As the strength\nis reduced, the distribution of pixel intensities more-and-more\napproaches that of the input frame. The value must be a float number\nin the range [0,1] and defaults to 0.200.\n</p>\n</dd>",
+      "name": "strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "intensity"
+      ],
+      "default": 0.21,
+      "description": "<dd><p>Set the maximum intensity that can generated and scale the output\nvalues appropriately.  The strength should be set as desired and then\nthe intensity can be limited if needed to avoid washing-out. The value\nmust be a float number in the range [0,1] and defaults to 0.210.\n</p>\n</dd>",
+      "name": "intensity",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "antibanding"
+      ],
+      "default": "HISTEQ_ANTIBANDING_NONE",
+      "description": "<dd><p>Set the antibanding level. If enabled the filter will randomly vary\nthe luminance of output pixels by a small amount to avoid banding of\nthe histogram. Possible values are <code>none</code>, <code>weak</code> or\n<code>strong</code>. It defaults to <code>none</code>.\n</p></dd>",
+      "name": "antibanding",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#histeq"
+}

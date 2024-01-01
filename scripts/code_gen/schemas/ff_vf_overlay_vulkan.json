@@ -1,0 +1,49 @@
+{
+  "description": "14.11 overlay_vulkan\nOverlay one video on top of another.\n\nIt takes two inputs and has one output. The first input is the \"main\" video on which the second input is overlaid.\nThis filter requires all inputs to use the same pixel format. So, format conversion may be needed.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_overlay_vulkan",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "overlay",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "overlay_vulkan",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the x coordinate of the overlaid video on the main video.\nDefault value is <code>0</code>.\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the y coordinate of the overlaid video on the main video.\nDefault value is <code>0</code>.\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvulkan"
+}

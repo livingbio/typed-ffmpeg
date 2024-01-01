@@ -1,15 +1,17 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Any, Iterable
+from typing import TYPE_CHECKING, Any, Iterable, Mapping
 
 from pydantic import BaseModel
+
+from .schema import Default
 
 if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
 
 
-def convert_kwargs_to_cmd_line_args(kwargs: dict[str, str | int | float | bool | None]) -> list[str]:
+def convert_kwargs_to_cmd_line_args(kwargs: Mapping[str, str | int | float | bool | None]) -> list[str]:
     """Helper function to build command line arguments out of dict."""
     args = []
     for k in sorted(kwargs.keys()):
@@ -29,7 +31,7 @@ def convert_kwargs_to_cmd_line_args(kwargs: dict[str, str | int | float | bool |
 class Node(BaseModel, ABC):
     name: str
     args: list[str] = []
-    kwargs: dict[str, str | int | float | bool | None] = {}
+    kwargs: Mapping[str, Default | str | int | float | bool | None] = {}
 
     @abstractmethod
     def compile(self) -> list[str]:
@@ -86,11 +88,17 @@ class InputNode(Node):
         return FilterableStream(node=self, label=label)
 
     def compile(self) -> list[str]:
-        return convert_kwargs_to_cmd_line_args(self.kwargs)
+        raise NotImplemented
+
+    #     return convert_kwargs_to_cmd_line_args(self.kwargs)
 
 
 class FilterNode(InputNode):
     inputs: list[FilterableStream]
+    formula_input_typings: str | None = None
+    formula_output_typings: str | None = None
+    input_typings: list[str] = []
+    output_typings: list[str] = []
 
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
@@ -152,6 +160,3 @@ def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream
             raise ValueError("Can't specify both `format` and `f` kwargs")
         kwargs["format"] = fmt
     return InputNode(name=input.__name__, kwargs=kwargs).stream()
-
-
-input("a.mp4").video.crop(x="10", y="20").output(filename="b.mp4").global_args("y").overwrite_output().run()

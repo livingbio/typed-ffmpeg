@@ -1,0 +1,65 @@
+{
+  "description": "8.82 deesser\nApply de-essing to the audio samples.",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_deesser",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "deesser",
+  "options": [
+    {
+      "alias": [
+        "i"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set intensity for triggering de-essing. Allowed range is from 0 to 1.\nDefault is 0.\n</p>\n</dd>",
+      "name": "i",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "m"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set amount of ducking on treble part of sound. Allowed range is from 0 to 1.\nDefault is 0.5.\n</p>\n</dd>",
+      "name": "m",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "f"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>How much of original frequency content to keep when de-essing. Allowed range is from 0 to 1.\nDefault is 0.5.\n</p>\n</dd>",
+      "name": "f",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "s"
+      ],
+      "default": "OUT_MODE",
+      "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass ess filtered out.\n</p>\n</dd>\n<dt><samp>e</samp></dt>\n<dd><p>Pass only ess.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",
+      "name": "s",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#deesser"
+}

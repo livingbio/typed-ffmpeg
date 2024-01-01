@@ -1,0 +1,65 @@
+{
+  "description": "11.62 deflate\nApply deflate effect to the video.\n\nThis filter replaces the pixel by the local(3x3) average by taking into account\nonly values lower than the pixel.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_deflate",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "deflate",
+  "options": [
+    {
+      "alias": [
+        "threshold0"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
+      "name": "threshold0",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold1"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
+      "name": "threshold1",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold2"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
+      "name": "threshold2",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold3"
+      ],
+      "default": 65535,
+      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
+      "name": "threshold3",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#deflate"
+}

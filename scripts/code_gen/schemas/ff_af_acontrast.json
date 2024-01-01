@@ -1,0 +1,35 @@
+{
+  "description": "8.3 acontrast\nSimple audio dynamic range compression/expansion filter.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_acontrast",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "acontrast",
+  "options": [
+    {
+      "alias": [
+        "contrast"
+      ],
+      "default": 33.0,
+      "description": "<dd><p>Set contrast. Default is 33. Allowed range is between 0 and 100.\n</p></dd>",
+      "name": "contrast",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acontrast"
+}

@@ -1,0 +1,45 @@
+{
+  "description": "8.12 adelay\nDelay one or more audio channels.\n\nSamples in delayed channel are filled with silence.\n\nThe filter accepts the following option:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_adelay",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "adelay",
+  "options": [
+    {
+      "alias": [
+        "delays"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set list of delays in milliseconds for each channel separated by \u2019|\u2019.\nUnused delays will be silently ignored. If number of given delays is\nsmaller than number of channels all remaining channels will not be delayed.\nIf you want to delay exact number of samples, append \u2019S\u2019 to number.\nIf you want instead to delay in seconds, append \u2019s\u2019 to number.\n</p>\n</dd>",
+      "name": "delays",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "all"
+      ],
+      "default": 0,
+      "description": "<dd><p>Use last set delay for all remaining channels. By default is disabled.\nThis option if enabled changes how option <code>delays</code> is interpreted.\n</p></dd>",
+      "name": "all",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#adelay"
+}

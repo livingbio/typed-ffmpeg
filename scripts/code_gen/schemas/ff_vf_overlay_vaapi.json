@@ -1,0 +1,109 @@
+{
+  "description": "13.1 overlay_vaapi\nOverlay one video on the top of another.\n\nIt takes two inputs and has one output. The first input is the \"main\" video on which the second input is overlaid.\n\nThe filter accepts the following options:\n\n\nThis filter also supports the framesync options.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_overlay_vaapi",
+  "input_stream_typings": [
+    {
+      "name": "main",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    },
+    {
+      "name": "overlay",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "overlay_vaapi",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "default": "0",
+      "description": "<dd><p>Set expressions for the x and y coordinates of the overlaid video\non the main video.\n</p>\n<p>Default value is \"0\" for both expressions.\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": "0",
+      "description": "<dd><p>Set expressions for the x and y coordinates of the overlaid video\non the main video.\n</p>\n<p>Default value is \"0\" for both expressions.\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "default": "overlay_iw",
+      "description": "<dd><p>Set expressions for the width and height the overlaid video\non the main video.\n</p>\n<p>Default values are \u2019overlay_iw\u2019 for \u2019w\u2019 and \u2019overlay_ih*w/overlay_iw\u2019 for \u2019h\u2019.\n</p>\n<p>The expressions can contain the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>main_w, W</samp></dt>\n<dt><samp>main_h, H</samp></dt>\n<dd><p>The main input width and height.\n</p>\n</dd>\n<dt><samp>overlay_iw</samp></dt>\n<dt><samp>overlay_ih</samp></dt>\n<dd><p>The overlay input width and height.\n</p>\n</dd>\n<dt><samp>overlay_w, w</samp></dt>\n<dt><samp>overlay_h, h</samp></dt>\n<dd><p>The overlay output width and height.\n</p>\n</dd>\n<dt><samp>overlay_x, x</samp></dt>\n<dt><samp>overlay_y, y</samp></dt>\n<dd><p>Position of the overlay layer inside of main\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "w",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "default": "overlay_ih*w/overlay_iw",
+      "description": "<dd><p>Set expressions for the width and height the overlaid video\non the main video.\n</p>\n<p>Default values are \u2019overlay_iw\u2019 for \u2019w\u2019 and \u2019overlay_ih*w/overlay_iw\u2019 for \u2019h\u2019.\n</p>\n<p>The expressions can contain the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>main_w, W</samp></dt>\n<dt><samp>main_h, H</samp></dt>\n<dd><p>The main input width and height.\n</p>\n</dd>\n<dt><samp>overlay_iw</samp></dt>\n<dt><samp>overlay_ih</samp></dt>\n<dd><p>The overlay input width and height.\n</p>\n</dd>\n<dt><samp>overlay_w, w</samp></dt>\n<dt><samp>overlay_h, h</samp></dt>\n<dd><p>The overlay output width and height.\n</p>\n</dd>\n<dt><samp>overlay_x, x</samp></dt>\n<dt><samp>overlay_y, y</samp></dt>\n<dd><p>Position of the overlay layer inside of main\n</p>\n</dd>\n</dl>\n</dd>",
+      "name": "h",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set transparency of overlaid video. Allowed range is 0.0 to 1.0.\nHigher value means lower transparency.\nDefault value is <code>1.0</code>.\n</p>\n</dd>",
+      "name": "alpha",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "eof_action"
+      ],
+      "default": "EOF_ACTION_REPEAT",
+      "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
+      "name": "eof_action",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "default": 0,
+      "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
+      "name": "shortest",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "repeatlast"
+      ],
+      "default": 1,
+      "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
+      "name": "repeatlast",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvaapi"
+}

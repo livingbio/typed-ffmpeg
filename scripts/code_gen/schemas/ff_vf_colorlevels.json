@@ -1,0 +1,195 @@
+{
+  "description": "11.38 colorlevels\nAdjust video input frames using levels.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_colorlevels",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "colorlevels",
+  "options": [
+    {
+      "alias": [
+        "rimin"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha input black point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "rimin",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gimin"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha input black point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "gimin",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bimin"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha input black point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "bimin",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "aimin"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha input black point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "aimin",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rimax"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha input white point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Input levels are used to lighten highlights (bright tones), darken shadows\n(dark tones), change the balance of bright and dark tones.\n</p>\n</dd>",
+      "name": "rimax",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gimax"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha input white point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Input levels are used to lighten highlights (bright tones), darken shadows\n(dark tones), change the balance of bright and dark tones.\n</p>\n</dd>",
+      "name": "gimax",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bimax"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha input white point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Input levels are used to lighten highlights (bright tones), darken shadows\n(dark tones), change the balance of bright and dark tones.\n</p>\n</dd>",
+      "name": "bimax",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "aimax"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha input white point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Input levels are used to lighten highlights (bright tones), darken shadows\n(dark tones), change the balance of bright and dark tones.\n</p>\n</dd>",
+      "name": "aimax",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "romin"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha output black point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "romin",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gomin"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha output black point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "gomin",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bomin"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha output black point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "bomin",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "aomin"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha output black point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "aomin",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "romax"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha output white point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Output levels allows manual selection of a constrained output level range.\n</p>\n</dd>",
+      "name": "romax",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gomax"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha output white point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Output levels allows manual selection of a constrained output level range.\n</p>\n</dd>",
+      "name": "gomax",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bomax"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha output white point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Output levels allows manual selection of a constrained output level range.\n</p>\n</dd>",
+      "name": "bomax",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "aomax"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Adjust red, green, blue and alpha output white point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Output levels allows manual selection of a constrained output level range.\n</p>\n</dd>",
+      "name": "aomax",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "preserve"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set preserve color mode. The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable color preserving, this is default.\n</p></dd>\n<dt>\u2018<samp>lum</samp>\u2019</dt>\n<dd><p>Preserve luminance.\n</p></dd>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n<dd><p>Preserve max value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n<dd><p>Preserve average value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>sum</samp>\u2019</dt>\n<dd><p>Preserve sum value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>nrm</samp>\u2019</dt>\n<dd><p>Preserve normalized value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>pwr</samp>\u2019</dt>\n<dd><p>Preserve power value of RGB triplet.\n</p></dd>\n</dl>\n</dd>",
+      "name": "preserve",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorlevels"
+}

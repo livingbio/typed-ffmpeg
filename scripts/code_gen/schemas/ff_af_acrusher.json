@@ -1,0 +1,135 @@
+{
+  "description": "8.7 acrusher\nReduce audio bit resolution.\n\nThis filter is bit crusher with enhanced functionality. A bit crusher\nis used to audibly reduce number of bits an audio signal is sampled\nwith. This doesn\u2019t change the bit depth at all, it just produces the\neffect. Material reduced in bit depth sounds more harsh and \"digital\".\nThis filter is able to even round to continuous values instead of discrete\nbit depths.\nAdditionally it has a D/C offset which results in different crushing of\nthe lower and the upper half of the signal.\nAn Anti-Aliasing setting is able to produce \"softer\" crushing sounds.\n\nAnother feature of this filter is the logarithmic mode.\nThis setting switches from linear distances between bits to logarithmic ones.\nThe result is a much more \"natural\" sounding crusher which doesn\u2019t gate low\nsignals for example. The human ear has a logarithmic perception,\nso this kind of crushing is much more pleasant.\nLogarithmic crushing is also able to get anti-aliased.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_acrusher",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "acrusher",
+  "options": [
+    {
+      "alias": [
+        "level_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set level in.\n</p>\n</dd>",
+      "name": "level_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set level out.\n</p>\n</dd>",
+      "name": "level_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bits"
+      ],
+      "default": 8.0,
+      "description": "<dd><p>Set bit reduction.\n</p>\n</dd>",
+      "name": "bits",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mix"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set mixing amount.\n</p>\n</dd>",
+      "name": "mix",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": 0,
+      "description": "<dd><p>Can be linear: <code>lin</code> or logarithmic: <code>log</code>.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dc"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set DC.\n</p>\n</dd>",
+      "name": "dc",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "aa"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set anti-aliasing.\n</p>\n</dd>",
+      "name": "aa",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "samples"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set sample reduction.\n</p>\n</dd>",
+      "name": "samples",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lfo"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable LFO. By default disabled.\n</p>\n</dd>",
+      "name": "lfo",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "lforange"
+      ],
+      "default": 20.0,
+      "description": "<dd><p>Set LFO range.\n</p>\n</dd>",
+      "name": "lforange",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lforate"
+      ],
+      "default": 0.3,
+      "description": "<dd><p>Set LFO rate.\n</p></dd>",
+      "name": "lforate",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#acrusher"
+}

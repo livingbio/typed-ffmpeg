@@ -1,0 +1,115 @@
+{
+  "description": "11.85 estdif\nDeinterlace the input video (\"estdif\" stands for \"Edge Slope\nTracing Deinterlacing Filter\").\n\nSpatial only filter that uses edge slope tracing algorithm\nto interpolate missing lines.\nIt accepts the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_estdif",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "estdif",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": 1,
+      "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n<p>The default value is <code>field</code>.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "parity"
+      ],
+      "default": -1,
+      "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
+      "name": "parity",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "deint"
+      ],
+      "default": 0,
+      "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following\nvalues:\n</p>\n<dl compact=\"compact\">\n<dt><samp>all</samp></dt>\n<dd><p>Deinterlace all frames.\n</p></dd>\n<dt><samp>interlaced</samp></dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>The default value is <code>all</code>.\n</p>\n</dd>",
+      "name": "deint",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "rslope"
+      ],
+      "default": 1,
+      "description": "<dd><p>Specify the search radius for edge slope tracing. Default value is 1.\nAllowed range is from 1 to 15.\n</p>\n</dd>",
+      "name": "rslope",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "redge"
+      ],
+      "default": 2,
+      "description": "<dd><p>Specify the search radius for best edge matching. Default value is 2.\nAllowed range is from 0 to 15.\n</p>\n</dd>",
+      "name": "redge",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ecost"
+      ],
+      "default": 2,
+      "description": "<dd><p>Specify the edge cost for edge matching. Default value is 2.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
+      "name": "ecost",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mcost"
+      ],
+      "default": 1,
+      "description": "<dd><p>Specify the middle cost for edge matching. Default value is 1.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
+      "name": "mcost",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dcost"
+      ],
+      "default": 1,
+      "description": "<dd><p>Specify the distance cost for edge matching. Default value is 1.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
+      "name": "dcost",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "interp"
+      ],
+      "default": 1,
+      "description": "<dd><p>Specify the interpolation used. Default is 4-point interpolation. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>2p</samp></dt>\n<dd><p>Two-point interpolation.\n</p></dd>\n<dt><samp>4p</samp></dt>\n<dd><p>Four-point interpolation.\n</p></dd>\n<dt><samp>6p</samp></dt>\n<dd><p>Six-point interpolation.\n</p></dd>\n</dl>\n</dd>",
+      "name": "interp",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#estdif"
+}

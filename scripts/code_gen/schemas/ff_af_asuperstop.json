@@ -1,0 +1,65 @@
+{
+  "description": "8.64 asuperstop\nApply high order Butterworth band-stop filter.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_asuperstop",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "asuperstop",
+  "options": [
+    {
+      "alias": [
+        "centerf"
+      ],
+      "default": 1000.0,
+      "description": "<dd><p>Set center frequency in Hertz. Allowed range is 2 to 999999.\nDefault value is 1000.\n</p>\n</dd>",
+      "name": "centerf",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "order"
+      ],
+      "default": 4,
+      "description": "<dd><p>Set filter order. Available values are from 4 to 20.\nDefault value is 4.\n</p>\n</dd>",
+      "name": "order",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "qfactor"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set Q-factor. Allowed range is from 0.01 to 100. Default value is 1.\n</p>\n</dd>",
+      "name": "qfactor",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "level"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 2. Default value is 1.\n</p></dd>",
+      "name": "level",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#asuperstop"
+}

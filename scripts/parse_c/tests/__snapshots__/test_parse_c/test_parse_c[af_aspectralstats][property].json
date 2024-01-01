@@ -12,6 +12,7 @@
         ],
         "choices": [],
         "default": "['.i64=2048']",
+        "default_value": 2048,
         "deprecated": false,
         "help": "set the window size",
         "name": "win_size",
@@ -135,6 +136,7 @@
           }
         ],
         "default": "['.i64 = WFUNC_HANNING']",
+        "default_value": "WFUNC_HANNING",
         "deprecated": false,
         "help": "set window function",
         "name": "win_func",
@@ -147,6 +149,7 @@
         ],
         "choices": [],
         "default": "['.dbl=0.5']",
+        "default_value": 0.5,
         "deprecated": false,
         "help": "set window overlap",
         "name": "overlap",
@@ -235,6 +238,7 @@
           }
         ],
         "default": "['.i64=(2147483647 *2U +1U)']",
+        "default_value": "(2147483647 *2U +1U)",
         "deprecated": false,
         "help": "select the parameters which are measured",
         "name": "measure",

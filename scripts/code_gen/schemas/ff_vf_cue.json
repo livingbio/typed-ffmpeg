@@ -1,0 +1,55 @@
+{
+  "description": "11.52 cue\nDelay video filtering until a given wallclock timestamp. The filter first\npasses on preroll amount of frames, then it buffers at most\nbuffer amount of frames and waits for the cue. After reaching the cue\nit forwards the buffered frames and also any subsequent frames coming in its\ninput.\n\nThe filter can be used synchronize the output of multiple ffmpeg processes for\nrealtime output devices like decklink. By putting the delay in the filtering\nchain and pre-buffering frames the process can pass on data to output almost\nimmediately after the target wallclock timestamp is reached.\n\nPerfect frame accuracy cannot be guaranteed, but the result is good enough for\nsome use cases.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_cue",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "cue",
+  "options": [
+    {
+      "alias": [
+        "cue"
+      ],
+      "default": 0,
+      "description": "<dd><p>The cue timestamp expressed in a UNIX timestamp in microseconds. Default is 0.\n</p>\n</dd>",
+      "name": "cue",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "preroll"
+      ],
+      "default": 0,
+      "description": "<dd><p>The duration of content to pass on as preroll expressed in seconds. Default is 0.\n</p>\n</dd>",
+      "name": "preroll",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "buffer"
+      ],
+      "default": 0,
+      "description": "<dd><p>The maximum duration of content to buffer before waiting for the cue expressed\nin seconds. Default is 0.\n</p>\n</dd>",
+      "name": "buffer",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#cue"
+}

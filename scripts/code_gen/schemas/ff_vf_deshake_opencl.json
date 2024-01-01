@@ -1,0 +1,85 @@
+{
+  "description": "12.6 deshake_opencl\nFeature-point based video stabilization filter.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_deshake_opencl",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "deshake_opencl",
+  "options": [
+    {
+      "alias": [
+        "tripod"
+      ],
+      "default": 0,
+      "description": "<dd><p>Simulates a tripod by preventing any camera movement whatsoever from the original frame. Defaults to <code>0</code>.\n</p>\n</dd>",
+      "name": "tripod",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "debug"
+      ],
+      "default": 0,
+      "description": "<dd><p>Whether or not additional debug info should be displayed, both in the processed output and in the console.\n</p>\n<p>Note that in order to see console debug output you will also need to pass <code>-v verbose</code> to ffmpeg.\n</p>\n<p>Viewing point matches in the output video is only supported for RGB input.\n</p>\n<p>Defaults to <code>0</code>.\n</p>\n</dd>",
+      "name": "debug",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "adaptive_crop"
+      ],
+      "default": 1,
+      "description": "<dd><p>Whether or not to do a tiny bit of cropping at the borders to cut down on the amount of mirrored pixels.\n</p>\n<p>Defaults to <code>1</code>.\n</p>\n</dd>",
+      "name": "adaptive_crop",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "refine_features"
+      ],
+      "default": 1,
+      "description": "<dd><p>Whether or not feature points should be refined at a sub-pixel level.\n</p>\n<p>This can be turned off for a slight performance gain at the cost of precision.\n</p>\n<p>Defaults to <code>1</code>.\n</p>\n</dd>",
+      "name": "refine_features",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "smooth_strength"
+      ],
+      "default": "0.0f",
+      "description": "<dd><p>The strength of the smoothing applied to the camera path from <code>0.0</code> to <code>1.0</code>.\n</p>\n<p><code>1.0</code> is the maximum smoothing strength while values less than that result in less smoothing.\n</p>\n<p><code>0.0</code> causes the filter to adaptively choose a smoothing strength on a per-frame basis.\n</p>\n<p>Defaults to <code>0.0</code>.\n</p>\n</dd>",
+      "name": "smooth_strength",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "smooth_window_multiplier"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>Controls the size of the smoothing window (the number of frames buffered to determine motion information from).\n</p>\n<p>The size of the smoothing window is determined by multiplying the framerate of the video by this number.\n</p>\n<p>Acceptable values range from <code>0.1</code> to <code>10.0</code>.\n</p>\n<p>Larger values increase the amount of motion data available for determining how to smooth the camera path,\npotentially improving smoothness, but also increase latency and memory usage.\n</p>\n<p>Defaults to <code>2.0</code>.\n</p>\n</dd>",
+      "name": "smooth_window_multiplier",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#deshake_005fopencl"
+}

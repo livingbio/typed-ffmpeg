@@ -1,0 +1,35 @@
+{
+  "description": "11.100 format\nConvert the input video to one of the specified pixel formats.\nLibavfilter will try to pick one that is suitable as input to\nthe next filter.\n\nIt accepts the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_format",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "format",
+  "options": [
+    {
+      "alias": [
+        "pix_fmts"
+      ],
+      "default": null,
+      "description": "<dd><p>A \u2019|\u2019-separated list of pixel format names, such as\n\"pix_fmts=yuv420p|monow|rgb24\".\n</p>\n</dd>",
+      "name": "pix_fmts",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#format"
+}

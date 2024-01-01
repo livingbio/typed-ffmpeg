@@ -1,0 +1,125 @@
+{
+  "description": "11.31 colorbalance\nModify intensity of primary colors (red, green and blue) of input frames.\n\nThe filter allows an input frame to be adjusted in the shadows, midtones or highlights\nregions for the red-cyan, green-magenta or blue-yellow balance.\n\nA positive adjustment value shifts the balance towards the primary color, a negative\nvalue towards the complementary color.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_colorbalance",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "colorbalance",
+  "options": [
+    {
+      "alias": [
+        "rs"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue shadows (darkest pixels).\n</p>\n</dd>",
+      "name": "rs",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gs"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue shadows (darkest pixels).\n</p>\n</dd>",
+      "name": "gs",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bs"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue shadows (darkest pixels).\n</p>\n</dd>",
+      "name": "bs",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rm"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue midtones (medium pixels).\n</p>\n</dd>",
+      "name": "rm",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gm"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue midtones (medium pixels).\n</p>\n</dd>",
+      "name": "gm",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bm"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue midtones (medium pixels).\n</p>\n</dd>",
+      "name": "bm",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rh"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue highlights (brightest pixels).\n</p>\n<p>Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "rh",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gh"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue highlights (brightest pixels).\n</p>\n<p>Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "gh",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bh"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Adjust red, green and blue highlights (brightest pixels).\n</p>\n<p>Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "name": "bh",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "pl"
+      ],
+      "default": 0,
+      "description": "<dd><p>Preserve lightness when changing color balance. Default is disabled.\n</p></dd>",
+      "name": "pl",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorbalance"
+}

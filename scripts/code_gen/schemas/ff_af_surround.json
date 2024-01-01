@@ -1,0 +1,525 @@
+{
+  "description": "8.114 surround\nApply audio surround upmix filter.\n\nThis filter allows to produce multichannel output from audio stream.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_surround",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "surround",
+  "options": [
+    {
+      "alias": [
+        "chl_out"
+      ],
+      "default": "5.1",
+      "description": "<dd><p>Set output channel layout. By default, this is <var>5.1</var>.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p>\n</dd>",
+      "name": "chl_out",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "chl_in"
+      ],
+      "default": "stereo",
+      "description": "<dd><p>Set input channel layout. By default, this is <var>stereo</var>.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p>\n</dd>",
+      "name": "chl_in",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "level_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set input volume level. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "level_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set output volume level. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "level_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lfe"
+      ],
+      "default": 1,
+      "description": "<dd><p>Enable LFE channel output if output channel layout has it. By default, this is enabled.\n</p>\n</dd>",
+      "name": "lfe",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "lfe_low"
+      ],
+      "default": 128,
+      "description": "<dd><p>Set LFE low cut off frequency. By default, this is <var>128</var> Hz.\n</p>\n</dd>",
+      "name": "lfe_low",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lfe_high"
+      ],
+      "default": 256,
+      "description": "<dd><p>Set LFE high cut off frequency. By default, this is <var>256</var> Hz.\n</p>\n</dd>",
+      "name": "lfe_high",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lfe_mode"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set LFE mode, can be <var>add</var> or <var>sub</var>. Default is <var>add</var>.\nIn <var>add</var> mode, LFE channel is created from input audio and added to output.\nIn <var>sub</var> mode, LFE channel is created from input audio and added to output but\nalso all non-LFE output channels are subtracted with output LFE channel.\n</p>\n</dd>",
+      "name": "lfe_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "smooth"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set temporal smoothness strength, used to gradually change factors when transforming\nstereo sound in time. Allowed range is from <var>0.0</var> to <var>1.0</var>.\nUseful to improve output quality with <var>focus</var> option values greater than <var>0.0</var>.\nDefault is <var>0.0</var>. Only values inside this range and without edges are effective.\n</p>\n</dd>",
+      "name": "smooth",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "angle"
+      ],
+      "default": 90.0,
+      "description": "<dd><p>Set angle of stereo surround transform, Allowed range is from <var>0</var> to <var>360</var>.\nDefault is <var>90</var>.\n</p>\n</dd>",
+      "name": "angle",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "focus"
+      ],
+      "default": 0.0,
+      "description": "<dd><p>Set focus of stereo surround transform, Allowed range is from <var>-1</var> to <var>1</var>.\nDefault is <var>0</var>.\n</p>\n</dd>",
+      "name": "focus",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fc_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set front center input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "fc_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fc_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set front center output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "fc_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fl_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set front left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "fl_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fl_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set front left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "fl_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fr_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set front right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "fr_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fr_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set front right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "fr_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sl_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set side left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "sl_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sl_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set side left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "sl_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sr_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set side right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "sr_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sr_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set side right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "sr_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bl_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set back left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "bl_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bl_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set back left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "bl_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "br_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set back right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "br_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "br_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set back right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "br_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bc_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set back center input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "bc_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bc_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set back center output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "bc_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lfe_in"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set LFE input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "lfe_in",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lfe_out"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set LFE output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "name": "lfe_out",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "allx"
+      ],
+      "default": -1.0,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for all channels.\nAllowed range is from <var>-1</var> to <var>15</var>.\nBy default this value is negative <var>-1</var>, and thus unused.\n</p>\n</dd>",
+      "name": "allx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "ally"
+      ],
+      "default": -1.0,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for all channels.\nAllowed range is from <var>-1</var> to <var>15</var>.\nBy default this value is negative <var>-1</var>, and thus unused.\n</p>\n</dd>",
+      "name": "ally",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fcx"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "fcx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "flx"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "flx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "frx"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "frx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blx"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "blx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "brx"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "brx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "slx"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "slx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "srx"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "srx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bcx"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "bcx",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fcy"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "fcy",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fly"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "fly",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fry"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "fry",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bly"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "bly",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bry"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "bry",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sly"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "sly",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sry"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "sry",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bcy"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "name": "bcy",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "win_size"
+      ],
+      "default": 4096,
+      "description": "<dd><p>Set window size. Allowed range is from <var>1024</var> to <var>65536</var>. Default size is <var>4096</var>.\n</p>\n</dd>",
+      "name": "win_size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_func"
+      ],
+      "default": "WFUNC_HANNING",
+      "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
+      "name": "win_func",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "default": 0.5,
+      "description": "<dd><p>Set window overlap. If set to 1, the recommended overlap for selected\nwindow function will be picked. Default is <code>0.5</code>.\n</p></dd>",
+      "name": "overlap",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#surround"
+}

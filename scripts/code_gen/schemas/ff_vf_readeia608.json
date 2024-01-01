@@ -1,0 +1,75 @@
+{
+  "description": "11.204 readeia608\nRead closed captioning (EIA-608) information from the top lines of a video frame.\n\nThis filter adds frame metadata for lavfi.readeia608.X.cc and\nlavfi.readeia608.X.line, where X is the number of the identified line\nwith EIA-608 data (starting from 0). A description of each metadata value follows:\n\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_readeia608",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "readeia608",
+  "options": [
+    {
+      "alias": [
+        "scan_min"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the line to start scanning for EIA-608 data. Default is <code>0</code>.\n</p>\n</dd>",
+      "name": "scan_min",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scan_max"
+      ],
+      "default": 29,
+      "description": "<dd><p>Set the line to end scanning for EIA-608 data. Default is <code>29</code>.\n</p>\n</dd>",
+      "name": "scan_max",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "spw"
+      ],
+      "default": 0.27,
+      "description": "<dd><p>Set the ratio of width reserved for sync code detection.\nDefault is <code>0.27</code>. Allowed range is <code>[0.1 - 0.7]</code>.\n</p>\n</dd>",
+      "name": "spw",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chp"
+      ],
+      "default": 0,
+      "description": "<dd><p>Enable checking the parity bit. In the event of a parity error, the filter will output\n<code>0x00</code> for that character. Default is false.\n</p>\n</dd>",
+      "name": "chp",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "lp"
+      ],
+      "default": 1,
+      "description": "<dd><p>Lowpass lines prior to further processing. Default is enabled.\n</p></dd>",
+      "name": "lp",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#readeia608"
+}

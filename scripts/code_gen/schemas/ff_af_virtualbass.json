@@ -1,0 +1,45 @@
+{
+  "description": "8.119 virtualbass\nApply audio Virtual Bass filter.\n\nThis filter accepts stereo input and produce stereo with LFE (2.1) channels output.\nThe newly produced LFE channel have enhanced virtual bass originally obtained from both stereo channels.\nThis filter outputs front left and front right channels unchanged as available in stereo input.\n\nThe filter accepts the following options:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_af_virtualbass",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "virtualbass",
+  "options": [
+    {
+      "alias": [
+        "cutoff"
+      ],
+      "default": 250.0,
+      "description": "<dd><p>Set the virtual bass cutoff frequency. Default value is 250 Hz.\nAllowed range is from 100 to 500 Hz.\n</p>\n</dd>",
+      "name": "cutoff",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "strength"
+      ],
+      "default": 3.0,
+      "description": "<dd><p>Set the virtual bass strength. Allowed range is from 0.5 to 3.\nDefault value is 3.\n</p></dd>",
+      "name": "strength",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#virtualbass"
+}

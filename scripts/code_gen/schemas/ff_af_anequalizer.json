@@ -1,0 +1,80 @@
+{
+  "description": "8.37 anequalizer\nHigh-order parametric multiband equalizer for each channel.\n\nIt accepts the following parameters:",
+  "filter_type": "af",
+  "formula_input_typings": null,
+  "formula_output_typings": "['audio'] + ['video'] if curves else []",
+  "id": "ff_af_anequalizer",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": true,
+  "name": "anequalizer",
+  "options": [
+    {
+      "alias": [
+        "params"
+      ],
+      "default": "",
+      "description": "<dd>\n<p>This option string is in format:\n\"c<var>chn</var> f=<var>cf</var> w=<var>w</var> g=<var>g</var> t=<var>f</var> | ...\"\nEach equalizer band is separated by \u2019|\u2019.\n</p>\n<dl compact=\"compact\">\n<dt><samp>chn</samp></dt>\n<dd><p>Set channel number to which equalization will be applied.\nIf input doesn\u2019t have that channel the entry is ignored.\n</p>\n</dd>\n<dt><samp>f</samp></dt>\n<dd><p>Set central frequency for band.\nIf input doesn\u2019t have that frequency the entry is ignored.\n</p>\n</dd>\n<dt><samp>w</samp></dt>\n<dd><p>Set band width in Hertz.\n</p>\n</dd>\n<dt><samp>g</samp></dt>\n<dd><p>Set band gain in dB.\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>Set filter type for band, optional, can be:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>0</samp>\u2019</dt>\n<dd><p>Butterworth, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>1</samp>\u2019</dt>\n<dd><p>Chebyshev type 1.\n</p>\n</dd>\n<dt>\u2018<samp>2</samp>\u2019</dt>\n<dd><p>Chebyshev type 2.\n</p></dd>\n</dl>\n</dd>\n</dl>\n</dd>",
+      "name": "params",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "curves"
+      ],
+      "default": 0,
+      "description": "<dd><p>With this option activated frequency response of anequalizer is displayed\nin video stream.\n</p>\n</dd>",
+      "name": "curves",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "default": "hd720",
+      "description": "<dd><p>Set video stream size. Only useful if curves option is activated.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "mgain"
+      ],
+      "default": 60.0,
+      "description": "<dd><p>Set max gain that will be displayed. Only useful if curves option is activated.\nSetting this to a reasonable value makes it possible to display gain which is derived from\nneighbour bands which are too close to each other and thus produce higher gain\nwhen both are activated.\n</p>\n</dd>",
+      "name": "mgain",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fscale"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set frequency scale used to draw frequency response in video output.\nCan be linear or logarithmic. Default is logarithmic.\n</p>\n</dd>",
+      "name": "fscale",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "colors"
+      ],
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
+      "description": "<dd><p>Set color for each channel curve which is going to be displayed in video stream.\nThis is list of color names separated by space or by \u2019|\u2019.\nUnrecognised or missing colors will be replaced by white color.\n</p></dd>",
+      "name": "colors",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#anequalizer"
+}

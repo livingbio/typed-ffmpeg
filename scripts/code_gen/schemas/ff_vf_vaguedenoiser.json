@@ -1,0 +1,85 @@
+{
+  "description": "11.271 vaguedenoiser\nApply a wavelet based denoiser.\n\nIt transforms each frame from the video input into the wavelet domain,\nusing Cohen-Daubechies-Feauveau 9/7. Then it applies some filtering to\nthe obtained coefficients. It does an inverse wavelet transform after.\nDue to wavelet properties, it should give a nice smoothed result, and\nreduced noise, without blurring picture features.\n\nThis filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_vaguedenoiser",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "vaguedenoiser",
+  "options": [
+    {
+      "alias": [
+        "threshold"
+      ],
+      "default": 2.0,
+      "description": "<dd><p>The filtering strength. The higher, the more filtered the video will be.\nHard thresholding can use a higher threshold than soft thresholding\nbefore the video looks overfiltered. Default value is 2.\n</p>\n</dd>",
+      "name": "threshold",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "method"
+      ],
+      "default": 2,
+      "description": "<dd><p>The filtering method the filter will use.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>All values under the threshold will be zeroed.\n</p>\n</dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>All values under the threshold will be zeroed. All values above will be\nreduced by the threshold.\n</p>\n</dd>\n<dt>\u2018<samp>garrote</samp>\u2019</dt>\n<dd><p>Scales or nullifies coefficients - intermediary between (more) soft and\n(less) hard thresholding.\n</p></dd>\n</dl>\n<p>Default is garrote.\n</p>\n</dd>",
+      "name": "method",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nsteps"
+      ],
+      "default": 6,
+      "description": "<dd><p>Number of times, the wavelet will decompose the picture. Picture can\u2019t\nbe decomposed beyond a particular point (typically, 8 for a 640x480\nframe - as 2^9 = 512 &gt; 480). Valid values are integers between 1 and 32. Default value is 6.\n</p>\n</dd>",
+      "name": "nsteps",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "percent"
+      ],
+      "default": 85.0,
+      "description": "<dd><p>Partial of full denoising (limited coefficients shrinking), from 0 to 100. Default value is 85.\n</p>\n</dd>",
+      "name": "percent",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "default": 15,
+      "description": "<dd><p>A list of the planes to process. By default all planes are processed.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "default": 0,
+      "description": "<dd><p>The threshold type the filter will use.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>universal</samp>\u2019</dt>\n<dd><p>Threshold used is same for all decompositions.\n</p>\n</dd>\n<dt>\u2018<samp>bayes</samp>\u2019</dt>\n<dd><p>Threshold used depends also on each decomposition coefficients.\n</p></dd>\n</dl>\n<p>Default is universal.\n</p></dd>",
+      "name": "type",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vaguedenoiser"
+}

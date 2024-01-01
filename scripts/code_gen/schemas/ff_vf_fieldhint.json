@@ -1,0 +1,45 @@
+{
+  "description": "11.93 fieldhint\nCreate new frames by copying the top and bottom fields from surrounding frames\nsupplied as numbers by the hint file.\n\n\nExample of first several lines of hint file for relative mode:\n\n0,0 - # first frame\n1,0 - # second frame, use third's frame top field and second's frame bottom field\n1,0 - # third frame, use fourth's frame top field and third's frame bottom field\n1,0 -\n0,0 -\n0,0 -\n1,0 -\n1,0 -\n1,0 -\n0,0 -\n0,0 -\n1,0 -\n1,0 -\n1,0 -\n0,0 -",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_fieldhint",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "fieldhint",
+  "options": [
+    {
+      "alias": [
+        "hint"
+      ],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set file containing hints: absolute/relative frame numbers.\n</p>\n<p>There must be one line for each frame in a clip. Each line must contain two\nnumbers separated by the comma, optionally followed by <code>-</code> or <code>+</code>.\nNumbers supplied on each line of file can not be out of [N-1,N+1] where N\nis current frame number for <code>absolute</code> mode or out of [-1, 1] range\nfor <code>relative</code> mode. First number tells from which frame to pick up top\nfield and second number tells from which frame to pick up bottom field.\n</p>\n<p>If optionally followed by <code>+</code> output frame will be marked as interlaced,\nelse if followed by <code>-</code> output frame will be marked as progressive, else\nit will be marked same as input frame.\nIf optionally followed by <code>t</code> output frame will use only top field, or in\ncase of <code>b</code> it will use only bottom field.\nIf line starts with <code>#</code> or <code>;</code> that line is skipped.\n</p>\n</dd>",
+      "name": "hint",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "default": 0,
+      "description": "<dd><p>Can be item <code>absolute</code> or <code>relative</code> or <code>pattern</code>. Default is <code>absolute</code>.\nThe <code>pattern</code> mode is same as <code>relative</code> mode, except at last entry of file if there\nare more frames to process than <code>hint</code> file is seek back to start.\n</p></dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#fieldhint"
+}

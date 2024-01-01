@@ -1,0 +1,99 @@
+{
+  "description": "11.77 drawgrid\nDraw a grid on the input image.\n\nIt accepts the following parameters:\n\n\nThe parameters for x, y, w and h and t are expressions containing the\nfollowing constants:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_drawgrid",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "drawgrid",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "default": "0",
+      "description": "<dd><p>The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0.\n</p>\n</dd>",
+      "name": "x",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "default": "0",
+      "description": "<dd><p>The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0.\n</p>\n</dd>",
+      "name": "y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "width",
+        "w"
+      ],
+      "default": "0",
+      "description": "<dd><p>The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the\ninput width and height, respectively, minus <code>thickness</code>, so image gets\nframed. Default to 0.\n</p>\n</dd>",
+      "name": "width",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "height",
+        "h"
+      ],
+      "default": "0",
+      "description": "<dd><p>The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the\ninput width and height, respectively, minus <code>thickness</code>, so image gets\nframed. Default to 0.\n</p>\n</dd>",
+      "name": "height",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "color",
+        "c"
+      ],
+      "default": "black",
+      "description": "<dd><p>Specify the color of the grid. For the general syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>. If the special\nvalue <code>invert</code> is used, the grid color is the same as the\nvideo with inverted luma.\n</p>\n</dd>",
+      "name": "color",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "thickness",
+        "t"
+      ],
+      "default": "1",
+      "description": "<dd><p>The expression which sets the thickness of the grid line. Default value is <code>1</code>.\n</p>\n<p>See below for the list of accepted constants.\n</p>\n</dd>",
+      "name": "thickness",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "replace"
+      ],
+      "default": 0,
+      "description": "<dd><p>Applicable if the input has alpha. With <code>1</code> the pixels of the painted grid\nwill overwrite the video\u2019s color and alpha pixels.\nDefault is <code>0</code>, which composites the grid onto the input, leaving the video\u2019s alpha intact.\n</p></dd>",
+      "name": "replace",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#drawgrid"
+}

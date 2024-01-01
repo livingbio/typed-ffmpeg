@@ -1,0 +1,208 @@
+{
+  "description": "11.215 scale\nScale (resize) the input video, using the libswscale library.\n\nThe scale filter forces the output display aspect ratio to be the same\nof the input, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by\nthe next filter, the scale filter will convert the input to the\nrequested format.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_scale",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "scale",
+  "options": [
+    {
+      "alias": [
+        "w",
+        "width"
+      ],
+      "default": null,
+      "description": null,
+      "name": "w",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "h",
+        "height"
+      ],
+      "default": null,
+      "description": null,
+      "name": "h",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "flags"
+      ],
+      "default": "",
+      "description": null,
+      "name": "flags",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "interl"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "interl",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "size",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "in_color_matrix"
+      ],
+      "default": -1,
+      "description": null,
+      "name": "in_color_matrix",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "out_color_matrix"
+      ],
+      "default": "AVCOL_SPC_UNSPECIFIED",
+      "description": null,
+      "name": "out_color_matrix",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "in_range"
+      ],
+      "default": "AVCOL_RANGE_UNSPECIFIED",
+      "description": null,
+      "name": "in_range",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "out_range"
+      ],
+      "default": "AVCOL_RANGE_UNSPECIFIED",
+      "description": null,
+      "name": "out_range",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "in_v_chr_pos"
+      ],
+      "default": -513,
+      "description": null,
+      "name": "in_v_chr_pos",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "in_h_chr_pos"
+      ],
+      "default": -513,
+      "description": null,
+      "name": "in_h_chr_pos",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "out_v_chr_pos"
+      ],
+      "default": -513,
+      "description": null,
+      "name": "out_v_chr_pos",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "out_h_chr_pos"
+      ],
+      "default": -513,
+      "description": null,
+      "name": "out_h_chr_pos",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_original_aspect_ratio"
+      ],
+      "default": 0,
+      "description": null,
+      "name": "force_original_aspect_ratio",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_divisible_by"
+      ],
+      "default": 1,
+      "description": null,
+      "name": "force_divisible_by",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "param0"
+      ],
+      "default": 1.7976931348623157e+308,
+      "description": null,
+      "name": "param0",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "param1"
+      ],
+      "default": 1.7976931348623157e+308,
+      "description": null,
+      "name": "param1",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "eval"
+      ],
+      "default": "EVAL_MODE_INIT",
+      "description": null,
+      "name": "eval",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#scale"
+}

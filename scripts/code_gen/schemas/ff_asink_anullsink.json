@@ -1,0 +1,19 @@
+{
+  "description": "10.2 anullsink\nNull audio sink; do absolutely nothing with the input audio. It is\nmainly useful as a template and for use in analysis / debugging\ntools.",
+  "filter_type": "asink",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_asink_anullsink",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_AUDIO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "anullsink",
+  "options": [],
+  "output_stream_typings": [],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#anullsink"
+}

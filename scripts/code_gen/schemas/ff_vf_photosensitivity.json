@@ -1,0 +1,67 @@
+{
+  "description": "11.191 photosensitivity\nReduce various flashes in video, so to help users with epilepsy.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_photosensitivity",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "photosensitivity",
+  "options": [
+    {
+      "alias": [
+        "frames",
+        "f"
+      ],
+      "default": 30,
+      "description": "<dd><p>Set how many frames to use when filtering. Default is 30.\n</p>\n</dd>",
+      "name": "frames",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold",
+        "t"
+      ],
+      "default": 1.0,
+      "description": "<dd><p>Set detection threshold factor. Default is 1.\nLower is stricter.\n</p>\n</dd>",
+      "name": "threshold",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "skip"
+      ],
+      "default": 1,
+      "description": "<dd><p>Set how many pixels to skip when sampling frames. Default is 1.\nAllowed range is from 1 to 1024.\n</p>\n</dd>",
+      "name": "skip",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bypass"
+      ],
+      "default": 0,
+      "description": "<dd><p>Leave frames unchanged. Default is disabled.\n</p></dd>",
+      "name": "bypass",
+      "required": false,
+      "typing": "bool"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#photosensitivity"
+}

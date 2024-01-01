@@ -1,0 +1,65 @@
+{
+  "description": "11.149 loop\nLoop video frames.\n\nThe filter accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_loop",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "loop",
+  "options": [
+    {
+      "alias": [
+        "loop"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set the number of loops. Setting this value to -1 will result in infinite loops.\nDefault is 0.\n</p>\n</dd>",
+      "name": "loop",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set maximal size in number of frames. Default is 0.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "start"
+      ],
+      "default": 0,
+      "description": "<dd><p>Set first frame of loop. Default is 0.\n</p>\n</dd>",
+      "name": "start",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "time"
+      ],
+      "default": "9223372036854775807LL",
+      "description": "<dd><p>Set the time of loop start in seconds.\nOnly used if option named <var>start</var> is set to <code>-1</code>.\n</p></dd>",
+      "name": "time",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#loop"
+}

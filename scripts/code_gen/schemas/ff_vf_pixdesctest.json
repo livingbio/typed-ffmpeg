@@ -1,0 +1,24 @@
+{
+  "description": "11.192 pixdesctest\nPixel format descriptor test filter, mainly useful for internal\ntesting. The output video should be equal to the input video.\n\nFor example:\n\nformat=monow, pixdesctest\n\ncan be used to test the monowhite pixel format descriptor definition.",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_pixdesctest",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "pixdesctest",
+  "options": [],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#pixdesctest"
+}
