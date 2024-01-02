@@ -5,8 +5,6 @@ from typing import TYPE_CHECKING, Any, Iterable, Mapping
 
 from pydantic import BaseModel
 
-from .schema import Default
-
 if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
 
@@ -31,7 +29,7 @@ def convert_kwargs_to_cmd_line_args(kwargs: Mapping[str, str | int | float | boo
 class Node(BaseModel, ABC):
     name: str
     args: list[str] = []
-    kwargs: Mapping[str, Default | str | int | float | bool | None] = {}
+    kwargs: Mapping[str, Any] = {}
 
     @abstractmethod
     def compile(self) -> list[str]:
@@ -95,10 +93,8 @@ class InputNode(Node):
 
 class FilterNode(InputNode):
     inputs: list[FilterableStream]
-    formula_input_typings: str | None = None
-    formula_output_typings: str | None = None
-    input_typings: list[str] = []
-    output_typings: list[str] = []
+    input_typings: list[str] | None = None
+    output_typings: list[str] | None = None
 
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
