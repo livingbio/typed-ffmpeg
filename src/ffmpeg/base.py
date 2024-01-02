@@ -5,6 +5,8 @@ from pydantic import BaseModel
 if TYPE_CHECKING:
     from .stream import AudioStream, VideoStream
 
+from .schema import StreamType
+
 
 class Node(BaseModel):
     name: str
@@ -56,8 +58,8 @@ class InputNode(Node):
 
 class FilterNode(InputNode):
     inputs: list[FilterableStream]
-    input_typings: list[str] | None = None
-    output_typings: list[str] | None = None
+    input_typings: list[StreamType] | None = None
+    output_typings: list[StreamType] | None = None
 
     def stream(self, label: str | int | None = None) -> "FilterableStream":
         return FilterableStream(node=self, label=label)
