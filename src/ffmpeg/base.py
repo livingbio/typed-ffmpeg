@@ -143,7 +143,7 @@ class GlobalNode(Node):
         return OutputStream(node=self)
 
 
-def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream:
+def input(filename: str, **kwargs: str | int | None | float) -> "AVStream":
     """Input file URL (ffmpeg ``-i`` option)
 
     Any supplied kwargs are passed to ffmpeg verbatim (e.g. ``t=20``,
