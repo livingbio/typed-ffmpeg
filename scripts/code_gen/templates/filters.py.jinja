@@ -1,9 +1,9 @@
 from typing import Any
 
 from .base import FilterNode
-from .schema import Default
+from .schema import Default, DefaultInt, DefaultStr, DefaultFloat
 from .stream import AudioStream, VideoStream
-
+import re
 
 {% import "_components.jinja" as _components %}
 

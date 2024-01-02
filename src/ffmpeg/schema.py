@@ -1,5 +1,14 @@
-from pydantic import BaseModel
+class Default:
+    ...
 
 
-class Default(BaseModel):
-    value: str | int | float | bool | None
+class DefaultInt(int, Default):
+    ...
+
+
+class DefaultFloat(float, Default):
+    ...
+
+
+class DefaultStr(str, Default):
+    ...
