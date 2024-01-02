@@ -1,11 +1,16 @@
+from __future__ import annotations
+
+from abc import ABC, abstractproperty
 from typing import TYPE_CHECKING, Any, Mapping
 
-from pydantic import BaseModel
-
-if TYPE_CHECKING:
-    from .stream import AudioStream, VideoStream
+from pydantic import BaseModel, model_validator
 
 from .schema import StreamType
+
+if TYPE_CHECKING:
+    from .streams.audio import AudioStream
+    from .streams.av import AVStream
+    from .streams.video import VideoStream
 
 
 class Node(BaseModel):
@@ -16,64 +21,113 @@ class Node(BaseModel):
 
 class Stream(BaseModel):
     node: Node
-    label: str | int | None = None
-    selector: str | None = None
+    index: int = 0  # the nth child of the node
+    selector: StreamType | None = None
 
 
-class FilterableStream(Stream):
-    node: "FilterNode" | "InputNode"
+class FilterableStream(Stream, ABC):
+    node: FilterNode | InputNode
 
-    def filter(self, *streams: "FilterableStream", name: str, **kwargs: str) -> "FilterableStream":
-        return self.filter_multi_output(*streams, name=name, **kwargs).stream()
+    def filter(self, *streams: "FilterableStream", name: str, **kwargs: str) -> "AVStream":
+        return self.filter_multi_output(*streams, name=name, **kwargs).stream(0)
 
     def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
         return FilterNode(name=name, kwargs=kwargs, inputs=[self, *streams])
 
-    @property
-    def video(self) -> VideoStream:
-        return self.node.video(label=self.label)
+    @abstractproperty
+    def video(self) -> "VideoStream":
+        raise NotImplementedError("This stream does not have a video component")
 
-    @property
-    def audio(self) -> AudioStream:
-        return self.node.audio(label=self.label)
+    @abstractproperty
+    def audio(self) -> "AudioStream":
+        raise NotImplementedError("This stream does not have an audio component")
 
     def output(self, *streams: "FilterableStream", **kwargs: Any) -> "OutputStream":
         return OutputNode(name="output", kwargs=kwargs, inputs=[self, *streams]).stream()
 
 
 class InputNode(Node):
-    def video(self, label: str | int | None = None) -> "VideoStream":
-        from .stream import VideoStream
+    def video(self) -> "VideoStream":
+        from .streams.video import VideoStream
 
-        return VideoStream(node=self, label=label, selector="v")
+        return VideoStream(node=self, selector=StreamType.video)
 
-    def audio(self, label: str | int | None = None) -> "AudioStream":
-        from .stream import AudioStream
+    def audio(self) -> "AudioStream":
+        from .streams.audio import AudioStream
 
-        return AudioStream(node=self, label=label, selector="a")
+        return AudioStream(node=self, selector=StreamType.audio)
 
-    def stream(self, label: str | int | None = None) -> "FilterableStream":
-        return FilterableStream(node=self, label=label)
+    def stream(self) -> "AVStream":
+        from .streams.av import AVStream
+
+        return AVStream(node=self)
 
 
-class FilterNode(InputNode):
+class FilterNode(Node):
     inputs: list[FilterableStream]
     input_typings: list[StreamType] | None = None
     output_typings: list[StreamType] | None = None
 
-    def stream(self, label: str | int | None = None) -> "FilterableStream":
-        return FilterableStream(node=self, label=label)
+    def stream(self, index: int) -> "AVStream":
+        from .streams.av import AVStream
+
+        if self.output_typings is not None:
+            assert (
+                len(self.output_typings) > index
+            ), f"Specified index {index} is out of range for outputs {len(self.output_typings)}"
+
+        return AVStream(node=self, index=index)
+
+    def video(self, index: int) -> "VideoStream":
+        from .streams.video import VideoStream
+
+        assert self.output_typings is not None, "Output typings must be specified to use `video`"
+        video_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.video]
+        assert (
+            len(video_outputs) > index
+        ), f"Specified index {index} is out of range for video outputs {len(video_outputs)}"
+        return VideoStream(node=self, index=video_outputs[index])
+
+    def audio(self, index: int) -> "AudioStream":
+        from .streams.audio import AudioStream
+
+        assert self.output_typings is not None, "Output typings must be specified to use `audio`"
+        audio_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.audio]
+        assert (
+            len(audio_outputs) > index
+        ), f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}"
+        return AudioStream(node=self, index=audio_outputs[index])
+
+    @model_validator(mode="after")
+    def validate_input(self) -> "FilterNode":
+        if self.input_typings is None:
+            return self
+
+        assert len(self.inputs) == len(
+            self.input_typings
+        ), f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}"
+
+        stream: FilterableStream
+        expected_type: StreamType
+
+        for i, (stream, expected_type) in enumerate(zip(self.inputs, self.input_typings)):
+            if expected_type == StreamType.video:
+                assert isinstance(stream, VideoStream), f"Expected input {i} to have video component, got {stream}"
+            if expected_type == StreamType.audio:
+                assert isinstance(stream, AudioStream), f"Expected input {i} to have audio component, got {stream}"
+
+        return self
 
 
 class OutputNode(Node):
     inputs: list[FilterableStream]
 
-    def stream(self, label: str | int | None = None) -> "OutputStream":
-        return OutputStream(node=self, label=label)
+    def stream(self, index: int = 0) -> "OutputStream":
+        return OutputStream(node=self, index=index)
 
 
 class OutputStream(Stream):
-    node: OutputNode | "GlobalNode"
+    node: OutputNode | GlobalNode
 
     def global_args(self, *args: str, **kwargs: str | bool | int | float | None) -> "OutputStream":
         return GlobalNode(name="global_args", input=self, args=list(args), kwargs=kwargs).stream()
@@ -85,8 +139,8 @@ class OutputStream(Stream):
 class GlobalNode(Node):
     input: OutputStream
 
-    def stream(self, label: str | int | None = None) -> "OutputStream":
-        return OutputStream(node=self, label=label)
+    def stream(self) -> "OutputStream":
+        return OutputStream(node=self)
 
 
 def input(filename: str, **kwargs: str | int | None | float) -> FilterableStream:
