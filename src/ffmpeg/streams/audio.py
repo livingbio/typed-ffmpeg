@@ -693,7 +693,11 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def adecorrelate(
-        self, *, stages: int | DefaultInt = DefaultInt(6), seed: int | DefaultInt = DefaultInt(-1), **kwargs: Any
+        self,
+        *,
+        stages: int | DefaultInt = DefaultInt(6),
+        seed: int | DefaultInt = DefaultInt(-1),
+        **kwargs: Any,
     ) -> "AudioStream":
         """
 
@@ -1573,7 +1577,14 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def aformat(self, *, sample_fmts: str, sample_rates: str, channel_layouts: str, **kwargs: Any) -> "AudioStream":
+    def aformat(
+        self,
+        *,
+        sample_fmts: str,
+        sample_rates: str,
+        channel_layouts: str,
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
 
         8.26 aformat
@@ -2268,7 +2279,12 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def amerge(self, *streams: "AudioStream", inputs: int | DefaultInt = DefaultInt(2), **kwargs: Any) -> "AudioStream":
+    def amerge(
+        self,
+        *streams: "AudioStream",
+        inputs: int | DefaultInt = DefaultInt(2),
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
 
         8.34 amerge
@@ -3290,7 +3306,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def arnndn(self, *, model: str, mix: float | DefaultFloat = DefaultFloat(1.0), **kwargs: Any) -> "AudioStream":
+    def arnndn(
+        self,
+        *,
+        model: str,
+        mix: float | DefaultFloat = DefaultFloat(1.0),
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
 
         8.50 arnndn
@@ -3393,7 +3415,11 @@ class AudioStream(FilterableStream):
         return filter_node
 
     def aselect(
-        self, *, expr: str | DefaultStr = DefaultStr("1"), outputs: int | DefaultInt = DefaultInt(1), **kwargs: Any
+        self,
+        *,
+        expr: str | DefaultStr = DefaultStr("1"),
+        outputs: int | DefaultInt = DefaultInt(1),
+        **kwargs: Any,
     ) -> FilterNode:
         """
 
@@ -3659,7 +3685,11 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def asidedata(
-        self, *, mode: int | DefaultInt = DefaultInt(0), type: int | DefaultInt = DefaultInt(-1), **kwargs: Any
+        self,
+        *,
+        mode: int | DefaultInt = DefaultInt(0),
+        type: int | DefaultInt = DefaultInt(-1),
+        **kwargs: Any,
     ) -> "AudioStream":
         """
 
@@ -3964,7 +3994,11 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def astreamselect(
-        self, *streams: "AudioStream", inputs: int | DefaultInt = DefaultInt(2), map: str, **kwargs: Any
+        self,
+        *streams: "AudioStream",
+        inputs: int | DefaultInt = DefaultInt(2),
+        map: str,
+        **kwargs: Any,
     ) -> FilterNode:
         """
 
@@ -5098,7 +5132,7 @@ class AudioStream(FilterableStream):
 
     def concat(
         self,
-        *streams: "AudioStream",
+        *streams: "FilterableStream",
         n: int | DefaultInt = DefaultInt(2),
         v: int | DefaultInt = DefaultInt(1),
         a: int | DefaultInt = DefaultInt(0),
@@ -5230,7 +5264,11 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def crystalizer(
-        self, *, i: float | DefaultFloat = DefaultFloat(2.0), c: bool | DefaultInt = DefaultInt(1), **kwargs: Any
+        self,
+        *,
+        i: float | DefaultFloat = DefaultFloat(2.0),
+        c: bool | DefaultInt = DefaultInt(1),
+        **kwargs: Any,
     ) -> "AudioStream":
         """
 
@@ -5715,7 +5753,11 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def extrastereo(
-        self, *, m: float | DefaultFloat = DefaultFloat(2.5), c: bool | DefaultInt = DefaultInt(1), **kwargs: Any
+        self,
+        *,
+        m: float | DefaultFloat = DefaultFloat(2.5),
+        c: bool | DefaultInt = DefaultInt(1),
+        **kwargs: Any,
     ) -> "AudioStream":
         """
 
@@ -8402,7 +8444,11 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def tremolo(
-        self, *, f: float | DefaultFloat = DefaultFloat(5.0), d: float | DefaultFloat = DefaultFloat(0.5), **kwargs: Any
+        self,
+        *,
+        f: float | DefaultFloat = DefaultFloat(5.0),
+        d: float | DefaultFloat = DefaultFloat(0.5),
+        **kwargs: Any,
     ) -> "AudioStream":
         """
 
@@ -8436,7 +8482,11 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def vibrato(
-        self, *, f: float | DefaultFloat = DefaultFloat(5.0), d: float | DefaultFloat = DefaultFloat(0.5), **kwargs: Any
+        self,
+        *,
+        f: float | DefaultFloat = DefaultFloat(5.0),
+        d: float | DefaultFloat = DefaultFloat(0.5),
+        **kwargs: Any,
     ) -> "AudioStream":
         """
 

@@ -100,6 +100,9 @@ class FilterNode(Node):
 
     @model_validator(mode="after")
     def validate_input(self) -> "FilterNode":
+        from .streams.audio import AudioStream
+        from .streams.video import VideoStream
+
         if self.input_typings is None:
             return self
 
@@ -112,9 +115,13 @@ class FilterNode(Node):
 
         for i, (stream, expected_type) in enumerate(zip(self.inputs, self.input_typings)):
             if expected_type == StreamType.video:
-                assert isinstance(stream, VideoStream), f"Expected input {i} to have video component, got {stream}"
+                assert isinstance(
+                    stream, VideoStream
+                ), f"Expected input {i} to have video component, got {stream.__class__.__name__}"
             if expected_type == StreamType.audio:
-                assert isinstance(stream, AudioStream), f"Expected input {i} to have audio component, got {stream}"
+                assert isinstance(
+                    stream, AudioStream
+                ), f"Expected input {i} to have audio component, got {stream.__class__.__name__}"
 
         return self
 
