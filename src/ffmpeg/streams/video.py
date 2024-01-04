@@ -3046,6 +3046,80 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def coreimage(
+        self,
+        *,
+        list_filters: bool | DefaultInt = DefaultInt(0),
+        list_generators: bool | DefaultInt = DefaultInt(0),
+        filter: str,
+        output_rect: str,
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        11.47 coreimage
+        Video filtering on GPU using Apple’s CoreImage API on OSX.
+
+        Hardware acceleration is based on an OpenGL context. Usually, this means it is
+        processed by video hardware. However, software-based OpenGL implementations
+        exist which means there is no guarantee for hardware processing. It depends on
+        the respective OSX.
+
+        There are many filters and image generators provided by Apple that come with a
+        large variety of options. The filter has to be referenced by its name along
+        with its options.
+
+        The coreimage filter accepts the following options:
+
+        Several filters can be chained for successive processing without GPU-HOST
+        transfers allowing for fast processing of complex filter chains.
+        Currently, only filters with zero (generators) or exactly one (filters) input
+        image and one output image are supported. Also, transition filters are not yet
+        usable as intended.
+
+        Some filters generate output images with additional padding depending on the
+        respective filter kernel. The padding is automatically removed to ensure the
+        filter output has the same size as the input image.
+
+        For image generators, the size of the output image is determined by the
+        previous output image of the filter chain or the input image of the whole
+        filterchain, respectively. The generators do not use the pixel information of
+        this image to generate their output. However, the generated output is
+        blended onto this image, resulting in partial or complete coverage of the
+        output image.
+
+        The coreimagesrc video source can be used for generating input images
+        which are directly fed into the filter chain. By using it, providing input
+        images by another video source or an input video is not required.
+
+        Parameters:
+        ----------
+
+        :param bool list_filters: List all available filters and generators along with all their respective options as well as possible minimum and maximum values along with the default values. list_filters=true
+        :param bool list_generators: None
+        :param str filter: Specify all filters by their respective name and options. Use list_filters to determine all valid filter names and options. Numerical options are specified by a float value and are automatically clamped to their respective value range. Vector and color options have to be specified by a list of space separated float values. Character escaping has to be done. A special option name default is available to use default options for a filter. It is required to specify either default or at least one of the filter options. All omitted options are used with their default values. The syntax of the filter string is as follows: filter=<NAME>@<OPTION>=<VALUE>[@<OPTION>=<VALUE>][@...][#<NAME>@<OPTION>=<VALUE>[@<OPTION>=<VALUE>][@...]][#...]
+        :param str output_rect: Specify a rectangle where the output of the filter chain is copied into the input image. It is given by a list of space separated float values: output_rect=x\ y\ width\ height If not given, the output rectangle equals the dimensions of the input image. The output rectangle is automatically cropped at the borders of the input image. Negative values are valid for each component. output_rect=25\ 25\ 100\ 100
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#coreimage
+
+        """
+        filter_node = FilterNode(
+            name="coreimage",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "list_filters": list_filters,
+                "list_generators": list_generators,
+                "filter": filter,
+                "output_rect": output_rect,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def corr(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
 

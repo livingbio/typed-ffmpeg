@@ -23,7 +23,7 @@ def parse_filters() -> list[AVFilter]:
 
     total = 0
     parsed_filters: list[AVFilter] = []
-    for path in root.glob("*.c"):
+    for path in root.glob("*.[cm]"):
         try:
             filters = parse_c(path)
         except Exception as e:

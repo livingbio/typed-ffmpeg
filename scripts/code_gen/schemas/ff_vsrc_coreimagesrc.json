@@ -1,0 +1,111 @@
+{
+  "description": "16.3 coreimagesrc\nVideo source generated on GPU using Apple\u2019s CoreImage API on OSX.\n\nThis video source is a specialized version of the coreimage video filter.\nUse a core image generator at the beginning of the applied filterchain to\ngenerate the content.\n\nThe coreimagesrc video source accepts the following options:\n\nAdditionally, all options of the coreimage video filter are accepted.\nA complete filterchain can be used for further processing of the\ngenerated input without CPU-HOST transfer. See coreimage documentation\nand examples for details.",
+  "filter_type": "vsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vsrc_coreimagesrc",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "coreimagesrc",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "320x240",
+      "description": "<dd><p>Specify the size of the sourced video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nThe default value is <code>320x240</code>.\n</p>\n</dd>",
+      "name": "size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "25",
+      "description": "<dd><p>Specify the frame rate of the sourced video, as the number of frames\ngenerated per second. It has to be a string in the format\n<var>frame_rate_num</var>/<var>frame_rate_den</var>, an integer number, a floating point\nnumber or a valid video frame rate abbreviation. The default value is\n\"25\".\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "choices": [],
+      "default": -1,
+      "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p></dd>",
+      "name": "duration",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sar"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "<dd><p>Set the sample aspect ratio of the sourced video.\n</p>\n</dd>",
+      "name": "sar",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "list_filters"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": null,
+      "name": "list_filters",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "list_generators"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "<dd><p>List all available generators along with all their respective options as well as\npossible minimum and maximum values along with the default values.\n</p><div class=\"example\">\n<pre class=\"example\">list_generators=true\n</pre></div>\n</dd>",
+      "name": "list_generators",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "filter"
+      ],
+      "choices": [],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "filter",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "output_rect"
+      ],
+      "choices": [],
+      "default": "((void*)0)",
+      "description": null,
+      "name": "output_rect",
+      "required": true,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#coreimagesrc"
+}
