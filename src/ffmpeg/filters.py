@@ -1,7 +1,7 @@
 import re
 from typing import Any
 
-from .base import FilterNode
+from .base import FilterableStream, FilterNode
 from .schema import DefaultFloat, DefaultInt, DefaultStr, StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
@@ -1068,7 +1068,7 @@ def colormap(
 
 
 def concat(
-    *streams: "AudioStream",
+    *streams: "FilterableStream",
     n: int | DefaultInt = DefaultInt(2),
     v: int | DefaultInt = DefaultInt(1),
     a: int | DefaultInt = DefaultInt(0),

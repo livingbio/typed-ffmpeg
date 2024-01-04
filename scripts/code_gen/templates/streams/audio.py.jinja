@@ -22,7 +22,7 @@ class AudioStream(FilterableStream):
         return AudioStream(node=self.node, selector=StreamType.audio, index=self.index)
 
     {% for f in filters %}
-        {% if f.filter_type.value in ["af", "avf"] %}
+        {% if f.filter_type.value in ["af", "avf"] and not f.is_input_dynamic %}
     {{ _components.filter_method(f) }}
         {% endif %}
     {% endfor %}

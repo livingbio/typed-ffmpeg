@@ -22,7 +22,7 @@ class VideoStream(FilterableStream):
         raise NotImplementedError("Cannot convert video to audio")
 
     {% for f in filters %}
-        {% if f.filter_type.value in ["vf", "vaf"] %}
+        {% if f.filter_type.value in ["vf", "vaf"] and not f.is_input_dynamic %}
     {{ _components.filter_method(f) }}
         {% endif %}
     {% endfor %}

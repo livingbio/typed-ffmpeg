@@ -3,7 +3,9 @@
     self,
 {% endif %}
 {% if f.is_input_dynamic %}
-    {% if f.filter_type.value in ["vf", "vaf"] %}
+    {% if f.is_input_type_mixed %}
+    *streams: "FilterableStream",
+    {% elif f.filter_type.value in ["vf", "vaf"] %}
     *streams: "VideoStream",
     {% elif f.filter_type.value in ["af", "avf"] %}
     *streams: "AudioStream",

@@ -80,16 +80,22 @@ class FFmpegFilter(BaseModel):
     options: list[FFmpegFilterOption] = []
 
     @property
-    def input_types(self) -> str:
-        if self.is_input_dynamic:
-            return self.formula_input_typings
-        return _convert_to_stream_type(k.type for k in self.input_stream_typings)
+    def is_input_type_mixed(self) -> bool:
+        if self.input_types:
+            return "video" in self.input_types and "audio" in self.input_types
+        return False
 
     @property
-    def output_types(self) -> list[StreamType]:
+    def input_types(self) -> str | None:
+        if self.is_input_dynamic:
+            return self.formula_input_typings
+        return str(_convert_to_stream_type(k.type for k in self.input_stream_typings))
+
+    @property
+    def output_types(self) -> str | None:
         if self.is_output_dynamic:
             return self.formula_output_typings
-        return _convert_to_stream_type(k.type for k in self.output_stream_typings)
+        return str(_convert_to_stream_type(k.type for k in self.output_stream_typings))
 
     @classmethod
     def load(cls, id: str) -> "FFmpegFilter":
