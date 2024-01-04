@@ -1,0 +1,26 @@
+from __future__ import annotations
+
+import re
+from typing import TYPE_CHECKING, Any
+
+from ..base import FilterableStream, FilterNode
+from ..schema import DefaultFloat, DefaultInt, DefaultStr, StreamType
+
+if TYPE_CHECKING:
+    from .video import VideoStream
+
+
+class AudioStream(FilterableStream):
+    @property
+    def video(self) -> "VideoStream":
+        raise NotImplementedError("This stream does not have a video component")
+
+    @property
+    def audio(self) -> "AudioStream":
+        return AudioStream(node=self.node, selector=StreamType.audio, index=self.index)
+
+    {% for f in filters %}
+        {% if f.filter_type.value in ["af", "avf"] %}
+    {{ _components.filter_method(f) }}
+        {% endif %}
+    {% endfor %}
