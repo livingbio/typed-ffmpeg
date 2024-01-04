@@ -22,6 +22,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set the expression for the x and y coordinates of the overlaid video\non the main video. Default value is \"0\" for both expressions. In case\nthe expression is invalid, it is set to a huge value (meaning that the\noverlay will not be displayed within the output visible area).\n</p>\n</dd>",
       "name": "x",
@@ -32,6 +33,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set the expression for the x and y coordinates of the overlaid video\non the main video. Default value is \"0\" for both expressions. In case\nthe expression is invalid, it is set to a huge value (meaning that the\noverlay will not be displayed within the output visible area).\n</p>\n</dd>",
       "name": "y",
@@ -42,6 +44,7 @@
       "alias": [
         "eof_action"
       ],
+      "choices": [],
       "default": "EOF_ACTION_REPEAT",
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "eof_action",
@@ -52,6 +55,7 @@
       "alias": [
         "eval"
       ],
+      "choices": [],
       "default": "EVAL_MODE_FRAME",
       "description": "<dd><p>Set when the expressions for <samp>x</samp>, and <samp>y</samp> are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>only evaluate expressions once during the filter initialization or\nwhen a command is processed\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expressions for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>frame</samp>\u2019.\n</p>\n</dd>",
       "name": "eval",
@@ -62,6 +66,7 @@
       "alias": [
         "shortest"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "shortest",
@@ -72,6 +77,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": "OVERLAY_FORMAT_YUV420",
       "description": "<dd><p>Set the format for the output video.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>yuv420</samp>\u2019</dt>\n<dd><p>force YUV 4:2:0 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv420p10</samp>\u2019</dt>\n<dd><p>force YUV 4:2:0 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv422</samp>\u2019</dt>\n<dd><p>force YUV 4:2:2 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv422p10</samp>\u2019</dt>\n<dd><p>force YUV 4:2:2 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv444</samp>\u2019</dt>\n<dd><p>force YUV 4:4:4 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>yuv444p10</samp>\u2019</dt>\n<dd><p>force YUV 4:4:4 10-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>rgb</samp>\u2019</dt>\n<dd><p>force RGB 8-bit packed output\n</p>\n</dd>\n<dt>\u2018<samp>gbrp</samp>\u2019</dt>\n<dd><p>force RGB 8-bit planar output\n</p>\n</dd>\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>automatically pick format\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>yuv420</samp>\u2019.\n</p>\n</dd>",
       "name": "format",
@@ -82,6 +88,7 @@
       "alias": [
         "repeatlast"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "repeatlast",
@@ -92,6 +99,7 @@
       "alias": [
         "alpha"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set format of alpha of the overlaid video, it can be <var>straight</var> or\n<var>premultiplied</var>. Default is <var>straight</var>.\n</p></dd>",
       "name": "alpha",

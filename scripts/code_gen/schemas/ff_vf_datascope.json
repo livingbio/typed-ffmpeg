@@ -19,6 +19,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "hd720",
       "description": "<dd><p>Set output video size.\n</p>\n</dd>",
       "name": "size",
@@ -29,6 +30,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set x offset from where to pick pixels.\n</p>\n</dd>",
       "name": "x",
@@ -39,6 +41,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set y offset from where to pick pixels.\n</p>\n</dd>",
       "name": "y",
@@ -49,6 +52,7 @@
       "alias": [
         "mode"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set scope mode, can be one of the following:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>mono</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values with white color on black background.\n</p>\n</dd>\n<dt>\u2018<samp>color</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values with input video pixel color on black\nbackground.\n</p>\n</dd>\n<dt>\u2018<samp>color2</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values on color background picked from input video,\nthe text color is picked in such way so its always visible.\n</p></dd>\n</dl>\n</dd>",
       "name": "mode",
@@ -59,6 +63,7 @@
       "alias": [
         "axis"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Draw rows and columns numbers on left and top of video.\n</p>\n</dd>",
       "name": "axis",
@@ -69,6 +74,7 @@
       "alias": [
         "opacity"
       ],
+      "choices": [],
       "default": 0.75,
       "description": "<dd><p>Set background opacity.\n</p>\n</dd>",
       "name": "opacity",
@@ -79,6 +85,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set display number format. Can be <code>hex</code>, or <code>dec</code>. Default is <code>hex</code>.\n</p>\n</dd>",
       "name": "format",
@@ -89,6 +96,7 @@
       "alias": [
         "components"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set pixel components to display. By default all pixel components are displayed.\n</p></dd>",
       "name": "components",

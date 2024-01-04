@@ -18,6 +18,7 @@
       "alias": [
         "mode"
       ],
+      "choices": [],
       "default": "AUTO_ANALYZE",
       "description": null,
       "name": "mode",

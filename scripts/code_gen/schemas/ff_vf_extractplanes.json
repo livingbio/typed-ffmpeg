@@ -18,6 +18,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set plane(s) to extract.\n</p>\n<p>Available values for planes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dt>\u2018<samp>v</samp>\u2019</dt>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n</dl>\n<p>Choosing planes not available in the input will result in an error.\nThat means you cannot select <code>r</code>, <code>g</code>, <code>b</code> planes\nwith <code>y</code>, <code>u</code>, <code>v</code> planes at same time.\n</p></dd>",
       "name": "planes",

@@ -18,6 +18,7 @@
       "alias": [
         "pix_fmts"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "pix_fmts",

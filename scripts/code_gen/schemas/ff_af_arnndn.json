@@ -19,6 +19,7 @@
         "model",
         "m"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set train model file to load. This option is always required.\n</p>\n</dd>",
       "name": "model",
@@ -29,6 +30,7 @@
       "alias": [
         "mix"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set how much to mix filtered samples into final output.\nAllowed range is from -1 to 1. Default value is 1.\nNegative values are special, they set how much to keep filtered noise\nin the final filter output. Set this option to -1 to hear actual\nnoise removed from input signal.\n</p></dd>",
       "name": "mix",

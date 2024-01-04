@@ -18,6 +18,7 @@
       "alias": [
         "range"
       ],
+      "choices": [],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": "<dd><p>Specify output color range.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>tv</samp>\u2019</dt>\n<dd><p>TV (restricted) range\n</p>\n</dd>\n<dt>\u2018<samp>mpeg</samp>\u2019</dt>\n<dd><p>MPEG (restricted) range\n</p>\n</dd>\n<dt>\u2018<samp>pc</samp>\u2019</dt>\n<dd><p>PC (full) range\n</p>\n</dd>\n<dt>\u2018<samp>jpeg</samp>\u2019</dt>\n<dd><p>JPEG (full) range\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "range",

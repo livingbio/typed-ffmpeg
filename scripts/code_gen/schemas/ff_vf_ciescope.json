@@ -18,6 +18,7 @@
       "alias": [
         "system"
       ],
+      "choices": [],
       "default": "Rec709system",
       "description": "<dd><p>Set color system.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>ntsc, 470m</samp>\u2019</dt>\n<dt>\u2018<samp>ebu, 470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte</samp>\u2019</dt>\n<dt>\u2018<samp>240m</samp>\u2019</dt>\n<dt>\u2018<samp>apple</samp>\u2019</dt>\n<dt>\u2018<samp>widergb</samp>\u2019</dt>\n<dt>\u2018<samp>cie1931</samp>\u2019</dt>\n<dt>\u2018<samp>rec709, hdtv</samp>\u2019</dt>\n<dt>\u2018<samp>uhdtv, rec2020</samp>\u2019</dt>\n<dt>\u2018<samp>dcip3</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "system",
@@ -28,6 +29,7 @@
       "alias": [
         "cie"
       ],
+      "choices": [],
       "default": "XYY",
       "description": "<dd><p>Set CIE system.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>xyy</samp>\u2019</dt>\n<dt>\u2018<samp>ucs</samp>\u2019</dt>\n<dt>\u2018<samp>luv</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "cie",
@@ -38,6 +40,7 @@
       "alias": [
         "gamuts"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set what gamuts to draw.\n</p>\n<p>See <code>system</code> option for available values.\n</p>\n</dd>",
       "name": "gamuts",
@@ -49,6 +52,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": 512,
       "description": "<dd><p>Set ciescope size, by default set to 512.\n</p>\n</dd>",
       "name": "size",
@@ -60,6 +64,7 @@
         "intensity",
         "i"
       ],
+      "choices": [],
       "default": 0.001,
       "description": "<dd><p>Set intensity used to map input pixel values to CIE diagram.\n</p>\n</dd>",
       "name": "intensity",
@@ -70,6 +75,7 @@
       "alias": [
         "contrast"
       ],
+      "choices": [],
       "default": 0.75,
       "description": "<dd><p>Set contrast used to draw tongue colors that are out of active color system gamut.\n</p>\n</dd>",
       "name": "contrast",
@@ -80,6 +86,7 @@
       "alias": [
         "corrgamma"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Correct gamma displayed on scope, by default enabled.\n</p>\n</dd>",
       "name": "corrgamma",
@@ -90,6 +97,7 @@
       "alias": [
         "showwhite"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Show white point on CIE diagram, by default disabled.\n</p>\n</dd>",
       "name": "showwhite",
@@ -100,6 +108,7 @@
       "alias": [
         "gamma"
       ],
+      "choices": [],
       "default": 2.6,
       "description": "<dd><p>Set input gamma. Used only with XYZ input color space.\n</p>\n</dd>",
       "name": "gamma",
@@ -110,6 +119,7 @@
       "alias": [
         "fill"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Fill with CIE colors. By default is enabled.\n</p></dd>",
       "name": "fill",

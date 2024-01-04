@@ -22,6 +22,7 @@
       "alias": [
         "clut"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set which CLUT video frames will be processed from second input stream,\ncan be <var>first</var> or <var>all</var>. Default is <var>all</var>.\n</p>\n</dd>",
       "name": "clut",
@@ -32,6 +33,7 @@
       "alias": [
         "interp"
       ],
+      "choices": [],
       "default": "INTERPOLATE_TETRAHEDRAL",
       "description": null,
       "name": "interp",

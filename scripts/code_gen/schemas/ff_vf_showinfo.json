@@ -18,6 +18,7 @@
       "alias": [
         "checksum"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Calculate checksums of each plane. By default enabled.\n</p></dd>",
       "name": "checksum",

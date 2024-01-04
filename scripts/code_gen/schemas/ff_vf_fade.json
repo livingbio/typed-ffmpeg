@@ -19,6 +19,7 @@
         "type",
         "t"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>The effect type can be either \"in\" for a fade-in, or \"out\" for a fade-out\neffect.\nDefault is <code>in</code>.\n</p>\n</dd>",
       "name": "type",
@@ -30,6 +31,7 @@
         "start_frame",
         "s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify the number of the frame to start applying the fade\neffect at. Default is 0.\n</p>\n</dd>",
       "name": "start_frame",
@@ -41,6 +43,7 @@
         "nb_frames",
         "n"
       ],
+      "choices": [],
       "default": 25,
       "description": "<dd><p>The number of frames that the fade effect lasts. At the end of the\nfade-in effect, the output video will have the same intensity as the input video.\nAt the end of the fade-out transition, the output video will be filled with the\nselected <samp>color</samp>.\nDefault is 25.\n</p>\n</dd>",
       "name": "nb_frames",
@@ -51,6 +54,7 @@
       "alias": [
         "alpha"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If set to 1, fade only alpha channel, if one exists on the input.\nDefault value is 0.\n</p>\n</dd>",
       "name": "alpha",
@@ -62,6 +66,7 @@
         "start_time",
         "st"
       ],
+      "choices": [],
       "default": "0.",
       "description": "<dd><p>Specify the timestamp (in seconds) of the frame to start to apply the fade\neffect. If both start_frame and start_time are specified, the fade will start at\nwhichever comes last.  Default is 0.\n</p>\n</dd>",
       "name": "start_time",
@@ -73,6 +78,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": "0.",
       "description": "<dd><p>The number of seconds for which the fade effect has to last. At the end of the\nfade-in effect the output video will have the same intensity as the input video,\nat the end of the fade-out transition the output video will be filled with the\nselected <samp>color</samp>.\nIf both duration and nb_frames are specified, duration is used. Default is 0\n(nb_frames is used by default).\n</p>\n</dd>",
       "name": "duration",
@@ -84,6 +90,7 @@
         "color",
         "c"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Specify the color of the fade. Default is \"black\".\n</p></dd>",
       "name": "color",

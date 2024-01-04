@@ -19,6 +19,7 @@
         "sigma",
         "s"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the noise sigma constant.\n</p>\n<p>This <var>sigma</var> defines a hard threshold of <code>3 * sigma</code>; every DCT\ncoefficient (absolute value) below this threshold with be dropped.\n</p>\n<p>If you need a more advanced filtering, see <samp>expr</samp>.\n</p>\n<p>Default is <code>0</code>.\n</p>\n</dd>",
       "name": "sigma",
@@ -29,6 +30,7 @@
       "alias": [
         "overlap"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set number overlapping pixels for each block. Since the filter can be slow, you\nmay want to reduce this value, at the cost of a less effective filter and the\nrisk of various artefacts.\n</p>\n<p>If the overlapping value doesn\u2019t permit processing the whole input width or\nheight, a warning will be displayed and according borders won\u2019t be denoised.\n</p>\n<p>Default value is <var>blocksize</var>-1, which is the best possible setting.\n</p>\n</dd>",
       "name": "overlap",
@@ -40,6 +42,7 @@
         "expr",
         "e"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the coefficient factor expression.\n</p>\n<p>For each coefficient of a DCT block, this expression will be evaluated as a\nmultiplier value for the coefficient.\n</p>\n<p>If this is option is set, the <samp>sigma</samp> option will be ignored.\n</p>\n<p>The absolute value of the coefficient can be accessed through the <var>c</var>\nvariable.\n</p>\n</dd>",
       "name": "expr",
@@ -50,6 +53,7 @@
       "alias": [
         "n"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set the <var>blocksize</var> using the number of bits. <code>1&lt;&lt;<var>n</var></code> defines the\n<var>blocksize</var>, which is the width and height of the processed blocks.\n</p>\n<p>The default value is <var>3</var> (8x8) and can be raised to <var>4</var> for a\n<var>blocksize</var> of 16x16. Note that changing this setting has huge consequences\non the speed processing. Also, a larger block size does not necessarily means a\nbetter de-noising.\n</p></dd>",
       "name": "n",

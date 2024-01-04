@@ -19,6 +19,7 @@
         "luma_msize_x",
         "lx"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set the luma matrix horizontal size. It must be an odd integer between\n3 and 23. The default value is 5.\n</p>\n</dd>",
       "name": "luma_msize_x",
@@ -30,6 +31,7 @@
         "luma_msize_y",
         "ly"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set the luma matrix vertical size. It must be an odd integer between 3\nand 23. The default value is 5.\n</p>\n</dd>",
       "name": "luma_msize_y",
@@ -41,6 +43,7 @@
         "luma_amount",
         "la"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the luma effect strength. It must be a floating point number, reasonable\nvalues lay between -1.5 and 1.5.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n<p>Default value is 1.0.\n</p>\n</dd>",
       "name": "luma_amount",
@@ -52,6 +55,7 @@
         "chroma_msize_x",
         "cx"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set the chroma matrix horizontal size. It must be an odd integer\nbetween 3 and 23. The default value is 5.\n</p>\n</dd>",
       "name": "chroma_msize_x",
@@ -63,6 +67,7 @@
         "chroma_msize_y",
         "cy"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set the chroma matrix vertical size. It must be an odd integer\nbetween 3 and 23. The default value is 5.\n</p>\n</dd>",
       "name": "chroma_msize_y",
@@ -74,6 +79,7 @@
         "chroma_amount",
         "ca"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the chroma effect strength. It must be a floating point number, reasonable\nvalues lay between -1.5 and 1.5.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n<p>Default value is 0.0.\n</p>\n</dd>",
       "name": "chroma_amount",
@@ -85,6 +91,7 @@
         "alpha_msize_x",
         "ax"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set the alpha matrix horizontal size. It must be an odd integer\nbetween 3 and 23. The default value is 5.\n</p>\n</dd>",
       "name": "alpha_msize_x",
@@ -96,6 +103,7 @@
         "alpha_msize_y",
         "ay"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set the alpha matrix vertical size. It must be an odd integer\nbetween 3 and 23. The default value is 5.\n</p>\n</dd>",
       "name": "alpha_msize_y",
@@ -107,6 +115,7 @@
         "alpha_amount",
         "aa"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the alpha effect strength. It must be a floating point number, reasonable\nvalues lay between -1.5 and 1.5.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n<p>Default value is 0.0.\n</p>\n</dd>",
       "name": "alpha_amount",

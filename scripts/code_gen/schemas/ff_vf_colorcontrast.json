@@ -18,6 +18,7 @@
       "alias": [
         "rc"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the red-cyan contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
       "name": "rc",
@@ -28,6 +29,7 @@
       "alias": [
         "gm"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the green-magenta contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
       "name": "gm",
@@ -38,6 +40,7 @@
       "alias": [
         "by"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the blue-yellow contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
       "name": "by",
@@ -48,6 +51,7 @@
       "alias": [
         "rcw"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
       "name": "rcw",
@@ -58,6 +62,7 @@
       "alias": [
         "gmw"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
       "name": "gmw",
@@ -68,6 +73,7 @@
       "alias": [
         "byw"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
       "name": "byw",
@@ -78,6 +84,7 @@
       "alias": [
         "pl"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the amount of preserving lightness. Default value is 0.0. Allowed range is from 0.0 to 1.0.\n</p></dd>",
       "name": "pl",

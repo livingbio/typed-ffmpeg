@@ -18,6 +18,7 @@
       "alias": [
         "quality"
       ],
+      "choices": [],
       "default": 4,
       "description": "<dd><p>Set quality. This option defines the number of levels for averaging. It accepts\nan integer in the range 4-5. Default value is <code>4</code>.\n</p>\n</dd>",
       "name": "quality",
@@ -28,6 +29,7 @@
       "alias": [
         "qp"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Force a constant quantization parameter. It accepts an integer in range 0-63.\nIf not set, the filter will use the QP from the video stream (if available).\n</p>\n</dd>",
       "name": "qp",
@@ -38,6 +40,7 @@
       "alias": [
         "strength"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set filter strength. It accepts an integer in range -15 to 32. Lower values mean\nmore details but also more artifacts, while higher values make the image smoother\nbut also blurrier. Default value is <code>0</code> \u2212 PSNR optimal.\n</p>\n</dd>",
       "name": "strength",
@@ -48,6 +51,7 @@
       "alias": [
         "use_bframe_qp"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable the use of the QP from the B-Frames if set to <code>1</code>. Using this\noption may cause flicker since the B-Frames have often larger QP. Default is\n<code>0</code> (not enabled).\n</p>\n</dd>",
       "name": "use_bframe_qp",

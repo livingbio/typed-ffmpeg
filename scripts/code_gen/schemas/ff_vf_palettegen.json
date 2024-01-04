@@ -18,6 +18,7 @@
       "alias": [
         "max_colors"
       ],
+      "choices": [],
       "default": 256,
       "description": "<dd><p>Set the maximum number of colors to quantize in the palette.\nNote: the palette will still contain 256 colors; the unused palette entries\nwill be black.\n</p>\n</dd>",
       "name": "max_colors",
@@ -28,6 +29,7 @@
       "alias": [
         "reserve_transparent"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Create a palette of 255 colors maximum and reserve the last one for\ntransparency. Reserving the transparency color is useful for GIF optimization.\nIf not set, the maximum of colors in the palette will be 256. You probably want\nto disable this option for a standalone image.\nSet by default.\n</p>\n</dd>",
       "name": "reserve_transparent",
@@ -38,6 +40,7 @@
       "alias": [
         "transparency_color"
       ],
+      "choices": [],
       "default": "lime",
       "description": "<dd><p>Set the color that will be used as background for transparency.\n</p>\n</dd>",
       "name": "transparency_color",
@@ -48,6 +51,7 @@
       "alias": [
         "stats_mode"
       ],
+      "choices": [],
       "default": "STATS_MODE_ALL_FRAMES",
       "description": "<dd><p>Set statistics mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Compute full frame histograms.\n</p></dd>\n<dt>\u2018<samp>diff</samp>\u2019</dt>\n<dd><p>Compute histograms only for the part that differs from previous frame. This\nmight be relevant to give more importance to the moving part of your input if\nthe background is static.\n</p></dd>\n<dt>\u2018<samp>single</samp>\u2019</dt>\n<dd><p>Compute new histogram for each frame.\n</p></dd>\n</dl>\n<p>Default value is <var>full</var>.\n</p></dd>",
       "name": "stats_mode",

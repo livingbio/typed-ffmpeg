@@ -22,6 +22,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set expressions for the x and y coordinates of the overlaid video\non the main video.\n</p>\n<p>They can contain the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>main_w, W</samp></dt>\n<dt><samp>main_h, H</samp></dt>\n<dd><p>The main input width and height.\n</p>\n</dd>\n<dt><samp>overlay_w, w</samp></dt>\n<dt><samp>overlay_h, h</samp></dt>\n<dd><p>The overlay input width and height.\n</p>\n</dd>\n<dt><samp>x</samp></dt>\n<dt><samp>y</samp></dt>\n<dd><p>The computed values for <var>x</var> and <var>y</var>. They are evaluated for\neach new frame.\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>The ordinal index of the main input frame, starting from 0.\n</p>\n</dd>\n<dt><samp>pos</samp></dt>\n<dd><p>The byte offset position in the file of the main input frame, NAN if unknown.\nDeprecated, do not use.\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>The timestamp of the main input frame, expressed in seconds, NAN if unknown.\n</p>\n</dd>\n</dl>\n<p>Default value is \"0\" for both expressions.\n</p>\n</dd>",
       "name": "x",
@@ -32,6 +33,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set expressions for the x and y coordinates of the overlaid video\non the main video.\n</p>\n<p>They can contain the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>main_w, W</samp></dt>\n<dt><samp>main_h, H</samp></dt>\n<dd><p>The main input width and height.\n</p>\n</dd>\n<dt><samp>overlay_w, w</samp></dt>\n<dt><samp>overlay_h, h</samp></dt>\n<dd><p>The overlay input width and height.\n</p>\n</dd>\n<dt><samp>x</samp></dt>\n<dt><samp>y</samp></dt>\n<dd><p>The computed values for <var>x</var> and <var>y</var>. They are evaluated for\neach new frame.\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>The ordinal index of the main input frame, starting from 0.\n</p>\n</dd>\n<dt><samp>pos</samp></dt>\n<dd><p>The byte offset position in the file of the main input frame, NAN if unknown.\nDeprecated, do not use.\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>The timestamp of the main input frame, expressed in seconds, NAN if unknown.\n</p>\n</dd>\n</dl>\n<p>Default value is \"0\" for both expressions.\n</p>\n</dd>",
       "name": "y",
@@ -42,6 +44,7 @@
       "alias": [
         "eof_action"
       ],
+      "choices": [],
       "default": "EOF_ACTION_REPEAT",
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "eof_action",
@@ -52,6 +55,7 @@
       "alias": [
         "eval"
       ],
+      "choices": [],
       "default": "EVAL_MODE_FRAME",
       "description": "<dd><p>Set when the expressions for <samp>x</samp> and <samp>y</samp> are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>init</samp></dt>\n<dd><p>Evaluate expressions once during filter initialization or\nwhen a command is processed.\n</p>\n</dd>\n<dt><samp>frame</samp></dt>\n<dd><p>Evaluate expressions for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is <samp>frame</samp>.\n</p>\n</dd>",
       "name": "eval",
@@ -62,6 +66,7 @@
       "alias": [
         "shortest"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "shortest",
@@ -72,6 +77,7 @@
       "alias": [
         "repeatlast"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "repeatlast",

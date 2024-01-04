@@ -18,6 +18,7 @@
       "alias": [
         "c0_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "c0_mode",
@@ -28,6 +29,7 @@
       "alias": [
         "c1_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "c1_mode",
@@ -38,6 +40,7 @@
       "alias": [
         "c2_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "c2_mode",
@@ -48,6 +51,7 @@
       "alias": [
         "c3_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "c3_mode",
@@ -58,6 +62,7 @@
       "alias": [
         "all_mode"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "all_mode",
@@ -68,6 +73,7 @@
       "alias": [
         "c0_expr"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "c0_expr",
@@ -78,6 +84,7 @@
       "alias": [
         "c1_expr"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "c1_expr",
@@ -88,6 +95,7 @@
       "alias": [
         "c2_expr"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "c2_expr",
@@ -98,6 +106,7 @@
       "alias": [
         "c3_expr"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "c3_expr",
@@ -108,6 +117,7 @@
       "alias": [
         "all_expr"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "all_expr",
@@ -118,6 +128,7 @@
       "alias": [
         "c0_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "c0_opacity",
@@ -128,6 +139,7 @@
       "alias": [
         "c1_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "c1_opacity",
@@ -138,6 +150,7 @@
       "alias": [
         "c2_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "c2_opacity",
@@ -148,6 +161,7 @@
       "alias": [
         "c3_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "c3_opacity",
@@ -158,6 +172,7 @@
       "alias": [
         "all_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "all_opacity",

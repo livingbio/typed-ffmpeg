@@ -18,6 +18,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "s",
@@ -28,6 +29,7 @@
       "alias": [
         "p"
       ],
+      "choices": [],
       "default": "2*3+1",
       "description": null,
       "name": "p",
@@ -38,6 +40,7 @@
       "alias": [
         "pc"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "pc",
@@ -48,6 +51,7 @@
       "alias": [
         "r"
       ],
+      "choices": [],
       "default": "7*2+1",
       "description": null,
       "name": "r",
@@ -58,6 +62,7 @@
       "alias": [
         "rc"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "rc",

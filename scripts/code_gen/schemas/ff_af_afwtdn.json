@@ -18,6 +18,7 @@
       "alias": [
         "sigma"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the noise sigma, allowed range is from 0 to 1.\nDefault value is 0.\nThis option controls strength of denoising applied to input samples.\nMost useful way to set this option is via decibels, eg. -45dB.\n</p>\n</dd>",
       "name": "sigma",
@@ -28,6 +29,7 @@
       "alias": [
         "levels"
       ],
+      "choices": [],
       "default": 10,
       "description": "<dd><p>Set the number of wavelet levels of decomposition.\nAllowed range is from 1 to 12.\nDefault value is 10.\nSetting this too low make denoising performance very poor.\n</p>\n</dd>",
       "name": "levels",
@@ -38,6 +40,7 @@
       "alias": [
         "wavet"
       ],
+      "choices": [],
       "default": "SYM10",
       "description": "<dd><p>Set wavelet type for decomposition of input frame.\nThey are sorted by number of coefficients, from lowest to highest.\nMore coefficients means worse filtering speed, but overall better quality.\nAvailable wavelets are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>sym2</samp>\u2019</dt>\n<dt>\u2018<samp>sym4</samp>\u2019</dt>\n<dt>\u2018<samp>rbior68</samp>\u2019</dt>\n<dt>\u2018<samp>deb10</samp>\u2019</dt>\n<dt>\u2018<samp>sym10</samp>\u2019</dt>\n<dt>\u2018<samp>coif5</samp>\u2019</dt>\n<dt>\u2018<samp>bl3</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "wavet",
@@ -48,6 +51,7 @@
       "alias": [
         "percent"
       ],
+      "choices": [],
       "default": 85.0,
       "description": "<dd><p>Set percent of full denoising. Allowed range is from 0 to 100 percent.\nDefault value is 85 percent or partial denoising.\n</p>\n</dd>",
       "name": "percent",
@@ -58,6 +62,7 @@
       "alias": [
         "profile"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If enabled, first input frame will be used as noise profile.\nIf first frame samples contain non-noise performance will be very poor.\n</p>\n</dd>",
       "name": "profile",
@@ -68,6 +73,7 @@
       "alias": [
         "adaptive"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If enabled, input frames are analyzed for presence of noise.\nIf noise is detected with high possibility then input frame profile will be\nused for processing following frames, until new noise frame is detected.\n</p>\n</dd>",
       "name": "adaptive",
@@ -78,6 +84,7 @@
       "alias": [
         "samples"
       ],
+      "choices": [],
       "default": 8192,
       "description": "<dd><p>Set size of single frame in number of samples. Allowed range is from 512 to\n65536. Default frame size is 8192 samples.\n</p>\n</dd>",
       "name": "samples",
@@ -88,6 +95,7 @@
       "alias": [
         "softness"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set softness applied inside thresholding function. Allowed range is from 0 to\n10. Default softness is 1.\n</p></dd>",
       "name": "softness",

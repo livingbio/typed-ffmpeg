@@ -18,6 +18,7 @@
       "alias": [
         "quality"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set quality. This option defines the number of levels for averaging. It accepts\nan integer in the range 0-8. If set to <code>0</code>, the filter will have no\neffect. A value of <code>8</code> means the higher quality. For each increment of\nthat value the speed drops by a factor of approximately 2.  Default value is\n<code>3</code>.\n</p>\n</dd>",
       "name": "quality",
@@ -28,6 +29,7 @@
       "alias": [
         "qp"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Force a constant quantization parameter. If not set, the filter will use the QP\nfrom the video stream (if available).\n</p>\n</dd>",
       "name": "qp",
@@ -38,6 +40,7 @@
       "alias": [
         "use_bframe_qp"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "use_bframe_qp",
@@ -48,6 +51,7 @@
       "alias": [
         "codec"
       ],
+      "choices": [],
       "default": "snow",
       "description": "<dd><p>Use specified codec instead of snow.\n</p></dd>",
       "name": "codec",

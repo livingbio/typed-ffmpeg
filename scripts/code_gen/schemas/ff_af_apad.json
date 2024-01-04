@@ -18,6 +18,7 @@
       "alias": [
         "packet_size"
       ],
+      "choices": [],
       "default": 4096,
       "description": "<dd><p>Set silence packet size. Default value is 4096.\n</p>\n</dd>",
       "name": "packet_size",
@@ -28,6 +29,7 @@
       "alias": [
         "pad_len"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set the number of samples of silence to add to the end. After the\nvalue is reached, the stream is terminated. This option is mutually\nexclusive with <samp>whole_len</samp>.\n</p>\n</dd>",
       "name": "pad_len",
@@ -38,6 +40,7 @@
       "alias": [
         "whole_len"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set the minimum total number of samples in the output audio stream. If\nthe value is longer than the input audio length, silence is added to\nthe end, until the value is reached. This option is mutually exclusive\nwith <samp>pad_len</samp>.\n</p>\n</dd>",
       "name": "whole_len",
@@ -48,6 +51,7 @@
       "alias": [
         "pad_dur"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Specify the duration of samples of silence to add. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax. Used only if set to non-negative value.\n</p>\n</dd>",
       "name": "pad_dur",
@@ -58,6 +62,7 @@
       "alias": [
         "whole_dur"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Specify the minimum total duration in the output audio stream. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax. Used only if set to non-negative value. If the value is longer than\nthe input audio length, silence is added to the end, until the value is reached.\nThis option is mutually exclusive with <samp>pad_dur</samp>\n</p></dd>",
       "name": "whole_dur",

@@ -18,6 +18,7 @@
       "alias": [
         "border_type"
       ],
+      "choices": [],
       "default": "NPP_BORDER_REPLICATE",
       "description": "<dd><p>Type of sampling to be used ad frame borders. One of the following:\n</p><dl compact=\"compact\">\n<dt><samp>replicate</samp></dt>\n<dd><p>Replicate pixel values.\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "border_type",

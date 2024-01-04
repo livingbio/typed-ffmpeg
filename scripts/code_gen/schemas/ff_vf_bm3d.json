@@ -13,6 +13,7 @@
       "alias": [
         "sigma"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set denoising strength. Default value is 1.\nAllowed range is from 0 to 999.9.\nThe denoising algorithm is very sensitive to sigma, so adjust it\naccording to the source.\n</p>\n</dd>",
       "name": "sigma",
@@ -23,6 +24,7 @@
       "alias": [
         "block"
       ],
+      "choices": [],
       "default": 16,
       "description": "<dd><p>Set local patch size. This sets dimensions in 2D.\n</p>\n</dd>",
       "name": "block",
@@ -33,6 +35,7 @@
       "alias": [
         "bstep"
       ],
+      "choices": [],
       "default": 4,
       "description": "<dd><p>Set sliding step for processing blocks. Default value is 4.\nAllowed range is from 1 to 64.\nSmaller values allows processing more reference blocks and is slower.\n</p>\n</dd>",
       "name": "bstep",
@@ -43,6 +46,7 @@
       "alias": [
         "group"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set maximal number of similar blocks for 3rd dimension. Default value is 1.\nWhen set to 1, no block matching is done. Larger values allows more blocks\nin single group.\nAllowed range is from 1 to 256.\n</p>\n</dd>",
       "name": "group",
@@ -53,6 +57,7 @@
       "alias": [
         "range"
       ],
+      "choices": [],
       "default": 9,
       "description": "<dd><p>Set radius for search block matching. Default is 9.\nAllowed range is from 1 to INT32_MAX.\n</p>\n</dd>",
       "name": "range",
@@ -63,6 +68,7 @@
       "alias": [
         "mstep"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set step between two search locations for block matching. Default is 1.\nAllowed range is from 1 to 64. Smaller is slower.\n</p>\n</dd>",
       "name": "mstep",
@@ -73,6 +79,7 @@
       "alias": [
         "thmse"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set threshold of mean square error for block matching. Valid range is 0 to\nINT32_MAX.\n</p>\n</dd>",
       "name": "thmse",
@@ -83,6 +90,7 @@
       "alias": [
         "hdthr"
       ],
+      "choices": [],
       "default": 2.7,
       "description": "<dd><p>Set thresholding parameter for hard thresholding in 3D transformed domain.\nLarger values results in stronger hard-thresholding filtering in frequency\ndomain.\n</p>\n</dd>",
       "name": "hdthr",
@@ -93,6 +101,7 @@
       "alias": [
         "estim"
       ],
+      "choices": [],
       "default": "BASIC",
       "description": "<dd><p>Set filtering estimation mode. Can be <code>basic</code> or <code>final</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>",
       "name": "estim",
@@ -103,6 +112,7 @@
       "alias": [
         "ref"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If enabled, filter will use 2nd stream for block matching.\nDefault is disabled for <code>basic</code> value of <var>estim</var> option,\nand always enabled if value of <var>estim</var> is <code>final</code>.\n</p>\n</dd>",
       "name": "ref",
@@ -113,6 +123,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set planes to filter. Default is all available except alpha.\n</p></dd>",
       "name": "planes",

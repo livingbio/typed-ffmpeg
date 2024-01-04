@@ -18,6 +18,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set input level prior processing of signal.\nAllowed range is from 0 to 64.\nDefault value is 1.\n</p>\n</dd>",
       "name": "level_in",
@@ -28,6 +29,7 @@
       "alias": [
         "level_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set output level after processing of signal.\nAllowed range is from 0 to 64.\nDefault value is 1.\n</p>\n</dd>",
       "name": "level_out",
@@ -38,6 +40,7 @@
       "alias": [
         "amount"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the amount of harmonics added to original signal.\nAllowed range is from 0 to 64.\nDefault value is 1.\n</p>\n</dd>",
       "name": "amount",
@@ -48,6 +51,7 @@
       "alias": [
         "drive"
       ],
+      "choices": [],
       "default": 8.5,
       "description": "<dd><p>Set the amount of newly created harmonics.\nAllowed range is from 0.1 to 10.\nDefault value is 8.5.\n</p>\n</dd>",
       "name": "drive",
@@ -58,6 +62,7 @@
       "alias": [
         "blend"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the octave of newly created harmonics.\nAllowed range is from -10 to 10.\nDefault value is 0.\n</p>\n</dd>",
       "name": "blend",
@@ -68,6 +73,7 @@
       "alias": [
         "freq"
       ],
+      "choices": [],
       "default": 7500.0,
       "description": "<dd><p>Set the lower frequency limit of producing harmonics in Hz.\nAllowed range is from 2000 to 12000 Hz.\nDefault is 7500 Hz.\n</p>\n</dd>",
       "name": "freq",
@@ -78,6 +84,7 @@
       "alias": [
         "ceil"
       ],
+      "choices": [],
       "default": 9999.0,
       "description": "<dd><p>Set the upper frequency limit of producing harmonics.\nAllowed range is from 9999 to 20000 Hz.\nIf value is lower than 10000 Hz no limit is applied.\n</p>\n</dd>",
       "name": "ceil",
@@ -88,6 +95,7 @@
       "alias": [
         "listen"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Mute the original signal and output only added harmonics.\nBy default is disabled.\n</p></dd>",
       "name": "listen",

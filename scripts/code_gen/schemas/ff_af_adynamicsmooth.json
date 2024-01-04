@@ -18,6 +18,7 @@
       "alias": [
         "sensitivity"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Set an amount of sensitivity to frequency fluctations. Default is 2.\nAllowed range is from 0 to 1e+06.\n</p>\n</dd>",
       "name": "sensitivity",
@@ -28,6 +29,7 @@
       "alias": [
         "basefreq"
       ],
+      "choices": [],
       "default": 22050.0,
       "description": "<dd><p>Set a base frequency for smoothing. Default value is 22050.\nAllowed range is from 2 to 1e+06.\n</p></dd>",
       "name": "basefreq",

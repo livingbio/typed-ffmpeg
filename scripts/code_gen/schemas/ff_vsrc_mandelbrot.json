@@ -14,6 +14,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "640x480",
       "description": "<dd><p>Set frame size. For the syntax of this option, check the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video\nsize\" section in the ffmpeg-utils manual</a>. Default value is \"640x480\".\n</p>\n</dd>",
       "name": "size",
@@ -25,6 +26,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
       "name": "rate",
@@ -35,6 +37,7 @@
       "alias": [
         "maxiter"
       ],
+      "choices": [],
       "default": 7189,
       "description": "<dd><p>Set the maximum of iterations performed by the rendering\nalgorithm. Default value is 7189.\n</p>\n</dd>",
       "name": "maxiter",
@@ -45,6 +48,7 @@
       "alias": [
         "start_x"
       ],
+      "choices": [],
       "default": -0.7436438870371587,
       "description": "<dd><p>Set the initial x position. Must be a floating point value between\n-100 and 100. Default value is -0.743643887037158704752191506114774.\n</p>\n</dd>",
       "name": "start_x",
@@ -55,6 +59,7 @@
       "alias": [
         "start_y"
       ],
+      "choices": [],
       "default": -0.13182590420531198,
       "description": "<dd><p>Set the initial y position. Must be a floating point value between\n-100 and 100. Default value is -0.131825904205311970493132056385139.\n</p></dd>",
       "name": "start_y",
@@ -65,6 +70,7 @@
       "alias": [
         "start_scale"
       ],
+      "choices": [],
       "default": 3.0,
       "description": "<dd><p>Set the initial scale value. Default value is 3.0.\n</p>\n</dd>",
       "name": "start_scale",
@@ -75,6 +81,7 @@
       "alias": [
         "end_scale"
       ],
+      "choices": [],
       "default": 0.3,
       "description": "<dd><p>Set the terminal scale value.\nMust be a floating point value. Default value is 0.3.\n</p>\n</dd>",
       "name": "end_scale",
@@ -85,6 +92,7 @@
       "alias": [
         "end_pts"
       ],
+      "choices": [],
       "default": 400.0,
       "description": "<dd><p>Set the terminal pts value. Default value is 400.\n</p>\n</dd>",
       "name": "end_pts",
@@ -95,6 +103,7 @@
       "alias": [
         "bailout"
       ],
+      "choices": [],
       "default": 10.0,
       "description": "<dd><p>Set the bailout value. Default value is 10.0.\n</p>\n</dd>",
       "name": "bailout",
@@ -105,6 +114,7 @@
       "alias": [
         "morphxf"
       ],
+      "choices": [],
       "default": 0.01,
       "description": null,
       "name": "morphxf",
@@ -115,6 +125,7 @@
       "alias": [
         "morphyf"
       ],
+      "choices": [],
       "default": 0.0123,
       "description": null,
       "name": "morphyf",
@@ -125,6 +136,7 @@
       "alias": [
         "morphamp"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "morphamp",
@@ -135,6 +147,7 @@
       "alias": [
         "outer"
       ],
+      "choices": [],
       "default": "NORMALIZED_ITERATION_COUNT",
       "description": "<dd><p>Set outer coloring mode.\nIt shall assume one of following values:\n</p><dl compact=\"compact\">\n<dt><samp>iteration_count</samp></dt>\n<dd><p>Set iteration count mode.\n</p></dd>\n<dt><samp>normalized_iteration_count</samp></dt>\n<dd><p>set normalized iteration count mode.\n</p></dd>\n</dl>\n<p>Default value is <var>normalized_iteration_count</var>.\n</p>\n</dd>",
       "name": "outer",
@@ -145,6 +158,7 @@
       "alias": [
         "inner"
       ],
+      "choices": [],
       "default": "MINCOL",
       "description": "<dd><p>Set the inner coloring mode, that is the algorithm used to draw the\nMandelbrot fractal internal region.\n</p>\n<p>It shall assume one of the following values:\n</p><dl compact=\"compact\">\n<dt><samp>black</samp></dt>\n<dd><p>Set black mode.\n</p></dd>\n<dt><samp>convergence</samp></dt>\n<dd><p>Show time until convergence.\n</p></dd>\n<dt><samp>mincol</samp></dt>\n<dd><p>Set color based on point closest to the origin of the iterations.\n</p></dd>\n<dt><samp>period</samp></dt>\n<dd><p>Set period mode.\n</p></dd>\n</dl>\n<p>Default value is <var>mincol</var>.\n</p>\n</dd>",
       "name": "inner",

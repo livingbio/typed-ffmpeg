@@ -13,6 +13,7 @@
       "alias": [
         "inputs"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>The number of inputs. If unspecified, it defaults to 2.\n</p>\n</dd>",
       "name": "inputs",
@@ -23,6 +24,7 @@
       "alias": [
         "weights"
       ],
+      "choices": [],
       "default": "1 1",
       "description": "<dd><p>Specify weight of each input video stream as sequence.\nEach weight is separated by space. If number of weights\nis smaller than number of <var>frames</var> last specified\nweight will be used for all remaining unset weights.\n</p>\n</dd>",
       "name": "weights",
@@ -33,6 +35,7 @@
       "alias": [
         "scale"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Specify scale, if it is set it will be multiplied with sum\nof each weight multiplied with pixel values to give final destination\npixel value. By default <var>scale</var> is auto scaled to sum of weights.\n</p>\n</dd>",
       "name": "scale",
@@ -43,6 +46,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p>\n</dd>",
       "name": "planes",
@@ -53,6 +57,7 @@
       "alias": [
         "duration"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify how end of stream is determined.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>longest</samp>\u2019</dt>\n<dd><p>The duration of the longest input. (default)\n</p>\n</dd>\n<dt>\u2018<samp>shortest</samp>\u2019</dt>\n<dd><p>The duration of the shortest input.\n</p>\n</dd>\n<dt>\u2018<samp>first</samp>\u2019</dt>\n<dd><p>The duration of the first input.\n</p></dd>\n</dl>\n</dd>",
       "name": "duration",

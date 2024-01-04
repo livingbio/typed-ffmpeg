@@ -18,6 +18,7 @@
       "alias": [
         "order"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>The output field order. Valid values are <var>tff</var> for top field first or <var>bff</var>\nfor bottom field first.\n</p></dd>",
       "name": "order",

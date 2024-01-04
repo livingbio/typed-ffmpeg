@@ -18,6 +18,7 @@
       "alias": [
         "volume"
       ],
+      "choices": [],
       "default": "1.0",
       "description": "<dd><p>Set audio volume expression.\n</p>\n<p>Output values are clipped to the maximum value.\n</p>\n<p>The output audio volume is given by the relation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>output_volume</var> = <var>volume</var> * <var>input_volume</var>\n</pre></div>\n<p>The default value for <var>volume</var> is \"1.0\".\n</p>\n</dd>",
       "name": "volume",
@@ -28,6 +29,7 @@
       "alias": [
         "precision"
       ],
+      "choices": [],
       "default": "PRECISION_FLOAT",
       "description": "<dd><p>This parameter represents the mathematical precision.\n</p>\n<p>It determines which input sample formats will be allowed, which affects the\nprecision of the volume scaling.\n</p>\n<dl compact=\"compact\">\n<dt><samp>fixed</samp></dt>\n<dd><p>8-bit fixed-point; this limits input sample format to U8, S16, and S32.\n</p></dd>\n<dt><samp>float</samp></dt>\n<dd><p>32-bit floating-point; this limits input sample format to FLT. (default)\n</p></dd>\n<dt><samp>double</samp></dt>\n<dd><p>64-bit floating-point; this limits input sample format to DBL.\n</p></dd>\n</dl>\n</dd>",
       "name": "precision",
@@ -38,6 +40,7 @@
       "alias": [
         "eval"
       ],
+      "choices": [],
       "default": "EVAL_MODE_ONCE",
       "description": "<dd><p>Set when the volume expression is evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>once</samp>\u2019</dt>\n<dd><p>only evaluate expression once during the filter initialization, or\nwhen the \u2018<samp>volume</samp>\u2019 command is sent\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expression for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>once</samp>\u2019.\n</p></dd>",
       "name": "eval",
@@ -48,6 +51,7 @@
       "alias": [
         "replaygain"
       ],
+      "choices": [],
       "default": "REPLAYGAIN_DROP",
       "description": "<dd><p>Choose the behaviour on encountering ReplayGain side data in input frames.\n</p>\n<dl compact=\"compact\">\n<dt><samp>drop</samp></dt>\n<dd><p>Remove ReplayGain side data, ignoring its contents (the default).\n</p>\n</dd>\n<dt><samp>ignore</samp></dt>\n<dd><p>Ignore ReplayGain side data, but leave it in the frame.\n</p>\n</dd>\n<dt><samp>track</samp></dt>\n<dd><p>Prefer the track gain, if present.\n</p>\n</dd>\n<dt><samp>album</samp></dt>\n<dd><p>Prefer the album gain, if present.\n</p></dd>\n</dl>\n</dd>",
       "name": "replaygain",
@@ -58,6 +62,7 @@
       "alias": [
         "replaygain_preamp"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Pre-amplification gain in dB to apply to the selected replaygain gain.\n</p>\n<p>Default value for <var>replaygain_preamp</var> is 0.0.\n</p>\n</dd>",
       "name": "replaygain_preamp",
@@ -68,6 +73,7 @@
       "alias": [
         "replaygain_noclip"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Prevent clipping by limiting the gain applied.\n</p>\n<p>Default value for <var>replaygain_noclip</var> is 1.\n</p>\n</dd>",
       "name": "replaygain_noclip",

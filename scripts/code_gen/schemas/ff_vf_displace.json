@@ -26,6 +26,7 @@
       "alias": [
         "edge"
       ],
+      "choices": [],
       "default": "EDGE_SMEAR",
       "description": "<dd><p>Set displace behavior for pixels that are out of range.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>blank</samp>\u2019</dt>\n<dd><p>Missing pixels are replaced by black pixels.\n</p>\n</dd>\n<dt>\u2018<samp>smear</samp>\u2019</dt>\n<dd><p>Adjacent pixels will spread out to replace missing pixels.\n</p>\n</dd>\n<dt>\u2018<samp>wrap</samp>\u2019</dt>\n<dd><p>Out of range pixels are wrapped so they point to pixels of other side.\n</p>\n</dd>\n<dt>\u2018<samp>mirror</samp>\u2019</dt>\n<dd><p>Out of range pixels will be replaced with mirrored pixels.\n</p></dd>\n</dl>\n<p>Default is \u2018<samp>smear</samp>\u2019.\n</p>\n</dd>",
       "name": "edge",

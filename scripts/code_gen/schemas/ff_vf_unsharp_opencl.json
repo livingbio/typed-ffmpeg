@@ -19,6 +19,7 @@
         "luma_msize_x",
         "lx"
       ],
+      "choices": [],
       "default": 5.0,
       "description": "<dd><p>Set the luma matrix horizontal size.\nRange is <code>[1, 23]</code> and default value is <code>5</code>.\n</p>\n</dd>",
       "name": "luma_msize_x",
@@ -30,6 +31,7 @@
         "luma_msize_y",
         "ly"
       ],
+      "choices": [],
       "default": 5.0,
       "description": "<dd><p>Set the luma matrix vertical size.\nRange is <code>[1, 23]</code> and default value is <code>5</code>.\n</p>\n</dd>",
       "name": "luma_msize_y",
@@ -41,6 +43,7 @@
         "luma_amount",
         "la"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the luma effect strength.\nRange is <code>[-10, 10]</code> and default value is <code>1.0</code>.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n</dd>",
       "name": "luma_amount",
@@ -52,6 +55,7 @@
         "chroma_msize_x",
         "cx"
       ],
+      "choices": [],
       "default": 5.0,
       "description": "<dd><p>Set the chroma matrix horizontal size.\nRange is <code>[1, 23]</code> and default value is <code>5</code>.\n</p>\n</dd>",
       "name": "chroma_msize_x",
@@ -63,6 +67,7 @@
         "chroma_msize_y",
         "cy"
       ],
+      "choices": [],
       "default": 5.0,
       "description": "<dd><p>Set the chroma matrix vertical size.\nRange is <code>[1, 23]</code> and default value is <code>5</code>.\n</p>\n</dd>",
       "name": "chroma_msize_y",
@@ -74,6 +79,7 @@
         "chroma_amount",
         "ca"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the chroma effect strength.\nRange is <code>[-10, 10]</code> and default value is <code>0.0</code>.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n</dd>",
       "name": "chroma_amount",

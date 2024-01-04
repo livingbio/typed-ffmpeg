@@ -20,6 +20,7 @@
         "ratio",
         "r"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set the aspect ratio used by the filter.\n</p>\n<p>The parameter can be a floating point number string, or an expression. If the\nparameter is not specified, the value \"0\" is assumed, meaning that the same\ninput value is used.\n</p>\n</dd>",
       "name": "sar",
@@ -30,6 +31,7 @@
       "alias": [
         "max"
       ],
+      "choices": [],
       "default": 100,
       "description": "<dd><p>Set the maximum integer value to use for expressing numerator and\ndenominator when reducing the expressed aspect ratio to a rational.\nDefault value is <code>100</code>.\n</p>\n</dd>",
       "name": "max",

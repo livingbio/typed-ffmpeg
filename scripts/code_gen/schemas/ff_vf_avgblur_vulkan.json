@@ -18,6 +18,7 @@
       "alias": [
         "sizeX"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set horizontal radius size.\nRange is <code>[1, 32]</code> and default value is <code>3</code>.\n</p>\n</dd>",
       "name": "sizeX",
@@ -28,6 +29,7 @@
       "alias": [
         "sizeY"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set vertical radius size. Range is <code>[1, 32]</code> and default value is <code>3</code>.\n</p>\n</dd>",
       "name": "sizeY",
@@ -38,6 +40,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Set which planes to filter. Default value is <code>0xf</code>, by which all planes are processed.\n</p></dd>",
       "name": "planes",

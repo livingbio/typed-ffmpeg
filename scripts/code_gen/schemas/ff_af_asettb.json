@@ -19,6 +19,7 @@
         "expr",
         "tb"
       ],
+      "choices": [],
       "default": "intb",
       "description": "<dd><p>The expression which is evaluated into the output timebase.\n</p>\n</dd>",
       "name": "expr",

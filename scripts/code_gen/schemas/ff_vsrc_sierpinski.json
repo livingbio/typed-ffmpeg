@@ -14,6 +14,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "640x480",
       "description": "<dd><p>Set frame size. For the syntax of this option, check the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video\nsize\" section in the ffmpeg-utils manual</a>. Default value is \"640x480\".\n</p>\n</dd>",
       "name": "size",
@@ -25,6 +26,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
       "name": "rate",
@@ -35,6 +37,7 @@
       "alias": [
         "seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set seed which is used for random panning.\n</p>\n</dd>",
       "name": "seed",
@@ -45,6 +48,7 @@
       "alias": [
         "jump"
       ],
+      "choices": [],
       "default": 100,
       "description": "<dd><p>Set max jump for single pan destination. Allowed range is from 1 to 10000.\n</p>\n</dd>",
       "name": "jump",
@@ -55,6 +59,7 @@
       "alias": [
         "type"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set fractal type, can be default <code>carpet</code> or <code>triangle</code>.\n</p></dd>",
       "name": "type",

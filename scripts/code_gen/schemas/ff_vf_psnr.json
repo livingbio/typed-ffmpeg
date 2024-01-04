@@ -23,6 +23,7 @@
         "stats_file",
         "f"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>If specified the filter will use the named file to save the PSNR of\neach individual frame. When filename equals \"-\" the data is sent to\nstandard output.\n</p>\n</dd>",
       "name": "stats_file",
@@ -33,6 +34,7 @@
       "alias": [
         "stats_version"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Specifies which version of the stats file format to use. Details of\neach format are written below.\nDefault value is 1.\n</p>\n</dd>",
       "name": "stats_version",
@@ -43,6 +45,7 @@
       "alias": [
         "output_max"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "output_max",

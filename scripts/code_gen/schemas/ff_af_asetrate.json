@@ -19,6 +19,7 @@
         "sample_rate",
         "r"
       ],
+      "choices": [],
       "default": 44100,
       "description": "<dd><p>Set the output sample rate. Default is 44100 Hz.\n</p></dd>",
       "name": "sample_rate",

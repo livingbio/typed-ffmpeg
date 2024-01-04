@@ -18,6 +18,7 @@
       "alias": [
         "strength"
       ],
+      "choices": [],
       "default": 0.2,
       "description": "<dd><p>Set strength of crossfeed. Default is 0.2. Allowed range is from 0 to 1.\nThis sets gain of low shelf filter for side part of stereo image.\nDefault is -6dB. Max allowed is -30db when strength is set to 1.\n</p>\n</dd>",
       "name": "strength",
@@ -28,6 +29,7 @@
       "alias": [
         "range"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set soundstage wideness. Default is 0.5. Allowed range is from 0 to 1.\nThis sets cut off frequency of low shelf filter. Default is cut off near\n1550 Hz. With range set to 1 cut off frequency is set to 2100 Hz.\n</p>\n</dd>",
       "name": "range",
@@ -38,6 +40,7 @@
       "alias": [
         "slope"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set curve slope of low shelf filter. Default is 0.5.\nAllowed range is from 0.01 to 1.\n</p>\n</dd>",
       "name": "slope",
@@ -48,6 +51,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 0.9,
       "description": "<dd><p>Set input gain. Default is 0.9.\n</p>\n</dd>",
       "name": "level_in",
@@ -58,6 +62,7 @@
       "alias": [
         "level_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set output gain. Default is 1.\n</p>\n</dd>",
       "name": "level_out",
@@ -68,6 +73,7 @@
       "alias": [
         "block_size"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set block size used for reverse IIR processing. If this value is set to high enough\nvalue (higher than impulse response length truncated when reaches near zero values) filtering\nwill become linear phase otherwise if not big enough it will just produce nasty artifacts.\n</p>\n<p>Note that filter delay will be exactly this many samples when set to non-zero value.\n</p></dd>",
       "name": "block_size",

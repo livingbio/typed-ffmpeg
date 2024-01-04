@@ -18,6 +18,7 @@
       "alias": [
         "rr"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output red channel.\nDefault is <code>1</code> for <var>rr</var>, and <code>0</code> for <var>rg</var>, <var>rb</var> and <var>ra</var>.\n</p>\n</dd>",
       "name": "rr",
@@ -28,6 +29,7 @@
       "alias": [
         "rg"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output red channel.\nDefault is <code>1</code> for <var>rr</var>, and <code>0</code> for <var>rg</var>, <var>rb</var> and <var>ra</var>.\n</p>\n</dd>",
       "name": "rg",
@@ -38,6 +40,7 @@
       "alias": [
         "rb"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output red channel.\nDefault is <code>1</code> for <var>rr</var>, and <code>0</code> for <var>rg</var>, <var>rb</var> and <var>ra</var>.\n</p>\n</dd>",
       "name": "rb",
@@ -48,6 +51,7 @@
       "alias": [
         "ra"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output red channel.\nDefault is <code>1</code> for <var>rr</var>, and <code>0</code> for <var>rg</var>, <var>rb</var> and <var>ra</var>.\n</p>\n</dd>",
       "name": "ra",
@@ -58,6 +62,7 @@
       "alias": [
         "gr"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output green channel.\nDefault is <code>1</code> for <var>gg</var>, and <code>0</code> for <var>gr</var>, <var>gb</var> and <var>ga</var>.\n</p>\n</dd>",
       "name": "gr",
@@ -68,6 +73,7 @@
       "alias": [
         "gg"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output green channel.\nDefault is <code>1</code> for <var>gg</var>, and <code>0</code> for <var>gr</var>, <var>gb</var> and <var>ga</var>.\n</p>\n</dd>",
       "name": "gg",
@@ -78,6 +84,7 @@
       "alias": [
         "gb"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output green channel.\nDefault is <code>1</code> for <var>gg</var>, and <code>0</code> for <var>gr</var>, <var>gb</var> and <var>ga</var>.\n</p>\n</dd>",
       "name": "gb",
@@ -88,6 +95,7 @@
       "alias": [
         "ga"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output green channel.\nDefault is <code>1</code> for <var>gg</var>, and <code>0</code> for <var>gr</var>, <var>gb</var> and <var>ga</var>.\n</p>\n</dd>",
       "name": "ga",
@@ -98,6 +106,7 @@
       "alias": [
         "br"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output blue channel.\nDefault is <code>1</code> for <var>bb</var>, and <code>0</code> for <var>br</var>, <var>bg</var> and <var>ba</var>.\n</p>\n</dd>",
       "name": "br",
@@ -108,6 +117,7 @@
       "alias": [
         "bg"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output blue channel.\nDefault is <code>1</code> for <var>bb</var>, and <code>0</code> for <var>br</var>, <var>bg</var> and <var>ba</var>.\n</p>\n</dd>",
       "name": "bg",
@@ -118,6 +128,7 @@
       "alias": [
         "bb"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output blue channel.\nDefault is <code>1</code> for <var>bb</var>, and <code>0</code> for <var>br</var>, <var>bg</var> and <var>ba</var>.\n</p>\n</dd>",
       "name": "bb",
@@ -128,6 +139,7 @@
       "alias": [
         "ba"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output blue channel.\nDefault is <code>1</code> for <var>bb</var>, and <code>0</code> for <var>br</var>, <var>bg</var> and <var>ba</var>.\n</p>\n</dd>",
       "name": "ba",
@@ -138,6 +150,7 @@
       "alias": [
         "ar"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output alpha channel.\nDefault is <code>1</code> for <var>aa</var>, and <code>0</code> for <var>ar</var>, <var>ag</var> and <var>ab</var>.\n</p>\n<p>Allowed ranges for options are <code>[-2.0, 2.0]</code>.\n</p>\n</dd>",
       "name": "ar",
@@ -148,6 +161,7 @@
       "alias": [
         "ag"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output alpha channel.\nDefault is <code>1</code> for <var>aa</var>, and <code>0</code> for <var>ar</var>, <var>ag</var> and <var>ab</var>.\n</p>\n<p>Allowed ranges for options are <code>[-2.0, 2.0]</code>.\n</p>\n</dd>",
       "name": "ag",
@@ -158,6 +172,7 @@
       "alias": [
         "ab"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output alpha channel.\nDefault is <code>1</code> for <var>aa</var>, and <code>0</code> for <var>ar</var>, <var>ag</var> and <var>ab</var>.\n</p>\n<p>Allowed ranges for options are <code>[-2.0, 2.0]</code>.\n</p>\n</dd>",
       "name": "ab",
@@ -168,6 +183,7 @@
       "alias": [
         "aa"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output alpha channel.\nDefault is <code>1</code> for <var>aa</var>, and <code>0</code> for <var>ar</var>, <var>ag</var> and <var>ab</var>.\n</p>\n<p>Allowed ranges for options are <code>[-2.0, 2.0]</code>.\n</p>\n</dd>",
       "name": "aa",
@@ -178,6 +194,7 @@
       "alias": [
         "pc"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set preserve color mode. The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable color preserving, this is default.\n</p></dd>\n<dt>\u2018<samp>lum</samp>\u2019</dt>\n<dd><p>Preserve luminance.\n</p></dd>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n<dd><p>Preserve max value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n<dd><p>Preserve average value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>sum</samp>\u2019</dt>\n<dd><p>Preserve sum value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>nrm</samp>\u2019</dt>\n<dd><p>Preserve normalized value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>pwr</samp>\u2019</dt>\n<dd><p>Preserve power value of RGB triplet.\n</p></dd>\n</dl>\n</dd>",
       "name": "pc",
@@ -188,6 +205,7 @@
       "alias": [
         "pa"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the preserve color amount when changing colors. Allowed range is from <code>[0.0, 1.0]</code>.\nDefault is <code>0.0</code>, thus disabled.\n</p></dd>",
       "name": "pa",

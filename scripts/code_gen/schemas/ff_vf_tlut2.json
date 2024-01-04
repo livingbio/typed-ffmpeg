@@ -18,6 +18,7 @@
       "alias": [
         "c0"
       ],
+      "choices": [],
       "default": "x",
       "description": "<dd><p>set first pixel component expression\n</p></dd>",
       "name": "c0",
@@ -28,6 +29,7 @@
       "alias": [
         "c1"
       ],
+      "choices": [],
       "default": "x",
       "description": "<dd><p>set second pixel component expression\n</p></dd>",
       "name": "c1",
@@ -38,6 +40,7 @@
       "alias": [
         "c2"
       ],
+      "choices": [],
       "default": "x",
       "description": "<dd><p>set third pixel component expression\n</p></dd>",
       "name": "c2",
@@ -48,6 +51,7 @@
       "alias": [
         "c3"
       ],
+      "choices": [],
       "default": "x",
       "description": "<dd><p>set fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>",
       "name": "c3",

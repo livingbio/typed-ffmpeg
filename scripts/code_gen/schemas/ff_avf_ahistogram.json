@@ -18,6 +18,7 @@
       "alias": [
         "dmode"
       ],
+      "choices": [],
       "default": "SINGLE",
       "description": "<dd><p>Specify how histogram is calculated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>single</samp>\u2019</dt>\n<dd><p>Use single histogram for all channels.\n</p></dd>\n<dt>\u2018<samp>separate</samp>\u2019</dt>\n<dd><p>Use separate histogram for each channel.\n</p></dd>\n</dl>\n<p>Default is <code>single</code>.\n</p>\n</dd>",
       "name": "dmode",
@@ -29,6 +30,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
       "name": "rate",
@@ -40,6 +42,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "hd720",
       "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>hd720</code>.\n</p>\n</dd>",
       "name": "size",
@@ -50,6 +53,7 @@
       "alias": [
         "scale"
       ],
+      "choices": [],
       "default": "LOG",
       "description": "<dd><p>Set display scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n</p></dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>square root\n</p></dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>cubic root\n</p></dd>\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n<dt>\u2018<samp>rlog</samp>\u2019</dt>\n<dd><p>reverse logarithmic\n</p></dd>\n</dl>\n<p>Default is <code>log</code>.\n</p>\n</dd>",
       "name": "scale",
@@ -60,6 +64,7 @@
       "alias": [
         "ascale"
       ],
+      "choices": [],
       "default": "ALOG",
       "description": "<dd><p>Set amplitude scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n</p></dd>\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n</dl>\n<p>Default is <code>log</code>.\n</p>\n</dd>",
       "name": "ascale",
@@ -70,6 +75,7 @@
       "alias": [
         "acount"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set how much frames to accumulate in histogram.\nDefault is 1. Setting this to -1 accumulates all frames.\n</p>\n</dd>",
       "name": "acount",
@@ -80,6 +86,7 @@
       "alias": [
         "rheight"
       ],
+      "choices": [],
       "default": 0.1,
       "description": "<dd><p>Set histogram ratio of window height.\n</p>\n</dd>",
       "name": "rheight",
@@ -90,6 +97,7 @@
       "alias": [
         "slide"
       ],
+      "choices": [],
       "default": "REPLACE",
       "description": "<dd><p>Set sonogram sliding.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>replace old rows with new ones.\n</p></dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>scroll from top to bottom.\n</p></dd>\n</dl>\n<p>Default is <code>replace</code>.\n</p>\n</dd>",
       "name": "slide",
@@ -100,6 +108,7 @@
       "alias": [
         "hmode"
       ],
+      "choices": [],
       "default": "ABS",
       "description": "<dd><p>Set histogram mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>abs</samp>\u2019</dt>\n<dd><p>Use absolute values of samples.\n</p></dd>\n<dt>\u2018<samp>sign</samp>\u2019</dt>\n<dd><p>Use untouched values of samples.\n</p></dd>\n</dl>\n<p>Default is <code>abs</code>.\n</p></dd>",
       "name": "hmode",

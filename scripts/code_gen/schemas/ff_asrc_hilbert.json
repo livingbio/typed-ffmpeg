@@ -14,6 +14,7 @@
         "sample_rate",
         "r"
       ],
+      "choices": [],
       "default": 44100,
       "description": "<dd><p>Set sample rate, default is 44100.\n</p>\n</dd>",
       "name": "sample_rate",
@@ -25,6 +26,7 @@
         "taps",
         "t"
       ],
+      "choices": [],
       "default": 22051,
       "description": "<dd><p>Set length of FIR filter, default is 22051.\n</p>\n</dd>",
       "name": "taps",
@@ -36,6 +38,7 @@
         "nb_samples",
         "n"
       ],
+      "choices": [],
       "default": 1024,
       "description": "<dd><p>Set number of samples per each frame.\n</p>\n</dd>",
       "name": "nb_samples",
@@ -47,6 +50,7 @@
         "win_func",
         "w"
       ],
+      "choices": [],
       "default": "WFUNC_BLACKMAN",
       "description": "<dd><p>Set window function to be used when generating FIR coefficients.\n</p></dd>",
       "name": "win_func",

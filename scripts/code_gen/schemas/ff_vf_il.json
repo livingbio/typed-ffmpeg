@@ -19,6 +19,7 @@
         "luma_mode",
         "l"
       ],
+      "choices": [],
       "default": "MODE_NONE",
       "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
       "name": "luma_mode",
@@ -30,6 +31,7 @@
         "chroma_mode",
         "c"
       ],
+      "choices": [],
       "default": "MODE_NONE",
       "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
       "name": "chroma_mode",
@@ -41,6 +43,7 @@
         "alpha_mode",
         "a"
       ],
+      "choices": [],
       "default": "MODE_NONE",
       "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
       "name": "alpha_mode",
@@ -52,6 +55,7 @@
         "luma_swap",
         "ls"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
       "name": "luma_swap",
@@ -63,6 +67,7 @@
         "chroma_swap",
         "cs"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
       "name": "chroma_swap",
@@ -74,6 +79,7 @@
         "alpha_swap",
         "as"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
       "name": "alpha_swap",

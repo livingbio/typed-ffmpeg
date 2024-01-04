@@ -30,6 +30,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
       "name": "planes",

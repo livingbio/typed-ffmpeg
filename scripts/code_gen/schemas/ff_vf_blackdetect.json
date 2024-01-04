@@ -19,6 +19,7 @@
         "d",
         "black_min_duration"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Set the minimum detected black duration expressed in seconds. It must\nbe a non-negative floating point number.\n</p>\n<p>Default value is 2.0.\n</p>\n</dd>",
       "name": "d",
@@ -30,6 +31,7 @@
         "picture_black_ratio_th",
         "pic_th"
       ],
+      "choices": [],
       "default": 0.98,
       "description": "<dd><p>Set the threshold for considering a picture \"black\".\nExpress the minimum value for the ratio:\n</p><div class=\"example\">\n<pre class=\"example\"><var>nb_black_pixels</var> / <var>nb_pixels</var>\n</pre></div>\n<p>for which a picture is considered black.\nDefault value is 0.98.\n</p>\n</dd>",
       "name": "picture_black_ratio_th",
@@ -41,6 +43,7 @@
         "pixel_black_th",
         "pix_th"
       ],
+      "choices": [],
       "default": 0.1,
       "description": "<dd><p>Set the threshold for considering a pixel \"black\".\n</p>\n<p>The threshold expresses the maximum pixel luma value for which a\npixel is considered \"black\". The provided value is scaled according to\nthe following equation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>absolute_threshold</var> = <var>luma_minimum_value</var> + <var>pixel_black_th</var> * <var>luma_range_size</var>\n</pre></div>\n<p><var>luma_range_size</var> and <var>luma_minimum_value</var> depend on\nthe input video format, the range is [0-255] for YUV full-range\nformats and [16-235] for YUV non full-range formats.\n</p>\n<p>Default value is 0.10.\n</p></dd>",
       "name": "pixel_black_th",

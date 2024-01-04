@@ -22,6 +22,7 @@
       "alias": [
         "transition"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set one of possible transition effects.\n</p>\n<dl compact=\"compact\">\n<dt><samp>custom</samp></dt>\n<dd><p>Select custom transition effect, the actual transition description\nwill be picked from source and kernel options.\n</p>\n</dd>\n<dt><samp>fade</samp></dt>\n<dt><samp>wipeleft</samp></dt>\n<dt><samp>wiperight</samp></dt>\n<dt><samp>wipeup</samp></dt>\n<dt><samp>wipedown</samp></dt>\n<dt><samp>slideleft</samp></dt>\n<dt><samp>slideright</samp></dt>\n<dt><samp>slideup</samp></dt>\n<dt><samp>slidedown</samp></dt>\n<dd>\n<p>Default transition is fade.\n</p></dd>\n</dl>\n</dd>",
       "name": "transition",
@@ -32,6 +33,7 @@
       "alias": [
         "source"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>OpenCL program source file for custom transition.\n</p>\n</dd>",
       "name": "source",
@@ -42,6 +44,7 @@
       "alias": [
         "kernel"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set name of kernel to use for custom transition from program source file.\n</p>\n</dd>",
       "name": "kernel",
@@ -52,6 +55,7 @@
       "alias": [
         "duration"
       ],
+      "choices": [],
       "default": 1000000,
       "description": "<dd><p>Set duration of video transition.\n</p>\n</dd>",
       "name": "duration",
@@ -62,6 +66,7 @@
       "alias": [
         "offset"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set time of start of transition relative to first video.\n</p></dd>",
       "name": "offset",

@@ -18,6 +18,7 @@
       "alias": [
         "step"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Select frame after every <code>step</code> frames.\nAllowed values are positive integers higher than 0. Default value is <code>1</code>.\n</p></dd>",
       "name": "step",

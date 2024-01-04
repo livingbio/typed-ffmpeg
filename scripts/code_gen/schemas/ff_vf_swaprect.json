@@ -18,6 +18,7 @@
       "alias": [
         "w"
       ],
+      "choices": [],
       "default": "w/2",
       "description": "<dd><p>Set object width.\n</p>\n</dd>",
       "name": "w",
@@ -28,6 +29,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": "h/2",
       "description": "<dd><p>Set object height.\n</p>\n</dd>",
       "name": "h",
@@ -38,6 +40,7 @@
       "alias": [
         "x1"
       ],
+      "choices": [],
       "default": "w/2",
       "description": "<dd><p>Set 1st rect x coordinate.\n</p>\n</dd>",
       "name": "x1",
@@ -48,6 +51,7 @@
       "alias": [
         "y1"
       ],
+      "choices": [],
       "default": "h/2",
       "description": "<dd><p>Set 1st rect y coordinate.\n</p>\n</dd>",
       "name": "y1",
@@ -58,6 +62,7 @@
       "alias": [
         "x2"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set 2nd rect x coordinate.\n</p>\n</dd>",
       "name": "x2",
@@ -68,6 +73,7 @@
       "alias": [
         "y2"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set 2nd rect y coordinate.\n</p>\n<p>All expressions are evaluated once for each frame.\n</p></dd>",
       "name": "y2",

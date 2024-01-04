@@ -13,6 +13,7 @@
       "alias": [
         "inputs"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "inputs",
@@ -23,6 +24,7 @@
       "alias": [
         "w"
       ],
+      "choices": [],
       "default": "iw",
       "description": null,
       "name": "w",
@@ -33,6 +35,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": "ih",
       "description": null,
       "name": "h",
@@ -43,6 +46,7 @@
       "alias": [
         "fps"
       ],
+      "choices": [],
       "default": "none",
       "description": null,
       "name": "fps",
@@ -53,6 +57,7 @@
       "alias": [
         "crop_x"
       ],
+      "choices": [],
       "default": "(iw-cw)/2",
       "description": null,
       "name": "crop_x",
@@ -63,6 +68,7 @@
       "alias": [
         "crop_y"
       ],
+      "choices": [],
       "default": "(ih-ch)/2",
       "description": null,
       "name": "crop_y",
@@ -73,6 +79,7 @@
       "alias": [
         "crop_w"
       ],
+      "choices": [],
       "default": "iw",
       "description": null,
       "name": "crop_w",
@@ -83,6 +90,7 @@
       "alias": [
         "crop_h"
       ],
+      "choices": [],
       "default": "ih",
       "description": null,
       "name": "crop_h",
@@ -93,6 +101,7 @@
       "alias": [
         "pos_x"
       ],
+      "choices": [],
       "default": "(ow-pw)/2",
       "description": null,
       "name": "pos_x",
@@ -103,6 +112,7 @@
       "alias": [
         "pos_y"
       ],
+      "choices": [],
       "default": "(oh-ph)/2",
       "description": null,
       "name": "pos_y",
@@ -113,6 +123,7 @@
       "alias": [
         "pos_w"
       ],
+      "choices": [],
       "default": "ow",
       "description": null,
       "name": "pos_w",
@@ -123,6 +134,7 @@
       "alias": [
         "pos_h"
       ],
+      "choices": [],
       "default": "oh",
       "description": null,
       "name": "pos_h",
@@ -133,6 +145,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "format",
@@ -143,6 +156,7 @@
       "alias": [
         "force_original_aspect_ratio"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "force_original_aspect_ratio",
@@ -153,6 +167,7 @@
       "alias": [
         "force_divisible_by"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "force_divisible_by",
@@ -163,6 +178,7 @@
       "alias": [
         "normalize_sar"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "normalize_sar",
@@ -173,6 +189,7 @@
       "alias": [
         "pad_crop_ratio"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "pad_crop_ratio",
@@ -183,6 +200,7 @@
       "alias": [
         "fillcolor"
       ],
+      "choices": [],
       "default": "black",
       "description": null,
       "name": "fillcolor",
@@ -193,6 +211,7 @@
       "alias": [
         "corner_rounding"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "corner_rounding",
@@ -203,6 +222,7 @@
       "alias": [
         "extra_opts"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "extra_opts",
@@ -213,6 +233,7 @@
       "alias": [
         "colorspace"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "colorspace",
@@ -223,6 +244,7 @@
       "alias": [
         "range"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "range",
@@ -233,6 +255,7 @@
       "alias": [
         "color_primaries"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "color_primaries",
@@ -243,6 +266,7 @@
       "alias": [
         "color_trc"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "color_trc",
@@ -253,6 +277,7 @@
       "alias": [
         "upscaler"
       ],
+      "choices": [],
       "default": "spline36",
       "description": null,
       "name": "upscaler",
@@ -263,6 +288,7 @@
       "alias": [
         "downscaler"
       ],
+      "choices": [],
       "default": "mitchell",
       "description": null,
       "name": "downscaler",
@@ -273,6 +299,7 @@
       "alias": [
         "frame_mixer"
       ],
+      "choices": [],
       "default": "none",
       "description": null,
       "name": "frame_mixer",
@@ -283,6 +310,7 @@
       "alias": [
         "lut_entries"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "lut_entries",
@@ -293,6 +321,7 @@
       "alias": [
         "antiringing"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "antiringing",
@@ -303,6 +332,7 @@
       "alias": [
         "sigmoid"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "sigmoid",
@@ -313,6 +343,7 @@
       "alias": [
         "apply_filmgrain"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "apply_filmgrain",
@@ -323,6 +354,7 @@
       "alias": [
         "apply_dolbyvision"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "apply_dolbyvision",
@@ -333,6 +365,7 @@
       "alias": [
         "deband"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "deband",
@@ -343,6 +376,7 @@
       "alias": [
         "deband_iterations"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "deband_iterations",
@@ -353,6 +387,7 @@
       "alias": [
         "deband_threshold"
       ],
+      "choices": [],
       "default": 4.0,
       "description": null,
       "name": "deband_threshold",
@@ -363,6 +398,7 @@
       "alias": [
         "deband_radius"
       ],
+      "choices": [],
       "default": 16.0,
       "description": null,
       "name": "deband_radius",
@@ -373,6 +409,7 @@
       "alias": [
         "deband_grain"
       ],
+      "choices": [],
       "default": 6.0,
       "description": null,
       "name": "deband_grain",
@@ -383,6 +420,7 @@
       "alias": [
         "brightness"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "brightness",
@@ -393,6 +431,7 @@
       "alias": [
         "contrast"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "contrast",
@@ -403,6 +442,7 @@
       "alias": [
         "saturation"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "saturation",
@@ -413,6 +453,7 @@
       "alias": [
         "hue"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "hue",
@@ -423,6 +464,7 @@
       "alias": [
         "gamma"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "gamma",
@@ -433,6 +475,7 @@
       "alias": [
         "peak_detect"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "peak_detect",
@@ -443,6 +486,7 @@
       "alias": [
         "smoothing_period"
       ],
+      "choices": [],
       "default": 100.0,
       "description": null,
       "name": "smoothing_period",
@@ -453,6 +497,7 @@
       "alias": [
         "minimum_peak"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "minimum_peak",
@@ -463,6 +508,7 @@
       "alias": [
         "scene_threshold_low"
       ],
+      "choices": [],
       "default": 5.5,
       "description": null,
       "name": "scene_threshold_low",
@@ -473,6 +519,7 @@
       "alias": [
         "scene_threshold_high"
       ],
+      "choices": [],
       "default": 10.0,
       "description": null,
       "name": "scene_threshold_high",
@@ -483,6 +530,7 @@
       "alias": [
         "percentile"
       ],
+      "choices": [],
       "default": 99.995,
       "description": null,
       "name": "percentile",
@@ -493,6 +541,7 @@
       "alias": [
         "gamut_mode"
       ],
+      "choices": [],
       "default": "GAMUT_MAP_PERCEPTUAL",
       "description": null,
       "name": "gamut_mode",
@@ -503,6 +552,7 @@
       "alias": [
         "tonemapping"
       ],
+      "choices": [],
       "default": "TONE_MAP_AUTO",
       "description": null,
       "name": "tonemapping",
@@ -513,6 +563,7 @@
       "alias": [
         "tonemapping_param"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "tonemapping_param",
@@ -523,6 +574,7 @@
       "alias": [
         "inverse_tonemapping"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "inverse_tonemapping",
@@ -533,6 +585,7 @@
       "alias": [
         "tonemapping_lut_size"
       ],
+      "choices": [],
       "default": 256,
       "description": null,
       "name": "tonemapping_lut_size",
@@ -543,6 +596,7 @@
       "alias": [
         "contrast_recovery"
       ],
+      "choices": [],
       "default": 0.3,
       "description": null,
       "name": "contrast_recovery",
@@ -553,6 +607,7 @@
       "alias": [
         "contrast_smoothness"
       ],
+      "choices": [],
       "default": 3.5,
       "description": null,
       "name": "contrast_smoothness",
@@ -563,6 +618,7 @@
       "alias": [
         "desaturation_strength"
       ],
+      "choices": [],
       "default": -1.0,
       "description": null,
       "name": "desaturation_strength",
@@ -573,6 +629,7 @@
       "alias": [
         "desaturation_exponent"
       ],
+      "choices": [],
       "default": -1.0,
       "description": null,
       "name": "desaturation_exponent",
@@ -583,6 +640,7 @@
       "alias": [
         "gamut_warning"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "gamut_warning",
@@ -593,6 +651,7 @@
       "alias": [
         "gamut_clipping"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "gamut_clipping",
@@ -603,6 +662,7 @@
       "alias": [
         "intent"
       ],
+      "choices": [],
       "default": "PL_INTENT_PERCEPTUAL",
       "description": null,
       "name": "intent",
@@ -613,6 +673,7 @@
       "alias": [
         "tonemapping_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "tonemapping_mode",
@@ -623,6 +684,7 @@
       "alias": [
         "tonemapping_crosstalk"
       ],
+      "choices": [],
       "default": 0.04,
       "description": null,
       "name": "tonemapping_crosstalk",
@@ -633,6 +695,7 @@
       "alias": [
         "overshoot"
       ],
+      "choices": [],
       "default": 0.05,
       "description": null,
       "name": "overshoot",
@@ -643,6 +706,7 @@
       "alias": [
         "hybrid_mix"
       ],
+      "choices": [],
       "default": 0.2,
       "description": null,
       "name": "hybrid_mix",
@@ -653,6 +717,7 @@
       "alias": [
         "dithering"
       ],
+      "choices": [],
       "default": "PL_DITHER_BLUE_NOISE",
       "description": null,
       "name": "dithering",
@@ -663,6 +728,7 @@
       "alias": [
         "dither_lut_size"
       ],
+      "choices": [],
       "default": 6,
       "description": null,
       "name": "dither_lut_size",
@@ -673,6 +739,7 @@
       "alias": [
         "dither_temporal"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "dither_temporal",
@@ -683,6 +750,7 @@
       "alias": [
         "cones"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "cones",
@@ -693,6 +761,7 @@
       "alias": [
         "cone-strength"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "cone-strength",
@@ -703,6 +772,7 @@
       "alias": [
         "custom_shader_path"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "custom_shader_path",
@@ -713,6 +783,7 @@
       "alias": [
         "custom_shader_bin"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "custom_shader_bin",
@@ -723,6 +794,7 @@
       "alias": [
         "skip_aa"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "skip_aa",
@@ -733,6 +805,7 @@
       "alias": [
         "polar_cutoff"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "polar_cutoff",
@@ -743,6 +816,7 @@
       "alias": [
         "disable_linear"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "disable_linear",
@@ -753,6 +827,7 @@
       "alias": [
         "disable_builtin"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "disable_builtin",
@@ -763,6 +838,7 @@
       "alias": [
         "force_icc_lut"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "force_icc_lut",
@@ -773,6 +849,7 @@
       "alias": [
         "force_dither"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "force_dither",
@@ -783,6 +860,7 @@
       "alias": [
         "disable_fbos"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "disable_fbos",

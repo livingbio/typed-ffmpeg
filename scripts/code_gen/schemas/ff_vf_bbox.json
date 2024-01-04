@@ -18,6 +18,7 @@
       "alias": [
         "min_val"
       ],
+      "choices": [],
       "default": 16,
       "description": "<dd><p>Set the minimal luma value. Default is <code>16</code>.\n</p></dd>",
       "name": "min_val",

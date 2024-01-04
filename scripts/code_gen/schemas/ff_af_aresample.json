@@ -18,6 +18,7 @@
       "alias": [
         "sample_rate"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "sample_rate",

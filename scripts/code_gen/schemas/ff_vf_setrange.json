@@ -18,6 +18,7 @@
       "alias": [
         "range"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color range property.\n</p>\n</dd>\n<dt>\u2018<samp>unspecified, unknown</samp>\u2019</dt>\n<dd><p>Set the color range as unspecified.\n</p>\n</dd>\n<dt>\u2018<samp>limited, tv, mpeg</samp>\u2019</dt>\n<dd><p>Set the color range as limited.\n</p>\n</dd>\n<dt>\u2018<samp>full, pc, jpeg</samp>\u2019</dt>\n<dd><p>Set the color range as full.\n</p></dd>\n</dl>\n</dd>",
       "name": "range",

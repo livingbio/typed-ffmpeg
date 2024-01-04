@@ -18,6 +18,7 @@
       "alias": [
         "min"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Lower bound. Defaults to the lowest allowed value for the input.\n</p>\n</dd>",
       "name": "min",
@@ -28,6 +29,7 @@
       "alias": [
         "max"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Upper bound. Defaults to the highest allowed value for the input.\n</p>\n</dd>",
       "name": "max",
@@ -38,6 +40,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Specify which planes will be processed. Defaults to all available.\n</p></dd>",
       "name": "planes",

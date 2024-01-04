@@ -18,6 +18,7 @@
       "alias": [
         "original"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the original center factor to keep in front center channel output.\nAllowed range is from 0 to 1. Default value is 1.\n</p>\n</dd>",
       "name": "original",
@@ -28,6 +29,7 @@
       "alias": [
         "enhance"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the dialogue enhance factor to put in front center channel output.\nAllowed range is from 0 to 3. Default value is 1.\n</p>\n</dd>",
       "name": "enhance",
@@ -38,6 +40,7 @@
       "alias": [
         "voice"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Set the voice detection factor.\nAllowed range is from 2 to 32. Default value is 2.\n</p></dd>",
       "name": "voice",

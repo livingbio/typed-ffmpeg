@@ -22,6 +22,7 @@
       "alias": [
         "c0_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "c0_mode",
@@ -32,6 +33,7 @@
       "alias": [
         "c1_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "c1_mode",
@@ -42,6 +44,7 @@
       "alias": [
         "c2_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "c2_mode",
@@ -52,6 +55,7 @@
       "alias": [
         "c3_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "c3_mode",
@@ -62,6 +66,7 @@
       "alias": [
         "all_mode"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "all_mode",
@@ -72,6 +77,7 @@
       "alias": [
         "c0_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "c0_opacity",
@@ -82,6 +88,7 @@
       "alias": [
         "c1_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "c1_opacity",
@@ -92,6 +99,7 @@
       "alias": [
         "c2_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "c2_opacity",
@@ -102,6 +110,7 @@
       "alias": [
         "c3_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "c3_opacity",
@@ -112,6 +121,7 @@
       "alias": [
         "all_opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "all_opacity",

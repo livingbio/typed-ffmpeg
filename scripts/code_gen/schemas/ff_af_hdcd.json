@@ -18,6 +18,7 @@
       "alias": [
         "disable_autoconvert"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Disable any automatic format conversion or resampling in the filter graph.\n</p>\n</dd>",
       "name": "disable_autoconvert",
@@ -28,6 +29,7 @@
       "alias": [
         "process_stereo"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Process the stereo channels together. If target_gain does not match between\nchannels, consider it invalid and use the last valid target_gain.\n</p>\n</dd>",
       "name": "process_stereo",
@@ -38,6 +40,7 @@
       "alias": [
         "cdt_ms"
       ],
+      "choices": [],
       "default": 2000,
       "description": "<dd><p>Set the code detect timer period in ms.\n</p>\n</dd>",
       "name": "cdt_ms",
@@ -48,6 +51,7 @@
       "alias": [
         "force_pe"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Always extend peaks above -3dBFS even if PE isn\u2019t signaled.\n</p>\n</dd>",
       "name": "force_pe",
@@ -58,6 +62,7 @@
       "alias": [
         "analyze_mode"
       ],
+      "choices": [],
       "default": "HDCD_ANA_OFF",
       "description": "<dd><p>Replace audio with a solid tone and adjust the amplitude to signal some\nspecific aspect of the decoding process. The output file can be loaded in\nan audio editor alongside the original to aid analysis.\n</p>\n<p><code>analyze_mode=pe:force_pe=true</code> can be used to see all samples above the PE level.\n</p>\n<p>Modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0, off</samp>\u2019</dt>\n<dd><p>Disabled\n</p></dd>\n<dt>\u2018<samp>1, lle</samp>\u2019</dt>\n<dd><p>Gain adjustment level at each sample\n</p></dd>\n<dt>\u2018<samp>2, pe</samp>\u2019</dt>\n<dd><p>Samples where peak extend occurs\n</p></dd>\n<dt>\u2018<samp>3, cdt</samp>\u2019</dt>\n<dd><p>Samples where the code detect timer is active\n</p></dd>\n<dt>\u2018<samp>4, tgm</samp>\u2019</dt>\n<dd><p>Samples where the target gain does not match between channels\n</p></dd>\n</dl>\n</dd>",
       "name": "analyze_mode",
@@ -68,6 +73,7 @@
       "alias": [
         "bits_per_sample"
       ],
+      "choices": [],
       "default": 16,
       "description": null,
       "name": "bits_per_sample",

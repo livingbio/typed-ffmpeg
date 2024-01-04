@@ -13,6 +13,7 @@
       "alias": [
         "map"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set mapping of input streams for convolution.\nThe argument is a \u2019|\u2019-separated list of channel names in order as they\nare given as additional stream inputs for filter.\nThis also specify number of input streams. Number of input streams\nmust be not less than number of channels in first stream plus one.\n</p>\n</dd>",
       "name": "map",
@@ -23,6 +24,7 @@
       "alias": [
         "gain"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set gain applied to audio. Value is in dB. Default is 0.\n</p>\n</dd>",
       "name": "gain",
@@ -33,6 +35,7 @@
       "alias": [
         "lfe"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set custom gain for LFE channels. Value is in dB. Default is 0.\n</p>\n</dd>",
       "name": "lfe",
@@ -43,6 +46,7 @@
       "alias": [
         "type"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set processing type. Can be <var>time</var> or <var>freq</var>. <var>time</var> is\nprocessing audio in time domain which is slow.\n<var>freq</var> is processing audio in frequency domain which is fast.\nDefault is <var>freq</var>.\n</p>\n</dd>",
       "name": "type",
@@ -53,6 +57,7 @@
       "alias": [
         "size"
       ],
+      "choices": [],
       "default": 1024,
       "description": "<dd><p>Set size of frame in number of samples which will be processed at once.\nDefault value is <var>1024</var>. Allowed range is from 1024 to 96000.\n</p>\n</dd>",
       "name": "size",
@@ -63,6 +68,7 @@
       "alias": [
         "hrir"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set format of hrir stream.\nDefault value is <var>stereo</var>. Alternative value is <var>multich</var>.\nIf value is set to <var>stereo</var>, number of additional streams should\nbe greater or equal to number of input channels in first input stream.\nAlso each additional stream should have stereo number of channels.\nIf value is set to <var>multich</var>, number of additional streams should\nbe exactly one. Also number of input channels of additional stream\nshould be equal or greater than twice number of channels of first input\nstream.\n</p></dd>",
       "name": "hrir",

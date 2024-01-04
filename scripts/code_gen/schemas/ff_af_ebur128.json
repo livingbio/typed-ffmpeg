@@ -18,6 +18,7 @@
       "alias": [
         "video"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Activate the video output. The audio stream is passed unchanged whether this\noption is set or no. The video stream will be the first output stream if\nactivated. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "video",
@@ -28,6 +29,7 @@
       "alias": [
         "size"
       ],
+      "choices": [],
       "default": "640x480",
       "description": "<dd><p>Set the video size. This option is for video only. For the syntax of this\noption, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault and minimum resolution is <code>640x480</code>.\n</p>\n</dd>",
       "name": "size",
@@ -38,6 +40,7 @@
       "alias": [
         "meter"
       ],
+      "choices": [],
       "default": 9,
       "description": "<dd><p>Set the EBU scale meter. Default is <code>9</code>. Common values are <code>9</code> and\n<code>18</code>, respectively for EBU scale meter +9 and EBU scale meter +18. Any\nother integer value between this range is allowed.\n</p>\n</dd>",
       "name": "meter",
@@ -48,6 +51,7 @@
       "alias": [
         "framelog"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Force the frame logging level.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>quiet</samp>\u2019</dt>\n<dd><p>logging disabled\n</p></dd>\n<dt>\u2018<samp>info</samp>\u2019</dt>\n<dd><p>information logging level\n</p></dd>\n<dt>\u2018<samp>verbose</samp>\u2019</dt>\n<dd><p>verbose logging level\n</p></dd>\n</dl>\n<p>By default, the logging level is set to <var>info</var>. If the <samp>video</samp> or\nthe <samp>metadata</samp> options are set, it switches to <var>verbose</var>.\n</p>\n</dd>",
       "name": "framelog",
@@ -58,6 +62,7 @@
       "alias": [
         "metadata"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set metadata injection. If set to <code>1</code>, the audio input will be segmented\ninto 100ms output frames, each of them containing various loudness information\nin metadata.  All the metadata keys are prefixed with <code>lavfi.r128.</code>.\n</p>\n<p>Default is <code>0</code>.\n</p>\n</dd>",
       "name": "metadata",
@@ -68,6 +73,7 @@
       "alias": [
         "peak"
       ],
+      "choices": [],
       "default": "PEAK_MODE_NONE",
       "description": "<dd><p>Set peak mode(s).\n</p>\n<p>Available modes can be cumulated (the option is a <code>flag</code> type). Possible\nvalues are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable any peak mode (default).\n</p></dd>\n<dt>\u2018<samp>sample</samp>\u2019</dt>\n<dd><p>Enable sample-peak mode.\n</p>\n<p>Simple peak mode looking for the higher sample value. It logs a message\nfor sample-peak (identified by <code>SPK</code>).\n</p></dd>\n<dt>\u2018<samp>true</samp>\u2019</dt>\n<dd><p>Enable true-peak mode.\n</p>\n<p>If enabled, the peak lookup is done on an over-sampled version of the input\nstream for better peak accuracy. It logs a message for true-peak.\n(identified by <code>TPK</code>) and true-peak per frame (identified by <code>FTPK</code>).\nThis mode requires a build with <code>libswresample</code>.\n</p></dd>\n</dl>\n</dd>",
       "name": "peak",
@@ -78,6 +84,7 @@
       "alias": [
         "dualmono"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Treat mono input files as \"dual mono\". If a mono file is intended for playback\non a stereo system, its EBU R128 measurement will be perceptually incorrect.\nIf set to <code>true</code>, this option will compensate for this effect.\nMulti-channel input files are not affected by this option.\n</p>\n</dd>",
       "name": "dualmono",
@@ -88,6 +95,7 @@
       "alias": [
         "panlaw"
       ],
+      "choices": [],
       "default": -3.01029995663978,
       "description": "<dd><p>Set a specific pan law to be used for the measurement of dual mono files.\nThis parameter is optional, and has a default value of -3.01dB.\n</p>\n</dd>",
       "name": "panlaw",
@@ -98,6 +106,7 @@
       "alias": [
         "target"
       ],
+      "choices": [],
       "default": -23,
       "description": "<dd><p>Set a specific target level (in LUFS) used as relative zero in the visualization.\nThis parameter is optional and has a default value of -23LUFS as specified\nby EBU R128. However, material published online may prefer a level of -16LUFS\n(e.g. for use with podcasts or video platforms).\n</p>\n</dd>",
       "name": "target",
@@ -108,6 +117,7 @@
       "alias": [
         "gauge"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the value displayed by the gauge. Valid values are <code>momentary</code> and s\n<code>shortterm</code>. By default the momentary value will be used, but in certain\nscenarios it may be more useful to observe the short term value instead (e.g.\nlive mixing).\n</p>\n</dd>",
       "name": "gauge",
@@ -118,6 +128,7 @@
       "alias": [
         "scale"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Sets the display scale for the loudness. Valid parameters are <code>absolute</code>\n(in LUFS) or <code>relative</code> (LU) relative to the target. This only affects the\nvideo output, not the summary or continuous log output.\n</p>\n</dd>",
       "name": "scale",
@@ -128,6 +139,7 @@
       "alias": [
         "integrated"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Read-only exported value for measured integrated loudness, in LUFS.\n</p>\n</dd>",
       "name": "integrated",
@@ -138,6 +150,7 @@
       "alias": [
         "range"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Read-only exported value for measured loudness range, in LU.\n</p>\n</dd>",
       "name": "range",
@@ -148,6 +161,7 @@
       "alias": [
         "lra_low"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Read-only exported value for measured LRA low, in LUFS.\n</p>\n</dd>",
       "name": "lra_low",
@@ -158,6 +172,7 @@
       "alias": [
         "lra_high"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Read-only exported value for measured LRA high, in LUFS.\n</p>\n</dd>",
       "name": "lra_high",
@@ -168,6 +183,7 @@
       "alias": [
         "sample_peak"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Read-only exported value for measured sample peak, in dBFS.\n</p>\n</dd>",
       "name": "sample_peak",
@@ -178,6 +194,7 @@
       "alias": [
         "true_peak"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Read-only exported value for measured true peak, in dBFS.\n</p></dd>",
       "name": "true_peak",

@@ -19,6 +19,7 @@
         "radius",
         "r"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set the window radius. Default value is 3.\n</p>\n</dd>",
       "name": "radius",
@@ -30,6 +31,7 @@
         "planes",
         "p"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set which planes to filter. Default is only the first plane.\n</p>\n</dd>",
       "name": "planes",
@@ -41,6 +43,7 @@
         "sigma",
         "s"
       ],
+      "choices": [],
       "default": 128,
       "description": "<dd><p>Set blur strength. Default value is 128.\n</p></dd>",
       "name": "sigma",

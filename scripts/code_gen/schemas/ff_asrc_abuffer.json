@@ -13,6 +13,7 @@
       "alias": [
         "time_base"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>The timebase which will be used for timestamps of submitted frames. It must be\neither a floating-point number or in <var>numerator</var>/<var>denominator</var> form.\n</p>\n</dd>",
       "name": "time_base",
@@ -23,6 +24,7 @@
       "alias": [
         "sample_rate"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>The sample rate of the incoming audio buffers.\n</p>\n</dd>",
       "name": "sample_rate",
@@ -33,6 +35,7 @@
       "alias": [
         "sample_fmt"
       ],
+      "choices": [],
       "default": "AV_SAMPLE_FMT_NONE",
       "description": "<dd><p>The sample format of the incoming audio buffers.\nEither a sample format name or its corresponding integer representation from\nthe enum AVSampleFormat in <samp>libavutil/samplefmt.h</samp>\n</p>\n</dd>",
       "name": "sample_fmt",
@@ -43,6 +46,7 @@
       "alias": [
         "channel_layout"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>The channel layout of the incoming audio buffers.\nEither a channel layout name from channel_layout_map in\n<samp>libavutil/channel_layout.c</samp> or its corresponding integer representation\nfrom the AV_CH_LAYOUT_* macros in <samp>libavutil/channel_layout.h</samp>\n</p>\n</dd>",
       "name": "channel_layout",
@@ -53,6 +57,7 @@
       "alias": [
         "channels"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>The number of channels of the incoming audio buffers.\nIf both <var>channels</var> and <var>channel_layout</var> are specified, then they\nmust be consistent.\n</p>\n</dd>",
       "name": "channels",

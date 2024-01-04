@@ -19,6 +19,7 @@
         "threshold",
         "t"
       ],
+      "choices": [],
       "default": 10.0,
       "description": "<dd><p>Set the scene change detection threshold as a percentage of maximum change. Good\nvalues are in the <code>[8.0, 14.0]</code> range. The range for <samp>threshold</samp> is\n<code>[0., 100.]</code>.\n</p>\n<p>Default value is <code>10.</code>.\n</p>\n</dd>",
       "name": "threshold",
@@ -30,6 +31,7 @@
         "sc_pass",
         "s"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the flag to pass scene change frames to the next filter. Default value is <code>0</code>\nYou can enable it if you want to get snapshot of scene change frames only.\n</p></dd>",
       "name": "sc_pass",

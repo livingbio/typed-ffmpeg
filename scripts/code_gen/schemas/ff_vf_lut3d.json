@@ -18,6 +18,7 @@
       "alias": [
         "file"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the 3D LUT file name.\n</p>\n<p>Currently supported formats:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>3dl</samp>\u2019</dt>\n<dd><p>AfterEffects\n</p></dd>\n<dt>\u2018<samp>cube</samp>\u2019</dt>\n<dd><p>Iridas\n</p></dd>\n<dt>\u2018<samp>dat</samp>\u2019</dt>\n<dd><p>DaVinci\n</p></dd>\n<dt>\u2018<samp>m3d</samp>\u2019</dt>\n<dd><p>Pandora\n</p></dd>\n<dt>\u2018<samp>csp</samp>\u2019</dt>\n<dd><p>cineSpace\n</p></dd>\n</dl>\n</dd>",
       "name": "file",
@@ -28,6 +29,7 @@
       "alias": [
         "clut"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "clut",
@@ -38,6 +40,7 @@
       "alias": [
         "interp"
       ],
+      "choices": [],
       "default": "INTERPOLATE_TETRAHEDRAL",
       "description": "<dd><p>Select interpolation mode.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dd><p>Use values from the nearest defined point.\n</p></dd>\n<dt>\u2018<samp>trilinear</samp>\u2019</dt>\n<dd><p>Interpolate values using the 8 points defining a cube.\n</p></dd>\n<dt>\u2018<samp>tetrahedral</samp>\u2019</dt>\n<dd><p>Interpolate values using a tetrahedron.\n</p></dd>\n<dt>\u2018<samp>pyramid</samp>\u2019</dt>\n<dd><p>Interpolate values using a pyramid.\n</p></dd>\n<dt>\u2018<samp>prism</samp>\u2019</dt>\n<dd><p>Interpolate values using a prism.\n</p></dd>\n</dl>\n</dd>",
       "name": "interp",

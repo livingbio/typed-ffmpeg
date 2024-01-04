@@ -26,6 +26,7 @@
       "alias": [
         "patch_size"
       ],
+      "choices": [],
       "default": "64x64",
       "description": "<dd><p>Set the source and target video stream patch size in pixels.\n</p>\n</dd>",
       "name": "patch_size",
@@ -36,6 +37,7 @@
       "alias": [
         "nb_patches"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the max number of used patches from source and target video stream.\nDefault value is number of patches available in additional video streams.\nMax allowed number of patches is <code>64</code>.\n</p>\n</dd>",
       "name": "nb_patches",
@@ -46,6 +48,7 @@
       "alias": [
         "type"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set the adjustments used for target colors. Can be <code>relative</code> or <code>absolute</code>.\nDefaults is <code>absolute</code>.\n</p>\n</dd>",
       "name": "type",
@@ -56,6 +59,7 @@
       "alias": [
         "kernel"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the kernel used to measure color differences between mapped colors.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dt>\u2018<samp>weuclidean</samp>\u2019</dt>\n</dl>\n<p>Default is <code>euclidean</code>.\n</p></dd>",
       "name": "kernel",

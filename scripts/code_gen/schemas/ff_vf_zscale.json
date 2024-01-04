@@ -19,6 +19,7 @@
         "w",
         "width"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "w",
@@ -30,6 +31,7 @@
         "h",
         "height"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "h",
@@ -41,6 +43,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "size",
@@ -52,6 +55,7 @@
         "dither",
         "d"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "dither",
@@ -63,6 +67,7 @@
         "filter",
         "f"
       ],
+      "choices": [],
       "default": "ZIMG_RESIZE_BILINEAR",
       "description": null,
       "name": "filter",
@@ -75,6 +80,7 @@
         "range",
         "r"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "out_range",
@@ -86,6 +92,7 @@
         "primaries",
         "p"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "primaries",
@@ -97,6 +104,7 @@
         "transfer",
         "t"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "transfer",
@@ -108,6 +116,7 @@
         "matrix",
         "m"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "matrix",
@@ -120,6 +129,7 @@
         "rangein",
         "rin"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "in_range",
@@ -131,6 +141,7 @@
         "primariesin",
         "pin"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "primariesin",
@@ -142,6 +153,7 @@
         "transferin",
         "tin"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "transferin",
@@ -153,6 +165,7 @@
         "matrixin",
         "min"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "matrixin",
@@ -164,6 +177,7 @@
         "chromal",
         "c"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "chromal",
@@ -175,6 +189,7 @@
         "chromalin",
         "cin"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "chromalin",
@@ -185,6 +200,7 @@
       "alias": [
         "npl"
       ],
+      "choices": [],
       "default": "__builtin_nanf(\"0x7fc00000\")",
       "description": null,
       "name": "npl",
@@ -195,6 +211,7 @@
       "alias": [
         "agamma"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "agamma",
@@ -205,6 +222,7 @@
       "alias": [
         "param_a"
       ],
+      "choices": [],
       "default": "__builtin_nanf(\"0x7fc00000\")",
       "description": null,
       "name": "param_a",
@@ -215,6 +233,7 @@
       "alias": [
         "param_b"
       ],
+      "choices": [],
       "default": "__builtin_nanf(\"0x7fc00000\")",
       "description": null,
       "name": "param_b",

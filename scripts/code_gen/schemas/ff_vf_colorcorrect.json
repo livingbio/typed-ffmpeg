@@ -18,6 +18,7 @@
       "alias": [
         "rl"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the red shadow spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
       "name": "rl",
@@ -28,6 +29,7 @@
       "alias": [
         "bl"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the blue shadow spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
       "name": "bl",
@@ -38,6 +40,7 @@
       "alias": [
         "rh"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the red highlight spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
       "name": "rh",
@@ -48,6 +51,7 @@
       "alias": [
         "bh"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the blue highlight spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
       "name": "bh",
@@ -58,6 +62,7 @@
       "alias": [
         "saturation"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the amount of saturation. Allowed range is from -3.0 to 3.0.\nDefault value is 1.\n</p>\n</dd>",
       "name": "saturation",
@@ -68,6 +73,7 @@
       "alias": [
         "analyze"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If set to anything other than <code>manual</code> it will analyze every frame and use derived\nparameters for filtering output frame.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>manual</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>minmax</samp>\u2019</dt>\n<dt>\u2018<samp>median</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>manual</code>.\n</p></dd>",
       "name": "analyze",

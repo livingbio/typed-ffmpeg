@@ -18,6 +18,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
       "name": "planes",
@@ -28,6 +29,7 @@
       "alias": [
         "scale"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set value which will be multiplied with filtered result.\n</p>\n</dd>",
       "name": "scale",
@@ -38,6 +40,7 @@
       "alias": [
         "delta"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set value which will be added to filtered result.\n</p></dd>",
       "name": "delta",

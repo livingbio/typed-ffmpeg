@@ -18,6 +18,7 @@
       "alias": [
         "sofa"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the SOFA file used for rendering.\n</p>\n</dd>",
       "name": "sofa",
@@ -28,6 +29,7 @@
       "alias": [
         "gain"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set gain applied to audio. Value is in dB. Default is 0.\n</p>\n</dd>",
       "name": "gain",
@@ -38,6 +40,7 @@
       "alias": [
         "rotation"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set rotation of virtual loudspeakers in deg. Default is 0.\n</p>\n</dd>",
       "name": "rotation",
@@ -48,6 +51,7 @@
       "alias": [
         "elevation"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set elevation of virtual speakers in deg. Default is 0.\n</p>\n</dd>",
       "name": "elevation",
@@ -58,6 +62,7 @@
       "alias": [
         "radius"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set distance in meters between loudspeakers and the listener with near-field\nHRTFs. Default is 1.\n</p>\n</dd>",
       "name": "radius",
@@ -68,6 +73,7 @@
       "alias": [
         "type"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set processing type. Can be <var>time</var> or <var>freq</var>. <var>time</var> is\nprocessing audio in time domain which is slow.\n<var>freq</var> is processing audio in frequency domain which is fast.\nDefault is <var>freq</var>.\n</p>\n</dd>",
       "name": "type",
@@ -78,6 +84,7 @@
       "alias": [
         "speakers"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set custom positions of virtual loudspeakers. Syntax for this option is:\n&lt;CH&gt; &lt;AZIM&gt; &lt;ELEV&gt;[|&lt;CH&gt; &lt;AZIM&gt; &lt;ELEV&gt;|...].\nEach virtual loudspeaker is described with short channel name following with\nazimuth and elevation in degrees.\nEach virtual loudspeaker description is separated by \u2019|\u2019.\nFor example to override front left and front right channel positions use:\n\u2019speakers=FL 45 15|FR 345 15\u2019.\nDescriptions with unrecognised channel names are ignored.\n</p>\n</dd>",
       "name": "speakers",
@@ -88,6 +95,7 @@
       "alias": [
         "lfegain"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set custom gain for LFE channels. Value is in dB. Default is 0.\n</p>\n</dd>",
       "name": "lfegain",
@@ -98,6 +106,7 @@
       "alias": [
         "framesize"
       ],
+      "choices": [],
       "default": 1024,
       "description": "<dd><p>Set custom frame size in number of samples. Default is 1024.\nAllowed range is from 1024 to 96000. Only used if option \u2018<samp>type</samp>\u2019\nis set to <var>freq</var>.\n</p>\n</dd>",
       "name": "framesize",
@@ -108,6 +117,7 @@
       "alias": [
         "normalize"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Should all IRs be normalized upon importing SOFA file.\nBy default is enabled.\n</p>\n</dd>",
       "name": "normalize",
@@ -118,6 +128,7 @@
       "alias": [
         "interpolate"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Should nearest IRs be interpolated with neighbor IRs if exact position\ndoes not match. By default is disabled.\n</p>\n</dd>",
       "name": "interpolate",
@@ -128,6 +139,7 @@
       "alias": [
         "minphase"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Minphase all IRs upon loading of SOFA file. By default is disabled.\n</p>\n</dd>",
       "name": "minphase",
@@ -138,6 +150,7 @@
       "alias": [
         "anglestep"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set neighbor search angle step. Only used if option <var>interpolate</var> is enabled.\n</p>\n</dd>",
       "name": "anglestep",
@@ -148,6 +161,7 @@
       "alias": [
         "radstep"
       ],
+      "choices": [],
       "default": 0.01,
       "description": "<dd><p>Set neighbor search radius step. Only used if option <var>interpolate</var> is enabled.\n</p></dd>",
       "name": "radstep",

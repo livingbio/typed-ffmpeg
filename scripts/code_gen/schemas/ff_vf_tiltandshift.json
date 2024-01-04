@@ -18,6 +18,7 @@
       "alias": [
         "tilt"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Tilt video while shifting (default). When unset, video will be sliding a\nstatic image, composed of the first column of each frame.\n</p>\n</dd>",
       "name": "tilt",
@@ -28,6 +29,7 @@
       "alias": [
         "start"
       ],
+      "choices": [],
       "default": "TILT_NONE",
       "description": "<dd><p>What to do at the start of filtering (see below).\n</p>\n</dd>",
       "name": "start",
@@ -38,6 +40,7 @@
       "alias": [
         "end"
       ],
+      "choices": [],
       "default": "TILT_NONE",
       "description": "<dd><p>What to do at the end of filtering (see below).\n</p>\n</dd>",
       "name": "end",
@@ -48,6 +51,7 @@
       "alias": [
         "hold"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>How many columns should pass through before start of filtering.\n</p>\n</dd>",
       "name": "hold",
@@ -58,6 +62,7 @@
       "alias": [
         "pad"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>How many columns should be inserted before end of filtering.\n</p>\n</dd>",
       "name": "pad",

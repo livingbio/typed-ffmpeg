@@ -18,6 +18,7 @@
       "alias": [
         "strength"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the sharpening strength. Default value is 0.\n</p>\n</dd>",
       "name": "strength",
@@ -28,6 +29,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set planes to filter. Default value is to filter all\nplanes except alpha plane.\n</p></dd>",
       "name": "planes",

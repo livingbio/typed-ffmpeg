@@ -18,6 +18,7 @@
       "alias": [
         "m1"
       ],
+      "choices": [],
       "default": "",
       "description": "<dd><p>Set 1st frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
       "name": "m1",
@@ -28,6 +29,7 @@
       "alias": [
         "fg1"
       ],
+      "choices": [],
       "default": "0xffff0000",
       "description": "<dd><p>Set 1st foreground color expression.\n</p>\n</dd>",
       "name": "fg1",
@@ -38,6 +40,7 @@
       "alias": [
         "m2"
       ],
+      "choices": [],
       "default": "",
       "description": "<dd><p>Set 2nd frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
       "name": "m2",
@@ -48,6 +51,7 @@
       "alias": [
         "fg2"
       ],
+      "choices": [],
       "default": "0xff00ff00",
       "description": "<dd><p>Set 2nd foreground color expression.\n</p>\n</dd>",
       "name": "fg2",
@@ -58,6 +62,7 @@
       "alias": [
         "m3"
       ],
+      "choices": [],
       "default": "",
       "description": "<dd><p>Set 3rd frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
       "name": "m3",
@@ -68,6 +73,7 @@
       "alias": [
         "fg3"
       ],
+      "choices": [],
       "default": "0xffff00ff",
       "description": "<dd><p>Set 3rd foreground color expression.\n</p>\n</dd>",
       "name": "fg3",
@@ -78,6 +84,7 @@
       "alias": [
         "m4"
       ],
+      "choices": [],
       "default": "",
       "description": "<dd><p>Set 4th frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
       "name": "m4",
@@ -88,6 +95,7 @@
       "alias": [
         "fg4"
       ],
+      "choices": [],
       "default": "0xffffff00",
       "description": "<dd><p>Set 4th foreground color expression.\n</p>\n</dd>",
       "name": "fg4",
@@ -98,6 +106,7 @@
       "alias": [
         "bg"
       ],
+      "choices": [],
       "default": "white",
       "description": "<dd><p>Set graph background color. Default is white.\n</p>\n</dd>",
       "name": "bg",
@@ -108,6 +117,7 @@
       "alias": [
         "min"
       ],
+      "choices": [],
       "default": -1.0,
       "description": "<dd><p>Set minimal value of metadata value.\n</p>\n</dd>",
       "name": "min",
@@ -118,6 +128,7 @@
       "alias": [
         "max"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set maximal value of metadata value.\n</p>\n</dd>",
       "name": "max",
@@ -128,6 +139,7 @@
       "alias": [
         "mode"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Set graph mode.\n</p>\n<p>Available values for mode is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bar</samp>\u2019</dt>\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n</dl>\n<p>Default is <code>line</code>.\n</p>\n</dd>",
       "name": "mode",
@@ -138,6 +150,7 @@
       "alias": [
         "slide"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Draw new frame when right border is reached.\n</p>\n</dd>\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>\u2018<samp>rscroll</samp>\u2019</dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>\u2018<samp>picture</samp>\u2019</dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n<p>Default is <code>frame</code>.\n</p>\n</dd>",
       "name": "slide",
@@ -149,6 +162,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "900x256",
       "description": "<dd><p>Set size of graph video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nThe default value is <code>900x256</code>.\n</p>\n</dd>",
       "name": "size",
@@ -160,6 +174,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n<p>The foreground color expressions can use the following variables:\n</p><dl compact=\"compact\">\n<dt><samp>MIN</samp></dt>\n<dd><p>Minimal value of metadata value.\n</p>\n</dd>\n<dt><samp>MAX</samp></dt>\n<dd><p>Maximal value of metadata value.\n</p>\n</dd>\n<dt><samp>VAL</samp></dt>\n<dd><p>Current metadata key value.\n</p></dd>\n</dl>\n<p>The color is defined as 0xAABBGGRR.\n</p></dd>",
       "name": "rate",

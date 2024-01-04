@@ -19,6 +19,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "hd720",
       "description": null,
       "name": "size",
@@ -30,6 +31,7 @@
         "opacity",
         "o"
       ],
+      "choices": [],
       "default": 0.9,
       "description": null,
       "name": "opacity",
@@ -41,6 +43,7 @@
         "mode",
         "m"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "mode",
@@ -52,6 +55,7 @@
         "flags",
         "f"
       ],
+      "choices": [],
       "default": "FLAG_QUEUE",
       "description": null,
       "name": "flags",
@@ -63,6 +67,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": null,
       "name": "rate",

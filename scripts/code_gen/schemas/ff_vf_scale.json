@@ -19,6 +19,7 @@
         "w",
         "width"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "w",
@@ -30,6 +31,7 @@
         "h",
         "height"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "h",
@@ -40,6 +42,7 @@
       "alias": [
         "flags"
       ],
+      "choices": [],
       "default": "",
       "description": null,
       "name": "flags",
@@ -50,6 +53,7 @@
       "alias": [
         "interl"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "interl",
@@ -61,6 +65,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "size",
@@ -71,6 +76,7 @@
       "alias": [
         "in_color_matrix"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "in_color_matrix",
@@ -81,6 +87,7 @@
       "alias": [
         "out_color_matrix"
       ],
+      "choices": [],
       "default": "AVCOL_SPC_UNSPECIFIED",
       "description": null,
       "name": "out_color_matrix",
@@ -91,6 +98,7 @@
       "alias": [
         "in_range"
       ],
+      "choices": [],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": null,
       "name": "in_range",
@@ -101,6 +109,7 @@
       "alias": [
         "out_range"
       ],
+      "choices": [],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": null,
       "name": "out_range",
@@ -111,6 +120,7 @@
       "alias": [
         "in_v_chr_pos"
       ],
+      "choices": [],
       "default": -513,
       "description": null,
       "name": "in_v_chr_pos",
@@ -121,6 +131,7 @@
       "alias": [
         "in_h_chr_pos"
       ],
+      "choices": [],
       "default": -513,
       "description": null,
       "name": "in_h_chr_pos",
@@ -131,6 +142,7 @@
       "alias": [
         "out_v_chr_pos"
       ],
+      "choices": [],
       "default": -513,
       "description": null,
       "name": "out_v_chr_pos",
@@ -141,6 +153,7 @@
       "alias": [
         "out_h_chr_pos"
       ],
+      "choices": [],
       "default": -513,
       "description": null,
       "name": "out_h_chr_pos",
@@ -151,6 +164,7 @@
       "alias": [
         "force_original_aspect_ratio"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "force_original_aspect_ratio",
@@ -161,6 +175,7 @@
       "alias": [
         "force_divisible_by"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "force_divisible_by",
@@ -171,6 +186,7 @@
       "alias": [
         "param0"
       ],
+      "choices": [],
       "default": 1.7976931348623157e+308,
       "description": null,
       "name": "param0",
@@ -181,6 +197,7 @@
       "alias": [
         "param1"
       ],
+      "choices": [],
       "default": 1.7976931348623157e+308,
       "description": null,
       "name": "param1",
@@ -191,6 +208,7 @@
       "alias": [
         "eval"
       ],
+      "choices": [],
       "default": "EVAL_MODE_INIT",
       "description": null,
       "name": "eval",

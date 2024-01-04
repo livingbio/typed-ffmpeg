@@ -19,6 +19,7 @@
         "sample_fmts",
         "f"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>A \u2019|\u2019-separated list of requested sample formats.\n</p>\n</dd>",
       "name": "sample_fmts",
@@ -30,6 +31,7 @@
         "sample_rates",
         "r"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>A \u2019|\u2019-separated list of requested sample rates.\n</p>\n</dd>",
       "name": "sample_rates",
@@ -41,6 +43,7 @@
         "channel_layouts",
         "cl"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>A \u2019|\u2019-separated list of requested channel layouts.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p></dd>",
       "name": "channel_layouts",

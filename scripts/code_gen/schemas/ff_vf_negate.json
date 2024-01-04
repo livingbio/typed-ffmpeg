@@ -18,6 +18,7 @@
       "alias": [
         "components"
       ],
+      "choices": [],
       "default": "0x77",
       "description": "<dd><p>Set components to negate.\n</p>\n<p>Available values for components are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dt>\u2018<samp>v</samp>\u2019</dt>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "components",
@@ -28,6 +29,7 @@
       "alias": [
         "negate_alpha"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>With value 1, it negates the alpha component, if present. Default value is 0.\n</p></dd>",
       "name": "negate_alpha",

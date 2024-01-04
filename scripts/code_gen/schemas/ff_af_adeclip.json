@@ -19,6 +19,7 @@
         "window",
         "w"
       ],
+      "choices": [],
       "default": 55.0,
       "description": "<dd><p>Set window size, in milliseconds. Allowed range is from <code>10</code> to <code>100</code>.\nDefault value is <code>55</code> milliseconds.\nThis sets size of window which will be processed at once.\n</p>\n</dd>",
       "name": "window",
@@ -30,6 +31,7 @@
         "overlap",
         "o"
       ],
+      "choices": [],
       "default": 75.0,
       "description": "<dd><p>Set window overlap, in percentage of window size. Allowed range is from <code>50</code>\nto <code>95</code>. Default value is <code>75</code> percent.\n</p>\n</dd>",
       "name": "overlap",
@@ -41,6 +43,7 @@
         "arorder",
         "a"
       ],
+      "choices": [],
       "default": 8.0,
       "description": "<dd><p>Set autoregression order, in percentage of window size. Allowed range is from\n<code>0</code> to <code>25</code>. Default value is <code>8</code> percent. This option also controls\nquality of interpolated samples using neighbour good samples.\n</p>\n</dd>",
       "name": "arorder",
@@ -52,6 +55,7 @@
         "threshold",
         "t"
       ],
+      "choices": [],
       "default": 10.0,
       "description": "<dd><p>Set threshold value. Allowed range is from <code>1</code> to <code>100</code>.\nDefault value is <code>10</code>. Higher values make clip detection less aggressive.\n</p>\n</dd>",
       "name": "threshold",
@@ -63,6 +67,7 @@
         "hsize",
         "n"
       ],
+      "choices": [],
       "default": 1000,
       "description": "<dd><p>Set size of histogram used to detect clips. Allowed range is from <code>100</code> to <code>9999</code>.\nDefault value is <code>1000</code>. Higher values make clip detection less aggressive.\n</p>\n</dd>",
       "name": "hsize",
@@ -74,6 +79,7 @@
         "method",
         "m"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set overlap method.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>add, a</samp></dt>\n<dd><p>Select overlap-add method. Even not interpolated samples are slightly changed\nwith this method.\n</p>\n</dd>\n<dt><samp>save, s</samp></dt>\n<dd><p>Select overlap-save method. Not interpolated samples remain unchanged.\n</p></dd>\n</dl>\n<p>Default value is <code>a</code>.\n</p></dd>",
       "name": "method",

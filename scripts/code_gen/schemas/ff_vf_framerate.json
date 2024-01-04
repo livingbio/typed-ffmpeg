@@ -18,6 +18,7 @@
       "alias": [
         "fps"
       ],
+      "choices": [],
       "default": "50",
       "description": "<dd><p>Specify the output frames per second. This option can also be specified\nas a value alone. The default is <code>50</code>.\n</p>\n</dd>",
       "name": "fps",
@@ -28,6 +29,7 @@
       "alias": [
         "interp_start"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Specify the start of a range where the output frame will be created as a\nlinear interpolation of two frames. The range is [<code>0</code>-<code>255</code>],\nthe default is <code>15</code>.\n</p>\n</dd>",
       "name": "interp_start",
@@ -38,6 +40,7 @@
       "alias": [
         "interp_end"
       ],
+      "choices": [],
       "default": 240,
       "description": "<dd><p>Specify the end of a range where the output frame will be created as a\nlinear interpolation of two frames. The range is [<code>0</code>-<code>255</code>],\nthe default is <code>240</code>.\n</p>\n</dd>",
       "name": "interp_end",
@@ -48,6 +51,7 @@
       "alias": [
         "scene"
       ],
+      "choices": [],
       "default": 8.2,
       "description": "<dd><p>Specify the level at which a scene change is detected as a value between\n0 and 100 to indicate a new scene; a low value reflects a low\nprobability for the current frame to introduce a new scene, while a higher\nvalue means the current frame is more likely to be one.\nThe default is <code>8.2</code>.\n</p>\n</dd>",
       "name": "scene",
@@ -58,6 +62,7 @@
       "alias": [
         "flags"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Specify flags influencing the filter process.\n</p>\n<p>Available value for <var>flags</var> is:\n</p>\n<dl compact=\"compact\">\n<dt><samp>scene_change_detect, scd</samp></dt>\n<dd><p>Enable scene change detection using the value of the option <var>scene</var>.\nThis flag is enabled by default.\n</p></dd>\n</dl>\n</dd>",
       "name": "flags",

@@ -18,6 +18,7 @@
       "alias": [
         "thres"
       ],
+      "choices": [],
       "default": 30.0,
       "description": "<dd><p>Set threshold for averaging chrominance values.\nSum of absolute difference of Y, U and V pixel components of current\npixel and neighbour pixels lower than this threshold will be used in\naveraging. Luma component is left unchanged and is copied to output.\nDefault value is 30. Allowed range is from 1 to 200.\n</p>\n</dd>",
       "name": "thres",
@@ -28,6 +29,7 @@
       "alias": [
         "sizew"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set horizontal radius of rectangle used for averaging.\nAllowed range is from 1 to 100. Default value is 5.\n</p>\n</dd>",
       "name": "sizew",
@@ -38,6 +40,7 @@
       "alias": [
         "sizeh"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set vertical radius of rectangle used for averaging.\nAllowed range is from 1 to 100. Default value is 5.\n</p>\n</dd>",
       "name": "sizeh",
@@ -48,6 +51,7 @@
       "alias": [
         "stepw"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set horizontal step when averaging. Default value is 1.\nAllowed range is from 1 to 50.\nMostly useful to speed-up filtering.\n</p>\n</dd>",
       "name": "stepw",
@@ -58,6 +62,7 @@
       "alias": [
         "steph"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set vertical step when averaging. Default value is 1.\nAllowed range is from 1 to 50.\nMostly useful to speed-up filtering.\n</p>\n</dd>",
       "name": "steph",
@@ -68,6 +73,7 @@
       "alias": [
         "threy"
       ],
+      "choices": [],
       "default": 200.0,
       "description": "<dd><p>Set Y threshold for averaging chrominance values.\nSet finer control for max allowed difference between Y components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
       "name": "threy",
@@ -78,6 +84,7 @@
       "alias": [
         "threu"
       ],
+      "choices": [],
       "default": 200.0,
       "description": "<dd><p>Set U threshold for averaging chrominance values.\nSet finer control for max allowed difference between U components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
       "name": "threu",
@@ -88,6 +95,7 @@
       "alias": [
         "threv"
       ],
+      "choices": [],
       "default": 200.0,
       "description": "<dd><p>Set V threshold for averaging chrominance values.\nSet finer control for max allowed difference between V components\nof current pixel and neigbour pixels.\nDefault value is 200. Allowed range is from 1 to 200.\n</p>\n</dd>",
       "name": "threv",
@@ -98,6 +106,7 @@
       "alias": [
         "distance"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set distance type used in calculations.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>manhattan</samp>\u2019</dt>\n<dd><p>Absolute difference.\n</p></dd>\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dd><p>Difference squared.\n</p></dd>\n</dl>\n<p>Default distance type is manhattan.\n</p></dd>",
       "name": "distance",

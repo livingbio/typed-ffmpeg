@@ -18,6 +18,7 @@
       "alias": [
         "force"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>If true, the frame\u2019s existing colorspace tags will always be overridden by\nvalues detected from an ICC profile. Otherwise, they will only be assigned if\nthey contain <code>unknown</code>. Enabled by default.\n</p></dd>",
       "name": "force",

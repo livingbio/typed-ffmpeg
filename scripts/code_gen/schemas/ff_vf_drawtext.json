@@ -18,6 +18,7 @@
       "alias": [
         "fontfile"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "fontfile",
@@ -28,6 +29,7 @@
       "alias": [
         "text"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "text",
@@ -38,6 +40,7 @@
       "alias": [
         "textfile"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "textfile",
@@ -48,6 +51,7 @@
       "alias": [
         "fontcolor"
       ],
+      "choices": [],
       "default": "black",
       "description": null,
       "name": "fontcolor",
@@ -58,6 +62,7 @@
       "alias": [
         "fontcolor_expr"
       ],
+      "choices": [],
       "default": "",
       "description": null,
       "name": "fontcolor_expr",
@@ -68,6 +73,7 @@
       "alias": [
         "boxcolor"
       ],
+      "choices": [],
       "default": "white",
       "description": null,
       "name": "boxcolor",
@@ -78,6 +84,7 @@
       "alias": [
         "bordercolor"
       ],
+      "choices": [],
       "default": "black",
       "description": null,
       "name": "bordercolor",
@@ -88,6 +95,7 @@
       "alias": [
         "shadowcolor"
       ],
+      "choices": [],
       "default": "black",
       "description": null,
       "name": "shadowcolor",
@@ -98,6 +106,7 @@
       "alias": [
         "box"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "box",
@@ -108,6 +117,7 @@
       "alias": [
         "boxborderw"
       ],
+      "choices": [],
       "default": "0",
       "description": null,
       "name": "boxborderw",
@@ -118,6 +128,7 @@
       "alias": [
         "line_spacing"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "line_spacing",
@@ -128,6 +139,7 @@
       "alias": [
         "fontsize"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "fontsize",
@@ -138,6 +150,7 @@
       "alias": [
         "text_align"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "text_align",
@@ -148,6 +161,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": "0",
       "description": null,
       "name": "x",
@@ -158,6 +172,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": "0",
       "description": null,
       "name": "y",
@@ -168,6 +183,7 @@
       "alias": [
         "boxw"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "boxw",
@@ -178,6 +194,7 @@
       "alias": [
         "boxh"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "boxh",
@@ -188,6 +205,7 @@
       "alias": [
         "shadowx"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "shadowx",
@@ -198,6 +216,7 @@
       "alias": [
         "shadowy"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "shadowy",
@@ -208,6 +227,7 @@
       "alias": [
         "borderw"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "borderw",
@@ -218,6 +238,7 @@
       "alias": [
         "tabsize"
       ],
+      "choices": [],
       "default": 4,
       "description": null,
       "name": "tabsize",
@@ -228,6 +249,7 @@
       "alias": [
         "basetime"
       ],
+      "choices": [],
       "default": "((int64_t)(0x8000000000000000ULL))",
       "description": null,
       "name": "basetime",
@@ -238,6 +260,7 @@
       "alias": [
         "expansion"
       ],
+      "choices": [],
       "default": "EXP_NORMAL",
       "description": null,
       "name": "expansion",
@@ -248,6 +271,7 @@
       "alias": [
         "y_align"
       ],
+      "choices": [],
       "default": "YA_TEXT",
       "description": null,
       "name": "y_align",
@@ -258,6 +282,7 @@
       "alias": [
         "timecode"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "timecode",
@@ -268,6 +293,7 @@
       "alias": [
         "tc24hmax"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "tc24hmax",
@@ -280,6 +306,7 @@
         "r",
         "rate"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "timecode_rate",
@@ -290,6 +317,7 @@
       "alias": [
         "reload"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "reload",
@@ -300,6 +328,7 @@
       "alias": [
         "alpha"
       ],
+      "choices": [],
       "default": "1",
       "description": null,
       "name": "alpha",
@@ -310,6 +339,7 @@
       "alias": [
         "fix_bounds"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "fix_bounds",
@@ -320,6 +350,7 @@
       "alias": [
         "start_number"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "start_number",
@@ -330,6 +361,7 @@
       "alias": [
         "text_source"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "text_source",
@@ -340,6 +372,7 @@
       "alias": [
         "ft_load_flags"
       ],
+      "choices": [],
       "default": "FT_LOAD_DEFAULT",
       "description": null,
       "name": "ft_load_flags",

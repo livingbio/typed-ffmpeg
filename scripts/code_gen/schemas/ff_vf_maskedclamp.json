@@ -26,6 +26,7 @@
       "alias": [
         "undershoot"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Default value is <code>0</code>.\n</p>\n</dd>",
       "name": "undershoot",
@@ -36,6 +37,7 @@
       "alias": [
         "overshoot"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Default value is <code>0</code>.\n</p>\n</dd>",
       "name": "overshoot",
@@ -46,6 +48,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
       "name": "planes",

@@ -19,6 +19,7 @@
         "nb_out_samples",
         "n"
       ],
+      "choices": [],
       "default": 1024,
       "description": "<dd><p>Set the number of frames per each output audio frame. The number is\nintended as the number of samples <em>per each channel</em>.\nDefault value is 1024.\n</p>\n</dd>",
       "name": "nb_out_samples",
@@ -30,6 +31,7 @@
         "pad",
         "p"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>If set to 1, the filter will pad the last audio frame with zeroes, so\nthat the last frame will contain the same number of samples as the\nprevious ones. Default value is 1.\n</p></dd>",
       "name": "pad",

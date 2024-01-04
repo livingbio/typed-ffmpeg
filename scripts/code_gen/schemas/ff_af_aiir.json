@@ -19,6 +19,7 @@
         "zeros",
         "z"
       ],
+      "choices": [],
       "default": "1+0i 1-0i",
       "description": "<dd><p>Set B/numerator/zeros/reflection coefficients.\n</p>\n</dd>",
       "name": "zeros",
@@ -30,6 +31,7 @@
         "poles",
         "p"
       ],
+      "choices": [],
       "default": "1+0i 1-0i",
       "description": "<dd><p>Set A/denominator/poles/ladder coefficients.\n</p>\n</dd>",
       "name": "poles",
@@ -41,6 +43,7 @@
         "gains",
         "k"
       ],
+      "choices": [],
       "default": "1|1",
       "description": "<dd><p>Set channels gains.\n</p>\n</dd>",
       "name": "gains",
@@ -51,6 +54,7 @@
       "alias": [
         "dry"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "dry",
@@ -61,6 +65,7 @@
       "alias": [
         "wet"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "wet",
@@ -72,6 +77,7 @@
         "format",
         "f"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set coefficients format.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>ll</samp>\u2019</dt>\n<dd><p>lattice-ladder function\n</p></dd>\n<dt>\u2018<samp>sf</samp>\u2019</dt>\n<dd><p>analog transfer function\n</p></dd>\n<dt>\u2018<samp>tf</samp>\u2019</dt>\n<dd><p>digital transfer function\n</p></dd>\n<dt>\u2018<samp>zp</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, cartesian (default)\n</p></dd>\n<dt>\u2018<samp>pr</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, polar radians\n</p></dd>\n<dt>\u2018<samp>pd</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, polar degrees\n</p></dd>\n<dt>\u2018<samp>sp</samp>\u2019</dt>\n<dd><p>S-plane zeros/poles\n</p></dd>\n</dl>\n</dd>",
       "name": "format",
@@ -83,6 +89,7 @@
         "process",
         "r"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set type of processing.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>d</samp>\u2019</dt>\n<dd><p>direct processing\n</p></dd>\n<dt>\u2018<samp>s</samp>\u2019</dt>\n<dd><p>serial processing\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>parallel processing\n</p></dd>\n</dl>\n</dd>",
       "name": "process",
@@ -94,6 +101,7 @@
         "precision",
         "e"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set filtering precision.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>dbl</samp>\u2019</dt>\n<dd><p>double-precision floating-point (default)\n</p></dd>\n<dt>\u2018<samp>flt</samp>\u2019</dt>\n<dd><p>single-precision floating-point\n</p></dd>\n<dt>\u2018<samp>i32</samp>\u2019</dt>\n<dd><p>32-bit integers\n</p></dd>\n<dt>\u2018<samp>i16</samp>\u2019</dt>\n<dd><p>16-bit integers\n</p></dd>\n</dl>\n</dd>",
       "name": "precision",
@@ -105,6 +113,7 @@
         "normalize",
         "n"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Normalize filter coefficients, by default is enabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>",
       "name": "normalize",
@@ -115,6 +124,7 @@
       "alias": [
         "mix"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>",
       "name": "mix",
@@ -125,6 +135,7 @@
       "alias": [
         "response"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Show IR frequency response, magnitude(magenta), phase(green) and group delay(yellow) in additional video stream.\nBy default it is disabled.\n</p>\n</dd>",
       "name": "response",
@@ -135,6 +146,7 @@
       "alias": [
         "channel"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set for which IR channel to display frequency response. By default is first channel\ndisplayed. This option is used only when <var>response</var> is enabled.\n</p>\n</dd>",
       "name": "channel",
@@ -145,6 +157,7 @@
       "alias": [
         "size"
       ],
+      "choices": [],
       "default": "hd720",
       "description": "<dd><p>Set video stream size. This option is used only when <var>response</var> is enabled.\n</p></dd>",
       "name": "size",
@@ -155,6 +168,7 @@
       "alias": [
         "rate"
       ],
+      "choices": [],
       "default": "25",
       "description": null,
       "name": "rate",

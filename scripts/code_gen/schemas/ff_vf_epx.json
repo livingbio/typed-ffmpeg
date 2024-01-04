@@ -18,6 +18,7 @@
       "alias": [
         "n"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set the scaling dimension: <code>2</code> for <code>2xEPX</code>, <code>3</code> for\n<code>3xEPX</code>.\nDefault is <code>3</code>.\n</p></dd>",
       "name": "n",

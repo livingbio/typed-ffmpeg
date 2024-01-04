@@ -18,6 +18,7 @@
       "alias": [
         "cb"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the chroma blue spot. Allowed range is from -1 to 1.\nDefault value is 0.\n</p>\n</dd>",
       "name": "cb",
@@ -28,6 +29,7 @@
       "alias": [
         "cr"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the chroma red spot. Allowed range is from -1 to 1.\nDefault value is 0.\n</p>\n</dd>",
       "name": "cr",
@@ -38,6 +40,7 @@
       "alias": [
         "size"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the color filter size. Allowed range is from .1 to 10.\nDefault value is 1.\n</p>\n</dd>",
       "name": "size",
@@ -48,6 +51,7 @@
       "alias": [
         "high"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the highlights strength. Allowed range is from 0 to 1.\nDefault value is 0.\n</p></dd>",
       "name": "high",

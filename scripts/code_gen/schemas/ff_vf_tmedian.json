@@ -18,6 +18,7 @@
       "alias": [
         "radius"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set radius of median filter.\nDefault is 1. Allowed range is from 1 to 127.\n</p>\n</dd>",
       "name": "radius",
@@ -28,6 +29,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set which planes to filter. Default value is <code>15</code>, by which all planes are processed.\n</p>\n</dd>",
       "name": "planes",
@@ -38,6 +40,7 @@
       "alias": [
         "percentile"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set median percentile. Default value is <code>0.5</code>.\nDefault value of <code>0.5</code> will pick always median values, while <code>0</code> will pick\nminimum values, and <code>1</code> maximum values.\n</p></dd>",
       "name": "percentile",

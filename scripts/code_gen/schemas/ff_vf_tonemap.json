@@ -18,6 +18,7 @@
       "alias": [
         "tonemap"
       ],
+      "choices": [],
       "default": "TONEMAP_NONE",
       "description": null,
       "name": "tonemap",
@@ -28,6 +29,7 @@
       "alias": [
         "param"
       ],
+      "choices": [],
       "default": "__builtin_nanf(\"0x7fc00000\")",
       "description": null,
       "name": "param",
@@ -38,6 +40,7 @@
       "alias": [
         "desat"
       ],
+      "choices": [],
       "default": 2.0,
       "description": null,
       "name": "desat",
@@ -48,6 +51,7 @@
       "alias": [
         "peak"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "peak",

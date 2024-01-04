@@ -19,6 +19,7 @@
         "noise_reduction",
         "nr"
       ],
+      "choices": [],
       "default": 12.0,
       "description": "<dd><p>Set the noise reduction in dB, allowed range is 0.01 to 97.\nDefault value is 12 dB.\n</p>\n</dd>",
       "name": "noise_reduction",
@@ -30,6 +31,7 @@
         "noise_floor",
         "nf"
       ],
+      "choices": [],
       "default": -50.0,
       "description": "<dd><p>Set the noise floor in dB, allowed range is -80 to -20.\nDefault value is -50 dB.\n</p>\n</dd>",
       "name": "noise_floor",
@@ -41,6 +43,7 @@
         "noise_type",
         "nt"
       ],
+      "choices": [],
       "default": "WHITE_NOISE",
       "description": "<dd><p>Set the noise type.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>white, w</samp></dt>\n<dd><p>Select white noise.\n</p>\n</dd>\n<dt><samp>vinyl, v</samp></dt>\n<dd><p>Select vinyl noise.\n</p>\n</dd>\n<dt><samp>shellac, s</samp></dt>\n<dd><p>Select shellac noise.\n</p>\n</dd>\n<dt><samp>custom, c</samp></dt>\n<dd><p>Select custom noise, defined in <code>bn</code> option.\n</p>\n<p>Default value is white noise.\n</p></dd>\n</dl>\n</dd>",
       "name": "noise_type",
@@ -52,6 +55,7 @@
         "band_noise",
         "bn"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set custom band noise profile for every one of 15 bands.\nBands are separated by \u2019 \u2019 or \u2019|\u2019.\n</p>\n</dd>",
       "name": "band_noise",
@@ -63,6 +67,7 @@
         "residual_floor",
         "rf"
       ],
+      "choices": [],
       "default": -38.0,
       "description": "<dd><p>Set the residual floor in dB, allowed range is -80 to -20.\nDefault value is -38 dB.\n</p>\n</dd>",
       "name": "residual_floor",
@@ -74,6 +79,7 @@
         "track_noise",
         "tn"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable noise floor tracking. By default is disabled.\nWith this enabled, noise floor is automatically adjusted.\n</p>\n</dd>",
       "name": "track_noise",
@@ -85,6 +91,7 @@
         "track_residual",
         "tr"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable residual tracking. By default is disabled.\n</p>\n</dd>",
       "name": "track_residual",
@@ -96,6 +103,7 @@
         "output_mode",
         "om"
       ],
+      "choices": [],
       "default": "OUT_MODE",
       "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>input, i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>output, o</samp></dt>\n<dd><p>Pass noise filtered out.\n</p>\n</dd>\n<dt><samp>noise, n</samp></dt>\n<dd><p>Pass only noise.\n</p>\n<p>Default value is <var>output</var>.\n</p></dd>\n</dl>\n</dd>",
       "name": "output_mode",
@@ -107,6 +115,7 @@
         "adaptivity",
         "ad"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set the adaptivity factor, used how fast to adapt gains adjustments per\neach frequency bin. Value <var>0</var> enables instant adaptation, while higher values\nreact much slower.\nAllowed range is from <var>0</var> to <var>1</var>. Default value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "adaptivity",
@@ -118,6 +127,7 @@
         "floor_offset",
         "fo"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the noise floor offset factor. This option is used to adjust offset applied to measured\nnoise floor. It is only effective when noise floor tracking is enabled.\nAllowed range is from <var>-2.0</var> to <var>2.0</var>. Default value is <var>1.0</var>.\n</p>\n</dd>",
       "name": "floor_offset",
@@ -129,6 +139,7 @@
         "noise_link",
         "nl"
       ],
+      "choices": [],
       "default": "MIN_LINK",
       "description": "<dd><p>Set the noise link used for multichannel audio.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>none</samp></dt>\n<dd><p>Use unchanged channel\u2019s noise floor.\n</p>\n</dd>\n<dt><samp>min</samp></dt>\n<dd><p>Use measured min noise floor of all channels.\n</p>\n</dd>\n<dt><samp>max</samp></dt>\n<dd><p>Use measured max noise floor of all channels.\n</p>\n</dd>\n<dt><samp>average</samp></dt>\n<dd><p>Use measured average noise floor of all channels.\n</p>\n<p>Default value is <var>min</var>.\n</p></dd>\n</dl>\n</dd>",
       "name": "noise_link",
@@ -140,6 +151,7 @@
         "band_multiplier",
         "bm"
       ],
+      "choices": [],
       "default": 1.25,
       "description": "<dd><p>Set the band multiplier factor, used how much to spread bands across frequency bins.\nAllowed range is from <var>0.2</var> to <var>5</var>. Default value is <var>1.25</var>.\n</p>\n</dd>",
       "name": "band_multiplier",
@@ -151,6 +163,7 @@
         "sample_noise",
         "sn"
       ],
+      "choices": [],
       "default": "SAMPLE_NONE",
       "description": "<dd><p>Toggle capturing and measurement of noise profile from input audio.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>start, begin</samp></dt>\n<dd><p>Start sample noise capture.\n</p>\n</dd>\n<dt><samp>stop, end</samp></dt>\n<dd><p>Stop sample noise capture and measure new noise band profile.\n</p>\n<p>Default value is <code>none</code>.\n</p></dd>\n</dl>\n</dd>",
       "name": "sample_noise",
@@ -162,6 +175,7 @@
         "gain_smooth",
         "gs"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set gain smooth spatial radius, used to smooth gains applied to each frequency bin.\nUseful to reduce random music noise artefacts.\nHigher values increases smoothing of gains.\nAllowed range is from <code>0</code> to <code>50</code>.\nDefault value is <code>0</code>.\n</p></dd>",
       "name": "gain_smooth",

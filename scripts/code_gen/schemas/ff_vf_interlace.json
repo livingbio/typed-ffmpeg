@@ -18,6 +18,7 @@
       "alias": [
         "scan"
       ],
+      "choices": [],
       "default": "MODE_TFF",
       "description": "<dd><p>This determines whether the interlaced frame is taken from the even\n(tff - default) or odd (bff) lines of the progressive frame.\n</p>\n</dd>",
       "name": "scan",
@@ -28,6 +29,7 @@
       "alias": [
         "lowpass"
       ],
+      "choices": [],
       "default": "VLPF_LIN",
       "description": "<dd><p>Vertical lowpass filter to avoid twitter interlacing and\nreduce moire patterns.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>0, off</samp>\u2019</dt>\n<dd><p>Disable vertical lowpass filter\n</p>\n</dd>\n<dt>\u2018<samp>1, linear</samp>\u2019</dt>\n<dd><p>Enable linear filter (default)\n</p>\n</dd>\n<dt>\u2018<samp>2, complex</samp>\u2019</dt>\n<dd><p>Enable complex filter. This will slightly less reduce twitter and moire\nbut better retain detail and subjective sharpness impression.\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "lowpass",

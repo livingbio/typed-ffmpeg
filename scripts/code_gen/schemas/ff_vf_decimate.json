@@ -13,6 +13,7 @@
       "alias": [
         "cycle"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set the number of frames from which one will be dropped. Setting this to\n<var>N</var> means one frame in every batch of <var>N</var> frames will be dropped.\nDefault is <code>5</code>.\n</p>\n</dd>",
       "name": "cycle",
@@ -23,6 +24,7 @@
       "alias": [
         "dupthresh"
       ],
+      "choices": [],
       "default": 1.1,
       "description": "<dd><p>Set the threshold for duplicate detection. If the difference metric for a frame\nis less than or equal to this value, then it is declared as duplicate. Default\nis <code>1.1</code>\n</p>\n</dd>",
       "name": "dupthresh",
@@ -33,6 +35,7 @@
       "alias": [
         "scthresh"
       ],
+      "choices": [],
       "default": 15.0,
       "description": "<dd><p>Set scene change threshold. Default is <code>15</code>.\n</p>\n</dd>",
       "name": "scthresh",
@@ -43,6 +46,7 @@
       "alias": [
         "blockx"
       ],
+      "choices": [],
       "default": 32,
       "description": "<dd><p>Set the size of the x and y-axis blocks used during metric calculations.\nLarger blocks give better noise suppression, but also give worse detection of\nsmall movements. Must be a power of two. Default is <code>32</code>.\n</p>\n</dd>",
       "name": "blockx",
@@ -53,6 +57,7 @@
       "alias": [
         "blocky"
       ],
+      "choices": [],
       "default": 32,
       "description": "<dd><p>Set the size of the x and y-axis blocks used during metric calculations.\nLarger blocks give better noise suppression, but also give worse detection of\nsmall movements. Must be a power of two. Default is <code>32</code>.\n</p>\n</dd>",
       "name": "blocky",
@@ -63,6 +68,7 @@
       "alias": [
         "ppsrc"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Mark main input as a pre-processed input and activate clean source input\nstream. This allows the input to be pre-processed with various filters to help\nthe metrics calculation while keeping the frame selection lossless. When set to\n<code>1</code>, the first stream is for the pre-processed input, and the second\nstream is the clean source from where the kept frames are chosen. Default is\n<code>0</code>.\n</p>\n</dd>",
       "name": "ppsrc",
@@ -73,6 +79,7 @@
       "alias": [
         "chroma"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set whether or not chroma is considered in the metric calculations. Default is\n<code>1</code>.\n</p>\n</dd>",
       "name": "chroma",
@@ -83,6 +90,7 @@
       "alias": [
         "mixed"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set whether or not the input only partially contains content to be decimated.\nDefault is <code>false</code>.\nIf enabled video output stream will be in variable frame rate.\n</p></dd>",
       "name": "mixed",

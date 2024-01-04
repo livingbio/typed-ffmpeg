@@ -18,6 +18,7 @@
       "alias": [
         "start"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify number of delay frames before input video stream. Default is 0.\n</p>\n</dd>",
       "name": "start",
@@ -28,6 +29,7 @@
       "alias": [
         "stop"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify number of padding frames after input video stream.\nSet to -1 to pad indefinitely. Default is 0.\n</p>\n</dd>",
       "name": "stop",
@@ -38,6 +40,7 @@
       "alias": [
         "start_mode"
       ],
+      "choices": [],
       "default": "MODE_ADD",
       "description": "<dd><p>Set kind of frames added to beginning of stream.\nCan be either <var>add</var> or <var>clone</var>.\nWith <var>add</var> frames of solid-color are added.\nWith <var>clone</var> frames are clones of first frame.\nDefault is <var>add</var>.\n</p>\n</dd>",
       "name": "start_mode",
@@ -48,6 +51,7 @@
       "alias": [
         "stop_mode"
       ],
+      "choices": [],
       "default": "MODE_ADD",
       "description": "<dd><p>Set kind of frames added to end of stream.\nCan be either <var>add</var> or <var>clone</var>.\nWith <var>add</var> frames of solid-color are added.\nWith <var>clone</var> frames are clones of last frame.\nDefault is <var>add</var>.\n</p>\n</dd>",
       "name": "stop_mode",
@@ -58,6 +62,7 @@
       "alias": [
         "start_duration"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify the duration of the start/stop delay. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nThese options override <var>start</var> and <var>stop</var>. Default is 0.\n</p>\n</dd>",
       "name": "start_duration",
@@ -68,6 +73,7 @@
       "alias": [
         "stop_duration"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify the duration of the start/stop delay. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nThese options override <var>start</var> and <var>stop</var>. Default is 0.\n</p>\n</dd>",
       "name": "stop_duration",
@@ -78,6 +84,7 @@
       "alias": [
         "color"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Specify the color of the padded area. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>.\n</p>\n<p>The default value of <var>color</var> is \"black\".\n</p></dd>",
       "name": "color",

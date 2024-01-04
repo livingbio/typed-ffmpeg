@@ -18,6 +18,7 @@
       "alias": [
         "color"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>The color which will not be replaced with neutral chroma.\n</p>\n</dd>",
       "name": "color",
@@ -28,6 +29,7 @@
       "alias": [
         "similarity"
       ],
+      "choices": [],
       "default": 0.01,
       "description": "<dd><p>Similarity percentage with the above color.\n0.01 matches only the exact key color, while 1.0 matches everything.\n</p>\n</dd>",
       "name": "similarity",
@@ -38,6 +40,7 @@
       "alias": [
         "blend"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Blend percentage.\n0.0 makes pixels either fully gray, or not gray at all.\nHigher values result in more preserved color.\n</p>\n</dd>",
       "name": "blend",
@@ -48,6 +51,7 @@
       "alias": [
         "yuv"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Signals that the color passed is already in YUV instead of RGB.\n</p>\n<p>Literal colors like \"green\" or \"red\" don\u2019t make sense with this enabled anymore.\nThis can be used to pass exact YUV values as hexadecimal numbers.\n</p></dd>",
       "name": "yuv",

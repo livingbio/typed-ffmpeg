@@ -13,6 +13,7 @@
       "alias": [
         "dry"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set dry gain. This sets input gain.\n</p>\n</dd>",
       "name": "dry",
@@ -23,6 +24,7 @@
       "alias": [
         "wet"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set wet gain. This sets final output gain.\n</p>\n</dd>",
       "name": "wet",
@@ -33,6 +35,7 @@
       "alias": [
         "length"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set Impulse Response filter length. Default is 1, which means whole IR is processed.\n</p>\n</dd>",
       "name": "length",
@@ -43,6 +46,7 @@
       "alias": [
         "gtype"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
       "name": "gtype",
@@ -53,6 +57,7 @@
       "alias": [
         "irnorm"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set norm to be applied to IR coefficients before filtering.\nAllowed range is from <var>-1</var> to <var>2</var>.\nIR coefficients are normalized with calculated vector norm set by this option.\nFor negative values, no norm is calculated, and IR coefficients are not modified at all.\nDefault is <var>1</var>.\n</p>\n</dd>",
       "name": "irnorm",
@@ -63,6 +68,7 @@
       "alias": [
         "irlink"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>For multichannel IR if this option is set to <var>true</var>, all IR channels will be\nnormalized with maximal measured gain of all IR channels coefficients as set by <code>irnorm</code> option.\nWhen disabled, all IR coefficients in each IR channel will be normalized independently.\nDefault is <var>true</var>.\n</p>\n</dd>",
       "name": "irlink",
@@ -73,6 +79,7 @@
       "alias": [
         "irgain"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set gain to be applied to IR coefficients before filtering.\nAllowed range is 0 to 1. This gain is applied after any gain applied with <var>irnorm</var> option.\n</p>\n</dd>",
       "name": "irgain",
@@ -83,6 +90,7 @@
       "alias": [
         "irfmt"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set format of IR stream. Can be <code>mono</code> or <code>input</code>.\nDefault is <code>input</code>.\n</p>\n</dd>",
       "name": "irfmt",
@@ -93,6 +101,7 @@
       "alias": [
         "maxir"
       ],
+      "choices": [],
       "default": 30.0,
       "description": "<dd><p>Set max allowed Impulse Response filter duration in seconds. Default is 30 seconds.\nAllowed range is 0.1 to 60 seconds.\n</p>\n</dd>",
       "name": "maxir",
@@ -103,6 +112,7 @@
       "alias": [
         "response"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
       "name": "response",
@@ -113,6 +123,7 @@
       "alias": [
         "channel"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
       "name": "channel",
@@ -123,6 +134,7 @@
       "alias": [
         "size"
       ],
+      "choices": [],
       "default": "hd720",
       "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
       "name": "size",
@@ -133,6 +145,7 @@
       "alias": [
         "rate"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
       "name": "rate",
@@ -143,6 +156,7 @@
       "alias": [
         "minp"
       ],
+      "choices": [],
       "default": 8192,
       "description": "<dd><p>Set minimal partition size used for convolution. Default is <var>8192</var>.\nAllowed range is from <var>1</var> to <var>65536</var>.\nLower values decreases latency at cost of higher CPU usage.\n</p>\n</dd>",
       "name": "minp",
@@ -153,6 +167,7 @@
       "alias": [
         "maxp"
       ],
+      "choices": [],
       "default": 8192,
       "description": "<dd><p>Set maximal partition size used for convolution. Default is <var>8192</var>.\nAllowed range is from <var>8</var> to <var>65536</var>.\nLower values may increase CPU usage.\n</p>\n</dd>",
       "name": "maxp",
@@ -163,6 +178,7 @@
       "alias": [
         "nbirs"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set number of input impulse responses streams which will be switchable at runtime.\nAllowed range is from <var>1</var> to <var>32</var>. Default is <var>1</var>.\n</p>\n</dd>",
       "name": "nbirs",
@@ -173,6 +189,7 @@
       "alias": [
         "ir"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set IR stream which will be used for convolution, starting from <var>0</var>, should always be\nlower than supplied value by <code>nbirs</code> option. Default is <var>0</var>.\nThis option can be changed at runtime via <a href=\"#commands\">commands</a>.\n</p>\n</dd>",
       "name": "ir",
@@ -183,6 +200,7 @@
       "alias": [
         "precision"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n<p>Default value is auto.\n</p>\n</dd>",
       "name": "precision",
@@ -193,6 +211,7 @@
       "alias": [
         "irload"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set when to load IR stream. Can be <code>init</code> or <code>access</code>.\nFirst one load and prepares all IRs on initialization, second one\nonce on first access of specific IR.\nDefault is <code>init</code>.\n</p></dd>",
       "name": "irload",

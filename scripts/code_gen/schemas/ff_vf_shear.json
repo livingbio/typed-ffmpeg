@@ -18,6 +18,7 @@
       "alias": [
         "shx"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Shear factor in X-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
       "name": "shx",
@@ -28,6 +29,7 @@
       "alias": [
         "shy"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Shear factor in Y-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
       "name": "shy",
@@ -39,6 +41,7 @@
         "fillcolor",
         "c"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Set the color used to fill the output area not covered by the transformed\nvideo. For the general syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nIf the special value \"none\" is selected then no\nbackground is printed (useful for example if the background is never shown).\n</p>\n<p>Default value is \"black\".\n</p>\n</dd>",
       "name": "fillcolor",
@@ -49,6 +52,7 @@
       "alias": [
         "interp"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set interpolation type. Can be <code>bilinear</code> or <code>nearest</code>. Default is <code>bilinear</code>.\n</p></dd>",
       "name": "interp",

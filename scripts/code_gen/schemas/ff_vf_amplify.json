@@ -18,6 +18,7 @@
       "alias": [
         "radius"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Set frame radius. Default is 2. Allowed range is from 1 to 63.\nFor example radius of 3 will instruct filter to calculate average of 7 frames.\n</p>\n</dd>",
       "name": "radius",
@@ -28,6 +29,7 @@
       "alias": [
         "factor"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Set factor to amplify difference. Default is 2. Allowed range is from 0 to 65535.\n</p>\n</dd>",
       "name": "factor",
@@ -38,6 +40,7 @@
       "alias": [
         "threshold"
       ],
+      "choices": [],
       "default": 10.0,
       "description": "<dd><p>Set threshold for difference amplification. Any difference greater or equal to\nthis value will not alter source pixel. Default is 10.\nAllowed range is from 0 to 65535.\n</p>\n</dd>",
       "name": "threshold",
@@ -48,6 +51,7 @@
       "alias": [
         "tolerance"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set tolerance for difference amplification. Any difference lower to\nthis value will not alter source pixel. Default is 0.\nAllowed range is from 0 to 65535.\n</p>\n</dd>",
       "name": "tolerance",
@@ -58,6 +62,7 @@
       "alias": [
         "low"
       ],
+      "choices": [],
       "default": 65535.0,
       "description": "<dd><p>Set lower limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will decrease source pixel value.\n</p>\n</dd>",
       "name": "low",
@@ -68,6 +73,7 @@
       "alias": [
         "high"
       ],
+      "choices": [],
       "default": 65535.0,
       "description": "<dd><p>Set high limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will increase source pixel value.\n</p>\n</dd>",
       "name": "high",
@@ -78,6 +84,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
       "name": "planes",

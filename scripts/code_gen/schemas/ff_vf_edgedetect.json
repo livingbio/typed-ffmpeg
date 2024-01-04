@@ -18,6 +18,7 @@
       "alias": [
         "high"
       ],
+      "choices": [],
       "default": "50/255.",
       "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
       "name": "high",
@@ -28,6 +29,7 @@
       "alias": [
         "low"
       ],
+      "choices": [],
       "default": "20/255.",
       "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
       "name": "low",
@@ -38,6 +40,7 @@
       "alias": [
         "mode"
       ],
+      "choices": [],
       "default": "MODE_WIRES",
       "description": "<dd><p>Define the drawing mode.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>wires</samp>\u2019</dt>\n<dd><p>Draw white/gray wires on black background.\n</p>\n</dd>\n<dt>\u2018<samp>colormix</samp>\u2019</dt>\n<dd><p>Mix the colors to create a paint/cartoon effect.\n</p>\n</dd>\n<dt>\u2018<samp>canny</samp>\u2019</dt>\n<dd><p>Apply Canny edge detector on all selected planes.\n</p></dd>\n</dl>\n<p>Default value is <var>wires</var>.\n</p>\n</dd>",
       "name": "mode",
@@ -48,6 +51,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Select planes for filtering. By default all available planes are filtered.\n</p></dd>",
       "name": "planes",

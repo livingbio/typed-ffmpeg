@@ -18,6 +18,7 @@
       "alias": [
         "delay"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set base delay in milliseconds. Range from 0 to 30. Default value is 0.\n</p>\n</dd>",
       "name": "delay",
@@ -28,6 +29,7 @@
       "alias": [
         "depth"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Set added sweep delay in milliseconds. Range from 0 to 10. Default value is 2.\n</p>\n</dd>",
       "name": "depth",
@@ -38,6 +40,7 @@
       "alias": [
         "regen"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set percentage regeneration (delayed signal feedback). Range from -95 to 95.\nDefault value is 0.\n</p>\n</dd>",
       "name": "regen",
@@ -48,6 +51,7 @@
       "alias": [
         "width"
       ],
+      "choices": [],
       "default": 71.0,
       "description": "<dd><p>Set percentage of delayed signal mixed with original. Range from 0 to 100.\nDefault value is 71.\n</p>\n</dd>",
       "name": "width",
@@ -58,6 +62,7 @@
       "alias": [
         "speed"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set sweeps per second (Hz). Range from 0.1 to 10. Default value is 0.5.\n</p>\n</dd>",
       "name": "speed",
@@ -68,6 +73,7 @@
       "alias": [
         "shape"
       ],
+      "choices": [],
       "default": "WAVE_SIN",
       "description": "<dd><p>Set swept wave shape, can be <var>triangular</var> or <var>sinusoidal</var>.\nDefault value is <var>sinusoidal</var>.\n</p>\n</dd>",
       "name": "shape",
@@ -78,6 +84,7 @@
       "alias": [
         "phase"
       ],
+      "choices": [],
       "default": 25.0,
       "description": "<dd><p>Set swept wave percentage-shift for multi channel. Range from 0 to 100.\nDefault value is 25.\n</p>\n</dd>",
       "name": "phase",
@@ -88,6 +95,7 @@
       "alias": [
         "interp"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set delay-line interpolation, <var>linear</var> or <var>quadratic</var>.\nDefault is <var>linear</var>.\n</p></dd>",
       "name": "interp",

@@ -18,6 +18,7 @@
       "alias": [
         "period_min"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set minimum and maximum values for determining pixel grids (periods).\nDefault values are [3,24].\n</p>\n</dd>",
       "name": "period_min",
@@ -28,6 +29,7 @@
       "alias": [
         "period_max"
       ],
+      "choices": [],
       "default": 24,
       "description": "<dd><p>Set minimum and maximum values for determining pixel grids (periods).\nDefault values are [3,24].\n</p>\n</dd>",
       "name": "period_max",
@@ -38,6 +40,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set planes to filter. Default is first only.\n</p></dd>",
       "name": "planes",

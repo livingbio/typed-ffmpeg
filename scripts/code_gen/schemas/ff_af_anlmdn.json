@@ -19,6 +19,7 @@
         "strength",
         "s"
       ],
+      "choices": [],
       "default": 1e-05,
       "description": "<dd><p>Set denoising strength. Allowed range is from 0.00001 to 10000. Default value is 0.00001.\n</p>\n</dd>",
       "name": "strength",
@@ -30,6 +31,7 @@
         "patch",
         "p"
       ],
+      "choices": [],
       "default": 2000,
       "description": "<dd><p>Set patch radius duration. Allowed range is from 1 to 100 milliseconds.\nDefault value is 2 milliseconds.\n</p>\n</dd>",
       "name": "patch",
@@ -41,6 +43,7 @@
         "research",
         "r"
       ],
+      "choices": [],
       "default": 6000,
       "description": "<dd><p>Set research radius duration. Allowed range is from 2 to 300 milliseconds.\nDefault value is 6 milliseconds.\n</p>\n</dd>",
       "name": "research",
@@ -52,6 +55,7 @@
         "output",
         "o"
       ],
+      "choices": [],
       "default": "OUT_MODE",
       "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass noise filtered out.\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>Pass only noise.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",
       "name": "output",
@@ -63,6 +67,7 @@
         "smooth",
         "m"
       ],
+      "choices": [],
       "default": 11.0,
       "description": "<dd><p>Set smooth factor. Default value is <var>11</var>. Allowed range is from <var>1</var> to <var>1000</var>.\n</p></dd>",
       "name": "smooth",

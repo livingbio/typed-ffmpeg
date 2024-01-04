@@ -18,6 +18,7 @@
       "alias": [
         "subfilters"
       ],
+      "choices": [],
       "default": "de",
       "description": "<dd><p>Set postprocessing subfilters string.\n</p></dd>",
       "name": "subfilters",

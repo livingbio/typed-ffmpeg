@@ -26,6 +26,7 @@
       "alias": [
         "interp"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Specify interpolation used for remapping of pixels.\nAllowed values are <code>near</code> and <code>linear</code>.\nDefault value is <code>linear</code>.\n</p>\n</dd>",
       "name": "interp",
@@ -36,6 +37,7 @@
       "alias": [
         "fill"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Specify the color of the unmapped pixels. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>. Default color is <code>black</code>.\n</p></dd>",
       "name": "fill",

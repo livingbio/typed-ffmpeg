@@ -18,6 +18,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set input level before filtering for both channels. Defaults is 1.\nAllowed range is from 0.015625 to 64.\n</p>\n</dd>",
       "name": "level_in",
@@ -28,6 +29,7 @@
       "alias": [
         "level_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set output level after filtering for both channels. Defaults is 1.\nAllowed range is from 0.015625 to 64.\n</p>\n</dd>",
       "name": "level_out",
@@ -38,6 +40,7 @@
       "alias": [
         "balance_in"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set input balance between both channels. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
       "name": "balance_in",
@@ -48,6 +51,7 @@
       "alias": [
         "balance_out"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set output balance between both channels. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
       "name": "balance_out",
@@ -58,6 +62,7 @@
       "alias": [
         "softclip"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable softclipping. Results in analog distortion instead of harsh digital 0dB\nclipping. Disabled by default.\n</p>\n</dd>",
       "name": "softclip",
@@ -68,6 +73,7 @@
       "alias": [
         "mutel"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Mute the left channel. Disabled by default.\n</p>\n</dd>",
       "name": "mutel",
@@ -78,6 +84,7 @@
       "alias": [
         "muter"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Mute the right channel. Disabled by default.\n</p>\n</dd>",
       "name": "muter",
@@ -88,6 +95,7 @@
       "alias": [
         "phasel"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Change the phase of the left channel. Disabled by default.\n</p>\n</dd>",
       "name": "phasel",
@@ -98,6 +106,7 @@
       "alias": [
         "phaser"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Change the phase of the right channel. Disabled by default.\n</p>\n</dd>",
       "name": "phaser",
@@ -108,6 +117,7 @@
       "alias": [
         "mode"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set stereo mode. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>lr&gt;lr</samp>\u2019</dt>\n<dd><p>Left/Right to Left/Right, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;ms</samp>\u2019</dt>\n<dd><p>Left/Right to Mid/Side.\n</p>\n</dd>\n<dt>\u2018<samp>ms&gt;lr</samp>\u2019</dt>\n<dd><p>Mid/Side to Left/Right.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;ll</samp>\u2019</dt>\n<dd><p>Left/Right to Left/Left.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;rr</samp>\u2019</dt>\n<dd><p>Left/Right to Right/Right.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;l+r</samp>\u2019</dt>\n<dd><p>Left/Right to Left + Right.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;rl</samp>\u2019</dt>\n<dd><p>Left/Right to Right/Left.\n</p>\n</dd>\n<dt>\u2018<samp>ms&gt;ll</samp>\u2019</dt>\n<dd><p>Mid/Side to Left/Left.\n</p>\n</dd>\n<dt>\u2018<samp>ms&gt;rr</samp>\u2019</dt>\n<dd><p>Mid/Side to Right/Right.\n</p>\n</dd>\n<dt>\u2018<samp>ms&gt;rl</samp>\u2019</dt>\n<dd><p>Mid/Side to Right/Left.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;l-r</samp>\u2019</dt>\n<dd><p>Left/Right to Left - Right.\n</p></dd>\n</dl>\n</dd>",
       "name": "mode",
@@ -118,6 +128,7 @@
       "alias": [
         "slev"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set level of side signal. Default is 1.\nAllowed range is from 0.015625 to 64.\n</p>\n</dd>",
       "name": "slev",
@@ -128,6 +139,7 @@
       "alias": [
         "sbal"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set balance of side signal. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
       "name": "sbal",
@@ -138,6 +150,7 @@
       "alias": [
         "mlev"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set level of the middle signal. Default is 1.\nAllowed range is from 0.015625 to 64.\n</p>\n</dd>",
       "name": "mlev",
@@ -148,6 +161,7 @@
       "alias": [
         "mpan"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set middle signal pan. Default is 0. Allowed range is from -1 to 1.\n</p>\n</dd>",
       "name": "mpan",
@@ -158,6 +172,7 @@
       "alias": [
         "base"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set stereo base between mono and inversed channels. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
       "name": "base",
@@ -168,6 +183,7 @@
       "alias": [
         "delay"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set delay in milliseconds how much to delay left from right channel and\nvice versa. Default is 0. Allowed range is from -20 to 20.\n</p>\n</dd>",
       "name": "delay",
@@ -178,6 +194,7 @@
       "alias": [
         "sclevel"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set S/C level. Default is 1. Allowed range is from 1 to 100.\n</p>\n</dd>",
       "name": "sclevel",
@@ -188,6 +205,7 @@
       "alias": [
         "phase"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the stereo phase in degrees. Default is 0. Allowed range is from 0 to 360.\n</p>\n</dd>",
       "name": "phase",
@@ -198,6 +216,7 @@
       "alias": [
         "bmode_in"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set balance mode for balance_in/balance_out option.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>balance</samp>\u2019</dt>\n<dd><p>Classic balance mode. Attenuate one channel at time.\nGain is raised up to 1.\n</p>\n</dd>\n<dt>\u2018<samp>amplitude</samp>\u2019</dt>\n<dd><p>Similar as classic mode above but gain is raised up to 2.\n</p>\n</dd>\n<dt>\u2018<samp>power</samp>\u2019</dt>\n<dd><p>Equal power distribution, from -6dB to +6dB range.\n</p></dd>\n</dl>\n</dd>",
       "name": "bmode_in",
@@ -208,6 +227,7 @@
       "alias": [
         "bmode_out"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set balance mode for balance_in/balance_out option.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>balance</samp>\u2019</dt>\n<dd><p>Classic balance mode. Attenuate one channel at time.\nGain is raised up to 1.\n</p>\n</dd>\n<dt>\u2018<samp>amplitude</samp>\u2019</dt>\n<dd><p>Similar as classic mode above but gain is raised up to 2.\n</p>\n</dd>\n<dt>\u2018<samp>power</samp>\u2019</dt>\n<dd><p>Equal power distribution, from -6dB to +6dB range.\n</p></dd>\n</dl>\n</dd>",
       "name": "bmode_out",

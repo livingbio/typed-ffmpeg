@@ -18,6 +18,7 @@
       "alias": [
         "contrast"
       ],
+      "choices": [],
       "default": 33.0,
       "description": "<dd><p>Set contrast. Default is 33. Allowed range is between 0 and 100.\n</p></dd>",
       "name": "contrast",

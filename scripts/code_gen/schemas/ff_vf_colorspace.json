@@ -18,6 +18,7 @@
       "alias": [
         "all"
       ],
+      "choices": [],
       "default": "CS_UNSPECIFIED",
       "description": null,
       "name": "all",
@@ -28,6 +29,7 @@
       "alias": [
         "space"
       ],
+      "choices": [],
       "default": "AVCOL_SPC_UNSPECIFIED",
       "description": null,
       "name": "space",
@@ -38,6 +40,7 @@
       "alias": [
         "range"
       ],
+      "choices": [],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": null,
       "name": "range",
@@ -48,6 +51,7 @@
       "alias": [
         "primaries"
       ],
+      "choices": [],
       "default": "AVCOL_PRI_UNSPECIFIED",
       "description": null,
       "name": "primaries",
@@ -58,6 +62,7 @@
       "alias": [
         "trc"
       ],
+      "choices": [],
       "default": "AVCOL_TRC_UNSPECIFIED",
       "description": null,
       "name": "trc",
@@ -68,6 +73,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": "AV_PIX_FMT_NONE",
       "description": null,
       "name": "format",
@@ -78,6 +84,7 @@
       "alias": [
         "fast"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "fast",
@@ -88,6 +95,7 @@
       "alias": [
         "dither"
       ],
+      "choices": [],
       "default": "DITHER_NONE",
       "description": null,
       "name": "dither",
@@ -98,6 +106,7 @@
       "alias": [
         "wpadapt"
       ],
+      "choices": [],
       "default": "WP_ADAPT_BRADFORD",
       "description": null,
       "name": "wpadapt",
@@ -108,6 +117,7 @@
       "alias": [
         "iall"
       ],
+      "choices": [],
       "default": "CS_UNSPECIFIED",
       "description": null,
       "name": "iall",
@@ -118,6 +128,7 @@
       "alias": [
         "ispace"
       ],
+      "choices": [],
       "default": "AVCOL_SPC_UNSPECIFIED",
       "description": null,
       "name": "ispace",
@@ -128,6 +139,7 @@
       "alias": [
         "irange"
       ],
+      "choices": [],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": null,
       "name": "irange",
@@ -138,6 +150,7 @@
       "alias": [
         "iprimaries"
       ],
+      "choices": [],
       "default": "AVCOL_PRI_UNSPECIFIED",
       "description": null,
       "name": "iprimaries",
@@ -148,6 +161,7 @@
       "alias": [
         "itrc"
       ],
+      "choices": [],
       "default": "AVCOL_TRC_UNSPECIFIED",
       "description": null,
       "name": "itrc",

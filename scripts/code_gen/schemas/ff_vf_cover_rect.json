@@ -18,6 +18,7 @@
       "alias": [
         "cover"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Filepath of the optional cover image, needs to be in yuv420.\n</p>\n</dd>",
       "name": "cover",
@@ -28,6 +29,7 @@
       "alias": [
         "mode"
       ],
+      "choices": [],
       "default": "MODE_BLUR",
       "description": "<dd><p>Set covering mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>cover</samp>\u2019</dt>\n<dd><p>cover it by the supplied image\n</p></dd>\n<dt>\u2018<samp>blur</samp>\u2019</dt>\n<dd><p>cover it by interpolating the surrounding pixels\n</p></dd>\n</dl>\n<p>Default value is <var>blur</var>.\n</p></dd>",
       "name": "mode",

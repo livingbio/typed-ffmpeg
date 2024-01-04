@@ -13,6 +13,7 @@
       "alias": [
         "inputs"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set number of inputs.\nDefault is 3. Allowed range is from 3 to 255.\nIf number of inputs is even number, than result will be mean value between two median values.\n</p>\n</dd>",
       "name": "inputs",
@@ -23,6 +24,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set which planes to filter. Default value is <code>15</code>, by which all planes are processed.\n</p>\n</dd>",
       "name": "planes",
@@ -33,6 +35,7 @@
       "alias": [
         "percentile"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set median percentile. Default value is <code>0.5</code>.\nDefault value of <code>0.5</code> will pick always median values, while <code>0</code> will pick\nminimum values, and <code>1</code> maximum values.\n</p></dd>",
       "name": "percentile",

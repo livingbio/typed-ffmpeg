@@ -19,6 +19,7 @@
         "mode",
         "m"
       ],
+      "choices": [],
       "default": "LISSAJOUS",
       "description": "<dd><p>Set the vectorscope mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lissajous</samp>\u2019</dt>\n<dd><p>Lissajous rotated by 45 degrees.\n</p>\n</dd>\n<dt>\u2018<samp>lissajous_xy</samp>\u2019</dt>\n<dd><p>Same as above but not rotated.\n</p>\n</dd>\n<dt>\u2018<samp>polar</samp>\u2019</dt>\n<dd><p>Shape resembling half of circle.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>lissajous</samp>\u2019.\n</p>\n</dd>",
       "name": "mode",
@@ -30,6 +31,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n</dd>",
       "name": "rate",
@@ -41,6 +43,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "400x400",
       "description": "<dd><p>Set the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>400x400</code>.\n</p>\n</dd>",
       "name": "size",
@@ -51,6 +54,7 @@
       "alias": [
         "rc"
       ],
+      "choices": [],
       "default": 40,
       "description": "<dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,\n<code>160</code>, <code>80</code> and <code>255</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "rc",
@@ -61,6 +65,7 @@
       "alias": [
         "gc"
       ],
+      "choices": [],
       "default": 160,
       "description": "<dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,\n<code>160</code>, <code>80</code> and <code>255</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "gc",
@@ -71,6 +76,7 @@
       "alias": [
         "bc"
       ],
+      "choices": [],
       "default": 80,
       "description": "<dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,\n<code>160</code>, <code>80</code> and <code>255</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "bc",
@@ -81,6 +87,7 @@
       "alias": [
         "ac"
       ],
+      "choices": [],
       "default": 255,
       "description": "<dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,\n<code>160</code>, <code>80</code> and <code>255</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "ac",
@@ -91,6 +98,7 @@
       "alias": [
         "rf"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,\n<code>10</code>, <code>5</code> and <code>5</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "rf",
@@ -101,6 +109,7 @@
       "alias": [
         "gf"
       ],
+      "choices": [],
       "default": 10,
       "description": "<dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,\n<code>10</code>, <code>5</code> and <code>5</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "gf",
@@ -111,6 +120,7 @@
       "alias": [
         "bf"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,\n<code>10</code>, <code>5</code> and <code>5</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "bf",
@@ -121,6 +131,7 @@
       "alias": [
         "af"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,\n<code>10</code>, <code>5</code> and <code>5</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "af",
@@ -131,6 +142,7 @@
       "alias": [
         "zoom"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the zoom factor. Default value is <code>1</code>. Allowed range is <code>[0, 10]</code>.\nValues lower than <var>1</var> will auto adjust zoom factor to maximal possible value.\n</p>\n</dd>",
       "name": "zoom",
@@ -141,6 +153,7 @@
       "alias": [
         "draw"
       ],
+      "choices": [],
       "default": "DOT",
       "description": "<dd><p>Set the vectorscope drawing mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n<dd><p>Draw dot for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dd><p>Draw line between previous and current sample.\n</p>\n</dd>\n<dt>\u2018<samp>aaline</samp>\u2019</dt>\n<dd><p>Draw anti-aliased line between previous and current sample.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>dot</samp>\u2019.\n</p>\n</dd>",
       "name": "draw",
@@ -151,6 +164,7 @@
       "alias": [
         "scale"
       ],
+      "choices": [],
       "default": "LIN",
       "description": "<dd><p>Specify amplitude scale of audio samples.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p></dd>\n</dl>\n</dd>",
       "name": "scale",
@@ -161,6 +175,7 @@
       "alias": [
         "swap"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Swap left channel axis with right channel axis.\n</p>\n</dd>",
       "name": "swap",
@@ -171,6 +186,7 @@
       "alias": [
         "mirror"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Mirror axis.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No mirror.\n</p>\n</dd>\n<dt>\u2018<samp>x</samp>\u2019</dt>\n<dd><p>Mirror only x axis.\n</p>\n</dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Mirror only y axis.\n</p>\n</dd>\n<dt>\u2018<samp>xy</samp>\u2019</dt>\n<dd><p>Mirror both axis.\n</p></dd>\n</dl>\n</dd>",
       "name": "mirror",

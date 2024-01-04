@@ -19,6 +19,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "640x512",
       "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>640x512</code>.\n</p>\n</dd>",
       "name": "size",
@@ -29,6 +30,7 @@
       "alias": [
         "slide"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify how the spectrum should slide along the window.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>the samples start again on the left when they reach the right\n</p></dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>the samples scroll from right to left\n</p></dd>\n<dt>\u2018<samp>fullframe</samp>\u2019</dt>\n<dd><p>frames are only produced when the samples reach the right\n</p></dd>\n<dt>\u2018<samp>rscroll</samp>\u2019</dt>\n<dd><p>the samples scroll from left to right\n</p></dd>\n<dt>\u2018<samp>lreplace</samp>\u2019</dt>\n<dd><p>the samples start again on the right when they reach the left\n</p></dd>\n</dl>\n<p>Default value is <code>replace</code>.\n</p>\n</dd>",
       "name": "slide",
@@ -39,6 +41,7 @@
       "alias": [
         "mode"
       ],
+      "choices": [],
       "default": "COMBINED",
       "description": "<dd><p>Specify display mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>combined</samp>\u2019</dt>\n<dd><p>all channels are displayed in the same row\n</p></dd>\n<dt>\u2018<samp>separate</samp>\u2019</dt>\n<dd><p>all channels are displayed in separate rows\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>combined</samp>\u2019.\n</p>\n</dd>",
       "name": "mode",
@@ -49,6 +52,7 @@
       "alias": [
         "color"
       ],
+      "choices": [],
       "default": "CHANNEL",
       "description": "<dd><p>Specify display color mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>channel</samp>\u2019</dt>\n<dd><p>each channel is displayed in a separate color\n</p></dd>\n<dt>\u2018<samp>intensity</samp>\u2019</dt>\n<dd><p>each channel is displayed using the same color scheme\n</p></dd>\n<dt>\u2018<samp>rainbow</samp>\u2019</dt>\n<dd><p>each channel is displayed using the rainbow color scheme\n</p></dd>\n<dt>\u2018<samp>moreland</samp>\u2019</dt>\n<dd><p>each channel is displayed using the moreland color scheme\n</p></dd>\n<dt>\u2018<samp>nebulae</samp>\u2019</dt>\n<dd><p>each channel is displayed using the nebulae color scheme\n</p></dd>\n<dt>\u2018<samp>fire</samp>\u2019</dt>\n<dd><p>each channel is displayed using the fire color scheme\n</p></dd>\n<dt>\u2018<samp>fiery</samp>\u2019</dt>\n<dd><p>each channel is displayed using the fiery color scheme\n</p></dd>\n<dt>\u2018<samp>fruit</samp>\u2019</dt>\n<dd><p>each channel is displayed using the fruit color scheme\n</p></dd>\n<dt>\u2018<samp>cool</samp>\u2019</dt>\n<dd><p>each channel is displayed using the cool color scheme\n</p></dd>\n<dt>\u2018<samp>magma</samp>\u2019</dt>\n<dd><p>each channel is displayed using the magma color scheme\n</p></dd>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dd><p>each channel is displayed using the green color scheme\n</p></dd>\n<dt>\u2018<samp>viridis</samp>\u2019</dt>\n<dd><p>each channel is displayed using the viridis color scheme\n</p></dd>\n<dt>\u2018<samp>plasma</samp>\u2019</dt>\n<dd><p>each channel is displayed using the plasma color scheme\n</p></dd>\n<dt>\u2018<samp>cividis</samp>\u2019</dt>\n<dd><p>each channel is displayed using the cividis color scheme\n</p></dd>\n<dt>\u2018<samp>terrain</samp>\u2019</dt>\n<dd><p>each channel is displayed using the terrain color scheme\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>channel</samp>\u2019.\n</p>\n</dd>",
       "name": "color",
@@ -59,6 +63,7 @@
       "alias": [
         "scale"
       ],
+      "choices": [],
       "default": "SQRT",
       "description": "<dd><p>Specify scale used for calculating intensity color values.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>square root, default\n</p></dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>cubic root\n</p></dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n</p></dd>\n<dt>\u2018<samp>4thrt</samp>\u2019</dt>\n<dd><p>4th root\n</p></dd>\n<dt>\u2018<samp>5thrt</samp>\u2019</dt>\n<dd><p>5th root\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>sqrt</samp>\u2019.\n</p>\n</dd>",
       "name": "scale",
@@ -69,6 +74,7 @@
       "alias": [
         "fscale"
       ],
+      "choices": [],
       "default": "F_LINEAR",
       "description": "<dd><p>Specify frequency scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>lin</samp>\u2019.\n</p>\n</dd>",
       "name": "fscale",
@@ -79,6 +85,7 @@
       "alias": [
         "saturation"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set saturation modifier for displayed colors. Negative values provide\nalternative color scheme. <code>0</code> is no saturation at all.\nSaturation must be in [-10.0, 10.0] range.\nDefault value is <code>1</code>.\n</p>\n</dd>",
       "name": "saturation",
@@ -89,6 +96,7 @@
       "alias": [
         "win_func"
       ],
+      "choices": [],
       "default": "WFUNC_HANNING",
       "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann</samp>\u2019</dt>\n<dt>\u2018<samp>hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>hann</code>.\n</p>\n</dd>",
       "name": "win_func",
@@ -99,6 +107,7 @@
       "alias": [
         "orientation"
       ],
+      "choices": [],
       "default": "VERTICAL",
       "description": "<dd><p>Set orientation of time vs frequency axis. Can be <code>vertical</code> or\n<code>horizontal</code>. Default is <code>vertical</code>.\n</p>\n</dd>",
       "name": "orientation",
@@ -109,6 +118,7 @@
       "alias": [
         "overlap"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set ratio of overlap window. Default value is <code>0</code>.\nWhen value is <code>1</code> overlap is set to recommended size for specific\nwindow function currently used.\n</p>\n</dd>",
       "name": "overlap",
@@ -119,6 +129,7 @@
       "alias": [
         "gain"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set scale gain for calculating intensity color values.\nDefault value is <code>1</code>.\n</p>\n</dd>",
       "name": "gain",
@@ -129,6 +140,7 @@
       "alias": [
         "data"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set which data to display. Can be <code>magnitude</code>, default or <code>phase</code>,\nor unwrapped phase: <code>uphase</code>.\n</p>\n</dd>",
       "name": "data",
@@ -139,6 +151,7 @@
       "alias": [
         "rotation"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set color rotation, must be in [-1.0, 1.0] range.\nDefault value is <code>0</code>.\n</p>\n</dd>",
       "name": "rotation",
@@ -149,6 +162,7 @@
       "alias": [
         "start"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set start frequency from which to display spectrogram. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "start",
@@ -159,6 +173,7 @@
       "alias": [
         "stop"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set stop frequency to which to display spectrogram. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "stop",
@@ -169,6 +184,7 @@
       "alias": [
         "fps"
       ],
+      "choices": [],
       "default": "auto",
       "description": "<dd><p>Set upper frame rate limit. Default is <code>auto</code>, unlimited.\n</p>\n</dd>",
       "name": "fps",
@@ -179,6 +195,7 @@
       "alias": [
         "legend"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Draw time and frequency axes and legends. Default is disabled.\n</p>\n</dd>",
       "name": "legend",
@@ -189,6 +206,7 @@
       "alias": [
         "drange"
       ],
+      "choices": [],
       "default": 120.0,
       "description": "<dd><p>Set dynamic range used to calculate intensity color values. Default is 120 dBFS.\nAllowed range is from 10 to 200.\n</p>\n</dd>",
       "name": "drange",
@@ -199,6 +217,7 @@
       "alias": [
         "limit"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set upper limit of input audio samples volume in dBFS. Default is 0 dBFS.\nAllowed range is from -100 to 100.\n</p>\n</dd>",
       "name": "limit",
@@ -209,6 +228,7 @@
       "alias": [
         "opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set opacity strength when using pixel format output with alpha component.\n</p></dd>",
       "name": "opacity",

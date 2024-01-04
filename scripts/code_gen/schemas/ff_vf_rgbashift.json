@@ -18,6 +18,7 @@
       "alias": [
         "rh"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set amount to shift red horizontally.\n</p></dd>",
       "name": "rh",
@@ -28,6 +29,7 @@
       "alias": [
         "rv"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set amount to shift red vertically.\n</p></dd>",
       "name": "rv",
@@ -38,6 +40,7 @@
       "alias": [
         "gh"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set amount to shift green horizontally.\n</p></dd>",
       "name": "gh",
@@ -48,6 +51,7 @@
       "alias": [
         "gv"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set amount to shift green vertically.\n</p></dd>",
       "name": "gv",
@@ -58,6 +62,7 @@
       "alias": [
         "bh"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set amount to shift blue horizontally.\n</p></dd>",
       "name": "bh",
@@ -68,6 +73,7 @@
       "alias": [
         "bv"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set amount to shift blue vertically.\n</p></dd>",
       "name": "bv",
@@ -78,6 +84,7 @@
       "alias": [
         "ah"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set amount to shift alpha horizontally.\n</p></dd>",
       "name": "ah",
@@ -88,6 +95,7 @@
       "alias": [
         "av"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set amount to shift alpha vertically.\n</p></dd>",
       "name": "av",
@@ -98,6 +106,7 @@
       "alias": [
         "edge"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>",
       "name": "edge",

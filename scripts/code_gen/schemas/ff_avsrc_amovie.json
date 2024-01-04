@@ -13,6 +13,7 @@
       "alias": [
         "filename"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "filename",
@@ -24,6 +25,7 @@
         "format_name",
         "f"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "format_name",
@@ -35,6 +37,7 @@
         "stream_index",
         "si"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "stream_index",
@@ -46,6 +49,7 @@
         "seek_point",
         "sp"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "seek_point",
@@ -57,6 +61,7 @@
         "streams",
         "s"
       ],
+      "choices": [],
       "default": "0",
       "description": null,
       "name": "streams",
@@ -67,6 +72,7 @@
       "alias": [
         "loop"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "loop",
@@ -77,6 +83,7 @@
       "alias": [
         "discontinuity"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "discontinuity",
@@ -87,6 +94,7 @@
       "alias": [
         "dec_threads"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "dec_threads",
@@ -97,6 +105,7 @@
       "alias": [
         "format_opts"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "format_opts",

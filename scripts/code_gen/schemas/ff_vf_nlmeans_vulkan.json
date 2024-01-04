@@ -18,6 +18,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set denoising strength for all components. Default is 1.0. Must be in range [1.0, 100.0].\n</p>\n</dd>",
       "name": "s",
@@ -28,6 +29,7 @@
       "alias": [
         "p"
       ],
+      "choices": [],
       "default": "3*2+1",
       "description": "<dd><p>Set patch size for all planes. Default is 7. Must be odd number in range [0, 99].\n</p>\n</dd>",
       "name": "p",
@@ -38,6 +40,7 @@
       "alias": [
         "r"
       ],
+      "choices": [],
       "default": "7*2+1",
       "description": "<dd><p>Set research size. Default is 15. Must be odd number in range [0, 99].\n</p>\n</dd>",
       "name": "r",
@@ -48,6 +51,7 @@
       "alias": [
         "t"
       ],
+      "choices": [],
       "default": 36,
       "description": "<dd><p>Set parallelism. Default is 36. Must be a number in the range [1, 168].\nLarger values may speed up processing, at the cost of more VRAM.\nLower values will slow it down, reducing VRAM usage.\nOnly supported on GPUs with atomic float operations (RDNA3+, Ampere+).\n</p>\n</dd>",
       "name": "t",
@@ -58,6 +62,7 @@
       "alias": [
         "s1"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set denoising strength for a specific component. Default is <var>1</var>, equal to <samp>s</samp>.\nMust be odd number in range [1, 100].\n</p>\n</dd>",
       "name": "s1",
@@ -68,6 +73,7 @@
       "alias": [
         "s2"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set denoising strength for a specific component. Default is <var>1</var>, equal to <samp>s</samp>.\nMust be odd number in range [1, 100].\n</p>\n</dd>",
       "name": "s2",
@@ -78,6 +84,7 @@
       "alias": [
         "s3"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set denoising strength for a specific component. Default is <var>1</var>, equal to <samp>s</samp>.\nMust be odd number in range [1, 100].\n</p>\n</dd>",
       "name": "s3",
@@ -88,6 +95,7 @@
       "alias": [
         "s4"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "s4",
@@ -98,6 +106,7 @@
       "alias": [
         "p1"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set patch size for a specific component. Default is <var>7</var>, equal to <samp>p</samp>.\nMust be odd number in range [0, 99].\n</p>\n</dd>",
       "name": "p1",
@@ -108,6 +117,7 @@
       "alias": [
         "p2"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set patch size for a specific component. Default is <var>7</var>, equal to <samp>p</samp>.\nMust be odd number in range [0, 99].\n</p>\n</dd>",
       "name": "p2",
@@ -118,6 +128,7 @@
       "alias": [
         "p3"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set patch size for a specific component. Default is <var>7</var>, equal to <samp>p</samp>.\nMust be odd number in range [0, 99].\n</p>\n</dd>",
       "name": "p3",
@@ -128,6 +139,7 @@
       "alias": [
         "p4"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "p4",

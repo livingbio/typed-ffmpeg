@@ -19,6 +19,7 @@
         "luma_radius",
         "lr"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set luma blur filter strength, must be a value in range 0.1-4.0, default\nvalue is 1.0. A greater value will result in a more blurred image, and\nin slower processing.\n</p>\n</dd>",
       "name": "luma_radius",
@@ -30,6 +31,7 @@
         "luma_pre_filter_radius",
         "lpfr"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set luma pre-filter radius, must be a value in the 0.1-2.0 range, default\nvalue is 1.0.\n</p>\n</dd>",
       "name": "luma_pre_filter_radius",
@@ -41,6 +43,7 @@
         "luma_strength",
         "ls"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set luma maximum difference between pixels to still be considered, must\nbe a value in the 0.1-100.0 range, default value is 1.0.\n</p>\n</dd>",
       "name": "luma_strength",
@@ -52,6 +55,7 @@
         "chroma_radius",
         "cr"
       ],
+      "choices": [],
       "default": "0.1 -1",
       "description": "<dd><p>Set chroma blur filter strength, must be a value in range -0.9-4.0. A\ngreater value will result in a more blurred image, and in slower\nprocessing.\n</p>\n</dd>",
       "name": "chroma_radius",
@@ -63,6 +67,7 @@
         "chroma_pre_filter_radius",
         "cpfr"
       ],
+      "choices": [],
       "default": "0.1 -1",
       "description": "<dd><p>Set chroma pre-filter radius, must be a value in the -0.9-2.0 range.\n</p>\n</dd>",
       "name": "chroma_pre_filter_radius",
@@ -74,6 +79,7 @@
         "chroma_strength",
         "cs"
       ],
+      "choices": [],
       "default": "0.1 -1",
       "description": "<dd><p>Set chroma maximum difference between pixels to still be considered,\nmust be a value in the -0.9-100.0 range.\n</p></dd>",
       "name": "chroma_strength",

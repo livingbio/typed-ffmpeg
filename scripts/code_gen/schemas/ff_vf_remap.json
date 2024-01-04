@@ -26,6 +26,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify pixel format of output from this filter. Can be <code>color</code> or <code>gray</code>.\nDefault is <code>color</code>.\n</p>\n</dd>",
       "name": "format",
@@ -36,6 +37,7 @@
       "alias": [
         "fill"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Specify the color of the unmapped pixels. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>. Default color is <code>black</code>.\n</p></dd>",
       "name": "fill",

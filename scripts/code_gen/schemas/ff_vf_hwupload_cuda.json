@@ -18,6 +18,7 @@
       "alias": [
         "device"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>The number of the CUDA device to use\n</p></dd>",
       "name": "device",

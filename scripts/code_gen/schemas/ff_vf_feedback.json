@@ -22,6 +22,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the top left crop position.\n</p>\n</dd>",
       "name": "x",
@@ -32,6 +33,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the top left crop position.\n</p>\n</dd>",
       "name": "y",
@@ -42,6 +44,7 @@
       "alias": [
         "w"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the crop size.\n</p></dd>",
       "name": "w",
@@ -52,6 +55,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the crop size.\n</p></dd>",
       "name": "h",

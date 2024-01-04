@@ -18,6 +18,7 @@
       "alias": [
         "datapath"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set datapath to tesseract data. Default is to use whatever was\nset at installation.\n</p>\n</dd>",
       "name": "datapath",
@@ -28,6 +29,7 @@
       "alias": [
         "language"
       ],
+      "choices": [],
       "default": "eng",
       "description": "<dd><p>Set language, default is \"eng\".\n</p>\n</dd>",
       "name": "language",
@@ -38,6 +40,7 @@
       "alias": [
         "whitelist"
       ],
+      "choices": [],
       "default": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\\\\\"\\'[]{}()<>|/\\\\\\\\=*&%$#@!~ ",
       "description": "<dd><p>Set character whitelist.\n</p>\n</dd>",
       "name": "whitelist",
@@ -48,6 +51,7 @@
       "alias": [
         "blacklist"
       ],
+      "choices": [],
       "default": "",
       "description": "<dd><p>Set character blacklist.\n</p></dd>",
       "name": "blacklist",

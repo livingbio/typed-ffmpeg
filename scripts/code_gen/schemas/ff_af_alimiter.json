@@ -18,6 +18,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set input gain. Default is 1.\n</p>\n</dd>",
       "name": "level_in",
@@ -28,6 +29,7 @@
       "alias": [
         "level_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set output gain. Default is 1.\n</p>\n</dd>",
       "name": "level_out",
@@ -38,6 +40,7 @@
       "alias": [
         "limit"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Don\u2019t let signals above this level pass the limiter. Default is 1.\n</p>\n</dd>",
       "name": "limit",
@@ -48,6 +51,7 @@
       "alias": [
         "attack"
       ],
+      "choices": [],
       "default": 5.0,
       "description": "<dd><p>The limiter will reach its attenuation level in this amount of time in\nmilliseconds. Default is 5 milliseconds.\n</p>\n</dd>",
       "name": "attack",
@@ -58,6 +62,7 @@
       "alias": [
         "release"
       ],
+      "choices": [],
       "default": 50.0,
       "description": "<dd><p>Come back from limiting to attenuation 1.0 in this amount of milliseconds.\nDefault is 50 milliseconds.\n</p>\n</dd>",
       "name": "release",
@@ -68,6 +73,7 @@
       "alias": [
         "asc"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>When gain reduction is always needed ASC takes care of releasing to an\naverage reduction level rather than reaching a reduction of 0 in the release\ntime.\n</p>\n</dd>",
       "name": "asc",
@@ -78,6 +84,7 @@
       "alias": [
         "asc_level"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Select how much the release time is affected by ASC, 0 means nearly no changes\nin release time while 1 produces higher release times.\n</p>\n</dd>",
       "name": "asc_level",
@@ -88,6 +95,7 @@
       "alias": [
         "level"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Auto level output signal. Default is enabled.\nThis normalizes audio back to 0dB if enabled.\n</p>\n</dd>",
       "name": "level",
@@ -98,6 +106,7 @@
       "alias": [
         "latency"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Compensate the delay introduced by using the lookahead buffer set with attack\nparameter. Also flush the valid audio data in the lookahead buffer when the\nstream hits EOF.\n</p></dd>",
       "name": "latency",

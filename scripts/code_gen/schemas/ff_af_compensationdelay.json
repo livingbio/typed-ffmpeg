@@ -18,6 +18,7 @@
       "alias": [
         "mm"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set millimeters distance. This is compensation distance for fine tuning.\nDefault is 0.\n</p>\n</dd>",
       "name": "mm",
@@ -28,6 +29,7 @@
       "alias": [
         "cm"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set cm distance. This is compensation distance for tightening distance setup.\nDefault is 0.\n</p>\n</dd>",
       "name": "cm",
@@ -38,6 +40,7 @@
       "alias": [
         "m"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set meters distance. This is compensation distance for hard distance setup.\nDefault is 0.\n</p>\n</dd>",
       "name": "m",
@@ -48,6 +51,7 @@
       "alias": [
         "dry"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set dry amount. Amount of unprocessed (dry) signal.\nDefault is 0.\n</p>\n</dd>",
       "name": "dry",
@@ -58,6 +62,7 @@
       "alias": [
         "wet"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set wet amount. Amount of processed (wet) signal.\nDefault is 1.\n</p>\n</dd>",
       "name": "wet",
@@ -68,6 +73,7 @@
       "alias": [
         "temp"
       ],
+      "choices": [],
       "default": 20,
       "description": "<dd><p>Set temperature in degrees Celsius. This is the temperature of the environment.\nDefault is 20.\n</p></dd>",
       "name": "temp",

@@ -18,6 +18,7 @@
       "alias": [
         "exprs"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the \u2019|\u2019-separated expressions list for each separate channel. If\nthe number of input channels is greater than the number of\nexpressions, the last specified expression is used for the remaining\noutput channels.\n</p>\n</dd>",
       "name": "exprs",
@@ -29,6 +30,7 @@
         "channel_layout",
         "c"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set output channel layout. If not specified, the channel layout is\nspecified by the number of expressions. If set to \u2018<samp>same</samp>\u2019, it will\nuse by default the same input channel layout.\n</p></dd>",
       "name": "channel_layout",

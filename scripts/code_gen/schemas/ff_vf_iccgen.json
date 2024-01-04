@@ -18,6 +18,7 @@
       "alias": [
         "color_primaries"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Configure the colorspace that the ICC profile will be generated for. The\ndefault value of <code>auto</code> infers the value from the input frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See the <a href=\"#setparams\">setparams</a> filter for a list of possible values, but note that\n<code>unknown</code> are not valid values for this filter.\n</p>\n</dd>",
       "name": "color_primaries",
@@ -28,6 +29,7 @@
       "alias": [
         "color_trc"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Configure the colorspace that the ICC profile will be generated for. The\ndefault value of <code>auto</code> infers the value from the input frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n</p>\n<p>See the <a href=\"#setparams\">setparams</a> filter for a list of possible values, but note that\n<code>unknown</code> are not valid values for this filter.\n</p>\n</dd>",
       "name": "color_trc",
@@ -38,6 +40,7 @@
       "alias": [
         "force"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If true, an ICC profile will be generated even if it would overwrite an\nalready existing ICC profile. Disabled by default.\n</p></dd>",
       "name": "force",

@@ -18,6 +18,7 @@
       "alias": [
         "sigmaS"
       ],
+      "choices": [],
       "default": 0.1,
       "description": "<dd><p>Set sigma of gaussian function to calculate spatial weight, also called sigma space.\nAllowed range is 0.1 to 512. Default is 0.1.\n</p>\n</dd>",
       "name": "sigmaS",
@@ -28,6 +29,7 @@
       "alias": [
         "sigmaR"
       ],
+      "choices": [],
       "default": 0.1,
       "description": "<dd><p>Set sigma of gaussian function to calculate color range weight, also called sigma color.\nAllowed range is 0.1 to 512. Default is 0.1.\n</p>\n</dd>",
       "name": "sigmaR",
@@ -38,6 +40,7 @@
       "alias": [
         "window_size"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set window size of the bilateral function to determine the number of neighbours to loop on.\nIf the number entered is even, one will be added automatically.\nAllowed range is 1 to 255. Default is 1.\n</p></dd>",
       "name": "window_size",

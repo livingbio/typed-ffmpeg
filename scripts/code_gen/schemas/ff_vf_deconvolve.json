@@ -22,6 +22,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set which planes to process.\n</p>\n</dd>",
       "name": "planes",
@@ -32,6 +33,7 @@
       "alias": [
         "impulse"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set which impulse video frames will be processed, can be <var>first</var>\nor <var>all</var>. Default is <var>all</var>.\n</p>\n</dd>",
       "name": "impulse",
@@ -42,6 +44,7 @@
       "alias": [
         "noise"
       ],
+      "choices": [],
       "default": 1e-07,
       "description": "<dd><p>Set noise when doing divisions. Default is <var>0.0000001</var>. Useful when width\nand height are not same and not power of 2 or if stream prior to convolving\nhad noise.\n</p></dd>",
       "name": "noise",

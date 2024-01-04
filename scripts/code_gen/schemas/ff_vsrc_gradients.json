@@ -14,6 +14,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "640x480",
       "description": "<dd><p>Set frame size. For the syntax of this option, check the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video\nsize\" section in the ffmpeg-utils manual</a>. Default value is \"640x480\".\n</p>\n</dd>",
       "name": "size",
@@ -25,6 +26,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
       "name": "rate",
@@ -35,6 +37,7 @@
       "alias": [
         "c0"
       ],
+      "choices": [],
       "default": "random",
       "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
       "name": "c0",
@@ -45,6 +48,7 @@
       "alias": [
         "c1"
       ],
+      "choices": [],
       "default": "random",
       "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
       "name": "c1",
@@ -55,6 +59,7 @@
       "alias": [
         "c2"
       ],
+      "choices": [],
       "default": "random",
       "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
       "name": "c2",
@@ -65,6 +70,7 @@
       "alias": [
         "c3"
       ],
+      "choices": [],
       "default": "random",
       "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
       "name": "c3",
@@ -75,6 +81,7 @@
       "alias": [
         "c4"
       ],
+      "choices": [],
       "default": "random",
       "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
       "name": "c4",
@@ -85,6 +92,7 @@
       "alias": [
         "c5"
       ],
+      "choices": [],
       "default": "random",
       "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
       "name": "c5",
@@ -95,6 +103,7 @@
       "alias": [
         "c6"
       ],
+      "choices": [],
       "default": "random",
       "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
       "name": "c6",
@@ -105,6 +114,7 @@
       "alias": [
         "c7"
       ],
+      "choices": [],
       "default": "random",
       "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
       "name": "c7",
@@ -115,6 +125,7 @@
       "alias": [
         "x0"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set gradient line source and destination points. If negative or out of range, random ones\nare picked.\n</p>\n</dd>",
       "name": "x0",
@@ -125,6 +136,7 @@
       "alias": [
         "y0"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set gradient line source and destination points. If negative or out of range, random ones\nare picked.\n</p>\n</dd>",
       "name": "y0",
@@ -135,6 +147,7 @@
       "alias": [
         "x1"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "x1",
@@ -145,6 +158,7 @@
       "alias": [
         "y1"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set gradient line source and destination points. If negative or out of range, random ones\nare picked.\n</p>\n</dd>",
       "name": "y1",
@@ -156,6 +170,7 @@
         "nb_colors",
         "n"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Set number of colors to use at once. Allowed range is from 2 to 8. Default value is 2.\n</p>\n</dd>",
       "name": "nb_colors",
@@ -166,6 +181,7 @@
       "alias": [
         "seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set seed for picking gradient line points.\n</p>\n</dd>",
       "name": "seed",
@@ -177,6 +193,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p>\n</dd>",
       "name": "duration",
@@ -187,6 +204,7 @@
       "alias": [
         "speed"
       ],
+      "choices": [],
       "default": 0.01,
       "description": "<dd><p>Set speed of gradients rotation.\n</p>\n</dd>",
       "name": "speed",
@@ -198,6 +216,7 @@
         "type",
         "t"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set type of gradients.\nAvailable values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dt>\u2018<samp>radial</samp>\u2019</dt>\n<dt>\u2018<samp>circular</samp>\u2019</dt>\n<dt>\u2018<samp>spiral</samp>\u2019</dt>\n<dt>\u2018<samp>square</samp>\u2019</dt>\n</dl>\n<p>Default type is <var>linear</var>.\n</p></dd>",
       "name": "type",

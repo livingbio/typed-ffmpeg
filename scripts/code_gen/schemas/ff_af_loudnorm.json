@@ -19,6 +19,7 @@
         "I",
         "i"
       ],
+      "choices": [],
       "default": -24.0,
       "description": "<dd><p>Set integrated loudness target.\nRange is -70.0 - -5.0. Default value is -24.0.\n</p>\n</dd>",
       "name": "I",
@@ -30,6 +31,7 @@
         "LRA",
         "lra"
       ],
+      "choices": [],
       "default": 7.0,
       "description": "<dd><p>Set loudness range target.\nRange is 1.0 - 50.0. Default value is 7.0.\n</p>\n</dd>",
       "name": "LRA",
@@ -41,6 +43,7 @@
         "TP",
         "tp"
       ],
+      "choices": [],
       "default": -2.0,
       "description": "<dd><p>Set maximum true peak.\nRange is -9.0 - +0.0. Default value is -2.0.\n</p>\n</dd>",
       "name": "TP",
@@ -52,6 +55,7 @@
         "measured_I",
         "measured_i"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Measured IL of input file.\nRange is -99.0 - +0.0.\n</p>\n</dd>",
       "name": "measured_I",
@@ -63,6 +67,7 @@
         "measured_LRA",
         "measured_lra"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Measured LRA of input file.\nRange is  0.0 - 99.0.\n</p>\n</dd>",
       "name": "measured_LRA",
@@ -74,6 +79,7 @@
         "measured_TP",
         "measured_tp"
       ],
+      "choices": [],
       "default": 99.0,
       "description": "<dd><p>Measured true peak of input file.\nRange is  -99.0 - +99.0.\n</p>\n</dd>",
       "name": "measured_TP",
@@ -84,6 +90,7 @@
       "alias": [
         "measured_thresh"
       ],
+      "choices": [],
       "default": -70.0,
       "description": "<dd><p>Measured threshold of input file.\nRange is -99.0 - +0.0.\n</p>\n</dd>",
       "name": "measured_thresh",
@@ -94,6 +101,7 @@
       "alias": [
         "offset"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set offset gain. Gain is applied before the true-peak limiter.\nRange is  -99.0 - +99.0. Default is +0.0.\n</p>\n</dd>",
       "name": "offset",
@@ -104,6 +112,7 @@
       "alias": [
         "linear"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Normalize by linearly scaling the source audio.\n<code>measured_I</code>, <code>measured_LRA</code>, <code>measured_TP</code>,\nand <code>measured_thresh</code> must all be specified. Target LRA shouldn\u2019t\nbe lower than source LRA and the change in integrated loudness shouldn\u2019t\nresult in a true peak which exceeds the target TP. If any of these\nconditions aren\u2019t met, normalization mode will revert to <var>dynamic</var>.\nOptions are <code>true</code> or <code>false</code>. Default is <code>true</code>.\n</p>\n</dd>",
       "name": "linear",
@@ -114,6 +123,7 @@
       "alias": [
         "dual_mono"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Treat mono input files as \"dual-mono\". If a mono file is intended for playback\non a stereo system, its EBU R128 measurement will be perceptually incorrect.\nIf set to <code>true</code>, this option will compensate for this effect.\nMulti-channel input files are not affected by this option.\nOptions are true or false. Default is false.\n</p>\n</dd>",
       "name": "dual_mono",
@@ -124,6 +134,7 @@
       "alias": [
         "print_format"
       ],
+      "choices": [],
       "default": "NONE",
       "description": "<dd><p>Set print format for stats. Options are summary, json, or none.\nDefault value is none.\n</p></dd>",
       "name": "print_format",

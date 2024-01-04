@@ -22,6 +22,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set expressions for the x and y coordinates of the overlaid video\non the main video.\n</p>\n<p>Default value is \"0\" for both expressions.\n</p>\n</dd>",
       "name": "x",
@@ -32,6 +33,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set expressions for the x and y coordinates of the overlaid video\non the main video.\n</p>\n<p>Default value is \"0\" for both expressions.\n</p>\n</dd>",
       "name": "y",
@@ -42,6 +44,7 @@
       "alias": [
         "w"
       ],
+      "choices": [],
       "default": "overlay_iw",
       "description": "<dd><p>Set expressions for the width and height the overlaid video\non the main video.\n</p>\n<p>Default values are \u2019overlay_iw\u2019 for \u2019w\u2019 and \u2019overlay_ih*w/overlay_iw\u2019 for \u2019h\u2019.\n</p>\n<p>The expressions can contain the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>main_w, W</samp></dt>\n<dt><samp>main_h, H</samp></dt>\n<dd><p>The main input width and height.\n</p>\n</dd>\n<dt><samp>overlay_iw</samp></dt>\n<dt><samp>overlay_ih</samp></dt>\n<dd><p>The overlay input width and height.\n</p>\n</dd>\n<dt><samp>overlay_w, w</samp></dt>\n<dt><samp>overlay_h, h</samp></dt>\n<dd><p>The overlay output width and height.\n</p>\n</dd>\n<dt><samp>overlay_x, x</samp></dt>\n<dt><samp>overlay_y, y</samp></dt>\n<dd><p>Position of the overlay layer inside of main\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "w",
@@ -52,6 +55,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": "overlay_ih*w/overlay_iw",
       "description": "<dd><p>Set expressions for the width and height the overlaid video\non the main video.\n</p>\n<p>Default values are \u2019overlay_iw\u2019 for \u2019w\u2019 and \u2019overlay_ih*w/overlay_iw\u2019 for \u2019h\u2019.\n</p>\n<p>The expressions can contain the following parameters:\n</p>\n<dl compact=\"compact\">\n<dt><samp>main_w, W</samp></dt>\n<dt><samp>main_h, H</samp></dt>\n<dd><p>The main input width and height.\n</p>\n</dd>\n<dt><samp>overlay_iw</samp></dt>\n<dt><samp>overlay_ih</samp></dt>\n<dd><p>The overlay input width and height.\n</p>\n</dd>\n<dt><samp>overlay_w, w</samp></dt>\n<dt><samp>overlay_h, h</samp></dt>\n<dd><p>The overlay output width and height.\n</p>\n</dd>\n<dt><samp>overlay_x, x</samp></dt>\n<dt><samp>overlay_y, y</samp></dt>\n<dd><p>Position of the overlay layer inside of main\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "h",
@@ -62,6 +66,7 @@
       "alias": [
         "alpha"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set transparency of overlaid video. Allowed range is 0.0 to 1.0.\nHigher value means lower transparency.\nDefault value is <code>1.0</code>.\n</p>\n</dd>",
       "name": "alpha",
@@ -72,6 +77,7 @@
       "alias": [
         "eof_action"
       ],
+      "choices": [],
       "default": "EOF_ACTION_REPEAT",
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "eof_action",
@@ -82,6 +88,7 @@
       "alias": [
         "shortest"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "shortest",
@@ -92,6 +99,7 @@
       "alias": [
         "repeatlast"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "repeatlast",

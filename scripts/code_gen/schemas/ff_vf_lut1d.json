@@ -18,6 +18,7 @@
       "alias": [
         "file"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the 1D LUT file name.\n</p>\n<p>Currently supported formats:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>cube</samp>\u2019</dt>\n<dd><p>Iridas\n</p></dd>\n<dt>\u2018<samp>csp</samp>\u2019</dt>\n<dd><p>cineSpace\n</p></dd>\n</dl>\n</dd>",
       "name": "file",
@@ -28,6 +29,7 @@
       "alias": [
         "interp"
       ],
+      "choices": [],
       "default": "INTERPOLATE_1D_LINEAR",
       "description": "<dd><p>Select interpolation mode.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dd><p>Use values from the nearest defined point.\n</p></dd>\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dd><p>Interpolate values using the linear interpolation.\n</p></dd>\n<dt>\u2018<samp>cosine</samp>\u2019</dt>\n<dd><p>Interpolate values using the cosine interpolation.\n</p></dd>\n<dt>\u2018<samp>cubic</samp>\u2019</dt>\n<dd><p>Interpolate values using the cubic interpolation.\n</p></dd>\n<dt>\u2018<samp>spline</samp>\u2019</dt>\n<dd><p>Interpolate values using the spline interpolation.\n</p></dd>\n</dl>\n</dd>",
       "name": "interp",

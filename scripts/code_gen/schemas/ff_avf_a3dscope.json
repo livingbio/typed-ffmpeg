@@ -19,6 +19,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
       "name": "rate",
@@ -30,6 +31,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "hd720",
       "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>hd720</code>.\n</p>\n</dd>",
       "name": "size",
@@ -40,6 +42,7 @@
       "alias": [
         "fov"
       ],
+      "choices": [],
       "default": "90.f",
       "description": "<dd><p>Set the camera field of view. Default is 90 degrees.\nAllowed range is from 40 to 150.\n</p>\n</dd>",
       "name": "fov",
@@ -50,6 +53,7 @@
       "alias": [
         "roll"
       ],
+      "choices": [],
       "default": "0.f",
       "description": "<dd><p>Set the camera roll.\n</p>\n</dd>",
       "name": "roll",
@@ -60,6 +64,7 @@
       "alias": [
         "pitch"
       ],
+      "choices": [],
       "default": "0.f",
       "description": "<dd><p>Set the camera pitch.\n</p>\n</dd>",
       "name": "pitch",
@@ -70,6 +75,7 @@
       "alias": [
         "yaw"
       ],
+      "choices": [],
       "default": "0.f",
       "description": "<dd><p>Set the camera yaw.\n</p>\n</dd>",
       "name": "yaw",
@@ -80,6 +86,7 @@
       "alias": [
         "xzoom"
       ],
+      "choices": [],
       "default": "1.f",
       "description": "<dd><p>Set the camera zoom on X-axis.\n</p>\n</dd>",
       "name": "xzoom",
@@ -90,6 +97,7 @@
       "alias": [
         "yzoom"
       ],
+      "choices": [],
       "default": "1.f",
       "description": "<dd><p>Set the camera zoom on Y-axis.\n</p>\n</dd>",
       "name": "yzoom",
@@ -100,6 +108,7 @@
       "alias": [
         "zzoom"
       ],
+      "choices": [],
       "default": "1.f",
       "description": "<dd><p>Set the camera zoom on Z-axis.\n</p>\n</dd>",
       "name": "zzoom",
@@ -110,6 +119,7 @@
       "alias": [
         "xpos"
       ],
+      "choices": [],
       "default": "0.f",
       "description": "<dd><p>Set the camera position on X-axis.\n</p>\n</dd>",
       "name": "xpos",
@@ -120,6 +130,7 @@
       "alias": [
         "ypos"
       ],
+      "choices": [],
       "default": "0.f",
       "description": "<dd><p>Set the camera position on Y-axis.\n</p>\n</dd>",
       "name": "ypos",
@@ -130,6 +141,7 @@
       "alias": [
         "zpos"
       ],
+      "choices": [],
       "default": "0.f",
       "description": "<dd><p>Set the camera position on Z-axis.\n</p>\n</dd>",
       "name": "zpos",
@@ -140,6 +152,7 @@
       "alias": [
         "length"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set the length of displayed audio waves in number of frames.\n</p></dd>",
       "name": "length",

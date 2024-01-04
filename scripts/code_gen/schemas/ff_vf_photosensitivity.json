@@ -19,6 +19,7 @@
         "frames",
         "f"
       ],
+      "choices": [],
       "default": 30,
       "description": "<dd><p>Set how many frames to use when filtering. Default is 30.\n</p>\n</dd>",
       "name": "frames",
@@ -30,6 +31,7 @@
         "threshold",
         "t"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set detection threshold factor. Default is 1.\nLower is stricter.\n</p>\n</dd>",
       "name": "threshold",
@@ -40,6 +42,7 @@
       "alias": [
         "skip"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set how many pixels to skip when sampling frames. Default is 1.\nAllowed range is from 1 to 1024.\n</p>\n</dd>",
       "name": "skip",
@@ -50,6 +53,7 @@
       "alias": [
         "bypass"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Leave frames unchanged. Default is disabled.\n</p></dd>",
       "name": "bypass",

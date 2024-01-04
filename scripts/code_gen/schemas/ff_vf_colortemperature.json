@@ -18,6 +18,7 @@
       "alias": [
         "temperature"
       ],
+      "choices": [],
       "default": 6500.0,
       "description": "<dd><p>Set the temperature in Kelvin. Allowed range is from 1000 to 40000.\nDefault value is 6500 K.\n</p>\n</dd>",
       "name": "temperature",
@@ -28,6 +29,7 @@
       "alias": [
         "mix"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set mixing with filtered output. Allowed range is from 0 to 1.\nDefault value is 1.\n</p>\n</dd>",
       "name": "mix",
@@ -38,6 +40,7 @@
       "alias": [
         "pl"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the amount of preserving lightness. Allowed range is from 0 to 1.\nDefault value is 0.\n</p></dd>",
       "name": "pl",

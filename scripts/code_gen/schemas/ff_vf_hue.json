@@ -18,6 +18,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Specify the hue angle as a number of degrees. It accepts an expression,\nand defaults to \"0\".\n</p>\n</dd>",
       "name": "h",
@@ -28,6 +29,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": "1",
       "description": "<dd><p>Specify the saturation in the [-10,10] range. It accepts an expression and\ndefaults to \"1\".\n</p>\n</dd>",
       "name": "s",
@@ -38,6 +40,7 @@
       "alias": [
         "H"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Specify the hue angle as a number of radians. It accepts an\nexpression, and defaults to \"0\".\n</p>\n</dd>",
       "name": "H",
@@ -48,6 +51,7 @@
       "alias": [
         "b"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Specify the brightness in the [-10,10] range. It accepts an expression and\ndefaults to \"0\".\n</p></dd>",
       "name": "b",

@@ -26,6 +26,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
       "name": "planes",

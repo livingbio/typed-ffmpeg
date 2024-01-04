@@ -18,6 +18,7 @@
       "alias": [
         "i"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Sets the intensity of effect (default: 2.0). Must be in range between -10.0 to 0\n(unchanged sound) to 10.0 (maximum effect).\nTo inverse filtering use negative value.\n</p>\n</dd>",
       "name": "i",
@@ -28,6 +29,7 @@
       "alias": [
         "c"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Enable clipping. By default is enabled.\n</p></dd>",
       "name": "c",

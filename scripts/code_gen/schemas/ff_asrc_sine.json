@@ -14,6 +14,7 @@
         "frequency",
         "f"
       ],
+      "choices": [],
       "default": 440.0,
       "description": "<dd><p>Set the carrier frequency. Default is 440 Hz.\n</p>\n</dd>",
       "name": "frequency",
@@ -25,6 +26,7 @@
         "beep_factor",
         "b"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Enable a periodic beep every second with frequency <var>beep_factor</var> times\nthe carrier frequency. Default is 0, meaning the beep is disabled.\n</p>\n</dd>",
       "name": "beep_factor",
@@ -36,6 +38,7 @@
         "sample_rate",
         "r"
       ],
+      "choices": [],
       "default": 44100,
       "description": "<dd><p>Specify the sample rate, default is 44100.\n</p>\n</dd>",
       "name": "sample_rate",
@@ -47,6 +50,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Specify the duration of the generated audio stream.\n</p>\n</dd>",
       "name": "duration",
@@ -57,6 +61,7 @@
       "alias": [
         "samples_per_frame"
       ],
+      "choices": [],
       "default": "1024",
       "description": "<dd><p>Set the number of samples per output frame.\n</p>\n<p>The expression can contain the following constants:\n</p>\n<dl compact=\"compact\">\n<dt><samp>n</samp></dt>\n<dd><p>The (sequential) number of the output audio frame, starting from 0.\n</p>\n</dd>\n<dt><samp>pts</samp></dt>\n<dd><p>The PTS (Presentation TimeStamp) of the output audio frame,\nexpressed in <var>TB</var> units.\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>The PTS of the output audio frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TB</samp></dt>\n<dd><p>The timebase of the output audio frames.\n</p></dd>\n</dl>\n<p>Default is <code>1024</code>.\n</p></dd>",
       "name": "samples_per_frame",

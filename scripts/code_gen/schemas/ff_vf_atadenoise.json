@@ -18,6 +18,7 @@
       "alias": [
         "0a"
       ],
+      "choices": [],
       "default": 0.02,
       "description": "<dd><p>Set threshold A for 1st plane. Default is 0.02.\nValid range is 0 to 0.3.\n</p>\n</dd>",
       "name": "0a",
@@ -28,6 +29,7 @@
       "alias": [
         "0b"
       ],
+      "choices": [],
       "default": 0.04,
       "description": "<dd><p>Set threshold B for 1st plane. Default is 0.04.\nValid range is 0 to 5.\n</p>\n</dd>",
       "name": "0b",
@@ -38,6 +40,7 @@
       "alias": [
         "1a"
       ],
+      "choices": [],
       "default": 0.02,
       "description": "<dd><p>Set threshold A for 2nd plane. Default is 0.02.\nValid range is 0 to 0.3.\n</p>\n</dd>",
       "name": "1a",
@@ -48,6 +51,7 @@
       "alias": [
         "1b"
       ],
+      "choices": [],
       "default": 0.04,
       "description": "<dd><p>Set threshold B for 2nd plane. Default is 0.04.\nValid range is 0 to 5.\n</p>\n</dd>",
       "name": "1b",
@@ -58,6 +62,7 @@
       "alias": [
         "2a"
       ],
+      "choices": [],
       "default": 0.02,
       "description": "<dd><p>Set threshold A for 3rd plane. Default is 0.02.\nValid range is 0 to 0.3.\n</p>\n</dd>",
       "name": "2a",
@@ -68,6 +73,7 @@
       "alias": [
         "2b"
       ],
+      "choices": [],
       "default": 0.04,
       "description": "<dd><p>Set threshold B for 3rd plane. Default is 0.04.\nValid range is 0 to 5.\n</p>\n<p>Threshold A is designed to react on abrupt changes in the input signal and\nthreshold B is designed to react on continuous changes in the input signal.\n</p>\n</dd>",
       "name": "2b",
@@ -78,6 +84,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": 9,
       "description": "<dd><p>Set number of frames filter will use for averaging. Default is 9. Must be odd\nnumber in range [5, 129].\n</p>\n</dd>",
       "name": "s",
@@ -88,6 +95,7 @@
       "alias": [
         "p"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set what planes of frame filter will use for averaging. Default is all.\n</p>\n</dd>",
       "name": "p",
@@ -98,6 +106,7 @@
       "alias": [
         "a"
       ],
+      "choices": [],
       "default": "PARALLEL",
       "description": "<dd><p>Set what variant of algorithm filter will use for averaging. Default is <code>p</code> parallel.\nAlternatively can be set to <code>s</code> serial.\n</p>\n<p>Parallel can be faster then serial, while other way around is never true.\nParallel will abort early on first change being greater then thresholds, while serial\nwill continue processing other side of frames if they are equal or below thresholds.\n</p>\n</dd>",
       "name": "a",
@@ -108,6 +117,7 @@
       "alias": [
         "0s"
       ],
+      "choices": [],
       "default": 32767.0,
       "description": "<dd><p>Set sigma for 1st plane, 2nd plane or 3rd plane. Default is 32767.\nValid range is from 0 to 32767.\nThis options controls weight for each pixel in radius defined by size.\nDefault value means every pixel have same weight.\nSetting this option to 0 effectively disables filtering.\n</p></dd>",
       "name": "0s",
@@ -118,6 +128,7 @@
       "alias": [
         "1s"
       ],
+      "choices": [],
       "default": 32767.0,
       "description": "<dd><p>Set sigma for 1st plane, 2nd plane or 3rd plane. Default is 32767.\nValid range is from 0 to 32767.\nThis options controls weight for each pixel in radius defined by size.\nDefault value means every pixel have same weight.\nSetting this option to 0 effectively disables filtering.\n</p></dd>",
       "name": "1s",
@@ -128,6 +139,7 @@
       "alias": [
         "2s"
       ],
+      "choices": [],
       "default": 32767.0,
       "description": "<dd><p>Set sigma for 1st plane, 2nd plane or 3rd plane. Default is 32767.\nValid range is from 0 to 32767.\nThis options controls weight for each pixel in radius defined by size.\nDefault value means every pixel have same weight.\nSetting this option to 0 effectively disables filtering.\n</p></dd>",
       "name": "2s",

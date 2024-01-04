@@ -19,6 +19,7 @@
         "frequency",
         "f"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the filter\u2019s central frequency in Hz.\n</p>\n</dd>",
       "name": "frequency",
@@ -30,6 +31,7 @@
         "width_type",
         "t"
       ],
+      "choices": [],
       "default": "QFACTOR",
       "description": "<dd><p>Set method to specify band-width of filter.\n</p><dl compact=\"compact\">\n<dt><samp>h</samp></dt>\n<dd><p>Hz\n</p></dd>\n<dt><samp>q</samp></dt>\n<dd><p>Q-Factor\n</p></dd>\n<dt><samp>o</samp></dt>\n<dd><p>octave\n</p></dd>\n<dt><samp>s</samp></dt>\n<dd><p>slope\n</p></dd>\n<dt><samp>k</samp></dt>\n<dd><p>kHz\n</p></dd>\n</dl>\n</dd>",
       "name": "width_type",
@@ -41,6 +43,7 @@
         "width",
         "w"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Specify the band-width of a filter in width_type units.\n</p>\n</dd>",
       "name": "width",
@@ -52,6 +55,7 @@
         "gain",
         "g"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the required gain or attenuation in dB.\nBeware of clipping when using a positive gain.\n</p>\n</dd>",
       "name": "gain",
@@ -63,6 +67,7 @@
         "mix",
         "m"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>",
       "name": "mix",
@@ -74,6 +79,7 @@
         "channels",
         "c"
       ],
+      "choices": [],
       "default": "all",
       "description": "<dd><p>Specify which channels to filter, by default all available are filtered.\n</p>\n</dd>",
       "name": "channels",
@@ -85,6 +91,7 @@
         "normalize",
         "n"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Normalize biquad coefficients, by default is disabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>",
       "name": "normalize",
@@ -96,6 +103,7 @@
         "transform",
         "a"
       ],
+      "choices": [],
       "default": "DI",
       "description": "<dd><p>Set transform type of IIR filter.\n</p><dl compact=\"compact\">\n<dt><samp>di</samp></dt>\n<dt><samp>dii</samp></dt>\n<dt><samp>tdi</samp></dt>\n<dt><samp>tdii</samp></dt>\n<dt><samp>latt</samp></dt>\n<dt><samp>svf</samp></dt>\n<dt><samp>zdf</samp></dt>\n</dl>\n</dd>",
       "name": "transform",
@@ -107,6 +115,7 @@
         "precision",
         "r"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set precision of filtering.\n</p><dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Pick automatic sample format depending on surround filters.\n</p></dd>\n<dt><samp>s16</samp></dt>\n<dd><p>Always use signed 16-bit.\n</p></dd>\n<dt><samp>s32</samp></dt>\n<dd><p>Always use signed 32-bit.\n</p></dd>\n<dt><samp>f32</samp></dt>\n<dd><p>Always use float 32-bit.\n</p></dd>\n<dt><samp>f64</samp></dt>\n<dd><p>Always use float 64-bit.\n</p></dd>\n</dl>\n</dd>",
       "name": "precision",
@@ -118,6 +127,7 @@
         "blocksize",
         "b"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "blocksize",

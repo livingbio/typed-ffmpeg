@@ -18,6 +18,7 @@
       "alias": [
         "difford"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>The order of differentiation to be applied on the scene. Must be chosen in the range\n[0,2] and default value is 1.\n</p>\n</dd>",
       "name": "difford",
@@ -28,6 +29,7 @@
       "alias": [
         "minknorm"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>The Minkowski parameter to be used for calculating the Minkowski distance. Must\nbe chosen in the range [0,20] and default value is 1. Set to 0 for getting\nmax value instead of calculating Minkowski distance.\n</p>\n</dd>",
       "name": "minknorm",
@@ -38,6 +40,7 @@
       "alias": [
         "sigma"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>The standard deviation of Gaussian blur to be applied on the scene. Must be\nchosen in the range [0,1024.0] and default value = 1. floor( <var>sigma</var> * break_off_sigma(3) )\ncan\u2019t be equal to 0 if <var>difford</var> is greater than 0.\n</p></dd>",
       "name": "sigma",

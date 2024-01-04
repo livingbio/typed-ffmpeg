@@ -19,6 +19,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n</dd>",
       "name": "rate",
@@ -30,6 +31,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "800x400",
       "description": "<dd><p>Set the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>800x400</code>.\n</p>\n</dd>",
       "name": "size",
@@ -40,6 +42,7 @@
       "alias": [
         "rc"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "rc",
@@ -50,6 +53,7 @@
       "alias": [
         "gc"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "gc",
@@ -60,6 +64,7 @@
       "alias": [
         "bc"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
       "name": "bc",
@@ -70,6 +75,7 @@
       "alias": [
         "mpc"
       ],
+      "choices": [],
       "default": "none",
       "description": "<dd><p>Set color which will be used for drawing median phase. If color is\n<code>none</code> which is default, no median phase value will be drawn.\n</p>\n</dd>",
       "name": "mpc",
@@ -80,6 +86,7 @@
       "alias": [
         "video"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Enable video output. Default is enabled.\n</p></dd>",
       "name": "video",
@@ -90,6 +97,7 @@
       "alias": [
         "phasing"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "phasing",
@@ -101,6 +109,7 @@
         "tolerance",
         "t"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "tolerance",
@@ -112,6 +121,7 @@
         "angle",
         "a"
       ],
+      "choices": [],
       "default": 170.0,
       "description": null,
       "name": "angle",
@@ -123,6 +133,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": 2000000,
       "description": null,
       "name": "duration",

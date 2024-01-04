@@ -14,6 +14,7 @@
         "color",
         "c"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>The color to use. Either a name, or a hexadecimal value.\nThe default value is <code>black</code>.\n</p>\n</dd>",
       "name": "color",
@@ -25,6 +26,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "1920x1080",
       "description": "<dd><p>The size of the output frame. Default value is <code>1920x1080</code>.\n</p>\n</dd>",
       "name": "size",
@@ -36,6 +38,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "60",
       "description": "<dd><p>The framerate to output at. Default value is <code>60</code> frames per second.\n</p>\n</dd>",
       "name": "rate",
@@ -47,6 +50,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>The video duration. Default value is <code>-0.000001</code>.\n</p>\n</dd>",
       "name": "duration",
@@ -57,6 +61,7 @@
       "alias": [
         "sar"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>The video signal aspect ratio. Default value is <code>1/1</code>.\n</p>\n</dd>",
       "name": "sar",
@@ -67,6 +72,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>The pixel format of the output Vulkan frames. Default value is <code>yuv444p</code>.\n</p>\n</dd>",
       "name": "format",
@@ -77,6 +83,7 @@
       "alias": [
         "out_range"
       ],
+      "choices": [],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": "<dd><p>Set the output YCbCr sample range.\n</p>\n<p>This allows the autodetected value to be overridden as well as allows forcing\na specific value used for the output and encoder. If not specified, the\nrange depends on the pixel format. Possible values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto/unknown</samp>\u2019</dt>\n<dd><p>Choose automatically.\n</p>\n</dd>\n<dt>\u2018<samp>jpeg/full/pc</samp>\u2019</dt>\n<dd><p>Set full range (0-255 in case of 8-bit luma).\n</p>\n</dd>\n<dt>\u2018<samp>mpeg/limited/tv</samp>\u2019</dt>\n<dd><p>Set \"MPEG\" range (16-235 in case of 8-bit luma).\n</p></dd>\n</dl>\n</dd>",
       "name": "out_range",

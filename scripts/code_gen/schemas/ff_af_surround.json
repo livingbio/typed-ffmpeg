@@ -18,6 +18,7 @@
       "alias": [
         "chl_out"
       ],
+      "choices": [],
       "default": "5.1",
       "description": "<dd><p>Set output channel layout. By default, this is <var>5.1</var>.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p>\n</dd>",
       "name": "chl_out",
@@ -28,6 +29,7 @@
       "alias": [
         "chl_in"
       ],
+      "choices": [],
       "default": "stereo",
       "description": "<dd><p>Set input channel layout. By default, this is <var>stereo</var>.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p>\n</dd>",
       "name": "chl_in",
@@ -38,6 +40,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set input volume level. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "level_in",
@@ -48,6 +51,7 @@
       "alias": [
         "level_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set output volume level. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "level_out",
@@ -58,6 +62,7 @@
       "alias": [
         "lfe"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Enable LFE channel output if output channel layout has it. By default, this is enabled.\n</p>\n</dd>",
       "name": "lfe",
@@ -68,6 +73,7 @@
       "alias": [
         "lfe_low"
       ],
+      "choices": [],
       "default": 128,
       "description": "<dd><p>Set LFE low cut off frequency. By default, this is <var>128</var> Hz.\n</p>\n</dd>",
       "name": "lfe_low",
@@ -78,6 +84,7 @@
       "alias": [
         "lfe_high"
       ],
+      "choices": [],
       "default": 256,
       "description": "<dd><p>Set LFE high cut off frequency. By default, this is <var>256</var> Hz.\n</p>\n</dd>",
       "name": "lfe_high",
@@ -88,6 +95,7 @@
       "alias": [
         "lfe_mode"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set LFE mode, can be <var>add</var> or <var>sub</var>. Default is <var>add</var>.\nIn <var>add</var> mode, LFE channel is created from input audio and added to output.\nIn <var>sub</var> mode, LFE channel is created from input audio and added to output but\nalso all non-LFE output channels are subtracted with output LFE channel.\n</p>\n</dd>",
       "name": "lfe_mode",
@@ -98,6 +106,7 @@
       "alias": [
         "smooth"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set temporal smoothness strength, used to gradually change factors when transforming\nstereo sound in time. Allowed range is from <var>0.0</var> to <var>1.0</var>.\nUseful to improve output quality with <var>focus</var> option values greater than <var>0.0</var>.\nDefault is <var>0.0</var>. Only values inside this range and without edges are effective.\n</p>\n</dd>",
       "name": "smooth",
@@ -108,6 +117,7 @@
       "alias": [
         "angle"
       ],
+      "choices": [],
       "default": 90.0,
       "description": "<dd><p>Set angle of stereo surround transform, Allowed range is from <var>0</var> to <var>360</var>.\nDefault is <var>90</var>.\n</p>\n</dd>",
       "name": "angle",
@@ -118,6 +128,7 @@
       "alias": [
         "focus"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set focus of stereo surround transform, Allowed range is from <var>-1</var> to <var>1</var>.\nDefault is <var>0</var>.\n</p>\n</dd>",
       "name": "focus",
@@ -128,6 +139,7 @@
       "alias": [
         "fc_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set front center input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "fc_in",
@@ -138,6 +150,7 @@
       "alias": [
         "fc_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set front center output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "fc_out",
@@ -148,6 +161,7 @@
       "alias": [
         "fl_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set front left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "fl_in",
@@ -158,6 +172,7 @@
       "alias": [
         "fl_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set front left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "fl_out",
@@ -168,6 +183,7 @@
       "alias": [
         "fr_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set front right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "fr_in",
@@ -178,6 +194,7 @@
       "alias": [
         "fr_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set front right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "fr_out",
@@ -188,6 +205,7 @@
       "alias": [
         "sl_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set side left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "sl_in",
@@ -198,6 +216,7 @@
       "alias": [
         "sl_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set side left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "sl_out",
@@ -208,6 +227,7 @@
       "alias": [
         "sr_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set side right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "sr_in",
@@ -218,6 +238,7 @@
       "alias": [
         "sr_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set side right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "sr_out",
@@ -228,6 +249,7 @@
       "alias": [
         "bl_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set back left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "bl_in",
@@ -238,6 +260,7 @@
       "alias": [
         "bl_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set back left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "bl_out",
@@ -248,6 +271,7 @@
       "alias": [
         "br_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set back right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "br_in",
@@ -258,6 +282,7 @@
       "alias": [
         "br_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set back right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "br_out",
@@ -268,6 +293,7 @@
       "alias": [
         "bc_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set back center input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "bc_in",
@@ -278,6 +304,7 @@
       "alias": [
         "bc_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set back center output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "bc_out",
@@ -288,6 +315,7 @@
       "alias": [
         "lfe_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set LFE input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "lfe_in",
@@ -298,6 +326,7 @@
       "alias": [
         "lfe_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set LFE output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
       "name": "lfe_out",
@@ -308,6 +337,7 @@
       "alias": [
         "allx"
       ],
+      "choices": [],
       "default": -1.0,
       "description": "<dd><p>Set spread usage of stereo image across X axis for all channels.\nAllowed range is from <var>-1</var> to <var>15</var>.\nBy default this value is negative <var>-1</var>, and thus unused.\n</p>\n</dd>",
       "name": "allx",
@@ -318,6 +348,7 @@
       "alias": [
         "ally"
       ],
+      "choices": [],
       "default": -1.0,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for all channels.\nAllowed range is from <var>-1</var> to <var>15</var>.\nBy default this value is negative <var>-1</var>, and thus unused.\n</p>\n</dd>",
       "name": "ally",
@@ -328,6 +359,7 @@
       "alias": [
         "fcx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "fcx",
@@ -338,6 +370,7 @@
       "alias": [
         "flx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "flx",
@@ -348,6 +381,7 @@
       "alias": [
         "frx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "frx",
@@ -358,6 +392,7 @@
       "alias": [
         "blx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "blx",
@@ -368,6 +403,7 @@
       "alias": [
         "brx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "brx",
@@ -378,6 +414,7 @@
       "alias": [
         "slx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "slx",
@@ -388,6 +425,7 @@
       "alias": [
         "srx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "srx",
@@ -398,6 +436,7 @@
       "alias": [
         "bcx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "bcx",
@@ -408,6 +447,7 @@
       "alias": [
         "fcy"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "fcy",
@@ -418,6 +458,7 @@
       "alias": [
         "fly"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "fly",
@@ -428,6 +469,7 @@
       "alias": [
         "fry"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "fry",
@@ -438,6 +480,7 @@
       "alias": [
         "bly"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "bly",
@@ -448,6 +491,7 @@
       "alias": [
         "bry"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "bry",
@@ -458,6 +502,7 @@
       "alias": [
         "sly"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "sly",
@@ -468,6 +513,7 @@
       "alias": [
         "sry"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "sry",
@@ -478,6 +524,7 @@
       "alias": [
         "bcy"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
       "name": "bcy",
@@ -488,6 +535,7 @@
       "alias": [
         "win_size"
       ],
+      "choices": [],
       "default": 4096,
       "description": "<dd><p>Set window size. Allowed range is from <var>1024</var> to <var>65536</var>. Default size is <var>4096</var>.\n</p>\n</dd>",
       "name": "win_size",
@@ -498,6 +546,7 @@
       "alias": [
         "win_func"
       ],
+      "choices": [],
       "default": "WFUNC_HANNING",
       "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
       "name": "win_func",
@@ -508,6 +557,7 @@
       "alias": [
         "overlap"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set window overlap. If set to 1, the recommended overlap for selected\nwindow function will be picked. Default is <code>0.5</code>.\n</p></dd>",
       "name": "overlap",

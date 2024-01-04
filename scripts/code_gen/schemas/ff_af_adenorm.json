@@ -18,6 +18,7 @@
       "alias": [
         "level"
       ],
+      "choices": [],
       "default": -351.0,
       "description": "<dd><p>Set level of added noise in dB. Default is <code>-351</code>.\nAllowed range is from -451 to -90.\n</p>\n</dd>",
       "name": "level",
@@ -28,6 +29,7 @@
       "alias": [
         "type"
       ],
+      "choices": [],
       "default": "DC_TYPE",
       "description": "<dd><p>Set type of added noise.\n</p>\n<dl compact=\"compact\">\n<dt><samp>dc</samp></dt>\n<dd><p>Add DC signal.\n</p></dd>\n<dt><samp>ac</samp></dt>\n<dd><p>Add AC signal.\n</p></dd>\n<dt><samp>square</samp></dt>\n<dd><p>Add square signal.\n</p></dd>\n<dt><samp>pulse</samp></dt>\n<dd><p>Add pulse signal.\n</p></dd>\n</dl>\n<p>Default is <code>dc</code>.\n</p></dd>",
       "name": "type",

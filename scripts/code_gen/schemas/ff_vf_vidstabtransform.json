@@ -18,6 +18,7 @@
       "alias": [
         "input"
       ],
+      "choices": [],
       "default": "transforms.trf",
       "description": null,
       "name": "input",
@@ -28,6 +29,7 @@
       "alias": [
         "smoothing"
       ],
+      "choices": [],
       "default": 15,
       "description": null,
       "name": "smoothing",
@@ -38,6 +40,7 @@
       "alias": [
         "optalgo"
       ],
+      "choices": [],
       "default": "VSOptimalL1",
       "description": null,
       "name": "optalgo",
@@ -48,6 +51,7 @@
       "alias": [
         "maxshift"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "maxshift",
@@ -58,6 +62,7 @@
       "alias": [
         "maxangle"
       ],
+      "choices": [],
       "default": -1.0,
       "description": null,
       "name": "maxangle",
@@ -68,6 +73,7 @@
       "alias": [
         "crop"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "crop",
@@ -78,6 +84,7 @@
       "alias": [
         "invert"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "invert",
@@ -88,6 +95,7 @@
       "alias": [
         "relative"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "relative",
@@ -98,6 +106,7 @@
       "alias": [
         "zoom"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "zoom",
@@ -108,6 +117,7 @@
       "alias": [
         "optzoom"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "optzoom",
@@ -118,6 +128,7 @@
       "alias": [
         "zoomspeed"
       ],
+      "choices": [],
       "default": 0.25,
       "description": null,
       "name": "zoomspeed",
@@ -128,6 +139,7 @@
       "alias": [
         "interpol"
       ],
+      "choices": [],
       "default": 2,
       "description": null,
       "name": "interpol",
@@ -138,6 +150,7 @@
       "alias": [
         "tripod"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "tripod",
@@ -148,6 +161,7 @@
       "alias": [
         "debug"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "debug",
