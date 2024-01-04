@@ -1,5 +1,5 @@
 {
-  "description": "11.33 colorcorrect\nAdjust color white balance selectively for blacks and whites.\nThis filter operates in YUV colorspace.\n\nThe filter accepts the following options:",
+  "description": "### 11.33 colorcorrect\n\nAdjust color white balance selectively for blacks and whites. This filter\noperates in YUV colorspace.\n\nThe filter accepts the following options:\n\n**rl**\n\n    Set the red shadow spot. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n**bl**\n\n    Set the blue shadow spot. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n**rh**\n\n    Set the red highlight spot. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n**bh**\n\n    Set the blue highlight spot. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n**saturation**\n\n    Set the amount of saturation. Allowed range is from -3.0 to 3.0. Default value is 1. \n\n**analyze**\n\n    If set to anything other than manual it will analyze every frame and use derived parameters for filtering output frame. Possible values are: \u2018manual\u2019 \u2018average\u2019 \u2018minmax\u2019 \u2018median\u2019 Default value is manual. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.28 chromashift\nShift chroma pixels horizontally and/or vertically.\n\nThe filter accepts the following options:",
+  "description": "### 11.28 chromashift\n\nShift chroma pixels horizontally and/or vertically.\n\nThe filter accepts the following options:\n\n**cbh**\n\n    Set amount to shift chroma-blue horizontally. \n\n**cbv**\n\n    Set amount to shift chroma-blue vertically. \n\n**crh**\n\n    Set amount to shift chroma-red horizontally. \n\n**crv**\n\n    Set amount to shift chroma-red vertically. \n\n**edge**\n\n    Set edge mode, can be smear, default, or warp. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

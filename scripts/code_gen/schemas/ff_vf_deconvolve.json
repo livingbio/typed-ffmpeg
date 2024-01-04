@@ -1,5 +1,5 @@
 {
-  "description": "11.60 deconvolve\nApply 2D deconvolution of video stream in frequency domain using second stream\nas impulse.\n\nThe filter accepts the following options:\n\n\nThe deconvolve filter also supports the framesync options.",
+  "description": "### 11.60 deconvolve\n\nApply 2D deconvolution of video stream in frequency domain using second stream\nas impulse.\n\nThe filter accepts the following options:\n\n**planes**\n\n    Set which planes to process. \n\n**impulse**\n\n    Set which impulse video frames will be processed, can be first or all. Default is all. \n\n**noise**\n\n    Set noise when doing divisions. Default is 0.0000001. Useful when width and height are not same and not power of 2 or if stream prior to convolving had noise. \n\nThe `deconvolve` filter also supports the framesync options.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

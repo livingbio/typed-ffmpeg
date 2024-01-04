@@ -1,5 +1,5 @@
 {
-  "description": "11.114 greyedge\nA color constancy variation filter which estimates scene illumination via grey edge algorithm\nand corrects the scene colors accordingly.\n\nSee: https://staff.science.uva.nl/th.gevers/pub/GeversTIP07.pdf\n\nThe filter accepts the following options:",
+  "description": "### 11.114 greyedge\n\nA color constancy variation filter which estimates scene illumination via grey\nedge algorithm and corrects the scene colors accordingly.\n\nSee: <https://staff.science.uva.nl/th.gevers/pub/GeversTIP07.pdf>\n\nThe filter accepts the following options:\n\n**difford**\n\n    The order of differentiation to be applied on the scene. Must be chosen in the range [0,2] and default value is 1. \n\n**minknorm**\n\n    The Minkowski parameter to be used for calculating the Minkowski distance. Must be chosen in the range [0,20] and default value is 1. Set to 0 for getting max value instead of calculating Minkowski distance. \n\n**sigma**\n\n    The standard deviation of Gaussian blur to be applied on the scene. Must be chosen in the range [0,1024.0] and default value = 1. floor( sigma * break_off_sigma(3) ) can\u2019t be equal to 0 if difford is greater than 0. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

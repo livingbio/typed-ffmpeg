@@ -1,5 +1,5 @@
 {
-  "description": "11.181 ocv\nApply a video transform using libopencv.\n\nTo enable this filter, install the libopencv library and headers and\nconfigure FFmpeg with --enable-libopencv.\n\nIt accepts the following parameters:\n\n\nRefer to the official libopencv documentation for more precise\ninformation:\nhttp://docs.opencv.org/master/modules/imgproc/doc/filtering.html\n\nSeveral libopencv filters are supported; see the following subsections.",
+  "description": "### 11.181 ocv\n\nApply a video transform using libopencv.\n\nTo enable this filter, install the libopencv library and headers and configure\nFFmpeg with `--enable-libopencv`.\n\nIt accepts the following parameters:\n\n**filter_name**\n\n    The name of the libopencv filter to apply. \n\n**filter_params**\n\n    The parameters to pass to the libopencv filter. If not specified, the default values are assumed. \n\nRefer to the official libopencv documentation for more precise information:\n<http://docs.opencv.org/master/modules/imgproc/doc/filtering.html>\n\nSeveral libopencv filters are supported; see the following subsections.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

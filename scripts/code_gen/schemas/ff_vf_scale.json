@@ -1,5 +1,5 @@
 {
-  "description": "11.215 scale\nScale (resize) the input video, using the libswscale library.\n\nThe scale filter forces the output display aspect ratio to be the same\nof the input, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by\nthe next filter, the scale filter will convert the input to the\nrequested format.",
+  "description": "### 11.215 scale\n\nScale (resize) the input video, using the libswscale library.\n\nThe scale filter forces the output display aspect ratio to be the same of the\ninput, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by the next\nfilter, the scale filter will convert the input to the requested format.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

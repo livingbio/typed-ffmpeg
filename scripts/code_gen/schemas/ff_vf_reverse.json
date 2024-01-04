@@ -1,5 +1,5 @@
 {
-  "description": "11.210 reverse\nReverse a video clip.\n\nWarning: This filter requires memory to buffer the entire clip, so trimming\nis suggested.",
+  "description": "### 11.210 reverse\n\nReverse a video clip.\n\nWarning: This filter requires memory to buffer the entire clip, so trimming is\nsuggested.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

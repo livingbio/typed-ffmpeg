@@ -1,5 +1,5 @@
 {
-  "description": "9.8 anoisesrc\nGenerate a noise audio signal.\n\nThe filter accepts the following options:",
+  "description": "### 9.8 anoisesrc\n\nGenerate a noise audio signal.\n\nThe filter accepts the following options:\n\n**sample_rate, r**\n\n    Specify the sample rate. Default value is 48000 Hz. \n\n**amplitude, a**\n\n    Specify the amplitude (0.0 - 1.0) of the generated audio stream. Default value is 1.0. \n\n**duration, d**\n\n    Specify the duration of the generated audio stream. Not specifying this option results in noise with an infinite length. \n\n**color, colour, c**\n\n    Specify the color of noise. Available noise colors are white, pink, brown, blue, violet and velvet. Default color is white. \n\n**seed, s**\n\n    Specify a value used to seed the PRNG. \n\n**nb_samples, n**\n\n    Set the number of samples per each output frame, default is 1024. \n\n**density**\n\n    Set the density (0.0 - 1.0) for the velvet noise generator, default is 0.05. \n\n",
   "filter_type": "asrc",
   "formula_input_typings": null,
   "formula_output_typings": null,

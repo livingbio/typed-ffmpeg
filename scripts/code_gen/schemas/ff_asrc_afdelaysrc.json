@@ -1,5 +1,5 @@
 {
-  "description": "9.3 afdelaysrc\nGenerate a fractional delay FIR coefficients.\n\nThe resulting stream can be used with afir filter for filtering the audio signal.\n\nThe filter accepts the following options:",
+  "description": "### 9.3 afdelaysrc\n\nGenerate a fractional delay FIR coefficients.\n\nThe resulting stream can be used with afir filter for filtering the audio\nsignal.\n\nThe filter accepts the following options:\n\n**delay, d**\n\n    Set the fractional delay. Default is 0. \n\n**sample_rate, r**\n\n    Set the sample rate, default is 44100. \n\n**nb_samples, n**\n\n    Set the number of samples per each frame. Default is 1024. \n\n**taps, t**\n\n    Set the number of filter coefficients in output audio stream. Default value is 0. \n\n**channel_layout, c**\n\n    Specifies the channel layout, and can be a string representing a channel layout. The default value of channel_layout is \"stereo\". \n\n",
   "filter_type": "asrc",
   "formula_input_typings": null,
   "formula_output_typings": null,

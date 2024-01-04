@@ -1,5 +1,5 @@
 {
-  "description": "11.90 fftdnoiz\nDenoise frames using 3D FFT (frequency domain filtering).\n\nThe filter accepts the following options:",
+  "description": "### 11.90 fftdnoiz\n\nDenoise frames using 3D FFT (frequency domain filtering).\n\nThe filter accepts the following options:\n\n**sigma**\n\n    Set the noise sigma constant. This sets denoising strength. Default value is 1. Allowed range is from 0 to 30. Using very high sigma with low overlap may give blocking artifacts. \n\n**amount**\n\n    Set amount of denoising. By default all detected noise is reduced. Default value is 1. Allowed range is from 0 to 1. \n\n**block**\n\n    Set size of block in pixels, Default is 32, can be 8 to 256. \n\n**overlap**\n\n    Set block overlap. Default is 0.5. Allowed range is from 0.2 to 0.8. \n\n**method**\n\n    Set denoising method. Default is wiener, can also be hard. \n\n**prev**\n\n    Set number of previous frames to use for denoising. By default is set to 0. \n\n**next**\n\n    Set number of next frames to to use for denoising. By default is set to 0. \n\n**planes**\n\n    Set planes which will be filtered, by default are all available filtered except alpha. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "8.15 adrc\nApply spectral dynamic range controller filter to input audio stream.\n\nA description of the accepted options follows.",
+  "description": "### 8.15 adrc\n\nApply spectral dynamic range controller filter to input audio stream.\n\nA description of the accepted options follows.\n\n**transfer**\n\n    Set the transfer expression. The expression can contain the following constants: ch current channel number sn current sample number nb_channels number of channels t timestamp expressed in seconds sr sample rate p current frequency power value, in dB f current frequency in Hz Default value is p. \n\n**attack**\n\n    Set the attack in milliseconds. Default is 50 milliseconds. Allowed range is from 1 to 1000 milliseconds. \n\n**release**\n\n    Set the release in milliseconds. Default is 100 milliseconds. Allowed range is from 5 to 2000 milliseconds. \n\n**channels**\n\n    Set which channels to filter, by default all channels in audio stream are filtered. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

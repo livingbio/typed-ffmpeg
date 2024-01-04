@@ -1,5 +1,5 @@
 {
-  "description": "11.42 colorspace_cuda\nCUDA accelerated implementation of the colorspace filter.\n\nIt is by no means feature complete compared to the software colorspace filter,\nand at the current time only supports color range conversion between jpeg/full\nand mpeg/limited range.\n\nThe filter accepts the following options:",
+  "description": "### 11.42 colorspace_cuda\n\nCUDA accelerated implementation of the colorspace filter.\n\nIt is by no means feature complete compared to the software colorspace filter,\nand at the current time only supports color range conversion between jpeg/full\nand mpeg/limited range.\n\nThe filter accepts the following options:\n\n**range**\n\n    Specify output color range. The accepted values are: \u2018tv\u2019 TV (restricted) range \u2018mpeg\u2019 MPEG (restricted) range \u2018pc\u2019 PC (full) range \u2018jpeg\u2019 JPEG (full) range \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

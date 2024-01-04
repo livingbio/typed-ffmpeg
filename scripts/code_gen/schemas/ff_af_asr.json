@@ -1,5 +1,5 @@
 {
-  "description": "8.58 asr\nAutomatic Speech Recognition\n\nThis filter uses PocketSphinx for speech recognition. To enable\ncompilation of this filter, you need to configure FFmpeg with\n--enable-pocketsphinx.\n\nIt accepts the following options:\n\n\nThe filter exports recognized speech as the frame metadata lavfi.asr.text.",
+  "description": "### 8.58 asr\n\nAutomatic Speech Recognition\n\nThis filter uses PocketSphinx for speech recognition. To enable compilation of\nthis filter, you need to configure FFmpeg with `--enable-pocketsphinx`.\n\nIt accepts the following options:\n\n**rate**\n\n    Set sampling rate of input audio. Defaults is 16000. This need to match speech models, otherwise one will get poor results. \n\n**hmm**\n\n    Set dictionary containing acoustic model files. \n\n**dict**\n\n    Set pronunciation dictionary. \n\n**lm**\n\n    Set language model file. \n\n**lmctl**\n\n    Set language model set. \n\n**lmname**\n\n    Set which language model to use. \n\n**logfn**\n\n    Set output for log messages. \n\nThe filter exports recognized speech as the frame metadata `lavfi.asr.text`.\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

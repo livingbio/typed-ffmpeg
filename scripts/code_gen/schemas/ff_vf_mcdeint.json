@@ -1,5 +1,5 @@
 {
-  "description": "11.161 mcdeint\nApply motion-compensation deinterlacing.\n\nIt needs one field per frame as input and must thus be used together\nwith yadif=1/3 or equivalent.\n\nThis filter accepts the following options:",
+  "description": "### 11.161 mcdeint\n\nApply motion-compensation deinterlacing.\n\nIt needs one field per frame as input and must thus be used together with\nyadif=1/3 or equivalent.\n\nThis filter accepts the following options:\n\n**mode**\n\n    Set the deinterlacing mode. It accepts one of the following values: \u2018fast\u2019 \u2018medium\u2019 \u2018slow\u2019 use iterative motion estimation \u2018extra_slow\u2019 like \u2018slow\u2019, but use multiple reference frames. Default value is \u2018fast\u2019. \n\n**parity**\n\n    Set the picture field parity assumed for the input video. It must be one of the following values: \u20180, tff\u2019 assume top field first \u20181, bff\u2019 assume bottom field first Default value is \u2018bff\u2019. \n\n**qp**\n\n    Set per-block quantization parameter (QP) used by the internal encoder. Higher values should result in a smoother motion vector field but less optimal individual vectors. Default value is 1. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

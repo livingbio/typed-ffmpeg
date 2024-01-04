@@ -1,5 +1,5 @@
 {
-  "description": "15.3 xstack_qsv\nStack video inputs into custom layout.\n\nThis is the QSV variant of the xstack filter.\n\nIt accepts the following options:",
+  "description": "### 15.3 xstack_qsv\n\nStack video inputs into custom layout.\n\nThis is the QSV variant of the xstack filter.\n\nIt accepts the following options:\n\n**inputs**\n\n    See xstack. \n\n**shortest**\n\n    See xstack. \n\n**layout**\n\n    See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_qsv=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080 \n\n**grid**\n\n    See xstack. \n\n**grid_tile_size**\n\n    Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. \n\n**fill**\n\n    See xstack. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

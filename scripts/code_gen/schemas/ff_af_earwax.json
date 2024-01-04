@@ -1,5 +1,5 @@
 {
-  "description": "8.86 earwax\nMake audio easier to listen to on headphones.\n\nThis filter adds \u2018cues\u2019 to 44.1kHz stereo (i.e. audio CD format) audio\nso that when listened to on headphones the stereo image is moved from\ninside your head (standard for headphones) to outside and in front of\nthe listener (standard for speakers).\n\nPorted from SoX.",
+  "description": "### 8.86 earwax\n\nMake audio easier to listen to on headphones.\n\nThis filter adds \u2018cues\u2019 to 44.1kHz stereo (i.e. audio CD format) audio so that\nwhen listened to on headphones the stereo image is moved from inside your head\n(standard for headphones) to outside and in front of the listener (standard\nfor speakers).\n\nPorted from SoX.\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.251 telecine\nApply telecine process to the video.\n\nThis filter accepts the following options:\n\n\n\nSome typical patterns:\n\nNTSC output (30i):\n27.5p: 32222\n24p: 23 (classic)\n24p: 2332 (preferred)\n20p: 33\n18p: 334\n16p: 3444\n\nPAL output (25i):\n27.5p: 12222\n24p: 222222222223 (\"Euro pulldown\")\n16.67p: 33\n16p: 33333334",
+  "description": "### 11.251 telecine\n\nApply telecine process to the video.\n\nThis filter accepts the following options:\n\n**first_field**\n\n     \u2018top, t\u2019 top field first \u2018bottom, b\u2019 bottom field first The default value is top. \n\n**pattern**\n\n    A string of numbers representing the pulldown pattern you wish to apply. The default value is 23. \n    \n    \n    Some typical patterns:\n    \n    NTSC output (30i):\n    27.5p: 32222\n    24p: 23 (classic)\n    24p: 2332 (preferred)\n    20p: 33\n    18p: 334\n    16p: 3444\n    \n    PAL output (25i):\n    27.5p: 12222\n    24p: 222222222223 (\"Euro pulldown\")\n    16.67p: 33\n    16p: 33333334\n    \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

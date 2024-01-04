@@ -1,5 +1,5 @@
 {
-  "description": "11.191 photosensitivity\nReduce various flashes in video, so to help users with epilepsy.\n\nIt accepts the following options:",
+  "description": "### 11.191 photosensitivity\n\nReduce various flashes in video, so to help users with epilepsy.\n\nIt accepts the following options:\n\n**frames, f**\n\n    Set how many frames to use when filtering. Default is 30. \n\n**threshold, t**\n\n    Set detection threshold factor. Default is 1. Lower is stricter. \n\n**skip**\n\n    Set how many pixels to skip when sampling frames. Default is 1. Allowed range is from 1 to 1024. \n\n**bypass**\n\n    Leave frames unchanged. Default is disabled. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

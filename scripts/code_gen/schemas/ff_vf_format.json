@@ -1,5 +1,5 @@
 {
-  "description": "11.100 format\nConvert the input video to one of the specified pixel formats.\nLibavfilter will try to pick one that is suitable as input to\nthe next filter.\n\nIt accepts the following parameters:",
+  "description": "### 11.100 format\n\nConvert the input video to one of the specified pixel formats. Libavfilter\nwill try to pick one that is suitable as input to the next filter.\n\nIt accepts the following parameters:\n\n**pix_fmts**\n\n    A \u2019|\u2019-separated list of pixel format names, such as \"pix_fmts=yuv420p|monow|rgb24\". \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

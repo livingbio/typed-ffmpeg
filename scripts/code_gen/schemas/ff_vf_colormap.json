@@ -1,5 +1,5 @@
 {
-  "description": "11.39 colormap\nApply custom color maps to video stream.\n\nThis filter needs three input video streams.\nFirst stream is video stream that is going to be filtered out.\nSecond and third video stream specify color patches for source\ncolor to target color mapping.\n\nThe filter accepts the following options:",
+  "description": "### 11.39 colormap\n\nApply custom color maps to video stream.\n\nThis filter needs three input video streams. First stream is video stream that\nis going to be filtered out. Second and third video stream specify color\npatches for source color to target color mapping.\n\nThe filter accepts the following options:\n\n**patch_size**\n\n    Set the source and target video stream patch size in pixels. \n\n**nb_patches**\n\n    Set the max number of used patches from source and target video stream. Default value is number of patches available in additional video streams. Max allowed number of patches is 64. \n\n**type**\n\n    Set the adjustments used for target colors. Can be relative or absolute. Defaults is absolute. \n\n**kernel**\n\n    Set the kernel used to measure color differences between mapped colors. The accepted values are: \u2018euclidean\u2019 \u2018weuclidean\u2019 Default is euclidean. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

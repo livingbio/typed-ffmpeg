@@ -1,5 +1,5 @@
 {
-  "description": "9.11 sine\nGenerate an audio signal made of a sine wave with amplitude 1/8.\n\nThe audio signal is bit-exact.\n\nThe filter accepts the following options:",
+  "description": "### 9.11 sine\n\nGenerate an audio signal made of a sine wave with amplitude 1/8.\n\nThe audio signal is bit-exact.\n\nThe filter accepts the following options:\n\n**frequency, f**\n\n    Set the carrier frequency. Default is 440 Hz. \n\n**beep_factor, b**\n\n    Enable a periodic beep every second with frequency beep_factor times the carrier frequency. Default is 0, meaning the beep is disabled. \n\n**sample_rate, r**\n\n    Specify the sample rate, default is 44100. \n\n**duration, d**\n\n    Specify the duration of the generated audio stream. \n\n**samples_per_frame**\n\n    Set the number of samples per output frame. The expression can contain the following constants: n The (sequential) number of the output audio frame, starting from 0. pts The PTS (Presentation TimeStamp) of the output audio frame, expressed in TB units. t The PTS of the output audio frame, expressed in seconds. TB The timebase of the output audio frames. Default is 1024. \n\n",
   "filter_type": "asrc",
   "formula_input_typings": null,
   "formula_output_typings": null,

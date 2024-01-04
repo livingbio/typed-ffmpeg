@@ -1,5 +1,5 @@
 {
-  "description": "11.172 multiply\nMultiply first video stream pixels values with second video stream pixels values.\n\nThe filter accepts the following options:",
+  "description": "### 11.172 multiply\n\nMultiply first video stream pixels values with second video stream pixels\nvalues.\n\nThe filter accepts the following options:\n\n**scale**\n\n    Set the scale applied to second video stream. By default is 1. Allowed range is from 0 to 9. \n\n**offset**\n\n    Set the offset applied to second video stream. By default is 0.5. Allowed range is from -1 to 1. \n\n**planes**\n\n    Specify planes from input video stream that will be processed. By default all planes are processed. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

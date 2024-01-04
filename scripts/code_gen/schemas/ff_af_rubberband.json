@@ -1,5 +1,5 @@
 {
-  "description": "8.104 rubberband\nApply time-stretching and pitch-shifting with librubberband.\n\nTo enable compilation of this filter, you need to configure FFmpeg with\n--enable-librubberband.\n\nThe filter accepts the following options:",
+  "description": "### 8.104 rubberband\n\nApply time-stretching and pitch-shifting with librubberband.\n\nTo enable compilation of this filter, you need to configure FFmpeg with\n`--enable-librubberband`.\n\nThe filter accepts the following options:\n\n**tempo**\n\n    Set tempo scale factor. \n\n**pitch**\n\n    Set pitch scale factor. \n\n**transients**\n\n    Set transients detector. Possible values are: crisp mixed smooth \n\n**detector**\n\n    Set detector. Possible values are: compound percussive soft \n\n**phase**\n\n    Set phase. Possible values are: laminar independent \n\n**window**\n\n    Set processing window size. Possible values are: standard short long \n\n**smoothing**\n\n    Set smoothing. Possible values are: off on \n\n**formant**\n\n    Enable formant preservation when shift pitching. Possible values are: shifted preserved \n\n**pitchq**\n\n    Set pitch quality. Possible values are: quality speed consistency \n\n**channels**\n\n    Set channels. Possible values are: apart together \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

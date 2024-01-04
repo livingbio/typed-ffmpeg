@@ -1,5 +1,5 @@
 {
-  "description": "11.141 lagfun\nSlowly update darker pixels.\n\nThis filter makes short flashes of light appear longer.\nThis filter accepts the following options:",
+  "description": "### 11.141 lagfun\n\nSlowly update darker pixels.\n\nThis filter makes short flashes of light appear longer. This filter accepts\nthe following options:\n\n**decay**\n\n    Set factor for decaying. Default is .95. Allowed range is from 0 to 1. \n\n**planes**\n\n    Set which planes to filter. Default is all. Allowed range is from 0 to 15. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

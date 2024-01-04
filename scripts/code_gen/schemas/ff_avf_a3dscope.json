@@ -1,5 +1,5 @@
 {
-  "description": "18.1 a3dscope\nConvert input audio to 3d scope video output.\n\nThe filter accepts the following options:",
+  "description": "### 18.1 a3dscope\n\nConvert input audio to 3d scope video output.\n\nThe filter accepts the following options:\n\n**rate, r**\n\n    Set frame rate, expressed as number of frames per second. Default value is \"25\". \n\n**size, s**\n\n    Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is hd720. \n\n**fov**\n\n    Set the camera field of view. Default is 90 degrees. Allowed range is from 40 to 150. \n\n**roll**\n\n    Set the camera roll. \n\n**pitch**\n\n    Set the camera pitch. \n\n**yaw**\n\n    Set the camera yaw. \n\n**xzoom**\n\n    Set the camera zoom on X-axis. \n\n**yzoom**\n\n    Set the camera zoom on Y-axis. \n\n**zzoom**\n\n    Set the camera zoom on Z-axis. \n\n**xpos**\n\n    Set the camera position on X-axis. \n\n**ypos**\n\n    Set the camera position on Y-axis. \n\n**zpos**\n\n    Set the camera position on Z-axis. \n\n**length**\n\n    Set the length of displayed audio waves in number of frames. \n\n",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,

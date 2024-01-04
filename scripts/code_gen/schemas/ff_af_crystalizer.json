@@ -1,5 +1,5 @@
 {
-  "description": "8.80 crystalizer\nSimple algorithm for audio noise sharpening.\n\nThis filter linearly increases differences between each audio sample.\n\nThe filter accepts the following options:",
+  "description": "### 8.80 crystalizer\n\nSimple algorithm for audio noise sharpening.\n\nThis filter linearly increases differences between each audio sample.\n\nThe filter accepts the following options:\n\n**i**\n\n    Sets the intensity of effect (default: 2.0). Must be in range between -10.0 to 0 (unchanged sound) to 10.0 (maximum effect). To inverse filtering use negative value. \n\n**c**\n\n    Enable clipping. By default is enabled. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

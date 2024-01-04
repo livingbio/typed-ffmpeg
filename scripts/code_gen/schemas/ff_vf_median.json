@@ -1,5 +1,5 @@
 {
-  "description": "11.162 median\nPick median pixel from certain rectangle defined by radius.\n\nThis filter accepts the following options:",
+  "description": "### 11.162 median\n\nPick median pixel from certain rectangle defined by radius.\n\nThis filter accepts the following options:\n\n**radius**\n\n    Set horizontal radius size. Default value is 1. Allowed range is integer from 1 to 127. \n\n**planes**\n\n    Set which planes to process. Default is 15, which is all available planes. \n\n**radiusV**\n\n    Set vertical radius size. Default value is 0. Allowed range is integer from 0 to 127. If it is 0, value will be picked from horizontal radius option. \n\n**percentile**\n\n    Set median percentile. Default value is 0.5. Default value of 0.5 will pick always median values, while 0 will pick minimum values, and 1 maximum values. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

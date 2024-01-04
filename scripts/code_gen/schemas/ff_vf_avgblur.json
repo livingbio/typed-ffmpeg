@@ -1,5 +1,5 @@
 {
-  "description": "11.7 avgblur\nApply average blur filter.\n\nThe filter accepts the following options:",
+  "description": "### 11.7 avgblur\n\nApply average blur filter.\n\nThe filter accepts the following options:\n\n**sizeX**\n\n    Set horizontal radius size. \n\n**planes**\n\n    Set which planes to filter. By default all planes are filtered. \n\n**sizeY**\n\n    Set vertical radius size, if zero it will be same as sizeX. Default is 0. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

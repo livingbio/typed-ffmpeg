@@ -1,5 +1,5 @@
 {
-  "description": "11.96 fifo, afifo\nBuffer input images and send them when they are requested.\n\nIt is mainly useful when auto-inserted by the libavfilter\nframework.\n\nIt does not take parameters.",
+  "description": "### 11.96 fifo, afifo\n\nBuffer input images and send them when they are requested.\n\nIt is mainly useful when auto-inserted by the libavfilter framework.\n\nIt does not take parameters.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

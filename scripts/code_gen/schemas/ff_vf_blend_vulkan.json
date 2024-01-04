@@ -1,5 +1,5 @@
 {
-  "description": "14.2 blend_vulkan\nBlend two Vulkan frames into each other.\n\nThe blend filter takes two input streams and outputs one\nstream, the first input is the \"top\" layer and second input is\n\"bottom\" layer.  By default, the output terminates when the longest input terminates.\n\nA description of the accepted options follows.",
+  "description": "### 14.2 blend_vulkan\n\nBlend two Vulkan frames into each other.\n\nThe `blend` filter takes two input streams and outputs one stream, the first\ninput is the \"top\" layer and second input is \"bottom\" layer. By default, the\noutput terminates when the longest input terminates.\n\nA description of the accepted options follows.\n\n**c0_mode**\n\n**c1_mode**\n\n**c2_mode**\n\n**c3_mode**\n\n**all_mode**\n\n    Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: \u2018normal\u2019 \u2018multiply\u2019 \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

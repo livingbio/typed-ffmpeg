@@ -1,5 +1,5 @@
 {
-  "description": "11.220 scale_vt\nScale and convert the color parameters using VTPixelTransferSession.\n\nThe filter accepts the following options:",
+  "description": "### 11.220 scale_vt\n\nScale and convert the color parameters using VTPixelTransferSession.\n\nThe filter accepts the following options:\n\n**w**\n\n**h**\n\n    Set the output video dimension expression. Default value is the input dimension. \n\n**color_matrix**\n\n    Set the output colorspace matrix. \n\n**color_primaries**\n\n    Set the output color primaries. \n\n**color_transfer**\n\n    Set the output transfer characteristics. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

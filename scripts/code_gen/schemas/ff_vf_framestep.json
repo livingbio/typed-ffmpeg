@@ -1,5 +1,5 @@
 {
-  "description": "11.104 framestep\nSelect one frame every N-th frame.\n\nThis filter accepts the following option:",
+  "description": "### 11.104 framestep\n\nSelect one frame every N-th frame.\n\nThis filter accepts the following option:\n\n**step**\n\n    Select frame after every step frames. Allowed values are positive integers higher than 0. Default value is 1. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

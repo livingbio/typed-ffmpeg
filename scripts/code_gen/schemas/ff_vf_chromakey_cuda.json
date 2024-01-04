@@ -1,5 +1,5 @@
 {
-  "description": "11.26 chromakey_cuda\nCUDA accelerated YUV colorspace color/chroma keying.\n\nThis filter works like normal chromakey filter but operates on CUDA frames.\nfor more details and parameters see chromakey.",
+  "description": "### 11.26 chromakey_cuda\n\nCUDA accelerated YUV colorspace color/chroma keying.\n\nThis filter works like normal chromakey filter but operates on CUDA frames.\nfor more details and parameters see chromakey.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

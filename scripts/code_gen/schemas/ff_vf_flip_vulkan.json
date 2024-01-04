@@ -1,5 +1,5 @@
 {
-  "description": "14.8 flip_vulkan\nFlips an image along both the vertical and horizontal axis.",
+  "description": "### 14.8 flip_vulkan\n\nFlips an image along both the vertical and horizontal axis.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.35 colorize\nOverlay a solid color on the video stream.\n\nThe filter accepts the following options:",
+  "description": "### 11.35 colorize\n\nOverlay a solid color on the video stream.\n\nThe filter accepts the following options:\n\n**hue**\n\n    Set the color hue. Allowed range is from 0 to 360. Default value is 0. \n\n**saturation**\n\n    Set the color saturation. Allowed range is from 0 to 1. Default value is 0.5. \n\n**lightness**\n\n    Set the color lightness. Allowed range is from 0 to 1. Default value is 0.5. \n\n**mix**\n\n    Set the mix of source lightness. By default is set to 1.0. Allowed range is from 0.0 to 1.0. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

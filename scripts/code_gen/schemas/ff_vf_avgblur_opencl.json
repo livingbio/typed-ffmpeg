@@ -1,5 +1,5 @@
 {
-  "description": "12.1 avgblur_opencl\nApply average blur filter.\n\nThe filter accepts the following options:",
+  "description": "### 12.1 avgblur_opencl\n\nApply average blur filter.\n\nThe filter accepts the following options:\n\n**sizeX**\n\n    Set horizontal radius size. Range is [1, 1024] and default value is 1. \n\n**planes**\n\n    Set which planes to filter. Default value is 0xf, by which all planes are processed. \n\n**sizeY**\n\n    Set vertical radius size. Range is [1, 1024] and default value is 0. If zero, sizeX value will be used. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

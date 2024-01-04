@@ -1,5 +1,5 @@
 {
-  "description": "11.79 edgedetect\nDetect and draw edges. The filter uses the Canny Edge Detection algorithm.\n\nThe filter accepts the following options:",
+  "description": "### 11.79 edgedetect\n\nDetect and draw edges. The filter uses the Canny Edge Detection algorithm.\n\nThe filter accepts the following options:\n\n**low**\n\n**high**\n\n    Set low and high threshold values used by the Canny thresholding algorithm. The high threshold selects the \"strong\" edge pixels, which are then connected through 8-connectivity with the \"weak\" edge pixels selected by the low threshold. low and high threshold values must be chosen in the range [0,1], and low should be lesser or equal to high. Default value for low is 20/255, and default value for high is 50/255. \n\n**mode**\n\n    Define the drawing mode. \u2018wires\u2019 Draw white/gray wires on black background. \u2018colormix\u2019 Mix the colors to create a paint/cartoon effect. \u2018canny\u2019 Apply Canny edge detector on all selected planes. Default value is wires. \n\n**planes**\n\n    Select planes for filtering. By default all available planes are filtered. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

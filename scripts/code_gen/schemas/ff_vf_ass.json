@@ -1,5 +1,5 @@
 {
-  "description": "11.5 ass\nSame as the subtitles filter, except that it doesn\u2019t require libavcodec\nand libavformat to work. On the other hand, it is limited to ASS (Advanced\nSubstation Alpha) subtitles files.\n\nThis filter accepts the following option in addition to the common options from\nthe subtitles filter:",
+  "description": "### 11.5 ass\n\nSame as the subtitles filter, except that it doesn\u2019t require libavcodec and\nlibavformat to work. On the other hand, it is limited to ASS (Advanced\nSubstation Alpha) subtitles files.\n\nThis filter accepts the following option in addition to the common options\nfrom the subtitles filter:\n\n**shaping**\n\n    Set the shaping engine Available values are: \u2018auto\u2019 The default libass shaping engine, which is the best available. \u2018simple\u2019 Fast, font-agnostic shaper that can do only substitutions \u2018complex\u2019 Slower shaper using OpenType for substitutions and positioning The default is auto. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

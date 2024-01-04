@@ -1,5 +1,5 @@
 {
-  "description": "8.56 asoftclip\nApply audio soft clipping.\n\nSoft clipping is a type of distortion effect where the amplitude of a signal is saturated\nalong a smooth curve, rather than the abrupt shape of hard-clipping.\n\nThis filter accepts the following options:",
+  "description": "### 8.56 asoftclip\n\nApply audio soft clipping.\n\nSoft clipping is a type of distortion effect where the amplitude of a signal\nis saturated along a smooth curve, rather than the abrupt shape of hard-\nclipping.\n\nThis filter accepts the following options:\n\n**type**\n\n    Set type of soft-clipping. It accepts the following values: hard tanh atan cubic exp alg quintic sin erf \n\n**threshold**\n\n    Set threshold from where to start clipping. Default value is 0dB or 1. \n\n**output**\n\n    Set gain applied to output. Default value is 0dB or 1. \n\n**param**\n\n    Set additional parameter which controls sigmoid function. \n\n**oversample**\n\n    Set oversampling factor. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

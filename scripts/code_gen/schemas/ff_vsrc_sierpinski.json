@@ -1,5 +1,5 @@
 {
-  "description": "16.12 sierpinski\nGenerate a Sierpinski carpet/triangle fractal, and randomly pan around.\n\nThis source accepts the following options:",
+  "description": "### 16.12 sierpinski\n\nGenerate a Sierpinski carpet/triangle fractal, and randomly pan around.\n\nThis source accepts the following options:\n\n**size, s**\n\n    Set frame size. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is \"640x480\". \n\n**rate, r**\n\n    Set frame rate, expressed as number of frames per second. Default value is \"25\". \n\n**seed**\n\n    Set seed which is used for random panning. \n\n**jump**\n\n    Set max jump for single pan destination. Allowed range is from 1 to 10000. \n\n**type**\n\n    Set fractal type, can be default carpet or triangle. \n\n",
   "filter_type": "vsrc",
   "formula_input_typings": null,
   "formula_output_typings": null,

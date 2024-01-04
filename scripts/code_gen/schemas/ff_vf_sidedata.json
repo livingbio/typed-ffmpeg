@@ -1,5 +1,5 @@
 {
-  "description": "18.31 sidedata, asidedata\nDelete frame side data, or select frames based on it.\n\nThis filter accepts the following options:",
+  "description": "### 18.31 sidedata, asidedata\n\nDelete frame side data, or select frames based on it.\n\nThis filter accepts the following options:\n\n**mode**\n\n    Set mode of operation of the filter. Can be one of the following: \u2018select\u2019 Select every frame with side data of type. \u2018delete\u2019 Delete side data of type. If type is not set, delete all side data in the frame. \n\n**type**\n\n    Set side data type used with all modes. Must be set for select mode. For the list of frame side data types, refer to the AVFrameSideDataType enum in libavutil/frame.h. For example, to choose AV_FRAME_DATA_PANSCAN side data, you must specify PANSCAN. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

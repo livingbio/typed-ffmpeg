@@ -1,5 +1,5 @@
 {
-  "description": "11.16 blockdetect\nDetermines blockiness of frames without altering the input frames.\n\nBased on Remco Muijs and Ihor Kirenko: \"A no-reference blocking artifact measure for adaptive video processing.\" 2005 13th European signal processing conference.\n\nThe filter accepts the following options:",
+  "description": "### 11.16 blockdetect\n\nDetermines blockiness of frames without altering the input frames.\n\nBased on Remco Muijs and Ihor Kirenko: \"A no-reference blocking artifact\nmeasure for adaptive video processing.\" 2005 13th European signal processing\nconference.\n\nThe filter accepts the following options:\n\n**period_min**\n\n**period_max**\n\n    Set minimum and maximum values for determining pixel grids (periods). Default values are [3,24]. \n\n**planes**\n\n    Set planes to filter. Default is first only. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

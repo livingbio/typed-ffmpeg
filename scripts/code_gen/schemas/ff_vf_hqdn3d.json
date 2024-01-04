@@ -1,5 +1,5 @@
 {
-  "description": "11.120 hqdn3d\nThis is a high precision/quality 3d denoise filter. It aims to reduce\nimage noise, producing smooth images and making still images really\nstill. It should enhance compressibility.\n\nIt accepts the following optional parameters:",
+  "description": "### 11.120 hqdn3d\n\nThis is a high precision/quality 3d denoise filter. It aims to reduce image\nnoise, producing smooth images and making still images really still. It should\nenhance compressibility.\n\nIt accepts the following optional parameters:\n\n**luma_spatial**\n\n    A non-negative floating point number which specifies spatial luma strength. It defaults to 4.0. \n\n**chroma_spatial**\n\n    A non-negative floating point number which specifies spatial chroma strength. It defaults to 3.0*luma_spatial/4.0. \n\n**luma_tmp**\n\n    A floating point number which specifies luma temporal strength. It defaults to 6.0*luma_spatial/4.0. \n\n**chroma_tmp**\n\n    A floating point number which specifies chroma temporal strength. It defaults to luma_tmp*chroma_spatial/luma_spatial. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

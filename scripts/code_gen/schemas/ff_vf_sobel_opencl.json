@@ -1,5 +1,5 @@
 {
-  "description": "12.15 sobel_opencl\nApply the Sobel operator (https://en.wikipedia.org/wiki/Sobel_operator) to input video stream.\n\nThe filter accepts the following option:",
+  "description": "### 12.15 sobel_opencl\n\nApply the Sobel operator (<https://en.wikipedia.org/wiki/Sobel_operator>) to\ninput video stream.\n\nThe filter accepts the following option:\n\n**planes**\n\n    Set which planes to filter. Default value is 0xf, by which all planes are processed. \n\n**scale**\n\n    Set value which will be multiplied with filtered result. Range is [0.0, 65535] and default value is 1.0. \n\n**delta**\n\n    Set value which will be added to filtered result. Range is [-65535, 65535] and default value is 0.0. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

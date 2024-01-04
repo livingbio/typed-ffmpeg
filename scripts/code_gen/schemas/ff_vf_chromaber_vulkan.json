@@ -1,5 +1,5 @@
 {
-  "description": "14.4 chromaber_vulkan\nApply an effect that emulates chromatic aberration. Works best with RGB inputs,\nbut provides a similar effect with YCbCr inputs too.",
+  "description": "### 14.4 chromaber_vulkan\n\nApply an effect that emulates chromatic aberration. Works best with RGB\ninputs, but provides a similar effect with YCbCr inputs too.\n\n**dist_x**\n\n    Horizontal displacement multiplier. Each chroma pixel\u2019s position will be multiplied by this amount, starting from the center of the image. Default is 0. \n\n**dist_y**\n\n    Similarly, this sets the vertical displacement multiplier. Default is 0. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

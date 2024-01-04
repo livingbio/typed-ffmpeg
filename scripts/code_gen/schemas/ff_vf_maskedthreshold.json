@@ -1,5 +1,5 @@
 {
-  "description": "11.159 maskedthreshold\nPick pixels comparing absolute difference of two video streams with fixed\nthreshold.\n\nIf absolute difference between pixel component of first and second video\nstream is equal or lower than user supplied threshold than pixel component\nfrom first video stream is picked, otherwise pixel component from second\nvideo stream is picked.\n\nThis filter accepts the following options:",
+  "description": "### 11.159 maskedthreshold\n\nPick pixels comparing absolute difference of two video streams with fixed\nthreshold.\n\nIf absolute difference between pixel component of first and second video\nstream is equal or lower than user supplied threshold than pixel component\nfrom first video stream is picked, otherwise pixel component from second video\nstream is picked.\n\nThis filter accepts the following options:\n\n**threshold**\n\n    Set threshold used when picking pixels from absolute difference from two input video streams. \n\n**planes**\n\n    Set which planes will be processed as bitmap, unprocessed planes will be copied from second stream. By default value 0xf, all planes will be processed. \n\n**mode**\n\n    Set mode of filter operation. Can be abs or diff. Default is abs. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

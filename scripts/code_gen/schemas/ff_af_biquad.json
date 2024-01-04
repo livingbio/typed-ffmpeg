@@ -1,5 +1,5 @@
 {
-  "description": "8.72 biquad\nApply a biquad IIR filter with the given coefficients.\nWhere b0, b1, b2 and a0, a1, a2\nare the numerator and denominator coefficients respectively.\nand channels, c specify which channels to filter, by default all\navailable are filtered.",
+  "description": "### 8.72 biquad\n\nApply a biquad IIR filter with the given coefficients. Where b0, b1, b2 and\na0, a1, a2 are the numerator and denominator coefficients respectively. and\nchannels, c specify which channels to filter, by default all available are\nfiltered.\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

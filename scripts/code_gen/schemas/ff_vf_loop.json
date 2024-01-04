@@ -1,5 +1,5 @@
 {
-  "description": "11.149 loop\nLoop video frames.\n\nThe filter accepts the following options:",
+  "description": "### 11.149 loop\n\nLoop video frames.\n\nThe filter accepts the following options:\n\n**loop**\n\n    Set the number of loops. Setting this value to -1 will result in infinite loops. Default is 0. \n\n**size**\n\n    Set maximal size in number of frames. Default is 0. \n\n**start**\n\n    Set first frame of loop. Default is 0. \n\n**time**\n\n    Set the time of loop start in seconds. Only used if option named start is set to -1. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

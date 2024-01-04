@@ -1,5 +1,5 @@
 {
-  "description": "8.45 apsyclip\nApply Psychoacoustic clipper to input audio stream.\n\nThe filter accepts the following options:",
+  "description": "### 8.45 apsyclip\n\nApply Psychoacoustic clipper to input audio stream.\n\nThe filter accepts the following options:\n\n**level_in**\n\n    Set input gain. By default it is 1. Range is [0.015625 - 64]. \n\n**level_out**\n\n    Set output gain. By default it is 1. Range is [0.015625 - 64]. \n\n**clip**\n\n    Set the clipping start value. Default value is 0dBFS or 1. \n\n**diff**\n\n    Output only difference samples, useful to hear introduced distortions. By default is disabled. \n\n**adaptive**\n\n    Set strength of adaptive distortion applied. Default value is 0.5. Allowed range is from 0 to 1. \n\n**iterations**\n\n    Set number of iterations of psychoacoustic clipper. Allowed range is from 1 to 20. Default value is 10. \n\n**level**\n\n    Auto level output signal. Default is disabled. This normalizes audio back to 0dBFS if enabled. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

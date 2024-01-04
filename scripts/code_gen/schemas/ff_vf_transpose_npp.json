@@ -1,5 +1,5 @@
 {
-  "description": "11.264 transpose_npp\nTranspose rows with columns in the input video and optionally flip it.\nFor more in depth examples see the transpose video filter, which shares mostly the same options.\n\nIt accepts the following parameters:",
+  "description": "### 11.264 transpose_npp\n\nTranspose rows with columns in the input video and optionally flip it. For\nmore in depth examples see the transpose video filter, which shares mostly the\nsame options.\n\nIt accepts the following parameters:\n\n**dir**\n\n    Specify the transposition direction. Can assume the following values: \u2018cclock_flip\u2019 Rotate by 90 degrees counterclockwise and vertically flip. (default) \u2018clock\u2019 Rotate by 90 degrees clockwise. \u2018cclock\u2019 Rotate by 90 degrees counterclockwise. \u2018clock_flip\u2019 Rotate by 90 degrees clockwise and vertically flip. \n\n**passthrough**\n\n    Do not apply the transposition if the input geometry matches the one specified by the specified value. It accepts the following values: \u2018none\u2019 Always apply transposition. (default) \u2018portrait\u2019 Preserve portrait geometry (when height >= width). \u2018landscape\u2019 Preserve landscape geometry (when width >= height). \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

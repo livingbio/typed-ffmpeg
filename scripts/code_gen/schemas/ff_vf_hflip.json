@@ -1,5 +1,5 @@
 {
-  "description": "11.117 hflip\nFlip the input video horizontally.\n\nFor example, to horizontally flip the input video with ffmpeg:\n\nffmpeg -i in.avi -vf \"hflip\" out.avi",
+  "description": "### 11.117 hflip\n\nFlip the input video horizontally.\n\nFor example, to horizontally flip the input video with `ffmpeg`:\n\n    \n    \n    ffmpeg -i in.avi -vf \"hflip\" out.avi\n    \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

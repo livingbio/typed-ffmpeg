@@ -1,5 +1,5 @@
 {
-  "description": "18.16 segment, asegment\nSplit single input stream into multiple streams.\n\nThis filter does opposite of concat filters.\n\nsegment works on video frames, asegment on audio samples.\n\nThis filter accepts the following options:\n\n\nIn all cases, prefixing an each segment with \u2019+\u2019 will make it relative to the\nprevious segment.",
+  "description": "### 18.16 segment, asegment\n\nSplit single input stream into multiple streams.\n\nThis filter does opposite of concat filters.\n\n`segment` works on video frames, `asegment` on audio samples.\n\nThis filter accepts the following options:\n\n**timestamps**\n\n    Timestamps of output segments separated by \u2019|\u2019. The first segment will run from the beginning of the input stream. The last segment will run until the end of the input stream \n\n**frames, samples**\n\n    Exact frame/sample count to split the segments. \n\nIn all cases, prefixing an each segment with \u2019+\u2019 will make it relative to the\nprevious segment.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": "[StreamType.video] * len((timestamps or frames).split('|'))",

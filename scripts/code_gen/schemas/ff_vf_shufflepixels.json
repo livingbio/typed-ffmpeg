@@ -1,5 +1,5 @@
 {
-  "description": "11.234 shufflepixels\nReorder pixels in video frames.\n\nThis filter accepts the following options:",
+  "description": "### 11.234 shufflepixels\n\nReorder pixels in video frames.\n\nThis filter accepts the following options:\n\n**direction, d**\n\n    Set shuffle direction. Can be forward or inverse direction. Default direction is forward. \n\n**mode, m**\n\n    Set shuffle mode. Can be horizontal, vertical or block mode. \n\n**width, w**\n\n**height, h**\n\n    Set shuffle block_size. In case of horizontal shuffle mode only width part of size is used, and in case of vertical shuffle mode only height part of size is used. \n\n**seed, s**\n\n    Set random seed used with shuffling pixels. Mainly useful to set to be able to reverse filtering process to get original input. For example, to reverse forward shuffle you need to use same parameters and exact same seed and to set direction to inverse. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.229 sharpen_npp\nUse the NVIDIA Performance Primitives (libnpp) to perform image sharpening with\nborder control.\n\nThe following additional options are accepted:",
+  "description": "### 11.229 sharpen_npp\n\nUse the NVIDIA Performance Primitives (libnpp) to perform image sharpening\nwith border control.\n\nThe following additional options are accepted:\n\n**border_type**\n\n    Type of sampling to be used ad frame borders. One of the following: replicate Replicate pixel values. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

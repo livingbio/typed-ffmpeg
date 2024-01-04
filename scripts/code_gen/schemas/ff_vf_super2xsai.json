@@ -1,5 +1,5 @@
 {
-  "description": "11.247 super2xsai\nScale the input by 2x and smooth using the Super2xSaI (Scale and\nInterpolate) pixel art scaling algorithm.\n\nUseful for enlarging pixel art images without reducing sharpness.",
+  "description": "### 11.247 super2xsai\n\nScale the input by 2x and smooth using the Super2xSaI (Scale and Interpolate)\npixel art scaling algorithm.\n\nUseful for enlarging pixel art images without reducing sharpness.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

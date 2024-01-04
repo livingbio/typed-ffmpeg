@@ -1,5 +1,5 @@
 {
-  "description": "14.6 vflip_vulkan\nFlips an image vertically.",
+  "description": "### 14.6 vflip_vulkan\n\nFlips an image vertically.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

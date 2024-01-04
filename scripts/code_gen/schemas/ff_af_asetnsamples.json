@@ -1,5 +1,5 @@
 {
-  "description": "8.52 asetnsamples\nSet the number of samples per each output audio frame.\n\nThe last output packet may contain a different number of samples, as\nthe filter will flush all the remaining samples when the input audio\nsignals its end.\n\nThe filter accepts the following options:\n\n\nFor example, to set the number of per-frame samples to 1234 and\ndisable padding for the last frame, use:\n\nasetnsamples=n=1234:p=0",
+  "description": "### 8.52 asetnsamples\n\nSet the number of samples per each output audio frame.\n\nThe last output packet may contain a different number of samples, as the\nfilter will flush all the remaining samples when the input audio signals its\nend.\n\nThe filter accepts the following options:\n\n**nb_out_samples, n**\n\n    Set the number of frames per each output audio frame. The number is intended as the number of samples per each channel. Default value is 1024. \n\n**pad, p**\n\n    If set to 1, the filter will pad the last audio frame with zeroes, so that the last frame will contain the same number of samples as the previous ones. Default value is 1. \n\nFor example, to set the number of per-frame samples to 1234 and disable\npadding for the last frame, use:\n\n    \n    \n    asetnsamples=n=1234:p=0\n    \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

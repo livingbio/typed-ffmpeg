@@ -4,6 +4,8 @@ from functools import cached_property
 import pydantic
 from bs4 import BeautifulSoup
 
+from .helpers import convert_html_to_markdown
+
 sections_path = pathlib.Path(__file__).parent / "sections"
 sections_path.mkdir(exist_ok=True)
 
@@ -42,10 +44,7 @@ class FilterDocument(pydantic.BaseModel):
 
     @cached_property
     def description(self) -> str:
-        soup = BeautifulSoup(self.body, "html.parser")
-        for dl_tag in soup.find_all("dl"):
-            dl_tag.decompose()
-        return soup.text.strip()
+        return convert_html_to_markdown(self.body)
 
     @cached_property
     def parameter_descs(self) -> dict[str, str]:

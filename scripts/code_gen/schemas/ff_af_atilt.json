@@ -1,5 +1,5 @@
 {
-  "description": "8.66 atilt\nApply spectral tilt filter to audio stream.\n\nThis filter apply any spectral roll-off slope over any specified frequency band.\n\nThe filter accepts the following options:",
+  "description": "### 8.66 atilt\n\nApply spectral tilt filter to audio stream.\n\nThis filter apply any spectral roll-off slope over any specified frequency\nband.\n\nThe filter accepts the following options:\n\n**freq**\n\n    Set central frequency of tilt in Hz. Default is 10000 Hz. \n\n**slope**\n\n    Set slope direction of tilt. Default is 0. Allowed range is from -1 to 1. \n\n**width**\n\n    Set width of tilt. Default is 1000. Allowed range is from 100 to 10000. \n\n**order**\n\n    Set order of tilt filter. \n\n**level**\n\n    Set input volume level. Allowed range is from 0 to 4. Default is 1. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

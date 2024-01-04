@@ -1,5 +1,5 @@
 {
-  "description": "11.176 noformat\nForce libavfilter not to use any of the specified pixel formats for the\ninput to the next filter.\n\nIt accepts the following parameters:",
+  "description": "### 11.176 noformat\n\nForce libavfilter not to use any of the specified pixel formats for the input\nto the next filter.\n\nIt accepts the following parameters:\n\n**pix_fmts**\n\n    A \u2019|\u2019-separated list of pixel format names, such as pix_fmts=yuv420p|monow|rgb24\". \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
