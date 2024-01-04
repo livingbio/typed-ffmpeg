@@ -115,8 +115,8 @@ Ref: {{ f.ref }}
 {%- endif -%}
 filter_node = FilterNode(
     name="{{ f.name }}",
-    input_typings={{f.input_types or f.formula_input_typings }},
-    output_typings={{f.output_types or f.formula_output_typings }},
+    input_typings={{f.input_types}},
+    output_typings={{f.output_types}},
     inputs=[
         {{ stream_params(f, type) }}
     ],

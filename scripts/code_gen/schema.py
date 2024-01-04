@@ -60,13 +60,13 @@ class FFmpegFilter(BaseModel):
     @property
     def input_types(self) -> list[str]:
         if self.is_input_dynamic:
-            return []
+            return self.formula_input_typings
         return [("video" if stream.type == AVFilterPadType.video else "audio") for stream in self.input_stream_typings]
 
     @property
     def output_types(self) -> list[str]:
         if self.is_output_dynamic:
-            return []
+            return self.formula_output_typings
         return [("video" if stream.type == AVFilterPadType.video else "audio") for stream in self.output_stream_typings]
 
     @classmethod

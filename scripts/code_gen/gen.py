@@ -6,9 +6,9 @@ import jinja2
 
 from .schema import FFmpegFilter
 
-template_path = Path(__file__).parent / "templates"
+template_folder = Path(__file__).parent / "templates"
 
-loader = jinja2.FileSystemLoader(template_path)
+loader = jinja2.FileSystemLoader(template_folder)
 env = jinja2.Environment(
     loader=loader,
 )
@@ -39,11 +39,15 @@ env.filters["option_name_safe"] = option_name_safe
 def render(filters: list[FFmpegFilter], outpath: pathlib.Path) -> list[pathlib.Path]:
     outpath.mkdir(exist_ok=True)
     output = []
-    for template_file in template_path.glob("*.py.jinja"):
-        template = env.get_template(template_file.name)
+    for template_file in template_folder.glob("**/*.py.jinja"):
+        template_path = template_file.relative_to(template_folder)
+
+        template = env.get_template(str(template_path))
         code = template.render(filters=filters)
 
-        opath = outpath / template_file.name.replace(".jinja", "")
+        opath = outpath / str(template_path).replace(".jinja", "")
+        template_path.parent.mkdir(parents=True, exist_ok=True)
+
         with opath.open("w") as ofile:
             ofile.write(code)
 
