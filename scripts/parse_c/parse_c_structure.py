@@ -3,7 +3,9 @@ from typing import Any
 
 
 def remove_string_concat(text: str) -> str:
-    return re.sub(r"\"\s*\"", "", text)
+    if text.count('"') > 2:
+        return re.sub(r"\"\s*\"", "", text)
+    return text
 
 
 def parse_c_structure(text: str) -> list[Any]:
@@ -51,6 +53,6 @@ def parse_c_structure(text: str) -> list[Any]:
                 buffer += ch
 
     if buffer.strip():
-        output.append(remove_string_concat(buffer.strip(" ").strip()))
+        output.append(remove_string_concat(buffer.strip()))
 
     return output
