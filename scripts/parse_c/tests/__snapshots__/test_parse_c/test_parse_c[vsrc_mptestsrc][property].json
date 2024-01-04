@@ -43,57 +43,57 @@
           {
             "help": "",
             "name": "dc_luma",
-            "value": "['.i64=TEST_DC_LUMA']"
+            "value": "TEST_DC_LUMA"
           },
           {
             "help": "",
             "name": "dc_chroma",
-            "value": "['.i64=TEST_DC_CHROMA']"
+            "value": "TEST_DC_CHROMA"
           },
           {
             "help": "",
             "name": "freq_luma",
-            "value": "['.i64=TEST_FREQ_LUMA']"
+            "value": "TEST_FREQ_LUMA"
           },
           {
             "help": "",
             "name": "freq_chroma",
-            "value": "['.i64=TEST_FREQ_CHROMA']"
+            "value": "TEST_FREQ_CHROMA"
           },
           {
             "help": "",
             "name": "amp_luma",
-            "value": "['.i64=TEST_AMP_LUMA']"
+            "value": "TEST_AMP_LUMA"
           },
           {
             "help": "",
             "name": "amp_chroma",
-            "value": "['.i64=TEST_AMP_CHROMA']"
+            "value": "TEST_AMP_CHROMA"
           },
           {
             "help": "",
             "name": "cbp",
-            "value": "['.i64=TEST_CBP']"
+            "value": "TEST_CBP"
           },
           {
             "help": "",
             "name": "mv",
-            "value": "['.i64=TEST_MV']"
+            "value": "TEST_MV"
           },
           {
             "help": "",
             "name": "ring1",
-            "value": "['.i64=TEST_RING1']"
+            "value": "TEST_RING1"
           },
           {
             "help": "",
             "name": "ring2",
-            "value": "['.i64=TEST_RING2']"
+            "value": "TEST_RING2"
           },
           {
             "help": "",
             "name": "all",
-            "value": "['.i64=TEST_ALL']"
+            "value": "TEST_ALL"
           }
         ],
         "default": "['.i64=TEST_ALL']",

@@ -15,12 +15,12 @@
           {
             "help": "fade-in",
             "name": "in",
-            "value": "['.i64 = 0']"
+            "value": 0
           },
           {
             "help": "fade-out",
             "name": "out",
-            "value": "['.i64 = 1']"
+            "value": 1
           }
         ],
         "default": "['.i64 = 0']",
@@ -96,122 +96,122 @@
           {
             "help": "no fade; keep audio as-is",
             "name": "nofade",
-            "value": "['.i64 = NONE']"
+            "value": "NONE"
           },
           {
             "help": "linear slope",
             "name": "tri",
-            "value": "['.i64 = TRI']"
+            "value": "TRI"
           },
           {
             "help": "quarter of sine wave",
             "name": "qsin",
-            "value": "['.i64 = QSIN']"
+            "value": "QSIN"
           },
           {
             "help": "exponential sine wave",
             "name": "esin",
-            "value": "['.i64 = ESIN']"
+            "value": "ESIN"
           },
           {
             "help": "half of sine wave",
             "name": "hsin",
-            "value": "['.i64 = HSIN']"
+            "value": "HSIN"
           },
           {
             "help": "logarithmic",
             "name": "log",
-            "value": "['.i64 = LOG']"
+            "value": "LOG"
           },
           {
             "help": "inverted parabola",
             "name": "ipar",
-            "value": "['.i64 = IPAR']"
+            "value": "IPAR"
           },
           {
             "help": "quadratic",
             "name": "qua",
-            "value": "['.i64 = QUA']"
+            "value": "QUA"
           },
           {
             "help": "cubic",
             "name": "cub",
-            "value": "['.i64 = CUB']"
+            "value": "CUB"
           },
           {
             "help": "square root",
             "name": "squ",
-            "value": "['.i64 = SQU']"
+            "value": "SQU"
           },
           {
             "help": "cubic root",
             "name": "cbr",
-            "value": "['.i64 = CBR']"
+            "value": "CBR"
           },
           {
             "help": "parabola",
             "name": "par",
-            "value": "['.i64 = PAR']"
+            "value": "PAR"
           },
           {
             "help": "exponential",
             "name": "exp",
-            "value": "['.i64 = EXP']"
+            "value": "EXP"
           },
           {
             "help": "inverted quarter of sine wave",
             "name": "iqsin",
-            "value": "['.i64 = IQSIN']"
+            "value": "IQSIN"
           },
           {
             "help": "inverted half of sine wave",
             "name": "ihsin",
-            "value": "['.i64 = IHSIN']"
+            "value": "IHSIN"
           },
           {
             "help": "double-exponential seat",
             "name": "dese",
-            "value": "['.i64 = DESE']"
+            "value": "DESE"
           },
           {
             "help": "double-exponential sigmoid",
             "name": "desi",
-            "value": "['.i64 = DESI']"
+            "value": "DESI"
           },
           {
             "help": "logistic sigmoid",
             "name": "losi",
-            "value": "['.i64 = LOSI']"
+            "value": "LOSI"
           },
           {
             "help": "sine cardinal function",
             "name": "sinc",
-            "value": "['.i64 = SINC']"
+            "value": "SINC"
           },
           {
             "help": "inverted sine cardinal function",
             "name": "isinc",
-            "value": "['.i64 = ISINC']"
+            "value": "ISINC"
           },
           {
             "help": "quartic",
             "name": "quat",
-            "value": "['.i64 = QUAT']"
+            "value": "QUAT"
           },
           {
             "help": "quartic root",
             "name": "quatr",
-            "value": "['.i64 = QUATR']"
+            "value": "QUATR"
           },
           {
             "help": "squared quarter of sine wave",
             "name": "qsin2",
-            "value": "['.i64 = QSIN2']"
+            "value": "QSIN2"
           },
           {
             "help": "squared half of sine wave",
             "name": "hsin2",
-            "value": "['.i64 = HSIN2']"
+            "value": "HSIN2"
           }
         ],
         "default": "['.i64 = TRI']",
@@ -310,122 +310,122 @@
           {
             "help": "no fade; keep audio as-is",
             "name": "nofade",
-            "value": "['.i64 = NONE']"
+            "value": "NONE"
           },
           {
             "help": "linear slope",
             "name": "tri",
-            "value": "['.i64 = TRI']"
+            "value": "TRI"
           },
           {
             "help": "quarter of sine wave",
             "name": "qsin",
-            "value": "['.i64 = QSIN']"
+            "value": "QSIN"
           },
           {
             "help": "exponential sine wave",
             "name": "esin",
-            "value": "['.i64 = ESIN']"
+            "value": "ESIN"
           },
           {
             "help": "half of sine wave",
             "name": "hsin",
-            "value": "['.i64 = HSIN']"
+            "value": "HSIN"
           },
           {
             "help": "logarithmic",
             "name": "log",
-            "value": "['.i64 = LOG']"
+            "value": "LOG"
           },
           {
             "help": "inverted parabola",
             "name": "ipar",
-            "value": "['.i64 = IPAR']"
+            "value": "IPAR"
           },
           {
             "help": "quadratic",
             "name": "qua",
-            "value": "['.i64 = QUA']"
+            "value": "QUA"
           },
           {
             "help": "cubic",
             "name": "cub",
-            "value": "['.i64 = CUB']"
+            "value": "CUB"
           },
           {
             "help": "square root",
             "name": "squ",
-            "value": "['.i64 = SQU']"
+            "value": "SQU"
           },
           {
             "help": "cubic root",
             "name": "cbr",
-            "value": "['.i64 = CBR']"
+            "value": "CBR"
           },
           {
             "help": "parabola",
             "name": "par",
-            "value": "['.i64 = PAR']"
+            "value": "PAR"
           },
           {
             "help": "exponential",
             "name": "exp",
-            "value": "['.i64 = EXP']"
+            "value": "EXP"
           },
           {
             "help": "inverted quarter of sine wave",
             "name": "iqsin",
-            "value": "['.i64 = IQSIN']"
+            "value": "IQSIN"
           },
           {
             "help": "inverted half of sine wave",
             "name": "ihsin",
-            "value": "['.i64 = IHSIN']"
+            "value": "IHSIN"
           },
           {
             "help": "double-exponential seat",
             "name": "dese",
-            "value": "['.i64 = DESE']"
+            "value": "DESE"
           },
           {
             "help": "double-exponential sigmoid",
             "name": "desi",
-            "value": "['.i64 = DESI']"
+            "value": "DESI"
           },
           {
             "help": "logistic sigmoid",
             "name": "losi",
-            "value": "['.i64 = LOSI']"
+            "value": "LOSI"
           },
           {
             "help": "sine cardinal function",
             "name": "sinc",
-            "value": "['.i64 = SINC']"
+            "value": "SINC"
           },
           {
             "help": "inverted sine cardinal function",
             "name": "isinc",
-            "value": "['.i64 = ISINC']"
+            "value": "ISINC"
           },
           {
             "help": "quartic",
             "name": "quat",
-            "value": "['.i64 = QUAT']"
+            "value": "QUAT"
           },
           {
             "help": "quartic root",
             "name": "quatr",
-            "value": "['.i64 = QUATR']"
+            "value": "QUATR"
           },
           {
             "help": "squared quarter of sine wave",
             "name": "qsin2",
-            "value": "['.i64 = QSIN2']"
+            "value": "QSIN2"
           },
           {
             "help": "squared half of sine wave",
             "name": "hsin2",
-            "value": "['.i64 = HSIN2']"
+            "value": "HSIN2"
           }
         ],
         "default": "['.i64 = TRI']",
@@ -445,122 +445,122 @@
           {
             "help": "no fade; keep audio as-is",
             "name": "nofade",
-            "value": "['.i64 = NONE']"
+            "value": "NONE"
           },
           {
             "help": "linear slope",
             "name": "tri",
-            "value": "['.i64 = TRI']"
+            "value": "TRI"
           },
           {
             "help": "quarter of sine wave",
             "name": "qsin",
-            "value": "['.i64 = QSIN']"
+            "value": "QSIN"
           },
           {
             "help": "exponential sine wave",
             "name": "esin",
-            "value": "['.i64 = ESIN']"
+            "value": "ESIN"
           },
           {
             "help": "half of sine wave",
             "name": "hsin",
-            "value": "['.i64 = HSIN']"
+            "value": "HSIN"
           },
           {
             "help": "logarithmic",
             "name": "log",
-            "value": "['.i64 = LOG']"
+            "value": "LOG"
           },
           {
             "help": "inverted parabola",
             "name": "ipar",
-            "value": "['.i64 = IPAR']"
+            "value": "IPAR"
           },
           {
             "help": "quadratic",
             "name": "qua",
-            "value": "['.i64 = QUA']"
+            "value": "QUA"
           },
           {
             "help": "cubic",
             "name": "cub",
-            "value": "['.i64 = CUB']"
+            "value": "CUB"
           },
           {
             "help": "square root",
             "name": "squ",
-            "value": "['.i64 = SQU']"
+            "value": "SQU"
           },
           {
             "help": "cubic root",
             "name": "cbr",
-            "value": "['.i64 = CBR']"
+            "value": "CBR"
           },
           {
             "help": "parabola",
             "name": "par",
-            "value": "['.i64 = PAR']"
+            "value": "PAR"
           },
           {
             "help": "exponential",
             "name": "exp",
-            "value": "['.i64 = EXP']"
+            "value": "EXP"
           },
           {
             "help": "inverted quarter of sine wave",
             "name": "iqsin",
-            "value": "['.i64 = IQSIN']"
+            "value": "IQSIN"
           },
           {
             "help": "inverted half of sine wave",
             "name": "ihsin",
-            "value": "['.i64 = IHSIN']"
+            "value": "IHSIN"
           },
           {
             "help": "double-exponential seat",
             "name": "dese",
-            "value": "['.i64 = DESE']"
+            "value": "DESE"
           },
           {
             "help": "double-exponential sigmoid",
             "name": "desi",
-            "value": "['.i64 = DESI']"
+            "value": "DESI"
           },
           {
             "help": "logistic sigmoid",
             "name": "losi",
-            "value": "['.i64 = LOSI']"
+            "value": "LOSI"
           },
           {
             "help": "sine cardinal function",
             "name": "sinc",
-            "value": "['.i64 = SINC']"
+            "value": "SINC"
           },
           {
             "help": "inverted sine cardinal function",
             "name": "isinc",
-            "value": "['.i64 = ISINC']"
+            "value": "ISINC"
           },
           {
             "help": "quartic",
             "name": "quat",
-            "value": "['.i64 = QUAT']"
+            "value": "QUAT"
           },
           {
             "help": "quartic root",
             "name": "quatr",
-            "value": "['.i64 = QUATR']"
+            "value": "QUATR"
           },
           {
             "help": "squared quarter of sine wave",
             "name": "qsin2",
-            "value": "['.i64 = QSIN2']"
+            "value": "QSIN2"
           },
           {
             "help": "squared half of sine wave",
             "name": "hsin2",
-            "value": "['.i64 = HSIN2']"
+            "value": "HSIN2"
           }
         ],
         "default": "['.i64 = TRI']",

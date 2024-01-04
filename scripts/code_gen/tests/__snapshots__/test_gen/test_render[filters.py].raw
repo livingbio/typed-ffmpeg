@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Literal
 
 from .base import FilterNode, FilterableStream
 from .schema import Default, DefaultInt, DefaultStr, DefaultFloat, StreamType

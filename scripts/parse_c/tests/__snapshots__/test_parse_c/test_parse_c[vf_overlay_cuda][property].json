@@ -40,17 +40,17 @@
           {
             "help": "Repeat the previous frame.",
             "name": "repeat",
-            "value": "['.i64 = EOF_ACTION_REPEAT']"
+            "value": "EOF_ACTION_REPEAT"
           },
           {
             "help": "End both streams.",
             "name": "endall",
-            "value": "['.i64 = EOF_ACTION_ENDALL']"
+            "value": "EOF_ACTION_ENDALL"
           },
           {
             "help": "Pass through the main input.",
             "name": "pass",
-            "value": "['.i64 = EOF_ACTION_PASS']"
+            "value": "EOF_ACTION_PASS"
           }
         ],
         "default": "['.i64 = EOF_ACTION_REPEAT']",

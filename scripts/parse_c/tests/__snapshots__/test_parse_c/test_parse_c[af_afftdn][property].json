@@ -43,42 +43,42 @@
           {
             "help": "white noise",
             "name": "white",
-            "value": "['.i64 = WHITE_NOISE']"
+            "value": "WHITE_NOISE"
           },
           {
             "help": "white noise",
             "name": "w",
-            "value": "['.i64 = WHITE_NOISE']"
+            "value": "WHITE_NOISE"
           },
           {
             "help": "vinyl noise",
             "name": "vinyl",
-            "value": "['.i64 = VINYL_NOISE']"
+            "value": "VINYL_NOISE"
           },
           {
             "help": "vinyl noise",
             "name": "v",
-            "value": "['.i64 = VINYL_NOISE']"
+            "value": "VINYL_NOISE"
           },
           {
             "help": "shellac noise",
             "name": "shellac",
-            "value": "['.i64 = SHELLAC_NOISE']"
+            "value": "SHELLAC_NOISE"
           },
           {
             "help": "shellac noise",
             "name": "s",
-            "value": "['.i64 = SHELLAC_NOISE']"
+            "value": "SHELLAC_NOISE"
           },
           {
             "help": "custom noise",
             "name": "custom",
-            "value": "['.i64 = CUSTOM_NOISE']"
+            "value": "CUSTOM_NOISE"
           },
           {
             "help": "custom noise",
             "name": "c",
-            "value": "['.i64 = CUSTOM_NOISE']"
+            "value": "CUSTOM_NOISE"
           }
         ],
         "default": "['.i64 = WHITE_NOISE']",
@@ -154,32 +154,32 @@
           {
             "help": "input",
             "name": "input",
-            "value": "['.i64 = IN_MODE']"
+            "value": "IN_MODE"
           },
           {
             "help": "input",
             "name": "i",
-            "value": "['.i64 = IN_MODE']"
+            "value": "IN_MODE"
           },
           {
             "help": "output",
             "name": "output",
-            "value": "['.i64 = OUT_MODE']"
+            "value": "OUT_MODE"
           },
           {
             "help": "output",
             "name": "o",
-            "value": "['.i64 = OUT_MODE']"
+            "value": "OUT_MODE"
           },
           {
             "help": "noise",
             "name": "noise",
-            "value": "['.i64 = NOISE_MODE']"
+            "value": "NOISE_MODE"
           },
           {
             "help": "noise",
             "name": "n",
-            "value": "['.i64 = NOISE_MODE']"
+            "value": "NOISE_MODE"
           }
         ],
         "default": "['.i64 = OUT_MODE']",
@@ -227,22 +227,22 @@
           {
             "help": "none",
             "name": "none",
-            "value": "['.i64 = NONE_LINK']"
+            "value": "NONE_LINK"
           },
           {
             "help": "min",
             "name": "min",
-            "value": "['.i64 = MIN_LINK']"
+            "value": "MIN_LINK"
           },
           {
             "help": "max",
             "name": "max",
-            "value": "['.i64 = MAX_LINK']"
+            "value": "MAX_LINK"
           },
           {
             "help": "average",
             "name": "average",
-            "value": "['.i64 = AVERAGE_LINK']"
+            "value": "AVERAGE_LINK"
           }
         ],
         "default": "['.i64 = MIN_LINK']",
@@ -276,27 +276,27 @@
           {
             "help": "none",
             "name": "none",
-            "value": "['.i64 = SAMPLE_NONE']"
+            "value": "SAMPLE_NONE"
           },
           {
             "help": "start",
             "name": "start",
-            "value": "['.i64 = SAMPLE_START']"
+            "value": "SAMPLE_START"
           },
           {
             "help": "start",
             "name": "begin",
-            "value": "['.i64 = SAMPLE_START']"
+            "value": "SAMPLE_START"
           },
           {
             "help": "stop",
             "name": "stop",
-            "value": "['.i64 = SAMPLE_STOP']"
+            "value": "SAMPLE_STOP"
           },
           {
             "help": "stop",
             "name": "end",
-            "value": "['.i64 = SAMPLE_STOP']"
+            "value": "SAMPLE_STOP"
           }
         ],
         "default": "['.i64 = SAMPLE_NONE']",

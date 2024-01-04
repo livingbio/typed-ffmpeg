@@ -335,37 +335,37 @@
           {
             "help": "unspecified",
             "name": "unspecified",
-            "value": "['.i64 = AVCOL_SPC_UNSPECIFIED']"
+            "value": "AVCOL_SPC_UNSPECIFIED"
           },
           {
             "help": "bt709",
             "name": "bt709",
-            "value": "['.i64 = AVCOL_SPC_BT709']"
+            "value": "AVCOL_SPC_BT709"
           },
           {
             "help": "fcc",
             "name": "fcc",
-            "value": "['.i64 = AVCOL_SPC_FCC']"
+            "value": "AVCOL_SPC_FCC"
           },
           {
             "help": "bt470bg",
             "name": "bt470bg",
-            "value": "['.i64 = AVCOL_SPC_BT470BG']"
+            "value": "AVCOL_SPC_BT470BG"
           },
           {
             "help": "smpte170m",
             "name": "smpte170m",
-            "value": "['.i64 = AVCOL_SPC_SMPTE170M']"
+            "value": "AVCOL_SPC_SMPTE170M"
           },
           {
             "help": "smpte240m",
             "name": "smpte240m",
-            "value": "['.i64 = AVCOL_SPC_SMPTE240M']"
+            "value": "AVCOL_SPC_SMPTE240M"
           },
           {
             "help": "bt2020ncl",
             "name": "bt2020ncl",
-            "value": "['.i64 = AVCOL_SPC_BT2020_NCL']"
+            "value": "AVCOL_SPC_BT2020_NCL"
           }
         ],
         "default": "['.i64 = AVCOL_SPC_UNSPECIFIED']",

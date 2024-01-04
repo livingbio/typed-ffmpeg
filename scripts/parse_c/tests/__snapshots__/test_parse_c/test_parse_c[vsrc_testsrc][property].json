@@ -953,17 +953,17 @@
           {
             "help": "fade to black",
             "name": "black",
-            "value": "['.i64=0']"
+            "value": 0
           },
           {
             "help": "fade to white",
             "name": "white",
-            "value": "['.i64=1']"
+            "value": 1
           },
           {
             "help": "white to black",
             "name": "all",
-            "value": "['.i64=2']"
+            "value": 2
           }
         ],
         "default": "['.i64=0']",
@@ -1047,12 +1047,12 @@
           {
             "help": "reference",
             "name": "reference",
-            "value": "['.i64=0']"
+            "value": 0
           },
           {
             "help": "skintones",
             "name": "skintones",
-            "value": "['.i64=1']"
+            "value": 1
           }
         ],
         "default": "['.i64=0']",
