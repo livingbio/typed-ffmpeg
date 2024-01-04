@@ -39,7 +39,7 @@
           "flags"
         ],
         "choices": [],
-        "default": "['.str =']",
+        "default": "['.str = ']",
         "default_value": "",
         "deprecated": false,
         "help": "Flags to pass to libswscale",
@@ -467,7 +467,7 @@
           "flags"
         ],
         "choices": [],
-        "default": "['.str =']",
+        "default": "['.str = ']",
         "default_value": "",
         "deprecated": false,
         "help": "Flags to pass to libswscale",

@@ -1,6 +1,6 @@
 [
   {
-    "description": "\\\"VA-API\\\" hstack",
+    "description": "\\\"VA-API\\  \"hstack",
     "flags": "(1 << 0) | 0",
     "id": "ff_vf_hstack_vaapi",
     "init": "vaapi_stack_init",
@@ -53,7 +53,7 @@
     "priv_class": "&hstack_vaapi_class"
   },
   {
-    "description": "\\\"VA-API\\\" vstack",
+    "description": "\\\"VA-API\\  \"vstack",
     "flags": "(1 << 0) | 0",
     "id": "ff_vf_vstack_vaapi",
     "init": "vaapi_stack_init",
@@ -106,7 +106,7 @@
     "priv_class": "&vstack_vaapi_class"
   },
   {
-    "description": "\\\"VA-API\\\" xstack",
+    "description": "\\\"VA-API\\  \"xstack",
     "flags": "(1 << 0) | 0",
     "id": "ff_vf_xstack_vaapi",
     "init": "vaapi_stack_init",

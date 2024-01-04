@@ -1,4 +1,9 @@
+import re
 from typing import Any
+
+
+def remove_string_concat(text: str) -> str:
+    return re.sub(r"\"\s*\"", "", text)
 
 
 def parse_c_structure(text: str) -> list[Any]:
@@ -14,7 +19,6 @@ def parse_c_structure(text: str) -> list[Any]:
     # ignore Line Directives
     lines = text.split("\n")
     text = "\n".join(line for line in lines if not line.strip().startswith("#"))
-    text = text.replace('" "', "")
 
     for idx, ch in enumerate(text):
         match ch:
@@ -29,7 +33,7 @@ def parse_c_structure(text: str) -> list[Any]:
                 buffer += ch
             case "," if not in_text and not in_bracket and level == 1:
                 if buffer.strip():
-                    output.append(buffer.strip(" ").strip())
+                    output.append(remove_string_concat(buffer.strip()))
                 buffer = ""
             case "{" if not in_text and not in_bracket:
                 level += 1
@@ -47,6 +51,6 @@ def parse_c_structure(text: str) -> list[Any]:
                 buffer += ch
 
     if buffer.strip():
-        output.append(buffer.strip(" ").replace('""', "").strip())
+        output.append(remove_string_concat(buffer.strip(" ").strip()))
 
     return output
