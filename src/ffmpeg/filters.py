@@ -15,8 +15,8 @@ def aap(
     projection: int | DefaultInt = DefaultInt(2),
     mu: float | DefaultFloat = DefaultFloat(0.0001),
     delta: float | DefaultFloat = DefaultFloat(0.001),
-    out_mode: int | Literal["i", "d", "o", "n", "e"] | DefaultStr = DefaultStr("OUT_MODE"),
-    precision: int | Literal["auto", "float", "double"] | DefaultInt = DefaultInt(0),
+    out_mode: int | Literal["i", "d", "o", "n", "e"] | DefaultStr = DefaultStr("o"),
+    precision: int | Literal["auto", "float", "double"] | DefaultStr = DefaultStr("auto"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -97,7 +97,7 @@ def acrossfade(
         "qsin2",
         "hsin2",
     ]
-    | DefaultStr = DefaultStr("TRI"),
+    | DefaultStr = DefaultStr("tri"),
     curve2: int
     | Literal[
         "nofade",
@@ -125,7 +125,7 @@ def acrossfade(
         "qsin2",
         "hsin2",
     ]
-    | DefaultStr = DefaultStr("TRI"),
+    | DefaultStr = DefaultStr("tri"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -173,11 +173,11 @@ def afir(
     dry: float | DefaultFloat = DefaultFloat(1.0),
     wet: float | DefaultFloat = DefaultFloat(1.0),
     length: float | DefaultFloat = DefaultFloat(1.0),
-    gtype: int | Literal["none", "peak", "dc", "gn", "ac", "rms"] | DefaultInt = DefaultInt(0),
+    gtype: int | Literal["none", "peak", "dc", "gn", "ac", "rms"] | DefaultStr = DefaultStr("peak"),
     irnorm: float | DefaultFloat = DefaultFloat(1.0),
     irlink: bool | DefaultInt = DefaultInt(1),
     irgain: float | DefaultFloat = DefaultFloat(1.0),
-    irfmt: int | Literal["mono", "input"] | DefaultInt = DefaultInt(1),
+    irfmt: int | Literal["mono", "input"] | DefaultStr = DefaultStr("input"),
     maxir: float | DefaultFloat = DefaultFloat(30.0),
     response: bool | DefaultInt = DefaultInt(0),
     channel: int | DefaultInt = DefaultInt(0),
@@ -187,8 +187,8 @@ def afir(
     maxp: int | DefaultInt = DefaultInt(8192),
     nbirs: int | DefaultInt = DefaultInt(1),
     ir: int | DefaultInt = DefaultInt(0),
-    precision: int | Literal["auto", "float", "double"] | DefaultInt = DefaultInt(0),
-    irload: int | Literal["init", "access"] | DefaultInt = DefaultInt(0),
+    precision: int | Literal["auto", "float", "double"] | DefaultStr = DefaultStr("auto"),
+    irload: int | Literal["init", "access"] | DefaultStr = DefaultStr("init"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -273,7 +273,7 @@ def afir(
 def ainterleave(
     *streams: "AudioStream",
     nb_inputs: int | DefaultInt = DefaultInt(2),
-    duration: int | Literal["longest", "shortest", "first"] | DefaultInt = DefaultInt(0),
+    duration: int | Literal["longest", "shortest", "first"] | DefaultStr = DefaultStr("longest"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -421,7 +421,7 @@ def amerge(*streams: "AudioStream", inputs: int | DefaultInt = DefaultInt(2), **
 def amix(
     *streams: "AudioStream",
     inputs: int | DefaultInt = DefaultInt(2),
-    duration: int | Literal["longest", "shortest", "first"] | DefaultInt = DefaultInt(0),
+    duration: int | Literal["longest", "shortest", "first"] | DefaultStr = DefaultStr("longest"),
     dropout_transition: float | DefaultFloat = DefaultFloat(2.0),
     weights: str | DefaultStr = DefaultStr("1 1"),
     normalize: bool | DefaultInt = DefaultInt(1),
@@ -509,8 +509,8 @@ def anlmf(
     mu: float | DefaultFloat = DefaultFloat(0.75),
     eps: float | DefaultFloat = DefaultFloat(1.0),
     leakage: float | DefaultFloat = DefaultFloat(0.0),
-    out_mode: int | Literal["i", "d", "o", "n", "e"] | DefaultStr = DefaultStr("OUT_MODE"),
-    precision: int | Literal["auto", "float", "double"] | DefaultInt = DefaultInt(0),
+    out_mode: int | Literal["i", "d", "o", "n", "e"] | DefaultStr = DefaultStr("o"),
+    precision: int | Literal["auto", "float", "double"] | DefaultStr = DefaultStr("auto"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -566,8 +566,8 @@ def anlms(
     mu: float | DefaultFloat = DefaultFloat(0.75),
     eps: float | DefaultFloat = DefaultFloat(1.0),
     leakage: float | DefaultFloat = DefaultFloat(0.0),
-    out_mode: int | Literal["i", "d", "o", "n", "e"] | DefaultStr = DefaultStr("OUT_MODE"),
-    precision: int | Literal["auto", "float", "double"] | DefaultInt = DefaultInt(0),
+    out_mode: int | Literal["i", "d", "o", "n", "e"] | DefaultStr = DefaultStr("o"),
+    precision: int | Literal["auto", "float", "double"] | DefaultStr = DefaultStr("auto"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -652,8 +652,8 @@ def arls(
     order: int | DefaultInt = DefaultInt(16),
     _lambda: float | DefaultStr = DefaultStr("1.f"),
     delta: float | DefaultStr = DefaultStr("2.f"),
-    out_mode: int | Literal["i", "d", "o", "n", "e"] | DefaultStr = DefaultStr("OUT_MODE"),
-    precision: int | Literal["auto", "float", "double"] | DefaultInt = DefaultInt(0),
+    out_mode: int | Literal["i", "d", "o", "n", "e"] | DefaultStr = DefaultStr("o"),
+    precision: int | Literal["auto", "float", "double"] | DefaultStr = DefaultStr("auto"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -800,7 +800,7 @@ def axcorrelate(
     _axcorrelate1: "AudioStream",
     *,
     size: int | DefaultInt = DefaultInt(256),
-    algo: int | Literal["slow", "fast", "best"] | DefaultInt = DefaultInt(2),
+    algo: int | Literal["slow", "fast", "best"] | DefaultStr = DefaultStr("best"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -891,7 +891,7 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | DefaultInt = DefaultInt(0),
+    | DefaultStr = DefaultStr(0),
     c1_mode: int
     | Literal[
         "addition",
@@ -937,7 +937,7 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | DefaultInt = DefaultInt(0),
+    | DefaultStr = DefaultStr(0),
     c2_mode: int
     | Literal[
         "addition",
@@ -983,7 +983,7 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | DefaultInt = DefaultInt(0),
+    | DefaultStr = DefaultStr(0),
     c3_mode: int
     | Literal[
         "addition",
@@ -1029,7 +1029,7 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | DefaultInt = DefaultInt(0),
+    | DefaultStr = DefaultStr(0),
     all_mode: int
     | Literal[
         "addition",
@@ -1075,7 +1075,7 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | DefaultInt = DefaultInt(-1),
+    | DefaultStr = DefaultStr(-1),
     c0_expr: str,
     c1_expr: str,
     c2_expr: str,
@@ -1162,11 +1162,11 @@ def blend_vulkan(
     _top: "VideoStream",
     _bottom: "VideoStream",
     *,
-    c0_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(0),
-    c1_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(0),
-    c2_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(0),
-    c3_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(0),
-    all_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(-1),
+    c0_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(0),
+    c1_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(0),
+    c2_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(0),
+    c3_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(0),
+    all_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(-1),
     c0_opacity: float | DefaultFloat = DefaultFloat(1.0),
     c1_opacity: float | DefaultFloat = DefaultFloat(1.0),
     c2_opacity: float | DefaultFloat = DefaultFloat(1.0),
@@ -1237,7 +1237,7 @@ def bm3d(
     mstep: int | DefaultInt = DefaultInt(1),
     thmse: float | DefaultFloat = DefaultFloat(0.0),
     hdthr: float | DefaultFloat = DefaultFloat(2.7),
-    estim: int | Literal["basic", "final"] | DefaultStr = DefaultStr("BASIC"),
+    estim: int | Literal["basic", "final"] | DefaultStr = DefaultStr("basic"),
     ref: bool | DefaultInt = DefaultInt(0),
     planes: int | DefaultInt = DefaultInt(7),
     **kwargs: Any
@@ -1299,8 +1299,8 @@ def colormap(
     *,
     patch_size: str | DefaultStr = DefaultStr("64x64"),
     nb_patches: int | DefaultInt = DefaultInt(0),
-    type: int | Literal["relative", "absolute"] | DefaultInt = DefaultInt(1),
-    kernel: int | Literal["euclidean", "weuclidean"] | DefaultInt = DefaultInt(0),
+    type: int | Literal["relative", "absolute"] | DefaultStr = DefaultStr("absolute"),
+    kernel: int | Literal["euclidean", "weuclidean"] | DefaultStr = DefaultStr(0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1427,7 +1427,7 @@ def convolve(
     _impulse: "VideoStream",
     *,
     planes: int | DefaultInt = DefaultInt(7),
-    impulse: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+    impulse: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
     noise: float | DefaultFloat = DefaultFloat(1e-07),
     **kwargs: Any
 ) -> "VideoStream":
@@ -1576,7 +1576,7 @@ def deconvolve(
     _impulse: "VideoStream",
     *,
     planes: int | DefaultInt = DefaultInt(7),
-    impulse: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+    impulse: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
     noise: float | DefaultFloat = DefaultFloat(1e-07),
     **kwargs: Any
 ) -> "VideoStream":
@@ -1624,7 +1624,7 @@ def displace(
     _xmap: "VideoStream",
     _ymap: "VideoStream",
     *,
-    edge: int | Literal["blank", "smear", "wrap", "mirror"] | DefaultStr = DefaultStr("EDGE_SMEAR"),
+    edge: int | Literal["blank", "smear", "wrap", "mirror"] | DefaultStr = DefaultStr("smear"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1730,16 +1730,16 @@ def feedback(
 
 def fieldmatch(
     *streams: "VideoStream",
-    order: int | Literal["auto", "bff", "tff"] | DefaultStr = DefaultStr("FM_PARITY_AUTO"),
-    mode: int | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] | DefaultStr = DefaultStr("MODE_PC_N"),
+    order: int | Literal["auto", "bff", "tff"] | DefaultStr = DefaultStr("auto"),
+    mode: int | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] | DefaultStr = DefaultStr("pc_n"),
     ppsrc: bool | DefaultInt = DefaultInt(0),
-    field: int | Literal["auto", "bottom", "top"] | DefaultStr = DefaultStr("FM_PARITY_AUTO"),
+    field: int | Literal["auto", "bottom", "top"] | DefaultStr = DefaultStr("auto"),
     mchroma: bool | DefaultInt = DefaultInt(1),
     y0: int | DefaultInt = DefaultInt(0),
     y1: int | DefaultInt = DefaultInt(0),
     scthresh: float | DefaultFloat = DefaultFloat(12.0),
-    combmatch: int | Literal["none", "sc", "full"] | DefaultStr = DefaultStr("COMBMATCH_SC"),
-    combdbg: int | Literal["none", "pcn", "pcnub"] | DefaultStr = DefaultStr("COMBDBG_NONE"),
+    combmatch: int | Literal["none", "sc", "full"] | DefaultStr = DefaultStr("sc"),
+    combdbg: int | Literal["none", "pcn", "pcnub"] | DefaultStr = DefaultStr("none"),
     cthresh: int | DefaultInt = DefaultInt(9),
     chroma: bool | DefaultInt = DefaultInt(0),
     blockx: int | DefaultInt = DefaultInt(16),
@@ -1837,9 +1837,7 @@ def framepack(
     _left: "VideoStream",
     _right: "VideoStream",
     *,
-    format: int
-    | Literal["sbs", "tab", "frameseq", "lines", "columns"]
-    | DefaultStr = DefaultStr("AV_STEREO3D_SIDEBYSIDE"),
+    format: int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | DefaultStr = DefaultStr("sbs"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1936,9 +1934,9 @@ def guided(
     *streams: "VideoStream",
     radius: int | DefaultInt = DefaultInt(3),
     eps: float | DefaultFloat = DefaultFloat(0.01),
-    mode: int | Literal["basic", "fast"] | DefaultStr = DefaultStr("BASIC"),
+    mode: int | Literal["basic", "fast"] | DefaultStr = DefaultStr("basic"),
     sub: int | DefaultInt = DefaultInt(4),
-    guidance: int | Literal["off", "on"] | DefaultStr = DefaultStr("OFF"),
+    guidance: int | Literal["off", "on"] | DefaultStr = DefaultStr("off"),
     planes: int | DefaultInt = DefaultInt(1),
     **kwargs: Any
 ) -> "VideoStream":
@@ -1986,10 +1984,10 @@ def haldclut(
     _main: "VideoStream",
     _clut: "VideoStream",
     *,
-    clut: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+    clut: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
     interp: int
     | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
-    | DefaultStr = DefaultStr("INTERPOLATE_TETRAHEDRAL"),
+    | DefaultStr = DefaultStr("tetrahedral"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2042,9 +2040,9 @@ def headphone(
     map: str,
     gain: float | DefaultFloat = DefaultFloat(0.0),
     lfe: float | DefaultFloat = DefaultFloat(0.0),
-    type: int | Literal["time", "freq"] | DefaultInt = DefaultInt(1),
+    type: int | Literal["time", "freq"] | DefaultStr = DefaultStr("freq"),
     size: int | DefaultInt = DefaultInt(1024),
-    hrir: int | Literal["stereo", "multich"] | DefaultInt = DefaultInt(0),
+    hrir: int | Literal["stereo", "multich"] | DefaultStr = DefaultStr("stereo"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -2226,7 +2224,7 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
 def interleave(
     *streams: "VideoStream",
     nb_inputs: int | DefaultInt = DefaultInt(2),
-    duration: int | Literal["longest", "shortest", "first"] | DefaultInt = DefaultInt(0),
+    duration: int | Literal["longest", "shortest", "first"] | DefaultStr = DefaultStr("longest"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2406,7 +2404,7 @@ def libplacebo(
     pos_w: str | DefaultStr = DefaultStr("ow"),
     pos_h: str | DefaultStr = DefaultStr("oh"),
     format: str,
-    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultInt = DefaultInt(0),
+    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultStr = DefaultStr("disable"),
     force_divisible_by: int | DefaultInt = DefaultInt(1),
     normalize_sar: bool | DefaultInt = DefaultInt(0),
     pad_crop_ratio: float | DefaultFloat = DefaultFloat(0.0),
@@ -2417,10 +2415,10 @@ def libplacebo(
     | Literal[
         "auto", "gbr", "bt709", "unknown", "bt470bg", "smpte170m", "smpte240m", "ycgco", "bt2020nc", "bt2020c", "ictcp"
     ]
-    | DefaultInt = DefaultInt(-1),
+    | DefaultStr = DefaultStr("auto"),
     range: int
     | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
-    | DefaultInt = DefaultInt(-1),
+    | DefaultStr = DefaultStr("auto"),
     color_primaries: int
     | Literal[
         "auto",
@@ -2438,7 +2436,7 @@ def libplacebo(
         "jedec-p22",
         "ebu3213",
     ]
-    | DefaultInt = DefaultInt(-1),
+    | DefaultStr = DefaultStr("auto"),
     color_trc: int
     | Literal[
         "auto",
@@ -2457,7 +2455,7 @@ def libplacebo(
         "smpte2084",
         "arib-std-b67",
     ]
-    | DefaultInt = DefaultInt(-1),
+    | DefaultStr = DefaultStr("auto"),
     upscaler: str | DefaultStr = DefaultStr("spline36"),
     downscaler: str | DefaultStr = DefaultStr("mitchell"),
     frame_mixer: str | DefaultStr = DefaultStr("none"),
@@ -2484,10 +2482,10 @@ def libplacebo(
     percentile: float | DefaultFloat = DefaultFloat(99.995),
     gamut_mode: int
     | Literal["clip", "perceptual", "relative", "saturation", "absolute", "desaturate", "darken", "warn", "linear"]
-    | DefaultStr = DefaultStr("GAMUT_MAP_PERCEPTUAL"),
+    | DefaultStr = DefaultStr("perceptual"),
     tonemapping: int
     | Literal["auto", "clip", "bt.2390", "bt.2446a", "spline", "reinhard", "mobius", "hable", "gamma", "linear"]
-    | DefaultStr = DefaultStr("TONE_MAP_AUTO"),
+    | DefaultStr = DefaultStr("auto"),
     tonemapping_param: float | DefaultFloat = DefaultFloat(0.0),
     inverse_tonemapping: bool | DefaultInt = DefaultInt(0),
     tonemapping_lut_size: int | DefaultInt = DefaultInt(256),
@@ -2497,16 +2495,12 @@ def libplacebo(
     desaturation_exponent: float | DefaultFloat = DefaultFloat(-1.0),
     gamut_warning: bool | DefaultInt = DefaultInt(0),
     gamut_clipping: bool | DefaultInt = DefaultInt(0),
-    intent: int
-    | Literal["perceptual", "relative", "absolute", "saturation"]
-    | DefaultStr = DefaultStr("PL_INTENT_PERCEPTUAL"),
-    tonemapping_mode: int | Literal["auto", "rgb", "max", "hybrid", "luma"] | DefaultInt = DefaultInt(0),
+    intent: int | Literal["perceptual", "relative", "absolute", "saturation"] | DefaultStr = DefaultStr("perceptual"),
+    tonemapping_mode: int | Literal["auto", "rgb", "max", "hybrid", "luma"] | DefaultStr = DefaultStr("auto"),
     tonemapping_crosstalk: float | DefaultFloat = DefaultFloat(0.04),
     overshoot: float | DefaultFloat = DefaultFloat(0.05),
     hybrid_mix: float | DefaultFloat = DefaultFloat(0.2),
-    dithering: int
-    | Literal["none", "blue", "ordered", "ordered_fixed", "white"]
-    | DefaultStr = DefaultStr("PL_DITHER_BLUE_NOISE"),
+    dithering: int | Literal["none", "blue", "ordered", "ordered_fixed", "white"] | DefaultStr = DefaultStr("blue"),
     dither_lut_size: int | DefaultInt = DefaultInt(6),
     dither_temporal: bool | DefaultInt = DefaultInt(0),
     cones: str | Literal["l", "m", "s"] | DefaultStr = DefaultStr(0),
@@ -3122,7 +3116,7 @@ def maskedthreshold(
     *,
     threshold: int | DefaultInt = DefaultInt(1),
     planes: int | DefaultStr = DefaultStr("0xF"),
-    mode: int | Literal["abs", "diff"] | DefaultInt = DefaultInt(0),
+    mode: int | Literal["abs", "diff"] | DefaultStr = DefaultStr("abs"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3279,7 +3273,7 @@ def mix(
     weights: str | DefaultStr = DefaultStr("1 1"),
     scale: float | DefaultFloat = DefaultFloat(0.0),
     planes: str | DefaultStr = DefaultStr(15),
-    duration: int | Literal["longest", "shortest", "first"] | DefaultInt = DefaultInt(0),
+    duration: int | Literal["longest", "shortest", "first"] | DefaultStr = DefaultStr("longest"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3326,9 +3320,9 @@ def morpho(
     *,
     mode: int
     | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
-    | DefaultInt = DefaultInt(0),
+    | DefaultStr = DefaultStr(0),
     planes: int | DefaultInt = DefaultInt(7),
-    structure: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+    structure: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3469,7 +3463,7 @@ def overlay(
     *,
     x: str | DefaultStr = DefaultStr("0"),
     y: str | DefaultStr = DefaultStr("0"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("EOF_ACTION_REPEAT"),
+    eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("repeat"),
     eval: int | DefaultStr = DefaultStr("EVAL_MODE_FRAME"),
     shortest: bool | DefaultInt = DefaultInt(0),
     format: int | DefaultStr = DefaultStr("OVERLAY_FORMAT_YUV420"),
@@ -3553,7 +3547,7 @@ def overlay_cuda(
     *,
     x: str | DefaultStr = DefaultStr("0"),
     y: str | DefaultStr = DefaultStr("0"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("EOF_ACTION_REPEAT"),
+    eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("repeat"),
     eval: int | DefaultStr = DefaultStr("EVAL_MODE_FRAME"),
     shortest: bool | DefaultInt = DefaultInt(0),
     repeatlast: bool | DefaultInt = DefaultInt(1),
@@ -3662,7 +3656,7 @@ def overlay_vaapi(
     w: str | DefaultStr = DefaultStr("overlay_iw"),
     h: str | DefaultStr = DefaultStr("overlay_ih*w/overlay_iw"),
     alpha: float | DefaultFloat = DefaultFloat(1.0),
-    eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("EOF_ACTION_REPEAT"),
+    eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("repeat"),
     shortest: bool | DefaultInt = DefaultInt(0),
     repeatlast: bool | DefaultInt = DefaultInt(1),
     **kwargs: Any
@@ -3767,7 +3761,7 @@ def paletteuse(
     *,
     dither: int
     | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
-    | DefaultStr = DefaultStr("DITHERING_SIERRA2_4A"),
+    | DefaultStr = DefaultStr("sierra2_4a"),
     bayer_scale: int | DefaultInt = DefaultInt(2),
     diff_mode: int | Literal["rectangle"] | DefaultStr = DefaultStr("DIFF_MODE_NONE"),
     new: bool | DefaultInt = DefaultInt(0),
@@ -3994,7 +3988,7 @@ def remap_opencl(
     _xmap: "VideoStream",
     _ymap: "VideoStream",
     *,
-    interp: int | Literal["near", "linear"] | DefaultInt = DefaultInt(1),
+    interp: int | Literal["near", "linear"] | DefaultStr = DefaultStr("linear"),
     fill: str | DefaultStr = DefaultStr("black"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -4049,21 +4043,21 @@ def scale2ref(
     size: str,
     in_color_matrix: int
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
-    | DefaultInt = DefaultInt(-1),
+    | DefaultStr = DefaultStr("auto"),
     out_color_matrix: int
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
     | DefaultStr = DefaultStr("AVCOL_SPC_UNSPECIFIED"),
     in_range: int
     | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-    | DefaultStr = DefaultStr("AVCOL_RANGE_UNSPECIFIED"),
+    | DefaultStr = DefaultStr("auto"),
     out_range: int
     | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-    | DefaultStr = DefaultStr("AVCOL_RANGE_UNSPECIFIED"),
+    | DefaultStr = DefaultStr("auto"),
     in_v_chr_pos: int | DefaultInt = DefaultInt(-513),
     in_h_chr_pos: int | DefaultInt = DefaultInt(-513),
     out_v_chr_pos: int | DefaultInt = DefaultInt(-513),
     out_h_chr_pos: int | DefaultInt = DefaultInt(-513),
-    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultInt = DefaultInt(0),
+    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultStr = DefaultStr("disable"),
     force_divisible_by: int | DefaultInt = DefaultInt(1),
     param0: float | DefaultFloat = DefaultFloat(1.7976931348623157e308),
     param1: float | DefaultFloat = DefaultFloat(1.7976931348623157e308),
@@ -4151,10 +4145,10 @@ def scale2ref_npp(
     s: str,
     interp_algo: int
     | Literal["nn", "linear", "cubic", "cubic2p_bspline", "cubic2p_catmullrom", "cubic2p_b05c03", "super", "lanczos"]
-    | DefaultStr = DefaultStr("NPPI_INTER_CUBIC"),
-    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultInt = DefaultInt(0),
+    | DefaultStr = DefaultStr("cubic"),
+    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultStr = DefaultStr("disable"),
     force_divisible_by: int | DefaultInt = DefaultInt(1),
-    eval: int | Literal["init", "frame"] | DefaultStr = DefaultStr("EVAL_MODE_INIT"),
+    eval: int | Literal["init", "frame"] | DefaultStr = DefaultStr("init"),
     **kwargs: Any
 ) -> tuple["VideoStream", "VideoStream",]:
     """
@@ -4214,15 +4208,15 @@ def sidechaincompress(
     _sidechain: "AudioStream",
     *,
     level_in: float | DefaultFloat = DefaultFloat(1.0),
-    mode: int | Literal["downward", "upward"] | DefaultInt = DefaultInt(0),
+    mode: int | Literal["downward", "upward"] | DefaultStr = DefaultStr("downward"),
     threshold: float | DefaultFloat = DefaultFloat(0.125),
     ratio: float | DefaultFloat = DefaultFloat(2.0),
     attack: float | DefaultFloat = DefaultFloat(20.0),
     release: float | DefaultFloat = DefaultFloat(250.0),
     makeup: float | DefaultFloat = DefaultFloat(1.0),
     knee: float | DefaultFloat = DefaultFloat(2.82843),
-    link: int | Literal["average", "maximum"] | DefaultInt = DefaultInt(0),
-    detection: int | Literal["peak", "rms"] | DefaultInt = DefaultInt(1),
+    link: int | Literal["average", "maximum"] | DefaultStr = DefaultStr("average"),
+    detection: int | Literal["peak", "rms"] | DefaultStr = DefaultStr("rms"),
     level_sc: float | DefaultFloat = DefaultFloat(1.0),
     mix: float | DefaultFloat = DefaultFloat(1.0),
     **kwargs: Any
@@ -4290,7 +4284,7 @@ def sidechaingate(
     _sidechain: "AudioStream",
     *,
     level_in: float | DefaultFloat = DefaultFloat(1.0),
-    mode: int | Literal["downward", "upward"] | DefaultInt = DefaultInt(0),
+    mode: int | Literal["downward", "upward"] | DefaultStr = DefaultStr("downward"),
     range: float | DefaultFloat = DefaultFloat(0.06125),
     threshold: float | DefaultFloat = DefaultFloat(0.125),
     ratio: float | DefaultFloat = DefaultFloat(2.0),
@@ -4298,8 +4292,8 @@ def sidechaingate(
     release: float | DefaultFloat = DefaultFloat(250.0),
     makeup: float | DefaultFloat = DefaultFloat(1.0),
     knee: float | DefaultFloat = DefaultFloat(2.828427125),
-    detection: int | Literal["peak", "rms"] | DefaultInt = DefaultInt(1),
-    link: int | Literal["average", "maximum"] | DefaultInt = DefaultInt(0),
+    detection: int | Literal["peak", "rms"] | DefaultStr = DefaultStr("rms"),
+    link: int | Literal["average", "maximum"] | DefaultStr = DefaultStr("average"),
     level_sc: float | DefaultFloat = DefaultFloat(1.0),
     **kwargs: Any
 ) -> "AudioStream":
@@ -4368,10 +4362,10 @@ def sidechaingate(
 
 def signature(
     *streams: "VideoStream",
-    detectmode: int | Literal["off", "full", "fast"] | DefaultStr = DefaultStr("MODE_OFF"),
+    detectmode: int | Literal["off", "full", "fast"] | DefaultStr = DefaultStr("off"),
     nb_inputs: int | DefaultInt = DefaultInt(1),
     filename: str | DefaultStr = DefaultStr(""),
-    format: int | Literal["binary", "xml"] | DefaultStr = DefaultStr("FORMAT_BINARY"),
+    format: int | Literal["binary", "xml"] | DefaultStr = DefaultStr("binary"),
     th_d: int | DefaultInt = DefaultInt(9000),
     th_dc: int | DefaultInt = DefaultInt(60000),
     th_xh: int | DefaultInt = DefaultInt(116),
@@ -4434,8 +4428,8 @@ def spectrumsynth(
     *,
     sample_rate: int | DefaultInt = DefaultInt(44100),
     channels: int | DefaultInt = DefaultInt(1),
-    scale: int | Literal["lin", "log"] | DefaultStr = DefaultStr("LOG"),
-    slide: int | Literal["replace", "scroll", "fullframe", "rscroll"] | DefaultStr = DefaultStr("FULLFRAME"),
+    scale: int | Literal["lin", "log"] | DefaultStr = DefaultStr("log"),
+    slide: int | Literal["replace", "scroll", "fullframe", "rscroll"] | DefaultStr = DefaultStr("fullframe"),
     win_func: int
     | Literal[
         "rect",
@@ -4461,9 +4455,9 @@ def spectrumsynth(
         "bohman",
         "kaiser",
     ]
-    | DefaultInt = DefaultInt(0),
+    | DefaultStr = DefaultStr(0),
     overlap: float | DefaultFloat = DefaultFloat(1.0),
-    orientation: int | Literal["vertical", "horizontal"] | DefaultStr = DefaultStr("VERTICAL"),
+    orientation: int | Literal["vertical", "horizontal"] | DefaultStr = DefaultStr("vertical"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -4847,7 +4841,7 @@ def xcorrelate(
     _secondary: "VideoStream",
     *,
     planes: int | DefaultInt = DefaultInt(7),
-    secondary: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+    secondary: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4954,7 +4948,7 @@ def xfade(
         "revealup",
         "revealdown",
     ]
-    | DefaultStr = DefaultStr("FADE"),
+    | DefaultStr = DefaultStr("fade"),
     duration: int | DefaultInt = DefaultInt(1000000),
     offset: int | DefaultInt = DefaultInt(0),
     expr: str,
@@ -5018,7 +5012,7 @@ def xfade_opencl(
         "slideup",
         "slidedown",
     ]
-    | DefaultInt = DefaultInt(1),
+    | DefaultStr = DefaultStr(1),
     source: str,
     kernel: str,
     duration: int | DefaultInt = DefaultInt(1000000),

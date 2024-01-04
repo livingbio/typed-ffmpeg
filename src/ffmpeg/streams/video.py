@@ -195,7 +195,7 @@ class VideoStream(FilterableStream):
         _2b: float | DefaultFloat = DefaultFloat(0.04),
         s: int | DefaultInt = DefaultInt(9),
         p: str | DefaultStr = DefaultStr(7),
-        a: int | Literal["p", "s"] | DefaultStr = DefaultStr("PARALLEL"),
+        a: int | Literal["p", "s"] | DefaultStr = DefaultStr("p"),
         _0s: float | DefaultFloat = DefaultFloat(32767.0),
         _1s: float | DefaultFloat = DefaultFloat(32767.0),
         _2s: float | DefaultFloat = DefaultFloat(32767.0),
@@ -412,7 +412,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def bench(
-        self, *, action: int | Literal["start", "stop"] | DefaultStr = DefaultStr("ACTION_START"), **kwargs: Any
+        self, *, action: int | Literal["start", "stop"] | DefaultStr = DefaultStr("start"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -716,7 +716,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         c1_mode: int
         | Literal[
             "addition",
@@ -762,7 +762,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         c2_mode: int
         | Literal[
             "addition",
@@ -808,7 +808,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         c3_mode: int
         | Literal[
             "addition",
@@ -854,7 +854,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         all_mode: int
         | Literal[
             "addition",
@@ -900,7 +900,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr(-1),
         c0_expr: str,
         c1_expr: str,
         c2_expr: str,
@@ -986,11 +986,11 @@ class VideoStream(FilterableStream):
         self,
         _bottom: "VideoStream",
         *,
-        c0_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(0),
-        c1_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(0),
-        c2_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(0),
-        c3_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(0),
-        all_mode: int | Literal["normal", "multiply"] | DefaultInt = DefaultInt(-1),
+        c0_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(0),
+        c1_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(0),
+        c2_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(0),
+        c3_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(0),
+        all_mode: int | Literal["normal", "multiply"] | DefaultStr = DefaultStr(-1),
         c0_opacity: float | DefaultFloat = DefaultFloat(1.0),
         c1_opacity: float | DefaultFloat = DefaultFloat(1.0),
         c2_opacity: float | DefaultFloat = DefaultFloat(1.0),
@@ -1205,9 +1205,9 @@ class VideoStream(FilterableStream):
     def bwdif(
         self,
         *,
-        mode: int | Literal["send_frame", "send_field"] | DefaultStr = DefaultStr("YADIF_MODE_SEND_FIELD"),
-        parity: int | Literal["tff", "bff", "auto"] | DefaultStr = DefaultStr("YADIF_PARITY_AUTO"),
-        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("YADIF_DEINT_ALL"),
+        mode: int | Literal["send_frame", "send_field"] | DefaultStr = DefaultStr("send_field"),
+        parity: int | Literal["tff", "bff", "auto"] | DefaultStr = DefaultStr("auto"),
+        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("all"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1495,7 +1495,7 @@ class VideoStream(FilterableStream):
         threy: float | DefaultFloat = DefaultFloat(200.0),
         threu: float | DefaultFloat = DefaultFloat(200.0),
         threv: float | DefaultFloat = DefaultFloat(200.0),
-        distance: int | Literal["manhattan", "euclidean"] | DefaultInt = DefaultInt(0),
+        distance: int | Literal["manhattan", "euclidean"] | DefaultStr = DefaultStr("manhattan"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1550,7 +1550,7 @@ class VideoStream(FilterableStream):
         cbv: int | DefaultInt = DefaultInt(0),
         crh: int | DefaultInt = DefaultInt(0),
         crv: int | DefaultInt = DefaultInt(0),
-        edge: int | Literal["smear", "wrap"] | DefaultInt = DefaultInt(0),
+        edge: int | Literal["smear", "wrap"] | DefaultStr = DefaultStr("smear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1610,8 +1610,8 @@ class VideoStream(FilterableStream):
             "rec2020",
             "dcip3",
         ]
-        | DefaultStr = DefaultStr("Rec709system"),
-        cie: int | Literal["xyy", "ucs", "luv"] | DefaultStr = DefaultStr("XYY"),
+        | DefaultStr = DefaultStr("hdtv"),
+        cie: int | Literal["xyy", "ucs", "luv"] | DefaultStr = DefaultStr("xyy"),
         gamuts: str
         | Literal[
             "ntsc",
@@ -1824,7 +1824,7 @@ class VideoStream(FilterableStream):
         ag: float | DefaultFloat = DefaultFloat(0.0),
         ab: float | DefaultFloat = DefaultFloat(0.0),
         aa: float | DefaultFloat = DefaultFloat(1.0),
-        pc: int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | DefaultInt = DefaultInt(0),
+        pc: int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | DefaultStr = DefaultStr(0),
         pa: float | DefaultFloat = DefaultFloat(0.0),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1958,7 +1958,7 @@ class VideoStream(FilterableStream):
         rh: float | DefaultFloat = DefaultFloat(0.0),
         bh: float | DefaultFloat = DefaultFloat(0.0),
         saturation: float | DefaultFloat = DefaultFloat(1.0),
-        analyze: int | Literal["manual", "average", "minmax", "median"] | DefaultInt = DefaultInt(0),
+        analyze: int | Literal["manual", "average", "minmax", "median"] | DefaultStr = DefaultStr(0),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2190,7 +2190,7 @@ class VideoStream(FilterableStream):
         gomax: float | DefaultFloat = DefaultFloat(1.0),
         bomax: float | DefaultFloat = DefaultFloat(1.0),
         aomax: float | DefaultFloat = DefaultFloat(1.0),
-        preserve: int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | DefaultInt = DefaultInt(0),
+        preserve: int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | DefaultStr = DefaultStr(0),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2261,8 +2261,8 @@ class VideoStream(FilterableStream):
         *,
         patch_size: str | DefaultStr = DefaultStr("64x64"),
         nb_patches: int | DefaultInt = DefaultInt(0),
-        type: int | Literal["relative", "absolute"] | DefaultInt = DefaultInt(1),
-        kernel: int | Literal["euclidean", "weuclidean"] | DefaultInt = DefaultInt(0),
+        type: int | Literal["relative", "absolute"] | DefaultStr = DefaultStr("absolute"),
+        kernel: int | Literal["euclidean", "weuclidean"] | DefaultStr = DefaultStr(0),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2412,8 +2412,8 @@ class VideoStream(FilterableStream):
         ]
         | DefaultStr = DefaultStr("AV_PIX_FMT_NONE"),
         fast: bool | DefaultInt = DefaultInt(0),
-        dither: int | Literal["none", "fsb"] | DefaultStr = DefaultStr("DITHER_NONE"),
-        wpadapt: int | Literal["bradford", "vonkries", "identity"] | DefaultStr = DefaultStr("WP_ADAPT_BRADFORD"),
+        dither: int | Literal["none", "fsb"] | DefaultStr = DefaultStr("none"),
+        wpadapt: int | Literal["bradford", "vonkries", "identity"] | DefaultStr = DefaultStr("bradford"),
         iall: int
         | Literal["bt470m", "bt470bg", "bt601-6-525", "bt601-6-625", "bt709", "smpte170m", "smpte240m", "bt2020"]
         | DefaultStr = DefaultStr("CS_UNSPECIFIED"),
@@ -2608,10 +2608,10 @@ class VideoStream(FilterableStream):
         _1bias: float | DefaultFloat = DefaultFloat(0.0),
         _2bias: float | DefaultFloat = DefaultFloat(0.0),
         _3bias: float | DefaultFloat = DefaultFloat(0.0),
-        _0mode: int | Literal["square", "row", "column"] | DefaultStr = DefaultStr("MATRIX_SQUARE"),
-        _1mode: int | Literal["square", "row", "column"] | DefaultStr = DefaultStr("MATRIX_SQUARE"),
-        _2mode: int | Literal["square", "row", "column"] | DefaultStr = DefaultStr("MATRIX_SQUARE"),
-        _3mode: int | Literal["square", "row", "column"] | DefaultStr = DefaultStr("MATRIX_SQUARE"),
+        _0mode: int | Literal["square", "row", "column"] | DefaultStr = DefaultStr("square"),
+        _1mode: int | Literal["square", "row", "column"] | DefaultStr = DefaultStr("square"),
+        _2mode: int | Literal["square", "row", "column"] | DefaultStr = DefaultStr("square"),
+        _3mode: int | Literal["square", "row", "column"] | DefaultStr = DefaultStr("square"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2678,7 +2678,7 @@ class VideoStream(FilterableStream):
         _impulse: "VideoStream",
         *,
         planes: int | DefaultInt = DefaultInt(7),
-        impulse: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+        impulse: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
         noise: float | DefaultFloat = DefaultFloat(1e-07),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2790,7 +2790,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def cover_rect(
-        self, *, cover: str, mode: int | Literal["cover", "blur"] | DefaultStr = DefaultStr("MODE_BLUR"), **kwargs: Any
+        self, *, cover: str, mode: int | Literal["cover", "blur"] | DefaultStr = DefaultStr("blur"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -2899,7 +2899,7 @@ class VideoStream(FilterableStream):
         reset: int | DefaultInt = DefaultInt(0),
         skip: int | DefaultInt = DefaultInt(2),
         max_outliers: int | DefaultInt = DefaultInt(0),
-        mode: int | Literal["black", "mvedges"] | DefaultStr = DefaultStr("MODE_BLACK"),
+        mode: int | Literal["black", "mvedges"] | DefaultStr = DefaultStr("black"),
         high: float | DefaultStr = DefaultStr("25/255."),
         low: float | DefaultStr = DefaultStr("15/255."),
         mv_threshold: int | DefaultInt = DefaultInt(8),
@@ -3022,7 +3022,7 @@ class VideoStream(FilterableStream):
             "strong_contrast",
             "vintage",
         ]
-        | DefaultStr = DefaultStr("PRESET_NONE"),
+        | DefaultStr = DefaultStr("none"),
         master: str,
         red: str,
         green: str,
@@ -3030,7 +3030,7 @@ class VideoStream(FilterableStream):
         all: str,
         psfile: str,
         plot: str,
-        interp: int | Literal["natural", "pchip"] | DefaultStr = DefaultStr("INTERP_NATURAL"),
+        interp: int | Literal["natural", "pchip"] | DefaultStr = DefaultStr("natural"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -3109,10 +3109,10 @@ class VideoStream(FilterableStream):
         size: str | DefaultStr = DefaultStr("hd720"),
         x: int | DefaultInt = DefaultInt(0),
         y: int | DefaultInt = DefaultInt(0),
-        mode: int | Literal["mono", "color", "color2"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["mono", "color", "color2"] | DefaultStr = DefaultStr("mono"),
         axis: bool | DefaultInt = DefaultInt(0),
         opacity: float | DefaultFloat = DefaultFloat(0.75),
-        format: int | Literal["hex", "dec"] | DefaultInt = DefaultInt(0),
+        format: int | Literal["hex", "dec"] | DefaultStr = DefaultStr("hex"),
         components: int | DefaultInt = DefaultInt(15),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3308,7 +3308,7 @@ class VideoStream(FilterableStream):
     def deblock(
         self,
         *,
-        filter: int | Literal["weak", "strong"] | DefaultStr = DefaultStr("STRONG"),
+        filter: int | Literal["weak", "strong"] | DefaultStr = DefaultStr("strong"),
         block: int | DefaultInt = DefaultInt(8),
         alpha: float | DefaultFloat = DefaultFloat(0.098),
         beta: float | DefaultFloat = DefaultFloat(0.05),
@@ -3363,7 +3363,7 @@ class VideoStream(FilterableStream):
         _impulse: "VideoStream",
         *,
         planes: int | DefaultInt = DefaultInt(7),
-        impulse: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+        impulse: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
         noise: float | DefaultFloat = DefaultFloat(1e-07),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3503,7 +3503,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         size: int | DefaultInt = DefaultInt(5),
-        mode: int | Literal["am", "gm", "hm", "qm", "cm", "pm", "median"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["am", "gm", "hm", "qm", "cm", "pm", "median"] | DefaultStr = DefaultStr(0),
         bypass: bool | DefaultInt = DefaultInt(0),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3628,7 +3628,7 @@ class VideoStream(FilterableStream):
     def derain(
         self,
         *,
-        filter_type: int | Literal["derain", "dehaze"] | DefaultInt = DefaultInt(0),
+        filter_type: int | Literal["derain", "dehaze"] | DefaultStr = DefaultStr("derain"),
         dnn_backend: int | DefaultInt = DefaultInt(1),
         model: str,
         input: str | DefaultStr = DefaultStr("x"),
@@ -3692,10 +3692,10 @@ class VideoStream(FilterableStream):
         h: int | DefaultInt = DefaultInt(-1),
         rx: int | DefaultInt = DefaultInt(16),
         ry: int | DefaultInt = DefaultInt(16),
-        edge: int | Literal["blank", "original", "clamp", "mirror"] | DefaultStr = DefaultStr("FILL_MIRROR"),
+        edge: int | Literal["blank", "original", "clamp", "mirror"] | DefaultStr = DefaultStr("mirror"),
         blocksize: int | DefaultInt = DefaultInt(8),
         contrast: int | DefaultInt = DefaultInt(125),
-        search: int | Literal["exhaustive", "less"] | DefaultStr = DefaultStr("EXHAUSTIVE"),
+        search: int | Literal["exhaustive", "less"] | DefaultStr = DefaultStr("exhaustive"),
         filename: str,
         opencl: bool | DefaultInt = DefaultInt(0),
         **kwargs: Any,
@@ -3806,7 +3806,7 @@ class VideoStream(FilterableStream):
     def despill(
         self,
         *,
-        type: int | Literal["green", "blue"] | DefaultInt = DefaultInt(0),
+        type: int | Literal["green", "blue"] | DefaultStr = DefaultStr("green"),
         mix: float | DefaultFloat = DefaultFloat(0.5),
         expand: float | DefaultFloat = DefaultFloat(0.0),
         red: float | DefaultFloat = DefaultFloat(0.0),
@@ -3863,7 +3863,7 @@ class VideoStream(FilterableStream):
     def detelecine(
         self,
         *,
-        first_field: int | Literal["top", "t", "bottom", "b"] | DefaultInt = DefaultInt(0),
+        first_field: int | Literal["top", "t", "bottom", "b"] | DefaultStr = DefaultStr("top"),
         pattern: str | DefaultStr = DefaultStr("23"),
         start_frame: int | DefaultInt = DefaultInt(0),
         **kwargs: Any,
@@ -3957,7 +3957,7 @@ class VideoStream(FilterableStream):
         _xmap: "VideoStream",
         _ymap: "VideoStream",
         *,
-        edge: int | Literal["blank", "smear", "wrap", "mirror"] | DefaultStr = DefaultStr("EDGE_SMEAR"),
+        edge: int | Literal["blank", "smear", "wrap", "mirror"] | DefaultStr = DefaultStr("smear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -4072,7 +4072,7 @@ class VideoStream(FilterableStream):
         _async: bool | DefaultInt = DefaultInt(1),
         confidence: float | DefaultFloat = DefaultFloat(0.5),
         labels: str,
-        model_type: int | Literal["ssd", "yolo", "yolov3", "yolov4"] | DefaultStr = DefaultStr("DDMT_SSD"),
+        model_type: int | Literal["ssd", "yolo", "yolov3", "yolov4"] | DefaultStr = DefaultStr("ssd"),
         cell_w: int | DefaultInt = DefaultInt(0),
         cell_h: int | DefaultInt = DefaultInt(0),
         nb_classes: int | DefaultInt = DefaultInt(0),
@@ -4184,7 +4184,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def doubleweave(
-        self, *, first_field: int | Literal["top", "t", "bottom", "b"] | DefaultInt = DefaultInt(0), **kwargs: Any
+        self, *, first_field: int | Literal["top", "t", "bottom", "b"] | DefaultStr = DefaultStr("top"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -4294,8 +4294,8 @@ class VideoStream(FilterableStream):
         bg: str | DefaultStr = DefaultStr("white"),
         min: float | DefaultFloat = DefaultFloat(-1.0),
         max: float | DefaultFloat = DefaultFloat(1.0),
-        mode: int | Literal["bar", "dot", "line"] | DefaultInt = DefaultInt(2),
-        slide: int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["bar", "dot", "line"] | DefaultStr = DefaultStr("line"),
+        slide: int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | DefaultStr = DefaultStr("frame"),
         size: str | DefaultStr = DefaultStr("900x256"),
         rate: str | DefaultStr = DefaultStr("25"),
         **kwargs: Any,
@@ -4448,8 +4448,8 @@ class VideoStream(FilterableStream):
         borderw: int | DefaultInt = DefaultInt(0),
         tabsize: int | DefaultInt = DefaultInt(4),
         basetime: int | DefaultStr = DefaultStr("((int64_t)(0x8000000000000000ULL))"),
-        expansion: int | Literal["none", "normal", "strftime"] | DefaultStr = DefaultStr("EXP_NORMAL"),
-        y_align: int | Literal["text", "baseline", "font"] | DefaultStr = DefaultStr("YA_TEXT"),
+        expansion: int | Literal["none", "normal", "strftime"] | DefaultStr = DefaultStr("normal"),
+        y_align: int | Literal["text", "baseline", "font"] | DefaultStr = DefaultStr("text"),
         timecode: str,
         tc24hmax: bool | DefaultInt = DefaultInt(0),
         timecode_rate: float | DefaultFloat = DefaultFloat(0.0),
@@ -4565,7 +4565,7 @@ class VideoStream(FilterableStream):
         *,
         high: float | DefaultStr = DefaultStr("50/255."),
         low: float | DefaultStr = DefaultStr("20/255."),
-        mode: int | Literal["wires", "colormix", "canny"] | DefaultStr = DefaultStr("MODE_WIRES"),
+        mode: int | Literal["wires", "colormix", "canny"] | DefaultStr = DefaultStr("wires"),
         planes: str | Literal["y", "u", "v", "r", "g", "b"] | DefaultStr = DefaultStr(7),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4656,7 +4656,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def entropy(
-        self, *, mode: int | Literal["normal", "diff"] | DefaultInt = DefaultInt(0), **kwargs: Any
+        self, *, mode: int | Literal["normal", "diff"] | DefaultStr = DefaultStr("normal"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -4831,15 +4831,15 @@ class VideoStream(FilterableStream):
     def estdif(
         self,
         *,
-        mode: int | Literal["frame", "field"] | DefaultInt = DefaultInt(1),
-        parity: int | Literal["tff", "bff", "auto"] | DefaultInt = DefaultInt(-1),
-        deint: int | Literal["all", "interlaced"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["frame", "field"] | DefaultStr = DefaultStr("field"),
+        parity: int | Literal["tff", "bff", "auto"] | DefaultStr = DefaultStr("auto"),
+        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("all"),
         rslope: int | DefaultInt = DefaultInt(1),
         redge: int | DefaultInt = DefaultInt(2),
         ecost: int | DefaultInt = DefaultInt(2),
         mcost: int | DefaultInt = DefaultInt(1),
         dcost: int | DefaultInt = DefaultInt(1),
-        interp: int | Literal["2p", "4p", "6p"] | DefaultInt = DefaultInt(1),
+        interp: int | Literal["2p", "4p", "6p"] | DefaultStr = DefaultStr("4p"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5079,7 +5079,7 @@ class VideoStream(FilterableStream):
         amount: float | DefaultFloat = DefaultFloat(1.0),
         block: int | DefaultInt = DefaultInt(32),
         overlap: float | DefaultFloat = DefaultFloat(0.5),
-        method: int | Literal["wiener", "hard"] | DefaultInt = DefaultInt(0),
+        method: int | Literal["wiener", "hard"] | DefaultStr = DefaultStr("wiener"),
         prev: int | DefaultInt = DefaultInt(0),
         next: int | DefaultInt = DefaultInt(0),
         planes: int | DefaultInt = DefaultInt(7),
@@ -5108,7 +5108,7 @@ class VideoStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | DefaultStr = DefaultStr("WFUNC_HANNING"),
+        | DefaultStr = DefaultStr("hann"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5208,7 +5208,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def field(
-        self, *, type: int | Literal["top", "bottom"] | DefaultStr = DefaultStr("FIELD_TYPE_TOP"), **kwargs: Any
+        self, *, type: int | Literal["top", "bottom"] | DefaultStr = DefaultStr("top"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -5245,7 +5245,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         hint: str,
-        mode: int | Literal["absolute", "relative", "pattern"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["absolute", "relative", "pattern"] | DefaultStr = DefaultStr(0),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5383,7 +5383,7 @@ class VideoStream(FilterableStream):
         bottom: int | DefaultInt = DefaultInt(0),
         mode: int
         | Literal["smear", "mirror", "fixed", "reflect", "wrap", "fade", "margins"]
-        | DefaultStr = DefaultStr("FM_SMEAR"),
+        | DefaultStr = DefaultStr("smear"),
         color: str | DefaultStr = DefaultStr("black"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5619,8 +5619,8 @@ class VideoStream(FilterableStream):
         *,
         fps: str | DefaultStr = DefaultStr("25"),
         start_time: float | DefaultFloat = DefaultFloat(1.7976931348623157e308),
-        round: int | Literal["zero", "inf", "down", "up", "near"] | DefaultStr = DefaultStr("AV_ROUND_NEAR_INF"),
-        eof_action: int | Literal["round", "pass"] | DefaultStr = DefaultStr("EOF_ACTION_ROUND"),
+        round: int | Literal["zero", "inf", "down", "up", "near"] | DefaultStr = DefaultStr("near"),
+        eof_action: int | Literal["round", "pass"] | DefaultStr = DefaultStr("round"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5668,9 +5668,7 @@ class VideoStream(FilterableStream):
         self,
         _right: "VideoStream",
         *,
-        format: int
-        | Literal["sbs", "tab", "frameseq", "lines", "columns"]
-        | DefaultStr = DefaultStr("AV_STEREO3D_SIDEBYSIDE"),
+        format: int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | DefaultStr = DefaultStr("sbs"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5723,7 +5721,7 @@ class VideoStream(FilterableStream):
         interp_start: int | DefaultInt = DefaultInt(15),
         interp_end: int | DefaultInt = DefaultInt(240),
         scene: float | DefaultFloat = DefaultFloat(8.2),
-        flags: str | Literal["scene_change_detect", "scd"] | DefaultStr = DefaultStr(1),
+        flags: str | Literal["scene_change_detect", "scd"] | DefaultStr = DefaultStr("scene_change_detect"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6086,7 +6084,7 @@ class VideoStream(FilterableStream):
         red_expr: str,
         green_expr: str,
         blue_expr: str,
-        interpolation: int | Literal["nearest", "n", "bilinear", "b"] | DefaultStr = DefaultStr("INTERP_BILINEAR"),
+        interpolation: int | Literal["nearest", "n", "bilinear", "b"] | DefaultStr = DefaultStr("bilinear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6233,7 +6231,7 @@ class VideoStream(FilterableStream):
             "sample_count_delta",
             "disabled",
         ]
-        | DefaultStr = DefaultStr("FLAG_QUEUE"),
+        | DefaultStr = DefaultStr("queue"),
         rate: str | DefaultStr = DefaultStr("25"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6357,10 +6355,10 @@ class VideoStream(FilterableStream):
         self,
         _clut: "VideoStream",
         *,
-        clut: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+        clut: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
         interp: int
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
-        | DefaultStr = DefaultStr("INTERPOLATE_TETRAHEDRAL"),
+        | DefaultStr = DefaultStr("tetrahedral"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6464,7 +6462,7 @@ class VideoStream(FilterableStream):
         *,
         strength: float | DefaultFloat = DefaultFloat(0.2),
         intensity: float | DefaultFloat = DefaultFloat(0.21),
-        antibanding: int | Literal["none", "weak", "strong"] | DefaultStr = DefaultStr("HISTEQ_ANTIBANDING_NONE"),
+        antibanding: int | Literal["none", "weak", "strong"] | DefaultStr = DefaultStr("none"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6513,8 +6511,8 @@ class VideoStream(FilterableStream):
         *,
         level_height: int | DefaultInt = DefaultInt(200),
         scale_height: int | DefaultInt = DefaultInt(12),
-        display_mode: int | Literal["overlay", "parade", "stack"] | DefaultInt = DefaultInt(2),
-        levels_mode: int | Literal["linear", "logarithmic"] | DefaultInt = DefaultInt(0),
+        display_mode: int | Literal["overlay", "parade", "stack"] | DefaultStr = DefaultStr("stack"),
+        levels_mode: int | Literal["linear", "logarithmic"] | DefaultStr = DefaultStr("linear"),
         components: int | DefaultInt = DefaultInt(7),
         fgopacity: float | DefaultFloat = DefaultFloat(0.7),
         bgopacity: float | DefaultFloat = DefaultFloat(0.5),
@@ -6531,7 +6529,7 @@ class VideoStream(FilterableStream):
             "whiteoncolor",
             "grayoncolor",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr("whiteonblack"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6821,7 +6819,7 @@ class VideoStream(FilterableStream):
         hue: float | DefaultFloat = DefaultFloat(0.0),
         saturation: float | DefaultFloat = DefaultFloat(0.0),
         intensity: float | DefaultFloat = DefaultFloat(0.0),
-        colors: str | Literal["r", "y", "g", "c", "b", "m", "a"] | DefaultStr = DefaultStr("0x3F"),
+        colors: str | Literal["r", "y", "g", "c", "b", "m", "a"] | DefaultStr = DefaultStr("a"),
         strength: float | DefaultFloat = DefaultFloat(1.0),
         rw: float | DefaultFloat = DefaultFloat(0.333),
         gw: float | DefaultFloat = DefaultFloat(0.334),
@@ -7142,7 +7140,7 @@ class VideoStream(FilterableStream):
             "jedec-p22",
             "ebu3213",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr("auto"),
         color_trc: int
         | Literal[
             "auto",
@@ -7160,7 +7158,7 @@ class VideoStream(FilterableStream):
             "smpte2084",
             "arib-std-b67",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr("auto"),
         force: bool | DefaultInt = DefaultInt(0),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7301,13 +7299,9 @@ class VideoStream(FilterableStream):
     def il(
         self,
         *,
-        luma_mode: int | Literal["none", "interleave", "i", "deinterleave", "d"] | DefaultStr = DefaultStr("MODE_NONE"),
-        chroma_mode: int
-        | Literal["none", "interleave", "i", "deinterleave", "d"]
-        | DefaultStr = DefaultStr("MODE_NONE"),
-        alpha_mode: int
-        | Literal["none", "interleave", "i", "deinterleave", "d"]
-        | DefaultStr = DefaultStr("MODE_NONE"),
+        luma_mode: int | Literal["none", "interleave", "i", "deinterleave", "d"] | DefaultStr = DefaultStr("none"),
+        chroma_mode: int | Literal["none", "interleave", "i", "deinterleave", "d"] | DefaultStr = DefaultStr("none"),
+        alpha_mode: int | Literal["none", "interleave", "i", "deinterleave", "d"] | DefaultStr = DefaultStr("none"),
         luma_swap: bool | DefaultInt = DefaultInt(0),
         chroma_swap: bool | DefaultInt = DefaultInt(0),
         alpha_swap: bool | DefaultInt = DefaultInt(0),
@@ -7409,7 +7403,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         scan: int | DefaultStr = DefaultStr("MODE_TFF"),
-        lowpass: int | Literal["off", "linear", "complex"] | DefaultStr = DefaultStr("VLPF_LIN"),
+        lowpass: int | Literal["off", "linear", "complex"] | DefaultStr = DefaultStr("linear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -7622,7 +7616,7 @@ class VideoStream(FilterableStream):
         cy: float | DefaultFloat = DefaultFloat(0.5),
         k1: float | DefaultFloat = DefaultFloat(0.0),
         k2: float | DefaultFloat = DefaultFloat(0.0),
-        i: int | Literal["nearest", "bilinear"] | DefaultInt = DefaultInt(0),
+        i: int | Literal["nearest", "bilinear"] | DefaultStr = DefaultStr("nearest"),
         fc: str | DefaultStr = DefaultStr("black@0"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7687,7 +7681,7 @@ class VideoStream(FilterableStream):
         db_path: str,
         mode: int
         | Literal["vignetting", "geometry", "subpixel", "vig_geo", "vig_subpixel", "distortion", "all"]
-        | DefaultStr = DefaultStr("GEOMETRY_DISTORTION"),
+        | DefaultStr = DefaultStr("geometry"),
         focal_length: float | DefaultFloat = DefaultFloat(18.0),
         aperture: float | DefaultFloat = DefaultFloat(3.5),
         focus_distance: float | DefaultStr = DefaultStr("1000.0f"),
@@ -7703,9 +7697,9 @@ class VideoStream(FilterableStream):
             "fisheye_equisolid",
             "fisheye_thoby",
         ]
-        | DefaultStr = DefaultStr("LF_RECTILINEAR"),
+        | DefaultStr = DefaultStr("rectilinear"),
         reverse: bool | DefaultInt = DefaultInt(0),
-        interpolation: int | Literal["nearest", "linear", "lanczos"] | DefaultStr = DefaultStr("LINEAR"),
+        interpolation: int | Literal["nearest", "linear", "lanczos"] | DefaultStr = DefaultStr("linear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8034,9 +8028,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         file: str,
-        interp: int
-        | Literal["nearest", "linear", "cosine", "cubic", "spline"]
-        | DefaultStr = DefaultStr("INTERPOLATE_1D_LINEAR"),
+        interp: int | Literal["nearest", "linear", "cosine", "cubic", "spline"] | DefaultStr = DefaultStr("linear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8140,10 +8132,10 @@ class VideoStream(FilterableStream):
         self,
         *,
         file: str,
-        clut: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+        clut: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
         interp: int
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
-        | DefaultStr = DefaultStr("INTERPOLATE_TETRAHEDRAL"),
+        | DefaultStr = DefaultStr("tetrahedral"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8489,7 +8481,7 @@ class VideoStream(FilterableStream):
         *,
         threshold: int | DefaultInt = DefaultInt(1),
         planes: int | DefaultStr = DefaultStr("0xF"),
-        mode: int | Literal["abs", "diff"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["abs", "diff"] | DefaultStr = DefaultStr("abs"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8585,7 +8577,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         mode: int | DefaultStr = DefaultStr("MODE_FAST"),
-        parity: int | Literal["tff", "bff"] | DefaultStr = DefaultStr("PARITY_BFF"),
+        parity: int | Literal["tff", "bff"] | DefaultStr = DefaultStr("bff"),
         qp: int | DefaultInt = DefaultInt(1),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8674,7 +8666,7 @@ class VideoStream(FilterableStream):
         *,
         method: int
         | Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"]
-        | DefaultInt = DefaultInt(1),
+        | DefaultStr = DefaultStr("esa"),
         mb_size: int | DefaultInt = DefaultInt(16),
         search_param: int | DefaultInt = DefaultInt(7),
         **kwargs: Any,
@@ -8716,12 +8708,12 @@ class VideoStream(FilterableStream):
     def metadata(
         self,
         *,
-        mode: int | Literal["select", "add", "modify", "delete", "print"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["select", "add", "modify", "delete", "print"] | DefaultStr = DefaultStr(0),
         key: str,
         value: str,
         function: int
         | Literal["same_str", "starts_with", "less", "equal", "greater", "expr", "ends_with"]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         expr: str,
         file: str,
         direct: bool | DefaultInt = DefaultInt(0),
@@ -8813,16 +8805,16 @@ class VideoStream(FilterableStream):
         self,
         *,
         fps: str | DefaultStr = DefaultStr("60"),
-        mi_mode: int | Literal["dup", "blend", "mci"] | DefaultStr = DefaultStr("MI_MODE_MCI"),
-        mc_mode: int | Literal["obmc", "aobmc"] | DefaultInt = DefaultInt(0),
-        me_mode: int | Literal["bidir", "bilat"] | DefaultInt = DefaultInt(1),
+        mi_mode: int | Literal["dup", "blend", "mci"] | DefaultStr = DefaultStr("mci"),
+        mc_mode: int | Literal["obmc", "aobmc"] | DefaultStr = DefaultStr("obmc"),
+        me_mode: int | Literal["bidir", "bilat"] | DefaultStr = DefaultStr("bilat"),
         me: int
         | Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"]
-        | DefaultInt = DefaultInt(8),
+        | DefaultStr = DefaultStr("epzs"),
         mb_size: int | DefaultInt = DefaultInt(16),
         search_param: int | DefaultInt = DefaultInt(32),
         vsbmc: int | DefaultInt = DefaultInt(0),
-        scd: int | Literal["none", "fdiff"] | DefaultInt = DefaultInt(1),
+        scd: int | Literal["none", "fdiff"] | DefaultStr = DefaultStr("fdiff"),
         scd_threshold: float | DefaultFloat = DefaultFloat(10.0),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8923,9 +8915,9 @@ class VideoStream(FilterableStream):
         *,
         mode: int
         | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         planes: int | DefaultInt = DefaultInt(7),
-        structure: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+        structure: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -9322,14 +9314,16 @@ class VideoStream(FilterableStream):
         self,
         *,
         weights: str | DefaultStr = DefaultStr("nnedi3_weights.bin"),
-        deint: int | Literal["all", "interlaced"] | DefaultInt = DefaultInt(0),
-        field: int | Literal["af", "a", "t", "b", "tf", "bf"] | DefaultInt = DefaultInt(-1),
+        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("all"),
+        field: int | Literal["af", "a", "t", "b", "tf", "bf"] | DefaultStr = DefaultStr("a"),
         planes: int | DefaultInt = DefaultInt(7),
-        nsize: int | Literal["s8x6", "s16x6", "s32x6", "s48x6", "s8x4", "s16x4", "s32x4"] | DefaultInt = DefaultInt(6),
-        nns: int | Literal["n16", "n32", "n64", "n128", "n256"] | DefaultInt = DefaultInt(1),
-        qual: int | Literal["fast", "slow"] | DefaultInt = DefaultInt(1),
-        etype: int | Literal["a", "abs", "s", "mse"] | DefaultInt = DefaultInt(0),
-        pscrn: int | Literal["none", "original", "new", "new2", "new3"] | DefaultInt = DefaultInt(2),
+        nsize: int
+        | Literal["s8x6", "s16x6", "s32x6", "s48x6", "s8x4", "s16x4", "s32x4"]
+        | DefaultStr = DefaultStr("s32x4"),
+        nns: int | Literal["n16", "n32", "n64", "n128", "n256"] | DefaultStr = DefaultStr("n32"),
+        qual: int | Literal["fast", "slow"] | DefaultStr = DefaultStr("fast"),
+        etype: int | Literal["a", "abs", "s", "mse"] | DefaultStr = DefaultStr("a"),
+        pscrn: int | Literal["none", "original", "new", "new2", "new3"] | DefaultStr = DefaultStr("new"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -9749,7 +9743,7 @@ class VideoStream(FilterableStream):
         *,
         x: str | DefaultStr = DefaultStr("0"),
         y: str | DefaultStr = DefaultStr("0"),
-        eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("EOF_ACTION_REPEAT"),
+        eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("repeat"),
         eval: int | DefaultStr = DefaultStr("EVAL_MODE_FRAME"),
         shortest: bool | DefaultInt = DefaultInt(0),
         format: int | DefaultStr = DefaultStr("OVERLAY_FORMAT_YUV420"),
@@ -9832,7 +9826,7 @@ class VideoStream(FilterableStream):
         *,
         x: str | DefaultStr = DefaultStr("0"),
         y: str | DefaultStr = DefaultStr("0"),
-        eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("EOF_ACTION_REPEAT"),
+        eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("repeat"),
         eval: int | DefaultStr = DefaultStr("EVAL_MODE_FRAME"),
         shortest: bool | DefaultInt = DefaultInt(0),
         repeatlast: bool | DefaultInt = DefaultInt(1),
@@ -9939,7 +9933,7 @@ class VideoStream(FilterableStream):
         w: str | DefaultStr = DefaultStr("overlay_iw"),
         h: str | DefaultStr = DefaultStr("overlay_ih*w/overlay_iw"),
         alpha: float | DefaultFloat = DefaultFloat(1.0),
-        eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("EOF_ACTION_REPEAT"),
+        eof_action: int | Literal["repeat", "endall", "pass"] | DefaultStr = DefaultStr("repeat"),
         shortest: bool | DefaultInt = DefaultInt(0),
         repeatlast: bool | DefaultInt = DefaultInt(1),
         **kwargs: Any,
@@ -10196,7 +10190,7 @@ class VideoStream(FilterableStream):
         max_colors: int | DefaultInt = DefaultInt(256),
         reserve_transparent: bool | DefaultInt = DefaultInt(1),
         transparency_color: str | DefaultStr = DefaultStr("lime"),
-        stats_mode: int | Literal["full", "diff", "single"] | DefaultStr = DefaultStr("STATS_MODE_ALL_FRAMES"),
+        stats_mode: int | Literal["full", "diff", "single"] | DefaultStr = DefaultStr("full"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -10246,7 +10240,7 @@ class VideoStream(FilterableStream):
         *,
         dither: int
         | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
-        | DefaultStr = DefaultStr("DITHERING_SIERRA2_4A"),
+        | DefaultStr = DefaultStr("sierra2_4a"),
         bayer_scale: int | DefaultInt = DefaultInt(2),
         diff_mode: int | Literal["rectangle"] | DefaultStr = DefaultStr("DIFF_MODE_NONE"),
         new: bool | DefaultInt = DefaultInt(0),
@@ -10300,7 +10294,7 @@ class VideoStream(FilterableStream):
     def perms(
         self,
         *,
-        mode: int | Literal["none", "ro", "rw", "toggle", "random"] | DefaultStr = DefaultStr("MODE_NONE"),
+        mode: int | Literal["none", "ro", "rw", "toggle", "random"] | DefaultStr = DefaultStr("none"),
         seed: int | DefaultInt = DefaultInt(-1),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10355,8 +10349,8 @@ class VideoStream(FilterableStream):
         y2: str | DefaultStr = DefaultStr("H"),
         x3: str | DefaultStr = DefaultStr("W"),
         y3: str | DefaultStr = DefaultStr("H"),
-        interpolation: int | Literal["linear", "cubic"] | DefaultInt = DefaultInt(0),
-        sense: int | Literal["source", "destination"] | DefaultStr = DefaultStr("PERSPECTIVE_SENSE_SOURCE"),
+        interpolation: int | Literal["linear", "cubic"] | DefaultStr = DefaultStr("linear"),
+        sense: int | Literal["source", "destination"] | DefaultStr = DefaultStr("source"),
         eval: int | DefaultStr = DefaultStr("EVAL_MODE_INIT"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10412,7 +10406,7 @@ class VideoStream(FilterableStream):
     def phase(
         self,
         *,
-        mode: int | Literal["p", "t", "b", "T", "B", "u", "U", "a", "A"] | DefaultStr = DefaultStr("AUTO_ANALYZE"),
+        mode: int | Literal["p", "t", "b", "T", "B", "u", "U", "a", "A"] | DefaultStr = DefaultStr("A"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -10527,7 +10521,7 @@ class VideoStream(FilterableStream):
         *,
         width: int | DefaultInt = DefaultInt(16),
         height: int | DefaultInt = DefaultInt(16),
-        mode: int | Literal["avg", "min", "max"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["avg", "min", "max"] | DefaultStr = DefaultStr(0),
         planes: str | DefaultStr = DefaultStr(15),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10671,7 +10665,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         qp: int | DefaultInt = DefaultInt(0),
-        mode: int | Literal["hard", "soft", "medium"] | DefaultStr = DefaultStr("MODE_MEDIUM"),
+        mode: int | Literal["hard", "soft", "medium"] | DefaultStr = DefaultStr("medium"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -10781,7 +10775,7 @@ class VideoStream(FilterableStream):
             "green",
             "helix",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("none"),
         opacity: float | DefaultFloat = DefaultFloat(1.0),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10922,7 +10916,7 @@ class VideoStream(FilterableStream):
         jt: int | DefaultInt = DefaultInt(4),
         jb: int | DefaultInt = DefaultInt(4),
         sb: bool | DefaultInt = DefaultInt(0),
-        mp: int | Literal["y", "u", "v"] | DefaultInt = DefaultInt(0),
+        mp: int | Literal["y", "u", "v"] | DefaultStr = DefaultStr("y"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -11244,7 +11238,7 @@ class VideoStream(FilterableStream):
         _xmap: "VideoStream",
         _ymap: "VideoStream",
         *,
-        interp: int | Literal["near", "linear"] | DefaultInt = DefaultInt(1),
+        interp: int | Literal["near", "linear"] | DefaultStr = DefaultStr("linear"),
         fill: str | DefaultStr = DefaultStr("black"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -11443,7 +11437,7 @@ class VideoStream(FilterableStream):
         bv: int | DefaultInt = DefaultInt(0),
         ah: int | DefaultInt = DefaultInt(0),
         av: int | DefaultInt = DefaultInt(0),
-        edge: int | Literal["smear", "wrap"] | DefaultInt = DefaultInt(0),
+        edge: int | Literal["smear", "wrap"] | DefaultStr = DefaultStr("smear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -11648,21 +11642,23 @@ class VideoStream(FilterableStream):
         size: str,
         in_color_matrix: int
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("auto"),
         out_color_matrix: int
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | DefaultStr = DefaultStr("AVCOL_SPC_UNSPECIFIED"),
         in_range: int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-        | DefaultStr = DefaultStr("AVCOL_RANGE_UNSPECIFIED"),
+        | DefaultStr = DefaultStr("auto"),
         out_range: int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-        | DefaultStr = DefaultStr("AVCOL_RANGE_UNSPECIFIED"),
+        | DefaultStr = DefaultStr("auto"),
         in_v_chr_pos: int | DefaultInt = DefaultInt(-513),
         in_h_chr_pos: int | DefaultInt = DefaultInt(-513),
         out_v_chr_pos: int | DefaultInt = DefaultInt(-513),
         out_h_chr_pos: int | DefaultInt = DefaultInt(-513),
-        force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultInt = DefaultInt(0),
+        force_original_aspect_ratio: int
+        | Literal["disable", "decrease", "increase"]
+        | DefaultStr = DefaultStr("disable"),
         force_divisible_by: int | DefaultInt = DefaultInt(1),
         param0: float | DefaultFloat = DefaultFloat(1.7976931348623157e308),
         param1: float | DefaultFloat = DefaultFloat(1.7976931348623157e308),
@@ -11748,21 +11744,23 @@ class VideoStream(FilterableStream):
         size: str,
         in_color_matrix: int
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("auto"),
         out_color_matrix: int
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | DefaultStr = DefaultStr("AVCOL_SPC_UNSPECIFIED"),
         in_range: int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-        | DefaultStr = DefaultStr("AVCOL_RANGE_UNSPECIFIED"),
+        | DefaultStr = DefaultStr("auto"),
         out_range: int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-        | DefaultStr = DefaultStr("AVCOL_RANGE_UNSPECIFIED"),
+        | DefaultStr = DefaultStr("auto"),
         in_v_chr_pos: int | DefaultInt = DefaultInt(-513),
         in_h_chr_pos: int | DefaultInt = DefaultInt(-513),
         out_v_chr_pos: int | DefaultInt = DefaultInt(-513),
         out_h_chr_pos: int | DefaultInt = DefaultInt(-513),
-        force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultInt = DefaultInt(0),
+        force_original_aspect_ratio: int
+        | Literal["disable", "decrease", "increase"]
+        | DefaultStr = DefaultStr("disable"),
         force_divisible_by: int | DefaultInt = DefaultInt(1),
         param0: float | DefaultFloat = DefaultFloat(1.7976931348623157e308),
         param1: float | DefaultFloat = DefaultFloat(1.7976931348623157e308),
@@ -11851,10 +11849,12 @@ class VideoStream(FilterableStream):
         | Literal[
             "nn", "linear", "cubic", "cubic2p_bspline", "cubic2p_catmullrom", "cubic2p_b05c03", "super", "lanczos"
         ]
-        | DefaultStr = DefaultStr("NPPI_INTER_CUBIC"),
-        force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr("cubic"),
+        force_original_aspect_ratio: int
+        | Literal["disable", "decrease", "increase"]
+        | DefaultStr = DefaultStr("disable"),
         force_divisible_by: int | DefaultInt = DefaultInt(1),
-        eval: int | Literal["init", "frame"] | DefaultStr = DefaultStr("EVAL_MODE_INIT"),
+        eval: int | Literal["init", "frame"] | DefaultStr = DefaultStr("init"),
         **kwargs: Any,
     ) -> tuple["VideoStream", "VideoStream",]:
         """
@@ -11919,7 +11919,9 @@ class VideoStream(FilterableStream):
         format: str | DefaultStr = DefaultStr("AV_PIX_FMT_NONE"),
         passthrough: bool | DefaultInt = DefaultInt(1),
         param: float | DefaultStr = DefaultStr("999999.0f"),
-        force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultInt = DefaultInt(0),
+        force_original_aspect_ratio: int
+        | Literal["disable", "decrease", "increase"]
+        | DefaultStr = DefaultStr("disable"),
         force_divisible_by: int | DefaultInt = DefaultInt(1),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -11978,10 +11980,12 @@ class VideoStream(FilterableStream):
         | Literal[
             "nn", "linear", "cubic", "cubic2p_bspline", "cubic2p_catmullrom", "cubic2p_b05c03", "super", "lanczos"
         ]
-        | DefaultStr = DefaultStr("NPPI_INTER_CUBIC"),
-        force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr("cubic"),
+        force_original_aspect_ratio: int
+        | Literal["disable", "decrease", "increase"]
+        | DefaultStr = DefaultStr("disable"),
         force_divisible_by: int | DefaultInt = DefaultInt(1),
-        eval: int | Literal["init", "frame"] | DefaultStr = DefaultStr("EVAL_MODE_INIT"),
+        eval: int | Literal["init", "frame"] | DefaultStr = DefaultStr("init"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12302,9 +12306,7 @@ class VideoStream(FilterableStream):
     def selectivecolor(
         self,
         *,
-        correction_method: int
-        | Literal["absolute", "relative"]
-        | DefaultStr = DefaultStr("CORRECTION_METHOD_ABSOLUTE"),
+        correction_method: int | Literal["absolute", "relative"] | DefaultStr = DefaultStr("absolute"),
         reds: str,
         yellows: str,
         greens: str,
@@ -12510,7 +12512,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def setfield(
-        self, *, mode: int | Literal["auto", "bff", "tff", "prog"] | DefaultStr = DefaultStr("MODE_AUTO"), **kwargs: Any
+        self, *, mode: int | Literal["auto", "bff", "tff", "prog"] | DefaultStr = DefaultStr("auto"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -12549,10 +12551,10 @@ class VideoStream(FilterableStream):
     def setparams(
         self,
         *,
-        field_mode: int | Literal["auto", "bff", "tff", "prog"] | DefaultStr = DefaultStr("MODE_AUTO"),
+        field_mode: int | Literal["auto", "bff", "tff", "prog"] | DefaultStr = DefaultStr("auto"),
         range: int
         | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("auto"),
         color_primaries: int
         | Literal[
             "auto",
@@ -12570,7 +12572,7 @@ class VideoStream(FilterableStream):
             "jedec-p22",
             "ebu3213",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("auto"),
         color_trc: int
         | Literal[
             "auto",
@@ -12592,7 +12594,7 @@ class VideoStream(FilterableStream):
             "smpte428",
             "arib-std-b67",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("auto"),
         colorspace: int
         | Literal[
             "auto",
@@ -12611,7 +12613,7 @@ class VideoStream(FilterableStream):
             "chroma-derived-c",
             "ictcp",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("auto"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12695,7 +12697,7 @@ class VideoStream(FilterableStream):
         *,
         range: int
         | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("auto"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12830,10 +12832,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def sharpen_npp(
-        self,
-        *,
-        border_type: int | Literal["replicate"] | DefaultStr = DefaultStr("NPP_BORDER_REPLICATE"),
-        **kwargs: Any,
+        self, *, border_type: int | Literal["replicate"] | DefaultStr = DefaultStr("replicate"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -12871,7 +12870,7 @@ class VideoStream(FilterableStream):
         shx: float | DefaultFloat = DefaultFloat(0.0),
         shy: float | DefaultFloat = DefaultFloat(0.0),
         fillcolor: str | DefaultStr = DefaultStr("black"),
-        interp: int | Literal["nearest", "bilinear"] | DefaultInt = DefaultInt(1),
+        interp: int | Literal["nearest", "bilinear"] | DefaultStr = DefaultStr("bilinear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -13013,8 +13012,8 @@ class VideoStream(FilterableStream):
     def shufflepixels(
         self,
         *,
-        direction: int | Literal["forward", "inverse"] | DefaultInt = DefaultInt(0),
-        mode: int | Literal["horizontal", "vertical", "block"] | DefaultInt = DefaultInt(0),
+        direction: int | Literal["forward", "inverse"] | DefaultStr = DefaultStr("forward"),
+        mode: int | Literal["horizontal", "vertical", "block"] | DefaultStr = DefaultStr("horizontal"),
         width: int | DefaultInt = DefaultInt(10),
         height: int | DefaultInt = DefaultInt(10),
         seed: int | DefaultInt = DefaultInt(-1),
@@ -13107,7 +13106,7 @@ class VideoStream(FilterableStream):
     def sidedata(
         self,
         *,
-        mode: int | Literal["select", "delete"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["select", "delete"] | DefaultStr = DefaultStr(0),
         type: int
         | Literal[
             "PANSCAN",
@@ -13132,7 +13131,7 @@ class VideoStream(FilterableStream):
             "DETECTION_BOUNDING_BOXES",
             "SEI_UNREGISTERED",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr(-1),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -13346,8 +13345,8 @@ class VideoStream(FilterableStream):
         *,
         sample_rate: int | DefaultInt = DefaultInt(44100),
         channels: int | DefaultInt = DefaultInt(1),
-        scale: int | Literal["lin", "log"] | DefaultStr = DefaultStr("LOG"),
-        slide: int | Literal["replace", "scroll", "fullframe", "rscroll"] | DefaultStr = DefaultStr("FULLFRAME"),
+        scale: int | Literal["lin", "log"] | DefaultStr = DefaultStr("log"),
+        slide: int | Literal["replace", "scroll", "fullframe", "rscroll"] | DefaultStr = DefaultStr("fullframe"),
         win_func: int
         | Literal[
             "rect",
@@ -13373,9 +13372,9 @@ class VideoStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         overlap: float | DefaultFloat = DefaultFloat(1.0),
-        orientation: int | Literal["vertical", "horizontal"] | DefaultStr = DefaultStr("VERTICAL"),
+        orientation: int | Literal["vertical", "horizontal"] | DefaultStr = DefaultStr("vertical"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -13473,7 +13472,7 @@ class VideoStream(FilterableStream):
         *,
         quality: int | DefaultInt = DefaultInt(3),
         qp: int | DefaultInt = DefaultInt(0),
-        mode: int | Literal["hard", "soft"] | DefaultStr = DefaultStr("MODE_HARD"),
+        mode: int | Literal["hard", "soft"] | DefaultStr = DefaultStr("hard"),
         use_bframe_qp: bool | DefaultInt = DefaultInt(0),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13652,7 +13651,7 @@ class VideoStream(FilterableStream):
             "icl",
             "icr",
         ]
-        | DefaultStr = DefaultStr("SIDE_BY_SIDE_LR"),
+        | DefaultStr = DefaultStr("sbsl"),
         out: int
         | Literal[
             "ab2l",
@@ -13693,7 +13692,7 @@ class VideoStream(FilterableStream):
             "icr",
             "hdmi",
         ]
-        | DefaultStr = DefaultStr("ANAGLYPH_RC_DUBOIS"),
+        | DefaultStr = DefaultStr("arcd"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -13879,7 +13878,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         c1_mode: int
         | Literal[
             "addition",
@@ -13925,7 +13924,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         c2_mode: int
         | Literal[
             "addition",
@@ -13971,7 +13970,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         c3_mode: int
         | Literal[
             "addition",
@@ -14017,7 +14016,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         all_mode: int
         | Literal[
             "addition",
@@ -14063,7 +14062,7 @@ class VideoStream(FilterableStream):
             "interpolate",
             "hardoverlay",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr(-1),
         c0_expr: str,
         c1_expr: str,
         c2_expr: str,
@@ -14136,7 +14135,7 @@ class VideoStream(FilterableStream):
     def telecine(
         self,
         *,
-        first_field: int | Literal["top", "t", "bottom", "b"] | DefaultInt = DefaultInt(0),
+        first_field: int | Literal["top", "t", "bottom", "b"] | DefaultStr = DefaultStr("top"),
         pattern: str | DefaultStr = DefaultStr("23"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -14193,13 +14192,13 @@ class VideoStream(FilterableStream):
         self,
         *,
         width: int | DefaultInt = DefaultInt(0),
-        display_mode: int | Literal["overlay", "parade", "stack"] | DefaultInt = DefaultInt(2),
-        levels_mode: int | Literal["linear", "logarithmic"] | DefaultInt = DefaultInt(0),
+        display_mode: int | Literal["overlay", "parade", "stack"] | DefaultStr = DefaultStr("stack"),
+        levels_mode: int | Literal["linear", "logarithmic"] | DefaultStr = DefaultStr("linear"),
         components: int | DefaultInt = DefaultInt(7),
         bgopacity: float | DefaultFloat = DefaultFloat(0.9),
         envelope: bool | DefaultInt = DefaultInt(0),
         ecolor: str | DefaultStr = DefaultStr("gold"),
-        slide: int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | DefaultInt = DefaultInt(1),
+        slide: int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | DefaultStr = DefaultStr("replace"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -14309,7 +14308,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         n: int | DefaultInt = DefaultInt(100),
-        log: int | Literal["quiet", "info", "verbose"] | DefaultInt = DefaultInt(32),
+        log: int | Literal["quiet", "info", "verbose"] | DefaultStr = DefaultStr("info"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -14406,8 +14405,8 @@ class VideoStream(FilterableStream):
         self,
         *,
         tilt: int | DefaultInt = DefaultInt(1),
-        start: int | Literal["none", "frame", "black"] | DefaultStr = DefaultStr("TILT_NONE"),
-        end: int | Literal["none", "frame", "black"] | DefaultStr = DefaultStr("TILT_NONE"),
+        start: int | Literal["none", "frame", "black"] | DefaultStr = DefaultStr("none"),
+        end: int | Literal["none", "frame", "black"] | DefaultStr = DefaultStr("none"),
         hold: int | DefaultInt = DefaultInt(0),
         pad: int | DefaultInt = DefaultInt(0),
         **kwargs: Any,
@@ -14482,7 +14481,7 @@ class VideoStream(FilterableStream):
         | Literal[
             "merge", "drop_even", "drop_odd", "pad", "interleave_top", "interleave_bottom", "interlacex2", "mergex2"
         ]
-        | DefaultStr = DefaultStr("MODE_MERGE"),
+        | DefaultStr = DefaultStr("merge"),
         flags: str
         | Literal["low_pass_filter", "vlpf", "complex_filter", "cvlpf", "exact_tb", "bypass_il"]
         | DefaultStr = DefaultStr(0),
@@ -14718,7 +14717,7 @@ class VideoStream(FilterableStream):
         *,
         tonemap: int
         | Literal["none", "linear", "gamma", "clip", "reinhard", "hable", "mobius"]
-        | DefaultStr = DefaultStr("TONEMAP_NONE"),
+        | DefaultStr = DefaultStr("none"),
         param: float | DefaultStr = DefaultStr('__builtin_nanf("0x7fc00000")'),
         desat: float | DefaultFloat = DefaultFloat(2.0),
         peak: float | DefaultFloat = DefaultFloat(0.0),
@@ -14772,11 +14771,11 @@ class VideoStream(FilterableStream):
         *,
         tonemap: int
         | Literal["none", "linear", "gamma", "clip", "reinhard", "hable", "mobius"]
-        | DefaultStr = DefaultStr("TONEMAP_NONE"),
-        transfer: int | Literal["bt709", "bt2020"] | DefaultStr = DefaultStr("AVCOL_TRC_BT709"),
-        matrix: int | Literal["bt709", "bt2020"] | DefaultInt = DefaultInt(-1),
-        primaries: int | Literal["bt709", "bt2020"] | DefaultInt = DefaultInt(-1),
-        range: int | Literal["tv", "pc", "limited", "full"] | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("none"),
+        transfer: int | Literal["bt709", "bt2020"] | DefaultStr = DefaultStr("bt709"),
+        matrix: int | Literal["bt709", "bt2020"] | DefaultStr = DefaultStr(-1),
+        primaries: int | Literal["bt709", "bt2020"] | DefaultStr = DefaultStr(-1),
+        range: int | Literal["tv", "pc", "limited", "full"] | DefaultStr = DefaultStr(-1),
         format: str | DefaultStr = DefaultStr("AV_PIX_FMT_NONE"),
         peak: float | DefaultFloat = DefaultFloat(0.0),
         param: float | DefaultStr = DefaultStr('__builtin_nanf("0x7fc00000")'),
@@ -14874,8 +14873,8 @@ class VideoStream(FilterableStream):
         *,
         start: int | DefaultInt = DefaultInt(0),
         stop: int | DefaultInt = DefaultInt(0),
-        start_mode: int | Literal["add", "clone"] | DefaultStr = DefaultStr("MODE_ADD"),
-        stop_mode: int | Literal["add", "clone"] | DefaultStr = DefaultStr("MODE_ADD"),
+        start_mode: int | Literal["add", "clone"] | DefaultStr = DefaultStr("add"),
+        stop_mode: int | Literal["add", "clone"] | DefaultStr = DefaultStr("add"),
         start_duration: int | DefaultInt = DefaultInt(0),
         stop_duration: int | DefaultInt = DefaultInt(0),
         color: str | DefaultStr = DefaultStr("black"),
@@ -14926,7 +14925,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         dir: int | DefaultStr = DefaultStr("TRANSPOSE_CCLOCK_FLIP"),
-        passthrough: int | Literal["none", "portrait", "landscape"] | DefaultStr = DefaultStr("TRANSPOSE_PT_TYPE_NONE"),
+        passthrough: int | Literal["none", "portrait", "landscape"] | DefaultStr = DefaultStr("none"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -14973,12 +14972,8 @@ class VideoStream(FilterableStream):
     def transpose_npp(
         self,
         *,
-        dir: int
-        | Literal["cclock_flip", "clock", "cclock", "clock_flip"]
-        | DefaultStr = DefaultStr("NPP_TRANSPOSE_CCLOCK_FLIP"),
-        passthrough: int
-        | Literal["none", "landscape", "portrait"]
-        | DefaultStr = DefaultStr("NPP_TRANSPOSE_PT_TYPE_NONE"),
+        dir: int | Literal["cclock_flip", "clock", "cclock", "clock_flip"] | DefaultStr = DefaultStr("cclock_flip"),
+        passthrough: int | Literal["none", "landscape", "portrait"] | DefaultStr = DefaultStr("none"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -15017,7 +15012,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         dir: int | DefaultStr = DefaultStr("TRANSPOSE_CCLOCK_FLIP"),
-        passthrough: int | Literal["none", "portrait", "landscape"] | DefaultStr = DefaultStr("TRANSPOSE_PT_TYPE_NONE"),
+        passthrough: int | Literal["none", "portrait", "landscape"] | DefaultStr = DefaultStr("none"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -15056,7 +15051,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         dir: int | DefaultStr = DefaultStr("TRANSPOSE_CCLOCK_FLIP"),
-        passthrough: int | Literal["none", "portrait", "landscape"] | DefaultStr = DefaultStr("TRANSPOSE_PT_TYPE_NONE"),
+        passthrough: int | Literal["none", "portrait", "landscape"] | DefaultStr = DefaultStr("none"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -15412,7 +15407,7 @@ class VideoStream(FilterableStream):
             "octahedron",
             "cylindricalea",
         ]
-        | DefaultStr = DefaultStr("EQUIRECTANGULAR"),
+        | DefaultStr = DefaultStr("e"),
         output: int
         | Literal[
             "e",
@@ -15446,7 +15441,7 @@ class VideoStream(FilterableStream):
             "octahedron",
             "cylindricalea",
         ]
-        | DefaultStr = DefaultStr("CUBEMAP_3_2"),
+        | DefaultStr = DefaultStr("c3x2"),
         interp: int
         | Literal[
             "near",
@@ -15464,11 +15459,11 @@ class VideoStream(FilterableStream):
             "gaussian",
             "mitchell",
         ]
-        | DefaultStr = DefaultStr("BILINEAR"),
+        | DefaultStr = DefaultStr("line"),
         w: int | DefaultInt = DefaultInt(0),
         h: int | DefaultInt = DefaultInt(0),
-        in_stereo: int | Literal["2d", "sbs", "tb"] | DefaultStr = DefaultStr("STEREO_2D"),
-        out_stereo: int | Literal["2d", "sbs", "tb"] | DefaultStr = DefaultStr("STEREO_2D"),
+        in_stereo: int | Literal["2d", "sbs", "tb"] | DefaultStr = DefaultStr("2d"),
+        out_stereo: int | Literal["2d", "sbs", "tb"] | DefaultStr = DefaultStr("2d"),
         in_forder: str | DefaultStr = DefaultStr("rludfb"),
         out_forder: str | DefaultStr = DefaultStr("rludfb"),
         in_frot: str | DefaultStr = DefaultStr("000000"),
@@ -15603,11 +15598,11 @@ class VideoStream(FilterableStream):
         self,
         *,
         threshold: float | DefaultFloat = DefaultFloat(2.0),
-        method: int | Literal["hard", "soft", "garrote"] | DefaultInt = DefaultInt(2),
+        method: int | Literal["hard", "soft", "garrote"] | DefaultStr = DefaultStr("garrote"),
         nsteps: int | DefaultInt = DefaultInt(6),
         percent: float | DefaultFloat = DefaultFloat(85.0),
         planes: int | DefaultInt = DefaultInt(15),
-        type: int | Literal["universal", "bayes"] | DefaultInt = DefaultInt(0),
+        type: int | Literal["universal", "bayes"] | DefaultStr = DefaultStr("universal"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -15707,18 +15702,18 @@ class VideoStream(FilterableStream):
         *,
         mode: int
         | Literal["gray", "tint", "color", "color2", "color3", "color4", "color5"]
-        | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
         x: int | DefaultInt = DefaultInt(1),
         y: int | DefaultInt = DefaultInt(2),
         intensity: float | DefaultFloat = DefaultFloat(0.004),
-        envelope: int | Literal["none", "instant", "peak", "peak+instant"] | DefaultInt = DefaultInt(0),
-        graticule: int | Literal["none", "green", "color", "invert"] | DefaultStr = DefaultStr("GRAT_NONE"),
+        envelope: int | Literal["none", "instant", "peak", "peak+instant"] | DefaultStr = DefaultStr("none"),
+        graticule: int | Literal["none", "green", "color", "invert"] | DefaultStr = DefaultStr("none"),
         opacity: float | DefaultFloat = DefaultFloat(0.75),
-        flags: str | Literal["white", "black", "name"] | DefaultStr = DefaultStr(4),
+        flags: str | Literal["white", "black", "name"] | DefaultStr = DefaultStr("name"),
         bgopacity: float | DefaultFloat = DefaultFloat(0.3),
         lthreshold: float | DefaultFloat = DefaultFloat(0.0),
         hthreshold: float | DefaultFloat = DefaultFloat(1.0),
-        colorspace: int | Literal["auto", "601", "709"] | DefaultInt = DefaultInt(0),
+        colorspace: int | Literal["auto", "601", "709"] | DefaultStr = DefaultStr("auto"),
         tint0: float | DefaultFloat = DefaultFloat(0.0),
         tint1: float | DefaultFloat = DefaultFloat(0.0),
         **kwargs: Any,
@@ -15984,16 +15979,16 @@ class VideoStream(FilterableStream):
         *,
         input: str | DefaultStr = DefaultStr("transforms.trf"),
         smoothing: int | DefaultInt = DefaultInt(15),
-        optalgo: int | Literal["opt", "gauss", "avg"] | DefaultStr = DefaultStr("VSOptimalL1"),
+        optalgo: int | Literal["opt", "gauss", "avg"] | DefaultStr = DefaultStr("opt"),
         maxshift: int | DefaultInt = DefaultInt(-1),
         maxangle: float | DefaultFloat = DefaultFloat(-1.0),
-        crop: int | Literal["keep", "black"] | DefaultInt = DefaultInt(0),
+        crop: int | Literal["keep", "black"] | DefaultStr = DefaultStr(0),
         invert: int | DefaultInt = DefaultInt(0),
         relative: int | DefaultInt = DefaultInt(1),
         zoom: float | DefaultFloat = DefaultFloat(0.0),
         optzoom: int | DefaultInt = DefaultInt(1),
         zoomspeed: float | DefaultFloat = DefaultFloat(0.25),
-        interpol: int | Literal["no", "linear", "bilinear", "bicubic"] | DefaultInt = DefaultInt(2),
+        interpol: int | Literal["no", "linear", "bilinear", "bicubic"] | DefaultStr = DefaultStr(2),
         tripod: bool | DefaultInt = DefaultInt(0),
         debug: bool | DefaultInt = DefaultInt(0),
         **kwargs: Any,
@@ -16110,7 +16105,7 @@ class VideoStream(FilterableStream):
         angle: str | DefaultStr = DefaultStr("PI/5"),
         x0: str | DefaultStr = DefaultStr("w/2"),
         y0: str | DefaultStr = DefaultStr("h/2"),
-        mode: int | Literal["forward", "backward"] | DefaultInt = DefaultInt(0),
+        mode: int | Literal["forward", "backward"] | DefaultStr = DefaultStr("forward"),
         eval: int | DefaultStr = DefaultStr("EVAL_MODE_INIT"),
         dither: bool | DefaultInt = DefaultInt(1),
         aspect: float | DefaultFloat = DefaultFloat(1.0),
@@ -16198,10 +16193,10 @@ class VideoStream(FilterableStream):
     def w3fdif(
         self,
         *,
-        filter: int | Literal["simple", "complex"] | DefaultInt = DefaultInt(1),
-        mode: int | Literal["frame", "field"] | DefaultInt = DefaultInt(1),
-        parity: int | Literal["tff", "bff", "auto"] | DefaultInt = DefaultInt(-1),
-        deint: int | Literal["all", "interlaced"] | DefaultInt = DefaultInt(0),
+        filter: int | Literal["simple", "complex"] | DefaultStr = DefaultStr("complex"),
+        mode: int | Literal["frame", "field"] | DefaultStr = DefaultStr("field"),
+        parity: int | Literal["tff", "bff", "auto"] | DefaultStr = DefaultStr("auto"),
+        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("all"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -16254,24 +16249,24 @@ class VideoStream(FilterableStream):
     def waveform(
         self,
         *,
-        mode: int | Literal["row", "column"] | DefaultInt = DefaultInt(1),
+        mode: int | Literal["row", "column"] | DefaultStr = DefaultStr("column"),
         intensity: float | DefaultFloat = DefaultFloat(0.04),
         mirror: bool | DefaultInt = DefaultInt(1),
-        display: int | Literal["overlay", "stack", "parade"] | DefaultStr = DefaultStr("STACK"),
+        display: int | Literal["overlay", "stack", "parade"] | DefaultStr = DefaultStr("stack"),
         components: int | DefaultInt = DefaultInt(1),
-        envelope: int | Literal["none", "instant", "peak", "peak+instant"] | DefaultInt = DefaultInt(0),
+        envelope: int | Literal["none", "instant", "peak", "peak+instant"] | DefaultStr = DefaultStr("none"),
         filter: int
         | Literal["lowpass", "flat", "aflat", "chroma", "color", "acolor", "xflat", "yflat"]
-        | DefaultInt = DefaultInt(0),
-        graticule: int | Literal["none", "green", "orange", "invert"] | DefaultInt = DefaultInt(0),
+        | DefaultStr = DefaultStr(0),
+        graticule: int | Literal["none", "green", "orange", "invert"] | DefaultStr = DefaultStr(0),
         opacity: float | DefaultFloat = DefaultFloat(0.75),
-        flags: str | Literal["numbers", "dots"] | DefaultStr = DefaultStr(1),
-        scale: int | Literal["digital", "millivolts", "ire"] | DefaultInt = DefaultInt(0),
+        flags: str | Literal["numbers", "dots"] | DefaultStr = DefaultStr("numbers"),
+        scale: int | Literal["digital", "millivolts", "ire"] | DefaultStr = DefaultStr(0),
         bgopacity: float | DefaultFloat = DefaultFloat(0.75),
         tint0: float | DefaultFloat = DefaultFloat(0.0),
         tint1: float | DefaultFloat = DefaultFloat(0.0),
-        fitmode: int | Literal["none", "size"] | DefaultInt = DefaultInt(0),
-        input: int | Literal["all", "first"] | DefaultInt = DefaultInt(1),
+        fitmode: int | Literal["none", "size"] | DefaultStr = DefaultStr(0),
+        input: int | Literal["all", "first"] | DefaultStr = DefaultStr("first"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -16338,7 +16333,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def weave(
-        self, *, first_field: int | Literal["top", "t", "bottom", "b"] | DefaultInt = DefaultInt(0), **kwargs: Any
+        self, *, first_field: int | Literal["top", "t", "bottom", "b"] | DefaultStr = DefaultStr("top"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -16411,7 +16406,7 @@ class VideoStream(FilterableStream):
         _secondary: "VideoStream",
         *,
         planes: int | DefaultInt = DefaultInt(7),
-        secondary: int | Literal["first", "all"] | DefaultInt = DefaultInt(1),
+        secondary: int | Literal["first", "all"] | DefaultStr = DefaultStr("all"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -16517,7 +16512,7 @@ class VideoStream(FilterableStream):
             "revealup",
             "revealdown",
         ]
-        | DefaultStr = DefaultStr("FADE"),
+        | DefaultStr = DefaultStr("fade"),
         duration: int | DefaultInt = DefaultInt(1000000),
         offset: int | DefaultInt = DefaultInt(0),
         expr: str,
@@ -16580,7 +16575,7 @@ class VideoStream(FilterableStream):
             "slideup",
             "slidedown",
         ]
-        | DefaultInt = DefaultInt(1),
+        | DefaultStr = DefaultStr(1),
         source: str,
         kernel: str,
         duration: int | DefaultInt = DefaultInt(1000000),
@@ -16775,11 +16770,11 @@ class VideoStream(FilterableStream):
         w: str,
         h: str,
         size: str,
-        dither: int | Literal["none", "ordered", "random", "error_diffusion"] | DefaultInt = DefaultInt(0),
+        dither: int | Literal["none", "ordered", "random", "error_diffusion"] | DefaultStr = DefaultStr(0),
         filter: int
         | Literal["point", "bilinear", "bicubic", "spline16", "spline36", "lanczos"]
-        | DefaultStr = DefaultStr("ZIMG_RESIZE_BILINEAR"),
-        out_range: int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("bilinear"),
+        out_range: int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | DefaultStr = DefaultStr("input"),
         primaries: int
         | Literal[
             "input",
@@ -16802,7 +16797,7 @@ class VideoStream(FilterableStream):
             "jedec-p22",
             "ebu3213",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("input"),
         transfer: int
         | Literal[
             "input",
@@ -16828,7 +16823,7 @@ class VideoStream(FilterableStream):
             "iec61966-2-1",
             "arib-std-b67",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("input"),
         matrix: int
         | Literal[
             "input",
@@ -16852,8 +16847,8 @@ class VideoStream(FilterableStream):
             "chroma-derived-c",
             "ictcp",
         ]
-        | DefaultInt = DefaultInt(-1),
-        in_range: int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("input"),
+        in_range: int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | DefaultStr = DefaultStr("input"),
         primariesin: int
         | Literal[
             "input",
@@ -16876,7 +16871,7 @@ class VideoStream(FilterableStream):
             "jedec-p22",
             "ebu3213",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("input"),
         transferin: int
         | Literal[
             "input",
@@ -16902,7 +16897,7 @@ class VideoStream(FilterableStream):
             "iec61966-2-1",
             "arib-std-b67",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("input"),
         matrixin: int
         | Literal[
             "input",
@@ -16926,13 +16921,13 @@ class VideoStream(FilterableStream):
             "chroma-derived-c",
             "ictcp",
         ]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("input"),
         chromal: int
         | Literal["input", "left", "center", "topleft", "top", "bottomleft", "bottom"]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("input"),
         chromalin: int
         | Literal["input", "left", "center", "topleft", "top", "bottomleft", "bottom"]
-        | DefaultInt = DefaultInt(-1),
+        | DefaultStr = DefaultStr("input"),
         npl: float | DefaultStr = DefaultStr('__builtin_nanf("0x7fc00000")'),
         agamma: bool | DefaultInt = DefaultInt(1),
         param_a: float | DefaultStr = DefaultStr('__builtin_nanf("0x7fc00000")'),

@@ -54,6 +54,13 @@ class FFmpegFilterOption(BaseModel):
             return f"{self.typing} | Literal[" + ", ".join(repr(k.name) for k in self.choices) + "]"
         return self.typing
 
+    @property
+    def _default(self) -> str | int | float | None:
+        if self.choices:
+            if v := [k for k in self.choices if k.value == self.default]:
+                return v[0].name
+        return self.default
+
 
 def _convert_to_stream_type(typings: list[AVFilterPadType]) -> list[StreamType]:
     output: list[StreamType] = []
