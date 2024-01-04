@@ -54,15 +54,6 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         doc = filter_doc_mapping[f.name]
         try:
             ffmpeg_filter = FFmpegFilter.load(f.id)
-            ffmpeg_filter.filter_type = f.type
-            ffmpeg_filter.name = f.name
-            ffmpeg_filter.description = doc.description
-            ffmpeg_filter.ref = doc.url
-            ffmpeg_filter.is_input_dynamic = f.is_dynamic_inputs
-            ffmpeg_filter.is_output_dynamic = f.is_dynamic_outputs
-            ffmpeg_filter.input_stream_typings = f.input_filter_pads
-            ffmpeg_filter.output_stream_typings = f.output_filter_pads
-            ffmpeg_filter.options = parse_options(f, doc)
         except Exception:
             ffmpeg_filter = FFmpegFilter(
                 id=f.id,
@@ -76,6 +67,16 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
                 output_stream_typings=f.output_filter_pads,
                 options=parse_options(f, doc),
             )
+
+        ffmpeg_filter.filter_type = f.type
+        ffmpeg_filter.name = f.name
+        ffmpeg_filter.description = doc.description
+        ffmpeg_filter.ref = doc.url
+        ffmpeg_filter.is_input_dynamic = f.is_dynamic_inputs
+        ffmpeg_filter.is_output_dynamic = f.is_dynamic_outputs
+        ffmpeg_filter.input_stream_typings = f.input_filter_pads
+        ffmpeg_filter.output_stream_typings = f.output_filter_pads
+        ffmpeg_filter.options = parse_options(f, doc)
 
         ffmpeg_filter.save()
         output.append(ffmpeg_filter)
