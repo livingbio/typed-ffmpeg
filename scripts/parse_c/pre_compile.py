@@ -11,6 +11,14 @@ def precompile(folder: pathlib.Path):
     if not os.path.exists("config_components.h"):
         os.system("./configure")
 
+    with open("config_components.h") as f:
+        text = f.read()
+
+    text = text.replace(" 0", " 1")
+
+    with open("config_components.h", "w") as f:
+        f.write(text)
+
     for file in folder.glob("libavfilter/*.c"):
         print(f"precompile {file}")
         os.system(f"gcc -E -I. {file} > {(source_folder / file.name).resolve()}")
