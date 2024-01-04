@@ -114,6 +114,7 @@ class FFmpegFilter(BaseModel):
     @classmethod
     def load(cls, id: str) -> "FFmpegFilter":
         path = schema_path / f"{id}.json"
+
         with path.open() as ifile:
             return FFmpegFilter(**json.load(ifile))
 

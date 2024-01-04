@@ -2131,6 +2131,96 @@ def hstack(
     return filter_node.video(0)
 
 
+def hstack_qsv(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    height: int | DefaultInt = DefaultInt(0),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    15.1 hstack_qsv
+    Stack input videos horizontally.
+
+    This is the QSV variant of the hstack filter, each input stream may
+    have different height, this filter will scale down/up each input stream while
+    keeping the original aspect.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See hstack.
+    :param bool shortest: See hstack.
+    :param int height: Set height of output. If set to 0, this filter will set height of output to height of the first input stream. Default value is 0.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#hstack_005fqsv
+
+    """
+    filter_node = FilterNode(
+        name="hstack_qsv",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "height": height,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def hstack_vaapi(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    height: int | DefaultInt = DefaultInt(0),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    13.3 hstack_vaapi
+    Stack input videos horizontally.
+
+    This is the VA-API variant of the hstack filter, each input stream may
+    have different height, this filter will scale down/up each input stream while
+    keeping the original aspect.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See hstack.
+    :param bool shortest: See hstack.
+    :param int height: Set height of output. If set to 0, this filter will set height of output to height of the first input stream. Default value is 0.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#hstack_005fvaapi
+
+    """
+    filter_node = FilterNode(
+        name="hstack_vaapi",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "height": height,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
 def hysteresis(
     _base: "VideoStream",
     _alt: "VideoStream",
@@ -2747,6 +2837,64 @@ def libvmaf(
     """
     filter_node = FilterNode(
         name="libvmaf",
+        input_typings=[StreamType.video, StreamType.video],
+        output_typings=[StreamType.video],
+        inputs=[
+            _main,
+            _reference,
+        ],
+        kwargs={
+            "log_path": log_path,
+            "log_fmt": log_fmt,
+            "pool": pool,
+            "n_threads": n_threads,
+            "n_subsample": n_subsample,
+            "model": model,
+            "feature": feature,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def libvmaf_cuda(
+    _main: "VideoStream",
+    _reference: "VideoStream",
+    *,
+    log_path: str,
+    log_fmt: str | DefaultStr = DefaultStr("xml"),
+    pool: str,
+    n_threads: int | DefaultInt = DefaultInt(0),
+    n_subsample: int | DefaultInt = DefaultInt(1),
+    model: str | DefaultStr = DefaultStr("version=vmaf_v0.6.1"),
+    feature: str,
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    11.146 libvmaf_cuda
+    This is the CUDA variant of the libvmaf filter. It only accepts CUDA frames.
+
+    It requires Netflix’s vmaf library (libvmaf) as a pre-requisite.
+    After installing the library it can be enabled using:
+    ./configure --enable-nonfree --enable-ffnvcodec --enable-libvmaf.
+
+    Parameters:
+    ----------
+
+    :param str log_path: None
+    :param str log_fmt: None
+    :param str pool: None
+    :param int n_threads: None
+    :param int n_subsample: None
+    :param str model: None
+    :param str feature: None
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf_005fcuda
+
+    """
+    filter_node = FilterNode(
+        name="libvmaf_cuda",
         input_typings=[StreamType.video, StreamType.video],
         output_typings=[StreamType.video],
         inputs=[
@@ -3854,6 +4002,145 @@ def premultiply(
     return filter_node.video(0)
 
 
+def program_opencl(
+    *streams: "VideoStream",
+    source: str,
+    kernel: str,
+    inputs: int | DefaultInt = DefaultInt(1),
+    size: str,
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    12.12 program_opencl
+    Filter video using an OpenCL program.
+
+
+    The program_opencl filter also supports the framesync options.
+
+    The program source file must contain a kernel function with the given name,
+    which will be run once for each plane of the output.  Each run on a plane
+    gets enqueued as a separate 2D global NDRange with one work-item for each
+    pixel to be generated.  The global ID offset for each work-item is therefore
+    the coordinates of a pixel in the destination image.
+
+    The kernel function needs to take the following arguments:
+
+     Destination image, __write_only image2d_t.
+
+    This image will become the output; the kernel should write all of it.
+     Frame index, unsigned int.
+
+    This is a counter starting from zero and increasing by one for each frame.
+     Source images, __read_only image2d_t.
+
+    These are the most recent images on each input.  The kernel may read from
+    them to generate the output, but they can’t be written to.
+
+    Example programs:
+
+
+     Copy the input to the output (output must be the same size as the input).
+    __kernel void copy(__write_only image2d_t destination,
+                       unsigned int index,
+                       __read_only  image2d_t source)
+    {
+        const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE;
+
+        int2 location = (int2)(get_global_id(0), get_global_id(1));
+
+        float4 value = read_imagef(source, sampler, location);
+
+        write_imagef(destination, location, value);
+    }
+
+     Apply a simple transformation, rotating the input by an amount increasing
+    with the index counter.  Pixel values are linearly interpolated by the
+    sampler, and the output need not have the same dimensions as the input.
+    __kernel void rotate_image(__write_only image2d_t dst,
+                               unsigned int index,
+                               __read_only  image2d_t src)
+    {
+        const sampler_t sampler = (CLK_NORMALIZED_COORDS_FALSE |
+                                   CLK_FILTER_LINEAR);
+
+        float angle = (float)index / 100.0f;
+
+        float2 dst_dim = convert_float2(get_image_dim(dst));
+        float2 src_dim = convert_float2(get_image_dim(src));
+
+        float2 dst_cen = dst_dim / 2.0f;
+        float2 src_cen = src_dim / 2.0f;
+
+        int2   dst_loc = (int2)(get_global_id(0), get_global_id(1));
+
+        float2 dst_pos = convert_float2(dst_loc) - dst_cen;
+        float2 src_pos = {
+            cos(angle) * dst_pos.x - sin(angle) * dst_pos.y,
+            sin(angle) * dst_pos.x + cos(angle) * dst_pos.y
+        };
+        src_pos = src_pos * src_dim / dst_dim;
+
+        float2 src_loc = src_pos + src_cen;
+
+        if (src_loc.x < 0.0f      || src_loc.y < 0.0f ||
+            src_loc.x > src_dim.x || src_loc.y > src_dim.y)
+            write_imagef(dst, dst_loc, 0.5f);
+        else
+            write_imagef(dst, dst_loc, read_imagef(src, sampler, src_loc));
+    }
+
+     Blend two inputs together, with the amount of each input used varying
+    with the index counter.
+    __kernel void blend_images(__write_only image2d_t dst,
+                               unsigned int index,
+                               __read_only  image2d_t src1,
+                               __read_only  image2d_t src2)
+    {
+        const sampler_t sampler = (CLK_NORMALIZED_COORDS_FALSE |
+                                   CLK_FILTER_LINEAR);
+
+        float blend = (cos((float)index / 50.0f) + 1.0f) / 2.0f;
+
+        int2  dst_loc = (int2)(get_global_id(0), get_global_id(1));
+        int2 src1_loc = dst_loc * get_image_dim(src1) / get_image_dim(dst);
+        int2 src2_loc = dst_loc * get_image_dim(src2) / get_image_dim(dst);
+
+        float4 val1 = read_imagef(src1, sampler, src1_loc);
+        float4 val2 = read_imagef(src2, sampler, src2_loc);
+
+        write_imagef(dst, dst_loc, val1 * blend + val2 * (1.0f - blend));
+    }
+
+    Parameters:
+    ----------
+
+    :param str source: OpenCL program source file.
+    :param str kernel: Kernel name in program.
+    :param int inputs: Number of inputs to the filter. Defaults to 1.
+    :param str size: Size of output frames. Defaults to the same as the first input.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#program_005fopencl
+
+    """
+    filter_node = FilterNode(
+        name="program_opencl",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "source": source,
+            "kernel": kernel,
+            "inputs": inputs,
+            "size": size,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
 def psnr(
     _main: "VideoStream",
     _reference: "VideoStream",
@@ -4836,6 +5123,96 @@ def vstack(
     return filter_node.video(0)
 
 
+def vstack_qsv(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    width: int | DefaultInt = DefaultInt(0),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    15.2 vstack_qsv
+    Stack input videos vertically.
+
+    This is the QSV variant of the vstack filter, each input stream may
+    have different width, this filter will scale down/up each input stream while
+    keeping the original aspect.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See vstack.
+    :param bool shortest: See vstack.
+    :param int width: Set width of output. If set to 0, this filter will set width of output to width of the first input stream. Default value is 0.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#vstack_005fqsv
+
+    """
+    filter_node = FilterNode(
+        name="vstack_qsv",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "width": width,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def vstack_vaapi(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    width: int | DefaultInt = DefaultInt(0),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    13.4 vstack_vaapi
+    Stack input videos vertically.
+
+    This is the VA-API variant of the vstack filter, each input stream may
+    have different width, this filter will scale down/up each input stream while
+    keeping the original aspect.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See vstack.
+    :param bool shortest: See vstack.
+    :param int width: Set width of output. If set to 0, this filter will set width of output to width of the first input stream. Default value is 0.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#vstack_005fvaapi
+
+    """
+    filter_node = FilterNode(
+        name="vstack_vaapi",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "width": width,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
 def xcorrelate(
     _primary: "VideoStream",
     _secondary: "VideoStream",
@@ -5189,6 +5566,112 @@ def xstack(
             "layout": layout,
             "grid": grid,
             "shortest": shortest,
+            "fill": fill,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def xstack_qsv(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    layout: str,
+    grid: str,
+    grid_tile_size: str,
+    fill: str | DefaultStr = DefaultStr("none"),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    15.3 xstack_qsv
+    Stack video inputs into custom layout.
+
+    This is the QSV variant of the xstack filter.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See xstack.
+    :param bool shortest: See xstack.
+    :param str layout: See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_qsv=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
+    :param str grid: See xstack.
+    :param str grid_tile_size: Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
+    :param str fill: See xstack.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#xstack_005fqsv
+
+    """
+    filter_node = FilterNode(
+        name="xstack_qsv",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "layout": layout,
+            "grid": grid,
+            "grid_tile_size": grid_tile_size,
+            "fill": fill,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def xstack_vaapi(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    layout: str,
+    grid: str,
+    grid_tile_size: str,
+    fill: str | DefaultStr = DefaultStr("none"),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    13.5 xstack_vaapi
+    Stack video inputs into custom layout.
+
+    This is the VA-API variant of the xstack filter,  each input stream may
+    have different size, this filter will scale down/up each input stream to the
+    given output size, or the size of the first input stream.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See xstack.
+    :param bool shortest: See xstack.
+    :param str layout: See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_vaapi=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
+    :param str grid: See xstack.
+    :param str grid_tile_size: Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
+    :param str fill: See xstack.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#xstack_005fvaapi
+
+    """
+    filter_node = FilterNode(
+        name="xstack_vaapi",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "layout": layout,
+            "grid": grid,
+            "grid_tile_size": grid_tile_size,
             "fill": fill,
         }
         | kwargs,

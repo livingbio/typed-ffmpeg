@@ -1,0 +1,194 @@
+[
+  {
+    "description": "\\\"VA-API\\  \"hstack",
+    "flags": "(1 << 0) | 0",
+    "id": "ff_vf_hstack_vaapi",
+    "init": "vaapi_stack_init",
+    "init_src": "static int vaapi_stack_init(AVFilterContext *avctx)\n{\n    StackVAAPIContext *sctx = avctx->priv;\n    VAAPIVPPContext *vppctx = avctx->priv;\n    int ret;\n\n    ret = stack_init(avctx);\n    if (ret)\n        return ret;\n\n\n    sctx->rects = av_calloc(sctx->base.nb_inputs, sizeof(*sctx->rects));\n    if (!sctx->rects)\n        return (-(12));\n\n    ff_vaapi_vpp_ctx_init(avctx);\n    vppctx->output_format = AV_PIX_FMT_NONE;\n\n    return 0;\n}",
+    "input_filter_pads": [],
+    "inputs": null,
+    "name": "hstack_vaapi",
+    "options": [
+      {
+        "default": "['.i64 = 2']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Set number of inputs",
+        "max": "65535",
+        "min": "2",
+        "name": "inputs",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.nb_inputs)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "(16 | (1<<16))",
+        "help": "Force termination when the shortest input terminates",
+        "max": "1",
+        "min": "0",
+        "name": "shortest",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.shortest)",
+        "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "(16 | (1<<16))",
+        "help": "Set output height (0 to use the height of input 0)",
+        "max": "65535",
+        "min": "0",
+        "name": "height",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.tile_height)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(stack_outputs)",
+    "priv_class": "&hstack_vaapi_class"
+  },
+  {
+    "description": "\\\"VA-API\\  \"vstack",
+    "flags": "(1 << 0) | 0",
+    "id": "ff_vf_vstack_vaapi",
+    "init": "vaapi_stack_init",
+    "init_src": "static int vaapi_stack_init(AVFilterContext *avctx)\n{\n    StackVAAPIContext *sctx = avctx->priv;\n    VAAPIVPPContext *vppctx = avctx->priv;\n    int ret;\n\n    ret = stack_init(avctx);\n    if (ret)\n        return ret;\n\n\n    sctx->rects = av_calloc(sctx->base.nb_inputs, sizeof(*sctx->rects));\n    if (!sctx->rects)\n        return (-(12));\n\n    ff_vaapi_vpp_ctx_init(avctx);\n    vppctx->output_format = AV_PIX_FMT_NONE;\n\n    return 0;\n}",
+    "input_filter_pads": [],
+    "inputs": null,
+    "name": "vstack_vaapi",
+    "options": [
+      {
+        "default": "['.i64 = 2']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Set number of inputs",
+        "max": "65535",
+        "min": "2",
+        "name": "inputs",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.nb_inputs)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "(16 | (1<<16))",
+        "help": "Force termination when the shortest input terminates",
+        "max": "1",
+        "min": "0",
+        "name": "shortest",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.shortest)",
+        "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "(16 | (1<<16))",
+        "help": "Set output width (0 to use the width of input 0)",
+        "max": "65535",
+        "min": "0",
+        "name": "width",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.tile_width)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(stack_outputs)",
+    "priv_class": "&vstack_vaapi_class"
+  },
+  {
+    "description": "\\\"VA-API\\  \"xstack",
+    "flags": "(1 << 0) | 0",
+    "id": "ff_vf_xstack_vaapi",
+    "init": "vaapi_stack_init",
+    "init_src": "static int vaapi_stack_init(AVFilterContext *avctx)\n{\n    StackVAAPIContext *sctx = avctx->priv;\n    VAAPIVPPContext *vppctx = avctx->priv;\n    int ret;\n\n    ret = stack_init(avctx);\n    if (ret)\n        return ret;\n\n\n    sctx->rects = av_calloc(sctx->base.nb_inputs, sizeof(*sctx->rects));\n    if (!sctx->rects)\n        return (-(12));\n\n    ff_vaapi_vpp_ctx_init(avctx);\n    vppctx->output_format = AV_PIX_FMT_NONE;\n\n    return 0;\n}",
+    "input_filter_pads": [],
+    "inputs": null,
+    "name": "xstack_vaapi",
+    "options": [
+      {
+        "default": "['.i64 = 2']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Set number of inputs",
+        "max": "65535",
+        "min": "2",
+        "name": "inputs",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.nb_inputs)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "(16 | (1<<16))",
+        "help": "Force termination when the shortest input terminates",
+        "max": "1",
+        "min": "0",
+        "name": "shortest",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.shortest)",
+        "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Set custom layout",
+        "max": "0",
+        "min": "0",
+        "name": "layout",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.layout)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "set fixed size grid layout",
+        "max": "0",
+        "min": "0",
+        "name": "grid",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.nb_grid_columns)",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE",
+        "unit": null
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "set tile size in grid layout",
+        "max": "0",
+        "min": "0",
+        "name": "grid_tile_size",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.tile_width)",
+        "type": "AV_OPT_TYPE_IMAGE_SIZE",
+        "unit": null
+      },
+      {
+        "default": "['.str = \"none\"']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Set the color for unused pixels",
+        "max": null,
+        "min": null,
+        "name": "fill",
+        "offset": "__builtin_offsetof(StackVAAPIContext, base.fillcolor_str)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(stack_outputs)",
+    "priv_class": "&xstack_vaapi_class"
+  }
+]

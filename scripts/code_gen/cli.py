@@ -52,7 +52,22 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
             continue
 
         doc = filter_doc_mapping[f.name]
-        ffmpeg_filter = FFmpegFilter.load(f.id)
+        try:
+            ffmpeg_filter = FFmpegFilter.load(f.id)
+        except Exception:
+            ffmpeg_filter = FFmpegFilter(
+                id=f.id,
+                filter_type=f.type,
+                name=f.name,
+                description=doc.description,
+                ref=doc.url,
+                is_input_dynamic=f.is_dynamic_inputs,
+                is_output_dynamic=f.is_dynamic_outputs,
+                input_stream_typings=f.input_filter_pads,
+                output_stream_typings=f.output_filter_pads,
+                options=parse_options(f, doc),
+            )
+
         ffmpeg_filter.filter_type = f.type
         ffmpeg_filter.name = f.name
         ffmpeg_filter.description = doc.description

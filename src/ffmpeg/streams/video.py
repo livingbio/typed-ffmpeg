@@ -184,6 +184,56 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def ass(
+        self,
+        *,
+        filename: str,
+        original_size: str,
+        fontsdir: str,
+        alpha: bool | DefaultInt = DefaultInt(0),
+        shaping: int | Literal["auto", "simple", "complex"] | DefaultStr = DefaultStr("auto"),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        11.5 ass
+        Same as the subtitles filter, except that it doesn’t require libavcodec
+        and libavformat to work. On the other hand, it is limited to ASS (Advanced
+        Substation Alpha) subtitles files.
+
+        This filter accepts the following option in addition to the common options from
+        the subtitles filter:
+
+        Parameters:
+        ----------
+
+        :param str filename: None
+        :param str original_size: None
+        :param str fontsdir: None
+        :param bool alpha: None
+        :param int shaping: Set the shaping engine Available values are: ‘auto’ The default libass shaping engine, which is the best available. ‘simple’ Fast, font-agnostic shaper that can do only substitutions ‘complex’ Slower shaper using OpenType for substitutions and positioning The default is auto.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#ass
+
+        """
+        filter_node = FilterNode(
+            name="ass",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "filename": filename,
+                "original_size": original_size,
+                "fontsdir": fontsdir,
+                "alpha": alpha,
+                "shaping": shaping,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def atadenoise(
         self,
         *,
@@ -279,6 +329,47 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="avgblur",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "sizeX": sizeX,
+                "planes": planes,
+                "sizeY": sizeY,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
+    def avgblur_opencl(
+        self,
+        *,
+        sizeX: int | DefaultInt = DefaultInt(1),
+        planes: int | DefaultStr = DefaultStr("0xF"),
+        sizeY: int | DefaultInt = DefaultInt(0),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        12.1 avgblur_opencl
+        Apply average blur filter.
+
+        The filter accepts the following options:
+
+        Parameters:
+        ----------
+
+        :param int sizeX: Set horizontal radius size. Range is [1, 1024] and default value is 1.
+        :param int planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
+        :param int sizeY: Set vertical radius size. Range is [1, 1024] and default value is 0. If zero, sizeX value will be used.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#avgblur_005fopencl
+
+        """
+        filter_node = FilterNode(
+            name="avgblur_opencl",
             input_typings=[StreamType.video],
             output_typings=[StreamType.video],
             inputs=[
@@ -1202,6 +1293,59 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def boxblur_opencl(
+        self,
+        *,
+        luma_radius: str | DefaultStr = DefaultStr("2"),
+        luma_power: int | DefaultInt = DefaultInt(2),
+        chroma_radius: str,
+        chroma_power: int | DefaultInt = DefaultInt(-1),
+        alpha_radius: str,
+        alpha_power: int | DefaultInt = DefaultInt(-1),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        12.2 boxblur_opencl
+        Apply a boxblur algorithm to the input video.
+
+        It accepts the following parameters:
+
+
+        A description of the accepted options follows.
+
+        Parameters:
+        ----------
+
+        :param str luma_radius: Set an expression for the box radius in pixels used for blurring the corresponding input plane. The radius value must be a non-negative number, and must not be greater than the value of the expression min(w,h)/2 for the luma and alpha planes, and of min(cw,ch)/2 for the chroma planes. Default value for luma_radius is "2". If not specified, chroma_radius and alpha_radius default to the corresponding value set for luma_radius. The expressions can contain the following constants: w h The input width and height in pixels. cw ch The input chroma image width and height in pixels. hsub vsub The horizontal and vertical chroma subsample values. For example, for the pixel format "yuv422p", hsub is 2 and vsub is 1.
+        :param int luma_power: Specify how many times the boxblur filter is applied to the corresponding plane. Default value for luma_power is 2. If not specified, chroma_power and alpha_power default to the corresponding value set for luma_power. A value of 0 will disable the effect.
+        :param str chroma_radius: Set an expression for the box radius in pixels used for blurring the corresponding input plane. The radius value must be a non-negative number, and must not be greater than the value of the expression min(w,h)/2 for the luma and alpha planes, and of min(cw,ch)/2 for the chroma planes. Default value for luma_radius is "2". If not specified, chroma_radius and alpha_radius default to the corresponding value set for luma_radius. The expressions can contain the following constants: w h The input width and height in pixels. cw ch The input chroma image width and height in pixels. hsub vsub The horizontal and vertical chroma subsample values. For example, for the pixel format "yuv422p", hsub is 2 and vsub is 1.
+        :param int chroma_power: Specify how many times the boxblur filter is applied to the corresponding plane. Default value for luma_power is 2. If not specified, chroma_power and alpha_power default to the corresponding value set for luma_power. A value of 0 will disable the effect.
+        :param str alpha_radius: Set an expression for the box radius in pixels used for blurring the corresponding input plane. The radius value must be a non-negative number, and must not be greater than the value of the expression min(w,h)/2 for the luma and alpha planes, and of min(cw,ch)/2 for the chroma planes. Default value for luma_radius is "2". If not specified, chroma_radius and alpha_radius default to the corresponding value set for luma_radius. The expressions can contain the following constants: w h The input width and height in pixels. cw ch The input chroma image width and height in pixels. hsub vsub The horizontal and vertical chroma subsample values. For example, for the pixel format "yuv422p", hsub is 2 and vsub is 1.
+        :param int alpha_power: Specify how many times the boxblur filter is applied to the corresponding plane. Default value for luma_power is 2. If not specified, chroma_power and alpha_power default to the corresponding value set for luma_power. A value of 0 will disable the effect.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#boxblur_005fopencl
+
+        """
+        filter_node = FilterNode(
+            name="boxblur_opencl",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "luma_radius": luma_radius,
+                "luma_power": luma_power,
+                "chroma_radius": chroma_radius,
+                "chroma_power": chroma_power,
+                "alpha_radius": alpha_radius,
+                "alpha_power": alpha_power,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def bwdif(
         self,
         *,
@@ -1232,6 +1376,95 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bwdif",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "mode": mode,
+                "parity": parity,
+                "deint": deint,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
+    def bwdif_cuda(
+        self,
+        *,
+        mode: int
+        | Literal["send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"]
+        | DefaultStr = DefaultStr("send_frame"),
+        parity: int | Literal["tff", "bff", "auto"] | DefaultStr = DefaultStr("auto"),
+        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("all"),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        11.21 bwdif_cuda
+        Deinterlace the input video using the bwdif algorithm, but implemented
+        in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec
+        and/or nvenc.
+
+        It accepts the following parameters:
+
+        Parameters:
+        ----------
+
+        :param int mode: The interlacing mode to adopt. It accepts one of the following values: 0, send_frame Output one frame for each frame. 1, send_field Output one frame for each field. The default value is send_field.
+        :param int parity: The picture field parity assumed for the input interlaced video. It accepts one of the following values: 0, tff Assume the top field is first. 1, bff Assume the bottom field is first. -1, auto Enable automatic detection of field parity. The default value is auto. If the interlacing is unknown or the decoder does not export this information, top field first will be assumed.
+        :param int deint: Specify which frames to deinterlace. Accepts one of the following values: 0, all Deinterlace all frames. 1, interlaced Only deinterlace frames marked as interlaced. The default value is all.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#bwdif_005fcuda
+
+        """
+        filter_node = FilterNode(
+            name="bwdif_cuda",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "mode": mode,
+                "parity": parity,
+                "deint": deint,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
+    def bwdif_vulkan(
+        self,
+        *,
+        mode: int
+        | Literal["send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"]
+        | DefaultStr = DefaultStr("send_frame"),
+        parity: int | Literal["tff", "bff", "auto"] | DefaultStr = DefaultStr("auto"),
+        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("all"),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        14.3 bwdif_vulkan
+        Deinterlacer using bwdif, the "Bob Weaver Deinterlacing Filter" algorithm, implemented
+        on the GPU using Vulkan.
+
+        It accepts the following parameters:
+
+        Parameters:
+        ----------
+
+        :param int mode: The interlacing mode to adopt. It accepts one of the following values: 0, send_frame Output one frame for each frame. 1, send_field Output one frame for each field. The default value is send_field.
+        :param int parity: The picture field parity assumed for the input interlaced video. It accepts one of the following values: 0, tff Assume the top field is first. 1, bff Assume the bottom field is first. -1, auto Enable automatic detection of field parity. The default value is auto. If the interlacing is unknown or the decoder does not export this information, top field first will be assumed.
+        :param int deint: Specify which frames to deinterlace. Accepts one of the following values: 0, all Deinterlace all frames. 1, interlaced Only deinterlace frames marked as interlaced. The default value is all.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#bwdif_005fvulkan
+
+        """
+        filter_node = FilterNode(
+            name="bwdif_vulkan",
             input_typings=[StreamType.video],
             output_typings=[StreamType.video],
             inputs=[
@@ -2673,6 +2906,74 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def convolution_opencl(
+        self,
+        *,
+        _0m: str | DefaultStr = DefaultStr("0 0 0 0 1 0 0 0 0"),
+        _1m: str | DefaultStr = DefaultStr("0 0 0 0 1 0 0 0 0"),
+        _2m: str | DefaultStr = DefaultStr("0 0 0 0 1 0 0 0 0"),
+        _3m: str | DefaultStr = DefaultStr("0 0 0 0 1 0 0 0 0"),
+        _0rdiv: float | DefaultFloat = DefaultFloat(1.0),
+        _1rdiv: float | DefaultFloat = DefaultFloat(1.0),
+        _2rdiv: float | DefaultFloat = DefaultFloat(1.0),
+        _3rdiv: float | DefaultFloat = DefaultFloat(1.0),
+        _0bias: float | DefaultFloat = DefaultFloat(0.0),
+        _1bias: float | DefaultFloat = DefaultFloat(0.0),
+        _2bias: float | DefaultFloat = DefaultFloat(0.0),
+        _3bias: float | DefaultFloat = DefaultFloat(0.0),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        12.4 convolution_opencl
+        Apply convolution of 3x3, 5x5, 7x7 matrix.
+
+        The filter accepts the following options:
+
+        Parameters:
+        ----------
+
+        :param str _0m: Set matrix for each plane. Matrix is sequence of 9, 25 or 49 signed numbers. Default value for each plane is 0 0 0 0 1 0 0 0 0.
+        :param str _1m: Set matrix for each plane. Matrix is sequence of 9, 25 or 49 signed numbers. Default value for each plane is 0 0 0 0 1 0 0 0 0.
+        :param str _2m: Set matrix for each plane. Matrix is sequence of 9, 25 or 49 signed numbers. Default value for each plane is 0 0 0 0 1 0 0 0 0.
+        :param str _3m: Set matrix for each plane. Matrix is sequence of 9, 25 or 49 signed numbers. Default value for each plane is 0 0 0 0 1 0 0 0 0.
+        :param float _0rdiv: Set multiplier for calculated value for each plane. If unset or 0, it will be sum of all matrix elements. The option value must be a float number greater or equal to 0.0. Default value is 1.0.
+        :param float _1rdiv: Set multiplier for calculated value for each plane. If unset or 0, it will be sum of all matrix elements. The option value must be a float number greater or equal to 0.0. Default value is 1.0.
+        :param float _2rdiv: Set multiplier for calculated value for each plane. If unset or 0, it will be sum of all matrix elements. The option value must be a float number greater or equal to 0.0. Default value is 1.0.
+        :param float _3rdiv: Set multiplier for calculated value for each plane. If unset or 0, it will be sum of all matrix elements. The option value must be a float number greater or equal to 0.0. Default value is 1.0.
+        :param float _0bias: Set bias for each plane. This value is added to the result of the multiplication. Useful for making the overall image brighter or darker. The option value must be a float number greater or equal to 0.0. Default value is 0.0.
+        :param float _1bias: Set bias for each plane. This value is added to the result of the multiplication. Useful for making the overall image brighter or darker. The option value must be a float number greater or equal to 0.0. Default value is 0.0.
+        :param float _2bias: Set bias for each plane. This value is added to the result of the multiplication. Useful for making the overall image brighter or darker. The option value must be a float number greater or equal to 0.0. Default value is 0.0.
+        :param float _3bias: Set bias for each plane. This value is added to the result of the multiplication. Useful for making the overall image brighter or darker. The option value must be a float number greater or equal to 0.0. Default value is 0.0.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#convolution_005fopencl
+
+        """
+        filter_node = FilterNode(
+            name="convolution_opencl",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "0m": _0m,
+                "1m": _1m,
+                "2m": _2m,
+                "3m": _3m,
+                "0rdiv": _0rdiv,
+                "1rdiv": _1rdiv,
+                "2rdiv": _2rdiv,
+                "3rdiv": _3rdiv,
+                "0bias": _0bias,
+                "1bias": _1bias,
+                "2bias": _2bias,
+                "3bias": _3bias,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def convolve(
         self,
         _impulse: "VideoStream",
@@ -2742,6 +3043,80 @@ class VideoStream(FilterableStream):
                 self,
             ],
             kwargs={} | kwargs,
+        )
+        return filter_node.video(0)
+
+    def coreimage(
+        self,
+        *,
+        list_filters: bool | DefaultInt = DefaultInt(0),
+        list_generators: bool | DefaultInt = DefaultInt(0),
+        filter: str,
+        output_rect: str,
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        11.47 coreimage
+        Video filtering on GPU using Apple’s CoreImage API on OSX.
+
+        Hardware acceleration is based on an OpenGL context. Usually, this means it is
+        processed by video hardware. However, software-based OpenGL implementations
+        exist which means there is no guarantee for hardware processing. It depends on
+        the respective OSX.
+
+        There are many filters and image generators provided by Apple that come with a
+        large variety of options. The filter has to be referenced by its name along
+        with its options.
+
+        The coreimage filter accepts the following options:
+
+        Several filters can be chained for successive processing without GPU-HOST
+        transfers allowing for fast processing of complex filter chains.
+        Currently, only filters with zero (generators) or exactly one (filters) input
+        image and one output image are supported. Also, transition filters are not yet
+        usable as intended.
+
+        Some filters generate output images with additional padding depending on the
+        respective filter kernel. The padding is automatically removed to ensure the
+        filter output has the same size as the input image.
+
+        For image generators, the size of the output image is determined by the
+        previous output image of the filter chain or the input image of the whole
+        filterchain, respectively. The generators do not use the pixel information of
+        this image to generate their output. However, the generated output is
+        blended onto this image, resulting in partial or complete coverage of the
+        output image.
+
+        The coreimagesrc video source can be used for generating input images
+        which are directly fed into the filter chain. By using it, providing input
+        images by another video source or an input video is not required.
+
+        Parameters:
+        ----------
+
+        :param bool list_filters: List all available filters and generators along with all their respective options as well as possible minimum and maximum values along with the default values. list_filters=true
+        :param bool list_generators: None
+        :param str filter: Specify all filters by their respective name and options. Use list_filters to determine all valid filter names and options. Numerical options are specified by a float value and are automatically clamped to their respective value range. Vector and color options have to be specified by a list of space separated float values. Character escaping has to be done. A special option name default is available to use default options for a filter. It is required to specify either default or at least one of the filter options. All omitted options are used with their default values. The syntax of the filter string is as follows: filter=<NAME>@<OPTION>=<VALUE>[@<OPTION>=<VALUE>][@...][#<NAME>@<OPTION>=<VALUE>[@<OPTION>=<VALUE>][@...]][#...]
+        :param str output_rect: Specify a rectangle where the output of the filter chain is copied into the input image. It is given by a list of space separated float values: output_rect=x\ y\ width\ height If not given, the output rectangle equals the dimensions of the input image. The output rectangle is automatically cropped at the borders of the input image. Negative values are valid for each component. output_rect=25\ 25\ 100\ 100
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#coreimage
+
+        """
+        filter_node = FilterNode(
+            name="coreimage",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "list_filters": list_filters,
+                "list_generators": list_generators,
+                "filter": filter,
+                "output_rect": output_rect,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3952,6 +4327,55 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def dilation_opencl(
+        self,
+        *,
+        threshold0: float | DefaultFloat = DefaultFloat(65535.0),
+        threshold1: float | DefaultFloat = DefaultFloat(65535.0),
+        threshold2: float | DefaultFloat = DefaultFloat(65535.0),
+        threshold3: float | DefaultFloat = DefaultFloat(65535.0),
+        coordinates: int | DefaultInt = DefaultInt(255),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        12.7 dilation_opencl
+        Apply dilation effect to the video.
+
+        This filter replaces the pixel by the local(3x3) maximum.
+
+        It accepts the following options:
+
+        Parameters:
+        ----------
+
+        :param float threshold0: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
+        :param float threshold1: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
+        :param float threshold2: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
+        :param float threshold3: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
+        :param int coordinates: Flag which specifies the pixel to refer to. Range is [0, 255] and default value is 255, i.e. all eight pixels are used. Flags to local 3x3 coordinates region centered on x: 1 2 3 4 x 5 6 7 8
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#dilation_005fopencl
+
+        """
+        filter_node = FilterNode(
+            name="dilation_opencl",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "threshold0": threshold0,
+                "threshold1": threshold1,
+                "threshold2": threshold2,
+                "threshold3": threshold3,
+                "coordinates": coordinates,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def displace(
         self,
         _xmap: "VideoStream",
@@ -4823,6 +5247,55 @@ class VideoStream(FilterableStream):
                 "threshold1": threshold1,
                 "threshold2": threshold2,
                 "threshold3": threshold3,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
+    def erosion_opencl(
+        self,
+        *,
+        threshold0: float | DefaultFloat = DefaultFloat(65535.0),
+        threshold1: float | DefaultFloat = DefaultFloat(65535.0),
+        threshold2: float | DefaultFloat = DefaultFloat(65535.0),
+        threshold3: float | DefaultFloat = DefaultFloat(65535.0),
+        coordinates: int | DefaultInt = DefaultInt(255),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        12.5 erosion_opencl
+        Apply erosion effect to the video.
+
+        This filter replaces the pixel by the local(3x3) minimum.
+
+        It accepts the following options:
+
+        Parameters:
+        ----------
+
+        :param float threshold0: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
+        :param float threshold1: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
+        :param float threshold2: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
+        :param float threshold3: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
+        :param int coordinates: Flag which specifies the pixel to refer to. Range is [0, 255] and default value is 255, i.e. all eight pixels are used. Flags to local 3x3 coordinates region centered on x: 1 2 3 4 x 5 6 7 8
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#erosion_005fopencl
+
+        """
+        filter_node = FilterNode(
+            name="erosion_opencl",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "threshold0": threshold0,
+                "threshold1": threshold1,
+                "threshold2": threshold2,
+                "threshold3": threshold3,
+                "coordinates": coordinates,
             }
             | kwargs,
         )
@@ -7836,6 +8309,63 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def libvmaf_cuda(
+        self,
+        _reference: "VideoStream",
+        *,
+        log_path: str,
+        log_fmt: str | DefaultStr = DefaultStr("xml"),
+        pool: str,
+        n_threads: int | DefaultInt = DefaultInt(0),
+        n_subsample: int | DefaultInt = DefaultInt(1),
+        model: str | DefaultStr = DefaultStr("version=vmaf_v0.6.1"),
+        feature: str,
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        11.146 libvmaf_cuda
+        This is the CUDA variant of the libvmaf filter. It only accepts CUDA frames.
+
+        It requires Netflix’s vmaf library (libvmaf) as a pre-requisite.
+        After installing the library it can be enabled using:
+        ./configure --enable-nonfree --enable-ffnvcodec --enable-libvmaf.
+
+        Parameters:
+        ----------
+
+        :param str log_path: None
+        :param str log_fmt: None
+        :param str pool: None
+        :param int n_threads: None
+        :param int n_subsample: None
+        :param str model: None
+        :param str feature: None
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf_005fcuda
+
+        """
+        filter_node = FilterNode(
+            name="libvmaf_cuda",
+            input_typings=[StreamType.video, StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+                _reference,
+            ],
+            kwargs={
+                "log_path": log_path,
+                "log_fmt": log_fmt,
+                "pool": pool,
+                "n_threads": n_threads,
+                "n_subsample": n_subsample,
+                "model": model,
+                "feature": feature,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def limiter(
         self,
         *,
@@ -10742,6 +11272,47 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def prewitt_opencl(
+        self,
+        *,
+        planes: int | DefaultInt = DefaultInt(15),
+        scale: float | DefaultFloat = DefaultFloat(1.0),
+        delta: float | DefaultFloat = DefaultFloat(0.0),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        12.11 prewitt_opencl
+        Apply the Prewitt operator (https://en.wikipedia.org/wiki/Prewitt_operator) to input video stream.
+
+        The filter accepts the following option:
+
+        Parameters:
+        ----------
+
+        :param int planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
+        :param float scale: Set value which will be multiplied with filtered result. Range is [0.0, 65535] and default value is 1.0.
+        :param float delta: Set value which will be added to filtered result. Range is [-65535, 65535] and default value is 0.0.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#prewitt_005fopencl
+
+        """
+        filter_node = FilterNode(
+            name="prewitt_opencl",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "planes": planes,
+                "scale": scale,
+                "delta": delta,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def pseudocolor(
         self,
         *,
@@ -11512,6 +12083,47 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="roberts",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "planes": planes,
+                "scale": scale,
+                "delta": delta,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
+    def roberts_opencl(
+        self,
+        *,
+        planes: int | DefaultInt = DefaultInt(15),
+        scale: float | DefaultFloat = DefaultFloat(1.0),
+        delta: float | DefaultFloat = DefaultFloat(0.0),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        12.14 roberts_opencl
+        Apply the Roberts cross operator (https://en.wikipedia.org/wiki/Roberts_cross) to input video stream.
+
+        The filter accepts the following option:
+
+        Parameters:
+        ----------
+
+        :param int planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
+        :param float scale: Set value which will be multiplied with filtered result. Range is [0.0, 65535] and default value is 1.0.
+        :param float delta: Set value which will be added to filtered result. Range is [-65535, 65535] and default value is 0.0.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#roberts_005fopencl
+
+        """
+        filter_node = FilterNode(
+            name="roberts_opencl",
             input_typings=[StreamType.video],
             output_typings=[StreamType.video],
             inputs=[
@@ -13339,6 +13951,47 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def sobel_opencl(
+        self,
+        *,
+        planes: int | DefaultInt = DefaultInt(15),
+        scale: float | DefaultFloat = DefaultFloat(1.0),
+        delta: float | DefaultFloat = DefaultFloat(0.0),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        12.15 sobel_opencl
+        Apply the Sobel operator (https://en.wikipedia.org/wiki/Sobel_operator) to input video stream.
+
+        The filter accepts the following option:
+
+        Parameters:
+        ----------
+
+        :param int planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
+        :param float scale: Set value which will be multiplied with filtered result. Range is [0.0, 65535] and default value is 1.0.
+        :param float delta: Set value which will be added to filtered result. Range is [-65535, 65535] and default value is 0.0.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#sobel_005fopencl
+
+        """
+        filter_node = FilterNode(
+            name="sobel_opencl",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "planes": planes,
+                "scale": scale,
+                "delta": delta,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def spectrumsynth(
         self,
         _phase: "VideoStream",
@@ -13721,6 +14374,90 @@ class VideoStream(FilterableStream):
             kwargs={
                 "in": _in,
                 "out": out,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
+    def subtitles(
+        self,
+        *,
+        filename: str,
+        original_size: str,
+        fontsdir: str,
+        alpha: bool | DefaultInt = DefaultInt(0),
+        charenc: str,
+        stream_index: int | DefaultInt = DefaultInt(-1),
+        force_style: str,
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        11.246 subtitles
+        Draw subtitles on top of input video using the libass library.
+
+        To enable compilation of this filter you need to configure FFmpeg with
+        --enable-libass. This filter also requires a build with libavcodec and
+        libavformat to convert the passed subtitles file to ASS (Advanced Substation
+        Alpha) subtitles format.
+
+        The filter accepts the following options:
+
+
+        If the first key is not specified, it is assumed that the first value
+        specifies the filename.
+
+        For example, to render the file sub.srt on top of the input
+        video, use the command:
+
+        subtitles=sub.srt
+
+        which is equivalent to:
+
+        subtitles=filename=sub.srt
+
+        To render the default subtitles stream from file video.mkv, use:
+
+        subtitles=video.mkv
+
+        To render the second subtitles stream from that file, use:
+
+        subtitles=video.mkv:si=1
+
+        To make the subtitles stream from sub.srt appear in 80% transparent blue
+        DejaVu Serif, use:
+
+        subtitles=sub.srt:force_style='Fontname=DejaVu Serif,PrimaryColour=&HCCFF0000'
+
+        Parameters:
+        ----------
+
+        :param str filename: Set the filename of the subtitle file to read. It must be specified.
+        :param str original_size: Specify the size of the original video, the video for which the ASS file was composed. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Due to a misdesign in ASS aspect ratio arithmetic, this is necessary to correctly scale the fonts if the aspect ratio has been changed.
+        :param str fontsdir: Set a directory path containing fonts that can be used by the filter. These fonts will be used in addition to whatever the font provider uses.
+        :param bool alpha: Process alpha channel, by default alpha channel is untouched.
+        :param str charenc: Set subtitles input character encoding. subtitles filter only. Only useful if not UTF-8.
+        :param int stream_index: Set subtitles stream index. subtitles filter only.
+        :param str force_style: Override default style or script info parameters of the subtitles. It accepts a string containing ASS style format KEY=VALUE couples separated by ",".
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#subtitles
+
+        """
+        filter_node = FilterNode(
+            name="subtitles",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "filename": filename,
+                "original_size": original_size,
+                "fontsdir": fontsdir,
+                "alpha": alpha,
+                "charenc": charenc,
+                "stream_index": stream_index,
+                "force_style": force_style,
             }
             | kwargs,
         )
@@ -16668,6 +17405,95 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
+    def yadif(
+        self,
+        *,
+        mode: int
+        | Literal["send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"]
+        | DefaultStr = DefaultStr("send_frame"),
+        parity: int | Literal["tff", "bff", "auto"] | DefaultStr = DefaultStr("auto"),
+        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("all"),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        11.291 yadif
+        Deinterlace the input video ("yadif" means "yet another deinterlacing
+        filter").
+
+        It accepts the following parameters:
+
+        Parameters:
+        ----------
+
+        :param int mode: The interlacing mode to adopt. It accepts one of the following values: 0, send_frame Output one frame for each frame. 1, send_field Output one frame for each field. 2, send_frame_nospatial Like send_frame, but it skips the spatial interlacing check. 3, send_field_nospatial Like send_field, but it skips the spatial interlacing check. The default value is send_frame.
+        :param int parity: The picture field parity assumed for the input interlaced video. It accepts one of the following values: 0, tff Assume the top field is first. 1, bff Assume the bottom field is first. -1, auto Enable automatic detection of field parity. The default value is auto. If the interlacing is unknown or the decoder does not export this information, top field first will be assumed.
+        :param int deint: Specify which frames to deinterlace. Accepts one of the following values: 0, all Deinterlace all frames. 1, interlaced Only deinterlace frames marked as interlaced. The default value is all.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#yadif
+
+        """
+        filter_node = FilterNode(
+            name="yadif",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "mode": mode,
+                "parity": parity,
+                "deint": deint,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
+    def yadif_cuda(
+        self,
+        *,
+        mode: int
+        | Literal["send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"]
+        | DefaultStr = DefaultStr("send_frame"),
+        parity: int | Literal["tff", "bff", "auto"] | DefaultStr = DefaultStr("auto"),
+        deint: int | Literal["all", "interlaced"] | DefaultStr = DefaultStr("all"),
+        **kwargs: Any,
+    ) -> "VideoStream":
+        """
+
+        11.292 yadif_cuda
+        Deinterlace the input video using the yadif algorithm, but implemented
+        in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec
+        and/or nvenc.
+
+        It accepts the following parameters:
+
+        Parameters:
+        ----------
+
+        :param int mode: The interlacing mode to adopt. It accepts one of the following values: 0, send_frame Output one frame for each frame. 1, send_field Output one frame for each field. 2, send_frame_nospatial Like send_frame, but it skips the spatial interlacing check. 3, send_field_nospatial Like send_field, but it skips the spatial interlacing check. The default value is send_frame.
+        :param int parity: The picture field parity assumed for the input interlaced video. It accepts one of the following values: 0, tff Assume the top field is first. 1, bff Assume the bottom field is first. -1, auto Enable automatic detection of field parity. The default value is auto. If the interlacing is unknown or the decoder does not export this information, top field first will be assumed.
+        :param int deint: Specify which frames to deinterlace. Accepts one of the following values: 0, all Deinterlace all frames. 1, interlaced Only deinterlace frames marked as interlaced. The default value is all.
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#yadif_005fcuda
+
+        """
+        filter_node = FilterNode(
+            name="yadif_cuda",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "mode": mode,
+                "parity": parity,
+                "deint": deint,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
     def yaepblur(
         self,
         *,
@@ -16706,6 +17532,76 @@ class VideoStream(FilterableStream):
                 "radius": radius,
                 "planes": planes,
                 "sigma": sigma,
+            }
+            | kwargs,
+        )
+        return filter_node.video(0)
+
+    def zmq(self, *, bind_address: str | DefaultStr = DefaultStr("tcp://*:5555"), **kwargs: Any) -> "VideoStream":
+        """
+
+        18.34 zmq, azmq
+        Receive commands sent through a libzmq client, and forward them to
+        filters in the filtergraph.
+
+        zmq and azmq work as a pass-through filters. zmq
+        must be inserted between two video filters, azmq between two
+        audio filters. Both are capable to send messages to any filter type.
+
+        To enable these filters you need to install the libzmq library and
+        headers and configure FFmpeg with --enable-libzmq.
+
+        For more information about libzmq see:
+        http://www.zeromq.org/
+
+        The zmq and azmq filters work as a libzmq server, which
+        receives messages sent through a network interface defined by the
+        bind_address (or the abbreviation "b") option.
+        Default value of this option is tcp://localhost:5555. You may
+        want to alter this value to your needs, but do not forget to escape any
+        ’:’ signs (see filtergraph escaping).
+
+        The received message must be in the form:
+
+        TARGET COMMAND [ARG]
+
+        TARGET specifies the target of the command, usually the name of
+        the filter class or a specific filter instance name. The default
+        filter instance name uses the pattern ‘Parsed_<filter_name>_<index>’,
+        but you can override this by using the ‘filter_name@id’ syntax
+        (see Filtergraph syntax).
+
+        COMMAND specifies the name of the command for the target filter.
+
+        ARG is optional and specifies the optional argument list for the
+        given COMMAND.
+
+        Upon reception, the message is processed and the corresponding command
+        is injected into the filtergraph. Depending on the result, the filter
+        will send a reply to the client, adopting the format:
+
+        ERROR_CODE ERROR_REASON
+        MESSAGE
+
+        MESSAGE is optional.
+
+        Parameters:
+        ----------
+
+        :param str bind_address: None
+
+        Ref: https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq
+
+        """
+        filter_node = FilterNode(
+            name="zmq",
+            input_typings=[StreamType.video],
+            output_typings=[StreamType.video],
+            inputs=[
+                self,
+            ],
+            kwargs={
+                "bind_address": bind_address,
             }
             | kwargs,
         )

@@ -258,7 +258,7 @@
         "fontcolor"
       ],
       "choices": [],
-      "default": "st(0, (midi(f)-59.5)/12);\" \"st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));\" \"r(1-ld(1)) + b(ld(1))",
+      "default": "st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))",
       "description": "<dd><p>Specify font color expression. This is arithmetic expression that should return\ninteger value 0xRRGGBB. It can contain variables:\n</p><dl compact=\"compact\">\n<dt><samp>frequency, freq, f</samp></dt>\n<dd><p>the frequency where it is evaluated\n</p></dd>\n<dt><samp>timeclamp, tc</samp></dt>\n<dd><p>the value of <var>timeclamp</var> option\n</p></dd>\n</dl>\n<p>and functions:\n</p><dl compact=\"compact\">\n<dt><samp>midi(f)</samp></dt>\n<dd><p>midi number of frequency f, some midi numbers: E0(16), C1(24), C2(36), A4(69)\n</p></dd>\n<dt><samp>r(x), g(x), b(x)</samp></dt>\n<dd><p>red, green, and blue value of intensity x.\n</p></dd>\n</dl>\n<p>Default value is <code>st(0, (midi(f)-59.5)/12);\nst(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));\nr(1-ld(1)) + b(ld(1))</code>.\n</p>\n</dd>",
       "name": "fontcolor",
       "required": false,

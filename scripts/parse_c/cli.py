@@ -19,11 +19,11 @@ def pre_compile(folder: pathlib.Path) -> None:
 def parse_filters() -> list[AVFilter]:
     allfilter_c = source_folder / "allfilters.c"
     root = source_folder
-    all_filter_names = set(k[1] for k in parse_all_filter_names(allfilter_c))
+    all_filter_names = set(k[2] for k in parse_all_filter_names(allfilter_c))
 
     total = 0
     parsed_filters: list[AVFilter] = []
-    for path in root.glob("*.c"):
+    for path in root.glob("*.[cm]"):
         try:
             filters = parse_c(path)
         except Exception as e:
@@ -37,15 +37,11 @@ def parse_filters() -> list[AVFilter]:
             total += len(filters)
             parsed_filters.extend(filters)
 
+    parsed_filter_names = {f.id for f in parsed_filters}
     print(f"Total filters: {total} / {len(all_filter_names)}")
-    parsed_filter_names = {f.name for f in parsed_filters}
 
     print(f"not exists filters {parsed_filter_names - all_filter_names}")
     print(f"not found filters {all_filter_names - parsed_filter_names}")
-
-    for f in parsed_filters:
-        print(f"{f.name} {f.type.value} inputs > {[k.type for k in f.input_filter_pads]} {f.is_dynamic_inputs}")
-        print(f"{f.name} {f.type.value} outputs > {f.output_filter_pads} {f.is_dynamic_outputs}")
 
     return parsed_filters
 

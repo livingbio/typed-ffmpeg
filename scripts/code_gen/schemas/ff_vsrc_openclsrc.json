@@ -1,0 +1,77 @@
+{
+  "description": "16.11 openclsrc\nGenerate video using an OpenCL program.\n\n\nFor details of how the program loading works, see the program_opencl\nfilter.\n\nExample programs:\n\n\n Generate a colour ramp by setting pixel values from the position of the pixel\nin the output image.  (Note that this will work with all pixel formats, but\nthe generated output will not be the same.)\n__kernel void ramp(__write_only image2d_t dst,\n                   unsigned int index)\n{\n    int2 loc = (int2)(get_global_id(0), get_global_id(1));\n\n    float4 val;\n    val.xy = val.zw = convert_float2(loc) / convert_float2(get_image_dim(dst));\n\n    write_imagef(dst, loc, val);\n}\n\n Generate a Sierpinski carpet pattern, panning by a single pixel each frame.\n__kernel void sierpinski_carpet(__write_only image2d_t dst,\n                                unsigned int index)\n{\n    int2 loc = (int2)(get_global_id(0), get_global_id(1));\n\n    float4 value = 0.0f;\n    int x = loc.x + index;\n    int y = loc.y + index;\n    while (x > 0 || y > 0) {\n        if (x % 3 == 1 && y % 3 == 1) {\n            value = 1.0f;\n            break;\n        }\n        x /= 3;\n        y /= 3;\n    }\n\n    write_imagef(dst, loc, value);\n}",
+  "filter_type": "vsrc",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vsrc_openclsrc",
+  "input_stream_typings": [],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "openclsrc",
+  "options": [
+    {
+      "alias": [
+        "source"
+      ],
+      "choices": [],
+      "default": "((void*)0)",
+      "description": "<dd><p>OpenCL program source file.\n</p>\n</dd>",
+      "name": "source",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "kernel"
+      ],
+      "choices": [],
+      "default": "((void*)0)",
+      "description": "<dd><p>Kernel name in program.\n</p>\n</dd>",
+      "name": "kernel",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "((void*)0)",
+      "description": "<dd><p>Size of frames to generate.  This must be set.\n</p>\n</dd>",
+      "name": "size",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "format"
+      ],
+      "choices": [],
+      "default": "AV_PIX_FMT_NONE",
+      "description": "<dd><p>Pixel format to use for the generated frames.  This must be set.\n</p>\n</dd>",
+      "name": "format",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "25",
+      "description": "<dd><p>Number of frames generated every second.  Default value is \u201925\u2019.\n</p>\n</dd>",
+      "name": "rate",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#openclsrc"
+}
