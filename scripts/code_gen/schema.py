@@ -1,3 +1,4 @@
+import enum
 import json
 import pathlib
 from typing import Literal
@@ -29,6 +30,14 @@ TYPING_MAP: dict[AVOptionType, str] = {
 }
 
 
+class StreamType(str, enum.Enum):
+    video = "video"
+    audio = "audio"
+
+    def __repr__(self):
+        return f"StreamType.{self.value}"
+
+
 class FFmpegFilterOption(BaseModel):
     name: str
     alias: list[str] = []
@@ -37,6 +46,13 @@ class FFmpegFilterOption(BaseModel):
     typing: Literal["bool", "int", "float", "str"]
     default: str | int | float | None = None
     required: bool
+
+
+def _convert_to_stream_type(typings: list[str] | None) -> list[StreamType] | None:
+    if typings is None:
+        return None
+
+    return [(StreamType.video if typing == "video" else StreamType.audio) for typing in typings]
 
 
 class FFmpegFilter(BaseModel):
@@ -58,16 +74,26 @@ class FFmpegFilter(BaseModel):
     options: list[FFmpegFilterOption] = []
 
     @property
-    def input_types(self) -> list[str]:
+    def input_types(self) -> list[StreamType]:
         if self.is_input_dynamic:
-            return self.formula_input_typings
-        return [("video" if stream.type == AVFilterPadType.video else "audio") for stream in self.input_stream_typings]
+            return _convert_to_stream_type(self.formula_input_typings)
+        return _convert_to_stream_type(
+            [
+                (StreamType.video if stream.type == AVFilterPadType.video else StreamType.audio)
+                for stream in self.input_stream_typings
+            ]
+        )
 
     @property
-    def output_types(self) -> list[str]:
+    def output_types(self) -> list[StreamType]:
         if self.is_output_dynamic:
-            return self.formula_output_typings
-        return [("video" if stream.type == AVFilterPadType.video else "audio") for stream in self.output_stream_typings]
+            return _convert_to_stream_type(self.formula_output_typings)
+        return _convert_to_stream_type(
+            [
+                (StreamType.video if stream.type == AVFilterPadType.video else StreamType.audio)
+                for stream in self.output_stream_typings
+            ]
+        )
 
     @classmethod
     def load(cls, id: str) -> "FFmpegFilter":

@@ -46,7 +46,7 @@ def render(filters: list[FFmpegFilter], outpath: pathlib.Path) -> list[pathlib.P
         code = template.render(filters=filters)
 
         opath = outpath / str(template_path).replace(".jinja", "")
-        template_path.parent.mkdir(parents=True, exist_ok=True)
+        opath.parent.mkdir(parents=True, exist_ok=True)
 
         with opath.open("w") as ofile:
             ofile.write(code)

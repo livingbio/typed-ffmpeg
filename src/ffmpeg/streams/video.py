@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import re
 from typing import TYPE_CHECKING, Any
 
 from ..base import FilterableStream, FilterNode
@@ -527,11 +526,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def bitplanenoise(
-        self,
-        *,
-        bitplane: int | DefaultInt = DefaultInt(1),
-        filter: bool | DefaultInt = DefaultInt(0),
-        **kwargs: Any,
+        self, *, bitplane: int | DefaultInt = DefaultInt(1), filter: bool | DefaultInt = DefaultInt(0), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -627,11 +622,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def blackframe(
-        self,
-        *,
-        amount: int | DefaultInt = DefaultInt(98),
-        threshold: int | DefaultInt = DefaultInt(32),
-        **kwargs: Any,
+        self, *, amount: int | DefaultInt = DefaultInt(98), threshold: int | DefaultInt = DefaultInt(32), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -974,7 +965,44 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bm3d",
-            input_typings=[StreamType.video] + [StreamType.video] if ref else [],
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -2240,10 +2268,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def colorspace_cuda(
-        self,
-        *,
-        range: int | DefaultStr = DefaultStr("AVCOL_RANGE_UNSPECIFIED"),
-        **kwargs: Any,
+        self, *, range: int | DefaultStr = DefaultStr("AVCOL_RANGE_UNSPECIFIED"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -2516,11 +2541,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def cover_rect(
-        self,
-        *,
-        cover: str,
-        mode: int | DefaultStr = DefaultStr("MODE_BLUR"),
-        **kwargs: Any,
+        self, *, cover: str, mode: int | DefaultStr = DefaultStr("MODE_BLUR"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -3111,7 +3132,48 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="decimate",
-            input_typings=[StreamType.video] + ([StreamType.video] if ppsrc else []),
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -4717,7 +4779,42 @@ class VideoStream(FilterableStream):
         filter_node = FilterNode(
             name="extractplanes",
             input_typings=[StreamType.video],
-            output_typings=[StreamType.video] * len(planes.split("+")),
+            output_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             inputs=[
                 self,
             ],
@@ -5110,7 +5207,46 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fieldmatch",
-            input_typings=[StreamType.video] + [StreamType.video] if ppsrc else [],
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -5503,11 +5639,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def framepack(
-        self,
-        _right: "VideoStream",
-        *,
-        format: int | DefaultStr = DefaultStr("AV_STEREO3D_SIDEBYSIDE"),
-        **kwargs: Any,
+        self, _right: "VideoStream", *, format: int | DefaultStr = DefaultStr("AV_STEREO3D_SIDEBYSIDE"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -5635,11 +5767,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def freezedetect(
-        self,
-        *,
-        n: float | DefaultFloat = DefaultFloat(0.001),
-        d: int | DefaultInt = DefaultInt(2000000),
-        **kwargs: Any,
+        self, *, n: float | DefaultFloat = DefaultFloat(0.001), d: int | DefaultInt = DefaultInt(2000000), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -6204,7 +6332,49 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="guided",
-            input_typings=[StreamType.video] + [StreamType.video] if guidance else [],
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -6546,7 +6716,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hstack",
-            input_typings=[StreamType.video] * inputs,
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -7361,7 +7550,29 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="interleave",
-            input_typings=[StreamType.video] * nb_inputs,
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -7857,7 +8068,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="libplacebo",
-            input_typings=[StreamType.video] * inputs,
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -8043,7 +8273,61 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="limitdiff",
-            input_typings=[StreamType.video, StreamType.video] + ([StreamType.video] if reference else []),
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -8248,11 +8532,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def lut1d(
-        self,
-        *,
-        file: str,
-        interp: int | DefaultStr = DefaultStr("INTERPOLATE_1D_LINEAR"),
-        **kwargs: Any,
+        self, *, file: str, interp: int | DefaultStr = DefaultStr("INTERPOLATE_1D_LINEAR"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -8926,7 +9206,48 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mergeplanes",
-            input_typings=[StreamType.video] * int(max(hex(mapping)[2::2])),
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -9044,11 +9365,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def midequalizer(
-        self,
-        _in1: "VideoStream",
-        *,
-        planes: int | DefaultStr = DefaultStr("0xF"),
-        **kwargs: Any,
+        self, _in1: "VideoStream", *, planes: int | DefaultStr = DefaultStr("0xF"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9181,7 +9498,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mix",
-            input_typings=[StreamType.video] * inputs,
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -10984,11 +11320,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def pp7(
-        self,
-        *,
-        qp: int | DefaultInt = DefaultInt(0),
-        mode: int | DefaultStr = DefaultStr("MODE_MEDIUM"),
-        **kwargs: Any,
+        self, *, qp: int | DefaultInt = DefaultInt(0), mode: int | DefaultStr = DefaultStr("MODE_MEDIUM"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -11051,7 +11383,48 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="premultiply",
-            input_typings=[StreamType.video] + [StreamType.video] if inplace else [],
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -11350,11 +11723,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def random(
-        self,
-        *,
-        frames: int | DefaultInt = DefaultInt(30),
-        seed: int | DefaultInt = DefaultInt(-1),
-        **kwargs: Any,
+        self, *, frames: int | DefaultInt = DefaultInt(30), seed: int | DefaultInt = DefaultInt(-1), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -12556,7 +12925,58 @@ class VideoStream(FilterableStream):
         filter_node = FilterNode(
             name="segment",
             input_typings=[StreamType.video],
-            output_typings=[StreamType.video] * len((timestamps or frames).split("|")),
+            output_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             inputs=[
                 self,
             ],
@@ -12570,11 +12990,7 @@ class VideoStream(FilterableStream):
         return filter_node
 
     def select(
-        self,
-        *,
-        expr: str | DefaultStr = DefaultStr("1"),
-        outputs: int | DefaultInt = DefaultInt(1),
-        **kwargs: Any,
+        self, *, expr: str | DefaultStr = DefaultStr("1"), outputs: int | DefaultInt = DefaultInt(1), **kwargs: Any
     ) -> FilterNode:
         """
 
@@ -12601,7 +13017,27 @@ class VideoStream(FilterableStream):
         filter_node = FilterNode(
             name="select",
             input_typings=[StreamType.video],
-            output_typings=[StreamType.video] * outputs,
+            output_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             inputs=[
                 self,
             ],
@@ -12763,11 +13199,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def setdar(
-        self,
-        *,
-        dar: str | DefaultStr = DefaultStr("0"),
-        max: int | DefaultInt = DefaultInt(100),
-        **kwargs: Any,
+        self, *, dar: str | DefaultStr = DefaultStr("0"), max: int | DefaultInt = DefaultInt(100), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -12983,11 +13415,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def setsar(
-        self,
-        *,
-        sar: str | DefaultStr = DefaultStr("0"),
-        max: int | DefaultInt = DefaultInt(100),
-        **kwargs: Any,
+        self, *, sar: str | DefaultStr = DefaultStr("0"), max: int | DefaultInt = DefaultInt(100), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13084,10 +13512,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def sharpen_npp(
-        self,
-        *,
-        border_type: int | DefaultStr = DefaultStr("NPP_BORDER_REPLICATE"),
-        **kwargs: Any,
+        self, *, border_type: int | DefaultStr = DefaultStr("NPP_BORDER_REPLICATE"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13359,11 +13784,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def sidedata(
-        self,
-        *,
-        mode: int | DefaultInt = DefaultInt(0),
-        type: int | DefaultInt = DefaultInt(-1),
-        **kwargs: Any,
+        self, *, mode: int | DefaultInt = DefaultInt(0), type: int | DefaultInt = DefaultInt(-1), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13483,7 +13904,29 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="signature",
-            input_typings=[StreamType.video] * nb_inputs,
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -13724,7 +14167,27 @@ class VideoStream(FilterableStream):
         filter_node = FilterNode(
             name="split",
             input_typings=[StreamType.video],
-            output_typings=[StreamType.video] * outputs,
+            output_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             inputs=[
                 self,
             ],
@@ -13935,11 +14398,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def streamselect(
-        self,
-        *streams: "VideoStream",
-        inputs: int | DefaultInt = DefaultInt(2),
-        map: str,
-        **kwargs: Any,
+        self, *streams: "VideoStream", inputs: int | DefaultInt = DefaultInt(2), map: str, **kwargs: Any
     ) -> FilterNode:
         """
 
@@ -13959,8 +14418,68 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="streamselect",
-            input_typings=[StreamType.video] * inputs,
-            output_typings=[StreamType.video] * len(re.findall(r"\d+", map)),
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
+            output_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             inputs=[
                 self,
                 *streams,
@@ -14312,12 +14831,7 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="threshold",
-            input_typings=[
-                StreamType.video,
-                StreamType.video,
-                StreamType.video,
-                StreamType.video,
-            ],
+            input_typings=[StreamType.video, StreamType.video, StreamType.video, StreamType.video],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -14333,11 +14847,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def thumbnail(
-        self,
-        *,
-        n: int | DefaultInt = DefaultInt(100),
-        log: int | DefaultInt = DefaultInt(32),
-        **kwargs: Any,
+        self, *, n: int | DefaultInt = DefaultInt(100), log: int | DefaultInt = DefaultInt(32), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -15214,7 +15724,50 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="unpremultiply",
-            input_typings=[StreamType.video] + ([StreamType.video] if inplace else []),
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -16196,7 +16749,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vstack",
-            input_typings=[StreamType.video] * inputs,
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -16636,7 +17208,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xmedian",
-            input_typings=[StreamType.video] * inputs,
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
@@ -16684,7 +17275,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xstack",
-            input_typings=[StreamType.video] * inputs,
+            input_typings=[
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+                StreamType.audio,
+            ],
             output_typings=[StreamType.video],
             inputs=[
                 self,
