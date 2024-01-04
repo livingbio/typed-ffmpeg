@@ -6534,7 +6534,7 @@ class AudioStream(FilterableStream):
         font: str,
         fontcolor: str
         | DefaultStr = DefaultStr(
-            'st(0, (midi(f)-59.5)/12);" "st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));" "r(1-ld(1)) + b(ld(1))'
+            "st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))"
         ),
         axisfile: str,
         axis: bool | DefaultInt = DefaultInt(1),

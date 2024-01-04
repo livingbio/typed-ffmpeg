@@ -1,0 +1,53 @@
+{
+  "description": "13.4 vstack_vaapi\nStack input videos vertically.\n\nThis is the VA-API variant of the vstack filter, each input stream may\nhave different width, this filter will scale down/up each input stream while\nkeeping the original aspect.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_vstack_vaapi",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "vstack_vaapi",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "choices": [],
+      "default": 2,
+      "description": "<dd><p>See <a href=\"#vstack\">vstack</a>.\n</p>\n</dd>",
+      "name": "inputs",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "<dd><p>See <a href=\"#vstack\">vstack</a>.\n</p>\n</dd>",
+      "name": "shortest",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "width"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "<dd><p>Set width of output. If set to 0, this filter will set width of output to\nwidth of the first input stream. Default value is 0.\n</p></dd>",
+      "name": "width",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#vstack_005fvaapi"
+}

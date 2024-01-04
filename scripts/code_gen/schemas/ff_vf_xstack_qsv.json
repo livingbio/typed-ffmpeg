@@ -1,0 +1,86 @@
+{
+  "description": "15.3 xstack_qsv\nStack video inputs into custom layout.\n\nThis is the QSV variant of the xstack filter.\n\nIt accepts the following options:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_xstack_qsv",
+  "input_stream_typings": [],
+  "is_input_dynamic": true,
+  "is_output_dynamic": false,
+  "name": "xstack_qsv",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "choices": [],
+      "default": 2,
+      "description": "<dd><p>See <a href=\"#xstack\">xstack</a>.\n</p>\n</dd>",
+      "name": "inputs",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "<dd><p>See <a href=\"#xstack\">xstack</a>.\n</p>\n</dd>",
+      "name": "shortest",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "layout"
+      ],
+      "choices": [],
+      "default": "((void*)0)",
+      "description": "<dd><p>See <a href=\"#xstack\">xstack</a>.\nMoreover, this permits the user to supply output size for each input stream.\n</p><div class=\"example\">\n<pre class=\"example\">xstack_qsv=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080\n</pre></div>\n</dd>",
+      "name": "layout",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "grid"
+      ],
+      "choices": [],
+      "default": "((void*)0)",
+      "description": "<dd><p>See <a href=\"#xstack\">xstack</a>.\n</p>\n</dd>",
+      "name": "grid",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "grid_tile_size"
+      ],
+      "choices": [],
+      "default": "((void*)0)",
+      "description": "<dd><p>Set output size for each input stream when <samp>grid</samp> is set. If this option\nis not set, this filter will set output size by default to the size of the\nfirst input stream. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p>\n</dd>",
+      "name": "grid_tile_size",
+      "required": true,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "fill"
+      ],
+      "choices": [],
+      "default": "none",
+      "description": "<dd><p>See <a href=\"#xstack\">xstack</a>.\n</p></dd>",
+      "name": "fill",
+      "required": false,
+      "typing": "str"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#xstack_005fqsv"
+}

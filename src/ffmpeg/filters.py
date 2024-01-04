@@ -2131,6 +2131,96 @@ def hstack(
     return filter_node.video(0)
 
 
+def hstack_qsv(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    height: int | DefaultInt = DefaultInt(0),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    15.1 hstack_qsv
+    Stack input videos horizontally.
+
+    This is the QSV variant of the hstack filter, each input stream may
+    have different height, this filter will scale down/up each input stream while
+    keeping the original aspect.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See hstack.
+    :param bool shortest: See hstack.
+    :param int height: Set height of output. If set to 0, this filter will set height of output to height of the first input stream. Default value is 0.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#hstack_005fqsv
+
+    """
+    filter_node = FilterNode(
+        name="hstack_qsv",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "height": height,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def hstack_vaapi(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    height: int | DefaultInt = DefaultInt(0),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    13.3 hstack_vaapi
+    Stack input videos horizontally.
+
+    This is the VA-API variant of the hstack filter, each input stream may
+    have different height, this filter will scale down/up each input stream while
+    keeping the original aspect.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See hstack.
+    :param bool shortest: See hstack.
+    :param int height: Set height of output. If set to 0, this filter will set height of output to height of the first input stream. Default value is 0.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#hstack_005fvaapi
+
+    """
+    filter_node = FilterNode(
+        name="hstack_vaapi",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "height": height,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
 def hysteresis(
     _base: "VideoStream",
     _alt: "VideoStream",
@@ -5033,6 +5123,96 @@ def vstack(
     return filter_node.video(0)
 
 
+def vstack_qsv(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    width: int | DefaultInt = DefaultInt(0),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    15.2 vstack_qsv
+    Stack input videos vertically.
+
+    This is the QSV variant of the vstack filter, each input stream may
+    have different width, this filter will scale down/up each input stream while
+    keeping the original aspect.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See vstack.
+    :param bool shortest: See vstack.
+    :param int width: Set width of output. If set to 0, this filter will set width of output to width of the first input stream. Default value is 0.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#vstack_005fqsv
+
+    """
+    filter_node = FilterNode(
+        name="vstack_qsv",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "width": width,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def vstack_vaapi(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    width: int | DefaultInt = DefaultInt(0),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    13.4 vstack_vaapi
+    Stack input videos vertically.
+
+    This is the VA-API variant of the vstack filter, each input stream may
+    have different width, this filter will scale down/up each input stream while
+    keeping the original aspect.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See vstack.
+    :param bool shortest: See vstack.
+    :param int width: Set width of output. If set to 0, this filter will set width of output to width of the first input stream. Default value is 0.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#vstack_005fvaapi
+
+    """
+    filter_node = FilterNode(
+        name="vstack_vaapi",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "width": width,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
 def xcorrelate(
     _primary: "VideoStream",
     _secondary: "VideoStream",
@@ -5386,6 +5566,112 @@ def xstack(
             "layout": layout,
             "grid": grid,
             "shortest": shortest,
+            "fill": fill,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def xstack_qsv(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    layout: str,
+    grid: str,
+    grid_tile_size: str,
+    fill: str | DefaultStr = DefaultStr("none"),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    15.3 xstack_qsv
+    Stack video inputs into custom layout.
+
+    This is the QSV variant of the xstack filter.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See xstack.
+    :param bool shortest: See xstack.
+    :param str layout: See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_qsv=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
+    :param str grid: See xstack.
+    :param str grid_tile_size: Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
+    :param str fill: See xstack.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#xstack_005fqsv
+
+    """
+    filter_node = FilterNode(
+        name="xstack_qsv",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "layout": layout,
+            "grid": grid,
+            "grid_tile_size": grid_tile_size,
+            "fill": fill,
+        }
+        | kwargs,
+    )
+    return filter_node.video(0)
+
+
+def xstack_vaapi(
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    shortest: bool | DefaultInt = DefaultInt(0),
+    layout: str,
+    grid: str,
+    grid_tile_size: str,
+    fill: str | DefaultStr = DefaultStr("none"),
+    **kwargs: Any
+) -> "VideoStream":
+    """
+
+    13.5 xstack_vaapi
+    Stack video inputs into custom layout.
+
+    This is the VA-API variant of the xstack filter,  each input stream may
+    have different size, this filter will scale down/up each input stream to the
+    given output size, or the size of the first input stream.
+
+    It accepts the following options:
+
+    Parameters:
+    ----------
+
+    :param int inputs: See xstack.
+    :param bool shortest: See xstack.
+    :param str layout: See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_vaapi=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
+    :param str grid: See xstack.
+    :param str grid_tile_size: Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
+    :param str fill: See xstack.
+
+    Ref: https://ffmpeg.org/ffmpeg-filters.html#xstack_005fvaapi
+
+    """
+    filter_node = FilterNode(
+        name="xstack_vaapi",
+        input_typings=None,
+        output_typings=[StreamType.video],
+        inputs=[
+            *streams,
+        ],
+        kwargs={
+            "inputs": inputs,
+            "shortest": shortest,
+            "layout": layout,
+            "grid": grid,
+            "grid_tile_size": grid_tile_size,
             "fill": fill,
         }
         | kwargs,

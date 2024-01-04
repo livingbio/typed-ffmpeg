@@ -116,13 +116,13 @@ def extract_av_filter(text: str) -> list[AVFilter]:
     return output
 
 
-def parse_all_filter_names(path: pathlib.Path) -> list[tuple[str, str]]:
+def parse_all_filter_names(path: pathlib.Path) -> list[tuple[str, str, str]]:
     with path.open() as f:
         code = f.read()
 
     output = []
-    for name in re.findall(r"extern const AVFilter ([\w\_]+);", code):
-        _, flag, name = name.split("_", 2)
-        output.append((flag, name))
+    for line in re.findall(r"extern const AVFilter ([\w\_]+);", code):
+        _, flag, name = line.split("_", 2)
+        output.append((flag, name, line))
 
     return output
