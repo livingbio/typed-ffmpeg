@@ -1,7 +1,7 @@
 {
   "description": "11.147 limitdiff\nApply limited difference filter using second and optionally third video stream.\n\nThe filter accepts the following options:",
   "filter_type": "vf",
-  "formula_input_typings": "['video', 'video'] + (['video'] if reference else [])",
+  "formula_input_typings": "[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])",
   "formula_output_typings": null,
   "id": "ff_vf_limitdiff",
   "input_stream_typings": [],

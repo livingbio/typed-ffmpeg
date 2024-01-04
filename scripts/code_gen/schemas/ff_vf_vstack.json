@@ -1,7 +1,7 @@
 {
   "description": "11.282 vstack\nStack input videos vertically.\n\nAll streams must be of same pixel format and of same width.\n\nNote that this filter is faster than using overlay and pad filter\nto create same output.\n\nThe filter accepts the following options:",
   "filter_type": "vf",
-  "formula_input_typings": "['video'] * inputs",
+  "formula_input_typings": "[StreamType.video] * inputs",
   "formula_output_typings": null,
   "id": "ff_vf_vstack",
   "input_stream_typings": [],

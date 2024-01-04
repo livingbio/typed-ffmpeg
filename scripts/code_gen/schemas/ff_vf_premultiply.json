@@ -1,7 +1,7 @@
 {
   "description": "11.197 premultiply\nApply alpha premultiply effect to input video stream using first plane\nof second stream as alpha.\n\nBoth streams must have same dimensions and same pixel format.\n\nThe filter accepts the following option:",
   "filter_type": "vf",
-  "formula_input_typings": "['video'] + ['video'] if inplace else []",
+  "formula_input_typings": "[StreamType.video] + [StreamType.video] if inplace else []",
   "formula_output_typings": null,
   "id": "ff_vf_premultiply",
   "input_stream_typings": [],

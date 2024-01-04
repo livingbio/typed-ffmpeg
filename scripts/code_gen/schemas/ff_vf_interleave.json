@@ -1,7 +1,7 @@
 {
   "description": "18.11 interleave, ainterleave\nTemporally interleave frames from several inputs.\n\ninterleave works with video inputs, ainterleave with audio.\n\nThese filters read frames from several inputs and send the oldest\nqueued frame to the output.\n\nInput streams must have well defined, monotonically increasing frame\ntimestamp values.\n\nIn order to submit one frame to output, these filters need to enqueue\nat least one frame for each input, so they cannot work in case one\ninput is not yet terminated and will not receive incoming frames.\n\nFor example consider the case when one input is a select filter\nwhich always drops input frames. The interleave filter will keep\nreading from that input, but it will never be able to send new frames\nto output until the input sends an end-of-stream signal.\n\nAlso, depending on inputs synchronization, the filters will drop\nframes in case one input receives more frames than the other ones, and\nthe queue is already filled.\n\nThese filters accept the following options:",
   "filter_type": "vf",
-  "formula_input_typings": "['video'] * nb_inputs",
+  "formula_input_typings": "[StreamType.video] * nb_inputs",
   "formula_output_typings": null,
   "id": "ff_vf_interleave",
   "input_stream_typings": [],

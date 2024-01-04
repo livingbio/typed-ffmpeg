@@ -2,7 +2,7 @@
   "description": "18.16 segment, asegment\nSplit single input stream into multiple streams.\n\nThis filter does opposite of concat filters.\n\nsegment works on video frames, asegment on audio samples.\n\nThis filter accepts the following options:\n\n\nIn all cases, prefixing an each segment with \u2019+\u2019 will make it relative to the\nprevious segment.",
   "filter_type": "af",
   "formula_input_typings": null,
-  "formula_output_typings": "['audio'] * len((timestamps or samples).split('|'))",
+  "formula_output_typings": "[StreamType.audio] * len((timestamps or samples).split('|'))",
   "id": "ff_af_asegment",
   "input_stream_typings": [
     {

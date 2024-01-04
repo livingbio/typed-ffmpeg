@@ -2,7 +2,7 @@
   "description": "8.30 aiir\nApply an arbitrary Infinite Impulse Response filter.\n\nIt accepts the following parameters:\n\n\nCoefficients in tf and sf format are separated by spaces and are in ascending\norder.\n\nCoefficients in zp format are separated by spaces and order of coefficients\ndoesn\u2019t matter. Coefficients in zp format are complex numbers with i\nimaginary unit.\n\nDifferent coefficients and gains can be provided for every channel, in such case\nuse \u2019|\u2019 to separate coefficients or gains. Last provided coefficients will be\nused for all remaining channels.",
   "filter_type": "af",
   "formula_input_typings": null,
-  "formula_output_typings": "['audio'] + ['video'] if response else []",
+  "formula_output_typings": "[StreamType.audio] + [StreamType.video] if response else []",
   "id": "ff_af_aiir",
   "input_stream_typings": [
     {

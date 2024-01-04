@@ -1,7 +1,7 @@
 {
   "description": "11.59 decimate\nDrop duplicated frames at regular intervals.\n\nThe filter accepts the following options:",
   "filter_type": "vf",
-  "formula_input_typings": "['video'] + (['video'] if ppsrc else [])",
+  "formula_input_typings": "[StreamType.video] + ([StreamType.video] if ppsrc else [])",
   "formula_output_typings": null,
   "id": "ff_vf_decimate",
   "input_stream_typings": [],

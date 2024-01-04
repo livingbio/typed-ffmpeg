@@ -1,7 +1,7 @@
 {
   "description": "11.18 bm3d\nDenoise frames using Block-Matching 3D algorithm.\n\nThe filter accepts the following options.",
   "filter_type": "vf",
-  "formula_input_typings": "['video'] + ['video'] if ref else []",
+  "formula_input_typings": "[StreamType.video] + [StreamType.video] if ref else []",
   "formula_output_typings": null,
   "id": "ff_vf_bm3d",
   "input_stream_typings": [],

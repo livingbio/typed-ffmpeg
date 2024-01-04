@@ -3,7 +3,7 @@ import json
 import pathlib
 from typing import Literal
 
-from parse_c.schema import AVFilterPad, AVOptionType, FilterType
+from parse_c.schema import AVFilterPad, AVFilterPadType, AVOptionType, FilterType
 from pydantic import BaseModel, HttpUrl
 
 schema_path = pathlib.Path(__file__).parent / "schemas"
@@ -48,11 +48,17 @@ class FFmpegFilterOption(BaseModel):
     required: bool
 
 
-def _convert_to_stream_type(typings: list[str] | None) -> list[StreamType] | None:
-    if typings is None:
-        return None
+def _convert_to_stream_type(typings: list[AVFilterPadType]) -> list[StreamType]:
+    output: list[StreamType] = []
+    for typing in typings:
+        if typing == AVFilterPadType.video:
+            output.append(StreamType.video)
+        elif typing == AVFilterPadType.audio:
+            output.append(StreamType.audio)
+        else:
+            raise ValueError(f"Unknown stream type {typing}")
 
-    return [(StreamType.video if typing == "video" else StreamType.audio) for typing in typings]
+    return output
 
 
 class FFmpegFilter(BaseModel):
@@ -74,20 +80,16 @@ class FFmpegFilter(BaseModel):
     options: list[FFmpegFilterOption] = []
 
     @property
-    def input_types(self) -> list[StreamType]:
+    def input_types(self) -> str:
         if self.is_input_dynamic:
-            return _convert_to_stream_type(self.formula_input_typings)
-        return _convert_to_stream_type(
-            [("video" if stream.type == "video" else StreamType.audio) for stream in self.input_stream_typings]
-        )
+            return self.formula_input_typings
+        return _convert_to_stream_type(k.type for k in self.input_stream_typings)
 
     @property
     def output_types(self) -> list[StreamType]:
         if self.is_output_dynamic:
-            return _convert_to_stream_type(self.formula_output_typings)
-        return _convert_to_stream_type(
-            [("video" if stream.type == "video" else StreamType.audio) for stream in self.output_stream_typings]
-        )
+            return self.formula_output_typings
+        return _convert_to_stream_type(k.type for k in self.output_stream_typings)
 
     @classmethod
     def load(cls, id: str) -> "FFmpegFilter":

@@ -1,7 +1,7 @@
 {
   "description": "11.126 hstack\nStack input videos horizontally.\n\nAll streams must be of same pixel format and of same height.\n\nNote that this filter is faster than using overlay and pad filter\nto create same output.\n\nThe filter accepts the following option:",
   "filter_type": "vf",
-  "formula_input_typings": "['video'] * inputs",
+  "formula_input_typings": "[StreamType.video] * inputs",
   "formula_output_typings": null,
   "id": "ff_vf_hstack",
   "input_stream_typings": [],

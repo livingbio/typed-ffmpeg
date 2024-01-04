@@ -1,7 +1,7 @@
 {
   "description": "8.25 afir\nApply an arbitrary Finite Impulse Response filter.\n\nThis filter is designed for applying long FIR filters,\nup to 60 seconds long.\n\nIt can be used as component for digital crossover filters,\nroom equalization, cross talk cancellation, wavefield synthesis,\nauralization, ambiophonics, ambisonics and spatialization.\n\nThis filter uses the streams higher than first one as FIR coefficients.\nIf the non-first stream holds a single channel, it will be used\nfor all input channels in the first stream, otherwise\nthe number of channels in the non-first stream must be same as\nthe number of channels in the first stream.\n\nIt accepts the following parameters:",
   "filter_type": "af",
-  "formula_input_typings": "['audio'] * nbirs",
+  "formula_input_typings": "[StreamType.audio] * nbirs",
   "formula_output_typings": null,
   "id": "ff_af_afir",
   "input_stream_typings": [],
