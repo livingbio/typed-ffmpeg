@@ -107,7 +107,28 @@
       "alias": [
         "model_type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "output shape [1, 1, N, 7]",
+          "name": "ssd",
+          "value": "DDMT_SSD"
+        },
+        {
+          "help": "output shape [1, N*Cx*Cy*DetectionBox]",
+          "name": "yolo",
+          "value": "DDMT_YOLOV1V2"
+        },
+        {
+          "help": "outputs shape [1, N*D, Cx, Cy]",
+          "name": "yolov3",
+          "value": "DDMT_YOLOV3"
+        },
+        {
+          "help": "outputs shape [1, N*D, Cx, Cy]",
+          "name": "yolov4",
+          "value": "DDMT_YOLOV4"
+        }
+      ],
       "default": "DDMT_SSD",
       "description": null,
       "name": "model_type",

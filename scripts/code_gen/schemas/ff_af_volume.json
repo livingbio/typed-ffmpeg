@@ -29,7 +29,23 @@
       "alias": [
         "precision"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "select 8-bit fixed-point",
+          "name": "fixed",
+          "value": "PRECISION_FIXED"
+        },
+        {
+          "help": "select 32-bit floating-point",
+          "name": "float",
+          "value": "PRECISION_FLOAT"
+        },
+        {
+          "help": "select 64-bit floating-point",
+          "name": "double",
+          "value": "PRECISION_DOUBLE"
+        }
+      ],
       "default": "PRECISION_FLOAT",
       "description": "<dd><p>This parameter represents the mathematical precision.\n</p>\n<p>It determines which input sample formats will be allowed, which affects the\nprecision of the volume scaling.\n</p>\n<dl compact=\"compact\">\n<dt><samp>fixed</samp></dt>\n<dd><p>8-bit fixed-point; this limits input sample format to U8, S16, and S32.\n</p></dd>\n<dt><samp>float</samp></dt>\n<dd><p>32-bit floating-point; this limits input sample format to FLT. (default)\n</p></dd>\n<dt><samp>double</samp></dt>\n<dd><p>64-bit floating-point; this limits input sample format to DBL.\n</p></dd>\n</dl>\n</dd>",
       "name": "precision",
@@ -51,7 +67,28 @@
       "alias": [
         "replaygain"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "replaygain side data is dropped",
+          "name": "drop",
+          "value": "REPLAYGAIN_DROP"
+        },
+        {
+          "help": "replaygain side data is ignored",
+          "name": "ignore",
+          "value": "REPLAYGAIN_IGNORE"
+        },
+        {
+          "help": "track gain is preferred",
+          "name": "track",
+          "value": "REPLAYGAIN_TRACK"
+        },
+        {
+          "help": "album gain is preferred",
+          "name": "album",
+          "value": "REPLAYGAIN_ALBUM"
+        }
+      ],
       "default": "REPLAYGAIN_DROP",
       "description": "<dd><p>Choose the behaviour on encountering ReplayGain side data in input frames.\n</p>\n<dl compact=\"compact\">\n<dt><samp>drop</samp></dt>\n<dd><p>Remove ReplayGain side data, ignoring its contents (the default).\n</p>\n</dd>\n<dt><samp>ignore</samp></dt>\n<dd><p>Ignore ReplayGain side data, but leave it in the frame.\n</p>\n</dd>\n<dt><samp>track</samp></dt>\n<dd><p>Prefer the track gain, if present.\n</p>\n</dd>\n<dt><samp>album</samp></dt>\n<dd><p>Prefer the album gain, if present.\n</p></dd>\n</dl>\n</dd>",
       "name": "replaygain",

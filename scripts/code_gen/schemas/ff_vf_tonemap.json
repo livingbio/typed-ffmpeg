@@ -18,7 +18,43 @@
       "alias": [
         "tonemap"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "none",
+          "value": "TONEMAP_NONE"
+        },
+        {
+          "help": "0",
+          "name": "linear",
+          "value": "TONEMAP_LINEAR"
+        },
+        {
+          "help": "0",
+          "name": "gamma",
+          "value": "TONEMAP_GAMMA"
+        },
+        {
+          "help": "0",
+          "name": "clip",
+          "value": "TONEMAP_CLIP"
+        },
+        {
+          "help": "0",
+          "name": "reinhard",
+          "value": "TONEMAP_REINHARD"
+        },
+        {
+          "help": "0",
+          "name": "hable",
+          "value": "TONEMAP_HABLE"
+        },
+        {
+          "help": "0",
+          "name": "mobius",
+          "value": "TONEMAP_MOBIUS"
+        }
+      ],
       "default": "TONEMAP_NONE",
       "description": null,
       "name": "tonemap",

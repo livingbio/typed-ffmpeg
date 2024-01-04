@@ -29,7 +29,23 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "absolute",
+          "value": "ABSOLUTE_HINT"
+        },
+        {
+          "help": "0",
+          "name": "relative",
+          "value": "RELATIVE_HINT"
+        },
+        {
+          "help": "0",
+          "name": "pattern",
+          "value": "PATTERN_HINT"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Can be item <code>absolute</code> or <code>relative</code> or <code>pattern</code>. Default is <code>absolute</code>.\nThe <code>pattern</code> mode is same as <code>relative</code> mode, except at last entry of file if there\nare more frames to process than <code>hint</code> file is seek back to start.\n</p></dd>",
       "name": "mode",

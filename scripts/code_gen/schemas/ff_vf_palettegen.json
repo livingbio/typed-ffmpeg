@@ -51,7 +51,23 @@
       "alias": [
         "stats_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "compute full frame histograms",
+          "name": "full",
+          "value": "STATS_MODE_ALL_FRAMES"
+        },
+        {
+          "help": "compute histograms only for the part that differs from previous frame",
+          "name": "diff",
+          "value": "STATS_MODE_DIFF_FRAMES"
+        },
+        {
+          "help": "compute new histogram for each frame",
+          "name": "single",
+          "value": "STATS_MODE_SINGLE_FRAMES"
+        }
+      ],
       "default": "STATS_MODE_ALL_FRAMES",
       "description": "<dd><p>Set statistics mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Compute full frame histograms.\n</p></dd>\n<dt>\u2018<samp>diff</samp>\u2019</dt>\n<dd><p>Compute histograms only for the part that differs from previous frame. This\nmight be relevant to give more importance to the moving part of your input if\nthe background is static.\n</p></dd>\n<dt>\u2018<samp>single</samp>\u2019</dt>\n<dd><p>Compute new histogram for each frame.\n</p></dd>\n</dl>\n<p>Default value is <var>full</var>.\n</p></dd>",
       "name": "stats_mode",

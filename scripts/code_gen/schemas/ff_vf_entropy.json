@@ -18,7 +18,18 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "normal",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "diff",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Can be either <var>normal</var> or <var>diff</var>. Default is <var>normal</var>.\n</p>\n<p><var>diff</var> mode measures entropy of histogram delta values, absolute differences\nbetween neighbour histogram values.\n</p></dd>",
       "name": "mode",

@@ -29,7 +29,23 @@
       "alias": [
         "start"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Start immediately (default)",
+          "name": "none",
+          "value": "TILT_NONE"
+        },
+        {
+          "help": "Use the first frames",
+          "name": "frame",
+          "value": "TILT_FRAME"
+        },
+        {
+          "help": "Fill with black",
+          "name": "black",
+          "value": "TILT_BLACK"
+        }
+      ],
       "default": "TILT_NONE",
       "description": "<dd><p>What to do at the start of filtering (see below).\n</p>\n</dd>",
       "name": "start",
@@ -40,7 +56,23 @@
       "alias": [
         "end"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Do not pad at the end (default)",
+          "name": "none",
+          "value": "TILT_NONE"
+        },
+        {
+          "help": "Use the last frame",
+          "name": "frame",
+          "value": "TILT_FRAME"
+        },
+        {
+          "help": "Fill with black",
+          "name": "black",
+          "value": "TILT_BLACK"
+        }
+      ],
       "default": "TILT_NONE",
       "description": "<dd><p>What to do at the end of filtering (see below).\n</p>\n</dd>",
       "name": "end",

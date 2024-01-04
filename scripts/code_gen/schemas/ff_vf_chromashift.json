@@ -62,7 +62,18 @@
       "alias": [
         "edge"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "smear",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "wrap",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>",
       "name": "edge",

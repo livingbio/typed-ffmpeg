@@ -77,7 +77,43 @@
         "format",
         "f"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "lattice-ladder function",
+          "name": "ll",
+          "value": -2
+        },
+        {
+          "help": "analog transfer function",
+          "name": "sf",
+          "value": -1
+        },
+        {
+          "help": "digital transfer function",
+          "name": "tf",
+          "value": 0
+        },
+        {
+          "help": "Z-plane zeros/poles",
+          "name": "zp",
+          "value": 1
+        },
+        {
+          "help": "Z-plane zeros/poles (polar radians)",
+          "name": "pr",
+          "value": 2
+        },
+        {
+          "help": "Z-plane zeros/poles (polar degrees)",
+          "name": "pd",
+          "value": 3
+        },
+        {
+          "help": "S-plane zeros/poles",
+          "name": "sp",
+          "value": 4
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set coefficients format.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>ll</samp>\u2019</dt>\n<dd><p>lattice-ladder function\n</p></dd>\n<dt>\u2018<samp>sf</samp>\u2019</dt>\n<dd><p>analog transfer function\n</p></dd>\n<dt>\u2018<samp>tf</samp>\u2019</dt>\n<dd><p>digital transfer function\n</p></dd>\n<dt>\u2018<samp>zp</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, cartesian (default)\n</p></dd>\n<dt>\u2018<samp>pr</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, polar radians\n</p></dd>\n<dt>\u2018<samp>pd</samp>\u2019</dt>\n<dd><p>Z-plane zeros/poles, polar degrees\n</p></dd>\n<dt>\u2018<samp>sp</samp>\u2019</dt>\n<dd><p>S-plane zeros/poles\n</p></dd>\n</dl>\n</dd>",
       "name": "format",
@@ -89,7 +125,23 @@
         "process",
         "r"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "direct",
+          "name": "d",
+          "value": 0
+        },
+        {
+          "help": "serial",
+          "name": "s",
+          "value": 1
+        },
+        {
+          "help": "parallel",
+          "name": "p",
+          "value": 2
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set type of processing.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>d</samp>\u2019</dt>\n<dd><p>direct processing\n</p></dd>\n<dt>\u2018<samp>s</samp>\u2019</dt>\n<dd><p>serial processing\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>parallel processing\n</p></dd>\n</dl>\n</dd>",
       "name": "process",
@@ -101,7 +153,28 @@
         "precision",
         "e"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "double-precision floating-point",
+          "name": "dbl",
+          "value": 0
+        },
+        {
+          "help": "single-precision floating-point",
+          "name": "flt",
+          "value": 1
+        },
+        {
+          "help": "32-bit integers",
+          "name": "i32",
+          "value": 2
+        },
+        {
+          "help": "16-bit integers",
+          "name": "i16",
+          "value": 3
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set filtering precision.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>dbl</samp>\u2019</dt>\n<dd><p>double-precision floating-point (default)\n</p></dd>\n<dt>\u2018<samp>flt</samp>\u2019</dt>\n<dd><p>single-precision floating-point\n</p></dd>\n<dt>\u2018<samp>i32</samp>\u2019</dt>\n<dd><p>32-bit integers\n</p></dd>\n<dt>\u2018<samp>i16</samp>\u2019</dt>\n<dd><p>16-bit integers\n</p></dd>\n</dl>\n</dd>",
       "name": "precision",

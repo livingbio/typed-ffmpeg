@@ -40,7 +40,18 @@
       "alias": [
         "start_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "add solid-color frames",
+          "name": "add",
+          "value": "MODE_ADD"
+        },
+        {
+          "help": "clone first/last frame",
+          "name": "clone",
+          "value": "MODE_CLONE"
+        }
+      ],
       "default": "MODE_ADD",
       "description": "<dd><p>Set kind of frames added to beginning of stream.\nCan be either <var>add</var> or <var>clone</var>.\nWith <var>add</var> frames of solid-color are added.\nWith <var>clone</var> frames are clones of first frame.\nDefault is <var>add</var>.\n</p>\n</dd>",
       "name": "start_mode",
@@ -51,7 +62,18 @@
       "alias": [
         "stop_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "add solid-color frames",
+          "name": "add",
+          "value": "MODE_ADD"
+        },
+        {
+          "help": "clone first/last frame",
+          "name": "clone",
+          "value": "MODE_CLONE"
+        }
+      ],
       "default": "MODE_ADD",
       "description": "<dd><p>Set kind of frames added to end of stream.\nCan be either <var>add</var> or <var>clone</var>.\nWith <var>add</var> frames of solid-color are added.\nWith <var>clone</var> frames are clones of last frame.\nDefault is <var>add</var>.\n</p>\n</dd>",
       "name": "stop_mode",

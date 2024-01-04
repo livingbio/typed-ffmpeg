@@ -73,7 +73,18 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "time domain",
+          "name": "time",
+          "value": 0
+        },
+        {
+          "help": "frequency domain",
+          "name": "freq",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set processing type. Can be <var>time</var> or <var>freq</var>. <var>time</var> is\nprocessing audio in time domain which is slow.\n<var>freq</var> is processing audio in frequency domain which is fast.\nDefault is <var>freq</var>.\n</p>\n</dd>",
       "name": "type",

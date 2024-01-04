@@ -29,7 +29,18 @@
       "alias": [
         "parity"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "assume top field first",
+          "name": "tff",
+          "value": "PARITY_TFF"
+        },
+        {
+          "help": "assume bottom field first",
+          "name": "bff",
+          "value": "PARITY_BFF"
+        }
+      ],
       "default": "PARITY_BFF",
       "description": "<dd><p>Set the picture field parity assumed for the input video. It must be\none of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>0, tff</samp>\u2019</dt>\n<dd><p>assume top field first\n</p></dd>\n<dt>\u2018<samp>1, bff</samp>\u2019</dt>\n<dd><p>assume bottom field first\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>bff</samp>\u2019.\n</p>\n</dd>",
       "name": "parity",

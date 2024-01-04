@@ -60,7 +60,23 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "fade to black",
+          "name": "black",
+          "value": 0
+        },
+        {
+          "help": "fade to white",
+          "name": "white",
+          "value": 1
+        },
+        {
+          "help": "white to black",
+          "name": "all",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the type of the color spectrum, only available in the\n<code>colorspectrum</code> source. Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>black</samp>\u2019</dt>\n<dt>\u2018<samp>white</samp>\u2019</dt>\n<dt>\u2018<samp>all</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "type",

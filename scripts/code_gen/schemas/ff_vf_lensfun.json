@@ -62,7 +62,43 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "fix lens vignetting",
+          "name": "vignetting",
+          "value": "VIGNETTING"
+        },
+        {
+          "help": "correct geometry distortion",
+          "name": "geometry",
+          "value": "GEOMETRY_DISTORTION"
+        },
+        {
+          "help": "fix chromatic aberrations",
+          "name": "subpixel",
+          "value": "SUBPIXEL_DISTORTION"
+        },
+        {
+          "help": "fix lens vignetting and correct geometry distortion",
+          "name": "vig_geo",
+          "value": "VIGNETTING | GEOMETRY_DISTORTION"
+        },
+        {
+          "help": "fix lens vignetting and chromatic aberrations",
+          "name": "vig_subpixel",
+          "value": "VIGNETTING | SUBPIXEL_DISTORTION"
+        },
+        {
+          "help": "correct geometry distortion and chromatic aberrations",
+          "name": "distortion",
+          "value": "GEOMETRY_DISTORTION | SUBPIXEL_DISTORTION"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "all",
+          "value": "VIGNETTING | GEOMETRY_DISTORTION | SUBPIXEL_DISTORTION"
+        }
+      ],
       "default": "GEOMETRY_DISTORTION",
       "description": "<dd><p>The type of correction to apply. The following values are valid options:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>vignetting</samp>\u2019</dt>\n<dd><p>Enables fixing lens vignetting.\n</p>\n</dd>\n<dt>\u2018<samp>geometry</samp>\u2019</dt>\n<dd><p>Enables fixing lens geometry. This is the default.\n</p>\n</dd>\n<dt>\u2018<samp>subpixel</samp>\u2019</dt>\n<dd><p>Enables fixing chromatic aberrations.\n</p>\n</dd>\n<dt>\u2018<samp>vig_geo</samp>\u2019</dt>\n<dd><p>Enables fixing lens vignetting and lens geometry.\n</p>\n</dd>\n<dt>\u2018<samp>vig_subpixel</samp>\u2019</dt>\n<dd><p>Enables fixing lens vignetting and chromatic aberrations.\n</p>\n</dd>\n<dt>\u2018<samp>distortion</samp>\u2019</dt>\n<dd><p>Enables fixing both lens geometry and chromatic aberrations.\n</p>\n</dd>\n<dt>\u2018<samp>all</samp>\u2019</dt>\n<dd><p>Enables all possible corrections.\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "mode",
@@ -117,7 +153,48 @@
       "alias": [
         "target_geometry"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "rectilinear lens (default)",
+          "name": "rectilinear",
+          "value": "LF_RECTILINEAR"
+        },
+        {
+          "help": "fisheye lens",
+          "name": "fisheye",
+          "value": "LF_FISHEYE"
+        },
+        {
+          "help": "panoramic (cylindrical)",
+          "name": "panoramic",
+          "value": "LF_PANORAMIC"
+        },
+        {
+          "help": "equirectangular",
+          "name": "equirectangular",
+          "value": "LF_EQUIRECTANGULAR"
+        },
+        {
+          "help": "orthographic fisheye",
+          "name": "fisheye_orthographic",
+          "value": "LF_FISHEYE_ORTHOGRAPHIC"
+        },
+        {
+          "help": "stereographic fisheye",
+          "name": "fisheye_stereographic",
+          "value": "LF_FISHEYE_STEREOGRAPHIC"
+        },
+        {
+          "help": "equisolid fisheye",
+          "name": "fisheye_equisolid",
+          "value": "LF_FISHEYE_EQUISOLID"
+        },
+        {
+          "help": "fisheye as measured by thoby",
+          "name": "fisheye_thoby",
+          "value": "LF_FISHEYE_THOBY"
+        }
+      ],
       "default": "LF_RECTILINEAR",
       "description": "<dd><p>The target geometry of the output image/video. The following values are valid\noptions:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>rectilinear (default)</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye</samp>\u2019</dt>\n<dt>\u2018<samp>panoramic</samp>\u2019</dt>\n<dt>\u2018<samp>equirectangular</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_orthographic</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_stereographic</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_equisolid</samp>\u2019</dt>\n<dt>\u2018<samp>fisheye_thoby</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "target_geometry",
@@ -139,7 +216,23 @@
       "alias": [
         "interpolation"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "nearest",
+          "value": "NEAREST"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "linear",
+          "value": "LINEAR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "lanczos",
+          "value": "LANCZOS"
+        }
+      ],
       "default": "LINEAR",
       "description": "<dd><p>The type of interpolation used when correcting distortion. The following values\nare valid options:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dt>\u2018<samp>linear (default)</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "interpolation",

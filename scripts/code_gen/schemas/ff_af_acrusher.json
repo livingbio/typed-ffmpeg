@@ -62,7 +62,18 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": 0
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Can be linear: <code>lin</code> or logarithmic: <code>log</code>.\n</p>\n</dd>",
       "name": "mode",

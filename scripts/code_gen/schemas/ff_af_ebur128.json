@@ -51,7 +51,23 @@
       "alias": [
         "framelog"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "logging disabled",
+          "name": "quiet",
+          "value": -8
+        },
+        {
+          "help": "information logging level",
+          "name": "info",
+          "value": 32
+        },
+        {
+          "help": "verbose logging level",
+          "name": "verbose",
+          "value": 40
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Force the frame logging level.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>quiet</samp>\u2019</dt>\n<dd><p>logging disabled\n</p></dd>\n<dt>\u2018<samp>info</samp>\u2019</dt>\n<dd><p>information logging level\n</p></dd>\n<dt>\u2018<samp>verbose</samp>\u2019</dt>\n<dd><p>verbose logging level\n</p></dd>\n</dl>\n<p>By default, the logging level is set to <var>info</var>. If the <samp>video</samp> or\nthe <samp>metadata</samp> options are set, it switches to <var>verbose</var>.\n</p>\n</dd>",
       "name": "framelog",
@@ -73,7 +89,23 @@
       "alias": [
         "peak"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "disable any peak mode",
+          "name": "none",
+          "value": "PEAK_MODE_NONE"
+        },
+        {
+          "help": "enable peak-sample mode",
+          "name": "sample",
+          "value": "PEAK_MODE_SAMPLES_PEAKS"
+        },
+        {
+          "help": "enable true-peak mode",
+          "name": "true",
+          "value": "PEAK_MODE_TRUE_PEAKS"
+        }
+      ],
       "default": "PEAK_MODE_NONE",
       "description": "<dd><p>Set peak mode(s).\n</p>\n<p>Available modes can be cumulated (the option is a <code>flag</code> type). Possible\nvalues are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable any peak mode (default).\n</p></dd>\n<dt>\u2018<samp>sample</samp>\u2019</dt>\n<dd><p>Enable sample-peak mode.\n</p>\n<p>Simple peak mode looking for the higher sample value. It logs a message\nfor sample-peak (identified by <code>SPK</code>).\n</p></dd>\n<dt>\u2018<samp>true</samp>\u2019</dt>\n<dd><p>Enable true-peak mode.\n</p>\n<p>If enabled, the peak lookup is done on an over-sampled version of the input\nstream for better peak accuracy. It logs a message for true-peak.\n(identified by <code>TPK</code>) and true-peak per frame (identified by <code>FTPK</code>).\nThis mode requires a build with <code>libswresample</code>.\n</p></dd>\n</dl>\n</dd>",
       "name": "peak",
@@ -117,7 +149,28 @@
       "alias": [
         "gauge"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "display momentary value",
+          "name": "momentary",
+          "value": "GAUGE_TYPE_MOMENTARY"
+        },
+        {
+          "help": "display momentary value",
+          "name": "m",
+          "value": "GAUGE_TYPE_MOMENTARY"
+        },
+        {
+          "help": "display short-term value",
+          "name": "shortterm",
+          "value": "GAUGE_TYPE_SHORTTERM"
+        },
+        {
+          "help": "display short-term value",
+          "name": "s",
+          "value": "GAUGE_TYPE_SHORTTERM"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the value displayed by the gauge. Valid values are <code>momentary</code> and s\n<code>shortterm</code>. By default the momentary value will be used, but in certain\nscenarios it may be more useful to observe the short term value instead (e.g.\nlive mixing).\n</p>\n</dd>",
       "name": "gauge",
@@ -128,7 +181,28 @@
       "alias": [
         "scale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "display absolute values (LUFS)",
+          "name": "absolute",
+          "value": "SCALE_TYPE_ABSOLUTE"
+        },
+        {
+          "help": "display absolute values (LUFS)",
+          "name": "LUFS",
+          "value": "SCALE_TYPE_ABSOLUTE"
+        },
+        {
+          "help": "display values relative to target (LU)",
+          "name": "relative",
+          "value": "SCALE_TYPE_RELATIVE"
+        },
+        {
+          "help": "display values relative to target (LU)",
+          "name": "LU",
+          "value": "SCALE_TYPE_RELATIVE"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Sets the display scale for the loudness. Valid parameters are <code>absolute</code>\n(in LUFS) or <code>relative</code> (LU) relative to the target. This only affects the\nvideo output, not the summary or continuous log output.\n</p>\n</dd>",
       "name": "scale",

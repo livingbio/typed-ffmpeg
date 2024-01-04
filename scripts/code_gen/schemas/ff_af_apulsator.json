@@ -40,7 +40,33 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "sine",
+          "value": "SINE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "triangle",
+          "value": "TRIANGLE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "square",
+          "value": "SQUARE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sawup",
+          "value": "SAWUP"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sawdown",
+          "value": "SAWDOWN"
+        }
+      ],
       "default": "SINE",
       "description": "<dd><p>Set waveform shape the LFO will use. Can be one of: sine, triangle, square,\nsawup or sawdown. Default is sine.\n</p>\n</dd>",
       "name": "mode",
@@ -95,7 +121,23 @@
       "alias": [
         "timing"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "bpm",
+          "value": "UNIT_BPM"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "ms",
+          "value": "UNIT_MS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "hz",
+          "value": "UNIT_HZ"
+        }
+      ],
       "default": 2,
       "description": "<dd><p>Set possible timing mode. Can be one of: bpm, ms or hz. Default is hz.\n</p>\n</dd>",
       "name": "timing",

@@ -106,7 +106,18 @@
       "alias": [
         "distance"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "manhattan",
+          "value": 0
+        },
+        {
+          "help": "",
+          "name": "euclidean",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set distance type used in calculations.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>manhattan</samp>\u2019</dt>\n<dd><p>Absolute difference.\n</p></dd>\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dd><p>Difference squared.\n</p></dd>\n</dl>\n<p>Default distance type is manhattan.\n</p></dd>",
       "name": "distance",

@@ -62,7 +62,58 @@
       "alias": [
         "wfunc"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "rectangular window",
+          "name": "rectangular",
+          "value": "WFUNC_RECTANGULAR"
+        },
+        {
+          "help": "hann window",
+          "name": "hann",
+          "value": "WFUNC_HANN"
+        },
+        {
+          "help": "hamming window",
+          "name": "hamming",
+          "value": "WFUNC_HAMMING"
+        },
+        {
+          "help": "blackman window",
+          "name": "blackman",
+          "value": "WFUNC_BLACKMAN"
+        },
+        {
+          "help": "3-term nuttall window",
+          "name": "nuttall3",
+          "value": "WFUNC_NUTTALL3"
+        },
+        {
+          "help": "minimum 3-term nuttall window",
+          "name": "mnuttall3",
+          "value": "WFUNC_MNUTTALL3"
+        },
+        {
+          "help": "nuttall window",
+          "name": "nuttall",
+          "value": "WFUNC_NUTTALL"
+        },
+        {
+          "help": "blackman-nuttall window",
+          "name": "bnuttall",
+          "value": "WFUNC_BNUTTALL"
+        },
+        {
+          "help": "blackman-harris window",
+          "name": "bharris",
+          "value": "WFUNC_BHARRIS"
+        },
+        {
+          "help": "tukey window",
+          "name": "tukey",
+          "value": "WFUNC_TUKEY"
+        }
+      ],
       "default": "WFUNC_HANN",
       "description": "<dd><p>Set window function. Acceptable values are:\n</p><dl compact=\"compact\">\n<dt><samp>rectangular</samp></dt>\n<dd><p>rectangular window, useful when gain curve is already smooth\n</p></dd>\n<dt><samp>hann</samp></dt>\n<dd><p>hann window (default)\n</p></dd>\n<dt><samp>hamming</samp></dt>\n<dd><p>hamming window\n</p></dd>\n<dt><samp>blackman</samp></dt>\n<dd><p>blackman window\n</p></dd>\n<dt><samp>nuttall3</samp></dt>\n<dd><p>3-terms continuous 1st derivative nuttall window\n</p></dd>\n<dt><samp>mnuttall3</samp></dt>\n<dd><p>minimum 3-terms discontinuous nuttall window\n</p></dd>\n<dt><samp>nuttall</samp></dt>\n<dd><p>4-terms continuous 1st derivative nuttall window\n</p></dd>\n<dt><samp>bnuttall</samp></dt>\n<dd><p>minimum 4-terms discontinuous nuttall (blackman-nuttall) window\n</p></dd>\n<dt><samp>bharris</samp></dt>\n<dd><p>blackman-harris window\n</p></dd>\n<dt><samp>tukey</samp></dt>\n<dd><p>tukey window\n</p></dd>\n</dl>\n</dd>",
       "name": "wfunc",
@@ -106,7 +157,28 @@
       "alias": [
         "scale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear-freq linear-gain",
+          "name": "linlin",
+          "value": "SCALE_LINLIN"
+        },
+        {
+          "help": "linear-freq logarithmic-gain",
+          "name": "linlog",
+          "value": "SCALE_LINLOG"
+        },
+        {
+          "help": "logarithmic-freq linear-gain",
+          "name": "loglin",
+          "value": "SCALE_LOGLIN"
+        },
+        {
+          "help": "logarithmic-freq logarithmic-gain",
+          "name": "loglog",
+          "value": "SCALE_LOGLOG"
+        }
+      ],
       "default": "SCALE_LINLOG",
       "description": "<dd><p>Set scale used by gain. Acceptable values are:\n</p><dl compact=\"compact\">\n<dt><samp>linlin</samp></dt>\n<dd><p>linear frequency, linear gain\n</p></dd>\n<dt><samp>linlog</samp></dt>\n<dd><p>linear frequency, logarithmic (in dB) gain (default)\n</p></dd>\n<dt><samp>loglin</samp></dt>\n<dd><p>logarithmic (in octave scale where 20 Hz is 0) frequency, linear gain\n</p></dd>\n<dt><samp>loglog</samp></dt>\n<dd><p>logarithmic frequency, logarithmic gain\n</p></dd>\n</dl>\n</dd>",
       "name": "scale",
@@ -128,7 +200,28 @@
       "alias": [
         "dumpscale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear-freq linear-gain",
+          "name": "linlin",
+          "value": "SCALE_LINLIN"
+        },
+        {
+          "help": "linear-freq logarithmic-gain",
+          "name": "linlog",
+          "value": "SCALE_LINLOG"
+        },
+        {
+          "help": "logarithmic-freq linear-gain",
+          "name": "loglin",
+          "value": "SCALE_LOGLIN"
+        },
+        {
+          "help": "logarithmic-freq logarithmic-gain",
+          "name": "loglog",
+          "value": "SCALE_LOGLOG"
+        }
+      ],
       "default": "SCALE_LINLOG",
       "description": "<dd><p>Set scale for dumpfile. Acceptable values are same with scale option.\nDefault is linlog.\n</p>\n</dd>",
       "name": "dumpscale",

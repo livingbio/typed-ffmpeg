@@ -18,7 +18,43 @@
       "alias": [
         "tonemap"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "none",
+          "value": "TONEMAP_NONE"
+        },
+        {
+          "help": "0",
+          "name": "linear",
+          "value": "TONEMAP_LINEAR"
+        },
+        {
+          "help": "0",
+          "name": "gamma",
+          "value": "TONEMAP_GAMMA"
+        },
+        {
+          "help": "0",
+          "name": "clip",
+          "value": "TONEMAP_CLIP"
+        },
+        {
+          "help": "0",
+          "name": "reinhard",
+          "value": "TONEMAP_REINHARD"
+        },
+        {
+          "help": "0",
+          "name": "hable",
+          "value": "TONEMAP_HABLE"
+        },
+        {
+          "help": "0",
+          "name": "mobius",
+          "value": "TONEMAP_MOBIUS"
+        }
+      ],
       "default": "TONEMAP_NONE",
       "description": "<dd><p>Specify the tone-mapping operator to be used. Same as tonemap option in <a href=\"#tonemap\">tonemap</a>.\n</p>\n</dd>",
       "name": "tonemap",
@@ -30,7 +66,18 @@
         "transfer",
         "t"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "bt709",
+          "value": "AVCOL_TRC_BT709"
+        },
+        {
+          "help": "0",
+          "name": "bt2020",
+          "value": "AVCOL_TRC_BT2020_10"
+        }
+      ],
       "default": "AVCOL_TRC_BT709",
       "description": "<dd><p>Set the output transfer characteristics.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><var>bt709</var></dt>\n<dt><var>bt2020</var></dt>\n</dl>\n<p>Default is bt709.\n</p>\n</dd>",
       "name": "transfer",
@@ -42,7 +89,18 @@
         "matrix",
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "bt709",
+          "value": "AVCOL_SPC_BT709"
+        },
+        {
+          "help": "0",
+          "name": "bt2020",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Set the output colorspace matrix.\n</p>\n<p>Possible value are:\n</p><dl compact=\"compact\">\n<dt><var>bt709</var></dt>\n<dt><var>bt2020</var></dt>\n</dl>\n<p>Default is same as input.\n</p>\n</dd>",
       "name": "matrix",
@@ -54,7 +112,18 @@
         "primaries",
         "p"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "bt709",
+          "value": "AVCOL_PRI_BT709"
+        },
+        {
+          "help": "0",
+          "name": "bt2020",
+          "value": "AVCOL_PRI_BT2020"
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Set the output color primaries.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><var>bt709</var></dt>\n<dt><var>bt2020</var></dt>\n</dl>\n<p>Default is same as input.\n</p>\n</dd>",
       "name": "primaries",
@@ -66,7 +135,28 @@
         "range",
         "r"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "tv",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "0",
+          "name": "pc",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "0",
+          "name": "limited",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "0",
+          "name": "full",
+          "value": "AVCOL_RANGE_JPEG"
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Set the output color range.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><var>tv/mpeg</var></dt>\n<dt><var>pc/jpeg</var></dt>\n</dl>\n<p>Default is same as input.\n</p>\n</dd>",
       "name": "range",

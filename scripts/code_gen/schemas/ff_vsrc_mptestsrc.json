@@ -38,7 +38,63 @@
         "test",
         "t"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "dc_luma",
+          "value": "TEST_DC_LUMA"
+        },
+        {
+          "help": "",
+          "name": "dc_chroma",
+          "value": "TEST_DC_CHROMA"
+        },
+        {
+          "help": "",
+          "name": "freq_luma",
+          "value": "TEST_FREQ_LUMA"
+        },
+        {
+          "help": "",
+          "name": "freq_chroma",
+          "value": "TEST_FREQ_CHROMA"
+        },
+        {
+          "help": "",
+          "name": "amp_luma",
+          "value": "TEST_AMP_LUMA"
+        },
+        {
+          "help": "",
+          "name": "amp_chroma",
+          "value": "TEST_AMP_CHROMA"
+        },
+        {
+          "help": "",
+          "name": "cbp",
+          "value": "TEST_CBP"
+        },
+        {
+          "help": "",
+          "name": "mv",
+          "value": "TEST_MV"
+        },
+        {
+          "help": "",
+          "name": "ring1",
+          "value": "TEST_RING1"
+        },
+        {
+          "help": "",
+          "name": "ring2",
+          "value": "TEST_RING2"
+        },
+        {
+          "help": "",
+          "name": "all",
+          "value": "TEST_ALL"
+        }
+      ],
       "default": "TEST_ALL",
       "description": "<dd>\n<p>Set the number or the name of the test to perform. Supported tests are:\n</p><dl compact=\"compact\">\n<dt><samp>dc_luma</samp></dt>\n<dt><samp>dc_chroma</samp></dt>\n<dt><samp>freq_luma</samp></dt>\n<dt><samp>freq_chroma</samp></dt>\n<dt><samp>amp_luma</samp></dt>\n<dt><samp>amp_chroma</samp></dt>\n<dt><samp>cbp</samp></dt>\n<dt><samp>mv</samp></dt>\n<dt><samp>ring1</samp></dt>\n<dt><samp>ring2</samp></dt>\n<dt><samp>all</samp></dt>\n<dt><samp>max_frames, m</samp></dt>\n<dd><p>Set the maximum number of frames generated for each test, default value is 30.\n</p>\n</dd>\n</dl>\n<p>Default value is \"all\", which will cycle through the list of all tests.\n</p></dd>",
       "name": "test",

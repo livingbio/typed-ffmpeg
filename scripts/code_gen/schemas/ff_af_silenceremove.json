@@ -62,7 +62,18 @@
       "alias": [
         "start_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "any",
+          "value": "T_ANY"
+        },
+        {
+          "help": "0",
+          "name": "all",
+          "value": "T_ALL"
+        }
+      ],
       "default": "T_ANY",
       "description": "<dd><p>Specify mode of detection of silence end at start of multi-channel audio.\nCan be <var>any</var> or <var>all</var>. Default is <var>any</var>.\nWith <var>any</var>, any sample from any channel that is detected as non-silence\nwill trigger end of silence trimming at start of audio stream.\nWith <var>all</var>, only if every sample from every channel is detected as non-silence\nwill trigger end of silence trimming at start of audio stream, limited usage.\n</p>\n</dd>",
       "name": "start_mode",
@@ -117,7 +128,18 @@
       "alias": [
         "stop_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "any",
+          "value": "T_ANY"
+        },
+        {
+          "help": "0",
+          "name": "all",
+          "value": "T_ALL"
+        }
+      ],
       "default": "T_ALL",
       "description": "<dd><p>Specify mode of detection of silence start after start of multi-channel audio.\nCan be <var>any</var> or <var>all</var>. Default is <var>all</var>.\nWith <var>any</var>, any sample from any channel that is detected as silence\nwill trigger start of silence trimming after start of audio stream, limited usage.\nWith <var>all</var>, only if every sample from every channel is detected as silence\nwill trigger start of silence trimming after start of audio stream.\n</p>\n</dd>",
       "name": "stop_mode",
@@ -128,7 +150,38 @@
       "alias": [
         "detection"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "use mean absolute values of samples",
+          "name": "avg",
+          "value": "D_AVG"
+        },
+        {
+          "help": "use root mean squared values of samples",
+          "name": "rms",
+          "value": "D_RMS"
+        },
+        {
+          "help": "use max absolute values of samples",
+          "name": "peak",
+          "value": "D_PEAK"
+        },
+        {
+          "help": "use median of absolute values of samples",
+          "name": "median",
+          "value": "D_MEDIAN"
+        },
+        {
+          "help": "use absolute of max peak to min peak difference",
+          "name": "ptp",
+          "value": "D_PTP"
+        },
+        {
+          "help": "use standard deviation from values of samples",
+          "name": "dev",
+          "value": "D_DEV"
+        }
+      ],
       "default": "D_RMS",
       "description": "<dd><p>Set how is silence detected.\n</p><dl compact=\"compact\">\n<dt><samp>avg</samp></dt>\n<dd><p>Mean of absolute values of samples in moving window.\n</p></dd>\n<dt><samp>rms</samp></dt>\n<dd><p>Root squared mean of absolute values of samples in moving window.\n</p></dd>\n<dt><samp>peak</samp></dt>\n<dd><p>Maximum of absolute values of samples in moving window.\n</p></dd>\n<dt><samp>median</samp></dt>\n<dd><p>Median of absolute values of samples in moving window.\n</p></dd>\n<dt><samp>ptp</samp></dt>\n<dd><p>Absolute of max peak to min peak difference of samples in moving window.\n</p></dd>\n<dt><samp>dev</samp></dt>\n<dd><p>Standard deviation of values of samples in moving window.\n</p></dd>\n</dl>\n<p>Default value is <code>rms</code>.\n</p>\n</dd>",
       "name": "detection",
@@ -150,7 +203,18 @@
       "alias": [
         "timestamp"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "full timestamps rewrite, keep only the start time",
+          "name": "write",
+          "value": "TS_WRITE"
+        },
+        {
+          "help": "non-dropped frames are left with same timestamp",
+          "name": "copy",
+          "value": "TS_COPY"
+        }
+      ],
       "default": "TS_WRITE",
       "description": "<dd><p>Set processing mode of every audio frame output timestamp.\n</p><dl compact=\"compact\">\n<dt><samp>write</samp></dt>\n<dd><p>Full timestamps rewrite, keep only the start time for the first output frame.\n</p></dd>\n<dt><samp>copy</samp></dt>\n<dd><p>Non-dropped frames are left with same timestamp as input audio frame.\n</p></dd>\n</dl>\n<p>Defaults value is <code>write</code>.\n</p></dd>",
       "name": "timestamp",

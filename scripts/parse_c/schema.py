@@ -270,7 +270,7 @@ class AVFilter(pydantic.BaseModel):
         ):
             for option in options:
                 choices[unit] = choices.get(option.unit, []) + [
-                    Choice(name=option.name, help=option.help, value=option.default)
+                    Choice(name=option.name, help=option.help, value=parse_default(option.default))
                 ]
 
         # collect alias map

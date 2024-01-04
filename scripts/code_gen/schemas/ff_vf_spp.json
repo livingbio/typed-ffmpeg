@@ -40,7 +40,18 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "hard thresholding",
+          "name": "hard",
+          "value": "MODE_HARD"
+        },
+        {
+          "help": "soft thresholding",
+          "name": "soft",
+          "value": "MODE_SOFT"
+        }
+      ],
       "default": "MODE_HARD",
       "description": "<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>Set hard thresholding (default).\n</p></dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).\n</p></dd>\n</dl>\n</dd>",
       "name": "mode",

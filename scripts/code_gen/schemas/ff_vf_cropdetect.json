@@ -74,7 +74,18 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "detect black pixels surrounding the video",
+          "name": "black",
+          "value": "MODE_BLACK"
+        },
+        {
+          "help": "detect motion and edged surrounding the video",
+          "name": "mvedges",
+          "value": "MODE_MV_EDGES"
+        }
+      ],
       "default": "MODE_BLACK",
       "description": "<dd><p>Depending on <var>mode</var> crop detection is based on either the mere black value of surrounding pixels or a combination of motion vectors and edge pixels.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>black</samp>\u2019</dt>\n<dd><p>Detect black pixels surrounding the playing video. For fine control use option <var>limit</var>.\n</p>\n</dd>\n<dt>\u2018<samp>mvedges</samp>\u2019</dt>\n<dd><p>Detect the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.\n</p></dd>\n</dl>\n</dd>",
       "name": "mode",

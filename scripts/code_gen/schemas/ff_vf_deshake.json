@@ -84,7 +84,28 @@
       "alias": [
         "edge"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "fill zeroes at blank locations",
+          "name": "blank",
+          "value": "FILL_BLANK"
+        },
+        {
+          "help": "original image at blank locations",
+          "name": "original",
+          "value": "FILL_ORIGINAL"
+        },
+        {
+          "help": "extruded edge value at blank locations",
+          "name": "clamp",
+          "value": "FILL_CLAMP"
+        },
+        {
+          "help": "mirrored edge at blank locations",
+          "name": "mirror",
+          "value": "FILL_MIRROR"
+        }
+      ],
       "default": "FILL_MIRROR",
       "description": "<dd><p>Specify how to generate pixels to fill blanks at the edge of the\nframe. Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>blank, 0</samp>\u2019</dt>\n<dd><p>Fill zeroes at blank locations\n</p></dd>\n<dt>\u2018<samp>original, 1</samp>\u2019</dt>\n<dd><p>Original image at blank locations\n</p></dd>\n<dt>\u2018<samp>clamp, 2</samp>\u2019</dt>\n<dd><p>Extruded edge value at blank locations\n</p></dd>\n<dt>\u2018<samp>mirror, 3</samp>\u2019</dt>\n<dd><p>Mirrored edge at blank locations\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>mirror</samp>\u2019.\n</p>\n</dd>",
       "name": "edge",
@@ -117,7 +138,18 @@
       "alias": [
         "search"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "exhaustive search",
+          "name": "exhaustive",
+          "value": "EXHAUSTIVE"
+        },
+        {
+          "help": "less exhaustive search",
+          "name": "less",
+          "value": "SMART_EXHAUSTIVE"
+        }
+      ],
       "default": "EXHAUSTIVE",
       "description": "<dd><p>Specify the search strategy. Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>exhaustive, 0</samp>\u2019</dt>\n<dd><p>Set exhaustive search\n</p></dd>\n<dt>\u2018<samp>less, 1</samp>\u2019</dt>\n<dd><p>Set less exhaustive search.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>exhaustive</samp>\u2019.\n</p>\n</dd>",
       "name": "search",

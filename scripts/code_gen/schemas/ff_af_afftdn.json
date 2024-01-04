@@ -43,7 +43,48 @@
         "noise_type",
         "nt"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "white noise",
+          "name": "white",
+          "value": "WHITE_NOISE"
+        },
+        {
+          "help": "white noise",
+          "name": "w",
+          "value": "WHITE_NOISE"
+        },
+        {
+          "help": "vinyl noise",
+          "name": "vinyl",
+          "value": "VINYL_NOISE"
+        },
+        {
+          "help": "vinyl noise",
+          "name": "v",
+          "value": "VINYL_NOISE"
+        },
+        {
+          "help": "shellac noise",
+          "name": "shellac",
+          "value": "SHELLAC_NOISE"
+        },
+        {
+          "help": "shellac noise",
+          "name": "s",
+          "value": "SHELLAC_NOISE"
+        },
+        {
+          "help": "custom noise",
+          "name": "custom",
+          "value": "CUSTOM_NOISE"
+        },
+        {
+          "help": "custom noise",
+          "name": "c",
+          "value": "CUSTOM_NOISE"
+        }
+      ],
       "default": "WHITE_NOISE",
       "description": "<dd><p>Set the noise type.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>white, w</samp></dt>\n<dd><p>Select white noise.\n</p>\n</dd>\n<dt><samp>vinyl, v</samp></dt>\n<dd><p>Select vinyl noise.\n</p>\n</dd>\n<dt><samp>shellac, s</samp></dt>\n<dd><p>Select shellac noise.\n</p>\n</dd>\n<dt><samp>custom, c</samp></dt>\n<dd><p>Select custom noise, defined in <code>bn</code> option.\n</p>\n<p>Default value is white noise.\n</p></dd>\n</dl>\n</dd>",
       "name": "noise_type",
@@ -103,7 +144,38 @@
         "output_mode",
         "om"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "input",
+          "name": "input",
+          "value": "IN_MODE"
+        },
+        {
+          "help": "input",
+          "name": "i",
+          "value": "IN_MODE"
+        },
+        {
+          "help": "output",
+          "name": "output",
+          "value": "OUT_MODE"
+        },
+        {
+          "help": "output",
+          "name": "o",
+          "value": "OUT_MODE"
+        },
+        {
+          "help": "noise",
+          "name": "noise",
+          "value": "NOISE_MODE"
+        },
+        {
+          "help": "noise",
+          "name": "n",
+          "value": "NOISE_MODE"
+        }
+      ],
       "default": "OUT_MODE",
       "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>input, i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>output, o</samp></dt>\n<dd><p>Pass noise filtered out.\n</p>\n</dd>\n<dt><samp>noise, n</samp></dt>\n<dd><p>Pass only noise.\n</p>\n<p>Default value is <var>output</var>.\n</p></dd>\n</dl>\n</dd>",
       "name": "output_mode",
@@ -139,7 +211,28 @@
         "noise_link",
         "nl"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "none",
+          "name": "none",
+          "value": "NONE_LINK"
+        },
+        {
+          "help": "min",
+          "name": "min",
+          "value": "MIN_LINK"
+        },
+        {
+          "help": "max",
+          "name": "max",
+          "value": "MAX_LINK"
+        },
+        {
+          "help": "average",
+          "name": "average",
+          "value": "AVERAGE_LINK"
+        }
+      ],
       "default": "MIN_LINK",
       "description": "<dd><p>Set the noise link used for multichannel audio.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>none</samp></dt>\n<dd><p>Use unchanged channel\u2019s noise floor.\n</p>\n</dd>\n<dt><samp>min</samp></dt>\n<dd><p>Use measured min noise floor of all channels.\n</p>\n</dd>\n<dt><samp>max</samp></dt>\n<dd><p>Use measured max noise floor of all channels.\n</p>\n</dd>\n<dt><samp>average</samp></dt>\n<dd><p>Use measured average noise floor of all channels.\n</p>\n<p>Default value is <var>min</var>.\n</p></dd>\n</dl>\n</dd>",
       "name": "noise_link",
@@ -163,7 +256,33 @@
         "sample_noise",
         "sn"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "none",
+          "name": "none",
+          "value": "SAMPLE_NONE"
+        },
+        {
+          "help": "start",
+          "name": "start",
+          "value": "SAMPLE_START"
+        },
+        {
+          "help": "start",
+          "name": "begin",
+          "value": "SAMPLE_START"
+        },
+        {
+          "help": "stop",
+          "name": "stop",
+          "value": "SAMPLE_STOP"
+        },
+        {
+          "help": "stop",
+          "name": "end",
+          "value": "SAMPLE_STOP"
+        }
+      ],
       "default": "SAMPLE_NONE",
       "description": "<dd><p>Toggle capturing and measurement of noise profile from input audio.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>start, begin</samp></dt>\n<dd><p>Start sample noise capture.\n</p>\n</dd>\n<dt><samp>stop, end</samp></dt>\n<dd><p>Stop sample noise capture and measure new noise band profile.\n</p>\n<p>Default value is <code>none</code>.\n</p></dd>\n</dl>\n</dd>",
       "name": "sample_noise",

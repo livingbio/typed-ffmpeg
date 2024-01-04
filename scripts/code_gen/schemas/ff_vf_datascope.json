@@ -52,7 +52,23 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "mono",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "color",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "color2",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set scope mode, can be one of the following:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>mono</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values with white color on black background.\n</p>\n</dd>\n<dt>\u2018<samp>color</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values with input video pixel color on black\nbackground.\n</p>\n</dd>\n<dt>\u2018<samp>color2</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values on color background picked from input video,\nthe text color is picked in such way so its always visible.\n</p></dd>\n</dl>\n</dd>",
       "name": "mode",
@@ -85,7 +101,18 @@
       "alias": [
         "format"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "hex",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "dec",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set display number format. Can be <code>hex</code>, or <code>dec</code>. Default is <code>hex</code>.\n</p>\n</dd>",
       "name": "format",

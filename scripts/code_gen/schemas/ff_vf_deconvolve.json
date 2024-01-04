@@ -33,7 +33,18 @@
       "alias": [
         "impulse"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "process only first impulse, ignore rest",
+          "name": "first",
+          "value": 0
+        },
+        {
+          "help": "process all impulses",
+          "name": "all",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set which impulse video frames will be processed, can be <var>first</var>\nor <var>all</var>. Default is <var>all</var>.\n</p>\n</dd>",
       "name": "impulse",

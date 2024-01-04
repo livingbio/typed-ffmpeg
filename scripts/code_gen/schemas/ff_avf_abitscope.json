@@ -54,7 +54,18 @@
         "mode",
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "bars",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "trace",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set output mode. Can be <code>bars</code> or <code>trace</code>. Default is <code>bars</code>.\n</p></dd>",
       "name": "mode",

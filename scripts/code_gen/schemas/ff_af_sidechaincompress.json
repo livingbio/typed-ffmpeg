@@ -33,7 +33,18 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "downward",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "upward",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set mode of compressor operation. Can be <code>upward</code> or <code>downward</code>.\nDefault is <code>downward</code>.\n</p>\n</dd>",
       "name": "mode",
@@ -110,7 +121,18 @@
       "alias": [
         "link"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "average",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "maximum",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Choose if the <code>average</code> level between all channels of side-chain stream\nor the louder(<code>maximum</code>) channel of side-chain stream affects the\nreduction. Default is <code>average</code>.\n</p>\n</dd>",
       "name": "link",
@@ -121,7 +143,18 @@
       "alias": [
         "detection"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "peak",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "rms",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Should the exact signal be taken in case of <code>peak</code> or an RMS one in case\nof <code>rms</code>. Default is <code>rms</code> which is mainly smoother.\n</p>\n</dd>",
       "name": "detection",

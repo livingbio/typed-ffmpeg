@@ -22,7 +22,58 @@
       "alias": [
         "transition"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "custom transition",
+          "name": "custom",
+          "value": "CUSTOM"
+        },
+        {
+          "help": "fade transition",
+          "name": "fade",
+          "value": "FADE"
+        },
+        {
+          "help": "wipe left transition",
+          "name": "wipeleft",
+          "value": "WIPELEFT"
+        },
+        {
+          "help": "wipe right transition",
+          "name": "wiperight",
+          "value": "WIPERIGHT"
+        },
+        {
+          "help": "wipe up transition",
+          "name": "wipeup",
+          "value": "WIPEUP"
+        },
+        {
+          "help": "wipe down transition",
+          "name": "wipedown",
+          "value": "WIPEDOWN"
+        },
+        {
+          "help": "slide left transition",
+          "name": "slideleft",
+          "value": "SLIDELEFT"
+        },
+        {
+          "help": "slide right transition",
+          "name": "slideright",
+          "value": "SLIDERIGHT"
+        },
+        {
+          "help": "slide up transition",
+          "name": "slideup",
+          "value": "SLIDEUP"
+        },
+        {
+          "help": "slide down transition",
+          "name": "slidedown",
+          "value": "SLIDEDOWN"
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set one of possible transition effects.\n</p>\n<dl compact=\"compact\">\n<dt><samp>custom</samp></dt>\n<dd><p>Select custom transition effect, the actual transition description\nwill be picked from source and kernel options.\n</p>\n</dd>\n<dt><samp>fade</samp></dt>\n<dt><samp>wipeleft</samp></dt>\n<dt><samp>wiperight</samp></dt>\n<dt><samp>wipeup</samp></dt>\n<dt><samp>wipedown</samp></dt>\n<dt><samp>slideleft</samp></dt>\n<dt><samp>slideright</samp></dt>\n<dt><samp>slideup</samp></dt>\n<dt><samp>slidedown</samp></dt>\n<dd>\n<p>Default transition is fade.\n</p></dd>\n</dl>\n</dd>",
       "name": "transition",

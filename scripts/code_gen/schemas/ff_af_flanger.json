@@ -73,7 +73,28 @@
       "alias": [
         "shape"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "triangular",
+          "value": "WAVE_TRI"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "t",
+          "value": "WAVE_TRI"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sinusoidal",
+          "value": "WAVE_SIN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s",
+          "value": "WAVE_SIN"
+        }
+      ],
       "default": "WAVE_SIN",
       "description": "<dd><p>Set swept wave shape, can be <var>triangular</var> or <var>sinusoidal</var>.\nDefault value is <var>sinusoidal</var>.\n</p>\n</dd>",
       "name": "shape",
@@ -95,7 +116,18 @@
       "alias": [
         "interp"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "linear",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "quadratic",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set delay-line interpolation, <var>linear</var> or <var>quadratic</var>.\nDefault is <var>linear</var>.\n</p></dd>",
       "name": "interp",

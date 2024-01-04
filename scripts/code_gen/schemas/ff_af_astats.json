@@ -51,7 +51,148 @@
       "alias": [
         "measure_perchannel"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "none",
+          "value": 0
+        },
+        {
+          "help": "",
+          "name": "all",
+          "value": "(2147483647 *2U +1U)"
+        },
+        {
+          "help": "",
+          "name": "Bit_depth",
+          "value": "(1 << 14)"
+        },
+        {
+          "help": "",
+          "name": "Crest_factor",
+          "value": "(1 << 11)"
+        },
+        {
+          "help": "",
+          "name": "DC_offset",
+          "value": "(1 << 0)"
+        },
+        {
+          "help": "",
+          "name": "Dynamic_range",
+          "value": "(1 << 15)"
+        },
+        {
+          "help": "",
+          "name": "Entropy",
+          "value": "(1 << 24)"
+        },
+        {
+          "help": "",
+          "name": "Flat_factor",
+          "value": "(1 << 12)"
+        },
+        {
+          "help": "",
+          "name": "Max_difference",
+          "value": "(1 << 4)"
+        },
+        {
+          "help": "",
+          "name": "Max_level",
+          "value": "(1 << 2)"
+        },
+        {
+          "help": "",
+          "name": "Mean_difference",
+          "value": "(1 << 5)"
+        },
+        {
+          "help": "",
+          "name": "Min_difference",
+          "value": "(1 << 3)"
+        },
+        {
+          "help": "",
+          "name": "Min_level",
+          "value": "(1 << 1)"
+        },
+        {
+          "help": "",
+          "name": "Noise_floor",
+          "value": "(1 << 22)"
+        },
+        {
+          "help": "",
+          "name": "Noise_floor_count",
+          "value": "(1 << 23)"
+        },
+        {
+          "help": "",
+          "name": "Number_of_Infs",
+          "value": "(1 << 20)"
+        },
+        {
+          "help": "",
+          "name": "Number_of_NaNs",
+          "value": "(1 << 19)"
+        },
+        {
+          "help": "",
+          "name": "Number_of_denormals",
+          "value": "(1 << 21)"
+        },
+        {
+          "help": "",
+          "name": "Number_of_samples",
+          "value": "(1 << 18)"
+        },
+        {
+          "help": "",
+          "name": "Peak_count",
+          "value": "(1 << 13)"
+        },
+        {
+          "help": "",
+          "name": "Peak_level",
+          "value": "(1 << 7)"
+        },
+        {
+          "help": "",
+          "name": "RMS_difference",
+          "value": "(1 << 6)"
+        },
+        {
+          "help": "",
+          "name": "RMS_level",
+          "value": "(1 << 8)"
+        },
+        {
+          "help": "",
+          "name": "RMS_peak",
+          "value": "(1 << 9)"
+        },
+        {
+          "help": "",
+          "name": "RMS_trough",
+          "value": "(1 << 10)"
+        },
+        {
+          "help": "",
+          "name": "Zero_crossings",
+          "value": "(1 << 16)"
+        },
+        {
+          "help": "",
+          "name": "Zero_crossings_rate",
+          "value": "(1 << 17)"
+        },
+        {
+          "help": "",
+          "name": "Abs_Peak_count",
+          "value": "(1 << 25)"
+        }
+      ],
       "default": "(2147483647 *2U +1U)",
       "description": "<dd><p>Select the parameters which are measured per channel. The metadata keys can\nbe used as flags, default is <samp>all</samp> which measures everything.\n<samp>none</samp> disables all per channel measurement.\n</p>\n</dd>",
       "name": "measure_perchannel",
@@ -62,7 +203,148 @@
       "alias": [
         "measure_overall"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "none",
+          "value": 0
+        },
+        {
+          "help": "",
+          "name": "all",
+          "value": "(2147483647 *2U +1U)"
+        },
+        {
+          "help": "",
+          "name": "Bit_depth",
+          "value": "(1 << 14)"
+        },
+        {
+          "help": "",
+          "name": "Crest_factor",
+          "value": "(1 << 11)"
+        },
+        {
+          "help": "",
+          "name": "DC_offset",
+          "value": "(1 << 0)"
+        },
+        {
+          "help": "",
+          "name": "Dynamic_range",
+          "value": "(1 << 15)"
+        },
+        {
+          "help": "",
+          "name": "Entropy",
+          "value": "(1 << 24)"
+        },
+        {
+          "help": "",
+          "name": "Flat_factor",
+          "value": "(1 << 12)"
+        },
+        {
+          "help": "",
+          "name": "Max_difference",
+          "value": "(1 << 4)"
+        },
+        {
+          "help": "",
+          "name": "Max_level",
+          "value": "(1 << 2)"
+        },
+        {
+          "help": "",
+          "name": "Mean_difference",
+          "value": "(1 << 5)"
+        },
+        {
+          "help": "",
+          "name": "Min_difference",
+          "value": "(1 << 3)"
+        },
+        {
+          "help": "",
+          "name": "Min_level",
+          "value": "(1 << 1)"
+        },
+        {
+          "help": "",
+          "name": "Noise_floor",
+          "value": "(1 << 22)"
+        },
+        {
+          "help": "",
+          "name": "Noise_floor_count",
+          "value": "(1 << 23)"
+        },
+        {
+          "help": "",
+          "name": "Number_of_Infs",
+          "value": "(1 << 20)"
+        },
+        {
+          "help": "",
+          "name": "Number_of_NaNs",
+          "value": "(1 << 19)"
+        },
+        {
+          "help": "",
+          "name": "Number_of_denormals",
+          "value": "(1 << 21)"
+        },
+        {
+          "help": "",
+          "name": "Number_of_samples",
+          "value": "(1 << 18)"
+        },
+        {
+          "help": "",
+          "name": "Peak_count",
+          "value": "(1 << 13)"
+        },
+        {
+          "help": "",
+          "name": "Peak_level",
+          "value": "(1 << 7)"
+        },
+        {
+          "help": "",
+          "name": "RMS_difference",
+          "value": "(1 << 6)"
+        },
+        {
+          "help": "",
+          "name": "RMS_level",
+          "value": "(1 << 8)"
+        },
+        {
+          "help": "",
+          "name": "RMS_peak",
+          "value": "(1 << 9)"
+        },
+        {
+          "help": "",
+          "name": "RMS_trough",
+          "value": "(1 << 10)"
+        },
+        {
+          "help": "",
+          "name": "Zero_crossings",
+          "value": "(1 << 16)"
+        },
+        {
+          "help": "",
+          "name": "Zero_crossings_rate",
+          "value": "(1 << 17)"
+        },
+        {
+          "help": "",
+          "name": "Abs_Peak_count",
+          "value": "(1 << 25)"
+        }
+      ],
       "default": "(2147483647 *2U +1U)",
       "description": "<dd><p>Select the parameters which are measured overall. The metadata keys can\nbe used as flags, default is <samp>all</samp> which measures everything.\n<samp>none</samp> disables all overall measurement.\n</p>\n</dd>",
       "name": "measure_overall",

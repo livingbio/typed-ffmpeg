@@ -62,7 +62,43 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "smear",
+          "value": "FM_SMEAR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "mirror",
+          "value": "FM_MIRROR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "fixed",
+          "value": "FM_FIXED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "reflect",
+          "value": "FM_REFLECT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "wrap",
+          "value": "FM_WRAP"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "fade",
+          "value": "FM_FADE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "margins",
+          "value": "FM_MARGINS"
+        }
+      ],
       "default": "FM_SMEAR",
       "description": "<dd><p>Set fill mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>smear</samp>\u2019</dt>\n<dd><p>fill pixels using outermost pixels\n</p>\n</dd>\n<dt>\u2018<samp>mirror</samp>\u2019</dt>\n<dd><p>fill pixels using mirroring (half sample symmetric)\n</p>\n</dd>\n<dt>\u2018<samp>fixed</samp>\u2019</dt>\n<dd><p>fill pixels with constant value\n</p>\n</dd>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dd><p>fill pixels using reflecting (whole sample symmetric)\n</p>\n</dd>\n<dt>\u2018<samp>wrap</samp>\u2019</dt>\n<dd><p>fill pixels using wrapping\n</p>\n</dd>\n<dt>\u2018<samp>fade</samp>\u2019</dt>\n<dd><p>fade pixels to constant value\n</p>\n</dd>\n<dt>\u2018<samp>margins</samp>\u2019</dt>\n<dd><p>fill pixels at top and bottom with weighted averages pixels near borders\n</p></dd>\n</dl>\n<p>Default is <var>smear</var>.\n</p>\n</dd>",
       "name": "mode",

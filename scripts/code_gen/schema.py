@@ -51,7 +51,7 @@ class FFmpegFilterOption(BaseModel):
     @property
     def _typing(self) -> str:
         if self.choices:
-            return "Literal[" + ", ".join(repr(k.value) for k in self.choices) + "]"
+            return f"{self.typing} | Literal[" + ", ".join(repr(k.name) for k in self.choices) + "]"
         return self.typing
 
 

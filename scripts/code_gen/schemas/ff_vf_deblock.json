@@ -18,7 +18,18 @@
       "alias": [
         "filter"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "weak",
+          "value": "WEAK"
+        },
+        {
+          "help": "0",
+          "name": "strong",
+          "value": "STRONG"
+        }
+      ],
       "default": "STRONG",
       "description": "<dd><p>Set filter type, can be <var>weak</var> or <var>strong</var>. Default is <var>strong</var>.\nThis controls what kind of deblocking is applied.\n</p>\n</dd>",
       "name": "filter",

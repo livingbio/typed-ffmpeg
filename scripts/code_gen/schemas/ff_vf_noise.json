@@ -42,7 +42,28 @@
         "all_flags",
         "allf"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "all_flags",
@@ -77,7 +98,28 @@
         "c0_flags",
         "c0f"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "c0_flags",
@@ -112,7 +154,28 @@
         "c1_flags",
         "c1f"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "c1_flags",
@@ -147,7 +210,28 @@
         "c2_flags",
         "c2f"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "c2_flags",
@@ -182,7 +266,28 @@
         "c3_flags",
         "c3f"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "c3_flags",

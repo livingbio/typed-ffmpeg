@@ -62,7 +62,18 @@
       "alias": [
         "i"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "nearest neighbour",
+          "name": "nearest",
+          "value": 0
+        },
+        {
+          "help": "bilinear",
+          "name": "bilinear",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "i",

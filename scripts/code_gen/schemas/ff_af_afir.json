@@ -46,7 +46,38 @@
       "alias": [
         "gtype"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "without auto gain",
+          "name": "none",
+          "value": -1
+        },
+        {
+          "help": "peak gain",
+          "name": "peak",
+          "value": 0
+        },
+        {
+          "help": "DC gain",
+          "name": "dc",
+          "value": 1
+        },
+        {
+          "help": "gain to noise",
+          "name": "gn",
+          "value": 2
+        },
+        {
+          "help": "AC gain",
+          "name": "ac",
+          "value": 3
+        },
+        {
+          "help": "RMS gain",
+          "name": "rms",
+          "value": 4
+        }
+      ],
       "default": 0,
       "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
       "name": "gtype",
@@ -90,7 +121,18 @@
       "alias": [
         "irfmt"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "single channel",
+          "name": "mono",
+          "value": 0
+        },
+        {
+          "help": "same as input",
+          "name": "input",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set format of IR stream. Can be <code>mono</code> or <code>input</code>.\nDefault is <code>input</code>.\n</p>\n</dd>",
       "name": "irfmt",
@@ -200,7 +242,23 @@
       "alias": [
         "precision"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "set auto processing precision",
+          "name": "auto",
+          "value": 0
+        },
+        {
+          "help": "set single-floating point processing precision",
+          "name": "float",
+          "value": 1
+        },
+        {
+          "help": "set double-floating point processing precision",
+          "name": "double",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n<p>Default value is auto.\n</p>\n</dd>",
       "name": "precision",
@@ -211,7 +269,18 @@
       "alias": [
         "irload"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "load all IRs on init",
+          "name": "init",
+          "value": 0
+        },
+        {
+          "help": "load IR on access",
+          "name": "access",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set when to load IR stream. Can be <code>init</code> or <code>access</code>.\nFirst one load and prepares all IRs on initialization, second one\nonce on first access of specific IR.\nDefault is <code>init</code>.\n</p></dd>",
       "name": "irload",

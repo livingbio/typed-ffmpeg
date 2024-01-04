@@ -79,7 +79,28 @@
         "method",
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "overlap-add",
+          "name": "add",
+          "value": 0
+        },
+        {
+          "help": "overlap-add",
+          "name": "a",
+          "value": 0
+        },
+        {
+          "help": "overlap-save",
+          "name": "save",
+          "value": 1
+        },
+        {
+          "help": "overlap-save",
+          "name": "s",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set overlap method.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>add, a</samp></dt>\n<dd><p>Select overlap-add method. Even not interpolated samples are slightly\nchanged with this method.\n</p>\n</dd>\n<dt><samp>save, s</samp></dt>\n<dd><p>Select overlap-save method. Not interpolated samples remain unchanged.\n</p></dd>\n</dl>\n<p>Default value is <code>a</code>.\n</p></dd>",
       "name": "method",

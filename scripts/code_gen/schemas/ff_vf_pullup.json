@@ -73,7 +73,23 @@
       "alias": [
         "mp"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "luma",
+          "name": "y",
+          "value": 0
+        },
+        {
+          "help": "chroma blue",
+          "name": "u",
+          "value": 1
+        },
+        {
+          "help": "chroma red",
+          "name": "v",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the metric plane to use. It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>l</samp>\u2019</dt>\n<dd><p>Use luma plane.\n</p>\n</dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>Use chroma blue plane.\n</p>\n</dd>\n<dt>\u2018<samp>v</samp>\u2019</dt>\n<dd><p>Use chroma red plane.\n</p></dd>\n</dl>\n<p>This option may be set to use chroma plane instead of the default luma plane\nfor doing filter\u2019s computations. This may improve accuracy on very clean\nsource material, but more likely will decrease accuracy, especially if there\nis chroma noise (rainbow effect) or any grayscale video.\nThe main purpose of setting <samp>mp</samp> to a chroma plane is to reduce CPU\nload and make pullup usable in realtime on slow machines.\n</p></dd>",
       "name": "mp",

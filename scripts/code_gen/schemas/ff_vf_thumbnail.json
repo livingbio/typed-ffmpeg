@@ -29,7 +29,23 @@
       "alias": [
         "log"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "logging disabled",
+          "name": "quiet",
+          "value": -8
+        },
+        {
+          "help": "information logging level",
+          "name": "info",
+          "value": 32
+        },
+        {
+          "help": "verbose logging level",
+          "name": "verbose",
+          "value": 40
+        }
+      ],
       "default": 32,
       "description": "<dd><p>Set the log level to display picked frame stats.\nDefault is <code>info</code>.\n</p></dd>",
       "name": "log",

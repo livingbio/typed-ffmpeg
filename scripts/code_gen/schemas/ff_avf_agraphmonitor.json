@@ -43,7 +43,33 @@
         "mode",
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "full",
+          "value": "MODE_FULL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "compact",
+          "value": "MODE_COMPACT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "nozero",
+          "value": "MODE_NOZERO"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "noeof",
+          "value": "MODE_NOEOF"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "nodisabled",
+          "value": "MODE_NODISABLED"
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "mode",
@@ -55,7 +81,103 @@
         "flags",
         "f"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "none",
+          "value": "FLAG_NONE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "all",
+          "value": 2147483647
+        },
+        {
+          "help": "((void*)0)",
+          "name": "queue",
+          "value": "FLAG_QUEUE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "frame_count_in",
+          "value": "FLAG_FCOUT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "frame_count_out",
+          "value": "FLAG_FCIN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "frame_count_delta",
+          "value": "FLAG_FC_DELTA"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "pts",
+          "value": "FLAG_PTS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "pts_delta",
+          "value": "FLAG_PTS_DELTA"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "time",
+          "value": "FLAG_TIME"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "time_delta",
+          "value": "FLAG_TIME_DELTA"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "timebase",
+          "value": "FLAG_TB"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "format",
+          "value": "FLAG_FMT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "size",
+          "value": "FLAG_SIZE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "rate",
+          "value": "FLAG_RATE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eof",
+          "value": "FLAG_EOF"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sample_count_in",
+          "value": "FLAG_SCOUT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sample_count_out",
+          "value": "FLAG_SCIN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sample_count_delta",
+          "value": "FLAG_SC_DELTA"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "disabled",
+          "value": "FLAG_DISABLED"
+        }
+      ],
       "default": "FLAG_QUEUE",
       "description": null,
       "name": "flags",

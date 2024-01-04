@@ -51,7 +51,43 @@
       "alias": [
         "colors"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "set reds",
+          "name": "r",
+          "value": "(1 << 0)"
+        },
+        {
+          "help": "set yellows",
+          "name": "y",
+          "value": "(1 << 1)"
+        },
+        {
+          "help": "set greens",
+          "name": "g",
+          "value": "(1 << 2)"
+        },
+        {
+          "help": "set cyans",
+          "name": "c",
+          "value": "(1 << 3)"
+        },
+        {
+          "help": "set blues",
+          "name": "b",
+          "value": "(1 << 4)"
+        },
+        {
+          "help": "set magentas",
+          "name": "m",
+          "value": "(1 << 5)"
+        },
+        {
+          "help": "set all colors",
+          "name": "a",
+          "value": "0x3F"
+        }
+      ],
       "default": "0x3F",
       "description": "<dd><p>Set which primary and complementary colors are going to be adjusted.\nThis options is set by providing one or multiple values.\nThis can select multiple colors at once. By default all colors are selected.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dd><p>Adjust reds.\n</p></dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Adjust yellows.\n</p></dd>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dd><p>Adjust greens.\n</p></dd>\n<dt>\u2018<samp>c</samp>\u2019</dt>\n<dd><p>Adjust cyans.\n</p></dd>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n<dd><p>Adjust blues.\n</p></dd>\n<dt>\u2018<samp>m</samp>\u2019</dt>\n<dd><p>Adjust magentas.\n</p></dd>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>Adjust all colors.\n</p></dd>\n</dl>\n</dd>",
       "name": "colors",

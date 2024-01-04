@@ -62,7 +62,33 @@
       "alias": [
         "analyze_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "disabled",
+          "name": "off",
+          "value": "HDCD_ANA_OFF"
+        },
+        {
+          "help": "gain adjustment level at each sample",
+          "name": "lle",
+          "value": "HDCD_ANA_LLE"
+        },
+        {
+          "help": "samples where peak extend occurs",
+          "name": "pe",
+          "value": "HDCD_ANA_PE"
+        },
+        {
+          "help": "samples where the code detect timer is active",
+          "name": "cdt",
+          "value": "HDCD_ANA_CDT"
+        },
+        {
+          "help": "samples where the target gain does not match between channels",
+          "name": "tgm",
+          "value": "HDCD_ANA_TGM"
+        }
+      ],
       "default": "HDCD_ANA_OFF",
       "description": "<dd><p>Replace audio with a solid tone and adjust the amplitude to signal some\nspecific aspect of the decoding process. The output file can be loaded in\nan audio editor alongside the original to aid analysis.\n</p>\n<p><code>analyze_mode=pe:force_pe=true</code> can be used to see all samples above the PE level.\n</p>\n<p>Modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0, off</samp>\u2019</dt>\n<dd><p>Disabled\n</p></dd>\n<dt>\u2018<samp>1, lle</samp>\u2019</dt>\n<dd><p>Gain adjustment level at each sample\n</p></dd>\n<dt>\u2018<samp>2, pe</samp>\u2019</dt>\n<dd><p>Samples where peak extend occurs\n</p></dd>\n<dt>\u2018<samp>3, cdt</samp>\u2019</dt>\n<dd><p>Samples where the code detect timer is active\n</p></dd>\n<dt>\u2018<samp>4, tgm</samp>\u2019</dt>\n<dd><p>Samples where the target gain does not match between channels\n</p></dd>\n</dl>\n</dd>",
       "name": "analyze_mode",
@@ -73,7 +99,23 @@
       "alias": [
         "bits_per_sample"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "16-bit (in s32 or s16)",
+          "name": "16",
+          "value": 16
+        },
+        {
+          "help": "20-bit (in s32)",
+          "name": "20",
+          "value": 20
+        },
+        {
+          "help": "24-bit (in s32)",
+          "name": "24",
+          "value": 24
+        }
+      ],
       "default": 16,
       "description": null,
       "name": "bits_per_sample",

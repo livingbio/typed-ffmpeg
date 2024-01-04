@@ -43,7 +43,23 @@
         "mode",
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "average",
+          "name": "avg",
+          "value": "PIXELIZE_AVG"
+        },
+        {
+          "help": "minimum",
+          "name": "min",
+          "value": "PIXELIZE_MIN"
+        },
+        {
+          "help": "maximum",
+          "name": "max",
+          "value": "PIXELIZE_MAX"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the mode of pixelization used.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n<dt>\u2018<samp>min</samp>\u2019</dt>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>avg</code>.\n</p>\n</dd>",
       "name": "mode",

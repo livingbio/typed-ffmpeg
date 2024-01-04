@@ -260,7 +260,23 @@
       "alias": [
         "expansion"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "set no expansion",
+          "name": "none",
+          "value": "EXP_NONE"
+        },
+        {
+          "help": "set normal expansion",
+          "name": "normal",
+          "value": "EXP_NORMAL"
+        },
+        {
+          "help": "set strftime expansion (deprecated)",
+          "name": "strftime",
+          "value": "EXP_STRFTIME"
+        }
+      ],
       "default": "EXP_NORMAL",
       "description": null,
       "name": "expansion",
@@ -271,7 +287,23 @@
       "alias": [
         "y_align"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "y is referred to the top of the first text line",
+          "name": "text",
+          "value": "YA_TEXT"
+        },
+        {
+          "help": "y is referred to the baseline of the first line",
+          "name": "baseline",
+          "value": "YA_BASELINE"
+        },
+        {
+          "help": "y is referred to the font defined line metrics",
+          "name": "font",
+          "value": "YA_FONT"
+        }
+      ],
       "default": "YA_TEXT",
       "description": null,
       "name": "y_align",

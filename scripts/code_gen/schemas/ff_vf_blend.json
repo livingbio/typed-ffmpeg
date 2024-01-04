@@ -22,7 +22,218 @@
       "alias": [
         "c0_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "addition",
+          "value": "BLEND_ADDITION"
+        },
+        {
+          "help": "",
+          "name": "addition128",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "grainmerge",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "and",
+          "value": "BLEND_AND"
+        },
+        {
+          "help": "",
+          "name": "average",
+          "value": "BLEND_AVERAGE"
+        },
+        {
+          "help": "",
+          "name": "burn",
+          "value": "BLEND_BURN"
+        },
+        {
+          "help": "",
+          "name": "darken",
+          "value": "BLEND_DARKEN"
+        },
+        {
+          "help": "",
+          "name": "difference",
+          "value": "BLEND_DIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "difference128",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "grainextract",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "divide",
+          "value": "BLEND_DIVIDE"
+        },
+        {
+          "help": "",
+          "name": "dodge",
+          "value": "BLEND_DODGE"
+        },
+        {
+          "help": "",
+          "name": "exclusion",
+          "value": "BLEND_EXCLUSION"
+        },
+        {
+          "help": "",
+          "name": "extremity",
+          "value": "BLEND_EXTREMITY"
+        },
+        {
+          "help": "",
+          "name": "freeze",
+          "value": "BLEND_FREEZE"
+        },
+        {
+          "help": "",
+          "name": "glow",
+          "value": "BLEND_GLOW"
+        },
+        {
+          "help": "",
+          "name": "hardlight",
+          "value": "BLEND_HARDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "hardmix",
+          "value": "BLEND_HARDMIX"
+        },
+        {
+          "help": "",
+          "name": "heat",
+          "value": "BLEND_HEAT"
+        },
+        {
+          "help": "",
+          "name": "lighten",
+          "value": "BLEND_LIGHTEN"
+        },
+        {
+          "help": "",
+          "name": "linearlight",
+          "value": "BLEND_LINEARLIGHT"
+        },
+        {
+          "help": "",
+          "name": "multiply",
+          "value": "BLEND_MULTIPLY"
+        },
+        {
+          "help": "",
+          "name": "multiply128",
+          "value": "BLEND_MULTIPLY128"
+        },
+        {
+          "help": "",
+          "name": "negation",
+          "value": "BLEND_NEGATION"
+        },
+        {
+          "help": "",
+          "name": "normal",
+          "value": "BLEND_NORMAL"
+        },
+        {
+          "help": "",
+          "name": "or",
+          "value": "BLEND_OR"
+        },
+        {
+          "help": "",
+          "name": "overlay",
+          "value": "BLEND_OVERLAY"
+        },
+        {
+          "help": "",
+          "name": "phoenix",
+          "value": "BLEND_PHOENIX"
+        },
+        {
+          "help": "",
+          "name": "pinlight",
+          "value": "BLEND_PINLIGHT"
+        },
+        {
+          "help": "",
+          "name": "reflect",
+          "value": "BLEND_REFLECT"
+        },
+        {
+          "help": "",
+          "name": "screen",
+          "value": "BLEND_SCREEN"
+        },
+        {
+          "help": "",
+          "name": "softlight",
+          "value": "BLEND_SOFTLIGHT"
+        },
+        {
+          "help": "",
+          "name": "subtract",
+          "value": "BLEND_SUBTRACT"
+        },
+        {
+          "help": "",
+          "name": "vividlight",
+          "value": "BLEND_VIVIDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "xor",
+          "value": "BLEND_XOR"
+        },
+        {
+          "help": "",
+          "name": "softdifference",
+          "value": "BLEND_SOFTDIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "geometric",
+          "value": "BLEND_GEOMETRIC"
+        },
+        {
+          "help": "",
+          "name": "harmonic",
+          "value": "BLEND_HARMONIC"
+        },
+        {
+          "help": "",
+          "name": "bleach",
+          "value": "BLEND_BLEACH"
+        },
+        {
+          "help": "",
+          "name": "stain",
+          "value": "BLEND_STAIN"
+        },
+        {
+          "help": "",
+          "name": "interpolate",
+          "value": "BLEND_INTERPOLATE"
+        },
+        {
+          "help": "",
+          "name": "hardoverlay",
+          "value": "BLEND_HARDOVERLAY"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "c0_mode",
@@ -33,7 +244,218 @@
       "alias": [
         "c1_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "addition",
+          "value": "BLEND_ADDITION"
+        },
+        {
+          "help": "",
+          "name": "addition128",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "grainmerge",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "and",
+          "value": "BLEND_AND"
+        },
+        {
+          "help": "",
+          "name": "average",
+          "value": "BLEND_AVERAGE"
+        },
+        {
+          "help": "",
+          "name": "burn",
+          "value": "BLEND_BURN"
+        },
+        {
+          "help": "",
+          "name": "darken",
+          "value": "BLEND_DARKEN"
+        },
+        {
+          "help": "",
+          "name": "difference",
+          "value": "BLEND_DIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "difference128",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "grainextract",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "divide",
+          "value": "BLEND_DIVIDE"
+        },
+        {
+          "help": "",
+          "name": "dodge",
+          "value": "BLEND_DODGE"
+        },
+        {
+          "help": "",
+          "name": "exclusion",
+          "value": "BLEND_EXCLUSION"
+        },
+        {
+          "help": "",
+          "name": "extremity",
+          "value": "BLEND_EXTREMITY"
+        },
+        {
+          "help": "",
+          "name": "freeze",
+          "value": "BLEND_FREEZE"
+        },
+        {
+          "help": "",
+          "name": "glow",
+          "value": "BLEND_GLOW"
+        },
+        {
+          "help": "",
+          "name": "hardlight",
+          "value": "BLEND_HARDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "hardmix",
+          "value": "BLEND_HARDMIX"
+        },
+        {
+          "help": "",
+          "name": "heat",
+          "value": "BLEND_HEAT"
+        },
+        {
+          "help": "",
+          "name": "lighten",
+          "value": "BLEND_LIGHTEN"
+        },
+        {
+          "help": "",
+          "name": "linearlight",
+          "value": "BLEND_LINEARLIGHT"
+        },
+        {
+          "help": "",
+          "name": "multiply",
+          "value": "BLEND_MULTIPLY"
+        },
+        {
+          "help": "",
+          "name": "multiply128",
+          "value": "BLEND_MULTIPLY128"
+        },
+        {
+          "help": "",
+          "name": "negation",
+          "value": "BLEND_NEGATION"
+        },
+        {
+          "help": "",
+          "name": "normal",
+          "value": "BLEND_NORMAL"
+        },
+        {
+          "help": "",
+          "name": "or",
+          "value": "BLEND_OR"
+        },
+        {
+          "help": "",
+          "name": "overlay",
+          "value": "BLEND_OVERLAY"
+        },
+        {
+          "help": "",
+          "name": "phoenix",
+          "value": "BLEND_PHOENIX"
+        },
+        {
+          "help": "",
+          "name": "pinlight",
+          "value": "BLEND_PINLIGHT"
+        },
+        {
+          "help": "",
+          "name": "reflect",
+          "value": "BLEND_REFLECT"
+        },
+        {
+          "help": "",
+          "name": "screen",
+          "value": "BLEND_SCREEN"
+        },
+        {
+          "help": "",
+          "name": "softlight",
+          "value": "BLEND_SOFTLIGHT"
+        },
+        {
+          "help": "",
+          "name": "subtract",
+          "value": "BLEND_SUBTRACT"
+        },
+        {
+          "help": "",
+          "name": "vividlight",
+          "value": "BLEND_VIVIDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "xor",
+          "value": "BLEND_XOR"
+        },
+        {
+          "help": "",
+          "name": "softdifference",
+          "value": "BLEND_SOFTDIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "geometric",
+          "value": "BLEND_GEOMETRIC"
+        },
+        {
+          "help": "",
+          "name": "harmonic",
+          "value": "BLEND_HARMONIC"
+        },
+        {
+          "help": "",
+          "name": "bleach",
+          "value": "BLEND_BLEACH"
+        },
+        {
+          "help": "",
+          "name": "stain",
+          "value": "BLEND_STAIN"
+        },
+        {
+          "help": "",
+          "name": "interpolate",
+          "value": "BLEND_INTERPOLATE"
+        },
+        {
+          "help": "",
+          "name": "hardoverlay",
+          "value": "BLEND_HARDOVERLAY"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "c1_mode",
@@ -44,7 +466,218 @@
       "alias": [
         "c2_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "addition",
+          "value": "BLEND_ADDITION"
+        },
+        {
+          "help": "",
+          "name": "addition128",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "grainmerge",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "and",
+          "value": "BLEND_AND"
+        },
+        {
+          "help": "",
+          "name": "average",
+          "value": "BLEND_AVERAGE"
+        },
+        {
+          "help": "",
+          "name": "burn",
+          "value": "BLEND_BURN"
+        },
+        {
+          "help": "",
+          "name": "darken",
+          "value": "BLEND_DARKEN"
+        },
+        {
+          "help": "",
+          "name": "difference",
+          "value": "BLEND_DIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "difference128",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "grainextract",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "divide",
+          "value": "BLEND_DIVIDE"
+        },
+        {
+          "help": "",
+          "name": "dodge",
+          "value": "BLEND_DODGE"
+        },
+        {
+          "help": "",
+          "name": "exclusion",
+          "value": "BLEND_EXCLUSION"
+        },
+        {
+          "help": "",
+          "name": "extremity",
+          "value": "BLEND_EXTREMITY"
+        },
+        {
+          "help": "",
+          "name": "freeze",
+          "value": "BLEND_FREEZE"
+        },
+        {
+          "help": "",
+          "name": "glow",
+          "value": "BLEND_GLOW"
+        },
+        {
+          "help": "",
+          "name": "hardlight",
+          "value": "BLEND_HARDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "hardmix",
+          "value": "BLEND_HARDMIX"
+        },
+        {
+          "help": "",
+          "name": "heat",
+          "value": "BLEND_HEAT"
+        },
+        {
+          "help": "",
+          "name": "lighten",
+          "value": "BLEND_LIGHTEN"
+        },
+        {
+          "help": "",
+          "name": "linearlight",
+          "value": "BLEND_LINEARLIGHT"
+        },
+        {
+          "help": "",
+          "name": "multiply",
+          "value": "BLEND_MULTIPLY"
+        },
+        {
+          "help": "",
+          "name": "multiply128",
+          "value": "BLEND_MULTIPLY128"
+        },
+        {
+          "help": "",
+          "name": "negation",
+          "value": "BLEND_NEGATION"
+        },
+        {
+          "help": "",
+          "name": "normal",
+          "value": "BLEND_NORMAL"
+        },
+        {
+          "help": "",
+          "name": "or",
+          "value": "BLEND_OR"
+        },
+        {
+          "help": "",
+          "name": "overlay",
+          "value": "BLEND_OVERLAY"
+        },
+        {
+          "help": "",
+          "name": "phoenix",
+          "value": "BLEND_PHOENIX"
+        },
+        {
+          "help": "",
+          "name": "pinlight",
+          "value": "BLEND_PINLIGHT"
+        },
+        {
+          "help": "",
+          "name": "reflect",
+          "value": "BLEND_REFLECT"
+        },
+        {
+          "help": "",
+          "name": "screen",
+          "value": "BLEND_SCREEN"
+        },
+        {
+          "help": "",
+          "name": "softlight",
+          "value": "BLEND_SOFTLIGHT"
+        },
+        {
+          "help": "",
+          "name": "subtract",
+          "value": "BLEND_SUBTRACT"
+        },
+        {
+          "help": "",
+          "name": "vividlight",
+          "value": "BLEND_VIVIDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "xor",
+          "value": "BLEND_XOR"
+        },
+        {
+          "help": "",
+          "name": "softdifference",
+          "value": "BLEND_SOFTDIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "geometric",
+          "value": "BLEND_GEOMETRIC"
+        },
+        {
+          "help": "",
+          "name": "harmonic",
+          "value": "BLEND_HARMONIC"
+        },
+        {
+          "help": "",
+          "name": "bleach",
+          "value": "BLEND_BLEACH"
+        },
+        {
+          "help": "",
+          "name": "stain",
+          "value": "BLEND_STAIN"
+        },
+        {
+          "help": "",
+          "name": "interpolate",
+          "value": "BLEND_INTERPOLATE"
+        },
+        {
+          "help": "",
+          "name": "hardoverlay",
+          "value": "BLEND_HARDOVERLAY"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "c2_mode",
@@ -55,7 +688,218 @@
       "alias": [
         "c3_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "addition",
+          "value": "BLEND_ADDITION"
+        },
+        {
+          "help": "",
+          "name": "addition128",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "grainmerge",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "and",
+          "value": "BLEND_AND"
+        },
+        {
+          "help": "",
+          "name": "average",
+          "value": "BLEND_AVERAGE"
+        },
+        {
+          "help": "",
+          "name": "burn",
+          "value": "BLEND_BURN"
+        },
+        {
+          "help": "",
+          "name": "darken",
+          "value": "BLEND_DARKEN"
+        },
+        {
+          "help": "",
+          "name": "difference",
+          "value": "BLEND_DIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "difference128",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "grainextract",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "divide",
+          "value": "BLEND_DIVIDE"
+        },
+        {
+          "help": "",
+          "name": "dodge",
+          "value": "BLEND_DODGE"
+        },
+        {
+          "help": "",
+          "name": "exclusion",
+          "value": "BLEND_EXCLUSION"
+        },
+        {
+          "help": "",
+          "name": "extremity",
+          "value": "BLEND_EXTREMITY"
+        },
+        {
+          "help": "",
+          "name": "freeze",
+          "value": "BLEND_FREEZE"
+        },
+        {
+          "help": "",
+          "name": "glow",
+          "value": "BLEND_GLOW"
+        },
+        {
+          "help": "",
+          "name": "hardlight",
+          "value": "BLEND_HARDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "hardmix",
+          "value": "BLEND_HARDMIX"
+        },
+        {
+          "help": "",
+          "name": "heat",
+          "value": "BLEND_HEAT"
+        },
+        {
+          "help": "",
+          "name": "lighten",
+          "value": "BLEND_LIGHTEN"
+        },
+        {
+          "help": "",
+          "name": "linearlight",
+          "value": "BLEND_LINEARLIGHT"
+        },
+        {
+          "help": "",
+          "name": "multiply",
+          "value": "BLEND_MULTIPLY"
+        },
+        {
+          "help": "",
+          "name": "multiply128",
+          "value": "BLEND_MULTIPLY128"
+        },
+        {
+          "help": "",
+          "name": "negation",
+          "value": "BLEND_NEGATION"
+        },
+        {
+          "help": "",
+          "name": "normal",
+          "value": "BLEND_NORMAL"
+        },
+        {
+          "help": "",
+          "name": "or",
+          "value": "BLEND_OR"
+        },
+        {
+          "help": "",
+          "name": "overlay",
+          "value": "BLEND_OVERLAY"
+        },
+        {
+          "help": "",
+          "name": "phoenix",
+          "value": "BLEND_PHOENIX"
+        },
+        {
+          "help": "",
+          "name": "pinlight",
+          "value": "BLEND_PINLIGHT"
+        },
+        {
+          "help": "",
+          "name": "reflect",
+          "value": "BLEND_REFLECT"
+        },
+        {
+          "help": "",
+          "name": "screen",
+          "value": "BLEND_SCREEN"
+        },
+        {
+          "help": "",
+          "name": "softlight",
+          "value": "BLEND_SOFTLIGHT"
+        },
+        {
+          "help": "",
+          "name": "subtract",
+          "value": "BLEND_SUBTRACT"
+        },
+        {
+          "help": "",
+          "name": "vividlight",
+          "value": "BLEND_VIVIDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "xor",
+          "value": "BLEND_XOR"
+        },
+        {
+          "help": "",
+          "name": "softdifference",
+          "value": "BLEND_SOFTDIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "geometric",
+          "value": "BLEND_GEOMETRIC"
+        },
+        {
+          "help": "",
+          "name": "harmonic",
+          "value": "BLEND_HARMONIC"
+        },
+        {
+          "help": "",
+          "name": "bleach",
+          "value": "BLEND_BLEACH"
+        },
+        {
+          "help": "",
+          "name": "stain",
+          "value": "BLEND_STAIN"
+        },
+        {
+          "help": "",
+          "name": "interpolate",
+          "value": "BLEND_INTERPOLATE"
+        },
+        {
+          "help": "",
+          "name": "hardoverlay",
+          "value": "BLEND_HARDOVERLAY"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "c3_mode",
@@ -66,7 +910,218 @@
       "alias": [
         "all_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "addition",
+          "value": "BLEND_ADDITION"
+        },
+        {
+          "help": "",
+          "name": "addition128",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "grainmerge",
+          "value": "BLEND_GRAINMERGE"
+        },
+        {
+          "help": "",
+          "name": "and",
+          "value": "BLEND_AND"
+        },
+        {
+          "help": "",
+          "name": "average",
+          "value": "BLEND_AVERAGE"
+        },
+        {
+          "help": "",
+          "name": "burn",
+          "value": "BLEND_BURN"
+        },
+        {
+          "help": "",
+          "name": "darken",
+          "value": "BLEND_DARKEN"
+        },
+        {
+          "help": "",
+          "name": "difference",
+          "value": "BLEND_DIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "difference128",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "grainextract",
+          "value": "BLEND_GRAINEXTRACT"
+        },
+        {
+          "help": "",
+          "name": "divide",
+          "value": "BLEND_DIVIDE"
+        },
+        {
+          "help": "",
+          "name": "dodge",
+          "value": "BLEND_DODGE"
+        },
+        {
+          "help": "",
+          "name": "exclusion",
+          "value": "BLEND_EXCLUSION"
+        },
+        {
+          "help": "",
+          "name": "extremity",
+          "value": "BLEND_EXTREMITY"
+        },
+        {
+          "help": "",
+          "name": "freeze",
+          "value": "BLEND_FREEZE"
+        },
+        {
+          "help": "",
+          "name": "glow",
+          "value": "BLEND_GLOW"
+        },
+        {
+          "help": "",
+          "name": "hardlight",
+          "value": "BLEND_HARDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "hardmix",
+          "value": "BLEND_HARDMIX"
+        },
+        {
+          "help": "",
+          "name": "heat",
+          "value": "BLEND_HEAT"
+        },
+        {
+          "help": "",
+          "name": "lighten",
+          "value": "BLEND_LIGHTEN"
+        },
+        {
+          "help": "",
+          "name": "linearlight",
+          "value": "BLEND_LINEARLIGHT"
+        },
+        {
+          "help": "",
+          "name": "multiply",
+          "value": "BLEND_MULTIPLY"
+        },
+        {
+          "help": "",
+          "name": "multiply128",
+          "value": "BLEND_MULTIPLY128"
+        },
+        {
+          "help": "",
+          "name": "negation",
+          "value": "BLEND_NEGATION"
+        },
+        {
+          "help": "",
+          "name": "normal",
+          "value": "BLEND_NORMAL"
+        },
+        {
+          "help": "",
+          "name": "or",
+          "value": "BLEND_OR"
+        },
+        {
+          "help": "",
+          "name": "overlay",
+          "value": "BLEND_OVERLAY"
+        },
+        {
+          "help": "",
+          "name": "phoenix",
+          "value": "BLEND_PHOENIX"
+        },
+        {
+          "help": "",
+          "name": "pinlight",
+          "value": "BLEND_PINLIGHT"
+        },
+        {
+          "help": "",
+          "name": "reflect",
+          "value": "BLEND_REFLECT"
+        },
+        {
+          "help": "",
+          "name": "screen",
+          "value": "BLEND_SCREEN"
+        },
+        {
+          "help": "",
+          "name": "softlight",
+          "value": "BLEND_SOFTLIGHT"
+        },
+        {
+          "help": "",
+          "name": "subtract",
+          "value": "BLEND_SUBTRACT"
+        },
+        {
+          "help": "",
+          "name": "vividlight",
+          "value": "BLEND_VIVIDLIGHT"
+        },
+        {
+          "help": "",
+          "name": "xor",
+          "value": "BLEND_XOR"
+        },
+        {
+          "help": "",
+          "name": "softdifference",
+          "value": "BLEND_SOFTDIFFERENCE"
+        },
+        {
+          "help": "",
+          "name": "geometric",
+          "value": "BLEND_GEOMETRIC"
+        },
+        {
+          "help": "",
+          "name": "harmonic",
+          "value": "BLEND_HARMONIC"
+        },
+        {
+          "help": "",
+          "name": "bleach",
+          "value": "BLEND_BLEACH"
+        },
+        {
+          "help": "",
+          "name": "stain",
+          "value": "BLEND_STAIN"
+        },
+        {
+          "help": "",
+          "name": "interpolate",
+          "value": "BLEND_INTERPOLATE"
+        },
+        {
+          "help": "",
+          "name": "hardoverlay",
+          "value": "BLEND_HARDOVERLAY"
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "all_mode",

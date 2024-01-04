@@ -33,7 +33,23 @@
       "alias": [
         "algo"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "slow algorithm",
+          "name": "slow",
+          "value": 0
+        },
+        {
+          "help": "fast algorithm",
+          "name": "fast",
+          "value": 1
+        },
+        {
+          "help": "best algorithm",
+          "name": "best",
+          "value": 2
+        }
+      ],
       "default": 2,
       "description": "<dd><p>Set algorithm for cross-correlation. Can be <code>slow</code> or <code>fast</code> or <code>best</code>.\nDefault is <code>best</code>. Fast algorithm assumes mean values over any given segment\nare always zero and thus need much less calculations to make.\nThis is generally not true, but is valid for typical audio streams.\n</p></dd>",
       "name": "algo",

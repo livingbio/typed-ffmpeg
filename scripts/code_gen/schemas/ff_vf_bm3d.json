@@ -101,7 +101,18 @@
       "alias": [
         "estim"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "basic estimate",
+          "name": "basic",
+          "value": "BASIC"
+        },
+        {
+          "help": "final estimate",
+          "name": "final",
+          "value": "FINAL"
+        }
+      ],
       "default": "BASIC",
       "description": "<dd><p>Set filtering estimation mode. Can be <code>basic</code> or <code>final</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>",
       "name": "estim",

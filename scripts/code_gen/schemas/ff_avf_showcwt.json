@@ -42,7 +42,53 @@
       "alias": [
         "scale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "linear",
+          "value": "FSCALE_LINEAR"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "FSCALE_LOG"
+        },
+        {
+          "help": "bark",
+          "name": "bark",
+          "value": "FSCALE_BARK"
+        },
+        {
+          "help": "mel",
+          "name": "mel",
+          "value": "FSCALE_MEL"
+        },
+        {
+          "help": "erbs",
+          "name": "erbs",
+          "value": "FSCALE_ERBS"
+        },
+        {
+          "help": "sqrt",
+          "name": "sqrt",
+          "value": "FSCALE_SQRT"
+        },
+        {
+          "help": "cbrt",
+          "name": "cbrt",
+          "value": "FSCALE_CBRT"
+        },
+        {
+          "help": "qdrt",
+          "name": "qdrt",
+          "value": "FSCALE_QDRT"
+        },
+        {
+          "help": "fm",
+          "name": "fm",
+          "value": "FSCALE_FM"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the frequency scale used. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>linear</samp></dt>\n<dt><samp>log</samp></dt>\n<dt><samp>bark</samp></dt>\n<dt><samp>mel</samp></dt>\n<dt><samp>erbs</samp></dt>\n<dt><samp>sqrt</samp></dt>\n<dt><samp>cbrt</samp></dt>\n<dt><samp>qdrt</samp></dt>\n<dt><samp>fm</samp></dt>\n</dl>\n<p>Default value is <code>linear</code>.\n</p>\n</dd>",
       "name": "scale",
@@ -53,7 +99,33 @@
       "alias": [
         "iscale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "linear",
+          "value": "ISCALE_LINEAR"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "ISCALE_LOG"
+        },
+        {
+          "help": "sqrt",
+          "name": "sqrt",
+          "value": "ISCALE_SQRT"
+        },
+        {
+          "help": "cbrt",
+          "name": "cbrt",
+          "value": "ISCALE_CBRT"
+        },
+        {
+          "help": "qdrt",
+          "name": "qdrt",
+          "value": "ISCALE_QDRT"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the intensity scale used. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>linear</samp></dt>\n<dt><samp>log</samp></dt>\n<dt><samp>sqrt</samp></dt>\n<dt><samp>cbrt</samp></dt>\n<dt><samp>qdrt</samp></dt>\n</dl>\n<p>Default value is <code>log</code>.\n</p>\n</dd>",
       "name": "iscale",
@@ -141,7 +213,33 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "magnitude",
+          "name": "magnitude",
+          "value": 0
+        },
+        {
+          "help": "phase",
+          "name": "phase",
+          "value": 1
+        },
+        {
+          "help": "magnitude+phase",
+          "name": "magphase",
+          "value": 2
+        },
+        {
+          "help": "color per channel",
+          "name": "channel",
+          "value": 3
+        },
+        {
+          "help": "stereo difference",
+          "name": "stereo",
+          "value": 4
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the output visual mode. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>magnitude</samp></dt>\n<dd><p>Show magnitude.\n</p></dd>\n<dt><samp>phase</samp></dt>\n<dd><p>Show only phase.\n</p></dd>\n<dt><samp>magphase</samp></dt>\n<dd><p>Show combination of magnitude and phase.\nMagnitude is mapped to brightness and phase to color.\n</p></dd>\n<dt><samp>channel</samp></dt>\n<dd><p>Show unique color per channel magnitude.\n</p></dd>\n<dt><samp>stereo</samp></dt>\n<dd><p>Show unique color per stereo difference.\n</p></dd>\n</dl>\n<p>Default value is <code>magnitude</code>.\n</p>\n</dd>",
       "name": "mode",
@@ -152,7 +250,23 @@
       "alias": [
         "slide"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "replace",
+          "name": "replace",
+          "value": "SLIDE_REPLACE"
+        },
+        {
+          "help": "scroll",
+          "name": "scroll",
+          "value": "SLIDE_SCROLL"
+        },
+        {
+          "help": "frame",
+          "name": "frame",
+          "value": "SLIDE_FRAME"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the output slide method. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>replace</samp></dt>\n<dt><samp>scroll</samp></dt>\n<dt><samp>frame</samp></dt>\n</dl>\n</dd>",
       "name": "slide",
@@ -163,7 +277,28 @@
       "alias": [
         "direction"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "left to right",
+          "name": "lr",
+          "value": "DIRECTION_LR"
+        },
+        {
+          "help": "right to left",
+          "name": "rl",
+          "value": "DIRECTION_RL"
+        },
+        {
+          "help": "up to down",
+          "name": "ud",
+          "value": "DIRECTION_UD"
+        },
+        {
+          "help": "down to up",
+          "name": "du",
+          "value": "DIRECTION_DU"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the direction method for output slide method. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>lr</samp></dt>\n<dd><p>Direction from left to right.\n</p></dd>\n<dt><samp>rl</samp></dt>\n<dd><p>Direction from right to left.\n</p></dd>\n<dt><samp>ud</samp></dt>\n<dd><p>Direction from up to down.\n</p></dd>\n<dt><samp>du</samp></dt>\n<dd><p>Direction from down to up.\n</p></dd>\n</dl>\n</dd>",
       "name": "direction",

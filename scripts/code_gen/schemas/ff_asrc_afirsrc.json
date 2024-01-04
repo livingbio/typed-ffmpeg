@@ -86,7 +86,228 @@
         "win_func",
         "w"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "WFUNC_RECT"
+        },
+        {
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "WFUNC_BARTLETT"
+        },
+        {
+          "help": "Hann",
+          "name": "hann",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "WFUNC_HAMMING"
+        },
+        {
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "WFUNC_BLACKMAN"
+        },
+        {
+          "help": "Welch",
+          "name": "welch",
+          "value": "WFUNC_WELCH"
+        },
+        {
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "WFUNC_FLATTOP"
+        },
+        {
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "WFUNC_BHARRIS"
+        },
+        {
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "WFUNC_BNUTTALL"
+        },
+        {
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "WFUNC_BHANN"
+        },
+        {
+          "help": "Sine",
+          "name": "sine",
+          "value": "WFUNC_SINE"
+        },
+        {
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "WFUNC_NUTTALL"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "WFUNC_LANCZOS"
+        },
+        {
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "WFUNC_GAUSS"
+        },
+        {
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "WFUNC_TUKEY"
+        },
+        {
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "WFUNC_DOLPH"
+        },
+        {
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "WFUNC_CAUCHY"
+        },
+        {
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "WFUNC_PARZEN"
+        },
+        {
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "WFUNC_POISSON"
+        },
+        {
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "WFUNC_BOHMAN"
+        },
+        {
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "WFUNC_KAISER"
+        },
+        {
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "WFUNC_RECT"
+        },
+        {
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "WFUNC_BARTLETT"
+        },
+        {
+          "help": "Hann",
+          "name": "hann",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "WFUNC_HAMMING"
+        },
+        {
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "WFUNC_BLACKMAN"
+        },
+        {
+          "help": "Welch",
+          "name": "welch",
+          "value": "WFUNC_WELCH"
+        },
+        {
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "WFUNC_FLATTOP"
+        },
+        {
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "WFUNC_BHARRIS"
+        },
+        {
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "WFUNC_BNUTTALL"
+        },
+        {
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "WFUNC_BHANN"
+        },
+        {
+          "help": "Sine",
+          "name": "sine",
+          "value": "WFUNC_SINE"
+        },
+        {
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "WFUNC_NUTTALL"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "WFUNC_LANCZOS"
+        },
+        {
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "WFUNC_GAUSS"
+        },
+        {
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "WFUNC_TUKEY"
+        },
+        {
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "WFUNC_DOLPH"
+        },
+        {
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "WFUNC_CAUCHY"
+        },
+        {
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "WFUNC_PARZEN"
+        },
+        {
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "WFUNC_POISSON"
+        },
+        {
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "WFUNC_BOHMAN"
+        },
+        {
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "WFUNC_KAISER"
+        }
+      ],
       "default": "WFUNC_BLACKMAN",
       "description": "<dd><p>Set window function. Default is blackman.\n</p></dd>",
       "name": "win_func",

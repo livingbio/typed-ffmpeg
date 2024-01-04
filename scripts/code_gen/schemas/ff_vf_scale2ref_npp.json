@@ -66,7 +66,48 @@
       "alias": [
         "interp_algo"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "nearest neighbour",
+          "name": "nn",
+          "value": "NPPI_INTER_NN"
+        },
+        {
+          "help": "linear",
+          "name": "linear",
+          "value": "NPPI_INTER_LINEAR"
+        },
+        {
+          "help": "cubic",
+          "name": "cubic",
+          "value": "NPPI_INTER_CUBIC"
+        },
+        {
+          "help": "2-parameter cubic (B=1, C=0)",
+          "name": "cubic2p_bspline",
+          "value": "NPPI_INTER_CUBIC2P_BSPLINE"
+        },
+        {
+          "help": "2-parameter cubic (B=0, C=1/2)",
+          "name": "cubic2p_catmullrom",
+          "value": "NPPI_INTER_CUBIC2P_CATMULLROM"
+        },
+        {
+          "help": "2-parameter cubic (B=1/2, C=3/10)",
+          "name": "cubic2p_b05c03",
+          "value": "NPPI_INTER_CUBIC2P_B05C03"
+        },
+        {
+          "help": "supersampling",
+          "name": "super",
+          "value": "NPPI_INTER_SUPER"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "NPPI_INTER_LANCZOS"
+        }
+      ],
       "default": "NPPI_INTER_CUBIC",
       "description": null,
       "name": "interp_algo",
@@ -77,7 +118,23 @@
       "alias": [
         "force_original_aspect_ratio"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "disable",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "decrease",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "increase",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "force_original_aspect_ratio",
@@ -99,7 +156,18 @@
       "alias": [
         "eval"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "EVAL_MODE_INIT"
+        },
+        {
+          "help": "eval expressions during initialization and per-frame",
+          "name": "frame",
+          "value": "EVAL_MODE_FRAME"
+        }
+      ],
       "default": "EVAL_MODE_INIT",
       "description": null,
       "name": "eval",

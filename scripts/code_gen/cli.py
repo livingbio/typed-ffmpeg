@@ -1,3 +1,4 @@
+import os
 import pathlib
 
 import typer
@@ -27,6 +28,7 @@ def parse_options(filter: AVFilter, doc: FilterDocument) -> list[FFmpegFilterOpt
                 typing=TYPING_MAP[option.type],
                 required=option.required,
                 default=option.default_value,
+                choices=option.choices,
             )
         )
 
@@ -65,6 +67,7 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         output.append(ffmpeg_filter)
 
     render(output, outpath)
+    os.system("pre-commit run -a")
 
 
 if __name__ == "__main__":

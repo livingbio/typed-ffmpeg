@@ -216,7 +216,33 @@
         "type",
         "t"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "set linear gradient",
+          "name": "linear",
+          "value": 0
+        },
+        {
+          "help": "set radial gradient",
+          "name": "radial",
+          "value": 1
+        },
+        {
+          "help": "set circular gradient",
+          "name": "circular",
+          "value": 2
+        },
+        {
+          "help": "set spiral gradient",
+          "name": "spiral",
+          "value": 3
+        },
+        {
+          "help": "set square gradient",
+          "name": "square",
+          "value": 4
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set type of gradients.\nAvailable values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dt>\u2018<samp>radial</samp>\u2019</dt>\n<dt>\u2018<samp>circular</samp>\u2019</dt>\n<dt>\u2018<samp>spiral</samp>\u2019</dt>\n<dt>\u2018<samp>square</samp>\u2019</dt>\n</dl>\n<p>Default type is <var>linear</var>.\n</p></dd>",
       "name": "type",

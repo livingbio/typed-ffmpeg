@@ -29,7 +29,28 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "dc",
+          "value": "DC_TYPE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "ac",
+          "value": "AC_TYPE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "square",
+          "value": "SQ_TYPE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "pulse",
+          "value": "PS_TYPE"
+        }
+      ],
       "default": "DC_TYPE",
       "description": "<dd><p>Set type of added noise.\n</p>\n<dl compact=\"compact\">\n<dt><samp>dc</samp></dt>\n<dd><p>Add DC signal.\n</p></dd>\n<dt><samp>ac</samp></dt>\n<dd><p>Add AC signal.\n</p></dd>\n<dt><samp>square</samp></dt>\n<dd><p>Add square signal.\n</p></dd>\n<dt><samp>pulse</samp></dt>\n<dd><p>Add pulse signal.\n</p></dd>\n</dl>\n<p>Default is <code>dc</code>.\n</p></dd>",
       "name": "type",

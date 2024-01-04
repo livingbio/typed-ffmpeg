@@ -51,7 +51,38 @@
         "colour",
         "c"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "white",
+          "value": "NM_WHITE"
+        },
+        {
+          "help": "0",
+          "name": "pink",
+          "value": "NM_PINK"
+        },
+        {
+          "help": "0",
+          "name": "brown",
+          "value": "NM_BROWN"
+        },
+        {
+          "help": "0",
+          "name": "blue",
+          "value": "NM_BLUE"
+        },
+        {
+          "help": "0",
+          "name": "violet",
+          "value": "NM_VIOLET"
+        },
+        {
+          "help": "0",
+          "name": "velvet",
+          "value": "NM_VELVET"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Specify the color of noise. Available noise colors are white, pink, brown,\nblue, violet and velvet. Default color is white.\n</p>\n</dd>",
       "name": "color",

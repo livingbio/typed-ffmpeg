@@ -13,7 +13,23 @@
       "alias": [
         "order"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "auto detect parity",
+          "name": "auto",
+          "value": "FM_PARITY_AUTO"
+        },
+        {
+          "help": "assume bottom field first",
+          "name": "bff",
+          "value": "FM_PARITY_BOTTOM"
+        },
+        {
+          "help": "assume top field first",
+          "name": "tff",
+          "value": "FM_PARITY_TOP"
+        }
+      ],
       "default": "FM_PARITY_AUTO",
       "description": "<dd><p>Specify the assumed field order of the input stream. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Auto detect parity (use FFmpeg\u2019s internal parity value).\n</p></dd>\n<dt>\u2018<samp>bff</samp>\u2019</dt>\n<dd><p>Assume bottom field first.\n</p></dd>\n<dt>\u2018<samp>tff</samp>\u2019</dt>\n<dd><p>Assume top field first.\n</p></dd>\n</dl>\n<p>Note that it is sometimes recommended not to trust the parity announced by the\nstream.\n</p>\n<p>Default value is <var>auto</var>.\n</p>\n</dd>",
       "name": "order",
@@ -24,7 +40,38 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "2-way match (p/c)",
+          "name": "pc",
+          "value": "MODE_PC"
+        },
+        {
+          "help": "2-way match + 3rd match on combed (p/c + u)",
+          "name": "pc_n",
+          "value": "MODE_PC_N"
+        },
+        {
+          "help": "2-way match + 3rd match (same order) on combed (p/c + u)",
+          "name": "pc_u",
+          "value": "MODE_PC_U"
+        },
+        {
+          "help": "2-way match + 3rd match on combed + 4th/5th matches if still combed (p/c + u + u/b)",
+          "name": "pc_n_ub",
+          "value": "MODE_PC_N_UB"
+        },
+        {
+          "help": "3-way match (p/c/n)",
+          "name": "pcn",
+          "value": "MODE_PCN"
+        },
+        {
+          "help": "3-way match + 4th/5th matches on combed (p/c/n + u/b)",
+          "name": "pcn_ub",
+          "value": "MODE_PCN_UB"
+        }
+      ],
       "default": "MODE_PC_N",
       "description": "<dd><p>Set the matching mode or strategy to use. <samp>pc</samp> mode is the safest in the\nsense that it won\u2019t risk creating jerkiness due to duplicate frames when\npossible, but if there are bad edits or blended fields it will end up\noutputting combed frames when a good match might actually exist. On the other\nhand, <samp>pcn_ub</samp> mode is the most risky in terms of creating jerkiness,\nbut will almost always find a good frame if there is one. The other values are\nall somewhere in between <samp>pc</samp> and <samp>pcn_ub</samp> in terms of risking\njerkiness and creating duplicate frames versus finding good matches in sections\nwith bad edits, orphaned fields, blended fields, etc.\n</p>\n<p>More details about p/c/n/u/b are available in <a href=\"#p_002fc_002fn_002fu_002fb-meaning\">p/c/n/u/b meaning</a> section.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>pc</samp>\u2019</dt>\n<dd><p>2-way matching (p/c)\n</p></dd>\n<dt>\u2018<samp>pc_n</samp>\u2019</dt>\n<dd><p>2-way matching, and trying 3rd match if still combed (p/c + n)\n</p></dd>\n<dt>\u2018<samp>pc_u</samp>\u2019</dt>\n<dd><p>2-way matching, and trying 3rd match (same order) if still combed (p/c + u)\n</p></dd>\n<dt>\u2018<samp>pc_n_ub</samp>\u2019</dt>\n<dd><p>2-way matching, trying 3rd match if still combed, and trying 4th/5th matches if\nstill combed (p/c + n + u/b)\n</p></dd>\n<dt>\u2018<samp>pcn</samp>\u2019</dt>\n<dd><p>3-way matching (p/c/n)\n</p></dd>\n<dt>\u2018<samp>pcn_ub</samp>\u2019</dt>\n<dd><p>3-way matching, and trying 4th/5th matches if all 3 of the original matches are\ndetected as combed (p/c/n + u/b)\n</p></dd>\n</dl>\n<p>The parenthesis at the end indicate the matches that would be used for that\nmode assuming <samp>order</samp>=<var>tff</var> (and <samp>field</samp> on <var>auto</var> or\n<var>top</var>).\n</p>\n<p>In terms of speed <samp>pc</samp> mode is by far the fastest and <samp>pcn_ub</samp> is\nthe slowest.\n</p>\n<p>Default value is <var>pc_n</var>.\n</p>\n</dd>",
       "name": "mode",
@@ -46,7 +93,23 @@
       "alias": [
         "field"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "automatic (same value as 'order')",
+          "name": "auto",
+          "value": "FM_PARITY_AUTO"
+        },
+        {
+          "help": "bottom field",
+          "name": "bottom",
+          "value": "FM_PARITY_BOTTOM"
+        },
+        {
+          "help": "top field",
+          "name": "top",
+          "value": "FM_PARITY_TOP"
+        }
+      ],
       "default": "FM_PARITY_AUTO",
       "description": "<dd><p>Set the field to match from. It is recommended to set this to the same value as\n<samp>order</samp> unless you experience matching failures with that setting. In\ncertain circumstances changing the field that is used to match from can have a\nlarge impact on matching performance. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Automatic (same value as <samp>order</samp>).\n</p></dd>\n<dt>\u2018<samp>bottom</samp>\u2019</dt>\n<dd><p>Match from the bottom field.\n</p></dd>\n<dt>\u2018<samp>top</samp>\u2019</dt>\n<dd><p>Match from the top field.\n</p></dd>\n</dl>\n<p>Default value is <var>auto</var>.\n</p>\n</dd>",
       "name": "field",
@@ -101,7 +164,23 @@
       "alias": [
         "combmatch"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "disable combmatching",
+          "name": "none",
+          "value": "COMBMATCH_NONE"
+        },
+        {
+          "help": "enable combmatching only on scene change",
+          "name": "sc",
+          "value": "COMBMATCH_SC"
+        },
+        {
+          "help": "enable combmatching all the time",
+          "name": "full",
+          "value": "COMBMATCH_FULL"
+        }
+      ],
       "default": "COMBMATCH_SC",
       "description": "<dd><p>When <samp>combatch</samp> is not <var>none</var>, <code>fieldmatch</code> will take into\naccount the combed scores of matches when deciding what match to use as the\nfinal match. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No final matching based on combed scores.\n</p></dd>\n<dt>\u2018<samp>sc</samp>\u2019</dt>\n<dd><p>Combed scores are only used when a scene change is detected.\n</p></dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Use combed scores all the time.\n</p></dd>\n</dl>\n<p>Default is <var>sc</var>.\n</p>\n</dd>",
       "name": "combmatch",
@@ -112,7 +191,23 @@
       "alias": [
         "combdbg"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "no forced calculation",
+          "name": "none",
+          "value": "COMBDBG_NONE"
+        },
+        {
+          "help": "calculate p/c/n",
+          "name": "pcn",
+          "value": "COMBDBG_PCN"
+        },
+        {
+          "help": "calculate p/c/n/u/b",
+          "name": "pcnub",
+          "value": "COMBDBG_PCNUB"
+        }
+      ],
       "default": "COMBDBG_NONE",
       "description": "<dd><p>Force <code>fieldmatch</code> to calculate the combed metrics for certain matches and\nprint them. This setting is known as <samp>micout</samp> in TFM/VFM vocabulary.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No forced calculation.\n</p></dd>\n<dt>\u2018<samp>pcn</samp>\u2019</dt>\n<dd><p>Force p/c/n calculations.\n</p></dd>\n<dt>\u2018<samp>pcnub</samp>\u2019</dt>\n<dd><p>Force p/c/n/u/b calculations.\n</p></dd>\n</dl>\n<p>Default value is <var>none</var>.\n</p>\n</dd>",
       "name": "combdbg",

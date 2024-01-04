@@ -31,7 +31,33 @@
         "width_type",
         "t"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Hz",
+          "name": "h",
+          "value": "HERTZ"
+        },
+        {
+          "help": "Q-Factor",
+          "name": "q",
+          "value": "QFACTOR"
+        },
+        {
+          "help": "octave",
+          "name": "o",
+          "value": "OCTAVE"
+        },
+        {
+          "help": "slope",
+          "name": "s",
+          "value": "SLOPE"
+        },
+        {
+          "help": "kHz",
+          "name": "k",
+          "value": "KHERTZ"
+        }
+      ],
       "default": "QFACTOR",
       "description": "<dd><p>Set method to specify band-width of filter.\n</p><dl compact=\"compact\">\n<dt><samp>h</samp></dt>\n<dd><p>Hz\n</p></dd>\n<dt><samp>q</samp></dt>\n<dd><p>Q-Factor\n</p></dd>\n<dt><samp>o</samp></dt>\n<dd><p>octave\n</p></dd>\n<dt><samp>s</samp></dt>\n<dd><p>slope\n</p></dd>\n<dt><samp>k</samp></dt>\n<dd><p>kHz\n</p></dd>\n</dl>\n</dd>",
       "name": "width_type",
@@ -115,7 +141,43 @@
         "transform",
         "a"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "direct form I",
+          "name": "di",
+          "value": "DI"
+        },
+        {
+          "help": "direct form II",
+          "name": "dii",
+          "value": "DII"
+        },
+        {
+          "help": "transposed direct form I",
+          "name": "tdi",
+          "value": "TDI"
+        },
+        {
+          "help": "transposed direct form II",
+          "name": "tdii",
+          "value": "TDII"
+        },
+        {
+          "help": "lattice-ladder form",
+          "name": "latt",
+          "value": "LATT"
+        },
+        {
+          "help": "state variable filter form",
+          "name": "svf",
+          "value": "SVF"
+        },
+        {
+          "help": "zero-delay filter form",
+          "name": "zdf",
+          "value": "ZDF"
+        }
+      ],
       "default": "DI",
       "description": "<dd><p>Set transform type of IIR filter.\n</p><dl compact=\"compact\">\n<dt><samp>di</samp></dt>\n<dt><samp>dii</samp></dt>\n<dt><samp>tdi</samp></dt>\n<dt><samp>tdii</samp></dt>\n<dt><samp>latt</samp></dt>\n<dt><samp>svf</samp></dt>\n<dt><samp>zdf</samp></dt>\n</dl>\n</dd>",
       "name": "transform",
@@ -127,7 +189,33 @@
         "precision",
         "r"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "automatic",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "signed 16-bit",
+          "name": "s16",
+          "value": 0
+        },
+        {
+          "help": "signed 32-bit",
+          "name": "s32",
+          "value": 1
+        },
+        {
+          "help": "floating-point single",
+          "name": "f32",
+          "value": 2
+        },
+        {
+          "help": "floating-point double",
+          "name": "f64",
+          "value": 3
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Set precision of filtering.\n</p><dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Pick automatic sample format depending on surround filters.\n</p></dd>\n<dt><samp>s16</samp></dt>\n<dd><p>Always use signed 16-bit.\n</p></dd>\n<dt><samp>s32</samp></dt>\n<dd><p>Always use signed 32-bit.\n</p></dd>\n<dt><samp>f32</samp></dt>\n<dd><p>Always use float 32-bit.\n</p></dd>\n<dt><samp>f64</samp></dt>\n<dd><p>Always use float 64-bit.\n</p></dd>\n</dl>\n</dd>",
       "name": "precision",

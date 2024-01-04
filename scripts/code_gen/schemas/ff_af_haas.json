@@ -51,7 +51,28 @@
       "alias": [
         "middle_source"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "left",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "right",
+          "value": 1
+        },
+        {
+          "help": "L+R",
+          "name": "mid",
+          "value": 2
+        },
+        {
+          "help": "L-R",
+          "name": "side",
+          "value": 3
+        }
+      ],
       "default": 2,
       "description": "<dd><p>Set kind of middle source. Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>left</samp>\u2019</dt>\n<dd><p>Pick left channel.\n</p>\n</dd>\n<dt>\u2018<samp>right</samp>\u2019</dt>\n<dd><p>Pick right channel.\n</p>\n</dd>\n<dt>\u2018<samp>mid</samp>\u2019</dt>\n<dd><p>Pick middle part signal of stereo image.\n</p>\n</dd>\n<dt>\u2018<samp>side</samp>\u2019</dt>\n<dd><p>Pick side part signal of stereo image.\n</p></dd>\n</dl>\n</dd>",
       "name": "middle_source",

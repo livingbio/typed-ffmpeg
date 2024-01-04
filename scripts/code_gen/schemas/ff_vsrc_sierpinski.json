@@ -59,7 +59,18 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "sierpinski carpet",
+          "name": "carpet",
+          "value": 0
+        },
+        {
+          "help": "sierpinski triangle",
+          "name": "triangle",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set fractal type, can be default <code>carpet</code> or <code>triangle</code>.\n</p></dd>",
       "name": "type",

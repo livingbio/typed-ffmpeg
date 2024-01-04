@@ -35,7 +35,18 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "basic guided filter",
+          "name": "basic",
+          "value": "BASIC"
+        },
+        {
+          "help": "fast guided filter",
+          "name": "fast",
+          "value": "FAST"
+        }
+      ],
       "default": "BASIC",
       "description": "<dd><p>Set filter mode. Can be <code>basic</code> or <code>fast</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>",
       "name": "mode",
@@ -57,7 +68,18 @@
       "alias": [
         "guidance"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "only one input is enabled",
+          "name": "off",
+          "value": "OFF"
+        },
+        {
+          "help": "two inputs are required",
+          "name": "on",
+          "value": "ON"
+        }
+      ],
       "default": "OFF",
       "description": "<dd><p>Set guidance mode. Can be <code>off</code> or <code>on</code>. Default is <code>off</code>.\nIf <code>off</code>, single input is required.\nIf <code>on</code>, two inputs of the same resolution and pixel format are required.\nThe second input serves as the guidance.\n</p>\n</dd>",
       "name": "guidance",

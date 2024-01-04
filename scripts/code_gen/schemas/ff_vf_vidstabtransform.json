@@ -40,7 +40,23 @@
       "alias": [
         "optalgo"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "global optimization",
+          "name": "opt",
+          "value": "VSOptimalL1"
+        },
+        {
+          "help": "gaussian kernel",
+          "name": "gauss",
+          "value": "VSGaussian"
+        },
+        {
+          "help": "simple averaging on motion",
+          "name": "avg",
+          "value": "VSAvg"
+        }
+      ],
       "default": "VSOptimalL1",
       "description": null,
       "name": "optalgo",
@@ -73,7 +89,18 @@
       "alias": [
         "crop"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "keep border",
+          "name": "keep",
+          "value": "VSKeepBorder"
+        },
+        {
+          "help": "black border",
+          "name": "black",
+          "value": "VSCropBorder"
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "crop",
@@ -139,7 +166,28 @@
       "alias": [
         "interpol"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "no interpolation",
+          "name": "no",
+          "value": "VS_Zero"
+        },
+        {
+          "help": "linear (horizontal)",
+          "name": "linear",
+          "value": "VS_Linear"
+        },
+        {
+          "help": "bi-linear",
+          "name": "bilinear",
+          "value": "VS_BiLinear"
+        },
+        {
+          "help": "bi-cubic",
+          "name": "bicubic",
+          "value": "VS_BiCubic"
+        }
+      ],
       "default": 2,
       "description": null,
       "name": "interpol",

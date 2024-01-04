@@ -18,7 +18,18 @@
       "alias": [
         "filter_type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "derain filter flag",
+          "name": "derain",
+          "value": 0
+        },
+        {
+          "help": "dehaze filter flag",
+          "name": "dehaze",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Specify which filter to use. This option accepts the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>derain</samp>\u2019</dt>\n<dd><p>Derain filter. To conduct derain filter, you need to use a derain model.\n</p>\n</dd>\n<dt>\u2018<samp>dehaze</samp>\u2019</dt>\n<dd><p>Dehaze filter. To conduct dehaze filter, you need to use a dehaze model.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>derain</samp>\u2019.\n</p>\n</dd>",
       "name": "filter_type",

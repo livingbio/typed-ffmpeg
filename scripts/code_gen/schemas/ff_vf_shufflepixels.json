@@ -19,7 +19,18 @@
         "direction",
         "d"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "forward",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "inverse",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set shuffle direction. Can be forward or inverse direction.\nDefault direction is forward.\n</p>\n</dd>",
       "name": "direction",
@@ -31,7 +42,23 @@
         "mode",
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "horizontal",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "vertical",
+          "value": 1
+        },
+        {
+          "help": "0",
+          "name": "block",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set shuffle mode. Can be horizontal, vertical or block mode.\n</p>\n</dd>",
       "name": "mode",

@@ -29,7 +29,23 @@
       "alias": [
         "method"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "hard thresholding",
+          "name": "hard",
+          "value": 0
+        },
+        {
+          "help": "soft thresholding",
+          "name": "soft",
+          "value": 1
+        },
+        {
+          "help": "garrote thresholding",
+          "name": "garrote",
+          "value": 2
+        }
+      ],
       "default": 2,
       "description": "<dd><p>The filtering method the filter will use.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>All values under the threshold will be zeroed.\n</p>\n</dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>All values under the threshold will be zeroed. All values above will be\nreduced by the threshold.\n</p>\n</dd>\n<dt>\u2018<samp>garrote</samp>\u2019</dt>\n<dd><p>Scales or nullifies coefficients - intermediary between (more) soft and\n(less) hard thresholding.\n</p></dd>\n</dl>\n<p>Default is garrote.\n</p>\n</dd>",
       "name": "method",
@@ -73,7 +89,18 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "universal (VisuShrink)",
+          "name": "universal",
+          "value": 0
+        },
+        {
+          "help": "bayes (BayesShrink)",
+          "name": "bayes",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>The threshold type the filter will use.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>universal</samp>\u2019</dt>\n<dd><p>Threshold used is same for all decompositions.\n</p>\n</dd>\n<dt>\u2018<samp>bayes</samp>\u2019</dt>\n<dd><p>Threshold used depends also on each decomposition coefficients.\n</p></dd>\n</dl>\n<p>Default is universal.\n</p></dd>",
       "name": "type",

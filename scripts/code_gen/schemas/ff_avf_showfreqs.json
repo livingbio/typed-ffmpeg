@@ -42,7 +42,23 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "show lines",
+          "name": "line",
+          "value": "LINE"
+        },
+        {
+          "help": "show bars",
+          "name": "bar",
+          "value": "BAR"
+        },
+        {
+          "help": "show dots",
+          "name": "dot",
+          "value": "DOT"
+        }
+      ],
       "default": "BAR",
       "description": "<dd><p>Set display mode.\nThis set how each frequency bin will be represented.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dt>\u2018<samp>bar</samp>\u2019</dt>\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n</dl>\n<p>Default is <code>bar</code>.\n</p>\n</dd>",
       "name": "mode",
@@ -53,7 +69,28 @@
       "alias": [
         "ascale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "AS_LINEAR"
+        },
+        {
+          "help": "square root",
+          "name": "sqrt",
+          "value": "AS_SQRT"
+        },
+        {
+          "help": "cubic root",
+          "name": "cbrt",
+          "value": "AS_CBRT"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "AS_LOG"
+        }
+      ],
       "default": "AS_LOG",
       "description": "<dd><p>Set amplitude scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear scale.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root scale.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root scale.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic scale.\n</p></dd>\n</dl>\n<p>Default is <code>log</code>.\n</p>\n</dd>",
       "name": "ascale",
@@ -64,7 +101,23 @@
       "alias": [
         "fscale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "FS_LINEAR"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "FS_LOG"
+        },
+        {
+          "help": "reverse logarithmic",
+          "name": "rlog",
+          "value": "FS_RLOG"
+        }
+      ],
       "default": "FS_LINEAR",
       "description": "<dd><p>Set frequency scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear scale.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic scale.\n</p>\n</dd>\n<dt>\u2018<samp>rlog</samp>\u2019</dt>\n<dd><p>Reverse logarithmic scale.\n</p></dd>\n</dl>\n<p>Default is <code>lin</code>.\n</p>\n</dd>",
       "name": "fscale",
@@ -86,7 +139,118 @@
       "alias": [
         "win_func"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "WFUNC_RECT"
+        },
+        {
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "WFUNC_BARTLETT"
+        },
+        {
+          "help": "Hann",
+          "name": "hann",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "WFUNC_HAMMING"
+        },
+        {
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "WFUNC_BLACKMAN"
+        },
+        {
+          "help": "Welch",
+          "name": "welch",
+          "value": "WFUNC_WELCH"
+        },
+        {
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "WFUNC_FLATTOP"
+        },
+        {
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "WFUNC_BHARRIS"
+        },
+        {
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "WFUNC_BNUTTALL"
+        },
+        {
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "WFUNC_BHANN"
+        },
+        {
+          "help": "Sine",
+          "name": "sine",
+          "value": "WFUNC_SINE"
+        },
+        {
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "WFUNC_NUTTALL"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "WFUNC_LANCZOS"
+        },
+        {
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "WFUNC_GAUSS"
+        },
+        {
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "WFUNC_TUKEY"
+        },
+        {
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "WFUNC_DOLPH"
+        },
+        {
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "WFUNC_CAUCHY"
+        },
+        {
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "WFUNC_PARZEN"
+        },
+        {
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "WFUNC_POISSON"
+        },
+        {
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "WFUNC_BOHMAN"
+        },
+        {
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "WFUNC_KAISER"
+        }
+      ],
       "default": "WFUNC_HANNING",
       "description": "<dd><p>Set windowing function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hanning</code>.\n</p>\n</dd>",
       "name": "win_func",
@@ -130,7 +294,18 @@
       "alias": [
         "cmode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "show all channels in same window",
+          "name": "combined",
+          "value": "COMBINED"
+        },
+        {
+          "help": "show each channel in own window",
+          "name": "separate",
+          "value": "SEPARATE"
+        }
+      ],
       "default": "COMBINED",
       "description": "<dd><p>Set channel display mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>combined</samp>\u2019</dt>\n<dt>\u2018<samp>separate</samp>\u2019</dt>\n</dl>\n<p>Default is <code>combined</code>.\n</p>\n</dd>",
       "name": "cmode",
@@ -152,7 +327,23 @@
       "alias": [
         "data"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "show magnitude",
+          "name": "magnitude",
+          "value": "MAGNITUDE"
+        },
+        {
+          "help": "show phase",
+          "name": "phase",
+          "value": "PHASE"
+        },
+        {
+          "help": "show group delay",
+          "name": "delay",
+          "value": "DELAY"
+        }
+      ],
       "default": "MAGNITUDE",
       "description": "<dd><p>Set data display mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>magnitude</samp>\u2019</dt>\n<dt>\u2018<samp>phase</samp>\u2019</dt>\n<dt>\u2018<samp>delay</samp>\u2019</dt>\n</dl>\n<p>Default is <code>magnitude</code>.\n</p>\n</dd>",
       "name": "data",

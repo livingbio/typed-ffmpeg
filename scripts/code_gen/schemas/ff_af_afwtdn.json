@@ -40,7 +40,43 @@
       "alias": [
         "wavet"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "sym2",
+          "name": "sym2",
+          "value": "SYM2"
+        },
+        {
+          "help": "sym4",
+          "name": "sym4",
+          "value": "SYM4"
+        },
+        {
+          "help": "rbior68",
+          "name": "rbior68",
+          "value": "RBIOR68"
+        },
+        {
+          "help": "deb10",
+          "name": "deb10",
+          "value": "DEB10"
+        },
+        {
+          "help": "sym10",
+          "name": "sym10",
+          "value": "SYM10"
+        },
+        {
+          "help": "coif5",
+          "name": "coif5",
+          "value": "COIF5"
+        },
+        {
+          "help": "bl3",
+          "name": "bl3",
+          "value": "BL3"
+        }
+      ],
       "default": "SYM10",
       "description": "<dd><p>Set wavelet type for decomposition of input frame.\nThey are sorted by number of coefficients, from lowest to highest.\nMore coefficients means worse filtering speed, but overall better quality.\nAvailable wavelets are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>sym2</samp>\u2019</dt>\n<dt>\u2018<samp>sym4</samp>\u2019</dt>\n<dt>\u2018<samp>rbior68</samp>\u2019</dt>\n<dt>\u2018<samp>deb10</samp>\u2019</dt>\n<dt>\u2018<samp>sym10</samp>\u2019</dt>\n<dt>\u2018<samp>coif5</samp>\u2019</dt>\n<dt>\u2018<samp>bl3</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "wavet",

@@ -22,7 +22,303 @@
       "alias": [
         "transition"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "custom transition",
+          "name": "custom",
+          "value": "CUSTOM"
+        },
+        {
+          "help": "fade transition",
+          "name": "fade",
+          "value": "FADE"
+        },
+        {
+          "help": "wipe left transition",
+          "name": "wipeleft",
+          "value": "WIPELEFT"
+        },
+        {
+          "help": "wipe right transition",
+          "name": "wiperight",
+          "value": "WIPERIGHT"
+        },
+        {
+          "help": "wipe up transition",
+          "name": "wipeup",
+          "value": "WIPEUP"
+        },
+        {
+          "help": "wipe down transition",
+          "name": "wipedown",
+          "value": "WIPEDOWN"
+        },
+        {
+          "help": "slide left transition",
+          "name": "slideleft",
+          "value": "SLIDELEFT"
+        },
+        {
+          "help": "slide right transition",
+          "name": "slideright",
+          "value": "SLIDERIGHT"
+        },
+        {
+          "help": "slide up transition",
+          "name": "slideup",
+          "value": "SLIDEUP"
+        },
+        {
+          "help": "slide down transition",
+          "name": "slidedown",
+          "value": "SLIDEDOWN"
+        },
+        {
+          "help": "circle crop transition",
+          "name": "circlecrop",
+          "value": "CIRCLECROP"
+        },
+        {
+          "help": "rect crop transition",
+          "name": "rectcrop",
+          "value": "RECTCROP"
+        },
+        {
+          "help": "distance transition",
+          "name": "distance",
+          "value": "DISTANCE"
+        },
+        {
+          "help": "fadeblack transition",
+          "name": "fadeblack",
+          "value": "FADEBLACK"
+        },
+        {
+          "help": "fadewhite transition",
+          "name": "fadewhite",
+          "value": "FADEWHITE"
+        },
+        {
+          "help": "radial transition",
+          "name": "radial",
+          "value": "RADIAL"
+        },
+        {
+          "help": "smoothleft transition",
+          "name": "smoothleft",
+          "value": "SMOOTHLEFT"
+        },
+        {
+          "help": "smoothright transition",
+          "name": "smoothright",
+          "value": "SMOOTHRIGHT"
+        },
+        {
+          "help": "smoothup transition",
+          "name": "smoothup",
+          "value": "SMOOTHUP"
+        },
+        {
+          "help": "smoothdown transition",
+          "name": "smoothdown",
+          "value": "SMOOTHDOWN"
+        },
+        {
+          "help": "circleopen transition",
+          "name": "circleopen",
+          "value": "CIRCLEOPEN"
+        },
+        {
+          "help": "circleclose transition",
+          "name": "circleclose",
+          "value": "CIRCLECLOSE"
+        },
+        {
+          "help": "vert open transition",
+          "name": "vertopen",
+          "value": "VERTOPEN"
+        },
+        {
+          "help": "vert close transition",
+          "name": "vertclose",
+          "value": "VERTCLOSE"
+        },
+        {
+          "help": "horz open transition",
+          "name": "horzopen",
+          "value": "HORZOPEN"
+        },
+        {
+          "help": "horz close transition",
+          "name": "horzclose",
+          "value": "HORZCLOSE"
+        },
+        {
+          "help": "dissolve transition",
+          "name": "dissolve",
+          "value": "DISSOLVE"
+        },
+        {
+          "help": "pixelize transition",
+          "name": "pixelize",
+          "value": "PIXELIZE"
+        },
+        {
+          "help": "diag tl transition",
+          "name": "diagtl",
+          "value": "DIAGTL"
+        },
+        {
+          "help": "diag tr transition",
+          "name": "diagtr",
+          "value": "DIAGTR"
+        },
+        {
+          "help": "diag bl transition",
+          "name": "diagbl",
+          "value": "DIAGBL"
+        },
+        {
+          "help": "diag br transition",
+          "name": "diagbr",
+          "value": "DIAGBR"
+        },
+        {
+          "help": "hl slice transition",
+          "name": "hlslice",
+          "value": "HLSLICE"
+        },
+        {
+          "help": "hr slice transition",
+          "name": "hrslice",
+          "value": "HRSLICE"
+        },
+        {
+          "help": "vu slice transition",
+          "name": "vuslice",
+          "value": "VUSLICE"
+        },
+        {
+          "help": "vd slice transition",
+          "name": "vdslice",
+          "value": "VDSLICE"
+        },
+        {
+          "help": "hblur transition",
+          "name": "hblur",
+          "value": "HBLUR"
+        },
+        {
+          "help": "fadegrays transition",
+          "name": "fadegrays",
+          "value": "FADEGRAYS"
+        },
+        {
+          "help": "wipe tl transition",
+          "name": "wipetl",
+          "value": "WIPETL"
+        },
+        {
+          "help": "wipe tr transition",
+          "name": "wipetr",
+          "value": "WIPETR"
+        },
+        {
+          "help": "wipe bl transition",
+          "name": "wipebl",
+          "value": "WIPEBL"
+        },
+        {
+          "help": "wipe br transition",
+          "name": "wipebr",
+          "value": "WIPEBR"
+        },
+        {
+          "help": "squeeze h transition",
+          "name": "squeezeh",
+          "value": "SQUEEZEH"
+        },
+        {
+          "help": "squeeze v transition",
+          "name": "squeezev",
+          "value": "SQUEEZEV"
+        },
+        {
+          "help": "zoom in transition",
+          "name": "zoomin",
+          "value": "ZOOMIN"
+        },
+        {
+          "help": "fast fade transition",
+          "name": "fadefast",
+          "value": "FADEFAST"
+        },
+        {
+          "help": "slow fade transition",
+          "name": "fadeslow",
+          "value": "FADESLOW"
+        },
+        {
+          "help": "hl wind transition",
+          "name": "hlwind",
+          "value": "HLWIND"
+        },
+        {
+          "help": "hr wind transition",
+          "name": "hrwind",
+          "value": "HRWIND"
+        },
+        {
+          "help": "vu wind transition",
+          "name": "vuwind",
+          "value": "VUWIND"
+        },
+        {
+          "help": "vd wind transition",
+          "name": "vdwind",
+          "value": "VDWIND"
+        },
+        {
+          "help": "cover left transition",
+          "name": "coverleft",
+          "value": "COVERLEFT"
+        },
+        {
+          "help": "cover right transition",
+          "name": "coverright",
+          "value": "COVERRIGHT"
+        },
+        {
+          "help": "cover up transition",
+          "name": "coverup",
+          "value": "COVERUP"
+        },
+        {
+          "help": "cover down transition",
+          "name": "coverdown",
+          "value": "COVERDOWN"
+        },
+        {
+          "help": "reveal left transition",
+          "name": "revealleft",
+          "value": "REVEALLEFT"
+        },
+        {
+          "help": "reveal right transition",
+          "name": "revealright",
+          "value": "REVEALRIGHT"
+        },
+        {
+          "help": "reveal up transition",
+          "name": "revealup",
+          "value": "REVEALUP"
+        },
+        {
+          "help": "reveal down transition",
+          "name": "revealdown",
+          "value": "REVEALDOWN"
+        }
+      ],
       "default": "FADE",
       "description": "<dd><p>Set one of available transition effects:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>custom</samp>\u2019</dt>\n<dt>\u2018<samp>fade</samp>\u2019</dt>\n<dt>\u2018<samp>wipeleft</samp>\u2019</dt>\n<dt>\u2018<samp>wiperight</samp>\u2019</dt>\n<dt>\u2018<samp>wipeup</samp>\u2019</dt>\n<dt>\u2018<samp>wipedown</samp>\u2019</dt>\n<dt>\u2018<samp>slideleft</samp>\u2019</dt>\n<dt>\u2018<samp>slideright</samp>\u2019</dt>\n<dt>\u2018<samp>slideup</samp>\u2019</dt>\n<dt>\u2018<samp>slidedown</samp>\u2019</dt>\n<dt>\u2018<samp>circlecrop</samp>\u2019</dt>\n<dt>\u2018<samp>rectcrop</samp>\u2019</dt>\n<dt>\u2018<samp>distance</samp>\u2019</dt>\n<dt>\u2018<samp>fadeblack</samp>\u2019</dt>\n<dt>\u2018<samp>fadewhite</samp>\u2019</dt>\n<dt>\u2018<samp>radial</samp>\u2019</dt>\n<dt>\u2018<samp>smoothleft</samp>\u2019</dt>\n<dt>\u2018<samp>smoothright</samp>\u2019</dt>\n<dt>\u2018<samp>smoothup</samp>\u2019</dt>\n<dt>\u2018<samp>smoothdown</samp>\u2019</dt>\n<dt>\u2018<samp>circleopen</samp>\u2019</dt>\n<dt>\u2018<samp>circleclose</samp>\u2019</dt>\n<dt>\u2018<samp>vertopen</samp>\u2019</dt>\n<dt>\u2018<samp>vertclose</samp>\u2019</dt>\n<dt>\u2018<samp>horzopen</samp>\u2019</dt>\n<dt>\u2018<samp>horzclose</samp>\u2019</dt>\n<dt>\u2018<samp>dissolve</samp>\u2019</dt>\n<dt>\u2018<samp>pixelize</samp>\u2019</dt>\n<dt>\u2018<samp>diagtl</samp>\u2019</dt>\n<dt>\u2018<samp>diagtr</samp>\u2019</dt>\n<dt>\u2018<samp>diagbl</samp>\u2019</dt>\n<dt>\u2018<samp>diagbr</samp>\u2019</dt>\n<dt>\u2018<samp>hlslice</samp>\u2019</dt>\n<dt>\u2018<samp>hrslice</samp>\u2019</dt>\n<dt>\u2018<samp>vuslice</samp>\u2019</dt>\n<dt>\u2018<samp>vdslice</samp>\u2019</dt>\n<dt>\u2018<samp>hblur</samp>\u2019</dt>\n<dt>\u2018<samp>fadegrays</samp>\u2019</dt>\n<dt>\u2018<samp>wipetl</samp>\u2019</dt>\n<dt>\u2018<samp>wipetr</samp>\u2019</dt>\n<dt>\u2018<samp>wipebl</samp>\u2019</dt>\n<dt>\u2018<samp>wipebr</samp>\u2019</dt>\n<dt>\u2018<samp>squeezeh</samp>\u2019</dt>\n<dt>\u2018<samp>squeezev</samp>\u2019</dt>\n<dt>\u2018<samp>zoomin</samp>\u2019</dt>\n<dt>\u2018<samp>fadefast</samp>\u2019</dt>\n<dt>\u2018<samp>fadeslow</samp>\u2019</dt>\n<dt>\u2018<samp>hlwind</samp>\u2019</dt>\n<dt>\u2018<samp>hrwind</samp>\u2019</dt>\n<dt>\u2018<samp>vuwind</samp>\u2019</dt>\n<dt>\u2018<samp>vdwind</samp>\u2019</dt>\n<dt>\u2018<samp>coverleft</samp>\u2019</dt>\n<dt>\u2018<samp>coverright</samp>\u2019</dt>\n<dt>\u2018<samp>coverup</samp>\u2019</dt>\n<dt>\u2018<samp>coverdown</samp>\u2019</dt>\n<dt>\u2018<samp>revealleft</samp>\u2019</dt>\n<dt>\u2018<samp>revealright</samp>\u2019</dt>\n<dt>\u2018<samp>revealup</samp>\u2019</dt>\n<dt>\u2018<samp>revealdown</samp>\u2019</dt>\n</dl>\n<p>Default transition effect is fade.\n</p>\n</dd>",
       "name": "transition",

@@ -18,7 +18,18 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "greenscreen",
+          "name": "green",
+          "value": 0
+        },
+        {
+          "help": "bluescreen",
+          "name": "blue",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set what type of despill to use.\n</p>\n</dd>",
       "name": "type",

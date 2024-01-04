@@ -291,7 +291,43 @@
       "alias": [
         "csp"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "unspecified",
+          "name": "unspecified",
+          "value": "AVCOL_SPC_UNSPECIFIED"
+        },
+        {
+          "help": "bt709",
+          "name": "bt709",
+          "value": "AVCOL_SPC_BT709"
+        },
+        {
+          "help": "fcc",
+          "name": "fcc",
+          "value": "AVCOL_SPC_FCC"
+        },
+        {
+          "help": "bt470bg",
+          "name": "bt470bg",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "smpte170m",
+          "name": "smpte170m",
+          "value": "AVCOL_SPC_SMPTE170M"
+        },
+        {
+          "help": "smpte240m",
+          "name": "smpte240m",
+          "value": "AVCOL_SPC_SMPTE240M"
+        },
+        {
+          "help": "bt2020ncl",
+          "name": "bt2020ncl",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        }
+      ],
       "default": "AVCOL_SPC_UNSPECIFIED",
       "description": "<dd><p>Set colorspace. The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>unspecified</samp>\u2019</dt>\n<dd><p>Unspecified (default)\n</p>\n</dd>\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dd><p>BT.709\n</p>\n</dd>\n<dt>\u2018<samp>fcc</samp>\u2019</dt>\n<dd><p>FCC\n</p>\n</dd>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dd><p>BT.470BG or BT.601-6 625\n</p>\n</dd>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dd><p>SMPTE-170M or BT.601-6 525\n</p>\n</dd>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dd><p>SMPTE-240M\n</p>\n</dd>\n<dt>\u2018<samp>bt2020ncl</samp>\u2019</dt>\n<dd><p>BT.2020 with non-constant luminance\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "csp",

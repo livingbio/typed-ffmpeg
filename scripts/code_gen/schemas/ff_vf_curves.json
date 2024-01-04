@@ -18,7 +18,63 @@
       "alias": [
         "preset"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "none",
+          "value": "PRESET_NONE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "color_negative",
+          "value": "PRESET_COLOR_NEGATIVE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "cross_process",
+          "value": "PRESET_CROSS_PROCESS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "darker",
+          "value": "PRESET_DARKER"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "increase_contrast",
+          "value": "PRESET_INCREASE_CONTRAST"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "lighter",
+          "value": "PRESET_LIGHTER"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "linear_contrast",
+          "value": "PRESET_LINEAR_CONTRAST"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "medium_contrast",
+          "value": "PRESET_MEDIUM_CONTRAST"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "negative",
+          "value": "PRESET_NEGATIVE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "strong_contrast",
+          "value": "PRESET_STRONG_CONTRAST"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "vintage",
+          "value": "PRESET_VINTAGE"
+        }
+      ],
       "default": "PRESET_NONE",
       "description": "<dd><p>Select one of the available color presets. This option can be used in addition\nto the <samp>r</samp>, <samp>g</samp>, <samp>b</samp> parameters; in this case, the later\noptions takes priority on the preset values.\nAvailable presets are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dt>\u2018<samp>color_negative</samp>\u2019</dt>\n<dt>\u2018<samp>cross_process</samp>\u2019</dt>\n<dt>\u2018<samp>darker</samp>\u2019</dt>\n<dt>\u2018<samp>increase_contrast</samp>\u2019</dt>\n<dt>\u2018<samp>lighter</samp>\u2019</dt>\n<dt>\u2018<samp>linear_contrast</samp>\u2019</dt>\n<dt>\u2018<samp>medium_contrast</samp>\u2019</dt>\n<dt>\u2018<samp>negative</samp>\u2019</dt>\n<dt>\u2018<samp>strong_contrast</samp>\u2019</dt>\n<dt>\u2018<samp>vintage</samp>\u2019</dt>\n</dl>\n<p>Default is <code>none</code>.\n</p></dd>",
       "name": "preset",
@@ -110,7 +166,18 @@
       "alias": [
         "interp"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "natural cubic spline",
+          "name": "natural",
+          "value": "INTERP_NATURAL"
+        },
+        {
+          "help": "monotonically cubic interpolation",
+          "name": "pchip",
+          "value": "INTERP_PCHIP"
+        }
+      ],
       "default": "INTERP_NATURAL",
       "description": "<dd><p>Specify the kind of interpolation. Available algorithms are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>natural</samp>\u2019</dt>\n<dd><p>Natural cubic spline using a piece-wise cubic polynomial that is twice continuously differentiable.\n</p></dd>\n<dt>\u2018<samp>pchip</samp>\u2019</dt>\n<dd><p>Monotonic cubic spline using a piecewise cubic Hermite interpolating polynomial (PCHIP).\n</p></dd>\n</dl>\n</dd>",
       "name": "interp",

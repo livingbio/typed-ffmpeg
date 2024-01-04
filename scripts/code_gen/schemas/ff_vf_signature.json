@@ -13,7 +13,23 @@
       "alias": [
         "detectmode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "off",
+          "value": "MODE_OFF"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "full",
+          "value": "MODE_FULL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "fast",
+          "value": "MODE_FAST"
+        }
+      ],
       "default": "MODE_OFF",
       "description": "<dd><p>Enable or disable the matching process.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>off</samp>\u2019</dt>\n<dd><p>Disable the calculation of a matching (default).\n</p></dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Calculate the matching for the whole video and output whether the whole video\nmatches or only parts.\n</p></dd>\n<dt>\u2018<samp>fast</samp>\u2019</dt>\n<dd><p>Calculate only until a matching is found or the video ends. Should be faster in\nsome cases.\n</p></dd>\n</dl>\n</dd>",
       "name": "detectmode",
@@ -46,7 +62,18 @@
       "alias": [
         "format"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "binary",
+          "value": "FORMAT_BINARY"
+        },
+        {
+          "help": "0",
+          "name": "xml",
+          "value": "FORMAT_XML"
+        }
+      ],
       "default": "FORMAT_BINARY",
       "description": "<dd><p>Choose the output format.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>binary</samp>\u2019</dt>\n<dd><p>Use the specified binary representation (default).\n</p></dd>\n<dt>\u2018<samp>xml</samp>\u2019</dt>\n<dd><p>Use the specified xml representation.\n</p></dd>\n</dl>\n</dd>",
       "name": "format",

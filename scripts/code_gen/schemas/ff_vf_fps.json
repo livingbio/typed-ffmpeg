@@ -40,7 +40,33 @@
       "alias": [
         "round"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "round towards 0",
+          "name": "zero",
+          "value": "AV_ROUND_ZERO"
+        },
+        {
+          "help": "round away from 0",
+          "name": "inf",
+          "value": "AV_ROUND_INF"
+        },
+        {
+          "help": "round towards -infty",
+          "name": "down",
+          "value": "AV_ROUND_DOWN"
+        },
+        {
+          "help": "round towards +infty",
+          "name": "up",
+          "value": "AV_ROUND_UP"
+        },
+        {
+          "help": "round to nearest",
+          "name": "near",
+          "value": "AV_ROUND_NEAR_INF"
+        }
+      ],
       "default": "AV_ROUND_NEAR_INF",
       "description": "<dd><p>Timestamp (PTS) rounding method.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><samp>zero</samp></dt>\n<dd><p>round towards 0\n</p></dd>\n<dt><samp>inf</samp></dt>\n<dd><p>round away from 0\n</p></dd>\n<dt><samp>down</samp></dt>\n<dd><p>round towards -infinity\n</p></dd>\n<dt><samp>up</samp></dt>\n<dd><p>round towards +infinity\n</p></dd>\n<dt><samp>near</samp></dt>\n<dd><p>round to nearest\n</p></dd>\n</dl>\n<p>The default is <code>near</code>.\n</p>\n</dd>",
       "name": "round",
@@ -51,7 +77,18 @@
       "alias": [
         "eof_action"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "round similar to other frames",
+          "name": "round",
+          "value": "EOF_ACTION_ROUND"
+        },
+        {
+          "help": "pass through last frame",
+          "name": "pass",
+          "value": "EOF_ACTION_PASS"
+        }
+      ],
       "default": "EOF_ACTION_ROUND",
       "description": "<dd><p>Action performed when reading the last frame.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><samp>round</samp></dt>\n<dd><p>Use same timestamp rounding method as used for other frames.\n</p></dd>\n<dt><samp>pass</samp></dt>\n<dd><p>Pass through last frame if input duration has not been reached yet.\n</p></dd>\n</dl>\n<p>The default is <code>round</code>.\n</p>\n</dd>",
       "name": "eof_action",

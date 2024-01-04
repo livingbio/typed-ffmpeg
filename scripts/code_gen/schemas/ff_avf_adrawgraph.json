@@ -139,7 +139,23 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "draw bars",
+          "name": "bar",
+          "value": 0
+        },
+        {
+          "help": "draw dots",
+          "name": "dot",
+          "value": 1
+        },
+        {
+          "help": "draw lines",
+          "name": "line",
+          "value": 2
+        }
+      ],
       "default": 2,
       "description": null,
       "name": "mode",
@@ -150,7 +166,33 @@
       "alias": [
         "slide"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "draw new frames",
+          "name": "frame",
+          "value": 0
+        },
+        {
+          "help": "replace old columns with new",
+          "name": "replace",
+          "value": 1
+        },
+        {
+          "help": "scroll from right to left",
+          "name": "scroll",
+          "value": 2
+        },
+        {
+          "help": "scroll from left to right",
+          "name": "rscroll",
+          "value": 3
+        },
+        {
+          "help": "display graph in single frame",
+          "name": "picture",
+          "value": 4
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "slide",

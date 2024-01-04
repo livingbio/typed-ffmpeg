@@ -29,7 +29,18 @@
       "alias": [
         "clut"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "process only first CLUT, ignore rest",
+          "name": "first",
+          "value": 0
+        },
+        {
+          "help": "process all CLUTs",
+          "name": "all",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": null,
       "name": "clut",
@@ -40,7 +51,33 @@
       "alias": [
         "interp"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "use values from the nearest defined points",
+          "name": "nearest",
+          "value": "INTERPOLATE_NEAREST"
+        },
+        {
+          "help": "interpolate values using the 8 points defining a cube",
+          "name": "trilinear",
+          "value": "INTERPOLATE_TRILINEAR"
+        },
+        {
+          "help": "interpolate values using a tetrahedron",
+          "name": "tetrahedral",
+          "value": "INTERPOLATE_TETRAHEDRAL"
+        },
+        {
+          "help": "interpolate values using a pyramid",
+          "name": "pyramid",
+          "value": "INTERPOLATE_PYRAMID"
+        },
+        {
+          "help": "interpolate values using a prism",
+          "name": "prism",
+          "value": "INTERPOLATE_PRISM"
+        }
+      ],
       "default": "INTERPOLATE_TETRAHEDRAL",
       "description": "<dd><p>Select interpolation mode.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dd><p>Use values from the nearest defined point.\n</p></dd>\n<dt>\u2018<samp>trilinear</samp>\u2019</dt>\n<dd><p>Interpolate values using the 8 points defining a cube.\n</p></dd>\n<dt>\u2018<samp>tetrahedral</samp>\u2019</dt>\n<dd><p>Interpolate values using a tetrahedron.\n</p></dd>\n<dt>\u2018<samp>pyramid</samp>\u2019</dt>\n<dd><p>Interpolate values using a pyramid.\n</p></dd>\n<dt>\u2018<samp>prism</samp>\u2019</dt>\n<dd><p>Interpolate values using a prism.\n</p></dd>\n</dl>\n</dd>",
       "name": "interp",

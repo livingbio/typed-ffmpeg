@@ -86,7 +86,28 @@
       "alias": [
         "scale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "SCALE_LIN"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "SCALE_LOG"
+        },
+        {
+          "help": "square root",
+          "name": "sqrt",
+          "value": "SCALE_SQRT"
+        },
+        {
+          "help": "cubic root",
+          "name": "cbrt",
+          "value": "SCALE_CBRT"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set amplitude scale.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n</p></dd>\n</dl>\n<p>Default is linear.\n</p>\n</dd>",
       "name": "scale",
@@ -97,7 +118,18 @@
       "alias": [
         "draw"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "scale pixel values for each drawn sample",
+          "name": "scale",
+          "value": "DRAW_SCALE"
+        },
+        {
+          "help": "draw every pixel for sample directly",
+          "name": "full",
+          "value": "DRAW_FULL"
+        }
+      ],
       "default": "DRAW_SCALE",
       "description": "<dd><p>Set the draw mode. This is mostly useful to set for high <var>n</var>.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>scale</samp>\u2019</dt>\n<dd><p>Scale pixel values for each drawn sample.\n</p>\n</dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Draw every sample directly.\n</p></dd>\n</dl>\n<p>Default value is <code>scale</code>.\n</p></dd>",
       "name": "draw",

@@ -52,7 +52,18 @@
       "alias": [
         "interp"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "nearest neighbour",
+          "name": "nearest",
+          "value": 0
+        },
+        {
+          "help": "bilinear",
+          "name": "bilinear",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set interpolation type. Can be <code>bilinear</code> or <code>nearest</code>. Default is <code>bilinear</code>.\n</p></dd>",
       "name": "interp",

@@ -40,7 +40,28 @@
       "alias": [
         "interp_algo"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "nearest neighbour",
+          "name": "nearest",
+          "value": "INTERP_ALGO_NEAREST"
+        },
+        {
+          "help": "bilinear",
+          "name": "bilinear",
+          "value": "INTERP_ALGO_BILINEAR"
+        },
+        {
+          "help": "bicubic",
+          "name": "bicubic",
+          "value": "INTERP_ALGO_BICUBIC"
+        },
+        {
+          "help": "lanczos",
+          "name": "lanczos",
+          "value": "INTERP_ALGO_LANCZOS"
+        }
+      ],
       "default": "INTERP_ALGO_DEFAULT",
       "description": "<dd><p>Sets the algorithm used for scaling:\n</p>\n<dl compact=\"compact\">\n<dt><var>nearest</var></dt>\n<dd><p>Nearest neighbour\n</p>\n<p>Used by default if input parameters match the desired output.\n</p>\n</dd>\n<dt><var>bilinear</var></dt>\n<dd><p>Bilinear\n</p>\n</dd>\n<dt><var>bicubic</var></dt>\n<dd><p>Bicubic\n</p>\n<p>This is the default.\n</p>\n</dd>\n<dt><var>lanczos</var></dt>\n<dd><p>Lanczos\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "interp_algo",
@@ -84,7 +105,23 @@
       "alias": [
         "force_original_aspect_ratio"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "disable",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "decrease",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "increase",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Work the same as the identical <a href=\"#scale\">scale</a> filter options.\n</p>\n</dd>",
       "name": "force_original_aspect_ratio",

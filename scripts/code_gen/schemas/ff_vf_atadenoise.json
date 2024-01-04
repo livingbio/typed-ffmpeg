@@ -106,7 +106,18 @@
       "alias": [
         "a"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "parallel",
+          "name": "p",
+          "value": "PARALLEL"
+        },
+        {
+          "help": "serial",
+          "name": "s",
+          "value": "SERIAL"
+        }
+      ],
       "default": "PARALLEL",
       "description": "<dd><p>Set what variant of algorithm filter will use for averaging. Default is <code>p</code> parallel.\nAlternatively can be set to <code>s</code> serial.\n</p>\n<p>Parallel can be faster then serial, while other way around is never true.\nParallel will abort early on first change being greater then thresholds, while serial\nwill continue processing other side of frames if they are equal or below thresholds.\n</p>\n</dd>",
       "name": "a",

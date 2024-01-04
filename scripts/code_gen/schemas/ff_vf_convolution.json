@@ -150,7 +150,23 @@
       "alias": [
         "0mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "square matrix",
+          "name": "square",
+          "value": "MATRIX_SQUARE"
+        },
+        {
+          "help": "single row matrix",
+          "name": "row",
+          "value": "MATRIX_ROW"
+        },
+        {
+          "help": "single column matrix",
+          "name": "column",
+          "value": "MATRIX_COLUMN"
+        }
+      ],
       "default": "MATRIX_SQUARE",
       "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
       "name": "0mode",
@@ -161,7 +177,23 @@
       "alias": [
         "1mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "square matrix",
+          "name": "square",
+          "value": "MATRIX_SQUARE"
+        },
+        {
+          "help": "single row matrix",
+          "name": "row",
+          "value": "MATRIX_ROW"
+        },
+        {
+          "help": "single column matrix",
+          "name": "column",
+          "value": "MATRIX_COLUMN"
+        }
+      ],
       "default": "MATRIX_SQUARE",
       "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
       "name": "1mode",
@@ -172,7 +204,23 @@
       "alias": [
         "2mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "square matrix",
+          "name": "square",
+          "value": "MATRIX_SQUARE"
+        },
+        {
+          "help": "single row matrix",
+          "name": "row",
+          "value": "MATRIX_ROW"
+        },
+        {
+          "help": "single column matrix",
+          "name": "column",
+          "value": "MATRIX_COLUMN"
+        }
+      ],
       "default": "MATRIX_SQUARE",
       "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
       "name": "2mode",
@@ -183,7 +231,23 @@
       "alias": [
         "3mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "square matrix",
+          "name": "square",
+          "value": "MATRIX_SQUARE"
+        },
+        {
+          "help": "single row matrix",
+          "name": "row",
+          "value": "MATRIX_ROW"
+        },
+        {
+          "help": "single column matrix",
+          "name": "column",
+          "value": "MATRIX_COLUMN"
+        }
+      ],
       "default": "MATRIX_SQUARE",
       "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
       "name": "3mode",

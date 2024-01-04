@@ -79,7 +79,43 @@
       "alias": [
         "output_fmt"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "let dda pick its preferred format",
+          "name": "auto",
+          "value": 0
+        },
+        {
+          "help": "only output default 8 Bit format",
+          "name": "8bit",
+          "value": "DXGI_FORMAT_B8G8R8A8_UNORM"
+        },
+        {
+          "help": "only output 8 Bit BGRA",
+          "name": "bgra",
+          "value": "DXGI_FORMAT_B8G8R8A8_UNORM"
+        },
+        {
+          "help": "only output default 10 Bit format",
+          "name": "10bit",
+          "value": "DXGI_FORMAT_R10G10B10A2_UNORM"
+        },
+        {
+          "help": "only output 10 Bit X2BGR10",
+          "name": "x2bgr10",
+          "value": "DXGI_FORMAT_R10G10B10A2_UNORM"
+        },
+        {
+          "help": "only output default 16 Bit format",
+          "name": "16bit",
+          "value": "DXGI_FORMAT_R16G16B16A16_FLOAT"
+        },
+        {
+          "help": "only output 16 Bit RGBAF16",
+          "name": "rgbaf16",
+          "value": "DXGI_FORMAT_R16G16B16A16_FLOAT"
+        }
+      ],
       "default": "DXGI_FORMAT_B8G8R8A8_UNORM",
       "description": "<dd><p>Desired filter output format.\nDefaults to 8 Bit BGRA.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Passes all supported output formats to DDA and returns what DDA decides to use.\n</p></dd>\n<dt>\u2018<samp>8bit</samp>\u2019</dt>\n<dt>\u2018<samp>bgra</samp>\u2019</dt>\n<dd><p>8 Bit formats always work, and DDA will convert to them if necessary.\n</p></dd>\n<dt>\u2018<samp>10bit</samp>\u2019</dt>\n<dt>\u2018<samp>x2bgr10</samp>\u2019</dt>\n<dd><p>Filter initialization will fail if 10 bit format is requested but unavailable.\n</p></dd>\n</dl>\n</dd>",
       "name": "output_fmt",

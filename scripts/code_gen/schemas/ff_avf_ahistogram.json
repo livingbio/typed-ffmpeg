@@ -18,7 +18,18 @@
       "alias": [
         "dmode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "all channels use single histogram",
+          "name": "single",
+          "value": "SINGLE"
+        },
+        {
+          "help": "each channel have own histogram",
+          "name": "separate",
+          "value": "SEPARATE"
+        }
+      ],
       "default": "SINGLE",
       "description": "<dd><p>Specify how histogram is calculated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>single</samp>\u2019</dt>\n<dd><p>Use single histogram for all channels.\n</p></dd>\n<dt>\u2018<samp>separate</samp>\u2019</dt>\n<dd><p>Use separate histogram for each channel.\n</p></dd>\n</dl>\n<p>Default is <code>single</code>.\n</p>\n</dd>",
       "name": "dmode",
@@ -53,7 +64,33 @@
       "alias": [
         "scale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "LOG"
+        },
+        {
+          "help": "square root",
+          "name": "sqrt",
+          "value": "SQRT"
+        },
+        {
+          "help": "cubic root",
+          "name": "cbrt",
+          "value": "CBRT"
+        },
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "LINEAR"
+        },
+        {
+          "help": "reverse logarithmic",
+          "name": "rlog",
+          "value": "RLOG"
+        }
+      ],
       "default": "LOG",
       "description": "<dd><p>Set display scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n</p></dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>square root\n</p></dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>cubic root\n</p></dd>\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n<dt>\u2018<samp>rlog</samp>\u2019</dt>\n<dd><p>reverse logarithmic\n</p></dd>\n</dl>\n<p>Default is <code>log</code>.\n</p>\n</dd>",
       "name": "scale",
@@ -64,7 +101,18 @@
       "alias": [
         "ascale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "ALOG"
+        },
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "ALINEAR"
+        }
+      ],
       "default": "ALOG",
       "description": "<dd><p>Set amplitude scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n</p></dd>\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n</dl>\n<p>Default is <code>log</code>.\n</p>\n</dd>",
       "name": "ascale",
@@ -97,7 +145,18 @@
       "alias": [
         "slide"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "replace old rows with new",
+          "name": "replace",
+          "value": "REPLACE"
+        },
+        {
+          "help": "scroll from top to bottom",
+          "name": "scroll",
+          "value": "SCROLL"
+        }
+      ],
       "default": "REPLACE",
       "description": "<dd><p>Set sonogram sliding.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>replace old rows with new ones.\n</p></dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>scroll from top to bottom.\n</p></dd>\n</dl>\n<p>Default is <code>replace</code>.\n</p>\n</dd>",
       "name": "slide",
@@ -108,7 +167,18 @@
       "alias": [
         "hmode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "use absolute samples",
+          "name": "abs",
+          "value": "ABS"
+        },
+        {
+          "help": "use unchanged samples",
+          "name": "sign",
+          "value": "SIGN"
+        }
+      ],
       "default": "ABS",
       "description": "<dd><p>Set histogram mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>abs</samp>\u2019</dt>\n<dd><p>Use absolute values of samples.\n</p></dd>\n<dt>\u2018<samp>sign</samp>\u2019</dt>\n<dd><p>Use untouched values of samples.\n</p></dd>\n</dl>\n<p>Default is <code>abs</code>.\n</p></dd>",
       "name": "hmode",

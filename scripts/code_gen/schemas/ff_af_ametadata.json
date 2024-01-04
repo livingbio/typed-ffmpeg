@@ -18,7 +18,33 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "select frame",
+          "name": "select",
+          "value": "METADATA_SELECT"
+        },
+        {
+          "help": "add new metadata",
+          "name": "add",
+          "value": "METADATA_ADD"
+        },
+        {
+          "help": "modify metadata",
+          "name": "modify",
+          "value": "METADATA_MODIFY"
+        },
+        {
+          "help": "delete metadata",
+          "name": "delete",
+          "value": "METADATA_DELETE"
+        },
+        {
+          "help": "print metadata",
+          "name": "print",
+          "value": "METADATA_PRINT"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set mode of operation of the filter.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>select</samp>\u2019</dt>\n<dd><p>If both <code>value</code> and <code>key</code> is set, select frames\nwhich have such metadata. If only <code>key</code> is set, select\nevery frame that has such key in metadata.\n</p>\n</dd>\n<dt>\u2018<samp>add</samp>\u2019</dt>\n<dd><p>Add new metadata <code>key</code> and <code>value</code>. If key is already available\ndo nothing.\n</p>\n</dd>\n<dt>\u2018<samp>modify</samp>\u2019</dt>\n<dd><p>Modify value of already present key.\n</p>\n</dd>\n<dt>\u2018<samp>delete</samp>\u2019</dt>\n<dd><p>If <code>value</code> is set, delete only keys that have such value.\nOtherwise, delete key. If <code>key</code> is not set, delete all metadata values in\nthe frame.\n</p>\n</dd>\n<dt>\u2018<samp>print</samp>\u2019</dt>\n<dd><p>Print key and its value if metadata was found. If <code>key</code> is not set print all\nmetadata values available in frame.\n</p></dd>\n</dl>\n</dd>",
       "name": "mode",
@@ -51,7 +77,43 @@
       "alias": [
         "function"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "same_str",
+          "value": "METADATAF_SAME_STR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "starts_with",
+          "value": "METADATAF_STARTS_WITH"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "less",
+          "value": "METADATAF_LESS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "equal",
+          "value": "METADATAF_EQUAL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "greater",
+          "value": "METADATAF_GREATER"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "expr",
+          "value": "METADATAF_EXPR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "ends_with",
+          "value": "METADATAF_ENDS_WITH"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Which function to use when comparing metadata value and <code>value</code>.\n</p>\n<p>Can be one of following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>same_str</samp>\u2019</dt>\n<dd><p>Values are interpreted as strings, returns true if metadata value is same as <code>value</code>.\n</p>\n</dd>\n<dt>\u2018<samp>starts_with</samp>\u2019</dt>\n<dd><p>Values are interpreted as strings, returns true if metadata value starts with\nthe <code>value</code> option string.\n</p>\n</dd>\n<dt>\u2018<samp>less</samp>\u2019</dt>\n<dd><p>Values are interpreted as floats, returns true if metadata value is less than <code>value</code>.\n</p>\n</dd>\n<dt>\u2018<samp>equal</samp>\u2019</dt>\n<dd><p>Values are interpreted as floats, returns true if <code>value</code> is equal with metadata value.\n</p>\n</dd>\n<dt>\u2018<samp>greater</samp>\u2019</dt>\n<dd><p>Values are interpreted as floats, returns true if metadata value is greater than <code>value</code>.\n</p>\n</dd>\n<dt>\u2018<samp>expr</samp>\u2019</dt>\n<dd><p>Values are interpreted as floats, returns true if expression from option <code>expr</code>\nevaluates to true.\n</p>\n</dd>\n<dt>\u2018<samp>ends_with</samp>\u2019</dt>\n<dd><p>Values are interpreted as strings, returns true if metadata value ends with\nthe <code>value</code> option string.\n</p></dd>\n</dl>\n</dd>",
       "name": "function",

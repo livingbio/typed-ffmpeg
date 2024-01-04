@@ -59,7 +59,18 @@
       "alias": [
         "preset"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "reference",
+          "name": "reference",
+          "value": 0
+        },
+        {
+          "help": "skintones",
+          "name": "skintones",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set colorchecker colors preset, only available in the\n<code>colorchart</code> source.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>reference</samp>\u2019</dt>\n<dt>\u2018<samp>skintones</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>reference</code>.\n</p></dd>",
       "name": "preset",

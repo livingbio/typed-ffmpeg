@@ -33,7 +33,18 @@
       "alias": [
         "secondary"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "process only first secondary frame, ignore rest",
+          "name": "first",
+          "value": 0
+        },
+        {
+          "help": "process all secondary frames",
+          "name": "all",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set which secondary video frames will be processed from second input video stream,\ncan be <var>first</var> or <var>all</var>. Default is <var>all</var>.\n</p></dd>",
       "name": "secondary",

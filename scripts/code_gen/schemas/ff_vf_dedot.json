@@ -18,7 +18,18 @@
       "alias": [
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "dotcrawl",
+          "value": 1
+        },
+        {
+          "help": "0",
+          "name": "rainbows",
+          "value": 2
+        }
+      ],
       "default": 3,
       "description": "<dd><p>Set mode of operation. Can be combination of <var>dotcrawl</var> for cross-luminance reduction and/or\n<var>rainbows</var> for cross-color reduction.\n</p>\n</dd>",
       "name": "m",

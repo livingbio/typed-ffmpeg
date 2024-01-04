@@ -44,7 +44,23 @@
       "alias": [
         "eof_action"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "EOF_ACTION_REPEAT"
+        },
+        {
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "EOF_ACTION_ENDALL"
+        },
+        {
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "EOF_ACTION_PASS"
+        }
+      ],
       "default": "EOF_ACTION_REPEAT",
       "description": "<dd><p>See <a href=\"#framesync\">framesync</a>.\n</p>\n</dd>",
       "name": "eof_action",

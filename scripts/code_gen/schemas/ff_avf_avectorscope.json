@@ -19,7 +19,23 @@
         "mode",
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "lissajous",
+          "value": "LISSAJOUS"
+        },
+        {
+          "help": "",
+          "name": "lissajous_xy",
+          "value": "LISSAJOUS_XY"
+        },
+        {
+          "help": "",
+          "name": "polar",
+          "value": "POLAR"
+        }
+      ],
       "default": "LISSAJOUS",
       "description": "<dd><p>Set the vectorscope mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lissajous</samp>\u2019</dt>\n<dd><p>Lissajous rotated by 45 degrees.\n</p>\n</dd>\n<dt>\u2018<samp>lissajous_xy</samp>\u2019</dt>\n<dd><p>Same as above but not rotated.\n</p>\n</dd>\n<dt>\u2018<samp>polar</samp>\u2019</dt>\n<dd><p>Shape resembling half of circle.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>lissajous</samp>\u2019.\n</p>\n</dd>",
       "name": "mode",
@@ -153,7 +169,23 @@
       "alias": [
         "draw"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "draw dots",
+          "name": "dot",
+          "value": "DOT"
+        },
+        {
+          "help": "draw lines",
+          "name": "line",
+          "value": "LINE"
+        },
+        {
+          "help": "draw anti-aliased lines",
+          "name": "aaline",
+          "value": "AALINE"
+        }
+      ],
       "default": "DOT",
       "description": "<dd><p>Set the vectorscope drawing mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n<dd><p>Draw dot for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dd><p>Draw line between previous and current sample.\n</p>\n</dd>\n<dt>\u2018<samp>aaline</samp>\u2019</dt>\n<dd><p>Draw anti-aliased line between previous and current sample.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>dot</samp>\u2019.\n</p>\n</dd>",
       "name": "draw",
@@ -164,7 +196,28 @@
       "alias": [
         "scale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "LIN"
+        },
+        {
+          "help": "square root",
+          "name": "sqrt",
+          "value": "SQRT"
+        },
+        {
+          "help": "cube root",
+          "name": "cbrt",
+          "value": "CBRT"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "LOG"
+        }
+      ],
       "default": "LIN",
       "description": "<dd><p>Specify amplitude scale of audio samples.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p></dd>\n</dl>\n</dd>",
       "name": "scale",
@@ -186,7 +239,28 @@
       "alias": [
         "mirror"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "no mirror",
+          "name": "none",
+          "value": 0
+        },
+        {
+          "help": "mirror x",
+          "name": "x",
+          "value": 1
+        },
+        {
+          "help": "mirror y",
+          "name": "y",
+          "value": 2
+        },
+        {
+          "help": "mirror both",
+          "name": "xy",
+          "value": 3
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Mirror axis.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No mirror.\n</p>\n</dd>\n<dt>\u2018<samp>x</samp>\u2019</dt>\n<dd><p>Mirror only x axis.\n</p>\n</dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Mirror only y axis.\n</p>\n</dd>\n<dt>\u2018<samp>xy</samp>\u2019</dt>\n<dd><p>Mirror both axis.\n</p></dd>\n</dl>\n</dd>",
       "name": "mirror",

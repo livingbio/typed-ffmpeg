@@ -156,7 +156,23 @@
       "alias": [
         "force_original_aspect_ratio"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "disable",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "decrease",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "increase",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "force_original_aspect_ratio",
@@ -233,7 +249,63 @@
       "alias": [
         "colorspace"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "keep the same colorspace",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "gbr",
+          "value": "AVCOL_SPC_RGB"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt709",
+          "value": "AVCOL_SPC_BT709"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "unknown",
+          "value": "AVCOL_SPC_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt470bg",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte170m",
+          "value": "AVCOL_SPC_SMPTE170M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte240m",
+          "value": "AVCOL_SPC_SMPTE240M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "ycgco",
+          "value": "AVCOL_SPC_YCGCO"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt2020nc",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt2020c",
+          "value": "AVCOL_SPC_BT2020_CL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "ictcp",
+          "value": "AVCOL_SPC_ICTCP"
+        }
+      ],
       "default": -1,
       "description": null,
       "name": "colorspace",
@@ -244,7 +316,53 @@
       "alias": [
         "range"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "keep the same color range",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "unspecified",
+          "value": "AVCOL_RANGE_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "unknown",
+          "value": "AVCOL_RANGE_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "limited",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "tv",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "mpeg",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "full",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "pc",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "jpeg",
+          "value": "AVCOL_RANGE_JPEG"
+        }
+      ],
       "default": -1,
       "description": null,
       "name": "range",
@@ -255,7 +373,78 @@
       "alias": [
         "color_primaries"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "keep the same color primaries",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt709",
+          "value": "AVCOL_PRI_BT709"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "unknown",
+          "value": "AVCOL_PRI_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt470m",
+          "value": "AVCOL_PRI_BT470M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt470bg",
+          "value": "AVCOL_PRI_BT470BG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte170m",
+          "value": "AVCOL_PRI_SMPTE170M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte240m",
+          "value": "AVCOL_PRI_SMPTE240M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "film",
+          "value": "AVCOL_PRI_FILM"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt2020",
+          "value": "AVCOL_PRI_BT2020"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte428",
+          "value": "AVCOL_PRI_SMPTE428"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte431",
+          "value": "AVCOL_PRI_SMPTE431"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte432",
+          "value": "AVCOL_PRI_SMPTE432"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "jedec-p22",
+          "value": "AVCOL_PRI_JEDEC_P22"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "ebu3213",
+          "value": "AVCOL_PRI_EBU3213"
+        }
+      ],
       "default": -1,
       "description": null,
       "name": "color_primaries",
@@ -266,7 +455,83 @@
       "alias": [
         "color_trc"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "keep the same color transfer",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt709",
+          "value": "AVCOL_TRC_BT709"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "unknown",
+          "value": "AVCOL_TRC_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt470m",
+          "value": "AVCOL_TRC_GAMMA22"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt470bg",
+          "value": "AVCOL_TRC_GAMMA28"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte170m",
+          "value": "AVCOL_TRC_SMPTE170M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte240m",
+          "value": "AVCOL_TRC_SMPTE240M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "linear",
+          "value": "AVCOL_TRC_LINEAR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "iec61966-2-4",
+          "value": "AVCOL_TRC_IEC61966_2_4"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt1361e",
+          "value": "AVCOL_TRC_BT1361_ECG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "iec61966-2-1",
+          "value": "AVCOL_TRC_IEC61966_2_1"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt2020-10",
+          "value": "AVCOL_TRC_BT2020_10"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt2020-12",
+          "value": "AVCOL_TRC_BT2020_12"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte2084",
+          "value": "AVCOL_TRC_SMPTE2084"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "arib-std-b67",
+          "value": "AVCOL_TRC_ARIB_STD_B67"
+        }
+      ],
       "default": -1,
       "description": null,
       "name": "color_trc",
@@ -541,7 +806,53 @@
       "alias": [
         "gamut_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Hard-clip (RGB per-channel)",
+          "name": "clip",
+          "value": "GAMUT_MAP_CLIP"
+        },
+        {
+          "help": "Colorimetric soft clipping",
+          "name": "perceptual",
+          "value": "GAMUT_MAP_PERCEPTUAL"
+        },
+        {
+          "help": "Relative colorimetric clipping",
+          "name": "relative",
+          "value": "GAMUT_MAP_RELATIVE"
+        },
+        {
+          "help": "Saturation mapping (RGB -> RGB)",
+          "name": "saturation",
+          "value": "GAMUT_MAP_SATURATION"
+        },
+        {
+          "help": "Absolute colorimetric clipping",
+          "name": "absolute",
+          "value": "GAMUT_MAP_ABSOLUTE"
+        },
+        {
+          "help": "Colorimetrically desaturate colors towards white",
+          "name": "desaturate",
+          "value": "GAMUT_MAP_DESATURATE"
+        },
+        {
+          "help": "Colorimetric clip with bias towards darkening image to fit gamut",
+          "name": "darken",
+          "value": "GAMUT_MAP_DARKEN"
+        },
+        {
+          "help": "Highlight out-of-gamut colors",
+          "name": "warn",
+          "value": "GAMUT_MAP_HIGHLIGHT"
+        },
+        {
+          "help": "Linearly reduce chromaticity to fit gamut",
+          "name": "linear",
+          "value": "GAMUT_MAP_LINEAR"
+        }
+      ],
       "default": "GAMUT_MAP_PERCEPTUAL",
       "description": null,
       "name": "gamut_mode",
@@ -552,7 +863,58 @@
       "alias": [
         "tonemapping"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Automatic selection",
+          "name": "auto",
+          "value": "TONE_MAP_AUTO"
+        },
+        {
+          "help": "No tone mapping (clip",
+          "name": "clip",
+          "value": "TONE_MAP_CLIP"
+        },
+        {
+          "help": "ITU-R BT.2390 EETF",
+          "name": "bt.2390",
+          "value": "TONE_MAP_BT2390"
+        },
+        {
+          "help": "ITU-R BT.2446 Method A",
+          "name": "bt.2446a",
+          "value": "TONE_MAP_BT2446A"
+        },
+        {
+          "help": "Single-pivot polynomial spline",
+          "name": "spline",
+          "value": "TONE_MAP_SPLINE"
+        },
+        {
+          "help": "Reinhard",
+          "name": "reinhard",
+          "value": "TONE_MAP_REINHARD"
+        },
+        {
+          "help": "Mobius",
+          "name": "mobius",
+          "value": "TONE_MAP_MOBIUS"
+        },
+        {
+          "help": "Filmic tone-mapping (Hable)",
+          "name": "hable",
+          "value": "TONE_MAP_HABLE"
+        },
+        {
+          "help": "Gamma function with knee",
+          "name": "gamma",
+          "value": "TONE_MAP_GAMMA"
+        },
+        {
+          "help": "Perceptually linear stretch",
+          "name": "linear",
+          "value": "TONE_MAP_LINEAR"
+        }
+      ],
       "default": "TONE_MAP_AUTO",
       "description": null,
       "name": "tonemapping",
@@ -662,7 +1024,28 @@
       "alias": [
         "intent"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Perceptual",
+          "name": "perceptual",
+          "value": "PL_INTENT_PERCEPTUAL"
+        },
+        {
+          "help": "Relative colorimetric",
+          "name": "relative",
+          "value": "PL_INTENT_RELATIVE_COLORIMETRIC"
+        },
+        {
+          "help": "Absolute colorimetric",
+          "name": "absolute",
+          "value": "PL_INTENT_ABSOLUTE_COLORIMETRIC"
+        },
+        {
+          "help": "Saturation mapping",
+          "name": "saturation",
+          "value": "PL_INTENT_SATURATION"
+        }
+      ],
       "default": "PL_INTENT_PERCEPTUAL",
       "description": null,
       "name": "intent",
@@ -673,7 +1056,33 @@
       "alias": [
         "tonemapping_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Automatic selection",
+          "name": "auto",
+          "value": 0
+        },
+        {
+          "help": "Per-channel (RGB)",
+          "name": "rgb",
+          "value": 1
+        },
+        {
+          "help": "Maximum component",
+          "name": "max",
+          "value": 2
+        },
+        {
+          "help": "Hybrid of Luma/RGB",
+          "name": "hybrid",
+          "value": 3
+        },
+        {
+          "help": "Luminance",
+          "name": "luma",
+          "value": 4
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "tonemapping_mode",
@@ -717,7 +1126,33 @@
       "alias": [
         "dithering"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Disable dithering",
+          "name": "none",
+          "value": -1
+        },
+        {
+          "help": "Blue noise",
+          "name": "blue",
+          "value": "PL_DITHER_BLUE_NOISE"
+        },
+        {
+          "help": "Ordered LUT",
+          "name": "ordered",
+          "value": "PL_DITHER_ORDERED_LUT"
+        },
+        {
+          "help": "Fixed function ordered",
+          "name": "ordered_fixed",
+          "value": "PL_DITHER_ORDERED_FIXED"
+        },
+        {
+          "help": "White noise",
+          "name": "white",
+          "value": "PL_DITHER_WHITE_NOISE"
+        }
+      ],
       "default": "PL_DITHER_BLUE_NOISE",
       "description": null,
       "name": "dithering",
@@ -750,7 +1185,23 @@
       "alias": [
         "cones"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "L cone",
+          "name": "l",
+          "value": "PL_CONE_L"
+        },
+        {
+          "help": "M cone",
+          "name": "m",
+          "value": "PL_CONE_M"
+        },
+        {
+          "help": "S cone",
+          "name": "s",
+          "value": "PL_CONE_S"
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "cones",

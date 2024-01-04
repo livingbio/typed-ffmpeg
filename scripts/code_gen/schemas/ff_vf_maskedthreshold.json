@@ -44,7 +44,18 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "abs",
+          "value": 0
+        },
+        {
+          "help": "",
+          "name": "diff",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set mode of filter operation. Can be <code>abs</code> or <code>diff</code>.\nDefault is <code>abs</code>.\n</p></dd>",
       "name": "mode",

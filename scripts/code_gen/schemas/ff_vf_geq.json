@@ -103,7 +103,28 @@
         "interpolation",
         "i"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "nearest interpolation",
+          "name": "nearest",
+          "value": "INTERP_NEAREST"
+        },
+        {
+          "help": "nearest interpolation",
+          "name": "n",
+          "value": "INTERP_NEAREST"
+        },
+        {
+          "help": "bilinear interpolation",
+          "name": "bilinear",
+          "value": "INTERP_BILINEAR"
+        },
+        {
+          "help": "bilinear interpolation",
+          "name": "b",
+          "value": "INTERP_BILINEAR"
+        }
+      ],
       "default": "INTERP_BILINEAR",
       "description": null,
       "name": "interpolation",

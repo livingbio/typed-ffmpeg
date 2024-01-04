@@ -66,7 +66,33 @@
       "alias": [
         "out_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "input",
+          "name": "i",
+          "value": "IN_MODE"
+        },
+        {
+          "help": "desired",
+          "name": "d",
+          "value": "DESIRED_MODE"
+        },
+        {
+          "help": "output",
+          "name": "o",
+          "value": "OUT_MODE"
+        },
+        {
+          "help": "noise",
+          "name": "n",
+          "value": "NOISE_MODE"
+        },
+        {
+          "help": "error",
+          "name": "e",
+          "value": "ERROR_MODE"
+        }
+      ],
       "default": "OUT_MODE",
       "description": "<dd><p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass the 1st input.\n</p>\n</dd>\n<dt><samp>d</samp></dt>\n<dd><p>Pass the 2nd input.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass difference between desired, 2nd input and error signal estimate.\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>Pass difference between input, 1st input and error signal estimate.\n</p>\n</dd>\n<dt><samp>e</samp></dt>\n<dd><p>Pass error signal estimated samples.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",
       "name": "out_mode",
@@ -77,7 +103,23 @@
       "alias": [
         "precision"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "set auto processing precision",
+          "name": "auto",
+          "value": 0
+        },
+        {
+          "help": "set single-floating point processing precision",
+          "name": "float",
+          "value": 1
+        },
+        {
+          "help": "set double-floating point processing precision",
+          "name": "double",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n</dd>",
       "name": "precision",

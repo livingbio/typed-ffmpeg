@@ -106,7 +106,18 @@
       "alias": [
         "interpolation"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "",
+          "name": "linear",
+          "value": 0
+        },
+        {
+          "help": "",
+          "name": "cubic",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "interpolation",
@@ -117,7 +128,18 @@
       "alias": [
         "sense"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "specify locations in source to send to corners in destination",
+          "name": "source",
+          "value": "PERSPECTIVE_SENSE_SOURCE"
+        },
+        {
+          "help": "specify locations in destination to send corners of source",
+          "name": "destination",
+          "value": "PERSPECTIVE_SENSE_DESTINATION"
+        }
+      ],
       "default": "PERSPECTIVE_SENSE_SOURCE",
       "description": null,
       "name": "sense",

@@ -73,7 +73,28 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "triangular",
+          "value": "WAVE_TRI"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "t",
+          "value": "WAVE_TRI"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sinusoidal",
+          "value": "WAVE_SIN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s",
+          "value": "WAVE_SIN"
+        }
+      ],
       "default": "WAVE_TRI",
       "description": "<dd><p>Set modulation type. Default is triangular.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>triangular, t</samp>\u2019</dt>\n<dt>\u2018<samp>sinusoidal, s</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "type",

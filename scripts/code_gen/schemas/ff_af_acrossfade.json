@@ -59,7 +59,128 @@
         "curve1",
         "c1"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "no fade; keep audio as-is",
+          "name": "nofade",
+          "value": "NONE"
+        },
+        {
+          "help": "linear slope",
+          "name": "tri",
+          "value": "TRI"
+        },
+        {
+          "help": "quarter of sine wave",
+          "name": "qsin",
+          "value": "QSIN"
+        },
+        {
+          "help": "exponential sine wave",
+          "name": "esin",
+          "value": "ESIN"
+        },
+        {
+          "help": "half of sine wave",
+          "name": "hsin",
+          "value": "HSIN"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "LOG"
+        },
+        {
+          "help": "inverted parabola",
+          "name": "ipar",
+          "value": "IPAR"
+        },
+        {
+          "help": "quadratic",
+          "name": "qua",
+          "value": "QUA"
+        },
+        {
+          "help": "cubic",
+          "name": "cub",
+          "value": "CUB"
+        },
+        {
+          "help": "square root",
+          "name": "squ",
+          "value": "SQU"
+        },
+        {
+          "help": "cubic root",
+          "name": "cbr",
+          "value": "CBR"
+        },
+        {
+          "help": "parabola",
+          "name": "par",
+          "value": "PAR"
+        },
+        {
+          "help": "exponential",
+          "name": "exp",
+          "value": "EXP"
+        },
+        {
+          "help": "inverted quarter of sine wave",
+          "name": "iqsin",
+          "value": "IQSIN"
+        },
+        {
+          "help": "inverted half of sine wave",
+          "name": "ihsin",
+          "value": "IHSIN"
+        },
+        {
+          "help": "double-exponential seat",
+          "name": "dese",
+          "value": "DESE"
+        },
+        {
+          "help": "double-exponential sigmoid",
+          "name": "desi",
+          "value": "DESI"
+        },
+        {
+          "help": "logistic sigmoid",
+          "name": "losi",
+          "value": "LOSI"
+        },
+        {
+          "help": "sine cardinal function",
+          "name": "sinc",
+          "value": "SINC"
+        },
+        {
+          "help": "inverted sine cardinal function",
+          "name": "isinc",
+          "value": "ISINC"
+        },
+        {
+          "help": "quartic",
+          "name": "quat",
+          "value": "QUAT"
+        },
+        {
+          "help": "quartic root",
+          "name": "quatr",
+          "value": "QUATR"
+        },
+        {
+          "help": "squared quarter of sine wave",
+          "name": "qsin2",
+          "value": "QSIN2"
+        },
+        {
+          "help": "squared half of sine wave",
+          "name": "hsin2",
+          "value": "HSIN2"
+        }
+      ],
       "default": "TRI",
       "description": "<dd><p>Set curve for cross fade transition for first stream.\n</p>\n</dd>",
       "name": "curve1",
@@ -71,7 +192,128 @@
         "curve2",
         "c2"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "no fade; keep audio as-is",
+          "name": "nofade",
+          "value": "NONE"
+        },
+        {
+          "help": "linear slope",
+          "name": "tri",
+          "value": "TRI"
+        },
+        {
+          "help": "quarter of sine wave",
+          "name": "qsin",
+          "value": "QSIN"
+        },
+        {
+          "help": "exponential sine wave",
+          "name": "esin",
+          "value": "ESIN"
+        },
+        {
+          "help": "half of sine wave",
+          "name": "hsin",
+          "value": "HSIN"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "LOG"
+        },
+        {
+          "help": "inverted parabola",
+          "name": "ipar",
+          "value": "IPAR"
+        },
+        {
+          "help": "quadratic",
+          "name": "qua",
+          "value": "QUA"
+        },
+        {
+          "help": "cubic",
+          "name": "cub",
+          "value": "CUB"
+        },
+        {
+          "help": "square root",
+          "name": "squ",
+          "value": "SQU"
+        },
+        {
+          "help": "cubic root",
+          "name": "cbr",
+          "value": "CBR"
+        },
+        {
+          "help": "parabola",
+          "name": "par",
+          "value": "PAR"
+        },
+        {
+          "help": "exponential",
+          "name": "exp",
+          "value": "EXP"
+        },
+        {
+          "help": "inverted quarter of sine wave",
+          "name": "iqsin",
+          "value": "IQSIN"
+        },
+        {
+          "help": "inverted half of sine wave",
+          "name": "ihsin",
+          "value": "IHSIN"
+        },
+        {
+          "help": "double-exponential seat",
+          "name": "dese",
+          "value": "DESE"
+        },
+        {
+          "help": "double-exponential sigmoid",
+          "name": "desi",
+          "value": "DESI"
+        },
+        {
+          "help": "logistic sigmoid",
+          "name": "losi",
+          "value": "LOSI"
+        },
+        {
+          "help": "sine cardinal function",
+          "name": "sinc",
+          "value": "SINC"
+        },
+        {
+          "help": "inverted sine cardinal function",
+          "name": "isinc",
+          "value": "ISINC"
+        },
+        {
+          "help": "quartic",
+          "name": "quat",
+          "value": "QUAT"
+        },
+        {
+          "help": "quartic root",
+          "name": "quatr",
+          "value": "QUATR"
+        },
+        {
+          "help": "squared quarter of sine wave",
+          "name": "qsin2",
+          "value": "QSIN2"
+        },
+        {
+          "help": "squared half of sine wave",
+          "name": "hsin2",
+          "value": "HSIN2"
+        }
+      ],
       "default": "TRI",
       "description": "<dd><p>Set curve for cross fade transition for second stream.\n</p>\n<p>For description of available curve types see <a href=\"#afade\">afade</a> filter description.\n</p></dd>",
       "name": "curve2",

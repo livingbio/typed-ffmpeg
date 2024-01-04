@@ -48,7 +48,18 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "the target colors are relative",
+          "name": "relative",
+          "value": 0
+        },
+        {
+          "help": "the target colors are absolute",
+          "name": "absolute",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set the adjustments used for target colors. Can be <code>relative</code> or <code>absolute</code>.\nDefaults is <code>absolute</code>.\n</p>\n</dd>",
       "name": "type",
@@ -59,7 +70,18 @@
       "alias": [
         "kernel"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "square root of sum of squared differences",
+          "name": "euclidean",
+          "value": "EUCLIDEAN"
+        },
+        {
+          "help": "weighted square root of sum of squared differences",
+          "name": "weuclidean",
+          "value": "WEUCLIDEAN"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set the kernel used to measure color differences between mapped colors.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dt>\u2018<samp>weuclidean</samp>\u2019</dt>\n</dl>\n<p>Default is <code>euclidean</code>.\n</p></dd>",
       "name": "kernel",

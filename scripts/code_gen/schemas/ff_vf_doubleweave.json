@@ -18,7 +18,28 @@
       "alias": [
         "first_field"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "set top field first",
+          "name": "top",
+          "value": 0
+        },
+        {
+          "help": "set top field first",
+          "name": "t",
+          "value": 0
+        },
+        {
+          "help": "set bottom field first",
+          "name": "bottom",
+          "value": 1
+        },
+        {
+          "help": "set bottom field first",
+          "name": "b",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set first field. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>top, t</samp>\u2019</dt>\n<dd><p>Set the frame as top-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>bottom, b</samp>\u2019</dt>\n<dd><p>Set the frame as bottom-field-first.\n</p></dd>\n</dl>\n</dd>",
       "name": "first_field",

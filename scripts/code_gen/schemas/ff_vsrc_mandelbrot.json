@@ -147,7 +147,28 @@
       "alias": [
         "outer"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "set iteration count mode",
+          "name": "iteration_count",
+          "value": "ITERATION_COUNT"
+        },
+        {
+          "help": "set normalized iteration count mode",
+          "name": "normalized_iteration_count",
+          "value": "NORMALIZED_ITERATION_COUNT"
+        },
+        {
+          "help": "set white mode",
+          "name": "white",
+          "value": "WHITE"
+        },
+        {
+          "help": "set outz mode",
+          "name": "outz",
+          "value": "OUTZ"
+        }
+      ],
       "default": "NORMALIZED_ITERATION_COUNT",
       "description": "<dd><p>Set outer coloring mode.\nIt shall assume one of following values:\n</p><dl compact=\"compact\">\n<dt><samp>iteration_count</samp></dt>\n<dd><p>Set iteration count mode.\n</p></dd>\n<dt><samp>normalized_iteration_count</samp></dt>\n<dd><p>set normalized iteration count mode.\n</p></dd>\n</dl>\n<p>Default value is <var>normalized_iteration_count</var>.\n</p>\n</dd>",
       "name": "outer",
@@ -158,7 +179,28 @@
       "alias": [
         "inner"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "set black mode",
+          "name": "black",
+          "value": "BLACK"
+        },
+        {
+          "help": "set period mode",
+          "name": "period",
+          "value": "PERIOD"
+        },
+        {
+          "help": "show time until convergence",
+          "name": "convergence",
+          "value": "CONVTIME"
+        },
+        {
+          "help": "color based on point closest to the origin of the iterations",
+          "name": "mincol",
+          "value": "MINCOL"
+        }
+      ],
       "default": "MINCOL",
       "description": "<dd><p>Set the inner coloring mode, that is the algorithm used to draw the\nMandelbrot fractal internal region.\n</p>\n<p>It shall assume one of the following values:\n</p><dl compact=\"compact\">\n<dt><samp>black</samp></dt>\n<dd><p>Set black mode.\n</p></dd>\n<dt><samp>convergence</samp></dt>\n<dd><p>Show time until convergence.\n</p></dd>\n<dt><samp>mincol</samp></dt>\n<dd><p>Set color based on point closest to the origin of the iterations.\n</p></dd>\n<dt><samp>period</samp></dt>\n<dd><p>Set period mode.\n</p></dd>\n</dl>\n<p>Default value is <var>mincol</var>.\n</p>\n</dd>",
       "name": "inner",

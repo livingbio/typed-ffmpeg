@@ -194,7 +194,43 @@
       "alias": [
         "pc"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "disabled",
+          "name": "none",
+          "value": "P_NONE"
+        },
+        {
+          "help": "luminance",
+          "name": "lum",
+          "value": "P_LUM"
+        },
+        {
+          "help": "max",
+          "name": "max",
+          "value": "P_MAX"
+        },
+        {
+          "help": "average",
+          "name": "avg",
+          "value": "P_AVG"
+        },
+        {
+          "help": "sum",
+          "name": "sum",
+          "value": "P_SUM"
+        },
+        {
+          "help": "norm",
+          "name": "nrm",
+          "value": "P_NRM"
+        },
+        {
+          "help": "power",
+          "name": "pwr",
+          "value": "P_PWR"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set preserve color mode. The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable color preserving, this is default.\n</p></dd>\n<dt>\u2018<samp>lum</samp>\u2019</dt>\n<dd><p>Preserve luminance.\n</p></dd>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n<dd><p>Preserve max value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n<dd><p>Preserve average value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>sum</samp>\u2019</dt>\n<dd><p>Preserve sum value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>nrm</samp>\u2019</dt>\n<dd><p>Preserve normalized value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>pwr</samp>\u2019</dt>\n<dd><p>Preserve power value of RGB triplet.\n</p></dd>\n</dl>\n</dd>",
       "name": "pc",

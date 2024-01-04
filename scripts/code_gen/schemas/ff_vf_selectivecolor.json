@@ -18,7 +18,18 @@
       "alias": [
         "correction_method"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "absolute",
+          "value": "CORRECTION_METHOD_ABSOLUTE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "relative",
+          "value": "CORRECTION_METHOD_RELATIVE"
+        }
+      ],
       "default": "CORRECTION_METHOD_ABSOLUTE",
       "description": "<dd><p>Select color correction method.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>absolute</samp>\u2019</dt>\n<dd><p>Specified adjustments are applied \"as-is\" (added/subtracted to original pixel\ncomponent value).\n</p></dd>\n<dt>\u2018<samp>relative</samp>\u2019</dt>\n<dd><p>Specified adjustments are relative to the original component value.\n</p></dd>\n</dl>\n<p>Default is <code>absolute</code>.\n</p></dd>",
       "name": "correction_method",

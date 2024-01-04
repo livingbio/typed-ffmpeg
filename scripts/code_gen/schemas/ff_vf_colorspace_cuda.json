@@ -18,7 +18,28 @@
       "alias": [
         "range"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Limited range",
+          "name": "tv",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "Limited range",
+          "name": "mpeg",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "Full range",
+          "name": "pc",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "Full range",
+          "name": "jpeg",
+          "value": "AVCOL_RANGE_JPEG"
+        }
+      ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": "<dd><p>Specify output color range.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>tv</samp>\u2019</dt>\n<dd><p>TV (restricted) range\n</p>\n</dd>\n<dt>\u2018<samp>mpeg</samp>\u2019</dt>\n<dd><p>MPEG (restricted) range\n</p>\n</dd>\n<dt>\u2018<samp>pc</samp>\u2019</dt>\n<dd><p>PC (full) range\n</p>\n</dd>\n<dt>\u2018<samp>jpeg</samp>\u2019</dt>\n<dd><p>JPEG (full) range\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "range",

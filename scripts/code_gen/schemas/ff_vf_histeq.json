@@ -40,7 +40,23 @@
       "alias": [
         "antibanding"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "apply no antibanding",
+          "name": "none",
+          "value": "HISTEQ_ANTIBANDING_NONE"
+        },
+        {
+          "help": "apply weak antibanding",
+          "name": "weak",
+          "value": "HISTEQ_ANTIBANDING_WEAK"
+        },
+        {
+          "help": "apply strong antibanding",
+          "name": "strong",
+          "value": "HISTEQ_ANTIBANDING_STRONG"
+        }
+      ],
       "default": "HISTEQ_ANTIBANDING_NONE",
       "description": "<dd><p>Set the antibanding level. If enabled the filter will randomly vary\nthe luminance of output pixels by a small amount to avoid banding of\nthe histogram. Possible values are <code>none</code>, <code>weak</code> or\n<code>strong</code>. It defaults to <code>none</code>.\n</p></dd>",
       "name": "antibanding",

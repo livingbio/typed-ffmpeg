@@ -18,7 +18,48 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "merge fields",
+          "name": "merge",
+          "value": "MODE_MERGE"
+        },
+        {
+          "help": "drop even fields",
+          "name": "drop_even",
+          "value": "MODE_DROP_EVEN"
+        },
+        {
+          "help": "drop odd fields",
+          "name": "drop_odd",
+          "value": "MODE_DROP_ODD"
+        },
+        {
+          "help": "pad alternate lines with black",
+          "name": "pad",
+          "value": "MODE_PAD"
+        },
+        {
+          "help": "interleave top and bottom fields",
+          "name": "interleave_top",
+          "value": "MODE_INTERLEAVE_TOP"
+        },
+        {
+          "help": "interleave bottom and top fields",
+          "name": "interleave_bottom",
+          "value": "MODE_INTERLEAVE_BOTTOM"
+        },
+        {
+          "help": "interlace fields from two consecutive frames",
+          "name": "interlacex2",
+          "value": "MODE_INTERLACEX2"
+        },
+        {
+          "help": "merge fields keeping same frame rate",
+          "name": "mergex2",
+          "value": "MODE_MERGEX2"
+        }
+      ],
       "default": "MODE_MERGE",
       "description": "<dd><p>Specify the mode of the interlacing. This option can also be specified\nas a value alone. See below for a list of values for this option.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>merge, 0</samp>\u2019</dt>\n<dd><p>Move odd frames into the upper field, even into the lower field,\ngenerating a double height frame at half frame rate.\n</p><div class=\"example\">\n<pre class=\"example\"> ------&gt; time\nInput:\nFrame 1         Frame 2         Frame 3         Frame 4\n\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n\nOutput:\n11111                           33333\n22222                           44444\n11111                           33333\n22222                           44444\n11111                           33333\n22222                           44444\n11111                           33333\n22222                           44444\n</pre></div>\n</dd>\n<dt>\u2018<samp>drop_even, 1</samp>\u2019</dt>\n<dd><p>Only output odd frames, even frames are dropped, generating a frame with\nunchanged height at half frame rate.\n</p>\n<div class=\"example\">\n<pre class=\"example\"> ------&gt; time\nInput:\nFrame 1         Frame 2         Frame 3         Frame 4\n\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n\nOutput:\n11111                           33333\n11111                           33333\n11111                           33333\n11111                           33333\n</pre></div>\n</dd>\n<dt>\u2018<samp>drop_odd, 2</samp>\u2019</dt>\n<dd><p>Only output even frames, odd frames are dropped, generating a frame with\nunchanged height at half frame rate.\n</p>\n<div class=\"example\">\n<pre class=\"example\"> ------&gt; time\nInput:\nFrame 1         Frame 2         Frame 3         Frame 4\n\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n\nOutput:\n                22222                           44444\n                22222                           44444\n                22222                           44444\n                22222                           44444\n</pre></div>\n</dd>\n<dt>\u2018<samp>pad, 3</samp>\u2019</dt>\n<dd><p>Expand each frame to full height, but pad alternate lines with black,\ngenerating a frame with double height at the same input frame rate.\n</p>\n<div class=\"example\">\n<pre class=\"example\"> ------&gt; time\nInput:\nFrame 1         Frame 2         Frame 3         Frame 4\n\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n\nOutput:\n11111           .....           33333           .....\n.....           22222           .....           44444\n11111           .....           33333           .....\n.....           22222           .....           44444\n11111           .....           33333           .....\n.....           22222           .....           44444\n11111           .....           33333           .....\n.....           22222           .....           44444\n</pre></div>\n</dd>\n<dt>\u2018<samp>interleave_top, 4</samp>\u2019</dt>\n<dd><p>Interleave the upper field from odd frames with the lower field from\neven frames, generating a frame with unchanged height at half frame rate.\n</p>\n<div class=\"example\">\n<pre class=\"example\"> ------&gt; time\nInput:\nFrame 1         Frame 2         Frame 3         Frame 4\n\n11111&lt;-         22222           33333&lt;-         44444\n11111           22222&lt;-         33333           44444&lt;-\n11111&lt;-         22222           33333&lt;-         44444\n11111           22222&lt;-         33333           44444&lt;-\n\nOutput:\n11111                           33333\n22222                           44444\n11111                           33333\n22222                           44444\n</pre></div>\n</dd>\n<dt>\u2018<samp>interleave_bottom, 5</samp>\u2019</dt>\n<dd><p>Interleave the lower field from odd frames with the upper field from\neven frames, generating a frame with unchanged height at half frame rate.\n</p>\n<div class=\"example\">\n<pre class=\"example\"> ------&gt; time\nInput:\nFrame 1         Frame 2         Frame 3         Frame 4\n\n11111           22222&lt;-         33333           44444&lt;-\n11111&lt;-         22222           33333&lt;-         44444\n11111           22222&lt;-         33333           44444&lt;-\n11111&lt;-         22222           33333&lt;-         44444\n\nOutput:\n22222                           44444\n11111                           33333\n22222                           44444\n11111                           33333\n</pre></div>\n</dd>\n<dt>\u2018<samp>interlacex2, 6</samp>\u2019</dt>\n<dd><p>Double frame rate with unchanged height. Frames are inserted each\ncontaining the second temporal field from the previous input frame and\nthe first temporal field from the next input frame. This mode relies on\nthe top_field_first flag. Useful for interlaced video displays with no\nfield synchronisation.\n</p>\n<div class=\"example\">\n<pre class=\"example\"> ------&gt; time\nInput:\nFrame 1         Frame 2         Frame 3         Frame 4\n\n11111           22222           33333           44444\n 11111           22222           33333           44444\n11111           22222           33333           44444\n 11111           22222           33333           44444\n\nOutput:\n11111   22222   22222   33333   33333   44444   44444\n 11111   11111   22222   22222   33333   33333   44444\n11111   22222   22222   33333   33333   44444   44444\n 11111   11111   22222   22222   33333   33333   44444\n</pre></div>\n</dd>\n<dt>\u2018<samp>mergex2, 7</samp>\u2019</dt>\n<dd><p>Move odd frames into the upper field, even into the lower field,\ngenerating a double height frame at same frame rate.\n</p>\n<div class=\"example\">\n<pre class=\"example\"> ------&gt; time\nInput:\nFrame 1         Frame 2         Frame 3         Frame 4\n\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n11111           22222           33333           44444\n\nOutput:\n11111           33333           33333           55555\n22222           22222           44444           44444\n11111           33333           33333           55555\n22222           22222           44444           44444\n11111           33333           33333           55555\n22222           22222           44444           44444\n11111           33333           33333           55555\n22222           22222           44444           44444\n</pre></div>\n</dd>\n</dl>\n<p>Numeric values are deprecated but are accepted for backward\ncompatibility reasons.\n</p>\n<p>Default mode is <code>merge</code>.\n</p>\n</dd>",
       "name": "mode",
@@ -29,7 +70,38 @@
       "alias": [
         "flags"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "enable vertical low-pass filter",
+          "name": "low_pass_filter",
+          "value": 1
+        },
+        {
+          "help": "enable vertical low-pass filter",
+          "name": "vlpf",
+          "value": 1
+        },
+        {
+          "help": "enable complex vertical low-pass filter",
+          "name": "complex_filter",
+          "value": 2
+        },
+        {
+          "help": "enable complex vertical low-pass filter",
+          "name": "cvlpf",
+          "value": 2
+        },
+        {
+          "help": "force a timebase which can represent timestamps exactly",
+          "name": "exact_tb",
+          "value": 4
+        },
+        {
+          "help": "bypass already interlaced frames",
+          "name": "bypass_il",
+          "value": 8
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Specify flags influencing the filter process.\n</p>\n<p>Available value for <var>flags</var> is:\n</p>\n<dl compact=\"compact\">\n<dt><samp>low_pass_filter, vlpf</samp></dt>\n<dd><p>Enable linear vertical low-pass filtering in the filter.\nVertical low-pass filtering is required when creating an interlaced\ndestination from a progressive source which contains high-frequency\nvertical detail. Filtering will reduce interlace \u2019twitter\u2019 and Moire\npatterning.\n</p>\n</dd>\n<dt><samp>complex_filter, cvlpf</samp></dt>\n<dd><p>Enable complex vertical low-pass filtering.\nThis will slightly less reduce interlace \u2019twitter\u2019 and Moire\npatterning but better retain detail and subjective sharpness impression.\n</p>\n</dd>\n<dt><samp>bypass_il</samp></dt>\n<dd><p>Bypass already interlaced frames, only adjust the frame rate.\n</p></dd>\n</dl>\n<p>Vertical low-pass filtering and bypassing already interlaced frames can only be\nenabled for <samp>mode</samp> <var>interleave_top</var> and <var>interleave_bottom</var>.\n</p>\n</dd>",
       "name": "flags",

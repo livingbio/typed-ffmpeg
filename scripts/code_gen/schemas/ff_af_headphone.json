@@ -46,7 +46,18 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "time domain",
+          "name": "time",
+          "value": 0
+        },
+        {
+          "help": "frequency domain",
+          "name": "freq",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set processing type. Can be <var>time</var> or <var>freq</var>. <var>time</var> is\nprocessing audio in time domain which is slow.\n<var>freq</var> is processing audio in frequency domain which is fast.\nDefault is <var>freq</var>.\n</p>\n</dd>",
       "name": "type",
@@ -68,7 +79,18 @@
       "alias": [
         "hrir"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "hrir files have exactly 2 channels",
+          "name": "stereo",
+          "value": 0
+        },
+        {
+          "help": "single multichannel hrir file",
+          "name": "multich",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set format of hrir stream.\nDefault value is <var>stereo</var>. Alternative value is <var>multich</var>.\nIf value is set to <var>stereo</var>, number of additional streams should\nbe greater or equal to number of input channels in first input stream.\nAlso each additional stream should have stereo number of channels.\nIf value is set to <var>multich</var>, number of additional streams should\nbe exactly one. Also number of input channels of additional stream\nshould be equal or greater than twice number of channels of first input\nstream.\n</p></dd>",
       "name": "hrir",

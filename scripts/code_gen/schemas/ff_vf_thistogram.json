@@ -31,7 +31,23 @@
         "display_mode",
         "d"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "overlay",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "parade",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "stack",
+          "value": 2
+        }
+      ],
       "default": 2,
       "description": "<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>stack</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed below each other.\n</p>\n</dd>\n<dt>\u2018<samp>parade</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed side by side.\n</p>\n</dd>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dd><p>Presents information identical to that in the <code>parade</code>, except\nthat the graphs representing color components are superimposed directly\nover one another.\n</p></dd>\n</dl>\n<p>Default is <code>stack</code>.\n</p>\n</dd>",
       "name": "display_mode",
@@ -43,7 +59,18 @@
         "levels_mode",
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "linear",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "logarithmic",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.\nDefault is <code>linear</code>.\n</p>\n</dd>",
       "name": "levels_mode",
@@ -102,7 +129,33 @@
       "alias": [
         "slide"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "draw new frames",
+          "name": "frame",
+          "value": 0
+        },
+        {
+          "help": "replace old columns with new",
+          "name": "replace",
+          "value": 1
+        },
+        {
+          "help": "scroll from right to left",
+          "name": "scroll",
+          "value": 2
+        },
+        {
+          "help": "scroll from left to right",
+          "name": "rscroll",
+          "value": 3
+        },
+        {
+          "help": "display graph in single frame",
+          "name": "picture",
+          "value": 4
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Draw new frame when right border is reached.\n</p>\n</dd>\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>\u2018<samp>rscroll</samp>\u2019</dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>\u2018<samp>picture</samp>\u2019</dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n<p>Default is <code>replace</code>.\n</p></dd>",
       "name": "slide",

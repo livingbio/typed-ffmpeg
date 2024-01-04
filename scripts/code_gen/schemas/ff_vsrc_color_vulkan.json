@@ -83,7 +83,38 @@
       "alias": [
         "out_range"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "Full range",
+          "name": "full",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "Limited range",
+          "name": "limited",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "Full range",
+          "name": "jpeg",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "Limited range",
+          "name": "mpeg",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "Limited range",
+          "name": "tv",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "Full range",
+          "name": "pc",
+          "value": "AVCOL_RANGE_JPEG"
+        }
+      ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": "<dd><p>Set the output YCbCr sample range.\n</p>\n<p>This allows the autodetected value to be overridden as well as allows forcing\na specific value used for the output and encoder. If not specified, the\nrange depends on the pixel format. Possible values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto/unknown</samp>\u2019</dt>\n<dd><p>Choose automatically.\n</p>\n</dd>\n<dt>\u2018<samp>jpeg/full/pc</samp>\u2019</dt>\n<dd><p>Set full range (0-255 in case of 8-bit luma).\n</p>\n</dd>\n<dt>\u2018<samp>mpeg/limited/tv</samp>\u2019</dt>\n<dd><p>Set \"MPEG\" range (16-235 in case of 8-bit luma).\n</p></dd>\n</dl>\n</dd>",
       "name": "out_range",

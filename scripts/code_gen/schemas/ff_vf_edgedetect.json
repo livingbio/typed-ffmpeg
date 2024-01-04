@@ -40,7 +40,23 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "white/gray wires on black",
+          "name": "wires",
+          "value": "MODE_WIRES"
+        },
+        {
+          "help": "mix colors",
+          "name": "colormix",
+          "value": "MODE_COLORMIX"
+        },
+        {
+          "help": "detect edges on planes",
+          "name": "canny",
+          "value": "MODE_CANNY"
+        }
+      ],
       "default": "MODE_WIRES",
       "description": "<dd><p>Define the drawing mode.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>wires</samp>\u2019</dt>\n<dd><p>Draw white/gray wires on black background.\n</p>\n</dd>\n<dt>\u2018<samp>colormix</samp>\u2019</dt>\n<dd><p>Mix the colors to create a paint/cartoon effect.\n</p>\n</dd>\n<dt>\u2018<samp>canny</samp>\u2019</dt>\n<dd><p>Apply Canny edge detector on all selected planes.\n</p></dd>\n</dl>\n<p>Default value is <var>wires</var>.\n</p>\n</dd>",
       "name": "mode",
@@ -51,7 +67,38 @@
       "alias": [
         "planes"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "filter luma plane",
+          "name": "y",
+          "value": "0x1"
+        },
+        {
+          "help": "filter u plane",
+          "name": "u",
+          "value": "0x2"
+        },
+        {
+          "help": "filter v plane",
+          "name": "v",
+          "value": "0x4"
+        },
+        {
+          "help": "filter red plane",
+          "name": "r",
+          "value": "0x4"
+        },
+        {
+          "help": "filter green plane",
+          "name": "g",
+          "value": "0x1"
+        },
+        {
+          "help": "filter blue plane",
+          "name": "b",
+          "value": "0x2"
+        }
+      ],
       "default": 7,
       "description": "<dd><p>Select planes for filtering. By default all available planes are filtered.\n</p></dd>",
       "name": "planes",

@@ -62,7 +62,18 @@
       "alias": [
         "fscale"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": 0
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set frequency scale used to draw frequency response in video output.\nCan be linear or logarithmic. Default is logarithmic.\n</p>\n</dd>",
       "name": "fscale",

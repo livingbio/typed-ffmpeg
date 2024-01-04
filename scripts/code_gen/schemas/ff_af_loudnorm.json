@@ -134,7 +134,23 @@
       "alias": [
         "print_format"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "0",
+          "name": "none",
+          "value": "NONE"
+        },
+        {
+          "help": "0",
+          "name": "json",
+          "value": "JSON"
+        },
+        {
+          "help": "0",
+          "name": "summary",
+          "value": "SUMMARY"
+        }
+      ],
       "default": "NONE",
       "description": "<dd><p>Set print format for stats. Options are summary, json, or none.\nDefault value is none.\n</p></dd>",
       "name": "print_format",

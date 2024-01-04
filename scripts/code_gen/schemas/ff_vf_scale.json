@@ -76,7 +76,48 @@
       "alias": [
         "in_color_matrix"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt601",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt470",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte170m",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt709",
+          "value": "AVCOL_SPC_BT709"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "fcc",
+          "value": "AVCOL_SPC_FCC"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte240m",
+          "value": "AVCOL_SPC_SMPTE240M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt2020",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        }
+      ],
       "default": -1,
       "description": null,
       "name": "in_color_matrix",
@@ -87,7 +128,48 @@
       "alias": [
         "out_color_matrix"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt601",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt470",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte170m",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt709",
+          "value": "AVCOL_SPC_BT709"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "fcc",
+          "value": "AVCOL_SPC_FCC"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte240m",
+          "value": "AVCOL_SPC_SMPTE240M"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "bt2020",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        }
+      ],
       "default": "AVCOL_SPC_UNSPECIFIED",
       "description": null,
       "name": "out_color_matrix",
@@ -98,7 +180,48 @@
       "alias": [
         "in_range"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "auto",
+          "value": "AVCOL_RANGE_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "unknown",
+          "value": "AVCOL_RANGE_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "full",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "limited",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "jpeg",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "mpeg",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "tv",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "pc",
+          "value": "AVCOL_RANGE_JPEG"
+        }
+      ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": null,
       "name": "in_range",
@@ -109,7 +232,48 @@
       "alias": [
         "out_range"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "auto",
+          "value": "AVCOL_RANGE_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "unknown",
+          "value": "AVCOL_RANGE_UNSPECIFIED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "full",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "limited",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "jpeg",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "mpeg",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "tv",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "pc",
+          "value": "AVCOL_RANGE_JPEG"
+        }
+      ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": null,
       "name": "out_range",
@@ -164,7 +328,23 @@
       "alias": [
         "force_original_aspect_ratio"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "disable",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "decrease",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "increase",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": null,
       "name": "force_original_aspect_ratio",

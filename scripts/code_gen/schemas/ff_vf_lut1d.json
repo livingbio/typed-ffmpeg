@@ -29,7 +29,33 @@
       "alias": [
         "interp"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "use values from the nearest defined points",
+          "name": "nearest",
+          "value": "INTERPOLATE_1D_NEAREST"
+        },
+        {
+          "help": "use values from the linear interpolation",
+          "name": "linear",
+          "value": "INTERPOLATE_1D_LINEAR"
+        },
+        {
+          "help": "use values from the cosine interpolation",
+          "name": "cosine",
+          "value": "INTERPOLATE_1D_COSINE"
+        },
+        {
+          "help": "use values from the cubic interpolation",
+          "name": "cubic",
+          "value": "INTERPOLATE_1D_CUBIC"
+        },
+        {
+          "help": "use values from the spline interpolation",
+          "name": "spline",
+          "value": "INTERPOLATE_1D_SPLINE"
+        }
+      ],
       "default": "INTERPOLATE_1D_LINEAR",
       "description": "<dd><p>Select interpolation mode.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dd><p>Use values from the nearest defined point.\n</p></dd>\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dd><p>Interpolate values using the linear interpolation.\n</p></dd>\n<dt>\u2018<samp>cosine</samp>\u2019</dt>\n<dd><p>Interpolate values using the cosine interpolation.\n</p></dd>\n<dt>\u2018<samp>cubic</samp>\u2019</dt>\n<dd><p>Interpolate values using the cubic interpolation.\n</p></dd>\n<dt>\u2018<samp>spline</samp>\u2019</dt>\n<dd><p>Interpolate values using the spline interpolation.\n</p></dd>\n</dl>\n</dd>",
       "name": "interp",

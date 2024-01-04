@@ -22,7 +22,48 @@
       "alias": [
         "dither"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "ordered 8x8 bayer dithering (deterministic)",
+          "name": "bayer",
+          "value": "DITHERING_BAYER"
+        },
+        {
+          "help": "dithering as defined by Paul Heckbert in 1982 (simple error diffusion)",
+          "name": "heckbert",
+          "value": "DITHERING_HECKBERT"
+        },
+        {
+          "help": "Floyd and Steingberg dithering (error diffusion)",
+          "name": "floyd_steinberg",
+          "value": "DITHERING_FLOYD_STEINBERG"
+        },
+        {
+          "help": "Frankie Sierra dithering v2 (error diffusion)",
+          "name": "sierra2",
+          "value": "DITHERING_SIERRA2"
+        },
+        {
+          "help": "Frankie Sierra dithering v2 \\\"Lite\\\" (error diffusion)",
+          "name": "sierra2_4a",
+          "value": "DITHERING_SIERRA2_4A"
+        },
+        {
+          "help": "Frankie Sierra dithering v3 (error diffusion)",
+          "name": "sierra3",
+          "value": "DITHERING_SIERRA3"
+        },
+        {
+          "help": "Burkes dithering (error diffusion)",
+          "name": "burkes",
+          "value": "DITHERING_BURKES"
+        },
+        {
+          "help": "Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)",
+          "name": "atkinson",
+          "value": "DITHERING_ATKINSON"
+        }
+      ],
       "default": "DITHERING_SIERRA2_4A",
       "description": "<dd><p>Select dithering mode. Available algorithms are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bayer</samp>\u2019</dt>\n<dd><p>Ordered 8x8 bayer dithering (deterministic)\n</p></dd>\n<dt>\u2018<samp>heckbert</samp>\u2019</dt>\n<dd><p>Dithering as defined by Paul Heckbert in 1982 (simple error diffusion).\nNote: this dithering is sometimes considered \"wrong\" and is included as a\nreference.\n</p></dd>\n<dt>\u2018<samp>floyd_steinberg</samp>\u2019</dt>\n<dd><p>Floyd and Steingberg dithering (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra2</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v2 (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra2_4a</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v2 \"Lite\" (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra3</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v3 (error diffusion)\n</p></dd>\n<dt>\u2018<samp>burkes</samp>\u2019</dt>\n<dd><p>Burkes dithering (error diffusion)\n</p></dd>\n<dt>\u2018<samp>atkinson</samp>\u2019</dt>\n<dd><p>Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)\n</p></dd>\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable dithering.\n</p></dd>\n</dl>\n<p>Default is <var>sierra2_4a</var>.\n</p>\n</dd>",
       "name": "dither",
@@ -44,7 +85,13 @@
       "alias": [
         "diff_mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "process smallest different rectangle",
+          "name": "rectangle",
+          "value": "DIFF_MODE_RECTANGLE"
+        }
+      ],
       "default": "DIFF_MODE_NONE",
       "description": "<dd><p>If set, define the zone to process\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>rectangle</samp>\u2019</dt>\n<dd><p>Only the changing rectangle will be reprocessed. This is similar to GIF\ncropping/offsetting compression mechanism. This option can be useful for speed\nif only a part of the image is changing, and has use cases such as limiting the\nscope of the error diffusal <samp>dither</samp> to the rectangle that bounds the\nmoving scene (it leads to more deterministic output if the scene doesn\u2019t change\nmuch, and as a result less moving noise and better GIF compression).\n</p></dd>\n</dl>\n<p>Default is <var>none</var>.\n</p>\n</dd>",
       "name": "diff_mode",

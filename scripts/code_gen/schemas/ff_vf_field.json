@@ -18,7 +18,18 @@
       "alias": [
         "type"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "select top field",
+          "name": "top",
+          "value": "FIELD_TYPE_TOP"
+        },
+        {
+          "help": "select bottom field",
+          "name": "bottom",
+          "value": "FIELD_TYPE_BOTTOM"
+        }
+      ],
       "default": "FIELD_TYPE_TOP",
       "description": "<dd><p>Specify whether to extract the top (if the value is <code>0</code> or\n<code>top</code>) or the bottom field (if the value is <code>1</code> or\n<code>bottom</code>).\n</p></dd>",
       "name": "type",

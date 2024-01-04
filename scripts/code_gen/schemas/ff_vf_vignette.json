@@ -52,7 +52,18 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "forward",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "backward",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set forward/backward mode.\n</p>\n<p>Available modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>forward</samp>\u2019</dt>\n<dd><p>The larger the distance from the central point, the darker the image becomes.\n</p>\n</dd>\n<dt>\u2018<samp>backward</samp>\u2019</dt>\n<dd><p>The larger the distance from the central point, the brighter the image becomes.\nThis can be used to reverse a vignette effect, though there is no automatic\ndetection to extract the lens <samp>angle</samp> and other settings (yet). It can\nalso be used to create a burning effect.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>forward</samp>\u2019.\n</p>\n</dd>",
       "name": "mode",

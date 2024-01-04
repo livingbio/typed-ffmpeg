@@ -129,7 +129,18 @@
       "alias": [
         "o"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "horizontal",
+          "name": "h",
+          "value": 0
+        },
+        {
+          "help": "vertical",
+          "name": "v",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set orientation, can be horizontal: <code>h</code> or vertical: <code>v</code>,\ndefault is <code>h</code>.\n</p>\n</dd>",
       "name": "o",
@@ -162,7 +173,18 @@
       "alias": [
         "m"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "peak",
+          "name": "p",
+          "value": 0
+        },
+        {
+          "help": "rms",
+          "name": "r",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set metering mode, can be peak: <code>p</code> or rms: <code>r</code>,\ndefault is <code>p</code>.\n</p>\n</dd>",
       "name": "m",
@@ -173,7 +195,18 @@
       "alias": [
         "ds"
       ],
-      "choices": [],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "LINEAR"
+        },
+        {
+          "help": "log",
+          "name": "log",
+          "value": "LOG"
+        }
+      ],
       "default": "LINEAR",
       "description": "<dd><p>Set display scale, can be linear: <code>lin</code> or log: <code>log</code>,\ndefault is <code>lin</code>.\n</p>\n</dd>",
       "name": "ds",
