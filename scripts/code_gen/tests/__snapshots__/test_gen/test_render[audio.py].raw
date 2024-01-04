@@ -1,14 +1,26 @@
 
 
-from typing import Any
+from __future__ import annotations
+
 import re
+from typing import TYPE_CHECKING, Any
 
-from .base import FilterNode, FilterableStream
+from ..base import FilterableStream, FilterNode
+from ..schema import DefaultFloat, DefaultInt, DefaultStr, StreamType
 
-from .schema import Default, DefaultInt, DefaultStr, DefaultFloat
+if TYPE_CHECKING:
+    from .video import VideoStream
 
 
 class AudioStream(FilterableStream):
+    @property
+    def video(self) -> "VideoStream":
+        raise NotImplementedError("This stream does not have a video component")
+
+    @property
+    def audio(self) -> "AudioStream":
+        return AudioStream(node=self.node, selector=StreamType.audio, index=self.index)
+
     
         
     
@@ -64,8 +76,8 @@ Ref: None
         """
         filter_node = FilterNode(
             name="aap",
-            input_typings=['audio', 'audio'],
-            output_typings=['audio'],
+            input_typings=[StreamType.audio, StreamType.audio],
+            output_typings=[StreamType.audio],
             inputs=[
                 
             self,
@@ -93,11 +105,5 @@ Ref: None
         return filter_node.audio(0)
 
 
-        
-    
-
-
-class VideoStream(FilterableStream):
-    
         
     

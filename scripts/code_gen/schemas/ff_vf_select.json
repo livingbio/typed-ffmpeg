@@ -2,7 +2,7 @@
   "description": "18.17 select, aselect\nSelect frames to pass in output.\n\nThis filter accepts the following options:\n\n\nThe expression can contain the following constants:\n\n\nThe default value of the select expression is \"1\".",
   "filter_type": "vf",
   "formula_input_typings": null,
-  "formula_output_typings": "['video'] * outputs",
+  "formula_output_typings": "[StreamType.video] * outputs",
   "id": "ff_vf_select",
   "input_stream_typings": [
     {

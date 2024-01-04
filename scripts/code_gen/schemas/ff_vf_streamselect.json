@@ -1,8 +1,8 @@
 {
   "description": "11.245 streamselect, astreamselect\nSelect video or audio streams.\n\nThe filter accepts the following options:",
   "filter_type": "vf",
-  "formula_input_typings": "['video'] * inputs",
-  "formula_output_typings": "['video'] * len(re.findall(r'\\d+', map))",
+  "formula_input_typings": "[StreamType.video] * inputs",
+  "formula_output_typings": "[StreamType.video] * len(re.findall(r'\\d+', map))",
   "id": "ff_vf_streamselect",
   "input_stream_typings": [],
   "is_input_dynamic": true,

@@ -1,8 +1,11 @@
 from typing import Any
 
-from .base import FilterNode
-from .schema import Default, DefaultInt, DefaultStr, DefaultFloat
-from .stream import AudioStream, VideoStream
+from .base import FilterNode, FilterableStream
+from .schema import Default, DefaultInt, DefaultStr, DefaultFloat, StreamType
+from .streams.video import VideoStream
+from .streams.audio import AudioStream
+from .streams.av import AVStream
+
 import re
 
 
@@ -61,8 +64,8 @@ Ref: None
     """
     filter_node = FilterNode(
         name="aap",
-        input_typings=['audio', 'audio'],
-        output_typings=['audio'],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             
 

@@ -1,7 +1,7 @@
 {
   "description": "11.163 mergeplanes\nMerge color channel components from several video streams.\n\nThe filter accepts up to 4 input streams, and merge selected input\nplanes to the output video.\n\nThis filter accepts the following options:",
   "filter_type": "vf",
-  "formula_input_typings": "['video'] * int(max(hex(mapping)[2::2]))",
+  "formula_input_typings": "[StreamType.video] * int(max(hex(mapping)[2::2]))",
   "formula_output_typings": null,
   "id": "ff_vf_mergeplanes",
   "input_stream_typings": [],

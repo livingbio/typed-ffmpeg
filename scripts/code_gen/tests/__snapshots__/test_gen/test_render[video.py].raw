@@ -1,0 +1,26 @@
+
+
+from __future__ import annotations
+
+import re
+from typing import TYPE_CHECKING, Any
+
+from ..base import FilterableStream, FilterNode
+from ..schema import DefaultFloat, DefaultInt, DefaultStr, StreamType
+
+if TYPE_CHECKING:
+    from .audio import AudioStream
+
+
+class VideoStream(FilterableStream):
+    @property
+    def video(self) -> "VideoStream":
+        return VideoStream(node=self.node, index=self.index, selector=StreamType.video)
+
+    @property
+    def audio(self) -> "AudioStream":
+        raise NotImplementedError("Cannot convert video to audio")
+
+    
+        
+    

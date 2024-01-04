@@ -1,7 +1,7 @@
 {
   "description": "8.35 amix\nMixes multiple audio inputs into a single output.\n\nNote that this filter only supports float samples (the amerge\nand pan audio filters support many formats). If the amix\ninput has integer samples then aresample will be automatically\ninserted to perform the conversion to float samples.\n\nIt accepts the following parameters:",
   "filter_type": "af",
-  "formula_input_typings": "['audio'] * inputs",
+  "formula_input_typings": "[StreamType.audio] * inputs",
   "formula_output_typings": null,
   "id": "ff_af_amix",
   "input_stream_typings": [],

@@ -693,11 +693,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def adecorrelate(
-        self,
-        *,
-        stages: int | DefaultInt = DefaultInt(6),
-        seed: int | DefaultInt = DefaultInt(-1),
-        **kwargs: Any,
+        self, *, stages: int | DefaultInt = DefaultInt(6), seed: int | DefaultInt = DefaultInt(-1), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -1474,117 +1470,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def afir(
-        self,
-        *streams: "AudioStream",
-        dry: float | DefaultFloat = DefaultFloat(1.0),
-        wet: float | DefaultFloat = DefaultFloat(1.0),
-        length: float | DefaultFloat = DefaultFloat(1.0),
-        gtype: int | DefaultInt = DefaultInt(0),
-        irnorm: float | DefaultFloat = DefaultFloat(1.0),
-        irlink: bool | DefaultInt = DefaultInt(1),
-        irgain: float | DefaultFloat = DefaultFloat(1.0),
-        irfmt: int | DefaultInt = DefaultInt(1),
-        maxir: float | DefaultFloat = DefaultFloat(30.0),
-        response: bool | DefaultInt = DefaultInt(0),
-        channel: int | DefaultInt = DefaultInt(0),
-        size: str | DefaultStr = DefaultStr("hd720"),
-        rate: str | DefaultStr = DefaultStr("25"),
-        minp: int | DefaultInt = DefaultInt(8192),
-        maxp: int | DefaultInt = DefaultInt(8192),
-        nbirs: int | DefaultInt = DefaultInt(1),
-        ir: int | DefaultInt = DefaultInt(0),
-        precision: int | DefaultInt = DefaultInt(0),
-        irload: int | DefaultInt = DefaultInt(0),
-        **kwargs: Any,
-    ) -> "AudioStream":
-        """
-
-        8.25 afir
-        Apply an arbitrary Finite Impulse Response filter.
-
-        This filter is designed for applying long FIR filters,
-        up to 60 seconds long.
-
-        It can be used as component for digital crossover filters,
-        room equalization, cross talk cancellation, wavefield synthesis,
-        auralization, ambiophonics, ambisonics and spatialization.
-
-        This filter uses the streams higher than first one as FIR coefficients.
-        If the non-first stream holds a single channel, it will be used
-        for all input channels in the first stream, otherwise
-        the number of channels in the non-first stream must be same as
-        the number of channels in the first stream.
-
-        It accepts the following parameters:
-
-        Parameters:
-        ----------
-
-        :param float dry: Set dry gain. This sets input gain.
-        :param float wet: Set wet gain. This sets final output gain.
-        :param float length: Set Impulse Response filter length. Default is 1, which means whole IR is processed.
-        :param int gtype: This option is deprecated, and does nothing.
-        :param float irnorm: Set norm to be applied to IR coefficients before filtering. Allowed range is from -1 to 2. IR coefficients are normalized with calculated vector norm set by this option. For negative values, no norm is calculated, and IR coefficients are not modified at all. Default is 1.
-        :param bool irlink: For multichannel IR if this option is set to true, all IR channels will be normalized with maximal measured gain of all IR channels coefficients as set by irnorm option. When disabled, all IR coefficients in each IR channel will be normalized independently. Default is true.
-        :param float irgain: Set gain to be applied to IR coefficients before filtering. Allowed range is 0 to 1. This gain is applied after any gain applied with irnorm option.
-        :param int irfmt: Set format of IR stream. Can be mono or input. Default is input.
-        :param float maxir: Set max allowed Impulse Response filter duration in seconds. Default is 30 seconds. Allowed range is 0.1 to 60 seconds.
-        :param bool response: This option is deprecated, and does nothing.
-        :param int channel: This option is deprecated, and does nothing.
-        :param str size: This option is deprecated, and does nothing.
-        :param str rate: This option is deprecated, and does nothing.
-        :param int minp: Set minimal partition size used for convolution. Default is 8192. Allowed range is from 1 to 65536. Lower values decreases latency at cost of higher CPU usage.
-        :param int maxp: Set maximal partition size used for convolution. Default is 8192. Allowed range is from 8 to 65536. Lower values may increase CPU usage.
-        :param int nbirs: Set number of input impulse responses streams which will be switchable at runtime. Allowed range is from 1 to 32. Default is 1.
-        :param int ir: Set IR stream which will be used for convolution, starting from 0, should always be lower than supplied value by nbirs option. Default is 0. This option can be changed at runtime via commands.
-        :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto.
-        :param int irload: Set when to load IR stream. Can be init or access. First one load and prepares all IRs on initialization, second one once on first access of specific IR. Default is init.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#afir
-
-        """
-        filter_node = FilterNode(
-            name="afir",
-            input_typings=[StreamType.audio] * nbirs,
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "dry": dry,
-                "wet": wet,
-                "length": length,
-                "gtype": gtype,
-                "irnorm": irnorm,
-                "irlink": irlink,
-                "irgain": irgain,
-                "irfmt": irfmt,
-                "maxir": maxir,
-                "response": response,
-                "channel": channel,
-                "size": size,
-                "rate": rate,
-                "minp": minp,
-                "maxp": maxp,
-                "nbirs": nbirs,
-                "ir": ir,
-                "precision": precision,
-                "irload": irload,
-            }
-            | kwargs,
-        )
-        return filter_node.audio(0)
-
-    def aformat(
-        self,
-        *,
-        sample_fmts: str,
-        sample_rates: str,
-        channel_layouts: str,
-        **kwargs: Any,
-    ) -> "AudioStream":
+    def aformat(self, *, sample_fmts: str, sample_rates: str, channel_layouts: str, **kwargs: Any) -> "AudioStream":
         """
 
         8.26 aformat
@@ -2017,66 +1903,6 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def ainterleave(
-        self,
-        *streams: "AudioStream",
-        nb_inputs: int | DefaultInt = DefaultInt(2),
-        duration: int | DefaultInt = DefaultInt(0),
-        **kwargs: Any,
-    ) -> "AudioStream":
-        """
-
-        18.11 interleave, ainterleave
-        Temporally interleave frames from several inputs.
-
-        interleave works with video inputs, ainterleave with audio.
-
-        These filters read frames from several inputs and send the oldest
-        queued frame to the output.
-
-        Input streams must have well defined, monotonically increasing frame
-        timestamp values.
-
-        In order to submit one frame to output, these filters need to enqueue
-        at least one frame for each input, so they cannot work in case one
-        input is not yet terminated and will not receive incoming frames.
-
-        For example consider the case when one input is a select filter
-        which always drops input frames. The interleave filter will keep
-        reading from that input, but it will never be able to send new frames
-        to output until the input sends an end-of-stream signal.
-
-        Also, depending on inputs synchronization, the filters will drop
-        frames in case one input receives more frames than the other ones, and
-        the queue is already filled.
-
-        These filters accept the following options:
-
-        Parameters:
-        ----------
-
-        :param int nb_inputs: Set the number of different inputs, it is 2 by default.
-        :param int duration: How to determine the end-of-stream. longest The duration of the longest input. (default) shortest The duration of the shortest input. first The duration of the first input.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave
-
-        """
-        filter_node = FilterNode(
-            name="ainterleave",
-            input_typings=[StreamType.video] * nb_inputs,
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "nb_inputs": nb_inputs,
-                "duration": duration,
-            }
-            | kwargs,
-        )
-        return filter_node.audio(0)
-
     def alatency(self, **kwargs: Any) -> "AudioStream":
         """
 
@@ -2279,65 +2105,6 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def amerge(
-        self,
-        *streams: "AudioStream",
-        inputs: int | DefaultInt = DefaultInt(2),
-        **kwargs: Any,
-    ) -> "AudioStream":
-        """
-
-        8.34 amerge
-        Merge two or more audio streams into a single multi-channel stream.
-
-        The filter accepts the following options:
-
-
-        If the channel layouts of the inputs are disjoint, and therefore compatible,
-        the channel layout of the output will be set accordingly and the channels
-        will be reordered as necessary. If the channel layouts of the inputs are not
-        disjoint, the output will have all the channels of the first input then all
-        the channels of the second input, in that order, and the channel layout of
-        the output will be the default value corresponding to the total number of
-        channels.
-
-        For example, if the first input is in 2.1 (FL+FR+LF) and the second input
-        is FC+BL+BR, then the output will be in 5.1, with the channels in the
-        following order: a1, a2, b1, a3, b2, b3 (a1 is the first channel of the
-        first input, b1 is the first channel of the second input).
-
-        On the other hand, if both input are in stereo, the output channels will be
-        in the default order: a1, a2, b1, b2, and the channel layout will be
-        arbitrarily set to 4.0, which may or may not be the expected value.
-
-        All inputs must have the same sample rate, and format.
-
-        If inputs do not have the same duration, the output will stop with the
-        shortest.
-
-        Parameters:
-        ----------
-
-        :param int inputs: Set the number of inputs. Default is 2.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#amerge
-
-        """
-        filter_node = FilterNode(
-            name="amerge",
-            input_typings=[StreamType.audio] * inputs,
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "inputs": inputs,
-            }
-            | kwargs,
-        )
-        return filter_node.audio(0)
-
     def ametadata(
         self,
         *,
@@ -2386,59 +2153,6 @@ class AudioStream(FilterableStream):
                 "expr": expr,
                 "file": file,
                 "direct": direct,
-            }
-            | kwargs,
-        )
-        return filter_node.audio(0)
-
-    def amix(
-        self,
-        *streams: "AudioStream",
-        inputs: int | DefaultInt = DefaultInt(2),
-        duration: int | DefaultInt = DefaultInt(0),
-        dropout_transition: float | DefaultFloat = DefaultFloat(2.0),
-        weights: str | DefaultStr = DefaultStr("1 1"),
-        normalize: bool | DefaultInt = DefaultInt(1),
-        **kwargs: Any,
-    ) -> "AudioStream":
-        """
-
-        8.35 amix
-        Mixes multiple audio inputs into a single output.
-
-        Note that this filter only supports float samples (the amerge
-        and pan audio filters support many formats). If the amix
-        input has integer samples then aresample will be automatically
-        inserted to perform the conversion to float samples.
-
-        It accepts the following parameters:
-
-        Parameters:
-        ----------
-
-        :param int inputs: The number of inputs. If unspecified, it defaults to 2.
-        :param int duration: How to determine the end-of-stream. longest The duration of the longest input. (default) shortest The duration of the shortest input. first The duration of the first input.
-        :param float dropout_transition: The transition time, in seconds, for volume renormalization when an input stream ends. The default value is 2 seconds.
-        :param str weights: Specify weight of each input audio stream as a sequence of numbers separated by a space. If fewer weights are specified compared to number of inputs, the last weight is assigned to the remaining inputs. Default weight for each input is 1.
-        :param bool normalize: Always scale inputs instead of only doing summation of samples. Beware of heavy clipping if inputs are not normalized prior or after filtering by this filter if this option is disabled. By default is enabled.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#amix
-
-        """
-        filter_node = FilterNode(
-            name="amix",
-            input_typings=[StreamType.audio] * inputs,
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "inputs": inputs,
-                "duration": duration,
-                "dropout_transition": dropout_transition,
-                "weights": weights,
-                "normalize": normalize,
             }
             | kwargs,
         )
@@ -3306,13 +3020,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def arnndn(
-        self,
-        *,
-        model: str,
-        mix: float | DefaultFloat = DefaultFloat(1.0),
-        **kwargs: Any,
-    ) -> "AudioStream":
+    def arnndn(self, *, model: str, mix: float | DefaultFloat = DefaultFloat(1.0), **kwargs: Any) -> "AudioStream":
         """
 
         8.50 arnndn
@@ -3415,11 +3123,7 @@ class AudioStream(FilterableStream):
         return filter_node
 
     def aselect(
-        self,
-        *,
-        expr: str | DefaultStr = DefaultStr("1"),
-        outputs: int | DefaultInt = DefaultInt(1),
-        **kwargs: Any,
+        self, *, expr: str | DefaultStr = DefaultStr("1"), outputs: int | DefaultInt = DefaultInt(1), **kwargs: Any
     ) -> FilterNode:
         """
 
@@ -3685,11 +3389,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def asidedata(
-        self,
-        *,
-        mode: int | DefaultInt = DefaultInt(0),
-        type: int | DefaultInt = DefaultInt(-1),
-        **kwargs: Any,
+        self, *, mode: int | DefaultInt = DefaultInt(0), type: int | DefaultInt = DefaultInt(-1), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -3992,46 +3692,6 @@ class AudioStream(FilterableStream):
             | kwargs,
         )
         return filter_node.audio(0)
-
-    def astreamselect(
-        self,
-        *streams: "AudioStream",
-        inputs: int | DefaultInt = DefaultInt(2),
-        map: str,
-        **kwargs: Any,
-    ) -> FilterNode:
-        """
-
-        11.245 streamselect, astreamselect
-        Select video or audio streams.
-
-        The filter accepts the following options:
-
-        Parameters:
-        ----------
-
-        :param int inputs: Set number of inputs. Default is 2.
-        :param str map: Set input indexes to remap to outputs.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect
-
-        """
-        filter_node = FilterNode(
-            name="astreamselect",
-            input_typings=[StreamType.audio] * inputs,
-            output_typings=[StreamType.audio] * len(re.findall(r"\d+", map)),
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "inputs": inputs,
-                "map": map,
-            }
-            | kwargs,
-        )
-
-        return filter_node
 
     def asubboost(
         self,
@@ -5130,83 +4790,6 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def concat(
-        self,
-        *streams: "FilterableStream",
-        n: int | DefaultInt = DefaultInt(2),
-        v: int | DefaultInt = DefaultInt(1),
-        a: int | DefaultInt = DefaultInt(0),
-        unsafe: bool | DefaultInt = DefaultInt(0),
-        **kwargs: Any,
-    ) -> FilterNode:
-        """
-
-        18.9 concat
-        Concatenate audio and video streams, joining them together one after the
-        other.
-
-        The filter works on segments of synchronized video and audio streams. All
-        segments must have the same number of streams of each type, and that will
-        also be the number of streams at output.
-
-        The filter accepts the following options:
-
-
-        The filter has v+a outputs: first v video outputs, then
-        a audio outputs.
-
-        There are nx(v+a) inputs: first the inputs for the first
-        segment, in the same order as the outputs, then the inputs for the second
-        segment, etc.
-
-        Related streams do not always have exactly the same duration, for various
-        reasons including codec frame size or sloppy authoring. For that reason,
-        related synchronized streams (e.g. a video and its audio track) should be
-        concatenated at once. The concat filter will use the duration of the longest
-        stream in each segment (except the last one), and if necessary pad shorter
-        audio streams with silence.
-
-        For this filter to work correctly, all segments must start at timestamp 0.
-
-        All corresponding streams must have the same parameters in all segments; the
-        filtering system will automatically select a common pixel format for video
-        streams, and a common sample format, sample rate and channel layout for
-        audio streams, but other settings, such as resolution, must be converted
-        explicitly by the user.
-
-        Different frame rates are acceptable but will result in variable frame rate
-        at output; be sure to configure the output file to handle it.
-
-        Parameters:
-        ----------
-
-        :param int n: Set the number of segments. Default is 2.
-        :param int v: Set the number of output video streams, that is also the number of video streams in each segment. Default is 1.
-        :param int a: Set the number of output audio streams, that is also the number of audio streams in each segment. Default is 0.
-        :param bool unsafe: Activate unsafe mode: do not fail if segments have a different format.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#concat
-
-        """
-        filter_node = FilterNode(
-            name="concat",
-            input_typings=([StreamType.video] * v + [StreamType.audio] * a) * n,
-            output_typings=[StreamType.video] * v + [StreamType.audio] * a,
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "n": n,
-                "v": v,
-                "a": a,
-                "unsafe": unsafe,
-            }
-            | kwargs,
-        )
-
-        return filter_node
-
     def crossfeed(
         self,
         *,
@@ -5264,11 +4847,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def crystalizer(
-        self,
-        *,
-        i: float | DefaultFloat = DefaultFloat(2.0),
-        c: bool | DefaultInt = DefaultInt(1),
-        **kwargs: Any,
+        self, *, i: float | DefaultFloat = DefaultFloat(2.0), c: bool | DefaultInt = DefaultInt(1), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -5753,11 +5332,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def extrastereo(
-        self,
-        *,
-        m: float | DefaultFloat = DefaultFloat(2.5),
-        c: bool | DefaultInt = DefaultInt(1),
-        **kwargs: Any,
+        self, *, m: float | DefaultFloat = DefaultFloat(2.5), c: bool | DefaultInt = DefaultInt(1), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -6057,60 +5632,6 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def headphone(
-        self,
-        *streams: "AudioStream",
-        map: str,
-        gain: float | DefaultFloat = DefaultFloat(0.0),
-        lfe: float | DefaultFloat = DefaultFloat(0.0),
-        type: int | DefaultInt = DefaultInt(1),
-        size: int | DefaultInt = DefaultInt(1024),
-        hrir: int | DefaultInt = DefaultInt(0),
-        **kwargs: Any,
-    ) -> "AudioStream":
-        """
-
-        8.93 headphone
-        Apply head-related transfer functions (HRTFs) to create virtual
-        loudspeakers around the user for binaural listening via headphones.
-        The HRIRs are provided via additional streams, for each channel
-        one stereo input stream is needed.
-
-        The filter accepts the following options:
-
-        Parameters:
-        ----------
-
-        :param str map: Set mapping of input streams for convolution. The argument is a ’|’-separated list of channel names in order as they are given as additional stream inputs for filter. This also specify number of input streams. Number of input streams must be not less than number of channels in first stream plus one.
-        :param float gain: Set gain applied to audio. Value is in dB. Default is 0.
-        :param float lfe: Set custom gain for LFE channels. Value is in dB. Default is 0.
-        :param int type: Set processing type. Can be time or freq. time is processing audio in time domain which is slow. freq is processing audio in frequency domain which is fast. Default is freq.
-        :param int size: Set size of frame in number of samples which will be processed at once. Default value is 1024. Allowed range is from 1024 to 96000.
-        :param int hrir: Set format of hrir stream. Default value is stereo. Alternative value is multich. If value is set to stereo, number of additional streams should be greater or equal to number of input channels in first input stream. Also each additional stream should have stereo number of channels. If value is set to multich, number of additional streams should be exactly one. Also number of input channels of additional stream should be equal or greater than twice number of channels of first input stream.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#headphone
-
-        """
-        filter_node = FilterNode(
-            name="headphone",
-            input_typings=[StreamType.audio] + [StreamType.audio] * (len(map.split("|")) - 1) if hrir == 1 else [],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "map": map,
-                "gain": gain,
-                "lfe": lfe,
-                "type": type,
-                "size": size,
-                "hrir": hrir,
-            }
-            | kwargs,
-        )
-        return filter_node.audio(0)
-
     def highpass(
         self,
         *,
@@ -6237,117 +5758,6 @@ class AudioStream(FilterableStream):
                 "transform": transform,
                 "precision": precision,
                 "blocksize": blocksize,
-            }
-            | kwargs,
-        )
-        return filter_node.audio(0)
-
-    def join(
-        self,
-        *streams: "AudioStream",
-        inputs: int | DefaultInt = DefaultInt(2),
-        channel_layout: str | DefaultStr = DefaultStr("stereo"),
-        map: str,
-        **kwargs: Any,
-    ) -> "AudioStream":
-        """
-
-        8.95 join
-        Join multiple input streams into one multi-channel stream.
-
-        It accepts the following parameters:
-
-        The filter will attempt to guess the mappings when they are not specified
-        explicitly. It does so by first trying to find an unused matching input channel
-        and if that fails it picks the first unused input channel.
-
-        Join 3 inputs (with properly set channel layouts):
-
-        ffmpeg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex join=inputs=3 OUTPUT
-
-        Build a 5.1 output from 6 single-channel streams:
-
-        ffmpeg -i fl -i fr -i fc -i sl -i sr -i lfe -filter_complex
-        'join=inputs=6:channel_layout=5.1:map=0.0-FL|1.0-FR|2.0-FC|3.0-SL|4.0-SR|5.0-LFE'
-        out
-
-        Parameters:
-        ----------
-
-        :param int inputs: The number of input streams. It defaults to 2.
-        :param str channel_layout: The desired output channel layout. It defaults to stereo.
-        :param str map: Map channels from inputs to output. The argument is a ’|’-separated list of mappings, each in the input_idx.in_channel-out_channel form. input_idx is the 0-based index of the input stream. in_channel can be either the name of the input channel (e.g. FL for front left) or its index in the specified input stream. out_channel is the name of the output channel.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#join
-
-        """
-        filter_node = FilterNode(
-            name="join",
-            input_typings=[StreamType.audio] * inputs,
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "inputs": inputs,
-                "channel_layout": channel_layout,
-                "map": map,
-            }
-            | kwargs,
-        )
-        return filter_node.audio(0)
-
-    def ladspa(
-        self,
-        *streams: "AudioStream",
-        file: str,
-        plugin: str,
-        controls: str,
-        sample_rate: int | DefaultInt = DefaultInt(44100),
-        nb_samples: int | DefaultInt = DefaultInt(1024),
-        duration: int | DefaultInt = DefaultInt(-1),
-        latency: bool | DefaultInt = DefaultInt(0),
-        **kwargs: Any,
-    ) -> "AudioStream":
-        """
-
-        8.96 ladspa
-        Load a LADSPA (Linux Audio Developer’s Simple Plugin API) plugin.
-
-        To enable compilation of this filter you need to configure FFmpeg with
-        --enable-ladspa.
-
-        Parameters:
-        ----------
-
-        :param str file: Specifies the name of LADSPA plugin library to load. If the environment variable LADSPA_PATH is defined, the LADSPA plugin is searched in each one of the directories specified by the colon separated list in LADSPA_PATH, otherwise in the standard LADSPA paths, which are in this order: HOME/.ladspa/lib/, /usr/local/lib/ladspa/, /usr/lib/ladspa/.
-        :param str plugin: Specifies the plugin within the library. Some libraries contain only one plugin, but others contain many of them. If this is not set filter will list all available plugins within the specified library.
-        :param str controls: Set the ’|’ separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). Controls need to be defined using the following syntax: c0=value0|c1=value1|c2=value2|..., where valuei is the value set on the i-th control. Alternatively they can be also defined using the following syntax: value0|value1|value2|..., where valuei is the value set on the i-th control. If controls is set to help, all available controls and their valid ranges are printed.
-        :param int sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-        :param int nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-        :param int duration: Set the minimum duration of the sourced audio. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-        :param bool latency: Enable latency compensation, by default is disabled. Only used if plugin have inputs.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#ladspa
-
-        """
-        filter_node = FilterNode(
-            name="ladspa",
-            input_typings=None,
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "file": file,
-                "plugin": plugin,
-                "controls": controls,
-                "sample_rate": sample_rate,
-                "nb_samples": nb_samples,
-                "duration": duration,
-                "latency": latency,
             }
             | kwargs,
         )
@@ -6548,55 +5958,6 @@ class AudioStream(FilterableStream):
                 "transform": transform,
                 "precision": precision,
                 "blocksize": blocksize,
-            }
-            | kwargs,
-        )
-        return filter_node.audio(0)
-
-    def lv2(
-        self,
-        *streams: "AudioStream",
-        plugin: str,
-        controls: str,
-        sample_rate: int | DefaultInt = DefaultInt(44100),
-        nb_samples: int | DefaultInt = DefaultInt(1024),
-        duration: int | DefaultInt = DefaultInt(-1),
-        **kwargs: Any,
-    ) -> "AudioStream":
-        """
-
-        8.99 lv2
-        Load a LV2 (LADSPA Version 2) plugin.
-
-        To enable compilation of this filter you need to configure FFmpeg with
-        --enable-lv2.
-
-        Parameters:
-        ----------
-
-        :param str plugin: Specifies the plugin URI. You may need to escape ’:’.
-        :param str controls: Set the ’|’ separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). If controls is set to help, all available controls and their valid ranges are printed.
-        :param int sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-        :param int nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-        :param int duration: Set the minimum duration of the sourced audio. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-
-        Ref: https://ffmpeg.org/ffmpeg-filters.html#lv2
-
-        """
-        filter_node = FilterNode(
-            name="lv2",
-            input_typings=None,
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-                *streams,
-            ],
-            kwargs={
-                "plugin": plugin,
-                "controls": controls,
-                "sample_rate": sample_rate,
-                "nb_samples": nb_samples,
-                "duration": duration,
             }
             | kwargs,
         )
@@ -8444,11 +7805,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def tremolo(
-        self,
-        *,
-        f: float | DefaultFloat = DefaultFloat(5.0),
-        d: float | DefaultFloat = DefaultFloat(0.5),
-        **kwargs: Any,
+        self, *, f: float | DefaultFloat = DefaultFloat(5.0), d: float | DefaultFloat = DefaultFloat(0.5), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -8482,11 +7839,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def vibrato(
-        self,
-        *,
-        f: float | DefaultFloat = DefaultFloat(5.0),
-        d: float | DefaultFloat = DefaultFloat(0.5),
-        **kwargs: Any,
+        self, *, f: float | DefaultFloat = DefaultFloat(5.0), d: float | DefaultFloat = DefaultFloat(0.5), **kwargs: Any
     ) -> "AudioStream":
         """
 
