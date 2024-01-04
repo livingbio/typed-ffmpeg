@@ -18,6 +18,7 @@
       "alias": [
         "print_summary"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If set to 1, Summary statistics will be printed to the console. Default 0.\n</p></dd>",
       "name": "print_summary",

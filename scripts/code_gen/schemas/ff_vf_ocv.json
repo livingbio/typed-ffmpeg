@@ -18,6 +18,7 @@
       "alias": [
         "filter_name"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>The name of the libopencv filter to apply.\n</p>\n</dd>",
       "name": "filter_name",
@@ -28,6 +29,7 @@
       "alias": [
         "filter_params"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>The parameters to pass to the libopencv filter. If not specified, the default\nvalues are assumed.\n</p>\n</dd>",
       "name": "filter_params",

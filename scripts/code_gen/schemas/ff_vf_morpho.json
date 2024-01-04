@@ -22,6 +22,43 @@
       "alias": [
         "mode"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "erode",
+          "value": "ERODE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "dilate",
+          "value": "DILATE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "open",
+          "value": "OPEN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "close",
+          "value": "CLOSE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "gradient",
+          "value": "GRADIENT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "tophat",
+          "value": "TOPHAT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "blackhat",
+          "value": "BLACKHAT"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set morphological transform to apply, can be:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>erode</samp>\u2019</dt>\n<dt>\u2018<samp>dilate</samp>\u2019</dt>\n<dt>\u2018<samp>open</samp>\u2019</dt>\n<dt>\u2018<samp>close</samp>\u2019</dt>\n<dt>\u2018<samp>gradient</samp>\u2019</dt>\n<dt>\u2018<samp>tophat</samp>\u2019</dt>\n<dt>\u2018<samp>blackhat</samp>\u2019</dt>\n</dl>\n<p>Default is <code>erode</code>.\n</p>\n</dd>",
       "name": "mode",
@@ -32,6 +69,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set planes to filter, by default all planes except alpha are filtered.\n</p>\n</dd>",
       "name": "planes",
@@ -41,6 +79,18 @@
     {
       "alias": [
         "structure"
+      ],
+      "choices": [
+        {
+          "help": "process only first structure, ignore rest",
+          "name": "first",
+          "value": 0
+        },
+        {
+          "help": "process all structure",
+          "name": "all",
+          "value": 1
+        }
       ],
       "default": 1,
       "description": "<dd><p>Set which structure video frames will be processed from second input stream,\ncan be <var>first</var> or <var>all</var>. Default is <var>all</var>.\n</p></dd>",

@@ -22,6 +22,7 @@
       "alias": [
         "log_path"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the file path to be used to store log files.\n</p>\n</dd>",
       "name": "log_path",
@@ -32,6 +33,7 @@
       "alias": [
         "log_fmt"
       ],
+      "choices": [],
       "default": "xml",
       "description": "<dd><p>Set the format of the log file (xml, json, csv, or sub).\n</p>\n</dd>",
       "name": "log_fmt",
@@ -42,6 +44,7 @@
       "alias": [
         "pool"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the pool method to be used for computing vmaf.\nOptions are <code>min</code>, <code>harmonic_mean</code> or <code>mean</code> (default).\n</p>\n</dd>",
       "name": "pool",
@@ -52,6 +55,7 @@
       "alias": [
         "n_threads"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set number of threads to be used when initializing libvmaf.\nDefault value: <code>0</code>, no threads.\n</p>\n</dd>",
       "name": "n_threads",
@@ -62,6 +66,7 @@
       "alias": [
         "n_subsample"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set frame subsampling interval to be used.\n</p></dd>",
       "name": "n_subsample",
@@ -72,6 +77,7 @@
       "alias": [
         "model"
       ],
+      "choices": [],
       "default": "version=vmaf_v0.6.1",
       "description": "<dd><p>A \u2018|\u2018 delimited list of vmaf models. Each model can be configured with a number of parameters.\nDefault value: <code>\"version=vmaf_v0.6.1\"</code>\n</p>\n</dd>",
       "name": "model",
@@ -82,6 +88,7 @@
       "alias": [
         "feature"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>A \u2018|\u2018 delimited list of features. Each feature can be configured with a number of parameters.\n</p>\n</dd>",
       "name": "feature",

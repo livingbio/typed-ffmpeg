@@ -18,6 +18,7 @@
       "alias": [
         "amount"
       ],
+      "choices": [],
       "default": 98,
       "description": "<dd><p>The percentage of the pixels that have to be below the threshold; it defaults to\n<code>98</code>.\n</p>\n</dd>",
       "name": "amount",
@@ -29,6 +30,7 @@
         "threshold",
         "thresh"
       ],
+      "choices": [],
       "default": 32,
       "description": "<dd><p>The threshold below which a pixel value is considered black; it defaults to\n<code>32</code>.\n</p>\n</dd>",
       "name": "threshold",

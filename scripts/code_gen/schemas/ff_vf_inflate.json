@@ -18,6 +18,7 @@
       "alias": [
         "threshold0"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
       "name": "threshold0",
@@ -28,6 +29,7 @@
       "alias": [
         "threshold1"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
       "name": "threshold1",
@@ -38,6 +40,7 @@
       "alias": [
         "threshold2"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
       "name": "threshold2",
@@ -48,6 +51,7 @@
       "alias": [
         "threshold3"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
       "name": "threshold3",

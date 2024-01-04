@@ -18,6 +18,7 @@
       "alias": [
         "sigma"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the noise sigma constant. This sets denoising strength.\nDefault value is 1. Allowed range is from 0 to 30.\nUsing very high sigma with low overlap may give blocking artifacts.\n</p>\n</dd>",
       "name": "sigma",
@@ -28,6 +29,7 @@
       "alias": [
         "amount"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set amount of denoising. By default all detected noise is reduced.\nDefault value is 1. Allowed range is from 0 to 1.\n</p>\n</dd>",
       "name": "amount",
@@ -38,6 +40,7 @@
       "alias": [
         "block"
       ],
+      "choices": [],
       "default": 32,
       "description": "<dd><p>Set size of block in pixels, Default is 32, can be 8 to 256.\n</p>\n</dd>",
       "name": "block",
@@ -48,6 +51,7 @@
       "alias": [
         "overlap"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set block overlap. Default is 0.5. Allowed range is from 0.2 to 0.8.\n</p>\n</dd>",
       "name": "overlap",
@@ -57,6 +61,18 @@
     {
       "alias": [
         "method"
+      ],
+      "choices": [
+        {
+          "help": "wiener method",
+          "name": "wiener",
+          "value": 0
+        },
+        {
+          "help": "hard thresholding",
+          "name": "hard",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set denoising method. Default is <code>wiener</code>, can also be <code>hard</code>.\n</p>\n</dd>",
@@ -68,6 +84,7 @@
       "alias": [
         "prev"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set number of previous frames to use for denoising. By default is set to 0.\n</p>\n</dd>",
       "name": "prev",
@@ -78,6 +95,7 @@
       "alias": [
         "next"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set number of next frames to to use for denoising. By default is set to 0.\n</p>\n</dd>",
       "name": "next",
@@ -88,6 +106,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set planes which will be filtered, by default are all available filtered\nexcept alpha.\n</p></dd>",
       "name": "planes",
@@ -97,6 +116,118 @@
     {
       "alias": [
         "window"
+      ],
+      "choices": [
+        {
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "WFUNC_RECT"
+        },
+        {
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "WFUNC_BARTLETT"
+        },
+        {
+          "help": "Hann",
+          "name": "hann",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "WFUNC_HAMMING"
+        },
+        {
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "WFUNC_BLACKMAN"
+        },
+        {
+          "help": "Welch",
+          "name": "welch",
+          "value": "WFUNC_WELCH"
+        },
+        {
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "WFUNC_FLATTOP"
+        },
+        {
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "WFUNC_BHARRIS"
+        },
+        {
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "WFUNC_BNUTTALL"
+        },
+        {
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "WFUNC_BHANN"
+        },
+        {
+          "help": "Sine",
+          "name": "sine",
+          "value": "WFUNC_SINE"
+        },
+        {
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "WFUNC_NUTTALL"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "WFUNC_LANCZOS"
+        },
+        {
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "WFUNC_GAUSS"
+        },
+        {
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "WFUNC_TUKEY"
+        },
+        {
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "WFUNC_DOLPH"
+        },
+        {
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "WFUNC_CAUCHY"
+        },
+        {
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "WFUNC_PARZEN"
+        },
+        {
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "WFUNC_POISSON"
+        },
+        {
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "WFUNC_BOHMAN"
+        },
+        {
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "WFUNC_KAISER"
+        }
       ],
       "default": "WFUNC_HANNING",
       "description": null,

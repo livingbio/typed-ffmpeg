@@ -18,6 +18,7 @@
       "alias": [
         "intl_thres"
       ],
+      "choices": [],
       "default": 1.04,
       "description": "<dd><p>Set interlacing threshold.\n</p></dd>",
       "name": "intl_thres",
@@ -28,6 +29,7 @@
       "alias": [
         "prog_thres"
       ],
+      "choices": [],
       "default": 1.5,
       "description": "<dd><p>Set progressive threshold.\n</p></dd>",
       "name": "prog_thres",
@@ -38,6 +40,7 @@
       "alias": [
         "rep_thres"
       ],
+      "choices": [],
       "default": 3.0,
       "description": "<dd><p>Threshold for repeated field detection.\n</p></dd>",
       "name": "rep_thres",
@@ -48,6 +51,7 @@
       "alias": [
         "half_life"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Number of frames after which a given frame\u2019s contribution to the\nstatistics is halved (i.e., it contributes only 0.5 to its\nclassification). The default of 0 means that all frames seen are given\nfull weight of 1.0 forever.\n</p></dd>",
       "name": "half_life",
@@ -58,6 +62,7 @@
       "alias": [
         "analyze_interlaced_flag"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>When this is not 0 then idet will use the specified number of frames to determine\nif the interlaced flag is accurate, it will not count undetermined frames.\nIf the flag is found to be accurate it will be used without any further\ncomputations, if it is found to be inaccurate it will be cleared without any\nfurther computations. This allows inserting the idet filter as a low computational\nmethod to clean up the interlaced flag\n</p></dd>",
       "name": "analyze_interlaced_flag",

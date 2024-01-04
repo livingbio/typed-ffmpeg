@@ -18,6 +18,7 @@
       "alias": [
         "contrast"
       ],
+      "choices": [],
       "default": "1.0",
       "description": "<dd><p>Set the contrast expression. The value must be a float value in range\n<code>-1000.0</code> to <code>1000.0</code>. The default value is \"1\".\n</p>\n</dd>",
       "name": "contrast",
@@ -28,6 +29,7 @@
       "alias": [
         "brightness"
       ],
+      "choices": [],
       "default": "0.0",
       "description": "<dd><p>Set the brightness expression. The value must be a float value in\nrange <code>-1.0</code> to <code>1.0</code>. The default value is \"0\".\n</p>\n</dd>",
       "name": "brightness",
@@ -38,6 +40,7 @@
       "alias": [
         "saturation"
       ],
+      "choices": [],
       "default": "1.0",
       "description": "<dd><p>Set the saturation expression. The value must be a float in\nrange <code>0.0</code> to <code>3.0</code>. The default value is \"1\".\n</p>\n</dd>",
       "name": "saturation",
@@ -48,6 +51,7 @@
       "alias": [
         "gamma"
       ],
+      "choices": [],
       "default": "1.0",
       "description": "<dd><p>Set the gamma expression. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>.  The default value is \"1\".\n</p>\n</dd>",
       "name": "gamma",
@@ -58,6 +62,7 @@
       "alias": [
         "gamma_r"
       ],
+      "choices": [],
       "default": "1.0",
       "description": "<dd><p>Set the gamma expression for red. The value must be a float in\nrange <code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
       "name": "gamma_r",
@@ -68,6 +73,7 @@
       "alias": [
         "gamma_g"
       ],
+      "choices": [],
       "default": "1.0",
       "description": "<dd><p>Set the gamma expression for green. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
       "name": "gamma_g",
@@ -78,6 +84,7 @@
       "alias": [
         "gamma_b"
       ],
+      "choices": [],
       "default": "1.0",
       "description": "<dd><p>Set the gamma expression for blue. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
       "name": "gamma_b",
@@ -88,6 +95,7 @@
       "alias": [
         "gamma_weight"
       ],
+      "choices": [],
       "default": "1.0",
       "description": "<dd><p>Set the gamma weight expression. It can be used to reduce the effect\nof a high gamma value on bright image areas, e.g. keep them from\ngetting overamplified and just plain white. The value must be a float\nin range <code>0.0</code> to <code>1.0</code>. A value of <code>0.0</code> turns the\ngamma correction all the way down while <code>1.0</code> leaves it at its\nfull strength. Default is \"1\".\n</p>\n</dd>",
       "name": "gamma_weight",
@@ -98,6 +106,7 @@
       "alias": [
         "eval"
       ],
+      "choices": [],
       "default": "EVAL_MODE_INIT",
       "description": "<dd><p>Set when the expressions for brightness, contrast, saturation and\ngamma expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>only evaluate expressions once during the filter initialization or\nwhen a command is processed\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expressions for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p></dd>",
       "name": "eval",

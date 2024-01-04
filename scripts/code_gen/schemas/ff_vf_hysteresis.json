@@ -22,6 +22,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
       "name": "planes",
@@ -32,6 +33,7 @@
       "alias": [
         "threshold"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set threshold which is used in filtering. If pixel component value is higher than\nthis value filter algorithm for connecting components is activated.\nBy default value is 0.\n</p></dd>",
       "name": "threshold",

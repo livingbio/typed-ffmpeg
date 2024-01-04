@@ -18,6 +18,7 @@
       "alias": [
         "hue"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the color hue. Allowed range is from 0 to 360.\nDefault value is 0.\n</p>\n</dd>",
       "name": "hue",
@@ -28,6 +29,7 @@
       "alias": [
         "saturation"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set the color saturation. Allowed range is from 0 to 1.\nDefault value is 0.5.\n</p>\n</dd>",
       "name": "saturation",
@@ -38,6 +40,7 @@
       "alias": [
         "lightness"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set the color lightness. Allowed range is from 0 to 1.\nDefault value is 0.5.\n</p>\n</dd>",
       "name": "lightness",
@@ -48,6 +51,7 @@
       "alias": [
         "mix"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the mix of source lightness. By default is set to 1.0.\nAllowed range is from 0.0 to 1.0.\n</p></dd>",
       "name": "mix",

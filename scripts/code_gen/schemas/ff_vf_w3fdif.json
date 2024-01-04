@@ -18,6 +18,18 @@
       "alias": [
         "filter"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "simple",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "complex",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set the interlacing filter coefficients. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>simple</samp>\u2019</dt>\n<dd><p>Simple filter coefficient set.\n</p></dd>\n<dt>\u2018<samp>complex</samp>\u2019</dt>\n<dd><p>More-complex filter coefficient set.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>complex</samp>\u2019.\n</p>\n</dd>",
       "name": "filter",
@@ -27,6 +39,18 @@
     {
       "alias": [
         "mode"
+      ],
+      "choices": [
+        {
+          "help": "send one frame for each frame",
+          "name": "frame",
+          "value": 0
+        },
+        {
+          "help": "send one frame for each field",
+          "name": "field",
+          "value": 1
+        }
       ],
       "default": 1,
       "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n<p>The default value is <code>field</code>.\n</p>\n</dd>",
@@ -38,6 +62,23 @@
       "alias": [
         "parity"
       ],
+      "choices": [
+        {
+          "help": "assume top field first",
+          "name": "tff",
+          "value": 0
+        },
+        {
+          "help": "assume bottom field first",
+          "name": "bff",
+          "value": 1
+        },
+        {
+          "help": "auto detect parity",
+          "name": "auto",
+          "value": -1
+        }
+      ],
       "default": -1,
       "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
       "name": "parity",
@@ -47,6 +88,18 @@
     {
       "alias": [
         "deint"
+      ],
+      "choices": [
+        {
+          "help": "deinterlace all frames",
+          "name": "all",
+          "value": 0
+        },
+        {
+          "help": "only deinterlace frames marked as interlaced",
+          "name": "interlaced",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>all</samp>\u2019</dt>\n<dd><p>Deinterlace all frames,\n</p></dd>\n<dt>\u2018<samp>interlaced</samp>\u2019</dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>all</samp>\u2019.\n</p></dd>",

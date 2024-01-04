@@ -18,6 +18,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set level in.\n</p>\n</dd>",
       "name": "level_in",
@@ -28,6 +29,7 @@
       "alias": [
         "level_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set level out.\n</p>\n</dd>",
       "name": "level_out",
@@ -38,6 +40,7 @@
       "alias": [
         "bits"
       ],
+      "choices": [],
       "default": 8.0,
       "description": "<dd><p>Set bit reduction.\n</p>\n</dd>",
       "name": "bits",
@@ -48,6 +51,7 @@
       "alias": [
         "mix"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set mixing amount.\n</p>\n</dd>",
       "name": "mix",
@@ -57,6 +61,18 @@
     {
       "alias": [
         "mode"
+      ],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": 0
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Can be linear: <code>lin</code> or logarithmic: <code>log</code>.\n</p>\n</dd>",
@@ -68,6 +84,7 @@
       "alias": [
         "dc"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set DC.\n</p>\n</dd>",
       "name": "dc",
@@ -78,6 +95,7 @@
       "alias": [
         "aa"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set anti-aliasing.\n</p>\n</dd>",
       "name": "aa",
@@ -88,6 +106,7 @@
       "alias": [
         "samples"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set sample reduction.\n</p>\n</dd>",
       "name": "samples",
@@ -98,6 +117,7 @@
       "alias": [
         "lfo"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable LFO. By default disabled.\n</p>\n</dd>",
       "name": "lfo",
@@ -108,6 +128,7 @@
       "alias": [
         "lforange"
       ],
+      "choices": [],
       "default": 20.0,
       "description": "<dd><p>Set LFO range.\n</p>\n</dd>",
       "name": "lforange",
@@ -118,6 +139,7 @@
       "alias": [
         "lforate"
       ],
+      "choices": [],
       "default": 0.3,
       "description": "<dd><p>Set LFO rate.\n</p></dd>",
       "name": "lforate",

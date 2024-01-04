@@ -66,27 +66,27 @@
           {
             "help": "input",
             "name": "i",
-            "value": "['.i64=IN_MODE']"
+            "value": "IN_MODE"
           },
           {
             "help": "desired",
             "name": "d",
-            "value": "['.i64=DESIRED_MODE']"
+            "value": "DESIRED_MODE"
           },
           {
             "help": "output",
             "name": "o",
-            "value": "['.i64=OUT_MODE']"
+            "value": "OUT_MODE"
           },
           {
             "help": "noise",
             "name": "n",
-            "value": "['.i64=NOISE_MODE']"
+            "value": "NOISE_MODE"
           },
           {
             "help": "error",
             "name": "e",
-            "value": "['.i64=ERROR_MODE']"
+            "value": "ERROR_MODE"
           }
         ],
         "default": "['.i64=OUT_MODE']",
@@ -105,17 +105,17 @@
           {
             "help": "set auto processing precision",
             "name": "auto",
-            "value": "['.i64=0']"
+            "value": 0
           },
           {
             "help": "set single-floating point processing precision",
             "name": "float",
-            "value": "['.i64=1']"
+            "value": 1
           },
           {
             "help": "set double-floating point processing precision",
             "name": "double",
-            "value": "['.i64=2']"
+            "value": 2
           }
         ],
         "default": "['.i64=0']",

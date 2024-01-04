@@ -19,6 +19,7 @@
         "commands",
         "c"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the commands to be read and sent to the other filters.\n</p></dd>",
       "name": "commands",
@@ -30,6 +31,7 @@
         "filename",
         "f"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the filename of the commands to be read and sent to the other\nfilters.\n</p></dd>",
       "name": "filename",

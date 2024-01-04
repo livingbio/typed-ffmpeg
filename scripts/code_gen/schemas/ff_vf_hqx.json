@@ -18,6 +18,7 @@
       "alias": [
         "n"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set the scaling dimension: <code>2</code> for <code>hq2x</code>, <code>3</code> for\n<code>hq3x</code> and <code>4</code> for <code>hq4x</code>.\nDefault is <code>3</code>.\n</p></dd>",
       "name": "n",

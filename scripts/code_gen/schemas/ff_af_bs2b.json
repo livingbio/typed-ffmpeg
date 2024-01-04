@@ -18,6 +18,23 @@
       "alias": [
         "profile"
       ],
+      "choices": [
+        {
+          "help": "default profile",
+          "name": "default",
+          "value": "BS2B_DEFAULT_CLEVEL"
+        },
+        {
+          "help": "Chu Moy circuit",
+          "name": "cmoy",
+          "value": "BS2B_CMOY_CLEVEL"
+        },
+        {
+          "help": "Jan Meier circuit",
+          "name": "jmeier",
+          "value": "BS2B_JMEIER_CLEVEL"
+        }
+      ],
       "default": "BS2B_DEFAULT_CLEVEL",
       "description": "<dd><p>Pre-defined crossfeed level.\n</p><dl compact=\"compact\">\n<dt><samp>default</samp></dt>\n<dd><p>Default level (fcut=700, feed=50).\n</p>\n</dd>\n<dt><samp>cmoy</samp></dt>\n<dd><p>Chu Moy circuit (fcut=700, feed=60).\n</p>\n</dd>\n<dt><samp>jmeier</samp></dt>\n<dd><p>Jan Meier circuit (fcut=650, feed=95).\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "profile",
@@ -28,6 +45,7 @@
       "alias": [
         "fcut"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Cut frequency (in Hz).\n</p>\n</dd>",
       "name": "fcut",
@@ -38,6 +56,7 @@
       "alias": [
         "feed"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Feed level (in Hz).\n</p>\n</dd>",
       "name": "feed",

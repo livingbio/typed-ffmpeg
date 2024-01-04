@@ -22,6 +22,7 @@
       "alias": [
         "min_r"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set min allowed radius. Allowed range is from 0 to 254. Default is 0.\n</p></dd>",
       "name": "min_r",
@@ -32,6 +33,7 @@
       "alias": [
         "max_r"
       ],
+      "choices": [],
       "default": 8,
       "description": "<dd><p>Set max allowed radius. Allowed range is from 1 to 255. Default is 8.\n</p></dd>",
       "name": "max_r",
@@ -42,6 +44,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Set which planes to process. By default, all are used.\n</p></dd>",
       "name": "planes",

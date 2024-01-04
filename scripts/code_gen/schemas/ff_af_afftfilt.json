@@ -18,6 +18,7 @@
       "alias": [
         "real"
       ],
+      "choices": [],
       "default": "re",
       "description": "<dd><p>Set frequency domain real expression for each separate channel separated\nby \u2019|\u2019. Default is \"re\".\nIf the number of input channels is greater than the number of\nexpressions, the last specified expression is used for the remaining\noutput channels.\n</p>\n</dd>",
       "name": "real",
@@ -28,6 +29,7 @@
       "alias": [
         "imag"
       ],
+      "choices": [],
       "default": "im",
       "description": "<dd><p>Set frequency domain imaginary expression for each separate channel\nseparated by \u2019|\u2019. Default is \"im\".\n</p>\n<p>Each expression in <var>real</var> and <var>imag</var> can contain the following\nconstants and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>sr</samp></dt>\n<dd><p>sample rate\n</p>\n</dd>\n<dt><samp>b</samp></dt>\n<dd><p>current frequency bin number\n</p>\n</dd>\n<dt><samp>nb</samp></dt>\n<dd><p>number of available bins\n</p>\n</dd>\n<dt><samp>ch</samp></dt>\n<dd><p>channel number of the current expression\n</p>\n</dd>\n<dt><samp>chs</samp></dt>\n<dd><p>number of channels\n</p>\n</dd>\n<dt><samp>pts</samp></dt>\n<dd><p>current frame pts\n</p>\n</dd>\n<dt><samp>re</samp></dt>\n<dd><p>current real part of frequency bin of current channel\n</p>\n</dd>\n<dt><samp>im</samp></dt>\n<dd><p>current imaginary part of frequency bin of current channel\n</p>\n</dd>\n<dt><samp>real(b, ch)</samp></dt>\n<dd><p>Return the value of real part of frequency bin at location (<var>bin</var>,<var>channel</var>)\n</p>\n</dd>\n<dt><samp>imag(b, ch)</samp></dt>\n<dd><p>Return the value of imaginary part of frequency bin at location (<var>bin</var>,<var>channel</var>)\n</p></dd>\n</dl>\n</dd>",
       "name": "imag",
@@ -38,6 +40,7 @@
       "alias": [
         "win_size"
       ],
+      "choices": [],
       "default": 4096,
       "description": "<dd><p>Set window size. Allowed range is from 16 to 131072.\nDefault is <code>4096</code>\n</p>\n</dd>",
       "name": "win_size",
@@ -47,6 +50,118 @@
     {
       "alias": [
         "win_func"
+      ],
+      "choices": [
+        {
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "WFUNC_RECT"
+        },
+        {
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "WFUNC_BARTLETT"
+        },
+        {
+          "help": "Hann",
+          "name": "hann",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "WFUNC_HAMMING"
+        },
+        {
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "WFUNC_BLACKMAN"
+        },
+        {
+          "help": "Welch",
+          "name": "welch",
+          "value": "WFUNC_WELCH"
+        },
+        {
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "WFUNC_FLATTOP"
+        },
+        {
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "WFUNC_BHARRIS"
+        },
+        {
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "WFUNC_BNUTTALL"
+        },
+        {
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "WFUNC_BHANN"
+        },
+        {
+          "help": "Sine",
+          "name": "sine",
+          "value": "WFUNC_SINE"
+        },
+        {
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "WFUNC_NUTTALL"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "WFUNC_LANCZOS"
+        },
+        {
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "WFUNC_GAUSS"
+        },
+        {
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "WFUNC_TUKEY"
+        },
+        {
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "WFUNC_DOLPH"
+        },
+        {
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "WFUNC_CAUCHY"
+        },
+        {
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "WFUNC_PARZEN"
+        },
+        {
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "WFUNC_POISSON"
+        },
+        {
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "WFUNC_BOHMAN"
+        },
+        {
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "WFUNC_KAISER"
+        }
       ],
       "default": "WFUNC_HANNING",
       "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
@@ -58,6 +173,7 @@
       "alias": [
         "overlap"
       ],
+      "choices": [],
       "default": 0.75,
       "description": "<dd><p>Set window overlap. If set to 1, the recommended overlap for selected\nwindow function will be picked. Default is <code>0.75</code>.\n</p></dd>",
       "name": "overlap",

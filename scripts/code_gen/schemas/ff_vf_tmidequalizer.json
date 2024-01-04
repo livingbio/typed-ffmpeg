@@ -18,6 +18,7 @@
       "alias": [
         "radius"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set filtering radius. Default is <code>5</code>. Allowed range is from 1 to 127.\n</p>\n</dd>",
       "name": "radius",
@@ -28,6 +29,7 @@
       "alias": [
         "sigma"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set filtering sigma. Default is <code>0.5</code>. This controls strength of filtering.\nSetting this option to 0 effectively does nothing.\n</p>\n</dd>",
       "name": "sigma",
@@ -38,6 +40,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Set which planes to process. Default is <code>15</code>, which is all available planes.\n</p></dd>",
       "name": "planes",

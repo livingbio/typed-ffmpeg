@@ -18,6 +18,7 @@
       "alias": [
         "w"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "w",
@@ -28,6 +29,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "h",
@@ -38,6 +40,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": "same",
       "description": "<dd><p>The pixel format of the output CUDA frames. If set to the string \"same\" (the\ndefault), the input format will be kept. Note that automatic format negotiation\nand conversion is not yet supported for hardware frames\n</p>\n</dd>",
       "name": "format",
@@ -48,6 +51,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "s",
@@ -57,6 +61,48 @@
     {
       "alias": [
         "interp_algo"
+      ],
+      "choices": [
+        {
+          "help": "nearest neighbour",
+          "name": "nn",
+          "value": "NPPI_INTER_NN"
+        },
+        {
+          "help": "linear",
+          "name": "linear",
+          "value": "NPPI_INTER_LINEAR"
+        },
+        {
+          "help": "cubic",
+          "name": "cubic",
+          "value": "NPPI_INTER_CUBIC"
+        },
+        {
+          "help": "2-parameter cubic (B=1, C=0)",
+          "name": "cubic2p_bspline",
+          "value": "NPPI_INTER_CUBIC2P_BSPLINE"
+        },
+        {
+          "help": "2-parameter cubic (B=0, C=1/2)",
+          "name": "cubic2p_catmullrom",
+          "value": "NPPI_INTER_CUBIC2P_CATMULLROM"
+        },
+        {
+          "help": "2-parameter cubic (B=1/2, C=3/10)",
+          "name": "cubic2p_b05c03",
+          "value": "NPPI_INTER_CUBIC2P_B05C03"
+        },
+        {
+          "help": "supersampling",
+          "name": "super",
+          "value": "NPPI_INTER_SUPER"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "NPPI_INTER_LANCZOS"
+        }
       ],
       "default": "NPPI_INTER_CUBIC",
       "description": "<dd><p>The interpolation algorithm used for resizing. One of the following:\n</p><dl compact=\"compact\">\n<dt><samp>nn</samp></dt>\n<dd><p>Nearest neighbour.\n</p>\n</dd>\n<dt><samp>linear</samp></dt>\n<dt><samp>cubic</samp></dt>\n<dt><samp>cubic2p_bspline</samp></dt>\n<dd><p>2-parameter cubic (B=1, C=0)\n</p>\n</dd>\n<dt><samp>cubic2p_catmullrom</samp></dt>\n<dd><p>2-parameter cubic (B=0, C=1/2)\n</p>\n</dd>\n<dt><samp>cubic2p_b05c03</samp></dt>\n<dd><p>2-parameter cubic (B=1/2, C=3/10)\n</p>\n</dd>\n<dt><samp>super</samp></dt>\n<dd><p>Supersampling\n</p>\n</dd>\n<dt><samp>lanczos</samp></dt>\n</dl>\n</dd>",
@@ -68,6 +114,23 @@
       "alias": [
         "force_original_aspect_ratio"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "disable",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "decrease",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "increase",
+          "value": 2
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Enable decreasing or increasing output video width or height if necessary to\nkeep the original aspect ratio. Possible values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>disable</samp>\u2019</dt>\n<dd><p>Scale the video as specified and disable this feature.\n</p>\n</dd>\n<dt>\u2018<samp>decrease</samp>\u2019</dt>\n<dd><p>The output video dimensions will automatically be decreased if needed.\n</p>\n</dd>\n<dt>\u2018<samp>increase</samp>\u2019</dt>\n<dd><p>The output video dimensions will automatically be increased if needed.\n</p>\n</dd>\n</dl>\n<p>One useful instance of this option is that when you know a specific device\u2019s\nmaximum allowed resolution, you can use this to limit the output video to\nthat, while retaining the aspect ratio. For example, device A allows\n1280x720 playback, and your video is 1920x800. Using this option (set it to\ndecrease) and specifying 1280x720 to the command line makes the output\n1280x533.\n</p>\n<p>Please note that this is a different thing than specifying -1 for <samp>w</samp>\nor <samp>h</samp>, you still need to specify the output resolution for this option\nto work.\n</p>\n</dd>",
       "name": "force_original_aspect_ratio",
@@ -78,6 +141,7 @@
       "alias": [
         "force_divisible_by"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Ensures that both the output dimensions, width and height, are divisible by the\ngiven integer when used together with <samp>force_original_aspect_ratio</samp>. This\nworks similar to using <code>-n</code> in the <samp>w</samp> and <samp>h</samp> options.\n</p>\n<p>This option respects the value set for <samp>force_original_aspect_ratio</samp>,\nincreasing or decreasing the resolution accordingly. The video\u2019s aspect ratio\nmay be slightly modified.\n</p>\n<p>This option can be handy if you need to have a video fit within or exceed\na defined resolution using <samp>force_original_aspect_ratio</samp> but also have\nencoder restrictions on width or height divisibility.\n</p>\n</dd>",
       "name": "force_divisible_by",
@@ -87,6 +151,18 @@
     {
       "alias": [
         "eval"
+      ],
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "EVAL_MODE_INIT"
+        },
+        {
+          "help": "eval expressions during initialization and per-frame",
+          "name": "frame",
+          "value": "EVAL_MODE_FRAME"
+        }
       ],
       "default": "EVAL_MODE_INIT",
       "description": "<dd><p>Specify when to evaluate <var>width</var> and <var>height</var> expression. It accepts the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Only evaluate expressions once during the filter initialization or when a command is processed.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame.\n</p>\n</dd>\n</dl>\n</dd>",

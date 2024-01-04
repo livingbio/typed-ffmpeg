@@ -18,6 +18,7 @@
       "alias": [
         "i"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set intensity for triggering de-essing. Allowed range is from 0 to 1.\nDefault is 0.\n</p>\n</dd>",
       "name": "i",
@@ -28,6 +29,7 @@
       "alias": [
         "m"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set amount of ducking on treble part of sound. Allowed range is from 0 to 1.\nDefault is 0.5.\n</p>\n</dd>",
       "name": "m",
@@ -38,6 +40,7 @@
       "alias": [
         "f"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>How much of original frequency content to keep when de-essing. Allowed range is from 0 to 1.\nDefault is 0.5.\n</p>\n</dd>",
       "name": "f",
@@ -47,6 +50,23 @@
     {
       "alias": [
         "s"
+      ],
+      "choices": [
+        {
+          "help": "input",
+          "name": "i",
+          "value": "IN_MODE"
+        },
+        {
+          "help": "output",
+          "name": "o",
+          "value": "OUT_MODE"
+        },
+        {
+          "help": "ess",
+          "name": "e",
+          "value": "ESS_MODE"
+        }
       ],
       "default": "OUT_MODE",
       "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass ess filtered out.\n</p>\n</dd>\n<dt><samp>e</samp></dt>\n<dd><p>Pass only ess.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",

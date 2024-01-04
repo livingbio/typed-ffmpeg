@@ -14,6 +14,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "320x240",
       "description": "<dd><p>Set frame size. For the syntax of this option, check the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video\nsize\" section in the ffmpeg-utils manual</a>. Default value is \"320x240\".\n</p>\n</dd>",
       "name": "size",
@@ -25,6 +26,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
       "name": "rate",
@@ -36,6 +38,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p>\n</dd>",
       "name": "duration",
@@ -46,6 +49,7 @@
       "alias": [
         "sar"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the sample aspect ratio of the sourced video.\n</p>\n</dd>",
       "name": "sar",
@@ -56,6 +60,7 @@
       "alias": [
         "precision"
       ],
+      "choices": [],
       "default": 10,
       "description": "<dd><p>Set precision in bits for look-up table for sine calculations. Default value is 10.\nAllowed range is from 4 to 16.\n</p>\n</dd>",
       "name": "precision",
@@ -66,6 +71,7 @@
       "alias": [
         "xo"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set horizontal axis offset for output signal. Default value is 0.\n</p>\n</dd>",
       "name": "xo",
@@ -76,6 +82,7 @@
       "alias": [
         "yo"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set vertical axis offset for output signal. Default value is 0.\n</p>\n</dd>",
       "name": "yo",
@@ -86,6 +93,7 @@
       "alias": [
         "to"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set time axis offset for output signal. Default value is 0.\n</p>\n</dd>",
       "name": "to",
@@ -96,6 +104,7 @@
       "alias": [
         "k0"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set 0-order, constant added to signal phase. Default value is 0.\n</p>\n</dd>",
       "name": "k0",
@@ -106,6 +115,7 @@
       "alias": [
         "kx"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set 1-order, phase factor multiplier for horizontal axis. Default value is 0.\n</p>\n</dd>",
       "name": "kx",
@@ -116,6 +126,7 @@
       "alias": [
         "ky"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set 1-order, phase factor multiplier for vertical axis. Default value is 0.\n</p>\n</dd>",
       "name": "ky",
@@ -126,6 +137,7 @@
       "alias": [
         "kt"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set 1-order, phase factor multiplier for time axis. Default value is 0.\n</p>\n</dd>",
       "name": "kt",
@@ -136,6 +148,7 @@
       "alias": [
         "kxt"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set phase factor multipliers for combination of spatial and temporal axis.\nDefault value is 0.\n</p>\n</dd>",
       "name": "kxt",
@@ -146,6 +159,7 @@
       "alias": [
         "kyt"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set phase factor multipliers for combination of spatial and temporal axis.\nDefault value is 0.\n</p>\n</dd>",
       "name": "kyt",
@@ -156,6 +170,7 @@
       "alias": [
         "kxy"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set phase factor multipliers for combination of spatial and temporal axis.\nDefault value is 0.\n</p>\n</dd>",
       "name": "kxy",
@@ -166,6 +181,7 @@
       "alias": [
         "kx2"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set 2-order, phase factor multiplier for horizontal axis. Default value is 0.\n</p>\n</dd>",
       "name": "kx2",
@@ -176,6 +192,7 @@
       "alias": [
         "ky2"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set 2-order, phase factor multiplier for vertical axis. Default value is 0.\n</p>\n</dd>",
       "name": "ky2",
@@ -186,6 +203,7 @@
       "alias": [
         "kt2"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set 2-order, phase factor multiplier for time axis. Default value is 0.\n</p>\n</dd>",
       "name": "kt2",
@@ -196,6 +214,7 @@
       "alias": [
         "ku"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the constant added to final phase to produce chroma-blue component of signal.\nDefault value is 0.\n</p>\n</dd>",
       "name": "ku",
@@ -206,6 +225,7 @@
       "alias": [
         "kv"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the constant added to final phase to produce chroma-red component of signal.\nDefault value is 0.\n</p></dd>",
       "name": "kv",

@@ -18,6 +18,7 @@
       "alias": [
         "a0"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "a0",
@@ -28,6 +29,7 @@
       "alias": [
         "a1"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "a1",
@@ -38,6 +40,7 @@
       "alias": [
         "a2"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "a2",
@@ -48,6 +51,7 @@
       "alias": [
         "b0"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "b0",
@@ -58,6 +62,7 @@
       "alias": [
         "b1"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "b1",
@@ -68,6 +73,7 @@
       "alias": [
         "b2"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "b2",
@@ -79,6 +85,7 @@
         "mix",
         "m"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "mix",
@@ -90,6 +97,7 @@
         "channels",
         "c"
       ],
+      "choices": [],
       "default": "all",
       "description": null,
       "name": "channels",
@@ -101,6 +109,7 @@
         "normalize",
         "n"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "normalize",
@@ -111,6 +120,43 @@
       "alias": [
         "transform",
         "a"
+      ],
+      "choices": [
+        {
+          "help": "direct form I",
+          "name": "di",
+          "value": "DI"
+        },
+        {
+          "help": "direct form II",
+          "name": "dii",
+          "value": "DII"
+        },
+        {
+          "help": "transposed direct form I",
+          "name": "tdi",
+          "value": "TDI"
+        },
+        {
+          "help": "transposed direct form II",
+          "name": "tdii",
+          "value": "TDII"
+        },
+        {
+          "help": "lattice-ladder form",
+          "name": "latt",
+          "value": "LATT"
+        },
+        {
+          "help": "state variable filter form",
+          "name": "svf",
+          "value": "SVF"
+        },
+        {
+          "help": "zero-delay filter form",
+          "name": "zdf",
+          "value": "ZDF"
+        }
       ],
       "default": "DI",
       "description": null,
@@ -123,6 +169,33 @@
         "precision",
         "r"
       ],
+      "choices": [
+        {
+          "help": "automatic",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "signed 16-bit",
+          "name": "s16",
+          "value": 0
+        },
+        {
+          "help": "signed 32-bit",
+          "name": "s32",
+          "value": 1
+        },
+        {
+          "help": "floating-point single",
+          "name": "f32",
+          "value": 2
+        },
+        {
+          "help": "floating-point double",
+          "name": "f64",
+          "value": 3
+        }
+      ],
       "default": -1,
       "description": null,
       "name": "precision",
@@ -134,6 +207,7 @@
         "blocksize",
         "b"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "blocksize",

@@ -18,6 +18,7 @@
       "alias": [
         "shift"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the DC shift, allowed range is [-1, 1]. It indicates the amount to shift\nthe audio.\n</p>\n</dd>",
       "name": "shift",
@@ -28,6 +29,7 @@
       "alias": [
         "limitergain"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Optional. It should have a value much less than 1 (e.g. 0.05 or 0.02) and is\nused to prevent clipping.\n</p></dd>",
       "name": "limitergain",

@@ -18,6 +18,78 @@
       "alias": [
         "system"
       ],
+      "choices": [
+        {
+          "help": "NTSC 1953 Y'I'O' (ITU-R BT.470 System M)",
+          "name": "ntsc",
+          "value": "NTSCsystem"
+        },
+        {
+          "help": "NTSC 1953 Y'I'O' (ITU-R BT.470 System M)",
+          "name": "470m",
+          "value": "NTSCsystem"
+        },
+        {
+          "help": "EBU Y'U'V' (PAL/SECAM) (ITU-R BT.470 System B, G)",
+          "name": "ebu",
+          "value": "EBUsystem"
+        },
+        {
+          "help": "EBU Y'U'V' (PAL/SECAM) (ITU-R BT.470 System B, G)",
+          "name": "470bg",
+          "value": "EBUsystem"
+        },
+        {
+          "help": "SMPTE-C RGB",
+          "name": "smpte",
+          "value": "SMPTEsystem"
+        },
+        {
+          "help": "SMPTE-240M Y'PbPr",
+          "name": "240m",
+          "value": "SMPTE240Msystem"
+        },
+        {
+          "help": "Apple RGB",
+          "name": "apple",
+          "value": "APPLEsystem"
+        },
+        {
+          "help": "Adobe Wide Gamut RGB",
+          "name": "widergb",
+          "value": "wRGBsystem"
+        },
+        {
+          "help": "CIE 1931 RGB",
+          "name": "cie1931",
+          "value": "CIE1931system"
+        },
+        {
+          "help": "ITU.BT-709 Y'CbCr",
+          "name": "hdtv",
+          "value": "Rec709system"
+        },
+        {
+          "help": "ITU.BT-709 Y'CbCr",
+          "name": "rec709",
+          "value": "Rec709system"
+        },
+        {
+          "help": "ITU-R.BT-2020",
+          "name": "uhdtv",
+          "value": "Rec2020system"
+        },
+        {
+          "help": "ITU-R.BT-2020",
+          "name": "rec2020",
+          "value": "Rec2020system"
+        },
+        {
+          "help": "DCI-P3",
+          "name": "dcip3",
+          "value": "DCIP3"
+        }
+      ],
       "default": "Rec709system",
       "description": "<dd><p>Set color system.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>ntsc, 470m</samp>\u2019</dt>\n<dt>\u2018<samp>ebu, 470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte</samp>\u2019</dt>\n<dt>\u2018<samp>240m</samp>\u2019</dt>\n<dt>\u2018<samp>apple</samp>\u2019</dt>\n<dt>\u2018<samp>widergb</samp>\u2019</dt>\n<dt>\u2018<samp>cie1931</samp>\u2019</dt>\n<dt>\u2018<samp>rec709, hdtv</samp>\u2019</dt>\n<dt>\u2018<samp>uhdtv, rec2020</samp>\u2019</dt>\n<dt>\u2018<samp>dcip3</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "system",
@@ -28,6 +100,23 @@
       "alias": [
         "cie"
       ],
+      "choices": [
+        {
+          "help": "CIE 1931 xyY",
+          "name": "xyy",
+          "value": "XYY"
+        },
+        {
+          "help": "CIE 1960 UCS",
+          "name": "ucs",
+          "value": "UCS"
+        },
+        {
+          "help": "CIE 1976 Luv",
+          "name": "luv",
+          "value": "LUV"
+        }
+      ],
       "default": "XYY",
       "description": "<dd><p>Set CIE system.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>xyy</samp>\u2019</dt>\n<dt>\u2018<samp>ucs</samp>\u2019</dt>\n<dt>\u2018<samp>luv</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "cie",
@@ -37,6 +126,78 @@
     {
       "alias": [
         "gamuts"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "ntsc",
+          "value": "1<<NTSCsystem"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "470m",
+          "value": "1<<NTSCsystem"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "ebu",
+          "value": "1<<EBUsystem"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "470bg",
+          "value": "1<<EBUsystem"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "smpte",
+          "value": "1<<SMPTEsystem"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "240m",
+          "value": "1<<SMPTE240Msystem"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "apple",
+          "value": "1<<APPLEsystem"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "widergb",
+          "value": "1<<wRGBsystem"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "cie1931",
+          "value": "1<<CIE1931system"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "hdtv",
+          "value": "1<<Rec709system"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "rec709",
+          "value": "1<<Rec709system"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "uhdtv",
+          "value": "1<<Rec2020system"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "rec2020",
+          "value": "1<<Rec2020system"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "dcip3",
+          "value": "1<<DCIP3"
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set what gamuts to draw.\n</p>\n<p>See <code>system</code> option for available values.\n</p>\n</dd>",
@@ -49,6 +210,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": 512,
       "description": "<dd><p>Set ciescope size, by default set to 512.\n</p>\n</dd>",
       "name": "size",
@@ -60,6 +222,7 @@
         "intensity",
         "i"
       ],
+      "choices": [],
       "default": 0.001,
       "description": "<dd><p>Set intensity used to map input pixel values to CIE diagram.\n</p>\n</dd>",
       "name": "intensity",
@@ -70,6 +233,7 @@
       "alias": [
         "contrast"
       ],
+      "choices": [],
       "default": 0.75,
       "description": "<dd><p>Set contrast used to draw tongue colors that are out of active color system gamut.\n</p>\n</dd>",
       "name": "contrast",
@@ -80,6 +244,7 @@
       "alias": [
         "corrgamma"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Correct gamma displayed on scope, by default enabled.\n</p>\n</dd>",
       "name": "corrgamma",
@@ -90,6 +255,7 @@
       "alias": [
         "showwhite"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Show white point on CIE diagram, by default disabled.\n</p>\n</dd>",
       "name": "showwhite",
@@ -100,6 +266,7 @@
       "alias": [
         "gamma"
       ],
+      "choices": [],
       "default": 2.6,
       "description": "<dd><p>Set input gamma. Used only with XYZ input color space.\n</p>\n</dd>",
       "name": "gamma",
@@ -110,6 +277,7 @@
       "alias": [
         "fill"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Fill with CIE colors. By default is enabled.\n</p></dd>",
       "name": "fill",

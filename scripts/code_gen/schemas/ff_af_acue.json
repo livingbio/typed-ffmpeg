@@ -18,6 +18,7 @@
       "alias": [
         "cue"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "cue",
@@ -28,6 +29,7 @@
       "alias": [
         "preroll"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "preroll",
@@ -38,6 +40,7 @@
       "alias": [
         "buffer"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "buffer",

@@ -14,6 +14,103 @@
         "preset",
         "p"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "custom",
+          "value": -1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 0].name",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 1].name",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 2].name",
+          "value": 2
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 3].name",
+          "value": 3
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 4].name",
+          "value": 4
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 5].name",
+          "value": 5
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 6].name",
+          "value": 6
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 7].name",
+          "value": 7
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 8].name",
+          "value": 8
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[ 9].name",
+          "value": 9
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[10].name",
+          "value": 10
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[11].name",
+          "value": 11
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[12].name",
+          "value": 12
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[13].name",
+          "value": 13
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[14].name",
+          "value": 14
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[15].name",
+          "value": 15
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[16].name",
+          "value": 16
+        },
+        {
+          "help": "((void*)0)",
+          "name": "eq_presets[17].name",
+          "value": 17
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set equalizer preset.\nDefault preset is <code>flat</code>.\n</p>\n<p>Available presets are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>custom</samp>\u2019</dt>\n<dt>\u2018<samp>flat</samp>\u2019</dt>\n<dt>\u2018<samp>acoustic</samp>\u2019</dt>\n<dt>\u2018<samp>bass</samp>\u2019</dt>\n<dt>\u2018<samp>beats</samp>\u2019</dt>\n<dt>\u2018<samp>classic</samp>\u2019</dt>\n<dt>\u2018<samp>clear</samp>\u2019</dt>\n<dt>\u2018<samp>deep bass</samp>\u2019</dt>\n<dt>\u2018<samp>dubstep</samp>\u2019</dt>\n<dt>\u2018<samp>electronic</samp>\u2019</dt>\n<dt>\u2018<samp>hard-style</samp>\u2019</dt>\n<dt>\u2018<samp>hip-hop</samp>\u2019</dt>\n<dt>\u2018<samp>jazz</samp>\u2019</dt>\n<dt>\u2018<samp>metal</samp>\u2019</dt>\n<dt>\u2018<samp>movie</samp>\u2019</dt>\n<dt>\u2018<samp>pop</samp>\u2019</dt>\n<dt>\u2018<samp>r&amp;b</samp>\u2019</dt>\n<dt>\u2018<samp>rock</samp>\u2019</dt>\n<dt>\u2018<samp>vocal booster</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "preset",
@@ -25,6 +122,7 @@
         "gains",
         "g"
       ],
+      "choices": [],
       "default": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0",
       "description": "<dd><p>Set custom gains for each band. Only used if the preset option is set to <code>custom</code>.\nGains are separated by white spaces and each gain is set in dBFS.\nDefault is <code>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code>.\n</p>\n</dd>",
       "name": "gains",
@@ -36,6 +134,7 @@
         "bands",
         "b"
       ],
+      "choices": [],
       "default": "25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000",
       "description": "<dd><p>Set the custom bands from where custon equalizer gains are set.\nThis must be in strictly increasing order. Only used if the preset option is set to <code>custom</code>.\nBands are separated by white spaces and each band represent frequency in Hz.\nDefault is <code>25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000</code>.\n</p>\n</dd>",
       "name": "bands",
@@ -47,6 +146,7 @@
         "taps",
         "t"
       ],
+      "choices": [],
       "default": 4096,
       "description": "<dd><p>Set number of filter coefficients in output audio stream.\nDefault value is <code>4096</code>.\n</p>\n</dd>",
       "name": "taps",
@@ -58,6 +158,7 @@
         "sample_rate",
         "r"
       ],
+      "choices": [],
       "default": 44100,
       "description": "<dd><p>Set sample rate of output audio stream, default is <code>44100</code>.\n</p>\n</dd>",
       "name": "sample_rate",
@@ -69,6 +170,7 @@
         "nb_samples",
         "n"
       ],
+      "choices": [],
       "default": 1024,
       "description": "<dd><p>Set number of samples per each frame in output audio stream. Default is <code>1024</code>.\n</p>\n</dd>",
       "name": "nb_samples",
@@ -80,6 +182,18 @@
         "interp",
         "i"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "linear",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "cubic",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set interpolation method for FIR equalizer coefficients. Can be <code>linear</code> or <code>cubic</code>.\n</p>\n</dd>",
       "name": "interp",
@@ -90,6 +204,18 @@
       "alias": [
         "phase",
         "h"
+      ],
+      "choices": [
+        {
+          "help": "linear phase",
+          "name": "linear",
+          "value": 0
+        },
+        {
+          "help": "minimum phase",
+          "name": "min",
+          "value": 1
+        }
       ],
       "default": 1,
       "description": "<dd><p>Set phase type of FIR filter. Can be <code>linear</code> or <code>min</code>: minimum-phase.\nDefault is minimum-phase filter.\n</p></dd>",

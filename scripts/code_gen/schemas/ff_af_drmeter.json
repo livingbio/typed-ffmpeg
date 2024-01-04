@@ -18,6 +18,7 @@
       "alias": [
         "length"
       ],
+      "choices": [],
       "default": 3.0,
       "description": "<dd><p>Set window length in seconds used to split audio into segments of equal length.\nDefault is 3 seconds.\n</p></dd>",
       "name": "length",

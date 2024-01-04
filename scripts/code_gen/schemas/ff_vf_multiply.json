@@ -22,6 +22,7 @@
       "alias": [
         "scale"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the scale applied to second video stream. By default is <code>1</code>.\nAllowed range is from <code>0</code> to <code>9</code>.\n</p>\n</dd>",
       "name": "scale",
@@ -32,6 +33,7 @@
       "alias": [
         "offset"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set the offset applied to second video stream. By default is <code>0.5</code>.\nAllowed range is from <code>-1</code> to <code>1</code>.\n</p>\n</dd>",
       "name": "offset",
@@ -42,6 +44,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Specify planes from input video stream that will be processed.\nBy default all planes are processed.\n</p></dd>",
       "name": "planes",

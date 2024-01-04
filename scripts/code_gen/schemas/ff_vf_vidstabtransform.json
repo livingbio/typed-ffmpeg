@@ -18,6 +18,7 @@
       "alias": [
         "input"
       ],
+      "choices": [],
       "default": "transforms.trf",
       "description": null,
       "name": "input",
@@ -28,6 +29,7 @@
       "alias": [
         "smoothing"
       ],
+      "choices": [],
       "default": 15,
       "description": null,
       "name": "smoothing",
@@ -37,6 +39,23 @@
     {
       "alias": [
         "optalgo"
+      ],
+      "choices": [
+        {
+          "help": "global optimization",
+          "name": "opt",
+          "value": "VSOptimalL1"
+        },
+        {
+          "help": "gaussian kernel",
+          "name": "gauss",
+          "value": "VSGaussian"
+        },
+        {
+          "help": "simple averaging on motion",
+          "name": "avg",
+          "value": "VSAvg"
+        }
       ],
       "default": "VSOptimalL1",
       "description": null,
@@ -48,6 +67,7 @@
       "alias": [
         "maxshift"
       ],
+      "choices": [],
       "default": -1,
       "description": null,
       "name": "maxshift",
@@ -58,6 +78,7 @@
       "alias": [
         "maxangle"
       ],
+      "choices": [],
       "default": -1.0,
       "description": null,
       "name": "maxangle",
@@ -67,6 +88,18 @@
     {
       "alias": [
         "crop"
+      ],
+      "choices": [
+        {
+          "help": "keep border",
+          "name": "keep",
+          "value": "VSKeepBorder"
+        },
+        {
+          "help": "black border",
+          "name": "black",
+          "value": "VSCropBorder"
+        }
       ],
       "default": 0,
       "description": null,
@@ -78,6 +111,7 @@
       "alias": [
         "invert"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "invert",
@@ -88,6 +122,7 @@
       "alias": [
         "relative"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "relative",
@@ -98,6 +133,7 @@
       "alias": [
         "zoom"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "zoom",
@@ -108,6 +144,7 @@
       "alias": [
         "optzoom"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "optzoom",
@@ -118,6 +155,7 @@
       "alias": [
         "zoomspeed"
       ],
+      "choices": [],
       "default": 0.25,
       "description": null,
       "name": "zoomspeed",
@@ -127,6 +165,28 @@
     {
       "alias": [
         "interpol"
+      ],
+      "choices": [
+        {
+          "help": "no interpolation",
+          "name": "no",
+          "value": "VS_Zero"
+        },
+        {
+          "help": "linear (horizontal)",
+          "name": "linear",
+          "value": "VS_Linear"
+        },
+        {
+          "help": "bi-linear",
+          "name": "bilinear",
+          "value": "VS_BiLinear"
+        },
+        {
+          "help": "bi-cubic",
+          "name": "bicubic",
+          "value": "VS_BiCubic"
+        }
       ],
       "default": 2,
       "description": null,
@@ -138,6 +198,7 @@
       "alias": [
         "tripod"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "tripod",
@@ -148,6 +209,7 @@
       "alias": [
         "debug"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "debug",

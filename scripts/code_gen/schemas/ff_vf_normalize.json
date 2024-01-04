@@ -18,6 +18,7 @@
       "alias": [
         "blackpt"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Colors which define the output range. The minimum input value is mapped to\nthe <var>blackpt</var>. The maximum input value is mapped to the <var>whitept</var>.\nThe defaults are black and white respectively. Specifying white for\n<var>blackpt</var> and black for <var>whitept</var> will give color-inverted,\nnormalized video. Shades of grey can be used to reduce the dynamic range\n(contrast). Specifying saturated colors here can create some interesting\neffects.\n</p>\n</dd>",
       "name": "blackpt",
@@ -28,6 +29,7 @@
       "alias": [
         "whitept"
       ],
+      "choices": [],
       "default": "white",
       "description": "<dd><p>Colors which define the output range. The minimum input value is mapped to\nthe <var>blackpt</var>. The maximum input value is mapped to the <var>whitept</var>.\nThe defaults are black and white respectively. Specifying white for\n<var>blackpt</var> and black for <var>whitept</var> will give color-inverted,\nnormalized video. Shades of grey can be used to reduce the dynamic range\n(contrast). Specifying saturated colors here can create some interesting\neffects.\n</p>\n</dd>",
       "name": "whitept",
@@ -38,6 +40,7 @@
       "alias": [
         "smoothing"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>The number of previous frames to use for temporal smoothing. The input range\nof each channel is smoothed using a rolling average over the current frame\nand the <var>smoothing</var> previous frames. The default is 0 (no temporal\nsmoothing).\n</p>\n</dd>",
       "name": "smoothing",
@@ -48,6 +51,7 @@
       "alias": [
         "independence"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Controls the ratio of independent (color shifting) channel normalization to\nlinked (color preserving) normalization. 0.0 is fully linked, 1.0 is fully\nindependent. Defaults to 1.0 (fully independent).\n</p>\n</dd>",
       "name": "independence",
@@ -58,6 +62,7 @@
       "alias": [
         "strength"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Overall strength of the filter. 1.0 is full strength. 0.0 is a rather\nexpensive no-op. Defaults to 1.0 (full strength).\n</p>\n</dd>",
       "name": "strength",

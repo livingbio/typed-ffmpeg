@@ -13,6 +13,7 @@
       "alias": [
         "list_voices"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If set to 1, list the names of the available voices and exit\nimmediately. Default value is 0.\n</p>\n</dd>",
       "name": "list_voices",
@@ -24,6 +25,7 @@
         "nb_samples",
         "n"
       ],
+      "choices": [],
       "default": 512,
       "description": "<dd><p>Set the maximum number of samples per frame. Default value is 512.\n</p>\n</dd>",
       "name": "nb_samples",
@@ -34,6 +36,7 @@
       "alias": [
         "text"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the text to speak.\n</p>\n</dd>",
       "name": "text",
@@ -44,6 +47,7 @@
       "alias": [
         "textfile"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the filename containing the text to speak.\n</p>\n</dd>",
       "name": "textfile",
@@ -55,6 +59,7 @@
         "v",
         "voice"
       ],
+      "choices": [],
       "default": "kal",
       "description": "<dd><p>Set the voice to use for the speech synthesis. Default value is\n<code>kal</code>. See also the <var>list_voices</var> option.\n</p></dd>",
       "name": "v",

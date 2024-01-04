@@ -18,6 +18,53 @@
       "alias": [
         "mode"
       ],
+      "choices": [
+        {
+          "help": "progressive",
+          "name": "p",
+          "value": "PROGRESSIVE"
+        },
+        {
+          "help": "top first",
+          "name": "t",
+          "value": "TOP_FIRST"
+        },
+        {
+          "help": "bottom first",
+          "name": "b",
+          "value": "BOTTOM_FIRST"
+        },
+        {
+          "help": "top first analyze",
+          "name": "T",
+          "value": "TOP_FIRST_ANALYZE"
+        },
+        {
+          "help": "bottom first analyze",
+          "name": "B",
+          "value": "BOTTOM_FIRST_ANALYZE"
+        },
+        {
+          "help": "analyze",
+          "name": "u",
+          "value": "ANALYZE"
+        },
+        {
+          "help": "full analyze",
+          "name": "U",
+          "value": "FULL_ANALYZE"
+        },
+        {
+          "help": "auto",
+          "name": "a",
+          "value": "AUTO"
+        },
+        {
+          "help": "auto analyze",
+          "name": "A",
+          "value": "AUTO_ANALYZE"
+        }
+      ],
       "default": "AUTO_ANALYZE",
       "description": null,
       "name": "mode",

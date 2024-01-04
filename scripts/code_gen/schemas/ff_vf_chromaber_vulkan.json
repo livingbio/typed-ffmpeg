@@ -18,6 +18,7 @@
       "alias": [
         "dist_x"
       ],
+      "choices": [],
       "default": "0.0f",
       "description": "<dd><p>Horizontal displacement multiplier. Each chroma pixel\u2019s position will be multiplied\nby this amount, starting from the center of the image. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "dist_x",
@@ -28,6 +29,7 @@
       "alias": [
         "dist_y"
       ],
+      "choices": [],
       "default": "0.0f",
       "description": "<dd><p>Similarly, this sets the vertical displacement multiplier. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "dist_y",

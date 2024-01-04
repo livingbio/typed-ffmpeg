@@ -18,6 +18,7 @@
       "alias": [
         "dnn_backend"
       ],
+      "choices": [],
       "default": "DNN_OV",
       "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nonly openvino now, tensorflow backends will be added.\n</p>\n</dd>",
       "name": "dnn_backend",
@@ -28,6 +29,7 @@
       "alias": [
         "model"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats.\n</p>\n</dd>",
       "name": "model",
@@ -38,6 +40,7 @@
       "alias": [
         "input"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the input name of the dnn network.\n</p>\n</dd>",
       "name": "input",
@@ -48,6 +51,7 @@
       "alias": [
         "output"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the output name of the dnn network.\n</p>\n</dd>",
       "name": "output",
@@ -59,6 +63,7 @@
         "backend_configs",
         "options"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the configs to be passed into backend. To use async execution, set async (default: set).\nRoll back to sync execution if the backend does not support async.\n</p>\n</dd>",
       "name": "backend_configs",
@@ -69,6 +74,7 @@
       "alias": [
         "async"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "async",
@@ -79,6 +85,7 @@
       "alias": [
         "confidence"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set the confidence threshold (default: 0.5).\n</p>\n</dd>",
       "name": "confidence",
@@ -89,6 +96,7 @@
       "alias": [
         "labels"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set path to label file specifying the mapping between label id and name.\nEach label name is written in one line, tailing spaces and empty lines are skipped.\nThe first line is the name of label id 0 (usually it is \u2019background\u2019),\nand the second line is the name of label id 1, etc.\nThe label id is considered as name if the label file is not provided.\n</p>\n</dd>",
       "name": "labels",
@@ -98,6 +106,28 @@
     {
       "alias": [
         "model_type"
+      ],
+      "choices": [
+        {
+          "help": "output shape [1, 1, N, 7]",
+          "name": "ssd",
+          "value": "DDMT_SSD"
+        },
+        {
+          "help": "output shape [1, N*Cx*Cy*DetectionBox]",
+          "name": "yolo",
+          "value": "DDMT_YOLOV1V2"
+        },
+        {
+          "help": "outputs shape [1, N*D, Cx, Cy]",
+          "name": "yolov3",
+          "value": "DDMT_YOLOV3"
+        },
+        {
+          "help": "outputs shape [1, N*D, Cx, Cy]",
+          "name": "yolov4",
+          "value": "DDMT_YOLOV4"
+        }
       ],
       "default": "DDMT_SSD",
       "description": null,
@@ -109,6 +139,7 @@
       "alias": [
         "cell_w"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "cell_w",
@@ -119,6 +150,7 @@
       "alias": [
         "cell_h"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "cell_h",
@@ -129,6 +161,7 @@
       "alias": [
         "nb_classes"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "nb_classes",
@@ -139,6 +172,7 @@
       "alias": [
         "anchors"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "anchors",

@@ -18,6 +18,28 @@
       "alias": [
         "mode"
       ],
+      "choices": [
+        {
+          "help": "Mapping should be readable",
+          "name": "read",
+          "value": "AV_HWFRAME_MAP_READ"
+        },
+        {
+          "help": "Mapping should be writeable",
+          "name": "write",
+          "value": "AV_HWFRAME_MAP_WRITE"
+        },
+        {
+          "help": "Mapping will always overwrite the entire frame",
+          "name": "overwrite",
+          "value": "AV_HWFRAME_MAP_OVERWRITE"
+        },
+        {
+          "help": "Mapping should not involve any copying",
+          "name": "direct",
+          "value": "AV_HWFRAME_MAP_DIRECT"
+        }
+      ],
       "default": "AV_HWFRAME_MAP_READ | AV_HWFRAME_MAP_WRITE",
       "description": "<dd><p>Set the frame mapping mode.  Some combination of:\n</p><dl compact=\"compact\">\n<dt><var>read</var></dt>\n<dd><p>The mapped frame should be readable.\n</p></dd>\n<dt><var>write</var></dt>\n<dd><p>The mapped frame should be writeable.\n</p></dd>\n<dt><var>overwrite</var></dt>\n<dd><p>The mapping will always overwrite the entire frame.\n</p>\n<p>This may improve performance in some cases, as the original contents of the\nframe need not be loaded.\n</p></dd>\n<dt><var>direct</var></dt>\n<dd><p>The mapping must not involve any copying.\n</p>\n<p>Indirect mappings to copies of frames are created in some cases where either\ndirect mapping is not possible or it would have unexpected properties.\nSetting this flag ensures that the mapping is direct and will fail if that is\nnot possible.\n</p></dd>\n</dl>\n<p>Defaults to <var>read+write</var> if not specified.\n</p>\n</dd>",
       "name": "mode",
@@ -28,6 +50,7 @@
       "alias": [
         "derive_device"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Rather than using the device supplied at initialisation, instead derive a new\ndevice of type <var>type</var> from the device the input frames exist on.\n</p>\n</dd>",
       "name": "derive_device",
@@ -38,6 +61,7 @@
       "alias": [
         "reverse"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>In a hardware to hardware mapping, map in reverse - create frames in the sink\nand map them back to the source.  This may be necessary in some cases where\na mapping in one direction is required but only the opposite direction is\nsupported by the devices being used.\n</p>\n<p>This option is dangerous - it may break the preceding filter in undefined\nways if there are any additional constraints on that filter\u2019s output.\nDo not use it without fully understanding the implications of its use.\n</p></dd>",
       "name": "reverse",

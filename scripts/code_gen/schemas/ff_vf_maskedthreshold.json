@@ -22,6 +22,7 @@
       "alias": [
         "threshold"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set threshold used when picking pixels from absolute difference from two input\nvideo streams.\n</p>\n</dd>",
       "name": "threshold",
@@ -32,6 +33,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from second stream.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
       "name": "planes",
@@ -41,6 +43,18 @@
     {
       "alias": [
         "mode"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "abs",
+          "value": 0
+        },
+        {
+          "help": "",
+          "name": "diff",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set mode of filter operation. Can be <code>abs</code> or <code>diff</code>.\nDefault is <code>abs</code>.\n</p></dd>",

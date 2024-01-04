@@ -18,6 +18,7 @@
       "alias": [
         "w"
       ],
+      "choices": [],
       "default": "iw",
       "description": "<dd><p>Set the output video dimension expression. Default value is the input dimension.\n</p>\n<p>Allows for the same expressions as the <a href=\"#scale\">scale</a> filter.\n</p>\n</dd>",
       "name": "w",
@@ -28,6 +29,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": "ih",
       "description": "<dd><p>Set the output video dimension expression. Default value is the input dimension.\n</p>\n<p>Allows for the same expressions as the <a href=\"#scale\">scale</a> filter.\n</p>\n</dd>",
       "name": "h",
@@ -37,6 +39,28 @@
     {
       "alias": [
         "interp_algo"
+      ],
+      "choices": [
+        {
+          "help": "nearest neighbour",
+          "name": "nearest",
+          "value": "INTERP_ALGO_NEAREST"
+        },
+        {
+          "help": "bilinear",
+          "name": "bilinear",
+          "value": "INTERP_ALGO_BILINEAR"
+        },
+        {
+          "help": "bicubic",
+          "name": "bicubic",
+          "value": "INTERP_ALGO_BICUBIC"
+        },
+        {
+          "help": "lanczos",
+          "name": "lanczos",
+          "value": "INTERP_ALGO_LANCZOS"
+        }
       ],
       "default": "INTERP_ALGO_DEFAULT",
       "description": "<dd><p>Sets the algorithm used for scaling:\n</p>\n<dl compact=\"compact\">\n<dt><var>nearest</var></dt>\n<dd><p>Nearest neighbour\n</p>\n<p>Used by default if input parameters match the desired output.\n</p>\n</dd>\n<dt><var>bilinear</var></dt>\n<dd><p>Bilinear\n</p>\n</dd>\n<dt><var>bicubic</var></dt>\n<dd><p>Bicubic\n</p>\n<p>This is the default.\n</p>\n</dd>\n<dt><var>lanczos</var></dt>\n<dd><p>Lanczos\n</p>\n</dd>\n</dl>\n</dd>",
@@ -48,6 +72,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": "AV_PIX_FMT_NONE",
       "description": "<dd><p>Controls the output pixel format. By default, or if none is specified, the input\npixel format is used.\n</p>\n<p>The filter does not support converting between YUV and RGB pixel formats.\n</p>\n</dd>",
       "name": "format",
@@ -58,6 +83,7 @@
       "alias": [
         "passthrough"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>If set to 0, every frame is processed, even if no conversion is necessary.\nThis mode can be useful to use the filter as a buffer for a downstream\nframe-consumer that exhausts the limited decoder frame pool.\n</p>\n<p>If set to 1, frames are passed through as-is if they match the desired output\nparameters. This is the default behaviour.\n</p>\n</dd>",
       "name": "passthrough",
@@ -68,6 +94,7 @@
       "alias": [
         "param"
       ],
+      "choices": [],
       "default": "999999.0f",
       "description": "<dd><p>Algorithm-Specific parameter.\n</p>\n<p>Affects the curves of the bicubic algorithm.\n</p>\n</dd>",
       "name": "param",
@@ -77,6 +104,23 @@
     {
       "alias": [
         "force_original_aspect_ratio"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "disable",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "decrease",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "increase",
+          "value": 2
+        }
       ],
       "default": 0,
       "description": "<dd><p>Work the same as the identical <a href=\"#scale\">scale</a> filter options.\n</p>\n</dd>",
@@ -88,6 +132,7 @@
       "alias": [
         "force_divisible_by"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Work the same as the identical <a href=\"#scale\">scale</a> filter options.\n</p>\n</dd>",
       "name": "force_divisible_by",

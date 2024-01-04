@@ -18,6 +18,7 @@
       "alias": [
         "all_seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
       "name": "all_seed",
@@ -29,6 +30,7 @@
         "all_strength",
         "alls"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
       "name": "all_strength",
@@ -40,6 +42,28 @@
         "all_flags",
         "allf"
       ],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "all_flags",
@@ -50,6 +74,7 @@
       "alias": [
         "c0_seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
       "name": "c0_seed",
@@ -61,6 +86,7 @@
         "c0_strength",
         "c0s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
       "name": "c0_strength",
@@ -72,6 +98,28 @@
         "c0_flags",
         "c0f"
       ],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "c0_flags",
@@ -82,6 +130,7 @@
       "alias": [
         "c1_seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
       "name": "c1_seed",
@@ -93,6 +142,7 @@
         "c1_strength",
         "c1s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
       "name": "c1_strength",
@@ -104,6 +154,28 @@
         "c1_flags",
         "c1f"
       ],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "c1_flags",
@@ -114,6 +186,7 @@
       "alias": [
         "c2_seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
       "name": "c2_seed",
@@ -125,6 +198,7 @@
         "c2_strength",
         "c2s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
       "name": "c2_strength",
@@ -136,6 +210,28 @@
         "c2_flags",
         "c2f"
       ],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "c2_flags",
@@ -146,6 +242,7 @@
       "alias": [
         "c3_seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set noise seed for specific pixel component or all pixel components in case\nof <var>all_seed</var>. Default value is <code>123457</code>.\n</p>\n</dd>",
       "name": "c3_seed",
@@ -157,6 +254,7 @@
         "c3_strength",
         "c3s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set noise strength for specific pixel component or all pixel components in case\n<var>all_strength</var>. Default value is <code>0</code>. Allowed range is [0, 100].\n</p>\n</dd>",
       "name": "c3_strength",
@@ -167,6 +265,28 @@
       "alias": [
         "c3_flags",
         "c3f"
+      ],
+      "choices": [
+        {
+          "help": "averaged noise",
+          "name": "a",
+          "value": 8
+        },
+        {
+          "help": "(semi)regular pattern",
+          "name": "p",
+          "value": 16
+        },
+        {
+          "help": "temporal noise",
+          "name": "t",
+          "value": 2
+        },
+        {
+          "help": "uniform noise",
+          "name": "u",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",

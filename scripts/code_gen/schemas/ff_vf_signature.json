@@ -13,6 +13,23 @@
       "alias": [
         "detectmode"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "off",
+          "value": "MODE_OFF"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "full",
+          "value": "MODE_FULL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "fast",
+          "value": "MODE_FAST"
+        }
+      ],
       "default": "MODE_OFF",
       "description": "<dd><p>Enable or disable the matching process.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>off</samp>\u2019</dt>\n<dd><p>Disable the calculation of a matching (default).\n</p></dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Calculate the matching for the whole video and output whether the whole video\nmatches or only parts.\n</p></dd>\n<dt>\u2018<samp>fast</samp>\u2019</dt>\n<dd><p>Calculate only until a matching is found or the video ends. Should be faster in\nsome cases.\n</p></dd>\n</dl>\n</dd>",
       "name": "detectmode",
@@ -23,6 +40,7 @@
       "alias": [
         "nb_inputs"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set the number of inputs. The option value must be a non negative integer.\nDefault value is 1.\n</p>\n</dd>",
       "name": "nb_inputs",
@@ -33,6 +51,7 @@
       "alias": [
         "filename"
       ],
+      "choices": [],
       "default": "",
       "description": "<dd><p>Set the path to which the output is written. If there is more than one input,\nthe path must be a prototype, i.e. must contain %d or %0nd (where n is a positive\ninteger), that will be replaced with the input number. If no filename is\nspecified, no output will be written. This is the default.\n</p>\n</dd>",
       "name": "filename",
@@ -42,6 +61,18 @@
     {
       "alias": [
         "format"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "binary",
+          "value": "FORMAT_BINARY"
+        },
+        {
+          "help": "0",
+          "name": "xml",
+          "value": "FORMAT_XML"
+        }
       ],
       "default": "FORMAT_BINARY",
       "description": "<dd><p>Choose the output format.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>binary</samp>\u2019</dt>\n<dd><p>Use the specified binary representation (default).\n</p></dd>\n<dt>\u2018<samp>xml</samp>\u2019</dt>\n<dd><p>Use the specified xml representation.\n</p></dd>\n</dl>\n</dd>",
@@ -53,6 +84,7 @@
       "alias": [
         "th_d"
       ],
+      "choices": [],
       "default": 9000,
       "description": "<dd><p>Set threshold to detect one word as similar. The option value must be an integer\ngreater than zero. The default value is 9000.\n</p>\n</dd>",
       "name": "th_d",
@@ -63,6 +95,7 @@
       "alias": [
         "th_dc"
       ],
+      "choices": [],
       "default": 60000,
       "description": "<dd><p>Set threshold to detect all words as similar. The option value must be an integer\ngreater than zero. The default value is 60000.\n</p>\n</dd>",
       "name": "th_dc",
@@ -73,6 +106,7 @@
       "alias": [
         "th_xh"
       ],
+      "choices": [],
       "default": 116,
       "description": "<dd><p>Set threshold to detect frames as similar. The option value must be an integer\ngreater than zero. The default value is 116.\n</p>\n</dd>",
       "name": "th_xh",
@@ -83,6 +117,7 @@
       "alias": [
         "th_di"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the minimum length of a sequence in frames to recognize it as matching\nsequence. The option value must be a non negative integer value.\nThe default value is 0.\n</p>\n</dd>",
       "name": "th_di",
@@ -93,6 +128,7 @@
       "alias": [
         "th_it"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set the minimum relation, that matching frames to all frames must have.\nThe option value must be a double value between 0 and 1. The default value is 0.5.\n</p></dd>",
       "name": "th_it",

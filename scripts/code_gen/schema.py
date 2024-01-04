@@ -3,7 +3,7 @@ import json
 import pathlib
 from typing import Literal
 
-from parse_c.schema import AVFilterPad, AVFilterPadType, AVOptionType, FilterType
+from parse_c.schema import AVFilterPad, AVFilterPadType, AVOptionType, Choice, FilterType
 from pydantic import BaseModel, HttpUrl
 
 schema_path = pathlib.Path(__file__).parent / "schemas"
@@ -46,6 +46,20 @@ class FFmpegFilterOption(BaseModel):
     typing: Literal["bool", "int", "float", "str"]
     default: str | int | float | None = None
     required: bool
+    choices: list[Choice] = []
+
+    @property
+    def _typing(self) -> str:
+        if self.choices:
+            return f"{self.typing} | Literal[" + ", ".join(repr(k.name) for k in self.choices) + "]"
+        return self.typing
+
+    @property
+    def _default(self) -> str | int | float | None:
+        if self.choices:
+            if v := [k for k in self.choices if k.value == self.default]:
+                return v[0].name
+        return self.default
 
 
 def _convert_to_stream_type(typings: list[AVFilterPadType]) -> list[StreamType]:

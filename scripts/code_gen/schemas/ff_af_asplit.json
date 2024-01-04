@@ -18,6 +18,7 @@
       "alias": [
         "outputs"
       ],
+      "choices": [],
       "default": 2,
       "description": null,
       "name": "outputs",

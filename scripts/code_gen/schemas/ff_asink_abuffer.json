@@ -18,6 +18,7 @@
       "alias": [
         "sample_fmts"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "sample_fmts",
@@ -28,6 +29,7 @@
       "alias": [
         "sample_rates"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "sample_rates",
@@ -38,6 +40,7 @@
       "alias": [
         "channel_layouts"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "channel_layouts",
@@ -48,6 +51,7 @@
       "alias": [
         "channel_counts"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "channel_counts",
@@ -58,6 +62,7 @@
       "alias": [
         "ch_layouts"
       ],
+      "choices": [],
       "default": null,
       "description": null,
       "name": "ch_layouts",
@@ -68,6 +73,7 @@
       "alias": [
         "all_channel_counts"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "all_channel_counts",

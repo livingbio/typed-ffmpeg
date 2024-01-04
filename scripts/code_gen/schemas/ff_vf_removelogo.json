@@ -19,6 +19,7 @@
         "filename",
         "f"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the filter bitmap file, which can be any image format supported by\nlibavformat. The width and height of the image file must match those of the\nvideo stream being processed.\n</p></dd>",
       "name": "filename",

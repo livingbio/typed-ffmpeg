@@ -18,6 +18,7 @@
       "alias": [
         "pix_fmts"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>A \u2019|\u2019-separated list of pixel format names, such as\npix_fmts=yuv420p|monow|rgb24\".\n</p>\n</dd>",
       "name": "pix_fmts",

@@ -18,6 +18,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>",
       "name": "x",
@@ -28,6 +29,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>",
       "name": "y",
@@ -38,6 +40,7 @@
       "alias": [
         "w"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>",
       "name": "w",
@@ -48,6 +51,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Specify a rectangular area where to limit the search for motion\nvectors.\nIf desired the search for motion vectors can be limited to a\nrectangular area of the frame defined by its top left corner, width\nand height. These parameters have the same meaning as the drawbox\nfilter which can be used to visualise the position of the bounding\nbox.\n</p>\n<p>This is useful when simultaneous movement of subjects within the frame\nmight be confused for camera motion by the motion vector search.\n</p>\n<p>If any or all of <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are set to -1\nthen the full frame is used. This allows later options to be set\nwithout specifying the bounding box for the motion vector search.\n</p>\n<p>Default - search the whole frame.\n</p>\n</dd>",
       "name": "h",
@@ -58,6 +62,7 @@
       "alias": [
         "rx"
       ],
+      "choices": [],
       "default": 16,
       "description": "<dd><p>Specify the maximum extent of movement in x and y directions in the\nrange 0-64 pixels. Default 16.\n</p>\n</dd>",
       "name": "rx",
@@ -68,6 +73,7 @@
       "alias": [
         "ry"
       ],
+      "choices": [],
       "default": 16,
       "description": "<dd><p>Specify the maximum extent of movement in x and y directions in the\nrange 0-64 pixels. Default 16.\n</p>\n</dd>",
       "name": "ry",
@@ -77,6 +83,28 @@
     {
       "alias": [
         "edge"
+      ],
+      "choices": [
+        {
+          "help": "fill zeroes at blank locations",
+          "name": "blank",
+          "value": "FILL_BLANK"
+        },
+        {
+          "help": "original image at blank locations",
+          "name": "original",
+          "value": "FILL_ORIGINAL"
+        },
+        {
+          "help": "extruded edge value at blank locations",
+          "name": "clamp",
+          "value": "FILL_CLAMP"
+        },
+        {
+          "help": "mirrored edge at blank locations",
+          "name": "mirror",
+          "value": "FILL_MIRROR"
+        }
       ],
       "default": "FILL_MIRROR",
       "description": "<dd><p>Specify how to generate pixels to fill blanks at the edge of the\nframe. Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>blank, 0</samp>\u2019</dt>\n<dd><p>Fill zeroes at blank locations\n</p></dd>\n<dt>\u2018<samp>original, 1</samp>\u2019</dt>\n<dd><p>Original image at blank locations\n</p></dd>\n<dt>\u2018<samp>clamp, 2</samp>\u2019</dt>\n<dd><p>Extruded edge value at blank locations\n</p></dd>\n<dt>\u2018<samp>mirror, 3</samp>\u2019</dt>\n<dd><p>Mirrored edge at blank locations\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>mirror</samp>\u2019.\n</p>\n</dd>",
@@ -88,6 +116,7 @@
       "alias": [
         "blocksize"
       ],
+      "choices": [],
       "default": 8,
       "description": "<dd><p>Specify the blocksize to use for motion search. Range 4-128 pixels,\ndefault 8.\n</p>\n</dd>",
       "name": "blocksize",
@@ -98,6 +127,7 @@
       "alias": [
         "contrast"
       ],
+      "choices": [],
       "default": 125,
       "description": "<dd><p>Specify the contrast threshold for blocks. Only blocks with more than\nthe specified contrast (difference between darkest and lightest\npixels) will be considered. Range 1-255, default 125.\n</p>\n</dd>",
       "name": "contrast",
@@ -107,6 +137,18 @@
     {
       "alias": [
         "search"
+      ],
+      "choices": [
+        {
+          "help": "exhaustive search",
+          "name": "exhaustive",
+          "value": "EXHAUSTIVE"
+        },
+        {
+          "help": "less exhaustive search",
+          "name": "less",
+          "value": "SMART_EXHAUSTIVE"
+        }
       ],
       "default": "EXHAUSTIVE",
       "description": "<dd><p>Specify the search strategy. Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>exhaustive, 0</samp>\u2019</dt>\n<dd><p>Set exhaustive search\n</p></dd>\n<dt>\u2018<samp>less, 1</samp>\u2019</dt>\n<dd><p>Set less exhaustive search.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>exhaustive</samp>\u2019.\n</p>\n</dd>",
@@ -118,6 +160,7 @@
       "alias": [
         "filename"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>If set then a detailed log of the motion search is written to the\nspecified file.\n</p>\n</dd>",
       "name": "filename",
@@ -128,6 +171,7 @@
       "alias": [
         "opencl"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "opencl",

@@ -18,6 +18,7 @@
       "alias": [
         "cx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": null,
       "name": "cx",
@@ -28,6 +29,7 @@
       "alias": [
         "cy"
       ],
+      "choices": [],
       "default": 0.5,
       "description": null,
       "name": "cy",
@@ -38,6 +40,7 @@
       "alias": [
         "k1"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "k1",
@@ -48,6 +51,7 @@
       "alias": [
         "k2"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "k2",
@@ -57,6 +61,18 @@
     {
       "alias": [
         "i"
+      ],
+      "choices": [
+        {
+          "help": "nearest neighbour",
+          "name": "nearest",
+          "value": 0
+        },
+        {
+          "help": "bilinear",
+          "name": "bilinear",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": null,
@@ -68,6 +84,7 @@
       "alias": [
         "fc"
       ],
+      "choices": [],
       "default": "black@0",
       "description": null,
       "name": "fc",

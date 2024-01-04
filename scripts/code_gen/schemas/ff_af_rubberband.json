@@ -18,6 +18,7 @@
       "alias": [
         "tempo"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set tempo scale factor.\n</p>\n</dd>",
       "name": "tempo",
@@ -28,6 +29,7 @@
       "alias": [
         "pitch"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set pitch scale factor.\n</p>\n</dd>",
       "name": "pitch",
@@ -37,6 +39,23 @@
     {
       "alias": [
         "transients"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "crisp",
+          "value": "RubberBandOptionTransientsCrisp"
+        },
+        {
+          "help": "0",
+          "name": "mixed",
+          "value": "RubberBandOptionTransientsMixed"
+        },
+        {
+          "help": "0",
+          "name": "smooth",
+          "value": "RubberBandOptionTransientsSmooth"
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set transients detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>crisp</var></dt>\n<dt><var>mixed</var></dt>\n<dt><var>smooth</var></dt>\n</dl>\n</dd>",
@@ -48,6 +67,23 @@
       "alias": [
         "detector"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "compound",
+          "value": "RubberBandOptionDetectorCompound"
+        },
+        {
+          "help": "0",
+          "name": "percussive",
+          "value": "RubberBandOptionDetectorPercussive"
+        },
+        {
+          "help": "0",
+          "name": "soft",
+          "value": "RubberBandOptionDetectorSoft"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>compound</var></dt>\n<dt><var>percussive</var></dt>\n<dt><var>soft</var></dt>\n</dl>\n</dd>",
       "name": "detector",
@@ -57,6 +93,18 @@
     {
       "alias": [
         "phase"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "laminar",
+          "value": "RubberBandOptionPhaseLaminar"
+        },
+        {
+          "help": "0",
+          "name": "independent",
+          "value": "RubberBandOptionPhaseIndependent"
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set phase.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>laminar</var></dt>\n<dt><var>independent</var></dt>\n</dl>\n</dd>",
@@ -68,6 +116,23 @@
       "alias": [
         "window"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "standard",
+          "value": "RubberBandOptionWindowStandard"
+        },
+        {
+          "help": "0",
+          "name": "short",
+          "value": "RubberBandOptionWindowShort"
+        },
+        {
+          "help": "0",
+          "name": "long",
+          "value": "RubberBandOptionWindowLong"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set processing window size.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>standard</var></dt>\n<dt><var>short</var></dt>\n<dt><var>long</var></dt>\n</dl>\n</dd>",
       "name": "window",
@@ -77,6 +142,18 @@
     {
       "alias": [
         "smoothing"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "off",
+          "value": "RubberBandOptionSmoothingOff"
+        },
+        {
+          "help": "0",
+          "name": "on",
+          "value": "RubberBandOptionSmoothingOn"
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set smoothing.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>off</var></dt>\n<dt><var>on</var></dt>\n</dl>\n</dd>",
@@ -88,6 +165,18 @@
       "alias": [
         "formant"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "shifted",
+          "value": "RubberBandOptionFormantShifted"
+        },
+        {
+          "help": "0",
+          "name": "preserved",
+          "value": "RubberBandOptionFormantPreserved"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Enable formant preservation when shift pitching.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>shifted</var></dt>\n<dt><var>preserved</var></dt>\n</dl>\n</dd>",
       "name": "formant",
@@ -98,6 +187,23 @@
       "alias": [
         "pitchq"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "quality",
+          "value": "RubberBandOptionPitchHighQuality"
+        },
+        {
+          "help": "0",
+          "name": "speed",
+          "value": "RubberBandOptionPitchHighSpeed"
+        },
+        {
+          "help": "0",
+          "name": "consistency",
+          "value": "RubberBandOptionPitchHighConsistency"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set pitch quality.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>quality</var></dt>\n<dt><var>speed</var></dt>\n<dt><var>consistency</var></dt>\n</dl>\n</dd>",
       "name": "pitchq",
@@ -107,6 +213,18 @@
     {
       "alias": [
         "channels"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "apart",
+          "value": "RubberBandOptionChannelsApart"
+        },
+        {
+          "help": "0",
+          "name": "together",
+          "value": "RubberBandOptionChannelsTogether"
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set channels.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>apart</var></dt>\n<dt><var>together</var></dt>\n</dl>\n</dd>",

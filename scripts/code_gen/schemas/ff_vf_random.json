@@ -18,6 +18,7 @@
       "alias": [
         "frames"
       ],
+      "choices": [],
       "default": 30,
       "description": "<dd><p>Set size in number of frames of internal cache, in range from <code>2</code> to\n<code>512</code>. Default is <code>30</code>.\n</p>\n</dd>",
       "name": "frames",
@@ -28,6 +29,7 @@
       "alias": [
         "seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set seed for random number generator, must be an integer included between\n<code>0</code> and <code>UINT32_MAX</code>. If not specified, or if explicitly set to\nless than <code>0</code>, the filter will try to use a good random seed on a\nbest effort basis.\n</p></dd>",
       "name": "seed",

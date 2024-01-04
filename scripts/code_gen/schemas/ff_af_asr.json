@@ -18,6 +18,7 @@
       "alias": [
         "rate"
       ],
+      "choices": [],
       "default": 16000,
       "description": "<dd><p>Set sampling rate of input audio. Defaults is <code>16000</code>.\nThis need to match speech models, otherwise one will get poor results.\n</p>\n</dd>",
       "name": "rate",
@@ -28,6 +29,7 @@
       "alias": [
         "hmm"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set dictionary containing acoustic model files.\n</p>\n</dd>",
       "name": "hmm",
@@ -38,6 +40,7 @@
       "alias": [
         "dict"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set pronunciation dictionary.\n</p>\n</dd>",
       "name": "dict",
@@ -48,6 +51,7 @@
       "alias": [
         "lm"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set language model file.\n</p>\n</dd>",
       "name": "lm",
@@ -58,6 +62,7 @@
       "alias": [
         "lmctl"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set language model set.\n</p>\n</dd>",
       "name": "lmctl",
@@ -68,6 +73,7 @@
       "alias": [
         "lmname"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set which language model to use.\n</p>\n</dd>",
       "name": "lmname",
@@ -78,6 +84,7 @@
       "alias": [
         "logfn"
       ],
+      "choices": [],
       "default": "/dev/null",
       "description": "<dd><p>Set output for log messages.\n</p></dd>",
       "name": "logfn",

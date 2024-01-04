@@ -18,6 +18,7 @@
       "alias": [
         "in_gain"
       ],
+      "choices": [],
       "default": 0.4,
       "description": "<dd><p>Set input gain. Default is 0.4.\n</p>\n</dd>",
       "name": "in_gain",
@@ -28,6 +29,7 @@
       "alias": [
         "out_gain"
       ],
+      "choices": [],
       "default": 0.4,
       "description": "<dd><p>Set output gain. Default is 0.4.\n</p>\n</dd>",
       "name": "out_gain",
@@ -38,6 +40,7 @@
       "alias": [
         "delays"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set delays. A typical delay is around 40ms to 60ms.\n</p>\n</dd>",
       "name": "delays",
@@ -48,6 +51,7 @@
       "alias": [
         "decays"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set decays.\n</p>\n</dd>",
       "name": "decays",
@@ -58,6 +62,7 @@
       "alias": [
         "speeds"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set speeds.\n</p>\n</dd>",
       "name": "speeds",
@@ -68,6 +73,7 @@
       "alias": [
         "depths"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set depths.\n</p></dd>",
       "name": "depths",

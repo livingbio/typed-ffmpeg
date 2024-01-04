@@ -14,6 +14,7 @@
         "filename",
         "f"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the file from which to read the initial grid state. In the file,\neach non-whitespace character is considered an alive cell, and newline\nis used to delimit the end of each row.\n</p>\n<p>If this option is not specified, the initial grid is generated\nrandomly.\n</p>\n</dd>",
       "name": "filename",
@@ -25,6 +26,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the size of the output video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p>\n<p>If <samp>filename</samp> is specified, the size is set by default to the\nsame size of the input file. If <samp>size</samp> is set, it must contain\nthe size specified in the input file, and the initial grid defined in\nthat file is centered in the larger resulting area.\n</p>\n<p>If a filename is not specified, the size value defaults to \"320x240\"\n(used for a randomly generated initial grid).\n</p>\n</dd>",
       "name": "size",
@@ -36,6 +38,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set the video rate, that is the number of frames generated per second.\nDefault is 25.\n</p>\n</dd>",
       "name": "rate",
@@ -46,6 +49,7 @@
       "alias": [
         "rule"
       ],
+      "choices": [],
       "default": "B3/S23",
       "description": "<dd><p>Set the life rule.\n</p>\n<p>A rule can be specified with a code of the kind \"S<var>NS</var>/B<var>NB</var>\",\nwhere <var>NS</var> and <var>NB</var> are sequences of numbers in the range 0-8,\n<var>NS</var> specifies the number of alive neighbor cells which make a\nlive cell stay alive, and <var>NB</var> the number of alive neighbor cells\nwhich make a dead cell to become alive (i.e. to \"born\").\n\"s\" and \"b\" can be used in place of \"S\" and \"B\", respectively.\n</p>\n<p>Alternatively a rule can be specified by an 18-bits integer. The 9\nhigh order bits are used to encode the next cell state if it is alive\nfor each number of neighbor alive cells, the low order bits specify\nthe rule for \"borning\" new cells. Higher order bits encode for an\nhigher number of neighbor cells.\nFor example the number 6153 = <code>(12&lt;&lt;9)+9</code> specifies a stay alive\nrule of 12 and a born rule of 9, which corresponds to \"S23/B03\".\n</p>\n<p>Default value is \"S23/B3\", which is the original Conway\u2019s game of life\nrule, and will keep a cell alive if it has 2 or 3 neighbor alive\ncells, and will born a new cell if there are three alive cells around\na dead cell.\n</p>\n</dd>",
       "name": "rule",
@@ -57,6 +61,7 @@
         "random_fill_ratio",
         "ratio"
       ],
+      "choices": [],
       "default": "1/1.61803398874989484820",
       "description": "<dd><p>Set the random fill ratio for the initial random grid. It is a\nfloating point number value ranging from 0 to 1, defaults to 1/PHI.\nIt is ignored when a file is specified.\n</p>\n</dd>",
       "name": "random_fill_ratio",
@@ -68,6 +73,7 @@
         "random_seed",
         "seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set the seed for filling the initial random grid, must be an integer\nincluded between 0 and UINT32_MAX. If not specified, or if explicitly\nset to -1, the filter will try to use a good random seed on a best\neffort basis.\n</p>\n</dd>",
       "name": "random_seed",
@@ -78,6 +84,7 @@
       "alias": [
         "stitch"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>If set to 1, stitch the left and right grid edges together, and the\ntop and bottom edges also. Defaults to 1.\n</p>\n</dd>",
       "name": "stitch",
@@ -88,6 +95,7 @@
       "alias": [
         "mold"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set cell mold speed. If set, a dead cell will go from <samp>death_color</samp> to\n<samp>mold_color</samp> with a step of <samp>mold</samp>. <samp>mold</samp> can have a\nvalue from 0 to 255.\n</p>\n</dd>",
       "name": "mold",
@@ -98,6 +106,7 @@
       "alias": [
         "life_color"
       ],
+      "choices": [],
       "default": "white",
       "description": "<dd><p>Set the color of living (or new born) cells.\n</p>\n</dd>",
       "name": "life_color",
@@ -108,6 +117,7 @@
       "alias": [
         "death_color"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Set the color of dead cells. If <samp>mold</samp> is set, this is the first color\nused to represent a dead cell.\n</p>\n</dd>",
       "name": "death_color",
@@ -118,6 +128,7 @@
       "alias": [
         "mold_color"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Set mold color, for definitely dead and moldy cells.\n</p>\n<p>For the syntax of these 3 color options, check the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the\nffmpeg-utils manual</a>.\n</p></dd>",
       "name": "mold_color",

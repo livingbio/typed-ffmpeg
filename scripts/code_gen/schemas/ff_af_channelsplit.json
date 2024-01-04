@@ -18,6 +18,7 @@
       "alias": [
         "channel_layout"
       ],
+      "choices": [],
       "default": "stereo",
       "description": "<dd><p>The channel layout of the input stream. The default is \"stereo\".\n</p></dd>",
       "name": "channel_layout",
@@ -28,6 +29,7 @@
       "alias": [
         "channels"
       ],
+      "choices": [],
       "default": "all",
       "description": "<dd><p>A channel layout describing the channels to be extracted as separate output streams\nor \"all\" to extract each input channel as a separate stream. The default is \"all\".\n</p>\n<p>Choosing channels not present in channel layout in the input will result in an error.\n</p></dd>",
       "name": "channels",

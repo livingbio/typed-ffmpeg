@@ -19,6 +19,7 @@
         "n",
         "noise"
       ],
+      "choices": [],
       "default": 0.001,
       "description": "<dd><p>Set noise tolerance. Can be specified in dB (in case \"dB\" is appended to the\nspecified value) or amplitude ratio. Default is -60dB, or 0.001.\n</p>\n</dd>",
       "name": "n",
@@ -30,6 +31,7 @@
         "d",
         "duration"
       ],
+      "choices": [],
       "default": 2000000,
       "description": "<dd><p>Set silence duration until notification (default is 2 seconds). See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n</dd>",
       "name": "d",
@@ -41,6 +43,7 @@
         "mono",
         "m"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Process each channel separately, instead of combined. By default is disabled.\n</p></dd>",
       "name": "mono",

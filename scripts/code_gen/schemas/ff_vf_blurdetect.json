@@ -18,6 +18,7 @@
       "alias": [
         "high"
       ],
+      "choices": [],
       "default": "30/255.",
       "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
       "name": "high",
@@ -28,6 +29,7 @@
       "alias": [
         "low"
       ],
+      "choices": [],
       "default": "15/255.",
       "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
       "name": "low",
@@ -38,6 +40,7 @@
       "alias": [
         "radius"
       ],
+      "choices": [],
       "default": 50,
       "description": "<dd><p>Define the radius to search around an edge pixel for local maxima.\n</p>\n</dd>",
       "name": "radius",
@@ -48,6 +51,7 @@
       "alias": [
         "block_pct"
       ],
+      "choices": [],
       "default": 80,
       "description": "<dd><p>Determine blurriness only for the most significant blocks, given in percentage.\n</p>\n</dd>",
       "name": "block_pct",
@@ -58,6 +62,7 @@
       "alias": [
         "block_width"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Determine blurriness for blocks of width <var>block_width</var>. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of <var>block_height</var>.\n</p>\n</dd>",
       "name": "block_width",
@@ -68,6 +73,7 @@
       "alias": [
         "block_height"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Determine blurriness for blocks of height <var>block_height</var>. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of <var>block_width</var>.\n</p>\n</dd>",
       "name": "block_height",
@@ -78,6 +84,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set planes to filter. Default is first only.\n</p></dd>",
       "name": "planes",

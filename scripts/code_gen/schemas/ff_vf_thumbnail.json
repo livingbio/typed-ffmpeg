@@ -18,6 +18,7 @@
       "alias": [
         "n"
       ],
+      "choices": [],
       "default": 100,
       "description": "<dd><p>Set the frames batch size to analyze; in a set of <var>n</var> frames, the filter\nwill pick one of them, and then handle the next batch of <var>n</var> frames until\nthe end. Default is <code>100</code>.\n</p>\n</dd>",
       "name": "n",
@@ -27,6 +28,23 @@
     {
       "alias": [
         "log"
+      ],
+      "choices": [
+        {
+          "help": "logging disabled",
+          "name": "quiet",
+          "value": -8
+        },
+        {
+          "help": "information logging level",
+          "name": "info",
+          "value": 32
+        },
+        {
+          "help": "verbose logging level",
+          "name": "verbose",
+          "value": 40
+        }
       ],
       "default": 32,
       "description": "<dd><p>Set the log level to display picked frame stats.\nDefault is <code>info</code>.\n</p></dd>",

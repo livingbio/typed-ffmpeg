@@ -18,6 +18,7 @@
       "alias": [
         "in_gain"
       ],
+      "choices": [],
       "default": 0.4,
       "description": "<dd><p>Set input gain. Default is 0.4.\n</p>\n</dd>",
       "name": "in_gain",
@@ -28,6 +29,7 @@
       "alias": [
         "out_gain"
       ],
+      "choices": [],
       "default": 0.74,
       "description": "<dd><p>Set output gain. Default is 0.74\n</p>\n</dd>",
       "name": "out_gain",
@@ -38,6 +40,7 @@
       "alias": [
         "delay"
       ],
+      "choices": [],
       "default": 3.0,
       "description": "<dd><p>Set delay in milliseconds. Default is 3.0.\n</p>\n</dd>",
       "name": "delay",
@@ -48,6 +51,7 @@
       "alias": [
         "decay"
       ],
+      "choices": [],
       "default": 0.4,
       "description": "<dd><p>Set decay. Default is 0.4.\n</p>\n</dd>",
       "name": "decay",
@@ -58,6 +62,7 @@
       "alias": [
         "speed"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set modulation speed in Hz. Default is 0.5.\n</p>\n</dd>",
       "name": "speed",
@@ -67,6 +72,28 @@
     {
       "alias": [
         "type"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "triangular",
+          "value": "WAVE_TRI"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "t",
+          "value": "WAVE_TRI"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sinusoidal",
+          "value": "WAVE_SIN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s",
+          "value": "WAVE_SIN"
+        }
       ],
       "default": "WAVE_TRI",
       "description": "<dd><p>Set modulation type. Default is triangular.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>triangular, t</samp>\u2019</dt>\n<dt>\u2018<samp>sinusoidal, s</samp>\u2019</dt>\n</dl>\n</dd>",

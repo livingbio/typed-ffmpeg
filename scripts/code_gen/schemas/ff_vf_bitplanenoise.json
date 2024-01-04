@@ -18,6 +18,7 @@
       "alias": [
         "bitplane"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set which plane to analyze. Default is <code>1</code>.\n</p>\n</dd>",
       "name": "bitplane",
@@ -28,6 +29,7 @@
       "alias": [
         "filter"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Filter out noisy pixels from <code>bitplane</code> set above.\nDefault is disabled.\n</p></dd>",
       "name": "filter",

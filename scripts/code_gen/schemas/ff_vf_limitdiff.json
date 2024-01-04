@@ -13,6 +13,7 @@
       "alias": [
         "threshold"
       ],
+      "choices": [],
       "default": "1/255.f",
       "description": "<dd><p>Set the threshold to use when allowing certain differences between video streams.\nAny absolute difference value lower or exact than this threshold will pick pixel components from\nfirst video stream.\n</p>\n</dd>",
       "name": "threshold",
@@ -23,6 +24,7 @@
       "alias": [
         "elasticity"
       ],
+      "choices": [],
       "default": "2.f",
       "description": "<dd><p>Set the elasticity of soft thresholding when processing video streams.\nThis value multiplied with first one sets second threshold.\nAny absolute difference value greater or exact than second threshold will pick pixel components\nfrom second video stream. For values between those two threshold\nlinear interpolation between first and second video stream will be used.\n</p>\n</dd>",
       "name": "elasticity",
@@ -33,6 +35,7 @@
       "alias": [
         "reference"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable the reference (third) video stream processing. By default is disabled.\nIf set, this video stream will be used for calculating absolute difference with first video\nstream.\n</p>\n</dd>",
       "name": "reference",
@@ -43,6 +46,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Specify which planes will be processed. Defaults to all available.\n</p></dd>",
       "name": "planes",

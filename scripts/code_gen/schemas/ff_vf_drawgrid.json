@@ -18,6 +18,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0.\n</p>\n</dd>",
       "name": "x",
@@ -28,6 +29,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0.\n</p>\n</dd>",
       "name": "y",
@@ -39,6 +41,7 @@
         "width",
         "w"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the\ninput width and height, respectively, minus <code>thickness</code>, so image gets\nframed. Default to 0.\n</p>\n</dd>",
       "name": "width",
@@ -50,6 +53,7 @@
         "height",
         "h"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the\ninput width and height, respectively, minus <code>thickness</code>, so image gets\nframed. Default to 0.\n</p>\n</dd>",
       "name": "height",
@@ -61,6 +65,7 @@
         "color",
         "c"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Specify the color of the grid. For the general syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>. If the special\nvalue <code>invert</code> is used, the grid color is the same as the\nvideo with inverted luma.\n</p>\n</dd>",
       "name": "color",
@@ -72,6 +77,7 @@
         "thickness",
         "t"
       ],
+      "choices": [],
       "default": "1",
       "description": "<dd><p>The expression which sets the thickness of the grid line. Default value is <code>1</code>.\n</p>\n<p>See below for the list of accepted constants.\n</p>\n</dd>",
       "name": "thickness",
@@ -82,6 +88,7 @@
       "alias": [
         "replace"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Applicable if the input has alpha. With <code>1</code> the pixels of the painted grid\nwill overwrite the video\u2019s color and alpha pixels.\nDefault is <code>0</code>, which composites the grid onto the input, leaving the video\u2019s alpha intact.\n</p></dd>",
       "name": "replace",

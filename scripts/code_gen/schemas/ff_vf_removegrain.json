@@ -18,6 +18,7 @@
       "alias": [
         "m0"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set mode for the first plane.\n</p>\n</dd>",
       "name": "m0",
@@ -28,6 +29,7 @@
       "alias": [
         "m1"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set mode for the second plane.\n</p>\n</dd>",
       "name": "m1",
@@ -38,6 +40,7 @@
       "alias": [
         "m2"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set mode for the third plane.\n</p>\n</dd>",
       "name": "m2",
@@ -48,6 +51,7 @@
       "alias": [
         "m3"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set mode for the fourth plane.\n</p></dd>",
       "name": "m3",

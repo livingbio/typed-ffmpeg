@@ -18,6 +18,7 @@
       "alias": [
         "track_gain"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Exported track gain in dB at end of stream.\n</p>\n</dd>",
       "name": "track_gain",
@@ -28,6 +29,7 @@
       "alias": [
         "track_peak"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Exported track peak at end of stream.\n</p></dd>",
       "name": "track_peak",

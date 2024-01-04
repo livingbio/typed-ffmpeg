@@ -18,6 +18,23 @@
       "alias": [
         "stat"
       ],
+      "choices": [
+        {
+          "help": "analyze pixels for temporal outliers",
+          "name": "tout",
+          "value": "1<<FILTER_TOUT"
+        },
+        {
+          "help": "analyze video lines for vertical line repetition",
+          "name": "vrep",
+          "value": "1<<FILTER_VREP"
+        },
+        {
+          "help": "analyze for pixels outside of broadcast range",
+          "name": "brng",
+          "value": "1<<FILTER_BRNG"
+        }
+      ],
       "default": 0,
       "description": "<dd>\n<p><samp>stat</samp> specify an additional form of image analysis.\n<samp>out</samp> output video with the specified type of pixel highlighted.\n</p>\n<p>Both options accept the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tout</samp>\u2019</dt>\n<dd><p>Identify <var>temporal outliers</var> pixels. A <var>temporal outlier</var> is a pixel\nunlike the neighboring pixels of the same field. Examples of temporal outliers\ninclude the results of video dropouts, head clogs, or tape tracking issues.\n</p>\n</dd>\n<dt>\u2018<samp>vrep</samp>\u2019</dt>\n<dd><p>Identify <var>vertical line repetition</var>. Vertical line repetition includes\nsimilar rows of pixels within a frame. In born-digital video vertical line\nrepetition is common, but this pattern is uncommon in video digitized from an\nanalog source. When it occurs in video that results from the digitization of an\nanalog source it can indicate concealment from a dropout compensator.\n</p>\n</dd>\n<dt>\u2018<samp>brng</samp>\u2019</dt>\n<dd><p>Identify pixels that fall outside of legal broadcast range.\n</p></dd>\n</dl>\n</dd>",
       "name": "stat",
@@ -27,6 +44,23 @@
     {
       "alias": [
         "out"
+      ],
+      "choices": [
+        {
+          "help": "highlight pixels that depict temporal outliers",
+          "name": "tout",
+          "value": "FILTER_TOUT"
+        },
+        {
+          "help": "highlight video lines that depict vertical line repetition",
+          "name": "vrep",
+          "value": "FILTER_VREP"
+        },
+        {
+          "help": "highlight pixels that are outside of broadcast range",
+          "name": "brng",
+          "value": "FILTER_BRNG"
+        }
       ],
       "default": "FILTER_NONE",
       "description": "<dd>\n<p><samp>stat</samp> specify an additional form of image analysis.\n<samp>out</samp> output video with the specified type of pixel highlighted.\n</p>\n<p>Both options accept the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tout</samp>\u2019</dt>\n<dd><p>Identify <var>temporal outliers</var> pixels. A <var>temporal outlier</var> is a pixel\nunlike the neighboring pixels of the same field. Examples of temporal outliers\ninclude the results of video dropouts, head clogs, or tape tracking issues.\n</p>\n</dd>\n<dt>\u2018<samp>vrep</samp>\u2019</dt>\n<dd><p>Identify <var>vertical line repetition</var>. Vertical line repetition includes\nsimilar rows of pixels within a frame. In born-digital video vertical line\nrepetition is common, but this pattern is uncommon in video digitized from an\nanalog source. When it occurs in video that results from the digitization of an\nanalog source it can indicate concealment from a dropout compensator.\n</p>\n</dd>\n<dt>\u2018<samp>brng</samp>\u2019</dt>\n<dd><p>Identify pixels that fall outside of legal broadcast range.\n</p></dd>\n</dl>\n</dd>",
@@ -39,6 +73,7 @@
         "c",
         "color"
       ],
+      "choices": [],
       "default": "yellow",
       "description": "<dd><p>Set the highlight color for the <samp>out</samp> option. The default color is\nyellow.\n</p></dd>",
       "name": "c",

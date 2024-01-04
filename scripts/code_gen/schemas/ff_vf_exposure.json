@@ -18,6 +18,7 @@
       "alias": [
         "exposure"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the exposure correction in EV. Allowed range is from -3.0 to 3.0 EV\nDefault value is 0 EV.\n</p>\n</dd>",
       "name": "exposure",
@@ -28,6 +29,7 @@
       "alias": [
         "black"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the black level correction. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p></dd>",
       "name": "black",

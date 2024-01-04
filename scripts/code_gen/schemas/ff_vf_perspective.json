@@ -18,6 +18,7 @@
       "alias": [
         "x0"
       ],
+      "choices": [],
       "default": "0",
       "description": null,
       "name": "x0",
@@ -28,6 +29,7 @@
       "alias": [
         "y0"
       ],
+      "choices": [],
       "default": "0",
       "description": null,
       "name": "y0",
@@ -38,6 +40,7 @@
       "alias": [
         "x1"
       ],
+      "choices": [],
       "default": "W",
       "description": null,
       "name": "x1",
@@ -48,6 +51,7 @@
       "alias": [
         "y1"
       ],
+      "choices": [],
       "default": "0",
       "description": null,
       "name": "y1",
@@ -58,6 +62,7 @@
       "alias": [
         "x2"
       ],
+      "choices": [],
       "default": "0",
       "description": null,
       "name": "x2",
@@ -68,6 +73,7 @@
       "alias": [
         "y2"
       ],
+      "choices": [],
       "default": "H",
       "description": null,
       "name": "y2",
@@ -78,6 +84,7 @@
       "alias": [
         "x3"
       ],
+      "choices": [],
       "default": "W",
       "description": null,
       "name": "x3",
@@ -88,6 +95,7 @@
       "alias": [
         "y3"
       ],
+      "choices": [],
       "default": "H",
       "description": null,
       "name": "y3",
@@ -97,6 +105,18 @@
     {
       "alias": [
         "interpolation"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "linear",
+          "value": 0
+        },
+        {
+          "help": "",
+          "name": "cubic",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": null,
@@ -108,6 +128,18 @@
       "alias": [
         "sense"
       ],
+      "choices": [
+        {
+          "help": "specify locations in source to send to corners in destination",
+          "name": "source",
+          "value": "PERSPECTIVE_SENSE_SOURCE"
+        },
+        {
+          "help": "specify locations in destination to send corners of source",
+          "name": "destination",
+          "value": "PERSPECTIVE_SENSE_DESTINATION"
+        }
+      ],
       "default": "PERSPECTIVE_SENSE_SOURCE",
       "description": null,
       "name": "sense",
@@ -118,6 +150,7 @@
       "alias": [
         "eval"
       ],
+      "choices": [],
       "default": "EVAL_MODE_INIT",
       "description": null,
       "name": "eval",

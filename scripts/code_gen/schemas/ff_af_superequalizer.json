@@ -18,6 +18,7 @@
       "alias": [
         "1b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 65Hz band gain.\n</p></dd>",
       "name": "1b",
@@ -28,6 +29,7 @@
       "alias": [
         "2b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 92Hz band gain.\n</p></dd>",
       "name": "2b",
@@ -38,6 +40,7 @@
       "alias": [
         "3b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 131Hz band gain.\n</p></dd>",
       "name": "3b",
@@ -48,6 +51,7 @@
       "alias": [
         "4b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 185Hz band gain.\n</p></dd>",
       "name": "4b",
@@ -58,6 +62,7 @@
       "alias": [
         "5b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 262Hz band gain.\n</p></dd>",
       "name": "5b",
@@ -68,6 +73,7 @@
       "alias": [
         "6b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 370Hz band gain.\n</p></dd>",
       "name": "6b",
@@ -78,6 +84,7 @@
       "alias": [
         "7b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 523Hz band gain.\n</p></dd>",
       "name": "7b",
@@ -88,6 +95,7 @@
       "alias": [
         "8b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 740Hz band gain.\n</p></dd>",
       "name": "8b",
@@ -98,6 +106,7 @@
       "alias": [
         "9b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 1047Hz band gain.\n</p></dd>",
       "name": "9b",
@@ -108,6 +117,7 @@
       "alias": [
         "10b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 1480Hz band gain.\n</p></dd>",
       "name": "10b",
@@ -118,6 +128,7 @@
       "alias": [
         "11b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 2093Hz band gain.\n</p></dd>",
       "name": "11b",
@@ -128,6 +139,7 @@
       "alias": [
         "12b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 2960Hz band gain.\n</p></dd>",
       "name": "12b",
@@ -138,6 +150,7 @@
       "alias": [
         "13b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 4186Hz band gain.\n</p></dd>",
       "name": "13b",
@@ -148,6 +161,7 @@
       "alias": [
         "14b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 5920Hz band gain.\n</p></dd>",
       "name": "14b",
@@ -158,6 +172,7 @@
       "alias": [
         "15b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 8372Hz band gain.\n</p></dd>",
       "name": "15b",
@@ -168,6 +183,7 @@
       "alias": [
         "16b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 11840Hz band gain.\n</p></dd>",
       "name": "16b",
@@ -178,6 +194,7 @@
       "alias": [
         "17b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 16744Hz band gain.\n</p></dd>",
       "name": "17b",
@@ -188,6 +205,7 @@
       "alias": [
         "18b"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set 20000Hz band gain.\n</p></dd>",
       "name": "18b",

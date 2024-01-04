@@ -18,6 +18,18 @@
       "alias": [
         "filter"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "weak",
+          "value": "WEAK"
+        },
+        {
+          "help": "0",
+          "name": "strong",
+          "value": "STRONG"
+        }
+      ],
       "default": "STRONG",
       "description": "<dd><p>Set filter type, can be <var>weak</var> or <var>strong</var>. Default is <var>strong</var>.\nThis controls what kind of deblocking is applied.\n</p>\n</dd>",
       "name": "filter",
@@ -28,6 +40,7 @@
       "alias": [
         "block"
       ],
+      "choices": [],
       "default": 8,
       "description": "<dd><p>Set size of block, allowed range is from 4 to 512. Default is <var>8</var>.\n</p>\n</dd>",
       "name": "block",
@@ -38,6 +51,7 @@
       "alias": [
         "alpha"
       ],
+      "choices": [],
       "default": 0.098,
       "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
       "name": "alpha",
@@ -48,6 +62,7 @@
       "alias": [
         "beta"
       ],
+      "choices": [],
       "default": 0.05,
       "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
       "name": "beta",
@@ -58,6 +73,7 @@
       "alias": [
         "gamma"
       ],
+      "choices": [],
       "default": 0.05,
       "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
       "name": "gamma",
@@ -68,6 +84,7 @@
       "alias": [
         "delta"
       ],
+      "choices": [],
       "default": 0.05,
       "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
       "name": "delta",
@@ -78,6 +95,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set planes to filter. Default is to filter all available planes.\n</p></dd>",
       "name": "planes",

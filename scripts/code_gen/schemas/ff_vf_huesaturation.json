@@ -18,6 +18,7 @@
       "alias": [
         "hue"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the hue shift in degrees to apply. Default is 0.\nAllowed range is from -180 to 180.\n</p>\n</dd>",
       "name": "hue",
@@ -28,6 +29,7 @@
       "alias": [
         "saturation"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the saturation shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
       "name": "saturation",
@@ -38,6 +40,7 @@
       "alias": [
         "intensity"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the intensity shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
       "name": "intensity",
@@ -47,6 +50,43 @@
     {
       "alias": [
         "colors"
+      ],
+      "choices": [
+        {
+          "help": "set reds",
+          "name": "r",
+          "value": "(1 << 0)"
+        },
+        {
+          "help": "set yellows",
+          "name": "y",
+          "value": "(1 << 1)"
+        },
+        {
+          "help": "set greens",
+          "name": "g",
+          "value": "(1 << 2)"
+        },
+        {
+          "help": "set cyans",
+          "name": "c",
+          "value": "(1 << 3)"
+        },
+        {
+          "help": "set blues",
+          "name": "b",
+          "value": "(1 << 4)"
+        },
+        {
+          "help": "set magentas",
+          "name": "m",
+          "value": "(1 << 5)"
+        },
+        {
+          "help": "set all colors",
+          "name": "a",
+          "value": "0x3F"
+        }
       ],
       "default": "0x3F",
       "description": "<dd><p>Set which primary and complementary colors are going to be adjusted.\nThis options is set by providing one or multiple values.\nThis can select multiple colors at once. By default all colors are selected.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dd><p>Adjust reds.\n</p></dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Adjust yellows.\n</p></dd>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dd><p>Adjust greens.\n</p></dd>\n<dt>\u2018<samp>c</samp>\u2019</dt>\n<dd><p>Adjust cyans.\n</p></dd>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n<dd><p>Adjust blues.\n</p></dd>\n<dt>\u2018<samp>m</samp>\u2019</dt>\n<dd><p>Adjust magentas.\n</p></dd>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>Adjust all colors.\n</p></dd>\n</dl>\n</dd>",
@@ -58,6 +98,7 @@
       "alias": [
         "strength"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set strength of filtering. Allowed range is from 0 to 100.\nDefault value is 1.\n</p>\n</dd>",
       "name": "strength",
@@ -68,6 +109,7 @@
       "alias": [
         "rw"
       ],
+      "choices": [],
       "default": 0.333,
       "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
       "name": "rw",
@@ -78,6 +120,7 @@
       "alias": [
         "gw"
       ],
+      "choices": [],
       "default": 0.334,
       "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
       "name": "gw",
@@ -88,6 +131,7 @@
       "alias": [
         "bw"
       ],
+      "choices": [],
       "default": 0.333,
       "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
       "name": "bw",
@@ -98,6 +142,7 @@
       "alias": [
         "lightness"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set preserving lightness, by default is disabled.\nAdjusting hues can change lightness from original RGB triplet,\nwith this option enabled lightness is kept at same value.\n</p></dd>",
       "name": "lightness",

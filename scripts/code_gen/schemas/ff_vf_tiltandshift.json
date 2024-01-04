@@ -18,6 +18,7 @@
       "alias": [
         "tilt"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Tilt video while shifting (default). When unset, video will be sliding a\nstatic image, composed of the first column of each frame.\n</p>\n</dd>",
       "name": "tilt",
@@ -27,6 +28,23 @@
     {
       "alias": [
         "start"
+      ],
+      "choices": [
+        {
+          "help": "Start immediately (default)",
+          "name": "none",
+          "value": "TILT_NONE"
+        },
+        {
+          "help": "Use the first frames",
+          "name": "frame",
+          "value": "TILT_FRAME"
+        },
+        {
+          "help": "Fill with black",
+          "name": "black",
+          "value": "TILT_BLACK"
+        }
       ],
       "default": "TILT_NONE",
       "description": "<dd><p>What to do at the start of filtering (see below).\n</p>\n</dd>",
@@ -38,6 +56,23 @@
       "alias": [
         "end"
       ],
+      "choices": [
+        {
+          "help": "Do not pad at the end (default)",
+          "name": "none",
+          "value": "TILT_NONE"
+        },
+        {
+          "help": "Use the last frame",
+          "name": "frame",
+          "value": "TILT_FRAME"
+        },
+        {
+          "help": "Fill with black",
+          "name": "black",
+          "value": "TILT_BLACK"
+        }
+      ],
       "default": "TILT_NONE",
       "description": "<dd><p>What to do at the end of filtering (see below).\n</p>\n</dd>",
       "name": "end",
@@ -48,6 +83,7 @@
       "alias": [
         "hold"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>How many columns should pass through before start of filtering.\n</p>\n</dd>",
       "name": "hold",
@@ -58,6 +94,7 @@
       "alias": [
         "pad"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>How many columns should be inserted before end of filtering.\n</p>\n</dd>",
       "name": "pad",

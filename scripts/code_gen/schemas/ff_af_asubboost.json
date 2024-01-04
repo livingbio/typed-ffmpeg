@@ -18,6 +18,7 @@
       "alias": [
         "dry"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set dry gain, how much of original signal is kept. Allowed range is from 0 to 1.\nDefault value is 1.0.\n</p>\n</dd>",
       "name": "dry",
@@ -28,6 +29,7 @@
       "alias": [
         "wet"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set wet gain, how much of filtered signal is kept. Allowed range is from 0 to 1.\nDefault value is 1.0.\n</p>\n</dd>",
       "name": "wet",
@@ -38,6 +40,7 @@
       "alias": [
         "boost"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Set max boost factor. Allowed range is from 1 to 12. Default value is 2.\n</p>\n</dd>",
       "name": "boost",
@@ -48,6 +51,7 @@
       "alias": [
         "decay"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set delay line decay gain value. Allowed range is from 0 to 1.\nDefault value is 0.0.\n</p>\n</dd>",
       "name": "decay",
@@ -58,6 +62,7 @@
       "alias": [
         "feedback"
       ],
+      "choices": [],
       "default": 0.9,
       "description": "<dd><p>Set delay line feedback gain value. Allowed range is from 0 to 1.\nDefault value is 0.9.\n</p>\n</dd>",
       "name": "feedback",
@@ -68,6 +73,7 @@
       "alias": [
         "cutoff"
       ],
+      "choices": [],
       "default": 100.0,
       "description": "<dd><p>Set cutoff frequency in Hertz. Allowed range is 50 to 900.\nDefault value is 100.\n</p>\n</dd>",
       "name": "cutoff",
@@ -78,6 +84,7 @@
       "alias": [
         "slope"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set slope amount for cutoff frequency. Allowed range is 0.0001 to 1.\nDefault value is 0.5.\n</p>\n</dd>",
       "name": "slope",
@@ -88,6 +95,7 @@
       "alias": [
         "delay"
       ],
+      "choices": [],
       "default": 20.0,
       "description": "<dd><p>Set delay. Allowed range is from 1 to 100.\nDefault value is 20.\n</p>\n</dd>",
       "name": "delay",
@@ -98,6 +106,7 @@
       "alias": [
         "channels"
       ],
+      "choices": [],
       "default": "all",
       "description": "<dd><p>Set the channels to process. Default value is all available.\n</p></dd>",
       "name": "channels",

@@ -14,6 +14,7 @@
         "nb_inputs",
         "n"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Set the number of different inputs, it is 2 by default.\n</p>\n</dd>",
       "name": "nb_inputs",
@@ -23,6 +24,23 @@
     {
       "alias": [
         "duration"
+      ],
+      "choices": [
+        {
+          "help": "Duration of longest input",
+          "name": "longest",
+          "value": 0
+        },
+        {
+          "help": "Duration of shortest input",
+          "name": "shortest",
+          "value": 1
+        },
+        {
+          "help": "Duration of first input",
+          "name": "first",
+          "value": 2
+        }
       ],
       "default": 0,
       "description": "<dd><p>How to determine the end-of-stream.\n</p>\n<dl compact=\"compact\">\n<dt><samp>longest</samp></dt>\n<dd><p>The duration of the longest input. (default)\n</p>\n</dd>\n<dt><samp>shortest</samp></dt>\n<dd><p>The duration of the shortest input.\n</p>\n</dd>\n<dt><samp>first</samp></dt>\n<dd><p>The duration of the first input.\n</p></dd>\n</dl>\n</dd>",

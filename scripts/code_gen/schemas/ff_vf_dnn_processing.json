@@ -18,6 +18,7 @@
       "alias": [
         "dnn_backend"
       ],
+      "choices": [],
       "default": "DNN_TF",
       "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nthe following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tensorflow</samp>\u2019</dt>\n<dd><p>TensorFlow backend. To enable this backend you\nneed to install the TensorFlow for C library (see\n<a href=\"https://www.tensorflow.org/install/lang_c\">https://www.tensorflow.org/install/lang_c</a>) and configure FFmpeg with\n<code>--enable-libtensorflow</code>\n</p>\n</dd>\n<dt>\u2018<samp>openvino</samp>\u2019</dt>\n<dd><p>OpenVINO backend. To enable this backend you\nneed to build and install the OpenVINO for C library (see\n<a href=\"https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md\">https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md</a>) and configure FFmpeg with\n<code>--enable-libopenvino</code> (\u2013extra-cflags=-I... \u2013extra-ldflags=-L... might\nbe needed if the header files and libraries are not installed into system path)\n</p>\n</dd>\n</dl>\n</dd>",
       "name": "dnn_backend",
@@ -28,6 +29,7 @@
       "alias": [
         "model"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats. TensorFlow, OpenVINO backend can load files for only its format.\n</p>\n</dd>",
       "name": "model",
@@ -38,6 +40,7 @@
       "alias": [
         "input"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the input name of the dnn network.\n</p>\n</dd>",
       "name": "input",
@@ -48,6 +51,7 @@
       "alias": [
         "output"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the output name of the dnn network.\n</p>\n</dd>",
       "name": "output",
@@ -59,6 +63,7 @@
         "backend_configs",
         "options"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the configs to be passed into backend. To use async execution, set async (default: set).\nRoll back to sync execution if the backend does not support async.\n</p>\n<p>For tensorflow backend, you can set its configs with <samp>sess_config</samp> options,\nplease use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system.\n</p>\n</dd>",
       "name": "backend_configs",
@@ -69,6 +74,7 @@
       "alias": [
         "async"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "async",

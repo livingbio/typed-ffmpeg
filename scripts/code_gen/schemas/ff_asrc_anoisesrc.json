@@ -14,6 +14,7 @@
         "sample_rate",
         "r"
       ],
+      "choices": [],
       "default": 48000,
       "description": "<dd><p>Specify the sample rate. Default value is 48000 Hz.\n</p>\n</dd>",
       "name": "sample_rate",
@@ -25,6 +26,7 @@
         "amplitude",
         "a"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Specify the amplitude (0.0 - 1.0) of the generated audio stream. Default value\nis 1.0.\n</p>\n</dd>",
       "name": "amplitude",
@@ -36,6 +38,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Specify the duration of the generated audio stream. Not specifying this option\nresults in noise with an infinite length.\n</p>\n</dd>",
       "name": "duration",
@@ -48,6 +51,38 @@
         "colour",
         "c"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "white",
+          "value": "NM_WHITE"
+        },
+        {
+          "help": "0",
+          "name": "pink",
+          "value": "NM_PINK"
+        },
+        {
+          "help": "0",
+          "name": "brown",
+          "value": "NM_BROWN"
+        },
+        {
+          "help": "0",
+          "name": "blue",
+          "value": "NM_BLUE"
+        },
+        {
+          "help": "0",
+          "name": "violet",
+          "value": "NM_VIOLET"
+        },
+        {
+          "help": "0",
+          "name": "velvet",
+          "value": "NM_VELVET"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Specify the color of noise. Available noise colors are white, pink, brown,\nblue, violet and velvet. Default color is white.\n</p>\n</dd>",
       "name": "color",
@@ -59,6 +94,7 @@
         "seed",
         "s"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Specify a value used to seed the PRNG.\n</p>\n</dd>",
       "name": "seed",
@@ -70,6 +106,7 @@
         "nb_samples",
         "n"
       ],
+      "choices": [],
       "default": 1024,
       "description": "<dd><p>Set the number of samples per each output frame, default is 1024.\n</p>\n</dd>",
       "name": "nb_samples",
@@ -80,6 +117,7 @@
       "alias": [
         "density"
       ],
+      "choices": [],
       "default": 0.05,
       "description": "<dd><p>Set the density (0.0 - 1.0) for the velvet noise generator, default is 0.05.\n</p></dd>",
       "name": "density",

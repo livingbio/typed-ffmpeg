@@ -18,6 +18,7 @@
       "alias": [
         "depth"
       ],
+      "choices": [],
       "default": 8,
       "description": "<dd><p>Set depth.\n</p>\n<p>Larger depth values will denoise lower frequency components more, but\nslow down filtering.\n</p>\n<p>Must be an int in the range 8-16, default is <code>8</code>.\n</p>\n</dd>",
       "name": "depth",
@@ -29,6 +30,7 @@
         "luma_strength",
         "ls"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set luma strength.\n</p>\n<p>Must be a double value in the range 0-1000, default is <code>1.0</code>.\n</p>\n</dd>",
       "name": "luma_strength",
@@ -40,6 +42,7 @@
         "chroma_strength",
         "cs"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set chroma strength.\n</p>\n<p>Must be a double value in the range 0-1000, default is <code>1.0</code>.\n</p></dd>",
       "name": "chroma_strength",

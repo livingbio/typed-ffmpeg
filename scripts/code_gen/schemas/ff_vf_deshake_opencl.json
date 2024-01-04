@@ -18,6 +18,7 @@
       "alias": [
         "tripod"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Simulates a tripod by preventing any camera movement whatsoever from the original frame. Defaults to <code>0</code>.\n</p>\n</dd>",
       "name": "tripod",
@@ -28,6 +29,7 @@
       "alias": [
         "debug"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Whether or not additional debug info should be displayed, both in the processed output and in the console.\n</p>\n<p>Note that in order to see console debug output you will also need to pass <code>-v verbose</code> to ffmpeg.\n</p>\n<p>Viewing point matches in the output video is only supported for RGB input.\n</p>\n<p>Defaults to <code>0</code>.\n</p>\n</dd>",
       "name": "debug",
@@ -38,6 +40,7 @@
       "alias": [
         "adaptive_crop"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Whether or not to do a tiny bit of cropping at the borders to cut down on the amount of mirrored pixels.\n</p>\n<p>Defaults to <code>1</code>.\n</p>\n</dd>",
       "name": "adaptive_crop",
@@ -48,6 +51,7 @@
       "alias": [
         "refine_features"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Whether or not feature points should be refined at a sub-pixel level.\n</p>\n<p>This can be turned off for a slight performance gain at the cost of precision.\n</p>\n<p>Defaults to <code>1</code>.\n</p>\n</dd>",
       "name": "refine_features",
@@ -58,6 +62,7 @@
       "alias": [
         "smooth_strength"
       ],
+      "choices": [],
       "default": "0.0f",
       "description": "<dd><p>The strength of the smoothing applied to the camera path from <code>0.0</code> to <code>1.0</code>.\n</p>\n<p><code>1.0</code> is the maximum smoothing strength while values less than that result in less smoothing.\n</p>\n<p><code>0.0</code> causes the filter to adaptively choose a smoothing strength on a per-frame basis.\n</p>\n<p>Defaults to <code>0.0</code>.\n</p>\n</dd>",
       "name": "smooth_strength",
@@ -68,6 +73,7 @@
       "alias": [
         "smooth_window_multiplier"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Controls the size of the smoothing window (the number of frames buffered to determine motion information from).\n</p>\n<p>The size of the smoothing window is determined by multiplying the framerate of the video by this number.\n</p>\n<p>Acceptable values range from <code>0.1</code> to <code>10.0</code>.\n</p>\n<p>Larger values increase the amount of motion data available for determining how to smooth the camera path,\npotentially improving smoothness, but also increase latency and memory usage.\n</p>\n<p>Defaults to <code>2.0</code>.\n</p>\n</dd>",
       "name": "smooth_window_multiplier",

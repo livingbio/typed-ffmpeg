@@ -18,6 +18,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set input level. By default is <var>1</var>, or 0dB\n</p>\n</dd>",
       "name": "level_in",
@@ -28,6 +29,7 @@
       "alias": [
         "level_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set output level. By default is <var>1</var>, or 0dB.\n</p>\n</dd>",
       "name": "level_out",
@@ -38,6 +40,7 @@
       "alias": [
         "side_gain"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set gain applied to side part of signal. By default is <var>1</var>.\n</p>\n</dd>",
       "name": "side_gain",
@@ -47,6 +50,28 @@
     {
       "alias": [
         "middle_source"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "left",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "right",
+          "value": 1
+        },
+        {
+          "help": "L+R",
+          "name": "mid",
+          "value": 2
+        },
+        {
+          "help": "L-R",
+          "name": "side",
+          "value": 3
+        }
       ],
       "default": 2,
       "description": "<dd><p>Set kind of middle source. Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>left</samp>\u2019</dt>\n<dd><p>Pick left channel.\n</p>\n</dd>\n<dt>\u2018<samp>right</samp>\u2019</dt>\n<dd><p>Pick right channel.\n</p>\n</dd>\n<dt>\u2018<samp>mid</samp>\u2019</dt>\n<dd><p>Pick middle part signal of stereo image.\n</p>\n</dd>\n<dt>\u2018<samp>side</samp>\u2019</dt>\n<dd><p>Pick side part signal of stereo image.\n</p></dd>\n</dl>\n</dd>",
@@ -58,6 +83,7 @@
       "alias": [
         "middle_phase"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Change middle phase. By default is disabled.\n</p>\n</dd>",
       "name": "middle_phase",
@@ -68,6 +94,7 @@
       "alias": [
         "left_delay"
       ],
+      "choices": [],
       "default": 2.05,
       "description": "<dd><p>Set left channel delay. By default is <var>2.05</var> milliseconds.\n</p>\n</dd>",
       "name": "left_delay",
@@ -78,6 +105,7 @@
       "alias": [
         "left_balance"
       ],
+      "choices": [],
       "default": -1.0,
       "description": "<dd><p>Set left channel balance. By default is <var>-1</var>.\n</p>\n</dd>",
       "name": "left_balance",
@@ -88,6 +116,7 @@
       "alias": [
         "left_gain"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set left channel gain. By default is <var>1</var>.\n</p>\n</dd>",
       "name": "left_gain",
@@ -98,6 +127,7 @@
       "alias": [
         "left_phase"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Change left phase. By default is disabled.\n</p>\n</dd>",
       "name": "left_phase",
@@ -108,6 +138,7 @@
       "alias": [
         "right_delay"
       ],
+      "choices": [],
       "default": 2.12,
       "description": "<dd><p>Set right channel delay. By defaults is <var>2.12</var> milliseconds.\n</p>\n</dd>",
       "name": "right_delay",
@@ -118,6 +149,7 @@
       "alias": [
         "right_balance"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set right channel balance. By default is <var>1</var>.\n</p>\n</dd>",
       "name": "right_balance",
@@ -128,6 +160,7 @@
       "alias": [
         "right_gain"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set right channel gain. By default is <var>1</var>.\n</p>\n</dd>",
       "name": "right_gain",
@@ -138,6 +171,7 @@
       "alias": [
         "right_phase"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Change right phase. By default is enabled.\n</p></dd>",
       "name": "right_phase",

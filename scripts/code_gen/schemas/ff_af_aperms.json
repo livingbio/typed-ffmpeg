@@ -18,6 +18,33 @@
       "alias": [
         "mode"
       ],
+      "choices": [
+        {
+          "help": "do nothing",
+          "name": "none",
+          "value": "MODE_NONE"
+        },
+        {
+          "help": "set all output frames read-only",
+          "name": "ro",
+          "value": "MODE_RO"
+        },
+        {
+          "help": "set all output frames writable",
+          "name": "rw",
+          "value": "MODE_RW"
+        },
+        {
+          "help": "switch permissions",
+          "name": "toggle",
+          "value": "MODE_TOGGLE"
+        },
+        {
+          "help": "set permissions randomly",
+          "name": "random",
+          "value": "MODE_RANDOM"
+        }
+      ],
       "default": "MODE_NONE",
       "description": "<dd><p>Select the permissions mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing. This is the default.\n</p></dd>\n<dt>\u2018<samp>ro</samp>\u2019</dt>\n<dd><p>Set all the output frames read-only.\n</p></dd>\n<dt>\u2018<samp>rw</samp>\u2019</dt>\n<dd><p>Set all the output frames directly writable.\n</p></dd>\n<dt>\u2018<samp>toggle</samp>\u2019</dt>\n<dd><p>Make the frame read-only if writable, and writable if read-only.\n</p></dd>\n<dt>\u2018<samp>random</samp>\u2019</dt>\n<dd><p>Set each output frame read-only or writable randomly.\n</p></dd>\n</dl>\n</dd>",
       "name": "mode",
@@ -28,6 +55,7 @@
       "alias": [
         "seed"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set the seed for the <var>random</var> mode, must be an integer included between\n<code>0</code> and <code>UINT32_MAX</code>. If not specified, or if explicitly set to\n<code>-1</code>, the filter will try to use a good random seed on a best effort\nbasis.\n</p></dd>",
       "name": "seed",

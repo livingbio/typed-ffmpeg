@@ -14,6 +14,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "hd720",
       "description": "<dd><p>Set output video size. Default value is <code>hd720</code>.\n</p>\n</dd>",
       "name": "size",
@@ -25,6 +26,7 @@
         "framerate",
         "fr"
       ],
+      "choices": [],
       "default": "30",
       "description": "<dd><p>Set output video frame rate. Default value is <code>30</code>.\n</p>\n</dd>",
       "name": "framerate",
@@ -36,6 +38,7 @@
         "samplerate",
         "sr"
       ],
+      "choices": [],
       "default": 44100,
       "description": "<dd><p>Set output audio sample rate. Default value is <code>44100</code>.\n</p>\n</dd>",
       "name": "samplerate",
@@ -47,6 +50,7 @@
         "amplitude",
         "a"
       ],
+      "choices": [],
       "default": 0.7,
       "description": "<dd><p>Set output audio beep amplitude. Default value is <code>0.7</code>.\n</p>\n</dd>",
       "name": "amplitude",
@@ -58,6 +62,7 @@
         "period",
         "p"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>Set output audio beep period in seconds. Default value is <code>3</code>.\n</p>\n</dd>",
       "name": "period",
@@ -69,6 +74,7 @@
         "delay",
         "dl"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set output video flash delay in number of frames. Default value is <code>0</code>.\n</p>\n</dd>",
       "name": "delay",
@@ -80,6 +86,7 @@
         "cycle",
         "c"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable cycling of video delays, by default is disabled.\n</p>\n</dd>",
       "name": "cycle",
@@ -91,6 +98,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set stream output duration. By default duration is unlimited.\n</p>\n</dd>",
       "name": "duration",
@@ -101,6 +109,7 @@
       "alias": [
         "fg"
       ],
+      "choices": [],
       "default": "white",
       "description": "<dd><p>Set foreground/background/additional color.\n</p></dd>",
       "name": "fg",
@@ -111,6 +120,7 @@
       "alias": [
         "bg"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Set foreground/background/additional color.\n</p></dd>",
       "name": "bg",
@@ -121,6 +131,7 @@
       "alias": [
         "ag"
       ],
+      "choices": [],
       "default": "gray",
       "description": "<dd><p>Set foreground/background/additional color.\n</p></dd>",
       "name": "ag",

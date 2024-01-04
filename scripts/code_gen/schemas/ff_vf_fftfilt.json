@@ -18,6 +18,7 @@
       "alias": [
         "dc_Y"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Adjust the dc value (gain) of the luma plane of the image. The filter\naccepts an integer value in range <code>0</code> to <code>1000</code>. The default\nvalue is set to <code>0</code>.\n</p>\n</dd>",
       "name": "dc_Y",
@@ -28,6 +29,7 @@
       "alias": [
         "dc_U"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Adjust the dc value (gain) of the 1st chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>",
       "name": "dc_U",
@@ -38,6 +40,7 @@
       "alias": [
         "dc_V"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Adjust the dc value (gain) of the 2nd chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>",
       "name": "dc_V",
@@ -48,6 +51,7 @@
       "alias": [
         "weight_Y"
       ],
+      "choices": [],
       "default": "1",
       "description": "<dd><p>Set the frequency domain weight expression for the luma plane.\n</p>\n</dd>",
       "name": "weight_Y",
@@ -58,6 +62,7 @@
       "alias": [
         "weight_U"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the frequency domain weight expression for the 1st chroma plane.\n</p>\n</dd>",
       "name": "weight_U",
@@ -68,6 +73,7 @@
       "alias": [
         "weight_V"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the frequency domain weight expression for the 2nd chroma plane.\n</p>\n</dd>",
       "name": "weight_V",
@@ -78,6 +84,7 @@
       "alias": [
         "eval"
       ],
+      "choices": [],
       "default": "EVAL_MODE_INIT",
       "description": "<dd><p>Set when the expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Only evaluate expressions once during the filter initialization.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p>\n<p>The filter accepts the following variables:\n</p></dd>",
       "name": "eval",

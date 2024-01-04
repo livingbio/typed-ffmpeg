@@ -25,7 +25,9 @@
 
 
 {% macro default_typing(option) %}
-{% if option.typing == "int" and option.default is integer %}
+{% if option.choices %}
+| DefaultStr = DefaultStr({{option._default.__repr__()}})
+{% elif option.typing == "int" and option.default is integer %}
 | DefaultInt = DefaultInt({{option.default}})
 {% elif option.typing == "str" and option.default is string %}
 | DefaultStr = DefaultStr({{option.default.__repr__()}})
@@ -41,9 +43,9 @@
 {% macro option_typings(f) %}
 {% for option in f.options %}
     {% if option.required %}
-        {{option.name | option_name_safe}}: {{option.typing}},
+        {{option.name | option_name_safe}}: {{option._typing}},
     {% else %}
-        {{option.name | option_name_safe}}: {{option.typing}} {{ default_typing(option) }},
+        {{option.name | option_name_safe}}: {{option._typing}} {{ default_typing(option) }},
     {% endif %}
 {% endfor %}
 {% endmacro %}

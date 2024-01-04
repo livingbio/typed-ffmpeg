@@ -18,6 +18,18 @@
       "alias": [
         "type"
       ],
+      "choices": [
+        {
+          "help": "greenscreen",
+          "name": "green",
+          "value": 0
+        },
+        {
+          "help": "bluescreen",
+          "name": "blue",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set what type of despill to use.\n</p>\n</dd>",
       "name": "type",
@@ -28,6 +40,7 @@
       "alias": [
         "mix"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set how spillmap will be generated.\n</p>\n</dd>",
       "name": "mix",
@@ -38,6 +51,7 @@
       "alias": [
         "expand"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set how much to get rid of still remaining spill.\n</p>\n</dd>",
       "name": "expand",
@@ -48,6 +62,7 @@
       "alias": [
         "red"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Controls amount of red in spill area.\n</p>\n</dd>",
       "name": "red",
@@ -58,6 +73,7 @@
       "alias": [
         "green"
       ],
+      "choices": [],
       "default": -1.0,
       "description": "<dd><p>Controls amount of green in spill area.\nShould be -1 for greenscreen.\n</p>\n</dd>",
       "name": "green",
@@ -68,6 +84,7 @@
       "alias": [
         "blue"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Controls amount of blue in spill area.\nShould be -1 for bluescreen.\n</p>\n</dd>",
       "name": "blue",
@@ -78,6 +95,7 @@
       "alias": [
         "brightness"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Controls brightness of spill area, preserving colors.\n</p>\n</dd>",
       "name": "brightness",
@@ -88,6 +106,7 @@
       "alias": [
         "alpha"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Modify alpha from generated spillmap.\n</p></dd>",
       "name": "alpha",

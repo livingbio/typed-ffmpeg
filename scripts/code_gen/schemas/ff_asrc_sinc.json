@@ -14,6 +14,7 @@
         "sample_rate",
         "r"
       ],
+      "choices": [],
       "default": 44100,
       "description": "<dd><p>Set sample rate, default is 44100.\n</p>\n</dd>",
       "name": "sample_rate",
@@ -25,6 +26,7 @@
         "nb_samples",
         "n"
       ],
+      "choices": [],
       "default": 1024,
       "description": "<dd><p>Set number of samples per each frame. Default is 1024.\n</p>\n</dd>",
       "name": "nb_samples",
@@ -35,6 +37,7 @@
       "alias": [
         "hp"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set high-pass frequency. Default is 0.\n</p>\n</dd>",
       "name": "hp",
@@ -45,6 +48,7 @@
       "alias": [
         "lp"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set low-pass frequency. Default is 0.\nIf high-pass frequency is lower than low-pass frequency and low-pass frequency\nis higher than 0 then filter will create band-pass filter coefficients,\notherwise band-reject filter coefficients.\n</p>\n</dd>",
       "name": "lp",
@@ -55,6 +59,7 @@
       "alias": [
         "phase"
       ],
+      "choices": [],
       "default": 50.0,
       "description": "<dd><p>Set filter phase response. Default is 50. Allowed range is from 0 to 100.\n</p>\n</dd>",
       "name": "phase",
@@ -65,6 +70,7 @@
       "alias": [
         "beta"
       ],
+      "choices": [],
       "default": -1.0,
       "description": "<dd><p>Set Kaiser window beta.\n</p>\n</dd>",
       "name": "beta",
@@ -75,6 +81,7 @@
       "alias": [
         "att"
       ],
+      "choices": [],
       "default": 120.0,
       "description": "<dd><p>Set stop-band attenuation. Default is 120dB, allowed range is from 40 to 180 dB.\n</p>\n</dd>",
       "name": "att",
@@ -85,6 +92,7 @@
       "alias": [
         "round"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable rounding, by default is disabled.\n</p>\n</dd>",
       "name": "round",
@@ -95,6 +103,7 @@
       "alias": [
         "hptaps"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set number of taps for high-pass filter.\n</p>\n</dd>",
       "name": "hptaps",
@@ -105,6 +114,7 @@
       "alias": [
         "lptaps"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set number of taps for low-pass filter.\n</p></dd>",
       "name": "lptaps",

@@ -19,6 +19,7 @@
         "horizontal",
         "h"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the horizontal scrolling speed. Default is 0. Allowed range is from -1 to 1.\nNegative values changes scrolling direction.\n</p>\n</dd>",
       "name": "horizontal",
@@ -30,6 +31,7 @@
         "vertical",
         "v"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the vertical scrolling speed. Default is 0. Allowed range is from -1 to 1.\nNegative values changes scrolling direction.\n</p>\n</dd>",
       "name": "vertical",
@@ -40,6 +42,7 @@
       "alias": [
         "hpos"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the initial horizontal scrolling position. Default is 0. Allowed range is from 0 to 1.\n</p>\n</dd>",
       "name": "hpos",
@@ -50,6 +53,7 @@
       "alias": [
         "vpos"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the initial vertical scrolling position. Default is 0. Allowed range is from 0 to 1.\n</p></dd>",
       "name": "vpos",

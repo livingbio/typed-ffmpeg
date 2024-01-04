@@ -19,6 +19,18 @@
         "mode",
         "m"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "row",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "column",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Can be either <code>row</code>, or <code>column</code>. Default is <code>column</code>.\nIn row mode, the graph on the left side represents color component value 0 and\nthe right side represents value = 255. In column mode, the top side represents\ncolor component value = 0 and bottom side represents value = 255.\n</p>\n</dd>",
       "name": "mode",
@@ -30,6 +42,7 @@
         "intensity",
         "i"
       ],
+      "choices": [],
       "default": 0.04,
       "description": "<dd><p>Set intensity. Smaller values are useful to find out how many values of the same\nluminance are distributed across input rows/columns.\nDefault value is <code>0.04</code>. Allowed range is [0, 1].\n</p>\n</dd>",
       "name": "intensity",
@@ -41,6 +54,7 @@
         "mirror",
         "r"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set mirroring mode. <code>0</code> means unmirrored, <code>1</code> means mirrored.\nIn mirrored mode, higher values will be represented on the left\nside for <code>row</code> mode and at the top for <code>column</code> mode. Default is\n<code>1</code> (mirrored).\n</p>\n</dd>",
       "name": "mirror",
@@ -51,6 +65,23 @@
       "alias": [
         "display",
         "d"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "overlay",
+          "value": "OVERLAY"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "stack",
+          "value": "STACK"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "parade",
+          "value": "PARADE"
+        }
       ],
       "default": "STACK",
       "description": "<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dd><p>Presents information identical to that in the <code>parade</code>, except\nthat the graphs representing color components are superimposed directly\nover one another.\n</p>\n<p>This display mode makes it easier to spot relative differences or similarities\nin overlapping areas of the color components that are supposed to be identical,\nsuch as neutral whites, grays, or blacks.\n</p>\n</dd>\n<dt>\u2018<samp>stack</samp>\u2019</dt>\n<dd><p>Display separate graph for the color components side by side in\n<code>row</code> mode or one below the other in <code>column</code> mode.\n</p>\n</dd>\n<dt>\u2018<samp>parade</samp>\u2019</dt>\n<dd><p>Display separate graph for the color components side by side in\n<code>column</code> mode or one below the other in <code>row</code> mode.\n</p>\n<p>Using this display mode makes it easy to spot color casts in the highlights\nand shadows of an image, by comparing the contours of the top and the bottom\ngraphs of each waveform. Since whites, grays, and blacks are characterized\nby exactly equal amounts of red, green, and blue, neutral areas of the picture\nshould display three waveforms of roughly equal width/height. If not, the\ncorrection is easy to perform by making level adjustments the three waveforms.\n</p></dd>\n</dl>\n<p>Default is <code>stack</code>.\n</p>\n</dd>",
@@ -63,6 +94,7 @@
         "components",
         "c"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set which color components to display. Default is 1, which means only luma\nor red color component if input is in RGB colorspace. If is set for example to\n7 it will display all 3 (if) available color components.\n</p>\n</dd>",
       "name": "components",
@@ -73,6 +105,28 @@
       "alias": [
         "envelope",
         "e"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "none",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "instant",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "peak",
+          "value": 2
+        },
+        {
+          "help": "((void*)0)",
+          "name": "peak+instant",
+          "value": 3
+        }
       ],
       "default": 0,
       "description": "<dd><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No envelope, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>instant</samp>\u2019</dt>\n<dd><p>Instant envelope, minimum and maximum values presented in graph will be easily\nvisible even with small <code>step</code> value.\n</p>\n</dd>\n<dt>\u2018<samp>peak</samp>\u2019</dt>\n<dd><p>Hold minimum and maximum values presented in graph across time. This way you\ncan still spot out of range values without constantly looking at waveforms.\n</p>\n</dd>\n<dt>\u2018<samp>peak+instant</samp>\u2019</dt>\n<dd><p>Peak and instant envelope combined together.\n</p></dd>\n</dl>\n</dd>",
@@ -85,6 +139,48 @@
         "filter",
         "f"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "lowpass",
+          "value": "LOWPASS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "flat",
+          "value": "FLAT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "aflat",
+          "value": "AFLAT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "chroma",
+          "value": "CHROMA"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "color",
+          "value": "COLOR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "acolor",
+          "value": "ACOLOR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "xflat",
+          "value": "XFLAT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "yflat",
+          "value": "YFLAT"
+        }
+      ],
       "default": 0,
       "description": "<dd><dl compact=\"compact\">\n<dt>\u2018<samp>lowpass</samp>\u2019</dt>\n<dd><p>No filtering, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>flat</samp>\u2019</dt>\n<dd><p>Luma and chroma combined together.\n</p>\n</dd>\n<dt>\u2018<samp>aflat</samp>\u2019</dt>\n<dd><p>Similar as above, but shows difference between blue and red chroma.\n</p>\n</dd>\n<dt>\u2018<samp>xflat</samp>\u2019</dt>\n<dd><p>Similar as above, but use different colors.\n</p>\n</dd>\n<dt>\u2018<samp>yflat</samp>\u2019</dt>\n<dd><p>Similar as above, but again with different colors.\n</p>\n</dd>\n<dt>\u2018<samp>chroma</samp>\u2019</dt>\n<dd><p>Displays only chroma.\n</p>\n</dd>\n<dt>\u2018<samp>color</samp>\u2019</dt>\n<dd><p>Displays actual color value on waveform.\n</p>\n</dd>\n<dt>\u2018<samp>acolor</samp>\u2019</dt>\n<dd><p>Similar as above, but with luma showing frequency of chroma values.\n</p></dd>\n</dl>\n</dd>",
       "name": "filter",
@@ -95,6 +191,28 @@
       "alias": [
         "graticule",
         "g"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "none",
+          "value": "GRAT_NONE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "green",
+          "value": "GRAT_GREEN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "orange",
+          "value": "GRAT_ORANGE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "invert",
+          "value": "GRAT_INVERT"
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set which graticule to display.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do not display graticule.\n</p>\n</dd>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dd><p>Display green graticule showing legal broadcast ranges.\n</p>\n</dd>\n<dt>\u2018<samp>orange</samp>\u2019</dt>\n<dd><p>Display orange graticule showing legal broadcast ranges.\n</p>\n</dd>\n<dt>\u2018<samp>invert</samp>\u2019</dt>\n<dd><p>Display invert graticule showing legal broadcast ranges.\n</p></dd>\n</dl>\n</dd>",
@@ -107,6 +225,7 @@
         "opacity",
         "o"
       ],
+      "choices": [],
       "default": 0.75,
       "description": "<dd><p>Set graticule opacity.\n</p>\n</dd>",
       "name": "opacity",
@@ -117,6 +236,18 @@
       "alias": [
         "flags",
         "fl"
+      ],
+      "choices": [
+        {
+          "help": "draw numbers",
+          "name": "numbers",
+          "value": 1
+        },
+        {
+          "help": "draw dots instead of lines",
+          "name": "dots",
+          "value": 2
+        }
       ],
       "default": 1,
       "description": "<dd><p>Set graticule flags.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>numbers</samp>\u2019</dt>\n<dd><p>Draw numbers above lines. By default enabled.\n</p>\n</dd>\n<dt>\u2018<samp>dots</samp>\u2019</dt>\n<dd><p>Draw dots instead of lines.\n</p></dd>\n</dl>\n</dd>",
@@ -129,6 +260,23 @@
         "scale",
         "s"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "digital",
+          "value": "DIGITAL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "millivolts",
+          "value": "MILLIVOLTS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "ire",
+          "value": "IRE"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set scale used for displaying graticule.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>digital</samp>\u2019</dt>\n<dt>\u2018<samp>millivolts</samp>\u2019</dt>\n<dt>\u2018<samp>ire</samp>\u2019</dt>\n</dl>\n<p>Default is digital.\n</p>\n</dd>",
       "name": "scale",
@@ -140,6 +288,7 @@
         "bgopacity",
         "b"
       ],
+      "choices": [],
       "default": 0.75,
       "description": "<dd><p>Set background opacity.\n</p>\n</dd>",
       "name": "bgopacity",
@@ -151,6 +300,7 @@
         "tint0",
         "t0"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set tint for output.\nOnly used with lowpass filter and when display is not overlay and input\npixel formats are not RGB.\n</p>\n</dd>",
       "name": "tint0",
@@ -162,6 +312,7 @@
         "tint1",
         "t1"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set tint for output.\nOnly used with lowpass filter and when display is not overlay and input\npixel formats are not RGB.\n</p>\n</dd>",
       "name": "tint1",
@@ -173,6 +324,18 @@
         "fitmode",
         "fm"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "none",
+          "value": "FM_NONE"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "size",
+          "value": "FM_SIZE"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set sample aspect ratio of video output frames.\nCan be used to configure waveform so it is not\nstreched too much in one of directions.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Set sample aspect ration to 1/1.\n</p></dd>\n<dt>\u2018<samp>size</samp>\u2019</dt>\n<dd><p>Set sample aspect ratio to match input size of video\n</p></dd>\n</dl>\n<p>Default is \u2018<samp>none</samp>\u2019.\n</p>\n</dd>",
       "name": "fitmode",
@@ -182,6 +345,18 @@
     {
       "alias": [
         "input"
+      ],
+      "choices": [
+        {
+          "help": "try to select from all available formats",
+          "name": "all",
+          "value": 0
+        },
+        {
+          "help": "pick first available format",
+          "name": "first",
+          "value": 1
+        }
       ],
       "default": 1,
       "description": "<dd><p>Set input formats for filter to pick from.\nCan be \u2018<samp>all</samp>\u2019, for selecting from all available formats,\nor \u2018<samp>first</samp>\u2019, for selecting first available format.\nDefault is \u2018<samp>first</samp>\u2019.\n</p></dd>",

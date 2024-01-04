@@ -18,6 +18,7 @@
       "alias": [
         "dir"
       ],
+      "choices": [],
       "default": "TRANSPOSE_CCLOCK_FLIP",
       "description": "<dd><p>Specify the transposition direction.\n</p>\n<p>Can assume the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0, 4, cclock_flip</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees counterclockwise and vertically flip (default), that is:\n</p><div class=\"example\">\n<pre class=\"example\">L.R     L.l\n. . -&gt;  . .\nl.r     R.r\n</pre></div>\n</dd>\n<dt>\u2018<samp>1, 5, clock</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees clockwise, that is:\n</p><div class=\"example\">\n<pre class=\"example\">L.R     l.L\n. . -&gt;  . .\nl.r     r.R\n</pre></div>\n</dd>\n<dt>\u2018<samp>2, 6, cclock</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees counterclockwise, that is:\n</p><div class=\"example\">\n<pre class=\"example\">L.R     R.r\n. . -&gt;  . .\nl.r     L.l\n</pre></div>\n</dd>\n<dt>\u2018<samp>3, 7, clock_flip</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees clockwise and vertically flip, that is:\n</p><div class=\"example\">\n<pre class=\"example\">L.R     r.R\n. . -&gt;  . .\nl.r     l.L\n</pre></div>\n</dd>\n</dl>\n<p>For values between 4-7, the transposition is only done if the input\nvideo geometry is portrait and not landscape. These values are\ndeprecated, the <code>passthrough</code> option should be used instead.\n</p>\n<p>Numerical values are deprecated, and should be dropped in favor of\nsymbolic constants.\n</p>\n</dd>",
       "name": "dir",
@@ -27,6 +28,23 @@
     {
       "alias": [
         "passthrough"
+      ],
+      "choices": [
+        {
+          "help": "always apply transposition",
+          "name": "none",
+          "value": "TRANSPOSE_PT_TYPE_NONE"
+        },
+        {
+          "help": "preserve portrait geometry",
+          "name": "portrait",
+          "value": "TRANSPOSE_PT_TYPE_PORTRAIT"
+        },
+        {
+          "help": "preserve landscape geometry",
+          "name": "landscape",
+          "value": "TRANSPOSE_PT_TYPE_LANDSCAPE"
+        }
       ],
       "default": "TRANSPOSE_PT_TYPE_NONE",
       "description": "<dd><p>Do not apply the transposition if the input geometry matches the one\nspecified by the specified value. It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Always apply transposition.\n</p></dd>\n<dt>\u2018<samp>portrait</samp>\u2019</dt>\n<dd><p>Preserve portrait geometry (when <var>height</var> &gt;= <var>width</var>).\n</p></dd>\n<dt>\u2018<samp>landscape</samp>\u2019</dt>\n<dd><p>Preserve landscape geometry (when <var>width</var> &gt;= <var>height</var>).\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p></dd>",

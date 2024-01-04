@@ -19,6 +19,18 @@
         "direction",
         "d"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "forward",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "inverse",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set shuffle direction. Can be forward or inverse direction.\nDefault direction is forward.\n</p>\n</dd>",
       "name": "direction",
@@ -29,6 +41,23 @@
       "alias": [
         "mode",
         "m"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "horizontal",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "vertical",
+          "value": 1
+        },
+        {
+          "help": "0",
+          "name": "block",
+          "value": 2
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set shuffle mode. Can be horizontal, vertical or block mode.\n</p>\n</dd>",
@@ -41,6 +70,7 @@
         "width",
         "w"
       ],
+      "choices": [],
       "default": 10,
       "description": "<dd><p>Set shuffle block_size. In case of horizontal shuffle mode only width\npart of size is used, and in case of vertical shuffle mode only height\npart of size is used.\n</p>\n</dd>",
       "name": "width",
@@ -52,6 +82,7 @@
         "height",
         "h"
       ],
+      "choices": [],
       "default": 10,
       "description": "<dd><p>Set shuffle block_size. In case of horizontal shuffle mode only width\npart of size is used, and in case of vertical shuffle mode only height\npart of size is used.\n</p>\n</dd>",
       "name": "height",
@@ -63,6 +94,7 @@
         "seed",
         "s"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set random seed used with shuffling pixels. Mainly useful to set to be able\nto reverse filtering process to get original input.\nFor example, to reverse forward shuffle you need to use same parameters\nand exact same seed and to set direction to inverse.\n</p></dd>",
       "name": "seed",

@@ -18,6 +18,18 @@
       "alias": [
         "mode"
       ],
+      "choices": [
+        {
+          "help": "send one frame for each frame",
+          "name": "frame",
+          "value": 0
+        },
+        {
+          "help": "send one frame for each field",
+          "name": "field",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n</dl>\n<p>The default value is <code>field</code>.\n</p>\n</dd>",
       "name": "mode",
@@ -27,6 +39,23 @@
     {
       "alias": [
         "parity"
+      ],
+      "choices": [
+        {
+          "help": "assume top field first",
+          "name": "tff",
+          "value": 0
+        },
+        {
+          "help": "assume bottom field first",
+          "name": "bff",
+          "value": 1
+        },
+        {
+          "help": "auto detect parity",
+          "name": "auto",
+          "value": -1
+        }
       ],
       "default": -1,
       "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
@@ -38,6 +67,18 @@
       "alias": [
         "deint"
       ],
+      "choices": [
+        {
+          "help": "deinterlace all frames",
+          "name": "all",
+          "value": 0
+        },
+        {
+          "help": "only deinterlace frames marked as interlaced",
+          "name": "interlaced",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following\nvalues:\n</p>\n<dl compact=\"compact\">\n<dt><samp>all</samp></dt>\n<dd><p>Deinterlace all frames.\n</p></dd>\n<dt><samp>interlaced</samp></dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>The default value is <code>all</code>.\n</p>\n</dd>",
       "name": "deint",
@@ -48,6 +89,7 @@
       "alias": [
         "rslope"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Specify the search radius for edge slope tracing. Default value is 1.\nAllowed range is from 1 to 15.\n</p>\n</dd>",
       "name": "rslope",
@@ -58,6 +100,7 @@
       "alias": [
         "redge"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Specify the search radius for best edge matching. Default value is 2.\nAllowed range is from 0 to 15.\n</p>\n</dd>",
       "name": "redge",
@@ -68,6 +111,7 @@
       "alias": [
         "ecost"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Specify the edge cost for edge matching. Default value is 2.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
       "name": "ecost",
@@ -78,6 +122,7 @@
       "alias": [
         "mcost"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Specify the middle cost for edge matching. Default value is 1.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
       "name": "mcost",
@@ -88,6 +133,7 @@
       "alias": [
         "dcost"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Specify the distance cost for edge matching. Default value is 1.\nAllowed range is from 0 to 50.\n</p>\n</dd>",
       "name": "dcost",
@@ -97,6 +143,23 @@
     {
       "alias": [
         "interp"
+      ],
+      "choices": [
+        {
+          "help": "two-point interpolation",
+          "name": "2p",
+          "value": 0
+        },
+        {
+          "help": "four-point interpolation",
+          "name": "4p",
+          "value": 1
+        },
+        {
+          "help": "six-point interpolation",
+          "name": "6p",
+          "value": 2
+        }
       ],
       "default": 1,
       "description": "<dd><p>Specify the interpolation used. Default is 4-point interpolation. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>2p</samp></dt>\n<dd><p>Two-point interpolation.\n</p></dd>\n<dt><samp>4p</samp></dt>\n<dd><p>Four-point interpolation.\n</p></dd>\n<dt><samp>6p</samp></dt>\n<dd><p>Six-point interpolation.\n</p></dd>\n</dl>\n</dd>",

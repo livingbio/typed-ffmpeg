@@ -13,6 +13,7 @@
       "alias": [
         "exprs"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the \u2019|\u2019-separated expressions list for each separate channel. In case the\n<samp>channel_layout</samp> option is not specified, the selected channel layout\ndepends on the number of provided expressions. Otherwise the last\nspecified expression is applied to the remaining output channels.\n</p>\n</dd>",
       "name": "exprs",
@@ -24,6 +25,7 @@
         "nb_samples",
         "n"
       ],
+      "choices": [],
       "default": 1024,
       "description": "<dd><p>Set the number of samples per channel per each output frame,\ndefault to 1024.\n</p>\n</dd>",
       "name": "nb_samples",
@@ -35,6 +37,7 @@
         "sample_rate",
         "s"
       ],
+      "choices": [],
       "default": "44100",
       "description": "<dd><p>Specify the sample rate, default to 44100.\n</p></dd>",
       "name": "sample_rate",
@@ -46,6 +49,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set the minimum duration of the sourced audio. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nNote that the resulting duration may be greater than the specified\nduration, as the generated audio is always cut at the end of a\ncomplete frame.\n</p>\n<p>If not specified, or the expressed duration is negative, the audio is\nsupposed to be generated forever.\n</p>\n</dd>",
       "name": "duration",
@@ -57,6 +61,7 @@
         "channel_layout",
         "c"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": "<dd><p>Set the channel layout. The number of channels in the specified layout\nmust be equal to the number of specified expressions.\n</p>\n</dd>",
       "name": "channel_layout",

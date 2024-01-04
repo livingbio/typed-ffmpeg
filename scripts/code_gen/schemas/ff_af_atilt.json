@@ -18,6 +18,7 @@
       "alias": [
         "freq"
       ],
+      "choices": [],
       "default": 10000.0,
       "description": "<dd><p>Set central frequency of tilt in Hz. Default is 10000 Hz.\n</p>\n</dd>",
       "name": "freq",
@@ -28,6 +29,7 @@
       "alias": [
         "slope"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set slope direction of tilt. Default is 0. Allowed range is from -1 to 1.\n</p>\n</dd>",
       "name": "slope",
@@ -38,6 +40,7 @@
       "alias": [
         "width"
       ],
+      "choices": [],
       "default": 1000.0,
       "description": "<dd><p>Set width of tilt. Default is 1000. Allowed range is from 100 to 10000.\n</p>\n</dd>",
       "name": "width",
@@ -48,6 +51,7 @@
       "alias": [
         "order"
       ],
+      "choices": [],
       "default": 5,
       "description": "<dd><p>Set order of tilt filter.\n</p>\n</dd>",
       "name": "order",
@@ -58,6 +62,7 @@
       "alias": [
         "level"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set input volume level. Allowed range is from 0 to 4.\nDefault is 1.\n</p></dd>",
       "name": "level",

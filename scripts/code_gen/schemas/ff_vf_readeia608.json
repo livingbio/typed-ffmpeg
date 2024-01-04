@@ -18,6 +18,7 @@
       "alias": [
         "scan_min"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the line to start scanning for EIA-608 data. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "scan_min",
@@ -28,6 +29,7 @@
       "alias": [
         "scan_max"
       ],
+      "choices": [],
       "default": 29,
       "description": "<dd><p>Set the line to end scanning for EIA-608 data. Default is <code>29</code>.\n</p>\n</dd>",
       "name": "scan_max",
@@ -38,6 +40,7 @@
       "alias": [
         "spw"
       ],
+      "choices": [],
       "default": 0.27,
       "description": "<dd><p>Set the ratio of width reserved for sync code detection.\nDefault is <code>0.27</code>. Allowed range is <code>[0.1 - 0.7]</code>.\n</p>\n</dd>",
       "name": "spw",
@@ -48,6 +51,7 @@
       "alias": [
         "chp"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable checking the parity bit. In the event of a parity error, the filter will output\n<code>0x00</code> for that character. Default is false.\n</p>\n</dd>",
       "name": "chp",
@@ -58,6 +62,7 @@
       "alias": [
         "lp"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Lowpass lines prior to further processing. Default is enabled.\n</p></dd>",
       "name": "lp",

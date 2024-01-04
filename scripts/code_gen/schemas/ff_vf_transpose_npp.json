@@ -18,6 +18,28 @@
       "alias": [
         "dir"
       ],
+      "choices": [
+        {
+          "help": "rotate counter-clockwise with vertical flip",
+          "name": "cclock_flip",
+          "value": "NPP_TRANSPOSE_CCLOCK_FLIP"
+        },
+        {
+          "help": "rotate clockwise",
+          "name": "clock",
+          "value": "NPP_TRANSPOSE_CLOCK"
+        },
+        {
+          "help": "rotate counter-clockwise",
+          "name": "cclock",
+          "value": "NPP_TRANSPOSE_CCLOCK"
+        },
+        {
+          "help": "rotate clockwise with vertical flip",
+          "name": "clock_flip",
+          "value": "NPP_TRANSPOSE_CLOCK_FLIP"
+        }
+      ],
       "default": "NPP_TRANSPOSE_CCLOCK_FLIP",
       "description": "<dd><p>Specify the transposition direction.\n</p>\n<p>Can assume the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>cclock_flip</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees counterclockwise and vertically flip. (default)\n</p>\n</dd>\n<dt>\u2018<samp>clock</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees clockwise.\n</p>\n</dd>\n<dt>\u2018<samp>cclock</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees counterclockwise.\n</p>\n</dd>\n<dt>\u2018<samp>clock_flip</samp>\u2019</dt>\n<dd><p>Rotate by 90 degrees clockwise and vertically flip.\n</p></dd>\n</dl>\n</dd>",
       "name": "dir",
@@ -27,6 +49,23 @@
     {
       "alias": [
         "passthrough"
+      ],
+      "choices": [
+        {
+          "help": "always apply transposition",
+          "name": "none",
+          "value": "NPP_TRANSPOSE_PT_TYPE_NONE"
+        },
+        {
+          "help": "preserve landscape geometry",
+          "name": "landscape",
+          "value": "NPP_TRANSPOSE_PT_TYPE_LANDSCAPE"
+        },
+        {
+          "help": "preserve portrait geometry",
+          "name": "portrait",
+          "value": "NPP_TRANSPOSE_PT_TYPE_PORTRAIT"
+        }
       ],
       "default": "NPP_TRANSPOSE_PT_TYPE_NONE",
       "description": "<dd><p>Do not apply the transposition if the input geometry matches the one\nspecified by the specified value. It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Always apply transposition. (default)\n</p></dd>\n<dt>\u2018<samp>portrait</samp>\u2019</dt>\n<dd><p>Preserve portrait geometry (when <var>height</var> &gt;= <var>width</var>).\n</p></dd>\n<dt>\u2018<samp>landscape</samp>\u2019</dt>\n<dd><p>Preserve landscape geometry (when <var>width</var> &gt;= <var>height</var>).\n</p></dd>\n</dl>\n</dd>",

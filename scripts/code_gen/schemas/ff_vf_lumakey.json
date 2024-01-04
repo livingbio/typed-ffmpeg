@@ -18,6 +18,7 @@
       "alias": [
         "threshold"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the luma which will be used as base for transparency.\nDefault value is <code>0</code>.\n</p>\n</dd>",
       "name": "threshold",
@@ -28,6 +29,7 @@
       "alias": [
         "tolerance"
       ],
+      "choices": [],
       "default": 0.01,
       "description": "<dd><p>Set the range of luma values to be keyed out.\nDefault value is <code>0.01</code>.\n</p>\n</dd>",
       "name": "tolerance",
@@ -38,6 +40,7 @@
       "alias": [
         "softness"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set the range of softness. Default value is <code>0</code>.\nUse this to control gradual transition from zero to full transparency.\n</p></dd>",
       "name": "softness",

@@ -22,6 +22,7 @@
       "alias": [
         "sample_rate"
       ],
+      "choices": [],
       "default": 44100,
       "description": "<dd><p>Specify sample rate of output audio, the sample rate of audio from which\nspectrum was generated may differ.\n</p>\n</dd>",
       "name": "sample_rate",
@@ -32,6 +33,7 @@
       "alias": [
         "channels"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set number of channels represented in input video spectrums.\n</p>\n</dd>",
       "name": "channels",
@@ -41,6 +43,18 @@
     {
       "alias": [
         "scale"
+      ],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "LINEAR"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "LOG"
+        }
       ],
       "default": "LOG",
       "description": "<dd><p>Set scale which was used when generating magnitude input spectrum.\nCan be <code>lin</code> or <code>log</code>. Default is <code>log</code>.\n</p>\n</dd>",
@@ -52,6 +66,28 @@
       "alias": [
         "slide"
       ],
+      "choices": [
+        {
+          "help": "consume old columns with new",
+          "name": "replace",
+          "value": "REPLACE"
+        },
+        {
+          "help": "consume only most right column",
+          "name": "scroll",
+          "value": "SCROLL"
+        },
+        {
+          "help": "consume full frames",
+          "name": "fullframe",
+          "value": "FULLFRAME"
+        },
+        {
+          "help": "consume only most left column",
+          "name": "rscroll",
+          "value": "RSCROLL"
+        }
+      ],
       "default": "FULLFRAME",
       "description": "<dd><p>Set slide which was used when generating inputs spectrums.\nCan be <code>replace</code>, <code>scroll</code>, <code>fullframe</code> or <code>rscroll</code>.\nDefault is <code>fullframe</code>.\n</p>\n</dd>",
       "name": "slide",
@@ -61,6 +97,118 @@
     {
       "alias": [
         "win_func"
+      ],
+      "choices": [
+        {
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "WFUNC_RECT"
+        },
+        {
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "WFUNC_BARTLETT"
+        },
+        {
+          "help": "Hann",
+          "name": "hann",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "WFUNC_HAMMING"
+        },
+        {
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "WFUNC_BLACKMAN"
+        },
+        {
+          "help": "Welch",
+          "name": "welch",
+          "value": "WFUNC_WELCH"
+        },
+        {
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "WFUNC_FLATTOP"
+        },
+        {
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "WFUNC_BHARRIS"
+        },
+        {
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "WFUNC_BNUTTALL"
+        },
+        {
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "WFUNC_BHANN"
+        },
+        {
+          "help": "Sine",
+          "name": "sine",
+          "value": "WFUNC_SINE"
+        },
+        {
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "WFUNC_NUTTALL"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "WFUNC_LANCZOS"
+        },
+        {
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "WFUNC_GAUSS"
+        },
+        {
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "WFUNC_TUKEY"
+        },
+        {
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "WFUNC_DOLPH"
+        },
+        {
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "WFUNC_CAUCHY"
+        },
+        {
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "WFUNC_PARZEN"
+        },
+        {
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "WFUNC_POISSON"
+        },
+        {
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "WFUNC_BOHMAN"
+        },
+        {
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "WFUNC_KAISER"
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set window function used for resynthesis.\n</p>\n</dd>",
@@ -72,6 +220,7 @@
       "alias": [
         "overlap"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set window overlap. In range <code>[0, 1]</code>. Default is <code>1</code>,\nwhich means optimal overlap for selected window function will be picked.\n</p>\n</dd>",
       "name": "overlap",
@@ -81,6 +230,18 @@
     {
       "alias": [
         "orientation"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "vertical",
+          "value": "VERTICAL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "horizontal",
+          "value": "HORIZONTAL"
+        }
       ],
       "default": "VERTICAL",
       "description": "<dd><p>Set orientation of input videos. Can be <code>vertical</code> or <code>horizontal</code>.\nDefault is <code>vertical</code>.\n</p></dd>",

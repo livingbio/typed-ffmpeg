@@ -18,6 +18,7 @@
       "alias": [
         "0m"
       ],
+      "choices": [],
       "default": "0 0 0 0 1 0 0 0 0",
       "description": "<dd><p>Set matrix for each plane.\nMatrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,\nand from 1 to 49 odd number of signed integers in <var>row</var> mode.\n</p>\n</dd>",
       "name": "0m",
@@ -28,6 +29,7 @@
       "alias": [
         "1m"
       ],
+      "choices": [],
       "default": "0 0 0 0 1 0 0 0 0",
       "description": "<dd><p>Set matrix for each plane.\nMatrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,\nand from 1 to 49 odd number of signed integers in <var>row</var> mode.\n</p>\n</dd>",
       "name": "1m",
@@ -38,6 +40,7 @@
       "alias": [
         "2m"
       ],
+      "choices": [],
       "default": "0 0 0 0 1 0 0 0 0",
       "description": "<dd><p>Set matrix for each plane.\nMatrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,\nand from 1 to 49 odd number of signed integers in <var>row</var> mode.\n</p>\n</dd>",
       "name": "2m",
@@ -48,6 +51,7 @@
       "alias": [
         "3m"
       ],
+      "choices": [],
       "default": "0 0 0 0 1 0 0 0 0",
       "description": "<dd><p>Set matrix for each plane.\nMatrix is sequence of 9, 25 or 49 signed integers in <var>square</var> mode,\nand from 1 to 49 odd number of signed integers in <var>row</var> mode.\n</p>\n</dd>",
       "name": "3m",
@@ -58,6 +62,7 @@
       "alias": [
         "0rdiv"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set multiplier for calculated value for each plane.\nIf unset or 0, it will be sum of all matrix elements.\n</p>\n</dd>",
       "name": "0rdiv",
@@ -68,6 +73,7 @@
       "alias": [
         "1rdiv"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set multiplier for calculated value for each plane.\nIf unset or 0, it will be sum of all matrix elements.\n</p>\n</dd>",
       "name": "1rdiv",
@@ -78,6 +84,7 @@
       "alias": [
         "2rdiv"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set multiplier for calculated value for each plane.\nIf unset or 0, it will be sum of all matrix elements.\n</p>\n</dd>",
       "name": "2rdiv",
@@ -88,6 +95,7 @@
       "alias": [
         "3rdiv"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set multiplier for calculated value for each plane.\nIf unset or 0, it will be sum of all matrix elements.\n</p>\n</dd>",
       "name": "3rdiv",
@@ -98,6 +106,7 @@
       "alias": [
         "0bias"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set bias for each plane. This value is added to the result of the multiplication.\nUseful for making the overall image brighter or darker. Default is 0.0.\n</p>\n</dd>",
       "name": "0bias",
@@ -108,6 +117,7 @@
       "alias": [
         "1bias"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set bias for each plane. This value is added to the result of the multiplication.\nUseful for making the overall image brighter or darker. Default is 0.0.\n</p>\n</dd>",
       "name": "1bias",
@@ -118,6 +128,7 @@
       "alias": [
         "2bias"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set bias for each plane. This value is added to the result of the multiplication.\nUseful for making the overall image brighter or darker. Default is 0.0.\n</p>\n</dd>",
       "name": "2bias",
@@ -128,6 +139,7 @@
       "alias": [
         "3bias"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set bias for each plane. This value is added to the result of the multiplication.\nUseful for making the overall image brighter or darker. Default is 0.0.\n</p>\n</dd>",
       "name": "3bias",
@@ -137,6 +149,23 @@
     {
       "alias": [
         "0mode"
+      ],
+      "choices": [
+        {
+          "help": "square matrix",
+          "name": "square",
+          "value": "MATRIX_SQUARE"
+        },
+        {
+          "help": "single row matrix",
+          "name": "row",
+          "value": "MATRIX_ROW"
+        },
+        {
+          "help": "single column matrix",
+          "name": "column",
+          "value": "MATRIX_COLUMN"
+        }
       ],
       "default": "MATRIX_SQUARE",
       "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
@@ -148,6 +177,23 @@
       "alias": [
         "1mode"
       ],
+      "choices": [
+        {
+          "help": "square matrix",
+          "name": "square",
+          "value": "MATRIX_SQUARE"
+        },
+        {
+          "help": "single row matrix",
+          "name": "row",
+          "value": "MATRIX_ROW"
+        },
+        {
+          "help": "single column matrix",
+          "name": "column",
+          "value": "MATRIX_COLUMN"
+        }
+      ],
       "default": "MATRIX_SQUARE",
       "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
       "name": "1mode",
@@ -158,6 +204,23 @@
       "alias": [
         "2mode"
       ],
+      "choices": [
+        {
+          "help": "square matrix",
+          "name": "square",
+          "value": "MATRIX_SQUARE"
+        },
+        {
+          "help": "single row matrix",
+          "name": "row",
+          "value": "MATRIX_ROW"
+        },
+        {
+          "help": "single column matrix",
+          "name": "column",
+          "value": "MATRIX_COLUMN"
+        }
+      ],
       "default": "MATRIX_SQUARE",
       "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",
       "name": "2mode",
@@ -167,6 +230,23 @@
     {
       "alias": [
         "3mode"
+      ],
+      "choices": [
+        {
+          "help": "square matrix",
+          "name": "square",
+          "value": "MATRIX_SQUARE"
+        },
+        {
+          "help": "single row matrix",
+          "name": "row",
+          "value": "MATRIX_ROW"
+        },
+        {
+          "help": "single column matrix",
+          "name": "column",
+          "value": "MATRIX_COLUMN"
+        }
       ],
       "default": "MATRIX_SQUARE",
       "description": "<dd><p>Set matrix mode for each plane. Can be <var>square</var>, <var>row</var> or <var>column</var>.\nDefault is <var>square</var>.\n</p></dd>",

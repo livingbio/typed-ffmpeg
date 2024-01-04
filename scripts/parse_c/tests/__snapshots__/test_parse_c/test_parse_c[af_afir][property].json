@@ -53,32 +53,32 @@
           {
             "help": "without auto gain",
             "name": "none",
-            "value": "['.i64=-1']"
+            "value": -1
           },
           {
             "help": "peak gain",
             "name": "peak",
-            "value": "['.i64=0']"
+            "value": 0
           },
           {
             "help": "DC gain",
             "name": "dc",
-            "value": "['.i64=1']"
+            "value": 1
           },
           {
             "help": "gain to noise",
             "name": "gn",
-            "value": "['.i64=2']"
+            "value": 2
           },
           {
             "help": "AC gain",
             "name": "ac",
-            "value": "['.i64=3']"
+            "value": 3
           },
           {
             "help": "RMS gain",
             "name": "rms",
-            "value": "['.i64=4']"
+            "value": 4
           }
         ],
         "default": "['.i64=0']",
@@ -136,12 +136,12 @@
           {
             "help": "single channel",
             "name": "mono",
-            "value": "['.i64=0']"
+            "value": 0
           },
           {
             "help": "same as input",
             "name": "input",
-            "value": "['.i64=1']"
+            "value": 1
           }
         ],
         "default": "['.i64=1']",
@@ -277,17 +277,17 @@
           {
             "help": "set auto processing precision",
             "name": "auto",
-            "value": "['.i64=0']"
+            "value": 0
           },
           {
             "help": "set single-floating point processing precision",
             "name": "float",
-            "value": "['.i64=1']"
+            "value": 1
           },
           {
             "help": "set double-floating point processing precision",
             "name": "double",
-            "value": "['.i64=2']"
+            "value": 2
           }
         ],
         "default": "['.i64=0']",
@@ -306,12 +306,12 @@
           {
             "help": "load all IRs on init",
             "name": "init",
-            "value": "['.i64=0']"
+            "value": 0
           },
           {
             "help": "load IR on access",
             "name": "access",
-            "value": "['.i64=1']"
+            "value": 1
           }
         ],
         "default": "['.i64=0']",

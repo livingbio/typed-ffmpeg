@@ -18,6 +18,53 @@
       "alias": [
         "type"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "hard",
+          "value": "ASC_HARD"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "tanh",
+          "value": "ASC_TANH"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "atan",
+          "value": "ASC_ATAN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "cubic",
+          "value": "ASC_CUBIC"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "exp",
+          "value": "ASC_EXP"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "alg",
+          "value": "ASC_ALG"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "quintic",
+          "value": "ASC_QUINTIC"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "sin",
+          "value": "ASC_SIN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "erf",
+          "value": "ASC_ERF"
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set type of soft-clipping.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>hard</samp></dt>\n<dt><samp>tanh</samp></dt>\n<dt><samp>atan</samp></dt>\n<dt><samp>cubic</samp></dt>\n<dt><samp>exp</samp></dt>\n<dt><samp>alg</samp></dt>\n<dt><samp>quintic</samp></dt>\n<dt><samp>sin</samp></dt>\n<dt><samp>erf</samp></dt>\n</dl>\n</dd>",
       "name": "type",
@@ -28,6 +75,7 @@
       "alias": [
         "threshold"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set threshold from where to start clipping. Default value is 0dB or 1.\n</p>\n</dd>",
       "name": "threshold",
@@ -38,6 +86,7 @@
       "alias": [
         "output"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set gain applied to output. Default value is 0dB or 1.\n</p>\n</dd>",
       "name": "output",
@@ -48,6 +97,7 @@
       "alias": [
         "param"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set additional parameter which controls sigmoid function.\n</p>\n</dd>",
       "name": "param",
@@ -58,6 +108,7 @@
       "alias": [
         "oversample"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set oversampling factor.\n</p></dd>",
       "name": "oversample",

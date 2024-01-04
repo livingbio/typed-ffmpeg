@@ -18,6 +18,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>The expressions which specify the top left corner coordinates of the box. It defaults to 0.\n</p>\n</dd>",
       "name": "x",
@@ -28,6 +29,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>The expressions which specify the top left corner coordinates of the box. It defaults to 0.\n</p>\n</dd>",
       "name": "y",
@@ -39,6 +41,7 @@
         "width",
         "w"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>The expressions which specify the width and height of the box; if 0 they are interpreted as\nthe input width and height. It defaults to 0.\n</p>\n</dd>",
       "name": "width",
@@ -50,6 +53,7 @@
         "height",
         "h"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>The expressions which specify the width and height of the box; if 0 they are interpreted as\nthe input width and height. It defaults to 0.\n</p>\n</dd>",
       "name": "height",
@@ -61,6 +65,7 @@
         "color",
         "c"
       ],
+      "choices": [],
       "default": "black",
       "description": "<dd><p>Specify the color of the box to write. For the general syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>. If the special\nvalue <code>invert</code> is used, the box edge color is the same as the\nvideo with inverted luma.\n</p>\n</dd>",
       "name": "color",
@@ -72,6 +77,7 @@
         "thickness",
         "t"
       ],
+      "choices": [],
       "default": "3",
       "description": "<dd><p>The expression which sets the thickness of the box edge.\nA value of <code>fill</code> will create a filled box. Default value is <code>3</code>.\n</p>\n<p>See below for the list of accepted constants.\n</p>\n</dd>",
       "name": "thickness",
@@ -82,6 +88,7 @@
       "alias": [
         "replace"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Applicable if the input has alpha. With value <code>1</code>, the pixels of the painted box\nwill overwrite the video\u2019s color and alpha pixels.\nDefault is <code>0</code>, which composites the box onto the input, leaving the video\u2019s alpha intact.\n</p></dd>",
       "name": "replace",
@@ -92,6 +99,7 @@
       "alias": [
         "box_source"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "box_source",

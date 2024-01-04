@@ -14,57 +14,57 @@
           {
             "help": "((void*)0)",
             "name": "none",
-            "value": "['.i64=PRESET_NONE']"
+            "value": "PRESET_NONE"
           },
           {
             "help": "((void*)0)",
             "name": "color_negative",
-            "value": "['.i64=PRESET_COLOR_NEGATIVE']"
+            "value": "PRESET_COLOR_NEGATIVE"
           },
           {
             "help": "((void*)0)",
             "name": "cross_process",
-            "value": "['.i64=PRESET_CROSS_PROCESS']"
+            "value": "PRESET_CROSS_PROCESS"
           },
           {
             "help": "((void*)0)",
             "name": "darker",
-            "value": "['.i64=PRESET_DARKER']"
+            "value": "PRESET_DARKER"
           },
           {
             "help": "((void*)0)",
             "name": "increase_contrast",
-            "value": "['.i64=PRESET_INCREASE_CONTRAST']"
+            "value": "PRESET_INCREASE_CONTRAST"
           },
           {
             "help": "((void*)0)",
             "name": "lighter",
-            "value": "['.i64=PRESET_LIGHTER']"
+            "value": "PRESET_LIGHTER"
           },
           {
             "help": "((void*)0)",
             "name": "linear_contrast",
-            "value": "['.i64=PRESET_LINEAR_CONTRAST']"
+            "value": "PRESET_LINEAR_CONTRAST"
           },
           {
             "help": "((void*)0)",
             "name": "medium_contrast",
-            "value": "['.i64=PRESET_MEDIUM_CONTRAST']"
+            "value": "PRESET_MEDIUM_CONTRAST"
           },
           {
             "help": "((void*)0)",
             "name": "negative",
-            "value": "['.i64=PRESET_NEGATIVE']"
+            "value": "PRESET_NEGATIVE"
           },
           {
             "help": "((void*)0)",
             "name": "strong_contrast",
-            "value": "['.i64=PRESET_STRONG_CONTRAST']"
+            "value": "PRESET_STRONG_CONTRAST"
           },
           {
             "help": "((void*)0)",
             "name": "vintage",
-            "value": "['.i64=PRESET_VINTAGE']"
+            "value": "PRESET_VINTAGE"
           }
         ],
         "default": "['.i64=PRESET_NONE']",
@@ -178,12 +178,12 @@
           {
             "help": "natural cubic spline",
             "name": "natural",
-            "value": "['.i64=INTERP_NATURAL']"
+            "value": "INTERP_NATURAL"
           },
           {
             "help": "monotonically cubic interpolation",
             "name": "pchip",
-            "value": "['.i64=INTERP_PCHIP']"
+            "value": "INTERP_PCHIP"
           }
         ],
         "default": "['.i64=INTERP_NATURAL']",

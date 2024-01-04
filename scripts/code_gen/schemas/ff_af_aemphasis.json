@@ -18,6 +18,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set input gain.\n</p>\n</dd>",
       "name": "level_in",
@@ -28,6 +29,7 @@
       "alias": [
         "level_out"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set output gain.\n</p>\n</dd>",
       "name": "level_out",
@@ -38,6 +40,18 @@
       "alias": [
         "mode"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "reproduction",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "production",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set filter mode. For restoring material use <code>reproduction</code> mode, otherwise\nuse <code>production</code> mode. Default is <code>reproduction</code> mode.\n</p>\n</dd>",
       "name": "mode",
@@ -47,6 +61,53 @@
     {
       "alias": [
         "type"
+      ],
+      "choices": [
+        {
+          "help": "Columbia",
+          "name": "col",
+          "value": 0
+        },
+        {
+          "help": "EMI",
+          "name": "emi",
+          "value": 1
+        },
+        {
+          "help": "BSI (78RPM)",
+          "name": "bsi",
+          "value": 2
+        },
+        {
+          "help": "RIAA",
+          "name": "riaa",
+          "value": 3
+        },
+        {
+          "help": "Compact Disc (CD)",
+          "name": "cd",
+          "value": 4
+        },
+        {
+          "help": "50\u00b5s (FM)",
+          "name": "50fm",
+          "value": 5
+        },
+        {
+          "help": "75\u00b5s (FM)",
+          "name": "75fm",
+          "value": 6
+        },
+        {
+          "help": "50\u00b5s (FM-KF)",
+          "name": "50kf",
+          "value": 7
+        },
+        {
+          "help": "75\u00b5s (FM-KF)",
+          "name": "75kf",
+          "value": 8
+        }
       ],
       "default": 4,
       "description": "<dd><p>Set filter type. Selects medium. Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt><samp>col</samp></dt>\n<dd><p>select Columbia.\n</p></dd>\n<dt><samp>emi</samp></dt>\n<dd><p>select EMI.\n</p></dd>\n<dt><samp>bsi</samp></dt>\n<dd><p>select BSI (78RPM).\n</p></dd>\n<dt><samp>riaa</samp></dt>\n<dd><p>select RIAA.\n</p></dd>\n<dt><samp>cd</samp></dt>\n<dd><p>select Compact Disc (CD).\n</p></dd>\n<dt><samp>50fm</samp></dt>\n<dd><p>select 50\u00b5s (FM).\n</p></dd>\n<dt><samp>75fm</samp></dt>\n<dd><p>select 75\u00b5s (FM).\n</p></dd>\n<dt><samp>50kf</samp></dt>\n<dd><p>select 50\u00b5s (FM-KF).\n</p></dd>\n<dt><samp>75kf</samp></dt>\n<dd><p>select 75\u00b5s (FM-KF).\n</p></dd>\n</dl>\n</dd>",

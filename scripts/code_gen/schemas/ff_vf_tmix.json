@@ -18,6 +18,7 @@
       "alias": [
         "frames"
       ],
+      "choices": [],
       "default": 3,
       "description": "<dd><p>The number of successive frames to mix. If unspecified, it defaults to 3.\n</p>\n</dd>",
       "name": "frames",
@@ -28,6 +29,7 @@
       "alias": [
         "weights"
       ],
+      "choices": [],
       "default": "1 1 1",
       "description": "<dd><p>Specify weight of each input video frame.\nEach weight is separated by space. If number of weights is smaller than\nnumber of <var>frames</var> last specified weight will be used for all remaining\nunset weights.\n</p>\n</dd>",
       "name": "weights",
@@ -38,6 +40,7 @@
       "alias": [
         "scale"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Specify scale, if it is set it will be multiplied with sum\nof each weight multiplied with pixel values to give final destination\npixel value. By default <var>scale</var> is auto scaled to sum of weights.\n</p>\n</dd>",
       "name": "scale",
@@ -48,6 +51,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
       "name": "planes",

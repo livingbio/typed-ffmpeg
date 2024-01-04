@@ -20,6 +20,7 @@
         "y",
         "r"
       ],
+      "choices": [],
       "default": "clipval",
       "description": "<dd><p>set first pixel component expression\n</p></dd>",
       "name": "c0",
@@ -32,6 +33,7 @@
         "u",
         "g"
       ],
+      "choices": [],
       "default": "clipval",
       "description": "<dd><p>set second pixel component expression\n</p></dd>",
       "name": "c1",
@@ -44,6 +46,7 @@
         "v",
         "b"
       ],
+      "choices": [],
       "default": "clipval",
       "description": "<dd><p>set third pixel component expression\n</p></dd>",
       "name": "c2",
@@ -55,6 +58,7 @@
         "c3",
         "a"
       ],
+      "choices": [],
       "default": "clipval",
       "description": "<dd><p>set fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>",
       "name": "c3",

@@ -22,6 +22,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the x coordinate of the overlaid video on the main video.\nDefault value is <code>0</code>.\n</p>\n</dd>",
       "name": "x",
@@ -32,6 +33,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the y coordinate of the overlaid video on the main video.\nDefault value is <code>0</code>.\n</p>\n</dd>",
       "name": "y",

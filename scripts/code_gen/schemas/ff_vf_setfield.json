@@ -18,6 +18,28 @@
       "alias": [
         "mode"
       ],
+      "choices": [
+        {
+          "help": "keep the same input field",
+          "name": "auto",
+          "value": "MODE_AUTO"
+        },
+        {
+          "help": "mark as bottom-field-first",
+          "name": "bff",
+          "value": "MODE_BFF"
+        },
+        {
+          "help": "mark as top-field-first",
+          "name": "tff",
+          "value": "MODE_TFF"
+        },
+        {
+          "help": "mark as progressive",
+          "name": "prog",
+          "value": "MODE_PROG"
+        }
+      ],
       "default": "MODE_AUTO",
       "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same field property.\n</p>\n</dd>\n<dt>\u2018<samp>bff</samp>\u2019</dt>\n<dd><p>Mark the frame as bottom-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>tff</samp>\u2019</dt>\n<dd><p>Mark the frame as top-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>prog</samp>\u2019</dt>\n<dd><p>Mark the frame as progressive.\n</p></dd>\n</dl>\n</dd>",
       "name": "mode",

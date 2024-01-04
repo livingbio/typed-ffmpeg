@@ -22,6 +22,7 @@
       "alias": [
         "first"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set number of first frame from which to start freeze.\n</p>\n</dd>",
       "name": "first",
@@ -32,6 +33,7 @@
       "alias": [
         "last"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set number of last frame from which to end freeze.\n</p>\n</dd>",
       "name": "last",
@@ -42,6 +44,7 @@
       "alias": [
         "replace"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set number of frame from 2nd input which will be used instead of replaced frames.\n</p></dd>",
       "name": "replace",

@@ -18,6 +18,48 @@
       "alias": [
         "all"
       ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bt470m",
+          "value": "CS_BT470M"
+        },
+        {
+          "help": "",
+          "name": "bt470bg",
+          "value": "CS_BT470BG"
+        },
+        {
+          "help": "",
+          "name": "bt601-6-525",
+          "value": "CS_BT601_6_525"
+        },
+        {
+          "help": "",
+          "name": "bt601-6-625",
+          "value": "CS_BT601_6_625"
+        },
+        {
+          "help": "",
+          "name": "bt709",
+          "value": "CS_BT709"
+        },
+        {
+          "help": "",
+          "name": "smpte170m",
+          "value": "CS_SMPTE170M"
+        },
+        {
+          "help": "",
+          "name": "smpte240m",
+          "value": "CS_SMPTE240M"
+        },
+        {
+          "help": "",
+          "name": "bt2020",
+          "value": "CS_BT2020"
+        }
+      ],
       "default": "CS_UNSPECIFIED",
       "description": null,
       "name": "all",
@@ -27,6 +69,53 @@
     {
       "alias": [
         "space"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bt709",
+          "value": "AVCOL_SPC_BT709"
+        },
+        {
+          "help": "",
+          "name": "fcc",
+          "value": "AVCOL_SPC_FCC"
+        },
+        {
+          "help": "",
+          "name": "bt470bg",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "",
+          "name": "smpte170m",
+          "value": "AVCOL_SPC_SMPTE170M"
+        },
+        {
+          "help": "",
+          "name": "smpte240m",
+          "value": "AVCOL_SPC_SMPTE240M"
+        },
+        {
+          "help": "",
+          "name": "ycgco",
+          "value": "AVCOL_SPC_YCGCO"
+        },
+        {
+          "help": "",
+          "name": "gbr",
+          "value": "AVCOL_SPC_RGB"
+        },
+        {
+          "help": "",
+          "name": "bt2020nc",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        },
+        {
+          "help": "",
+          "name": "bt2020ncl",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        }
       ],
       "default": "AVCOL_SPC_UNSPECIFIED",
       "description": null,
@@ -38,6 +127,28 @@
       "alias": [
         "range"
       ],
+      "choices": [
+        {
+          "help": "",
+          "name": "tv",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "",
+          "name": "mpeg",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "",
+          "name": "pc",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "",
+          "name": "jpeg",
+          "value": "AVCOL_RANGE_JPEG"
+        }
+      ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": null,
       "name": "range",
@@ -47,6 +158,68 @@
     {
       "alias": [
         "primaries"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bt709",
+          "value": "AVCOL_PRI_BT709"
+        },
+        {
+          "help": "",
+          "name": "bt470m",
+          "value": "AVCOL_PRI_BT470M"
+        },
+        {
+          "help": "",
+          "name": "bt470bg",
+          "value": "AVCOL_PRI_BT470BG"
+        },
+        {
+          "help": "",
+          "name": "smpte170m",
+          "value": "AVCOL_PRI_SMPTE170M"
+        },
+        {
+          "help": "",
+          "name": "smpte240m",
+          "value": "AVCOL_PRI_SMPTE240M"
+        },
+        {
+          "help": "",
+          "name": "smpte428",
+          "value": "AVCOL_PRI_SMPTE428"
+        },
+        {
+          "help": "",
+          "name": "film",
+          "value": "AVCOL_PRI_FILM"
+        },
+        {
+          "help": "",
+          "name": "smpte431",
+          "value": "AVCOL_PRI_SMPTE431"
+        },
+        {
+          "help": "",
+          "name": "smpte432",
+          "value": "AVCOL_PRI_SMPTE432"
+        },
+        {
+          "help": "",
+          "name": "bt2020",
+          "value": "AVCOL_PRI_BT2020"
+        },
+        {
+          "help": "",
+          "name": "jedec-p22",
+          "value": "AVCOL_PRI_JEDEC_P22"
+        },
+        {
+          "help": "",
+          "name": "ebu3213",
+          "value": "AVCOL_PRI_EBU3213"
+        }
       ],
       "default": "AVCOL_PRI_UNSPECIFIED",
       "description": null,
@@ -58,6 +231,78 @@
       "alias": [
         "trc"
       ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bt709",
+          "value": "AVCOL_TRC_BT709"
+        },
+        {
+          "help": "",
+          "name": "bt470m",
+          "value": "AVCOL_TRC_GAMMA22"
+        },
+        {
+          "help": "",
+          "name": "gamma22",
+          "value": "AVCOL_TRC_GAMMA22"
+        },
+        {
+          "help": "",
+          "name": "bt470bg",
+          "value": "AVCOL_TRC_GAMMA28"
+        },
+        {
+          "help": "",
+          "name": "gamma28",
+          "value": "AVCOL_TRC_GAMMA28"
+        },
+        {
+          "help": "",
+          "name": "smpte170m",
+          "value": "AVCOL_TRC_SMPTE170M"
+        },
+        {
+          "help": "",
+          "name": "smpte240m",
+          "value": "AVCOL_TRC_SMPTE240M"
+        },
+        {
+          "help": "",
+          "name": "linear",
+          "value": "AVCOL_TRC_LINEAR"
+        },
+        {
+          "help": "",
+          "name": "srgb",
+          "value": "AVCOL_TRC_IEC61966_2_1"
+        },
+        {
+          "help": "",
+          "name": "iec61966-2-1",
+          "value": "AVCOL_TRC_IEC61966_2_1"
+        },
+        {
+          "help": "",
+          "name": "xvycc",
+          "value": "AVCOL_TRC_IEC61966_2_4"
+        },
+        {
+          "help": "",
+          "name": "iec61966-2-4",
+          "value": "AVCOL_TRC_IEC61966_2_4"
+        },
+        {
+          "help": "",
+          "name": "bt2020-10",
+          "value": "AVCOL_TRC_BT2020_10"
+        },
+        {
+          "help": "",
+          "name": "bt2020-12",
+          "value": "AVCOL_TRC_BT2020_12"
+        }
+      ],
       "default": "AVCOL_TRC_UNSPECIFIED",
       "description": null,
       "name": "trc",
@@ -67,6 +312,53 @@
     {
       "alias": [
         "format"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "yuv420p",
+          "value": "AV_PIX_FMT_YUV420P"
+        },
+        {
+          "help": "",
+          "name": "yuv420p10",
+          "value": "AV_PIX_FMT_YUV420P10LE"
+        },
+        {
+          "help": "",
+          "name": "yuv420p12",
+          "value": "AV_PIX_FMT_YUV420P12LE"
+        },
+        {
+          "help": "",
+          "name": "yuv422p",
+          "value": "AV_PIX_FMT_YUV422P"
+        },
+        {
+          "help": "",
+          "name": "yuv422p10",
+          "value": "AV_PIX_FMT_YUV422P10LE"
+        },
+        {
+          "help": "",
+          "name": "yuv422p12",
+          "value": "AV_PIX_FMT_YUV422P12LE"
+        },
+        {
+          "help": "",
+          "name": "yuv444p",
+          "value": "AV_PIX_FMT_YUV444P"
+        },
+        {
+          "help": "",
+          "name": "yuv444p10",
+          "value": "AV_PIX_FMT_YUV444P10LE"
+        },
+        {
+          "help": "",
+          "name": "yuv444p12",
+          "value": "AV_PIX_FMT_YUV444P12LE"
+        }
       ],
       "default": "AV_PIX_FMT_NONE",
       "description": null,
@@ -78,6 +370,7 @@
       "alias": [
         "fast"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "fast",
@@ -87,6 +380,18 @@
     {
       "alias": [
         "dither"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "none",
+          "value": "DITHER_NONE"
+        },
+        {
+          "help": "",
+          "name": "fsb",
+          "value": "DITHER_FSB"
+        }
       ],
       "default": "DITHER_NONE",
       "description": null,
@@ -98,6 +403,23 @@
       "alias": [
         "wpadapt"
       ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bradford",
+          "value": "WP_ADAPT_BRADFORD"
+        },
+        {
+          "help": "",
+          "name": "vonkries",
+          "value": "WP_ADAPT_VON_KRIES"
+        },
+        {
+          "help": "",
+          "name": "identity",
+          "value": "WP_ADAPT_IDENTITY"
+        }
+      ],
       "default": "WP_ADAPT_BRADFORD",
       "description": null,
       "name": "wpadapt",
@@ -107,6 +429,48 @@
     {
       "alias": [
         "iall"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bt470m",
+          "value": "CS_BT470M"
+        },
+        {
+          "help": "",
+          "name": "bt470bg",
+          "value": "CS_BT470BG"
+        },
+        {
+          "help": "",
+          "name": "bt601-6-525",
+          "value": "CS_BT601_6_525"
+        },
+        {
+          "help": "",
+          "name": "bt601-6-625",
+          "value": "CS_BT601_6_625"
+        },
+        {
+          "help": "",
+          "name": "bt709",
+          "value": "CS_BT709"
+        },
+        {
+          "help": "",
+          "name": "smpte170m",
+          "value": "CS_SMPTE170M"
+        },
+        {
+          "help": "",
+          "name": "smpte240m",
+          "value": "CS_SMPTE240M"
+        },
+        {
+          "help": "",
+          "name": "bt2020",
+          "value": "CS_BT2020"
+        }
       ],
       "default": "CS_UNSPECIFIED",
       "description": null,
@@ -118,6 +482,53 @@
       "alias": [
         "ispace"
       ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bt709",
+          "value": "AVCOL_SPC_BT709"
+        },
+        {
+          "help": "",
+          "name": "fcc",
+          "value": "AVCOL_SPC_FCC"
+        },
+        {
+          "help": "",
+          "name": "bt470bg",
+          "value": "AVCOL_SPC_BT470BG"
+        },
+        {
+          "help": "",
+          "name": "smpte170m",
+          "value": "AVCOL_SPC_SMPTE170M"
+        },
+        {
+          "help": "",
+          "name": "smpte240m",
+          "value": "AVCOL_SPC_SMPTE240M"
+        },
+        {
+          "help": "",
+          "name": "ycgco",
+          "value": "AVCOL_SPC_YCGCO"
+        },
+        {
+          "help": "",
+          "name": "gbr",
+          "value": "AVCOL_SPC_RGB"
+        },
+        {
+          "help": "",
+          "name": "bt2020nc",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        },
+        {
+          "help": "",
+          "name": "bt2020ncl",
+          "value": "AVCOL_SPC_BT2020_NCL"
+        }
+      ],
       "default": "AVCOL_SPC_UNSPECIFIED",
       "description": null,
       "name": "ispace",
@@ -127,6 +538,28 @@
     {
       "alias": [
         "irange"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "tv",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "",
+          "name": "mpeg",
+          "value": "AVCOL_RANGE_MPEG"
+        },
+        {
+          "help": "",
+          "name": "pc",
+          "value": "AVCOL_RANGE_JPEG"
+        },
+        {
+          "help": "",
+          "name": "jpeg",
+          "value": "AVCOL_RANGE_JPEG"
+        }
       ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
       "description": null,
@@ -138,6 +571,68 @@
       "alias": [
         "iprimaries"
       ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bt709",
+          "value": "AVCOL_PRI_BT709"
+        },
+        {
+          "help": "",
+          "name": "bt470m",
+          "value": "AVCOL_PRI_BT470M"
+        },
+        {
+          "help": "",
+          "name": "bt470bg",
+          "value": "AVCOL_PRI_BT470BG"
+        },
+        {
+          "help": "",
+          "name": "smpte170m",
+          "value": "AVCOL_PRI_SMPTE170M"
+        },
+        {
+          "help": "",
+          "name": "smpte240m",
+          "value": "AVCOL_PRI_SMPTE240M"
+        },
+        {
+          "help": "",
+          "name": "smpte428",
+          "value": "AVCOL_PRI_SMPTE428"
+        },
+        {
+          "help": "",
+          "name": "film",
+          "value": "AVCOL_PRI_FILM"
+        },
+        {
+          "help": "",
+          "name": "smpte431",
+          "value": "AVCOL_PRI_SMPTE431"
+        },
+        {
+          "help": "",
+          "name": "smpte432",
+          "value": "AVCOL_PRI_SMPTE432"
+        },
+        {
+          "help": "",
+          "name": "bt2020",
+          "value": "AVCOL_PRI_BT2020"
+        },
+        {
+          "help": "",
+          "name": "jedec-p22",
+          "value": "AVCOL_PRI_JEDEC_P22"
+        },
+        {
+          "help": "",
+          "name": "ebu3213",
+          "value": "AVCOL_PRI_EBU3213"
+        }
+      ],
       "default": "AVCOL_PRI_UNSPECIFIED",
       "description": null,
       "name": "iprimaries",
@@ -147,6 +642,78 @@
     {
       "alias": [
         "itrc"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "bt709",
+          "value": "AVCOL_TRC_BT709"
+        },
+        {
+          "help": "",
+          "name": "bt470m",
+          "value": "AVCOL_TRC_GAMMA22"
+        },
+        {
+          "help": "",
+          "name": "gamma22",
+          "value": "AVCOL_TRC_GAMMA22"
+        },
+        {
+          "help": "",
+          "name": "bt470bg",
+          "value": "AVCOL_TRC_GAMMA28"
+        },
+        {
+          "help": "",
+          "name": "gamma28",
+          "value": "AVCOL_TRC_GAMMA28"
+        },
+        {
+          "help": "",
+          "name": "smpte170m",
+          "value": "AVCOL_TRC_SMPTE170M"
+        },
+        {
+          "help": "",
+          "name": "smpte240m",
+          "value": "AVCOL_TRC_SMPTE240M"
+        },
+        {
+          "help": "",
+          "name": "linear",
+          "value": "AVCOL_TRC_LINEAR"
+        },
+        {
+          "help": "",
+          "name": "srgb",
+          "value": "AVCOL_TRC_IEC61966_2_1"
+        },
+        {
+          "help": "",
+          "name": "iec61966-2-1",
+          "value": "AVCOL_TRC_IEC61966_2_1"
+        },
+        {
+          "help": "",
+          "name": "xvycc",
+          "value": "AVCOL_TRC_IEC61966_2_4"
+        },
+        {
+          "help": "",
+          "name": "iec61966-2-4",
+          "value": "AVCOL_TRC_IEC61966_2_4"
+        },
+        {
+          "help": "",
+          "name": "bt2020-10",
+          "value": "AVCOL_TRC_BT2020_10"
+        },
+        {
+          "help": "",
+          "name": "bt2020-12",
+          "value": "AVCOL_TRC_BT2020_12"
+        }
       ],
       "default": "AVCOL_TRC_UNSPECIFIED",
       "description": null,

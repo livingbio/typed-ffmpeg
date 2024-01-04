@@ -13,6 +13,7 @@
       "alias": [
         "inputs"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Set the number of inputs. Default is 2.\n</p>\n</dd>",
       "name": "inputs",

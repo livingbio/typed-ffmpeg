@@ -18,6 +18,7 @@
       "alias": [
         "weights"
       ],
+      "choices": [],
       "default": "nnedi3_weights.bin",
       "description": "<dd><p>Mandatory option, without binary file filter can not work.\nCurrently file can be found here:\nhttps://github.com/dubhater/vapoursynth-nnedi3/blob/master/src/nnedi3_weights.bin\n</p>\n</dd>",
       "name": "weights",
@@ -27,6 +28,18 @@
     {
       "alias": [
         "deint"
+      ],
+      "choices": [
+        {
+          "help": "deinterlace all frames",
+          "name": "all",
+          "value": 0
+        },
+        {
+          "help": "only deinterlace frames marked as interlaced",
+          "name": "interlaced",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set which frames to deinterlace, by default it is <code>all</code>.\nCan be <code>all</code> or <code>interlaced</code>.\n</p>\n</dd>",
@@ -38,6 +51,38 @@
       "alias": [
         "field"
       ],
+      "choices": [
+        {
+          "help": "use frame flags, both fields",
+          "name": "af",
+          "value": -2
+        },
+        {
+          "help": "use frame flags, single field",
+          "name": "a",
+          "value": -1
+        },
+        {
+          "help": "use top field only",
+          "name": "t",
+          "value": 0
+        },
+        {
+          "help": "use bottom field only",
+          "name": "b",
+          "value": 1
+        },
+        {
+          "help": "use both fields, top first",
+          "name": "tf",
+          "value": 2
+        },
+        {
+          "help": "use both fields, bottom first",
+          "name": "bf",
+          "value": 3
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Set mode of operation.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>af</samp>\u2019</dt>\n<dd><p>Use frame flags, both fields.\n</p></dd>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>Use frame flags, single field.\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>Use top field only.\n</p></dd>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n<dd><p>Use bottom field only.\n</p></dd>\n<dt>\u2018<samp>tf</samp>\u2019</dt>\n<dd><p>Use both fields, top first.\n</p></dd>\n<dt>\u2018<samp>bf</samp>\u2019</dt>\n<dd><p>Use both fields, bottom first.\n</p></dd>\n</dl>\n</dd>",
       "name": "field",
@@ -48,6 +93,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set which planes to process, by default filter process all frames.\n</p>\n</dd>",
       "name": "planes",
@@ -57,6 +103,43 @@
     {
       "alias": [
         "nsize"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "s8x6",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s16x6",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s32x6",
+          "value": 2
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s48x6",
+          "value": 3
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s8x4",
+          "value": 4
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s16x4",
+          "value": 5
+        },
+        {
+          "help": "((void*)0)",
+          "name": "s32x4",
+          "value": 6
+        }
       ],
       "default": 6,
       "description": "<dd><p>Set size of local neighborhood around each pixel, used by the predictor neural\nnetwork.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>s8x6</samp>\u2019</dt>\n<dt>\u2018<samp>s16x6</samp>\u2019</dt>\n<dt>\u2018<samp>s32x6</samp>\u2019</dt>\n<dt>\u2018<samp>s48x6</samp>\u2019</dt>\n<dt>\u2018<samp>s8x4</samp>\u2019</dt>\n<dt>\u2018<samp>s16x4</samp>\u2019</dt>\n<dt>\u2018<samp>s32x4</samp>\u2019</dt>\n</dl>\n</dd>",
@@ -68,6 +151,33 @@
       "alias": [
         "nns"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "n16",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "n32",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "n64",
+          "value": 2
+        },
+        {
+          "help": "((void*)0)",
+          "name": "n128",
+          "value": 3
+        },
+        {
+          "help": "((void*)0)",
+          "name": "n256",
+          "value": 4
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Set the number of neurons in predictor neural network.\nCan be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>n16</samp>\u2019</dt>\n<dt>\u2018<samp>n32</samp>\u2019</dt>\n<dt>\u2018<samp>n64</samp>\u2019</dt>\n<dt>\u2018<samp>n128</samp>\u2019</dt>\n<dt>\u2018<samp>n256</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "nns",
@@ -77,6 +187,18 @@
     {
       "alias": [
         "qual"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "fast",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "slow",
+          "value": 2
+        }
       ],
       "default": 1,
       "description": "<dd><p>Controls the number of different neural network predictions that are blended\ntogether to compute the final output value. Can be <code>fast</code>, default or\n<code>slow</code>.\n</p>\n</dd>",
@@ -88,6 +210,28 @@
       "alias": [
         "etype"
       ],
+      "choices": [
+        {
+          "help": "weights trained to minimize absolute error",
+          "name": "a",
+          "value": 0
+        },
+        {
+          "help": "weights trained to minimize absolute error",
+          "name": "abs",
+          "value": 0
+        },
+        {
+          "help": "weights trained to minimize squared error",
+          "name": "s",
+          "value": 1
+        },
+        {
+          "help": "weights trained to minimize squared error",
+          "name": "mse",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set which set of weights to use in the predictor.\nCan be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>a, abs</samp>\u2019</dt>\n<dd><p>weights trained to minimize absolute error\n</p></dd>\n<dt>\u2018<samp>s, mse</samp>\u2019</dt>\n<dd><p>weights trained to minimize squared error\n</p></dd>\n</dl>\n</dd>",
       "name": "etype",
@@ -97,6 +241,33 @@
     {
       "alias": [
         "pscrn"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "none",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "original",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "new",
+          "value": 2
+        },
+        {
+          "help": "((void*)0)",
+          "name": "new2",
+          "value": 3
+        },
+        {
+          "help": "((void*)0)",
+          "name": "new3",
+          "value": 4
+        }
       ],
       "default": 2,
       "description": "<dd><p>Controls whether or not the prescreener neural network is used to decide\nwhich pixels should be processed by the predictor neural network and which\ncan be handled by simple cubic interpolation.\nThe prescreener is trained to know whether cubic interpolation will be\nsufficient for a pixel or whether it should be predicted by the predictor nn.\nThe computational complexity of the prescreener nn is much less than that of\nthe predictor nn. Since most pixels can be handled by cubic interpolation,\nusing the prescreener generally results in much faster processing.\nThe prescreener is pretty accurate, so the difference between using it and not\nusing it is almost always unnoticeable.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dt>\u2018<samp>original</samp>\u2019</dt>\n<dt>\u2018<samp>new</samp>\u2019</dt>\n<dt>\u2018<samp>new2</samp>\u2019</dt>\n<dt>\u2018<samp>new3</samp>\u2019</dt>\n</dl>\n<p>Default is <code>new</code>.\n</p></dd>",

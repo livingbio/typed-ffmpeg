@@ -18,6 +18,7 @@
       "alias": [
         "tempo"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "tempo",

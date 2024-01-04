@@ -18,6 +18,7 @@
       "alias": [
         "coordinates"
       ],
+      "choices": [],
       "default": 255,
       "description": "<dd><p>Flag which specifies the pixel to refer to. Default is 255 i.e. all eight\npixels are used.\n</p>\n<p>Flags to local 3x3 coordinates maps like this:\n</p>\n<p>1 2 3\n    4   5\n    6 7 8\n</p></dd>",
       "name": "coordinates",
@@ -28,6 +29,7 @@
       "alias": [
         "threshold0"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
       "name": "threshold0",
@@ -38,6 +40,7 @@
       "alias": [
         "threshold1"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
       "name": "threshold1",
@@ -48,6 +51,7 @@
       "alias": [
         "threshold2"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
       "name": "threshold2",
@@ -58,6 +62,7 @@
       "alias": [
         "threshold3"
       ],
+      "choices": [],
       "default": 65535,
       "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
       "name": "threshold3",

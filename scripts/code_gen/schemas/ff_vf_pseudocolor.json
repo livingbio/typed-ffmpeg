@@ -18,6 +18,7 @@
       "alias": [
         "c0"
       ],
+      "choices": [],
       "default": "val",
       "description": "<dd><p>set pixel first component expression\n</p>\n</dd>",
       "name": "c0",
@@ -28,6 +29,7 @@
       "alias": [
         "c1"
       ],
+      "choices": [],
       "default": "val",
       "description": "<dd><p>set pixel second component expression\n</p>\n</dd>",
       "name": "c1",
@@ -38,6 +40,7 @@
       "alias": [
         "c2"
       ],
+      "choices": [],
       "default": "val",
       "description": "<dd><p>set pixel third component expression\n</p>\n</dd>",
       "name": "c2",
@@ -48,6 +51,7 @@
       "alias": [
         "c3"
       ],
+      "choices": [],
       "default": "val",
       "description": "<dd><p>set pixel fourth component expression, corresponds to the alpha component\n</p>\n</dd>",
       "name": "c3",
@@ -59,6 +63,7 @@
         "index",
         "i"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>set component to use as base for altering colors\n</p>\n</dd>",
       "name": "index",
@@ -70,6 +75,118 @@
         "preset",
         "p"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "none",
+          "value": -1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "magma",
+          "value": "PRESET_MAGMA"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "inferno",
+          "value": "PRESET_INFERNO"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "plasma",
+          "value": "PRESET_PLASMA"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "viridis",
+          "value": "PRESET_VIRIDIS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "turbo",
+          "value": "PRESET_TURBO"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "cividis",
+          "value": "PRESET_CIVIDIS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "range1",
+          "value": "PRESET_RANGE1"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "range2",
+          "value": "PRESET_RANGE2"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "shadows",
+          "value": "PRESET_SHADOWS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "highlights",
+          "value": "PRESET_HIGHLIGHTS"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "solar",
+          "value": "PRESET_SOLAR"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "nominal",
+          "value": "PRESET_NOMINAL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "preferred",
+          "value": "PRESET_PREFERRED"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "total",
+          "value": "PRESET_TOTAL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "spectral",
+          "value": "PRESET_SPECTRAL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "cool",
+          "value": "PRESET_COOL"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "heat",
+          "value": "PRESET_HEAT"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "fiery",
+          "value": "PRESET_FIERY"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "blues",
+          "value": "PRESET_BLUES"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "green",
+          "value": "PRESET_GREEN"
+        },
+        {
+          "help": "((void*)0)",
+          "name": "helix",
+          "value": "PRESET_HELIX"
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Pick one of built-in LUTs. By default is set to none.\n</p>\n<p>Available LUTs:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>magma</samp>\u2019</dt>\n<dt>\u2018<samp>inferno</samp>\u2019</dt>\n<dt>\u2018<samp>plasma</samp>\u2019</dt>\n<dt>\u2018<samp>viridis</samp>\u2019</dt>\n<dt>\u2018<samp>turbo</samp>\u2019</dt>\n<dt>\u2018<samp>cividis</samp>\u2019</dt>\n<dt>\u2018<samp>range1</samp>\u2019</dt>\n<dt>\u2018<samp>range2</samp>\u2019</dt>\n<dt>\u2018<samp>shadows</samp>\u2019</dt>\n<dt>\u2018<samp>highlights</samp>\u2019</dt>\n<dt>\u2018<samp>solar</samp>\u2019</dt>\n<dt>\u2018<samp>nominal</samp>\u2019</dt>\n<dt>\u2018<samp>preferred</samp>\u2019</dt>\n<dt>\u2018<samp>total</samp>\u2019</dt>\n<dt>\u2018<samp>spectral</samp>\u2019</dt>\n<dt>\u2018<samp>cool</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>fiery</samp>\u2019</dt>\n<dt>\u2018<samp>blues</samp>\u2019</dt>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dt>\u2018<samp>helix</samp>\u2019</dt>\n</dl>\n</dd>",
       "name": "preset",
@@ -80,6 +197,7 @@
       "alias": [
         "opacity"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set opacity of output colors. Allowed range is from 0 to 1.\nDefault value is set to 1.\n</p></dd>",
       "name": "opacity",

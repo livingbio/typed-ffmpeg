@@ -18,6 +18,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": 30,
       "description": "<dd><p>Set the size of the box used to represent one palette color entry. Default is\n<code>30</code> (for a <code>30x30</code> pixel box).\n</p></dd>",
       "name": "s",

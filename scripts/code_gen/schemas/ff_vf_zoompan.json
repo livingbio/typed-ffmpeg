@@ -19,6 +19,7 @@
         "zoom",
         "z"
       ],
+      "choices": [],
       "default": "1",
       "description": "<dd><p>Set the zoom expression. Range is 1-10. Default is 1.\n</p>\n</dd>",
       "name": "zoom",
@@ -29,6 +30,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>",
       "name": "x",
@@ -39,6 +41,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": "0",
       "description": "<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>",
       "name": "y",
@@ -49,6 +52,7 @@
       "alias": [
         "d"
       ],
+      "choices": [],
       "default": "90",
       "description": "<dd><p>Set the duration expression in number of frames.\nThis sets for how many number of frames effect will last for\nsingle input image. Default is 90.\n</p>\n</dd>",
       "name": "d",
@@ -59,6 +63,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": "hd720",
       "description": "<dd><p>Set the output image size, default is \u2019hd720\u2019.\n</p>\n</dd>",
       "name": "s",
@@ -69,6 +74,7 @@
       "alias": [
         "fps"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set the output frame rate, default is \u201925\u2019.\n</p></dd>",
       "name": "fps",

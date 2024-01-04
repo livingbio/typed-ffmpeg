@@ -18,6 +18,7 @@
       "alias": [
         "limit"
       ],
+      "choices": [],
       "default": 2000000,
       "description": "<dd><p>Time limit for the pauses. Any pause longer than that will be considered\na timestamp discontinuity and reset the timer. Default is 2 seconds.\n</p></dd>",
       "name": "limit",
@@ -28,6 +29,7 @@
       "alias": [
         "speed"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Speed factor for processing. The value must be a float larger than zero.\nValues larger than 1.0 will result in faster than realtime processing,\nsmaller will slow processing down. The <var>limit</var> is automatically adapted\naccordingly. Default is 1.0.\n</p>\n<p>A processing speed faster than what is possible without these filters cannot\nbe achieved.\n</p></dd>",
       "name": "speed",

@@ -19,6 +19,7 @@
         "out_w",
         "w"
       ],
+      "choices": [],
       "default": "iw",
       "description": "<dd><p>The width of the output video. It defaults to <code>iw</code>.\nThis expression is evaluated only once during the filter\nconfiguration, or when the \u2018<samp>w</samp>\u2019 or \u2018<samp>out_w</samp>\u2019 command is sent.\n</p>\n</dd>",
       "name": "out_w",
@@ -30,6 +31,7 @@
         "out_h",
         "h"
       ],
+      "choices": [],
       "default": "ih",
       "description": "<dd><p>The height of the output video. It defaults to <code>ih</code>.\nThis expression is evaluated only once during the filter\nconfiguration, or when the \u2018<samp>h</samp>\u2019 or \u2018<samp>out_h</samp>\u2019 command is sent.\n</p>\n</dd>",
       "name": "out_h",
@@ -40,6 +42,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": "(in_w-out_w)/2",
       "description": "<dd><p>The horizontal position, in the input video, of the left edge of the output\nvideo. It defaults to <code>(in_w-out_w)/2</code>.\nThis expression is evaluated per-frame.\n</p>\n</dd>",
       "name": "x",
@@ -50,6 +53,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": "(in_h-out_h)/2",
       "description": "<dd><p>The vertical position, in the input video, of the top edge of the output video.\nIt defaults to <code>(in_h-out_h)/2</code>.\nThis expression is evaluated per-frame.\n</p>\n</dd>",
       "name": "y",
@@ -60,6 +64,7 @@
       "alias": [
         "keep_aspect"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If set to 1 will force the output display aspect ratio\nto be the same of the input, by changing the output sample aspect\nratio. It defaults to 0.\n</p>\n</dd>",
       "name": "keep_aspect",
@@ -70,6 +75,7 @@
       "alias": [
         "exact"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Enable exact cropping. If enabled, subsampled videos will be cropped at exact\nwidth/height/x/y as specified and will not be rounded to nearest smaller value.\nIt defaults to 0.\n</p></dd>",
       "name": "exact",

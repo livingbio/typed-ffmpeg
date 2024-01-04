@@ -18,6 +18,7 @@
       "alias": [
         "threshold"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>The filtering strength. The higher, the more filtered the video will be.\nHard thresholding can use a higher threshold than soft thresholding\nbefore the video looks overfiltered. Default value is 2.\n</p>\n</dd>",
       "name": "threshold",
@@ -27,6 +28,23 @@
     {
       "alias": [
         "method"
+      ],
+      "choices": [
+        {
+          "help": "hard thresholding",
+          "name": "hard",
+          "value": 0
+        },
+        {
+          "help": "soft thresholding",
+          "name": "soft",
+          "value": 1
+        },
+        {
+          "help": "garrote thresholding",
+          "name": "garrote",
+          "value": 2
+        }
       ],
       "default": 2,
       "description": "<dd><p>The filtering method the filter will use.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>All values under the threshold will be zeroed.\n</p>\n</dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>All values under the threshold will be zeroed. All values above will be\nreduced by the threshold.\n</p>\n</dd>\n<dt>\u2018<samp>garrote</samp>\u2019</dt>\n<dd><p>Scales or nullifies coefficients - intermediary between (more) soft and\n(less) hard thresholding.\n</p></dd>\n</dl>\n<p>Default is garrote.\n</p>\n</dd>",
@@ -38,6 +56,7 @@
       "alias": [
         "nsteps"
       ],
+      "choices": [],
       "default": 6,
       "description": "<dd><p>Number of times, the wavelet will decompose the picture. Picture can\u2019t\nbe decomposed beyond a particular point (typically, 8 for a 640x480\nframe - as 2^9 = 512 &gt; 480). Valid values are integers between 1 and 32. Default value is 6.\n</p>\n</dd>",
       "name": "nsteps",
@@ -48,6 +67,7 @@
       "alias": [
         "percent"
       ],
+      "choices": [],
       "default": 85.0,
       "description": "<dd><p>Partial of full denoising (limited coefficients shrinking), from 0 to 100. Default value is 85.\n</p>\n</dd>",
       "name": "percent",
@@ -58,6 +78,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": 15,
       "description": "<dd><p>A list of the planes to process. By default all planes are processed.\n</p>\n</dd>",
       "name": "planes",
@@ -67,6 +88,18 @@
     {
       "alias": [
         "type"
+      ],
+      "choices": [
+        {
+          "help": "universal (VisuShrink)",
+          "name": "universal",
+          "value": 0
+        },
+        {
+          "help": "bayes (BayesShrink)",
+          "name": "bayes",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>The threshold type the filter will use.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>universal</samp>\u2019</dt>\n<dd><p>Threshold used is same for all decompositions.\n</p>\n</dd>\n<dt>\u2018<samp>bayes</samp>\u2019</dt>\n<dd><p>Threshold used depends also on each decomposition coefficients.\n</p></dd>\n</dl>\n<p>Default is universal.\n</p></dd>",

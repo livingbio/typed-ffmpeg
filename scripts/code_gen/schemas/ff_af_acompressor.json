@@ -18,6 +18,7 @@
       "alias": [
         "level_in"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set input gain. Default is 1. Range is between 0.015625 and 64.\n</p>\n</dd>",
       "name": "level_in",
@@ -27,6 +28,18 @@
     {
       "alias": [
         "mode"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "downward",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "upward",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set mode of compressor operation. Can be <code>upward</code> or <code>downward</code>.\nDefault is <code>downward</code>.\n</p>\n</dd>",
@@ -38,6 +51,7 @@
       "alias": [
         "threshold"
       ],
+      "choices": [],
       "default": 0.125,
       "description": "<dd><p>If a signal of stream rises above this level it will affect the gain\nreduction.\nBy default it is 0.125. Range is between 0.00097563 and 1.\n</p>\n</dd>",
       "name": "threshold",
@@ -48,6 +62,7 @@
       "alias": [
         "ratio"
       ],
+      "choices": [],
       "default": 2.0,
       "description": "<dd><p>Set a ratio by which the signal is reduced. 1:2 means that if the level\nrose 4dB above the threshold, it will be only 2dB above after the reduction.\nDefault is 2. Range is between 1 and 20.\n</p>\n</dd>",
       "name": "ratio",
@@ -58,6 +73,7 @@
       "alias": [
         "attack"
       ],
+      "choices": [],
       "default": 20.0,
       "description": "<dd><p>Amount of milliseconds the signal has to rise above the threshold before gain\nreduction starts. Default is 20. Range is between 0.01 and 2000.\n</p>\n</dd>",
       "name": "attack",
@@ -68,6 +84,7 @@
       "alias": [
         "release"
       ],
+      "choices": [],
       "default": 250.0,
       "description": "<dd><p>Amount of milliseconds the signal has to fall below the threshold before\nreduction is decreased again. Default is 250. Range is between 0.01 and 9000.\n</p>\n</dd>",
       "name": "release",
@@ -78,6 +95,7 @@
       "alias": [
         "makeup"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the amount by how much signal will be amplified after processing.\nDefault is 1. Range is from 1 to 64.\n</p>\n</dd>",
       "name": "makeup",
@@ -88,6 +106,7 @@
       "alias": [
         "knee"
       ],
+      "choices": [],
       "default": 2.82843,
       "description": "<dd><p>Curve the sharp knee around the threshold to enter gain reduction more softly.\nDefault is 2.82843. Range is between 1 and 8.\n</p>\n</dd>",
       "name": "knee",
@@ -97,6 +116,18 @@
     {
       "alias": [
         "link"
+      ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "average",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "maximum",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Choose if the <code>average</code> level between all channels of input stream\nor the louder(<code>maximum</code>) channel of input stream affects the\nreduction. Default is <code>average</code>.\n</p>\n</dd>",
@@ -108,6 +139,18 @@
       "alias": [
         "detection"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "peak",
+          "value": 0
+        },
+        {
+          "help": "0",
+          "name": "rms",
+          "value": 1
+        }
+      ],
       "default": 1,
       "description": "<dd><p>Should the exact signal be taken in case of <code>peak</code> or an RMS one in case\nof <code>rms</code>. Default is <code>rms</code> which is mostly smoother.\n</p>\n</dd>",
       "name": "detection",
@@ -118,6 +161,7 @@
       "alias": [
         "level_sc"
       ],
+      "choices": [],
       "default": 1.0,
       "description": null,
       "name": "level_sc",
@@ -128,6 +172,7 @@
       "alias": [
         "mix"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>How much to use compressed signal in output. Default is 1.\nRange is between 0 and 1.\n</p></dd>",
       "name": "mix",

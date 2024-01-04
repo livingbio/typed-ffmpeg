@@ -18,6 +18,18 @@
       "alias": [
         "m"
       ],
+      "choices": [
+        {
+          "help": "0",
+          "name": "dotcrawl",
+          "value": 1
+        },
+        {
+          "help": "0",
+          "name": "rainbows",
+          "value": 2
+        }
+      ],
       "default": 3,
       "description": "<dd><p>Set mode of operation. Can be combination of <var>dotcrawl</var> for cross-luminance reduction and/or\n<var>rainbows</var> for cross-color reduction.\n</p>\n</dd>",
       "name": "m",
@@ -28,6 +40,7 @@
       "alias": [
         "lt"
       ],
+      "choices": [],
       "default": 0.079,
       "description": "<dd><p>Set spatial luma threshold. Lower values increases reduction of cross-luminance.\n</p>\n</dd>",
       "name": "lt",
@@ -38,6 +51,7 @@
       "alias": [
         "tl"
       ],
+      "choices": [],
       "default": 0.079,
       "description": "<dd><p>Set tolerance for temporal luma. Higher values increases reduction of cross-luminance.\n</p>\n</dd>",
       "name": "tl",
@@ -48,6 +62,7 @@
       "alias": [
         "tc"
       ],
+      "choices": [],
       "default": 0.058,
       "description": "<dd><p>Set tolerance for chroma temporal variation. Higher values increases reduction of cross-color.\n</p>\n</dd>",
       "name": "tc",
@@ -58,6 +73,7 @@
       "alias": [
         "ct"
       ],
+      "choices": [],
       "default": 0.019,
       "description": "<dd><p>Set temporal chroma threshold. Lower values increases reduction of cross-color.\n</p></dd>",
       "name": "ct",

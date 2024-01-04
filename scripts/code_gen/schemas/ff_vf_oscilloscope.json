@@ -18,6 +18,7 @@
       "alias": [
         "x"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set scope center x position.\n</p>\n</dd>",
       "name": "x",
@@ -28,6 +29,7 @@
       "alias": [
         "y"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set scope center y position.\n</p>\n</dd>",
       "name": "y",
@@ -38,6 +40,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": 0.8,
       "description": "<dd><p>Set scope size, relative to frame diagonal.\n</p>\n</dd>",
       "name": "s",
@@ -48,6 +51,7 @@
       "alias": [
         "t"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set scope tilt/rotation.\n</p>\n</dd>",
       "name": "t",
@@ -58,6 +62,7 @@
       "alias": [
         "o"
       ],
+      "choices": [],
       "default": 0.8,
       "description": "<dd><p>Set trace opacity.\n</p>\n</dd>",
       "name": "o",
@@ -68,6 +73,7 @@
       "alias": [
         "tx"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set trace center x position.\n</p>\n</dd>",
       "name": "tx",
@@ -78,6 +84,7 @@
       "alias": [
         "ty"
       ],
+      "choices": [],
       "default": 0.9,
       "description": "<dd><p>Set trace center y position.\n</p>\n</dd>",
       "name": "ty",
@@ -88,6 +95,7 @@
       "alias": [
         "tw"
       ],
+      "choices": [],
       "default": 0.8,
       "description": "<dd><p>Set trace width, relative to width of frame.\n</p>\n</dd>",
       "name": "tw",
@@ -98,6 +106,7 @@
       "alias": [
         "th"
       ],
+      "choices": [],
       "default": 0.3,
       "description": "<dd><p>Set trace height, relative to height of frame.\n</p>\n</dd>",
       "name": "th",
@@ -108,6 +117,7 @@
       "alias": [
         "c"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set which components to trace. By default it traces first three components.\n</p>\n</dd>",
       "name": "c",
@@ -118,6 +128,7 @@
       "alias": [
         "g"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Draw trace grid. By default is enabled.\n</p>\n</dd>",
       "name": "g",
@@ -128,6 +139,7 @@
       "alias": [
         "st"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Draw some statistics. By default is enabled.\n</p>\n</dd>",
       "name": "st",
@@ -138,6 +150,7 @@
       "alias": [
         "sc"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Draw scope. By default is enabled.\n</p></dd>",
       "name": "sc",

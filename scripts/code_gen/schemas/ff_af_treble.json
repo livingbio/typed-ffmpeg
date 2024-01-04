@@ -19,6 +19,7 @@
         "frequency",
         "f"
       ],
+      "choices": [],
       "default": 3000.0,
       "description": "<dd><p>Set the filter\u2019s central frequency and so can be used\nto extend or reduce the frequency range to be boosted or cut.\nThe default value is <code>3000</code> Hz.\n</p>\n</dd>",
       "name": "frequency",
@@ -29,6 +30,33 @@
       "alias": [
         "width_type",
         "t"
+      ],
+      "choices": [
+        {
+          "help": "Hz",
+          "name": "h",
+          "value": "HERTZ"
+        },
+        {
+          "help": "Q-Factor",
+          "name": "q",
+          "value": "QFACTOR"
+        },
+        {
+          "help": "octave",
+          "name": "o",
+          "value": "OCTAVE"
+        },
+        {
+          "help": "slope",
+          "name": "s",
+          "value": "SLOPE"
+        },
+        {
+          "help": "kHz",
+          "name": "k",
+          "value": "KHERTZ"
+        }
       ],
       "default": "QFACTOR",
       "description": "<dd><p>Set method to specify band-width of filter.\n</p><dl compact=\"compact\">\n<dt><samp>h</samp></dt>\n<dd><p>Hz\n</p></dd>\n<dt><samp>q</samp></dt>\n<dd><p>Q-Factor\n</p></dd>\n<dt><samp>o</samp></dt>\n<dd><p>octave\n</p></dd>\n<dt><samp>s</samp></dt>\n<dd><p>slope\n</p></dd>\n<dt><samp>k</samp></dt>\n<dd><p>kHz\n</p></dd>\n</dl>\n</dd>",
@@ -41,6 +69,7 @@
         "width",
         "w"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Determine how steep is the filter\u2019s shelf transition.\n</p>\n</dd>",
       "name": "width",
@@ -52,6 +81,7 @@
         "gain",
         "g"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Give the gain at whichever is the lower of ~22 kHz and the\nNyquist frequency. Its useful range is about -20 (for a large cut)\nto +20 (for a large boost). Beware of clipping when using a positive gain.\n</p>\n</dd>",
       "name": "gain",
@@ -63,6 +93,7 @@
         "poles",
         "p"
       ],
+      "choices": [],
       "default": 2,
       "description": "<dd><p>Set number of poles. Default is 2.\n</p>\n</dd>",
       "name": "poles",
@@ -74,6 +105,7 @@
         "mix",
         "m"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>",
       "name": "mix",
@@ -85,6 +117,7 @@
         "channels",
         "c"
       ],
+      "choices": [],
       "default": "all",
       "description": "<dd><p>Specify which channels to filter, by default all available are filtered.\n</p>\n</dd>",
       "name": "channels",
@@ -96,6 +129,7 @@
         "normalize",
         "n"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Normalize biquad coefficients, by default is disabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>",
       "name": "normalize",
@@ -106,6 +140,43 @@
       "alias": [
         "transform",
         "a"
+      ],
+      "choices": [
+        {
+          "help": "direct form I",
+          "name": "di",
+          "value": "DI"
+        },
+        {
+          "help": "direct form II",
+          "name": "dii",
+          "value": "DII"
+        },
+        {
+          "help": "transposed direct form I",
+          "name": "tdi",
+          "value": "TDI"
+        },
+        {
+          "help": "transposed direct form II",
+          "name": "tdii",
+          "value": "TDII"
+        },
+        {
+          "help": "lattice-ladder form",
+          "name": "latt",
+          "value": "LATT"
+        },
+        {
+          "help": "state variable filter form",
+          "name": "svf",
+          "value": "SVF"
+        },
+        {
+          "help": "zero-delay filter form",
+          "name": "zdf",
+          "value": "ZDF"
+        }
       ],
       "default": "DI",
       "description": "<dd><p>Set transform type of IIR filter.\n</p><dl compact=\"compact\">\n<dt><samp>di</samp></dt>\n<dt><samp>dii</samp></dt>\n<dt><samp>tdi</samp></dt>\n<dt><samp>tdii</samp></dt>\n<dt><samp>latt</samp></dt>\n<dt><samp>svf</samp></dt>\n<dt><samp>zdf</samp></dt>\n</dl>\n</dd>",
@@ -118,6 +189,33 @@
         "precision",
         "r"
       ],
+      "choices": [
+        {
+          "help": "automatic",
+          "name": "auto",
+          "value": -1
+        },
+        {
+          "help": "signed 16-bit",
+          "name": "s16",
+          "value": 0
+        },
+        {
+          "help": "signed 32-bit",
+          "name": "s32",
+          "value": 1
+        },
+        {
+          "help": "floating-point single",
+          "name": "f32",
+          "value": 2
+        },
+        {
+          "help": "floating-point double",
+          "name": "f64",
+          "value": 3
+        }
+      ],
       "default": -1,
       "description": "<dd><p>Set precision of filtering.\n</p><dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Pick automatic sample format depending on surround filters.\n</p></dd>\n<dt><samp>s16</samp></dt>\n<dd><p>Always use signed 16-bit.\n</p></dd>\n<dt><samp>s32</samp></dt>\n<dd><p>Always use signed 32-bit.\n</p></dd>\n<dt><samp>f32</samp></dt>\n<dd><p>Always use float 32-bit.\n</p></dd>\n<dt><samp>f64</samp></dt>\n<dd><p>Always use float 64-bit.\n</p></dd>\n</dl>\n</dd>",
       "name": "precision",
@@ -129,6 +227,7 @@
         "blocksize",
         "b"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "blocksize",

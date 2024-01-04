@@ -13,6 +13,7 @@
       "alias": [
         "size"
       ],
+      "choices": [],
       "default": "320x240",
       "description": "<dd><p>The size of the video to generate. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p>\n</dd>",
       "name": "size",
@@ -23,6 +24,7 @@
       "alias": [
         "framerate"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>The framerate of the generated video. It may be a string of the form\n<var>num</var>/<var>den</var> or a frame rate abbreviation.\n</p>\n</dd>",
       "name": "framerate",
@@ -33,6 +35,7 @@
       "alias": [
         "filter_name"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>The name to the frei0r source to load. For more information regarding frei0r and\nhow to set the parameters, read the <a href=\"#frei0r\">frei0r</a> section in the video filters\ndocumentation.\n</p>\n</dd>",
       "name": "filter_name",
@@ -43,6 +46,7 @@
       "alias": [
         "filter_params"
       ],
+      "choices": [],
       "default": null,
       "description": "<dd><p>A \u2019|\u2019-separated list of parameters to pass to the frei0r source.\n</p>\n</dd>",
       "name": "filter_params",

@@ -183,17 +183,17 @@
           {
             "help": "((void*)0)",
             "name": "disable",
-            "value": "['.i64 = 0']"
+            "value": 0
           },
           {
             "help": "((void*)0)",
             "name": "decrease",
-            "value": "['.i64 = 1']"
+            "value": 1
           },
           {
             "help": "((void*)0)",
             "name": "increase",
-            "value": "['.i64 = 2']"
+            "value": 2
           }
         ],
         "default": "['.i64 = 0']",
@@ -290,57 +290,57 @@
           {
             "help": "keep the same colorspace",
             "name": "auto",
-            "value": "['.i64=-1']"
+            "value": -1
           },
           {
             "help": "((void*)0)",
             "name": "gbr",
-            "value": "['.i64=AVCOL_SPC_RGB']"
+            "value": "AVCOL_SPC_RGB"
           },
           {
             "help": "((void*)0)",
             "name": "bt709",
-            "value": "['.i64=AVCOL_SPC_BT709']"
+            "value": "AVCOL_SPC_BT709"
           },
           {
             "help": "((void*)0)",
             "name": "unknown",
-            "value": "['.i64=AVCOL_SPC_UNSPECIFIED']"
+            "value": "AVCOL_SPC_UNSPECIFIED"
           },
           {
             "help": "((void*)0)",
             "name": "bt470bg",
-            "value": "['.i64=AVCOL_SPC_BT470BG']"
+            "value": "AVCOL_SPC_BT470BG"
           },
           {
             "help": "((void*)0)",
             "name": "smpte170m",
-            "value": "['.i64=AVCOL_SPC_SMPTE170M']"
+            "value": "AVCOL_SPC_SMPTE170M"
           },
           {
             "help": "((void*)0)",
             "name": "smpte240m",
-            "value": "['.i64=AVCOL_SPC_SMPTE240M']"
+            "value": "AVCOL_SPC_SMPTE240M"
           },
           {
             "help": "((void*)0)",
             "name": "ycgco",
-            "value": "['.i64=AVCOL_SPC_YCGCO']"
+            "value": "AVCOL_SPC_YCGCO"
           },
           {
             "help": "((void*)0)",
             "name": "bt2020nc",
-            "value": "['.i64=AVCOL_SPC_BT2020_NCL']"
+            "value": "AVCOL_SPC_BT2020_NCL"
           },
           {
             "help": "((void*)0)",
             "name": "bt2020c",
-            "value": "['.i64=AVCOL_SPC_BT2020_CL']"
+            "value": "AVCOL_SPC_BT2020_CL"
           },
           {
             "help": "((void*)0)",
             "name": "ictcp",
-            "value": "['.i64=AVCOL_SPC_ICTCP']"
+            "value": "AVCOL_SPC_ICTCP"
           }
         ],
         "default": "['.i64=-1']",
@@ -359,47 +359,47 @@
           {
             "help": "keep the same color range",
             "name": "auto",
-            "value": "['.i64=-1']"
+            "value": -1
           },
           {
             "help": "((void*)0)",
             "name": "unspecified",
-            "value": "['.i64=AVCOL_RANGE_UNSPECIFIED']"
+            "value": "AVCOL_RANGE_UNSPECIFIED"
           },
           {
             "help": "((void*)0)",
             "name": "unknown",
-            "value": "['.i64=AVCOL_RANGE_UNSPECIFIED']"
+            "value": "AVCOL_RANGE_UNSPECIFIED"
           },
           {
             "help": "((void*)0)",
             "name": "limited",
-            "value": "['.i64=AVCOL_RANGE_MPEG']"
+            "value": "AVCOL_RANGE_MPEG"
           },
           {
             "help": "((void*)0)",
             "name": "tv",
-            "value": "['.i64=AVCOL_RANGE_MPEG']"
+            "value": "AVCOL_RANGE_MPEG"
           },
           {
             "help": "((void*)0)",
             "name": "mpeg",
-            "value": "['.i64=AVCOL_RANGE_MPEG']"
+            "value": "AVCOL_RANGE_MPEG"
           },
           {
             "help": "((void*)0)",
             "name": "full",
-            "value": "['.i64=AVCOL_RANGE_JPEG']"
+            "value": "AVCOL_RANGE_JPEG"
           },
           {
             "help": "((void*)0)",
             "name": "pc",
-            "value": "['.i64=AVCOL_RANGE_JPEG']"
+            "value": "AVCOL_RANGE_JPEG"
           },
           {
             "help": "((void*)0)",
             "name": "jpeg",
-            "value": "['.i64=AVCOL_RANGE_JPEG']"
+            "value": "AVCOL_RANGE_JPEG"
           }
         ],
         "default": "['.i64=-1']",
@@ -418,72 +418,72 @@
           {
             "help": "keep the same color primaries",
             "name": "auto",
-            "value": "['.i64=-1']"
+            "value": -1
           },
           {
             "help": "((void*)0)",
             "name": "bt709",
-            "value": "['.i64=AVCOL_PRI_BT709']"
+            "value": "AVCOL_PRI_BT709"
           },
           {
             "help": "((void*)0)",
             "name": "unknown",
-            "value": "['.i64=AVCOL_PRI_UNSPECIFIED']"
+            "value": "AVCOL_PRI_UNSPECIFIED"
           },
           {
             "help": "((void*)0)",
             "name": "bt470m",
-            "value": "['.i64=AVCOL_PRI_BT470M']"
+            "value": "AVCOL_PRI_BT470M"
           },
           {
             "help": "((void*)0)",
             "name": "bt470bg",
-            "value": "['.i64=AVCOL_PRI_BT470BG']"
+            "value": "AVCOL_PRI_BT470BG"
           },
           {
             "help": "((void*)0)",
             "name": "smpte170m",
-            "value": "['.i64=AVCOL_PRI_SMPTE170M']"
+            "value": "AVCOL_PRI_SMPTE170M"
           },
           {
             "help": "((void*)0)",
             "name": "smpte240m",
-            "value": "['.i64=AVCOL_PRI_SMPTE240M']"
+            "value": "AVCOL_PRI_SMPTE240M"
           },
           {
             "help": "((void*)0)",
             "name": "film",
-            "value": "['.i64=AVCOL_PRI_FILM']"
+            "value": "AVCOL_PRI_FILM"
           },
           {
             "help": "((void*)0)",
             "name": "bt2020",
-            "value": "['.i64=AVCOL_PRI_BT2020']"
+            "value": "AVCOL_PRI_BT2020"
           },
           {
             "help": "((void*)0)",
             "name": "smpte428",
-            "value": "['.i64=AVCOL_PRI_SMPTE428']"
+            "value": "AVCOL_PRI_SMPTE428"
           },
           {
             "help": "((void*)0)",
             "name": "smpte431",
-            "value": "['.i64=AVCOL_PRI_SMPTE431']"
+            "value": "AVCOL_PRI_SMPTE431"
           },
           {
             "help": "((void*)0)",
             "name": "smpte432",
-            "value": "['.i64=AVCOL_PRI_SMPTE432']"
+            "value": "AVCOL_PRI_SMPTE432"
           },
           {
             "help": "((void*)0)",
             "name": "jedec-p22",
-            "value": "['.i64=AVCOL_PRI_JEDEC_P22']"
+            "value": "AVCOL_PRI_JEDEC_P22"
           },
           {
             "help": "((void*)0)",
             "name": "ebu3213",
-            "value": "['.i64=AVCOL_PRI_EBU3213']"
+            "value": "AVCOL_PRI_EBU3213"
           }
         ],
         "default": "['.i64=-1']",
@@ -502,77 +502,77 @@
           {
             "help": "keep the same color transfer",
             "name": "auto",
-            "value": "['.i64=-1']"
+            "value": -1
           },
           {
             "help": "((void*)0)",
             "name": "bt709",
-            "value": "['.i64=AVCOL_TRC_BT709']"
+            "value": "AVCOL_TRC_BT709"
           },
           {
             "help": "((void*)0)",
             "name": "unknown",
-            "value": "['.i64=AVCOL_TRC_UNSPECIFIED']"
+            "value": "AVCOL_TRC_UNSPECIFIED"
           },
           {
             "help": "((void*)0)",
             "name": "bt470m",
-            "value": "['.i64=AVCOL_TRC_GAMMA22']"
+            "value": "AVCOL_TRC_GAMMA22"
           },
           {
             "help": "((void*)0)",
             "name": "bt470bg",
-            "value": "['.i64=AVCOL_TRC_GAMMA28']"
+            "value": "AVCOL_TRC_GAMMA28"
           },
           {
             "help": "((void*)0)",
             "name": "smpte170m",
-            "value": "['.i64=AVCOL_TRC_SMPTE170M']"
+            "value": "AVCOL_TRC_SMPTE170M"
           },
           {
             "help": "((void*)0)",
             "name": "smpte240m",
-            "value": "['.i64=AVCOL_TRC_SMPTE240M']"
+            "value": "AVCOL_TRC_SMPTE240M"
           },
           {
             "help": "((void*)0)",
             "name": "linear",
-            "value": "['.i64=AVCOL_TRC_LINEAR']"
+            "value": "AVCOL_TRC_LINEAR"
           },
           {
             "help": "((void*)0)",
             "name": "iec61966-2-4",
-            "value": "['.i64=AVCOL_TRC_IEC61966_2_4']"
+            "value": "AVCOL_TRC_IEC61966_2_4"
           },
           {
             "help": "((void*)0)",
             "name": "bt1361e",
-            "value": "['.i64=AVCOL_TRC_BT1361_ECG']"
+            "value": "AVCOL_TRC_BT1361_ECG"
           },
           {
             "help": "((void*)0)",
             "name": "iec61966-2-1",
-            "value": "['.i64=AVCOL_TRC_IEC61966_2_1']"
+            "value": "AVCOL_TRC_IEC61966_2_1"
           },
           {
             "help": "((void*)0)",
             "name": "bt2020-10",
-            "value": "['.i64=AVCOL_TRC_BT2020_10']"
+            "value": "AVCOL_TRC_BT2020_10"
           },
           {
             "help": "((void*)0)",
             "name": "bt2020-12",
-            "value": "['.i64=AVCOL_TRC_BT2020_12']"
+            "value": "AVCOL_TRC_BT2020_12"
           },
           {
             "help": "((void*)0)",
             "name": "smpte2084",
-            "value": "['.i64=AVCOL_TRC_SMPTE2084']"
+            "value": "AVCOL_TRC_SMPTE2084"
           },
           {
             "help": "((void*)0)",
             "name": "arib-std-b67",
-            "value": "['.i64=AVCOL_TRC_ARIB_STD_B67']"
+            "value": "AVCOL_TRC_ARIB_STD_B67"
           }
         ],
         "default": "['.i64=-1']",
@@ -903,47 +903,47 @@
           {
             "help": "Hard-clip (RGB per-channel)",
             "name": "clip",
-            "value": "['.i64 = GAMUT_MAP_CLIP']"
+            "value": "GAMUT_MAP_CLIP"
           },
           {
             "help": "Colorimetric soft clipping",
             "name": "perceptual",
-            "value": "['.i64 = GAMUT_MAP_PERCEPTUAL']"
+            "value": "GAMUT_MAP_PERCEPTUAL"
           },
           {
             "help": "Relative colorimetric clipping",
             "name": "relative",
-            "value": "['.i64 = GAMUT_MAP_RELATIVE']"
+            "value": "GAMUT_MAP_RELATIVE"
           },
           {
             "help": "Saturation mapping (RGB -> RGB)",
             "name": "saturation",
-            "value": "['.i64 = GAMUT_MAP_SATURATION']"
+            "value": "GAMUT_MAP_SATURATION"
           },
           {
             "help": "Absolute colorimetric clipping",
             "name": "absolute",
-            "value": "['.i64 = GAMUT_MAP_ABSOLUTE']"
+            "value": "GAMUT_MAP_ABSOLUTE"
           },
           {
             "help": "Colorimetrically desaturate colors towards white",
             "name": "desaturate",
-            "value": "['.i64 = GAMUT_MAP_DESATURATE']"
+            "value": "GAMUT_MAP_DESATURATE"
           },
           {
             "help": "Colorimetric clip with bias towards darkening image to fit gamut",
             "name": "darken",
-            "value": "['.i64 = GAMUT_MAP_DARKEN']"
+            "value": "GAMUT_MAP_DARKEN"
           },
           {
             "help": "Highlight out-of-gamut colors",
             "name": "warn",
-            "value": "['.i64 = GAMUT_MAP_HIGHLIGHT']"
+            "value": "GAMUT_MAP_HIGHLIGHT"
           },
           {
             "help": "Linearly reduce chromaticity to fit gamut",
             "name": "linear",
-            "value": "['.i64 = GAMUT_MAP_LINEAR']"
+            "value": "GAMUT_MAP_LINEAR"
           }
         ],
         "default": "['.i64 = GAMUT_MAP_PERCEPTUAL']",
@@ -962,52 +962,52 @@
           {
             "help": "Automatic selection",
             "name": "auto",
-            "value": "['.i64 = TONE_MAP_AUTO']"
+            "value": "TONE_MAP_AUTO"
           },
           {
             "help": "No tone mapping (clip",
             "name": "clip",
-            "value": "['.i64 = TONE_MAP_CLIP']"
+            "value": "TONE_MAP_CLIP"
           },
           {
             "help": "ITU-R BT.2390 EETF",
             "name": "bt.2390",
-            "value": "['.i64 = TONE_MAP_BT2390']"
+            "value": "TONE_MAP_BT2390"
           },
           {
             "help": "ITU-R BT.2446 Method A",
             "name": "bt.2446a",
-            "value": "['.i64 = TONE_MAP_BT2446A']"
+            "value": "TONE_MAP_BT2446A"
           },
           {
             "help": "Single-pivot polynomial spline",
             "name": "spline",
-            "value": "['.i64 = TONE_MAP_SPLINE']"
+            "value": "TONE_MAP_SPLINE"
           },
           {
             "help": "Reinhard",
             "name": "reinhard",
-            "value": "['.i64 = TONE_MAP_REINHARD']"
+            "value": "TONE_MAP_REINHARD"
           },
           {
             "help": "Mobius",
             "name": "mobius",
-            "value": "['.i64 = TONE_MAP_MOBIUS']"
+            "value": "TONE_MAP_MOBIUS"
           },
           {
             "help": "Filmic tone-mapping (Hable)",
             "name": "hable",
-            "value": "['.i64 = TONE_MAP_HABLE']"
+            "value": "TONE_MAP_HABLE"
           },
           {
             "help": "Gamma function with knee",
             "name": "gamma",
-            "value": "['.i64 = TONE_MAP_GAMMA']"
+            "value": "TONE_MAP_GAMMA"
           },
           {
             "help": "Perceptually linear stretch",
             "name": "linear",
-            "value": "['.i64 = TONE_MAP_LINEAR']"
+            "value": "TONE_MAP_LINEAR"
           }
         ],
         "default": "['.i64 = TONE_MAP_AUTO']",
@@ -1143,22 +1143,22 @@
           {
             "help": "Perceptual",
             "name": "perceptual",
-            "value": "['.i64 = PL_INTENT_PERCEPTUAL']"
+            "value": "PL_INTENT_PERCEPTUAL"
           },
           {
             "help": "Relative colorimetric",
             "name": "relative",
-            "value": "['.i64 = PL_INTENT_RELATIVE_COLORIMETRIC']"
+            "value": "PL_INTENT_RELATIVE_COLORIMETRIC"
           },
           {
             "help": "Absolute colorimetric",
             "name": "absolute",
-            "value": "['.i64 = PL_INTENT_ABSOLUTE_COLORIMETRIC']"
+            "value": "PL_INTENT_ABSOLUTE_COLORIMETRIC"
           },
           {
             "help": "Saturation mapping",
             "name": "saturation",
-            "value": "['.i64 = PL_INTENT_SATURATION']"
+            "value": "PL_INTENT_SATURATION"
           }
         ],
         "default": "['.i64 = PL_INTENT_PERCEPTUAL']",
@@ -1177,27 +1177,27 @@
           {
             "help": "Automatic selection",
             "name": "auto",
-            "value": "['.i64 = 0']"
+            "value": 0
           },
           {
             "help": "Per-channel (RGB)",
             "name": "rgb",
-            "value": "['.i64 = 1']"
+            "value": 1
           },
           {
             "help": "Maximum component",
             "name": "max",
-            "value": "['.i64 = 2']"
+            "value": 2
           },
           {
             "help": "Hybrid of Luma/RGB",
             "name": "hybrid",
-            "value": "['.i64 = 3']"
+            "value": 3
           },
           {
             "help": "Luminance",
             "name": "luma",
-            "value": "['.i64 = 4']"
+            "value": 4
           }
         ],
         "default": "['.i64 = 0']",
@@ -1255,27 +1255,27 @@
           {
             "help": "Disable dithering",
             "name": "none",
-            "value": "['.i64 = -1']"
+            "value": -1
           },
           {
             "help": "Blue noise",
             "name": "blue",
-            "value": "['.i64 = PL_DITHER_BLUE_NOISE']"
+            "value": "PL_DITHER_BLUE_NOISE"
           },
           {
             "help": "Ordered LUT",
             "name": "ordered",
-            "value": "['.i64 = PL_DITHER_ORDERED_LUT']"
+            "value": "PL_DITHER_ORDERED_LUT"
           },
           {
             "help": "Fixed function ordered",
             "name": "ordered_fixed",
-            "value": "['.i64 = PL_DITHER_ORDERED_FIXED']"
+            "value": "PL_DITHER_ORDERED_FIXED"
           },
           {
             "help": "White noise",
             "name": "white",
-            "value": "['.i64 = PL_DITHER_WHITE_NOISE']"
+            "value": "PL_DITHER_WHITE_NOISE"
           }
         ],
         "default": "['.i64 = PL_DITHER_BLUE_NOISE']",
@@ -1320,17 +1320,17 @@
           {
             "help": "L cone",
             "name": "l",
-            "value": "['.i64 = PL_CONE_L']"
+            "value": "PL_CONE_L"
           },
           {
             "help": "M cone",
             "name": "m",
-            "value": "['.i64 = PL_CONE_M']"
+            "value": "PL_CONE_M"
           },
           {
             "help": "S cone",
             "name": "s",
-            "value": "['.i64 = PL_CONE_S']"
+            "value": "PL_CONE_S"
           }
         ],
         "default": "['.i64 = 0']",

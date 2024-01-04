@@ -19,6 +19,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
       "name": "rate",
@@ -30,6 +31,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "1024x256",
       "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>1024x256</code>.\n</p>\n</dd>",
       "name": "size",
@@ -40,6 +42,7 @@
       "alias": [
         "colors"
       ],
+      "choices": [],
       "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
       "description": "<dd><p>Specify list of colors separated by space or by \u2019|\u2019 which will be used to\ndraw channels. Unrecognized or missing colors will be replaced\nby white color.\n</p>\n</dd>",
       "name": "colors",
@@ -50,6 +53,18 @@
       "alias": [
         "mode",
         "m"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "bars",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "trace",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set output mode. Can be <code>bars</code> or <code>trace</code>. Default is <code>bars</code>.\n</p></dd>",

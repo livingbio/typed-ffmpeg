@@ -18,6 +18,7 @@
       "alias": [
         "level_height"
       ],
+      "choices": [],
       "default": 200,
       "description": "<dd><p>Set height of level. Default value is <code>200</code>.\nAllowed range is [50, 2048].\n</p>\n</dd>",
       "name": "level_height",
@@ -28,6 +29,7 @@
       "alias": [
         "scale_height"
       ],
+      "choices": [],
       "default": 12,
       "description": "<dd><p>Set height of color scale. Default value is <code>12</code>.\nAllowed range is [0, 40].\n</p>\n</dd>",
       "name": "scale_height",
@@ -38,6 +40,23 @@
       "alias": [
         "display_mode",
         "d"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "overlay",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "parade",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "stack",
+          "value": 2
+        }
       ],
       "default": 2,
       "description": "<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>stack</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed below each other.\n</p>\n</dd>\n<dt>\u2018<samp>parade</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed side by side.\n</p>\n</dd>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dd><p>Presents information identical to that in the <code>parade</code>, except\nthat the graphs representing color components are superimposed directly\nover one another.\n</p></dd>\n</dl>\n<p>Default is <code>stack</code>.\n</p>\n</dd>",
@@ -50,6 +69,18 @@
         "levels_mode",
         "m"
       ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "linear",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "logarithmic",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.\nDefault is <code>linear</code>.\n</p>\n</dd>",
       "name": "levels_mode",
@@ -61,6 +92,7 @@
         "components",
         "c"
       ],
+      "choices": [],
       "default": 7,
       "description": "<dd><p>Set what color components to display.\nDefault is <code>7</code>.\n</p>\n</dd>",
       "name": "components",
@@ -72,6 +104,7 @@
         "fgopacity",
         "f"
       ],
+      "choices": [],
       "default": 0.7,
       "description": "<dd><p>Set foreground opacity. Default is <code>0.7</code>.\n</p>\n</dd>",
       "name": "fgopacity",
@@ -83,6 +116,7 @@
         "bgopacity",
         "b"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set background opacity. Default is <code>0.5</code>.\n</p>\n</dd>",
       "name": "bgopacity",
@@ -93,6 +127,58 @@
       "alias": [
         "colors_mode",
         "l"
+      ],
+      "choices": [
+        {
+          "help": "((void*)0)",
+          "name": "whiteonblack",
+          "value": 0
+        },
+        {
+          "help": "((void*)0)",
+          "name": "blackonwhite",
+          "value": 1
+        },
+        {
+          "help": "((void*)0)",
+          "name": "whiteongray",
+          "value": 2
+        },
+        {
+          "help": "((void*)0)",
+          "name": "blackongray",
+          "value": 3
+        },
+        {
+          "help": "((void*)0)",
+          "name": "coloronblack",
+          "value": 4
+        },
+        {
+          "help": "((void*)0)",
+          "name": "coloronwhite",
+          "value": 5
+        },
+        {
+          "help": "((void*)0)",
+          "name": "colorongray",
+          "value": 6
+        },
+        {
+          "help": "((void*)0)",
+          "name": "blackoncolor",
+          "value": 7
+        },
+        {
+          "help": "((void*)0)",
+          "name": "whiteoncolor",
+          "value": 8
+        },
+        {
+          "help": "((void*)0)",
+          "name": "grayoncolor",
+          "value": 9
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set colors mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>whiteonblack</samp>\u2019</dt>\n<dt>\u2018<samp>blackonwhite</samp>\u2019</dt>\n<dt>\u2018<samp>whiteongray</samp>\u2019</dt>\n<dt>\u2018<samp>blackongray</samp>\u2019</dt>\n<dt>\u2018<samp>coloronblack</samp>\u2019</dt>\n<dt>\u2018<samp>coloronwhite</samp>\u2019</dt>\n<dt>\u2018<samp>colorongray</samp>\u2019</dt>\n<dt>\u2018<samp>blackoncolor</samp>\u2019</dt>\n<dt>\u2018<samp>whiteoncolor</samp>\u2019</dt>\n<dt>\u2018<samp>grayoncolor</samp>\u2019</dt>\n</dl>\n<p>Default is <code>whiteonblack</code>.\n</p></dd>",

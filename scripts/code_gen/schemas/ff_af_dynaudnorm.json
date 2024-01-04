@@ -19,6 +19,7 @@
         "framelen",
         "f"
       ],
+      "choices": [],
       "default": 500,
       "description": null,
       "name": "framelen",
@@ -30,6 +31,7 @@
         "gausssize",
         "g"
       ],
+      "choices": [],
       "default": 31,
       "description": null,
       "name": "gausssize",
@@ -41,6 +43,7 @@
         "peak",
         "p"
       ],
+      "choices": [],
       "default": 0.95,
       "description": null,
       "name": "peak",
@@ -52,6 +55,7 @@
         "maxgain",
         "m"
       ],
+      "choices": [],
       "default": 10.0,
       "description": null,
       "name": "maxgain",
@@ -63,6 +67,7 @@
         "targetrms",
         "r"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "targetrms",
@@ -74,6 +79,7 @@
         "coupling",
         "n"
       ],
+      "choices": [],
       "default": 1,
       "description": null,
       "name": "coupling",
@@ -85,6 +91,7 @@
         "correctdc",
         "c"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "correctdc",
@@ -96,6 +103,7 @@
         "altboundary",
         "b"
       ],
+      "choices": [],
       "default": 0,
       "description": null,
       "name": "altboundary",
@@ -107,6 +115,7 @@
         "compress",
         "s"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "compress",
@@ -118,6 +127,7 @@
         "threshold",
         "t"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "threshold",
@@ -129,6 +139,7 @@
         "channels",
         "h"
       ],
+      "choices": [],
       "default": "all",
       "description": null,
       "name": "channels",
@@ -140,6 +151,7 @@
         "overlap",
         "o"
       ],
+      "choices": [],
       "default": 0.0,
       "description": null,
       "name": "overlap",
@@ -151,6 +163,7 @@
         "curve",
         "v"
       ],
+      "choices": [],
       "default": "((void*)0)",
       "description": null,
       "name": "curve",

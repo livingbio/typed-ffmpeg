@@ -19,6 +19,7 @@
         "n",
         "noise"
       ],
+      "choices": [],
       "default": 0.001,
       "description": "<dd><p>Set noise tolerance. Can be specified in dB (in case \"dB\" is appended to the\nspecified value) or as a difference ratio between 0 and 1. Default is -60dB, or\n0.001.\n</p>\n</dd>",
       "name": "n",
@@ -30,6 +31,7 @@
         "d",
         "duration"
       ],
+      "choices": [],
       "default": 2000000,
       "description": "<dd><p>Set freeze duration until notification (default is 2 seconds).\n</p></dd>",
       "name": "d",

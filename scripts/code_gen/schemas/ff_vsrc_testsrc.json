@@ -14,6 +14,7 @@
         "size",
         "s"
       ],
+      "choices": [],
       "default": "320x240",
       "description": "<dd><p>Specify the size of the sourced video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nThe default value is <code>320x240</code>.\n</p>\n<p>This option is not available with the <code>allrgb</code>, <code>allyuv</code>, and\n<code>haldclutsrc</code> filters.\n</p>\n</dd>",
       "name": "size",
@@ -25,6 +26,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Specify the frame rate of the sourced video, as the number of frames\ngenerated per second. It has to be a string in the format\n<var>frame_rate_num</var>/<var>frame_rate_den</var>, an integer number, a floating point\nnumber or a valid video frame rate abbreviation. The default value is\n\"25\".\n</p>\n</dd>",
       "name": "rate",
@@ -36,6 +38,7 @@
         "duration",
         "d"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p>\n<p>Since the frame rate is used as time base, all frames including the last one\nwill have their full duration. If the specified duration is not a multiple\nof the frame duration, it will be rounded up.\n</p>\n</dd>",
       "name": "duration",
@@ -46,6 +49,7 @@
       "alias": [
         "sar"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the sample aspect ratio of the sourced video.\n</p>\n</dd>",
       "name": "sar",
@@ -57,6 +61,7 @@
         "decimals",
         "n"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set the number of decimals to show in the timestamp, only available in the\n<code>testsrc</code> source.\n</p>\n<p>The displayed timestamp value will correspond to the original\ntimestamp value multiplied by the power of 10 of the specified\nvalue. Default value is 0.\n</p>\n</dd>",
       "name": "decimals",

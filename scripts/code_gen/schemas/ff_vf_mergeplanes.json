@@ -13,6 +13,7 @@
       "alias": [
         "mapping"
       ],
+      "choices": [],
       "default": -1,
       "description": "<dd><p>Set input to output plane mapping. Default is <code>0</code>.\n</p>\n<p>The mappings is specified as a bitmap. It should be specified as a\nhexadecimal number in the form 0xAa[Bb[Cc[Dd]]]. \u2019Aa\u2019 describes the\nmapping for the first plane of the output stream. \u2019A\u2019 sets the number of\nthe input stream to use (from 0 to 3), and \u2019a\u2019 the plane number of the\ncorresponding input to use (from 0 to 3). The rest of the mappings is\nsimilar, \u2019Bb\u2019 describes the mapping for the output stream second\nplane, \u2019Cc\u2019 describes the mapping for the output stream third plane and\n\u2019Dd\u2019 describes the mapping for the output stream fourth plane.\n</p>\n</dd>",
       "name": "mapping",
@@ -23,6 +24,7 @@
       "alias": [
         "format"
       ],
+      "choices": [],
       "default": "AV_PIX_FMT_YUVA444P",
       "description": "<dd><p>Set output pixel format. Default is <code>yuva444p</code>.\n</p>\n</dd>",
       "name": "format",
@@ -33,6 +35,7 @@
       "alias": [
         "map0s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set input to output stream mapping for output Nth plane. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "map0s",
@@ -43,6 +46,7 @@
       "alias": [
         "map0p"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set input to output plane mapping for output Nth plane. Default is <code>0</code>.\n</p></dd>",
       "name": "map0p",
@@ -53,6 +57,7 @@
       "alias": [
         "map1s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set input to output stream mapping for output Nth plane. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "map1s",
@@ -63,6 +68,7 @@
       "alias": [
         "map1p"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set input to output plane mapping for output Nth plane. Default is <code>0</code>.\n</p></dd>",
       "name": "map1p",
@@ -73,6 +79,7 @@
       "alias": [
         "map2s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set input to output stream mapping for output Nth plane. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "map2s",
@@ -83,6 +90,7 @@
       "alias": [
         "map2p"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set input to output plane mapping for output Nth plane. Default is <code>0</code>.\n</p></dd>",
       "name": "map2p",
@@ -93,6 +101,7 @@
       "alias": [
         "map3s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set input to output stream mapping for output Nth plane. Default is <code>0</code>.\n</p>\n</dd>",
       "name": "map3s",
@@ -103,6 +112,7 @@
       "alias": [
         "map3p"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set input to output plane mapping for output Nth plane. Default is <code>0</code>.\n</p></dd>",
       "name": "map3p",

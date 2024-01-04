@@ -19,6 +19,7 @@
         "rate",
         "r"
       ],
+      "choices": [],
       "default": "25",
       "description": "<dd><p>Set video rate.\n</p>\n</dd>",
       "name": "rate",
@@ -29,6 +30,7 @@
       "alias": [
         "b"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>Set border width, allowed range is [0, 5]. Default is 1.\n</p>\n</dd>",
       "name": "b",
@@ -39,6 +41,7 @@
       "alias": [
         "w"
       ],
+      "choices": [],
       "default": 400,
       "description": "<dd><p>Set channel width, allowed range is [80, 8192]. Default is 400.\n</p>\n</dd>",
       "name": "w",
@@ -49,6 +52,7 @@
       "alias": [
         "h"
       ],
+      "choices": [],
       "default": 20,
       "description": "<dd><p>Set channel height, allowed range is [1, 900]. Default is 20.\n</p>\n</dd>",
       "name": "h",
@@ -59,6 +63,7 @@
       "alias": [
         "f"
       ],
+      "choices": [],
       "default": 0.95,
       "description": "<dd><p>Set fade, allowed range is [0, 1]. Default is 0.95.\n</p>\n</dd>",
       "name": "f",
@@ -69,6 +74,7 @@
       "alias": [
         "c"
       ],
+      "choices": [],
       "default": "PEAK*255+floor((1-PEAK)*255)*256+0xff000000",
       "description": "<dd><p>Set volume color expression.\n</p>\n<p>The expression can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>VOLUME</samp></dt>\n<dd><p>Current max volume of channel in dB.\n</p>\n</dd>\n<dt><samp>PEAK</samp></dt>\n<dd><p>Current peak.\n</p>\n</dd>\n<dt><samp>CHANNEL</samp></dt>\n<dd><p>Current channel number, starting from 0.\n</p></dd>\n</dl>\n</dd>",
       "name": "c",
@@ -79,6 +85,7 @@
       "alias": [
         "t"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>If set, displays channel names. Default is enabled.\n</p>\n</dd>",
       "name": "t",
@@ -89,6 +96,7 @@
       "alias": [
         "v"
       ],
+      "choices": [],
       "default": 1,
       "description": "<dd><p>If set, displays volume values. Default is enabled.\n</p>\n</dd>",
       "name": "v",
@@ -99,6 +107,7 @@
       "alias": [
         "dm"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>In second.\nIf set to &gt; 0., display a line for the max level\nin the previous seconds.\ndefault is disabled: <code>0.</code>\n</p>\n</dd>",
       "name": "dm",
@@ -109,6 +118,7 @@
       "alias": [
         "dmc"
       ],
+      "choices": [],
       "default": "orange",
       "description": "<dd><p>The color of the max line. Use when <code>dm</code> option is set to &gt; 0.\ndefault is: <code>orange</code>\n</p></dd>",
       "name": "dmc",
@@ -118,6 +128,18 @@
     {
       "alias": [
         "o"
+      ],
+      "choices": [
+        {
+          "help": "horizontal",
+          "name": "h",
+          "value": 0
+        },
+        {
+          "help": "vertical",
+          "name": "v",
+          "value": 1
+        }
       ],
       "default": 0,
       "description": "<dd><p>Set orientation, can be horizontal: <code>h</code> or vertical: <code>v</code>,\ndefault is <code>h</code>.\n</p>\n</dd>",
@@ -129,6 +151,7 @@
       "alias": [
         "s"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>Set step size, allowed range is [0, 5]. Default is 0, which means\nstep is disabled.\n</p>\n</dd>",
       "name": "s",
@@ -139,6 +162,7 @@
       "alias": [
         "p"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set background opacity, allowed range is [0, 1]. Default is 0.\n</p>\n</dd>",
       "name": "p",
@@ -149,6 +173,18 @@
       "alias": [
         "m"
       ],
+      "choices": [
+        {
+          "help": "peak",
+          "name": "p",
+          "value": 0
+        },
+        {
+          "help": "rms",
+          "name": "r",
+          "value": 1
+        }
+      ],
       "default": 0,
       "description": "<dd><p>Set metering mode, can be peak: <code>p</code> or rms: <code>r</code>,\ndefault is <code>p</code>.\n</p>\n</dd>",
       "name": "m",
@@ -158,6 +194,18 @@
     {
       "alias": [
         "ds"
+      ],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "lin",
+          "value": "LINEAR"
+        },
+        {
+          "help": "log",
+          "name": "log",
+          "value": "LOG"
+        }
       ],
       "default": "LINEAR",
       "description": "<dd><p>Set display scale, can be linear: <code>lin</code> or log: <code>log</code>,\ndefault is <code>lin</code>.\n</p>\n</dd>",

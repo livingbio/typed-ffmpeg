@@ -22,6 +22,7 @@
       "alias": [
         "planes"
       ],
+      "choices": [],
       "default": "0xF",
       "description": "<dd><p>Set which planes to process. Default is <code>15</code>, which is all available planes.\n</p></dd>",
       "name": "planes",

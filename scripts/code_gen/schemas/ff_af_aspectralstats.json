@@ -18,6 +18,7 @@
       "alias": [
         "win_size"
       ],
+      "choices": [],
       "default": 2048,
       "description": "<dd><p>Set the window length in samples. Default value is 2048.\nAllowed range is from 32 to 65536.\n</p>\n</dd>",
       "name": "win_size",
@@ -27,6 +28,118 @@
     {
       "alias": [
         "win_func"
+      ],
+      "choices": [
+        {
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "WFUNC_RECT"
+        },
+        {
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "WFUNC_BARTLETT"
+        },
+        {
+          "help": "Hann",
+          "name": "hann",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "WFUNC_HANNING"
+        },
+        {
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "WFUNC_HAMMING"
+        },
+        {
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "WFUNC_BLACKMAN"
+        },
+        {
+          "help": "Welch",
+          "name": "welch",
+          "value": "WFUNC_WELCH"
+        },
+        {
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "WFUNC_FLATTOP"
+        },
+        {
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "WFUNC_BHARRIS"
+        },
+        {
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "WFUNC_BNUTTALL"
+        },
+        {
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "WFUNC_BHANN"
+        },
+        {
+          "help": "Sine",
+          "name": "sine",
+          "value": "WFUNC_SINE"
+        },
+        {
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "WFUNC_NUTTALL"
+        },
+        {
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "WFUNC_LANCZOS"
+        },
+        {
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "WFUNC_GAUSS"
+        },
+        {
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "WFUNC_TUKEY"
+        },
+        {
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "WFUNC_DOLPH"
+        },
+        {
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "WFUNC_CAUCHY"
+        },
+        {
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "WFUNC_PARZEN"
+        },
+        {
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "WFUNC_POISSON"
+        },
+        {
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "WFUNC_BOHMAN"
+        },
+        {
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "WFUNC_KAISER"
+        }
       ],
       "default": "WFUNC_HANNING",
       "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
@@ -38,6 +151,7 @@
       "alias": [
         "overlap"
       ],
+      "choices": [],
       "default": 0.5,
       "description": "<dd><p>Set window overlap. Allowed range is from <code>0</code>\nto <code>1</code>. Default value is <code>0.5</code>.\n</p>\n</dd>",
       "name": "overlap",
@@ -47,6 +161,83 @@
     {
       "alias": [
         "measure"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "none",
+          "value": 0
+        },
+        {
+          "help": "",
+          "name": "all",
+          "value": "(2147483647 *2U +1U)"
+        },
+        {
+          "help": "",
+          "name": "mean",
+          "value": "(1 << 0)"
+        },
+        {
+          "help": "",
+          "name": "variance",
+          "value": "(1 << 1)"
+        },
+        {
+          "help": "",
+          "name": "centroid",
+          "value": "(1 << 2)"
+        },
+        {
+          "help": "",
+          "name": "spread",
+          "value": "(1 << 3)"
+        },
+        {
+          "help": "",
+          "name": "skewness",
+          "value": "(1 << 4)"
+        },
+        {
+          "help": "",
+          "name": "kurtosis",
+          "value": "(1 << 5)"
+        },
+        {
+          "help": "",
+          "name": "entropy",
+          "value": "(1 << 6)"
+        },
+        {
+          "help": "",
+          "name": "flatness",
+          "value": "(1 << 7)"
+        },
+        {
+          "help": "",
+          "name": "crest",
+          "value": "(1 << 8)"
+        },
+        {
+          "help": "",
+          "name": "flux",
+          "value": "(1 << 9)"
+        },
+        {
+          "help": "",
+          "name": "slope",
+          "value": "(1 << 10)"
+        },
+        {
+          "help": "",
+          "name": "decrease",
+          "value": "(1 << 11)"
+        },
+        {
+          "help": "",
+          "name": "rolloff",
+          "value": "(1 << 12)"
+        }
       ],
       "default": "(2147483647 *2U +1U)",
       "description": "<dd><p>Select the parameters which are measured. The metadata keys can\nbe used as flags, default is <samp>all</samp> which measures everything.\n<samp>none</samp> disables all measurement.\n</p></dd>",

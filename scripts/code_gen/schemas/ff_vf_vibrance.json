@@ -18,6 +18,7 @@
       "alias": [
         "intensity"
       ],
+      "choices": [],
       "default": 0.0,
       "description": "<dd><p>Set strength of boost if positive value or strength of alter if negative value.\nDefault is 0. Allowed range is from -2 to 2.\n</p>\n</dd>",
       "name": "intensity",
@@ -28,6 +29,7 @@
       "alias": [
         "rbal"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the red balance. Default is 1. Allowed range is from -10 to 10.\n</p>\n</dd>",
       "name": "rbal",
@@ -38,6 +40,7 @@
       "alias": [
         "gbal"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the green balance. Default is 1. Allowed range is from -10 to 10.\n</p>\n</dd>",
       "name": "gbal",
@@ -48,6 +51,7 @@
       "alias": [
         "bbal"
       ],
+      "choices": [],
       "default": 1.0,
       "description": "<dd><p>Set the blue balance. Default is 1. Allowed range is from -10 to 10.\n</p>\n</dd>",
       "name": "bbal",
@@ -58,6 +62,7 @@
       "alias": [
         "rlum"
       ],
+      "choices": [],
       "default": 0.072186,
       "description": "<dd><p>Set the red luma coefficient.\n</p>\n</dd>",
       "name": "rlum",
@@ -68,6 +73,7 @@
       "alias": [
         "glum"
       ],
+      "choices": [],
       "default": 0.715158,
       "description": "<dd><p>Set the green luma coefficient.\n</p>\n</dd>",
       "name": "glum",
@@ -78,6 +84,7 @@
       "alias": [
         "blum"
       ],
+      "choices": [],
       "default": 0.212656,
       "description": "<dd><p>Set the blue luma coefficient.\n</p>\n</dd>",
       "name": "blum",
@@ -88,6 +95,7 @@
       "alias": [
         "alternate"
       ],
+      "choices": [],
       "default": 0,
       "description": "<dd><p>If <code>intensity</code> is negative and this is set to 1, colors will change,\notherwise colors will be less saturated, more towards gray.\n</p></dd>",
       "name": "alternate",
