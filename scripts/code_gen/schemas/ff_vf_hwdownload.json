@@ -1,5 +1,5 @@
 {
-  "description": "### 11.121 hwdownload\n\nDownload hardware frames to system memory.\n\n\nThe input must be in hardware frames, and the output a non-hardware format.\nNot all formats will be supported on the output - it may be necessary to insert\nan additional format filter immediately following in the graph to get\nthe output in a supported format.\n\n\n",
+  "description": "### 11.121 hwdownload\n\nDownload hardware frames to system memory.\n\nThe input must be in hardware frames, and the output a non-hardware format.\nNot all formats will be supported on the output - it may be necessary to\ninsert an additional format filter immediately following in the graph to get\nthe output in a supported format.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

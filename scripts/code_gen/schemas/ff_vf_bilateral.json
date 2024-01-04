@@ -1,5 +1,5 @@
 {
-  "description": "### 11.10 bilateral\n\nApply bilateral filter, spatial smoothing while preserving edges.\n\n\nThe filter accepts the following options:\n\n\n- **`sigmaS`**\n  - Set sigma of gaussian function to calculate spatial weight.\nAllowed range is 0 to 512. Default is 0.1.\n- **`sigmaR`**\n  - Set sigma of gaussian function to calculate range weight.\nAllowed range is 0 to 1. Default is 0.1.\n- **`planes`**\n  - Set planes to filter. Default is first only.\nSet sigma of gaussian function to calculate spatial weight.\nAllowed range is 0 to 512. Default is 0.1.\n\n\nSet sigma of gaussian function to calculate range weight.\nAllowed range is 0 to 1. Default is 0.1.\n\n\nSet planes to filter. Default is first only.\n\n\n",
+  "description": "### 11.10 bilateral\n\nApply bilateral filter, spatial smoothing while preserving edges.\n\nThe filter accepts the following options:\n\n**sigmaS**\n\n    Set sigma of gaussian function to calculate spatial weight. Allowed range is 0 to 512. Default is 0.1. \n\n**sigmaR**\n\n    Set sigma of gaussian function to calculate range weight. Allowed range is 0 to 1. Default is 0.1. \n\n**planes**\n\n    Set planes to filter. Default is first only. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

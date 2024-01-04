@@ -1,5 +1,5 @@
 {
-  "description": "### 11.173 negate\n\nNegate (invert) the input video.\n\n\nIt accepts the following option:\n\n\n- **`components`**\n  - Set components to negate.\nAvailable values for components are:\n\u2018\ny\n\u2019\n\u2018\nu\n\u2019\n\u2018\nv\n\u2019\n\u2018\na\n\u2019\n\u2018\nr\n\u2019\n\u2018\ng\n\u2019\n\u2018\nb\n\u2019\n- **`negate_alpha`**\n  - With value 1, it negates the alpha component, if present. Default value is 0.\nSet components to negate.\n\n\nAvailable values for components are:\n\n\n- **`\u2018y\u2019`**\n- **`\u2018u\u2019`**\n- **`\u2018v\u2019`**\n- **`\u2018a\u2019`**\n- **`\u2018r\u2019`**\n- **`\u2018g\u2019`**\n- **`\u2018b\u2019`**\nWith value 1, it negates the alpha component, if present. Default value is 0.\n\n\n",
+  "description": "### 11.173 negate\n\nNegate (invert) the input video.\n\nIt accepts the following option:\n\n**components**\n\n    Set components to negate. Available values for components are: \u2018y\u2019 \u2018u\u2019 \u2018v\u2019 \u2018a\u2019 \u2018r\u2019 \u2018g\u2019 \u2018b\u2019 \n\n**negate_alpha**\n\n    With value 1, it negates the alpha component, if present. Default value is 0. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

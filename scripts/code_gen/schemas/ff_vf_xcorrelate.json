@@ -1,5 +1,5 @@
 {
-  "description": "### 11.287 xcorrelate\n\nApply normalized cross-correlation between first and second input video stream.\n\n\nSecond input video stream dimensions must be lower than first input video stream.\n\n\nThe filter accepts the following options:\n\n\n- **`planes`**\n  - Set which planes to process.\n- **`secondary`**\n  - Set which secondary video frames will be processed from second input video stream,\ncan be\nfirst\nor\nall\n. Default is\nall\n.\nSet which planes to process.\n\n\nSet which secondary video frames will be processed from second input video stream,\ncan be first or all. Default is all.\n\n\nThe xcorrelate filter also supports the framesync options.\n\n\n",
+  "description": "### 11.287 xcorrelate\n\nApply normalized cross-correlation between first and second input video\nstream.\n\nSecond input video stream dimensions must be lower than first input video\nstream.\n\nThe filter accepts the following options:\n\n**planes**\n\n    Set which planes to process. \n\n**secondary**\n\n    Set which secondary video frames will be processed from second input video stream, can be first or all. Default is all. \n\nThe `xcorrelate` filter also supports the framesync options.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

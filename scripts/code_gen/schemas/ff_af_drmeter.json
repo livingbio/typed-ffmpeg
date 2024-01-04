@@ -1,5 +1,5 @@
 {
-  "description": "### 8.84 drmeter\n\nMeasure audio dynamic range.\n\n\nDR values of 14 and higher is found in very dynamic material. DR of 8 to 13\nis found in transition material. And anything less that 8 have very poor dynamics\nand is very compressed.\n\n\nThe filter accepts the following options:\n\n\n- **`length`**\n  - Set window length in seconds used to split audio into segments of equal length.\nDefault is 3 seconds.\nSet window length in seconds used to split audio into segments of equal length.\nDefault is 3 seconds.\n\n\n",
+  "description": "### 8.84 drmeter\n\nMeasure audio dynamic range.\n\nDR values of 14 and higher is found in very dynamic material. DR of 8 to 13 is\nfound in transition material. And anything less that 8 have very poor dynamics\nand is very compressed.\n\nThe filter accepts the following options:\n\n**length**\n\n    Set window length in seconds used to split audio into segments of equal length. Default is 3 seconds. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

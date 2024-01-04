@@ -1,5 +1,5 @@
 {
-  "description": "### 11.276 vflip\n\nFlip the input video vertically.\n\n\nFor example, to vertically flip a video with ffmpeg:\n\n\n",
+  "description": "### 11.276 vflip\n\nFlip the input video vertically.\n\nFor example, to vertically flip a video with `ffmpeg`:\n\n    \n    \n    ffmpeg -i in.avi -vf \"vflip\" out.avi\n    \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

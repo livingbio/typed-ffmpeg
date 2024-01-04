@@ -1,5 +1,5 @@
 {
-  "description": "### 8.17 adynamicsmooth\n\nApply dynamic smoothing to input audio stream.\n\n\nA description of the accepted options follows.\n\n\n- **`sensitivity`**\n  - Set an amount of sensitivity to frequency fluctations. Default is 2.\nAllowed range is from 0 to 1e+06.\n- **`basefreq`**\n  - Set a base frequency for smoothing. Default value is 22050.\nAllowed range is from 2 to 1e+06.\nSet an amount of sensitivity to frequency fluctations. Default is 2.\nAllowed range is from 0 to 1e+06.\n\n\nSet a base frequency for smoothing. Default value is 22050.\nAllowed range is from 2 to 1e+06.\n\n\n",
+  "description": "### 8.17 adynamicsmooth\n\nApply dynamic smoothing to input audio stream.\n\nA description of the accepted options follows.\n\n**sensitivity**\n\n    Set an amount of sensitivity to frequency fluctations. Default is 2. Allowed range is from 0 to 1e+06. \n\n**basefreq**\n\n    Set a base frequency for smoothing. Default value is 22050. Allowed range is from 2 to 1e+06. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

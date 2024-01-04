@@ -1,5 +1,5 @@
 {
-  "description": "### 11.132 iccdetect\n\nDetect the colorspace  from an embedded ICC profile (if present), and update\nthe frame\u2019s tags accordingly.\n\n\nThis filter accepts the following options:\n\n\n- **`force`**\n  - If true, the frame\u2019s existing colorspace tags will always be overridden by\nvalues detected from an ICC profile. Otherwise, they will only be assigned if\nthey contain\nunknown\n. Enabled by default.\nIf true, the frame\u2019s existing colorspace tags will always be overridden by\nvalues detected from an ICC profile. Otherwise, they will only be assigned if\nthey contain unknown. Enabled by default.\n\n\n",
+  "description": "### 11.132 iccdetect\n\nDetect the colorspace from an embedded ICC profile (if present), and update\nthe frame\u2019s tags accordingly.\n\nThis filter accepts the following options:\n\n**force**\n\n    If true, the frame\u2019s existing colorspace tags will always be overridden by values detected from an ICC profile. Otherwise, they will only be assigned if they contain unknown. Enabled by default. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

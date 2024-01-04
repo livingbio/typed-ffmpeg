@@ -1,5 +1,5 @@
 {
-  "description": "### 8.62 asupercut\n\nCut super frequencies.\n\n\nThe filter accepts the following options:\n\n\n- **`cutoff`**\n  - Set cutoff frequency in Hertz. Allowed range is 20000 to 192000.\nDefault value is 20000.\n- **`order`**\n  - Set filter order. Available values are from 3 to 20.\nDefault value is 10.\n- **`level`**\n  - Set input gain level. Allowed range is from 0 to 1. Default value is 1.\nSet cutoff frequency in Hertz. Allowed range is 20000 to 192000.\nDefault value is 20000.\n\n\nSet filter order. Available values are from 3 to 20.\nDefault value is 10.\n\n\nSet input gain level. Allowed range is from 0 to 1. Default value is 1.\n\n\n",
+  "description": "### 8.62 asupercut\n\nCut super frequencies.\n\nThe filter accepts the following options:\n\n**cutoff**\n\n    Set cutoff frequency in Hertz. Allowed range is 20000 to 192000. Default value is 20000. \n\n**order**\n\n    Set filter order. Available values are from 3 to 20. Default value is 10. \n\n**level**\n\n    Set input gain level. Allowed range is from 0 to 1. Default value is 1. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

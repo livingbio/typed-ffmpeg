@@ -1,5 +1,5 @@
 {
-  "description": "### 11.144 libplacebo\n\nFlexible GPU-accelerated processing filter based on libplacebo\n(https://code.videolan.org/videolan/libplacebo).\n\n\n",
+  "description": "### 11.144 libplacebo\n\nFlexible GPU-accelerated processing filter based on libplacebo\n(<https://code.videolan.org/videolan/libplacebo>).\n\n",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] * inputs",
   "formula_output_typings": null,

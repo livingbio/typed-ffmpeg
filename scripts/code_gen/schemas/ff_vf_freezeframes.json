@@ -1,5 +1,5 @@
 {
-  "description": "### 11.106 freezeframes\n\nFreeze video frames.\n\n\nThis filter freezes video frames using frame from 2nd input.\n\n\nThe filter accepts the following options:\n\n\n- **`first`**\n  - Set number of first frame from which to start freeze.\n- **`last`**\n  - Set number of last frame from which to end freeze.\n- **`replace`**\n  - Set number of frame from 2nd input which will be used instead of replaced frames.\nSet number of first frame from which to start freeze.\n\n\nSet number of last frame from which to end freeze.\n\n\nSet number of frame from 2nd input which will be used instead of replaced frames.\n\n\n",
+  "description": "### 11.106 freezeframes\n\nFreeze video frames.\n\nThis filter freezes video frames using frame from 2nd input.\n\nThe filter accepts the following options:\n\n**first**\n\n    Set number of first frame from which to start freeze. \n\n**last**\n\n    Set number of last frame from which to end freeze. \n\n**replace**\n\n    Set number of frame from 2nd input which will be used instead of replaced frames. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

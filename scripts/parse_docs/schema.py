@@ -4,38 +4,10 @@ from functools import cached_property
 import pydantic
 from bs4 import BeautifulSoup
 
+from .helpers import convert_html_to_markdown
+
 sections_path = pathlib.Path(__file__).parent / "sections"
 sections_path.mkdir(exist_ok=True)
-
-
-def html_to_markdown_dl(html_content):
-    soup = BeautifulSoup(html_content, "html.parser")
-
-    def process_dl(dl_element):
-        markdown = ""
-        for child in dl_element.children:
-            if child.name == "dt":
-                term = child.get_text(strip=True)
-                markdown += f"- **`{term}`**\n"
-            elif child.name == "dd":
-                description = child.get_text(strip=True, separator="\n")
-                markdown += f"  - {description}\n"
-            elif child.name == "dl":
-                markdown += process_dl(child)
-        return markdown
-
-    markdown_content = ""
-    for element in soup.find_all(["h3", "p", "dl"]):
-        if element.name == "h3":
-            markdown_content += f"### {element.get_text()}\n\n"
-        elif element.name == "p":
-            markdown_content += f"{element.get_text()}\n\n"
-        elif element.name == "dl":
-            markdown_content += process_dl(element)
-        else:
-            raise ValueError(f"Unknown element: {element.name}")
-
-    return markdown_content
 
 
 def parse_paremeters(soup: BeautifulSoup) -> dict[str, str]:
@@ -72,7 +44,7 @@ class FilterDocument(pydantic.BaseModel):
 
     @cached_property
     def description(self) -> str:
-        return html_to_markdown_dl(self.body)
+        return convert_html_to_markdown(self.body)
 
     @cached_property
     def parameter_descs(self) -> dict[str, str]:

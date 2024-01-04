@@ -1,5 +1,5 @@
 {
-  "description": "### 8.102 replaygain\n\nReplayGain scanner filter. This filter takes an audio stream as an input and\noutputs it unchanged.\nAt end of filtering it displays track_gain and track_peak.\n\n\nThe filter accepts the following exported read-only options:\n\n\n- **`track_gain`**\n  - Exported track gain in dB at end of stream.\n- **`track_peak`**\n  - Exported track peak at end of stream.\nExported track gain in dB at end of stream.\n\n\nExported track peak at end of stream.\n\n\n",
+  "description": "### 8.102 replaygain\n\nReplayGain scanner filter. This filter takes an audio stream as an input and\noutputs it unchanged. At end of filtering it displays `track_gain` and\n`track_peak`.\n\nThe filter accepts the following exported read-only options:\n\n**track_gain**\n\n    Exported track gain in dB at end of stream. \n\n**track_peak**\n\n    Exported track peak at end of stream. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

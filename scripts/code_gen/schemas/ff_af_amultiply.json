@@ -1,5 +1,5 @@
 {
-  "description": "### 8.36 amultiply\n\nMultiply first audio stream with second audio stream and store result\nin output audio stream. Multiplication is done by multiplying each\nsample from first stream with sample at same position from second stream.\n\n\nWith this element-wise multiplication one can create amplitude fades and\namplitude modulations.\n\n\n",
+  "description": "### 8.36 amultiply\n\nMultiply first audio stream with second audio stream and store result in\noutput audio stream. Multiplication is done by multiplying each sample from\nfirst stream with sample at same position from second stream.\n\nWith this element-wise multiplication one can create amplitude fades and\namplitude modulations.\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

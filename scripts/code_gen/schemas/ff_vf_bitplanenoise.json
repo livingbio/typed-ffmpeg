@@ -1,5 +1,5 @@
 {
-  "description": "### 11.12 bitplanenoise\n\nShow and measure bit plane noise.\n\n\nThe filter accepts the following options:\n\n\n- **`bitplane`**\n  - Set which plane to analyze. Default is\n1\n.\n- **`filter`**\n  - Filter out noisy pixels from\nbitplane\nset above.\nDefault is disabled.\nSet which plane to analyze. Default is 1.\n\n\nFilter out noisy pixels from bitplane set above.\nDefault is disabled.\n\n\n",
+  "description": "### 11.12 bitplanenoise\n\nShow and measure bit plane noise.\n\nThe filter accepts the following options:\n\n**bitplane**\n\n    Set which plane to analyze. Default is 1. \n\n**filter**\n\n    Filter out noisy pixels from bitplane set above. Default is disabled. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

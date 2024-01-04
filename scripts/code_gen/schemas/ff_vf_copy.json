@@ -1,5 +1,5 @@
 {
-  "description": "### 11.46 copy\n\nCopy the input video source unchanged to the output. This is mainly useful for\ntesting purposes.\n\n\n",
+  "description": "### 11.46 copy\n\nCopy the input video source unchanged to the output. This is mainly useful for\ntesting purposes.\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

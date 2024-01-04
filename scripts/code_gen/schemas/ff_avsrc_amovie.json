@@ -1,5 +1,5 @@
 {
-  "description": "### 19.1 amovie\n\nThis is the same as movie source, except it selects an audio\nstream by default.\n\n\n",
+  "description": "### 19.1 amovie\n\nThis is the same as movie source, except it selects an audio stream by\ndefault.\n\n",
   "filter_type": "avsrc",
   "formula_input_typings": "[StreamType.audio] * len(streams.split('+'))",
   "formula_output_typings": "[StreamType.audio] * len(streams.split('+'))",

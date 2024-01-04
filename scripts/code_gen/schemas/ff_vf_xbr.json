@@ -1,5 +1,5 @@
 {
-  "description": "### 11.286 xbr\n\nApply the xBR high-quality magnification filter which is designed for pixel\nart. It follows a set of edge-detection rules, see\nhttps://forums.libretro.com/t/xbr-algorithm-tutorial/123.\n\n\nIt accepts the following option:\n\n\n- **`n`**\n  - Set the scaling dimension:\n2\nfor\n2xBR\n,\n3\nfor\n3xBR\nand\n4\nfor\n4xBR\n.\nDefault is\n3\n.\nSet the scaling dimension: 2 for 2xBR, 3 for\n3xBR and 4 for 4xBR.\nDefault is 3.\n\n\n",
+  "description": "### 11.286 xbr\n\nApply the xBR high-quality magnification filter which is designed for pixel\nart. It follows a set of edge-detection rules, see\n<https://forums.libretro.com/t/xbr-algorithm-tutorial/123>.\n\nIt accepts the following option:\n\n**n**\n\n    Set the scaling dimension: 2 for 2xBR, 3 for 3xBR and 4 for 4xBR. Default is 3. \n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

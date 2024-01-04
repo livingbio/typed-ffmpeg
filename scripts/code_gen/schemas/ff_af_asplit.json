@@ -1,5 +1,5 @@
 {
-  "description": "### 18.33 split, asplit\n\nSplit input into several identical outputs.\n\n\nasplit works with audio input, split with video.\n\n\nThe filter accepts a single parameter which specifies the number of outputs. If\nunspecified, it defaults to 2.\n\n\n",
+  "description": "### 18.33 split, asplit\n\nSplit input into several identical outputs.\n\n`asplit` works with audio input, `split` with video.\n\nThe filter accepts a single parameter which specifies the number of outputs.\nIf unspecified, it defaults to 2.\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": "[StreamType.audio] * outputs",
