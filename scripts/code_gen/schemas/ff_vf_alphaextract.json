@@ -1,5 +1,5 @@
 {
-  "description": "11.2 alphaextract\nExtract the alpha component from the input as a grayscale video. This\nis especially useful with the alphamerge filter.",
+  "description": "### 11.2 alphaextract\n\nExtract the alpha component from the input as a grayscale video. This\nis especially useful with the alphamerge filter.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

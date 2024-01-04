@@ -1,5 +1,5 @@
 {
-  "description": "11.78 drawtext\nDraw a text string or text from a specified file on top of a video, using the\nlibfreetype library.\n\nTo enable compilation of this filter, you need to configure FFmpeg with\n--enable-libfreetype and --enable-libharfbuzz.\nTo enable default font fallback and the font option you need to\nconfigure FFmpeg with --enable-libfontconfig.\nTo enable the text_shaping option, you need to configure FFmpeg with\n--enable-libfribidi.",
+  "description": "### 11.78 drawtext\n\nDraw a text string or text from a specified file on top of a video, using the\nlibfreetype library.\n\n\nTo enable compilation of this filter, you need to configure FFmpeg with\n--enable-libfreetype and --enable-libharfbuzz.\nTo enable default font fallback and the font option you need to\nconfigure FFmpeg with --enable-libfontconfig.\nTo enable the text_shaping option, you need to configure FFmpeg with\n--enable-libfribidi.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

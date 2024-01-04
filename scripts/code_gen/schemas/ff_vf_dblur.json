@@ -1,5 +1,5 @@
 {
-  "description": "11.55 dblur\nApply Directional blur filter.\n\nThe filter accepts the following options:",
+  "description": "### 11.55 dblur\n\nApply Directional blur filter.\n\n\nThe filter accepts the following options:\n\n\n- **`angle`**\n  - Set angle of directional blur. Default is\n45\n.\n- **`radius`**\n  - Set radius of directional blur. Default is\n5\n.\n- **`planes`**\n  - Set which planes to filter. By default all planes are filtered.\nSet angle of directional blur. Default is 45.\n\n\nSet radius of directional blur. Default is 5.\n\n\nSet which planes to filter. By default all planes are filtered.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

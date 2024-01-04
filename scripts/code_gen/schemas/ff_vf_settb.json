@@ -1,5 +1,5 @@
 {
-  "description": "18.21 settb, asettb\nSet the timebase to use for the output frames timestamps.\nIt is mainly useful for testing timebase configuration.\n\nIt accepts the following parameters:\n\n\nThe value for tb is an arithmetic expression representing a\nrational. The expression can contain the constants \"AVTB\" (the default\ntimebase), \"intb\" (the input timebase) and \"sr\" (the sample rate,\naudio only). Default value is \"intb\".",
+  "description": "### 18.21 settb, asettb\n\nSet the timebase to use for the output frames timestamps.\nIt is mainly useful for testing timebase configuration.\n\n\nIt accepts the following parameters:\n\n\n- **`expr, tb`**\n  - The expression which is evaluated into the output timebase.\nThe expression which is evaluated into the output timebase.\n\n\nThe value for tb is an arithmetic expression representing a\nrational. The expression can contain the constants \"AVTB\" (the default\ntimebase), \"intb\" (the input timebase) and \"sr\" (the sample rate,\naudio only). Default value is \"intb\".\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

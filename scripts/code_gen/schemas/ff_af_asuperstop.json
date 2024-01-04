@@ -1,5 +1,5 @@
 {
-  "description": "8.64 asuperstop\nApply high order Butterworth band-stop filter.\n\nThe filter accepts the following options:",
+  "description": "### 8.64 asuperstop\n\nApply high order Butterworth band-stop filter.\n\n\nThe filter accepts the following options:\n\n\n- **`centerf`**\n  - Set center frequency in Hertz. Allowed range is 2 to 999999.\nDefault value is 1000.\n- **`order`**\n  - Set filter order. Available values are from 4 to 20.\nDefault value is 4.\n- **`qfactor`**\n  - Set Q-factor. Allowed range is from 0.01 to 100. Default value is 1.\n- **`level`**\n  - Set input gain level. Allowed range is from 0 to 2. Default value is 1.\nSet center frequency in Hertz. Allowed range is 2 to 999999.\nDefault value is 1000.\n\n\nSet filter order. Available values are from 4 to 20.\nDefault value is 4.\n\n\nSet Q-factor. Allowed range is from 0.01 to 100. Default value is 1.\n\n\nSet input gain level. Allowed range is from 0 to 2. Default value is 1.\n\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

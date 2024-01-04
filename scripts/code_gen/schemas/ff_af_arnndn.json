@@ -1,5 +1,5 @@
 {
-  "description": "8.50 arnndn\nReduce noise from speech using Recurrent Neural Networks.\n\nThis filter accepts the following options:",
+  "description": "### 8.50 arnndn\n\nReduce noise from speech using Recurrent Neural Networks.\n\n\nThis filter accepts the following options:\n\n\n- **`model, m`**\n  - Set train model file to load. This option is always required.\n- **`mix`**\n  - Set how much to mix filtered samples into final output.\nAllowed range is from -1 to 1. Default value is 1.\nNegative values are special, they set how much to keep filtered noise\nin the final filter output. Set this option to -1 to hear actual\nnoise removed from input signal.\nSet train model file to load. This option is always required.\n\n\nSet how much to mix filtered samples into final output.\nAllowed range is from -1 to 1. Default value is 1.\nNegative values are special, they set how much to keep filtered noise\nin the final filter output. Set this option to -1 to hear actual\nnoise removed from input signal.\n\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

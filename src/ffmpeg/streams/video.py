@@ -31,13 +31,120 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.1 addroi
+        ### 11.1 addroi
+
         Mark a region of interest in a video frame.
+
 
         The frame data is passed through unchanged, but metadata is attached
         to the frame indicating regions of interest which can affect the
         behaviour of later encoding.  Multiple regions can be marked by
         applying the filter multiple times.
+
+
+        - **`x`**
+          - Region distance in pixels from the left edge of the frame.
+        - **`y`**
+          - Region distance in pixels from the top edge of the frame.
+        - **`w`**
+          - Region width in pixels.
+        - **`h`**
+          - Region height in pixels.
+        The parameters
+        x
+        ,
+        y
+        ,
+        w
+        and
+        h
+        are expressions,
+        and may contain the following variables:
+        iw
+        Width of the input frame.
+        ih
+        Height of the input frame.
+        - **`qoffset`**
+          - Quantisation offset to apply within the region.
+        This must be a real value in the range -1 to +1.  A value of zero
+        indicates no quality change.  A negative value asks for better quality
+        (less quantisation), while a positive value asks for worse quality
+        (greater quantisation).
+        The range is calibrated so that the extreme values indicate the
+        largest possible offset - if the rest of the frame is encoded with the
+        worst possible quality, an offset of -1 indicates that this region
+        should be encoded with the best possible quality anyway.  Intermediate
+        values are then interpolated in some codec-dependent way.
+        For example, in 10-bit H.264 the quantisation parameter varies between
+        -12 and 51.  A typical qoffset value of -1/10 therefore indicates that
+        this region should be encoded with a QP around one-tenth of the full
+        range better than the rest of the frame.  So, if most of the frame
+        were to be encoded with a QP of around 30, this region would get a QP
+        of around 24 (an offset of approximately -1/10 * (51 - -12) = -6.3).
+        An extreme value of -1 would indicate that this region should be
+        encoded with the best possible quality regardless of the treatment of
+        the rest of the frame - that is, should be encoded at a QP of -12.
+        - **`clear`**
+          - If set to true, remove any existing regions of interest marked on the
+        frame before adding the new one.
+        Region distance in pixels from the left edge of the frame.
+
+
+        Region distance in pixels from the top edge of the frame.
+
+
+        Region width in pixels.
+
+
+        Region height in pixels.
+
+
+        The parameters x, y, w and h are expressions,
+        and may contain the following variables:
+
+
+        - **`iw`**
+          - Width of the input frame.
+        - **`ih`**
+          - Height of the input frame.
+        Width of the input frame.
+
+
+        Height of the input frame.
+
+
+        Quantisation offset to apply within the region.
+
+
+        This must be a real value in the range -1 to +1.  A value of zero
+        indicates no quality change.  A negative value asks for better quality
+        (less quantisation), while a positive value asks for worse quality
+        (greater quantisation).
+
+
+        The range is calibrated so that the extreme values indicate the
+        largest possible offset - if the rest of the frame is encoded with the
+        worst possible quality, an offset of -1 indicates that this region
+        should be encoded with the best possible quality anyway.  Intermediate
+        values are then interpolated in some codec-dependent way.
+
+
+        For example, in 10-bit H.264 the quantisation parameter varies between
+        -12 and 51.  A typical qoffset value of -1/10 therefore indicates that
+        this region should be encoded with a QP around one-tenth of the full
+        range better than the rest of the frame.  So, if most of the frame
+        were to be encoded with a QP of around 30, this region would get a QP
+        of around 24 (an offset of approximately -1/10 * (51 - -12) = -6.3).
+        An extreme value of -1 would indicate that this region should be
+        encoded with the best possible quality regardless of the treatment of
+        the rest of the frame - that is, should be encoded at a QP of -12.
+
+
+        If set to true, remove any existing regions of interest marked on the
+        frame before adding the new one.
+
+
+
 
         Parameters:
         ----------
@@ -74,9 +181,13 @@ class VideoStream(FilterableStream):
     def alphaextract(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.2 alphaextract
+        ### 11.2 alphaextract
+
         Extract the alpha component from the input as a grayscale video. This
         is especially useful with the alphamerge filter.
+
+
+
 
         Parameters:
         ----------
@@ -99,17 +210,20 @@ class VideoStream(FilterableStream):
     def alphamerge(self, _alpha: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
 
-        11.3 alphamerge
+        ### 11.3 alphamerge
+
         Add or replace the alpha component of the primary input with the
         grayscale value of a second input. This is intended for use with
         alphaextract to allow the transmission or storage of frame
         sequences that have alpha in a format that doesn’t support an alpha
         channel.
 
+
         For example, to reconstruct full frames from a normal YUV-encoded video
         and a separate video created with alphaextract, you might use:
 
-        movie=in_alpha.mkv [alpha]; [in][alpha] alphamerge [out]
+
+
 
         Parameters:
         ----------
@@ -144,11 +258,65 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.4 amplify
+        ### 11.4 amplify
+
         Amplify differences between current pixel and pixels of adjacent frames in
         same pixel location.
 
+
         This filter accepts the following options:
+
+
+        - **`radius`**
+          - Set frame radius. Default is 2. Allowed range is from 1 to 63.
+        For example radius of 3 will instruct filter to calculate average of 7 frames.
+        - **`factor`**
+          - Set factor to amplify difference. Default is 2. Allowed range is from 0 to 65535.
+        - **`threshold`**
+          - Set threshold for difference amplification. Any difference greater or equal to
+        this value will not alter source pixel. Default is 10.
+        Allowed range is from 0 to 65535.
+        - **`tolerance`**
+          - Set tolerance for difference amplification. Any difference lower to
+        this value will not alter source pixel. Default is 0.
+        Allowed range is from 0 to 65535.
+        - **`low`**
+          - Set lower limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.
+        This option controls maximum possible value that will decrease source pixel value.
+        - **`high`**
+          - Set high limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.
+        This option controls maximum possible value that will increase source pixel value.
+        - **`planes`**
+          - Set which planes to filter. Default is all. Allowed range is from 0 to 15.
+        Set frame radius. Default is 2. Allowed range is from 1 to 63.
+        For example radius of 3 will instruct filter to calculate average of 7 frames.
+
+
+        Set factor to amplify difference. Default is 2. Allowed range is from 0 to 65535.
+
+
+        Set threshold for difference amplification. Any difference greater or equal to
+        this value will not alter source pixel. Default is 10.
+        Allowed range is from 0 to 65535.
+
+
+        Set tolerance for difference amplification. Any difference lower to
+        this value will not alter source pixel. Default is 0.
+        Allowed range is from 0 to 65535.
+
+
+        Set lower limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.
+        This option controls maximum possible value that will decrease source pixel value.
+
+
+        Set high limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.
+        This option controls maximum possible value that will increase source pixel value.
+
+
+        Set which planes to filter. Default is all. Allowed range is from 0 to 15.
+
+
+
 
         Parameters:
         ----------
@@ -196,13 +364,60 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.5 ass
+        ### 11.5 ass
+
         Same as the subtitles filter, except that it doesn’t require libavcodec
         and libavformat to work. On the other hand, it is limited to ASS (Advanced
         Substation Alpha) subtitles files.
 
+
         This filter accepts the following option in addition to the common options from
         the subtitles filter:
+
+
+        - **`shaping`**
+          - Set the shaping engine
+        Available values are:
+        ‘
+        auto
+        ’
+        The default libass shaping engine, which is the best available.
+        ‘
+        simple
+        ’
+        Fast, font-agnostic shaper that can do only substitutions
+        ‘
+        complex
+        ’
+        Slower shaper using OpenType for substitutions and positioning
+        The default is
+        auto
+        .
+        Set the shaping engine
+
+
+        Available values are:
+
+
+        - **`‘auto’`**
+          - The default libass shaping engine, which is the best available.
+        - **`‘simple’`**
+          - Fast, font-agnostic shaper that can do only substitutions
+        - **`‘complex’`**
+          - Slower shaper using OpenType for substitutions and positioning
+        The default libass shaping engine, which is the best available.
+
+
+        Fast, font-agnostic shaper that can do only substitutions
+
+
+        Slower shaper using OpenType for substitutions and positioning
+
+
+        The default is auto.
+
+
+
 
         Parameters:
         ----------
@@ -253,10 +468,109 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.6 atadenoise
+        ### 11.6 atadenoise
+
         Apply an Adaptive Temporal Averaging Denoiser to the video input.
 
+
         The filter accepts the following options:
+
+
+        - **`0a`**
+          - Set threshold A for 1st plane. Default is 0.02.
+        Valid range is 0 to 0.3.
+        - **`0b`**
+          - Set threshold B for 1st plane. Default is 0.04.
+        Valid range is 0 to 5.
+        - **`1a`**
+          - Set threshold A for 2nd plane. Default is 0.02.
+        Valid range is 0 to 0.3.
+        - **`1b`**
+          - Set threshold B for 2nd plane. Default is 0.04.
+        Valid range is 0 to 5.
+        - **`2a`**
+          - Set threshold A for 3rd plane. Default is 0.02.
+        Valid range is 0 to 0.3.
+        - **`2b`**
+          - Set threshold B for 3rd plane. Default is 0.04.
+        Valid range is 0 to 5.
+        Threshold A is designed to react on abrupt changes in the input signal and
+        threshold B is designed to react on continuous changes in the input signal.
+        - **`s`**
+          - Set number of frames filter will use for averaging. Default is 9. Must be odd
+        number in range [5, 129].
+        - **`p`**
+          - Set what planes of frame filter will use for averaging. Default is all.
+        - **`a`**
+          - Set what variant of algorithm filter will use for averaging. Default is
+        p
+        parallel.
+        Alternatively can be set to
+        s
+        serial.
+        Parallel can be faster then serial, while other way around is never true.
+        Parallel will abort early on first change being greater then thresholds, while serial
+        will continue processing other side of frames if they are equal or below thresholds.
+        - **`0s`**
+        - **`1s`**
+        - **`2s`**
+          - Set sigma for 1st plane, 2nd plane or 3rd plane. Default is 32767.
+        Valid range is from 0 to 32767.
+        This options controls weight for each pixel in radius defined by size.
+        Default value means every pixel have same weight.
+        Setting this option to 0 effectively disables filtering.
+        Set threshold A for 1st plane. Default is 0.02.
+        Valid range is 0 to 0.3.
+
+
+        Set threshold B for 1st plane. Default is 0.04.
+        Valid range is 0 to 5.
+
+
+        Set threshold A for 2nd plane. Default is 0.02.
+        Valid range is 0 to 0.3.
+
+
+        Set threshold B for 2nd plane. Default is 0.04.
+        Valid range is 0 to 5.
+
+
+        Set threshold A for 3rd plane. Default is 0.02.
+        Valid range is 0 to 0.3.
+
+
+        Set threshold B for 3rd plane. Default is 0.04.
+        Valid range is 0 to 5.
+
+
+        Threshold A is designed to react on abrupt changes in the input signal and
+        threshold B is designed to react on continuous changes in the input signal.
+
+
+        Set number of frames filter will use for averaging. Default is 9. Must be odd
+        number in range [5, 129].
+
+
+        Set what planes of frame filter will use for averaging. Default is all.
+
+
+        Set what variant of algorithm filter will use for averaging. Default is p parallel.
+        Alternatively can be set to s serial.
+
+
+        Parallel can be faster then serial, while other way around is never true.
+        Parallel will abort early on first change being greater then thresholds, while serial
+        will continue processing other side of frames if they are equal or below thresholds.
+
+
+        Set sigma for 1st plane, 2nd plane or 3rd plane. Default is 32767.
+        Valid range is from 0 to 32767.
+        This options controls weight for each pixel in radius defined by size.
+        Default value means every pixel have same weight.
+        Setting this option to 0 effectively disables filtering.
+
+
+
 
         Parameters:
         ----------
@@ -312,10 +626,36 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.7 avgblur
+        ### 11.7 avgblur
+
         Apply average blur filter.
 
+
         The filter accepts the following options:
+
+
+        - **`sizeX`**
+          - Set horizontal radius size.
+        - **`planes`**
+          - Set which planes to filter. By default all planes are filtered.
+        - **`sizeY`**
+          - Set vertical radius size, if zero it will be same as
+        sizeX
+        .
+        Default is
+        0
+        .
+        Set horizontal radius size.
+
+
+        Set which planes to filter. By default all planes are filtered.
+
+
+        Set vertical radius size, if zero it will be same as sizeX.
+        Default is 0.
+
+
+
 
         Parameters:
         ----------
@@ -353,10 +693,44 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.1 avgblur_opencl
+        ### 12.1 avgblur_opencl
+
         Apply average blur filter.
 
+
         The filter accepts the following options:
+
+
+        - **`sizeX`**
+          - Set horizontal radius size.
+        Range is
+        [1, 1024]
+        and default value is
+        1
+        .
+        - **`planes`**
+          - Set which planes to filter. Default value is
+        0xf
+        , by which all planes are processed.
+        - **`sizeY`**
+          - Set vertical radius size. Range is
+        [1, 1024]
+        and default value is
+        0
+        . If zero,
+        sizeX
+        value will be used.
+        Set horizontal radius size.
+        Range is [1, 1024] and default value is 1.
+
+
+        Set which planes to filter. Default value is 0xf, by which all planes are processed.
+
+
+        Set vertical radius size. Range is [1, 1024] and default value is 0. If zero, sizeX value will be used.
+
+
+
 
         Parameters:
         ----------
@@ -394,10 +768,42 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.1 avgblur_vulkan
+        ### 14.1 avgblur_vulkan
+
         Apply an average blur filter, implemented on the GPU using Vulkan.
 
+
         The filter accepts the following options:
+
+
+        - **`sizeX`**
+          - Set horizontal radius size.
+        Range is
+        [1, 32]
+        and default value is
+        3
+        .
+        - **`sizeY`**
+          - Set vertical radius size. Range is
+        [1, 32]
+        and default value is
+        3
+        .
+        - **`planes`**
+          - Set which planes to filter. Default value is
+        0xf
+        , by which all planes are processed.
+        Set horizontal radius size.
+        Range is [1, 32] and default value is 3.
+
+
+        Set vertical radius size. Range is [1, 32] and default value is 3.
+
+
+        Set which planes to filter. Default value is 0xf, by which all planes are processed.
+
+
+
 
         Parameters:
         ----------
@@ -435,10 +841,30 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.8 backgroundkey
+        ### 11.8 backgroundkey
+
         Turns a static background into transparency.
 
+
         The filter accepts the following option:
+
+
+        - **`threshold`**
+          - Threshold for scene change detection.
+        - **`similarity`**
+          - Similarity percentage with the background.
+        - **`blend`**
+          - Set the blend amount for pixels that are not similar.
+        Threshold for scene change detection.
+
+
+        Similarity percentage with the background.
+
+
+        Set the blend amount for pixels that are not similar.
+
+
+
 
         Parameters:
         ----------
@@ -469,16 +895,29 @@ class VideoStream(FilterableStream):
     def bbox(self, *, min_val: int | DefaultInt = DefaultInt(16), **kwargs: Any) -> "VideoStream":
         """
 
-        11.9 bbox
+        ### 11.9 bbox
+
         Compute the bounding box for the non-black pixels in the input frame
         luma plane.
+
 
         This filter computes the bounding box containing all the pixels with a
         luma value greater than the minimum allowed value.
         The parameters describing the bounding box are printed on the filter
         log.
 
+
         The filter accepts the following option:
+
+
+        - **`min_val`**
+          - Set the minimal luma value. Default is
+        16
+        .
+        Set the minimal luma value. Default is 16.
+
+
+
 
         Parameters:
         ----------
@@ -507,10 +946,74 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        18.8 bench, abench
+        ### 18.8 bench, abench
+
         Benchmark part of a filtergraph.
 
+
         The filter accepts the following options:
+
+
+        - **`action`**
+          - Start or stop a timer.
+        Available values are:
+        ‘
+        start
+        ’
+        Get the current time, set it as frame metadata (using the key
+        lavfi.bench.start_time
+        ), and forward the frame to the next filter.
+        ‘
+        stop
+        ’
+        Get the current time and fetch the
+        lavfi.bench.start_time
+        metadata from
+        the input frame metadata to get the time difference. Time difference, average,
+        maximum and minimum time (respectively
+        t
+        ,
+        avg
+        ,
+        max
+        and
+        min
+        ) are then printed. The timestamps are expressed in seconds.
+        Start or stop a timer.
+
+
+        Available values are:
+
+
+        - **`‘start’`**
+          - Get the current time, set it as frame metadata (using the key
+        lavfi.bench.start_time
+        ), and forward the frame to the next filter.
+        - **`‘stop’`**
+          - Get the current time and fetch the
+        lavfi.bench.start_time
+        metadata from
+        the input frame metadata to get the time difference. Time difference, average,
+        maximum and minimum time (respectively
+        t
+        ,
+        avg
+        ,
+        max
+        and
+        min
+        ) are then printed. The timestamps are expressed in seconds.
+        Get the current time, set it as frame metadata (using the key
+        lavfi.bench.start_time), and forward the frame to the next filter.
+
+
+        Get the current time and fetch the lavfi.bench.start_time metadata from
+        the input frame metadata to get the time difference. Time difference, average,
+        maximum and minimum time (respectively t, avg, max and
+        min) are then printed. The timestamps are expressed in seconds.
+
+
+
 
         Parameters:
         ----------
@@ -544,10 +1047,34 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.10 bilateral
+        ### 11.10 bilateral
+
         Apply bilateral filter, spatial smoothing while preserving edges.
 
+
         The filter accepts the following options:
+
+
+        - **`sigmaS`**
+          - Set sigma of gaussian function to calculate spatial weight.
+        Allowed range is 0 to 512. Default is 0.1.
+        - **`sigmaR`**
+          - Set sigma of gaussian function to calculate range weight.
+        Allowed range is 0 to 1. Default is 0.1.
+        - **`planes`**
+          - Set planes to filter. Default is first only.
+        Set sigma of gaussian function to calculate spatial weight.
+        Allowed range is 0 to 512. Default is 0.1.
+
+
+        Set sigma of gaussian function to calculate range weight.
+        Allowed range is 0 to 1. Default is 0.1.
+
+
+        Set planes to filter. Default is first only.
+
+
+
 
         Parameters:
         ----------
@@ -585,12 +1112,40 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.11 bilateral_cuda
+        ### 11.11 bilateral_cuda
+
         CUDA accelerated bilateral filter, an edge preserving filter.
         This filter is mathematically accurate thanks to the use of GPU acceleration.
         For best output quality, use one to one chroma subsampling, i.e. yuv444p format.
 
+
         The filter accepts the following options:
+
+
+        - **`sigmaS`**
+          - Set sigma of gaussian function to calculate spatial weight, also called sigma space.
+        Allowed range is 0.1 to 512. Default is 0.1.
+        - **`sigmaR`**
+          - Set sigma of gaussian function to calculate color range weight, also called sigma color.
+        Allowed range is 0.1 to 512. Default is 0.1.
+        - **`window_size`**
+          - Set window size of the bilateral function to determine the number of neighbours to loop on.
+        If the number entered is even, one will be added automatically.
+        Allowed range is 1 to 255. Default is 1.
+        Set sigma of gaussian function to calculate spatial weight, also called sigma space.
+        Allowed range is 0.1 to 512. Default is 0.1.
+
+
+        Set sigma of gaussian function to calculate color range weight, also called sigma color.
+        Allowed range is 0.1 to 512. Default is 0.1.
+
+
+        Set window size of the bilateral function to determine the number of neighbours to loop on.
+        If the number entered is even, one will be added automatically.
+        Allowed range is 1 to 255. Default is 1.
+
+
+
 
         Parameters:
         ----------
@@ -623,10 +1178,31 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.12 bitplanenoise
+        ### 11.12 bitplanenoise
+
         Show and measure bit plane noise.
 
+
         The filter accepts the following options:
+
+
+        - **`bitplane`**
+          - Set which plane to analyze. Default is
+        1
+        .
+        - **`filter`**
+          - Filter out noisy pixels from
+        bitplane
+        set above.
+        Default is disabled.
+        Set which plane to analyze. Default is 1.
+
+
+        Filter out noisy pixels from bitplane set above.
+        Default is disabled.
+
+
+
 
         Parameters:
         ----------
@@ -662,10 +1238,12 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.13 blackdetect
+        ### 11.13 blackdetect
+
         Detect video intervals that are (almost) completely black. Can be
         useful to detect chapter transitions, commercials, or invalid
         recordings.
+
 
         The filter outputs its detection analysis to both the log as well as
         frame metadata. If a black segment of at least the specified minimum
@@ -674,19 +1252,84 @@ class VideoStream(FilterableStream):
         a log line with level debug is printed per frame showing the
         black amount detected for that frame.
 
+
         The filter also attaches metadata to the first frame of a black
         segment with key lavfi.black_start and to the first frame
         after the black segment ends with key lavfi.black_end. The
         value is the frame’s timestamp. This metadata is added regardless
         of the minimum duration specified.
 
+
         The filter accepts the following options:
+
+
+        - **`black_min_duration, d`**
+          - Set the minimum detected black duration expressed in seconds. It must
+        be a non-negative floating point number.
+        Default value is 2.0.
+        - **`picture_black_ratio_th, pic_th`**
+          - Set the threshold for considering a picture "black".
+        Express the minimum value for the ratio:
+        nb_black_pixels
+        /
+        nb_pixels
+        for which a picture is considered black.
+        Default value is 0.98.
+        - **`pixel_black_th, pix_th`**
+          - Set the threshold for considering a pixel "black".
+        The threshold expresses the maximum pixel luma value for which a
+        pixel is considered "black". The provided value is scaled according to
+        the following equation:
+        absolute_threshold
+        =
+        luma_minimum_value
+        +
+        pixel_black_th
+        *
+        luma_range_size
+        luma_range_size
+        and
+        luma_minimum_value
+        depend on
+        the input video format, the range is [0-255] for YUV full-range
+        formats and [16-235] for YUV non full-range formats.
+        Default value is 0.10.
+        Set the minimum detected black duration expressed in seconds. It must
+        be a non-negative floating point number.
+
+
+        Default value is 2.0.
+
+
+        Set the threshold for considering a picture "black".
+        Express the minimum value for the ratio:
+
+
+        for which a picture is considered black.
+        Default value is 0.98.
+
+
+        Set the threshold for considering a pixel "black".
+
+
+        The threshold expresses the maximum pixel luma value for which a
+        pixel is considered "black". The provided value is scaled according to
+        the following equation:
+
+
+        luma_range_size and luma_minimum_value depend on
+        the input video format, the range is [0-255] for YUV full-range
+        formats and [16-235] for YUV non full-range formats.
+
+
+        Default value is 0.10.
 
 
         The following example sets the maximum pixel threshold to the minimum
         value, and detects only black intervals of 2 or more seconds:
 
-        blackdetect=d=2:pix_th=0.00
+
+
 
         Parameters:
         ----------
@@ -719,20 +1362,43 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.14 blackframe
+        ### 11.14 blackframe
+
         Detect frames that are (almost) completely black. Can be useful to
         detect chapter transitions or commercials. Output lines consist of
         the frame number of the detected frame, the percentage of blackness,
         the position in the file if known or -1 and the timestamp in seconds.
 
+
         In order to display the output lines, you need to set the loglevel at
         least to the AV_LOG_INFO value.
+
 
         This filter exports frame metadata lavfi.blackframe.pblack.
         The value represents the percentage of pixels in the picture that
         are below the threshold value.
 
+
         It accepts the following parameters:
+
+
+        - **`amount`**
+          - The percentage of the pixels that have to be below the threshold; it defaults to
+        98
+        .
+        - **`threshold, thresh`**
+          - The threshold below which a pixel value is considered black; it defaults to
+        32
+        .
+        The percentage of the pixels that have to be below the threshold; it defaults to
+        98.
+
+
+        The threshold below which a pixel value is considered black; it defaults to
+        32.
+
+
+
 
         Parameters:
         ----------
@@ -1006,21 +1672,317 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.15 blend
+        ### 11.15 blend
+
         Blend two video frames into each other.
+
 
         The blend filter takes two input streams and outputs one
         stream, the first input is the "top" layer and second input is
         "bottom" layer.  By default, the output terminates when the longest input terminates.
 
+
         The tblend (time blend) filter takes two consecutive frames
         from one single stream, and outputs the result obtained by blending
         the new frame on top of the old frame.
 
+
         A description of the accepted options follows.
 
 
+        - **`c0_mode`**
+        - **`c1_mode`**
+        - **`c2_mode`**
+        - **`c3_mode`**
+        - **`all_mode`**
+          - Set blend mode for specific pixel component or all pixel components in case
+        of
+        all_mode
+        . Default value is
+        normal
+        .
+        Available values for component modes are:
+        ‘
+        addition
+        ’
+        ‘
+        and
+        ’
+        ‘
+        average
+        ’
+        ‘
+        bleach
+        ’
+        ‘
+        burn
+        ’
+        ‘
+        darken
+        ’
+        ‘
+        difference
+        ’
+        ‘
+        divide
+        ’
+        ‘
+        dodge
+        ’
+        ‘
+        exclusion
+        ’
+        ‘
+        extremity
+        ’
+        ‘
+        freeze
+        ’
+        ‘
+        geometric
+        ’
+        ‘
+        glow
+        ’
+        ‘
+        grainextract
+        ’
+        ‘
+        grainmerge
+        ’
+        ‘
+        hardlight
+        ’
+        ‘
+        hardmix
+        ’
+        ‘
+        hardoverlay
+        ’
+        ‘
+        harmonic
+        ’
+        ‘
+        heat
+        ’
+        ‘
+        interpolate
+        ’
+        ‘
+        lighten
+        ’
+        ‘
+        linearlight
+        ’
+        ‘
+        multiply
+        ’
+        ‘
+        multiply128
+        ’
+        ‘
+        negation
+        ’
+        ‘
+        normal
+        ’
+        ‘
+        or
+        ’
+        ‘
+        overlay
+        ’
+        ‘
+        phoenix
+        ’
+        ‘
+        pinlight
+        ’
+        ‘
+        reflect
+        ’
+        ‘
+        screen
+        ’
+        ‘
+        softdifference
+        ’
+        ‘
+        softlight
+        ’
+        ‘
+        stain
+        ’
+        ‘
+        subtract
+        ’
+        ‘
+        vividlight
+        ’
+        ‘
+        xor
+        ’
+        - **`c0_opacity`**
+        - **`c1_opacity`**
+        - **`c2_opacity`**
+        - **`c3_opacity`**
+        - **`all_opacity`**
+          - Set blend opacity for specific pixel component or all pixel components in case
+        of
+        all_opacity
+        . Only used in combination with pixel component blend modes.
+        - **`c0_expr`**
+        - **`c1_expr`**
+        - **`c2_expr`**
+        - **`c3_expr`**
+        - **`all_expr`**
+          - Set blend expression for specific pixel component or all pixel components in case
+        of
+        all_expr
+        . Note that related mode options will be ignored if those are set.
+        The expressions can use the following variables:
+        N
+        The sequential number of the filtered frame, starting from
+        0
+        .
+        X
+        Y
+        the coordinates of the current sample
+        W
+        H
+        the width and height of currently filtered plane
+        SW
+        SH
+        Width and height scale for the plane being filtered. It is the
+        ratio between the dimensions of the current plane to the luma plane,
+        e.g. for a
+        yuv420p
+        frame, the values are
+        1,1
+        for
+        the luma plane and
+        0.5,0.5
+        for the chroma planes.
+        T
+        Time of the current frame, expressed in seconds.
+        TOP, A
+        Value of pixel component at current location for first video frame (top layer).
+        BOTTOM, B
+        Value of pixel component at current location for second video frame (bottom layer).
+        Set blend mode for specific pixel component or all pixel components in case
+        of all_mode. Default value is normal.
+
+
+        Available values for component modes are:
+
+
+        - **`‘addition’`**
+        - **`‘and’`**
+        - **`‘average’`**
+        - **`‘bleach’`**
+        - **`‘burn’`**
+        - **`‘darken’`**
+        - **`‘difference’`**
+        - **`‘divide’`**
+        - **`‘dodge’`**
+        - **`‘exclusion’`**
+        - **`‘extremity’`**
+        - **`‘freeze’`**
+        - **`‘geometric’`**
+        - **`‘glow’`**
+        - **`‘grainextract’`**
+        - **`‘grainmerge’`**
+        - **`‘hardlight’`**
+        - **`‘hardmix’`**
+        - **`‘hardoverlay’`**
+        - **`‘harmonic’`**
+        - **`‘heat’`**
+        - **`‘interpolate’`**
+        - **`‘lighten’`**
+        - **`‘linearlight’`**
+        - **`‘multiply’`**
+        - **`‘multiply128’`**
+        - **`‘negation’`**
+        - **`‘normal’`**
+        - **`‘or’`**
+        - **`‘overlay’`**
+        - **`‘phoenix’`**
+        - **`‘pinlight’`**
+        - **`‘reflect’`**
+        - **`‘screen’`**
+        - **`‘softdifference’`**
+        - **`‘softlight’`**
+        - **`‘stain’`**
+        - **`‘subtract’`**
+        - **`‘vividlight’`**
+        - **`‘xor’`**
+        Set blend opacity for specific pixel component or all pixel components in case
+        of all_opacity. Only used in combination with pixel component blend modes.
+
+
+        Set blend expression for specific pixel component or all pixel components in case
+        of all_expr. Note that related mode options will be ignored if those are set.
+
+
+        The expressions can use the following variables:
+
+
+        - **`N`**
+          - The sequential number of the filtered frame, starting from
+        0
+        .
+        - **`X`**
+        - **`Y`**
+          - the coordinates of the current sample
+        - **`W`**
+        - **`H`**
+          - the width and height of currently filtered plane
+        - **`SW`**
+        - **`SH`**
+          - Width and height scale for the plane being filtered. It is the
+        ratio between the dimensions of the current plane to the luma plane,
+        e.g. for a
+        yuv420p
+        frame, the values are
+        1,1
+        for
+        the luma plane and
+        0.5,0.5
+        for the chroma planes.
+        - **`T`**
+          - Time of the current frame, expressed in seconds.
+        - **`TOP, A`**
+          - Value of pixel component at current location for first video frame (top layer).
+        - **`BOTTOM, B`**
+          - Value of pixel component at current location for second video frame (bottom layer).
+        The sequential number of the filtered frame, starting from 0.
+
+
+        the coordinates of the current sample
+
+
+        the width and height of currently filtered plane
+
+
+        Width and height scale for the plane being filtered. It is the
+        ratio between the dimensions of the current plane to the luma plane,
+        e.g. for a yuv420p frame, the values are 1,1 for
+        the luma plane and 0.5,0.5 for the chroma planes.
+
+
+        Time of the current frame, expressed in seconds.
+
+
+        Value of pixel component at current location for first video frame (top layer).
+
+
+        Value of pixel component at current location for second video frame (bottom layer).
+
+
         The blend filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -1091,14 +2053,47 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.2 blend_vulkan
+        ### 14.2 blend_vulkan
+
         Blend two Vulkan frames into each other.
+
 
         The blend filter takes two input streams and outputs one
         stream, the first input is the "top" layer and second input is
         "bottom" layer.  By default, the output terminates when the longest input terminates.
 
+
         A description of the accepted options follows.
+
+
+        - **`c0_mode`**
+        - **`c1_mode`**
+        - **`c2_mode`**
+        - **`c3_mode`**
+        - **`all_mode`**
+          - Set blend mode for specific pixel component or all pixel components in case
+        of
+        all_mode
+        . Default value is
+        normal
+        .
+        Available values for component modes are:
+        ‘
+        normal
+        ’
+        ‘
+        multiply
+        ’
+        Set blend mode for specific pixel component or all pixel components in case
+        of all_mode. Default value is normal.
+
+
+        Available values for component modes are:
+
+
+        - **`‘normal’`**
+        - **`‘multiply’`**
+
 
         Parameters:
         ----------
@@ -1151,12 +2146,31 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.16 blockdetect
+        ### 11.16 blockdetect
+
         Determines blockiness of frames without altering the input frames.
+
 
         Based on Remco Muijs and Ihor Kirenko: "A no-reference blocking artifact measure for adaptive video processing." 2005 13th European signal processing conference.
 
+
         The filter accepts the following options:
+
+
+        - **`period_min`**
+        - **`period_max`**
+          - Set minimum and maximum values for determining pixel grids (periods).
+        Default values are [3,24].
+        - **`planes`**
+          - Set planes to filter. Default is first only.
+        Set minimum and maximum values for determining pixel grids (periods).
+        Default values are [3,24].
+
+
+        Set planes to filter. Default is first only.
+
+
+
 
         Parameters:
         ----------
@@ -1198,13 +2212,94 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.17 blurdetect
+        ### 11.17 blurdetect
+
         Determines blurriness of frames without altering the input frames.
+
 
         Based on Marziliano, Pina, et al. "A no-reference perceptual blur metric."
         Allows for a block-based abbreviation.
 
+
         The filter accepts the following options:
+
+
+        - **`low`**
+        - **`high`**
+          - Set low and high threshold values used by the Canny thresholding
+        algorithm.
+        The high threshold selects the "strong" edge pixels, which are then
+        connected through 8-connectivity with the "weak" edge pixels selected
+        by the low threshold.
+        low
+        and
+        high
+        threshold values must be chosen in the range
+        [0,1], and
+        low
+        should be lesser or equal to
+        high
+        .
+        Default value for
+        low
+        is
+        20/255
+        , and default value for
+        high
+        is
+        50/255
+        .
+        - **`radius`**
+          - Define the radius to search around an edge pixel for local maxima.
+        - **`block_pct`**
+          - Determine blurriness only for the most significant blocks, given in percentage.
+        - **`block_width`**
+          - Determine blurriness for blocks of width
+        block_width
+        . If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of
+        block_height
+        .
+        - **`block_height`**
+          - Determine blurriness for blocks of height
+        block_height
+        . If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of
+        block_width
+        .
+        - **`planes`**
+          - Set planes to filter. Default is first only.
+        Set low and high threshold values used by the Canny thresholding
+        algorithm.
+
+
+        The high threshold selects the "strong" edge pixels, which are then
+        connected through 8-connectivity with the "weak" edge pixels selected
+        by the low threshold.
+
+
+        low and high threshold values must be chosen in the range
+        [0,1], and low should be lesser or equal to high.
+
+
+        Default value for low is 20/255, and default value for high
+        is 50/255.
+
+
+        Define the radius to search around an edge pixel for local maxima.
+
+
+        Determine blurriness only for the most significant blocks, given in percentage.
+
+
+        Determine blurriness for blocks of width block_width. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of block_height.
+
+
+        Determine blurriness for blocks of height block_height. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of block_width.
+
+
+        Set planes to filter. Default is first only.
+
+
+
 
         Parameters:
         ----------
@@ -1253,13 +2348,132 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.19 boxblur
+        ### 11.19 boxblur
+
         Apply a boxblur algorithm to the input video.
+
 
         It accepts the following parameters:
 
 
+        - **`luma_radius, lr`**
+        - **`luma_power, lp`**
+        - **`chroma_radius, cr`**
+        - **`chroma_power, cp`**
+        - **`alpha_radius, ar`**
+        - **`alpha_power, ap`**
         A description of the accepted options follows.
+
+
+        - **`luma_radius, lr`**
+        - **`chroma_radius, cr`**
+        - **`alpha_radius, ar`**
+          - Set an expression for the box radius in pixels used for blurring the
+        corresponding input plane.
+        The radius value must be a non-negative number, and must not be
+        greater than the value of the expression
+        min(w,h)/2
+        for the
+        luma and alpha planes, and of
+        min(cw,ch)/2
+        for the chroma
+        planes.
+        Default value for
+        luma_radius
+        is "2". If not specified,
+        chroma_radius
+        and
+        alpha_radius
+        default to the
+        corresponding value set for
+        luma_radius
+        .
+        The expressions can contain the following constants:
+        w
+        h
+        The input width and height in pixels.
+        cw
+        ch
+        The input chroma image width and height in pixels.
+        hsub
+        vsub
+        The horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p",
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        - **`luma_power, lp`**
+        - **`chroma_power, cp`**
+        - **`alpha_power, ap`**
+          - Specify how many times the boxblur filter is applied to the
+        corresponding plane.
+        Default value for
+        luma_power
+        is 2. If not specified,
+        chroma_power
+        and
+        alpha_power
+        default to the
+        corresponding value set for
+        luma_power
+        .
+        A value of 0 will disable the effect.
+        Set an expression for the box radius in pixels used for blurring the
+        corresponding input plane.
+
+
+        The radius value must be a non-negative number, and must not be
+        greater than the value of the expression min(w,h)/2 for the
+        luma and alpha planes, and of min(cw,ch)/2 for the chroma
+        planes.
+
+
+        Default value for luma_radius is "2". If not specified,
+        chroma_radius and alpha_radius default to the
+        corresponding value set for luma_radius.
+
+
+        The expressions can contain the following constants:
+
+
+        - **`w`**
+        - **`h`**
+          - The input width and height in pixels.
+        - **`cw`**
+        - **`ch`**
+          - The input chroma image width and height in pixels.
+        - **`hsub`**
+        - **`vsub`**
+          - The horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p",
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        The input width and height in pixels.
+
+
+        The input chroma image width and height in pixels.
+
+
+        The horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p", hsub is 2 and vsub is 1.
+
+
+        Specify how many times the boxblur filter is applied to the
+        corresponding plane.
+
+
+        Default value for luma_power is 2. If not specified,
+        chroma_power and alpha_power default to the
+        corresponding value set for luma_power.
+
+
+        A value of 0 will disable the effect.
+
+
+
 
         Parameters:
         ----------
@@ -1306,13 +2520,132 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.2 boxblur_opencl
+        ### 12.2 boxblur_opencl
+
         Apply a boxblur algorithm to the input video.
+
 
         It accepts the following parameters:
 
 
+        - **`luma_radius, lr`**
+        - **`luma_power, lp`**
+        - **`chroma_radius, cr`**
+        - **`chroma_power, cp`**
+        - **`alpha_radius, ar`**
+        - **`alpha_power, ap`**
         A description of the accepted options follows.
+
+
+        - **`luma_radius, lr`**
+        - **`chroma_radius, cr`**
+        - **`alpha_radius, ar`**
+          - Set an expression for the box radius in pixels used for blurring the
+        corresponding input plane.
+        The radius value must be a non-negative number, and must not be
+        greater than the value of the expression
+        min(w,h)/2
+        for the
+        luma and alpha planes, and of
+        min(cw,ch)/2
+        for the chroma
+        planes.
+        Default value for
+        luma_radius
+        is "2". If not specified,
+        chroma_radius
+        and
+        alpha_radius
+        default to the
+        corresponding value set for
+        luma_radius
+        .
+        The expressions can contain the following constants:
+        w
+        h
+        The input width and height in pixels.
+        cw
+        ch
+        The input chroma image width and height in pixels.
+        hsub
+        vsub
+        The horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p",
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        - **`luma_power, lp`**
+        - **`chroma_power, cp`**
+        - **`alpha_power, ap`**
+          - Specify how many times the boxblur filter is applied to the
+        corresponding plane.
+        Default value for
+        luma_power
+        is 2. If not specified,
+        chroma_power
+        and
+        alpha_power
+        default to the
+        corresponding value set for
+        luma_power
+        .
+        A value of 0 will disable the effect.
+        Set an expression for the box radius in pixels used for blurring the
+        corresponding input plane.
+
+
+        The radius value must be a non-negative number, and must not be
+        greater than the value of the expression min(w,h)/2 for the
+        luma and alpha planes, and of min(cw,ch)/2 for the chroma
+        planes.
+
+
+        Default value for luma_radius is "2". If not specified,
+        chroma_radius and alpha_radius default to the
+        corresponding value set for luma_radius.
+
+
+        The expressions can contain the following constants:
+
+
+        - **`w`**
+        - **`h`**
+          - The input width and height in pixels.
+        - **`cw`**
+        - **`ch`**
+          - The input chroma image width and height in pixels.
+        - **`hsub`**
+        - **`vsub`**
+          - The horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p",
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        The input width and height in pixels.
+
+
+        The input chroma image width and height in pixels.
+
+
+        The horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p", hsub is 2 and vsub is 1.
+
+
+        Specify how many times the boxblur filter is applied to the
+        corresponding plane.
+
+
+        Default value for luma_power is 2. If not specified,
+        chroma_power and alpha_power default to the
+        corresponding value set for luma_power.
+
+
+        A value of 0 will disable the effect.
+
+
+
 
         Parameters:
         ----------
@@ -1356,13 +2689,108 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.20 bwdif
+        ### 11.20 bwdif
+
         Deinterlace the input video ("bwdif" stands for "Bob Weaver
         Deinterlacing Filter").
+
 
         Motion adaptive deinterlacing based on yadif with the use of w3fdif and cubic
         interpolation algorithms.
         It accepts the following parameters:
+
+
+        - **`mode`**
+          - The interlacing mode to adopt. It accepts one of the following values:
+        0, send_frame
+        Output one frame for each frame.
+        1, send_field
+        Output one frame for each field.
+        The default value is
+        send_field
+        .
+        - **`parity`**
+          - The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+        0, tff
+        Assume the top field is first.
+        1, bff
+        Assume the bottom field is first.
+        -1, auto
+        Enable automatic detection of field parity.
+        The default value is
+        auto
+        .
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+        - **`deint`**
+          - Specify which frames to deinterlace. Accepts one of the following
+        values:
+        0, all
+        Deinterlace all frames.
+        1, interlaced
+        Only deinterlace frames marked as interlaced.
+        The default value is
+        all
+        .
+        The interlacing mode to adopt. It accepts one of the following values:
+
+
+        - **`0, send_frame`**
+          - Output one frame for each frame.
+        - **`1, send_field`**
+          - Output one frame for each field.
+        Output one frame for each frame.
+
+
+        Output one frame for each field.
+
+
+        The default value is send_field.
+
+
+        The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+
+
+        - **`0, tff`**
+          - Assume the top field is first.
+        - **`1, bff`**
+          - Assume the bottom field is first.
+        - **`-1, auto`**
+          - Enable automatic detection of field parity.
+        Assume the top field is first.
+
+
+        Assume the bottom field is first.
+
+
+        Enable automatic detection of field parity.
+
+
+        The default value is auto.
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+
+
+        Specify which frames to deinterlace. Accepts one of the following
+        values:
+
+
+        - **`0, all`**
+          - Deinterlace all frames.
+        - **`1, interlaced`**
+          - Only deinterlace frames marked as interlaced.
+        Deinterlace all frames.
+
+
+        Only deinterlace frames marked as interlaced.
+
+
+        The default value is all.
+
+
+
 
         Parameters:
         ----------
@@ -1402,12 +2830,107 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.21 bwdif_cuda
+        ### 11.21 bwdif_cuda
+
         Deinterlace the input video using the bwdif algorithm, but implemented
         in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec
         and/or nvenc.
 
+
         It accepts the following parameters:
+
+
+        - **`mode`**
+          - The interlacing mode to adopt. It accepts one of the following values:
+        0, send_frame
+        Output one frame for each frame.
+        1, send_field
+        Output one frame for each field.
+        The default value is
+        send_field
+        .
+        - **`parity`**
+          - The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+        0, tff
+        Assume the top field is first.
+        1, bff
+        Assume the bottom field is first.
+        -1, auto
+        Enable automatic detection of field parity.
+        The default value is
+        auto
+        .
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+        - **`deint`**
+          - Specify which frames to deinterlace. Accepts one of the following
+        values:
+        0, all
+        Deinterlace all frames.
+        1, interlaced
+        Only deinterlace frames marked as interlaced.
+        The default value is
+        all
+        .
+        The interlacing mode to adopt. It accepts one of the following values:
+
+
+        - **`0, send_frame`**
+          - Output one frame for each frame.
+        - **`1, send_field`**
+          - Output one frame for each field.
+        Output one frame for each frame.
+
+
+        Output one frame for each field.
+
+
+        The default value is send_field.
+
+
+        The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+
+
+        - **`0, tff`**
+          - Assume the top field is first.
+        - **`1, bff`**
+          - Assume the bottom field is first.
+        - **`-1, auto`**
+          - Enable automatic detection of field parity.
+        Assume the top field is first.
+
+
+        Assume the bottom field is first.
+
+
+        Enable automatic detection of field parity.
+
+
+        The default value is auto.
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+
+
+        Specify which frames to deinterlace. Accepts one of the following
+        values:
+
+
+        - **`0, all`**
+          - Deinterlace all frames.
+        - **`1, interlaced`**
+          - Only deinterlace frames marked as interlaced.
+        Deinterlace all frames.
+
+
+        Only deinterlace frames marked as interlaced.
+
+
+        The default value is all.
+
+
+
 
         Parameters:
         ----------
@@ -1447,11 +2970,106 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.3 bwdif_vulkan
+        ### 14.3 bwdif_vulkan
+
         Deinterlacer using bwdif, the "Bob Weaver Deinterlacing Filter" algorithm, implemented
         on the GPU using Vulkan.
 
+
         It accepts the following parameters:
+
+
+        - **`mode`**
+          - The interlacing mode to adopt. It accepts one of the following values:
+        0, send_frame
+        Output one frame for each frame.
+        1, send_field
+        Output one frame for each field.
+        The default value is
+        send_field
+        .
+        - **`parity`**
+          - The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+        0, tff
+        Assume the top field is first.
+        1, bff
+        Assume the bottom field is first.
+        -1, auto
+        Enable automatic detection of field parity.
+        The default value is
+        auto
+        .
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+        - **`deint`**
+          - Specify which frames to deinterlace. Accepts one of the following
+        values:
+        0, all
+        Deinterlace all frames.
+        1, interlaced
+        Only deinterlace frames marked as interlaced.
+        The default value is
+        all
+        .
+        The interlacing mode to adopt. It accepts one of the following values:
+
+
+        - **`0, send_frame`**
+          - Output one frame for each frame.
+        - **`1, send_field`**
+          - Output one frame for each field.
+        Output one frame for each frame.
+
+
+        Output one frame for each field.
+
+
+        The default value is send_field.
+
+
+        The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+
+
+        - **`0, tff`**
+          - Assume the top field is first.
+        - **`1, bff`**
+          - Assume the bottom field is first.
+        - **`-1, auto`**
+          - Enable automatic detection of field parity.
+        Assume the top field is first.
+
+
+        Assume the bottom field is first.
+
+
+        Enable automatic detection of field parity.
+
+
+        The default value is auto.
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+
+
+        Specify which frames to deinterlace. Accepts one of the following
+        values:
+
+
+        - **`0, all`**
+          - Deinterlace all frames.
+        - **`1, interlaced`**
+          - Only deinterlace frames marked as interlaced.
+        Deinterlace all frames.
+
+
+        Only deinterlace frames marked as interlaced.
+
+
+        The default value is all.
+
+
+
 
         Parameters:
         ----------
@@ -1488,10 +3106,27 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.23 cas
+        ### 11.23 cas
+
         Apply Contrast Adaptive Sharpen filter to video stream.
 
+
         The filter accepts the following options:
+
+
+        - **`strength`**
+          - Set the sharpening strength. Default value is 0.
+        - **`planes`**
+          - Set planes to filter. Default value is to filter all
+        planes except alpha plane.
+        Set the sharpening strength. Default value is 0.
+
+
+        Set planes to filter. Default value is to filter all
+        planes except alpha plane.
+
+
+
 
         Parameters:
         ----------
@@ -1520,14 +3155,19 @@ class VideoStream(FilterableStream):
     def ccrepack(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.22 ccrepack
+        ### 11.22 ccrepack
+
         Repack CEA-708 closed captioning side data
+
 
         This filter fixes various issues seen with commerical encoders
         related to upstream malformed CEA-708 payloads, specifically
         incorrect number of tuples (wrong cc_count for the target FPS),
         and incorrect ordering of tuples (i.e. the CEA-608 tuples are not at
         the first entries in the payload).
+
+
+
 
         Parameters:
         ----------
@@ -1556,9 +3196,29 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.4 chromaber_vulkan
+        ### 14.4 chromaber_vulkan
+
         Apply an effect that emulates chromatic aberration. Works best with RGB inputs,
         but provides a similar effect with YCbCr inputs too.
+
+
+        - **`dist_x`**
+          - Horizontal displacement multiplier. Each chroma pixel’s position will be multiplied
+        by this amount, starting from the center of the image. Default is
+        0
+        .
+        - **`dist_y`**
+          - Similarly, this sets the vertical displacement multiplier. Default is
+        0
+        .
+        Horizontal displacement multiplier. Each chroma pixel’s position will be multiplied
+        by this amount, starting from the center of the image. Default is 0.
+
+
+        Similarly, this sets the vertical displacement multiplier. Default is 0.
+
+
+
 
         Parameters:
         ----------
@@ -1595,10 +3255,47 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.24 chromahold
+        ### 11.24 chromahold
+
         Remove all color information for all colors except for certain one.
 
+
         The filter accepts the following options:
+
+
+        - **`color`**
+          - The color which will not be replaced with neutral chroma.
+        - **`similarity`**
+          - Similarity percentage with the above color.
+        0.01 matches only the exact key color, while 1.0 matches everything.
+        - **`blend`**
+          - Blend percentage.
+        0.0 makes pixels either fully gray, or not gray at all.
+        Higher values result in more preserved color.
+        - **`yuv`**
+          - Signals that the color passed is already in YUV instead of RGB.
+        Literal colors like "green" or "red" don’t make sense with this enabled anymore.
+        This can be used to pass exact YUV values as hexadecimal numbers.
+        The color which will not be replaced with neutral chroma.
+
+
+        Similarity percentage with the above color.
+        0.01 matches only the exact key color, while 1.0 matches everything.
+
+
+        Blend percentage.
+        0.0 makes pixels either fully gray, or not gray at all.
+        Higher values result in more preserved color.
+
+
+        Signals that the color passed is already in YUV instead of RGB.
+
+
+        Literal colors like "green" or "red" don’t make sense with this enabled anymore.
+        This can be used to pass exact YUV values as hexadecimal numbers.
+
+
+
 
         Parameters:
         ----------
@@ -1639,10 +3336,55 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.25 chromakey
+        ### 11.25 chromakey
+
         YUV colorspace color/chroma keying.
 
+
         The filter accepts the following options:
+
+
+        - **`color`**
+          - The color which will be replaced with transparency.
+        - **`similarity`**
+          - Similarity percentage with the key color.
+        0.01 matches only the exact key color, while 1.0 matches everything.
+        - **`blend`**
+          - Blend percentage.
+        0.0 makes pixels either fully transparent, or not transparent at all.
+        Higher values result in semi-transparent pixels, with a higher transparency
+        the more similar the pixels color is to the key color.
+        - **`yuv`**
+          - Signals that the color passed is already in YUV instead of RGB.
+        Literal colors like "green" or "red" don’t make sense with this enabled anymore.
+        This can be used to pass exact YUV values as hexadecimal numbers.
+        The color which will be replaced with transparency.
+
+
+        Similarity percentage with the key color.
+
+
+        0.01 matches only the exact key color, while 1.0 matches everything.
+
+
+        Blend percentage.
+
+
+        0.0 makes pixels either fully transparent, or not transparent at all.
+
+
+        Higher values result in semi-transparent pixels, with a higher transparency
+        the more similar the pixels color is to the key color.
+
+
+        Signals that the color passed is already in YUV instead of RGB.
+
+
+        Literal colors like "green" or "red" don’t make sense with this enabled anymore.
+        This can be used to pass exact YUV values as hexadecimal numbers.
+
+
+
 
         Parameters:
         ----------
@@ -1683,11 +3425,16 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.26 chromakey_cuda
+        ### 11.26 chromakey_cuda
+
         CUDA accelerated YUV colorspace color/chroma keying.
+
 
         This filter works like normal chromakey filter but operates on CUDA frames.
         for more details and parameters see chromakey.
+
+
+
 
         Parameters:
         ----------
@@ -1733,10 +3480,120 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.27 chromanr
+        ### 11.27 chromanr
+
         Reduce chrominance noise.
 
+
         The filter accepts the following options:
+
+
+        - **`thres`**
+          - Set threshold for averaging chrominance values.
+        Sum of absolute difference of Y, U and V pixel components of current
+        pixel and neighbour pixels lower than this threshold will be used in
+        averaging. Luma component is left unchanged and is copied to output.
+        Default value is 30. Allowed range is from 1 to 200.
+        - **`sizew`**
+          - Set horizontal radius of rectangle used for averaging.
+        Allowed range is from 1 to 100. Default value is 5.
+        - **`sizeh`**
+          - Set vertical radius of rectangle used for averaging.
+        Allowed range is from 1 to 100. Default value is 5.
+        - **`stepw`**
+          - Set horizontal step when averaging. Default value is 1.
+        Allowed range is from 1 to 50.
+        Mostly useful to speed-up filtering.
+        - **`steph`**
+          - Set vertical step when averaging. Default value is 1.
+        Allowed range is from 1 to 50.
+        Mostly useful to speed-up filtering.
+        - **`threy`**
+          - Set Y threshold for averaging chrominance values.
+        Set finer control for max allowed difference between Y components
+        of current pixel and neigbour pixels.
+        Default value is 200. Allowed range is from 1 to 200.
+        - **`threu`**
+          - Set U threshold for averaging chrominance values.
+        Set finer control for max allowed difference between U components
+        of current pixel and neigbour pixels.
+        Default value is 200. Allowed range is from 1 to 200.
+        - **`threv`**
+          - Set V threshold for averaging chrominance values.
+        Set finer control for max allowed difference between V components
+        of current pixel and neigbour pixels.
+        Default value is 200. Allowed range is from 1 to 200.
+        - **`distance`**
+          - Set distance type used in calculations.
+        ‘
+        manhattan
+        ’
+        Absolute difference.
+        ‘
+        euclidean
+        ’
+        Difference squared.
+        Default distance type is manhattan.
+        Set threshold for averaging chrominance values.
+        Sum of absolute difference of Y, U and V pixel components of current
+        pixel and neighbour pixels lower than this threshold will be used in
+        averaging. Luma component is left unchanged and is copied to output.
+        Default value is 30. Allowed range is from 1 to 200.
+
+
+        Set horizontal radius of rectangle used for averaging.
+        Allowed range is from 1 to 100. Default value is 5.
+
+
+        Set vertical radius of rectangle used for averaging.
+        Allowed range is from 1 to 100. Default value is 5.
+
+
+        Set horizontal step when averaging. Default value is 1.
+        Allowed range is from 1 to 50.
+        Mostly useful to speed-up filtering.
+
+
+        Set vertical step when averaging. Default value is 1.
+        Allowed range is from 1 to 50.
+        Mostly useful to speed-up filtering.
+
+
+        Set Y threshold for averaging chrominance values.
+        Set finer control for max allowed difference between Y components
+        of current pixel and neigbour pixels.
+        Default value is 200. Allowed range is from 1 to 200.
+
+
+        Set U threshold for averaging chrominance values.
+        Set finer control for max allowed difference between U components
+        of current pixel and neigbour pixels.
+        Default value is 200. Allowed range is from 1 to 200.
+
+
+        Set V threshold for averaging chrominance values.
+        Set finer control for max allowed difference between V components
+        of current pixel and neigbour pixels.
+        Default value is 200. Allowed range is from 1 to 200.
+
+
+        Set distance type used in calculations.
+
+
+        - **`‘manhattan’`**
+          - Absolute difference.
+        - **`‘euclidean’`**
+          - Difference squared.
+        Absolute difference.
+
+
+        Difference squared.
+
+
+        Default distance type is manhattan.
+
+
+
 
         Parameters:
         ----------
@@ -1788,10 +3645,44 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.28 chromashift
+        ### 11.28 chromashift
+
         Shift chroma pixels horizontally and/or vertically.
 
+
         The filter accepts the following options:
+
+
+        - **`cbh`**
+          - Set amount to shift chroma-blue horizontally.
+        - **`cbv`**
+          - Set amount to shift chroma-blue vertically.
+        - **`crh`**
+          - Set amount to shift chroma-red horizontally.
+        - **`crv`**
+          - Set amount to shift chroma-red vertically.
+        - **`edge`**
+          - Set edge mode, can be
+        smear
+        , default, or
+        warp
+        .
+        Set amount to shift chroma-blue horizontally.
+
+
+        Set amount to shift chroma-blue vertically.
+
+
+        Set amount to shift chroma-red horizontally.
+
+
+        Set amount to shift chroma-red vertically.
+
+
+        Set edge mode, can be smear, default, or warp.
+
+
+
 
         Parameters:
         ----------
@@ -1874,10 +3765,123 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.29 ciescope
+        ### 11.29 ciescope
+
         Display CIE color diagram with pixels overlaid onto it.
 
+
         The filter accepts the following options:
+
+
+        - **`system`**
+          - Set color system.
+        ‘
+        ntsc, 470m
+        ’
+        ‘
+        ebu, 470bg
+        ’
+        ‘
+        smpte
+        ’
+        ‘
+        240m
+        ’
+        ‘
+        apple
+        ’
+        ‘
+        widergb
+        ’
+        ‘
+        cie1931
+        ’
+        ‘
+        rec709, hdtv
+        ’
+        ‘
+        uhdtv, rec2020
+        ’
+        ‘
+        dcip3
+        ’
+        - **`cie`**
+          - Set CIE system.
+        ‘
+        xyy
+        ’
+        ‘
+        ucs
+        ’
+        ‘
+        luv
+        ’
+        - **`gamuts`**
+          - Set what gamuts to draw.
+        See
+        system
+        option for available values.
+        - **`size, s`**
+          - Set ciescope size, by default set to 512.
+        - **`intensity, i`**
+          - Set intensity used to map input pixel values to CIE diagram.
+        - **`contrast`**
+          - Set contrast used to draw tongue colors that are out of active color system gamut.
+        - **`corrgamma`**
+          - Correct gamma displayed on scope, by default enabled.
+        - **`showwhite`**
+          - Show white point on CIE diagram, by default disabled.
+        - **`gamma`**
+          - Set input gamma. Used only with XYZ input color space.
+        - **`fill`**
+          - Fill with CIE colors. By default is enabled.
+        Set color system.
+
+
+        - **`‘ntsc, 470m’`**
+        - **`‘ebu, 470bg’`**
+        - **`‘smpte’`**
+        - **`‘240m’`**
+        - **`‘apple’`**
+        - **`‘widergb’`**
+        - **`‘cie1931’`**
+        - **`‘rec709, hdtv’`**
+        - **`‘uhdtv, rec2020’`**
+        - **`‘dcip3’`**
+        Set CIE system.
+
+
+        - **`‘xyy’`**
+        - **`‘ucs’`**
+        - **`‘luv’`**
+        Set what gamuts to draw.
+
+
+        See system option for available values.
+
+
+        Set ciescope size, by default set to 512.
+
+
+        Set intensity used to map input pixel values to CIE diagram.
+
+
+        Set contrast used to draw tongue colors that are out of active color system gamut.
+
+
+        Correct gamma displayed on scope, by default enabled.
+
+
+        Show white point on CIE diagram, by default disabled.
+
+
+        Set input gamma. Used only with XYZ input color space.
+
+
+        Fill with CIE colors. By default is enabled.
+
+
+
 
         Parameters:
         ----------
@@ -1931,14 +3935,137 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.30 codecview
+        ### 11.30 codecview
+
         Visualize information exported by some codecs.
+
 
         Some codecs can export information through frames using side-data or other
         means. For example, some MPEG based codecs export motion vectors through the
         export_mvs flag in the codec flags2 option.
 
+
         The filter accepts the following option:
+
+
+        - **`block`**
+          - Display block partition structure using the luma plane.
+        - **`mv`**
+          - Set motion vectors to visualize.
+        Available flags for
+        mv
+        are:
+        ‘
+        pf
+        ’
+        forward predicted MVs of P-frames
+        ‘
+        bf
+        ’
+        forward predicted MVs of B-frames
+        ‘
+        bb
+        ’
+        backward predicted MVs of B-frames
+        - **`qp`**
+          - Display quantization parameters using the chroma planes.
+        - **`mv_type, mvt`**
+          - Set motion vectors type to visualize. Includes MVs from all frames unless specified by
+        frame_type
+        option.
+        Available flags for
+        mv_type
+        are:
+        ‘
+        fp
+        ’
+        forward predicted MVs
+        ‘
+        bp
+        ’
+        backward predicted MVs
+        - **`frame_type, ft`**
+          - Set frame type to visualize motion vectors of.
+        Available flags for
+        frame_type
+        are:
+        ‘
+        if
+        ’
+        intra-coded frames (I-frames)
+        ‘
+        pf
+        ’
+        predicted frames (P-frames)
+        ‘
+        bf
+        ’
+        bi-directionally predicted frames (B-frames)
+        Display block partition structure using the luma plane.
+
+
+        Set motion vectors to visualize.
+
+
+        Available flags for mv are:
+
+
+        - **`‘pf’`**
+          - forward predicted MVs of P-frames
+        - **`‘bf’`**
+          - forward predicted MVs of B-frames
+        - **`‘bb’`**
+          - backward predicted MVs of B-frames
+        forward predicted MVs of P-frames
+
+
+        forward predicted MVs of B-frames
+
+
+        backward predicted MVs of B-frames
+
+
+        Display quantization parameters using the chroma planes.
+
+
+        Set motion vectors type to visualize. Includes MVs from all frames unless specified by frame_type option.
+
+
+        Available flags for mv_type are:
+
+
+        - **`‘fp’`**
+          - forward predicted MVs
+        - **`‘bp’`**
+          - backward predicted MVs
+        forward predicted MVs
+
+
+        backward predicted MVs
+
+
+        Set frame type to visualize motion vectors of.
+
+
+        Available flags for frame_type are:
+
+
+        - **`‘if’`**
+          - intra-coded frames (I-frames)
+        - **`‘pf’`**
+          - predicted frames (P-frames)
+        - **`‘bf’`**
+          - bi-directionally predicted frames (B-frames)
+        intra-coded frames (I-frames)
+
+
+        predicted frames (P-frames)
+
+
+        bi-directionally predicted frames (B-frames)
+
+
+
 
         Parameters:
         ----------
@@ -1987,16 +4114,57 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.31 colorbalance
+        ### 11.31 colorbalance
+
         Modify intensity of primary colors (red, green and blue) of input frames.
+
 
         The filter allows an input frame to be adjusted in the shadows, midtones or highlights
         regions for the red-cyan, green-magenta or blue-yellow balance.
 
+
         A positive adjustment value shifts the balance towards the primary color, a negative
         value towards the complementary color.
 
+
         The filter accepts the following options:
+
+
+        - **`rs`**
+        - **`gs`**
+        - **`bs`**
+          - Adjust red, green and blue shadows (darkest pixels).
+        - **`rm`**
+        - **`gm`**
+        - **`bm`**
+          - Adjust red, green and blue midtones (medium pixels).
+        - **`rh`**
+        - **`gh`**
+        - **`bh`**
+          - Adjust red, green and blue highlights (brightest pixels).
+        Allowed ranges for options are
+        [-1.0, 1.0]
+        . Defaults are
+        0
+        .
+        - **`pl`**
+          - Preserve lightness when changing color balance. Default is disabled.
+        Adjust red, green and blue shadows (darkest pixels).
+
+
+        Adjust red, green and blue midtones (medium pixels).
+
+
+        Adjust red, green and blue highlights (brightest pixels).
+
+
+        Allowed ranges for options are [-1.0, 1.0]. Defaults are 0.
+
+
+        Preserve lightness when changing color balance. Default is disabled.
+
+
+
 
         Parameters:
         ----------
@@ -2063,16 +4231,193 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.34 colorchannelmixer
+        ### 11.34 colorchannelmixer
+
         Adjust video input frames by re-mixing color channels.
+
 
         This filter modifies a color channel by adding the values associated to
         the other channels of the same pixels. For example if the value to
         modify is red, the output value will be:
 
-        red=red*rr + blue*rb + green*rg + alpha*ra
 
         The filter accepts the following options:
+
+
+        - **`rr`**
+        - **`rg`**
+        - **`rb`**
+        - **`ra`**
+          - Adjust contribution of input red, green, blue and alpha channels for output red channel.
+        Default is
+        1
+        for
+        rr
+        , and
+        0
+        for
+        rg
+        ,
+        rb
+        and
+        ra
+        .
+        - **`gr`**
+        - **`gg`**
+        - **`gb`**
+        - **`ga`**
+          - Adjust contribution of input red, green, blue and alpha channels for output green channel.
+        Default is
+        1
+        for
+        gg
+        , and
+        0
+        for
+        gr
+        ,
+        gb
+        and
+        ga
+        .
+        - **`br`**
+        - **`bg`**
+        - **`bb`**
+        - **`ba`**
+          - Adjust contribution of input red, green, blue and alpha channels for output blue channel.
+        Default is
+        1
+        for
+        bb
+        , and
+        0
+        for
+        br
+        ,
+        bg
+        and
+        ba
+        .
+        - **`ar`**
+        - **`ag`**
+        - **`ab`**
+        - **`aa`**
+          - Adjust contribution of input red, green, blue and alpha channels for output alpha channel.
+        Default is
+        1
+        for
+        aa
+        , and
+        0
+        for
+        ar
+        ,
+        ag
+        and
+        ab
+        .
+        Allowed ranges for options are
+        [-2.0, 2.0]
+        .
+        - **`pc`**
+          - Set preserve color mode. The accepted values are:
+        ‘
+        none
+        ’
+        Disable color preserving, this is default.
+        ‘
+        lum
+        ’
+        Preserve luminance.
+        ‘
+        max
+        ’
+        Preserve max value of RGB triplet.
+        ‘
+        avg
+        ’
+        Preserve average value of RGB triplet.
+        ‘
+        sum
+        ’
+        Preserve sum value of RGB triplet.
+        ‘
+        nrm
+        ’
+        Preserve normalized value of RGB triplet.
+        ‘
+        pwr
+        ’
+        Preserve power value of RGB triplet.
+        - **`pa`**
+          - Set the preserve color amount when changing colors. Allowed range is from
+        [0.0, 1.0]
+        .
+        Default is
+        0.0
+        , thus disabled.
+        Adjust contribution of input red, green, blue and alpha channels for output red channel.
+        Default is 1 for rr, and 0 for rg, rb and ra.
+
+
+        Adjust contribution of input red, green, blue and alpha channels for output green channel.
+        Default is 1 for gg, and 0 for gr, gb and ga.
+
+
+        Adjust contribution of input red, green, blue and alpha channels for output blue channel.
+        Default is 1 for bb, and 0 for br, bg and ba.
+
+
+        Adjust contribution of input red, green, blue and alpha channels for output alpha channel.
+        Default is 1 for aa, and 0 for ar, ag and ab.
+
+
+        Allowed ranges for options are [-2.0, 2.0].
+
+
+        Set preserve color mode. The accepted values are:
+
+
+        - **`‘none’`**
+          - Disable color preserving, this is default.
+        - **`‘lum’`**
+          - Preserve luminance.
+        - **`‘max’`**
+          - Preserve max value of RGB triplet.
+        - **`‘avg’`**
+          - Preserve average value of RGB triplet.
+        - **`‘sum’`**
+          - Preserve sum value of RGB triplet.
+        - **`‘nrm’`**
+          - Preserve normalized value of RGB triplet.
+        - **`‘pwr’`**
+          - Preserve power value of RGB triplet.
+        Disable color preserving, this is default.
+
+
+        Preserve luminance.
+
+
+        Preserve max value of RGB triplet.
+
+
+        Preserve average value of RGB triplet.
+
+
+        Preserve sum value of RGB triplet.
+
+
+        Preserve normalized value of RGB triplet.
+
+
+        Preserve power value of RGB triplet.
+
+
+        Set the preserve color amount when changing colors. Allowed range is from [0.0, 1.0].
+        Default is 0.0, thus disabled.
+
+
+
 
         Parameters:
         ----------
@@ -2144,10 +4489,50 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.32 colorcontrast
+        ### 11.32 colorcontrast
+
         Adjust color contrast between RGB components.
 
+
         The filter accepts the following options:
+
+
+        - **`rc`**
+          - Set the red-cyan contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.
+        - **`gm`**
+          - Set the green-magenta contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.
+        - **`by`**
+          - Set the blue-yellow contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.
+        - **`rcw`**
+        - **`gmw`**
+        - **`byw`**
+          - Set the weight of each
+        rc
+        ,
+        gm
+        ,
+        by
+        option value. Default value is 0.0.
+        Allowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.
+        - **`pl`**
+          - Set the amount of preserving lightness. Default value is 0.0. Allowed range is from 0.0 to 1.0.
+        Set the red-cyan contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.
+
+
+        Set the green-magenta contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.
+
+
+        Set the blue-yellow contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.
+
+
+        Set the weight of each rc, gm, by option value. Default value is 0.0.
+        Allowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.
+
+
+        Set the amount of preserving lightness. Default value is 0.0. Allowed range is from 0.0 to 1.0.
+
+
+
 
         Parameters:
         ----------
@@ -2196,11 +4581,86 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.33 colorcorrect
+        ### 11.33 colorcorrect
+
         Adjust color white balance selectively for blacks and whites.
         This filter operates in YUV colorspace.
 
+
         The filter accepts the following options:
+
+
+        - **`rl`**
+          - Set the red shadow spot. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+        - **`bl`**
+          - Set the blue shadow spot. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+        - **`rh`**
+          - Set the red highlight spot. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+        - **`bh`**
+          - Set the blue highlight spot. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+        - **`saturation`**
+          - Set the amount of saturation. Allowed range is from -3.0 to 3.0.
+        Default value is 1.
+        - **`analyze`**
+          - If set to anything other than
+        manual
+        it will analyze every frame and use derived
+        parameters for filtering output frame.
+        Possible values are:
+        ‘
+        manual
+        ’
+        ‘
+        average
+        ’
+        ‘
+        minmax
+        ’
+        ‘
+        median
+        ’
+        Default value is
+        manual
+        .
+        Set the red shadow spot. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+
+
+        Set the blue shadow spot. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+
+
+        Set the red highlight spot. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+
+
+        Set the blue highlight spot. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+
+
+        Set the amount of saturation. Allowed range is from -3.0 to 3.0.
+        Default value is 1.
+
+
+        If set to anything other than manual it will analyze every frame and use derived
+        parameters for filtering output frame.
+
+
+        Possible values are:
+
+
+        - **`‘manual’`**
+        - **`‘average’`**
+        - **`‘minmax’`**
+        - **`‘median’`**
+        Default value is manual.
+
+
+
 
         Parameters:
         ----------
@@ -2244,10 +4704,34 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.37 colorhold
+        ### 11.37 colorhold
+
         Remove all color information for all RGB colors except for certain one.
 
+
         The filter accepts the following options:
+
+
+        - **`color`**
+          - The color which will not be replaced with neutral gray.
+        - **`similarity`**
+          - Similarity percentage with the above color.
+        0.01 matches only the exact key color, while 1.0 matches everything.
+        - **`blend`**
+          - Blend percentage. 0.0 makes pixels fully gray.
+        Higher values result in more preserved color.
+        The color which will not be replaced with neutral gray.
+
+
+        Similarity percentage with the above color.
+        0.01 matches only the exact key color, while 1.0 matches everything.
+
+
+        Blend percentage. 0.0 makes pixels fully gray.
+        Higher values result in more preserved color.
+
+
+
 
         Parameters:
         ----------
@@ -2286,10 +4770,43 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.35 colorize
+        ### 11.35 colorize
+
         Overlay a solid color on the video stream.
 
+
         The filter accepts the following options:
+
+
+        - **`hue`**
+          - Set the color hue. Allowed range is from 0 to 360.
+        Default value is 0.
+        - **`saturation`**
+          - Set the color saturation. Allowed range is from 0 to 1.
+        Default value is 0.5.
+        - **`lightness`**
+          - Set the color lightness. Allowed range is from 0 to 1.
+        Default value is 0.5.
+        - **`mix`**
+          - Set the mix of source lightness. By default is set to 1.0.
+        Allowed range is from 0.0 to 1.0.
+        Set the color hue. Allowed range is from 0 to 360.
+        Default value is 0.
+
+
+        Set the color saturation. Allowed range is from 0 to 1.
+        Default value is 0.5.
+
+
+        Set the color lightness. Allowed range is from 0 to 1.
+        Default value is 0.5.
+
+
+        Set the mix of source lightness. By default is set to 1.0.
+        Allowed range is from 0.0 to 1.0.
+
+
+
 
         Parameters:
         ----------
@@ -2329,13 +4846,61 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.36 colorkey
+        ### 11.36 colorkey
+
         RGB colorspace color keying.
         This filter operates on 8-bit RGB format frames by setting the alpha component of each pixel
         which falls within the similarity radius of the key color to 0. The alpha value for pixels outside
         the similarity radius depends on the value of the blend option.
 
+
         The filter accepts the following options:
+
+
+        - **`color`**
+          - Set the color for which alpha will be set to 0 (full transparency).
+        See
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual
+        .
+        Default is
+        black
+        .
+        - **`similarity`**
+          - Set the radius from the key color within which other colors also have full transparency.
+        The computed distance is related to the unit fractional distance in 3D space between the RGB values
+        of the key color and the pixel’s color. Range is 0.01 to 1.0. 0.01 matches within a very small radius
+        around the exact key color, while 1.0 matches everything.
+        Default is
+        0.01
+        .
+        - **`blend`**
+          - Set how the alpha value for pixels that fall outside the similarity radius is computed.
+        0.0 makes pixels either fully transparent or fully opaque.
+        Higher values result in semi-transparent pixels, with greater transparency
+        the more similar the pixel color is to the key color.
+        Range is 0.0 to 1.0. Default is
+        0.0
+        .
+        Set the color for which alpha will be set to 0 (full transparency).
+        See (ffmpeg-utils)"Color" section in the ffmpeg-utils manual.
+        Default is black.
+
+
+        Set the radius from the key color within which other colors also have full transparency.
+        The computed distance is related to the unit fractional distance in 3D space between the RGB values
+        of the key color and the pixel’s color. Range is 0.01 to 1.0. 0.01 matches within a very small radius
+        around the exact key color, while 1.0 matches everything.
+        Default is 0.01.
+
+
+        Set how the alpha value for pixels that fall outside the similarity radius is computed.
+        0.0 makes pixels either fully transparent or fully opaque.
+        Higher values result in semi-transparent pixels, with greater transparency
+        the more similar the pixel color is to the key color.
+        Range is 0.0 to 1.0. Default is 0.0.
+
+
+
 
         Parameters:
         ----------
@@ -2373,10 +4938,44 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.3 colorkey_opencl
+        ### 12.3 colorkey_opencl
+
         RGB colorspace color keying.
 
+
         The filter accepts the following options:
+
+
+        - **`color`**
+          - The color which will be replaced with transparency.
+        - **`similarity`**
+          - Similarity percentage with the key color.
+        0.01 matches only the exact key color, while 1.0 matches everything.
+        - **`blend`**
+          - Blend percentage.
+        0.0 makes pixels either fully transparent, or not transparent at all.
+        Higher values result in semi-transparent pixels, with a higher transparency
+        the more similar the pixels color is to the key color.
+        The color which will be replaced with transparency.
+
+
+        Similarity percentage with the key color.
+
+
+        0.01 matches only the exact key color, while 1.0 matches everything.
+
+
+        Blend percentage.
+
+
+        0.0 makes pixels either fully transparent, or not transparent at all.
+
+
+        Higher values result in semi-transparent pixels, with a higher transparency
+        the more similar the pixels color is to the key color.
+
+
+
 
         Parameters:
         ----------
@@ -2428,10 +5027,149 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.38 colorlevels
+        ### 11.38 colorlevels
+
         Adjust video input frames using levels.
 
+
         The filter accepts the following options:
+
+
+        - **`rimin`**
+        - **`gimin`**
+        - **`bimin`**
+        - **`aimin`**
+          - Adjust red, green, blue and alpha input black point.
+        Allowed ranges for options are
+        [-1.0, 1.0]
+        . Defaults are
+        0
+        .
+        - **`rimax`**
+        - **`gimax`**
+        - **`bimax`**
+        - **`aimax`**
+          - Adjust red, green, blue and alpha input white point.
+        Allowed ranges for options are
+        [-1.0, 1.0]
+        . Defaults are
+        1
+        .
+        Input levels are used to lighten highlights (bright tones), darken shadows
+        (dark tones), change the balance of bright and dark tones.
+        - **`romin`**
+        - **`gomin`**
+        - **`bomin`**
+        - **`aomin`**
+          - Adjust red, green, blue and alpha output black point.
+        Allowed ranges for options are
+        [0, 1.0]
+        . Defaults are
+        0
+        .
+        - **`romax`**
+        - **`gomax`**
+        - **`bomax`**
+        - **`aomax`**
+          - Adjust red, green, blue and alpha output white point.
+        Allowed ranges for options are
+        [0, 1.0]
+        . Defaults are
+        1
+        .
+        Output levels allows manual selection of a constrained output level range.
+        - **`preserve`**
+          - Set preserve color mode. The accepted values are:
+        ‘
+        none
+        ’
+        Disable color preserving, this is default.
+        ‘
+        lum
+        ’
+        Preserve luminance.
+        ‘
+        max
+        ’
+        Preserve max value of RGB triplet.
+        ‘
+        avg
+        ’
+        Preserve average value of RGB triplet.
+        ‘
+        sum
+        ’
+        Preserve sum value of RGB triplet.
+        ‘
+        nrm
+        ’
+        Preserve normalized value of RGB triplet.
+        ‘
+        pwr
+        ’
+        Preserve power value of RGB triplet.
+        Adjust red, green, blue and alpha input black point.
+        Allowed ranges for options are [-1.0, 1.0]. Defaults are 0.
+
+
+        Adjust red, green, blue and alpha input white point.
+        Allowed ranges for options are [-1.0, 1.0]. Defaults are 1.
+
+
+        Input levels are used to lighten highlights (bright tones), darken shadows
+        (dark tones), change the balance of bright and dark tones.
+
+
+        Adjust red, green, blue and alpha output black point.
+        Allowed ranges for options are [0, 1.0]. Defaults are 0.
+
+
+        Adjust red, green, blue and alpha output white point.
+        Allowed ranges for options are [0, 1.0]. Defaults are 1.
+
+
+        Output levels allows manual selection of a constrained output level range.
+
+
+        Set preserve color mode. The accepted values are:
+
+
+        - **`‘none’`**
+          - Disable color preserving, this is default.
+        - **`‘lum’`**
+          - Preserve luminance.
+        - **`‘max’`**
+          - Preserve max value of RGB triplet.
+        - **`‘avg’`**
+          - Preserve average value of RGB triplet.
+        - **`‘sum’`**
+          - Preserve sum value of RGB triplet.
+        - **`‘nrm’`**
+          - Preserve normalized value of RGB triplet.
+        - **`‘pwr’`**
+          - Preserve power value of RGB triplet.
+        Disable color preserving, this is default.
+
+
+        Preserve luminance.
+
+
+        Preserve max value of RGB triplet.
+
+
+        Preserve average value of RGB triplet.
+
+
+        Preserve sum value of RGB triplet.
+
+
+        Preserve normalized value of RGB triplet.
+
+
+        Preserve power value of RGB triplet.
+
+
+
 
         Parameters:
         ----------
@@ -2500,15 +5238,73 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.39 colormap
+        ### 11.39 colormap
+
         Apply custom color maps to video stream.
+
 
         This filter needs three input video streams.
         First stream is video stream that is going to be filtered out.
         Second and third video stream specify color patches for source
         color to target color mapping.
 
+
         The filter accepts the following options:
+
+
+        - **`patch_size`**
+          - Set the source and target video stream patch size in pixels.
+        - **`nb_patches`**
+          - Set the max number of used patches from source and target video stream.
+        Default value is number of patches available in additional video streams.
+        Max allowed number of patches is
+        64
+        .
+        - **`type`**
+          - Set the adjustments used for target colors. Can be
+        relative
+        or
+        absolute
+        .
+        Defaults is
+        absolute
+        .
+        - **`kernel`**
+          - Set the kernel used to measure color differences between mapped colors.
+        The accepted values are:
+        ‘
+        euclidean
+        ’
+        ‘
+        weuclidean
+        ’
+        Default is
+        euclidean
+        .
+        Set the source and target video stream patch size in pixels.
+
+
+        Set the max number of used patches from source and target video stream.
+        Default value is number of patches available in additional video streams.
+        Max allowed number of patches is 64.
+
+
+        Set the adjustments used for target colors. Can be relative or absolute.
+        Defaults is absolute.
+
+
+        Set the kernel used to measure color differences between mapped colors.
+
+
+        The accepted values are:
+
+
+        - **`‘euclidean’`**
+        - **`‘weuclidean’`**
+        Default is euclidean.
+
+
+
 
         Parameters:
         ----------
@@ -2553,15 +5349,102 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.40 colormatrix
+        ### 11.40 colormatrix
+
         Convert color matrix.
+
 
         The filter accepts the following options:
 
 
+        - **`src`**
+        - **`dst`**
+          - Specify the source and destination color matrix. Both values must be
+        specified.
+        The accepted values are:
+        ‘
+        bt709
+        ’
+        BT.709
+        ‘
+        fcc
+        ’
+        FCC
+        ‘
+        bt601
+        ’
+        BT.601
+        ‘
+        bt470
+        ’
+        BT.470
+        ‘
+        bt470bg
+        ’
+        BT.470BG
+        ‘
+        smpte170m
+        ’
+        SMPTE-170M
+        ‘
+        smpte240m
+        ’
+        SMPTE-240M
+        ‘
+        bt2020
+        ’
+        BT.2020
+        Specify the source and destination color matrix. Both values must be
+        specified.
+
+
+        The accepted values are:
+
+
+        - **`‘bt709’`**
+          - BT.709
+        - **`‘fcc’`**
+          - FCC
+        - **`‘bt601’`**
+          - BT.601
+        - **`‘bt470’`**
+          - BT.470
+        - **`‘bt470bg’`**
+          - BT.470BG
+        - **`‘smpte170m’`**
+          - SMPTE-170M
+        - **`‘smpte240m’`**
+          - SMPTE-240M
+        - **`‘bt2020’`**
+          - BT.2020
+        BT.709
+
+
+        FCC
+
+
+        BT.601
+
+
+        BT.470
+
+
+        BT.470BG
+
+
+        SMPTE-170M
+
+
+        SMPTE-240M
+
+
+        BT.2020
+
+
         For example to convert from BT.601 to SMPTE-240M, use the command:
 
-        colormatrix=bt601:smpte240m
+
+
 
         Parameters:
         ----------
@@ -2692,11 +5575,17 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.41 colorspace
+        ### 11.41 colorspace
+
         Convert colorspace, transfer characteristics or color primaries.
         Input video needs to have an even size.
 
+
         The filter accepts the following options:
+
+
+          -
+
 
         Parameters:
         ----------
@@ -2754,14 +5643,65 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.42 colorspace_cuda
+        ### 11.42 colorspace_cuda
+
         CUDA accelerated implementation of the colorspace filter.
+
 
         It is by no means feature complete compared to the software colorspace filter,
         and at the current time only supports color range conversion between jpeg/full
         and mpeg/limited range.
 
+
         The filter accepts the following options:
+
+
+        - **`range`**
+          - Specify output color range.
+        The accepted values are:
+        ‘
+        tv
+        ’
+        TV (restricted) range
+        ‘
+        mpeg
+        ’
+        MPEG (restricted) range
+        ‘
+        pc
+        ’
+        PC (full) range
+        ‘
+        jpeg
+        ’
+        JPEG (full) range
+        Specify output color range.
+
+
+        The accepted values are:
+
+
+        - **`‘tv’`**
+          - TV (restricted) range
+        - **`‘mpeg’`**
+          - MPEG (restricted) range
+        - **`‘pc’`**
+          - PC (full) range
+        - **`‘jpeg’`**
+          - JPEG (full) range
+        TV (restricted) range
+
+
+        MPEG (restricted) range
+
+
+        PC (full) range
+
+
+        JPEG (full) range
+
+
+
 
         Parameters:
         ----------
@@ -2795,10 +5735,36 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.43 colortemperature
+        ### 11.43 colortemperature
+
         Adjust color temperature in video to simulate variations in ambient color temperature.
 
+
         The filter accepts the following options:
+
+
+        - **`temperature`**
+          - Set the temperature in Kelvin. Allowed range is from 1000 to 40000.
+        Default value is 6500 K.
+        - **`mix`**
+          - Set mixing with filtered output. Allowed range is from 0 to 1.
+        Default value is 1.
+        - **`pl`**
+          - Set the amount of preserving lightness. Allowed range is from 0 to 1.
+        Default value is 0.
+        Set the temperature in Kelvin. Allowed range is from 1000 to 40000.
+        Default value is 6500 K.
+
+
+        Set mixing with filtered output. Allowed range is from 0 to 1.
+        Default value is 1.
+
+
+        Set the amount of preserving lightness. Allowed range is from 0 to 1.
+        Default value is 0.
+
+
+
 
         Parameters:
         ----------
@@ -2849,10 +5815,69 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.44 convolution
+        ### 11.44 convolution
+
         Apply convolution of 3x3, 5x5, 7x7 or horizontal/vertical up to 49 elements.
 
+
         The filter accepts the following options:
+
+
+        - **`0m`**
+        - **`1m`**
+        - **`2m`**
+        - **`3m`**
+          - Set matrix for each plane.
+        Matrix is sequence of 9, 25 or 49 signed integers in
+        square
+        mode,
+        and from 1 to 49 odd number of signed integers in
+        row
+        mode.
+        - **`0rdiv`**
+        - **`1rdiv`**
+        - **`2rdiv`**
+        - **`3rdiv`**
+          - Set multiplier for calculated value for each plane.
+        If unset or 0, it will be sum of all matrix elements.
+        - **`0bias`**
+        - **`1bias`**
+        - **`2bias`**
+        - **`3bias`**
+          - Set bias for each plane. This value is added to the result of the multiplication.
+        Useful for making the overall image brighter or darker. Default is 0.0.
+        - **`0mode`**
+        - **`1mode`**
+        - **`2mode`**
+        - **`3mode`**
+          - Set matrix mode for each plane. Can be
+        square
+        ,
+        row
+        or
+        column
+        .
+        Default is
+        square
+        .
+        Set matrix for each plane.
+        Matrix is sequence of 9, 25 or 49 signed integers in square mode,
+        and from 1 to 49 odd number of signed integers in row mode.
+
+
+        Set multiplier for calculated value for each plane.
+        If unset or 0, it will be sum of all matrix elements.
+
+
+        Set bias for each plane. This value is added to the result of the multiplication.
+        Useful for making the overall image brighter or darker. Default is 0.0.
+
+
+        Set matrix mode for each plane. Can be square, row or column.
+        Default is square.
+
+
+
 
         Parameters:
         ----------
@@ -2925,10 +5950,61 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.4 convolution_opencl
+        ### 12.4 convolution_opencl
+
         Apply convolution of 3x3, 5x5, 7x7 matrix.
 
+
         The filter accepts the following options:
+
+
+        - **`0m`**
+        - **`1m`**
+        - **`2m`**
+        - **`3m`**
+          - Set matrix for each plane.
+        Matrix is sequence of 9, 25 or 49 signed numbers.
+        Default value for each plane is
+        0 0 0 0 1 0 0 0 0
+        .
+        - **`0rdiv`**
+        - **`1rdiv`**
+        - **`2rdiv`**
+        - **`3rdiv`**
+          - Set multiplier for calculated value for each plane.
+        If unset or 0, it will be sum of all matrix elements.
+        The option value must be a float number greater or equal to
+        0.0
+        . Default value is
+        1.0
+        .
+        - **`0bias`**
+        - **`1bias`**
+        - **`2bias`**
+        - **`3bias`**
+          - Set bias for each plane. This value is added to the result of the multiplication.
+        Useful for making the overall image brighter or darker.
+        The option value must be a float number greater or equal to
+        0.0
+        . Default value is
+        0.0
+        .
+        Set matrix for each plane.
+        Matrix is sequence of 9, 25 or 49 signed numbers.
+        Default value for each plane is 0 0 0 0 1 0 0 0 0.
+
+
+        Set multiplier for calculated value for each plane.
+        If unset or 0, it will be sum of all matrix elements.
+        The option value must be a float number greater or equal to 0.0. Default value is 1.0.
+
+
+        Set bias for each plane. This value is added to the result of the multiplication.
+        Useful for making the overall image brighter or darker.
+        The option value must be a float number greater or equal to 0.0. Default value is 0.0.
+
+
+
 
         Parameters:
         ----------
@@ -2985,14 +6061,36 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.45 convolve
+        ### 11.45 convolve
+
         Apply 2D convolution of video stream in frequency domain using second stream
         as impulse.
+
 
         The filter accepts the following options:
 
 
+        - **`planes`**
+          - Set which planes to process.
+        - **`impulse`**
+          - Set which impulse video frames will be processed, can be
+        first
+        or
+        all
+        . Default is
+        all
+        .
+        Set which planes to process.
+
+
+        Set which impulse video frames will be processed, can be first
+        or all. Default is all.
+
+
         The convolve filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -3024,9 +6122,13 @@ class VideoStream(FilterableStream):
     def copy(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.46 copy
+        ### 11.46 copy
+
         Copy the input video source unchanged to the output. This is mainly useful for
         testing purposes.
+
+
+
 
         Parameters:
         ----------
@@ -3057,19 +6159,83 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.47 coreimage
+        ### 11.47 coreimage
+
         Video filtering on GPU using Apple’s CoreImage API on OSX.
+
 
         Hardware acceleration is based on an OpenGL context. Usually, this means it is
         processed by video hardware. However, software-based OpenGL implementations
         exist which means there is no guarantee for hardware processing. It depends on
         the respective OSX.
 
+
         There are many filters and image generators provided by Apple that come with a
         large variety of options. The filter has to be referenced by its name along
         with its options.
 
+
         The coreimage filter accepts the following options:
+
+
+        - **`list_filters`**
+          - List all available filters and generators along with all their respective
+        options as well as possible minimum and maximum values along with the default
+        values.
+        list_filters=true
+        - **`filter`**
+          - Specify all filters by their respective name and options.
+        Use
+        list_filters
+        to determine all valid filter names and options.
+        Numerical options are specified by a float value and are automatically clamped
+        to their respective value range.  Vector and color options have to be specified
+        by a list of space separated float values. Character escaping has to be done.
+        A special option name
+        default
+        is available to use default options for a
+        filter.
+        It is required to specify either
+        default
+        or at least one of the filter options.
+        All omitted options are used with their default values.
+        The syntax of the filter string is as follows:
+        filter=<NAME>@<OPTION>=<VALUE>[@<OPTION>=<VALUE>][@...][#<NAME>@<OPTION>=<VALUE>[@<OPTION>=<VALUE>][@...]][#...]
+        - **`output_rect`**
+          - Specify a rectangle where the output of the filter chain is copied into the
+        input image. It is given by a list of space separated float values:
+        output_rect=x\ y\ width\ height
+        If not given, the output rectangle equals the dimensions of the input image.
+        The output rectangle is automatically cropped at the borders of the input
+        image. Negative values are valid for each component.
+        output_rect=25\ 25\ 100\ 100
+        List all available filters and generators along with all their respective
+        options as well as possible minimum and maximum values along with the default
+        values.
+
+
+        Specify all filters by their respective name and options.
+        Use list_filters to determine all valid filter names and options.
+        Numerical options are specified by a float value and are automatically clamped
+        to their respective value range.  Vector and color options have to be specified
+        by a list of space separated float values. Character escaping has to be done.
+        A special option name default is available to use default options for a
+        filter.
+
+
+        It is required to specify either default or at least one of the filter options.
+        All omitted options are used with their default values.
+        The syntax of the filter string is as follows:
+
+
+        Specify a rectangle where the output of the filter chain is copied into the
+        input image. It is given by a list of space separated float values:
+
+
+        If not given, the output rectangle equals the dimensions of the input image.
+        The output rectangle is automatically cropped at the borders of the input
+        image. Negative values are valid for each component.
+
 
         Several filters can be chained for successive processing without GPU-HOST
         transfers allowing for fast processing of complex filter chains.
@@ -3077,9 +6243,11 @@ class VideoStream(FilterableStream):
         image and one output image are supported. Also, transition filters are not yet
         usable as intended.
 
+
         Some filters generate output images with additional padding depending on the
         respective filter kernel. The padding is automatically removed to ensure the
         filter output has the same size as the input image.
+
 
         For image generators, the size of the output image is determined by the
         previous output image of the filter chain or the input image of the whole
@@ -3088,9 +6256,13 @@ class VideoStream(FilterableStream):
         blended onto this image, resulting in partial or complete coverage of the
         output image.
 
+
         The coreimagesrc video source can be used for generating input images
         which are directly fed into the filter chain. By using it, providing input
         images by another video source or an input video is not required.
+
+
+
 
         Parameters:
         ----------
@@ -3123,27 +6295,34 @@ class VideoStream(FilterableStream):
     def corr(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
 
-        11.48 corr
+        ### 11.48 corr
+
         Obtain the correlation between two input videos.
 
+
         This filter takes two input videos.
+
 
         Both input videos must have the same resolution and pixel format for
         this filter to work correctly. Also it assumes that both inputs
         have the same number of frames, which are compared one by one.
 
+
         The obtained per component, average, min and max correlation is printed through
         the logging system.
 
+
         The filter stores the calculated correlation of each frame in frame metadata.
 
+
         This filter also supports the framesync options.
+
 
         In the below example the input file main.mpg being processed is compared
         with the reference file ref.mpg.
 
 
-        ffmpeg -i main.mpg -i ref.mpg -lavfi corr -f null -
+
 
         Parameters:
         ----------
@@ -3169,10 +6348,53 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.49 cover_rect
+        ### 11.49 cover_rect
+
         Cover a rectangular object
 
+
         It accepts the following options:
+
+
+        - **`cover`**
+          - Filepath of the optional cover image, needs to be in yuv420.
+        - **`mode`**
+          - Set covering mode.
+        It accepts the following values:
+        ‘
+        cover
+        ’
+        cover it by the supplied image
+        ‘
+        blur
+        ’
+        cover it by interpolating the surrounding pixels
+        Default value is
+        blur
+        .
+        Filepath of the optional cover image, needs to be in yuv420.
+
+
+        Set covering mode.
+
+
+        It accepts the following values:
+
+
+        - **`‘cover’`**
+          - cover it by the supplied image
+        - **`‘blur’`**
+          - cover it by interpolating the surrounding pixels
+        cover it by the supplied image
+
+
+        cover it by interpolating the surrounding pixels
+
+
+        Default value is blur.
+
+
+
 
         Parameters:
         ----------
@@ -3211,14 +6433,182 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.50 crop
+        ### 11.50 crop
+
         Crop the input video to given dimensions.
+
 
         It accepts the following parameters:
 
 
+        - **`w, out_w`**
+          - The width of the output video. It defaults to
+        iw
+        .
+        This expression is evaluated only once during the filter
+        configuration, or when the ‘
+        w
+        ’ or ‘
+        out_w
+        ’ command is sent.
+        - **`h, out_h`**
+          - The height of the output video. It defaults to
+        ih
+        .
+        This expression is evaluated only once during the filter
+        configuration, or when the ‘
+        h
+        ’ or ‘
+        out_h
+        ’ command is sent.
+        - **`x`**
+          - The horizontal position, in the input video, of the left edge of the output
+        video. It defaults to
+        (in_w-out_w)/2
+        .
+        This expression is evaluated per-frame.
+        - **`y`**
+          - The vertical position, in the input video, of the top edge of the output video.
+        It defaults to
+        (in_h-out_h)/2
+        .
+        This expression is evaluated per-frame.
+        - **`keep_aspect`**
+          - If set to 1 will force the output display aspect ratio
+        to be the same of the input, by changing the output sample aspect
+        ratio. It defaults to 0.
+        - **`exact`**
+          - Enable exact cropping. If enabled, subsampled videos will be cropped at exact
+        width/height/x/y as specified and will not be rounded to nearest smaller value.
+        It defaults to 0.
+        The width of the output video. It defaults to iw.
+        This expression is evaluated only once during the filter
+        configuration, or when the ‘w’ or ‘out_w’ command is sent.
+
+
+        The height of the output video. It defaults to ih.
+        This expression is evaluated only once during the filter
+        configuration, or when the ‘h’ or ‘out_h’ command is sent.
+
+
+        The horizontal position, in the input video, of the left edge of the output
+        video. It defaults to (in_w-out_w)/2.
+        This expression is evaluated per-frame.
+
+
+        The vertical position, in the input video, of the top edge of the output video.
+        It defaults to (in_h-out_h)/2.
+        This expression is evaluated per-frame.
+
+
+        If set to 1 will force the output display aspect ratio
+        to be the same of the input, by changing the output sample aspect
+        ratio. It defaults to 0.
+
+
+        Enable exact cropping. If enabled, subsampled videos will be cropped at exact
+        width/height/x/y as specified and will not be rounded to nearest smaller value.
+        It defaults to 0.
+
+
         The out_w, out_h, x, y parameters are
         expressions containing the following constants:
+
+
+        - **`x`**
+        - **`y`**
+          - The computed values for
+        x
+        and
+        y
+        . They are evaluated for
+        each new frame.
+        - **`in_w`**
+        - **`in_h`**
+          - The input width and height.
+        - **`iw`**
+        - **`ih`**
+          - These are the same as
+        in_w
+        and
+        in_h
+        .
+        - **`out_w`**
+        - **`out_h`**
+          - The output (cropped) width and height.
+        - **`ow`**
+        - **`oh`**
+          - These are the same as
+        out_w
+        and
+        out_h
+        .
+        - **`a`**
+          - same as
+        iw
+        /
+        ih
+        - **`sar`**
+          - input sample aspect ratio
+        - **`dar`**
+          - input display aspect ratio, it is the same as (
+        iw
+        /
+        ih
+        ) *
+        sar
+        - **`hsub`**
+        - **`vsub`**
+          - horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        - **`n`**
+          - The number of the input frame, starting from 0.
+        - **`pos`**
+          - the position in the file of the input frame, NAN if unknown; deprecated,
+        do not use
+        - **`t`**
+          - The timestamp expressed in seconds. It’s NAN if the input timestamp is unknown.
+        The computed values for x and y. They are evaluated for
+        each new frame.
+
+
+        The input width and height.
+
+
+        These are the same as in_w and in_h.
+
+
+        The output (cropped) width and height.
+
+
+        These are the same as out_w and out_h.
+
+
+        same as iw / ih
+
+
+        input sample aspect ratio
+
+
+        input display aspect ratio, it is the same as (iw / ih) * sar
+
+
+        horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p" hsub is 2 and vsub is 1.
+
+
+        The number of the input frame, starting from 0.
+
+
+        the position in the file of the input frame, NAN if unknown; deprecated,
+        do not use
+
+
+        The timestamp expressed in seconds. It’s NAN if the input timestamp is unknown.
 
 
         The expression for out_w may depend on the value of out_h,
@@ -3226,13 +6616,18 @@ class VideoStream(FilterableStream):
         cannot depend on x and y, as x and y are
         evaluated after out_w and out_h.
 
+
         The x and y parameters specify the expressions for the
         position of the top-left corner of the output (non-cropped) area. They
         are evaluated for each frame. If the evaluated value is not valid, it
         is approximated to the nearest valid value.
 
+
         The expression for x may depend on y, and the expression
         for y may depend on x.
+
+
+
 
         Parameters:
         ----------
@@ -3282,14 +6677,144 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.51 cropdetect
+        ### 11.51 cropdetect
+
         Auto-detect the crop size.
+
 
         It calculates the necessary cropping parameters and prints the
         recommended parameters via the logging system. The detected dimensions
         correspond to the non-black or video area of the input video according to mode.
 
+
         It accepts the following parameters:
+
+
+        - **`mode`**
+          - Depending on
+        mode
+        crop detection is based on either the mere black value of surrounding pixels or a combination of motion vectors and edge pixels.
+        ‘
+        black
+        ’
+        Detect black pixels surrounding the playing video. For fine control use option
+        limit
+        .
+        ‘
+        mvedges
+        ’
+        Detect the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.
+        - **`limit`**
+          - Set higher black value threshold, which can be optionally specified
+        from nothing (0) to everything (255 for 8-bit based formats). An intensity
+        value greater to the set value is considered non-black. It defaults to 24.
+        You can also specify a value between 0.0 and 1.0 which will be scaled depending
+        on the bitdepth of the pixel format.
+        - **`round`**
+          - The value which the width/height should be divisible by. It defaults to
+        16. The offset is automatically adjusted to center the video. Use 2 to
+        get only even dimensions (needed for 4:2:2 video). 16 is best when
+        encoding to most video codecs.
+        - **`skip`**
+          - Set the number of initial frames for which evaluation is skipped.
+        Default is 2. Range is 0 to INT_MAX.
+        - **`reset_count, reset`**
+          - Set the counter that determines after how many frames cropdetect will
+        reset the previously detected largest video area and start over to
+        detect the current optimal crop area. Default value is 0.
+        This can be useful when channel logos distort the video area. 0
+        indicates ’never reset’, and returns the largest area encountered during
+        playback.
+        - **`mv_threshold`**
+          - Set motion in pixel units as threshold for motion detection. It defaults to 8.
+        - **`low`**
+        - **`high`**
+          - Set low and high threshold values used by the Canny thresholding
+        algorithm.
+        The high threshold selects the "strong" edge pixels, which are then
+        connected through 8-connectivity with the "weak" edge pixels selected
+        by the low threshold.
+        low
+        and
+        high
+        threshold values must be chosen in the range
+        [0,1], and
+        low
+        should be lesser or equal to
+        high
+        .
+        Default value for
+        low
+        is
+        5/255
+        , and default value for
+        high
+        is
+        15/255
+        .
+        Depending on mode crop detection is based on either the mere black value of surrounding pixels or a combination of motion vectors and edge pixels.
+
+
+        - **`‘black’`**
+          - Detect black pixels surrounding the playing video. For fine control use option
+        limit
+        .
+        - **`‘mvedges’`**
+          - Detect the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.
+        Detect black pixels surrounding the playing video. For fine control use option limit.
+
+
+        Detect the playing video by the motion vectors inside the video and scanning for edge pixels typically forming the border of a playing video.
+
+
+        Set higher black value threshold, which can be optionally specified
+        from nothing (0) to everything (255 for 8-bit based formats). An intensity
+        value greater to the set value is considered non-black. It defaults to 24.
+        You can also specify a value between 0.0 and 1.0 which will be scaled depending
+        on the bitdepth of the pixel format.
+
+
+        The value which the width/height should be divisible by. It defaults to
+        16. The offset is automatically adjusted to center the video. Use 2 to
+        get only even dimensions (needed for 4:2:2 video). 16 is best when
+        encoding to most video codecs.
+
+
+        Set the number of initial frames for which evaluation is skipped.
+        Default is 2. Range is 0 to INT_MAX.
+
+
+        Set the counter that determines after how many frames cropdetect will
+        reset the previously detected largest video area and start over to
+        detect the current optimal crop area. Default value is 0.
+
+
+        This can be useful when channel logos distort the video area. 0
+        indicates ’never reset’, and returns the largest area encountered during
+        playback.
+
+
+        Set motion in pixel units as threshold for motion detection. It defaults to 8.
+
+
+        Set low and high threshold values used by the Canny thresholding
+        algorithm.
+
+
+        The high threshold selects the "strong" edge pixels, which are then
+        connected through 8-connectivity with the "weak" edge pixels selected
+        by the low threshold.
+
+
+        low and high threshold values must be chosen in the range
+        [0,1], and low should be lesser or equal to high.
+
+
+        Default value for low is 5/255, and default value for high
+        is 15/255.
+
+
+
 
         Parameters:
         ----------
@@ -3339,20 +6864,43 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.52 cue
+        ### 11.52 cue
+
         Delay video filtering until a given wallclock timestamp. The filter first
         passes on preroll amount of frames, then it buffers at most
         buffer amount of frames and waits for the cue. After reaching the cue
         it forwards the buffered frames and also any subsequent frames coming in its
         input.
 
+
         The filter can be used synchronize the output of multiple ffmpeg processes for
         realtime output devices like decklink. By putting the delay in the filtering
         chain and pre-buffering frames the process can pass on data to output almost
         immediately after the target wallclock timestamp is reached.
 
+
         Perfect frame accuracy cannot be guaranteed, but the result is good enough for
         some use cases.
+
+
+        - **`cue`**
+          - The cue timestamp expressed in a UNIX timestamp in microseconds. Default is 0.
+        - **`preroll`**
+          - The duration of content to pass on as preroll expressed in seconds. Default is 0.
+        - **`buffer`**
+          - The maximum duration of content to buffer before waiting for the cue expressed
+        in seconds. Default is 0.
+        The cue timestamp expressed in a UNIX timestamp in microseconds. Default is 0.
+
+
+        The duration of content to pass on as preroll expressed in seconds. Default is 0.
+
+
+        The maximum duration of content to buffer before waiting for the cue expressed
+        in seconds. Default is 0.
+
+
+
 
         Parameters:
         ----------
@@ -3410,8 +6958,10 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.53 curves
+        ### 11.53 curves
+
         Apply color adjustments using curves.
+
 
         This filter is similar to the Adobe Photoshop and GIMP curves tools. Each
         component (red, green and blue) has its values defined by N key points
@@ -3419,9 +6969,11 @@ class VideoStream(FilterableStream):
         values from the input frame, and the y-axis the new pixel values to be set for
         the output frame.
 
+
         By default, a component curve is defined by the two points (0;0) and
         (1;1). This creates a straight line where each original pixel value is
         "adjusted" to its own value, which means no change to the image.
+
 
         The filter allows you to redefine these two points and add some more. A new
         curve will be define to pass smoothly through all these new coordinates. The
@@ -3434,11 +6986,162 @@ class VideoStream(FilterableStream):
         monotonic. If the computed curves happened to go outside the vector spaces,
         the values will be clipped accordingly.
 
+
         The filter accepts the following options:
+
+
+        - **`preset`**
+          - Select one of the available color presets. This option can be used in addition
+        to the
+        r
+        ,
+        g
+        ,
+        b
+        parameters; in this case, the later
+        options takes priority on the preset values.
+        Available presets are:
+        ‘
+        none
+        ’
+        ‘
+        color_negative
+        ’
+        ‘
+        cross_process
+        ’
+        ‘
+        darker
+        ’
+        ‘
+        increase_contrast
+        ’
+        ‘
+        lighter
+        ’
+        ‘
+        linear_contrast
+        ’
+        ‘
+        medium_contrast
+        ’
+        ‘
+        negative
+        ’
+        ‘
+        strong_contrast
+        ’
+        ‘
+        vintage
+        ’
+        Default is
+        none
+        .
+        - **`master, m`**
+          - Set the master key points. These points will define a second pass mapping. It
+        is sometimes called a "luminance" or "value" mapping. It can be used with
+        r
+        ,
+        g
+        ,
+        b
+        or
+        all
+        since it acts like a
+        post-processing LUT.
+        - **`red, r`**
+          - Set the key points for the red component.
+        - **`green, g`**
+          - Set the key points for the green component.
+        - **`blue, b`**
+          - Set the key points for the blue component.
+        - **`all`**
+          - Set the key points for all components (not including master).
+        Can be used in addition to the other key points component
+        options. In this case, the unset component(s) will fallback on this
+        all
+        setting.
+        - **`psfile`**
+          - Specify a Photoshop curves file (
+        .acv
+        ) to import the settings from.
+        - **`plot`**
+          - Save Gnuplot script of the curves in specified file.
+        - **`interp`**
+          - Specify the kind of interpolation. Available algorithms are:
+        ‘
+        natural
+        ’
+        Natural cubic spline using a piece-wise cubic polynomial that is twice continuously differentiable.
+        ‘
+        pchip
+        ’
+        Monotonic cubic spline using a piecewise cubic Hermite interpolating polynomial (PCHIP).
+        Select one of the available color presets. This option can be used in addition
+        to the r, g, b parameters; in this case, the later
+        options takes priority on the preset values.
+        Available presets are:
+
+
+        - **`‘none’`**
+        - **`‘color_negative’`**
+        - **`‘cross_process’`**
+        - **`‘darker’`**
+        - **`‘increase_contrast’`**
+        - **`‘lighter’`**
+        - **`‘linear_contrast’`**
+        - **`‘medium_contrast’`**
+        - **`‘negative’`**
+        - **`‘strong_contrast’`**
+        - **`‘vintage’`**
+        Default is none.
+
+
+        Set the master key points. These points will define a second pass mapping. It
+        is sometimes called a "luminance" or "value" mapping. It can be used with
+        r, g, b or all since it acts like a
+        post-processing LUT.
+
+
+        Set the key points for the red component.
+
+
+        Set the key points for the green component.
+
+
+        Set the key points for the blue component.
+
+
+        Set the key points for all components (not including master).
+        Can be used in addition to the other key points component
+        options. In this case, the unset component(s) will fallback on this
+        all setting.
+
+
+        Specify a Photoshop curves file (.acv) to import the settings from.
+
+
+        Save Gnuplot script of the curves in specified file.
+
+
+        Specify the kind of interpolation. Available algorithms are:
+
+
+        - **`‘natural’`**
+          - Natural cubic spline using a piece-wise cubic polynomial that is twice continuously differentiable.
+        - **`‘pchip’`**
+          - Monotonic cubic spline using a piecewise cubic Hermite interpolating polynomial (PCHIP).
+        Natural cubic spline using a piece-wise cubic polynomial that is twice continuously differentiable.
+
+
+        Monotonic cubic spline using a piecewise cubic Hermite interpolating polynomial (PCHIP).
 
 
         To avoid some filtergraph syntax conflicts, each key points list need to be
         defined using the following syntax: x0/y0 x1/y1 x2/y2 ....
+
+
+
 
         Parameters:
         ----------
@@ -3493,12 +7196,97 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.54 datascope
+        ### 11.54 datascope
+
         Video data analysis filter.
+
 
         This filter shows hexadecimal pixel values of part of video.
 
+
         The filter accepts the following options:
+
+
+        - **`size, s`**
+          - Set output video size.
+        - **`x`**
+          - Set x offset from where to pick pixels.
+        - **`y`**
+          - Set y offset from where to pick pixels.
+        - **`mode`**
+          - Set scope mode, can be one of the following:
+        ‘
+        mono
+        ’
+        Draw hexadecimal pixel values with white color on black background.
+        ‘
+        color
+        ’
+        Draw hexadecimal pixel values with input video pixel color on black
+        background.
+        ‘
+        color2
+        ’
+        Draw hexadecimal pixel values on color background picked from input video,
+        the text color is picked in such way so its always visible.
+        - **`axis`**
+          - Draw rows and columns numbers on left and top of video.
+        - **`opacity`**
+          - Set background opacity.
+        - **`format`**
+          - Set display number format. Can be
+        hex
+        , or
+        dec
+        . Default is
+        hex
+        .
+        - **`components`**
+          - Set pixel components to display. By default all pixel components are displayed.
+        Set output video size.
+
+
+        Set x offset from where to pick pixels.
+
+
+        Set y offset from where to pick pixels.
+
+
+        Set scope mode, can be one of the following:
+
+
+        - **`‘mono’`**
+          - Draw hexadecimal pixel values with white color on black background.
+        - **`‘color’`**
+          - Draw hexadecimal pixel values with input video pixel color on black
+        background.
+        - **`‘color2’`**
+          - Draw hexadecimal pixel values on color background picked from input video,
+        the text color is picked in such way so its always visible.
+        Draw hexadecimal pixel values with white color on black background.
+
+
+        Draw hexadecimal pixel values with input video pixel color on black
+        background.
+
+
+        Draw hexadecimal pixel values on color background picked from input video,
+        the text color is picked in such way so its always visible.
+
+
+        Draw rows and columns numbers on left and top of video.
+
+
+        Set background opacity.
+
+
+        Set display number format. Can be hex, or dec. Default is hex.
+
+
+        Set pixel components to display. By default all pixel components are displayed.
+
+
+
 
         Parameters:
         ----------
@@ -3546,10 +7334,34 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.55 dblur
+        ### 11.55 dblur
+
         Apply Directional blur filter.
 
+
         The filter accepts the following options:
+
+
+        - **`angle`**
+          - Set angle of directional blur. Default is
+        45
+        .
+        - **`radius`**
+          - Set radius of directional blur. Default is
+        5
+        .
+        - **`planes`**
+          - Set which planes to filter. By default all planes are filtered.
+        Set angle of directional blur. Default is 45.
+
+
+        Set radius of directional blur. Default is 5.
+
+
+        Set which planes to filter. By default all planes are filtered.
+
+
+
 
         Parameters:
         ----------
@@ -3588,12 +7400,118 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.56 dctdnoiz
+        ### 11.56 dctdnoiz
+
         Denoise frames using 2D DCT (frequency domain filtering).
+
 
         This filter is not designed for real time.
 
+
         The filter accepts the following options:
+
+
+        - **`sigma, s`**
+          - Set the noise sigma constant.
+        This
+        sigma
+        defines a hard threshold of
+        3 * sigma
+        ; every DCT
+        coefficient (absolute value) below this threshold with be dropped.
+        If you need a more advanced filtering, see
+        expr
+        .
+        Default is
+        0
+        .
+        - **`overlap`**
+          - Set number overlapping pixels for each block. Since the filter can be slow, you
+        may want to reduce this value, at the cost of a less effective filter and the
+        risk of various artefacts.
+        If the overlapping value doesn’t permit processing the whole input width or
+        height, a warning will be displayed and according borders won’t be denoised.
+        Default value is
+        blocksize
+        -1, which is the best possible setting.
+        - **`expr, e`**
+          - Set the coefficient factor expression.
+        For each coefficient of a DCT block, this expression will be evaluated as a
+        multiplier value for the coefficient.
+        If this is option is set, the
+        sigma
+        option will be ignored.
+        The absolute value of the coefficient can be accessed through the
+        c
+        variable.
+        - **`n`**
+          - Set the
+        blocksize
+        using the number of bits.
+        1<<
+        n
+        defines the
+        blocksize
+        , which is the width and height of the processed blocks.
+        The default value is
+        3
+        (8x8) and can be raised to
+        4
+        for a
+        blocksize
+        of 16x16. Note that changing this setting has huge consequences
+        on the speed processing. Also, a larger block size does not necessarily means a
+        better de-noising.
+        Set the noise sigma constant.
+
+
+        This sigma defines a hard threshold of 3 * sigma; every DCT
+        coefficient (absolute value) below this threshold with be dropped.
+
+
+        If you need a more advanced filtering, see expr.
+
+
+        Default is 0.
+
+
+        Set number overlapping pixels for each block. Since the filter can be slow, you
+        may want to reduce this value, at the cost of a less effective filter and the
+        risk of various artefacts.
+
+
+        If the overlapping value doesn’t permit processing the whole input width or
+        height, a warning will be displayed and according borders won’t be denoised.
+
+
+        Default value is blocksize-1, which is the best possible setting.
+
+
+        Set the coefficient factor expression.
+
+
+        For each coefficient of a DCT block, this expression will be evaluated as a
+        multiplier value for the coefficient.
+
+
+        If this is option is set, the sigma option will be ignored.
+
+
+        The absolute value of the coefficient can be accessed through the c
+        variable.
+
+
+        Set the blocksize using the number of bits. 1<<n defines the
+        blocksize, which is the width and height of the processed blocks.
+
+
+        The default value is 3 (8x8) and can be raised to 4 for a
+        blocksize of 16x16. Note that changing this setting has huge consequences
+        on the speed processing. Also, a larger block size does not necessarily means a
+        better de-noising.
+
+
+
 
         Parameters:
         ----------
@@ -3638,11 +7556,74 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.57 deband
+        ### 11.57 deband
+
         Remove banding artifacts from input video.
         It works by replacing banded pixels with average value of referenced pixels.
 
+
         The filter accepts the following options:
+
+
+        - **`1thr`**
+        - **`2thr`**
+        - **`3thr`**
+        - **`4thr`**
+          - Set banding detection threshold for each plane. Default is 0.02.
+        Valid range is 0.00003 to 0.5.
+        If difference between current pixel and reference pixel is less than threshold,
+        it will be considered as banded.
+        - **`range, r`**
+          - Banding detection range in pixels. Default is 16. If positive, random number
+        in range 0 to set value will be used. If negative, exact absolute value
+        will be used.
+        The range defines square of four pixels around current pixel.
+        - **`direction, d`**
+          - Set direction in radians from which four pixel will be compared. If positive,
+        random direction from 0 to set direction will be picked. If negative, exact of
+        absolute value will be picked. For example direction 0, -PI or -2*PI radians
+        will pick only pixels on same row and -PI/2 will pick only pixels on same
+        column.
+        - **`blur, b`**
+          - If enabled, current pixel is compared with average value of all four
+        surrounding pixels. The default is enabled. If disabled current pixel is
+        compared with all four surrounding pixels. The pixel is considered banded
+        if only all four differences with surrounding pixels are less than threshold.
+        - **`coupling, c`**
+          - If enabled, current pixel is changed if and only if all pixel components are banded,
+        e.g. banding detection threshold is triggered for all color components.
+        The default is disabled.
+        Set banding detection threshold for each plane. Default is 0.02.
+        Valid range is 0.00003 to 0.5.
+        If difference between current pixel and reference pixel is less than threshold,
+        it will be considered as banded.
+
+
+        Banding detection range in pixels. Default is 16. If positive, random number
+        in range 0 to set value will be used. If negative, exact absolute value
+        will be used.
+        The range defines square of four pixels around current pixel.
+
+
+        Set direction in radians from which four pixel will be compared. If positive,
+        random direction from 0 to set direction will be picked. If negative, exact of
+        absolute value will be picked. For example direction 0, -PI or -2*PI radians
+        will pick only pixels on same row and -PI/2 will pick only pixels on same
+        column.
+
+
+        If enabled, current pixel is compared with average value of all four
+        surrounding pixels. The default is enabled. If disabled current pixel is
+        compared with all four surrounding pixels. The pixel is considered banded
+        if only all four differences with surrounding pixels are less than threshold.
+
+
+        If enabled, current pixel is changed if and only if all pixel components are banded,
+        e.g. banding detection threshold is triggered for all color components.
+        The default is disabled.
+
+
+
 
         Parameters:
         ----------
@@ -3694,10 +7675,70 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.58 deblock
+        ### 11.58 deblock
+
         Remove blocking artifacts from input video.
 
+
         The filter accepts the following options:
+
+
+        - **`filter`**
+          - Set filter type, can be
+        weak
+        or
+        strong
+        . Default is
+        strong
+        .
+        This controls what kind of deblocking is applied.
+        - **`block`**
+          - Set size of block, allowed range is from 4 to 512. Default is
+        8
+        .
+        - **`alpha`**
+        - **`beta`**
+        - **`gamma`**
+        - **`delta`**
+          - Set blocking detection thresholds. Allowed range is 0 to 1.
+        Defaults are:
+        0.098
+        for
+        alpha
+        and
+        0.05
+        for the rest.
+        Using higher threshold gives more deblocking strength.
+        Setting
+        alpha
+        controls threshold detection at exact edge of block.
+        Remaining options controls threshold detection near the edge. Each one for
+        below/above or left/right. Setting any of those to
+        0
+        disables
+        deblocking.
+        - **`planes`**
+          - Set planes to filter. Default is to filter all available planes.
+        Set filter type, can be weak or strong. Default is strong.
+        This controls what kind of deblocking is applied.
+
+
+        Set size of block, allowed range is from 4 to 512. Default is 8.
+
+
+        Set blocking detection thresholds. Allowed range is 0 to 1.
+        Defaults are: 0.098 for alpha and 0.05 for the rest.
+        Using higher threshold gives more deblocking strength.
+        Setting alpha controls threshold detection at exact edge of block.
+        Remaining options controls threshold detection near the edge. Each one for
+        below/above or left/right. Setting any of those to 0 disables
+        deblocking.
+
+
+        Set planes to filter. Default is to filter all available planes.
+
+
+
 
         Parameters:
         ----------
@@ -3744,14 +7785,47 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.60 deconvolve
+        ### 11.60 deconvolve
+
         Apply 2D deconvolution of video stream in frequency domain using second stream
         as impulse.
+
 
         The filter accepts the following options:
 
 
+        - **`planes`**
+          - Set which planes to process.
+        - **`impulse`**
+          - Set which impulse video frames will be processed, can be
+        first
+        or
+        all
+        . Default is
+        all
+        .
+        - **`noise`**
+          - Set noise when doing divisions. Default is
+        0.0000001
+        . Useful when width
+        and height are not same and not power of 2 or if stream prior to convolving
+        had noise.
+        Set which planes to process.
+
+
+        Set which impulse video frames will be processed, can be first
+        or all. Default is all.
+
+
+        Set noise when doing divisions. Default is 0.0000001. Useful when width
+        and height are not same and not power of 2 or if stream prior to convolving
+        had noise.
+
+
         The deconvolve filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -3792,10 +7866,45 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.61 dedot
+        ### 11.61 dedot
+
         Reduce cross-luminance (dot-crawl) and cross-color (rainbows) from video.
 
+
         It accepts the following options:
+
+
+        - **`m`**
+          - Set mode of operation. Can be combination of
+        dotcrawl
+        for cross-luminance reduction and/or
+        rainbows
+        for cross-color reduction.
+        - **`lt`**
+          - Set spatial luma threshold. Lower values increases reduction of cross-luminance.
+        - **`tl`**
+          - Set tolerance for temporal luma. Higher values increases reduction of cross-luminance.
+        - **`tc`**
+          - Set tolerance for chroma temporal variation. Higher values increases reduction of cross-color.
+        - **`ct`**
+          - Set temporal chroma threshold. Lower values increases reduction of cross-color.
+        Set mode of operation. Can be combination of dotcrawl for cross-luminance reduction and/or
+        rainbows for cross-color reduction.
+
+
+        Set spatial luma threshold. Lower values increases reduction of cross-luminance.
+
+
+        Set tolerance for temporal luma. Higher values increases reduction of cross-luminance.
+
+
+        Set tolerance for chroma temporal variation. Higher values increases reduction of cross-color.
+
+
+        Set temporal chroma threshold. Lower values increases reduction of cross-color.
+
+
+
 
         Parameters:
         ----------
@@ -3838,13 +7947,29 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.62 deflate
+        ### 11.62 deflate
+
         Apply deflate effect to the video.
+
 
         This filter replaces the pixel by the local(3x3) average by taking into account
         only values lower than the pixel.
 
+
         It accepts the following options:
+
+
+        - **`threshold0`**
+        - **`threshold1`**
+        - **`threshold2`**
+        - **`threshold3`**
+          - Limit the maximum change for each plane, default is 65535.
+        If 0, plane will remain unchanged.
+        Limit the maximum change for each plane, default is 65535.
+        If 0, plane will remain unchanged.
+
+
+
 
         Parameters:
         ----------
@@ -3884,10 +8009,97 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.63 deflicker
+        ### 11.63 deflicker
+
         Remove temporal frame luminance variations.
 
+
         It accepts the following options:
+
+
+        - **`size, s`**
+          - Set moving-average filter size in frames. Default is 5. Allowed range is 2 - 129.
+        - **`mode, m`**
+          - Set averaging mode to smooth temporal luminance variations.
+        Available values are:
+        ‘
+        am
+        ’
+        Arithmetic mean
+        ‘
+        gm
+        ’
+        Geometric mean
+        ‘
+        hm
+        ’
+        Harmonic mean
+        ‘
+        qm
+        ’
+        Quadratic mean
+        ‘
+        cm
+        ’
+        Cubic mean
+        ‘
+        pm
+        ’
+        Power mean
+        ‘
+        median
+        ’
+        Median
+        - **`bypass`**
+          - Do not actually modify frame. Useful when one only wants metadata.
+        Set moving-average filter size in frames. Default is 5. Allowed range is 2 - 129.
+
+
+        Set averaging mode to smooth temporal luminance variations.
+
+
+        Available values are:
+
+
+        - **`‘am’`**
+          - Arithmetic mean
+        - **`‘gm’`**
+          - Geometric mean
+        - **`‘hm’`**
+          - Harmonic mean
+        - **`‘qm’`**
+          - Quadratic mean
+        - **`‘cm’`**
+          - Cubic mean
+        - **`‘pm’`**
+          - Power mean
+        - **`‘median’`**
+          - Median
+        Arithmetic mean
+
+
+        Geometric mean
+
+
+        Harmonic mean
+
+
+        Quadratic mean
+
+
+        Cubic mean
+
+
+        Power mean
+
+
+        Median
+
+
+        Do not actually modify frame. Useful when one only wants metadata.
+
+
+
 
         Parameters:
         ----------
@@ -3918,8 +8130,10 @@ class VideoStream(FilterableStream):
     def dejudder(self, *, cycle: int | DefaultInt = DefaultInt(4), **kwargs: Any) -> "VideoStream":
         """
 
-        11.64 dejudder
+        ### 11.64 dejudder
+
         Remove judder produced by partially interlaced telecined content.
+
 
         Judder can be introduced, for instance, by pullup filter. If the original
         source was partially telecined content then the output of pullup,dejudder
@@ -3927,7 +8141,53 @@ class VideoStream(FilterableStream):
         container. Aside from that change, this filter will not affect constant frame
         rate video.
 
+
         The option available in this filter is:
+
+
+        - **`cycle`**
+          - Specify the length of the window over which the judder repeats.
+        Accepts any integer greater than 1. Useful values are:
+        ‘
+        4
+        ’
+        If the original was telecined from 24 to 30 fps (Film to NTSC).
+        ‘
+        5
+        ’
+        If the original was telecined from 25 to 30 fps (PAL to NTSC).
+        ‘
+        20
+        ’
+        If a mixture of the two.
+        The default is ‘
+        4
+        ’.
+        Specify the length of the window over which the judder repeats.
+
+
+        Accepts any integer greater than 1. Useful values are:
+
+
+        - **`‘4’`**
+          - If the original was telecined from 24 to 30 fps (Film to NTSC).
+        - **`‘5’`**
+          - If the original was telecined from 25 to 30 fps (PAL to NTSC).
+        - **`‘20’`**
+          - If a mixture of the two.
+        If the original was telecined from 24 to 30 fps (Film to NTSC).
+
+
+        If the original was telecined from 25 to 30 fps (PAL to NTSC).
+
+
+        If a mixture of the two.
+
+
+        The default is ‘4’.
+
+
+
 
         Parameters:
         ----------
@@ -3963,12 +8223,60 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.65 delogo
+        ### 11.65 delogo
+
         Suppress a TV station logo by a simple interpolation of the surrounding
         pixels. Just set a rectangle covering the logo and watch it disappear
         (and sometimes something even uglier appear - your mileage may vary).
 
+
         It accepts the following parameters:
+
+
+        - **`x`**
+        - **`y`**
+          - Specify the top left corner coordinates of the logo. They must be
+        specified.
+        - **`w`**
+        - **`h`**
+          - Specify the width and height of the logo to clear. They must be
+        specified.
+        - **`show`**
+          - When set to 1, a green rectangle is drawn on the screen to simplify
+        finding the right
+        x
+        ,
+        y
+        ,
+        w
+        , and
+        h
+        parameters.
+        The default value is 0.
+        The rectangle is drawn on the outermost pixels which will be (partly)
+        replaced with interpolated values. The values of the next pixels
+        immediately outside this rectangle in each direction will be used to
+        compute the interpolated pixel values inside the rectangle.
+        Specify the top left corner coordinates of the logo. They must be
+        specified.
+
+
+        Specify the width and height of the logo to clear. They must be
+        specified.
+
+
+        When set to 1, a green rectangle is drawn on the screen to simplify
+        finding the right x, y, w, and h parameters.
+        The default value is 0.
+
+
+        The rectangle is drawn on the outermost pixels which will be (partly)
+        replaced with interpolated values. The values of the next pixels
+        immediately outside this rectangle in each direction will be used to
+        compute the interpolated pixel values inside the rectangle.
+
+
+
 
         Parameters:
         ----------
@@ -4012,21 +8320,86 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.66 derain
+        ### 11.66 derain
+
         Remove the rain in the input image/video by applying the derain methods based on
         convolutional neural networks. Supported models:
 
 
-         Recurrent Squeeze-and-Excitation Context Aggregation Net (RESCAN).
-        See http://openaccess.thecvf.com/content_ECCV_2018/papers/Xia_Li_Recurrent_Squeeze-and-Excitation_Context_ECCV_2018_paper.pdf.
-
         Training as well as model generation scripts are provided in
         the repository at https://github.com/XueweiMeng/derain_filter.git.
+
 
         The filter accepts the following options:
 
 
+        - **`filter_type`**
+          - Specify which filter to use. This option accepts the following values:
+        ‘
+        derain
+        ’
+        Derain filter. To conduct derain filter, you need to use a derain model.
+        ‘
+        dehaze
+        ’
+        Dehaze filter. To conduct dehaze filter, you need to use a dehaze model.
+        Default value is ‘
+        derain
+        ’.
+        - **`dnn_backend`**
+          - Specify which DNN backend to use for model loading and execution. This option accepts
+        the following values:
+        ‘
+        tensorflow
+        ’
+        TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c
+        ) and configure FFmpeg with
+        --enable-libtensorflow
+        - **`model`**
+          - Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats. TensorFlow can load files for only its format.
+        Specify which filter to use. This option accepts the following values:
+
+
+        - **`‘derain’`**
+          - Derain filter. To conduct derain filter, you need to use a derain model.
+        - **`‘dehaze’`**
+          - Dehaze filter. To conduct dehaze filter, you need to use a dehaze model.
+        Derain filter. To conduct derain filter, you need to use a derain model.
+
+
+        Dehaze filter. To conduct dehaze filter, you need to use a dehaze model.
+
+
+        Default value is ‘derain’.
+
+
+        Specify which DNN backend to use for model loading and execution. This option accepts
+        the following values:
+
+
+        - **`‘tensorflow’`**
+          - TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c
+        ) and configure FFmpeg with
+        --enable-libtensorflow
+        TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c) and configure FFmpeg with
+        --enable-libtensorflow
+
+
+        Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats. TensorFlow can load files for only its format.
+
+
         To get full functionality (such as async execution), please use the dnn_processing filter.
+
+
+
 
         Parameters:
         ----------
@@ -4077,12 +8450,172 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.67 deshake
+        ### 11.67 deshake
+
         Attempt to fix small changes in horizontal and/or vertical shift. This
         filter helps remove camera shake from hand-holding a camera, bumping a
         tripod, moving on a vehicle, etc.
 
+
         The filter accepts the following options:
+
+
+        - **`x`**
+        - **`y`**
+        - **`w`**
+        - **`h`**
+          - Specify a rectangular area where to limit the search for motion
+        vectors.
+        If desired the search for motion vectors can be limited to a
+        rectangular area of the frame defined by its top left corner, width
+        and height. These parameters have the same meaning as the drawbox
+        filter which can be used to visualise the position of the bounding
+        box.
+        This is useful when simultaneous movement of subjects within the frame
+        might be confused for camera motion by the motion vector search.
+        If any or all of
+        x
+        ,
+        y
+        ,
+        w
+        and
+        h
+        are set to -1
+        then the full frame is used. This allows later options to be set
+        without specifying the bounding box for the motion vector search.
+        Default - search the whole frame.
+        - **`rx`**
+        - **`ry`**
+          - Specify the maximum extent of movement in x and y directions in the
+        range 0-64 pixels. Default 16.
+        - **`edge`**
+          - Specify how to generate pixels to fill blanks at the edge of the
+        frame. Available values are:
+        ‘
+        blank, 0
+        ’
+        Fill zeroes at blank locations
+        ‘
+        original, 1
+        ’
+        Original image at blank locations
+        ‘
+        clamp, 2
+        ’
+        Extruded edge value at blank locations
+        ‘
+        mirror, 3
+        ’
+        Mirrored edge at blank locations
+        Default value is ‘
+        mirror
+        ’.
+        - **`blocksize`**
+          - Specify the blocksize to use for motion search. Range 4-128 pixels,
+        default 8.
+        - **`contrast`**
+          - Specify the contrast threshold for blocks. Only blocks with more than
+        the specified contrast (difference between darkest and lightest
+        pixels) will be considered. Range 1-255, default 125.
+        - **`search`**
+          - Specify the search strategy. Available values are:
+        ‘
+        exhaustive, 0
+        ’
+        Set exhaustive search
+        ‘
+        less, 1
+        ’
+        Set less exhaustive search.
+        Default value is ‘
+        exhaustive
+        ’.
+        - **`filename`**
+          - If set then a detailed log of the motion search is written to the
+        specified file.
+        Specify a rectangular area where to limit the search for motion
+        vectors.
+        If desired the search for motion vectors can be limited to a
+        rectangular area of the frame defined by its top left corner, width
+        and height. These parameters have the same meaning as the drawbox
+        filter which can be used to visualise the position of the bounding
+        box.
+
+
+        This is useful when simultaneous movement of subjects within the frame
+        might be confused for camera motion by the motion vector search.
+
+
+        If any or all of x, y, w and h are set to -1
+        then the full frame is used. This allows later options to be set
+        without specifying the bounding box for the motion vector search.
+
+
+        Default - search the whole frame.
+
+
+        Specify the maximum extent of movement in x and y directions in the
+        range 0-64 pixels. Default 16.
+
+
+        Specify how to generate pixels to fill blanks at the edge of the
+        frame. Available values are:
+
+
+        - **`‘blank, 0’`**
+          - Fill zeroes at blank locations
+        - **`‘original, 1’`**
+          - Original image at blank locations
+        - **`‘clamp, 2’`**
+          - Extruded edge value at blank locations
+        - **`‘mirror, 3’`**
+          - Mirrored edge at blank locations
+        Fill zeroes at blank locations
+
+
+        Original image at blank locations
+
+
+        Extruded edge value at blank locations
+
+
+        Mirrored edge at blank locations
+
+
+        Default value is ‘mirror’.
+
+
+        Specify the blocksize to use for motion search. Range 4-128 pixels,
+        default 8.
+
+
+        Specify the contrast threshold for blocks. Only blocks with more than
+        the specified contrast (difference between darkest and lightest
+        pixels) will be considered. Range 1-255, default 125.
+
+
+        Specify the search strategy. Available values are:
+
+
+        - **`‘exhaustive, 0’`**
+          - Set exhaustive search
+        - **`‘less, 1’`**
+          - Set less exhaustive search.
+        Set exhaustive search
+
+
+        Set less exhaustive search.
+
+
+        Default value is ‘exhaustive’.
+
+
+        If set then a detailed log of the motion search is written to the
+        specified file.
+
+
+
 
         Parameters:
         ----------
@@ -4141,10 +8674,123 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.6 deshake_opencl
+        ### 12.6 deshake_opencl
+
         Feature-point based video stabilization filter.
 
+
         The filter accepts the following options:
+
+
+        - **`tripod`**
+          - Simulates a tripod by preventing any camera movement whatsoever from the original frame. Defaults to
+        0
+        .
+        - **`debug`**
+          - Whether or not additional debug info should be displayed, both in the processed output and in the console.
+        Note that in order to see console debug output you will also need to pass
+        -v verbose
+        to ffmpeg.
+        Viewing point matches in the output video is only supported for RGB input.
+        Defaults to
+        0
+        .
+        - **`adaptive_crop`**
+          - Whether or not to do a tiny bit of cropping at the borders to cut down on the amount of mirrored pixels.
+        Defaults to
+        1
+        .
+        - **`refine_features`**
+          - Whether or not feature points should be refined at a sub-pixel level.
+        This can be turned off for a slight performance gain at the cost of precision.
+        Defaults to
+        1
+        .
+        - **`smooth_strength`**
+          - The strength of the smoothing applied to the camera path from
+        0.0
+        to
+        1.0
+        .
+        1.0
+        is the maximum smoothing strength while values less than that result in less smoothing.
+        0.0
+        causes the filter to adaptively choose a smoothing strength on a per-frame basis.
+        Defaults to
+        0.0
+        .
+        - **`smooth_window_multiplier`**
+          - Controls the size of the smoothing window (the number of frames buffered to determine motion information from).
+        The size of the smoothing window is determined by multiplying the framerate of the video by this number.
+        Acceptable values range from
+        0.1
+        to
+        10.0
+        .
+        Larger values increase the amount of motion data available for determining how to smooth the camera path,
+        potentially improving smoothness, but also increase latency and memory usage.
+        Defaults to
+        2.0
+        .
+        Simulates a tripod by preventing any camera movement whatsoever from the original frame. Defaults to 0.
+
+
+        Whether or not additional debug info should be displayed, both in the processed output and in the console.
+
+
+        Note that in order to see console debug output you will also need to pass -v verbose to ffmpeg.
+
+
+        Viewing point matches in the output video is only supported for RGB input.
+
+
+        Defaults to 0.
+
+
+        Whether or not to do a tiny bit of cropping at the borders to cut down on the amount of mirrored pixels.
+
+
+        Defaults to 1.
+
+
+        Whether or not feature points should be refined at a sub-pixel level.
+
+
+        This can be turned off for a slight performance gain at the cost of precision.
+
+
+        Defaults to 1.
+
+
+        The strength of the smoothing applied to the camera path from 0.0 to 1.0.
+
+
+        1.0 is the maximum smoothing strength while values less than that result in less smoothing.
+
+
+        0.0 causes the filter to adaptively choose a smoothing strength on a per-frame basis.
+
+
+        Defaults to 0.0.
+
+
+        Controls the size of the smoothing window (the number of frames buffered to determine motion information from).
+
+
+        The size of the smoothing window is determined by multiplying the framerate of the video by this number.
+
+
+        Acceptable values range from 0.1 to 10.0.
+
+
+        Larger values increase the amount of motion data available for determining how to smooth the camera path,
+        potentially improving smoothness, but also increase latency and memory usage.
+
+
+        Defaults to 2.0.
+
+
+
 
         Parameters:
         ----------
@@ -4193,11 +8839,60 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.68 despill
+        ### 11.68 despill
+
         Remove unwanted contamination of foreground colors, caused by reflected color of
         greenscreen or bluescreen.
 
+
         This filter accepts the following options:
+
+
+        - **`type`**
+          - Set what type of despill to use.
+        - **`mix`**
+          - Set how spillmap will be generated.
+        - **`expand`**
+          - Set how much to get rid of still remaining spill.
+        - **`red`**
+          - Controls amount of red in spill area.
+        - **`green`**
+          - Controls amount of green in spill area.
+        Should be -1 for greenscreen.
+        - **`blue`**
+          - Controls amount of blue in spill area.
+        Should be -1 for bluescreen.
+        - **`brightness`**
+          - Controls brightness of spill area, preserving colors.
+        - **`alpha`**
+          - Modify alpha from generated spillmap.
+        Set what type of despill to use.
+
+
+        Set how spillmap will be generated.
+
+
+        Set how much to get rid of still remaining spill.
+
+
+        Controls amount of red in spill area.
+
+
+        Controls amount of green in spill area.
+        Should be -1 for greenscreen.
+
+
+        Controls amount of blue in spill area.
+        Should be -1 for bluescreen.
+
+
+        Controls brightness of spill area, preserving colors.
+
+
+        Modify alpha from generated spillmap.
+
+
+
 
         Parameters:
         ----------
@@ -4245,12 +8940,61 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.69 detelecine
+        ### 11.69 detelecine
+
         Apply an exact inverse of the telecine operation. It requires a predefined
         pattern specified using the pattern option which must be the same as that passed
         to the telecine filter.
 
+
         This filter accepts the following options:
+
+
+        - **`first_field`**
+          - ‘
+        top, t
+        ’
+        top field first
+        ‘
+        bottom, b
+        ’
+        bottom field first
+        The default value is
+        top
+        .
+        - **`pattern`**
+          - A string of numbers representing the pulldown pattern you wish to apply.
+        The default value is
+        23
+        .
+        - **`start_frame`**
+          - A number representing position of the first frame with respect to the telecine
+        pattern. This is to be used if the stream is cut. The default value is
+        0
+        .
+        - **`‘top, t’`**
+          - top field first
+        - **`‘bottom, b’`**
+          - bottom field first
+        The default value is
+        top
+        .
+        top field first
+
+
+        bottom field first
+        The default value is top.
+
+
+        A string of numbers representing the pulldown pattern you wish to apply.
+        The default value is 23.
+
+
+        A number representing position of the first frame with respect to the telecine
+        pattern. This is to be used if the stream is cut. The default value is 0.
+
+
+
 
         Parameters:
         ----------
@@ -4290,12 +9034,47 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.70 dilation
+        ### 11.70 dilation
+
         Apply dilation effect to the video.
+
 
         This filter replaces the pixel by the local(3x3) maximum.
 
+
         It accepts the following options:
+
+
+        - **`threshold0`**
+        - **`threshold1`**
+        - **`threshold2`**
+        - **`threshold3`**
+          - Limit the maximum change for each plane, default is 65535.
+        If 0, plane will remain unchanged.
+        - **`coordinates`**
+          - Flag which specifies the pixel to refer to. Default is 255 i.e. all eight
+        pixels are used.
+        Flags to local 3x3 coordinates maps like this:
+        1 2 3
+            4   5
+            6 7 8
+        Limit the maximum change for each plane, default is 65535.
+        If 0, plane will remain unchanged.
+
+
+        Flag which specifies the pixel to refer to. Default is 255 i.e. all eight
+        pixels are used.
+
+
+        Flags to local 3x3 coordinates maps like this:
+
+
+        1 2 3
+            4   5
+            6 7 8
+
+
+
 
         Parameters:
         ----------
@@ -4339,12 +9118,63 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.7 dilation_opencl
+        ### 12.7 dilation_opencl
+
         Apply dilation effect to the video.
+
 
         This filter replaces the pixel by the local(3x3) maximum.
 
+
         It accepts the following options:
+
+
+        - **`threshold0`**
+        - **`threshold1`**
+        - **`threshold2`**
+        - **`threshold3`**
+          - Limit the maximum change for each plane. Range is
+        [0, 65535]
+        and default value is
+        65535
+        .
+        If
+        0
+        , plane will remain unchanged.
+        - **`coordinates`**
+          - Flag which specifies the pixel to refer to.
+        Range is
+        [0, 255]
+        and default value is
+        255
+        , i.e. all eight pixels are used.
+        Flags to local 3x3 coordinates region centered on
+        x
+        :
+        1 2 3
+        4 x 5
+        6 7 8
+        Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535.
+        If 0, plane will remain unchanged.
+
+
+        Flag which specifies the pixel to refer to.
+        Range is [0, 255] and default value is 255, i.e. all eight pixels are used.
+
+
+        Flags to local 3x3 coordinates region centered on x:
+
+
+        1 2 3
+
+
+        4 x 5
+
+
+        6 7 8
+
+
+
 
         Parameters:
         ----------
@@ -4386,11 +9216,14 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.71 displace
+        ### 11.71 displace
+
         Displace pixels as indicated by second and third input stream.
+
 
         It takes three input streams and outputs one stream, the first input is the
         source, and second and third input are displacement maps.
+
 
         The second input specifies how much to displace pixels along the
         x-axis, while the third input specifies how much to displace pixels
@@ -4398,9 +9231,65 @@ class VideoStream(FilterableStream):
         If one of displacement map streams terminates, last frame from that
         displacement map will be used.
 
+
         Note that once generated, displacements maps can be reused over and over again.
 
+
         A description of the accepted options follows.
+
+
+        - **`edge`**
+          - Set displace behavior for pixels that are out of range.
+        Available values are:
+        ‘
+        blank
+        ’
+        Missing pixels are replaced by black pixels.
+        ‘
+        smear
+        ’
+        Adjacent pixels will spread out to replace missing pixels.
+        ‘
+        wrap
+        ’
+        Out of range pixels are wrapped so they point to pixels of other side.
+        ‘
+        mirror
+        ’
+        Out of range pixels will be replaced with mirrored pixels.
+        Default is ‘
+        smear
+        ’.
+        Set displace behavior for pixels that are out of range.
+
+
+        Available values are:
+
+
+        - **`‘blank’`**
+          - Missing pixels are replaced by black pixels.
+        - **`‘smear’`**
+          - Adjacent pixels will spread out to replace missing pixels.
+        - **`‘wrap’`**
+          - Out of range pixels are wrapped so they point to pixels of other side.
+        - **`‘mirror’`**
+          - Out of range pixels will be replaced with mirrored pixels.
+        Missing pixels are replaced by black pixels.
+
+
+        Adjacent pixels will spread out to replace missing pixels.
+
+
+        Out of range pixels are wrapped so they point to pixels of other side.
+
+
+        Out of range pixels will be replaced with mirrored pixels.
+
+
+        Default is ‘smear’.
+
+
+
 
         Parameters:
         ----------
@@ -4442,10 +9331,70 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.72 dnn_classify
+        ### 11.72 dnn_classify
+
         Do classification with deep neural networks based on bounding boxes.
 
+
         The filter accepts the following options:
+
+
+        - **`dnn_backend`**
+          - Specify which DNN backend to use for model loading and execution. This option accepts
+        only openvino now, tensorflow backends will be added.
+        - **`model`**
+          - Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats.
+        - **`input`**
+          - Set the input name of the dnn network.
+        - **`output`**
+          - Set the output name of the dnn network.
+        - **`confidence`**
+          - Set the confidence threshold (default: 0.5).
+        - **`labels`**
+          - Set path to label file specifying the mapping between label id and name.
+        Each label name is written in one line, tailing spaces and empty lines are skipped.
+        The first line is the name of label id 0,
+        and the second line is the name of label id 1, etc.
+        The label id is considered as name if the label file is not provided.
+        - **`backend_configs`**
+          - Set the configs to be passed into backend
+        For tensorflow backend, you can set its configs with
+        sess_config
+        options,
+        please use tools/python/tf_sess_config.py to get the configs for your system.
+        Specify which DNN backend to use for model loading and execution. This option accepts
+        only openvino now, tensorflow backends will be added.
+
+
+        Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats.
+
+
+        Set the input name of the dnn network.
+
+
+        Set the output name of the dnn network.
+
+
+        Set the confidence threshold (default: 0.5).
+
+
+        Set path to label file specifying the mapping between label id and name.
+        Each label name is written in one line, tailing spaces and empty lines are skipped.
+        The first line is the name of label id 0,
+        and the second line is the name of label id 1, etc.
+        The label id is considered as name if the label file is not provided.
+
+
+        Set the configs to be passed into backend
+
+
+        For tensorflow backend, you can set its configs with sess_config options,
+        please use tools/python/tf_sess_config.py to get the configs for your system.
+
+
+
 
         Parameters:
         ----------
@@ -4505,10 +9454,64 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.73 dnn_detect
+        ### 11.73 dnn_detect
+
         Do object detection with deep neural networks.
 
+
         The filter accepts the following options:
+
+
+        - **`dnn_backend`**
+          - Specify which DNN backend to use for model loading and execution. This option accepts
+        only openvino now, tensorflow backends will be added.
+        - **`model`**
+          - Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats.
+        - **`input`**
+          - Set the input name of the dnn network.
+        - **`output`**
+          - Set the output name of the dnn network.
+        - **`confidence`**
+          - Set the confidence threshold (default: 0.5).
+        - **`labels`**
+          - Set path to label file specifying the mapping between label id and name.
+        Each label name is written in one line, tailing spaces and empty lines are skipped.
+        The first line is the name of label id 0 (usually it is ’background’),
+        and the second line is the name of label id 1, etc.
+        The label id is considered as name if the label file is not provided.
+        - **`backend_configs`**
+          - Set the configs to be passed into backend. To use async execution, set async (default: set).
+        Roll back to sync execution if the backend does not support async.
+        Specify which DNN backend to use for model loading and execution. This option accepts
+        only openvino now, tensorflow backends will be added.
+
+
+        Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats.
+
+
+        Set the input name of the dnn network.
+
+
+        Set the output name of the dnn network.
+
+
+        Set the confidence threshold (default: 0.5).
+
+
+        Set path to label file specifying the mapping between label id and name.
+        Each label name is written in one line, tailing spaces and empty lines are skipped.
+        The first line is the name of label id 0 (usually it is ’background’),
+        and the second line is the name of label id 1, etc.
+        The label id is considered as name if the label file is not provided.
+
+
+        Set the configs to be passed into backend. To use async execution, set async (default: set).
+        Roll back to sync execution if the backend does not support async.
+
+
+
 
         Parameters:
         ----------
@@ -4569,11 +9572,100 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.74 dnn_processing
+        ### 11.74 dnn_processing
+
         Do image processing with deep neural networks. It works together with another filter
         which converts the pixel format of the Frame to what the dnn network requires.
 
+
         The filter accepts the following options:
+
+
+        - **`dnn_backend`**
+          - Specify which DNN backend to use for model loading and execution. This option accepts
+        the following values:
+        ‘
+        tensorflow
+        ’
+        TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c
+        ) and configure FFmpeg with
+        --enable-libtensorflow
+        ‘
+        openvino
+        ’
+        OpenVINO backend. To enable this backend you
+        need to build and install the OpenVINO for C library (see
+        https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md
+        ) and configure FFmpeg with
+        --enable-libopenvino
+        (–extra-cflags=-I... –extra-ldflags=-L... might
+        be needed if the header files and libraries are not installed into system path)
+        - **`model`**
+          - Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats. TensorFlow, OpenVINO backend can load files for only its format.
+        - **`input`**
+          - Set the input name of the dnn network.
+        - **`output`**
+          - Set the output name of the dnn network.
+        - **`backend_configs`**
+          - Set the configs to be passed into backend. To use async execution, set async (default: set).
+        Roll back to sync execution if the backend does not support async.
+        For tensorflow backend, you can set its configs with
+        sess_config
+        options,
+        please use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system.
+        Specify which DNN backend to use for model loading and execution. This option accepts
+        the following values:
+
+
+        - **`‘tensorflow’`**
+          - TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c
+        ) and configure FFmpeg with
+        --enable-libtensorflow
+        - **`‘openvino’`**
+          - OpenVINO backend. To enable this backend you
+        need to build and install the OpenVINO for C library (see
+        https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md
+        ) and configure FFmpeg with
+        --enable-libopenvino
+        (–extra-cflags=-I... –extra-ldflags=-L... might
+        be needed if the header files and libraries are not installed into system path)
+        TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c) and configure FFmpeg with
+        --enable-libtensorflow
+
+
+        OpenVINO backend. To enable this backend you
+        need to build and install the OpenVINO for C library (see
+        https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md) and configure FFmpeg with
+        --enable-libopenvino (–extra-cflags=-I... –extra-ldflags=-L... might
+        be needed if the header files and libraries are not installed into system path)
+
+
+        Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats. TensorFlow, OpenVINO backend can load files for only its format.
+
+
+        Set the input name of the dnn network.
+
+
+        Set the output name of the dnn network.
+
+
+        Set the configs to be passed into backend. To use async execution, set async (default: set).
+        Roll back to sync execution if the backend does not support async.
+
+
+        For tensorflow backend, you can set its configs with sess_config options,
+        please use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system.
+
+
+
 
         Parameters:
         ----------
@@ -4612,15 +9704,44 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.285 weave, doubleweave
+        ### 11.285 weave, doubleweave
+
         The weave takes a field-based video input and join
         each two sequential fields into single frame, producing a new double
         height clip with half the frame rate and half the frame count.
 
+
         The doubleweave works same as weave but without
         halving frame rate and frame count.
 
+
         It accepts the following option:
+
+
+        - **`first_field`**
+          - Set first field. Available values are:
+        ‘
+        top, t
+        ’
+        Set the frame as top-field-first.
+        ‘
+        bottom, b
+        ’
+        Set the frame as bottom-field-first.
+        Set first field. Available values are:
+
+
+        - **`‘top, t’`**
+          - Set the frame as top-field-first.
+        - **`‘bottom, b’`**
+          - Set the frame as bottom-field-first.
+        Set the frame as top-field-first.
+
+
+        Set the frame as bottom-field-first.
+
+
+
 
         Parameters:
         ----------
@@ -4659,14 +9780,172 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.75 drawbox
+        ### 11.75 drawbox
+
         Draw a colored box on the input image.
+
 
         It accepts the following parameters:
 
 
+        - **`x`**
+        - **`y`**
+          - The expressions which specify the top left corner coordinates of the box. It defaults to 0.
+        - **`width, w`**
+        - **`height, h`**
+          - The expressions which specify the width and height of the box; if 0 they are interpreted as
+        the input width and height. It defaults to 0.
+        - **`color, c`**
+          - Specify the color of the box to write. For the general syntax of this option,
+        check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual
+        . If the special
+        value
+        invert
+        is used, the box edge color is the same as the
+        video with inverted luma.
+        - **`thickness, t`**
+          - The expression which sets the thickness of the box edge.
+        A value of
+        fill
+        will create a filled box. Default value is
+        3
+        .
+        See below for the list of accepted constants.
+        - **`replace`**
+          - Applicable if the input has alpha. With value
+        1
+        , the pixels of the painted box
+        will overwrite the video’s color and alpha pixels.
+        Default is
+        0
+        , which composites the box onto the input, leaving the video’s alpha intact.
+        The expressions which specify the top left corner coordinates of the box. It defaults to 0.
+
+
+        The expressions which specify the width and height of the box; if 0 they are interpreted as
+        the input width and height. It defaults to 0.
+
+
+        Specify the color of the box to write. For the general syntax of this option,
+        check the (ffmpeg-utils)"Color" section in the ffmpeg-utils manual. If the special
+        value invert is used, the box edge color is the same as the
+        video with inverted luma.
+
+
+        The expression which sets the thickness of the box edge.
+        A value of fill will create a filled box. Default value is 3.
+
+
+        See below for the list of accepted constants.
+
+
+        Applicable if the input has alpha. With value 1, the pixels of the painted box
+        will overwrite the video’s color and alpha pixels.
+        Default is 0, which composites the box onto the input, leaving the video’s alpha intact.
+
+
         The parameters for x, y, w and h and t are expressions containing the
         following constants:
+
+
+        - **`dar`**
+          - The input display aspect ratio, it is the same as (
+        w
+        /
+        h
+        ) *
+        sar
+        .
+        - **`hsub`**
+        - **`vsub`**
+          - horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        - **`in_h, ih`**
+        - **`in_w, iw`**
+          - The input width and height.
+        - **`sar`**
+          - The input sample aspect ratio.
+        - **`x`**
+        - **`y`**
+          - The x and y offset coordinates where the box is drawn.
+        - **`w`**
+        - **`h`**
+          - The width and height of the drawn box.
+        - **`box_source`**
+          - Box source can be set as side_data_detection_bboxes if you want to use box data in
+        detection bboxes of side data.
+        If
+        box_source
+        is set, the
+        x
+        ,
+        y
+        ,
+        width
+        and
+        height
+        will be ignored and
+        still use box data in detection bboxes of side data. So please do not use this parameter if you were
+        not sure about the box source.
+        - **`t`**
+          - The thickness of the drawn box.
+        These constants allow the
+        x
+        ,
+        y
+        ,
+        w
+        ,
+        h
+        and
+        t
+        expressions to refer to
+        each other, so you may for example specify
+        y=x/dar
+        or
+        h=w/dar
+        .
+        The input display aspect ratio, it is the same as (w / h) * sar.
+
+
+        horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p" hsub is 2 and vsub is 1.
+
+
+        The input width and height.
+
+
+        The input sample aspect ratio.
+
+
+        The x and y offset coordinates where the box is drawn.
+
+
+        The width and height of the drawn box.
+
+
+        Box source can be set as side_data_detection_bboxes if you want to use box data in
+        detection bboxes of side data.
+
+
+        If box_source is set, the x, y, width and height will be ignored and
+        still use box data in detection bboxes of side data. So please do not use this parameter if you were
+        not sure about the box source.
+
+
+        The thickness of the drawn box.
+
+
+        These constants allow the x, y, w, h and t expressions to refer to
+        each other, so you may for example specify y=x/dar or h=w/dar.
+
+
+
 
         Parameters:
         ----------
@@ -4726,19 +10005,211 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.76 drawgraph
+        ### 11.76 drawgraph
+
         Draw a graph using input video metadata.
+
 
         It accepts the following parameters:
 
 
+        - **`m1`**
+          - Set 1st frame metadata key from which metadata values will be used to draw a graph.
+        - **`fg1`**
+          - Set 1st foreground color expression.
+        - **`m2`**
+          - Set 2nd frame metadata key from which metadata values will be used to draw a graph.
+        - **`fg2`**
+          - Set 2nd foreground color expression.
+        - **`m3`**
+          - Set 3rd frame metadata key from which metadata values will be used to draw a graph.
+        - **`fg3`**
+          - Set 3rd foreground color expression.
+        - **`m4`**
+          - Set 4th frame metadata key from which metadata values will be used to draw a graph.
+        - **`fg4`**
+          - Set 4th foreground color expression.
+        - **`min`**
+          - Set minimal value of metadata value.
+        - **`max`**
+          - Set maximal value of metadata value.
+        - **`bg`**
+          - Set graph background color. Default is white.
+        - **`mode`**
+          - Set graph mode.
+        Available values for mode is:
+        ‘
+        bar
+        ’
+        ‘
+        dot
+        ’
+        ‘
+        line
+        ’
+        Default is
+        line
+        .
+        - **`slide`**
+          - Set slide mode.
+        Available values for slide is:
+        ‘
+        frame
+        ’
+        Draw new frame when right border is reached.
+        ‘
+        replace
+        ’
+        Replace old columns with new ones.
+        ‘
+        scroll
+        ’
+        Scroll from right to left.
+        ‘
+        rscroll
+        ’
+        Scroll from left to right.
+        ‘
+        picture
+        ’
+        Draw single picture.
+        Default is
+        frame
+        .
+        - **`size`**
+          - Set size of graph video. For the syntax of this option, check the
+        (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual
+        .
+        The default value is
+        900x256
+        .
+        - **`rate, r`**
+          - Set the output frame rate. Default value is
+        25
+        .
+        The foreground color expressions can use the following variables:
+        MIN
+        Minimal value of metadata value.
+        MAX
+        Maximal value of metadata value.
+        VAL
+        Current metadata key value.
+        The color is defined as 0xAABBGGRR.
+        Set 1st frame metadata key from which metadata values will be used to draw a graph.
+
+
+        Set 1st foreground color expression.
+
+
+        Set 2nd frame metadata key from which metadata values will be used to draw a graph.
+
+
+        Set 2nd foreground color expression.
+
+
+        Set 3rd frame metadata key from which metadata values will be used to draw a graph.
+
+
+        Set 3rd foreground color expression.
+
+
+        Set 4th frame metadata key from which metadata values will be used to draw a graph.
+
+
+        Set 4th foreground color expression.
+
+
+        Set minimal value of metadata value.
+
+
+        Set maximal value of metadata value.
+
+
+        Set graph background color. Default is white.
+
+
+        Set graph mode.
+
+
+        Available values for mode is:
+
+
+        - **`‘bar’`**
+        - **`‘dot’`**
+        - **`‘line’`**
+        Default is line.
+
+
+        Set slide mode.
+
+
+        Available values for slide is:
+
+
+        - **`‘frame’`**
+          - Draw new frame when right border is reached.
+        - **`‘replace’`**
+          - Replace old columns with new ones.
+        - **`‘scroll’`**
+          - Scroll from right to left.
+        - **`‘rscroll’`**
+          - Scroll from left to right.
+        - **`‘picture’`**
+          - Draw single picture.
+        Draw new frame when right border is reached.
+
+
+        Replace old columns with new ones.
+
+
+        Scroll from right to left.
+
+
+        Scroll from left to right.
+
+
+        Draw single picture.
+
+
+        Default is frame.
+
+
+        Set size of graph video. For the syntax of this option, check the
+        (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
+        The default value is 900x256.
+
+
+        Set the output frame rate. Default value is 25.
+
+
+        The foreground color expressions can use the following variables:
+
+
+        - **`MIN`**
+          - Minimal value of metadata value.
+        - **`MAX`**
+          - Maximal value of metadata value.
+        - **`VAL`**
+          - Current metadata key value.
+        Minimal value of metadata value.
+
+
+        Maximal value of metadata value.
+
+
+        Current metadata key value.
+
+
+        The color is defined as 0xAABBGGRR.
+
+
         Example using metadata from signalstats filter:
 
-        signalstats,drawgraph=lavfi.signalstats.YAVG:min=0:max=255
 
         Example using metadata from ebur128 filter:
 
-        ebur128=metadata=1,adrawgraph=lavfi.r128.M:min=-120:max=5
+
+
 
         Parameters:
         ----------
@@ -4804,14 +10275,147 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.77 drawgrid
+        ### 11.77 drawgrid
+
         Draw a grid on the input image.
+
 
         It accepts the following parameters:
 
 
+        - **`x`**
+        - **`y`**
+          - The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0.
+        - **`width, w`**
+        - **`height, h`**
+          - The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the
+        input width and height, respectively, minus
+        thickness
+        , so image gets
+        framed. Default to 0.
+        - **`color, c`**
+          - Specify the color of the grid. For the general syntax of this option,
+        check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual
+        . If the special
+        value
+        invert
+        is used, the grid color is the same as the
+        video with inverted luma.
+        - **`thickness, t`**
+          - The expression which sets the thickness of the grid line. Default value is
+        1
+        .
+        See below for the list of accepted constants.
+        - **`replace`**
+          - Applicable if the input has alpha. With
+        1
+        the pixels of the painted grid
+        will overwrite the video’s color and alpha pixels.
+        Default is
+        0
+        , which composites the grid onto the input, leaving the video’s alpha intact.
+        The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0.
+
+
+        The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the
+        input width and height, respectively, minus thickness, so image gets
+        framed. Default to 0.
+
+
+        Specify the color of the grid. For the general syntax of this option,
+        check the (ffmpeg-utils)"Color" section in the ffmpeg-utils manual. If the special
+        value invert is used, the grid color is the same as the
+        video with inverted luma.
+
+
+        The expression which sets the thickness of the grid line. Default value is 1.
+
+
+        See below for the list of accepted constants.
+
+
+        Applicable if the input has alpha. With 1 the pixels of the painted grid
+        will overwrite the video’s color and alpha pixels.
+        Default is 0, which composites the grid onto the input, leaving the video’s alpha intact.
+
+
         The parameters for x, y, w and h and t are expressions containing the
         following constants:
+
+
+        - **`dar`**
+          - The input display aspect ratio, it is the same as (
+        w
+        /
+        h
+        ) *
+        sar
+        .
+        - **`hsub`**
+        - **`vsub`**
+          - horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        - **`in_h, ih`**
+        - **`in_w, iw`**
+          - The input grid cell width and height.
+        - **`sar`**
+          - The input sample aspect ratio.
+        - **`x`**
+        - **`y`**
+          - The x and y coordinates of some point of grid intersection (meant to configure offset).
+        - **`w`**
+        - **`h`**
+          - The width and height of the drawn cell.
+        - **`t`**
+          - The thickness of the drawn cell.
+        These constants allow the
+        x
+        ,
+        y
+        ,
+        w
+        ,
+        h
+        and
+        t
+        expressions to refer to
+        each other, so you may for example specify
+        y=x/dar
+        or
+        h=w/dar
+        .
+        The input display aspect ratio, it is the same as (w / h) * sar.
+
+
+        horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p" hsub is 2 and vsub is 1.
+
+
+        The input grid cell width and height.
+
+
+        The input sample aspect ratio.
+
+
+        The x and y coordinates of some point of grid intersection (meant to configure offset).
+
+
+        The width and height of the drawn cell.
+
+
+        The thickness of the drawn cell.
+
+
+        These constants allow the x, y, w, h and t expressions to refer to
+        each other, so you may for example specify y=x/dar or h=w/dar.
+
+
+
 
         Parameters:
         ----------
@@ -4887,9 +10491,11 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.78 drawtext
+        ### 11.78 drawtext
+
         Draw a text string or text from a specified file on top of a video, using the
         libfreetype library.
+
 
         To enable compilation of this filter, you need to configure FFmpeg with
         --enable-libfreetype and --enable-libharfbuzz.
@@ -4897,6 +10503,9 @@ class VideoStream(FilterableStream):
         configure FFmpeg with --enable-libfontconfig.
         To enable the text_shaping option, you need to configure FFmpeg with
         --enable-libfribidi.
+
+
+
 
         Parameters:
         ----------
@@ -4995,10 +10604,100 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.79 edgedetect
+        ### 11.79 edgedetect
+
         Detect and draw edges. The filter uses the Canny Edge Detection algorithm.
 
+
         The filter accepts the following options:
+
+
+        - **`low`**
+        - **`high`**
+          - Set low and high threshold values used by the Canny thresholding
+        algorithm.
+        The high threshold selects the "strong" edge pixels, which are then
+        connected through 8-connectivity with the "weak" edge pixels selected
+        by the low threshold.
+        low
+        and
+        high
+        threshold values must be chosen in the range
+        [0,1], and
+        low
+        should be lesser or equal to
+        high
+        .
+        Default value for
+        low
+        is
+        20/255
+        , and default value for
+        high
+        is
+        50/255
+        .
+        - **`mode`**
+          - Define the drawing mode.
+        ‘
+        wires
+        ’
+        Draw white/gray wires on black background.
+        ‘
+        colormix
+        ’
+        Mix the colors to create a paint/cartoon effect.
+        ‘
+        canny
+        ’
+        Apply Canny edge detector on all selected planes.
+        Default value is
+        wires
+        .
+        - **`planes`**
+          - Select planes for filtering. By default all available planes are filtered.
+        Set low and high threshold values used by the Canny thresholding
+        algorithm.
+
+
+        The high threshold selects the "strong" edge pixels, which are then
+        connected through 8-connectivity with the "weak" edge pixels selected
+        by the low threshold.
+
+
+        low and high threshold values must be chosen in the range
+        [0,1], and low should be lesser or equal to high.
+
+
+        Default value for low is 20/255, and default value for high
+        is 50/255.
+
+
+        Define the drawing mode.
+
+
+        - **`‘wires’`**
+          - Draw white/gray wires on black background.
+        - **`‘colormix’`**
+          - Mix the colors to create a paint/cartoon effect.
+        - **`‘canny’`**
+          - Apply Canny edge detector on all selected planes.
+        Draw white/gray wires on black background.
+
+
+        Mix the colors to create a paint/cartoon effect.
+
+
+        Apply Canny edge detector on all selected planes.
+
+
+        Default value is wires.
+
+
+        Select planes for filtering. By default all available planes are filtered.
+
+
+
 
         Parameters:
         ----------
@@ -5040,14 +10739,59 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.80 elbg
+        ### 11.80 elbg
+
         Apply a posterize effect using the ELBG (Enhanced LBG) algorithm.
+
 
         For each input image, the filter will compute the optimal mapping from
         the input to the output given the codebook length, that is the number
         of distinct output colors.
 
+
         This filter accepts the following options.
+
+
+        - **`codebook_length, l`**
+          - Set codebook length. The value must be a positive integer, and
+        represents the number of distinct output colors. Default value is 256.
+        - **`nb_steps, n`**
+          - Set the maximum number of iterations to apply for computing the optimal
+        mapping. The higher the value the better the result and the higher the
+        computation time. Default value is 1.
+        - **`seed, s`**
+          - Set a random seed, must be an integer included between 0 and
+        UINT32_MAX. If not specified, or if explicitly set to -1, the filter
+        will try to use a good random seed on a best effort basis.
+        - **`pal8`**
+          - Set pal8 output pixel format. This option does not work with codebook
+        length greater than 256. Default is disabled.
+        - **`use_alpha`**
+          - Include alpha values in the quantization calculation. Allows creating
+        palettized output images (e.g. PNG8) with multiple alpha smooth blending.
+        Set codebook length. The value must be a positive integer, and
+        represents the number of distinct output colors. Default value is 256.
+
+
+        Set the maximum number of iterations to apply for computing the optimal
+        mapping. The higher the value the better the result and the higher the
+        computation time. Default value is 1.
+
+
+        Set a random seed, must be an integer included between 0 and
+        UINT32_MAX. If not specified, or if explicitly set to -1, the filter
+        will try to use a good random seed on a best effort basis.
+
+
+        Set pal8 output pixel format. This option does not work with codebook
+        length greater than 256. Default is disabled.
+
+
+        Include alpha values in the quantization calculation. Allows creating
+        palettized output images (e.g. PNG8) with multiple alpha smooth blending.
+
+
+
 
         Parameters:
         ----------
@@ -5084,10 +10828,33 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.81 entropy
+        ### 11.81 entropy
+
         Measure graylevel entropy in histogram of color channels of video frames.
 
+
         It accepts the following parameters:
+
+
+        - **`mode`**
+          - Can be either
+        normal
+        or
+        diff
+        . Default is
+        normal
+        .
+        diff
+        mode measures entropy of histogram delta values, absolute differences
+        between neighbour histogram values.
+        Can be either normal or diff. Default is normal.
+
+
+        diff mode measures entropy of histogram delta values, absolute differences
+        between neighbour histogram values.
+
+
+
 
         Parameters:
         ----------
@@ -5114,10 +10881,33 @@ class VideoStream(FilterableStream):
     def epx(self, *, n: int | DefaultInt = DefaultInt(3), **kwargs: Any) -> "VideoStream":
         """
 
-        11.82 epx
+        ### 11.82 epx
+
         Apply the EPX magnification filter which is designed for pixel art.
 
+
         It accepts the following option:
+
+
+        - **`n`**
+          - Set the scaling dimension:
+        2
+        for
+        2xEPX
+        ,
+        3
+        for
+        3xEPX
+        .
+        Default is
+        3
+        .
+        Set the scaling dimension: 2 for 2xEPX, 3 for
+        3xEPX.
+        Default is 3.
+
+
+
 
         Parameters:
         ----------
@@ -5157,13 +10947,174 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.83 eq
+        ### 11.83 eq
+
         Set brightness, contrast, saturation and approximate gamma adjustment.
+
 
         The filter accepts the following options:
 
 
+        - **`contrast`**
+          - Set the contrast expression. The value must be a float value in range
+        -1000.0
+        to
+        1000.0
+        . The default value is "1".
+        - **`brightness`**
+          - Set the brightness expression. The value must be a float value in
+        range
+        -1.0
+        to
+        1.0
+        . The default value is "0".
+        - **`saturation`**
+          - Set the saturation expression. The value must be a float in
+        range
+        0.0
+        to
+        3.0
+        . The default value is "1".
+        - **`gamma`**
+          - Set the gamma expression. The value must be a float in range
+        0.1
+        to
+        10.0
+        .  The default value is "1".
+        - **`gamma_r`**
+          - Set the gamma expression for red. The value must be a float in
+        range
+        0.1
+        to
+        10.0
+        . The default value is "1".
+        - **`gamma_g`**
+          - Set the gamma expression for green. The value must be a float in range
+        0.1
+        to
+        10.0
+        . The default value is "1".
+        - **`gamma_b`**
+          - Set the gamma expression for blue. The value must be a float in range
+        0.1
+        to
+        10.0
+        . The default value is "1".
+        - **`gamma_weight`**
+          - Set the gamma weight expression. It can be used to reduce the effect
+        of a high gamma value on bright image areas, e.g. keep them from
+        getting overamplified and just plain white. The value must be a float
+        in range
+        0.0
+        to
+        1.0
+        . A value of
+        0.0
+        turns the
+        gamma correction all the way down while
+        1.0
+        leaves it at its
+        full strength. Default is "1".
+        - **`eval`**
+          - Set when the expressions for brightness, contrast, saturation and
+        gamma expressions are evaluated.
+        It accepts the following values:
+        ‘
+        init
+        ’
+        only evaluate expressions once during the filter initialization or
+        when a command is processed
+        ‘
+        frame
+        ’
+        evaluate expressions for each incoming frame
+        Default value is ‘
+        init
+        ’.
+        Set the contrast expression. The value must be a float value in range
+        -1000.0 to 1000.0. The default value is "1".
+
+
+        Set the brightness expression. The value must be a float value in
+        range -1.0 to 1.0. The default value is "0".
+
+
+        Set the saturation expression. The value must be a float in
+        range 0.0 to 3.0. The default value is "1".
+
+
+        Set the gamma expression. The value must be a float in range
+        0.1 to 10.0.  The default value is "1".
+
+
+        Set the gamma expression for red. The value must be a float in
+        range 0.1 to 10.0. The default value is "1".
+
+
+        Set the gamma expression for green. The value must be a float in range
+        0.1 to 10.0. The default value is "1".
+
+
+        Set the gamma expression for blue. The value must be a float in range
+        0.1 to 10.0. The default value is "1".
+
+
+        Set the gamma weight expression. It can be used to reduce the effect
+        of a high gamma value on bright image areas, e.g. keep them from
+        getting overamplified and just plain white. The value must be a float
+        in range 0.0 to 1.0. A value of 0.0 turns the
+        gamma correction all the way down while 1.0 leaves it at its
+        full strength. Default is "1".
+
+
+        Set when the expressions for brightness, contrast, saturation and
+        gamma expressions are evaluated.
+
+
+        It accepts the following values:
+
+
+        - **`‘init’`**
+          - only evaluate expressions once during the filter initialization or
+        when a command is processed
+        - **`‘frame’`**
+          - evaluate expressions for each incoming frame
+        only evaluate expressions once during the filter initialization or
+        when a command is processed
+
+
+        evaluate expressions for each incoming frame
+
+
+        Default value is ‘init’.
+
+
         The expressions accept the following parameters:
+
+
+        - **`n`**
+          - frame count of the input frame starting from 0
+        - **`pos`**
+          - byte position of the corresponding packet in the input file, NAN if
+        unspecified; deprecated, do not use
+        - **`r`**
+          - frame rate of the input video, NAN if the input frame rate is unknown
+        - **`t`**
+          - timestamp expressed in seconds, NAN if the input timestamp is unknown
+        frame count of the input frame starting from 0
+
+
+        byte position of the corresponding packet in the input file, NAN if
+        unspecified; deprecated, do not use
+
+
+        frame rate of the input video, NAN if the input frame rate is unknown
+
+
+        timestamp expressed in seconds, NAN if the input timestamp is unknown
+
+
+
 
         Parameters:
         ----------
@@ -5215,12 +11166,47 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.84 erosion
+        ### 11.84 erosion
+
         Apply erosion effect to the video.
+
 
         This filter replaces the pixel by the local(3x3) minimum.
 
+
         It accepts the following options:
+
+
+        - **`threshold0`**
+        - **`threshold1`**
+        - **`threshold2`**
+        - **`threshold3`**
+          - Limit the maximum change for each plane, default is 65535.
+        If 0, plane will remain unchanged.
+        - **`coordinates`**
+          - Flag which specifies the pixel to refer to. Default is 255 i.e. all eight
+        pixels are used.
+        Flags to local 3x3 coordinates maps like this:
+        1 2 3
+            4   5
+            6 7 8
+        Limit the maximum change for each plane, default is 65535.
+        If 0, plane will remain unchanged.
+
+
+        Flag which specifies the pixel to refer to. Default is 255 i.e. all eight
+        pixels are used.
+
+
+        Flags to local 3x3 coordinates maps like this:
+
+
+        1 2 3
+            4   5
+            6 7 8
+
+
+
 
         Parameters:
         ----------
@@ -5264,12 +11250,63 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.5 erosion_opencl
+        ### 12.5 erosion_opencl
+
         Apply erosion effect to the video.
+
 
         This filter replaces the pixel by the local(3x3) minimum.
 
+
         It accepts the following options:
+
+
+        - **`threshold0`**
+        - **`threshold1`**
+        - **`threshold2`**
+        - **`threshold3`**
+          - Limit the maximum change for each plane. Range is
+        [0, 65535]
+        and default value is
+        65535
+        .
+        If
+        0
+        , plane will remain unchanged.
+        - **`coordinates`**
+          - Flag which specifies the pixel to refer to.
+        Range is
+        [0, 255]
+        and default value is
+        255
+        , i.e. all eight pixels are used.
+        Flags to local 3x3 coordinates region centered on
+        x
+        :
+        1 2 3
+        4 x 5
+        6 7 8
+        Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535.
+        If 0, plane will remain unchanged.
+
+
+        Flag which specifies the pixel to refer to.
+        Range is [0, 255] and default value is 255, i.e. all eight pixels are used.
+
+
+        Flags to local 3x3 coordinates region centered on x:
+
+
+        1 2 3
+
+
+        4 x 5
+
+
+        6 7 8
+
+
+
 
         Parameters:
         ----------
@@ -5317,13 +11354,171 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.85 estdif
+        ### 11.85 estdif
+
         Deinterlace the input video ("estdif" stands for "Edge Slope
         Tracing Deinterlacing Filter").
+
 
         Spatial only filter that uses edge slope tracing algorithm
         to interpolate missing lines.
         It accepts the following parameters:
+
+
+        - **`mode`**
+          - The interlacing mode to adopt. It accepts one of the following values:
+        frame
+        Output one frame for each frame.
+        field
+        Output one frame for each field.
+        The default value is
+        field
+        .
+        - **`parity`**
+          - The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+        tff
+        Assume the top field is first.
+        bff
+        Assume the bottom field is first.
+        auto
+        Enable automatic detection of field parity.
+        The default value is
+        auto
+        .
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+        - **`deint`**
+          - Specify which frames to deinterlace. Accepts one of the following
+        values:
+        all
+        Deinterlace all frames.
+        interlaced
+        Only deinterlace frames marked as interlaced.
+        The default value is
+        all
+        .
+        - **`rslope`**
+          - Specify the search radius for edge slope tracing. Default value is 1.
+        Allowed range is from 1 to 15.
+        - **`redge`**
+          - Specify the search radius for best edge matching. Default value is 2.
+        Allowed range is from 0 to 15.
+        - **`ecost`**
+          - Specify the edge cost for edge matching. Default value is 2.
+        Allowed range is from 0 to 50.
+        - **`mcost`**
+          - Specify the middle cost for edge matching. Default value is 1.
+        Allowed range is from 0 to 50.
+        - **`dcost`**
+          - Specify the distance cost for edge matching. Default value is 1.
+        Allowed range is from 0 to 50.
+        - **`interp`**
+          - Specify the interpolation used. Default is 4-point interpolation. It accepts one
+        of the following values:
+        2p
+        Two-point interpolation.
+        4p
+        Four-point interpolation.
+        6p
+        Six-point interpolation.
+        The interlacing mode to adopt. It accepts one of the following values:
+
+
+        - **`frame`**
+          - Output one frame for each frame.
+        - **`field`**
+          - Output one frame for each field.
+        Output one frame for each frame.
+
+
+        Output one frame for each field.
+
+
+        The default value is field.
+
+
+        The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+
+
+        - **`tff`**
+          - Assume the top field is first.
+        - **`bff`**
+          - Assume the bottom field is first.
+        - **`auto`**
+          - Enable automatic detection of field parity.
+        Assume the top field is first.
+
+
+        Assume the bottom field is first.
+
+
+        Enable automatic detection of field parity.
+
+
+        The default value is auto.
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+
+
+        Specify which frames to deinterlace. Accepts one of the following
+        values:
+
+
+        - **`all`**
+          - Deinterlace all frames.
+        - **`interlaced`**
+          - Only deinterlace frames marked as interlaced.
+        Deinterlace all frames.
+
+
+        Only deinterlace frames marked as interlaced.
+
+
+        The default value is all.
+
+
+        Specify the search radius for edge slope tracing. Default value is 1.
+        Allowed range is from 1 to 15.
+
+
+        Specify the search radius for best edge matching. Default value is 2.
+        Allowed range is from 0 to 15.
+
+
+        Specify the edge cost for edge matching. Default value is 2.
+        Allowed range is from 0 to 50.
+
+
+        Specify the middle cost for edge matching. Default value is 1.
+        Allowed range is from 0 to 50.
+
+
+        Specify the distance cost for edge matching. Default value is 1.
+        Allowed range is from 0 to 50.
+
+
+        Specify the interpolation used. Default is 4-point interpolation. It accepts one
+        of the following values:
+
+
+        - **`2p`**
+          - Two-point interpolation.
+        - **`4p`**
+          - Four-point interpolation.
+        - **`6p`**
+          - Six-point interpolation.
+        Two-point interpolation.
+
+
+        Four-point interpolation.
+
+
+        Six-point interpolation.
+
+
+
 
         Parameters:
         ----------
@@ -5372,10 +11567,29 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.86 exposure
+        ### 11.86 exposure
+
         Adjust exposure of the video stream.
 
+
         The filter accepts the following options:
+
+
+        - **`exposure`**
+          - Set the exposure correction in EV. Allowed range is from -3.0 to 3.0 EV
+        Default value is 0 EV.
+        - **`black`**
+          - Set the black level correction. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+        Set the exposure correction in EV. Allowed range is from -3.0 to 3.0 EV
+        Default value is 0 EV.
+
+
+        Set the black level correction. Allowed range is from -1.0 to 1.0.
+        Default value is 0.
+
+
+
 
         Parameters:
         ----------
@@ -5406,11 +11620,73 @@ class VideoStream(FilterableStream):
     ) -> FilterNode:
         """
 
-        11.87 extractplanes
+        ### 11.87 extractplanes
+
         Extract color channel components from input video stream into
         separate grayscale video streams.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set plane(s) to extract.
+        Available values for planes are:
+        ‘
+        y
+        ’
+        ‘
+        u
+        ’
+        ‘
+        v
+        ’
+        ‘
+        a
+        ’
+        ‘
+        r
+        ’
+        ‘
+        g
+        ’
+        ‘
+        b
+        ’
+        Choosing planes not available in the input will result in an error.
+        That means you cannot select
+        r
+        ,
+        g
+        ,
+        b
+        planes
+        with
+        y
+        ,
+        u
+        ,
+        v
+        planes at same time.
+        Set plane(s) to extract.
+
+
+        Available values for planes are:
+
+
+        - **`‘y’`**
+        - **`‘u’`**
+        - **`‘v’`**
+        - **`‘a’`**
+        - **`‘r’`**
+        - **`‘g’`**
+        - **`‘b’`**
+        Choosing planes not available in the input will result in an error.
+        That means you cannot select r, g, b planes
+        with y, u, v planes at same time.
+
+
+
 
         Parameters:
         ----------
@@ -5449,10 +11725,86 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.88 fade
+        ### 11.88 fade
+
         Apply a fade-in/out effect to the input video.
 
+
         It accepts the following parameters:
+
+
+        - **`type, t`**
+          - The effect type can be either "in" for a fade-in, or "out" for a fade-out
+        effect.
+        Default is
+        in
+        .
+        - **`start_frame, s`**
+          - Specify the number of the frame to start applying the fade
+        effect at. Default is 0.
+        - **`nb_frames, n`**
+          - The number of frames that the fade effect lasts. At the end of the
+        fade-in effect, the output video will have the same intensity as the input video.
+        At the end of the fade-out transition, the output video will be filled with the
+        selected
+        color
+        .
+        Default is 25.
+        - **`alpha`**
+          - If set to 1, fade only alpha channel, if one exists on the input.
+        Default value is 0.
+        - **`start_time, st`**
+          - Specify the timestamp (in seconds) of the frame to start to apply the fade
+        effect. If both start_frame and start_time are specified, the fade will start at
+        whichever comes last.  Default is 0.
+        - **`duration, d`**
+          - The number of seconds for which the fade effect has to last. At the end of the
+        fade-in effect the output video will have the same intensity as the input video,
+        at the end of the fade-out transition the output video will be filled with the
+        selected
+        color
+        .
+        If both duration and nb_frames are specified, duration is used. Default is 0
+        (nb_frames is used by default).
+        - **`color, c`**
+          - Specify the color of the fade. Default is "black".
+        The effect type can be either "in" for a fade-in, or "out" for a fade-out
+        effect.
+        Default is in.
+
+
+        Specify the number of the frame to start applying the fade
+        effect at. Default is 0.
+
+
+        The number of frames that the fade effect lasts. At the end of the
+        fade-in effect, the output video will have the same intensity as the input video.
+        At the end of the fade-out transition, the output video will be filled with the
+        selected color.
+        Default is 25.
+
+
+        If set to 1, fade only alpha channel, if one exists on the input.
+        Default value is 0.
+
+
+        Specify the timestamp (in seconds) of the frame to start to apply the fade
+        effect. If both start_frame and start_time are specified, the fade will start at
+        whichever comes last.  Default is 0.
+
+
+        The number of seconds for which the fade effect has to last. At the end of the
+        fade-in effect the output video will have the same intensity as the input video,
+        at the end of the fade-out transition the output video will be filled with the
+        selected color.
+        If both duration and nb_frames are specified, duration is used. Default is 0
+        (nb_frames is used by default).
+
+
+        Specify the color of the fade. Default is "black".
+
+
+
 
         Parameters:
         ----------
@@ -5500,8 +11852,10 @@ class VideoStream(FilterableStream):
     ) -> tuple["VideoStream", "VideoStream",]:
         """
 
-        11.89 feedback
+        ### 11.89 feedback
+
         Apply feedback video filter.
+
 
         This filter pass cropped input frames to 2nd output.
         From there it can be filtered with other video filters.
@@ -5509,9 +11863,26 @@ class VideoStream(FilterableStream):
         is combined on top of original frame from 1st input and passed
         to 1st output.
 
+
         The typical usage is filter only part of frame.
 
+
         The filter accepts the following options:
+
+
+        - **`x`**
+        - **`y`**
+          - Set the top left crop position.
+        - **`w`**
+        - **`h`**
+          - Set the crop size.
+        Set the top left crop position.
+
+
+        Set the crop size.
+
+
+
 
         Parameters:
         ----------
@@ -5586,10 +11957,67 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.90 fftdnoiz
+        ### 11.90 fftdnoiz
+
         Denoise frames using 3D FFT (frequency domain filtering).
 
+
         The filter accepts the following options:
+
+
+        - **`sigma`**
+          - Set the noise sigma constant. This sets denoising strength.
+        Default value is 1. Allowed range is from 0 to 30.
+        Using very high sigma with low overlap may give blocking artifacts.
+        - **`amount`**
+          - Set amount of denoising. By default all detected noise is reduced.
+        Default value is 1. Allowed range is from 0 to 1.
+        - **`block`**
+          - Set size of block in pixels, Default is 32, can be 8 to 256.
+        - **`overlap`**
+          - Set block overlap. Default is 0.5. Allowed range is from 0.2 to 0.8.
+        - **`method`**
+          - Set denoising method. Default is
+        wiener
+        , can also be
+        hard
+        .
+        - **`prev`**
+          - Set number of previous frames to use for denoising. By default is set to 0.
+        - **`next`**
+          - Set number of next frames to to use for denoising. By default is set to 0.
+        - **`planes`**
+          - Set planes which will be filtered, by default are all available filtered
+        except alpha.
+        Set the noise sigma constant. This sets denoising strength.
+        Default value is 1. Allowed range is from 0 to 30.
+        Using very high sigma with low overlap may give blocking artifacts.
+
+
+        Set amount of denoising. By default all detected noise is reduced.
+        Default value is 1. Allowed range is from 0 to 1.
+
+
+        Set size of block in pixels, Default is 32, can be 8 to 256.
+
+
+        Set block overlap. Default is 0.5. Allowed range is from 0.2 to 0.8.
+
+
+        Set denoising method. Default is wiener, can also be hard.
+
+
+        Set number of previous frames to use for denoising. By default is set to 0.
+
+
+        Set number of next frames to to use for denoising. By default is set to 0.
+
+
+        Set planes which will be filtered, by default are all available filtered
+        except alpha.
+
+
+
 
         Parameters:
         ----------
@@ -5643,8 +12071,132 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.91 fftfilt
+        ### 11.91 fftfilt
+
         Apply arbitrary expressions to samples in frequency domain
+
+
+        - **`dc_Y`**
+          - Adjust the dc value (gain) of the luma plane of the image. The filter
+        accepts an integer value in range
+        0
+        to
+        1000
+        . The default
+        value is set to
+        0
+        .
+        - **`dc_U`**
+          - Adjust the dc value (gain) of the 1st chroma plane of the image. The
+        filter accepts an integer value in range
+        0
+        to
+        1000
+        . The
+        default value is set to
+        0
+        .
+        - **`dc_V`**
+          - Adjust the dc value (gain) of the 2nd chroma plane of the image. The
+        filter accepts an integer value in range
+        0
+        to
+        1000
+        . The
+        default value is set to
+        0
+        .
+        - **`weight_Y`**
+          - Set the frequency domain weight expression for the luma plane.
+        - **`weight_U`**
+          - Set the frequency domain weight expression for the 1st chroma plane.
+        - **`weight_V`**
+          - Set the frequency domain weight expression for the 2nd chroma plane.
+        - **`eval`**
+          - Set when the expressions are evaluated.
+        It accepts the following values:
+        ‘
+        init
+        ’
+        Only evaluate expressions once during the filter initialization.
+        ‘
+        frame
+        ’
+        Evaluate expressions for each incoming frame.
+        Default value is ‘
+        init
+        ’.
+        The filter accepts the following variables:
+        - **`X`**
+        - **`Y`**
+          - The coordinates of the current sample.
+        - **`W`**
+        - **`H`**
+          - The width and height of the image.
+        - **`N`**
+          - The number of input frame, starting from 0.
+        - **`WS`**
+        - **`HS`**
+          - The size of FFT array for horizontal and vertical processing.
+        Adjust the dc value (gain) of the luma plane of the image. The filter
+        accepts an integer value in range 0 to 1000. The default
+        value is set to 0.
+
+
+        Adjust the dc value (gain) of the 1st chroma plane of the image. The
+        filter accepts an integer value in range 0 to 1000. The
+        default value is set to 0.
+
+
+        Adjust the dc value (gain) of the 2nd chroma plane of the image. The
+        filter accepts an integer value in range 0 to 1000. The
+        default value is set to 0.
+
+
+        Set the frequency domain weight expression for the luma plane.
+
+
+        Set the frequency domain weight expression for the 1st chroma plane.
+
+
+        Set the frequency domain weight expression for the 2nd chroma plane.
+
+
+        Set when the expressions are evaluated.
+
+
+        It accepts the following values:
+
+
+        - **`‘init’`**
+          - Only evaluate expressions once during the filter initialization.
+        - **`‘frame’`**
+          - Evaluate expressions for each incoming frame.
+        Only evaluate expressions once during the filter initialization.
+
+
+        Evaluate expressions for each incoming frame.
+
+
+        Default value is ‘init’.
+
+
+        The filter accepts the following variables:
+
+
+        The coordinates of the current sample.
+
+
+        The width and height of the image.
+
+
+        The number of input frame, starting from 0.
+
+
+        The size of FFT array for horizontal and vertical processing.
+
+
+
 
         Parameters:
         ----------
@@ -5685,12 +12237,32 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.92 field
+        ### 11.92 field
+
         Extract a single field from an interlaced image using stride
         arithmetic to avoid wasting CPU time. The output frames are marked as
         non-interlaced.
 
+
         The filter accepts the following options:
+
+
+        - **`type`**
+          - Specify whether to extract the top (if the value is
+        0
+        or
+        top
+        ) or the bottom field (if the value is
+        1
+        or
+        bottom
+        ).
+        Specify whether to extract the top (if the value is 0 or
+        top) or the bottom field (if the value is 1 or
+        bottom).
+
+
+
 
         Parameters:
         ----------
@@ -5723,28 +12295,92 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.93 fieldhint
+        ### 11.93 fieldhint
+
         Create new frames by copying the top and bottom fields from surrounding frames
         supplied as numbers by the hint file.
 
 
+        - **`hint`**
+          - Set file containing hints: absolute/relative frame numbers.
+        There must be one line for each frame in a clip. Each line must contain two
+        numbers separated by the comma, optionally followed by
+        -
+        or
+        +
+        .
+        Numbers supplied on each line of file can not be out of [N-1,N+1] where N
+        is current frame number for
+        absolute
+        mode or out of [-1, 1] range
+        for
+        relative
+        mode. First number tells from which frame to pick up top
+        field and second number tells from which frame to pick up bottom field.
+        If optionally followed by
+        +
+        output frame will be marked as interlaced,
+        else if followed by
+        -
+        output frame will be marked as progressive, else
+        it will be marked same as input frame.
+        If optionally followed by
+        t
+        output frame will use only top field, or in
+        case of
+        b
+        it will use only bottom field.
+        If line starts with
+        #
+        or
+        ;
+        that line is skipped.
+        - **`mode`**
+          - Can be item
+        absolute
+        or
+        relative
+        or
+        pattern
+        . Default is
+        absolute
+        .
+        The
+        pattern
+        mode is same as
+        relative
+        mode, except at last entry of file if there
+        are more frames to process than
+        hint
+        file is seek back to start.
+        Set file containing hints: absolute/relative frame numbers.
+
+
+        There must be one line for each frame in a clip. Each line must contain two
+        numbers separated by the comma, optionally followed by - or +.
+        Numbers supplied on each line of file can not be out of [N-1,N+1] where N
+        is current frame number for absolute mode or out of [-1, 1] range
+        for relative mode. First number tells from which frame to pick up top
+        field and second number tells from which frame to pick up bottom field.
+
+
+        If optionally followed by + output frame will be marked as interlaced,
+        else if followed by - output frame will be marked as progressive, else
+        it will be marked same as input frame.
+        If optionally followed by t output frame will use only top field, or in
+        case of b it will use only bottom field.
+        If line starts with # or ; that line is skipped.
+
+
+        Can be item absolute or relative or pattern. Default is absolute.
+        The pattern mode is same as relative mode, except at last entry of file if there
+        are more frames to process than hint file is seek back to start.
+
+
         Example of first several lines of hint file for relative mode:
 
-        0,0 - # first frame
-        1,0 - # second frame, use third's frame top field and second's frame bottom field
-        1,0 - # third frame, use fourth's frame top field and third's frame bottom field
-        1,0 -
-        0,0 -
-        0,0 -
-        1,0 -
-        1,0 -
-        1,0 -
-        0,0 -
-        0,0 -
-        1,0 -
-        1,0 -
-        1,0 -
-        0,0 -
+
+
 
         Parameters:
         ----------
@@ -5773,28 +12409,45 @@ class VideoStream(FilterableStream):
     def fieldorder(self, *, order: int | DefaultInt = DefaultInt(1), **kwargs: Any) -> "VideoStream":
         """
 
-        11.95 fieldorder
+        ### 11.95 fieldorder
+
         Transform the field order of the input video.
+
 
         It accepts the following parameters:
 
 
+        - **`order`**
+          - The output field order. Valid values are
+        tff
+        for top field first or
+        bff
+        for bottom field first.
+        The output field order. Valid values are tff for top field first or bff
+        for bottom field first.
+
+
         The default value is ‘tff’.
+
 
         The transformation is done by shifting the picture content up or down
         by one line, and filling the remaining line with appropriate picture content.
         This method is consistent with most broadcast field order converters.
 
+
         If the input video is not flagged as being interlaced, or it is already
         flagged as being of the required output field order, then this filter does
         not alter the incoming video.
 
+
         It is very useful when converting to or from PAL DV material,
         which is bottom field first.
 
+
         For example:
 
-        ffmpeg -i in.vob -vf "fieldorder=bff" out.dv
+
+
 
         Parameters:
         ----------
@@ -5821,13 +12474,19 @@ class VideoStream(FilterableStream):
     def fifo(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.96 fifo, afifo
+        ### 11.96 fifo, afifo
+
         Buffer input images and send them when they are requested.
+
 
         It is mainly useful when auto-inserted by the libavfilter
         framework.
 
+
         It does not take parameters.
+
+
+
 
         Parameters:
         ----------
@@ -5862,12 +12521,122 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.97 fillborders
+        ### 11.97 fillborders
+
         Fill borders of the input video, without changing video stream dimensions.
         Sometimes video can have garbage at the four edges and you may not want to
         crop video input to keep size multiple of some number.
 
+
         This filter accepts the following options:
+
+
+        - **`left`**
+          - Number of pixels to fill from left border.
+        - **`right`**
+          - Number of pixels to fill from right border.
+        - **`top`**
+          - Number of pixels to fill from top border.
+        - **`bottom`**
+          - Number of pixels to fill from bottom border.
+        - **`mode`**
+          - Set fill mode.
+        It accepts the following values:
+        ‘
+        smear
+        ’
+        fill pixels using outermost pixels
+        ‘
+        mirror
+        ’
+        fill pixels using mirroring (half sample symmetric)
+        ‘
+        fixed
+        ’
+        fill pixels with constant value
+        ‘
+        reflect
+        ’
+        fill pixels using reflecting (whole sample symmetric)
+        ‘
+        wrap
+        ’
+        fill pixels using wrapping
+        ‘
+        fade
+        ’
+        fade pixels to constant value
+        ‘
+        margins
+        ’
+        fill pixels at top and bottom with weighted averages pixels near borders
+        Default is
+        smear
+        .
+        - **`color`**
+          - Set color for pixels in fixed or fade mode. Default is
+        black
+        .
+        Number of pixels to fill from left border.
+
+
+        Number of pixels to fill from right border.
+
+
+        Number of pixels to fill from top border.
+
+
+        Number of pixels to fill from bottom border.
+
+
+        Set fill mode.
+
+
+        It accepts the following values:
+
+
+        - **`‘smear’`**
+          - fill pixels using outermost pixels
+        - **`‘mirror’`**
+          - fill pixels using mirroring (half sample symmetric)
+        - **`‘fixed’`**
+          - fill pixels with constant value
+        - **`‘reflect’`**
+          - fill pixels using reflecting (whole sample symmetric)
+        - **`‘wrap’`**
+          - fill pixels using wrapping
+        - **`‘fade’`**
+          - fade pixels to constant value
+        - **`‘margins’`**
+          - fill pixels at top and bottom with weighted averages pixels near borders
+        fill pixels using outermost pixels
+
+
+        fill pixels using mirroring (half sample symmetric)
+
+
+        fill pixels with constant value
+
+
+        fill pixels using reflecting (whole sample symmetric)
+
+
+        fill pixels using wrapping
+
+
+        fade pixels to constant value
+
+
+        fill pixels at top and bottom with weighted averages pixels near borders
+
+
+        Default is smear.
+
+
+        Set color for pixels in fixed or fade mode. Default is black.
+
+
+
 
         Parameters:
         ----------
@@ -5916,22 +12685,91 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.98 find_rect
+        ### 11.98 find_rect
+
         Find a rectangular object in the input video.
+
 
         The object to search for must be specified as a gray8 image specified with the
         object option.
 
+
         For each possible match, a score is computed. If the score reaches the specified
         threshold, the object is considered found.
+
 
         If the input video contains multiple instances of the object, the filter will
         find only one of them.
 
+
         When an object is found, the following metadata entries are set in the matching
         frame:
 
+
+        - **`lavfi.rect.w`**
+          - width of object
+        - **`lavfi.rect.h`**
+          - height of object
+        - **`lavfi.rect.x`**
+          - x position of object
+        - **`lavfi.rect.y`**
+          - y position of object
+        - **`lavfi.rect.score`**
+          - match score of the found object
+        width of object
+
+
+        height of object
+
+
+        x position of object
+
+
+        y position of object
+
+
+        match score of the found object
+
+
         It accepts the following options:
+
+
+        - **`object`**
+          - Filepath of the object image, needs to be in gray8.
+        - **`threshold`**
+          - Detection threshold, expressed as a decimal number in the range 0-1.
+        A threshold value of 0.01 means only exact matches, a threshold of 0.99 means
+        almost everything matches.
+        Default value is 0.5.
+        - **`mipmaps`**
+          - Number of mipmaps, default is 3.
+        - **`xmin, ymin, xmax, ymax`**
+          - Specifies the rectangle in which to search.
+        - **`discard`**
+          - Discard frames where object is not detected. Default is disabled.
+        Filepath of the object image, needs to be in gray8.
+
+
+        Detection threshold, expressed as a decimal number in the range 0-1.
+
+
+        A threshold value of 0.01 means only exact matches, a threshold of 0.99 means
+        almost everything matches.
+
+
+        Default value is 0.5.
+
+
+        Number of mipmaps, default is 3.
+
+
+        Specifies the rectangle in which to search.
+
+
+        Discard frames where object is not detected. Default is disabled.
+
+
+
 
         Parameters:
         ----------
@@ -5972,8 +12810,12 @@ class VideoStream(FilterableStream):
     def flip_vulkan(self, **kwargs: Any) -> "VideoStream":
         """
 
-        14.8 flip_vulkan
+        ### 14.8 flip_vulkan
+
         Flips an image along both the vertical and horizontal axis.
+
+
+
 
         Parameters:
         ----------
@@ -6010,10 +12852,65 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.99 floodfill
+        ### 11.99 floodfill
+
         Flood area with values of same pixel components with another values.
 
+
         It accepts the following options:
+
+
+        - **`x`**
+          - Set pixel x coordinate.
+        - **`y`**
+          - Set pixel y coordinate.
+        - **`s0`**
+          - Set source #0 component value.
+        - **`s1`**
+          - Set source #1 component value.
+        - **`s2`**
+          - Set source #2 component value.
+        - **`s3`**
+          - Set source #3 component value.
+        - **`d0`**
+          - Set destination #0 component value.
+        - **`d1`**
+          - Set destination #1 component value.
+        - **`d2`**
+          - Set destination #2 component value.
+        - **`d3`**
+          - Set destination #3 component value.
+        Set pixel x coordinate.
+
+
+        Set pixel y coordinate.
+
+
+        Set source #0 component value.
+
+
+        Set source #1 component value.
+
+
+        Set source #2 component value.
+
+
+        Set source #3 component value.
+
+
+        Set destination #0 component value.
+
+
+        Set destination #1 component value.
+
+
+        Set destination #2 component value.
+
+
+        Set destination #3 component value.
+
+
+
 
         Parameters:
         ----------
@@ -6058,12 +12955,24 @@ class VideoStream(FilterableStream):
     def format(self, *, pix_fmts: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.100 format
+        ### 11.100 format
+
         Convert the input video to one of the specified pixel formats.
         Libavfilter will try to pick one that is suitable as input to
         the next filter.
 
+
         It accepts the following parameters:
+
+
+        - **`pix_fmts`**
+          - A ’|’-separated list of pixel format names, such as
+        "pix_fmts=yuv420p|monow|rgb24".
+        A ’|’-separated list of pixel format names, such as
+        "pix_fmts=yuv420p|monow|rgb24".
+
+
+
 
         Parameters:
         ----------
@@ -6098,16 +13007,183 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.101 fps
+        ### 11.101 fps
+
         Convert the video to specified constant frame rate by duplicating or dropping
         frames as necessary.
 
+
         It accepts the following parameters:
+
+
+        - **`fps`**
+          - The desired output frame rate. It accepts expressions containing the following
+        constants:
+        ‘
+        source_fps
+        ’
+        The input’s frame rate
+        ‘
+        ntsc
+        ’
+        NTSC frame rate of
+        30000/1001
+        ‘
+        pal
+        ’
+        PAL frame rate of
+        25.0
+        ‘
+        film
+        ’
+        Film frame rate of
+        24.0
+        ‘
+        ntsc_film
+        ’
+        NTSC-film frame rate of
+        24000/1001
+        The default is
+        25
+        .
+        - **`start_time`**
+          - Assume the first PTS should be the given value, in seconds. This allows for
+        padding/trimming at the start of stream. By default, no assumption is made
+        about the first frame’s expected PTS, so no padding or trimming is done.
+        For example, this could be set to 0 to pad the beginning with duplicates of
+        the first frame if a video stream starts after the audio stream or to trim any
+        frames with a negative PTS.
+        - **`round`**
+          - Timestamp (PTS) rounding method.
+        Possible values are:
+        zero
+        round towards 0
+        inf
+        round away from 0
+        down
+        round towards -infinity
+        up
+        round towards +infinity
+        near
+        round to nearest
+        The default is
+        near
+        .
+        - **`eof_action`**
+          - Action performed when reading the last frame.
+        Possible values are:
+        round
+        Use same timestamp rounding method as used for other frames.
+        pass
+        Pass through last frame if input duration has not been reached yet.
+        The default is
+        round
+        .
+        The desired output frame rate. It accepts expressions containing the following
+        constants:
+
+
+        - **`‘source_fps’`**
+          - The input’s frame rate
+        - **`‘ntsc’`**
+          - NTSC frame rate of
+        30000/1001
+        - **`‘pal’`**
+          - PAL frame rate of
+        25.0
+        - **`‘film’`**
+          - Film frame rate of
+        24.0
+        - **`‘ntsc_film’`**
+          - NTSC-film frame rate of
+        24000/1001
+        The input’s frame rate
+
+
+        NTSC frame rate of 30000/1001
+
+
+        PAL frame rate of 25.0
+
+
+        Film frame rate of 24.0
+
+
+        NTSC-film frame rate of 24000/1001
+
+
+        The default is 25.
+
+
+        Assume the first PTS should be the given value, in seconds. This allows for
+        padding/trimming at the start of stream. By default, no assumption is made
+        about the first frame’s expected PTS, so no padding or trimming is done.
+        For example, this could be set to 0 to pad the beginning with duplicates of
+        the first frame if a video stream starts after the audio stream or to trim any
+        frames with a negative PTS.
+
+
+        Timestamp (PTS) rounding method.
+
+
+        Possible values are:
+
+
+        - **`zero`**
+          - round towards 0
+        - **`inf`**
+          - round away from 0
+        - **`down`**
+          - round towards -infinity
+        - **`up`**
+          - round towards +infinity
+        - **`near`**
+          - round to nearest
+        round towards 0
+
+
+        round away from 0
+
+
+        round towards -infinity
+
+
+        round towards +infinity
+
+
+        round to nearest
+
+
+        The default is near.
+
+
+        Action performed when reading the last frame.
+
+
+        Possible values are:
+
+
+        - **`round`**
+          - Use same timestamp rounding method as used for other frames.
+        - **`pass`**
+          - Pass through last frame if input duration has not been reached yet.
+        Use same timestamp rounding method as used for other frames.
+
+
+        Pass through last frame if input duration has not been reached yet.
+
+
+        The default is round.
+
 
         Alternatively, the options can be specified as a flat string:
         fps[:start_time[:round]].
 
+
         See also the setpts filter.
+
+
+
 
         Parameters:
         ----------
@@ -6146,23 +13222,62 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.102 framepack
+        ### 11.102 framepack
+
         Pack two different video streams into a stereoscopic video, setting proper
         metadata on supported codecs. The two views should have the same size and
         framerate and processing will stop when the shorter video ends. Please note
         that you may conveniently adjust view properties with the scale and
         fps filters.
 
+
         It accepts the following parameters:
+
+
+        - **`format`**
+          - The desired packing format. Supported values are:
+        sbs
+        The views are next to each other (default).
+        tab
+        The views are on top of each other.
+        lines
+        The views are packed by line.
+        columns
+        The views are packed by column.
+        frameseq
+        The views are temporally interleaved.
+        The desired packing format. Supported values are:
+
+
+        - **`sbs`**
+          - The views are next to each other (default).
+        - **`tab`**
+          - The views are on top of each other.
+        - **`lines`**
+          - The views are packed by line.
+        - **`columns`**
+          - The views are packed by column.
+        - **`frameseq`**
+          - The views are temporally interleaved.
+        The views are next to each other (default).
+
+
+        The views are on top of each other.
+
+
+        The views are packed by line.
+
+
+        The views are packed by column.
+
+
+        The views are temporally interleaved.
+
 
         Some examples:
 
 
-        # Convert left and right views into a frame-sequential video
-        ffmpeg -i LEFT -i RIGHT -filter_complex framepack=frameseq OUTPUT
 
-        # Convert views into a side-by-side video with the same output resolution as the input
-        ffmpeg -i LEFT -i RIGHT -filter_complex [0:v]scale=w=iw/2[left],[1:v]scale=w=iw/2[right],[left][right]framepack=sbs OUTPUT
 
         Parameters:
         ----------
@@ -6199,15 +13314,100 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.103 framerate
+        ### 11.103 framerate
+
         Change the frame rate by interpolating new video output frames from the source
         frames.
+
 
         This filter is not designed to function correctly with interlaced media. If
         you wish to change the frame rate of interlaced media then you are required
         to deinterlace before this filter and re-interlace after this filter.
 
+
         A description of the accepted options follows.
+
+
+        - **`fps`**
+          - Specify the output frames per second. This option can also be specified
+        as a value alone. The default is
+        50
+        .
+        - **`interp_start`**
+          - Specify the start of a range where the output frame will be created as a
+        linear interpolation of two frames. The range is [
+        0
+        -
+        255
+        ],
+        the default is
+        15
+        .
+        - **`interp_end`**
+          - Specify the end of a range where the output frame will be created as a
+        linear interpolation of two frames. The range is [
+        0
+        -
+        255
+        ],
+        the default is
+        240
+        .
+        - **`scene`**
+          - Specify the level at which a scene change is detected as a value between
+        0 and 100 to indicate a new scene; a low value reflects a low
+        probability for the current frame to introduce a new scene, while a higher
+        value means the current frame is more likely to be one.
+        The default is
+        8.2
+        .
+        - **`flags`**
+          - Specify flags influencing the filter process.
+        Available value for
+        flags
+        is:
+        scene_change_detect, scd
+        Enable scene change detection using the value of the option
+        scene
+        .
+        This flag is enabled by default.
+        Specify the output frames per second. This option can also be specified
+        as a value alone. The default is 50.
+
+
+        Specify the start of a range where the output frame will be created as a
+        linear interpolation of two frames. The range is [0-255],
+        the default is 15.
+
+
+        Specify the end of a range where the output frame will be created as a
+        linear interpolation of two frames. The range is [0-255],
+        the default is 240.
+
+
+        Specify the level at which a scene change is detected as a value between
+        0 and 100 to indicate a new scene; a low value reflects a low
+        probability for the current frame to introduce a new scene, while a higher
+        value means the current frame is more likely to be one.
+        The default is 8.2.
+
+
+        Specify flags influencing the filter process.
+
+
+        Available value for flags is:
+
+
+        - **`scene_change_detect, scd`**
+          - Enable scene change detection using the value of the option
+        scene
+        .
+        This flag is enabled by default.
+        Enable scene change detection using the value of the option scene.
+        This flag is enabled by default.
+
+
+
 
         Parameters:
         ----------
@@ -6242,10 +13442,26 @@ class VideoStream(FilterableStream):
     def framestep(self, *, step: int | DefaultInt = DefaultInt(1), **kwargs: Any) -> "VideoStream":
         """
 
-        11.104 framestep
+        ### 11.104 framestep
+
         Select one frame every N-th frame.
 
+
         This filter accepts the following option:
+
+
+        - **`step`**
+          - Select frame after every
+        step
+        frames.
+        Allowed values are positive integers higher than 0. Default value is
+        1
+        .
+        Select frame after every step frames.
+        Allowed values are positive integers higher than 0. Default value is 1.
+
+
+
 
         Parameters:
         ----------
@@ -6274,13 +13490,16 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.105 freezedetect
+        ### 11.105 freezedetect
+
         Detect frozen video.
+
 
         This filter logs a message and sets frame metadata when it detects that the
         input video has no significant change in content during a specified duration.
         Video freeze detection calculates the mean average absolute difference of all
         the components of video frames and compares it to a noise floor.
+
 
         The printed times and duration are expressed in seconds. The
         lavfi.freezedetect.freeze_start metadata key is set on the first frame
@@ -6290,7 +13509,25 @@ class VideoStream(FilterableStream):
         lavfi.freezedetect.freeze_end metadata keys are set on the first frame
         after the freeze.
 
+
         The filter accepts the following options:
+
+
+        - **`noise, n`**
+          - Set noise tolerance. Can be specified in dB (in case "dB" is appended to the
+        specified value) or as a difference ratio between 0 and 1. Default is -60dB, or
+        0.001.
+        - **`duration, d`**
+          - Set freeze duration until notification (default is 2 seconds).
+        Set noise tolerance. Can be specified in dB (in case "dB" is appended to the
+        specified value) or as a difference ratio between 0 and 1. Default is -60dB, or
+        0.001.
+
+
+        Set freeze duration until notification (default is 2 seconds).
+
+
+
 
         Parameters:
         ----------
@@ -6327,12 +13564,33 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.106 freezeframes
+        ### 11.106 freezeframes
+
         Freeze video frames.
+
 
         This filter freezes video frames using frame from 2nd input.
 
+
         The filter accepts the following options:
+
+
+        - **`first`**
+          - Set number of first frame from which to start freeze.
+        - **`last`**
+          - Set number of last frame from which to end freeze.
+        - **`replace`**
+          - Set number of frame from 2nd input which will be used instead of replaced frames.
+        Set number of first frame from which to start freeze.
+
+
+        Set number of last frame from which to end freeze.
+
+
+        Set number of frame from 2nd input which will be used instead of replaced frames.
+
+
+
 
         Parameters:
         ----------
@@ -6364,13 +13622,43 @@ class VideoStream(FilterableStream):
     def frei0r(self, *, filter_name: str, filter_params: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.107 frei0r
+        ### 11.107 frei0r
+
         Apply a frei0r effect to the input video.
+
 
         To enable the compilation of this filter, you need to install the frei0r
         header and configure FFmpeg with --enable-frei0r.
 
+
         It accepts the following parameters:
+
+
+        - **`filter_name`**
+          - The name of the frei0r effect to load. If the environment variable
+        FREI0R_PATH
+        is defined, the frei0r effect is searched for in each of the
+        directories specified by the colon-separated list in
+        FREI0R_PATH
+        .
+        Otherwise, the standard frei0r paths are searched, in this order:
+        HOME/.frei0r-1/lib/
+        ,
+        /usr/local/lib/frei0r-1/
+        ,
+        /usr/lib/frei0r-1/
+        .
+        - **`filter_params`**
+          - A ’|’-separated list of parameters to pass to the frei0r effect.
+        The name of the frei0r effect to load. If the environment variable
+        FREI0R_PATH is defined, the frei0r effect is searched for in each of the
+        directories specified by the colon-separated list in FREI0R_PATH.
+        Otherwise, the standard frei0r paths are searched, in this order:
+        HOME/.frei0r-1/lib/, /usr/local/lib/frei0r-1/,
+        /usr/lib/frei0r-1/.
+
+
+        A ’|’-separated list of parameters to pass to the frei0r effect.
 
 
         A frei0r effect parameter can be a boolean (its value is either
@@ -6381,8 +13669,12 @@ class VideoStream(FilterableStream):
         a position (specified as X/Y, where
         X and Y are floating point numbers) and/or a string.
 
+
         The number and types of parameters depend on the loaded effect. If an
         effect parameter is not specified, the default value is set.
+
+
+
 
         Parameters:
         ----------
@@ -6419,14 +13711,59 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.108 fspp
+        ### 11.108 fspp
+
         Apply fast and simple postprocessing. It is a faster version of spp.
+
 
         It splits (I)DCT into horizontal/vertical passes. Unlike the simple post-
         processing filter, one of them is performed once per block, not per pixel.
         This allows for much higher speed.
 
+
         The filter accepts the following options:
+
+
+        - **`quality`**
+          - Set quality. This option defines the number of levels for averaging. It accepts
+        an integer in the range 4-5. Default value is
+        4
+        .
+        - **`qp`**
+          - Force a constant quantization parameter. It accepts an integer in range 0-63.
+        If not set, the filter will use the QP from the video stream (if available).
+        - **`strength`**
+          - Set filter strength. It accepts an integer in range -15 to 32. Lower values mean
+        more details but also more artifacts, while higher values make the image smoother
+        but also blurrier. Default value is
+        0
+        − PSNR optimal.
+        - **`use_bframe_qp`**
+          - Enable the use of the QP from the B-Frames if set to
+        1
+        . Using this
+        option may cause flicker since the B-Frames have often larger QP. Default is
+        0
+        (not enabled).
+        Set quality. This option defines the number of levels for averaging. It accepts
+        an integer in the range 4-5. Default value is 4.
+
+
+        Force a constant quantization parameter. It accepts an integer in range 0-63.
+        If not set, the filter will use the QP from the video stream (if available).
+
+
+        Set filter strength. It accepts an integer in range -15 to 32. Lower values mean
+        more details but also more artifacts, while higher values make the image smoother
+        but also blurrier. Default value is 0 − PSNR optimal.
+
+
+        Enable the use of the QP from the B-Frames if set to 1. Using this
+        option may cause flicker since the B-Frames have often larger QP. Default is
+        0 (not enabled).
+
+
+
 
         Parameters:
         ----------
@@ -6467,10 +13804,45 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.109 gblur
+        ### 11.109 gblur
+
         Apply Gaussian blur filter.
 
+
         The filter accepts the following options:
+
+
+        - **`sigma`**
+          - Set horizontal sigma, standard deviation of Gaussian blur. Default is
+        0.5
+        .
+        - **`steps`**
+          - Set number of steps for Gaussian approximation. Default is
+        1
+        .
+        - **`planes`**
+          - Set which planes to filter. By default all planes are filtered.
+        - **`sigmaV`**
+          - Set vertical sigma, if negative it will be same as
+        sigma
+        .
+        Default is
+        -1
+        .
+        Set horizontal sigma, standard deviation of Gaussian blur. Default is 0.5.
+
+
+        Set number of steps for Gaussian approximation. Default is 1.
+
+
+        Set which planes to filter. By default all planes are filtered.
+
+
+        Set vertical sigma, if negative it will be same as sigma.
+        Default is -1.
+
+
+
 
         Parameters:
         ----------
@@ -6512,10 +13884,56 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.9 gblur_vulkan
+        ### 14.9 gblur_vulkan
+
         Apply Gaussian blur filter on Vulkan frames.
 
+
         The filter accepts the following options:
+
+
+        - **`sigma`**
+          - Set horizontal sigma, standard deviation of Gaussian blur. Default is
+        0.5
+        .
+        - **`sigmaV`**
+          - Set vertical sigma, if negative it will be same as
+        sigma
+        .
+        Default is
+        -1
+        .
+        - **`planes`**
+          - Set which planes to filter. By default all planes are filtered.
+        - **`size`**
+          - Set the kernel size along the horizontal axis. Default is
+        19
+        .
+        - **`sizeV`**
+          - Set the kernel size along the vertical axis. Default is
+        0
+        ,
+        which sets to use the same value as
+        size
+        .
+        Set horizontal sigma, standard deviation of Gaussian blur. Default is 0.5.
+
+
+        Set vertical sigma, if negative it will be same as sigma.
+        Default is -1.
+
+
+        Set which planes to filter. By default all planes are filtered.
+
+
+        Set the kernel size along the horizontal axis. Default is 19.
+
+
+        Set the kernel size along the vertical axis. Default is 0,
+        which sets to use the same value as size.
+
+
+
 
         Parameters:
         ----------
@@ -6562,10 +13980,47 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.110 geq
+        ### 11.110 geq
+
         Apply generic equation to each pixel.
 
+
         The filter accepts the following options:
+
+
+        - **`lum_expr, lum`**
+          - Set the luma expression.
+        - **`cb_expr, cb`**
+          - Set the chrominance blue expression.
+        - **`cr_expr, cr`**
+          - Set the chrominance red expression.
+        - **`alpha_expr, a`**
+          - Set the alpha expression.
+        - **`red_expr, r`**
+          - Set the red expression.
+        - **`green_expr, g`**
+          - Set the green expression.
+        - **`blue_expr, b`**
+          - Set the blue expression.
+        Set the luma expression.
+
+
+        Set the chrominance blue expression.
+
+
+        Set the chrominance red expression.
+
+
+        Set the alpha expression.
+
+
+        Set the red expression.
+
+
+        Set the green expression.
+
+
+        Set the blue expression.
 
 
         The colorspace is selected according to the specified options. If one
@@ -6575,21 +14030,154 @@ class VideoStream(FilterableStream):
         blue_expr options is specified, it will select an RGB
         colorspace.
 
+
         If one of the chrominance expression is not defined, it falls back on the other
         one. If no alpha expression is specified it will evaluate to opaque value.
         If none of chrominance expressions are specified, they will evaluate
         to the luma expression.
 
+
         The expressions can use the following variables and functions:
+
+
+        - **`N`**
+          - The sequential number of the filtered frame, starting from
+        0
+        .
+        - **`X`**
+        - **`Y`**
+          - The coordinates of the current sample.
+        - **`W`**
+        - **`H`**
+          - The width and height of the image.
+        - **`SW`**
+        - **`SH`**
+          - Width and height scale depending on the currently filtered plane. It is the
+        ratio between the corresponding luma plane number of pixels and the current
+        plane ones. E.g. for YUV4:2:0 the values are
+        1,1
+        for the luma plane, and
+        0.5,0.5
+        for chroma planes.
+        - **`T`**
+          - Time of the current frame, expressed in seconds.
+        - **`p(x, y)`**
+          - Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the current
+        plane.
+        - **`lum(x, y)`**
+          - Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the luma
+        plane.
+        - **`cb(x, y)`**
+          - Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the
+        blue-difference chroma plane. Return 0 if there is no such plane.
+        - **`cr(x, y)`**
+          - Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the
+        red-difference chroma plane. Return 0 if there is no such plane.
+        - **`r(x, y)`**
+        - **`g(x, y)`**
+        - **`b(x, y)`**
+          - Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the
+        red/green/blue component. Return 0 if there is no such component.
+        - **`alpha(x, y)`**
+          - Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the alpha
+        plane. Return 0 if there is no such plane.
+        - **`psum(x,y), lumsum(x, y), cbsum(x,y), crsum(x,y), rsum(x,y), gsum(x,y), bsum(x,y), alphasum(x,y)`**
+          - Sum of sample values in the rectangle from (0,0) to (x,y), this allows obtaining
+        sums of samples within a rectangle. See the functions without the sum postfix.
+        - **`interpolation`**
+          - Set one of interpolation methods:
+        nearest, n
+        bilinear, b
+        Default is bilinear.
+        The sequential number of the filtered frame, starting from 0.
+
+
+        The coordinates of the current sample.
+
+
+        The width and height of the image.
+
+
+        Width and height scale depending on the currently filtered plane. It is the
+        ratio between the corresponding luma plane number of pixels and the current
+        plane ones. E.g. for YUV4:2:0 the values are 1,1 for the luma plane, and
+        0.5,0.5 for chroma planes.
+
+
+        Time of the current frame, expressed in seconds.
+
+
+        Return the value of the pixel at location (x,y) of the current
+        plane.
+
+
+        Return the value of the pixel at location (x,y) of the luma
+        plane.
+
+
+        Return the value of the pixel at location (x,y) of the
+        blue-difference chroma plane. Return 0 if there is no such plane.
+
+
+        Return the value of the pixel at location (x,y) of the
+        red-difference chroma plane. Return 0 if there is no such plane.
+
+
+        Return the value of the pixel at location (x,y) of the
+        red/green/blue component. Return 0 if there is no such component.
+
+
+        Return the value of the pixel at location (x,y) of the alpha
+        plane. Return 0 if there is no such plane.
+
+
+        Sum of sample values in the rectangle from (0,0) to (x,y), this allows obtaining
+        sums of samples within a rectangle. See the functions without the sum postfix.
+
+
+        Set one of interpolation methods:
+
+
+        - **`nearest, n`**
+        - **`bilinear, b`**
+        Default is bilinear.
 
 
         For functions, if x and y are outside the area, the value will be
         automatically clipped to the closer edge.
 
+
         Please note that this filter can use multiple threads in which case each slice
         will have its own expression state. If you want to use only a single expression
         state because your expressions depend on previous state then you should limit
         the number of filter threads to 1.
+
+
+
 
         Parameters:
         ----------
@@ -6636,21 +14224,49 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.111 gradfun
+        ### 11.111 gradfun
+
         Fix the banding artifacts that are sometimes introduced into nearly flat
         regions by truncation to 8-bit color depth.
         Interpolate the gradients that should go where the bands are, and
         dither them.
 
+
         It is designed for playback only.  Do not use it prior to
         lossy compression, because compression tends to lose the dither and
         bring back the bands.
 
+
         It accepts the following parameters:
+
+
+        - **`strength`**
+          - The maximum amount by which the filter will change any one pixel. This is also
+        the threshold for detecting nearly flat regions. Acceptable values range from
+        .51 to 64; the default value is 1.2. Out-of-range values will be clipped to the
+        valid range.
+        - **`radius`**
+          - The neighborhood to fit the gradient to. A larger radius makes for smoother
+        gradients, but also prevents the filter from modifying the pixels near detailed
+        regions. Acceptable values are 8-32; the default value is 16. Out-of-range
+        values will be clipped to the valid range.
+        The maximum amount by which the filter will change any one pixel. This is also
+        the threshold for detecting nearly flat regions. Acceptable values range from
+        .51 to 64; the default value is 1.2. Out-of-range values will be clipped to the
+        valid range.
+
+
+        The neighborhood to fit the gradient to. A larger radius makes for smoother
+        gradients, but also prevents the filter from modifying the pixels near detailed
+        regions. Acceptable values are 8-32; the default value is 16. Out-of-range
+        values will be clipped to the valid range.
 
 
         Alternatively, the options can be specified as a flat string:
         strength[:radius]
+
+
+
 
         Parameters:
         ----------
@@ -6710,13 +14326,280 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.112 graphmonitor
+        ### 11.112 graphmonitor
+
         Show various filtergraph stats.
+
 
         With this filter one can debug complete filtergraph.
         Especially issues with links filling with queued frames.
 
+
         The filter accepts the following options:
+
+
+        - **`size, s`**
+          - Set video output size. Default is
+        hd720
+        .
+        - **`opacity, o`**
+          - Set video opacity. Default is
+        0.9
+        . Allowed range is from
+        0
+        to
+        1
+        .
+        - **`mode, m`**
+          - Set output mode flags.
+        Available values for flags are:
+        ‘
+        full
+        ’
+        No any filtering. Default.
+        ‘
+        compact
+        ’
+        Show only filters with queued frames.
+        ‘
+        nozero
+        ’
+        Show only filters with non-zero stats.
+        ‘
+        noeof
+        ’
+        Show only filters with non-eof stat.
+        ‘
+        nodisabled
+        ’
+        Show only filters that are enabled in timeline.
+        - **`flags, f`**
+          - Set flags which enable which stats are shown in video.
+        Available values for flags are:
+        ‘
+        none
+        ’
+        All flags turned off.
+        ‘
+        all
+        ’
+        All flags turned on.
+        ‘
+        queue
+        ’
+        Display number of queued frames in each link.
+        ‘
+        frame_count_in
+        ’
+        Display number of frames taken from filter.
+        ‘
+        frame_count_out
+        ’
+        Display number of frames given out from filter.
+        ‘
+        frame_count_delta
+        ’
+        Display delta number of frames between above two values.
+        ‘
+        pts
+        ’
+        Display current filtered frame pts.
+        ‘
+        pts_delta
+        ’
+        Display pts delta between current and previous frame.
+        ‘
+        time
+        ’
+        Display current filtered frame time.
+        ‘
+        time_delta
+        ’
+        Display time delta between current and previous frame.
+        ‘
+        timebase
+        ’
+        Display time base for filter link.
+        ‘
+        format
+        ’
+        Display used format for filter link.
+        ‘
+        size
+        ’
+        Display video size or number of audio channels in case of audio used by filter link.
+        ‘
+        rate
+        ’
+        Display video frame rate or sample rate in case of audio used by filter link.
+        ‘
+        eof
+        ’
+        Display link output status.
+        ‘
+        sample_count_in
+        ’
+        Display number of samples taken from filter.
+        ‘
+        sample_count_out
+        ’
+        Display number of samples given out from filter.
+        ‘
+        sample_count_delta
+        ’
+        Display delta number of samples between above two values.
+        ‘
+        disabled
+        ’
+        Show the timeline filter status.
+        - **`rate, r`**
+          - Set upper limit for video rate of output stream, Default value is
+        25
+        .
+        This guarantee that output video frame rate will not be higher than this value.
+        Set video output size. Default is hd720.
+
+
+        Set video opacity. Default is 0.9. Allowed range is from 0 to 1.
+
+
+        Set output mode flags.
+
+
+        Available values for flags are:
+
+
+        - **`‘full’`**
+          - No any filtering. Default.
+        - **`‘compact’`**
+          - Show only filters with queued frames.
+        - **`‘nozero’`**
+          - Show only filters with non-zero stats.
+        - **`‘noeof’`**
+          - Show only filters with non-eof stat.
+        - **`‘nodisabled’`**
+          - Show only filters that are enabled in timeline.
+        No any filtering. Default.
+
+
+        Show only filters with queued frames.
+
+
+        Show only filters with non-zero stats.
+
+
+        Show only filters with non-eof stat.
+
+
+        Show only filters that are enabled in timeline.
+
+
+        Set flags which enable which stats are shown in video.
+
+
+        Available values for flags are:
+
+
+        - **`‘none’`**
+          - All flags turned off.
+        - **`‘all’`**
+          - All flags turned on.
+        - **`‘queue’`**
+          - Display number of queued frames in each link.
+        - **`‘frame_count_in’`**
+          - Display number of frames taken from filter.
+        - **`‘frame_count_out’`**
+          - Display number of frames given out from filter.
+        - **`‘frame_count_delta’`**
+          - Display delta number of frames between above two values.
+        - **`‘pts’`**
+          - Display current filtered frame pts.
+        - **`‘pts_delta’`**
+          - Display pts delta between current and previous frame.
+        - **`‘time’`**
+          - Display current filtered frame time.
+        - **`‘time_delta’`**
+          - Display time delta between current and previous frame.
+        - **`‘timebase’`**
+          - Display time base for filter link.
+        - **`‘format’`**
+          - Display used format for filter link.
+        - **`‘size’`**
+          - Display video size or number of audio channels in case of audio used by filter link.
+        - **`‘rate’`**
+          - Display video frame rate or sample rate in case of audio used by filter link.
+        - **`‘eof’`**
+          - Display link output status.
+        - **`‘sample_count_in’`**
+          - Display number of samples taken from filter.
+        - **`‘sample_count_out’`**
+          - Display number of samples given out from filter.
+        - **`‘sample_count_delta’`**
+          - Display delta number of samples between above two values.
+        - **`‘disabled’`**
+          - Show the timeline filter status.
+        All flags turned off.
+
+
+        All flags turned on.
+
+
+        Display number of queued frames in each link.
+
+
+        Display number of frames taken from filter.
+
+
+        Display number of frames given out from filter.
+
+
+        Display delta number of frames between above two values.
+
+
+        Display current filtered frame pts.
+
+
+        Display pts delta between current and previous frame.
+
+
+        Display current filtered frame time.
+
+
+        Display time delta between current and previous frame.
+
+
+        Display time base for filter link.
+
+
+        Display used format for filter link.
+
+
+        Display video size or number of audio channels in case of audio used by filter link.
+
+
+        Display video frame rate or sample rate in case of audio used by filter link.
+
+
+        Display link output status.
+
+
+        Display number of samples taken from filter.
+
+
+        Display number of samples given out from filter.
+
+
+        Display delta number of samples between above two values.
+
+
+        Show the timeline filter status.
+
+
+        Set upper limit for video rate of output stream, Default value is 25.
+        This guarantee that output video frame rate will not be higher than this value.
+
+
+
 
         Parameters:
         ----------
@@ -6751,16 +14634,19 @@ class VideoStream(FilterableStream):
     def grayworld(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.113 grayworld
+        ### 11.113 grayworld
+
         A color constancy filter that applies color correction based on the grayworld assumption
 
+
         See: https://www.researchgate.net/publication/275213614_A_New_Color_Correction_Method_for_Underwater_Imaging
+
 
         The algorithm  uses linear light, so input
         data should be linearized beforehand (and possibly correctly tagged).
 
 
-        ffmpeg -i INPUT -vf zscale=transfer=linear,grayworld,zscale=transfer=bt709,format=yuv420p OUTPUT
+
 
         Parameters:
         ----------
@@ -6790,13 +14676,48 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.114 greyedge
+        ### 11.114 greyedge
+
         A color constancy variation filter which estimates scene illumination via grey edge algorithm
         and corrects the scene colors accordingly.
 
+
         See: https://staff.science.uva.nl/th.gevers/pub/GeversTIP07.pdf
 
+
         The filter accepts the following options:
+
+
+        - **`difford`**
+          - The order of differentiation to be applied on the scene. Must be chosen in the range
+        [0,2] and default value is 1.
+        - **`minknorm`**
+          - The Minkowski parameter to be used for calculating the Minkowski distance. Must
+        be chosen in the range [0,20] and default value is 1. Set to 0 for getting
+        max value instead of calculating Minkowski distance.
+        - **`sigma`**
+          - The standard deviation of Gaussian blur to be applied on the scene. Must be
+        chosen in the range [0,1024.0] and default value = 1. floor(
+        sigma
+        * break_off_sigma(3) )
+        can’t be equal to 0 if
+        difford
+        is greater than 0.
+        The order of differentiation to be applied on the scene. Must be chosen in the range
+        [0,2] and default value is 1.
+
+
+        The Minkowski parameter to be used for calculating the Minkowski distance. Must
+        be chosen in the range [0,20] and default value is 1. Set to 0 for getting
+        max value instead of calculating Minkowski distance.
+
+
+        The standard deviation of Gaussian blur to be applied on the scene. Must be
+        chosen in the range [0,1024.0] and default value = 1. floor( sigma * break_off_sigma(3) )
+        can’t be equal to 0 if difford is greater than 0.
+
+
+
 
         Parameters:
         ----------
@@ -6836,22 +14757,62 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.116 haldclut
+        ### 11.116 haldclut
+
         Apply a Hald CLUT to a video stream.
+
 
         First input is the video stream to process, and second one is the Hald CLUT.
         The Hald CLUT input can be a simple picture or a complete video stream.
 
+
         The filter accepts the following options:
+
+
+        - **`clut`**
+          - Set which CLUT video frames will be processed from second input stream,
+        can be
+        first
+        or
+        all
+        . Default is
+        all
+        .
+        - **`shortest`**
+          - Force termination when the shortest input terminates. Default is
+        0
+        .
+        - **`repeatlast`**
+          - Continue applying the last CLUT after the end of the stream. A value of
+        0
+        disable the filter after the last frame of the CLUT is reached.
+        Default is
+        1
+        .
+        Set which CLUT video frames will be processed from second input stream,
+        can be first or all. Default is all.
+
+
+        Force termination when the shortest input terminates. Default is 0.
+
+
+        Continue applying the last CLUT after the end of the stream. A value of
+        0 disable the filter after the last frame of the CLUT is reached.
+        Default is 1.
 
 
         haldclut also has the same interpolation options as lut3d (both
         filters share the same internals).
 
+
         This filter also supports the framesync options.
+
 
         More information about the Hald CLUT can be found on Eskil Steenberg’s website
         (Hald CLUT author) at http://www.quelsolaar.com/technology/clut.html.
+
+
+
 
         Parameters:
         ----------
@@ -6881,12 +14842,15 @@ class VideoStream(FilterableStream):
     def hflip(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.117 hflip
+        ### 11.117 hflip
+
         Flip the input video horizontally.
+
 
         For example, to horizontally flip the input video with ffmpeg:
 
-        ffmpeg -i in.avi -vf "hflip" out.avi
+
+
 
         Parameters:
         ----------
@@ -6909,8 +14873,12 @@ class VideoStream(FilterableStream):
     def hflip_vulkan(self, **kwargs: Any) -> "VideoStream":
         """
 
-        14.7 hflip_vulkan
+        ### 14.7 hflip_vulkan
+
         Flips an image horizontally.
+
+
+
 
         Parameters:
         ----------
@@ -6940,9 +14908,11 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.118 histeq
+        ### 11.118 histeq
+
         This filter applies a global color histogram equalization on a
         per-frame basis.
+
 
         It can be used to correct video that has a compressed range of pixel
         intensities.  The filter redistributes the pixel intensities to
@@ -6951,7 +14921,51 @@ class VideoStream(FilterableStream):
         useful only for correcting degraded or poorly captured source
         video.
 
+
         The filter accepts the following options:
+
+
+        - **`strength`**
+          - Determine the amount of equalization to be applied.  As the strength
+        is reduced, the distribution of pixel intensities more-and-more
+        approaches that of the input frame. The value must be a float number
+        in the range [0,1] and defaults to 0.200.
+        - **`intensity`**
+          - Set the maximum intensity that can generated and scale the output
+        values appropriately.  The strength should be set as desired and then
+        the intensity can be limited if needed to avoid washing-out. The value
+        must be a float number in the range [0,1] and defaults to 0.210.
+        - **`antibanding`**
+          - Set the antibanding level. If enabled the filter will randomly vary
+        the luminance of output pixels by a small amount to avoid banding of
+        the histogram. Possible values are
+        none
+        ,
+        weak
+        or
+        strong
+        . It defaults to
+        none
+        .
+        Determine the amount of equalization to be applied.  As the strength
+        is reduced, the distribution of pixel intensities more-and-more
+        approaches that of the input frame. The value must be a float number
+        in the range [0,1] and defaults to 0.200.
+
+
+        Set the maximum intensity that can generated and scale the output
+        values appropriately.  The strength should be set as desired and then
+        the intensity can be limited if needed to avoid washing-out. The value
+        must be a float number in the range [0,1] and defaults to 0.210.
+
+
+        Set the antibanding level. If enabled the filter will randomly vary
+        the luminance of output pixels by a small amount to avoid banding of
+        the histogram. Possible values are none, weak or
+        strong. It defaults to none.
+
+
+
 
         Parameters:
         ----------
@@ -7007,18 +15021,182 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.119 histogram
+        ### 11.119 histogram
+
         Compute and draw a color distribution histogram for the input video.
+
 
         The computed histogram is a representation of the color component
         distribution in an image.
+
 
         Standard histogram displays the color components distribution in an image.
         Displays color graph for each color component. Shows distribution of
         the Y, U, V, A or R, G, B components, depending on input format, in the
         current frame. Below each graph a color component scale meter is shown.
 
+
         The filter accepts the following options:
+
+
+        - **`level_height`**
+          - Set height of level. Default value is
+        200
+        .
+        Allowed range is [50, 2048].
+        - **`scale_height`**
+          - Set height of color scale. Default value is
+        12
+        .
+        Allowed range is [0, 40].
+        - **`display_mode`**
+          - Set display mode.
+        It accepts the following values:
+        ‘
+        stack
+        ’
+        Per color component graphs are placed below each other.
+        ‘
+        parade
+        ’
+        Per color component graphs are placed side by side.
+        ‘
+        overlay
+        ’
+        Presents information identical to that in the
+        parade
+        , except
+        that the graphs representing color components are superimposed directly
+        over one another.
+        Default is
+        stack
+        .
+        - **`levels_mode`**
+          - Set mode. Can be either
+        linear
+        , or
+        logarithmic
+        .
+        Default is
+        linear
+        .
+        - **`components`**
+          - Set what color components to display.
+        Default is
+        7
+        .
+        - **`fgopacity`**
+          - Set foreground opacity. Default is
+        0.7
+        .
+        - **`bgopacity`**
+          - Set background opacity. Default is
+        0.5
+        .
+        - **`colors_mode`**
+          - Set colors mode.
+        It accepts the following values:
+        ‘
+        whiteonblack
+        ’
+        ‘
+        blackonwhite
+        ’
+        ‘
+        whiteongray
+        ’
+        ‘
+        blackongray
+        ’
+        ‘
+        coloronblack
+        ’
+        ‘
+        coloronwhite
+        ’
+        ‘
+        colorongray
+        ’
+        ‘
+        blackoncolor
+        ’
+        ‘
+        whiteoncolor
+        ’
+        ‘
+        grayoncolor
+        ’
+        Default is
+        whiteonblack
+        .
+        Set height of level. Default value is 200.
+        Allowed range is [50, 2048].
+
+
+        Set height of color scale. Default value is 12.
+        Allowed range is [0, 40].
+
+
+        Set display mode.
+        It accepts the following values:
+
+
+        - **`‘stack’`**
+          - Per color component graphs are placed below each other.
+        - **`‘parade’`**
+          - Per color component graphs are placed side by side.
+        - **`‘overlay’`**
+          - Presents information identical to that in the
+        parade
+        , except
+        that the graphs representing color components are superimposed directly
+        over one another.
+        Per color component graphs are placed below each other.
+
+
+        Per color component graphs are placed side by side.
+
+
+        Presents information identical to that in the parade, except
+        that the graphs representing color components are superimposed directly
+        over one another.
+
+
+        Default is stack.
+
+
+        Set mode. Can be either linear, or logarithmic.
+        Default is linear.
+
+
+        Set what color components to display.
+        Default is 7.
+
+
+        Set foreground opacity. Default is 0.7.
+
+
+        Set background opacity. Default is 0.5.
+
+
+        Set colors mode.
+        It accepts the following values:
+
+
+        - **`‘whiteonblack’`**
+        - **`‘blackonwhite’`**
+        - **`‘whiteongray’`**
+        - **`‘blackongray’`**
+        - **`‘coloronblack’`**
+        - **`‘coloronwhite’`**
+        - **`‘colorongray’`**
+        - **`‘blackoncolor’`**
+        - **`‘whiteoncolor’`**
+        - **`‘grayoncolor’`**
+        Default is whiteonblack.
+
+
+
 
         Parameters:
         ----------
@@ -7067,12 +15245,54 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.120 hqdn3d
+        ### 11.120 hqdn3d
+
         This is a high precision/quality 3d denoise filter. It aims to reduce
         image noise, producing smooth images and making still images really
         still. It should enhance compressibility.
 
+
         It accepts the following optional parameters:
+
+
+        - **`luma_spatial`**
+          - A non-negative floating point number which specifies spatial luma strength.
+        It defaults to 4.0.
+        - **`chroma_spatial`**
+          - A non-negative floating point number which specifies spatial chroma strength.
+        It defaults to 3.0*
+        luma_spatial
+        /4.0.
+        - **`luma_tmp`**
+          - A floating point number which specifies luma temporal strength. It defaults to
+        6.0*
+        luma_spatial
+        /4.0.
+        - **`chroma_tmp`**
+          - A floating point number which specifies chroma temporal strength. It defaults to
+        luma_tmp
+        *
+        chroma_spatial
+        /
+        luma_spatial
+        .
+        A non-negative floating point number which specifies spatial luma strength.
+        It defaults to 4.0.
+
+
+        A non-negative floating point number which specifies spatial chroma strength.
+        It defaults to 3.0*luma_spatial/4.0.
+
+
+        A floating point number which specifies luma temporal strength. It defaults to
+        6.0*luma_spatial/4.0.
+
+
+        A floating point number which specifies chroma temporal strength. It defaults to
+        luma_tmp*chroma_spatial/luma_spatial.
+
+
+
 
         Parameters:
         ----------
@@ -7105,11 +15325,38 @@ class VideoStream(FilterableStream):
     def hqx(self, *, n: int | DefaultInt = DefaultInt(3), **kwargs: Any) -> "VideoStream":
         """
 
-        11.125 hqx
+        ### 11.125 hqx
+
         Apply a high-quality magnification filter designed for pixel art. This filter
         was originally created by Maxim Stepin.
 
+
         It accepts the following option:
+
+
+        - **`n`**
+          - Set the scaling dimension:
+        2
+        for
+        hq2x
+        ,
+        3
+        for
+        hq3x
+        and
+        4
+        for
+        hq4x
+        .
+        Default is
+        3
+        .
+        Set the scaling dimension: 2 for hq2x, 3 for
+        hq3x and 4 for hq4x.
+        Default is 3.
+
+
+
 
         Parameters:
         ----------
@@ -7145,14 +15392,69 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.127 hsvhold
+        ### 11.127 hsvhold
+
         Turns a certain HSV range into gray values.
+
 
         This filter measures color difference between set HSV color in options
         and ones measured in video stream. Depending on options, output
         colors can be changed to be gray or not.
 
+
         The filter accepts the following options:
+
+
+        - **`hue`**
+          - Set the hue value which will be used in color difference calculation.
+        Allowed range is from -360 to 360. Default value is 0.
+        - **`sat`**
+          - Set the saturation value which will be used in color difference calculation.
+        Allowed range is from -1 to 1. Default value is 0.
+        - **`val`**
+          - Set the value which will be used in color difference calculation.
+        Allowed range is from -1 to 1. Default value is 0.
+        - **`similarity`**
+          - Set similarity percentage with the key color.
+        Allowed range is from 0 to 1. Default value is 0.01.
+        0.00001 matches only the exact key color, while 1.0 matches everything.
+        - **`blend`**
+          - Blend percentage.
+        Allowed range is from 0 to 1. Default value is 0.
+        0.0 makes pixels either fully gray, or not gray at all.
+        Higher values result in more gray pixels, with a higher gray pixel
+        the more similar the pixels color is to the key color.
+        Set the hue value which will be used in color difference calculation.
+        Allowed range is from -360 to 360. Default value is 0.
+
+
+        Set the saturation value which will be used in color difference calculation.
+        Allowed range is from -1 to 1. Default value is 0.
+
+
+        Set the value which will be used in color difference calculation.
+        Allowed range is from -1 to 1. Default value is 0.
+
+
+        Set similarity percentage with the key color.
+        Allowed range is from 0 to 1. Default value is 0.01.
+
+
+        0.00001 matches only the exact key color, while 1.0 matches everything.
+
+
+        Blend percentage.
+        Allowed range is from 0 to 1. Default value is 0.
+
+
+        0.0 makes pixels either fully gray, or not gray at all.
+
+
+        Higher values result in more gray pixels, with a higher gray pixel
+        the more similar the pixels color is to the key color.
+
+
+
 
         Parameters:
         ----------
@@ -7196,14 +15498,69 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.128 hsvkey
+        ### 11.128 hsvkey
+
         Turns a certain HSV range into transparency.
+
 
         This filter measures color difference between set HSV color in options
         and ones measured in video stream. Depending on options, output
         colors can be changed to transparent by adding alpha channel.
 
+
         The filter accepts the following options:
+
+
+        - **`hue`**
+          - Set the hue value which will be used in color difference calculation.
+        Allowed range is from -360 to 360. Default value is 0.
+        - **`sat`**
+          - Set the saturation value which will be used in color difference calculation.
+        Allowed range is from -1 to 1. Default value is 0.
+        - **`val`**
+          - Set the value which will be used in color difference calculation.
+        Allowed range is from -1 to 1. Default value is 0.
+        - **`similarity`**
+          - Set similarity percentage with the key color.
+        Allowed range is from 0 to 1. Default value is 0.01.
+        0.00001 matches only the exact key color, while 1.0 matches everything.
+        - **`blend`**
+          - Blend percentage.
+        Allowed range is from 0 to 1. Default value is 0.
+        0.0 makes pixels either fully transparent, or not transparent at all.
+        Higher values result in semi-transparent pixels, with a higher transparency
+        the more similar the pixels color is to the key color.
+        Set the hue value which will be used in color difference calculation.
+        Allowed range is from -360 to 360. Default value is 0.
+
+
+        Set the saturation value which will be used in color difference calculation.
+        Allowed range is from -1 to 1. Default value is 0.
+
+
+        Set the value which will be used in color difference calculation.
+        Allowed range is from -1 to 1. Default value is 0.
+
+
+        Set similarity percentage with the key color.
+        Allowed range is from 0 to 1. Default value is 0.01.
+
+
+        0.00001 matches only the exact key color, while 1.0 matches everything.
+
+
+        Blend percentage.
+        Allowed range is from 0 to 1. Default value is 0.
+
+
+        0.0 makes pixels either fully transparent, or not transparent at all.
+
+
+        Higher values result in semi-transparent pixels, with a higher transparency
+        the more similar the pixels color is to the key color.
+
+
+
 
         Parameters:
         ----------
@@ -7246,17 +15603,76 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.129 hue
+        ### 11.129 hue
+
         Modify the hue and/or the saturation of the input.
 
+
         It accepts the following parameters:
+
+
+        - **`h`**
+          - Specify the hue angle as a number of degrees. It accepts an expression,
+        and defaults to "0".
+        - **`s`**
+          - Specify the saturation in the [-10,10] range. It accepts an expression and
+        defaults to "1".
+        - **`H`**
+          - Specify the hue angle as a number of radians. It accepts an
+        expression, and defaults to "0".
+        - **`b`**
+          - Specify the brightness in the [-10,10] range. It accepts an expression and
+        defaults to "0".
+        Specify the hue angle as a number of degrees. It accepts an expression,
+        and defaults to "0".
+
+
+        Specify the saturation in the [-10,10] range. It accepts an expression and
+        defaults to "1".
+
+
+        Specify the hue angle as a number of radians. It accepts an
+        expression, and defaults to "0".
+
+
+        Specify the brightness in the [-10,10] range. It accepts an expression and
+        defaults to "0".
 
 
         h and H are mutually exclusive, and can’t be
         specified at the same time.
 
+
         The b, h, H and s option values are
         expressions containing the following constants:
+
+
+        - **`n`**
+          - frame count of the input frame starting from 0
+        - **`pts`**
+          - presentation timestamp of the input frame expressed in time base units
+        - **`r`**
+          - frame rate of the input video, NAN if the input frame rate is unknown
+        - **`t`**
+          - timestamp expressed in seconds, NAN if the input timestamp is unknown
+        - **`tb`**
+          - time base of the input video
+        frame count of the input frame starting from 0
+
+
+        presentation timestamp of the input frame expressed in time base units
+
+
+        frame rate of the input video, NAN if the input frame rate is unknown
+
+
+        timestamp expressed in seconds, NAN if the input timestamp is unknown
+
+
+        time base of the input video
+
+
+
 
         Parameters:
         ----------
@@ -7302,12 +15718,136 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.130 huesaturation
+        ### 11.130 huesaturation
+
         Apply hue-saturation-intensity adjustments to input video stream.
+
 
         This filter operates in RGB colorspace.
 
+
         This filter accepts the following options:
+
+
+        - **`hue`**
+          - Set the hue shift in degrees to apply. Default is 0.
+        Allowed range is from -180 to 180.
+        - **`saturation`**
+          - Set the saturation shift. Default is 0.
+        Allowed range is from -1 to 1.
+        - **`intensity`**
+          - Set the intensity shift. Default is 0.
+        Allowed range is from -1 to 1.
+        - **`colors`**
+          - Set which primary and complementary colors are going to be adjusted.
+        This options is set by providing one or multiple values.
+        This can select multiple colors at once. By default all colors are selected.
+        ‘
+        r
+        ’
+        Adjust reds.
+        ‘
+        y
+        ’
+        Adjust yellows.
+        ‘
+        g
+        ’
+        Adjust greens.
+        ‘
+        c
+        ’
+        Adjust cyans.
+        ‘
+        b
+        ’
+        Adjust blues.
+        ‘
+        m
+        ’
+        Adjust magentas.
+        ‘
+        a
+        ’
+        Adjust all colors.
+        - **`strength`**
+          - Set strength of filtering. Allowed range is from 0 to 100.
+        Default value is 1.
+        - **`rw, gw, bw`**
+          - Set weight for each RGB component. Allowed range is from 0 to 1.
+        By default is set to 0.333, 0.334, 0.333.
+        Those options are used in saturation and lightess processing.
+        - **`lightness`**
+          - Set preserving lightness, by default is disabled.
+        Adjusting hues can change lightness from original RGB triplet,
+        with this option enabled lightness is kept at same value.
+        Set the hue shift in degrees to apply. Default is 0.
+        Allowed range is from -180 to 180.
+
+
+        Set the saturation shift. Default is 0.
+        Allowed range is from -1 to 1.
+
+
+        Set the intensity shift. Default is 0.
+        Allowed range is from -1 to 1.
+
+
+        Set which primary and complementary colors are going to be adjusted.
+        This options is set by providing one or multiple values.
+        This can select multiple colors at once. By default all colors are selected.
+
+
+        - **`‘r’`**
+          - Adjust reds.
+        - **`‘y’`**
+          - Adjust yellows.
+        - **`‘g’`**
+          - Adjust greens.
+        - **`‘c’`**
+          - Adjust cyans.
+        - **`‘b’`**
+          - Adjust blues.
+        - **`‘m’`**
+          - Adjust magentas.
+        - **`‘a’`**
+          - Adjust all colors.
+        Adjust reds.
+
+
+        Adjust yellows.
+
+
+        Adjust greens.
+
+
+        Adjust cyans.
+
+
+        Adjust blues.
+
+
+        Adjust magentas.
+
+
+        Adjust all colors.
+
+
+        Set strength of filtering. Allowed range is from 0 to 100.
+        Default value is 1.
+
+
+        Set weight for each RGB component. Allowed range is from 0 to 1.
+        By default is set to 0.333, 0.334, 0.333.
+        Those options are used in saturation and lightess processing.
+
+
+        Set preserving lightness, by default is disabled.
+        Adjusting hues can change lightness from original RGB triplet,
+        with this option enabled lightness is kept at same value.
+
+
+
 
         Parameters:
         ----------
@@ -7350,13 +15890,18 @@ class VideoStream(FilterableStream):
     def hwdownload(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.121 hwdownload
+        ### 11.121 hwdownload
+
         Download hardware frames to system memory.
+
 
         The input must be in hardware frames, and the output a non-hardware format.
         Not all formats will be supported on the output - it may be necessary to insert
         an additional format filter immediately following in the graph to get
         the output in a supported format.
+
+
+
 
         Parameters:
         ----------
@@ -7388,29 +15933,31 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.122 hwmap
+        ### 11.122 hwmap
+
         Map hardware frames to system memory or to another device.
+
 
         This filter has several different modes of operation; which one is used depends
         on the input and output formats:
 
-         Hardware frame input, normal frame output
 
         Map the input frames to system memory and pass them to the output.  If the
         original hardware frame is later required (for example, after overlaying
         something else on part of it), the hwmap filter can be used again
         in the next mode to retrieve it.
-         Normal frame input, hardware frame output
+
 
         If the input is actually a software-mapped hardware frame, then unmap it -
         that is, return the original hardware frame.
+
 
         Otherwise, a device must be provided.  Create new hardware surfaces on that
         device for the output, then map them back to the software format at the input
         and give those frames to the preceding filter.  This will then act like the
         hwupload filter, but may be able to avoid an additional copy when
         the input is already in a compatible format.
-         Hardware frame input and output
+
 
         A device must be supplied for the output, either directly or with the
         derive_device option.  The input and output devices must be of
@@ -7418,13 +15965,108 @@ class VideoStream(FilterableStream):
         system-dependent, but typically it means that they must refer to the same
         underlying hardware context (for example, refer to the same graphics card).
 
+
         If the input frames were originally created on the output device, then unmap
         to retrieve the original frames.
+
 
         Otherwise, map the frames to the output device - create new hardware frames
         on the output corresponding to the frames on the input.
 
+
         The following additional parameters are accepted:
+
+
+        - **`mode`**
+          - Set the frame mapping mode.  Some combination of:
+        read
+        The mapped frame should be readable.
+        write
+        The mapped frame should be writeable.
+        overwrite
+        The mapping will always overwrite the entire frame.
+        This may improve performance in some cases, as the original contents of the
+        frame need not be loaded.
+        direct
+        The mapping must not involve any copying.
+        Indirect mappings to copies of frames are created in some cases where either
+        direct mapping is not possible or it would have unexpected properties.
+        Setting this flag ensures that the mapping is direct and will fail if that is
+        not possible.
+        Defaults to
+        read+write
+        if not specified.
+        - **`derive_devicetype`**
+          - Rather than using the device supplied at initialisation, instead derive a new
+        device of type
+        type
+        from the device the input frames exist on.
+        - **`reverse`**
+          - In a hardware to hardware mapping, map in reverse - create frames in the sink
+        and map them back to the source.  This may be necessary in some cases where
+        a mapping in one direction is required but only the opposite direction is
+        supported by the devices being used.
+        This option is dangerous - it may break the preceding filter in undefined
+        ways if there are any additional constraints on that filter’s output.
+        Do not use it without fully understanding the implications of its use.
+        Set the frame mapping mode.  Some combination of:
+
+
+        - **`read`**
+          - The mapped frame should be readable.
+        - **`write`**
+          - The mapped frame should be writeable.
+        - **`overwrite`**
+          - The mapping will always overwrite the entire frame.
+        This may improve performance in some cases, as the original contents of the
+        frame need not be loaded.
+        - **`direct`**
+          - The mapping must not involve any copying.
+        Indirect mappings to copies of frames are created in some cases where either
+        direct mapping is not possible or it would have unexpected properties.
+        Setting this flag ensures that the mapping is direct and will fail if that is
+        not possible.
+        The mapped frame should be readable.
+
+
+        The mapped frame should be writeable.
+
+
+        The mapping will always overwrite the entire frame.
+
+
+        This may improve performance in some cases, as the original contents of the
+        frame need not be loaded.
+
+
+        The mapping must not involve any copying.
+
+
+        Indirect mappings to copies of frames are created in some cases where either
+        direct mapping is not possible or it would have unexpected properties.
+        Setting this flag ensures that the mapping is direct and will fail if that is
+        not possible.
+
+
+        Defaults to read+write if not specified.
+
+
+        Rather than using the device supplied at initialisation, instead derive a new
+        device of type type from the device the input frames exist on.
+
+
+        In a hardware to hardware mapping, map in reverse - create frames in the sink
+        and map them back to the source.  This may be necessary in some cases where
+        a mapping in one direction is required but only the opposite direction is
+        supported by the devices being used.
+
+
+        This option is dangerous - it may break the preceding filter in undefined
+        ways if there are any additional constraints on that filter’s output.
+        Do not use it without fully understanding the implications of its use.
+
+
+
 
         Parameters:
         ----------
@@ -7455,8 +16097,10 @@ class VideoStream(FilterableStream):
     def hwupload(self, *, derive_device: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.123 hwupload
+        ### 11.123 hwupload
+
         Upload system memory frames to hardware surfaces.
+
 
         The device to upload to must be supplied when the filter is initialised.  If
         using ffmpeg, select the appropriate device with the -filter_hw_device
@@ -7465,7 +16109,20 @@ class VideoStream(FilterableStream):
         system-dependent, but typically it means that they must refer to the same
         underlying hardware context (for example, refer to the same graphics card).
 
+
         The following additional parameters are accepted:
+
+
+        - **`derive_devicetype`**
+          - Rather than using the device supplied at initialisation, instead derive a new
+        device of type
+        type
+        from the device the input frames exist on.
+        Rather than using the device supplied at initialisation, instead derive a new
+        device of type type from the device the input frames exist on.
+
+
+
 
         Parameters:
         ----------
@@ -7492,10 +16149,20 @@ class VideoStream(FilterableStream):
     def hwupload_cuda(self, *, device: int | DefaultInt = DefaultInt(0), **kwargs: Any) -> "VideoStream":
         """
 
-        11.124 hwupload_cuda
+        ### 11.124 hwupload_cuda
+
         Upload system memory frames to a CUDA device.
 
+
         It accepts the following optional parameters:
+
+
+        - **`device`**
+          - The number of the CUDA device to use
+        The number of the CUDA device to use
+
+
+
 
         Parameters:
         ----------
@@ -7529,14 +16196,37 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.131 hysteresis
+        ### 11.131 hysteresis
+
         Grow first stream into second stream by connecting components.
         This makes it possible to build more robust edge masks.
+
 
         This filter accepts the following options:
 
 
+        - **`planes`**
+          - Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+        - **`threshold`**
+          - Set threshold which is used in filtering. If pixel component value is higher than
+        this value filter algorithm for connecting components is activated.
+        By default value is 0.
+        Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+
+
+        Set threshold which is used in filtering. If pixel component value is higher than
+        this value filter algorithm for connecting components is activated.
+        By default value is 0.
+
+
         The hysteresis filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -7566,11 +16256,27 @@ class VideoStream(FilterableStream):
     def iccdetect(self, *, force: bool | DefaultInt = DefaultInt(1), **kwargs: Any) -> "VideoStream":
         """
 
-        11.132 iccdetect
+        ### 11.132 iccdetect
+
         Detect the colorspace  from an embedded ICC profile (if present), and update
         the frame’s tags accordingly.
 
+
         This filter accepts the following options:
+
+
+        - **`force`**
+          - If true, the frame’s existing colorspace tags will always be overridden by
+        values detected from an ICC profile. Otherwise, they will only be assigned if
+        they contain
+        unknown
+        . Enabled by default.
+        If true, the frame’s existing colorspace tags will always be overridden by
+        values detected from an ICC profile. Otherwise, they will only be assigned if
+        they contain unknown. Enabled by default.
+
+
+
 
         Parameters:
         ----------
@@ -7637,10 +16343,43 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.133 iccgen
+        ### 11.133 iccgen
+
         Generate ICC profiles and attach them to frames.
 
+
         This filter accepts the following options:
+
+
+        - **`color_primaries`**
+        - **`color_trc`**
+          - Configure the colorspace that the ICC profile will be generated for. The
+        default value of
+        auto
+        infers the value from the input frame’s metadata,
+        defaulting to BT.709/sRGB as appropriate.
+        See the
+        setparams
+        filter for a list of possible values, but note that
+        unknown
+        are not valid values for this filter.
+        - **`force`**
+          - If true, an ICC profile will be generated even if it would overwrite an
+        already existing ICC profile. Disabled by default.
+        Configure the colorspace that the ICC profile will be generated for. The
+        default value of auto infers the value from the input frame’s metadata,
+        defaulting to BT.709/sRGB as appropriate.
+
+
+        See the setparams filter for a list of possible values, but note that
+        unknown are not valid values for this filter.
+
+
+        If true, an ICC profile will be generated even if it would overwrite an
+        already existing ICC profile. Disabled by default.
+
+
+
 
         Parameters:
         ----------
@@ -7671,27 +16410,34 @@ class VideoStream(FilterableStream):
     def identity(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
 
-        11.134 identity
+        ### 11.134 identity
+
         Obtain the identity score between two input videos.
 
+
         This filter takes two input videos.
+
 
         Both input videos must have the same resolution and pixel format for
         this filter to work correctly. Also it assumes that both inputs
         have the same number of frames, which are compared one by one.
 
+
         The obtained per component, average, min and max identity score is printed through
         the logging system.
 
+
         The filter stores the calculated identity scores of each frame in frame metadata.
 
+
         This filter also supports the framesync options.
+
 
         In the below example the input file main.mpg being processed is compared
         with the reference file ref.mpg.
 
 
-        ffmpeg -i main.mpg -i ref.mpg -lavfi identity -f null -
+
 
         Parameters:
         ----------
@@ -7724,20 +16470,146 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.135 idet
+        ### 11.135 idet
+
         Detect video interlacing type.
+
 
         This filter tries to detect if the input frames are interlaced, progressive,
         top or bottom field first. It will also try to detect fields that are
         repeated between adjacent frames (a sign of telecine).
 
+
         Single frame detection considers only immediately adjacent frames when classifying each frame.
         Multiple frame detection incorporates the classification history of previous frames.
+
 
         The filter will log these metadata values:
 
 
+        - **`single.current_frame`**
+          - Detected type of current frame using single-frame detection. One of:
+        “tff” (top field first), “bff” (bottom field first),
+        “progressive”, or “undetermined”
+        - **`single.tff`**
+          - Cumulative number of frames detected as top field first using single-frame detection.
+        - **`multiple.tff`**
+          - Cumulative number of frames detected as top field first using multiple-frame detection.
+        - **`single.bff`**
+          - Cumulative number of frames detected as bottom field first using single-frame detection.
+        - **`multiple.current_frame`**
+          - Detected type of current frame using multiple-frame detection. One of:
+        “tff” (top field first), “bff” (bottom field first),
+        “progressive”, or “undetermined”
+        - **`multiple.bff`**
+          - Cumulative number of frames detected as bottom field first using multiple-frame detection.
+        - **`single.progressive`**
+          - Cumulative number of frames detected as progressive using single-frame detection.
+        - **`multiple.progressive`**
+          - Cumulative number of frames detected as progressive using multiple-frame detection.
+        - **`single.undetermined`**
+          - Cumulative number of frames that could not be classified using single-frame detection.
+        - **`multiple.undetermined`**
+          - Cumulative number of frames that could not be classified using multiple-frame detection.
+        - **`repeated.current_frame`**
+          - Which field in the current frame is repeated from the last. One of “neither”, “top”, or “bottom”.
+        - **`repeated.neither`**
+          - Cumulative number of frames with no repeated field.
+        - **`repeated.top`**
+          - Cumulative number of frames with the top field repeated from the previous frame’s top field.
+        - **`repeated.bottom`**
+          - Cumulative number of frames with the bottom field repeated from the previous frame’s bottom field.
+        Detected type of current frame using single-frame detection. One of:
+        “tff” (top field first), “bff” (bottom field first),
+        “progressive”, or “undetermined”
+
+
+        Cumulative number of frames detected as top field first using single-frame detection.
+
+
+        Cumulative number of frames detected as top field first using multiple-frame detection.
+
+
+        Cumulative number of frames detected as bottom field first using single-frame detection.
+
+
+        Detected type of current frame using multiple-frame detection. One of:
+        “tff” (top field first), “bff” (bottom field first),
+        “progressive”, or “undetermined”
+
+
+        Cumulative number of frames detected as bottom field first using multiple-frame detection.
+
+
+        Cumulative number of frames detected as progressive using single-frame detection.
+
+
+        Cumulative number of frames detected as progressive using multiple-frame detection.
+
+
+        Cumulative number of frames that could not be classified using single-frame detection.
+
+
+        Cumulative number of frames that could not be classified using multiple-frame detection.
+
+
+        Which field in the current frame is repeated from the last. One of “neither”, “top”, or “bottom”.
+
+
+        Cumulative number of frames with no repeated field.
+
+
+        Cumulative number of frames with the top field repeated from the previous frame’s top field.
+
+
+        Cumulative number of frames with the bottom field repeated from the previous frame’s bottom field.
+
+
         The filter accepts the following options:
+
+
+        - **`intl_thres`**
+          - Set interlacing threshold.
+        - **`prog_thres`**
+          - Set progressive threshold.
+        - **`rep_thres`**
+          - Threshold for repeated field detection.
+        - **`half_life`**
+          - Number of frames after which a given frame’s contribution to the
+        statistics is halved (i.e., it contributes only 0.5 to its
+        classification). The default of 0 means that all frames seen are given
+        full weight of 1.0 forever.
+        - **`analyze_interlaced_flag`**
+          - When this is not 0 then idet will use the specified number of frames to determine
+        if the interlaced flag is accurate, it will not count undetermined frames.
+        If the flag is found to be accurate it will be used without any further
+        computations, if it is found to be inaccurate it will be cleared without any
+        further computations. This allows inserting the idet filter as a low computational
+        method to clean up the interlaced flag
+        Set interlacing threshold.
+
+
+        Set progressive threshold.
+
+
+        Threshold for repeated field detection.
+
+
+        Number of frames after which a given frame’s contribution to the
+        statistics is halved (i.e., it contributes only 0.5 to its
+        classification). The default of 0 means that all frames seen are given
+        full weight of 1.0 forever.
+
+
+        When this is not 0 then idet will use the specified number of frames to determine
+        if the interlaced flag is accurate, it will not count undetermined frames.
+        If the flag is found to be accurate it will be used without any further
+        computations, if it is found to be inaccurate it will be cleared without any
+        further computations. This allows inserting the idet filter as a low computational
+        method to clean up the interlaced flag
+
+
+
 
         Parameters:
         ----------
@@ -7782,8 +16654,10 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.136 il
+        ### 11.136 il
+
         Deinterleave or interleave fields.
+
 
         This filter allows one to process interlaced images fields without
         deinterlacing them. Deinterleaving splits the input frame into 2
@@ -7791,7 +16665,67 @@ class VideoStream(FilterableStream):
         half of the output image, even lines to the bottom half.
         You can process (filter) them independently and then re-interleave them.
 
+
         The filter accepts the following options:
+
+
+        - **`luma_mode, l`**
+        - **`chroma_mode, c`**
+        - **`alpha_mode, a`**
+          - Available values for
+        luma_mode
+        ,
+        chroma_mode
+        and
+        alpha_mode
+        are:
+        ‘
+        none
+        ’
+        Do nothing.
+        ‘
+        deinterleave, d
+        ’
+        Deinterleave fields, placing one above the other.
+        ‘
+        interleave, i
+        ’
+        Interleave fields. Reverse the effect of deinterleaving.
+        Default value is
+        none
+        .
+        - **`luma_swap, ls`**
+        - **`chroma_swap, cs`**
+        - **`alpha_swap, as`**
+          - Swap luma/chroma/alpha fields. Exchange even & odd lines. Default value is
+        0
+        .
+        Available values for luma_mode, chroma_mode and
+        alpha_mode are:
+
+
+        - **`‘none’`**
+          - Do nothing.
+        - **`‘deinterleave, d’`**
+          - Deinterleave fields, placing one above the other.
+        - **`‘interleave, i’`**
+          - Interleave fields. Reverse the effect of deinterleaving.
+        Do nothing.
+
+
+        Deinterleave fields, placing one above the other.
+
+
+        Interleave fields. Reverse the effect of deinterleaving.
+
+
+        Default value is none.
+
+
+        Swap luma/chroma/alpha fields. Exchange even & odd lines. Default value is 0.
+
+
+
 
         Parameters:
         ----------
@@ -7836,13 +16770,29 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.137 inflate
+        ### 11.137 inflate
+
         Apply inflate effect to the video.
+
 
         This filter replaces the pixel by the local(3x3) average by taking into account
         only values higher than the pixel.
 
+
         It accepts the following options:
+
+
+        - **`threshold0`**
+        - **`threshold1`**
+        - **`threshold2`**
+        - **`threshold3`**
+          - Limit the maximum change for each plane, default is 65535.
+        If 0, plane will remain unchanged.
+        Limit the maximum change for each plane, default is 65535.
+        If 0, plane will remain unchanged.
+
+
+
 
         Parameters:
         ----------
@@ -7881,23 +16831,61 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.138 interlace
+        ### 11.138 interlace
+
         Simple interlacing filter from progressive contents. This interleaves upper (or
         lower) lines from odd frames with lower (or upper) lines from even frames,
         halving the frame rate and preserving image height.
 
 
-           Original        Original             New Frame
-           Frame 'j'      Frame 'j+1'             (tff)
-          ==========      ===========       ==================
-            Line 0  -------------------->    Frame 'j' Line 0
-            Line 1          Line 1  ---->   Frame 'j+1' Line 1
-            Line 2 --------------------->    Frame 'j' Line 2
-            Line 3          Line 3  ---->   Frame 'j+1' Line 3
-             ...             ...                   ...
-        New Frame + 1 will be generated by Frame 'j+2' and Frame 'j+3' and so on
-
         It accepts the following optional parameters:
+
+
+        - **`scan`**
+          - This determines whether the interlaced frame is taken from the even
+        (tff - default) or odd (bff) lines of the progressive frame.
+        - **`lowpass`**
+          - Vertical lowpass filter to avoid twitter interlacing and
+        reduce moire patterns.
+        ‘
+        0, off
+        ’
+        Disable vertical lowpass filter
+        ‘
+        1, linear
+        ’
+        Enable linear filter (default)
+        ‘
+        2, complex
+        ’
+        Enable complex filter. This will slightly less reduce twitter and moire
+        but better retain detail and subjective sharpness impression.
+        This determines whether the interlaced frame is taken from the even
+        (tff - default) or odd (bff) lines of the progressive frame.
+
+
+        Vertical lowpass filter to avoid twitter interlacing and
+        reduce moire patterns.
+
+
+        - **`‘0, off’`**
+          - Disable vertical lowpass filter
+        - **`‘1, linear’`**
+          - Enable linear filter (default)
+        - **`‘2, complex’`**
+          - Enable complex filter. This will slightly less reduce twitter and moire
+        but better retain detail and subjective sharpness impression.
+        Disable vertical lowpass filter
+
+
+        Enable linear filter (default)
+
+
+        Enable complex filter. This will slightly less reduce twitter and moire
+        but better retain detail and subjective sharpness impression.
+
+
+
 
         Parameters:
         ----------
@@ -7935,12 +16923,52 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.139 kerndeint
+        ### 11.139 kerndeint
+
         Deinterlace input video by applying Donald Graft’s adaptive kernel
         deinterling. Work on interlaced parts of a video to produce
         progressive frames.
 
+
         The description of the accepted parameters follows.
+
+
+        - **`thresh`**
+          - Set the threshold which affects the filter’s tolerance when
+        determining if a pixel line must be processed. It must be an integer
+        in the range [0,255] and defaults to 10. A value of 0 will result in
+        applying the process on every pixels.
+        - **`map`**
+          - Paint pixels exceeding the threshold value to white if set to 1.
+        Default is 0.
+        - **`order`**
+          - Set the fields order. Swap fields if set to 1, leave fields alone if
+        0. Default is 0.
+        - **`sharp`**
+          - Enable additional sharpening if set to 1. Default is 0.
+        - **`twoway`**
+          - Enable twoway sharpening if set to 1. Default is 0.
+        Set the threshold which affects the filter’s tolerance when
+        determining if a pixel line must be processed. It must be an integer
+        in the range [0,255] and defaults to 10. A value of 0 will result in
+        applying the process on every pixels.
+
+
+        Paint pixels exceeding the threshold value to white if set to 1.
+        Default is 0.
+
+
+        Set the fields order. Swap fields if set to 1, leave fields alone if
+        0. Default is 0.
+
+
+        Enable additional sharpening if set to 1. Default is 0.
+
+
+        Enable twoway sharpening if set to 1. Default is 0.
+
+
+
 
         Parameters:
         ----------
@@ -7982,10 +17010,32 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.140 kirsch
+        ### 11.140 kirsch
+
         Apply kirsch operator to input video stream.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+        - **`scale`**
+          - Set value which will be multiplied with filtered result.
+        - **`delta`**
+          - Set value which will be added to filtered result.
+        Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+
+
+        Set value which will be multiplied with filtered result.
+
+
+        Set value which will be added to filtered result.
+
+
+
 
         Parameters:
         ----------
@@ -8022,11 +17072,26 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.141 lagfun
+        ### 11.141 lagfun
+
         Slowly update darker pixels.
+
 
         This filter makes short flashes of light appear longer.
         This filter accepts the following options:
+
+
+        - **`decay`**
+          - Set factor for decaying. Default is .95. Allowed range is from 0 to 1.
+        - **`planes`**
+          - Set which planes to filter. Default is all. Allowed range is from 0 to 15.
+        Set factor for decaying. Default is .95. Allowed range is from 0 to 1.
+
+
+        Set which planes to filter. Default is all. Allowed range is from 0 to 15.
+
+
+
 
         Parameters:
         ----------
@@ -8055,14 +17120,20 @@ class VideoStream(FilterableStream):
     def latency(self, **kwargs: Any) -> "VideoStream":
         """
 
-        18.12 latency, alatency
+        ### 18.12 latency, alatency
+
         Measure filtering latency.
+
 
         Report previous filter filtering latency, delay in number of audio samples for audio filters
         or number of video frames for video filters.
 
+
         On end of input stream, filter will report min and max measured latency for previous running filter
         in filtergraph.
+
+
+
 
         Parameters:
         ----------
@@ -8095,8 +17166,10 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.142 lenscorrection
+        ### 11.142 lenscorrection
+
         Correct radial lens distortion
+
 
         This filter can be used to correct for radial distortion as can result from the use
         of wide angle lenses, and thereby re-rectify the image. To find the right parameters
@@ -8104,14 +17177,19 @@ class VideoStream(FilterableStream):
         To use opencv use the calibration sample (under samples/cpp) from the opencv sources
         and extract the k1 and k2 coefficients from the resulting matrix.
 
+
         Note that effectively the same filter is available in the open-source tools Krita and
         Digikam from the KDE project.
+
 
         In contrast to the vignette filter, which can also be used to compensate lens errors,
         this filter corrects the distortion of the image, whereas vignette corrects the
         brightness distribution, so you may want to use both filters together in certain
         cases, though you will have to take care of ordering, i.e. whether vignetting should
         be applied before or after lens correction.
+
+
+
 
         Parameters:
         ----------
@@ -8177,8 +17255,10 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.143 lensfun
+        ### 11.143 lensfun
+
         Apply lens correction via the lensfun library (http://lensfun.sourceforge.net/).
+
 
         The lensfun filter requires the camera make, camera model, and lens model
         to apply the lens correction. The filter will load the lensfun database and
@@ -8189,6 +17269,7 @@ class VideoStream(FilterableStream):
         output the chosen camera and lens models (logged with level "info"). You must
         provide the make, camera model, and lens model as they are required.
 
+
         To obtain a list of available makes and models, leave out one or both of make and
         model options. The filter will send the full list to the log with level INFO.
         The first column is the make and the second column is the model.
@@ -8196,7 +17277,214 @@ class VideoStream(FilterableStream):
         lens_model option. The filter will send the full list of lenses in the log with level
         INFO. The ffmpeg tool will exit after the list is printed.
 
+
         The filter accepts the following options:
+
+
+        - **`make`**
+          - The make of the camera (for example, "Canon"). This option is required.
+        - **`model`**
+          - The model of the camera (for example, "Canon EOS 100D"). This option is
+        required.
+        - **`lens_model`**
+          - The model of the lens (for example, "Canon EF-S 18-55mm f/3.5-5.6 IS STM"). This
+        option is required.
+        - **`db_path`**
+          - The full path to the lens database folder. If not set, the filter will attempt to
+        load the database from the install path when the library was built. Default is unset.
+        - **`mode`**
+          - The type of correction to apply. The following values are valid options:
+        ‘
+        vignetting
+        ’
+        Enables fixing lens vignetting.
+        ‘
+        geometry
+        ’
+        Enables fixing lens geometry. This is the default.
+        ‘
+        subpixel
+        ’
+        Enables fixing chromatic aberrations.
+        ‘
+        vig_geo
+        ’
+        Enables fixing lens vignetting and lens geometry.
+        ‘
+        vig_subpixel
+        ’
+        Enables fixing lens vignetting and chromatic aberrations.
+        ‘
+        distortion
+        ’
+        Enables fixing both lens geometry and chromatic aberrations.
+        ‘
+        all
+        ’
+        Enables all possible corrections.
+        - **`focal_length`**
+          - The focal length of the image/video (zoom; expected constant for video). For
+        example, a 18–55mm lens has focal length range of [18–55], so a value in that
+        range should be chosen when using that lens. Default 18.
+        - **`aperture`**
+          - The aperture of the image/video (expected constant for video). Note that
+        aperture is only used for vignetting correction. Default 3.5.
+        - **`focus_distance`**
+          - The focus distance of the image/video (expected constant for video). Note that
+        focus distance is only used for vignetting and only slightly affects the
+        vignetting correction process. If unknown, leave it at the default value (which
+        is 1000).
+        - **`scale`**
+          - The scale factor which is applied after transformation. After correction the
+        video is no longer necessarily rectangular. This parameter controls how much of
+        the resulting image is visible. The value 0 means that a value will be chosen
+        automatically such that there is little or no unmapped area in the output
+        image. 1.0 means that no additional scaling is done. Lower values may result
+        in more of the corrected image being visible, while higher values may avoid
+        unmapped areas in the output.
+        - **`target_geometry`**
+          - The target geometry of the output image/video. The following values are valid
+        options:
+        ‘
+        rectilinear (default)
+        ’
+        ‘
+        fisheye
+        ’
+        ‘
+        panoramic
+        ’
+        ‘
+        equirectangular
+        ’
+        ‘
+        fisheye_orthographic
+        ’
+        ‘
+        fisheye_stereographic
+        ’
+        ‘
+        fisheye_equisolid
+        ’
+        ‘
+        fisheye_thoby
+        ’
+        - **`reverse`**
+          - Apply the reverse of image correction (instead of correcting distortion, apply
+        it).
+        - **`interpolation`**
+          - The type of interpolation used when correcting distortion. The following values
+        are valid options:
+        ‘
+        nearest
+        ’
+        ‘
+        linear (default)
+        ’
+        ‘
+        lanczos
+        ’
+        The make of the camera (for example, "Canon"). This option is required.
+
+
+        The model of the camera (for example, "Canon EOS 100D"). This option is
+        required.
+
+
+        The model of the lens (for example, "Canon EF-S 18-55mm f/3.5-5.6 IS STM"). This
+        option is required.
+
+
+        The full path to the lens database folder. If not set, the filter will attempt to
+        load the database from the install path when the library was built. Default is unset.
+
+
+        The type of correction to apply. The following values are valid options:
+
+
+        - **`‘vignetting’`**
+          - Enables fixing lens vignetting.
+        - **`‘geometry’`**
+          - Enables fixing lens geometry. This is the default.
+        - **`‘subpixel’`**
+          - Enables fixing chromatic aberrations.
+        - **`‘vig_geo’`**
+          - Enables fixing lens vignetting and lens geometry.
+        - **`‘vig_subpixel’`**
+          - Enables fixing lens vignetting and chromatic aberrations.
+        - **`‘distortion’`**
+          - Enables fixing both lens geometry and chromatic aberrations.
+        - **`‘all’`**
+          - Enables all possible corrections.
+        Enables fixing lens vignetting.
+
+
+        Enables fixing lens geometry. This is the default.
+
+
+        Enables fixing chromatic aberrations.
+
+
+        Enables fixing lens vignetting and lens geometry.
+
+
+        Enables fixing lens vignetting and chromatic aberrations.
+
+
+        Enables fixing both lens geometry and chromatic aberrations.
+
+
+        Enables all possible corrections.
+
+
+        The focal length of the image/video (zoom; expected constant for video). For
+        example, a 18–55mm lens has focal length range of [18–55], so a value in that
+        range should be chosen when using that lens. Default 18.
+
+
+        The aperture of the image/video (expected constant for video). Note that
+        aperture is only used for vignetting correction. Default 3.5.
+
+
+        The focus distance of the image/video (expected constant for video). Note that
+        focus distance is only used for vignetting and only slightly affects the
+        vignetting correction process. If unknown, leave it at the default value (which
+        is 1000).
+
+
+        The scale factor which is applied after transformation. After correction the
+        video is no longer necessarily rectangular. This parameter controls how much of
+        the resulting image is visible. The value 0 means that a value will be chosen
+        automatically such that there is little or no unmapped area in the output
+        image. 1.0 means that no additional scaling is done. Lower values may result
+        in more of the corrected image being visible, while higher values may avoid
+        unmapped areas in the output.
+
+
+        The target geometry of the output image/video. The following values are valid
+        options:
+
+
+        - **`‘rectilinear (default)’`**
+        - **`‘fisheye’`**
+        - **`‘panoramic’`**
+        - **`‘equirectangular’`**
+        - **`‘fisheye_orthographic’`**
+        - **`‘fisheye_stereographic’`**
+        - **`‘fisheye_equisolid’`**
+        - **`‘fisheye_thoby’`**
+        Apply the reverse of image correction (instead of correcting distortion, apply
+        it).
+
+
+        The type of interpolation used when correcting distortion. The following values
+        are valid options:
+
+
+        - **`‘nearest’`**
+        - **`‘linear (default)’`**
+        - **`‘lanczos’`**
+
 
         Parameters:
         ----------
@@ -8257,22 +17545,80 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.145 libvmaf
+        ### 11.145 libvmaf
+
         Calculate the VMAF (Video Multi-Method Assessment Fusion) score for a
         reference/distorted pair of input videos.
 
+
         The first input is the distorted video, and the second input is the reference video.
 
+
         The obtained VMAF score is printed through the logging system.
+
 
         It requires Netflix’s vmaf library (libvmaf) as a pre-requisite.
         After installing the library it can be enabled using:
         ./configure --enable-libvmaf.
 
+
         The filter has following options:
 
 
+        - **`model`**
+          - A ‘|‘ delimited list of vmaf models. Each model can be configured with a number of parameters.
+        Default value:
+        "version=vmaf_v0.6.1"
+        - **`feature`**
+          - A ‘|‘ delimited list of features. Each feature can be configured with a number of parameters.
+        - **`log_path`**
+          - Set the file path to be used to store log files.
+        - **`log_fmt`**
+          - Set the format of the log file (xml, json, csv, or sub).
+        - **`pool`**
+          - Set the pool method to be used for computing vmaf.
+        Options are
+        min
+        ,
+        harmonic_mean
+        or
+        mean
+        (default).
+        - **`n_threads`**
+          - Set number of threads to be used when initializing libvmaf.
+        Default value:
+        0
+        , no threads.
+        - **`n_subsample`**
+          - Set frame subsampling interval to be used.
+        A ‘|‘ delimited list of vmaf models. Each model can be configured with a number of parameters.
+        Default value: "version=vmaf_v0.6.1"
+
+
+        A ‘|‘ delimited list of features. Each feature can be configured with a number of parameters.
+
+
+        Set the file path to be used to store log files.
+
+
+        Set the format of the log file (xml, json, csv, or sub).
+
+
+        Set the pool method to be used for computing vmaf.
+        Options are min, harmonic_mean or mean (default).
+
+
+        Set number of threads to be used when initializing libvmaf.
+        Default value: 0, no threads.
+
+
+        Set frame subsampling interval to be used.
+
+
         This filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -8324,12 +17670,17 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.146 libvmaf_cuda
+        ### 11.146 libvmaf_cuda
+
         This is the CUDA variant of the libvmaf filter. It only accepts CUDA frames.
+
 
         It requires Netflix’s vmaf library (libvmaf) as a pre-requisite.
         After installing the library it can be enabled using:
         ./configure --enable-nonfree --enable-ffnvcodec --enable-libvmaf.
+
+
+
 
         Parameters:
         ----------
@@ -8376,10 +17727,30 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.148 limiter
+        ### 11.148 limiter
+
         Limits the pixel components values to the specified range [min, max].
 
+
         The filter accepts the following options:
+
+
+        - **`min`**
+          - Lower bound. Defaults to the lowest allowed value for the input.
+        - **`max`**
+          - Upper bound. Defaults to the highest allowed value for the input.
+        - **`planes`**
+          - Specify which planes will be processed. Defaults to all available.
+        Lower bound. Defaults to the lowest allowed value for the input.
+
+
+        Upper bound. Defaults to the highest allowed value for the input.
+
+
+        Specify which planes will be processed. Defaults to all available.
+
+
+
 
         Parameters:
         ----------
@@ -8418,10 +17789,43 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.149 loop
+        ### 11.149 loop
+
         Loop video frames.
 
+
         The filter accepts the following options:
+
+
+        - **`loop`**
+          - Set the number of loops. Setting this value to -1 will result in infinite loops.
+        Default is 0.
+        - **`size`**
+          - Set maximal size in number of frames. Default is 0.
+        - **`start`**
+          - Set first frame of loop. Default is 0.
+        - **`time`**
+          - Set the time of loop start in seconds.
+        Only used if option named
+        start
+        is set to
+        -1
+        .
+        Set the number of loops. Setting this value to -1 will result in infinite loops.
+        Default is 0.
+
+
+        Set maximal size in number of frames. Default is 0.
+
+
+        Set first frame of loop. Default is 0.
+
+
+        Set the time of loop start in seconds.
+        Only used if option named start is set to -1.
+
+
+
 
         Parameters:
         ----------
@@ -8461,10 +17865,42 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.152 lumakey
+        ### 11.152 lumakey
+
         Turn certain luma values into transparency.
 
+
         The filter accepts the following options:
+
+
+        - **`threshold`**
+          - Set the luma which will be used as base for transparency.
+        Default value is
+        0
+        .
+        - **`tolerance`**
+          - Set the range of luma values to be keyed out.
+        Default value is
+        0.01
+        .
+        - **`softness`**
+          - Set the range of softness. Default value is
+        0
+        .
+        Use this to control gradual transition from zero to full transparency.
+        Set the luma which will be used as base for transparency.
+        Default value is 0.
+
+
+        Set the range of luma values to be keyed out.
+        Default value is 0.01.
+
+
+        Set the range of softness. Default value is 0.
+        Use this to control gradual transition from zero to full transparency.
+
+
+
 
         Parameters:
         ----------
@@ -8503,28 +17939,164 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.153 lut, lutrgb, lutyuv
+        ### 11.153 lut, lutrgb, lutyuv
+
         Compute a look-up table for binding each pixel component input value
         to an output value, and apply it to the input video.
+
 
         lutyuv applies a lookup table to a YUV input video, lutrgb
         to an RGB input video.
 
+
         These filters accept the following parameters:
+
+
+        - **`c0`**
+          - set first pixel component expression
+        - **`c1`**
+          - set second pixel component expression
+        - **`c2`**
+          - set third pixel component expression
+        - **`c3`**
+          - set fourth pixel component expression, corresponds to the alpha component
+        - **`r`**
+          - set red component expression
+        - **`g`**
+          - set green component expression
+        - **`b`**
+          - set blue component expression
+        - **`a`**
+          - alpha component expression
+        - **`y`**
+          - set Y/luma component expression
+        - **`u`**
+          - set U/Cb component expression
+        - **`v`**
+          - set V/Cr component expression
+        set first pixel component expression
+
+
+        set second pixel component expression
+
+
+        set third pixel component expression
+
+
+        set fourth pixel component expression, corresponds to the alpha component
+
+
+        set red component expression
+
+
+        set green component expression
+
+
+        set blue component expression
+
+
+        alpha component expression
+
+
+        set Y/luma component expression
+
+
+        set U/Cb component expression
+
+
+        set V/Cr component expression
+
 
         Each of them specifies the expression to use for computing the lookup table for
         the corresponding pixel component values.
 
+
         The exact component associated to each of the c* options depends on the
         format in input.
+
 
         The lut filter requires either YUV or RGB pixel formats in input,
         lutrgb requires RGB pixel formats in input, and lutyuv requires YUV.
 
+
         The expressions can contain the following constants and functions:
 
 
+        - **`w`**
+        - **`h`**
+          - The input width and height.
+        - **`val`**
+          - The input value for the pixel component.
+        - **`clipval`**
+          - The input value, clipped to the
+        minval
+        -
+        maxval
+        range.
+        - **`maxval`**
+          - The maximum value for the pixel component.
+        - **`minval`**
+          - The minimum value for the pixel component.
+        - **`negval`**
+          - The negated value for the pixel component value, clipped to the
+        minval
+        -
+        maxval
+        range; it corresponds to the expression
+        "maxval-clipval+minval".
+        - **`clip(val)`**
+          - The computed value in
+        val
+        , clipped to the
+        minval
+        -
+        maxval
+        range.
+        - **`gammaval(gamma)`**
+          - The computed gamma correction value of the pixel component value,
+        clipped to the
+        minval
+        -
+        maxval
+        range. It corresponds to the
+        expression
+        "pow((clipval-minval)/(maxval-minval)\,
+        gamma
+        )*(maxval-minval)+minval"
+        The input width and height.
+
+
+        The input value for the pixel component.
+
+
+        The input value, clipped to the minval-maxval range.
+
+
+        The maximum value for the pixel component.
+
+
+        The minimum value for the pixel component.
+
+
+        The negated value for the pixel component value, clipped to the
+        minval-maxval range; it corresponds to the expression
+        "maxval-clipval+minval".
+
+
+        The computed value in val, clipped to the
+        minval-maxval range.
+
+
+        The computed gamma correction value of the pixel component value,
+        clipped to the minval-maxval range. It corresponds to the
+        expression
+        "pow((clipval-minval)/(maxval-minval)\,gamma)*(maxval-minval)+minval"
+
+
         All expressions default to "clipval".
+
+
+
 
         Parameters:
         ----------
@@ -8563,10 +18135,96 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.150 lut1d
+        ### 11.150 lut1d
+
         Apply a 1D LUT to an input video.
 
+
         The filter accepts the following options:
+
+
+        - **`file`**
+          - Set the 1D LUT file name.
+        Currently supported formats:
+        ‘
+        cube
+        ’
+        Iridas
+        ‘
+        csp
+        ’
+        cineSpace
+        - **`interp`**
+          - Select interpolation mode.
+        Available values are:
+        ‘
+        nearest
+        ’
+        Use values from the nearest defined point.
+        ‘
+        linear
+        ’
+        Interpolate values using the linear interpolation.
+        ‘
+        cosine
+        ’
+        Interpolate values using the cosine interpolation.
+        ‘
+        cubic
+        ’
+        Interpolate values using the cubic interpolation.
+        ‘
+        spline
+        ’
+        Interpolate values using the spline interpolation.
+        Set the 1D LUT file name.
+
+
+        Currently supported formats:
+
+
+        - **`‘cube’`**
+          - Iridas
+        - **`‘csp’`**
+          - cineSpace
+        Iridas
+
+
+        cineSpace
+
+
+        Select interpolation mode.
+
+
+        Available values are:
+
+
+        - **`‘nearest’`**
+          - Use values from the nearest defined point.
+        - **`‘linear’`**
+          - Interpolate values using the linear interpolation.
+        - **`‘cosine’`**
+          - Interpolate values using the cosine interpolation.
+        - **`‘cubic’`**
+          - Interpolate values using the cubic interpolation.
+        - **`‘spline’`**
+          - Interpolate values using the spline interpolation.
+        Use values from the nearest defined point.
+
+
+        Interpolate values using the linear interpolation.
+
+
+        Interpolate values using the cosine interpolation.
+
+
+        Interpolate values using the cubic interpolation.
+
+
+        Interpolate values using the spline interpolation.
+
+
+
 
         Parameters:
         ----------
@@ -8605,27 +18263,92 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.154 lut2, tlut2
+        ### 11.154 lut2, tlut2
+
         The lut2 filter takes two input streams and outputs one
         stream.
+
 
         The tlut2 (time lut2) filter takes two consecutive frames
         from one single stream.
 
+
         This filter accepts the following parameters:
 
+
+        - **`c0`**
+          - set first pixel component expression
+        - **`c1`**
+          - set second pixel component expression
+        - **`c2`**
+          - set third pixel component expression
+        - **`c3`**
+          - set fourth pixel component expression, corresponds to the alpha component
+        - **`d`**
+          - set output bit depth, only available for
+        lut2
+        filter. By default is 0,
+        which means bit depth is automatically picked from first input format.
+        set first pixel component expression
+
+
+        set second pixel component expression
+
+
+        set third pixel component expression
+
+
+        set fourth pixel component expression, corresponds to the alpha component
+
+
+        set output bit depth, only available for lut2 filter. By default is 0,
+        which means bit depth is automatically picked from first input format.
+
+
         The lut2 filter also supports the framesync options.
+
 
         Each of them specifies the expression to use for computing the lookup table for
         the corresponding pixel component values.
 
+
         The exact component associated to each of the c* options depends on the
         format in inputs.
+
 
         The expressions can contain the following constants:
 
 
+        - **`w`**
+        - **`h`**
+          - The input width and height.
+        - **`x`**
+          - The first input value for the pixel component.
+        - **`y`**
+          - The second input value for the pixel component.
+        - **`bdx`**
+          - The first input video bit depth.
+        - **`bdy`**
+          - The second input video bit depth.
+        The input width and height.
+
+
+        The first input value for the pixel component.
+
+
+        The second input value for the pixel component.
+
+
+        The first input video bit depth.
+
+
+        The second input video bit depth.
+
+
         All expressions default to "x".
+
+
+
 
         Parameters:
         ----------
@@ -8670,10 +18393,123 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.151 lut3d
+        ### 11.151 lut3d
+
         Apply a 3D LUT to an input video.
 
+
         The filter accepts the following options:
+
+
+        - **`file`**
+          - Set the 3D LUT file name.
+        Currently supported formats:
+        ‘
+        3dl
+        ’
+        AfterEffects
+        ‘
+        cube
+        ’
+        Iridas
+        ‘
+        dat
+        ’
+        DaVinci
+        ‘
+        m3d
+        ’
+        Pandora
+        ‘
+        csp
+        ’
+        cineSpace
+        - **`interp`**
+          - Select interpolation mode.
+        Available values are:
+        ‘
+        nearest
+        ’
+        Use values from the nearest defined point.
+        ‘
+        trilinear
+        ’
+        Interpolate values using the 8 points defining a cube.
+        ‘
+        tetrahedral
+        ’
+        Interpolate values using a tetrahedron.
+        ‘
+        pyramid
+        ’
+        Interpolate values using a pyramid.
+        ‘
+        prism
+        ’
+        Interpolate values using a prism.
+        Set the 3D LUT file name.
+
+
+        Currently supported formats:
+
+
+        - **`‘3dl’`**
+          - AfterEffects
+        - **`‘cube’`**
+          - Iridas
+        - **`‘dat’`**
+          - DaVinci
+        - **`‘m3d’`**
+          - Pandora
+        - **`‘csp’`**
+          - cineSpace
+        AfterEffects
+
+
+        Iridas
+
+
+        DaVinci
+
+
+        Pandora
+
+
+        cineSpace
+
+
+        Select interpolation mode.
+
+
+        Available values are:
+
+
+        - **`‘nearest’`**
+          - Use values from the nearest defined point.
+        - **`‘trilinear’`**
+          - Interpolate values using the 8 points defining a cube.
+        - **`‘tetrahedral’`**
+          - Interpolate values using a tetrahedron.
+        - **`‘pyramid’`**
+          - Interpolate values using a pyramid.
+        - **`‘prism’`**
+          - Interpolate values using a prism.
+        Use values from the nearest defined point.
+
+
+        Interpolate values using the 8 points defining a cube.
+
+
+        Interpolate values using a tetrahedron.
+
+
+        Interpolate values using a pyramid.
+
+
+        Interpolate values using a prism.
+
+
+
 
         Parameters:
         ----------
@@ -8712,28 +18548,164 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.153 lut, lutrgb, lutyuv
+        ### 11.153 lut, lutrgb, lutyuv
+
         Compute a look-up table for binding each pixel component input value
         to an output value, and apply it to the input video.
+
 
         lutyuv applies a lookup table to a YUV input video, lutrgb
         to an RGB input video.
 
+
         These filters accept the following parameters:
+
+
+        - **`c0`**
+          - set first pixel component expression
+        - **`c1`**
+          - set second pixel component expression
+        - **`c2`**
+          - set third pixel component expression
+        - **`c3`**
+          - set fourth pixel component expression, corresponds to the alpha component
+        - **`r`**
+          - set red component expression
+        - **`g`**
+          - set green component expression
+        - **`b`**
+          - set blue component expression
+        - **`a`**
+          - alpha component expression
+        - **`y`**
+          - set Y/luma component expression
+        - **`u`**
+          - set U/Cb component expression
+        - **`v`**
+          - set V/Cr component expression
+        set first pixel component expression
+
+
+        set second pixel component expression
+
+
+        set third pixel component expression
+
+
+        set fourth pixel component expression, corresponds to the alpha component
+
+
+        set red component expression
+
+
+        set green component expression
+
+
+        set blue component expression
+
+
+        alpha component expression
+
+
+        set Y/luma component expression
+
+
+        set U/Cb component expression
+
+
+        set V/Cr component expression
+
 
         Each of them specifies the expression to use for computing the lookup table for
         the corresponding pixel component values.
 
+
         The exact component associated to each of the c* options depends on the
         format in input.
+
 
         The lut filter requires either YUV or RGB pixel formats in input,
         lutrgb requires RGB pixel formats in input, and lutyuv requires YUV.
 
+
         The expressions can contain the following constants and functions:
 
 
+        - **`w`**
+        - **`h`**
+          - The input width and height.
+        - **`val`**
+          - The input value for the pixel component.
+        - **`clipval`**
+          - The input value, clipped to the
+        minval
+        -
+        maxval
+        range.
+        - **`maxval`**
+          - The maximum value for the pixel component.
+        - **`minval`**
+          - The minimum value for the pixel component.
+        - **`negval`**
+          - The negated value for the pixel component value, clipped to the
+        minval
+        -
+        maxval
+        range; it corresponds to the expression
+        "maxval-clipval+minval".
+        - **`clip(val)`**
+          - The computed value in
+        val
+        , clipped to the
+        minval
+        -
+        maxval
+        range.
+        - **`gammaval(gamma)`**
+          - The computed gamma correction value of the pixel component value,
+        clipped to the
+        minval
+        -
+        maxval
+        range. It corresponds to the
+        expression
+        "pow((clipval-minval)/(maxval-minval)\,
+        gamma
+        )*(maxval-minval)+minval"
+        The input width and height.
+
+
+        The input value for the pixel component.
+
+
+        The input value, clipped to the minval-maxval range.
+
+
+        The maximum value for the pixel component.
+
+
+        The minimum value for the pixel component.
+
+
+        The negated value for the pixel component value, clipped to the
+        minval-maxval range; it corresponds to the expression
+        "maxval-clipval+minval".
+
+
+        The computed value in val, clipped to the
+        minval-maxval range.
+
+
+        The computed gamma correction value of the pixel component value,
+        clipped to the minval-maxval range. It corresponds to the
+        expression
+        "pow((clipval-minval)/(maxval-minval)\,gamma)*(maxval-minval)+minval"
+
+
         All expressions default to "clipval".
+
+
+
 
         Parameters:
         ----------
@@ -8774,28 +18746,164 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.153 lut, lutrgb, lutyuv
+        ### 11.153 lut, lutrgb, lutyuv
+
         Compute a look-up table for binding each pixel component input value
         to an output value, and apply it to the input video.
+
 
         lutyuv applies a lookup table to a YUV input video, lutrgb
         to an RGB input video.
 
+
         These filters accept the following parameters:
+
+
+        - **`c0`**
+          - set first pixel component expression
+        - **`c1`**
+          - set second pixel component expression
+        - **`c2`**
+          - set third pixel component expression
+        - **`c3`**
+          - set fourth pixel component expression, corresponds to the alpha component
+        - **`r`**
+          - set red component expression
+        - **`g`**
+          - set green component expression
+        - **`b`**
+          - set blue component expression
+        - **`a`**
+          - alpha component expression
+        - **`y`**
+          - set Y/luma component expression
+        - **`u`**
+          - set U/Cb component expression
+        - **`v`**
+          - set V/Cr component expression
+        set first pixel component expression
+
+
+        set second pixel component expression
+
+
+        set third pixel component expression
+
+
+        set fourth pixel component expression, corresponds to the alpha component
+
+
+        set red component expression
+
+
+        set green component expression
+
+
+        set blue component expression
+
+
+        alpha component expression
+
+
+        set Y/luma component expression
+
+
+        set U/Cb component expression
+
+
+        set V/Cr component expression
+
 
         Each of them specifies the expression to use for computing the lookup table for
         the corresponding pixel component values.
 
+
         The exact component associated to each of the c* options depends on the
         format in input.
+
 
         The lut filter requires either YUV or RGB pixel formats in input,
         lutrgb requires RGB pixel formats in input, and lutyuv requires YUV.
 
+
         The expressions can contain the following constants and functions:
 
 
+        - **`w`**
+        - **`h`**
+          - The input width and height.
+        - **`val`**
+          - The input value for the pixel component.
+        - **`clipval`**
+          - The input value, clipped to the
+        minval
+        -
+        maxval
+        range.
+        - **`maxval`**
+          - The maximum value for the pixel component.
+        - **`minval`**
+          - The minimum value for the pixel component.
+        - **`negval`**
+          - The negated value for the pixel component value, clipped to the
+        minval
+        -
+        maxval
+        range; it corresponds to the expression
+        "maxval-clipval+minval".
+        - **`clip(val)`**
+          - The computed value in
+        val
+        , clipped to the
+        minval
+        -
+        maxval
+        range.
+        - **`gammaval(gamma)`**
+          - The computed gamma correction value of the pixel component value,
+        clipped to the
+        minval
+        -
+        maxval
+        range. It corresponds to the
+        expression
+        "pow((clipval-minval)/(maxval-minval)\,
+        gamma
+        )*(maxval-minval)+minval"
+        The input width and height.
+
+
+        The input value for the pixel component.
+
+
+        The input value, clipped to the minval-maxval range.
+
+
+        The maximum value for the pixel component.
+
+
+        The minimum value for the pixel component.
+
+
+        The negated value for the pixel component value, clipped to the
+        minval-maxval range; it corresponds to the expression
+        "maxval-clipval+minval".
+
+
+        The computed value in val, clipped to the
+        minval-maxval range.
+
+
+        The computed gamma correction value of the pixel component value,
+        clipped to the minval-maxval range. It corresponds to the
+        expression
+        "pow((clipval-minval)/(maxval-minval)\,gamma)*(maxval-minval)+minval"
+
+
         All expressions default to "clipval".
+
+
+
 
         Parameters:
         ----------
@@ -8837,13 +18945,42 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.155 maskedclamp
+        ### 11.155 maskedclamp
+
         Clamp the first input stream with the second input and third input stream.
+
 
         Returns the value of first stream to be between second input
         stream - undershoot and third input stream + overshoot.
 
+
         This filter accepts the following options:
+
+
+        - **`undershoot`**
+          - Default value is
+        0
+        .
+        - **`overshoot`**
+          - Default value is
+        0
+        .
+        - **`planes`**
+          - Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+        Default value is 0.
+
+
+        Default value is 0.
+
+
+        Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+
+
+
 
         Parameters:
         ----------
@@ -8883,14 +19020,28 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.156 maskedmax
+        ### 11.156 maskedmax
+
         Merge the second and third input stream into output stream using absolute differences
         between second input stream and first input stream and absolute difference between
         third input stream and first input stream. The picked value will be from second input
         stream if second absolute difference is greater than first one or from third input stream
         otherwise.
 
+
         This filter accepts the following options:
+
+
+        - **`planes`**
+          - Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+        Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+
+
+
 
         Parameters:
         ----------
@@ -8926,9 +19077,11 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.157 maskedmerge
+        ### 11.157 maskedmerge
+
         Merge the first input stream with the second input stream using per pixel
         weights in the third input stream.
+
 
         A value of 0 in the third stream pixel component means that pixel component
         from first stream is returned unchanged, while maximum value (eg. 255 for
@@ -8936,7 +19089,20 @@ class VideoStream(FilterableStream):
         unchanged. Intermediate values define the amount of merging between both
         input stream’s pixel components.
 
+
         This filter accepts the following options:
+
+
+        - **`planes`**
+          - Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+        Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+
+
+
 
         Parameters:
         ----------
@@ -8972,14 +19138,28 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.158 maskedmin
+        ### 11.158 maskedmin
+
         Merge the second and third input stream into output stream using absolute differences
         between second input stream and first input stream and absolute difference between
         third input stream and first input stream. The picked value will be from second input
         stream if second absolute difference is less than first one or from third input stream
         otherwise.
 
+
         This filter accepts the following options:
+
+
+        - **`planes`**
+          - Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+        Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from first stream.
+        By default value 0xf, all planes will be processed.
+
+
+
 
         Parameters:
         ----------
@@ -9016,16 +19196,51 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.159 maskedthreshold
+        ### 11.159 maskedthreshold
+
         Pick pixels comparing absolute difference of two video streams with fixed
         threshold.
+
 
         If absolute difference between pixel component of first and second video
         stream is equal or lower than user supplied threshold than pixel component
         from first video stream is picked, otherwise pixel component from second
         video stream is picked.
 
+
         This filter accepts the following options:
+
+
+        - **`threshold`**
+          - Set threshold used when picking pixels from absolute difference from two input
+        video streams.
+        - **`planes`**
+          - Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from second stream.
+        By default value 0xf, all planes will be processed.
+        - **`mode`**
+          - Set mode of filter operation. Can be
+        abs
+        or
+        diff
+        .
+        Default is
+        abs
+        .
+        Set threshold used when picking pixels from absolute difference from two input
+        video streams.
+
+
+        Set which planes will be processed as bitmap, unprocessed planes will be
+        copied from second stream.
+        By default value 0xf, all planes will be processed.
+
+
+        Set mode of filter operation. Can be abs or diff.
+        Default is abs.
+
+
+
 
         Parameters:
         ----------
@@ -9066,12 +19281,53 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.160 maskfun
+        ### 11.160 maskfun
+
         Create mask from input video.
+
 
         For example it is useful to create motion masks after tblend filter.
 
+
         This filter accepts the following options:
+
+
+        - **`low`**
+          - Set low threshold. Any pixel component lower or exact than this value will be set to 0.
+        - **`high`**
+          - Set high threshold. Any pixel component higher than this value will be set to max value
+        allowed for current pixel format.
+        - **`planes`**
+          - Set planes to filter, by default all available planes are filtered.
+        - **`fill`**
+          - Fill all frame pixels with this value.
+        - **`sum`**
+          - Set max average pixel value for frame. If sum of all pixel components is higher that this
+        average, output frame will be completely filled with value set by
+        fill
+        option.
+        Typically useful for scene changes when used in combination with
+        tblend
+        filter.
+        Set low threshold. Any pixel component lower or exact than this value will be set to 0.
+
+
+        Set high threshold. Any pixel component higher than this value will be set to max value
+        allowed for current pixel format.
+
+
+        Set planes to filter, by default all available planes are filtered.
+
+
+        Fill all frame pixels with this value.
+
+
+        Set max average pixel value for frame. If sum of all pixel components is higher that this
+        average, output frame will be completely filled with value set by fill option.
+        Typically useful for scene changes when used in combination with tblend filter.
+
+
+
 
         Parameters:
         ----------
@@ -9113,13 +19369,108 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.161 mcdeint
+        ### 11.161 mcdeint
+
         Apply motion-compensation deinterlacing.
+
 
         It needs one field per frame as input and must thus be used together
         with yadif=1/3 or equivalent.
 
+
         This filter accepts the following options:
+
+
+        - **`mode`**
+          - Set the deinterlacing mode.
+        It accepts one of the following values:
+        ‘
+        fast
+        ’
+        ‘
+        medium
+        ’
+        ‘
+        slow
+        ’
+        use iterative motion estimation
+        ‘
+        extra_slow
+        ’
+        like ‘
+        slow
+        ’, but use multiple reference frames.
+        Default value is ‘
+        fast
+        ’.
+        - **`parity`**
+          - Set the picture field parity assumed for the input video. It must be
+        one of the following values:
+        ‘
+        0, tff
+        ’
+        assume top field first
+        ‘
+        1, bff
+        ’
+        assume bottom field first
+        Default value is ‘
+        bff
+        ’.
+        - **`qp`**
+          - Set per-block quantization parameter (QP) used by the internal
+        encoder.
+        Higher values should result in a smoother motion vector field but less
+        optimal individual vectors. Default value is 1.
+        Set the deinterlacing mode.
+
+
+        It accepts one of the following values:
+
+
+        - **`‘fast’`**
+        - **`‘medium’`**
+        - **`‘slow’`**
+          - use iterative motion estimation
+        - **`‘extra_slow’`**
+          - like ‘
+        slow
+        ’, but use multiple reference frames.
+        use iterative motion estimation
+
+
+        like ‘slow’, but use multiple reference frames.
+
+
+        Default value is ‘fast’.
+
+
+        Set the picture field parity assumed for the input video. It must be
+        one of the following values:
+
+
+        - **`‘0, tff’`**
+          - assume top field first
+        - **`‘1, bff’`**
+          - assume bottom field first
+        assume top field first
+
+
+        assume bottom field first
+
+
+        Default value is ‘bff’.
+
+
+        Set per-block quantization parameter (QP) used by the internal
+        encoder.
+
+
+        Higher values should result in a smoother motion vector field but less
+        optimal individual vectors. Default value is 1.
+
+
+
 
         Parameters:
         ----------
@@ -9158,10 +19509,61 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.162 median
+        ### 11.162 median
+
         Pick median pixel from certain rectangle defined by radius.
 
+
         This filter accepts the following options:
+
+
+        - **`radius`**
+          - Set horizontal radius size. Default value is
+        1
+        .
+        Allowed range is integer from 1 to 127.
+        - **`planes`**
+          - Set which planes to process. Default is
+        15
+        , which is all available planes.
+        - **`radiusV`**
+          - Set vertical radius size. Default value is
+        0
+        .
+        Allowed range is integer from 0 to 127.
+        If it is 0, value will be picked from horizontal
+        radius
+        option.
+        - **`percentile`**
+          - Set median percentile. Default value is
+        0.5
+        .
+        Default value of
+        0.5
+        will pick always median values, while
+        0
+        will pick
+        minimum values, and
+        1
+        maximum values.
+        Set horizontal radius size. Default value is 1.
+        Allowed range is integer from 1 to 127.
+
+
+        Set which planes to process. Default is 15, which is all available planes.
+
+
+        Set vertical radius size. Default value is 0.
+        Allowed range is integer from 0 to 127.
+        If it is 0, value will be picked from horizontal radius option.
+
+
+        Set median percentile. Default value is 0.5.
+        Default value of 0.5 will pick always median values, while 0 will pick
+        minimum values, and 1 maximum values.
+
+
+
 
         Parameters:
         ----------
@@ -9203,11 +19605,122 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.164 mestimate
+        ### 11.164 mestimate
+
         Estimate and export motion vectors using block matching algorithms.
         Motion vectors are stored in frame side data to be used by other filters.
 
+
         This filter accepts the following options:
+
+
+        - **`method`**
+          - Specify the motion estimation method. Accepts one of the following values:
+        ‘
+        esa
+        ’
+        Exhaustive search algorithm.
+        ‘
+        tss
+        ’
+        Three step search algorithm.
+        ‘
+        tdls
+        ’
+        Two dimensional logarithmic search algorithm.
+        ‘
+        ntss
+        ’
+        New three step search algorithm.
+        ‘
+        fss
+        ’
+        Four step search algorithm.
+        ‘
+        ds
+        ’
+        Diamond search algorithm.
+        ‘
+        hexbs
+        ’
+        Hexagon-based search algorithm.
+        ‘
+        epzs
+        ’
+        Enhanced predictive zonal search algorithm.
+        ‘
+        umh
+        ’
+        Uneven multi-hexagon search algorithm.
+        Default value is ‘
+        esa
+        ’.
+        - **`mb_size`**
+          - Macroblock size. Default
+        16
+        .
+        - **`search_param`**
+          - Search parameter. Default
+        7
+        .
+        Specify the motion estimation method. Accepts one of the following values:
+
+
+        - **`‘esa’`**
+          - Exhaustive search algorithm.
+        - **`‘tss’`**
+          - Three step search algorithm.
+        - **`‘tdls’`**
+          - Two dimensional logarithmic search algorithm.
+        - **`‘ntss’`**
+          - New three step search algorithm.
+        - **`‘fss’`**
+          - Four step search algorithm.
+        - **`‘ds’`**
+          - Diamond search algorithm.
+        - **`‘hexbs’`**
+          - Hexagon-based search algorithm.
+        - **`‘epzs’`**
+          - Enhanced predictive zonal search algorithm.
+        - **`‘umh’`**
+          - Uneven multi-hexagon search algorithm.
+        Exhaustive search algorithm.
+
+
+        Three step search algorithm.
+
+
+        Two dimensional logarithmic search algorithm.
+
+
+        New three step search algorithm.
+
+
+        Four step search algorithm.
+
+
+        Diamond search algorithm.
+
+
+        Hexagon-based search algorithm.
+
+
+        Enhanced predictive zonal search algorithm.
+
+
+        Uneven multi-hexagon search algorithm.
+
+
+        Default value is ‘esa’.
+
+
+        Macroblock size. Default 16.
+
+
+        Search parameter. Default 7.
+
+
+
 
         Parameters:
         ----------
@@ -9251,10 +19764,308 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        18.13 metadata, ametadata
+        ### 18.13 metadata, ametadata
+
         Manipulate frame metadata.
 
+
         This filter accepts the following options:
+
+
+        - **`mode`**
+          - Set mode of operation of the filter.
+        Can be one of the following:
+        ‘
+        select
+        ’
+        If both
+        value
+        and
+        key
+        is set, select frames
+        which have such metadata. If only
+        key
+        is set, select
+        every frame that has such key in metadata.
+        ‘
+        add
+        ’
+        Add new metadata
+        key
+        and
+        value
+        . If key is already available
+        do nothing.
+        ‘
+        modify
+        ’
+        Modify value of already present key.
+        ‘
+        delete
+        ’
+        If
+        value
+        is set, delete only keys that have such value.
+        Otherwise, delete key. If
+        key
+        is not set, delete all metadata values in
+        the frame.
+        ‘
+        print
+        ’
+        Print key and its value if metadata was found. If
+        key
+        is not set print all
+        metadata values available in frame.
+        - **`key`**
+          - Set key used with all modes. Must be set for all modes except
+        print
+        and
+        delete
+        .
+        - **`value`**
+          - Set metadata value which will be used. This option is mandatory for
+        modify
+        and
+        add
+        mode.
+        - **`function`**
+          - Which function to use when comparing metadata value and
+        value
+        .
+        Can be one of following:
+        ‘
+        same_str
+        ’
+        Values are interpreted as strings, returns true if metadata value is same as
+        value
+        .
+        ‘
+        starts_with
+        ’
+        Values are interpreted as strings, returns true if metadata value starts with
+        the
+        value
+        option string.
+        ‘
+        less
+        ’
+        Values are interpreted as floats, returns true if metadata value is less than
+        value
+        .
+        ‘
+        equal
+        ’
+        Values are interpreted as floats, returns true if
+        value
+        is equal with metadata value.
+        ‘
+        greater
+        ’
+        Values are interpreted as floats, returns true if metadata value is greater than
+        value
+        .
+        ‘
+        expr
+        ’
+        Values are interpreted as floats, returns true if expression from option
+        expr
+        evaluates to true.
+        ‘
+        ends_with
+        ’
+        Values are interpreted as strings, returns true if metadata value ends with
+        the
+        value
+        option string.
+        - **`expr`**
+          - Set expression which is used when
+        function
+        is set to
+        expr
+        .
+        The expression is evaluated through the eval API and can contain the following
+        constants:
+        VALUE1, FRAMEVAL
+        Float representation of
+        value
+        from metadata key.
+        VALUE2, USERVAL
+        Float representation of
+        value
+        as supplied by user in
+        value
+        option.
+        - **`file`**
+          - If specified in
+        print
+        mode, output is written to the named file. Instead of
+        plain filename any writable url can be specified. Filename “-” is a shorthand
+        for standard output. If
+        file
+        option is not set, output is written to the log
+        with AV_LOG_INFO loglevel.
+        - **`direct`**
+          - Reduces buffering in print mode when output is written to a URL set using
+        file
+        .
+        Set mode of operation of the filter.
+
+
+        Can be one of the following:
+
+
+        - **`‘select’`**
+          - If both
+        value
+        and
+        key
+        is set, select frames
+        which have such metadata. If only
+        key
+        is set, select
+        every frame that has such key in metadata.
+        - **`‘add’`**
+          - Add new metadata
+        key
+        and
+        value
+        . If key is already available
+        do nothing.
+        - **`‘modify’`**
+          - Modify value of already present key.
+        - **`‘delete’`**
+          - If
+        value
+        is set, delete only keys that have such value.
+        Otherwise, delete key. If
+        key
+        is not set, delete all metadata values in
+        the frame.
+        - **`‘print’`**
+          - Print key and its value if metadata was found. If
+        key
+        is not set print all
+        metadata values available in frame.
+        If both value and key is set, select frames
+        which have such metadata. If only key is set, select
+        every frame that has such key in metadata.
+
+
+        Add new metadata key and value. If key is already available
+        do nothing.
+
+
+        Modify value of already present key.
+
+
+        If value is set, delete only keys that have such value.
+        Otherwise, delete key. If key is not set, delete all metadata values in
+        the frame.
+
+
+        Print key and its value if metadata was found. If key is not set print all
+        metadata values available in frame.
+
+
+        Set key used with all modes. Must be set for all modes except print and delete.
+
+
+        Set metadata value which will be used. This option is mandatory for
+        modify and add mode.
+
+
+        Which function to use when comparing metadata value and value.
+
+
+        Can be one of following:
+
+
+        - **`‘same_str’`**
+          - Values are interpreted as strings, returns true if metadata value is same as
+        value
+        .
+        - **`‘starts_with’`**
+          - Values are interpreted as strings, returns true if metadata value starts with
+        the
+        value
+        option string.
+        - **`‘less’`**
+          - Values are interpreted as floats, returns true if metadata value is less than
+        value
+        .
+        - **`‘equal’`**
+          - Values are interpreted as floats, returns true if
+        value
+        is equal with metadata value.
+        - **`‘greater’`**
+          - Values are interpreted as floats, returns true if metadata value is greater than
+        value
+        .
+        - **`‘expr’`**
+          - Values are interpreted as floats, returns true if expression from option
+        expr
+        evaluates to true.
+        - **`‘ends_with’`**
+          - Values are interpreted as strings, returns true if metadata value ends with
+        the
+        value
+        option string.
+        Values are interpreted as strings, returns true if metadata value is same as value.
+
+
+        Values are interpreted as strings, returns true if metadata value starts with
+        the value option string.
+
+
+        Values are interpreted as floats, returns true if metadata value is less than value.
+
+
+        Values are interpreted as floats, returns true if value is equal with metadata value.
+
+
+        Values are interpreted as floats, returns true if metadata value is greater than value.
+
+
+        Values are interpreted as floats, returns true if expression from option expr
+        evaluates to true.
+
+
+        Values are interpreted as strings, returns true if metadata value ends with
+        the value option string.
+
+
+        Set expression which is used when function is set to expr.
+        The expression is evaluated through the eval API and can contain the following
+        constants:
+
+
+        - **`VALUE1, FRAMEVAL`**
+          - Float representation of
+        value
+        from metadata key.
+        - **`VALUE2, USERVAL`**
+          - Float representation of
+        value
+        as supplied by user in
+        value
+        option.
+        Float representation of value from metadata key.
+
+
+        Float representation of value as supplied by user in value option.
+
+
+        If specified in print mode, output is written to the named file. Instead of
+        plain filename any writable url can be specified. Filename “-” is a shorthand
+        for standard output. If file option is not set, output is written to the log
+        with AV_LOG_INFO loglevel.
+
+
+        Reduces buffering in print mode when output is written to a URL set using file.
+
+
+
 
         Parameters:
         ----------
@@ -9295,18 +20106,32 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.165 midequalizer
+        ### 11.165 midequalizer
+
         Apply Midway Image Equalization effect using two video streams.
+
 
         Midway Image Equalization adjusts a pair of images to have the same
         histogram, while maintaining their dynamics as much as possible. It’s
         useful for e.g. matching exposures from a pair of stereo cameras.
 
+
         This filter has two inputs and one output, which must be of same pixel format, but
         may be of different sizes. The output of filter is first input adjusted with
         midway histogram of both inputs.
 
+
         This filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes to process. Default is
+        15
+        , which is all available planes.
+        Set which planes to process. Default is 15, which is all available planes.
+
+
+
 
         Parameters:
         ----------
@@ -9350,10 +20175,451 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.166 minterpolate
+        ### 11.166 minterpolate
+
         Convert the video to specified frame rate using motion interpolation.
 
+
         This filter accepts the following options:
+
+
+        - **`fps`**
+          - Specify the output frame rate. This can be rational e.g.
+        60000/1001
+        . Frames are dropped if
+        fps
+        is lower than source fps. Default
+        60
+        .
+        - **`mi_mode`**
+          - Motion interpolation mode. Following values are accepted:
+        ‘
+        dup
+        ’
+        Duplicate previous or next frame for interpolating new ones.
+        ‘
+        blend
+        ’
+        Blend source frames. Interpolated frame is mean of previous and next frames.
+        ‘
+        mci
+        ’
+        Motion compensated interpolation. Following options are effective when this mode is selected:
+        ‘
+        mc_mode
+        ’
+        Motion compensation mode. Following values are accepted:
+        ‘
+        obmc
+        ’
+        Overlapped block motion compensation.
+        ‘
+        aobmc
+        ’
+        Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.
+        Default mode is ‘
+        obmc
+        ’.
+        ‘
+        me_mode
+        ’
+        Motion estimation mode. Following values are accepted:
+        ‘
+        bidir
+        ’
+        Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.
+        ‘
+        bilat
+        ’
+        Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.
+        Default mode is ‘
+        bilat
+        ’.
+        ‘
+        me
+        ’
+        The algorithm to be used for motion estimation. Following values are accepted:
+        ‘
+        esa
+        ’
+        Exhaustive search algorithm.
+        ‘
+        tss
+        ’
+        Three step search algorithm.
+        ‘
+        tdls
+        ’
+        Two dimensional logarithmic search algorithm.
+        ‘
+        ntss
+        ’
+        New three step search algorithm.
+        ‘
+        fss
+        ’
+        Four step search algorithm.
+        ‘
+        ds
+        ’
+        Diamond search algorithm.
+        ‘
+        hexbs
+        ’
+        Hexagon-based search algorithm.
+        ‘
+        epzs
+        ’
+        Enhanced predictive zonal search algorithm.
+        ‘
+        umh
+        ’
+        Uneven multi-hexagon search algorithm.
+        Default algorithm is ‘
+        epzs
+        ’.
+        ‘
+        mb_size
+        ’
+        Macroblock size. Default
+        16
+        .
+        ‘
+        search_param
+        ’
+        Motion estimation search parameter. Default
+        32
+        .
+        ‘
+        vsbmc
+        ’
+        Enable variable-size block motion compensation. Motion estimation is applied with smaller block sizes at object boundaries in order to make the them less blur. Default is
+        0
+        (disabled).
+        - **`scd`**
+          - Scene change detection method. Scene change leads motion vectors to be in random direction. Scene change detection replace interpolated frames by duplicate ones. May not be needed for other modes. Following values are accepted:
+        ‘
+        none
+        ’
+        Disable scene change detection.
+        ‘
+        fdiff
+        ’
+        Frame difference. Corresponding pixel values are compared and if it satisfies
+        scd_threshold
+        scene change is detected.
+        Default method is ‘
+        fdiff
+        ’.
+        - **`scd_threshold`**
+          - Scene change detection threshold. Default is
+        10.
+        .
+        Specify the output frame rate. This can be rational e.g. 60000/1001. Frames are dropped if fps is lower than source fps. Default 60.
+
+
+        Motion interpolation mode. Following values are accepted:
+
+
+        - **`‘dup’`**
+          - Duplicate previous or next frame for interpolating new ones.
+        - **`‘blend’`**
+          - Blend source frames. Interpolated frame is mean of previous and next frames.
+        - **`‘mci’`**
+          - Motion compensated interpolation. Following options are effective when this mode is selected:
+        ‘
+        mc_mode
+        ’
+        Motion compensation mode. Following values are accepted:
+        ‘
+        obmc
+        ’
+        Overlapped block motion compensation.
+        ‘
+        aobmc
+        ’
+        Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.
+        Default mode is ‘
+        obmc
+        ’.
+        ‘
+        me_mode
+        ’
+        Motion estimation mode. Following values are accepted:
+        ‘
+        bidir
+        ’
+        Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.
+        ‘
+        bilat
+        ’
+        Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.
+        Default mode is ‘
+        bilat
+        ’.
+        ‘
+        me
+        ’
+        The algorithm to be used for motion estimation. Following values are accepted:
+        ‘
+        esa
+        ’
+        Exhaustive search algorithm.
+        ‘
+        tss
+        ’
+        Three step search algorithm.
+        ‘
+        tdls
+        ’
+        Two dimensional logarithmic search algorithm.
+        ‘
+        ntss
+        ’
+        New three step search algorithm.
+        ‘
+        fss
+        ’
+        Four step search algorithm.
+        ‘
+        ds
+        ’
+        Diamond search algorithm.
+        ‘
+        hexbs
+        ’
+        Hexagon-based search algorithm.
+        ‘
+        epzs
+        ’
+        Enhanced predictive zonal search algorithm.
+        ‘
+        umh
+        ’
+        Uneven multi-hexagon search algorithm.
+        Default algorithm is ‘
+        epzs
+        ’.
+        ‘
+        mb_size
+        ’
+        Macroblock size. Default
+        16
+        .
+        ‘
+        search_param
+        ’
+        Motion estimation search parameter. Default
+        32
+        .
+        ‘
+        vsbmc
+        ’
+        Enable variable-size block motion compensation. Motion estimation is applied with smaller block sizes at object boundaries in order to make the them less blur. Default is
+        0
+        (disabled).
+        Duplicate previous or next frame for interpolating new ones.
+
+
+        Blend source frames. Interpolated frame is mean of previous and next frames.
+
+
+        Motion compensated interpolation. Following options are effective when this mode is selected:
+
+
+        - **`‘mc_mode’`**
+          - Motion compensation mode. Following values are accepted:
+        ‘
+        obmc
+        ’
+        Overlapped block motion compensation.
+        ‘
+        aobmc
+        ’
+        Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.
+        Default mode is ‘
+        obmc
+        ’.
+        - **`‘me_mode’`**
+          - Motion estimation mode. Following values are accepted:
+        ‘
+        bidir
+        ’
+        Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.
+        ‘
+        bilat
+        ’
+        Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.
+        Default mode is ‘
+        bilat
+        ’.
+        - **`‘me’`**
+          - The algorithm to be used for motion estimation. Following values are accepted:
+        ‘
+        esa
+        ’
+        Exhaustive search algorithm.
+        ‘
+        tss
+        ’
+        Three step search algorithm.
+        ‘
+        tdls
+        ’
+        Two dimensional logarithmic search algorithm.
+        ‘
+        ntss
+        ’
+        New three step search algorithm.
+        ‘
+        fss
+        ’
+        Four step search algorithm.
+        ‘
+        ds
+        ’
+        Diamond search algorithm.
+        ‘
+        hexbs
+        ’
+        Hexagon-based search algorithm.
+        ‘
+        epzs
+        ’
+        Enhanced predictive zonal search algorithm.
+        ‘
+        umh
+        ’
+        Uneven multi-hexagon search algorithm.
+        Default algorithm is ‘
+        epzs
+        ’.
+        - **`‘mb_size’`**
+          - Macroblock size. Default
+        16
+        .
+        - **`‘search_param’`**
+          - Motion estimation search parameter. Default
+        32
+        .
+        - **`‘vsbmc’`**
+          - Enable variable-size block motion compensation. Motion estimation is applied with smaller block sizes at object boundaries in order to make the them less blur. Default is
+        0
+        (disabled).
+        Motion compensation mode. Following values are accepted:
+
+
+        - **`‘obmc’`**
+          - Overlapped block motion compensation.
+        - **`‘aobmc’`**
+          - Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.
+        Overlapped block motion compensation.
+
+
+        Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.
+
+
+        Default mode is ‘obmc’.
+
+
+        Motion estimation mode. Following values are accepted:
+
+
+        - **`‘bidir’`**
+          - Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.
+        - **`‘bilat’`**
+          - Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.
+        Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.
+
+
+        Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.
+
+
+        Default mode is ‘bilat’.
+
+
+        The algorithm to be used for motion estimation. Following values are accepted:
+
+
+        - **`‘esa’`**
+          - Exhaustive search algorithm.
+        - **`‘tss’`**
+          - Three step search algorithm.
+        - **`‘tdls’`**
+          - Two dimensional logarithmic search algorithm.
+        - **`‘ntss’`**
+          - New three step search algorithm.
+        - **`‘fss’`**
+          - Four step search algorithm.
+        - **`‘ds’`**
+          - Diamond search algorithm.
+        - **`‘hexbs’`**
+          - Hexagon-based search algorithm.
+        - **`‘epzs’`**
+          - Enhanced predictive zonal search algorithm.
+        - **`‘umh’`**
+          - Uneven multi-hexagon search algorithm.
+        Exhaustive search algorithm.
+
+
+        Three step search algorithm.
+
+
+        Two dimensional logarithmic search algorithm.
+
+
+        New three step search algorithm.
+
+
+        Four step search algorithm.
+
+
+        Diamond search algorithm.
+
+
+        Hexagon-based search algorithm.
+
+
+        Enhanced predictive zonal search algorithm.
+
+
+        Uneven multi-hexagon search algorithm.
+
+
+        Default algorithm is ‘epzs’.
+
+
+        Macroblock size. Default 16.
+
+
+        Motion estimation search parameter. Default 32.
+
+
+        Enable variable-size block motion compensation. Motion estimation is applied with smaller block sizes at object boundaries in order to make the them less blur. Default is 0 (disabled).
+
+
+        Scene change detection method. Scene change leads motion vectors to be in random direction. Scene change detection replace interpolated frames by duplicate ones. May not be needed for other modes. Following values are accepted:
+
+
+        - **`‘none’`**
+          - Disable scene change detection.
+        - **`‘fdiff’`**
+          - Frame difference. Corresponding pixel values are compared and if it satisfies
+        scd_threshold
+        scene change is detected.
+        Disable scene change detection.
+
+
+        Frame difference. Corresponding pixel values are compared and if it satisfies scd_threshold scene change is detected.
+
+
+        Default method is ‘fdiff’.
+
+
+        Scene change detection threshold. Default is 10..
+
+
+
 
         Parameters:
         ----------
@@ -9406,10 +20672,43 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.168 monochrome
+        ### 11.168 monochrome
+
         Convert video to gray using custom color filter.
 
+
         A description of the accepted options follows.
+
+
+        - **`cb`**
+          - Set the chroma blue spot. Allowed range is from -1 to 1.
+        Default value is 0.
+        - **`cr`**
+          - Set the chroma red spot. Allowed range is from -1 to 1.
+        Default value is 0.
+        - **`size`**
+          - Set the color filter size. Allowed range is from .1 to 10.
+        Default value is 1.
+        - **`high`**
+          - Set the highlights strength. Allowed range is from 0 to 1.
+        Default value is 0.
+        Set the chroma blue spot. Allowed range is from -1 to 1.
+        Default value is 0.
+
+
+        Set the chroma red spot. Allowed range is from -1 to 1.
+        Default value is 0.
+
+
+        Set the color filter size. Allowed range is from .1 to 10.
+        Default value is 1.
+
+
+        Set the highlights strength. Allowed range is from 0 to 1.
+        Default value is 0.
+
+
+
 
         Parameters:
         ----------
@@ -9452,18 +20751,81 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.169 morpho
+        ### 11.169 morpho
+
         This filter allows to apply main morphological grayscale transforms,
         erode and dilate with arbitrary structures set in second input stream.
+
 
         Unlike naive implementation and much slower performance in erosion
         and dilation filters, when speed is critical morpho filter
         should be used instead.
 
+
         A description of accepted options follows,
 
 
+        - **`mode`**
+          - Set morphological transform to apply, can be:
+        ‘
+        erode
+        ’
+        ‘
+        dilate
+        ’
+        ‘
+        open
+        ’
+        ‘
+        close
+        ’
+        ‘
+        gradient
+        ’
+        ‘
+        tophat
+        ’
+        ‘
+        blackhat
+        ’
+        Default is
+        erode
+        .
+        - **`planes`**
+          - Set planes to filter, by default all planes except alpha are filtered.
+        - **`structure`**
+          - Set which structure video frames will be processed from second input stream,
+        can be
+        first
+        or
+        all
+        . Default is
+        all
+        .
+        Set morphological transform to apply, can be:
+
+
+        - **`‘erode’`**
+        - **`‘dilate’`**
+        - **`‘open’`**
+        - **`‘close’`**
+        - **`‘gradient’`**
+        - **`‘tophat’`**
+        - **`‘blackhat’`**
+        Default is erode.
+
+
+        Set planes to filter, by default all planes except alpha are filtered.
+
+
+        Set which structure video frames will be processed from second input stream,
+        can be first or all. Default is all.
+
+
         The morpho filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -9504,15 +20866,96 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.170 mpdecimate
+        ### 11.170 mpdecimate
+
         Drop frames that do not differ greatly from the previous frame in
         order to reduce frame rate.
+
 
         The main use of this filter is for very-low-bitrate encoding
         (e.g. streaming over dialup modem), but it could in theory be used for
         fixing movies that were inverse-telecined incorrectly.
 
+
         A description of the accepted options follows.
+
+
+        - **`max`**
+          - Set the maximum number of consecutive frames which can be dropped (if
+        positive), or the minimum interval between dropped frames (if
+        negative). If the value is 0, the frame is dropped disregarding the
+        number of previous sequentially dropped frames.
+        Default value is 0.
+        - **`keep`**
+          - Set the maximum number of consecutive similar frames to ignore before to start dropping them.
+        If the value is 0, the frame is dropped disregarding the
+        number of previous sequentially similar frames.
+        Default value is 0.
+        - **`hi`**
+        - **`lo`**
+        - **`frac`**
+          - Set the dropping threshold values.
+        Values for
+        hi
+        and
+        lo
+        are for 8x8 pixel blocks and
+        represent actual pixel value differences, so a threshold of 64
+        corresponds to 1 unit of difference for each pixel, or the same spread
+        out differently over the block.
+        A frame is a candidate for dropping if no 8x8 blocks differ by more
+        than a threshold of
+        hi
+        , and if no more than
+        frac
+        blocks (1
+        meaning the whole image) differ by more than a threshold of
+        lo
+        .
+        Default value for
+        hi
+        is 64*12, default value for
+        lo
+        is
+        64*5, and default value for
+        frac
+        is 0.33.
+        Set the maximum number of consecutive frames which can be dropped (if
+        positive), or the minimum interval between dropped frames (if
+        negative). If the value is 0, the frame is dropped disregarding the
+        number of previous sequentially dropped frames.
+
+
+        Default value is 0.
+
+
+        Set the maximum number of consecutive similar frames to ignore before to start dropping them.
+        If the value is 0, the frame is dropped disregarding the
+        number of previous sequentially similar frames.
+
+
+        Default value is 0.
+
+
+        Set the dropping threshold values.
+
+
+        Values for hi and lo are for 8x8 pixel blocks and
+        represent actual pixel value differences, so a threshold of 64
+        corresponds to 1 unit of difference for each pixel, or the same spread
+        out differently over the block.
+
+
+        A frame is a candidate for dropping if no 8x8 blocks differ by more
+        than a threshold of hi, and if no more than frac blocks (1
+        meaning the whole image) differ by more than a threshold of lo.
+
+
+        Default value for hi is 64*12, default value for lo is
+        64*5, and default value for frac is 0.33.
+
+
+
 
         Parameters:
         ----------
@@ -9547,27 +20990,34 @@ class VideoStream(FilterableStream):
     def msad(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
 
-        11.171 msad
+        ### 11.171 msad
+
         Obtain the MSAD (Mean Sum of Absolute Differences) between two input videos.
 
+
         This filter takes two input videos.
+
 
         Both input videos must have the same resolution and pixel format for
         this filter to work correctly. Also it assumes that both inputs
         have the same number of frames, which are compared one by one.
 
+
         The obtained per component, average, min and max MSAD is printed through
         the logging system.
 
+
         The filter stores the calculated MSAD of each frame in frame metadata.
 
+
         This filter also supports the framesync options.
+
 
         In the below example the input file main.mpg being processed is compared
         with the reference file ref.mpg.
 
 
-        ffmpeg -i main.mpg -i ref.mpg -lavfi msad -f null -
+
 
         Parameters:
         ----------
@@ -9599,10 +21049,48 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.172 multiply
+        ### 11.172 multiply
+
         Multiply first video stream pixels values with second video stream pixels values.
 
+
         The filter accepts the following options:
+
+
+        - **`scale`**
+          - Set the scale applied to second video stream. By default is
+        1
+        .
+        Allowed range is from
+        0
+        to
+        9
+        .
+        - **`offset`**
+          - Set the offset applied to second video stream. By default is
+        0.5
+        .
+        Allowed range is from
+        -1
+        to
+        1
+        .
+        - **`planes`**
+          - Specify planes from input video stream that will be processed.
+        By default all planes are processed.
+        Set the scale applied to second video stream. By default is 1.
+        Allowed range is from 0 to 9.
+
+
+        Set the offset applied to second video stream. By default is 0.5.
+        Allowed range is from -1 to 1.
+
+
+        Specify planes from input video stream that will be processed.
+        By default all planes are processed.
+
+
+
 
         Parameters:
         ----------
@@ -9640,10 +21128,57 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.173 negate
+        ### 11.173 negate
+
         Negate (invert) the input video.
 
+
         It accepts the following option:
+
+
+        - **`components`**
+          - Set components to negate.
+        Available values for components are:
+        ‘
+        y
+        ’
+        ‘
+        u
+        ’
+        ‘
+        v
+        ’
+        ‘
+        a
+        ’
+        ‘
+        r
+        ’
+        ‘
+        g
+        ’
+        ‘
+        b
+        ’
+        - **`negate_alpha`**
+          - With value 1, it negates the alpha component, if present. Default value is 0.
+        Set components to negate.
+
+
+        Available values for components are:
+
+
+        - **`‘y’`**
+        - **`‘u’`**
+        - **`‘v’`**
+        - **`‘a’`**
+        - **`‘r’`**
+        - **`‘g’`**
+        - **`‘b’`**
+        With value 1, it negates the alpha component, if present. Default value is 0.
+
+
+
 
         Parameters:
         ----------
@@ -9681,18 +21216,66 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.174 nlmeans
+        ### 11.174 nlmeans
+
         Denoise frames using Non-Local Means algorithm.
+
 
         Each pixel is adjusted by looking for other pixels with similar contexts. This
         context similarity is defined by comparing their surrounding patches of size
         pxp. Patches are searched in an area of rxr
         around the pixel.
 
+
         Note that the research area defines centers for patches, which means some
         patches will be made of pixels outside that research area.
 
+
         The filter accepts the following options.
+
+
+        - **`s`**
+          - Set denoising strength. Default is 1.0. Must be in range [1.0, 30.0].
+        - **`p`**
+          - Set patch size. Default is 7. Must be odd number in range [0, 99].
+        - **`pc`**
+          - Same as
+        p
+        but for chroma planes.
+        The default value is
+        0
+        and means automatic.
+        - **`r`**
+          - Set research size. Default is 15. Must be odd number in range [0, 99].
+        - **`rc`**
+          - Same as
+        r
+        but for chroma planes.
+        The default value is
+        0
+        and means automatic.
+        Set denoising strength. Default is 1.0. Must be in range [1.0, 30.0].
+
+
+        Set patch size. Default is 7. Must be odd number in range [0, 99].
+
+
+        Same as p but for chroma planes.
+
+
+        The default value is 0 and means automatic.
+
+
+        Set research size. Default is 15. Must be odd number in range [0, 99].
+
+
+        Same as r but for chroma planes.
+
+
+        The default value is 0 and means automatic.
+
+
+
 
         Parameters:
         ----------
@@ -9736,8 +21319,12 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.8 nlmeans_opencl
+        ### 12.8 nlmeans_opencl
+
         Non-local Means denoise filter through OpenCL, this filter accepts same options as nlmeans.
+
+
+
 
         Parameters:
         ----------
@@ -9788,13 +21375,72 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.10 nlmeans_vulkan
+        ### 14.10 nlmeans_vulkan
+
         Denoise frames using Non-Local Means algorithm, implemented on the GPU using
         Vulkan.
         Supports more pixel formats than nlmeans or nlmeans_opencl, including
         alpha channel support.
 
+
         The filter accepts the following options.
+
+
+        - **`s`**
+          - Set denoising strength for all components. Default is 1.0. Must be in range [1.0, 100.0].
+        - **`p`**
+          - Set patch size for all planes. Default is 7. Must be odd number in range [0, 99].
+        - **`r`**
+          - Set research size. Default is 15. Must be odd number in range [0, 99].
+        - **`t`**
+          - Set parallelism. Default is 36. Must be a number in the range [1, 168].
+        Larger values may speed up processing, at the cost of more VRAM.
+        Lower values will slow it down, reducing VRAM usage.
+        Only supported on GPUs with atomic float operations (RDNA3+, Ampere+).
+        - **`s0`**
+        - **`s1`**
+        - **`s2`**
+        - **`s3`**
+          - Set denoising strength for a specific component. Default is
+        1
+        , equal to
+        s
+        .
+        Must be odd number in range [1, 100].
+        - **`p0`**
+        - **`p1`**
+        - **`p2`**
+        - **`p3`**
+          - Set patch size for a specific component. Default is
+        7
+        , equal to
+        p
+        .
+        Must be odd number in range [0, 99].
+        Set denoising strength for all components. Default is 1.0. Must be in range [1.0, 100.0].
+
+
+        Set patch size for all planes. Default is 7. Must be odd number in range [0, 99].
+
+
+        Set research size. Default is 15. Must be odd number in range [0, 99].
+
+
+        Set parallelism. Default is 36. Must be a number in the range [1, 168].
+        Larger values may speed up processing, at the cost of more VRAM.
+        Lower values will slow it down, reducing VRAM usage.
+        Only supported on GPUs with atomic float operations (RDNA3+, Ampere+).
+
+
+        Set denoising strength for a specific component. Default is 1, equal to s.
+        Must be odd number in range [1, 100].
+
+
+        Set patch size for a specific component. Default is 7, equal to p.
+        Must be odd number in range [0, 99].
+
+
+
 
         Parameters:
         ----------
@@ -9858,10 +21504,261 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.175 nnedi
+        ### 11.175 nnedi
+
         Deinterlace video using neural network edge directed interpolation.
 
+
         This filter accepts the following options:
+
+
+        - **`weights`**
+          - Mandatory option, without binary file filter can not work.
+        Currently file can be found here:
+        https://github.com/dubhater/vapoursynth-nnedi3/blob/master/src/nnedi3_weights.bin
+        - **`deint`**
+          - Set which frames to deinterlace, by default it is
+        all
+        .
+        Can be
+        all
+        or
+        interlaced
+        .
+        - **`field`**
+          - Set mode of operation.
+        Can be one of the following:
+        ‘
+        af
+        ’
+        Use frame flags, both fields.
+        ‘
+        a
+        ’
+        Use frame flags, single field.
+        ‘
+        t
+        ’
+        Use top field only.
+        ‘
+        b
+        ’
+        Use bottom field only.
+        ‘
+        tf
+        ’
+        Use both fields, top first.
+        ‘
+        bf
+        ’
+        Use both fields, bottom first.
+        - **`planes`**
+          - Set which planes to process, by default filter process all frames.
+        - **`nsize`**
+          - Set size of local neighborhood around each pixel, used by the predictor neural
+        network.
+        Can be one of the following:
+        ‘
+        s8x6
+        ’
+        ‘
+        s16x6
+        ’
+        ‘
+        s32x6
+        ’
+        ‘
+        s48x6
+        ’
+        ‘
+        s8x4
+        ’
+        ‘
+        s16x4
+        ’
+        ‘
+        s32x4
+        ’
+        - **`nns`**
+          - Set the number of neurons in predictor neural network.
+        Can be one of the following:
+        ‘
+        n16
+        ’
+        ‘
+        n32
+        ’
+        ‘
+        n64
+        ’
+        ‘
+        n128
+        ’
+        ‘
+        n256
+        ’
+        - **`qual`**
+          - Controls the number of different neural network predictions that are blended
+        together to compute the final output value. Can be
+        fast
+        , default or
+        slow
+        .
+        - **`etype`**
+          - Set which set of weights to use in the predictor.
+        Can be one of the following:
+        ‘
+        a, abs
+        ’
+        weights trained to minimize absolute error
+        ‘
+        s, mse
+        ’
+        weights trained to minimize squared error
+        - **`pscrn`**
+          - Controls whether or not the prescreener neural network is used to decide
+        which pixels should be processed by the predictor neural network and which
+        can be handled by simple cubic interpolation.
+        The prescreener is trained to know whether cubic interpolation will be
+        sufficient for a pixel or whether it should be predicted by the predictor nn.
+        The computational complexity of the prescreener nn is much less than that of
+        the predictor nn. Since most pixels can be handled by cubic interpolation,
+        using the prescreener generally results in much faster processing.
+        The prescreener is pretty accurate, so the difference between using it and not
+        using it is almost always unnoticeable.
+        Can be one of the following:
+        ‘
+        none
+        ’
+        ‘
+        original
+        ’
+        ‘
+        new
+        ’
+        ‘
+        new2
+        ’
+        ‘
+        new3
+        ’
+        Default is
+        new
+        .
+        Mandatory option, without binary file filter can not work.
+        Currently file can be found here:
+        https://github.com/dubhater/vapoursynth-nnedi3/blob/master/src/nnedi3_weights.bin
+
+
+        Set which frames to deinterlace, by default it is all.
+        Can be all or interlaced.
+
+
+        Set mode of operation.
+
+
+        Can be one of the following:
+
+
+        - **`‘af’`**
+          - Use frame flags, both fields.
+        - **`‘a’`**
+          - Use frame flags, single field.
+        - **`‘t’`**
+          - Use top field only.
+        - **`‘b’`**
+          - Use bottom field only.
+        - **`‘tf’`**
+          - Use both fields, top first.
+        - **`‘bf’`**
+          - Use both fields, bottom first.
+        Use frame flags, both fields.
+
+
+        Use frame flags, single field.
+
+
+        Use top field only.
+
+
+        Use bottom field only.
+
+
+        Use both fields, top first.
+
+
+        Use both fields, bottom first.
+
+
+        Set which planes to process, by default filter process all frames.
+
+
+        Set size of local neighborhood around each pixel, used by the predictor neural
+        network.
+
+
+        Can be one of the following:
+
+
+        - **`‘s8x6’`**
+        - **`‘s16x6’`**
+        - **`‘s32x6’`**
+        - **`‘s48x6’`**
+        - **`‘s8x4’`**
+        - **`‘s16x4’`**
+        - **`‘s32x4’`**
+        Set the number of neurons in predictor neural network.
+        Can be one of the following:
+
+
+        - **`‘n16’`**
+        - **`‘n32’`**
+        - **`‘n64’`**
+        - **`‘n128’`**
+        - **`‘n256’`**
+        Controls the number of different neural network predictions that are blended
+        together to compute the final output value. Can be fast, default or
+        slow.
+
+
+        Set which set of weights to use in the predictor.
+        Can be one of the following:
+
+
+        - **`‘a, abs’`**
+          - weights trained to minimize absolute error
+        - **`‘s, mse’`**
+          - weights trained to minimize squared error
+        weights trained to minimize absolute error
+
+
+        weights trained to minimize squared error
+
+
+        Controls whether or not the prescreener neural network is used to decide
+        which pixels should be processed by the predictor neural network and which
+        can be handled by simple cubic interpolation.
+        The prescreener is trained to know whether cubic interpolation will be
+        sufficient for a pixel or whether it should be predicted by the predictor nn.
+        The computational complexity of the prescreener nn is much less than that of
+        the predictor nn. Since most pixels can be handled by cubic interpolation,
+        using the prescreener generally results in much faster processing.
+        The prescreener is pretty accurate, so the difference between using it and not
+        using it is almost always unnoticeable.
+
+
+        Can be one of the following:
+
+
+        - **`‘none’`**
+        - **`‘original’`**
+        - **`‘new’`**
+        - **`‘new2’`**
+        - **`‘new3’`**
+        Default is new.
+
+
+
 
         Parameters:
         ----------
@@ -9904,11 +21801,23 @@ class VideoStream(FilterableStream):
     def noformat(self, *, pix_fmts: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.176 noformat
+        ### 11.176 noformat
+
         Force libavfilter not to use any of the specified pixel formats for the
         input to the next filter.
 
+
         It accepts the following parameters:
+
+
+        - **`pix_fmts`**
+          - A ’|’-separated list of pixel format names, such as
+        pix_fmts=yuv420p|monow|rgb24".
+        A ’|’-separated list of pixel format names, such as
+        pix_fmts=yuv420p|monow|rgb24".
+
+
+
 
         Parameters:
         ----------
@@ -9954,10 +21863,93 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.177 noise
+        ### 11.177 noise
+
         Add noise on video input frame.
 
+
         The filter accepts the following options:
+
+
+        - **`all_seed`**
+        - **`c0_seed`**
+        - **`c1_seed`**
+        - **`c2_seed`**
+        - **`c3_seed`**
+          - Set noise seed for specific pixel component or all pixel components in case
+        of
+        all_seed
+        . Default value is
+        123457
+        .
+        - **`all_strength, alls`**
+        - **`c0_strength, c0s`**
+        - **`c1_strength, c1s`**
+        - **`c2_strength, c2s`**
+        - **`c3_strength, c3s`**
+          - Set noise strength for specific pixel component or all pixel components in case
+        all_strength
+        . Default value is
+        0
+        . Allowed range is [0, 100].
+        - **`all_flags, allf`**
+        - **`c0_flags, c0f`**
+        - **`c1_flags, c1f`**
+        - **`c2_flags, c2f`**
+        - **`c3_flags, c3f`**
+          - Set pixel component flags or set flags for all components if
+        all_flags
+        .
+        Available values for component flags are:
+        ‘
+        a
+        ’
+        averaged temporal noise (smoother)
+        ‘
+        p
+        ’
+        mix random noise with a (semi)regular pattern
+        ‘
+        t
+        ’
+        temporal noise (noise pattern changes between frames)
+        ‘
+        u
+        ’
+        uniform noise (gaussian otherwise)
+        Set noise seed for specific pixel component or all pixel components in case
+        of all_seed. Default value is 123457.
+
+
+        Set noise strength for specific pixel component or all pixel components in case
+        all_strength. Default value is 0. Allowed range is [0, 100].
+
+
+        Set pixel component flags or set flags for all components if all_flags.
+        Available values for component flags are:
+
+
+        - **`‘a’`**
+          - averaged temporal noise (smoother)
+        - **`‘p’`**
+          - mix random noise with a (semi)regular pattern
+        - **`‘t’`**
+          - temporal noise (noise pattern changes between frames)
+        - **`‘u’`**
+          - uniform noise (gaussian otherwise)
+        averaged temporal noise (smoother)
+
+
+        mix random noise with a (semi)regular pattern
+
+
+        temporal noise (noise pattern changes between frames)
+
+
+        uniform noise (gaussian otherwise)
+
+
+
 
         Parameters:
         ----------
@@ -10021,13 +22013,16 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.178 normalize
+        ### 11.178 normalize
+
         Normalize RGB video (aka histogram stretching, contrast stretching).
         See: https://en.wikipedia.org/wiki/Normalization_(image_processing)
+
 
         For each channel of each frame, the filter computes the input range and maps
         it linearly to the user-specified output range. The output range defaults
         to the full dynamic range from pure black to pure white.
+
 
         Temporal smoothing can be used on the input range to reduce flickering (rapid
         changes in brightness) caused when small dark or bright objects enter or leave
@@ -10035,13 +22030,72 @@ class VideoStream(FilterableStream):
         video camera, and, like a video camera, it may cause a period of over- or
         under-exposure of the video.
 
+
         The R,G,B channels can be normalized independently, which may cause some
         color shifting, or linked together as a single channel, which prevents
         color shifting. Linked normalization preserves hue. Independent normalization
         does not, so it can be used to remove some color casts. Independent and linked
         normalization can be combined in any ratio.
 
+
         The normalize filter accepts the following options:
+
+
+        - **`blackpt`**
+        - **`whitept`**
+          - Colors which define the output range. The minimum input value is mapped to
+        the
+        blackpt
+        . The maximum input value is mapped to the
+        whitept
+        .
+        The defaults are black and white respectively. Specifying white for
+        blackpt
+        and black for
+        whitept
+        will give color-inverted,
+        normalized video. Shades of grey can be used to reduce the dynamic range
+        (contrast). Specifying saturated colors here can create some interesting
+        effects.
+        - **`smoothing`**
+          - The number of previous frames to use for temporal smoothing. The input range
+        of each channel is smoothed using a rolling average over the current frame
+        and the
+        smoothing
+        previous frames. The default is 0 (no temporal
+        smoothing).
+        - **`independence`**
+          - Controls the ratio of independent (color shifting) channel normalization to
+        linked (color preserving) normalization. 0.0 is fully linked, 1.0 is fully
+        independent. Defaults to 1.0 (fully independent).
+        - **`strength`**
+          - Overall strength of the filter. 1.0 is full strength. 0.0 is a rather
+        expensive no-op. Defaults to 1.0 (full strength).
+        Colors which define the output range. The minimum input value is mapped to
+        the blackpt. The maximum input value is mapped to the whitept.
+        The defaults are black and white respectively. Specifying white for
+        blackpt and black for whitept will give color-inverted,
+        normalized video. Shades of grey can be used to reduce the dynamic range
+        (contrast). Specifying saturated colors here can create some interesting
+        effects.
+
+
+        The number of previous frames to use for temporal smoothing. The input range
+        of each channel is smoothed using a rolling average over the current frame
+        and the smoothing previous frames. The default is 0 (no temporal
+        smoothing).
+
+
+        Controls the ratio of independent (color shifting) channel normalization to
+        linked (color preserving) normalization. 0.0 is fully linked, 1.0 is fully
+        independent. Defaults to 1.0 (fully independent).
+
+
+        Overall strength of the filter. 1.0 is full strength. 0.0 is a rather
+        expensive no-op. Defaults to 1.0 (full strength).
+
+
+
 
         Parameters:
         ----------
@@ -10076,8 +22130,12 @@ class VideoStream(FilterableStream):
     def null(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.179 null
+        ### 11.179 null
+
         Pass the video source unchanged to the output.
+
+
+
 
         Parameters:
         ----------
@@ -10111,18 +22169,46 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.180 ocr
+        ### 11.180 ocr
+
         Optical Character Recognition
+
 
         This filter uses Tesseract for optical character recognition. To enable
         compilation of this filter, you need to configure FFmpeg with
         --enable-libtesseract.
 
+
         It accepts the following options:
+
+
+        - **`datapath`**
+          - Set datapath to tesseract data. Default is to use whatever was
+        set at installation.
+        - **`language`**
+          - Set language, default is "eng".
+        - **`whitelist`**
+          - Set character whitelist.
+        - **`blacklist`**
+          - Set character blacklist.
+        Set datapath to tesseract data. Default is to use whatever was
+        set at installation.
+
+
+        Set language, default is "eng".
+
+
+        Set character whitelist.
+
+
+        Set character blacklist.
 
 
         The filter exports recognized text as the frame metadata lavfi.ocr.text.
         The filter exports confidence of recognized words as the frame metadata lavfi.ocr.confidence.
+
+
+
 
         Parameters:
         ----------
@@ -10155,20 +22241,39 @@ class VideoStream(FilterableStream):
     def ocv(self, *, filter_name: str, filter_params: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.181 ocv
+        ### 11.181 ocv
+
         Apply a video transform using libopencv.
+
 
         To enable this filter, install the libopencv library and headers and
         configure FFmpeg with --enable-libopencv.
 
+
         It accepts the following parameters:
+
+
+        - **`filter_name`**
+          - The name of the libopencv filter to apply.
+        - **`filter_params`**
+          - The parameters to pass to the libopencv filter. If not specified, the default
+        values are assumed.
+        The name of the libopencv filter to apply.
+
+
+        The parameters to pass to the libopencv filter. If not specified, the default
+        values are assumed.
 
 
         Refer to the official libopencv documentation for more precise
         information:
         http://docs.opencv.org/master/modules/imgproc/doc/filtering.html
 
+
         Several libopencv filters are supported; see the following subsections.
+
+
+
 
         Parameters:
         ----------
@@ -10214,12 +22319,83 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.182 oscilloscope
+        ### 11.182 oscilloscope
+
         2D Video Oscilloscope.
+
 
         Useful to measure spatial impulse, step responses, chroma delays, etc.
 
+
         It accepts the following parameters:
+
+
+        - **`x`**
+          - Set scope center x position.
+        - **`y`**
+          - Set scope center y position.
+        - **`s`**
+          - Set scope size, relative to frame diagonal.
+        - **`t`**
+          - Set scope tilt/rotation.
+        - **`o`**
+          - Set trace opacity.
+        - **`tx`**
+          - Set trace center x position.
+        - **`ty`**
+          - Set trace center y position.
+        - **`tw`**
+          - Set trace width, relative to width of frame.
+        - **`th`**
+          - Set trace height, relative to height of frame.
+        - **`c`**
+          - Set which components to trace. By default it traces first three components.
+        - **`g`**
+          - Draw trace grid. By default is enabled.
+        - **`st`**
+          - Draw some statistics. By default is enabled.
+        - **`sc`**
+          - Draw scope. By default is enabled.
+        Set scope center x position.
+
+
+        Set scope center y position.
+
+
+        Set scope size, relative to frame diagonal.
+
+
+        Set scope tilt/rotation.
+
+
+        Set trace opacity.
+
+
+        Set trace center x position.
+
+
+        Set trace center y position.
+
+
+        Set trace width, relative to width of frame.
+
+
+        Set trace height, relative to height of frame.
+
+
+        Set which components to trace. By default it traces first three components.
+
+
+        Draw trace grid. By default is enabled.
+
+
+        Draw some statistics. By default is enabled.
+
+
+        Draw scope. By default is enabled.
+
+
+
 
         Parameters:
         ----------
@@ -10283,26 +22459,267 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.183 overlay
+        ### 11.183 overlay
+
         Overlay one video on top of another.
+
 
         It takes two inputs and has one output. The first input is the "main"
         video on which the second input is overlaid.
 
+
         It accepts the following parameters:
 
+
         A description of the accepted options follows.
+
+
+        - **`x`**
+        - **`y`**
+          - Set the expression for the x and y coordinates of the overlaid video
+        on the main video. Default value is "0" for both expressions. In case
+        the expression is invalid, it is set to a huge value (meaning that the
+        overlay will not be displayed within the output visible area).
+        - **`eof_action`**
+          - See
+        framesync
+        .
+        - **`eval`**
+          - Set when the expressions for
+        x
+        , and
+        y
+        are evaluated.
+        It accepts the following values:
+        ‘
+        init
+        ’
+        only evaluate expressions once during the filter initialization or
+        when a command is processed
+        ‘
+        frame
+        ’
+        evaluate expressions for each incoming frame
+        Default value is ‘
+        frame
+        ’.
+        - **`shortest`**
+          - See
+        framesync
+        .
+        - **`format`**
+          - Set the format for the output video.
+        It accepts the following values:
+        ‘
+        yuv420
+        ’
+        force YUV 4:2:0 8-bit planar output
+        ‘
+        yuv420p10
+        ’
+        force YUV 4:2:0 10-bit planar output
+        ‘
+        yuv422
+        ’
+        force YUV 4:2:2 8-bit planar output
+        ‘
+        yuv422p10
+        ’
+        force YUV 4:2:2 10-bit planar output
+        ‘
+        yuv444
+        ’
+        force YUV 4:4:4 8-bit planar output
+        ‘
+        yuv444p10
+        ’
+        force YUV 4:4:4 10-bit planar output
+        ‘
+        rgb
+        ’
+        force RGB 8-bit packed output
+        ‘
+        gbrp
+        ’
+        force RGB 8-bit planar output
+        ‘
+        auto
+        ’
+        automatically pick format
+        Default value is ‘
+        yuv420
+        ’.
+        - **`repeatlast`**
+          - See
+        framesync
+        .
+        - **`alpha`**
+          - Set format of alpha of the overlaid video, it can be
+        straight
+        or
+        premultiplied
+        . Default is
+        straight
+        .
+        Set the expression for the x and y coordinates of the overlaid video
+        on the main video. Default value is "0" for both expressions. In case
+        the expression is invalid, it is set to a huge value (meaning that the
+        overlay will not be displayed within the output visible area).
+
+
+        See framesync.
+
+
+        Set when the expressions for x, and y are evaluated.
+
+
+        It accepts the following values:
+
+
+        - **`‘init’`**
+          - only evaluate expressions once during the filter initialization or
+        when a command is processed
+        - **`‘frame’`**
+          - evaluate expressions for each incoming frame
+        only evaluate expressions once during the filter initialization or
+        when a command is processed
+
+
+        evaluate expressions for each incoming frame
+
+
+        Default value is ‘frame’.
+
+
+        See framesync.
+
+
+        Set the format for the output video.
+
+
+        It accepts the following values:
+
+
+        - **`‘yuv420’`**
+          - force YUV 4:2:0 8-bit planar output
+        - **`‘yuv420p10’`**
+          - force YUV 4:2:0 10-bit planar output
+        - **`‘yuv422’`**
+          - force YUV 4:2:2 8-bit planar output
+        - **`‘yuv422p10’`**
+          - force YUV 4:2:2 10-bit planar output
+        - **`‘yuv444’`**
+          - force YUV 4:4:4 8-bit planar output
+        - **`‘yuv444p10’`**
+          - force YUV 4:4:4 10-bit planar output
+        - **`‘rgb’`**
+          - force RGB 8-bit packed output
+        - **`‘gbrp’`**
+          - force RGB 8-bit planar output
+        - **`‘auto’`**
+          - automatically pick format
+        force YUV 4:2:0 8-bit planar output
+
+
+        force YUV 4:2:0 10-bit planar output
+
+
+        force YUV 4:2:2 8-bit planar output
+
+
+        force YUV 4:2:2 10-bit planar output
+
+
+        force YUV 4:4:4 8-bit planar output
+
+
+        force YUV 4:4:4 10-bit planar output
+
+
+        force RGB 8-bit packed output
+
+
+        force RGB 8-bit planar output
+
+
+        automatically pick format
+
+
+        Default value is ‘yuv420’.
+
+
+        See framesync.
+
+
+        Set format of alpha of the overlaid video, it can be straight or
+        premultiplied. Default is straight.
 
 
         The x, and y expressions can contain the following
         parameters.
 
 
+        - **`main_w, W`**
+        - **`main_h, H`**
+          - The main input width and height.
+        - **`overlay_w, w`**
+        - **`overlay_h, h`**
+          - The overlay input width and height.
+        - **`x`**
+        - **`y`**
+          - The computed values for
+        x
+        and
+        y
+        . They are evaluated for
+        each new frame.
+        - **`hsub`**
+        - **`vsub`**
+          - horizontal and vertical chroma subsample values of the output
+        format. For example for the pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        - **`n`**
+          - the number of input frame, starting from 0
+        - **`pos`**
+          - the position in the file of the input frame, NAN if unknown; deprecated,
+        do not use
+        - **`t`**
+          - The timestamp, expressed in seconds. It’s NAN if the input timestamp is unknown.
+        The main input width and height.
+
+
+        The overlay input width and height.
+
+
+        The computed values for x and y. They are evaluated for
+        each new frame.
+
+
+        horizontal and vertical chroma subsample values of the output
+        format. For example for the pixel format "yuv422p" hsub is 2 and
+        vsub is 1.
+
+
+        the number of input frame, starting from 0
+
+
+        the position in the file of the input frame, NAN if unknown; deprecated,
+        do not use
+
+
+        The timestamp, expressed in seconds. It’s NAN if the input timestamp is unknown.
+
+
         This filter also supports the framesync options.
+
 
         Note that the n, t variables are available only
         when evaluation is done per frame, and will evaluate to NAN
         when eval is set to ‘init’.
+
 
         Be aware that frames are taken from each input video in timestamp
         order, hence, if their initial timestamps differ, it is a good idea
@@ -10310,8 +22727,12 @@ class VideoStream(FilterableStream):
         have them begin in the same zero timestamp, as the example for
         the movie filter does.
 
+
         You can chain together more overlays but you should test the
         efficiency of such approach.
+
+
+
 
         Parameters:
         ----------
@@ -10364,19 +22785,161 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.184 overlay_cuda
+        ### 11.184 overlay_cuda
+
         Overlay one video on top of another.
+
 
         This is the CUDA variant of the overlay filter.
         It only accepts CUDA frames. The underlying input pixel formats have to match.
 
+
         It takes two inputs and has one output. The first input is the "main"
         video on which the second input is overlaid.
+
 
         It accepts the following parameters:
 
 
+        - **`x`**
+        - **`y`**
+          - Set expressions for the x and y coordinates of the overlaid video
+        on the main video.
+        They can contain the following parameters:
+        main_w, W
+        main_h, H
+        The main input width and height.
+        overlay_w, w
+        overlay_h, h
+        The overlay input width and height.
+        x
+        y
+        The computed values for
+        x
+        and
+        y
+        . They are evaluated for
+        each new frame.
+        n
+        The ordinal index of the main input frame, starting from 0.
+        pos
+        The byte offset position in the file of the main input frame, NAN if unknown.
+        Deprecated, do not use.
+        t
+        The timestamp of the main input frame, expressed in seconds, NAN if unknown.
+        Default value is "0" for both expressions.
+        - **`eval`**
+          - Set when the expressions for
+        x
+        and
+        y
+        are evaluated.
+        It accepts the following values:
+        init
+        Evaluate expressions once during filter initialization or
+        when a command is processed.
+        frame
+        Evaluate expressions for each incoming frame
+        Default value is
+        frame
+        .
+        - **`eof_action`**
+          - See
+        framesync
+        .
+        - **`shortest`**
+          - See
+        framesync
+        .
+        - **`repeatlast`**
+          - See
+        framesync
+        .
+        Set expressions for the x and y coordinates of the overlaid video
+        on the main video.
+
+
+        They can contain the following parameters:
+
+
+        - **`main_w, W`**
+        - **`main_h, H`**
+          - The main input width and height.
+        - **`overlay_w, w`**
+        - **`overlay_h, h`**
+          - The overlay input width and height.
+        - **`x`**
+        - **`y`**
+          - The computed values for
+        x
+        and
+        y
+        . They are evaluated for
+        each new frame.
+        - **`n`**
+          - The ordinal index of the main input frame, starting from 0.
+        - **`pos`**
+          - The byte offset position in the file of the main input frame, NAN if unknown.
+        Deprecated, do not use.
+        - **`t`**
+          - The timestamp of the main input frame, expressed in seconds, NAN if unknown.
+        The main input width and height.
+
+
+        The overlay input width and height.
+
+
+        The computed values for x and y. They are evaluated for
+        each new frame.
+
+
+        The ordinal index of the main input frame, starting from 0.
+
+
+        The byte offset position in the file of the main input frame, NAN if unknown.
+        Deprecated, do not use.
+
+
+        The timestamp of the main input frame, expressed in seconds, NAN if unknown.
+
+
+        Default value is "0" for both expressions.
+
+
+        Set when the expressions for x and y are evaluated.
+
+
+        It accepts the following values:
+
+
+        - **`init`**
+          - Evaluate expressions once during filter initialization or
+        when a command is processed.
+        - **`frame`**
+          - Evaluate expressions for each incoming frame
+        Evaluate expressions once during filter initialization or
+        when a command is processed.
+
+
+        Evaluate expressions for each incoming frame
+
+
+        Default value is frame.
+
+
+        See framesync.
+
+
+        See framesync.
+
+
+        See framesync.
+
+
         This filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -10421,13 +22984,37 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.9 overlay_opencl
+        ### 12.9 overlay_opencl
+
         Overlay one video on top of another.
+
 
         It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid.
         This filter requires same memory layout for all the inputs. So, format conversion may be needed.
 
+
         The filter accepts the following options:
+
+
+        - **`x`**
+          - Set the x coordinate of the overlaid video on the main video.
+        Default value is
+        0
+        .
+        - **`y`**
+          - Set the y coordinate of the overlaid video on the main video.
+        Default value is
+        0
+        .
+        Set the x coordinate of the overlaid video on the main video.
+        Default value is 0.
+
+
+        Set the y coordinate of the overlaid video on the main video.
+        Default value is 0.
+
+
+
 
         Parameters:
         ----------
@@ -10470,15 +23057,117 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        13.1 overlay_vaapi
+        ### 13.1 overlay_vaapi
+
         Overlay one video on the top of another.
 
+
         It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid.
+
 
         The filter accepts the following options:
 
 
+        - **`x`**
+        - **`y`**
+          - Set expressions for the x and y coordinates of the overlaid video
+        on the main video.
+        Default value is "0" for both expressions.
+        - **`w`**
+        - **`h`**
+          - Set expressions for the width and height the overlaid video
+        on the main video.
+        Default values are ’overlay_iw’ for ’w’ and ’overlay_ih*w/overlay_iw’ for ’h’.
+        The expressions can contain the following parameters:
+        main_w, W
+        main_h, H
+        The main input width and height.
+        overlay_iw
+        overlay_ih
+        The overlay input width and height.
+        overlay_w, w
+        overlay_h, h
+        The overlay output width and height.
+        overlay_x, x
+        overlay_y, y
+        Position of the overlay layer inside of main
+        - **`alpha`**
+          - Set transparency of overlaid video. Allowed range is 0.0 to 1.0.
+        Higher value means lower transparency.
+        Default value is
+        1.0
+        .
+        - **`eof_action`**
+          - See
+        framesync
+        .
+        - **`shortest`**
+          - See
+        framesync
+        .
+        - **`repeatlast`**
+          - See
+        framesync
+        .
+        Set expressions for the x and y coordinates of the overlaid video
+        on the main video.
+
+
+        Default value is "0" for both expressions.
+
+
+        Set expressions for the width and height the overlaid video
+        on the main video.
+
+
+        Default values are ’overlay_iw’ for ’w’ and ’overlay_ih*w/overlay_iw’ for ’h’.
+
+
+        The expressions can contain the following parameters:
+
+
+        - **`main_w, W`**
+        - **`main_h, H`**
+          - The main input width and height.
+        - **`overlay_iw`**
+        - **`overlay_ih`**
+          - The overlay input width and height.
+        - **`overlay_w, w`**
+        - **`overlay_h, h`**
+          - The overlay output width and height.
+        - **`overlay_x, x`**
+        - **`overlay_y, y`**
+          - Position of the overlay layer inside of main
+        The main input width and height.
+
+
+        The overlay input width and height.
+
+
+        The overlay output width and height.
+
+
+        Position of the overlay layer inside of main
+
+
+        Set transparency of overlaid video. Allowed range is 0.0 to 1.0.
+        Higher value means lower transparency.
+        Default value is 1.0.
+
+
+        See framesync.
+
+
+        See framesync.
+
+
+        See framesync.
+
+
         This filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -10527,13 +23216,37 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.11 overlay_vulkan
+        ### 14.11 overlay_vulkan
+
         Overlay one video on top of another.
+
 
         It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid.
         This filter requires all inputs to use the same pixel format. So, format conversion may be needed.
 
+
         The filter accepts the following options:
+
+
+        - **`x`**
+          - Set the x coordinate of the overlaid video on the main video.
+        Default value is
+        0
+        .
+        - **`y`**
+          - Set the y coordinate of the overlaid video on the main video.
+        Default value is
+        0
+        .
+        Set the x coordinate of the overlaid video on the main video.
+        Default value is 0.
+
+
+        Set the y coordinate of the overlaid video on the main video.
+        Default value is 0.
+
+
+
 
         Parameters:
         ----------
@@ -10570,10 +23283,54 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.185 owdenoise
+        ### 11.185 owdenoise
+
         Apply Overcomplete Wavelet denoiser.
 
+
         The filter accepts the following options:
+
+
+        - **`depth`**
+          - Set depth.
+        Larger depth values will denoise lower frequency components more, but
+        slow down filtering.
+        Must be an int in the range 8-16, default is
+        8
+        .
+        - **`luma_strength, ls`**
+          - Set luma strength.
+        Must be a double value in the range 0-1000, default is
+        1.0
+        .
+        - **`chroma_strength, cs`**
+          - Set chroma strength.
+        Must be a double value in the range 0-1000, default is
+        1.0
+        .
+        Set depth.
+
+
+        Larger depth values will denoise lower frequency components more, but
+        slow down filtering.
+
+
+        Must be an int in the range 8-16, default is 8.
+
+
+        Set luma strength.
+
+
+        Must be a double value in the range 0-1000, default is 1.0.
+
+
+        Set chroma strength.
+
+
+        Must be a double value in the range 0-1000, default is 1.0.
+
+
+
 
         Parameters:
         ----------
@@ -10615,15 +23372,236 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.186 pad
+        ### 11.186 pad
+
         Add paddings to the input image, and place the original input at the
         provided x, y coordinates.
+
 
         It accepts the following parameters:
 
 
+        - **`width, w`**
+        - **`height, h`**
+          - Specify an expression for the size of the output image with the
+        paddings added. If the value for
+        width
+        or
+        height
+        is 0, the
+        corresponding input size is used for the output.
+        The
+        width
+        expression can reference the value set by the
+        height
+        expression, and vice versa.
+        The default value of
+        width
+        and
+        height
+        is 0.
+        - **`x`**
+        - **`y`**
+          - Specify the offsets to place the input image at within the padded area,
+        with respect to the top/left border of the output image.
+        The
+        x
+        expression can reference the value set by the
+        y
+        expression, and vice versa.
+        The default value of
+        x
+        and
+        y
+        is 0.
+        If
+        x
+        or
+        y
+        evaluate to a negative number, they’ll be changed
+        so the input image is centered on the padded area.
+        - **`color`**
+          - Specify the color of the padded area. For the syntax of this option,
+        check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual
+        .
+        The default value of
+        color
+        is "black".
+        - **`eval`**
+          - Specify when to evaluate
+        width
+        ,
+        height
+        ,
+        x
+        and
+        y
+        expression.
+        It accepts the following values:
+        ‘
+        init
+        ’
+        Only evaluate expressions once during the filter initialization or when
+        a command is processed.
+        ‘
+        frame
+        ’
+        Evaluate expressions for each incoming frame.
+        Default value is ‘
+        init
+        ’.
+        - **`aspect`**
+          - Pad to aspect instead to a resolution.
+        Specify an expression for the size of the output image with the
+        paddings added. If the value for width or height is 0, the
+        corresponding input size is used for the output.
+
+
+        The width expression can reference the value set by the
+        height expression, and vice versa.
+
+
+        The default value of width and height is 0.
+
+
+        Specify the offsets to place the input image at within the padded area,
+        with respect to the top/left border of the output image.
+
+
+        The x expression can reference the value set by the y
+        expression, and vice versa.
+
+
+        The default value of x and y is 0.
+
+
+        If x or y evaluate to a negative number, they’ll be changed
+        so the input image is centered on the padded area.
+
+
+        Specify the color of the padded area. For the syntax of this option,
+        check the (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual.
+
+
+        The default value of color is "black".
+
+
+        Specify when to evaluate  width, height, x and y expression.
+
+
+        It accepts the following values:
+
+
+        - **`‘init’`**
+          - Only evaluate expressions once during the filter initialization or when
+        a command is processed.
+        - **`‘frame’`**
+          - Evaluate expressions for each incoming frame.
+        Only evaluate expressions once during the filter initialization or when
+        a command is processed.
+
+
+        Evaluate expressions for each incoming frame.
+
+
+        Default value is ‘init’.
+
+
+        Pad to aspect instead to a resolution.
+
+
         The value for the width, height, x, and y
         options are expressions containing the following constants:
+
+
+        - **`in_w`**
+        - **`in_h`**
+          - The input video width and height.
+        - **`iw`**
+        - **`ih`**
+          - These are the same as
+        in_w
+        and
+        in_h
+        .
+        - **`out_w`**
+        - **`out_h`**
+          - The output width and height (the size of the padded area), as
+        specified by the
+        width
+        and
+        height
+        expressions.
+        - **`ow`**
+        - **`oh`**
+          - These are the same as
+        out_w
+        and
+        out_h
+        .
+        - **`x`**
+        - **`y`**
+          - The x and y offsets as specified by the
+        x
+        and
+        y
+        expressions, or NAN if not yet specified.
+        - **`a`**
+          - same as
+        iw
+        /
+        ih
+        - **`sar`**
+          - input sample aspect ratio
+        - **`dar`**
+          - input display aspect ratio, it is the same as (
+        iw
+        /
+        ih
+        ) *
+        sar
+        - **`hsub`**
+        - **`vsub`**
+          - The horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        The input video width and height.
+
+
+        These are the same as in_w and in_h.
+
+
+        The output width and height (the size of the padded area), as
+        specified by the width and height expressions.
+
+
+        These are the same as out_w and out_h.
+
+
+        The x and y offsets as specified by the x and y
+        expressions, or NAN if not yet specified.
+
+
+        same as iw / ih
+
+
+        input sample aspect ratio
+
+
+        input display aspect ratio, it is the same as (iw / ih) * sar
+
+
+        The horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p" hsub is 2 and vsub is 1.
+
+
+
 
         Parameters:
         ----------
@@ -10672,15 +23650,174 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.10 pad_opencl
+        ### 12.10 pad_opencl
+
         Add paddings to the input image, and place the original input at the
         provided x, y coordinates.
+
 
         It accepts the following options:
 
 
+        - **`width, w`**
+        - **`height, h`**
+          - Specify an expression for the size of the output image with the
+        paddings added. If the value for
+        width
+        or
+        height
+        is 0, the
+        corresponding input size is used for the output.
+        The
+        width
+        expression can reference the value set by the
+        height
+        expression, and vice versa.
+        The default value of
+        width
+        and
+        height
+        is 0.
+        - **`x`**
+        - **`y`**
+          - Specify the offsets to place the input image at within the padded area,
+        with respect to the top/left border of the output image.
+        The
+        x
+        expression can reference the value set by the
+        y
+        expression, and vice versa.
+        The default value of
+        x
+        and
+        y
+        is 0.
+        If
+        x
+        or
+        y
+        evaluate to a negative number, they’ll be changed
+        so the input image is centered on the padded area.
+        - **`color`**
+          - Specify the color of the padded area. For the syntax of this option,
+        check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual
+        .
+        - **`aspect`**
+          - Pad to an aspect instead to a resolution.
+        Specify an expression for the size of the output image with the
+        paddings added. If the value for width or height is 0, the
+        corresponding input size is used for the output.
+
+
+        The width expression can reference the value set by the
+        height expression, and vice versa.
+
+
+        The default value of width and height is 0.
+
+
+        Specify the offsets to place the input image at within the padded area,
+        with respect to the top/left border of the output image.
+
+
+        The x expression can reference the value set by the y
+        expression, and vice versa.
+
+
+        The default value of x and y is 0.
+
+
+        If x or y evaluate to a negative number, they’ll be changed
+        so the input image is centered on the padded area.
+
+
+        Specify the color of the padded area. For the syntax of this option,
+        check the (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual.
+
+
+        Pad to an aspect instead to a resolution.
+
+
         The value for the width, height, x, and y
         options are expressions containing the following constants:
+
+
+        - **`in_w`**
+        - **`in_h`**
+          - The input video width and height.
+        - **`iw`**
+        - **`ih`**
+          - These are the same as
+        in_w
+        and
+        in_h
+        .
+        - **`out_w`**
+        - **`out_h`**
+          - The output width and height (the size of the padded area), as
+        specified by the
+        width
+        and
+        height
+        expressions.
+        - **`ow`**
+        - **`oh`**
+          - These are the same as
+        out_w
+        and
+        out_h
+        .
+        - **`x`**
+        - **`y`**
+          - The x and y offsets as specified by the
+        x
+        and
+        y
+        expressions, or NAN if not yet specified.
+        - **`a`**
+          - same as
+        iw
+        /
+        ih
+        - **`sar`**
+          - input sample aspect ratio
+        - **`dar`**
+          - input display aspect ratio, it is the same as (
+        iw
+        /
+        ih
+        ) *
+        sar
+        The input video width and height.
+
+
+        These are the same as in_w and in_h.
+
+
+        The output width and height (the size of the padded area), as
+        specified by the width and height expressions.
+
+
+        These are the same as out_w and out_h.
+
+
+        The x and y offsets as specified by the x and y
+        expressions, or NAN if not yet specified.
+
+
+        same as iw / ih
+
+
+        input sample aspect ratio
+
+
+        input display aspect ratio, it is the same as (iw / ih) * sar
+
+
+
 
         Parameters:
         ----------
@@ -10725,16 +23862,96 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.187 palettegen
+        ### 11.187 palettegen
+
         Generate one palette for a whole video stream.
 
+
         It accepts the following options:
+
+
+        - **`max_colors`**
+          - Set the maximum number of colors to quantize in the palette.
+        Note: the palette will still contain 256 colors; the unused palette entries
+        will be black.
+        - **`reserve_transparent`**
+          - Create a palette of 255 colors maximum and reserve the last one for
+        transparency. Reserving the transparency color is useful for GIF optimization.
+        If not set, the maximum of colors in the palette will be 256. You probably want
+        to disable this option for a standalone image.
+        Set by default.
+        - **`transparency_color`**
+          - Set the color that will be used as background for transparency.
+        - **`stats_mode`**
+          - Set statistics mode.
+        It accepts the following values:
+        ‘
+        full
+        ’
+        Compute full frame histograms.
+        ‘
+        diff
+        ’
+        Compute histograms only for the part that differs from previous frame. This
+        might be relevant to give more importance to the moving part of your input if
+        the background is static.
+        ‘
+        single
+        ’
+        Compute new histogram for each frame.
+        Default value is
+        full
+        .
+        Set the maximum number of colors to quantize in the palette.
+        Note: the palette will still contain 256 colors; the unused palette entries
+        will be black.
+
+
+        Create a palette of 255 colors maximum and reserve the last one for
+        transparency. Reserving the transparency color is useful for GIF optimization.
+        If not set, the maximum of colors in the palette will be 256. You probably want
+        to disable this option for a standalone image.
+        Set by default.
+
+
+        Set the color that will be used as background for transparency.
+
+
+        Set statistics mode.
+
+
+        It accepts the following values:
+
+
+        - **`‘full’`**
+          - Compute full frame histograms.
+        - **`‘diff’`**
+          - Compute histograms only for the part that differs from previous frame. This
+        might be relevant to give more importance to the moving part of your input if
+        the background is static.
+        - **`‘single’`**
+          - Compute new histogram for each frame.
+        Compute full frame histograms.
+
+
+        Compute histograms only for the part that differs from previous frame. This
+        might be relevant to give more importance to the moving part of your input if
+        the background is static.
+
+
+        Compute new histogram for each frame.
+
+
+        Default value is full.
 
 
         The filter also exports the frame metadata lavfi.color_quant_ratio
         (nb_color_in / nb_color_out) which you can use to evaluate the degree of
         color quantization of the palette. This information is also visible at
         info logging level.
+
+
+
 
         Parameters:
         ----------
@@ -10780,13 +23997,195 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.188 paletteuse
+        ### 11.188 paletteuse
+
         Use a palette to downsample an input video stream.
+
 
         The filter takes two inputs: one video stream and a palette. The palette must
         be a 256 pixels image.
 
+
         It accepts the following options:
+
+
+        - **`dither`**
+          - Select dithering mode. Available algorithms are:
+        ‘
+        bayer
+        ’
+        Ordered 8x8 bayer dithering (deterministic)
+        ‘
+        heckbert
+        ’
+        Dithering as defined by Paul Heckbert in 1982 (simple error diffusion).
+        Note: this dithering is sometimes considered "wrong" and is included as a
+        reference.
+        ‘
+        floyd_steinberg
+        ’
+        Floyd and Steingberg dithering (error diffusion)
+        ‘
+        sierra2
+        ’
+        Frankie Sierra dithering v2 (error diffusion)
+        ‘
+        sierra2_4a
+        ’
+        Frankie Sierra dithering v2 "Lite" (error diffusion)
+        ‘
+        sierra3
+        ’
+        Frankie Sierra dithering v3 (error diffusion)
+        ‘
+        burkes
+        ’
+        Burkes dithering (error diffusion)
+        ‘
+        atkinson
+        ’
+        Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)
+        ‘
+        none
+        ’
+        Disable dithering.
+        Default is
+        sierra2_4a
+        .
+        - **`bayer_scale`**
+          - When
+        bayer
+        dithering is selected, this option defines the scale of the
+        pattern (how much the crosshatch pattern is visible). A low value means more
+        visible pattern for less banding, and higher value means less visible pattern
+        at the cost of more banding.
+        The option must be an integer value in the range [0,5]. Default is
+        2
+        .
+        - **`diff_mode`**
+          - If set, define the zone to process
+        ‘
+        rectangle
+        ’
+        Only the changing rectangle will be reprocessed. This is similar to GIF
+        cropping/offsetting compression mechanism. This option can be useful for speed
+        if only a part of the image is changing, and has use cases such as limiting the
+        scope of the error diffusal
+        dither
+        to the rectangle that bounds the
+        moving scene (it leads to more deterministic output if the scene doesn’t change
+        much, and as a result less moving noise and better GIF compression).
+        Default is
+        none
+        .
+        - **`new`**
+          - Take new palette for each output frame.
+        - **`alpha_threshold`**
+          - Sets the alpha threshold for transparency. Alpha values above this threshold
+        will be treated as completely opaque, and values below this threshold will be
+        treated as completely transparent.
+        The option must be an integer value in the range [0,255]. Default is
+        128
+        .
+        Select dithering mode. Available algorithms are:
+
+
+        - **`‘bayer’`**
+          - Ordered 8x8 bayer dithering (deterministic)
+        - **`‘heckbert’`**
+          - Dithering as defined by Paul Heckbert in 1982 (simple error diffusion).
+        Note: this dithering is sometimes considered "wrong" and is included as a
+        reference.
+        - **`‘floyd_steinberg’`**
+          - Floyd and Steingberg dithering (error diffusion)
+        - **`‘sierra2’`**
+          - Frankie Sierra dithering v2 (error diffusion)
+        - **`‘sierra2_4a’`**
+          - Frankie Sierra dithering v2 "Lite" (error diffusion)
+        - **`‘sierra3’`**
+          - Frankie Sierra dithering v3 (error diffusion)
+        - **`‘burkes’`**
+          - Burkes dithering (error diffusion)
+        - **`‘atkinson’`**
+          - Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)
+        - **`‘none’`**
+          - Disable dithering.
+        Ordered 8x8 bayer dithering (deterministic)
+
+
+        Dithering as defined by Paul Heckbert in 1982 (simple error diffusion).
+        Note: this dithering is sometimes considered "wrong" and is included as a
+        reference.
+
+
+        Floyd and Steingberg dithering (error diffusion)
+
+
+        Frankie Sierra dithering v2 (error diffusion)
+
+
+        Frankie Sierra dithering v2 "Lite" (error diffusion)
+
+
+        Frankie Sierra dithering v3 (error diffusion)
+
+
+        Burkes dithering (error diffusion)
+
+
+        Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)
+
+
+        Disable dithering.
+
+
+        Default is sierra2_4a.
+
+
+        When bayer dithering is selected, this option defines the scale of the
+        pattern (how much the crosshatch pattern is visible). A low value means more
+        visible pattern for less banding, and higher value means less visible pattern
+        at the cost of more banding.
+
+
+        The option must be an integer value in the range [0,5]. Default is 2.
+
+
+        If set, define the zone to process
+
+
+        - **`‘rectangle’`**
+          - Only the changing rectangle will be reprocessed. This is similar to GIF
+        cropping/offsetting compression mechanism. This option can be useful for speed
+        if only a part of the image is changing, and has use cases such as limiting the
+        scope of the error diffusal
+        dither
+        to the rectangle that bounds the
+        moving scene (it leads to more deterministic output if the scene doesn’t change
+        much, and as a result less moving noise and better GIF compression).
+        Only the changing rectangle will be reprocessed. This is similar to GIF
+        cropping/offsetting compression mechanism. This option can be useful for speed
+        if only a part of the image is changing, and has use cases such as limiting the
+        scope of the error diffusal dither to the rectangle that bounds the
+        moving scene (it leads to more deterministic output if the scene doesn’t change
+        much, and as a result less moving noise and better GIF compression).
+
+
+        Default is none.
+
+
+        Take new palette for each output frame.
+
+
+        Sets the alpha threshold for transparency. Alpha values above this threshold
+        will be treated as completely opaque, and values below this threshold will be
+        treated as completely transparent.
+
+
+        The option must be an integer value in the range [0,255]. Default is 128.
+
+
+
 
         Parameters:
         ----------
@@ -10830,19 +24229,96 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        18.14 perms, aperms
+        ### 18.14 perms, aperms
+
         Set read/write permissions for the output frames.
+
 
         These filters are mainly aimed at developers to test direct path in the
         following filter in the filtergraph.
 
+
         The filters accept the following options:
+
+
+        - **`mode`**
+          - Select the permissions mode.
+        It accepts the following values:
+        ‘
+        none
+        ’
+        Do nothing. This is the default.
+        ‘
+        ro
+        ’
+        Set all the output frames read-only.
+        ‘
+        rw
+        ’
+        Set all the output frames directly writable.
+        ‘
+        toggle
+        ’
+        Make the frame read-only if writable, and writable if read-only.
+        ‘
+        random
+        ’
+        Set each output frame read-only or writable randomly.
+        - **`seed`**
+          - Set the seed for the
+        random
+        mode, must be an integer included between
+        0
+        and
+        UINT32_MAX
+        . If not specified, or if explicitly set to
+        -1
+        , the filter will try to use a good random seed on a best effort
+        basis.
+        Select the permissions mode.
+
+
+        It accepts the following values:
+
+
+        - **`‘none’`**
+          - Do nothing. This is the default.
+        - **`‘ro’`**
+          - Set all the output frames read-only.
+        - **`‘rw’`**
+          - Set all the output frames directly writable.
+        - **`‘toggle’`**
+          - Make the frame read-only if writable, and writable if read-only.
+        - **`‘random’`**
+          - Set each output frame read-only or writable randomly.
+        Do nothing. This is the default.
+
+
+        Set all the output frames read-only.
+
+
+        Set all the output frames directly writable.
+
+
+        Make the frame read-only if writable, and writable if read-only.
+
+
+        Set each output frame read-only or writable randomly.
+
+
+        Set the seed for the random mode, must be an integer included between
+        0 and UINT32_MAX. If not specified, or if explicitly set to
+        -1, the filter will try to use a good random seed on a best effort
+        basis.
 
 
         Note: in case of auto-inserted filter between the permission filter and the
         following one, the permission might not be received as expected in that
         following filter. Inserting a format or aformat filter before the
         perms/aperms filter can avoid this problem.
+
+
+
 
         Parameters:
         ----------
@@ -10886,10 +24362,175 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.189 perspective
+        ### 11.189 perspective
+
         Correct perspective of video not recorded perpendicular to the screen.
 
+
         A description of the accepted parameters follows.
+
+
+        - **`x0`**
+        - **`y0`**
+        - **`x1`**
+        - **`y1`**
+        - **`x2`**
+        - **`y2`**
+        - **`x3`**
+        - **`y3`**
+          - Set coordinates expression for top left, top right, bottom left and bottom right corners.
+        Default values are
+        0:0:W:0:0:H:W:H
+        with which perspective will remain unchanged.
+        If the
+        sense
+        option is set to
+        source
+        , then the specified points will be sent
+        to the corners of the destination. If the
+        sense
+        option is set to
+        destination
+        ,
+        then the corners of the source will be sent to the specified coordinates.
+        The expressions can use the following variables:
+        W
+        H
+        the width and height of video frame.
+        in
+        Input frame count.
+        on
+        Output frame count.
+        - **`interpolation`**
+          - Set interpolation for perspective correction.
+        It accepts the following values:
+        ‘
+        linear
+        ’
+        ‘
+        cubic
+        ’
+        Default value is ‘
+        linear
+        ’.
+        - **`sense`**
+          - Set interpretation of coordinate options.
+        It accepts the following values:
+        ‘
+        0, source
+        ’
+        Send point in the source specified by the given coordinates to
+        the corners of the destination.
+        ‘
+        1, destination
+        ’
+        Send the corners of the source to the point in the destination specified
+        by the given coordinates.
+        Default value is ‘
+        source
+        ’.
+        - **`eval`**
+          - Set when the expressions for coordinates
+        x0,y0,...x3,y3
+        are evaluated.
+        It accepts the following values:
+        ‘
+        init
+        ’
+        only evaluate expressions once during the filter initialization or
+        when a command is processed
+        ‘
+        frame
+        ’
+        evaluate expressions for each incoming frame
+        Default value is ‘
+        init
+        ’.
+        Set coordinates expression for top left, top right, bottom left and bottom right corners.
+        Default values are 0:0:W:0:0:H:W:H with which perspective will remain unchanged.
+        If the sense option is set to source, then the specified points will be sent
+        to the corners of the destination. If the sense option is set to destination,
+        then the corners of the source will be sent to the specified coordinates.
+
+
+        The expressions can use the following variables:
+
+
+        - **`W`**
+        - **`H`**
+          - the width and height of video frame.
+        - **`in`**
+          - Input frame count.
+        - **`on`**
+          - Output frame count.
+        the width and height of video frame.
+
+
+        Input frame count.
+
+
+        Output frame count.
+
+
+        Set interpolation for perspective correction.
+
+
+        It accepts the following values:
+
+
+        - **`‘linear’`**
+        - **`‘cubic’`**
+        Default value is ‘linear’.
+
+
+        Set interpretation of coordinate options.
+
+
+        It accepts the following values:
+
+
+        - **`‘0, source’`**
+          - Send point in the source specified by the given coordinates to
+        the corners of the destination.
+        - **`‘1, destination’`**
+          - Send the corners of the source to the point in the destination specified
+        by the given coordinates.
+        Default value is ‘
+        source
+        ’.
+        Send point in the source specified by the given coordinates to
+        the corners of the destination.
+
+
+        Send the corners of the source to the point in the destination specified
+        by the given coordinates.
+
+
+        Default value is ‘source’.
+
+
+        Set when the expressions for coordinates x0,y0,...x3,y3 are evaluated.
+
+
+        It accepts the following values:
+
+
+        - **`‘init’`**
+          - only evaluate expressions once during the filter initialization or
+        when a command is processed
+        - **`‘frame’`**
+          - evaluate expressions for each incoming frame
+        only evaluate expressions once during the filter initialization or
+        when a command is processed
+
+
+        evaluate expressions for each incoming frame
+
+
+        Default value is ‘init’.
+
+
+
 
         Parameters:
         ----------
@@ -10941,13 +24582,224 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.190 phase
+        ### 11.190 phase
+
         Delay interlaced video by one field time so that the field order changes.
+
 
         The intended use is to fix PAL movies that have been captured with the
         opposite field order to the film-to-video transfer.
 
+
         A description of the accepted parameters follows.
+
+
+        - **`mode`**
+          - Set phase mode.
+        It accepts the following values:
+        ‘
+        t
+        ’
+        Capture field order top-first, transfer bottom-first.
+        Filter will delay the bottom field.
+        ‘
+        b
+        ’
+        Capture field order bottom-first, transfer top-first.
+        Filter will delay the top field.
+        ‘
+        p
+        ’
+        Capture and transfer with the same field order. This mode only exists
+        for the documentation of the other options to refer to, but if you
+        actually select it, the filter will faithfully do nothing.
+        ‘
+        a
+        ’
+        Capture field order determined automatically by field flags, transfer
+        opposite.
+        Filter selects among ‘
+        t
+        ’ and ‘
+        b
+        ’ modes on a frame by frame
+        basis using field flags. If no field information is available,
+        then this works just like ‘
+        u
+        ’.
+        ‘
+        u
+        ’
+        Capture unknown or varying, transfer opposite.
+        Filter selects among ‘
+        t
+        ’ and ‘
+        b
+        ’ on a frame by frame basis by
+        analyzing the images and selecting the alternative that produces best
+        match between the fields.
+        ‘
+        T
+        ’
+        Capture top-first, transfer unknown or varying.
+        Filter selects among ‘
+        t
+        ’ and ‘
+        p
+        ’ using image analysis.
+        ‘
+        B
+        ’
+        Capture bottom-first, transfer unknown or varying.
+        Filter selects among ‘
+        b
+        ’ and ‘
+        p
+        ’ using image analysis.
+        ‘
+        A
+        ’
+        Capture determined by field flags, transfer unknown or varying.
+        Filter selects among ‘
+        t
+        ’, ‘
+        b
+        ’ and ‘
+        p
+        ’ using field flags and
+        image analysis. If no field information is available, then this works just
+        like ‘
+        U
+        ’. This is the default mode.
+        ‘
+        U
+        ’
+        Both capture and transfer unknown or varying.
+        Filter selects among ‘
+        t
+        ’, ‘
+        b
+        ’ and ‘
+        p
+        ’ using image analysis only.
+        Set phase mode.
+
+
+        It accepts the following values:
+
+
+        - **`‘t’`**
+          - Capture field order top-first, transfer bottom-first.
+        Filter will delay the bottom field.
+        - **`‘b’`**
+          - Capture field order bottom-first, transfer top-first.
+        Filter will delay the top field.
+        - **`‘p’`**
+          - Capture and transfer with the same field order. This mode only exists
+        for the documentation of the other options to refer to, but if you
+        actually select it, the filter will faithfully do nothing.
+        - **`‘a’`**
+          - Capture field order determined automatically by field flags, transfer
+        opposite.
+        Filter selects among ‘
+        t
+        ’ and ‘
+        b
+        ’ modes on a frame by frame
+        basis using field flags. If no field information is available,
+        then this works just like ‘
+        u
+        ’.
+        - **`‘u’`**
+          - Capture unknown or varying, transfer opposite.
+        Filter selects among ‘
+        t
+        ’ and ‘
+        b
+        ’ on a frame by frame basis by
+        analyzing the images and selecting the alternative that produces best
+        match between the fields.
+        - **`‘T’`**
+          - Capture top-first, transfer unknown or varying.
+        Filter selects among ‘
+        t
+        ’ and ‘
+        p
+        ’ using image analysis.
+        - **`‘B’`**
+          - Capture bottom-first, transfer unknown or varying.
+        Filter selects among ‘
+        b
+        ’ and ‘
+        p
+        ’ using image analysis.
+        - **`‘A’`**
+          - Capture determined by field flags, transfer unknown or varying.
+        Filter selects among ‘
+        t
+        ’, ‘
+        b
+        ’ and ‘
+        p
+        ’ using field flags and
+        image analysis. If no field information is available, then this works just
+        like ‘
+        U
+        ’. This is the default mode.
+        - **`‘U’`**
+          - Both capture and transfer unknown or varying.
+        Filter selects among ‘
+        t
+        ’, ‘
+        b
+        ’ and ‘
+        p
+        ’ using image analysis only.
+        Capture field order top-first, transfer bottom-first.
+        Filter will delay the bottom field.
+
+
+        Capture field order bottom-first, transfer top-first.
+        Filter will delay the top field.
+
+
+        Capture and transfer with the same field order. This mode only exists
+        for the documentation of the other options to refer to, but if you
+        actually select it, the filter will faithfully do nothing.
+
+
+        Capture field order determined automatically by field flags, transfer
+        opposite.
+        Filter selects among ‘t’ and ‘b’ modes on a frame by frame
+        basis using field flags. If no field information is available,
+        then this works just like ‘u’.
+
+
+        Capture unknown or varying, transfer opposite.
+        Filter selects among ‘t’ and ‘b’ on a frame by frame basis by
+        analyzing the images and selecting the alternative that produces best
+        match between the fields.
+
+
+        Capture top-first, transfer unknown or varying.
+        Filter selects among ‘t’ and ‘p’ using image analysis.
+
+
+        Capture bottom-first, transfer unknown or varying.
+        Filter selects among ‘b’ and ‘p’ using image analysis.
+
+
+        Capture determined by field flags, transfer unknown or varying.
+        Filter selects among ‘t’, ‘b’ and ‘p’ using field flags and
+        image analysis. If no field information is available, then this works just
+        like ‘U’. This is the default mode.
+
+
+        Both capture and transfer unknown or varying.
+        Filter selects among ‘t’, ‘b’ and ‘p’ using image analysis only.
+
+
+
 
         Parameters:
         ----------
@@ -10982,10 +24834,39 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.191 photosensitivity
+        ### 11.191 photosensitivity
+
         Reduce various flashes in video, so to help users with epilepsy.
 
+
         It accepts the following options:
+
+
+        - **`frames, f`**
+          - Set how many frames to use when filtering. Default is 30.
+        - **`threshold, t`**
+          - Set detection threshold factor. Default is 1.
+        Lower is stricter.
+        - **`skip`**
+          - Set how many pixels to skip when sampling frames. Default is 1.
+        Allowed range is from 1 to 1024.
+        - **`bypass`**
+          - Leave frames unchanged. Default is disabled.
+        Set how many frames to use when filtering. Default is 30.
+
+
+        Set detection threshold factor. Default is 1.
+        Lower is stricter.
+
+
+        Set how many pixels to skip when sampling frames. Default is 1.
+        Allowed range is from 1 to 1024.
+
+
+        Leave frames unchanged. Default is disabled.
+
+
+
 
         Parameters:
         ----------
@@ -11018,15 +24899,19 @@ class VideoStream(FilterableStream):
     def pixdesctest(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.192 pixdesctest
+        ### 11.192 pixdesctest
+
         Pixel format descriptor test filter, mainly useful for internal
         testing. The output video should be equal to the input video.
 
+
         For example:
 
-        format=monow, pixdesctest
 
         can be used to test the monowhite pixel format descriptor definition.
+
+
+
 
         Parameters:
         ----------
@@ -11057,10 +24942,57 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.193 pixelize
+        ### 11.193 pixelize
+
         Apply pixelization to video stream.
 
+
         The filter accepts the following options:
+
+
+        - **`width, w`**
+        - **`height, h`**
+          - Set block dimensions that will be used for pixelization.
+        Default value is
+        16
+        .
+        - **`mode, m`**
+          - Set the mode of pixelization used.
+        Possible values are:
+        ‘
+        avg
+        ’
+        ‘
+        min
+        ’
+        ‘
+        max
+        ’
+        Default value is
+        avg
+        .
+        - **`planes, p`**
+          - Set what planes to filter. Default is to filter all planes.
+        Set block dimensions that will be used for pixelization.
+        Default value is 16.
+
+
+        Set the mode of pixelization used.
+
+
+        Possible values are:
+
+
+        - **`‘avg’`**
+        - **`‘min’`**
+        - **`‘max’`**
+        Default value is avg.
+
+
+        Set what planes to filter. Default is to filter all planes.
+
+
+
 
         Parameters:
         ----------
@@ -11104,11 +25036,51 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.194 pixscope
+        ### 11.194 pixscope
+
         Display sample values of color channels. Mainly useful for checking color
         and levels. Minimum supported resolution is 640x480.
 
+
         The filters accept the following options:
+
+
+        - **`x`**
+          - Set scope X position, relative offset on X axis.
+        - **`y`**
+          - Set scope Y position, relative offset on Y axis.
+        - **`w`**
+          - Set scope width.
+        - **`h`**
+          - Set scope height.
+        - **`o`**
+          - Set window opacity. This window also holds statistics about pixel area.
+        - **`wx`**
+          - Set window X position, relative offset on X axis.
+        - **`wy`**
+          - Set window Y position, relative offset on Y axis.
+        Set scope X position, relative offset on X axis.
+
+
+        Set scope Y position, relative offset on Y axis.
+
+
+        Set scope width.
+
+
+        Set scope height.
+
+
+        Set window opacity. This window also holds statistics about pixel area.
+
+
+        Set window X position, relative offset on X axis.
+
+
+        Set window Y position, relative offset on Y axis.
+
+
+
 
         Parameters:
         ----------
@@ -11147,27 +25119,298 @@ class VideoStream(FilterableStream):
     def pp(self, *, subfilters: str | DefaultStr = DefaultStr("de"), **kwargs: Any) -> "VideoStream":
         """
 
-        11.195 pp
+        ### 11.195 pp
+
         Enable the specified chain of postprocessing subfilters using libpostproc. This
         library should be automatically selected with a GPL build (--enable-gpl).
         Subfilters must be separated by ’/’ and can be disabled by prepending a ’-’.
         Each subfilter and some options have a short and a long name that can be used
         interchangeably, i.e. dr/dering are the same.
 
+
         The filters accept the following options:
+
+
+        - **`subfilters`**
+          - Set postprocessing subfilters string.
+        Set postprocessing subfilters string.
 
 
         All subfilters share common options to determine their scope:
 
 
+        - **`a/autoq`**
+          - Honor the quality commands for this subfilter.
+        - **`c/chrom`**
+          - Do chrominance filtering, too (default).
+        - **`y/nochrom`**
+          - Do luma filtering only (no chrominance).
+        - **`n/noluma`**
+          - Do chrominance filtering only (no luma).
+        Honor the quality commands for this subfilter.
+
+
+        Do chrominance filtering, too (default).
+
+
+        Do luma filtering only (no chrominance).
+
+
+        Do chrominance filtering only (no luma).
+
+
         These options can be appended after the subfilter name, separated by a ’|’.
 
+
         Available subfilters are:
+
+
+        - **`hb/hdeblock[|difference[|flatness]]`**
+          - Horizontal deblocking filter
+        difference
+        Difference factor where higher values mean more deblocking (default:
+        32
+        ).
+        flatness
+        Flatness threshold where lower values mean more deblocking (default:
+        39
+        ).
+        - **`vb/vdeblock[|difference[|flatness]]`**
+          - Vertical deblocking filter
+        difference
+        Difference factor where higher values mean more deblocking (default:
+        32
+        ).
+        flatness
+        Flatness threshold where lower values mean more deblocking (default:
+        39
+        ).
+        - **`ha/hadeblock[|difference[|flatness]]`**
+          - Accurate horizontal deblocking filter
+        difference
+        Difference factor where higher values mean more deblocking (default:
+        32
+        ).
+        flatness
+        Flatness threshold where lower values mean more deblocking (default:
+        39
+        ).
+        - **`va/vadeblock[|difference[|flatness]]`**
+          - Accurate vertical deblocking filter
+        difference
+        Difference factor where higher values mean more deblocking (default:
+        32
+        ).
+        flatness
+        Flatness threshold where lower values mean more deblocking (default:
+        39
+        ).
+        Horizontal deblocking filter
+
+
+        - **`difference`**
+          - Difference factor where higher values mean more deblocking (default:
+        32
+        ).
+        - **`flatness`**
+          - Flatness threshold where lower values mean more deblocking (default:
+        39
+        ).
+        Difference factor where higher values mean more deblocking (default: 32).
+
+
+        Flatness threshold where lower values mean more deblocking (default: 39).
+
+
+        Vertical deblocking filter
+
+
+        - **`difference`**
+          - Difference factor where higher values mean more deblocking (default:
+        32
+        ).
+        - **`flatness`**
+          - Flatness threshold where lower values mean more deblocking (default:
+        39
+        ).
+        Difference factor where higher values mean more deblocking (default: 32).
+
+
+        Flatness threshold where lower values mean more deblocking (default: 39).
+
+
+        Accurate horizontal deblocking filter
+
+
+        - **`difference`**
+          - Difference factor where higher values mean more deblocking (default:
+        32
+        ).
+        - **`flatness`**
+          - Flatness threshold where lower values mean more deblocking (default:
+        39
+        ).
+        Difference factor where higher values mean more deblocking (default: 32).
+
+
+        Flatness threshold where lower values mean more deblocking (default: 39).
+
+
+        Accurate vertical deblocking filter
+
+
+        - **`difference`**
+          - Difference factor where higher values mean more deblocking (default:
+        32
+        ).
+        - **`flatness`**
+          - Flatness threshold where lower values mean more deblocking (default:
+        39
+        ).
+        Difference factor where higher values mean more deblocking (default: 32).
+
+
+        Flatness threshold where lower values mean more deblocking (default: 39).
 
 
         The horizontal and vertical deblocking filters share the difference and
         flatness values so you cannot set different horizontal and vertical
         thresholds.
+
+
+        - **`h1/x1hdeblock`**
+          - Experimental horizontal deblocking filter
+        - **`v1/x1vdeblock`**
+          - Experimental vertical deblocking filter
+        - **`dr/dering`**
+          - Deringing filter
+        - **`tn/tmpnoise[|threshold1[|threshold2[|threshold3]]], temporal noise reducer`**
+          - threshold1
+        larger -> stronger filtering
+        threshold2
+        larger -> stronger filtering
+        threshold3
+        larger -> stronger filtering
+        - **`al/autolevels[:f/fullyrange], automatic brightness / contrast correction`**
+          - f/fullyrange
+        Stretch luma to
+        0-255
+        .
+        - **`lb/linblenddeint`**
+          - Linear blend deinterlacing filter that deinterlaces the given block by
+        filtering all lines with a
+        (1 2 1)
+        filter.
+        - **`li/linipoldeint`**
+          - Linear interpolating deinterlacing filter that deinterlaces the given block by
+        linearly interpolating every second line.
+        - **`ci/cubicipoldeint`**
+          - Cubic interpolating deinterlacing filter deinterlaces the given block by
+        cubically interpolating every second line.
+        - **`md/mediandeint`**
+          - Median deinterlacing filter that deinterlaces the given block by applying a
+        median filter to every second line.
+        - **`fd/ffmpegdeint`**
+          - FFmpeg deinterlacing filter that deinterlaces the given block by filtering every
+        second line with a
+        (-1 4 2 4 -1)
+        filter.
+        - **`l5/lowpass5`**
+          - Vertically applied FIR lowpass deinterlacing filter that deinterlaces the given
+        block by filtering all lines with a
+        (-1 2 6 2 -1)
+        filter.
+        - **`fq/forceQuant[|quantizer]`**
+          - Overrides the quantizer table from the input with the constant quantizer you
+        specify.
+        quantizer
+        Quantizer to use
+        - **`de/default`**
+          - Default pp filter combination (
+        hb|a,vb|a,dr|a
+        )
+        - **`fa/fast`**
+          - Fast pp filter combination (
+        h1|a,v1|a,dr|a
+        )
+        - **`ac`**
+          - High quality pp filter combination (
+        ha|a|128|7,va|a,dr|a
+        )
+        Experimental horizontal deblocking filter
+
+
+        Experimental vertical deblocking filter
+
+
+        Deringing filter
+
+
+        - **`threshold1`**
+          - larger -> stronger filtering
+        - **`threshold2`**
+          - larger -> stronger filtering
+        - **`threshold3`**
+          - larger -> stronger filtering
+        larger -> stronger filtering
+
+
+        larger -> stronger filtering
+
+
+        larger -> stronger filtering
+
+
+        - **`f/fullyrange`**
+          - Stretch luma to
+        0-255
+        .
+        Stretch luma to 0-255.
+
+
+        Linear blend deinterlacing filter that deinterlaces the given block by
+        filtering all lines with a (1 2 1) filter.
+
+
+        Linear interpolating deinterlacing filter that deinterlaces the given block by
+        linearly interpolating every second line.
+
+
+        Cubic interpolating deinterlacing filter deinterlaces the given block by
+        cubically interpolating every second line.
+
+
+        Median deinterlacing filter that deinterlaces the given block by applying a
+        median filter to every second line.
+
+
+        FFmpeg deinterlacing filter that deinterlaces the given block by filtering every
+        second line with a (-1 4 2 4 -1) filter.
+
+
+        Vertically applied FIR lowpass deinterlacing filter that deinterlaces the given
+        block by filtering all lines with a (-1 2 6 2 -1) filter.
+
+
+        Overrides the quantizer table from the input with the constant quantizer you
+        specify.
+
+
+        - **`quantizer`**
+          - Quantizer to use
+        Quantizer to use
+
+
+        Default pp filter combination (hb|a,vb|a,dr|a)
+
+
+        Fast pp filter combination (h1|a,v1|a,dr|a)
+
+
+        High quality pp filter combination (ha|a|128|7,va|a,dr|a)
+
+
+
 
         Parameters:
         ----------
@@ -11200,12 +25443,58 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.196 pp7
+        ### 11.196 pp7
+
         Apply Postprocessing filter 7. It is variant of the spp filter,
         similar to spp = 6 with 7 point DCT, where only the center sample is
         used after IDCT.
 
+
         The filter accepts the following options:
+
+
+        - **`qp`**
+          - Force a constant quantization parameter. It accepts an integer in range
+        0 to 63. If not set, the filter will use the QP from the video stream
+        (if available).
+        - **`mode`**
+          - Set thresholding mode. Available modes are:
+        ‘
+        hard
+        ’
+        Set hard thresholding.
+        ‘
+        soft
+        ’
+        Set soft thresholding (better de-ringing effect, but likely blurrier).
+        ‘
+        medium
+        ’
+        Set medium thresholding (good results, default).
+        Force a constant quantization parameter. It accepts an integer in range
+        0 to 63. If not set, the filter will use the QP from the video stream
+        (if available).
+
+
+        Set thresholding mode. Available modes are:
+
+
+        - **`‘hard’`**
+          - Set hard thresholding.
+        - **`‘soft’`**
+          - Set soft thresholding (better de-ringing effect, but likely blurrier).
+        - **`‘medium’`**
+          - Set medium thresholding (good results, default).
+        Set hard thresholding.
+
+
+        Set soft thresholding (better de-ringing effect, but likely blurrier).
+
+
+        Set medium thresholding (good results, default).
+
+
+
 
         Parameters:
         ----------
@@ -11241,10 +25530,32 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.198 prewitt
+        ### 11.198 prewitt
+
         Apply prewitt operator to input video stream.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+        - **`scale`**
+          - Set value which will be multiplied with filtered result.
+        - **`delta`**
+          - Set value which will be added to filtered result.
+        Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+
+
+        Set value which will be multiplied with filtered result.
+
+
+        Set value which will be added to filtered result.
+
+
+
 
         Parameters:
         ----------
@@ -11282,10 +25593,44 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.11 prewitt_opencl
+        ### 12.11 prewitt_opencl
+
         Apply the Prewitt operator (https://en.wikipedia.org/wiki/Prewitt_operator) to input video stream.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes to filter. Default value is
+        0xf
+        , by which all planes are processed.
+        - **`scale`**
+          - Set value which will be multiplied with filtered result.
+        Range is
+        [0.0, 65535]
+        and default value is
+        1.0
+        .
+        - **`delta`**
+          - Set value which will be added to filtered result.
+        Range is
+        [-65535, 65535]
+        and default value is
+        0.0
+        .
+        Set which planes to filter. Default value is 0xf, by which all planes are processed.
+
+
+        Set value which will be multiplied with filtered result.
+        Range is [0.0, 65535] and default value is 1.0.
+
+
+        Set value which will be added to filtered result.
+        Range is [-65535, 65535] and default value is 0.0.
+
+
+
 
         Parameters:
         ----------
@@ -11352,19 +25697,171 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.199 pseudocolor
+        ### 11.199 pseudocolor
+
         Alter frame colors in video with pseudocolors.
 
+
         This filter accepts the following options:
+
+
+        - **`c0`**
+          - set pixel first component expression
+        - **`c1`**
+          - set pixel second component expression
+        - **`c2`**
+          - set pixel third component expression
+        - **`c3`**
+          - set pixel fourth component expression, corresponds to the alpha component
+        - **`index, i`**
+          - set component to use as base for altering colors
+        - **`preset, p`**
+          - Pick one of built-in LUTs. By default is set to none.
+        Available LUTs:
+        ‘
+        magma
+        ’
+        ‘
+        inferno
+        ’
+        ‘
+        plasma
+        ’
+        ‘
+        viridis
+        ’
+        ‘
+        turbo
+        ’
+        ‘
+        cividis
+        ’
+        ‘
+        range1
+        ’
+        ‘
+        range2
+        ’
+        ‘
+        shadows
+        ’
+        ‘
+        highlights
+        ’
+        ‘
+        solar
+        ’
+        ‘
+        nominal
+        ’
+        ‘
+        preferred
+        ’
+        ‘
+        total
+        ’
+        ‘
+        spectral
+        ’
+        ‘
+        cool
+        ’
+        ‘
+        heat
+        ’
+        ‘
+        fiery
+        ’
+        ‘
+        blues
+        ’
+        ‘
+        green
+        ’
+        ‘
+        helix
+        ’
+        - **`opacity`**
+          - Set opacity of output colors. Allowed range is from 0 to 1.
+        Default value is set to 1.
+        set pixel first component expression
+
+
+        set pixel second component expression
+
+
+        set pixel third component expression
+
+
+        set pixel fourth component expression, corresponds to the alpha component
+
+
+        set component to use as base for altering colors
+
+
+        Pick one of built-in LUTs. By default is set to none.
+
+
+        Available LUTs:
+
+
+        - **`‘magma’`**
+        - **`‘inferno’`**
+        - **`‘plasma’`**
+        - **`‘viridis’`**
+        - **`‘turbo’`**
+        - **`‘cividis’`**
+        - **`‘range1’`**
+        - **`‘range2’`**
+        - **`‘shadows’`**
+        - **`‘highlights’`**
+        - **`‘solar’`**
+        - **`‘nominal’`**
+        - **`‘preferred’`**
+        - **`‘total’`**
+        - **`‘spectral’`**
+        - **`‘cool’`**
+        - **`‘heat’`**
+        - **`‘fiery’`**
+        - **`‘blues’`**
+        - **`‘green’`**
+        - **`‘helix’`**
+        Set opacity of output colors. Allowed range is from 0 to 1.
+        Default value is set to 1.
 
 
         Each of the expression options specifies the expression to use for computing
         the lookup table for the corresponding pixel component values.
 
+
         The expressions can contain the following constants and functions:
 
 
+        - **`w`**
+        - **`h`**
+          - The input width and height.
+        - **`val`**
+          - The input value for the pixel component.
+        - **`ymin, umin, vmin, amin`**
+          - The minimum allowed component value.
+        - **`ymax, umax, vmax, amax`**
+          - The maximum allowed component value.
+        The input width and height.
+
+
+        The input value for the pixel component.
+
+
+        The minimum allowed component value.
+
+
+        The maximum allowed component value.
+
+
         All expressions default to "val".
+
+
+
 
         Parameters:
         ----------
@@ -11411,46 +25908,131 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.200 psnr
+        ### 11.200 psnr
+
         Obtain the average, maximum and minimum PSNR (Peak Signal to Noise
         Ratio) between two input videos.
+
 
         This filter takes in input two input videos, the first input is
         considered the "main" source and is passed unchanged to the
         output. The second input is used as a "reference" video for computing
         the PSNR.
 
+
         Both video inputs must have the same resolution and pixel format for
         this filter to work correctly. Also it assumes that both inputs
         have the same number of frames, which are compared one by one.
 
+
         The obtained average PSNR is printed through the logging system.
+
 
         The filter stores the accumulated MSE (mean squared error) of each
         frame, and at the end of the processing it is averaged across all frames
         equally, and the following formula is applied to obtain the PSNR:
 
 
-        PSNR = 10*log10(MAX^2/MSE)
-
         Where MAX is the average of the maximum values of each component of the
         image.
+
 
         The description of the accepted parameters follows.
 
 
+        - **`stats_file, f`**
+          - If specified the filter will use the named file to save the PSNR of
+        each individual frame. When filename equals "-" the data is sent to
+        standard output.
+        - **`stats_version`**
+          - Specifies which version of the stats file format to use. Details of
+        each format are written below.
+        Default value is 1.
+        - **`stats_add_max`**
+          - Determines whether the max value is output to the stats log.
+        Default value is 0.
+        Requires stats_version >= 2. If this is set and stats_version < 2,
+        the filter will return an error.
+        If specified the filter will use the named file to save the PSNR of
+        each individual frame. When filename equals "-" the data is sent to
+        standard output.
+
+
+        Specifies which version of the stats file format to use. Details of
+        each format are written below.
+        Default value is 1.
+
+
+        Determines whether the max value is output to the stats log.
+        Default value is 0.
+        Requires stats_version >= 2. If this is set and stats_version < 2,
+        the filter will return an error.
+
+
         This filter also supports the framesync options.
+
 
         The file printed if stats_file is selected, contains a sequence of
         key/value pairs of the form key:value for each compared
         couple of frames.
+
 
         If a stats_version greater than 1 is specified, a header line precedes
         the list of per-frame-pair stats, with key value pairs following the frame
         format with the following parameters:
 
 
+        - **`psnr_log_version`**
+          - The version of the log file format. Will match
+        stats_version
+        .
+        - **`fields`**
+          - A comma separated list of the per-frame-pair parameters included in
+        the log.
+        The version of the log file format. Will match stats_version.
+
+
+        A comma separated list of the per-frame-pair parameters included in
+        the log.
+
+
         A description of each shown per-frame-pair parameter follows:
+
+
+        - **`n`**
+          - sequential number of the input frame, starting from 1
+        - **`mse_avg`**
+          - Mean Square Error pixel-by-pixel average difference of the compared
+        frames, averaged over all the image components.
+        - **`mse_y, mse_u, mse_v, mse_r, mse_g, mse_b, mse_a`**
+          - Mean Square Error pixel-by-pixel average difference of the compared
+        frames for the component specified by the suffix.
+        - **`psnr_y, psnr_u, psnr_v, psnr_r, psnr_g, psnr_b, psnr_a`**
+          - Peak Signal to Noise ratio of the compared frames for the component
+        specified by the suffix.
+        - **`max_avg, max_y, max_u, max_v`**
+          - Maximum allowed value for each channel, and average over all
+        channels.
+        sequential number of the input frame, starting from 1
+
+
+        Mean Square Error pixel-by-pixel average difference of the compared
+        frames, averaged over all the image components.
+
+
+        Mean Square Error pixel-by-pixel average difference of the compared
+        frames for the component specified by the suffix.
+
+
+        Peak Signal to Noise ratio of the compared frames for the component
+        specified by the suffix.
+
+
+        Maximum allowed value for each channel, and average over all
+        channels.
+
+
+
 
         Parameters:
         ----------
@@ -11492,28 +26074,114 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.201 pullup
+        ### 11.201 pullup
+
         Pulldown reversal (inverse telecine) filter, capable of handling mixed
         hard-telecine, 24000/1001 fps progressive, and 30000/1001 fps progressive
         content.
+
 
         The pullup filter is designed to take advantage of future context in making
         its decisions. This filter is stateless in the sense that it does not lock
         onto a pattern to follow, but it instead looks forward to the following
         fields in order to identify matches and rebuild progressive frames.
 
+
         To produce content with an even framerate, insert the fps filter after
         pullup, use fps=24000/1001 if the input frame rate is 29.97fps,
         fps=24 for 30fps and the (rare) telecined 25fps input.
 
+
         The filter accepts the following options:
+
+
+        - **`jl`**
+        - **`jr`**
+        - **`jt`**
+        - **`jb`**
+          - These options set the amount of "junk" to ignore at the left, right, top, and
+        bottom of the image, respectively. Left and right are in units of 8 pixels,
+        while top and bottom are in units of 2 lines.
+        The default is 8 pixels on each side.
+        - **`sb`**
+          - Set the strict breaks. Setting this option to 1 will reduce the chances of
+        filter generating an occasional mismatched frame, but it may also cause an
+        excessive number of frames to be dropped during high motion sequences.
+        Conversely, setting it to -1 will make filter match fields more easily.
+        This may help processing of video where there is slight blurring between
+        the fields, but may also cause there to be interlaced frames in the output.
+        Default value is
+        0
+        .
+        - **`mp`**
+          - Set the metric plane to use. It accepts the following values:
+        ‘
+        l
+        ’
+        Use luma plane.
+        ‘
+        u
+        ’
+        Use chroma blue plane.
+        ‘
+        v
+        ’
+        Use chroma red plane.
+        This option may be set to use chroma plane instead of the default luma plane
+        for doing filter’s computations. This may improve accuracy on very clean
+        source material, but more likely will decrease accuracy, especially if there
+        is chroma noise (rainbow effect) or any grayscale video.
+        The main purpose of setting
+        mp
+        to a chroma plane is to reduce CPU
+        load and make pullup usable in realtime on slow machines.
+        These options set the amount of "junk" to ignore at the left, right, top, and
+        bottom of the image, respectively. Left and right are in units of 8 pixels,
+        while top and bottom are in units of 2 lines.
+        The default is 8 pixels on each side.
+
+
+        Set the strict breaks. Setting this option to 1 will reduce the chances of
+        filter generating an occasional mismatched frame, but it may also cause an
+        excessive number of frames to be dropped during high motion sequences.
+        Conversely, setting it to -1 will make filter match fields more easily.
+        This may help processing of video where there is slight blurring between
+        the fields, but may also cause there to be interlaced frames in the output.
+        Default value is 0.
+
+
+        Set the metric plane to use. It accepts the following values:
+
+
+        - **`‘l’`**
+          - Use luma plane.
+        - **`‘u’`**
+          - Use chroma blue plane.
+        - **`‘v’`**
+          - Use chroma red plane.
+        Use luma plane.
+
+
+        Use chroma blue plane.
+
+
+        Use chroma red plane.
+
+
+        This option may be set to use chroma plane instead of the default luma plane
+        for doing filter’s computations. This may improve accuracy on very clean
+        source material, but more likely will decrease accuracy, especially if there
+        is chroma noise (rainbow effect) or any grayscale video.
+        The main purpose of setting mp to a chroma plane is to reduce CPU
+        load and make pullup usable in realtime on slow machines.
 
 
         For best results (without duplicated frames in the output file) it is
         necessary to change the output frame rate. For example, to inverse
         telecine NTSC input:
 
-        ffmpeg -i input -vf pullup -r 24000/1001 ...
+
+
 
         Parameters:
         ----------
@@ -11550,14 +26218,34 @@ class VideoStream(FilterableStream):
     def qp(self, *, qp: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.202 qp
+        ### 11.202 qp
+
         Change video quantization parameters (QP).
+
 
         The filter accepts the following option:
 
 
+        - **`qp`**
+          - Set expression for quantization parameter.
+        Set expression for quantization parameter.
+
+
         The expression is evaluated through the eval API and can contain, among others,
         the following constants:
+
+
+        - **`known`**
+          - 1 if index is not 129, 0 otherwise.
+        - **`qp`**
+          - Sequential index starting from -129 to 128.
+        1 if index is not 129, 0 otherwise.
+
+
+        Sequential index starting from -129 to 128.
+
+
+
 
         Parameters:
         ----------
@@ -11586,10 +26274,42 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.203 random
+        ### 11.203 random
+
         Flush video frames from internal cache of frames into a random order.
         No frame is discarded.
         Inspired by frei0r nervous filter.
+
+
+        - **`frames`**
+          - Set size in number of frames of internal cache, in range from
+        2
+        to
+        512
+        . Default is
+        30
+        .
+        - **`seed`**
+          - Set seed for random number generator, must be an integer included between
+        0
+        and
+        UINT32_MAX
+        . If not specified, or if explicitly set to
+        less than
+        0
+        , the filter will try to use a good random seed on a
+        best effort basis.
+        Set size in number of frames of internal cache, in range from 2 to
+        512. Default is 30.
+
+
+        Set seed for random number generator, must be an integer included between
+        0 and UINT32_MAX. If not specified, or if explicitly set to
+        less than 0, the filter will try to use a good random seed on a
+        best effort basis.
+
+
+
 
         Parameters:
         ----------
@@ -11627,15 +26347,68 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.204 readeia608
+        ### 11.204 readeia608
+
         Read closed captioning (EIA-608) information from the top lines of a video frame.
+
 
         This filter adds frame metadata for lavfi.readeia608.X.cc and
         lavfi.readeia608.X.line, where X is the number of the identified line
         with EIA-608 data (starting from 0). A description of each metadata value follows:
 
 
+        - **`lavfi.readeia608.X.cc`**
+          - The two bytes stored as EIA-608 data (printed in hexadecimal).
+        - **`lavfi.readeia608.X.line`**
+          - The number of the line on which the EIA-608 data was identified and read.
+        The two bytes stored as EIA-608 data (printed in hexadecimal).
+
+
+        The number of the line on which the EIA-608 data was identified and read.
+
+
         This filter accepts the following options:
+
+
+        - **`scan_min`**
+          - Set the line to start scanning for EIA-608 data. Default is
+        0
+        .
+        - **`scan_max`**
+          - Set the line to end scanning for EIA-608 data. Default is
+        29
+        .
+        - **`spw`**
+          - Set the ratio of width reserved for sync code detection.
+        Default is
+        0.27
+        . Allowed range is
+        [0.1 - 0.7]
+        .
+        - **`chp`**
+          - Enable checking the parity bit. In the event of a parity error, the filter will output
+        0x00
+        for that character. Default is false.
+        - **`lp`**
+          - Lowpass lines prior to further processing. Default is enabled.
+        Set the line to start scanning for EIA-608 data. Default is 0.
+
+
+        Set the line to end scanning for EIA-608 data. Default is 29.
+
+
+        Set the ratio of width reserved for sync code detection.
+        Default is 0.27. Allowed range is [0.1 - 0.7].
+
+
+        Enable checking the parity bit. In the event of a parity error, the filter will output
+        0x00 for that character. Default is false.
+
+
+        Lowpass lines prior to further processing. Default is enabled.
+
+
+
 
         Parameters:
         ----------
@@ -11677,16 +26450,54 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.205 readvitc
+        ### 11.205 readvitc
+
         Read vertical interval timecode (VITC) information from the top lines of a
         video frame.
+
 
         The filter adds frame metadata key lavfi.readvitc.tc_str with the
         timecode value, if a valid timecode has been detected. Further metadata key
         lavfi.readvitc.found is set to 0/1 depending on whether
         timecode data has been found or not.
 
+
         This filter accepts the following options:
+
+
+        - **`scan_max`**
+          - Set the maximum number of lines to scan for VITC data. If the value is set to
+        -1
+        the full video frame is scanned. Default is
+        45
+        .
+        - **`thr_b`**
+          - Set the luma threshold for black. Accepts float numbers in the range [0.0,1.0],
+        default value is
+        0.2
+        . The value must be equal or less than
+        thr_w
+        .
+        - **`thr_w`**
+          - Set the luma threshold for white. Accepts float numbers in the range [0.0,1.0],
+        default value is
+        0.6
+        . The value must be equal or greater than
+        thr_b
+        .
+        Set the maximum number of lines to scan for VITC data. If the value is set to
+        -1 the full video frame is scanned. Default is 45.
+
+
+        Set the luma threshold for black. Accepts float numbers in the range [0.0,1.0],
+        default value is 0.2. The value must be equal or less than thr_w.
+
+
+        Set the luma threshold for white. Accepts float numbers in the range [0.0,1.0],
+        default value is 0.6. The value must be equal or greater than thr_b.
+
+
+
 
         Parameters:
         ----------
@@ -11723,14 +26534,46 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        18.15 realtime, arealtime
+        ### 18.15 realtime, arealtime
+
         Slow down filtering to match real time approximately.
+
 
         These filters will pause the filtering for a variable amount of time to
         match the output rate with the input timestamps.
         They are similar to the re option to ffmpeg.
 
+
         They accept the following options:
+
+
+        - **`limit`**
+          - Time limit for the pauses. Any pause longer than that will be considered
+        a timestamp discontinuity and reset the timer. Default is 2 seconds.
+        - **`speed`**
+          - Speed factor for processing. The value must be a float larger than zero.
+        Values larger than 1.0 will result in faster than realtime processing,
+        smaller will slow processing down. The
+        limit
+        is automatically adapted
+        accordingly. Default is 1.0.
+        A processing speed faster than what is possible without these filters cannot
+        be achieved.
+        Time limit for the pauses. Any pause longer than that will be considered
+        a timestamp discontinuity and reset the timer. Default is 2 seconds.
+
+
+        Speed factor for processing. The value must be a float larger than zero.
+        Values larger than 1.0 will result in faster than realtime processing,
+        smaller will slow processing down. The limit is automatically adapted
+        accordingly. Default is 1.0.
+
+
+        A processing speed faster than what is possible without these filters cannot
+        be achieved.
+
+
+
 
         Parameters:
         ----------
@@ -11767,16 +26610,48 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.206 remap
+        ### 11.206 remap
+
         Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream.
+
 
         Destination pixel at position (X, Y) will be picked from source (x, y) position
         where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero
         value for pixel will be used for destination pixel.
 
+
         Xmap and Ymap input video streams must be of same dimensions. Output video stream
         will have Xmap/Ymap video stream dimensions.
         Xmap and Ymap input video streams are 16bit depth, single channel.
+
+
+        - **`format`**
+          - Specify pixel format of output from this filter. Can be
+        color
+        or
+        gray
+        .
+        Default is
+        color
+        .
+        - **`fill`**
+          - Specify the color of the unmapped pixels. For the syntax of this option,
+        check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual
+        . Default color is
+        black
+        .
+        Specify pixel format of output from this filter. Can be color or gray.
+        Default is color.
+
+
+        Specify the color of the unmapped pixels. For the syntax of this option,
+        check the (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual. Default color is black.
+
+
+
 
         Parameters:
         ----------
@@ -11815,16 +26690,50 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.13 remap_opencl
+        ### 12.13 remap_opencl
+
         Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream.
+
 
         Destination pixel at position (X, Y) will be picked from source (x, y) position
         where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero
         value for pixel will be used for destination pixel.
 
+
         Xmap and Ymap input video streams must be of same dimensions. Output video stream
         will have Xmap/Ymap video stream dimensions.
         Xmap and Ymap input video streams are 32bit float pixel format, single channel.
+
+
+        - **`interp`**
+          - Specify interpolation used for remapping of pixels.
+        Allowed values are
+        near
+        and
+        linear
+        .
+        Default value is
+        linear
+        .
+        - **`fill`**
+          - Specify the color of the unmapped pixels. For the syntax of this option,
+        check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual
+        . Default color is
+        black
+        .
+        Specify interpolation used for remapping of pixels.
+        Allowed values are near and linear.
+        Default value is linear.
+
+
+        Specify the color of the unmapped pixels. For the syntax of this option,
+        check the (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual. Default color is black.
+
+
+
 
         Parameters:
         ----------
@@ -11863,11 +26772,174 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.207 removegrain
+        ### 11.207 removegrain
+
         The removegrain filter is a spatial denoiser for progressive video.
 
 
+        - **`m0`**
+          - Set mode for the first plane.
+        - **`m1`**
+          - Set mode for the second plane.
+        - **`m2`**
+          - Set mode for the third plane.
+        - **`m3`**
+          - Set mode for the fourth plane.
+        Set mode for the first plane.
+
+
+        Set mode for the second plane.
+
+
+        Set mode for the third plane.
+
+
+        Set mode for the fourth plane.
+
+
         Range of mode is from 0 to 24. Description of each mode follows:
+
+
+        - **`0`**
+          - Leave input plane unchanged. Default.
+        - **`1`**
+          - Clips the pixel with the minimum and maximum of the 8 neighbour pixels.
+        - **`2`**
+          - Clips the pixel with the second minimum and maximum of the 8 neighbour pixels.
+        - **`3`**
+          - Clips the pixel with the third minimum and maximum of the 8 neighbour pixels.
+        - **`4`**
+          - Clips the pixel with the fourth minimum and maximum of the 8 neighbour pixels.
+        This is equivalent to a median filter.
+        - **`5`**
+          - Line-sensitive clipping giving the minimal change.
+        - **`6`**
+          - Line-sensitive clipping, intermediate.
+        - **`7`**
+          - Line-sensitive clipping, intermediate.
+        - **`8`**
+          - Line-sensitive clipping, intermediate.
+        - **`9`**
+          - Line-sensitive clipping on a line where the neighbours pixels are the closest.
+        - **`10`**
+          - Replaces the target pixel with the closest neighbour.
+        - **`11`**
+          - [1 2 1] horizontal and vertical kernel blur.
+        - **`12`**
+          - Same as mode 11.
+        - **`13`**
+          - Bob mode, interpolates top field from the line where the neighbours
+        pixels are the closest.
+        - **`14`**
+          - Bob mode, interpolates bottom field from the line where the neighbours
+        pixels are the closest.
+        - **`15`**
+          - Bob mode, interpolates top field. Same as 13 but with a more complicated
+        interpolation formula.
+        - **`16`**
+          - Bob mode, interpolates bottom field. Same as 14 but with a more complicated
+        interpolation formula.
+        - **`17`**
+          - Clips the pixel with the minimum and maximum of respectively the maximum and
+        minimum of each pair of opposite neighbour pixels.
+        - **`18`**
+          - Line-sensitive clipping using opposite neighbours whose greatest distance from
+        the current pixel is minimal.
+        - **`19`**
+          - Replaces the pixel with the average of its 8 neighbours.
+        - **`20`**
+          - Averages the 9 pixels ([1 1 1] horizontal and vertical blur).
+        - **`21`**
+          - Clips pixels using the averages of opposite neighbour.
+        - **`22`**
+          - Same as mode 21 but simpler and faster.
+        - **`23`**
+          - Small edge and halo removal, but reputed useless.
+        - **`24`**
+          - Similar as 23.
+        Leave input plane unchanged. Default.
+
+
+        Clips the pixel with the minimum and maximum of the 8 neighbour pixels.
+
+
+        Clips the pixel with the second minimum and maximum of the 8 neighbour pixels.
+
+
+        Clips the pixel with the third minimum and maximum of the 8 neighbour pixels.
+
+
+        Clips the pixel with the fourth minimum and maximum of the 8 neighbour pixels.
+        This is equivalent to a median filter.
+
+
+        Line-sensitive clipping giving the minimal change.
+
+
+        Line-sensitive clipping, intermediate.
+
+
+        Line-sensitive clipping, intermediate.
+
+
+        Line-sensitive clipping, intermediate.
+
+
+        Line-sensitive clipping on a line where the neighbours pixels are the closest.
+
+
+        Replaces the target pixel with the closest neighbour.
+
+
+        [1 2 1] horizontal and vertical kernel blur.
+
+
+        Same as mode 11.
+
+
+        Bob mode, interpolates top field from the line where the neighbours
+        pixels are the closest.
+
+
+        Bob mode, interpolates bottom field from the line where the neighbours
+        pixels are the closest.
+
+
+        Bob mode, interpolates top field. Same as 13 but with a more complicated
+        interpolation formula.
+
+
+        Bob mode, interpolates bottom field. Same as 14 but with a more complicated
+        interpolation formula.
+
+
+        Clips the pixel with the minimum and maximum of respectively the maximum and
+        minimum of each pair of opposite neighbour pixels.
+
+
+        Line-sensitive clipping using opposite neighbours whose greatest distance from
+        the current pixel is minimal.
+
+
+        Replaces the pixel with the average of its 8 neighbours.
+
+
+        Averages the 9 pixels ([1 1 1] horizontal and vertical blur).
+
+
+        Clips pixels using the averages of opposite neighbour.
+
+
+        Same as mode 21 but simpler and faster.
+
+
+        Small edge and halo removal, but reputed useless.
+
+
+        Similar as 23.
+
+
+
 
         Parameters:
         ----------
@@ -11900,12 +26972,23 @@ class VideoStream(FilterableStream):
     def removelogo(self, *, filename: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.208 removelogo
+        ### 11.208 removelogo
+
         Suppress a TV station logo, using an image file to determine which
         pixels comprise the logo. It works by filling in the pixels that
         comprise the logo with neighboring pixels.
 
+
         The filter accepts the following options:
+
+
+        - **`filename, f`**
+          - Set the filter bitmap file, which can be any image format supported by
+        libavformat. The width and height of the image file must match those of the
+        video stream being processed.
+        Set the filter bitmap file, which can be any image format supported by
+        libavformat. The width and height of the image file must match those of the
+        video stream being processed.
 
 
         Pixels in the provided bitmap image with a value of zero are not
@@ -11916,12 +26999,16 @@ class VideoStream(FilterableStream):
         visible, and then using a threshold filter followed by the erode
         filter once or twice.
 
+
         If needed, little splotches can be fixed manually. Remember that if
         logo pixels are not covered, the filter quality will be much
         reduced. Marking too many pixels as part of the logo does not hurt as
         much, but it will increase the amount of blurring needed to cover over
         the image and will destroy more information than necessary, and extra
         pixels will slow things down on a large logo.
+
+
+
 
         Parameters:
         ----------
@@ -11948,9 +27035,13 @@ class VideoStream(FilterableStream):
     def repeatfields(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.209 repeatfields
+        ### 11.209 repeatfields
+
         This filter uses the repeat_field flag from the Video ES headers and hard repeats
         fields based on its value.
+
+
+
 
         Parameters:
         ----------
@@ -11973,11 +27064,16 @@ class VideoStream(FilterableStream):
     def reverse(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.210 reverse
+        ### 11.210 reverse
+
         Reverse a video clip.
+
 
         Warning: This filter requires memory to buffer the entire clip, so trimming
         is suggested.
+
+
+
 
         Parameters:
         ----------
@@ -12013,10 +27109,64 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.211 rgbashift
+        ### 11.211 rgbashift
+
         Shift R/G/B/A pixels horizontally and/or vertically.
 
+
         The filter accepts the following options:
+
+
+        - **`rh`**
+          - Set amount to shift red horizontally.
+        - **`rv`**
+          - Set amount to shift red vertically.
+        - **`gh`**
+          - Set amount to shift green horizontally.
+        - **`gv`**
+          - Set amount to shift green vertically.
+        - **`bh`**
+          - Set amount to shift blue horizontally.
+        - **`bv`**
+          - Set amount to shift blue vertically.
+        - **`ah`**
+          - Set amount to shift alpha horizontally.
+        - **`av`**
+          - Set amount to shift alpha vertically.
+        - **`edge`**
+          - Set edge mode, can be
+        smear
+        , default, or
+        warp
+        .
+        Set amount to shift red horizontally.
+
+
+        Set amount to shift red vertically.
+
+
+        Set amount to shift green horizontally.
+
+
+        Set amount to shift green vertically.
+
+
+        Set amount to shift blue horizontally.
+
+
+        Set amount to shift blue vertically.
+
+
+        Set amount to shift alpha horizontally.
+
+
+        Set amount to shift alpha vertically.
+
+
+        Set edge mode, can be smear, default, or warp.
+
+
+
 
         Parameters:
         ----------
@@ -12066,10 +27216,32 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.212 roberts
+        ### 11.212 roberts
+
         Apply roberts cross operator to input video stream.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+        - **`scale`**
+          - Set value which will be multiplied with filtered result.
+        - **`delta`**
+          - Set value which will be added to filtered result.
+        Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+
+
+        Set value which will be multiplied with filtered result.
+
+
+        Set value which will be added to filtered result.
+
+
+
 
         Parameters:
         ----------
@@ -12107,10 +27279,44 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.14 roberts_opencl
+        ### 12.14 roberts_opencl
+
         Apply the Roberts cross operator (https://en.wikipedia.org/wiki/Roberts_cross) to input video stream.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes to filter. Default value is
+        0xf
+        , by which all planes are processed.
+        - **`scale`**
+          - Set value which will be multiplied with filtered result.
+        Range is
+        [0.0, 65535]
+        and default value is
+        1.0
+        .
+        - **`delta`**
+          - Set value which will be added to filtered result.
+        Range is
+        [-65535, 65535]
+        and default value is
+        0.0
+        .
+        Set which planes to filter. Default value is 0xf, by which all planes are processed.
+
+
+        Set value which will be multiplied with filtered result.
+        Range is [0.0, 65535] and default value is 1.0.
+
+
+        Set value which will be added to filtered result.
+        Range is [-65535, 65535] and default value is 0.0.
+
+
+
 
         Parameters:
         ----------
@@ -12150,15 +27356,137 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.213 rotate
+        ### 11.213 rotate
+
         Rotate video by an arbitrary angle expressed in radians.
+
 
         The filter accepts the following options:
 
+
         A description of the optional parameters follows.
+
+
+        - **`angle, a`**
+          - Set an expression for the angle by which to rotate the input video
+        clockwise, expressed as a number of radians. A negative value will
+        result in a counter-clockwise rotation. By default it is set to "0".
+        This expression is evaluated for each frame.
+        - **`out_w, ow`**
+          - Set the output width expression, default value is "iw".
+        This expression is evaluated just once during configuration.
+        - **`out_h, oh`**
+          - Set the output height expression, default value is "ih".
+        This expression is evaluated just once during configuration.
+        - **`bilinear`**
+          - Enable bilinear interpolation if set to 1, a value of 0 disables
+        it. Default value is 1.
+        - **`fillcolor, c`**
+          - Set the color used to fill the output area not covered by the rotated
+        image. For the general syntax of this option, check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual
+        .
+        If the special value "none" is selected then no
+        background is printed (useful for example if the background is never shown).
+        Default value is "black".
+        Set an expression for the angle by which to rotate the input video
+        clockwise, expressed as a number of radians. A negative value will
+        result in a counter-clockwise rotation. By default it is set to "0".
+
+
+        This expression is evaluated for each frame.
+
+
+        Set the output width expression, default value is "iw".
+        This expression is evaluated just once during configuration.
+
+
+        Set the output height expression, default value is "ih".
+        This expression is evaluated just once during configuration.
+
+
+        Enable bilinear interpolation if set to 1, a value of 0 disables
+        it. Default value is 1.
+
+
+        Set the color used to fill the output area not covered by the rotated
+        image. For the general syntax of this option, check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual.
+        If the special value "none" is selected then no
+        background is printed (useful for example if the background is never shown).
+
+
+        Default value is "black".
+
 
         The expressions for the angle and the output size can contain the
         following constants and functions:
+
+
+        - **`n`**
+          - sequential number of the input frame, starting from 0. It is always NAN
+        before the first frame is filtered.
+        - **`t`**
+          - time in seconds of the input frame, it is set to 0 when the filter is
+        configured. It is always NAN before the first frame is filtered.
+        - **`hsub`**
+        - **`vsub`**
+          - horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        - **`in_w, iw`**
+        - **`in_h, ih`**
+          - the input video width and height
+        - **`out_w, ow`**
+        - **`out_h, oh`**
+          - the output width and height, that is the size of the padded area as
+        specified by the
+        width
+        and
+        height
+        expressions
+        - **`rotw(a)`**
+        - **`roth(a)`**
+          - the minimal width/height required for completely containing the input
+        video rotated by
+        a
+        radians.
+        These are only available when computing the
+        out_w
+        and
+        out_h
+        expressions.
+        sequential number of the input frame, starting from 0. It is always NAN
+        before the first frame is filtered.
+
+
+        time in seconds of the input frame, it is set to 0 when the filter is
+        configured. It is always NAN before the first frame is filtered.
+
+
+        horizontal and vertical chroma subsample values. For example for the
+        pixel format "yuv422p" hsub is 2 and vsub is 1.
+
+
+        the input video width and height
+
+
+        the output width and height, that is the size of the padded area as
+        specified by the width and height expressions
+
+
+        the minimal width/height required for completely containing the input
+        video rotated by a radians.
+
+
+        These are only available when computing the out_w and
+        out_h expressions.
+
+
+
 
         Parameters:
         ----------
@@ -12203,14 +27531,63 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.214 sab
+        ### 11.214 sab
+
         Apply Shape Adaptive Blur.
+
 
         The filter accepts the following options:
 
 
+        - **`luma_radius, lr`**
+          - Set luma blur filter strength, must be a value in range 0.1-4.0, default
+        value is 1.0. A greater value will result in a more blurred image, and
+        in slower processing.
+        - **`luma_pre_filter_radius, lpfr`**
+          - Set luma pre-filter radius, must be a value in the 0.1-2.0 range, default
+        value is 1.0.
+        - **`luma_strength, ls`**
+          - Set luma maximum difference between pixels to still be considered, must
+        be a value in the 0.1-100.0 range, default value is 1.0.
+        - **`chroma_radius, cr`**
+          - Set chroma blur filter strength, must be a value in range -0.9-4.0. A
+        greater value will result in a more blurred image, and in slower
+        processing.
+        - **`chroma_pre_filter_radius, cpfr`**
+          - Set chroma pre-filter radius, must be a value in the -0.9-2.0 range.
+        - **`chroma_strength, cs`**
+          - Set chroma maximum difference between pixels to still be considered,
+        must be a value in the -0.9-100.0 range.
+        Set luma blur filter strength, must be a value in range 0.1-4.0, default
+        value is 1.0. A greater value will result in a more blurred image, and
+        in slower processing.
+
+
+        Set luma pre-filter radius, must be a value in the 0.1-2.0 range, default
+        value is 1.0.
+
+
+        Set luma maximum difference between pixels to still be considered, must
+        be a value in the 0.1-100.0 range, default value is 1.0.
+
+
+        Set chroma blur filter strength, must be a value in range -0.9-4.0. A
+        greater value will result in a more blurred image, and in slower
+        processing.
+
+
+        Set chroma pre-filter radius, must be a value in the -0.9-2.0 range.
+
+
+        Set chroma maximum difference between pixels to still be considered,
+        must be a value in the -0.9-100.0 range.
+
+
         Each chroma option value, if not explicitly specified, is set to the
         corresponding luma option value.
+
+
+
 
         Parameters:
         ----------
@@ -12279,15 +27656,21 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.215 scale
+        ### 11.215 scale
+
         Scale (resize) the input video, using the libswscale library.
+
 
         The scale filter forces the output display aspect ratio to be the same
         of the input, by changing the output sample aspect ratio.
 
+
         If the input image format is different from the format requested by
         the next filter, the scale filter will convert the input to the
         requested format.
+
+
+
 
         Parameters:
         ----------
@@ -12381,13 +27764,87 @@ class VideoStream(FilterableStream):
     ) -> tuple["VideoStream", "VideoStream",]:
         """
 
-        11.218 scale2ref
+        ### 11.218 scale2ref
+
         Scale (resize) the input video, based on a reference video.
+
 
         See the scale filter for available options, scale2ref supports the same but
         uses the reference video instead of the main input as basis. scale2ref also
         supports the following additional constants for the w and
         h options:
+
+
+        - **`main_w`**
+        - **`main_h`**
+          - The main input video’s width and height
+        - **`main_a`**
+          - The same as
+        main_w
+        /
+        main_h
+        - **`main_sar`**
+          - The main input video’s sample aspect ratio
+        - **`main_dar, mdar`**
+          - The main input video’s display aspect ratio. Calculated from
+        (main_w / main_h) * main_sar
+        .
+        - **`main_hsub`**
+        - **`main_vsub`**
+          - The main input video’s horizontal and vertical chroma subsample values.
+        For example for the pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        - **`main_n`**
+          - The (sequential) number of the main input frame, starting from 0.
+        Only available with
+        eval=frame
+        .
+        - **`main_t`**
+          - The presentation timestamp of the main input frame, expressed as a number of
+        seconds. Only available with
+        eval=frame
+        .
+        - **`main_pos`**
+          - The position (byte offset) of the frame in the main input stream, or NaN if
+        this information is unavailable and/or meaningless (for example in case of synthetic video).
+        Only available with
+        eval=frame
+        .
+        The main input video’s width and height
+
+
+        The same as main_w / main_h
+
+
+        The main input video’s sample aspect ratio
+
+
+        The main input video’s display aspect ratio. Calculated from
+        (main_w / main_h) * main_sar.
+
+
+        The main input video’s horizontal and vertical chroma subsample values.
+        For example for the pixel format "yuv422p" hsub is 2 and vsub
+        is 1.
+
+
+        The (sequential) number of the main input frame, starting from 0.
+        Only available with eval=frame.
+
+
+        The presentation timestamp of the main input frame, expressed as a number of
+        seconds. Only available with eval=frame.
+
+
+        The position (byte offset) of the frame in the main input stream, or NaN if
+        this information is unavailable and/or meaningless (for example in case of synthetic video).
+        Only available with eval=frame.
+
+
+
 
         Parameters:
         ----------
@@ -12471,14 +27928,75 @@ class VideoStream(FilterableStream):
     ) -> tuple["VideoStream", "VideoStream",]:
         """
 
-        11.219 scale2ref_npp
+        ### 11.219 scale2ref_npp
+
         Use the NVIDIA Performance Primitives (libnpp) to scale (resize) the input
         video, based on a reference video.
+
 
         See the scale_npp filter for available options, scale2ref_npp supports the same
         but uses the reference video instead of the main input as basis. scale2ref_npp
         also supports the following additional constants for the w and
         h options:
+
+
+        - **`main_w`**
+        - **`main_h`**
+          - The main input video’s width and height
+        - **`main_a`**
+          - The same as
+        main_w
+        /
+        main_h
+        - **`main_sar`**
+          - The main input video’s sample aspect ratio
+        - **`main_dar, mdar`**
+          - The main input video’s display aspect ratio. Calculated from
+        (main_w / main_h) * main_sar
+        .
+        - **`main_n`**
+          - The (sequential) number of the main input frame, starting from 0.
+        Only available with
+        eval=frame
+        .
+        - **`main_t`**
+          - The presentation timestamp of the main input frame, expressed as a number of
+        seconds. Only available with
+        eval=frame
+        .
+        - **`main_pos`**
+          - The position (byte offset) of the frame in the main input stream, or NaN if
+        this information is unavailable and/or meaningless (for example in case of synthetic video).
+        Only available with
+        eval=frame
+        .
+        The main input video’s width and height
+
+
+        The same as main_w / main_h
+
+
+        The main input video’s sample aspect ratio
+
+
+        The main input video’s display aspect ratio. Calculated from
+        (main_w / main_h) * main_sar.
+
+
+        The (sequential) number of the main input frame, starting from 0.
+        Only available with eval=frame.
+
+
+        The presentation timestamp of the main input frame, expressed as a number of
+        seconds. Only available with eval=frame.
+
+
+        The position (byte offset) of the frame in the main input stream, or NaN if
+        this information is unavailable and/or meaningless (for example in case of synthetic video).
+        Only available with eval=frame.
+
+
+
 
         Parameters:
         ----------
@@ -12539,11 +28057,114 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.216 scale_cuda
+        ### 11.216 scale_cuda
+
         Scale (resize) and convert (pixel format) the input video, using accelerated CUDA kernels.
         Setting the output width and height works in the same way as for the scale filter.
 
+
         The filter accepts the following options:
+
+
+        - **`w`**
+        - **`h`**
+          - Set the output video dimension expression. Default value is the input dimension.
+        Allows for the same expressions as the
+        scale
+        filter.
+        - **`interp_algo`**
+          - Sets the algorithm used for scaling:
+        nearest
+        Nearest neighbour
+        Used by default if input parameters match the desired output.
+        bilinear
+        Bilinear
+        bicubic
+        Bicubic
+        This is the default.
+        lanczos
+        Lanczos
+        - **`format`**
+          - Controls the output pixel format. By default, or if none is specified, the input
+        pixel format is used.
+        The filter does not support converting between YUV and RGB pixel formats.
+        - **`passthrough`**
+          - If set to 0, every frame is processed, even if no conversion is necessary.
+        This mode can be useful to use the filter as a buffer for a downstream
+        frame-consumer that exhausts the limited decoder frame pool.
+        If set to 1, frames are passed through as-is if they match the desired output
+        parameters. This is the default behaviour.
+        - **`param`**
+          - Algorithm-Specific parameter.
+        Affects the curves of the bicubic algorithm.
+        - **`force_original_aspect_ratio`**
+        - **`force_divisible_by`**
+          - Work the same as the identical
+        scale
+        filter options.
+        Set the output video dimension expression. Default value is the input dimension.
+
+
+        Allows for the same expressions as the scale filter.
+
+
+        Sets the algorithm used for scaling:
+
+
+        - **`nearest`**
+          - Nearest neighbour
+        Used by default if input parameters match the desired output.
+        - **`bilinear`**
+          - Bilinear
+        - **`bicubic`**
+          - Bicubic
+        This is the default.
+        - **`lanczos`**
+          - Lanczos
+        Nearest neighbour
+
+
+        Used by default if input parameters match the desired output.
+
+
+        Bilinear
+
+
+        Bicubic
+
+
+        This is the default.
+
+
+        Lanczos
+
+
+        Controls the output pixel format. By default, or if none is specified, the input
+        pixel format is used.
+
+
+        The filter does not support converting between YUV and RGB pixel formats.
+
+
+        If set to 0, every frame is processed, even if no conversion is necessary.
+        This mode can be useful to use the filter as a buffer for a downstream
+        frame-consumer that exhausts the limited decoder frame pool.
+
+
+        If set to 1, frames are passed through as-is if they match the desired output
+        parameters. This is the default behaviour.
+
+
+        Algorithm-Specific parameter.
+
+
+        Affects the curves of the bicubic algorithm.
+
+
+        Work the same as the identical scale filter options.
+
+
+
 
         Parameters:
         ----------
@@ -12602,15 +28223,281 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.217 scale_npp
+        ### 11.217 scale_npp
+
         Use the NVIDIA Performance Primitives (libnpp) to perform scaling and/or pixel
         format conversion on CUDA video frames. Setting the output width and height
         works in the same way as for the scale filter.
 
+
         The following additional options are accepted:
+
+
+        - **`format`**
+          - The pixel format of the output CUDA frames. If set to the string "same" (the
+        default), the input format will be kept. Note that automatic format negotiation
+        and conversion is not yet supported for hardware frames
+        - **`interp_algo`**
+          - The interpolation algorithm used for resizing. One of the following:
+        nn
+        Nearest neighbour.
+        linear
+        cubic
+        cubic2p_bspline
+        2-parameter cubic (B=1, C=0)
+        cubic2p_catmullrom
+        2-parameter cubic (B=0, C=1/2)
+        cubic2p_b05c03
+        2-parameter cubic (B=1/2, C=3/10)
+        super
+        Supersampling
+        lanczos
+        - **`force_original_aspect_ratio`**
+          - Enable decreasing or increasing output video width or height if necessary to
+        keep the original aspect ratio. Possible values:
+        ‘
+        disable
+        ’
+        Scale the video as specified and disable this feature.
+        ‘
+        decrease
+        ’
+        The output video dimensions will automatically be decreased if needed.
+        ‘
+        increase
+        ’
+        The output video dimensions will automatically be increased if needed.
+        One useful instance of this option is that when you know a specific device’s
+        maximum allowed resolution, you can use this to limit the output video to
+        that, while retaining the aspect ratio. For example, device A allows
+        1280x720 playback, and your video is 1920x800. Using this option (set it to
+        decrease) and specifying 1280x720 to the command line makes the output
+        1280x533.
+        Please note that this is a different thing than specifying -1 for
+        w
+        or
+        h
+        , you still need to specify the output resolution for this option
+        to work.
+        - **`force_divisible_by`**
+          - Ensures that both the output dimensions, width and height, are divisible by the
+        given integer when used together with
+        force_original_aspect_ratio
+        . This
+        works similar to using
+        -n
+        in the
+        w
+        and
+        h
+        options.
+        This option respects the value set for
+        force_original_aspect_ratio
+        ,
+        increasing or decreasing the resolution accordingly. The video’s aspect ratio
+        may be slightly modified.
+        This option can be handy if you need to have a video fit within or exceed
+        a defined resolution using
+        force_original_aspect_ratio
+        but also have
+        encoder restrictions on width or height divisibility.
+        - **`eval`**
+          - Specify when to evaluate
+        width
+        and
+        height
+        expression. It accepts the following values:
+        ‘
+        init
+        ’
+        Only evaluate expressions once during the filter initialization or when a command is processed.
+        ‘
+        frame
+        ’
+        Evaluate expressions for each incoming frame.
+        The pixel format of the output CUDA frames. If set to the string "same" (the
+        default), the input format will be kept. Note that automatic format negotiation
+        and conversion is not yet supported for hardware frames
+
+
+        The interpolation algorithm used for resizing. One of the following:
+
+
+        - **`nn`**
+          - Nearest neighbour.
+        - **`linear`**
+        - **`cubic`**
+        - **`cubic2p_bspline`**
+          - 2-parameter cubic (B=1, C=0)
+        - **`cubic2p_catmullrom`**
+          - 2-parameter cubic (B=0, C=1/2)
+        - **`cubic2p_b05c03`**
+          - 2-parameter cubic (B=1/2, C=3/10)
+        - **`super`**
+          - Supersampling
+        - **`lanczos`**
+        Nearest neighbour.
+
+
+        2-parameter cubic (B=1, C=0)
+
+
+        2-parameter cubic (B=0, C=1/2)
+
+
+        2-parameter cubic (B=1/2, C=3/10)
+
+
+        Supersampling
+
+
+        Enable decreasing or increasing output video width or height if necessary to
+        keep the original aspect ratio. Possible values:
+
+
+        - **`‘disable’`**
+          - Scale the video as specified and disable this feature.
+        - **`‘decrease’`**
+          - The output video dimensions will automatically be decreased if needed.
+        - **`‘increase’`**
+          - The output video dimensions will automatically be increased if needed.
+        Scale the video as specified and disable this feature.
+
+
+        The output video dimensions will automatically be decreased if needed.
+
+
+        The output video dimensions will automatically be increased if needed.
+
+
+        One useful instance of this option is that when you know a specific device’s
+        maximum allowed resolution, you can use this to limit the output video to
+        that, while retaining the aspect ratio. For example, device A allows
+        1280x720 playback, and your video is 1920x800. Using this option (set it to
+        decrease) and specifying 1280x720 to the command line makes the output
+        1280x533.
+
+
+        Please note that this is a different thing than specifying -1 for w
+        or h, you still need to specify the output resolution for this option
+        to work.
+
+
+        Ensures that both the output dimensions, width and height, are divisible by the
+        given integer when used together with force_original_aspect_ratio. This
+        works similar to using -n in the w and h options.
+
+
+        This option respects the value set for force_original_aspect_ratio,
+        increasing or decreasing the resolution accordingly. The video’s aspect ratio
+        may be slightly modified.
+
+
+        This option can be handy if you need to have a video fit within or exceed
+        a defined resolution using force_original_aspect_ratio but also have
+        encoder restrictions on width or height divisibility.
+
+
+        Specify when to evaluate width and height expression. It accepts the following values:
+
+
+        - **`‘init’`**
+          - Only evaluate expressions once during the filter initialization or when a command is processed.
+        - **`‘frame’`**
+          - Evaluate expressions for each incoming frame.
+        Only evaluate expressions once during the filter initialization or when a command is processed.
+
+
+        Evaluate expressions for each incoming frame.
+
 
         The values of the w and h options are expressions
         containing the following constants:
+
+
+        - **`in_w`**
+        - **`in_h`**
+          - The input width and height
+        - **`iw`**
+        - **`ih`**
+          - These are the same as
+        in_w
+        and
+        in_h
+        .
+        - **`out_w`**
+        - **`out_h`**
+          - The output (scaled) width and height
+        - **`ow`**
+        - **`oh`**
+          - These are the same as
+        out_w
+        and
+        out_h
+        - **`a`**
+          - The same as
+        iw
+        /
+        ih
+        - **`sar`**
+          - input sample aspect ratio
+        - **`dar`**
+          - The input display aspect ratio. Calculated from
+        (iw / ih) * sar
+        .
+        - **`n`**
+          - The (sequential) number of the input frame, starting from 0.
+        Only available with
+        eval=frame
+        .
+        - **`t`**
+          - The presentation timestamp of the input frame, expressed as a number of
+        seconds. Only available with
+        eval=frame
+        .
+        - **`pos`**
+          - The position (byte offset) of the frame in the input stream, or NaN if
+        this information is unavailable and/or meaningless (for example in case of synthetic video).
+        Only available with
+        eval=frame
+        .
+        Deprecated, do not use.
+        The input width and height
+
+
+        These are the same as in_w and in_h.
+
+
+        The output (scaled) width and height
+
+
+        These are the same as out_w and out_h
+
+
+        The same as iw / ih
+
+
+        input sample aspect ratio
+
+
+        The input display aspect ratio. Calculated from (iw / ih) * sar.
+
+
+        The (sequential) number of the input frame, starting from 0.
+        Only available with eval=frame.
+
+
+        The presentation timestamp of the input frame, expressed as a number of
+        seconds. Only available with eval=frame.
+
+
+        The position (byte offset) of the frame in the input stream, or NaN if
+        this information is unavailable and/or meaningless (for example in case of synthetic video).
+        Only available with eval=frame.
+        Deprecated, do not use.
+
+
+
 
         Parameters:
         ----------
@@ -12660,10 +28547,36 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.220 scale_vt
+        ### 11.220 scale_vt
+
         Scale and convert the color parameters using VTPixelTransferSession.
 
+
         The filter accepts the following options:
+
+
+        - **`w`**
+        - **`h`**
+          - Set the output video dimension expression. Default value is the input dimension.
+        - **`color_matrix`**
+          - Set the output colorspace matrix.
+        - **`color_primaries`**
+          - Set the output color primaries.
+        - **`color_transfer`**
+          - Set the output transfer characteristics.
+        Set the output video dimension expression. Default value is the input dimension.
+
+
+        Set the output colorspace matrix.
+
+
+        Set the output color primaries.
+
+
+        Set the output transfer characteristics.
+
+
+
 
         Parameters:
         ----------
@@ -12704,25 +28617,63 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.223 scdet
+        ### 11.223 scdet
+
         Detect video scene change.
+
 
         This filter sets frame metadata with mafd between frame, the scene score, and
         forward the frame to the next filter, so they can use these metadata to detect
         scene change or others.
 
+
         In addition, this filter logs a message and sets frame metadata when it detects
         a scene change by threshold.
 
+
         lavfi.scd.mafd metadata keys are set with mafd for every frame.
+
 
         lavfi.scd.score metadata keys are set with scene change score for every frame
         to detect scene change.
 
+
         lavfi.scd.time metadata keys are set with current filtered frame time which
         detect scene change with threshold.
 
+
         The filter accepts the following options:
+
+
+        - **`threshold, t`**
+          - Set the scene change detection threshold as a percentage of maximum change. Good
+        values are in the
+        [8.0, 14.0]
+        range. The range for
+        threshold
+        is
+        [0., 100.]
+        .
+        Default value is
+        10.
+        .
+        - **`sc_pass, s`**
+          - Set the flag to pass scene change frames to the next filter. Default value is
+        0
+        You can enable it if you want to get snapshot of scene change frames only.
+        Set the scene change detection threshold as a percentage of maximum change. Good
+        values are in the [8.0, 14.0] range. The range for threshold is
+        [0., 100.].
+
+
+        Default value is 10..
+
+
+        Set the flag to pass scene change frames to the next filter. Default value is 0
+        You can enable it if you want to get snapshot of scene change frames only.
+
+
+
 
         Parameters:
         ----------
@@ -12758,10 +28709,32 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.221 scharr
+        ### 11.221 scharr
+
         Apply scharr operator to input video stream.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+        - **`scale`**
+          - Set value which will be multiplied with filtered result.
+        - **`delta`**
+          - Set value which will be added to filtered result.
+        Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+
+
+        Set value which will be multiplied with filtered result.
+
+
+        Set value which will be added to filtered result.
+
+
+
 
         Parameters:
         ----------
@@ -12800,10 +28773,39 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.222 scroll
+        ### 11.222 scroll
+
         Scroll input video horizontally and/or vertically by constant speed.
 
+
         The filter accepts the following options:
+
+
+        - **`horizontal, h`**
+          - Set the horizontal scrolling speed. Default is 0. Allowed range is from -1 to 1.
+        Negative values changes scrolling direction.
+        - **`vertical, v`**
+          - Set the vertical scrolling speed. Default is 0. Allowed range is from -1 to 1.
+        Negative values changes scrolling direction.
+        - **`hpos`**
+          - Set the initial horizontal scrolling position. Default is 0. Allowed range is from 0 to 1.
+        - **`vpos`**
+          - Set the initial vertical scrolling position. Default is 0. Allowed range is from 0 to 1.
+        Set the horizontal scrolling speed. Default is 0. Allowed range is from -1 to 1.
+        Negative values changes scrolling direction.
+
+
+        Set the vertical scrolling speed. Default is 0. Allowed range is from -1 to 1.
+        Negative values changes scrolling direction.
+
+
+        Set the initial horizontal scrolling position. Default is 0. Allowed range is from 0 to 1.
+
+
+        Set the initial vertical scrolling position. Default is 0. Allowed range is from 0 to 1.
+
+
+
 
         Parameters:
         ----------
@@ -12836,18 +28838,39 @@ class VideoStream(FilterableStream):
     def segment(self, *, timestamps: str, frames: str, **kwargs: Any) -> FilterNode:
         """
 
-        18.16 segment, asegment
+        ### 18.16 segment, asegment
+
         Split single input stream into multiple streams.
+
 
         This filter does opposite of concat filters.
 
+
         segment works on video frames, asegment on audio samples.
+
 
         This filter accepts the following options:
 
 
+        - **`timestamps`**
+          - Timestamps of output segments separated by ’|’. The first segment will run
+        from the beginning of the input stream. The last segment will run until
+        the end of the input stream
+        - **`frames, samples`**
+          - Exact frame/sample count to split the segments.
+        Timestamps of output segments separated by ’|’. The first segment will run
+        from the beginning of the input stream. The last segment will run until
+        the end of the input stream
+
+
+        Exact frame/sample count to split the segments.
+
+
         In all cases, prefixing an each segment with ’+’ will make it relative to the
         previous segment.
+
+
+
 
         Parameters:
         ----------
@@ -12879,16 +28902,241 @@ class VideoStream(FilterableStream):
     ) -> FilterNode:
         """
 
-        18.17 select, aselect
+        ### 18.17 select, aselect
+
         Select frames to pass in output.
 
+
         This filter accepts the following options:
+
+
+        - **`expr, e`**
+          - Set expression, which is evaluated for each input frame.
+        If the expression is evaluated to zero, the frame is discarded.
+        If the evaluation result is negative or NaN, the frame is sent to the
+        first output; otherwise it is sent to the output with index
+        ceil(val)-1
+        , assuming that the input index starts from 0.
+        For example a value of
+        1.2
+        corresponds to the output with index
+        ceil(1.2)-1 = 2-1 = 1
+        , that is the second output.
+        - **`outputs, n`**
+          - Set the number of outputs. The output to which to send the selected
+        frame is based on the result of the evaluation. Default value is 1.
+        Set expression, which is evaluated for each input frame.
+
+
+        If the expression is evaluated to zero, the frame is discarded.
+
+
+        If the evaluation result is negative or NaN, the frame is sent to the
+        first output; otherwise it is sent to the output with index
+        ceil(val)-1, assuming that the input index starts from 0.
+
+
+        For example a value of 1.2 corresponds to the output with index
+        ceil(1.2)-1 = 2-1 = 1, that is the second output.
+
+
+        Set the number of outputs. The output to which to send the selected
+        frame is based on the result of the evaluation. Default value is 1.
 
 
         The expression can contain the following constants:
 
 
+        - **`n`**
+          - The (sequential) number of the filtered frame, starting from 0.
+        - **`selected_n`**
+          - The (sequential) number of the selected frame, starting from 0.
+        - **`prev_selected_n`**
+          - The sequential number of the last selected frame. It’s NAN if undefined.
+        - **`TB`**
+          - The timebase of the input timestamps.
+        - **`pts`**
+          - The PTS (Presentation TimeStamp) of the filtered frame,
+        expressed in
+        TB
+        units. It’s NAN if undefined.
+        - **`t`**
+          - The PTS of the filtered frame,
+        expressed in seconds. It’s NAN if undefined.
+        - **`prev_pts`**
+          - The PTS of the previously filtered frame. It’s NAN if undefined.
+        - **`prev_selected_pts`**
+          - The PTS of the last previously filtered frame. It’s NAN if undefined.
+        - **`prev_selected_t`**
+          - The PTS of the last previously selected frame, expressed in seconds. It’s NAN if undefined.
+        - **`start_pts`**
+          - The first PTS in the stream which is not NAN. It remains NAN if not found.
+        - **`start_t`**
+          - The first PTS, in seconds, in the stream which is not NAN. It remains NAN if not found.
+        - **`pict_type(video only)`**
+          - The type of the filtered frame. It can assume one of the following
+        values:
+        I
+        P
+        B
+        S
+        SI
+        SP
+        BI
+        - **`interlace_type(video only)`**
+          - The frame interlace type. It can assume one of the following values:
+        PROGRESSIVE
+        The frame is progressive (not interlaced).
+        TOPFIRST
+        The frame is top-field-first.
+        BOTTOMFIRST
+        The frame is bottom-field-first.
+        - **`consumed_sample_n(audio only)`**
+          - the number of selected samples before the current frame
+        - **`samples_n(audio only)`**
+          - the number of samples in the current frame
+        - **`sample_rate(audio only)`**
+          - the input sample rate
+        - **`key`**
+          - This is 1 if the filtered frame is a key-frame, 0 otherwise.
+        - **`pos`**
+          - the position in the file of the filtered frame, -1 if the information
+        is not available (e.g. for synthetic video); deprecated, do not use
+        - **`scene(video only)`**
+          - value between 0 and 1 to indicate a new scene; a low value reflects a low
+        probability for the current frame to introduce a new scene, while a higher
+        value means the current frame is more likely to be one (see the example below)
+        - **`concatdec_select`**
+          - The concat demuxer can select only part of a concat input file by setting an
+        inpoint and an outpoint, but the output packets may not be entirely contained
+        in the selected interval. By using this variable, it is possible to skip frames
+        generated by the concat demuxer which are not exactly contained in the selected
+        interval.
+        This works by comparing the frame pts against the
+        lavf.concat.start_time
+        and the
+        lavf.concat.duration
+        packet metadata values which are also
+        present in the decoded frames.
+        The
+        concatdec_select
+        variable is -1 if the frame pts is at least
+        start_time and either the duration metadata is missing or the frame pts is less
+        than start_time + duration, 0 otherwise, and NaN if the start_time metadata is
+        missing.
+        That basically means that an input frame is selected if its pts is within the
+        interval set by the concat demuxer.
+        The (sequential) number of the filtered frame, starting from 0.
+
+
+        The (sequential) number of the selected frame, starting from 0.
+
+
+        The sequential number of the last selected frame. It’s NAN if undefined.
+
+
+        The timebase of the input timestamps.
+
+
+        The PTS (Presentation TimeStamp) of the filtered frame,
+        expressed in TB units. It’s NAN if undefined.
+
+
+        The PTS of the filtered frame,
+        expressed in seconds. It’s NAN if undefined.
+
+
+        The PTS of the previously filtered frame. It’s NAN if undefined.
+
+
+        The PTS of the last previously filtered frame. It’s NAN if undefined.
+
+
+        The PTS of the last previously selected frame, expressed in seconds. It’s NAN if undefined.
+
+
+        The first PTS in the stream which is not NAN. It remains NAN if not found.
+
+
+        The first PTS, in seconds, in the stream which is not NAN. It remains NAN if not found.
+
+
+        The type of the filtered frame. It can assume one of the following
+        values:
+
+
+        - **`I`**
+        - **`P`**
+        - **`B`**
+        - **`S`**
+        - **`SI`**
+        - **`SP`**
+        - **`BI`**
+        The frame interlace type. It can assume one of the following values:
+
+
+        - **`PROGRESSIVE`**
+          - The frame is progressive (not interlaced).
+        - **`TOPFIRST`**
+          - The frame is top-field-first.
+        - **`BOTTOMFIRST`**
+          - The frame is bottom-field-first.
+        The frame is progressive (not interlaced).
+
+
+        The frame is top-field-first.
+
+
+        The frame is bottom-field-first.
+
+
+        the number of selected samples before the current frame
+
+
+        the number of samples in the current frame
+
+
+        the input sample rate
+
+
+        This is 1 if the filtered frame is a key-frame, 0 otherwise.
+
+
+        the position in the file of the filtered frame, -1 if the information
+        is not available (e.g. for synthetic video); deprecated, do not use
+
+
+        value between 0 and 1 to indicate a new scene; a low value reflects a low
+        probability for the current frame to introduce a new scene, while a higher
+        value means the current frame is more likely to be one (see the example below)
+
+
+        The concat demuxer can select only part of a concat input file by setting an
+        inpoint and an outpoint, but the output packets may not be entirely contained
+        in the selected interval. By using this variable, it is possible to skip frames
+        generated by the concat demuxer which are not exactly contained in the selected
+        interval.
+
+
+        This works by comparing the frame pts against the lavf.concat.start_time
+        and the lavf.concat.duration packet metadata values which are also
+        present in the decoded frames.
+
+
+        The concatdec_select variable is -1 if the frame pts is at least
+        start_time and either the duration metadata is missing or the frame pts is less
+        than start_time + duration, 0 otherwise, and NaN if the start_time metadata is
+        missing.
+
+
+        That basically means that an input frame is selected if its pts is within the
+        interval set by the concat demuxer.
+
+
         The default value of the select expression is "1".
+
+
+
 
         Parameters:
         ----------
@@ -12933,20 +29181,114 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.224 selectivecolor
+        ### 11.224 selectivecolor
+
         Adjust cyan, magenta, yellow and black (CMYK) to certain ranges of colors (such
         as "reds", "yellows", "greens", "cyans", ...). The adjustment range is defined
         by the "purity" of the color (that is, how saturated it already is).
 
+
         This filter is similar to the Adobe Photoshop Selective Color tool.
 
+
         The filter accepts the following options:
+
+
+        - **`correction_method`**
+          - Select color correction method.
+        Available values are:
+        ‘
+        absolute
+        ’
+        Specified adjustments are applied "as-is" (added/subtracted to original pixel
+        component value).
+        ‘
+        relative
+        ’
+        Specified adjustments are relative to the original component value.
+        Default is
+        absolute
+        .
+        - **`reds`**
+          - Adjustments for red pixels (pixels where the red component is the maximum)
+        - **`yellows`**
+          - Adjustments for yellow pixels (pixels where the blue component is the minimum)
+        - **`greens`**
+          - Adjustments for green pixels (pixels where the green component is the maximum)
+        - **`cyans`**
+          - Adjustments for cyan pixels (pixels where the red component is the minimum)
+        - **`blues`**
+          - Adjustments for blue pixels (pixels where the blue component is the maximum)
+        - **`magentas`**
+          - Adjustments for magenta pixels (pixels where the green component is the minimum)
+        - **`whites`**
+          - Adjustments for white pixels (pixels where all components are greater than 128)
+        - **`neutrals`**
+          - Adjustments for all pixels except pure black and pure white
+        - **`blacks`**
+          - Adjustments for black pixels (pixels where all components are lesser than 128)
+        - **`psfile`**
+          - Specify a Photoshop selective color file (
+        .asv
+        ) to import the settings from.
+        Select color correction method.
+
+
+        Available values are:
+
+
+        - **`‘absolute’`**
+          - Specified adjustments are applied "as-is" (added/subtracted to original pixel
+        component value).
+        - **`‘relative’`**
+          - Specified adjustments are relative to the original component value.
+        Specified adjustments are applied "as-is" (added/subtracted to original pixel
+        component value).
+
+
+        Specified adjustments are relative to the original component value.
+
+
+        Default is absolute.
+
+
+        Adjustments for red pixels (pixels where the red component is the maximum)
+
+
+        Adjustments for yellow pixels (pixels where the blue component is the minimum)
+
+
+        Adjustments for green pixels (pixels where the green component is the maximum)
+
+
+        Adjustments for cyan pixels (pixels where the red component is the minimum)
+
+
+        Adjustments for blue pixels (pixels where the blue component is the maximum)
+
+
+        Adjustments for magenta pixels (pixels where the green component is the minimum)
+
+
+        Adjustments for white pixels (pixels where all components are greater than 128)
+
+
+        Adjustments for all pixels except pure black and pure white
+
+
+        Adjustments for black pixels (pixels where all components are lesser than 128)
+
+
+        Specify a Photoshop selective color file (.asv) to import the settings from.
 
 
         All the adjustment settings (reds, yellows, ...) accept up to
         4 space separated floating point adjustment values in the [-1,1] range,
         respectively to adjust the amount of cyan, magenta, yellow and black for the
         pixels of its range.
+
+
+
 
         Parameters:
         ----------
@@ -12993,21 +29335,41 @@ class VideoStream(FilterableStream):
     def sendcmd(self, *, commands: str, filename: str, **kwargs: Any) -> "VideoStream":
         """
 
-        18.18 sendcmd, asendcmd
+        ### 18.18 sendcmd, asendcmd
+
         Send commands to filters in the filtergraph.
+
 
         These filters read commands to be sent to other filters in the
         filtergraph.
+
 
         sendcmd must be inserted between two video filters,
         asendcmd must be inserted between two audio filters, but apart
         from that they act the same way.
 
+
         The specification of commands can be provided in the filter arguments
         with the commands option, or in a file specified by the
         filename option.
 
+
         These filters accept the following options:
+
+
+        - **`commands, c`**
+          - Set the commands to be read and sent to the other filters.
+        - **`filename, f`**
+          - Set the filename of the commands to be read and sent to the other
+        filters.
+        Set the commands to be read and sent to the other filters.
+
+
+        Set the filename of the commands to be read and sent to the other
+        filters.
+
+
+
 
         Parameters:
         ----------
@@ -13036,14 +29398,19 @@ class VideoStream(FilterableStream):
     def separatefields(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.225 separatefields
+        ### 11.225 separatefields
+
         The separatefields takes a frame-based video input and splits
         each frame into its components fields, producing a new half height clip
         with twice the frame rate and twice the frame count.
 
+
         This filter use field-dominance information in frame to decide which
         of each pair of fields to place first in the output.
         If it gets it wrong use setfield filter before separatefields filter.
+
+
+
 
         Parameters:
         ----------
@@ -13068,14 +29435,15 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.226 setdar, setsar
+        ### 11.226 setdar, setsar
+
         The setdar filter sets the Display Aspect Ratio for the filter
         output video.
+
 
         This is done by changing the specified Sample (aka Pixel) Aspect
         Ratio, according to the following equation:
 
-        DAR = HORIZONTAL_RESOLUTION / VERTICAL_RESOLUTION * SAR
 
         Keep in mind that the setdar filter does not modify the pixel
         dimensions of the video frame. Also, the display aspect ratio set by
@@ -13083,21 +29451,95 @@ class VideoStream(FilterableStream):
         e.g. in case of scaling or if another "setdar" or a "setsar" filter is
         applied.
 
+
         The setsar filter sets the Sample (aka Pixel) Aspect Ratio for
         the filter output video.
+
 
         Note that as a consequence of the application of this filter, the
         output display aspect ratio will change according to the equation
         above.
 
+
         Keep in mind that the sample aspect ratio set by the setsar
         filter may be changed by later filters in the filterchain, e.g. if
         another "setsar" or a "setdar" filter is applied.
 
+
         It accepts the following parameters:
 
 
+        - **`r, ratio, dar (setdaronly), sar (setsaronly)`**
+          - Set the aspect ratio used by the filter.
+        The parameter can be a floating point number string, or an expression. If the
+        parameter is not specified, the value "0" is assumed, meaning that the same
+        input value is used.
+        - **`max`**
+          - Set the maximum integer value to use for expressing numerator and
+        denominator when reducing the expressed aspect ratio to a rational.
+        Default value is
+        100
+        .
+        Set the aspect ratio used by the filter.
+
+
+        The parameter can be a floating point number string, or an expression. If the
+        parameter is not specified, the value "0" is assumed, meaning that the same
+        input value is used.
+
+
+        Set the maximum integer value to use for expressing numerator and
+        denominator when reducing the expressed aspect ratio to a rational.
+        Default value is 100.
+
+
         The parameter sar is an expression containing the following constants:
+
+
+        - **`w, h`**
+          - The input width and height.
+        - **`a`**
+          - Same as
+        w
+        /
+        h
+        .
+        - **`sar`**
+          - The input sample aspect ratio.
+        - **`dar`**
+          - The input display aspect ratio. It is the same as
+        (
+        w
+        /
+        h
+        ) *
+        sar
+        .
+        - **`hsub, vsub`**
+          - Horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        The input width and height.
+
+
+        Same as w / h.
+
+
+        The input sample aspect ratio.
+
+
+        The input display aspect ratio. It is the same as
+        (w / h) * sar.
+
+
+        Horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p" hsub is 2 and vsub is 1.
+
+
+
 
         Parameters:
         ----------
@@ -13128,15 +29570,62 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.227 setfield
+        ### 11.227 setfield
+
         Force field for the output video frame.
+
 
         The setfield filter marks the interlace type field for the
         output frames. It does not change the input frame, but only sets the
         corresponding property, which affects how the frame is treated by
         following filters (e.g. fieldorder or yadif).
 
+
         The filter accepts the following options:
+
+
+        - **`mode`**
+          - Available values are:
+        ‘
+        auto
+        ’
+        Keep the same field property.
+        ‘
+        bff
+        ’
+        Mark the frame as bottom-field-first.
+        ‘
+        tff
+        ’
+        Mark the frame as top-field-first.
+        ‘
+        prog
+        ’
+        Mark the frame as progressive.
+        Available values are:
+
+
+        - **`‘auto’`**
+          - Keep the same field property.
+        - **`‘bff’`**
+          - Mark the frame as bottom-field-first.
+        - **`‘tff’`**
+          - Mark the frame as top-field-first.
+        - **`‘prog’`**
+          - Mark the frame as progressive.
+        Keep the same field property.
+
+
+        Mark the frame as bottom-field-first.
+
+
+        Mark the frame as top-field-first.
+
+
+        Mark the frame as progressive.
+
+
+
 
         Parameters:
         ----------
@@ -13230,13 +29719,320 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.228 setparams
+        ### 11.228 setparams
+
         Force frame parameter for the output video frame.
+
 
         The setparams filter marks interlace and color range for the
         output frames. It does not change the input frame, but only sets the
         corresponding property, which affects how the frame is treated by
         filters/encoders.
+
+
+        - **`field_mode`**
+          - Available values are:
+        ‘
+        auto
+        ’
+        Keep the same field property (default).
+        ‘
+        bff
+        ’
+        Mark the frame as bottom-field-first.
+        ‘
+        tff
+        ’
+        Mark the frame as top-field-first.
+        ‘
+        prog
+        ’
+        Mark the frame as progressive.
+        - **`range`**
+          - Available values are:
+        ‘
+        auto
+        ’
+        Keep the same color range property (default).
+        ‘
+        unspecified, unknown
+        ’
+        Mark the frame as unspecified color range.
+        ‘
+        limited, tv, mpeg
+        ’
+        Mark the frame as limited range.
+        ‘
+        full, pc, jpeg
+        ’
+        Mark the frame as full range.
+        - **`color_primaries`**
+          - Set the color primaries.
+        Available values are:
+        ‘
+        auto
+        ’
+        Keep the same color primaries property (default).
+        ‘
+        bt709
+        ’
+        ‘
+        unknown
+        ’
+        ‘
+        bt470m
+        ’
+        ‘
+        bt470bg
+        ’
+        ‘
+        smpte170m
+        ’
+        ‘
+        smpte240m
+        ’
+        ‘
+        film
+        ’
+        ‘
+        bt2020
+        ’
+        ‘
+        smpte428
+        ’
+        ‘
+        smpte431
+        ’
+        ‘
+        smpte432
+        ’
+        ‘
+        jedec-p22
+        ’
+        - **`color_trc`**
+          - Set the color transfer.
+        Available values are:
+        ‘
+        auto
+        ’
+        Keep the same color trc property (default).
+        ‘
+        bt709
+        ’
+        ‘
+        unknown
+        ’
+        ‘
+        bt470m
+        ’
+        ‘
+        bt470bg
+        ’
+        ‘
+        smpte170m
+        ’
+        ‘
+        smpte240m
+        ’
+        ‘
+        linear
+        ’
+        ‘
+        log100
+        ’
+        ‘
+        log316
+        ’
+        ‘
+        iec61966-2-4
+        ’
+        ‘
+        bt1361e
+        ’
+        ‘
+        iec61966-2-1
+        ’
+        ‘
+        bt2020-10
+        ’
+        ‘
+        bt2020-12
+        ’
+        ‘
+        smpte2084
+        ’
+        ‘
+        smpte428
+        ’
+        ‘
+        arib-std-b67
+        ’
+        - **`colorspace`**
+          - Set the colorspace.
+        Available values are:
+        ‘
+        auto
+        ’
+        Keep the same colorspace property (default).
+        ‘
+        gbr
+        ’
+        ‘
+        bt709
+        ’
+        ‘
+        unknown
+        ’
+        ‘
+        fcc
+        ’
+        ‘
+        bt470bg
+        ’
+        ‘
+        smpte170m
+        ’
+        ‘
+        smpte240m
+        ’
+        ‘
+        ycgco
+        ’
+        ‘
+        bt2020nc
+        ’
+        ‘
+        bt2020c
+        ’
+        ‘
+        smpte2085
+        ’
+        ‘
+        chroma-derived-nc
+        ’
+        ‘
+        chroma-derived-c
+        ’
+        ‘
+        ictcp
+        ’
+        Available values are:
+
+
+        - **`‘auto’`**
+          - Keep the same field property (default).
+        - **`‘bff’`**
+          - Mark the frame as bottom-field-first.
+        - **`‘tff’`**
+          - Mark the frame as top-field-first.
+        - **`‘prog’`**
+          - Mark the frame as progressive.
+        Keep the same field property (default).
+
+
+        Mark the frame as bottom-field-first.
+
+
+        Mark the frame as top-field-first.
+
+
+        Mark the frame as progressive.
+
+
+        Available values are:
+
+
+        - **`‘auto’`**
+          - Keep the same color range property (default).
+        - **`‘unspecified, unknown’`**
+          - Mark the frame as unspecified color range.
+        - **`‘limited, tv, mpeg’`**
+          - Mark the frame as limited range.
+        - **`‘full, pc, jpeg’`**
+          - Mark the frame as full range.
+        Keep the same color range property (default).
+
+
+        Mark the frame as unspecified color range.
+
+
+        Mark the frame as limited range.
+
+
+        Mark the frame as full range.
+
+
+        Set the color primaries.
+        Available values are:
+
+
+        - **`‘auto’`**
+          - Keep the same color primaries property (default).
+        - **`‘bt709’`**
+        - **`‘unknown’`**
+        - **`‘bt470m’`**
+        - **`‘bt470bg’`**
+        - **`‘smpte170m’`**
+        - **`‘smpte240m’`**
+        - **`‘film’`**
+        - **`‘bt2020’`**
+        - **`‘smpte428’`**
+        - **`‘smpte431’`**
+        - **`‘smpte432’`**
+        - **`‘jedec-p22’`**
+        Keep the same color primaries property (default).
+
+
+        Set the color transfer.
+        Available values are:
+
+
+        - **`‘auto’`**
+          - Keep the same color trc property (default).
+        - **`‘bt709’`**
+        - **`‘unknown’`**
+        - **`‘bt470m’`**
+        - **`‘bt470bg’`**
+        - **`‘smpte170m’`**
+        - **`‘smpte240m’`**
+        - **`‘linear’`**
+        - **`‘log100’`**
+        - **`‘log316’`**
+        - **`‘iec61966-2-4’`**
+        - **`‘bt1361e’`**
+        - **`‘iec61966-2-1’`**
+        - **`‘bt2020-10’`**
+        - **`‘bt2020-12’`**
+        - **`‘smpte2084’`**
+        - **`‘smpte428’`**
+        - **`‘arib-std-b67’`**
+        Keep the same color trc property (default).
+
+
+        Set the colorspace.
+        Available values are:
+
+
+        - **`‘auto’`**
+          - Keep the same colorspace property (default).
+        - **`‘gbr’`**
+        - **`‘bt709’`**
+        - **`‘unknown’`**
+        - **`‘fcc’`**
+        - **`‘bt470bg’`**
+        - **`‘smpte170m’`**
+        - **`‘smpte240m’`**
+        - **`‘ycgco’`**
+        - **`‘bt2020nc’`**
+        - **`‘bt2020c’`**
+        - **`‘smpte2085’`**
+        - **`‘chroma-derived-nc’`**
+        - **`‘chroma-derived-c’`**
+        - **`‘ictcp’`**
+        Keep the same colorspace property (default).
+
+
+
 
         Parameters:
         ----------
@@ -13271,16 +30067,130 @@ class VideoStream(FilterableStream):
     def setpts(self, *, expr: str | DefaultStr = DefaultStr("PTS"), **kwargs: Any) -> "VideoStream":
         """
 
-        18.19 setpts, asetpts
+        ### 18.19 setpts, asetpts
+
         Change the PTS (presentation timestamp) of the input frames.
 
+
         setpts works on video frames, asetpts on audio frames.
+
 
         This filter accepts the following options:
 
 
+        - **`expr`**
+          - The expression which is evaluated for each frame to construct its timestamp.
+        The expression which is evaluated for each frame to construct its timestamp.
+
+
         The expression is evaluated through the eval API and can contain the following
         constants:
+
+
+        - **`FRAME_RATE, FR`**
+          - frame rate, only defined for constant frame-rate video
+        - **`PTS`**
+          - The presentation timestamp in input
+        - **`N`**
+          - The count of the input frame for video or the number of consumed samples,
+        not including the current frame for audio, starting from 0.
+        - **`NB_CONSUMED_SAMPLES`**
+          - The number of consumed samples, not including the current frame (only
+        audio)
+        - **`NB_SAMPLES, S`**
+          - The number of samples in the current frame (only audio)
+        - **`SAMPLE_RATE, SR`**
+          - The audio sample rate.
+        - **`STARTPTS`**
+          - The PTS of the first frame.
+        - **`STARTT`**
+          - the time in seconds of the first frame
+        - **`INTERLACED`**
+          - State whether the current frame is interlaced.
+        - **`T`**
+          - the time in seconds of the current frame
+        - **`POS`**
+          - original position in the file of the frame, or undefined if undefined
+        for the current frame; deprecated, do not use
+        - **`PREV_INPTS`**
+          - The previous input PTS.
+        - **`PREV_INT`**
+          - previous input time in seconds
+        - **`PREV_OUTPTS`**
+          - The previous output PTS.
+        - **`PREV_OUTT`**
+          - previous output time in seconds
+        - **`RTCTIME`**
+          - The wallclock (RTC) time in microseconds. This is deprecated, use time(0)
+        instead.
+        - **`RTCSTART`**
+          - The wallclock (RTC) time at the start of the movie in microseconds.
+        - **`TB`**
+          - The timebase of the input timestamps.
+        - **`T_CHANGE`**
+          - Time of the first frame after command was applied or time of the first frame if no commands.
+        frame rate, only defined for constant frame-rate video
+
+
+        The presentation timestamp in input
+
+
+        The count of the input frame for video or the number of consumed samples,
+        not including the current frame for audio, starting from 0.
+
+
+        The number of consumed samples, not including the current frame (only
+        audio)
+
+
+        The number of samples in the current frame (only audio)
+
+
+        The audio sample rate.
+
+
+        The PTS of the first frame.
+
+
+        the time in seconds of the first frame
+
+
+        State whether the current frame is interlaced.
+
+
+        the time in seconds of the current frame
+
+
+        original position in the file of the frame, or undefined if undefined
+        for the current frame; deprecated, do not use
+
+
+        The previous input PTS.
+
+
+        previous input time in seconds
+
+
+        The previous output PTS.
+
+
+        previous output time in seconds
+
+
+        The wallclock (RTC) time in microseconds. This is deprecated, use time(0)
+        instead.
+
+
+        The wallclock (RTC) time at the start of the movie in microseconds.
+
+
+        The timebase of the input timestamps.
+
+
+        Time of the first frame after command was applied or time of the first frame if no commands.
+
+
+
 
         Parameters:
         ----------
@@ -13314,15 +30224,62 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        18.20 setrange
+        ### 18.20 setrange
+
         Force color range for the output video frame.
+
 
         The setrange filter marks the color range property for the
         output frames. It does not change the input frame, but only sets the
         corresponding property, which affects how the frame is treated by
         following filters.
 
+
         The filter accepts the following options:
+
+
+        - **`range`**
+          - Available values are:
+        ‘
+        auto
+        ’
+        Keep the same color range property.
+        ‘
+        unspecified, unknown
+        ’
+        Set the color range as unspecified.
+        ‘
+        limited, tv, mpeg
+        ’
+        Set the color range as limited.
+        ‘
+        full, pc, jpeg
+        ’
+        Set the color range as full.
+        Available values are:
+
+
+        - **`‘auto’`**
+          - Keep the same color range property.
+        - **`‘unspecified, unknown’`**
+          - Set the color range as unspecified.
+        - **`‘limited, tv, mpeg’`**
+          - Set the color range as limited.
+        - **`‘full, pc, jpeg’`**
+          - Set the color range as full.
+        Keep the same color range property.
+
+
+        Set the color range as unspecified.
+
+
+        Set the color range as limited.
+
+
+        Set the color range as full.
+
+
+
 
         Parameters:
         ----------
@@ -13351,14 +30308,15 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.226 setdar, setsar
+        ### 11.226 setdar, setsar
+
         The setdar filter sets the Display Aspect Ratio for the filter
         output video.
+
 
         This is done by changing the specified Sample (aka Pixel) Aspect
         Ratio, according to the following equation:
 
-        DAR = HORIZONTAL_RESOLUTION / VERTICAL_RESOLUTION * SAR
 
         Keep in mind that the setdar filter does not modify the pixel
         dimensions of the video frame. Also, the display aspect ratio set by
@@ -13366,21 +30324,95 @@ class VideoStream(FilterableStream):
         e.g. in case of scaling or if another "setdar" or a "setsar" filter is
         applied.
 
+
         The setsar filter sets the Sample (aka Pixel) Aspect Ratio for
         the filter output video.
+
 
         Note that as a consequence of the application of this filter, the
         output display aspect ratio will change according to the equation
         above.
 
+
         Keep in mind that the sample aspect ratio set by the setsar
         filter may be changed by later filters in the filterchain, e.g. if
         another "setsar" or a "setdar" filter is applied.
 
+
         It accepts the following parameters:
 
 
+        - **`r, ratio, dar (setdaronly), sar (setsaronly)`**
+          - Set the aspect ratio used by the filter.
+        The parameter can be a floating point number string, or an expression. If the
+        parameter is not specified, the value "0" is assumed, meaning that the same
+        input value is used.
+        - **`max`**
+          - Set the maximum integer value to use for expressing numerator and
+        denominator when reducing the expressed aspect ratio to a rational.
+        Default value is
+        100
+        .
+        Set the aspect ratio used by the filter.
+
+
+        The parameter can be a floating point number string, or an expression. If the
+        parameter is not specified, the value "0" is assumed, meaning that the same
+        input value is used.
+
+
+        Set the maximum integer value to use for expressing numerator and
+        denominator when reducing the expressed aspect ratio to a rational.
+        Default value is 100.
+
+
         The parameter sar is an expression containing the following constants:
+
+
+        - **`w, h`**
+          - The input width and height.
+        - **`a`**
+          - Same as
+        w
+        /
+        h
+        .
+        - **`sar`**
+          - The input sample aspect ratio.
+        - **`dar`**
+          - The input display aspect ratio. It is the same as
+        (
+        w
+        /
+        h
+        ) *
+        sar
+        .
+        - **`hsub, vsub`**
+          - Horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p"
+        hsub
+        is 2 and
+        vsub
+        is 1.
+        The input width and height.
+
+
+        Same as w / h.
+
+
+        The input sample aspect ratio.
+
+
+        The input display aspect ratio. It is the same as
+        (w / h) * sar.
+
+
+        Horizontal and vertical chroma subsample values. For example, for the
+        pixel format "yuv422p" hsub is 2 and vsub is 1.
+
+
+
 
         Parameters:
         ----------
@@ -13409,17 +30441,27 @@ class VideoStream(FilterableStream):
     def settb(self, *, expr: str | DefaultStr = DefaultStr("intb"), **kwargs: Any) -> "VideoStream":
         """
 
-        18.21 settb, asettb
+        ### 18.21 settb, asettb
+
         Set the timebase to use for the output frames timestamps.
         It is mainly useful for testing timebase configuration.
 
+
         It accepts the following parameters:
+
+
+        - **`expr, tb`**
+          - The expression which is evaluated into the output timebase.
+        The expression which is evaluated into the output timebase.
 
 
         The value for tb is an arithmetic expression representing a
         rational. The expression can contain the constants "AVTB" (the default
         timebase), "intb" (the input timebase) and "sr" (the sample rate,
         audio only). Default value is "intb".
+
+
+
 
         Parameters:
         ----------
@@ -13448,11 +30490,28 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.229 sharpen_npp
+        ### 11.229 sharpen_npp
+
         Use the NVIDIA Performance Primitives (libnpp) to perform image sharpening with
         border control.
 
+
         The following additional options are accepted:
+
+
+        - **`border_type`**
+          - Type of sampling to be used ad frame borders. One of the following:
+        replicate
+        Replicate pixel values.
+        Type of sampling to be used ad frame borders. One of the following:
+
+
+        - **`replicate`**
+          - Replicate pixel values.
+        Replicate pixel values.
+
+
+
 
         Parameters:
         ----------
@@ -13487,10 +30546,58 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.230 shear
+        ### 11.230 shear
+
         Apply shear transform to input video.
 
+
         This filter supports the following options:
+
+
+        - **`shx`**
+          - Shear factor in X-direction. Default value is 0.
+        Allowed range is from -2 to 2.
+        - **`shy`**
+          - Shear factor in Y-direction. Default value is 0.
+        Allowed range is from -2 to 2.
+        - **`fillcolor, c`**
+          - Set the color used to fill the output area not covered by the transformed
+        video. For the general syntax of this option, check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual
+        .
+        If the special value "none" is selected then no
+        background is printed (useful for example if the background is never shown).
+        Default value is "black".
+        - **`interp`**
+          - Set interpolation type. Can be
+        bilinear
+        or
+        nearest
+        . Default is
+        bilinear
+        .
+        Shear factor in X-direction. Default value is 0.
+        Allowed range is from -2 to 2.
+
+
+        Shear factor in Y-direction. Default value is 0.
+        Allowed range is from -2 to 2.
+
+
+        Set the color used to fill the output area not covered by the transformed
+        video. For the general syntax of this option, check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual.
+        If the special value "none" is selected then no
+        background is printed (useful for example if the background is never shown).
+
+
+        Default value is "black".
+
+
+        Set interpolation type. Can be bilinear or nearest. Default is bilinear.
+
+
+
 
         Parameters:
         ----------
@@ -13523,17 +30630,141 @@ class VideoStream(FilterableStream):
     def showinfo(self, *, checksum: bool | DefaultInt = DefaultInt(1), **kwargs: Any) -> "VideoStream":
         """
 
-        11.231 showinfo
+        ### 11.231 showinfo
+
         Show a line containing various information for each input video frame.
         The input video is not modified.
 
+
         This filter supports the following options:
+
+
+        - **`checksum`**
+          - Calculate checksums of each plane. By default enabled.
+        Calculate checksums of each plane. By default enabled.
 
 
         The shown line contains a sequence of key/value pairs of the form
         key:value.
 
+
         The following values are shown in the output:
+
+
+        - **`n`**
+          - The (sequential) number of the input frame, starting from 0.
+        - **`pts`**
+          - The Presentation TimeStamp of the input frame, expressed as a number of
+        time base units. The time base unit depends on the filter input pad.
+        - **`pts_time`**
+          - The Presentation TimeStamp of the input frame, expressed as a number of
+        seconds.
+        - **`fmt`**
+          - The pixel format name.
+        - **`sar`**
+          - The sample aspect ratio of the input frame, expressed in the form
+        num
+        /
+        den
+        .
+        - **`s`**
+          - The size of the input frame. For the syntax of this option, check the
+        (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual
+        .
+        - **`i`**
+          - The type of interlaced mode ("P" for "progressive", "T" for top field first, "B"
+        for bottom field first).
+        - **`iskey`**
+          - This is 1 if the frame is a key frame, 0 otherwise.
+        - **`type`**
+          - The picture type of the input frame ("I" for an I-frame, "P" for a
+        P-frame, "B" for a B-frame, or "?" for an unknown type).
+        Also refer to the documentation of the
+        AVPictureType
+        enum and of
+        the
+        av_get_picture_type_char
+        function defined in
+        libavutil/avutil.h
+        .
+        - **`checksum`**
+          - The Adler-32 checksum (printed in hexadecimal) of all the planes of the input frame.
+        - **`plane_checksum`**
+          - The Adler-32 checksum (printed in hexadecimal) of each plane of the input frame,
+        expressed in the form "[
+        c0
+        c1
+        c2
+        c3
+        ]".
+        - **`mean`**
+          - The mean value of pixels in each plane of the input frame, expressed in the form
+        "[
+        mean0
+        mean1
+        mean2
+        mean3
+        ]".
+        - **`stdev`**
+          - The standard deviation of pixel values in each plane of the input frame, expressed
+        in the form "[
+        stdev0
+        stdev1
+        stdev2
+        stdev3
+        ]".
+        The (sequential) number of the input frame, starting from 0.
+
+
+        The Presentation TimeStamp of the input frame, expressed as a number of
+        time base units. The time base unit depends on the filter input pad.
+
+
+        The Presentation TimeStamp of the input frame, expressed as a number of
+        seconds.
+
+
+        The pixel format name.
+
+
+        The sample aspect ratio of the input frame, expressed in the form
+        num/den.
+
+
+        The size of the input frame. For the syntax of this option, check the
+        (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
+
+
+        The type of interlaced mode ("P" for "progressive", "T" for top field first, "B"
+        for bottom field first).
+
+
+        This is 1 if the frame is a key frame, 0 otherwise.
+
+
+        The picture type of the input frame ("I" for an I-frame, "P" for a
+        P-frame, "B" for a B-frame, or "?" for an unknown type).
+        Also refer to the documentation of the AVPictureType enum and of
+        the av_get_picture_type_char function defined in
+        libavutil/avutil.h.
+
+
+        The Adler-32 checksum (printed in hexadecimal) of all the planes of the input frame.
+
+
+        The Adler-32 checksum (printed in hexadecimal) of each plane of the input frame,
+        expressed in the form "[c0 c1 c2 c3]".
+
+
+        The mean value of pixels in each plane of the input frame, expressed in the form
+        "[mean0 mean1 mean2 mean3]".
+
+
+        The standard deviation of pixel values in each plane of the input frame, expressed
+        in the form "[stdev0 stdev1 stdev2 stdev3]".
+
+
+
 
         Parameters:
         ----------
@@ -13560,11 +30791,26 @@ class VideoStream(FilterableStream):
     def showpalette(self, *, s: int | DefaultInt = DefaultInt(30), **kwargs: Any) -> "VideoStream":
         """
 
-        11.232 showpalette
+        ### 11.232 showpalette
+
         Displays the 256 colors palette of each frame. This filter is only relevant for
         pal8 pixel format frames.
 
+
         It accepts the following option:
+
+
+        - **`s`**
+          - Set the size of the box used to represent one palette color entry. Default is
+        30
+        (for a
+        30x30
+        pixel box).
+        Set the size of the box used to represent one palette color entry. Default is
+        30 (for a 30x30 pixel box).
+
+
+
 
         Parameters:
         ----------
@@ -13591,13 +30837,29 @@ class VideoStream(FilterableStream):
     def shuffleframes(self, *, mapping: str | DefaultStr = DefaultStr("0"), **kwargs: Any) -> "VideoStream":
         """
 
-        11.233 shuffleframes
+        ### 11.233 shuffleframes
+
         Reorder and/or duplicate and/or drop video frames.
+
 
         It accepts the following parameters:
 
 
+        - **`mapping`**
+          - Set the destination indexes of input frames.
+        This is space or ’|’ separated list of indexes that maps input frames to output
+        frames. Number of indexes also sets maximal value that each index may have.
+        ’-1’ index have special meaning and that is to drop frame.
+        Set the destination indexes of input frames.
+        This is space or ’|’ separated list of indexes that maps input frames to output
+        frames. Number of indexes also sets maximal value that each index may have.
+        ’-1’ index have special meaning and that is to drop frame.
+
+
         The first frame has the index 0. The default is to keep the input unchanged.
+
+
+
 
         Parameters:
         ----------
@@ -13633,10 +30895,48 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.234 shufflepixels
+        ### 11.234 shufflepixels
+
         Reorder pixels in video frames.
 
+
         This filter accepts the following options:
+
+
+        - **`direction, d`**
+          - Set shuffle direction. Can be forward or inverse direction.
+        Default direction is forward.
+        - **`mode, m`**
+          - Set shuffle mode. Can be horizontal, vertical or block mode.
+        - **`width, w`**
+        - **`height, h`**
+          - Set shuffle block_size. In case of horizontal shuffle mode only width
+        part of size is used, and in case of vertical shuffle mode only height
+        part of size is used.
+        - **`seed, s`**
+          - Set random seed used with shuffling pixels. Mainly useful to set to be able
+        to reverse filtering process to get original input.
+        For example, to reverse forward shuffle you need to use same parameters
+        and exact same seed and to set direction to inverse.
+        Set shuffle direction. Can be forward or inverse direction.
+        Default direction is forward.
+
+
+        Set shuffle mode. Can be horizontal, vertical or block mode.
+
+
+        Set shuffle block_size. In case of horizontal shuffle mode only width
+        part of size is used, and in case of vertical shuffle mode only height
+        part of size is used.
+
+
+        Set random seed used with shuffling pixels. Mainly useful to set to be able
+        to reverse filtering process to get original input.
+        For example, to reverse forward shuffle you need to use same parameters
+        and exact same seed and to set direction to inverse.
+
+
+
 
         Parameters:
         ----------
@@ -13679,13 +30979,38 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.235 shuffleplanes
+        ### 11.235 shuffleplanes
+
         Reorder and/or duplicate video planes.
+
 
         It accepts the following parameters:
 
 
+        - **`map0`**
+          - The index of the input plane to be used as the first output plane.
+        - **`map1`**
+          - The index of the input plane to be used as the second output plane.
+        - **`map2`**
+          - The index of the input plane to be used as the third output plane.
+        - **`map3`**
+          - The index of the input plane to be used as the fourth output plane.
+        The index of the input plane to be used as the first output plane.
+
+
+        The index of the input plane to be used as the second output plane.
+
+
+        The index of the input plane to be used as the third output plane.
+
+
+        The index of the input plane to be used as the fourth output plane.
+
+
         The first plane has the index 0. The default is to keep the input unchanged.
+
+
+
 
         Parameters:
         ----------
@@ -13748,10 +31073,77 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        18.31 sidedata, asidedata
+        ### 18.31 sidedata, asidedata
+
         Delete frame side data, or select frames based on it.
 
+
         This filter accepts the following options:
+
+
+        - **`mode`**
+          - Set mode of operation of the filter.
+        Can be one of the following:
+        ‘
+        select
+        ’
+        Select every frame with side data of
+        type
+        .
+        ‘
+        delete
+        ’
+        Delete side data of
+        type
+        . If
+        type
+        is not set, delete all side
+        data in the frame.
+        - **`type`**
+          - Set side data type used with all modes. Must be set for
+        select
+        mode. For
+        the list of frame side data types, refer to the
+        AVFrameSideDataType
+        enum
+        in
+        libavutil/frame.h
+        . For example, to choose
+        AV_FRAME_DATA_PANSCAN
+        side data, you must specify
+        PANSCAN
+        .
+        Set mode of operation of the filter.
+
+
+        Can be one of the following:
+
+
+        - **`‘select’`**
+          - Select every frame with side data of
+        type
+        .
+        - **`‘delete’`**
+          - Delete side data of
+        type
+        . If
+        type
+        is not set, delete all side
+        data in the frame.
+        Select every frame with side data of type.
+
+
+        Delete side data of type. If type is not set, delete all side
+        data in the frame.
+
+
+        Set side data type used with all modes. Must be set for select mode. For
+        the list of frame side data types, refer to the AVFrameSideDataType enum
+        in libavutil/frame.h. For example, to choose
+        AV_FRAME_DATA_PANSCAN side data, you must specify PANSCAN.
+
+
+
 
         Parameters:
         ----------
@@ -13787,14 +31179,301 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.236 signalstats
+        ### 11.236 signalstats
+
         Evaluate various visual metrics that assist in determining issues associated
         with the digitization of analog video media.
+
 
         By default the filter will log these metadata values:
 
 
+        - **`YMIN`**
+          - Display the minimal Y value contained within the input frame. Expressed in
+        range of [0-255].
+        - **`YLOW`**
+          - Display the Y value at the 10% percentile within the input frame. Expressed in
+        range of [0-255].
+        - **`YAVG`**
+          - Display the average Y value within the input frame. Expressed in range of
+        [0-255].
+        - **`YHIGH`**
+          - Display the Y value at the 90% percentile within the input frame. Expressed in
+        range of [0-255].
+        - **`YMAX`**
+          - Display the maximum Y value contained within the input frame. Expressed in
+        range of [0-255].
+        - **`UMIN`**
+          - Display the minimal U value contained within the input frame. Expressed in
+        range of [0-255].
+        - **`ULOW`**
+          - Display the U value at the 10% percentile within the input frame. Expressed in
+        range of [0-255].
+        - **`UAVG`**
+          - Display the average U value within the input frame. Expressed in range of
+        [0-255].
+        - **`UHIGH`**
+          - Display the U value at the 90% percentile within the input frame. Expressed in
+        range of [0-255].
+        - **`UMAX`**
+          - Display the maximum U value contained within the input frame. Expressed in
+        range of [0-255].
+        - **`VMIN`**
+          - Display the minimal V value contained within the input frame. Expressed in
+        range of [0-255].
+        - **`VLOW`**
+          - Display the V value at the 10% percentile within the input frame. Expressed in
+        range of [0-255].
+        - **`VAVG`**
+          - Display the average V value within the input frame. Expressed in range of
+        [0-255].
+        - **`VHIGH`**
+          - Display the V value at the 90% percentile within the input frame. Expressed in
+        range of [0-255].
+        - **`VMAX`**
+          - Display the maximum V value contained within the input frame. Expressed in
+        range of [0-255].
+        - **`SATMIN`**
+          - Display the minimal saturation value contained within the input frame.
+        Expressed in range of [0-~181.02].
+        - **`SATLOW`**
+          - Display the saturation value at the 10% percentile within the input frame.
+        Expressed in range of [0-~181.02].
+        - **`SATAVG`**
+          - Display the average saturation value within the input frame. Expressed in range
+        of [0-~181.02].
+        - **`SATHIGH`**
+          - Display the saturation value at the 90% percentile within the input frame.
+        Expressed in range of [0-~181.02].
+        - **`SATMAX`**
+          - Display the maximum saturation value contained within the input frame.
+        Expressed in range of [0-~181.02].
+        - **`HUEMED`**
+          - Display the median value for hue within the input frame. Expressed in range of
+        [0-360].
+        - **`HUEAVG`**
+          - Display the average value for hue within the input frame. Expressed in range of
+        [0-360].
+        - **`YDIF`**
+          - Display the average of sample value difference between all values of the Y
+        plane in the current frame and corresponding values of the previous input frame.
+        Expressed in range of [0-255].
+        - **`UDIF`**
+          - Display the average of sample value difference between all values of the U
+        plane in the current frame and corresponding values of the previous input frame.
+        Expressed in range of [0-255].
+        - **`VDIF`**
+          - Display the average of sample value difference between all values of the V
+        plane in the current frame and corresponding values of the previous input frame.
+        Expressed in range of [0-255].
+        - **`YBITDEPTH`**
+          - Display bit depth of Y plane in current frame.
+        Expressed in range of [0-16].
+        - **`UBITDEPTH`**
+          - Display bit depth of U plane in current frame.
+        Expressed in range of [0-16].
+        - **`VBITDEPTH`**
+          - Display bit depth of V plane in current frame.
+        Expressed in range of [0-16].
+        Display the minimal Y value contained within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the Y value at the 10% percentile within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the average Y value within the input frame. Expressed in range of
+        [0-255].
+
+
+        Display the Y value at the 90% percentile within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the maximum Y value contained within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the minimal U value contained within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the U value at the 10% percentile within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the average U value within the input frame. Expressed in range of
+        [0-255].
+
+
+        Display the U value at the 90% percentile within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the maximum U value contained within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the minimal V value contained within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the V value at the 10% percentile within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the average V value within the input frame. Expressed in range of
+        [0-255].
+
+
+        Display the V value at the 90% percentile within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the maximum V value contained within the input frame. Expressed in
+        range of [0-255].
+
+
+        Display the minimal saturation value contained within the input frame.
+        Expressed in range of [0-~181.02].
+
+
+        Display the saturation value at the 10% percentile within the input frame.
+        Expressed in range of [0-~181.02].
+
+
+        Display the average saturation value within the input frame. Expressed in range
+        of [0-~181.02].
+
+
+        Display the saturation value at the 90% percentile within the input frame.
+        Expressed in range of [0-~181.02].
+
+
+        Display the maximum saturation value contained within the input frame.
+        Expressed in range of [0-~181.02].
+
+
+        Display the median value for hue within the input frame. Expressed in range of
+        [0-360].
+
+
+        Display the average value for hue within the input frame. Expressed in range of
+        [0-360].
+
+
+        Display the average of sample value difference between all values of the Y
+        plane in the current frame and corresponding values of the previous input frame.
+        Expressed in range of [0-255].
+
+
+        Display the average of sample value difference between all values of the U
+        plane in the current frame and corresponding values of the previous input frame.
+        Expressed in range of [0-255].
+
+
+        Display the average of sample value difference between all values of the V
+        plane in the current frame and corresponding values of the previous input frame.
+        Expressed in range of [0-255].
+
+
+        Display bit depth of Y plane in current frame.
+        Expressed in range of [0-16].
+
+
+        Display bit depth of U plane in current frame.
+        Expressed in range of [0-16].
+
+
+        Display bit depth of V plane in current frame.
+        Expressed in range of [0-16].
+
+
         The filter accepts the following options:
+
+
+        - **`stat`**
+        - **`out`**
+          - stat
+        specify an additional form of image analysis.
+        out
+        output video with the specified type of pixel highlighted.
+        Both options accept the following values:
+        ‘
+        tout
+        ’
+        Identify
+        temporal outliers
+        pixels. A
+        temporal outlier
+        is a pixel
+        unlike the neighboring pixels of the same field. Examples of temporal outliers
+        include the results of video dropouts, head clogs, or tape tracking issues.
+        ‘
+        vrep
+        ’
+        Identify
+        vertical line repetition
+        . Vertical line repetition includes
+        similar rows of pixels within a frame. In born-digital video vertical line
+        repetition is common, but this pattern is uncommon in video digitized from an
+        analog source. When it occurs in video that results from the digitization of an
+        analog source it can indicate concealment from a dropout compensator.
+        ‘
+        brng
+        ’
+        Identify pixels that fall outside of legal broadcast range.
+        - **`color, c`**
+          - Set the highlight color for the
+        out
+        option. The default color is
+        yellow.
+        stat specify an additional form of image analysis.
+        out output video with the specified type of pixel highlighted.
+
+
+        Both options accept the following values:
+
+
+        - **`‘tout’`**
+          - Identify
+        temporal outliers
+        pixels. A
+        temporal outlier
+        is a pixel
+        unlike the neighboring pixels of the same field. Examples of temporal outliers
+        include the results of video dropouts, head clogs, or tape tracking issues.
+        - **`‘vrep’`**
+          - Identify
+        vertical line repetition
+        . Vertical line repetition includes
+        similar rows of pixels within a frame. In born-digital video vertical line
+        repetition is common, but this pattern is uncommon in video digitized from an
+        analog source. When it occurs in video that results from the digitization of an
+        analog source it can indicate concealment from a dropout compensator.
+        - **`‘brng’`**
+          - Identify pixels that fall outside of legal broadcast range.
+        Identify temporal outliers pixels. A temporal outlier is a pixel
+        unlike the neighboring pixels of the same field. Examples of temporal outliers
+        include the results of video dropouts, head clogs, or tape tracking issues.
+
+
+        Identify vertical line repetition. Vertical line repetition includes
+        similar rows of pixels within a frame. In born-digital video vertical line
+        repetition is common, but this pattern is uncommon in video digitized from an
+        analog source. When it occurs in video that results from the digitization of an
+        analog source it can indicate concealment from a dropout compensator.
+
+
+        Identify pixels that fall outside of legal broadcast range.
+
+
+        Set the highlight color for the out option. The default color is
+        yellow.
+
+
+
 
         Parameters:
         ----------
@@ -13825,14 +31504,24 @@ class VideoStream(FilterableStream):
     def siti(self, *, print_summary: bool | DefaultInt = DefaultInt(0), **kwargs: Any) -> "VideoStream":
         """
 
-        11.238 siti
+        ### 11.238 siti
+
         Calculate Spatial Information (SI) and Temporal Information (TI) scores for a video,
         as defined in ITU-T Rec. P.910 (11/21): Subjective video quality assessment methods
         for multimedia applications. Available PDF at https://www.itu.int/rec/T-REC-P.910-202111-S/en.
         Note that this is a legacy implementation that corresponds to a superseded recommendation.
         Refer to ITU-T Rec. P.910 (07/22) for the latest version: https://www.itu.int/rec/T-REC-P.910-202207-I/en
 
+
         It accepts the following option:
+
+
+        - **`print_summary`**
+          - If set to 1, Summary statistics will be printed to the console. Default 0.
+        If set to 1, Summary statistics will be printed to the console. Default 0.
+
+
+
 
         Parameters:
         ----------
@@ -13869,14 +31558,91 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.239 smartblur
+        ### 11.239 smartblur
+
         Blur the input video without impacting the outlines.
+
 
         It accepts the following options:
 
 
+        - **`luma_radius, lr`**
+          - Set the luma radius. The option value must be a float number in
+        the range [0.1,5.0] that specifies the variance of the gaussian filter
+        used to blur the image (slower if larger). Default value is 1.0.
+        - **`luma_strength, ls`**
+          - Set the luma strength. The option value must be a float number
+        in the range [-1.0,1.0] that configures the blurring. A value included
+        in [0.0,1.0] will blur the image whereas a value included in
+        [-1.0,0.0] will sharpen the image. Default value is 1.0.
+        - **`luma_threshold, lt`**
+          - Set the luma threshold used as a coefficient to determine
+        whether a pixel should be blurred or not. The option value must be an
+        integer in the range [-30,30]. A value of 0 will filter all the image,
+        a value included in [0,30] will filter flat areas and a value included
+        in [-30,0] will filter edges. Default value is 0.
+        - **`chroma_radius, cr`**
+          - Set the chroma radius. The option value must be a float number in
+        the range [0.1,5.0] that specifies the variance of the gaussian filter
+        used to blur the image (slower if larger). Default value is
+        luma_radius
+        .
+        - **`chroma_strength, cs`**
+          - Set the chroma strength. The option value must be a float number
+        in the range [-1.0,1.0] that configures the blurring. A value included
+        in [0.0,1.0] will blur the image whereas a value included in
+        [-1.0,0.0] will sharpen the image. Default value is
+        luma_strength
+        .
+        - **`chroma_threshold, ct`**
+          - Set the chroma threshold used as a coefficient to determine
+        whether a pixel should be blurred or not. The option value must be an
+        integer in the range [-30,30]. A value of 0 will filter all the image,
+        a value included in [0,30] will filter flat areas and a value included
+        in [-30,0] will filter edges. Default value is
+        luma_threshold
+        .
+        Set the luma radius. The option value must be a float number in
+        the range [0.1,5.0] that specifies the variance of the gaussian filter
+        used to blur the image (slower if larger). Default value is 1.0.
+
+
+        Set the luma strength. The option value must be a float number
+        in the range [-1.0,1.0] that configures the blurring. A value included
+        in [0.0,1.0] will blur the image whereas a value included in
+        [-1.0,0.0] will sharpen the image. Default value is 1.0.
+
+
+        Set the luma threshold used as a coefficient to determine
+        whether a pixel should be blurred or not. The option value must be an
+        integer in the range [-30,30]. A value of 0 will filter all the image,
+        a value included in [0,30] will filter flat areas and a value included
+        in [-30,0] will filter edges. Default value is 0.
+
+
+        Set the chroma radius. The option value must be a float number in
+        the range [0.1,5.0] that specifies the variance of the gaussian filter
+        used to blur the image (slower if larger). Default value is luma_radius.
+
+
+        Set the chroma strength. The option value must be a float number
+        in the range [-1.0,1.0] that configures the blurring. A value included
+        in [0.0,1.0] will blur the image whereas a value included in
+        [-1.0,0.0] will sharpen the image. Default value is luma_strength.
+
+
+        Set the chroma threshold used as a coefficient to determine
+        whether a pixel should be blurred or not. The option value must be an
+        integer in the range [-30,30]. A value of 0 will filter all the image,
+        a value included in [0,30] will filter flat areas and a value included
+        in [-30,0] will filter edges. Default value is luma_threshold.
+
+
         If a chroma option is not explicitly set, the corresponding luma value
         is set.
+
+
+
 
         Parameters:
         ----------
@@ -13920,10 +31686,32 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.240 sobel
+        ### 11.240 sobel
+
         Apply sobel operator to input video stream.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+        - **`scale`**
+          - Set value which will be multiplied with filtered result.
+        - **`delta`**
+          - Set value which will be added to filtered result.
+        Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+
+
+        Set value which will be multiplied with filtered result.
+
+
+        Set value which will be added to filtered result.
+
+
+
 
         Parameters:
         ----------
@@ -13961,10 +31749,44 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.15 sobel_opencl
+        ### 12.15 sobel_opencl
+
         Apply the Sobel operator (https://en.wikipedia.org/wiki/Sobel_operator) to input video stream.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes to filter. Default value is
+        0xf
+        , by which all planes are processed.
+        - **`scale`**
+          - Set value which will be multiplied with filtered result.
+        Range is
+        [0.0, 65535]
+        and default value is
+        1.0
+        .
+        - **`delta`**
+          - Set value which will be added to filtered result.
+        Range is
+        [-65535, 65535]
+        and default value is
+        0.0
+        .
+        Set which planes to filter. Default value is 0xf, by which all planes are processed.
+
+
+        Set value which will be multiplied with filtered result.
+        Range is [0.0, 65535] and default value is 1.0.
+
+
+        Set value which will be added to filtered result.
+        Range is [-65535, 65535] and default value is 0.0.
+
+
+
 
         Parameters:
         ----------
@@ -14032,11 +31854,13 @@ class VideoStream(FilterableStream):
     ) -> "AudioStream":
         """
 
-        18.32 spectrumsynth
+        ### 18.32 spectrumsynth
+
         Synthesize audio from 2 input video spectrums, first input stream represents
         magnitude across time and second represents phase across time.
         The filter will transform from frequency domain as displayed in videos back
         to time domain as presented in audio output.
+
 
         This filter is primarily created for reversing processed showspectrum
         filter outputs, but can synthesize sound from other spectrograms too.
@@ -14049,7 +31873,84 @@ class VideoStream(FilterableStream):
         data option. Inputs videos should generally use fullframe
         slide mode as that saves resources needed for decoding video.
 
+
         The filter accepts the following options:
+
+
+        - **`sample_rate`**
+          - Specify sample rate of output audio, the sample rate of audio from which
+        spectrum was generated may differ.
+        - **`channels`**
+          - Set number of channels represented in input video spectrums.
+        - **`scale`**
+          - Set scale which was used when generating magnitude input spectrum.
+        Can be
+        lin
+        or
+        log
+        . Default is
+        log
+        .
+        - **`slide`**
+          - Set slide which was used when generating inputs spectrums.
+        Can be
+        replace
+        ,
+        scroll
+        ,
+        fullframe
+        or
+        rscroll
+        .
+        Default is
+        fullframe
+        .
+        - **`win_func`**
+          - Set window function used for resynthesis.
+        - **`overlap`**
+          - Set window overlap. In range
+        [0, 1]
+        . Default is
+        1
+        ,
+        which means optimal overlap for selected window function will be picked.
+        - **`orientation`**
+          - Set orientation of input videos. Can be
+        vertical
+        or
+        horizontal
+        .
+        Default is
+        vertical
+        .
+        Specify sample rate of output audio, the sample rate of audio from which
+        spectrum was generated may differ.
+
+
+        Set number of channels represented in input video spectrums.
+
+
+        Set scale which was used when generating magnitude input spectrum.
+        Can be lin or log. Default is log.
+
+
+        Set slide which was used when generating inputs spectrums.
+        Can be replace, scroll, fullframe or rscroll.
+        Default is fullframe.
+
+
+        Set window function used for resynthesis.
+
+
+        Set window overlap. In range [0, 1]. Default is 1,
+        which means optimal overlap for selected window function will be picked.
+
+
+        Set orientation of input videos. Can be vertical or horizontal.
+        Default is vertical.
+
+
+
 
         Parameters:
         ----------
@@ -14089,13 +31990,19 @@ class VideoStream(FilterableStream):
     def split(self, *, outputs: int | DefaultInt = DefaultInt(2), **kwargs: Any) -> FilterNode:
         """
 
-        18.33 split, asplit
+        ### 18.33 split, asplit
+
         Split input into several identical outputs.
+
 
         asplit works with audio input, split with video.
 
+
         The filter accepts a single parameter which specifies the number of outputs. If
         unspecified, it defaults to 2.
+
+
+
 
         Parameters:
         ----------
@@ -14131,12 +32038,77 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.241 spp
+        ### 11.241 spp
+
         Apply a simple postprocessing filter that compresses and decompresses the image
         at several (or - in the case of quality level 6 - all) shifts
         and average the results.
 
+
         The filter accepts the following options:
+
+
+        - **`quality`**
+          - Set quality. This option defines the number of levels for averaging. It accepts
+        an integer in the range 0-6. If set to
+        0
+        , the filter will have no
+        effect. A value of
+        6
+        means the higher quality. For each increment of
+        that value the speed drops by a factor of approximately 2.  Default value is
+        3
+        .
+        - **`qp`**
+          - Force a constant quantization parameter. If not set, the filter will use the QP
+        from the video stream (if available).
+        - **`mode`**
+          - Set thresholding mode. Available modes are:
+        ‘
+        hard
+        ’
+        Set hard thresholding (default).
+        ‘
+        soft
+        ’
+        Set soft thresholding (better de-ringing effect, but likely blurrier).
+        - **`use_bframe_qp`**
+          - Enable the use of the QP from the B-Frames if set to
+        1
+        . Using this
+        option may cause flicker since the B-Frames have often larger QP. Default is
+        0
+        (not enabled).
+        Set quality. This option defines the number of levels for averaging. It accepts
+        an integer in the range 0-6. If set to 0, the filter will have no
+        effect. A value of 6 means the higher quality. For each increment of
+        that value the speed drops by a factor of approximately 2.  Default value is
+        3.
+
+
+        Force a constant quantization parameter. If not set, the filter will use the QP
+        from the video stream (if available).
+
+
+        Set thresholding mode. Available modes are:
+
+
+        - **`‘hard’`**
+          - Set hard thresholding (default).
+        - **`‘soft’`**
+          - Set soft thresholding (better de-ringing effect, but likely blurrier).
+        Set hard thresholding (default).
+
+
+        Set soft thresholding (better de-ringing effect, but likely blurrier).
+
+
+        Enable the use of the QP from the B-Frames if set to 1. Using this
+        option may cause flicker since the B-Frames have often larger QP. Default is
+        0 (not enabled).
+
+
+
 
         Parameters:
         ----------
@@ -14178,25 +32150,77 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.242 sr
+        ### 11.242 sr
+
         Scale the input by applying one of the super-resolution methods based on
         convolutional neural networks. Supported models:
 
-
-         Super-Resolution Convolutional Neural Network model (SRCNN).
-        See https://arxiv.org/abs/1501.00092.
-
-         Efficient Sub-Pixel Convolutional Neural Network model (ESPCN).
-        See https://arxiv.org/abs/1609.05158.
 
         Training scripts as well as scripts for model file (.pb) saving can be found at
         https://github.com/XueweiMeng/sr/tree/sr_dnn_native. Original repository
         is at https://github.com/HighVoltageRocknRoll/sr.git.
 
+
         The filter accepts the following options:
 
 
+        - **`dnn_backend`**
+          - Specify which DNN backend to use for model loading and execution. This option accepts
+        the following values:
+        ‘
+        tensorflow
+        ’
+        TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c
+        ) and configure FFmpeg with
+        --enable-libtensorflow
+        - **`model`**
+          - Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats. TensorFlow, OpenVINO backend
+        can load files for only its format.
+        - **`scale_factor`**
+          - Set scale factor for SRCNN model. Allowed values are
+        2
+        ,
+        3
+        and
+        4
+        .
+        Default value is
+        2
+        . Scale factor is necessary for SRCNN model, because it accepts
+        input upscaled using bicubic upscaling with proper scale factor.
+        Specify which DNN backend to use for model loading and execution. This option accepts
+        the following values:
+
+
+        - **`‘tensorflow’`**
+          - TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c
+        ) and configure FFmpeg with
+        --enable-libtensorflow
+        TensorFlow backend. To enable this backend you
+        need to install the TensorFlow for C library (see
+        https://www.tensorflow.org/install/lang_c) and configure FFmpeg with
+        --enable-libtensorflow
+
+
+        Set path to model file specifying network architecture and its parameters.
+        Note that different backends use different file formats. TensorFlow, OpenVINO backend
+        can load files for only its format.
+
+
+        Set scale factor for SRCNN model. Allowed values are 2, 3 and 4.
+        Default value is 2. Scale factor is necessary for SRCNN model, because it accepts
+        input upscaled using bicubic upscaling with proper scale factor.
+
+
         To get full functionality (such as async execution), please use the dnn_processing filter.
+
+
+
 
         Parameters:
         ----------
@@ -14231,31 +32255,69 @@ class VideoStream(FilterableStream):
     def ssim(self, _reference: "VideoStream", *, stats_file: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.243 ssim
+        ### 11.243 ssim
+
         Obtain the SSIM (Structural SImilarity Metric) between two input videos.
+
 
         This filter takes in input two input videos, the first input is
         considered the "main" source and is passed unchanged to the
         output. The second input is used as a "reference" video for computing
         the SSIM.
 
+
         Both video inputs must have the same resolution and pixel format for
         this filter to work correctly. Also it assumes that both inputs
         have the same number of frames, which are compared one by one.
 
+
         The filter stores the calculated SSIM of each frame.
 
+
         The description of the accepted parameters follows.
+
+
+        - **`stats_file, f`**
+          - If specified the filter will use the named file to save the SSIM of
+        each individual frame. When filename equals "-" the data is sent to
+        standard output.
+        If specified the filter will use the named file to save the SSIM of
+        each individual frame. When filename equals "-" the data is sent to
+        standard output.
 
 
         The file printed if stats_file is selected, contains a sequence of
         key/value pairs of the form key:value for each compared
         couple of frames.
 
+
         A description of each shown parameter follows:
 
 
+        - **`n`**
+          - sequential number of the input frame, starting from 1
+        - **`Y, U, V, R, G, B`**
+          - SSIM of the compared frames for the component specified by the suffix.
+        - **`All`**
+          - SSIM of the compared frames for the whole frame.
+        - **`dB`**
+          - Same as above but in dB representation.
+        sequential number of the input frame, starting from 1
+
+
+        SSIM of the compared frames for the component specified by the suffix.
+
+
+        SSIM of the compared frames for the whole frame.
+
+
+        Same as above but in dB representation.
+
+
         This filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -14350,10 +32412,565 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.244 stereo3d
+        ### 11.244 stereo3d
+
         Convert between different stereoscopic image formats.
 
+
         The filters accept the following options:
+
+
+        - **`in`**
+          - Set stereoscopic image format of input.
+        Available values for input image formats are:
+        ‘
+        sbsl
+        ’
+        side by side parallel (left eye left, right eye right)
+        ‘
+        sbsr
+        ’
+        side by side crosseye (right eye left, left eye right)
+        ‘
+        sbs2l
+        ’
+        side by side parallel with half width resolution
+        (left eye left, right eye right)
+        ‘
+        sbs2r
+        ’
+        side by side crosseye with half width resolution
+        (right eye left, left eye right)
+        ‘
+        abl
+        ’
+        ‘
+        tbl
+        ’
+        above-below (left eye above, right eye below)
+        ‘
+        abr
+        ’
+        ‘
+        tbr
+        ’
+        above-below (right eye above, left eye below)
+        ‘
+        ab2l
+        ’
+        ‘
+        tb2l
+        ’
+        above-below with half height resolution
+        (left eye above, right eye below)
+        ‘
+        ab2r
+        ’
+        ‘
+        tb2r
+        ’
+        above-below with half height resolution
+        (right eye above, left eye below)
+        ‘
+        al
+        ’
+        alternating frames (left eye first, right eye second)
+        ‘
+        ar
+        ’
+        alternating frames (right eye first, left eye second)
+        ‘
+        irl
+        ’
+        interleaved rows (left eye has top row, right eye starts on next row)
+        ‘
+        irr
+        ’
+        interleaved rows (right eye has top row, left eye starts on next row)
+        ‘
+        icl
+        ’
+        interleaved columns, left eye first
+        ‘
+        icr
+        ’
+        interleaved columns, right eye first
+        Default value is ‘
+        sbsl
+        ’.
+        - **`out`**
+          - Set stereoscopic image format of output.
+        ‘
+        sbsl
+        ’
+        side by side parallel (left eye left, right eye right)
+        ‘
+        sbsr
+        ’
+        side by side crosseye (right eye left, left eye right)
+        ‘
+        sbs2l
+        ’
+        side by side parallel with half width resolution
+        (left eye left, right eye right)
+        ‘
+        sbs2r
+        ’
+        side by side crosseye with half width resolution
+        (right eye left, left eye right)
+        ‘
+        abl
+        ’
+        ‘
+        tbl
+        ’
+        above-below (left eye above, right eye below)
+        ‘
+        abr
+        ’
+        ‘
+        tbr
+        ’
+        above-below (right eye above, left eye below)
+        ‘
+        ab2l
+        ’
+        ‘
+        tb2l
+        ’
+        above-below with half height resolution
+        (left eye above, right eye below)
+        ‘
+        ab2r
+        ’
+        ‘
+        tb2r
+        ’
+        above-below with half height resolution
+        (right eye above, left eye below)
+        ‘
+        al
+        ’
+        alternating frames (left eye first, right eye second)
+        ‘
+        ar
+        ’
+        alternating frames (right eye first, left eye second)
+        ‘
+        irl
+        ’
+        interleaved rows (left eye has top row, right eye starts on next row)
+        ‘
+        irr
+        ’
+        interleaved rows (right eye has top row, left eye starts on next row)
+        ‘
+        arbg
+        ’
+        anaglyph red/blue gray
+        (red filter on left eye, blue filter on right eye)
+        ‘
+        argg
+        ’
+        anaglyph red/green gray
+        (red filter on left eye, green filter on right eye)
+        ‘
+        arcg
+        ’
+        anaglyph red/cyan gray
+        (red filter on left eye, cyan filter on right eye)
+        ‘
+        arch
+        ’
+        anaglyph red/cyan half colored
+        (red filter on left eye, cyan filter on right eye)
+        ‘
+        arcc
+        ’
+        anaglyph red/cyan color
+        (red filter on left eye, cyan filter on right eye)
+        ‘
+        arcd
+        ’
+        anaglyph red/cyan color optimized with the least squares projection of dubois
+        (red filter on left eye, cyan filter on right eye)
+        ‘
+        agmg
+        ’
+        anaglyph green/magenta gray
+        (green filter on left eye, magenta filter on right eye)
+        ‘
+        agmh
+        ’
+        anaglyph green/magenta half colored
+        (green filter on left eye, magenta filter on right eye)
+        ‘
+        agmc
+        ’
+        anaglyph green/magenta colored
+        (green filter on left eye, magenta filter on right eye)
+        ‘
+        agmd
+        ’
+        anaglyph green/magenta color optimized with the least squares projection of dubois
+        (green filter on left eye, magenta filter on right eye)
+        ‘
+        aybg
+        ’
+        anaglyph yellow/blue gray
+        (yellow filter on left eye, blue filter on right eye)
+        ‘
+        aybh
+        ’
+        anaglyph yellow/blue half colored
+        (yellow filter on left eye, blue filter on right eye)
+        ‘
+        aybc
+        ’
+        anaglyph yellow/blue colored
+        (yellow filter on left eye, blue filter on right eye)
+        ‘
+        aybd
+        ’
+        anaglyph yellow/blue color optimized with the least squares projection of dubois
+        (yellow filter on left eye, blue filter on right eye)
+        ‘
+        ml
+        ’
+        mono output (left eye only)
+        ‘
+        mr
+        ’
+        mono output (right eye only)
+        ‘
+        chl
+        ’
+        checkerboard, left eye first
+        ‘
+        chr
+        ’
+        checkerboard, right eye first
+        ‘
+        icl
+        ’
+        interleaved columns, left eye first
+        ‘
+        icr
+        ’
+        interleaved columns, right eye first
+        ‘
+        hdmi
+        ’
+        HDMI frame pack
+        Default value is ‘
+        arcd
+        ’.
+        Set stereoscopic image format of input.
+
+
+        Available values for input image formats are:
+
+
+        - **`‘sbsl’`**
+          - side by side parallel (left eye left, right eye right)
+        - **`‘sbsr’`**
+          - side by side crosseye (right eye left, left eye right)
+        - **`‘sbs2l’`**
+          - side by side parallel with half width resolution
+        (left eye left, right eye right)
+        - **`‘sbs2r’`**
+          - side by side crosseye with half width resolution
+        (right eye left, left eye right)
+        - **`‘abl’`**
+        - **`‘tbl’`**
+          - above-below (left eye above, right eye below)
+        - **`‘abr’`**
+        - **`‘tbr’`**
+          - above-below (right eye above, left eye below)
+        - **`‘ab2l’`**
+        - **`‘tb2l’`**
+          - above-below with half height resolution
+        (left eye above, right eye below)
+        - **`‘ab2r’`**
+        - **`‘tb2r’`**
+          - above-below with half height resolution
+        (right eye above, left eye below)
+        - **`‘al’`**
+          - alternating frames (left eye first, right eye second)
+        - **`‘ar’`**
+          - alternating frames (right eye first, left eye second)
+        - **`‘irl’`**
+          - interleaved rows (left eye has top row, right eye starts on next row)
+        - **`‘irr’`**
+          - interleaved rows (right eye has top row, left eye starts on next row)
+        - **`‘icl’`**
+          - interleaved columns, left eye first
+        - **`‘icr’`**
+          - interleaved columns, right eye first
+        Default value is ‘
+        sbsl
+        ’.
+        side by side parallel (left eye left, right eye right)
+
+
+        side by side crosseye (right eye left, left eye right)
+
+
+        side by side parallel with half width resolution
+        (left eye left, right eye right)
+
+
+        side by side crosseye with half width resolution
+        (right eye left, left eye right)
+
+
+        above-below (left eye above, right eye below)
+
+
+        above-below (right eye above, left eye below)
+
+
+        above-below with half height resolution
+        (left eye above, right eye below)
+
+
+        above-below with half height resolution
+        (right eye above, left eye below)
+
+
+        alternating frames (left eye first, right eye second)
+
+
+        alternating frames (right eye first, left eye second)
+
+
+        interleaved rows (left eye has top row, right eye starts on next row)
+
+
+        interleaved rows (right eye has top row, left eye starts on next row)
+
+
+        interleaved columns, left eye first
+
+
+        interleaved columns, right eye first
+
+
+        Default value is ‘sbsl’.
+
+
+        Set stereoscopic image format of output.
+
+
+        - **`‘sbsl’`**
+          - side by side parallel (left eye left, right eye right)
+        - **`‘sbsr’`**
+          - side by side crosseye (right eye left, left eye right)
+        - **`‘sbs2l’`**
+          - side by side parallel with half width resolution
+        (left eye left, right eye right)
+        - **`‘sbs2r’`**
+          - side by side crosseye with half width resolution
+        (right eye left, left eye right)
+        - **`‘abl’`**
+        - **`‘tbl’`**
+          - above-below (left eye above, right eye below)
+        - **`‘abr’`**
+        - **`‘tbr’`**
+          - above-below (right eye above, left eye below)
+        - **`‘ab2l’`**
+        - **`‘tb2l’`**
+          - above-below with half height resolution
+        (left eye above, right eye below)
+        - **`‘ab2r’`**
+        - **`‘tb2r’`**
+          - above-below with half height resolution
+        (right eye above, left eye below)
+        - **`‘al’`**
+          - alternating frames (left eye first, right eye second)
+        - **`‘ar’`**
+          - alternating frames (right eye first, left eye second)
+        - **`‘irl’`**
+          - interleaved rows (left eye has top row, right eye starts on next row)
+        - **`‘irr’`**
+          - interleaved rows (right eye has top row, left eye starts on next row)
+        - **`‘arbg’`**
+          - anaglyph red/blue gray
+        (red filter on left eye, blue filter on right eye)
+        - **`‘argg’`**
+          - anaglyph red/green gray
+        (red filter on left eye, green filter on right eye)
+        - **`‘arcg’`**
+          - anaglyph red/cyan gray
+        (red filter on left eye, cyan filter on right eye)
+        - **`‘arch’`**
+          - anaglyph red/cyan half colored
+        (red filter on left eye, cyan filter on right eye)
+        - **`‘arcc’`**
+          - anaglyph red/cyan color
+        (red filter on left eye, cyan filter on right eye)
+        - **`‘arcd’`**
+          - anaglyph red/cyan color optimized with the least squares projection of dubois
+        (red filter on left eye, cyan filter on right eye)
+        - **`‘agmg’`**
+          - anaglyph green/magenta gray
+        (green filter on left eye, magenta filter on right eye)
+        - **`‘agmh’`**
+          - anaglyph green/magenta half colored
+        (green filter on left eye, magenta filter on right eye)
+        - **`‘agmc’`**
+          - anaglyph green/magenta colored
+        (green filter on left eye, magenta filter on right eye)
+        - **`‘agmd’`**
+          - anaglyph green/magenta color optimized with the least squares projection of dubois
+        (green filter on left eye, magenta filter on right eye)
+        - **`‘aybg’`**
+          - anaglyph yellow/blue gray
+        (yellow filter on left eye, blue filter on right eye)
+        - **`‘aybh’`**
+          - anaglyph yellow/blue half colored
+        (yellow filter on left eye, blue filter on right eye)
+        - **`‘aybc’`**
+          - anaglyph yellow/blue colored
+        (yellow filter on left eye, blue filter on right eye)
+        - **`‘aybd’`**
+          - anaglyph yellow/blue color optimized with the least squares projection of dubois
+        (yellow filter on left eye, blue filter on right eye)
+        - **`‘ml’`**
+          - mono output (left eye only)
+        - **`‘mr’`**
+          - mono output (right eye only)
+        - **`‘chl’`**
+          - checkerboard, left eye first
+        - **`‘chr’`**
+          - checkerboard, right eye first
+        - **`‘icl’`**
+          - interleaved columns, left eye first
+        - **`‘icr’`**
+          - interleaved columns, right eye first
+        - **`‘hdmi’`**
+          - HDMI frame pack
+        side by side parallel (left eye left, right eye right)
+
+
+        side by side crosseye (right eye left, left eye right)
+
+
+        side by side parallel with half width resolution
+        (left eye left, right eye right)
+
+
+        side by side crosseye with half width resolution
+        (right eye left, left eye right)
+
+
+        above-below (left eye above, right eye below)
+
+
+        above-below (right eye above, left eye below)
+
+
+        above-below with half height resolution
+        (left eye above, right eye below)
+
+
+        above-below with half height resolution
+        (right eye above, left eye below)
+
+
+        alternating frames (left eye first, right eye second)
+
+
+        alternating frames (right eye first, left eye second)
+
+
+        interleaved rows (left eye has top row, right eye starts on next row)
+
+
+        interleaved rows (right eye has top row, left eye starts on next row)
+
+
+        anaglyph red/blue gray
+        (red filter on left eye, blue filter on right eye)
+
+
+        anaglyph red/green gray
+        (red filter on left eye, green filter on right eye)
+
+
+        anaglyph red/cyan gray
+        (red filter on left eye, cyan filter on right eye)
+
+
+        anaglyph red/cyan half colored
+        (red filter on left eye, cyan filter on right eye)
+
+
+        anaglyph red/cyan color
+        (red filter on left eye, cyan filter on right eye)
+
+
+        anaglyph red/cyan color optimized with the least squares projection of dubois
+        (red filter on left eye, cyan filter on right eye)
+
+
+        anaglyph green/magenta gray
+        (green filter on left eye, magenta filter on right eye)
+
+
+        anaglyph green/magenta half colored
+        (green filter on left eye, magenta filter on right eye)
+
+
+        anaglyph green/magenta colored
+        (green filter on left eye, magenta filter on right eye)
+
+
+        anaglyph green/magenta color optimized with the least squares projection of dubois
+        (green filter on left eye, magenta filter on right eye)
+
+
+        anaglyph yellow/blue gray
+        (yellow filter on left eye, blue filter on right eye)
+
+
+        anaglyph yellow/blue half colored
+        (yellow filter on left eye, blue filter on right eye)
+
+
+        anaglyph yellow/blue colored
+        (yellow filter on left eye, blue filter on right eye)
+
+
+        anaglyph yellow/blue color optimized with the least squares projection of dubois
+        (yellow filter on left eye, blue filter on right eye)
+
+
+        mono output (left eye only)
+
+
+        mono output (right eye only)
+
+
+        checkerboard, left eye first
+
+
+        checkerboard, right eye first
+
+
+        interleaved columns, left eye first
+
+
+        interleaved columns, right eye first
+
+
+        HDMI frame pack
+
+
+        Default value is ‘arcd’.
+
+
+
 
         Parameters:
         ----------
@@ -14393,41 +33010,113 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.246 subtitles
+        ### 11.246 subtitles
+
         Draw subtitles on top of input video using the libass library.
+
 
         To enable compilation of this filter you need to configure FFmpeg with
         --enable-libass. This filter also requires a build with libavcodec and
         libavformat to convert the passed subtitles file to ASS (Advanced Substation
         Alpha) subtitles format.
 
+
         The filter accepts the following options:
+
+
+        - **`filename, f`**
+          - Set the filename of the subtitle file to read. It must be specified.
+        - **`original_size`**
+          - Specify the size of the original video, the video for which the ASS file
+        was composed. For the syntax of this option, check the
+        (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual
+        .
+        Due to a misdesign in ASS aspect ratio arithmetic, this is necessary to
+        correctly scale the fonts if the aspect ratio has been changed.
+        - **`fontsdir`**
+          - Set a directory path containing fonts that can be used by the filter.
+        These fonts will be used in addition to whatever the font provider uses.
+        - **`alpha`**
+          - Process alpha channel, by default alpha channel is untouched.
+        - **`charenc`**
+          - Set subtitles input character encoding.
+        subtitles
+        filter only. Only
+        useful if not UTF-8.
+        - **`stream_index, si`**
+          - Set subtitles stream index.
+        subtitles
+        filter only.
+        - **`force_style`**
+          - Override default style or script info parameters of the subtitles. It accepts a
+        string containing ASS style format
+        KEY=VALUE
+        couples separated by ",".
+        - **`wrap_unicode`**
+          - Break lines according to the Unicode Line Breaking Algorithm. Availability requires
+        at least libass release 0.17.0 (or LIBASS_VERSION 0x01600010),
+        and
+        libass must
+        have been built with libunibreak.
+        The option is enabled by default except for native ASS.
+        Set the filename of the subtitle file to read. It must be specified.
+
+
+        Specify the size of the original video, the video for which the ASS file
+        was composed. For the syntax of this option, check the
+        (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
+        Due to a misdesign in ASS aspect ratio arithmetic, this is necessary to
+        correctly scale the fonts if the aspect ratio has been changed.
+
+
+        Set a directory path containing fonts that can be used by the filter.
+        These fonts will be used in addition to whatever the font provider uses.
+
+
+        Process alpha channel, by default alpha channel is untouched.
+
+
+        Set subtitles input character encoding. subtitles filter only. Only
+        useful if not UTF-8.
+
+
+        Set subtitles stream index. subtitles filter only.
+
+
+        Override default style or script info parameters of the subtitles. It accepts a
+        string containing ASS style format KEY=VALUE couples separated by ",".
+
+
+        Break lines according to the Unicode Line Breaking Algorithm. Availability requires
+        at least libass release 0.17.0 (or LIBASS_VERSION 0x01600010), and libass must
+        have been built with libunibreak.
+
+
+        The option is enabled by default except for native ASS.
 
 
         If the first key is not specified, it is assumed that the first value
         specifies the filename.
 
+
         For example, to render the file sub.srt on top of the input
         video, use the command:
 
-        subtitles=sub.srt
 
         which is equivalent to:
 
-        subtitles=filename=sub.srt
 
         To render the default subtitles stream from file video.mkv, use:
 
-        subtitles=video.mkv
 
         To render the second subtitles stream from that file, use:
 
-        subtitles=video.mkv:si=1
 
         To make the subtitles stream from sub.srt appear in 80% transparent blue
         DejaVu Serif, use:
 
-        subtitles=sub.srt:force_style='Fontname=DejaVu Serif,PrimaryColour=&HCCFF0000'
+
+
 
         Parameters:
         ----------
@@ -14466,11 +33155,16 @@ class VideoStream(FilterableStream):
     def super2xsai(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.247 super2xsai
+        ### 11.247 super2xsai
+
         Scale the input by 2x and smooth using the Super2xSaI (Scale and
         Interpolate) pixel art scaling algorithm.
 
+
         Useful for enlarging pixel art images without reducing sharpness.
+
+
+
 
         Parameters:
         ----------
@@ -14503,13 +33197,98 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.248 swaprect
+        ### 11.248 swaprect
+
         Swap two rectangular objects in video.
+
 
         This filter accepts the following options:
 
 
+        - **`w`**
+          - Set object width.
+        - **`h`**
+          - Set object height.
+        - **`x1`**
+          - Set 1st rect x coordinate.
+        - **`y1`**
+          - Set 1st rect y coordinate.
+        - **`x2`**
+          - Set 2nd rect x coordinate.
+        - **`y2`**
+          - Set 2nd rect y coordinate.
+        All expressions are evaluated once for each frame.
+        Set object width.
+
+
+        Set object height.
+
+
+        Set 1st rect x coordinate.
+
+
+        Set 1st rect y coordinate.
+
+
+        Set 2nd rect x coordinate.
+
+
+        Set 2nd rect y coordinate.
+
+
+        All expressions are evaluated once for each frame.
+
+
         The all options are expressions containing the following constants:
+
+
+        - **`w`**
+        - **`h`**
+          - The input width and height.
+        - **`a`**
+          - same as
+        w
+        /
+        h
+        - **`sar`**
+          - input sample aspect ratio
+        - **`dar`**
+          - input display aspect ratio, it is the same as (
+        w
+        /
+        h
+        ) *
+        sar
+        - **`n`**
+          - The number of the input frame, starting from 0.
+        - **`t`**
+          - The timestamp expressed in seconds. It’s NAN if the input timestamp is unknown.
+        - **`pos`**
+          - the position in the file of the input frame, NAN if unknown; deprecated,
+        do not use
+        The input width and height.
+
+
+        same as w / h
+
+
+        input sample aspect ratio
+
+
+        input display aspect ratio, it is the same as (w / h) * sar
+
+
+        The number of the input frame, starting from 0.
+
+
+        The timestamp expressed in seconds. It’s NAN if the input timestamp is unknown.
+
+
+        the position in the file of the input frame, NAN if unknown; deprecated,
+        do not use
+
+
+
 
         Parameters:
         ----------
@@ -14546,8 +33325,12 @@ class VideoStream(FilterableStream):
     def swapuv(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.249 swapuv
+        ### 11.249 swapuv
+
         Swap U & V plane.
+
+
+
 
         Parameters:
         ----------
@@ -14814,10 +33597,15 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.250 tblend
+        ### 11.250 tblend
+
         Blend successive video frames.
 
+
         See blend
+
+
+
 
         Parameters:
         ----------
@@ -14878,28 +33666,50 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.251 telecine
+        ### 11.251 telecine
+
         Apply telecine process to the video.
+
 
         This filter accepts the following options:
 
 
+        - **`first_field`**
+          - ‘
+        top, t
+        ’
+        top field first
+        ‘
+        bottom, b
+        ’
+        bottom field first
+        The default value is
+        top
+        .
+        - **`pattern`**
+          - A string of numbers representing the pulldown pattern you wish to apply.
+        The default value is
+        23
+        .
+        - **`‘top, t’`**
+          - top field first
+        - **`‘bottom, b’`**
+          - bottom field first
+        The default value is
+        top
+        .
+        top field first
 
-        Some typical patterns:
 
-        NTSC output (30i):
-        27.5p: 32222
-        24p: 23 (classic)
-        24p: 2332 (preferred)
-        20p: 33
-        18p: 334
-        16p: 3444
+        bottom field first
+        The default value is top.
 
-        PAL output (25i):
-        27.5p: 12222
-        24p: 222222222223 ("Euro pulldown")
-        16.67p: 33
-        16p: 33333334
+
+        A string of numbers representing the pulldown pattern you wish to apply.
+        The default value is 23.
+
+
+
 
         Parameters:
         ----------
@@ -14940,17 +33750,190 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.252 thistogram
+        ### 11.252 thistogram
+
         Compute and draw a color distribution histogram for the input video across time.
+
 
         Unlike histogram video filter which only shows histogram of single input frame
         at certain time, this filter shows also past histograms of number of frames defined
         by width option.
 
+
         The computed histogram is a representation of the color component
         distribution in an image.
 
+
         The filter accepts the following options:
+
+
+        - **`width, w`**
+          - Set width of single color component output. Default value is
+        0
+        .
+        Value of
+        0
+        means width will be picked from input video.
+        This also set number of passed histograms to keep.
+        Allowed range is [0, 8192].
+        - **`display_mode, d`**
+          - Set display mode.
+        It accepts the following values:
+        ‘
+        stack
+        ’
+        Per color component graphs are placed below each other.
+        ‘
+        parade
+        ’
+        Per color component graphs are placed side by side.
+        ‘
+        overlay
+        ’
+        Presents information identical to that in the
+        parade
+        , except
+        that the graphs representing color components are superimposed directly
+        over one another.
+        Default is
+        stack
+        .
+        - **`levels_mode, m`**
+          - Set mode. Can be either
+        linear
+        , or
+        logarithmic
+        .
+        Default is
+        linear
+        .
+        - **`components, c`**
+          - Set what color components to display.
+        Default is
+        7
+        .
+        - **`bgopacity, b`**
+          - Set background opacity. Default is
+        0.9
+        .
+        - **`envelope, e`**
+          - Show envelope. Default is disabled.
+        - **`ecolor, ec`**
+          - Set envelope color. Default is
+        gold
+        .
+        - **`slide`**
+          - Set slide mode.
+        Available values for slide is:
+        ‘
+        frame
+        ’
+        Draw new frame when right border is reached.
+        ‘
+        replace
+        ’
+        Replace old columns with new ones.
+        ‘
+        scroll
+        ’
+        Scroll from right to left.
+        ‘
+        rscroll
+        ’
+        Scroll from left to right.
+        ‘
+        picture
+        ’
+        Draw single picture.
+        Default is
+        replace
+        .
+        Set width of single color component output. Default value is 0.
+        Value of 0 means width will be picked from input video.
+        This also set number of passed histograms to keep.
+        Allowed range is [0, 8192].
+
+
+        Set display mode.
+        It accepts the following values:
+
+
+        - **`‘stack’`**
+          - Per color component graphs are placed below each other.
+        - **`‘parade’`**
+          - Per color component graphs are placed side by side.
+        - **`‘overlay’`**
+          - Presents information identical to that in the
+        parade
+        , except
+        that the graphs representing color components are superimposed directly
+        over one another.
+        Per color component graphs are placed below each other.
+
+
+        Per color component graphs are placed side by side.
+
+
+        Presents information identical to that in the parade, except
+        that the graphs representing color components are superimposed directly
+        over one another.
+
+
+        Default is stack.
+
+
+        Set mode. Can be either linear, or logarithmic.
+        Default is linear.
+
+
+        Set what color components to display.
+        Default is 7.
+
+
+        Set background opacity. Default is 0.9.
+
+
+        Show envelope. Default is disabled.
+
+
+        Set envelope color. Default is gold.
+
+
+        Set slide mode.
+
+
+        Available values for slide is:
+
+
+        - **`‘frame’`**
+          - Draw new frame when right border is reached.
+        - **`‘replace’`**
+          - Replace old columns with new ones.
+        - **`‘scroll’`**
+          - Scroll from right to left.
+        - **`‘rscroll’`**
+          - Scroll from left to right.
+        - **`‘picture’`**
+          - Draw single picture.
+        Draw new frame when right border is reached.
+
+
+        Replace old columns with new ones.
+
+
+        Scroll from right to left.
+
+
+        Scroll from left to right.
+
+
+        Draw single picture.
+
+
+        Default is replace.
+
+
+
 
         Parameters:
         ----------
@@ -14999,22 +33982,36 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.253 threshold
+        ### 11.253 threshold
+
         Apply threshold effect to video stream.
+
 
         This filter needs four video streams to perform thresholding.
         First stream is stream we are filtering.
         Second stream is holding threshold values, third stream is holding min values,
         and last, fourth stream is holding max values.
 
+
         The filter accepts the following option:
+
+
+        - **`planes`**
+          - Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
+        Set which planes will be processed, unprocessed planes will be copied.
+        By default value 0xf, all planes will be processed.
 
 
         For example if first stream pixel’s component value is less then threshold value
         of pixel component from 2nd threshold stream, third stream value will picked,
         otherwise fourth stream pixel component value will be picked.
 
+
         Using color source filter one can perform various types of thresholding:
+
+
+
 
         Parameters:
         ----------
@@ -15050,14 +34047,43 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.254 thumbnail
+        ### 11.254 thumbnail
+
         Select the most representative frame in a given sequence of consecutive frames.
+
 
         The filter accepts the following options:
 
 
+        - **`n`**
+          - Set the frames batch size to analyze; in a set of
+        n
+        frames, the filter
+        will pick one of them, and then handle the next batch of
+        n
+        frames until
+        the end. Default is
+        100
+        .
+        - **`log`**
+          - Set the log level to display picked frame stats.
+        Default is
+        info
+        .
+        Set the frames batch size to analyze; in a set of n frames, the filter
+        will pick one of them, and then handle the next batch of n frames until
+        the end. Default is 100.
+
+
+        Set the log level to display picked frame stats.
+        Default is info.
+
+
         Since the filter keeps track of the whole frames sequence, a bigger n
         value will result in a higher memory usage, so a high value is not recommended.
+
+
+
 
         Parameters:
         ----------
@@ -15097,12 +34123,102 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.255 tile
+        ### 11.255 tile
+
         Tile several successive frames together.
+
 
         The untile filter can do the reverse.
 
+
         The filter accepts the following options:
+
+
+        - **`layout`**
+          - Set the grid size in the form
+        COLUMNSxROWS
+        . Range is up to UINT_MAX cells.
+        Default is
+        6x5
+        .
+        - **`nb_frames`**
+          - Set the maximum number of frames to render in the given area. It must be less
+        than or equal to
+        w
+        x
+        h
+        . The default value is
+        0
+        , meaning all
+        the area will be used.
+        - **`margin`**
+          - Set the outer border margin in pixels. Range is 0 to 1024. Default is
+        0
+        .
+        - **`padding`**
+          - Set the inner border thickness (i.e. the number of pixels between frames). For
+        more advanced padding options (such as having different values for the edges),
+        refer to the pad video filter. Range is 0 to 1024. Default is
+        0
+        .
+        - **`color`**
+          - Specify the color of the unused area. For the syntax of this option, check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual
+        .
+        The default value of
+        color
+        is "black".
+        - **`overlap`**
+          - Set the number of frames to overlap when tiling several successive frames together.
+        The value must be between
+        0
+        and
+        nb_frames - 1
+        . Default is
+        0
+        .
+        - **`init_padding`**
+          - Set the number of frames to initially be empty before displaying first output frame.
+        This controls how soon will one get first output frame.
+        The value must be between
+        0
+        and
+        nb_frames - 1
+        . Default is
+        0
+        .
+        Set the grid size in the form COLUMNSxROWS. Range is up to UINT_MAX cells.
+        Default is 6x5.
+
+
+        Set the maximum number of frames to render in the given area. It must be less
+        than or equal to wxh. The default value is 0, meaning all
+        the area will be used.
+
+
+        Set the outer border margin in pixels. Range is 0 to 1024. Default is 0.
+
+
+        Set the inner border thickness (i.e. the number of pixels between frames). For
+        more advanced padding options (such as having different values for the edges),
+        refer to the pad video filter. Range is 0 to 1024. Default is 0.
+
+
+        Specify the color of the unused area. For the syntax of this option, check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils manual.
+        The default value of color is "black".
+
+
+        Set the number of frames to overlap when tiling several successive frames together.
+        The value must be between 0 and nb_frames - 1. Default is 0.
+
+
+        Set the number of frames to initially be empty before displaying first output frame.
+        This controls how soon will one get first output frame.
+        The value must be between 0 and nb_frames - 1. Default is 0.
+
+
+
 
         Parameters:
         ----------
@@ -15150,13 +34266,16 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.256 tiltandshift
+        ### 11.256 tiltandshift
+
         What happens when you invert time and space?
+
 
         Normally a video is composed of several frames that represent a different
         instant of time and shows a scence that evolves in the space captured by the
         frame. This filter is the antipode of that concept, taking inspiration by
         tilt and shift photography.
+
 
         A filtered frame contains the whole timeline of events composing the sequence,
         and this is obtained by placing a slice of pixels from each frame into a single
@@ -15166,13 +34285,42 @@ class VideoStream(FilterableStream):
         tilts each input frame as well, so that motion is preseved. This is accomplished
         by progressively selecting a different column from each input frame.
 
+
         The end result is a sort of inverted parralax, so that far away objects move
         much faster that the ones in the front. The ideal conditions for this video
         effect are when there is either very little motion and the backgroud is static,
         or when there is a lot of motion and a very wide depth of field (eg. wide
         panorama, while moving on a train).
 
+
         The filter accepts the following parameters:
+
+
+        - **`tilt`**
+          - Tilt video while shifting (default). When unset, video will be sliding a
+        static image, composed of the first column of each frame.
+        - **`start`**
+          - What to do at the start of filtering (see below).
+        - **`end`**
+          - What to do at the end of filtering (see below).
+        - **`hold`**
+          - How many columns should pass through before start of filtering.
+        - **`pad`**
+          - How many columns should be inserted before end of filtering.
+        Tilt video while shifting (default). When unset, video will be sliding a
+        static image, composed of the first column of each frame.
+
+
+        What to do at the start of filtering (see below).
+
+
+        What to do at the end of filtering (see below).
+
+
+        How many columns should pass through before start of filtering.
+
+
+        How many columns should be inserted before end of filtering.
 
 
         Normally the filter shifts and tils from the very first frame, and stops when
@@ -15180,6 +34328,24 @@ class VideoStream(FilterableStream):
         be preseved, so that the effect is slowly shifted in its place. Similarly,
         the last video frame may be reconstructed at the end. Alternatively it is
         possible to just start and end with black.
+
+
+        - **`‘none’`**
+          - Filtering is starts immediately and ends when the last frame is received.
+        - **`‘frame’`**
+          - The first frames or the very last frame are kept intact during processing.
+        - **`‘black’`**
+          - Black is padded at the beginning or at the end of filtering.
+        Filtering is starts immediately and ends when the last frame is received.
+
+
+        The first frames or the very last frame are kept intact during processing.
+
+
+        Black is padded at the beginning or at the end of filtering.
+
+
+
 
         Parameters:
         ----------
@@ -15226,13 +34392,456 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.257 tinterlace
+        ### 11.257 tinterlace
+
         Perform various types of temporal field interlacing.
+
 
         Frames are counted starting from 1, so the first input frame is
         considered odd.
 
+
         The filter accepts the following options:
+
+
+        - **`mode`**
+          - Specify the mode of the interlacing. This option can also be specified
+        as a value alone. See below for a list of values for this option.
+        Available values are:
+        ‘
+        merge, 0
+        ’
+        Move odd frames into the upper field, even into the lower field,
+        generating a double height frame at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        ‘
+        drop_even, 1
+        ’
+        Only output odd frames, even frames are dropped, generating a frame with
+        unchanged height at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+        11111                           33333
+        11111                           33333
+        11111                           33333
+        11111                           33333
+        ‘
+        drop_odd, 2
+        ’
+        Only output even frames, odd frames are dropped, generating a frame with
+        unchanged height at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+                        22222                           44444
+                        22222                           44444
+                        22222                           44444
+                        22222                           44444
+        ‘
+        pad, 3
+        ’
+        Expand each frame to full height, but pad alternate lines with black,
+        generating a frame with double height at the same input frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+        11111           .....           33333           .....
+        .....           22222           .....           44444
+        11111           .....           33333           .....
+        .....           22222           .....           44444
+        11111           .....           33333           .....
+        .....           22222           .....           44444
+        11111           .....           33333           .....
+        .....           22222           .....           44444
+        ‘
+        interleave_top, 4
+        ’
+        Interleave the upper field from odd frames with the lower field from
+        even frames, generating a frame with unchanged height at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111<-         22222           33333<-         44444
+        11111           22222<-         33333           44444<-
+        11111<-         22222           33333<-         44444
+        11111           22222<-         33333           44444<-
+
+        Output:
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        ‘
+        interleave_bottom, 5
+        ’
+        Interleave the lower field from odd frames with the upper field from
+        even frames, generating a frame with unchanged height at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222<-         33333           44444<-
+        11111<-         22222           33333<-         44444
+        11111           22222<-         33333           44444<-
+        11111<-         22222           33333<-         44444
+
+        Output:
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        ‘
+        interlacex2, 6
+        ’
+        Double frame rate with unchanged height. Frames are inserted each
+        containing the second temporal field from the previous input frame and
+        the first temporal field from the next input frame. This mode relies on
+        the top_field_first flag. Useful for interlaced video displays with no
+        field synchronisation.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+         11111           22222           33333           44444
+        11111           22222           33333           44444
+         11111           22222           33333           44444
+
+        Output:
+        11111   22222   22222   33333   33333   44444   44444
+         11111   11111   22222   22222   33333   33333   44444
+        11111   22222   22222   33333   33333   44444   44444
+         11111   11111   22222   22222   33333   33333   44444
+        ‘
+        mergex2, 7
+        ’
+        Move odd frames into the upper field, even into the lower field,
+        generating a double height frame at same frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+        11111           33333           33333           55555
+        22222           22222           44444           44444
+        11111           33333           33333           55555
+        22222           22222           44444           44444
+        11111           33333           33333           55555
+        22222           22222           44444           44444
+        11111           33333           33333           55555
+        22222           22222           44444           44444
+        Numeric values are deprecated but are accepted for backward
+        compatibility reasons.
+        Default mode is
+        merge
+        .
+        - **`flags`**
+          - Specify flags influencing the filter process.
+        Available value for
+        flags
+        is:
+        low_pass_filter, vlpf
+        Enable linear vertical low-pass filtering in the filter.
+        Vertical low-pass filtering is required when creating an interlaced
+        destination from a progressive source which contains high-frequency
+        vertical detail. Filtering will reduce interlace ’twitter’ and Moire
+        patterning.
+        complex_filter, cvlpf
+        Enable complex vertical low-pass filtering.
+        This will slightly less reduce interlace ’twitter’ and Moire
+        patterning but better retain detail and subjective sharpness impression.
+        bypass_il
+        Bypass already interlaced frames, only adjust the frame rate.
+        Vertical low-pass filtering and bypassing already interlaced frames can only be
+        enabled for
+        mode
+        interleave_top
+        and
+        interleave_bottom
+        .
+        Specify the mode of the interlacing. This option can also be specified
+        as a value alone. See below for a list of values for this option.
+
+
+        Available values are:
+
+
+        - **`‘merge, 0’`**
+          - Move odd frames into the upper field, even into the lower field,
+        generating a double height frame at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        - **`‘drop_even, 1’`**
+          - Only output odd frames, even frames are dropped, generating a frame with
+        unchanged height at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+        11111                           33333
+        11111                           33333
+        11111                           33333
+        11111                           33333
+        - **`‘drop_odd, 2’`**
+          - Only output even frames, odd frames are dropped, generating a frame with
+        unchanged height at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+                        22222                           44444
+                        22222                           44444
+                        22222                           44444
+                        22222                           44444
+        - **`‘pad, 3’`**
+          - Expand each frame to full height, but pad alternate lines with black,
+        generating a frame with double height at the same input frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+        11111           .....           33333           .....
+        .....           22222           .....           44444
+        11111           .....           33333           .....
+        .....           22222           .....           44444
+        11111           .....           33333           .....
+        .....           22222           .....           44444
+        11111           .....           33333           .....
+        .....           22222           .....           44444
+        - **`‘interleave_top, 4’`**
+          - Interleave the upper field from odd frames with the lower field from
+        even frames, generating a frame with unchanged height at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111<-         22222           33333<-         44444
+        11111           22222<-         33333           44444<-
+        11111<-         22222           33333<-         44444
+        11111           22222<-         33333           44444<-
+
+        Output:
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        - **`‘interleave_bottom, 5’`**
+          - Interleave the lower field from odd frames with the upper field from
+        even frames, generating a frame with unchanged height at half frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222<-         33333           44444<-
+        11111<-         22222           33333<-         44444
+        11111           22222<-         33333           44444<-
+        11111<-         22222           33333<-         44444
+
+        Output:
+        22222                           44444
+        11111                           33333
+        22222                           44444
+        11111                           33333
+        - **`‘interlacex2, 6’`**
+          - Double frame rate with unchanged height. Frames are inserted each
+        containing the second temporal field from the previous input frame and
+        the first temporal field from the next input frame. This mode relies on
+        the top_field_first flag. Useful for interlaced video displays with no
+        field synchronisation.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+         11111           22222           33333           44444
+        11111           22222           33333           44444
+         11111           22222           33333           44444
+
+        Output:
+        11111   22222   22222   33333   33333   44444   44444
+         11111   11111   22222   22222   33333   33333   44444
+        11111   22222   22222   33333   33333   44444   44444
+         11111   11111   22222   22222   33333   33333   44444
+        - **`‘mergex2, 7’`**
+          - Move odd frames into the upper field, even into the lower field,
+        generating a double height frame at same frame rate.
+        ------> time
+        Input:
+        Frame 1         Frame 2         Frame 3         Frame 4
+
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+        11111           22222           33333           44444
+
+        Output:
+        11111           33333           33333           55555
+        22222           22222           44444           44444
+        11111           33333           33333           55555
+        22222           22222           44444           44444
+        11111           33333           33333           55555
+        22222           22222           44444           44444
+        11111           33333           33333           55555
+        22222           22222           44444           44444
+        Move odd frames into the upper field, even into the lower field,
+        generating a double height frame at half frame rate.
+
+
+        Only output odd frames, even frames are dropped, generating a frame with
+        unchanged height at half frame rate.
+
+
+        Only output even frames, odd frames are dropped, generating a frame with
+        unchanged height at half frame rate.
+
+
+        Expand each frame to full height, but pad alternate lines with black,
+        generating a frame with double height at the same input frame rate.
+
+
+        Interleave the upper field from odd frames with the lower field from
+        even frames, generating a frame with unchanged height at half frame rate.
+
+
+        Interleave the lower field from odd frames with the upper field from
+        even frames, generating a frame with unchanged height at half frame rate.
+
+
+        Double frame rate with unchanged height. Frames are inserted each
+        containing the second temporal field from the previous input frame and
+        the first temporal field from the next input frame. This mode relies on
+        the top_field_first flag. Useful for interlaced video displays with no
+        field synchronisation.
+
+
+        Move odd frames into the upper field, even into the lower field,
+        generating a double height frame at same frame rate.
+
+
+        Numeric values are deprecated but are accepted for backward
+        compatibility reasons.
+
+
+        Default mode is merge.
+
+
+        Specify flags influencing the filter process.
+
+
+        Available value for flags is:
+
+
+        - **`low_pass_filter, vlpf`**
+          - Enable linear vertical low-pass filtering in the filter.
+        Vertical low-pass filtering is required when creating an interlaced
+        destination from a progressive source which contains high-frequency
+        vertical detail. Filtering will reduce interlace ’twitter’ and Moire
+        patterning.
+        - **`complex_filter, cvlpf`**
+          - Enable complex vertical low-pass filtering.
+        This will slightly less reduce interlace ’twitter’ and Moire
+        patterning but better retain detail and subjective sharpness impression.
+        - **`bypass_il`**
+          - Bypass already interlaced frames, only adjust the frame rate.
+        Enable linear vertical low-pass filtering in the filter.
+        Vertical low-pass filtering is required when creating an interlaced
+        destination from a progressive source which contains high-frequency
+        vertical detail. Filtering will reduce interlace ’twitter’ and Moire
+        patterning.
+
+
+        Enable complex vertical low-pass filtering.
+        This will slightly less reduce interlace ’twitter’ and Moire
+        patterning but better retain detail and subjective sharpness impression.
+
+
+        Bypass already interlaced frames, only adjust the frame rate.
+
+
+        Vertical low-pass filtering and bypassing already interlaced frames can only be
+        enabled for mode interleave_top and interleave_bottom.
+
+
+
 
         Parameters:
         ----------
@@ -15269,27 +34878,92 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.154 lut2, tlut2
+        ### 11.154 lut2, tlut2
+
         The lut2 filter takes two input streams and outputs one
         stream.
+
 
         The tlut2 (time lut2) filter takes two consecutive frames
         from one single stream.
 
+
         This filter accepts the following parameters:
 
+
+        - **`c0`**
+          - set first pixel component expression
+        - **`c1`**
+          - set second pixel component expression
+        - **`c2`**
+          - set third pixel component expression
+        - **`c3`**
+          - set fourth pixel component expression, corresponds to the alpha component
+        - **`d`**
+          - set output bit depth, only available for
+        lut2
+        filter. By default is 0,
+        which means bit depth is automatically picked from first input format.
+        set first pixel component expression
+
+
+        set second pixel component expression
+
+
+        set third pixel component expression
+
+
+        set fourth pixel component expression, corresponds to the alpha component
+
+
+        set output bit depth, only available for lut2 filter. By default is 0,
+        which means bit depth is automatically picked from first input format.
+
+
         The lut2 filter also supports the framesync options.
+
 
         Each of them specifies the expression to use for computing the lookup table for
         the corresponding pixel component values.
 
+
         The exact component associated to each of the c* options depends on the
         format in inputs.
+
 
         The expressions can contain the following constants:
 
 
+        - **`w`**
+        - **`h`**
+          - The input width and height.
+        - **`x`**
+          - The first input value for the pixel component.
+        - **`y`**
+          - The second input value for the pixel component.
+        - **`bdx`**
+          - The first input video bit depth.
+        - **`bdy`**
+          - The second input video bit depth.
+        The input width and height.
+
+
+        The first input value for the pixel component.
+
+
+        The second input value for the pixel component.
+
+
+        The first input video bit depth.
+
+
+        The second input video bit depth.
+
+
         All expressions default to "x".
+
+
+
 
         Parameters:
         ----------
@@ -15329,10 +35003,46 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.258 tmedian
+        ### 11.258 tmedian
+
         Pick median pixels from several successive input video frames.
 
+
         The filter accepts the following options:
+
+
+        - **`radius`**
+          - Set radius of median filter.
+        Default is 1. Allowed range is from 1 to 127.
+        - **`planes`**
+          - Set which planes to filter. Default value is
+        15
+        , by which all planes are processed.
+        - **`percentile`**
+          - Set median percentile. Default value is
+        0.5
+        .
+        Default value of
+        0.5
+        will pick always median values, while
+        0
+        will pick
+        minimum values, and
+        1
+        maximum values.
+        Set radius of median filter.
+        Default is 1. Allowed range is from 1 to 127.
+
+
+        Set which planes to filter. Default value is 15, by which all planes are processed.
+
+
+        Set median percentile. Default value is 0.5.
+        Default value of 0.5 will pick always median values, while 0 will pick
+        minimum values, and 1 maximum values.
+
+
+
 
         Parameters:
         ----------
@@ -15370,14 +35080,43 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.259 tmidequalizer
+        ### 11.259 tmidequalizer
+
         Apply Temporal Midway Video Equalization effect.
+
 
         Midway Video Equalization adjusts a sequence of video frames to have the same
         histograms, while maintaining their dynamics as much as possible. It’s
         useful for e.g. matching exposures from a video frames sequence.
 
+
         This filter accepts the following option:
+
+
+        - **`radius`**
+          - Set filtering radius. Default is
+        5
+        . Allowed range is from 1 to 127.
+        - **`sigma`**
+          - Set filtering sigma. Default is
+        0.5
+        . This controls strength of filtering.
+        Setting this option to 0 effectively does nothing.
+        - **`planes`**
+          - Set which planes to process. Default is
+        15
+        , which is all available planes.
+        Set filtering radius. Default is 5. Allowed range is from 1 to 127.
+
+
+        Set filtering sigma. Default is 0.5. This controls strength of filtering.
+        Setting this option to 0 effectively does nothing.
+
+
+        Set which planes to process. Default is 15, which is all available planes.
+
+
+
 
         Parameters:
         ----------
@@ -15416,10 +35155,49 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.260 tmix
+        ### 11.260 tmix
+
         Mix successive video frames.
 
+
         A description of the accepted options follows.
+
+
+        - **`frames`**
+          - The number of successive frames to mix. If unspecified, it defaults to 3.
+        - **`weights`**
+          - Specify weight of each input video frame.
+        Each weight is separated by space. If number of weights is smaller than
+        number of
+        frames
+        last specified weight will be used for all remaining
+        unset weights.
+        - **`scale`**
+          - Specify scale, if it is set it will be multiplied with sum
+        of each weight multiplied with pixel values to give final destination
+        pixel value. By default
+        scale
+        is auto scaled to sum of weights.
+        - **`planes`**
+          - Set which planes to filter. Default is all. Allowed range is from 0 to 15.
+        The number of successive frames to mix. If unspecified, it defaults to 3.
+
+
+        Specify weight of each input video frame.
+        Each weight is separated by space. If number of weights is smaller than
+        number of frames last specified weight will be used for all remaining
+        unset weights.
+
+
+        Specify scale, if it is set it will be multiplied with sum
+        of each weight multiplied with pixel values to give final destination
+        pixel value. By default scale is auto scaled to sum of weights.
+
+
+        Set which planes to filter. Default is all. Allowed range is from 0 to 15.
+
+
+
 
         Parameters:
         ----------
@@ -15462,18 +35240,21 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.261 tonemap
+        ### 11.261 tonemap
+
         Tone map colors from different dynamic ranges.
+
 
         This filter expects data in single precision floating point, as it needs to
         operate on (and can output) out-of-range values. Another filter, such as
         zscale, is needed to convert the resulting frame to a usable format.
 
+
         The tonemapping algorithms implemented only work on linear light, so input
         data should be linearized beforehand (and possibly correctly tagged).
 
 
-        ffmpeg -i INPUT -vf zscale=transfer=linear,tonemap=clip,zscale=transfer=bt709,format=yuv420p OUTPUT
+
 
         Parameters:
         ----------
@@ -15522,10 +35303,142 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.16 tonemap_opencl
+        ### 12.16 tonemap_opencl
+
         Perform HDR(PQ/HLG) to SDR conversion with tone-mapping.
 
+
         It accepts the following parameters:
+
+
+        - **`tonemap`**
+          - Specify the tone-mapping operator to be used. Same as tonemap option in
+        tonemap
+        .
+        - **`param`**
+          - Tune the tone mapping algorithm. same as param option in
+        tonemap
+        .
+        - **`desat`**
+          - Apply desaturation for highlights that exceed this level of brightness. The
+        higher the parameter, the more color information will be preserved. This
+        setting helps prevent unnaturally blown-out colors for super-highlights, by
+        (smoothly) turning into white instead. This makes images feel more natural,
+        at the cost of reducing information about out-of-range colors.
+        The default value is 0.5, and the algorithm here is a little different from
+        the cpu version tonemap currently. A setting of 0.0 disables this option.
+        - **`threshold`**
+          - The tonemapping algorithm parameters is fine-tuned per each scene. And a threshold
+        is used to detect whether the scene has changed or not. If the distance between
+        the current frame average brightness and the current running average exceeds
+        a threshold value, we would re-calculate scene average and peak brightness.
+        The default value is 0.2.
+        - **`format`**
+          - Specify the output pixel format.
+        Currently supported formats are:
+        p010
+        nv12
+        - **`range, r`**
+          - Set the output color range.
+        Possible values are:
+        tv/mpeg
+        pc/jpeg
+        Default is same as input.
+        - **`primaries, p`**
+          - Set the output color primaries.
+        Possible values are:
+        bt709
+        bt2020
+        Default is same as input.
+        - **`transfer, t`**
+          - Set the output transfer characteristics.
+        Possible values are:
+        bt709
+        bt2020
+        Default is bt709.
+        - **`matrix, m`**
+          - Set the output colorspace matrix.
+        Possible value are:
+        bt709
+        bt2020
+        Default is same as input.
+        Specify the tone-mapping operator to be used. Same as tonemap option in tonemap.
+
+
+        Tune the tone mapping algorithm. same as param option in tonemap.
+
+
+        Apply desaturation for highlights that exceed this level of brightness. The
+        higher the parameter, the more color information will be preserved. This
+        setting helps prevent unnaturally blown-out colors for super-highlights, by
+        (smoothly) turning into white instead. This makes images feel more natural,
+        at the cost of reducing information about out-of-range colors.
+
+
+        The default value is 0.5, and the algorithm here is a little different from
+        the cpu version tonemap currently. A setting of 0.0 disables this option.
+
+
+        The tonemapping algorithm parameters is fine-tuned per each scene. And a threshold
+        is used to detect whether the scene has changed or not. If the distance between
+        the current frame average brightness and the current running average exceeds
+        a threshold value, we would re-calculate scene average and peak brightness.
+        The default value is 0.2.
+
+
+        Specify the output pixel format.
+
+
+        Currently supported formats are:
+
+
+        - **`p010`**
+        - **`nv12`**
+        Set the output color range.
+
+
+        Possible values are:
+
+
+        - **`tv/mpeg`**
+        - **`pc/jpeg`**
+        Default is same as input.
+
+
+        Set the output color primaries.
+
+
+        Possible values are:
+
+
+        - **`bt709`**
+        - **`bt2020`**
+        Default is same as input.
+
+
+        Set the output transfer characteristics.
+
+
+        Possible values are:
+
+
+        - **`bt709`**
+        - **`bt2020`**
+        Default is bt709.
+
+
+        Set the output colorspace matrix.
+
+
+        Possible value are:
+
+
+        - **`bt709`**
+        - **`bt2020`**
+        Default is same as input.
+
+
+
 
         Parameters:
         ----------
@@ -15570,12 +35483,61 @@ class VideoStream(FilterableStream):
     def tonemap_vaapi(self, *, format: str, matrix: str, primaries: str, transfer: str, **kwargs: Any) -> "VideoStream":
         """
 
-        13.2 tonemap_vaapi
+        ### 13.2 tonemap_vaapi
+
         Perform HDR(High Dynamic Range) to SDR(Standard Dynamic Range) conversion with tone-mapping.
         It maps the dynamic range of HDR10 content to the SDR content.
         It currently only accepts HDR10 as input.
 
+
         It accepts the following parameters:
+
+
+        - **`format`**
+          - Specify the output pixel format.
+        Currently supported formats are:
+        p010
+        nv12
+        Default is nv12.
+        - **`primaries, p`**
+          - Set the output color primaries.
+        Default is same as input.
+        - **`transfer, t`**
+          - Set the output transfer characteristics.
+        Default is bt709.
+        - **`matrix, m`**
+          - Set the output colorspace matrix.
+        Default is same as input.
+        Specify the output pixel format.
+
+
+        Currently supported formats are:
+
+
+        - **`p010`**
+        - **`nv12`**
+        Default is nv12.
+
+
+        Set the output color primaries.
+
+
+        Default is same as input.
+
+
+        Set the output transfer characteristics.
+
+
+        Default is bt709.
+
+
+        Set the output colorspace matrix.
+
+
+        Default is same as input.
+
+
+
 
         Parameters:
         ----------
@@ -15619,10 +35581,105 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.262 tpad
+        ### 11.262 tpad
+
         Temporarily pad video frames.
 
+
         The filter accepts the following options:
+
+
+        - **`start`**
+          - Specify number of delay frames before input video stream. Default is 0.
+        - **`stop`**
+          - Specify number of padding frames after input video stream.
+        Set to -1 to pad indefinitely. Default is 0.
+        - **`start_mode`**
+          - Set kind of frames added to beginning of stream.
+        Can be either
+        add
+        or
+        clone
+        .
+        With
+        add
+        frames of solid-color are added.
+        With
+        clone
+        frames are clones of first frame.
+        Default is
+        add
+        .
+        - **`stop_mode`**
+          - Set kind of frames added to end of stream.
+        Can be either
+        add
+        or
+        clone
+        .
+        With
+        add
+        frames of solid-color are added.
+        With
+        clone
+        frames are clones of last frame.
+        Default is
+        add
+        .
+        - **`start_duration, stop_duration`**
+          - Specify the duration of the start/stop delay. See
+        (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual
+        for the accepted syntax.
+        These options override
+        start
+        and
+        stop
+        . Default is 0.
+        - **`color`**
+          - Specify the color of the padded area. For the syntax of this option,
+        check the
+        (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual
+        .
+        The default value of
+        color
+        is "black".
+        Specify number of delay frames before input video stream. Default is 0.
+
+
+        Specify number of padding frames after input video stream.
+        Set to -1 to pad indefinitely. Default is 0.
+
+
+        Set kind of frames added to beginning of stream.
+        Can be either add or clone.
+        With add frames of solid-color are added.
+        With clone frames are clones of first frame.
+        Default is add.
+
+
+        Set kind of frames added to end of stream.
+        Can be either add or clone.
+        With add frames of solid-color are added.
+        With clone frames are clones of last frame.
+        Default is add.
+
+
+        Specify the duration of the start/stop delay. See
+        (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual
+        for the accepted syntax.
+        These options override start and stop. Default is 0.
+
+
+        Specify the color of the padded area. For the syntax of this option,
+        check the (ffmpeg-utils)"Color" section in the ffmpeg-utils
+        manual.
+
+
+        The default value of color is "black".
+
+
+
 
         Parameters:
         ----------
@@ -15667,20 +35724,163 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.263 transpose
+        ### 11.263 transpose
+
         Transpose rows with columns in the input video and optionally flip it.
 
+
         It accepts the following parameters:
+
+
+        - **`dir`**
+          - Specify the transposition direction.
+        Can assume the following values:
+        ‘
+        0, 4, cclock_flip
+        ’
+        Rotate by 90 degrees counterclockwise and vertically flip (default), that is:
+        L.R     L.l
+        . . ->  . .
+        l.r     R.r
+        ‘
+        1, 5, clock
+        ’
+        Rotate by 90 degrees clockwise, that is:
+        L.R     l.L
+        . . ->  . .
+        l.r     r.R
+        ‘
+        2, 6, cclock
+        ’
+        Rotate by 90 degrees counterclockwise, that is:
+        L.R     R.r
+        . . ->  . .
+        l.r     L.l
+        ‘
+        3, 7, clock_flip
+        ’
+        Rotate by 90 degrees clockwise and vertically flip, that is:
+        L.R     r.R
+        . . ->  . .
+        l.r     l.L
+        For values between 4-7, the transposition is only done if the input
+        video geometry is portrait and not landscape. These values are
+        deprecated, the
+        passthrough
+        option should be used instead.
+        Numerical values are deprecated, and should be dropped in favor of
+        symbolic constants.
+        - **`passthrough`**
+          - Do not apply the transposition if the input geometry matches the one
+        specified by the specified value. It accepts the following values:
+        ‘
+        none
+        ’
+        Always apply transposition.
+        ‘
+        portrait
+        ’
+        Preserve portrait geometry (when
+        height
+        >=
+        width
+        ).
+        ‘
+        landscape
+        ’
+        Preserve landscape geometry (when
+        width
+        >=
+        height
+        ).
+        Default value is
+        none
+        .
+        Specify the transposition direction.
+
+
+        Can assume the following values:
+
+
+        - **`‘0, 4, cclock_flip’`**
+          - Rotate by 90 degrees counterclockwise and vertically flip (default), that is:
+        L.R     L.l
+        . . ->  . .
+        l.r     R.r
+        - **`‘1, 5, clock’`**
+          - Rotate by 90 degrees clockwise, that is:
+        L.R     l.L
+        . . ->  . .
+        l.r     r.R
+        - **`‘2, 6, cclock’`**
+          - Rotate by 90 degrees counterclockwise, that is:
+        L.R     R.r
+        . . ->  . .
+        l.r     L.l
+        - **`‘3, 7, clock_flip’`**
+          - Rotate by 90 degrees clockwise and vertically flip, that is:
+        L.R     r.R
+        . . ->  . .
+        l.r     l.L
+        Rotate by 90 degrees counterclockwise and vertically flip (default), that is:
+
+
+        Rotate by 90 degrees clockwise, that is:
+
+
+        Rotate by 90 degrees counterclockwise, that is:
+
+
+        Rotate by 90 degrees clockwise and vertically flip, that is:
+
+
+        For values between 4-7, the transposition is only done if the input
+        video geometry is portrait and not landscape. These values are
+        deprecated, the passthrough option should be used instead.
+
+
+        Numerical values are deprecated, and should be dropped in favor of
+        symbolic constants.
+
+
+        Do not apply the transposition if the input geometry matches the one
+        specified by the specified value. It accepts the following values:
+
+
+        - **`‘none’`**
+          - Always apply transposition.
+        - **`‘portrait’`**
+          - Preserve portrait geometry (when
+        height
+        >=
+        width
+        ).
+        - **`‘landscape’`**
+          - Preserve landscape geometry (when
+        width
+        >=
+        height
+        ).
+        Always apply transposition.
+
+
+        Preserve portrait geometry (when height >= width).
+
+
+        Preserve landscape geometry (when width >= height).
+
+
+        Default value is none.
 
 
         For example to rotate by 90 degrees clockwise and preserve portrait
         layout:
 
-        transpose=dir=1:passthrough=portrait
 
         The command above can also be specified as:
 
-        transpose=1:portrait
+
+
 
         Parameters:
         ----------
@@ -15715,11 +35915,111 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.264 transpose_npp
+        ### 11.264 transpose_npp
+
         Transpose rows with columns in the input video and optionally flip it.
         For more in depth examples see the transpose video filter, which shares mostly the same options.
 
+
         It accepts the following parameters:
+
+
+        - **`dir`**
+          - Specify the transposition direction.
+        Can assume the following values:
+        ‘
+        cclock_flip
+        ’
+        Rotate by 90 degrees counterclockwise and vertically flip. (default)
+        ‘
+        clock
+        ’
+        Rotate by 90 degrees clockwise.
+        ‘
+        cclock
+        ’
+        Rotate by 90 degrees counterclockwise.
+        ‘
+        clock_flip
+        ’
+        Rotate by 90 degrees clockwise and vertically flip.
+        - **`passthrough`**
+          - Do not apply the transposition if the input geometry matches the one
+        specified by the specified value. It accepts the following values:
+        ‘
+        none
+        ’
+        Always apply transposition. (default)
+        ‘
+        portrait
+        ’
+        Preserve portrait geometry (when
+        height
+        >=
+        width
+        ).
+        ‘
+        landscape
+        ’
+        Preserve landscape geometry (when
+        width
+        >=
+        height
+        ).
+        Specify the transposition direction.
+
+
+        Can assume the following values:
+
+
+        - **`‘cclock_flip’`**
+          - Rotate by 90 degrees counterclockwise and vertically flip. (default)
+        - **`‘clock’`**
+          - Rotate by 90 degrees clockwise.
+        - **`‘cclock’`**
+          - Rotate by 90 degrees counterclockwise.
+        - **`‘clock_flip’`**
+          - Rotate by 90 degrees clockwise and vertically flip.
+        Rotate by 90 degrees counterclockwise and vertically flip. (default)
+
+
+        Rotate by 90 degrees clockwise.
+
+
+        Rotate by 90 degrees counterclockwise.
+
+
+        Rotate by 90 degrees clockwise and vertically flip.
+
+
+        Do not apply the transposition if the input geometry matches the one
+        specified by the specified value. It accepts the following values:
+
+
+        - **`‘none’`**
+          - Always apply transposition. (default)
+        - **`‘portrait’`**
+          - Preserve portrait geometry (when
+        height
+        >=
+        width
+        ).
+        - **`‘landscape’`**
+          - Preserve landscape geometry (when
+        width
+        >=
+        height
+        ).
+        Always apply transposition. (default)
+
+
+        Preserve portrait geometry (when height >= width).
+
+
+        Preserve landscape geometry (when width >= height).
+
+
+
 
         Parameters:
         ----------
@@ -15754,11 +36054,129 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.12 transpose_vt
+        ### 14.12 transpose_vt
+
         Transpose rows with columns in the input video and optionally flip it.
         For more in depth examples see the transpose video filter, which shares mostly the same options.
 
+
         It accepts the following parameters:
+
+
+        - **`dir`**
+          - Specify the transposition direction.
+        Can assume the following values:
+        ‘
+        cclock_flip
+        ’
+        Rotate by 90 degrees counterclockwise and vertically flip. (default)
+        ‘
+        clock
+        ’
+        Rotate by 90 degrees clockwise.
+        ‘
+        cclock
+        ’
+        Rotate by 90 degrees counterclockwise.
+        ‘
+        clock_flip
+        ’
+        Rotate by 90 degrees clockwise and vertically flip.
+        ‘
+        hflip
+        ’
+        Flip the input video horizontally.
+        ‘
+        vflip
+        ’
+        Flip the input video vertically.
+        - **`passthrough`**
+          - Do not apply the transposition if the input geometry matches the one
+        specified by the specified value. It accepts the following values:
+        ‘
+        none
+        ’
+        Always apply transposition. (default)
+        ‘
+        portrait
+        ’
+        Preserve portrait geometry (when
+        height
+        >=
+        width
+        ).
+        ‘
+        landscape
+        ’
+        Preserve landscape geometry (when
+        width
+        >=
+        height
+        ).
+        Specify the transposition direction.
+
+
+        Can assume the following values:
+
+
+        - **`‘cclock_flip’`**
+          - Rotate by 90 degrees counterclockwise and vertically flip. (default)
+        - **`‘clock’`**
+          - Rotate by 90 degrees clockwise.
+        - **`‘cclock’`**
+          - Rotate by 90 degrees counterclockwise.
+        - **`‘clock_flip’`**
+          - Rotate by 90 degrees clockwise and vertically flip.
+        - **`‘hflip’`**
+          - Flip the input video horizontally.
+        - **`‘vflip’`**
+          - Flip the input video vertically.
+        Rotate by 90 degrees counterclockwise and vertically flip. (default)
+
+
+        Rotate by 90 degrees clockwise.
+
+
+        Rotate by 90 degrees counterclockwise.
+
+
+        Rotate by 90 degrees clockwise and vertically flip.
+
+
+        Flip the input video horizontally.
+
+
+        Flip the input video vertically.
+
+
+        Do not apply the transposition if the input geometry matches the one
+        specified by the specified value. It accepts the following values:
+
+
+        - **`‘none’`**
+          - Always apply transposition. (default)
+        - **`‘portrait’`**
+          - Preserve portrait geometry (when
+        height
+        >=
+        width
+        ).
+        - **`‘landscape’`**
+          - Preserve landscape geometry (when
+        width
+        >=
+        height
+        ).
+        Always apply transposition. (default)
+
+
+        Preserve portrait geometry (when height >= width).
+
+
+        Preserve landscape geometry (when width >= height).
+
+
+
 
         Parameters:
         ----------
@@ -15793,11 +36211,111 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        14.13 transpose_vulkan
+        ### 14.13 transpose_vulkan
+
         Transpose rows with columns in the input video and optionally flip it.
         For more in depth examples see the transpose video filter, which shares mostly the same options.
 
+
         It accepts the following parameters:
+
+
+        - **`dir`**
+          - Specify the transposition direction.
+        Can assume the following values:
+        ‘
+        cclock_flip
+        ’
+        Rotate by 90 degrees counterclockwise and vertically flip. (default)
+        ‘
+        clock
+        ’
+        Rotate by 90 degrees clockwise.
+        ‘
+        cclock
+        ’
+        Rotate by 90 degrees counterclockwise.
+        ‘
+        clock_flip
+        ’
+        Rotate by 90 degrees clockwise and vertically flip.
+        - **`passthrough`**
+          - Do not apply the transposition if the input geometry matches the one
+        specified by the specified value. It accepts the following values:
+        ‘
+        none
+        ’
+        Always apply transposition. (default)
+        ‘
+        portrait
+        ’
+        Preserve portrait geometry (when
+        height
+        >=
+        width
+        ).
+        ‘
+        landscape
+        ’
+        Preserve landscape geometry (when
+        width
+        >=
+        height
+        ).
+        Specify the transposition direction.
+
+
+        Can assume the following values:
+
+
+        - **`‘cclock_flip’`**
+          - Rotate by 90 degrees counterclockwise and vertically flip. (default)
+        - **`‘clock’`**
+          - Rotate by 90 degrees clockwise.
+        - **`‘cclock’`**
+          - Rotate by 90 degrees counterclockwise.
+        - **`‘clock_flip’`**
+          - Rotate by 90 degrees clockwise and vertically flip.
+        Rotate by 90 degrees counterclockwise and vertically flip. (default)
+
+
+        Rotate by 90 degrees clockwise.
+
+
+        Rotate by 90 degrees counterclockwise.
+
+
+        Rotate by 90 degrees clockwise and vertically flip.
+
+
+        Do not apply the transposition if the input geometry matches the one
+        specified by the specified value. It accepts the following values:
+
+
+        - **`‘none’`**
+          - Always apply transposition. (default)
+        - **`‘portrait’`**
+          - Preserve portrait geometry (when
+        height
+        >=
+        width
+        ).
+        - **`‘landscape’`**
+          - Preserve landscape geometry (when
+        width
+        >=
+        height
+        ).
+        Always apply transposition. (default)
+
+
+        Preserve portrait geometry (when height >= width).
+
+
+        Preserve landscape geometry (when width >= height).
+
+
+
 
         Parameters:
         ----------
@@ -15837,15 +36355,72 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.265 trim
+        ### 11.265 trim
+
         Trim the input so that the output contains one continuous subpart of the input.
 
+
         It accepts the following parameters:
+
+
+        - **`start`**
+          - Specify the time of the start of the kept section, i.e. the frame with the
+        timestamp
+        start
+        will be the first frame in the output.
+        - **`end`**
+          - Specify the time of the first frame that will be dropped, i.e. the frame
+        immediately preceding the one with the timestamp
+        end
+        will be the last
+        frame in the output.
+        - **`start_pts`**
+          - This is the same as
+        start
+        , except this option sets the start timestamp
+        in timebase units instead of seconds.
+        - **`end_pts`**
+          - This is the same as
+        end
+        , except this option sets the end timestamp
+        in timebase units instead of seconds.
+        - **`duration`**
+          - The maximum duration of the output in seconds.
+        - **`start_frame`**
+          - The number of the first frame that should be passed to the output.
+        - **`end_frame`**
+          - The number of the first frame that should be dropped.
+        Specify the time of the start of the kept section, i.e. the frame with the
+        timestamp start will be the first frame in the output.
+
+
+        Specify the time of the first frame that will be dropped, i.e. the frame
+        immediately preceding the one with the timestamp end will be the last
+        frame in the output.
+
+
+        This is the same as start, except this option sets the start timestamp
+        in timebase units instead of seconds.
+
+
+        This is the same as end, except this option sets the end timestamp
+        in timebase units instead of seconds.
+
+
+        The maximum duration of the output in seconds.
+
+
+        The number of the first frame that should be passed to the output.
+
+
+        The number of the first frame that should be dropped.
+
 
         start, end, and duration are expressed as time
         duration specifications; see
         (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual
         for the accepted syntax.
+
 
         Note that the first two sets of the start/end options and the duration
         option look at the frame timestamp, while the _frame variants simply count the
@@ -15853,23 +36428,21 @@ class VideoStream(FilterableStream):
         the timestamps. If you wish for the output timestamps to start at zero, insert a
         setpts filter after the trim filter.
 
+
         If multiple start or end options are set, this filter tries to be greedy and
         keep all the frames that match at least one of the specified constraints. To keep
         only the part that matches all the constraints at once, chain multiple trim
         filters.
 
+
         The defaults are such that all the input is kept. So it is possible to set e.g.
         just the end values to keep everything before the specified time.
 
+
         Examples:
 
-         Drop everything except the second minute of input:
 
-        ffmpeg -i INPUT -vf trim=60:120
 
-         Keep only the first second:
-
-        ffmpeg -i INPUT -vf trim=duration=1
 
         Parameters:
         ----------
@@ -15921,14 +36494,112 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.267 unsharp
+        ### 11.267 unsharp
+
         Sharpen or blur the input video.
+
 
         It accepts the following parameters:
 
 
+        - **`luma_msize_x, lx`**
+          - Set the luma matrix horizontal size. It must be an odd integer between
+        3 and 23. The default value is 5.
+        - **`luma_msize_y, ly`**
+          - Set the luma matrix vertical size. It must be an odd integer between 3
+        and 23. The default value is 5.
+        - **`luma_amount, la`**
+          - Set the luma effect strength. It must be a floating point number, reasonable
+        values lay between -1.5 and 1.5.
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+        Default value is 1.0.
+        - **`chroma_msize_x, cx`**
+          - Set the chroma matrix horizontal size. It must be an odd integer
+        between 3 and 23. The default value is 5.
+        - **`chroma_msize_y, cy`**
+          - Set the chroma matrix vertical size. It must be an odd integer
+        between 3 and 23. The default value is 5.
+        - **`chroma_amount, ca`**
+          - Set the chroma effect strength. It must be a floating point number, reasonable
+        values lay between -1.5 and 1.5.
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+        Default value is 0.0.
+        - **`alpha_msize_x, ax`**
+          - Set the alpha matrix horizontal size. It must be an odd integer
+        between 3 and 23. The default value is 5.
+        - **`alpha_msize_y, ay`**
+          - Set the alpha matrix vertical size. It must be an odd integer
+        between 3 and 23. The default value is 5.
+        - **`alpha_amount, aa`**
+          - Set the alpha effect strength. It must be a floating point number, reasonable
+        values lay between -1.5 and 1.5.
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+        Default value is 0.0.
+        Set the luma matrix horizontal size. It must be an odd integer between
+        3 and 23. The default value is 5.
+
+
+        Set the luma matrix vertical size. It must be an odd integer between 3
+        and 23. The default value is 5.
+
+
+        Set the luma effect strength. It must be a floating point number, reasonable
+        values lay between -1.5 and 1.5.
+
+
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+
+
+        Default value is 1.0.
+
+
+        Set the chroma matrix horizontal size. It must be an odd integer
+        between 3 and 23. The default value is 5.
+
+
+        Set the chroma matrix vertical size. It must be an odd integer
+        between 3 and 23. The default value is 5.
+
+
+        Set the chroma effect strength. It must be a floating point number, reasonable
+        values lay between -1.5 and 1.5.
+
+
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+
+
+        Default value is 0.0.
+
+
+        Set the alpha matrix horizontal size. It must be an odd integer
+        between 3 and 23. The default value is 5.
+
+
+        Set the alpha matrix vertical size. It must be an odd integer
+        between 3 and 23. The default value is 5.
+
+
+        Set the alpha effect strength. It must be a floating point number, reasonable
+        values lay between -1.5 and 1.5.
+
+
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+
+
+        Default value is 0.0.
+
+
         All parameters are optional and default to the equivalent of the
         string ’5:5:1.0:5:5:0.0’.
+
+
+
 
         Parameters:
         ----------
@@ -15981,14 +36652,97 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.17 unsharp_opencl
+        ### 12.17 unsharp_opencl
+
         Sharpen or blur the input video.
+
 
         It accepts the following parameters:
 
 
+        - **`luma_msize_x, lx`**
+          - Set the luma matrix horizontal size.
+        Range is
+        [1, 23]
+        and default value is
+        5
+        .
+        - **`luma_msize_y, ly`**
+          - Set the luma matrix vertical size.
+        Range is
+        [1, 23]
+        and default value is
+        5
+        .
+        - **`luma_amount, la`**
+          - Set the luma effect strength.
+        Range is
+        [-10, 10]
+        and default value is
+        1.0
+        .
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+        - **`chroma_msize_x, cx`**
+          - Set the chroma matrix horizontal size.
+        Range is
+        [1, 23]
+        and default value is
+        5
+        .
+        - **`chroma_msize_y, cy`**
+          - Set the chroma matrix vertical size.
+        Range is
+        [1, 23]
+        and default value is
+        5
+        .
+        - **`chroma_amount, ca`**
+          - Set the chroma effect strength.
+        Range is
+        [-10, 10]
+        and default value is
+        0.0
+        .
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+        Set the luma matrix horizontal size.
+        Range is [1, 23] and default value is 5.
+
+
+        Set the luma matrix vertical size.
+        Range is [1, 23] and default value is 5.
+
+
+        Set the luma effect strength.
+        Range is [-10, 10] and default value is 1.0.
+
+
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+
+
+        Set the chroma matrix horizontal size.
+        Range is [1, 23] and default value is 5.
+
+
+        Set the chroma matrix vertical size.
+        Range is [1, 23] and default value is 5.
+
+
+        Set the chroma effect strength.
+        Range is [-10, 10] and default value is 0.0.
+
+
+        Negative values will blur the input video, while positive values will
+        sharpen it, a value of zero will disable the effect.
+
+
         All parameters are optional and default to the equivalent of the
         string ’5:5:1.0:5:5:0.0’.
+
+
+
 
         Parameters:
         ----------
@@ -16025,15 +36779,32 @@ class VideoStream(FilterableStream):
     def untile(self, *, layout: str | DefaultStr = DefaultStr("6x5"), **kwargs: Any) -> "VideoStream":
         """
 
-        11.268 untile
+        ### 11.268 untile
+
         Decompose a video made of tiled images into the individual images.
+
 
         The frame rate of the output video is the frame rate of the input video
         multiplied by the number of tiles.
 
+
         This filter does the reverse of tile.
 
+
         The filter accepts the following options:
+
+
+        - **`layout`**
+          - Set the grid size (i.e. the number of lines and columns). For the syntax of
+        this option, check the
+        (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual
+        .
+        Set the grid size (i.e. the number of lines and columns). For the syntax of
+        this option, check the
+        (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
+
+
+
 
         Parameters:
         ----------
@@ -16068,18 +36839,55 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.269 uspp
+        ### 11.269 uspp
+
         Apply ultra slow/simple postprocessing filter that compresses and decompresses
         the image at several (or - in the case of quality level 8 - all)
         shifts and average the results.
+
 
         The way this differs from the behavior of spp is that uspp actually encodes &
         decodes each case with libavcodec Snow, whereas spp uses a simplified intra only 8x8
         DCT similar to MJPEG.
 
+
         This filter is only available in ffmpeg version 4.4 or earlier.
 
+
         The filter accepts the following options:
+
+
+        - **`quality`**
+          - Set quality. This option defines the number of levels for averaging. It accepts
+        an integer in the range 0-8. If set to
+        0
+        , the filter will have no
+        effect. A value of
+        8
+        means the higher quality. For each increment of
+        that value the speed drops by a factor of approximately 2.  Default value is
+        3
+        .
+        - **`qp`**
+          - Force a constant quantization parameter. If not set, the filter will use the QP
+        from the video stream (if available).
+        - **`codec`**
+          - Use specified codec instead of snow.
+        Set quality. This option defines the number of levels for averaging. It accepts
+        an integer in the range 0-8. If set to 0, the filter will have no
+        effect. A value of 8 means the higher quality. For each increment of
+        that value the speed drops by a factor of approximately 2.  Default value is
+        3.
+
+
+        Force a constant quantization parameter. If not set, the filter will use the QP
+        from the video stream (if available).
+
+
+        Use specified codec instead of snow.
+
+
+
 
         Parameters:
         ----------
@@ -16234,10 +37042,1240 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.270 v360
+        ### 11.270 v360
+
         Convert 360 videos between various formats.
 
+
         The filter accepts the following options:
+
+
+        - **`input`**
+        - **`output`**
+          - Set format of the input/output video.
+        Available formats:
+        ‘
+        e
+        ’
+        ‘
+        equirect
+        ’
+        Equirectangular projection.
+        ‘
+        c3x2
+        ’
+        ‘
+        c6x1
+        ’
+        ‘
+        c1x6
+        ’
+        Cubemap with 3x2/6x1/1x6 layout.
+        Format specific options:
+        in_pad
+        out_pad
+        Set padding proportion for the input/output cubemap. Values in decimals.
+        Example values:
+        ‘
+        0
+        ’
+        No padding.
+        ‘
+        0.01
+        ’
+        1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels)
+        Default value is
+        ‘
+        0
+        ’
+        .
+        Maximum value is
+        ‘
+        0.1
+        ’
+        .
+        fin_pad
+        fout_pad
+        Set fixed padding for the input/output cubemap. Values in pixels.
+        Default value is
+        ‘
+        0
+        ’
+        . If greater than zero it overrides other padding options.
+        in_forder
+        out_forder
+        Set order of faces for the input/output cubemap. Choose one direction for each position.
+        Designation of directions:
+        ‘
+        r
+        ’
+        right
+        ‘
+        l
+        ’
+        left
+        ‘
+        u
+        ’
+        up
+        ‘
+        d
+        ’
+        down
+        ‘
+        f
+        ’
+        forward
+        ‘
+        b
+        ’
+        back
+        Default value is
+        ‘
+        rludfb
+        ’
+        .
+        in_frot
+        out_frot
+        Set rotation of faces for the input/output cubemap. Choose one angle for each position.
+        Designation of angles:
+        ‘
+        0
+        ’
+        0 degrees clockwise
+        ‘
+        1
+        ’
+        90 degrees clockwise
+        ‘
+        2
+        ’
+        180 degrees clockwise
+        ‘
+        3
+        ’
+        270 degrees clockwise
+        Default value is
+        ‘
+        000000
+        ’
+        .
+        ‘
+        eac
+        ’
+        Equi-Angular Cubemap.
+        ‘
+        flat
+        ’
+        ‘
+        gnomonic
+        ’
+        ‘
+        rectilinear
+        ’
+        Regular video.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ‘
+        dfisheye
+        ’
+        Dual fisheye.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ‘
+        barrel
+        ’
+        ‘
+        fb
+        ’
+        ‘
+        barrelsplit
+        ’
+        Facebook’s 360 formats.
+        ‘
+        sg
+        ’
+        Stereographic format.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ‘
+        mercator
+        ’
+        Mercator format.
+        ‘
+        ball
+        ’
+        Ball format, gives significant distortion toward the back.
+        ‘
+        hammer
+        ’
+        Hammer-Aitoff map projection format.
+        ‘
+        sinusoidal
+        ’
+        Sinusoidal map projection format.
+        ‘
+        fisheye
+        ’
+        Fisheye projection.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ‘
+        pannini
+        ’
+        Pannini projection.
+        Format specific options:
+        h_fov
+        Set output pannini parameter.
+        ih_fov
+        Set input pannini parameter.
+        ‘
+        cylindrical
+        ’
+        Cylindrical projection.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ‘
+        perspective
+        ’
+        Perspective projection.
+        (output only)
+        Format specific options:
+        v_fov
+        Set perspective parameter.
+        ‘
+        tetrahedron
+        ’
+        Tetrahedron projection.
+        ‘
+        tsp
+        ’
+        Truncated square pyramid projection.
+        ‘
+        he
+        ’
+        ‘
+        hequirect
+        ’
+        Half equirectangular projection.
+        ‘
+        equisolid
+        ’
+        Equisolid format.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ‘
+        og
+        ’
+        Orthographic format.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ‘
+        octahedron
+        ’
+        Octahedron projection.
+        ‘
+        cylindricalea
+        ’
+        Cylindrical Equal Area projection.
+        - **`interp`**
+          - Set interpolation method.
+        Note: more complex interpolation methods require much more memory to run.
+        Available methods:
+        ‘
+        near
+        ’
+        ‘
+        nearest
+        ’
+        Nearest neighbour.
+        ‘
+        line
+        ’
+        ‘
+        linear
+        ’
+        Bilinear interpolation.
+        ‘
+        lagrange9
+        ’
+        Lagrange9 interpolation.
+        ‘
+        cube
+        ’
+        ‘
+        cubic
+        ’
+        Bicubic interpolation.
+        ‘
+        lanc
+        ’
+        ‘
+        lanczos
+        ’
+        Lanczos interpolation.
+        ‘
+        sp16
+        ’
+        ‘
+        spline16
+        ’
+        Spline16 interpolation.
+        ‘
+        gauss
+        ’
+        ‘
+        gaussian
+        ’
+        Gaussian interpolation.
+        ‘
+        mitchell
+        ’
+        Mitchell interpolation.
+        Default value is
+        ‘
+        line
+        ’
+        .
+        - **`w`**
+        - **`h`**
+          - Set the output video resolution.
+        Default resolution depends on formats.
+        - **`in_stereo`**
+        - **`out_stereo`**
+          - Set the input/output stereo format.
+        ‘
+        2d
+        ’
+        2D mono
+        ‘
+        sbs
+        ’
+        Side by side
+        ‘
+        tb
+        ’
+        Top bottom
+        Default value is
+        ‘
+        2d
+        ’
+        for input and output format.
+        - **`yaw`**
+        - **`pitch`**
+        - **`roll`**
+          - Set rotation for the output video. Values in degrees.
+        - **`rorder`**
+          - Set rotation order for the output video. Choose one item for each position.
+        ‘
+        y, Y
+        ’
+        yaw
+        ‘
+        p, P
+        ’
+        pitch
+        ‘
+        r, R
+        ’
+        roll
+        Default value is
+        ‘
+        ypr
+        ’
+        .
+        - **`h_flip`**
+        - **`v_flip`**
+        - **`d_flip`**
+          - Flip the output video horizontally(swaps left-right)/vertically(swaps up-down)/in-depth(swaps back-forward). Boolean values.
+        - **`ih_flip`**
+        - **`iv_flip`**
+          - Set if input video is flipped horizontally/vertically. Boolean values.
+        - **`in_trans`**
+          - Set if input video is transposed. Boolean value, by default disabled.
+        - **`out_trans`**
+          - Set if output video needs to be transposed. Boolean value, by default disabled.
+        - **`h_offset`**
+        - **`v_offset`**
+          - Set output horizontal/vertical off-axis offset. Default is set to 0.
+        Allowed range is from -1 to 1.
+        - **`alpha_mask`**
+          - Build mask in alpha plane for all unmapped pixels by marking them fully transparent. Boolean value, by default disabled.
+        - **`reset_rot`**
+          - Reset rotation of output video. Boolean value, by default disabled.
+        Set format of the input/output video.
+
+
+        Available formats:
+
+
+        - **`‘e’`**
+        - **`‘equirect’`**
+          - Equirectangular projection.
+        - **`‘c3x2’`**
+        - **`‘c6x1’`**
+        - **`‘c1x6’`**
+          - Cubemap with 3x2/6x1/1x6 layout.
+        Format specific options:
+        in_pad
+        out_pad
+        Set padding proportion for the input/output cubemap. Values in decimals.
+        Example values:
+        ‘
+        0
+        ’
+        No padding.
+        ‘
+        0.01
+        ’
+        1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels)
+        Default value is
+        ‘
+        0
+        ’
+        .
+        Maximum value is
+        ‘
+        0.1
+        ’
+        .
+        fin_pad
+        fout_pad
+        Set fixed padding for the input/output cubemap. Values in pixels.
+        Default value is
+        ‘
+        0
+        ’
+        . If greater than zero it overrides other padding options.
+        in_forder
+        out_forder
+        Set order of faces for the input/output cubemap. Choose one direction for each position.
+        Designation of directions:
+        ‘
+        r
+        ’
+        right
+        ‘
+        l
+        ’
+        left
+        ‘
+        u
+        ’
+        up
+        ‘
+        d
+        ’
+        down
+        ‘
+        f
+        ’
+        forward
+        ‘
+        b
+        ’
+        back
+        Default value is
+        ‘
+        rludfb
+        ’
+        .
+        in_frot
+        out_frot
+        Set rotation of faces for the input/output cubemap. Choose one angle for each position.
+        Designation of angles:
+        ‘
+        0
+        ’
+        0 degrees clockwise
+        ‘
+        1
+        ’
+        90 degrees clockwise
+        ‘
+        2
+        ’
+        180 degrees clockwise
+        ‘
+        3
+        ’
+        270 degrees clockwise
+        Default value is
+        ‘
+        000000
+        ’
+        .
+        - **`‘eac’`**
+          - Equi-Angular Cubemap.
+        - **`‘flat’`**
+        - **`‘gnomonic’`**
+        - **`‘rectilinear’`**
+          - Regular video.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`‘dfisheye’`**
+          - Dual fisheye.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`‘barrel’`**
+        - **`‘fb’`**
+        - **`‘barrelsplit’`**
+          - Facebook’s 360 formats.
+        - **`‘sg’`**
+          - Stereographic format.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`‘mercator’`**
+          - Mercator format.
+        - **`‘ball’`**
+          - Ball format, gives significant distortion toward the back.
+        - **`‘hammer’`**
+          - Hammer-Aitoff map projection format.
+        - **`‘sinusoidal’`**
+          - Sinusoidal map projection format.
+        - **`‘fisheye’`**
+          - Fisheye projection.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`‘pannini’`**
+          - Pannini projection.
+        Format specific options:
+        h_fov
+        Set output pannini parameter.
+        ih_fov
+        Set input pannini parameter.
+        - **`‘cylindrical’`**
+          - Cylindrical projection.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`‘perspective’`**
+          - Perspective projection.
+        (output only)
+        Format specific options:
+        v_fov
+        Set perspective parameter.
+        - **`‘tetrahedron’`**
+          - Tetrahedron projection.
+        - **`‘tsp’`**
+          - Truncated square pyramid projection.
+        - **`‘he’`**
+        - **`‘hequirect’`**
+          - Half equirectangular projection.
+        - **`‘equisolid’`**
+          - Equisolid format.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`‘og’`**
+          - Orthographic format.
+        Format specific options:
+        h_fov
+        v_fov
+        d_fov
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        ih_fov
+        iv_fov
+        id_fov
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`‘octahedron’`**
+          - Octahedron projection.
+        - **`‘cylindricalea’`**
+          - Cylindrical Equal Area projection.
+        Equirectangular projection.
+
+
+        Cubemap with 3x2/6x1/1x6 layout.
+
+
+        Format specific options:
+
+
+        - **`in_pad`**
+        - **`out_pad`**
+          - Set padding proportion for the input/output cubemap. Values in decimals.
+        Example values:
+        ‘
+        0
+        ’
+        No padding.
+        ‘
+        0.01
+        ’
+        1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels)
+        Default value is
+        ‘
+        0
+        ’
+        .
+        Maximum value is
+        ‘
+        0.1
+        ’
+        .
+        - **`fin_pad`**
+        - **`fout_pad`**
+          - Set fixed padding for the input/output cubemap. Values in pixels.
+        Default value is
+        ‘
+        0
+        ’
+        . If greater than zero it overrides other padding options.
+        - **`in_forder`**
+        - **`out_forder`**
+          - Set order of faces for the input/output cubemap. Choose one direction for each position.
+        Designation of directions:
+        ‘
+        r
+        ’
+        right
+        ‘
+        l
+        ’
+        left
+        ‘
+        u
+        ’
+        up
+        ‘
+        d
+        ’
+        down
+        ‘
+        f
+        ’
+        forward
+        ‘
+        b
+        ’
+        back
+        Default value is
+        ‘
+        rludfb
+        ’
+        .
+        - **`in_frot`**
+        - **`out_frot`**
+          - Set rotation of faces for the input/output cubemap. Choose one angle for each position.
+        Designation of angles:
+        ‘
+        0
+        ’
+        0 degrees clockwise
+        ‘
+        1
+        ’
+        90 degrees clockwise
+        ‘
+        2
+        ’
+        180 degrees clockwise
+        ‘
+        3
+        ’
+        270 degrees clockwise
+        Default value is
+        ‘
+        000000
+        ’
+        .
+        Set padding proportion for the input/output cubemap. Values in decimals.
+
+
+        Example values:
+
+
+        - **`‘0’`**
+          - No padding.
+        - **`‘0.01’`**
+          - 1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels)
+        No padding.
+
+
+        1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels)
+
+
+        Default value is ‘0’.
+        Maximum value is ‘0.1’.
+
+
+        Set fixed padding for the input/output cubemap. Values in pixels.
+
+
+        Default value is ‘0’. If greater than zero it overrides other padding options.
+
+
+        Set order of faces for the input/output cubemap. Choose one direction for each position.
+
+
+        Designation of directions:
+
+
+        - **`‘r’`**
+          - right
+        - **`‘l’`**
+          - left
+        - **`‘u’`**
+          - up
+        - **`‘d’`**
+          - down
+        - **`‘f’`**
+          - forward
+        - **`‘b’`**
+          - back
+        right
+
+
+        left
+
+
+        up
+
+
+        down
+
+
+        forward
+
+
+        back
+
+
+        Default value is ‘rludfb’.
+
+
+        Set rotation of faces for the input/output cubemap. Choose one angle for each position.
+
+
+        Designation of angles:
+
+
+        - **`‘0’`**
+          - 0 degrees clockwise
+        - **`‘1’`**
+          - 90 degrees clockwise
+        - **`‘2’`**
+          - 180 degrees clockwise
+        - **`‘3’`**
+          - 270 degrees clockwise
+        0 degrees clockwise
+
+
+        90 degrees clockwise
+
+
+        180 degrees clockwise
+
+
+        270 degrees clockwise
+
+
+        Default value is ‘000000’.
+
+
+        Equi-Angular Cubemap.
+
+
+        Regular video.
+
+
+        Format specific options:
+
+
+        - **`h_fov`**
+        - **`v_fov`**
+        - **`d_fov`**
+          - Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`ih_fov`**
+        - **`iv_fov`**
+        - **`id_fov`**
+          - Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Dual fisheye.
+
+
+        Format specific options:
+
+
+        - **`h_fov`**
+        - **`v_fov`**
+        - **`d_fov`**
+          - Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`ih_fov`**
+        - **`iv_fov`**
+        - **`id_fov`**
+          - Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Facebook’s 360 formats.
+
+
+        Stereographic format.
+
+
+        Format specific options:
+
+
+        - **`h_fov`**
+        - **`v_fov`**
+        - **`d_fov`**
+          - Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`ih_fov`**
+        - **`iv_fov`**
+        - **`id_fov`**
+          - Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Mercator format.
+
+
+        Ball format, gives significant distortion toward the back.
+
+
+        Hammer-Aitoff map projection format.
+
+
+        Sinusoidal map projection format.
+
+
+        Fisheye projection.
+
+
+        Format specific options:
+
+
+        - **`h_fov`**
+        - **`v_fov`**
+        - **`d_fov`**
+          - Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`ih_fov`**
+        - **`iv_fov`**
+        - **`id_fov`**
+          - Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Pannini projection.
+
+
+        Format specific options:
+
+
+        - **`h_fov`**
+          - Set output pannini parameter.
+        - **`ih_fov`**
+          - Set input pannini parameter.
+        Set output pannini parameter.
+
+
+        Set input pannini parameter.
+
+
+        Cylindrical projection.
+
+
+        Format specific options:
+
+
+        - **`h_fov`**
+        - **`v_fov`**
+        - **`d_fov`**
+          - Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`ih_fov`**
+        - **`iv_fov`**
+        - **`id_fov`**
+          - Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Perspective projection. (output only)
+
+
+        Format specific options:
+
+
+        - **`v_fov`**
+          - Set perspective parameter.
+        Set perspective parameter.
+
+
+        Tetrahedron projection.
+
+
+        Truncated square pyramid projection.
+
+
+        Half equirectangular projection.
+
+
+        Equisolid format.
+
+
+        Format specific options:
+
+
+        - **`h_fov`**
+        - **`v_fov`**
+        - **`d_fov`**
+          - Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`ih_fov`**
+        - **`iv_fov`**
+        - **`id_fov`**
+          - Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Orthographic format.
+
+
+        Format specific options:
+
+
+        - **`h_fov`**
+        - **`v_fov`**
+        - **`d_fov`**
+          - Set output horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        - **`ih_fov`**
+        - **`iv_fov`**
+        - **`id_fov`**
+          - Set input horizontal/vertical/diagonal field of view. Values in degrees.
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+        Set output horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Set input horizontal/vertical/diagonal field of view. Values in degrees.
+
+
+        If diagonal field of view is set it overrides horizontal and vertical field of view.
+
+
+        Octahedron projection.
+
+
+        Cylindrical Equal Area projection.
+
+
+        Set interpolation method.
+        Note: more complex interpolation methods require much more memory to run.
+
+
+        Available methods:
+
+
+        - **`‘near’`**
+        - **`‘nearest’`**
+          - Nearest neighbour.
+        - **`‘line’`**
+        - **`‘linear’`**
+          - Bilinear interpolation.
+        - **`‘lagrange9’`**
+          - Lagrange9 interpolation.
+        - **`‘cube’`**
+        - **`‘cubic’`**
+          - Bicubic interpolation.
+        - **`‘lanc’`**
+        - **`‘lanczos’`**
+          - Lanczos interpolation.
+        - **`‘sp16’`**
+        - **`‘spline16’`**
+          - Spline16 interpolation.
+        - **`‘gauss’`**
+        - **`‘gaussian’`**
+          - Gaussian interpolation.
+        - **`‘mitchell’`**
+          - Mitchell interpolation.
+        Nearest neighbour.
+
+
+        Bilinear interpolation.
+
+
+        Lagrange9 interpolation.
+
+
+        Bicubic interpolation.
+
+
+        Lanczos interpolation.
+
+
+        Spline16 interpolation.
+
+
+        Gaussian interpolation.
+
+
+        Mitchell interpolation.
+
+
+        Default value is ‘line’.
+
+
+        Set the output video resolution.
+
+
+        Default resolution depends on formats.
+
+
+        Set the input/output stereo format.
+
+
+        - **`‘2d’`**
+          - 2D mono
+        - **`‘sbs’`**
+          - Side by side
+        - **`‘tb’`**
+          - Top bottom
+        2D mono
+
+
+        Side by side
+
+
+        Top bottom
+
+
+        Default value is ‘2d’ for input and output format.
+
+
+        Set rotation for the output video. Values in degrees.
+
+
+        Set rotation order for the output video. Choose one item for each position.
+
+
+        - **`‘y, Y’`**
+          - yaw
+        - **`‘p, P’`**
+          - pitch
+        - **`‘r, R’`**
+          - roll
+        yaw
+
+
+        pitch
+
+
+        roll
+
+
+        Default value is ‘ypr’.
+
+
+        Flip the output video horizontally(swaps left-right)/vertically(swaps up-down)/in-depth(swaps back-forward). Boolean values.
+
+
+        Set if input video is flipped horizontally/vertically. Boolean values.
+
+
+        Set if input video is transposed. Boolean value, by default disabled.
+
+
+        Set if output video needs to be transposed. Boolean value, by default disabled.
+
+
+        Set output horizontal/vertical off-axis offset. Default is set to 0.
+        Allowed range is from -1 to 1.
+
+
+        Build mask in alpha plane for all unmapped pixels by marking them fully transparent. Boolean value, by default disabled.
+
+
+        Reset rotation of output video. Boolean value, by default disabled.
+
+
+
 
         Parameters:
         ----------
@@ -16344,8 +38382,10 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.271 vaguedenoiser
+        ### 11.271 vaguedenoiser
+
         Apply a wavelet based denoiser.
+
 
         It transforms each frame from the video input into the wavelet domain,
         using Cohen-Daubechies-Feauveau 9/7. Then it applies some filtering to
@@ -16353,7 +38393,116 @@ class VideoStream(FilterableStream):
         Due to wavelet properties, it should give a nice smoothed result, and
         reduced noise, without blurring picture features.
 
+
         This filter accepts the following options:
+
+
+        - **`threshold`**
+          - The filtering strength. The higher, the more filtered the video will be.
+        Hard thresholding can use a higher threshold than soft thresholding
+        before the video looks overfiltered. Default value is 2.
+        - **`method`**
+          - The filtering method the filter will use.
+        It accepts the following values:
+        ‘
+        hard
+        ’
+        All values under the threshold will be zeroed.
+        ‘
+        soft
+        ’
+        All values under the threshold will be zeroed. All values above will be
+        reduced by the threshold.
+        ‘
+        garrote
+        ’
+        Scales or nullifies coefficients - intermediary between (more) soft and
+        (less) hard thresholding.
+        Default is garrote.
+        - **`nsteps`**
+          - Number of times, the wavelet will decompose the picture. Picture can’t
+        be decomposed beyond a particular point (typically, 8 for a 640x480
+        frame - as 2^9 = 512 > 480). Valid values are integers between 1 and 32. Default value is 6.
+        - **`percent`**
+          - Partial of full denoising (limited coefficients shrinking), from 0 to 100. Default value is 85.
+        - **`planes`**
+          - A list of the planes to process. By default all planes are processed.
+        - **`type`**
+          - The threshold type the filter will use.
+        It accepts the following values:
+        ‘
+        universal
+        ’
+        Threshold used is same for all decompositions.
+        ‘
+        bayes
+        ’
+        Threshold used depends also on each decomposition coefficients.
+        Default is universal.
+        The filtering strength. The higher, the more filtered the video will be.
+        Hard thresholding can use a higher threshold than soft thresholding
+        before the video looks overfiltered. Default value is 2.
+
+
+        The filtering method the filter will use.
+
+
+        It accepts the following values:
+
+
+        - **`‘hard’`**
+          - All values under the threshold will be zeroed.
+        - **`‘soft’`**
+          - All values under the threshold will be zeroed. All values above will be
+        reduced by the threshold.
+        - **`‘garrote’`**
+          - Scales or nullifies coefficients - intermediary between (more) soft and
+        (less) hard thresholding.
+        All values under the threshold will be zeroed.
+
+
+        All values under the threshold will be zeroed. All values above will be
+        reduced by the threshold.
+
+
+        Scales or nullifies coefficients - intermediary between (more) soft and
+        (less) hard thresholding.
+
+
+        Default is garrote.
+
+
+        Number of times, the wavelet will decompose the picture. Picture can’t
+        be decomposed beyond a particular point (typically, 8 for a 640x480
+        frame - as 2^9 = 512 > 480). Valid values are integers between 1 and 32. Default value is 6.
+
+
+        Partial of full denoising (limited coefficients shrinking), from 0 to 100. Default value is 85.
+
+
+        A list of the planes to process. By default all planes are processed.
+
+
+        The threshold type the filter will use.
+
+
+        It accepts the following values:
+
+
+        - **`‘universal’`**
+          - Threshold used is same for all decompositions.
+        - **`‘bayes’`**
+          - Threshold used depends also on each decomposition coefficients.
+        Threshold used is same for all decompositions.
+
+
+        Threshold used depends also on each decomposition coefficients.
+
+
+        Default is universal.
+
+
+
 
         Parameters:
         ----------
@@ -16398,14 +38547,34 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.272 varblur
+        ### 11.272 varblur
+
         Apply variable blur filter by using 2nd video stream to set blur radius.
         The 2nd stream must have the same dimensions.
+
 
         This filter accepts the following options:
 
 
+        - **`min_r`**
+          - Set min allowed radius. Allowed range is from 0 to 254. Default is 0.
+        - **`max_r`**
+          - Set max allowed radius. Allowed range is from 1 to 255. Default is 8.
+        - **`planes`**
+          - Set which planes to process. By default, all are used.
+        Set min allowed radius. Allowed range is from 0 to 254. Default is 0.
+
+
+        Set max allowed radius. Allowed range is from 1 to 255. Default is 8.
+
+
+        Set which planes to process. By default, all are used.
+
+
         The varblur filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -16457,11 +38626,312 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.273 vectorscope
+        ### 11.273 vectorscope
+
         Display 2 color component values in the two dimensional graph (which is called
         a vectorscope).
 
+
         This filter accepts the following options:
+
+
+        - **`mode, m`**
+          - Set vectorscope mode.
+        It accepts the following values:
+        ‘
+        gray
+        ’
+        ‘
+        tint
+        ’
+        Gray values are displayed on graph, higher brightness means more pixels have
+        same component color value on location in graph. This is the default mode.
+        ‘
+        color
+        ’
+        Gray values are displayed on graph. Surrounding pixels values which are not
+        present in video frame are drawn in gradient of 2 color components which are
+        set by option
+        x
+        and
+        y
+        . The 3rd color component is static.
+        ‘
+        color2
+        ’
+        Actual color components values present in video frame are displayed on graph.
+        ‘
+        color3
+        ’
+        Similar as color2 but higher frequency of same values
+        x
+        and
+        y
+        on graph increases value of another color component, which is luminance by
+        default values of
+        x
+        and
+        y
+        .
+        ‘
+        color4
+        ’
+        Actual colors present in video frame are displayed on graph. If two different
+        colors map to same position on graph then color with higher value of component
+        not present in graph is picked.
+        ‘
+        color5
+        ’
+        Gray values are displayed on graph. Similar to
+        color
+        but with 3rd color
+        component picked from radial gradient.
+        - **`x`**
+          - Set which color component will be represented on X-axis. Default is
+        1
+        .
+        - **`y`**
+          - Set which color component will be represented on Y-axis. Default is
+        2
+        .
+        - **`intensity, i`**
+          - Set intensity, used by modes: gray, color, color3 and color5 for increasing brightness
+        of color component which represents frequency of (X, Y) location in graph.
+        - **`envelope, e`**
+          - ‘
+        none
+        ’
+        No envelope, this is default.
+        ‘
+        instant
+        ’
+        Instant envelope, even darkest single pixel will be clearly highlighted.
+        ‘
+        peak
+        ’
+        Hold maximum and minimum values presented in graph over time. This way you
+        can still spot out of range values without constantly looking at vectorscope.
+        ‘
+        peak+instant
+        ’
+        Peak and instant envelope combined together.
+        - **`graticule, g`**
+          - Set what kind of graticule to draw.
+        ‘
+        none
+        ’
+        ‘
+        green
+        ’
+        ‘
+        color
+        ’
+        ‘
+        invert
+        ’
+        - **`opacity, o`**
+          - Set graticule opacity.
+        - **`flags, f`**
+          - Set graticule flags.
+        ‘
+        white
+        ’
+        Draw graticule for white point.
+        ‘
+        black
+        ’
+        Draw graticule for black point.
+        ‘
+        name
+        ’
+        Draw color points short names.
+        - **`bgopacity, b`**
+          - Set background opacity.
+        - **`lthreshold, l`**
+          - Set low threshold for color component not represented on X or Y axis.
+        Values lower than this value will be ignored. Default is 0.
+        Note this value is multiplied with actual max possible value one pixel component
+        can have. So for 8-bit input and low threshold value of 0.1 actual threshold
+        is 0.1 * 255 = 25.
+        - **`hthreshold, h`**
+          - Set high threshold for color component not represented on X or Y axis.
+        Values higher than this value will be ignored. Default is 1.
+        Note this value is multiplied with actual max possible value one pixel component
+        can have. So for 8-bit input and high threshold value of 0.9 actual threshold
+        is 0.9 * 255 = 230.
+        - **`colorspace, c`**
+          - Set what kind of colorspace to use when drawing graticule.
+        ‘
+        auto
+        ’
+        ‘
+        601
+        ’
+        ‘
+        709
+        ’
+        Default is auto.
+        - **`tint0, t0`**
+        - **`tint1, t1`**
+          - Set color tint for gray/tint vectorscope mode. By default both options are zero.
+        This means no tint, and output will remain gray.
+        Set vectorscope mode.
+
+
+        It accepts the following values:
+
+
+        - **`‘gray’`**
+        - **`‘tint’`**
+          - Gray values are displayed on graph, higher brightness means more pixels have
+        same component color value on location in graph. This is the default mode.
+        - **`‘color’`**
+          - Gray values are displayed on graph. Surrounding pixels values which are not
+        present in video frame are drawn in gradient of 2 color components which are
+        set by option
+        x
+        and
+        y
+        . The 3rd color component is static.
+        - **`‘color2’`**
+          - Actual color components values present in video frame are displayed on graph.
+        - **`‘color3’`**
+          - Similar as color2 but higher frequency of same values
+        x
+        and
+        y
+        on graph increases value of another color component, which is luminance by
+        default values of
+        x
+        and
+        y
+        .
+        - **`‘color4’`**
+          - Actual colors present in video frame are displayed on graph. If two different
+        colors map to same position on graph then color with higher value of component
+        not present in graph is picked.
+        - **`‘color5’`**
+          - Gray values are displayed on graph. Similar to
+        color
+        but with 3rd color
+        component picked from radial gradient.
+        Gray values are displayed on graph, higher brightness means more pixels have
+        same component color value on location in graph. This is the default mode.
+
+
+        Gray values are displayed on graph. Surrounding pixels values which are not
+        present in video frame are drawn in gradient of 2 color components which are
+        set by option x and y. The 3rd color component is static.
+
+
+        Actual color components values present in video frame are displayed on graph.
+
+
+        Similar as color2 but higher frequency of same values x and y
+        on graph increases value of another color component, which is luminance by
+        default values of x and y.
+
+
+        Actual colors present in video frame are displayed on graph. If two different
+        colors map to same position on graph then color with higher value of component
+        not present in graph is picked.
+
+
+        Gray values are displayed on graph. Similar to color but with 3rd color
+        component picked from radial gradient.
+
+
+        Set which color component will be represented on X-axis. Default is 1.
+
+
+        Set which color component will be represented on Y-axis. Default is 2.
+
+
+        Set intensity, used by modes: gray, color, color3 and color5 for increasing brightness
+        of color component which represents frequency of (X, Y) location in graph.
+
+
+        - **`‘none’`**
+          - No envelope, this is default.
+        - **`‘instant’`**
+          - Instant envelope, even darkest single pixel will be clearly highlighted.
+        - **`‘peak’`**
+          - Hold maximum and minimum values presented in graph over time. This way you
+        can still spot out of range values without constantly looking at vectorscope.
+        - **`‘peak+instant’`**
+          - Peak and instant envelope combined together.
+        No envelope, this is default.
+
+
+        Instant envelope, even darkest single pixel will be clearly highlighted.
+
+
+        Hold maximum and minimum values presented in graph over time. This way you
+        can still spot out of range values without constantly looking at vectorscope.
+
+
+        Peak and instant envelope combined together.
+
+
+        Set what kind of graticule to draw.
+
+
+        - **`‘none’`**
+        - **`‘green’`**
+        - **`‘color’`**
+        - **`‘invert’`**
+        Set graticule opacity.
+
+
+        Set graticule flags.
+
+
+        - **`‘white’`**
+          - Draw graticule for white point.
+        - **`‘black’`**
+          - Draw graticule for black point.
+        - **`‘name’`**
+          - Draw color points short names.
+        Draw graticule for white point.
+
+
+        Draw graticule for black point.
+
+
+        Draw color points short names.
+
+
+        Set background opacity.
+
+
+        Set low threshold for color component not represented on X or Y axis.
+        Values lower than this value will be ignored. Default is 0.
+        Note this value is multiplied with actual max possible value one pixel component
+        can have. So for 8-bit input and low threshold value of 0.1 actual threshold
+        is 0.1 * 255 = 25.
+
+
+        Set high threshold for color component not represented on X or Y axis.
+        Values higher than this value will be ignored. Default is 1.
+        Note this value is multiplied with actual max possible value one pixel component
+        can have. So for 8-bit input and high threshold value of 0.9 actual threshold
+        is 0.9 * 255 = 230.
+
+
+        Set what kind of colorspace to use when drawing graticule.
+
+
+        - **`‘auto’`**
+        - **`‘601’`**
+        - **`‘709’`**
+        Default is auto.
+
+
+        Set color tint for gray/tint vectorscope mode. By default both options are zero.
+        This means no tint, and output will remain gray.
+
+
+
 
         Parameters:
         ----------
@@ -16514,12 +38984,15 @@ class VideoStream(FilterableStream):
     def vflip(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.276 vflip
+        ### 11.276 vflip
+
         Flip the input video vertically.
+
 
         For example, to vertically flip a video with ffmpeg:
 
-        ffmpeg -i in.avi -vf "vflip" out.avi
+
+
 
         Parameters:
         ----------
@@ -16542,8 +39015,12 @@ class VideoStream(FilterableStream):
     def vflip_vulkan(self, **kwargs: Any) -> "VideoStream":
         """
 
-        14.6 vflip_vulkan
+        ### 14.6 vflip_vulkan
+
         Flips an image vertically.
+
+
+
 
         Parameters:
         ----------
@@ -16566,15 +39043,21 @@ class VideoStream(FilterableStream):
     def vfrdet(self, **kwargs: Any) -> "VideoStream":
         """
 
-        11.277 vfrdet
+        ### 11.277 vfrdet
+
         Detect variable frame rate video.
 
+
         This filter tries to detect if the input is variable or constant frame rate.
+
 
         At end it will output number of frames detected as having variable delta pts,
         and ones with constant delta pts.
         If there was frames with variable delta, than it will also show min, max and
         average delta encountered.
+
+
+
 
         Parameters:
         ----------
@@ -16609,10 +39092,61 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.278 vibrance
+        ### 11.278 vibrance
+
         Boost or alter saturation.
 
+
         The filter accepts the following options:
+
+
+        - **`intensity`**
+          - Set strength of boost if positive value or strength of alter if negative value.
+        Default is 0. Allowed range is from -2 to 2.
+        - **`rbal`**
+          - Set the red balance. Default is 1. Allowed range is from -10 to 10.
+        - **`gbal`**
+          - Set the green balance. Default is 1. Allowed range is from -10 to 10.
+        - **`bbal`**
+          - Set the blue balance. Default is 1. Allowed range is from -10 to 10.
+        - **`rlum`**
+          - Set the red luma coefficient.
+        - **`glum`**
+          - Set the green luma coefficient.
+        - **`blum`**
+          - Set the blue luma coefficient.
+        - **`alternate`**
+          - If
+        intensity
+        is negative and this is set to 1, colors will change,
+        otherwise colors will be less saturated, more towards gray.
+        Set strength of boost if positive value or strength of alter if negative value.
+        Default is 0. Allowed range is from -2 to 2.
+
+
+        Set the red balance. Default is 1. Allowed range is from -10 to 10.
+
+
+        Set the green balance. Default is 1. Allowed range is from -10 to 10.
+
+
+        Set the blue balance. Default is 1. Allowed range is from -10 to 10.
+
+
+        Set the red luma coefficient.
+
+
+        Set the green luma coefficient.
+
+
+        Set the blue luma coefficient.
+
+
+        If intensity is negative and this is set to 1, colors will change,
+        otherwise colors will be less saturated, more towards gray.
+
+
+
 
         Parameters:
         ----------
@@ -16664,18 +39198,129 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.274 vidstabdetect
+        ### 11.274 vidstabdetect
+
         Analyze video stabilization/deshaking. Perform pass 1 of 2, see
         vidstabtransform for pass 2.
+
 
         This filter generates a file with relative translation and rotation
         transform information about subsequent frames, which is then used by
         the vidstabtransform filter.
 
+
         To enable compilation of this filter you need to configure FFmpeg with
         --enable-libvidstab.
 
+
         This filter accepts the following options:
+
+
+        - **`result`**
+          - Set the path to the file used to write the transforms information.
+        Default value is
+        transforms.trf
+        .
+        - **`shakiness`**
+          - Set how shaky the video is and how quick the camera is. It accepts an
+        integer in the range 1-10, a value of 1 means little shakiness, a
+        value of 10 means strong shakiness. Default value is 5.
+        - **`accuracy`**
+          - Set the accuracy of the detection process. It must be a value in the
+        range 1-15. A value of 1 means low accuracy, a value of 15 means high
+        accuracy. Default value is 15.
+        - **`stepsize`**
+          - Set stepsize of the search process. The region around minimum is
+        scanned with 1 pixel resolution. Default value is 6.
+        - **`mincontrast`**
+          - Set minimum contrast. Below this value a local measurement field is
+        discarded. Must be a floating point value in the range 0-1. Default
+        value is 0.3.
+        - **`tripod`**
+          - Set reference frame number for tripod mode.
+        If enabled, the motion of the frames is compared to a reference frame
+        in the filtered stream, identified by the specified number. The idea
+        is to compensate all movements in a more-or-less static scene and keep
+        the camera view absolutely still.
+        If set to 0, it is disabled. The frames are counted starting from 1.
+        - **`show`**
+          - Show fields and transforms in the resulting frames. It accepts an
+        integer in the range 0-2. Default value is 0, which disables any
+        visualization.
+        - **`fileformat`**
+          - Format for the transforms data file to be written.
+        Acceptable values are
+        ‘
+        ascii
+        ’
+        Human-readable plain text
+        ‘
+        binary
+        ’
+        Binary format, roughly 40% smaller than
+        ascii
+        . (
+        default
+        )
+        Set the path to the file used to write the transforms information.
+        Default value is transforms.trf.
+
+
+        Set how shaky the video is and how quick the camera is. It accepts an
+        integer in the range 1-10, a value of 1 means little shakiness, a
+        value of 10 means strong shakiness. Default value is 5.
+
+
+        Set the accuracy of the detection process. It must be a value in the
+        range 1-15. A value of 1 means low accuracy, a value of 15 means high
+        accuracy. Default value is 15.
+
+
+        Set stepsize of the search process. The region around minimum is
+        scanned with 1 pixel resolution. Default value is 6.
+
+
+        Set minimum contrast. Below this value a local measurement field is
+        discarded. Must be a floating point value in the range 0-1. Default
+        value is 0.3.
+
+
+        Set reference frame number for tripod mode.
+
+
+        If enabled, the motion of the frames is compared to a reference frame
+        in the filtered stream, identified by the specified number. The idea
+        is to compensate all movements in a more-or-less static scene and keep
+        the camera view absolutely still.
+
+
+        If set to 0, it is disabled. The frames are counted starting from 1.
+
+
+        Show fields and transforms in the resulting frames. It accepts an
+        integer in the range 0-2. Default value is 0, which disables any
+        visualization.
+
+
+        Format for the transforms data file to be written.
+        Acceptable values are
+
+
+        - **`‘ascii’`**
+          - Human-readable plain text
+        - **`‘binary’`**
+          - Binary format, roughly 40% smaller than
+        ascii
+        . (
+        default
+        )
+        Human-readable plain text
+
+
+        Binary format, roughly 40% smaller than ascii. (default)
+
+
+
 
         Parameters:
         ----------
@@ -16732,9 +39377,11 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.275 vidstabtransform
+        ### 11.275 vidstabtransform
+
         Video stabilization/deshaking: pass 2 of 2,
         see vidstabdetect for pass 1.
+
 
         Read a file with transform information for each frame and
         apply/compensate them. Together with the vidstabdetect
@@ -16742,8 +39389,12 @@ class VideoStream(FilterableStream):
         http://public.hronopik.de/vid.stab. It is important to also use
         the unsharp filter, see below.
 
+
         To enable compilation of this filter you need to configure FFmpeg with
         --enable-libvidstab.
+
+
+
 
         Parameters:
         ----------
@@ -16796,26 +39447,33 @@ class VideoStream(FilterableStream):
     def vif(self, _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
         """
 
-        11.279 vif
+        ### 11.279 vif
+
         Obtain the average VIF (Visual Information Fidelity) between two input videos.
 
+
         This filter takes two input videos.
+
 
         Both input videos must have the same resolution and pixel format for
         this filter to work correctly. Also it assumes that both inputs
         have the same number of frames, which are compared one by one.
 
+
         The obtained average VIF score is printed through the logging system.
+
 
         The filter stores the calculated VIF score of each frame.
 
+
         This filter also supports the framesync options.
+
 
         In the below example the input file main.mpg being processed is compared
         with the reference file ref.mpg.
 
 
-        ffmpeg -i main.mpg -i ref.mpg -lavfi vif -f null -
+
 
         Parameters:
         ----------
@@ -16850,10 +39508,160 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.280 vignette
+        ### 11.280 vignette
+
         Make or reverse a natural vignetting effect.
 
+
         The filter accepts the following options:
+
+
+        - **`angle, a`**
+          - Set lens angle expression as a number of radians.
+        The value is clipped in the
+        [0,PI/2]
+        range.
+        Default value:
+        "PI/5"
+        - **`x0`**
+        - **`y0`**
+          - Set center coordinates expressions. Respectively
+        "w/2"
+        and
+        "h/2"
+        by default.
+        - **`mode`**
+          - Set forward/backward mode.
+        Available modes are:
+        ‘
+        forward
+        ’
+        The larger the distance from the central point, the darker the image becomes.
+        ‘
+        backward
+        ’
+        The larger the distance from the central point, the brighter the image becomes.
+        This can be used to reverse a vignette effect, though there is no automatic
+        detection to extract the lens
+        angle
+        and other settings (yet). It can
+        also be used to create a burning effect.
+        Default value is ‘
+        forward
+        ’.
+        - **`eval`**
+          - Set evaluation mode for the expressions (
+        angle
+        ,
+        x0
+        ,
+        y0
+        ).
+        It accepts the following values:
+        ‘
+        init
+        ’
+        Evaluate expressions only once during the filter initialization.
+        ‘
+        frame
+        ’
+        Evaluate expressions for each incoming frame. This is way slower than the
+        ‘
+        init
+        ’ mode since it requires all the scalers to be re-computed, but it
+        allows advanced dynamic expressions.
+        Default value is ‘
+        init
+        ’.
+        - **`dither`**
+          - Set dithering to reduce the circular banding effects. Default is
+        1
+        (enabled).
+        - **`aspect`**
+          - Set vignette aspect. This setting allows one to adjust the shape of the vignette.
+        Setting this value to the SAR of the input will make a rectangular vignetting
+        following the dimensions of the video.
+        Default is
+        1/1
+        .
+        Set lens angle expression as a number of radians.
+
+
+        The value is clipped in the [0,PI/2] range.
+
+
+        Default value: "PI/5"
+
+
+        Set center coordinates expressions. Respectively "w/2" and "h/2"
+        by default.
+
+
+        Set forward/backward mode.
+
+
+        Available modes are:
+
+
+        - **`‘forward’`**
+          - The larger the distance from the central point, the darker the image becomes.
+        - **`‘backward’`**
+          - The larger the distance from the central point, the brighter the image becomes.
+        This can be used to reverse a vignette effect, though there is no automatic
+        detection to extract the lens
+        angle
+        and other settings (yet). It can
+        also be used to create a burning effect.
+        The larger the distance from the central point, the darker the image becomes.
+
+
+        The larger the distance from the central point, the brighter the image becomes.
+        This can be used to reverse a vignette effect, though there is no automatic
+        detection to extract the lens angle and other settings (yet). It can
+        also be used to create a burning effect.
+
+
+        Default value is ‘forward’.
+
+
+        Set evaluation mode for the expressions (angle, x0, y0).
+
+
+        It accepts the following values:
+
+
+        - **`‘init’`**
+          - Evaluate expressions only once during the filter initialization.
+        - **`‘frame’`**
+          - Evaluate expressions for each incoming frame. This is way slower than the
+        ‘
+        init
+        ’ mode since it requires all the scalers to be re-computed, but it
+        allows advanced dynamic expressions.
+        Evaluate expressions only once during the filter initialization.
+
+
+        Evaluate expressions for each incoming frame. This is way slower than the
+        ‘init’ mode since it requires all the scalers to be re-computed, but it
+        allows advanced dynamic expressions.
+
+
+        Default value is ‘init’.
+
+
+        Set dithering to reduce the circular banding effects. Default is 1
+        (enabled).
+
+
+        Set vignette aspect. This setting allows one to adjust the shape of the vignette.
+        Setting this value to the SAR of the input will make a rectangular vignetting
+        following the dimensions of the video.
+
+
+        Default is 1/1.
+
+
+
 
         Parameters:
         ----------
@@ -16892,18 +39700,31 @@ class VideoStream(FilterableStream):
     def vmafmotion(self, *, stats_file: str, **kwargs: Any) -> "VideoStream":
         """
 
-        11.281 vmafmotion
+        ### 11.281 vmafmotion
+
         Obtain the average VMAF motion score of a video.
         It is one of the component metrics of VMAF.
 
+
         The obtained average motion score is printed through the logging system.
+
 
         The filter accepts the following options:
 
 
+        - **`stats_file`**
+          - If specified, the filter will use the named file to save the motion score of
+        each frame with respect to the previous frame.
+        When filename equals "-" the data is sent to standard output.
+        If specified, the filter will use the named file to save the motion score of
+        each frame with respect to the previous frame.
+        When filename equals "-" the data is sent to standard output.
+
+
         Example:
 
-        ffmpeg -i ref.mpg -vf vmafmotion -f null -
+
+
 
         Parameters:
         ----------
@@ -16938,22 +39759,150 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.283 w3fdif
+        ### 11.283 w3fdif
+
         Deinterlace the input video ("w3fdif" stands for "Weston 3 Field
         Deinterlacing Filter").
+
 
         Based on the process described by Martin Weston for BBC R&D, and
         implemented based on the de-interlace algorithm written by Jim
         Easterbrook for BBC R&D, the Weston 3 field deinterlacing filter
         uses filter coefficients calculated by BBC R&D.
 
+
         This filter uses field-dominance information in frame to decide which
         of each pair of fields to place first in the output.
         If it gets it wrong use setfield filter before w3fdif filter.
 
+
         There are two sets of filter coefficients, so called "simple"
         and "complex". Which set of filter coefficients is used can
         be set by passing an optional parameter:
+
+
+        - **`filter`**
+          - Set the interlacing filter coefficients. Accepts one of the following values:
+        ‘
+        simple
+        ’
+        Simple filter coefficient set.
+        ‘
+        complex
+        ’
+        More-complex filter coefficient set.
+        Default value is ‘
+        complex
+        ’.
+        - **`mode`**
+          - The interlacing mode to adopt. It accepts one of the following values:
+        frame
+        Output one frame for each frame.
+        field
+        Output one frame for each field.
+        The default value is
+        field
+        .
+        - **`parity`**
+          - The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+        tff
+        Assume the top field is first.
+        bff
+        Assume the bottom field is first.
+        auto
+        Enable automatic detection of field parity.
+        The default value is
+        auto
+        .
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+        - **`deint`**
+          - Specify which frames to deinterlace. Accepts one of the following values:
+        ‘
+        all
+        ’
+        Deinterlace all frames,
+        ‘
+        interlaced
+        ’
+        Only deinterlace frames marked as interlaced.
+        Default value is ‘
+        all
+        ’.
+        Set the interlacing filter coefficients. Accepts one of the following values:
+
+
+        - **`‘simple’`**
+          - Simple filter coefficient set.
+        - **`‘complex’`**
+          - More-complex filter coefficient set.
+        Simple filter coefficient set.
+
+
+        More-complex filter coefficient set.
+
+
+        Default value is ‘complex’.
+
+
+        The interlacing mode to adopt. It accepts one of the following values:
+
+
+        - **`frame`**
+          - Output one frame for each frame.
+        - **`field`**
+          - Output one frame for each field.
+        Output one frame for each frame.
+
+
+        Output one frame for each field.
+
+
+        The default value is field.
+
+
+        The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+
+
+        - **`tff`**
+          - Assume the top field is first.
+        - **`bff`**
+          - Assume the bottom field is first.
+        - **`auto`**
+          - Enable automatic detection of field parity.
+        Assume the top field is first.
+
+
+        Assume the bottom field is first.
+
+
+        Enable automatic detection of field parity.
+
+
+        The default value is auto.
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+
+
+        Specify which frames to deinterlace. Accepts one of the following values:
+
+
+        - **`‘all’`**
+          - Deinterlace all frames,
+        - **`‘interlaced’`**
+          - Only deinterlace frames marked as interlaced.
+        Deinterlace all frames,
+
+
+        Only deinterlace frames marked as interlaced.
+
+
+        Default value is ‘all’.
+
+
+
 
         Parameters:
         ----------
@@ -17008,14 +39957,451 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.284 waveform
+        ### 11.284 waveform
+
         Video waveform monitor.
+
 
         The waveform monitor plots color component intensity. By default luma
         only. Each column of the waveform corresponds to a column of pixels in the
         source video.
 
+
         It accepts the following options:
+
+
+        - **`mode, m`**
+          - Can be either
+        row
+        , or
+        column
+        . Default is
+        column
+        .
+        In row mode, the graph on the left side represents color component value 0 and
+        the right side represents value = 255. In column mode, the top side represents
+        color component value = 0 and bottom side represents value = 255.
+        - **`intensity, i`**
+          - Set intensity. Smaller values are useful to find out how many values of the same
+        luminance are distributed across input rows/columns.
+        Default value is
+        0.04
+        . Allowed range is [0, 1].
+        - **`mirror, r`**
+          - Set mirroring mode.
+        0
+        means unmirrored,
+        1
+        means mirrored.
+        In mirrored mode, higher values will be represented on the left
+        side for
+        row
+        mode and at the top for
+        column
+        mode. Default is
+        1
+        (mirrored).
+        - **`display, d`**
+          - Set display mode.
+        It accepts the following values:
+        ‘
+        overlay
+        ’
+        Presents information identical to that in the
+        parade
+        , except
+        that the graphs representing color components are superimposed directly
+        over one another.
+        This display mode makes it easier to spot relative differences or similarities
+        in overlapping areas of the color components that are supposed to be identical,
+        such as neutral whites, grays, or blacks.
+        ‘
+        stack
+        ’
+        Display separate graph for the color components side by side in
+        row
+        mode or one below the other in
+        column
+        mode.
+        ‘
+        parade
+        ’
+        Display separate graph for the color components side by side in
+        column
+        mode or one below the other in
+        row
+        mode.
+        Using this display mode makes it easy to spot color casts in the highlights
+        and shadows of an image, by comparing the contours of the top and the bottom
+        graphs of each waveform. Since whites, grays, and blacks are characterized
+        by exactly equal amounts of red, green, and blue, neutral areas of the picture
+        should display three waveforms of roughly equal width/height. If not, the
+        correction is easy to perform by making level adjustments the three waveforms.
+        Default is
+        stack
+        .
+        - **`components, c`**
+          - Set which color components to display. Default is 1, which means only luma
+        or red color component if input is in RGB colorspace. If is set for example to
+        7 it will display all 3 (if) available color components.
+        - **`envelope, e`**
+          - ‘
+        none
+        ’
+        No envelope, this is default.
+        ‘
+        instant
+        ’
+        Instant envelope, minimum and maximum values presented in graph will be easily
+        visible even with small
+        step
+        value.
+        ‘
+        peak
+        ’
+        Hold minimum and maximum values presented in graph across time. This way you
+        can still spot out of range values without constantly looking at waveforms.
+        ‘
+        peak+instant
+        ’
+        Peak and instant envelope combined together.
+        - **`filter, f`**
+          - ‘
+        lowpass
+        ’
+        No filtering, this is default.
+        ‘
+        flat
+        ’
+        Luma and chroma combined together.
+        ‘
+        aflat
+        ’
+        Similar as above, but shows difference between blue and red chroma.
+        ‘
+        xflat
+        ’
+        Similar as above, but use different colors.
+        ‘
+        yflat
+        ’
+        Similar as above, but again with different colors.
+        ‘
+        chroma
+        ’
+        Displays only chroma.
+        ‘
+        color
+        ’
+        Displays actual color value on waveform.
+        ‘
+        acolor
+        ’
+        Similar as above, but with luma showing frequency of chroma values.
+        - **`graticule, g`**
+          - Set which graticule to display.
+        ‘
+        none
+        ’
+        Do not display graticule.
+        ‘
+        green
+        ’
+        Display green graticule showing legal broadcast ranges.
+        ‘
+        orange
+        ’
+        Display orange graticule showing legal broadcast ranges.
+        ‘
+        invert
+        ’
+        Display invert graticule showing legal broadcast ranges.
+        - **`opacity, o`**
+          - Set graticule opacity.
+        - **`flags, fl`**
+          - Set graticule flags.
+        ‘
+        numbers
+        ’
+        Draw numbers above lines. By default enabled.
+        ‘
+        dots
+        ’
+        Draw dots instead of lines.
+        - **`scale, s`**
+          - Set scale used for displaying graticule.
+        ‘
+        digital
+        ’
+        ‘
+        millivolts
+        ’
+        ‘
+        ire
+        ’
+        Default is digital.
+        - **`bgopacity, b`**
+          - Set background opacity.
+        - **`tint0, t0`**
+        - **`tint1, t1`**
+          - Set tint for output.
+        Only used with lowpass filter and when display is not overlay and input
+        pixel formats are not RGB.
+        - **`fitmode, fm`**
+          - Set sample aspect ratio of video output frames.
+        Can be used to configure waveform so it is not
+        streched too much in one of directions.
+        ‘
+        none
+        ’
+        Set sample aspect ration to 1/1.
+        ‘
+        size
+        ’
+        Set sample aspect ratio to match input size of video
+        Default is ‘
+        none
+        ’.
+        - **`input`**
+          - Set input formats for filter to pick from.
+        Can be ‘
+        all
+        ’, for selecting from all available formats,
+        or ‘
+        first
+        ’, for selecting first available format.
+        Default is ‘
+        first
+        ’.
+        Can be either row, or column. Default is column.
+        In row mode, the graph on the left side represents color component value 0 and
+        the right side represents value = 255. In column mode, the top side represents
+        color component value = 0 and bottom side represents value = 255.
+
+
+        Set intensity. Smaller values are useful to find out how many values of the same
+        luminance are distributed across input rows/columns.
+        Default value is 0.04. Allowed range is [0, 1].
+
+
+        Set mirroring mode. 0 means unmirrored, 1 means mirrored.
+        In mirrored mode, higher values will be represented on the left
+        side for row mode and at the top for column mode. Default is
+        1 (mirrored).
+
+
+        Set display mode.
+        It accepts the following values:
+
+
+        - **`‘overlay’`**
+          - Presents information identical to that in the
+        parade
+        , except
+        that the graphs representing color components are superimposed directly
+        over one another.
+        This display mode makes it easier to spot relative differences or similarities
+        in overlapping areas of the color components that are supposed to be identical,
+        such as neutral whites, grays, or blacks.
+        - **`‘stack’`**
+          - Display separate graph for the color components side by side in
+        row
+        mode or one below the other in
+        column
+        mode.
+        - **`‘parade’`**
+          - Display separate graph for the color components side by side in
+        column
+        mode or one below the other in
+        row
+        mode.
+        Using this display mode makes it easy to spot color casts in the highlights
+        and shadows of an image, by comparing the contours of the top and the bottom
+        graphs of each waveform. Since whites, grays, and blacks are characterized
+        by exactly equal amounts of red, green, and blue, neutral areas of the picture
+        should display three waveforms of roughly equal width/height. If not, the
+        correction is easy to perform by making level adjustments the three waveforms.
+        Presents information identical to that in the parade, except
+        that the graphs representing color components are superimposed directly
+        over one another.
+
+
+        This display mode makes it easier to spot relative differences or similarities
+        in overlapping areas of the color components that are supposed to be identical,
+        such as neutral whites, grays, or blacks.
+
+
+        Display separate graph for the color components side by side in
+        row mode or one below the other in column mode.
+
+
+        Display separate graph for the color components side by side in
+        column mode or one below the other in row mode.
+
+
+        Using this display mode makes it easy to spot color casts in the highlights
+        and shadows of an image, by comparing the contours of the top and the bottom
+        graphs of each waveform. Since whites, grays, and blacks are characterized
+        by exactly equal amounts of red, green, and blue, neutral areas of the picture
+        should display three waveforms of roughly equal width/height. If not, the
+        correction is easy to perform by making level adjustments the three waveforms.
+
+
+        Default is stack.
+
+
+        Set which color components to display. Default is 1, which means only luma
+        or red color component if input is in RGB colorspace. If is set for example to
+        7 it will display all 3 (if) available color components.
+
+
+        - **`‘none’`**
+          - No envelope, this is default.
+        - **`‘instant’`**
+          - Instant envelope, minimum and maximum values presented in graph will be easily
+        visible even with small
+        step
+        value.
+        - **`‘peak’`**
+          - Hold minimum and maximum values presented in graph across time. This way you
+        can still spot out of range values without constantly looking at waveforms.
+        - **`‘peak+instant’`**
+          - Peak and instant envelope combined together.
+        No envelope, this is default.
+
+
+        Instant envelope, minimum and maximum values presented in graph will be easily
+        visible even with small step value.
+
+
+        Hold minimum and maximum values presented in graph across time. This way you
+        can still spot out of range values without constantly looking at waveforms.
+
+
+        Peak and instant envelope combined together.
+
+
+        - **`‘lowpass’`**
+          - No filtering, this is default.
+        - **`‘flat’`**
+          - Luma and chroma combined together.
+        - **`‘aflat’`**
+          - Similar as above, but shows difference between blue and red chroma.
+        - **`‘xflat’`**
+          - Similar as above, but use different colors.
+        - **`‘yflat’`**
+          - Similar as above, but again with different colors.
+        - **`‘chroma’`**
+          - Displays only chroma.
+        - **`‘color’`**
+          - Displays actual color value on waveform.
+        - **`‘acolor’`**
+          - Similar as above, but with luma showing frequency of chroma values.
+        No filtering, this is default.
+
+
+        Luma and chroma combined together.
+
+
+        Similar as above, but shows difference between blue and red chroma.
+
+
+        Similar as above, but use different colors.
+
+
+        Similar as above, but again with different colors.
+
+
+        Displays only chroma.
+
+
+        Displays actual color value on waveform.
+
+
+        Similar as above, but with luma showing frequency of chroma values.
+
+
+        Set which graticule to display.
+
+
+        - **`‘none’`**
+          - Do not display graticule.
+        - **`‘green’`**
+          - Display green graticule showing legal broadcast ranges.
+        - **`‘orange’`**
+          - Display orange graticule showing legal broadcast ranges.
+        - **`‘invert’`**
+          - Display invert graticule showing legal broadcast ranges.
+        Do not display graticule.
+
+
+        Display green graticule showing legal broadcast ranges.
+
+
+        Display orange graticule showing legal broadcast ranges.
+
+
+        Display invert graticule showing legal broadcast ranges.
+
+
+        Set graticule opacity.
+
+
+        Set graticule flags.
+
+
+        - **`‘numbers’`**
+          - Draw numbers above lines. By default enabled.
+        - **`‘dots’`**
+          - Draw dots instead of lines.
+        Draw numbers above lines. By default enabled.
+
+
+        Draw dots instead of lines.
+
+
+        Set scale used for displaying graticule.
+
+
+        - **`‘digital’`**
+        - **`‘millivolts’`**
+        - **`‘ire’`**
+        Default is digital.
+
+
+        Set background opacity.
+
+
+        Set tint for output.
+        Only used with lowpass filter and when display is not overlay and input
+        pixel formats are not RGB.
+
+
+        Set sample aspect ratio of video output frames.
+        Can be used to configure waveform so it is not
+        streched too much in one of directions.
+
+
+        - **`‘none’`**
+          - Set sample aspect ration to 1/1.
+        - **`‘size’`**
+          - Set sample aspect ratio to match input size of video
+        Set sample aspect ration to 1/1.
+
+
+        Set sample aspect ratio to match input size of video
+
+
+        Default is ‘none’.
+
+
+        Set input formats for filter to pick from.
+        Can be ‘all’, for selecting from all available formats,
+        or ‘first’, for selecting first available format.
+        Default is ‘first’.
+
+
+
 
         Parameters:
         ----------
@@ -17074,15 +40460,44 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.285 weave, doubleweave
+        ### 11.285 weave, doubleweave
+
         The weave takes a field-based video input and join
         each two sequential fields into single frame, producing a new double
         height clip with half the frame rate and half the frame count.
 
+
         The doubleweave works same as weave but without
         halving frame rate and frame count.
 
+
         It accepts the following option:
+
+
+        - **`first_field`**
+          - Set first field. Available values are:
+        ‘
+        top, t
+        ’
+        Set the frame as top-field-first.
+        ‘
+        bottom, b
+        ’
+        Set the frame as bottom-field-first.
+        Set first field. Available values are:
+
+
+        - **`‘top, t’`**
+          - Set the frame as top-field-first.
+        - **`‘bottom, b’`**
+          - Set the frame as bottom-field-first.
+        Set the frame as top-field-first.
+
+
+        Set the frame as bottom-field-first.
+
+
+
 
         Parameters:
         ----------
@@ -17109,12 +40524,39 @@ class VideoStream(FilterableStream):
     def xbr(self, *, n: int | DefaultInt = DefaultInt(3), **kwargs: Any) -> "VideoStream":
         """
 
-        11.286 xbr
+        ### 11.286 xbr
+
         Apply the xBR high-quality magnification filter which is designed for pixel
         art. It follows a set of edge-detection rules, see
         https://forums.libretro.com/t/xbr-algorithm-tutorial/123.
 
+
         It accepts the following option:
+
+
+        - **`n`**
+          - Set the scaling dimension:
+        2
+        for
+        2xBR
+        ,
+        3
+        for
+        3xBR
+        and
+        4
+        for
+        4xBR
+        .
+        Default is
+        3
+        .
+        Set the scaling dimension: 2 for 2xBR, 3 for
+        3xBR and 4 for 4xBR.
+        Default is 3.
+
+
+
 
         Parameters:
         ----------
@@ -17148,15 +40590,39 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.287 xcorrelate
+        ### 11.287 xcorrelate
+
         Apply normalized cross-correlation between first and second input video stream.
 
+
         Second input video stream dimensions must be lower than first input video stream.
+
 
         The filter accepts the following options:
 
 
+        - **`planes`**
+          - Set which planes to process.
+        - **`secondary`**
+          - Set which secondary video frames will be processed from second input video stream,
+        can be
+        first
+        or
+        all
+        . Default is
+        all
+        .
+        Set which planes to process.
+
+
+        Set which secondary video frames will be processed from second input video stream,
+        can be first or all. Default is all.
+
+
         The xcorrelate filter also supports the framesync options.
+
+
+
 
         Parameters:
         ----------
@@ -17257,14 +40723,384 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.288 xfade
+        ### 11.288 xfade
+
         Apply cross fade from one input video stream to another input video stream.
         The cross fade is applied for specified duration.
+
 
         Both inputs must be constant frame-rate and have the same resolution, pixel format,
         frame rate and timebase.
 
+
         The filter accepts the following options:
+
+
+        - **`transition`**
+          - Set one of available transition effects:
+        ‘
+        custom
+        ’
+        ‘
+        fade
+        ’
+        ‘
+        wipeleft
+        ’
+        ‘
+        wiperight
+        ’
+        ‘
+        wipeup
+        ’
+        ‘
+        wipedown
+        ’
+        ‘
+        slideleft
+        ’
+        ‘
+        slideright
+        ’
+        ‘
+        slideup
+        ’
+        ‘
+        slidedown
+        ’
+        ‘
+        circlecrop
+        ’
+        ‘
+        rectcrop
+        ’
+        ‘
+        distance
+        ’
+        ‘
+        fadeblack
+        ’
+        ‘
+        fadewhite
+        ’
+        ‘
+        radial
+        ’
+        ‘
+        smoothleft
+        ’
+        ‘
+        smoothright
+        ’
+        ‘
+        smoothup
+        ’
+        ‘
+        smoothdown
+        ’
+        ‘
+        circleopen
+        ’
+        ‘
+        circleclose
+        ’
+        ‘
+        vertopen
+        ’
+        ‘
+        vertclose
+        ’
+        ‘
+        horzopen
+        ’
+        ‘
+        horzclose
+        ’
+        ‘
+        dissolve
+        ’
+        ‘
+        pixelize
+        ’
+        ‘
+        diagtl
+        ’
+        ‘
+        diagtr
+        ’
+        ‘
+        diagbl
+        ’
+        ‘
+        diagbr
+        ’
+        ‘
+        hlslice
+        ’
+        ‘
+        hrslice
+        ’
+        ‘
+        vuslice
+        ’
+        ‘
+        vdslice
+        ’
+        ‘
+        hblur
+        ’
+        ‘
+        fadegrays
+        ’
+        ‘
+        wipetl
+        ’
+        ‘
+        wipetr
+        ’
+        ‘
+        wipebl
+        ’
+        ‘
+        wipebr
+        ’
+        ‘
+        squeezeh
+        ’
+        ‘
+        squeezev
+        ’
+        ‘
+        zoomin
+        ’
+        ‘
+        fadefast
+        ’
+        ‘
+        fadeslow
+        ’
+        ‘
+        hlwind
+        ’
+        ‘
+        hrwind
+        ’
+        ‘
+        vuwind
+        ’
+        ‘
+        vdwind
+        ’
+        ‘
+        coverleft
+        ’
+        ‘
+        coverright
+        ’
+        ‘
+        coverup
+        ’
+        ‘
+        coverdown
+        ’
+        ‘
+        revealleft
+        ’
+        ‘
+        revealright
+        ’
+        ‘
+        revealup
+        ’
+        ‘
+        revealdown
+        ’
+        Default transition effect is fade.
+        - **`duration`**
+          - Set cross fade duration in seconds.
+        Range is 0 to 60 seconds.
+        Default duration is 1 second.
+        - **`offset`**
+          - Set cross fade start relative to first input stream in seconds.
+        Default offset is 0.
+        - **`expr`**
+          - Set expression for custom transition effect.
+        The expressions can use the following variables and functions:
+        X
+        Y
+        The coordinates of the current sample.
+        W
+        H
+        The width and height of the image.
+        P
+        Progress of transition effect.
+        PLANE
+        Currently processed plane.
+        A
+        Return value of first input at current location and plane.
+        B
+        Return value of second input at current location and plane.
+        a0(x, y)
+        a1(x, y)
+        a2(x, y)
+        a3(x, y)
+        Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the
+        first/second/third/fourth component of first input.
+        b0(x, y)
+        b1(x, y)
+        b2(x, y)
+        b3(x, y)
+        Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the
+        first/second/third/fourth component of second input.
+        Set one of available transition effects:
+
+
+        - **`‘custom’`**
+        - **`‘fade’`**
+        - **`‘wipeleft’`**
+        - **`‘wiperight’`**
+        - **`‘wipeup’`**
+        - **`‘wipedown’`**
+        - **`‘slideleft’`**
+        - **`‘slideright’`**
+        - **`‘slideup’`**
+        - **`‘slidedown’`**
+        - **`‘circlecrop’`**
+        - **`‘rectcrop’`**
+        - **`‘distance’`**
+        - **`‘fadeblack’`**
+        - **`‘fadewhite’`**
+        - **`‘radial’`**
+        - **`‘smoothleft’`**
+        - **`‘smoothright’`**
+        - **`‘smoothup’`**
+        - **`‘smoothdown’`**
+        - **`‘circleopen’`**
+        - **`‘circleclose’`**
+        - **`‘vertopen’`**
+        - **`‘vertclose’`**
+        - **`‘horzopen’`**
+        - **`‘horzclose’`**
+        - **`‘dissolve’`**
+        - **`‘pixelize’`**
+        - **`‘diagtl’`**
+        - **`‘diagtr’`**
+        - **`‘diagbl’`**
+        - **`‘diagbr’`**
+        - **`‘hlslice’`**
+        - **`‘hrslice’`**
+        - **`‘vuslice’`**
+        - **`‘vdslice’`**
+        - **`‘hblur’`**
+        - **`‘fadegrays’`**
+        - **`‘wipetl’`**
+        - **`‘wipetr’`**
+        - **`‘wipebl’`**
+        - **`‘wipebr’`**
+        - **`‘squeezeh’`**
+        - **`‘squeezev’`**
+        - **`‘zoomin’`**
+        - **`‘fadefast’`**
+        - **`‘fadeslow’`**
+        - **`‘hlwind’`**
+        - **`‘hrwind’`**
+        - **`‘vuwind’`**
+        - **`‘vdwind’`**
+        - **`‘coverleft’`**
+        - **`‘coverright’`**
+        - **`‘coverup’`**
+        - **`‘coverdown’`**
+        - **`‘revealleft’`**
+        - **`‘revealright’`**
+        - **`‘revealup’`**
+        - **`‘revealdown’`**
+        Default transition effect is fade.
+
+
+        Set cross fade duration in seconds.
+        Range is 0 to 60 seconds.
+        Default duration is 1 second.
+
+
+        Set cross fade start relative to first input stream in seconds.
+        Default offset is 0.
+
+
+        Set expression for custom transition effect.
+
+
+        The expressions can use the following variables and functions:
+
+
+        - **`X`**
+        - **`Y`**
+          - The coordinates of the current sample.
+        - **`W`**
+        - **`H`**
+          - The width and height of the image.
+        - **`P`**
+          - Progress of transition effect.
+        - **`PLANE`**
+          - Currently processed plane.
+        - **`A`**
+          - Return value of first input at current location and plane.
+        - **`B`**
+          - Return value of second input at current location and plane.
+        - **`a0(x, y)`**
+        - **`a1(x, y)`**
+        - **`a2(x, y)`**
+        - **`a3(x, y)`**
+          - Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the
+        first/second/third/fourth component of first input.
+        - **`b0(x, y)`**
+        - **`b1(x, y)`**
+        - **`b2(x, y)`**
+        - **`b3(x, y)`**
+          - Return the value of the pixel at location (
+        x
+        ,
+        y
+        ) of the
+        first/second/third/fourth component of second input.
+        The coordinates of the current sample.
+
+
+        The width and height of the image.
+
+
+        Progress of transition effect.
+
+
+        Currently processed plane.
+
+
+        Return value of first input at current location and plane.
+
+
+        Return value of second input at current location and plane.
+
+
+        Return the value of the pixel at location (x,y) of the
+        first/second/third/fourth component of first input.
+
+
+        Return the value of the pixel at location (x,y) of the
+        first/second/third/fourth component of second input.
+
+
+
 
         Parameters:
         ----------
@@ -17321,10 +41157,70 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        12.18 xfade_opencl
+        ### 12.18 xfade_opencl
+
         Cross fade two videos with custom transition effect by using OpenCL.
 
+
         It accepts the following options:
+
+
+        - **`transition`**
+          - Set one of possible transition effects.
+        custom
+        Select custom transition effect, the actual transition description
+        will be picked from source and kernel options.
+        fade
+        wipeleft
+        wiperight
+        wipeup
+        wipedown
+        slideleft
+        slideright
+        slideup
+        slidedown
+        Default transition is fade.
+        - **`source`**
+          - OpenCL program source file for custom transition.
+        - **`kernel`**
+          - Set name of kernel to use for custom transition from program source file.
+        - **`duration`**
+          - Set duration of video transition.
+        - **`offset`**
+          - Set time of start of transition relative to first video.
+        Set one of possible transition effects.
+
+
+        - **`custom`**
+          - Select custom transition effect, the actual transition description
+        will be picked from source and kernel options.
+        - **`fade`**
+        - **`wipeleft`**
+        - **`wiperight`**
+        - **`wipeup`**
+        - **`wipedown`**
+        - **`slideleft`**
+        - **`slideright`**
+        - **`slideup`**
+        - **`slidedown`**
+          - Default transition is fade.
+        Select custom transition effect, the actual transition description
+        will be picked from source and kernel options.
+
+
+        Default transition is fade.
+
+
+        OpenCL program source file for custom transition.
+
+
+        Set name of kernel to use for custom transition from program source file.
+
+
+        Set duration of video transition.
+
+
+        Set time of start of transition relative to first video.
 
 
         The program source file must contain a kernel function with the given name,
@@ -17333,46 +41229,21 @@ class VideoStream(FilterableStream):
         pixel to be generated.  The global ID offset for each work-item is therefore
         the coordinates of a pixel in the destination image.
 
+
         The kernel function needs to take the following arguments:
 
-         Destination image, __write_only image2d_t.
 
         This image will become the output; the kernel should write all of it.
 
-         First Source image, __read_only image2d_t.
-        Second Source image, __read_only image2d_t.
 
         These are the most recent images on each input.  The kernel may read from
         them to generate the output, but they can’t be written to.
 
-         Transition progress, float. This value is always between 0 and 1 inclusive.
 
         Example programs:
 
 
-         Apply dots curtain transition effect:
-        __kernel void blend_images(__write_only image2d_t dst,
-                                   __read_only  image2d_t src1,
-                                   __read_only  image2d_t src2,
-                                   float progress)
-        {
-            const sampler_t sampler = (CLK_NORMALIZED_COORDS_FALSE |
-                                       CLK_FILTER_LINEAR);
-            int2  p = (int2)(get_global_id(0), get_global_id(1));
-            float2 rp = (float2)(get_global_id(0), get_global_id(1));
-            float2 dim = (float2)(get_image_dim(src1).x, get_image_dim(src1).y);
-            rp = rp / dim;
 
-            float2 dots = (float2)(20.0, 20.0);
-            float2 center = (float2)(0,0);
-            float2 unused;
-
-            float4 val1 = read_imagef(src1, sampler, p);
-            float4 val2 = read_imagef(src2, sampler, p);
-            bool next = distance(fract(rp * dots, &unused), (float2)(0.5, 0.5)) < (progress / distance(rp, center));
-
-            write_imagef(dst, p, next ? val1 : val2);
-        }
 
         Parameters:
         ----------
@@ -17417,11 +41288,128 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.291 yadif
+        ### 11.291 yadif
+
         Deinterlace the input video ("yadif" means "yet another deinterlacing
         filter").
 
+
         It accepts the following parameters:
+
+
+        - **`mode`**
+          - The interlacing mode to adopt. It accepts one of the following values:
+        0, send_frame
+        Output one frame for each frame.
+        1, send_field
+        Output one frame for each field.
+        2, send_frame_nospatial
+        Like
+        send_frame
+        , but it skips the spatial interlacing check.
+        3, send_field_nospatial
+        Like
+        send_field
+        , but it skips the spatial interlacing check.
+        The default value is
+        send_frame
+        .
+        - **`parity`**
+          - The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+        0, tff
+        Assume the top field is first.
+        1, bff
+        Assume the bottom field is first.
+        -1, auto
+        Enable automatic detection of field parity.
+        The default value is
+        auto
+        .
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+        - **`deint`**
+          - Specify which frames to deinterlace. Accepts one of the following
+        values:
+        0, all
+        Deinterlace all frames.
+        1, interlaced
+        Only deinterlace frames marked as interlaced.
+        The default value is
+        all
+        .
+        The interlacing mode to adopt. It accepts one of the following values:
+
+
+        - **`0, send_frame`**
+          - Output one frame for each frame.
+        - **`1, send_field`**
+          - Output one frame for each field.
+        - **`2, send_frame_nospatial`**
+          - Like
+        send_frame
+        , but it skips the spatial interlacing check.
+        - **`3, send_field_nospatial`**
+          - Like
+        send_field
+        , but it skips the spatial interlacing check.
+        Output one frame for each frame.
+
+
+        Output one frame for each field.
+
+
+        Like send_frame, but it skips the spatial interlacing check.
+
+
+        Like send_field, but it skips the spatial interlacing check.
+
+
+        The default value is send_frame.
+
+
+        The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+
+
+        - **`0, tff`**
+          - Assume the top field is first.
+        - **`1, bff`**
+          - Assume the bottom field is first.
+        - **`-1, auto`**
+          - Enable automatic detection of field parity.
+        Assume the top field is first.
+
+
+        Assume the bottom field is first.
+
+
+        Enable automatic detection of field parity.
+
+
+        The default value is auto.
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+
+
+        Specify which frames to deinterlace. Accepts one of the following
+        values:
+
+
+        - **`0, all`**
+          - Deinterlace all frames.
+        - **`1, interlaced`**
+          - Only deinterlace frames marked as interlaced.
+        Deinterlace all frames.
+
+
+        Only deinterlace frames marked as interlaced.
+
+
+        The default value is all.
+
+
+
 
         Parameters:
         ----------
@@ -17461,12 +41449,129 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.292 yadif_cuda
+        ### 11.292 yadif_cuda
+
         Deinterlace the input video using the yadif algorithm, but implemented
         in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec
         and/or nvenc.
 
+
         It accepts the following parameters:
+
+
+        - **`mode`**
+          - The interlacing mode to adopt. It accepts one of the following values:
+        0, send_frame
+        Output one frame for each frame.
+        1, send_field
+        Output one frame for each field.
+        2, send_frame_nospatial
+        Like
+        send_frame
+        , but it skips the spatial interlacing check.
+        3, send_field_nospatial
+        Like
+        send_field
+        , but it skips the spatial interlacing check.
+        The default value is
+        send_frame
+        .
+        - **`parity`**
+          - The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+        0, tff
+        Assume the top field is first.
+        1, bff
+        Assume the bottom field is first.
+        -1, auto
+        Enable automatic detection of field parity.
+        The default value is
+        auto
+        .
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+        - **`deint`**
+          - Specify which frames to deinterlace. Accepts one of the following
+        values:
+        0, all
+        Deinterlace all frames.
+        1, interlaced
+        Only deinterlace frames marked as interlaced.
+        The default value is
+        all
+        .
+        The interlacing mode to adopt. It accepts one of the following values:
+
+
+        - **`0, send_frame`**
+          - Output one frame for each frame.
+        - **`1, send_field`**
+          - Output one frame for each field.
+        - **`2, send_frame_nospatial`**
+          - Like
+        send_frame
+        , but it skips the spatial interlacing check.
+        - **`3, send_field_nospatial`**
+          - Like
+        send_field
+        , but it skips the spatial interlacing check.
+        Output one frame for each frame.
+
+
+        Output one frame for each field.
+
+
+        Like send_frame, but it skips the spatial interlacing check.
+
+
+        Like send_field, but it skips the spatial interlacing check.
+
+
+        The default value is send_frame.
+
+
+        The picture field parity assumed for the input interlaced video. It accepts one
+        of the following values:
+
+
+        - **`0, tff`**
+          - Assume the top field is first.
+        - **`1, bff`**
+          - Assume the bottom field is first.
+        - **`-1, auto`**
+          - Enable automatic detection of field parity.
+        Assume the top field is first.
+
+
+        Assume the bottom field is first.
+
+
+        Enable automatic detection of field parity.
+
+
+        The default value is auto.
+        If the interlacing is unknown or the decoder does not export this information,
+        top field first will be assumed.
+
+
+        Specify which frames to deinterlace. Accepts one of the following
+        values:
+
+
+        - **`0, all`**
+          - Deinterlace all frames.
+        - **`1, interlaced`**
+          - Only deinterlace frames marked as interlaced.
+        Deinterlace all frames.
+
+
+        Only deinterlace frames marked as interlaced.
+
+
+        The default value is all.
+
+
+
 
         Parameters:
         ----------
@@ -17504,12 +41609,32 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.293 yaepblur
+        ### 11.293 yaepblur
+
         Apply blur filter while preserving edges ("yaepblur" means "yet another edge preserving blur filter").
         The algorithm is described in
         "J. S. Lee, Digital image enhancement and noise filtering by use of local statistics, IEEE Trans. Pattern Anal. Mach. Intell. PAMI-2, 1980."
 
+
         It accepts the following parameters:
+
+
+        - **`radius, r`**
+          - Set the window radius. Default value is 3.
+        - **`planes, p`**
+          - Set which planes to filter. Default is only the first plane.
+        - **`sigma, s`**
+          - Set blur strength. Default value is 128.
+        Set the window radius. Default value is 3.
+
+
+        Set which planes to filter. Default is only the first plane.
+
+
+        Set blur strength. Default value is 128.
+
+
+
 
         Parameters:
         ----------
@@ -17540,19 +41665,24 @@ class VideoStream(FilterableStream):
     def zmq(self, *, bind_address: str | DefaultStr = DefaultStr("tcp://*:5555"), **kwargs: Any) -> "VideoStream":
         """
 
-        18.34 zmq, azmq
+        ### 18.34 zmq, azmq
+
         Receive commands sent through a libzmq client, and forward them to
         filters in the filtergraph.
+
 
         zmq and azmq work as a pass-through filters. zmq
         must be inserted between two video filters, azmq between two
         audio filters. Both are capable to send messages to any filter type.
 
+
         To enable these filters you need to install the libzmq library and
         headers and configure FFmpeg with --enable-libzmq.
 
+
         For more information about libzmq see:
         http://www.zeromq.org/
+
 
         The zmq and azmq filters work as a libzmq server, which
         receives messages sent through a network interface defined by the
@@ -17561,9 +41691,9 @@ class VideoStream(FilterableStream):
         want to alter this value to your needs, but do not forget to escape any
         ’:’ signs (see filtergraph escaping).
 
+
         The received message must be in the form:
 
-        TARGET COMMAND [ARG]
 
         TARGET specifies the target of the command, usually the name of
         the filter class or a specific filter instance name. The default
@@ -17571,19 +41701,23 @@ class VideoStream(FilterableStream):
         but you can override this by using the ‘filter_name@id’ syntax
         (see Filtergraph syntax).
 
+
         COMMAND specifies the name of the command for the target filter.
+
 
         ARG is optional and specifies the optional argument list for the
         given COMMAND.
+
 
         Upon reception, the message is processed and the corresponding command
         is injected into the filtergraph. Depending on the result, the filter
         will send a reply to the client, adopting the format:
 
-        ERROR_CODE ERROR_REASON
-        MESSAGE
 
         MESSAGE is optional.
+
+
+
 
         Parameters:
         ----------
@@ -17620,13 +41754,141 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.294 zoompan
+        ### 11.294 zoompan
+
         Apply Zoom & Pan effect.
+
 
         This filter accepts the following options:
 
 
+        - **`zoom, z`**
+          - Set the zoom expression. Range is 1-10. Default is 1.
+        - **`x`**
+        - **`y`**
+          - Set the x and y expression. Default is 0.
+        - **`d`**
+          - Set the duration expression in number of frames.
+        This sets for how many number of frames effect will last for
+        single input image. Default is 90.
+        - **`s`**
+          - Set the output image size, default is ’hd720’.
+        - **`fps`**
+          - Set the output frame rate, default is ’25’.
+        Set the zoom expression. Range is 1-10. Default is 1.
+
+
+        Set the x and y expression. Default is 0.
+
+
+        Set the duration expression in number of frames.
+        This sets for how many number of frames effect will last for
+        single input image. Default is 90.
+
+
+        Set the output image size, default is ’hd720’.
+
+
+        Set the output frame rate, default is ’25’.
+
+
         Each expression can contain the following constants:
+
+
+        - **`in_w, iw`**
+          - Input width.
+        - **`in_h, ih`**
+          - Input height.
+        - **`out_w, ow`**
+          - Output width.
+        - **`out_h, oh`**
+          - Output height.
+        - **`in`**
+          - Input frame count.
+        - **`on`**
+          - Output frame count.
+        - **`in_time, it`**
+          - The input timestamp expressed in seconds. It’s NAN if the input timestamp is unknown.
+        - **`out_time, time, ot`**
+          - The output timestamp expressed in seconds.
+        - **`x`**
+        - **`y`**
+          - Last calculated ’x’ and ’y’ position from ’x’ and ’y’ expression
+        for current input frame.
+        - **`px`**
+        - **`py`**
+          - ’x’ and ’y’ of last output frame of previous input frame or 0 when there was
+        not yet such frame (first input frame).
+        - **`zoom`**
+          - Last calculated zoom from ’z’ expression for current input frame.
+        - **`pzoom`**
+          - Last calculated zoom of last output frame of previous input frame.
+        - **`duration`**
+          - Number of output frames for current input frame. Calculated from ’d’ expression
+        for each input frame.
+        - **`pduration`**
+          - number of output frames created for previous input frame
+        - **`a`**
+          - Rational number: input width / input height
+        - **`sar`**
+          - sample aspect ratio
+        - **`dar`**
+          - display aspect ratio
+        Input width.
+
+
+        Input height.
+
+
+        Output width.
+
+
+        Output height.
+
+
+        Input frame count.
+
+
+        Output frame count.
+
+
+        The input timestamp expressed in seconds. It’s NAN if the input timestamp is unknown.
+
+
+        The output timestamp expressed in seconds.
+
+
+        Last calculated ’x’ and ’y’ position from ’x’ and ’y’ expression
+        for current input frame.
+
+
+        ’x’ and ’y’ of last output frame of previous input frame or 0 when there was
+        not yet such frame (first input frame).
+
+
+        Last calculated zoom from ’z’ expression for current input frame.
+
+
+        Last calculated zoom of last output frame of previous input frame.
+
+
+        Number of output frames for current input frame. Calculated from ’d’ expression
+        for each input frame.
+
+
+        number of output frames created for previous input frame
+
+
+        Rational number: input width / input height
+
+
+        sample aspect ratio
+
+
+        display aspect ratio
+
+
+
 
         Parameters:
         ----------
@@ -17832,17 +42094,23 @@ class VideoStream(FilterableStream):
     ) -> "VideoStream":
         """
 
-        11.295 zscale
+        ### 11.295 zscale
+
         Scale (resize) the input video, using the z.lib library:
         https://github.com/sekrit-twc/zimg. To enable compilation of this
         filter, you need to configure FFmpeg with --enable-libzimg.
 
+
         The zscale filter forces the output display aspect ratio to be the same
         as the input, by changing the output sample aspect ratio.
+
 
         If the input image format is different from the format requested by
         the next filter, the zscale filter will convert the input to the
         requested format.
+
+
+
 
         Parameters:
         ----------

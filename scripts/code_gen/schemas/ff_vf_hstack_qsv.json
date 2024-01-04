@@ -1,5 +1,5 @@
 {
-  "description": "15.1 hstack_qsv\nStack input videos horizontally.\n\nThis is the QSV variant of the hstack filter, each input stream may\nhave different height, this filter will scale down/up each input stream while\nkeeping the original aspect.\n\nIt accepts the following options:",
+  "description": "### 15.1 hstack_qsv\n\nStack input videos horizontally.\n\n\nThis is the QSV variant of the hstack filter, each input stream may\nhave different height, this filter will scale down/up each input stream while\nkeeping the original aspect.\n\n\nIt accepts the following options:\n\n\n- **`inputs`**\n  - See\nhstack\n.\n- **`shortest`**\n  - See\nhstack\n.\n- **`height`**\n  - Set height of output. If set to 0, this filter will set height of output to\nheight of the first input stream. Default value is 0.\nSee hstack.\n\n\nSee hstack.\n\n\nSet height of output. If set to 0, this filter will set height of output to\nheight of the first input stream. Default value is 0.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.155 maskedclamp\nClamp the first input stream with the second input and third input stream.\n\nReturns the value of first stream to be between second input\nstream - undershoot and third input stream + overshoot.\n\nThis filter accepts the following options:",
+  "description": "### 11.155 maskedclamp\n\nClamp the first input stream with the second input and third input stream.\n\n\nReturns the value of first stream to be between second input\nstream - undershoot and third input stream + overshoot.\n\n\nThis filter accepts the following options:\n\n\n- **`undershoot`**\n  - Default value is\n0\n.\n- **`overshoot`**\n  - Default value is\n0\n.\n- **`planes`**\n  - Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\nDefault value is 0.\n\n\nDefault value is 0.\n\n\nSet which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

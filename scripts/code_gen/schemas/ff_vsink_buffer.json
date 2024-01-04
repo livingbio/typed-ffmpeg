@@ -1,5 +1,5 @@
 {
-  "description": "17.1 buffersink\nBuffer video frames, and make them available to the end of the filter\ngraph.\n\nThis sink is mainly intended for programmatic use, in particular\nthrough the interface defined in libavfilter/buffersink.h\nor the options system.\n\nIt accepts a pointer to an AVBufferSinkContext structure, which\ndefines the incoming buffers\u2019 formats, to be passed as the opaque\nparameter to avfilter_init_filter for initialization.",
+  "description": "### 17.1 buffersink\n\nBuffer video frames, and make them available to the end of the filter\ngraph.\n\n\nThis sink is mainly intended for programmatic use, in particular\nthrough the interface defined in libavfilter/buffersink.h\nor the options system.\n\n\nIt accepts a pointer to an AVBufferSinkContext structure, which\ndefines the incoming buffers\u2019 formats, to be passed as the opaque\nparameter to avfilter_init_filter for initialization.\n\n\n",
   "filter_type": "vsink",
   "formula_input_typings": null,
   "formula_output_typings": null,

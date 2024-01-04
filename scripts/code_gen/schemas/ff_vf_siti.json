@@ -1,5 +1,5 @@
 {
-  "description": "11.238 siti\nCalculate Spatial Information (SI) and Temporal Information (TI) scores for a video,\nas defined in ITU-T Rec. P.910 (11/21): Subjective video quality assessment methods\nfor multimedia applications. Available PDF at https://www.itu.int/rec/T-REC-P.910-202111-S/en.\nNote that this is a legacy implementation that corresponds to a superseded recommendation.\nRefer to ITU-T Rec. P.910 (07/22) for the latest version: https://www.itu.int/rec/T-REC-P.910-202207-I/en\n\nIt accepts the following option:",
+  "description": "### 11.238 siti\n\nCalculate Spatial Information (SI) and Temporal Information (TI) scores for a video,\nas defined in ITU-T Rec. P.910 (11/21): Subjective video quality assessment methods\nfor multimedia applications. Available PDF at https://www.itu.int/rec/T-REC-P.910-202111-S/en.\nNote that this is a legacy implementation that corresponds to a superseded recommendation.\nRefer to ITU-T Rec. P.910 (07/22) for the latest version: https://www.itu.int/rec/T-REC-P.910-202207-I/en\n\n\nIt accepts the following option:\n\n\n- **`print_summary`**\n  - If set to 1, Summary statistics will be printed to the console. Default 0.\nIf set to 1, Summary statistics will be printed to the console. Default 0.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

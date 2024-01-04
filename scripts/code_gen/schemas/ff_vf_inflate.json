@@ -1,5 +1,5 @@
 {
-  "description": "11.137 inflate\nApply inflate effect to the video.\n\nThis filter replaces the pixel by the local(3x3) average by taking into account\nonly values higher than the pixel.\n\nIt accepts the following options:",
+  "description": "### 11.137 inflate\n\nApply inflate effect to the video.\n\n\nThis filter replaces the pixel by the local(3x3) average by taking into account\nonly values higher than the pixel.\n\n\nIt accepts the following options:\n\n\n- **`threshold0`**\n- **`threshold1`**\n- **`threshold2`**\n- **`threshold3`**\n  - Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\nLimit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

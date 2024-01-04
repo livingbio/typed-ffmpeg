@@ -1,5 +1,5 @@
 {
-  "description": "8.13 adenorm\nRemedy denormals in audio by adding extremely low-level noise.\n\nThis filter shall be placed before any filter that can produce denormals.\n\nA description of the accepted parameters follows.",
+  "description": "### 8.13 adenorm\n\nRemedy denormals in audio by adding extremely low-level noise.\n\n\nThis filter shall be placed before any filter that can produce denormals.\n\n\nA description of the accepted parameters follows.\n\n\n- **`level`**\n  - Set level of added noise in dB. Default is\n-351\n.\nAllowed range is from -451 to -90.\n- **`type`**\n  - Set type of added noise.\ndc\nAdd DC signal.\nac\nAdd AC signal.\nsquare\nAdd square signal.\npulse\nAdd pulse signal.\nDefault is\ndc\n.\nSet level of added noise in dB. Default is -351.\nAllowed range is from -451 to -90.\n\n\nSet type of added noise.\n\n\n- **`dc`**\n  - Add DC signal.\n- **`ac`**\n  - Add AC signal.\n- **`square`**\n  - Add square signal.\n- **`pulse`**\n  - Add pulse signal.\nAdd DC signal.\n\n\nAdd AC signal.\n\n\nAdd square signal.\n\n\nAdd pulse signal.\n\n\nDefault is dc.\n\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

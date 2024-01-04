@@ -1,5 +1,5 @@
 {
-  "description": "11.133 iccgen\nGenerate ICC profiles and attach them to frames.\n\nThis filter accepts the following options:",
+  "description": "### 11.133 iccgen\n\nGenerate ICC profiles and attach them to frames.\n\n\nThis filter accepts the following options:\n\n\n- **`color_primaries`**\n- **`color_trc`**\n  - Configure the colorspace that the ICC profile will be generated for. The\ndefault value of\nauto\ninfers the value from the input frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\nSee the\nsetparams\nfilter for a list of possible values, but note that\nunknown\nare not valid values for this filter.\n- **`force`**\n  - If true, an ICC profile will be generated even if it would overwrite an\nalready existing ICC profile. Disabled by default.\nConfigure the colorspace that the ICC profile will be generated for. The\ndefault value of auto infers the value from the input frame\u2019s metadata,\ndefaulting to BT.709/sRGB as appropriate.\n\n\nSee the setparams filter for a list of possible values, but note that\nunknown are not valid values for this filter.\n\n\nIf true, an ICC profile will be generated even if it would overwrite an\nalready existing ICC profile. Disabled by default.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

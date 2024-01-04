@@ -1,5 +1,5 @@
 {
-  "description": "18.3 adrawgraph\nDraw a graph using input audio metadata.\n\nSee drawgraph",
+  "description": "### 18.3 adrawgraph\n\nDraw a graph using input audio metadata.\n\n\nSee drawgraph\n\n\n",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,

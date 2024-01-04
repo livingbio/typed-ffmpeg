@@ -1,5 +1,5 @@
 {
-  "description": "11.126 hstack\nStack input videos horizontally.\n\nAll streams must be of same pixel format and of same height.\n\nNote that this filter is faster than using overlay and pad filter\nto create same output.\n\nThe filter accepts the following option:",
+  "description": "### 11.126 hstack\n\nStack input videos horizontally.\n\n\nAll streams must be of same pixel format and of same height.\n\n\nNote that this filter is faster than using overlay and pad filter\nto create same output.\n\n\nThe filter accepts the following option:\n\n\n- **`inputs`**\n  - Set number of input streams. Default is 2.\n- **`shortest`**\n  - If set to 1, force the output to terminate when the shortest input\nterminates. Default value is 0.\nSet number of input streams. Default is 2.\n\n\nIf set to 1, force the output to terminate when the shortest input\nterminates. Default value is 0.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] * inputs",
   "formula_output_typings": null,

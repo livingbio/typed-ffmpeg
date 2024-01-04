@@ -1,5 +1,5 @@
 {
-  "description": "8.88 extrastereo\nLinearly increases the difference between left and right channels which\nadds some sort of \"live\" effect to playback.\n\nThe filter accepts the following options:",
+  "description": "### 8.88 extrastereo\n\nLinearly increases the difference between left and right channels which\nadds some sort of \"live\" effect to playback.\n\n\nThe filter accepts the following options:\n\n\n- **`m`**\n  - Sets the difference coefficient (default: 2.5). 0.0 means mono sound\n(average of both channels), with 1.0 sound will be unchanged, with\n-1.0 left and right channels will be swapped.\n- **`c`**\n  - Enable clipping. By default is enabled.\nSets the difference coefficient (default: 2.5). 0.0 means mono sound\n(average of both channels), with 1.0 sound will be unchanged, with\n-1.0 left and right channels will be swapped.\n\n\nEnable clipping. By default is enabled.\n\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.250 tblend\nBlend successive video frames.\n\nSee blend",
+  "description": "### 11.250 tblend\n\nBlend successive video frames.\n\n\nSee blend\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

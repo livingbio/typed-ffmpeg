@@ -1,5 +1,5 @@
 {
-  "description": "11.194 pixscope\nDisplay sample values of color channels. Mainly useful for checking color\nand levels. Minimum supported resolution is 640x480.\n\nThe filters accept the following options:",
+  "description": "### 11.194 pixscope\n\nDisplay sample values of color channels. Mainly useful for checking color\nand levels. Minimum supported resolution is 640x480.\n\n\nThe filters accept the following options:\n\n\n- **`x`**\n  - Set scope X position, relative offset on X axis.\n- **`y`**\n  - Set scope Y position, relative offset on Y axis.\n- **`w`**\n  - Set scope width.\n- **`h`**\n  - Set scope height.\n- **`o`**\n  - Set window opacity. This window also holds statistics about pixel area.\n- **`wx`**\n  - Set window X position, relative offset on X axis.\n- **`wy`**\n  - Set window Y position, relative offset on Y axis.\nSet scope X position, relative offset on X axis.\n\n\nSet scope Y position, relative offset on Y axis.\n\n\nSet scope width.\n\n\nSet scope height.\n\n\nSet window opacity. This window also holds statistics about pixel area.\n\n\nSet window X position, relative offset on X axis.\n\n\nSet window Y position, relative offset on Y axis.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

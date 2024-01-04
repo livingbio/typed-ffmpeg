@@ -1,5 +1,5 @@
 {
-  "description": "11.295 zscale\nScale (resize) the input video, using the z.lib library:\nhttps://github.com/sekrit-twc/zimg. To enable compilation of this\nfilter, you need to configure FFmpeg with --enable-libzimg.\n\nThe zscale filter forces the output display aspect ratio to be the same\nas the input, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by\nthe next filter, the zscale filter will convert the input to the\nrequested format.",
+  "description": "### 11.295 zscale\n\nScale (resize) the input video, using the z.lib library:\nhttps://github.com/sekrit-twc/zimg. To enable compilation of this\nfilter, you need to configure FFmpeg with --enable-libzimg.\n\n\nThe zscale filter forces the output display aspect ratio to be the same\nas the input, by changing the output sample aspect ratio.\n\n\nIf the input image format is different from the format requested by\nthe next filter, the zscale filter will convert the input to the\nrequested format.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

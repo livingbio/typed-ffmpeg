@@ -1,5 +1,5 @@
 {
-  "description": "11.125 hqx\nApply a high-quality magnification filter designed for pixel art. This filter\nwas originally created by Maxim Stepin.\n\nIt accepts the following option:",
+  "description": "### 11.125 hqx\n\nApply a high-quality magnification filter designed for pixel art. This filter\nwas originally created by Maxim Stepin.\n\n\nIt accepts the following option:\n\n\n- **`n`**\n  - Set the scaling dimension:\n2\nfor\nhq2x\n,\n3\nfor\nhq3x\nand\n4\nfor\nhq4x\n.\nDefault is\n3\n.\nSet the scaling dimension: 2 for hq2x, 3 for\nhq3x and 4 for hq4x.\nDefault is 3.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "14.9 gblur_vulkan\nApply Gaussian blur filter on Vulkan frames.\n\nThe filter accepts the following options:",
+  "description": "### 14.9 gblur_vulkan\n\nApply Gaussian blur filter on Vulkan frames.\n\n\nThe filter accepts the following options:\n\n\n- **`sigma`**\n  - Set horizontal sigma, standard deviation of Gaussian blur. Default is\n0.5\n.\n- **`sigmaV`**\n  - Set vertical sigma, if negative it will be same as\nsigma\n.\nDefault is\n-1\n.\n- **`planes`**\n  - Set which planes to filter. By default all planes are filtered.\n- **`size`**\n  - Set the kernel size along the horizontal axis. Default is\n19\n.\n- **`sizeV`**\n  - Set the kernel size along the vertical axis. Default is\n0\n,\nwhich sets to use the same value as\nsize\n.\nSet horizontal sigma, standard deviation of Gaussian blur. Default is 0.5.\n\n\nSet vertical sigma, if negative it will be same as sigma.\nDefault is -1.\n\n\nSet which planes to filter. By default all planes are filtered.\n\n\nSet the kernel size along the horizontal axis. Default is 19.\n\n\nSet the kernel size along the vertical axis. Default is 0,\nwhich sets to use the same value as size.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.185 owdenoise\nApply Overcomplete Wavelet denoiser.\n\nThe filter accepts the following options:",
+  "description": "### 11.185 owdenoise\n\nApply Overcomplete Wavelet denoiser.\n\n\nThe filter accepts the following options:\n\n\n- **`depth`**\n  - Set depth.\nLarger depth values will denoise lower frequency components more, but\nslow down filtering.\nMust be an int in the range 8-16, default is\n8\n.\n- **`luma_strength, ls`**\n  - Set luma strength.\nMust be a double value in the range 0-1000, default is\n1.0\n.\n- **`chroma_strength, cs`**\n  - Set chroma strength.\nMust be a double value in the range 0-1000, default is\n1.0\n.\nSet depth.\n\n\nLarger depth values will denoise lower frequency components more, but\nslow down filtering.\n\n\nMust be an int in the range 8-16, default is 8.\n\n\nSet luma strength.\n\n\nMust be a double value in the range 0-1000, default is 1.0.\n\n\nSet chroma strength.\n\n\nMust be a double value in the range 0-1000, default is 1.0.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.233 shuffleframes\nReorder and/or duplicate and/or drop video frames.\n\nIt accepts the following parameters:\n\n\nThe first frame has the index 0. The default is to keep the input unchanged.",
+  "description": "### 11.233 shuffleframes\n\nReorder and/or duplicate and/or drop video frames.\n\n\nIt accepts the following parameters:\n\n\n- **`mapping`**\n  - Set the destination indexes of input frames.\nThis is space or \u2019|\u2019 separated list of indexes that maps input frames to output\nframes. Number of indexes also sets maximal value that each index may have.\n\u2019-1\u2019 index have special meaning and that is to drop frame.\nSet the destination indexes of input frames.\nThis is space or \u2019|\u2019 separated list of indexes that maps input frames to output\nframes. Number of indexes also sets maximal value that each index may have.\n\u2019-1\u2019 index have special meaning and that is to drop frame.\n\n\nThe first frame has the index 0. The default is to keep the input unchanged.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

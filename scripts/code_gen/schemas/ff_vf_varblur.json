@@ -1,5 +1,5 @@
 {
-  "description": "11.272 varblur\nApply variable blur filter by using 2nd video stream to set blur radius.\nThe 2nd stream must have the same dimensions.\n\nThis filter accepts the following options:\n\n\nThe varblur filter also supports the framesync options.",
+  "description": "### 11.272 varblur\n\nApply variable blur filter by using 2nd video stream to set blur radius.\nThe 2nd stream must have the same dimensions.\n\n\nThis filter accepts the following options:\n\n\n- **`min_r`**\n  - Set min allowed radius. Allowed range is from 0 to 254. Default is 0.\n- **`max_r`**\n  - Set max allowed radius. Allowed range is from 1 to 255. Default is 8.\n- **`planes`**\n  - Set which planes to process. By default, all are used.\nSet min allowed radius. Allowed range is from 0 to 254. Default is 0.\n\n\nSet max allowed radius. Allowed range is from 1 to 255. Default is 8.\n\n\nSet which planes to process. By default, all are used.\n\n\nThe varblur filter also supports the framesync options.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

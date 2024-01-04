@@ -1,5 +1,5 @@
 {
-  "description": "11.158 maskedmin\nMerge the second and third input stream into output stream using absolute differences\nbetween second input stream and first input stream and absolute difference between\nthird input stream and first input stream. The picked value will be from second input\nstream if second absolute difference is less than first one or from third input stream\notherwise.\n\nThis filter accepts the following options:",
+  "description": "### 11.158 maskedmin\n\nMerge the second and third input stream into output stream using absolute differences\nbetween second input stream and first input stream and absolute difference between\nthird input stream and first input stream. The picked value will be from second input\nstream if second absolute difference is less than first one or from third input stream\notherwise.\n\n\nThis filter accepts the following options:\n\n\n- **`planes`**\n  - Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\nSet which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

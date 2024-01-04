@@ -1,5 +1,5 @@
 {
-  "description": "11.87 extractplanes\nExtract color channel components from input video stream into\nseparate grayscale video streams.\n\nThe filter accepts the following option:",
+  "description": "### 11.87 extractplanes\n\nExtract color channel components from input video stream into\nseparate grayscale video streams.\n\n\nThe filter accepts the following option:\n\n\n- **`planes`**\n  - Set plane(s) to extract.\nAvailable values for planes are:\n\u2018\ny\n\u2019\n\u2018\nu\n\u2019\n\u2018\nv\n\u2019\n\u2018\na\n\u2019\n\u2018\nr\n\u2019\n\u2018\ng\n\u2019\n\u2018\nb\n\u2019\nChoosing planes not available in the input will result in an error.\nThat means you cannot select\nr\n,\ng\n,\nb\nplanes\nwith\ny\n,\nu\n,\nv\nplanes at same time.\nSet plane(s) to extract.\n\n\nAvailable values for planes are:\n\n\n- **`\u2018y\u2019`**\n- **`\u2018u\u2019`**\n- **`\u2018v\u2019`**\n- **`\u2018a\u2019`**\n- **`\u2018r\u2019`**\n- **`\u2018g\u2019`**\n- **`\u2018b\u2019`**\nChoosing planes not available in the input will result in an error.\nThat means you cannot select r, g, b planes\nwith y, u, v planes at same time.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": "[StreamType.video] * len(planes.split('+'))",

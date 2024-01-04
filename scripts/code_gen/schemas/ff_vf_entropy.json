@@ -1,5 +1,5 @@
 {
-  "description": "11.81 entropy\nMeasure graylevel entropy in histogram of color channels of video frames.\n\nIt accepts the following parameters:",
+  "description": "### 11.81 entropy\n\nMeasure graylevel entropy in histogram of color channels of video frames.\n\n\nIt accepts the following parameters:\n\n\n- **`mode`**\n  - Can be either\nnormal\nor\ndiff\n. Default is\nnormal\n.\ndiff\nmode measures entropy of histogram delta values, absolute differences\nbetween neighbour histogram values.\nCan be either normal or diff. Default is normal.\n\n\ndiff mode measures entropy of histogram delta values, absolute differences\nbetween neighbour histogram values.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

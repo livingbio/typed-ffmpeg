@@ -1,5 +1,5 @@
 {
-  "description": "11.8 backgroundkey\nTurns a static background into transparency.\n\nThe filter accepts the following option:",
+  "description": "### 11.8 backgroundkey\n\nTurns a static background into transparency.\n\n\nThe filter accepts the following option:\n\n\n- **`threshold`**\n  - Threshold for scene change detection.\n- **`similarity`**\n  - Similarity percentage with the background.\n- **`blend`**\n  - Set the blend amount for pixels that are not similar.\nThreshold for scene change detection.\n\n\nSimilarity percentage with the background.\n\n\nSet the blend amount for pixels that are not similar.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.245 streamselect, astreamselect\nSelect video or audio streams.\n\nThe filter accepts the following options:",
+  "description": "### 11.245 streamselect, astreamselect\n\nSelect video or audio streams.\n\n\nThe filter accepts the following options:\n\n\n- **`inputs`**\n  - Set number of inputs. Default is 2.\n- **`map`**\n  - Set input indexes to remap to outputs.\nSet number of inputs. Default is 2.\n\n\nSet input indexes to remap to outputs.\n\n\n",
   "filter_type": "af",
   "formula_input_typings": "[StreamType.audio] * inputs",
   "formula_output_typings": "[StreamType.audio] * len(re.findall(r'\\d+', map))",

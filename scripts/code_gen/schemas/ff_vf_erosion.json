@@ -1,5 +1,5 @@
 {
-  "description": "11.84 erosion\nApply erosion effect to the video.\n\nThis filter replaces the pixel by the local(3x3) minimum.\n\nIt accepts the following options:",
+  "description": "### 11.84 erosion\n\nApply erosion effect to the video.\n\n\nThis filter replaces the pixel by the local(3x3) minimum.\n\n\nIt accepts the following options:\n\n\n- **`threshold0`**\n- **`threshold1`**\n- **`threshold2`**\n- **`threshold3`**\n  - Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n- **`coordinates`**\n  - Flag which specifies the pixel to refer to. Default is 255 i.e. all eight\npixels are used.\nFlags to local 3x3 coordinates maps like this:\n1 2 3\n    4   5\n    6 7 8\nLimit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n\n\nFlag which specifies the pixel to refer to. Default is 255 i.e. all eight\npixels are used.\n\n\nFlags to local 3x3 coordinates maps like this:\n\n\n1 2 3\n    4   5\n    6 7 8\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "11.202 qp\nChange video quantization parameters (QP).\n\nThe filter accepts the following option:\n\n\nThe expression is evaluated through the eval API and can contain, among others,\nthe following constants:",
+  "description": "### 11.202 qp\n\nChange video quantization parameters (QP).\n\n\nThe filter accepts the following option:\n\n\n- **`qp`**\n  - Set expression for quantization parameter.\nSet expression for quantization parameter.\n\n\nThe expression is evaluated through the eval API and can contain, among others,\nthe following constants:\n\n\n- **`known`**\n  - 1 if index is not 129, 0 otherwise.\n- **`qp`**\n  - Sequential index starting from -129 to 128.\n1 if index is not 129, 0 otherwise.\n\n\nSequential index starting from -129 to 128.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

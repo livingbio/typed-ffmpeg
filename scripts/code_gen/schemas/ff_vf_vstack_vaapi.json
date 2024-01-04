@@ -1,5 +1,5 @@
 {
-  "description": "13.4 vstack_vaapi\nStack input videos vertically.\n\nThis is the VA-API variant of the vstack filter, each input stream may\nhave different width, this filter will scale down/up each input stream while\nkeeping the original aspect.\n\nIt accepts the following options:",
+  "description": "### 13.4 vstack_vaapi\n\nStack input videos vertically.\n\n\nThis is the VA-API variant of the vstack filter, each input stream may\nhave different width, this filter will scale down/up each input stream while\nkeeping the original aspect.\n\n\nIt accepts the following options:\n\n\n- **`inputs`**\n  - See\nvstack\n.\n- **`shortest`**\n  - See\nvstack\n.\n- **`width`**\n  - Set width of output. If set to 0, this filter will set width of output to\nwidth of the first input stream. Default value is 0.\nSee vstack.\n\n\nSee vstack.\n\n\nSet width of output. If set to 0, this filter will set width of output to\nwidth of the first input stream. Default value is 0.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

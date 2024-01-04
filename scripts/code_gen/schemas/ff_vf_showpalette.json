@@ -1,5 +1,5 @@
 {
-  "description": "11.232 showpalette\nDisplays the 256 colors palette of each frame. This filter is only relevant for\npal8 pixel format frames.\n\nIt accepts the following option:",
+  "description": "### 11.232 showpalette\n\nDisplays the 256 colors palette of each frame. This filter is only relevant for\npal8 pixel format frames.\n\n\nIt accepts the following option:\n\n\n- **`s`**\n  - Set the size of the box used to represent one palette color entry. Default is\n30\n(for a\n30x30\npixel box).\nSet the size of the box used to represent one palette color entry. Default is\n30 (for a 30x30 pixel box).\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

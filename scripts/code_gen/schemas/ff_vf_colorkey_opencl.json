@@ -1,5 +1,5 @@
 {
-  "description": "12.3 colorkey_opencl\nRGB colorspace color keying.\n\nThe filter accepts the following options:",
+  "description": "### 12.3 colorkey_opencl\n\nRGB colorspace color keying.\n\n\nThe filter accepts the following options:\n\n\n- **`color`**\n  - The color which will be replaced with transparency.\n- **`similarity`**\n  - Similarity percentage with the key color.\n0.01 matches only the exact key color, while 1.0 matches everything.\n- **`blend`**\n  - Blend percentage.\n0.0 makes pixels either fully transparent, or not transparent at all.\nHigher values result in semi-transparent pixels, with a higher transparency\nthe more similar the pixels color is to the key color.\nThe color which will be replaced with transparency.\n\n\nSimilarity percentage with the key color.\n\n\n0.01 matches only the exact key color, while 1.0 matches everything.\n\n\nBlend percentage.\n\n\n0.0 makes pixels either fully transparent, or not transparent at all.\n\n\nHigher values result in semi-transparent pixels, with a higher transparency\nthe more similar the pixels color is to the key color.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

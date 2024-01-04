@@ -1,5 +1,5 @@
 {
-  "description": "11.49 cover_rect\nCover a rectangular object\n\nIt accepts the following options:",
+  "description": "### 11.49 cover_rect\n\nCover a rectangular object\n\n\nIt accepts the following options:\n\n\n- **`cover`**\n  - Filepath of the optional cover image, needs to be in yuv420.\n- **`mode`**\n  - Set covering mode.\nIt accepts the following values:\n\u2018\ncover\n\u2019\ncover it by the supplied image\n\u2018\nblur\n\u2019\ncover it by interpolating the surrounding pixels\nDefault value is\nblur\n.\nFilepath of the optional cover image, needs to be in yuv420.\n\n\nSet covering mode.\n\n\nIt accepts the following values:\n\n\n- **`\u2018cover\u2019`**\n  - cover it by the supplied image\n- **`\u2018blur\u2019`**\n  - cover it by interpolating the surrounding pixels\ncover it by the supplied image\n\n\ncover it by interpolating the surrounding pixels\n\n\nDefault value is blur.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

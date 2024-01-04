@@ -1,5 +1,5 @@
 {
-  "description": "11.152 lumakey\nTurn certain luma values into transparency.\n\nThe filter accepts the following options:",
+  "description": "### 11.152 lumakey\n\nTurn certain luma values into transparency.\n\n\nThe filter accepts the following options:\n\n\n- **`threshold`**\n  - Set the luma which will be used as base for transparency.\nDefault value is\n0\n.\n- **`tolerance`**\n  - Set the range of luma values to be keyed out.\nDefault value is\n0.01\n.\n- **`softness`**\n  - Set the range of softness. Default value is\n0\n.\nUse this to control gradual transition from zero to full transparency.\nSet the luma which will be used as base for transparency.\nDefault value is 0.\n\n\nSet the range of luma values to be keyed out.\nDefault value is 0.01.\n\n\nSet the range of softness. Default value is 0.\nUse this to control gradual transition from zero to full transparency.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

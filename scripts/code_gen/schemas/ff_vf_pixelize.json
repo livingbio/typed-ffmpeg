@@ -1,5 +1,5 @@
 {
-  "description": "11.193 pixelize\nApply pixelization to video stream.\n\nThe filter accepts the following options:",
+  "description": "### 11.193 pixelize\n\nApply pixelization to video stream.\n\n\nThe filter accepts the following options:\n\n\n- **`width, w`**\n- **`height, h`**\n  - Set block dimensions that will be used for pixelization.\nDefault value is\n16\n.\n- **`mode, m`**\n  - Set the mode of pixelization used.\nPossible values are:\n\u2018\navg\n\u2019\n\u2018\nmin\n\u2019\n\u2018\nmax\n\u2019\nDefault value is\navg\n.\n- **`planes, p`**\n  - Set what planes to filter. Default is to filter all planes.\nSet block dimensions that will be used for pixelization.\nDefault value is 16.\n\n\nSet the mode of pixelization used.\n\n\nPossible values are:\n\n\n- **`\u2018avg\u2019`**\n- **`\u2018min\u2019`**\n- **`\u2018max\u2019`**\nDefault value is avg.\n\n\nSet what planes to filter. Default is to filter all planes.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

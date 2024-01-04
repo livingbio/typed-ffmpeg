@@ -1,5 +1,5 @@
 {
-  "description": "11.124 hwupload_cuda\nUpload system memory frames to a CUDA device.\n\nIt accepts the following optional parameters:",
+  "description": "### 11.124 hwupload_cuda\n\nUpload system memory frames to a CUDA device.\n\n\nIt accepts the following optional parameters:\n\n\n- **`device`**\n  - The number of the CUDA device to use\nThe number of the CUDA device to use\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

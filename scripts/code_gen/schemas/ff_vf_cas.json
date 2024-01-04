@@ -1,5 +1,5 @@
 {
-  "description": "11.23 cas\nApply Contrast Adaptive Sharpen filter to video stream.\n\nThe filter accepts the following options:",
+  "description": "### 11.23 cas\n\nApply Contrast Adaptive Sharpen filter to video stream.\n\n\nThe filter accepts the following options:\n\n\n- **`strength`**\n  - Set the sharpening strength. Default value is 0.\n- **`planes`**\n  - Set planes to filter. Default value is to filter all\nplanes except alpha plane.\nSet the sharpening strength. Default value is 0.\n\n\nSet planes to filter. Default value is to filter all\nplanes except alpha plane.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

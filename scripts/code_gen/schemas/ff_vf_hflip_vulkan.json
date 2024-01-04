@@ -1,5 +1,5 @@
 {
-  "description": "14.7 hflip_vulkan\nFlips an image horizontally.",
+  "description": "### 14.7 hflip_vulkan\n\nFlips an image horizontally.\n\n\n",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

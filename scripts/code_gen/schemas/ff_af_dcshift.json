@@ -1,5 +1,5 @@
 {
-  "description": "8.81 dcshift\nApply a DC shift to the audio.\n\nThis can be useful to remove a DC offset (caused perhaps by a hardware problem\nin the recording chain) from the audio. The effect of a DC offset is reduced\nheadroom and hence volume. The astats filter can be used to determine if\na signal has a DC offset.",
+  "description": "### 8.81 dcshift\n\nApply a DC shift to the audio.\n\n\nThis can be useful to remove a DC offset (caused perhaps by a hardware problem\nin the recording chain) from the audio. The effect of a DC offset is reduced\nheadroom and hence volume. The astats filter can be used to determine if\na signal has a DC offset.\n\n\n- **`shift`**\n  - Set the DC shift, allowed range is [-1, 1]. It indicates the amount to shift\nthe audio.\n- **`limitergain`**\n  - Optional. It should have a value much less than 1 (e.g. 0.05 or 0.02) and is\nused to prevent clipping.\nSet the DC shift, allowed range is [-1, 1]. It indicates the amount to shift\nthe audio.\n\n\nOptional. It should have a value much less than 1 (e.g. 0.05 or 0.02) and is\nused to prevent clipping.\n\n\n",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
