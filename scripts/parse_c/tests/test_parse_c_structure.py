@@ -13,3 +13,7 @@ test_data = pathlib.Path(__file__).parent / "test_parse_c_structure"
 def test_parse_c_structure(snapshot: SnapshotAssertion, filepath: pathlib.Path) -> None:
     text = filepath.read_text()
     assert snapshot(extension_class=JSONSnapshotExtension) == parse_c_structure(text)
+
+
+def test_parse_c_structure_samples(snapshot: SnapshotAssertion):
+    assert snapshot(extension_class=JSONSnapshotExtension) == parse_c_structure("""{{ .str = "" }}""")
