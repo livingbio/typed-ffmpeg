@@ -1,0 +1,522 @@
+[
+  {
+    "description": "Add noise.",
+    "flags": "(1 << 16) | (1 << 2)",
+    "id": "ff_vf_noise",
+    "init": "init",
+    "init_src": null,
+    "input_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(noise_inputs)",
+    "name": "noise",
+    "options": [
+      {
+        "default": "['.i64=-1']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 noise seed",
+        "max": "2147483647",
+        "min": "-1",
+        "name": "all_seed",
+        "offset": "__builtin_offsetof(NoiseContext, all.seed)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 strength",
+        "max": "100",
+        "min": "0",
+        "name": "all_strength",
+        "offset": "__builtin_offsetof(NoiseContext, all.strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 strength",
+        "max": "100",
+        "min": "0",
+        "name": "alls",
+        "offset": "__builtin_offsetof(NoiseContext, all.strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 flags",
+        "max": "31",
+        "min": "0",
+        "name": "all_flags",
+        "offset": "__builtin_offsetof(NoiseContext, all.flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "all_flags"
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 flags",
+        "max": "31",
+        "min": "0",
+        "name": "allf",
+        "offset": "__builtin_offsetof(NoiseContext, all.flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "all_flags"
+      },
+      {
+        "default": "['.i64=8']",
+        "flags": "(1<<16)|16",
+        "help": "averaged noise",
+        "max": "0",
+        "min": "0",
+        "name": "a",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "all_flags"
+      },
+      {
+        "default": "['.i64=16']",
+        "flags": "(1<<16)|16",
+        "help": "(semi)regular pattern",
+        "max": "0",
+        "min": "0",
+        "name": "p",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "all_flags"
+      },
+      {
+        "default": "['.i64=2']",
+        "flags": "(1<<16)|16",
+        "help": "temporal noise",
+        "max": "0",
+        "min": "0",
+        "name": "t",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "all_flags"
+      },
+      {
+        "default": "['.i64=1']",
+        "flags": "(1<<16)|16",
+        "help": "uniform noise",
+        "max": "0",
+        "min": "0",
+        "name": "u",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "all_flags"
+      },
+      {
+        "default": "['.i64=-1']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 noise seed",
+        "max": "2147483647",
+        "min": "-1",
+        "name": "c0_seed",
+        "offset": "__builtin_offsetof(NoiseContext, param[0].seed)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 strength",
+        "max": "100",
+        "min": "0",
+        "name": "c0_strength",
+        "offset": "__builtin_offsetof(NoiseContext, param[0].strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 strength",
+        "max": "100",
+        "min": "0",
+        "name": "c0s",
+        "offset": "__builtin_offsetof(NoiseContext, param[0].strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 flags",
+        "max": "31",
+        "min": "0",
+        "name": "c0_flags",
+        "offset": "__builtin_offsetof(NoiseContext, param[0].flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "c0_flags"
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #0 flags",
+        "max": "31",
+        "min": "0",
+        "name": "c0f",
+        "offset": "__builtin_offsetof(NoiseContext, param[0].flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "c0_flags"
+      },
+      {
+        "default": "['.i64=8']",
+        "flags": "(1<<16)|16",
+        "help": "averaged noise",
+        "max": "0",
+        "min": "0",
+        "name": "a",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c0_flags"
+      },
+      {
+        "default": "['.i64=16']",
+        "flags": "(1<<16)|16",
+        "help": "(semi)regular pattern",
+        "max": "0",
+        "min": "0",
+        "name": "p",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c0_flags"
+      },
+      {
+        "default": "['.i64=2']",
+        "flags": "(1<<16)|16",
+        "help": "temporal noise",
+        "max": "0",
+        "min": "0",
+        "name": "t",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c0_flags"
+      },
+      {
+        "default": "['.i64=1']",
+        "flags": "(1<<16)|16",
+        "help": "uniform noise",
+        "max": "0",
+        "min": "0",
+        "name": "u",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c0_flags"
+      },
+      {
+        "default": "['.i64=-1']",
+        "flags": "(1<<16)|16",
+        "help": "set component #1 noise seed",
+        "max": "2147483647",
+        "min": "-1",
+        "name": "c1_seed",
+        "offset": "__builtin_offsetof(NoiseContext, param[1].seed)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #1 strength",
+        "max": "100",
+        "min": "0",
+        "name": "c1_strength",
+        "offset": "__builtin_offsetof(NoiseContext, param[1].strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #1 strength",
+        "max": "100",
+        "min": "0",
+        "name": "c1s",
+        "offset": "__builtin_offsetof(NoiseContext, param[1].strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #1 flags",
+        "max": "31",
+        "min": "0",
+        "name": "c1_flags",
+        "offset": "__builtin_offsetof(NoiseContext, param[1].flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "c1_flags"
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #1 flags",
+        "max": "31",
+        "min": "0",
+        "name": "c1f",
+        "offset": "__builtin_offsetof(NoiseContext, param[1].flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "c1_flags"
+      },
+      {
+        "default": "['.i64=8']",
+        "flags": "(1<<16)|16",
+        "help": "averaged noise",
+        "max": "0",
+        "min": "0",
+        "name": "a",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c1_flags"
+      },
+      {
+        "default": "['.i64=16']",
+        "flags": "(1<<16)|16",
+        "help": "(semi)regular pattern",
+        "max": "0",
+        "min": "0",
+        "name": "p",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c1_flags"
+      },
+      {
+        "default": "['.i64=2']",
+        "flags": "(1<<16)|16",
+        "help": "temporal noise",
+        "max": "0",
+        "min": "0",
+        "name": "t",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c1_flags"
+      },
+      {
+        "default": "['.i64=1']",
+        "flags": "(1<<16)|16",
+        "help": "uniform noise",
+        "max": "0",
+        "min": "0",
+        "name": "u",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c1_flags"
+      },
+      {
+        "default": "['.i64=-1']",
+        "flags": "(1<<16)|16",
+        "help": "set component #2 noise seed",
+        "max": "2147483647",
+        "min": "-1",
+        "name": "c2_seed",
+        "offset": "__builtin_offsetof(NoiseContext, param[2].seed)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #2 strength",
+        "max": "100",
+        "min": "0",
+        "name": "c2_strength",
+        "offset": "__builtin_offsetof(NoiseContext, param[2].strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #2 strength",
+        "max": "100",
+        "min": "0",
+        "name": "c2s",
+        "offset": "__builtin_offsetof(NoiseContext, param[2].strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #2 flags",
+        "max": "31",
+        "min": "0",
+        "name": "c2_flags",
+        "offset": "__builtin_offsetof(NoiseContext, param[2].flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "c2_flags"
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #2 flags",
+        "max": "31",
+        "min": "0",
+        "name": "c2f",
+        "offset": "__builtin_offsetof(NoiseContext, param[2].flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "c2_flags"
+      },
+      {
+        "default": "['.i64=8']",
+        "flags": "(1<<16)|16",
+        "help": "averaged noise",
+        "max": "0",
+        "min": "0",
+        "name": "a",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c2_flags"
+      },
+      {
+        "default": "['.i64=16']",
+        "flags": "(1<<16)|16",
+        "help": "(semi)regular pattern",
+        "max": "0",
+        "min": "0",
+        "name": "p",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c2_flags"
+      },
+      {
+        "default": "['.i64=2']",
+        "flags": "(1<<16)|16",
+        "help": "temporal noise",
+        "max": "0",
+        "min": "0",
+        "name": "t",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c2_flags"
+      },
+      {
+        "default": "['.i64=1']",
+        "flags": "(1<<16)|16",
+        "help": "uniform noise",
+        "max": "0",
+        "min": "0",
+        "name": "u",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c2_flags"
+      },
+      {
+        "default": "['.i64=-1']",
+        "flags": "(1<<16)|16",
+        "help": "set component #3 noise seed",
+        "max": "2147483647",
+        "min": "-1",
+        "name": "c3_seed",
+        "offset": "__builtin_offsetof(NoiseContext, param[3].seed)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #3 strength",
+        "max": "100",
+        "min": "0",
+        "name": "c3_strength",
+        "offset": "__builtin_offsetof(NoiseContext, param[3].strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #3 strength",
+        "max": "100",
+        "min": "0",
+        "name": "c3s",
+        "offset": "__builtin_offsetof(NoiseContext, param[3].strength)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #3 flags",
+        "max": "31",
+        "min": "0",
+        "name": "c3_flags",
+        "offset": "__builtin_offsetof(NoiseContext, param[3].flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "c3_flags"
+      },
+      {
+        "default": "['.i64=0']",
+        "flags": "(1<<16)|16",
+        "help": "set component #3 flags",
+        "max": "31",
+        "min": "0",
+        "name": "c3f",
+        "offset": "__builtin_offsetof(NoiseContext, param[3].flags)",
+        "type": "AV_OPT_TYPE_FLAGS",
+        "unit": "c3_flags"
+      },
+      {
+        "default": "['.i64=8']",
+        "flags": "(1<<16)|16",
+        "help": "averaged noise",
+        "max": "0",
+        "min": "0",
+        "name": "a",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c3_flags"
+      },
+      {
+        "default": "['.i64=16']",
+        "flags": "(1<<16)|16",
+        "help": "(semi)regular pattern",
+        "max": "0",
+        "min": "0",
+        "name": "p",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c3_flags"
+      },
+      {
+        "default": "['.i64=2']",
+        "flags": "(1<<16)|16",
+        "help": "temporal noise",
+        "max": "0",
+        "min": "0",
+        "name": "t",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c3_flags"
+      },
+      {
+        "default": "['.i64=1']",
+        "flags": "(1<<16)|16",
+        "help": "uniform noise",
+        "max": "0",
+        "min": "0",
+        "name": "u",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "c3_flags"
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
+    "priv_class": "&noise_class"
+  }
+]

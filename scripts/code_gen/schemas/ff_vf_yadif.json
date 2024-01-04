@@ -1,0 +1,106 @@
+{
+  "description": "11.291 yadif\nDeinterlace the input video (\"yadif\" means \"yet another deinterlacing\nfilter\").\n\nIt accepts the following parameters:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_yadif",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "yadif",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "help": "send one frame for each frame",
+          "name": "send_frame",
+          "value": "YADIF_MODE_SEND_FRAME"
+        },
+        {
+          "help": "send one frame for each field",
+          "name": "send_field",
+          "value": "YADIF_MODE_SEND_FIELD"
+        },
+        {
+          "help": "send one frame for each frame, but skip spatial interlacing check",
+          "name": "send_frame_nospatial",
+          "value": "YADIF_MODE_SEND_FRAME_NOSPATIAL"
+        },
+        {
+          "help": "send one frame for each field, but skip spatial interlacing check",
+          "name": "send_field_nospatial",
+          "value": "YADIF_MODE_SEND_FIELD_NOSPATIAL"
+        }
+      ],
+      "default": "YADIF_MODE_SEND_FRAME",
+      "description": "<dd><p>The interlacing mode to adopt. It accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, send_frame</samp></dt>\n<dd><p>Output one frame for each frame.\n</p></dd>\n<dt><samp>1, send_field</samp></dt>\n<dd><p>Output one frame for each field.\n</p></dd>\n<dt><samp>2, send_frame_nospatial</samp></dt>\n<dd><p>Like <code>send_frame</code>, but it skips the spatial interlacing check.\n</p></dd>\n<dt><samp>3, send_field_nospatial</samp></dt>\n<dd><p>Like <code>send_field</code>, but it skips the spatial interlacing check.\n</p></dd>\n</dl>\n<p>The default value is <code>send_frame</code>.\n</p>\n</dd>",
+      "name": "mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "parity"
+      ],
+      "choices": [
+        {
+          "help": "assume top field first",
+          "name": "tff",
+          "value": "YADIF_PARITY_TFF"
+        },
+        {
+          "help": "assume bottom field first",
+          "name": "bff",
+          "value": "YADIF_PARITY_BFF"
+        },
+        {
+          "help": "auto detect parity",
+          "name": "auto",
+          "value": "YADIF_PARITY_AUTO"
+        }
+      ],
+      "default": "YADIF_PARITY_AUTO",
+      "description": "<dd><p>The picture field parity assumed for the input interlaced video. It accepts one\nof the following values:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, tff</samp></dt>\n<dd><p>Assume the top field is first.\n</p></dd>\n<dt><samp>1, bff</samp></dt>\n<dd><p>Assume the bottom field is first.\n</p></dd>\n<dt><samp>-1, auto</samp></dt>\n<dd><p>Enable automatic detection of field parity.\n</p></dd>\n</dl>\n<p>The default value is <code>auto</code>.\nIf the interlacing is unknown or the decoder does not export this information,\ntop field first will be assumed.\n</p>\n</dd>",
+      "name": "parity",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "deint"
+      ],
+      "choices": [
+        {
+          "help": "deinterlace all frames",
+          "name": "all",
+          "value": "YADIF_DEINT_ALL"
+        },
+        {
+          "help": "only deinterlace frames marked as interlaced",
+          "name": "interlaced",
+          "value": "YADIF_DEINT_INTERLACED"
+        }
+      ],
+      "default": "YADIF_DEINT_ALL",
+      "description": "<dd><p>Specify which frames to deinterlace. Accepts one of the following\nvalues:\n</p>\n<dl compact=\"compact\">\n<dt><samp>0, all</samp></dt>\n<dd><p>Deinterlace all frames.\n</p></dd>\n<dt><samp>1, interlaced</samp></dt>\n<dd><p>Only deinterlace frames marked as interlaced.\n</p></dd>\n</dl>\n<p>The default value is <code>all</code>.\n</p></dd>",
+      "name": "deint",
+      "required": false,
+      "typing": "int"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#yadif"
+}

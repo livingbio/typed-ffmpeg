@@ -1,1 +1,136 @@
-{}
+{
+  "ff_yadif_options": [
+    {
+      "default": "['.i64=YADIF_MODE_SEND_FRAME']",
+      "flags": "16|(1<<16)",
+      "help": "specify the interlacing mode",
+      "max": "3",
+      "min": "0",
+      "name": "mode",
+      "offset": "__builtin_offsetof(YADIFContext, mode)",
+      "type": "AV_OPT_TYPE_INT",
+      "unit": "mode"
+    },
+    {
+      "default": "['.i64=YADIF_MODE_SEND_FRAME']",
+      "flags": "16|(1<<16)",
+      "help": "send one frame for each frame",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "send_frame",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "mode"
+    },
+    {
+      "default": "['.i64=YADIF_MODE_SEND_FIELD']",
+      "flags": "16|(1<<16)",
+      "help": "send one frame for each field",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "send_field",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "mode"
+    },
+    {
+      "default": "['.i64=YADIF_MODE_SEND_FRAME_NOSPATIAL']",
+      "flags": "16|(1<<16)",
+      "help": "send one frame for each frame, but skip spatial interlacing check",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "send_frame_nospatial",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "mode"
+    },
+    {
+      "default": "['.i64=YADIF_MODE_SEND_FIELD_NOSPATIAL']",
+      "flags": "16|(1<<16)",
+      "help": "send one frame for each field, but skip spatial interlacing check",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "send_field_nospatial",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "mode"
+    },
+    {
+      "default": "['.i64=YADIF_PARITY_AUTO']",
+      "flags": "16|(1<<16)",
+      "help": "specify the assumed picture field parity",
+      "max": "1",
+      "min": "-1",
+      "name": "parity",
+      "offset": "__builtin_offsetof(YADIFContext, parity)",
+      "type": "AV_OPT_TYPE_INT",
+      "unit": "parity"
+    },
+    {
+      "default": "['.i64=YADIF_PARITY_TFF']",
+      "flags": "16|(1<<16)",
+      "help": "assume top field first",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "tff",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "parity"
+    },
+    {
+      "default": "['.i64=YADIF_PARITY_BFF']",
+      "flags": "16|(1<<16)",
+      "help": "assume bottom field first",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "bff",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "parity"
+    },
+    {
+      "default": "['.i64=YADIF_PARITY_AUTO']",
+      "flags": "16|(1<<16)",
+      "help": "auto detect parity",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "auto",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "parity"
+    },
+    {
+      "default": "['.i64=YADIF_DEINT_ALL']",
+      "flags": "16|(1<<16)",
+      "help": "specify which frames to deinterlace",
+      "max": "1",
+      "min": "0",
+      "name": "deint",
+      "offset": "__builtin_offsetof(YADIFContext, deint)",
+      "type": "AV_OPT_TYPE_INT",
+      "unit": "deint"
+    },
+    {
+      "default": "['.i64=YADIF_DEINT_ALL']",
+      "flags": "16|(1<<16)",
+      "help": "deinterlace all frames",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "all",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "deint"
+    },
+    {
+      "default": "['.i64=YADIF_DEINT_INTERLACED']",
+      "flags": "16|(1<<16)",
+      "help": "only deinterlace frames marked as interlaced",
+      "max": "2147483647",
+      "min": "(-2147483647 -1)",
+      "name": "interlaced",
+      "offset": "0",
+      "type": "AV_OPT_TYPE_CONST",
+      "unit": "deint"
+    }
+  ]
+}

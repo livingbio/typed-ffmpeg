@@ -1,0 +1,58 @@
+{
+  "description": "12.11 prewitt_opencl\nApply the Prewitt operator (https://en.wikipedia.org/wiki/Prewitt_operator) to input video stream.\n\nThe filter accepts the following option:",
+  "filter_type": "vf",
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": "ff_vf_prewitt_opencl",
+  "input_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "name": "prewitt_opencl",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": 15,
+      "description": "<dd><p>Set which planes to filter. Default value is <code>0xf</code>, by which all planes are processed.\n</p>\n</dd>",
+      "name": "planes",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "<dd><p>Set value which will be multiplied with filtered result.\nRange is <code>[0.0, 65535]</code> and default value is <code>1.0</code>.\n</p>\n</dd>",
+      "name": "scale",
+      "required": false,
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "delta"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "<dd><p>Set value which will be added to filtered result.\nRange is <code>[-65535, 65535]</code> and default value is <code>0.0</code>.\n</p></dd>",
+      "name": "delta",
+      "required": false,
+      "typing": "float"
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "name": "default",
+      "type": "AVMEDIA_TYPE_VIDEO"
+    }
+  ],
+  "ref": "https://ffmpeg.org/ffmpeg-filters.html#prewitt_005fopencl"
+}

@@ -14,6 +14,7 @@ def parse_c_structure(text: str) -> list[Any]:
     # ignore Line Directives
     lines = text.split("\n")
     text = "\n".join(line for line in lines if not line.strip().startswith("#"))
+    text = text.replace('" "', "")
 
     for idx, ch in enumerate(text):
         match ch:
@@ -28,7 +29,7 @@ def parse_c_structure(text: str) -> list[Any]:
                 buffer += ch
             case "," if not in_text and not in_bracket and level == 1:
                 if buffer.strip():
-                    output.append(buffer.strip(" ").replace('""', "").strip())
+                    output.append(buffer.strip(" ").strip())
                 buffer = ""
             case "{" if not in_text and not in_bracket:
                 level += 1
