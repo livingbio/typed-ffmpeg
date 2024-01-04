@@ -1,8 +1,11 @@
 from typing import Any
 
 from .base import FilterNode
-from .schema import Default, DefaultInt, DefaultStr, DefaultFloat
-from .stream import AudioStream, VideoStream, StreamType
+from .schema import Default, DefaultInt, DefaultStr, DefaultFloat, StreamType
+from .streams.video import VideoStream
+from .streams.audio import AudioStream
+from .streams.av import AVStream
+
 import re
 
 

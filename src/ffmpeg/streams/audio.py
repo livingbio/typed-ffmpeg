@@ -66,7 +66,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="a3dscope",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -204,7 +204,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="abitscope",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -920,7 +920,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="adrawgraph",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -1879,7 +1879,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="agraphmonitor",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -1934,7 +1934,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="ahistogram",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -4858,7 +4858,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="avectorscope",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7408,7 +7408,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showcqt",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7499,7 +7499,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showcwt",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7576,7 +7576,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showfreqs",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7631,7 +7631,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showspatial",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7712,7 +7712,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showspectrum",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7797,7 +7797,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showspectrumpic",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7875,7 +7875,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showvolume",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7938,7 +7938,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showwaves",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],
@@ -7990,7 +7990,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="showwavespic",
             input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
+            output_typings=[StreamType.audio],
             inputs=[
                 self,
             ],

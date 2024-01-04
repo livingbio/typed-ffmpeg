@@ -338,8 +338,8 @@ def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "V
     """
     filter_node = FilterNode(
         name="alphamerge",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _alpha,
@@ -988,8 +988,8 @@ def blend(
     """
     filter_node = FilterNode(
         name="blend",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _top,
             _bottom,
@@ -1062,8 +1062,8 @@ def blend_vulkan(
     """
     filter_node = FilterNode(
         name="blend_vulkan",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _top,
             _bottom,
@@ -1165,7 +1165,7 @@ def bm3d(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -1223,8 +1223,8 @@ def colormap(
     """
     filter_node = FilterNode(
         name="colormap",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _default,
             _source,
@@ -1405,8 +1405,8 @@ def convolve(
     """
     filter_node = FilterNode(
         name="convolve",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _impulse,
@@ -1455,8 +1455,8 @@ def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     """
     filter_node = FilterNode(
         name="corr",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _reference,
@@ -1544,7 +1544,7 @@ def decimate(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -1595,8 +1595,8 @@ def deconvolve(
     """
     filter_node = FilterNode(
         name="deconvolve",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _impulse,
@@ -1647,8 +1647,8 @@ def displace(
     """
     filter_node = FilterNode(
         name="displace",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _source,
             _xmap,
@@ -1700,8 +1700,8 @@ def feedback(
     """
     filter_node = FilterNode(
         name="feedback",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video, StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio, StreamType.audio],
         inputs=[
             _default,
             _feedin,
@@ -1838,7 +1838,7 @@ def fieldmatch(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -1901,8 +1901,8 @@ def framepack(
     """
     filter_node = FilterNode(
         name="framepack",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _left,
             _right,
@@ -1945,8 +1945,8 @@ def freezeframes(
     """
     filter_node = FilterNode(
         name="freezeframes",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _source,
             _replace,
@@ -2036,7 +2036,7 @@ def guided(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -2091,8 +2091,8 @@ def haldclut(
     """
     filter_node = FilterNode(
         name="haldclut",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _clut,
@@ -2279,7 +2279,7 @@ def hstack(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -2322,8 +2322,8 @@ def hysteresis(
     """
     filter_node = FilterNode(
         name="hysteresis",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _base,
             _alt,
@@ -2371,8 +2371,8 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
     """
     filter_node = FilterNode(
         name="identity",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _reference,
@@ -2450,7 +2450,7 @@ def interleave(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -2786,7 +2786,7 @@ def libplacebo(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -2923,8 +2923,8 @@ def libvmaf(
     """
     filter_node = FilterNode(
         name="libvmaf",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _reference,
@@ -3026,7 +3026,7 @@ def limitdiff(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -3090,8 +3090,8 @@ def lut2(
     """
     filter_node = FilterNode(
         name="lut2",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _srcx,
             _srcy,
@@ -3188,8 +3188,8 @@ def maskedclamp(
     """
     filter_node = FilterNode(
         name="maskedclamp",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _base,
             _dark,
@@ -3234,8 +3234,8 @@ def maskedmax(
     """
     filter_node = FilterNode(
         name="maskedmax",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _source,
             _filter1,
@@ -3281,8 +3281,8 @@ def maskedmerge(
     """
     filter_node = FilterNode(
         name="maskedmerge",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _base,
             _overlay,
@@ -3325,8 +3325,8 @@ def maskedmin(
     """
     filter_node = FilterNode(
         name="maskedmin",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _source,
             _filter1,
@@ -3374,8 +3374,8 @@ def maskedthreshold(
     """
     filter_node = FilterNode(
         name="maskedthreshold",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _source,
             _reference,
@@ -3475,7 +3475,7 @@ def mergeplanes(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -3524,8 +3524,8 @@ def midequalizer(
     """
     filter_node = FilterNode(
         name="midequalizer",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _in0,
             _in1,
@@ -3588,7 +3588,7 @@ def mix(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -3640,8 +3640,8 @@ def morpho(
     """
     filter_node = FilterNode(
         name="morpho",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _default,
             _structure,
@@ -3690,8 +3690,8 @@ def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     """
     filter_node = FilterNode(
         name="msad",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _reference,
@@ -3729,8 +3729,8 @@ def multiply(
     """
     filter_node = FilterNode(
         name="multiply",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _source,
             _factor,
@@ -3808,8 +3808,8 @@ def overlay(
     """
     filter_node = FilterNode(
         name="overlay",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _overlay,
@@ -3872,8 +3872,8 @@ def overlay_cuda(
     """
     filter_node = FilterNode(
         name="overlay_cuda",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _overlay,
@@ -3920,8 +3920,8 @@ def overlay_opencl(
     """
     filter_node = FilterNode(
         name="overlay_opencl",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _overlay,
@@ -3978,8 +3978,8 @@ def overlay_vaapi(
     """
     filter_node = FilterNode(
         name="overlay_vaapi",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _overlay,
@@ -4028,8 +4028,8 @@ def overlay_vulkan(
     """
     filter_node = FilterNode(
         name="overlay_vulkan",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _overlay,
@@ -4080,8 +4080,8 @@ def paletteuse(
     """
     filter_node = FilterNode(
         name="paletteuse",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _default,
             _palette,
@@ -4168,7 +4168,7 @@ def premultiply(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -4245,8 +4245,8 @@ def psnr(
     """
     filter_node = FilterNode(
         name="psnr",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _reference,
@@ -4294,8 +4294,8 @@ def remap(
     """
     filter_node = FilterNode(
         name="remap",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _source,
             _xmap,
@@ -4343,8 +4343,8 @@ def remap_opencl(
     """
     filter_node = FilterNode(
         name="remap_opencl",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _source,
             _xmap,
@@ -4420,8 +4420,8 @@ def scale2ref(
     """
     filter_node = FilterNode(
         name="scale2ref",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video, StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio, StreamType.audio],
         inputs=[
             _default,
             _ref,
@@ -4496,8 +4496,8 @@ def scale2ref_npp(
     """
     filter_node = FilterNode(
         name="scale2ref_npp",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video, StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio, StreamType.audio],
         inputs=[
             _default,
             _ref,
@@ -4741,7 +4741,7 @@ def signature(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -4811,7 +4811,7 @@ def spectrumsynth(
     """
     filter_node = FilterNode(
         name="spectrumsynth",
-        input_typings=[StreamType.video, StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
         output_typings=[StreamType.audio],
         inputs=[
             _magnitude,
@@ -4870,8 +4870,8 @@ def ssim(_main: "VideoStream", _reference: "VideoStream", *, stats_file: str, **
     """
     filter_node = FilterNode(
         name="ssim",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _reference,
@@ -5018,8 +5018,8 @@ def threshold(
     """
     filter_node = FilterNode(
         name="threshold",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio, StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _default,
             _threshold,
@@ -5105,7 +5105,7 @@ def unpremultiply(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -5150,8 +5150,8 @@ def varblur(
     """
     filter_node = FilterNode(
         name="varblur",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _default,
             _radius,
@@ -5199,8 +5199,8 @@ def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vide
     """
     filter_node = FilterNode(
         name="vif",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _reference,
@@ -5259,7 +5259,7 @@ def vstack(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -5303,8 +5303,8 @@ def xcorrelate(
     """
     filter_node = FilterNode(
         name="xcorrelate",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _primary,
             _secondary,
@@ -5352,8 +5352,8 @@ def xfade(
     """
     filter_node = FilterNode(
         name="xfade",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _xfade,
@@ -5449,8 +5449,8 @@ def xfade_opencl(
     """
     filter_node = FilterNode(
         name="xfade_opencl",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
+        input_typings=[StreamType.audio, StreamType.audio],
+        output_typings=[StreamType.audio],
         inputs=[
             _main,
             _xfade,
@@ -5513,7 +5513,7 @@ def xmedian(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],
@@ -5579,7 +5579,7 @@ def xstack(
             StreamType.audio,
             StreamType.audio,
         ],
-        output_typings=[StreamType.video],
+        output_typings=[StreamType.audio],
         inputs=[
             *streams,
         ],

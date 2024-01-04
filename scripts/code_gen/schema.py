@@ -3,7 +3,7 @@ import json
 import pathlib
 from typing import Literal
 
-from parse_c.schema import AVFilterPad, AVFilterPadType, AVOptionType, FilterType
+from parse_c.schema import AVFilterPad, AVOptionType, FilterType
 from pydantic import BaseModel, HttpUrl
 
 schema_path = pathlib.Path(__file__).parent / "schemas"
@@ -78,10 +78,7 @@ class FFmpegFilter(BaseModel):
         if self.is_input_dynamic:
             return _convert_to_stream_type(self.formula_input_typings)
         return _convert_to_stream_type(
-            [
-                (StreamType.video if stream.type == AVFilterPadType.video else StreamType.audio)
-                for stream in self.input_stream_typings
-            ]
+            [("video" if stream.type == "video" else StreamType.audio) for stream in self.input_stream_typings]
         )
 
     @property
@@ -89,10 +86,7 @@ class FFmpegFilter(BaseModel):
         if self.is_output_dynamic:
             return _convert_to_stream_type(self.formula_output_typings)
         return _convert_to_stream_type(
-            [
-                (StreamType.video if stream.type == AVFilterPadType.video else StreamType.audio)
-                for stream in self.output_stream_typings
-            ]
+            [("video" if stream.type == "video" else StreamType.audio) for stream in self.output_stream_typings]
         )
 
     @classmethod
