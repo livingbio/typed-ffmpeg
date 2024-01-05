@@ -3280,7 +3280,17 @@ def libplacebo(
     extra_opts: str,
     colorspace: int
     | Literal[
-        "auto", "gbr", "bt709", "unknown", "bt470bg", "smpte170m", "smpte240m", "ycgco", "bt2020nc", "bt2020c", "ictcp"
+        "auto",
+        "gbr",
+        "bt709",
+        "unknown",
+        "bt470bg",
+        "smpte170m",
+        "smpte240m",
+        "ycgco",
+        "bt2020nc",
+        "bt2020c",
+        "ictcp",
     ]
     | DefaultStr = DefaultStr("auto"),
     range: int
@@ -3348,10 +3358,31 @@ def libplacebo(
     scene_threshold_high: float | DefaultFloat = DefaultFloat(10.0),
     percentile: float | DefaultFloat = DefaultFloat(99.995),
     gamut_mode: int
-    | Literal["clip", "perceptual", "relative", "saturation", "absolute", "desaturate", "darken", "warn", "linear"]
+    | Literal[
+        "clip",
+        "perceptual",
+        "relative",
+        "saturation",
+        "absolute",
+        "desaturate",
+        "darken",
+        "warn",
+        "linear",
+    ]
     | DefaultStr = DefaultStr("perceptual"),
     tonemapping: int
-    | Literal["auto", "clip", "bt.2390", "bt.2446a", "spline", "reinhard", "mobius", "hable", "gamma", "linear"]
+    | Literal[
+        "auto",
+        "clip",
+        "bt.2390",
+        "bt.2446a",
+        "spline",
+        "reinhard",
+        "mobius",
+        "hable",
+        "gamma",
+        "linear",
+    ]
     | DefaultStr = DefaultStr("auto"),
     tonemapping_param: float | DefaultFloat = DefaultFloat(0.0),
     inverse_tonemapping: bool | DefaultInt = DefaultInt(0),
@@ -5098,7 +5129,16 @@ def paletteuse(
     _palette: "VideoStream",
     *,
     dither: int
-    | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
+    | Literal[
+        "bayer",
+        "heckbert",
+        "floyd_steinberg",
+        "sierra2",
+        "sierra2_4a",
+        "sierra3",
+        "burkes",
+        "atkinson",
+    ]
     | DefaultStr = DefaultStr("sierra2_4a"),
     bayer_scale: int | DefaultInt = DefaultInt(2),
     diff_mode: int | Literal["rectangle"] | DefaultStr = DefaultStr("DIFF_MODE_NONE"),
@@ -5777,7 +5817,16 @@ def scale2ref_npp(
     format: str | DefaultStr = DefaultStr("same"),
     s: str,
     interp_algo: int
-    | Literal["nn", "linear", "cubic", "cubic2p_bspline", "cubic2p_catmullrom", "cubic2p_b05c03", "super", "lanczos"]
+    | Literal[
+        "nn",
+        "linear",
+        "cubic",
+        "cubic2p_bspline",
+        "cubic2p_catmullrom",
+        "cubic2p_b05c03",
+        "super",
+        "lanczos",
+    ]
     | DefaultStr = DefaultStr("cubic"),
     force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultStr = DefaultStr("disable"),
     force_divisible_by: int | DefaultInt = DefaultInt(1),
@@ -6513,7 +6562,12 @@ def threshold(
     """
     filter_node = FilterNode(
         name="threshold",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video, StreamType.video],
+        input_typings=[
+            StreamType.video,
+            StreamType.video,
+            StreamType.video,
+            StreamType.video,
+        ],
         output_typings=[StreamType.video],
         inputs=[
             _default,

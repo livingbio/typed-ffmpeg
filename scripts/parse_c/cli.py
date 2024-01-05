@@ -5,8 +5,9 @@ from devtools import sprint
 
 from .parse_allfilters_c import parse_all_filter_names
 from .parse_c import parse_c
+from .parse_ffmpeg_opt_c import parse_ffmpeg_opt_c
 from .pre_compile import precompile, source_folder
-from .schema import AVFilter
+from .schema import AVFilter, OptionDef
 
 app = typer.Typer()
 
@@ -14,6 +15,12 @@ app = typer.Typer()
 @app.command()
 def pre_compile(folder: pathlib.Path) -> None:
     precompile(folder)
+
+
+@app.command()
+def parse_ffmpeg_options() -> list[OptionDef]:
+    ffmpeg_opt_c = source_folder / "ffmpeg_opt.c"
+    return parse_ffmpeg_opt_c(ffmpeg_opt_c.read_text())
 
 
 @app.command()

@@ -46,7 +46,7 @@ class AVOptionType(str, enum.Enum):
     AV_OPT_TYPE_CHLAYOUT = "AV_OPT_TYPE_CHLAYOUT"
 
 
-class OptionDefFlag(enum.Enum):
+class OptionDefFlag(int, enum.Enum):
     # fftools/cmdutils.h
     HAS_ARG = 1 << 0
     OPT_BOOL = 1 << 1
@@ -74,6 +74,42 @@ class OptionDef(pydantic.BaseModel):
     flags: int
     help: str
     argname: str | None = None
+
+    @property
+    def is_input_option(self):
+        return bool(self.flags & OptionDefFlag.OPT_INPUT)
+
+    @property
+    def is_output_option(self):
+        return bool(self.flags & OptionDefFlag.OPT_OUTPUT)
+
+    @property
+    def typing(self) -> str:
+        if not self.flags & OptionDefFlag.HAS_ARG:
+            return "None"
+
+        if self.flags & OptionDefFlag.OPT_BOOL:
+            return "bool"
+
+        if self.flags & OptionDefFlag.OPT_INT:
+            return "int"
+
+        if self.flags & OptionDefFlag.OPT_INT64:
+            return "int"
+
+        if self.flags & OptionDefFlag.OPT_FLOAT:
+            return "float"
+
+        if self.flags & OptionDefFlag.OPT_DOUBLE:
+            return "float"
+
+        if self.flags & OptionDefFlag.OPT_STRING:
+            return "str"
+
+        if self.flags & OptionDefFlag.OPT_TIME:
+            return "str"
+
+        return "str"
 
 
 class AVOption(pydantic.BaseModel):
