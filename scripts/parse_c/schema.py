@@ -46,6 +46,36 @@ class AVOptionType(str, enum.Enum):
     AV_OPT_TYPE_CHLAYOUT = "AV_OPT_TYPE_CHLAYOUT"
 
 
+class OptionDefFlag(enum.Enum):
+    # fftools/cmdutils.h
+    HAS_ARG = 1 << 0
+    OPT_BOOL = 1 << 1
+    OPT_EXPERT = 1 << 2
+    OPT_STRING = 1 << 3
+    OPT_VIDEO = 1 << 4
+    OPT_AUDIO = 1 << 5
+    OPT_INT = 1 << 6
+    OPT_FLOAT = 1 << 7
+    OPT_SUBTITLE = 1 << 8
+    OPT_INT64 = 1 << 9
+    OPT_EXIT = 1 << 10
+    OPT_DATA = 1 << 11
+    OPT_PERFILE = 1 << 12
+    OPT_OFFSET = 1 << 13
+    OPT_SPEC = 1 << 14
+    OPT_TIME = 1 << 15
+    OPT_DOUBLE = 1 << 16
+    OPT_INPUT = 1 << 17
+    OPT_OUTPUT = 1 << 18
+
+
+class OptionDef(pydantic.BaseModel):
+    name: str
+    flags: int
+    help: str
+    argname: str | None = None
+
+
 class AVOption(pydantic.BaseModel):
     name: str
     help: str
