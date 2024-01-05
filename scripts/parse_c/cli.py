@@ -3,7 +3,8 @@ import pathlib
 import typer
 from devtools import sprint
 
-from .parse_c import parse_all_filter_names, parse_c
+from .parse_allfilters_c import parse_all_filter_names
+from .parse_c import parse_c
 from .pre_compile import precompile, source_folder
 from .schema import AVFilter
 
