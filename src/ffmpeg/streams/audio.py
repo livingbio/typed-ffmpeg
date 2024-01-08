@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..base import FilterableStream, FilterNode
 from ..schema import DefaultFloat, DefaultInt, DefaultStr, StreamType
+from .channel_layout import CHANNEL_LAYOUT
 
 if TYPE_CHECKING:
     from .video import VideoStream
@@ -7210,7 +7211,7 @@ class AudioStream(FilterableStream):
         filter_node = FilterNode(
             name="channelsplit",
             input_typings=[StreamType.audio],
-            output_typings=None,
+            output_typings=[StreamType.audio] * CHANNEL_LAYOUT[channel_layout],
             inputs=[
                 self,
             ],
