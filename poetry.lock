@@ -385,13 +385,13 @@ typing = ["typing-extensions (>=4.8)"]
 
 [[package]]
 name = "fuzy-jon"
-version = "0.0.6"
+version = "0.0.7"
 description = ""
 optional = false
 python-versions = ">=3.10,<4.0"
 files = [
-    {file = "fuzy_jon-0.0.6-py3-none-any.whl", hash = "sha256:bb64f3217ab54d88f9f5b6f95f6260bac26118a0a00ea804a6c8173c592da906"},
-    {file = "fuzy_jon-0.0.6.tar.gz", hash = "sha256:c439d90130e982917538eceb3094dd6bc6cd9ee9681f798121dbc4a1a173dda9"},
+    {file = "fuzy_jon-0.0.7-py3-none-any.whl", hash = "sha256:cca09201415f4170ef5c7ac314dddd586c1780a29421cc0580018cc34b83abec"},
+    {file = "fuzy_jon-0.0.7.tar.gz", hash = "sha256:774735202ecac0df60422f95036a0befdc1577032744cc9f408f09ad9eba230d"},
 ]
 
 [[package]]
@@ -1516,4 +1516,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "75038184d066cb799b9f4b94657ced65c35d44920cdb74c981671f0fe7cdfa3d"
+content-hash = "4768c4a086f69ec3ed0cac2d3fe3d6757f7aaacabbe5a5f4c2561aff91f23799"
