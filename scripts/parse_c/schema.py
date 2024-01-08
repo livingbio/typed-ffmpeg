@@ -85,31 +85,38 @@ class OptionDef(pydantic.BaseModel):
 
     @property
     def typing(self) -> str:
-        if not self.flags & OptionDefFlag.HAS_ARG:
-            return "None"
+        def base_typing(self) -> str:
+            if not self.flags & OptionDefFlag.HAS_ARG:
+                # Ref: https://ffmpeg.org/ffmpeg.html#Options
+                return "bool"
 
-        if self.flags & OptionDefFlag.OPT_BOOL:
-            return "bool"
+            if self.flags & OptionDefFlag.OPT_BOOL:
+                return "bool"
 
-        if self.flags & OptionDefFlag.OPT_INT:
-            return "int"
+            if self.flags & OptionDefFlag.OPT_INT:
+                return "int"
 
-        if self.flags & OptionDefFlag.OPT_INT64:
-            return "int"
+            if self.flags & OptionDefFlag.OPT_INT64:
+                return "int"
 
-        if self.flags & OptionDefFlag.OPT_FLOAT:
-            return "float"
+            if self.flags & OptionDefFlag.OPT_FLOAT:
+                return "float"
 
-        if self.flags & OptionDefFlag.OPT_DOUBLE:
-            return "float"
+            if self.flags & OptionDefFlag.OPT_DOUBLE:
+                return "float"
 
-        if self.flags & OptionDefFlag.OPT_STRING:
+            if self.flags & OptionDefFlag.OPT_STRING:
+                return "str"
+
+            if self.flags & OptionDefFlag.OPT_TIME:
+                return "str"
+
             return "str"
 
-        if self.flags & OptionDefFlag.OPT_TIME:
-            return "str"
-
-        return "str"
+        base = base_typing(self)
+        if self.flags & OptionDefFlag.OPT_SPEC:
+            return base + f" | dict[str, {base}]"
+        return base
 
 
 class AVOption(pydantic.BaseModel):
