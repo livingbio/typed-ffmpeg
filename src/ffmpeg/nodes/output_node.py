@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Sequence
 
 from .base import Node, Stream, _DAGContext, empty_dag_context
@@ -24,10 +26,21 @@ class OutputNode(Node):
 
 
 class OutputStream(Stream):
-    node: OutputNode | GlobalNode
+    node: OutputNode | GlobalNode | MergeOutputsNode
 
     def global_args(self, **kwargs: str | bool | int | float | None) -> "OutputStream":
         return GlobalNode(input=self, kwargs=kwargs).stream()
 
     def overwrite_output(self) -> "OutputStream":
         return GlobalNode(input=self, kwargs={"y": True}).stream()
+
+
+class MergeOutputsNode(Node):
+    inputs: list[OutputStream]
+
+    def stream(self) -> "OutputStream":
+        return OutputStream(node=self)
+
+    @property
+    def incoming_streams(self) -> Sequence[Stream]:
+        return self.inputs
