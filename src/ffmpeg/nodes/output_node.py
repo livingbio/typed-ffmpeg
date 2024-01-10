@@ -1,6 +1,6 @@
 from typing import Sequence
 
-from .base import Node, Stream
+from .base import DAGContext, Node, Stream
 from .filter_node import FilterableStream
 from .global_node import GlobalNode
 
@@ -8,12 +8,16 @@ from .global_node import GlobalNode
 class OutputNode(Node):
     inputs: list[FilterableStream]
 
-    def stream(self, index: int = 0) -> "OutputStream":
-        return OutputStream(node=self, index=index)
+    def stream(self) -> "OutputStream":
+        return OutputStream(node=self)
 
     @property
     def incoming_streams(self) -> Sequence[Stream]:
         return self.inputs
+
+    def compile(self, context: DAGContext) -> list[str]:
+        # TODO: implementation
+        raise NotImplementedError("Not implemented yet")
 
 
 class OutputStream(Stream):

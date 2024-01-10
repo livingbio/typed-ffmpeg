@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Any, Sequence
 from pydantic import model_validator
 
 from ..schema import StreamType
-from .base import Node, Stream
+from .base import DAGContext, Node, Stream
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
@@ -35,6 +35,26 @@ class FilterableStream(Stream, ABC):
 
     def output(self, *streams: "FilterableStream", **kwargs: Any) -> "OutputStream":
         return OutputNode(name="output", kwargs=kwargs, inputs=[self, *streams]).stream()
+
+    def label(self, context: DAGContext) -> str:
+        if isinstance(self.node, InputNode):
+            if self.selector:
+                return f"[{context.node_label(self.node)}:{self.selector}]"
+            else:
+                return f"[{context.node_label(self.node)}]"
+        else:
+            if self.selector:
+                return f"[{context.node_label(self.node)}-{self.index}:{self.selector}]"
+            else:
+                return f"[{context.node_label(self.node)}-{self.index}]"
+
+    @model_validator(mode="after")
+    def validate_index(self) -> FilterableStream:
+        if isinstance(self.node, InputNode):
+            assert self.index is None, "Input streams cannot have an index"
+        else:
+            assert self.index is not None, "Filter streams must have an index"
+        return self
 
 
 class FilterNode(Node):
@@ -102,3 +122,18 @@ class FilterNode(Node):
                 ), f"Expected input {i} to have audio component, got {stream.__class__.__name__}"
 
         return self
+
+    def compile(self, context: DAGContext) -> list[str]:
+        incoming_labels = "".join(k.label(context) for k in self.inputs)
+        outputs = context.outgoing_streams(self)
+
+        outgoing_labels = ""
+        for output in outputs:
+            assert isinstance(output, FilterableStream)
+            outgoing_labels += output.label(context)
+
+        commands = [f"{self.name}="]
+        for key, value in self.kwargs.items():
+            commands += [f":{key}={value}"]
+
+        return [incoming_labels] + commands + [outgoing_labels]

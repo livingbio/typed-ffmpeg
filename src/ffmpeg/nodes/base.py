@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from abc import ABC, abstractproperty
+from abc import ABC, abstractmethod, abstractproperty
 from typing import Any, Mapping, Sequence
 
 from pydantic import BaseModel, model_validator
@@ -43,8 +43,24 @@ class Node(HashableBaseModel, ABC, validate_assignment=True):
         assert is_dag(output), f"Graph is not a DAG: {output}"
         return self
 
+    @abstractmethod
+    def compile(self, context: DAGContext) -> list[str]:
+        raise NotImplementedError()
+
 
 class Stream(HashableBaseModel):
     node: Node
-    index: int = 0  # the nth child of the node
     selector: StreamType | None = None
+    index: int | None = None  # the nth child of the node
+
+
+class DAGContext(BaseModel, ABC):
+    @abstractmethod
+    def node_label(self, node: Node) -> str:
+        """Get the label of the node"""
+        raise NotImplementedError()
+
+    @abstractmethod
+    def outgoing_streams(self, node: Node) -> set[Stream]:
+        """Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams"""
+        raise NotImplementedError()

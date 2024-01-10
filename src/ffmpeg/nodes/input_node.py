@@ -1,13 +1,17 @@
 from typing import Sequence
 
+from ffmpeg.nodes.base import DAGContext
+
 from ..schema import StreamType
 from ..streams.audio import AudioStream
 from ..streams.av import AVStream
 from ..streams.video import VideoStream
-from .base import Node, Stream
+from .base import DAGContext, Node, Stream
 
 
 class InputNode(Node):
+    filename: str
+
     @property
     def incoming_streams(self) -> Sequence[Stream]:
         return []
@@ -26,3 +30,11 @@ class InputNode(Node):
         from ..streams.av import AVStream
 
         return AVStream(node=self)
+
+    def compile(self, context: DAGContext) -> list[str]:
+        commands = []
+        commands += self.args
+        for key, value in self.kwargs.items():
+            commands += [f"-{key}", value]
+        commands += ["-i", self.filename]
+        return commands
