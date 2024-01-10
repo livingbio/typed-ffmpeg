@@ -44,7 +44,7 @@ class Node(HashableBaseModel, ABC, validate_assignment=True):
         return self
 
     @abstractmethod
-    def compile(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: DAGContext) -> list[str]:
         raise NotImplementedError()
 
 

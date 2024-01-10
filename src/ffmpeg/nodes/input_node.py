@@ -31,7 +31,7 @@ class InputNode(Node):
 
         return AVStream(node=self)
 
-    def compile(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: DAGContext) -> list[str]:
         commands = []
         commands += self.args
         for key, value in self.kwargs.items():

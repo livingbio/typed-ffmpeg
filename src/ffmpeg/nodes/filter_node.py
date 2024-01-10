@@ -123,12 +123,13 @@ class FilterNode(Node):
 
         return self
 
-    def compile(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: DAGContext) -> list[str]:
         incoming_labels = "".join(k.label(context) for k in self.inputs)
         outputs = context.outgoing_streams(self)
 
         outgoing_labels = ""
         for output in outputs:
+            # NOTE: all outgoing streams must be filterable
             assert isinstance(output, FilterableStream)
             outgoing_labels += output.label(context)
 

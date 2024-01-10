@@ -15,7 +15,7 @@ class OutputNode(Node):
     def incoming_streams(self) -> Sequence[Stream]:
         return self.inputs
 
-    def compile(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: DAGContext) -> list[str]:
         # TODO: implementation
         raise NotImplementedError("Not implemented yet")
 

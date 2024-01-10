@@ -14,7 +14,7 @@ class GlobalNode(Node):
     def incoming_streams(self) -> Sequence[OutputStream]:
         return [self.input]
 
-    def compile(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: DAGContext) -> list[str]:
         commands = []
         commands += self.args
         for key, value in self.kwargs.items():
