@@ -9,6 +9,31 @@ from ..schema import StreamType
 from ..utils.dag import is_dag
 
 
+class _DAGContext(BaseModel, ABC):
+    @abstractmethod
+    def get_node_label(self, node: Node) -> str:
+        """Get the label of the node"""
+        raise NotImplementedError()
+
+    @abstractmethod
+    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
+        """Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams"""
+        raise NotImplementedError()
+
+
+class DummyDAGContext(_DAGContext):
+    """A dummy DAG context that does not do anything"""
+
+    def get_node_label(self, node: Node) -> str:
+        return str(node)
+
+    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
+        return []
+
+
+empty_dag_context = DummyDAGContext()
+
+
 class HashableBaseModel(BaseModel):
     def __hash__(self) -> int:
         return hash(self.model_dump_json())
@@ -44,7 +69,7 @@ class Node(HashableBaseModel, ABC, validate_assignment=True):
         return self
 
     @abstractmethod
-    def get_args(self, context: _DAGContext) -> list[str]:
+    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         raise NotImplementedError()
 
 
@@ -52,15 +77,3 @@ class Stream(HashableBaseModel):
     node: Node
     selector: StreamType | None = None
     index: int | None = None  # the nth child of the node
-
-
-class _DAGContext(BaseModel, ABC):
-    @abstractmethod
-    def get_node_label(self, node: Node) -> str:
-        """Get the label of the node"""
-        raise NotImplementedError()
-
-    @abstractmethod
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
-        """Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams"""
-        raise NotImplementedError()

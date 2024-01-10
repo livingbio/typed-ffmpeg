@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Any, Sequence
 from pydantic import model_validator
 
 from ..schema import StreamType
-from .base import Node, Stream, _DAGContext
+from .base import Node, Stream, _DAGContext, empty_dag_context
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
@@ -123,7 +123,7 @@ class FilterNode(Node):
 
         return self
 
-    def get_args(self, context: _DAGContext) -> list[str]:
+    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         incoming_labels = "".join(k.label(context) for k in self.inputs)
         outputs = context.get_outgoing_streams(self)
 

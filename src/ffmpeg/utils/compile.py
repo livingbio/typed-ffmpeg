@@ -56,3 +56,8 @@ class DAGContext(_DAGContext):
 
     def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
         return self.outgoing_streams[node]
+
+
+# TODO:
+# for FFMpeg
+# each filter's output stream can only be used by one other filter

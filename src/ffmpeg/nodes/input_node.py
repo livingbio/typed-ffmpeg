@@ -6,7 +6,7 @@ from ..schema import StreamType
 from ..streams.audio import AudioStream
 from ..streams.av import AVStream
 from ..streams.video import VideoStream
-from .base import Node, Stream, _DAGContext
+from .base import Node, Stream, _DAGContext, empty_dag_context
 
 
 class InputNode(Node):
@@ -31,7 +31,7 @@ class InputNode(Node):
 
         return AVStream(node=self)
 
-    def get_args(self, context: _DAGContext) -> list[str]:
+    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         commands = []
         commands += self.args
         for key, value in self.kwargs.items():
