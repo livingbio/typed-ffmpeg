@@ -40,7 +40,6 @@ class HashableBaseModel(BaseModel):
 
 
 class Node(HashableBaseModel, ABC, validate_assignment=True):
-    name: str
     args: list[str] = []
     kwargs: Mapping[str, Any] = {}
 

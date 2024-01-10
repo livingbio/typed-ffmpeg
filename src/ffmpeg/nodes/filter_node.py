@@ -34,7 +34,7 @@ class FilterableStream(Stream, ABC):
         raise NotImplementedError("This stream does not have an audio component")
 
     def output(self, *streams: "FilterableStream", **kwargs: Any) -> "OutputStream":
-        return OutputNode(name="output", kwargs=kwargs, inputs=[self, *streams]).stream()
+        return OutputNode(kwargs=kwargs, inputs=[self, *streams]).stream()
 
     def label(self, context: _DAGContext) -> str:
         if isinstance(self.node, InputNode):
@@ -58,6 +58,7 @@ class FilterableStream(Stream, ABC):
 
 
 class FilterNode(Node):
+    name: str
     inputs: list[FilterableStream]
     input_typings: list[StreamType] | None = None
     output_typings: list[StreamType] | None = None
