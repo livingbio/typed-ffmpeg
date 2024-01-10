@@ -8,6 +8,7 @@ from .global_node import GlobalNode
 
 
 class OutputNode(Node):
+    filename: str
     inputs: list[FilterableStream]
 
     def stream(self) -> "OutputStream":
