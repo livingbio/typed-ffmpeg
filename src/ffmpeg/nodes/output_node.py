@@ -20,6 +20,9 @@ class OutputNode(Node):
         raise NotImplementedError("Not implemented yet")
 
 
+# TODO: handle mapping
+
+
 class OutputStream(Stream):
     node: OutputNode | GlobalNode
 
