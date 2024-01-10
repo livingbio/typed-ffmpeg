@@ -39,11 +39,17 @@ class HashableBaseModel(BaseModel):
         return hash(self.model_dump_json())
 
 
+class Stream(HashableBaseModel):
+    node: Node
+    selector: StreamType | None = None
+    index: int | None = None  # the nth child of the node
+
+
 class Node(HashableBaseModel, ABC, validate_assignment=True):
     kwargs: Mapping[str, Any] = {}
 
     @abstractproperty
-    def incoming_streams(self) -> Sequence[Stream]:
+    def incoming_streams(self) -> Sequence["Stream"]:
         raise NotImplementedError()
 
     @model_validator(mode="after")
@@ -69,9 +75,3 @@ class Node(HashableBaseModel, ABC, validate_assignment=True):
     @abstractmethod
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         raise NotImplementedError()
-
-
-class Stream(HashableBaseModel):
-    node: Node
-    selector: StreamType | None = None
-    index: int | None = None  # the nth child of the node

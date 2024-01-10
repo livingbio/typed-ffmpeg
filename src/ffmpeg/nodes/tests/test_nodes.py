@@ -1,7 +1,7 @@
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..input_node import InputNode
+from ..nodes import InputNode
 
 
 def test_input_node(snapshot: SnapshotAssertion) -> None:
