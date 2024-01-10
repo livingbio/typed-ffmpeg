@@ -23,7 +23,7 @@ class OutputNode(Node):
 class OutputStream(Stream):
     node: OutputNode | GlobalNode
 
-    def global_args(self, *args: str, **kwargs: str | bool | int | float | None) -> "OutputStream":
+    def global_args(self, **kwargs: str | bool | int | float | None) -> "OutputStream":
         return GlobalNode(input=self, kwargs=kwargs).stream()
 
     def overwrite_output(self) -> "OutputStream":
