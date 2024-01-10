@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Any, Sequence
 from pydantic import model_validator
 
 from ..schema import StreamType
-from .base import DAGContext, Node, Stream
+from .base import Node, Stream, _DAGContext
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
@@ -36,17 +36,17 @@ class FilterableStream(Stream, ABC):
     def output(self, *streams: "FilterableStream", **kwargs: Any) -> "OutputStream":
         return OutputNode(name="output", kwargs=kwargs, inputs=[self, *streams]).stream()
 
-    def label(self, context: DAGContext) -> str:
+    def label(self, context: _DAGContext) -> str:
         if isinstance(self.node, InputNode):
             if self.selector:
-                return f"[{context.node_label(self.node)}:{self.selector}]"
+                return f"[{context.get_node_label(self.node)}:{self.selector}]"
             else:
-                return f"[{context.node_label(self.node)}]"
+                return f"[{context.get_node_label(self.node)}]"
         else:
             if self.selector:
-                return f"[{context.node_label(self.node)}-{self.index}:{self.selector}]"
+                return f"[{context.get_node_label(self.node)}-{self.index}:{self.selector}]"
             else:
-                return f"[{context.node_label(self.node)}-{self.index}]"
+                return f"[{context.get_node_label(self.node)}-{self.index}]"
 
     @model_validator(mode="after")
     def validate_index(self) -> FilterableStream:
@@ -123,9 +123,9 @@ class FilterNode(Node):
 
         return self
 
-    def get_args(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: _DAGContext) -> list[str]:
         incoming_labels = "".join(k.label(context) for k in self.inputs)
-        outputs = context.outgoing_streams(self)
+        outputs = context.get_outgoing_streams(self)
 
         outgoing_labels = ""
         for output in outputs:

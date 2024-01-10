@@ -1,6 +1,6 @@
 from typing import Sequence
 
-from .base import DAGContext, Node, Stream
+from .base import Node, Stream, _DAGContext
 from .filter_node import FilterableStream
 from .global_node import GlobalNode
 
@@ -15,7 +15,7 @@ class OutputNode(Node):
     def incoming_streams(self) -> Sequence[Stream]:
         return self.inputs
 
-    def get_args(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: _DAGContext) -> list[str]:
         # TODO: implementation
         raise NotImplementedError("Not implemented yet")
 

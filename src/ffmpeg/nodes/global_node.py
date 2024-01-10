@@ -1,6 +1,6 @@
 from typing import Sequence
 
-from .base import DAGContext, Node
+from .base import Node, _DAGContext
 from .output_node import OutputStream
 
 
@@ -14,7 +14,7 @@ class GlobalNode(Node):
     def incoming_streams(self) -> Sequence[OutputStream]:
         return [self.input]
 
-    def get_args(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: _DAGContext) -> list[str]:
         commands = []
         commands += self.args
         for key, value in self.kwargs.items():

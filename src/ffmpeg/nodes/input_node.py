@@ -1,12 +1,12 @@
 from typing import Sequence
 
-from ffmpeg.nodes.base import DAGContext
+from ffmpeg.nodes.base import _DAGContext
 
 from ..schema import StreamType
 from ..streams.audio import AudioStream
 from ..streams.av import AVStream
 from ..streams.video import VideoStream
-from .base import DAGContext, Node, Stream
+from .base import Node, Stream, _DAGContext
 
 
 class InputNode(Node):
@@ -31,7 +31,7 @@ class InputNode(Node):
 
         return AVStream(node=self)
 
-    def get_args(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: _DAGContext) -> list[str]:
         commands = []
         commands += self.args
         for key, value in self.kwargs.items():

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod, abstractproperty
-from typing import Any, Mapping, Sequence
+from typing import Any, Iterable, Mapping, Sequence
 
 from pydantic import BaseModel, model_validator
 
@@ -44,7 +44,7 @@ class Node(HashableBaseModel, ABC, validate_assignment=True):
         return self
 
     @abstractmethod
-    def get_args(self, context: DAGContext) -> list[str]:
+    def get_args(self, context: _DAGContext) -> list[str]:
         raise NotImplementedError()
 
 
@@ -54,13 +54,13 @@ class Stream(HashableBaseModel):
     index: int | None = None  # the nth child of the node
 
 
-class DAGContext(BaseModel, ABC):
+class _DAGContext(BaseModel, ABC):
     @abstractmethod
-    def node_label(self, node: Node) -> str:
+    def get_node_label(self, node: Node) -> str:
         """Get the label of the node"""
         raise NotImplementedError()
 
     @abstractmethod
-    def outgoing_streams(self, node: Node) -> set[Stream]:
+    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
         """Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams"""
         raise NotImplementedError()

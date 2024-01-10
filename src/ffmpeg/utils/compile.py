@@ -1,101 +1,58 @@
-# from functools import cached_property
+from __future__ import annotations
 
-# from pydantic import BaseModel
+from typing import Iterable
 
-# from ..nodes.base import Node, Stream
-# from ..nodes.filter_node import FilterNode
-# from ..nodes.global_node import GlobalNode
-# from ..nodes.input_node import InputNode
-
-
-# def _collect(node: Node) -> tuple[set[Node], set[Stream]]:
-#     """Collect all nodes and streams that are upstreamed to the given node"""
-#     nodes, streams = set(), set()
-
-#     for stream in node.incoming_streams:
-#         _nodes, _streams = _collect(stream.node)
-#         nodes |= _nodes
-#         streams |= _streams
-
-#     return nodes, streams
+from ..nodes.base import Node, Stream, _DAGContext
+from ..nodes.filter_node import FilterNode
+from ..nodes.input_node import InputNode
 
 
-# class FFMpegBuilder(BaseModel):
-#     node: Node
+def _collect(node: Node) -> tuple[set[Node], set[Stream]]:
+    """Collect all nodes and streams that are upstreamed to the given node"""
+    nodes, streams = set(), set()
 
-#     @cached_property
-#     def all_nodes(self) -> set[Node]:
-#         return _collect(self.node)[0]
+    for stream in node.incoming_streams:
+        _nodes, _streams = _collect(stream.node)
+        nodes |= _nodes
+        streams |= _streams
 
-#     @cached_property
-#     def all_streams(self) -> set[Stream]:
-#         return _collect(self.node)[1]
+    return nodes, streams
 
-#     @property
-#     def all_global_nodes(self) -> list[GlobalNode]:
-#         return [node for node in self.all_nodes if isinstance(node, GlobalNode)]
 
-#     @property
-#     def all_input_nodes(self) -> list[InputNode]:
-#         return [node for node in self.all_nodes if isinstance(node, InputNode)]
+class DAGContext(_DAGContext):
+    node: Node
 
-#     @property
-#     def all_filter_nodes(self) -> list[FilterNode]:
-#         return [node for node in self.all_nodes if isinstance(node, FilterNode)]
+    node_labels: dict[Node, str]
+    outgoing_streams: dict[Node, list[Stream]]
 
-#     @cached_property
-#     def assign_nodes_index(self) -> dict[Node, int]:
-#         """Assign the index of each input/filter node"""
-#         nodes_index: dict[Node, int] = {}
+    @classmethod
+    def build(cls, node: Node) -> DAGContext:
+        """create a DAG context based on the given node"""
+        nodes, streams = _collect(node)
 
-#         for idx, node in enumerate(self.all_input_nodes + self.all_filter_nodes):
-#             nodes_index[node] = idx
+        input_node_index = 0
+        filter_node_index = 0
+        node_labels: dict[Node, str] = {}
+        outgoing_streams: dict[Node, list[Stream]] = {}
 
-#         return nodes_index
+        for node in nodes:
+            if isinstance(node, InputNode):
+                node_labels[node] = str(input_node_index)
+                input_node_index += 1
+            elif isinstance(node, FilterNode):
+                node_labels[node] = f"s{filter_node_index}"
+                filter_node_index += 1
 
-#     def outgoing_streams(self, node: Node) -> set[Stream]:
-#         """Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams"""
-#         outgoing_streams: set[Stream] = set()
+            outgoing_streams[node] = []
 
-#         for stream in self.all_streams:
-#             if stream.node == node:
-#                 outgoing_streams.add(stream)
+        for stream in streams:
+            outgoing_streams[stream.node].append(stream)
 
-#         return outgoing_streams
+        return cls(node=node, node_labels=node_labels, outgoing_streams=outgoing_streams)
 
-#     def compile_global_args(self) -> list[str]:
-#         commands = []
-#         for global_node in self.all_global_nodes:
-#             commands += global_node.args
+    def get_node_label(self, node: Node) -> str:
+        assert isinstance(node, (InputNode, FilterNode)), "Only input and filter nodes have labels"
+        return self.node_labels[node]
 
-#             for key, value in global_node.kwargs.items():
-#                 commands += [f"-{key}", value]
-#         return commands
-
-#     def compile_input_args(self) -> list[str]:
-#         commands = []
-#         for input_node in self.all_input_nodes:
-#             commands += input_node.args
-
-#             for key, value in input_node.kwargs.items():
-#                 commands += [f"-{key}", value]
-#         commands += ["-i", input_node.filename]
-#         return commands
-
-#     def compile_filter_args(self) -> list[str]:
-#         commands = []
-#         for filter_node in self.all_filter_nodes:
-#             filter_node.incoming_streams
-#             self.outgoing_streams(filter_node)
-
-#             commands += filter_node.args
-
-#             for key, value in filter_node.kwargs.items():
-#                 commands += [f"-{key}", value]
-#         return commands
-
-#     def compile(self) -> list[str]:
-#         commands = ["ffmpeg"]
-
-#         commands += self.compile_global_args()
-#         commands += self.compile_input_args()
+    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
+        return self.outgoing_streams[node]
