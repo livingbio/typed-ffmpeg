@@ -3,7 +3,9 @@ from __future__ import annotations
 from collections import deque
 
 # Another approach to determine if a graph is a DAG is to try to perform a topological sort.
-# If the topological sort is successful (i.e., all vertices are visited exactly once), the graph is a DAG. If the topological sort cannot include all vertices (i.e., the graph has a cycle), it is not a DAG. Here is a basic implementation using Kahn's Algorithm:
+# If the topological sort is successful (i.e., all vertices are visited exactly once),
+# the graph is a DAG. If the topological sort cannot include all vertices (i.e., the graph has a cycle),
+# it is not a DAG. Here is a basic implementation using Kahn's Algorithm:
 
 
 def is_dag(graph: dict[str, set[str]]) -> bool:
