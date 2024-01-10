@@ -1,4 +1,4 @@
-from typing import Iterable
+from typing import Sequence
 
 import pytest
 from pydantic import ValidationError
@@ -10,7 +10,7 @@ class SimpleNode(Node):
     streams: list[Stream] = []
 
     @property
-    def incoming_streams(self) -> Iterable[Stream]:
+    def incoming_streams(self) -> Sequence[Stream]:
         return self.streams
 
 
