@@ -33,7 +33,6 @@ class InputNode(Node):
 
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         commands = []
-        commands += self.args
         for key, value in self.kwargs.items():
             commands += [f"-{key}", value]
         commands += ["-i", self.filename]

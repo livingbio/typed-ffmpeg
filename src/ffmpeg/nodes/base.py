@@ -40,7 +40,6 @@ class HashableBaseModel(BaseModel):
 
 
 class Node(HashableBaseModel, ABC, validate_assignment=True):
-    args: list[str] = []
     kwargs: Mapping[str, Any] = {}
 
     @abstractproperty

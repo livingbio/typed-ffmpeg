@@ -24,7 +24,7 @@ class OutputStream(Stream):
     node: OutputNode | GlobalNode
 
     def global_args(self, *args: str, **kwargs: str | bool | int | float | None) -> "OutputStream":
-        return GlobalNode(name="global_args", input=self, args=list(args), kwargs=kwargs).stream()
+        return GlobalNode(input=self, kwargs=kwargs).stream()
 
     def overwrite_output(self) -> "OutputStream":
-        return GlobalNode(name="overwrite_output", input=self, args=["-y"]).stream()
+        return GlobalNode(input=self, kwargs={"y": True}).stream()
