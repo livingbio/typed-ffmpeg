@@ -3,8 +3,7 @@ from __future__ import annotations
 from typing import Iterable
 
 from ..nodes.base import Node, Stream, _DAGContext
-from ..nodes.filter_node import FilterNode
-from ..nodes.input_node import InputNode
+from ..nodes.nodes import FilterNode, InputNode
 
 
 def _collect(node: Node) -> tuple[set[Node], set[Stream]]:

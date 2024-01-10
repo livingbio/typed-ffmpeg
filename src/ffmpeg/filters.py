@@ -1,7 +1,7 @@
 import re
 from typing import Any, Literal
 
-from .nodes.filter_node import FilterableStream, FilterNode
+from .nodes.nodes import FilterableStream, FilterNode
 from .schema import DefaultFloat, DefaultInt, DefaultStr, StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream

@@ -1,4 +1,4 @@
-from .nodes.input_node import InputNode
+from .nodes.nodes import InputNode
 from .streams.av import AVStream
 
 
@@ -15,4 +15,4 @@ def input(filename: str, **kwargs: str | int | None | float) -> AVStream:
         if "format" in kwargs:
             raise ValueError("Can't specify both `format` and `f` kwargs")
         kwargs["format"] = fmt
-    return InputNode(filename=filename, name=input.__name__, kwargs=kwargs).stream()
+    return InputNode(filename=filename, kwargs=kwargs).stream()
