@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractproperty
-from typing import Any, Iterable, Mapping
+from typing import Any, Mapping, Sequence
 
 from pydantic import BaseModel, model_validator
 
@@ -20,7 +20,7 @@ class Node(HashableBaseModel, ABC, validate_assignment=True):
     kwargs: Mapping[str, Any] = {}
 
     @abstractproperty
-    def incoming_streams(self) -> Iterable[Stream]:
+    def incoming_streams(self) -> Sequence[Stream]:
         raise NotImplementedError()
 
     @model_validator(mode="after")
