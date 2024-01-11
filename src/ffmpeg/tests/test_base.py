@@ -112,11 +112,11 @@ def test_audio_video_pipeline(snapshot: SnapshotAssertion) -> None:
     in1 = input("in1.mp4")
     in2 = input("in2.mp4")
     v1 = in1.video.hflip()
-    in1.audio
+    a1 = in1.audio
     # FIXME: reverse's h,H options should be optional
     v2 = in2.video.reverse().hue(s="0", h="", H="")
     a2 = in2.audio.areverse().aphaser()
-    joined = concat(v1, a2, v2, a2, v=1, a=1)
+    joined = concat(v1, a1, v2, a2, v=1, a=1)
     v3 = joined.video(0)
     a3 = joined.audio(0).volume(volume="0.8")
     assert snapshot(extension_class=JSONSnapshotExtension) == output(v3, a3, filename="out.mp4").compile()
