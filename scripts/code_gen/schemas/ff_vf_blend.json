@@ -1136,7 +1136,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
       "name": "c0_expr",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -1147,7 +1147,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
       "name": "c1_expr",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -1158,7 +1158,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
       "name": "c2_expr",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -1169,7 +1169,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
       "name": "c3_expr",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -1180,7 +1180,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
       "name": "all_expr",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

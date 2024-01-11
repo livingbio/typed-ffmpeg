@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Timestamps of output segments separated by \u2019|\u2019. The first segment will run\nfrom the beginning of the input stream. The last segment will run until\nthe end of the input stream\n</p>\n</dd>",
       "name": "timestamps",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -33,7 +33,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Exact frame/sample count to split the segments.\n</p></dd>",
       "name": "samples",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

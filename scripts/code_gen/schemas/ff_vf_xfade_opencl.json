@@ -88,7 +88,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>OpenCL program source file for custom transition.\n</p>\n</dd>",
       "name": "source",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -99,7 +99,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set name of kernel to use for custom transition from program source file.\n</p>\n</dd>",
       "name": "kernel",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

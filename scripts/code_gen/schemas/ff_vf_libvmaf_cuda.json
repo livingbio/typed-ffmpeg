@@ -26,7 +26,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "log_path",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -48,7 +48,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "pool",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -92,7 +92,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "feature",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

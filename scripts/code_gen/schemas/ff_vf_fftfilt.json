@@ -66,7 +66,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the frequency domain weight expression for the 1st chroma plane.\n</p>\n</dd>",
       "name": "weight_U",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -77,7 +77,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the frequency domain weight expression for the 2nd chroma plane.\n</p>\n</dd>",
       "name": "weight_V",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

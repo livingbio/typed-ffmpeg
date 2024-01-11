@@ -17,7 +17,7 @@
         "deprecated": false,
         "help": "set plugin uri",
         "name": "plugin",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -31,7 +31,7 @@
         "deprecated": false,
         "help": "set plugin options",
         "name": "controls",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {

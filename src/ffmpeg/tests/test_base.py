@@ -47,7 +47,7 @@ def test_compile(snapshot: SnapshotAssertion) -> None:
 def test_generate_thumbnail_for_video(snapshot: SnapshotAssertion) -> None:
     # FIXME: scale's size options should be optional
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        input("input.mp4", ss=10).scale(w="800", h="-1", size="").output(filename="output.mp4", vframes=1).compile()
+        input("input.mp4", ss=10).scale(w="800", h="-1").output(filename="output.mp4", vframes=1).compile()
     )
     #  ['ffmpeg',
     #  '-ss',
@@ -82,7 +82,7 @@ def test_assemble_video_from_sequence_of_frames_with_additional_filtering(snapsh
         input("/path/to/jpegs/*.jpg", framerate=25, pattern_type="glob")
         .deflicker(mode="pm", size=10)
         # FIXME: scale's w,h options should be optional
-        .scale(size="hd1080", force_original_aspect_ratio="increase", w="", h="")
+        .scale(size="hd1080", force_original_aspect_ratio="increase")
         .output(filename="movie.mp4", crf=20, movflags="faststart", pix_fmt="yuv420p", preset="slower")
         .compile()
     )
@@ -114,7 +114,7 @@ def test_audio_video_pipeline(snapshot: SnapshotAssertion) -> None:
     v1 = in1.video.hflip()
     a1 = in1.audio
     # FIXME: reverse's h,H options should be optional
-    v2 = in2.video.reverse().hue(s="0", h="", H="")
+    v2 = in2.video.reverse().hue(s="0")
     a2 = in2.audio.areverse().aphaser()
     joined = concat(v1, a1, v2, a2, v=1, a=1)
     v3 = joined.video(0)
@@ -141,7 +141,7 @@ def test_mono_to_stereo_with_offsets_and_video(snapshot: SnapshotAssertion) -> N
     input_video = input("input-video.mp4")
     # FIXME: the join's map option should be optional
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        join(audio_left, audio_right, inputs=2, channel_layout="stereo", map="")
+        join(audio_left, audio_right, inputs=2, channel_layout="stereo")
         .output(input_video.video, filename="output-video.mp4", shortest=True, vcodec="copy")
         .overwrite_output()
         .compile()

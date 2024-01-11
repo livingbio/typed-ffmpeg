@@ -50,7 +50,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify the size of the captured video.\n</p>\n<p>Defaults to the full size of the screen.\n</p>\n<p>Cropped from the bottom/right if smaller than screen size.\n</p>\n</dd>",
       "name": "video_size",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

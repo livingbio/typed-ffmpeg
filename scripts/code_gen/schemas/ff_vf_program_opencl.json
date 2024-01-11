@@ -17,7 +17,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>OpenCL program source file.\n</p>\n</dd>",
       "name": "source",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -28,7 +28,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Kernel name in program.\n</p>\n</dd>",
       "name": "kernel",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -51,7 +51,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Size of output frames.  Defaults to the same as the first input.\n</p>\n</dd>",
       "name": "size",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

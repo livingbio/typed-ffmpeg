@@ -16,7 +16,7 @@
         "deprecated": false,
         "help": "Output pixel format set",
         "name": "format",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -30,7 +30,7 @@
         "deprecated": false,
         "help": "Output color matrix coefficient set",
         "name": "matrix",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -44,7 +44,7 @@
         "deprecated": false,
         "help": "Output color primaries set",
         "name": "primaries",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -58,7 +58,7 @@
         "deprecated": false,
         "help": "Output color transfer characteristics set",
         "name": "transfer",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       }
     ],

@@ -172,7 +172,7 @@
         "deprecated": false,
         "help": "Output video format",
         "name": "format",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -279,7 +279,7 @@
         "deprecated": false,
         "help": "Pass extra libplacebo-specific options using a :-separated list of key=value pairs",
         "name": "extra_opts",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_DICT"
       },
       {
@@ -1364,7 +1364,7 @@
         "deprecated": false,
         "help": "Path to custom user shader (mpv .hook format)",
         "name": "custom_shader_path",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -1377,7 +1377,7 @@
         "deprecated": false,
         "help": "Custom user shader as binary (mpv .hook format)",
         "name": "custom_shader_bin",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_BINARY"
       },
       {

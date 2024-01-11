@@ -86,7 +86,7 @@
         "deprecated": false,
         "help": "set master points coordinates",
         "name": "master",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -100,7 +100,7 @@
         "deprecated": false,
         "help": "set red points coordinates",
         "name": "red",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -114,7 +114,7 @@
         "deprecated": false,
         "help": "set green points coordinates",
         "name": "green",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -128,7 +128,7 @@
         "deprecated": false,
         "help": "set blue points coordinates",
         "name": "blue",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -141,7 +141,7 @@
         "deprecated": false,
         "help": "set points coordinates for all components",
         "name": "all",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -154,7 +154,7 @@
         "deprecated": false,
         "help": "set Photoshop curves file name",
         "name": "psfile",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -167,7 +167,7 @@
         "deprecated": false,
         "help": "save Gnuplot script of the curves in specified file",
         "name": "plot",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {

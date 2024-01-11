@@ -128,7 +128,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "debug_kdtree",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

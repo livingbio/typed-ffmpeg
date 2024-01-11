@@ -17,7 +17,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the \u2019|\u2019-separated expressions list for each separate channel. In case the\n<samp>channel_layout</samp> option is not specified, the selected channel layout\ndepends on the number of provided expressions. Otherwise the last\nspecified expression is applied to the remaining output channels.\n</p>\n</dd>",
       "name": "exprs",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -65,7 +65,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the channel layout. The number of channels in the specified layout\nmust be equal to the number of specified expressions.\n</p>\n</dd>",
       "name": "channel_layout",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

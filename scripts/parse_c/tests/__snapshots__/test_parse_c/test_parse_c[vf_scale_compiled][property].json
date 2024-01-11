@@ -17,7 +17,7 @@
         "deprecated": false,
         "help": "Output video width",
         "name": "w",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -31,7 +31,7 @@
         "deprecated": false,
         "help": "Output video height",
         "name": "h",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -71,7 +71,7 @@
         "deprecated": false,
         "help": "set video size",
         "name": "size",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -445,7 +445,7 @@
         "deprecated": false,
         "help": "Output video width",
         "name": "w",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -459,7 +459,7 @@
         "deprecated": false,
         "help": "Output video height",
         "name": "h",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -499,7 +499,7 @@
         "deprecated": false,
         "help": "set video size",
         "name": "size",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {

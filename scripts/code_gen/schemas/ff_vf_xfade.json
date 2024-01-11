@@ -355,7 +355,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set expression for custom transition effect.\n</p>\n<p>The expressions can use the following variables and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>The coordinates of the current sample.\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>The width and height of the image.\n</p>\n</dd>\n<dt><samp>P</samp></dt>\n<dd><p>Progress of transition effect.\n</p>\n</dd>\n<dt><samp>PLANE</samp></dt>\n<dd><p>Currently processed plane.\n</p>\n</dd>\n<dt><samp>A</samp></dt>\n<dd><p>Return value of first input at current location and plane.\n</p>\n</dd>\n<dt><samp>B</samp></dt>\n<dd><p>Return value of second input at current location and plane.\n</p>\n</dd>\n<dt><samp>a0(x, y)</samp></dt>\n<dt><samp>a1(x, y)</samp></dt>\n<dt><samp>a2(x, y)</samp></dt>\n<dt><samp>a3(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nfirst/second/third/fourth component of first input.\n</p>\n</dd>\n<dt><samp>b0(x, y)</samp></dt>\n<dt><samp>b1(x, y)</samp></dt>\n<dt><samp>b2(x, y)</samp></dt>\n<dt><samp>b3(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nfirst/second/third/fourth component of second input.\n</p></dd>\n</dl>\n</dd>",
       "name": "expr",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

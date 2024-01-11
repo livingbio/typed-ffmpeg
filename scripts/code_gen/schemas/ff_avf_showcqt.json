@@ -239,7 +239,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify font file for use with freetype to draw the axis. If not specified,\nuse embedded font. Note that drawing with font file or embedded font is not\nimplemented with custom <var>basefreq</var> and <var>endfreq</var>, use <var>axisfile</var>\noption instead.\n</p>\n</dd>",
       "name": "fontfile",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -250,7 +250,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify fontconfig pattern. This has lower priority than <var>fontfile</var>. The\n<code>:</code> in the pattern may be replaced by <code>|</code> to avoid unnecessary\nescaping.\n</p>\n</dd>",
       "name": "font",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -272,7 +272,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify image file to draw the axis. This option override <var>fontfile</var> and\n<var>fontcolor</var> option.\n</p>\n</dd>",
       "name": "axisfile",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

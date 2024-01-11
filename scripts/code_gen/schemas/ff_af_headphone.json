@@ -17,7 +17,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set mapping of input streams for convolution.\nThe argument is a \u2019|\u2019-separated list of channel names in order as they\nare given as additional stream inputs for filter.\nThis also specify number of input streams. Number of input streams\nmust be not less than number of channels in first stream plus one.\n</p>\n</dd>",
       "name": "map",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

@@ -100,7 +100,7 @@
         "deprecated": false,
         "help": "set the custom bands noise",
         "name": "band_noise",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {

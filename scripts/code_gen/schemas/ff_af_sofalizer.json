@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the SOFA file used for rendering.\n</p>\n</dd>",
       "name": "sofa",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -99,7 +99,7 @@
       "default": "0",
       "description": "<dd><p>Set custom positions of virtual loudspeakers. Syntax for this option is:\n&lt;CH&gt; &lt;AZIM&gt; &lt;ELEV&gt;[|&lt;CH&gt; &lt;AZIM&gt; &lt;ELEV&gt;|...].\nEach virtual loudspeaker is described with short channel name following with\nazimuth and elevation in degrees.\nEach virtual loudspeaker description is separated by \u2019|\u2019.\nFor example to override front left and front right channel positions use:\n\u2019speakers=FL 45 15|FR 345 15\u2019.\nDescriptions with unrecognised channel names are ignored.\n</p>\n</dd>",
       "name": "speakers",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

@@ -149,7 +149,7 @@
       "default": null,
       "description": null,
       "name": "format",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -242,7 +242,7 @@
       "default": null,
       "description": null,
       "name": "extra_opts",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -1227,7 +1227,7 @@
       "default": null,
       "description": null,
       "name": "custom_shader_path",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -1238,7 +1238,7 @@
       "default": null,
       "description": null,
       "name": "custom_shader_bin",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

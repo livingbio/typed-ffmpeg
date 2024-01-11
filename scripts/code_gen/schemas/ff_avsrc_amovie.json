@@ -17,7 +17,7 @@
       "default": null,
       "description": null,
       "name": "filename",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -29,7 +29,7 @@
       "default": null,
       "description": null,
       "name": "format_name",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -65,7 +65,7 @@
       "default": "0",
       "description": null,
       "name": "streams",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -109,7 +109,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "format_opts",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

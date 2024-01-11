@@ -22,7 +22,7 @@
       "default": null,
       "description": "<dd><p>The name of the libopencv filter to apply.\n</p>\n</dd>",
       "name": "filter_name",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -33,7 +33,7 @@
       "default": null,
       "description": "<dd><p>The parameters to pass to the libopencv filter. If not specified, the default\nvalues are assumed.\n</p>\n</dd>",
       "name": "filter_params",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

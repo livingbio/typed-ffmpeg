@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set expression for quantization parameter.\n</p></dd>",
       "name": "qp",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

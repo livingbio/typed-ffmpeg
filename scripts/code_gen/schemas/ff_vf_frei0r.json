@@ -22,7 +22,7 @@
       "default": null,
       "description": "<dd><p>The name of the frei0r effect to load. If the environment variable\n<code>FREI0R_PATH</code> is defined, the frei0r effect is searched for in each of the\ndirectories specified by the colon-separated list in <code>FREI0R_PATH</code>.\nOtherwise, the standard frei0r paths are searched, in this order:\n<samp>HOME/.frei0r-1/lib/</samp>, <samp>/usr/local/lib/frei0r-1/</samp>,\n<samp>/usr/lib/frei0r-1/</samp>.\n</p>\n</dd>",
       "name": "filter_name",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -33,7 +33,7 @@
       "default": null,
       "description": "<dd><p>A \u2019|\u2019-separated list of parameters to pass to the frei0r effect.\n</p>\n</dd>",
       "name": "filter_params",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

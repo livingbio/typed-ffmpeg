@@ -18,7 +18,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Read the initial cellular automaton state, i.e. the starting row, from\nthe specified file.\nIn the file, each non-whitespace character is considered an alive\ncell, a newline will terminate the row, and further characters in the\nfile will be ignored.\n</p>\n</dd>",
       "name": "filename",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -30,7 +30,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Read the initial cellular automaton state, i.e. the starting row, from\nthe specified string.\n</p>\n<p>Each non-whitespace character in the string is considered an alive\ncell, a newline will terminate the row, and further characters in the\nstring will be ignored.\n</p>\n</dd>",
       "name": "pattern",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -54,7 +54,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the size of the output video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p>\n<p>If <samp>filename</samp> or <samp>pattern</samp> is specified, the size is set\nby default to the width of the specified initial state row, and the\nheight is set to <var>width</var> * PHI.\n</p>\n<p>If <samp>size</samp> is set, it must contain the width of the specified\npattern string, and the specified pattern will be centered in the\nlarger row.\n</p>\n<p>If a filename or a pattern string is not specified, the size value\ndefaults to \"320x518\" (used for a randomly generated initial state).\n</p>\n</dd>",
       "name": "size",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

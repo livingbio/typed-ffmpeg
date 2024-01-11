@@ -26,7 +26,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the file path to be used to store log files.\n</p>\n</dd>",
       "name": "log_path",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -48,7 +48,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the pool method to be used for computing vmaf.\nOptions are <code>min</code>, <code>harmonic_mean</code> or <code>mean</code> (default).\n</p>\n</dd>",
       "name": "pool",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -92,7 +92,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>A \u2018|\u2018 delimited list of features. Each feature can be configured with a number of parameters.\n</p>\n</dd>",
       "name": "feature",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

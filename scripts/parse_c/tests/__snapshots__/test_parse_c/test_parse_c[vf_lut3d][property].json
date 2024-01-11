@@ -16,7 +16,7 @@
         "deprecated": false,
         "help": "set 3D LUT file name",
         "name": "file",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -177,7 +177,7 @@
         "deprecated": false,
         "help": "set 1D LUT file name",
         "name": "file",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {

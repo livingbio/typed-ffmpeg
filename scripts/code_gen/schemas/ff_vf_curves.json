@@ -90,7 +90,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the master key points. These points will define a second pass mapping. It\nis sometimes called a \"luminance\" or \"value\" mapping. It can be used with\n<samp>r</samp>, <samp>g</samp>, <samp>b</samp> or <samp>all</samp> since it acts like a\npost-processing LUT.\n</p></dd>",
       "name": "master",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -102,7 +102,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the key points for the red component.\n</p></dd>",
       "name": "red",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -114,7 +114,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the key points for the green component.\n</p></dd>",
       "name": "green",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -126,7 +126,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the key points for the blue component.\n</p></dd>",
       "name": "blue",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -137,7 +137,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the key points for all components (not including master).\nCan be used in addition to the other key points component\noptions. In this case, the unset component(s) will fallback on this\n<samp>all</samp> setting.\n</p></dd>",
       "name": "all",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -148,7 +148,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify a Photoshop curves file (<code>.acv</code>) to import the settings from.\n</p></dd>",
       "name": "psfile",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -159,7 +159,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Save Gnuplot script of the curves in specified file.\n</p></dd>",
       "name": "plot",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

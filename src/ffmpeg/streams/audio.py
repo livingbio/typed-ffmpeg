@@ -231,10 +231,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def abench(
-        self,
-        *,
-        action: int | Literal["start", "stop"] | DefaultStr = DefaultStr("start"),
-        **kwargs: Any,
+        self, *, action: int | Literal["start", "stop"] | DefaultStr = DefaultStr("start"), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -1067,11 +1064,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def adecorrelate(
-        self,
-        *,
-        stages: int | DefaultInt = DefaultInt(6),
-        seed: int | DefaultInt = DefaultInt(-1),
-        **kwargs: Any,
+        self, *, stages: int | DefaultInt = DefaultInt(6), seed: int | DefaultInt = DefaultInt(-1), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -1115,7 +1108,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def adelay(self, *, delays: str, all: bool | DefaultInt = DefaultInt(0), **kwargs: Any) -> "AudioStream":
+    def adelay(
+        self,
+        *,
+        delays: str | DefaultStr = DefaultStr("((void*)0)"),
+        all: bool | DefaultInt = DefaultInt(0),
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
 
         ### 8.12 adelay
@@ -1711,7 +1710,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def aeval(self, *, exprs: str, channel_layout: str, **kwargs: Any) -> "AudioStream":
+    def aeval(
+        self,
+        *,
+        exprs: str | DefaultStr = DefaultStr("((void*)0)"),
+        channel_layout: str | DefaultStr = DefaultStr("((void*)0)"),
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
 
         ### 8.20 aeval
@@ -2009,7 +2014,7 @@ class AudioStream(FilterableStream):
         noise_type: int
         | Literal["white", "w", "vinyl", "v", "shellac", "s", "custom", "c"]
         | DefaultStr = DefaultStr("white"),
-        band_noise: str,
+        band_noise: str | DefaultStr = DefaultStr("0"),
         residual_floor: float | DefaultFloat = DefaultFloat(-38.0),
         track_noise: bool | DefaultInt = DefaultInt(0),
         track_residual: bool | DefaultInt = DefaultInt(0),
@@ -2263,9 +2268,9 @@ class AudioStream(FilterableStream):
     def aformat(
         self,
         *,
-        sample_fmts: str,
-        sample_rates: str,
-        channel_layouts: str,
+        sample_fmts: str | DefaultStr = DefaultStr(None),
+        sample_rates: str | DefaultStr = DefaultStr(None),
+        channel_layouts: str | DefaultStr = DefaultStr(None),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -3242,13 +3247,13 @@ class AudioStream(FilterableStream):
         self,
         *,
         mode: int | Literal["select", "add", "modify", "delete", "print"] | DefaultStr = DefaultStr(0),
-        key: str,
-        value: str,
+        key: str | DefaultStr = DefaultStr("((void*)0)"),
+        value: str | DefaultStr = DefaultStr("((void*)0)"),
         function: int
         | Literal["same_str", "starts_with", "less", "equal", "greater", "expr", "ends_with"]
         | DefaultStr = DefaultStr(0),
-        expr: str,
-        file: str,
+        expr: str | DefaultStr = DefaultStr("((void*)0)"),
+        file: str | DefaultStr = DefaultStr("((void*)0)"),
         direct: bool | DefaultInt = DefaultInt(0),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4526,7 +4531,7 @@ class AudioStream(FilterableStream):
     def arnndn(
         self,
         *,
-        model: str,
+        model: str | DefaultStr = DefaultStr("((void*)0)"),
         mix: float | DefaultFloat = DefaultFloat(1.0),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4603,7 +4608,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asegment(self, *, timestamps: str, samples: str, **kwargs: Any) -> FilterNode:
+    def asegment(
+        self,
+        *,
+        timestamps: str | DefaultStr = DefaultStr("((void*)0)"),
+        samples: str | DefaultStr = DefaultStr("((void*)0)"),
+        **kwargs: Any,
+    ) -> FilterNode:
         """
 
         ### 18.16 segment, asegment
@@ -4655,11 +4666,7 @@ class AudioStream(FilterableStream):
         return filter_node
 
     def aselect(
-        self,
-        *,
-        expr: str | DefaultStr = DefaultStr("1"),
-        outputs: int | DefaultInt = DefaultInt(1),
-        **kwargs: Any,
+        self, *, expr: str | DefaultStr = DefaultStr("1"), outputs: int | DefaultInt = DefaultInt(1), **kwargs: Any
     ) -> FilterNode:
         """
 
@@ -4788,7 +4795,13 @@ class AudioStream(FilterableStream):
 
         return filter_node
 
-    def asendcmd(self, *, commands: str, filename: str, **kwargs: Any) -> "AudioStream":
+    def asendcmd(
+        self,
+        *,
+        commands: str | DefaultStr = DefaultStr("((void*)0)"),
+        filename: str | DefaultStr = DefaultStr("((void*)0)"),
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
 
         ### 18.18 sendcmd, asendcmd
@@ -5524,11 +5537,11 @@ class AudioStream(FilterableStream):
         self,
         *,
         rate: int | DefaultInt = DefaultInt(16000),
-        hmm: str,
-        dict: str,
-        lm: str,
-        lmctl: str,
-        lmname: str,
+        hmm: str | DefaultStr = DefaultStr("((void*)0)"),
+        dict: str | DefaultStr = DefaultStr("((void*)0)"),
+        lm: str | DefaultStr = DefaultStr("((void*)0)"),
+        lmctl: str | DefaultStr = DefaultStr("((void*)0)"),
+        lmname: str | DefaultStr = DefaultStr("((void*)0)"),
         logfn: str | DefaultStr = DefaultStr("/dev/null"),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -6622,12 +6635,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def azmq(
-        self,
-        *,
-        bind_address: str | DefaultStr = DefaultStr("tcp://*:5555"),
-        **kwargs: Any,
-    ) -> "AudioStream":
+    def azmq(self, *, bind_address: str | DefaultStr = DefaultStr("tcp://*:5555"), **kwargs: Any) -> "AudioStream":
         """
 
         ### 18.34 zmq, azmq
@@ -7157,7 +7165,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def channelmap(self, *, map: str, channel_layout: str, **kwargs: Any) -> "AudioStream":
+    def channelmap(
+        self,
+        *,
+        map: str | DefaultStr = DefaultStr(None),
+        channel_layout: str | DefaultStr = DefaultStr(None),
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
 
         ### 8.74 channelmap
@@ -7258,10 +7272,10 @@ class AudioStream(FilterableStream):
         *,
         in_gain: float | DefaultFloat = DefaultFloat(0.4),
         out_gain: float | DefaultFloat = DefaultFloat(0.4),
-        delays: str,
-        decays: str,
-        speeds: str,
-        depths: str,
+        delays: str | DefaultStr = DefaultStr("((void*)0)"),
+        decays: str | DefaultStr = DefaultStr("((void*)0)"),
+        speeds: str | DefaultStr = DefaultStr("((void*)0)"),
+        depths: str | DefaultStr = DefaultStr("((void*)0)"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -7598,11 +7612,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def crystalizer(
-        self,
-        *,
-        i: float | DefaultFloat = DefaultFloat(2.0),
-        c: bool | DefaultInt = DefaultInt(1),
-        **kwargs: Any,
+        self, *, i: float | DefaultFloat = DefaultFloat(2.0), c: bool | DefaultInt = DefaultInt(1), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -7878,7 +7888,7 @@ class AudioStream(FilterableStream):
         threshold: float | DefaultFloat = DefaultFloat(0.0),
         channels: str | DefaultStr = DefaultStr("all"),
         overlap: float | DefaultFloat = DefaultFloat(0.0),
-        curve: str,
+        curve: str | DefaultStr = DefaultStr("((void*)0)"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -8322,11 +8332,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def extrastereo(
-        self,
-        *,
-        m: float | DefaultFloat = DefaultFloat(2.5),
-        c: bool | DefaultInt = DefaultInt(1),
-        **kwargs: Any,
+        self, *, m: float | DefaultFloat = DefaultFloat(2.5), c: bool | DefaultInt = DefaultInt(1), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -8375,7 +8381,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         gain: str | DefaultStr = DefaultStr("gain_interpolate(f)"),
-        gain_entry: str,
+        gain_entry: str | DefaultStr = DefaultStr("((void*)0)"),
         delay: float | DefaultFloat = DefaultFloat(0.01),
         accuracy: float | DefaultFloat = DefaultFloat(5.0),
         wfunc: int
@@ -8396,7 +8402,7 @@ class AudioStream(FilterableStream):
         multi: bool | DefaultInt = DefaultInt(0),
         zero_phase: bool | DefaultInt = DefaultInt(0),
         scale: int | Literal["linlin", "linlog", "loglin", "loglog"] | DefaultStr = DefaultStr("linlog"),
-        dumpfile: str,
+        dumpfile: str | DefaultStr = DefaultStr("((void*)0)"),
         dumpscale: int | Literal["linlin", "linlog", "loglin", "loglog"] | DefaultStr = DefaultStr("linlog"),
         fft2: bool | DefaultInt = DefaultInt(0),
         min_phase: bool | DefaultInt = DefaultInt(0),
@@ -9431,7 +9437,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def pan(self, *, args: str, **kwargs: Any) -> "AudioStream":
+    def pan(self, *, args: str | DefaultStr = DefaultStr("((void*)0)"), **kwargs: Any) -> "AudioStream":
         """
 
         ### 8.101 pan
@@ -9673,24 +9679,16 @@ class AudioStream(FilterableStream):
         tlength: str | DefaultStr = DefaultStr("384*tc/(384+tc*f)"),
         count: int | DefaultInt = DefaultInt(6),
         fcount: int | DefaultInt = DefaultInt(0),
-        fontfile: str,
-        font: str,
+        fontfile: str | DefaultStr = DefaultStr("((void*)0)"),
+        font: str | DefaultStr = DefaultStr("((void*)0)"),
         fontcolor: str
         | DefaultStr = DefaultStr(
             "st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))"
         ),
-        axisfile: str,
+        axisfile: str | DefaultStr = DefaultStr("((void*)0)"),
         axis: bool | DefaultInt = DefaultInt(1),
         csp: int
-        | Literal[
-            "unspecified",
-            "bt709",
-            "fcc",
-            "bt470bg",
-            "smpte170m",
-            "smpte240m",
-            "bt2020ncl",
-        ]
+        | Literal["unspecified", "bt709", "fcc", "bt470bg", "smpte170m", "smpte240m", "bt2020ncl"]
         | DefaultStr = DefaultStr("unspecified"),
         cscheme: str | DefaultStr = DefaultStr("1|0.5|0|0|0.5|1"),
         **kwargs: Any,
@@ -11460,13 +11458,13 @@ class AudioStream(FilterableStream):
     def sofalizer(
         self,
         *,
-        sofa: str,
+        sofa: str | DefaultStr = DefaultStr("((void*)0)"),
         gain: float | DefaultFloat = DefaultFloat(0.0),
         rotation: float | DefaultFloat = DefaultFloat(0.0),
         elevation: float | DefaultFloat = DefaultFloat(0.0),
         radius: float | DefaultFloat = DefaultFloat(1.0),
         type: int | Literal["time", "freq"] | DefaultStr = DefaultStr("freq"),
-        speakers: str,
+        speakers: str | DefaultStr = DefaultStr("0"),
         lfegain: float | DefaultFloat = DefaultFloat(0.0),
         framesize: int | DefaultInt = DefaultInt(1024),
         normalize: bool | DefaultInt = DefaultInt(1),
@@ -11720,19 +11718,7 @@ class AudioStream(FilterableStream):
         phasel: bool | DefaultInt = DefaultInt(0),
         phaser: bool | DefaultInt = DefaultInt(0),
         mode: int
-        | Literal[
-            "lr>lr",
-            "lr>ms",
-            "ms>lr",
-            "lr>ll",
-            "lr>rr",
-            "lr>l+r",
-            "lr>rl",
-            "ms>ll",
-            "ms>rr",
-            "ms>rl",
-            "lr>l-r",
-        ]
+        | Literal["lr>lr", "lr>ms", "ms>lr", "lr>ll", "lr>rr", "lr>l+r", "lr>rl", "ms>ll", "ms>rr", "ms>rl", "lr>l-r"]
         | DefaultStr = DefaultStr("lr>lr"),
         slev: float | DefaultFloat = DefaultFloat(1.0),
         sbal: float | DefaultFloat = DefaultFloat(0.0),
@@ -12706,11 +12692,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def tremolo(
-        self,
-        *,
-        f: float | DefaultFloat = DefaultFloat(5.0),
-        d: float | DefaultFloat = DefaultFloat(0.5),
-        **kwargs: Any,
+        self, *, f: float | DefaultFloat = DefaultFloat(5.0), d: float | DefaultFloat = DefaultFloat(0.5), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -12755,11 +12737,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def vibrato(
-        self,
-        *,
-        f: float | DefaultFloat = DefaultFloat(5.0),
-        d: float | DefaultFloat = DefaultFloat(0.5),
-        **kwargs: Any,
+        self, *, f: float | DefaultFloat = DefaultFloat(5.0), d: float | DefaultFloat = DefaultFloat(0.5), **kwargs: Any
     ) -> "AudioStream":
         """
 

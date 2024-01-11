@@ -23,7 +23,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "filename",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -34,7 +34,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "original_size",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -45,7 +45,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "fontsdir",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

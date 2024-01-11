@@ -23,7 +23,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the filename of the subtitle file to read. It must be specified.\n</p>\n</dd>",
       "name": "filename",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -34,7 +34,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify the size of the original video, the video for which the ASS file\nwas composed. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDue to a misdesign in ASS aspect ratio arithmetic, this is necessary to\ncorrectly scale the fonts if the aspect ratio has been changed.\n</p>\n</dd>",
       "name": "original_size",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -45,7 +45,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set a directory path containing fonts that can be used by the filter.\nThese fonts will be used in addition to whatever the font provider uses.\n</p>\n</dd>",
       "name": "fontsdir",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -67,7 +67,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set subtitles input character encoding. <code>subtitles</code> filter only. Only\nuseful if not UTF-8.\n</p>\n</dd>",
       "name": "charenc",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -90,7 +90,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Override default style or script info parameters of the subtitles. It accepts a\nstring containing ASS style format <code>KEY=VALUE</code> couples separated by \",\".\n</p>\n</dd>",
       "name": "force_style",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],
