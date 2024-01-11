@@ -42,3 +42,23 @@ def test_compile(snapshot: SnapshotAssertion) -> None:
         .compile()
     )
     # ['ffmpeg', '-i', 'input.mp4', '-i', 'overlay.png', '-filter_complex', '[0]trim=end_frame=20:start_frame=10[s0];[0]trim=end_frame=40:start_frame=30[s1];[s0][s1]concat=n=2[s2];[1]hflip[s3];[s2][s3]overlay=eof_action=repeat[s4];[s4]drawbox=50:50:120:120:red:t=5[s5]', '-map', '[s5]', 'out.mp4']
+
+
+def test_generate_thumbnail_for_video(snapshot: SnapshotAssertion) -> None:
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("input.mp4", ss=10).scale(w="800", h="-1").output(filename="output.mp4", vframes=1).compile()
+    )
+
+
+#  ['ffmpeg',
+#  '-ss',
+#  '10',
+#  '-i',
+#  'input.mp4',
+#  '-filter_complex',
+#  '[0]scale=800:-1[s0]',
+#  '-map',
+#  '[s0]',
+#  '-vframes',
+#  '1',
+#  'output.mp4']

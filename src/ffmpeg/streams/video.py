@@ -17577,7 +17577,7 @@ class VideoStream(FilterableStream):
         h: str,
         flags: str | DefaultStr = DefaultStr(""),
         interl: bool | DefaultInt = DefaultInt(0),
-        size: str,
+        size: str | DefaultStr = DefaultStr(""),
         in_color_matrix: int
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | DefaultStr = DefaultStr("auto"),

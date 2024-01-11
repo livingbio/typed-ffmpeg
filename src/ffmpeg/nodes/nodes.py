@@ -156,7 +156,7 @@ class GlobalNode(Node):
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         commands = []
         for key, value in self.kwargs.items():
-            commands += [f"-{key}", value]
+            commands += [f"-{key}", str(value)]
         return commands
 
 
@@ -185,7 +185,7 @@ class InputNode(Node):
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         commands = []
         for key, value in self.kwargs.items():
-            commands += [f"-{key}", value]
+            commands += [f"-{key}", str(value)]
         commands += ["-i", self.filename]
         return commands
 
@@ -208,7 +208,7 @@ class OutputNode(Node):
             commands += ["-map", input.label(context)]
 
         for key, value in self.kwargs.items():
-            commands += [f"-{key}", value]
+            commands += [f"-{key}", str(value)]
         commands += [self.filename]
         return commands
 
