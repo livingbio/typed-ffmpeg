@@ -4,7 +4,7 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..base import input, output
-from ..filters import concat
+from ..filters import concat, join
 from ..streams.video import VideoStream
 
 
@@ -117,18 +117,48 @@ def test_audio_video_pipeline(snapshot: SnapshotAssertion) -> None:
     v3 = joined.video(0)
     a3 = joined.audio(0).volume(volume="0.8")
     assert snapshot(extension_class=JSONSnapshotExtension) == output(v3, a3, filename="out.mp4").compile()
+
     #     ['ffmpeg',
+    #  '-i',
+    #  'in1.mp4',
+    #  '-i',
+    #  'in2.mp4',
+    #  '-filter_complex',
+    #  '[0:v]hflip[s0];[1:v]reverse[s1];[s1]hue=s=0[s2];[1:a]areverse[s3];[s3]aphaser[s4];[s0][0:a][s2][s4]concat=a=1:n=2:v=1[s5][s6];[s6]volume=0.8[s7]',
+    #  '-map',
+    #  '[s5]',
+    #  '-map',
+    #  '[s7]',
+    #  'out.mp4']
+
+
+def test_mono_to_stereo_with_offsets_and_video(snapshot: SnapshotAssertion) -> None:
+    audio_left = input("audio-left.wav").atrim(start=5).asetpts(expr="PTS-STARTPTS")
+    audio_right = input("audio-right.wav").atrim(start=10).asetpts(expr="PTS-STARTPTS")
+    input_video = input("input-video.mp4")
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        join(audio_left, audio_right, inputs=2, channel_layout="stereo", map="")
+        .output(input_video.video, filename="output-video.mp4", shortest=True, vcodec="copy")
+        .overwrite_output()
+        .compile()
+    )
 
 
 #     ['ffmpeg',
 #  '-i',
-#  'in1.mp4',
+#  'audio-left.wav',
 #  '-i',
-#  'in2.mp4',
+#  'audio-right.wav',
+#  '-i',
+#  'input-video.mp4',
 #  '-filter_complex',
-#  '[0:v]hflip[s0];[1:v]reverse[s1];[s1]hue=s=0[s2];[1:a]areverse[s3];[s3]aphaser[s4];[s0][0:a][s2][s4]concat=a=1:n=2:v=1[s5][s6];[s6]volume=0.8[s7]',
+#  '[0]atrim=start=5[s0];[s0]asetpts=PTS-STARTPTS[s1];[1]atrim=start=10[s2];[s2]asetpts=PTS-STARTPTS[s3];[s1][s3]join=channel_layout=stereo:inputs=2[s4]',
 #  '-map',
-#  '[s5]',
+#  '[s4]',
 #  '-map',
-#  '[s7]',
-#  'out.mp4']
+#  '2:v',
+#  '-shortest',
+#  '-vcodec',
+#  'copy',
+#  'output-video.mp4',
+#  '-y']
