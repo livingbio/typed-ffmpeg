@@ -1,19 +1,33 @@
 from __future__ import annotations
 
-from typing import Iterable
+from typing import Iterable, TypeVar
 
 from ..nodes.base import Node, Stream, _DAGContext
 from ..nodes.nodes import FilterNode, GlobalNode, InputNode, OutputNode
 
+T = TypeVar("T")
 
-def _collect(node: Node) -> tuple[set[Node], set[Stream]]:
+
+def _remove_duplicates(seq: list[T]) -> list[T]:
+    seen = set()
+    output = []
+
+    for x in seq:
+        if x not in seen:
+            output.append(x)
+            seen.add(x)
+
+    return output
+
+
+def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
     """Collect all nodes and streams that are upstreamed to the given node"""
-    nodes, streams = {node}, {*node.incoming_streams}
+    nodes, streams = [node], [*node.incoming_streams]
 
     for stream in node.incoming_streams:
         _nodes, _streams = _collect(stream.node)
-        nodes |= _nodes
-        streams |= _streams
+        nodes += _nodes
+        streams += _streams
 
     return nodes, streams
 
@@ -25,11 +39,11 @@ def _calculate_node_max_depth(node: Node, outgoing_streams: dict[Node, list[Stre
     return max(_calculate_node_max_depth(stream.node, outgoing_streams) for stream in node.incoming_streams) + 1
 
 
-def _node_max_depth(all_nodes: set[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, int]:
+def _node_max_depth(all_nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, int]:
     return {node: _calculate_node_max_depth(node, outgoing_streams) for node in all_nodes}
 
 
-def _build_outgoing_streams(nodes: set[Node], streams: set[Stream]) -> dict[Node, list[Stream]]:
+def _build_outgoing_streams(nodes: list[Node], streams: list[Stream]) -> dict[Node, list[Stream]]:
     outgoing_streams: dict[Node, list[Stream]] = {}
 
     for node in nodes:
@@ -41,7 +55,7 @@ def _build_outgoing_streams(nodes: set[Node], streams: set[Stream]) -> dict[Node
     return outgoing_streams
 
 
-def _build_node_labels(nodes: set[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, str]:
+def _build_node_labels(nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, str]:
     node_max_depth = _node_max_depth(nodes, outgoing_streams)
     input_node_index = 0
     filter_node_index = 0
@@ -73,11 +87,14 @@ class DAGContext(_DAGContext):
     def build(cls, node: Node) -> DAGContext:
         """create a DAG context based on the given node"""
         nodes, streams = _collect(node)
+        nodes = _remove_duplicates(nodes)
+        streams = _remove_duplicates(streams)
+
         outgoing_streams = _build_outgoing_streams(nodes, streams)
         node_labels = _build_node_labels(nodes, outgoing_streams)
 
         all_nodes = sorted(nodes, key=lambda node: node_labels[node])
-        all_streams = sorted(streams, key=lambda stream: node_labels[stream.node])
+        all_streams = sorted(streams, key=lambda stream: (node_labels[stream.node], stream.index))
 
         return cls(
             node=node,
@@ -119,11 +136,10 @@ def compile(node: Node) -> list[str]:
     vf_commands = []
     filter_nodes = [node for node in context.all_nodes if isinstance(node, FilterNode)]
 
-    for node in filter_nodes:
+    for node in sorted(filter_nodes, key=lambda node: context.node_labels[node]):
         vf_commands += ["".join(node.get_args(context))]
 
     if vf_commands:
-        vf_commands.sort()
         commands += ["-filter_complex", ";".join(vf_commands)]
 
     # compile the output nodes
