@@ -142,7 +142,7 @@
         "deprecated": false,
         "help": "Set custom layout",
         "name": "layout",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {
@@ -155,7 +155,7 @@
         "deprecated": false,
         "help": "set fixed size grid layout",
         "name": "grid",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {
@@ -168,7 +168,7 @@
         "deprecated": false,
         "help": "set tile size in grid layout",
         "name": "grid_tile_size",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_IMAGE_SIZE"
       },
       {

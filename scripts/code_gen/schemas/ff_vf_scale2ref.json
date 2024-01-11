@@ -27,7 +27,7 @@
       "default": null,
       "description": null,
       "name": "w",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -39,7 +39,7 @@
       "default": null,
       "description": null,
       "name": "h",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -73,7 +73,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "size",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

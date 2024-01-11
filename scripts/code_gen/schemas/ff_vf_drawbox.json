@@ -103,7 +103,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "box_source",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

@@ -33,7 +33,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set gain entry for gain_interpolate function. The expression can\ncontain functions:\n</p><dl compact=\"compact\">\n<dt><samp>entry(f, g)</samp></dt>\n<dd><p>store gain entry at frequency f with value g\n</p></dd>\n</dl>\n<p>This option is also available as command.\n</p>\n</dd>",
       "name": "gain_entry",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -193,7 +193,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set file for dumping, suitable for gnuplot.\n</p>\n</dd>",
       "name": "dumpfile",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

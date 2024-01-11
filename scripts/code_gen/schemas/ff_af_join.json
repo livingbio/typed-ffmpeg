@@ -39,7 +39,7 @@
       "default": null,
       "description": "<dd><p>Map channels from inputs to output. The argument is a \u2019|\u2019-separated list of\nmappings, each in the <code><var>input_idx</var>.<var>in_channel</var>-<var>out_channel</var></code>\nform. <var>input_idx</var> is the 0-based index of the input stream. <var>in_channel</var>\ncan be either the name of the input channel (e.g. FL for front left) or its\nindex in the specified input stream. <var>out_channel</var> is the name of the output\nchannel.\n</p></dd>",
       "name": "map",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

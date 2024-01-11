@@ -33,7 +33,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats. TensorFlow, OpenVINO backend can load files for only its format.\n</p>\n</dd>",
       "name": "model",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -44,7 +44,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the input name of the dnn network.\n</p>\n</dd>",
       "name": "input",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -55,7 +55,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the output name of the dnn network.\n</p>\n</dd>",
       "name": "output",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -67,7 +67,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the configs to be passed into backend. To use async execution, set async (default: set).\nRoll back to sync execution if the backend does not support async.\n</p>\n<p>For tensorflow backend, you can set its configs with <samp>sess_config</samp> options,\nplease use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system.\n</p>\n</dd>",
       "name": "backend_configs",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set file containing hints: absolute/relative frame numbers.\n</p>\n<p>There must be one line for each frame in a clip. Each line must contain two\nnumbers separated by the comma, optionally followed by <code>-</code> or <code>+</code>.\nNumbers supplied on each line of file can not be out of [N-1,N+1] where N\nis current frame number for <code>absolute</code> mode or out of [-1, 1] range\nfor <code>relative</code> mode. First number tells from which frame to pick up top\nfield and second number tells from which frame to pick up bottom field.\n</p>\n<p>If optionally followed by <code>+</code> output frame will be marked as interlaced,\nelse if followed by <code>-</code> output frame will be marked as progressive, else\nit will be marked same as input frame.\nIf optionally followed by <code>t</code> output frame will use only top field, or in\ncase of <code>b</code> it will use only bottom field.\nIf line starts with <code>#</code> or <code>;</code> that line is skipped.\n</p>\n</dd>",
       "name": "hint",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

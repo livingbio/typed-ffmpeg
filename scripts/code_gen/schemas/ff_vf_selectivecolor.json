@@ -44,7 +44,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for red pixels (pixels where the red component is the maximum)\n</p></dd>",
       "name": "reds",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -55,7 +55,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for yellow pixels (pixels where the blue component is the minimum)\n</p></dd>",
       "name": "yellows",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -66,7 +66,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for green pixels (pixels where the green component is the maximum)\n</p></dd>",
       "name": "greens",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -77,7 +77,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for cyan pixels (pixels where the red component is the minimum)\n</p></dd>",
       "name": "cyans",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -88,7 +88,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for blue pixels (pixels where the blue component is the maximum)\n</p></dd>",
       "name": "blues",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -99,7 +99,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for magenta pixels (pixels where the green component is the minimum)\n</p></dd>",
       "name": "magentas",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -110,7 +110,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for white pixels (pixels where all components are greater than 128)\n</p></dd>",
       "name": "whites",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -121,7 +121,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for all pixels except pure black and pure white\n</p></dd>",
       "name": "neutrals",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -132,7 +132,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Adjustments for black pixels (pixels where all components are lesser than 128)\n</p></dd>",
       "name": "blacks",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -143,7 +143,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify a Photoshop selective color file (<code>.asv</code>) to import the settings from.\n</p></dd>",
       "name": "psfile",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

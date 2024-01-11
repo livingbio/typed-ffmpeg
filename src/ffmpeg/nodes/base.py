@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod, abstractproperty
+from functools import cached_property
 from typing import Any, Iterable, Mapping, Sequence
 
 from pydantic import BaseModel, model_validator
@@ -37,6 +38,13 @@ empty_dag_context = DummyDAGContext()
 class HashableBaseModel(BaseModel):
     def __hash__(self) -> int:
         return hash(self.model_dump_json())
+
+    @cached_property
+    def hex(self) -> str:
+        return hex(abs(hash(self)))[2:]
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.hex})"
 
 
 class Stream(HashableBaseModel):

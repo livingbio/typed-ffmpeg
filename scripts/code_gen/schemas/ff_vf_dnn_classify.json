@@ -33,7 +33,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats.\n</p>\n</dd>",
       "name": "model",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -44,7 +44,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the input name of the dnn network.\n</p>\n</dd>",
       "name": "input",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -55,7 +55,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the output name of the dnn network.\n</p>\n</dd>",
       "name": "output",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -67,7 +67,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the configs to be passed into backend\n</p>\n<p>For tensorflow backend, you can set its configs with <samp>sess_config</samp> options,\nplease use tools/python/tf_sess_config.py to get the configs for your system.\n</p>\n</dd>",
       "name": "backend_configs",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -100,7 +100,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set path to label file specifying the mapping between label id and name.\nEach label name is written in one line, tailing spaces and empty lines are skipped.\nThe first line is the name of label id 0,\nand the second line is the name of label id 1, etc.\nThe label id is considered as name if the label file is not provided.\n</p>\n</dd>",
       "name": "labels",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -111,7 +111,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "target",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

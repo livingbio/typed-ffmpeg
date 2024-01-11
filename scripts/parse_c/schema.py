@@ -93,17 +93,6 @@ class Option(pydantic.BaseModel):
     @pydantic.computed_field
     @property
     def required(self) -> bool:
-        if self.default is None:
-            return True
-
-        if "void" in self.default:
-            return True
-
-        # remove whitespace
-        default = self.default.replace(" ", "")
-        if ".str=0" in default or ".str=NULL" in default:
-            return True
-
         return False
 
 

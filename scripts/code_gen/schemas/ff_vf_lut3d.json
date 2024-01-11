@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the 3D LUT file name.\n</p>\n<p>Currently supported formats:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>3dl</samp>\u2019</dt>\n<dd><p>AfterEffects\n</p></dd>\n<dt>\u2018<samp>cube</samp>\u2019</dt>\n<dd><p>Iridas\n</p></dd>\n<dt>\u2018<samp>dat</samp>\u2019</dt>\n<dd><p>DaVinci\n</p></dd>\n<dt>\u2018<samp>m3d</samp>\u2019</dt>\n<dd><p>Pandora\n</p></dd>\n<dt>\u2018<samp>csp</samp>\u2019</dt>\n<dd><p>cineSpace\n</p></dd>\n</dl>\n</dd>",
       "name": "file",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

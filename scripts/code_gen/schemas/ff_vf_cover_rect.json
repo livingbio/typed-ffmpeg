@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Filepath of the optional cover image, needs to be in yuv420.\n</p>\n</dd>",
       "name": "cover",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

@@ -8,7 +8,7 @@
   "-i",
   "input-video.mp4",
   "-filter_complex",
-  "[0]atrim=start=5[s0];[1]atrim=start=10[s1];[s0]asetpts=expr=PTS-STARTPTS[s3];[s1]asetpts=expr=PTS-STARTPTS[s2];[s3][s2]join=inputs=2:channel_layout=stereo:map=[s4]",
+  "[0]atrim=start=5[s0];[1]atrim=start=10[s1];[s0]asetpts=expr=PTS-STARTPTS[s2];[s1]asetpts=expr=PTS-STARTPTS[s3];[s2][s3]join=inputs=2:channel_layout=stereo[s4]",
   "-map",
   "[s4]",
   "-map",

@@ -18,7 +18,7 @@
       "default": null,
       "description": "<dd><p>Specifies the name of LADSPA plugin library to load. If the environment\nvariable <code>LADSPA_PATH</code> is defined, the LADSPA plugin is searched in\neach one of the directories specified by the colon separated list in\n<code>LADSPA_PATH</code>, otherwise in the standard LADSPA paths, which are in\nthis order: <samp>HOME/.ladspa/lib/</samp>, <samp>/usr/local/lib/ladspa/</samp>,\n<samp>/usr/lib/ladspa/</samp>.\n</p>\n</dd>",
       "name": "file",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -30,7 +30,7 @@
       "default": null,
       "description": "<dd><p>Specifies the plugin within the library. Some libraries contain only\none plugin, but others contain many of them. If this is not set filter\nwill list all available plugins within the specified library.\n</p>\n</dd>",
       "name": "plugin",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -42,7 +42,7 @@
       "default": null,
       "description": "<dd><p>Set the \u2019|\u2019 separated list of controls which are zero or more floating point\nvalues that determine the behavior of the loaded plugin (for example delay,\nthreshold or gain).\nControls need to be defined using the following syntax:\nc0=<var>value0</var>|c1=<var>value1</var>|c2=<var>value2</var>|..., where\n<var>valuei</var> is the value set on the <var>i</var>-th control.\nAlternatively they can be also defined using the following syntax:\n<var>value0</var>|<var>value1</var>|<var>value2</var>|..., where\n<var>valuei</var> is the value set on the <var>i</var>-th control.\nIf <samp>controls</samp> is set to <code>help</code>, all available controls and\ntheir valid ranges are printed.\n</p>\n</dd>",
       "name": "controls",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

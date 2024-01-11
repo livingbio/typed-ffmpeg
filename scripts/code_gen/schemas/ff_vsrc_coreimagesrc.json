@@ -86,7 +86,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "filter",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -97,7 +97,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "output_rect",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

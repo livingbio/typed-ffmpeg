@@ -164,7 +164,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>If set then a detailed log of the motion search is written to the\nspecified file.\n</p>\n</dd>",
       "name": "filename",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

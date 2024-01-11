@@ -5,7 +5,7 @@
   "-i",
   "input.mp4",
   "-filter_complex",
-  "[0]scale=w=800:h=-1:size=[s0]",
+  "[0]scale=w=800:h=-1[s0]",
   "-map",
   "[s0]",
   "-vframes",

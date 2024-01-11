@@ -22,7 +22,7 @@
       "default": null,
       "description": null,
       "name": "pix_fmts",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

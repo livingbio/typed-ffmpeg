@@ -18,7 +18,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the file from which to read the initial grid state. In the file,\neach non-whitespace character is considered an alive cell, and newline\nis used to delimit the end of each row.\n</p>\n<p>If this option is not specified, the initial grid is generated\nrandomly.\n</p>\n</dd>",
       "name": "filename",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -30,7 +30,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the size of the output video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p>\n<p>If <samp>filename</samp> is specified, the size is set by default to the\nsame size of the input file. If <samp>size</samp> is set, it must contain\nthe size specified in the input file, and the initial grid defined in\nthat file is centered in the larger resulting area.\n</p>\n<p>If a filename is not specified, the size value defaults to \"320x240\"\n(used for a randomly generated initial grid).\n</p>\n</dd>",
       "name": "size",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

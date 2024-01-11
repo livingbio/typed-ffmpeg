@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "fontfile",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -33,7 +33,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "text",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -44,7 +44,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "textfile",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -143,7 +143,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "fontsize",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -318,7 +318,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "timecode",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -397,7 +397,7 @@
       "default": "((void*)0)",
       "description": null,
       "name": "text_source",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

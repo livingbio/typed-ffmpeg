@@ -46,7 +46,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the coefficient factor expression.\n</p>\n<p>For each coefficient of a DCT block, this expression will be evaluated as a\nmultiplier value for the coefficient.\n</p>\n<p>If this is option is set, the <samp>sigma</samp> option will be ignored.\n</p>\n<p>The absolute value of the coefficient can be accessed through the <var>c</var>\nvariable.\n</p>\n</dd>",
       "name": "expr",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

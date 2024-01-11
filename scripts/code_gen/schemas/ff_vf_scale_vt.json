@@ -44,7 +44,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the output colorspace matrix.\n</p>\n</dd>",
       "name": "color_matrix",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -55,7 +55,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the output color primaries.\n</p>\n</dd>",
       "name": "color_primaries",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -66,7 +66,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the output transfer characteristics.\n</p>\n</dd>",
       "name": "color_transfer",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

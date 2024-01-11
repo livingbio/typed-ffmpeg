@@ -44,7 +44,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats. TensorFlow, OpenVINO backend\ncan load files for only its format.\n</p>\n</dd>",
       "name": "model",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

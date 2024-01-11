@@ -100,7 +100,7 @@
       "default": "0",
       "description": "<dd><p>Set custom band noise profile for every one of 15 bands.\nBands are separated by \u2019 \u2019 or \u2019|\u2019.\n</p>\n</dd>",
       "name": "band_noise",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

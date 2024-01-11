@@ -20,6 +20,9 @@ class FilterNode(Node):
     input_typings: list[StreamType] | None = None
     output_typings: list[StreamType] | None = None
 
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}:{self.name}({self.hex})"
+
     @property
     def incoming_streams(self) -> Sequence[Stream]:
         return self.inputs

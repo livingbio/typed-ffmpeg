@@ -18,7 +18,7 @@
       "default": null,
       "description": "<dd><p>Specifies the plugin URI. You may need to escape \u2019:\u2019.\n</p>\n</dd>",
       "name": "plugin",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -30,7 +30,7 @@
       "default": null,
       "description": "<dd><p>Set the \u2019|\u2019 separated list of controls which are zero or more floating point\nvalues that determine the behavior of the loaded plugin (for example delay,\nthreshold or gain).\nIf <samp>controls</samp> is set to <code>help</code>, all available controls and\ntheir valid ranges are printed.\n</p>\n</dd>",
       "name": "controls",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

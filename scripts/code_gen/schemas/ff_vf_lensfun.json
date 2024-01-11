@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>The make of the camera (for example, \"Canon\"). This option is required.\n</p>\n</dd>",
       "name": "make",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -33,7 +33,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>The model of the camera (for example, \"Canon EOS 100D\"). This option is\nrequired.\n</p>\n</dd>",
       "name": "model",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -44,7 +44,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>The model of the lens (for example, \"Canon EF-S 18-55mm f/3.5-5.6 IS STM\"). This\noption is required.\n</p>\n</dd>",
       "name": "lens_model",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -55,7 +55,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>The full path to the lens database folder. If not set, the filter will attempt to\nload the database from the install path when the library was built. Default is unset.\n</p>\n</dd>",
       "name": "db_path",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

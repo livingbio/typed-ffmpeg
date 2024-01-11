@@ -40,7 +40,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the text to speak.\n</p>\n</dd>",
       "name": "text",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -51,7 +51,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the filename containing the text to speak.\n</p>\n</dd>",
       "name": "textfile",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

@@ -23,7 +23,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the commands to be read and sent to the other filters.\n</p></dd>",
       "name": "commands",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -35,7 +35,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the filename of the commands to be read and sent to the other\nfilters.\n</p></dd>",
       "name": "filename",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

@@ -76,7 +76,7 @@
       "default": null,
       "description": "<dd><p>The pixel format of the output Vulkan frames. Default value is <code>yuv444p</code>.\n</p>\n</dd>",
       "name": "format",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Rather than using the device supplied at initialisation, instead derive a new\ndevice of type <var>type</var> from the device the input frames exist on.\n</p></dd>",
       "name": "derive_device",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

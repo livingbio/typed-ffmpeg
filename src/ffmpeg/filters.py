@@ -1027,7 +1027,10 @@ def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Au
 
 
 def astreamselect(
-    *streams: "AudioStream", inputs: int | DefaultInt = DefaultInt(2), map: str, **kwargs: Any
+    *streams: "AudioStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    map: str | DefaultStr = DefaultStr("((void*)0)"),
+    **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -1365,11 +1368,11 @@ def blend(
         "hardoverlay",
     ]
     | DefaultStr = DefaultStr(-1),
-    c0_expr: str,
-    c1_expr: str,
-    c2_expr: str,
-    c3_expr: str,
-    all_expr: str,
+    c0_expr: str | DefaultStr = DefaultStr("((void*)0)"),
+    c1_expr: str | DefaultStr = DefaultStr("((void*)0)"),
+    c2_expr: str | DefaultStr = DefaultStr("((void*)0)"),
+    c3_expr: str | DefaultStr = DefaultStr("((void*)0)"),
+    all_expr: str | DefaultStr = DefaultStr("((void*)0)"),
     c0_opacity: float | DefaultFloat = DefaultFloat(1.0),
     c1_opacity: float | DefaultFloat = DefaultFloat(1.0),
     c2_opacity: float | DefaultFloat = DefaultFloat(1.0),
@@ -2668,7 +2671,7 @@ def haldclut(
 
 def headphone(
     *streams: "AudioStream",
-    map: str,
+    map: str | DefaultStr = DefaultStr("((void*)0)"),
     gain: float | DefaultFloat = DefaultFloat(0.0),
     lfe: float | DefaultFloat = DefaultFloat(0.0),
     type: int | Literal["time", "freq"] | DefaultStr = DefaultStr("freq"),
@@ -3099,7 +3102,7 @@ def join(
     *streams: "AudioStream",
     inputs: int | DefaultInt = DefaultInt(2),
     channel_layout: str | DefaultStr = DefaultStr("stereo"),
-    map: str,
+    map: str | DefaultStr = DefaultStr(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -3173,9 +3176,9 @@ def join(
 
 def ladspa(
     *streams: "AudioStream",
-    file: str,
-    plugin: str,
-    controls: str,
+    file: str | DefaultStr = DefaultStr(None),
+    plugin: str | DefaultStr = DefaultStr(None),
+    controls: str | DefaultStr = DefaultStr(None),
     sample_rate: int | DefaultInt = DefaultInt(44100),
     nb_samples: int | DefaultInt = DefaultInt(1024),
     duration: int | DefaultInt = DefaultInt(-1),
@@ -3270,27 +3273,17 @@ def libplacebo(
     pos_y: str | DefaultStr = DefaultStr("(oh-ph)/2"),
     pos_w: str | DefaultStr = DefaultStr("ow"),
     pos_h: str | DefaultStr = DefaultStr("oh"),
-    format: str,
+    format: str | DefaultStr = DefaultStr(None),
     force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultStr = DefaultStr("disable"),
     force_divisible_by: int | DefaultInt = DefaultInt(1),
     normalize_sar: bool | DefaultInt = DefaultInt(0),
     pad_crop_ratio: float | DefaultFloat = DefaultFloat(0.0),
     fillcolor: str | DefaultStr = DefaultStr("black"),
     corner_rounding: float | DefaultFloat = DefaultFloat(0.0),
-    extra_opts: str,
+    extra_opts: str | DefaultStr = DefaultStr(None),
     colorspace: int
     | Literal[
-        "auto",
-        "gbr",
-        "bt709",
-        "unknown",
-        "bt470bg",
-        "smpte170m",
-        "smpte240m",
-        "ycgco",
-        "bt2020nc",
-        "bt2020c",
-        "ictcp",
+        "auto", "gbr", "bt709", "unknown", "bt470bg", "smpte170m", "smpte240m", "ycgco", "bt2020nc", "bt2020c", "ictcp"
     ]
     | DefaultStr = DefaultStr("auto"),
     range: int
@@ -3358,31 +3351,10 @@ def libplacebo(
     scene_threshold_high: float | DefaultFloat = DefaultFloat(10.0),
     percentile: float | DefaultFloat = DefaultFloat(99.995),
     gamut_mode: int
-    | Literal[
-        "clip",
-        "perceptual",
-        "relative",
-        "saturation",
-        "absolute",
-        "desaturate",
-        "darken",
-        "warn",
-        "linear",
-    ]
+    | Literal["clip", "perceptual", "relative", "saturation", "absolute", "desaturate", "darken", "warn", "linear"]
     | DefaultStr = DefaultStr("perceptual"),
     tonemapping: int
-    | Literal[
-        "auto",
-        "clip",
-        "bt.2390",
-        "bt.2446a",
-        "spline",
-        "reinhard",
-        "mobius",
-        "hable",
-        "gamma",
-        "linear",
-    ]
+    | Literal["auto", "clip", "bt.2390", "bt.2446a", "spline", "reinhard", "mobius", "hable", "gamma", "linear"]
     | DefaultStr = DefaultStr("auto"),
     tonemapping_param: float | DefaultFloat = DefaultFloat(0.0),
     inverse_tonemapping: bool | DefaultInt = DefaultInt(0),
@@ -3403,8 +3375,8 @@ def libplacebo(
     dither_temporal: bool | DefaultInt = DefaultInt(0),
     cones: str | Literal["l", "m", "s"] | DefaultStr = DefaultStr(0),
     cone_strength: float | DefaultFloat = DefaultFloat(0.0),
-    custom_shader_path: str,
-    custom_shader_bin: str,
+    custom_shader_path: str | DefaultStr = DefaultStr(None),
+    custom_shader_bin: str | DefaultStr = DefaultStr(None),
     skip_aa: bool | DefaultInt = DefaultInt(0),
     polar_cutoff: float | DefaultFloat = DefaultFloat(0.0),
     disable_linear: bool | DefaultInt = DefaultInt(0),
@@ -3604,13 +3576,13 @@ def libvmaf(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    log_path: str,
+    log_path: str | DefaultStr = DefaultStr("((void*)0)"),
     log_fmt: str | DefaultStr = DefaultStr("xml"),
-    pool: str,
+    pool: str | DefaultStr = DefaultStr("((void*)0)"),
     n_threads: int | DefaultInt = DefaultInt(0),
     n_subsample: int | DefaultInt = DefaultInt(1),
     model: str | DefaultStr = DefaultStr("version=vmaf_v0.6.1"),
-    feature: str,
+    feature: str | DefaultStr = DefaultStr("((void*)0)"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3703,13 +3675,13 @@ def libvmaf_cuda(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    log_path: str,
+    log_path: str | DefaultStr = DefaultStr("((void*)0)"),
     log_fmt: str | DefaultStr = DefaultStr("xml"),
-    pool: str,
+    pool: str | DefaultStr = DefaultStr("((void*)0)"),
     n_threads: int | DefaultInt = DefaultInt(0),
     n_subsample: int | DefaultInt = DefaultInt(1),
     model: str | DefaultStr = DefaultStr("version=vmaf_v0.6.1"),
-    feature: str,
+    feature: str | DefaultStr = DefaultStr("((void*)0)"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3936,8 +3908,8 @@ def lut2(
 
 def lv2(
     *streams: "AudioStream",
-    plugin: str,
-    controls: str,
+    plugin: str | DefaultStr = DefaultStr(None),
+    controls: str | DefaultStr = DefaultStr(None),
     sample_rate: int | DefaultInt = DefaultInt(44100),
     nb_samples: int | DefaultInt = DefaultInt(1024),
     duration: int | DefaultInt = DefaultInt(-1),
@@ -5129,22 +5101,13 @@ def paletteuse(
     _palette: "VideoStream",
     *,
     dither: int
-    | Literal[
-        "bayer",
-        "heckbert",
-        "floyd_steinberg",
-        "sierra2",
-        "sierra2_4a",
-        "sierra3",
-        "burkes",
-        "atkinson",
-    ]
+    | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
     | DefaultStr = DefaultStr("sierra2_4a"),
     bayer_scale: int | DefaultInt = DefaultInt(2),
     diff_mode: int | Literal["rectangle"] | DefaultStr = DefaultStr("DIFF_MODE_NONE"),
     new: bool | DefaultInt = DefaultInt(0),
     alpha_threshold: int | DefaultInt = DefaultInt(128),
-    debug_kdtree: str,
+    debug_kdtree: str | DefaultStr = DefaultStr("((void*)0)"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -5268,10 +5231,10 @@ def premultiply(
 
 def program_opencl(
     *streams: "VideoStream",
-    source: str,
-    kernel: str,
+    source: str | DefaultStr = DefaultStr("((void*)0)"),
+    kernel: str | DefaultStr = DefaultStr("((void*)0)"),
     inputs: int | DefaultInt = DefaultInt(1),
-    size: str,
+    size: str | DefaultStr = DefaultStr("((void*)0)"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -5431,7 +5394,7 @@ def psnr(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    stats_file: str,
+    stats_file: str | DefaultStr = DefaultStr("((void*)0)"),
     stats_version: int | DefaultInt = DefaultInt(1),
     output_max: bool | DefaultInt = DefaultInt(0),
     **kwargs: Any
@@ -5671,11 +5634,11 @@ def scale2ref(
     _default: "VideoStream",
     _ref: "VideoStream",
     *,
-    w: str,
-    h: str,
+    w: str | DefaultStr = DefaultStr(None),
+    h: str | DefaultStr = DefaultStr(None),
     flags: str | DefaultStr = DefaultStr(""),
     interl: bool | DefaultInt = DefaultInt(0),
-    size: str,
+    size: str | DefaultStr = DefaultStr("((void*)0)"),
     in_color_matrix: int
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
     | DefaultStr = DefaultStr("auto"),
@@ -5812,21 +5775,12 @@ def scale2ref_npp(
     _default: "VideoStream",
     _ref: "VideoStream",
     *,
-    w: str,
-    h: str,
+    w: str | DefaultStr = DefaultStr(None),
+    h: str | DefaultStr = DefaultStr(None),
     format: str | DefaultStr = DefaultStr("same"),
-    s: str,
+    s: str | DefaultStr = DefaultStr("((void*)0)"),
     interp_algo: int
-    | Literal[
-        "nn",
-        "linear",
-        "cubic",
-        "cubic2p_bspline",
-        "cubic2p_catmullrom",
-        "cubic2p_b05c03",
-        "super",
-        "lanczos",
-    ]
+    | Literal["nn", "linear", "cubic", "cubic2p_bspline", "cubic2p_catmullrom", "cubic2p_b05c03", "super", "lanczos"]
     | DefaultStr = DefaultStr("cubic"),
     force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | DefaultStr = DefaultStr("disable"),
     force_divisible_by: int | DefaultInt = DefaultInt(1),
@@ -6400,7 +6354,13 @@ def spectrumsynth(
     return filter_node.audio(0)
 
 
-def ssim(_main: "VideoStream", _reference: "VideoStream", *, stats_file: str, **kwargs: Any) -> "VideoStream":
+def ssim(
+    _main: "VideoStream",
+    _reference: "VideoStream",
+    *,
+    stats_file: str | DefaultStr = DefaultStr("((void*)0)"),
+    **kwargs: Any
+) -> "VideoStream":
     """
 
     ### 11.243 ssim
@@ -6473,7 +6433,10 @@ def ssim(_main: "VideoStream", _reference: "VideoStream", *, stats_file: str, **
 
 
 def streamselect(
-    *streams: "VideoStream", inputs: int | DefaultInt = DefaultInt(2), map: str, **kwargs: Any
+    *streams: "VideoStream",
+    inputs: int | DefaultInt = DefaultInt(2),
+    map: str | DefaultStr = DefaultStr("((void*)0)"),
+    **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -6562,12 +6525,7 @@ def threshold(
     """
     filter_node = FilterNode(
         name="threshold",
-        input_typings=[
-            StreamType.video,
-            StreamType.video,
-            StreamType.video,
-            StreamType.video,
-        ],
+        input_typings=[StreamType.video, StreamType.video, StreamType.video, StreamType.video],
         output_typings=[StreamType.video],
         inputs=[
             _default,
@@ -7047,7 +7005,7 @@ def xfade(
     | DefaultStr = DefaultStr("fade"),
     duration: int | DefaultInt = DefaultInt(1000000),
     offset: int | DefaultInt = DefaultInt(0),
-    expr: str,
+    expr: str | DefaultStr = DefaultStr("((void*)0)"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -7128,8 +7086,8 @@ def xfade_opencl(
         "slidedown",
     ]
     | DefaultStr = DefaultStr(1),
-    source: str,
-    kernel: str,
+    source: str | DefaultStr = DefaultStr("((void*)0)"),
+    kernel: str | DefaultStr = DefaultStr("((void*)0)"),
     duration: int | DefaultInt = DefaultInt(1000000),
     offset: int | DefaultInt = DefaultInt(0),
     **kwargs: Any
@@ -7302,8 +7260,8 @@ def xmedian(
 def xstack(
     *streams: "VideoStream",
     inputs: int | DefaultInt = DefaultInt(2),
-    layout: str,
-    grid: str,
+    layout: str | DefaultStr = DefaultStr("((void*)0)"),
+    grid: str | DefaultStr = DefaultStr("((void*)0)"),
     shortest: bool | DefaultInt = DefaultInt(0),
     fill: str | DefaultStr = DefaultStr("none"),
     **kwargs: Any
@@ -7375,9 +7333,9 @@ def xstack_qsv(
     *streams: "VideoStream",
     inputs: int | DefaultInt = DefaultInt(2),
     shortest: bool | DefaultInt = DefaultInt(0),
-    layout: str,
-    grid: str,
-    grid_tile_size: str,
+    layout: str | DefaultStr = DefaultStr("((void*)0)"),
+    grid: str | DefaultStr = DefaultStr("((void*)0)"),
+    grid_tile_size: str | DefaultStr = DefaultStr("((void*)0)"),
     fill: str | DefaultStr = DefaultStr("none"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -7454,9 +7412,9 @@ def xstack_vaapi(
     *streams: "VideoStream",
     inputs: int | DefaultInt = DefaultInt(2),
     shortest: bool | DefaultInt = DefaultInt(0),
-    layout: str,
-    grid: str,
-    grid_tile_size: str,
+    layout: str | DefaultStr = DefaultStr("((void*)0)"),
+    grid: str | DefaultStr = DefaultStr("((void*)0)"),
+    grid_tile_size: str | DefaultStr = DefaultStr("((void*)0)"),
     fill: str | DefaultStr = DefaultStr("none"),
     **kwargs: Any
 ) -> "VideoStream":

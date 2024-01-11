@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Filepath of the object image, needs to be in gray8.\n</p>\n</dd>",
       "name": "object",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

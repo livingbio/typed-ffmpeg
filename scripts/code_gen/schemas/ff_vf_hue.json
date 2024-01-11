@@ -22,7 +22,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify the hue angle as a number of degrees. It accepts an expression,\nand defaults to \"0\".\n</p>\n</dd>",
       "name": "h",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -44,7 +44,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify the hue angle as a number of radians. It accepts an\nexpression, and defaults to \"0\".\n</p>\n</dd>",
       "name": "H",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

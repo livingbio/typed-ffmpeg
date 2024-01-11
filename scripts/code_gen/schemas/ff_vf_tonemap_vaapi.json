@@ -22,7 +22,7 @@
       "default": null,
       "description": "<dd><p>Specify the output pixel format.\n</p>\n<p>Currently supported formats are:\n</p><dl compact=\"compact\">\n<dt><var>p010</var></dt>\n<dt><var>nv12</var></dt>\n</dl>\n<p>Default is nv12.\n</p>\n</dd>",
       "name": "format",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -34,7 +34,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the output colorspace matrix.\n</p>\n<p>Default is same as input.\n</p>\n</dd>",
       "name": "matrix",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -46,7 +46,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the output color primaries.\n</p>\n<p>Default is same as input.\n</p>\n</dd>",
       "name": "primaries",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -58,7 +58,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Set the output transfer characteristics.\n</p>\n<p>Default is bt709.\n</p>\n</dd>",
       "name": "transfer",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

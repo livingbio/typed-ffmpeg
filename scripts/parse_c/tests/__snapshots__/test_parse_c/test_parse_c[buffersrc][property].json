@@ -146,7 +146,7 @@
         "deprecated": false,
         "help": "((void*)0)",
         "name": "channel_layout",
-        "required": true,
+        "required": false,
         "type": "AV_OPT_TYPE_STRING"
       },
       {

@@ -54,7 +54,7 @@
       "default": "0",
       "description": "<dd><p>Specify the duration of the generated audio stream.\n</p>\n</dd>",
       "name": "duration",
-      "required": true,
+      "required": false,
       "typing": "int"
     },
     {

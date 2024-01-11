@@ -17,7 +17,7 @@
       "default": null,
       "description": "<dd><p>The name of the resource to read (not necessarily a file; it can also be a\ndevice or a stream accessed through some protocol).\n</p>\n</dd>",
       "name": "filename",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -29,7 +29,7 @@
       "default": null,
       "description": "<dd><p>Specifies the format assumed for the movie to read, and can be either\nthe name of a container or an input device. If not specified, the\nformat is guessed from <var>movie_name</var> or by probing.\n</p>\n</dd>",
       "name": "format_name",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -65,7 +65,7 @@
       "default": "0",
       "description": "<dd><p>Specifies the streams to read. Several streams can be specified,\nseparated by \"+\". The source will then have as many outputs, in the\nsame order. The syntax is explained in the <a href=\"ffmpeg.html#Stream-specifiers\">(ffmpeg)\"Stream specifiers\"\nsection in the ffmpeg manual</a>. Two special names, \"dv\" and \"da\" specify\nrespectively the default (best suited) video and audio stream. Default\nis \"dv\", or \"da\" if the filter is called as \"amovie\".\n</p>\n</dd>",
       "name": "streams",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
@@ -109,7 +109,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>Specify format options for the opened file. Format options can be specified\nas a list of <var>key</var>=<var>value</var> pairs separated by \u2019:\u2019. The following example\nshows how to add protocol_whitelist and protocol_blacklist options:\n</p><div class=\"example\">\n<pre class=\"example\">ffplay -f lavfi\n\"movie=filename='1.sdp':format_opts='protocol_whitelist=file,rtp,udp\\:protocol_blacklist=http'\"\n</pre></div>\n</dd>",
       "name": "format_opts",
-      "required": true,
+      "required": false,
       "typing": "str"
     }
   ],

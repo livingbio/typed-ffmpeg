@@ -50,7 +50,7 @@
       "default": null,
       "description": "<dd><p>The channel layout of the incoming audio buffers.\nEither a channel layout name from channel_layout_map in\n<samp>libavutil/channel_layout.c</samp> or its corresponding integer representation\nfrom the AV_CH_LAYOUT_* macros in <samp>libavutil/channel_layout.h</samp>\n</p>\n</dd>",
       "name": "channel_layout",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {

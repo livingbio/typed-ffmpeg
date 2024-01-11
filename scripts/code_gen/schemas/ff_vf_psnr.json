@@ -27,7 +27,7 @@
       "default": "((void*)0)",
       "description": "<dd><p>If specified the filter will use the named file to save the PSNR of\neach individual frame. When filename equals \"-\" the data is sent to\nstandard output.\n</p>\n</dd>",
       "name": "stats_file",
-      "required": true,
+      "required": false,
       "typing": "str"
     },
     {
