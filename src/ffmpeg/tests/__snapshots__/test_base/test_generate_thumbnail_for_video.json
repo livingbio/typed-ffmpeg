@@ -1,0 +1,14 @@
+[
+  "ffmpeg",
+  "-ss",
+  "10",
+  "-i",
+  "input.mp4",
+  "-filter_complex",
+  "[0]scale=w=800:h=-1[s0]",
+  "-map",
+  "[s0]",
+  "-vframes",
+  "1",
+  "output.mp4"
+]

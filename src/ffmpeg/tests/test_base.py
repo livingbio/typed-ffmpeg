@@ -3,7 +3,7 @@ from pydantic import ValidationError
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..base import input
+from ..base import input, output
 from ..filters import concat
 from ..streams.video import VideoStream
 
@@ -48,17 +48,87 @@ def test_generate_thumbnail_for_video(snapshot: SnapshotAssertion) -> None:
     assert snapshot(extension_class=JSONSnapshotExtension) == (
         input("input.mp4", ss=10).scale(w="800", h="-1").output(filename="output.mp4", vframes=1).compile()
     )
+    #  ['ffmpeg',
+    #  '-ss',
+    #  '10',
+    #  '-i',
+    #  'input.mp4',
+    #  '-filter_complex',
+    #  '[0]scale=800:-1[s0]',
+    #  '-map',
+    #  '[s0]',
+    #  '-vframes',
+    #  '1',
+    #  'output.mp4']
 
 
-#  ['ffmpeg',
-#  '-ss',
-#  '10',
+def test_assemble_video_from_sequence_of_frames(snapshot: SnapshotAssertion) -> None:
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("/path/to/jpegs/*.jpg", framerate=25, pattern_type="glob").output(filename="movie.mp4").compile()
+    )
+    # ['ffmpeg',
+    #  '-framerate',
+    #  '25',
+    #  '-pattern_type',
+    #  'glob',
+    #  '-i',
+    #  '/path/to/jpegs/*.jpg',
+    #  'movie.mp4']
+
+
+def test_assemble_video_from_sequence_of_frames_with_additional_filtering(snapshot: SnapshotAssertion) -> None:
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("/path/to/jpegs/*.jpg", framerate=25, pattern_type="glob")
+        .deflicker(mode="pm", size=10)
+        .scale(size="hd1080", force_original_aspect_ratio="increase")
+        .output(filename="movie.mp4", crf=20, movflags="faststart", pix_fmt="yuv420p", preset="slower")
+        .compile()
+    )
+    #     ['ffmpeg',
+    #  '-framerate',
+    #  '25',
+    #  '-pattern_type',
+    #  'glob',
+    #  '-i',
+    #  '/path/to/jpegs/*.jpg',
+    #  '-filter_complex',
+    #  '[0]deflicker=mode=pm:size=10[s0];[s0]scale=force_original_aspect_ratio=increase:size=hd1080[s1]',
+    #  '-map',
+    #  '[s1]',
+    #  '-crf',
+    #  '20',
+    #  '-movflags',
+    #  'faststart',
+    #  '-pix_fmt',
+    #  'yuv420p',
+    #  '-preset',
+    #  'slower',
+    #  'movie.mp4']
+
+
+def test_audio_video_pipeline(snapshot: SnapshotAssertion) -> None:
+    in1 = input("in1.mp4")
+    in2 = input("in2.mp4")
+    v1 = in1.video.hflip()
+    in1.audio
+    v2 = in2.video.reverse().hue(s="0")
+    a2 = in2.audio.areverse().aphaser()
+    joined = concat(v1, a2, v2, a2, v=1, a=1)
+    v3 = joined.video(0)
+    a3 = joined.audio(0).volume(volume="0.8")
+    assert snapshot(extension_class=JSONSnapshotExtension) == output(v3, a3, filename="out.mp4").compile()
+    #     ['ffmpeg',
+
+
+#     ['ffmpeg',
 #  '-i',
-#  'input.mp4',
+#  'in1.mp4',
+#  '-i',
+#  'in2.mp4',
 #  '-filter_complex',
-#  '[0]scale=800:-1[s0]',
+#  '[0:v]hflip[s0];[1:v]reverse[s1];[s1]hue=s=0[s2];[1:a]areverse[s3];[s3]aphaser[s4];[s0][0:a][s2][s4]concat=a=1:n=2:v=1[s5][s6];[s6]volume=0.8[s7]',
 #  '-map',
-#  '[s0]',
-#  '-vframes',
-#  '1',
-#  'output.mp4']
+#  '[s5]',
+#  '-map',
+#  '[s7]',
+#  'out.mp4']

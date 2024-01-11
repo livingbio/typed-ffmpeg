@@ -1,0 +1,12 @@
+[
+  "ffmpeg",
+  "-framerate",
+  "25",
+  "-pattern_type",
+  "glob",
+  "-i",
+  "/path/to/jpegs/*.jpg",
+  "-map",
+  "[0]",
+  "movie.mp4"
+]

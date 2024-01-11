@@ -18,38 +18,73 @@ def _collect(node: Node) -> tuple[set[Node], set[Stream]]:
     return nodes, streams
 
 
+def _calculate_node_max_depth(node: Node, outgoing_streams: dict[Node, list[Stream]]) -> int:
+    if not node.incoming_streams:
+        return 0
+
+    return max(_calculate_node_max_depth(stream.node, outgoing_streams) for stream in node.incoming_streams) + 1
+
+
+def _node_max_depth(all_nodes: set[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, int]:
+    return {node: _calculate_node_max_depth(node, outgoing_streams) for node in all_nodes}
+
+
+def _build_outgoing_streams(nodes: set[Node], streams: set[Stream]) -> dict[Node, list[Stream]]:
+    outgoing_streams: dict[Node, list[Stream]] = {}
+
+    for node in nodes:
+        outgoing_streams[node] = []
+
+    for stream in streams:
+        outgoing_streams[stream.node].append(stream)
+
+    return outgoing_streams
+
+
+def _build_node_labels(nodes: set[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, str]:
+    node_max_depth = _node_max_depth(nodes, outgoing_streams)
+    input_node_index = 0
+    filter_node_index = 0
+    node_labels: dict[Node, str] = {}
+
+    for node in sorted(nodes, key=lambda node: node_max_depth[node]):
+        if isinstance(node, InputNode):
+            node_labels[node] = str(input_node_index)
+            input_node_index += 1
+        elif isinstance(node, FilterNode):
+            node_labels[node] = f"s{filter_node_index}"
+            filter_node_index += 1
+        else:
+            node_labels[node] = "out"
+
+    return node_labels
+
+
 class DAGContext(_DAGContext):
     node: Node
 
     node_labels: dict[Node, str]
     outgoing_streams: dict[Node, list[Stream]]
-    all_nodes: set[Node]
-    all_streams: set[Stream]
+
+    all_nodes: list[Node]
+    all_streams: list[Stream]
 
     @classmethod
     def build(cls, node: Node) -> DAGContext:
         """create a DAG context based on the given node"""
         nodes, streams = _collect(node)
+        outgoing_streams = _build_outgoing_streams(nodes, streams)
+        node_labels = _build_node_labels(nodes, outgoing_streams)
 
-        input_node_index = 0
-        filter_node_index = 0
-        node_labels: dict[Node, str] = {}
-        outgoing_streams: dict[Node, list[Stream]] = {}
-        for node in nodes:
-            if isinstance(node, InputNode):
-                node_labels[node] = str(input_node_index)
-                input_node_index += 1
-            elif isinstance(node, FilterNode):
-                node_labels[node] = f"s{filter_node_index}"
-                filter_node_index += 1
-
-            outgoing_streams[node] = []
-
-        for stream in streams:
-            outgoing_streams[stream.node].append(stream)
+        all_nodes = sorted(nodes, key=lambda node: node_labels[node])
+        all_streams = sorted(streams, key=lambda stream: node_labels[stream.node])
 
         return cls(
-            node=node, node_labels=node_labels, outgoing_streams=outgoing_streams, all_nodes=nodes, all_streams=streams
+            node=node,
+            node_labels=node_labels,
+            outgoing_streams=outgoing_streams,
+            all_nodes=all_nodes,
+            all_streams=all_streams,
         )
 
     def get_node_label(self, node: Node) -> str:

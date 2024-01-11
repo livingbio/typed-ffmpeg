@@ -86,7 +86,7 @@ class FilterNode(Node):
         outputs = context.get_outgoing_streams(self)
 
         outgoing_labels = ""
-        for output in outputs:
+        for output in sorted(outputs, key=lambda stream: stream.index or 0):
             # NOTE: all outgoing streams must be filterable
             assert isinstance(output, FilterableStream)
             outgoing_labels += output.label(context)
@@ -96,7 +96,9 @@ class FilterNode(Node):
             if not isinstance(value, Default):
                 commands += [f"{key}={value}"]
 
-        return [incoming_labels] + [f"{self.name}="] + [":".join(commands)] + [outgoing_labels]
+        if commands:
+            return [incoming_labels] + [f"{self.name}="] + [":".join(commands)] + [outgoing_labels]
+        return [incoming_labels] + [f"{self.name}"] + [outgoing_labels]
 
 
 class FilterableStream(Stream, ABC):
@@ -120,17 +122,23 @@ class FilterableStream(Stream, ABC):
         return OutputNode(kwargs=kwargs, inputs=[self, *streams], filename=filename).stream()
 
     def label(self, context: _DAGContext) -> str:
+        match (self.selector):
+            case StreamType.video:
+                selector = "v"
+            case StreamType.audio:
+                selector = "a"
+
         if isinstance(self.node, InputNode) or (
             self.node.output_typings is not None and len(self.node.output_typings) == 1
         ):
             # NOTE: if the node has only one output, we don't need to specify the index
             if self.selector:
-                return f"[{context.get_node_label(self.node)}:{self.selector}]"
+                return f"[{context.get_node_label(self.node)}:{selector}]"
             else:
                 return f"[{context.get_node_label(self.node)}]"
         else:
             if self.selector:
-                return f"[{context.get_node_label(self.node)}#{self.index}:{self.selector}]"
+                return f"[{context.get_node_label(self.node)}#{self.index}:{selector}]"
             else:
                 return f"[{context.get_node_label(self.node)}#{self.index}]"
 
