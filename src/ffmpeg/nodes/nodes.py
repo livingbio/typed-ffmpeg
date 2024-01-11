@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, Any, Sequence
 
 from pydantic import model_validator
 
-from ..schema import StreamType
+from ..schema import Default, StreamType
 from .base import Node, Stream, _DAGContext, empty_dag_context
 
 if TYPE_CHECKING:
@@ -91,11 +91,12 @@ class FilterNode(Node):
             assert isinstance(output, FilterableStream)
             outgoing_labels += output.label(context)
 
-        commands = [f"{self.name}="]
+        commands = []
         for key, value in self.kwargs.items():
-            commands += [f":{key}={value}"]
+            if not isinstance(value, Default):
+                commands += [f"{key}={value}"]
 
-        return [incoming_labels] + commands + [outgoing_labels]
+        return [incoming_labels] + [f"{self.name}="] + [":".join(commands)] + [outgoing_labels]
 
 
 class FilterableStream(Stream, ABC):
@@ -119,16 +120,19 @@ class FilterableStream(Stream, ABC):
         return OutputNode(kwargs=kwargs, inputs=[self, *streams], filename=filename).stream()
 
     def label(self, context: _DAGContext) -> str:
-        if isinstance(self.node, InputNode):
+        if isinstance(self.node, InputNode) or (
+            self.node.output_typings is not None and len(self.node.output_typings) == 1
+        ):
+            # NOTE: if the node has only one output, we don't need to specify the index
             if self.selector:
                 return f"[{context.get_node_label(self.node)}:{self.selector}]"
             else:
                 return f"[{context.get_node_label(self.node)}]"
         else:
             if self.selector:
-                return f"[{context.get_node_label(self.node)}-{self.index}:{self.selector}]"
+                return f"[{context.get_node_label(self.node)}#{self.index}:{self.selector}]"
             else:
-                return f"[{context.get_node_label(self.node)}-{self.index}]"
+                return f"[{context.get_node_label(self.node)}#{self.index}]"
 
     @model_validator(mode="after")
     def validate_index(self) -> FilterableStream:
@@ -198,14 +202,15 @@ class OutputNode(Node):
         return self.inputs
 
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+        # !handle mapping
         commands = []
+        for input in self.inputs:
+            commands += ["-map", input.label(context)]
+
         for key, value in self.kwargs.items():
             commands += [f"-{key}", value]
         commands += [self.filename]
         return commands
-
-
-# TODO: handle mapping
 
 
 class OutputStream(Stream):
@@ -217,6 +222,11 @@ class OutputStream(Stream):
     def overwrite_output(self) -> "OutputStream":
         return GlobalNode(input=self, kwargs={"y": True}).stream()
 
+    def compile(self, cmd: list[str] = ["ffmpeg"]) -> list[str]:
+        from ..utils.compile import compile
+
+        return cmd + compile(self.node)
+
 
 class MergeOutputsNode(Node):
     inputs: list[OutputStream]
@@ -227,3 +237,7 @@ class MergeOutputsNode(Node):
     @property
     def incoming_streams(self) -> Sequence[Stream]:
         return self.inputs
+
+    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+        # NOTE: the node just used to group outputs, no need to add any commands
+        return []

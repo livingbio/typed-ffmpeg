@@ -1,6 +1,7 @@
 import pytest
 from pydantic import ValidationError
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..base import input
 from ..filters import concat
@@ -24,3 +25,20 @@ def test_filter_node(snapshot: SnapshotAssertion) -> None:
     with pytest.raises(ValidationError) as e:
         concat(*(input1, input2.audio, input3.audio), n=3)
     assert snapshot == e
+
+
+def test_compile(snapshot: SnapshotAssertion) -> None:
+    in_file = input("input.mp4")
+    overlay_file = input("overlay.png")
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        concat(
+            in_file.trim(start_frame=10, end_frame=20),
+            in_file.trim(start_frame=30, end_frame=40),
+        )
+        .video(0)
+        .overlay(overlay_file.hflip())
+        .drawbox(x="50", y="50", width="120", height="120", color="red", thickness="5")
+        .output(filename="out.mp4")
+        .compile()
+    )
+    # ['ffmpeg', '-i', 'input.mp4', '-i', 'overlay.png', '-filter_complex', '[0]trim=end_frame=20:start_frame=10[s0];[0]trim=end_frame=40:start_frame=30[s1];[s0][s1]concat=n=2[s2];[1]hflip[s3];[s2][s3]overlay=eof_action=repeat[s4];[s4]drawbox=50:50:120:120:red:t=5[s5]', '-map', '[s5]', 'out.mp4']

@@ -6453,7 +6453,7 @@ class VideoStream(FilterableStream):
         color: str | DefaultStr = DefaultStr("black"),
         thickness: str | DefaultStr = DefaultStr("3"),
         replace: bool | DefaultInt = DefaultInt(0),
-        box_source: str,
+        box_source: str | DefaultStr = DefaultStr(""),
         **kwargs: Any,
     ) -> "VideoStream":
         """

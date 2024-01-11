@@ -1,0 +1,12 @@
+[
+  "ffmpeg",
+  "-i",
+  "input.mp4",
+  "-i",
+  "overlay.png",
+  "-filter_complex",
+  "[0]trim=start_frame=10:end_frame=20[s0];[0]trim=start_frame=30:end_frame=40[s4];[1]hflip=[s1];[s0][s4]concat=[s3];[s3][s1]overlay=[s5];[s5]drawbox=x=50:y=50:width=120:height=120:color=red:thickness=5[s2]",
+  "-map",
+  "[s2]",
+  "out.mp4"
+]

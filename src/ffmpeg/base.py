@@ -9,7 +9,6 @@ def input(filename: str, **kwargs: str | int | None | float) -> AVStream:
     To tell ffmpeg to read from stdin, use ``pipe:`` as the filename.
     Official documentation: `Main options <https://ffmpeg.org/ffmpeg.html#Main-options>`__
     """
-    kwargs["filename"] = filename
     fmt = kwargs.pop("f", None)
     if fmt:
         if "format" in kwargs:
