@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Literal
 
-from ..nodes.filter_node import FilterableStream, FilterNode
+from ..nodes.nodes import FilterableStream, FilterNode
 from ..schema import DefaultFloat, DefaultInt, DefaultStr, StreamType
 
 if TYPE_CHECKING:
@@ -6453,7 +6453,7 @@ class VideoStream(FilterableStream):
         color: str | DefaultStr = DefaultStr("black"),
         thickness: str | DefaultStr = DefaultStr("3"),
         replace: bool | DefaultInt = DefaultInt(0),
-        box_source: str,
+        box_source: str | DefaultStr = DefaultStr(""),
         **kwargs: Any,
     ) -> "VideoStream":
         """
