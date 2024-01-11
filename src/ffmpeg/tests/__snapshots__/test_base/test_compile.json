@@ -5,7 +5,7 @@
   "-i",
   "input.mp4",
   "-filter_complex",
-  "[0]hflip[s1];[1]trim=start_frame=10:end_frame=20[s2];[1]trim=start_frame=30:end_frame=40[s0];[s2][s0]concat[s3];[s3][s1]overlay[s4];[s4]drawbox=x=50:y=50:width=120:height=120:color=red:thickness=5[s5]",
+  "[0]hflip[s2];[1]trim=start_frame=10:end_frame=20[s1];[1]trim=start_frame=30:end_frame=40[s0];[s1][s0]concat[s3];[s3][s2]overlay[s4];[s4]drawbox=x=50:y=50:width=120:height=120:color=red:thickness=5[s5]",
   "-map",
   "[s5]",
   "out.mp4"
