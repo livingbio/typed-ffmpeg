@@ -1,0 +1,20 @@
+[
+  "ffmpeg",
+  "-y",
+  "-i",
+  "audio-right.wav",
+  "-i",
+  "input-video.mp4",
+  "-i",
+  "audio-left.wav",
+  "-filter_complex",
+  "[0]atrim=start=10[s1];[2]atrim=start=5[s0];[s0]asetpts=expr=PTS-STARTPTS[s3];[s1]asetpts=expr=PTS-STARTPTS[s2];[s3][s2]join=inputs=2:channel_layout=stereo:map=[s4]",
+  "-map",
+  "[s4]",
+  "-map",
+  "[1:v]",
+  "-shortest",
+  "-vcodec",
+  "copy",
+  "output-video.mp4"
+]

@@ -1,0 +1,14 @@
+[
+  "ffmpeg",
+  "-i",
+  "in1.mp4",
+  "-i",
+  "in2.mp4",
+  "-filter_complex",
+  "[0:v]hflip[s0];[1:a]areverse[s1];[1:v]reverse[s2];[s0][s3][s4][s3]concat=v=1:a=1[s5#0][s5#1];[s1]aphaser[s3];[s2]hue=h=:s=0:H=[s4];[s5#1]volume=volume=0.8[s6]",
+  "-map",
+  "[s5#0]",
+  "-map",
+  "[s6]",
+  "out.mp4"
+]

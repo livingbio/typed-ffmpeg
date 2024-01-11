@@ -1,0 +1,22 @@
+[
+  "ffmpeg",
+  "-framerate",
+  "25",
+  "-pattern_type",
+  "glob",
+  "-i",
+  "/path/to/jpegs/*.jpg",
+  "-filter_complex",
+  "[0]deflicker=size=10:mode=pm[s0];[s0]scale=w=:h=:size=hd1080:force_original_aspect_ratio=increase[s1]",
+  "-map",
+  "[s1]",
+  "-crf",
+  "20",
+  "-movflags",
+  "faststart",
+  "-pix_fmt",
+  "yuv420p",
+  "-preset",
+  "slower",
+  "movie.mp4"
+]

@@ -3,8 +3,8 @@ from pydantic import ValidationError
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..base import input
-from ..filters import concat
+from ..base import input, output
+from ..filters import concat, join
 from ..streams.video import VideoStream
 
 
@@ -42,3 +42,127 @@ def test_compile(snapshot: SnapshotAssertion) -> None:
         .compile()
     )
     # ['ffmpeg', '-i', 'input.mp4', '-i', 'overlay.png', '-filter_complex', '[0]trim=end_frame=20:start_frame=10[s0];[0]trim=end_frame=40:start_frame=30[s1];[s0][s1]concat=n=2[s2];[1]hflip[s3];[s2][s3]overlay=eof_action=repeat[s4];[s4]drawbox=50:50:120:120:red:t=5[s5]', '-map', '[s5]', 'out.mp4']
+
+
+def test_generate_thumbnail_for_video(snapshot: SnapshotAssertion) -> None:
+    # FIXME: scale's size options should be optional
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("input.mp4", ss=10).scale(w="800", h="-1", size="").output(filename="output.mp4", vframes=1).compile()
+    )
+    #  ['ffmpeg',
+    #  '-ss',
+    #  '10',
+    #  '-i',
+    #  'input.mp4',
+    #  '-filter_complex',
+    #  '[0]scale=800:-1[s0]',
+    #  '-map',
+    #  '[s0]',
+    #  '-vframes',
+    #  '1',
+    #  'output.mp4']
+
+
+def test_assemble_video_from_sequence_of_frames(snapshot: SnapshotAssertion) -> None:
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("/path/to/jpegs/*.jpg", framerate=25, pattern_type="glob").output(filename="movie.mp4").compile()
+    )
+    # ['ffmpeg',
+    #  '-framerate',
+    #  '25',
+    #  '-pattern_type',
+    #  'glob',
+    #  '-i',
+    #  '/path/to/jpegs/*.jpg',
+    #  'movie.mp4']
+
+
+def test_assemble_video_from_sequence_of_frames_with_additional_filtering(snapshot: SnapshotAssertion) -> None:
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("/path/to/jpegs/*.jpg", framerate=25, pattern_type="glob")
+        .deflicker(mode="pm", size=10)
+        # FIXME: scale's w,h options should be optional
+        .scale(size="hd1080", force_original_aspect_ratio="increase", w="", h="")
+        .output(filename="movie.mp4", crf=20, movflags="faststart", pix_fmt="yuv420p", preset="slower")
+        .compile()
+    )
+    #     ['ffmpeg',
+    #  '-framerate',
+    #  '25',
+    #  '-pattern_type',
+    #  'glob',
+    #  '-i',
+    #  '/path/to/jpegs/*.jpg',
+    #  '-filter_complex',
+    #  '[0]deflicker=mode=pm:size=10[s0];[s0]scale=force_original_aspect_ratio=increase:size=hd1080[s1]',
+    #  '-map',
+    #  '[s1]',
+    #  '-crf',
+    #  '20',
+    #  '-movflags',
+    #  'faststart',
+    #  '-pix_fmt',
+    #  'yuv420p',
+    #  '-preset',
+    #  'slower',
+    #  'movie.mp4']
+
+
+def test_audio_video_pipeline(snapshot: SnapshotAssertion) -> None:
+    in1 = input("in1.mp4")
+    in2 = input("in2.mp4")
+    v1 = in1.video.hflip()
+    in1.audio
+    # FIXME: reverse's h,H options should be optional
+    v2 = in2.video.reverse().hue(s="0", h="", H="")
+    a2 = in2.audio.areverse().aphaser()
+    joined = concat(v1, a2, v2, a2, v=1, a=1)
+    v3 = joined.video(0)
+    a3 = joined.audio(0).volume(volume="0.8")
+    assert snapshot(extension_class=JSONSnapshotExtension) == output(v3, a3, filename="out.mp4").compile()
+
+    #     ['ffmpeg',
+    #  '-i',
+    #  'in1.mp4',
+    #  '-i',
+    #  'in2.mp4',
+    #  '-filter_complex',
+    #  '[0:v]hflip[s0];[1:v]reverse[s1];[s1]hue=s=0[s2];[1:a]areverse[s3];[s3]aphaser[s4];[s0][0:a][s2][s4]concat=a=1:n=2:v=1[s5][s6];[s6]volume=0.8[s7]',
+    #  '-map',
+    #  '[s5]',
+    #  '-map',
+    #  '[s7]',
+    #  'out.mp4']
+
+
+def test_mono_to_stereo_with_offsets_and_video(snapshot: SnapshotAssertion) -> None:
+    audio_left = input("audio-left.wav").atrim(start=5).asetpts(expr="PTS-STARTPTS")
+    audio_right = input("audio-right.wav").atrim(start=10).asetpts(expr="PTS-STARTPTS")
+    input_video = input("input-video.mp4")
+    # FIXME: the join's map option should be optional
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        join(audio_left, audio_right, inputs=2, channel_layout="stereo", map="")
+        .output(input_video.video, filename="output-video.mp4", shortest=True, vcodec="copy")
+        .overwrite_output()
+        .compile()
+    )
+
+
+#     ['ffmpeg',
+#  '-i',
+#  'audio-left.wav',
+#  '-i',
+#  'audio-right.wav',
+#  '-i',
+#  'input-video.mp4',
+#  '-filter_complex',
+#  '[0]atrim=start=5[s0];[s0]asetpts=PTS-STARTPTS[s1];[1]atrim=start=10[s2];[s2]asetpts=PTS-STARTPTS[s3];[s1][s3]join=channel_layout=stereo:inputs=2[s4]',
+#  '-map',
+#  '[s4]',
+#  '-map',
+#  '2:v',
+#  '-shortest',
+#  '-vcodec',
+#  'copy',
+#  'output-video.mp4',
+#  '-y']
