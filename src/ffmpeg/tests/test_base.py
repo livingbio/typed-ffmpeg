@@ -136,6 +136,7 @@ def test_mono_to_stereo_with_offsets_and_video(snapshot: SnapshotAssertion) -> N
     audio_left = input("audio-left.wav").atrim(start=5).asetpts(expr="PTS-STARTPTS")
     audio_right = input("audio-right.wav").atrim(start=10).asetpts(expr="PTS-STARTPTS")
     input_video = input("input-video.mp4")
+    # FIXME: the join's map option should be optional
     assert snapshot(extension_class=JSONSnapshotExtension) == (
         join(audio_left, audio_right, inputs=2, channel_layout="stereo", map="")
         .output(input_video.video, filename="output-video.mp4", shortest=True, vcodec="copy")
