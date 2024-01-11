@@ -10171,9 +10171,9 @@ class VideoStream(FilterableStream):
     def hue(
         self,
         *,
-        h: str | DefaultStr = DefaultStr("0"),
+        h: str,
         s: str | DefaultStr = DefaultStr("1"),
-        H: str | DefaultStr = DefaultStr("0"),
+        H: str,
         b: str | DefaultStr = DefaultStr("0"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -17573,11 +17573,11 @@ class VideoStream(FilterableStream):
     def scale(
         self,
         *,
-        w: str | DefaultStr = DefaultStr(""),
-        h: str | DefaultStr = DefaultStr(""),
+        w: str,
+        h: str,
         flags: str | DefaultStr = DefaultStr(""),
         interl: bool | DefaultInt = DefaultInt(0),
-        size: str | DefaultStr = DefaultStr(""),
+        size: str,
         in_color_matrix: int
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | DefaultStr = DefaultStr("auto"),

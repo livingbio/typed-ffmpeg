@@ -7,7 +7,7 @@
   "-i",
   "/path/to/jpegs/*.jpg",
   "-filter_complex",
-  "[0]deflicker=size=10:mode=pm[s0];[s0]scale=size=hd1080:force_original_aspect_ratio=increase[s1]",
+  "[0]deflicker=size=10:mode=pm[s0];[s0]scale=w=:h=:size=hd1080:force_original_aspect_ratio=increase[s1]",
   "-map",
   "[s1]",
   "-crf",
