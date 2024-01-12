@@ -230,7 +230,7 @@
         }
       ],
       "default": "WFUNC_HANNING",
-      "description": null,
+      "description": "set window function",
       "name": "window",
       "required": false,
       "typing": "int"

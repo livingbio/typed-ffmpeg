@@ -24,7 +24,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "Set the file path to be used to write log.",
       "name": "log_path",
       "required": false,
       "typing": "str"
@@ -35,7 +35,7 @@
       ],
       "choices": [],
       "default": "xml",
-      "description": null,
+      "description": "Set the format of the log (csv, json, xml, or sub).",
       "name": "log_fmt",
       "required": false,
       "typing": "str"
@@ -46,7 +46,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "Set the pool method to be used for computing vmaf.",
       "name": "pool",
       "required": false,
       "typing": "str"
@@ -57,7 +57,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Set number of threads to be used when computing vmaf.",
       "name": "n_threads",
       "required": false,
       "typing": "int"
@@ -68,7 +68,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "Set interval for frame subsampling used when computing vmaf.",
       "name": "n_subsample",
       "required": false,
       "typing": "int"
@@ -79,7 +79,7 @@
       ],
       "choices": [],
       "default": "version=vmaf_v0.6.1",
-      "description": null,
+      "description": "Set the model to be used for computing vmaf.",
       "name": "model",
       "required": false,
       "typing": "str"
@@ -90,7 +90,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "Set the feature to be used for computing vmaf.",
       "name": "feature",
       "required": false,
       "typing": "str"

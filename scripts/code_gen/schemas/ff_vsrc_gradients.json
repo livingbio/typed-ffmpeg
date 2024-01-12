@@ -149,7 +149,7 @@
       ],
       "choices": [],
       "default": -1,
-      "description": null,
+      "description": "set gradient line destination x1",
       "name": "x1",
       "required": false,
       "typing": "int"

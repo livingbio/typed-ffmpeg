@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video width",
       "name": "w",
       "required": false,
       "typing": "str"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video height",
       "name": "h",
       "required": false,
       "typing": "str"
@@ -53,7 +53,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "Output video size",
       "name": "s",
       "required": false,
       "typing": "str"

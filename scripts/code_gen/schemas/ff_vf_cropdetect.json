@@ -65,7 +65,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Threshold count of outliers",
       "name": "max_outliers",
       "required": false,
       "typing": "int"

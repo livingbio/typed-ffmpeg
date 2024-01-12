@@ -69,7 +69,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "motion compensation mode",
       "name": "mc_mode",
       "required": false,
       "typing": "int"
@@ -91,7 +91,7 @@
         }
       ],
       "default": 1,
-      "description": null,
+      "description": "motion estimation mode",
       "name": "me_mode",
       "required": false,
       "typing": "int"
@@ -148,7 +148,7 @@
         }
       ],
       "default": 8,
-      "description": null,
+      "description": "motion estimation method",
       "name": "me",
       "required": false,
       "typing": "int"
@@ -159,7 +159,7 @@
       ],
       "choices": [],
       "default": 16,
-      "description": null,
+      "description": "macroblock size",
       "name": "mb_size",
       "required": false,
       "typing": "int"
@@ -170,7 +170,7 @@
       ],
       "choices": [],
       "default": 32,
-      "description": null,
+      "description": "search parameter",
       "name": "search_param",
       "required": false,
       "typing": "int"
@@ -181,7 +181,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "variable-size block motion compensation",
       "name": "vsbmc",
       "required": false,
       "typing": "int"

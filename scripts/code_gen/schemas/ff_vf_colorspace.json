@@ -61,7 +61,7 @@
         }
       ],
       "default": "CS_UNSPECIFIED",
-      "description": null,
+      "description": "Set all color properties together",
       "name": "all",
       "required": false,
       "typing": "int"
@@ -118,7 +118,7 @@
         }
       ],
       "default": "AVCOL_SPC_UNSPECIFIED",
-      "description": null,
+      "description": "Output colorspace",
       "name": "space",
       "required": false,
       "typing": "int"
@@ -150,7 +150,7 @@
         }
       ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
-      "description": null,
+      "description": "Output color range",
       "name": "range",
       "required": false,
       "typing": "int"
@@ -222,7 +222,7 @@
         }
       ],
       "default": "AVCOL_PRI_UNSPECIFIED",
-      "description": null,
+      "description": "Output color primaries",
       "name": "primaries",
       "required": false,
       "typing": "int"
@@ -304,7 +304,7 @@
         }
       ],
       "default": "AVCOL_TRC_UNSPECIFIED",
-      "description": null,
+      "description": "Output transfer characteristics",
       "name": "trc",
       "required": false,
       "typing": "int"
@@ -361,7 +361,7 @@
         }
       ],
       "default": "AV_PIX_FMT_NONE",
-      "description": null,
+      "description": "Output pixel format",
       "name": "format",
       "required": false,
       "typing": "int"
@@ -372,7 +372,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Ignore primary chromaticity and gamma correction",
       "name": "fast",
       "required": false,
       "typing": "bool"
@@ -394,7 +394,7 @@
         }
       ],
       "default": "DITHER_NONE",
-      "description": null,
+      "description": "Dithering mode",
       "name": "dither",
       "required": false,
       "typing": "int"
@@ -421,7 +421,7 @@
         }
       ],
       "default": "WP_ADAPT_BRADFORD",
-      "description": null,
+      "description": "Whitepoint adaptation method",
       "name": "wpadapt",
       "required": false,
       "typing": "int"
@@ -473,7 +473,7 @@
         }
       ],
       "default": "CS_UNSPECIFIED",
-      "description": null,
+      "description": "Set all input color properties together",
       "name": "iall",
       "required": false,
       "typing": "int"
@@ -530,7 +530,7 @@
         }
       ],
       "default": "AVCOL_SPC_UNSPECIFIED",
-      "description": null,
+      "description": "Input colorspace",
       "name": "ispace",
       "required": false,
       "typing": "int"
@@ -562,7 +562,7 @@
         }
       ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
-      "description": null,
+      "description": "Input color range",
       "name": "irange",
       "required": false,
       "typing": "int"
@@ -634,7 +634,7 @@
         }
       ],
       "default": "AVCOL_PRI_UNSPECIFIED",
-      "description": null,
+      "description": "Input color primaries",
       "name": "iprimaries",
       "required": false,
       "typing": "int"
@@ -716,7 +716,7 @@
         }
       ],
       "default": "AVCOL_TRC_UNSPECIFIED",
-      "description": null,
+      "description": "Input transfer characteristics",
       "name": "itrc",
       "required": false,
       "typing": "int"

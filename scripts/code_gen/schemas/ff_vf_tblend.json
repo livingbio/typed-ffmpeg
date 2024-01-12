@@ -231,7 +231,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set component #0 blend mode",
       "name": "c0_mode",
       "required": false,
       "typing": "int"
@@ -453,7 +453,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set component #1 blend mode",
       "name": "c1_mode",
       "required": false,
       "typing": "int"
@@ -675,7 +675,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set component #2 blend mode",
       "name": "c2_mode",
       "required": false,
       "typing": "int"
@@ -897,7 +897,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set component #3 blend mode",
       "name": "c3_mode",
       "required": false,
       "typing": "int"
@@ -1119,7 +1119,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set blend mode for all components",
       "name": "all_mode",
       "required": false,
       "typing": "int"
@@ -1130,7 +1130,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set color component #0 expression",
       "name": "c0_expr",
       "required": false,
       "typing": "str"
@@ -1141,7 +1141,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set color component #1 expression",
       "name": "c1_expr",
       "required": false,
       "typing": "str"
@@ -1152,7 +1152,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set color component #2 expression",
       "name": "c2_expr",
       "required": false,
       "typing": "str"
@@ -1163,7 +1163,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set color component #3 expression",
       "name": "c3_expr",
       "required": false,
       "typing": "str"
@@ -1174,7 +1174,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set expression for all color components",
       "name": "all_expr",
       "required": false,
       "typing": "str"
@@ -1185,7 +1185,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set color component #0 opacity",
       "name": "c0_opacity",
       "required": false,
       "typing": "float"
@@ -1196,7 +1196,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set color component #1 opacity",
       "name": "c1_opacity",
       "required": false,
       "typing": "float"
@@ -1207,7 +1207,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set color component #2 opacity",
       "name": "c2_opacity",
       "required": false,
       "typing": "float"
@@ -1218,7 +1218,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set color component #3 opacity",
       "name": "c3_opacity",
       "required": false,
       "typing": "float"
@@ -1229,7 +1229,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set opacity for all color components",
       "name": "all_opacity",
       "required": false,
       "typing": "float"

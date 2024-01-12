@@ -97,7 +97,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "denoising strength for component 4",
       "name": "s4",
       "required": false,
       "typing": "float"
@@ -141,7 +141,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "patch size for component 4",
       "name": "p4",
       "required": false,
       "typing": "int"

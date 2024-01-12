@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": 0.5,
-      "description": null,
+      "description": "set relative center x",
       "name": "cx",
       "required": false,
       "typing": "float"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": 0.5,
-      "description": null,
+      "description": "set relative center y",
       "name": "cy",
       "required": false,
       "typing": "float"
@@ -42,7 +42,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "set quadratic distortion factor",
       "name": "k1",
       "required": false,
       "typing": "float"
@@ -53,7 +53,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "set double quadratic distortion factor",
       "name": "k2",
       "required": false,
       "typing": "float"
@@ -75,7 +75,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set interpolation type",
       "name": "i",
       "required": false,
       "typing": "int"
@@ -86,7 +86,7 @@
       ],
       "choices": [],
       "default": "black@0",
-      "description": null,
+      "description": "set the color of the unmapped pixels",
       "name": "fc",
       "required": false,
       "typing": "str"

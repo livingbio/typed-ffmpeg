@@ -497,7 +497,7 @@
       ],
       "choices": [],
       "default": "rludfb",
-      "description": null,
+      "description": "input cubemap face order",
       "name": "in_forder",
       "required": false,
       "typing": "str"
@@ -508,7 +508,7 @@
       ],
       "choices": [],
       "default": "rludfb",
-      "description": null,
+      "description": "output cubemap face order",
       "name": "out_forder",
       "required": false,
       "typing": "str"
@@ -519,7 +519,7 @@
       ],
       "choices": [],
       "default": "000000",
-      "description": null,
+      "description": "input cubemap face rotation",
       "name": "in_frot",
       "required": false,
       "typing": "str"
@@ -530,7 +530,7 @@
       ],
       "choices": [],
       "default": "000000",
-      "description": null,
+      "description": "output cubemap face rotation",
       "name": "out_frot",
       "required": false,
       "typing": "str"
@@ -541,7 +541,7 @@
       ],
       "choices": [],
       "default": "0.f",
-      "description": null,
+      "description": "percent input cubemap pads",
       "name": "in_pad",
       "required": false,
       "typing": "float"
@@ -552,7 +552,7 @@
       ],
       "choices": [],
       "default": "0.f",
-      "description": null,
+      "description": "percent output cubemap pads",
       "name": "out_pad",
       "required": false,
       "typing": "float"
@@ -563,7 +563,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "fixed input cubemap pads",
       "name": "fin_pad",
       "required": false,
       "typing": "int"
@@ -574,7 +574,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "fixed output cubemap pads",
       "name": "fout_pad",
       "required": false,
       "typing": "int"
@@ -629,7 +629,7 @@
       ],
       "choices": [],
       "default": "0.f",
-      "description": null,
+      "description": "output horizontal field of view",
       "name": "h_fov",
       "required": false,
       "typing": "float"
@@ -640,7 +640,7 @@
       ],
       "choices": [],
       "default": "0.f",
-      "description": null,
+      "description": "output vertical field of view",
       "name": "v_fov",
       "required": false,
       "typing": "float"
@@ -651,7 +651,7 @@
       ],
       "choices": [],
       "default": "0.f",
-      "description": null,
+      "description": "output diagonal field of view",
       "name": "d_fov",
       "required": false,
       "typing": "float"
@@ -739,7 +739,7 @@
       ],
       "choices": [],
       "default": "0.f",
-      "description": null,
+      "description": "input horizontal field of view",
       "name": "ih_fov",
       "required": false,
       "typing": "float"
@@ -750,7 +750,7 @@
       ],
       "choices": [],
       "default": "0.f",
-      "description": null,
+      "description": "input vertical field of view",
       "name": "iv_fov",
       "required": false,
       "typing": "float"
@@ -761,7 +761,7 @@
       ],
       "choices": [],
       "default": "0.f",
-      "description": null,
+      "description": "input diagonal field of view",
       "name": "id_fov",
       "required": false,
       "typing": "float"

@@ -24,7 +24,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video width",
       "name": "w",
       "required": false,
       "typing": "str"
@@ -35,7 +35,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video height",
       "name": "h",
       "required": false,
       "typing": "str"
@@ -46,7 +46,7 @@
       ],
       "choices": [],
       "default": "same",
-      "description": null,
+      "description": "Output pixel format",
       "name": "format",
       "required": false,
       "typing": "str"
@@ -57,7 +57,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "Output video size",
       "name": "s",
       "required": false,
       "typing": "str"
@@ -109,7 +109,7 @@
         }
       ],
       "default": "NPPI_INTER_CUBIC",
-      "description": null,
+      "description": "Interpolation algorithm used for resizing",
       "name": "interp_algo",
       "required": false,
       "typing": "int"
@@ -136,7 +136,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "decrease or increase w/h if necessary to keep the original AR",
       "name": "force_original_aspect_ratio",
       "required": false,
       "typing": "int"
@@ -147,7 +147,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
       "name": "force_divisible_by",
       "required": false,
       "typing": "int"
@@ -169,7 +169,7 @@
         }
       ],
       "default": "EVAL_MODE_INIT",
-      "description": null,
+      "description": "specify when to evaluate expressions",
       "name": "eval",
       "required": false,
       "typing": "int"

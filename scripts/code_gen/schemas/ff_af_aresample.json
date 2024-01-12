@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "sample_rate",
       "required": false,
       "typing": "int"

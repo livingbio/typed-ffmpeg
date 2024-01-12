@@ -24,7 +24,7 @@ def parse_options(filter: AVFilter, doc: FilterDocument) -> list[FFmpegFilterOpt
             FFmpegFilterOption(
                 name=option.name,
                 alias=option.alias,
-                description=desc,
+                description=desc or option.help,
                 typing=TYPING_MAP[option.type],
                 required=option.required,
                 default=option.default_value,

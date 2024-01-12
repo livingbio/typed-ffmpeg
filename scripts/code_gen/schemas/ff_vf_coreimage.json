@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "list available generators",
       "name": "list_generators",
       "required": false,
       "typing": "bool"

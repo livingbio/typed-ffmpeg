@@ -42,7 +42,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "use B-frames' QP",
       "name": "use_bframe_qp",
       "required": false,
       "typing": "bool"

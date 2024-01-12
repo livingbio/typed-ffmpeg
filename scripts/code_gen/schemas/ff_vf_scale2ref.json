@@ -25,7 +25,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video width",
       "name": "w",
       "required": false,
       "typing": "str"
@@ -37,7 +37,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video height",
       "name": "h",
       "required": false,
       "typing": "str"
@@ -48,7 +48,7 @@
       ],
       "choices": [],
       "default": "",
-      "description": null,
+      "description": "Flags to pass to libswscale",
       "name": "flags",
       "required": false,
       "typing": "str"
@@ -59,7 +59,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set interlacing",
       "name": "interl",
       "required": false,
       "typing": "bool"
@@ -71,7 +71,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set video size",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -123,7 +123,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set input YCbCr type",
       "name": "in_color_matrix",
       "required": false,
       "typing": "int"
@@ -175,7 +175,7 @@
         }
       ],
       "default": "AVCOL_SPC_UNSPECIFIED",
-      "description": null,
+      "description": "set output YCbCr type",
       "name": "out_color_matrix",
       "required": false,
       "typing": "int"
@@ -227,7 +227,7 @@
         }
       ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
-      "description": null,
+      "description": "set input color range",
       "name": "in_range",
       "required": false,
       "typing": "int"
@@ -279,7 +279,7 @@
         }
       ],
       "default": "AVCOL_RANGE_UNSPECIFIED",
-      "description": null,
+      "description": "set output color range",
       "name": "out_range",
       "required": false,
       "typing": "int"
@@ -290,7 +290,7 @@
       ],
       "choices": [],
       "default": -513,
-      "description": null,
+      "description": "input vertical chroma position in luma grid/256",
       "name": "in_v_chr_pos",
       "required": false,
       "typing": "int"
@@ -301,7 +301,7 @@
       ],
       "choices": [],
       "default": -513,
-      "description": null,
+      "description": "input horizontal chroma position in luma grid/256",
       "name": "in_h_chr_pos",
       "required": false,
       "typing": "int"
@@ -312,7 +312,7 @@
       ],
       "choices": [],
       "default": -513,
-      "description": null,
+      "description": "output vertical chroma position in luma grid/256",
       "name": "out_v_chr_pos",
       "required": false,
       "typing": "int"
@@ -323,7 +323,7 @@
       ],
       "choices": [],
       "default": -513,
-      "description": null,
+      "description": "output horizontal chroma position in luma grid/256",
       "name": "out_h_chr_pos",
       "required": false,
       "typing": "int"
@@ -350,7 +350,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "decrease or increase w/h if necessary to keep the original AR",
       "name": "force_original_aspect_ratio",
       "required": false,
       "typing": "int"
@@ -361,7 +361,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
       "name": "force_divisible_by",
       "required": false,
       "typing": "int"
@@ -372,7 +372,7 @@
       ],
       "choices": [],
       "default": 1.7976931348623157e+308,
-      "description": null,
+      "description": "Scaler param 0",
       "name": "param0",
       "required": false,
       "typing": "float"
@@ -383,7 +383,7 @@
       ],
       "choices": [],
       "default": 1.7976931348623157e+308,
-      "description": null,
+      "description": "Scaler param 1",
       "name": "param1",
       "required": false,
       "typing": "float"
@@ -394,7 +394,7 @@
       ],
       "choices": [],
       "default": "EVAL_MODE_INIT",
-      "description": null,
+      "description": "specify when to evaluate expressions",
       "name": "eval",
       "required": false,
       "typing": "int"

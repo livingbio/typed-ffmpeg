@@ -180,7 +180,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "signal peak override",
       "name": "peak",
       "required": false,
       "typing": "float"

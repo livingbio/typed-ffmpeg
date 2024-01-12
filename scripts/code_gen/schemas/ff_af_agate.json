@@ -174,7 +174,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set sidechain gain",
       "name": "level_sc",
       "required": false,
       "typing": "float"

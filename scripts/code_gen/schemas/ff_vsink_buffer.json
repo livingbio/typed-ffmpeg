@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "set the supported pixel formats",
       "name": "pix_fmts",
       "required": false,
       "typing": "str"

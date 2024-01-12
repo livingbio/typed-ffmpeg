@@ -134,7 +134,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set color component #0 opacity",
       "name": "c0_opacity",
       "required": false,
       "typing": "float"
@@ -145,7 +145,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set color component #1 opacity",
       "name": "c1_opacity",
       "required": false,
       "typing": "float"
@@ -156,7 +156,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set color component #2 opacity",
       "name": "c2_opacity",
       "required": false,
       "typing": "float"
@@ -167,7 +167,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set color component #3 opacity",
       "name": "c3_opacity",
       "required": false,
       "typing": "float"
@@ -178,7 +178,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set opacity for all color components",
       "name": "all_opacity",
       "required": false,
       "typing": "float"

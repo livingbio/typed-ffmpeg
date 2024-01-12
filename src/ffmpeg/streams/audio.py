@@ -439,7 +439,7 @@ class AudioStream(FilterableStream):
         :param float knee: Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.82843. Range is between 1 and 8.
         :param int link: Choose if the average level between all channels of input stream or the louder(maximum) channel of input stream affects the reduction. Default is average.
         :param int detection: Should the exact signal be taken in case of peak or an RMS one in case of rms. Default is rms which is mostly smoother.
-        :param float level_sc: None
+        :param float level_sc: set sidechain gain
         :param float mix: How much to use compressed signal in output. Default is 1. Range is between 0 and 1.
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acompressor
@@ -713,7 +713,7 @@ class AudioStream(FilterableStream):
         :param str split: Set split frequencies. Those must be positive and increasing.
         :param int order: Set filter order for each band split. This controls filter roll-off or steepness of filter transfer function. Available values are: ‘2nd’ 12 dB per octave. ‘4th’ 24 dB per octave. ‘6th’ 36 dB per octave. ‘8th’ 48 dB per octave. ‘10th’ 60 dB per octave. ‘12th’ 72 dB per octave. ‘14th’ 84 dB per octave. ‘16th’ 96 dB per octave. ‘18th’ 108 dB per octave. ‘20th’ 120 dB per octave. Default is 4th.
         :param float level: Set input gain level. Allowed range is from 0 to 1. Default value is 1.
-        :param str gain: None
+        :param str gain: set output bands gain
         :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto.
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acrossover
@@ -884,9 +884,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int cue: None
-        :param int preroll: None
-        :param int buffer: None
+        :param int cue: cue unix timestamp in microseconds
+        :param int preroll: preroll duration in seconds
+        :param int buffer: buffer duration in seconds
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acue
 
@@ -1272,21 +1272,21 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str m1: None
-        :param str fg1: None
-        :param str m2: None
-        :param str fg2: None
-        :param str m3: None
-        :param str fg3: None
-        :param str m4: None
-        :param str fg4: None
-        :param str bg: None
-        :param float min: None
-        :param float max: None
-        :param int mode: None
-        :param int slide: None
-        :param str size: None
-        :param str rate: None
+        :param str m1: set 1st metadata key
+        :param str fg1: set 1st foreground color expression
+        :param str m2: set 2nd metadata key
+        :param str fg2: set 2nd foreground color expression
+        :param str m3: set 3rd metadata key
+        :param str fg3: set 3rd foreground color expression
+        :param str m4: set 4th metadata key
+        :param str fg4: set 4th foreground color expression
+        :param str bg: set background color
+        :param float min: set minimal value
+        :param float max: set maximal value
+        :param int mode: set graph mode
+        :param int slide: set slide mode
+        :param str size: set graph size
+        :param str rate: set video rate
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adrawgraph
 
@@ -2575,7 +2575,7 @@ class AudioStream(FilterableStream):
         :param float knee: Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.828427125. Allowed range is from 1 to 8.
         :param int detection: Choose if exact signal should be taken for detection or an RMS like one. Default is rms. Can be peak or rms.
         :param int link: Choose if the average level between all channels or the louder channel affects the reduction. Default is average. Can be average or maximum.
-        :param float level_sc: None
+        :param float level_sc: set sidechain gain
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#agate
 
@@ -2648,11 +2648,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: None
-        :param float opacity: None
-        :param str mode: None
-        :param str flags: None
-        :param str rate: None
+        :param str size: set monitor size
+        :param float opacity: set video opacity
+        :param str mode: set mode
+        :param str flags: set flags
+        :param str rate: set video rate
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor
 
@@ -2871,8 +2871,8 @@ class AudioStream(FilterableStream):
         :param str zeros: Set B/numerator/zeros/reflection coefficients.
         :param str poles: Set A/denominator/poles/ladder coefficients.
         :param str gains: Set channels gains.
-        :param float dry: None
-        :param float wet: None
+        :param float dry: set dry gain
+        :param float wet: set wet gain
         :param int format: Set coefficients format. ‘ll’ lattice-ladder function ‘sf’ analog transfer function ‘tf’ digital transfer function ‘zp’ Z-plane zeros/poles, cartesian (default) ‘pr’ Z-plane zeros/poles, polar radians ‘pd’ Z-plane zeros/poles, polar degrees ‘sp’ S-plane zeros/poles
         :param int process: Set type of processing. ‘d’ direct processing ‘s’ serial processing ‘p’ parallel processing
         :param int precision: Set filtering precision. ‘dbl’ double-precision floating-point (default) ‘flt’ single-precision floating-point ‘i32’ 32-bit integers ‘i16’ 16-bit integers
@@ -2881,7 +2881,7 @@ class AudioStream(FilterableStream):
         :param bool response: Show IR frequency response, magnitude(magenta), phase(green) and group delay(yellow) in additional video stream. By default it is disabled.
         :param int channel: Set for which IR channel to display frequency response. By default is first channel displayed. This option is used only when response is enabled.
         :param str size: Set video stream size. This option is used only when response is enabled.
-        :param str rate: None
+        :param str rate: set video rate
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aiir
 
@@ -3914,10 +3914,10 @@ class AudioStream(FilterableStream):
         :param int bc: Specify the red, green, blue contrast. Default values are 2, 7 and 1. Allowed range is [0, 255].
         :param str mpc: Set color which will be used for drawing median phase. If color is none which is default, no median phase value will be drawn.
         :param bool video: Enable video output. Default is enabled.
-        :param bool phasing: None
-        :param float tolerance: None
-        :param float angle: None
-        :param int duration: None
+        :param bool phasing: set mono and out-of-phase detection output
+        :param float tolerance: set phase tolerance for mono detection
+        :param float angle: set angle threshold for out-of-phase detection
+        :param int duration: set minimum mono or out-of-phase duration in seconds
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aphasemeter
 
@@ -4400,7 +4400,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int sample_rate: None
+        :param int sample_rate: ((void*)0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aresample
 
@@ -5513,7 +5513,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int outputs: None
+        :param int outputs: set number of outputs
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit
 
@@ -6227,7 +6227,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float tempo: None
+        :param float tempo: set tempo scale factor
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#atempo
 
@@ -6405,13 +6405,13 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int start: None
-        :param int end: None
-        :param int start_pts: None
-        :param int end_pts: None
-        :param int duration: None
-        :param int start_sample: None
-        :param int end_sample: None
+        :param int start: Timestamp of the first frame that should be passed
+        :param int end: Timestamp of the first frame that should be dropped again
+        :param int start_pts: Timestamp of the first frame that should be passed
+        :param int end_pts: Timestamp of the first frame that should be dropped again
+        :param int duration: Maximum duration of the output
+        :param int start_sample: Number of the first audio sample that should be passed to the output
+        :param int end_sample: Number of the first audio sample that should be dropped again
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#atrim
 
@@ -6692,7 +6692,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str bind_address: None
+        :param str bind_address: set bind address
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq
 
@@ -6791,7 +6791,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bandpass
 
@@ -6892,7 +6892,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bandreject
 
@@ -7004,7 +7004,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf
 
@@ -7064,18 +7064,18 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float a0: None
-        :param float a1: None
-        :param float a2: None
-        :param float b0: None
-        :param float b1: None
-        :param float b2: None
-        :param float mix: None
-        :param str channels: None
-        :param bool normalize: None
-        :param int transform: None
-        :param int precision: None
-        :param int blocksize: None
+        :param float a0: ((void*)0)
+        :param float a1: ((void*)0)
+        :param float a2: ((void*)0)
+        :param float b0: ((void*)0)
+        :param float b1: ((void*)0)
+        :param float b2: ((void*)0)
+        :param float mix: set mix
+        :param str channels: set channels to filter
+        :param bool normalize: normalize coefficients
+        :param int transform: set transform type
+        :param int precision: set filtering precision
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#biquad
 
@@ -7966,19 +7966,19 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int framelen: None
-        :param int gausssize: None
-        :param float peak: None
-        :param float maxgain: None
-        :param float targetrms: None
-        :param bool coupling: None
-        :param bool correctdc: None
-        :param bool altboundary: None
-        :param float compress: None
-        :param float threshold: None
-        :param str channels: None
-        :param float overlap: None
-        :param str curve: None
+        :param int framelen: set the frame length in msec
+        :param int gausssize: set the filter size
+        :param float peak: set the peak value
+        :param float maxgain: set the max amplification
+        :param float targetrms: set the target RMS
+        :param bool coupling: set channel coupling
+        :param bool correctdc: set DC correction
+        :param bool altboundary: set alternative boundary mode
+        :param float compress: set the compress factor
+        :param float threshold: set the threshold value
+        :param str channels: set channels to filter
+        :param float overlap: set the frame overlap
+        :param str curve: set the custom peak mapping curve
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dynaudnorm
 
@@ -8303,7 +8303,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#equalizer
 
@@ -8805,7 +8805,7 @@ class AudioStream(FilterableStream):
         :param int cdt_ms: Set the code detect timer period in ms.
         :param bool force_pe: Always extend peaks above -3dBFS even if PE isn’t signaled.
         :param int analyze_mode: Replace audio with a solid tone and adjust the amplitude to signal some specific aspect of the decoding process. The output file can be loaded in an audio editor alongside the original to aid analysis. analyze_mode=pe:force_pe=true can be used to see all samples above the PE level. Modes are: ‘0, off’ Disabled ‘1, lle’ Gain adjustment level at each sample ‘2, pe’ Samples where peak extend occurs ‘3, cdt’ Samples where the code detect timer is active ‘4, tgm’ Samples where the target gain does not match between channels
-        :param int bits_per_sample: None
+        :param int bits_per_sample: Valid bits per sample (location of the true LSB).
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hdcd
 
@@ -8908,7 +8908,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#highpass
 
@@ -9021,7 +9021,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf
 
@@ -9246,7 +9246,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lowpass
 
@@ -9359,7 +9359,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf
 
@@ -9479,7 +9479,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str args: None
+        :param str args: ((void*)0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pan
 
@@ -12548,7 +12548,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tiltshelf
 
@@ -12662,7 +12662,7 @@ class AudioStream(FilterableStream):
         :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
         :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
         :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: None
+        :param int blocksize: set the block size
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf
 

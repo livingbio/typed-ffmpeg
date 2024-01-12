@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "cue unix timestamp in microseconds",
       "name": "cue",
       "required": false,
       "typing": "int"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "preroll duration in seconds",
       "name": "preroll",
       "required": false,
       "typing": "int"
@@ -42,7 +42,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "buffer duration in seconds",
       "name": "buffer",
       "required": false,
       "typing": "int"

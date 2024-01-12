@@ -101,7 +101,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "use datas from bounding box in side data",
       "name": "box_source",
       "required": false,
       "typing": "str"

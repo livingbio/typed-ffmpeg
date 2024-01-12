@@ -126,7 +126,7 @@
         }
       ],
       "default": "INTERP_BILINEAR",
-      "description": null,
+      "description": "set interpolation method",
       "name": "interpolation",
       "required": false,
       "typing": "int"

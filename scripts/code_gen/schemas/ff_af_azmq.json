@@ -21,7 +21,7 @@
       ],
       "choices": [],
       "default": "tcp://*:5555",
-      "description": null,
+      "description": "set bind address",
       "name": "bind_address",
       "required": false,
       "typing": "str"

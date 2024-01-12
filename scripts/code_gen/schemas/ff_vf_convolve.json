@@ -57,7 +57,7 @@
       ],
       "choices": [],
       "default": 1e-07,
-      "description": null,
+      "description": "set noise",
       "name": "noise",
       "required": false,
       "typing": "float"

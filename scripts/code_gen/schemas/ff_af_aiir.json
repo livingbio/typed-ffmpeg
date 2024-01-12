@@ -56,7 +56,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set dry gain",
       "name": "dry",
       "required": false,
       "typing": "float"
@@ -67,7 +67,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set wet gain",
       "name": "wet",
       "required": false,
       "typing": "float"
@@ -243,7 +243,7 @@
       ],
       "choices": [],
       "default": "25",
-      "description": null,
+      "description": "set video rate",
       "name": "rate",
       "required": false,
       "typing": "str"

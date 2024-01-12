@@ -108,7 +108,7 @@
       ],
       "choices": [],
       "default": 30,
-      "description": null,
+      "description": "Set the maximum number of frames generated for each test",
       "name": "max_frames",
       "required": false,
       "typing": "int"
