@@ -6,10 +6,11 @@ authors = ["lucemia <lucemia@gmail.com>"]
 readme = "README.md"
 packages = [{ include = "ffmpeg", from = "src" }]
 include = ["ffmpeg/py.typed"]
+exclude = ["**/tests"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-
+pydantic = "^2.0"
 
 [tool.poetry.group.dev]
 optional = true
