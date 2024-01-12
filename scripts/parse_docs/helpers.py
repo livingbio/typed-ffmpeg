@@ -24,4 +24,6 @@ def convert_html_to_markdown(html: str) -> str:
     updated_html = str(soup)
     markdown = converter.handle(updated_html)
 
+    markdown = markdown.replace("\\", "").replace("\\", "\\\\")
+
     return markdown

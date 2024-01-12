@@ -1996,11 +1996,11 @@ def decimate(
 
     **ppsrc**
 
-        Mark main input as a pre-processed input and activate clean source input stream. This allows the input to be pre-processed with various filters to help the metrics calculation while keeping the frame selection lossless. When set to 1, the first stream is for the pre-processed input, and the second stream is the clean source from where the kept frames are chosen. Default is 0\.
+        Mark main input as a pre-processed input and activate clean source input stream. This allows the input to be pre-processed with various filters to help the metrics calculation while keeping the frame selection lossless. When set to 1, the first stream is for the pre-processed input, and the second stream is the clean source from where the kept frames are chosen. Default is 0.
 
     **chroma**
 
-        Set whether or not chroma is considered in the metric calculations. Default is 1\.
+        Set whether or not chroma is considered in the metric calculations. Default is 1.
 
     **mixed**
 

@@ -17,3 +17,7 @@ def test_parse_filter_document(snapshot: SnapshotAssertion, filepath: pathlib.Pa
         mode="json"
     )
     assert snapshot(extension_class=JSONSnapshotExtension, name="parameters") == filter_document.parameter_descs
+    assert snapshot(extension_class=JSONSnapshotExtension, name="properties") == {
+        "description": filter_document.description,
+        "url": filter_document.url,
+    }
