@@ -15,7 +15,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "((void*)0)",
       "name": "filename",
       "required": false,
       "typing": "str"
@@ -27,7 +27,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "set format name",
       "name": "format_name",
       "required": false,
       "typing": "str"
@@ -39,7 +39,7 @@
       ],
       "choices": [],
       "default": -1,
-      "description": null,
+      "description": "set stream index",
       "name": "stream_index",
       "required": false,
       "typing": "int"
@@ -51,7 +51,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "set seekpoint (seconds)",
       "name": "seek_point",
       "required": false,
       "typing": "float"
@@ -63,7 +63,7 @@
       ],
       "choices": [],
       "default": "0",
-      "description": null,
+      "description": "set streams",
       "name": "streams",
       "required": false,
       "typing": "str"
@@ -74,7 +74,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "set loop count",
       "name": "loop",
       "required": false,
       "typing": "int"
@@ -85,7 +85,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set discontinuity threshold",
       "name": "discontinuity",
       "required": false,
       "typing": "int"
@@ -96,7 +96,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set the number of threads for decoding",
       "name": "dec_threads",
       "required": false,
       "typing": "int"
@@ -107,7 +107,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set format options for the opened file",
       "name": "format_opts",
       "required": false,
       "typing": "str"

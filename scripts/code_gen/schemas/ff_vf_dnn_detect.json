@@ -76,7 +76,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "use DNN async inference (ignored, use backend_configs='async=1')",
       "name": "async",
       "required": false,
       "typing": "bool"
@@ -130,7 +130,7 @@
         }
       ],
       "default": "DDMT_SSD",
-      "description": null,
+      "description": "DNN detection model type",
       "name": "model_type",
       "required": false,
       "typing": "int"
@@ -141,7 +141,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "cell width",
       "name": "cell_w",
       "required": false,
       "typing": "int"
@@ -152,7 +152,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "cell height",
       "name": "cell_h",
       "required": false,
       "typing": "int"
@@ -163,7 +163,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "The number of class",
       "name": "nb_classes",
       "required": false,
       "typing": "int"
@@ -174,7 +174,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "anchors, splited by '&'",
       "name": "anchors",
       "required": false,
       "typing": "str"

@@ -76,7 +76,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "use DNN async inference (ignored, use backend_configs='async=1')",
       "name": "async",
       "required": false,
       "typing": "bool"
@@ -109,7 +109,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "which one to be classified",
       "name": "target",
       "required": false,
       "typing": "str"

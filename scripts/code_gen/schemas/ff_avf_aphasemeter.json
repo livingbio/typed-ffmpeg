@@ -99,7 +99,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set mono and out-of-phase detection output",
       "name": "phasing",
       "required": false,
       "typing": "bool"
@@ -111,7 +111,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "set phase tolerance for mono detection",
       "name": "tolerance",
       "required": false,
       "typing": "float"
@@ -123,7 +123,7 @@
       ],
       "choices": [],
       "default": 170.0,
-      "description": null,
+      "description": "set angle threshold for out-of-phase detection",
       "name": "angle",
       "required": false,
       "typing": "float"
@@ -135,7 +135,7 @@
       ],
       "choices": [],
       "default": 2000000,
-      "description": null,
+      "description": "set minimum mono or out-of-phase duration in seconds",
       "name": "duration",
       "required": false,
       "typing": "int"

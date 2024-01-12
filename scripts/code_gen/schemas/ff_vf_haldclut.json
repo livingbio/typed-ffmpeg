@@ -72,7 +72,7 @@
         }
       ],
       "default": "INTERPOLATE_TETRAHEDRAL",
-      "description": null,
+      "description": "select interpolation mode",
       "name": "interp",
       "required": false,
       "typing": "int"

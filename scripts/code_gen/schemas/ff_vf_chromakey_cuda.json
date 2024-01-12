@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": "black",
-      "description": null,
+      "description": "set the chromakey key color",
       "name": "color",
       "required": false,
       "typing": "str"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": 0.01,
-      "description": null,
+      "description": "set the chromakey similarity value",
       "name": "similarity",
       "required": false,
       "typing": "float"
@@ -42,7 +42,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "set the chromakey key blend value",
       "name": "blend",
       "required": false,
       "typing": "float"
@@ -53,7 +53,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "color parameter is in yuv instead of rgb",
       "name": "yuv",
       "required": false,
       "typing": "bool"

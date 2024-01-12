@@ -128,7 +128,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "don't error on fallback to default 8 Bit format",
       "name": "allow_fallback",
       "required": false,
       "typing": "bool"
@@ -139,7 +139,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "exclude BGRA from format list (experimental, discouraged by Microsoft)",
       "name": "force_fmt",
       "required": false,
       "typing": "bool"

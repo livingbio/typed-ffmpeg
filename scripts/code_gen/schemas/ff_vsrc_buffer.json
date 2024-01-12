@@ -16,7 +16,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "width",
       "required": false,
       "typing": "int"
@@ -27,7 +27,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "height",
       "required": false,
       "typing": "int"
@@ -38,7 +38,7 @@
       ],
       "choices": [],
       "default": "AV_PIX_FMT_NONE",
-      "description": null,
+      "description": "((void*)0)",
       "name": "pix_fmt",
       "required": false,
       "typing": "str"
@@ -50,7 +50,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "sample aspect ratio",
       "name": "sar",
       "required": false,
       "typing": "float"
@@ -61,7 +61,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "time_base",
       "required": false,
       "typing": "float"
@@ -72,7 +72,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "frame_rate",
       "required": false,
       "typing": "float"

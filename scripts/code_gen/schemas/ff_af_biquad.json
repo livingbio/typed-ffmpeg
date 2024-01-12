@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "a0",
       "required": false,
       "typing": "float"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "a1",
       "required": false,
       "typing": "float"
@@ -42,7 +42,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "a2",
       "required": false,
       "typing": "float"
@@ -53,7 +53,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "b0",
       "required": false,
       "typing": "float"
@@ -64,7 +64,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "b1",
       "required": false,
       "typing": "float"
@@ -75,7 +75,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "((void*)0)",
       "name": "b2",
       "required": false,
       "typing": "float"
@@ -87,7 +87,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "set mix",
       "name": "mix",
       "required": false,
       "typing": "float"
@@ -99,7 +99,7 @@
       ],
       "choices": [],
       "default": "all",
-      "description": null,
+      "description": "set channels to filter",
       "name": "channels",
       "required": false,
       "typing": "str"
@@ -111,7 +111,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "normalize coefficients",
       "name": "normalize",
       "required": false,
       "typing": "bool"
@@ -159,7 +159,7 @@
         }
       ],
       "default": "DI",
-      "description": null,
+      "description": "set transform type",
       "name": "transform",
       "required": false,
       "typing": "int"
@@ -197,7 +197,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set filtering precision",
       "name": "precision",
       "required": false,
       "typing": "int"
@@ -209,7 +209,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set the block size",
       "name": "blocksize",
       "required": false,
       "typing": "int"

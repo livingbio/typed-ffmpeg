@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "set the supported sample formats",
       "name": "sample_fmts",
       "required": false,
       "typing": "str"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "set the supported sample rates",
       "name": "sample_rates",
       "required": false,
       "typing": "str"
@@ -42,7 +42,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "set the supported channel layouts (deprecated, use ch_layouts)",
       "name": "channel_layouts",
       "required": false,
       "typing": "str"
@@ -53,7 +53,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "set the supported channel counts (deprecated, use ch_layouts)",
       "name": "channel_counts",
       "required": false,
       "typing": "str"
@@ -64,7 +64,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "set a '|'-separated list of supported channel layouts",
       "name": "ch_layouts",
       "required": false,
       "typing": "str"
@@ -75,7 +75,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "accept all channel counts",
       "name": "all_channel_counts",
       "required": false,
       "typing": "bool"

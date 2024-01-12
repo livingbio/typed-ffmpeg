@@ -116,7 +116,7 @@
       ],
       "choices": [],
       "default": 0.01,
-      "description": null,
+      "description": "set morph x frequency",
       "name": "morphxf",
       "required": false,
       "typing": "float"
@@ -127,7 +127,7 @@
       ],
       "choices": [],
       "default": 0.0123,
-      "description": null,
+      "description": "set morph y frequency",
       "name": "morphyf",
       "required": false,
       "typing": "float"
@@ -138,7 +138,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "set morph amplitude",
       "name": "morphamp",
       "required": false,
       "typing": "float"

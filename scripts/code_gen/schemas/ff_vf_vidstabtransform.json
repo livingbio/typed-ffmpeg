@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": "transforms.trf",
-      "description": null,
+      "description": "set path to the file storing the transforms",
       "name": "input",
       "required": false,
       "typing": "str"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": 15,
-      "description": null,
+      "description": "set number of frames*2 + 1 used for lowpass filtering",
       "name": "smoothing",
       "required": false,
       "typing": "int"
@@ -58,7 +58,7 @@
         }
       ],
       "default": "VSOptimalL1",
-      "description": null,
+      "description": "set camera path optimization algo",
       "name": "optalgo",
       "required": false,
       "typing": "int"
@@ -69,7 +69,7 @@
       ],
       "choices": [],
       "default": -1,
-      "description": null,
+      "description": "set maximal number of pixels to translate image",
       "name": "maxshift",
       "required": false,
       "typing": "int"
@@ -80,7 +80,7 @@
       ],
       "choices": [],
       "default": -1.0,
-      "description": null,
+      "description": "set maximal angle in rad to rotate image",
       "name": "maxangle",
       "required": false,
       "typing": "float"
@@ -102,7 +102,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set cropping mode",
       "name": "crop",
       "required": false,
       "typing": "int"
@@ -113,7 +113,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "invert transforms",
       "name": "invert",
       "required": false,
       "typing": "int"
@@ -124,7 +124,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "consider transforms as relative",
       "name": "relative",
       "required": false,
       "typing": "int"
@@ -135,7 +135,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "set percentage to zoom (>0: zoom in, <0: zoom out",
       "name": "zoom",
       "required": false,
       "typing": "float"
@@ -146,7 +146,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom)",
       "name": "optzoom",
       "required": false,
       "typing": "int"
@@ -157,7 +157,7 @@
       ],
       "choices": [],
       "default": 0.25,
-      "description": null,
+      "description": "for adative zoom: percent to zoom maximally each frame",
       "name": "zoomspeed",
       "required": false,
       "typing": "float"
@@ -189,7 +189,7 @@
         }
       ],
       "default": 2,
-      "description": null,
+      "description": "set type of interpolation",
       "name": "interpol",
       "required": false,
       "typing": "int"
@@ -200,7 +200,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "enable virtual tripod mode (same as relative=0:smoothing=0)",
       "name": "tripod",
       "required": false,
       "typing": "bool"
@@ -211,7 +211,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "enable debug mode and writer global motions information to file",
       "name": "debug",
       "required": false,
       "typing": "bool"

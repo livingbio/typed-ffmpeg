@@ -47,7 +47,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Add raw stats (max values) to the output log.",
       "name": "output_max",
       "required": false,
       "typing": "bool"

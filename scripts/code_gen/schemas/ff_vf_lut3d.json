@@ -42,7 +42,7 @@
         }
       ],
       "default": 1,
-      "description": null,
+      "description": "when to process CLUT",
       "name": "clut",
       "required": false,
       "typing": "int"

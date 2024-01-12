@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": 2,
-      "description": null,
+      "description": "set number of outputs",
       "name": "outputs",
       "required": false,
       "typing": "int"

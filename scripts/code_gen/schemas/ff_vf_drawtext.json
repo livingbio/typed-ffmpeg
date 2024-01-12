@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set font file",
       "name": "fontfile",
       "required": false,
       "typing": "str"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set text",
       "name": "text",
       "required": false,
       "typing": "str"
@@ -42,7 +42,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set text file",
       "name": "textfile",
       "required": false,
       "typing": "str"
@@ -53,7 +53,7 @@
       ],
       "choices": [],
       "default": "black",
-      "description": null,
+      "description": "set foreground color",
       "name": "fontcolor",
       "required": false,
       "typing": "str"
@@ -64,7 +64,7 @@
       ],
       "choices": [],
       "default": "",
-      "description": null,
+      "description": "set foreground color expression",
       "name": "fontcolor_expr",
       "required": false,
       "typing": "str"
@@ -75,7 +75,7 @@
       ],
       "choices": [],
       "default": "white",
-      "description": null,
+      "description": "set box color",
       "name": "boxcolor",
       "required": false,
       "typing": "str"
@@ -86,7 +86,7 @@
       ],
       "choices": [],
       "default": "black",
-      "description": null,
+      "description": "set border color",
       "name": "bordercolor",
       "required": false,
       "typing": "str"
@@ -97,7 +97,7 @@
       ],
       "choices": [],
       "default": "black",
-      "description": null,
+      "description": "set shadow color",
       "name": "shadowcolor",
       "required": false,
       "typing": "str"
@@ -108,7 +108,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set box",
       "name": "box",
       "required": false,
       "typing": "bool"
@@ -119,7 +119,7 @@
       ],
       "choices": [],
       "default": "0",
-      "description": null,
+      "description": "set box borders width",
       "name": "boxborderw",
       "required": false,
       "typing": "str"
@@ -130,7 +130,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set line spacing in pixels",
       "name": "line_spacing",
       "required": false,
       "typing": "int"
@@ -141,7 +141,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set font size",
       "name": "fontsize",
       "required": false,
       "typing": "str"
@@ -152,7 +152,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set text alignment",
       "name": "text_align",
       "required": false,
       "typing": "str"
@@ -163,7 +163,7 @@
       ],
       "choices": [],
       "default": "0",
-      "description": null,
+      "description": "set x expression",
       "name": "x",
       "required": false,
       "typing": "str"
@@ -174,7 +174,7 @@
       ],
       "choices": [],
       "default": "0",
-      "description": null,
+      "description": "set y expression",
       "name": "y",
       "required": false,
       "typing": "str"
@@ -185,7 +185,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set box width",
       "name": "boxw",
       "required": false,
       "typing": "int"
@@ -196,7 +196,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set box height",
       "name": "boxh",
       "required": false,
       "typing": "int"
@@ -207,7 +207,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set shadow x offset",
       "name": "shadowx",
       "required": false,
       "typing": "int"
@@ -218,7 +218,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set shadow y offset",
       "name": "shadowy",
       "required": false,
       "typing": "int"
@@ -229,7 +229,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set border width",
       "name": "borderw",
       "required": false,
       "typing": "int"
@@ -240,7 +240,7 @@
       ],
       "choices": [],
       "default": 4,
-      "description": null,
+      "description": "set tab size",
       "name": "tabsize",
       "required": false,
       "typing": "int"
@@ -251,7 +251,7 @@
       ],
       "choices": [],
       "default": "((int64_t)(0x8000000000000000ULL))",
-      "description": null,
+      "description": "set base time",
       "name": "basetime",
       "required": false,
       "typing": "int"
@@ -278,7 +278,7 @@
         }
       ],
       "default": "EXP_NORMAL",
-      "description": null,
+      "description": "set the expansion mode",
       "name": "expansion",
       "required": false,
       "typing": "int"
@@ -305,7 +305,7 @@
         }
       ],
       "default": "YA_TEXT",
-      "description": null,
+      "description": "set the y alignment",
       "name": "y_align",
       "required": false,
       "typing": "int"
@@ -316,7 +316,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set initial timecode",
       "name": "timecode",
       "required": false,
       "typing": "str"
@@ -327,7 +327,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set 24 hours max (timecode only)",
       "name": "tc24hmax",
       "required": false,
       "typing": "bool"
@@ -340,7 +340,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "set rate (timecode only)",
       "name": "timecode_rate",
       "required": false,
       "typing": "float"
@@ -351,7 +351,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "reload text file at specified frame interval",
       "name": "reload",
       "required": false,
       "typing": "int"
@@ -362,7 +362,7 @@
       ],
       "choices": [],
       "default": "1",
-      "description": null,
+      "description": "apply alpha while rendering",
       "name": "alpha",
       "required": false,
       "typing": "str"
@@ -373,7 +373,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "check and fix text coords to avoid clipping",
       "name": "fix_bounds",
       "required": false,
       "typing": "bool"
@@ -384,7 +384,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "start frame number for n/frame_num variable",
       "name": "start_number",
       "required": false,
       "typing": "int"
@@ -395,7 +395,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "the source of text",
       "name": "text_source",
       "required": false,
       "typing": "str"
@@ -406,7 +406,7 @@
       ],
       "choices": [],
       "default": "FT_LOAD_DEFAULT",
-      "description": null,
+      "description": "set font loading flags for libfreetype",
       "name": "ft_load_flags",
       "required": false,
       "typing": "str"

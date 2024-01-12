@@ -173,7 +173,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "ignored",
       "name": "opencl",
       "required": false,
       "typing": "bool"

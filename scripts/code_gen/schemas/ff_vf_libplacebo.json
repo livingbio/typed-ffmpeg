@@ -15,7 +15,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "Number of inputs",
       "name": "inputs",
       "required": false,
       "typing": "int"
@@ -26,7 +26,7 @@
       ],
       "choices": [],
       "default": "iw",
-      "description": null,
+      "description": "Output video frame width",
       "name": "w",
       "required": false,
       "typing": "str"
@@ -37,7 +37,7 @@
       ],
       "choices": [],
       "default": "ih",
-      "description": null,
+      "description": "Output video frame height",
       "name": "h",
       "required": false,
       "typing": "str"
@@ -48,7 +48,7 @@
       ],
       "choices": [],
       "default": "none",
-      "description": null,
+      "description": "Output video frame rate",
       "name": "fps",
       "required": false,
       "typing": "str"
@@ -59,7 +59,7 @@
       ],
       "choices": [],
       "default": "(iw-cw)/2",
-      "description": null,
+      "description": "Input video crop x",
       "name": "crop_x",
       "required": false,
       "typing": "str"
@@ -70,7 +70,7 @@
       ],
       "choices": [],
       "default": "(ih-ch)/2",
-      "description": null,
+      "description": "Input video crop y",
       "name": "crop_y",
       "required": false,
       "typing": "str"
@@ -81,7 +81,7 @@
       ],
       "choices": [],
       "default": "iw",
-      "description": null,
+      "description": "Input video crop w",
       "name": "crop_w",
       "required": false,
       "typing": "str"
@@ -92,7 +92,7 @@
       ],
       "choices": [],
       "default": "ih",
-      "description": null,
+      "description": "Input video crop h",
       "name": "crop_h",
       "required": false,
       "typing": "str"
@@ -103,7 +103,7 @@
       ],
       "choices": [],
       "default": "(ow-pw)/2",
-      "description": null,
+      "description": "Output video placement x",
       "name": "pos_x",
       "required": false,
       "typing": "str"
@@ -114,7 +114,7 @@
       ],
       "choices": [],
       "default": "(oh-ph)/2",
-      "description": null,
+      "description": "Output video placement y",
       "name": "pos_y",
       "required": false,
       "typing": "str"
@@ -125,7 +125,7 @@
       ],
       "choices": [],
       "default": "ow",
-      "description": null,
+      "description": "Output video placement w",
       "name": "pos_w",
       "required": false,
       "typing": "str"
@@ -136,7 +136,7 @@
       ],
       "choices": [],
       "default": "oh",
-      "description": null,
+      "description": "Output video placement h",
       "name": "pos_h",
       "required": false,
       "typing": "str"
@@ -147,7 +147,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video format",
       "name": "format",
       "required": false,
       "typing": "str"
@@ -174,7 +174,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "decrease or increase w/h if necessary to keep the original AR",
       "name": "force_original_aspect_ratio",
       "required": false,
       "typing": "int"
@@ -185,7 +185,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
       "name": "force_divisible_by",
       "required": false,
       "typing": "int"
@@ -196,7 +196,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "force SAR normalization to 1:1 by adjusting pos_x/y/w/h",
       "name": "normalize_sar",
       "required": false,
       "typing": "bool"
@@ -207,7 +207,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "ratio between padding and cropping when normalizing SAR (0=pad, 1=crop)",
       "name": "pad_crop_ratio",
       "required": false,
       "typing": "float"
@@ -218,7 +218,7 @@
       ],
       "choices": [],
       "default": "black",
-      "description": null,
+      "description": "Background fill color",
       "name": "fillcolor",
       "required": false,
       "typing": "str"
@@ -229,7 +229,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "Corner rounding radius",
       "name": "corner_rounding",
       "required": false,
       "typing": "float"
@@ -240,7 +240,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Pass extra libplacebo-specific options using a :-separated list of key=value pairs",
       "name": "extra_opts",
       "required": false,
       "typing": "str"
@@ -307,7 +307,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "select colorspace",
       "name": "colorspace",
       "required": false,
       "typing": "int"
@@ -364,7 +364,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "select color range",
       "name": "range",
       "required": false,
       "typing": "int"
@@ -446,7 +446,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "select color primaries",
       "name": "color_primaries",
       "required": false,
       "typing": "int"
@@ -533,7 +533,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "select color transfer",
       "name": "color_trc",
       "required": false,
       "typing": "int"
@@ -544,7 +544,7 @@
       ],
       "choices": [],
       "default": "spline36",
-      "description": null,
+      "description": "Upscaler function",
       "name": "upscaler",
       "required": false,
       "typing": "str"
@@ -555,7 +555,7 @@
       ],
       "choices": [],
       "default": "mitchell",
-      "description": null,
+      "description": "Downscaler function",
       "name": "downscaler",
       "required": false,
       "typing": "str"
@@ -566,7 +566,7 @@
       ],
       "choices": [],
       "default": "none",
-      "description": null,
+      "description": "Frame mixing function",
       "name": "frame_mixer",
       "required": false,
       "typing": "str"
@@ -577,7 +577,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Number of scaler LUT entries",
       "name": "lut_entries",
       "required": false,
       "typing": "int"
@@ -588,7 +588,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "Antiringing strength (for non-EWA filters)",
       "name": "antiringing",
       "required": false,
       "typing": "float"
@@ -599,7 +599,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "Enable sigmoid upscaling",
       "name": "sigmoid",
       "required": false,
       "typing": "bool"
@@ -610,7 +610,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "Apply film grain metadata",
       "name": "apply_filmgrain",
       "required": false,
       "typing": "bool"
@@ -621,7 +621,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "Apply Dolby Vision metadata",
       "name": "apply_dolbyvision",
       "required": false,
       "typing": "bool"
@@ -632,7 +632,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Enable debanding",
       "name": "deband",
       "required": false,
       "typing": "bool"
@@ -643,7 +643,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "Deband iterations",
       "name": "deband_iterations",
       "required": false,
       "typing": "int"
@@ -654,7 +654,7 @@
       ],
       "choices": [],
       "default": 4.0,
-      "description": null,
+      "description": "Deband threshold",
       "name": "deband_threshold",
       "required": false,
       "typing": "float"
@@ -665,7 +665,7 @@
       ],
       "choices": [],
       "default": 16.0,
-      "description": null,
+      "description": "Deband radius",
       "name": "deband_radius",
       "required": false,
       "typing": "float"
@@ -676,7 +676,7 @@
       ],
       "choices": [],
       "default": 6.0,
-      "description": null,
+      "description": "Deband grain",
       "name": "deband_grain",
       "required": false,
       "typing": "float"
@@ -687,7 +687,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "Brightness boost",
       "name": "brightness",
       "required": false,
       "typing": "float"
@@ -698,7 +698,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "Contrast gain",
       "name": "contrast",
       "required": false,
       "typing": "float"
@@ -709,7 +709,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "Saturation gain",
       "name": "saturation",
       "required": false,
       "typing": "float"
@@ -720,7 +720,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "Hue shift",
       "name": "hue",
       "required": false,
       "typing": "float"
@@ -731,7 +731,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "Gamma adjustment",
       "name": "gamma",
       "required": false,
       "typing": "float"
@@ -742,7 +742,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "Enable dynamic peak detection for HDR tone-mapping",
       "name": "peak_detect",
       "required": false,
       "typing": "bool"
@@ -753,7 +753,7 @@
       ],
       "choices": [],
       "default": 100.0,
-      "description": null,
+      "description": "Peak detection smoothing period",
       "name": "smoothing_period",
       "required": false,
       "typing": "float"
@@ -764,7 +764,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": null,
+      "description": "Peak detection minimum peak",
       "name": "minimum_peak",
       "required": false,
       "typing": "float"
@@ -775,7 +775,7 @@
       ],
       "choices": [],
       "default": 5.5,
-      "description": null,
+      "description": "Scene change low threshold",
       "name": "scene_threshold_low",
       "required": false,
       "typing": "float"
@@ -786,7 +786,7 @@
       ],
       "choices": [],
       "default": 10.0,
-      "description": null,
+      "description": "Scene change high threshold",
       "name": "scene_threshold_high",
       "required": false,
       "typing": "float"
@@ -797,7 +797,7 @@
       ],
       "choices": [],
       "default": 99.995,
-      "description": null,
+      "description": "Peak detection percentile",
       "name": "percentile",
       "required": false,
       "typing": "float"
@@ -854,7 +854,7 @@
         }
       ],
       "default": "GAMUT_MAP_PERCEPTUAL",
-      "description": null,
+      "description": "Gamut-mapping mode",
       "name": "gamut_mode",
       "required": false,
       "typing": "int"
@@ -916,7 +916,7 @@
         }
       ],
       "default": "TONE_MAP_AUTO",
-      "description": null,
+      "description": "Tone-mapping algorithm",
       "name": "tonemapping",
       "required": false,
       "typing": "int"
@@ -927,7 +927,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "Tunable parameter for some tone-mapping functions",
       "name": "tonemapping_param",
       "required": false,
       "typing": "float"
@@ -938,7 +938,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Inverse tone mapping (range expansion)",
       "name": "inverse_tonemapping",
       "required": false,
       "typing": "bool"
@@ -949,7 +949,7 @@
       ],
       "choices": [],
       "default": 256,
-      "description": null,
+      "description": "Tone-mapping LUT size",
       "name": "tonemapping_lut_size",
       "required": false,
       "typing": "int"
@@ -960,7 +960,7 @@
       ],
       "choices": [],
       "default": 0.3,
-      "description": null,
+      "description": "HDR contrast recovery strength",
       "name": "contrast_recovery",
       "required": false,
       "typing": "float"
@@ -971,7 +971,7 @@
       ],
       "choices": [],
       "default": 3.5,
-      "description": null,
+      "description": "HDR contrast recovery smoothness",
       "name": "contrast_smoothness",
       "required": false,
       "typing": "float"
@@ -982,7 +982,7 @@
       ],
       "choices": [],
       "default": -1.0,
-      "description": null,
+      "description": "Desaturation strength",
       "name": "desaturation_strength",
       "required": false,
       "typing": "float"
@@ -993,7 +993,7 @@
       ],
       "choices": [],
       "default": -1.0,
-      "description": null,
+      "description": "Desaturation exponent",
       "name": "desaturation_exponent",
       "required": false,
       "typing": "float"
@@ -1004,7 +1004,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Highlight out-of-gamut colors",
       "name": "gamut_warning",
       "required": false,
       "typing": "bool"
@@ -1015,7 +1015,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Enable desaturating colorimetric gamut clipping",
       "name": "gamut_clipping",
       "required": false,
       "typing": "bool"
@@ -1047,7 +1047,7 @@
         }
       ],
       "default": "PL_INTENT_PERCEPTUAL",
-      "description": null,
+      "description": "Rendering intent",
       "name": "intent",
       "required": false,
       "typing": "int"
@@ -1084,7 +1084,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "Tone-mapping mode",
       "name": "tonemapping_mode",
       "required": false,
       "typing": "int"
@@ -1095,7 +1095,7 @@
       ],
       "choices": [],
       "default": 0.04,
-      "description": null,
+      "description": "Crosstalk factor for tone-mapping",
       "name": "tonemapping_crosstalk",
       "required": false,
       "typing": "float"
@@ -1106,7 +1106,7 @@
       ],
       "choices": [],
       "default": 0.05,
-      "description": null,
+      "description": "Tone-mapping overshoot margin",
       "name": "overshoot",
       "required": false,
       "typing": "float"
@@ -1117,7 +1117,7 @@
       ],
       "choices": [],
       "default": 0.2,
-      "description": null,
+      "description": "Tone-mapping hybrid LMS mixing coefficient",
       "name": "hybrid_mix",
       "required": false,
       "typing": "float"
@@ -1154,7 +1154,7 @@
         }
       ],
       "default": "PL_DITHER_BLUE_NOISE",
-      "description": null,
+      "description": "Dither method to use",
       "name": "dithering",
       "required": false,
       "typing": "int"
@@ -1165,7 +1165,7 @@
       ],
       "choices": [],
       "default": 6,
-      "description": null,
+      "description": "Dithering LUT size",
       "name": "dither_lut_size",
       "required": false,
       "typing": "int"
@@ -1176,7 +1176,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Enable temporal dithering",
       "name": "dither_temporal",
       "required": false,
       "typing": "bool"
@@ -1203,7 +1203,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "Colorblindness adaptation model",
       "name": "cones",
       "required": false,
       "typing": "str"
@@ -1214,7 +1214,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "Colorblindness adaptation strength",
       "name": "cone-strength",
       "required": false,
       "typing": "float"
@@ -1225,7 +1225,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Path to custom user shader (mpv .hook format)",
       "name": "custom_shader_path",
       "required": false,
       "typing": "str"
@@ -1236,7 +1236,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Custom user shader as binary (mpv .hook format)",
       "name": "custom_shader_bin",
       "required": false,
       "typing": "str"
@@ -1247,7 +1247,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Skip anti-aliasing",
       "name": "skip_aa",
       "required": false,
       "typing": "bool"
@@ -1258,7 +1258,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "Polar LUT cutoff",
       "name": "polar_cutoff",
       "required": false,
       "typing": "float"
@@ -1269,7 +1269,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Disable linear scaling",
       "name": "disable_linear",
       "required": false,
       "typing": "bool"
@@ -1280,7 +1280,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Disable built-in scalers",
       "name": "disable_builtin",
       "required": false,
       "typing": "bool"
@@ -1291,7 +1291,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Deprecated, does nothing",
       "name": "force_icc_lut",
       "required": false,
       "typing": "bool"
@@ -1302,7 +1302,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Force dithering",
       "name": "force_dither",
       "required": false,
       "typing": "bool"
@@ -1313,7 +1313,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "Force-disable FBOs",
       "name": "disable_fbos",
       "required": false,
       "typing": "bool"

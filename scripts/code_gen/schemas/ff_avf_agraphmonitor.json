@@ -21,7 +21,7 @@
       ],
       "choices": [],
       "default": "hd720",
-      "description": null,
+      "description": "set monitor size",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -33,7 +33,7 @@
       ],
       "choices": [],
       "default": 0.9,
-      "description": null,
+      "description": "set video opacity",
       "name": "opacity",
       "required": false,
       "typing": "float"
@@ -71,7 +71,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set mode",
       "name": "mode",
       "required": false,
       "typing": "str"
@@ -179,7 +179,7 @@
         }
       ],
       "default": "FLAG_QUEUE",
-      "description": null,
+      "description": "set flags",
       "name": "flags",
       "required": false,
       "typing": "str"
@@ -191,7 +191,7 @@
       ],
       "choices": [],
       "default": "25",
-      "description": null,
+      "description": "set video rate",
       "name": "rate",
       "required": false,
       "typing": "str"

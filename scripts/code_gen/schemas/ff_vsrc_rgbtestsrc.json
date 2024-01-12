@@ -63,7 +63,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set complement colors",
       "name": "complement",
       "required": false,
       "typing": "bool"

@@ -56,7 +56,7 @@
         }
       ],
       "default": "TONEMAP_NONE",
-      "description": null,
+      "description": "tonemap algorithm selection",
       "name": "tonemap",
       "required": false,
       "typing": "int"
@@ -67,7 +67,7 @@
       ],
       "choices": [],
       "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": null,
+      "description": "tonemap parameter",
       "name": "param",
       "required": false,
       "typing": "float"
@@ -78,7 +78,7 @@
       ],
       "choices": [],
       "default": 2.0,
-      "description": null,
+      "description": "desaturation strength",
       "name": "desat",
       "required": false,
       "typing": "float"
@@ -89,7 +89,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": null,
+      "description": "signal peak override",
       "name": "peak",
       "required": false,
       "typing": "float"

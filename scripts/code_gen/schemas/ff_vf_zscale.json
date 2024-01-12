@@ -21,7 +21,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video width",
       "name": "w",
       "required": false,
       "typing": "str"
@@ -33,7 +33,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": null,
+      "description": "Output video height",
       "name": "h",
       "required": false,
       "typing": "str"
@@ -45,7 +45,7 @@
       ],
       "choices": [],
       "default": "((void*)0)",
-      "description": null,
+      "description": "set video size",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -78,7 +78,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set dither type",
       "name": "dither",
       "required": false,
       "typing": "int"
@@ -121,7 +121,7 @@
         }
       ],
       "default": "ZIMG_RESIZE_BILINEAR",
-      "description": null,
+      "description": "set filter type",
       "name": "filter",
       "required": false,
       "typing": "int"
@@ -165,7 +165,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set color range",
       "name": "out_range",
       "required": false,
       "typing": "int"
@@ -273,7 +273,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set color primaries",
       "name": "primaries",
       "required": false,
       "typing": "int"
@@ -396,7 +396,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set transfer characteristic",
       "name": "transfer",
       "required": false,
       "typing": "int"
@@ -509,7 +509,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set colorspace matrix",
       "name": "matrix",
       "required": false,
       "typing": "int"
@@ -553,7 +553,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set input color range",
       "name": "in_range",
       "required": false,
       "typing": "int"
@@ -661,7 +661,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set input color primaries",
       "name": "primariesin",
       "required": false,
       "typing": "int"
@@ -784,7 +784,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set input transfer characteristic",
       "name": "transferin",
       "required": false,
       "typing": "int"
@@ -897,7 +897,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set input colorspace matrix",
       "name": "matrixin",
       "required": false,
       "typing": "int"
@@ -945,7 +945,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set output chroma location",
       "name": "chromal",
       "required": false,
       "typing": "int"
@@ -993,7 +993,7 @@
         }
       ],
       "default": -1,
-      "description": null,
+      "description": "set input chroma location",
       "name": "chromalin",
       "required": false,
       "typing": "int"
@@ -1004,7 +1004,7 @@
       ],
       "choices": [],
       "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": null,
+      "description": "set nominal peak luminance",
       "name": "npl",
       "required": false,
       "typing": "float"
@@ -1015,7 +1015,7 @@
       ],
       "choices": [],
       "default": 1,
-      "description": null,
+      "description": "allow approximate gamma",
       "name": "agamma",
       "required": false,
       "typing": "bool"
@@ -1026,7 +1026,7 @@
       ],
       "choices": [],
       "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": null,
+      "description": "parameter A, which is parameter \\\"b\\\" for bicubic, and the number of filter taps for lanczos",
       "name": "param_a",
       "required": false,
       "typing": "float"
@@ -1037,7 +1037,7 @@
       ],
       "choices": [],
       "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": null,
+      "description": "parameter B, which is parameter \\\"c\\\" for bicubic",
       "name": "param_b",
       "required": false,
       "typing": "float"

@@ -216,7 +216,7 @@
       ],
       "choices": [],
       "default": 0,
-      "description": null,
+      "description": "set the block size",
       "name": "blocksize",
       "required": false,
       "typing": "int"

@@ -20,7 +20,7 @@
       ],
       "choices": [],
       "default": "0",
-      "description": null,
+      "description": "set top left x coordinate",
       "name": "x0",
       "required": false,
       "typing": "str"
@@ -31,7 +31,7 @@
       ],
       "choices": [],
       "default": "0",
-      "description": null,
+      "description": "set top left y coordinate",
       "name": "y0",
       "required": false,
       "typing": "str"
@@ -42,7 +42,7 @@
       ],
       "choices": [],
       "default": "W",
-      "description": null,
+      "description": "set top right x coordinate",
       "name": "x1",
       "required": false,
       "typing": "str"
@@ -53,7 +53,7 @@
       ],
       "choices": [],
       "default": "0",
-      "description": null,
+      "description": "set top right y coordinate",
       "name": "y1",
       "required": false,
       "typing": "str"
@@ -64,7 +64,7 @@
       ],
       "choices": [],
       "default": "0",
-      "description": null,
+      "description": "set bottom left x coordinate",
       "name": "x2",
       "required": false,
       "typing": "str"
@@ -75,7 +75,7 @@
       ],
       "choices": [],
       "default": "H",
-      "description": null,
+      "description": "set bottom left y coordinate",
       "name": "y2",
       "required": false,
       "typing": "str"
@@ -86,7 +86,7 @@
       ],
       "choices": [],
       "default": "W",
-      "description": null,
+      "description": "set bottom right x coordinate",
       "name": "x3",
       "required": false,
       "typing": "str"
@@ -97,7 +97,7 @@
       ],
       "choices": [],
       "default": "H",
-      "description": null,
+      "description": "set bottom right y coordinate",
       "name": "y3",
       "required": false,
       "typing": "str"
@@ -119,7 +119,7 @@
         }
       ],
       "default": 0,
-      "description": null,
+      "description": "set interpolation",
       "name": "interpolation",
       "required": false,
       "typing": "int"
@@ -141,7 +141,7 @@
         }
       ],
       "default": "PERSPECTIVE_SENSE_SOURCE",
-      "description": null,
+      "description": "specify the sense of the coordinates",
       "name": "sense",
       "required": false,
       "typing": "int"
@@ -152,7 +152,7 @@
       ],
       "choices": [],
       "default": "EVAL_MODE_INIT",
-      "description": null,
+      "description": "specify when to evaluate expressions",
       "name": "eval",
       "required": false,
       "typing": "int"

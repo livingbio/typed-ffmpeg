@@ -1538,11 +1538,11 @@ def blend_vulkan(
     :param int c2_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
     :param int c3_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
     :param int all_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
-    :param float c0_opacity: None
-    :param float c1_opacity: None
-    :param float c2_opacity: None
-    :param float c3_opacity: None
-    :param float all_opacity: None
+    :param float c0_opacity: set color component #0 opacity
+    :param float c1_opacity: set color component #1 opacity
+    :param float c2_opacity: set color component #2 opacity
+    :param float c3_opacity: set color component #3 opacity
+    :param float all_opacity: set opacity for all color components
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#blend_005fvulkan
 
@@ -1883,7 +1883,7 @@ def convolve(
 
     :param int planes: Set which planes to process.
     :param int impulse: Set which impulse video frames will be processed, can be first or all. Default is all.
-    :param float noise: None
+    :param float noise: set noise
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#convolve
 
@@ -2647,7 +2647,7 @@ def haldclut(
     ----------
 
     :param int clut: Set which CLUT video frames will be processed from second input stream, can be first or all. Default is all.
-    :param int interp: None
+    :param int interp: select interpolation mode
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#haldclut
 
@@ -3398,84 +3398,84 @@ def libplacebo(
     Parameters:
     ----------
 
-    :param int inputs: None
-    :param str w: None
-    :param str h: None
-    :param str fps: None
-    :param str crop_x: None
-    :param str crop_y: None
-    :param str crop_w: None
-    :param str crop_h: None
-    :param str pos_x: None
-    :param str pos_y: None
-    :param str pos_w: None
-    :param str pos_h: None
-    :param str format: None
-    :param int force_original_aspect_ratio: None
-    :param int force_divisible_by: None
-    :param bool normalize_sar: None
-    :param float pad_crop_ratio: None
-    :param str fillcolor: None
-    :param float corner_rounding: None
-    :param str extra_opts: None
-    :param int colorspace: None
-    :param int range: None
-    :param int color_primaries: None
-    :param int color_trc: None
-    :param str upscaler: None
-    :param str downscaler: None
-    :param str frame_mixer: None
-    :param int lut_entries: None
-    :param float antiringing: None
-    :param bool sigmoid: None
-    :param bool apply_filmgrain: None
-    :param bool apply_dolbyvision: None
-    :param bool deband: None
-    :param int deband_iterations: None
-    :param float deband_threshold: None
-    :param float deband_radius: None
-    :param float deband_grain: None
-    :param float brightness: None
-    :param float contrast: None
-    :param float saturation: None
-    :param float hue: None
-    :param float gamma: None
-    :param bool peak_detect: None
-    :param float smoothing_period: None
-    :param float minimum_peak: None
-    :param float scene_threshold_low: None
-    :param float scene_threshold_high: None
-    :param float percentile: None
-    :param int gamut_mode: None
-    :param int tonemapping: None
-    :param float tonemapping_param: None
-    :param bool inverse_tonemapping: None
-    :param int tonemapping_lut_size: None
-    :param float contrast_recovery: None
-    :param float contrast_smoothness: None
-    :param float desaturation_strength: None
-    :param float desaturation_exponent: None
-    :param bool gamut_warning: None
-    :param bool gamut_clipping: None
-    :param int intent: None
-    :param int tonemapping_mode: None
-    :param float tonemapping_crosstalk: None
-    :param float overshoot: None
-    :param float hybrid_mix: None
-    :param int dithering: None
-    :param int dither_lut_size: None
-    :param bool dither_temporal: None
-    :param str cones: None
-    :param float cone_strength: None
-    :param str custom_shader_path: None
-    :param str custom_shader_bin: None
-    :param bool skip_aa: None
-    :param float polar_cutoff: None
-    :param bool disable_linear: None
-    :param bool disable_builtin: None
-    :param bool force_icc_lut: None
-    :param bool force_dither: None
-    :param bool disable_fbos: None
+    :param int inputs: Number of inputs
+    :param str w: Output video frame width
+    :param str h: Output video frame height
+    :param str fps: Output video frame rate
+    :param str crop_x: Input video crop x
+    :param str crop_y: Input video crop y
+    :param str crop_w: Input video crop w
+    :param str crop_h: Input video crop h
+    :param str pos_x: Output video placement x
+    :param str pos_y: Output video placement y
+    :param str pos_w: Output video placement w
+    :param str pos_h: Output video placement h
+    :param str format: Output video format
+    :param int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR
+    :param int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used
+    :param bool normalize_sar: force SAR normalization to 1:1 by adjusting pos_x/y/w/h
+    :param float pad_crop_ratio: ratio between padding and cropping when normalizing SAR (0=pad, 1=crop)
+    :param str fillcolor: Background fill color
+    :param float corner_rounding: Corner rounding radius
+    :param str extra_opts: Pass extra libplacebo-specific options using a :-separated list of key=value pairs
+    :param int colorspace: select colorspace
+    :param int range: select color range
+    :param int color_primaries: select color primaries
+    :param int color_trc: select color transfer
+    :param str upscaler: Upscaler function
+    :param str downscaler: Downscaler function
+    :param str frame_mixer: Frame mixing function
+    :param int lut_entries: Number of scaler LUT entries
+    :param float antiringing: Antiringing strength (for non-EWA filters)
+    :param bool sigmoid: Enable sigmoid upscaling
+    :param bool apply_filmgrain: Apply film grain metadata
+    :param bool apply_dolbyvision: Apply Dolby Vision metadata
+    :param bool deband: Enable debanding
+    :param int deband_iterations: Deband iterations
+    :param float deband_threshold: Deband threshold
+    :param float deband_radius: Deband radius
+    :param float deband_grain: Deband grain
+    :param float brightness: Brightness boost
+    :param float contrast: Contrast gain
+    :param float saturation: Saturation gain
+    :param float hue: Hue shift
+    :param float gamma: Gamma adjustment
+    :param bool peak_detect: Enable dynamic peak detection for HDR tone-mapping
+    :param float smoothing_period: Peak detection smoothing period
+    :param float minimum_peak: Peak detection minimum peak
+    :param float scene_threshold_low: Scene change low threshold
+    :param float scene_threshold_high: Scene change high threshold
+    :param float percentile: Peak detection percentile
+    :param int gamut_mode: Gamut-mapping mode
+    :param int tonemapping: Tone-mapping algorithm
+    :param float tonemapping_param: Tunable parameter for some tone-mapping functions
+    :param bool inverse_tonemapping: Inverse tone mapping (range expansion)
+    :param int tonemapping_lut_size: Tone-mapping LUT size
+    :param float contrast_recovery: HDR contrast recovery strength
+    :param float contrast_smoothness: HDR contrast recovery smoothness
+    :param float desaturation_strength: Desaturation strength
+    :param float desaturation_exponent: Desaturation exponent
+    :param bool gamut_warning: Highlight out-of-gamut colors
+    :param bool gamut_clipping: Enable desaturating colorimetric gamut clipping
+    :param int intent: Rendering intent
+    :param int tonemapping_mode: Tone-mapping mode
+    :param float tonemapping_crosstalk: Crosstalk factor for tone-mapping
+    :param float overshoot: Tone-mapping overshoot margin
+    :param float hybrid_mix: Tone-mapping hybrid LMS mixing coefficient
+    :param int dithering: Dither method to use
+    :param int dither_lut_size: Dithering LUT size
+    :param bool dither_temporal: Enable temporal dithering
+    :param str cones: Colorblindness adaptation model
+    :param float cone_strength: Colorblindness adaptation strength
+    :param str custom_shader_path: Path to custom user shader (mpv .hook format)
+    :param str custom_shader_bin: Custom user shader as binary (mpv .hook format)
+    :param bool skip_aa: Skip anti-aliasing
+    :param float polar_cutoff: Polar LUT cutoff
+    :param bool disable_linear: Disable linear scaling
+    :param bool disable_builtin: Disable built-in scalers
+    :param bool force_icc_lut: Deprecated, does nothing
+    :param bool force_dither: Force dithering
+    :param bool disable_fbos: Force-disable FBOs
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#libplacebo
 
@@ -3699,13 +3699,13 @@ def libvmaf_cuda(
     Parameters:
     ----------
 
-    :param str log_path: None
-    :param str log_fmt: None
-    :param str pool: None
-    :param int n_threads: None
-    :param int n_subsample: None
-    :param str model: None
-    :param str feature: None
+    :param str log_path: Set the file path to be used to write log.
+    :param str log_fmt: Set the format of the log (csv, json, xml, or sub).
+    :param str pool: Set the pool method to be used for computing vmaf.
+    :param int n_threads: Set number of threads to be used when computing vmaf.
+    :param int n_subsample: Set interval for frame subsampling used when computing vmaf.
+    :param str model: Set the model to be used for computing vmaf.
+    :param str feature: Set the feature to be used for computing vmaf.
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf_005fcuda
 
@@ -5151,7 +5151,7 @@ def paletteuse(
     :param int diff_mode: If set, define the zone to process ‘rectangle’ Only the changing rectangle will be reprocessed. This is similar to GIF cropping/offsetting compression mechanism. This option can be useful for speed if only a part of the image is changing, and has use cases such as limiting the scope of the error diffusal dither to the rectangle that bounds the moving scene (it leads to more deterministic output if the scene doesn’t change much, and as a result less moving noise and better GIF compression). Default is none.
     :param bool new: Take new palette for each output frame.
     :param int alpha_threshold: Sets the alpha threshold for transparency. Alpha values above this threshold will be treated as completely opaque, and values below this threshold will be treated as completely transparent. The option must be an integer value in the range [0,255]. Default is 128.
-    :param str debug_kdtree: None
+    :param str debug_kdtree: save Graphviz graph of the kdtree in specified file
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#paletteuse
 
@@ -5487,7 +5487,7 @@ def psnr(
 
     :param str stats_file: If specified the filter will use the named file to save the PSNR of each individual frame. When filename equals "-" the data is sent to standard output.
     :param int stats_version: Specifies which version of the stats file format to use. Details of each format are written below. Default value is 1.
-    :param bool output_max: None
+    :param bool output_max: Add raw stats (max values) to the output log.
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#psnr
 
@@ -5713,24 +5713,24 @@ def scale2ref(
     Parameters:
     ----------
 
-    :param str w: None
-    :param str h: None
-    :param str flags: None
-    :param bool interl: None
-    :param str size: None
-    :param int in_color_matrix: None
-    :param int out_color_matrix: None
-    :param int in_range: None
-    :param int out_range: None
-    :param int in_v_chr_pos: None
-    :param int in_h_chr_pos: None
-    :param int out_v_chr_pos: None
-    :param int out_h_chr_pos: None
-    :param int force_original_aspect_ratio: None
-    :param int force_divisible_by: None
-    :param float param0: None
-    :param float param1: None
-    :param int eval: None
+    :param str w: Output video width
+    :param str h: Output video height
+    :param str flags: Flags to pass to libswscale
+    :param bool interl: set interlacing
+    :param str size: set video size
+    :param int in_color_matrix: set input YCbCr type
+    :param int out_color_matrix: set output YCbCr type
+    :param int in_range: set input color range
+    :param int out_range: set output color range
+    :param int in_v_chr_pos: input vertical chroma position in luma grid/256
+    :param int in_h_chr_pos: input horizontal chroma position in luma grid/256
+    :param int out_v_chr_pos: output vertical chroma position in luma grid/256
+    :param int out_h_chr_pos: output horizontal chroma position in luma grid/256
+    :param int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR
+    :param int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used
+    :param float param0: Scaler param 0
+    :param float param1: Scaler param 1
+    :param int eval: specify when to evaluate expressions
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#scale2ref
 
@@ -5834,14 +5834,14 @@ def scale2ref_npp(
     Parameters:
     ----------
 
-    :param str w: None
-    :param str h: None
-    :param str format: None
-    :param str s: None
-    :param int interp_algo: None
-    :param int force_original_aspect_ratio: None
-    :param int force_divisible_by: None
-    :param int eval: None
+    :param str w: Output video width
+    :param str h: Output video height
+    :param str format: Output pixel format
+    :param str s: Output video size
+    :param int interp_algo: Interpolation algorithm used for resizing
+    :param int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR
+    :param int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used
+    :param int eval: specify when to evaluate expressions
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#scale2ref_005fnpp
 

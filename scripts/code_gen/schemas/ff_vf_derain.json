@@ -64,7 +64,7 @@
       ],
       "choices": [],
       "default": "x",
-      "description": null,
+      "description": "input name of the model",
       "name": "input",
       "required": false,
       "typing": "str"
@@ -75,7 +75,7 @@
       ],
       "choices": [],
       "default": "y",
-      "description": null,
+      "description": "output name of the model",
       "name": "output",
       "required": false,
       "typing": "str"

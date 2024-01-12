@@ -117,7 +117,7 @@
         }
       ],
       "default": 16,
-      "description": null,
+      "description": "Valid bits per sample (location of the true LSB).",
       "name": "bits_per_sample",
       "required": false,
       "typing": "int"
