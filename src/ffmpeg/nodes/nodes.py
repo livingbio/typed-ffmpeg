@@ -98,6 +98,9 @@ class FilterNode(Node):
 
         commands = []
         for key, value in self.kwargs.items():
+            if isinstance(value, bool):
+                value = str(int(value))
+
             if not isinstance(value, Default):
                 commands += [f"{key}={escape(value)}"]
 
