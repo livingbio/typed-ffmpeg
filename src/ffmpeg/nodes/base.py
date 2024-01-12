@@ -4,10 +4,9 @@ from abc import ABC, abstractmethod, abstractproperty
 from functools import cached_property
 from typing import Any, Iterable, Mapping, Sequence
 
-from pydantic import BaseModel, model_validator
-
 from ..schema import StreamType
 from ..utils.dag import is_dag
+from ..utils.pydantic_helper import BaseModel, model_validator_after
 
 
 class _DAGContext(BaseModel, ABC):
@@ -60,7 +59,7 @@ class Node(HashableBaseModel, ABC, validate_assignment=True):
     def incoming_streams(self) -> Sequence["Stream"]:
         raise NotImplementedError()
 
-    @model_validator(mode="after")
+    @model_validator_after
     def validate_dag(self) -> Node:
         passed = set()
         nodes = [self]

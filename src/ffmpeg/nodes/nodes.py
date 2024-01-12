@@ -4,10 +4,9 @@ import subprocess
 from abc import ABC, abstractproperty
 from typing import TYPE_CHECKING, Any, Sequence
 
-from pydantic import model_validator
-
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
+from ..utils.pydantic_helper import model_validator_after
 from .base import Node, Stream, _DAGContext, empty_dag_context
 
 if TYPE_CHECKING:
@@ -59,7 +58,7 @@ class FilterNode(Node):
         ), f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}"
         return AudioStream(node=self, index=audio_outputs[index])
 
-    @model_validator(mode="after")
+    @model_validator_after
     def validate_input(self) -> "FilterNode":
         from ..streams.audio import AudioStream
         from ..streams.video import VideoStream
@@ -149,7 +148,7 @@ class FilterableStream(Stream, ABC):
             else:
                 return f"[{context.get_node_label(self.node)}#{self.index}]"
 
-    @model_validator(mode="after")
+    @model_validator_after
     def validate_index(self) -> FilterableStream:
         if isinstance(self.node, InputNode):
             assert self.index is None, "Input streams cannot have an index"
