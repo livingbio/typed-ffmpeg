@@ -22,5 +22,5 @@ jobs:
       - name: Run unittest
         run: poetry run py.test src/ --cov=./src
       - name: lint
-        run: pre-commit run --all-files
+        run: poetry run pre-commit run --all-files
         working-directory: src
