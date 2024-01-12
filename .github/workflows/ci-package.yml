@@ -10,6 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10", "3.11"]
+        pydantic-version: ["pydantic>1.0,<2.0", "pydantic>2.0,<3.0"]
 
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +19,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: pip install poetry && poetry install --with test
+        run: pip install poetry ${{ matrix.pydantic-version }} && poetry install --with test
       - name: Run unittest
         run: poetry run py.test src/ --cov=./src
       - name: lint
