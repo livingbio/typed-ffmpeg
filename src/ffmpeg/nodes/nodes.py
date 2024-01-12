@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import subprocess
 from abc import ABC, abstractproperty
 from typing import TYPE_CHECKING, Any, Sequence
 
@@ -240,10 +241,67 @@ class OutputStream(Stream):
     def overwrite_output(self) -> "OutputStream":
         return GlobalNode(input=self, kwargs={"y": True}).stream()
 
-    def compile(self, cmd: list[str] = ["ffmpeg"]) -> list[str]:
+    def compile(self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False) -> list[str]:
         from ..utils.compile import compile
 
+        if isinstance(cmd, str):
+            cmd = [cmd]
+
+        if overwrite_output:
+            return cmd + compile(self.node) + ["-y"]
+
         return cmd + compile(self.node)
+
+    def run_async(
+        self,
+        cmd: str | list[str] = "ffmpeg",
+        pipe_stdin: bool = False,
+        pipe_stdout: bool = False,
+        pipe_stderr: bool = False,
+        quiet: bool = False,
+        overwrite_output: bool = False,
+        cwd: str | None = None,
+    ) -> subprocess.Popen[bytes]:
+        args = self.compile(cmd, overwrite_output=overwrite_output)
+        stdin_stream = subprocess.PIPE if pipe_stdin else None
+        stdout_stream = subprocess.PIPE if pipe_stdout else None
+        stderr_stream = subprocess.PIPE if pipe_stderr else None
+        if quiet:
+            stderr_stream = subprocess.STDOUT
+            stdout_stream = subprocess.DEVNULL
+        return subprocess.Popen(
+            args,
+            stdin=stdin_stream,
+            stdout=stdout_stream,
+            stderr=stderr_stream,
+            cwd=cwd,
+        )
+
+    def run(
+        self,
+        cmd: str | list[str] = "ffmpeg",
+        pipe_stdin: bool = False,
+        pipe_stdout: bool = False,
+        pipe_stderr: bool = False,
+        quiet: bool = False,
+        overwrite_output: bool = False,
+        cwd: str | None = None,
+    ) -> tuple[str, str]:
+        process = self.run_async(
+            cmd,
+            pipe_stdin=pipe_stdin,
+            pipe_stdout=pipe_stdout,
+            pipe_stderr=pipe_stderr,
+            quiet=quiet,
+            overwrite_output=overwrite_output,
+            cwd=cwd,
+        )
+        stdout, stderr = process.communicate()
+        retcode = process.poll()
+
+        if retcode:
+            raise subprocess.CalledProcessError(retcode, process.args, output=stdout, stderr=stderr)
+        return stdout.decode("utf8"), stderr.decode("utf8")
 
 
 class MergeOutputsNode(Node):
