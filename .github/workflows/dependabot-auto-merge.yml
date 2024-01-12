@@ -1,3 +1,4 @@
+name: dependabot-auto-merge
 on: [push, pull_request]
 
 jobs:
