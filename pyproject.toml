@@ -20,6 +20,7 @@ pytest-datadir = "^1.5.0"
 syrupy = "^4.6.0"
 pytest-recording = "^0.13.1"
 pytest-cov = "^4.1.0"
+pre-commit = "*"
 
 [build-system]
 requires = ["poetry-core"]
