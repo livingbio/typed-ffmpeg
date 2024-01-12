@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, Sequence
 from pydantic import model_validator
 
 from ..schema import Default, StreamType
+from ..utils.escaping import escape
 from .base import Node, Stream, _DAGContext, empty_dag_context
 
 if TYPE_CHECKING:
@@ -97,10 +98,10 @@ class FilterNode(Node):
         commands = []
         for key, value in self.kwargs.items():
             if not isinstance(value, Default):
-                commands += [f"{key}={value}"]
+                commands += [f"{key}={escape(value)}"]
 
         if commands:
-            return [incoming_labels] + [f"{self.name}="] + [":".join(commands)] + [outgoing_labels]
+            return [incoming_labels] + [f"{self.name}="] + [escape(":".join(commands), "\\'[],;")] + [outgoing_labels]
         return [incoming_labels] + [f"{self.name}"] + [outgoing_labels]
 
 
