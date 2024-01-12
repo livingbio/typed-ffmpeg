@@ -1,0 +1,24 @@
+name: "unittest for package"
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pip install poetry && poetry install --with test
+      - name: Run unittest
+        run: py.test src/ --cov=./src
+      - name: lint
+        run: pre-commit run --all-files
+        working-directory: src
