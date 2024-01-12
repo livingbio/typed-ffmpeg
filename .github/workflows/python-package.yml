@@ -23,9 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install --with test,dev
-      - name: Lint with pre-commit
-        run: |
-          poetry run pre-commit run --all-files
+        working-directory: ./scripts
       - name: Test with pytest
         run: |
           PYTHONPATH=./scripts poetry run pytest ./scripts --cov=./scripts
@@ -52,7 +50,7 @@ jobs:
           pip install -U "${{ matrix.pydantic-version }}"
       - name: Install dependencies
         run: |
-          poetry install --with test,dev
+          poetry install --with test
       - name: Lint with pre-commit
         run: |
           poetry run pre-commit run --all-files
