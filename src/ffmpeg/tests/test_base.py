@@ -3,7 +3,7 @@ from pydantic import ValidationError
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..base import input, output
+from ..base import input, merge_outputs, output
 from ..filters import concat, join
 from ..streams.video import VideoStream
 
@@ -118,3 +118,24 @@ def test_compile_bool_option(snapshot: SnapshotAssertion) -> None:
     assert snapshot(extension_class=JSONSnapshotExtension) == (
         input("input.mp4").drawtext(text="hello", escape_text=True).output(filename="output.mp4").compile()
     )
+
+
+def test_compile_merge_outputs(snapshot: SnapshotAssertion) -> None:
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        merge_outputs(
+            output(input("input1.mp4"), filename="output1.mp4"),
+            output(input("input2.mp4"), filename="output2.mp4"),
+        ).compile()
+    )
+
+
+def test_compile_merge_outputs_with_filter_complex(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1.mp4")
+    input2 = input("input2.mp4")
+
+    joined = concat(input1, input2, n=2)
+    splitted = joined.video(0).split()
+    output1 = output(splitted.video(0), filename="output1.mp4")
+    output2 = output(splitted.video(1), filename="output2.mp4")
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == (merge_outputs(output1, output2).compile())
