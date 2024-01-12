@@ -7,11 +7,6 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-
-[tool.poetry.group.dev]
-optional = true
-
-[tool.poetry.group.dev.dependencies]
 requests = "^2.31.0"
 detect-secrets = "^1.4.0"
 pre-commit = "^3.6.0"
