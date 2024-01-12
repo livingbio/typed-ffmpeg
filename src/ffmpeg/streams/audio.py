@@ -929,7 +929,7 @@ class AudioStream(FilterableStream):
 
         **window, w**
 
-            Set window size, in milliseconds. Allowed range is from 10 to 100\. Default value is 55 milliseconds. This sets size of window which will be processed at once.
+            Set window size, in milliseconds. Allowed range is from 10 to 100. Default value is 55 milliseconds. This sets size of window which will be processed at once.
 
         **overlap, o**
 
@@ -945,7 +945,7 @@ class AudioStream(FilterableStream):
 
         **burst, b**
 
-            Set burst fusion, in percentage of window size. Allowed range is 0 to 10\. Default value is 2. If any two samples detected as noise are spaced less than this value then any sample between those two samples will be also detected as noise.
+            Set burst fusion, in percentage of window size. Allowed range is 0 to 10. Default value is 2. If any two samples detected as noise are spaced less than this value then any sample between those two samples will be also detected as noise.
 
         **method, m**
 
@@ -2436,11 +2436,11 @@ class AudioStream(FilterableStream):
 
         **samples**
 
-            Set size of single frame in number of samples. Allowed range is from 512 to 65536\. Default frame size is 8192 samples.
+            Set size of single frame in number of samples. Allowed range is from 512 to 65536. Default frame size is 8192 samples.
 
         **softness**
 
-            Set softness applied inside thresholding function. Allowed range is from 0 to 10\. Default softness is 1.
+            Set softness applied inside thresholding function. Allowed range is from 0 to 10. Default softness is 1.
 
 
 
@@ -10782,7 +10782,7 @@ class AudioStream(FilterableStream):
 
         **dmc**
 
-            The color of the max line. Use when dm option is set to > 0\. default is: orange
+            The color of the max line. Use when dm option is set to > 0. default is: orange
 
 
 
