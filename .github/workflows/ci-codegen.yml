@@ -1,0 +1,26 @@
+name: python-unittest
+on:
+  push:
+    branches: ["**"]
+
+jobs:
+  ci-codegen:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+      - name: Install dependencies
+        run: |
+          poetry install --with test
+        working-directory: ./scripts
+      - name: Test with pytest
+        run: |
+          PYTHONPATH=./scripts poetry run pytest ./scripts --cov=./scripts
