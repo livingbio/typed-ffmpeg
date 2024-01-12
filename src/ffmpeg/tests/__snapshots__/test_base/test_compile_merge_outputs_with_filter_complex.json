@@ -1,0 +1,15 @@
+[
+  "ffmpeg",
+  "-i",
+  "input1.mp4",
+  "-i",
+  "input2.mp4",
+  "-filter_complex",
+  "[0][1]concat=n=2[s0];[s0]split[s1#0][s1#1]",
+  "-map",
+  "[s1#0]",
+  "output1.mp4",
+  "-map",
+  "[s1#1]",
+  "output2.mp4"
+]

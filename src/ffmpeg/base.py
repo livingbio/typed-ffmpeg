@@ -1,4 +1,4 @@
-from .nodes.nodes import FilterableStream, InputNode, OutputNode, OutputStream
+from .nodes.nodes import FilterableStream, InputNode, MergeOutputsNode, OutputNode, OutputStream
 from .streams.av import AVStream
 
 
@@ -19,3 +19,7 @@ def input(filename: str, **kwargs: str | int | None | float) -> AVStream:
 
 def output(*inputs: FilterableStream, filename: str, **kwargs: str | int | None | float) -> OutputStream:
     return OutputNode(filename=filename, inputs=list(inputs), kwargs=kwargs).stream()
+
+
+def merge_outputs(*inputs: OutputStream) -> OutputStream:
+    return MergeOutputsNode(inputs=list(inputs)).stream()
