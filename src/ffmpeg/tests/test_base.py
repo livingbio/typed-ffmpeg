@@ -95,3 +95,16 @@ def test_mono_to_stereo_with_offsets_and_video(snapshot: SnapshotAssertion) -> N
         .overwrite_output()
         .compile()
     )
+
+
+def test_drawtext_escaping(snapshot: SnapshotAssertion) -> None:
+    # ["ffmpeg", "-i", "input.mp4", "-filter_complex", "[0]drawtext=text='this is a \\'string\\'': may contain one, or more, special characters':fontfile=/path/to/font.ttf[s0]", "-map", "[s0]", "output.mp4"]
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("input.mp4")
+        .drawtext(
+            text="this is a 'string': may contain one, or more, special characters",
+            fontfile="/path/to/font.ttf",
+        )
+        .output(filename="output.mp4")
+        .compile()
+    )
