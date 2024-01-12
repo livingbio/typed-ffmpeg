@@ -130,11 +130,10 @@ class FilterableStream(Stream, ABC):
         return OutputNode(kwargs=kwargs, inputs=[self, *streams], filename=filename).stream()
 
     def label(self, context: _DAGContext) -> str:
-        match (self.selector):
-            case StreamType.video:
-                selector = "v"
-            case StreamType.audio:
-                selector = "a"
+        if self.selector == StreamType.video:
+            selector = "v"
+        elif self.selector == StreamType.audio:
+            selector = "a"
 
         if isinstance(self.node, InputNode) or (
             self.node.output_typings is not None and len(self.node.output_typings) == 1
