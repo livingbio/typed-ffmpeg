@@ -1,5 +1,7 @@
 name: "unittest for package"
-on: [push, pull_request]
+on:
+  push:
+    branches: ["**"]
 
 jobs:
   ci:
@@ -18,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: pip install poetry && poetry install --with test
       - name: Run unittest
-        run: py.test src/ --cov=./src
+        run: poetry run py.test src/ --cov=./src
       - name: lint
         run: pre-commit run --all-files
         working-directory: src
