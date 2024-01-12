@@ -12,6 +12,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
+
       - name: Install pre-commit
         run: pip install poetry && poetry install --with test
         working-directory: ./scripts
