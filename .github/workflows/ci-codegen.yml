@@ -1,4 +1,4 @@
-name: python-unittest
+name: ci-codegen
 on:
   push:
     branches: ["**"]
