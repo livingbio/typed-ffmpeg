@@ -108,3 +108,13 @@ def test_drawtext_escaping(snapshot: SnapshotAssertion) -> None:
         .output(filename="output.mp4")
         .compile()
     )
+
+
+def test_compile_bool_option(snapshot: SnapshotAssertion) -> None:
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("input.mp4").drawtext(text="hello", escape_text=False).output(filename="output.mp4").compile()
+    )
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input("input.mp4").drawtext(text="hello", escape_text=True).output(filename="output.mp4").compile()
+    )
