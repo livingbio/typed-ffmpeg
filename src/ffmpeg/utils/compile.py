@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Iterable, TypeVar
 
 from ..nodes.base import Node, Stream, _DAGContext
@@ -74,6 +75,7 @@ def _build_node_labels(nodes: list[Node], outgoing_streams: dict[Node, list[Stre
     return node_labels
 
 
+@dataclass(frozen=True, kw_only=True)
 class DAGContext(_DAGContext):
     node: Node
 

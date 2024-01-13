@@ -1,5 +1,4 @@
 import pytest
-from pydantic import ValidationError
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
@@ -13,7 +12,7 @@ def test_filter_node(snapshot: SnapshotAssertion) -> None:
     input2 = input("input2")
     input3 = input("input3")
 
-    with pytest.raises(ValidationError) as e:
+    with pytest.raises(ValueError) as e:
         concat(*(input1, input2, input2))
     assert snapshot == e
 
@@ -22,7 +21,7 @@ def test_filter_node(snapshot: SnapshotAssertion) -> None:
 
     concat(*(input1, input2.video, input3.video), n=3)
 
-    with pytest.raises(ValidationError) as e:
+    with pytest.raises(ValueError) as e:
         concat(*(input1, input2.audio, input3.audio), n=3)
     assert snapshot == e
 

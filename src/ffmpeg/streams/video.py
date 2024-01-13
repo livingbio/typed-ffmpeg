@@ -81,20 +81,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="addroi",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "qoffset": qoffset,
-                "clear": clear,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "w": w,
+                        "h": h,
+                        "qoffset": qoffset,
+                        "clear": clear,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -117,12 +119,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="alphaextract",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -155,13 +155,13 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="alphamerge",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _alpha,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -232,21 +232,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="amplify",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "radius": radius,
-                "factor": factor,
-                "threshold": threshold,
-                "tolerance": tolerance,
-                "low": low,
-                "high": high,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "radius": radius,
+                        "factor": factor,
+                        "threshold": threshold,
+                        "tolerance": tolerance,
+                        "low": low,
+                        "high": high,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -291,19 +293,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ass",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "filename": filename,
-                "original_size": original_size,
-                "fontsdir": fontsdir,
-                "alpha": alpha,
-                "shaping": shaping,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "filename": filename,
+                        "original_size": original_size,
+                        "fontsdir": fontsdir,
+                        "alpha": alpha,
+                        "shaping": shaping,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -399,26 +403,28 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="atadenoise",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "0a": _0a,
-                "0b": _0b,
-                "1a": _1a,
-                "1b": _1b,
-                "2a": _2a,
-                "2b": _2b,
-                "s": s,
-                "p": p,
-                "a": a,
-                "0s": _0s,
-                "1s": _1s,
-                "2s": _2s,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "0a": _0a,
+                        "0b": _0b,
+                        "1a": _1a,
+                        "1b": _1b,
+                        "2a": _2a,
+                        "2b": _2b,
+                        "s": s,
+                        "p": p,
+                        "a": a,
+                        "0s": _0s,
+                        "1s": _1s,
+                        "2s": _2s,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -464,17 +470,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="avgblur",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sizeX": sizeX,
-                "planes": planes,
-                "sizeY": sizeY,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sizeX": sizeX,
+                        "planes": planes,
+                        "sizeY": sizeY,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -520,17 +528,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="avgblur_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sizeX": sizeX,
-                "planes": planes,
-                "sizeY": sizeY,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sizeX": sizeX,
+                        "planes": planes,
+                        "sizeY": sizeY,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -576,17 +586,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="avgblur_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sizeX": sizeX,
-                "sizeY": sizeY,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sizeX": sizeX,
+                        "sizeY": sizeY,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -632,17 +644,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="backgroundkey",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold": threshold,
-                "similarity": similarity,
-                "blend": blend,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold": threshold,
+                        "similarity": similarity,
+                        "blend": blend,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -676,15 +690,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bbox",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "min_val": min_val,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "min_val": min_val,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -715,15 +731,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bench",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "action": action,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "action": action,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -769,17 +787,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bilateral",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sigmaS": sigmaS,
-                "sigmaR": sigmaR,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sigmaS": sigmaS,
+                        "sigmaR": sigmaR,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -827,17 +847,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bilateral_cuda",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sigmaS": sigmaS,
-                "sigmaR": sigmaR,
-                "window_size": window_size,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sigmaS": sigmaS,
+                        "sigmaR": sigmaR,
+                        "window_size": window_size,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -873,16 +895,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bitplanenoise",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "bitplane": bitplane,
-                "filter": filter,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "bitplane": bitplane,
+                        "filter": filter,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -948,17 +972,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blackdetect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "d": d,
-                "picture_black_ratio_th": picture_black_ratio_th,
-                "pixel_black_th": pixel_black_th,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "d": d,
+                        "picture_black_ratio_th": picture_black_ratio_th,
+                        "pixel_black_th": pixel_black_th,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1004,16 +1030,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blackframe",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "amount": amount,
-                "threshold": threshold,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "amount": amount,
+                        "threshold": threshold,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1343,30 +1371,34 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blend",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _bottom,
-            ],
-            kwargs={
-                "c0_mode": c0_mode,
-                "c1_mode": c1_mode,
-                "c2_mode": c2_mode,
-                "c3_mode": c3_mode,
-                "all_mode": all_mode,
-                "c0_expr": c0_expr,
-                "c1_expr": c1_expr,
-                "c2_expr": c2_expr,
-                "c3_expr": c3_expr,
-                "all_expr": all_expr,
-                "c0_opacity": c0_opacity,
-                "c1_opacity": c1_opacity,
-                "c2_opacity": c2_opacity,
-                "c3_opacity": c3_opacity,
-                "all_opacity": all_opacity,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "c0_mode": c0_mode,
+                        "c1_mode": c1_mode,
+                        "c2_mode": c2_mode,
+                        "c3_mode": c3_mode,
+                        "all_mode": all_mode,
+                        "c0_expr": c0_expr,
+                        "c1_expr": c1_expr,
+                        "c2_expr": c2_expr,
+                        "c3_expr": c3_expr,
+                        "all_expr": all_expr,
+                        "c0_opacity": c0_opacity,
+                        "c1_opacity": c1_opacity,
+                        "c2_opacity": c2_opacity,
+                        "c3_opacity": c3_opacity,
+                        "all_opacity": all_opacity,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1431,25 +1463,29 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blend_vulkan",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _bottom,
-            ],
-            kwargs={
-                "c0_mode": c0_mode,
-                "c1_mode": c1_mode,
-                "c2_mode": c2_mode,
-                "c3_mode": c3_mode,
-                "all_mode": all_mode,
-                "c0_opacity": c0_opacity,
-                "c1_opacity": c1_opacity,
-                "c2_opacity": c2_opacity,
-                "c3_opacity": c3_opacity,
-                "all_opacity": all_opacity,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "c0_mode": c0_mode,
+                        "c1_mode": c1_mode,
+                        "c2_mode": c2_mode,
+                        "c3_mode": c3_mode,
+                        "all_mode": all_mode,
+                        "c0_opacity": c0_opacity,
+                        "c1_opacity": c1_opacity,
+                        "c2_opacity": c2_opacity,
+                        "c3_opacity": c3_opacity,
+                        "all_opacity": all_opacity,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1497,17 +1533,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blockdetect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "period_min": period_min,
-                "period_max": period_max,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "period_min": period_min,
+                        "period_max": period_max,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1578,21 +1616,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="blurdetect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "high": high,
-                "low": low,
-                "radius": radius,
-                "block_pct": block_pct,
-                "block_width": block_width,
-                "block_height": block_height,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "high": high,
+                        "low": low,
+                        "radius": radius,
+                        "block_pct": block_pct,
+                        "block_width": block_width,
+                        "block_height": block_height,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1662,20 +1702,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="boxblur",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "luma_radius": luma_radius,
-                "luma_power": luma_power,
-                "chroma_radius": chroma_radius,
-                "chroma_power": chroma_power,
-                "alpha_radius": alpha_radius,
-                "alpha_power": alpha_power,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "luma_radius": luma_radius,
+                        "luma_power": luma_power,
+                        "chroma_radius": chroma_radius,
+                        "chroma_power": chroma_power,
+                        "alpha_radius": alpha_radius,
+                        "alpha_power": alpha_power,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1745,20 +1787,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="boxblur_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "luma_radius": luma_radius,
-                "luma_power": luma_power,
-                "chroma_radius": chroma_radius,
-                "chroma_power": chroma_power,
-                "alpha_radius": alpha_radius,
-                "alpha_power": alpha_power,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "luma_radius": luma_radius,
+                        "luma_power": luma_power,
+                        "chroma_radius": chroma_radius,
+                        "chroma_power": chroma_power,
+                        "alpha_radius": alpha_radius,
+                        "alpha_power": alpha_power,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1806,17 +1850,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bwdif",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "parity": parity,
+                        "deint": deint,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1866,17 +1912,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bwdif_cuda",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "parity": parity,
+                        "deint": deint,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1925,17 +1973,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bwdif_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "parity": parity,
+                        "deint": deint,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1975,16 +2025,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="cas",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "strength": strength,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "strength": strength,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2011,12 +2063,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ccrepack",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -2055,16 +2105,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromaber_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dist_x": dist_x,
-                "dist_y": dist_y,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dist_x": dist_x,
+                        "dist_y": dist_y,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2116,18 +2168,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromahold",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "yuv": yuv,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "color": color,
+                        "similarity": similarity,
+                        "blend": blend,
+                        "yuv": yuv,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2179,18 +2233,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromakey",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "yuv": yuv,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "color": color,
+                        "similarity": similarity,
+                        "blend": blend,
+                        "yuv": yuv,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2227,18 +2283,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromakey_cuda",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "yuv": yuv,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "color": color,
+                        "similarity": similarity,
+                        "blend": blend,
+                        "yuv": yuv,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2320,23 +2378,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromanr",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "thres": thres,
-                "sizew": sizew,
-                "sizeh": sizeh,
-                "stepw": stepw,
-                "steph": steph,
-                "threy": threy,
-                "threu": threu,
-                "threv": threv,
-                "distance": distance,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "thres": thres,
+                        "sizew": sizew,
+                        "sizeh": sizeh,
+                        "stepw": stepw,
+                        "steph": steph,
+                        "threy": threy,
+                        "threu": threu,
+                        "threv": threv,
+                        "distance": distance,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2394,19 +2454,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chromashift",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cbh": cbh,
-                "cbv": cbv,
-                "crh": crh,
-                "crv": crv,
-                "edge": edge,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cbh": cbh,
+                        "cbv": cbv,
+                        "crh": crh,
+                        "crv": crv,
+                        "edge": edge,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2528,24 +2590,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ciescope",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "system": system,
-                "cie": cie,
-                "gamuts": gamuts,
-                "size": size,
-                "intensity": intensity,
-                "contrast": contrast,
-                "corrgamma": corrgamma,
-                "showwhite": showwhite,
-                "gamma": gamma,
-                "fill": fill,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "system": system,
+                        "cie": cie,
+                        "gamuts": gamuts,
+                        "size": size,
+                        "intensity": intensity,
+                        "contrast": contrast,
+                        "corrgamma": corrgamma,
+                        "showwhite": showwhite,
+                        "gamma": gamma,
+                        "fill": fill,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2607,19 +2671,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="codecview",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mv": mv,
-                "qp": qp,
-                "mv_type": mv_type,
-                "frame_type": frame_type,
-                "block": block,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mv": mv,
+                        "qp": qp,
+                        "mv_type": mv_type,
+                        "frame_type": frame_type,
+                        "block": block,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2701,24 +2767,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorbalance",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rs": rs,
-                "gs": gs,
-                "bs": bs,
-                "rm": rm,
-                "gm": gm,
-                "bm": bm,
-                "rh": rh,
-                "gh": gh,
-                "bh": bh,
-                "pl": pl,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rs": rs,
+                        "gs": gs,
+                        "bs": bs,
+                        "rm": rm,
+                        "gm": gm,
+                        "bm": bm,
+                        "rh": rh,
+                        "gh": gh,
+                        "bh": bh,
+                        "pl": pl,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2839,32 +2907,34 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorchannelmixer",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rr": rr,
-                "rg": rg,
-                "rb": rb,
-                "ra": ra,
-                "gr": gr,
-                "gg": gg,
-                "gb": gb,
-                "ga": ga,
-                "br": br,
-                "bg": bg,
-                "bb": bb,
-                "ba": ba,
-                "ar": ar,
-                "ag": ag,
-                "ab": ab,
-                "aa": aa,
-                "pc": pc,
-                "pa": pa,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rr": rr,
+                        "rg": rg,
+                        "rb": rb,
+                        "ra": ra,
+                        "gr": gr,
+                        "gg": gg,
+                        "gb": gb,
+                        "ga": ga,
+                        "br": br,
+                        "bg": bg,
+                        "bb": bb,
+                        "ba": ba,
+                        "ar": ar,
+                        "ag": ag,
+                        "ab": ab,
+                        "aa": aa,
+                        "pc": pc,
+                        "pa": pa,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2930,21 +3000,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorcontrast",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rc": rc,
-                "gm": gm,
-                "by": by,
-                "rcw": rcw,
-                "gmw": gmw,
-                "byw": byw,
-                "pl": pl,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rc": rc,
+                        "gm": gm,
+                        "by": by,
+                        "rcw": rcw,
+                        "gmw": gmw,
+                        "byw": byw,
+                        "pl": pl,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3009,20 +3081,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorcorrect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rl": rl,
-                "bl": bl,
-                "rh": rh,
-                "bh": bh,
-                "saturation": saturation,
-                "analyze": analyze,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rl": rl,
+                        "bl": bl,
+                        "rh": rh,
+                        "bh": bh,
+                        "saturation": saturation,
+                        "analyze": analyze,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3068,17 +3142,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorhold",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "color": color,
+                        "similarity": similarity,
+                        "blend": blend,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3130,18 +3206,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorize",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "hue": hue,
-                "saturation": saturation,
-                "lightness": lightness,
-                "mix": mix,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "hue": hue,
+                        "saturation": saturation,
+                        "lightness": lightness,
+                        "mix": mix,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3190,17 +3268,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorkey",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "color": color,
+                        "similarity": similarity,
+                        "blend": blend,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3246,17 +3326,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorkey_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "color": color,
+                        "similarity": similarity,
+                        "blend": blend,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3362,31 +3444,33 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorlevels",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rimin": rimin,
-                "gimin": gimin,
-                "bimin": bimin,
-                "aimin": aimin,
-                "rimax": rimax,
-                "gimax": gimax,
-                "bimax": bimax,
-                "aimax": aimax,
-                "romin": romin,
-                "gomin": gomin,
-                "bomin": bomin,
-                "aomin": aomin,
-                "romax": romax,
-                "gomax": gomax,
-                "bomax": bomax,
-                "aomax": aomax,
-                "preserve": preserve,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rimin": rimin,
+                        "gimin": gimin,
+                        "bimin": bimin,
+                        "aimin": aimin,
+                        "rimax": rimax,
+                        "gimax": gimax,
+                        "bimax": bimax,
+                        "aimax": aimax,
+                        "romin": romin,
+                        "gomin": gomin,
+                        "bomin": bomin,
+                        "aomin": aomin,
+                        "romax": romax,
+                        "gomax": gomax,
+                        "bomax": bomax,
+                        "aomax": aomax,
+                        "preserve": preserve,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3444,20 +3528,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colormap",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _source,
                 _target,
-            ],
-            kwargs={
-                "patch_size": patch_size,
-                "nb_patches": nb_patches,
-                "type": type,
-                "kernel": kernel,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "patch_size": patch_size,
+                        "nb_patches": nb_patches,
+                        "type": type,
+                        "kernel": kernel,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3506,16 +3594,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colormatrix",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "src": src,
-                "dst": dst,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "src": src,
+                        "dst": dst,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3658,28 +3748,30 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorspace",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "all": all,
-                "space": space,
-                "range": range,
-                "primaries": primaries,
-                "trc": trc,
-                "format": format,
-                "fast": fast,
-                "dither": dither,
-                "wpadapt": wpadapt,
-                "iall": iall,
-                "ispace": ispace,
-                "irange": irange,
-                "iprimaries": iprimaries,
-                "itrc": itrc,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "all": all,
+                        "space": space,
+                        "range": range,
+                        "primaries": primaries,
+                        "trc": trc,
+                        "format": format,
+                        "fast": fast,
+                        "dither": dither,
+                        "wpadapt": wpadapt,
+                        "iall": iall,
+                        "ispace": ispace,
+                        "irange": irange,
+                        "iprimaries": iprimaries,
+                        "itrc": itrc,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3717,15 +3809,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colorspace_cuda",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "range": range,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "range": range,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3772,17 +3866,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="colortemperature",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "temperature": temperature,
-                "mix": mix,
-                "pl": pl,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "temperature": temperature,
+                        "mix": mix,
+                        "pl": pl,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3882,30 +3978,32 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="convolution",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "0m": _0m,
-                "1m": _1m,
-                "2m": _2m,
-                "3m": _3m,
-                "0rdiv": _0rdiv,
-                "1rdiv": _1rdiv,
-                "2rdiv": _2rdiv,
-                "3rdiv": _3rdiv,
-                "0bias": _0bias,
-                "1bias": _1bias,
-                "2bias": _2bias,
-                "3bias": _3bias,
-                "0mode": _0mode,
-                "1mode": _1mode,
-                "2mode": _2mode,
-                "3mode": _3mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "0m": _0m,
+                        "1m": _1m,
+                        "2m": _2m,
+                        "3m": _3m,
+                        "0rdiv": _0rdiv,
+                        "1rdiv": _1rdiv,
+                        "2rdiv": _2rdiv,
+                        "3rdiv": _3rdiv,
+                        "0bias": _0bias,
+                        "1bias": _1bias,
+                        "2bias": _2bias,
+                        "3bias": _3bias,
+                        "0mode": _0mode,
+                        "1mode": _1mode,
+                        "2mode": _2mode,
+                        "3mode": _3mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -3987,26 +4085,28 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="convolution_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "0m": _0m,
-                "1m": _1m,
-                "2m": _2m,
-                "3m": _3m,
-                "0rdiv": _0rdiv,
-                "1rdiv": _1rdiv,
-                "2rdiv": _2rdiv,
-                "3rdiv": _3rdiv,
-                "0bias": _0bias,
-                "1bias": _1bias,
-                "2bias": _2bias,
-                "3bias": _3bias,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "0m": _0m,
+                        "1m": _1m,
+                        "2m": _2m,
+                        "3m": _3m,
+                        "0rdiv": _0rdiv,
+                        "1rdiv": _1rdiv,
+                        "2rdiv": _2rdiv,
+                        "3rdiv": _3rdiv,
+                        "0bias": _0bias,
+                        "1bias": _1bias,
+                        "2bias": _2bias,
+                        "3bias": _3bias,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4052,18 +4152,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="convolve",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _impulse,
-            ],
-            kwargs={
-                "planes": planes,
-                "impulse": impulse,
-                "noise": noise,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "impulse": impulse,
+                        "noise": noise,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4086,12 +4190,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="copy",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -4162,25 +4264,27 @@ class VideoStream(FilterableStream):
         :param bool list_filters: List all available filters and generators along with all their respective options as well as possible minimum and maximum values along with the default values. list_filters=true
         :param bool list_generators: list available generators
         :param str filter: Specify all filters by their respective name and options. Use list_filters to determine all valid filter names and options. Numerical options are specified by a float value and are automatically clamped to their respective value range. Vector and color options have to be specified by a list of space separated float values. Character escaping has to be done. A special option name default is available to use default options for a filter. It is required to specify either default or at least one of the filter options. All omitted options are used with their default values. The syntax of the filter string is as follows: filter=<NAME>@<OPTION>=<VALUE>[@<OPTION>=<VALUE>][@...][#<NAME>@<OPTION>=<VALUE>[@<OPTION>=<VALUE>][@...]][#...]
-        :param str output_rect: Specify a rectangle where the output of the filter chain is copied into the input image. It is given by a list of space separated float values: output_rect=x\\ y\\ width\\ height If not given, the output rectangle equals the dimensions of the input image. The output rectangle is automatically cropped at the borders of the input image. Negative values are valid for each component. output_rect=25\\ 25\\ 100\\ 100
+        :param str output_rect: Specify a rectangle where the output of the filter chain is copied into the input image. It is given by a list of space separated float values: output_rect=x\ y\ width\ height If not given, the output rectangle equals the dimensions of the input image. The output rectangle is automatically cropped at the borders of the input image. Negative values are valid for each component. output_rect=25\ 25\ 100\ 100
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#coreimage
 
         """
         filter_node = FilterNode(
             name="coreimage",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "list_filters": list_filters,
-                "list_generators": list_generators,
-                "filter": filter,
-                "output_rect": output_rect,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "list_filters": list_filters,
+                        "list_generators": list_generators,
+                        "filter": filter,
+                        "output_rect": output_rect,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4223,13 +4327,13 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="corr",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -4269,16 +4373,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="cover_rect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cover": cover,
-                "mode": mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cover": cover,
+                        "mode": mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4417,20 +4523,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="crop",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "out_w": out_w,
-                "out_h": out_h,
-                "x": x,
-                "y": y,
-                "keep_aspect": keep_aspect,
-                "exact": exact,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "out_w": out_w,
+                        "out_h": out_h,
+                        "x": x,
+                        "y": y,
+                        "keep_aspect": keep_aspect,
+                        "exact": exact,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4510,23 +4618,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="cropdetect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "limit": limit,
-                "round": round,
-                "reset": reset,
-                "skip": skip,
-                "max_outliers": max_outliers,
-                "mode": mode,
-                "high": high,
-                "low": low,
-                "mv_threshold": mv_threshold,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "limit": limit,
+                        "round": round,
+                        "reset": reset,
+                        "skip": skip,
+                        "max_outliers": max_outliers,
+                        "mode": mode,
+                        "high": high,
+                        "low": low,
+                        "mv_threshold": mv_threshold,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4581,17 +4691,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="cue",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cue": cue,
-                "preroll": preroll,
-                "buffer": buffer,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cue": cue,
+                        "preroll": preroll,
+                        "buffer": buffer,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4710,23 +4822,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="curves",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "preset": preset,
-                "master": master,
-                "red": red,
-                "green": green,
-                "blue": blue,
-                "all": all,
-                "psfile": psfile,
-                "plot": plot,
-                "interp": interp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "preset": preset,
+                        "master": master,
+                        "red": red,
+                        "green": green,
+                        "blue": blue,
+                        "all": all,
+                        "psfile": psfile,
+                        "plot": plot,
+                        "interp": interp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4804,22 +4918,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="datascope",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "x": x,
-                "y": y,
-                "mode": mode,
-                "axis": axis,
-                "opacity": opacity,
-                "format": format,
-                "components": components,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "x": x,
+                        "y": y,
+                        "mode": mode,
+                        "axis": axis,
+                        "opacity": opacity,
+                        "format": format,
+                        "components": components,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4865,17 +4981,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dblur",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "angle": angle,
-                "radius": radius,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "angle": angle,
+                        "radius": radius,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -4929,18 +5047,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dctdnoiz",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sigma": sigma,
-                "overlap": overlap,
-                "expr": expr,
-                "n": n,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sigma": sigma,
+                        "overlap": overlap,
+                        "expr": expr,
+                        "n": n,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5011,22 +5131,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deband",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "1thr": _1thr,
-                "2thr": _2thr,
-                "3thr": _3thr,
-                "4thr": _4thr,
-                "range": range,
-                "direction": direction,
-                "blur": blur,
-                "coupling": coupling,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "1thr": _1thr,
+                        "2thr": _2thr,
+                        "3thr": _3thr,
+                        "4thr": _4thr,
+                        "range": range,
+                        "direction": direction,
+                        "blur": blur,
+                        "coupling": coupling,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5090,21 +5212,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deblock",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "filter": filter,
-                "block": block,
-                "alpha": alpha,
-                "beta": beta,
-                "gamma": gamma,
-                "delta": delta,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "filter": filter,
+                        "block": block,
+                        "alpha": alpha,
+                        "beta": beta,
+                        "gamma": gamma,
+                        "delta": delta,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5154,18 +5278,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deconvolve",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _impulse,
-            ],
-            kwargs={
-                "planes": planes,
-                "impulse": impulse,
-                "noise": noise,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "impulse": impulse,
+                        "noise": noise,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5223,19 +5351,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dedot",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "m": m,
-                "lt": lt,
-                "tl": tl,
-                "tc": tc,
-                "ct": ct,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "m": m,
+                        "lt": lt,
+                        "tl": tl,
+                        "tc": tc,
+                        "ct": ct,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5284,18 +5414,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deflate",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold0": threshold0,
+                        "threshold1": threshold1,
+                        "threshold2": threshold2,
+                        "threshold3": threshold3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5341,17 +5473,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deflicker",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "mode": mode,
-                "bypass": bypass,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "mode": mode,
+                        "bypass": bypass,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5386,15 +5520,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dejudder",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cycle": cycle,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cycle": cycle,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5450,19 +5586,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="delogo",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "show": show,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "w": w,
+                        "h": h,
+                        "show": show,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5521,19 +5659,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="derain",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "filter_type": filter_type,
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "input": input,
-                "output": output,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "filter_type": filter_type,
+                        "dnn_backend": dnn_backend,
+                        "model": model,
+                        "input": input,
+                        "output": output,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5623,26 +5763,28 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deshake",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "rx": rx,
-                "ry": ry,
-                "edge": edge,
-                "blocksize": blocksize,
-                "contrast": contrast,
-                "search": search,
-                "filename": filename,
-                "opencl": opencl,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "w": w,
+                        "h": h,
+                        "rx": rx,
+                        "ry": ry,
+                        "edge": edge,
+                        "blocksize": blocksize,
+                        "contrast": contrast,
+                        "search": search,
+                        "filename": filename,
+                        "opencl": opencl,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5706,20 +5848,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deshake_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "tripod": tripod,
-                "debug": debug,
-                "adaptive_crop": adaptive_crop,
-                "refine_features": refine_features,
-                "smooth_strength": smooth_strength,
-                "smooth_window_multiplier": smooth_window_multiplier,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "tripod": tripod,
+                        "debug": debug,
+                        "adaptive_crop": adaptive_crop,
+                        "refine_features": refine_features,
+                        "smooth_strength": smooth_strength,
+                        "smooth_window_multiplier": smooth_window_multiplier,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5796,22 +5940,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="despill",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "type": type,
-                "mix": mix,
-                "expand": expand,
-                "red": red,
-                "green": green,
-                "blue": blue,
-                "brightness": brightness,
-                "alpha": alpha,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "type": type,
+                        "mix": mix,
+                        "expand": expand,
+                        "red": red,
+                        "green": green,
+                        "blue": blue,
+                        "brightness": brightness,
+                        "alpha": alpha,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5859,17 +6005,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="detelecine",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "first_field": first_field,
-                "pattern": pattern,
-                "start_frame": start_frame,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "first_field": first_field,
+                        "pattern": pattern,
+                        "start_frame": start_frame,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5923,19 +6071,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dilation",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "coordinates": coordinates,
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "coordinates": coordinates,
+                        "threshold0": threshold0,
+                        "threshold1": threshold1,
+                        "threshold2": threshold2,
+                        "threshold3": threshold3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -5989,19 +6139,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dilation_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-                "coordinates": coordinates,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold0": threshold0,
+                        "threshold1": threshold1,
+                        "threshold2": threshold2,
+                        "threshold3": threshold3,
+                        "coordinates": coordinates,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6048,17 +6200,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="displace",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _xmap,
                 _ymap,
-            ],
-            kwargs={
-                "edge": edge,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "edge": edge,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6132,23 +6288,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dnn_classify",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "input": input,
-                "output": output,
-                "backend_configs": backend_configs,
-                "async": _async,
-                "confidence": confidence,
-                "labels": labels,
-                "target": target,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dnn_backend": dnn_backend,
+                        "model": model,
+                        "input": input,
+                        "output": output,
+                        "backend_configs": backend_configs,
+                        "async": _async,
+                        "confidence": confidence,
+                        "labels": labels,
+                        "target": target,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6230,27 +6388,29 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dnn_detect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "input": input,
-                "output": output,
-                "backend_configs": backend_configs,
-                "async": _async,
-                "confidence": confidence,
-                "labels": labels,
-                "model_type": model_type,
-                "cell_w": cell_w,
-                "cell_h": cell_h,
-                "nb_classes": nb_classes,
-                "anchors": anchors,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dnn_backend": dnn_backend,
+                        "model": model,
+                        "input": input,
+                        "output": output,
+                        "backend_configs": backend_configs,
+                        "async": _async,
+                        "confidence": confidence,
+                        "labels": labels,
+                        "model_type": model_type,
+                        "cell_w": cell_w,
+                        "cell_h": cell_h,
+                        "nb_classes": nb_classes,
+                        "anchors": anchors,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6312,20 +6472,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dnn_processing",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "input": input,
-                "output": output,
-                "backend_configs": backend_configs,
-                "async": _async,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dnn_backend": dnn_backend,
+                        "model": model,
+                        "input": input,
+                        "output": output,
+                        "backend_configs": backend_configs,
+                        "async": _async,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6361,15 +6523,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="doubleweave",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "first_field": first_field,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "first_field": first_field,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6480,22 +6644,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drawbox",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "width": width,
-                "height": height,
-                "color": color,
-                "thickness": thickness,
-                "replace": replace,
-                "box_source": box_source,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "width": width,
+                        "height": height,
+                        "color": color,
+                        "thickness": thickness,
+                        "replace": replace,
+                        "box_source": box_source,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6627,29 +6793,31 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drawgraph",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "m1": m1,
-                "fg1": fg1,
-                "m2": m2,
-                "fg2": fg2,
-                "m3": m3,
-                "fg3": fg3,
-                "m4": m4,
-                "fg4": fg4,
-                "bg": bg,
-                "min": min,
-                "max": max,
-                "mode": mode,
-                "slide": slide,
-                "size": size,
-                "rate": rate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "m1": m1,
+                        "fg1": fg1,
+                        "m2": m2,
+                        "fg2": fg2,
+                        "m3": m3,
+                        "fg3": fg3,
+                        "m4": m4,
+                        "fg4": fg4,
+                        "bg": bg,
+                        "min": min,
+                        "max": max,
+                        "mode": mode,
+                        "slide": slide,
+                        "size": size,
+                        "rate": rate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6754,21 +6922,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drawgrid",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "width": width,
-                "height": height,
-                "color": color,
-                "thickness": thickness,
-                "replace": replace,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "width": width,
+                        "height": height,
+                        "color": color,
+                        "thickness": thickness,
+                        "replace": replace,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6867,47 +7037,49 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drawtext",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "fontfile": fontfile,
-                "text": text,
-                "textfile": textfile,
-                "fontcolor": fontcolor,
-                "fontcolor_expr": fontcolor_expr,
-                "boxcolor": boxcolor,
-                "bordercolor": bordercolor,
-                "shadowcolor": shadowcolor,
-                "box": box,
-                "boxborderw": boxborderw,
-                "line_spacing": line_spacing,
-                "fontsize": fontsize,
-                "text_align": text_align,
-                "x": x,
-                "y": y,
-                "boxw": boxw,
-                "boxh": boxh,
-                "shadowx": shadowx,
-                "shadowy": shadowy,
-                "borderw": borderw,
-                "tabsize": tabsize,
-                "basetime": basetime,
-                "expansion": expansion,
-                "y_align": y_align,
-                "timecode": timecode,
-                "tc24hmax": tc24hmax,
-                "timecode_rate": timecode_rate,
-                "reload": reload,
-                "alpha": alpha,
-                "fix_bounds": fix_bounds,
-                "start_number": start_number,
-                "text_source": text_source,
-                "ft_load_flags": ft_load_flags,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "fontfile": fontfile,
+                        "text": text,
+                        "textfile": textfile,
+                        "fontcolor": fontcolor,
+                        "fontcolor_expr": fontcolor_expr,
+                        "boxcolor": boxcolor,
+                        "bordercolor": bordercolor,
+                        "shadowcolor": shadowcolor,
+                        "box": box,
+                        "boxborderw": boxborderw,
+                        "line_spacing": line_spacing,
+                        "fontsize": fontsize,
+                        "text_align": text_align,
+                        "x": x,
+                        "y": y,
+                        "boxw": boxw,
+                        "boxh": boxh,
+                        "shadowx": shadowx,
+                        "shadowy": shadowy,
+                        "borderw": borderw,
+                        "tabsize": tabsize,
+                        "basetime": basetime,
+                        "expansion": expansion,
+                        "y_align": y_align,
+                        "timecode": timecode,
+                        "tc24hmax": tc24hmax,
+                        "timecode_rate": timecode_rate,
+                        "reload": reload,
+                        "alpha": alpha,
+                        "fix_bounds": fix_bounds,
+                        "start_number": start_number,
+                        "text_source": text_source,
+                        "ft_load_flags": ft_load_flags,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6957,18 +7129,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="edgedetect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "high": high,
-                "low": low,
-                "mode": mode,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "high": high,
+                        "low": low,
+                        "mode": mode,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7030,19 +7204,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="elbg",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "codebook_length": codebook_length,
-                "nb_steps": nb_steps,
-                "seed": seed,
-                "pal8": pal8,
-                "use_alpha": use_alpha,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "codebook_length": codebook_length,
+                        "nb_steps": nb_steps,
+                        "seed": seed,
+                        "pal8": pal8,
+                        "use_alpha": use_alpha,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7073,15 +7249,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="entropy",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7110,15 +7288,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="epx",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "n": n,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "n": n,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7218,23 +7398,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="eq",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "contrast": contrast,
-                "brightness": brightness,
-                "saturation": saturation,
-                "gamma": gamma,
-                "gamma_r": gamma_r,
-                "gamma_g": gamma_g,
-                "gamma_b": gamma_b,
-                "gamma_weight": gamma_weight,
-                "eval": eval,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "contrast": contrast,
+                        "brightness": brightness,
+                        "saturation": saturation,
+                        "gamma": gamma,
+                        "gamma_r": gamma_r,
+                        "gamma_g": gamma_g,
+                        "gamma_b": gamma_b,
+                        "gamma_weight": gamma_weight,
+                        "eval": eval,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7288,19 +7470,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="erosion",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "coordinates": coordinates,
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "coordinates": coordinates,
+                        "threshold0": threshold0,
+                        "threshold1": threshold1,
+                        "threshold2": threshold2,
+                        "threshold3": threshold3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7354,19 +7538,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="erosion_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-                "coordinates": coordinates,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold0": threshold0,
+                        "threshold1": threshold1,
+                        "threshold2": threshold2,
+                        "threshold3": threshold3,
+                        "coordinates": coordinates,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7450,23 +7636,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="estdif",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-                "rslope": rslope,
-                "redge": redge,
-                "ecost": ecost,
-                "mcost": mcost,
-                "dcost": dcost,
-                "interp": interp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "parity": parity,
+                        "deint": deint,
+                        "rslope": rslope,
+                        "redge": redge,
+                        "ecost": ecost,
+                        "mcost": mcost,
+                        "dcost": dcost,
+                        "interp": interp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7506,16 +7694,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="exposure",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "exposure": exposure,
-                "black": black,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "exposure": exposure,
+                        "black": black,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7547,15 +7737,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="extractplanes",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video] * len(planes.split("+")),
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video] * len(planes.split("+"))),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -7626,21 +7818,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fade",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "type": type,
-                "start_frame": start_frame,
-                "nb_frames": nb_frames,
-                "alpha": alpha,
-                "start_time": start_time,
-                "duration": duration,
-                "color": color,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "type": type,
+                        "start_frame": start_frame,
+                        "nb_frames": nb_frames,
+                        "alpha": alpha,
+                        "start_time": start_time,
+                        "duration": duration,
+                        "color": color,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7696,19 +7890,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="feedback",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video, StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video, StreamType.video]),
+            inputs=(
                 self,
                 _feedin,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "w": w,
+                        "h": h,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return (
             filter_node.video(0),
@@ -7814,23 +8012,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fftdnoiz",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sigma": sigma,
-                "amount": amount,
-                "block": block,
-                "overlap": overlap,
-                "method": method,
-                "prev": prev,
-                "next": next,
-                "planes": planes,
-                "window": window,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sigma": sigma,
+                        "amount": amount,
+                        "block": block,
+                        "overlap": overlap,
+                        "method": method,
+                        "prev": prev,
+                        "next": next,
+                        "planes": planes,
+                        "window": window,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7920,21 +8120,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fftfilt",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dc_Y": dc_Y,
-                "dc_U": dc_U,
-                "dc_V": dc_V,
-                "weight_Y": weight_Y,
-                "weight_U": weight_U,
-                "weight_V": weight_V,
-                "eval": eval,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dc_Y": dc_Y,
+                        "dc_U": dc_U,
+                        "dc_V": dc_V,
+                        "weight_Y": weight_Y,
+                        "weight_U": weight_U,
+                        "weight_V": weight_V,
+                        "eval": eval,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -7966,15 +8168,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="field",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "type": type,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "type": type,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8034,16 +8238,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fieldhint",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "hint": hint,
-                "mode": mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "hint": hint,
+                        "mode": mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8092,15 +8298,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fieldorder",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "order": order,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "order": order,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8126,12 +8334,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fifo",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -8199,20 +8405,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fillborders",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "left": left,
-                "right": right,
-                "top": top,
-                "bottom": bottom,
-                "mode": mode,
-                "color": color,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "left": left,
+                        "right": right,
+                        "top": top,
+                        "bottom": bottom,
+                        "mode": mode,
+                        "color": color,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8308,22 +8516,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="find_rect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "object": object,
-                "threshold": threshold,
-                "mipmaps": mipmaps,
-                "xmin": xmin,
-                "ymin": ymin,
-                "xmax": xmax,
-                "ymax": ymax,
-                "discard": discard,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "object": object,
+                        "threshold": threshold,
+                        "mipmaps": mipmaps,
+                        "xmin": xmin,
+                        "ymin": ymin,
+                        "xmax": xmax,
+                        "ymax": ymax,
+                        "discard": discard,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8345,12 +8555,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="flip_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -8438,24 +8646,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="floodfill",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "s0": s0,
-                "s1": s1,
-                "s2": s2,
-                "s3": s3,
-                "d0": d0,
-                "d1": d1,
-                "d2": d2,
-                "d3": d3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "s0": s0,
+                        "s1": s1,
+                        "s2": s2,
+                        "s3": s3,
+                        "d0": d0,
+                        "d1": d1,
+                        "d2": d2,
+                        "d3": d3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8485,15 +8695,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="format",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "pix_fmts": pix_fmts,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "pix_fmts": pix_fmts,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8551,18 +8763,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fps",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "fps": fps,
-                "start_time": start_time,
-                "round": round,
-                "eof_action": eof_action,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "fps": fps,
+                        "start_time": start_time,
+                        "round": round,
+                        "eof_action": eof_action,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8612,16 +8826,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="framepack",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _right,
-            ],
-            kwargs={
-                "format": format,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "format": format,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8684,19 +8902,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="framerate",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "fps": fps,
-                "interp_start": interp_start,
-                "interp_end": interp_end,
-                "scene": scene,
-                "flags": flags,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "fps": fps,
+                        "interp_start": interp_start,
+                        "interp_end": interp_end,
+                        "scene": scene,
+                        "flags": flags,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8725,15 +8945,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="framestep",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "step": step,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "step": step,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8781,16 +9003,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="freezedetect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "n": n,
-                "d": d,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "n": n,
+                        "d": d,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8839,18 +9063,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="freezeframes",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _replace,
-            ],
-            kwargs={
-                "first": first,
-                "last": last,
-                "replace": replace,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "first": first,
+                        "last": last,
+                        "replace": replace,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8903,16 +9131,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="frei0r",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "filter_name": filter_name,
-                "filter_params": filter_params,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "filter_name": filter_name,
+                        "filter_params": filter_params,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -8968,18 +9198,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="fspp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "quality": quality,
-                "qp": qp,
-                "strength": strength,
-                "use_bframe_qp": use_bframe_qp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "quality": quality,
+                        "qp": qp,
+                        "strength": strength,
+                        "use_bframe_qp": use_bframe_qp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9031,18 +9263,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="gblur",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sigma": sigma,
-                "steps": steps,
-                "planes": planes,
-                "sigmaV": sigmaV,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sigma": sigma,
+                        "steps": steps,
+                        "planes": planes,
+                        "sigmaV": sigmaV,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9100,19 +9334,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="gblur_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sigma": sigma,
-                "sigmaV": sigmaV,
-                "planes": planes,
-                "size": size,
-                "sizeV": sizeV,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sigma": sigma,
+                        "sigmaV": sigmaV,
+                        "planes": planes,
+                        "size": size,
+                        "sizeV": sizeV,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9267,22 +9503,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="geq",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "lum_expr": lum_expr,
-                "cb_expr": cb_expr,
-                "cr_expr": cr_expr,
-                "alpha_expr": alpha_expr,
-                "red_expr": red_expr,
-                "green_expr": green_expr,
-                "blue_expr": blue_expr,
-                "interpolation": interpolation,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "lum_expr": lum_expr,
+                        "cb_expr": cb_expr,
+                        "cr_expr": cr_expr,
+                        "alpha_expr": alpha_expr,
+                        "red_expr": red_expr,
+                        "green_expr": green_expr,
+                        "blue_expr": blue_expr,
+                        "interpolation": interpolation,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9330,16 +9568,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="gradfun",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "strength": strength,
-                "radius": radius,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "strength": strength,
+                        "radius": radius,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9422,19 +9662,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="graphmonitor",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "opacity": opacity,
-                "mode": mode,
-                "flags": flags,
-                "rate": rate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "opacity": opacity,
+                        "mode": mode,
+                        "flags": flags,
+                        "rate": rate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9468,12 +9710,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="grayworld",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -9522,17 +9762,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="greyedge",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "difford": difford,
-                "minknorm": minknorm,
-                "sigma": sigma,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "difford": difford,
+                        "minknorm": minknorm,
+                        "sigma": sigma,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9590,17 +9832,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="haldclut",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _clut,
-            ],
-            kwargs={
-                "clut": clut,
-                "interp": interp,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "clut": clut,
+                        "interp": interp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9629,12 +9875,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hflip",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -9656,12 +9900,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hflip_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -9714,17 +9956,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="histeq",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "strength": strength,
-                "intensity": intensity,
-                "antibanding": antibanding,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "strength": strength,
+                        "intensity": intensity,
+                        "antibanding": antibanding,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9821,22 +10065,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="histogram",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_height": level_height,
-                "scale_height": scale_height,
-                "display_mode": display_mode,
-                "levels_mode": levels_mode,
-                "components": components,
-                "fgopacity": fgopacity,
-                "bgopacity": bgopacity,
-                "colors_mode": colors_mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_height": level_height,
+                        "scale_height": scale_height,
+                        "display_mode": display_mode,
+                        "levels_mode": levels_mode,
+                        "components": components,
+                        "fgopacity": fgopacity,
+                        "bgopacity": bgopacity,
+                        "colors_mode": colors_mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9890,18 +10136,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hqdn3d",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "luma_spatial": luma_spatial,
-                "chroma_spatial": chroma_spatial,
-                "luma_tmp": luma_tmp,
-                "chroma_tmp": chroma_tmp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "luma_spatial": luma_spatial,
+                        "chroma_spatial": chroma_spatial,
+                        "luma_tmp": luma_tmp,
+                        "chroma_tmp": chroma_tmp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -9931,15 +10179,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hqx",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "n": n,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "n": n,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10001,19 +10251,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hsvhold",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "hue": hue,
-                "sat": sat,
-                "val": val,
-                "similarity": similarity,
-                "blend": blend,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "hue": hue,
+                        "sat": sat,
+                        "val": val,
+                        "similarity": similarity,
+                        "blend": blend,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10075,19 +10327,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hsvkey",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "hue": hue,
-                "sat": sat,
-                "val": val,
-                "similarity": similarity,
-                "blend": blend,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "hue": hue,
+                        "sat": sat,
+                        "val": val,
+                        "similarity": similarity,
+                        "blend": blend,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10164,18 +10418,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hue",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "h": h,
-                "s": s,
-                "H": H,
-                "b": b,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "h": h,
+                        "s": s,
+                        "H": H,
+                        "b": b,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10251,23 +10507,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="huesaturation",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "hue": hue,
-                "saturation": saturation,
-                "intensity": intensity,
-                "colors": colors,
-                "strength": strength,
-                "rw": rw,
-                "gw": gw,
-                "bw": bw,
-                "lightness": lightness,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "hue": hue,
+                        "saturation": saturation,
+                        "intensity": intensity,
+                        "colors": colors,
+                        "strength": strength,
+                        "rw": rw,
+                        "gw": gw,
+                        "bw": bw,
+                        "lightness": lightness,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10294,12 +10552,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hwdownload",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -10382,17 +10638,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hwmap",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "derive_device": derive_device,
-                "reverse": reverse,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "derive_device": derive_device,
+                        "reverse": reverse,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10428,15 +10686,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hwupload",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "derive_device": derive_device,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "derive_device": derive_device,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10465,15 +10725,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hwupload_cuda",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "device": device,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "device": device,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10517,17 +10779,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hysteresis",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _alt,
-            ],
-            kwargs={
-                "planes": planes,
-                "threshold": threshold,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "threshold": threshold,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10557,15 +10823,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="iccdetect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "force": force,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "force": force,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10642,17 +10910,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="iccgen",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "color_primaries": color_primaries,
-                "color_trc": color_trc,
-                "force": force,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "color_primaries": color_primaries,
+                        "color_trc": color_trc,
+                        "force": force,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10696,13 +10966,13 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="identity",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -10826,19 +11096,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="idet",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "intl_thres": intl_thres,
-                "prog_thres": prog_thres,
-                "rep_thres": rep_thres,
-                "half_life": half_life,
-                "analyze_interlaced_flag": analyze_interlaced_flag,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "intl_thres": intl_thres,
+                        "prog_thres": prog_thres,
+                        "rep_thres": rep_thres,
+                        "half_life": half_life,
+                        "analyze_interlaced_flag": analyze_interlaced_flag,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10900,20 +11172,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="il",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "luma_mode": luma_mode,
-                "chroma_mode": chroma_mode,
-                "alpha_mode": alpha_mode,
-                "luma_swap": luma_swap,
-                "chroma_swap": chroma_swap,
-                "alpha_swap": alpha_swap,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "luma_mode": luma_mode,
+                        "chroma_mode": chroma_mode,
+                        "alpha_mode": alpha_mode,
+                        "luma_swap": luma_swap,
+                        "chroma_swap": chroma_swap,
+                        "alpha_swap": alpha_swap,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10962,18 +11236,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="inflate",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold0": threshold0,
+                        "threshold1": threshold1,
+                        "threshold2": threshold2,
+                        "threshold3": threshold3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11028,16 +11304,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="interlace",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "scan": scan,
-                "lowpass": lowpass,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "scan": scan,
+                        "lowpass": lowpass,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11097,19 +11375,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="kerndeint",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "thresh": thresh,
-                "map": map,
-                "order": order,
-                "sharp": sharp,
-                "twoway": twoway,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "thresh": thresh,
+                        "map": map,
+                        "order": order,
+                        "sharp": sharp,
+                        "twoway": twoway,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11155,17 +11435,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="kirsch",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "scale": scale,
+                        "delta": delta,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11206,16 +11488,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lagfun",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "decay": decay,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "decay": decay,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11243,12 +11527,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="latency",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -11302,20 +11584,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lenscorrection",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cx": cx,
-                "cy": cy,
-                "k1": k1,
-                "k2": k2,
-                "i": i,
-                "fc": fc,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cx": cx,
+                        "cy": cy,
+                        "k1": k1,
+                        "k2": k2,
+                        "i": i,
+                        "fc": fc,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11446,26 +11730,28 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lensfun",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "make": make,
-                "model": model,
-                "lens_model": lens_model,
-                "db_path": db_path,
-                "mode": mode,
-                "focal_length": focal_length,
-                "aperture": aperture,
-                "focus_distance": focus_distance,
-                "scale": scale,
-                "target_geometry": target_geometry,
-                "reverse": reverse,
-                "interpolation": interpolation,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "make": make,
+                        "model": model,
+                        "lens_model": lens_model,
+                        "db_path": db_path,
+                        "mode": mode,
+                        "focal_length": focal_length,
+                        "aperture": aperture,
+                        "focus_distance": focus_distance,
+                        "scale": scale,
+                        "target_geometry": target_geometry,
+                        "reverse": reverse,
+                        "interpolation": interpolation,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11548,22 +11834,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="libvmaf",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={
-                "log_path": log_path,
-                "log_fmt": log_fmt,
-                "pool": pool,
-                "n_threads": n_threads,
-                "n_subsample": n_subsample,
-                "model": model,
-                "feature": feature,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "log_path": log_path,
+                        "log_fmt": log_fmt,
+                        "pool": pool,
+                        "n_threads": n_threads,
+                        "n_subsample": n_subsample,
+                        "model": model,
+                        "feature": feature,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11608,22 +11898,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="libvmaf_cuda",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={
-                "log_path": log_path,
-                "log_fmt": log_fmt,
-                "pool": pool,
-                "n_threads": n_threads,
-                "n_subsample": n_subsample,
-                "model": model,
-                "feature": feature,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "log_path": log_path,
+                        "log_fmt": log_fmt,
+                        "pool": pool,
+                        "n_threads": n_threads,
+                        "n_subsample": n_subsample,
+                        "model": model,
+                        "feature": feature,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11669,17 +11963,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="limiter",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "min": min,
-                "max": max,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "min": min,
+                        "max": max,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11731,18 +12027,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="loop",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "loop": loop,
-                "size": size,
-                "start": start,
-                "time": time,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "loop": loop,
+                        "size": size,
+                        "start": start,
+                        "time": time,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11788,17 +12086,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lumakey",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold": threshold,
-                "tolerance": tolerance,
-                "softness": softness,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold": threshold,
+                        "tolerance": tolerance,
+                        "softness": softness,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11929,18 +12229,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lut",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "c0": c0,
+                        "c1": c1,
+                        "c2": c2,
+                        "c3": c3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11980,16 +12282,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lut1d",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "file": file,
-                "interp": interp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "file": file,
+                        "interp": interp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12085,20 +12389,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lut2",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _srcy,
-            ],
-            kwargs={
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-                "d": d,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "c0": c0,
+                        "c1": c1,
+                        "c2": c2,
+                        "c3": c3,
+                        "d": d,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12142,17 +12450,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lut3d",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "file": file,
-                "clut": clut,
-                "interp": interp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "file": file,
+                        "clut": clut,
+                        "interp": interp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12283,18 +12593,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lutrgb",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "c0": c0,
+                        "c1": c1,
+                        "c2": c2,
+                        "c3": c3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12425,18 +12737,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lutyuv",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "c0": c0,
+                        "c1": c1,
+                        "c2": c2,
+                        "c3": c3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12487,19 +12801,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedclamp",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _dark,
                 _bright,
-            ],
-            kwargs={
-                "undershoot": undershoot,
-                "overshoot": overshoot,
-                "planes": planes,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "undershoot": undershoot,
+                        "overshoot": overshoot,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12539,17 +12857,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedmax",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _filter1,
                 _filter2,
-            ],
-            kwargs={
-                "planes": planes,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12592,17 +12914,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedmerge",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _overlay,
                 _mask,
-            ],
-            kwargs={
-                "planes": planes,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12642,17 +12968,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedmin",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _filter1,
                 _filter2,
-            ],
-            kwargs={
-                "planes": planes,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12705,18 +13035,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskedthreshold",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={
-                "threshold": threshold,
-                "planes": planes,
-                "mode": mode,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold": threshold,
+                        "planes": planes,
+                        "mode": mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12776,19 +13110,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="maskfun",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "low": low,
-                "high": high,
-                "planes": planes,
-                "fill": fill,
-                "sum": sum,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "low": low,
+                        "high": high,
+                        "planes": planes,
+                        "fill": fill,
+                        "sum": sum,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12837,17 +13173,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mcdeint",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "parity": parity,
-                "qp": qp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "parity": parity,
+                        "qp": qp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12899,18 +13237,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="median",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "radius": radius,
-                "planes": planes,
-                "radiusV": radiusV,
-                "percentile": percentile,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "radius": radius,
+                        "planes": planes,
+                        "radiusV": radiusV,
+                        "percentile": percentile,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -12959,17 +13299,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mestimate",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "method": method,
-                "mb_size": mb_size,
-                "search_param": search_param,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "method": method,
+                        "mb_size": mb_size,
+                        "search_param": search_param,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13041,21 +13383,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="metadata",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "key": key,
-                "value": value,
-                "function": function,
-                "expr": expr,
-                "file": file,
-                "direct": direct,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "key": key,
+                        "value": value,
+                        "function": function,
+                        "expr": expr,
+                        "file": file,
+                        "direct": direct,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13094,16 +13438,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="midequalizer",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _in1,
-            ],
-            kwargs={
-                "planes": planes,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13169,24 +13517,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="minterpolate",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "fps": fps,
-                "mi_mode": mi_mode,
-                "mc_mode": mc_mode,
-                "me_mode": me_mode,
-                "me": me,
-                "mb_size": mb_size,
-                "search_param": search_param,
-                "vsbmc": vsbmc,
-                "scd": scd,
-                "scd_threshold": scd_threshold,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "fps": fps,
+                        "mi_mode": mi_mode,
+                        "mc_mode": mc_mode,
+                        "me_mode": me_mode,
+                        "me": me,
+                        "mb_size": mb_size,
+                        "search_param": search_param,
+                        "vsbmc": vsbmc,
+                        "scd": scd,
+                        "scd_threshold": scd_threshold,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13238,18 +13588,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="monochrome",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cb": cb,
-                "cr": cr,
-                "size": size,
-                "high": high,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cb": cb,
+                        "cr": cr,
+                        "size": size,
+                        "high": high,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13305,18 +13657,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="morpho",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _structure,
-            ],
-            kwargs={
-                "mode": mode,
-                "planes": planes,
-                "structure": structure,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "planes": planes,
+                        "structure": structure,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13375,19 +13731,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mpdecimate",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "max": max,
-                "keep": keep,
-                "hi": hi,
-                "lo": lo,
-                "frac": frac,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "max": max,
+                        "keep": keep,
+                        "hi": hi,
+                        "lo": lo,
+                        "frac": frac,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13430,13 +13788,13 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="msad",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -13484,18 +13842,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="multiply",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _factor,
-            ],
-            kwargs={
-                "scale": scale,
-                "offset": offset,
-                "planes": planes,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "scale": scale,
+                        "offset": offset,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13535,16 +13897,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="negate",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "components": components,
-                "negate_alpha": negate_alpha,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "components": components,
+                        "negate_alpha": negate_alpha,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13609,19 +13973,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="nlmeans",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "s": s,
-                "p": p,
-                "pc": pc,
-                "r": r,
-                "rc": rc,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "s": s,
+                        "p": p,
+                        "pc": pc,
+                        "r": r,
+                        "rc": rc,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13658,19 +14024,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="nlmeans_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "s": s,
-                "p": p,
-                "pc": pc,
-                "r": r,
-                "rc": rc,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "s": s,
+                        "p": p,
+                        "pc": pc,
+                        "r": r,
+                        "rc": rc,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13760,26 +14128,28 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="nlmeans_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "s": s,
-                "p": p,
-                "r": r,
-                "t": t,
-                "s1": s1,
-                "s2": s2,
-                "s3": s3,
-                "s4": s4,
-                "p1": p1,
-                "p2": p2,
-                "p3": p3,
-                "p4": p4,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "s": s,
+                        "p": p,
+                        "r": r,
+                        "t": t,
+                        "s1": s1,
+                        "s2": s2,
+                        "s3": s3,
+                        "s4": s4,
+                        "p1": p1,
+                        "p2": p2,
+                        "p3": p3,
+                        "p4": p4,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13863,23 +14233,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="nnedi",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "weights": weights,
-                "deint": deint,
-                "field": field,
-                "planes": planes,
-                "nsize": nsize,
-                "nns": nns,
-                "qual": qual,
-                "etype": etype,
-                "pscrn": pscrn,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "weights": weights,
+                        "deint": deint,
+                        "field": field,
+                        "planes": planes,
+                        "nsize": nsize,
+                        "nns": nns,
+                        "qual": qual,
+                        "etype": etype,
+                        "pscrn": pscrn,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -13909,15 +14281,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="noformat",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "pix_fmts": pix_fmts,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "pix_fmts": pix_fmts,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14011,29 +14385,31 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="noise",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "all_seed": all_seed,
-                "all_strength": all_strength,
-                "all_flags": all_flags,
-                "c0_seed": c0_seed,
-                "c0_strength": c0_strength,
-                "c0_flags": c0_flags,
-                "c1_seed": c1_seed,
-                "c1_strength": c1_strength,
-                "c1_flags": c1_flags,
-                "c2_seed": c2_seed,
-                "c2_strength": c2_strength,
-                "c2_flags": c2_flags,
-                "c3_seed": c3_seed,
-                "c3_strength": c3_strength,
-                "c3_flags": c3_flags,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "all_seed": all_seed,
+                        "all_strength": all_strength,
+                        "all_flags": all_flags,
+                        "c0_seed": c0_seed,
+                        "c0_strength": c0_strength,
+                        "c0_flags": c0_flags,
+                        "c1_seed": c1_seed,
+                        "c1_strength": c1_strength,
+                        "c1_flags": c1_flags,
+                        "c2_seed": c2_seed,
+                        "c2_strength": c2_strength,
+                        "c2_flags": c2_flags,
+                        "c3_seed": c3_seed,
+                        "c3_strength": c3_strength,
+                        "c3_flags": c3_flags,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14106,19 +14482,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="normalize",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "blackpt": blackpt,
-                "whitept": whitept,
-                "smoothing": smoothing,
-                "independence": independence,
-                "strength": strength,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "blackpt": blackpt,
+                        "whitept": whitept,
+                        "smoothing": smoothing,
+                        "independence": independence,
+                        "strength": strength,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14140,12 +14518,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="null",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -14208,18 +14584,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ocr",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "datapath": datapath,
-                "language": language,
-                "whitelist": whitelist,
-                "blacklist": blacklist,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "datapath": datapath,
+                        "language": language,
+                        "whitelist": whitelist,
+                        "blacklist": blacklist,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14267,16 +14645,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ocv",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "filter_name": filter_name,
-                "filter_params": filter_params,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "filter_name": filter_name,
+                        "filter_params": filter_params,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14384,27 +14764,29 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="oscilloscope",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "s": s,
-                "t": t,
-                "o": o,
-                "tx": tx,
-                "ty": ty,
-                "tw": tw,
-                "th": th,
-                "c": c,
-                "g": g,
-                "st": st,
-                "sc": sc,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "s": s,
+                        "t": t,
+                        "o": o,
+                        "tx": tx,
+                        "ty": ty,
+                        "tw": tw,
+                        "th": th,
+                        "c": c,
+                        "g": g,
+                        "st": st,
+                        "sc": sc,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14535,23 +14917,27 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _overlay,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "eof_action": eof_action,
-                "eval": eval,
-                "shortest": shortest,
-                "format": format,
-                "repeatlast": repeatlast,
-                "alpha": alpha,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "eof_action": eof_action,
+                        "eval": eval,
+                        "shortest": shortest,
+                        "format": format,
+                        "repeatlast": repeatlast,
+                        "alpha": alpha,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14622,21 +15008,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay_cuda",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _overlay,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "eof_action": eof_action,
-                "eval": eval,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "eof_action": eof_action,
+                        "eval": eval,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14681,17 +15071,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay_opencl",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _overlay,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14769,23 +15163,27 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay_vaapi",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _overlay,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "alpha": alpha,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "w": w,
+                        "h": h,
+                        "alpha": alpha,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14830,17 +15228,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="overlay_vulkan",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _overlay,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -14886,17 +15288,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="owdenoise",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "depth": depth,
-                "luma_strength": luma_strength,
-                "chroma_strength": chroma_strength,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "depth": depth,
+                        "luma_strength": luma_strength,
+                        "chroma_strength": chroma_strength,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15014,21 +15418,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pad",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "width": width,
-                "height": height,
-                "x": x,
-                "y": y,
-                "color": color,
-                "eval": eval,
-                "aspect": aspect,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "width": width,
+                        "height": height,
+                        "x": x,
+                        "y": y,
+                        "color": color,
+                        "eval": eval,
+                        "aspect": aspect,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15134,20 +15540,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pad_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "width": width,
-                "height": height,
-                "x": x,
-                "y": y,
-                "color": color,
-                "aspect": aspect,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "width": width,
+                        "height": height,
+                        "x": x,
+                        "y": y,
+                        "color": color,
+                        "aspect": aspect,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15204,18 +15612,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="palettegen",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "max_colors": max_colors,
-                "reserve_transparent": reserve_transparent,
-                "transparency_color": transparency_color,
-                "stats_mode": stats_mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "max_colors": max_colors,
+                        "reserve_transparent": reserve_transparent,
+                        "transparency_color": transparency_color,
+                        "stats_mode": stats_mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15281,21 +15691,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="paletteuse",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _palette,
-            ],
-            kwargs={
-                "dither": dither,
-                "bayer_scale": bayer_scale,
-                "diff_mode": diff_mode,
-                "new": new,
-                "alpha_threshold": alpha_threshold,
-                "debug_kdtree": debug_kdtree,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "dither": dither,
+                        "bayer_scale": bayer_scale,
+                        "diff_mode": diff_mode,
+                        "new": new,
+                        "alpha_threshold": alpha_threshold,
+                        "debug_kdtree": debug_kdtree,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15343,16 +15757,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="perms",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "seed": seed,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "seed": seed,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15432,25 +15848,27 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="perspective",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x0": x0,
-                "y0": y0,
-                "x1": x1,
-                "y1": y1,
-                "x2": x2,
-                "y2": y2,
-                "x3": x3,
-                "y3": y3,
-                "interpolation": interpolation,
-                "sense": sense,
-                "eval": eval,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x0": x0,
+                        "y0": y0,
+                        "x1": x1,
+                        "y1": y1,
+                        "x2": x2,
+                        "y2": y2,
+                        "x3": x3,
+                        "y3": y3,
+                        "interpolation": interpolation,
+                        "sense": sense,
+                        "eval": eval,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15487,15 +15905,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="phase",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15547,18 +15967,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="photosensitivity",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frames": frames,
-                "threshold": threshold,
-                "skip": skip,
-                "bypass": bypass,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frames": frames,
+                        "threshold": threshold,
+                        "skip": skip,
+                        "bypass": bypass,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15590,12 +16012,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pixdesctest",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -15645,18 +16065,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pixelize",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "width": width,
-                "height": height,
-                "mode": mode,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "width": width,
+                        "height": height,
+                        "mode": mode,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15727,21 +16149,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pixscope",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "o": o,
-                "wx": wx,
-                "wy": wy,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "x": x,
+                        "y": y,
+                        "w": w,
+                        "h": h,
+                        "o": o,
+                        "wx": wx,
+                        "wy": wy,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15876,15 +16300,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "subfilters": subfilters,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "subfilters": subfilters,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15925,16 +16351,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pp7",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "qp": qp,
-                "mode": mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "qp": qp,
+                        "mode": mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -15980,17 +16408,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="prewitt",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "scale": scale,
+                        "delta": delta,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16037,17 +16467,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="prewitt_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "scale": scale,
+                        "delta": delta,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16167,21 +16599,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pseudocolor",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-                "index": index,
-                "preset": preset,
-                "opacity": opacity,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "c0": c0,
+                        "c1": c1,
+                        "c2": c2,
+                        "c3": c3,
+                        "index": index,
+                        "preset": preset,
+                        "opacity": opacity,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16289,18 +16723,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="psnr",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={
-                "stats_file": stats_file,
-                "stats_version": stats_version,
-                "output_max": output_max,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "stats_file": stats_file,
+                        "stats_version": stats_version,
+                        "output_max": output_max,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16377,20 +16815,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pullup",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "jl": jl,
-                "jr": jr,
-                "jt": jt,
-                "jb": jb,
-                "sb": sb,
-                "mp": mp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "jl": jl,
+                        "jr": jr,
+                        "jt": jt,
+                        "jb": jb,
+                        "sb": sb,
+                        "mp": mp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16430,15 +16870,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="qp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "qp": qp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "qp": qp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16473,16 +16915,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="random",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frames": frames,
-                "seed": seed,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frames": frames,
+                        "seed": seed,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16553,19 +16997,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="readeia608",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "scan_min": scan_min,
-                "scan_max": scan_max,
-                "spw": spw,
-                "chp": chp,
-                "lp": lp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "scan_min": scan_min,
+                        "scan_max": scan_max,
+                        "spw": spw,
+                        "chp": chp,
+                        "lp": lp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16617,17 +17063,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="readvitc",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "scan_max": scan_max,
-                "thr_b": thr_b,
-                "thr_w": thr_w,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "scan_max": scan_max,
+                        "thr_b": thr_b,
+                        "thr_w": thr_w,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16671,16 +17119,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="realtime",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "limit": limit,
-                "speed": speed,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "limit": limit,
+                        "speed": speed,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16728,18 +17178,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="remap",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _xmap,
                 _ymap,
-            ],
-            kwargs={
-                "format": format,
-                "fill": fill,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "format": format,
+                        "fill": fill,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16787,18 +17241,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="remap_opencl",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _xmap,
                 _ymap,
-            ],
-            kwargs={
-                "interp": interp,
-                "fill": fill,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "interp": interp,
+                        "fill": fill,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -16950,18 +17408,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="removegrain",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "m0": m0,
-                "m1": m1,
-                "m2": m2,
-                "m3": m3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "m0": m0,
+                        "m1": m1,
+                        "m2": m2,
+                        "m3": m3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -17006,15 +17466,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="removelogo",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "filename": filename,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "filename": filename,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -17037,12 +17499,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="repeatfields",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -17067,12 +17527,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="reverse",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -17154,23 +17612,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="rgbashift",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rh": rh,
-                "rv": rv,
-                "gh": gh,
-                "gv": gv,
-                "bh": bh,
-                "bv": bv,
-                "ah": ah,
-                "av": av,
-                "edge": edge,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rh": rh,
+                        "rv": rv,
+                        "gh": gh,
+                        "gv": gv,
+                        "bh": bh,
+                        "bv": bv,
+                        "ah": ah,
+                        "av": av,
+                        "edge": edge,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -17216,17 +17676,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="roberts",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "scale": scale,
+                        "delta": delta,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -17273,17 +17735,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="roberts_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "scale": scale,
+                        "delta": delta,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -17378,19 +17842,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="rotate",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "angle": angle,
-                "out_w": out_w,
-                "out_h": out_h,
-                "fillcolor": fillcolor,
-                "bilinear": bilinear,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "angle": angle,
+                        "out_w": out_w,
+                        "out_h": out_h,
+                        "fillcolor": fillcolor,
+                        "bilinear": bilinear,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -17457,20 +17923,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sab",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "luma_radius": luma_radius,
-                "luma_pre_filter_radius": luma_pre_filter_radius,
-                "luma_strength": luma_strength,
-                "chroma_radius": chroma_radius,
-                "chroma_pre_filter_radius": chroma_pre_filter_radius,
-                "chroma_strength": chroma_strength,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "luma_radius": luma_radius,
+                        "luma_pre_filter_radius": luma_pre_filter_radius,
+                        "luma_strength": luma_strength,
+                        "chroma_radius": chroma_radius,
+                        "chroma_pre_filter_radius": chroma_pre_filter_radius,
+                        "chroma_strength": chroma_strength,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -17548,32 +18016,34 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "w": w,
-                "h": h,
-                "flags": flags,
-                "interl": interl,
-                "size": size,
-                "in_color_matrix": in_color_matrix,
-                "out_color_matrix": out_color_matrix,
-                "in_range": in_range,
-                "out_range": out_range,
-                "in_v_chr_pos": in_v_chr_pos,
-                "in_h_chr_pos": in_h_chr_pos,
-                "out_v_chr_pos": out_v_chr_pos,
-                "out_h_chr_pos": out_h_chr_pos,
-                "force_original_aspect_ratio": force_original_aspect_ratio,
-                "force_divisible_by": force_divisible_by,
-                "param0": param0,
-                "param1": param1,
-                "eval": eval,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "w": w,
+                        "h": h,
+                        "flags": flags,
+                        "interl": interl,
+                        "size": size,
+                        "in_color_matrix": in_color_matrix,
+                        "out_color_matrix": out_color_matrix,
+                        "in_range": in_range,
+                        "out_range": out_range,
+                        "in_v_chr_pos": in_v_chr_pos,
+                        "in_h_chr_pos": in_h_chr_pos,
+                        "out_v_chr_pos": out_v_chr_pos,
+                        "out_h_chr_pos": out_h_chr_pos,
+                        "force_original_aspect_ratio": force_original_aspect_ratio,
+                        "force_divisible_by": force_divisible_by,
+                        "param0": param0,
+                        "param1": param1,
+                        "eval": eval,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -17686,33 +18156,37 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale2ref",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video, StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video, StreamType.video]),
+            inputs=(
                 self,
                 _ref,
-            ],
-            kwargs={
-                "w": w,
-                "h": h,
-                "flags": flags,
-                "interl": interl,
-                "size": size,
-                "in_color_matrix": in_color_matrix,
-                "out_color_matrix": out_color_matrix,
-                "in_range": in_range,
-                "out_range": out_range,
-                "in_v_chr_pos": in_v_chr_pos,
-                "in_h_chr_pos": in_h_chr_pos,
-                "out_v_chr_pos": out_v_chr_pos,
-                "out_h_chr_pos": out_h_chr_pos,
-                "force_original_aspect_ratio": force_original_aspect_ratio,
-                "force_divisible_by": force_divisible_by,
-                "param0": param0,
-                "param1": param1,
-                "eval": eval,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "w": w,
+                        "h": h,
+                        "flags": flags,
+                        "interl": interl,
+                        "size": size,
+                        "in_color_matrix": in_color_matrix,
+                        "out_color_matrix": out_color_matrix,
+                        "in_range": in_range,
+                        "out_range": out_range,
+                        "in_v_chr_pos": in_v_chr_pos,
+                        "in_h_chr_pos": in_h_chr_pos,
+                        "out_v_chr_pos": out_v_chr_pos,
+                        "out_h_chr_pos": out_h_chr_pos,
+                        "force_original_aspect_ratio": force_original_aspect_ratio,
+                        "force_divisible_by": force_divisible_by,
+                        "param0": param0,
+                        "param1": param1,
+                        "eval": eval,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return (
             filter_node.video(0),
@@ -17800,23 +18274,27 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale2ref_npp",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video, StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video, StreamType.video]),
+            inputs=(
                 self,
                 _ref,
-            ],
-            kwargs={
-                "w": w,
-                "h": h,
-                "format": format,
-                "s": s,
-                "interp_algo": interp_algo,
-                "force_original_aspect_ratio": force_original_aspect_ratio,
-                "force_divisible_by": force_divisible_by,
-                "eval": eval,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "w": w,
+                        "h": h,
+                        "format": format,
+                        "s": s,
+                        "interp_algo": interp_algo,
+                        "force_original_aspect_ratio": force_original_aspect_ratio,
+                        "force_divisible_by": force_divisible_by,
+                        "eval": eval,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return (
             filter_node.video(0),
@@ -17897,22 +18375,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale_cuda",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "w": w,
-                "h": h,
-                "interp_algo": interp_algo,
-                "format": format,
-                "passthrough": passthrough,
-                "param": param,
-                "force_original_aspect_ratio": force_original_aspect_ratio,
-                "force_divisible_by": force_divisible_by,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "w": w,
+                        "h": h,
+                        "interp_algo": interp_algo,
+                        "format": format,
+                        "passthrough": passthrough,
+                        "param": param,
+                        "force_original_aspect_ratio": force_original_aspect_ratio,
+                        "force_divisible_by": force_divisible_by,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18035,22 +18515,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale_npp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "w": w,
-                "h": h,
-                "format": format,
-                "s": s,
-                "interp_algo": interp_algo,
-                "force_original_aspect_ratio": force_original_aspect_ratio,
-                "force_divisible_by": force_divisible_by,
-                "eval": eval,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "w": w,
+                        "h": h,
+                        "format": format,
+                        "s": s,
+                        "interp_algo": interp_algo,
+                        "force_original_aspect_ratio": force_original_aspect_ratio,
+                        "force_divisible_by": force_divisible_by,
+                        "eval": eval,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18106,19 +18588,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scale_vt",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "w": w,
-                "h": h,
-                "color_matrix": color_matrix,
-                "color_primaries": color_primaries,
-                "color_transfer": color_transfer,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "w": w,
+                        "h": h,
+                        "color_matrix": color_matrix,
+                        "color_primaries": color_primaries,
+                        "color_transfer": color_transfer,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18173,16 +18657,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scdet",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold": threshold,
-                "sc_pass": sc_pass,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold": threshold,
+                        "sc_pass": sc_pass,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18228,17 +18714,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scharr",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "scale": scale,
+                        "delta": delta,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18290,18 +18778,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="scroll",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "horizontal": horizontal,
-                "vertical": vertical,
-                "hpos": hpos,
-                "vpos": vpos,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "horizontal": horizontal,
+                        "vertical": vertical,
+                        "hpos": hpos,
+                        "vpos": vpos,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18348,16 +18838,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="segment",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video] * len((timestamps or frames).split("|")),
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "timestamps": timestamps,
-                "frames": frames,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video] * len((timestamps or frames).split("|"))),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "timestamps": timestamps,
+                        "frames": frames,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -18478,16 +18970,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="select",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video] * outputs,
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "expr": expr,
-                "outputs": outputs,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video] * outputs),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "expr": expr,
+                        "outputs": outputs,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -18591,25 +19085,27 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="selectivecolor",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "correction_method": correction_method,
-                "reds": reds,
-                "yellows": yellows,
-                "greens": greens,
-                "cyans": cyans,
-                "blues": blues,
-                "magentas": magentas,
-                "whites": whites,
-                "neutrals": neutrals,
-                "blacks": blacks,
-                "psfile": psfile,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "correction_method": correction_method,
+                        "reds": reds,
+                        "yellows": yellows,
+                        "greens": greens,
+                        "cyans": cyans,
+                        "blues": blues,
+                        "magentas": magentas,
+                        "whites": whites,
+                        "neutrals": neutrals,
+                        "blacks": blacks,
+                        "psfile": psfile,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18657,16 +19153,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sendcmd",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "commands": commands,
-                "filename": filename,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "commands": commands,
+                        "filename": filename,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18694,12 +19192,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="separatefields",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -18780,16 +19276,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setdar",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dar": dar,
-                "max": max,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dar": dar,
+                        "max": max,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18825,15 +19323,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setfield",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -18951,19 +19451,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setparams",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "field_mode": field_mode,
-                "range": range,
-                "color_primaries": color_primaries,
-                "color_trc": color_trc,
-                "colorspace": colorspace,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "field_mode": field_mode,
+                        "range": range,
+                        "color_primaries": color_primaries,
+                        "color_trc": color_trc,
+                        "colorspace": colorspace,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19073,15 +19575,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setpts",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "expr": expr,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "expr": expr,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19121,15 +19625,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setrange",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "range": range,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "range": range,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19210,16 +19716,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="setsar",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sar": sar,
-                "max": max,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sar": sar,
+                        "max": max,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19254,15 +19762,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="settb",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "expr": expr,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "expr": expr,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19294,15 +19804,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sharpen_npp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "border_type": border_type,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "border_type": border_type,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19354,18 +19866,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="shear",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "shx": shx,
-                "shy": shy,
-                "fillcolor": fillcolor,
-                "interp": interp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "shx": shx,
+                        "shy": shy,
+                        "fillcolor": fillcolor,
+                        "interp": interp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19451,15 +19965,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showinfo",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "checksum": checksum,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "checksum": checksum,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19489,15 +20005,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showpalette",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "s": s,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "s": s,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19528,15 +20046,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="shuffleframes",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mapping": mapping,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mapping": mapping,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19592,19 +20112,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="shufflepixels",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "direction": direction,
-                "mode": mode,
-                "width": width,
-                "height": height,
-                "seed": seed,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "direction": direction,
+                        "mode": mode,
+                        "width": width,
+                        "height": height,
+                        "seed": seed,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19658,18 +20180,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="shuffleplanes",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "map0": map0,
-                "map1": map1,
-                "map2": map2,
-                "map3": map3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "map0": map0,
+                        "map1": map1,
+                        "map2": map2,
+                        "map3": map3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19733,16 +20257,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sidedata",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "type": type,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "type": type,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19901,17 +20427,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="signalstats",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "stat": stat,
-                "out": out,
-                "c": c,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "stat": stat,
+                        "out": out,
+                        "c": c,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -19946,15 +20474,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="siti",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "print_summary": print_summary,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "print_summary": print_summary,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20020,20 +20550,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="smartblur",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "luma_radius": luma_radius,
-                "luma_strength": luma_strength,
-                "luma_threshold": luma_threshold,
-                "chroma_radius": chroma_radius,
-                "chroma_strength": chroma_strength,
-                "chroma_threshold": chroma_threshold,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "luma_radius": luma_radius,
+                        "luma_strength": luma_strength,
+                        "luma_threshold": luma_threshold,
+                        "chroma_radius": chroma_radius,
+                        "chroma_strength": chroma_strength,
+                        "chroma_threshold": chroma_threshold,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20079,17 +20611,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sobel",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "scale": scale,
+                        "delta": delta,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20136,17 +20670,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sobel_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "scale": scale,
+                        "delta": delta,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20255,22 +20791,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="spectrumsynth",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _phase,
-            ],
-            kwargs={
-                "sample_rate": sample_rate,
-                "channels": channels,
-                "scale": scale,
-                "slide": slide,
-                "win_func": win_func,
-                "overlap": overlap,
-                "orientation": orientation,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "sample_rate": sample_rate,
+                        "channels": channels,
+                        "scale": scale,
+                        "slide": slide,
+                        "win_func": win_func,
+                        "overlap": overlap,
+                        "orientation": orientation,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -20298,15 +20838,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="split",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video] * outputs,
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "outputs": outputs,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video] * outputs),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "outputs": outputs,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -20361,18 +20903,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="spp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "quality": quality,
-                "qp": qp,
-                "mode": mode,
-                "use_bframe_qp": use_bframe_qp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "quality": quality,
+                        "qp": qp,
+                        "mode": mode,
+                        "use_bframe_qp": use_bframe_qp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20433,19 +20977,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sr",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dnn_backend": dnn_backend,
-                "scale_factor": scale_factor,
-                "model": model,
-                "input": input,
-                "output": output,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dnn_backend": dnn_backend,
+                        "scale_factor": scale_factor,
+                        "model": model,
+                        "input": input,
+                        "output": output,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20509,16 +21055,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ssim",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={
-                "stats_file": stats_file,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "stats_file": stats_file,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20619,16 +21169,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="stereo3d",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "in": _in,
-                "out": out,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "in": _in,
+                        "out": out,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20747,21 +21299,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="subtitles",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "filename": filename,
-                "original_size": original_size,
-                "fontsdir": fontsdir,
-                "alpha": alpha,
-                "charenc": charenc,
-                "stream_index": stream_index,
-                "force_style": force_style,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "filename": filename,
+                        "original_size": original_size,
+                        "fontsdir": fontsdir,
+                        "alpha": alpha,
+                        "charenc": charenc,
+                        "stream_index": stream_index,
+                        "force_style": force_style,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20786,12 +21340,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="super2xsai",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -20887,20 +21439,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="swaprect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "w": w,
-                "h": h,
-                "x1": x1,
-                "y1": y1,
-                "x2": x2,
-                "y2": y2,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "w": w,
+                        "h": h,
+                        "x1": x1,
+                        "y1": y1,
+                        "x2": x2,
+                        "y2": y2,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -20922,12 +21476,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="swapuv",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -21210,29 +21762,31 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tblend",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "c0_mode": c0_mode,
-                "c1_mode": c1_mode,
-                "c2_mode": c2_mode,
-                "c3_mode": c3_mode,
-                "all_mode": all_mode,
-                "c0_expr": c0_expr,
-                "c1_expr": c1_expr,
-                "c2_expr": c2_expr,
-                "c3_expr": c3_expr,
-                "all_expr": all_expr,
-                "c0_opacity": c0_opacity,
-                "c1_opacity": c1_opacity,
-                "c2_opacity": c2_opacity,
-                "c3_opacity": c3_opacity,
-                "all_opacity": all_opacity,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "c0_mode": c0_mode,
+                        "c1_mode": c1_mode,
+                        "c2_mode": c2_mode,
+                        "c3_mode": c3_mode,
+                        "all_mode": all_mode,
+                        "c0_expr": c0_expr,
+                        "c1_expr": c1_expr,
+                        "c2_expr": c2_expr,
+                        "c3_expr": c3_expr,
+                        "all_expr": all_expr,
+                        "c0_opacity": c0_opacity,
+                        "c1_opacity": c1_opacity,
+                        "c2_opacity": c2_opacity,
+                        "c3_opacity": c3_opacity,
+                        "all_opacity": all_opacity,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21290,16 +21844,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="telecine",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "first_field": first_field,
-                "pattern": pattern,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "first_field": first_field,
+                        "pattern": pattern,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21383,22 +21939,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="thistogram",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "width": width,
-                "display_mode": display_mode,
-                "levels_mode": levels_mode,
-                "components": components,
-                "bgopacity": bgopacity,
-                "envelope": envelope,
-                "ecolor": ecolor,
-                "slide": slide,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "width": width,
+                        "display_mode": display_mode,
+                        "levels_mode": levels_mode,
+                        "components": components,
+                        "bgopacity": bgopacity,
+                        "envelope": envelope,
+                        "ecolor": ecolor,
+                        "slide": slide,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21445,18 +22003,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="threshold",
-            input_typings=[StreamType.video, StreamType.video, StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _threshold,
                 _min,
                 _max,
-            ],
-            kwargs={
-                "planes": planes,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21500,16 +22062,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="thumbnail",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "n": n,
-                "log": log,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "n": n,
+                        "log": log,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21581,21 +22145,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tile",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "layout": layout,
-                "nb_frames": nb_frames,
-                "margin": margin,
-                "padding": padding,
-                "color": color,
-                "overlap": overlap,
-                "init_padding": init_padding,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "layout": layout,
+                        "nb_frames": nb_frames,
+                        "margin": margin,
+                        "padding": padding,
+                        "color": color,
+                        "overlap": overlap,
+                        "init_padding": init_padding,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21691,19 +22257,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tiltandshift",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "tilt": tilt,
-                "start": start,
-                "end": end,
-                "hold": hold,
-                "pad": pad,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "tilt": tilt,
+                        "start": start,
+                        "end": end,
+                        "hold": hold,
+                        "pad": pad,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21752,16 +22320,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tinterlace",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "flags": flags,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "flags": flags,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21854,18 +22424,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tlut2",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "c0": c0,
+                        "c1": c1,
+                        "c2": c2,
+                        "c3": c3,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21911,17 +22483,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tmedian",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "radius": radius,
-                "planes": planes,
-                "percentile": percentile,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "radius": radius,
+                        "planes": planes,
+                        "percentile": percentile,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -21971,17 +22545,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tmidequalizer",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "radius": radius,
-                "sigma": sigma,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "radius": radius,
+                        "sigma": sigma,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22033,18 +22609,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tmix",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frames": frames,
-                "weights": weights,
-                "scale": scale,
-                "planes": planes,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frames": frames,
+                        "weights": weights,
+                        "scale": scale,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22092,18 +22670,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tonemap",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "tonemap": tonemap,
-                "param": param,
-                "desat": desat,
-                "peak": peak,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "tonemap": tonemap,
+                        "param": param,
+                        "desat": desat,
+                        "peak": peak,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22189,24 +22769,26 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tonemap_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "tonemap": tonemap,
-                "transfer": transfer,
-                "matrix": matrix,
-                "primaries": primaries,
-                "range": range,
-                "format": format,
-                "peak": peak,
-                "param": param,
-                "desat": desat,
-                "threshold": threshold,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "tonemap": tonemap,
+                        "transfer": transfer,
+                        "matrix": matrix,
+                        "primaries": primaries,
+                        "range": range,
+                        "format": format,
+                        "peak": peak,
+                        "param": param,
+                        "desat": desat,
+                        "threshold": threshold,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22260,18 +22842,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tonemap_vaapi",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "format": format,
-                "matrix": matrix,
-                "primaries": primaries,
-                "transfer": transfer,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "format": format,
+                        "matrix": matrix,
+                        "primaries": primaries,
+                        "transfer": transfer,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22337,21 +22921,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tpad",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "start": start,
-                "stop": stop,
-                "start_mode": start_mode,
-                "stop_mode": stop_mode,
-                "start_duration": start_duration,
-                "stop_duration": stop_duration,
-                "color": color,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "start": start,
+                        "stop": stop,
+                        "start_mode": start_mode,
+                        "stop_mode": stop_mode,
+                        "start_duration": start_duration,
+                        "stop_duration": stop_duration,
+                        "color": color,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22405,16 +22991,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="transpose",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dir": dir,
-                "passthrough": passthrough,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dir": dir,
+                        "passthrough": passthrough,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22456,16 +23044,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="transpose_npp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dir": dir,
-                "passthrough": passthrough,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dir": dir,
+                        "passthrough": passthrough,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22507,16 +23097,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="transpose_vt",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dir": dir,
-                "passthrough": passthrough,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dir": dir,
+                        "passthrough": passthrough,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22558,16 +23150,18 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="transpose_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dir": dir,
-                "passthrough": passthrough,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dir": dir,
+                        "passthrough": passthrough,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22668,21 +23262,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="trim",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "start": start,
-                "end": end,
-                "start_pts": start_pts,
-                "end_pts": end_pts,
-                "duration": duration,
-                "start_frame": start_frame,
-                "end_frame": end_frame,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "start": start,
+                        "end": end,
+                        "start_pts": start_pts,
+                        "end_pts": end_pts,
+                        "duration": duration,
+                        "start_frame": start_frame,
+                        "end_frame": end_frame,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22767,23 +23363,25 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="unsharp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "luma_msize_x": luma_msize_x,
-                "luma_msize_y": luma_msize_y,
-                "luma_amount": luma_amount,
-                "chroma_msize_x": chroma_msize_x,
-                "chroma_msize_y": chroma_msize_y,
-                "chroma_amount": chroma_amount,
-                "alpha_msize_x": alpha_msize_x,
-                "alpha_msize_y": alpha_msize_y,
-                "alpha_amount": alpha_amount,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "luma_msize_x": luma_msize_x,
+                        "luma_msize_y": luma_msize_y,
+                        "luma_amount": luma_amount,
+                        "chroma_msize_x": chroma_msize_x,
+                        "chroma_msize_y": chroma_msize_y,
+                        "chroma_amount": chroma_amount,
+                        "alpha_msize_x": alpha_msize_x,
+                        "alpha_msize_y": alpha_msize_y,
+                        "alpha_amount": alpha_amount,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22850,20 +23448,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="unsharp_opencl",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "luma_msize_x": luma_msize_x,
-                "luma_msize_y": luma_msize_y,
-                "luma_amount": luma_amount,
-                "chroma_msize_x": chroma_msize_x,
-                "chroma_msize_y": chroma_msize_y,
-                "chroma_amount": chroma_amount,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "luma_msize_x": luma_msize_x,
+                        "luma_msize_y": luma_msize_y,
+                        "luma_amount": luma_amount,
+                        "chroma_msize_x": chroma_msize_x,
+                        "chroma_msize_y": chroma_msize_y,
+                        "chroma_amount": chroma_amount,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22897,15 +23497,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="untile",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "layout": layout,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "layout": layout,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -22961,18 +23563,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="uspp",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "quality": quality,
-                "qp": qp,
-                "use_bframe_qp": use_bframe_qp,
-                "codec": codec,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "quality": quality,
+                        "qp": qp,
+                        "use_bframe_qp": use_bframe_qp,
+                        "codec": codec,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -23224,50 +23828,52 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="v360",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "input": input,
-                "output": output,
-                "interp": interp,
-                "w": w,
-                "h": h,
-                "in_stereo": in_stereo,
-                "out_stereo": out_stereo,
-                "in_forder": in_forder,
-                "out_forder": out_forder,
-                "in_frot": in_frot,
-                "out_frot": out_frot,
-                "in_pad": in_pad,
-                "out_pad": out_pad,
-                "fin_pad": fin_pad,
-                "fout_pad": fout_pad,
-                "yaw": yaw,
-                "pitch": pitch,
-                "roll": roll,
-                "rorder": rorder,
-                "h_fov": h_fov,
-                "v_fov": v_fov,
-                "d_fov": d_fov,
-                "h_flip": h_flip,
-                "v_flip": v_flip,
-                "d_flip": d_flip,
-                "ih_flip": ih_flip,
-                "iv_flip": iv_flip,
-                "in_trans": in_trans,
-                "out_trans": out_trans,
-                "ih_fov": ih_fov,
-                "iv_fov": iv_fov,
-                "id_fov": id_fov,
-                "h_offset": h_offset,
-                "v_offset": v_offset,
-                "alpha_mask": alpha_mask,
-                "reset_rot": reset_rot,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "input": input,
+                        "output": output,
+                        "interp": interp,
+                        "w": w,
+                        "h": h,
+                        "in_stereo": in_stereo,
+                        "out_stereo": out_stereo,
+                        "in_forder": in_forder,
+                        "out_forder": out_forder,
+                        "in_frot": in_frot,
+                        "out_frot": out_frot,
+                        "in_pad": in_pad,
+                        "out_pad": out_pad,
+                        "fin_pad": fin_pad,
+                        "fout_pad": fout_pad,
+                        "yaw": yaw,
+                        "pitch": pitch,
+                        "roll": roll,
+                        "rorder": rorder,
+                        "h_fov": h_fov,
+                        "v_fov": v_fov,
+                        "d_fov": d_fov,
+                        "h_flip": h_flip,
+                        "v_flip": v_flip,
+                        "d_flip": d_flip,
+                        "ih_flip": ih_flip,
+                        "iv_flip": iv_flip,
+                        "in_trans": in_trans,
+                        "out_trans": out_trans,
+                        "ih_fov": ih_fov,
+                        "iv_fov": iv_fov,
+                        "id_fov": id_fov,
+                        "h_offset": h_offset,
+                        "v_offset": v_offset,
+                        "alpha_mask": alpha_mask,
+                        "reset_rot": reset_rot,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -23337,20 +23943,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vaguedenoiser",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold": threshold,
-                "method": method,
-                "nsteps": nsteps,
-                "percent": percent,
-                "planes": planes,
-                "type": type,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold": threshold,
+                        "method": method,
+                        "nsteps": nsteps,
+                        "percent": percent,
+                        "planes": planes,
+                        "type": type,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -23400,18 +24008,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="varblur",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _radius,
-            ],
-            kwargs={
-                "min_r": min_r,
-                "max_r": max_r,
-                "planes": planes,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "min_r": min_r,
+                        "max_r": max_r,
+                        "planes": planes,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -23524,28 +24136,30 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vectorscope",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "x": x,
-                "y": y,
-                "intensity": intensity,
-                "envelope": envelope,
-                "graticule": graticule,
-                "opacity": opacity,
-                "flags": flags,
-                "bgopacity": bgopacity,
-                "lthreshold": lthreshold,
-                "hthreshold": hthreshold,
-                "colorspace": colorspace,
-                "tint0": tint0,
-                "tint1": tint1,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "x": x,
+                        "y": y,
+                        "intensity": intensity,
+                        "envelope": envelope,
+                        "graticule": graticule,
+                        "opacity": opacity,
+                        "flags": flags,
+                        "bgopacity": bgopacity,
+                        "lthreshold": lthreshold,
+                        "hthreshold": hthreshold,
+                        "colorspace": colorspace,
+                        "tint0": tint0,
+                        "tint1": tint1,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -23574,12 +24188,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vflip",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -23601,12 +24213,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vflip_vulkan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -23634,12 +24244,10 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vfrdet",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -23715,22 +24323,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vibrance",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "intensity": intensity,
-                "rbal": rbal,
-                "gbal": gbal,
-                "bbal": bbal,
-                "rlum": rlum,
-                "glum": glum,
-                "blum": blum,
-                "alternate": alternate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "intensity": intensity,
+                        "rbal": rbal,
+                        "gbal": gbal,
+                        "bbal": bbal,
+                        "rlum": rlum,
+                        "glum": glum,
+                        "blum": blum,
+                        "alternate": alternate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -23812,21 +24422,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vidstabdetect",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "result": result,
-                "shakiness": shakiness,
-                "accuracy": accuracy,
-                "stepsize": stepsize,
-                "mincontrast": mincontrast,
-                "show": show,
-                "tripod": tripod,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "result": result,
+                        "shakiness": shakiness,
+                        "accuracy": accuracy,
+                        "stepsize": stepsize,
+                        "mincontrast": mincontrast,
+                        "show": show,
+                        "tripod": tripod,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -23888,28 +24500,30 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vidstabtransform",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "input": input,
-                "smoothing": smoothing,
-                "optalgo": optalgo,
-                "maxshift": maxshift,
-                "maxangle": maxangle,
-                "crop": crop,
-                "invert": invert,
-                "relative": relative,
-                "zoom": zoom,
-                "optzoom": optzoom,
-                "zoomspeed": zoomspeed,
-                "interpol": interpol,
-                "tripod": tripod,
-                "debug": debug,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "input": input,
+                        "smoothing": smoothing,
+                        "optalgo": optalgo,
+                        "maxshift": maxshift,
+                        "maxangle": maxangle,
+                        "crop": crop,
+                        "invert": invert,
+                        "relative": relative,
+                        "zoom": zoom,
+                        "optzoom": optzoom,
+                        "zoomspeed": zoomspeed,
+                        "interpol": interpol,
+                        "tripod": tripod,
+                        "debug": debug,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -23951,13 +24565,13 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vif",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _reference,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.video(0)
 
@@ -24025,21 +24639,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vignette",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "angle": angle,
-                "x0": x0,
-                "y0": y0,
-                "mode": mode,
-                "eval": eval,
-                "dither": dither,
-                "aspect": aspect,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "angle": angle,
+                        "x0": x0,
+                        "y0": y0,
+                        "mode": mode,
+                        "eval": eval,
+                        "dither": dither,
+                        "aspect": aspect,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24078,15 +24694,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vmafmotion",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "stats_file": stats_file,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "stats_file": stats_file,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24150,18 +24768,20 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="w3fdif",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "filter": filter,
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "filter": filter,
+                        "mode": mode,
+                        "parity": parity,
+                        "deint": deint,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24289,30 +24909,32 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="waveform",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "intensity": intensity,
-                "mirror": mirror,
-                "display": display,
-                "components": components,
-                "envelope": envelope,
-                "filter": filter,
-                "graticule": graticule,
-                "opacity": opacity,
-                "flags": flags,
-                "scale": scale,
-                "bgopacity": bgopacity,
-                "tint0": tint0,
-                "tint1": tint1,
-                "fitmode": fitmode,
-                "input": input,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "intensity": intensity,
+                        "mirror": mirror,
+                        "display": display,
+                        "components": components,
+                        "envelope": envelope,
+                        "filter": filter,
+                        "graticule": graticule,
+                        "opacity": opacity,
+                        "flags": flags,
+                        "scale": scale,
+                        "bgopacity": bgopacity,
+                        "tint0": tint0,
+                        "tint1": tint1,
+                        "fitmode": fitmode,
+                        "input": input,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24348,15 +24970,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="weave",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "first_field": first_field,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "first_field": first_field,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24387,15 +25011,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xbr",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "n": n,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "n": n,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24442,17 +25068,21 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xcorrelate",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _secondary,
-            ],
-            kwargs={
-                "planes": planes,
-                "secondary": secondary,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "planes": planes,
+                        "secondary": secondary,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24571,19 +25201,23 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xfade",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _xfade,
-            ],
-            kwargs={
-                "transition": transition,
-                "duration": duration,
-                "offset": offset,
-                "expr": expr,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "transition": transition,
+                        "duration": duration,
+                        "offset": offset,
+                        "expr": expr,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24702,20 +25336,24 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="xfade_opencl",
-            input_typings=[StreamType.video, StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
+            input_typings=tuple([StreamType.video, StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(
                 self,
                 _xfade,
-            ],
-            kwargs={
-                "transition": transition,
-                "source": source,
-                "kernel": kernel,
-                "duration": duration,
-                "offset": offset,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "transition": transition,
+                        "source": source,
+                        "kernel": kernel,
+                        "duration": duration,
+                        "offset": offset,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24764,17 +25402,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="yadif",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "parity": parity,
+                        "deint": deint,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24824,17 +25464,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="yadif_cuda",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "parity": parity,
+                        "deint": deint,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24883,17 +25525,19 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="yaepblur",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "radius": radius,
-                "planes": planes,
-                "sigma": sigma,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "radius": radius,
+                        "planes": planes,
+                        "sigma": sigma,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -24961,15 +25605,17 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="zmq",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "bind_address": bind_address,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "bind_address": bind_address,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -25105,20 +25751,22 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="zoompan",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "zoom": zoom,
-                "x": x,
-                "y": y,
-                "d": d,
-                "s": s,
-                "fps": fps,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "zoom": zoom,
+                        "x": x,
+                        "y": y,
+                        "d": d,
+                        "s": s,
+                        "fps": fps,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -25336,32 +25984,34 @@ class VideoStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="zscale",
-            input_typings=[StreamType.video],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "w": w,
-                "h": h,
-                "size": size,
-                "dither": dither,
-                "filter": filter,
-                "out_range": out_range,
-                "primaries": primaries,
-                "transfer": transfer,
-                "matrix": matrix,
-                "in_range": in_range,
-                "primariesin": primariesin,
-                "transferin": transferin,
-                "matrixin": matrixin,
-                "chromal": chromal,
-                "chromalin": chromalin,
-                "npl": npl,
-                "agamma": agamma,
-                "param_a": param_a,
-                "param_b": param_b,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.video]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "w": w,
+                        "h": h,
+                        "size": size,
+                        "dither": dither,
+                        "filter": filter,
+                        "out_range": out_range,
+                        "primaries": primaries,
+                        "transfer": transfer,
+                        "matrix": matrix,
+                        "in_range": in_range,
+                        "primariesin": primariesin,
+                        "transferin": transferin,
+                        "matrixin": matrixin,
+                        "chromal": chromal,
+                        "chromalin": chromalin,
+                        "npl": npl,
+                        "agamma": agamma,
+                        "param_a": param_a,
+                        "param_b": param_b,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)

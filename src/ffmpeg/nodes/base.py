@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod, abstractproperty
+from dataclasses import dataclass
 from functools import cached_property
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Iterable, Sequence
 
 from ..schema import StreamType
 from ..utils.dag import is_dag
-from ..utils.pydantic_helper import BaseModel, model_validator_after
 
 
-class _DAGContext(BaseModel, ABC):
+@dataclass(frozen=True, kw_only=True)
+class _DAGContext(ABC):
     @abstractmethod
     def get_node_label(self, node: Node) -> str:
         """Get the label of the node"""
@@ -21,6 +22,7 @@ class _DAGContext(BaseModel, ABC):
         raise NotImplementedError()
 
 
+@dataclass(frozen=True, kw_only=True)
 class DummyDAGContext(_DAGContext):
     """A dummy DAG context that does not do anything"""
 
@@ -34,10 +36,8 @@ class DummyDAGContext(_DAGContext):
 empty_dag_context = DummyDAGContext()
 
 
-class HashableBaseModel(BaseModel):
-    def __hash__(self) -> int:
-        return hash(self.model_dump_json())
-
+@dataclass(frozen=True, kw_only=True)
+class HashableBaseModel:
     @cached_property
     def hex(self) -> str:
         return hex(abs(hash(self)))[2:]
@@ -46,21 +46,22 @@ class HashableBaseModel(BaseModel):
         return f"{self.__class__.__name__}({self.hex})"
 
 
+@dataclass(frozen=True, kw_only=True)
 class Stream(HashableBaseModel):
     node: Node
     selector: StreamType | None = None
     index: int | None = None  # the nth child of the node
 
 
-class Node(HashableBaseModel, ABC, validate_assignment=True):
-    kwargs: Mapping[str, Any] = {}
+@dataclass(frozen=True, kw_only=True)
+class Node(HashableBaseModel, ABC):
+    kwargs: tuple[tuple[str, Any], ...] = ()
 
     @abstractproperty
     def incoming_streams(self) -> Sequence["Stream"]:
         raise NotImplementedError()
 
-    @model_validator_after
-    def validate_dag(self) -> Node:
+    def __post_init__(self) -> None:
         passed = set()
         nodes = [self]
         output = {}
@@ -76,8 +77,8 @@ class Node(HashableBaseModel, ABC, validate_assignment=True):
 
             output[str(node)] = set(str(k.node) for k in node.incoming_streams)
 
-        assert is_dag(output), f"Graph is not a DAG: {output}"
-        return self
+        if not is_dag(output):
+            raise ValueError(f"Graph is not a DAG: {output}")
 
     @abstractmethod
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
