@@ -10,7 +10,6 @@ exclude = ["**/tests"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-pydantic = "*"
 
 [tool.poetry.group.test]
 optional = true
