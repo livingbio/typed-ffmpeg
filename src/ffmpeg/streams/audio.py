@@ -122,27 +122,29 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="a3dscope",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rate": rate,
-                "size": size,
-                "fov": fov,
-                "roll": roll,
-                "pitch": pitch,
-                "yaw": yaw,
-                "xzoom": xzoom,
-                "yzoom": yzoom,
-                "zzoom": zzoom,
-                "xpos": xpos,
-                "ypos": ypos,
-                "zpos": zpos,
-                "length": length,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rate": rate,
+                        "size": size,
+                        "fov": fov,
+                        "roll": roll,
+                        "pitch": pitch,
+                        "yaw": yaw,
+                        "xzoom": xzoom,
+                        "yzoom": yzoom,
+                        "zzoom": zzoom,
+                        "xpos": xpos,
+                        "ypos": ypos,
+                        "zpos": zpos,
+                        "length": length,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -212,21 +214,25 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aap",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _desired,
-            ],
-            kwargs={
-                "order": order,
-                "projection": projection,
-                "mu": mu,
-                "delta": delta,
-                "out_mode": out_mode,
-                "precision": precision,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "order": order,
+                        "projection": projection,
+                        "mu": mu,
+                        "delta": delta,
+                        "out_mode": out_mode,
+                        "precision": precision,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -257,15 +263,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="abench",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "action": action,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "action": action,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -317,18 +325,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="abitscope",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rate": rate,
-                "size": size,
-                "colors": colors,
-                "mode": mode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rate": rate,
+                        "size": size,
+                        "colors": colors,
+                        "mode": mode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -447,26 +457,28 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acompressor",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "mode": mode,
-                "threshold": threshold,
-                "ratio": ratio,
-                "attack": attack,
-                "release": release,
-                "makeup": makeup,
-                "knee": knee,
-                "link": link,
-                "detection": detection,
-                "level_sc": level_sc,
-                "mix": mix,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "mode": mode,
+                        "threshold": threshold,
+                        "ratio": ratio,
+                        "attack": attack,
+                        "release": release,
+                        "makeup": makeup,
+                        "knee": knee,
+                        "link": link,
+                        "detection": detection,
+                        "level_sc": level_sc,
+                        "mix": mix,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -495,15 +507,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acontrast",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "contrast": contrast,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "contrast": contrast,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -526,12 +540,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acopy",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -645,20 +657,24 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acrossfade",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _crossfade1,
-            ],
-            kwargs={
-                "nb_samples": nb_samples,
-                "duration": duration,
-                "overlap": overlap,
-                "curve1": curve1,
-                "curve2": curve2,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "nb_samples": nb_samples,
+                        "duration": duration,
+                        "overlap": overlap,
+                        "curve1": curve1,
+                        "curve2": curve2,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -721,19 +737,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acrossover",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio] * len(re.split(r"[ |]+", split)),
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "split": split,
-                "order": order,
-                "level": level,
-                "gain": gain,
-                "precision": precision,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio] * len(re.split(r"[ |]+", split))),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "split": split,
+                        "order": order,
+                        "level": level,
+                        "gain": gain,
+                        "precision": precision,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -843,25 +861,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acrusher",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "bits": bits,
-                "mix": mix,
-                "mode": mode,
-                "dc": dc,
-                "aa": aa,
-                "samples": samples,
-                "lfo": lfo,
-                "lforange": lforange,
-                "lforate": lforate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "bits": bits,
+                        "mix": mix,
+                        "mode": mode,
+                        "dc": dc,
+                        "aa": aa,
+                        "samples": samples,
+                        "lfo": lfo,
+                        "lforange": lforange,
+                        "lforate": lforate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -893,17 +913,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="acue",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cue": cue,
-                "preroll": preroll,
-                "buffer": buffer,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cue": cue,
+                        "preroll": preroll,
+                        "buffer": buffer,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -968,20 +990,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adeclick",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "window": window,
-                "overlap": overlap,
-                "arorder": arorder,
-                "threshold": threshold,
-                "burst": burst,
-                "method": method,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "window": window,
+                        "overlap": overlap,
+                        "arorder": arorder,
+                        "threshold": threshold,
+                        "burst": burst,
+                        "method": method,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1046,20 +1070,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adeclip",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "window": window,
-                "overlap": overlap,
-                "arorder": arorder,
-                "threshold": threshold,
-                "hsize": hsize,
-                "method": method,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "window": window,
+                        "overlap": overlap,
+                        "arorder": arorder,
+                        "threshold": threshold,
+                        "hsize": hsize,
+                        "method": method,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1095,16 +1121,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adecorrelate",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "stages": stages,
-                "seed": seed,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "stages": stages,
+                        "seed": seed,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1146,16 +1174,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adelay",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "delays": delays,
-                "all": all,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "delays": delays,
+                        "all": all,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1197,16 +1227,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adenorm",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level": level,
-                "type": type,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level": level,
+                        "type": type,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1230,12 +1262,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aderivative",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -1293,29 +1323,31 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adrawgraph",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "m1": m1,
-                "fg1": fg1,
-                "m2": m2,
-                "fg2": fg2,
-                "m3": m3,
-                "fg3": fg3,
-                "m4": m4,
-                "fg4": fg4,
-                "bg": bg,
-                "min": min,
-                "max": max,
-                "mode": mode,
-                "slide": slide,
-                "size": size,
-                "rate": rate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "m1": m1,
+                        "fg1": fg1,
+                        "m2": m2,
+                        "fg2": fg2,
+                        "m3": m3,
+                        "fg3": fg3,
+                        "m4": m4,
+                        "fg4": fg4,
+                        "bg": bg,
+                        "min": min,
+                        "max": max,
+                        "mode": mode,
+                        "slide": slide,
+                        "size": size,
+                        "rate": rate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -1367,18 +1399,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adrc",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "transfer": transfer,
-                "attack": attack,
-                "release": release,
-                "channels": channels,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "transfer": transfer,
+                        "attack": attack,
+                        "release": release,
+                        "channels": channels,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1496,29 +1530,31 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adynamicequalizer",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "threshold": threshold,
-                "dfrequency": dfrequency,
-                "dqfactor": dqfactor,
-                "tfrequency": tfrequency,
-                "tqfactor": tqfactor,
-                "attack": attack,
-                "release": release,
-                "ratio": ratio,
-                "makeup": makeup,
-                "range": range,
-                "mode": mode,
-                "dftype": dftype,
-                "tftype": tftype,
-                "auto": auto,
-                "precision": precision,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "threshold": threshold,
+                        "dfrequency": dfrequency,
+                        "dqfactor": dqfactor,
+                        "tfrequency": tfrequency,
+                        "tqfactor": tqfactor,
+                        "attack": attack,
+                        "release": release,
+                        "ratio": ratio,
+                        "makeup": makeup,
+                        "range": range,
+                        "mode": mode,
+                        "dftype": dftype,
+                        "tftype": tftype,
+                        "auto": auto,
+                        "precision": precision,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1558,16 +1594,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="adynamicsmooth",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sensitivity": sensitivity,
-                "basefreq": basefreq,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sensitivity": sensitivity,
+                        "basefreq": basefreq,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1626,18 +1664,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aecho",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "in_gain": in_gain,
-                "out_gain": out_gain,
-                "delays": delays,
-                "decays": decays,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "in_gain": in_gain,
+                        "out_gain": out_gain,
+                        "delays": delays,
+                        "decays": decays,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1695,18 +1735,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aemphasis",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "mode": mode,
-                "type": type,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "mode": mode,
+                        "type": type,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1780,16 +1822,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aeval",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "exprs": exprs,
-                "channel_layout": channel_layout,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "exprs": exprs,
+                        "channel_layout": channel_layout,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1869,22 +1913,24 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aexciter",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "amount": amount,
-                "drive": drive,
-                "blend": blend,
-                "freq": freq,
-                "ceil": ceil,
-                "listen": listen,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "amount": amount,
+                        "drive": drive,
+                        "blend": blend,
+                        "freq": freq,
+                        "ceil": ceil,
+                        "listen": listen,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -1987,22 +2033,24 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afade",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "type": type,
-                "start_sample": start_sample,
-                "nb_samples": nb_samples,
-                "start_time": start_time,
-                "duration": duration,
-                "curve": curve,
-                "silence": silence,
-                "unity": unity,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "type": type,
+                        "start_sample": start_sample,
+                        "nb_samples": nb_samples,
+                        "start_time": start_time,
+                        "duration": duration,
+                        "curve": curve,
+                        "silence": silence,
+                        "unity": unity,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2116,28 +2164,30 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afftdn",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "noise_reduction": noise_reduction,
-                "noise_floor": noise_floor,
-                "noise_type": noise_type,
-                "band_noise": band_noise,
-                "residual_floor": residual_floor,
-                "track_noise": track_noise,
-                "track_residual": track_residual,
-                "output_mode": output_mode,
-                "adaptivity": adaptivity,
-                "floor_offset": floor_offset,
-                "noise_link": noise_link,
-                "band_multiplier": band_multiplier,
-                "sample_noise": sample_noise,
-                "gain_smooth": gain_smooth,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "noise_reduction": noise_reduction,
+                        "noise_floor": noise_floor,
+                        "noise_type": noise_type,
+                        "band_noise": band_noise,
+                        "residual_floor": residual_floor,
+                        "track_noise": track_noise,
+                        "track_residual": track_residual,
+                        "output_mode": output_mode,
+                        "adaptivity": adaptivity,
+                        "floor_offset": floor_offset,
+                        "noise_link": noise_link,
+                        "band_multiplier": band_multiplier,
+                        "sample_noise": sample_noise,
+                        "gain_smooth": gain_smooth,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2218,19 +2268,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afftfilt",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "real": real,
-                "imag": imag,
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "real": real,
+                        "imag": imag,
+                        "win_size": win_size,
+                        "win_func": win_func,
+                        "overlap": overlap,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2256,12 +2308,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afifo",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -2317,17 +2367,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aformat",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sample_fmts": sample_fmts,
-                "sample_rates": sample_rates,
-                "channel_layouts": channel_layouts,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sample_fmts": sample_fmts,
+                        "sample_rates": sample_rates,
+                        "channel_layouts": channel_layouts,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2373,17 +2425,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afreqshift",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "shift": shift,
-                "level": level,
-                "order": order,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "shift": shift,
+                        "level": level,
+                        "order": order,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2461,22 +2515,24 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="afwtdn",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sigma": sigma,
-                "levels": levels,
-                "wavet": wavet,
-                "percent": percent,
-                "profile": profile,
-                "adaptive": adaptive,
-                "samples": samples,
-                "softness": softness,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sigma": sigma,
+                        "levels": levels,
+                        "wavet": wavet,
+                        "percent": percent,
+                        "profile": profile,
+                        "adaptive": adaptive,
+                        "samples": samples,
+                        "softness": softness,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2582,26 +2638,28 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="agate",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "mode": mode,
-                "range": range,
-                "threshold": threshold,
-                "ratio": ratio,
-                "attack": attack,
-                "release": release,
-                "makeup": makeup,
-                "knee": knee,
-                "detection": detection,
-                "link": link,
-                "level_sc": level_sc,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "mode": mode,
+                        "range": range,
+                        "threshold": threshold,
+                        "ratio": ratio,
+                        "attack": attack,
+                        "release": release,
+                        "makeup": makeup,
+                        "knee": knee,
+                        "detection": detection,
+                        "link": link,
+                        "level_sc": level_sc,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2659,19 +2717,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="agraphmonitor",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "opacity": opacity,
-                "mode": mode,
-                "flags": flags,
-                "rate": rate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "opacity": opacity,
+                        "mode": mode,
+                        "flags": flags,
+                        "rate": rate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2753,23 +2813,25 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ahistogram",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dmode": dmode,
-                "rate": rate,
-                "size": size,
-                "scale": scale,
-                "ascale": ascale,
-                "acount": acount,
-                "rheight": rheight,
-                "slide": slide,
-                "hmode": hmode,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dmode": dmode,
+                        "rate": rate,
+                        "size": size,
+                        "scale": scale,
+                        "ascale": ascale,
+                        "acount": acount,
+                        "rheight": rheight,
+                        "slide": slide,
+                        "hmode": hmode,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -2888,28 +2950,30 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aiir",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio] + [StreamType.video] if response else [],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "zeros": zeros,
-                "poles": poles,
-                "gains": gains,
-                "dry": dry,
-                "wet": wet,
-                "format": format,
-                "process": process,
-                "precision": precision,
-                "normalize": normalize,
-                "mix": mix,
-                "response": response,
-                "channel": channel,
-                "size": size,
-                "rate": rate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio] + [StreamType.video] if response else []),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "zeros": zeros,
+                        "poles": poles,
+                        "gains": gains,
+                        "dry": dry,
+                        "wet": wet,
+                        "format": format,
+                        "process": process,
+                        "precision": precision,
+                        "normalize": normalize,
+                        "mix": mix,
+                        "response": response,
+                        "channel": channel,
+                        "size": size,
+                        "rate": rate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -2934,12 +2998,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aintegral",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -2967,12 +3029,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="alatency",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -3060,23 +3120,25 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="alimiter",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "limit": limit,
-                "attack": attack,
-                "release": release,
-                "asc": asc,
-                "asc_level": asc_level,
-                "level": level,
-                "latency": latency,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "limit": limit,
+                        "attack": attack,
+                        "release": release,
+                        "asc": asc,
+                        "asc_level": asc_level,
+                        "level": level,
+                        "latency": latency,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3160,23 +3222,25 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="allpass",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "order": order,
-                "transform": transform,
-                "precision": precision,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "order": order,
+                        "transform": transform,
+                        "precision": precision,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3228,18 +3292,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aloop",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "loop": loop,
-                "size": size,
-                "start": start,
-                "time": time,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "loop": loop,
+                        "size": size,
+                        "start": start,
+                        "time": time,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3311,21 +3377,23 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ametadata",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "key": key,
-                "value": value,
-                "function": function,
-                "expr": expr,
-                "file": file,
-                "direct": direct,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "key": key,
+                        "value": value,
+                        "function": function,
+                        "expr": expr,
+                        "file": file,
+                        "direct": direct,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3352,13 +3420,13 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="amultiply",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _multiply1,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -3422,20 +3490,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anequalizer",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio] + [StreamType.video] if curves else [],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "params": params,
-                "curves": curves,
-                "size": size,
-                "mgain": mgain,
-                "fscale": fscale,
-                "colors": colors,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio] + [StreamType.video] if curves else []),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "params": params,
+                        "curves": curves,
+                        "size": size,
+                        "mgain": mgain,
+                        "fscale": fscale,
+                        "colors": colors,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -3498,19 +3568,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anlmdn",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "strength": strength,
-                "patch": patch,
-                "research": research,
-                "output": output,
-                "smooth": smooth,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "strength": strength,
+                        "patch": patch,
+                        "research": research,
+                        "output": output,
+                        "smooth": smooth,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3581,21 +3653,25 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anlmf",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _desired,
-            ],
-            kwargs={
-                "order": order,
-                "mu": mu,
-                "eps": eps,
-                "leakage": leakage,
-                "out_mode": out_mode,
-                "precision": precision,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "order": order,
+                        "mu": mu,
+                        "eps": eps,
+                        "leakage": leakage,
+                        "out_mode": out_mode,
+                        "precision": precision,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3666,21 +3742,25 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anlms",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _desired,
-            ],
-            kwargs={
-                "order": order,
-                "mu": mu,
-                "eps": eps,
-                "leakage": leakage,
-                "out_mode": out_mode,
-                "precision": precision,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "order": order,
+                        "mu": mu,
+                        "eps": eps,
+                        "leakage": leakage,
+                        "out_mode": out_mode,
+                        "precision": precision,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3702,12 +3782,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="anull",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -3774,19 +3852,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="apad",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "packet_size": packet_size,
-                "pad_len": pad_len,
-                "whole_len": whole_len,
-                "pad_dur": pad_dur,
-                "whole_dur": whole_dur,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "packet_size": packet_size,
+                        "pad_len": pad_len,
+                        "whole_len": whole_len,
+                        "pad_dur": pad_dur,
+                        "whole_dur": whole_dur,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3834,16 +3914,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aperms",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "seed": seed,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "seed": seed,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -3924,25 +4006,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aphasemeter",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio] + ([StreamType.video] if video else []),
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rate": rate,
-                "size": size,
-                "rc": rc,
-                "gc": gc,
-                "bc": bc,
-                "mpc": mpc,
-                "video": video,
-                "phasing": phasing,
-                "tolerance": tolerance,
-                "angle": angle,
-                "duration": duration,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio] + ([StreamType.video] if video else [])),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rate": rate,
+                        "size": size,
+                        "rc": rc,
+                        "gc": gc,
+                        "bc": bc,
+                        "mpc": mpc,
+                        "video": video,
+                        "phasing": phasing,
+                        "tolerance": tolerance,
+                        "angle": angle,
+                        "duration": duration,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -4011,20 +4095,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aphaser",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "in_gain": in_gain,
-                "out_gain": out_gain,
-                "delay": delay,
-                "decay": decay,
-                "speed": speed,
-                "type": type,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "in_gain": in_gain,
+                        "out_gain": out_gain,
+                        "delay": delay,
+                        "decay": decay,
+                        "speed": speed,
+                        "type": type,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4070,17 +4156,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aphaseshift",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "shift": shift,
-                "level": level,
-                "order": order,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "shift": shift,
+                        "level": level,
+                        "order": order,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4105,13 +4193,13 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="apsnr",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _input1,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -4181,21 +4269,23 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="apsyclip",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "clip": clip,
-                "diff": diff,
-                "adaptive": adaptive,
-                "iterations": iterations,
-                "level": level,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "clip": clip,
+                        "diff": diff,
+                        "adaptive": adaptive,
+                        "iterations": iterations,
+                        "level": level,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4301,25 +4391,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="apulsator",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "mode": mode,
-                "amount": amount,
-                "offset_l": offset_l,
-                "offset_r": offset_r,
-                "width": width,
-                "timing": timing,
-                "bpm": bpm,
-                "ms": ms,
-                "hz": hz,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "mode": mode,
+                        "amount": amount,
+                        "offset_l": offset_l,
+                        "offset_r": offset_r,
+                        "width": width,
+                        "timing": timing,
+                        "bpm": bpm,
+                        "ms": ms,
+                        "hz": hz,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4363,16 +4455,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="arealtime",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "limit": limit,
-                "speed": speed,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "limit": limit,
+                        "speed": speed,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4407,15 +4501,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aresample",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sample_rate": sample_rate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sample_rate": sample_rate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4440,12 +4536,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="areverse",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -4511,20 +4605,24 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="arls",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _desired,
-            ],
-            kwargs={
-                "order": order,
-                "lambda": _lambda,
-                "delta": delta,
-                "out_mode": out_mode,
-                "precision": precision,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "order": order,
+                        "lambda": _lambda,
+                        "delta": delta,
+                        "out_mode": out_mode,
+                        "precision": precision,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4564,16 +4662,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="arnndn",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "model": model,
-                "mix": mix,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "model": model,
+                        "mix": mix,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4598,13 +4698,13 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asdr",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _input1,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -4651,16 +4751,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asegment",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio] * len((timestamps or samples).split("|")),
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "timestamps": timestamps,
-                "samples": samples,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio] * len((timestamps or samples).split("|"))),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "timestamps": timestamps,
+                        "samples": samples,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -4781,16 +4883,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aselect",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio] * outputs,
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "expr": expr,
-                "outputs": outputs,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio] * outputs),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "expr": expr,
+                        "outputs": outputs,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -4839,16 +4943,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asendcmd",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "commands": commands,
-                "filename": filename,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "commands": commands,
+                        "filename": filename,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -4900,16 +5006,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asetnsamples",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "nb_out_samples": nb_out_samples,
-                "pad": pad,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "nb_out_samples": nb_out_samples,
+                        "pad": pad,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5019,15 +5127,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asetpts",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "expr": expr,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "expr": expr,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5057,15 +5167,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asetrate",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sample_rate": sample_rate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sample_rate": sample_rate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5100,15 +5212,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asettb",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "expr": expr,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "expr": expr,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5171,12 +5285,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ashowinfo",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -5240,16 +5352,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asidedata",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "type": type,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "type": type,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5274,13 +5388,13 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asisdr",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _input1,
-            ],
-            kwargs={} | kwargs,
+            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -5344,19 +5458,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asoftclip",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "type": type,
-                "threshold": threshold,
-                "output": output,
-                "param": param,
-                "oversample": oversample,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "type": type,
+                        "threshold": threshold,
+                        "output": output,
+                        "param": param,
+                        "oversample": oversample,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5481,18 +5597,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="aspectralstats",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-                "measure": measure,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "win_size": win_size,
+                        "win_func": win_func,
+                        "overlap": overlap,
+                        "measure": measure,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5520,15 +5638,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asplit",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio] * outputs,
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "outputs": outputs,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio] * outputs),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "outputs": outputs,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -5604,21 +5724,23 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asr",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rate": rate,
-                "hmm": hmm,
-                "dict": dict,
-                "lm": lm,
-                "lmctl": lmctl,
-                "lmname": lmname,
-                "logfn": logfn,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rate": rate,
+                        "hmm": hmm,
+                        "dict": dict,
+                        "lm": lm,
+                        "lmctl": lmctl,
+                        "lmname": lmname,
+                        "logfn": logfn,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5852,19 +5974,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="astats",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "length": length,
-                "metadata": metadata,
-                "reset": reset,
-                "measure_perchannel": measure_perchannel,
-                "measure_overall": measure_overall,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "length": length,
+                        "metadata": metadata,
+                        "reset": reset,
+                        "measure_perchannel": measure_perchannel,
+                        "measure_overall": measure_overall,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5946,23 +6070,25 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asubboost",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "dry": dry,
-                "wet": wet,
-                "boost": boost,
-                "decay": decay,
-                "feedback": feedback,
-                "cutoff": cutoff,
-                "slope": slope,
-                "delay": delay,
-                "channels": channels,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "dry": dry,
+                        "wet": wet,
+                        "boost": boost,
+                        "decay": decay,
+                        "feedback": feedback,
+                        "cutoff": cutoff,
+                        "slope": slope,
+                        "delay": delay,
+                        "channels": channels,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6011,17 +6137,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asubcut",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cutoff": cutoff,
-                "order": order,
-                "level": level,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cutoff": cutoff,
+                        "order": order,
+                        "level": level,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6067,17 +6195,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asupercut",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cutoff": cutoff,
-                "order": order,
-                "level": level,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cutoff": cutoff,
+                        "order": order,
+                        "level": level,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6129,18 +6259,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asuperpass",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "centerf": centerf,
-                "order": order,
-                "qfactor": qfactor,
-                "level": level,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "centerf": centerf,
+                        "order": order,
+                        "qfactor": qfactor,
+                        "level": level,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6192,18 +6324,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="asuperstop",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "centerf": centerf,
-                "order": order,
-                "qfactor": qfactor,
-                "level": level,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "centerf": centerf,
+                        "order": order,
+                        "qfactor": qfactor,
+                        "level": level,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6234,15 +6368,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="atempo",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "tempo": tempo,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "tempo": tempo,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6303,19 +6439,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="atilt",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "freq": freq,
-                "slope": slope,
-                "width": width,
-                "order": order,
-                "level": level,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "freq": freq,
+                        "slope": slope,
+                        "width": width,
+                        "order": order,
+                        "level": level,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6418,21 +6556,23 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="atrim",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "start": start,
-                "end": end,
-                "start_pts": start_pts,
-                "end_pts": end_pts,
-                "duration": duration,
-                "start_sample": start_sample,
-                "end_sample": end_sample,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "start": start,
+                        "end": end,
+                        "start_pts": start_pts,
+                        "end_pts": end_pts,
+                        "duration": duration,
+                        "start_sample": start_sample,
+                        "end_sample": end_sample,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6551,30 +6691,32 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="avectorscope",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mode": mode,
-                "rate": rate,
-                "size": size,
-                "rc": rc,
-                "gc": gc,
-                "bc": bc,
-                "ac": ac,
-                "rf": rf,
-                "gf": gf,
-                "bf": bf,
-                "af": af,
-                "zoom": zoom,
-                "draw": draw,
-                "scale": scale,
-                "swap": swap,
-                "mirror": mirror,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mode": mode,
+                        "rate": rate,
+                        "size": size,
+                        "rc": rc,
+                        "gc": gc,
+                        "bc": bc,
+                        "ac": ac,
+                        "rf": rf,
+                        "gf": gf,
+                        "bf": bf,
+                        "af": af,
+                        "zoom": zoom,
+                        "draw": draw,
+                        "scale": scale,
+                        "swap": swap,
+                        "mirror": mirror,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -6621,17 +6763,21 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="axcorrelate",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _axcorrelate1,
-            ],
-            kwargs={
-                "size": size,
-                "algo": algo,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "algo": algo,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6699,15 +6845,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="azmq",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "bind_address": bind_address,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "bind_address": bind_address,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6798,24 +6946,26 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bandpass",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "csg": csg,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "csg": csg,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -6899,23 +7049,25 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bandreject",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7011,25 +7163,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bass",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "gain": gain,
+                        "poles": poles,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7082,26 +7236,28 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="biquad",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "a0": a0,
-                "a1": a1,
-                "a2": a2,
-                "b0": b0,
-                "b1": b1,
-                "b2": b2,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "a0": a0,
+                        "a1": a1,
+                        "a2": a2,
+                        "b0": b0,
+                        "b1": b1,
+                        "b2": b2,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7151,17 +7307,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="bs2b",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "profile": profile,
-                "fcut": fcut,
-                "feed": feed,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "profile": profile,
+                        "fcut": fcut,
+                        "feed": feed,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7204,16 +7362,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="channelmap",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "map": map,
-                "channel_layout": channel_layout,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "map": map,
+                        "channel_layout": channel_layout,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7253,16 +7413,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="channelsplit",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio] * CHANNEL_LAYOUT[channel_layout],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "channel_layout": channel_layout,
-                "channels": channels,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio] * CHANNEL_LAYOUT[channel_layout]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "channel_layout": channel_layout,
+                        "channels": channels,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -7337,20 +7499,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="chorus",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "in_gain": in_gain,
-                "out_gain": out_gain,
-                "delays": delays,
-                "decays": decays,
-                "speeds": speeds,
-                "depths": depths,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "in_gain": in_gain,
+                        "out_gain": out_gain,
+                        "delays": delays,
+                        "decays": decays,
+                        "speeds": speeds,
+                        "depths": depths,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7418,21 +7582,23 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="compand",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "attacks": attacks,
-                "decays": decays,
-                "points": points,
-                "soft-knee": soft_knee,
-                "gain": gain,
-                "volume": volume,
-                "delay": delay,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "attacks": attacks,
+                        "decays": decays,
+                        "points": points,
+                        "soft-knee": soft_knee,
+                        "gain": gain,
+                        "volume": volume,
+                        "delay": delay,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7511,20 +7677,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="compensationdelay",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "mm": mm,
-                "cm": cm,
-                "m": m,
-                "dry": dry,
-                "wet": wet,
-                "temp": temp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "mm": mm,
+                        "cm": cm,
+                        "m": m,
+                        "dry": dry,
+                        "wet": wet,
+                        "temp": temp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7594,20 +7762,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="crossfeed",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "strength": strength,
-                "range": range,
-                "slope": slope,
-                "level_in": level_in,
-                "level_out": level_out,
-                "block_size": block_size,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "strength": strength,
+                        "range": range,
+                        "slope": slope,
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "block_size": block_size,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7645,16 +7815,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="crystalizer",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "i": i,
-                "c": c,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "i": i,
+                        "c": c,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7697,16 +7869,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dcshift",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "shift": shift,
-                "limitergain": limitergain,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "shift": shift,
+                        "limitergain": limitergain,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7756,18 +7930,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="deesser",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "i": i,
-                "m": m,
-                "f": f,
-                "s": s,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "i": i,
+                        "m": m,
+                        "f": f,
+                        "s": s,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7818,17 +7994,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dialoguenhance",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "original": original,
-                "enhance": enhance,
-                "voice": voice,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "original": original,
+                        "enhance": enhance,
+                        "voice": voice,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7861,15 +8039,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="drmeter",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "length": length,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "length": length,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -7985,27 +8165,29 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="dynaudnorm",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "framelen": framelen,
-                "gausssize": gausssize,
-                "peak": peak,
-                "maxgain": maxgain,
-                "targetrms": targetrms,
-                "coupling": coupling,
-                "correctdc": correctdc,
-                "altboundary": altboundary,
-                "compress": compress,
-                "threshold": threshold,
-                "channels": channels,
-                "overlap": overlap,
-                "curve": curve,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "framelen": framelen,
+                        "gausssize": gausssize,
+                        "peak": peak,
+                        "maxgain": maxgain,
+                        "targetrms": targetrms,
+                        "coupling": coupling,
+                        "correctdc": correctdc,
+                        "altboundary": altboundary,
+                        "compress": compress,
+                        "threshold": threshold,
+                        "channels": channels,
+                        "overlap": overlap,
+                        "curve": curve,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -8034,12 +8216,10 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="earwax",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
@@ -8191,31 +8371,33 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="ebur128",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video] if video else [] + [StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "video": video,
-                "size": size,
-                "meter": meter,
-                "framelog": framelog,
-                "metadata": metadata,
-                "peak": peak,
-                "dualmono": dualmono,
-                "panlaw": panlaw,
-                "target": target,
-                "gauge": gauge,
-                "scale": scale,
-                "integrated": integrated,
-                "range": range,
-                "lra_low": lra_low,
-                "lra_high": lra_high,
-                "sample_peak": sample_peak,
-                "true_peak": true_peak,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video] if video else [] + [StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "video": video,
+                        "size": size,
+                        "meter": meter,
+                        "framelog": framelog,
+                        "metadata": metadata,
+                        "peak": peak,
+                        "dualmono": dualmono,
+                        "panlaw": panlaw,
+                        "target": target,
+                        "gauge": gauge,
+                        "scale": scale,
+                        "integrated": integrated,
+                        "range": range,
+                        "lra_low": lra_low,
+                        "lra_high": lra_high,
+                        "sample_peak": sample_peak,
+                        "true_peak": true_peak,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
 
         return filter_node
@@ -8310,24 +8492,26 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="equalizer",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "gain": gain,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -8364,16 +8548,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="extrastereo",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "m": m,
-                "c": c,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "m": m,
+                        "c": c,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -8492,27 +8678,29 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="firequalizer",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "gain": gain,
-                "gain_entry": gain_entry,
-                "delay": delay,
-                "accuracy": accuracy,
-                "wfunc": wfunc,
-                "fixed": fixed,
-                "multi": multi,
-                "zero_phase": zero_phase,
-                "scale": scale,
-                "dumpfile": dumpfile,
-                "dumpscale": dumpscale,
-                "fft2": fft2,
-                "min_phase": min_phase,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "gain": gain,
+                        "gain_entry": gain_entry,
+                        "delay": delay,
+                        "accuracy": accuracy,
+                        "wfunc": wfunc,
+                        "fixed": fixed,
+                        "multi": multi,
+                        "zero_phase": zero_phase,
+                        "scale": scale,
+                        "dumpfile": dumpfile,
+                        "dumpscale": dumpscale,
+                        "fft2": fft2,
+                        "min_phase": min_phase,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -8588,22 +8776,24 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="flanger",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "delay": delay,
-                "depth": depth,
-                "regen": regen,
-                "width": width,
-                "speed": speed,
-                "shape": shape,
-                "phase": phase,
-                "interp": interp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "delay": delay,
+                        "depth": depth,
+                        "regen": regen,
+                        "width": width,
+                        "speed": speed,
+                        "shape": shape,
+                        "phase": phase,
+                        "interp": interp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -8713,27 +8903,29 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="haas",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "side_gain": side_gain,
-                "middle_source": middle_source,
-                "middle_phase": middle_phase,
-                "left_delay": left_delay,
-                "left_balance": left_balance,
-                "left_gain": left_gain,
-                "left_phase": left_phase,
-                "right_delay": right_delay,
-                "right_balance": right_balance,
-                "right_gain": right_gain,
-                "right_phase": right_phase,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "side_gain": side_gain,
+                        "middle_source": middle_source,
+                        "middle_phase": middle_phase,
+                        "left_delay": left_delay,
+                        "left_balance": left_balance,
+                        "left_gain": left_gain,
+                        "left_phase": left_phase,
+                        "right_delay": right_delay,
+                        "right_balance": right_balance,
+                        "right_gain": right_gain,
+                        "right_phase": right_phase,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -8812,20 +9004,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="hdcd",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "disable_autoconvert": disable_autoconvert,
-                "process_stereo": process_stereo,
-                "cdt_ms": cdt_ms,
-                "force_pe": force_pe,
-                "analyze_mode": analyze_mode,
-                "bits_per_sample": bits_per_sample,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "disable_autoconvert": disable_autoconvert,
+                        "process_stereo": process_stereo,
+                        "cdt_ms": cdt_ms,
+                        "force_pe": force_pe,
+                        "analyze_mode": analyze_mode,
+                        "bits_per_sample": bits_per_sample,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -8915,24 +9109,26 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="highpass",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "poles": poles,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9028,25 +9224,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="highshelf",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "gain": gain,
+                        "poles": poles,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9145,25 +9343,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="loudnorm",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "I": I,
-                "LRA": LRA,
-                "TP": TP,
-                "measured_I": measured_I,
-                "measured_LRA": measured_LRA,
-                "measured_TP": measured_TP,
-                "measured_thresh": measured_thresh,
-                "offset": offset,
-                "linear": linear,
-                "dual_mono": dual_mono,
-                "print_format": print_format,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "I": I,
+                        "LRA": LRA,
+                        "TP": TP,
+                        "measured_I": measured_I,
+                        "measured_LRA": measured_LRA,
+                        "measured_TP": measured_TP,
+                        "measured_thresh": measured_thresh,
+                        "offset": offset,
+                        "linear": linear,
+                        "dual_mono": dual_mono,
+                        "print_format": print_format,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9253,24 +9453,26 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lowpass",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "poles": poles,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9366,25 +9568,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="lowshelf",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "gain": gain,
+                        "poles": poles,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9425,15 +9629,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="mcompand",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "args": args,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "args": args,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9486,15 +9692,17 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="pan",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "args": args,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "args": args,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9536,16 +9744,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="replaygain",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "track_gain": track_gain,
-                "track_peak": track_peak,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "track_gain": track_gain,
+                        "track_peak": track_peak,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9636,24 +9846,26 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="rubberband",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "tempo": tempo,
-                "pitch": pitch,
-                "transients": transients,
-                "detector": detector,
-                "phase": phase,
-                "window": window,
-                "smoothing": smoothing,
-                "formant": formant,
-                "pitchq": pitchq,
-                "channels": channels,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "tempo": tempo,
+                        "pitch": pitch,
+                        "transients": transients,
+                        "detector": detector,
+                        "phase": phase,
+                        "window": window,
+                        "smoothing": smoothing,
+                        "formant": formant,
+                        "pitchq": pitchq,
+                        "channels": channels,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -9846,40 +10058,42 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showcqt",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "fps": fps,
-                "bar_h": bar_h,
-                "axis_h": axis_h,
-                "sono_h": sono_h,
-                "fullhd": fullhd,
-                "sono_v": sono_v,
-                "bar_v": bar_v,
-                "sono_g": sono_g,
-                "bar_g": bar_g,
-                "bar_t": bar_t,
-                "timeclamp": timeclamp,
-                "attack": attack,
-                "basefreq": basefreq,
-                "endfreq": endfreq,
-                "coeffclamp": coeffclamp,
-                "tlength": tlength,
-                "count": count,
-                "fcount": fcount,
-                "fontfile": fontfile,
-                "font": font,
-                "fontcolor": fontcolor,
-                "axisfile": axisfile,
-                "axis": axis,
-                "csp": csp,
-                "cscheme": cscheme,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "fps": fps,
+                        "bar_h": bar_h,
+                        "axis_h": axis_h,
+                        "sono_h": sono_h,
+                        "fullhd": fullhd,
+                        "sono_v": sono_v,
+                        "bar_v": bar_v,
+                        "sono_g": sono_g,
+                        "bar_g": bar_g,
+                        "bar_t": bar_t,
+                        "timeclamp": timeclamp,
+                        "attack": attack,
+                        "basefreq": basefreq,
+                        "endfreq": endfreq,
+                        "coeffclamp": coeffclamp,
+                        "tlength": tlength,
+                        "count": count,
+                        "fcount": fcount,
+                        "fontfile": fontfile,
+                        "font": font,
+                        "fontcolor": fontcolor,
+                        "axisfile": axisfile,
+                        "axis": axis,
+                        "csp": csp,
+                        "cscheme": cscheme,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10008,30 +10222,32 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showcwt",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "rate": rate,
-                "scale": scale,
-                "iscale": iscale,
-                "min": min,
-                "max": max,
-                "imin": imin,
-                "imax": imax,
-                "logb": logb,
-                "deviation": deviation,
-                "pps": pps,
-                "mode": mode,
-                "slide": slide,
-                "direction": direction,
-                "bar": bar,
-                "rotation": rotation,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "rate": rate,
+                        "scale": scale,
+                        "iscale": iscale,
+                        "min": min,
+                        "max": max,
+                        "imin": imin,
+                        "imax": imax,
+                        "logb": logb,
+                        "deviation": deviation,
+                        "pps": pps,
+                        "mode": mode,
+                        "slide": slide,
+                        "direction": direction,
+                        "bar": bar,
+                        "rotation": rotation,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10169,28 +10385,30 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showfreqs",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "rate": rate,
-                "mode": mode,
-                "ascale": ascale,
-                "fscale": fscale,
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-                "averaging": averaging,
-                "colors": colors,
-                "cmode": cmode,
-                "minamp": minamp,
-                "data": data,
-                "channels": channels,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "rate": rate,
+                        "mode": mode,
+                        "ascale": ascale,
+                        "fscale": fscale,
+                        "win_size": win_size,
+                        "win_func": win_func,
+                        "overlap": overlap,
+                        "averaging": averaging,
+                        "colors": colors,
+                        "cmode": cmode,
+                        "minamp": minamp,
+                        "data": data,
+                        "channels": channels,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10268,18 +10486,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showspatial",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "win_size": win_size,
-                "win_func": win_func,
-                "rate": rate,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "win_size": win_size,
+                        "win_func": win_func,
+                        "rate": rate,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10474,34 +10694,36 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showspectrum",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "slide": slide,
-                "mode": mode,
-                "color": color,
-                "scale": scale,
-                "fscale": fscale,
-                "saturation": saturation,
-                "win_func": win_func,
-                "orientation": orientation,
-                "overlap": overlap,
-                "gain": gain,
-                "data": data,
-                "rotation": rotation,
-                "start": start,
-                "stop": stop,
-                "fps": fps,
-                "legend": legend,
-                "drange": drange,
-                "limit": limit,
-                "opacity": opacity,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "slide": slide,
+                        "mode": mode,
+                        "color": color,
+                        "scale": scale,
+                        "fscale": fscale,
+                        "saturation": saturation,
+                        "win_func": win_func,
+                        "orientation": orientation,
+                        "overlap": overlap,
+                        "gain": gain,
+                        "data": data,
+                        "rotation": rotation,
+                        "start": start,
+                        "stop": stop,
+                        "fps": fps,
+                        "legend": legend,
+                        "drange": drange,
+                        "limit": limit,
+                        "opacity": opacity,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10669,30 +10891,32 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showspectrumpic",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "mode": mode,
-                "color": color,
-                "scale": scale,
-                "fscale": fscale,
-                "saturation": saturation,
-                "win_func": win_func,
-                "orientation": orientation,
-                "gain": gain,
-                "legend": legend,
-                "rotation": rotation,
-                "start": start,
-                "stop": stop,
-                "drange": drange,
-                "limit": limit,
-                "opacity": opacity,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "mode": mode,
+                        "color": color,
+                        "scale": scale,
+                        "fscale": fscale,
+                        "saturation": saturation,
+                        "win_func": win_func,
+                        "orientation": orientation,
+                        "gain": gain,
+                        "legend": legend,
+                        "rotation": rotation,
+                        "start": start,
+                        "stop": stop,
+                        "drange": drange,
+                        "limit": limit,
+                        "opacity": opacity,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10810,29 +11034,31 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showvolume",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "rate": rate,
-                "b": b,
-                "w": w,
-                "h": h,
-                "f": f,
-                "c": c,
-                "t": t,
-                "v": v,
-                "dm": dm,
-                "dmc": dmc,
-                "o": o,
-                "s": s,
-                "p": p,
-                "m": m,
-                "ds": ds,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "rate": rate,
+                        "b": b,
+                        "w": w,
+                        "h": h,
+                        "f": f,
+                        "c": c,
+                        "t": t,
+                        "v": v,
+                        "dm": dm,
+                        "dmc": dmc,
+                        "o": o,
+                        "s": s,
+                        "p": p,
+                        "m": m,
+                        "ds": ds,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10908,22 +11134,24 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showwaves",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "mode": mode,
-                "n": n,
-                "rate": rate,
-                "split_channels": split_channels,
-                "colors": colors,
-                "scale": scale,
-                "draw": draw,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "mode": mode,
+                        "n": n,
+                        "rate": rate,
+                        "split_channels": split_channels,
+                        "colors": colors,
+                        "scale": scale,
+                        "draw": draw,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -10987,20 +11215,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="showwavespic",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.video],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "size": size,
-                "split_channels": split_channels,
-                "colors": colors,
-                "scale": scale,
-                "draw": draw,
-                "filter": filter,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.video]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "size": size,
+                        "split_channels": split_channels,
+                        "colors": colors,
+                        "scale": scale,
+                        "draw": draw,
+                        "filter": filter,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.video(0)
 
@@ -11105,27 +11335,31 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sidechaincompress",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _sidechain,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "mode": mode,
-                "threshold": threshold,
-                "ratio": ratio,
-                "attack": attack,
-                "release": release,
-                "makeup": makeup,
-                "knee": knee,
-                "link": link,
-                "detection": detection,
-                "level_sc": level_sc,
-                "mix": mix,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "mode": mode,
+                        "threshold": threshold,
+                        "ratio": ratio,
+                        "attack": attack,
+                        "release": release,
+                        "makeup": makeup,
+                        "knee": knee,
+                        "link": link,
+                        "detection": detection,
+                        "level_sc": level_sc,
+                        "mix": mix,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -11234,27 +11468,31 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sidechaingate",
-            input_typings=[StreamType.audio, StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
                 self,
                 _sidechain,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "mode": mode,
-                "range": range,
-                "threshold": threshold,
-                "ratio": ratio,
-                "attack": attack,
-                "release": release,
-                "makeup": makeup,
-                "knee": knee,
-                "detection": detection,
-                "link": link,
-                "level_sc": level_sc,
-            }
-            | kwargs,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "mode": mode,
+                        "range": range,
+                        "threshold": threshold,
+                        "ratio": ratio,
+                        "attack": attack,
+                        "release": release,
+                        "makeup": makeup,
+                        "knee": knee,
+                        "detection": detection,
+                        "link": link,
+                        "level_sc": level_sc,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -11315,17 +11553,19 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="silencedetect",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "n": n,
-                "d": d,
-                "mono": mono,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "n": n,
+                        "d": d,
+                        "mono": mono,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -11431,27 +11671,29 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="silenceremove",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "start_periods": start_periods,
-                "start_duration": start_duration,
-                "start_threshold": start_threshold,
-                "start_silence": start_silence,
-                "start_mode": start_mode,
-                "stop_periods": stop_periods,
-                "stop_duration": stop_duration,
-                "stop_threshold": stop_threshold,
-                "stop_silence": stop_silence,
-                "stop_mode": stop_mode,
-                "detection": detection,
-                "window": window,
-                "timestamp": timestamp,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "start_periods": start_periods,
+                        "start_duration": start_duration,
+                        "start_threshold": start_threshold,
+                        "start_silence": start_silence,
+                        "start_mode": start_mode,
+                        "stop_periods": stop_periods,
+                        "stop_duration": stop_duration,
+                        "stop_threshold": stop_threshold,
+                        "stop_silence": stop_silence,
+                        "stop_mode": stop_mode,
+                        "detection": detection,
+                        "window": window,
+                        "timestamp": timestamp,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -11570,28 +11812,30 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="sofalizer",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "sofa": sofa,
-                "gain": gain,
-                "rotation": rotation,
-                "elevation": elevation,
-                "radius": radius,
-                "type": type,
-                "speakers": speakers,
-                "lfegain": lfegain,
-                "framesize": framesize,
-                "normalize": normalize,
-                "interpolate": interpolate,
-                "minphase": minphase,
-                "anglestep": anglestep,
-                "radstep": radstep,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "sofa": sofa,
+                        "gain": gain,
+                        "rotation": rotation,
+                        "elevation": elevation,
+                        "radius": radius,
+                        "type": type,
+                        "speakers": speakers,
+                        "lfegain": lfegain,
+                        "framesize": framesize,
+                        "normalize": normalize,
+                        "interpolate": interpolate,
+                        "minphase": minphase,
+                        "anglestep": anglestep,
+                        "radstep": radstep,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -11684,24 +11928,26 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="speechnorm",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "peak": peak,
-                "expansion": expansion,
-                "compression": compression,
-                "threshold": threshold,
-                "raise": _raise,
-                "fall": fall,
-                "channels": channels,
-                "invert": invert,
-                "link": link,
-                "rms": rms,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "peak": peak,
+                        "expansion": expansion,
+                        "compression": compression,
+                        "threshold": threshold,
+                        "raise": _raise,
+                        "fall": fall,
+                        "channels": channels,
+                        "invert": invert,
+                        "link": link,
+                        "rms": rms,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -11849,34 +12095,36 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="stereotools",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "level_in": level_in,
-                "level_out": level_out,
-                "balance_in": balance_in,
-                "balance_out": balance_out,
-                "softclip": softclip,
-                "mutel": mutel,
-                "muter": muter,
-                "phasel": phasel,
-                "phaser": phaser,
-                "mode": mode,
-                "slev": slev,
-                "sbal": sbal,
-                "mlev": mlev,
-                "mpan": mpan,
-                "base": base,
-                "delay": delay,
-                "sclevel": sclevel,
-                "phase": phase,
-                "bmode_in": bmode_in,
-                "bmode_out": bmode_out,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "balance_in": balance_in,
+                        "balance_out": balance_out,
+                        "softclip": softclip,
+                        "mutel": mutel,
+                        "muter": muter,
+                        "phasel": phasel,
+                        "phaser": phaser,
+                        "mode": mode,
+                        "slev": slev,
+                        "sbal": sbal,
+                        "mlev": mlev,
+                        "mpan": mpan,
+                        "base": base,
+                        "delay": delay,
+                        "sclevel": sclevel,
+                        "phase": phase,
+                        "bmode_in": bmode_in,
+                        "bmode_out": bmode_out,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -11930,18 +12178,20 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="stereowiden",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "delay": delay,
-                "feedback": feedback,
-                "crossfeed": crossfeed,
-                "drymix": drymix,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "delay": delay,
+                        "feedback": feedback,
+                        "crossfeed": crossfeed,
+                        "drymix": drymix,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12077,32 +12327,34 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="superequalizer",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "1b": _1b,
-                "2b": _2b,
-                "3b": _3b,
-                "4b": _4b,
-                "5b": _5b,
-                "6b": _6b,
-                "7b": _7b,
-                "8b": _8b,
-                "9b": _9b,
-                "10b": _10b,
-                "11b": _11b,
-                "12b": _12b,
-                "13b": _13b,
-                "14b": _14b,
-                "15b": _15b,
-                "16b": _16b,
-                "17b": _17b,
-                "18b": _18b,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "1b": _1b,
+                        "2b": _2b,
+                        "3b": _3b,
+                        "4b": _4b,
+                        "5b": _5b,
+                        "6b": _6b,
+                        "7b": _7b,
+                        "8b": _8b,
+                        "9b": _9b,
+                        "10b": _10b,
+                        "11b": _11b,
+                        "12b": _12b,
+                        "13b": _13b,
+                        "14b": _14b,
+                        "15b": _15b,
+                        "16b": _16b,
+                        "17b": _17b,
+                        "18b": _18b,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12401,64 +12653,66 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="surround",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "chl_out": chl_out,
-                "chl_in": chl_in,
-                "level_in": level_in,
-                "level_out": level_out,
-                "lfe": lfe,
-                "lfe_low": lfe_low,
-                "lfe_high": lfe_high,
-                "lfe_mode": lfe_mode,
-                "smooth": smooth,
-                "angle": angle,
-                "focus": focus,
-                "fc_in": fc_in,
-                "fc_out": fc_out,
-                "fl_in": fl_in,
-                "fl_out": fl_out,
-                "fr_in": fr_in,
-                "fr_out": fr_out,
-                "sl_in": sl_in,
-                "sl_out": sl_out,
-                "sr_in": sr_in,
-                "sr_out": sr_out,
-                "bl_in": bl_in,
-                "bl_out": bl_out,
-                "br_in": br_in,
-                "br_out": br_out,
-                "bc_in": bc_in,
-                "bc_out": bc_out,
-                "lfe_in": lfe_in,
-                "lfe_out": lfe_out,
-                "allx": allx,
-                "ally": ally,
-                "fcx": fcx,
-                "flx": flx,
-                "frx": frx,
-                "blx": blx,
-                "brx": brx,
-                "slx": slx,
-                "srx": srx,
-                "bcx": bcx,
-                "fcy": fcy,
-                "fly": fly,
-                "fry": fry,
-                "bly": bly,
-                "bry": bry,
-                "sly": sly,
-                "sry": sry,
-                "bcy": bcy,
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "chl_out": chl_out,
+                        "chl_in": chl_in,
+                        "level_in": level_in,
+                        "level_out": level_out,
+                        "lfe": lfe,
+                        "lfe_low": lfe_low,
+                        "lfe_high": lfe_high,
+                        "lfe_mode": lfe_mode,
+                        "smooth": smooth,
+                        "angle": angle,
+                        "focus": focus,
+                        "fc_in": fc_in,
+                        "fc_out": fc_out,
+                        "fl_in": fl_in,
+                        "fl_out": fl_out,
+                        "fr_in": fr_in,
+                        "fr_out": fr_out,
+                        "sl_in": sl_in,
+                        "sl_out": sl_out,
+                        "sr_in": sr_in,
+                        "sr_out": sr_out,
+                        "bl_in": bl_in,
+                        "bl_out": bl_out,
+                        "br_in": br_in,
+                        "br_out": br_out,
+                        "bc_in": bc_in,
+                        "bc_out": bc_out,
+                        "lfe_in": lfe_in,
+                        "lfe_out": lfe_out,
+                        "allx": allx,
+                        "ally": ally,
+                        "fcx": fcx,
+                        "flx": flx,
+                        "frx": frx,
+                        "blx": blx,
+                        "brx": brx,
+                        "slx": slx,
+                        "srx": srx,
+                        "bcx": bcx,
+                        "fcy": fcy,
+                        "fly": fly,
+                        "fry": fry,
+                        "bly": bly,
+                        "bry": bry,
+                        "sly": sly,
+                        "sry": sry,
+                        "bcy": bcy,
+                        "win_size": win_size,
+                        "win_func": win_func,
+                        "overlap": overlap,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12555,25 +12809,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tiltshelf",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "gain": gain,
+                        "poles": poles,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12669,25 +12925,27 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="treble",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "frequency": frequency,
+                        "width_type": width_type,
+                        "width": width,
+                        "gain": gain,
+                        "poles": poles,
+                        "mix": mix,
+                        "channels": channels,
+                        "normalize": normalize,
+                        "transform": transform,
+                        "precision": precision,
+                        "blocksize": blocksize,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12723,16 +12981,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="tremolo",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "f": f,
-                "d": d,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "f": f,
+                        "d": d,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12768,16 +13028,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="vibrato",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "f": f,
-                "d": d,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "f": f,
+                        "d": d,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12822,16 +13084,18 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="virtualbass",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "cutoff": cutoff,
-                "strength": strength,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "cutoff": cutoff,
+                        "strength": strength,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12948,20 +13212,22 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="volume",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={
-                "volume": volume,
-                "precision": precision,
-                "eval": eval,
-                "replaygain": replaygain,
-                "replaygain_preamp": replaygain_preamp,
-                "replaygain_noclip": replaygain_noclip,
-            }
-            | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(
+                (
+                    {
+                        "volume": volume,
+                        "precision": precision,
+                        "eval": eval,
+                        "replaygain": replaygain,
+                        "replaygain_preamp": replaygain_preamp,
+                        "replaygain_noclip": replaygain_noclip,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -12993,11 +13259,9 @@ class AudioStream(FilterableStream):
         """
         filter_node = FilterNode(
             name="volumedetect",
-            input_typings=[StreamType.audio],
-            output_typings=[StreamType.audio],
-            inputs=[
-                self,
-            ],
-            kwargs={} | kwargs,
+            input_typings=tuple([StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(self,),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)

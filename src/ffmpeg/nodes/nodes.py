@@ -308,7 +308,7 @@ class OutputStream(Stream):
 
 @dataclass(frozen=True, kw_only=True)
 class MergeOutputsNode(Node):
-    inputs: list[OutputStream]
+    inputs: tuple[OutputStream, ...]
 
     def stream(self) -> "OutputStream":
         return OutputStream(node=self)
