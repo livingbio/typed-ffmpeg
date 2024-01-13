@@ -240,7 +240,7 @@ class OutputStream(Stream):
         return GlobalNode(input=self, kwargs=tuple(kwargs.items())).stream()
 
     def overwrite_output(self) -> "OutputStream":
-        return GlobalNode(input=self, kwargs=tuple({"y": True}.items())).stream()
+        return GlobalNode(input=self, kwargs=(("y", True),)).stream()
 
     def compile(self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False) -> list[str]:
         from ..utils.compile import compile
