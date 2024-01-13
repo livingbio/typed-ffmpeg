@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import subprocess
 from abc import ABC, abstractproperty
+from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Sequence
-
-from pydantic import model_validator
 
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
@@ -16,11 +15,12 @@ if TYPE_CHECKING:
     from ..streams.video import VideoStream
 
 
+@dataclass(frozen=True, kw_only=True)
 class FilterNode(Node):
     name: str
-    inputs: list[FilterableStream]
-    input_typings: list[StreamType] | None = None
-    output_typings: list[StreamType] | None = None
+    inputs: tuple[FilterableStream, ...] = ()
+    input_typings: tuple[StreamType, ...] | None = None
+    output_typings: tuple[StreamType, ...] | None = None
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}:{self.name}({self.hex})"
@@ -59,32 +59,28 @@ class FilterNode(Node):
         ), f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}"
         return AudioStream(node=self, index=audio_outputs[index])
 
-    @model_validator(mode="after")
-    def validate_input(self) -> "FilterNode":
+    def __post_init__(self) -> None:
         from ..streams.audio import AudioStream
         from ..streams.video import VideoStream
 
-        if self.input_typings is None:
-            return self
+        super().__post_init__()
 
-        assert len(self.inputs) == len(
-            self.input_typings
-        ), f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}"
+        if self.input_typings is None:
+            return
+
+        if len(self.inputs) != self.input_typings:
+            raise ValueError(f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}")
 
         stream: FilterableStream
         expected_type: StreamType
 
         for i, (stream, expected_type) in enumerate(zip(self.inputs, self.input_typings)):
             if expected_type == StreamType.video:
-                assert isinstance(
-                    stream, VideoStream
-                ), f"Expected input {i} to have video component, got {stream.__class__.__name__}"
+                if not isinstance(stream, VideoStream):
+                    raise ValueError(f"Expected input {i} to have video component, got {stream.__class__.__name__}")
             if expected_type == StreamType.audio:
-                assert isinstance(
-                    stream, AudioStream
-                ), f"Expected input {i} to have audio component, got {stream.__class__.__name__}"
-
-        return self
+                if not isinstance(stream, AudioStream):
+                    raise ValueError(f"Expected input {i} to have audio component, got {stream.__class__.__name__}")
 
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         incoming_labels = "".join(k.label(context) for k in self.inputs)
@@ -109,6 +105,7 @@ class FilterNode(Node):
         return [incoming_labels] + [f"{self.name}"] + [outgoing_labels]
 
 
+@dataclass(frozen=True, kw_only=True)
 class FilterableStream(Stream, ABC):
     node: "FilterNode | InputNode"
 
@@ -116,7 +113,7 @@ class FilterableStream(Stream, ABC):
         return self.filter_multi_output(*streams, name=name, **kwargs).stream(0)
 
     def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
-        return FilterNode(name=name, kwargs=kwargs, inputs=[self, *streams])
+        return FilterNode(name=name, kwargs=kwargs, inputs=(self, *streams))
 
     @abstractproperty
     def video(self) -> "VideoStream":
@@ -150,15 +147,14 @@ class FilterableStream(Stream, ABC):
             else:
                 return f"[{context.get_node_label(self.node)}#{self.index}]"
 
-    @model_validator(mode="after")
-    def validate_index(self) -> FilterableStream:
+    def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):
             assert self.index is None, "Input streams cannot have an index"
         else:
             assert self.index is not None, "Filter streams must have an index"
-        return self
 
 
+@dataclass(frozen=True, kw_only=True)
 class GlobalNode(Node):
     input: "OutputStream"
 
@@ -179,6 +175,7 @@ class GlobalNode(Node):
         return commands
 
 
+@dataclass(frozen=True, kw_only=True)
 class InputNode(Node):
     filename: str
 
@@ -209,6 +206,7 @@ class InputNode(Node):
         return commands
 
 
+@dataclass(frozen=True, kw_only=True)
 class OutputNode(Node):
     filename: str
     inputs: list[FilterableStream]
@@ -235,6 +233,7 @@ class OutputNode(Node):
         return commands
 
 
+@dataclass(frozen=True, kw_only=True)
 class OutputStream(Stream):
     node: OutputNode | GlobalNode | MergeOutputsNode
 
@@ -307,6 +306,7 @@ class OutputStream(Stream):
         return stdout.decode("utf8"), stderr.decode("utf8")
 
 
+@dataclass(frozen=True, kw_only=True)
 class MergeOutputsNode(Node):
     inputs: list[OutputStream]
 
