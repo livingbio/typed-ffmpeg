@@ -68,7 +68,7 @@ class FilterNode(Node):
         if self.input_typings is None:
             return
 
-        if len(self.inputs) != self.input_typings:
+        if len(self.inputs) != len(self.input_typings):
             raise ValueError(f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}")
 
         stream: FilterableStream

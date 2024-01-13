@@ -65,9 +65,9 @@ Ref: None
     """
     filter_node = FilterNode(
         name="aap",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             
 
         
@@ -81,14 +81,14 @@ Ref: None
         
 
 
-        ],
-        kwargs={
+        ),
+        kwargs=tuple(({
             
             "order": order,
             
             "projection": projection,
             
-        } | kwargs,
+        } | kwargs).items()),
     )
     return filter_node.audio(0)
 
