@@ -14,12 +14,12 @@ def input(filename: str, **kwargs: str | int | None | float) -> AVStream:
         if "format" in kwargs:
             raise ValueError("Can't specify both `format` and `f` kwargs")
         kwargs["format"] = fmt
-    return InputNode(filename=filename, kwargs=kwargs).stream()
+    return InputNode(filename=filename, kwargs=tuple(kwargs.items())).stream()
 
 
 def output(*inputs: FilterableStream, filename: str, **kwargs: str | int | None | float) -> OutputStream:
-    return OutputNode(filename=filename, inputs=list(inputs), kwargs=kwargs).stream()
+    return OutputNode(filename=filename, inputs=inputs, kwargs=tuple(kwargs.items())).stream()
 
 
 def merge_outputs(*inputs: OutputStream) -> OutputStream:
-    return MergeOutputsNode(inputs=list(inputs)).stream()
+    return MergeOutputsNode(inputs=inputs).stream()

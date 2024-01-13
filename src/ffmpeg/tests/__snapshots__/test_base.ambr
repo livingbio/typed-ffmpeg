@@ -1,11 +1,7 @@
 # serializer version: 1
 # name: test_filter_node
-  <ExceptionInfo 1 validation error for FilterNode
-    Assertion failed, Expected 2 inputs, got 3 [type=assertion_error, input_value={'na... 0, 'unsafe': 0}}, input_type=dict]
-      For further information visit https://errors.pydantic.dev/2.5/v/assertion_error tblen=3>
+  <ExceptionInfo ValueError('Expected 2 inputs, got 3') tblen=4>
 # ---
 # name: test_filter_node.1
-  <ExceptionInfo 1 validation error for FilterNode
-    Assertion failed, Expected input 1 to have video component, got AudioStream [type=... 0, 'unsafe': 0}}, input_type=dict]
-      For further information visit https://errors.pydantic.dev/2.5/v/assertion_error tblen=3>
+  <ExceptionInfo ValueError('Expected input 1 to have video component, got AudioStream') tblen=4>
 # ---

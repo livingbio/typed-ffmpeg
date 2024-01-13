@@ -73,21 +73,25 @@ def aap(
     """
     filter_node = FilterNode(
         name="aap",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _input,
             _desired,
-        ],
-        kwargs={
-            "order": order,
-            "projection": projection,
-            "mu": mu,
-            "delta": delta,
-            "out_mode": out_mode,
-            "precision": precision,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "order": order,
+                    "projection": projection,
+                    "mu": mu,
+                    "delta": delta,
+                    "out_mode": out_mode,
+                    "precision": precision,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -202,20 +206,24 @@ def acrossfade(
     """
     filter_node = FilterNode(
         name="acrossfade",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _crossfade0,
             _crossfade1,
-        ],
-        kwargs={
-            "nb_samples": nb_samples,
-            "duration": duration,
-            "overlap": overlap,
-            "curve1": curve1,
-            "curve2": curve2,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "nb_samples": nb_samples,
+                    "duration": duration,
+                    "overlap": overlap,
+                    "curve1": curve1,
+                    "curve2": curve2,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -368,33 +376,35 @@ def afir(
     """
     filter_node = FilterNode(
         name="afir",
-        input_typings=[StreamType.audio] * nbirs,
-        output_typings=[StreamType.audio],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "dry": dry,
-            "wet": wet,
-            "length": length,
-            "gtype": gtype,
-            "irnorm": irnorm,
-            "irlink": irlink,
-            "irgain": irgain,
-            "irfmt": irfmt,
-            "maxir": maxir,
-            "response": response,
-            "channel": channel,
-            "size": size,
-            "rate": rate,
-            "minp": minp,
-            "maxp": maxp,
-            "nbirs": nbirs,
-            "ir": ir,
-            "precision": precision,
-            "irload": irload,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.audio] * nbirs),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "dry": dry,
+                    "wet": wet,
+                    "length": length,
+                    "gtype": gtype,
+                    "irnorm": irnorm,
+                    "irlink": irlink,
+                    "irgain": irgain,
+                    "irfmt": irfmt,
+                    "maxir": maxir,
+                    "response": response,
+                    "channel": channel,
+                    "size": size,
+                    "rate": rate,
+                    "minp": minp,
+                    "maxp": maxp,
+                    "nbirs": nbirs,
+                    "ir": ir,
+                    "precision": precision,
+                    "irload": irload,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -455,16 +465,18 @@ def ainterleave(
     """
     filter_node = FilterNode(
         name="ainterleave",
-        input_typings=[StreamType.video] * nb_inputs,
-        output_typings=[StreamType.audio],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "nb_inputs": nb_inputs,
-            "duration": duration,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * nb_inputs),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "nb_inputs": nb_inputs,
+                    "duration": duration,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -498,13 +510,13 @@ def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "V
     """
     filter_node = FilterNode(
         name="alphamerge",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _alpha,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.video(0)
 
@@ -556,15 +568,17 @@ def amerge(*streams: "AudioStream", inputs: int | DefaultInt = DefaultInt(2), **
     """
     filter_node = FilterNode(
         name="amerge",
-        input_typings=[StreamType.audio] * inputs,
-        output_typings=[StreamType.audio],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.audio] * inputs),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -627,19 +641,21 @@ def amix(
     """
     filter_node = FilterNode(
         name="amix",
-        input_typings=[StreamType.audio] * inputs,
-        output_typings=[StreamType.audio],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "duration": duration,
-            "dropout_transition": dropout_transition,
-            "weights": weights,
-            "normalize": normalize,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.audio] * inputs),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "duration": duration,
+                    "dropout_transition": dropout_transition,
+                    "weights": weights,
+                    "normalize": normalize,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -667,13 +683,13 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
     """
     filter_node = FilterNode(
         name="amultiply",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _multiply0,
             _multiply1,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.audio(0)
 
@@ -745,21 +761,25 @@ def anlmf(
     """
     filter_node = FilterNode(
         name="anlmf",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _input,
             _desired,
-        ],
-        kwargs={
-            "order": order,
-            "mu": mu,
-            "eps": eps,
-            "leakage": leakage,
-            "out_mode": out_mode,
-            "precision": precision,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "order": order,
+                    "mu": mu,
+                    "eps": eps,
+                    "leakage": leakage,
+                    "out_mode": out_mode,
+                    "precision": precision,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -831,21 +851,25 @@ def anlms(
     """
     filter_node = FilterNode(
         name="anlms",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _input,
             _desired,
-        ],
-        kwargs={
-            "order": order,
-            "mu": mu,
-            "eps": eps,
-            "leakage": leakage,
-            "out_mode": out_mode,
-            "precision": precision,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "order": order,
+                    "mu": mu,
+                    "eps": eps,
+                    "leakage": leakage,
+                    "out_mode": out_mode,
+                    "precision": precision,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -871,13 +895,13 @@ def apsnr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Aud
     """
     filter_node = FilterNode(
         name="apsnr",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _input0,
             _input1,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.audio(0)
 
@@ -944,20 +968,24 @@ def arls(
     """
     filter_node = FilterNode(
         name="arls",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _input,
             _desired,
-        ],
-        kwargs={
-            "order": order,
-            "lambda": _lambda,
-            "delta": delta,
-            "out_mode": out_mode,
-            "precision": precision,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "order": order,
+                    "lambda": _lambda,
+                    "delta": delta,
+                    "out_mode": out_mode,
+                    "precision": precision,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -983,13 +1011,13 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
     """
     filter_node = FilterNode(
         name="asdr",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _input0,
             _input1,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.audio(0)
 
@@ -1015,13 +1043,13 @@ def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Au
     """
     filter_node = FilterNode(
         name="asisdr",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _input0,
             _input1,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.audio(0)
 
@@ -1061,16 +1089,18 @@ def astreamselect(
     """
     filter_node = FilterNode(
         name="astreamselect",
-        input_typings=[StreamType.audio] * inputs,
-        output_typings=[StreamType.audio] * len(re.findall(r"\d+", map)),
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "map": map,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.audio] * inputs),
+        output_typings=tuple([StreamType.audio] * len(re.findall(r"\d+", map))),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "map": map,
+                }
+                | kwargs
+            ).items()
+        ),
     )
 
     return filter_node
@@ -1119,17 +1149,21 @@ def axcorrelate(
     """
     filter_node = FilterNode(
         name="axcorrelate",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _axcorrelate0,
             _axcorrelate1,
-        ],
-        kwargs={
-            "size": size,
-            "algo": algo,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "size": size,
+                    "algo": algo,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -1460,30 +1494,34 @@ def blend(
     """
     filter_node = FilterNode(
         name="blend",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _top,
             _bottom,
-        ],
-        kwargs={
-            "c0_mode": c0_mode,
-            "c1_mode": c1_mode,
-            "c2_mode": c2_mode,
-            "c3_mode": c3_mode,
-            "all_mode": all_mode,
-            "c0_expr": c0_expr,
-            "c1_expr": c1_expr,
-            "c2_expr": c2_expr,
-            "c3_expr": c3_expr,
-            "all_expr": all_expr,
-            "c0_opacity": c0_opacity,
-            "c1_opacity": c1_opacity,
-            "c2_opacity": c2_opacity,
-            "c3_opacity": c3_opacity,
-            "all_opacity": all_opacity,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "c0_mode": c0_mode,
+                    "c1_mode": c1_mode,
+                    "c2_mode": c2_mode,
+                    "c3_mode": c3_mode,
+                    "all_mode": all_mode,
+                    "c0_expr": c0_expr,
+                    "c1_expr": c1_expr,
+                    "c2_expr": c2_expr,
+                    "c3_expr": c3_expr,
+                    "all_expr": all_expr,
+                    "c0_opacity": c0_opacity,
+                    "c1_opacity": c1_opacity,
+                    "c2_opacity": c2_opacity,
+                    "c3_opacity": c3_opacity,
+                    "all_opacity": all_opacity,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -1549,25 +1587,29 @@ def blend_vulkan(
     """
     filter_node = FilterNode(
         name="blend_vulkan",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _top,
             _bottom,
-        ],
-        kwargs={
-            "c0_mode": c0_mode,
-            "c1_mode": c1_mode,
-            "c2_mode": c2_mode,
-            "c3_mode": c3_mode,
-            "all_mode": all_mode,
-            "c0_opacity": c0_opacity,
-            "c1_opacity": c1_opacity,
-            "c2_opacity": c2_opacity,
-            "c3_opacity": c3_opacity,
-            "all_opacity": all_opacity,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "c0_mode": c0_mode,
+                    "c1_mode": c1_mode,
+                    "c2_mode": c2_mode,
+                    "c3_mode": c3_mode,
+                    "all_mode": all_mode,
+                    "c0_opacity": c0_opacity,
+                    "c1_opacity": c1_opacity,
+                    "c2_opacity": c2_opacity,
+                    "c3_opacity": c3_opacity,
+                    "all_opacity": all_opacity,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -1661,25 +1703,27 @@ def bm3d(
     """
     filter_node = FilterNode(
         name="bm3d",
-        input_typings=[StreamType.video] + [StreamType.video] if ref else [],
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "sigma": sigma,
-            "block": block,
-            "bstep": bstep,
-            "group": group,
-            "range": range,
-            "mstep": mstep,
-            "thmse": thmse,
-            "hdthr": hdthr,
-            "estim": estim,
-            "ref": ref,
-            "planes": planes,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] + [StreamType.video] if ref else []),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "sigma": sigma,
+                    "block": block,
+                    "bstep": bstep,
+                    "group": group,
+                    "range": range,
+                    "mstep": mstep,
+                    "thmse": thmse,
+                    "hdthr": hdthr,
+                    "estim": estim,
+                    "ref": ref,
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -1738,20 +1782,24 @@ def colormap(
     """
     filter_node = FilterNode(
         name="colormap",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _default,
             _source,
             _target,
-        ],
-        kwargs={
-            "patch_size": patch_size,
-            "nb_patches": nb_patches,
-            "type": type,
-            "kernel": kernel,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "patch_size": patch_size,
+                    "nb_patches": nb_patches,
+                    "type": type,
+                    "kernel": kernel,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -1831,18 +1879,20 @@ def concat(
     """
     filter_node = FilterNode(
         name="concat",
-        input_typings=([StreamType.video] * v + [StreamType.audio] * a) * n,
-        output_typings=[StreamType.video] * v + [StreamType.audio] * a,
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "n": n,
-            "v": v,
-            "a": a,
-            "unsafe": unsafe,
-        }
-        | kwargs,
+        input_typings=tuple(([StreamType.video] * v + [StreamType.audio] * a) * n),
+        output_typings=tuple([StreamType.video] * v + [StreamType.audio] * a),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "n": n,
+                    "v": v,
+                    "a": a,
+                    "unsafe": unsafe,
+                }
+                | kwargs
+            ).items()
+        ),
     )
 
     return filter_node
@@ -1890,18 +1940,22 @@ def convolve(
     """
     filter_node = FilterNode(
         name="convolve",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _impulse,
-        ],
-        kwargs={
-            "planes": planes,
-            "impulse": impulse,
-            "noise": noise,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                    "impulse": impulse,
+                    "noise": noise,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -1945,13 +1999,13 @@ def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     """
     filter_node = FilterNode(
         name="corr",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _reference,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.video(0)
 
@@ -2025,22 +2079,24 @@ def decimate(
     """
     filter_node = FilterNode(
         name="decimate",
-        input_typings=[StreamType.video] + ([StreamType.video] if ppsrc else []),
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "cycle": cycle,
-            "dupthresh": dupthresh,
-            "scthresh": scthresh,
-            "blockx": blockx,
-            "blocky": blocky,
-            "ppsrc": ppsrc,
-            "chroma": chroma,
-            "mixed": mixed,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] + ([StreamType.video] if ppsrc else [])),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "cycle": cycle,
+                    "dupthresh": dupthresh,
+                    "scthresh": scthresh,
+                    "blockx": blockx,
+                    "blocky": blocky,
+                    "ppsrc": ppsrc,
+                    "chroma": chroma,
+                    "mixed": mixed,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2091,18 +2147,22 @@ def deconvolve(
     """
     filter_node = FilterNode(
         name="deconvolve",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _impulse,
-        ],
-        kwargs={
-            "planes": planes,
-            "impulse": impulse,
-            "noise": noise,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                    "impulse": impulse,
+                    "noise": noise,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2150,17 +2210,21 @@ def displace(
     """
     filter_node = FilterNode(
         name="displace",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _source,
             _xmap,
             _ymap,
-        ],
-        kwargs={
-            "edge": edge,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "edge": edge,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2217,19 +2281,23 @@ def feedback(
     """
     filter_node = FilterNode(
         name="feedback",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video, StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video, StreamType.video]),
+        inputs=(
             _default,
             _feedin,
-        ],
-        kwargs={
-            "x": x,
-            "y": y,
-            "w": w,
-            "h": h,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "x": x,
+                    "y": y,
+                    "w": w,
+                    "h": h,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return (
         filter_node.video(0),
@@ -2375,29 +2443,31 @@ def fieldmatch(
     """
     filter_node = FilterNode(
         name="fieldmatch",
-        input_typings=[StreamType.video] + [StreamType.video] if ppsrc else [],
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "order": order,
-            "mode": mode,
-            "ppsrc": ppsrc,
-            "field": field,
-            "mchroma": mchroma,
-            "y0": y0,
-            "y1": y1,
-            "scthresh": scthresh,
-            "combmatch": combmatch,
-            "combdbg": combdbg,
-            "cthresh": cthresh,
-            "chroma": chroma,
-            "blockx": blockx,
-            "blocky": blocky,
-            "combpel": combpel,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] + [StreamType.video] if ppsrc else []),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "order": order,
+                    "mode": mode,
+                    "ppsrc": ppsrc,
+                    "field": field,
+                    "mchroma": mchroma,
+                    "y0": y0,
+                    "y1": y1,
+                    "scthresh": scthresh,
+                    "combmatch": combmatch,
+                    "combdbg": combdbg,
+                    "cthresh": cthresh,
+                    "chroma": chroma,
+                    "blockx": blockx,
+                    "blocky": blocky,
+                    "combpel": combpel,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2448,16 +2518,20 @@ def framepack(
     """
     filter_node = FilterNode(
         name="framepack",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _left,
             _right,
-        ],
-        kwargs={
-            "format": format,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "format": format,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2507,18 +2581,22 @@ def freezeframes(
     """
     filter_node = FilterNode(
         name="freezeframes",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _source,
             _replace,
-        ],
-        kwargs={
-            "first": first,
-            "last": last,
-            "replace": replace,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "first": first,
+                    "last": last,
+                    "replace": replace,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2582,20 +2660,22 @@ def guided(
     """
     filter_node = FilterNode(
         name="guided",
-        input_typings=[StreamType.video] + [StreamType.video] if guidance else [],
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "radius": radius,
-            "eps": eps,
-            "mode": mode,
-            "sub": sub,
-            "guidance": guidance,
-            "planes": planes,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] + [StreamType.video] if guidance else []),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "radius": radius,
+                    "eps": eps,
+                    "mode": mode,
+                    "sub": sub,
+                    "guidance": guidance,
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2654,17 +2734,21 @@ def haldclut(
     """
     filter_node = FilterNode(
         name="haldclut",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _clut,
-        ],
-        kwargs={
-            "clut": clut,
-            "interp": interp,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "clut": clut,
+                    "interp": interp,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2730,20 +2814,22 @@ def headphone(
     """
     filter_node = FilterNode(
         name="headphone",
-        input_typings=[StreamType.audio] + [StreamType.audio] * (len(map.split("|")) - 1) if hrir == 1 else [],
-        output_typings=[StreamType.audio],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "map": map,
-            "gain": gain,
-            "lfe": lfe,
-            "type": type,
-            "size": size,
-            "hrir": hrir,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.audio] + [StreamType.audio] * (len(map.split("|")) - 1) if hrir == 1 else []),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "map": map,
+                    "gain": gain,
+                    "lfe": lfe,
+                    "type": type,
+                    "size": size,
+                    "hrir": hrir,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -2788,16 +2874,18 @@ def hstack(
     """
     filter_node = FilterNode(
         name="hstack",
-        input_typings=[StreamType.video] * inputs,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "shortest": shortest,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * inputs),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "shortest": shortest,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2848,16 +2936,18 @@ def hstack_qsv(
     filter_node = FilterNode(
         name="hstack_qsv",
         input_typings=None,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "shortest": shortest,
-            "height": height,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "shortest": shortest,
+                    "height": height,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2908,16 +2998,18 @@ def hstack_vaapi(
     filter_node = FilterNode(
         name="hstack_vaapi",
         input_typings=None,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "shortest": shortest,
-            "height": height,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "shortest": shortest,
+                    "height": height,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2962,17 +3054,21 @@ def hysteresis(
     """
     filter_node = FilterNode(
         name="hysteresis",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _base,
             _alt,
-        ],
-        kwargs={
-            "planes": planes,
-            "threshold": threshold,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                    "threshold": threshold,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -3017,13 +3113,13 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
     """
     filter_node = FilterNode(
         name="identity",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _reference,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.video(0)
 
@@ -3084,16 +3180,18 @@ def interleave(
     """
     filter_node = FilterNode(
         name="interleave",
-        input_typings=[StreamType.video] * nb_inputs,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "nb_inputs": nb_inputs,
-            "duration": duration,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * nb_inputs),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "nb_inputs": nb_inputs,
+                    "duration": duration,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -3159,17 +3257,19 @@ def join(
     """
     filter_node = FilterNode(
         name="join",
-        input_typings=[StreamType.audio] * inputs,
-        output_typings=[StreamType.audio],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "channel_layout": channel_layout,
-            "map": map,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.audio] * inputs),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "channel_layout": channel_layout,
+                    "map": map,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -3241,20 +3341,22 @@ def ladspa(
     filter_node = FilterNode(
         name="ladspa",
         input_typings=None,
-        output_typings=[StreamType.audio],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "file": file,
-            "plugin": plugin,
-            "controls": controls,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "duration": duration,
-            "latency": latency,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.audio]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "file": file,
+                    "plugin": plugin,
+                    "controls": controls,
+                    "sample_rate": sample_rate,
+                    "nb_samples": nb_samples,
+                    "duration": duration,
+                    "latency": latency,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -3482,92 +3584,94 @@ def libplacebo(
     """
     filter_node = FilterNode(
         name="libplacebo",
-        input_typings=[StreamType.video] * inputs,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "w": w,
-            "h": h,
-            "fps": fps,
-            "crop_x": crop_x,
-            "crop_y": crop_y,
-            "crop_w": crop_w,
-            "crop_h": crop_h,
-            "pos_x": pos_x,
-            "pos_y": pos_y,
-            "pos_w": pos_w,
-            "pos_h": pos_h,
-            "format": format,
-            "force_original_aspect_ratio": force_original_aspect_ratio,
-            "force_divisible_by": force_divisible_by,
-            "normalize_sar": normalize_sar,
-            "pad_crop_ratio": pad_crop_ratio,
-            "fillcolor": fillcolor,
-            "corner_rounding": corner_rounding,
-            "extra_opts": extra_opts,
-            "colorspace": colorspace,
-            "range": range,
-            "color_primaries": color_primaries,
-            "color_trc": color_trc,
-            "upscaler": upscaler,
-            "downscaler": downscaler,
-            "frame_mixer": frame_mixer,
-            "lut_entries": lut_entries,
-            "antiringing": antiringing,
-            "sigmoid": sigmoid,
-            "apply_filmgrain": apply_filmgrain,
-            "apply_dolbyvision": apply_dolbyvision,
-            "deband": deband,
-            "deband_iterations": deband_iterations,
-            "deband_threshold": deband_threshold,
-            "deband_radius": deband_radius,
-            "deband_grain": deband_grain,
-            "brightness": brightness,
-            "contrast": contrast,
-            "saturation": saturation,
-            "hue": hue,
-            "gamma": gamma,
-            "peak_detect": peak_detect,
-            "smoothing_period": smoothing_period,
-            "minimum_peak": minimum_peak,
-            "scene_threshold_low": scene_threshold_low,
-            "scene_threshold_high": scene_threshold_high,
-            "percentile": percentile,
-            "gamut_mode": gamut_mode,
-            "tonemapping": tonemapping,
-            "tonemapping_param": tonemapping_param,
-            "inverse_tonemapping": inverse_tonemapping,
-            "tonemapping_lut_size": tonemapping_lut_size,
-            "contrast_recovery": contrast_recovery,
-            "contrast_smoothness": contrast_smoothness,
-            "desaturation_strength": desaturation_strength,
-            "desaturation_exponent": desaturation_exponent,
-            "gamut_warning": gamut_warning,
-            "gamut_clipping": gamut_clipping,
-            "intent": intent,
-            "tonemapping_mode": tonemapping_mode,
-            "tonemapping_crosstalk": tonemapping_crosstalk,
-            "overshoot": overshoot,
-            "hybrid_mix": hybrid_mix,
-            "dithering": dithering,
-            "dither_lut_size": dither_lut_size,
-            "dither_temporal": dither_temporal,
-            "cones": cones,
-            "cone-strength": cone_strength,
-            "custom_shader_path": custom_shader_path,
-            "custom_shader_bin": custom_shader_bin,
-            "skip_aa": skip_aa,
-            "polar_cutoff": polar_cutoff,
-            "disable_linear": disable_linear,
-            "disable_builtin": disable_builtin,
-            "force_icc_lut": force_icc_lut,
-            "force_dither": force_dither,
-            "disable_fbos": disable_fbos,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * inputs),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "w": w,
+                    "h": h,
+                    "fps": fps,
+                    "crop_x": crop_x,
+                    "crop_y": crop_y,
+                    "crop_w": crop_w,
+                    "crop_h": crop_h,
+                    "pos_x": pos_x,
+                    "pos_y": pos_y,
+                    "pos_w": pos_w,
+                    "pos_h": pos_h,
+                    "format": format,
+                    "force_original_aspect_ratio": force_original_aspect_ratio,
+                    "force_divisible_by": force_divisible_by,
+                    "normalize_sar": normalize_sar,
+                    "pad_crop_ratio": pad_crop_ratio,
+                    "fillcolor": fillcolor,
+                    "corner_rounding": corner_rounding,
+                    "extra_opts": extra_opts,
+                    "colorspace": colorspace,
+                    "range": range,
+                    "color_primaries": color_primaries,
+                    "color_trc": color_trc,
+                    "upscaler": upscaler,
+                    "downscaler": downscaler,
+                    "frame_mixer": frame_mixer,
+                    "lut_entries": lut_entries,
+                    "antiringing": antiringing,
+                    "sigmoid": sigmoid,
+                    "apply_filmgrain": apply_filmgrain,
+                    "apply_dolbyvision": apply_dolbyvision,
+                    "deband": deband,
+                    "deband_iterations": deband_iterations,
+                    "deband_threshold": deband_threshold,
+                    "deband_radius": deband_radius,
+                    "deband_grain": deband_grain,
+                    "brightness": brightness,
+                    "contrast": contrast,
+                    "saturation": saturation,
+                    "hue": hue,
+                    "gamma": gamma,
+                    "peak_detect": peak_detect,
+                    "smoothing_period": smoothing_period,
+                    "minimum_peak": minimum_peak,
+                    "scene_threshold_low": scene_threshold_low,
+                    "scene_threshold_high": scene_threshold_high,
+                    "percentile": percentile,
+                    "gamut_mode": gamut_mode,
+                    "tonemapping": tonemapping,
+                    "tonemapping_param": tonemapping_param,
+                    "inverse_tonemapping": inverse_tonemapping,
+                    "tonemapping_lut_size": tonemapping_lut_size,
+                    "contrast_recovery": contrast_recovery,
+                    "contrast_smoothness": contrast_smoothness,
+                    "desaturation_strength": desaturation_strength,
+                    "desaturation_exponent": desaturation_exponent,
+                    "gamut_warning": gamut_warning,
+                    "gamut_clipping": gamut_clipping,
+                    "intent": intent,
+                    "tonemapping_mode": tonemapping_mode,
+                    "tonemapping_crosstalk": tonemapping_crosstalk,
+                    "overshoot": overshoot,
+                    "hybrid_mix": hybrid_mix,
+                    "dithering": dithering,
+                    "dither_lut_size": dither_lut_size,
+                    "dither_temporal": dither_temporal,
+                    "cones": cones,
+                    "cone-strength": cone_strength,
+                    "custom_shader_path": custom_shader_path,
+                    "custom_shader_bin": custom_shader_bin,
+                    "skip_aa": skip_aa,
+                    "polar_cutoff": polar_cutoff,
+                    "disable_linear": disable_linear,
+                    "disable_builtin": disable_builtin,
+                    "force_icc_lut": force_icc_lut,
+                    "force_dither": force_dither,
+                    "disable_fbos": disable_fbos,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -3651,22 +3755,26 @@ def libvmaf(
     """
     filter_node = FilterNode(
         name="libvmaf",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _reference,
-        ],
-        kwargs={
-            "log_path": log_path,
-            "log_fmt": log_fmt,
-            "pool": pool,
-            "n_threads": n_threads,
-            "n_subsample": n_subsample,
-            "model": model,
-            "feature": feature,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "log_path": log_path,
+                    "log_fmt": log_fmt,
+                    "pool": pool,
+                    "n_threads": n_threads,
+                    "n_subsample": n_subsample,
+                    "model": model,
+                    "feature": feature,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -3712,22 +3820,26 @@ def libvmaf_cuda(
     """
     filter_node = FilterNode(
         name="libvmaf_cuda",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _reference,
-        ],
-        kwargs={
-            "log_path": log_path,
-            "log_fmt": log_fmt,
-            "pool": pool,
-            "n_threads": n_threads,
-            "n_subsample": n_subsample,
-            "model": model,
-            "feature": feature,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "log_path": log_path,
+                    "log_fmt": log_fmt,
+                    "pool": pool,
+                    "n_threads": n_threads,
+                    "n_subsample": n_subsample,
+                    "model": model,
+                    "feature": feature,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -3780,18 +3892,20 @@ def limitdiff(
     """
     filter_node = FilterNode(
         name="limitdiff",
-        input_typings=[StreamType.video, StreamType.video] + ([StreamType.video] if reference else []),
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "threshold": threshold,
-            "elasticity": elasticity,
-            "reference": reference,
-            "planes": planes,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "threshold": threshold,
+                    "elasticity": elasticity,
+                    "reference": reference,
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -3888,20 +4002,24 @@ def lut2(
     """
     filter_node = FilterNode(
         name="lut2",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _srcx,
             _srcy,
-        ],
-        kwargs={
-            "c0": c0,
-            "c1": c1,
-            "c2": c2,
-            "c3": c3,
-            "d": d,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "c0": c0,
+                    "c1": c1,
+                    "c2": c2,
+                    "c3": c3,
+                    "d": d,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -3961,18 +4079,20 @@ def lv2(
     filter_node = FilterNode(
         name="lv2",
         input_typings=None,
-        output_typings=[StreamType.audio],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "plugin": plugin,
-            "controls": controls,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "duration": duration,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.audio]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "plugin": plugin,
+                    "controls": controls,
+                    "sample_rate": sample_rate,
+                    "nb_samples": nb_samples,
+                    "duration": duration,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -4024,19 +4144,23 @@ def maskedclamp(
     """
     filter_node = FilterNode(
         name="maskedclamp",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _base,
             _dark,
             _bright,
-        ],
-        kwargs={
-            "undershoot": undershoot,
-            "overshoot": overshoot,
-            "planes": planes,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "undershoot": undershoot,
+                    "overshoot": overshoot,
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4077,17 +4201,21 @@ def maskedmax(
     """
     filter_node = FilterNode(
         name="maskedmax",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _source,
             _filter1,
             _filter2,
-        ],
-        kwargs={
-            "planes": planes,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4131,17 +4259,21 @@ def maskedmerge(
     """
     filter_node = FilterNode(
         name="maskedmerge",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _base,
             _overlay,
             _mask,
-        ],
-        kwargs={
-            "planes": planes,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4182,17 +4314,21 @@ def maskedmin(
     """
     filter_node = FilterNode(
         name="maskedmin",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _source,
             _filter1,
             _filter2,
-        ],
-        kwargs={
-            "planes": planes,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4246,18 +4382,22 @@ def maskedthreshold(
     """
     filter_node = FilterNode(
         name="maskedthreshold",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _source,
             _reference,
-        ],
-        kwargs={
-            "threshold": threshold,
-            "planes": planes,
-            "mode": mode,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "threshold": threshold,
+                    "planes": planes,
+                    "mode": mode,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4336,24 +4476,26 @@ def mergeplanes(
     """
     filter_node = FilterNode(
         name="mergeplanes",
-        input_typings=[StreamType.video] * int(max(hex(mapping)[2::2])),
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "mapping": mapping,
-            "format": format,
-            "map0s": map0s,
-            "map0p": map0p,
-            "map1s": map1s,
-            "map1p": map1p,
-            "map2s": map2s,
-            "map2p": map2p,
-            "map3s": map3s,
-            "map3p": map3p,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * int(max(hex(mapping)[2::2]))),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "mapping": mapping,
+                    "format": format,
+                    "map0s": map0s,
+                    "map0p": map0p,
+                    "map1s": map1s,
+                    "map1p": map1p,
+                    "map2s": map2s,
+                    "map2p": map2p,
+                    "map3s": map3s,
+                    "map3p": map3p,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4393,16 +4535,20 @@ def midequalizer(
     """
     filter_node = FilterNode(
         name="midequalizer",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _in0,
             _in1,
-        ],
-        kwargs={
-            "planes": planes,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4460,19 +4606,21 @@ def mix(
     """
     filter_node = FilterNode(
         name="mix",
-        input_typings=[StreamType.video] * inputs,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "weights": weights,
-            "scale": scale,
-            "planes": planes,
-            "duration": duration,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * inputs),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "weights": weights,
+                    "scale": scale,
+                    "planes": planes,
+                    "duration": duration,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4529,18 +4677,22 @@ def morpho(
     """
     filter_node = FilterNode(
         name="morpho",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _default,
             _structure,
-        ],
-        kwargs={
-            "mode": mode,
-            "planes": planes,
-            "structure": structure,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "mode": mode,
+                    "planes": planes,
+                    "structure": structure,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4584,13 +4736,13 @@ def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     """
     filter_node = FilterNode(
         name="msad",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _reference,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.video(0)
 
@@ -4639,18 +4791,22 @@ def multiply(
     """
     filter_node = FilterNode(
         name="multiply",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _source,
             _factor,
-        ],
-        kwargs={
-            "scale": scale,
-            "offset": offset,
-            "planes": planes,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "scale": scale,
+                    "offset": offset,
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4782,23 +4938,27 @@ def overlay(
     """
     filter_node = FilterNode(
         name="overlay",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _overlay,
-        ],
-        kwargs={
-            "x": x,
-            "y": y,
-            "eof_action": eof_action,
-            "eval": eval,
-            "shortest": shortest,
-            "format": format,
-            "repeatlast": repeatlast,
-            "alpha": alpha,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "x": x,
+                    "y": y,
+                    "eof_action": eof_action,
+                    "eval": eval,
+                    "shortest": shortest,
+                    "format": format,
+                    "repeatlast": repeatlast,
+                    "alpha": alpha,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4870,21 +5030,25 @@ def overlay_cuda(
     """
     filter_node = FilterNode(
         name="overlay_cuda",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _overlay,
-        ],
-        kwargs={
-            "x": x,
-            "y": y,
-            "eof_action": eof_action,
-            "eval": eval,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "x": x,
+                    "y": y,
+                    "eof_action": eof_action,
+                    "eval": eval,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4930,17 +5094,21 @@ def overlay_opencl(
     """
     filter_node = FilterNode(
         name="overlay_opencl",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _overlay,
-        ],
-        kwargs={
-            "x": x,
-            "y": y,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "x": x,
+                    "y": y,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5019,23 +5187,27 @@ def overlay_vaapi(
     """
     filter_node = FilterNode(
         name="overlay_vaapi",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _overlay,
-        ],
-        kwargs={
-            "x": x,
-            "y": y,
-            "w": w,
-            "h": h,
-            "alpha": alpha,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "x": x,
+                    "y": y,
+                    "w": w,
+                    "h": h,
+                    "alpha": alpha,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5081,17 +5253,21 @@ def overlay_vulkan(
     """
     filter_node = FilterNode(
         name="overlay_vulkan",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _overlay,
-        ],
-        kwargs={
-            "x": x,
-            "y": y,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "x": x,
+                    "y": y,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5158,21 +5334,25 @@ def paletteuse(
     """
     filter_node = FilterNode(
         name="paletteuse",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _default,
             _palette,
-        ],
-        kwargs={
-            "dither": dither,
-            "bayer_scale": bayer_scale,
-            "diff_mode": diff_mode,
-            "new": new,
-            "alpha_threshold": alpha_threshold,
-            "debug_kdtree": debug_kdtree,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "dither": dither,
+                    "bayer_scale": bayer_scale,
+                    "diff_mode": diff_mode,
+                    "new": new,
+                    "alpha_threshold": alpha_threshold,
+                    "debug_kdtree": debug_kdtree,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5215,16 +5395,18 @@ def premultiply(
     """
     filter_node = FilterNode(
         name="premultiply",
-        input_typings=[StreamType.video] + [StreamType.video] if inplace else [],
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "planes": planes,
-            "inplace": inplace,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] + [StreamType.video] if inplace else []),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                    "inplace": inplace,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5375,17 +5557,19 @@ def program_opencl(
     filter_node = FilterNode(
         name="program_opencl",
         input_typings=None,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "source": source,
-            "kernel": kernel,
-            "inputs": inputs,
-            "size": size,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "source": source,
+                    "kernel": kernel,
+                    "inputs": inputs,
+                    "size": size,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5494,18 +5678,22 @@ def psnr(
     """
     filter_node = FilterNode(
         name="psnr",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _reference,
-        ],
-        kwargs={
-            "stats_file": stats_file,
-            "stats_version": stats_version,
-            "output_max": output_max,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "stats_file": stats_file,
+                    "stats_version": stats_version,
+                    "output_max": output_max,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5554,18 +5742,22 @@ def remap(
     """
     filter_node = FilterNode(
         name="remap",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _source,
             _xmap,
             _ymap,
-        ],
-        kwargs={
-            "format": format,
-            "fill": fill,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "format": format,
+                    "fill": fill,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5614,18 +5806,22 @@ def remap_opencl(
     """
     filter_node = FilterNode(
         name="remap_opencl",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _source,
             _xmap,
             _ymap,
-        ],
-        kwargs={
-            "interp": interp,
-            "fill": fill,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "interp": interp,
+                    "fill": fill,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -5737,33 +5933,37 @@ def scale2ref(
     """
     filter_node = FilterNode(
         name="scale2ref",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video, StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video, StreamType.video]),
+        inputs=(
             _default,
             _ref,
-        ],
-        kwargs={
-            "w": w,
-            "h": h,
-            "flags": flags,
-            "interl": interl,
-            "size": size,
-            "in_color_matrix": in_color_matrix,
-            "out_color_matrix": out_color_matrix,
-            "in_range": in_range,
-            "out_range": out_range,
-            "in_v_chr_pos": in_v_chr_pos,
-            "in_h_chr_pos": in_h_chr_pos,
-            "out_v_chr_pos": out_v_chr_pos,
-            "out_h_chr_pos": out_h_chr_pos,
-            "force_original_aspect_ratio": force_original_aspect_ratio,
-            "force_divisible_by": force_divisible_by,
-            "param0": param0,
-            "param1": param1,
-            "eval": eval,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "w": w,
+                    "h": h,
+                    "flags": flags,
+                    "interl": interl,
+                    "size": size,
+                    "in_color_matrix": in_color_matrix,
+                    "out_color_matrix": out_color_matrix,
+                    "in_range": in_range,
+                    "out_range": out_range,
+                    "in_v_chr_pos": in_v_chr_pos,
+                    "in_h_chr_pos": in_h_chr_pos,
+                    "out_v_chr_pos": out_v_chr_pos,
+                    "out_h_chr_pos": out_h_chr_pos,
+                    "force_original_aspect_ratio": force_original_aspect_ratio,
+                    "force_divisible_by": force_divisible_by,
+                    "param0": param0,
+                    "param1": param1,
+                    "eval": eval,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return (
         filter_node.video(0),
@@ -5848,23 +6048,27 @@ def scale2ref_npp(
     """
     filter_node = FilterNode(
         name="scale2ref_npp",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video, StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video, StreamType.video]),
+        inputs=(
             _default,
             _ref,
-        ],
-        kwargs={
-            "w": w,
-            "h": h,
-            "format": format,
-            "s": s,
-            "interp_algo": interp_algo,
-            "force_original_aspect_ratio": force_original_aspect_ratio,
-            "force_divisible_by": force_divisible_by,
-            "eval": eval,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "w": w,
+                    "h": h,
+                    "format": format,
+                    "s": s,
+                    "interp_algo": interp_algo,
+                    "force_original_aspect_ratio": force_original_aspect_ratio,
+                    "force_divisible_by": force_divisible_by,
+                    "eval": eval,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return (
         filter_node.video(0),
@@ -5973,27 +6177,31 @@ def sidechaincompress(
     """
     filter_node = FilterNode(
         name="sidechaincompress",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _main,
             _sidechain,
-        ],
-        kwargs={
-            "level_in": level_in,
-            "mode": mode,
-            "threshold": threshold,
-            "ratio": ratio,
-            "attack": attack,
-            "release": release,
-            "makeup": makeup,
-            "knee": knee,
-            "link": link,
-            "detection": detection,
-            "level_sc": level_sc,
-            "mix": mix,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "level_in": level_in,
+                    "mode": mode,
+                    "threshold": threshold,
+                    "ratio": ratio,
+                    "attack": attack,
+                    "release": release,
+                    "makeup": makeup,
+                    "knee": knee,
+                    "link": link,
+                    "detection": detection,
+                    "level_sc": level_sc,
+                    "mix": mix,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -6103,27 +6311,31 @@ def sidechaingate(
     """
     filter_node = FilterNode(
         name="sidechaingate",
-        input_typings=[StreamType.audio, StreamType.audio],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _main,
             _sidechain,
-        ],
-        kwargs={
-            "level_in": level_in,
-            "mode": mode,
-            "range": range,
-            "threshold": threshold,
-            "ratio": ratio,
-            "attack": attack,
-            "release": release,
-            "makeup": makeup,
-            "knee": knee,
-            "detection": detection,
-            "link": link,
-            "level_sc": level_sc,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "level_in": level_in,
+                    "mode": mode,
+                    "range": range,
+                    "threshold": threshold,
+                    "ratio": ratio,
+                    "attack": attack,
+                    "release": release,
+                    "makeup": makeup,
+                    "knee": knee,
+                    "detection": detection,
+                    "link": link,
+                    "level_sc": level_sc,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -6208,23 +6420,25 @@ def signature(
     """
     filter_node = FilterNode(
         name="signature",
-        input_typings=[StreamType.video] * nb_inputs,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "detectmode": detectmode,
-            "nb_inputs": nb_inputs,
-            "filename": filename,
-            "format": format,
-            "th_d": th_d,
-            "th_dc": th_dc,
-            "th_xh": th_xh,
-            "th_di": th_di,
-            "th_it": th_it,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * nb_inputs),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "detectmode": detectmode,
+                    "nb_inputs": nb_inputs,
+                    "filename": filename,
+                    "format": format,
+                    "th_d": th_d,
+                    "th_dc": th_dc,
+                    "th_xh": th_xh,
+                    "th_di": th_di,
+                    "th_it": th_it,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -6334,22 +6548,26 @@ def spectrumsynth(
     """
     filter_node = FilterNode(
         name="spectrumsynth",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.audio],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
             _magnitude,
             _phase,
-        ],
-        kwargs={
-            "sample_rate": sample_rate,
-            "channels": channels,
-            "scale": scale,
-            "slide": slide,
-            "win_func": win_func,
-            "overlap": overlap,
-            "orientation": orientation,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "sample_rate": sample_rate,
+                    "channels": channels,
+                    "scale": scale,
+                    "slide": slide,
+                    "win_func": win_func,
+                    "overlap": overlap,
+                    "orientation": orientation,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -6418,16 +6636,20 @@ def ssim(
     """
     filter_node = FilterNode(
         name="ssim",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _reference,
-        ],
-        kwargs={
-            "stats_file": stats_file,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "stats_file": stats_file,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -6467,16 +6689,18 @@ def streamselect(
     """
     filter_node = FilterNode(
         name="streamselect",
-        input_typings=[StreamType.video] * inputs,
-        output_typings=[StreamType.video] * len(re.findall(r"\d+", map)),
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "map": map,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * inputs),
+        output_typings=tuple([StreamType.video] * len(re.findall(r"\d+", map))),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "map": map,
+                }
+                | kwargs
+            ).items()
+        ),
     )
 
     return filter_node
@@ -6525,18 +6749,22 @@ def threshold(
     """
     filter_node = FilterNode(
         name="threshold",
-        input_typings=[StreamType.video, StreamType.video, StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _default,
             _threshold,
             _min,
             _max,
-        ],
-        kwargs={
-            "planes": planes,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -6579,16 +6807,18 @@ def unpremultiply(
     """
     filter_node = FilterNode(
         name="unpremultiply",
-        input_typings=[StreamType.video] + ([StreamType.video] if inplace else []),
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "planes": planes,
-            "inplace": inplace,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] + ([StreamType.video] if inplace else [])),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                    "inplace": inplace,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -6639,18 +6869,22 @@ def varblur(
     """
     filter_node = FilterNode(
         name="varblur",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _default,
             _radius,
-        ],
-        kwargs={
-            "min_r": min_r,
-            "max_r": max_r,
-            "planes": planes,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "min_r": min_r,
+                    "max_r": max_r,
+                    "planes": planes,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -6693,13 +6927,13 @@ def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vide
     """
     filter_node = FilterNode(
         name="vif",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _reference,
-        ],
-        kwargs={} | kwargs,
+        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.video(0)
 
@@ -6744,16 +6978,18 @@ def vstack(
     """
     filter_node = FilterNode(
         name="vstack",
-        input_typings=[StreamType.video] * inputs,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "shortest": shortest,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * inputs),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "shortest": shortest,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -6804,16 +7040,18 @@ def vstack_qsv(
     filter_node = FilterNode(
         name="vstack_qsv",
         input_typings=None,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "shortest": shortest,
-            "width": width,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "shortest": shortest,
+                    "width": width,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -6864,16 +7102,18 @@ def vstack_vaapi(
     filter_node = FilterNode(
         name="vstack_vaapi",
         input_typings=None,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "shortest": shortest,
-            "width": width,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "shortest": shortest,
+                    "width": width,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -6921,17 +7161,21 @@ def xcorrelate(
     """
     filter_node = FilterNode(
         name="xcorrelate",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _primary,
             _secondary,
-        ],
-        kwargs={
-            "planes": planes,
-            "secondary": secondary,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "planes": planes,
+                    "secondary": secondary,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -7051,19 +7295,23 @@ def xfade(
     """
     filter_node = FilterNode(
         name="xfade",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _xfade,
-        ],
-        kwargs={
-            "transition": transition,
-            "duration": duration,
-            "offset": offset,
-            "expr": expr,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "transition": transition,
+                    "duration": duration,
+                    "offset": offset,
+                    "expr": expr,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -7183,20 +7431,24 @@ def xfade_opencl(
     """
     filter_node = FilterNode(
         name="xfade_opencl",
-        input_typings=[StreamType.video, StreamType.video],
-        output_typings=[StreamType.video],
-        inputs=[
+        input_typings=tuple([StreamType.video, StreamType.video]),
+        output_typings=tuple([StreamType.video]),
+        inputs=(
             _main,
             _xfade,
-        ],
-        kwargs={
-            "transition": transition,
-            "source": source,
-            "kernel": kernel,
-            "duration": duration,
-            "offset": offset,
-        }
-        | kwargs,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "transition": transition,
+                    "source": source,
+                    "kernel": kernel,
+                    "duration": duration,
+                    "offset": offset,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -7242,17 +7494,19 @@ def xmedian(
     """
     filter_node = FilterNode(
         name="xmedian",
-        input_typings=[StreamType.video] * inputs,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "planes": planes,
-            "percentile": percentile,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * inputs),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "planes": planes,
+                    "percentile": percentile,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -7312,19 +7566,21 @@ def xstack(
     """
     filter_node = FilterNode(
         name="xstack",
-        input_typings=[StreamType.video] * inputs,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "layout": layout,
-            "grid": grid,
-            "shortest": shortest,
-            "fill": fill,
-        }
-        | kwargs,
+        input_typings=tuple([StreamType.video] * inputs),
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "layout": layout,
+                    "grid": grid,
+                    "shortest": shortest,
+                    "fill": fill,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -7391,19 +7647,21 @@ def xstack_qsv(
     filter_node = FilterNode(
         name="xstack_qsv",
         input_typings=None,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "shortest": shortest,
-            "layout": layout,
-            "grid": grid,
-            "grid_tile_size": grid_tile_size,
-            "fill": fill,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "shortest": shortest,
+                    "layout": layout,
+                    "grid": grid,
+                    "grid_tile_size": grid_tile_size,
+                    "fill": fill,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -7472,18 +7730,20 @@ def xstack_vaapi(
     filter_node = FilterNode(
         name="xstack_vaapi",
         input_typings=None,
-        output_typings=[StreamType.video],
-        inputs=[
-            *streams,
-        ],
-        kwargs={
-            "inputs": inputs,
-            "shortest": shortest,
-            "layout": layout,
-            "grid": grid,
-            "grid_tile_size": grid_tile_size,
-            "fill": fill,
-        }
-        | kwargs,
+        output_typings=tuple([StreamType.video]),
+        inputs=(*streams,),
+        kwargs=tuple(
+            (
+                {
+                    "inputs": inputs,
+                    "shortest": shortest,
+                    "layout": layout,
+                    "grid": grid,
+                    "grid_tile_size": grid_tile_size,
+                    "fill": fill,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
