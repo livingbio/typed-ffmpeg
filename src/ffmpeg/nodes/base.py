@@ -9,7 +9,6 @@ from ..schema import StreamType
 from ..utils.dag import is_dag
 
 
-@dataclass(frozen=True, kw_only=True)
 class _DAGContext(ABC):
     @abstractmethod
     def get_node_label(self, node: Node) -> str:
@@ -22,7 +21,6 @@ class _DAGContext(ABC):
         raise NotImplementedError()
 
 
-@dataclass(frozen=True, kw_only=True)
 class DummyDAGContext(_DAGContext):
     """A dummy DAG context that does not do anything"""
 

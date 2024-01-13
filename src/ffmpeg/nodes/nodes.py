@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 @dataclass(frozen=True, kw_only=True)
 class FilterNode(Node):
     name: str
-    inputs: tuple[FilterableStream, ...] = ()
+    inputs: tuple[FilterableStream, ...]
     input_typings: tuple[StreamType, ...] | None = None
     output_typings: tuple[StreamType, ...] | None = None
 
