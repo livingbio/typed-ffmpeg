@@ -119,16 +119,16 @@ Ref: {{ f.ref }}
 {%- endif -%}
 filter_node = FilterNode(
     name="{{ f.name }}",
-    input_typings={{f.input_types}},
-    output_typings={{f.output_types}},
-    inputs=[
+    input_typings={%if f.input_types %}tuple({{f.input_types}}){% else %}None{% endif %},
+    output_typings={%if f.output_types %}tuple({{f.output_types}}){% else %}None{% endif %},
+    inputs=(
         {{ stream_params(f, type) }}
-    ],
-    kwargs={
+    ),
+    kwargs=tuple(({
         {% for option in f.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}
-    } | kwargs,
+    } | kwargs).items()),
 )
 {% if f.is_output_dynamic %}
 return filter_node
