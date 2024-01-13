@@ -93,7 +93,7 @@ class FilterNode(Node):
             outgoing_labels += output.label(context)
 
         commands = []
-        for key, value in self.kwargs.items():
+        for key, value in self.kwargs:
             if isinstance(value, bool):
                 value = str(int(value))
 
@@ -113,7 +113,7 @@ class FilterableStream(Stream, ABC):
         return self.filter_multi_output(*streams, name=name, **kwargs).stream(0)
 
     def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
-        return FilterNode(name=name, kwargs=kwargs, inputs=(self, *streams))
+        return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=(self, *streams))
 
     @abstractproperty
     def video(self) -> "VideoStream":
@@ -124,7 +124,7 @@ class FilterableStream(Stream, ABC):
         raise NotImplementedError("This stream does not have an audio component")
 
     def output(self, *streams: "FilterableStream", filename: str, **kwargs: Any) -> "OutputStream":
-        return OutputNode(kwargs=kwargs, inputs=[self, *streams], filename=filename).stream()
+        return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=filename).stream()
 
     def label(self, context: _DAGContext) -> str:
         match (self.selector):
@@ -167,7 +167,7 @@ class GlobalNode(Node):
 
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         commands = []
-        for key, value in self.kwargs.items():
+        for key, value in self.kwargs:
             if isinstance(value, bool) and value is True:
                 commands += [f"-{key}"]
             else:
@@ -200,7 +200,7 @@ class InputNode(Node):
 
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         commands = []
-        for key, value in self.kwargs.items():
+        for key, value in self.kwargs:
             commands += [f"-{key}", str(value)]
         commands += ["-i", self.filename]
         return commands
@@ -209,7 +209,7 @@ class InputNode(Node):
 @dataclass(frozen=True, kw_only=True)
 class OutputNode(Node):
     filename: str
-    inputs: list[FilterableStream]
+    inputs: tuple[FilterableStream, ...]
 
     def stream(self) -> "OutputStream":
         return OutputStream(node=self)
@@ -224,7 +224,7 @@ class OutputNode(Node):
         for input in self.inputs:
             commands += ["-map", input.label(context)]
 
-        for key, value in self.kwargs.items():
+        for key, value in self.kwargs:
             if isinstance(value, bool) and value is True:
                 commands += [f"-{key}"]
             else:
@@ -238,10 +238,10 @@ class OutputStream(Stream):
     node: OutputNode | GlobalNode | MergeOutputsNode
 
     def global_args(self, **kwargs: str | bool | int | float | None) -> "OutputStream":
-        return GlobalNode(input=self, kwargs=kwargs).stream()
+        return GlobalNode(input=self, kwargs=tuple(kwargs.items())).stream()
 
     def overwrite_output(self) -> "OutputStream":
-        return GlobalNode(input=self, kwargs={"y": True}).stream()
+        return GlobalNode(input=self, kwargs=tuple({"y": True}.items())).stream()
 
     def compile(self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False) -> list[str]:
         from ..utils.compile import compile
