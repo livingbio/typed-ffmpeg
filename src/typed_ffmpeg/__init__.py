@@ -1,5 +1,3 @@
-from . import filters
-from .base import input, merge_outputs, output
-from .probe import probe
+from . import nodes, streams
 
-__all__ = ["input", "output", "merge_outputs", "probe", "filters"]
+__all__ = ["input", "output", "merge_outputs", "probe", "filters"] + streams.__all__ + nodes.__all__
