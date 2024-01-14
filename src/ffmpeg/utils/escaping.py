@@ -1,3 +1,6 @@
+from typing import Any, Iterable
+
+
 def escape(text: str | int | tuple[int, int], chars: str = "\\'=:") -> str:
     """Helper function to escape uncomfortable characters."""
     text = str(text)
@@ -10,3 +13,20 @@ def escape(text: str | int | tuple[int, int], chars: str = "\\'=:") -> str:
         text = text.replace(ch, "\\" + ch)
 
     return text
+
+
+def convert_kwargs_to_cmd_line_args(kwargs: dict[str, Any]) -> list[str]:
+    """Helper function to build command line arguments out of dict."""
+    args = []
+    for k in sorted(kwargs.keys()):
+        v = kwargs[k]
+        if isinstance(v, Iterable) and not isinstance(v, str):
+            for value in v:
+                args.append("-{}".format(k))
+                if value is not None:
+                    args.append("{}".format(value))
+            continue
+        args.append("-{}".format(k))
+        if v is not None:
+            args.append("{}".format(v))
+    return args
