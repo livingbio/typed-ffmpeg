@@ -5,6 +5,7 @@ from abc import ABC, abstractproperty
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Sequence
 
+from ..exeptions import Error
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from .base import Node, Stream, _DAGContext, empty_dag_context
@@ -309,7 +310,9 @@ class OutputStream(Stream):
         retcode = process.poll()
 
         if retcode:
-            raise subprocess.CalledProcessError(retcode, process.args, output=stdout, stderr=stderr)
+            args = self.compile(cmd, overwrite_output=overwrite_output)
+            raise Error(retcode=retcode, cmd=args, stdout=stdout, stderr=stderr)
+
         return stdout, stderr
 
 
