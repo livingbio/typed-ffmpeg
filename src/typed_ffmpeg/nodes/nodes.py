@@ -245,8 +245,8 @@ class OutputNode(Node):
 class OutputStream(Stream):
     node: OutputNode | GlobalNode | MergeOutputsNode
 
-    def global_args(self, **kwargs: str | bool | int | float | None) -> "OutputStream":
-        return GlobalNode(input=self, kwargs=tuple(kwargs.items())).stream()
+    def global_args(self, *args: str, **kwargs: str | bool | int | float | None) -> "OutputStream":
+        return GlobalNode(input=self, args=args, kwargs=tuple(kwargs.items())).stream()
 
     def overwrite_output(self) -> "OutputStream":
         return GlobalNode(input=self, kwargs=(("y", True),)).stream()
