@@ -287,7 +287,7 @@ class OutputStream(Stream):
         quiet: bool = False,
         overwrite_output: bool = False,
         cwd: str | None = None,
-    ) -> tuple[str, str]:
+    ) -> tuple[bytes, bytes]:
         process = self.run_async(
             cmd,
             pipe_stdin=pipe_stdin,
@@ -302,7 +302,7 @@ class OutputStream(Stream):
 
         if retcode:
             raise subprocess.CalledProcessError(retcode, process.args, output=stdout, stderr=stderr)
-        return stdout.decode("utf8"), stderr.decode("utf8")
+        return stdout, stderr
 
 
 @dataclass(frozen=True, kw_only=True)
