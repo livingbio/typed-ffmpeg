@@ -94,6 +94,7 @@ class FilterNode(Node):
 
         commands = []
         for key, value in self.kwargs:
+            # Note: the -nooption syntax cannot be used for boolean AVOptions, use -option 0/-option 1.
             if isinstance(value, bool):
                 value = str(int(value))
 
@@ -165,10 +166,17 @@ class GlobalNode(Node):
         return [self.input]
 
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
-        commands = []
+        commands = [*self.args]
         for key, value in self.kwargs:
-            if isinstance(value, bool) and value is True:
-                commands += [f"-{key}"]
+            # Options which do not take arguments are boolean options,
+            # and set the corresponding value to true. They can be set to
+            # false by prefixing the option name with "no". For example
+            # using "-nofoo" will set the boolean option with name "foo" to false.
+            if isinstance(value, bool):
+                if value is True:
+                    commands += [f"-{key}"]
+                else:
+                    commands += [f"-no{key}"]
             else:
                 commands += [f"-{key}", str(value)]
         return commands

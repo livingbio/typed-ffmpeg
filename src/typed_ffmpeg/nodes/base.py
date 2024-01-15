@@ -53,6 +53,7 @@ class Stream(HashableBaseModel):
 
 @dataclass(frozen=True, kw_only=True)
 class Node(HashableBaseModel, ABC):
+    args: tuple[str, ...] = ()
     kwargs: tuple[tuple[str, Any], ...] = ()
 
     @abstractproperty
