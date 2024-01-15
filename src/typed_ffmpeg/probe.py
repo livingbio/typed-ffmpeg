@@ -31,6 +31,3 @@ def probe(filename: str, cmd: str = "ffprobe", timeout: int | None = None, **kwa
         raise Error(retcode=retcode, cmd=args, stdout=out, stderr=err)
 
     return json.loads(out.decode("utf-8"))
-
-
-__all__ = ["probe"]

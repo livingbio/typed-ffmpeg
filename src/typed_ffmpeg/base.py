@@ -1,4 +1,6 @@
-from .nodes.nodes import FilterableStream, InputNode, MergeOutputsNode, OutputNode, OutputStream
+from typing import Any
+
+from .nodes.nodes import FilterableStream, FilterNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
 from .streams.av import AVStream
 
 
@@ -25,4 +27,9 @@ def merge_outputs(*inputs: OutputStream) -> OutputStream:
     return MergeOutputsNode(inputs=inputs).stream()
 
 
-__all__ = ["input", "output", "merge_outputs"]
+def filter(*inputs: FilterableStream, name: str, **kwargs: str | int | None | float) -> AVStream:
+    return FilterNode(name=name, inputs=inputs, kwargs=tuple(kwargs.items())).stream(0)
+
+
+def filter_multi_output(*streams: FilterableStream, name: str, **kwargs: Any) -> FilterNode:
+    return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=streams)
