@@ -6,3 +6,6 @@ class Error(Exception):
         self.stderr = stderr
         self.cmd = cmd
         self.retcode = retcode
+
+
+__all__ = ["Error"]
