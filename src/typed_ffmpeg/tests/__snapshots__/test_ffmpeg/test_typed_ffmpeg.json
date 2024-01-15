@@ -16,6 +16,8 @@
   "__spec__",
   "base",
   "exeptions",
+  "filter",
+  "filter_multi_output",
   "filters",
   "input",
   "merge_outputs",
