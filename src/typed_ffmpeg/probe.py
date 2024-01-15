@@ -2,6 +2,7 @@ import json
 import subprocess
 from typing import Any
 
+from .exeptions import Error
 from .utils.escaping import convert_kwargs_to_cmd_line_args
 
 
@@ -25,8 +26,10 @@ def probe(filename: str, cmd: str = "ffprobe", timeout: int | None = None, **kwa
     else:
         out, err = p.communicate()
 
+    retcode = p.poll()
     if p.returncode != 0:
-        raise subprocess.SubprocessError("ffprobe", out, err)
+        raise Error(retcode=retcode, cmd=args, stdout=out, stderr=err)
+
     return json.loads(out.decode("utf-8"))
 
 
