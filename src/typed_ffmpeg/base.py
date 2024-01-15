@@ -23,3 +23,6 @@ def output(*inputs: FilterableStream, filename: str, **kwargs: str | int | None 
 
 def merge_outputs(*inputs: OutputStream) -> OutputStream:
     return MergeOutputsNode(inputs=inputs).stream()
+
+
+__all__ = ["input", "output", "merge_outputs"]

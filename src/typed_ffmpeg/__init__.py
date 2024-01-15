@@ -1,7 +1,3 @@
-from . import filters, nodes, streams
-from .base import input, merge_outputs, output
-from .exeptions import Error
-from .probe import probe
+from . import base, exeptions, filters, nodes, probe, streams
 
-__all__ = ["input", "output", "merge_outputs", "probe", "filters", "Error"]
-__all__ += streams.__all__ + nodes.__all__
+__all__ = streams.__all__ + nodes.__all__ + base.__all__ + probe.__all__ + exeptions.__all__ + [filters.__name__]
