@@ -1,7 +1,7 @@
 {
   "description": "### 11.163 mergeplanes\n\nMerge color channel components from several video streams.\n\nThe filter accepts up to 4 input streams, and merge selected input planes to\nthe output video.\n\nThis filter accepts the following options:\n\n**mapping**\n\n    Set input to output plane mapping. Default is 0. The mappings is specified as a bitmap. It should be specified as a hexadecimal number in the form 0xAa[Bb[Cc[Dd]]]. \u2019Aa\u2019 describes the mapping for the first plane of the output stream. \u2019A\u2019 sets the number of the input stream to use (from 0 to 3), and \u2019a\u2019 the plane number of the corresponding input to use (from 0 to 3). The rest of the mappings is similar, \u2019Bb\u2019 describes the mapping for the output stream second plane, \u2019Cc\u2019 describes the mapping for the output stream third plane and \u2019Dd\u2019 describes the mapping for the output stream fourth plane. \n\n**format**\n\n    Set output pixel format. Default is yuva444p. \n\n**map0s**\n\n**map1s**\n\n**map2s**\n\n**map3s**\n\n    Set input to output stream mapping for output Nth plane. Default is 0. \n\n**map0p**\n\n**map1p**\n\n**map2p**\n\n**map3p**\n\n    Set input to output plane mapping for output Nth plane. Default is 0. \n\n",
   "filter_type": "vf",
-  "formula_input_typings": "[StreamType.video] * int(max(hex(mapping)[2::2]))",
+  "formula_input_typings": "[StreamType.video] * int(max(hex(int(mapping))[2::2]))",
   "formula_output_typings": null,
   "id": "ff_vf_mergeplanes",
   "input_stream_typings": [],

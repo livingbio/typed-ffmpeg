@@ -6,7 +6,7 @@ import re
 from typing import TYPE_CHECKING, Any, Literal
 
 from ..nodes.nodes import FilterableStream, FilterNode
-from ..schema import DefaultFloat, DefaultInt, DefaultStr, StreamType
+from ..schema import Default, StreamType
 from .channel_layout import CHANNEL_LAYOUT
 
 if TYPE_CHECKING:
@@ -46,7 +46,7 @@ class AudioStream(FilterableStream):
     
         order: int 
 
-| DefaultStr = DefaultStr(None)
+| str = Default(None)
 
 ,
     
@@ -54,7 +54,7 @@ class AudioStream(FilterableStream):
     
         projection: int 
 
-| DefaultStr = DefaultStr(None)
+| str = Default(None)
 
 ,
     

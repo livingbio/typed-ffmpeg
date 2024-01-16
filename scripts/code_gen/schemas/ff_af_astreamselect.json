@@ -1,7 +1,7 @@
 {
   "description": "### 11.245 streamselect, astreamselect\n\nSelect video or audio streams.\n\nThe filter accepts the following options:\n\n**inputs**\n\n    Set number of inputs. Default is 2. \n\n**map**\n\n    Set input indexes to remap to outputs. \n\n",
   "filter_type": "af",
-  "formula_input_typings": "[StreamType.audio] * inputs",
+  "formula_input_typings": "[StreamType.audio] * int(inputs)",
   "formula_output_typings": "[StreamType.audio] * len(re.findall(r'\\d+', map))",
   "id": "ff_af_astreamselect",
   "input_stream_typings": [],
