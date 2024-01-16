@@ -4,7 +4,7 @@ from .nodes.nodes import FilterableStream, FilterNode, InputNode, MergeOutputsNo
 from .streams.av import AVStream
 
 
-def input(filename: str, **kwargs: str | int | None | float) -> AVStream:
+def input(filename: str, **kwargs: str | int | bool | float) -> AVStream:
     """Input file URL (ffmpeg ``-i`` option)
     Any supplied kwargs are passed to ffmpeg verbatim (e.g. ``t=20``,
     ``f='mp4'``, ``acodec='pcm'``, etc.).
@@ -19,7 +19,7 @@ def input(filename: str, **kwargs: str | int | None | float) -> AVStream:
     return InputNode(filename=filename, kwargs=tuple(kwargs.items())).stream()
 
 
-def output(*inputs: FilterableStream, filename: str, **kwargs: str | int | None | float) -> OutputStream:
+def output(*inputs: FilterableStream, filename: str, **kwargs: str | int | bool | float) -> OutputStream:
     return OutputNode(filename=filename, inputs=inputs, kwargs=tuple(kwargs.items())).stream()
 
 
@@ -27,7 +27,7 @@ def merge_outputs(*inputs: OutputStream) -> OutputStream:
     return MergeOutputsNode(inputs=inputs).stream()
 
 
-def filter(*inputs: FilterableStream, name: str, **kwargs: str | int | None | float) -> AVStream:
+def filter(*inputs: FilterableStream, name: str, **kwargs: str | int | bool | float) -> AVStream:
     return FilterNode(name=name, inputs=inputs, kwargs=tuple(kwargs.items())).stream(0)
 
 

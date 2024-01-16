@@ -1,7 +1,7 @@
 from typing import Any, Iterable
 
 
-def escape(text: str | int | tuple[int, int], chars: str = "\\'=:") -> str:
+def escape(text: str | int | float, chars: str = "\\'=:") -> str:
     """Helper function to escape uncomfortable characters."""
     text = str(text)
     _chars = list(set(chars))
