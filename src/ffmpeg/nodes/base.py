@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod, abstractproperty
 from dataclasses import dataclass
 from functools import cached_property
-from typing import Any, Iterable, Sequence
+from typing import Iterable, Sequence
 
 from ..schema import StreamType
 from ..utils.dag import is_dag
@@ -54,7 +54,7 @@ class Stream(HashableBaseModel):
 @dataclass(frozen=True, kw_only=True)
 class Node(HashableBaseModel, ABC):
     args: tuple[str, ...] = ()
-    kwargs: tuple[tuple[str, Any], ...] = ()
+    kwargs: tuple[tuple[str, str | int | float | bool], ...] = ()
 
     @abstractproperty
     def incoming_streams(self) -> Sequence["Stream"]:
