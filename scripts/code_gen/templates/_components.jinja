@@ -24,19 +24,22 @@
 {% endmacro %}
 
 
+{% macro default_value(option) %}
+Default({{option.default.__repr__()}})
+{% endmacro %}
+
+
 {% macro default_typing(option) %}
 {% if option.choices %}
-| Default = Default({{option._default.__repr__()}})
-{% elif option.typing == "int" and option.default is integer %}
-| str = Default({{option.default}})
-{% elif option.typing == "str" and option.default is string %}
-= Default({{option.default.__repr__()}})
-{% elif option.typing == "float" and option.default is float %}
-| str = Default({{option.default}})
-{% elif option.typing == "bool" and (option.default is boolean or option.default is integer)%}
-| str = Default({{option.default}})
-{% else %}
-| str = Default({{option.default.__repr__()}})
+{{option._typing}} | Default = {{ default_value(option) }}
+{% elif option.typing == "int" %}
+int | str = {{ default_value(option) }}
+{% elif option.typing == "str" %}
+str | float | int  = {{ default_value(option) }}
+{% elif option.typing == "float" %}
+float | int | str = {{ default_value(option) }}
+{% elif option.typing == "bool" %}
+bool | int | str = {{ default_value(option) }}
 {% endif %}
 {% endmacro %}
 
@@ -45,7 +48,7 @@
     {% if option.required %}
         {{option.name | option_name_safe}}: {{option._typing}},
     {% else %}
-        {{option.name | option_name_safe}}: {{option._typing}} {{ default_typing(option) }},
+        {{option.name | option_name_safe}}: {{ default_typing(option) }},
     {% endif %}
 {% endfor %}
 {% endmacro %}

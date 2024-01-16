@@ -2,7 +2,7 @@
   "description": "### 8.75 channelsplit\n\nSplit each channel from an input audio stream into a separate output stream.\n\nIt accepts the following parameters:\n\n**channel_layout**\n\n    The channel layout of the input stream. The default is \"stereo\". \n\n**channels**\n\n    A channel layout describing the channels to be extracted as separate output streams or \"all\" to extract each input channel as a separate stream. The default is \"all\". Choosing channels not present in channel layout in the input will result in an error. \n\n",
   "filter_type": "af",
   "formula_input_typings": null,
-  "formula_output_typings": "[StreamType.audio] * CHANNEL_LAYOUT[channel_layout]",
+  "formula_output_typings": "[StreamType.audio] * CHANNEL_LAYOUT[str(channel_layout)]",
   "id": "ff_af_channelsplit",
   "input_stream_typings": [
     {
