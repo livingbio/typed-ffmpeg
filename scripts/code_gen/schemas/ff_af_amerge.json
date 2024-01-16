@@ -1,7 +1,7 @@
 {
   "description": "### 8.34 amerge\n\nMerge two or more audio streams into a single multi-channel stream.\n\nThe filter accepts the following options:\n\n**inputs**\n\n    Set the number of inputs. Default is 2. \n\nIf the channel layouts of the inputs are disjoint, and therefore compatible,\nthe channel layout of the output will be set accordingly and the channels will\nbe reordered as necessary. If the channel layouts of the inputs are not\ndisjoint, the output will have all the channels of the first input then all\nthe channels of the second input, in that order, and the channel layout of the\noutput will be the default value corresponding to the total number of\nchannels.\n\nFor example, if the first input is in 2.1 (FL+FR+LF) and the second input is\nFC+BL+BR, then the output will be in 5.1, with the channels in the following\norder: a1, a2, b1, a3, b2, b3 (a1 is the first channel of the first input, b1\nis the first channel of the second input).\n\nOn the other hand, if both input are in stereo, the output channels will be in\nthe default order: a1, a2, b1, b2, and the channel layout will be arbitrarily\nset to 4.0, which may or may not be the expected value.\n\nAll inputs must have the same sample rate, and format.\n\nIf inputs do not have the same duration, the output will stop with the\nshortest.\n\n",
   "filter_type": "af",
-  "formula_input_typings": "[StreamType.audio] * inputs",
+  "formula_input_typings": "[StreamType.audio] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_af_amerge",
   "input_stream_typings": [],
