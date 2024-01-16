@@ -32,17 +32,21 @@ def aap(
     
 
     
-        order: int 
+        order: 
 
-| str = Default(None)
+int | str = 
+Default(None)
+
 
 ,
     
 
     
-        projection: int 
+        projection: 
 
-| str = Default(None)
+int | str = 
+Default(None)
+
 
 ,
     
