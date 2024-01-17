@@ -238,6 +238,10 @@ class AVFilter(pydantic.BaseModel):
         return self.outputs.strip("()")
 
     @property
+    def is_support_timeline(self) -> bool:
+        return bool(self.flags_value & AVFilterFlags.AVFILTER_FLAG_SUPPORT_TIMELINE)
+
+    @property
     def is_dynamic_inputs(self) -> bool:
         return bool(self.flags_value & AVFilterFlags.AVFILTER_FLAG_DYNAMIC_INPUTS)
 

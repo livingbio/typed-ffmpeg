@@ -7,6 +7,7 @@
   "input_stream_typings": [],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": false,
   "name": "sinc",
   "options": [
     {

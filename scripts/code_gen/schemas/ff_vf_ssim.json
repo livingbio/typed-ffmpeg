@@ -16,6 +16,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "ssim",
   "options": [
     {
@@ -27,6 +28,15 @@
       "default": "((void*)0)",
       "description": "<dd><p>If specified the filter will use the named file to save the SSIM of\neach individual frame. When filename equals \"-\" the data is sent to\nstandard output.\n</p></dd>",
       "name": "stats_file",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

@@ -7,6 +7,7 @@
   "input_stream_typings": [],
   "is_input_dynamic": true,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "unpremultiply",
   "options": [
     {
@@ -30,6 +31,15 @@
       "name": "inplace",
       "required": false,
       "typing": "bool"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
+      "required": false,
+      "typing": "str"
     }
   ],
   "output_stream_typings": [

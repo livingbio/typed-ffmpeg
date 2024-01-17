@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "lutyuv",
   "options": [
     {
@@ -62,6 +63,15 @@
       "default": "clipval",
       "description": "<dd><p>set fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>",
       "name": "c3",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

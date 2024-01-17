@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "drawtext",
   "options": [
     {
@@ -408,6 +409,15 @@
       "default": "FT_LOAD_DEFAULT",
       "description": "set font loading flags for libfreetype",
       "name": "ft_load_flags",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

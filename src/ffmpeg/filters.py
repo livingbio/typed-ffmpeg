@@ -17,6 +17,7 @@ def aap(
     delta: float | int | str = Default(0.001),
     out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
     precision: int | Literal["auto", "float", "double"] | Default = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -67,6 +68,7 @@ def aap(
     :param float delta: Set the coefficient to initialize internal covariance matrix.
     :param int out_mode: Set the filter output samples. It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
     :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#aap
 
@@ -88,6 +90,7 @@ def aap(
                     "delta": delta,
                     "out_mode": out_mode,
                     "precision": precision,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -249,6 +252,7 @@ def afir(
     ir: int | str = Default(0),
     precision: int | Literal["auto", "float", "double"] | Default = Default(0),
     irload: int | Literal["init", "access"] | Default = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -370,6 +374,7 @@ def afir(
     :param int ir: Set IR stream which will be used for convolution, starting from 0, should always be lower than supplied value by nbirs option. Default is 0. This option can be changed at runtime via commands.
     :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto.
     :param int irload: Set when to load IR stream. Can be init or access. First one load and prepares all IRs on initialization, second one once on first access of specific IR. Default is init.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#afir
 
@@ -401,6 +406,7 @@ def afir(
                     "ir": ir,
                     "precision": precision,
                     "irload": irload,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -481,7 +487,9 @@ def ainterleave(
     return filter_node.audio(0)
 
 
-def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "VideoStream":
+def alphamerge(
+    _main: "VideoStream", _alpha: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+) -> "VideoStream":
     """
 
     ### 11.3 alphamerge
@@ -504,6 +512,7 @@ def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "V
     Parameters:
     ----------
 
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#alphamerge
 
@@ -516,7 +525,14 @@ def alphamerge(_main: "VideoStream", _alpha: "VideoStream", **kwargs: Any) -> "V
             _main,
             _alpha,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -704,6 +720,7 @@ def anlmf(
     leakage: float | int | str = Default(0.0),
     out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
     precision: int | Literal["auto", "float", "double"] | Default = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -755,6 +772,7 @@ def anlmf(
     :param float leakage: Set the filter leakage.
     :param int out_mode: It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
     :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms
 
@@ -776,6 +794,7 @@ def anlmf(
                     "leakage": leakage,
                     "out_mode": out_mode,
                     "precision": precision,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -794,6 +813,7 @@ def anlms(
     leakage: float | int | str = Default(0.0),
     out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
     precision: int | Literal["auto", "float", "double"] | Default = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -845,6 +865,7 @@ def anlms(
     :param float leakage: Set the filter leakage.
     :param int out_mode: It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
     :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms
 
@@ -866,6 +887,7 @@ def anlms(
                     "leakage": leakage,
                     "out_mode": out_mode,
                     "precision": precision,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -874,7 +896,9 @@ def anlms(
     return filter_node.audio(0)
 
 
-def apsnr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
+def apsnr(
+    _input0: "AudioStream", _input1: "AudioStream", *, enable: str | float | int = Default(None), **kwargs: Any
+) -> "AudioStream":
     """
 
     ### 8.44 apsnr
@@ -889,6 +913,7 @@ def apsnr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Aud
     Parameters:
     ----------
 
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#apsnr
 
@@ -901,7 +926,14 @@ def apsnr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Aud
             _input0,
             _input1,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -915,6 +947,7 @@ def arls(
     delta: float | int | str = Default("2.f"),
     out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
     precision: int | Literal["auto", "float", "double"] | Default = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -962,6 +995,7 @@ def arls(
     :param float delta: Set the coefficient to initialize internal covariance matrix.
     :param int out_mode: Set the filter output samples. It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
     :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#arls
 
@@ -982,6 +1016,7 @@ def arls(
                     "delta": delta,
                     "out_mode": out_mode,
                     "precision": precision,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -990,7 +1025,9 @@ def arls(
     return filter_node.audio(0)
 
 
-def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
+def asdr(
+    _input0: "AudioStream", _input1: "AudioStream", *, enable: str | float | int = Default(None), **kwargs: Any
+) -> "AudioStream":
     """
 
     ### 8.51 asdr
@@ -1005,6 +1042,7 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
     Parameters:
     ----------
 
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#asdr
 
@@ -1017,12 +1055,21 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
             _input0,
             _input1,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
 
-def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
+def asisdr(
+    _input0: "AudioStream", _input1: "AudioStream", *, enable: str | float | int = Default(None), **kwargs: Any
+) -> "AudioStream":
     """
 
     ### 8.55 asisdr
@@ -1037,6 +1084,7 @@ def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Au
     Parameters:
     ----------
 
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#asisdr
 
@@ -1049,7 +1097,14 @@ def asisdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Au
             _input0,
             _input1,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -1412,6 +1467,7 @@ def blend(
     c2_opacity: float | int | str = Default(1.0),
     c3_opacity: float | int | str = Default(1.0),
     all_opacity: float | int | str = Default(1.0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1488,6 +1544,7 @@ def blend(
     :param float c2_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
     :param float c3_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
     :param float all_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#blend
 
@@ -1518,6 +1575,7 @@ def blend(
                     "c2_opacity": c2_opacity,
                     "c3_opacity": c3_opacity,
                     "all_opacity": all_opacity,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -1627,6 +1685,7 @@ def bm3d(
     estim: int | Literal["basic", "final"] | Default = Default("BASIC"),
     ref: bool | int | str = Default(0),
     planes: int | str = Default(7),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1697,6 +1756,7 @@ def bm3d(
     :param int estim: Set filtering estimation mode. Can be basic or final. Default is basic.
     :param bool ref: If enabled, filter will use 2nd stream for block matching. Default is disabled for basic value of estim option, and always enabled if value of estim is final.
     :param int planes: Set planes to filter. Default is all available except alpha.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#bm3d
 
@@ -1720,6 +1780,7 @@ def bm3d(
                     "estim": estim,
                     "ref": ref,
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -1737,6 +1798,7 @@ def colormap(
     nb_patches: int | str = Default(0),
     type: int | Literal["relative", "absolute"] | Default = Default(1),
     kernel: int | Literal["euclidean", "weuclidean"] | Default = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1776,6 +1838,7 @@ def colormap(
     :param int nb_patches: Set the max number of used patches from source and target video stream. Default value is number of patches available in additional video streams. Max allowed number of patches is 64.
     :param int type: Set the adjustments used for target colors. Can be relative or absolute. Defaults is absolute.
     :param int kernel: Set the kernel used to measure color differences between mapped colors. The accepted values are: ‘euclidean’ ‘weuclidean’ Default is euclidean.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#colormap
 
@@ -1796,6 +1859,7 @@ def colormap(
                     "nb_patches": nb_patches,
                     "type": type,
                     "kernel": kernel,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -1905,6 +1969,7 @@ def convolve(
     planes: int | str = Default(7),
     impulse: int | Literal["first", "all"] | Default = Default(1),
     noise: float | int | str = Default(1e-07),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1934,6 +1999,7 @@ def convolve(
     :param int planes: Set which planes to process.
     :param int impulse: Set which impulse video frames will be processed, can be first or all. Default is all.
     :param float noise: set noise
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#convolve
 
@@ -1952,6 +2018,7 @@ def convolve(
                     "planes": planes,
                     "impulse": impulse,
                     "noise": noise,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -1960,7 +2027,9 @@ def convolve(
     return filter_node.video(0)
 
 
-def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
+def corr(
+    _main: "VideoStream", _reference: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+) -> "VideoStream":
     """
 
     ### 11.48 corr
@@ -1993,6 +2062,7 @@ def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     Parameters:
     ----------
 
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#corr
 
@@ -2005,7 +2075,14 @@ def corr(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
             _main,
             _reference,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -2108,6 +2185,7 @@ def deconvolve(
     planes: int | str = Default(7),
     impulse: int | Literal["first", "all"] | Default = Default(1),
     noise: float | int | str = Default(1e-07),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2141,6 +2219,7 @@ def deconvolve(
     :param int planes: Set which planes to process.
     :param int impulse: Set which impulse video frames will be processed, can be first or all. Default is all.
     :param float noise: Set noise when doing divisions. Default is 0.0000001. Useful when width and height are not same and not power of 2 or if stream prior to convolving had noise.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#deconvolve
 
@@ -2159,6 +2238,7 @@ def deconvolve(
                     "planes": planes,
                     "impulse": impulse,
                     "noise": noise,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -2173,6 +2253,7 @@ def displace(
     _ymap: "VideoStream",
     *,
     edge: int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("EDGE_SMEAR"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2204,6 +2285,7 @@ def displace(
     ----------
 
     :param int edge: Set displace behavior for pixels that are out of range. Available values are: ‘blank’ Missing pixels are replaced by black pixels. ‘smear’ Adjacent pixels will spread out to replace missing pixels. ‘wrap’ Out of range pixels are wrapped so they point to pixels of other side. ‘mirror’ Out of range pixels will be replaced with mirrored pixels. Default is ‘smear’.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#displace
 
@@ -2221,6 +2303,7 @@ def displace(
             (
                 {
                     "edge": edge,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -2237,6 +2320,7 @@ def feedback(
     y: int | str = Default(0),
     w: int | str = Default(0),
     h: int | str = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> tuple["VideoStream", "VideoStream",]:
     """
@@ -2275,6 +2359,7 @@ def feedback(
     :param int y: Set the top left crop position.
     :param int w: Set the crop size.
     :param int h: Set the crop size.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#feedback
 
@@ -2294,6 +2379,7 @@ def feedback(
                     "y": y,
                     "w": w,
                     "h": h,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -2609,6 +2695,7 @@ def guided(
     sub: int | str = Default(4),
     guidance: int | Literal["off", "on"] | Default = Default("OFF"),
     planes: int | str = Default(1),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2654,6 +2741,7 @@ def guided(
     :param int sub: Set subsampling ratio for fast mode. Range is 2 to 64. Default is 4. No subsampling occurs in basic mode.
     :param int guidance: Set guidance mode. Can be off or on. Default is off. If off, single input is required. If on, two inputs of the same resolution and pixel format are required. The second input serves as the guidance.
     :param int planes: Set planes to filter. Default is first only.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#guided
 
@@ -2672,6 +2760,7 @@ def guided(
                     "sub": sub,
                     "guidance": guidance,
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -2688,6 +2777,7 @@ def haldclut(
     interp: int
     | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
     | Default = Default("INTERPOLATE_TETRAHEDRAL"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2728,6 +2818,7 @@ def haldclut(
 
     :param int clut: Set which CLUT video frames will be processed from second input stream, can be first or all. Default is all.
     :param int interp: select interpolation mode
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#haldclut
 
@@ -2745,6 +2836,7 @@ def haldclut(
                 {
                     "clut": clut,
                     "interp": interp,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -3019,6 +3111,7 @@ def hysteresis(
     *,
     planes: int | str = Default("0xF"),
     threshold: int | str = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3047,6 +3140,7 @@ def hysteresis(
 
     :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
     :param int threshold: Set threshold which is used in filtering. If pixel component value is higher than this value filter algorithm for connecting components is activated. By default value is 0.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#hysteresis
 
@@ -3064,6 +3158,7 @@ def hysteresis(
                 {
                     "planes": planes,
                     "threshold": threshold,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -3072,7 +3167,9 @@ def hysteresis(
     return filter_node.video(0)
 
 
-def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
+def identity(
+    _main: "VideoStream", _reference: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+) -> "VideoStream":
     """
 
     ### 11.134 identity
@@ -3106,6 +3203,7 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
     Parameters:
     ----------
 
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#identity
 
@@ -3118,7 +3216,14 @@ def identity(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> 
             _main,
             _reference,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -3853,6 +3958,7 @@ def limitdiff(
     elasticity: float | int | str = Default("2.f"),
     reference: bool | int | str = Default(0),
     planes: int | str = Default("0xF"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3889,6 +3995,7 @@ def limitdiff(
     :param float elasticity: Set the elasticity of soft thresholding when processing video streams. This value multiplied with first one sets second threshold. Any absolute difference value greater or exact than second threshold will pick pixel components from second video stream. For values between those two threshold linear interpolation between first and second video stream will be used.
     :param bool reference: Enable the reference (third) video stream processing. By default is disabled. If set, this video stream will be used for calculating absolute difference with first video stream.
     :param int planes: Specify which planes will be processed. Defaults to all available.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#limitdiff
 
@@ -3905,6 +4012,7 @@ def limitdiff(
                     "elasticity": elasticity,
                     "reference": reference,
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -3922,6 +4030,7 @@ def lut2(
     c2: str | float | int = Default("x"),
     c3: str | float | int = Default("x"),
     d: int | str = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3999,6 +4108,7 @@ def lut2(
     :param str c2: set third pixel component expression
     :param str c3: set fourth pixel component expression, corresponds to the alpha component
     :param int d: set output bit depth, only available for lut2 filter. By default is 0, which means bit depth is automatically picked from first input format.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2
 
@@ -4019,6 +4129,7 @@ def lut2(
                     "c2": c2,
                     "c3": c3,
                     "d": d,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4108,6 +4219,7 @@ def maskedclamp(
     undershoot: int | str = Default(0),
     overshoot: int | str = Default(0),
     planes: int | str = Default("0xF"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4141,6 +4253,7 @@ def maskedclamp(
     :param int undershoot: Default value is 0.
     :param int overshoot: Default value is 0.
     :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedclamp
 
@@ -4160,6 +4273,7 @@ def maskedclamp(
                     "undershoot": undershoot,
                     "overshoot": overshoot,
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4174,6 +4288,7 @@ def maskedmax(
     _filter2: "VideoStream",
     *,
     planes: int | str = Default("0xF"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4198,6 +4313,7 @@ def maskedmax(
     ----------
 
     :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmax
 
@@ -4215,6 +4331,7 @@ def maskedmax(
             (
                 {
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4229,6 +4346,7 @@ def maskedmerge(
     _mask: "VideoStream",
     *,
     planes: int | str = Default("0xF"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4256,6 +4374,7 @@ def maskedmerge(
     ----------
 
     :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmerge
 
@@ -4273,6 +4392,7 @@ def maskedmerge(
             (
                 {
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4287,6 +4407,7 @@ def maskedmin(
     _filter2: "VideoStream",
     *,
     planes: int | str = Default("0xF"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4311,6 +4432,7 @@ def maskedmin(
     ----------
 
     :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmin
 
@@ -4328,6 +4450,7 @@ def maskedmin(
             (
                 {
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4343,6 +4466,7 @@ def maskedthreshold(
     threshold: int | str = Default(1),
     planes: int | str = Default("0xF"),
     mode: int | Literal["abs", "diff"] | Default = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4379,6 +4503,7 @@ def maskedthreshold(
     :param int threshold: Set threshold used when picking pixels from absolute difference from two input video streams.
     :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from second stream. By default value 0xf, all planes will be processed.
     :param int mode: Set mode of filter operation. Can be abs or diff. Default is abs.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold
 
@@ -4397,6 +4522,7 @@ def maskedthreshold(
                     "threshold": threshold,
                     "planes": planes,
                     "mode": mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4504,7 +4630,12 @@ def mergeplanes(
 
 
 def midequalizer(
-    _in0: "VideoStream", _in1: "VideoStream", *, planes: int | str = Default("0xF"), **kwargs: Any
+    _in0: "VideoStream",
+    _in1: "VideoStream",
+    *,
+    planes: int | str = Default("0xF"),
+    enable: str | float | int = Default(None),
+    **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -4532,6 +4663,7 @@ def midequalizer(
     ----------
 
     :param int planes: Set which planes to process. Default is 15, which is all available planes.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#midequalizer
 
@@ -4548,6 +4680,7 @@ def midequalizer(
             (
                 {
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4563,6 +4696,7 @@ def mix(
     scale: float | int | str = Default(0.0),
     planes: str | float | int = Default(15),
     duration: int | Literal["longest", "shortest", "first"] | Default = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4603,6 +4737,7 @@ def mix(
     :param float scale: Specify scale, if it is set it will be multiplied with sum of each weight multiplied with pixel values to give final destination pixel value. By default scale is auto scaled to sum of weights.
     :param str planes: Set which planes to filter. Default is all. Allowed range is from 0 to 15.
     :param int duration: Specify how end of stream is determined. ‘longest’ The duration of the longest input. (default) ‘shortest’ The duration of the shortest input. ‘first’ The duration of the first input.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#mix
 
@@ -4620,6 +4755,7 @@ def mix(
                     "scale": scale,
                     "planes": planes,
                     "duration": duration,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4635,6 +4771,7 @@ def morpho(
     mode: int | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"] | Default = Default(0),
     planes: int | str = Default(7),
     structure: int | Literal["first", "all"] | Default = Default(1),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4672,6 +4809,7 @@ def morpho(
     :param int mode: Set morphological transform to apply, can be: ‘erode’ ‘dilate’ ‘open’ ‘close’ ‘gradient’ ‘tophat’ ‘blackhat’ Default is erode.
     :param int planes: Set planes to filter, by default all planes except alpha are filtered.
     :param int structure: Set which structure video frames will be processed from second input stream, can be first or all. Default is all.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#morpho
 
@@ -4690,6 +4828,7 @@ def morpho(
                     "mode": mode,
                     "planes": planes,
                     "structure": structure,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4698,7 +4837,9 @@ def morpho(
     return filter_node.video(0)
 
 
-def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
+def msad(
+    _main: "VideoStream", _reference: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+) -> "VideoStream":
     """
 
     ### 11.171 msad
@@ -4731,6 +4872,7 @@ def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
     Parameters:
     ----------
 
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#msad
 
@@ -4743,7 +4885,14 @@ def msad(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vid
             _main,
             _reference,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -4755,6 +4904,7 @@ def multiply(
     scale: float | int | str = Default(1.0),
     offset: float | int | str = Default(0.5),
     planes: str | float | int = Default("0xF"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4786,6 +4936,7 @@ def multiply(
     :param float scale: Set the scale applied to second video stream. By default is 1. Allowed range is from 0 to 9.
     :param float offset: Set the offset applied to second video stream. By default is 0.5. Allowed range is from -1 to 1.
     :param str planes: Specify planes from input video stream that will be processed. By default all planes are processed.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#multiply
 
@@ -4804,6 +4955,7 @@ def multiply(
                     "scale": scale,
                     "offset": offset,
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4824,6 +4976,7 @@ def overlay(
     format: int | str = Default("OVERLAY_FORMAT_YUV420"),
     repeatlast: bool | int | str = Default(1),
     alpha: int | str = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -4933,6 +5086,7 @@ def overlay(
     :param int format: Set the format for the output video. It accepts the following values: ‘yuv420’ force YUV 4:2:0 8-bit planar output ‘yuv420p10’ force YUV 4:2:0 10-bit planar output ‘yuv422’ force YUV 4:2:2 8-bit planar output ‘yuv422p10’ force YUV 4:2:2 10-bit planar output ‘yuv444’ force YUV 4:4:4 8-bit planar output ‘yuv444p10’ force YUV 4:4:4 10-bit planar output ‘rgb’ force RGB 8-bit packed output ‘gbrp’ force RGB 8-bit planar output ‘auto’ automatically pick format Default value is ‘yuv420’.
     :param bool repeatlast: See framesync.
     :param int alpha: Set format of alpha of the overlaid video, it can be straight or premultiplied. Default is straight.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay
 
@@ -4956,6 +5110,7 @@ def overlay(
                     "format": format,
                     "repeatlast": repeatlast,
                     "alpha": alpha,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -5359,7 +5514,11 @@ def paletteuse(
 
 
 def premultiply(
-    *streams: "VideoStream", planes: int | str = Default("0xF"), inplace: bool | int | str = Default(0), **kwargs: Any
+    *streams: "VideoStream",
+    planes: int | str = Default("0xF"),
+    inplace: bool | int | str = Default(0),
+    enable: str | float | int = Default(None),
+    **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -5387,6 +5546,7 @@ def premultiply(
 
     :param int planes: Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed.
     :param bool inplace: Do not require 2nd input for processing, instead use alpha plane from input stream.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#premultiply
 
@@ -5401,6 +5561,7 @@ def premultiply(
                 {
                     "planes": planes,
                     "inplace": inplace,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -5579,6 +5740,7 @@ def psnr(
     stats_file: str | float | int = Default("((void*)0)"),
     stats_version: int | str = Default(1),
     output_max: bool | int | str = Default(0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -5670,6 +5832,7 @@ def psnr(
     :param str stats_file: If specified the filter will use the named file to save the PSNR of each individual frame. When filename equals "-" the data is sent to standard output.
     :param int stats_version: Specifies which version of the stats file format to use. Details of each format are written below. Default value is 1.
     :param bool output_max: Add raw stats (max values) to the output log.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#psnr
 
@@ -5688,6 +5851,7 @@ def psnr(
                     "stats_file": stats_file,
                     "stats_version": stats_version,
                     "output_max": output_max,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -6220,6 +6384,7 @@ def sidechaingate(
     detection: int | Literal["peak", "rms"] | Default = Default(1),
     link: int | Literal["average", "maximum"] | Default = Default(0),
     level_sc: float | int | str = Default(1.0),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -6303,6 +6468,7 @@ def sidechaingate(
     :param int detection: Choose if exact signal should be taken for detection or an RMS like one. Default is rms. Can be peak or rms.
     :param int link: Choose if the average level between all channels or the louder channel affects the reduction. Default is average. Can be average or maximum.
     :param float level_sc: Set sidechain gain. Default is 1. Range is from 0.015625 to 64.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#sidechaingate
 
@@ -6330,6 +6496,7 @@ def sidechaingate(
                     "detection": detection,
                     "link": link,
                     "level_sc": level_sc,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -6575,6 +6742,7 @@ def ssim(
     _reference: "VideoStream",
     *,
     stats_file: str | float | int = Default("((void*)0)"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -6628,6 +6796,7 @@ def ssim(
     ----------
 
     :param str stats_file: If specified the filter will use the named file to save the SSIM of each individual frame. When filename equals "-" the data is sent to standard output.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#ssim
 
@@ -6644,6 +6813,7 @@ def ssim(
             (
                 {
                     "stats_file": stats_file,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -6711,6 +6881,7 @@ def threshold(
     _max: "VideoStream",
     *,
     planes: int | str = Default(15),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -6741,6 +6912,7 @@ def threshold(
     ----------
 
     :param int planes: Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#threshold
 
@@ -6759,6 +6931,7 @@ def threshold(
             (
                 {
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -6768,7 +6941,11 @@ def threshold(
 
 
 def unpremultiply(
-    *streams: "VideoStream", planes: int | str = Default("0xF"), inplace: bool | int | str = Default(0), **kwargs: Any
+    *streams: "VideoStream",
+    planes: int | str = Default("0xF"),
+    inplace: bool | int | str = Default(0),
+    enable: str | float | int = Default(None),
+    **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -6796,6 +6973,7 @@ def unpremultiply(
 
     :param int planes: Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed. If the format has 1 or 2 components, then luma is bit 0. If the format has 3 or 4 components: for RGB formats bit 0 is green, bit 1 is blue and bit 2 is red; for YUV formats bit 0 is luma, bit 1 is chroma-U and bit 2 is chroma-V. If present, the alpha channel is always the last bit.
     :param bool inplace: Do not require 2nd input for processing, instead use alpha plane from input stream.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#unpremultiply
 
@@ -6810,6 +6988,7 @@ def unpremultiply(
                 {
                     "planes": planes,
                     "inplace": inplace,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -6825,6 +7004,7 @@ def varblur(
     min_r: int | str = Default(0),
     max_r: int | str = Default(8),
     planes: int | str = Default("0xF"),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -6858,6 +7038,7 @@ def varblur(
     :param int min_r: Set min allowed radius. Allowed range is from 0 to 254. Default is 0.
     :param int max_r: Set max allowed radius. Allowed range is from 1 to 255. Default is 8.
     :param int planes: Set which planes to process. By default, all are used.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#varblur
 
@@ -6876,6 +7057,7 @@ def varblur(
                     "min_r": min_r,
                     "max_r": max_r,
                     "planes": planes,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -6884,7 +7066,9 @@ def varblur(
     return filter_node.video(0)
 
 
-def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "VideoStream":
+def vif(
+    _main: "VideoStream", _reference: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+) -> "VideoStream":
     """
 
     ### 11.279 vif
@@ -6916,6 +7100,7 @@ def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vide
     Parameters:
     ----------
 
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#vif
 
@@ -6928,7 +7113,14 @@ def vif(_main: "VideoStream", _reference: "VideoStream", **kwargs: Any) -> "Vide
             _main,
             _reference,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.video(0)
 
@@ -7116,6 +7308,7 @@ def xcorrelate(
     *,
     planes: int | str = Default(7),
     secondary: int | Literal["first", "all"] | Default = Default(1),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -7147,6 +7340,7 @@ def xcorrelate(
 
     :param int planes: Set which planes to process.
     :param int secondary: Set which secondary video frames will be processed from second input video stream, can be first or all. Default is all.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xcorrelate
 
@@ -7164,6 +7358,7 @@ def xcorrelate(
                 {
                     "planes": planes,
                     "secondary": secondary,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -7450,6 +7645,7 @@ def xmedian(
     inputs: int | str = Default(3),
     planes: int | str = Default(15),
     percentile: float | int | str = Default(0.5),
+    enable: str | float | int = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -7480,6 +7676,7 @@ def xmedian(
     :param int inputs: Set number of inputs. Default is 3. Allowed range is from 3 to 255. If number of inputs is even number, than result will be mean value between two median values.
     :param int planes: Set which planes to filter. Default value is 15, by which all planes are processed.
     :param float percentile: Set median percentile. Default value is 0.5. Default value of 0.5 will pick always median values, while 0 will pick minimum values, and 1 maximum values.
+    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xmedian
 
@@ -7495,6 +7692,7 @@ def xmedian(
                     "inputs": inputs,
                     "planes": planes,
                     "percentile": percentile,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
