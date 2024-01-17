@@ -99,6 +99,7 @@
       }
     ],
     "outputs": "(tonemap_vaapi_outputs)",
+    "preinit": null,
     "priv_class": "&tonemap_vaapi_class"
   }
 ]

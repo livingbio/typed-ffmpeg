@@ -28,6 +28,7 @@
     ],
     "output_filter_pads": [],
     "outputs": "((void*)0)",
+    "preinit": null,
     "priv_class": "&split_class"
   },
   {
@@ -59,6 +60,7 @@
     ],
     "output_filter_pads": [],
     "outputs": "((void*)0)",
+    "preinit": null,
     "priv_class": "&split_class"
   }
 ]

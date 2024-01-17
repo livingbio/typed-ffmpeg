@@ -484,6 +484,7 @@
       }
     ],
     "outputs": "(showcqt_outputs)",
+    "preinit": null,
     "priv_class": "&showcqt_class"
   }
 ]

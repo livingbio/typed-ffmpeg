@@ -45,7 +45,7 @@ class FFmpegFilterOption(BaseModel):
 
     typing: Literal["bool", "int", "float", "str"]
     default: str | int | float | None = None
-    required: bool
+    required: bool = False
     choices: list[Choice] = []
 
     @property
@@ -86,6 +86,7 @@ class FFmpegFilter(BaseModel):
     is_input_dynamic: bool = False
     is_output_dynamic: bool = False
     is_support_timeline: bool = False
+    is_support_framesync: bool = False
 
     input_stream_typings: list[AVFilterPad] = []
     output_stream_typings: list[AVFilterPad] = []

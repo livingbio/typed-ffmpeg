@@ -473,6 +473,7 @@
       }
     ],
     "outputs": "(aspectralstats_outputs)",
+    "preinit": null,
     "priv_class": "&aspectralstats_class"
   }
 ]

@@ -402,6 +402,7 @@
     ],
     "output_filter_pads": [],
     "outputs": null,
+    "preinit": null,
     "priv_class": "&aiir_class"
   }
 ]

@@ -16,6 +16,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_framesync": true,
   "is_support_timeline": true,
   "name": "alphamerge",
   "options": [
@@ -25,6 +26,69 @@
       "default": null,
       "description": "timeline editing",
       "name": "enable",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [
+        {
+          "help": "Repeat the last frame.",
+          "name": "repeat",
+          "value": "repeat"
+        },
+        {
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "endall"
+        },
+        {
+          "help": "Pass the main input through.",
+          "name": "pass",
+          "value": "pass"
+        }
+      ],
+      "default": "repeat",
+      "description": "The action to take when EOF is encountered on the secondary input; it accepts one of the following values",
+      "name": "eof_action",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": 0,
+      "description": "Force the output to terminate when the shortest input terminates.",
+      "name": "shortest",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": 1,
+      "description": "force the filter to extend the last frame of secondary streams until the end of the primary stream.",
+      "name": "repeatlast",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [],
+      "choices": [
+        {
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
+          "name": "default",
+          "value": "default"
+        },
+        {
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
+          "name": "nearest",
+          "value": "nearest"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
+      "name": "ts_sync_mode",
       "required": false,
       "typing": "str"
     }

@@ -127,7 +127,15 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def alphamerge(
-        self, _alpha: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+        self,
+        _alpha: "VideoStream",
+        *,
+        enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+        **kwargs: Any,
     ) -> "VideoStream":
         """
 
@@ -152,6 +160,10 @@ class VideoStream(FilterableStream):
         ----------
 
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#alphamerge
 
@@ -168,6 +180,10 @@ class VideoStream(FilterableStream):
                 (
                     {
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -1326,6 +1342,10 @@ class VideoStream(FilterableStream):
         c3_opacity: float | int | str = Default(1.0),
         all_opacity: float | int | str = Default(1.0),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1403,6 +1423,10 @@ class VideoStream(FilterableStream):
         :param float c3_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
         :param float all_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#blend
 
@@ -1434,6 +1458,10 @@ class VideoStream(FilterableStream):
                         "c3_opacity": c3_opacity,
                         "all_opacity": all_opacity,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -4222,6 +4250,10 @@ class VideoStream(FilterableStream):
         impulse: int | Literal["first", "all"] | Default = Default(1),
         noise: float | int | str = Default(1e-07),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -4252,6 +4284,10 @@ class VideoStream(FilterableStream):
         :param int impulse: Set which impulse video frames will be processed, can be first or all. Default is all.
         :param float noise: set noise
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#convolve
 
@@ -4271,6 +4307,10 @@ class VideoStream(FilterableStream):
                         "impulse": impulse,
                         "noise": noise,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -4396,7 +4436,15 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def corr(
-        self, _reference: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+        self,
+        _reference: "VideoStream",
+        *,
+        enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+        **kwargs: Any,
     ) -> "VideoStream":
         """
 
@@ -4431,6 +4479,10 @@ class VideoStream(FilterableStream):
         ----------
 
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#corr
 
@@ -4447,6 +4499,10 @@ class VideoStream(FilterableStream):
                 (
                     {
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -5375,6 +5431,10 @@ class VideoStream(FilterableStream):
         impulse: int | Literal["first", "all"] | Default = Default(1),
         noise: float | int | str = Default(1e-07),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5409,6 +5469,10 @@ class VideoStream(FilterableStream):
         :param int impulse: Set which impulse video frames will be processed, can be first or all. Default is all.
         :param float noise: Set noise when doing divisions. Default is 0.0000001. Useful when width and height are not same and not power of 2 or if stream prior to convolving had noise.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#deconvolve
 
@@ -5428,6 +5492,10 @@ class VideoStream(FilterableStream):
                         "impulse": impulse,
                         "noise": noise,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -10030,6 +10098,10 @@ class VideoStream(FilterableStream):
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
         | Default = Default("INTERPOLATE_TETRAHEDRAL"),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -10071,6 +10143,10 @@ class VideoStream(FilterableStream):
         :param int clut: Set which CLUT video frames will be processed from second input stream, can be first or all. Default is all.
         :param int interp: select interpolation mode
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#haldclut
 
@@ -10089,6 +10165,10 @@ class VideoStream(FilterableStream):
                         "clut": clut,
                         "interp": interp,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -11018,6 +11098,10 @@ class VideoStream(FilterableStream):
         planes: int | str = Default("0xF"),
         threshold: int | str = Default(0),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -11047,6 +11131,10 @@ class VideoStream(FilterableStream):
         :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
         :param int threshold: Set threshold which is used in filtering. If pixel component value is higher than this value filter algorithm for connecting components is activated. By default value is 0.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hysteresis
 
@@ -11065,6 +11153,10 @@ class VideoStream(FilterableStream):
                         "planes": planes,
                         "threshold": threshold,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -11202,7 +11294,15 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def identity(
-        self, _reference: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+        self,
+        _reference: "VideoStream",
+        *,
+        enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+        **kwargs: Any,
     ) -> "VideoStream":
         """
 
@@ -11238,6 +11338,10 @@ class VideoStream(FilterableStream):
         ----------
 
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#identity
 
@@ -11254,6 +11358,10 @@ class VideoStream(FilterableStream):
                 (
                     {
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -12077,6 +12185,10 @@ class VideoStream(FilterableStream):
         n_subsample: int | str = Default(1),
         model: str | float | int = Default("version=vmaf_v0.6.1"),
         feature: str | float | int = Default("((void*)0)"),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12139,6 +12251,10 @@ class VideoStream(FilterableStream):
         :param int n_subsample: Set frame subsampling interval to be used.
         :param str model: A ‘|‘ delimited list of vmaf models. Each model can be configured with a number of parameters. Default value: "version=vmaf_v0.6.1"
         :param str feature: A ‘|‘ delimited list of features. Each feature can be configured with a number of parameters.
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf
 
@@ -12161,6 +12277,10 @@ class VideoStream(FilterableStream):
                         "n_subsample": n_subsample,
                         "model": model,
                         "feature": feature,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -12179,6 +12299,10 @@ class VideoStream(FilterableStream):
         n_subsample: int | str = Default(1),
         model: str | float | int = Default("version=vmaf_v0.6.1"),
         feature: str | float | int = Default("((void*)0)"),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12203,6 +12327,10 @@ class VideoStream(FilterableStream):
         :param int n_subsample: Set interval for frame subsampling used when computing vmaf.
         :param str model: Set the model to be used for computing vmaf.
         :param str feature: Set the feature to be used for computing vmaf.
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf_005fcuda
 
@@ -12225,6 +12353,10 @@ class VideoStream(FilterableStream):
                         "n_subsample": n_subsample,
                         "model": model,
                         "feature": feature,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -12632,6 +12764,10 @@ class VideoStream(FilterableStream):
         c3: str | float | int = Default("x"),
         d: int | str = Default(0),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12710,6 +12846,10 @@ class VideoStream(FilterableStream):
         :param str c3: set fourth pixel component expression, corresponds to the alpha component
         :param int d: set output bit depth, only available for lut2 filter. By default is 0, which means bit depth is automatically picked from first input format.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2
 
@@ -12731,6 +12871,10 @@ class VideoStream(FilterableStream):
                         "c3": c3,
                         "d": d,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -13982,6 +14126,10 @@ class VideoStream(FilterableStream):
         planes: int | str = Default(7),
         structure: int | Literal["first", "all"] | Default = Default(1),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -14020,6 +14168,10 @@ class VideoStream(FilterableStream):
         :param int planes: Set planes to filter, by default all planes except alpha are filtered.
         :param int structure: Set which structure video frames will be processed from second input stream, can be first or all. Default is all.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#morpho
 
@@ -14039,6 +14191,10 @@ class VideoStream(FilterableStream):
                         "planes": planes,
                         "structure": structure,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -14120,7 +14276,15 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def msad(
-        self, _reference: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+        self,
+        _reference: "VideoStream",
+        *,
+        enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+        **kwargs: Any,
     ) -> "VideoStream":
         """
 
@@ -14155,6 +14319,10 @@ class VideoStream(FilterableStream):
         ----------
 
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#msad
 
@@ -14171,6 +14339,10 @@ class VideoStream(FilterableStream):
                 (
                     {
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -15203,6 +15375,7 @@ class VideoStream(FilterableStream):
         repeatlast: bool | int | str = Default(1),
         alpha: int | str = Default(0),
         enable: str | float | int = Default(None),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -15313,6 +15486,7 @@ class VideoStream(FilterableStream):
         :param bool repeatlast: See framesync.
         :param int alpha: Set format of alpha of the overlaid video, it can be straight or premultiplied. Default is straight.
         :param str enable: timeline editing
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay
 
@@ -15337,6 +15511,7 @@ class VideoStream(FilterableStream):
                         "repeatlast": repeatlast,
                         "alpha": alpha,
                         "enable": enable,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -15354,6 +15529,7 @@ class VideoStream(FilterableStream):
         eval: int | str = Default("EVAL_MODE_FRAME"),
         shortest: bool | int | str = Default(0),
         repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -15405,6 +15581,7 @@ class VideoStream(FilterableStream):
         :param int eval: Set when the expressions for x and y are evaluated. It accepts the following values: init Evaluate expressions once during filter initialization or when a command is processed. frame Evaluate expressions for each incoming frame Default value is frame.
         :param bool shortest: See framesync.
         :param bool repeatlast: See framesync.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fcuda
 
@@ -15426,6 +15603,7 @@ class VideoStream(FilterableStream):
                         "eval": eval,
                         "shortest": shortest,
                         "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -15499,6 +15677,7 @@ class VideoStream(FilterableStream):
         eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("EOF_ACTION_REPEAT"),
         shortest: bool | int | str = Default(0),
         repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -15555,6 +15734,7 @@ class VideoStream(FilterableStream):
         :param int eof_action: See framesync.
         :param bool shortest: See framesync.
         :param bool repeatlast: See framesync.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvaapi
 
@@ -15578,6 +15758,7 @@ class VideoStream(FilterableStream):
                         "eof_action": eof_action,
                         "shortest": shortest,
                         "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -17051,6 +17232,10 @@ class VideoStream(FilterableStream):
         stats_version: int | str = Default(1),
         output_max: bool | int | str = Default(0),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -17143,6 +17328,10 @@ class VideoStream(FilterableStream):
         :param int stats_version: Specifies which version of the stats file format to use. Details of each format are written below. Default value is 1.
         :param bool output_max: Add raw stats (max values) to the output log.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#psnr
 
@@ -17162,6 +17351,10 @@ class VideoStream(FilterableStream):
                         "stats_version": stats_version,
                         "output_max": output_max,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -21472,6 +21665,10 @@ class VideoStream(FilterableStream):
         *,
         stats_file: str | float | int = Default("((void*)0)"),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -21526,6 +21723,10 @@ class VideoStream(FilterableStream):
 
         :param str stats_file: If specified the filter will use the named file to save the SSIM of each individual frame. When filename equals "-" the data is sent to standard output.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#ssim
 
@@ -21543,6 +21744,10 @@ class VideoStream(FilterableStream):
                     {
                         "stats_file": stats_file,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -24491,6 +24696,10 @@ class VideoStream(FilterableStream):
         max_r: int | str = Default(8),
         planes: int | str = Default("0xF"),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -24525,6 +24734,10 @@ class VideoStream(FilterableStream):
         :param int max_r: Set max allowed radius. Allowed range is from 1 to 255. Default is 8.
         :param int planes: Set which planes to process. By default, all are used.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#varblur
 
@@ -24544,6 +24757,10 @@ class VideoStream(FilterableStream):
                         "max_r": max_r,
                         "planes": planes,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -25061,7 +25278,15 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def vif(
-        self, _reference: "VideoStream", *, enable: str | float | int = Default(None), **kwargs: Any
+        self,
+        _reference: "VideoStream",
+        *,
+        enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+        **kwargs: Any,
     ) -> "VideoStream":
         """
 
@@ -25095,6 +25320,10 @@ class VideoStream(FilterableStream):
         ----------
 
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vif
 
@@ -25111,6 +25340,10 @@ class VideoStream(FilterableStream):
                 (
                     {
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()
@@ -25581,6 +25814,10 @@ class VideoStream(FilterableStream):
         planes: int | str = Default(7),
         secondary: int | Literal["first", "all"] | Default = Default(1),
         enable: str | float | int = Default(None),
+        eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: bool | int | str = Default(0),
+        repeatlast: bool | int | str = Default(1),
+        ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -25613,6 +25850,10 @@ class VideoStream(FilterableStream):
         :param int planes: Set which planes to process.
         :param int secondary: Set which secondary video frames will be processed from second input video stream, can be first or all. Default is all.
         :param str enable: timeline editing
+        :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
+        :param bool shortest: Force the output to terminate when the shortest input terminates.
+        :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
+        :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#xcorrelate
 
@@ -25631,6 +25872,10 @@ class VideoStream(FilterableStream):
                         "planes": planes,
                         "secondary": secondary,
                         "enable": enable,
+                        "eof_action": eof_action,
+                        "shortest": shortest,
+                        "repeatlast": repeatlast,
+                        "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
                 ).items()

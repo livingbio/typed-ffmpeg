@@ -484,6 +484,7 @@
       }
     ],
     "outputs": "(avfilter_vf_scale_outputs)",
+    "preinit": "preinit",
     "priv_class": "&scale_class"
   },
   {
@@ -979,6 +980,7 @@
       }
     ],
     "outputs": "(avfilter_vf_scale2ref_outputs)",
+    "preinit": "preinit",
     "priv_class": "&scale_class"
   }
 ]

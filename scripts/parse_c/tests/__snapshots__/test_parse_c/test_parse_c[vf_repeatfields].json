@@ -21,6 +21,7 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
+    "preinit": null,
     "priv_class": null
   }
 ]

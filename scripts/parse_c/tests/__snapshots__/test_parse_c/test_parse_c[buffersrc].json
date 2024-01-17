@@ -105,6 +105,7 @@
       }
     ],
     "outputs": "(avfilter_vsrc_buffer_outputs)",
+    "preinit": null,
     "priv_class": "&buffer_class"
   },
   {
@@ -180,6 +181,7 @@
       }
     ],
     "outputs": "(avfilter_asrc_abuffer_outputs)",
+    "preinit": null,
     "priv_class": "&abuffer_class"
   }
 ]

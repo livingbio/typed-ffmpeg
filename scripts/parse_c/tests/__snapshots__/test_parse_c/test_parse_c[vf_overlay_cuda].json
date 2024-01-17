@@ -147,6 +147,7 @@
       }
     ],
     "outputs": "(overlay_cuda_outputs)",
+    "preinit": "overlay_cuda_framesync_preinit",
     "priv_class": "&overlay_cuda_class"
   }
 ]

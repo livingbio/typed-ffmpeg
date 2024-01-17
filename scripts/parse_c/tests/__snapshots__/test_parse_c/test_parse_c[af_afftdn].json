@@ -583,6 +583,7 @@
       }
     ],
     "outputs": "(ff_audio_default_filterpad)",
+    "preinit": null,
     "priv_class": "&afftdn_class"
   }
 ]

@@ -127,6 +127,7 @@
       }
     ],
     "outputs": "(lv2_outputs)",
+    "preinit": null,
     "priv_class": "&lv2_class"
   }
 ]

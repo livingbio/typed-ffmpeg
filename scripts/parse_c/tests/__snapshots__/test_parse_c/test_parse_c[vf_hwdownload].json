@@ -21,6 +21,7 @@
       }
     ],
     "outputs": "(hwdownload_outputs)",
+    "preinit": null,
     "priv_class": "&hwdownload_class"
   }
 ]

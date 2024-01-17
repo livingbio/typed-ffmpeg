@@ -191,6 +191,7 @@ class AVFilter(pydantic.BaseModel):
     # uninit: str
     # priv_size: str
     # activate: str
+    preinit: str | None = None
     inputs: str | None = None
     # nb_inputs: str
     outputs: str | None = None
@@ -236,6 +237,10 @@ class AVFilter(pydantic.BaseModel):
             return None
 
         return self.outputs.strip("()")
+
+    @property
+    def is_support_framesync(self) -> bool:
+        return self.preinit is not None and "framesync" in self.preinit
 
     @property
     def is_support_timeline(self) -> bool:
