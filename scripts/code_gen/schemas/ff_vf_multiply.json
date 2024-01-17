@@ -16,6 +16,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "multiply",
   "options": [
     {
@@ -48,6 +49,15 @@
       "default": "0xF",
       "description": "<dd><p>Specify planes from input video stream that will be processed.\nBy default all planes are processed.\n</p></dd>",
       "name": "planes",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

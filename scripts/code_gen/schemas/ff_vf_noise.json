@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "noise",
   "options": [
     {
@@ -291,6 +292,15 @@
       "default": 0,
       "description": "<dd><p>Set pixel component flags or set flags for all components if <var>all_flags</var>.\nAvailable values for component flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>averaged temporal noise (smoother)\n</p></dd>\n<dt>\u2018<samp>p</samp>\u2019</dt>\n<dd><p>mix random noise with a (semi)regular pattern\n</p></dd>\n<dt>\u2018<samp>t</samp>\u2019</dt>\n<dd><p>temporal noise (noise pattern changes between frames)\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>uniform noise (gaussian otherwise)\n</p></dd>\n</dl>\n</dd>",
       "name": "c3_flags",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

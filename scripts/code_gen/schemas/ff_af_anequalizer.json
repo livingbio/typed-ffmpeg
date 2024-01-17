@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": true,
+  "is_support_timeline": true,
   "name": "anequalizer",
   "options": [
     {
@@ -88,6 +89,15 @@
       "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
       "description": "<dd><p>Set color for each channel curve which is going to be displayed in video stream.\nThis is list of color names separated by space or by \u2019|\u2019.\nUnrecognised or missing colors will be replaced by white color.\n</p></dd>",
       "name": "colors",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

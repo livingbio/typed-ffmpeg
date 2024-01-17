@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "derain",
   "options": [
     {
@@ -77,6 +78,15 @@
       "default": "y",
       "description": "output name of the model",
       "name": "output",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

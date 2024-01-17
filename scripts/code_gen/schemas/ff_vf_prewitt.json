@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "prewitt",
   "options": [
     {
@@ -46,6 +47,15 @@
       "name": "delta",
       "required": false,
       "typing": "float"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
+      "required": false,
+      "typing": "str"
     }
   ],
   "output_stream_typings": [

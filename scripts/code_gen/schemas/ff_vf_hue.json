@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "hue",
   "options": [
     {
@@ -55,6 +56,15 @@
       "default": "0",
       "description": "<dd><p>Specify the brightness in the [-10,10] range. It accepts an expression and\ndefaults to \"0\".\n</p></dd>",
       "name": "b",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

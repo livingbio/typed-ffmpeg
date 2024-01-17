@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "edgedetect",
   "options": [
     {
@@ -102,6 +103,15 @@
       "default": 7,
       "description": "<dd><p>Select planes for filtering. By default all available planes are filtered.\n</p></dd>",
       "name": "planes",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "unsharp",
   "options": [
     {
@@ -121,6 +122,15 @@
       "name": "alpha_amount",
       "required": false,
       "typing": "float"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
+      "required": false,
+      "typing": "str"
     }
   ],
   "output_stream_typings": [

@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "swaprect",
   "options": [
     {
@@ -77,6 +78,15 @@
       "default": "0",
       "description": "<dd><p>Set 2nd rect y coordinate.\n</p>\n<p>All expressions are evaluated once for each frame.\n</p></dd>",
       "name": "y2",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

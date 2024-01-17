@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "fade",
   "options": [
     {
@@ -94,6 +95,15 @@
       "default": "black",
       "description": "<dd><p>Specify the color of the fade. Default is \"black\".\n</p></dd>",
       "name": "color",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

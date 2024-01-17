@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "asubboost",
   "options": [
     {
@@ -110,6 +111,15 @@
       "default": "all",
       "description": "<dd><p>Set the channels to process. Default value is all available.\n</p></dd>",
       "name": "channels",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

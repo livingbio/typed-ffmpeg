@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "fillborders",
   "options": [
     {
@@ -113,6 +114,15 @@
       "default": "black",
       "description": "<dd><p>Set color for pixels in fixed or fade mode. Default is <var>black</var>.\n</p></dd>",
       "name": "color",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

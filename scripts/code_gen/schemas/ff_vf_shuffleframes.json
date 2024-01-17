@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_timeline": true,
   "name": "shuffleframes",
   "options": [
     {
@@ -22,6 +23,15 @@
       "default": "0",
       "description": "<dd><p>Set the destination indexes of input frames.\nThis is space or \u2019|\u2019 separated list of indexes that maps input frames to output\nframes. Number of indexes also sets maximal value that each index may have.\n\u2019-1\u2019 index have special meaning and that is to drop frame.\n</p></dd>",
       "name": "mapping",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }
