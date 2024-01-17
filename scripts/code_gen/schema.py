@@ -85,6 +85,7 @@ class FFmpegFilter(BaseModel):
 
     is_input_dynamic: bool = False
     is_output_dynamic: bool = False
+    is_support_timeline: bool = False
 
     input_stream_typings: list[AVFilterPad] = []
     output_stream_typings: list[AVFilterPad] = []

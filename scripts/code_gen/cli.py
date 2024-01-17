@@ -32,6 +32,13 @@ def parse_options(filter: AVFilter, doc: FilterDocument) -> list[FFmpegFilterOpt
             )
         )
 
+    if filter.is_support_timeline:
+        options.append(
+            FFmpegFilterOption(
+                name="enable", description="timeline editing", typing="str", required=False, default=None
+            )
+        )
+
     return options
 
 
@@ -63,6 +70,7 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
                 ref=doc.url,
                 is_input_dynamic=f.is_dynamic_inputs,
                 is_output_dynamic=f.is_dynamic_outputs,
+                is_support_timeline=f.is_support_timeline,
                 input_stream_typings=f.input_filter_pads,
                 output_stream_typings=f.output_filter_pads,
                 options=parse_options(f, doc),
@@ -74,6 +82,7 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         ffmpeg_filter.ref = doc.url
         ffmpeg_filter.is_input_dynamic = f.is_dynamic_inputs
         ffmpeg_filter.is_output_dynamic = f.is_dynamic_outputs
+        ffmpeg_filter.is_support_timeline = f.is_support_timeline
         ffmpeg_filter.input_stream_typings = f.input_filter_pads
         ffmpeg_filter.output_stream_typings = f.output_filter_pads
         ffmpeg_filter.options = parse_options(f, doc)
