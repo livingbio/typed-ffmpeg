@@ -28,6 +28,7 @@
       }
     ],
     "outputs": "(amerge_outputs)",
+    "preinit": null,
     "priv_class": "&amerge_class"
   }
 ]

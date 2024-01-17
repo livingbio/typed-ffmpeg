@@ -462,6 +462,7 @@
       }
     ],
     "outputs": "(avfilter_af_afade_outputs)",
+    "preinit": null,
     "priv_class": "&afade_class"
   },
   {
@@ -865,6 +866,7 @@
       }
     ],
     "outputs": "(avfilter_af_acrossfade_outputs)",
+    "preinit": null,
     "priv_class": "&acrossfade_class"
   }
 ]

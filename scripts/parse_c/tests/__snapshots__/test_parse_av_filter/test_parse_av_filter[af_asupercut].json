@@ -11,6 +11,7 @@
     "options": [],
     "output_filter_pads": [],
     "outputs": "(ff_audio_default_filterpad)",
+    "preinit": null,
     "priv_class": "&asubcut_class"
   },
   "ff_af_asupercut": {
@@ -25,6 +26,7 @@
     "options": [],
     "output_filter_pads": [],
     "outputs": "(ff_audio_default_filterpad)",
+    "preinit": null,
     "priv_class": "&asupercut_class"
   },
   "ff_af_asuperpass": {
@@ -39,6 +41,7 @@
     "options": [],
     "output_filter_pads": [],
     "outputs": "(ff_audio_default_filterpad)",
+    "preinit": null,
     "priv_class": "&asuperpass_asuperstop_class"
   },
   "ff_af_asuperstop": {
@@ -53,6 +56,7 @@
     "options": [],
     "output_filter_pads": [],
     "outputs": "(ff_audio_default_filterpad)",
+    "preinit": null,
     "priv_class": "&asuperpass_asuperstop_class"
   }
 }

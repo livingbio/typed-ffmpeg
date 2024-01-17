@@ -1843,6 +1843,7 @@
       }
     ],
     "outputs": "(libplacebo_outputs)",
+    "preinit": null,
     "priv_class": "&libplacebo_class"
   }
 ]

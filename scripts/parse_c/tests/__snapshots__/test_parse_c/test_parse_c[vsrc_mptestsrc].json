@@ -226,6 +226,7 @@
       }
     ],
     "outputs": "(mptestsrc_outputs)",
+    "preinit": null,
     "priv_class": "&mptestsrc_class"
   }
 ]

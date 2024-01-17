@@ -132,6 +132,7 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
+    "preinit": null,
     "priv_class": "&lut3d_class"
   },
   {
@@ -260,6 +261,7 @@
       }
     ],
     "outputs": "(haldclut_outputs)",
+    "preinit": "haldclut_framesync_preinit",
     "priv_class": "&haldclut_class"
   },
   {
@@ -362,6 +364,7 @@
       }
     ],
     "outputs": "(ff_video_default_filterpad)",
+    "preinit": null,
     "priv_class": "&lut1d_class"
   }
 ]

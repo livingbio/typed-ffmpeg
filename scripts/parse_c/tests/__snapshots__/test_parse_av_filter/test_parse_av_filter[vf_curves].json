@@ -11,6 +11,7 @@
     "options": [],
     "output_filter_pads": [],
     "outputs": "(ff_video_default_filterpad)",
+    "preinit": null,
     "priv_class": "&curves_class"
   }
 }

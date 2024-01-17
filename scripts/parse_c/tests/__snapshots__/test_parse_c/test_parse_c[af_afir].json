@@ -369,6 +369,7 @@
       }
     ],
     "outputs": "(outputs)",
+    "preinit": null,
     "priv_class": "&afir_class"
   }
 ]
