@@ -16,6 +16,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_framesync": true,
   "is_support_timeline": true,
   "name": "overlay",
   "options": [
@@ -129,6 +130,26 @@
       "default": null,
       "description": "timeline editing",
       "name": "enable",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [],
+      "choices": [
+        {
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
+          "name": "default",
+          "value": "default"
+        },
+        {
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
+          "name": "nearest",
+          "value": "nearest"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
+      "name": "ts_sync_mode",
       "required": false,
       "typing": "str"
     }

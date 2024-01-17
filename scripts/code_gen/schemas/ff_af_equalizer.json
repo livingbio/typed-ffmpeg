@@ -12,6 +12,7 @@
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
+  "is_support_framesync": false,
   "is_support_timeline": true,
   "name": "equalizer",
   "options": [

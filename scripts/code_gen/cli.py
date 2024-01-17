@@ -8,13 +8,12 @@ from parse_docs.cli import split_documents
 from parse_docs.schema import FilterDocument
 
 from .gen import render
-from .schema import TYPING_MAP, FFmpegFilter, FFmpegFilterOption
+from .schema import TYPING_MAP, Choice, FFmpegFilter, FFmpegFilterOption
 
 app = typer.Typer()
 
 
 def parse_options(filter: AVFilter, doc: FilterDocument) -> list[FFmpegFilterOption]:
-
     options: list[FFmpegFilterOption] = []
     parameter_docs = doc.parameter_descs
 
@@ -35,9 +34,62 @@ def parse_options(filter: AVFilter, doc: FilterDocument) -> list[FFmpegFilterOpt
     if filter.is_support_timeline:
         options.append(
             FFmpegFilterOption(
-                name="enable", description="timeline editing", typing="str", required=False, default=None
+                name="enable",
+                description="timeline editing",
+                typing="str",
+                required=False,
+                default=None,
             )
         )
+
+    if filter.is_support_framesync:
+        framesync_options = [
+            FFmpegFilterOption(
+                name="eof_action",
+                description="The action to take when EOF is encountered on the secondary input; it accepts one of the following values",
+                typing="str",
+                default="repeat",
+                choices=[
+                    Choice(name="repeat", help="Repeat the last frame.", value="repeat"),
+                    Choice(name="endall", help="End both streams.", value="endall"),
+                    Choice(name="pass", help="Pass the main input through.", value="pass"),
+                ],
+            ),
+            FFmpegFilterOption(
+                name="shortest",
+                description="Force the output to terminate when the shortest input terminates.",
+                typing="bool",
+                default=False,
+            ),
+            FFmpegFilterOption(
+                name="repeatlast",
+                description="force the filter to extend the last frame of secondary streams until the end of the primary stream.",
+                typing="bool",
+                default=True,
+            ),
+            FFmpegFilterOption(
+                name="ts_sync_mode",
+                description="How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
+                typing="str",
+                default="default",
+                choices=[
+                    Choice(
+                        name="default",
+                        help="Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
+                        value="default",
+                    ),
+                    Choice(
+                        name="nearest",
+                        help="Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
+                        value="nearest",
+                    ),
+                ],
+            ),
+        ]
+
+        for frame_sync_option in framesync_options:
+            if not any(k.name == frame_sync_option.name for k in options):
+                options.append(frame_sync_option)
 
     return options
 
@@ -61,7 +113,7 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         doc = filter_doc_mapping[f.name]
         try:
             ffmpeg_filter = FFmpegFilter.load(f.id)
-        except Exception:
+        except IOError:
             ffmpeg_filter = FFmpegFilter(
                 id=f.id,
                 filter_type=f.type,
@@ -71,6 +123,7 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
                 is_input_dynamic=f.is_dynamic_inputs,
                 is_output_dynamic=f.is_dynamic_outputs,
                 is_support_timeline=f.is_support_timeline,
+                is_support_framesync=f.is_support_framesync,
                 input_stream_typings=f.input_filter_pads,
                 output_stream_typings=f.output_filter_pads,
                 options=parse_options(f, doc),
@@ -83,6 +136,7 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         ffmpeg_filter.is_input_dynamic = f.is_dynamic_inputs
         ffmpeg_filter.is_output_dynamic = f.is_dynamic_outputs
         ffmpeg_filter.is_support_timeline = f.is_support_timeline
+        ffmpeg_filter.is_support_framesync = f.is_support_framesync
         ffmpeg_filter.input_stream_typings = f.input_filter_pads
         ffmpeg_filter.output_stream_typings = f.output_filter_pads
         ffmpeg_filter.options = parse_options(f, doc)
