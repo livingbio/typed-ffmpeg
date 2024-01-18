@@ -208,6 +208,9 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         except Exception as e:
             typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"{f.name} {e}")
 
+        if not help_info:
+            continue
+
         doc = filter_doc_mapping[f.name]
         ffmpeg_filter = update_or_create(
             id=f.id,
