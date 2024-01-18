@@ -75,50 +75,50 @@
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "aut",
-          "value": "o"
+          "name": "auto",
+          "value": "auto"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "bt60",
-          "value": "1"
+          "name": "bt601",
+          "value": "bt601"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "bt47",
-          "value": "0"
+          "name": "bt470",
+          "value": "bt470"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "smpte170",
-          "value": "m"
+          "name": "smpte170m",
+          "value": "smpte170m"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "bt70",
-          "value": "9"
+          "name": "bt709",
+          "value": "bt709"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "fc",
-          "value": "c"
+          "name": "fcc",
+          "value": "fcc"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "smpte240",
-          "value": "m"
+          "name": "smpte240m",
+          "value": "smpte240m"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "bt202",
-          "value": "0"
+          "name": "bt2020",
+          "value": "bt2020"
         }
       ],
       "default": null,
@@ -137,50 +137,50 @@
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "aut",
-          "value": "o"
+          "name": "auto",
+          "value": "auto"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "bt60",
-          "value": "1"
+          "name": "bt601",
+          "value": "bt601"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "bt47",
-          "value": "0"
+          "name": "bt470",
+          "value": "bt470"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "smpte170",
-          "value": "m"
+          "name": "smpte170m",
+          "value": "smpte170m"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "bt70",
-          "value": "9"
+          "name": "bt709",
+          "value": "bt709"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "fc",
-          "value": "c"
+          "name": "fcc",
+          "value": "fcc"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "smpte240",
-          "value": "m"
+          "name": "smpte240m",
+          "value": "smpte240m"
         },
         {
           "flags": "..FV.......",
           "help": "",
-          "name": "bt202",
-          "value": "0"
+          "name": "bt2020",
+          "value": "bt2020"
         }
       ],
       "default": null,

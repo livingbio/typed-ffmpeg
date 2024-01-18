@@ -52,11 +52,11 @@ def _parse_io(line: str) -> tuple[int, str, StreamType]:
 def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOption]:
     output: list[AVOption] = []
     for line in lines:
-        name, type, flags, help = re.findall(r"([\-\w]+)\s*<([\w]+)>\s*([\w\.]{11})\s*(.*)", line)[0]
+        name, type, flags, help = re.findall(r"([\-\w]+)\s+<([\w]+)>\s+([\w\.]{11})(\s+.*)?", line)[0]
         if name[0] == "-":
             continue
 
-        if output and output[-1].description == help:
+        if output and help.strip() and output[-1].description.strip() == help.strip():
             output[-1].alias.append(name)
             continue
 
@@ -73,14 +73,17 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
 
         choices = []
         for choice in tree.get(line, []):
-            _name, _value, _flags, _help = re.findall(r"([\w]+)\s*([\-\w]+)\s*([\w\.]{11})\s*(.*)", choice)[0]
-            choices.append(AVChoice(name=_name, help=_help, value=_value, flags=_flags))
+            _name, _value, _flags, _help = re.findall(r"([\w]+)\s+([\s\-\w]+)\s+([\w\.]{11})(\s+.*)?", choice)[0]
+            if not _value.strip():
+                _value = _name
+
+            choices.append(AVChoice(name=_name, help=_help.strip(), value=_value.strip(), flags=_flags.strip()))
 
         output.append(
             AVOption(
                 alias=[name],
                 name=name,
-                description=help,
+                description=help.strip(),
                 typing=type,
                 flags=flags,
                 min=min,
