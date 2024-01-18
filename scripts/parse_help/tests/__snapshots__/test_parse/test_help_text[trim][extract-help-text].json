@@ -86,11 +86,11 @@
         "start_frame"
       ],
       "choices": [],
-      "default": null,
+      "default": "-1",
       "description": "Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "I64_MAX",
+      "min": "-1",
       "name": "start_frame",
       "typing": "int64"
     },

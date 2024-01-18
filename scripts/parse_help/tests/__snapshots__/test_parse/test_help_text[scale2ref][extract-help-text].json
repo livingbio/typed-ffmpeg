@@ -324,11 +324,11 @@
         "in_v_chr_pos"
       ],
       "choices": [],
-      "default": null,
+      "default": "-513",
       "description": "input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "512",
+      "min": "-513",
       "name": "in_v_chr_pos",
       "typing": "int"
     },
@@ -337,11 +337,11 @@
         "in_h_chr_pos"
       ],
       "choices": [],
-      "default": null,
+      "default": "-513",
       "description": "input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "512",
+      "min": "-513",
       "name": "in_h_chr_pos",
       "typing": "int"
     },
@@ -350,11 +350,11 @@
         "out_v_chr_pos"
       ],
       "choices": [],
-      "default": null,
+      "default": "-513",
       "description": "output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "512",
+      "min": "-513",
       "name": "out_v_chr_pos",
       "typing": "int"
     },
@@ -363,11 +363,11 @@
         "out_h_chr_pos"
       ],
       "choices": [],
-      "default": null,
+      "default": "-513",
       "description": "output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "512",
+      "min": "-513",
       "name": "out_h_chr_pos",
       "typing": "int"
     },
@@ -424,8 +424,8 @@
       "default": "DBL_MAX",
       "description": "Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
       "name": "param0",
       "typing": "double"
     },
@@ -437,8 +437,8 @@
       "default": "DBL_MAX",
       "description": "Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
       "name": "param1",
       "typing": "double"
     },

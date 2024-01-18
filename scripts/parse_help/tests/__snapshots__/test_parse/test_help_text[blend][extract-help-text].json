@@ -1339,11 +1339,11 @@
           "value": "39"
         }
       ],
-      "default": null,
+      "default": "-1",
       "description": "set blend mode for all components (from -1 to 39) (default -1)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "39",
+      "min": "-1",
       "name": "all_mode",
       "typing": "int"
     },

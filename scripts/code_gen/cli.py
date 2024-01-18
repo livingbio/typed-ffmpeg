@@ -111,7 +111,13 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
             print(f"WARNING: {f.name} not found in docs")
             continue
 
-        extract_avfilter_info_from_help(f.name)
+        try:
+            extract_avfilter_info_from_help(f.name)
+        except ValueError:
+            typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"Unknown filter {f.name}")
+        except Exception as e:
+            typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"{f.name} {e}")
+
         doc = filter_doc_mapping[f.name]
         try:
             ffmpeg_filter = FFmpegFilter.load(f.id)

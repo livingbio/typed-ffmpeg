@@ -60,12 +60,12 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
             output[-1].alias.append(name)
             continue
 
-        if match := re.findall("\(default ([\w]+)\)", help):
+        if match := re.findall("\(default ([\-\w]+)\)", help):
             default = match[0]
         else:
             default = None
 
-        if match := re.findall("\(from ([\w]+) to ([\w]+)\)", help):
+        if match := re.findall("\(from ([\-\w]+) to ([\-\w]+)\)", help):
             min, max = match[0]
         else:
             min = None
@@ -73,7 +73,7 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
 
         choices = []
         for choice in tree.get(line, []):
-            _name, _value, _flags, _help = re.findall(r"([\w]+)\s*([\w]+)\s*([\w\.]{11})\s*(.*)", choice)[0]
+            _name, _value, _flags, _help = re.findall(r"([\w]+)\s*([\-\w]+)\s*([\w\.]{11})\s*(.*)", choice)[0]
             choices.append(AVChoice(name=_name, help=_help, value=_value, flags=_flags))
 
         output.append(
@@ -95,6 +95,10 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
 
 def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
     text = help_text(filter_name)
+
+    if "Unknown filter" in text:
+        raise ValueError(f"Unknown filter {filter_name}")
+
     tree = parse_section_tree(text)
 
     assert filter_name in tree[""][0]
@@ -109,17 +113,19 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
 
     if not is_input_dynamic:
         input_types = []
-        for _input in inputs:
-            index, name, _type = _parse_io(_input)
-            input_types.append((name, _type))
+        if inputs[0] != "none (source filter)":
+            for _input in inputs:
+                index, name, _type = _parse_io(_input)
+                input_types.append((name, _type))
     else:
         input_types = None
 
     if not is_output_dynamic:
         output_types = []
-        for output in outputs:
-            index, name, _type = _parse_io(output)
-            output_types.append((name, _type))
+        if outputs[0] != "none (sink filter)":
+            for output in outputs:
+                index, name, _type = _parse_io(output)
+                output_types.append((name, _type))
     else:
         output_types = None
 
