@@ -1,10 +1,19 @@
 import pytest
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
-from ..parse import help_text
+from ..parse import extract_help_text, help_text, parse_section_tree
 
 
 @pytest.mark.parametrize("filter_name", ["trim", "scale", "blend", "adeclip"])
 def test_help_text(snapshot: SnapshotAssertion, filter_name: str) -> None:
-    assert snapshot(extension_class=SingleFileSnapshotExtension) == help_text(filter_name=filter_name).encode("utf-8")
+    assert snapshot(name="help-text", extension_class=SingleFileSnapshotExtension) == help_text(
+        filter_name=filter_name
+    ).encode("utf-8")
+    assert snapshot(name="extract-help-text", extension_class=JSONSnapshotExtension) == extract_help_text(
+        filter_name=filter_name
+    )
+    assert snapshot(name="parse-section-tree", extension_class=JSONSnapshotExtension) == parse_section_tree(
+        text=help_text(filter_name=filter_name)
+    )
