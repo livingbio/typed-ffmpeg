@@ -1,0 +1,67 @@
+Filter afade
+  Fade in/out input audio.
+    Inputs:
+       #0: default (audio)
+    Outputs:
+       #0: default (audio)
+afade AVOptions:
+   type              <int>        ..F.A....T. set the fade direction (from 0 to 1) (default in)
+     in              0            ..F.A....T. fade-in
+     out             1            ..F.A....T. fade-out
+   t                 <int>        ..F.A....T. set the fade direction (from 0 to 1) (default in)
+     in              0            ..F.A....T. fade-in
+     out             1            ..F.A....T. fade-out
+   start_sample      <int64>      ..F.A....T. set number of first sample to start fading (from 0 to I64_MAX) (default 0)
+   ss                <int64>      ..F.A....T. set number of first sample to start fading (from 0 to I64_MAX) (default 0)
+   nb_samples        <int64>      ..F.A....T. set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
+   ns                <int64>      ..F.A....T. set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
+   start_time        <duration>   ..F.A....T. set time to start fading (default 0)
+   st                <duration>   ..F.A....T. set time to start fading (default 0)
+   duration          <duration>   ..F.A....T. set fade duration (default 0)
+   d                 <duration>   ..F.A....T. set fade duration (default 0)
+   curve             <int>        ..F.A....T. set fade curve type (from -1 to 18) (default tri)
+     nofade          -1           ..F.A....T. no fade; keep audio as-is
+     tri             0            ..F.A....T. linear slope
+     qsin            1            ..F.A....T. quarter of sine wave
+     esin            2            ..F.A....T. exponential sine wave
+     hsin            3            ..F.A....T. half of sine wave
+     log             4            ..F.A....T. logarithmic
+     ipar            5            ..F.A....T. inverted parabola
+     qua             6            ..F.A....T. quadratic
+     cub             7            ..F.A....T. cubic
+     squ             8            ..F.A....T. square root
+     cbr             9            ..F.A....T. cubic root
+     par             10           ..F.A....T. parabola
+     exp             11           ..F.A....T. exponential
+     iqsin           12           ..F.A....T. inverted quarter of sine wave
+     ihsin           13           ..F.A....T. inverted half of sine wave
+     dese            14           ..F.A....T. double-exponential seat
+     desi            15           ..F.A....T. double-exponential sigmoid
+     losi            16           ..F.A....T. logistic sigmoid
+     sinc            17           ..F.A....T. sine cardinal function
+     isinc           18           ..F.A....T. inverted sine cardinal function
+   c                 <int>        ..F.A....T. set fade curve type (from -1 to 18) (default tri)
+     nofade          -1           ..F.A....T. no fade; keep audio as-is
+     tri             0            ..F.A....T. linear slope
+     qsin            1            ..F.A....T. quarter of sine wave
+     esin            2            ..F.A....T. exponential sine wave
+     hsin            3            ..F.A....T. half of sine wave
+     log             4            ..F.A....T. logarithmic
+     ipar            5            ..F.A....T. inverted parabola
+     qua             6            ..F.A....T. quadratic
+     cub             7            ..F.A....T. cubic
+     squ             8            ..F.A....T. square root
+     cbr             9            ..F.A....T. cubic root
+     par             10           ..F.A....T. parabola
+     exp             11           ..F.A....T. exponential
+     iqsin           12           ..F.A....T. inverted quarter of sine wave
+     ihsin           13           ..F.A....T. inverted half of sine wave
+     dese            14           ..F.A....T. double-exponential seat
+     desi            15           ..F.A....T. double-exponential sigmoid
+     losi            16           ..F.A....T. logistic sigmoid
+     sinc            17           ..F.A....T. sine cardinal function
+     isinc           18           ..F.A....T. inverted sine cardinal function
+   silence           <double>     ..F.A....T. set the silence gain (from 0 to 1) (default 0)
+   unity             <double>     ..F.A....T. set the unity gain (from 0 to 1) (default 1)
+
+This filter has support for timeline through the 'enable' option.

@@ -6,6 +6,7 @@ from parse_c.cli import parse_filters
 from parse_c.schema import AVFilter
 from parse_docs.cli import split_documents
 from parse_docs.schema import FilterDocument
+from parse_help.parse import extract_avfilter_info_from_help
 
 from .gen import render
 from .schema import TYPING_MAP, Choice, FFmpegFilter, FFmpegFilterOption
@@ -109,6 +110,13 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         if f.name not in filter_doc_mapping:
             print(f"WARNING: {f.name} not found in docs")
             continue
+
+        try:
+            extract_avfilter_info_from_help(f.name)
+        except ValueError:
+            typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"Unknown filter {f.name}")
+        except Exception as e:
+            typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"{f.name} {e}")
 
         doc = filter_doc_mapping[f.name]
         try:
