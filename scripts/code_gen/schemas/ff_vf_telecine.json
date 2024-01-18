@@ -53,7 +53,7 @@
         "pattern"
       ],
       "choices": [],
-      "default": "\"23\"",
+      "default": "23",
       "description": "pattern that describe for how many fields a frame is to be displayed (default \"23\")",
       "name": "pattern",
       "required": false,

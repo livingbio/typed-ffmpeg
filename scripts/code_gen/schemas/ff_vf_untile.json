@@ -21,7 +21,7 @@
         "layout"
       ],
       "choices": [],
-      "default": "\"6x5\"",
+      "default": "6x5",
       "description": "set grid size (default \"6x5\")",
       "name": "layout",
       "required": false,

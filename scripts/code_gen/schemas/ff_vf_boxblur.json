@@ -22,7 +22,7 @@
         "lr"
       ],
       "choices": [],
-      "default": "\"2\"",
+      "default": "2",
       "description": "Radius of the luma blurring box (default \"2\")",
       "name": "luma_radius",
       "required": false,

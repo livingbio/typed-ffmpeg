@@ -22,7 +22,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"640x512\"",
+      "default": "640x512",
       "description": "set video size (default \"640x512\")",
       "name": "size",
       "required": false,
@@ -480,7 +480,7 @@
         "fps"
       ],
       "choices": [],
-      "default": "\"auto\"",
+      "default": "auto",
       "description": "set video rate (default \"auto\")",
       "name": "fps",
       "required": false,

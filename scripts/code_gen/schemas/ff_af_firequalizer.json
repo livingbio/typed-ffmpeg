@@ -21,7 +21,7 @@
         "gain"
       ],
       "choices": [],
-      "default": "\"gain_interpolate(f",
+      "default": "gain_interpolate(f",
       "description": "set gain curve (default \"gain_interpolate(f)\")",
       "name": "gain",
       "required": false,

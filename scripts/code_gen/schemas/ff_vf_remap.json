@@ -51,7 +51,7 @@
         "fill"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set the color of the unmapped pixels (default \"black\")",
       "name": "fill",
       "required": false,

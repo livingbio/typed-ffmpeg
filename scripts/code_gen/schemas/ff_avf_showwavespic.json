@@ -22,7 +22,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"600x240\"",
+      "default": "600x240",
       "description": "set video size (default \"600x240\")",
       "name": "size",
       "required": false,
@@ -44,7 +44,7 @@
         "colors"
       ],
       "choices": [],
-      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
       "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,

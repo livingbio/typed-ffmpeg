@@ -142,7 +142,7 @@
         "h"
       ],
       "choices": [],
-      "default": "\"all\"",
+      "default": "all",
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,

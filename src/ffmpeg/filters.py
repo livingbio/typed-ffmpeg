@@ -115,8 +115,8 @@ def afir(
     maxir: float | int | str = Default("30"),
     response: bool | int | str = Default("false"),
     channel: int | str = Default("0"),
-    size: str | float | int = Default('"hd720"'),
-    rate: str | float | int = Default('"25"'),
+    size: str | float | int = Default("hd720"),
+    rate: str | float | int = Default("25"),
     minp: int | str = Default("8192"),
     maxp: int | str = Default("8192"),
     nbirs: int | str = Default("1"),
@@ -306,7 +306,7 @@ def amix(
     inputs: int | str = Default("2"),
     duration: int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     dropout_transition: float | int | str = Default("2"),
-    weights: str | float | int = Default('"1 1"'),
+    weights: str | float | int = Default("1 1"),
     normalize: bool | int | str = Default("true"),
     **kwargs: Any
 ) -> "AudioStream":
@@ -975,7 +975,7 @@ def colormap(
     _source: "VideoStream",
     _target: "VideoStream",
     *,
-    patch_size: str | float | int = Default('"64x64"'),
+    patch_size: str | float | int = Default("64x64"),
     nb_patches: int | str = Default("0"),
     type: int | Literal["relative", "absolute"] | Default = Default("absolute"),
     kernel: int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
@@ -1884,7 +1884,7 @@ def interleave(
 def join(
     *streams: "AudioStream",
     inputs: int | str = Default("2"),
-    channel_layout: str | float | int = Default('"stereo"'),
+    channel_layout: str | float | int = Default("stereo"),
     map: str | float | int = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
@@ -1927,7 +1927,7 @@ def libvmaf(
     *,
     model_path: str | float | int = Default(None),
     log_path: str | float | int = Default(None),
-    log_fmt: str | float | int = Default('"xml"'),
+    log_fmt: str | float | int = Default("xml"),
     enable_transform: bool | int | str = Default("false"),
     psnr: bool | int | str = Default("false"),
     ssim: bool | int | str = Default("false"),
@@ -1936,7 +1936,7 @@ def libvmaf(
     n_threads: int | str = Default("0"),
     n_subsample: int | str = Default("1"),
     enable_conf_interval: bool | int | str = Default("false"),
-    model: str | float | int = Default('"version=vmaf_v0.6.1"'),
+    model: str | float | int = Default("version=vmaf_v0.6.1"),
     feature: str | float | int = Default(None),
     eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: bool | int | str = Default("false"),
@@ -2058,10 +2058,10 @@ def lut2(
     _srcx: "VideoStream",
     _srcy: "VideoStream",
     *,
-    c0: str | float | int = Default('"x"'),
-    c1: str | float | int = Default('"x"'),
-    c2: str | float | int = Default('"x"'),
-    c3: str | float | int = Default('"x"'),
+    c0: str | float | int = Default("x"),
+    c1: str | float | int = Default("x"),
+    c2: str | float | int = Default("x"),
+    c3: str | float | int = Default("x"),
     d: int | str = Default("0"),
     eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: bool | int | str = Default("false"),
@@ -2456,7 +2456,7 @@ def midequalizer(
 def mix(
     *streams: "VideoStream",
     inputs: int | str = Default("2"),
-    weights: str | float | int = Default('"1 1"'),
+    weights: str | float | int = Default("1 1"),
     scale: float | int | str = Default("0"),
     planes: str | float | int = Default("F"),
     duration: int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
@@ -2667,8 +2667,8 @@ def overlay(
     _main: "VideoStream",
     _overlay: "VideoStream",
     *,
-    x: str | float | int = Default('"0"'),
-    y: str | float | int = Default('"0"'),
+    x: str | float | int = Default("0"),
+    y: str | float | int = Default("0"),
     eof_action: int | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"] | Default = Default("repeat"),
     eval: int | Literal["init", "frame"] | Default = Default("frame"),
     shortest: bool | int | str = Default("false"),
@@ -2893,7 +2893,7 @@ def remap(
     _ymap: "VideoStream",
     *,
     format: int | Literal["color", "gray"] | Default = Default("color"),
-    fill: str | float | int = Default('"black"'),
+    fill: str | float | int = Default("black"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2937,11 +2937,11 @@ def scale2ref(
     *,
     w: str | float | int = Default(None),
     h: str | float | int = Default(None),
-    flags: str | float | int = Default('""'),
+    flags: str | float | int = Default(""),
     interl: bool | int | str = Default("false"),
     in_color_matrix: str
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
-    | Default = Default('"auto"'),
+    | Default = Default("auto"),
     out_color_matrix: str
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
     | Default = Default(None),
@@ -3180,7 +3180,7 @@ def signature(
     *streams: "VideoStream",
     detectmode: int | Literal["off", "full", "fast"] | Default = Default("off"),
     nb_inputs: int | str = Default("1"),
-    filename: str | float | int = Default('""'),
+    filename: str | float | int = Default(""),
     format: int | Literal["binary", "xml"] | Default = Default("binary"),
     th_d: int | str = Default("9000"),
     th_dc: int | str = Default("60000"),
@@ -3855,7 +3855,7 @@ def xstack(
     layout: str | float | int = Default(None),
     grid: str | float | int = Default(None),
     shortest: bool | int | str = Default("false"),
-    fill: str | float | int = Default('"none"'),
+    fill: str | float | int = Default("none"),
     **kwargs: Any
 ) -> "VideoStream":
     """

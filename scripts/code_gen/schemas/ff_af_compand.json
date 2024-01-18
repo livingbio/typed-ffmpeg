@@ -21,7 +21,7 @@
         "attacks"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set time over which increase of volume is determined (default \"0\")",
       "name": "attacks",
       "required": false,
@@ -32,7 +32,7 @@
         "decays"
       ],
       "choices": [],
-      "default": "\"0.8\"",
+      "default": "0.8",
       "description": "set time over which decrease of volume is determined (default \"0.8\")",
       "name": "decays",
       "required": false,
@@ -43,7 +43,7 @@
         "points"
       ],
       "choices": [],
-      "default": "\"-70/-70|-60/-20|1/0\"",
+      "default": "-70/-70|-60/-20|1/0",
       "description": "set points of transfer function (default \"-70/-70|-60/-20|1/0\")",
       "name": "points",
       "required": false,

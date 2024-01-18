@@ -60,7 +60,7 @@
         "fill"
       ],
       "choices": [],
-      "default": "\"none\"",
+      "default": "none",
       "description": "set the color for unused pixels (default \"none\")",
       "name": "fill",
       "required": false,

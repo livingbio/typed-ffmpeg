@@ -17,7 +17,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"640x480\"",
+      "default": "640x480",
       "description": "set frame size (default \"640x480\")",
       "name": "size",
       "required": false,
@@ -29,7 +29,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set frame rate (default \"25\")",
       "name": "rate",
       "required": false,

@@ -121,7 +121,7 @@
         "ec"
       ],
       "choices": [],
-      "default": "\"gold\"",
+      "default": "gold",
       "description": "set envelope color (default \"gold\")",
       "name": "ecolor",
       "required": false,

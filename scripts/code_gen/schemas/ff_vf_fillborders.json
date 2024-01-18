@@ -112,7 +112,7 @@
         "color"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set the color for the fixed/fade mode (default \"black\")",
       "name": "color",
       "required": false,

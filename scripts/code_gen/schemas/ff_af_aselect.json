@@ -22,7 +22,7 @@
         "e"
       ],
       "choices": [],
-      "default": "\"1\"",
+      "default": "1",
       "description": "set an expression to use for selecting frames (default \"1\")",
       "name": "expr",
       "required": false,

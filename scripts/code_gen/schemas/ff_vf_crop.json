@@ -22,7 +22,7 @@
         "w"
       ],
       "choices": [],
-      "default": "\"iw\"",
+      "default": "iw",
       "description": "set the width crop area expression (default \"iw\")",
       "name": "out_w",
       "required": false,
@@ -34,7 +34,7 @@
         "h"
       ],
       "choices": [],
-      "default": "\"ih\"",
+      "default": "ih",
       "description": "set the height crop area expression (default \"ih\")",
       "name": "out_h",
       "required": false,
@@ -45,7 +45,7 @@
         "x"
       ],
       "choices": [],
-      "default": "\"(in_w-out_w",
+      "default": "(in_w-out_w",
       "description": "set the x crop area expression (default \"(in_w-out_w)/2\")",
       "name": "x",
       "required": false,
@@ -56,7 +56,7 @@
         "y"
       ],
       "choices": [],
-      "default": "\"(in_h-out_h",
+      "default": "(in_h-out_h",
       "description": "set the y crop area expression (default \"(in_h-out_h)/2\")",
       "name": "y",
       "required": false,

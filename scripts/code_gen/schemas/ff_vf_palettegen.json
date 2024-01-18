@@ -43,7 +43,7 @@
         "transparency_color"
       ],
       "choices": [],
-      "default": "\"lime\"",
+      "default": "lime",
       "description": "set a background color for transparency (default \"lime\")",
       "name": "transparency_color",
       "required": false,

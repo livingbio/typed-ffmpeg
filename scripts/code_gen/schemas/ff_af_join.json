@@ -27,7 +27,7 @@
         "channel_layout"
       ],
       "choices": [],
-      "default": "\"stereo\"",
+      "default": "stereo",
       "description": "Channel layout of the output stream. (default \"stereo\")",
       "name": "channel_layout",
       "required": false,

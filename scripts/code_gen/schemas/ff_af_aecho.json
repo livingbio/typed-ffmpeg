@@ -43,7 +43,7 @@
         "delays"
       ],
       "choices": [],
-      "default": "\"1000\"",
+      "default": "1000",
       "description": "set list of signal delays (default \"1000\")",
       "name": "delays",
       "required": false,
@@ -54,7 +54,7 @@
         "decays"
       ],
       "choices": [],
-      "default": "\"0.5\"",
+      "default": "0.5",
       "description": "set list of signal decays (default \"0.5\")",
       "name": "decays",
       "required": false,

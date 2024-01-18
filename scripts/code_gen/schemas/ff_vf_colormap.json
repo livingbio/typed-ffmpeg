@@ -29,7 +29,7 @@
         "patch_size"
       ],
       "choices": [],
-      "default": "\"64x64\"",
+      "default": "64x64",
       "description": "set patch size (default \"64x64\")",
       "name": "patch_size",
       "required": false,

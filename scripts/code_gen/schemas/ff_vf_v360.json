@@ -498,7 +498,7 @@
         "in_forder"
       ],
       "choices": [],
-      "default": "\"rludfb\"",
+      "default": "rludfb",
       "description": "input cubemap face order (default \"rludfb\")",
       "name": "in_forder",
       "required": false,
@@ -509,7 +509,7 @@
         "out_forder"
       ],
       "choices": [],
-      "default": "\"rludfb\"",
+      "default": "rludfb",
       "description": "output cubemap face order (default \"rludfb\")",
       "name": "out_forder",
       "required": false,
@@ -520,7 +520,7 @@
         "in_frot"
       ],
       "choices": [],
-      "default": "\"000000\"",
+      "default": "000000",
       "description": "input cubemap face rotation (default \"000000\")",
       "name": "in_frot",
       "required": false,
@@ -531,7 +531,7 @@
         "out_frot"
       ],
       "choices": [],
-      "default": "\"000000\"",
+      "default": "000000",
       "description": "output cubemap face rotation (default \"000000\")",
       "name": "out_frot",
       "required": false,
@@ -619,7 +619,7 @@
         "rorder"
       ],
       "choices": [],
-      "default": "\"ypr\"",
+      "default": "ypr",
       "description": "rotation order (default \"ypr\")",
       "name": "rorder",
       "required": false,

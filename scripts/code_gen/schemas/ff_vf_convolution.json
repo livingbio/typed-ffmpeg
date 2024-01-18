@@ -21,7 +21,7 @@
         "0m"
       ],
       "choices": [],
-      "default": "\"0 0 0 0 1 0 0 0 0\"",
+      "default": "0 0 0 0 1 0 0 0 0",
       "description": "set matrix for 1st plane (default \"0 0 0 0 1 0 0 0 0\")",
       "name": "0m",
       "required": false,
@@ -32,7 +32,7 @@
         "1m"
       ],
       "choices": [],
-      "default": "\"0 0 0 0 1 0 0 0 0\"",
+      "default": "0 0 0 0 1 0 0 0 0",
       "description": "set matrix for 2nd plane (default \"0 0 0 0 1 0 0 0 0\")",
       "name": "1m",
       "required": false,
@@ -43,7 +43,7 @@
         "2m"
       ],
       "choices": [],
-      "default": "\"0 0 0 0 1 0 0 0 0\"",
+      "default": "0 0 0 0 1 0 0 0 0",
       "description": "set matrix for 3rd plane (default \"0 0 0 0 1 0 0 0 0\")",
       "name": "2m",
       "required": false,
@@ -54,7 +54,7 @@
         "3m"
       ],
       "choices": [],
-      "default": "\"0 0 0 0 1 0 0 0 0\"",
+      "default": "0 0 0 0 1 0 0 0 0",
       "description": "set matrix for 4th plane (default \"0 0 0 0 1 0 0 0 0\")",
       "name": "3m",
       "required": false,

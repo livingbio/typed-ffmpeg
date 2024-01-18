@@ -49,7 +49,7 @@
         "flags"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "Flags to pass to libswscale (default \"\")",
       "name": "flags",
       "required": false,
@@ -112,7 +112,7 @@
           "value": "bt2020"
         }
       ],
-      "default": "\"auto\"",
+      "default": "auto",
       "description": "set input YCbCr type (default \"auto\")",
       "name": "in_color_matrix",
       "required": false,

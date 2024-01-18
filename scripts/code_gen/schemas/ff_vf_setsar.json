@@ -23,7 +23,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set sample (pixel) aspect ratio (default \"0\")",
       "name": "sar",
       "required": false,

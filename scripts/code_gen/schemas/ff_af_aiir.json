@@ -22,7 +22,7 @@
         "z"
       ],
       "choices": [],
-      "default": "\"1+0i 1-0i\"",
+      "default": "1+0i 1-0i",
       "description": "set B/numerator/zeros/reflection coefficients (default \"1+0i 1-0i\")",
       "name": "zeros",
       "required": false,
@@ -34,7 +34,7 @@
         "p"
       ],
       "choices": [],
-      "default": "\"1+0i 1-0i\"",
+      "default": "1+0i 1-0i",
       "description": "set A/denominator/poles/ladder coefficients (default \"1+0i 1-0i\")",
       "name": "poles",
       "required": false,
@@ -46,7 +46,7 @@
         "k"
       ],
       "choices": [],
-      "default": "\"1|1\"",
+      "default": "1|1",
       "description": "set channels gains (default \"1|1\")",
       "name": "gains",
       "required": false,
@@ -264,7 +264,7 @@
         "size"
       ],
       "choices": [],
-      "default": "\"hd720\"",
+      "default": "hd720",
       "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
@@ -275,7 +275,7 @@
         "rate"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,

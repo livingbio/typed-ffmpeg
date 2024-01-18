@@ -22,7 +22,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -34,7 +34,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"1024x256\"",
+      "default": "1024x256",
       "description": "set video size (default \"1024x256\")",
       "name": "size",
       "required": false,
@@ -45,7 +45,7 @@
         "colors"
       ],
       "choices": [],
-      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
       "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,

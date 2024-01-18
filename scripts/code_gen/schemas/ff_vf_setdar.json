@@ -23,7 +23,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set display aspect ratio (default \"0\")",
       "name": "dar",
       "required": false,
