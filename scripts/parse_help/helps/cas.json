@@ -1,0 +1,49 @@
+{
+  "description": "Contrast Adaptive Sharpen.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "cas",
+  "options": [
+    {
+      "alias": [
+        "strength"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the sharpening strength (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "strength",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set what planes to filter (default 7)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "planes",
+      "typing": "flags"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

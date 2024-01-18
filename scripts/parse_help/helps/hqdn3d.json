@@ -1,0 +1,75 @@
+{
+  "description": "Apply a High Quality 3D Denoiser.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "hqdn3d",
+  "options": [
+    {
+      "alias": [
+        "luma_spatial"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "spatial luma strength (from 0 to DBL_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "DBL_MAX",
+      "min": "0",
+      "name": "luma_spatial",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "chroma_spatial"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "spatial chroma strength (from 0 to DBL_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "DBL_MAX",
+      "min": "0",
+      "name": "chroma_spatial",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "luma_tmp"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "temporal luma strength (from 0 to DBL_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "DBL_MAX",
+      "min": "0",
+      "name": "luma_tmp",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "chroma_tmp"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "temporal chroma strength (from 0 to DBL_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "DBL_MAX",
+      "min": "0",
+      "name": "chroma_tmp",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

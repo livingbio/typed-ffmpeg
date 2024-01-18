@@ -1,0 +1,122 @@
+{
+  "description": "Apply Guided filter.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "guided",
+  "options": [
+    {
+      "alias": [
+        "radius"
+      ],
+      "choices": [],
+      "default": "3",
+      "description": "set the box radius (from 1 to 20) (default 3)",
+      "flags": "..FV.....T.",
+      "max": "20",
+      "min": "1",
+      "name": "radius",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "eps"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the regularization parameter (with square) (from 0 to 1) (default 0.01)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "eps",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "basic guided filter",
+          "name": "basic",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "fast guided filter",
+          "name": "fast",
+          "value": "1"
+        }
+      ],
+      "default": "basic",
+      "description": "set filtering mode (0: basic mode; 1: fast mode) (from 0 to 1) (default basic)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sub"
+      ],
+      "choices": [],
+      "default": "4",
+      "description": "subsampling ratio for fast mode (from 2 to 64) (default 4)",
+      "flags": "..FV.....T.",
+      "max": "64",
+      "min": "2",
+      "name": "sub",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "guidance"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "only one input is enabled",
+          "name": "off",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "two inputs are required",
+          "name": "on",
+          "value": "1"
+        }
+      ],
+      "default": "off",
+      "description": "set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "guidance",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set planes to filter (from 0 to 15) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

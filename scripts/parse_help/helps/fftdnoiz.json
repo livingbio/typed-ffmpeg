@@ -1,0 +1,286 @@
+{
+  "description": "Denoise frames using 3D FFT.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "fftdnoiz",
+  "options": [
+    {
+      "alias": [
+        "sigma"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set denoise strength (from 0 to 100) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "0",
+      "name": "sigma",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "amount"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set amount of denoising (from 0.01 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "amount",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "block"
+      ],
+      "choices": [],
+      "default": "32",
+      "description": "set block size (from 8 to 256) (default 32)",
+      "flags": "..FV.......",
+      "max": "256",
+      "min": "8",
+      "name": "block",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set block overlap (from 0.2 to 0.8) (default 0.5)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "overlap",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "method"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "wiener method",
+          "name": "wiener",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "hard thresholding",
+          "name": "hard",
+          "value": "1"
+        }
+      ],
+      "default": "wiener",
+      "description": "set method of denoising (from 0 to 1) (default wiener)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "method",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "prev"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set number of previous frames for temporal denoising (from 0 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "prev",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "next"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set number of next frames for temporal denoising (from 0 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "next",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set planes to filter (from 0 to 15) (default 7)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "window"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hann",
+          "name": "hann",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Welch",
+          "name": "welch",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Sine",
+          "name": "sine",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "20"
+        }
+      ],
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
+      "flags": "..FV.......",
+      "max": "20",
+      "min": "0",
+      "name": "window",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

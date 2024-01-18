@@ -1,0 +1,70 @@
+{
+  "description": "Generate a frei0r source.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "frei0r_src",
+  "options": [
+    {
+      "alias": [
+        "size"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Dimensions of the generated video. (default \"320x240\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "framerate"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "(default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "framerate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "filter_name"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "filter_name",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "filter_params"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "filter_params",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "description": "Remove near-duplicate frames.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "mpdecimate",
+  "options": [
+    {
+      "alias": [
+        "max"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
+      "name": "max",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "hi"
+      ],
+      "choices": [],
+      "default": "768",
+      "description": "set high dropping threshold (from INT_MIN to INT_MAX) (default 768)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
+      "name": "hi",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lo"
+      ],
+      "choices": [],
+      "default": "320",
+      "description": "set low dropping threshold (from INT_MIN to INT_MAX) (default 320)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
+      "name": "lo",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "frac"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set fraction dropping threshold (from 0 to 1) (default 0.33)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "frac",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

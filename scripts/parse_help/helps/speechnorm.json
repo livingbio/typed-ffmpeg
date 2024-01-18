@@ -1,0 +1,163 @@
+{
+  "description": "Speech Normalizer.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "speechnorm",
+  "options": [
+    {
+      "alias": [
+        "peak",
+        "p"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the peak value (from 0 to 1) (default 0.95)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "peak",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "expansion",
+        "e"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set the max expansion factor (from 1 to 50) (default 2)",
+      "flags": "..F.A....T.",
+      "max": "50",
+      "min": "1",
+      "name": "expansion",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "compression",
+        "c"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set the max compression factor (from 1 to 50) (default 2)",
+      "flags": "..F.A....T.",
+      "max": "50",
+      "min": "1",
+      "name": "compression",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "threshold",
+        "t"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the threshold value (from 0 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "threshold",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "raise",
+        "r"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the expansion raising amount (from 0 to 1) (default 0.001)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "raise",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "fall",
+        "f"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the compression raising amount (from 0 to 1) (default 0.001)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "fall",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "channels",
+        "h"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set channels to filter (default \"all\")",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "channels",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "invert",
+        "i"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set inverted filtering (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "invert",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "link",
+        "l"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set linked channels filtering (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "link",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "rms",
+        "m"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the RMS value (from 0 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "rms",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "description": "Mix video inputs.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "mix",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set number of inputs (from 2 to 32767) (default 2)",
+      "flags": "..FV.......",
+      "max": "32767",
+      "min": "2",
+      "name": "inputs",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "weights"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set weight for each input (default \"1 1\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "weights",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set scale (from 0 to 32767) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "32767",
+      "min": "0",
+      "name": "scale",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "F",
+      "description": "set what planes to filter (default F)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "planes",
+      "typing": "flags"
+    },
+    {
+      "alias": [
+        "duration"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Duration of longest input",
+          "name": "longest",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Duration of shortest input",
+          "name": "shortest",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Duration of first input",
+          "name": "first",
+          "value": "2"
+        }
+      ],
+      "default": "longest",
+      "description": "how to determine end of stream (from 0 to 2) (default longest)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "duration",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "description": "Set the field order.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "fieldorder",
+  "options": [
+    {
+      "alias": [
+        "order"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "bottom field first",
+          "name": "bff",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "top field first",
+          "name": "tff",
+          "value": "1"
+        }
+      ],
+      "default": "tff",
+      "description": "output field order (from 0 to 1) (default tff)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "order",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

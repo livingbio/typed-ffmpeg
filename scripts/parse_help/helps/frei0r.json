@@ -1,0 +1,49 @@
+{
+  "description": "Apply a frei0r effect.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "frei0r",
+  "options": [
+    {
+      "alias": [
+        "filter_name"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "filter_name",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "filter_params"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "filter_params",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

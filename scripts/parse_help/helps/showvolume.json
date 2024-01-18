@@ -1,0 +1,258 @@
+{
+  "description": "Convert input audio volume to video output.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "showvolume",
+  "options": [
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set border width (from 0 to 5) (default 1)",
+      "flags": "..FV.......",
+      "max": "5",
+      "min": "0",
+      "name": "b",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "choices": [],
+      "default": "400",
+      "description": "set channel width (from 80 to 8192) (default 400)",
+      "flags": "..FV.......",
+      "max": "8192",
+      "min": "80",
+      "name": "w",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "choices": [],
+      "default": "20",
+      "description": "set channel height (from 1 to 900) (default 20)",
+      "flags": "..FV.......",
+      "max": "900",
+      "min": "1",
+      "name": "h",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "f"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set fade (from 0 to 1) (default 0.95)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "f",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "c"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set volume color expression (default \"PEAK*255+floor((1-PEAK)*255)*256+0xff000000\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "t"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "display channel names (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "t",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "v"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "display volume value (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "v",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "dm"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "duration for max value display (from 0 to 9000) (default 0)",
+      "flags": "..FV.......",
+      "max": "9000",
+      "min": "0",
+      "name": "dm",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "dmc"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color of the max value line (default \"orange\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "dmc",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "o"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "horizontal",
+          "name": "h",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "vertical",
+          "name": "v",
+          "value": "1"
+        }
+      ],
+      "default": "h",
+      "description": "set orientation (from 0 to 1) (default h)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "o",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set step size (from 0 to 5) (default 0)",
+      "flags": "..FV.......",
+      "max": "5",
+      "min": "0",
+      "name": "s",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "p"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set background opacity (from 0 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "p",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "m"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "peak",
+          "name": "p",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "rms",
+          "name": "r",
+          "value": "1"
+        }
+      ],
+      "default": "p",
+      "description": "set mode (from 0 to 1) (default p)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "m",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ds"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "log",
+          "name": "log",
+          "value": "1"
+        }
+      ],
+      "default": "lin",
+      "description": "set display scale (from 0 to 1) (default lin)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "ds",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

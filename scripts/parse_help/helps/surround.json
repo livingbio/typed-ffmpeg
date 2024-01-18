@@ -1,0 +1,819 @@
+{
+  "description": "Apply audio surround upmix filter.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "surround",
+  "options": [
+    {
+      "alias": [
+        "chl_out"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set output channel layout (default \"5.1\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "chl_out",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "chl_in"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set input channel layout (default \"stereo\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "chl_in",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "level_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "level_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "level_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lfe"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "output LFE (default true)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "lfe",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "lfe_low"
+      ],
+      "choices": [],
+      "default": "128",
+      "description": "LFE low cut off (from 0 to 256) (default 128)",
+      "flags": "..F.A......",
+      "max": "256",
+      "min": "0",
+      "name": "lfe_low",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lfe_high"
+      ],
+      "choices": [],
+      "default": "256",
+      "description": "LFE high cut off (from 0 to 512) (default 256)",
+      "flags": "..F.A......",
+      "max": "512",
+      "min": "0",
+      "name": "lfe_high",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lfe_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "just add LFE channel",
+          "name": "add",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "substract LFE channel with others",
+          "name": "sub",
+          "value": "1"
+        }
+      ],
+      "default": "add",
+      "description": "set LFE channel mode (from 0 to 1) (default add)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "lfe_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "smooth"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set temporal smoothness strength (from 0 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "smooth",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "angle"
+      ],
+      "choices": [],
+      "default": "90",
+      "description": "set soundfield transform angle (from 0 to 360) (default 90)",
+      "flags": "..F.A....T.",
+      "max": "360",
+      "min": "0",
+      "name": "angle",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "focus"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set soundfield transform focus (from -1 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "focus",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fc_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set front center channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "fc_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fc_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set front center channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "fc_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fl_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set front left channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "fl_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fl_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set front left channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "fl_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fr_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set front right channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "fr_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fr_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set front right channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "fr_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sl_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set side left channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "sl_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sl_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set side left channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "sl_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sr_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set side right channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "sr_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sr_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set side right channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "sr_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bl_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set back left channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "bl_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bl_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set back left channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "bl_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "br_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set back right channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "br_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "br_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set back right channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "br_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bc_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set back center channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "bc_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bc_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set back center channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "bc_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lfe_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set lfe channel input level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "lfe_in",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lfe_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set lfe channel output level (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "lfe_out",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "allx"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set all channel's x spread (from -1 to 15) (default -1)",
+      "flags": "..F.A....T.",
+      "max": "15",
+      "min": "-1",
+      "name": "allx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "ally"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set all channel's y spread (from -1 to 15) (default -1)",
+      "flags": "..F.A....T.",
+      "max": "15",
+      "min": "-1",
+      "name": "ally",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fcx"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set front center channel x spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "fcx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "flx"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set front left channel x spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "flx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "frx"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set front right channel x spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "frx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blx"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set back left channel x spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "blx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "brx"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set back right channel x spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "brx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "slx"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set side left channel x spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "slx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "srx"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set side right channel x spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "srx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bcx"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set back center channel x spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "bcx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fcy"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set front center channel y spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "fcy",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fly"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set front left channel y spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "fly",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fry"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set front right channel y spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "fry",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bly"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set back left channel y spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "bly",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bry"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set back right channel y spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "bry",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sly"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set side left channel y spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "sly",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sry"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set side right channel y spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "sry",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bcy"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set back center channel y spread (from 0.06 to 15) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "bcy",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "win_size"
+      ],
+      "choices": [],
+      "default": "4096",
+      "description": "set window size (from 1024 to 65536) (default 4096)",
+      "flags": "..F.A......",
+      "max": "65536",
+      "min": "1024",
+      "name": "win_size",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_func"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Hann",
+          "name": "hann",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Welch",
+          "name": "welch",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "8"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "11"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Sine",
+          "name": "sine",
+          "value": "9"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "10"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "12"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "13"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "14"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "15"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "16"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "17"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "18"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "19"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "20"
+        }
+      ],
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "win_func",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set window overlap (from 0 to 1) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "overlap",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

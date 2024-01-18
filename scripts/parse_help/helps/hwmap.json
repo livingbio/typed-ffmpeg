@@ -1,0 +1,87 @@
+{
+  "description": "Map hardware frames",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "hwmap",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Mapping should be readable",
+          "name": "read",
+          "value": "read"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Mapping should be writeable",
+          "name": "write",
+          "value": "write"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Mapping will always overwrite the entire frame",
+          "name": "overwrite",
+          "value": "overwrite"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Mapping should not involve any copying",
+          "name": "direct",
+          "value": "direct"
+        }
+      ],
+      "default": null,
+      "description": "Frame mapping mode (default read+write)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "mode",
+      "typing": "flags"
+    },
+    {
+      "alias": [
+        "derive_device"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Derive a new device of this type",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "derive_device",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "reverse"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "reverse",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

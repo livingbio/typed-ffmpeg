@@ -1,0 +1,75 @@
+{
+  "description": "Apply stereo widening effect.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "stereowiden",
+  "options": [
+    {
+      "alias": [
+        "delay"
+      ],
+      "choices": [],
+      "default": "20",
+      "description": "set delay time (from 1 to 100) (default 20)",
+      "flags": "..F.A......",
+      "max": "100",
+      "min": "1",
+      "name": "delay",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "feedback"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set feedback gain (from 0 to 0.9) (default 0.3)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "feedback",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "crossfeed"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set cross feed (from 0 to 0.8) (default 0.3)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "crossfeed",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "drymix"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set dry-mix (from 0 to 1) (default 0.8)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "drymix",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

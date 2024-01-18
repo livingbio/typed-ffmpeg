@@ -1,0 +1,91 @@
+{
+  "description": "Force color range for the output video frame.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "setrange",
+  "options": [
+    {
+      "alias": [
+        "range"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "keep the same color range",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unspecified",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unknown",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "limited",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "tv",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "mpeg",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "full",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "pc",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "jpeg",
+          "value": "2"
+        }
+      ],
+      "default": "auto",
+      "description": "select color range (from -1 to 2) (default auto)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "-1",
+      "name": "range",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

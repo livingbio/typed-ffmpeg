@@ -1,0 +1,217 @@
+{
+  "description": "Apply Haas Stereo Enhancer.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "haas",
+  "options": [
+    {
+      "alias": [
+        "level_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set level in (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "level_in",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set level out (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "level_out",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "side_gain"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set side gain (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "side_gain",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "middle_source"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "left",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "right",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "L+R",
+          "name": "mid",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "L-R",
+          "name": "side",
+          "value": "3"
+        }
+      ],
+      "default": "mid",
+      "description": "set middle source (from 0 to 3) (default mid)",
+      "flags": "..F.A......",
+      "max": "3",
+      "min": "0",
+      "name": "middle_source",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "middle_phase"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set middle phase (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "middle_phase",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "left_delay"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set left delay (from 0 to 40) (default 2.05)",
+      "flags": "..F.A......",
+      "max": "40",
+      "min": "0",
+      "name": "left_delay",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "left_balance"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set left balance (from -1 to 1) (default -1)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "-1",
+      "name": "left_balance",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "left_gain"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set left gain (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "left_gain",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "left_phase"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set left phase (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "left_phase",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "right_delay"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set right delay (from 0 to 40) (default 2.12)",
+      "flags": "..F.A......",
+      "max": "40",
+      "min": "0",
+      "name": "right_delay",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "right_balance"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set right balance (from -1 to 1) (default 1)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "-1",
+      "name": "right_balance",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "right_gain"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set right gain (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "right_gain",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "right_phase"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "set right phase (default true)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "right_phase",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

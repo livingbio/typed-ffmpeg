@@ -1,0 +1,61 @@
+{
+  "description": "Weave input video fields into double number of frames.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "doubleweave",
+  "options": [
+    {
+      "alias": [
+        "first_field"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "set top field first",
+          "name": "top",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set top field first",
+          "name": "t",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set bottom field first",
+          "name": "bottom",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set bottom field first",
+          "name": "b",
+          "value": "1"
+        }
+      ],
+      "default": "top",
+      "description": "set first field (from 0 to 1) (default top)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "first_field",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

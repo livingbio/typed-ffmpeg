@@ -1,0 +1,88 @@
+{
+  "description": "Create Mask.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "maskfun",
+  "options": [
+    {
+      "alias": [
+        "low"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set low threshold (from 0 to 65535) (default 10)",
+      "flags": "..FV.....T.",
+      "max": "65535",
+      "min": "0",
+      "name": "low",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "high"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set high threshold (from 0 to 65535) (default 10)",
+      "flags": "..FV.....T.",
+      "max": "65535",
+      "min": "0",
+      "name": "high",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fill"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set fill value (from 0 to 65535) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "65535",
+      "min": "0",
+      "name": "fill",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sum"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set sum value (from 0 to 65535) (default 10)",
+      "flags": "..FV.....T.",
+      "max": "65535",
+      "min": "0",
+      "name": "sum",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

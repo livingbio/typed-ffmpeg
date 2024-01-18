@@ -1,0 +1,39 @@
+{
+  "description": "Select video streams",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "streamselect",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "number of input streams (from 2 to INT_MAX) (default 2)",
+      "flags": "..FVA......",
+      "max": "INT_MAX",
+      "min": "2",
+      "name": "inputs",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "input indexes to remap to outputs",
+      "flags": "..FVA....T.",
+      "max": null,
+      "min": null,
+      "name": "map",
+      "typing": "string"
+    }
+  ],
+  "output_types": null
+}

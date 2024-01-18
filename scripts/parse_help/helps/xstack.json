@@ -1,0 +1,83 @@
+{
+  "description": "Stack video inputs into custom layout.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "xstack",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set number of inputs (from 2 to INT_MAX) (default 2)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "2",
+      "name": "inputs",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "layout"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set custom layout",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "layout",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "grid"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set fixed size grid layout",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "grid",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "shortest",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "fill"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the color for unused pixels (default \"none\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fill",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

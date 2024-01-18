@@ -1,0 +1,62 @@
+{
+  "description": "Turns a certain luma into transparency.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "lumakey",
+  "options": [
+    {
+      "alias": [
+        "threshold"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the threshold value (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "threshold",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "tolerance"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the tolerance value (from 0 to 1) (default 0.01)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "tolerance",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "softness"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the softness value (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "softness",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

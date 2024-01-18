@@ -1,0 +1,22 @@
+{
+  "description": "Compute integral of input audio.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "aintegral",
+  "options": [],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

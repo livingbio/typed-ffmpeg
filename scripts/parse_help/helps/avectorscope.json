@@ -1,0 +1,322 @@
+{
+  "description": "Convert input audio to vectorscope video output.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "avectorscope",
+  "options": [
+    {
+      "alias": [
+        "mode",
+        "m"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lissajous",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lissajous_xy",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "polar",
+          "value": "2"
+        }
+      ],
+      "default": "lissajous",
+      "description": "set mode (from 0 to 2) (default lissajous)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video size (default \"400x400\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "rc"
+      ],
+      "choices": [],
+      "default": "40",
+      "description": "set red contrast (from 0 to 255) (default 40)",
+      "flags": "..FV.....T.",
+      "max": "255",
+      "min": "0",
+      "name": "rc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gc"
+      ],
+      "choices": [],
+      "default": "160",
+      "description": "set green contrast (from 0 to 255) (default 160)",
+      "flags": "..FV.....T.",
+      "max": "255",
+      "min": "0",
+      "name": "gc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bc"
+      ],
+      "choices": [],
+      "default": "80",
+      "description": "set blue contrast (from 0 to 255) (default 80)",
+      "flags": "..FV.....T.",
+      "max": "255",
+      "min": "0",
+      "name": "bc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ac"
+      ],
+      "choices": [],
+      "default": "255",
+      "description": "set alpha contrast (from 0 to 255) (default 255)",
+      "flags": "..FV.....T.",
+      "max": "255",
+      "min": "0",
+      "name": "ac",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "rf"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set red fade (from 0 to 255) (default 15)",
+      "flags": "..FV.....T.",
+      "max": "255",
+      "min": "0",
+      "name": "rf",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gf"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set green fade (from 0 to 255) (default 10)",
+      "flags": "..FV.....T.",
+      "max": "255",
+      "min": "0",
+      "name": "gf",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bf"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set blue fade (from 0 to 255) (default 5)",
+      "flags": "..FV.....T.",
+      "max": "255",
+      "min": "0",
+      "name": "bf",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "af"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set alpha fade (from 0 to 255) (default 5)",
+      "flags": "..FV.....T.",
+      "max": "255",
+      "min": "0",
+      "name": "af",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "zoom"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set zoom factor (from 0 to 10) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "10",
+      "min": "0",
+      "name": "zoom",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "draw"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "draw dots",
+          "name": "dot",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "draw lines",
+          "name": "line",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "draw anti-aliased lines",
+          "name": "aaline",
+          "value": "2"
+        }
+      ],
+      "default": "dot",
+      "description": "set draw mode (from 0 to 2) (default dot)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "0",
+      "name": "draw",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "square root",
+          "name": "sqrt",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "cube root",
+          "name": "cbrt",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "3"
+        }
+      ],
+      "default": "lin",
+      "description": "set amplitude scale mode (from 0 to 3) (default lin)",
+      "flags": "..FV.....T.",
+      "max": "3",
+      "min": "0",
+      "name": "scale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "swap"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "swap x axis with y axis (default true)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "swap",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "mirror"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "no mirror",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "mirror x",
+          "name": "x",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "mirror y",
+          "name": "y",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "mirror both",
+          "name": "xy",
+          "value": "3"
+        }
+      ],
+      "default": "none",
+      "description": "mirror axis (from 0 to 3) (default none)",
+      "flags": "..FV.....T.",
+      "max": "3",
+      "min": "0",
+      "name": "mirror",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

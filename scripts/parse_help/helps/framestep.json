@@ -1,0 +1,36 @@
+{
+  "description": "Select one frame every N frames.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "framestep",
+  "options": [
+    {
+      "alias": [
+        "step"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set frame step (from 1 to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "step",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "description": "Select video frames to pass in output.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "select",
+  "options": [
+    {
+      "alias": [
+        "expr",
+        "e"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set an expression to use for selecting frames (default \"1\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "expr",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "outputs",
+        "n"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set the number of outputs (from 1 to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "outputs",
+      "typing": "int"
+    }
+  ],
+  "output_types": null
+}

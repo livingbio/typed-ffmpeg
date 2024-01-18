@@ -1,0 +1,51 @@
+{
+  "description": "Send commands to filters.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "sendcmd",
+  "options": [
+    {
+      "alias": [
+        "commands",
+        "c"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set commands",
+      "flags": "..FVA......",
+      "max": null,
+      "min": null,
+      "name": "commands",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "filename",
+        "f"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set commands file",
+      "flags": "..FVA......",
+      "max": null,
+      "min": null,
+      "name": "filename",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

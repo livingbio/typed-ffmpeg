@@ -1,0 +1,153 @@
+{
+  "description": "Convert input audio to a video output single picture.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "showwavespic",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video size (default \"600x240\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "split_channels"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "draw channels separately (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "split_channels",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "colors"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "colors",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "square root",
+          "name": "sqrt",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubic root",
+          "name": "cbrt",
+          "value": "3"
+        }
+      ],
+      "default": "lin",
+      "description": "set amplitude scale (from 0 to 3) (default lin)",
+      "flags": "..FV.......",
+      "max": "3",
+      "min": "0",
+      "name": "scale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "draw"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "scale pixel values for each drawn sample",
+          "name": "scale",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "draw every pixel for sample directly",
+          "name": "full",
+          "value": "1"
+        }
+      ],
+      "default": "scale",
+      "description": "set draw mode (from 0 to 1) (default scale)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "draw",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "filter"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "use average samples",
+          "name": "average",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "use peak samples",
+          "name": "peak",
+          "value": "1"
+        }
+      ],
+      "default": "average",
+      "description": "set filter mode (from 0 to 1) (default average)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "filter",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

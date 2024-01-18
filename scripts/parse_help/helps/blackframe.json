@@ -1,0 +1,50 @@
+{
+  "description": "Detect frames that are (almost) black.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "blackframe",
+  "options": [
+    {
+      "alias": [
+        "amount"
+      ],
+      "choices": [],
+      "default": "98",
+      "description": "percentage of the pixels that have to be below the threshold for the frame to be considered black (from 0 to 100) (default 98)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "0",
+      "name": "amount",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threshold",
+        "thresh"
+      ],
+      "choices": [],
+      "default": "32",
+      "description": "threshold below which a pixel value is considered black (from 0 to 255) (default 32)",
+      "flags": "..FV.......",
+      "max": "255",
+      "min": "0",
+      "name": "threshold",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

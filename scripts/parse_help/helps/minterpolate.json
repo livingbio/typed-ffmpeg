@@ -1,0 +1,266 @@
+{
+  "description": "Frame rate conversion using Motion Interpolation.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "minterpolate",
+  "options": [
+    {
+      "alias": [
+        "fps"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "output's frame rate (default \"60\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fps",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "mi_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "duplicate frames",
+          "name": "dup",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "blend frames",
+          "name": "blend",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "motion compensated interpolation",
+          "name": "mci",
+          "value": "2"
+        }
+      ],
+      "default": "mci",
+      "description": "motion interpolation mode (from 0 to 2) (default mci)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "mi_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mc_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "overlapped block motion compensation",
+          "name": "obmc",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "adaptive overlapped block motion compensation",
+          "name": "aobmc",
+          "value": "1"
+        }
+      ],
+      "default": "obmc",
+      "description": "motion compensation mode (from 0 to 1) (default obmc)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "mc_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "me_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "bidirectional motion estimation",
+          "name": "bidir",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "bilateral motion estimation",
+          "name": "bilat",
+          "value": "1"
+        }
+      ],
+      "default": "bilat",
+      "description": "motion estimation mode (from 0 to 1) (default bilat)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "me_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "me"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "exhaustive search",
+          "name": "esa",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "three step search",
+          "name": "tss",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "two dimensional logarithmic search",
+          "name": "tdls",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "new three step search",
+          "name": "ntss",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "four step search",
+          "name": "fss",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "diamond search",
+          "name": "ds",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hexagon-based search",
+          "name": "hexbs",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "enhanced predictive zonal search",
+          "name": "epzs",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "uneven multi-hexagon search",
+          "name": "umh",
+          "value": "9"
+        }
+      ],
+      "default": "epzs",
+      "description": "motion estimation method (from 1 to 9) (default epzs)",
+      "flags": "..FV.......",
+      "max": "9",
+      "min": "1",
+      "name": "me",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mb_size"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "macroblock size (from 4 to 16) (default 16)",
+      "flags": "..FV.......",
+      "max": "16",
+      "min": "4",
+      "name": "mb_size",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "search_param"
+      ],
+      "choices": [],
+      "default": "32",
+      "description": "search parameter (from 4 to INT_MAX) (default 32)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "4",
+      "name": "search_param",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "vsbmc"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "variable-size block motion compensation (from 0 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "vsbmc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scd"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "disable detection",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "frame difference",
+          "name": "fdiff",
+          "value": "1"
+        }
+      ],
+      "default": "fdiff",
+      "description": "scene change detection method (from 0 to 1) (default fdiff)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "scd",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scd_threshold"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "scene change threshold (from 0 to 100) (default 10)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "0",
+      "name": "scd_threshold",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

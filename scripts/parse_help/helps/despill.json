@@ -1,0 +1,140 @@
+{
+  "description": "Despill video.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "despill",
+  "options": [
+    {
+      "alias": [
+        "type"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "greenscreen",
+          "name": "green",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "bluescreen",
+          "name": "blue",
+          "value": "1"
+        }
+      ],
+      "default": "green",
+      "description": "set the screen type (from 0 to 1) (default green)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "type",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mix"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the spillmap mix (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "mix",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "expand"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the spillmap expand (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "expand",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "red"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set red scale (from -100 to 100) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "-100",
+      "name": "red",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "green"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set green scale (from -100 to 100) (default -1)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "-100",
+      "name": "green",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blue"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set blue scale (from -100 to 100) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "-100",
+      "name": "blue",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "brightness"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set brightness (from -10 to 10) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "10",
+      "min": "-10",
+      "name": "brightness",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "change alpha component (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "alpha",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

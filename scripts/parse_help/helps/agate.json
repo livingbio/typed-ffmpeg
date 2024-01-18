@@ -1,0 +1,218 @@
+{
+  "description": "Audio gate.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "agate",
+  "options": [
+    {
+      "alias": [
+        "level_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input level (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "level_in",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "downward",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "upward",
+          "value": "1"
+        }
+      ],
+      "default": "downward",
+      "description": "set mode (from 0 to 1) (default downward)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set max gain reduction (from 0 to 1) (default 0.06125)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "range",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "threshold"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set threshold (from 0 to 1) (default 0.125)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "threshold",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ratio"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set ratio (from 1 to 9000) (default 2)",
+      "flags": "..F.A....T.",
+      "max": "9000",
+      "min": "1",
+      "name": "ratio",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "attack"
+      ],
+      "choices": [],
+      "default": "20",
+      "description": "set attack (from 0.01 to 9000) (default 20)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "attack",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "release"
+      ],
+      "choices": [],
+      "default": "250",
+      "description": "set release (from 0.01 to 9000) (default 250)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "release",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "makeup"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set makeup gain (from 1 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "64",
+      "min": "1",
+      "name": "makeup",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "knee"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set knee (from 1 to 8) (default 2.82843)",
+      "flags": "..F.A....T.",
+      "max": "8",
+      "min": "1",
+      "name": "knee",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "detection"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "peak",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "rms",
+          "value": "1"
+        }
+      ],
+      "default": "rms",
+      "description": "set detection (from 0 to 1) (default rms)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "detection",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "link"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "average",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "maximum",
+          "value": "1"
+        }
+      ],
+      "default": "average",
+      "description": "set link (from 0 to 1) (default average)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "link",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "level_sc"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set sidechain gain (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "level_sc",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

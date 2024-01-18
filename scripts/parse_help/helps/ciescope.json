@@ -1,0 +1,344 @@
+{
+  "description": "Video CIE scope.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "ciescope",
+  "options": [
+    {
+      "alias": [
+        "system"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "NTSC 1953 Y'I'O' (ITU-R BT.470 System M)",
+          "name": "ntsc",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "NTSC 1953 Y'I'O' (ITU-R BT.470 System M)",
+          "name": "470m",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "EBU Y'U'V' (PAL/SECAM) (ITU-R BT.470 System B, G)",
+          "name": "ebu",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "EBU Y'U'V' (PAL/SECAM) (ITU-R BT.470 System B, G)",
+          "name": "470bg",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "SMPTE-C RGB",
+          "name": "smpte",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "SMPTE-240M Y'PbPr",
+          "name": "240m",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Apple RGB",
+          "name": "apple",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Adobe Wide Gamut RGB",
+          "name": "widergb",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "CIE 1931 RGB",
+          "name": "cie1931",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "ITU.BT-709 Y'CbCr",
+          "name": "hdtv",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "ITU.BT-709 Y'CbCr",
+          "name": "rec709",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "ITU-R.BT-2020",
+          "name": "uhdtv",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "ITU-R.BT-2020",
+          "name": "rec2020",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "DCI-P3",
+          "name": "dcip3",
+          "value": "9"
+        }
+      ],
+      "default": "hdtv",
+      "description": "set color system (from 0 to 9) (default hdtv)",
+      "flags": "..FV.......",
+      "max": "9",
+      "min": "0",
+      "name": "system",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cie"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "CIE 1931 xyY",
+          "name": "xyy",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "CIE 1960 UCS",
+          "name": "ucs",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "CIE 1976 Luv",
+          "name": "luv",
+          "value": "2"
+        }
+      ],
+      "default": "xyy",
+      "description": "set cie system (from 0 to 2) (default xyy)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "cie",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gamuts"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "ntsc",
+          "value": "ntsc"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "470m",
+          "value": "470m"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "ebu",
+          "value": "ebu"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "470bg",
+          "value": "470bg"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte",
+          "value": "smpte"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "240m",
+          "value": "240m"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "apple",
+          "value": "apple"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "widergb",
+          "value": "widergb"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "cie1931",
+          "value": "cie1931"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "hdtv",
+          "value": "hdtv"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "rec709",
+          "value": "rec709"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "uhdtv",
+          "value": "uhdtv"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "rec2020",
+          "value": "rec2020"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "dcip3",
+          "value": "dcip3"
+        }
+      ],
+      "default": "0",
+      "description": "set what gamuts to draw (default 0)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "gamuts",
+      "typing": "flags"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "512",
+      "description": "set ciescope size (from 256 to 8192) (default 512)",
+      "flags": "..FV.......",
+      "max": "8192",
+      "min": "256",
+      "name": "size",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "intensity",
+        "i"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set ciescope intensity (from 0 to 1) (default 0.001)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "intensity",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "contrast"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "(from 0 to 1) (default 0.75)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "contrast",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "corrgamma"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "(default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "corrgamma",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "showwhite"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "(default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "showwhite",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "gamma"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "(from 0.1 to 6) (default 2.6)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "gamma",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "fill"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "fill with CIE colors (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fill",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

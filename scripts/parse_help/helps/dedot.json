@@ -1,0 +1,101 @@
+{
+  "description": "Reduce cross-luminance and cross-color.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "dedot",
+  "options": [
+    {
+      "alias": [
+        "m"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "dotcrawl",
+          "value": "dotcrawl"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "rainbows",
+          "value": "rainbows"
+        }
+      ],
+      "default": null,
+      "description": "set filtering mode (default dotcrawl+rainbows)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m",
+      "typing": "flags"
+    },
+    {
+      "alias": [
+        "lt"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set spatial luma threshold (from 0 to 1) (default 0.079)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "lt",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tl"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set tolerance for temporal luma (from 0 to 1) (default 0.079)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "tl",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tc"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "tc",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "ct"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set temporal chroma threshold (from 0 to 1) (default 0.019)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "ct",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

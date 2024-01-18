@@ -1,0 +1,36 @@
+{
+  "description": "Calculate the VMAF Motion score.",
+  "input_types": [
+    [
+      "reference",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "vmafmotion",
+  "options": [
+    {
+      "alias": [
+        "stats_file"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Set file where to store per-frame difference information",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "stats_file",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

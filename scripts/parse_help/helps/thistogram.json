@@ -1,0 +1,197 @@
+{
+  "description": "Compute and draw a temporal histogram.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "thistogram",
+  "options": [
+    {
+      "alias": [
+        "width",
+        "w"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set width (from 0 to 8192) (default 0)",
+      "flags": "..FV.......",
+      "max": "8192",
+      "min": "0",
+      "name": "width",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "display_mode",
+        "d"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "overlay",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "parade",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "stack",
+          "value": "2"
+        }
+      ],
+      "default": "stack",
+      "description": "set display mode (from 0 to 2) (default stack)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "display_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "levels_mode",
+        "m"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "linear",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "logarithmic",
+          "value": "1"
+        }
+      ],
+      "default": "linear",
+      "description": "set levels mode (from 0 to 1) (default linear)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "levels_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "components",
+        "c"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set color components to display (from 1 to 15) (default 7)",
+      "flags": "..FV.......",
+      "max": "15",
+      "min": "1",
+      "name": "components",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bgopacity",
+        "b"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set background opacity (from 0 to 1) (default 0.9)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "bgopacity",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "envelope",
+        "e"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "display envelope (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "envelope",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "ecolor",
+        "ec"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set envelope color (default \"gold\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "ecolor",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "slide"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "draw new frames",
+          "name": "frame",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "replace old columns with new",
+          "name": "replace",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "scroll from right to left",
+          "name": "scroll",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "scroll from left to right",
+          "name": "rscroll",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "display graph in single frame",
+          "name": "picture",
+          "value": "4"
+        }
+      ],
+      "default": "replace",
+      "description": "set slide mode (from 0 to 4) (default replace)",
+      "flags": "..FV.......",
+      "max": "4",
+      "min": "0",
+      "name": "slide",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

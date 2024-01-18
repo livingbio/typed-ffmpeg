@@ -1,0 +1,257 @@
+{
+  "description": "Apply 18 band equalization filter.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "superequalizer",
+  "options": [
+    {
+      "alias": [
+        "1b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 65Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "1b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "2b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 92Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "2b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "3b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 131Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "3b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "4b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 185Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "4b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "5b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 262Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "5b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "6b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 370Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "6b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "7b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 523Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "7b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "8b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 740Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "8b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "9b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 1047Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "9b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "10b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 1480Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "10b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "11b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 2093Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "11b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "12b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 2960Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "12b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "13b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 4186Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "13b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "14b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 5920Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "14b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "15b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 8372Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "15b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "16b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 11840Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "16b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "17b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 16744Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "17b",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "18b"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set 20000Hz band gain (from 0 to 20) (default 1)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "18b",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

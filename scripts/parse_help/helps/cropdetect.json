@@ -1,0 +1,166 @@
+{
+  "description": "Auto-detect crop size.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "cropdetect",
+  "options": [
+    {
+      "alias": [
+        "limit"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Threshold below which the pixel is considered black (from 0 to 65535) (default 0.0941176)",
+      "flags": "..FV.....T.",
+      "max": "65535",
+      "min": "0",
+      "name": "limit",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "round"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "Value by which the width/height should be divisible (from 0 to INT_MAX) (default 16)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "round",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "reset"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "reset",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "skip"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "Number of initial frames to skip (from 0 to INT_MAX) (default 2)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "skip",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "reset_count"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "reset_count",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "max_outliers"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "Threshold count of outliers (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "max_outliers",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "detect black pixels surrounding the video",
+          "name": "black",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "detect motion and edged surrounding the video",
+          "name": "mvedges",
+          "value": "1"
+        }
+      ],
+      "default": "black",
+      "description": "set mode (from 0 to 1) (default black)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "high"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Set high threshold for edge detection (from 0 to 1) (default 0.0980392)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "high",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "low"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Set low threshold for edge detection (from 0 to 1) (default 0.0588235)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "low",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mv_threshold"
+      ],
+      "choices": [],
+      "default": "8",
+      "description": "motion vector threshold when estimating video window size (from 0 to 100) (default 8)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "0",
+      "name": "mv_threshold",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

@@ -77,10 +77,10 @@ def _convert_to_stream_type(typings: list[AVFilterPadType]) -> list[StreamType]:
 
 class FFmpegFilter(BaseModel):
     id: str
-    filter_type: FilterType
+    filter_type: FilterType = None
 
-    name: str
-    description: str
+    name: str = None
+    description: str = None
     ref: HttpUrl = None
 
     is_input_dynamic: bool = False

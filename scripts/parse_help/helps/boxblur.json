@@ -1,0 +1,107 @@
+{
+  "description": "Blur the input.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "boxblur",
+  "options": [
+    {
+      "alias": [
+        "luma_radius",
+        "lr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Radius of the luma blurring box (default \"2\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "luma_radius",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "luma_power",
+        "lp"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "luma_power",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "chroma_radius",
+        "cr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Radius of the chroma blurring box",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "chroma_radius",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "chroma_power",
+        "cp"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "chroma_power",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "alpha_radius",
+        "ar"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Radius of the alpha blurring box",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "alpha_radius",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "alpha_power",
+        "ap"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "alpha_power",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}
