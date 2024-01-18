@@ -1,5 +1,5 @@
 {
-  "description": "### 8.60 asubboost\n\nBoost subwoofer frequencies.\n\nThe filter accepts the following options:\n\n**dry**\n\n    Set dry gain, how much of original signal is kept. Allowed range is from 0 to 1. Default value is 1.0. \n\n**wet**\n\n    Set wet gain, how much of filtered signal is kept. Allowed range is from 0 to 1. Default value is 1.0. \n\n**boost**\n\n    Set max boost factor. Allowed range is from 1 to 12. Default value is 2. \n\n**decay**\n\n    Set delay line decay gain value. Allowed range is from 0 to 1. Default value is 0.0. \n\n**feedback**\n\n    Set delay line feedback gain value. Allowed range is from 0 to 1. Default value is 0.9. \n\n**cutoff**\n\n    Set cutoff frequency in Hertz. Allowed range is 50 to 900. Default value is 100. \n\n**slope**\n\n    Set slope amount for cutoff frequency. Allowed range is 0.0001 to 1. Default value is 0.5. \n\n**delay**\n\n    Set delay. Allowed range is from 1 to 100. Default value is 20. \n\n**channels**\n\n    Set the channels to process. Default value is all available. \n\n",
+  "description": "Boost subwoofer frequencies.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

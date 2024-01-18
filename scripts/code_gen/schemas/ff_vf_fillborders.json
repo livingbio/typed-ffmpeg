@@ -1,5 +1,5 @@
 {
-  "description": "### 11.97 fillborders\n\nFill borders of the input video, without changing video stream dimensions.\nSometimes video can have garbage at the four edges and you may not want to\ncrop video input to keep size multiple of some number.\n\nThis filter accepts the following options:\n\n**left**\n\n    Number of pixels to fill from left border. \n\n**right**\n\n    Number of pixels to fill from right border. \n\n**top**\n\n    Number of pixels to fill from top border. \n\n**bottom**\n\n    Number of pixels to fill from bottom border. \n\n**mode**\n\n    Set fill mode. It accepts the following values: \u2018smear\u2019 fill pixels using outermost pixels \u2018mirror\u2019 fill pixels using mirroring (half sample symmetric) \u2018fixed\u2019 fill pixels with constant value \u2018reflect\u2019 fill pixels using reflecting (whole sample symmetric) \u2018wrap\u2019 fill pixels using wrapping \u2018fade\u2019 fade pixels to constant value \u2018margins\u2019 fill pixels at top and bottom with weighted averages pixels near borders Default is smear. \n\n**color**\n\n    Set color for pixels in fixed or fade mode. Default is black. \n\n",
+  "description": "Fill borders of the input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

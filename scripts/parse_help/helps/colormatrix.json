@@ -1,0 +1,147 @@
+{
+  "description": "Convert color matrix.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "colormatrix",
+  "options": [
+    {
+      "alias": [
+        "src"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "set BT.709 colorspace",
+          "name": "bt709",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set FCC colorspace",
+          "name": "fcc",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set BT.601 colorspace",
+          "name": "bt601",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set BT.470 colorspace",
+          "name": "bt470",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set BT.470 colorspace",
+          "name": "bt470bg",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set SMTPE-170M colorspace",
+          "name": "smpte170m",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set SMPTE-240M colorspace",
+          "name": "smpte240m",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set BT.2020 colorspace",
+          "name": "bt2020",
+          "value": "4"
+        }
+      ],
+      "default": "-1",
+      "description": "set source color matrix (from -1 to 4) (default -1)",
+      "flags": "..FV.......",
+      "max": "4",
+      "min": "-1",
+      "name": "src",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dst"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "set BT.709 colorspace",
+          "name": "bt709",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set FCC colorspace",
+          "name": "fcc",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set BT.601 colorspace",
+          "name": "bt601",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set BT.470 colorspace",
+          "name": "bt470",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set BT.470 colorspace",
+          "name": "bt470bg",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set SMTPE-170M colorspace",
+          "name": "smpte170m",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set SMPTE-240M colorspace",
+          "name": "smpte240m",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set BT.2020 colorspace",
+          "name": "bt2020",
+          "value": "4"
+        }
+      ],
+      "default": "-1",
+      "description": "set destination color matrix (from -1 to 4) (default -1)",
+      "flags": "..FV.......",
+      "max": "4",
+      "min": "-1",
+      "name": "dst",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

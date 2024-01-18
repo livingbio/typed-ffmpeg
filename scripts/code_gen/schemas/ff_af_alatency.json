@@ -1,5 +1,5 @@
 {
-  "description": "### 18.12 latency, alatency\n\nMeasure filtering latency.\n\nReport previous filter filtering latency, delay in number of audio samples for\naudio filters or number of video frames for video filters.\n\nOn end of input stream, filter will report min and max measured latency for\nprevious running filter in filtergraph.\n\n",
+  "description": "Report audio filtering latency.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

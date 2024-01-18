@@ -1,5 +1,5 @@
 {
-  "description": "### 11.82 epx\n\nApply the EPX magnification filter which is designed for pixel art.\n\nIt accepts the following option:\n\n**n**\n\n    Set the scaling dimension: 2 for 2xEPX, 3 for 3xEPX. Default is 3. \n\n",
+  "description": "Scale the input using EPX algorithm.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

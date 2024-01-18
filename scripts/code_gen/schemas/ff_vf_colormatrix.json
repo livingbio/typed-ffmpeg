@@ -1,5 +1,5 @@
 {
-  "description": "### 11.40 colormatrix\n\nConvert color matrix.\n\nThe filter accepts the following options:\n\n**src**\n\n**dst**\n\n    Specify the source and destination color matrix. Both values must be specified. The accepted values are: \u2018bt709\u2019 BT.709 \u2018fcc\u2019 FCC \u2018bt601\u2019 BT.601 \u2018bt470\u2019 BT.470 \u2018bt470bg\u2019 BT.470BG \u2018smpte170m\u2019 SMPTE-170M \u2018smpte240m\u2019 SMPTE-240M \u2018bt2020\u2019 BT.2020 \n\nFor example to convert from BT.601 to SMPTE-240M, use the command:\n\n    \n    \n    colormatrix=bt601:smpte240m\n    \n\n",
+  "description": "Convert color matrix.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

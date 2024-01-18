@@ -1,5 +1,5 @@
 {
-  "description": "### 11.32 colorcontrast\n\nAdjust color contrast between RGB components.\n\nThe filter accepts the following options:\n\n**rc**\n\n    Set the red-cyan contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0. \n\n**gm**\n\n    Set the green-magenta contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0. \n\n**by**\n\n    Set the blue-yellow contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0. \n\n**rcw**\n\n**gmw**\n\n**byw**\n\n    Set the weight of each rc, gm, by option value. Default value is 0.0. Allowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled. \n\n**pl**\n\n    Set the amount of preserving lightness. Default value is 0.0. Allowed range is from 0.0 to 1.0. \n\n",
+  "description": "Adjust color contrast between RGB components.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

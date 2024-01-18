@@ -1,5 +1,5 @@
 {
-  "description": "### 11.71 displace\n\nDisplace pixels as indicated by second and third input stream.\n\nIt takes three input streams and outputs one stream, the first input is the\nsource, and second and third input are displacement maps.\n\nThe second input specifies how much to displace pixels along the x-axis, while\nthe third input specifies how much to displace pixels along the y-axis. If one\nof displacement map streams terminates, last frame from that displacement map\nwill be used.\n\nNote that once generated, displacements maps can be reused over and over\nagain.\n\nA description of the accepted options follows.\n\n**edge**\n\n    Set displace behavior for pixels that are out of range. Available values are: \u2018blank\u2019 Missing pixels are replaced by black pixels. \u2018smear\u2019 Adjacent pixels will spread out to replace missing pixels. \u2018wrap\u2019 Out of range pixels are wrapped so they point to pixels of other side. \u2018mirror\u2019 Out of range pixels will be replaced with mirrored pixels. Default is \u2018smear\u2019. \n\n",
+  "description": "Displace pixels.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

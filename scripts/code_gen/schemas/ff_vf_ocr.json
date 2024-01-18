@@ -1,5 +1,5 @@
 {
-  "description": "### 11.180 ocr\n\nOptical Character Recognition\n\nThis filter uses Tesseract for optical character recognition. To enable\ncompilation of this filter, you need to configure FFmpeg with `--enable-\nlibtesseract`.\n\nIt accepts the following options:\n\n**datapath**\n\n    Set datapath to tesseract data. Default is to use whatever was set at installation. \n\n**language**\n\n    Set language, default is \"eng\". \n\n**whitelist**\n\n    Set character whitelist. \n\n**blacklist**\n\n    Set character blacklist. \n\nThe filter exports recognized text as the frame metadata `lavfi.ocr.text`. The\nfilter exports confidence of recognized words as the frame metadata\n`lavfi.ocr.confidence`.\n\n",
+  "description": "Optical Character Recognition.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

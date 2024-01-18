@@ -1,0 +1,252 @@
+{
+  "description": "Render a Mandelbrot fractal.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "mandelbrot",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set frame size (default \"640x480\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set frame rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "maxiter"
+      ],
+      "choices": [],
+      "default": "7189",
+      "description": "set max iterations number (from 1 to INT_MAX) (default 7189)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "maxiter",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "start_x"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the initial x position (from -100 to 100) (default -0.743644)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "-100",
+      "name": "start_x",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "start_y"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the initial y position (from -100 to 100) (default -0.131826)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "-100",
+      "name": "start_y",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "start_scale"
+      ],
+      "choices": [],
+      "default": "3",
+      "description": "set the initial scale value (from 0 to FLT_MAX) (default 3)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "0",
+      "name": "start_scale",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "end_scale"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the terminal scale value (from 0 to FLT_MAX) (default 0.3)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "0",
+      "name": "end_scale",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "end_pts"
+      ],
+      "choices": [],
+      "default": "400",
+      "description": "set the terminal pts value (from 0 to I64_MAX) (default 400)",
+      "flags": "..FV.......",
+      "max": "I64_MAX",
+      "min": "0",
+      "name": "end_pts",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "bailout"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set the bailout value (from 0 to FLT_MAX) (default 10)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "0",
+      "name": "bailout",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "morphxf"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set morph x frequency (from -FLT_MAX to FLT_MAX) (default 0.01)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "-FLT_MAX",
+      "name": "morphxf",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "morphyf"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set morph y frequency (from -FLT_MAX to FLT_MAX) (default 0.0123)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "-FLT_MAX",
+      "name": "morphyf",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "morphamp"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set morph amplitude (from -FLT_MAX to FLT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "-FLT_MAX",
+      "name": "morphamp",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "outer"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "set iteration count mode",
+          "name": "iteration_count",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set normalized iteration count mode",
+          "name": "normalized_iteration_count",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set white mode",
+          "name": "white",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set outz mode",
+          "name": "outz",
+          "value": "3"
+        }
+      ],
+      "default": "normalized_iteration_count",
+      "description": "set outer coloring mode (from 0 to INT_MAX) (default normalized_iteration_count)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "outer",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "inner"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "set black mode",
+          "name": "black",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set period mode",
+          "name": "period",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "show time until convergence",
+          "name": "convergence",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "color based on point closest to the origin of the iterations",
+          "name": "mincol",
+          "value": "3"
+        }
+      ],
+      "default": "mincol",
+      "description": "set inner coloring mode (from 0 to INT_MAX) (default mincol)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "inner",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

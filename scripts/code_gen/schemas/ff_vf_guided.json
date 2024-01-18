@@ -1,5 +1,5 @@
 {
-  "description": "### 11.115 guided\n\nApply guided filter for edge-preserving smoothing, dehazing and so on.\n\nThe filter accepts the following options:\n\n**radius**\n\n    Set the box radius in pixels. Allowed range is 1 to 20. Default is 3. \n\n**eps**\n\n    Set regularization parameter (with square). Allowed range is 0 to 1. Default is 0.01. \n\n**mode**\n\n    Set filter mode. Can be basic or fast. Default is basic. \n\n**sub**\n\n    Set subsampling ratio for fast mode. Range is 2 to 64. Default is 4. No subsampling occurs in basic mode. \n\n**guidance**\n\n    Set guidance mode. Can be off or on. Default is off. If off, single input is required. If on, two inputs of the same resolution and pixel format are required. The second input serves as the guidance. \n\n**planes**\n\n    Set planes to filter. Default is first only. \n\n",
+  "description": "Apply Guided filter.",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] + [StreamType.video] if guidance else []",
   "formula_output_typings": null,

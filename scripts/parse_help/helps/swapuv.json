@@ -1,0 +1,22 @@
+{
+  "description": "Swap U and V components.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "swapuv",
+  "options": [],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

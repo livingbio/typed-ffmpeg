@@ -60,12 +60,12 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
             output[-1].alias.append(name)
             continue
 
-        if match := re.findall("\(default ([\-\w]+)\)", help):
+        if match := re.findall(r"\(default ([^\)]+)\)", help):
             default = match[0]
         else:
             default = None
 
-        if match := re.findall("\(from ([\-\w]+) to ([\-\w]+)\)", help):
+        if match := re.findall(r"\(from ([^\)]+) to ([^\)]+)\)", help):
             min, max = match[0]
         else:
             min = None
@@ -152,3 +152,12 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
         output_types=output_types,
         options=options,
     )
+
+
+def extract(filter_name: str) -> AVFilter:
+    try:
+        return AVFilter.load(filter_name)
+    except IOError:
+        filter = extract_avfilter_info_from_help(filter_name=filter_name)
+        filter.save()
+        return filter

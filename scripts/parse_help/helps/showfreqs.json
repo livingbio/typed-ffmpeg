@@ -1,0 +1,435 @@
+{
+  "description": "Convert input audio to a frequencies video output.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "showfreqs",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video size (default \"1024x512\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "show lines",
+          "name": "line",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "show bars",
+          "name": "bar",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "show dots",
+          "name": "dot",
+          "value": "2"
+        }
+      ],
+      "default": "bar",
+      "description": "set display mode (from 0 to 2) (default bar)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ascale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "square root",
+          "name": "sqrt",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubic root",
+          "name": "cbrt",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "3"
+        }
+      ],
+      "default": "log",
+      "description": "set amplitude scale (from 0 to 3) (default log)",
+      "flags": "..FV.......",
+      "max": "3",
+      "min": "0",
+      "name": "ascale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fscale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "reverse logarithmic",
+          "name": "rlog",
+          "value": "2"
+        }
+      ],
+      "default": "lin",
+      "description": "set frequency scale (from 0 to 2) (default lin)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "fscale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_size"
+      ],
+      "choices": [],
+      "default": "2048",
+      "description": "set window size (from 16 to 65536) (default 2048)",
+      "flags": "..FV.......",
+      "max": "65536",
+      "min": "16",
+      "name": "win_size",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_func"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hann",
+          "name": "hann",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Welch",
+          "name": "welch",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Sine",
+          "name": "sine",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "20"
+        }
+      ],
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
+      "flags": "..FV.......",
+      "max": "20",
+      "min": "0",
+      "name": "win_func",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set window overlap (from 0 to 1) (default 1)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "overlap",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "averaging"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set time averaging (from 0 to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "averaging",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "colors"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "colors",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "cmode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "show all channels in same window",
+          "name": "combined",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "show each channel in own window",
+          "name": "separate",
+          "value": "1"
+        }
+      ],
+      "default": "combined",
+      "description": "set channel mode (from 0 to 1) (default combined)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "cmode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "minamp"
+      ],
+      "choices": [],
+      "default": "1e-06",
+      "description": "set minimum amplitude (from FLT_MIN to 1e-06) (default 1e-06)",
+      "flags": "..FV.......",
+      "max": "1e-06",
+      "min": "FLT_MIN",
+      "name": "minamp",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "data"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "show magnitude",
+          "name": "magnitude",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "show phase",
+          "name": "phase",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "show group delay",
+          "name": "delay",
+          "value": "2"
+        }
+      ],
+      "default": "magnitude",
+      "description": "set data mode (from 0 to 2) (default magnitude)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "data",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "channels"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set channels to draw (default \"all\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "channels",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

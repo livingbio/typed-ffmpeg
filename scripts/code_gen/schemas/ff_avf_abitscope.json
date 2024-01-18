@@ -1,5 +1,5 @@
 {
-  "description": "### 18.2 abitscope\n\nConvert input audio to a video output, displaying the audio bit scope.\n\nThe filter accepts the following options:\n\n**rate, r**\n\n    Set frame rate, expressed as number of frames per second. Default value is \"25\". \n\n**size, s**\n\n    Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is 1024x256. \n\n**colors**\n\n    Specify list of colors separated by space or by \u2019|\u2019 which will be used to draw channels. Unrecognized or missing colors will be replaced by white color. \n\n**mode, m**\n\n    Set output mode. Can be bars or trace. Default is bars. \n\n",
+  "description": "Convert input audio to audio bit scope video output.",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,

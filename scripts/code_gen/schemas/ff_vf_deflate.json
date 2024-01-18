@@ -1,5 +1,5 @@
 {
-  "description": "### 11.62 deflate\n\nApply deflate effect to the video.\n\nThis filter replaces the pixel by the local(3x3) average by taking into\naccount only values lower than the pixel.\n\nIt accepts the following options:\n\n**threshold0**\n\n**threshold1**\n\n**threshold2**\n\n**threshold3**\n\n    Limit the maximum change for each plane, default is 65535. If 0, plane will remain unchanged. \n\n",
+  "description": "Apply deflate effect.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

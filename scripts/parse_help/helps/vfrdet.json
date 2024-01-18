@@ -1,0 +1,22 @@
+{
+  "description": "Variable frame rate detect filter.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "vfrdet",
+  "options": [],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

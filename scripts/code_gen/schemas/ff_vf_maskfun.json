@@ -1,5 +1,5 @@
 {
-  "description": "### 11.160 maskfun\n\nCreate mask from input video.\n\nFor example it is useful to create motion masks after `tblend` filter.\n\nThis filter accepts the following options:\n\n**low**\n\n    Set low threshold. Any pixel component lower or exact than this value will be set to 0. \n\n**high**\n\n    Set high threshold. Any pixel component higher than this value will be set to max value allowed for current pixel format. \n\n**planes**\n\n    Set planes to filter, by default all available planes are filtered. \n\n**fill**\n\n    Fill all frame pixels with this value. \n\n**sum**\n\n    Set max average pixel value for frame. If sum of all pixel components is higher that this average, output frame will be completely filled with value set by fill option. Typically useful for scene changes when used in combination with tblend filter. \n\n",
+  "description": "Create Mask.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

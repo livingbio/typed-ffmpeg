@@ -1,5 +1,5 @@
 {
-  "description": "### 11.204 readeia608\n\nRead closed captioning (EIA-608) information from the top lines of a video\nframe.\n\nThis filter adds frame metadata for `lavfi.readeia608.X.cc` and\n`lavfi.readeia608.X.line`, where `X` is the number of the identified line with\nEIA-608 data (starting from 0). A description of each metadata value follows:\n\n**lavfi.readeia608.X.cc**\n\n    The two bytes stored as EIA-608 data (printed in hexadecimal). \n\n**lavfi.readeia608.X.line**\n\n    The number of the line on which the EIA-608 data was identified and read. \n\nThis filter accepts the following options:\n\n**scan_min**\n\n    Set the line to start scanning for EIA-608 data. Default is 0. \n\n**scan_max**\n\n    Set the line to end scanning for EIA-608 data. Default is 29. \n\n**spw**\n\n    Set the ratio of width reserved for sync code detection. Default is 0.27. Allowed range is [0.1 - 0.7]. \n\n**chp**\n\n    Enable checking the parity bit. In the event of a parity error, the filter will output 0x00 for that character. Default is false. \n\n**lp**\n\n    Lowpass lines prior to further processing. Default is enabled. \n\n",
+  "description": "Read EIA-608 Closed Caption codes from input video and write them to frame metadata.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

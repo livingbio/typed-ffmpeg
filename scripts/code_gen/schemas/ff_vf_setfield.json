@@ -1,5 +1,5 @@
 {
-  "description": "### 11.227 setfield\n\nForce field for the output video frame.\n\nThe `setfield` filter marks the interlace type field for the output frames. It\ndoes not change the input frame, but only sets the corresponding property,\nwhich affects how the frame is treated by following filters (e.g. `fieldorder`\nor `yadif`).\n\nThe filter accepts the following options:\n\n**mode**\n\n    Available values are: \u2018auto\u2019 Keep the same field property. \u2018bff\u2019 Mark the frame as bottom-field-first. \u2018tff\u2019 Mark the frame as top-field-first. \u2018prog\u2019 Mark the frame as progressive. \n\n",
+  "description": "Force field for the output video frame.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

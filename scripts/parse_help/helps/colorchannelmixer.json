@@ -1,0 +1,300 @@
+{
+  "description": "Adjust colors by mixing color channels.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "colorchannelmixer",
+  "options": [
+    {
+      "alias": [
+        "rr"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set the red gain for the red channel (from -2 to 2) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "rr",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "rg"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the green gain for the red channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "rg",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "rb"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the blue gain for the red channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "rb",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ra"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the alpha gain for the red channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "ra",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "gr"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the red gain for the green channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "gr",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "gg"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set the green gain for the green channel (from -2 to 2) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "gg",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "gb"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the blue gain for the green channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "gb",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ga"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the alpha gain for the green channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "ga",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "br"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the red gain for the blue channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "br",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "bg"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the green gain for the blue channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "bg",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "bb"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set the blue gain for the blue channel (from -2 to 2) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "bb",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ba"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the alpha gain for the blue channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "ba",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ar"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the red gain for the alpha channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "ar",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ag"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the green gain for the alpha channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "ag",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ab"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the blue gain for the alpha channel (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "ab",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "aa"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set the alpha gain for the alpha channel (from -2 to 2) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "aa",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "pc"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "disabled",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "luminance",
+          "name": "lum",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "max",
+          "name": "max",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "average",
+          "name": "avg",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "sum",
+          "name": "sum",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "norm",
+          "name": "nrm",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "power",
+          "name": "pwr",
+          "value": "6"
+        }
+      ],
+      "default": "none",
+      "description": "set the preserve color mode (from 0 to 6) (default none)",
+      "flags": "..FV.....T.",
+      "max": "6",
+      "min": "0",
+      "name": "pc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pa"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the preserve color amount (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "pa",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

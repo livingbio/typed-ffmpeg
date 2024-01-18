@@ -1,0 +1,36 @@
+{
+  "description": "Set PTS for the output video frame.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "setpts",
+  "options": [
+    {
+      "alias": [
+        "expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Expression determining the frame timestamp (default \"PTS\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "expr",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

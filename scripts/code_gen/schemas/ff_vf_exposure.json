@@ -1,5 +1,5 @@
 {
-  "description": "### 11.86 exposure\n\nAdjust exposure of the video stream.\n\nThe filter accepts the following options:\n\n**exposure**\n\n    Set the exposure correction in EV. Allowed range is from -3.0 to 3.0 EV Default value is 0 EV. \n\n**black**\n\n    Set the black level correction. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n",
+  "description": "Adjust exposure of the video stream.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

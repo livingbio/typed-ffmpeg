@@ -1,5 +1,5 @@
 {
-  "description": "### 11.92 field\n\nExtract a single field from an interlaced image using stride arithmetic to\navoid wasting CPU time. The output frames are marked as non-interlaced.\n\nThe filter accepts the following options:\n\n**type**\n\n    Specify whether to extract the top (if the value is 0 or top) or the bottom field (if the value is 1 or bottom). \n\n",
+  "description": "Extract a field from the input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

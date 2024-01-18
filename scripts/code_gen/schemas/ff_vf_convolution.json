@@ -1,5 +1,5 @@
 {
-  "description": "### 11.44 convolution\n\nApply convolution of 3x3, 5x5, 7x7 or horizontal/vertical up to 49 elements.\n\nThe filter accepts the following options:\n\n**0m**\n\n**1m**\n\n**2m**\n\n**3m**\n\n    Set matrix for each plane. Matrix is sequence of 9, 25 or 49 signed integers in square mode, and from 1 to 49 odd number of signed integers in row mode. \n\n**0rdiv**\n\n**1rdiv**\n\n**2rdiv**\n\n**3rdiv**\n\n    Set multiplier for calculated value for each plane. If unset or 0, it will be sum of all matrix elements. \n\n**0bias**\n\n**1bias**\n\n**2bias**\n\n**3bias**\n\n    Set bias for each plane. This value is added to the result of the multiplication. Useful for making the overall image brighter or darker. Default is 0.0. \n\n**0mode**\n\n**1mode**\n\n**2mode**\n\n**3mode**\n\n    Set matrix mode for each plane. Can be square, row or column. Default is square. \n\n",
+  "description": "Apply convolution filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,0 +1,37 @@
+{
+  "description": "Remove a TV logo based on a mask image.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "removelogo",
+  "options": [
+    {
+      "alias": [
+        "filename",
+        "f"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set bitmap filename",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "filename",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

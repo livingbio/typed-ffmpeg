@@ -1,0 +1,68 @@
+{
+  "description": "Field matching using hints.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "fieldhint",
+  "options": [
+    {
+      "alias": [
+        "hint"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set hint file",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "hint",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "absolute",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "relative",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "pattern",
+          "value": "2"
+        }
+      ],
+      "default": "absolute",
+      "description": "set hint mode (from 0 to 2) (default absolute)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

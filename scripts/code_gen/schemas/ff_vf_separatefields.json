@@ -1,5 +1,5 @@
 {
-  "description": "### 11.225 separatefields\n\nThe `separatefields` takes a frame-based video input and splits each frame\ninto its components fields, producing a new half height clip with twice the\nframe rate and twice the frame count.\n\nThis filter use field-dominance information in frame to decide which of each\npair of fields to place first in the output. If it gets it wrong use setfield\nfilter before `separatefields` filter.\n\n",
+  "description": "Split input video frames into fields.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,0 +1,36 @@
+{
+  "description": "Display frame palette.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "showpalette",
+  "options": [
+    {
+      "alias": [
+        "s"
+      ],
+      "choices": [],
+      "default": "30",
+      "description": "set pixel box size (from 1 to 100) (default 30)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "1",
+      "name": "s",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

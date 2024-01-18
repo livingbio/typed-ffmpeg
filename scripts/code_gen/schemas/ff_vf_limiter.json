@@ -1,5 +1,5 @@
 {
-  "description": "### 11.148 limiter\n\nLimits the pixel components values to the specified range [min, max].\n\nThe filter accepts the following options:\n\n**min**\n\n    Lower bound. Defaults to the lowest allowed value for the input. \n\n**max**\n\n    Upper bound. Defaults to the highest allowed value for the input. \n\n**planes**\n\n    Specify which planes will be processed. Defaults to all available. \n\n",
+  "description": "Limit pixels components to the specified range.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

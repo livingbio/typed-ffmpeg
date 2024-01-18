@@ -1,5 +1,5 @@
 {
-  "description": "### 11.278 vibrance\n\nBoost or alter saturation.\n\nThe filter accepts the following options:\n\n**intensity**\n\n    Set strength of boost if positive value or strength of alter if negative value. Default is 0. Allowed range is from -2 to 2. \n\n**rbal**\n\n    Set the red balance. Default is 1. Allowed range is from -10 to 10. \n\n**gbal**\n\n    Set the green balance. Default is 1. Allowed range is from -10 to 10. \n\n**bbal**\n\n    Set the blue balance. Default is 1. Allowed range is from -10 to 10. \n\n**rlum**\n\n    Set the red luma coefficient. \n\n**glum**\n\n    Set the green luma coefficient. \n\n**blum**\n\n    Set the blue luma coefficient. \n\n**alternate**\n\n    If intensity is negative and this is set to 1, colors will change, otherwise colors will be less saturated, more towards gray. \n\n",
+  "description": "Boost or alter saturation.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

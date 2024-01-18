@@ -1,5 +1,5 @@
 {
-  "description": "### 8.12 adelay\n\nDelay one or more audio channels.\n\nSamples in delayed channel are filled with silence.\n\nThe filter accepts the following option:\n\n**delays**\n\n    Set list of delays in milliseconds for each channel separated by \u2019|\u2019. Unused delays will be silently ignored. If number of given delays is smaller than number of channels all remaining channels will not be delayed. If you want to delay exact number of samples, append \u2019S\u2019 to number. If you want instead to delay in seconds, append \u2019s\u2019 to number. \n\n**all**\n\n    Use last set delay for all remaining channels. By default is disabled. This option if enabled changes how option delays is interpreted. \n\n",
+  "description": "Delay one or more audio channels.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

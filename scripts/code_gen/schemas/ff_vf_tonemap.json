@@ -1,5 +1,5 @@
 {
-  "description": "### 11.261 tonemap\n\nTone map colors from different dynamic ranges.\n\nThis filter expects data in single precision floating point, as it needs to\noperate on (and can output) out-of-range values. Another filter, such as\nzscale, is needed to convert the resulting frame to a usable format.\n\nThe tonemapping algorithms implemented only work on linear light, so input\ndata should be linearized beforehand (and possibly correctly tagged).\n\n    \n    \n    ffmpeg -i INPUT -vf zscale=transfer=linear,tonemap=clip,zscale=transfer=bt709,format=yuv420p OUTPUT\n    \n\n",
+  "description": "Conversion to/from different dynamic ranges.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

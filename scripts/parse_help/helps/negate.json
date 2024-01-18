@@ -1,0 +1,92 @@
+{
+  "description": "Negate input video.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "negate",
+  "options": [
+    {
+      "alias": [
+        "components"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "set luma component",
+          "name": "y",
+          "value": "y"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set u component",
+          "name": "u",
+          "value": "u"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set v component",
+          "name": "v",
+          "value": "v"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set red component",
+          "name": "r",
+          "value": "r"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set green component",
+          "name": "g",
+          "value": "g"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set blue component",
+          "name": "b",
+          "value": "b"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set alpha component",
+          "name": "a",
+          "value": "a"
+        }
+      ],
+      "default": null,
+      "description": "set components to negate (default y+u+v+r+g+b)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "components",
+      "typing": "flags"
+    },
+    {
+      "alias": [
+        "negate_alpha"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "(default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "negate_alpha",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

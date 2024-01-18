@@ -1,5 +1,5 @@
 {
-  "description": "### 11.230 shear\n\nApply shear transform to input video.\n\nThis filter supports the following options:\n\n**shx**\n\n    Shear factor in X-direction. Default value is 0. Allowed range is from -2 to 2. \n\n**shy**\n\n    Shear factor in Y-direction. Default value is 0. Allowed range is from -2 to 2. \n\n**fillcolor, c**\n\n    Set the color used to fill the output area not covered by the transformed video. For the general syntax of this option, check the (ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual. If the special value \"none\" is selected then no background is printed (useful for example if the background is never shown). Default value is \"black\". \n\n**interp**\n\n    Set interpolation type. Can be bilinear or nearest. Default is bilinear. \n\n",
+  "description": "Shear transform the input image.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

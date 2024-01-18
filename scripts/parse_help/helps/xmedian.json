@@ -1,0 +1,141 @@
+{
+  "description": "Pick median pixels from several video inputs.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": true,
+  "is_support_timeline": true,
+  "name": "xmedian",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "choices": [],
+      "default": "3",
+      "description": "set number of inputs (from 3 to 255) (default 3)",
+      "flags": "..FV.......",
+      "max": "255",
+      "min": "3",
+      "name": "inputs",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "percentile"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set percentile (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "percentile",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "eof_action"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "2"
+        }
+      ],
+      "default": "repeat",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "eof_action",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "shortest",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "repeatlast"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "extend last frame of secondary streams beyond EOF (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "repeatlast",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "ts_sync_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
+          "name": "default",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
+          "name": "nearest",
+          "value": "1"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "ts_sync_mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.275 vidstabtransform\n\nVideo stabilization/deshaking: pass 2 of 2, see vidstabdetect for pass 1.\n\nRead a file with transform information for each frame and apply/compensate\nthem. Together with the vidstabdetect filter this can be used to deshake\nvideos. See also <http://public.hronopik.de/vid.stab>. It is important to also\nuse the unsharp filter, see below.\n\nTo enable compilation of this filter you need to configure FFmpeg with\n`--enable-libvidstab`.\n\n",
+  "description": "Transform the frames, pass 2 of 2 for stabilization (see vidstabdetect for pass 1).",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

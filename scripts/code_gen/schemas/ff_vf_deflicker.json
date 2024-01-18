@@ -1,5 +1,5 @@
 {
-  "description": "### 11.63 deflicker\n\nRemove temporal frame luminance variations.\n\nIt accepts the following options:\n\n**size, s**\n\n    Set moving-average filter size in frames. Default is 5. Allowed range is 2 - 129. \n\n**mode, m**\n\n    Set averaging mode to smooth temporal luminance variations. Available values are: \u2018am\u2019 Arithmetic mean \u2018gm\u2019 Geometric mean \u2018hm\u2019 Harmonic mean \u2018qm\u2019 Quadratic mean \u2018cm\u2019 Cubic mean \u2018pm\u2019 Power mean \u2018median\u2019 Median \n\n**bypass**\n\n    Do not actually modify frame. Useful when one only wants metadata. \n\n",
+  "description": "Remove temporal frame luminance variations.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

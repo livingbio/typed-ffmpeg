@@ -1,5 +1,5 @@
 {
-  "description": "### 8.82 deesser\n\nApply de-essing to the audio samples.\n\n**i**\n\n    Set intensity for triggering de-essing. Allowed range is from 0 to 1. Default is 0. \n\n**m**\n\n    Set amount of ducking on treble part of sound. Allowed range is from 0 to 1. Default is 0.5. \n\n**f**\n\n    How much of original frequency content to keep when de-essing. Allowed range is from 0 to 1. Default is 0.5. \n\n**s**\n\n    Set the output mode. It accepts the following values: i Pass input unchanged. o Pass ess filtered out. e Pass only ess. Default value is o. \n\n",
+  "description": "Apply de-essing to the audio.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

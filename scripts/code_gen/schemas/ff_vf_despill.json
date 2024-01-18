@@ -1,5 +1,5 @@
 {
-  "description": "### 11.68 despill\n\nRemove unwanted contamination of foreground colors, caused by reflected color\nof greenscreen or bluescreen.\n\nThis filter accepts the following options:\n\n**type**\n\n    Set what type of despill to use. \n\n**mix**\n\n    Set how spillmap will be generated. \n\n**expand**\n\n    Set how much to get rid of still remaining spill. \n\n**red**\n\n    Controls amount of red in spill area. \n\n**green**\n\n    Controls amount of green in spill area. Should be -1 for greenscreen. \n\n**blue**\n\n    Controls amount of blue in spill area. Should be -1 for bluescreen. \n\n**brightness**\n\n    Controls brightness of spill area, preserving colors. \n\n**alpha**\n\n    Modify alpha from generated spillmap. \n\n",
+  "description": "Despill video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.165 midequalizer\n\nApply Midway Image Equalization effect using two video streams.\n\nMidway Image Equalization adjusts a pair of images to have the same histogram,\nwhile maintaining their dynamics as much as possible. It\u2019s useful for e.g.\nmatching exposures from a pair of stereo cameras.\n\nThis filter has two inputs and one output, which must be of same pixel format,\nbut may be of different sizes. The output of filter is first input adjusted\nwith midway histogram of both inputs.\n\nThis filter accepts the following option:\n\n**planes**\n\n    Set which planes to process. Default is 15, which is all available planes. \n\n",
+  "description": "Apply Midway Equalization.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

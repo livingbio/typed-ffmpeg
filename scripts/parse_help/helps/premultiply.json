@@ -1,0 +1,44 @@
+{
+  "description": "PreMultiply first stream with first plane of second stream.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "premultiply",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
+      "flags": "..FV.......",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "inplace"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "enable inplace mode (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "inplace",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

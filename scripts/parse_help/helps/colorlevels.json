@@ -1,0 +1,287 @@
+{
+  "description": "Adjust the color levels.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "colorlevels",
+  "options": [
+    {
+      "alias": [
+        "rimin"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set input red black point (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "rimin",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "gimin"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set input green black point (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "gimin",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "bimin"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set input blue black point (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "bimin",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "aimin"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set input alpha black point (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "aimin",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "rimax"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input red white point (from -1 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "rimax",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "gimax"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input green white point (from -1 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "gimax",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "bimax"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input blue white point (from -1 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "bimax",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "aimax"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input alpha white point (from -1 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "aimax",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "romin"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set output red black point (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "romin",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "gomin"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set output green black point (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "gomin",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "bomin"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set output blue black point (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "bomin",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "aomin"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set output alpha black point (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "aomin",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "romax"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set output red white point (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "romax",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "gomax"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set output green white point (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "gomax",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "bomax"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set output blue white point (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "bomax",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "aomax"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set output alpha white point (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "aomax",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "preserve"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "disabled",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "luminance",
+          "name": "lum",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "max",
+          "name": "max",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "average",
+          "name": "avg",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "sum",
+          "name": "sum",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "norm",
+          "name": "nrm",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "power",
+          "name": "pwr",
+          "value": "6"
+        }
+      ],
+      "default": "none",
+      "description": "set preserve color mode (from 0 to 6) (default none)",
+      "flags": "..FV.....T.",
+      "max": "6",
+      "min": "0",
+      "name": "preserve",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

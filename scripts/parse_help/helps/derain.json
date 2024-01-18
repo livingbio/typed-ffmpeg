@@ -1,0 +1,108 @@
+{
+  "description": "Apply derain filter to the input.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "derain",
+  "options": [
+    {
+      "alias": [
+        "filter_type"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "derain filter flag",
+          "name": "derain",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "dehaze filter flag",
+          "name": "dehaze",
+          "value": "1"
+        }
+      ],
+      "default": "derain",
+      "description": "filter type(derain/dehaze) (from 0 to 1) (default derain)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "filter_type",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dnn_backend"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "native backend flag",
+          "name": "native",
+          "value": "0"
+        }
+      ],
+      "default": "native",
+      "description": "DNN backend (from 0 to 1) (default native)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "dnn_backend",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "model"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "path to model file",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "model",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "input"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "input name of the model (default \"x\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "input",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "output"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "output name of the model (default \"y\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "output",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

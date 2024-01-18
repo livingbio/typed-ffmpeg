@@ -1,5 +1,5 @@
 {
-  "description": "### 8.112 stereowiden\n\nThis filter enhance the stereo effect by suppressing signal common to both\nchannels and by delaying the signal of left into right and vice versa, thereby\nwidening the stereo effect.\n\nThe filter accepts the following options:\n\n**delay**\n\n    Time in milliseconds of the delay of left signal into right and vice versa. Default is 20 milliseconds. \n\n**feedback**\n\n    Amount of gain in delayed signal into right and vice versa. Gives a delay effect of left signal in right output and vice versa which gives widening effect. Default is 0.3. \n\n**crossfeed**\n\n    Cross feed of left into right with inverted phase. This helps in suppressing the mono. If the value is 1 it will cancel all the signal common to both channels. Default is 0.3. \n\n**drymix**\n\n    Set level of input signal of original channel. Default is 0.8. \n\n",
+  "description": "Apply stereo widening effect.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

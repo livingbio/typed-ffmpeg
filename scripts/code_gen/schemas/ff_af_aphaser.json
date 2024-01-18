@@ -1,5 +1,5 @@
 {
-  "description": "### 8.42 aphaser\n\nAdd a phasing effect to the input audio.\n\nA phaser filter creates series of peaks and troughs in the frequency spectrum.\nThe position of the peaks and troughs are modulated so that they vary over\ntime, creating a sweeping effect.\n\nA description of the accepted parameters follows.\n\n**in_gain**\n\n    Set input gain. Default is 0.4. \n\n**out_gain**\n\n    Set output gain. Default is 0.74 \n\n**delay**\n\n    Set delay in milliseconds. Default is 3.0. \n\n**decay**\n\n    Set decay. Default is 0.4. \n\n**speed**\n\n    Set modulation speed in Hz. Default is 0.5. \n\n**type**\n\n    Set modulation type. Default is triangular. It accepts the following values: \u2018triangular, t\u2019 \u2018sinusoidal, s\u2019 \n\n",
+  "description": "Add a phasing effect to the audio.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

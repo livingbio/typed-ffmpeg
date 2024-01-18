@@ -1,5 +1,5 @@
 {
-  "description": "### 11.150 lut1d\n\nApply a 1D LUT to an input video.\n\nThe filter accepts the following options:\n\n**file**\n\n    Set the 1D LUT file name. Currently supported formats: \u2018cube\u2019 Iridas \u2018csp\u2019 cineSpace \n\n**interp**\n\n    Select interpolation mode. Available values are: \u2018nearest\u2019 Use values from the nearest defined point. \u2018linear\u2019 Interpolate values using the linear interpolation. \u2018cosine\u2019 Interpolate values using the cosine interpolation. \u2018cubic\u2019 Interpolate values using the cubic interpolation. \u2018spline\u2019 Interpolate values using the spline interpolation. \n\n",
+  "description": "Adjust colors using a 1D LUT.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,0 +1,388 @@
+{
+  "description": "Apply various stereo tools.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "stereotools",
+  "options": [
+    {
+      "alias": [
+        "level_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set level in (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "level_in",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set level out (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "level_out",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "balance_in"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set balance in (from -1 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "balance_in",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "balance_out"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set balance out (from -1 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "balance_out",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "softclip"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "enable softclip (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "softclip",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "mutel"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "mute L (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "mutel",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "muter"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "mute R (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "muter",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "phasel"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "phase L (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "phasel",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "phaser"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "phase R (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "phaser",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "ms",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "ll",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "rr",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "r",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "rl",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "ll",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "rr",
+          "value": "8"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "rl",
+          "value": "9"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "r",
+          "value": "10"
+        }
+      ],
+      "default": null,
+      "description": "set stereo mode (from 0 to 10) (default lr>lr)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "slev"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set side level (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "slev",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "sbal"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set side balance (from -1 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "sbal",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "mlev"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set middle level (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "mlev",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "mpan"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set middle pan (from -1 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "mpan",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "base"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set stereo base (from -1 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "base",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "delay"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set delay (from -20 to 20) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "20",
+      "min": "-20",
+      "name": "delay",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "sclevel"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set S/C level (from 1 to 100) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "100",
+      "min": "1",
+      "name": "sclevel",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "phase"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set stereo phase (from 0 to 360) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "360",
+      "min": "0",
+      "name": "phase",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "bmode_in"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "balance",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "amplitude",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "power",
+          "value": "2"
+        }
+      ],
+      "default": "balance",
+      "description": "set balance in mode (from 0 to 2) (default balance)",
+      "flags": "..F.A....T.",
+      "max": "2",
+      "min": "0",
+      "name": "bmode_in",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bmode_out"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "balance",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "amplitude",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "power",
+          "value": "2"
+        }
+      ],
+      "default": "balance",
+      "description": "set balance out mode (from 0 to 2) (default balance)",
+      "flags": "..F.A....T.",
+      "max": "2",
+      "min": "0",
+      "name": "bmode_out",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

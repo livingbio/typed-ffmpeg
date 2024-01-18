@@ -1,5 +1,5 @@
 {
-  "description": "### 11.29 ciescope\n\nDisplay CIE color diagram with pixels overlaid onto it.\n\nThe filter accepts the following options:\n\n**system**\n\n    Set color system. \u2018ntsc, 470m\u2019 \u2018ebu, 470bg\u2019 \u2018smpte\u2019 \u2018240m\u2019 \u2018apple\u2019 \u2018widergb\u2019 \u2018cie1931\u2019 \u2018rec709, hdtv\u2019 \u2018uhdtv, rec2020\u2019 \u2018dcip3\u2019 \n\n**cie**\n\n    Set CIE system. \u2018xyy\u2019 \u2018ucs\u2019 \u2018luv\u2019 \n\n**gamuts**\n\n    Set what gamuts to draw. See system option for available values. \n\n**size, s**\n\n    Set ciescope size, by default set to 512. \n\n**intensity, i**\n\n    Set intensity used to map input pixel values to CIE diagram. \n\n**contrast**\n\n    Set contrast used to draw tongue colors that are out of active color system gamut. \n\n**corrgamma**\n\n    Correct gamma displayed on scope, by default enabled. \n\n**showwhite**\n\n    Show white point on CIE diagram, by default disabled. \n\n**gamma**\n\n    Set input gamma. Used only with XYZ input color space. \n\n**fill**\n\n    Fill with CIE colors. By default is enabled. \n\n",
+  "description": "Video CIE scope.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

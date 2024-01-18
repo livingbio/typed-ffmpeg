@@ -1,0 +1,174 @@
+{
+  "description": "Block-Matching 3D denoiser.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "bm3d",
+  "options": [
+    {
+      "alias": [
+        "sigma"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set denoising strength (from 0 to 99999.9) (default 1)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "sigma",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "block"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "set size of local patch (from 8 to 64) (default 16)",
+      "flags": "..FV.......",
+      "max": "64",
+      "min": "8",
+      "name": "block",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bstep"
+      ],
+      "choices": [],
+      "default": "4",
+      "description": "set sliding step for processing blocks (from 1 to 64) (default 4)",
+      "flags": "..FV.......",
+      "max": "64",
+      "min": "1",
+      "name": "bstep",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "group"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set maximal number of similar blocks (from 1 to 256) (default 1)",
+      "flags": "..FV.......",
+      "max": "256",
+      "min": "1",
+      "name": "group",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "choices": [],
+      "default": "9",
+      "description": "set block matching range (from 1 to INT_MAX) (default 9)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "range",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mstep"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set step for block matching (from 1 to 64) (default 1)",
+      "flags": "..FV.......",
+      "max": "64",
+      "min": "1",
+      "name": "mstep",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "thmse"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "thmse",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "hdthr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "hdthr",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "estim"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "basic estimate",
+          "name": "basic",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "final estimate",
+          "name": "final",
+          "value": "1"
+        }
+      ],
+      "default": "basic",
+      "description": "set filtering estimation mode (from 0 to 1) (default basic)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "estim",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ref"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "have reference stream (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "ref",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set planes to filter (from 0 to 15) (default 7)",
+      "flags": "..FV.......",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

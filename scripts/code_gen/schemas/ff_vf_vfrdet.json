@@ -1,5 +1,5 @@
 {
-  "description": "### 11.277 vfrdet\n\nDetect variable frame rate video.\n\nThis filter tries to detect if the input is variable or constant frame rate.\n\nAt end it will output number of frames detected as having variable delta pts,\nand ones with constant delta pts. If there was frames with variable delta,\nthan it will also show min, max and average delta encountered.\n\n",
+  "description": "Variable frame rate detect filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

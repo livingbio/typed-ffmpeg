@@ -1,5 +1,5 @@
 {
-  "description": "### 11.171 msad\n\nObtain the MSAD (Mean Sum of Absolute Differences) between two input videos.\n\nThis filter takes two input videos.\n\nBoth input videos must have the same resolution and pixel format for this\nfilter to work correctly. Also it assumes that both inputs have the same\nnumber of frames, which are compared one by one.\n\nThe obtained per component, average, min and max MSAD is printed through the\nlogging system.\n\nThe filter stores the calculated MSAD of each frame in frame metadata.\n\nThis filter also supports the framesync options.\n\nIn the below example the input file main.mpg being processed is compared with\nthe reference file ref.mpg.\n\n    \n    \n    ffmpeg -i main.mpg -i ref.mpg -lavfi msad -f null -\n    \n\n",
+  "description": "Calculate the MSAD between two video streams.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

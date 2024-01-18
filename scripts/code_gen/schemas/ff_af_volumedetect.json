@@ -1,5 +1,5 @@
 {
-  "description": "### 8.121 volumedetect\n\nDetect the volume of the input video.\n\nThe filter has no parameters. It supports only 16-bit signed integer samples,\nso the input will be converted when needed. Statistics about the volume will\nbe printed in the log when the input stream end is reached.\n\nIn particular it will show the mean volume (root mean square), maximum volume\n(on a per-sample basis), and the beginning of a histogram of the registered\nvolume values (from the maximum value to a cumulated 1/1000 of the samples).\n\nAll volumes are in decibels relative to the maximum PCM value.\n\n",
+  "description": "Detect audio volume.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

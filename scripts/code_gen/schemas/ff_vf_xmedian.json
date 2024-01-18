@@ -1,5 +1,5 @@
 {
-  "description": "### 11.289 xmedian\n\nPick median pixels from several input videos.\n\nThe filter accepts the following options:\n\n**inputs**\n\n    Set number of inputs. Default is 3. Allowed range is from 3 to 255. If number of inputs is even number, than result will be mean value between two median values. \n\n**planes**\n\n    Set which planes to filter. Default value is 15, by which all planes are processed. \n\n**percentile**\n\n    Set median percentile. Default value is 0.5. Default value of 0.5 will pick always median values, while 0 will pick minimum values, and 1 maximum values. \n\n",
+  "description": "Pick median pixels from several video inputs.",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] * int(inputs)",
   "formula_output_typings": null,

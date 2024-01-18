@@ -1,5 +1,5 @@
 {
-  "description": "### 11.295 zscale\n\nScale (resize) the input video, using the z.lib library:\n<https://github.com/sekrit-twc/zimg>. To enable compilation of this filter,\nyou need to configure FFmpeg with `--enable-libzimg`.\n\nThe zscale filter forces the output display aspect ratio to be the same as the\ninput, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by the next\nfilter, the zscale filter will convert the input to the requested format.\n\n",
+  "description": "Apply resizing, colorspace and bit depth conversion.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

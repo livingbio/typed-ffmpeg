@@ -1,0 +1,87 @@
+{
+  "description": "Generate sine wave audio signal.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "sine",
+  "options": [
+    {
+      "alias": [
+        "frequency",
+        "f"
+      ],
+      "choices": [],
+      "default": "440",
+      "description": "set the sine frequency (from 0 to DBL_MAX) (default 440)",
+      "flags": "..F.A......",
+      "max": "DBL_MAX",
+      "min": "0",
+      "name": "frequency",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "beep_factor",
+        "b"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the beep frequency factor (from 0 to DBL_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "DBL_MAX",
+      "min": "0",
+      "name": "beep_factor",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "sample_rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "44100",
+      "description": "set the sample rate (from 1 to INT_MAX) (default 44100)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "sample_rate",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the audio duration (default 0)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "typing": "duration"
+    },
+    {
+      "alias": [
+        "samples_per_frame"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the number of samples per frame (default \"1024\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "samples_per_frame",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

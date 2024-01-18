@@ -1,5 +1,5 @@
 {
-  "description": "### 11.157 maskedmerge\n\nMerge the first input stream with the second input stream using per pixel\nweights in the third input stream.\n\nA value of 0 in the third stream pixel component means that pixel component\nfrom first stream is returned unchanged, while maximum value (eg. 255 for\n8-bit videos) means that pixel component from second stream is returned\nunchanged. Intermediate values define the amount of merging between both input\nstream\u2019s pixel components.\n\nThis filter accepts the following options:\n\n**planes**\n\n    Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed. \n\n",
+  "description": "Merge first stream with second stream using third stream as mask.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

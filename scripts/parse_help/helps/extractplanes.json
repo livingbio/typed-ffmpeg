@@ -1,0 +1,74 @@
+{
+  "description": "Extract planes as grayscale frames.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "extractplanes",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "set luma plane",
+          "name": "y",
+          "value": "y"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set u plane",
+          "name": "u",
+          "value": "u"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set v plane",
+          "name": "v",
+          "value": "v"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set red plane",
+          "name": "r",
+          "value": "r"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set green plane",
+          "name": "g",
+          "value": "g"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set blue plane",
+          "name": "b",
+          "value": "b"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set alpha plane",
+          "name": "a",
+          "value": "a"
+        }
+      ],
+      "default": "r",
+      "description": "set planes (default r)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "planes",
+      "typing": "flags"
+    }
+  ],
+  "output_types": null
+}

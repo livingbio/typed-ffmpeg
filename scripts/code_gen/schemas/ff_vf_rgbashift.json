@@ -1,5 +1,5 @@
 {
-  "description": "### 11.211 rgbashift\n\nShift R/G/B/A pixels horizontally and/or vertically.\n\nThe filter accepts the following options:\n\n**rh**\n\n    Set amount to shift red horizontally. \n\n**rv**\n\n    Set amount to shift red vertically. \n\n**gh**\n\n    Set amount to shift green horizontally. \n\n**gv**\n\n    Set amount to shift green vertically. \n\n**bh**\n\n    Set amount to shift blue horizontally. \n\n**bv**\n\n    Set amount to shift blue vertically. \n\n**ah**\n\n    Set amount to shift alpha horizontally. \n\n**av**\n\n    Set amount to shift alpha vertically. \n\n**edge**\n\n    Set edge mode, can be smear, default, or warp. \n\n",
+  "description": "Shift RGBA.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

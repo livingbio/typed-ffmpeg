@@ -1,0 +1,303 @@
+{
+  "description": "Finite Impulse Response Equalizer.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "firequalizer",
+  "options": [
+    {
+      "alias": [
+        "gain"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set gain curve (default \"gain_interpolate(f)\")",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "gain",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "gain_entry"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set gain entry",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "gain_entry",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "delay"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set delay (from 0 to 1e+10) (default 0.01)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "delay",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "accuracy"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set accuracy (from 0 to 1e+10) (default 5)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "accuracy",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "wfunc"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "rectangular window",
+          "name": "rectangular",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "hann window",
+          "name": "hann",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "hamming window",
+          "name": "hamming",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "blackman window",
+          "name": "blackman",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "3-term nuttall window",
+          "name": "nuttall3",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "minimum 3-term nuttall window",
+          "name": "mnuttall3",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "nuttall window",
+          "name": "nuttall",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "blackman-nuttall window",
+          "name": "bnuttall",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "blackman-harris window",
+          "name": "bharris",
+          "value": "8"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "tukey window",
+          "name": "tukey",
+          "value": "9"
+        }
+      ],
+      "default": "hann",
+      "description": "set window function (from 0 to 9) (default hann)",
+      "flags": "..F.A......",
+      "max": "9",
+      "min": "0",
+      "name": "wfunc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fixed"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set fixed frame samples (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "fixed",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "multi"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set multi channels mode (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "multi",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "zero_phase"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set zero phase mode (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "zero_phase",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "linear-freq linear-gain",
+          "name": "linlin",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "linear-freq logarithmic-gain",
+          "name": "linlog",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "logarithmic-freq linear-gain",
+          "name": "loglin",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "logarithmic-freq logarithmic-gain",
+          "name": "loglog",
+          "value": "3"
+        }
+      ],
+      "default": "linlog",
+      "description": "set gain scale (from 0 to 3) (default linlog)",
+      "flags": "..F.A......",
+      "max": "3",
+      "min": "0",
+      "name": "scale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dumpfile"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set dump file",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "dumpfile",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "dumpscale"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "linear-freq linear-gain",
+          "name": "linlin",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "linear-freq logarithmic-gain",
+          "name": "linlog",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "logarithmic-freq linear-gain",
+          "name": "loglin",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "logarithmic-freq logarithmic-gain",
+          "name": "loglog",
+          "value": "3"
+        }
+      ],
+      "default": "linlog",
+      "description": "set dump scale (from 0 to 3) (default linlog)",
+      "flags": "..F.A......",
+      "max": "3",
+      "min": "0",
+      "name": "dumpscale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fft2"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set 2-channels fft (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "fft2",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "min_phase"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set minimum phase mode (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "min_phase",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 8.68 axcorrelate\n\nCalculate normalized windowed cross-correlation between two input audio\nstreams.\n\nResulted samples are always between -1 and 1 inclusive. If result is 1 it\nmeans two input samples are highly correlated in that selected segment. Result\n0 means they are not correlated at all. If result is -1 it means two input\nsamples are out of phase, which means they cancel each other.\n\nThe filter accepts the following options:\n\n**size**\n\n    Set size of segment over which cross-correlation is calculated. Default is 256. Allowed range is from 2 to 131072. \n\n**algo**\n\n    Set algorithm for cross-correlation. Can be slow or fast or best. Default is best. Fast algorithm assumes mean values over any given segment are always zero and thus need much less calculations to make. This is generally not true, but is valid for typical audio streams. \n\n",
+  "description": "Cross-correlate two audio streams.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

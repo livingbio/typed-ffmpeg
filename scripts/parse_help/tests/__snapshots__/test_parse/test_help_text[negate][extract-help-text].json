@@ -61,7 +61,7 @@
           "value": "a"
         }
       ],
-      "default": null,
+      "default": "y+u+v+r+g+b",
       "description": "set components to negate (default y+u+v+r+g+b)",
       "flags": "..FV.....T.",
       "max": null,

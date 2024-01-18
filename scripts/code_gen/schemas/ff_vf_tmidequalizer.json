@@ -1,5 +1,5 @@
 {
-  "description": "### 11.259 tmidequalizer\n\nApply Temporal Midway Video Equalization effect.\n\nMidway Video Equalization adjusts a sequence of video frames to have the same\nhistograms, while maintaining their dynamics as much as possible. It\u2019s useful\nfor e.g. matching exposures from a video frames sequence.\n\nThis filter accepts the following option:\n\n**radius**\n\n    Set filtering radius. Default is 5. Allowed range is from 1 to 127. \n\n**sigma**\n\n    Set filtering sigma. Default is 0.5. This controls strength of filtering. Setting this option to 0 effectively does nothing. \n\n**planes**\n\n    Set which planes to process. Default is 15, which is all available planes. \n\n",
+  "description": "Apply Temporal Midway Equalization.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

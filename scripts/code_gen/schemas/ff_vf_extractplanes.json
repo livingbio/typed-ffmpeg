@@ -1,5 +1,5 @@
 {
-  "description": "### 11.87 extractplanes\n\nExtract color channel components from input video stream into separate\ngrayscale video streams.\n\nThe filter accepts the following option:\n\n**planes**\n\n    Set plane(s) to extract. Available values for planes are: \u2018y\u2019 \u2018u\u2019 \u2018v\u2019 \u2018a\u2019 \u2018r\u2019 \u2018g\u2019 \u2018b\u2019 Choosing planes not available in the input will result in an error. That means you cannot select r, g, b planes with y, u, v planes at same time. \n\n",
+  "description": "Extract planes as grayscale frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": "[StreamType.video] * len(planes.split('+'))",

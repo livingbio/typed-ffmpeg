@@ -1,5 +1,5 @@
 {
-  "description": "### 18.20 setrange\n\nForce color range for the output video frame.\n\nThe `setrange` filter marks the color range property for the output frames. It\ndoes not change the input frame, but only sets the corresponding property,\nwhich affects how the frame is treated by following filters.\n\nThe filter accepts the following options:\n\n**range**\n\n    Available values are: \u2018auto\u2019 Keep the same color range property. \u2018unspecified, unknown\u2019 Set the color range as unspecified. \u2018limited, tv, mpeg\u2019 Set the color range as limited. \u2018full, pc, jpeg\u2019 Set the color range as full. \n\n",
+  "description": "Force color range for the output video frame.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

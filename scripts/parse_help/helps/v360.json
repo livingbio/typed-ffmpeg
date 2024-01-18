@@ -1,0 +1,970 @@
+{
+  "description": "Convert 360 projection of video.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "v360",
+  "options": [
+    {
+      "alias": [
+        "input"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "equirectangular",
+          "name": "e",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "equirectangular",
+          "name": "equirect",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubemap 3x2",
+          "name": "c3x2",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubemap 6x1",
+          "name": "c6x1",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "equi-angular cubemap",
+          "name": "eac",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "dual fisheye",
+          "name": "dfisheye",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "regular video",
+          "name": "flat",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "regular video",
+          "name": "rectilinear",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "regular video",
+          "name": "gnomonic",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "barrel facebook's 360 format",
+          "name": "barrel",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "barrel facebook's 360 format",
+          "name": "fb",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubemap 1x6",
+          "name": "c1x6",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "stereographic",
+          "name": "sg",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mercator",
+          "name": "mercator",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "ball",
+          "name": "ball",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hammer",
+          "name": "hammer",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "sinusoidal",
+          "name": "sinusoidal",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fisheye",
+          "name": "fisheye",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "pannini",
+          "name": "pannini",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cylindrical",
+          "name": "cylindrical",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "tetrahedron",
+          "name": "tetrahedron",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "barrel split facebook's 360 format",
+          "name": "barrelsplit",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "truncated square pyramid",
+          "name": "tsp",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "half equirectangular",
+          "name": "hequirect",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "half equirectangular",
+          "name": "he",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "equisolid",
+          "name": "equisolid",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "orthographic",
+          "name": "og",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "octahedron",
+          "name": "octahedron",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cylindrical equal area",
+          "name": "cylindricalea",
+          "value": "24"
+        }
+      ],
+      "default": "e",
+      "description": "set input projection (from 0 to 24) (default e)",
+      "flags": "..FV.......",
+      "max": "24",
+      "min": "0",
+      "name": "input",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "output"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "equirectangular",
+          "name": "e",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "equirectangular",
+          "name": "equirect",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubemap 3x2",
+          "name": "c3x2",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubemap 6x1",
+          "name": "c6x1",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "equi-angular cubemap",
+          "name": "eac",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "dual fisheye",
+          "name": "dfisheye",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "regular video",
+          "name": "flat",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "regular video",
+          "name": "rectilinear",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "regular video",
+          "name": "gnomonic",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "barrel facebook's 360 format",
+          "name": "barrel",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "barrel facebook's 360 format",
+          "name": "fb",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubemap 1x6",
+          "name": "c1x6",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "stereographic",
+          "name": "sg",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mercator",
+          "name": "mercator",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "ball",
+          "name": "ball",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hammer",
+          "name": "hammer",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "sinusoidal",
+          "name": "sinusoidal",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fisheye",
+          "name": "fisheye",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "pannini",
+          "name": "pannini",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cylindrical",
+          "name": "cylindrical",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "perspective",
+          "name": "perspective",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "tetrahedron",
+          "name": "tetrahedron",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "barrel split facebook's 360 format",
+          "name": "barrelsplit",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "truncated square pyramid",
+          "name": "tsp",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "half equirectangular",
+          "name": "hequirect",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "half equirectangular",
+          "name": "he",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "equisolid",
+          "name": "equisolid",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "orthographic",
+          "name": "og",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "octahedron",
+          "name": "octahedron",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cylindrical equal area",
+          "name": "cylindricalea",
+          "value": "24"
+        }
+      ],
+      "default": "c3x2",
+      "description": "set output projection (from 0 to 24) (default c3x2)",
+      "flags": "..FV.......",
+      "max": "24",
+      "min": "0",
+      "name": "output",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "interp"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "nearest neighbour",
+          "name": "near",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "nearest neighbour",
+          "name": "nearest",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "bilinear interpolation",
+          "name": "line",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "bilinear interpolation",
+          "name": "linear",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "lagrange9 interpolation",
+          "name": "lagrange9",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "bicubic interpolation",
+          "name": "cube",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "bicubic interpolation",
+          "name": "cubic",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "lanczos interpolation",
+          "name": "lanc",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "lanczos interpolation",
+          "name": "lanczos",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "spline16 interpolation",
+          "name": "sp16",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "spline16 interpolation",
+          "name": "spline16",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "gaussian interpolation",
+          "name": "gauss",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "gaussian interpolation",
+          "name": "gaussian",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mitchell interpolation",
+          "name": "mitchell",
+          "value": "7"
+        }
+      ],
+      "default": "line",
+      "description": "set interpolation method (from 0 to 7) (default line)",
+      "flags": "..FV.......",
+      "max": "7",
+      "min": "0",
+      "name": "interp",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "output width (from 0 to 32767) (default 0)",
+      "flags": "..FV.......",
+      "max": "32767",
+      "min": "0",
+      "name": "w",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "output height (from 0 to 32767) (default 0)",
+      "flags": "..FV.......",
+      "max": "32767",
+      "min": "0",
+      "name": "h",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "in_stereo"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "2d mono",
+          "name": "2d",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side",
+          "name": "sbs",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "top bottom",
+          "name": "tb",
+          "value": "2"
+        }
+      ],
+      "default": "2d",
+      "description": "input stereo format (from 0 to 2) (default 2d)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "in_stereo",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "out_stereo"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "2d mono",
+          "name": "2d",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side",
+          "name": "sbs",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "top bottom",
+          "name": "tb",
+          "value": "2"
+        }
+      ],
+      "default": "2d",
+      "description": "output stereo format (from 0 to 2) (default 2d)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "out_stereo",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "in_forder"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "input cubemap face order (default \"rludfb\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "in_forder",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "out_forder"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "output cubemap face order (default \"rludfb\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "out_forder",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "in_frot"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "input cubemap face rotation (default \"000000\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "in_frot",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "out_frot"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "output cubemap face rotation (default \"000000\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "out_frot",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "in_pad"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "percent input cubemap pads (from 0 to 0.1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "in_pad",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "out_pad"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "percent output cubemap pads (from 0 to 0.1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "out_pad",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fin_pad"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "fixed input cubemap pads (from 0 to 100) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "0",
+      "name": "fin_pad",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fout_pad"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "fixed output cubemap pads (from 0 to 100) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "0",
+      "name": "fout_pad",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "yaw"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "yaw rotation (from -180 to 180) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "180",
+      "min": "-180",
+      "name": "yaw",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "pitch"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "pitch rotation (from -180 to 180) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "180",
+      "min": "-180",
+      "name": "pitch",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "roll"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "roll rotation (from -180 to 180) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "180",
+      "min": "-180",
+      "name": "roll",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rorder"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "rotation order (default \"ypr\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "rorder",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "h_fov"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "output horizontal field of view (from 0 to 360) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "360",
+      "min": "0",
+      "name": "h_fov",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "v_fov"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "output vertical field of view (from 0 to 360) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "360",
+      "min": "0",
+      "name": "v_fov",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "d_fov"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "output diagonal field of view (from 0 to 360) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "360",
+      "min": "0",
+      "name": "d_fov",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "h_flip"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "flip out video horizontally (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "h_flip",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "v_flip"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "flip out video vertically (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "v_flip",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "d_flip"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "flip out video indepth (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "d_flip",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "ih_flip"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "flip in video horizontally (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "ih_flip",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "iv_flip"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "flip in video vertically (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "iv_flip",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "in_trans"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "transpose video input (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "in_trans",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "out_trans"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "transpose video output (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "out_trans",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "ih_fov"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "input horizontal field of view (from 0 to 360) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "360",
+      "min": "0",
+      "name": "ih_fov",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "iv_fov"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "input vertical field of view (from 0 to 360) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "360",
+      "min": "0",
+      "name": "iv_fov",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "id_fov"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "input diagonal field of view (from 0 to 360) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "360",
+      "min": "0",
+      "name": "id_fov",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "h_offset"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "output horizontal off-axis offset (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "h_offset",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "v_offset"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "output vertical off-axis offset (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "v_offset",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "alpha_mask"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "build mask in alpha plane (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "alpha_mask",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "reset_rot"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "reset rotation (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "reset_rot",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

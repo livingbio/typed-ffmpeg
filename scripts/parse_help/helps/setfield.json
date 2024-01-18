@@ -1,0 +1,61 @@
+{
+  "description": "Force field for the output video frame.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "setfield",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "keep the same input field",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mark as bottom-field-first",
+          "name": "bff",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mark as top-field-first",
+          "name": "tff",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mark as progressive",
+          "name": "prog",
+          "value": "2"
+        }
+      ],
+      "default": "auto",
+      "description": "select interlace mode (from -1 to 2) (default auto)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "-1",
+      "name": "mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

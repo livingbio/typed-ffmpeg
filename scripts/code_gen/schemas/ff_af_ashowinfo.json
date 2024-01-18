@@ -1,5 +1,5 @@
 {
-  "description": "### 8.54 ashowinfo\n\nShow a line containing various information for each input audio frame. The\ninput audio is not modified.\n\nThe shown line contains a sequence of key/value pairs of the form key:value.\n\nThe following values are shown in the output:\n\n**n**\n\n    The (sequential) number of the input frame, starting from 0. \n\n**pts**\n\n    The presentation timestamp of the input frame, in time base units; the time base depends on the filter input pad, and is usually 1/sample_rate. \n\n**pts_time**\n\n    The presentation timestamp of the input frame in seconds. \n\n**fmt**\n\n    The sample format. \n\n**chlayout**\n\n    The channel layout. \n\n**rate**\n\n    The sample rate for the audio frame. \n\n**nb_samples**\n\n    The number of samples (per channel) in the frame. \n\n**checksum**\n\n    The Adler-32 checksum (printed in hexadecimal) of the audio data. For planar audio, the data is treated as if all the planes were concatenated. \n\n**plane_checksums**\n\n    A list of Adler-32 checksums for each data plane. \n\n",
+  "description": "Show textual information for each audio frame.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

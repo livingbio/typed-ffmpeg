@@ -1,0 +1,1483 @@
+{
+  "description": "Blend successive frames.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "tblend",
+  "options": [
+    {
+      "alias": [
+        "c0_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "normal",
+      "description": "set component #0 blend mode (from 0 to 39) (default normal)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "0",
+      "name": "c0_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c1_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "normal",
+      "description": "set component #1 blend mode (from 0 to 39) (default normal)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "0",
+      "name": "c1_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c2_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "normal",
+      "description": "set component #2 blend mode (from 0 to 39) (default normal)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "0",
+      "name": "c2_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c3_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "normal",
+      "description": "set component #3 blend mode (from 0 to 39) (default normal)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "0",
+      "name": "c3_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "all_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "-1",
+      "description": "set blend mode for all components (from -1 to 39) (default -1)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "-1",
+      "name": "all_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c0_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color component #0 expression",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c0_expr",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "c1_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color component #1 expression",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c1_expr",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "c2_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color component #2 expression",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c2_expr",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "c3_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color component #3 expression",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c3_expr",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "all_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set expression for all color components",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "all_expr",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "c0_opacity"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set color component #0 opacity (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "c0_opacity",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "c1_opacity"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set color component #1 opacity (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "c1_opacity",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "c2_opacity"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set color component #2 opacity (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "c2_opacity",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "c3_opacity"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set color component #3 opacity (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "c3_opacity",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "all_opacity"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set opacity for all color components (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "all_opacity",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

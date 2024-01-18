@@ -1,0 +1,49 @@
+{
+  "description": "Debands video quickly using gradients.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "gradfun",
+  "options": [
+    {
+      "alias": [
+        "strength"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "strength",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "radius"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "The neighborhood to fit the gradient to. (from 4 to 32) (default 16)",
+      "flags": "..FV.......",
+      "max": "32",
+      "min": "4",
+      "name": "radius",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

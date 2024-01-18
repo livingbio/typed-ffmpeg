@@ -1,0 +1,101 @@
+{
+  "description": "Audio Compensation Delay Line.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "compensationdelay",
+  "options": [
+    {
+      "alias": [
+        "mm"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set mm distance (from 0 to 10) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "mm",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cm"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set cm distance (from 0 to 100) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "100",
+      "min": "0",
+      "name": "cm",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "m"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set meter distance (from 0 to 100) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "100",
+      "min": "0",
+      "name": "m",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "dry"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set dry amount (from 0 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "dry",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "wet"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set wet amount (from 0 to 1) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "wet",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "temp"
+      ],
+      "choices": [],
+      "default": "20",
+      "description": "set temperature \u00b0C (from -50 to 50) (default 20)",
+      "flags": "..F.A....T.",
+      "max": "50",
+      "min": "-50",
+      "name": "temp",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

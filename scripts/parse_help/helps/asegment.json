@@ -1,0 +1,44 @@
+{
+  "description": "Segment audio stream.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "asegment",
+  "options": [
+    {
+      "alias": [
+        "timestamps"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "timestamps of input at which to split input",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "timestamps",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "samples"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "samples at which to split input",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "samples",
+      "typing": "string"
+    }
+  ],
+  "output_types": null
+}

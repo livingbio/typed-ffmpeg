@@ -1,5 +1,5 @@
 {
-  "description": "### 11.205 readvitc\n\nRead vertical interval timecode (VITC) information from the top lines of a\nvideo frame.\n\nThe filter adds frame metadata key `lavfi.readvitc.tc_str` with the timecode\nvalue, if a valid timecode has been detected. Further metadata key\n`lavfi.readvitc.found` is set to 0/1 depending on whether timecode data has\nbeen found or not.\n\nThis filter accepts the following options:\n\n**scan_max**\n\n    Set the maximum number of lines to scan for VITC data. If the value is set to -1 the full video frame is scanned. Default is 45. \n\n**thr_b**\n\n    Set the luma threshold for black. Accepts float numbers in the range [0.0,1.0], default value is 0.2. The value must be equal or less than thr_w. \n\n**thr_w**\n\n    Set the luma threshold for white. Accepts float numbers in the range [0.0,1.0], default value is 0.6. The value must be equal or greater than thr_b. \n\n",
+  "description": "Read vertical interval timecode and write it to frame metadata.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

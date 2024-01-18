@@ -1,0 +1,114 @@
+{
+  "description": "Pixel data analysis.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "pixscope",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set scope x offset (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "x",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set scope y offset (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "y",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set scope width (from 1 to 80) (default 7)",
+      "flags": "..FV.....T.",
+      "max": "80",
+      "min": "1",
+      "name": "w",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set scope height (from 1 to 80) (default 7)",
+      "flags": "..FV.....T.",
+      "max": "80",
+      "min": "1",
+      "name": "h",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "o"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set window opacity (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "o",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "wx"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set window x offset (from -1 to 1) (default -1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "wx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "wy"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set window y offset (from -1 to 1) (default -1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "wy",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

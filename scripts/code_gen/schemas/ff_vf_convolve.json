@@ -1,5 +1,5 @@
 {
-  "description": "### 11.45 convolve\n\nApply 2D convolution of video stream in frequency domain using second stream\nas impulse.\n\nThe filter accepts the following options:\n\n**planes**\n\n    Set which planes to process. \n\n**impulse**\n\n    Set which impulse video frames will be processed, can be first or all. Default is all. \n\nThe `convolve` filter also supports the framesync options.\n\n",
+  "description": "Convolve first video stream with second video stream.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

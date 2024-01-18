@@ -1,0 +1,307 @@
+{
+  "description": "Apply convolution filter.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "convolution",
+  "options": [
+    {
+      "alias": [
+        "0m"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set matrix for 1st plane (default \"0 0 0 0 1 0 0 0 0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "0m",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "1m"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set matrix for 2nd plane (default \"0 0 0 0 1 0 0 0 0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "1m",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "2m"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set matrix for 3rd plane (default \"0 0 0 0 1 0 0 0 0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "2m",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "3m"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set matrix for 4th plane (default \"0 0 0 0 1 0 0 0 0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "3m",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "0rdiv"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set rdiv for 1st plane (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "0rdiv",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "1rdiv"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set rdiv for 2nd plane (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "1rdiv",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "2rdiv"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set rdiv for 3rd plane (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "2rdiv",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "3rdiv"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set rdiv for 4th plane (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "3rdiv",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "0bias"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set bias for 1st plane (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "0bias",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "1bias"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set bias for 2nd plane (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "1bias",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "2bias"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set bias for 3rd plane (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "2bias",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "3bias"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set bias for 4th plane (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "3bias",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "0mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "square matrix",
+          "name": "square",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "single row matrix",
+          "name": "row",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "single column matrix",
+          "name": "column",
+          "value": "2"
+        }
+      ],
+      "default": "square",
+      "description": "set matrix mode for 1st plane (from 0 to 2) (default square)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "0",
+      "name": "0mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "1mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "square matrix",
+          "name": "square",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "single row matrix",
+          "name": "row",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "single column matrix",
+          "name": "column",
+          "value": "2"
+        }
+      ],
+      "default": "square",
+      "description": "set matrix mode for 2nd plane (from 0 to 2) (default square)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "0",
+      "name": "1mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "2mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "square matrix",
+          "name": "square",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "single row matrix",
+          "name": "row",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "single column matrix",
+          "name": "column",
+          "value": "2"
+        }
+      ],
+      "default": "square",
+      "description": "set matrix mode for 3rd plane (from 0 to 2) (default square)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "0",
+      "name": "2mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "3mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "square matrix",
+          "name": "square",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "single row matrix",
+          "name": "row",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "single column matrix",
+          "name": "column",
+          "value": "2"
+        }
+      ],
+      "default": "square",
+      "description": "set matrix mode for 4th plane (from 0 to 2) (default square)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "0",
+      "name": "3mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

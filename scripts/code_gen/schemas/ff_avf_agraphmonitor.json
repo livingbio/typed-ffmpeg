@@ -1,5 +1,5 @@
 {
-  "description": "### 18.4 agraphmonitor\n\nSee graphmonitor.\n\n",
+  "description": "Show various filtergraph stats.",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,

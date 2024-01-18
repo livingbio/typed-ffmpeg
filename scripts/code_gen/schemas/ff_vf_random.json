@@ -1,5 +1,5 @@
 {
-  "description": "### 11.203 random\n\nFlush video frames from internal cache of frames into a random order. No frame\nis discarded. Inspired by frei0r nervous filter.\n\n**frames**\n\n    Set size in number of frames of internal cache, in range from 2 to 512. Default is 30. \n\n**seed**\n\n    Set seed for random number generator, must be an integer included between 0 and UINT32_MAX. If not specified, or if explicitly set to less than 0, the filter will try to use a good random seed on a best effort basis. \n\n",
+  "description": "Return random frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

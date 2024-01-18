@@ -1,5 +1,5 @@
 {
-  "description": "### 11.37 colorhold\n\nRemove all color information for all RGB colors except for certain one.\n\nThe filter accepts the following options:\n\n**color**\n\n    The color which will not be replaced with neutral gray. \n\n**similarity**\n\n    Similarity percentage with the above color. 0.01 matches only the exact key color, while 1.0 matches everything. \n\n**blend**\n\n    Blend percentage. 0.0 makes pixels fully gray. Higher values result in more preserved color. \n\n",
+  "description": "Turns a certain color range into gray. Operates on RGB colors.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

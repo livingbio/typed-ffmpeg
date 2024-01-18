@@ -1,5 +1,5 @@
 {
-  "description": "### 11.285 weave, doubleweave\n\nThe `weave` takes a field-based video input and join each two sequential\nfields into single frame, producing a new double height clip with half the\nframe rate and half the frame count.\n\nThe `doubleweave` works same as `weave` but without halving frame rate and\nframe count.\n\nIt accepts the following option:\n\n**first_field**\n\n    Set first field. Available values are: \u2018top, t\u2019 Set the frame as top-field-first. \u2018bottom, b\u2019 Set the frame as bottom-field-first. \n\n",
+  "description": "Weave input video fields into frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

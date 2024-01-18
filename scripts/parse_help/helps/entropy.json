@@ -1,0 +1,49 @@
+{
+  "description": "Measure video frames entropy.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "entropy",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "diff",
+          "value": "1"
+        }
+      ],
+      "default": "normal",
+      "description": "set kind of histogram entropy measurement (from 0 to 1) (default normal)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

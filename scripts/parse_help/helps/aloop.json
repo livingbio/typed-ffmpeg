@@ -1,0 +1,62 @@
+{
+  "description": "Loop audio samples.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "aloop",
+  "options": [
+    {
+      "alias": [
+        "loop"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "number of loops (from -1 to INT_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "loop",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "max number of samples to loop (from 0 to INT_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "size",
+      "typing": "int64"
+    },
+    {
+      "alias": [
+        "start"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the loop start sample (from 0 to I64_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "I64_MAX",
+      "min": "0",
+      "name": "start",
+      "typing": "int64"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

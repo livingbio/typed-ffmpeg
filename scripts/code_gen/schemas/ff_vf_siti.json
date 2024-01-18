@@ -1,5 +1,5 @@
 {
-  "description": "### 11.238 siti\n\nCalculate Spatial Information (SI) and Temporal Information (TI) scores for a\nvideo, as defined in ITU-T Rec. P.910 (11/21): Subjective video quality\nassessment methods for multimedia applications. Available PDF at\n<https://www.itu.int/rec/T-REC-P.910-202111-S/en>. Note that this is a legacy\nimplementation that corresponds to a superseded recommendation. Refer to ITU-T\nRec. P.910 (07/22) for the latest version:\n<https://www.itu.int/rec/T-REC-P.910-202207-I/en>\n\nIt accepts the following option:\n\n**print_summary**\n\n    If set to 1, Summary statistics will be printed to the console. Default 0. \n\n",
+  "description": "Calculate spatial information (SI) and temporal information (TI).",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,0 +1,98 @@
+{
+  "description": "Generate color checker chart.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "colorchart",
+  "options": [
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video duration (default -0.000001)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "typing": "duration"
+    },
+    {
+      "alias": [
+        "sar"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "sar",
+      "typing": "rational"
+    },
+    {
+      "alias": [
+        "patch_size"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the single patch size (default \"64x64\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "patch_size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "preset"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "reference",
+          "name": "reference",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "skintones",
+          "name": "skintones",
+          "value": "1"
+        }
+      ],
+      "default": "reference",
+      "description": "set the color checker chart preset (from 0 to 1) (default reference)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "preset",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.99 floodfill\n\nFlood area with values of same pixel components with another values.\n\nIt accepts the following options:\n\n**x**\n\n    Set pixel x coordinate. \n\n**y**\n\n    Set pixel y coordinate. \n\n**s0**\n\n    Set source #0 component value. \n\n**s1**\n\n    Set source #1 component value. \n\n**s2**\n\n    Set source #2 component value. \n\n**s3**\n\n    Set source #3 component value. \n\n**d0**\n\n    Set destination #0 component value. \n\n**d1**\n\n    Set destination #1 component value. \n\n**d2**\n\n    Set destination #2 component value. \n\n**d3**\n\n    Set destination #3 component value. \n\n",
+  "description": "Fill area with same color with another color.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

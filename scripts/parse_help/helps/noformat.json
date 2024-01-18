@@ -1,0 +1,36 @@
+{
+  "description": "Force libavfilter not to use any of the specified pixel formats for the input to the next filter.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "noformat",
+  "options": [
+    {
+      "alias": [
+        "pix_fmts"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "A '|'-separated list of pixel formats",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "pix_fmts",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "description": "Apply Postprocessing 7 filter.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "pp7",
+  "options": [
+    {
+      "alias": [
+        "qp"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "force a constant quantizer parameter (from 0 to 64) (default 0)",
+      "flags": "..FV.......",
+      "max": "64",
+      "min": "0",
+      "name": "qp",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "hard thresholding",
+          "name": "hard",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "soft thresholding",
+          "name": "soft",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "medium thresholding",
+          "name": "medium",
+          "value": "2"
+        }
+      ],
+      "default": "medium",
+      "description": "set thresholding mode (from 0 to 2) (default medium)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

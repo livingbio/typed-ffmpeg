@@ -1,5 +1,5 @@
 {
-  "description": "### 11.131 hysteresis\n\nGrow first stream into second stream by connecting components. This makes it\npossible to build more robust edge masks.\n\nThis filter accepts the following options:\n\n**planes**\n\n    Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed. \n\n**threshold**\n\n    Set threshold which is used in filtering. If pixel component value is higher than this value filter algorithm for connecting components is activated. By default value is 0. \n\nThe `hysteresis` filter also supports the framesync options.\n\n",
+  "description": "Grow first stream into second stream by connecting components.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

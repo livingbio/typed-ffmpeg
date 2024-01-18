@@ -1,5 +1,5 @@
 {
-  "description": "### 8.38 anlmdn\n\nReduce broadband noise in audio samples using Non-Local Means algorithm.\n\nEach sample is adjusted by looking for other samples with similar contexts.\nThis context similarity is defined by comparing their surrounding patches of\nsize p. Patches are searched in an area of r around the sample.\n\nThe filter accepts the following options:\n\n**strength, s**\n\n    Set denoising strength. Allowed range is from 0.00001 to 10000. Default value is 0.00001. \n\n**patch, p**\n\n    Set patch radius duration. Allowed range is from 1 to 100 milliseconds. Default value is 2 milliseconds. \n\n**research, r**\n\n    Set research radius duration. Allowed range is from 2 to 300 milliseconds. Default value is 6 milliseconds. \n\n**output, o**\n\n    Set the output mode. It accepts the following values: i Pass input unchanged. o Pass noise filtered out. n Pass only noise. Default value is o. \n\n**smooth, m**\n\n    Set smooth factor. Default value is 11. Allowed range is from 1 to 1000. \n\n",
+  "description": "Reduce broadband noise from stream using Non-Local Means.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

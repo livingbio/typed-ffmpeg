@@ -1,0 +1,66 @@
+{
+  "description": "Multiply first video stream with second video stream.",
+  "input_types": [
+    [
+      "source",
+      "video"
+    ],
+    [
+      "factor",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "multiply",
+  "options": [
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set scale (from 0 to 9) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "9",
+      "min": "0",
+      "name": "scale",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "offset"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set offset (from -1 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "offset",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "F",
+      "description": "set planes (default F)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "planes",
+      "typing": "flags"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

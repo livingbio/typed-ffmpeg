@@ -1,5 +1,5 @@
 {
-  "description": "### 11.167 mix\n\nMix several video input streams into one video stream.\n\nA description of the accepted options follows.\n\n**inputs**\n\n    The number of inputs. If unspecified, it defaults to 2. \n\n**weights**\n\n    Specify weight of each input video stream as sequence. Each weight is separated by space. If number of weights is smaller than number of frames last specified weight will be used for all remaining unset weights. \n\n**scale**\n\n    Specify scale, if it is set it will be multiplied with sum of each weight multiplied with pixel values to give final destination pixel value. By default scale is auto scaled to sum of weights. \n\n**planes**\n\n    Set which planes to filter. Default is all. Allowed range is from 0 to 15. \n\n**duration**\n\n    Specify how end of stream is determined. \u2018longest\u2019 The duration of the longest input. (default) \u2018shortest\u2019 The duration of the shortest input. \u2018first\u2019 The duration of the first input. \n\n",
+  "description": "Mix video inputs.",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] * int(inputs)",
   "formula_output_typings": null,

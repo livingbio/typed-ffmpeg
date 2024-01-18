@@ -1,5 +1,5 @@
 {
-  "description": "### 8.117 tremolo\n\nSinusoidal amplitude modulation.\n\nThe filter accepts the following options:\n\n**f**\n\n    Modulation frequency in Hertz. Modulation frequencies in the subharmonic range (20 Hz or lower) will result in a tremolo effect. This filter may also be used as a ring modulator by specifying a modulation frequency higher than 20 Hz. Range is 0.1 - 20000.0. Default value is 5.0 Hz. \n\n**d**\n\n    Depth of modulation as a percentage. Range is 0.0 - 1.0. Default value is 0.5. \n\n",
+  "description": "Apply tremolo effect.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,0 +1,158 @@
+{
+  "description": "Change input volume.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "volume",
+  "options": [
+    {
+      "alias": [
+        "volume"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set volume adjustment expression (default \"1.0\")",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "volume",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "precision"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "select 8-bit fixed-point",
+          "name": "fixed",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "select 32-bit floating-point",
+          "name": "float",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "select 64-bit floating-point",
+          "name": "double",
+          "value": "2"
+        }
+      ],
+      "default": "float",
+      "description": "select mathematical precision (from 0 to 2) (default float)",
+      "flags": "..F.A......",
+      "max": "2",
+      "min": "0",
+      "name": "precision",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "eval"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "eval volume expression once",
+          "name": "once",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "eval volume expression per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "once",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default once)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "eval",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "replaygain"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "replaygain side data is dropped",
+          "name": "drop",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "replaygain side data is ignored",
+          "name": "ignore",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "track gain is preferred",
+          "name": "track",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "album gain is preferred",
+          "name": "album",
+          "value": "3"
+        }
+      ],
+      "default": "drop",
+      "description": "Apply replaygain side data when present (from 0 to 3) (default drop)",
+      "flags": "..F.A......",
+      "max": "3",
+      "min": "0",
+      "name": "replaygain",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "replaygain_preamp"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "Apply replaygain pre-amplification (from -15 to 15) (default 0)",
+      "flags": "..F.A......",
+      "max": "15",
+      "min": "-15",
+      "name": "replaygain_preamp",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "replaygain_noclip"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "Apply replaygain clipping prevention (default true)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "replaygain_noclip",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

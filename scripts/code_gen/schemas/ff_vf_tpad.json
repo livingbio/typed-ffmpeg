@@ -1,5 +1,5 @@
 {
-  "description": "### 11.262 tpad\n\nTemporarily pad video frames.\n\nThe filter accepts the following options:\n\n**start**\n\n    Specify number of delay frames before input video stream. Default is 0. \n\n**stop**\n\n    Specify number of padding frames after input video stream. Set to -1 to pad indefinitely. Default is 0. \n\n**start_mode**\n\n    Set kind of frames added to beginning of stream. Can be either add or clone. With add frames of solid-color are added. With clone frames are clones of first frame. Default is add. \n\n**stop_mode**\n\n    Set kind of frames added to end of stream. Can be either add or clone. With add frames of solid-color are added. With clone frames are clones of last frame. Default is add. \n\n**start_duration, stop_duration**\n\n    Specify the duration of the start/stop delay. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. These options override start and stop. Default is 0. \n\n**color**\n\n    Specify the color of the padded area. For the syntax of this option, check the (ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual. The default value of color is \"black\". \n\n",
+  "description": "Temporarily pad video frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

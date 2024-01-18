@@ -1,0 +1,101 @@
+{
+  "description": "Add region of interest to frame.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "addroi",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Region distance from left edge of frame. (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "x",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Region distance from top edge of frame. (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "y",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "w"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Region width. (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "w",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Region height. (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "h",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "qoffset"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "-1",
+      "name": "qoffset",
+      "typing": "rational"
+    },
+    {
+      "alias": [
+        "clear"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "Remove any existing regions of interest before adding the new one. (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "clear",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

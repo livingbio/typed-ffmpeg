@@ -1,5 +1,5 @@
 {
-  "description": "### 11.43 colortemperature\n\nAdjust color temperature in video to simulate variations in ambient color\ntemperature.\n\nThe filter accepts the following options:\n\n**temperature**\n\n    Set the temperature in Kelvin. Allowed range is from 1000 to 40000. Default value is 6500 K. \n\n**mix**\n\n    Set mixing with filtered output. Allowed range is from 0 to 1. Default value is 1. \n\n**pl**\n\n    Set the amount of preserving lightness. Allowed range is from 0 to 1. Default value is 0. \n\n",
+  "description": "Adjust color temperature of video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

@@ -1,0 +1,51 @@
+{
+  "description": "Set the pixel sample aspect ratio.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "setsar",
+  "options": [
+    {
+      "alias": [
+        "sar",
+        "ratio",
+        "r"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set sample (pixel) aspect ratio (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "sar",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "max"
+      ],
+      "choices": [],
+      "default": "100",
+      "description": "set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "max",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "description": "Remedy denormals by adding extremely low-level noise.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "adenorm",
+  "options": [
+    {
+      "alias": [
+        "level"
+      ],
+      "choices": [],
+      "default": "-351",
+      "description": "set level (from -451 to -90) (default -351)",
+      "flags": "..F.A....T.",
+      "max": "-90",
+      "min": "-451",
+      "name": "level",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "dc",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "ac",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "square",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "pulse",
+          "value": "3"
+        }
+      ],
+      "default": "dc",
+      "description": "set type (from 0 to 3) (default dc)",
+      "flags": "..F.A....T.",
+      "max": "3",
+      "min": "0",
+      "name": "type",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

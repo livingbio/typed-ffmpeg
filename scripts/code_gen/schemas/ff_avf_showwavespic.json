@@ -1,5 +1,5 @@
 {
-  "description": "### 18.30 showwavespic\n\nConvert input audio to a single video frame, representing the samples waves.\n\nThe filter accepts the following options:\n\n**size, s**\n\n    Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is 600x240. \n\n**split_channels**\n\n    Set if channels should be drawn separately or overlap. Default value is 0. \n\n**colors**\n\n    Set colors separated by \u2019|\u2019 which are going to be used for drawing of each channel. \n\n**scale**\n\n    Set amplitude scale. Available values are: \u2018lin\u2019 Linear. \u2018log\u2019 Logarithmic. \u2018sqrt\u2019 Square root. \u2018cbrt\u2019 Cubic root. Default is linear. \n\n**draw**\n\n    Set the draw mode. Available values are: \u2018scale\u2019 Scale pixel values for each drawn sample. \u2018full\u2019 Draw every sample directly. Default value is scale. \n\n**filter**\n\n    Set the filter mode. Available values are: \u2018average\u2019 Use average samples values for each drawn sample. \u2018peak\u2019 Use peak samples values for each drawn sample. Default value is average. \n\n",
+  "description": "Convert input audio to a video output single picture.",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,

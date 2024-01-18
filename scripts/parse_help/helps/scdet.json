@@ -1,0 +1,51 @@
+{
+  "description": "Detect video scene change",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "scdet",
+  "options": [
+    {
+      "alias": [
+        "threshold",
+        "t"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set scene change detect threshold (from 0 to 100) (default 10)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "0",
+      "name": "threshold",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "sc_pass",
+        "s"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "Set the flag to pass scene change frames (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "sc_pass",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

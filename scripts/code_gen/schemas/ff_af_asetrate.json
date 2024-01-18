@@ -1,5 +1,5 @@
 {
-  "description": "### 8.53 asetrate\n\nSet the sample rate without altering the PCM data. This will result in a\nchange of speed and pitch.\n\nThe filter accepts the following options:\n\n**sample_rate, r**\n\n    Set the output sample rate. Default is 44100 Hz. \n\n",
+  "description": "Change the sample rate without altering the data.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

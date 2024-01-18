@@ -1,5 +1,5 @@
 {
-  "description": "### 11.254 thumbnail\n\nSelect the most representative frame in a given sequence of consecutive\nframes.\n\nThe filter accepts the following options:\n\n**n**\n\n    Set the frames batch size to analyze; in a set of n frames, the filter will pick one of them, and then handle the next batch of n frames until the end. Default is 100. \n\n**log**\n\n    Set the log level to display picked frame stats. Default is info. \n\nSince the filter keeps track of the whole frames sequence, a bigger n value\nwill result in a higher memory usage, so a high value is not recommended.\n\n",
+  "description": "Select the most representative frame in a given sequence of consecutive frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

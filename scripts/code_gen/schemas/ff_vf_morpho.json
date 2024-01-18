@@ -1,5 +1,5 @@
 {
-  "description": "### 11.169 morpho\n\nThis filter allows to apply main morphological grayscale transforms, erode and\ndilate with arbitrary structures set in second input stream.\n\nUnlike naive implementation and much slower performance in erosion and\ndilation filters, when speed is critical `morpho` filter should be used\ninstead.\n\nA description of accepted options follows,\n\n**mode**\n\n    Set morphological transform to apply, can be: \u2018erode\u2019 \u2018dilate\u2019 \u2018open\u2019 \u2018close\u2019 \u2018gradient\u2019 \u2018tophat\u2019 \u2018blackhat\u2019 Default is erode. \n\n**planes**\n\n    Set planes to filter, by default all planes except alpha are filtered. \n\n**structure**\n\n    Set which structure video frames will be processed from second input stream, can be first or all. Default is all. \n\nThe `morpho` filter also supports the framesync options.\n\n",
+  "description": "Apply Morphological filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

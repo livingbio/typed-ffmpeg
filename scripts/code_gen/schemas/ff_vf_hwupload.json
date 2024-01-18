@@ -1,5 +1,5 @@
 {
-  "description": "### 11.123 hwupload\n\nUpload system memory frames to hardware surfaces.\n\nThe device to upload to must be supplied when the filter is initialised. If\nusing ffmpeg, select the appropriate device with the -filter_hw_device option\nor with the derive_device option. The input and output devices must be of\ndifferent types and compatible - the exact meaning of this is system-\ndependent, but typically it means that they must refer to the same underlying\nhardware context (for example, refer to the same graphics card).\n\nThe following additional parameters are accepted:\n\n**derive_device type**\n\n    Rather than using the device supplied at initialisation, instead derive a new device of type type from the device the input frames exist on. \n\n",
+  "description": "Upload a normal frame to a hardware frame",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

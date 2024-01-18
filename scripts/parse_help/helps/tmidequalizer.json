@@ -1,0 +1,62 @@
+{
+  "description": "Apply Temporal Midway Equalization.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "tmidequalizer",
+  "options": [
+    {
+      "alias": [
+        "radius"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set radius (from 1 to 127) (default 5)",
+      "flags": "..FV.......",
+      "max": "127",
+      "min": "1",
+      "name": "radius",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sigma"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set sigma (from 0 to 1) (default 0.5)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "sigma",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
+      "flags": "..FV.......",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

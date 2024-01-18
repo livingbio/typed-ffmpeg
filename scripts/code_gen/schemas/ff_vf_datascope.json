@@ -1,5 +1,5 @@
 {
-  "description": "### 11.54 datascope\n\nVideo data analysis filter.\n\nThis filter shows hexadecimal pixel values of part of video.\n\nThe filter accepts the following options:\n\n**size, s**\n\n    Set output video size. \n\n**x**\n\n    Set x offset from where to pick pixels. \n\n**y**\n\n    Set y offset from where to pick pixels. \n\n**mode**\n\n    Set scope mode, can be one of the following: \u2018mono\u2019 Draw hexadecimal pixel values with white color on black background. \u2018color\u2019 Draw hexadecimal pixel values with input video pixel color on black background. \u2018color2\u2019 Draw hexadecimal pixel values on color background picked from input video, the text color is picked in such way so its always visible. \n\n**axis**\n\n    Draw rows and columns numbers on left and top of video. \n\n**opacity**\n\n    Set background opacity. \n\n**format**\n\n    Set display number format. Can be hex, or dec. Default is hex. \n\n**components**\n\n    Set pixel components to display. By default all pixel components are displayed. \n\n",
+  "description": "Video data analysis.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

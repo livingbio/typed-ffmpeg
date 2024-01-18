@@ -1,0 +1,226 @@
+{
+  "description": "Compute and draw a histogram.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "histogram",
+  "options": [
+    {
+      "alias": [
+        "level_height"
+      ],
+      "choices": [],
+      "default": "200",
+      "description": "set level height (from 50 to 2048) (default 200)",
+      "flags": "..FV.......",
+      "max": "2048",
+      "min": "50",
+      "name": "level_height",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale_height"
+      ],
+      "choices": [],
+      "default": "12",
+      "description": "set scale height (from 0 to 40) (default 12)",
+      "flags": "..FV.......",
+      "max": "40",
+      "min": "0",
+      "name": "scale_height",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "display_mode",
+        "d"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "overlay",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "parade",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "stack",
+          "value": "2"
+        }
+      ],
+      "default": "stack",
+      "description": "set display mode (from 0 to 2) (default stack)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "display_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "levels_mode",
+        "m"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "linear",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "logarithmic",
+          "value": "1"
+        }
+      ],
+      "default": "linear",
+      "description": "set levels mode (from 0 to 1) (default linear)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "levels_mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "components",
+        "c"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set color components to display (from 1 to 15) (default 7)",
+      "flags": "..FV.......",
+      "max": "15",
+      "min": "1",
+      "name": "components",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fgopacity",
+        "f"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set foreground opacity (from 0 to 1) (default 0.7)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "fgopacity",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bgopacity",
+        "b"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set background opacity (from 0 to 1) (default 0.5)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "bgopacity",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "colors_mode",
+        "l"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "whiteonblack",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "blackonwhite",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "whiteongray",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "blackongray",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "coloronblack",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "coloronwhite",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "colorongray",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "blackoncolor",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "whiteoncolor",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "grayoncolor",
+          "value": "9"
+        }
+      ],
+      "default": "whiteonblack",
+      "description": "set colors mode (from 0 to 9) (default whiteonblack)",
+      "flags": "..FV.......",
+      "max": "9",
+      "min": "0",
+      "name": "colors_mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

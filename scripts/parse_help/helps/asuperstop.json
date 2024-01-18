@@ -1,0 +1,75 @@
+{
+  "description": "Apply high order Butterworth band-stop filter.",
+  "input_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "asuperstop",
+  "options": [
+    {
+      "alias": [
+        "centerf"
+      ],
+      "choices": [],
+      "default": "1000",
+      "description": "set center frequency (from 2 to 999999) (default 1000)",
+      "flags": "..F.A....T.",
+      "max": "999999",
+      "min": "2",
+      "name": "centerf",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "order"
+      ],
+      "choices": [],
+      "default": "4",
+      "description": "set filter order (from 4 to 20) (default 4)",
+      "flags": "..F.A....T.",
+      "max": "20",
+      "min": "4",
+      "name": "order",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "qfactor"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set Q-factor (from 0.01 to 100) (default 1)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "qfactor",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input level (from 0 to 2) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "2",
+      "min": "0",
+      "name": "level",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "audio"
+    ]
+  ]
+}

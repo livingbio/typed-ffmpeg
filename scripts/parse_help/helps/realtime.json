@@ -1,0 +1,49 @@
+{
+  "description": "Slow down filtering to match realtime.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "realtime",
+  "options": [
+    {
+      "alias": [
+        "limit"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "sleep time limit (default 2)",
+      "flags": "..FVA....T.",
+      "max": null,
+      "min": null,
+      "name": "limit",
+      "typing": "duration"
+    },
+    {
+      "alias": [
+        "speed"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "speed factor (from DBL_MIN to DBL_MAX) (default 1)",
+      "flags": "..FVA....T.",
+      "max": "DBL_MAX",
+      "min": "DBL_MIN",
+      "name": "speed",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

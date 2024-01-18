@@ -1,5 +1,5 @@
 {
-  "description": "### 8.47 aresample\n\nResample the input audio to the specified parameters, using the libswresample\nlibrary. If none are specified then the filter will automatically convert\nbetween its input and output.\n\nThis filter is also able to stretch/squeeze the audio data to make it match\nthe timestamps or to inject silence / cut out audio to make it match the\ntimestamps, do a combination of both or do neither.\n\nThe filter accepts the syntax [sample_rate:]resampler_options, where\nsample_rate expresses a sample rate and resampler_options is a list of\nkey=value pairs, separated by \":\". See the [(ffmpeg-resampler)\"Resampler\nOptions\" section in the ffmpeg-resampler(1) manual](ffmpeg-\nresampler.html#Resampler-Options) for the complete list of supported options.\n\n",
+  "description": "Resample audio data.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

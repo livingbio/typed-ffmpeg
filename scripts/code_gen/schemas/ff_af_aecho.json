@@ -1,5 +1,5 @@
 {
-  "description": "### 8.18 aecho\n\nApply echoing to the input audio.\n\nEchoes are reflected sound and can occur naturally amongst mountains (and\nsometimes large buildings) when talking or shouting; digital echo effects\nemulate this behaviour and are often used to help fill out the sound of a\nsingle instrument or vocal. The time difference between the original signal\nand the reflection is the `delay`, and the loudness of the reflected signal is\nthe `decay`. Multiple echoes can have different delays and decays.\n\nA description of the accepted parameters follows.\n\n**in_gain**\n\n    Set input gain of reflected signal. Default is 0.6. \n\n**out_gain**\n\n    Set output gain of reflected signal. Default is 0.3. \n\n**delays**\n\n    Set list of time intervals in milliseconds between original signal and reflections separated by \u2019|\u2019. Allowed range for each delay is (0 - 90000.0]. Default is 1000. \n\n**decays**\n\n    Set list of loudness of reflected signals separated by \u2019|\u2019. Allowed range for each decay is (0 - 1.0]. Default is 0.5. \n\n",
+  "description": "Add echoing to the audio.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,

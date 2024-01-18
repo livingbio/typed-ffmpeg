@@ -1,0 +1,107 @@
+{
+  "description": "Remove temporal frame luminance variations.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "deflicker",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set how many frames to use (from 2 to 129) (default 5)",
+      "flags": "..FV.......",
+      "max": "129",
+      "min": "2",
+      "name": "size",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode",
+        "m"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "arithmetic mean",
+          "name": "am",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "geometric mean",
+          "name": "gm",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "harmonic mean",
+          "name": "hm",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "quadratic mean",
+          "name": "qm",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubic mean",
+          "name": "cm",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "power mean",
+          "name": "pm",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "median",
+          "name": "median",
+          "value": "6"
+        }
+      ],
+      "default": "am",
+      "description": "set how to smooth luminance (from 0 to 6) (default am)",
+      "flags": "..FV.......",
+      "max": "6",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bypass"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "leave frames unchanged (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "bypass",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

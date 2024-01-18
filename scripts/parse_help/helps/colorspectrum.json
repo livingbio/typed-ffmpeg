@@ -1,0 +1,105 @@
+{
+  "description": "Generate colors spectrum.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "colorspectrum",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video size (default \"320x240\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video duration (default -0.000001)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "typing": "duration"
+    },
+    {
+      "alias": [
+        "sar"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "sar",
+      "typing": "rational"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "fade to black",
+          "name": "black",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fade to white",
+          "name": "white",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "white to black",
+          "name": "all",
+          "value": "2"
+        }
+      ],
+      "default": "black",
+      "description": "set the color spectrum type (from 0 to 2) (default black)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "type",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

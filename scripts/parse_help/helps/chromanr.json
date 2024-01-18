@@ -1,0 +1,153 @@
+{
+  "description": "Reduce chrominance noise.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "chromanr",
+  "options": [
+    {
+      "alias": [
+        "thres"
+      ],
+      "choices": [],
+      "default": "30",
+      "description": "set y+u+v threshold (from 1 to 200) (default 30)",
+      "flags": "..FV.....T.",
+      "max": "200",
+      "min": "1",
+      "name": "thres",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "sizew"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set horizontal patch size (from 1 to 100) (default 5)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "1",
+      "name": "sizew",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sizeh"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set vertical patch size (from 1 to 100) (default 5)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "1",
+      "name": "sizeh",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "stepw"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set horizontal step (from 1 to 50) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "50",
+      "min": "1",
+      "name": "stepw",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "steph"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set vertical step (from 1 to 50) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "50",
+      "min": "1",
+      "name": "steph",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "threy"
+      ],
+      "choices": [],
+      "default": "200",
+      "description": "set y threshold (from 1 to 200) (default 200)",
+      "flags": "..FV.....T.",
+      "max": "200",
+      "min": "1",
+      "name": "threy",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "threu"
+      ],
+      "choices": [],
+      "default": "200",
+      "description": "set u threshold (from 1 to 200) (default 200)",
+      "flags": "..FV.....T.",
+      "max": "200",
+      "min": "1",
+      "name": "threu",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "threv"
+      ],
+      "choices": [],
+      "default": "200",
+      "description": "set v threshold (from 1 to 200) (default 200)",
+      "flags": "..FV.....T.",
+      "max": "200",
+      "min": "1",
+      "name": "threv",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "distance"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "manhattan",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "euclidean",
+          "value": "1"
+        }
+      ],
+      "default": "manhattan",
+      "description": "set distance type (from 0 to 1) (default manhattan)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "distance",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}

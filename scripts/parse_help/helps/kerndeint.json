@@ -1,0 +1,88 @@
+{
+  "description": "Apply kernel deinterlacing to the input.",
+  "input_types": [
+    [
+      "default",
+      "video"
+    ]
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "kerndeint",
+  "options": [
+    {
+      "alias": [
+        "thresh"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set the threshold (from 0 to 255) (default 10)",
+      "flags": "..FV.......",
+      "max": "255",
+      "min": "0",
+      "name": "thresh",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set the map (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "map",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "order"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set the order (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "order",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "sharp"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set sharpening (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "sharp",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "twoway"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set twoway (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "twoway",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    [
+      "default",
+      "video"
+    ]
+  ]
+}
