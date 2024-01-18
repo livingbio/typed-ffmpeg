@@ -7,7 +7,7 @@ from syrupy.extensions.single_file import SingleFileSnapshotExtension
 from ..parse import extract_help_text, help_text, parse_section_tree
 
 
-@pytest.mark.parametrize("filter_name", ["trim", "scale", "blend", "adeclip", "concat"])
+@pytest.mark.parametrize("filter_name", ["trim", "scale", "blend", "adeclip", "concat", "scale2ref"])
 def test_help_text(snapshot: SnapshotAssertion, filter_name: str) -> None:
     assert snapshot(name="help-text", extension_class=SingleFileSnapshotExtension) == help_text(
         filter_name=filter_name

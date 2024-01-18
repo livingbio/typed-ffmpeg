@@ -52,7 +52,9 @@ def _parse_io(line: str) -> tuple[int, str, StreamType]:
 def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOption]:
     output: list[AVOption] = []
     for line in lines:
-        name, type, flags, help = re.findall(r"([\w]+)\s*<([\w]+)>\s*([\w\.]{11})\s*(.*)", line)[0]
+        name, type, flags, help = re.findall(r"([\-\w]+)\s*<([\w]+)>\s*([\w\.]{11})\s*(.*)", line)[0]
+        if name[0] == "-":
+            continue
 
         if output and output[-1].description == help:
             output[-1].alias.append(name)
@@ -124,7 +126,10 @@ def extract_help_text(filter_name: str):
     is_suppoert_timeline = tree[""][-1] == "This filter has support for timeline through the 'enable' option."
     is_support_framesync = "framesync AVOptions:" in tree
 
-    options = tree[f"{filter_name} AVOptions:"]
+    options = []
+    for item in tree[""]:
+        if "AVOptions:" in item:
+            options.extend(_parse_options(tree[item], tree))
 
     return AVFilter(
         name=filter_name,
@@ -136,5 +141,5 @@ def extract_help_text(filter_name: str):
         is_support_timeline=is_suppoert_timeline,
         input_types=input_types,
         output_types=output_types,
-        options=_parse_options(options, tree),
+        options=options,
     )
