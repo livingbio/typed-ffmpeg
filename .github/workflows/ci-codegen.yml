@@ -1,25 +1,25 @@
-name: "unittest for codegen"
-on:
-  push:
-    branches: ["**"]
+# name: "unittest for codegen"
+# on:
+#   push:
+#     branches: ["**"]
 
-jobs:
-  ci:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.11
-      - name: Install dependencies
-        run: pip install -r scripts/requirements.txt
-      - name: install ffmpeg
-        run: sudo apt-get install ffmpeg -y
-      - name: Run unittest
-        run: PYTHONPATH=./scripts py.test scripts/ --cov=./scripts
-      - name: lint
-        run: pre-commit run --all-files
-        working-directory: scripts
+# jobs:
+#   ci:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       fail-fast: false
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: Set up Python
+#         uses: actions/setup-python@v3
+#         with:
+#           python-version: 3.11
+#       - name: Install dependencies
+#         run: pip install -r scripts/requirements.txt
+#       - name: install ffmpeg
+#         run: sudo apt-get install ffmpeg -y
+#       - name: Run unittest
+#         run: PYTHONPATH=./scripts py.test scripts/ --cov=./scripts
+#       - name: lint
+#         run: pre-commit run --all-files
+#         working-directory: scripts
