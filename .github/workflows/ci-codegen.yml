@@ -16,6 +16,8 @@ jobs:
           python-version: 3.11
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
+      - name: install ffmpeg
+        run: sudo apt-get install ffmpeg -y
       - name: Run unittest
         run: PYTHONPATH=./scripts py.test scripts/ --cov=./scripts
       - name: lint
