@@ -123,7 +123,7 @@ def afir(
     ir: int | str = Default("0"),
     precision: int | Literal["auto", "float", "double"] | Default = Default("auto"),
     **kwargs: Any
-) -> "AudioStream":
+) -> FilterNode:
     """
 
     Apply Finite Impulse Response filter with supplied coefficients in additional stream(s).
@@ -154,7 +154,7 @@ def afir(
     filter_node = FilterNode(
         name="afir",
         input_typings=tuple([StreamType.audio] * int(nbirs)),
-        output_typings=tuple([StreamType.audio]),
+        output_typings=None,
         inputs=(*streams,),
         kwargs=tuple(
             (
@@ -180,7 +180,8 @@ def afir(
             ).items()
         ),
     )
-    return filter_node.audio(0)
+
+    return filter_node
 
 
 def ainterleave(

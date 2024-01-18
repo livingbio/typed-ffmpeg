@@ -6,9 +6,9 @@
   "id": "ff_af_afir",
   "input_stream_typings": [],
   "is_input_dynamic": true,
-  "is_output_dynamic": false,
+  "is_output_dynamic": true,
   "is_support_framesync": false,
-  "is_support_timeline": true,
+  "is_support_timeline": false,
   "name": "afir",
   "options": [
     {
