@@ -31,7 +31,7 @@
         "weights"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1 1 1\"",
       "description": "set weight for each frame (default \"1 1 1\")",
       "flags": "..FV.....T.",
       "max": null,

@@ -31,7 +31,7 @@
         "sigma"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set sigma (from 0 to 1) (default 0.5)",
       "flags": "..FV.......",
       "max": "1",

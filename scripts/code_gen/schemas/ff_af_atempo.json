@@ -21,8 +21,8 @@
         "tempo"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set tempo scale factor",
+      "default": "1",
+      "description": "set tempo scale factor (from 0.5 to 100) (default 1)",
       "name": "tempo",
       "required": false,
       "typing": "float"

@@ -21,8 +21,8 @@
       "default": "0",
       "description": "set frequency shift (from -2.14748e+09 to INT_MAX) (default 0)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "INT_MAX",
+      "min": "-2.14748e+09",
       "name": "shift",
       "typing": "double"
     },

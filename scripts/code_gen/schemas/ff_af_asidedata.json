@@ -24,16 +24,16 @@
         {
           "help": "select frame",
           "name": "select",
-          "value": "SIDEDATA_SELECT"
+          "value": "0"
         },
         {
           "help": "delete side data",
           "name": "delete",
-          "value": "SIDEDATA_DELETE"
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set mode of operation of the filter.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>select</samp>\u2019</dt>\n<dd><p>Select every frame with side data of <code>type</code>.\n</p>\n</dd>\n<dt>\u2018<samp>delete</samp>\u2019</dt>\n<dd><p>Delete side data of <code>type</code>. If <code>type</code> is not set, delete all side\ndata in the frame.\n</p>\n</dd>\n</dl>\n</dd>",
+      "default": "select",
+      "description": "set a mode of operation (from 0 to 1) (default select)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -46,111 +46,111 @@
         {
           "help": "",
           "name": "PANSCAN",
-          "value": "AV_FRAME_DATA_PANSCAN"
+          "value": "0"
         },
         {
           "help": "",
           "name": "A53_CC",
-          "value": "AV_FRAME_DATA_A53_CC"
+          "value": "1"
         },
         {
           "help": "",
           "name": "STEREO3D",
-          "value": "AV_FRAME_DATA_STEREO3D"
+          "value": "2"
         },
         {
           "help": "",
           "name": "MATRIXENCODING",
-          "value": "AV_FRAME_DATA_MATRIXENCODING"
+          "value": "3"
         },
         {
           "help": "",
           "name": "DOWNMIX_INFO",
-          "value": "AV_FRAME_DATA_DOWNMIX_INFO"
+          "value": "4"
         },
         {
           "help": "",
           "name": "REPLAYGAIN",
-          "value": "AV_FRAME_DATA_REPLAYGAIN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "DISPLAYMATRIX",
-          "value": "AV_FRAME_DATA_DISPLAYMATRIX"
+          "value": "6"
         },
         {
           "help": "",
           "name": "AFD",
-          "value": "AV_FRAME_DATA_AFD"
+          "value": "7"
         },
         {
           "help": "",
           "name": "MOTION_VECTORS",
-          "value": "AV_FRAME_DATA_MOTION_VECTORS"
+          "value": "8"
         },
         {
           "help": "",
           "name": "SKIP_SAMPLES",
-          "value": "AV_FRAME_DATA_SKIP_SAMPLES"
+          "value": "9"
         },
         {
           "help": "",
           "name": "AUDIO_SERVICE_TYPE",
-          "value": "AV_FRAME_DATA_AUDIO_SERVICE_TYPE"
+          "value": "10"
         },
         {
           "help": "",
           "name": "MASTERING_DISPLAY_METADATA",
-          "value": "AV_FRAME_DATA_MASTERING_DISPLAY_METADATA"
+          "value": "11"
         },
         {
           "help": "",
           "name": "GOP_TIMECODE",
-          "value": "AV_FRAME_DATA_GOP_TIMECODE"
+          "value": "12"
         },
         {
           "help": "",
           "name": "SPHERICAL",
-          "value": "AV_FRAME_DATA_SPHERICAL"
+          "value": "13"
         },
         {
           "help": "",
           "name": "CONTENT_LIGHT_LEVEL",
-          "value": "AV_FRAME_DATA_CONTENT_LIGHT_LEVEL"
+          "value": "14"
         },
         {
           "help": "",
           "name": "ICC_PROFILE",
-          "value": "AV_FRAME_DATA_ICC_PROFILE"
+          "value": "15"
         },
         {
           "help": "",
           "name": "S12M_TIMECOD",
-          "value": "AV_FRAME_DATA_S12M_TIMECODE"
+          "value": "16"
         },
         {
           "help": "",
           "name": "DYNAMIC_HDR_PLUS",
-          "value": "AV_FRAME_DATA_DYNAMIC_HDR_PLUS"
+          "value": "17"
         },
         {
           "help": "",
           "name": "REGIONS_OF_INTEREST",
-          "value": "AV_FRAME_DATA_REGIONS_OF_INTEREST"
+          "value": "18"
         },
         {
           "help": "",
           "name": "DETECTION_BOUNDING_BOXES",
-          "value": "AV_FRAME_DATA_DETECTION_BBOXES"
+          "value": "22"
         },
         {
           "help": "",
           "name": "SEI_UNREGISTERED",
-          "value": "AV_FRAME_DATA_SEI_UNREGISTERED"
+          "value": "20"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Set side data type used with all modes. Must be set for <code>select</code> mode. For\nthe list of frame side data types, refer to the <code>AVFrameSideDataType</code> enum\nin <samp>libavutil/frame.h</samp>. For example, to choose\n<code>AV_FRAME_DATA_PANSCAN</code> side data, you must specify <code>PANSCAN</code>.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set side data type (from -1 to INT_MAX) (default -1)",
       "name": "type",
       "required": false,
       "typing": "int"

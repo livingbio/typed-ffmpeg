@@ -31,7 +31,7 @@
         "tolerance"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.01",
       "description": "set the tolerance value (from 0 to 1) (default 0.01)",
       "flags": "..FV.....T.",
       "max": "1",

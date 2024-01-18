@@ -52,7 +52,7 @@
         "fill"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set the color of the unmapped pixels (default \"black\")",
       "flags": "..FV.......",
       "max": null,

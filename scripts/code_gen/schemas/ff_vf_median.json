@@ -21,8 +21,8 @@
         "radius"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set horizontal radius size. Default value is <code>1</code>.\nAllowed range is integer from 1 to 127.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set median radius (from 1 to 127) (default 1)",
       "name": "radius",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes to process. Default is <code>15</code>, which is all available planes.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "radiusV"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set vertical radius size. Default value is <code>0</code>.\nAllowed range is integer from 0 to 127.\nIf it is 0, value will be picked from horizontal <code>radius</code> option.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set median vertical radius (from 0 to 127) (default 0)",
       "name": "radiusV",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "percentile"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set median percentile. Default value is <code>0.5</code>.\nDefault value of <code>0.5</code> will pick always median values, while <code>0</code> will pick\nminimum values, and <code>1</code> maximum values.\n</p></dd>",
+      "default": "0.5",
+      "description": "set median percentile (from 0 to 1) (default 0.5)",
       "name": "percentile",
       "required": false,
       "typing": "float"

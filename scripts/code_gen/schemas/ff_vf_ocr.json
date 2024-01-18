@@ -21,8 +21,8 @@
         "datapath"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set datapath to tesseract data. Default is to use whatever was\nset at installation.\n</p>\n</dd>",
+      "default": null,
+      "description": "set datapath",
       "name": "datapath",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "language"
       ],
       "choices": [],
-      "default": "eng",
-      "description": "<dd><p>Set language, default is \"eng\".\n</p>\n</dd>",
+      "default": "\"eng\"",
+      "description": "set language (default \"eng\")",
       "name": "language",
       "required": false,
       "typing": "str"
@@ -43,8 +43,8 @@
         "whitelist"
       ],
       "choices": [],
-      "default": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\\\\\"\\'[]{}()<>|/\\\\\\\\=*&%$#@!~ ",
-      "description": "<dd><p>Set character whitelist.\n</p>\n</dd>",
+      "default": "\"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}(",
+      "description": "set character whitelist (default \"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}()<>|/\\=*&%$#@!~ \")",
       "name": "whitelist",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "blacklist"
       ],
       "choices": [],
-      "default": "",
-      "description": "<dd><p>Set character blacklist.\n</p></dd>",
+      "default": "\"\"",
+      "description": "set character blacklist (default \"\")",
       "name": "blacklist",
       "required": false,
       "typing": "str"

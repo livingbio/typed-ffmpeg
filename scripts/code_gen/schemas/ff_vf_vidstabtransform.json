@@ -21,8 +21,8 @@
         "input"
       ],
       "choices": [],
-      "default": "transforms.trf",
-      "description": "set path to the file storing the transforms",
+      "default": "\"transforms.trf\"",
+      "description": "set path to the file storing the transforms (default \"transforms.trf\")",
       "name": "input",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "smoothing"
       ],
       "choices": [],
-      "default": 15,
-      "description": "set number of frames*2 + 1 used for lowpass filtering",
+      "default": "15",
+      "description": "set number of frames*2 + 1 used for lowpass filtering (from 0 to 1000) (default 15)",
       "name": "smoothing",
       "required": false,
       "typing": "int"
@@ -46,21 +46,21 @@
         {
           "help": "global optimization",
           "name": "opt",
-          "value": "VSOptimalL1"
+          "value": "0"
         },
         {
           "help": "gaussian kernel",
           "name": "gauss",
-          "value": "VSGaussian"
+          "value": "1"
         },
         {
           "help": "simple averaging on motion",
           "name": "avg",
-          "value": "VSAvg"
+          "value": "2"
         }
       ],
-      "default": "VSOptimalL1",
-      "description": "set camera path optimization algo",
+      "default": "opt",
+      "description": "set camera path optimization algo (from 0 to 2) (default opt)",
       "name": "optalgo",
       "required": false,
       "typing": "int"
@@ -70,8 +70,8 @@
         "maxshift"
       ],
       "choices": [],
-      "default": -1,
-      "description": "set maximal number of pixels to translate image",
+      "default": "-1",
+      "description": "set maximal number of pixels to translate image (from -1 to 500) (default -1)",
       "name": "maxshift",
       "required": false,
       "typing": "int"
@@ -81,8 +81,8 @@
         "maxangle"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "set maximal angle in rad to rotate image",
+      "default": "-1",
+      "description": "set maximal angle in rad to rotate image (from -1 to 3.14) (default -1)",
       "name": "maxangle",
       "required": false,
       "typing": "float"
@@ -95,16 +95,16 @@
         {
           "help": "keep border",
           "name": "keep",
-          "value": "VSKeepBorder"
+          "value": "0"
         },
         {
           "help": "black border",
           "name": "black",
-          "value": "VSCropBorder"
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "set cropping mode",
+      "default": "keep",
+      "description": "set cropping mode (from 0 to 1) (default keep)",
       "name": "crop",
       "required": false,
       "typing": "int"
@@ -114,8 +114,8 @@
         "invert"
       ],
       "choices": [],
-      "default": 0,
-      "description": "invert transforms",
+      "default": "0",
+      "description": "invert transforms (from 0 to 1) (default 0)",
       "name": "invert",
       "required": false,
       "typing": "int"
@@ -125,8 +125,8 @@
         "relative"
       ],
       "choices": [],
-      "default": 1,
-      "description": "consider transforms as relative",
+      "default": "1",
+      "description": "consider transforms as relative (from 0 to 1) (default 1)",
       "name": "relative",
       "required": false,
       "typing": "int"
@@ -136,8 +136,8 @@
         "zoom"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set percentage to zoom (>0: zoom in, <0: zoom out",
+      "default": "0",
+      "description": "set percentage to zoom (>0: zoom in, <0: zoom out (from -100 to 100) (default 0)",
       "name": "zoom",
       "required": false,
       "typing": "float"
@@ -147,8 +147,8 @@
         "optzoom"
       ],
       "choices": [],
-      "default": 1,
-      "description": "set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom)",
+      "default": "1",
+      "description": "set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom) (from 0 to 2) (default 1)",
       "name": "optzoom",
       "required": false,
       "typing": "int"
@@ -158,8 +158,8 @@
         "zoomspeed"
       ],
       "choices": [],
-      "default": 0.25,
-      "description": "for adative zoom: percent to zoom maximally each frame",
+      "default": "0.25",
+      "description": "for adative zoom: percent to zoom maximally each frame (from 0 to 5) (default 0.25)",
       "name": "zoomspeed",
       "required": false,
       "typing": "float"
@@ -172,26 +172,26 @@
         {
           "help": "no interpolation",
           "name": "no",
-          "value": "VS_Zero"
+          "value": "0"
         },
         {
           "help": "linear (horizontal)",
           "name": "linear",
-          "value": "VS_Linear"
+          "value": "1"
         },
         {
           "help": "bi-linear",
           "name": "bilinear",
-          "value": "VS_BiLinear"
+          "value": "2"
         },
         {
           "help": "bi-cubic",
           "name": "bicubic",
-          "value": "VS_BiCubic"
+          "value": "3"
         }
       ],
-      "default": 2,
-      "description": "set type of interpolation",
+      "default": "bilinear",
+      "description": "set type of interpolation (from 0 to 3) (default bilinear)",
       "name": "interpol",
       "required": false,
       "typing": "int"
@@ -201,8 +201,8 @@
         "tripod"
       ],
       "choices": [],
-      "default": 0,
-      "description": "enable virtual tripod mode (same as relative=0:smoothing=0)",
+      "default": "false",
+      "description": "enable virtual tripod mode (same as relative=0:smoothing=0) (default false)",
       "name": "tripod",
       "required": false,
       "typing": "bool"
@@ -212,8 +212,8 @@
         "debug"
       ],
       "choices": [],
-      "default": 0,
-      "description": "enable debug mode and writer global motions information to file",
+      "default": "false",
+      "description": "enable debug mode and writer global motions information to file (default false)",
       "name": "debug",
       "required": false,
       "typing": "bool"

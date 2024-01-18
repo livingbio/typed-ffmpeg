@@ -22,8 +22,8 @@
         "m"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set train model file to load. This option is always required.\n</p>\n</dd>",
+      "default": null,
+      "description": "set model name",
       "name": "model",
       "required": false,
       "typing": "str"
@@ -33,8 +33,8 @@
         "mix"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set how much to mix filtered samples into final output.\nAllowed range is from -1 to 1. Default value is 1.\nNegative values are special, they set how much to keep filtered noise\nin the final filter output. Set this option to -1 to hear actual\nnoise removed from input signal.\n</p></dd>",
+      "default": "1",
+      "description": "set output vs input mix (from -1 to 1) (default 1)",
       "name": "mix",
       "required": false,
       "typing": "float"

@@ -21,8 +21,8 @@
         "qp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Force a constant quantization parameter. It accepts an integer in range\n0 to 63. If not set, the filter will use the QP from the video stream\n(if available).\n</p>\n</dd>",
+      "default": "0",
+      "description": "force a constant quantizer parameter (from 0 to 64) (default 0)",
       "name": "qp",
       "required": false,
       "typing": "int"
@@ -35,21 +35,21 @@
         {
           "help": "hard thresholding",
           "name": "hard",
-          "value": "MODE_HARD"
+          "value": "0"
         },
         {
           "help": "soft thresholding",
           "name": "soft",
-          "value": "MODE_SOFT"
+          "value": "1"
         },
         {
           "help": "medium thresholding",
           "name": "medium",
-          "value": "MODE_MEDIUM"
+          "value": "2"
         }
       ],
-      "default": "MODE_MEDIUM",
-      "description": "<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>Set hard thresholding.\n</p></dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).\n</p></dd>\n<dt>\u2018<samp>medium</samp>\u2019</dt>\n<dd><p>Set medium thresholding (good results, default).\n</p></dd>\n</dl>\n</dd>",
+      "default": "medium",
+      "description": "set thresholding mode (from 0 to 2) (default medium)",
       "name": "mode",
       "required": false,
       "typing": "int"

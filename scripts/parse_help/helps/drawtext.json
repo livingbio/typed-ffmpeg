@@ -57,7 +57,7 @@
         "fontcolor"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set foreground color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "fontcolor_expr"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"\"",
       "description": "set foreground color expression (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -83,7 +83,7 @@
         "boxcolor"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"white\"",
       "description": "set box color (default \"white\")",
       "flags": "..FV.......",
       "max": null,
@@ -96,7 +96,7 @@
         "bordercolor"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set border color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -109,7 +109,7 @@
         "shadowcolor"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set shadow color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -174,7 +174,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set x expression (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -187,7 +187,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set y expression (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -265,7 +265,7 @@
         "font"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"Sans\"",
       "description": "Font name (default \"Sans\")",
       "flags": "..FV.......",
       "max": null,
@@ -338,7 +338,7 @@
         "rate"
       ],
       "choices": [],
-      "default": null,
+      "default": "0/1",
       "description": "set rate (timecode only) (from 0 to INT_MAX) (default 0/1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -364,7 +364,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1\"",
       "description": "apply alpha while rendering (default \"1\")",
       "flags": "..FV.......",
       "max": null,

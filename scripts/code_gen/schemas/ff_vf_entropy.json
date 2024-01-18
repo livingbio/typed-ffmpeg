@@ -22,18 +22,18 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "normal",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "diff",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Can be either <var>normal</var> or <var>diff</var>. Default is <var>normal</var>.\n</p>\n<p><var>diff</var> mode measures entropy of histogram delta values, absolute differences\nbetween neighbour histogram values.\n</p></dd>",
+      "default": "normal",
+      "description": "set kind of histogram entropy measurement (from 0 to 1) (default normal)",
       "name": "mode",
       "required": false,
       "typing": "int"

@@ -22,8 +22,8 @@
         "lr"
       ],
       "choices": [],
-      "default": "2",
-      "description": "<dd><p>Set an expression for the box radius in pixels used for blurring the\ncorresponding input plane.\n</p>\n<p>The radius value must be a non-negative number, and must not be\ngreater than the value of the expression <code>min(w,h)/2</code> for the\nluma and alpha planes, and of <code>min(cw,ch)/2</code> for the chroma\nplanes.\n</p>\n<p>Default value for <samp>luma_radius</samp> is \"2\". If not specified,\n<samp>chroma_radius</samp> and <samp>alpha_radius</samp> default to the\ncorresponding value set for <samp>luma_radius</samp>.\n</p>\n<p>The expressions can contain the following constants:\n</p><dl compact=\"compact\">\n<dt><samp>w</samp></dt>\n<dt><samp>h</samp></dt>\n<dd><p>The input width and height in pixels.\n</p>\n</dd>\n<dt><samp>cw</samp></dt>\n<dt><samp>ch</samp></dt>\n<dd><p>The input chroma image width and height in pixels.\n</p>\n</dd>\n<dt><samp>hsub</samp></dt>\n<dt><samp>vsub</samp></dt>\n<dd><p>The horizontal and vertical chroma subsample values. For example, for the\npixel format \"yuv422p\", <var>hsub</var> is 2 and <var>vsub</var> is 1.\n</p></dd>\n</dl>\n</dd>",
+      "default": "\"2\"",
+      "description": "Radius of the luma blurring box (default \"2\")",
       "name": "luma_radius",
       "required": false,
       "typing": "str"
@@ -34,8 +34,8 @@
         "lp"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Specify how many times the boxblur filter is applied to the\ncorresponding plane.\n</p>\n<p>Default value for <samp>luma_power</samp> is 2. If not specified,\n<samp>chroma_power</samp> and <samp>alpha_power</samp> default to the\ncorresponding value set for <samp>luma_power</samp>.\n</p>\n<p>A value of 0 will disable the effect.\n</p></dd>",
+      "default": "2",
+      "description": "How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)",
       "name": "luma_power",
       "required": false,
       "typing": "int"
@@ -46,8 +46,8 @@
         "cr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set an expression for the box radius in pixels used for blurring the\ncorresponding input plane.\n</p>\n<p>The radius value must be a non-negative number, and must not be\ngreater than the value of the expression <code>min(w,h)/2</code> for the\nluma and alpha planes, and of <code>min(cw,ch)/2</code> for the chroma\nplanes.\n</p>\n<p>Default value for <samp>luma_radius</samp> is \"2\". If not specified,\n<samp>chroma_radius</samp> and <samp>alpha_radius</samp> default to the\ncorresponding value set for <samp>luma_radius</samp>.\n</p>\n<p>The expressions can contain the following constants:\n</p><dl compact=\"compact\">\n<dt><samp>w</samp></dt>\n<dt><samp>h</samp></dt>\n<dd><p>The input width and height in pixels.\n</p>\n</dd>\n<dt><samp>cw</samp></dt>\n<dt><samp>ch</samp></dt>\n<dd><p>The input chroma image width and height in pixels.\n</p>\n</dd>\n<dt><samp>hsub</samp></dt>\n<dt><samp>vsub</samp></dt>\n<dd><p>The horizontal and vertical chroma subsample values. For example, for the\npixel format \"yuv422p\", <var>hsub</var> is 2 and <var>vsub</var> is 1.\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "Radius of the chroma blurring box",
       "name": "chroma_radius",
       "required": false,
       "typing": "str"
@@ -58,8 +58,8 @@
         "cp"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Specify how many times the boxblur filter is applied to the\ncorresponding plane.\n</p>\n<p>Default value for <samp>luma_power</samp> is 2. If not specified,\n<samp>chroma_power</samp> and <samp>alpha_power</samp> default to the\ncorresponding value set for <samp>luma_power</samp>.\n</p>\n<p>A value of 0 will disable the effect.\n</p></dd>",
+      "default": "-1",
+      "description": "How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)",
       "name": "chroma_power",
       "required": false,
       "typing": "int"
@@ -70,8 +70,8 @@
         "ar"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set an expression for the box radius in pixels used for blurring the\ncorresponding input plane.\n</p>\n<p>The radius value must be a non-negative number, and must not be\ngreater than the value of the expression <code>min(w,h)/2</code> for the\nluma and alpha planes, and of <code>min(cw,ch)/2</code> for the chroma\nplanes.\n</p>\n<p>Default value for <samp>luma_radius</samp> is \"2\". If not specified,\n<samp>chroma_radius</samp> and <samp>alpha_radius</samp> default to the\ncorresponding value set for <samp>luma_radius</samp>.\n</p>\n<p>The expressions can contain the following constants:\n</p><dl compact=\"compact\">\n<dt><samp>w</samp></dt>\n<dt><samp>h</samp></dt>\n<dd><p>The input width and height in pixels.\n</p>\n</dd>\n<dt><samp>cw</samp></dt>\n<dt><samp>ch</samp></dt>\n<dd><p>The input chroma image width and height in pixels.\n</p>\n</dd>\n<dt><samp>hsub</samp></dt>\n<dt><samp>vsub</samp></dt>\n<dd><p>The horizontal and vertical chroma subsample values. For example, for the\npixel format \"yuv422p\", <var>hsub</var> is 2 and <var>vsub</var> is 1.\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "Radius of the alpha blurring box",
       "name": "alpha_radius",
       "required": false,
       "typing": "str"
@@ -82,8 +82,8 @@
         "ap"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Specify how many times the boxblur filter is applied to the\ncorresponding plane.\n</p>\n<p>Default value for <samp>luma_power</samp> is 2. If not specified,\n<samp>chroma_power</samp> and <samp>alpha_power</samp> default to the\ncorresponding value set for <samp>luma_power</samp>.\n</p>\n<p>A value of 0 will disable the effect.\n</p></dd>",
+      "default": "-1",
+      "description": "How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)",
       "name": "alpha_power",
       "required": false,
       "typing": "int"

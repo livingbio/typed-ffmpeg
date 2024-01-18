@@ -21,8 +21,8 @@
         "shx"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Shear factor in X-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set x shear factor (from -2 to 2) (default 0)",
       "name": "shx",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "shy"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Shear factor in Y-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set y shear factor (from -2 to 2) (default 0)",
       "name": "shy",
       "required": false,
       "typing": "float"
@@ -44,8 +44,8 @@
         "c"
       ],
       "choices": [],
-      "default": "black",
-      "description": "<dd><p>Set the color used to fill the output area not covered by the transformed\nvideo. For the general syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nIf the special value \"none\" is selected then no\nbackground is printed (useful for example if the background is never shown).\n</p>\n<p>Default value is \"black\".\n</p>\n</dd>",
+      "default": "\"black\"",
+      "description": "set background fill color (default \"black\")",
       "name": "fillcolor",
       "required": false,
       "typing": "str"
@@ -58,16 +58,16 @@
         {
           "help": "nearest neighbour",
           "name": "nearest",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "bilinear",
           "name": "bilinear",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set interpolation type. Can be <code>bilinear</code> or <code>nearest</code>. Default is <code>bilinear</code>.\n</p></dd>",
+      "default": "bilinear",
+      "description": "set interpolation (from 0 to 1) (default bilinear)",
       "name": "interp",
       "required": false,
       "typing": "int"

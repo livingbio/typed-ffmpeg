@@ -22,8 +22,8 @@
         "s"
       ],
       "choices": [],
-      "default": "4096x2048",
-      "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>4096x2048</code>.\n</p>\n</dd>",
+      "default": "\"4096x2048\"",
+      "description": "set video size (default \"4096x2048\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -36,16 +36,16 @@
         {
           "help": "combined mode",
           "name": "combined",
-          "value": "COMBINED"
+          "value": "0"
         },
         {
           "help": "separate mode",
           "name": "separate",
-          "value": "SEPARATE"
+          "value": "1"
         }
       ],
-      "default": "COMBINED",
-      "description": "<dd><p>Specify display mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>combined</samp>\u2019</dt>\n<dd><p>all channels are displayed in the same row\n</p></dd>\n<dt>\u2018<samp>separate</samp>\u2019</dt>\n<dd><p>all channels are displayed in separate rows\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>combined</samp>\u2019.\n</p>\n</dd>",
+      "default": "combined",
+      "description": "set channel display mode (from 0 to 1) (default combined)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -58,81 +58,81 @@
         {
           "help": "separate color for each channel",
           "name": "channel",
-          "value": "CHANNEL"
+          "value": "0"
         },
         {
           "help": "intensity based coloring",
           "name": "intensity",
-          "value": "INTENSITY"
+          "value": "1"
         },
         {
           "help": "rainbow based coloring",
           "name": "rainbow",
-          "value": "RAINBOW"
+          "value": "2"
         },
         {
           "help": "moreland based coloring",
           "name": "moreland",
-          "value": "MORELAND"
+          "value": "3"
         },
         {
           "help": "nebulae based coloring",
           "name": "nebulae",
-          "value": "NEBULAE"
+          "value": "4"
         },
         {
           "help": "fire based coloring",
           "name": "fire",
-          "value": "FIRE"
+          "value": "5"
         },
         {
           "help": "fiery based coloring",
           "name": "fiery",
-          "value": "FIERY"
+          "value": "6"
         },
         {
           "help": "fruit based coloring",
           "name": "fruit",
-          "value": "FRUIT"
+          "value": "7"
         },
         {
           "help": "cool based coloring",
           "name": "cool",
-          "value": "COOL"
+          "value": "8"
         },
         {
           "help": "magma based coloring",
           "name": "magma",
-          "value": "MAGMA"
+          "value": "9"
         },
         {
           "help": "green based coloring",
           "name": "green",
-          "value": "GREEN"
+          "value": "10"
         },
         {
           "help": "viridis based coloring",
           "name": "viridis",
-          "value": "VIRIDIS"
+          "value": "11"
         },
         {
           "help": "plasma based coloring",
           "name": "plasma",
-          "value": "PLASMA"
+          "value": "12"
         },
         {
           "help": "cividis based coloring",
           "name": "cividis",
-          "value": "CIVIDIS"
+          "value": "13"
         },
         {
           "help": "terrain based coloring",
           "name": "terrain",
-          "value": "TERRAIN"
+          "value": "14"
         }
       ],
-      "default": "INTENSITY",
-      "description": "<dd><p>Specify display color mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>channel</samp>\u2019</dt>\n<dd><p>each channel is displayed in a separate color\n</p></dd>\n<dt>\u2018<samp>intensity</samp>\u2019</dt>\n<dd><p>each channel is displayed using the same color scheme\n</p></dd>\n<dt>\u2018<samp>rainbow</samp>\u2019</dt>\n<dd><p>each channel is displayed using the rainbow color scheme\n</p></dd>\n<dt>\u2018<samp>moreland</samp>\u2019</dt>\n<dd><p>each channel is displayed using the moreland color scheme\n</p></dd>\n<dt>\u2018<samp>nebulae</samp>\u2019</dt>\n<dd><p>each channel is displayed using the nebulae color scheme\n</p></dd>\n<dt>\u2018<samp>fire</samp>\u2019</dt>\n<dd><p>each channel is displayed using the fire color scheme\n</p></dd>\n<dt>\u2018<samp>fiery</samp>\u2019</dt>\n<dd><p>each channel is displayed using the fiery color scheme\n</p></dd>\n<dt>\u2018<samp>fruit</samp>\u2019</dt>\n<dd><p>each channel is displayed using the fruit color scheme\n</p></dd>\n<dt>\u2018<samp>cool</samp>\u2019</dt>\n<dd><p>each channel is displayed using the cool color scheme\n</p></dd>\n<dt>\u2018<samp>magma</samp>\u2019</dt>\n<dd><p>each channel is displayed using the magma color scheme\n</p></dd>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dd><p>each channel is displayed using the green color scheme\n</p></dd>\n<dt>\u2018<samp>viridis</samp>\u2019</dt>\n<dd><p>each channel is displayed using the viridis color scheme\n</p></dd>\n<dt>\u2018<samp>plasma</samp>\u2019</dt>\n<dd><p>each channel is displayed using the plasma color scheme\n</p></dd>\n<dt>\u2018<samp>cividis</samp>\u2019</dt>\n<dd><p>each channel is displayed using the cividis color scheme\n</p></dd>\n<dt>\u2018<samp>terrain</samp>\u2019</dt>\n<dd><p>each channel is displayed using the terrain color scheme\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>intensity</samp>\u2019.\n</p>\n</dd>",
+      "default": "intensity",
+      "description": "set channel coloring (from 0 to 14) (default intensity)",
       "name": "color",
       "required": false,
       "typing": "int"
@@ -145,36 +145,36 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": "LINEAR"
+          "value": "0"
         },
         {
           "help": "square root",
           "name": "sqrt",
-          "value": "SQRT"
+          "value": "1"
         },
         {
           "help": "cubic root",
           "name": "cbrt",
-          "value": "CBRT"
+          "value": "2"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "LOG"
+          "value": "3"
         },
         {
           "help": "4th root",
           "name": "4thrt",
-          "value": "FOURTHRT"
+          "value": "4"
         },
         {
           "help": "5th root",
           "name": "5thrt",
-          "value": "FIFTHRT"
+          "value": "5"
         }
       ],
-      "default": "LOG",
-      "description": "<dd><p>Specify scale used for calculating intensity color values.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>square root, default\n</p></dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>cubic root\n</p></dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n</p></dd>\n<dt>\u2018<samp>4thrt</samp>\u2019</dt>\n<dd><p>4th root\n</p></dd>\n<dt>\u2018<samp>5thrt</samp>\u2019</dt>\n<dd><p>5th root\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>log</samp>\u2019.\n</p>\n</dd>",
+      "default": "log",
+      "description": "set display scale (from 0 to 5) (default log)",
       "name": "scale",
       "required": false,
       "typing": "int"
@@ -187,16 +187,16 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": "F_LINEAR"
+          "value": "0"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "F_LOG"
+          "value": "1"
         }
       ],
-      "default": "F_LINEAR",
-      "description": "<dd><p>Specify frequency scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>linear\n</p></dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>logarithmic\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>lin</samp>\u2019.\n</p>\n</dd>",
+      "default": "lin",
+      "description": "set frequency scale (from 0 to 1) (default lin)",
       "name": "fscale",
       "required": false,
       "typing": "int"
@@ -206,8 +206,8 @@
         "saturation"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set saturation modifier for displayed colors. Negative values provide\nalternative color scheme. <code>0</code> is no saturation at all.\nSaturation must be in [-10.0, 10.0] range.\nDefault value is <code>1</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "color saturation multiplier (from -10 to 10) (default 1)",
       "name": "saturation",
       "required": false,
       "typing": "float"
@@ -220,116 +220,116 @@
         {
           "help": "Rectangular",
           "name": "rect",
-          "value": "WFUNC_RECT"
+          "value": "0"
         },
         {
           "help": "Bartlett",
           "name": "bartlett",
-          "value": "WFUNC_BARTLETT"
+          "value": "4"
         },
         {
           "help": "Hann",
           "name": "hann",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hanning",
           "name": "hanning",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hamming",
           "name": "hamming",
-          "value": "WFUNC_HAMMING"
+          "value": "2"
         },
         {
           "help": "Blackman",
           "name": "blackman",
-          "value": "WFUNC_BLACKMAN"
+          "value": "3"
         },
         {
           "help": "Welch",
           "name": "welch",
-          "value": "WFUNC_WELCH"
+          "value": "5"
         },
         {
           "help": "Flat-top",
           "name": "flattop",
-          "value": "WFUNC_FLATTOP"
+          "value": "6"
         },
         {
           "help": "Blackman-Harris",
           "name": "bharris",
-          "value": "WFUNC_BHARRIS"
+          "value": "7"
         },
         {
           "help": "Blackman-Nuttall",
           "name": "bnuttall",
-          "value": "WFUNC_BNUTTALL"
+          "value": "8"
         },
         {
           "help": "Bartlett-Hann",
           "name": "bhann",
-          "value": "WFUNC_BHANN"
+          "value": "11"
         },
         {
           "help": "Sine",
           "name": "sine",
-          "value": "WFUNC_SINE"
+          "value": "9"
         },
         {
           "help": "Nuttall",
           "name": "nuttall",
-          "value": "WFUNC_NUTTALL"
+          "value": "10"
         },
         {
           "help": "Lanczos",
           "name": "lanczos",
-          "value": "WFUNC_LANCZOS"
+          "value": "12"
         },
         {
           "help": "Gauss",
           "name": "gauss",
-          "value": "WFUNC_GAUSS"
+          "value": "13"
         },
         {
           "help": "Tukey",
           "name": "tukey",
-          "value": "WFUNC_TUKEY"
+          "value": "14"
         },
         {
           "help": "Dolph-Chebyshev",
           "name": "dolph",
-          "value": "WFUNC_DOLPH"
+          "value": "15"
         },
         {
           "help": "Cauchy",
           "name": "cauchy",
-          "value": "WFUNC_CAUCHY"
+          "value": "16"
         },
         {
           "help": "Parzen",
           "name": "parzen",
-          "value": "WFUNC_PARZEN"
+          "value": "17"
         },
         {
           "help": "Poisson",
           "name": "poisson",
-          "value": "WFUNC_POISSON"
+          "value": "18"
         },
         {
           "help": "Bohman",
           "name": "bohman",
-          "value": "WFUNC_BOHMAN"
+          "value": "19"
         },
         {
           "help": "Kaiser",
           "name": "kaiser",
-          "value": "WFUNC_KAISER"
+          "value": "20"
         }
       ],
-      "default": "WFUNC_HANNING",
-      "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann</samp>\u2019</dt>\n<dt>\u2018<samp>hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>hann</code>.\n</p>\n</dd>",
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
       "name": "win_func",
       "required": false,
       "typing": "int"
@@ -340,18 +340,18 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "vertical",
-          "value": "VERTICAL"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "horizontal",
-          "value": "HORIZONTAL"
+          "value": "1"
         }
       ],
-      "default": "VERTICAL",
-      "description": "<dd><p>Set orientation of time vs frequency axis. Can be <code>vertical</code> or\n<code>horizontal</code>. Default is <code>vertical</code>.\n</p>\n</dd>",
+      "default": "vertical",
+      "description": "set orientation (from 0 to 1) (default vertical)",
       "name": "orientation",
       "required": false,
       "typing": "int"
@@ -361,8 +361,8 @@
         "gain"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set scale gain for calculating intensity color values.\nDefault value is <code>1</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set scale gain (from 0 to 128) (default 1)",
       "name": "gain",
       "required": false,
       "typing": "float"
@@ -372,8 +372,8 @@
         "legend"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Draw time and frequency axes and legends. Default is enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "draw legend (default true)",
       "name": "legend",
       "required": false,
       "typing": "bool"
@@ -383,8 +383,8 @@
         "rotation"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set color rotation, must be in [-1.0, 1.0] range.\nDefault value is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "color rotation (from -1 to 1) (default 0)",
       "name": "rotation",
       "required": false,
       "typing": "float"
@@ -394,8 +394,8 @@
         "start"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set start frequency from which to display spectrogram. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "start frequency (from 0 to INT_MAX) (default 0)",
       "name": "start",
       "required": false,
       "typing": "int"
@@ -405,8 +405,8 @@
         "stop"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set stop frequency to which to display spectrogram. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "stop frequency (from 0 to INT_MAX) (default 0)",
       "name": "stop",
       "required": false,
       "typing": "int"
@@ -416,8 +416,8 @@
         "drange"
       ],
       "choices": [],
-      "default": 120.0,
-      "description": "<dd><p>Set dynamic range used to calculate intensity color values. Default is 120 dBFS.\nAllowed range is from 10 to 200.\n</p>\n</dd>",
+      "default": "120",
+      "description": "set dynamic range in dBFS (from 10 to 200) (default 120)",
       "name": "drange",
       "required": false,
       "typing": "float"
@@ -427,8 +427,8 @@
         "limit"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set upper limit of input audio samples volume in dBFS. Default is 0 dBFS.\nAllowed range is from -100 to 100.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set upper limit in dBFS (from -100 to 100) (default 0)",
       "name": "limit",
       "required": false,
       "typing": "float"
@@ -438,8 +438,8 @@
         "opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set opacity strength when using pixel format output with alpha component.\n</p></dd>",
+      "default": "1",
+      "description": "set opacity strength (from 0 to 10) (default 1)",
       "name": "opacity",
       "required": false,
       "typing": "float"

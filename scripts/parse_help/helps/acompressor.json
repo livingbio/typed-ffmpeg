@@ -21,8 +21,8 @@
       "default": "1",
       "description": "set input gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_in",
       "typing": "double"
     },
@@ -57,11 +57,11 @@
         "threshold"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.125",
       "description": "set threshold (from 0.000976563 to 1) (default 0.125)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1",
+      "min": "0.000976563",
       "name": "threshold",
       "typing": "double"
     },
@@ -86,8 +86,8 @@
       "default": "20",
       "description": "set attack (from 0.01 to 2000) (default 20)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "2000",
+      "min": "0.01",
       "name": "attack",
       "typing": "double"
     },
@@ -99,8 +99,8 @@
       "default": "250",
       "description": "set release (from 0.01 to 9000) (default 250)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "9000",
+      "min": "0.01",
       "name": "release",
       "typing": "double"
     },
@@ -122,7 +122,7 @@
         "knee"
       ],
       "choices": [],
-      "default": null,
+      "default": "2.82843",
       "description": "set knee (from 1 to 8) (default 2.82843)",
       "flags": "..F.A....T.",
       "max": "8",
@@ -190,8 +190,8 @@
       "default": "1",
       "description": "set sidechain gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_sc",
       "typing": "double"
     },

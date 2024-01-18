@@ -21,8 +21,8 @@
         "dc_Y"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Adjust the dc value (gain) of the luma plane of the image. The filter\naccepts an integer value in range <code>0</code> to <code>1000</code>. The default\nvalue is set to <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "adjust gain in Y plane (from 0 to 1000) (default 0)",
       "name": "dc_Y",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "dc_U"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Adjust the dc value (gain) of the 1st chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "adjust gain in U plane (from 0 to 1000) (default 0)",
       "name": "dc_U",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "dc_V"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Adjust the dc value (gain) of the 2nd chroma plane of the image. The\nfilter accepts an integer value in range <code>0</code> to <code>1000</code>. The\ndefault value is set to <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "adjust gain in V plane (from 0 to 1000) (default 0)",
       "name": "dc_V",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "weight_Y"
       ],
       "choices": [],
-      "default": "1",
-      "description": "<dd><p>Set the frequency domain weight expression for the luma plane.\n</p>\n</dd>",
+      "default": "\"1\"",
+      "description": "set luminance expression in Y plane (default \"1\")",
       "name": "weight_Y",
       "required": false,
       "typing": "str"
@@ -65,8 +65,8 @@
         "weight_U"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the frequency domain weight expression for the 1st chroma plane.\n</p>\n</dd>",
+      "default": null,
+      "description": "set chrominance expression in U plane",
       "name": "weight_U",
       "required": false,
       "typing": "str"
@@ -76,8 +76,8 @@
         "weight_V"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the frequency domain weight expression for the 2nd chroma plane.\n</p>\n</dd>",
+      "default": null,
+      "description": "set chrominance expression in V plane",
       "name": "weight_V",
       "required": false,
       "typing": "str"
@@ -86,9 +86,20 @@
       "alias": [
         "eval"
       ],
-      "choices": [],
-      "default": "EVAL_MODE_INIT",
-      "description": "<dd><p>Set when the expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Only evaluate expressions once during the filter initialization.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p>\n<p>The filter accepts the following variables:\n</p></dd>",
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "help": "eval expressions per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
       "typing": "int"

@@ -21,8 +21,8 @@
         "strength"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the sharpening strength. Default value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the sharpening strength (from 0 to 1) (default 0)",
       "name": "strength",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set planes to filter. Default value is to filter all\nplanes except alpha plane.\n</p></dd>",
+      "default": "7",
+      "description": "set what planes to filter (default 7)",
       "name": "planes",
       "required": false,
       "typing": "str"

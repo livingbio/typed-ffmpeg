@@ -24,216 +24,216 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": 0,
-      "description": "set component #0 blend mode",
+      "default": "normal",
+      "description": "set component #0 blend mode (from 0 to 39) (default normal)",
       "name": "c0_mode",
       "required": false,
       "typing": "int"
@@ -246,216 +246,216 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": 0,
-      "description": "set component #1 blend mode",
+      "default": "normal",
+      "description": "set component #1 blend mode (from 0 to 39) (default normal)",
       "name": "c1_mode",
       "required": false,
       "typing": "int"
@@ -468,216 +468,216 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": 0,
-      "description": "set component #2 blend mode",
+      "default": "normal",
+      "description": "set component #2 blend mode (from 0 to 39) (default normal)",
       "name": "c2_mode",
       "required": false,
       "typing": "int"
@@ -690,216 +690,216 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": 0,
-      "description": "set component #3 blend mode",
+      "default": "normal",
+      "description": "set component #3 blend mode (from 0 to 39) (default normal)",
       "name": "c3_mode",
       "required": false,
       "typing": "int"
@@ -912,216 +912,216 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": -1,
-      "description": "set blend mode for all components",
+      "default": "-1",
+      "description": "set blend mode for all components (from -1 to 39) (default -1)",
       "name": "all_mode",
       "required": false,
       "typing": "int"
@@ -1131,7 +1131,7 @@
         "c0_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set color component #0 expression",
       "name": "c0_expr",
       "required": false,
@@ -1142,7 +1142,7 @@
         "c1_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set color component #1 expression",
       "name": "c1_expr",
       "required": false,
@@ -1153,7 +1153,7 @@
         "c2_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set color component #2 expression",
       "name": "c2_expr",
       "required": false,
@@ -1164,7 +1164,7 @@
         "c3_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set color component #3 expression",
       "name": "c3_expr",
       "required": false,
@@ -1175,7 +1175,7 @@
         "all_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set expression for all color components",
       "name": "all_expr",
       "required": false,
@@ -1186,8 +1186,8 @@
         "c0_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set color component #0 opacity",
+      "default": "1",
+      "description": "set color component #0 opacity (from 0 to 1) (default 1)",
       "name": "c0_opacity",
       "required": false,
       "typing": "float"
@@ -1197,8 +1197,8 @@
         "c1_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set color component #1 opacity",
+      "default": "1",
+      "description": "set color component #1 opacity (from 0 to 1) (default 1)",
       "name": "c1_opacity",
       "required": false,
       "typing": "float"
@@ -1208,8 +1208,8 @@
         "c2_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set color component #2 opacity",
+      "default": "1",
+      "description": "set color component #2 opacity (from 0 to 1) (default 1)",
       "name": "c2_opacity",
       "required": false,
       "typing": "float"
@@ -1219,8 +1219,8 @@
         "c3_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set color component #3 opacity",
+      "default": "1",
+      "description": "set color component #3 opacity (from 0 to 1) (default 1)",
       "name": "c3_opacity",
       "required": false,
       "typing": "float"
@@ -1230,8 +1230,8 @@
         "all_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set opacity for all color components",
+      "default": "1",
+      "description": "set opacity for all color components (from 0 to 1) (default 1)",
       "name": "all_opacity",
       "required": false,
       "typing": "float"

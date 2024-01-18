@@ -21,8 +21,8 @@
         "result"
       ],
       "choices": [],
-      "default": "transforms.trf",
-      "description": "<dd><p>Set the path to the file used to write the transforms information.\nDefault value is <samp>transforms.trf</samp>.\n</p>\n</dd>",
+      "default": "\"transforms.trf\"",
+      "description": "path to the file used to write the transforms (default \"transforms.trf\")",
       "name": "result",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "shakiness"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set how shaky the video is and how quick the camera is. It accepts an\ninteger in the range 1-10, a value of 1 means little shakiness, a\nvalue of 10 means strong shakiness. Default value is 5.\n</p>\n</dd>",
+      "default": "5",
+      "description": "how shaky is the video and how quick is the camera? 1: little (fast) 10: very strong/quick (slow) (from 1 to 10) (default 5)",
       "name": "shakiness",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "accuracy"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set the accuracy of the detection process. It must be a value in the\nrange 1-15. A value of 1 means low accuracy, a value of 15 means high\naccuracy. Default value is 15.\n</p>\n</dd>",
+      "default": "15",
+      "description": "(>=shakiness) 1: low 15: high (slow) (from 1 to 15) (default 15)",
       "name": "accuracy",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "stepsize"
       ],
       "choices": [],
-      "default": 6,
-      "description": "<dd><p>Set stepsize of the search process. The region around minimum is\nscanned with 1 pixel resolution. Default value is 6.\n</p>\n</dd>",
+      "default": "6",
+      "description": "region around minimum is scanned with 1 pixel resolution (from 1 to 32) (default 6)",
       "name": "stepsize",
       "required": false,
       "typing": "int"
@@ -65,8 +65,8 @@
         "mincontrast"
       ],
       "choices": [],
-      "default": 0.25,
-      "description": "<dd><p>Set minimum contrast. Below this value a local measurement field is\ndiscarded. Must be a floating point value in the range 0-1. Default\nvalue is 0.3.\n</p>\n</dd>",
+      "default": "0.25",
+      "description": "below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)",
       "name": "mincontrast",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "show"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Show fields and transforms in the resulting frames. It accepts an\ninteger in the range 0-2. Default value is 0, which disables any\nvisualization.\n</p>\n</dd>",
+      "default": "0",
+      "description": "0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)",
       "name": "show",
       "required": false,
       "typing": "int"
@@ -87,8 +87,8 @@
         "tripod"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set reference frame number for tripod mode.\n</p>\n<p>If enabled, the motion of the frames is compared to a reference frame\nin the filtered stream, identified by the specified number. The idea\nis to compensate all movements in a more-or-less static scene and keep\nthe camera view absolutely still.\n</p>\n<p>If set to 0, it is disabled. The frames are counted starting from 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)",
       "name": "tripod",
       "required": false,
       "typing": "int"

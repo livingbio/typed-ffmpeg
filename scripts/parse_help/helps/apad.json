@@ -57,7 +57,7 @@
         "pad_dur"
       ],
       "choices": [],
-      "default": null,
+      "default": "-0.000001",
       "description": "set duration of silence to add (default -0.000001)",
       "flags": "..F.A......",
       "max": null,
@@ -70,7 +70,7 @@
         "whole_dur"
       ],
       "choices": [],
-      "default": null,
+      "default": "-0.000001",
       "description": "set minimum target duration in the audio stream (default -0.000001)",
       "flags": "..F.A......",
       "max": null,

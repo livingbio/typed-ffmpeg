@@ -21,8 +21,8 @@
         "tempo"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set tempo scale factor.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set tempo scale factor (from 0.01 to 100) (default 1)",
       "name": "tempo",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "pitch"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set pitch scale factor.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set pitch scale factor (from 0.01 to 100) (default 1)",
       "name": "pitch",
       "required": false,
       "typing": "float"
@@ -44,23 +44,23 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "crisp",
-          "value": "RubberBandOptionTransientsCrisp"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "mixed",
-          "value": "RubberBandOptionTransientsMixed"
+          "value": "256"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smooth",
-          "value": "RubberBandOptionTransientsSmooth"
+          "value": "512"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set transients detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>crisp</var></dt>\n<dt><var>mixed</var></dt>\n<dt><var>smooth</var></dt>\n</dl>\n</dd>",
+      "default": "crisp",
+      "description": "set transients (from 0 to INT_MAX) (default crisp)",
       "name": "transients",
       "required": false,
       "typing": "int"
@@ -71,23 +71,23 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "compound",
-          "value": "RubberBandOptionDetectorCompound"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "percussive",
-          "value": "RubberBandOptionDetectorPercussive"
+          "value": "1024"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "soft",
-          "value": "RubberBandOptionDetectorSoft"
+          "value": "2048"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set detector.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>compound</var></dt>\n<dt><var>percussive</var></dt>\n<dt><var>soft</var></dt>\n</dl>\n</dd>",
+      "default": "compound",
+      "description": "set detector (from 0 to INT_MAX) (default compound)",
       "name": "detector",
       "required": false,
       "typing": "int"
@@ -98,18 +98,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "laminar",
-          "value": "RubberBandOptionPhaseLaminar"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "independent",
-          "value": "RubberBandOptionPhaseIndependent"
+          "value": "8192"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set phase.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>laminar</var></dt>\n<dt><var>independent</var></dt>\n</dl>\n</dd>",
+      "default": "laminar",
+      "description": "set phase (from 0 to INT_MAX) (default laminar)",
       "name": "phase",
       "required": false,
       "typing": "int"
@@ -120,23 +120,23 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "standard",
-          "value": "RubberBandOptionWindowStandard"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "short",
-          "value": "RubberBandOptionWindowShort"
+          "value": "1048576"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "long",
-          "value": "RubberBandOptionWindowLong"
+          "value": "2097152"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set processing window size.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>standard</var></dt>\n<dt><var>short</var></dt>\n<dt><var>long</var></dt>\n</dl>\n</dd>",
+      "default": "standard",
+      "description": "set window (from 0 to INT_MAX) (default standard)",
       "name": "window",
       "required": false,
       "typing": "int"
@@ -147,18 +147,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "off",
-          "value": "RubberBandOptionSmoothingOff"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "on",
-          "value": "RubberBandOptionSmoothingOn"
+          "value": "8388608"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set smoothing.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>off</var></dt>\n<dt><var>on</var></dt>\n</dl>\n</dd>",
+      "default": "off",
+      "description": "set smoothing (from 0 to INT_MAX) (default off)",
       "name": "smoothing",
       "required": false,
       "typing": "int"
@@ -169,18 +169,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "shifted",
-          "value": "RubberBandOptionFormantShifted"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "preserved",
-          "value": "RubberBandOptionFormantPreserved"
+          "value": "16777216"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Enable formant preservation when shift pitching.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>shifted</var></dt>\n<dt><var>preserved</var></dt>\n</dl>\n</dd>",
+      "default": "shifted",
+      "description": "set formant (from 0 to INT_MAX) (default shifted)",
       "name": "formant",
       "required": false,
       "typing": "int"
@@ -191,23 +191,23 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "quality",
-          "value": "RubberBandOptionPitchHighQuality"
+          "value": "33554432"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "speed",
-          "value": "RubberBandOptionPitchHighSpeed"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "consistency",
-          "value": "RubberBandOptionPitchHighConsistency"
+          "value": "67108864"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set pitch quality.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>quality</var></dt>\n<dt><var>speed</var></dt>\n<dt><var>consistency</var></dt>\n</dl>\n</dd>",
+      "default": "speed",
+      "description": "set pitch quality (from 0 to INT_MAX) (default speed)",
       "name": "pitchq",
       "required": false,
       "typing": "int"
@@ -218,18 +218,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "apart",
-          "value": "RubberBandOptionChannelsApart"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "together",
-          "value": "RubberBandOptionChannelsTogether"
+          "value": "268435456"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set channels.\nPossible values are:\n</p><dl compact=\"compact\">\n<dt><var>apart</var></dt>\n<dt><var>together</var></dt>\n</dl>\n</dd>",
+      "default": "apart",
+      "description": "set channels (from 0 to INT_MAX) (default apart)",
       "name": "channels",
       "required": false,
       "typing": "int"

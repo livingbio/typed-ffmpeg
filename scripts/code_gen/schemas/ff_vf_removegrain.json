@@ -21,8 +21,8 @@
         "m0"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set mode for the first plane.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set mode for 1st plane (from 0 to 24) (default 0)",
       "name": "m0",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "m1"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set mode for the second plane.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set mode for 2nd plane (from 0 to 24) (default 0)",
       "name": "m1",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "m2"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set mode for the third plane.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set mode for 3rd plane (from 0 to 24) (default 0)",
       "name": "m2",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "m3"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set mode for the fourth plane.\n</p></dd>",
+      "default": "0",
+      "description": "set mode for 4th plane (from 0 to 24) (default 0)",
       "name": "m3",
       "required": false,
       "typing": "int"

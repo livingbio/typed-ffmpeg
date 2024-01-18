@@ -18,7 +18,7 @@
         "c0"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set component #0 expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -31,7 +31,7 @@
         "c1"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set component #1 expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -44,7 +44,7 @@
         "c2"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set component #2 expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -57,7 +57,7 @@
         "c3"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set component #3 expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -70,7 +70,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set Y expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -83,7 +83,7 @@
         "u"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set U expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -96,7 +96,7 @@
         "v"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set V expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -109,7 +109,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set R expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -122,7 +122,7 @@
         "g"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set G expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -135,7 +135,7 @@
         "b"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set B expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -148,7 +148,7 @@
         "a"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"clipval\"",
       "description": "set A expression (default \"clipval\")",
       "flags": "..FV.....T.",
       "max": null,

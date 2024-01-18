@@ -18,7 +18,7 @@
         "color"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set the colorhold key color (default \"black\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -31,7 +31,7 @@
         "similarity"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.01",
       "description": "set the colorhold similarity value (from 1e-05 to 1) (default 0.01)",
       "flags": "..FV.....T.",
       "max": "1",

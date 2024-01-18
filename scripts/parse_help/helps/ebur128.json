@@ -31,7 +31,7 @@
         "size"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"640x480\"",
       "description": "set video size (default \"640x480\")",
       "flags": "..FV.......",
       "max": null,
@@ -147,7 +147,7 @@
         "panlaw"
       ],
       "choices": [],
-      "default": null,
+      "default": "-3.0103",
       "description": "set a specific pan law for dual-mono files (from -10 to 0) (default -3.0103)",
       "flags": "..F.A......",
       "max": "0",

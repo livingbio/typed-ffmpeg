@@ -21,8 +21,8 @@
         "m"
       ],
       "choices": [],
-      "default": 2.5,
-      "description": "<dd><p>Sets the difference coefficient (default: 2.5). 0.0 means mono sound\n(average of both channels), with 1.0 sound will be unchanged, with\n-1.0 left and right channels will be swapped.\n</p>\n</dd>",
+      "default": "2.5",
+      "description": "set the difference coefficient (from -10 to 10) (default 2.5)",
       "name": "m",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "c"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Enable clipping. By default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "enable clipping (default true)",
       "name": "c",
       "required": false,
       "typing": "bool"

@@ -22,8 +22,8 @@
         "lum"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the luma expression.\n</p></dd>",
+      "default": null,
+      "description": "set luminance expression",
       "name": "lum_expr",
       "required": false,
       "typing": "str"
@@ -34,8 +34,8 @@
         "cb"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the chrominance blue expression.\n</p></dd>",
+      "default": null,
+      "description": "set chroma blue expression",
       "name": "cb_expr",
       "required": false,
       "typing": "str"
@@ -46,8 +46,8 @@
         "cr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the chrominance red expression.\n</p></dd>",
+      "default": null,
+      "description": "set chroma red expression",
       "name": "cr_expr",
       "required": false,
       "typing": "str"
@@ -58,8 +58,8 @@
         "a"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the alpha expression.\n</p></dd>",
+      "default": null,
+      "description": "set alpha expression",
       "name": "alpha_expr",
       "required": false,
       "typing": "str"
@@ -70,8 +70,8 @@
         "r"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the red expression.\n</p></dd>",
+      "default": null,
+      "description": "set red expression",
       "name": "red_expr",
       "required": false,
       "typing": "str"
@@ -82,8 +82,8 @@
         "g"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the green expression.\n</p></dd>",
+      "default": null,
+      "description": "set green expression",
       "name": "green_expr",
       "required": false,
       "typing": "str"
@@ -94,8 +94,8 @@
         "b"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the blue expression.\n</p></dd>",
+      "default": null,
+      "description": "set blue expression",
       "name": "blue_expr",
       "required": false,
       "typing": "str"
@@ -109,26 +109,26 @@
         {
           "help": "nearest interpolation",
           "name": "nearest",
-          "value": "INTERP_NEAREST"
+          "value": "0"
         },
         {
           "help": "nearest interpolation",
           "name": "n",
-          "value": "INTERP_NEAREST"
+          "value": "0"
         },
         {
           "help": "bilinear interpolation",
           "name": "bilinear",
-          "value": "INTERP_BILINEAR"
+          "value": "1"
         },
         {
           "help": "bilinear interpolation",
           "name": "b",
-          "value": "INTERP_BILINEAR"
+          "value": "1"
         }
       ],
-      "default": "INTERP_BILINEAR",
-      "description": "set interpolation method",
+      "default": "bilinear",
+      "description": "set interpolation method (from 0 to 1) (default bilinear)",
       "name": "interpolation",
       "required": false,
       "typing": "int"

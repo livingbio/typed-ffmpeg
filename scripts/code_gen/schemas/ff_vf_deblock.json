@@ -22,18 +22,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "weak",
-          "value": "WEAK"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "strong",
-          "value": "STRONG"
+          "value": "1"
         }
       ],
-      "default": "STRONG",
-      "description": "<dd><p>Set filter type, can be <var>weak</var> or <var>strong</var>. Default is <var>strong</var>.\nThis controls what kind of deblocking is applied.\n</p>\n</dd>",
+      "default": "strong",
+      "description": "set type of filter (from 0 to 1) (default strong)",
       "name": "filter",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "block"
       ],
       "choices": [],
-      "default": 8,
-      "description": "<dd><p>Set size of block, allowed range is from 4 to 512. Default is <var>8</var>.\n</p>\n</dd>",
+      "default": "8",
+      "description": "set size of block (from 4 to 512) (default 8)",
       "name": "block",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "alpha"
       ],
       "choices": [],
-      "default": 0.098,
-      "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
+      "default": "0.098",
+      "description": "set 1st detection threshold (from 0 to 1) (default 0.098)",
       "name": "alpha",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "beta"
       ],
       "choices": [],
-      "default": 0.05,
-      "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
+      "default": "0.05",
+      "description": "set 2nd detection threshold (from 0 to 1) (default 0.05)",
       "name": "beta",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "gamma"
       ],
       "choices": [],
-      "default": 0.05,
-      "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
+      "default": "0.05",
+      "description": "set 3rd detection threshold (from 0 to 1) (default 0.05)",
       "name": "gamma",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "delta"
       ],
       "choices": [],
-      "default": 0.05,
-      "description": "<dd><p>Set blocking detection thresholds. Allowed range is 0 to 1.\nDefaults are: <var>0.098</var> for <var>alpha</var> and <var>0.05</var> for the rest.\nUsing higher threshold gives more deblocking strength.\nSetting <var>alpha</var> controls threshold detection at exact edge of block.\nRemaining options controls threshold detection near the edge. Each one for\nbelow/above or left/right. Setting any of those to <var>0</var> disables\ndeblocking.\n</p>\n</dd>",
+      "default": "0.05",
+      "description": "set 4th detection threshold (from 0 to 1) (default 0.05)",
       "name": "delta",
       "required": false,
       "typing": "float"
@@ -98,8 +98,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set planes to filter. Default is to filter all available planes.\n</p></dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"

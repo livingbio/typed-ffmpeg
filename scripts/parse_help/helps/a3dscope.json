@@ -19,7 +19,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "s"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"hd720\"",
       "description": "set video size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -103,8 +103,8 @@
       "default": "1",
       "description": "set camera zoom (from 0.01 to 10) (default 1)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "10",
+      "min": "0.01",
       "name": "xzoom",
       "typing": "float"
     },

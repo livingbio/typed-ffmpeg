@@ -22,8 +22,8 @@
         "w"
       ],
       "choices": [],
-      "default": "iw",
-      "description": "<dd><p>Specify an expression for the size of the output image with the\npaddings added. If the value for <var>width</var> or <var>height</var> is 0, the\ncorresponding input size is used for the output.\n</p>\n<p>The <var>width</var> expression can reference the value set by the\n<var>height</var> expression, and vice versa.\n</p>\n<p>The default value of <var>width</var> and <var>height</var> is 0.\n</p>\n</dd>",
+      "default": "\"iw\"",
+      "description": "set the pad area width expression (default \"iw\")",
       "name": "width",
       "required": false,
       "typing": "str"
@@ -34,8 +34,8 @@
         "h"
       ],
       "choices": [],
-      "default": "ih",
-      "description": "<dd><p>Specify an expression for the size of the output image with the\npaddings added. If the value for <var>width</var> or <var>height</var> is 0, the\ncorresponding input size is used for the output.\n</p>\n<p>The <var>width</var> expression can reference the value set by the\n<var>height</var> expression, and vice versa.\n</p>\n<p>The default value of <var>width</var> and <var>height</var> is 0.\n</p>\n</dd>",
+      "default": "\"ih\"",
+      "description": "set the pad area height expression (default \"ih\")",
       "name": "height",
       "required": false,
       "typing": "str"
@@ -45,8 +45,8 @@
         "x"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Specify the offsets to place the input image at within the padded area,\nwith respect to the top/left border of the output image.\n</p>\n<p>The <var>x</var> expression can reference the value set by the <var>y</var>\nexpression, and vice versa.\n</p>\n<p>The default value of <var>x</var> and <var>y</var> is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number, they\u2019ll be changed\nso the input image is centered on the padded area.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set the x offset expression for the input image position (default \"0\")",
       "name": "x",
       "required": false,
       "typing": "str"
@@ -56,8 +56,8 @@
         "y"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Specify the offsets to place the input image at within the padded area,\nwith respect to the top/left border of the output image.\n</p>\n<p>The <var>x</var> expression can reference the value set by the <var>y</var>\nexpression, and vice versa.\n</p>\n<p>The default value of <var>x</var> and <var>y</var> is 0.\n</p>\n<p>If <var>x</var> or <var>y</var> evaluate to a negative number, they\u2019ll be changed\nso the input image is centered on the padded area.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set the y offset expression for the input image position (default \"0\")",
       "name": "y",
       "required": false,
       "typing": "str"
@@ -67,8 +67,8 @@
         "color"
       ],
       "choices": [],
-      "default": "black",
-      "description": "<dd><p>Specify the color of the padded area. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>.\n</p>\n<p>The default value of <var>color</var> is \"black\".\n</p>\n</dd>",
+      "default": "\"black\"",
+      "description": "set the color of the padded area border (default \"black\")",
       "name": "color",
       "required": false,
       "typing": "str"
@@ -77,9 +77,20 @@
       "alias": [
         "eval"
       ],
-      "choices": [],
-      "default": "EVAL_MODE_INIT",
-      "description": "<dd><p>Specify when to evaluate  <var>width</var>, <var>height</var>, <var>x</var> and <var>y</var> expression.\n</p>\n<p>It accepts the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Only evaluate expressions once during the filter initialization or when\na command is processed.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame.\n</p>\n</dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p>\n</dd>",
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "help": "eval expressions during initialization and per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
       "typing": "int"
@@ -89,11 +100,11 @@
         "aspect"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Pad to aspect instead to a resolution.\n</p>\n</dd>",
+      "default": "0/1",
+      "description": "pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)",
       "name": "aspect",
       "required": false,
-      "typing": "float"
+      "typing": "str"
     }
   ],
   "output_stream_typings": [

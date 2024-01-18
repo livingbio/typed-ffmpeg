@@ -115,7 +115,7 @@
         "c"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set color (default \"black\")",
       "flags": "..FV.......",
       "max": null,

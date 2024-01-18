@@ -21,8 +21,8 @@
         "params"
       ],
       "choices": [],
-      "default": "",
-      "description": "<dd>\n<p>This option string is in format:\n\"c<var>chn</var> f=<var>cf</var> w=<var>w</var> g=<var>g</var> t=<var>f</var> | ...\"\nEach equalizer band is separated by \u2019|\u2019.\n</p>\n<dl compact=\"compact\">\n<dt><samp>chn</samp></dt>\n<dd><p>Set channel number to which equalization will be applied.\nIf input doesn\u2019t have that channel the entry is ignored.\n</p>\n</dd>\n<dt><samp>f</samp></dt>\n<dd><p>Set central frequency for band.\nIf input doesn\u2019t have that frequency the entry is ignored.\n</p>\n</dd>\n<dt><samp>w</samp></dt>\n<dd><p>Set band width in Hertz.\n</p>\n</dd>\n<dt><samp>g</samp></dt>\n<dd><p>Set band gain in dB.\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>Set filter type for band, optional, can be:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>0</samp>\u2019</dt>\n<dd><p>Butterworth, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>1</samp>\u2019</dt>\n<dd><p>Chebyshev type 1.\n</p>\n</dd>\n<dt>\u2018<samp>2</samp>\u2019</dt>\n<dd><p>Chebyshev type 2.\n</p></dd>\n</dl>\n</dd>\n</dl>\n</dd>",
+      "default": "\"\"",
+      "description": "(default \"\")",
       "name": "params",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "curves"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>With this option activated frequency response of anequalizer is displayed\nin video stream.\n</p>\n</dd>",
+      "default": "false",
+      "description": "draw frequency response curves (default false)",
       "name": "curves",
       "required": false,
       "typing": "bool"
@@ -43,8 +43,8 @@
         "size"
       ],
       "choices": [],
-      "default": "hd720",
-      "description": "<dd><p>Set video stream size. Only useful if curves option is activated.\n</p>\n</dd>",
+      "default": "\"hd720\"",
+      "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "mgain"
       ],
       "choices": [],
-      "default": 60.0,
-      "description": "<dd><p>Set max gain that will be displayed. Only useful if curves option is activated.\nSetting this to a reasonable value makes it possible to display gain which is derived from\nneighbour bands which are too close to each other and thus produce higher gain\nwhen both are activated.\n</p>\n</dd>",
+      "default": "60",
+      "description": "set max gain (from -900 to 900) (default 60)",
       "name": "mgain",
       "required": false,
       "typing": "float"
@@ -68,16 +68,16 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set frequency scale used to draw frequency response in video output.\nCan be linear or logarithmic. Default is logarithmic.\n</p>\n</dd>",
+      "default": "log",
+      "description": "set frequency scale (from 0 to 1) (default log)",
       "name": "fscale",
       "required": false,
       "typing": "int"
@@ -87,8 +87,8 @@
         "colors"
       ],
       "choices": [],
-      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
-      "description": "<dd><p>Set color for each channel curve which is going to be displayed in video stream.\nThis is list of color names separated by space or by \u2019|\u2019.\nUnrecognised or missing colors will be replaced by white color.\n</p></dd>",
+      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "description": "set channels curves colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
       "typing": "str"

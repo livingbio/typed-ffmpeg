@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set scope x offset (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set scope y offset (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -70,7 +70,7 @@
         "o"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set window opacity (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",

@@ -21,8 +21,8 @@
         "shift"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Specify phase shift. Allowed range is from -1.0 to 1.0.\nDefault value is 0.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set phase shift (from -1 to 1) (default 0)",
       "name": "shift",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "level"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set output gain applied to final output. Allowed range is from 0.0 to 1.0.\nDefault value is 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set output level (from 0 to 1) (default 1)",
       "name": "level",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "order"
       ],
       "choices": [],
-      "default": 8,
-      "description": "<dd><p>Set filter order used for filtering. Allowed range is from 1 to 16.\nDefault value is 8.\n</p></dd>",
+      "default": "8",
+      "description": "set filter order (from 1 to 16) (default 8)",
       "name": "order",
       "required": false,
       "typing": "int"

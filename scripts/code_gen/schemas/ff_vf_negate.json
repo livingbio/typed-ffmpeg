@@ -24,41 +24,41 @@
         {
           "help": "set luma component",
           "name": "y",
-          "value": "0x10"
+          "value": "y"
         },
         {
           "help": "set u component",
           "name": "u",
-          "value": "0x20"
+          "value": "u"
         },
         {
           "help": "set v component",
           "name": "v",
-          "value": "0x40"
+          "value": "v"
         },
         {
           "help": "set red component",
           "name": "r",
-          "value": "0x01"
+          "value": "r"
         },
         {
           "help": "set green component",
           "name": "g",
-          "value": "0x02"
+          "value": "g"
         },
         {
           "help": "set blue component",
           "name": "b",
-          "value": "0x04"
+          "value": "b"
         },
         {
           "help": "set alpha component",
           "name": "a",
-          "value": "0x08"
+          "value": "a"
         }
       ],
-      "default": "0x77",
-      "description": "<dd><p>Set components to negate.\n</p>\n<p>Available values for components are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dt>\u2018<samp>v</samp>\u2019</dt>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "y+u+v+r+g+b",
+      "description": "set components to negate (default y+u+v+r+g+b)",
       "name": "components",
       "required": false,
       "typing": "str"
@@ -68,8 +68,8 @@
         "negate_alpha"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>With value 1, it negates the alpha component, if present. Default value is 0.\n</p></dd>",
+      "default": "false",
+      "description": "(default false)",
       "name": "negate_alpha",
       "required": false,
       "typing": "bool"

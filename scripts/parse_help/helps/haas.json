@@ -21,8 +21,8 @@
       "default": "1",
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_in",
       "typing": "double"
     },
@@ -34,8 +34,8 @@
       "default": "1",
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_out",
       "typing": "double"
     },
@@ -47,8 +47,8 @@
       "default": "1",
       "description": "set side gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "side_gain",
       "typing": "double"
     },
@@ -108,7 +108,7 @@
         "left_delay"
       ],
       "choices": [],
-      "default": null,
+      "default": "2.05",
       "description": "set left delay (from 0 to 40) (default 2.05)",
       "flags": "..F.A......",
       "max": "40",
@@ -137,8 +137,8 @@
       "default": "1",
       "description": "set left gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "left_gain",
       "typing": "double"
     },
@@ -160,7 +160,7 @@
         "right_delay"
       ],
       "choices": [],
-      "default": null,
+      "default": "2.12",
       "description": "set right delay (from 0 to 40) (default 2.12)",
       "flags": "..F.A......",
       "max": "40",
@@ -189,8 +189,8 @@
       "default": "1",
       "description": "set right gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "right_gain",
       "typing": "double"
     },

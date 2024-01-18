@@ -20,9 +20,20 @@
       "alias": [
         "order"
       ],
-      "choices": [],
-      "default": 1,
-      "description": "<dd><p>The output field order. Valid values are <var>tff</var> for top field first or <var>bff</var>\nfor bottom field first.\n</p></dd>",
+      "choices": [
+        {
+          "help": "bottom field first",
+          "name": "bff",
+          "value": "0"
+        },
+        {
+          "help": "top field first",
+          "name": "tff",
+          "value": "1"
+        }
+      ],
+      "default": "tff",
+      "description": "output field order (from 0 to 1) (default tff)",
       "name": "order",
       "required": false,
       "typing": "int"

@@ -21,8 +21,8 @@
         "depth"
       ],
       "choices": [],
-      "default": 8,
-      "description": "<dd><p>Set depth.\n</p>\n<p>Larger depth values will denoise lower frequency components more, but\nslow down filtering.\n</p>\n<p>Must be an int in the range 8-16, default is <code>8</code>.\n</p>\n</dd>",
+      "default": "8",
+      "description": "set depth (from 8 to 16) (default 8)",
       "name": "depth",
       "required": false,
       "typing": "int"
@@ -33,8 +33,8 @@
         "ls"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set luma strength.\n</p>\n<p>Must be a double value in the range 0-1000, default is <code>1.0</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set luma strength (from 0 to 1000) (default 1)",
       "name": "luma_strength",
       "required": false,
       "typing": "float"
@@ -45,8 +45,8 @@
         "cs"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set chroma strength.\n</p>\n<p>Must be a double value in the range 0-1000, default is <code>1.0</code>.\n</p></dd>",
+      "default": "1",
+      "description": "set chroma strength (from 0 to 1000) (default 1)",
       "name": "chroma_strength",
       "required": false,
       "typing": "float"

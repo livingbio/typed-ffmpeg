@@ -70,7 +70,7 @@
         "c"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"stereo\"",
       "description": "set channel layout (default \"stereo\")",
       "flags": "..F.A......",
       "max": null,

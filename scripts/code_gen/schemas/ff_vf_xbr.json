@@ -21,8 +21,8 @@
         "n"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Set the scaling dimension: <code>2</code> for <code>2xBR</code>, <code>3</code> for\n<code>3xBR</code> and <code>4</code> for <code>4xBR</code>.\nDefault is <code>3</code>.\n</p></dd>",
+      "default": "3",
+      "description": "set scale factor (from 2 to 4) (default 3)",
       "name": "n",
       "required": false,
       "typing": "int"

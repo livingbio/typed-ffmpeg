@@ -21,8 +21,8 @@
         "radius"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set frame radius. Default is 2. Allowed range is from 1 to 63.\nFor example radius of 3 will instruct filter to calculate average of 7 frames.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set radius (from 1 to 63) (default 2)",
       "name": "radius",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "factor"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "<dd><p>Set factor to amplify difference. Default is 2. Allowed range is from 0 to 65535.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set factor (from 0 to 65535) (default 2)",
       "name": "factor",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "threshold"
       ],
       "choices": [],
-      "default": 10.0,
-      "description": "<dd><p>Set threshold for difference amplification. Any difference greater or equal to\nthis value will not alter source pixel. Default is 10.\nAllowed range is from 0 to 65535.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set threshold (from 0 to 65535) (default 10)",
       "name": "threshold",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "tolerance"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set tolerance for difference amplification. Any difference lower to\nthis value will not alter source pixel. Default is 0.\nAllowed range is from 0 to 65535.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set tolerance (from 0 to 65535) (default 0)",
       "name": "tolerance",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "low"
       ],
       "choices": [],
-      "default": 65535.0,
-      "description": "<dd><p>Set lower limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will decrease source pixel value.\n</p>\n</dd>",
+      "default": "65535",
+      "description": "set low limit for amplification (from 0 to 65535) (default 65535)",
       "name": "low",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "high"
       ],
       "choices": [],
-      "default": 65535.0,
-      "description": "<dd><p>Set high limit for changing source pixel. Default is 65535. Allowed range is from 0 to 65535.\nThis option controls maximum possible value that will increase source pixel value.\n</p>\n</dd>",
+      "default": "65535",
+      "description": "set high limit for amplification (from 0 to 65535) (default 65535)",
       "name": "high",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
+      "default": "7",
+      "description": "set what planes to filter (default 7)",
       "name": "planes",
       "required": false,
       "typing": "str"

@@ -21,8 +21,8 @@
         "fps"
       ],
       "choices": [],
-      "default": "60",
-      "description": "<dd><p>Specify the output frame rate. This can be rational e.g. <code>60000/1001</code>. Frames are dropped if <var>fps</var> is lower than source fps. Default <code>60</code>.\n</p>\n</dd>",
+      "default": "\"60\"",
+      "description": "output's frame rate (default \"60\")",
       "name": "fps",
       "required": false,
       "typing": "str"
@@ -35,21 +35,21 @@
         {
           "help": "duplicate frames",
           "name": "dup",
-          "value": "MI_MODE_DUP"
+          "value": "0"
         },
         {
           "help": "blend frames",
           "name": "blend",
-          "value": "MI_MODE_BLEND"
+          "value": "1"
         },
         {
           "help": "motion compensated interpolation",
           "name": "mci",
-          "value": "MI_MODE_MCI"
+          "value": "2"
         }
       ],
-      "default": "MI_MODE_MCI",
-      "description": "<dd><p>Motion interpolation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>dup</samp>\u2019</dt>\n<dd><p>Duplicate previous or next frame for interpolating new ones.\n</p></dd>\n<dt>\u2018<samp>blend</samp>\u2019</dt>\n<dd><p>Blend source frames. Interpolated frame is mean of previous and next frames.\n</p></dd>\n<dt>\u2018<samp>mci</samp>\u2019</dt>\n<dd><p>Motion compensated interpolation. Following options are effective when this mode is selected:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>mc_mode</samp>\u2019</dt>\n<dd><p>Motion compensation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>obmc</samp>\u2019</dt>\n<dd><p>Overlapped block motion compensation.\n</p></dd>\n<dt>\u2018<samp>aobmc</samp>\u2019</dt>\n<dd><p>Adaptive overlapped block motion compensation. Window weighting coefficients are controlled adaptively according to the reliabilities of the neighboring motion vectors to reduce oversmoothing.\n</p></dd>\n</dl>\n<p>Default mode is \u2018<samp>obmc</samp>\u2019.\n</p>\n</dd>\n<dt>\u2018<samp>me_mode</samp>\u2019</dt>\n<dd><p>Motion estimation mode. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bidir</samp>\u2019</dt>\n<dd><p>Bidirectional motion estimation. Motion vectors are estimated for each source frame in both forward and backward directions.\n</p></dd>\n<dt>\u2018<samp>bilat</samp>\u2019</dt>\n<dd><p>Bilateral motion estimation. Motion vectors are estimated directly for interpolated frame.\n</p></dd>\n</dl>\n<p>Default mode is \u2018<samp>bilat</samp>\u2019.\n</p>\n</dd>\n<dt>\u2018<samp>me</samp>\u2019</dt>\n<dd><p>The algorithm to be used for motion estimation. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>esa</samp>\u2019</dt>\n<dd><p>Exhaustive search algorithm.\n</p></dd>\n<dt>\u2018<samp>tss</samp>\u2019</dt>\n<dd><p>Three step search algorithm.\n</p></dd>\n<dt>\u2018<samp>tdls</samp>\u2019</dt>\n<dd><p>Two dimensional logarithmic search algorithm.\n</p></dd>\n<dt>\u2018<samp>ntss</samp>\u2019</dt>\n<dd><p>New three step search algorithm.\n</p></dd>\n<dt>\u2018<samp>fss</samp>\u2019</dt>\n<dd><p>Four step search algorithm.\n</p></dd>\n<dt>\u2018<samp>ds</samp>\u2019</dt>\n<dd><p>Diamond search algorithm.\n</p></dd>\n<dt>\u2018<samp>hexbs</samp>\u2019</dt>\n<dd><p>Hexagon-based search algorithm.\n</p></dd>\n<dt>\u2018<samp>epzs</samp>\u2019</dt>\n<dd><p>Enhanced predictive zonal search algorithm.\n</p></dd>\n<dt>\u2018<samp>umh</samp>\u2019</dt>\n<dd><p>Uneven multi-hexagon search algorithm.\n</p></dd>\n</dl>\n<p>Default algorithm is \u2018<samp>epzs</samp>\u2019.\n</p>\n</dd>\n<dt>\u2018<samp>mb_size</samp>\u2019</dt>\n<dd><p>Macroblock size. Default <code>16</code>.\n</p>\n</dd>\n<dt>\u2018<samp>search_param</samp>\u2019</dt>\n<dd><p>Motion estimation search parameter. Default <code>32</code>.\n</p>\n</dd>\n<dt>\u2018<samp>vsbmc</samp>\u2019</dt>\n<dd><p>Enable variable-size block motion compensation. Motion estimation is applied with smaller block sizes at object boundaries in order to make the them less blur. Default is <code>0</code> (disabled).\n</p></dd>\n</dl>\n</dd>\n</dl>\n</dd>",
+      "default": "mci",
+      "description": "motion interpolation mode (from 0 to 2) (default mci)",
       "name": "mi_mode",
       "required": false,
       "typing": "int"
@@ -62,16 +62,16 @@
         {
           "help": "overlapped block motion compensation",
           "name": "obmc",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "adaptive overlapped block motion compensation",
           "name": "aobmc",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "motion compensation mode",
+      "default": "obmc",
+      "description": "motion compensation mode (from 0 to 1) (default obmc)",
       "name": "mc_mode",
       "required": false,
       "typing": "int"
@@ -84,16 +84,16 @@
         {
           "help": "bidirectional motion estimation",
           "name": "bidir",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "bilateral motion estimation",
           "name": "bilat",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "motion estimation mode",
+      "default": "bilat",
+      "description": "motion estimation mode (from 0 to 1) (default bilat)",
       "name": "me_mode",
       "required": false,
       "typing": "int"
@@ -106,51 +106,51 @@
         {
           "help": "exhaustive search",
           "name": "esa",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "three step search",
           "name": "tss",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "two dimensional logarithmic search",
           "name": "tdls",
-          "value": 3
+          "value": "3"
         },
         {
           "help": "new three step search",
           "name": "ntss",
-          "value": 4
+          "value": "4"
         },
         {
           "help": "four step search",
           "name": "fss",
-          "value": 5
+          "value": "5"
         },
         {
           "help": "diamond search",
           "name": "ds",
-          "value": 6
+          "value": "6"
         },
         {
           "help": "hexagon-based search",
           "name": "hexbs",
-          "value": 7
+          "value": "7"
         },
         {
           "help": "enhanced predictive zonal search",
           "name": "epzs",
-          "value": 8
+          "value": "8"
         },
         {
           "help": "uneven multi-hexagon search",
           "name": "umh",
-          "value": 9
+          "value": "9"
         }
       ],
-      "default": 8,
-      "description": "motion estimation method",
+      "default": "epzs",
+      "description": "motion estimation method (from 1 to 9) (default epzs)",
       "name": "me",
       "required": false,
       "typing": "int"
@@ -160,8 +160,8 @@
         "mb_size"
       ],
       "choices": [],
-      "default": 16,
-      "description": "macroblock size",
+      "default": "16",
+      "description": "macroblock size (from 4 to 16) (default 16)",
       "name": "mb_size",
       "required": false,
       "typing": "int"
@@ -171,8 +171,8 @@
         "search_param"
       ],
       "choices": [],
-      "default": 32,
-      "description": "search parameter",
+      "default": "32",
+      "description": "search parameter (from 4 to INT_MAX) (default 32)",
       "name": "search_param",
       "required": false,
       "typing": "int"
@@ -182,8 +182,8 @@
         "vsbmc"
       ],
       "choices": [],
-      "default": 0,
-      "description": "variable-size block motion compensation",
+      "default": "0",
+      "description": "variable-size block motion compensation (from 0 to 1) (default 0)",
       "name": "vsbmc",
       "required": false,
       "typing": "int"
@@ -196,16 +196,16 @@
         {
           "help": "disable detection",
           "name": "none",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "frame difference",
           "name": "fdiff",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Scene change detection method. Scene change leads motion vectors to be in random direction. Scene change detection replace interpolated frames by duplicate ones. May not be needed for other modes. Following values are accepted:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable scene change detection.\n</p></dd>\n<dt>\u2018<samp>fdiff</samp>\u2019</dt>\n<dd><p>Frame difference. Corresponding pixel values are compared and if it satisfies <var>scd_threshold</var> scene change is detected.\n</p></dd>\n</dl>\n<p>Default method is \u2018<samp>fdiff</samp>\u2019.\n</p>\n</dd>",
+      "default": "fdiff",
+      "description": "scene change detection method (from 0 to 1) (default fdiff)",
       "name": "scd",
       "required": false,
       "typing": "int"
@@ -215,8 +215,8 @@
         "scd_threshold"
       ],
       "choices": [],
-      "default": 10.0,
-      "description": "<dd><p>Scene change detection threshold. Default is <code>10.</code>.\n</p></dd>",
+      "default": "10",
+      "description": "scene change threshold (from 0 to 100) (default 10)",
       "name": "scd_threshold",
       "required": false,
       "typing": "float"

@@ -21,8 +21,8 @@
         "derive_device"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Rather than using the device supplied at initialisation, instead derive a new\ndevice of type <var>type</var> from the device the input frames exist on.\n</p></dd>",
+      "default": null,
+      "description": "Derive a new device of this type",
       "name": "derive_device",
       "required": false,
       "typing": "str"

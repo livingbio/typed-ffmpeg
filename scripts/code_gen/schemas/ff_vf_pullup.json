@@ -21,8 +21,8 @@
         "jl"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>These options set the amount of \"junk\" to ignore at the left, right, top, and\nbottom of the image, respectively. Left and right are in units of 8 pixels,\nwhile top and bottom are in units of 2 lines.\nThe default is 8 pixels on each side.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set left junk size (from 0 to INT_MAX) (default 1)",
       "name": "jl",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "jr"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>These options set the amount of \"junk\" to ignore at the left, right, top, and\nbottom of the image, respectively. Left and right are in units of 8 pixels,\nwhile top and bottom are in units of 2 lines.\nThe default is 8 pixels on each side.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set right junk size (from 0 to INT_MAX) (default 1)",
       "name": "jr",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "jt"
       ],
       "choices": [],
-      "default": 4,
-      "description": "<dd><p>These options set the amount of \"junk\" to ignore at the left, right, top, and\nbottom of the image, respectively. Left and right are in units of 8 pixels,\nwhile top and bottom are in units of 2 lines.\nThe default is 8 pixels on each side.\n</p>\n</dd>",
+      "default": "4",
+      "description": "set top junk size (from 1 to INT_MAX) (default 4)",
       "name": "jt",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "jb"
       ],
       "choices": [],
-      "default": 4,
-      "description": "<dd><p>These options set the amount of \"junk\" to ignore at the left, right, top, and\nbottom of the image, respectively. Left and right are in units of 8 pixels,\nwhile top and bottom are in units of 2 lines.\nThe default is 8 pixels on each side.\n</p>\n</dd>",
+      "default": "4",
+      "description": "set bottom junk size (from 1 to INT_MAX) (default 4)",
       "name": "jb",
       "required": false,
       "typing": "int"
@@ -65,8 +65,8 @@
         "sb"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the strict breaks. Setting this option to 1 will reduce the chances of\nfilter generating an occasional mismatched frame, but it may also cause an\nexcessive number of frames to be dropped during high motion sequences.\nConversely, setting it to -1 will make filter match fields more easily.\nThis may help processing of video where there is slight blurring between\nthe fields, but may also cause there to be interlaced frames in the output.\nDefault value is <code>0</code>.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set strict breaks (default false)",
       "name": "sb",
       "required": false,
       "typing": "bool"
@@ -79,21 +79,21 @@
         {
           "help": "luma",
           "name": "y",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "chroma blue",
           "name": "u",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "chroma red",
           "name": "v",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the metric plane to use. It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>l</samp>\u2019</dt>\n<dd><p>Use luma plane.\n</p>\n</dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>Use chroma blue plane.\n</p>\n</dd>\n<dt>\u2018<samp>v</samp>\u2019</dt>\n<dd><p>Use chroma red plane.\n</p></dd>\n</dl>\n<p>This option may be set to use chroma plane instead of the default luma plane\nfor doing filter\u2019s computations. This may improve accuracy on very clean\nsource material, but more likely will decrease accuracy, especially if there\nis chroma noise (rainbow effect) or any grayscale video.\nThe main purpose of setting <samp>mp</samp> to a chroma plane is to reduce CPU\nload and make pullup usable in realtime on slow machines.\n</p></dd>",
+      "default": "y",
+      "description": "set metric plane (from 0 to 2) (default y)",
       "name": "mp",
       "required": false,
       "typing": "int"

@@ -21,8 +21,8 @@
         "in_gain"
       ],
       "choices": [],
-      "default": 0.6,
-      "description": "<dd><p>Set input gain of reflected signal. Default is <code>0.6</code>.\n</p>\n</dd>",
+      "default": "0.6",
+      "description": "set signal input gain (from 0 to 1) (default 0.6)",
       "name": "in_gain",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "out_gain"
       ],
       "choices": [],
-      "default": 0.3,
-      "description": "<dd><p>Set output gain of reflected signal. Default is <code>0.3</code>.\n</p>\n</dd>",
+      "default": "0.3",
+      "description": "set signal output gain (from 0 to 1) (default 0.3)",
       "name": "out_gain",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "delays"
       ],
       "choices": [],
-      "default": "1000",
-      "description": "<dd><p>Set list of time intervals in milliseconds between original signal and reflections\nseparated by \u2019|\u2019. Allowed range for each <code>delay</code> is <code>(0 - 90000.0]</code>.\nDefault is <code>1000</code>.\n</p>\n</dd>",
+      "default": "\"1000\"",
+      "description": "set list of signal delays (default \"1000\")",
       "name": "delays",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "decays"
       ],
       "choices": [],
-      "default": "0.5",
-      "description": "<dd><p>Set list of loudness of reflected signals separated by \u2019|\u2019.\nAllowed range for each <code>decay</code> is <code>(0 - 1.0]</code>.\nDefault is <code>0.5</code>.\n</p></dd>",
+      "default": "\"0.5\"",
+      "description": "set list of signal decays (default \"0.5\")",
       "name": "decays",
       "required": false,
       "typing": "str"

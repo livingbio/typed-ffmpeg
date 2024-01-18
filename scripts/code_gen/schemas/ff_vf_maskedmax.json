@@ -29,8 +29,8 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"

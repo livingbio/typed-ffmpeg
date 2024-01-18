@@ -23,8 +23,8 @@
         "r"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Set the aspect ratio used by the filter.\n</p>\n<p>The parameter can be a floating point number string, or an expression. If the\nparameter is not specified, the value \"0\" is assumed, meaning that the same\ninput value is used.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set sample (pixel) aspect ratio (default \"0\")",
       "name": "sar",
       "required": false,
       "typing": "str"
@@ -34,8 +34,8 @@
         "max"
       ],
       "choices": [],
-      "default": 100,
-      "description": "<dd><p>Set the maximum integer value to use for expressing numerator and\ndenominator when reducing the expressed aspect ratio to a rational.\nDefault value is <code>100</code>.\n</p>\n</dd>",
+      "default": "100",
+      "description": "set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)",
       "name": "max",
       "required": false,
       "typing": "int"

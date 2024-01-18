@@ -17,8 +17,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Specify the frame rate of the sourced video, as the number of frames\ngenerated per second. It has to be a string in the format\n<var>frame_rate_num</var>/<var>frame_rate_den</var>, an integer number, a floating point\nnumber or a valid video frame rate abbreviation. The default value is\n\"25\".\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"
@@ -29,30 +29,30 @@
         "d"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p>\n<p>Since the frame rate is used as time base, all frames including the last one\nwill have their full duration. If the specified duration is not a multiple\nof the frame duration, it will be rounded up.\n</p>\n</dd>",
+      "default": "-0.000001",
+      "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "str"
     },
     {
       "alias": [
         "sar"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the sample aspect ratio of the sourced video.\n</p>\n</dd>",
+      "default": "1/1",
+      "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
       "name": "sar",
       "required": false,
-      "typing": "float"
+      "typing": "str"
     },
     {
       "alias": [
         "patch_size"
       ],
       "choices": [],
-      "default": "64x64",
-      "description": "<dd><p>Set patch size of single color patch, only available in the\n<code>colorchart</code> source. Default is <code>64x64</code>.\n</p>\n</dd>",
+      "default": "\"64x64\"",
+      "description": "set the single patch size (default \"64x64\")",
       "name": "patch_size",
       "required": false,
       "typing": "str"
@@ -65,16 +65,16 @@
         {
           "help": "reference",
           "name": "reference",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "skintones",
           "name": "skintones",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set colorchecker colors preset, only available in the\n<code>colorchart</code> source.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>reference</samp>\u2019</dt>\n<dt>\u2018<samp>skintones</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>reference</code>.\n</p></dd>",
+      "default": "reference",
+      "description": "set the color checker chart preset (from 0 to 1) (default reference)",
       "name": "preset",
       "required": false,
       "typing": "int"

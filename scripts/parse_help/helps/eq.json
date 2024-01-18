@@ -18,7 +18,7 @@
         "contrast"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1.0\"",
       "description": "set the contrast adjustment, negative values give a negative image (default \"1.0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -31,7 +31,7 @@
         "brightness"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0.0\"",
       "description": "set the brightness adjustment (default \"0.0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -44,7 +44,7 @@
         "saturation"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1.0\"",
       "description": "set the saturation adjustment (default \"1.0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -57,7 +57,7 @@
         "gamma"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1.0\"",
       "description": "set the initial gamma value (default \"1.0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -70,7 +70,7 @@
         "gamma_r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1.0\"",
       "description": "gamma value for red (default \"1.0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -83,7 +83,7 @@
         "gamma_g"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1.0\"",
       "description": "gamma value for green (default \"1.0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -96,7 +96,7 @@
         "gamma_b"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1.0\"",
       "description": "gamma value for blue (default \"1.0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -109,7 +109,7 @@
         "gamma_weight"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1.0\"",
       "description": "set the gamma weight which reduces the effect of gamma on bright areas (default \"1.0\")",
       "flags": "..FV.....T.",
       "max": null,

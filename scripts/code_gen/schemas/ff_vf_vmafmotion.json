@@ -21,8 +21,8 @@
         "stats_file"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>If specified, the filter will use the named file to save the motion score of\neach frame with respect to the previous frame.\nWhen filename equals \"-\" the data is sent to standard output.\n</p></dd>",
+      "default": null,
+      "description": "Set file where to store per-frame difference information",
       "name": "stats_file",
       "required": false,
       "typing": "str"

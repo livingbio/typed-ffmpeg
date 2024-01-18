@@ -21,8 +21,8 @@
         "strength"
       ],
       "choices": [],
-      "default": 0.2,
-      "description": "<dd><p>Determine the amount of equalization to be applied.  As the strength\nis reduced, the distribution of pixel intensities more-and-more\napproaches that of the input frame. The value must be a float number\nin the range [0,1] and defaults to 0.200.\n</p>\n</dd>",
+      "default": "0.2",
+      "description": "set the strength (from 0 to 1) (default 0.2)",
       "name": "strength",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "intensity"
       ],
       "choices": [],
-      "default": 0.21,
-      "description": "<dd><p>Set the maximum intensity that can generated and scale the output\nvalues appropriately.  The strength should be set as desired and then\nthe intensity can be limited if needed to avoid washing-out. The value\nmust be a float number in the range [0,1] and defaults to 0.210.\n</p>\n</dd>",
+      "default": "0.21",
+      "description": "set the intensity (from 0 to 1) (default 0.21)",
       "name": "intensity",
       "required": false,
       "typing": "float"
@@ -46,21 +46,21 @@
         {
           "help": "apply no antibanding",
           "name": "none",
-          "value": "HISTEQ_ANTIBANDING_NONE"
+          "value": "0"
         },
         {
           "help": "apply weak antibanding",
           "name": "weak",
-          "value": "HISTEQ_ANTIBANDING_WEAK"
+          "value": "1"
         },
         {
           "help": "apply strong antibanding",
           "name": "strong",
-          "value": "HISTEQ_ANTIBANDING_STRONG"
+          "value": "2"
         }
       ],
-      "default": "HISTEQ_ANTIBANDING_NONE",
-      "description": "<dd><p>Set the antibanding level. If enabled the filter will randomly vary\nthe luminance of output pixels by a small amount to avoid banding of\nthe histogram. Possible values are <code>none</code>, <code>weak</code> or\n<code>strong</code>. It defaults to <code>none</code>.\n</p></dd>",
+      "default": "none",
+      "description": "set the antibanding level (from 0 to 2) (default none)",
       "name": "antibanding",
       "required": false,
       "typing": "int"

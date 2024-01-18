@@ -22,8 +22,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"
@@ -34,8 +34,8 @@
         "s"
       ],
       "choices": [],
-      "default": "800x400",
-      "description": "<dd><p>Set the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>800x400</code>.\n</p>\n</dd>",
+      "default": "\"800x400\"",
+      "description": "set video size (default \"800x400\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -45,8 +45,8 @@
         "rc"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set red contrast (from 0 to 255) (default 2)",
       "name": "rc",
       "required": false,
       "typing": "int"
@@ -56,8 +56,8 @@
         "gc"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set green contrast (from 0 to 255) (default 7)",
       "name": "gc",
       "required": false,
       "typing": "int"
@@ -67,8 +67,8 @@
         "bc"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Specify the red, green, blue contrast. Default values are <code>2</code>,\n<code>7</code> and <code>1</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set blue contrast (from 0 to 255) (default 1)",
       "name": "bc",
       "required": false,
       "typing": "int"
@@ -78,8 +78,8 @@
         "mpc"
       ],
       "choices": [],
-      "default": "none",
-      "description": "<dd><p>Set color which will be used for drawing median phase. If color is\n<code>none</code> which is default, no median phase value will be drawn.\n</p>\n</dd>",
+      "default": "\"none\"",
+      "description": "set median phase color (default \"none\")",
       "name": "mpc",
       "required": false,
       "typing": "str"
@@ -89,8 +89,8 @@
         "video"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Enable video output. Default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "set video output (default true)",
       "name": "video",
       "required": false,
       "typing": "bool"
@@ -100,8 +100,8 @@
         "phasing"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set mono and out-of-phase detection output",
+      "default": "false",
+      "description": "set mono and out-of-phase detection output (default false)",
       "name": "phasing",
       "required": false,
       "typing": "bool"
@@ -112,8 +112,8 @@
         "t"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set phase tolerance for mono detection",
+      "default": "0",
+      "description": "set phase tolerance for mono detection (from 0 to 1) (default 0)",
       "name": "tolerance",
       "required": false,
       "typing": "float"
@@ -124,8 +124,8 @@
         "a"
       ],
       "choices": [],
-      "default": 170.0,
-      "description": "set angle threshold for out-of-phase detection",
+      "default": "170",
+      "description": "set angle threshold for out-of-phase detection (from 90 to 180) (default 170)",
       "name": "angle",
       "required": false,
       "typing": "float"
@@ -136,11 +136,11 @@
         "d"
       ],
       "choices": [],
-      "default": 2000000,
-      "description": "set minimum mono or out-of-phase duration in seconds",
+      "default": "2",
+      "description": "set minimum mono or out-of-phase duration in seconds (default 2)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "str"
     }
   ],
   "output_stream_typings": [],

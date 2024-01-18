@@ -21,8 +21,8 @@
         "strength"
       ],
       "choices": [],
-      "default": 1.2,
-      "description": "<dd><p>The maximum amount by which the filter will change any one pixel. This is also\nthe threshold for detecting nearly flat regions. Acceptable values range from\n.51 to 64; the default value is 1.2. Out-of-range values will be clipped to the\nvalid range.\n</p>\n</dd>",
+      "default": "1.2",
+      "description": "The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)",
       "name": "strength",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "radius"
       ],
       "choices": [],
-      "default": 16,
-      "description": "<dd><p>The neighborhood to fit the gradient to. A larger radius makes for smoother\ngradients, but also prevents the filter from modifying the pixels near detailed\nregions. Acceptable values are 8-32; the default value is 16. Out-of-range\nvalues will be clipped to the valid range.\n</p>\n</dd>",
+      "default": "16",
+      "description": "The neighborhood to fit the gradient to. (from 4 to 32) (default 16)",
       "name": "radius",
       "required": false,
       "typing": "int"

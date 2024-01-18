@@ -21,8 +21,8 @@
         "f"
       ],
       "choices": [],
-      "default": 5.0,
-      "description": "<dd><p>Modulation frequency in Hertz.\nRange is 0.1 - 20000.0. Default value is 5.0 Hz.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set frequency in hertz (from 0.1 to 20000) (default 5)",
       "name": "f",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "d"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Depth of modulation as a percentage. Range is 0.0 - 1.0.\nDefault value is 0.5.\n</p></dd>",
+      "default": "0.5",
+      "description": "set depth as percentage (from 0 to 1) (default 0.5)",
       "name": "d",
       "required": false,
       "typing": "float"

@@ -70,7 +70,7 @@
         "rlum"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.072186",
       "description": "set the red luma coefficient (from 0 to 1) (default 0.072186)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -83,7 +83,7 @@
         "glum"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.715158",
       "description": "set the green luma coefficient (from 0 to 1) (default 0.715158)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -96,7 +96,7 @@
         "blum"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.212656",
       "description": "set the blue luma coefficient (from 0 to 1) (default 0.212656)",
       "flags": "..FV.....T.",
       "max": "1",

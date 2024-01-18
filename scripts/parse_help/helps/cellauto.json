@@ -42,7 +42,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -83,7 +83,7 @@
         "ratio"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.618034",
       "description": "set fill ratio for filling initial grid randomly (from 0 to 1) (default 0.618034)",
       "flags": "..FV.......",
       "max": "1",

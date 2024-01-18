@@ -19,7 +19,7 @@
         "noise"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.001",
       "description": "set noise tolerance (from 0 to DBL_MAX) (default 0.001)",
       "flags": "..F.A......",
       "max": "DBL_MAX",

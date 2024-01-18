@@ -21,8 +21,8 @@
         "rs"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue shadows (darkest pixels).\n</p>\n</dd>",
+      "default": "0",
+      "description": "set red shadows (from -1 to 1) (default 0)",
       "name": "rs",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "gs"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue shadows (darkest pixels).\n</p>\n</dd>",
+      "default": "0",
+      "description": "set green shadows (from -1 to 1) (default 0)",
       "name": "gs",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "bs"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue shadows (darkest pixels).\n</p>\n</dd>",
+      "default": "0",
+      "description": "set blue shadows (from -1 to 1) (default 0)",
       "name": "bs",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "rm"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue midtones (medium pixels).\n</p>\n</dd>",
+      "default": "0",
+      "description": "set red midtones (from -1 to 1) (default 0)",
       "name": "rm",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "gm"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue midtones (medium pixels).\n</p>\n</dd>",
+      "default": "0",
+      "description": "set green midtones (from -1 to 1) (default 0)",
       "name": "gm",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "bm"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue midtones (medium pixels).\n</p>\n</dd>",
+      "default": "0",
+      "description": "set blue midtones (from -1 to 1) (default 0)",
       "name": "bm",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "rh"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue highlights (brightest pixels).\n</p>\n<p>Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set red highlights (from -1 to 1) (default 0)",
       "name": "rh",
       "required": false,
       "typing": "float"
@@ -98,8 +98,8 @@
         "gh"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue highlights (brightest pixels).\n</p>\n<p>Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set green highlights (from -1 to 1) (default 0)",
       "name": "gh",
       "required": false,
       "typing": "float"
@@ -109,8 +109,8 @@
         "bh"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green and blue highlights (brightest pixels).\n</p>\n<p>Allowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set blue highlights (from -1 to 1) (default 0)",
       "name": "bh",
       "required": false,
       "typing": "float"
@@ -120,8 +120,8 @@
         "pl"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Preserve lightness when changing color balance. Default is disabled.\n</p></dd>",
+      "default": "false",
+      "description": "preserve lightness (default false)",
       "name": "pl",
       "required": false,
       "typing": "bool"

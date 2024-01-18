@@ -64,7 +64,7 @@
         "input"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"x\"",
       "description": "input name of the model (default \"x\")",
       "flags": "..FV.......",
       "max": null,
@@ -77,7 +77,7 @@
         "output"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"y\"",
       "description": "output name of the model (default \"y\")",
       "flags": "..FV.......",
       "max": null,

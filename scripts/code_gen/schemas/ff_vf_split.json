@@ -21,8 +21,8 @@
         "outputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "set number of outputs",
+      "default": "2",
+      "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
       "name": "outputs",
       "required": false,
       "typing": "int"

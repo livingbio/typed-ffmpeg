@@ -21,8 +21,8 @@
       "default": "1",
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_in",
       "typing": "double"
     },
@@ -34,8 +34,8 @@
       "default": "1",
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_out",
       "typing": "double"
     },
@@ -57,7 +57,7 @@
         "mix"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set mix (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -99,8 +99,8 @@
       "default": "1",
       "description": "set DC (from 0.25 to 4) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "4",
+      "min": "0.25",
       "name": "dc",
       "typing": "double"
     },
@@ -109,7 +109,7 @@
         "aa"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set anti-aliasing (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -161,11 +161,11 @@
         "lforate"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.3",
       "description": "set LFO rate (from 0.01 to 200) (default 0.3)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "200",
+      "min": "0.01",
       "name": "lforate",
       "typing": "double"
     }

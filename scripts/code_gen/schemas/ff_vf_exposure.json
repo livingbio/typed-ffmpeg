@@ -21,8 +21,8 @@
         "exposure"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the exposure correction in EV. Allowed range is from -3.0 to 3.0 EV\nDefault value is 0 EV.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the exposure correction (from -3 to 3) (default 0)",
       "name": "exposure",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "black"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the black level correction. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p></dd>",
+      "default": "0",
+      "description": "set the black level correction (from -1 to 1) (default 0)",
       "name": "black",
       "required": false,
       "typing": "float"

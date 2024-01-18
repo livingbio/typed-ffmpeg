@@ -21,8 +21,8 @@
         "attacks"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>A list of times in seconds for each channel over which the instantaneous level\nof the input signal is averaged to determine its volume. <var>attacks</var> refers to\nincrease of volume and <var>decays</var> refers to decrease of volume. For most\nsituations, the attack time (response to the audio getting louder) should be\nshorter than the decay time, because the human ear is more sensitive to sudden\nloud audio than sudden soft audio. A typical value for attack is 0.3 seconds and\na typical value for decay is 0.8 seconds.\nIf specified number of attacks &amp; decays is lower than number of channels, the last\nset attack/decay will be used for all remaining channels.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set time over which increase of volume is determined (default \"0\")",
       "name": "attacks",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "decays"
       ],
       "choices": [],
-      "default": "0.8",
-      "description": "<dd><p>A list of times in seconds for each channel over which the instantaneous level\nof the input signal is averaged to determine its volume. <var>attacks</var> refers to\nincrease of volume and <var>decays</var> refers to decrease of volume. For most\nsituations, the attack time (response to the audio getting louder) should be\nshorter than the decay time, because the human ear is more sensitive to sudden\nloud audio than sudden soft audio. A typical value for attack is 0.3 seconds and\na typical value for decay is 0.8 seconds.\nIf specified number of attacks &amp; decays is lower than number of channels, the last\nset attack/decay will be used for all remaining channels.\n</p>\n</dd>",
+      "default": "\"0.8\"",
+      "description": "set time over which decrease of volume is determined (default \"0.8\")",
       "name": "decays",
       "required": false,
       "typing": "str"
@@ -43,8 +43,8 @@
         "points"
       ],
       "choices": [],
-      "default": "-70/-70|-60/-20|1/0",
-      "description": "<dd><p>A list of points for the transfer function, specified in dB relative to the\nmaximum possible signal amplitude. Each key points list must be defined using\nthe following syntax: <code>x0/y0|x1/y1|x2/y2|....</code> or\n<code>x0/y0 x1/y1 x2/y2 ....</code>\n</p>\n<p>The input values must be in strictly increasing order but the transfer function\ndoes not have to be monotonically rising. The point <code>0/0</code> is assumed but\nmay be overridden (by <code>0/out-dBn</code>). Typical values for the transfer\nfunction are <code>-70/-70|-60/-20|1/0</code>.\n</p>\n</dd>",
+      "default": "\"-70/-70|-60/-20|1/0\"",
+      "description": "set points of transfer function (default \"-70/-70|-60/-20|1/0\")",
       "name": "points",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "soft-knee"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "<dd><p>Set the curve radius in dB for all joints. It defaults to 0.01.\n</p>\n</dd>",
+      "default": "0.01",
+      "description": "set soft-knee (from 0.01 to 900) (default 0.01)",
       "name": "soft-knee",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "gain"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the additional gain in dB to be applied at all points on the transfer\nfunction. This allows for easy adjustment of the overall gain.\nIt defaults to 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set output gain (from -900 to 900) (default 0)",
       "name": "gain",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "volume"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set an initial volume, in dB, to be assumed for each channel when filtering\nstarts. This permits the user to supply a nominal level initially, so that, for\nexample, a very large gain is not applied to initial signal levels before the\ncompanding has begun to operate. A typical value for audio which is initially\nquiet is -90 dB. It defaults to 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set initial volume (from -900 to 0) (default 0)",
       "name": "volume",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "delay"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set a delay, in seconds. The input audio is analyzed immediately, but audio is\ndelayed before being fed to the volume adjuster. Specifying a delay\napproximately equal to the attack/decay times allows the filter to effectively\noperate in predictive rather than reactive mode. It defaults to 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set delay for samples before sending them to volume adjuster (from 0 to 20) (default 0)",
       "name": "delay",
       "required": false,
       "typing": "float"

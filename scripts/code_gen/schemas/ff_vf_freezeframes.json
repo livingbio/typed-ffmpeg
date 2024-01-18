@@ -25,8 +25,8 @@
         "first"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set number of first frame from which to start freeze.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set first frame to freeze (from 0 to I64_MAX) (default 0)",
       "name": "first",
       "required": false,
       "typing": "int"
@@ -36,8 +36,8 @@
         "last"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set number of last frame from which to end freeze.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set last frame to freeze (from 0 to I64_MAX) (default 0)",
       "name": "last",
       "required": false,
       "typing": "int"
@@ -47,8 +47,8 @@
         "replace"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set number of frame from 2nd input which will be used instead of replaced frames.\n</p></dd>",
+      "default": "0",
+      "description": "set frame to replace (from 0 to I64_MAX) (default 0)",
       "name": "replace",
       "required": false,
       "typing": "int"

@@ -19,7 +19,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "s"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1024x256\"",
       "description": "set video size (default \"1024x256\")",
       "flags": "..FV.......",
       "max": null,
@@ -46,7 +46,7 @@
         "colors"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
       "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "flags": "..FV.......",
       "max": null,

@@ -21,8 +21,8 @@
         "transfer"
       ],
       "choices": [],
-      "default": "p",
-      "description": "<dd><p>Set the transfer expression.\n</p>\n<p>The expression can contain the following constants:\n</p>\n<dl compact=\"compact\">\n<dt><samp>ch</samp></dt>\n<dd><p>current channel number\n</p>\n</dd>\n<dt><samp>sn</samp></dt>\n<dd><p>current sample number\n</p>\n</dd>\n<dt><samp>nb_channels</samp></dt>\n<dd><p>number of channels\n</p>\n</dd>\n<dt><samp>t</samp></dt>\n<dd><p>timestamp expressed in seconds\n</p>\n</dd>\n<dt><samp>sr</samp></dt>\n<dd><p>sample rate\n</p>\n</dd>\n<dt><samp>p</samp></dt>\n<dd><p>current frequency power value, in dB\n</p>\n</dd>\n<dt><samp>f</samp></dt>\n<dd><p>current frequency in Hz\n</p></dd>\n</dl>\n<p>Default value is <code>p</code>.\n</p>\n</dd>",
+      "default": "\"p\"",
+      "description": "set the transfer expression (default \"p\")",
       "name": "transfer",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "attack"
       ],
       "choices": [],
-      "default": 50.0,
-      "description": "<dd><p>Set the attack in milliseconds. Default is <code>50</code> milliseconds.\nAllowed range is from 1 to 1000 milliseconds.\n</p></dd>",
+      "default": "50",
+      "description": "set the attack (from 1 to 1000) (default 50)",
       "name": "attack",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "release"
       ],
       "choices": [],
-      "default": 100.0,
-      "description": "<dd><p>Set the release in milliseconds. Default is <code>100</code> milliseconds.\nAllowed range is from 5 to 2000 milliseconds.\n</p></dd>",
+      "default": "100",
+      "description": "set the release (from 5 to 2000) (default 100)",
       "name": "release",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "channels"
       ],
       "choices": [],
-      "default": "all",
-      "description": "<dd><p>Set which channels to filter, by default <code>all</code> channels in audio stream are filtered.\n</p></dd>",
+      "default": "\"all\"",
+      "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
       "typing": "str"

@@ -115,8 +115,8 @@
       "default": "1",
       "description": "set softclip parameter (from 0.01 to 3) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "3",
+      "min": "0.01",
       "name": "param",
       "typing": "double"
     },

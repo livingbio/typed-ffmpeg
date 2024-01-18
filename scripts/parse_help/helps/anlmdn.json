@@ -33,7 +33,7 @@
         "p"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.002",
       "description": "set patch duration (default 0.002)",
       "flags": "..F.A....T.",
       "max": null,
@@ -47,7 +47,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.006",
       "description": "set research duration (default 0.006)",
       "flags": "..F.A....T.",
       "max": null,

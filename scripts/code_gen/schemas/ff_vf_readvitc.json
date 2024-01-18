@@ -21,8 +21,8 @@
         "scan_max"
       ],
       "choices": [],
-      "default": 45,
-      "description": "<dd><p>Set the maximum number of lines to scan for VITC data. If the value is set to\n<code>-1</code> the full video frame is scanned. Default is <code>45</code>.\n</p>\n</dd>",
+      "default": "45",
+      "description": "maximum line numbers to scan for VITC data (from -1 to INT_MAX) (default 45)",
       "name": "scan_max",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "thr_b"
       ],
       "choices": [],
-      "default": 0.2,
-      "description": "<dd><p>Set the luma threshold for black. Accepts float numbers in the range [0.0,1.0],\ndefault value is <code>0.2</code>. The value must be equal or less than <code>thr_w</code>.\n</p>\n</dd>",
+      "default": "0.2",
+      "description": "black color threshold (from 0 to 1) (default 0.2)",
       "name": "thr_b",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "thr_w"
       ],
       "choices": [],
-      "default": 0.6,
-      "description": "<dd><p>Set the luma threshold for white. Accepts float numbers in the range [0.0,1.0],\ndefault value is <code>0.6</code>. The value must be equal or greater than <code>thr_b</code>.\n</p></dd>",
+      "default": "0.6",
+      "description": "white color threshold (from 0 to 1) (default 0.6)",
       "name": "thr_w",
       "required": false,
       "typing": "float"

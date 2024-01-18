@@ -22,43 +22,43 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "none",
-          "value": "TONEMAP_NONE"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "linear",
-          "value": "TONEMAP_LINEAR"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "gamma",
-          "value": "TONEMAP_GAMMA"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "clip",
-          "value": "TONEMAP_CLIP"
+          "value": "3"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "reinhard",
-          "value": "TONEMAP_REINHARD"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "hable",
-          "value": "TONEMAP_HABLE"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "mobius",
-          "value": "TONEMAP_MOBIUS"
+          "value": "6"
         }
       ],
-      "default": "TONEMAP_NONE",
-      "description": "tonemap algorithm selection",
+      "default": "none",
+      "description": "tonemap algorithm selection (from 0 to 6) (default none)",
       "name": "tonemap",
       "required": false,
       "typing": "int"
@@ -68,8 +68,8 @@
         "param"
       ],
       "choices": [],
-      "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": "tonemap parameter",
+      "default": "nan",
+      "description": "tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)",
       "name": "param",
       "required": false,
       "typing": "float"
@@ -79,8 +79,8 @@
         "desat"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "desaturation strength",
+      "default": "2",
+      "description": "desaturation strength (from 0 to DBL_MAX) (default 2)",
       "name": "desat",
       "required": false,
       "typing": "float"
@@ -90,8 +90,8 @@
         "peak"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "signal peak override",
+      "default": "0",
+      "description": "signal peak override (from 0 to DBL_MAX) (default 0)",
       "name": "peak",
       "required": false,
       "typing": "float"

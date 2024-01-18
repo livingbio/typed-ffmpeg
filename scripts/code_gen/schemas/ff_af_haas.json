@@ -21,8 +21,8 @@
         "level_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input level. By default is <var>1</var>, or 0dB\n</p>\n</dd>",
+      "default": "1",
+      "description": "set level in (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "level_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set output level. By default is <var>1</var>, or 0dB.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set level out (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "side_gain"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set gain applied to side part of signal. By default is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set side gain (from 0.015625 to 64) (default 1)",
       "name": "side_gain",
       "required": false,
       "typing": "float"
@@ -55,28 +55,28 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "left",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "right",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "L+R",
           "name": "mid",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "L-R",
           "name": "side",
-          "value": 3
+          "value": "3"
         }
       ],
-      "default": 2,
-      "description": "<dd><p>Set kind of middle source. Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>left</samp>\u2019</dt>\n<dd><p>Pick left channel.\n</p>\n</dd>\n<dt>\u2018<samp>right</samp>\u2019</dt>\n<dd><p>Pick right channel.\n</p>\n</dd>\n<dt>\u2018<samp>mid</samp>\u2019</dt>\n<dd><p>Pick middle part signal of stereo image.\n</p>\n</dd>\n<dt>\u2018<samp>side</samp>\u2019</dt>\n<dd><p>Pick side part signal of stereo image.\n</p></dd>\n</dl>\n</dd>",
+      "default": "mid",
+      "description": "set middle source (from 0 to 3) (default mid)",
       "name": "middle_source",
       "required": false,
       "typing": "int"
@@ -86,8 +86,8 @@
         "middle_phase"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Change middle phase. By default is disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set middle phase (default false)",
       "name": "middle_phase",
       "required": false,
       "typing": "bool"
@@ -97,8 +97,8 @@
         "left_delay"
       ],
       "choices": [],
-      "default": 2.05,
-      "description": "<dd><p>Set left channel delay. By default is <var>2.05</var> milliseconds.\n</p>\n</dd>",
+      "default": "2.05",
+      "description": "set left delay (from 0 to 40) (default 2.05)",
       "name": "left_delay",
       "required": false,
       "typing": "float"
@@ -108,8 +108,8 @@
         "left_balance"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Set left channel balance. By default is <var>-1</var>.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set left balance (from -1 to 1) (default -1)",
       "name": "left_balance",
       "required": false,
       "typing": "float"
@@ -119,8 +119,8 @@
         "left_gain"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set left channel gain. By default is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set left gain (from 0.015625 to 64) (default 1)",
       "name": "left_gain",
       "required": false,
       "typing": "float"
@@ -130,8 +130,8 @@
         "left_phase"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Change left phase. By default is disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set left phase (default false)",
       "name": "left_phase",
       "required": false,
       "typing": "bool"
@@ -141,8 +141,8 @@
         "right_delay"
       ],
       "choices": [],
-      "default": 2.12,
-      "description": "<dd><p>Set right channel delay. By defaults is <var>2.12</var> milliseconds.\n</p>\n</dd>",
+      "default": "2.12",
+      "description": "set right delay (from 0 to 40) (default 2.12)",
       "name": "right_delay",
       "required": false,
       "typing": "float"
@@ -152,8 +152,8 @@
         "right_balance"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set right channel balance. By default is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set right balance (from -1 to 1) (default 1)",
       "name": "right_balance",
       "required": false,
       "typing": "float"
@@ -163,8 +163,8 @@
         "right_gain"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set right channel gain. By default is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set right gain (from 0.015625 to 64) (default 1)",
       "name": "right_gain",
       "required": false,
       "typing": "float"
@@ -174,8 +174,8 @@
         "right_phase"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Change right phase. By default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "set right phase (default true)",
       "name": "right_phase",
       "required": false,
       "typing": "bool"

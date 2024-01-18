@@ -22,11 +22,22 @@
   "options": [
     {
       "alias": [
+        "model_path"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "use model='path=...'.",
+      "name": "model_path",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
         "log_path"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the file path to be used to store log files.\n</p>\n</dd>",
+      "default": null,
+      "description": "Set the file path to be used to write log.",
       "name": "log_path",
       "required": false,
       "typing": "str"
@@ -36,19 +47,64 @@
         "log_fmt"
       ],
       "choices": [],
-      "default": "xml",
-      "description": "<dd><p>Set the format of the log file (xml, json, csv, or sub).\n</p>\n</dd>",
+      "default": "\"xml\"",
+      "description": "Set the format of the log (csv, json, xml, or sub). (default \"xml\")",
       "name": "log_fmt",
       "required": false,
       "typing": "str"
     },
     {
       "alias": [
+        "enable_transform",
+        "phone_model"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "use model='enable_transform=true'. (default false)",
+      "name": "enable_transform",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "psnr"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "use feature='name=psnr'. (default false)",
+      "name": "psnr",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "ssim"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "use feature='name=float_ssim'. (default false)",
+      "name": "ssim",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "ms_ssim"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "use feature='name=float_ms_ssim'. (default false)",
+      "name": "ms_ssim",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
         "pool"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the pool method to be used for computing vmaf.\nOptions are <code>min</code>, <code>harmonic_mean</code> or <code>mean</code> (default).\n</p>\n</dd>",
+      "default": null,
+      "description": "Set the pool method to be used for computing vmaf.",
       "name": "pool",
       "required": false,
       "typing": "str"
@@ -58,8 +114,8 @@
         "n_threads"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set number of threads to be used when initializing libvmaf.\nDefault value: <code>0</code>, no threads.\n</p>\n</dd>",
+      "default": "0",
+      "description": "Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)",
       "name": "n_threads",
       "required": false,
       "typing": "int"
@@ -69,19 +125,30 @@
         "n_subsample"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set frame subsampling interval to be used.\n</p></dd>",
+      "default": "1",
+      "description": "Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)",
       "name": "n_subsample",
       "required": false,
       "typing": "int"
     },
     {
       "alias": [
+        "enable_conf_interval"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "model='enable_conf_interval=true'. (default false)",
+      "name": "enable_conf_interval",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
         "model"
       ],
       "choices": [],
-      "default": "version=vmaf_v0.6.1",
-      "description": "<dd><p>A \u2018|\u2018 delimited list of vmaf models. Each model can be configured with a number of parameters.\nDefault value: <code>\"version=vmaf_v0.6.1\"</code>\n</p>\n</dd>",
+      "default": "\"version=vmaf_v0.6.1\"",
+      "description": "Set the model to be used for computing vmaf. (default \"version=vmaf_v0.6.1\")",
       "name": "model",
       "required": false,
       "typing": "str"
@@ -91,74 +158,82 @@
         "feature"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>A \u2018|\u2018 delimited list of features. Each feature can be configured with a number of parameters.\n</p>\n</dd>",
+      "default": null,
+      "description": "Set the feature to be used for computing vmaf.",
       "name": "feature",
       "required": false,
       "typing": "str"
     },
     {
-      "alias": [],
+      "alias": [
+        "eof_action"
+      ],
       "choices": [
         {
-          "help": "Repeat the last frame.",
+          "help": "Repeat the previous frame.",
           "name": "repeat",
-          "value": "repeat"
+          "value": "0"
         },
         {
           "help": "End both streams.",
           "name": "endall",
-          "value": "endall"
+          "value": "1"
         },
         {
-          "help": "Pass the main input through.",
+          "help": "Pass through the main input.",
           "name": "pass",
-          "value": "pass"
+          "value": "2"
         }
       ],
       "default": "repeat",
-      "description": "The action to take when EOF is encountered on the secondary input; it accepts one of the following values",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
       "name": "eof_action",
       "required": false,
-      "typing": "str"
+      "typing": "int"
     },
     {
-      "alias": [],
+      "alias": [
+        "shortest"
+      ],
       "choices": [],
-      "default": 0,
-      "description": "Force the output to terminate when the shortest input terminates.",
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
       "typing": "bool"
     },
     {
-      "alias": [],
+      "alias": [
+        "repeatlast"
+      ],
       "choices": [],
-      "default": 1,
-      "description": "force the filter to extend the last frame of secondary streams until the end of the primary stream.",
+      "default": "true",
+      "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,
       "typing": "bool"
     },
     {
-      "alias": [],
+      "alias": [
+        "ts_sync_mode"
+      ],
       "choices": [
         {
-          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
           "name": "default",
-          "value": "default"
+          "value": "0"
         },
         {
-          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
           "name": "nearest",
-          "value": "nearest"
+          "value": "1"
         }
       ],
       "default": "default",
-      "description": "How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
       "name": "ts_sync_mode",
       "required": false,
-      "typing": "str"
+      "typing": "int"
     }
   ],
   "output_stream_typings": [

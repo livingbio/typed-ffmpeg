@@ -21,8 +21,8 @@
       "default": "2",
       "description": "set smooth sensitivity (from 0 to 1e+06) (default 2)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1e+06",
+      "min": "0",
       "name": "sensitivity",
       "typing": "double"
     },
@@ -34,8 +34,8 @@
       "default": "22050",
       "description": "set base frequency (from 2 to 1e+06) (default 22050)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1e+06",
+      "min": "2",
       "name": "basefreq",
       "typing": "double"
     }

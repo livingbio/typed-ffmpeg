@@ -19,7 +19,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "s"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"800x400\"",
       "description": "set video size (default \"800x400\")",
       "flags": "..FV.......",
       "max": null,
@@ -85,7 +85,7 @@
         "mpc"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"none\"",
       "description": "set median phase color (default \"none\")",
       "flags": "..FV.......",
       "max": null,

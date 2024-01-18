@@ -17,8 +17,8 @@
         "s"
       ],
       "choices": [],
-      "default": "640x480",
-      "description": "<dd><p>Set frame size. For the syntax of this option, check the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video\nsize\" section in the ffmpeg-utils manual</a>. Default value is \"640x480\".\n</p>\n</dd>",
+      "default": "\"640x480\"",
+      "description": "set frame size (default \"640x480\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -29,8 +29,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "set frame rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"
@@ -40,8 +40,8 @@
         "seed"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set seed which is used for random panning.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
       "typing": "int"
@@ -51,8 +51,8 @@
         "jump"
       ],
       "choices": [],
-      "default": 100,
-      "description": "<dd><p>Set max jump for single pan destination. Allowed range is from 1 to 10000.\n</p>\n</dd>",
+      "default": "100",
+      "description": "set the jump (from 1 to 10000) (default 100)",
       "name": "jump",
       "required": false,
       "typing": "int"
@@ -65,16 +65,16 @@
         {
           "help": "sierpinski carpet",
           "name": "carpet",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "sierpinski triangle",
           "name": "triangle",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set fractal type, can be default <code>carpet</code> or <code>triangle</code>.\n</p></dd>",
+      "default": "carpet",
+      "description": "set fractal type (from 0 to 1) (default carpet)",
       "name": "type",
       "required": false,
       "typing": "int"

@@ -19,7 +19,7 @@
         "p"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.95",
       "description": "set the peak value (from 0 to 1) (default 0.95)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -75,7 +75,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.001",
       "description": "set the expansion raising amount (from 0 to 1) (default 0.001)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -89,7 +89,7 @@
         "f"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.001",
       "description": "set the compression raising amount (from 0 to 1) (default 0.001)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -103,7 +103,7 @@
         "h"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"all\"",
       "description": "set channels to filter (default \"all\")",
       "flags": "..F.A....T.",
       "max": null,

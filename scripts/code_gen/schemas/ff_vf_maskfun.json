@@ -21,8 +21,8 @@
         "low"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Set low threshold. Any pixel component lower or exact than this value will be set to 0.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set low threshold (from 0 to 65535) (default 10)",
       "name": "low",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "high"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Set high threshold. Any pixel component higher than this value will be set to max value\nallowed for current pixel format.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set high threshold (from 0 to 65535) (default 10)",
       "name": "high",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set planes to filter, by default all available planes are filtered.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "fill"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Fill all frame pixels with this value.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set fill value (from 0 to 65535) (default 0)",
       "name": "fill",
       "required": false,
       "typing": "int"
@@ -65,8 +65,8 @@
         "sum"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Set max average pixel value for frame. If sum of all pixel components is higher that this\naverage, output frame will be completely filled with value set by <var>fill</var> option.\nTypically useful for scene changes when used in combination with <code>tblend</code> filter.\n</p></dd>",
+      "default": "10",
+      "description": "set sum value (from 0 to 65535) (default 10)",
       "name": "sum",
       "required": false,
       "typing": "int"

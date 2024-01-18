@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"hd720\"",
       "description": "set monitor size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "o"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.9",
       "description": "set video opacity (from 0 to 1) (default 0.9)",
       "flags": "..FV.......",
       "max": "1",
@@ -185,7 +185,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

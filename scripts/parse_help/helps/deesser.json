@@ -31,7 +31,7 @@
         "m"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set max deessing (from 0 to 1) (default 0.5)",
       "flags": "..F.A......",
       "max": "1",
@@ -44,7 +44,7 @@
         "f"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set frequency (from 0 to 1) (default 0.5)",
       "flags": "..F.A......",
       "max": "1",

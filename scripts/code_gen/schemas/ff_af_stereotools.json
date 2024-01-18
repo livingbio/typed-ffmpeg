@@ -21,8 +21,8 @@
         "level_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input level before filtering for both channels. Defaults is 1.\nAllowed range is from 0.015625 to 64.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set level in (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "level_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set output level after filtering for both channels. Defaults is 1.\nAllowed range is from 0.015625 to 64.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set level out (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "balance_in"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set input balance between both channels. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set balance in (from -1 to 1) (default 0)",
       "name": "balance_in",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "balance_out"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set output balance between both channels. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set balance out (from -1 to 1) (default 0)",
       "name": "balance_out",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "softclip"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable softclipping. Results in analog distortion instead of harsh digital 0dB\nclipping. Disabled by default.\n</p>\n</dd>",
+      "default": "false",
+      "description": "enable softclip (default false)",
       "name": "softclip",
       "required": false,
       "typing": "bool"
@@ -76,8 +76,8 @@
         "mutel"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Mute the left channel. Disabled by default.\n</p>\n</dd>",
+      "default": "false",
+      "description": "mute L (default false)",
       "name": "mutel",
       "required": false,
       "typing": "bool"
@@ -87,8 +87,8 @@
         "muter"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Mute the right channel. Disabled by default.\n</p>\n</dd>",
+      "default": "false",
+      "description": "mute R (default false)",
       "name": "muter",
       "required": false,
       "typing": "bool"
@@ -98,8 +98,8 @@
         "phasel"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Change the phase of the left channel. Disabled by default.\n</p>\n</dd>",
+      "default": "false",
+      "description": "phase L (default false)",
       "name": "phasel",
       "required": false,
       "typing": "bool"
@@ -109,8 +109,8 @@
         "phaser"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Change the phase of the right channel. Disabled by default.\n</p>\n</dd>",
+      "default": "false",
+      "description": "phase R (default false)",
       "name": "phaser",
       "required": false,
       "typing": "bool"
@@ -121,63 +121,63 @@
       ],
       "choices": [
         {
-          "help": "0",
-          "name": "lr>lr",
-          "value": 0
+          "help": "",
+          "name": "lr",
+          "value": "0"
         },
         {
-          "help": "0",
-          "name": "lr>ms",
-          "value": 1
+          "help": "",
+          "name": "ms",
+          "value": "1"
         },
         {
-          "help": "0",
-          "name": "ms>lr",
-          "value": 2
+          "help": "",
+          "name": "lr",
+          "value": "2"
         },
         {
-          "help": "0",
-          "name": "lr>ll",
-          "value": 3
+          "help": "",
+          "name": "ll",
+          "value": "3"
         },
         {
-          "help": "0",
-          "name": "lr>rr",
-          "value": 4
+          "help": "",
+          "name": "rr",
+          "value": "4"
         },
         {
-          "help": "0",
-          "name": "lr>l+r",
-          "value": 5
+          "help": "",
+          "name": "r",
+          "value": "5"
         },
         {
-          "help": "0",
-          "name": "lr>rl",
-          "value": 6
+          "help": "",
+          "name": "rl",
+          "value": "6"
         },
         {
-          "help": "0",
-          "name": "ms>ll",
-          "value": 7
+          "help": "",
+          "name": "ll",
+          "value": "7"
         },
         {
-          "help": "0",
-          "name": "ms>rr",
-          "value": 8
+          "help": "",
+          "name": "rr",
+          "value": "8"
         },
         {
-          "help": "0",
-          "name": "ms>rl",
-          "value": 9
+          "help": "",
+          "name": "rl",
+          "value": "9"
         },
         {
-          "help": "0",
-          "name": "lr>l-r",
-          "value": 10
+          "help": "",
+          "name": "r",
+          "value": "10"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set stereo mode. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>lr&gt;lr</samp>\u2019</dt>\n<dd><p>Left/Right to Left/Right, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;ms</samp>\u2019</dt>\n<dd><p>Left/Right to Mid/Side.\n</p>\n</dd>\n<dt>\u2018<samp>ms&gt;lr</samp>\u2019</dt>\n<dd><p>Mid/Side to Left/Right.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;ll</samp>\u2019</dt>\n<dd><p>Left/Right to Left/Left.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;rr</samp>\u2019</dt>\n<dd><p>Left/Right to Right/Right.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;l+r</samp>\u2019</dt>\n<dd><p>Left/Right to Left + Right.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;rl</samp>\u2019</dt>\n<dd><p>Left/Right to Right/Left.\n</p>\n</dd>\n<dt>\u2018<samp>ms&gt;ll</samp>\u2019</dt>\n<dd><p>Mid/Side to Left/Left.\n</p>\n</dd>\n<dt>\u2018<samp>ms&gt;rr</samp>\u2019</dt>\n<dd><p>Mid/Side to Right/Right.\n</p>\n</dd>\n<dt>\u2018<samp>ms&gt;rl</samp>\u2019</dt>\n<dd><p>Mid/Side to Right/Left.\n</p>\n</dd>\n<dt>\u2018<samp>lr&gt;l-r</samp>\u2019</dt>\n<dd><p>Left/Right to Left - Right.\n</p></dd>\n</dl>\n</dd>",
+      "default": "lr>lr",
+      "description": "set stereo mode (from 0 to 10) (default lr>lr)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -187,8 +187,8 @@
         "slev"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set level of side signal. Default is 1.\nAllowed range is from 0.015625 to 64.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set side level (from 0.015625 to 64) (default 1)",
       "name": "slev",
       "required": false,
       "typing": "float"
@@ -198,8 +198,8 @@
         "sbal"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set balance of side signal. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set side balance (from -1 to 1) (default 0)",
       "name": "sbal",
       "required": false,
       "typing": "float"
@@ -209,8 +209,8 @@
         "mlev"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set level of the middle signal. Default is 1.\nAllowed range is from 0.015625 to 64.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set middle level (from 0.015625 to 64) (default 1)",
       "name": "mlev",
       "required": false,
       "typing": "float"
@@ -220,8 +220,8 @@
         "mpan"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set middle signal pan. Default is 0. Allowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set middle pan (from -1 to 1) (default 0)",
       "name": "mpan",
       "required": false,
       "typing": "float"
@@ -231,8 +231,8 @@
         "base"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set stereo base between mono and inversed channels. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set stereo base (from -1 to 1) (default 0)",
       "name": "base",
       "required": false,
       "typing": "float"
@@ -242,8 +242,8 @@
         "delay"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set delay in milliseconds how much to delay left from right channel and\nvice versa. Default is 0. Allowed range is from -20 to 20.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set delay (from -20 to 20) (default 0)",
       "name": "delay",
       "required": false,
       "typing": "float"
@@ -253,8 +253,8 @@
         "sclevel"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set S/C level. Default is 1. Allowed range is from 1 to 100.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set S/C level (from 1 to 100) (default 1)",
       "name": "sclevel",
       "required": false,
       "typing": "float"
@@ -264,8 +264,8 @@
         "phase"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the stereo phase in degrees. Default is 0. Allowed range is from 0 to 360.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set stereo phase (from 0 to 360) (default 0)",
       "name": "phase",
       "required": false,
       "typing": "float"
@@ -276,23 +276,23 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "balance",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "amplitude",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "power",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set balance mode for balance_in/balance_out option.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>balance</samp>\u2019</dt>\n<dd><p>Classic balance mode. Attenuate one channel at time.\nGain is raised up to 1.\n</p>\n</dd>\n<dt>\u2018<samp>amplitude</samp>\u2019</dt>\n<dd><p>Similar as classic mode above but gain is raised up to 2.\n</p>\n</dd>\n<dt>\u2018<samp>power</samp>\u2019</dt>\n<dd><p>Equal power distribution, from -6dB to +6dB range.\n</p></dd>\n</dl>\n</dd>",
+      "default": "balance",
+      "description": "set balance in mode (from 0 to 2) (default balance)",
       "name": "bmode_in",
       "required": false,
       "typing": "int"
@@ -303,23 +303,23 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "balance",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "amplitude",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "power",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set balance mode for balance_in/balance_out option.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>balance</samp>\u2019</dt>\n<dd><p>Classic balance mode. Attenuate one channel at time.\nGain is raised up to 1.\n</p>\n</dd>\n<dt>\u2018<samp>amplitude</samp>\u2019</dt>\n<dd><p>Similar as classic mode above but gain is raised up to 2.\n</p>\n</dd>\n<dt>\u2018<samp>power</samp>\u2019</dt>\n<dd><p>Equal power distribution, from -6dB to +6dB range.\n</p></dd>\n</dl>\n</dd>",
+      "default": "balance",
+      "description": "set balance out mode (from 0 to 2) (default balance)",
       "name": "bmode_out",
       "required": false,
       "typing": "int"

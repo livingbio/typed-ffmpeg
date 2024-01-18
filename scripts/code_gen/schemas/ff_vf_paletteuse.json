@@ -28,46 +28,46 @@
         {
           "help": "ordered 8x8 bayer dithering (deterministic)",
           "name": "bayer",
-          "value": "DITHERING_BAYER"
+          "value": "1"
         },
         {
           "help": "dithering as defined by Paul Heckbert in 1982 (simple error diffusion)",
           "name": "heckbert",
-          "value": "DITHERING_HECKBERT"
+          "value": "2"
         },
         {
           "help": "Floyd and Steingberg dithering (error diffusion)",
           "name": "floyd_steinberg",
-          "value": "DITHERING_FLOYD_STEINBERG"
+          "value": "3"
         },
         {
           "help": "Frankie Sierra dithering v2 (error diffusion)",
           "name": "sierra2",
-          "value": "DITHERING_SIERRA2"
+          "value": "4"
         },
         {
-          "help": "Frankie Sierra dithering v2 \\\"Lite\\\" (error diffusion)",
+          "help": "Frankie Sierra dithering v2 \"Lite\" (error diffusion)",
           "name": "sierra2_4a",
-          "value": "DITHERING_SIERRA2_4A"
+          "value": "5"
         },
         {
           "help": "Frankie Sierra dithering v3 (error diffusion)",
           "name": "sierra3",
-          "value": "DITHERING_SIERRA3"
+          "value": "6"
         },
         {
           "help": "Burkes dithering (error diffusion)",
           "name": "burkes",
-          "value": "DITHERING_BURKES"
+          "value": "7"
         },
         {
           "help": "Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)",
           "name": "atkinson",
-          "value": "DITHERING_ATKINSON"
+          "value": "8"
         }
       ],
-      "default": "DITHERING_SIERRA2_4A",
-      "description": "<dd><p>Select dithering mode. Available algorithms are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bayer</samp>\u2019</dt>\n<dd><p>Ordered 8x8 bayer dithering (deterministic)\n</p></dd>\n<dt>\u2018<samp>heckbert</samp>\u2019</dt>\n<dd><p>Dithering as defined by Paul Heckbert in 1982 (simple error diffusion).\nNote: this dithering is sometimes considered \"wrong\" and is included as a\nreference.\n</p></dd>\n<dt>\u2018<samp>floyd_steinberg</samp>\u2019</dt>\n<dd><p>Floyd and Steingberg dithering (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra2</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v2 (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra2_4a</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v2 \"Lite\" (error diffusion)\n</p></dd>\n<dt>\u2018<samp>sierra3</samp>\u2019</dt>\n<dd><p>Frankie Sierra dithering v3 (error diffusion)\n</p></dd>\n<dt>\u2018<samp>burkes</samp>\u2019</dt>\n<dd><p>Burkes dithering (error diffusion)\n</p></dd>\n<dt>\u2018<samp>atkinson</samp>\u2019</dt>\n<dd><p>Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion)\n</p></dd>\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable dithering.\n</p></dd>\n</dl>\n<p>Default is <var>sierra2_4a</var>.\n</p>\n</dd>",
+      "default": "sierra2_4a",
+      "description": "select dithering mode (from 0 to 8) (default sierra2_4a)",
       "name": "dither",
       "required": false,
       "typing": "int"
@@ -77,8 +77,8 @@
         "bayer_scale"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>When <var>bayer</var> dithering is selected, this option defines the scale of the\npattern (how much the crosshatch pattern is visible). A low value means more\nvisible pattern for less banding, and higher value means less visible pattern\nat the cost of more banding.\n</p>\n<p>The option must be an integer value in the range [0,5]. Default is <var>2</var>.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set scale for bayer dithering (from 0 to 5) (default 2)",
       "name": "bayer_scale",
       "required": false,
       "typing": "int"
@@ -91,11 +91,11 @@
         {
           "help": "process smallest different rectangle",
           "name": "rectangle",
-          "value": "DIFF_MODE_RECTANGLE"
+          "value": "1"
         }
       ],
-      "default": "DIFF_MODE_NONE",
-      "description": "<dd><p>If set, define the zone to process\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>rectangle</samp>\u2019</dt>\n<dd><p>Only the changing rectangle will be reprocessed. This is similar to GIF\ncropping/offsetting compression mechanism. This option can be useful for speed\nif only a part of the image is changing, and has use cases such as limiting the\nscope of the error diffusal <samp>dither</samp> to the rectangle that bounds the\nmoving scene (it leads to more deterministic output if the scene doesn\u2019t change\nmuch, and as a result less moving noise and better GIF compression).\n</p></dd>\n</dl>\n<p>Default is <var>none</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set frame difference mode (from 0 to 1) (default 0)",
       "name": "diff_mode",
       "required": false,
       "typing": "int"
@@ -105,8 +105,8 @@
         "new"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Take new palette for each output frame.\n</p>\n</dd>",
+      "default": "false",
+      "description": "take new palette for each output frame (default false)",
       "name": "new",
       "required": false,
       "typing": "bool"
@@ -116,8 +116,8 @@
         "alpha_threshold"
       ],
       "choices": [],
-      "default": 128,
-      "description": "<dd><p>Sets the alpha threshold for transparency. Alpha values above this threshold\nwill be treated as completely opaque, and values below this threshold will be\ntreated as completely transparent.\n</p>\n<p>The option must be an integer value in the range [0,255]. Default is <var>128</var>.\n</p></dd>",
+      "default": "128",
+      "description": "set the alpha threshold for transparency (from 0 to 255) (default 128)",
       "name": "alpha_threshold",
       "required": false,
       "typing": "int"
@@ -127,7 +127,7 @@
         "debug_kdtree"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "save Graphviz graph of the kdtree in specified file",
       "name": "debug_kdtree",
       "required": false,

@@ -21,8 +21,8 @@
         "map0"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>The index of the input plane to be used as the first output plane.\n</p>\n</dd>",
+      "default": "0",
+      "description": "Index of the input plane to be used as the first output plane  (from 0 to 3) (default 0)",
       "name": "map0",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "map1"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>The index of the input plane to be used as the second output plane.\n</p>\n</dd>",
+      "default": "1",
+      "description": "Index of the input plane to be used as the second output plane  (from 0 to 3) (default 1)",
       "name": "map1",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "map2"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>The index of the input plane to be used as the third output plane.\n</p>\n</dd>",
+      "default": "2",
+      "description": "Index of the input plane to be used as the third output plane  (from 0 to 3) (default 2)",
       "name": "map2",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "map3"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>The index of the input plane to be used as the fourth output plane.\n</p>\n</dd>",
+      "default": "3",
+      "description": "Index of the input plane to be used as the fourth output plane  (from 0 to 3) (default 3)",
       "name": "map3",
       "required": false,
       "typing": "int"

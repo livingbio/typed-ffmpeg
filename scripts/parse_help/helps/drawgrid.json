@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set horizontal offset (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set vertical offset (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -45,7 +45,7 @@
         "w"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set width of grid cell (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -59,7 +59,7 @@
         "h"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set height of grid cell (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -73,7 +73,7 @@
         "c"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set color of the grid (default \"black\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -87,7 +87,7 @@
         "t"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1\"",
       "description": "set grid line thickness (default \"1\")",
       "flags": "..FV.....T.",
       "max": null,

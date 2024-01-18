@@ -22,8 +22,8 @@
         "w"
       ],
       "choices": [],
-      "default": 16,
-      "description": "<dd><p>Set block dimensions that will be used for pixelization.\nDefault value is <code>16</code>.\n</p>\n</dd>",
+      "default": "16",
+      "description": "set block width (from 1 to 1024) (default 16)",
       "name": "width",
       "required": false,
       "typing": "int"
@@ -34,8 +34,8 @@
         "h"
       ],
       "choices": [],
-      "default": 16,
-      "description": "<dd><p>Set block dimensions that will be used for pixelization.\nDefault value is <code>16</code>.\n</p>\n</dd>",
+      "default": "16",
+      "description": "set block height (from 1 to 1024) (default 16)",
       "name": "height",
       "required": false,
       "typing": "int"
@@ -49,21 +49,21 @@
         {
           "help": "average",
           "name": "avg",
-          "value": "PIXELIZE_AVG"
+          "value": "0"
         },
         {
           "help": "minimum",
           "name": "min",
-          "value": "PIXELIZE_MIN"
+          "value": "1"
         },
         {
           "help": "maximum",
           "name": "max",
-          "value": "PIXELIZE_MAX"
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the mode of pixelization used.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n<dt>\u2018<samp>min</samp>\u2019</dt>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>avg</code>.\n</p>\n</dd>",
+      "default": "avg",
+      "description": "set the pixelize mode (from 0 to 2) (default avg)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -74,8 +74,8 @@
         "p"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set what planes to filter. Default is to filter all planes.\n</p></dd>",
+      "default": "F",
+      "description": "set what planes to filter (default F)",
       "name": "planes",
       "required": false,
       "typing": "str"

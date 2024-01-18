@@ -18,7 +18,7 @@
         "x0"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set top left x coordinate (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "y0"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set top left y coordinate (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "x1"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"W\"",
       "description": "set top right x coordinate (default \"W\")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "y1"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set top right y coordinate (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "x2"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set bottom left x coordinate (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -83,7 +83,7 @@
         "y2"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"H\"",
       "description": "set bottom left y coordinate (default \"H\")",
       "flags": "..FV.......",
       "max": null,
@@ -96,7 +96,7 @@
         "x3"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"W\"",
       "description": "set bottom right x coordinate (default \"W\")",
       "flags": "..FV.......",
       "max": null,
@@ -109,7 +109,7 @@
         "y3"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"H\"",
       "description": "set bottom right y coordinate (default \"H\")",
       "flags": "..FV.......",
       "max": null,

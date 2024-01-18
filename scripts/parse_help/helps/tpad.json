@@ -122,7 +122,7 @@
         "color"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set the color of the added frames (default \"black\")",
       "flags": "..FV.......",
       "max": null,

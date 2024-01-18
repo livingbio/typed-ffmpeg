@@ -21,8 +21,8 @@
         "length"
       ],
       "choices": [],
-      "default": 0.05,
-      "description": "<dd><p>Short window length in seconds, used for peak and trough RMS measurement.\nDefault is <code>0.05</code> (50 milliseconds). Allowed range is <code>[0 - 10]</code>.\n</p>\n</dd>",
+      "default": "0.05",
+      "description": "set the window length (from 0 to 10) (default 0.05)",
       "name": "length",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "metadata"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd>\n<p>Set metadata injection. All the metadata keys are prefixed with <code>lavfi.astats.X</code>,\nwhere <code>X</code> is channel number starting from 1 or string <code>Overall</code>. Default is\ndisabled.\n</p>\n<p>Available keys for each channel are:\n<var>Bit_depth</var>\n<var>Crest_factor</var>\n<var>DC_offset</var>\n<var>Dynamic_range</var>\n<var>Entropy</var>\n<var>Flat_factor</var>\n<var>Max_difference</var>\n<var>Max_level</var>\n<var>Mean_difference</var>\n<var>Min_difference</var>\n<var>Min_level</var>\n<var>Noise_floor</var>\n<var>Noise_floor_count</var>\n<var>Number_of_Infs</var>\n<var>Number_of_NaNs</var>\n<var>Number_of_denormals</var>\n<var>Peak_count</var>\n<var>Abs_Peak_count</var>\n<var>Peak_level</var>\n<var>RMS_difference</var>\n<var>RMS_peak</var>\n<var>RMS_trough</var>\n<var>Zero_crossings</var>\n<var>Zero_crossings_rate</var>\n</p>\n<p>and for <code>Overall</code>:\n<var>Bit_depth</var>\n<var>DC_offset</var>\n<var>Entropy</var>\n<var>Flat_factor</var>\n<var>Max_difference</var>\n<var>Max_level</var>\n<var>Mean_difference</var>\n<var>Min_difference</var>\n<var>Min_level</var>\n<var>Noise_floor</var>\n<var>Noise_floor_count</var>\n<var>Number_of_Infs</var>\n<var>Number_of_NaNs</var>\n<var>Number_of_denormals</var>\n<var>Number_of_samples</var>\n<var>Peak_count</var>\n<var>Abs_Peak_count</var>\n<var>Peak_level</var>\n<var>RMS_difference</var>\n<var>RMS_level</var>\n<var>RMS_peak</var>\n<var>RMS_trough</var>\n</p>\n<p>For example, a full key looks like <code>lavfi.astats.1.DC_offset</code> or\n<code>lavfi.astats.Overall.Peak_count</code>.\n</p>\n<p>Read below for the description of the keys.\n</p>\n</dd>",
+      "default": "false",
+      "description": "inject metadata in the filtergraph (default false)",
       "name": "metadata",
       "required": false,
       "typing": "bool"
@@ -43,8 +43,8 @@
         "reset"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of frames over which cumulative stats are calculated before\nbeing reset. Default is disabled.\n</p>\n</dd>",
+      "default": "0",
+      "description": "Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)",
       "name": "reset",
       "required": false,
       "typing": "int"
@@ -57,146 +57,141 @@
         {
           "help": "",
           "name": "none",
-          "value": 0
+          "value": "none"
         },
         {
           "help": "",
           "name": "all",
-          "value": "(2147483647 *2U +1U)"
+          "value": "all"
         },
         {
           "help": "",
           "name": "Bit_depth",
-          "value": "(1 << 14)"
+          "value": "Bit_depth"
         },
         {
           "help": "",
           "name": "Crest_factor",
-          "value": "(1 << 11)"
+          "value": "Crest_factor"
         },
         {
           "help": "",
           "name": "DC_offset",
-          "value": "(1 << 0)"
+          "value": "DC_offset"
         },
         {
           "help": "",
           "name": "Dynamic_range",
-          "value": "(1 << 15)"
+          "value": "Dynamic_range"
         },
         {
           "help": "",
           "name": "Entropy",
-          "value": "(1 << 24)"
+          "value": "Entropy"
         },
         {
           "help": "",
           "name": "Flat_factor",
-          "value": "(1 << 12)"
+          "value": "Flat_factor"
         },
         {
           "help": "",
           "name": "Max_difference",
-          "value": "(1 << 4)"
+          "value": "Max_difference"
         },
         {
           "help": "",
           "name": "Max_level",
-          "value": "(1 << 2)"
+          "value": "Max_level"
         },
         {
           "help": "",
           "name": "Mean_difference",
-          "value": "(1 << 5)"
+          "value": "Mean_difference"
         },
         {
           "help": "",
           "name": "Min_difference",
-          "value": "(1 << 3)"
+          "value": "Min_difference"
         },
         {
           "help": "",
           "name": "Min_level",
-          "value": "(1 << 1)"
+          "value": "Min_level"
         },
         {
           "help": "",
           "name": "Noise_floor",
-          "value": "(1 << 22)"
+          "value": "Noise_floor"
         },
         {
           "help": "",
           "name": "Noise_floor_count",
-          "value": "(1 << 23)"
+          "value": "Noise_floor_count"
         },
         {
           "help": "",
           "name": "Number_of_Infs",
-          "value": "(1 << 20)"
+          "value": "Number_of_Infs"
         },
         {
           "help": "",
           "name": "Number_of_NaNs",
-          "value": "(1 << 19)"
+          "value": "Number_of_NaNs"
         },
         {
           "help": "",
           "name": "Number_of_denormals",
-          "value": "(1 << 21)"
+          "value": "Number_of_denormals"
         },
         {
           "help": "",
           "name": "Number_of_samples",
-          "value": "(1 << 18)"
+          "value": "Number_of_samples"
         },
         {
           "help": "",
           "name": "Peak_count",
-          "value": "(1 << 13)"
+          "value": "Peak_count"
         },
         {
           "help": "",
           "name": "Peak_level",
-          "value": "(1 << 7)"
+          "value": "Peak_level"
         },
         {
           "help": "",
           "name": "RMS_difference",
-          "value": "(1 << 6)"
+          "value": "RMS_difference"
         },
         {
           "help": "",
           "name": "RMS_level",
-          "value": "(1 << 8)"
+          "value": "RMS_level"
         },
         {
           "help": "",
           "name": "RMS_peak",
-          "value": "(1 << 9)"
+          "value": "RMS_peak"
         },
         {
           "help": "",
           "name": "RMS_trough",
-          "value": "(1 << 10)"
+          "value": "RMS_trough"
         },
         {
           "help": "",
           "name": "Zero_crossings",
-          "value": "(1 << 16)"
+          "value": "Zero_crossings"
         },
         {
           "help": "",
           "name": "Zero_crossings_rate",
-          "value": "(1 << 17)"
-        },
-        {
-          "help": "",
-          "name": "Abs_Peak_count",
-          "value": "(1 << 25)"
+          "value": "Zero_crossings_rate"
         }
       ],
-      "default": "(2147483647 *2U +1U)",
-      "description": "<dd><p>Select the parameters which are measured per channel. The metadata keys can\nbe used as flags, default is <samp>all</samp> which measures everything.\n<samp>none</samp> disables all per channel measurement.\n</p>\n</dd>",
+      "default": "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate",
+      "description": "Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)",
       "name": "measure_perchannel",
       "required": false,
       "typing": "str"
@@ -209,146 +204,141 @@
         {
           "help": "",
           "name": "none",
-          "value": 0
+          "value": "none"
         },
         {
           "help": "",
           "name": "all",
-          "value": "(2147483647 *2U +1U)"
+          "value": "all"
         },
         {
           "help": "",
           "name": "Bit_depth",
-          "value": "(1 << 14)"
+          "value": "Bit_depth"
         },
         {
           "help": "",
           "name": "Crest_factor",
-          "value": "(1 << 11)"
+          "value": "Crest_factor"
         },
         {
           "help": "",
           "name": "DC_offset",
-          "value": "(1 << 0)"
+          "value": "DC_offset"
         },
         {
           "help": "",
           "name": "Dynamic_range",
-          "value": "(1 << 15)"
+          "value": "Dynamic_range"
         },
         {
           "help": "",
           "name": "Entropy",
-          "value": "(1 << 24)"
+          "value": "Entropy"
         },
         {
           "help": "",
           "name": "Flat_factor",
-          "value": "(1 << 12)"
+          "value": "Flat_factor"
         },
         {
           "help": "",
           "name": "Max_difference",
-          "value": "(1 << 4)"
+          "value": "Max_difference"
         },
         {
           "help": "",
           "name": "Max_level",
-          "value": "(1 << 2)"
+          "value": "Max_level"
         },
         {
           "help": "",
           "name": "Mean_difference",
-          "value": "(1 << 5)"
+          "value": "Mean_difference"
         },
         {
           "help": "",
           "name": "Min_difference",
-          "value": "(1 << 3)"
+          "value": "Min_difference"
         },
         {
           "help": "",
           "name": "Min_level",
-          "value": "(1 << 1)"
+          "value": "Min_level"
         },
         {
           "help": "",
           "name": "Noise_floor",
-          "value": "(1 << 22)"
+          "value": "Noise_floor"
         },
         {
           "help": "",
           "name": "Noise_floor_count",
-          "value": "(1 << 23)"
+          "value": "Noise_floor_count"
         },
         {
           "help": "",
           "name": "Number_of_Infs",
-          "value": "(1 << 20)"
+          "value": "Number_of_Infs"
         },
         {
           "help": "",
           "name": "Number_of_NaNs",
-          "value": "(1 << 19)"
+          "value": "Number_of_NaNs"
         },
         {
           "help": "",
           "name": "Number_of_denormals",
-          "value": "(1 << 21)"
+          "value": "Number_of_denormals"
         },
         {
           "help": "",
           "name": "Number_of_samples",
-          "value": "(1 << 18)"
+          "value": "Number_of_samples"
         },
         {
           "help": "",
           "name": "Peak_count",
-          "value": "(1 << 13)"
+          "value": "Peak_count"
         },
         {
           "help": "",
           "name": "Peak_level",
-          "value": "(1 << 7)"
+          "value": "Peak_level"
         },
         {
           "help": "",
           "name": "RMS_difference",
-          "value": "(1 << 6)"
+          "value": "RMS_difference"
         },
         {
           "help": "",
           "name": "RMS_level",
-          "value": "(1 << 8)"
+          "value": "RMS_level"
         },
         {
           "help": "",
           "name": "RMS_peak",
-          "value": "(1 << 9)"
+          "value": "RMS_peak"
         },
         {
           "help": "",
           "name": "RMS_trough",
-          "value": "(1 << 10)"
+          "value": "RMS_trough"
         },
         {
           "help": "",
           "name": "Zero_crossings",
-          "value": "(1 << 16)"
+          "value": "Zero_crossings"
         },
         {
           "help": "",
           "name": "Zero_crossings_rate",
-          "value": "(1 << 17)"
-        },
-        {
-          "help": "",
-          "name": "Abs_Peak_count",
-          "value": "(1 << 25)"
+          "value": "Zero_crossings_rate"
         }
       ],
-      "default": "(2147483647 *2U +1U)",
-      "description": "<dd><p>Select the parameters which are measured overall. The metadata keys can\nbe used as flags, default is <samp>all</samp> which measures everything.\n<samp>none</samp> disables all overall measurement.\n</p>\n</dd>",
+      "default": "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate",
+      "description": "Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)",
       "name": "measure_overall",
       "required": false,
       "typing": "str"

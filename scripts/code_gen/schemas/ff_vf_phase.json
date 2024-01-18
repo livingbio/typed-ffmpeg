@@ -24,51 +24,51 @@
         {
           "help": "progressive",
           "name": "p",
-          "value": "PROGRESSIVE"
+          "value": "0"
         },
         {
           "help": "top first",
           "name": "t",
-          "value": "TOP_FIRST"
+          "value": "1"
         },
         {
           "help": "bottom first",
           "name": "b",
-          "value": "BOTTOM_FIRST"
+          "value": "2"
         },
         {
           "help": "top first analyze",
           "name": "T",
-          "value": "TOP_FIRST_ANALYZE"
+          "value": "3"
         },
         {
           "help": "bottom first analyze",
           "name": "B",
-          "value": "BOTTOM_FIRST_ANALYZE"
+          "value": "4"
         },
         {
           "help": "analyze",
           "name": "u",
-          "value": "ANALYZE"
+          "value": "5"
         },
         {
           "help": "full analyze",
           "name": "U",
-          "value": "FULL_ANALYZE"
+          "value": "6"
         },
         {
           "help": "auto",
           "name": "a",
-          "value": "AUTO"
+          "value": "7"
         },
         {
           "help": "auto analyze",
           "name": "A",
-          "value": "AUTO_ANALYZE"
+          "value": "8"
         }
       ],
-      "default": "AUTO_ANALYZE",
-      "description": "set phase mode",
+      "default": "A",
+      "description": "set phase mode (from 0 to 8) (default A)",
       "name": "mode",
       "required": false,
       "typing": "int"

@@ -21,8 +21,8 @@
         "delay"
       ],
       "choices": [],
-      "default": 20.0,
-      "description": "<dd><p>Time in milliseconds of the delay of left signal into right and vice versa.\nDefault is 20 milliseconds.\n</p>\n</dd>",
+      "default": "20",
+      "description": "set delay time (from 1 to 100) (default 20)",
       "name": "delay",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "feedback"
       ],
       "choices": [],
-      "default": 0.3,
-      "description": "<dd><p>Amount of gain in delayed signal into right and vice versa. Gives a delay\neffect of left signal in right output and vice versa which gives widening\neffect. Default is 0.3.\n</p>\n</dd>",
+      "default": "0.3",
+      "description": "set feedback gain (from 0 to 0.9) (default 0.3)",
       "name": "feedback",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "crossfeed"
       ],
       "choices": [],
-      "default": 0.3,
-      "description": "<dd><p>Cross feed of left into right with inverted phase. This helps in suppressing\nthe mono. If the value is 1 it will cancel all the signal common to both\nchannels. Default is 0.3.\n</p>\n</dd>",
+      "default": "0.3",
+      "description": "set cross feed (from 0 to 0.8) (default 0.3)",
       "name": "crossfeed",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "drymix"
       ],
       "choices": [],
-      "default": 0.8,
-      "description": "<dd><p>Set level of input signal of original channel. Default is 0.8.\n</p></dd>",
+      "default": "0.8",
+      "description": "set dry-mix (from 0 to 1) (default 0.8)",
       "name": "drymix",
       "required": false,
       "typing": "float"

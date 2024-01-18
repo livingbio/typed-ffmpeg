@@ -21,74 +21,82 @@
   "name": "vif",
   "options": [
     {
-      "alias": [],
-      "choices": [],
-      "default": null,
-      "description": "timeline editing",
-      "name": "enable",
-      "required": false,
-      "typing": "str"
-    },
-    {
-      "alias": [],
+      "alias": [
+        "eof_action"
+      ],
       "choices": [
         {
-          "help": "Repeat the last frame.",
+          "help": "Repeat the previous frame.",
           "name": "repeat",
-          "value": "repeat"
+          "value": "0"
         },
         {
           "help": "End both streams.",
           "name": "endall",
-          "value": "endall"
+          "value": "1"
         },
         {
-          "help": "Pass the main input through.",
+          "help": "Pass through the main input.",
           "name": "pass",
-          "value": "pass"
+          "value": "2"
         }
       ],
       "default": "repeat",
-      "description": "The action to take when EOF is encountered on the secondary input; it accepts one of the following values",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
       "name": "eof_action",
       "required": false,
-      "typing": "str"
+      "typing": "int"
     },
     {
-      "alias": [],
+      "alias": [
+        "shortest"
+      ],
       "choices": [],
-      "default": 0,
-      "description": "Force the output to terminate when the shortest input terminates.",
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
       "typing": "bool"
     },
     {
-      "alias": [],
+      "alias": [
+        "repeatlast"
+      ],
       "choices": [],
-      "default": 1,
-      "description": "force the filter to extend the last frame of secondary streams until the end of the primary stream.",
+      "default": "true",
+      "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,
       "typing": "bool"
     },
     {
-      "alias": [],
+      "alias": [
+        "ts_sync_mode"
+      ],
       "choices": [
         {
-          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
           "name": "default",
-          "value": "default"
+          "value": "0"
         },
         {
-          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
           "name": "nearest",
-          "value": "nearest"
+          "value": "1"
         }
       ],
       "default": "default",
-      "description": "How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
       "name": "ts_sync_mode",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
       "required": false,
       "typing": "str"
     }

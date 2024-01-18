@@ -21,8 +21,8 @@
         "in_gain"
       ],
       "choices": [],
-      "default": 0.4,
-      "description": "<dd><p>Set input gain. Default is 0.4.\n</p>\n</dd>",
+      "default": "0.4",
+      "description": "set input gain (from 0 to 1) (default 0.4)",
       "name": "in_gain",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "out_gain"
       ],
       "choices": [],
-      "default": 0.4,
-      "description": "<dd><p>Set output gain. Default is 0.4.\n</p>\n</dd>",
+      "default": "0.4",
+      "description": "set output gain (from 0 to 1) (default 0.4)",
       "name": "out_gain",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "delays"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set delays. A typical delay is around 40ms to 60ms.\n</p>\n</dd>",
+      "default": null,
+      "description": "set delays",
       "name": "delays",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "decays"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set decays.\n</p>\n</dd>",
+      "default": null,
+      "description": "set decays",
       "name": "decays",
       "required": false,
       "typing": "str"
@@ -65,8 +65,8 @@
         "speeds"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set speeds.\n</p>\n</dd>",
+      "default": null,
+      "description": "set speeds",
       "name": "speeds",
       "required": false,
       "typing": "str"
@@ -76,8 +76,8 @@
         "depths"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set depths.\n</p></dd>",
+      "default": null,
+      "description": "set depths",
       "name": "depths",
       "required": false,
       "typing": "str"

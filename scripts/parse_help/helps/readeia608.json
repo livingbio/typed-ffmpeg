@@ -44,11 +44,11 @@
         "spw"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.27",
       "description": "set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "0.7",
+      "min": "0.1",
       "name": "spw",
       "typing": "float"
     },

@@ -24,51 +24,51 @@
         {
           "help": "keep the same color range",
           "name": "auto",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unspecified",
-          "value": "AVCOL_RANGE_UNSPECIFIED"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unknown",
-          "value": "AVCOL_RANGE_UNSPECIFIED"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "limited",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "tv",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "mpeg",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "full",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "pc",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "jpeg",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color range property.\n</p>\n</dd>\n<dt>\u2018<samp>unspecified, unknown</samp>\u2019</dt>\n<dd><p>Set the color range as unspecified.\n</p>\n</dd>\n<dt>\u2018<samp>limited, tv, mpeg</samp>\u2019</dt>\n<dd><p>Set the color range as limited.\n</p>\n</dd>\n<dt>\u2018<samp>full, pc, jpeg</samp>\u2019</dt>\n<dd><p>Set the color range as full.\n</p></dd>\n</dl>\n</dd>",
+      "default": "auto",
+      "description": "select color range (from -1 to 2) (default auto)",
       "name": "range",
       "required": false,
       "typing": "int"

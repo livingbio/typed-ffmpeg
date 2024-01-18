@@ -16,8 +16,8 @@
         "inputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set number of input streams. Default is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set number of inputs (from 2 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
       "typing": "int"
@@ -27,8 +27,8 @@
         "shortest"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If set to 1, force the output to terminate when the shortest input\nterminates. Default value is 0.\n</p></dd>",
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
       "typing": "bool"

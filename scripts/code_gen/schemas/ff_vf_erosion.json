@@ -21,8 +21,8 @@
         "coordinates"
       ],
       "choices": [],
-      "default": 255,
-      "description": "<dd><p>Flag which specifies the pixel to refer to. Default is 255 i.e. all eight\npixels are used.\n</p>\n<p>Flags to local 3x3 coordinates maps like this:\n</p>\n<p>1 2 3\n    4   5\n    6 7 8\n</p></dd>",
+      "default": "255",
+      "description": "set coordinates (from 0 to 255) (default 255)",
       "name": "coordinates",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "threshold0"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
+      "default": "65535",
+      "description": "set threshold for 1st plane (from 0 to 65535) (default 65535)",
       "name": "threshold0",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "threshold1"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
+      "default": "65535",
+      "description": "set threshold for 2nd plane (from 0 to 65535) (default 65535)",
       "name": "threshold1",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "threshold2"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
+      "default": "65535",
+      "description": "set threshold for 3rd plane (from 0 to 65535) (default 65535)",
       "name": "threshold2",
       "required": false,
       "typing": "int"
@@ -65,8 +65,8 @@
         "threshold3"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p>\n</dd>",
+      "default": "65535",
+      "description": "set threshold for 4th plane (from 0 to 65535) (default 65535)",
       "name": "threshold3",
       "required": false,
       "typing": "int"

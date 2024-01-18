@@ -57,7 +57,7 @@
         "similarity"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.01",
       "description": "set the hsvhold similarity value (from 1e-05 to 1) (default 0.01)",
       "flags": "..FV.....T.",
       "max": "1",

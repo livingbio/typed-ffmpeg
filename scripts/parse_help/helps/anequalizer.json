@@ -18,7 +18,7 @@
         "params"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"\"",
       "description": "(default \"\")",
       "flags": "..F.A......",
       "max": null,
@@ -44,7 +44,7 @@
         "size"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"hd720\"",
       "description": "set video size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -96,7 +96,7 @@
         "colors"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
       "description": "set channels curves colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "flags": "..FV.......",
       "max": null,

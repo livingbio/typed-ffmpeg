@@ -71,7 +71,7 @@
         "weights"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1 1\"",
       "description": "Set weight for each input. (default \"1 1\")",
       "flags": "..F.A....T.",
       "max": null,

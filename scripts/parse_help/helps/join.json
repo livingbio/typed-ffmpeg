@@ -26,7 +26,7 @@
         "channel_layout"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"stereo\"",
       "description": "Channel layout of the output stream. (default \"stereo\")",
       "flags": "..F.A......",
       "max": null,

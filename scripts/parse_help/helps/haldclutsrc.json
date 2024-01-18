@@ -27,7 +27,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -41,7 +41,7 @@
         "d"
       ],
       "choices": [],
-      "default": null,
+      "default": "-0.000001",
       "description": "set video duration (default -0.000001)",
       "flags": "..FV.......",
       "max": null,
@@ -54,7 +54,7 @@
         "sar"
       ],
       "choices": [],
-      "default": null,
+      "default": "1/1",
       "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
       "flags": "..FV.......",
       "max": "INT_MAX",

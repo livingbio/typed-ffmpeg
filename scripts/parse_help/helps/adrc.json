@@ -18,7 +18,7 @@
         "transfer"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"p\"",
       "description": "set the transfer expression (default \"p\")",
       "flags": "..F.A....T.",
       "max": null,
@@ -57,7 +57,7 @@
         "channels"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"all\"",
       "description": "set channels to filter (default \"all\")",
       "flags": "..F.A....T.",
       "max": null,

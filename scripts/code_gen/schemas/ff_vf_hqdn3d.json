@@ -21,8 +21,8 @@
         "luma_spatial"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>A non-negative floating point number which specifies spatial luma strength.\nIt defaults to 4.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "spatial luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_spatial",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "chroma_spatial"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>A non-negative floating point number which specifies spatial chroma strength.\nIt defaults to 3.0*<var>luma_spatial</var>/4.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "spatial chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_spatial",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "luma_tmp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>A floating point number which specifies luma temporal strength. It defaults to\n6.0*<var>luma_spatial</var>/4.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "temporal luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_tmp",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "chroma_tmp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>A floating point number which specifies chroma temporal strength. It defaults to\n<var>luma_tmp</var>*<var>chroma_spatial</var>/<var>luma_spatial</var>.\n</p></dd>",
+      "default": "0",
+      "description": "temporal chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_tmp",
       "required": false,
       "typing": "float"

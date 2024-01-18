@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"-1\"",
       "description": "set logo x position (default \"-1\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"-1\"",
       "description": "set logo y position (default \"-1\")",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "w"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"-1\"",
       "description": "set logo width (default \"-1\")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "h"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"-1\"",
       "description": "set logo height (default \"-1\")",
       "flags": "..FV.......",
       "max": null,

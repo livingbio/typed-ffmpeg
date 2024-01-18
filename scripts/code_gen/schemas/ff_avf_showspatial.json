@@ -22,8 +22,8 @@
         "s"
       ],
       "choices": [],
-      "default": "512x512",
-      "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>512x512</code>.\n</p>\n</dd>",
+      "default": "\"512x512\"",
+      "description": "set video size (default \"512x512\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -33,8 +33,8 @@
         "win_size"
       ],
       "choices": [],
-      "default": 4096,
-      "description": "<dd><p>Set window size. Allowed range is from <var>1024</var> to <var>65536</var>. Default size is <var>4096</var>.\n</p>\n</dd>",
+      "default": "4096",
+      "description": "set window size (from 1024 to 65536) (default 4096)",
       "name": "win_size",
       "required": false,
       "typing": "int"
@@ -47,116 +47,116 @@
         {
           "help": "Rectangular",
           "name": "rect",
-          "value": "WFUNC_RECT"
+          "value": "0"
         },
         {
           "help": "Bartlett",
           "name": "bartlett",
-          "value": "WFUNC_BARTLETT"
+          "value": "4"
         },
         {
           "help": "Hann",
           "name": "hann",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hanning",
           "name": "hanning",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hamming",
           "name": "hamming",
-          "value": "WFUNC_HAMMING"
+          "value": "2"
         },
         {
           "help": "Blackman",
           "name": "blackman",
-          "value": "WFUNC_BLACKMAN"
+          "value": "3"
         },
         {
           "help": "Welch",
           "name": "welch",
-          "value": "WFUNC_WELCH"
+          "value": "5"
         },
         {
           "help": "Flat-top",
           "name": "flattop",
-          "value": "WFUNC_FLATTOP"
+          "value": "6"
         },
         {
           "help": "Blackman-Harris",
           "name": "bharris",
-          "value": "WFUNC_BHARRIS"
+          "value": "7"
         },
         {
           "help": "Blackman-Nuttall",
           "name": "bnuttall",
-          "value": "WFUNC_BNUTTALL"
+          "value": "8"
         },
         {
           "help": "Bartlett-Hann",
           "name": "bhann",
-          "value": "WFUNC_BHANN"
+          "value": "11"
         },
         {
           "help": "Sine",
           "name": "sine",
-          "value": "WFUNC_SINE"
+          "value": "9"
         },
         {
           "help": "Nuttall",
           "name": "nuttall",
-          "value": "WFUNC_NUTTALL"
+          "value": "10"
         },
         {
           "help": "Lanczos",
           "name": "lanczos",
-          "value": "WFUNC_LANCZOS"
+          "value": "12"
         },
         {
           "help": "Gauss",
           "name": "gauss",
-          "value": "WFUNC_GAUSS"
+          "value": "13"
         },
         {
           "help": "Tukey",
           "name": "tukey",
-          "value": "WFUNC_TUKEY"
+          "value": "14"
         },
         {
           "help": "Dolph-Chebyshev",
           "name": "dolph",
-          "value": "WFUNC_DOLPH"
+          "value": "15"
         },
         {
           "help": "Cauchy",
           "name": "cauchy",
-          "value": "WFUNC_CAUCHY"
+          "value": "16"
         },
         {
           "help": "Parzen",
           "name": "parzen",
-          "value": "WFUNC_PARZEN"
+          "value": "17"
         },
         {
           "help": "Poisson",
           "name": "poisson",
-          "value": "WFUNC_POISSON"
+          "value": "18"
         },
         {
           "help": "Bohman",
           "name": "bohman",
-          "value": "WFUNC_BOHMAN"
+          "value": "19"
         },
         {
           "help": "Kaiser",
           "name": "kaiser",
-          "value": "WFUNC_KAISER"
+          "value": "20"
         }
       ],
-      "default": "WFUNC_HANNING",
-      "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann</samp>\u2019</dt>\n<dt>\u2018<samp>hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>hann</code>.\n</p>\n</dd>",
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
       "name": "win_func",
       "required": false,
       "typing": "int"
@@ -167,8 +167,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Set output framerate.\n</p></dd>",
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"

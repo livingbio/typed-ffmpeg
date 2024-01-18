@@ -21,8 +21,8 @@
         "w"
       ],
       "choices": [],
-      "default": "w/2",
-      "description": "<dd><p>Set object width.\n</p>\n</dd>",
+      "default": "\"w/2\"",
+      "description": "set rect width (default \"w/2\")",
       "name": "w",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "h"
       ],
       "choices": [],
-      "default": "h/2",
-      "description": "<dd><p>Set object height.\n</p>\n</dd>",
+      "default": "\"h/2\"",
+      "description": "set rect height (default \"h/2\")",
       "name": "h",
       "required": false,
       "typing": "str"
@@ -43,8 +43,8 @@
         "x1"
       ],
       "choices": [],
-      "default": "w/2",
-      "description": "<dd><p>Set 1st rect x coordinate.\n</p>\n</dd>",
+      "default": "\"w/2\"",
+      "description": "set 1st rect x top left coordinate (default \"w/2\")",
       "name": "x1",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "y1"
       ],
       "choices": [],
-      "default": "h/2",
-      "description": "<dd><p>Set 1st rect y coordinate.\n</p>\n</dd>",
+      "default": "\"h/2\"",
+      "description": "set 1st rect y top left coordinate (default \"h/2\")",
       "name": "y1",
       "required": false,
       "typing": "str"
@@ -65,8 +65,8 @@
         "x2"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Set 2nd rect x coordinate.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set 2nd rect x top left coordinate (default \"0\")",
       "name": "x2",
       "required": false,
       "typing": "str"
@@ -76,8 +76,8 @@
         "y2"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Set 2nd rect y coordinate.\n</p>\n<p>All expressions are evaluated once for each frame.\n</p></dd>",
+      "default": "\"0\"",
+      "description": "set 2nd rect y top left coordinate (default \"0\")",
       "name": "y2",
       "required": false,
       "typing": "str"

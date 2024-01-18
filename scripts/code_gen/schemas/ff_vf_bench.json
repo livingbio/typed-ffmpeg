@@ -24,16 +24,16 @@
         {
           "help": "start timer",
           "name": "start",
-          "value": "ACTION_START"
+          "value": "0"
         },
         {
           "help": "stop timer",
           "name": "stop",
-          "value": "ACTION_STOP"
+          "value": "1"
         }
       ],
-      "default": "ACTION_START",
-      "description": "<dd><p>Start or stop a timer.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>start</samp>\u2019</dt>\n<dd><p>Get the current time, set it as frame metadata (using the key\n<code>lavfi.bench.start_time</code>), and forward the frame to the next filter.\n</p>\n</dd>\n<dt>\u2018<samp>stop</samp>\u2019</dt>\n<dd><p>Get the current time and fetch the <code>lavfi.bench.start_time</code> metadata from\nthe input frame metadata to get the time difference. Time difference, average,\nmaximum and minimum time (respectively <code>t</code>, <code>avg</code>, <code>max</code> and\n<code>min</code>) are then printed. The timestamps are expressed in seconds.\n</p></dd>\n</dl>\n</dd>",
+      "default": "start",
+      "description": "set action (from 0 to 1) (default start)",
       "name": "action",
       "required": false,
       "typing": "int"

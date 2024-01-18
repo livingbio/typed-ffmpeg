@@ -21,8 +21,8 @@
         "color"
       ],
       "choices": [],
-      "default": "black",
-      "description": "<dd><p>The color which will not be replaced with neutral gray.\n</p>\n</dd>",
+      "default": "\"black\"",
+      "description": "set the colorhold key color (default \"black\")",
       "name": "color",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "similarity"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "<dd><p>Similarity percentage with the above color.\n0.01 matches only the exact key color, while 1.0 matches everything.\n</p>\n</dd>",
+      "default": "0.01",
+      "description": "set the colorhold similarity value (from 1e-05 to 1) (default 0.01)",
       "name": "similarity",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "blend"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Blend percentage. 0.0 makes pixels fully gray.\nHigher values result in more preserved color.\n</p></dd>",
+      "default": "0",
+      "description": "set the colorhold blend value (from 0 to 1) (default 0)",
       "name": "blend",
       "required": false,
       "typing": "float"

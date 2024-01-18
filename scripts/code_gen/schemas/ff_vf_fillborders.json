@@ -21,8 +21,8 @@
         "left"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Number of pixels to fill from left border.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the left fill border (from 0 to INT_MAX) (default 0)",
       "name": "left",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "right"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Number of pixels to fill from right border.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the right fill border (from 0 to INT_MAX) (default 0)",
       "name": "right",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "top"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Number of pixels to fill from top border.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the top fill border (from 0 to INT_MAX) (default 0)",
       "name": "top",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "bottom"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Number of pixels to fill from bottom border.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the bottom fill border (from 0 to INT_MAX) (default 0)",
       "name": "bottom",
       "required": false,
       "typing": "int"
@@ -66,43 +66,43 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smear",
-          "value": "FM_SMEAR"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "mirror",
-          "value": "FM_MIRROR"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "fixed",
-          "value": "FM_FIXED"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "reflect",
-          "value": "FM_REFLECT"
+          "value": "3"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "wrap",
-          "value": "FM_WRAP"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "fade",
-          "value": "FM_FADE"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "margins",
-          "value": "FM_MARGINS"
+          "value": "6"
         }
       ],
-      "default": "FM_SMEAR",
-      "description": "<dd><p>Set fill mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>smear</samp>\u2019</dt>\n<dd><p>fill pixels using outermost pixels\n</p>\n</dd>\n<dt>\u2018<samp>mirror</samp>\u2019</dt>\n<dd><p>fill pixels using mirroring (half sample symmetric)\n</p>\n</dd>\n<dt>\u2018<samp>fixed</samp>\u2019</dt>\n<dd><p>fill pixels with constant value\n</p>\n</dd>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dd><p>fill pixels using reflecting (whole sample symmetric)\n</p>\n</dd>\n<dt>\u2018<samp>wrap</samp>\u2019</dt>\n<dd><p>fill pixels using wrapping\n</p>\n</dd>\n<dt>\u2018<samp>fade</samp>\u2019</dt>\n<dd><p>fade pixels to constant value\n</p>\n</dd>\n<dt>\u2018<samp>margins</samp>\u2019</dt>\n<dd><p>fill pixels at top and bottom with weighted averages pixels near borders\n</p></dd>\n</dl>\n<p>Default is <var>smear</var>.\n</p>\n</dd>",
+      "default": "smear",
+      "description": "set the fill borders mode (from 0 to 6) (default smear)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -112,8 +112,8 @@
         "color"
       ],
       "choices": [],
-      "default": "black",
-      "description": "<dd><p>Set color for pixels in fixed or fade mode. Default is <var>black</var>.\n</p></dd>",
+      "default": "\"black\"",
+      "description": "set the color for the fixed/fade mode (default \"black\")",
       "name": "color",
       "required": false,
       "typing": "str"

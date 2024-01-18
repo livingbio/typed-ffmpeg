@@ -18,7 +18,7 @@
         "fps"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"60\"",
       "description": "output's frame rate (default \"60\")",
       "flags": "..FV.......",
       "max": null,

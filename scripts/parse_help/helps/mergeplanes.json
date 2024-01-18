@@ -16,8 +16,8 @@
       "default": "-1",
       "description": "set input to output plane mapping (from -1 to 8.58993e+08) (default -1)",
       "flags": "..FV......P",
-      "max": null,
-      "min": null,
+      "max": "8.58993e+08",
+      "min": "-1",
       "name": "mapping",
       "typing": "int"
     },

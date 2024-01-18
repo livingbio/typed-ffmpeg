@@ -22,8 +22,8 @@
         "r"
       ],
       "choices": [],
-      "default": 44100,
-      "description": "<dd><p>Set the output sample rate. Default is 44100 Hz.\n</p></dd>",
+      "default": "44100",
+      "description": "set the sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
       "typing": "int"

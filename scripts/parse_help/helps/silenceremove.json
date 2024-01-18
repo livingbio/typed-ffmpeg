@@ -200,7 +200,7 @@
         "window"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.02",
       "description": "set duration of window for silence detection (default 0.02)",
       "flags": "..F.A......",
       "max": null,

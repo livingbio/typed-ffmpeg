@@ -18,52 +18,122 @@
   "options": [
     {
       "alias": [
-        "c0",
-        "y",
-        "r"
+        "c0"
       ],
       "choices": [],
-      "default": "clipval",
-      "description": "<dd><p>set first pixel component expression\n</p></dd>",
+      "default": "\"clipval\"",
+      "description": "set component #0 expression (default \"clipval\")",
       "name": "c0",
       "required": false,
       "typing": "str"
     },
     {
       "alias": [
-        "c1",
-        "u",
-        "g"
+        "c1"
       ],
       "choices": [],
-      "default": "clipval",
-      "description": "<dd><p>set second pixel component expression\n</p></dd>",
+      "default": "\"clipval\"",
+      "description": "set component #1 expression (default \"clipval\")",
       "name": "c1",
       "required": false,
       "typing": "str"
     },
     {
       "alias": [
-        "c2",
-        "v",
-        "b"
+        "c2"
       ],
       "choices": [],
-      "default": "clipval",
-      "description": "<dd><p>set third pixel component expression\n</p></dd>",
+      "default": "\"clipval\"",
+      "description": "set component #2 expression (default \"clipval\")",
       "name": "c2",
       "required": false,
       "typing": "str"
     },
     {
       "alias": [
-        "c3",
+        "c3"
+      ],
+      "choices": [],
+      "default": "\"clipval\"",
+      "description": "set component #3 expression (default \"clipval\")",
+      "name": "c3",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": "\"clipval\"",
+      "description": "set Y expression (default \"clipval\")",
+      "name": "y",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "u"
+      ],
+      "choices": [],
+      "default": "\"clipval\"",
+      "description": "set U expression (default \"clipval\")",
+      "name": "u",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "v"
+      ],
+      "choices": [],
+      "default": "\"clipval\"",
+      "description": "set V expression (default \"clipval\")",
+      "name": "v",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "r"
+      ],
+      "choices": [],
+      "default": "\"clipval\"",
+      "description": "set R expression (default \"clipval\")",
+      "name": "r",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "g"
+      ],
+      "choices": [],
+      "default": "\"clipval\"",
+      "description": "set G expression (default \"clipval\")",
+      "name": "g",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
+        "b"
+      ],
+      "choices": [],
+      "default": "\"clipval\"",
+      "description": "set B expression (default \"clipval\")",
+      "name": "b",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
         "a"
       ],
       "choices": [],
-      "default": "clipval",
-      "description": "<dd><p>set fourth pixel component expression, corresponds to the alpha component\n</p>\n</dd>",
-      "name": "c3",
+      "default": "\"clipval\"",
+      "description": "set A expression (default \"clipval\")",
+      "name": "a",
       "required": false,
       "typing": "str"
     },

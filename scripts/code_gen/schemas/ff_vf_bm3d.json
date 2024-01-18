@@ -16,8 +16,8 @@
         "sigma"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set denoising strength. Default value is 1.\nAllowed range is from 0 to 999.9.\nThe denoising algorithm is very sensitive to sigma, so adjust it\naccording to the source.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set denoising strength (from 0 to 99999.9) (default 1)",
       "name": "sigma",
       "required": false,
       "typing": "float"
@@ -27,8 +27,8 @@
         "block"
       ],
       "choices": [],
-      "default": 16,
-      "description": "<dd><p>Set local patch size. This sets dimensions in 2D.\n</p>\n</dd>",
+      "default": "16",
+      "description": "set size of local patch (from 8 to 64) (default 16)",
       "name": "block",
       "required": false,
       "typing": "int"
@@ -38,8 +38,8 @@
         "bstep"
       ],
       "choices": [],
-      "default": 4,
-      "description": "<dd><p>Set sliding step for processing blocks. Default value is 4.\nAllowed range is from 1 to 64.\nSmaller values allows processing more reference blocks and is slower.\n</p>\n</dd>",
+      "default": "4",
+      "description": "set sliding step for processing blocks (from 1 to 64) (default 4)",
       "name": "bstep",
       "required": false,
       "typing": "int"
@@ -49,8 +49,8 @@
         "group"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set maximal number of similar blocks for 3rd dimension. Default value is 1.\nWhen set to 1, no block matching is done. Larger values allows more blocks\nin single group.\nAllowed range is from 1 to 256.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set maximal number of similar blocks (from 1 to 256) (default 1)",
       "name": "group",
       "required": false,
       "typing": "int"
@@ -60,8 +60,8 @@
         "range"
       ],
       "choices": [],
-      "default": 9,
-      "description": "<dd><p>Set radius for search block matching. Default is 9.\nAllowed range is from 1 to INT32_MAX.\n</p>\n</dd>",
+      "default": "9",
+      "description": "set block matching range (from 1 to INT_MAX) (default 9)",
       "name": "range",
       "required": false,
       "typing": "int"
@@ -71,8 +71,8 @@
         "mstep"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set step between two search locations for block matching. Default is 1.\nAllowed range is from 1 to 64. Smaller is slower.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set step for block matching (from 1 to 64) (default 1)",
       "name": "mstep",
       "required": false,
       "typing": "int"
@@ -82,8 +82,8 @@
         "thmse"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set threshold of mean square error for block matching. Valid range is 0 to\nINT32_MAX.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)",
       "name": "thmse",
       "required": false,
       "typing": "float"
@@ -93,8 +93,8 @@
         "hdthr"
       ],
       "choices": [],
-      "default": 2.7,
-      "description": "<dd><p>Set thresholding parameter for hard thresholding in 3D transformed domain.\nLarger values results in stronger hard-thresholding filtering in frequency\ndomain.\n</p>\n</dd>",
+      "default": "2.7",
+      "description": "set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)",
       "name": "hdthr",
       "required": false,
       "typing": "float"
@@ -107,16 +107,16 @@
         {
           "help": "basic estimate",
           "name": "basic",
-          "value": "BASIC"
+          "value": "0"
         },
         {
           "help": "final estimate",
           "name": "final",
-          "value": "FINAL"
+          "value": "1"
         }
       ],
-      "default": "BASIC",
-      "description": "<dd><p>Set filtering estimation mode. Can be <code>basic</code> or <code>final</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>",
+      "default": "basic",
+      "description": "set filtering estimation mode (from 0 to 1) (default basic)",
       "name": "estim",
       "required": false,
       "typing": "int"
@@ -126,8 +126,8 @@
         "ref"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If enabled, filter will use 2nd stream for block matching.\nDefault is disabled for <code>basic</code> value of <var>estim</var> option,\nand always enabled if value of <var>estim</var> is <code>final</code>.\n</p>\n</dd>",
+      "default": "false",
+      "description": "have reference stream (default false)",
       "name": "ref",
       "required": false,
       "typing": "bool"
@@ -137,8 +137,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set planes to filter. Default is all available except alpha.\n</p></dd>",
+      "default": "7",
+      "description": "set planes to filter (from 0 to 15) (default 7)",
       "name": "planes",
       "required": false,
       "typing": "int"

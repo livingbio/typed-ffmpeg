@@ -21,8 +21,8 @@
         "0a"
       ],
       "choices": [],
-      "default": 0.02,
-      "description": "<dd><p>Set threshold A for 1st plane. Default is 0.02.\nValid range is 0 to 0.3.\n</p>\n</dd>",
+      "default": "0.02",
+      "description": "set threshold A for 1st plane (from 0 to 0.3) (default 0.02)",
       "name": "0a",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "0b"
       ],
       "choices": [],
-      "default": 0.04,
-      "description": "<dd><p>Set threshold B for 1st plane. Default is 0.04.\nValid range is 0 to 5.\n</p>\n</dd>",
+      "default": "0.04",
+      "description": "set threshold B for 1st plane (from 0 to 5) (default 0.04)",
       "name": "0b",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "1a"
       ],
       "choices": [],
-      "default": 0.02,
-      "description": "<dd><p>Set threshold A for 2nd plane. Default is 0.02.\nValid range is 0 to 0.3.\n</p>\n</dd>",
+      "default": "0.02",
+      "description": "set threshold A for 2nd plane (from 0 to 0.3) (default 0.02)",
       "name": "1a",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "1b"
       ],
       "choices": [],
-      "default": 0.04,
-      "description": "<dd><p>Set threshold B for 2nd plane. Default is 0.04.\nValid range is 0 to 5.\n</p>\n</dd>",
+      "default": "0.04",
+      "description": "set threshold B for 2nd plane (from 0 to 5) (default 0.04)",
       "name": "1b",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "2a"
       ],
       "choices": [],
-      "default": 0.02,
-      "description": "<dd><p>Set threshold A for 3rd plane. Default is 0.02.\nValid range is 0 to 0.3.\n</p>\n</dd>",
+      "default": "0.02",
+      "description": "set threshold A for 3rd plane (from 0 to 0.3) (default 0.02)",
       "name": "2a",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "2b"
       ],
       "choices": [],
-      "default": 0.04,
-      "description": "<dd><p>Set threshold B for 3rd plane. Default is 0.04.\nValid range is 0 to 5.\n</p>\n<p>Threshold A is designed to react on abrupt changes in the input signal and\nthreshold B is designed to react on continuous changes in the input signal.\n</p>\n</dd>",
+      "default": "0.04",
+      "description": "set threshold B for 3rd plane (from 0 to 5) (default 0.04)",
       "name": "2b",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "s"
       ],
       "choices": [],
-      "default": 9,
-      "description": "<dd><p>Set number of frames filter will use for averaging. Default is 9. Must be odd\nnumber in range [5, 129].\n</p>\n</dd>",
+      "default": "9",
+      "description": "set how many frames to use (from 5 to 129) (default 9)",
       "name": "s",
       "required": false,
       "typing": "int"
@@ -98,8 +98,8 @@
         "p"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set what planes of frame filter will use for averaging. Default is all.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set what planes to filter (default 7)",
       "name": "p",
       "required": false,
       "typing": "str"
@@ -112,16 +112,16 @@
         {
           "help": "parallel",
           "name": "p",
-          "value": "PARALLEL"
+          "value": "0"
         },
         {
           "help": "serial",
           "name": "s",
-          "value": "SERIAL"
+          "value": "1"
         }
       ],
-      "default": "PARALLEL",
-      "description": "<dd><p>Set what variant of algorithm filter will use for averaging. Default is <code>p</code> parallel.\nAlternatively can be set to <code>s</code> serial.\n</p>\n<p>Parallel can be faster then serial, while other way around is never true.\nParallel will abort early on first change being greater then thresholds, while serial\nwill continue processing other side of frames if they are equal or below thresholds.\n</p>\n</dd>",
+      "default": "p",
+      "description": "set variant of algorithm (from 0 to 1) (default p)",
       "name": "a",
       "required": false,
       "typing": "int"
@@ -131,8 +131,8 @@
         "0s"
       ],
       "choices": [],
-      "default": 32767.0,
-      "description": "<dd><p>Set sigma for 1st plane, 2nd plane or 3rd plane. Default is 32767.\nValid range is from 0 to 32767.\nThis options controls weight for each pixel in radius defined by size.\nDefault value means every pixel have same weight.\nSetting this option to 0 effectively disables filtering.\n</p></dd>",
+      "default": "32767",
+      "description": "set sigma for 1st plane (from 0 to 32767) (default 32767)",
       "name": "0s",
       "required": false,
       "typing": "float"
@@ -142,8 +142,8 @@
         "1s"
       ],
       "choices": [],
-      "default": 32767.0,
-      "description": "<dd><p>Set sigma for 1st plane, 2nd plane or 3rd plane. Default is 32767.\nValid range is from 0 to 32767.\nThis options controls weight for each pixel in radius defined by size.\nDefault value means every pixel have same weight.\nSetting this option to 0 effectively disables filtering.\n</p></dd>",
+      "default": "32767",
+      "description": "set sigma for 2nd plane (from 0 to 32767) (default 32767)",
       "name": "1s",
       "required": false,
       "typing": "float"
@@ -153,8 +153,8 @@
         "2s"
       ],
       "choices": [],
-      "default": 32767.0,
-      "description": "<dd><p>Set sigma for 1st plane, 2nd plane or 3rd plane. Default is 32767.\nValid range is from 0 to 32767.\nThis options controls weight for each pixel in radius defined by size.\nDefault value means every pixel have same weight.\nSetting this option to 0 effectively disables filtering.\n</p></dd>",
+      "default": "32767",
+      "description": "set sigma for 3rd plane (from 0 to 32767) (default 32767)",
       "name": "2s",
       "required": false,
       "typing": "float"

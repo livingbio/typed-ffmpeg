@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set scope x position (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set scope y position (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -44,7 +44,7 @@
         "s"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.8",
       "description": "set scope size (from 0 to 1) (default 0.8)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -57,7 +57,7 @@
         "t"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set scope tilt (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -70,7 +70,7 @@
         "o"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.8",
       "description": "set trace opacity (from 0 to 1) (default 0.8)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -83,7 +83,7 @@
         "tx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set trace x position (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -96,7 +96,7 @@
         "ty"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.9",
       "description": "set trace y position (from 0 to 1) (default 0.9)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -109,11 +109,11 @@
         "tw"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.8",
       "description": "set trace width (from 0.1 to 1) (default 0.8)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "1",
+      "min": "0.1",
       "name": "tw",
       "typing": "float"
     },
@@ -122,11 +122,11 @@
         "th"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.3",
       "description": "set trace height (from 0.1 to 1) (default 0.3)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "1",
+      "min": "0.1",
       "name": "th",
       "typing": "float"
     },

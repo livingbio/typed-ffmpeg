@@ -19,7 +19,7 @@
         "z"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1+0i 1-0i\"",
       "description": "set B/numerator/zeros/reflection coefficients (default \"1+0i 1-0i\")",
       "flags": "..F.A......",
       "max": null,
@@ -33,7 +33,7 @@
         "p"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1+0i 1-0i\"",
       "description": "set A/denominator/poles/ladder coefficients (default \"1+0i 1-0i\")",
       "flags": "..F.A......",
       "max": null,
@@ -47,7 +47,7 @@
         "k"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1|1\"",
       "description": "set channels gains (default \"1|1\")",
       "flags": "..F.A......",
       "max": null,
@@ -305,7 +305,7 @@
         "size"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"hd720\"",
       "description": "set video size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -318,7 +318,7 @@
         "rate"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

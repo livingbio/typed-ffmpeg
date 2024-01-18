@@ -48,7 +48,7 @@
         "log_fmt"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"xml\"",
       "description": "Set the format of the log (csv, json, xml, or sub). (default \"xml\")",
       "flags": "..FV.......",
       "max": null,
@@ -166,7 +166,7 @@
         "model"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"version=vmaf_v0.6.1\"",
       "description": "Set the model to be used for computing vmaf. (default \"version=vmaf_v0.6.1\")",
       "flags": "..FV.......",
       "max": null,

@@ -21,8 +21,8 @@
         "expr"
       ],
       "choices": [],
-      "default": "PTS",
-      "description": "<dd><p>The expression which is evaluated for each frame to construct its timestamp.\n</p>\n</dd>",
+      "default": "\"PTS\"",
+      "description": "Expression determining the frame timestamp (default \"PTS\")",
       "name": "expr",
       "required": false,
       "typing": "str"

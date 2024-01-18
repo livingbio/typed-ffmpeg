@@ -24,26 +24,26 @@
         {
           "help": "select top field first",
           "name": "top",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "select top field first",
           "name": "t",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "select bottom field first",
           "name": "bottom",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "select bottom field first",
           "name": "b",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><dl compact=\"compact\">\n<dt>\u2018<samp>top, t</samp>\u2019</dt>\n<dd><p>top field first\n</p></dd>\n<dt>\u2018<samp>bottom, b</samp>\u2019</dt>\n<dd><p>bottom field first\nThe default value is <code>top</code>.\n</p></dd>\n</dl>\n</dd>",
+      "default": "top",
+      "description": "select first field (from 0 to 1) (default top)",
       "name": "first_field",
       "required": false,
       "typing": "int"
@@ -53,8 +53,8 @@
         "pattern"
       ],
       "choices": [],
-      "default": "23",
-      "description": "<dd><p>A string of numbers representing the pulldown pattern you wish to apply.\nThe default value is <code>23</code>.\n</p></dd>",
+      "default": "\"23\"",
+      "description": "pattern that describe for how many fields a frame is to be displayed (default \"23\")",
       "name": "pattern",
       "required": false,
       "typing": "str"

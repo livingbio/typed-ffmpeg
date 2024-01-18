@@ -16,8 +16,8 @@
         "size"
       ],
       "choices": [],
-      "default": "320x240",
-      "description": "<dd><p>The size of the video to generate. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p>\n</dd>",
+      "default": "\"320x240\"",
+      "description": "Dimensions of the generated video. (default \"320x240\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -27,8 +27,8 @@
         "framerate"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>The framerate of the generated video. It may be a string of the form\n<var>num</var>/<var>den</var> or a frame rate abbreviation.\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "(default \"25\")",
       "name": "framerate",
       "required": false,
       "typing": "str"
@@ -39,7 +39,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>The name to the frei0r source to load. For more information regarding frei0r and\nhow to set the parameters, read the <a href=\"#frei0r\">frei0r</a> section in the video filters\ndocumentation.\n</p>\n</dd>",
+      "description": "",
       "name": "filter_name",
       "required": false,
       "typing": "str"
@@ -50,7 +50,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>A \u2019|\u2019-separated list of parameters to pass to the frei0r source.\n</p>\n</dd>",
+      "description": "",
       "name": "filter_params",
       "required": false,
       "typing": "str"

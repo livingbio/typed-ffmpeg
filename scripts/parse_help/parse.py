@@ -155,9 +155,9 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
 
 
 def extract(filter_name: str) -> AVFilter:
-    try:
-        return AVFilter.load(filter_name)
-    except IOError:
-        filter = extract_avfilter_info_from_help(filter_name=filter_name)
-        filter.save()
-        return filter
+    # try:
+    #     return AVFilter.load(filter_name)
+    # except IOError:
+    filter = extract_avfilter_info_from_help(filter_name=filter_name)
+    filter.save()
+    return filter

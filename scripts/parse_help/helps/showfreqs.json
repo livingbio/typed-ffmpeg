@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1024x512\"",
       "description": "set video size (default \"1024x512\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -333,7 +333,7 @@
         "colors"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
       "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "flags": "..FV.......",
       "max": null,
@@ -417,7 +417,7 @@
         "channels"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"all\"",
       "description": "set channels to draw (default \"all\")",
       "flags": "..FV.......",
       "max": null,

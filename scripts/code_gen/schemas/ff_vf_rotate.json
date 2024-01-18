@@ -22,8 +22,8 @@
         "a"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Set an expression for the angle by which to rotate the input video\nclockwise, expressed as a number of radians. A negative value will\nresult in a counter-clockwise rotation. By default it is set to \"0\".\n</p>\n<p>This expression is evaluated for each frame.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set angle (in radians) (default \"0\")",
       "name": "angle",
       "required": false,
       "typing": "str"
@@ -34,8 +34,8 @@
         "ow"
       ],
       "choices": [],
-      "default": "iw",
-      "description": "<dd><p>Set the output width expression, default value is \"iw\".\nThis expression is evaluated just once during configuration.\n</p>\n</dd>",
+      "default": "\"iw\"",
+      "description": "set output width expression (default \"iw\")",
       "name": "out_w",
       "required": false,
       "typing": "str"
@@ -46,8 +46,8 @@
         "oh"
       ],
       "choices": [],
-      "default": "ih",
-      "description": "<dd><p>Set the output height expression, default value is \"ih\".\nThis expression is evaluated just once during configuration.\n</p>\n</dd>",
+      "default": "\"ih\"",
+      "description": "set output height expression (default \"ih\")",
       "name": "out_h",
       "required": false,
       "typing": "str"
@@ -58,8 +58,8 @@
         "c"
       ],
       "choices": [],
-      "default": "black",
-      "description": "<dd><p>Set the color used to fill the output area not covered by the rotated\nimage. For the general syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nIf the special value \"none\" is selected then no\nbackground is printed (useful for example if the background is never shown).\n</p>\n<p>Default value is \"black\".\n</p></dd>",
+      "default": "\"black\"",
+      "description": "set background fill color (default \"black\")",
       "name": "fillcolor",
       "required": false,
       "typing": "str"
@@ -69,8 +69,8 @@
         "bilinear"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Enable bilinear interpolation if set to 1, a value of 0 disables\nit. Default value is 1.\n</p>\n</dd>",
+      "default": "true",
+      "description": "use bilinear interpolation (default true)",
       "name": "bilinear",
       "required": false,
       "typing": "bool"

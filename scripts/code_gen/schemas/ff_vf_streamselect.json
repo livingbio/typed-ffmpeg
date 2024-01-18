@@ -16,8 +16,8 @@
         "inputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set number of inputs. Default is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "number of input streams (from 2 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
       "typing": "int"
@@ -27,8 +27,8 @@
         "map"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set input indexes to remap to outputs.\n</p></dd>",
+      "default": null,
+      "description": "input indexes to remap to outputs",
       "name": "map",
       "required": false,
       "typing": "str"

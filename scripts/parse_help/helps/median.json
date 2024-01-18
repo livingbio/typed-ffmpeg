@@ -57,7 +57,7 @@
         "percentile"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set median percentile (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",

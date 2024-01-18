@@ -21,8 +21,8 @@
       "default": "1",
       "description": "set input level (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_in",
       "typing": "double"
     },
@@ -34,8 +34,8 @@
       "default": "1",
       "description": "set output level (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_out",
       "typing": "double"
     },
@@ -47,8 +47,8 @@
       "default": "1",
       "description": "set limit (from 0.0625 to 1) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1",
+      "min": "0.0625",
       "name": "limit",
       "typing": "double"
     },
@@ -60,8 +60,8 @@
       "default": "5",
       "description": "set attack (from 0.1 to 80) (default 5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "80",
+      "min": "0.1",
       "name": "attack",
       "typing": "double"
     },
@@ -96,7 +96,7 @@
         "asc_level"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set asc level (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",

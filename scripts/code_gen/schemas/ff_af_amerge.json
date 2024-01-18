@@ -16,8 +16,8 @@
         "inputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set the number of inputs. Default is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "specify the number of inputs (from 1 to 64) (default 2)",
       "name": "inputs",
       "required": false,
       "typing": "int"

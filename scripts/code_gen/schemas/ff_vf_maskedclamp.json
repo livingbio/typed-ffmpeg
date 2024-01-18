@@ -29,8 +29,8 @@
         "undershoot"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Default value is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set undershoot (from 0 to 65535) (default 0)",
       "name": "undershoot",
       "required": false,
       "typing": "int"
@@ -40,8 +40,8 @@
         "overshoot"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Default value is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set overshoot (from 0 to 65535) (default 0)",
       "name": "overshoot",
       "required": false,
       "typing": "int"
@@ -51,8 +51,8 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"

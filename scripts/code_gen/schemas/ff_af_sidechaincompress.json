@@ -25,8 +25,8 @@
         "level_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input gain. Default is 1. Range is between 0.015625 and 64.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input gain (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
       "typing": "float"
@@ -37,18 +37,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "downward",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "upward",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set mode of compressor operation. Can be <code>upward</code> or <code>downward</code>.\nDefault is <code>downward</code>.\n</p>\n</dd>",
+      "default": "downward",
+      "description": "set mode (from 0 to 1) (default downward)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -58,8 +58,8 @@
         "threshold"
       ],
       "choices": [],
-      "default": 0.125,
-      "description": "<dd><p>If a signal of second stream raises above this level it will affect the gain\nreduction of first stream.\nBy default is 0.125. Range is between 0.00097563 and 1.\n</p>\n</dd>",
+      "default": "0.125",
+      "description": "set threshold (from 0.000976563 to 1) (default 0.125)",
       "name": "threshold",
       "required": false,
       "typing": "float"
@@ -69,8 +69,8 @@
         "ratio"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "<dd><p>Set a ratio about which the signal is reduced. 1:2 means that if the level\nraised 4dB above the threshold, it will be only 2dB above after the reduction.\nDefault is 2. Range is between 1 and 20.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set ratio (from 1 to 20) (default 2)",
       "name": "ratio",
       "required": false,
       "typing": "float"
@@ -80,8 +80,8 @@
         "attack"
       ],
       "choices": [],
-      "default": 20.0,
-      "description": "<dd><p>Amount of milliseconds the signal has to rise above the threshold before gain\nreduction starts. Default is 20. Range is between 0.01 and 2000.\n</p>\n</dd>",
+      "default": "20",
+      "description": "set attack (from 0.01 to 2000) (default 20)",
       "name": "attack",
       "required": false,
       "typing": "float"
@@ -91,8 +91,8 @@
         "release"
       ],
       "choices": [],
-      "default": 250.0,
-      "description": "<dd><p>Amount of milliseconds the signal has to fall below the threshold before\nreduction is decreased again. Default is 250. Range is between 0.01 and 9000.\n</p>\n</dd>",
+      "default": "250",
+      "description": "set release (from 0.01 to 9000) (default 250)",
       "name": "release",
       "required": false,
       "typing": "float"
@@ -102,8 +102,8 @@
         "makeup"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the amount by how much signal will be amplified after processing.\nDefault is 1. Range is from 1 to 64.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set make up gain (from 1 to 64) (default 1)",
       "name": "makeup",
       "required": false,
       "typing": "float"
@@ -113,8 +113,8 @@
         "knee"
       ],
       "choices": [],
-      "default": 2.82843,
-      "description": "<dd><p>Curve the sharp knee around the threshold to enter gain reduction more softly.\nDefault is 2.82843. Range is between 1 and 8.\n</p>\n</dd>",
+      "default": "2.82843",
+      "description": "set knee (from 1 to 8) (default 2.82843)",
       "name": "knee",
       "required": false,
       "typing": "float"
@@ -125,18 +125,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "average",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "maximum",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Choose if the <code>average</code> level between all channels of side-chain stream\nor the louder(<code>maximum</code>) channel of side-chain stream affects the\nreduction. Default is <code>average</code>.\n</p>\n</dd>",
+      "default": "average",
+      "description": "set link type (from 0 to 1) (default average)",
       "name": "link",
       "required": false,
       "typing": "int"
@@ -147,18 +147,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "peak",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "rms",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Should the exact signal be taken in case of <code>peak</code> or an RMS one in case\nof <code>rms</code>. Default is <code>rms</code> which is mainly smoother.\n</p>\n</dd>",
+      "default": "rms",
+      "description": "set detection (from 0 to 1) (default rms)",
       "name": "detection",
       "required": false,
       "typing": "int"
@@ -168,8 +168,8 @@
         "level_sc"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set sidechain gain. Default is 1. Range is between 0.015625 and 64.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set sidechain gain (from 0.015625 to 64) (default 1)",
       "name": "level_sc",
       "required": false,
       "typing": "float"
@@ -179,8 +179,8 @@
         "mix"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>How much to use compressed signal in output. Default is 1.\nRange is between 0 and 1.\n</p></dd>",
+      "default": "1",
+      "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
       "typing": "float"

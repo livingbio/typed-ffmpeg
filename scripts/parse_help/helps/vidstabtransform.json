@@ -18,7 +18,7 @@
         "input"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"transforms.trf\"",
       "description": "set path to the file storing the transforms (default \"transforms.trf\")",
       "flags": "..FV.......",
       "max": null,
@@ -92,8 +92,8 @@
       "default": "-1",
       "description": "set maximal angle in rad to rotate image (from -1 to 3.14) (default -1)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "3.14",
+      "min": "-1",
       "name": "maxangle",
       "typing": "double"
     },
@@ -180,7 +180,7 @@
         "zoomspeed"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.25",
       "description": "for adative zoom: percent to zoom maximally each frame (from 0 to 5) (default 0.25)",
       "flags": "..FV.......",
       "max": "5",

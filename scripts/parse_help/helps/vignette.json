@@ -19,7 +19,7 @@
         "a"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"PI/5\"",
       "description": "set lens angle (default \"PI/5\")",
       "flags": "..FV.......",
       "max": null,
@@ -32,7 +32,7 @@
         "x0"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"w/2\"",
       "description": "set circle center position on x-axis (default \"w/2\")",
       "flags": "..FV.......",
       "max": null,
@@ -45,7 +45,7 @@
         "y0"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"h/2\"",
       "description": "set circle center position on y-axis (default \"h/2\")",
       "flags": "..FV.......",
       "max": null,
@@ -123,7 +123,7 @@
         "aspect"
       ],
       "choices": [],
-      "default": null,
+      "default": "1/1",
       "description": "set aspect ratio (from 0 to DBL_MAX) (default 1/1)",
       "flags": "..FV.......",
       "max": "DBL_MAX",

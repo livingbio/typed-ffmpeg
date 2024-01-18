@@ -21,8 +21,8 @@
         "x"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set scope X position, relative offset on X axis.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set scope x offset (from 0 to 1) (default 0.5)",
       "name": "x",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "y"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set scope Y position, relative offset on Y axis.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set scope y offset (from 0 to 1) (default 0.5)",
       "name": "y",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "w"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set scope width.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set scope width (from 1 to 80) (default 7)",
       "name": "w",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "h"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set scope height.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set scope height (from 1 to 80) (default 7)",
       "name": "h",
       "required": false,
       "typing": "int"
@@ -65,8 +65,8 @@
         "o"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set window opacity. This window also holds statistics about pixel area.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set window opacity (from 0 to 1) (default 0.5)",
       "name": "o",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "wx"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Set window X position, relative offset on X axis.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set window x offset (from -1 to 1) (default -1)",
       "name": "wx",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "wy"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Set window Y position, relative offset on Y axis.\n</p></dd>",
+      "default": "-1",
+      "description": "set window y offset (from -1 to 1) (default -1)",
       "name": "wy",
       "required": false,
       "typing": "float"

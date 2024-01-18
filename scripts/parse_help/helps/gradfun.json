@@ -18,11 +18,11 @@
         "strength"
       ],
       "choices": [],
-      "default": null,
+      "default": "1.2",
       "description": "The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.51",
       "name": "strength",
       "typing": "float"
     },

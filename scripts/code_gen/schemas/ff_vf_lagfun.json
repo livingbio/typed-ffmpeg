@@ -21,8 +21,8 @@
         "decay"
       ],
       "choices": [],
-      "default": 0.95,
-      "description": "<dd><p>Set factor for decaying. Default is .95. Allowed range is from 0 to 1.\n</p>\n</dd>",
+      "default": "0.95",
+      "description": "set decay (from 0 to 1) (default 0.95)",
       "name": "decay",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
+      "default": "F",
+      "description": "set what planes to filter (default F)",
       "name": "planes",
       "required": false,
       "typing": "str"

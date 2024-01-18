@@ -15,30 +15,7 @@
   "is_support_framesync": false,
   "is_support_timeline": false,
   "name": "replaygain",
-  "options": [
-    {
-      "alias": [
-        "track_gain"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Exported track gain in dB at end of stream.\n</p>\n</dd>",
-      "name": "track_gain",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "track_peak"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Exported track peak at end of stream.\n</p></dd>",
-      "name": "track_peak",
-      "required": false,
-      "typing": "float"
-    }
-  ],
+  "options": [],
   "output_stream_typings": [
     {
       "name": "default",

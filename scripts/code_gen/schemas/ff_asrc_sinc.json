@@ -17,8 +17,8 @@
         "r"
       ],
       "choices": [],
-      "default": 44100,
-      "description": "<dd><p>Set sample rate, default is 44100.\n</p>\n</dd>",
+      "default": "44100",
+      "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
       "typing": "int"
@@ -29,8 +29,8 @@
         "n"
       ],
       "choices": [],
-      "default": 1024,
-      "description": "<dd><p>Set number of samples per each frame. Default is 1024.\n</p>\n</dd>",
+      "default": "1024",
+      "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
       "typing": "int"
@@ -40,8 +40,8 @@
         "hp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set high-pass frequency. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set high-pass filter frequency (from 0 to INT_MAX) (default 0)",
       "name": "hp",
       "required": false,
       "typing": "float"
@@ -51,8 +51,8 @@
         "lp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set low-pass frequency. Default is 0.\nIf high-pass frequency is lower than low-pass frequency and low-pass frequency\nis higher than 0 then filter will create band-pass filter coefficients,\notherwise band-reject filter coefficients.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set low-pass filter frequency (from 0 to INT_MAX) (default 0)",
       "name": "lp",
       "required": false,
       "typing": "float"
@@ -62,8 +62,8 @@
         "phase"
       ],
       "choices": [],
-      "default": 50.0,
-      "description": "<dd><p>Set filter phase response. Default is 50. Allowed range is from 0 to 100.\n</p>\n</dd>",
+      "default": "50",
+      "description": "set filter phase response (from 0 to 100) (default 50)",
       "name": "phase",
       "required": false,
       "typing": "float"
@@ -73,8 +73,8 @@
         "beta"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Set Kaiser window beta.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set kaiser window beta (from -1 to 256) (default -1)",
       "name": "beta",
       "required": false,
       "typing": "float"
@@ -84,8 +84,8 @@
         "att"
       ],
       "choices": [],
-      "default": 120.0,
-      "description": "<dd><p>Set stop-band attenuation. Default is 120dB, allowed range is from 40 to 180 dB.\n</p>\n</dd>",
+      "default": "120",
+      "description": "set stop-band attenuation (from 40 to 180) (default 120)",
       "name": "att",
       "required": false,
       "typing": "float"
@@ -95,8 +95,8 @@
         "round"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable rounding, by default is disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "enable rounding (default false)",
       "name": "round",
       "required": false,
       "typing": "bool"
@@ -106,8 +106,8 @@
         "hptaps"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set number of taps for high-pass filter.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set number of taps for high-pass filter (from 0 to 32768) (default 0)",
       "name": "hptaps",
       "required": false,
       "typing": "int"
@@ -117,8 +117,8 @@
         "lptaps"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set number of taps for low-pass filter.\n</p></dd>",
+      "default": "0",
+      "description": "set number of taps for low-pass filter (from 0 to 32768) (default 0)",
       "name": "lptaps",
       "required": false,
       "typing": "int"

@@ -16,8 +16,8 @@
         "inputs"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Set number of inputs.\nDefault is 3. Allowed range is from 3 to 255.\nIf number of inputs is even number, than result will be mean value between two median values.\n</p>\n</dd>",
+      "default": "3",
+      "description": "set number of inputs (from 3 to 255) (default 3)",
       "name": "inputs",
       "required": false,
       "typing": "int"
@@ -27,8 +27,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set which planes to filter. Default value is <code>15</code>, by which all planes are processed.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"
@@ -38,11 +38,82 @@
         "percentile"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set median percentile. Default value is <code>0.5</code>.\nDefault value of <code>0.5</code> will pick always median values, while <code>0</code> will pick\nminimum values, and <code>1</code> maximum values.\n</p></dd>",
+      "default": "0.5",
+      "description": "set percentile (from 0 to 1) (default 0.5)",
       "name": "percentile",
       "required": false,
       "typing": "float"
+    },
+    {
+      "alias": [
+        "eof_action"
+      ],
+      "choices": [
+        {
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "0"
+        },
+        {
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "1"
+        },
+        {
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "2"
+        }
+      ],
+      "default": "repeat",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+      "name": "eof_action",
+      "required": false,
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
+      "name": "shortest",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "repeatlast"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "extend last frame of secondary streams beyond EOF (default true)",
+      "name": "repeatlast",
+      "required": false,
+      "typing": "bool"
+    },
+    {
+      "alias": [
+        "ts_sync_mode"
+      ],
+      "choices": [
+        {
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
+          "name": "default",
+          "value": "0"
+        },
+        {
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
+          "name": "nearest",
+          "value": "1"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
+      "name": "ts_sync_mode",
+      "required": false,
+      "typing": "int"
     },
     {
       "alias": [],
@@ -50,69 +121,6 @@
       "default": null,
       "description": "timeline editing",
       "name": "enable",
-      "required": false,
-      "typing": "str"
-    },
-    {
-      "alias": [],
-      "choices": [
-        {
-          "help": "Repeat the last frame.",
-          "name": "repeat",
-          "value": "repeat"
-        },
-        {
-          "help": "End both streams.",
-          "name": "endall",
-          "value": "endall"
-        },
-        {
-          "help": "Pass the main input through.",
-          "name": "pass",
-          "value": "pass"
-        }
-      ],
-      "default": "repeat",
-      "description": "The action to take when EOF is encountered on the secondary input; it accepts one of the following values",
-      "name": "eof_action",
-      "required": false,
-      "typing": "str"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": 0,
-      "description": "Force the output to terminate when the shortest input terminates.",
-      "name": "shortest",
-      "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": 1,
-      "description": "force the filter to extend the last frame of secondary streams until the end of the primary stream.",
-      "name": "repeatlast",
-      "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [
-        {
-          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
-          "name": "default",
-          "value": "default"
-        },
-        {
-          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
-          "name": "nearest",
-          "value": "nearest"
-        }
-      ],
-      "default": "default",
-      "description": "How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
-      "name": "ts_sync_mode",
       "required": false,
       "typing": "str"
     }

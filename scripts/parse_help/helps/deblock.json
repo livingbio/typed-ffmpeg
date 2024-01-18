@@ -57,7 +57,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.098",
       "description": "set 1st detection threshold (from 0 to 1) (default 0.098)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -70,7 +70,7 @@
         "beta"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.05",
       "description": "set 2nd detection threshold (from 0 to 1) (default 0.05)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -83,7 +83,7 @@
         "gamma"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.05",
       "description": "set 3rd detection threshold (from 0 to 1) (default 0.05)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -96,7 +96,7 @@
         "delta"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.05",
       "description": "set 4th detection threshold (from 0 to 1) (default 0.05)",
       "flags": "..FV.....T.",
       "max": "1",

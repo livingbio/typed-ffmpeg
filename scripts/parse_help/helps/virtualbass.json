@@ -34,8 +34,8 @@
       "default": "3",
       "description": "set virtual bass strength (from 0.5 to 3) (default 3)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "3",
+      "min": "0.5",
       "name": "strength",
       "typing": "double"
     }

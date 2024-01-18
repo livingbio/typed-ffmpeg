@@ -23,33 +23,33 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "none",
-          "value": "MODE_NONE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "interleave",
-          "value": "MODE_INTERLEAVE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "i",
-          "value": "MODE_INTERLEAVE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "deinterleave",
-          "value": "MODE_DEINTERLEAVE"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "d",
-          "value": "MODE_DEINTERLEAVE"
+          "value": "2"
         }
       ],
-      "default": "MODE_NONE",
-      "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
+      "default": "none",
+      "description": "select luma mode (from 0 to 2) (default none)",
       "name": "luma_mode",
       "required": false,
       "typing": "int"
@@ -61,33 +61,33 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "none",
-          "value": "MODE_NONE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "interleave",
-          "value": "MODE_INTERLEAVE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "i",
-          "value": "MODE_INTERLEAVE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "deinterleave",
-          "value": "MODE_DEINTERLEAVE"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "d",
-          "value": "MODE_DEINTERLEAVE"
+          "value": "2"
         }
       ],
-      "default": "MODE_NONE",
-      "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
+      "default": "none",
+      "description": "select chroma mode (from 0 to 2) (default none)",
       "name": "chroma_mode",
       "required": false,
       "typing": "int"
@@ -99,33 +99,33 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "none",
-          "value": "MODE_NONE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "interleave",
-          "value": "MODE_INTERLEAVE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "i",
-          "value": "MODE_INTERLEAVE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "deinterleave",
-          "value": "MODE_DEINTERLEAVE"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "d",
-          "value": "MODE_DEINTERLEAVE"
+          "value": "2"
         }
       ],
-      "default": "MODE_NONE",
-      "description": "<dd><p>Available values for <var>luma_mode</var>, <var>chroma_mode</var> and\n<var>alpha_mode</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Do nothing.\n</p>\n</dd>\n<dt>\u2018<samp>deinterleave, d</samp>\u2019</dt>\n<dd><p>Deinterleave fields, placing one above the other.\n</p>\n</dd>\n<dt>\u2018<samp>interleave, i</samp>\u2019</dt>\n<dd><p>Interleave fields. Reverse the effect of deinterleaving.\n</p></dd>\n</dl>\n<p>Default value is <code>none</code>.\n</p>\n</dd>",
+      "default": "none",
+      "description": "select alpha mode (from 0 to 2) (default none)",
       "name": "alpha_mode",
       "required": false,
       "typing": "int"
@@ -136,8 +136,8 @@
         "ls"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
+      "default": "false",
+      "description": "swap luma fields (default false)",
       "name": "luma_swap",
       "required": false,
       "typing": "bool"
@@ -148,8 +148,8 @@
         "cs"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
+      "default": "false",
+      "description": "swap chroma fields (default false)",
       "name": "chroma_swap",
       "required": false,
       "typing": "bool"
@@ -160,8 +160,8 @@
         "as"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Swap luma/chroma/alpha fields. Exchange even &amp; odd lines. Default value is <code>0</code>.\n</p></dd>",
+      "default": "false",
+      "description": "swap alpha fields (default false)",
       "name": "alpha_swap",
       "required": false,
       "typing": "bool"

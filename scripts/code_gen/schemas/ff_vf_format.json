@@ -22,7 +22,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>A \u2019|\u2019-separated list of pixel format names, such as\n\"pix_fmts=yuv420p|monow|rgb24\".\n</p>\n</dd>",
+      "description": "A '|'-separated list of pixel formats",
       "name": "pix_fmts",
       "required": false,
       "typing": "str"

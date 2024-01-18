@@ -14,7 +14,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -28,7 +28,7 @@
         "d"
       ],
       "choices": [],
-      "default": null,
+      "default": "-0.000001",
       "description": "set video duration (default -0.000001)",
       "flags": "..FV.......",
       "max": null,

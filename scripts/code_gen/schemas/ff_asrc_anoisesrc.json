@@ -17,8 +17,8 @@
         "r"
       ],
       "choices": [],
-      "default": 48000,
-      "description": "<dd><p>Specify the sample rate. Default value is 48000 Hz.\n</p>\n</dd>",
+      "default": "48000",
+      "description": "set sample rate (from 15 to INT_MAX) (default 48000)",
       "name": "sample_rate",
       "required": false,
       "typing": "int"
@@ -29,8 +29,8 @@
         "a"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Specify the amplitude (0.0 - 1.0) of the generated audio stream. Default value\nis 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set amplitude (from 0 to 1) (default 1)",
       "name": "amplitude",
       "required": false,
       "typing": "float"
@@ -41,11 +41,11 @@
         "d"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specify the duration of the generated audio stream. Not specifying this option\nresults in noise with an infinite length.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set duration (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "str"
     },
     {
       "alias": [
@@ -55,38 +55,38 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "white",
-          "value": "NM_WHITE"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "pink",
-          "value": "NM_PINK"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "brown",
-          "value": "NM_BROWN"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "blue",
-          "value": "NM_BLUE"
+          "value": "3"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "violet",
-          "value": "NM_VIOLET"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "velvet",
-          "value": "NM_VELVET"
+          "value": "5"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Specify the color of noise. Available noise colors are white, pink, brown,\nblue, violet and velvet. Default color is white.\n</p>\n</dd>",
+      "default": "white",
+      "description": "set noise color (from 0 to 5) (default white)",
       "name": "color",
       "required": false,
       "typing": "int"
@@ -97,8 +97,8 @@
         "s"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Specify a value used to seed the PRNG.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
       "typing": "int"
@@ -109,22 +109,11 @@
         "n"
       ],
       "choices": [],
-      "default": 1024,
-      "description": "<dd><p>Set the number of samples per each output frame, default is 1024.\n</p>\n</dd>",
+      "default": "1024",
+      "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
       "typing": "int"
-    },
-    {
-      "alias": [
-        "density"
-      ],
-      "choices": [],
-      "default": 0.05,
-      "description": "<dd><p>Set the density (0.0 - 1.0) for the velvet noise generator, default is 0.05.\n</p></dd>",
-      "name": "density",
-      "required": false,
-      "typing": "float"
     }
   ],
   "output_stream_typings": [

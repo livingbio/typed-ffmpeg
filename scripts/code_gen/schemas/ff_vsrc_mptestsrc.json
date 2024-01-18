@@ -17,8 +17,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Specify the frame rate of the sourced video, as the number of frames\ngenerated per second. It has to be a string in the format\n<var>frame_rate_num</var>/<var>frame_rate_den</var>, an integer number, a floating point\nnumber or a valid video frame rate abbreviation. The default value is\n\"25\".\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"
@@ -29,11 +29,11 @@
         "d"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p>\n</dd>",
+      "default": "-0.000001",
+      "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "str"
     },
     {
       "alias": [
@@ -44,61 +44,61 @@
         {
           "help": "",
           "name": "dc_luma",
-          "value": "TEST_DC_LUMA"
+          "value": "0"
         },
         {
           "help": "",
           "name": "dc_chroma",
-          "value": "TEST_DC_CHROMA"
+          "value": "1"
         },
         {
           "help": "",
           "name": "freq_luma",
-          "value": "TEST_FREQ_LUMA"
+          "value": "2"
         },
         {
           "help": "",
           "name": "freq_chroma",
-          "value": "TEST_FREQ_CHROMA"
+          "value": "3"
         },
         {
           "help": "",
           "name": "amp_luma",
-          "value": "TEST_AMP_LUMA"
+          "value": "4"
         },
         {
           "help": "",
           "name": "amp_chroma",
-          "value": "TEST_AMP_CHROMA"
+          "value": "5"
         },
         {
           "help": "",
           "name": "cbp",
-          "value": "TEST_CBP"
+          "value": "6"
         },
         {
           "help": "",
           "name": "mv",
-          "value": "TEST_MV"
+          "value": "7"
         },
         {
           "help": "",
           "name": "ring1",
-          "value": "TEST_RING1"
+          "value": "8"
         },
         {
           "help": "",
           "name": "ring2",
-          "value": "TEST_RING2"
+          "value": "9"
         },
         {
           "help": "",
           "name": "all",
-          "value": "TEST_ALL"
+          "value": "10"
         }
       ],
-      "default": "TEST_ALL",
-      "description": "<dd>\n<p>Set the number or the name of the test to perform. Supported tests are:\n</p><dl compact=\"compact\">\n<dt><samp>dc_luma</samp></dt>\n<dt><samp>dc_chroma</samp></dt>\n<dt><samp>freq_luma</samp></dt>\n<dt><samp>freq_chroma</samp></dt>\n<dt><samp>amp_luma</samp></dt>\n<dt><samp>amp_chroma</samp></dt>\n<dt><samp>cbp</samp></dt>\n<dt><samp>mv</samp></dt>\n<dt><samp>ring1</samp></dt>\n<dt><samp>ring2</samp></dt>\n<dt><samp>all</samp></dt>\n<dt><samp>max_frames, m</samp></dt>\n<dd><p>Set the maximum number of frames generated for each test, default value is 30.\n</p>\n</dd>\n</dl>\n<p>Default value is \"all\", which will cycle through the list of all tests.\n</p></dd>",
+      "default": "all",
+      "description": "set test to perform (from 0 to INT_MAX) (default all)",
       "name": "test",
       "required": false,
       "typing": "int"
@@ -109,8 +109,8 @@
         "m"
       ],
       "choices": [],
-      "default": 30,
-      "description": "Set the maximum number of frames generated for each test",
+      "default": "30",
+      "description": "Set the maximum number of frames generated for each test (from 1 to I64_MAX) (default 30)",
       "name": "max_frames",
       "required": false,
       "typing": "int"

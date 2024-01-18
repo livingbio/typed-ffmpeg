@@ -21,8 +21,8 @@
         "shift"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the DC shift, allowed range is [-1, 1]. It indicates the amount to shift\nthe audio.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set DC shift (from -1 to 1) (default 0)",
       "name": "shift",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "limitergain"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Optional. It should have a value much less than 1 (e.g. 0.05 or 0.02) and is\nused to prevent clipping.\n</p></dd>",
+      "default": "0",
+      "description": "set limiter gain (from 0 to 1) (default 0)",
       "name": "limitergain",
       "required": false,
       "typing": "float"

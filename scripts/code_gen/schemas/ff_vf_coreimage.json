@@ -21,8 +21,8 @@
         "list_filters"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>List all available filters and generators along with all their respective\noptions as well as possible minimum and maximum values along with the default\nvalues.\n</p><div class=\"example\">\n<pre class=\"example\">list_filters=true\n</pre></div>\n</dd>",
+      "default": "false",
+      "description": "list available filters (default false)",
       "name": "list_filters",
       "required": false,
       "typing": "bool"
@@ -32,8 +32,8 @@
         "list_generators"
       ],
       "choices": [],
-      "default": 0,
-      "description": "list available generators",
+      "default": "false",
+      "description": "list available generators (default false)",
       "name": "list_generators",
       "required": false,
       "typing": "bool"
@@ -43,8 +43,8 @@
         "filter"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify all filters by their respective name and options.\nUse <var>list_filters</var> to determine all valid filter names and options.\nNumerical options are specified by a float value and are automatically clamped\nto their respective value range.  Vector and color options have to be specified\nby a list of space separated float values. Character escaping has to be done.\nA special option name <code>default</code> is available to use default options for a\nfilter.\n</p>\n<p>It is required to specify either <code>default</code> or at least one of the filter options.\nAll omitted options are used with their default values.\nThe syntax of the filter string is as follows:\n</p><div class=\"example\">\n<pre class=\"example\">filter=&lt;NAME&gt;@&lt;OPTION&gt;=&lt;VALUE&gt;[@&lt;OPTION&gt;=&lt;VALUE&gt;][@...][#&lt;NAME&gt;@&lt;OPTION&gt;=&lt;VALUE&gt;[@&lt;OPTION&gt;=&lt;VALUE&gt;][@...]][#...]\n</pre></div>\n</dd>",
+      "default": null,
+      "description": "names and options of filters to apply",
       "name": "filter",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "output_rect"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify a rectangle where the output of the filter chain is copied into the\ninput image. It is given by a list of space separated float values:\n</p><div class=\"example\">\n<pre class=\"example\">output_rect=x\\ y\\ width\\ height\n</pre></div>\n<p>If not given, the output rectangle equals the dimensions of the input image.\nThe output rectangle is automatically cropped at the borders of the input\nimage. Negative values are valid for each component.\n</p><div class=\"example\">\n<pre class=\"example\">output_rect=25\\ 25\\ 100\\ 100\n</pre></div>\n</dd>",
+      "default": null,
+      "description": "output rectangle within output image",
       "name": "output_rect",
       "required": false,
       "typing": "str"

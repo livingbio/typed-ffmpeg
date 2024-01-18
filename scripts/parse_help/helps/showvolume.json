@@ -19,7 +19,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -71,7 +71,7 @@
         "f"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.95",
       "description": "set fade (from 0 to 1) (default 0.95)",
       "flags": "..FV.......",
       "max": "1",
@@ -84,7 +84,7 @@
         "c"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"PEAK*255+floor((1-PEAK",
       "description": "set volume color expression (default \"PEAK*255+floor((1-PEAK)*255)*256+0xff000000\")",
       "flags": "..FV.......",
       "max": null,
@@ -136,7 +136,7 @@
         "dmc"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"orange\"",
       "description": "set color of the max value line (default \"orange\")",
       "flags": "..FV.......",
       "max": null,

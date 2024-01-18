@@ -16,8 +16,8 @@
       "default": "1",
       "description": "set denoising strength (from 0 to 99999.9) (default 1)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "99999.9",
+      "min": "0",
       "name": "sigma",
       "typing": "float"
     },
@@ -104,7 +104,7 @@
         "hdthr"
       ],
       "choices": [],
-      "default": null,
+      "default": "2.7",
       "description": "set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)",
       "flags": "..FV.......",
       "max": "INT_MAX",

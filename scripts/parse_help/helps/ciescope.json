@@ -261,7 +261,7 @@
         "i"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.001",
       "description": "set ciescope intensity (from 0 to 1) (default 0.001)",
       "flags": "..FV.......",
       "max": "1",
@@ -274,7 +274,7 @@
         "contrast"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.75",
       "description": "(from 0 to 1) (default 0.75)",
       "flags": "..FV.......",
       "max": "1",
@@ -313,11 +313,11 @@
         "gamma"
       ],
       "choices": [],
-      "default": null,
+      "default": "2.6",
       "description": "(from 0.1 to 6) (default 2.6)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "6",
+      "min": "0.1",
       "name": "gamma",
       "typing": "double"
     },

@@ -23,43 +23,43 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "gray",
-          "value": "TINT"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "tint",
-          "value": "TINT"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "color",
-          "value": "COLOR"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "color2",
-          "value": "COLOR2"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "color3",
-          "value": "COLOR3"
+          "value": "3"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "color4",
-          "value": "COLOR4"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "color5",
-          "value": "COLOR5"
+          "value": "5"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set vectorscope mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>gray</samp>\u2019</dt>\n<dt>\u2018<samp>tint</samp>\u2019</dt>\n<dd><p>Gray values are displayed on graph, higher brightness means more pixels have\nsame component color value on location in graph. This is the default mode.\n</p>\n</dd>\n<dt>\u2018<samp>color</samp>\u2019</dt>\n<dd><p>Gray values are displayed on graph. Surrounding pixels values which are not\npresent in video frame are drawn in gradient of 2 color components which are\nset by option <code>x</code> and <code>y</code>. The 3rd color component is static.\n</p>\n</dd>\n<dt>\u2018<samp>color2</samp>\u2019</dt>\n<dd><p>Actual color components values present in video frame are displayed on graph.\n</p>\n</dd>\n<dt>\u2018<samp>color3</samp>\u2019</dt>\n<dd><p>Similar as color2 but higher frequency of same values <code>x</code> and <code>y</code>\non graph increases value of another color component, which is luminance by\ndefault values of <code>x</code> and <code>y</code>.\n</p>\n</dd>\n<dt>\u2018<samp>color4</samp>\u2019</dt>\n<dd><p>Actual colors present in video frame are displayed on graph. If two different\ncolors map to same position on graph then color with higher value of component\nnot present in graph is picked.\n</p>\n</dd>\n<dt>\u2018<samp>color5</samp>\u2019</dt>\n<dd><p>Gray values are displayed on graph. Similar to <code>color</code> but with 3rd color\ncomponent picked from radial gradient.\n</p></dd>\n</dl>\n</dd>",
+      "default": "gray",
+      "description": "set vectorscope mode (from 0 to 5) (default gray)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -69,8 +69,8 @@
         "x"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set which color component will be represented on X-axis. Default is <code>1</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set color component on X axis (from 0 to 2) (default 1)",
       "name": "x",
       "required": false,
       "typing": "int"
@@ -80,8 +80,8 @@
         "y"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set which color component will be represented on Y-axis. Default is <code>2</code>.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set color component on Y axis (from 0 to 2) (default 2)",
       "name": "y",
       "required": false,
       "typing": "int"
@@ -92,8 +92,8 @@
         "i"
       ],
       "choices": [],
-      "default": 0.004,
-      "description": "<dd><p>Set intensity, used by modes: gray, color, color3 and color5 for increasing brightness\nof color component which represents frequency of (X, Y) location in graph.\n</p>\n</dd>",
+      "default": "0.004",
+      "description": "set intensity (from 0 to 1) (default 0.004)",
       "name": "intensity",
       "required": false,
       "typing": "float"
@@ -105,28 +105,28 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "none",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "instant",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "peak",
-          "value": 2
+          "value": "2"
         },
         {
-          "help": "0",
-          "name": "peak+instant",
-          "value": 3
+          "help": "",
+          "name": "instant",
+          "value": "3"
         }
       ],
-      "default": 0,
-      "description": "<dd><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No envelope, this is default.\n</p>\n</dd>\n<dt>\u2018<samp>instant</samp>\u2019</dt>\n<dd><p>Instant envelope, even darkest single pixel will be clearly highlighted.\n</p>\n</dd>\n<dt>\u2018<samp>peak</samp>\u2019</dt>\n<dd><p>Hold maximum and minimum values presented in graph over time. This way you\ncan still spot out of range values without constantly looking at vectorscope.\n</p>\n</dd>\n<dt>\u2018<samp>peak+instant</samp>\u2019</dt>\n<dd><p>Peak and instant envelope combined together.\n</p></dd>\n</dl>\n</dd>",
+      "default": "none",
+      "description": "set envelope (from 0 to 3) (default none)",
       "name": "envelope",
       "required": false,
       "typing": "int"
@@ -138,28 +138,28 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "none",
-          "value": "GRAT_NONE"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "green",
-          "value": "GRAT_GREEN"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "color",
-          "value": "GRAT_COLOR"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "invert",
-          "value": "GRAT_INVERT"
+          "value": "3"
         }
       ],
-      "default": "GRAT_NONE",
-      "description": "<dd><p>Set what kind of graticule to draw.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dt>\u2018<samp>color</samp>\u2019</dt>\n<dt>\u2018<samp>invert</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "none",
+      "description": "set graticule (from 0 to 3) (default none)",
       "name": "graticule",
       "required": false,
       "typing": "int"
@@ -170,8 +170,8 @@
         "o"
       ],
       "choices": [],
-      "default": 0.75,
-      "description": "<dd><p>Set graticule opacity.\n</p>\n</dd>",
+      "default": "0.75",
+      "description": "set graticule opacity (from 0 to 1) (default 0.75)",
       "name": "opacity",
       "required": false,
       "typing": "float"
@@ -185,21 +185,21 @@
         {
           "help": "draw white point",
           "name": "white",
-          "value": 1
+          "value": "white"
         },
         {
           "help": "draw black point",
           "name": "black",
-          "value": 2
+          "value": "black"
         },
         {
           "help": "draw point name",
           "name": "name",
-          "value": 4
+          "value": "name"
         }
       ],
-      "default": 4,
-      "description": "<dd><p>Set graticule flags.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>white</samp>\u2019</dt>\n<dd><p>Draw graticule for white point.\n</p>\n</dd>\n<dt>\u2018<samp>black</samp>\u2019</dt>\n<dd><p>Draw graticule for black point.\n</p>\n</dd>\n<dt>\u2018<samp>name</samp>\u2019</dt>\n<dd><p>Draw color points short names.\n</p></dd>\n</dl>\n</dd>",
+      "default": "name",
+      "description": "set graticule flags (default name)",
       "name": "flags",
       "required": false,
       "typing": "str"
@@ -210,8 +210,8 @@
         "b"
       ],
       "choices": [],
-      "default": 0.3,
-      "description": "<dd><p>Set background opacity.\n</p>\n</dd>",
+      "default": "0.3",
+      "description": "set background opacity (from 0 to 1) (default 0.3)",
       "name": "bgopacity",
       "required": false,
       "typing": "float"
@@ -222,8 +222,8 @@
         "l"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set low threshold for color component not represented on X or Y axis.\nValues lower than this value will be ignored. Default is 0.\nNote this value is multiplied with actual max possible value one pixel component\ncan have. So for 8-bit input and low threshold value of 0.1 actual threshold\nis 0.1 * 255 = 25.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set low threshold (from 0 to 1) (default 0)",
       "name": "lthreshold",
       "required": false,
       "typing": "float"
@@ -234,8 +234,8 @@
         "h"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set high threshold for color component not represented on X or Y axis.\nValues higher than this value will be ignored. Default is 1.\nNote this value is multiplied with actual max possible value one pixel component\ncan have. So for 8-bit input and high threshold value of 0.9 actual threshold\nis 0.9 * 255 = 230.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set high threshold (from 0 to 1) (default 1)",
       "name": "hthreshold",
       "required": false,
       "typing": "float"
@@ -247,23 +247,23 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "auto",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "601",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "709",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set what kind of colorspace to use when drawing graticule.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dt>\u2018<samp>601</samp>\u2019</dt>\n<dt>\u2018<samp>709</samp>\u2019</dt>\n</dl>\n<p>Default is auto.\n</p>\n</dd>",
+      "default": "auto",
+      "description": "set colorspace (from 0 to 2) (default auto)",
       "name": "colorspace",
       "required": false,
       "typing": "int"
@@ -274,8 +274,8 @@
         "t0"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set color tint for gray/tint vectorscope mode. By default both options are zero.\nThis means no tint, and output will remain gray.\n</p></dd>",
+      "default": "0",
+      "description": "set 1st tint (from -1 to 1) (default 0)",
       "name": "tint0",
       "required": false,
       "typing": "float"
@@ -286,8 +286,8 @@
         "t1"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set color tint for gray/tint vectorscope mode. By default both options are zero.\nThis means no tint, and output will remain gray.\n</p></dd>",
+      "default": "0",
+      "description": "set 2nd tint (from -1 to 1) (default 0)",
       "name": "tint1",
       "required": false,
       "typing": "float"

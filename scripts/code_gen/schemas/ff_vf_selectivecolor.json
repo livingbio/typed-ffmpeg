@@ -22,18 +22,18 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "absolute",
-          "value": "CORRECTION_METHOD_ABSOLUTE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "relative",
-          "value": "CORRECTION_METHOD_RELATIVE"
+          "value": "1"
         }
       ],
-      "default": "CORRECTION_METHOD_ABSOLUTE",
-      "description": "<dd><p>Select color correction method.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>absolute</samp>\u2019</dt>\n<dd><p>Specified adjustments are applied \"as-is\" (added/subtracted to original pixel\ncomponent value).\n</p></dd>\n<dt>\u2018<samp>relative</samp>\u2019</dt>\n<dd><p>Specified adjustments are relative to the original component value.\n</p></dd>\n</dl>\n<p>Default is <code>absolute</code>.\n</p></dd>",
+      "default": "absolute",
+      "description": "select correction method (from 0 to 1) (default absolute)",
       "name": "correction_method",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "reds"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for red pixels (pixels where the red component is the maximum)\n</p></dd>",
+      "default": null,
+      "description": "adjust red regions",
       "name": "reds",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "yellows"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for yellow pixels (pixels where the blue component is the minimum)\n</p></dd>",
+      "default": null,
+      "description": "adjust yellow regions",
       "name": "yellows",
       "required": false,
       "typing": "str"
@@ -65,8 +65,8 @@
         "greens"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for green pixels (pixels where the green component is the maximum)\n</p></dd>",
+      "default": null,
+      "description": "adjust green regions",
       "name": "greens",
       "required": false,
       "typing": "str"
@@ -76,8 +76,8 @@
         "cyans"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for cyan pixels (pixels where the red component is the minimum)\n</p></dd>",
+      "default": null,
+      "description": "adjust cyan regions",
       "name": "cyans",
       "required": false,
       "typing": "str"
@@ -87,8 +87,8 @@
         "blues"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for blue pixels (pixels where the blue component is the maximum)\n</p></dd>",
+      "default": null,
+      "description": "adjust blue regions",
       "name": "blues",
       "required": false,
       "typing": "str"
@@ -98,8 +98,8 @@
         "magentas"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for magenta pixels (pixels where the green component is the minimum)\n</p></dd>",
+      "default": null,
+      "description": "adjust magenta regions",
       "name": "magentas",
       "required": false,
       "typing": "str"
@@ -109,8 +109,8 @@
         "whites"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for white pixels (pixels where all components are greater than 128)\n</p></dd>",
+      "default": null,
+      "description": "adjust white regions",
       "name": "whites",
       "required": false,
       "typing": "str"
@@ -120,8 +120,8 @@
         "neutrals"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for all pixels except pure black and pure white\n</p></dd>",
+      "default": null,
+      "description": "adjust neutral regions",
       "name": "neutrals",
       "required": false,
       "typing": "str"
@@ -131,8 +131,8 @@
         "blacks"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for black pixels (pixels where all components are lesser than 128)\n</p></dd>",
+      "default": null,
+      "description": "adjust black regions",
       "name": "blacks",
       "required": false,
       "typing": "str"
@@ -142,8 +142,8 @@
         "psfile"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify a Photoshop selective color file (<code>.asv</code>) to import the settings from.\n</p></dd>",
+      "default": null,
+      "description": "set Photoshop selectivecolor file name",
       "name": "psfile",
       "required": false,
       "typing": "str"

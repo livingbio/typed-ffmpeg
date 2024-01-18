@@ -21,8 +21,8 @@
         "dry"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set dry gain, how much of original signal is kept. Allowed range is from 0 to 1.\nDefault value is 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set dry gain (from 0 to 1) (default 1)",
       "name": "dry",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "wet"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set wet gain, how much of filtered signal is kept. Allowed range is from 0 to 1.\nDefault value is 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set wet gain (from 0 to 1) (default 1)",
       "name": "wet",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "boost"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "<dd><p>Set max boost factor. Allowed range is from 1 to 12. Default value is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set max boost (from 1 to 12) (default 2)",
       "name": "boost",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "decay"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set delay line decay gain value. Allowed range is from 0 to 1.\nDefault value is 0.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set decay (from 0 to 1) (default 0)",
       "name": "decay",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "feedback"
       ],
       "choices": [],
-      "default": 0.9,
-      "description": "<dd><p>Set delay line feedback gain value. Allowed range is from 0 to 1.\nDefault value is 0.9.\n</p>\n</dd>",
+      "default": "0.9",
+      "description": "set feedback (from 0 to 1) (default 0.9)",
       "name": "feedback",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "cutoff"
       ],
       "choices": [],
-      "default": 100.0,
-      "description": "<dd><p>Set cutoff frequency in Hertz. Allowed range is 50 to 900.\nDefault value is 100.\n</p>\n</dd>",
+      "default": "100",
+      "description": "set cutoff (from 50 to 900) (default 100)",
       "name": "cutoff",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "slope"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set slope amount for cutoff frequency. Allowed range is 0.0001 to 1.\nDefault value is 0.5.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set slope (from 0.0001 to 1) (default 0.5)",
       "name": "slope",
       "required": false,
       "typing": "float"
@@ -98,8 +98,8 @@
         "delay"
       ],
       "choices": [],
-      "default": 20.0,
-      "description": "<dd><p>Set delay. Allowed range is from 1 to 100.\nDefault value is 20.\n</p>\n</dd>",
+      "default": "20",
+      "description": "set delay (from 1 to 100) (default 20)",
       "name": "delay",
       "required": false,
       "typing": "float"
@@ -109,8 +109,8 @@
         "channels"
       ],
       "choices": [],
-      "default": "all",
-      "description": "<dd><p>Set the channels to process. Default value is all available.\n</p></dd>",
+      "default": "\"all\"",
+      "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
       "typing": "str"

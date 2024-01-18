@@ -22,8 +22,8 @@
         "f"
       ],
       "choices": [],
-      "default": 3000.0,
-      "description": "<dd><p>Set frequency in Hz.\n</p>\n</dd>",
+      "default": "3000",
+      "description": "set central frequency (from 0 to 999999) (default 3000)",
       "name": "frequency",
       "required": false,
       "typing": "float"
@@ -37,31 +37,31 @@
         {
           "help": "Hz",
           "name": "h",
-          "value": "HERTZ"
+          "value": "1"
         },
         {
           "help": "Q-Factor",
           "name": "q",
-          "value": "QFACTOR"
+          "value": "3"
         },
         {
           "help": "octave",
           "name": "o",
-          "value": "OCTAVE"
+          "value": "2"
         },
         {
           "help": "slope",
           "name": "s",
-          "value": "SLOPE"
+          "value": "4"
         },
         {
           "help": "kHz",
           "name": "k",
-          "value": "KHERTZ"
+          "value": "5"
         }
       ],
-      "default": "QFACTOR",
-      "description": "<dd><p>Set method to specify band-width of filter.\n</p><dl compact=\"compact\">\n<dt><samp>h</samp></dt>\n<dd><p>Hz\n</p></dd>\n<dt><samp>q</samp></dt>\n<dd><p>Q-Factor\n</p></dd>\n<dt><samp>o</samp></dt>\n<dd><p>octave\n</p></dd>\n<dt><samp>s</samp></dt>\n<dd><p>slope\n</p></dd>\n<dt><samp>k</samp></dt>\n<dd><p>kHz\n</p></dd>\n</dl>\n</dd>",
+      "default": "q",
+      "description": "set filter-width type (from 1 to 5) (default q)",
       "name": "width_type",
       "required": false,
       "typing": "int"
@@ -72,8 +72,8 @@
         "w"
       ],
       "choices": [],
-      "default": 0.707,
-      "description": "<dd><p>Specify the band-width of a filter in width_type units.\n</p>\n</dd>",
+      "default": "0.707",
+      "description": "set width (from 0 to 99999) (default 0.707)",
       "name": "width",
       "required": false,
       "typing": "float"
@@ -84,8 +84,8 @@
         "m"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>How much to use filtered signal in output. Default is 1.\nRange is between 0 and 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
       "typing": "float"
@@ -96,8 +96,8 @@
         "c"
       ],
       "choices": [],
-      "default": "all",
-      "description": "<dd><p>Specify which channels to filter, by default all available are filtered.\n</p>\n</dd>",
+      "default": "\"all\"",
+      "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
       "typing": "str"
@@ -108,8 +108,8 @@
         "n"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Normalize biquad coefficients, by default is disabled.\nEnabling it will normalize magnitude response at DC to 0dB.\n</p>\n</dd>",
+      "default": "false",
+      "description": "normalize coefficients (default false)",
       "name": "normalize",
       "required": false,
       "typing": "bool"
@@ -120,8 +120,8 @@
         "o"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set the filter order, can be 1 or 2. Default is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set filter order (from 1 to 2) (default 2)",
       "name": "order",
       "required": false,
       "typing": "int"
@@ -135,41 +135,41 @@
         {
           "help": "direct form I",
           "name": "di",
-          "value": "DI"
+          "value": "0"
         },
         {
           "help": "direct form II",
           "name": "dii",
-          "value": "DII"
+          "value": "1"
         },
         {
           "help": "transposed direct form I",
           "name": "tdi",
-          "value": "TDI"
+          "value": "2"
         },
         {
           "help": "transposed direct form II",
           "name": "tdii",
-          "value": "TDII"
+          "value": "3"
         },
         {
           "help": "lattice-ladder form",
           "name": "latt",
-          "value": "LATT"
+          "value": "4"
         },
         {
           "help": "state variable filter form",
           "name": "svf",
-          "value": "SVF"
+          "value": "5"
         },
         {
           "help": "zero-delay filter form",
           "name": "zdf",
-          "value": "ZDF"
+          "value": "6"
         }
       ],
-      "default": "DI",
-      "description": "<dd><p>Set transform type of IIR filter.\n</p><dl compact=\"compact\">\n<dt><samp>di</samp></dt>\n<dt><samp>dii</samp></dt>\n<dt><samp>tdi</samp></dt>\n<dt><samp>tdii</samp></dt>\n<dt><samp>latt</samp></dt>\n<dt><samp>svf</samp></dt>\n<dt><samp>zdf</samp></dt>\n</dl>\n</dd>",
+      "default": "di",
+      "description": "set transform type (from 0 to 6) (default di)",
       "name": "transform",
       "required": false,
       "typing": "int"
@@ -183,31 +183,31 @@
         {
           "help": "automatic",
           "name": "auto",
-          "value": -1
+          "value": "-1"
         },
         {
           "help": "signed 16-bit",
           "name": "s16",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "signed 32-bit",
           "name": "s32",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "floating-point single",
           "name": "f32",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "floating-point double",
           "name": "f64",
-          "value": 3
+          "value": "3"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Set precision of filtering.\n</p><dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Pick automatic sample format depending on surround filters.\n</p></dd>\n<dt><samp>s16</samp></dt>\n<dd><p>Always use signed 16-bit.\n</p></dd>\n<dt><samp>s32</samp></dt>\n<dd><p>Always use signed 32-bit.\n</p></dd>\n<dt><samp>f32</samp></dt>\n<dd><p>Always use float 32-bit.\n</p></dd>\n<dt><samp>f64</samp></dt>\n<dd><p>Always use float 64-bit.\n</p></dd>\n</dl>\n</dd>",
+      "default": "auto",
+      "description": "set filtering precision (from -1 to 3) (default auto)",
       "name": "precision",
       "required": false,
       "typing": "int"

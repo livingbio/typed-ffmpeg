@@ -21,8 +21,8 @@
         "x"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>The expressions which specify the top left corner coordinates of the box. It defaults to 0.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set horizontal position of the left box edge (default \"0\")",
       "name": "x",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "y"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>The expressions which specify the top left corner coordinates of the box. It defaults to 0.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set vertical position of the top box edge (default \"0\")",
       "name": "y",
       "required": false,
       "typing": "str"
@@ -44,8 +44,8 @@
         "w"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>The expressions which specify the width and height of the box; if 0 they are interpreted as\nthe input width and height. It defaults to 0.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set width of the box (default \"0\")",
       "name": "width",
       "required": false,
       "typing": "str"
@@ -56,8 +56,8 @@
         "h"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>The expressions which specify the width and height of the box; if 0 they are interpreted as\nthe input width and height. It defaults to 0.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set height of the box (default \"0\")",
       "name": "height",
       "required": false,
       "typing": "str"
@@ -68,8 +68,8 @@
         "c"
       ],
       "choices": [],
-      "default": "black",
-      "description": "<dd><p>Specify the color of the box to write. For the general syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>. If the special\nvalue <code>invert</code> is used, the box edge color is the same as the\nvideo with inverted luma.\n</p>\n</dd>",
+      "default": "\"black\"",
+      "description": "set color of the box (default \"black\")",
       "name": "color",
       "required": false,
       "typing": "str"
@@ -80,8 +80,8 @@
         "t"
       ],
       "choices": [],
-      "default": "3",
-      "description": "<dd><p>The expression which sets the thickness of the box edge.\nA value of <code>fill</code> will create a filled box. Default value is <code>3</code>.\n</p>\n<p>See below for the list of accepted constants.\n</p>\n</dd>",
+      "default": "\"3\"",
+      "description": "set the box thickness (default \"3\")",
       "name": "thickness",
       "required": false,
       "typing": "str"
@@ -91,8 +91,8 @@
         "replace"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Applicable if the input has alpha. With value <code>1</code>, the pixels of the painted box\nwill overwrite the video\u2019s color and alpha pixels.\nDefault is <code>0</code>, which composites the box onto the input, leaving the video\u2019s alpha intact.\n</p></dd>",
+      "default": "false",
+      "description": "replace color & alpha (default false)",
       "name": "replace",
       "required": false,
       "typing": "bool"
@@ -102,7 +102,7 @@
         "box_source"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "use datas from bounding box in side data",
       "name": "box_source",
       "required": false,

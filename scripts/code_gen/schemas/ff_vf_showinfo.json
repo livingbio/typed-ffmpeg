@@ -21,8 +21,8 @@
         "checksum"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Calculate checksums of each plane. By default enabled.\n</p></dd>",
+      "default": "true",
+      "description": "calculate checksums (default true)",
       "name": "checksum",
       "required": false,
       "typing": "bool"

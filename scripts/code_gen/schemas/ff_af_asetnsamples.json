@@ -22,8 +22,8 @@
         "n"
       ],
       "choices": [],
-      "default": 1024,
-      "description": "<dd><p>Set the number of frames per each output audio frame. The number is\nintended as the number of samples <em>per each channel</em>.\nDefault value is 1024.\n</p>\n</dd>",
+      "default": "1024",
+      "description": "set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)",
       "name": "nb_out_samples",
       "required": false,
       "typing": "int"
@@ -34,20 +34,11 @@
         "p"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>If set to 1, the filter will pad the last audio frame with zeroes, so\nthat the last frame will contain the same number of samples as the\nprevious ones. Default value is 1.\n</p></dd>",
+      "default": "true",
+      "description": "pad last frame with zeros (default true)",
       "name": "pad",
       "required": false,
       "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": null,
-      "description": "timeline editing",
-      "name": "enable",
-      "required": false,
-      "typing": "str"
     }
   ],
   "output_stream_typings": [

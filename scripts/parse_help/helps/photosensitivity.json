@@ -36,8 +36,8 @@
       "default": "1",
       "description": "set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "FLT_MAX",
+      "min": "0.1",
       "name": "threshold",
       "typing": "float"
     },

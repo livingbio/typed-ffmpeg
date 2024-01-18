@@ -19,7 +19,7 @@
         "lr"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"2\"",
       "description": "Radius of the luma blurring box (default \"2\")",
       "flags": "..FV.......",
       "max": null,

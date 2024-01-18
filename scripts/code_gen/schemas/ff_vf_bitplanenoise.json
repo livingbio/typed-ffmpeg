@@ -21,8 +21,8 @@
         "bitplane"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set which plane to analyze. Default is <code>1</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set bit plane to use for measuring noise (from 1 to 16) (default 1)",
       "name": "bitplane",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "filter"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Filter out noisy pixels from <code>bitplane</code> set above.\nDefault is disabled.\n</p></dd>",
+      "default": "false",
+      "description": "show noisy pixels (default false)",
       "name": "filter",
       "required": false,
       "typing": "bool"

@@ -21,8 +21,8 @@
         "angle"
       ],
       "choices": [],
-      "default": 45.0,
-      "description": "<dd><p>Set angle of directional blur. Default is <code>45</code>.\n</p>\n</dd>",
+      "default": "45",
+      "description": "set angle (from 0 to 360) (default 45)",
       "name": "angle",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "radius"
       ],
       "choices": [],
-      "default": 5.0,
-      "description": "<dd><p>Set radius of directional blur. Default is <code>5</code>.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set radius (from 0 to 8192) (default 5)",
       "name": "radius",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes to filter. By default all planes are filtered.\n</p></dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"

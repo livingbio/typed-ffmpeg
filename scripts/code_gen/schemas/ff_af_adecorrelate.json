@@ -21,8 +21,8 @@
         "stages"
       ],
       "choices": [],
-      "default": 6,
-      "description": "<dd><p>Set decorrelation stages of filtering. Allowed\nrange is from 1 to 16. Default value is 6.\n</p>\n</dd>",
+      "default": "6",
+      "description": "set filtering stages (from 1 to 16) (default 6)",
       "name": "stages",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "seed"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set random seed used for setting delay in samples across channels.\n</p></dd>",
+      "default": "-1",
+      "description": "set random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
       "typing": "int"

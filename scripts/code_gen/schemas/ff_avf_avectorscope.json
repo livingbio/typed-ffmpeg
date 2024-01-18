@@ -25,21 +25,21 @@
         {
           "help": "",
           "name": "lissajous",
-          "value": "LISSAJOUS"
+          "value": "0"
         },
         {
           "help": "",
           "name": "lissajous_xy",
-          "value": "LISSAJOUS_XY"
+          "value": "1"
         },
         {
           "help": "",
           "name": "polar",
-          "value": "POLAR"
+          "value": "2"
         }
       ],
-      "default": "LISSAJOUS",
-      "description": "<dd><p>Set the vectorscope mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lissajous</samp>\u2019</dt>\n<dd><p>Lissajous rotated by 45 degrees.\n</p>\n</dd>\n<dt>\u2018<samp>lissajous_xy</samp>\u2019</dt>\n<dd><p>Same as above but not rotated.\n</p>\n</dd>\n<dt>\u2018<samp>polar</samp>\u2019</dt>\n<dd><p>Shape resembling half of circle.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>lissajous</samp>\u2019.\n</p>\n</dd>",
+      "default": "lissajous",
+      "description": "set mode (from 0 to 2) (default lissajous)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -50,8 +50,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"
@@ -62,8 +62,8 @@
         "s"
       ],
       "choices": [],
-      "default": "400x400",
-      "description": "<dd><p>Set the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>400x400</code>.\n</p>\n</dd>",
+      "default": "\"400x400\"",
+      "description": "set video size (default \"400x400\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -73,8 +73,8 @@
         "rc"
       ],
       "choices": [],
-      "default": 40,
-      "description": "<dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,\n<code>160</code>, <code>80</code> and <code>255</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "40",
+      "description": "set red contrast (from 0 to 255) (default 40)",
       "name": "rc",
       "required": false,
       "typing": "int"
@@ -84,8 +84,8 @@
         "gc"
       ],
       "choices": [],
-      "default": 160,
-      "description": "<dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,\n<code>160</code>, <code>80</code> and <code>255</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "160",
+      "description": "set green contrast (from 0 to 255) (default 160)",
       "name": "gc",
       "required": false,
       "typing": "int"
@@ -95,8 +95,8 @@
         "bc"
       ],
       "choices": [],
-      "default": 80,
-      "description": "<dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,\n<code>160</code>, <code>80</code> and <code>255</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "80",
+      "description": "set blue contrast (from 0 to 255) (default 80)",
       "name": "bc",
       "required": false,
       "typing": "int"
@@ -106,8 +106,8 @@
         "ac"
       ],
       "choices": [],
-      "default": 255,
-      "description": "<dd><p>Specify the red, green, blue and alpha contrast. Default values are <code>40</code>,\n<code>160</code>, <code>80</code> and <code>255</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "255",
+      "description": "set alpha contrast (from 0 to 255) (default 255)",
       "name": "ac",
       "required": false,
       "typing": "int"
@@ -117,8 +117,8 @@
         "rf"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,\n<code>10</code>, <code>5</code> and <code>5</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set red fade (from 0 to 255) (default 15)",
       "name": "rf",
       "required": false,
       "typing": "int"
@@ -128,8 +128,8 @@
         "gf"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,\n<code>10</code>, <code>5</code> and <code>5</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set green fade (from 0 to 255) (default 10)",
       "name": "gf",
       "required": false,
       "typing": "int"
@@ -139,8 +139,8 @@
         "bf"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,\n<code>10</code>, <code>5</code> and <code>5</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set blue fade (from 0 to 255) (default 5)",
       "name": "bf",
       "required": false,
       "typing": "int"
@@ -150,8 +150,8 @@
         "af"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Specify the red, green, blue and alpha fade. Default values are <code>15</code>,\n<code>10</code>, <code>5</code> and <code>5</code>.\nAllowed range is <code>[0, 255]</code>.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set alpha fade (from 0 to 255) (default 5)",
       "name": "af",
       "required": false,
       "typing": "int"
@@ -161,8 +161,8 @@
         "zoom"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the zoom factor. Default value is <code>1</code>. Allowed range is <code>[0, 10]</code>.\nValues lower than <var>1</var> will auto adjust zoom factor to maximal possible value.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set zoom factor (from 0 to 10) (default 1)",
       "name": "zoom",
       "required": false,
       "typing": "float"
@@ -175,21 +175,21 @@
         {
           "help": "draw dots",
           "name": "dot",
-          "value": "DOT"
+          "value": "0"
         },
         {
           "help": "draw lines",
           "name": "line",
-          "value": "LINE"
+          "value": "1"
         },
         {
           "help": "draw anti-aliased lines",
           "name": "aaline",
-          "value": "AALINE"
+          "value": "2"
         }
       ],
-      "default": "DOT",
-      "description": "<dd><p>Set the vectorscope drawing mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n<dd><p>Draw dot for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dd><p>Draw line between previous and current sample.\n</p>\n</dd>\n<dt>\u2018<samp>aaline</samp>\u2019</dt>\n<dd><p>Draw anti-aliased line between previous and current sample.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>dot</samp>\u2019.\n</p>\n</dd>",
+      "default": "dot",
+      "description": "set draw mode (from 0 to 2) (default dot)",
       "name": "draw",
       "required": false,
       "typing": "int"
@@ -202,26 +202,26 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": "LIN"
+          "value": "0"
         },
         {
           "help": "square root",
           "name": "sqrt",
-          "value": "SQRT"
+          "value": "1"
         },
         {
           "help": "cube root",
           "name": "cbrt",
-          "value": "CBRT"
+          "value": "2"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "LOG"
+          "value": "3"
         }
       ],
-      "default": "LIN",
-      "description": "<dd><p>Specify amplitude scale of audio samples.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p></dd>\n</dl>\n</dd>",
+      "default": "lin",
+      "description": "set amplitude scale mode (from 0 to 3) (default lin)",
       "name": "scale",
       "required": false,
       "typing": "int"
@@ -231,8 +231,8 @@
         "swap"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Swap left channel axis with right channel axis.\n</p>\n</dd>",
+      "default": "true",
+      "description": "swap x axis with y axis (default true)",
       "name": "swap",
       "required": false,
       "typing": "bool"
@@ -245,26 +245,26 @@
         {
           "help": "no mirror",
           "name": "none",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "mirror x",
           "name": "x",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "mirror y",
           "name": "y",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "mirror both",
           "name": "xy",
-          "value": 3
+          "value": "3"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Mirror axis.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>No mirror.\n</p>\n</dd>\n<dt>\u2018<samp>x</samp>\u2019</dt>\n<dd><p>Mirror only x axis.\n</p>\n</dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Mirror only y axis.\n</p>\n</dd>\n<dt>\u2018<samp>xy</samp>\u2019</dt>\n<dd><p>Mirror both axis.\n</p></dd>\n</dl>\n</dd>",
+      "default": "none",
+      "description": "mirror axis (from 0 to 3) (default none)",
       "name": "mirror",
       "required": false,
       "typing": "int"

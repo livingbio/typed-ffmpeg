@@ -21,8 +21,8 @@
         "hue"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the hue value which will be used in color difference calculation.\nAllowed range is from -360 to 360. Default value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the hue value (from -360 to 360) (default 0)",
       "name": "hue",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "sat"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the saturation value which will be used in color difference calculation.\nAllowed range is from -1 to 1. Default value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the saturation value (from -1 to 1) (default 0)",
       "name": "sat",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "val"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the value which will be used in color difference calculation.\nAllowed range is from -1 to 1. Default value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the value value (from -1 to 1) (default 0)",
       "name": "val",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "similarity"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "<dd><p>Set similarity percentage with the key color.\nAllowed range is from 0 to 1. Default value is 0.01.\n</p>\n<p>0.00001 matches only the exact key color, while 1.0 matches everything.\n</p>\n</dd>",
+      "default": "0.01",
+      "description": "set the hsvkey similarity value (from 1e-05 to 1) (default 0.01)",
       "name": "similarity",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "blend"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Blend percentage.\nAllowed range is from 0 to 1. Default value is 0.\n</p>\n<p>0.0 makes pixels either fully transparent, or not transparent at all.\n</p>\n<p>Higher values result in semi-transparent pixels, with a higher transparency\nthe more similar the pixels color is to the key color.\n</p></dd>",
+      "default": "0",
+      "description": "set the hsvkey blend value (from 0 to 1) (default 0)",
       "name": "blend",
       "required": false,
       "typing": "float"

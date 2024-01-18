@@ -18,7 +18,7 @@
         "fps"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"50\"",
       "description": "required output frames per second rate (default \"50\")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "scene"
       ],
       "choices": [],
-      "default": null,
+      "default": "8.2",
       "description": "scene change level (from 0 to 100) (default 8.2)",
       "flags": "..FV.......",
       "max": "100",
@@ -83,7 +83,7 @@
           "value": "scd"
         }
       ],
-      "default": null,
+      "default": "scene_change_detect+scd",
       "description": "set flags (default scene_change_detect+scd)",
       "flags": "..FV.......",
       "max": null,

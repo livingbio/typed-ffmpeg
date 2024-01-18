@@ -21,8 +21,8 @@
         "cutoff"
       ],
       "choices": [],
-      "default": 20000.0,
-      "description": "<dd><p>Set cutoff frequency in Hertz. Allowed range is 20000 to 192000.\nDefault value is 20000.\n</p>\n</dd>",
+      "default": "20000",
+      "description": "set cutoff frequency (from 20000 to 192000) (default 20000)",
       "name": "cutoff",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "order"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Set filter order. Available values are from 3 to 20.\nDefault value is 10.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set filter order (from 3 to 20) (default 10)",
       "name": "order",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "level"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p></dd>",
+      "default": "1",
+      "description": "set input level (from 0 to 1) (default 1)",
       "name": "level",
       "required": false,
       "typing": "float"

@@ -16,8 +16,8 @@
         "n"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set the number of segments. Default is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
       "name": "n",
       "required": false,
       "typing": "int"
@@ -27,8 +27,8 @@
         "v"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set the number of output video streams, that is also the number of video\nstreams in each segment. Default is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
       "name": "v",
       "required": false,
       "typing": "int"
@@ -38,8 +38,8 @@
         "a"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of output audio streams, that is also the number of audio\nstreams in each segment. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
       "name": "a",
       "required": false,
       "typing": "int"
@@ -49,8 +49,8 @@
         "unsafe"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Activate unsafe mode: do not fail if segments have a different format.\n</p>\n</dd>",
+      "default": "false",
+      "description": "enable unsafe mode (default false)",
       "name": "unsafe",
       "required": false,
       "typing": "bool"

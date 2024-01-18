@@ -42,7 +42,7 @@
         "r"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -55,7 +55,7 @@
         "rule"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"B3/S23\"",
       "description": "set rule (default \"B3/S23\")",
       "flags": "..FV.......",
       "max": null,
@@ -69,7 +69,7 @@
         "ratio"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.618034",
       "description": "set fill ratio for filling initial grid randomly (from 0 to 1) (default 0.618034)",
       "flags": "..FV.......",
       "max": "1",
@@ -122,7 +122,7 @@
         "life_color"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"white\"",
       "description": "set life color (default \"white\")",
       "flags": "..FV.......",
       "max": null,
@@ -135,7 +135,7 @@
         "death_color"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set death color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -148,7 +148,7 @@
         "mold_color"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set mold color (default \"black\")",
       "flags": "..FV.......",
       "max": null,

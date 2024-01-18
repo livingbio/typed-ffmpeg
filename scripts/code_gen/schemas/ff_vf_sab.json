@@ -22,8 +22,8 @@
         "lr"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set luma blur filter strength, must be a value in range 0.1-4.0, default\nvalue is 1.0. A greater value will result in a more blurred image, and\nin slower processing.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set luma radius (from 0.1 to 4) (default 1)",
       "name": "luma_radius",
       "required": false,
       "typing": "float"
@@ -34,8 +34,8 @@
         "lpfr"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set luma pre-filter radius, must be a value in the 0.1-2.0 range, default\nvalue is 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set luma pre-filter radius (from 0.1 to 2) (default 1)",
       "name": "luma_pre_filter_radius",
       "required": false,
       "typing": "float"
@@ -46,8 +46,8 @@
         "ls"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set luma maximum difference between pixels to still be considered, must\nbe a value in the 0.1-100.0 range, default value is 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set luma strength (from 0.1 to 100) (default 1)",
       "name": "luma_strength",
       "required": false,
       "typing": "float"
@@ -58,8 +58,8 @@
         "cr"
       ],
       "choices": [],
-      "default": "0.1 -1",
-      "description": "<dd><p>Set chroma blur filter strength, must be a value in range -0.9-4.0. A\ngreater value will result in a more blurred image, and in slower\nprocessing.\n</p>\n</dd>",
+      "default": "-0.9",
+      "description": "set chroma radius (from -0.9 to 4) (default -0.9)",
       "name": "chroma_radius",
       "required": false,
       "typing": "float"
@@ -70,8 +70,8 @@
         "cpfr"
       ],
       "choices": [],
-      "default": "0.1 -1",
-      "description": "<dd><p>Set chroma pre-filter radius, must be a value in the -0.9-2.0 range.\n</p>\n</dd>",
+      "default": "-0.9",
+      "description": "set chroma pre-filter radius (from -0.9 to 2) (default -0.9)",
       "name": "chroma_pre_filter_radius",
       "required": false,
       "typing": "float"
@@ -82,8 +82,8 @@
         "cs"
       ],
       "choices": [],
-      "default": "0.1 -1",
-      "description": "<dd><p>Set chroma maximum difference between pixels to still be considered,\nmust be a value in the -0.9-100.0 range.\n</p></dd>",
+      "default": "-0.9",
+      "description": "set chroma strength (from -0.9 to 100) (default -0.9)",
       "name": "chroma_strength",
       "required": false,
       "typing": "float"

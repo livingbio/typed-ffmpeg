@@ -22,7 +22,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set the x expression (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -35,7 +35,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set the y expression (default \"0\")",
       "flags": "..FV.......",
       "max": null,

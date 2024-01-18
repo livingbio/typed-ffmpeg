@@ -21,8 +21,8 @@
         "freq"
       ],
       "choices": [],
-      "default": 10000.0,
-      "description": "<dd><p>Set central frequency of tilt in Hz. Default is 10000 Hz.\n</p>\n</dd>",
+      "default": "10000",
+      "description": "set central frequency (from 20 to 192000) (default 10000)",
       "name": "freq",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "slope"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set slope direction of tilt. Default is 0. Allowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set filter slope (from -1 to 1) (default 0)",
       "name": "slope",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "width"
       ],
       "choices": [],
-      "default": 1000.0,
-      "description": "<dd><p>Set width of tilt. Default is 1000. Allowed range is from 100 to 10000.\n</p>\n</dd>",
+      "default": "1000",
+      "description": "set filter width (from 100 to 10000) (default 1000)",
       "name": "width",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "order"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set order of tilt filter.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set filter order (from 2 to 30) (default 5)",
       "name": "order",
       "required": false,
       "typing": "int"
@@ -65,8 +65,8 @@
         "level"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input volume level. Allowed range is from 0 to 4.\nDefault is 1.\n</p></dd>",
+      "default": "1",
+      "description": "set input level (from 0 to 4) (default 1)",
       "name": "level",
       "required": false,
       "typing": "float"

@@ -18,7 +18,7 @@
         "in_gain"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.6",
       "description": "set signal input gain (from 0 to 1) (default 0.6)",
       "flags": "..F.A......",
       "max": "1",
@@ -31,7 +31,7 @@
         "out_gain"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.3",
       "description": "set signal output gain (from 0 to 1) (default 0.3)",
       "flags": "..F.A......",
       "max": "1",
@@ -44,7 +44,7 @@
         "delays"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1000\"",
       "description": "set list of signal delays (default \"1000\")",
       "flags": "..F.A......",
       "max": null,
@@ -57,7 +57,7 @@
         "decays"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0.5\"",
       "description": "set list of signal decays (default \"0.5\")",
       "flags": "..F.A......",
       "max": null,

@@ -16,8 +16,8 @@
         "radius"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Set the box radius in pixels.\nAllowed range is 1 to 20. Default is 3.\n</p>\n</dd>",
+      "default": "3",
+      "description": "set the box radius (from 1 to 20) (default 3)",
       "name": "radius",
       "required": false,
       "typing": "int"
@@ -27,8 +27,8 @@
         "eps"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "<dd><p>Set regularization parameter (with square).\nAllowed range is 0 to 1. Default is 0.01.\n</p>\n</dd>",
+      "default": "0.01",
+      "description": "set the regularization parameter (with square) (from 0 to 1) (default 0.01)",
       "name": "eps",
       "required": false,
       "typing": "float"
@@ -41,16 +41,16 @@
         {
           "help": "basic guided filter",
           "name": "basic",
-          "value": "BASIC"
+          "value": "0"
         },
         {
           "help": "fast guided filter",
           "name": "fast",
-          "value": "FAST"
+          "value": "1"
         }
       ],
-      "default": "BASIC",
-      "description": "<dd><p>Set filter mode. Can be <code>basic</code> or <code>fast</code>.\nDefault is <code>basic</code>.\n</p>\n</dd>",
+      "default": "basic",
+      "description": "set filtering mode (0: basic mode; 1: fast mode) (from 0 to 1) (default basic)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -60,8 +60,8 @@
         "sub"
       ],
       "choices": [],
-      "default": 4,
-      "description": "<dd><p>Set subsampling ratio for <code>fast</code> mode.\nRange is 2 to 64. Default is 4.\nNo subsampling occurs in <code>basic</code> mode.\n</p>\n</dd>",
+      "default": "4",
+      "description": "subsampling ratio for fast mode (from 2 to 64) (default 4)",
       "name": "sub",
       "required": false,
       "typing": "int"
@@ -74,16 +74,16 @@
         {
           "help": "only one input is enabled",
           "name": "off",
-          "value": "OFF"
+          "value": "0"
         },
         {
           "help": "two inputs are required",
           "name": "on",
-          "value": "ON"
+          "value": "1"
         }
       ],
-      "default": "OFF",
-      "description": "<dd><p>Set guidance mode. Can be <code>off</code> or <code>on</code>. Default is <code>off</code>.\nIf <code>off</code>, single input is required.\nIf <code>on</code>, two inputs of the same resolution and pixel format are required.\nThe second input serves as the guidance.\n</p>\n</dd>",
+      "default": "off",
+      "description": "set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)",
       "name": "guidance",
       "required": false,
       "typing": "int"
@@ -93,8 +93,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set planes to filter. Default is first only.\n</p></dd>",
+      "default": "1",
+      "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
       "typing": "int"

@@ -29,8 +29,8 @@
         "patch_size"
       ],
       "choices": [],
-      "default": "64x64",
-      "description": "<dd><p>Set the source and target video stream patch size in pixels.\n</p>\n</dd>",
+      "default": "\"64x64\"",
+      "description": "set patch size (default \"64x64\")",
       "name": "patch_size",
       "required": false,
       "typing": "str"
@@ -40,8 +40,8 @@
         "nb_patches"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the max number of used patches from source and target video stream.\nDefault value is number of patches available in additional video streams.\nMax allowed number of patches is <code>64</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set number of patches (from 0 to 64) (default 0)",
       "name": "nb_patches",
       "required": false,
       "typing": "int"
@@ -54,16 +54,16 @@
         {
           "help": "the target colors are relative",
           "name": "relative",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "the target colors are absolute",
           "name": "absolute",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set the adjustments used for target colors. Can be <code>relative</code> or <code>absolute</code>.\nDefaults is <code>absolute</code>.\n</p>\n</dd>",
+      "default": "absolute",
+      "description": "set the target type used (from 0 to 1) (default absolute)",
       "name": "type",
       "required": false,
       "typing": "int"
@@ -76,16 +76,16 @@
         {
           "help": "square root of sum of squared differences",
           "name": "euclidean",
-          "value": "EUCLIDEAN"
+          "value": "0"
         },
         {
           "help": "weighted square root of sum of squared differences",
           "name": "weuclidean",
-          "value": "WEUCLIDEAN"
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the kernel used to measure color differences between mapped colors.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dt>\u2018<samp>weuclidean</samp>\u2019</dt>\n</dl>\n<p>Default is <code>euclidean</code>.\n</p></dd>",
+      "default": "euclidean",
+      "description": "set the kernel used for measuring color difference (from 0 to 1) (default euclidean)",
       "name": "kernel",
       "required": false,
       "typing": "int"

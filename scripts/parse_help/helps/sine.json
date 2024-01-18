@@ -69,7 +69,7 @@
         "samples_per_frame"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1024\"",
       "description": "set the number of samples per frame (default \"1024\")",
       "flags": "..F.A......",
       "max": null,

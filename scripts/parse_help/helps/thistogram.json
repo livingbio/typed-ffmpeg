@@ -107,7 +107,7 @@
         "b"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.9",
       "description": "set background opacity (from 0 to 1) (default 0.9)",
       "flags": "..FV.......",
       "max": "1",
@@ -135,7 +135,7 @@
         "ec"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"gold\"",
       "description": "set envelope color (default \"gold\")",
       "flags": "..FV.......",
       "max": null,

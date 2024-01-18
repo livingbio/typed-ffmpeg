@@ -21,8 +21,8 @@
         "x"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set scope center x position.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set scope x position (from 0 to 1) (default 0.5)",
       "name": "x",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "y"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set scope center y position.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set scope y position (from 0 to 1) (default 0.5)",
       "name": "y",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "s"
       ],
       "choices": [],
-      "default": 0.8,
-      "description": "<dd><p>Set scope size, relative to frame diagonal.\n</p>\n</dd>",
+      "default": "0.8",
+      "description": "set scope size (from 0 to 1) (default 0.8)",
       "name": "s",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "t"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set scope tilt/rotation.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set scope tilt (from 0 to 1) (default 0.5)",
       "name": "t",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "o"
       ],
       "choices": [],
-      "default": 0.8,
-      "description": "<dd><p>Set trace opacity.\n</p>\n</dd>",
+      "default": "0.8",
+      "description": "set trace opacity (from 0 to 1) (default 0.8)",
       "name": "o",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "tx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set trace center x position.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set trace x position (from 0 to 1) (default 0.5)",
       "name": "tx",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "ty"
       ],
       "choices": [],
-      "default": 0.9,
-      "description": "<dd><p>Set trace center y position.\n</p>\n</dd>",
+      "default": "0.9",
+      "description": "set trace y position (from 0 to 1) (default 0.9)",
       "name": "ty",
       "required": false,
       "typing": "float"
@@ -98,8 +98,8 @@
         "tw"
       ],
       "choices": [],
-      "default": 0.8,
-      "description": "<dd><p>Set trace width, relative to width of frame.\n</p>\n</dd>",
+      "default": "0.8",
+      "description": "set trace width (from 0.1 to 1) (default 0.8)",
       "name": "tw",
       "required": false,
       "typing": "float"
@@ -109,8 +109,8 @@
         "th"
       ],
       "choices": [],
-      "default": 0.3,
-      "description": "<dd><p>Set trace height, relative to height of frame.\n</p>\n</dd>",
+      "default": "0.3",
+      "description": "set trace height (from 0.1 to 1) (default 0.3)",
       "name": "th",
       "required": false,
       "typing": "float"
@@ -120,8 +120,8 @@
         "c"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set which components to trace. By default it traces first three components.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set components to trace (from 0 to 15) (default 7)",
       "name": "c",
       "required": false,
       "typing": "int"
@@ -131,8 +131,8 @@
         "g"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Draw trace grid. By default is enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "draw trace grid (default true)",
       "name": "g",
       "required": false,
       "typing": "bool"
@@ -142,8 +142,8 @@
         "st"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Draw some statistics. By default is enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "draw statistics (default true)",
       "name": "st",
       "required": false,
       "typing": "bool"
@@ -153,8 +153,8 @@
         "sc"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Draw scope. By default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "draw scope (default true)",
       "name": "sc",
       "required": false,
       "typing": "bool"

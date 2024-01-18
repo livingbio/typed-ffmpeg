@@ -21,8 +21,8 @@
         "thresh"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Set the threshold which affects the filter\u2019s tolerance when\ndetermining if a pixel line must be processed. It must be an integer\nin the range [0,255] and defaults to 10. A value of 0 will result in\napplying the process on every pixels.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set the threshold (from 0 to 255) (default 10)",
       "name": "thresh",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "map"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Paint pixels exceeding the threshold value to white if set to 1.\nDefault is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set the map (default false)",
       "name": "map",
       "required": false,
       "typing": "bool"
@@ -43,8 +43,8 @@
         "order"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the fields order. Swap fields if set to 1, leave fields alone if\n0. Default is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set the order (default false)",
       "name": "order",
       "required": false,
       "typing": "bool"
@@ -54,8 +54,8 @@
         "sharp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable additional sharpening if set to 1. Default is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set sharpening (default false)",
       "name": "sharp",
       "required": false,
       "typing": "bool"
@@ -65,8 +65,8 @@
         "twoway"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable twoway sharpening if set to 1. Default is 0.\n</p></dd>",
+      "default": "false",
+      "description": "set twoway (default false)",
       "name": "twoway",
       "required": false,
       "typing": "bool"

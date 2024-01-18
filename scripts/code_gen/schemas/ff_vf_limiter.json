@@ -21,8 +21,8 @@
         "min"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Lower bound. Defaults to the lowest allowed value for the input.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set min value (from 0 to 65535) (default 0)",
       "name": "min",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "max"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Upper bound. Defaults to the highest allowed value for the input.\n</p>\n</dd>",
+      "default": "65535",
+      "description": "set max value (from 0 to 65535) (default 65535)",
       "name": "max",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Specify which planes will be processed. Defaults to all available.\n</p></dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"

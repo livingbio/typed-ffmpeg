@@ -144,8 +144,8 @@
       "default": "30",
       "description": "set max IR length (from 0.1 to 60) (default 30)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "60",
+      "min": "0.1",
       "name": "maxir",
       "typing": "float"
     },
@@ -180,7 +180,7 @@
         "size"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"hd720\"",
       "description": "set video size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -193,7 +193,7 @@
         "rate"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

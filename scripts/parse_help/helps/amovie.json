@@ -58,8 +58,8 @@
       "default": "0",
       "description": "set seekpoint (seconds) (from 0 to 9.22337e+12) (default 0)",
       "flags": "..FVA......",
-      "max": null,
-      "min": null,
+      "max": "9.22337e+12",
+      "min": "0",
       "name": "seek_point",
       "typing": "double"
     },

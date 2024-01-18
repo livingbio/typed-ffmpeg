@@ -34,8 +34,8 @@
       "default": "1",
       "description": "set amount of denoising (from 0.01 to 1) (default 1)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "1",
+      "min": "0.01",
       "name": "amount",
       "typing": "float"
     },
@@ -57,11 +57,11 @@
         "overlap"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set block overlap (from 0.2 to 0.8) (default 0.5)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "0.8",
+      "min": "0.2",
       "name": "overlap",
       "typing": "float"
     },

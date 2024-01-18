@@ -43,7 +43,7 @@
           "value": "direct"
         }
       ],
-      "default": null,
+      "default": "read+write",
       "description": "Frame mapping mode (default read+write)",
       "flags": "..FV.......",
       "max": null,

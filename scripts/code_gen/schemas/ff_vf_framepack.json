@@ -28,31 +28,31 @@
         {
           "help": "Views are packed next to each other",
           "name": "sbs",
-          "value": "AV_STEREO3D_SIDEBYSIDE"
+          "value": "1"
         },
         {
           "help": "Views are packed on top of each other",
           "name": "tab",
-          "value": "AV_STEREO3D_TOPBOTTOM"
+          "value": "2"
         },
         {
           "help": "Views are one after the other",
           "name": "frameseq",
-          "value": "AV_STEREO3D_FRAMESEQUENCE"
+          "value": "3"
         },
         {
           "help": "Views are interleaved by lines",
           "name": "lines",
-          "value": "AV_STEREO3D_LINES"
+          "value": "6"
         },
         {
           "help": "Views are interleaved by columns",
           "name": "columns",
-          "value": "AV_STEREO3D_COLUMNS"
+          "value": "7"
         }
       ],
-      "default": "AV_STEREO3D_SIDEBYSIDE",
-      "description": "<dd><p>The desired packing format. Supported values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>sbs</samp></dt>\n<dd><p>The views are next to each other (default).\n</p>\n</dd>\n<dt><samp>tab</samp></dt>\n<dd><p>The views are on top of each other.\n</p>\n</dd>\n<dt><samp>lines</samp></dt>\n<dd><p>The views are packed by line.\n</p>\n</dd>\n<dt><samp>columns</samp></dt>\n<dd><p>The views are packed by column.\n</p>\n</dd>\n<dt><samp>frameseq</samp></dt>\n<dd><p>The views are temporally interleaved.\n</p>\n</dd>\n</dl>\n</dd>",
+      "default": "sbs",
+      "description": "Frame pack output format (from 0 to INT_MAX) (default sbs)",
       "name": "format",
       "required": false,
       "typing": "int"

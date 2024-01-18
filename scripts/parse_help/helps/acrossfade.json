@@ -26,8 +26,8 @@
       "default": "44100",
       "description": "set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "2.14748e+08",
+      "min": "1",
       "name": "nb_samples",
       "typing": "int"
     },

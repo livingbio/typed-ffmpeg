@@ -21,8 +21,8 @@
         "contrast"
       ],
       "choices": [],
-      "default": 33.0,
-      "description": "<dd><p>Set contrast. Default is 33. Allowed range is between 0 and 100.\n</p></dd>",
+      "default": "33",
+      "description": "set contrast (from 0 to 100) (default 33)",
       "name": "contrast",
       "required": false,
       "typing": "float"

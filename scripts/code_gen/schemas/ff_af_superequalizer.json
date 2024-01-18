@@ -21,8 +21,8 @@
         "1b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 65Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 65Hz band gain (from 0 to 20) (default 1)",
       "name": "1b",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "2b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 92Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 92Hz band gain (from 0 to 20) (default 1)",
       "name": "2b",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "3b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 131Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 131Hz band gain (from 0 to 20) (default 1)",
       "name": "3b",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "4b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 185Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 185Hz band gain (from 0 to 20) (default 1)",
       "name": "4b",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "5b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 262Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 262Hz band gain (from 0 to 20) (default 1)",
       "name": "5b",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "6b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 370Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 370Hz band gain (from 0 to 20) (default 1)",
       "name": "6b",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "7b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 523Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 523Hz band gain (from 0 to 20) (default 1)",
       "name": "7b",
       "required": false,
       "typing": "float"
@@ -98,8 +98,8 @@
         "8b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 740Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 740Hz band gain (from 0 to 20) (default 1)",
       "name": "8b",
       "required": false,
       "typing": "float"
@@ -109,8 +109,8 @@
         "9b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 1047Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 1047Hz band gain (from 0 to 20) (default 1)",
       "name": "9b",
       "required": false,
       "typing": "float"
@@ -120,8 +120,8 @@
         "10b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 1480Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 1480Hz band gain (from 0 to 20) (default 1)",
       "name": "10b",
       "required": false,
       "typing": "float"
@@ -131,8 +131,8 @@
         "11b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 2093Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 2093Hz band gain (from 0 to 20) (default 1)",
       "name": "11b",
       "required": false,
       "typing": "float"
@@ -142,8 +142,8 @@
         "12b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 2960Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 2960Hz band gain (from 0 to 20) (default 1)",
       "name": "12b",
       "required": false,
       "typing": "float"
@@ -153,8 +153,8 @@
         "13b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 4186Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 4186Hz band gain (from 0 to 20) (default 1)",
       "name": "13b",
       "required": false,
       "typing": "float"
@@ -164,8 +164,8 @@
         "14b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 5920Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 5920Hz band gain (from 0 to 20) (default 1)",
       "name": "14b",
       "required": false,
       "typing": "float"
@@ -175,8 +175,8 @@
         "15b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 8372Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 8372Hz band gain (from 0 to 20) (default 1)",
       "name": "15b",
       "required": false,
       "typing": "float"
@@ -186,8 +186,8 @@
         "16b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 11840Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 11840Hz band gain (from 0 to 20) (default 1)",
       "name": "16b",
       "required": false,
       "typing": "float"
@@ -197,8 +197,8 @@
         "17b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 16744Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 16744Hz band gain (from 0 to 20) (default 1)",
       "name": "17b",
       "required": false,
       "typing": "float"
@@ -208,8 +208,8 @@
         "18b"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set 20000Hz band gain.\n</p></dd>",
+      "default": "1",
+      "description": "set 20000Hz band gain (from 0 to 20) (default 1)",
       "name": "18b",
       "required": false,
       "typing": "float"

@@ -22,8 +22,8 @@
         "lx"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set the luma matrix horizontal size. It must be an odd integer between\n3 and 23. The default value is 5.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set luma matrix horizontal size (from 3 to 23) (default 5)",
       "name": "luma_msize_x",
       "required": false,
       "typing": "int"
@@ -34,8 +34,8 @@
         "ly"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set the luma matrix vertical size. It must be an odd integer between 3\nand 23. The default value is 5.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set luma matrix vertical size (from 3 to 23) (default 5)",
       "name": "luma_msize_y",
       "required": false,
       "typing": "int"
@@ -46,8 +46,8 @@
         "la"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the luma effect strength. It must be a floating point number, reasonable\nvalues lay between -1.5 and 1.5.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n<p>Default value is 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set luma effect strength (from -2 to 5) (default 1)",
       "name": "luma_amount",
       "required": false,
       "typing": "float"
@@ -58,8 +58,8 @@
         "cx"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set the chroma matrix horizontal size. It must be an odd integer\nbetween 3 and 23. The default value is 5.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set chroma matrix horizontal size (from 3 to 23) (default 5)",
       "name": "chroma_msize_x",
       "required": false,
       "typing": "int"
@@ -70,8 +70,8 @@
         "cy"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set the chroma matrix vertical size. It must be an odd integer\nbetween 3 and 23. The default value is 5.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set chroma matrix vertical size (from 3 to 23) (default 5)",
       "name": "chroma_msize_y",
       "required": false,
       "typing": "int"
@@ -82,8 +82,8 @@
         "ca"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the chroma effect strength. It must be a floating point number, reasonable\nvalues lay between -1.5 and 1.5.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n<p>Default value is 0.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set chroma effect strength (from -2 to 5) (default 0)",
       "name": "chroma_amount",
       "required": false,
       "typing": "float"
@@ -94,8 +94,8 @@
         "ax"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set the alpha matrix horizontal size. It must be an odd integer\nbetween 3 and 23. The default value is 5.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set alpha matrix horizontal size (from 3 to 23) (default 5)",
       "name": "alpha_msize_x",
       "required": false,
       "typing": "int"
@@ -106,8 +106,8 @@
         "ay"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set the alpha matrix vertical size. It must be an odd integer\nbetween 3 and 23. The default value is 5.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set alpha matrix vertical size (from 3 to 23) (default 5)",
       "name": "alpha_msize_y",
       "required": false,
       "typing": "int"
@@ -118,8 +118,8 @@
         "aa"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the alpha effect strength. It must be a floating point number, reasonable\nvalues lay between -1.5 and 1.5.\n</p>\n<p>Negative values will blur the input video, while positive values will\nsharpen it, a value of zero will disable the effect.\n</p>\n<p>Default value is 0.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set alpha effect strength (from -2 to 5) (default 0)",
       "name": "alpha_amount",
       "required": false,
       "typing": "float"

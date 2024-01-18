@@ -119,7 +119,7 @@
         "f"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.7",
       "description": "set foreground opacity (from 0 to 1) (default 0.7)",
       "flags": "..FV.......",
       "max": "1",
@@ -133,7 +133,7 @@
         "b"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set background opacity (from 0 to 1) (default 0.5)",
       "flags": "..FV.......",
       "max": "1",

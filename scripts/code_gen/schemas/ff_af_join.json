@@ -16,8 +16,8 @@
         "inputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>The number of input streams. It defaults to 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "Number of input streams. (from 1 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
       "typing": "int"
@@ -27,8 +27,8 @@
         "channel_layout"
       ],
       "choices": [],
-      "default": "stereo",
-      "description": "<dd><p>The desired output channel layout. It defaults to stereo.\n</p>\n</dd>",
+      "default": "\"stereo\"",
+      "description": "Channel layout of the output stream. (default \"stereo\")",
       "name": "channel_layout",
       "required": false,
       "typing": "str"
@@ -39,7 +39,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>Map channels from inputs to output. The argument is a \u2019|\u2019-separated list of\nmappings, each in the <code><var>input_idx</var>.<var>in_channel</var>-<var>out_channel</var></code>\nform. <var>input_idx</var> is the 0-based index of the input stream. <var>in_channel</var>\ncan be either the name of the input channel (e.g. FL for front left) or its\nindex in the specified input stream. <var>out_channel</var> is the name of the output\nchannel.\n</p></dd>",
+      "description": "A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.",
       "name": "map",
       "required": false,
       "typing": "str"

@@ -21,8 +21,8 @@
         "object"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Filepath of the object image, needs to be in gray8.\n</p>\n</dd>",
+      "default": null,
+      "description": "object bitmap filename",
       "name": "object",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "threshold"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Detection threshold, expressed as a decimal number in the range 0-1.\n</p>\n<p>A threshold value of 0.01 means only exact matches, a threshold of 0.99 means\nalmost everything matches.\n</p>\n<p>Default value is 0.5.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set threshold (from 0 to 1) (default 0.5)",
       "name": "threshold",
       "required": false,
       "typing": "float"
@@ -43,53 +43,23 @@
         "mipmaps"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Number of mipmaps, default is 3.\n</p>\n</dd>",
+      "default": "3",
+      "description": "set mipmaps (from 1 to 5) (default 3)",
       "name": "mipmaps",
       "required": false,
       "typing": "int"
     },
     {
       "alias": [
-        "xmin"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
-      "name": "xmin",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "ymin"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
-      "name": "ymin",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "xmax"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
-      "name": "xmax",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
+        "xmin",
+        "ymin",
+        "xmax",
         "ymax"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
-      "name": "ymax",
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
+      "name": "xmin",
       "required": false,
       "typing": "int"
     },
@@ -98,8 +68,8 @@
         "discard"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Discard frames where object is not detected. Default is disabled.\n</p></dd>",
+      "default": "false",
+      "description": "(default false)",
       "name": "discard",
       "required": false,
       "typing": "bool"

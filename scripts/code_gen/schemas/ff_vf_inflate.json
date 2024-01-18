@@ -21,8 +21,8 @@
         "threshold0"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
+      "default": "65535",
+      "description": "set threshold for 1st plane (from 0 to 65535) (default 65535)",
       "name": "threshold0",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "threshold1"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
+      "default": "65535",
+      "description": "set threshold for 2nd plane (from 0 to 65535) (default 65535)",
       "name": "threshold1",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "threshold2"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
+      "default": "65535",
+      "description": "set threshold for 3rd plane (from 0 to 65535) (default 65535)",
       "name": "threshold2",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "threshold3"
       ],
       "choices": [],
-      "default": 65535,
-      "description": "<dd><p>Limit the maximum change for each plane, default is 65535.\nIf 0, plane will remain unchanged.\n</p></dd>",
+      "default": "65535",
+      "description": "set threshold for 4th plane (from 0 to 65535) (default 65535)",
       "name": "threshold3",
       "required": false,
       "typing": "int"

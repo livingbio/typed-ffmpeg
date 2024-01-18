@@ -19,17 +19,7 @@
   "is_support_framesync": false,
   "is_support_timeline": true,
   "name": "asdr",
-  "options": [
-    {
-      "alias": [],
-      "choices": [],
-      "default": null,
-      "description": "timeline editing",
-      "name": "enable",
-      "required": false,
-      "typing": "str"
-    }
-  ],
+  "options": [],
   "output_stream_typings": [
     {
       "name": "default",

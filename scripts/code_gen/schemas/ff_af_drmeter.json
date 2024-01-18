@@ -21,8 +21,8 @@
         "length"
       ],
       "choices": [],
-      "default": 3.0,
-      "description": "<dd><p>Set window length in seconds used to split audio into segments of equal length.\nDefault is 3 seconds.\n</p></dd>",
+      "default": "3",
+      "description": "set the window length (from 0.01 to 10) (default 3)",
       "name": "length",
       "required": false,
       "typing": "float"

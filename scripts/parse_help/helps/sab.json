@@ -22,8 +22,8 @@
       "default": "1",
       "description": "set luma radius (from 0.1 to 4) (default 1)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "4",
+      "min": "0.1",
       "name": "luma_radius",
       "typing": "float"
     },
@@ -36,8 +36,8 @@
       "default": "1",
       "description": "set luma pre-filter radius (from 0.1 to 2) (default 1)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "2",
+      "min": "0.1",
       "name": "luma_pre_filter_radius",
       "typing": "float"
     },
@@ -50,8 +50,8 @@
       "default": "1",
       "description": "set luma strength (from 0.1 to 100) (default 1)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "100",
+      "min": "0.1",
       "name": "luma_strength",
       "typing": "float"
     },
@@ -61,11 +61,11 @@
         "cr"
       ],
       "choices": [],
-      "default": null,
+      "default": "-0.9",
       "description": "set chroma radius (from -0.9 to 4) (default -0.9)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "4",
+      "min": "-0.9",
       "name": "chroma_radius",
       "typing": "float"
     },
@@ -75,11 +75,11 @@
         "cpfr"
       ],
       "choices": [],
-      "default": null,
+      "default": "-0.9",
       "description": "set chroma pre-filter radius (from -0.9 to 2) (default -0.9)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "2",
+      "min": "-0.9",
       "name": "chroma_pre_filter_radius",
       "typing": "float"
     },
@@ -89,11 +89,11 @@
         "cs"
       ],
       "choices": [],
-      "default": null,
+      "default": "-0.9",
       "description": "set chroma strength (from -0.9 to 100) (default -0.9)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "100",
+      "min": "-0.9",
       "name": "chroma_strength",
       "typing": "float"
     }

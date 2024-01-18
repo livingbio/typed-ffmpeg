@@ -35,7 +35,7 @@
         "mu"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.75",
       "description": "set the filter mu (from 0 to 2) (default 0.75)",
       "flags": "..F.A....T.",
       "max": "2",

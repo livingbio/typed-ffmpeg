@@ -31,7 +31,7 @@
         "thr_b"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.2",
       "description": "black color threshold (from 0 to 1) (default 0.2)",
       "flags": "..FV.......",
       "max": "1",
@@ -44,7 +44,7 @@
         "thr_w"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.6",
       "description": "white color threshold (from 0 to 1) (default 0.6)",
       "flags": "..FV.......",
       "max": "1",

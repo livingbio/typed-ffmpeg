@@ -41,7 +41,7 @@
         "s"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"44100\"",
       "description": "set the sample rate (default \"44100\")",
       "flags": "..F.A......",
       "max": null,
@@ -55,7 +55,7 @@
         "d"
       ],
       "choices": [],
-      "default": null,
+      "default": "-0.000001",
       "description": "set audio duration (default -0.000001)",
       "flags": "..F.A......",
       "max": null,

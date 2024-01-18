@@ -18,7 +18,7 @@
         "chl_out"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"5.1\"",
       "description": "set output channel layout (default \"5.1\")",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "chl_in"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"stereo\"",
       "description": "set input channel layout (default \"stereo\")",
       "flags": "..F.A......",
       "max": null,
@@ -434,11 +434,11 @@
         "fcx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set front center channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "fcx",
       "typing": "float"
     },
@@ -447,11 +447,11 @@
         "flx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set front left channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "flx",
       "typing": "float"
     },
@@ -460,11 +460,11 @@
         "frx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set front right channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "frx",
       "typing": "float"
     },
@@ -473,11 +473,11 @@
         "blx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set back left channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "blx",
       "typing": "float"
     },
@@ -486,11 +486,11 @@
         "brx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set back right channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "brx",
       "typing": "float"
     },
@@ -499,11 +499,11 @@
         "slx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set side left channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "slx",
       "typing": "float"
     },
@@ -512,11 +512,11 @@
         "srx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set side right channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "srx",
       "typing": "float"
     },
@@ -525,11 +525,11 @@
         "bcx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set back center channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "bcx",
       "typing": "float"
     },
@@ -538,11 +538,11 @@
         "fcy"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set front center channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "fcy",
       "typing": "float"
     },
@@ -551,11 +551,11 @@
         "fly"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set front left channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "fly",
       "typing": "float"
     },
@@ -564,11 +564,11 @@
         "fry"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set front right channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "fry",
       "typing": "float"
     },
@@ -577,11 +577,11 @@
         "bly"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set back left channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "bly",
       "typing": "float"
     },
@@ -590,11 +590,11 @@
         "bry"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set back right channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "bry",
       "typing": "float"
     },
@@ -603,11 +603,11 @@
         "sly"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set side left channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "sly",
       "typing": "float"
     },
@@ -616,11 +616,11 @@
         "sry"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set side right channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "sry",
       "typing": "float"
     },
@@ -629,11 +629,11 @@
         "bcy"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set back center channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "15",
+      "min": "0.06",
       "name": "bcy",
       "typing": "float"
     },
@@ -801,7 +801,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set window overlap (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",

@@ -34,8 +34,8 @@
       "default": "1000",
       "description": "set detection frequency (from 2 to 1e+06) (default 1000)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1e+06",
+      "min": "2",
       "name": "dfrequency",
       "typing": "double"
     },
@@ -47,8 +47,8 @@
       "default": "1",
       "description": "set detection Q factor (from 0.001 to 1000) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1000",
+      "min": "0.001",
       "name": "dqfactor",
       "typing": "double"
     },
@@ -60,8 +60,8 @@
       "default": "1000",
       "description": "set target frequency (from 2 to 1e+06) (default 1000)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1e+06",
+      "min": "2",
       "name": "tfrequency",
       "typing": "double"
     },
@@ -73,8 +73,8 @@
       "default": "1",
       "description": "set target Q factor (from 0.001 to 1000) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1000",
+      "min": "0.001",
       "name": "tqfactor",
       "typing": "double"
     },

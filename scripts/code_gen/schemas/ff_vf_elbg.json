@@ -22,8 +22,8 @@
         "l"
       ],
       "choices": [],
-      "default": 256,
-      "description": "<dd><p>Set codebook length. The value must be a positive integer, and\nrepresents the number of distinct output colors. Default value is 256.\n</p>\n</dd>",
+      "default": "256",
+      "description": "set codebook length (from 1 to INT_MAX) (default 256)",
       "name": "codebook_length",
       "required": false,
       "typing": "int"
@@ -34,8 +34,8 @@
         "n"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set the maximum number of iterations to apply for computing the optimal\nmapping. The higher the value the better the result and the higher the\ncomputation time. Default value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set max number of steps used to compute the mapping (from 1 to INT_MAX) (default 1)",
       "name": "nb_steps",
       "required": false,
       "typing": "int"
@@ -46,8 +46,8 @@
         "s"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set a random seed, must be an integer included between 0 and\nUINT32_MAX. If not specified, or if explicitly set to -1, the filter\nwill try to use a good random seed on a best effort basis.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set the random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
       "typing": "int"
@@ -57,8 +57,8 @@
         "pal8"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set pal8 output pixel format. This option does not work with codebook\nlength greater than 256. Default is disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set the pal8 output (default false)",
       "name": "pal8",
       "required": false,
       "typing": "bool"
@@ -68,8 +68,8 @@
         "use_alpha"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Include alpha values in the quantization calculation. Allows creating\npalettized output images (e.g. PNG8) with multiple alpha smooth blending.\n</p></dd>",
+      "default": "false",
+      "description": "use alpha channel for mapping (default false)",
       "name": "use_alpha",
       "required": false,
       "typing": "bool"

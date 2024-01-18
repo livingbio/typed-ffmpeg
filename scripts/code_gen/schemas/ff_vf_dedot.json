@@ -22,18 +22,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "dotcrawl",
-          "value": 1
+          "value": "dotcrawl"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "rainbows",
-          "value": 2
+          "value": "rainbows"
         }
       ],
-      "default": 3,
-      "description": "<dd><p>Set mode of operation. Can be combination of <var>dotcrawl</var> for cross-luminance reduction and/or\n<var>rainbows</var> for cross-color reduction.\n</p>\n</dd>",
+      "default": "dotcrawl+rainbows",
+      "description": "set filtering mode (default dotcrawl+rainbows)",
       "name": "m",
       "required": false,
       "typing": "str"
@@ -43,8 +43,8 @@
         "lt"
       ],
       "choices": [],
-      "default": 0.079,
-      "description": "<dd><p>Set spatial luma threshold. Lower values increases reduction of cross-luminance.\n</p>\n</dd>",
+      "default": "0.079",
+      "description": "set spatial luma threshold (from 0 to 1) (default 0.079)",
       "name": "lt",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "tl"
       ],
       "choices": [],
-      "default": 0.079,
-      "description": "<dd><p>Set tolerance for temporal luma. Higher values increases reduction of cross-luminance.\n</p>\n</dd>",
+      "default": "0.079",
+      "description": "set tolerance for temporal luma (from 0 to 1) (default 0.079)",
       "name": "tl",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "tc"
       ],
       "choices": [],
-      "default": 0.058,
-      "description": "<dd><p>Set tolerance for chroma temporal variation. Higher values increases reduction of cross-color.\n</p>\n</dd>",
+      "default": "0.058",
+      "description": "set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)",
       "name": "tc",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "ct"
       ],
       "choices": [],
-      "default": 0.019,
-      "description": "<dd><p>Set temporal chroma threshold. Lower values increases reduction of cross-color.\n</p></dd>",
+      "default": "0.019",
+      "description": "set temporal chroma threshold (from 0 to 1) (default 0.019)",
       "name": "ct",
       "required": false,
       "typing": "float"

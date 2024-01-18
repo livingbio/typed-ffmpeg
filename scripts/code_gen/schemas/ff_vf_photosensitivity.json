@@ -22,8 +22,8 @@
         "f"
       ],
       "choices": [],
-      "default": 30,
-      "description": "<dd><p>Set how many frames to use when filtering. Default is 30.\n</p>\n</dd>",
+      "default": "30",
+      "description": "set how many frames to use (from 2 to 240) (default 30)",
       "name": "frames",
       "required": false,
       "typing": "int"
@@ -34,8 +34,8 @@
         "t"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set detection threshold factor. Default is 1.\nLower is stricter.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)",
       "name": "threshold",
       "required": false,
       "typing": "float"
@@ -45,8 +45,8 @@
         "skip"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set how many pixels to skip when sampling frames. Default is 1.\nAllowed range is from 1 to 1024.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set pixels to skip when sampling frames (from 1 to 1024) (default 1)",
       "name": "skip",
       "required": false,
       "typing": "int"
@@ -56,8 +56,8 @@
         "bypass"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Leave frames unchanged. Default is disabled.\n</p></dd>",
+      "default": "false",
+      "description": "leave frames unchanged (default false)",
       "name": "bypass",
       "required": false,
       "typing": "bool"

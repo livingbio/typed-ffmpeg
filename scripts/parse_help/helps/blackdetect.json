@@ -33,7 +33,7 @@
         "pic_th"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.98",
       "description": "set the picture black ratio threshold (from 0 to 1) (default 0.98)",
       "flags": "..FV.......",
       "max": "1",
@@ -47,7 +47,7 @@
         "pix_th"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.1",
       "description": "set the pixel black threshold (from 0 to 1) (default 0.1)",
       "flags": "..FV.......",
       "max": "1",

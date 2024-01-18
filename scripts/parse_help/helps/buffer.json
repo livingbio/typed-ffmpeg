@@ -66,7 +66,7 @@
         "pixel_aspect"
       ],
       "choices": [],
-      "default": null,
+      "default": "0/1",
       "description": "sample aspect ratio (from 0 to DBL_MAX) (default 0/1)",
       "flags": "..FV.......",
       "max": "DBL_MAX",
@@ -80,7 +80,7 @@
         "frame_rate"
       ],
       "choices": [],
-      "default": null,
+      "default": "0/1",
       "description": "(from 0 to DBL_MAX) (default 0/1)",
       "flags": "..FV.......",
       "max": "DBL_MAX",

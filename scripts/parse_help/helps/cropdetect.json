@@ -18,7 +18,7 @@
         "limit"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.0941176",
       "description": "Threshold below which the pixel is considered black (from 0 to 65535) (default 0.0941176)",
       "flags": "..FV.....T.",
       "max": "65535",
@@ -122,7 +122,7 @@
         "high"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.0980392",
       "description": "Set high threshold for edge detection (from 0 to 1) (default 0.0980392)",
       "flags": "..FV.......",
       "max": "1",
@@ -135,7 +135,7 @@
         "low"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.0588235",
       "description": "Set low threshold for edge detection (from 0 to 1) (default 0.0588235)",
       "flags": "..FV.......",
       "max": "1",

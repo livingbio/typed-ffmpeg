@@ -13,23 +13,33 @@
   "options": [
     {
       "alias": [
-        "width",
-        "video_size"
+        "width"
       ],
       "choices": [],
-      "default": 0,
-      "description": "((void*)0)",
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
       "name": "width",
       "required": false,
       "typing": "int"
     },
     {
       "alias": [
+        "video_size"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "",
+      "name": "video_size",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
         "height"
       ],
       "choices": [],
-      "default": 0,
-      "description": "((void*)0)",
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
       "name": "height",
       "required": false,
       "typing": "int"
@@ -39,8 +49,8 @@
         "pix_fmt"
       ],
       "choices": [],
-      "default": "AV_PIX_FMT_NONE",
-      "description": "((void*)0)",
+      "default": "none",
+      "description": "(default none)",
       "name": "pix_fmt",
       "required": false,
       "typing": "str"
@@ -51,33 +61,23 @@
         "pixel_aspect"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "sample aspect ratio",
+      "default": "0/1",
+      "description": "sample aspect ratio (from 0 to DBL_MAX) (default 0/1)",
       "name": "sar",
       "required": false,
-      "typing": "float"
+      "typing": "str"
     },
     {
       "alias": [
-        "time_base"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "((void*)0)",
-      "name": "time_base",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
+        "time_base",
         "frame_rate"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "((void*)0)",
-      "name": "frame_rate",
+      "default": "0/1",
+      "description": "(from 0 to DBL_MAX) (default 0/1)",
+      "name": "time_base",
       "required": false,
-      "typing": "float"
+      "typing": "str"
     }
   ],
   "output_stream_typings": [

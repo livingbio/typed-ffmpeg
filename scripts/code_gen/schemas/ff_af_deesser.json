@@ -21,8 +21,8 @@
         "i"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set intensity for triggering de-essing. Allowed range is from 0 to 1.\nDefault is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set intensity (from 0 to 1) (default 0)",
       "name": "i",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "m"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set amount of ducking on treble part of sound. Allowed range is from 0 to 1.\nDefault is 0.5.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set max deessing (from 0 to 1) (default 0.5)",
       "name": "m",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "f"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>How much of original frequency content to keep when de-essing. Allowed range is from 0 to 1.\nDefault is 0.5.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set frequency (from 0 to 1) (default 0.5)",
       "name": "f",
       "required": false,
       "typing": "float"
@@ -57,21 +57,21 @@
         {
           "help": "input",
           "name": "i",
-          "value": "IN_MODE"
+          "value": "0"
         },
         {
           "help": "output",
           "name": "o",
-          "value": "OUT_MODE"
+          "value": "1"
         },
         {
           "help": "ess",
           "name": "e",
-          "value": "ESS_MODE"
+          "value": "2"
         }
       ],
-      "default": "OUT_MODE",
-      "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass ess filtered out.\n</p>\n</dd>\n<dt><samp>e</samp></dt>\n<dd><p>Pass only ess.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",
+      "default": "o",
+      "description": "set output mode (from 0 to 2) (default o)",
       "name": "s",
       "required": false,
       "typing": "int"

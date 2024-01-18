@@ -17,7 +17,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>The name of the resource to read (not necessarily a file; it can also be a\ndevice or a stream accessed through some protocol).\n</p>\n</dd>",
+      "description": "",
       "name": "filename",
       "required": false,
       "typing": "str"
@@ -29,7 +29,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>Specifies the format assumed for the movie to read, and can be either\nthe name of a container or an input device. If not specified, the\nformat is guessed from <var>movie_name</var> or by probing.\n</p>\n</dd>",
+      "description": "set format name",
       "name": "format_name",
       "required": false,
       "typing": "str"
@@ -40,8 +40,8 @@
         "si"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Specifies the index of the video stream to read. If the value is -1,\nthe most suitable video stream will be automatically selected. The default\nvalue is \"-1\". Deprecated. If the filter is called \"amovie\", it will select\naudio instead of video.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set stream index (from -1 to INT_MAX) (default -1)",
       "name": "stream_index",
       "required": false,
       "typing": "int"
@@ -52,8 +52,8 @@
         "sp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Specifies the seek point in seconds. The frames will be output\nstarting from this seek point. The parameter is evaluated with\n<code>av_strtod</code>, so the numerical value may be suffixed by an IS\npostfix. The default value is \"0\".\n</p>\n</dd>",
+      "default": "0",
+      "description": "set seekpoint (seconds) (from 0 to 9.22337e+12) (default 0)",
       "name": "seek_point",
       "required": false,
       "typing": "float"
@@ -64,8 +64,8 @@
         "s"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Specifies the streams to read. Several streams can be specified,\nseparated by \"+\". The source will then have as many outputs, in the\nsame order. The syntax is explained in the <a href=\"ffmpeg.html#Stream-specifiers\">(ffmpeg)\"Stream specifiers\"\nsection in the ffmpeg manual</a>. Two special names, \"dv\" and \"da\" specify\nrespectively the default (best suited) video and audio stream. Default\nis \"dv\", or \"da\" if the filter is called as \"amovie\".\n</p>\n</dd>",
+      "default": null,
+      "description": "set streams",
       "name": "streams",
       "required": false,
       "typing": "str"
@@ -75,8 +75,8 @@
         "loop"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Specifies how many times to read the stream in sequence.\nIf the value is 0, the stream will be looped infinitely.\nDefault value is \"1\".\n</p>\n<p>Note that when the movie is looped the source timestamps are not\nchanged, so it will generate non monotonically increasing timestamps.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set loop count (from 0 to INT_MAX) (default 1)",
       "name": "loop",
       "required": false,
       "typing": "int"
@@ -86,19 +86,19 @@
         "discontinuity"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the time difference between frames above which the point is\nconsidered a timestamp discontinuity which is removed by adjusting the later\ntimestamps.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set discontinuity threshold (default 0)",
       "name": "discontinuity",
       "required": false,
-      "typing": "int"
+      "typing": "str"
     },
     {
       "alias": [
         "dec_threads"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the number of threads for decoding\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the number of threads for decoding (from 0 to INT_MAX) (default 0)",
       "name": "dec_threads",
       "required": false,
       "typing": "int"
@@ -108,8 +108,8 @@
         "format_opts"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify format options for the opened file. Format options can be specified\nas a list of <var>key</var>=<var>value</var> pairs separated by \u2019:\u2019. The following example\nshows how to add protocol_whitelist and protocol_blacklist options:\n</p><div class=\"example\">\n<pre class=\"example\">ffplay -f lavfi\n\"movie=filename='1.sdp':format_opts='protocol_whitelist=file,rtp,udp\\:protocol_blacklist=http'\"\n</pre></div>\n</dd>",
+      "default": null,
+      "description": "set format options for the opened file",
       "name": "format_opts",
       "required": false,
       "typing": "str"

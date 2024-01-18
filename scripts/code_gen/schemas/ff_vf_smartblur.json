@@ -22,8 +22,8 @@
         "lr"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the luma radius. The option value must be a float number in\nthe range [0.1,5.0] that specifies the variance of the gaussian filter\nused to blur the image (slower if larger). Default value is 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set luma radius (from 0.1 to 5) (default 1)",
       "name": "luma_radius",
       "required": false,
       "typing": "float"
@@ -34,8 +34,8 @@
         "ls"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the luma strength. The option value must be a float number\nin the range [-1.0,1.0] that configures the blurring. A value included\nin [0.0,1.0] will blur the image whereas a value included in\n[-1.0,0.0] will sharpen the image. Default value is 1.0.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set luma strength (from -1 to 1) (default 1)",
       "name": "luma_strength",
       "required": false,
       "typing": "float"
@@ -46,8 +46,8 @@
         "lt"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the luma threshold used as a coefficient to determine\nwhether a pixel should be blurred or not. The option value must be an\ninteger in the range [-30,30]. A value of 0 will filter all the image,\na value included in [0,30] will filter flat areas and a value included\nin [-30,0] will filter edges. Default value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set luma threshold (from -30 to 30) (default 0)",
       "name": "luma_threshold",
       "required": false,
       "typing": "int"
@@ -58,8 +58,8 @@
         "cr"
       ],
       "choices": [],
-      "default": "0.1 -1",
-      "description": "<dd><p>Set the chroma radius. The option value must be a float number in\nthe range [0.1,5.0] that specifies the variance of the gaussian filter\nused to blur the image (slower if larger). Default value is <samp>luma_radius</samp>.\n</p>\n</dd>",
+      "default": "-0.9",
+      "description": "set chroma radius (from -0.9 to 5) (default -0.9)",
       "name": "chroma_radius",
       "required": false,
       "typing": "float"
@@ -70,8 +70,8 @@
         "cs"
       ],
       "choices": [],
-      "default": "-1.0 -1",
-      "description": "<dd><p>Set the chroma strength. The option value must be a float number\nin the range [-1.0,1.0] that configures the blurring. A value included\nin [0.0,1.0] will blur the image whereas a value included in\n[-1.0,0.0] will sharpen the image. Default value is <samp>luma_strength</samp>.\n</p>\n</dd>",
+      "default": "-2",
+      "description": "set chroma strength (from -2 to 1) (default -2)",
       "name": "chroma_strength",
       "required": false,
       "typing": "float"
@@ -82,8 +82,8 @@
         "ct"
       ],
       "choices": [],
-      "default": "-30 -1",
-      "description": "<dd><p>Set the chroma threshold used as a coefficient to determine\nwhether a pixel should be blurred or not. The option value must be an\ninteger in the range [-30,30]. A value of 0 will filter all the image,\na value included in [0,30] will filter flat areas and a value included\nin [-30,0] will filter edges. Default value is <samp>luma_threshold</samp>.\n</p></dd>",
+      "default": "-31",
+      "description": "set chroma threshold (from -31 to 30) (default -31)",
       "name": "chroma_threshold",
       "required": false,
       "typing": "int"

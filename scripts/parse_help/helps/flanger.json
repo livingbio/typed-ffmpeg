@@ -70,11 +70,11 @@
         "speed"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "sweeps per second (Hz) (from 0.1 to 10) (default 0.5)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "10",
+      "min": "0.1",
       "name": "speed",
       "typing": "double"
     },

@@ -18,7 +18,7 @@
         "split"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"500\"",
       "description": "set split frequencies (default \"500\")",
       "flags": "..F.A......",
       "max": null,
@@ -118,7 +118,7 @@
         "gain"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1.f\"",
       "description": "set output bands gain (default \"1.f\")",
       "flags": "..F.A......",
       "max": null,

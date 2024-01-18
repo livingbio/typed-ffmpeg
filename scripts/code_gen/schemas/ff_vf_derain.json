@@ -24,16 +24,16 @@
         {
           "help": "derain filter flag",
           "name": "derain",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "dehaze filter flag",
           "name": "dehaze",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Specify which filter to use. This option accepts the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>derain</samp>\u2019</dt>\n<dd><p>Derain filter. To conduct derain filter, you need to use a derain model.\n</p>\n</dd>\n<dt>\u2018<samp>dehaze</samp>\u2019</dt>\n<dd><p>Dehaze filter. To conduct dehaze filter, you need to use a dehaze model.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>derain</samp>\u2019.\n</p>\n</dd>",
+      "default": "derain",
+      "description": "filter type(derain/dehaze) (from 0 to 1) (default derain)",
       "name": "filter_type",
       "required": false,
       "typing": "int"
@@ -42,9 +42,15 @@
       "alias": [
         "dnn_backend"
       ],
-      "choices": [],
-      "default": 1,
-      "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nthe following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tensorflow</samp>\u2019</dt>\n<dd><p>TensorFlow backend. To enable this backend you\nneed to install the TensorFlow for C library (see\n<a href=\"https://www.tensorflow.org/install/lang_c\">https://www.tensorflow.org/install/lang_c</a>) and configure FFmpeg with\n<code>--enable-libtensorflow</code>\n</p></dd>\n</dl>\n</dd>",
+      "choices": [
+        {
+          "help": "native backend flag",
+          "name": "native",
+          "value": "0"
+        }
+      ],
+      "default": "native",
+      "description": "DNN backend (from 0 to 1) (default native)",
       "name": "dnn_backend",
       "required": false,
       "typing": "int"
@@ -54,8 +60,8 @@
         "model"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats. TensorFlow can load files for only its format.\n</p></dd>",
+      "default": null,
+      "description": "path to model file",
       "name": "model",
       "required": false,
       "typing": "str"
@@ -65,8 +71,8 @@
         "input"
       ],
       "choices": [],
-      "default": "x",
-      "description": "input name of the model",
+      "default": "\"x\"",
+      "description": "input name of the model (default \"x\")",
       "name": "input",
       "required": false,
       "typing": "str"
@@ -76,8 +82,8 @@
         "output"
       ],
       "choices": [],
-      "default": "y",
-      "description": "output name of the model",
+      "default": "\"y\"",
+      "description": "output name of the model (default \"y\")",
       "name": "output",
       "required": false,
       "typing": "str"

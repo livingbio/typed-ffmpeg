@@ -24,16 +24,16 @@
         {
           "help": "select top field",
           "name": "top",
-          "value": "FIELD_TYPE_TOP"
+          "value": "0"
         },
         {
           "help": "select bottom field",
           "name": "bottom",
-          "value": "FIELD_TYPE_BOTTOM"
+          "value": "1"
         }
       ],
-      "default": "FIELD_TYPE_TOP",
-      "description": "<dd><p>Specify whether to extract the top (if the value is <code>0</code> or\n<code>top</code>) or the bottom field (if the value is <code>1</code> or\n<code>bottom</code>).\n</p></dd>",
+      "default": "top",
+      "description": "set field type (top or bottom) (from 0 to 1) (default top)",
       "name": "type",
       "required": false,
       "typing": "int"

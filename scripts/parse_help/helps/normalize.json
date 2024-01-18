@@ -18,7 +18,7 @@
         "blackpt"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "output color to which darkest input color is mapped (default \"black\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -31,7 +31,7 @@
         "whitept"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"white\"",
       "description": "output color to which brightest input color is mapped (default \"white\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -47,8 +47,8 @@
       "default": "0",
       "description": "amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)",
       "flags": "..FV.......",
-      "max": null,
-      "min": null,
+      "max": "2.68435e+08",
+      "min": "0",
       "name": "smoothing",
       "typing": "int"
     },

@@ -21,8 +21,8 @@
         "threshold"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the luma which will be used as base for transparency.\nDefault value is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the threshold value (from 0 to 1) (default 0)",
       "name": "threshold",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "tolerance"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "<dd><p>Set the range of luma values to be keyed out.\nDefault value is <code>0.01</code>.\n</p>\n</dd>",
+      "default": "0.01",
+      "description": "set the tolerance value (from 0 to 1) (default 0.01)",
       "name": "tolerance",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "softness"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the range of softness. Default value is <code>0</code>.\nUse this to control gradual transition from zero to full transparency.\n</p></dd>",
+      "default": "0",
+      "description": "set the softness value (from 0 to 1) (default 0)",
       "name": "softness",
       "required": false,
       "typing": "float"

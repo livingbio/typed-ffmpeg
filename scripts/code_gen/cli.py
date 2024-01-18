@@ -7,11 +7,65 @@ from parse_c.schema import AVFilter
 from parse_docs.cli import split_documents
 from parse_docs.schema import FilterDocument
 from parse_help.parse import extract
+from parse_help.schema import AVFilter as HelpAVFilter
 
 from .gen import render
 from .schema import TYPING_MAP, Choice, FFmpegFilter, FFmpegFilterOption
 
 app = typer.Typer()
+
+
+def parse_help_options(filter: HelpAVFilter) -> list[FFmpegFilterOption]:
+    options: list[FFmpegFilterOption] = []
+
+    MAPPING = {
+        "boolean": "bool",
+        "duration": "str",
+        "color": "str",
+        "flags": "str",
+        "dictionary": "str",
+        "pix_fmt": "str",
+        "int": "int",
+        "int64": "int",
+        "double": "float",
+        "float": "float",
+        "string": "str",
+        "video_rate": "str",
+        "image_size": "str",
+        "rational": "str",
+        "sample_fmt": "str",
+        "binary": "str",
+    }
+
+    names = set()
+    for option in filter.options:
+        if option.name in names:
+            continue
+        names.add(option.name)
+        options.append(
+            FFmpegFilterOption(
+                name=option.name,
+                alias=option.alias,
+                description=option.description,
+                typing=MAPPING[option.typing],
+                required=False,
+                default=option.default,
+                choices=[k.model_dump() for k in option.choices],
+            )
+        )
+
+    if filter.is_support_timeline:
+        options.append(
+            FFmpegFilterOption(
+                name="enable",
+                description="timeline editing",
+                typing="str",
+                required=False,
+                default=None,
+            )
+        )
+
+    return options
 
 
 def parse_options(filter: AVFilter, doc: FilterDocument) -> list[FFmpegFilterOption]:
@@ -167,7 +221,7 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
             is_support_framesync=help_info.is_support_framesync if help_info else f.is_support_framesync,
             input_stream_typings=f.input_filter_pads,
             output_stream_typings=f.output_filter_pads,
-            options=parse_options(f, doc),
+            options=parse_help_options(help_info) if help_info else parse_options(f, doc),
         )
 
         ffmpeg_filter.save()

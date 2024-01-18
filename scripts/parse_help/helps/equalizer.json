@@ -120,7 +120,7 @@
         "c"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"all\"",
       "description": "set channels to filter (default \"all\")",
       "flags": "..F.A....T.",
       "max": null,

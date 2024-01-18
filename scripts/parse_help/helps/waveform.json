@@ -46,7 +46,7 @@
         "i"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.04",
       "description": "set intensity (from 0 to 1) (default 0.04)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -262,7 +262,7 @@
         "o"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.75",
       "description": "set graticule opacity (from 0 to 1) (default 0.75)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -336,7 +336,7 @@
         "b"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.75",
       "description": "set background opacity (from 0 to 1) (default 0.75)",
       "flags": "..FV.....T.",
       "max": "1",

@@ -21,8 +21,8 @@
         "cue"
       ],
       "choices": [],
-      "default": 0,
-      "description": "cue unix timestamp in microseconds",
+      "default": "0",
+      "description": "cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)",
       "name": "cue",
       "required": false,
       "typing": "int"
@@ -32,22 +32,22 @@
         "preroll"
       ],
       "choices": [],
-      "default": 0,
-      "description": "preroll duration in seconds",
+      "default": "0",
+      "description": "preroll duration in seconds (default 0)",
       "name": "preroll",
       "required": false,
-      "typing": "int"
+      "typing": "str"
     },
     {
       "alias": [
         "buffer"
       ],
       "choices": [],
-      "default": 0,
-      "description": "buffer duration in seconds",
+      "default": "0",
+      "description": "buffer duration in seconds (default 0)",
       "name": "buffer",
       "required": false,
-      "typing": "int"
+      "typing": "str"
     }
   ],
   "output_stream_typings": [

@@ -20,9 +20,15 @@
       "alias": [
         "dnn_backend"
       ],
-      "choices": [],
-      "default": 1,
-      "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nthe following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tensorflow</samp>\u2019</dt>\n<dd><p>TensorFlow backend. To enable this backend you\nneed to install the TensorFlow for C library (see\n<a href=\"https://www.tensorflow.org/install/lang_c\">https://www.tensorflow.org/install/lang_c</a>) and configure FFmpeg with\n<code>--enable-libtensorflow</code>\n</p></dd>\n</dl>\n</dd>",
+      "choices": [
+        {
+          "help": "native backend flag",
+          "name": "native",
+          "value": "0"
+        }
+      ],
+      "default": "native",
+      "description": "DNN backend used for model execution (from 0 to 1) (default native)",
       "name": "dnn_backend",
       "required": false,
       "typing": "int"
@@ -32,8 +38,8 @@
         "scale_factor"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set scale factor for SRCNN model. Allowed values are <code>2</code>, <code>3</code> and <code>4</code>.\nDefault value is <code>2</code>. Scale factor is necessary for SRCNN model, because it accepts\ninput upscaled using bicubic upscaling with proper scale factor.\n</p></dd>",
+      "default": "2",
+      "description": "scale factor for SRCNN model (from 2 to 4) (default 2)",
       "name": "scale_factor",
       "required": false,
       "typing": "int"
@@ -43,8 +49,8 @@
         "model"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats. TensorFlow, OpenVINO backend\ncan load files for only its format.\n</p>\n</dd>",
+      "default": null,
+      "description": "path to model file specifying network architecture and its parameters",
       "name": "model",
       "required": false,
       "typing": "str"
@@ -54,8 +60,8 @@
         "input"
       ],
       "choices": [],
-      "default": "x",
-      "description": "input name of the model",
+      "default": "\"x\"",
+      "description": "input name of the model (default \"x\")",
       "name": "input",
       "required": false,
       "typing": "str"
@@ -65,8 +71,8 @@
         "output"
       ],
       "choices": [],
-      "default": "y",
-      "description": "output name of the model",
+      "default": "\"y\"",
+      "description": "output name of the model (default \"y\")",
       "name": "output",
       "required": false,
       "typing": "str"

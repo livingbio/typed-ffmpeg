@@ -23,19 +23,15 @@ class AudioStream(FilterableStream):
     def a3dscope(
         self,
         *,
-        rate: str | float | int = Default("25"),
-        size: str | float | int = Default("hd720"),
-        fov: float | int | str = Default("90.f"),
-        roll: float | int | str = Default("0.f"),
-        pitch: float | int | str = Default("0.f"),
-        yaw: float | int | str = Default("0.f"),
-        xzoom: float | int | str = Default("1.f"),
-        yzoom: float | int | str = Default("1.f"),
-        zzoom: float | int | str = Default("1.f"),
-        xpos: float | int | str = Default("0.f"),
-        ypos: float | int | str = Default("0.f"),
-        zpos: float | int | str = Default("0.f"),
-        length: int | str = Default(15),
+        rate: str | float | int = Default('"25"'),
+        size: str | float | int = Default('"hd720"'),
+        fov: float | int | str = Default("90"),
+        roll: float | int | str = Default("0"),
+        pitch: float | int | str = Default("0"),
+        yaw: float | int | str = Default("0"),
+        xzoom: float | int | str = Default("1"),
+        xpos: float | int | str = Default("0"),
+        length: int | str = Default("15"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -45,19 +41,15 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str rate: Set frame rate, expressed as number of frames per second. Default value is "25".
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is hd720.
-        :param float fov: Set the camera field of view. Default is 90 degrees. Allowed range is from 40 to 150.
-        :param float roll: Set the camera roll.
-        :param float pitch: Set the camera pitch.
-        :param float yaw: Set the camera yaw.
-        :param float xzoom: Set the camera zoom on X-axis.
-        :param float yzoom: Set the camera zoom on Y-axis.
-        :param float zzoom: Set the camera zoom on Z-axis.
-        :param float xpos: Set the camera position on X-axis.
-        :param float ypos: Set the camera position on Y-axis.
-        :param float zpos: Set the camera position on Z-axis.
-        :param int length: Set the length of displayed audio waves in number of frames.
+        :param str rate: set video rate (default "25")
+        :param str size: set video size (default "hd720")
+        :param float fov: set camera FoV (from 40 to 150) (default 90)
+        :param float roll: set camera roll (from -180 to 180) (default 0)
+        :param float pitch: set camera pitch (from -180 to 180) (default 0)
+        :param float yaw: set camera yaw (from -180 to 180) (default 0)
+        :param float xzoom: set camera zoom (from 0.01 to 10) (default 1)
+        :param float xpos: set camera position (from -60 to 60) (default 0)
+        :param int length: set length (from 1 to 60) (default 15)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#a3dscope
 
@@ -77,11 +69,7 @@ class AudioStream(FilterableStream):
                         "pitch": pitch,
                         "yaw": yaw,
                         "xzoom": xzoom,
-                        "yzoom": yzoom,
-                        "zzoom": zzoom,
                         "xpos": xpos,
-                        "ypos": ypos,
-                        "zpos": zpos,
                         "length": length,
                     }
                     | kwargs
@@ -182,7 +170,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def abench(
-        self, *, action: int | Literal["start", "stop"] | Default = Default("ACTION_START"), **kwargs: Any
+        self, *, action: int | Literal["start", "stop"] | Default = Default("start"), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -191,7 +179,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int action: Start or stop a timer. Available values are: ‘start’ Get the current time, set it as frame metadata (using the key lavfi.bench.start_time), and forward the frame to the next filter. ‘stop’ Get the current time and fetch the lavfi.bench.start_time metadata from the input frame metadata to get the time difference. Time difference, average, maximum and minimum time (respectively t, avg, max and min) are then printed. The timestamps are expressed in seconds.
+        :param int action: set action (from 0 to 1) (default start)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench
 
@@ -215,10 +203,10 @@ class AudioStream(FilterableStream):
     def abitscope(
         self,
         *,
-        rate: str | float | int = Default("25"),
-        size: str | float | int = Default("1024x256"),
-        colors: str | float | int = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
-        mode: int | Literal["bars", "trace"] | Default = Default(0),
+        rate: str | float | int = Default('"25"'),
+        size: str | float | int = Default('"1024x256"'),
+        colors: str | float | int = Default('"red|green|blue|yellow|orange|lime|pink|magenta|brown"'),
+        mode: int | Literal["bars", "trace"] | Default = Default("bars"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -228,10 +216,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str rate: Set frame rate, expressed as number of frames per second. Default value is "25".
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 1024x256.
-        :param str colors: Specify list of colors separated by space or by ’|’ which will be used to draw channels. Unrecognized or missing colors will be replaced by white color.
-        :param int mode: Set output mode. Can be bars or trace. Default is bars.
+        :param str rate: set video rate (default "25")
+        :param str size: set video size (default "1024x256")
+        :param str colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+        :param int mode: set output mode (from 0 to 1) (default bars)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#abitscope
 
@@ -258,18 +246,18 @@ class AudioStream(FilterableStream):
     def acompressor(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        mode: int | Literal["downward", "upward"] | Default = Default(0),
-        threshold: float | int | str = Default(0.125),
-        ratio: float | int | str = Default(2.0),
-        attack: float | int | str = Default(20.0),
-        release: float | int | str = Default(250.0),
-        makeup: float | int | str = Default(1.0),
-        knee: float | int | str = Default(2.82843),
-        link: int | Literal["average", "maximum"] | Default = Default(0),
-        detection: int | Literal["peak", "rms"] | Default = Default(1),
-        level_sc: float | int | str = Default(1.0),
-        mix: float | int | str = Default(1.0),
+        level_in: float | int | str = Default("1"),
+        mode: int | Literal["downward", "upward"] | Default = Default("downward"),
+        threshold: float | int | str = Default("0.125"),
+        ratio: float | int | str = Default("2"),
+        attack: float | int | str = Default("20"),
+        release: float | int | str = Default("250"),
+        makeup: float | int | str = Default("1"),
+        knee: float | int | str = Default("2.82843"),
+        link: int | Literal["average", "maximum"] | Default = Default("average"),
+        detection: int | Literal["peak", "rms"] | Default = Default("rms"),
+        level_sc: float | int | str = Default("1"),
+        mix: float | int | str = Default("1"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -279,18 +267,18 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input gain. Default is 1. Range is between 0.015625 and 64.
-        :param int mode: Set mode of compressor operation. Can be upward or downward. Default is downward.
-        :param float threshold: If a signal of stream rises above this level it will affect the gain reduction. By default it is 0.125. Range is between 0.00097563 and 1.
-        :param float ratio: Set a ratio by which the signal is reduced. 1:2 means that if the level rose 4dB above the threshold, it will be only 2dB above after the reduction. Default is 2. Range is between 1 and 20.
-        :param float attack: Amount of milliseconds the signal has to rise above the threshold before gain reduction starts. Default is 20. Range is between 0.01 and 2000.
-        :param float release: Amount of milliseconds the signal has to fall below the threshold before reduction is decreased again. Default is 250. Range is between 0.01 and 9000.
-        :param float makeup: Set the amount by how much signal will be amplified after processing. Default is 1. Range is from 1 to 64.
-        :param float knee: Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.82843. Range is between 1 and 8.
-        :param int link: Choose if the average level between all channels of input stream or the louder(maximum) channel of input stream affects the reduction. Default is average.
-        :param int detection: Should the exact signal be taken in case of peak or an RMS one in case of rms. Default is rms which is mostly smoother.
-        :param float level_sc: set sidechain gain
-        :param float mix: How much to use compressed signal in output. Default is 1. Range is between 0 and 1.
+        :param float level_in: set input gain (from 0.015625 to 64) (default 1)
+        :param int mode: set mode (from 0 to 1) (default downward)
+        :param float threshold: set threshold (from 0.000976563 to 1) (default 0.125)
+        :param float ratio: set ratio (from 1 to 20) (default 2)
+        :param float attack: set attack (from 0.01 to 2000) (default 20)
+        :param float release: set release (from 0.01 to 9000) (default 250)
+        :param float makeup: set make up gain (from 1 to 64) (default 1)
+        :param float knee: set knee (from 1 to 8) (default 2.82843)
+        :param int link: set link type (from 0 to 1) (default average)
+        :param int detection: set detection (from 0 to 1) (default rms)
+        :param float level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+        :param float mix: set mix (from 0 to 1) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acompressor
 
@@ -322,7 +310,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def acontrast(self, *, contrast: float | int | str = Default(33.0), **kwargs: Any) -> "AudioStream":
+    def acontrast(self, *, contrast: float | int | str = Default("33"), **kwargs: Any) -> "AudioStream":
         """
 
         Simple audio dynamic range compression/expansion filter.
@@ -330,7 +318,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float contrast: Set contrast. Default is 33. Allowed range is between 0 and 100.
+        :param float contrast: set contrast (from 0 to 100) (default 33)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acontrast
 
@@ -376,9 +364,9 @@ class AudioStream(FilterableStream):
         self,
         _crossfade1: "AudioStream",
         *,
-        nb_samples: int | str = Default(44100),
-        duration: int | str = Default(0),
-        overlap: bool | int | str = Default(1),
+        nb_samples: int | str = Default("44100"),
+        duration: str | float | int = Default("0"),
+        overlap: bool | int | str = Default("true"),
         curve1: int
         | Literal[
             "nofade",
@@ -401,12 +389,8 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
-        | Default = Default("TRI"),
+        | Default = Default("tri"),
         curve2: int
         | Literal[
             "nofade",
@@ -429,12 +413,8 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
-        | Default = Default("TRI"),
+        | Default = Default("tri"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -444,11 +424,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int nb_samples: Specify the number of samples for which the cross fade effect has to last. At the end of the cross fade effect the first input audio will be completely silent. Default is 44100.
-        :param int duration: Specify the duration of the cross fade effect. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples.
-        :param bool overlap: Should first stream end overlap with second stream start. Default is enabled.
-        :param int curve1: Set curve for cross fade transition for first stream.
-        :param int curve2: Set curve for cross fade transition for second stream. For description of available curve types see afade filter description.
+        :param int nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
+        :param str duration: set cross fade duration (default 0)
+        :param bool overlap: overlap 1st stream end with 2nd stream start (default true)
+        :param int curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
+        :param int curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acrossfade
 
@@ -479,13 +459,13 @@ class AudioStream(FilterableStream):
     def acrossover(
         self,
         *,
-        split: str | float | int = Default("500"),
+        split: str | float | int = Default('"500"'),
         order: int
         | Literal["2nd", "4th", "6th", "8th", "10th", "12th", "14th", "16th", "18th", "20th"]
-        | Default = Default(1),
-        level: float | int | str = Default(1.0),
-        gain: str | float | int = Default("1.f"),
-        precision: int | Literal["auto", "float", "double"] | Default = Default(0),
+        | Default = Default("4th"),
+        level: float | int | str = Default("1"),
+        gain: str | float | int = Default('"1.f"'),
+        precision: int | Literal["auto", "float", "double"] | Default = Default("auto"),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -495,11 +475,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str split: Set split frequencies. Those must be positive and increasing.
-        :param int order: Set filter order for each band split. This controls filter roll-off or steepness of filter transfer function. Available values are: ‘2nd’ 12 dB per octave. ‘4th’ 24 dB per octave. ‘6th’ 36 dB per octave. ‘8th’ 48 dB per octave. ‘10th’ 60 dB per octave. ‘12th’ 72 dB per octave. ‘14th’ 84 dB per octave. ‘16th’ 96 dB per octave. ‘18th’ 108 dB per octave. ‘20th’ 120 dB per octave. Default is 4th.
-        :param float level: Set input gain level. Allowed range is from 0 to 1. Default value is 1.
-        :param str gain: set output bands gain
-        :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto.
+        :param str split: set split frequencies (default "500")
+        :param int order: set filter order (from 0 to 9) (default 4th)
+        :param float level: set input gain (from 0 to 1) (default 1)
+        :param str gain: set output bands gain (default "1.f")
+        :param int precision: set processing precision (from 0 to 2) (default auto)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acrossover
 
@@ -528,17 +508,17 @@ class AudioStream(FilterableStream):
     def acrusher(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        bits: float | int | str = Default(8.0),
-        mix: float | int | str = Default(0.5),
-        mode: int | Literal["lin", "log"] | Default = Default(0),
-        dc: float | int | str = Default(1.0),
-        aa: float | int | str = Default(0.5),
-        samples: float | int | str = Default(1.0),
-        lfo: bool | int | str = Default(0),
-        lforange: float | int | str = Default(20.0),
-        lforate: float | int | str = Default(0.3),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        bits: float | int | str = Default("8"),
+        mix: float | int | str = Default("0.5"),
+        mode: int | Literal["lin", "log"] | Default = Default("lin"),
+        dc: float | int | str = Default("1"),
+        aa: float | int | str = Default("0.5"),
+        samples: float | int | str = Default("1"),
+        lfo: bool | int | str = Default("false"),
+        lforange: float | int | str = Default("20"),
+        lforate: float | int | str = Default("0.3"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -549,17 +529,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set level in.
-        :param float level_out: Set level out.
-        :param float bits: Set bit reduction.
-        :param float mix: Set mixing amount.
-        :param int mode: Can be linear: lin or logarithmic: log.
-        :param float dc: Set DC.
-        :param float aa: Set anti-aliasing.
-        :param float samples: Set sample reduction.
-        :param bool lfo: Enable LFO. By default disabled.
-        :param float lforange: Set LFO range.
-        :param float lforate: Set LFO rate.
+        :param float level_in: set level in (from 0.015625 to 64) (default 1)
+        :param float level_out: set level out (from 0.015625 to 64) (default 1)
+        :param float bits: set bit reduction (from 1 to 64) (default 8)
+        :param float mix: set mix (from 0 to 1) (default 0.5)
+        :param int mode: set mode (from 0 to 1) (default lin)
+        :param float dc: set DC (from 0.25 to 4) (default 1)
+        :param float aa: set anti-aliasing (from 0 to 1) (default 0.5)
+        :param float samples: set sample reduction (from 1 to 250) (default 1)
+        :param bool lfo: enable LFO (default false)
+        :param float lforange: set LFO depth (from 1 to 250) (default 20)
+        :param float lforate: set LFO rate (from 0.01 to 200) (default 0.3)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acrusher
@@ -595,9 +575,9 @@ class AudioStream(FilterableStream):
     def acue(
         self,
         *,
-        cue: int | str = Default(0),
-        preroll: int | str = Default(0),
-        buffer: int | str = Default(0),
+        cue: int | str = Default("0"),
+        preroll: str | float | int = Default("0"),
+        buffer: str | float | int = Default("0"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -607,9 +587,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int cue: cue unix timestamp in microseconds
-        :param int preroll: preroll duration in seconds
-        :param int buffer: buffer duration in seconds
+        :param int cue: cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)
+        :param str preroll: preroll duration in seconds (default 0)
+        :param str buffer: buffer duration in seconds (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#acue
 
@@ -635,12 +615,12 @@ class AudioStream(FilterableStream):
     def adeclick(
         self,
         *,
-        window: float | int | str = Default(55.0),
-        overlap: float | int | str = Default(75.0),
-        arorder: float | int | str = Default(2.0),
-        threshold: float | int | str = Default(2.0),
-        burst: float | int | str = Default(2.0),
-        method: int | Literal["add", "a", "save", "s"] | Default = Default(0),
+        window: float | int | str = Default("55"),
+        overlap: float | int | str = Default("75"),
+        arorder: float | int | str = Default("2"),
+        threshold: float | int | str = Default("2"),
+        burst: float | int | str = Default("2"),
+        method: int | Literal["add", "a", "save", "s"] | Default = Default("add"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -651,12 +631,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float window: Set window size, in milliseconds. Allowed range is from 10 to 100. Default value is 55 milliseconds. This sets size of window which will be processed at once.
-        :param float overlap: Set window overlap, in percentage of window size. Allowed range is from 50 to 95. Default value is 75 percent. Setting this to a very high value increases impulsive noise removal but makes whole process much slower.
-        :param float arorder: Set autoregression order, in percentage of window size. Allowed range is from 0 to 25. Default value is 2 percent. This option also controls quality of interpolated samples using neighbour good samples.
-        :param float threshold: Set threshold value. Allowed range is from 1 to 100. Default value is 2. This controls the strength of impulsive noise which is going to be removed. The lower value, the more samples will be detected as impulsive noise.
-        :param float burst: Set burst fusion, in percentage of window size. Allowed range is 0 to 10. Default value is 2. If any two samples detected as noise are spaced less than this value then any sample between those two samples will be also detected as noise.
-        :param int method: Set overlap method. It accepts the following values: add, a Select overlap-add method. Even not interpolated samples are slightly changed with this method. save, s Select overlap-save method. Not interpolated samples remain unchanged. Default value is a.
+        :param float window: set window size (from 10 to 100) (default 55)
+        :param float overlap: set window overlap (from 50 to 95) (default 75)
+        :param float arorder: set autoregression order (from 0 to 25) (default 2)
+        :param float threshold: set threshold (from 1 to 100) (default 2)
+        :param float burst: set burst fusion (from 0 to 10) (default 2)
+        :param int method: set overlap method (from 0 to 1) (default add)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adeclick
@@ -687,12 +667,12 @@ class AudioStream(FilterableStream):
     def adeclip(
         self,
         *,
-        window: float | int | str = Default(55.0),
-        overlap: float | int | str = Default(75.0),
-        arorder: float | int | str = Default(8.0),
-        threshold: float | int | str = Default(10.0),
-        hsize: int | str = Default(1000),
-        method: int | Literal["add", "a", "save", "s"] | Default = Default(0),
+        window: float | int | str = Default("55"),
+        overlap: float | int | str = Default("75"),
+        arorder: float | int | str = Default("8"),
+        threshold: float | int | str = Default("10"),
+        hsize: int | str = Default("1000"),
+        method: int | Literal["add", "a", "save", "s"] | Default = Default("add"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -703,12 +683,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float window: Set window size, in milliseconds. Allowed range is from 10 to 100. Default value is 55 milliseconds. This sets size of window which will be processed at once.
-        :param float overlap: Set window overlap, in percentage of window size. Allowed range is from 50 to 95. Default value is 75 percent.
-        :param float arorder: Set autoregression order, in percentage of window size. Allowed range is from 0 to 25. Default value is 8 percent. This option also controls quality of interpolated samples using neighbour good samples.
-        :param float threshold: Set threshold value. Allowed range is from 1 to 100. Default value is 10. Higher values make clip detection less aggressive.
-        :param int hsize: Set size of histogram used to detect clips. Allowed range is from 100 to 9999. Default value is 1000. Higher values make clip detection less aggressive.
-        :param int method: Set overlap method. It accepts the following values: add, a Select overlap-add method. Even not interpolated samples are slightly changed with this method. save, s Select overlap-save method. Not interpolated samples remain unchanged. Default value is a.
+        :param float window: set window size (from 10 to 100) (default 55)
+        :param float overlap: set window overlap (from 50 to 95) (default 75)
+        :param float arorder: set autoregression order (from 0 to 25) (default 8)
+        :param float threshold: set threshold (from 1 to 100) (default 10)
+        :param int hsize: set histogram size (from 100 to 9999) (default 1000)
+        :param int method: set overlap method (from 0 to 1) (default add)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adeclip
@@ -739,8 +719,8 @@ class AudioStream(FilterableStream):
     def adecorrelate(
         self,
         *,
-        stages: int | str = Default(6),
-        seed: int | str = Default(-1),
+        stages: int | str = Default("6"),
+        seed: int | str = Default("-1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -751,8 +731,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int stages: Set decorrelation stages of filtering. Allowed range is from 1 to 16. Default value is 6.
-        :param int seed: Set random seed used for setting delay in samples across channels.
+        :param int stages: set filtering stages (from 1 to 16) (default 6)
+        :param int seed: set random seed (from -1 to UINT32_MAX) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adecorrelate
@@ -779,8 +759,8 @@ class AudioStream(FilterableStream):
     def adelay(
         self,
         *,
-        delays: str | float | int = Default("((void*)0)"),
-        all: bool | int | str = Default(0),
+        delays: str | float | int = Default(None),
+        all: bool | int | str = Default("false"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -791,8 +771,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str delays: Set list of delays in milliseconds for each channel separated by ’|’. Unused delays will be silently ignored. If number of given delays is smaller than number of channels all remaining channels will not be delayed. If you want to delay exact number of samples, append ’S’ to number. If you want instead to delay in seconds, append ’s’ to number.
-        :param bool all: Use last set delay for all remaining channels. By default is disabled. This option if enabled changes how option delays is interpreted.
+        :param str delays: set list of delays for each channel
+        :param bool all: use last available delay for remained channels (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adelay
@@ -819,8 +799,8 @@ class AudioStream(FilterableStream):
     def adenorm(
         self,
         *,
-        level: float | int | str = Default(-351.0),
-        type: int | Literal["dc", "ac", "square", "pulse"] | Default = Default("DC_TYPE"),
+        level: float | int | str = Default("-351"),
+        type: int | Literal["dc", "ac", "square", "pulse"] | Default = Default("dc"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -831,8 +811,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level: Set level of added noise in dB. Default is -351. Allowed range is from -451 to -90.
-        :param int type: Set type of added noise. dc Add DC signal. ac Add AC signal. square Add square signal. pulse Add pulse signal. Default is dc.
+        :param float level: set level (from -451 to -90) (default -351)
+        :param int type: set type (from 0 to 3) (default dc)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adenorm
@@ -888,21 +868,21 @@ class AudioStream(FilterableStream):
     def adrawgraph(
         self,
         *,
-        m1: str | float | int = Default(""),
-        fg1: str | float | int = Default("0xffff0000"),
-        m2: str | float | int = Default(""),
-        fg2: str | float | int = Default("0xff00ff00"),
-        m3: str | float | int = Default(""),
-        fg3: str | float | int = Default("0xffff00ff"),
-        m4: str | float | int = Default(""),
-        fg4: str | float | int = Default("0xffffff00"),
-        bg: str | float | int = Default("white"),
-        min: float | int | str = Default(-1.0),
-        max: float | int | str = Default(1.0),
-        mode: int | Literal["bar", "dot", "line"] | Default = Default(2),
-        slide: int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default(0),
-        size: str | float | int = Default("900x256"),
-        rate: str | float | int = Default("25"),
+        m1: str | float | int = Default('""'),
+        fg1: str | float | int = Default('"0xffff0000"'),
+        m2: str | float | int = Default('""'),
+        fg2: str | float | int = Default('"0xff00ff00"'),
+        m3: str | float | int = Default('""'),
+        fg3: str | float | int = Default('"0xffff00ff"'),
+        m4: str | float | int = Default('""'),
+        fg4: str | float | int = Default('"0xffffff00"'),
+        bg: str | float | int = Default('"white"'),
+        min: float | int | str = Default("-1"),
+        max: float | int | str = Default("1"),
+        mode: int | Literal["bar", "dot", "line"] | Default = Default("line"),
+        slide: int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("frame"),
+        size: str | float | int = Default('"900x256"'),
+        rate: str | float | int = Default('"25"'),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -912,21 +892,21 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str m1: set 1st metadata key
-        :param str fg1: set 1st foreground color expression
-        :param str m2: set 2nd metadata key
-        :param str fg2: set 2nd foreground color expression
-        :param str m3: set 3rd metadata key
-        :param str fg3: set 3rd foreground color expression
-        :param str m4: set 4th metadata key
-        :param str fg4: set 4th foreground color expression
-        :param str bg: set background color
-        :param float min: set minimal value
-        :param float max: set maximal value
-        :param int mode: set graph mode
-        :param int slide: set slide mode
-        :param str size: set graph size
-        :param str rate: set video rate
+        :param str m1: set 1st metadata key (default "")
+        :param str fg1: set 1st foreground color expression (default "0xffff0000")
+        :param str m2: set 2nd metadata key (default "")
+        :param str fg2: set 2nd foreground color expression (default "0xff00ff00")
+        :param str m3: set 3rd metadata key (default "")
+        :param str fg3: set 3rd foreground color expression (default "0xffff00ff")
+        :param str m4: set 4th metadata key (default "")
+        :param str fg4: set 4th foreground color expression (default "0xffffff00")
+        :param str bg: set background color (default "white")
+        :param float min: set minimal value (from INT_MIN to INT_MAX) (default -1)
+        :param float max: set maximal value (from INT_MIN to INT_MAX) (default 1)
+        :param int mode: set graph mode (from 0 to 2) (default line)
+        :param int slide: set slide mode (from 0 to 4) (default frame)
+        :param str size: set graph size (default "900x256")
+        :param str rate: set video rate (default "25")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adrawgraph
 
@@ -964,10 +944,10 @@ class AudioStream(FilterableStream):
     def adrc(
         self,
         *,
-        transfer: str | float | int = Default("p"),
-        attack: float | int | str = Default(50.0),
-        release: float | int | str = Default(100.0),
-        channels: str | float | int = Default("all"),
+        transfer: str | float | int = Default('"p"'),
+        attack: float | int | str = Default("50"),
+        release: float | int | str = Default("100"),
+        channels: str | float | int = Default('"all"'),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -978,10 +958,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str transfer: Set the transfer expression. The expression can contain the following constants: ch current channel number sn current sample number nb_channels number of channels t timestamp expressed in seconds sr sample rate p current frequency power value, in dB f current frequency in Hz Default value is p.
-        :param float attack: Set the attack in milliseconds. Default is 50 milliseconds. Allowed range is from 1 to 1000 milliseconds.
-        :param float release: Set the release in milliseconds. Default is 100 milliseconds. Allowed range is from 5 to 2000 milliseconds.
-        :param str channels: Set which channels to filter, by default all channels in audio stream are filtered.
+        :param str transfer: set the transfer expression (default "p")
+        :param float attack: set the attack (from 1 to 1000) (default 50)
+        :param float release: set the release (from 5 to 2000) (default 100)
+        :param str channels: set channels to filter (default "all")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adrc
@@ -1010,21 +990,20 @@ class AudioStream(FilterableStream):
     def adynamicequalizer(
         self,
         *,
-        threshold: float | int | str = Default(0.0),
-        dfrequency: float | int | str = Default(1000.0),
-        dqfactor: float | int | str = Default(1.0),
-        tfrequency: float | int | str = Default(1000.0),
-        tqfactor: float | int | str = Default(1.0),
-        attack: float | int | str = Default(20.0),
-        release: float | int | str = Default(200.0),
-        ratio: float | int | str = Default(1.0),
-        makeup: float | int | str = Default(0.0),
-        range: float | int | str = Default(50.0),
-        mode: int | Literal["listen", "cutbelow", "cutabove", "boostbelow", "boostabove"] | Default = Default(0),
-        dftype: int | Literal["bandpass", "lowpass", "highpass", "peak"] | Default = Default(0),
-        tftype: int | Literal["bell", "lowshelf", "highshelf"] | Default = Default(0),
-        auto: int | Literal["disabled", "off", "on", "adaptive"] | Default = Default("DET_OFF"),
-        precision: int | Literal["auto", "float", "double"] | Default = Default(0),
+        threshold: float | int | str = Default("0"),
+        dfrequency: float | int | str = Default("1000"),
+        dqfactor: float | int | str = Default("1"),
+        tfrequency: float | int | str = Default("1000"),
+        tqfactor: float | int | str = Default("1"),
+        attack: float | int | str = Default("20"),
+        release: float | int | str = Default("200"),
+        ratio: float | int | str = Default("1"),
+        makeup: float | int | str = Default("0"),
+        range: float | int | str = Default("50"),
+        mode: int | Literal["listen", "cut", "boost"] | Default = Default("cut"),
+        tftype: int | Literal["bell", "lowshelf", "highshelf"] | Default = Default("bell"),
+        direction: int | Literal["downward", "upward"] | Default = Default("downward"),
+        auto: int | Literal["disabled", "off", "on"] | Default = Default("disabled"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1035,21 +1014,20 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float threshold: Set the detection threshold used to trigger equalization. Threshold detection is using detection filter. Default value is 0. Allowed range is from 0 to 100.
-        :param float dfrequency: Set the detection frequency in Hz used for detection filter used to trigger equalization. Default value is 1000 Hz. Allowed range is between 2 and 1000000 Hz.
-        :param float dqfactor: Set the detection resonance factor for detection filter used to trigger equalization. Default value is 1. Allowed range is from 0.001 to 1000.
-        :param float tfrequency: Set the target frequency of equalization filter. Default value is 1000 Hz. Allowed range is between 2 and 1000000 Hz.
-        :param float tqfactor: Set the target resonance factor for target equalization filter. Default value is 1. Allowed range is from 0.001 to 1000.
-        :param float attack: Set the amount of milliseconds the signal from detection has to rise above the detection threshold before equalization starts. Default is 20. Allowed range is between 1 and 2000.
-        :param float release: Set the amount of milliseconds the signal from detection has to fall below the detection threshold before equalization ends. Default is 200. Allowed range is between 1 and 2000.
-        :param float ratio: Set the ratio by which the equalization gain is raised. Default is 1. Allowed range is between 0 and 30.
-        :param float makeup: Set the makeup offset by which the equalization gain is raised. Default is 0. Allowed range is between 0 and 100.
-        :param float range: Set the max allowed cut/boost amount. Default is 50. Allowed range is from 1 to 200.
-        :param int mode: Set the mode of filter operation, can be one of the following: ‘listen’ Output only isolated detection signal. ‘cutbelow’ Cut frequencies below detection threshold. ‘cutabove’ Cut frequencies above detection threshold. ‘boostbelow’ Boost frequencies below detection threshold. ‘boostabove’ Boost frequencies above detection threshold. Default mode is ‘cutbelow’.
-        :param int dftype: Set the type of detection filter, can be one of the following: ‘bandpass’ ‘lowpass’ ‘highpass’ ‘peak’ Default type is ‘bandpass’.
-        :param int tftype: Set the type of target filter, can be one of the following: ‘bell’ ‘lowshelf’ ‘highshelf’ Default type is ‘bell’.
-        :param int auto: Automatically gather threshold from detection filter. By default is ‘disabled’. This option is useful to detect threshold in certain time frame of input audio stream, in such case option value is changed at runtime. Available values are: ‘disabled’ Disable using automatically gathered threshold value. ‘off’ Stop picking threshold value. ‘on’ Start picking threshold value. ‘adaptive’ Adaptively pick threshold value, by calculating sliding window entropy.
-        :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+        :param float threshold: set detection threshold (from 0 to 100) (default 0)
+        :param float dfrequency: set detection frequency (from 2 to 1e+06) (default 1000)
+        :param float dqfactor: set detection Q factor (from 0.001 to 1000) (default 1)
+        :param float tfrequency: set target frequency (from 2 to 1e+06) (default 1000)
+        :param float tqfactor: set target Q factor (from 0.001 to 1000) (default 1)
+        :param float attack: set attack duration (from 1 to 2000) (default 20)
+        :param float release: set release duration (from 1 to 2000) (default 200)
+        :param float ratio: set ratio factor (from 0 to 30) (default 1)
+        :param float makeup: set makeup gain (from 0 to 100) (default 0)
+        :param float range: set max gain (from 1 to 200) (default 50)
+        :param int mode: set mode (from -1 to 1) (default cut)
+        :param int tftype: set target filter type (from 0 to 2) (default bell)
+        :param int direction: set direction (from 0 to 1) (default downward)
+        :param int auto: set auto threshold (from -1 to 1) (default disabled)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer
@@ -1074,10 +1052,9 @@ class AudioStream(FilterableStream):
                         "makeup": makeup,
                         "range": range,
                         "mode": mode,
-                        "dftype": dftype,
                         "tftype": tftype,
+                        "direction": direction,
                         "auto": auto,
-                        "precision": precision,
                         "enable": enable,
                     }
                     | kwargs
@@ -1089,8 +1066,8 @@ class AudioStream(FilterableStream):
     def adynamicsmooth(
         self,
         *,
-        sensitivity: float | int | str = Default(2.0),
-        basefreq: float | int | str = Default(22050.0),
+        sensitivity: float | int | str = Default("2"),
+        basefreq: float | int | str = Default("22050"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1101,8 +1078,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float sensitivity: Set an amount of sensitivity to frequency fluctations. Default is 2. Allowed range is from 0 to 1e+06.
-        :param float basefreq: Set a base frequency for smoothing. Default value is 22050. Allowed range is from 2 to 1e+06.
+        :param float sensitivity: set smooth sensitivity (from 0 to 1e+06) (default 2)
+        :param float basefreq: set base frequency (from 2 to 1e+06) (default 22050)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#adynamicsmooth
@@ -1129,10 +1106,10 @@ class AudioStream(FilterableStream):
     def aecho(
         self,
         *,
-        in_gain: float | int | str = Default(0.6),
-        out_gain: float | int | str = Default(0.3),
-        delays: str | float | int = Default("1000"),
-        decays: str | float | int = Default("0.5"),
+        in_gain: float | int | str = Default("0.6"),
+        out_gain: float | int | str = Default("0.3"),
+        delays: str | float | int = Default('"1000"'),
+        decays: str | float | int = Default('"0.5"'),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -1142,10 +1119,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float in_gain: Set input gain of reflected signal. Default is 0.6.
-        :param float out_gain: Set output gain of reflected signal. Default is 0.3.
-        :param str delays: Set list of time intervals in milliseconds between original signal and reflections separated by ’|’. Allowed range for each delay is (0 - 90000.0]. Default is 1000.
-        :param str decays: Set list of loudness of reflected signals separated by ’|’. Allowed range for each decay is (0 - 1.0]. Default is 0.5.
+        :param float in_gain: set signal input gain (from 0 to 1) (default 0.6)
+        :param float out_gain: set signal output gain (from 0 to 1) (default 0.3)
+        :param str delays: set list of signal delays (default "1000")
+        :param str decays: set list of signal decays (default "0.5")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aecho
 
@@ -1172,10 +1149,12 @@ class AudioStream(FilterableStream):
     def aemphasis(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        mode: int | Literal["reproduction", "production"] | Default = Default(0),
-        type: int | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"] | Default = Default(4),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        mode: int | Literal["reproduction", "production"] | Default = Default("reproduction"),
+        type: int
+        | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"]
+        | Default = Default("cd"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1186,10 +1165,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input gain.
-        :param float level_out: Set output gain.
-        :param int mode: Set filter mode. For restoring material use reproduction mode, otherwise use production mode. Default is reproduction mode.
-        :param int type: Set filter type. Selects medium. Can be one of the following: col select Columbia. emi select EMI. bsi select BSI (78RPM). riaa select RIAA. cd select Compact Disc (CD). 50fm select 50µs (FM). 75fm select 75µs (FM). 50kf select 50µs (FM-KF). 75kf select 75µs (FM-KF).
+        :param float level_in: set input gain (from 0 to 64) (default 1)
+        :param float level_out: set output gain (from 0 to 64) (default 1)
+        :param int mode: set filter mode (from 0 to 1) (default reproduction)
+        :param int type: set filter type (from 0 to 8) (default cd)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aemphasis
@@ -1218,8 +1197,8 @@ class AudioStream(FilterableStream):
     def aeval(
         self,
         *,
-        exprs: str | float | int = Default("((void*)0)"),
-        channel_layout: str | float | int = Default("((void*)0)"),
+        exprs: str | float | int = Default(None),
+        channel_layout: str | float | int = Default(None),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1230,8 +1209,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str exprs: Set the ’|’-separated expressions list for each separate channel. If the number of input channels is greater than the number of expressions, the last specified expression is used for the remaining output channels.
-        :param str channel_layout: Set output channel layout. If not specified, the channel layout is specified by the number of expressions. If set to ‘same’, it will use by default the same input channel layout.
+        :param str exprs: set the '|'-separated list of channels expressions
+        :param str channel_layout: set channel layout
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aeval
@@ -1258,14 +1237,14 @@ class AudioStream(FilterableStream):
     def aexciter(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        amount: float | int | str = Default(1.0),
-        drive: float | int | str = Default(8.5),
-        blend: float | int | str = Default(0.0),
-        freq: float | int | str = Default(7500.0),
-        ceil: float | int | str = Default(9999.0),
-        listen: bool | int | str = Default(0),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        amount: float | int | str = Default("1"),
+        drive: float | int | str = Default("8.5"),
+        blend: float | int | str = Default("0"),
+        freq: float | int | str = Default("7500"),
+        ceil: float | int | str = Default("9999"),
+        listen: bool | int | str = Default("false"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1276,14 +1255,14 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input level prior processing of signal. Allowed range is from 0 to 64. Default value is 1.
-        :param float level_out: Set output level after processing of signal. Allowed range is from 0 to 64. Default value is 1.
-        :param float amount: Set the amount of harmonics added to original signal. Allowed range is from 0 to 64. Default value is 1.
-        :param float drive: Set the amount of newly created harmonics. Allowed range is from 0.1 to 10. Default value is 8.5.
-        :param float blend: Set the octave of newly created harmonics. Allowed range is from -10 to 10. Default value is 0.
-        :param float freq: Set the lower frequency limit of producing harmonics in Hz. Allowed range is from 2000 to 12000 Hz. Default is 7500 Hz.
-        :param float ceil: Set the upper frequency limit of producing harmonics. Allowed range is from 9999 to 20000 Hz. If value is lower than 10000 Hz no limit is applied.
-        :param bool listen: Mute the original signal and output only added harmonics. By default is disabled.
+        :param float level_in: set level in (from 0 to 64) (default 1)
+        :param float level_out: set level out (from 0 to 64) (default 1)
+        :param float amount: set amount (from 0 to 64) (default 1)
+        :param float drive: set harmonics (from 0.1 to 10) (default 8.5)
+        :param float blend: set blend harmonics (from -10 to 10) (default 0)
+        :param float freq: set scope (from 2000 to 12000) (default 7500)
+        :param float ceil: set ceiling (from 9999 to 20000) (default 9999)
+        :param bool listen: enable listen mode (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aexciter
@@ -1316,11 +1295,11 @@ class AudioStream(FilterableStream):
     def afade(
         self,
         *,
-        type: int | Literal["in", "out"] | Default = Default(0),
-        start_sample: int | str = Default(0),
-        nb_samples: int | str = Default(44100),
-        start_time: int | str = Default(0),
-        duration: int | str = Default(0),
+        type: int | Literal["in", "out"] | Default = Default("in"),
+        start_sample: int | str = Default("0"),
+        nb_samples: int | str = Default("44100"),
+        start_time: str | float | int = Default("0"),
+        duration: str | float | int = Default("0"),
         curve: int
         | Literal[
             "nofade",
@@ -1343,14 +1322,10 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
-        | Default = Default("TRI"),
-        silence: float | int | str = Default(0.0),
-        unity: float | int | str = Default(1.0),
+        | Default = Default("tri"),
+        silence: float | int | str = Default("0"),
+        unity: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1361,14 +1336,14 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int type: Specify the effect type, can be either in for fade-in, or out for a fade-out effect. Default is in.
-        :param int start_sample: Specify the number of the start sample for starting to apply the fade effect. Default is 0.
-        :param int nb_samples: Specify the number of samples for which the fade effect has to last. At the end of the fade-in effect the output audio will have the same volume as the input audio, at the end of the fade-out transition the output audio will be silence. Default is 44100.
-        :param int start_time: Specify the start time of the fade effect. Default is 0. The value must be specified as a time duration; see (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. If set this option is used instead of start_sample.
-        :param int duration: Specify the duration of the fade effect. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. At the end of the fade-in effect the output audio will have the same volume as the input audio, at the end of the fade-out transition the output audio will be silence. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples.
-        :param int curve: Set curve for fade transition. It accepts the following values: tri select triangular, linear slope (default) qsin select quarter of sine wave hsin select half of sine wave esin select exponential sine wave log select logarithmic ipar select inverted parabola qua select quadratic cub select cubic squ select square root cbr select cubic root par select parabola exp select exponential iqsin select inverted quarter of sine wave ihsin select inverted half of sine wave dese select double-exponential seat desi select double-exponential sigmoid losi select logistic sigmoid sinc select sine cardinal function isinc select inverted sine cardinal function quat select quartic quatr select quartic root qsin2 select squared quarter of sine wave hsin2 select squared half of sine wave nofade no fade applied
-        :param float silence: Set the initial gain for fade-in or final gain for fade-out. Default value is 0.0.
-        :param float unity: Set the initial gain for fade-out or final gain for fade-in. Default value is 1.0.
+        :param int type: set the fade direction (from 0 to 1) (default in)
+        :param int start_sample: set number of first sample to start fading (from 0 to I64_MAX) (default 0)
+        :param int nb_samples: set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
+        :param str start_time: set time to start fading (default 0)
+        :param str duration: set fade duration (default 0)
+        :param int curve: set fade curve type (from -1 to 18) (default tri)
+        :param float silence: set the silence gain (from 0 to 1) (default 0)
+        :param float unity: set the unity gain (from 0 to 1) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#afade
@@ -1401,22 +1376,22 @@ class AudioStream(FilterableStream):
     def afftdn(
         self,
         *,
-        noise_reduction: float | int | str = Default(12.0),
-        noise_floor: float | int | str = Default(-50.0),
+        noise_reduction: float | int | str = Default("12"),
+        noise_floor: float | int | str = Default("-50"),
         noise_type: int
         | Literal["white", "w", "vinyl", "v", "shellac", "s", "custom", "c"]
-        | Default = Default("WHITE_NOISE"),
-        band_noise: str | float | int = Default("0"),
-        residual_floor: float | int | str = Default(-38.0),
-        track_noise: bool | int | str = Default(0),
-        track_residual: bool | int | str = Default(0),
-        output_mode: int | Literal["input", "i", "output", "o", "noise", "n"] | Default = Default("OUT_MODE"),
-        adaptivity: float | int | str = Default(0.5),
-        floor_offset: float | int | str = Default(1.0),
-        noise_link: int | Literal["none", "min", "max", "average"] | Default = Default("MIN_LINK"),
-        band_multiplier: float | int | str = Default(1.25),
-        sample_noise: int | Literal["none", "start", "begin", "stop", "end"] | Default = Default("SAMPLE_NONE"),
-        gain_smooth: int | str = Default(0),
+        | Default = Default("white"),
+        band_noise: str | float | int = Default(None),
+        residual_floor: float | int | str = Default("-38"),
+        track_noise: bool | int | str = Default("false"),
+        track_residual: bool | int | str = Default("false"),
+        output_mode: int | Literal["input", "i", "output", "o", "noise", "n"] | Default = Default("output"),
+        adaptivity: float | int | str = Default("0.5"),
+        floor_offset: float | int | str = Default("1"),
+        noise_link: int | Literal["none", "min", "max", "average"] | Default = Default("min"),
+        band_multiplier: float | int | str = Default("1.25"),
+        sample_noise: int | Literal["none", "start", "begin", "stop", "end"] | Default = Default("none"),
+        gain_smooth: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1427,20 +1402,20 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float noise_reduction: Set the noise reduction in dB, allowed range is 0.01 to 97. Default value is 12 dB.
-        :param float noise_floor: Set the noise floor in dB, allowed range is -80 to -20. Default value is -50 dB.
-        :param int noise_type: Set the noise type. It accepts the following values: white, w Select white noise. vinyl, v Select vinyl noise. shellac, s Select shellac noise. custom, c Select custom noise, defined in bn option. Default value is white noise.
-        :param str band_noise: Set custom band noise profile for every one of 15 bands. Bands are separated by ’ ’ or ’|’.
-        :param float residual_floor: Set the residual floor in dB, allowed range is -80 to -20. Default value is -38 dB.
-        :param bool track_noise: Enable noise floor tracking. By default is disabled. With this enabled, noise floor is automatically adjusted.
-        :param bool track_residual: Enable residual tracking. By default is disabled.
-        :param int output_mode: Set the output mode. It accepts the following values: input, i Pass input unchanged. output, o Pass noise filtered out. noise, n Pass only noise. Default value is output.
-        :param float adaptivity: Set the adaptivity factor, used how fast to adapt gains adjustments per each frequency bin. Value 0 enables instant adaptation, while higher values react much slower. Allowed range is from 0 to 1. Default value is 0.5.
-        :param float floor_offset: Set the noise floor offset factor. This option is used to adjust offset applied to measured noise floor. It is only effective when noise floor tracking is enabled. Allowed range is from -2.0 to 2.0. Default value is 1.0.
-        :param int noise_link: Set the noise link used for multichannel audio. It accepts the following values: none Use unchanged channel’s noise floor. min Use measured min noise floor of all channels. max Use measured max noise floor of all channels. average Use measured average noise floor of all channels. Default value is min.
-        :param float band_multiplier: Set the band multiplier factor, used how much to spread bands across frequency bins. Allowed range is from 0.2 to 5. Default value is 1.25.
-        :param int sample_noise: Toggle capturing and measurement of noise profile from input audio. It accepts the following values: start, begin Start sample noise capture. stop, end Stop sample noise capture and measure new noise band profile. Default value is none.
-        :param int gain_smooth: Set gain smooth spatial radius, used to smooth gains applied to each frequency bin. Useful to reduce random music noise artefacts. Higher values increases smoothing of gains. Allowed range is from 0 to 50. Default value is 0.
+        :param float noise_reduction: set the noise reduction (from 0.01 to 97) (default 12)
+        :param float noise_floor: set the noise floor (from -80 to -20) (default -50)
+        :param int noise_type: set the noise type (from 0 to 3) (default white)
+        :param str band_noise: set the custom bands noise
+        :param float residual_floor: set the residual floor (from -80 to -20) (default -38)
+        :param bool track_noise: track noise (default false)
+        :param bool track_residual: track residual (default false)
+        :param int output_mode: set output mode (from 0 to 2) (default output)
+        :param float adaptivity: set adaptivity factor (from 0 to 1) (default 0.5)
+        :param float floor_offset: set noise floor offset factor (from -2 to 2) (default 1)
+        :param int noise_link: set the noise floor link (from 0 to 3) (default min)
+        :param float band_multiplier: set band multiplier (from 0.2 to 5) (default 1.25)
+        :param int sample_noise: set sample noise mode (from 0 to 2) (default none)
+        :param int gain_smooth: set gain smooth radius (from 0 to 50) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#afftdn
@@ -1479,9 +1454,9 @@ class AudioStream(FilterableStream):
     def afftfilt(
         self,
         *,
-        real: str | float | int = Default("re"),
-        imag: str | float | int = Default("im"),
-        win_size: int | str = Default(4096),
+        real: str | float | int = Default('"re"'),
+        imag: str | float | int = Default('"im"'),
+        win_size: int | str = Default("4096"),
         win_func: int
         | Literal[
             "rect",
@@ -1507,8 +1482,8 @@ class AudioStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | Default = Default("WFUNC_HANNING"),
-        overlap: float | int | str = Default(0.75),
+        | Default = Default("hann"),
+        overlap: float | int | str = Default("0.75"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1519,11 +1494,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str real: Set frequency domain real expression for each separate channel separated by ’|’. Default is "re". If the number of input channels is greater than the number of expressions, the last specified expression is used for the remaining output channels.
-        :param str imag: Set frequency domain imaginary expression for each separate channel separated by ’|’. Default is "im". Each expression in real and imag can contain the following constants and functions: sr sample rate b current frequency bin number nb number of available bins ch channel number of the current expression chs number of channels pts current frame pts re current real part of frequency bin of current channel im current imaginary part of frequency bin of current channel real(b, ch) Return the value of real part of frequency bin at location (bin,channel) imag(b, ch) Return the value of imaginary part of frequency bin at location (bin,channel)
-        :param int win_size: Set window size. Allowed range is from 16 to 131072. Default is 4096
-        :param int win_func: Set window function. It accepts the following values: ‘rect’ ‘bartlett’ ‘hann, hanning’ ‘hamming’ ‘blackman’ ‘welch’ ‘flattop’ ‘bharris’ ‘bnuttall’ ‘bhann’ ‘sine’ ‘nuttall’ ‘lanczos’ ‘gauss’ ‘tukey’ ‘dolph’ ‘cauchy’ ‘parzen’ ‘poisson’ ‘bohman’ ‘kaiser’ Default is hann.
-        :param float overlap: Set window overlap. If set to 1, the recommended overlap for selected window function will be picked. Default is 0.75.
+        :param str real: set channels real expressions (default "re")
+        :param str imag: set channels imaginary expressions (default "im")
+        :param int win_size: set window size (from 16 to 131072) (default 4096)
+        :param int win_func: set window function (from 0 to 20) (default hann)
+        :param float overlap: set window overlap (from 0 to 1) (default 0.75)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#afftfilt
@@ -1586,9 +1561,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str sample_fmts: A ’|’-separated list of requested sample formats.
-        :param str sample_rates: A ’|’-separated list of requested sample rates.
-        :param str channel_layouts: A ’|’-separated list of requested channel layouts. See (ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual for the required syntax.
+        :param str sample_fmts: A '|'-separated list of sample formats.
+        :param str sample_rates: A '|'-separated list of sample rates.
+        :param str channel_layouts: A '|'-separated list of channel layouts.
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aformat
 
@@ -1614,9 +1589,9 @@ class AudioStream(FilterableStream):
     def afreqshift(
         self,
         *,
-        shift: float | int | str = Default(0.0),
-        level: float | int | str = Default(1.0),
-        order: int | str = Default(8),
+        shift: float | int | str = Default("0"),
+        level: float | int | str = Default("1"),
+        order: int | str = Default("8"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1627,9 +1602,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float shift: Specify frequency shift. Allowed range is -INT_MAX to INT_MAX. Default value is 0.0.
-        :param float level: Set output gain applied to final output. Allowed range is from 0.0 to 1.0. Default value is 1.0.
-        :param int order: Set filter order used for filtering. Allowed range is from 1 to 16. Default value is 8.
+        :param float shift: set frequency shift (from -2.14748e+09 to INT_MAX) (default 0)
+        :param float level: set output level (from 0 to 1) (default 1)
+        :param int order: set filter order (from 1 to 16) (default 8)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#afreqshift
@@ -1657,14 +1632,14 @@ class AudioStream(FilterableStream):
     def afwtdn(
         self,
         *,
-        sigma: float | int | str = Default(0.0),
-        levels: int | str = Default(10),
-        wavet: int | Literal["sym2", "sym4", "rbior68", "deb10", "sym10", "coif5", "bl3"] | Default = Default("SYM10"),
-        percent: float | int | str = Default(85.0),
-        profile: bool | int | str = Default(0),
-        adaptive: bool | int | str = Default(0),
-        samples: int | str = Default(8192),
-        softness: float | int | str = Default(1.0),
+        sigma: float | int | str = Default("0"),
+        levels: int | str = Default("10"),
+        wavet: int | Literal["sym2", "sym4", "rbior68", "deb10", "sym10", "coif5", "bl3"] | Default = Default("sym10"),
+        percent: float | int | str = Default("85"),
+        profile: bool | int | str = Default("false"),
+        adaptive: bool | int | str = Default("false"),
+        samples: int | str = Default("8192"),
+        softness: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1675,14 +1650,14 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float sigma: Set the noise sigma, allowed range is from 0 to 1. Default value is 0. This option controls strength of denoising applied to input samples. Most useful way to set this option is via decibels, eg. -45dB.
-        :param int levels: Set the number of wavelet levels of decomposition. Allowed range is from 1 to 12. Default value is 10. Setting this too low make denoising performance very poor.
-        :param int wavet: Set wavelet type for decomposition of input frame. They are sorted by number of coefficients, from lowest to highest. More coefficients means worse filtering speed, but overall better quality. Available wavelets are: ‘sym2’ ‘sym4’ ‘rbior68’ ‘deb10’ ‘sym10’ ‘coif5’ ‘bl3’
-        :param float percent: Set percent of full denoising. Allowed range is from 0 to 100 percent. Default value is 85 percent or partial denoising.
-        :param bool profile: If enabled, first input frame will be used as noise profile. If first frame samples contain non-noise performance will be very poor.
-        :param bool adaptive: If enabled, input frames are analyzed for presence of noise. If noise is detected with high possibility then input frame profile will be used for processing following frames, until new noise frame is detected.
-        :param int samples: Set size of single frame in number of samples. Allowed range is from 512 to 65536. Default frame size is 8192 samples.
-        :param float softness: Set softness applied inside thresholding function. Allowed range is from 0 to 10. Default softness is 1.
+        :param float sigma: set noise sigma (from 0 to 1) (default 0)
+        :param int levels: set number of wavelet levels (from 1 to 12) (default 10)
+        :param int wavet: set wavelet type (from 0 to 6) (default sym10)
+        :param float percent: set percent of full denoising (from 0 to 100) (default 85)
+        :param bool profile: profile noise (default false)
+        :param bool adaptive: adaptive profiling of noise (default false)
+        :param int samples: set frame size in number of samples (from 512 to 65536) (default 8192)
+        :param float softness: set thresholding softness (from 0 to 10) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#afwtdn
@@ -1715,18 +1690,18 @@ class AudioStream(FilterableStream):
     def agate(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        mode: int | Literal["downward", "upward"] | Default = Default(0),
-        range: float | int | str = Default(0.06125),
-        threshold: float | int | str = Default(0.125),
-        ratio: float | int | str = Default(2.0),
-        attack: float | int | str = Default(20.0),
-        release: float | int | str = Default(250.0),
-        makeup: float | int | str = Default(1.0),
-        knee: float | int | str = Default(2.828427125),
-        detection: int | Literal["peak", "rms"] | Default = Default(1),
-        link: int | Literal["average", "maximum"] | Default = Default(0),
-        level_sc: float | int | str = Default(1.0),
+        level_in: float | int | str = Default("1"),
+        mode: int | Literal["downward", "upward"] | Default = Default("downward"),
+        range: float | int | str = Default("0.06125"),
+        threshold: float | int | str = Default("0.125"),
+        ratio: float | int | str = Default("2"),
+        attack: float | int | str = Default("20"),
+        release: float | int | str = Default("250"),
+        makeup: float | int | str = Default("1"),
+        knee: float | int | str = Default("2.82843"),
+        detection: int | Literal["peak", "rms"] | Default = Default("rms"),
+        link: int | Literal["average", "maximum"] | Default = Default("average"),
+        level_sc: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -1737,18 +1712,18 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input level before filtering. Default is 1. Allowed range is from 0.015625 to 64.
-        :param int mode: Set the mode of operation. Can be upward or downward. Default is downward. If set to upward mode, higher parts of signal will be amplified, expanding dynamic range in upward direction. Otherwise, in case of downward lower parts of signal will be reduced.
-        :param float range: Set the level of gain reduction when the signal is below the threshold. Default is 0.06125. Allowed range is from 0 to 1. Setting this to 0 disables reduction and then filter behaves like expander.
-        :param float threshold: If a signal rises above this level the gain reduction is released. Default is 0.125. Allowed range is from 0 to 1.
-        :param float ratio: Set a ratio by which the signal is reduced. Default is 2. Allowed range is from 1 to 9000.
-        :param float attack: Amount of milliseconds the signal has to rise above the threshold before gain reduction stops. Default is 20 milliseconds. Allowed range is from 0.01 to 9000.
-        :param float release: Amount of milliseconds the signal has to fall below the threshold before the reduction is increased again. Default is 250 milliseconds. Allowed range is from 0.01 to 9000.
-        :param float makeup: Set amount of amplification of signal after processing. Default is 1. Allowed range is from 1 to 64.
-        :param float knee: Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.828427125. Allowed range is from 1 to 8.
-        :param int detection: Choose if exact signal should be taken for detection or an RMS like one. Default is rms. Can be peak or rms.
-        :param int link: Choose if the average level between all channels or the louder channel affects the reduction. Default is average. Can be average or maximum.
-        :param float level_sc: set sidechain gain
+        :param float level_in: set input level (from 0.015625 to 64) (default 1)
+        :param int mode: set mode (from 0 to 1) (default downward)
+        :param float range: set max gain reduction (from 0 to 1) (default 0.06125)
+        :param float threshold: set threshold (from 0 to 1) (default 0.125)
+        :param float ratio: set ratio (from 1 to 9000) (default 2)
+        :param float attack: set attack (from 0.01 to 9000) (default 20)
+        :param float release: set release (from 0.01 to 9000) (default 250)
+        :param float makeup: set makeup gain (from 1 to 64) (default 1)
+        :param float knee: set knee (from 1 to 8) (default 2.82843)
+        :param int detection: set detection (from 0 to 1) (default rms)
+        :param int link: set link (from 0 to 1) (default average)
+        :param float level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#agate
@@ -1785,13 +1760,11 @@ class AudioStream(FilterableStream):
     def agraphmonitor(
         self,
         *,
-        size: str | float | int = Default("hd720"),
-        opacity: float | int | str = Default(0.9),
-        mode: str | Literal["full", "compact", "nozero", "noeof", "nodisabled"] | Default = Default(0),
+        size: str | float | int = Default('"hd720"'),
+        opacity: float | int | str = Default("0.9"),
+        mode: int | Literal["full", "compact"] | Default = Default("full"),
         flags: str
         | Literal[
-            "none",
-            "all",
             "queue",
             "frame_count_in",
             "frame_count_out",
@@ -1808,10 +1781,9 @@ class AudioStream(FilterableStream):
             "sample_count_in",
             "sample_count_out",
             "sample_count_delta",
-            "disabled",
         ]
-        | Default = Default("FLAG_QUEUE"),
-        rate: str | float | int = Default("25"),
+        | Default = Default("queue"),
+        rate: str | float | int = Default('"25"'),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1821,11 +1793,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: set monitor size
-        :param float opacity: set video opacity
-        :param str mode: set mode
-        :param str flags: set flags
-        :param str rate: set video rate
+        :param str size: set monitor size (default "hd720")
+        :param float opacity: set video opacity (from 0 to 1) (default 0.9)
+        :param int mode: set mode (from 0 to 1) (default full)
+        :param str flags: set flags (default queue)
+        :param str rate: set video rate (default "25")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor
 
@@ -1853,15 +1825,15 @@ class AudioStream(FilterableStream):
     def ahistogram(
         self,
         *,
-        dmode: int | Literal["single", "separate"] | Default = Default("SINGLE"),
-        rate: str | float | int = Default("25"),
-        size: str | float | int = Default("hd720"),
-        scale: int | Literal["log", "sqrt", "cbrt", "lin", "rlog"] | Default = Default("LOG"),
-        ascale: int | Literal["log", "lin"] | Default = Default("ALOG"),
-        acount: int | str = Default(1),
-        rheight: float | int | str = Default(0.1),
-        slide: int | Literal["replace", "scroll"] | Default = Default("REPLACE"),
-        hmode: int | Literal["abs", "sign"] | Default = Default("ABS"),
+        dmode: int | Literal["single", "separate"] | Default = Default("single"),
+        rate: str | float | int = Default('"25"'),
+        size: str | float | int = Default('"hd720"'),
+        scale: int | Literal["log", "sqrt", "cbrt", "lin", "rlog"] | Default = Default("log"),
+        ascale: int | Literal["log", "lin"] | Default = Default("log"),
+        acount: int | str = Default("1"),
+        rheight: float | int | str = Default("0.1"),
+        slide: int | Literal["replace", "scroll"] | Default = Default("replace"),
+        hmode: int | Literal["abs", "sign"] | Default = Default("abs"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1871,15 +1843,15 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int dmode: Specify how histogram is calculated. It accepts the following values: ‘single’ Use single histogram for all channels. ‘separate’ Use separate histogram for each channel. Default is single.
-        :param str rate: Set frame rate, expressed as number of frames per second. Default value is "25".
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is hd720.
-        :param int scale: Set display scale. It accepts the following values: ‘log’ logarithmic ‘sqrt’ square root ‘cbrt’ cubic root ‘lin’ linear ‘rlog’ reverse logarithmic Default is log.
-        :param int ascale: Set amplitude scale. It accepts the following values: ‘log’ logarithmic ‘lin’ linear Default is log.
-        :param int acount: Set how much frames to accumulate in histogram. Default is 1. Setting this to -1 accumulates all frames.
-        :param float rheight: Set histogram ratio of window height.
-        :param int slide: Set sonogram sliding. It accepts the following values: ‘replace’ replace old rows with new ones. ‘scroll’ scroll from top to bottom. Default is replace.
-        :param int hmode: Set histogram mode. It accepts the following values: ‘abs’ Use absolute values of samples. ‘sign’ Use untouched values of samples. Default is abs.
+        :param int dmode: set method to display channels (from 0 to 1) (default single)
+        :param str rate: set video rate (default "25")
+        :param str size: set video size (default "hd720")
+        :param int scale: set display scale (from 0 to 4) (default log)
+        :param int ascale: set amplitude scale (from 0 to 1) (default log)
+        :param int acount: how much frames to accumulate (from -1 to 100) (default 1)
+        :param float rheight: set histogram ratio of window height (from 0 to 1) (default 0.1)
+        :param int slide: set sonogram sliding (from 0 to 1) (default replace)
+        :param int hmode: set histograms mode (from 0 to 1) (default abs)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#ahistogram
 
@@ -1911,20 +1883,21 @@ class AudioStream(FilterableStream):
     def aiir(
         self,
         *,
-        zeros: str | float | int = Default("1+0i 1-0i"),
-        poles: str | float | int = Default("1+0i 1-0i"),
-        gains: str | float | int = Default("1|1"),
-        dry: float | int | str = Default(1.0),
-        wet: float | int | str = Default(1.0),
-        format: int | Literal["ll", "sf", "tf", "zp", "pr", "pd", "sp"] | Default = Default(1),
-        process: int | Literal["d", "s", "p"] | Default = Default(1),
-        precision: int | Literal["dbl", "flt", "i32", "i16"] | Default = Default(0),
-        normalize: bool | int | str = Default(1),
-        mix: float | int | str = Default(1.0),
-        response: bool | int | str = Default(0),
-        channel: int | str = Default(0),
-        size: str | float | int = Default("hd720"),
-        rate: str | float | int = Default("25"),
+        zeros: str | float | int = Default('"1+0i 1-0i"'),
+        poles: str | float | int = Default('"1+0i 1-0i"'),
+        gains: str | float | int = Default('"1|1"'),
+        dry: float | int | str = Default("1"),
+        wet: float | int | str = Default("1"),
+        format: int | Literal["ll", "sf", "tf", "zp", "pr", "pd", "sp"] | Default = Default("zp"),
+        process: int | Literal["d", "s", "p"] | Default = Default("s"),
+        precision: int | Literal["dbl", "flt", "i32", "i16"] | Default = Default("dbl"),
+        e: int | Literal["dbl", "flt", "i32", "i16"] | Default = Default("dbl"),
+        normalize: bool | int | str = Default("true"),
+        mix: float | int | str = Default("1"),
+        response: bool | int | str = Default("false"),
+        channel: int | str = Default("0"),
+        size: str | float | int = Default('"hd720"'),
+        rate: str | float | int = Default('"25"'),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -1934,20 +1907,21 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str zeros: Set B/numerator/zeros/reflection coefficients.
-        :param str poles: Set A/denominator/poles/ladder coefficients.
-        :param str gains: Set channels gains.
-        :param float dry: set dry gain
-        :param float wet: set wet gain
-        :param int format: Set coefficients format. ‘ll’ lattice-ladder function ‘sf’ analog transfer function ‘tf’ digital transfer function ‘zp’ Z-plane zeros/poles, cartesian (default) ‘pr’ Z-plane zeros/poles, polar radians ‘pd’ Z-plane zeros/poles, polar degrees ‘sp’ S-plane zeros/poles
-        :param int process: Set type of processing. ‘d’ direct processing ‘s’ serial processing ‘p’ parallel processing
-        :param int precision: Set filtering precision. ‘dbl’ double-precision floating-point (default) ‘flt’ single-precision floating-point ‘i32’ 32-bit integers ‘i16’ 16-bit integers
-        :param bool normalize: Normalize filter coefficients, by default is enabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param bool response: Show IR frequency response, magnitude(magenta), phase(green) and group delay(yellow) in additional video stream. By default it is disabled.
-        :param int channel: Set for which IR channel to display frequency response. By default is first channel displayed. This option is used only when response is enabled.
-        :param str size: Set video stream size. This option is used only when response is enabled.
-        :param str rate: set video rate
+        :param str zeros: set B/numerator/zeros/reflection coefficients (default "1+0i 1-0i")
+        :param str poles: set A/denominator/poles/ladder coefficients (default "1+0i 1-0i")
+        :param str gains: set channels gains (default "1|1")
+        :param float dry: set dry gain (from 0 to 1) (default 1)
+        :param float wet: set wet gain (from 0 to 1) (default 1)
+        :param int format: set coefficients format (from -2 to 4) (default zp)
+        :param int process: set kind of processing (from 0 to 2) (default s)
+        :param int precision: set filtering precision (from 0 to 3) (default dbl)
+        :param int e: set precision (from 0 to 3) (default dbl)
+        :param bool normalize: normalize coefficients (default true)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param bool response: show IR frequency response (default false)
+        :param int channel: set IR channel to display frequency response (from 0 to 1024) (default 0)
+        :param str size: set video size (default "hd720")
+        :param str rate: set video rate (default "25")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aiir
 
@@ -1968,6 +1942,7 @@ class AudioStream(FilterableStream):
                         "format": format,
                         "process": process,
                         "precision": precision,
+                        "e": e,
                         "normalize": normalize,
                         "mix": mix,
                         "response": response,
@@ -2043,15 +2018,15 @@ class AudioStream(FilterableStream):
     def alimiter(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        limit: float | int | str = Default(1.0),
-        attack: float | int | str = Default(5.0),
-        release: float | int | str = Default(50.0),
-        asc: bool | int | str = Default(0),
-        asc_level: float | int | str = Default(0.5),
-        level: bool | int | str = Default(1),
-        latency: bool | int | str = Default(0),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        limit: float | int | str = Default("1"),
+        attack: float | int | str = Default("5"),
+        release: float | int | str = Default("50"),
+        asc: bool | int | str = Default("false"),
+        asc_level: float | int | str = Default("0.5"),
+        level: bool | int | str = Default("true"),
+        latency: bool | int | str = Default("false"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2062,15 +2037,15 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input gain. Default is 1.
-        :param float level_out: Set output gain. Default is 1.
-        :param float limit: Don’t let signals above this level pass the limiter. Default is 1.
-        :param float attack: The limiter will reach its attenuation level in this amount of time in milliseconds. Default is 5 milliseconds.
-        :param float release: Come back from limiting to attenuation 1.0 in this amount of milliseconds. Default is 50 milliseconds.
-        :param bool asc: When gain reduction is always needed ASC takes care of releasing to an average reduction level rather than reaching a reduction of 0 in the release time.
-        :param float asc_level: Select how much the release time is affected by ASC, 0 means nearly no changes in release time while 1 produces higher release times.
-        :param bool level: Auto level output signal. Default is enabled. This normalizes audio back to 0dB if enabled.
-        :param bool latency: Compensate the delay introduced by using the lookahead buffer set with attack parameter. Also flush the valid audio data in the lookahead buffer when the stream hits EOF.
+        :param float level_in: set input level (from 0.015625 to 64) (default 1)
+        :param float level_out: set output level (from 0.015625 to 64) (default 1)
+        :param float limit: set limit (from 0.0625 to 1) (default 1)
+        :param float attack: set attack (from 0.1 to 80) (default 5)
+        :param float release: set release (from 1 to 8000) (default 50)
+        :param bool asc: enable asc (default false)
+        :param float asc_level: set asc level (from 0 to 1) (default 0.5)
+        :param bool level: auto level (default true)
+        :param bool latency: compensate delay (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#alimiter
@@ -2104,15 +2079,15 @@ class AudioStream(FilterableStream):
     def allpass(
         self,
         *,
-        frequency: float | int | str = Default(3000.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.707),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        order: int | str = Default(2),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
+        frequency: float | int | str = Default("3000"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.707"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        order: int | str = Default("2"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2123,15 +2098,15 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set frequency in Hz.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Specify the band-width of a filter in width_type units.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int order: Set the filter order, can be 1 or 2. Default is 2.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
+        :param float frequency: set central frequency (from 0 to 999999) (default 3000)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.707)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int order: set filter order (from 1 to 2) (default 2)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#allpass
@@ -2165,10 +2140,9 @@ class AudioStream(FilterableStream):
     def aloop(
         self,
         *,
-        loop: int | str = Default(0),
-        size: int | str = Default(0),
-        start: int | str = Default(0),
-        time: int | str = Default("9223372036854775807LL"),
+        loop: int | str = Default("0"),
+        size: int | str = Default("0"),
+        start: int | str = Default("0"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -2178,10 +2152,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int loop: Set the number of loops. Setting this value to -1 will result in infinite loops. Default is 0.
-        :param int size: Set maximal number of samples. Default is 0.
-        :param int start: Set first sample of loop. Default is 0.
-        :param int time: Set the time of loop start in seconds. Only used if option named start is set to -1.
+        :param int loop: number of loops (from -1 to INT_MAX) (default 0)
+        :param int size: max number of samples to loop (from 0 to INT_MAX) (default 0)
+        :param int start: set the loop start sample (from 0 to I64_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aloop
 
@@ -2197,7 +2170,6 @@ class AudioStream(FilterableStream):
                         "loop": loop,
                         "size": size,
                         "start": start,
-                        "time": time,
                     }
                     | kwargs
                 ).items()
@@ -2208,15 +2180,15 @@ class AudioStream(FilterableStream):
     def ametadata(
         self,
         *,
-        mode: int | Literal["select", "add", "modify", "delete", "print"] | Default = Default(0),
-        key: str | float | int = Default("((void*)0)"),
-        value: str | float | int = Default("((void*)0)"),
+        mode: int | Literal["select", "add", "modify", "delete", "print"] | Default = Default("select"),
+        key: str | float | int = Default(None),
+        value: str | float | int = Default(None),
         function: int
         | Literal["same_str", "starts_with", "less", "equal", "greater", "expr", "ends_with"]
-        | Default = Default(0),
-        expr: str | float | int = Default("((void*)0)"),
-        file: str | float | int = Default("((void*)0)"),
-        direct: bool | int | str = Default(0),
+        | Default = Default("same_str"),
+        expr: str | float | int = Default(None),
+        file: str | float | int = Default(None),
+        direct: bool | int | str = Default("false"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2227,13 +2199,13 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int mode: Set mode of operation of the filter. Can be one of the following: ‘select’ If both value and key is set, select frames which have such metadata. If only key is set, select every frame that has such key in metadata. ‘add’ Add new metadata key and value. If key is already available do nothing. ‘modify’ Modify value of already present key. ‘delete’ If value is set, delete only keys that have such value. Otherwise, delete key. If key is not set, delete all metadata values in the frame. ‘print’ Print key and its value if metadata was found. If key is not set print all metadata values available in frame.
-        :param str key: Set key used with all modes. Must be set for all modes except print and delete.
-        :param str value: Set metadata value which will be used. This option is mandatory for modify and add mode.
-        :param int function: Which function to use when comparing metadata value and value. Can be one of following: ‘same_str’ Values are interpreted as strings, returns true if metadata value is same as value. ‘starts_with’ Values are interpreted as strings, returns true if metadata value starts with the value option string. ‘less’ Values are interpreted as floats, returns true if metadata value is less than value. ‘equal’ Values are interpreted as floats, returns true if value is equal with metadata value. ‘greater’ Values are interpreted as floats, returns true if metadata value is greater than value. ‘expr’ Values are interpreted as floats, returns true if expression from option expr evaluates to true. ‘ends_with’ Values are interpreted as strings, returns true if metadata value ends with the value option string.
-        :param str expr: Set expression which is used when function is set to expr. The expression is evaluated through the eval API and can contain the following constants: VALUE1, FRAMEVAL Float representation of value from metadata key. VALUE2, USERVAL Float representation of value as supplied by user in value option.
-        :param str file: If specified in print mode, output is written to the named file. Instead of plain filename any writable url can be specified. Filename “-” is a shorthand for standard output. If file option is not set, output is written to the log with AV_LOG_INFO loglevel.
-        :param bool direct: Reduces buffering in print mode when output is written to a URL set using file.
+        :param int mode: set a mode of operation (from 0 to 4) (default select)
+        :param str key: set metadata key
+        :param str value: set metadata value
+        :param int function: function for comparing values (from 0 to 6) (default same_str)
+        :param str expr: set expression for expr function
+        :param str file: set file where to print metadata information
+        :param bool direct: reduce buffering when printing to user-set file or pipe (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata
@@ -2289,12 +2261,12 @@ class AudioStream(FilterableStream):
     def anequalizer(
         self,
         *,
-        params: str | float | int = Default(""),
-        curves: bool | int | str = Default(0),
-        size: str | float | int = Default("hd720"),
-        mgain: float | int | str = Default(60.0),
-        fscale: int | Literal["lin", "log"] | Default = Default(1),
-        colors: str | float | int = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        params: str | float | int = Default('""'),
+        curves: bool | int | str = Default("false"),
+        size: str | float | int = Default('"hd720"'),
+        mgain: float | int | str = Default("60"),
+        fscale: int | Literal["lin", "log"] | Default = Default("log"),
+        colors: str | float | int = Default('"red|green|blue|yellow|orange|lime|pink|magenta|brown"'),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> FilterNode:
@@ -2305,12 +2277,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str params: This option string is in format: "cchn f=cf w=w g=g t=f | ..." Each equalizer band is separated by ’|’. chn Set channel number to which equalization will be applied. If input doesn’t have that channel the entry is ignored. f Set central frequency for band. If input doesn’t have that frequency the entry is ignored. w Set band width in Hertz. g Set band gain in dB. t Set filter type for band, optional, can be: ‘0’ Butterworth, this is default. ‘1’ Chebyshev type 1. ‘2’ Chebyshev type 2.
-        :param bool curves: With this option activated frequency response of anequalizer is displayed in video stream.
-        :param str size: Set video stream size. Only useful if curves option is activated.
-        :param float mgain: Set max gain that will be displayed. Only useful if curves option is activated. Setting this to a reasonable value makes it possible to display gain which is derived from neighbour bands which are too close to each other and thus produce higher gain when both are activated.
-        :param int fscale: Set frequency scale used to draw frequency response in video output. Can be linear or logarithmic. Default is logarithmic.
-        :param str colors: Set color for each channel curve which is going to be displayed in video stream. This is list of color names separated by space or by ’|’. Unrecognised or missing colors will be replaced by white color.
+        :param str params: (default "")
+        :param bool curves: draw frequency response curves (default false)
+        :param str size: set video size (default "hd720")
+        :param float mgain: set max gain (from -900 to 900) (default 60)
+        :param int fscale: set frequency scale (from 0 to 1) (default log)
+        :param str colors: set channels curves colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#anequalizer
@@ -2342,11 +2314,11 @@ class AudioStream(FilterableStream):
     def anlmdn(
         self,
         *,
-        strength: float | int | str = Default(1e-05),
-        patch: int | str = Default(2000),
-        research: int | str = Default(6000),
-        output: int | Literal["i", "o", "n"] | Default = Default("OUT_MODE"),
-        smooth: float | int | str = Default(11.0),
+        strength: float | int | str = Default("1e-05"),
+        patch: str | float | int = Default("0.002"),
+        research: str | float | int = Default("0.006"),
+        output: int | Literal["i", "o", "n"] | Default = Default("o"),
+        smooth: float | int | str = Default("11"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2357,11 +2329,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float strength: Set denoising strength. Allowed range is from 0.00001 to 10000. Default value is 0.00001.
-        :param int patch: Set patch radius duration. Allowed range is from 1 to 100 milliseconds. Default value is 2 milliseconds.
-        :param int research: Set research radius duration. Allowed range is from 2 to 300 milliseconds. Default value is 6 milliseconds.
-        :param int output: Set the output mode. It accepts the following values: i Pass input unchanged. o Pass noise filtered out. n Pass only noise. Default value is o.
-        :param float smooth: Set smooth factor. Default value is 11. Allowed range is from 1 to 1000.
+        :param float strength: set denoising strength (from 1e-05 to 10000) (default 1e-05)
+        :param str patch: set patch duration (default 0.002)
+        :param str research: set research duration (default 0.006)
+        :param int output: set output mode (from 0 to 2) (default o)
+        :param float smooth: set smooth factor (from 1 to 1000) (default 11)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmdn
@@ -2392,12 +2364,11 @@ class AudioStream(FilterableStream):
         self,
         _desired: "AudioStream",
         *,
-        order: int | str = Default(256),
-        mu: float | int | str = Default(0.75),
-        eps: float | int | str = Default(1.0),
-        leakage: float | int | str = Default(0.0),
-        out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
-        precision: int | Literal["auto", "float", "double"] | Default = Default(0),
+        order: int | str = Default("256"),
+        mu: float | int | str = Default("0.75"),
+        eps: float | int | str = Default("1"),
+        leakage: float | int | str = Default("0"),
+        out_mode: int | Literal["i", "d", "o", "n"] | Default = Default("o"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2408,12 +2379,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int order: Set filter order.
-        :param float mu: Set filter mu.
-        :param float eps: Set the filter eps.
-        :param float leakage: Set the filter leakage.
-        :param int out_mode: It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-        :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+        :param int order: set the filter order (from 1 to 32767) (default 256)
+        :param float mu: set the filter mu (from 0 to 2) (default 0.75)
+        :param float eps: set the filter eps (from 0 to 1) (default 1)
+        :param float leakage: set the filter leakage (from 0 to 1) (default 0)
+        :param int out_mode: set output mode (from 0 to 3) (default o)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms
@@ -2435,7 +2405,6 @@ class AudioStream(FilterableStream):
                         "eps": eps,
                         "leakage": leakage,
                         "out_mode": out_mode,
-                        "precision": precision,
                         "enable": enable,
                     }
                     | kwargs
@@ -2448,12 +2417,11 @@ class AudioStream(FilterableStream):
         self,
         _desired: "AudioStream",
         *,
-        order: int | str = Default(256),
-        mu: float | int | str = Default(0.75),
-        eps: float | int | str = Default(1.0),
-        leakage: float | int | str = Default(0.0),
-        out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
-        precision: int | Literal["auto", "float", "double"] | Default = Default(0),
+        order: int | str = Default("256"),
+        mu: float | int | str = Default("0.75"),
+        eps: float | int | str = Default("1"),
+        leakage: float | int | str = Default("0"),
+        out_mode: int | Literal["i", "d", "o", "n"] | Default = Default("o"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2464,12 +2432,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int order: Set filter order.
-        :param float mu: Set filter mu.
-        :param float eps: Set the filter eps.
-        :param float leakage: Set the filter leakage.
-        :param int out_mode: It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-        :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+        :param int order: set the filter order (from 1 to 32767) (default 256)
+        :param float mu: set the filter mu (from 0 to 2) (default 0.75)
+        :param float eps: set the filter eps (from 0 to 1) (default 1)
+        :param float leakage: set the filter leakage (from 0 to 1) (default 0)
+        :param int out_mode: set output mode (from 0 to 3) (default o)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms
@@ -2491,7 +2458,6 @@ class AudioStream(FilterableStream):
                         "eps": eps,
                         "leakage": leakage,
                         "out_mode": out_mode,
-                        "precision": precision,
                         "enable": enable,
                     }
                     | kwargs
@@ -2524,11 +2490,11 @@ class AudioStream(FilterableStream):
     def apad(
         self,
         *,
-        packet_size: int | str = Default(4096),
-        pad_len: int | str = Default(-1),
-        whole_len: int | str = Default(-1),
-        pad_dur: int | str = Default(-1),
-        whole_dur: int | str = Default(-1),
+        packet_size: int | str = Default("4096"),
+        pad_len: int | str = Default("-1"),
+        whole_len: int | str = Default("-1"),
+        pad_dur: str | float | int = Default("-0.000001"),
+        whole_dur: str | float | int = Default("-0.000001"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2539,11 +2505,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int packet_size: Set silence packet size. Default value is 4096.
-        :param int pad_len: Set the number of samples of silence to add to the end. After the value is reached, the stream is terminated. This option is mutually exclusive with whole_len.
-        :param int whole_len: Set the minimum total number of samples in the output audio stream. If the value is longer than the input audio length, silence is added to the end, until the value is reached. This option is mutually exclusive with pad_len.
-        :param int pad_dur: Specify the duration of samples of silence to add. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Used only if set to non-negative value.
-        :param int whole_dur: Specify the minimum total duration in the output audio stream. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Used only if set to non-negative value. If the value is longer than the input audio length, silence is added to the end, until the value is reached. This option is mutually exclusive with pad_dur
+        :param int packet_size: set silence packet size (from 0 to INT_MAX) (default 4096)
+        :param int pad_len: set number of samples of silence to add (from -1 to I64_MAX) (default -1)
+        :param int whole_len: set minimum target number of samples in the audio stream (from -1 to I64_MAX) (default -1)
+        :param str pad_dur: set duration of silence to add (default -0.000001)
+        :param str whole_dur: set minimum target duration in the audio stream (default -0.000001)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#apad
@@ -2573,8 +2539,8 @@ class AudioStream(FilterableStream):
     def aperms(
         self,
         *,
-        mode: int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("MODE_NONE"),
-        seed: int | str = Default(-1),
+        mode: int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("none"),
+        seed: int | str = Default("-1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2585,8 +2551,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int mode: Select the permissions mode. It accepts the following values: ‘none’ Do nothing. This is the default. ‘ro’ Set all the output frames read-only. ‘rw’ Set all the output frames directly writable. ‘toggle’ Make the frame read-only if writable, and writable if read-only. ‘random’ Set each output frame read-only or writable randomly.
-        :param int seed: Set the seed for the random mode, must be an integer included between 0 and UINT32_MAX. If not specified, or if explicitly set to -1, the filter will try to use a good random seed on a best effort basis.
+        :param int mode: select permissions mode (from 0 to 4) (default none)
+        :param int seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms
@@ -2613,17 +2579,17 @@ class AudioStream(FilterableStream):
     def aphasemeter(
         self,
         *,
-        rate: str | float | int = Default("25"),
-        size: str | float | int = Default("800x400"),
-        rc: int | str = Default(2),
-        gc: int | str = Default(7),
-        bc: int | str = Default(1),
-        mpc: str | float | int = Default("none"),
-        video: bool | int | str = Default(1),
-        phasing: bool | int | str = Default(0),
-        tolerance: float | int | str = Default(0.0),
-        angle: float | int | str = Default(170.0),
-        duration: int | str = Default(2000000),
+        rate: str | float | int = Default('"25"'),
+        size: str | float | int = Default('"800x400"'),
+        rc: int | str = Default("2"),
+        gc: int | str = Default("7"),
+        bc: int | str = Default("1"),
+        mpc: str | float | int = Default('"none"'),
+        video: bool | int | str = Default("true"),
+        phasing: bool | int | str = Default("false"),
+        tolerance: float | int | str = Default("0"),
+        angle: float | int | str = Default("170"),
+        duration: str | float | int = Default("2"),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -2633,17 +2599,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str rate: Set the output frame rate. Default value is 25.
-        :param str size: Set the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 800x400.
-        :param int rc: Specify the red, green, blue contrast. Default values are 2, 7 and 1. Allowed range is [0, 255].
-        :param int gc: Specify the red, green, blue contrast. Default values are 2, 7 and 1. Allowed range is [0, 255].
-        :param int bc: Specify the red, green, blue contrast. Default values are 2, 7 and 1. Allowed range is [0, 255].
-        :param str mpc: Set color which will be used for drawing median phase. If color is none which is default, no median phase value will be drawn.
-        :param bool video: Enable video output. Default is enabled.
-        :param bool phasing: set mono and out-of-phase detection output
-        :param float tolerance: set phase tolerance for mono detection
-        :param float angle: set angle threshold for out-of-phase detection
-        :param int duration: set minimum mono or out-of-phase duration in seconds
+        :param str rate: set video rate (default "25")
+        :param str size: set video size (default "800x400")
+        :param int rc: set red contrast (from 0 to 255) (default 2)
+        :param int gc: set green contrast (from 0 to 255) (default 7)
+        :param int bc: set blue contrast (from 0 to 255) (default 1)
+        :param str mpc: set median phase color (default "none")
+        :param bool video: set video output (default true)
+        :param bool phasing: set mono and out-of-phase detection output (default false)
+        :param float tolerance: set phase tolerance for mono detection (from 0 to 1) (default 0)
+        :param float angle: set angle threshold for out-of-phase detection (from 90 to 180) (default 170)
+        :param str duration: set minimum mono or out-of-phase duration in seconds (default 2)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aphasemeter
 
@@ -2678,12 +2644,12 @@ class AudioStream(FilterableStream):
     def aphaser(
         self,
         *,
-        in_gain: float | int | str = Default(0.4),
-        out_gain: float | int | str = Default(0.74),
-        delay: float | int | str = Default(3.0),
-        decay: float | int | str = Default(0.4),
-        speed: float | int | str = Default(0.5),
-        type: int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default("WAVE_TRI"),
+        in_gain: float | int | str = Default("0.4"),
+        out_gain: float | int | str = Default("0.74"),
+        delay: float | int | str = Default("3"),
+        decay: float | int | str = Default("0.4"),
+        speed: float | int | str = Default("0.5"),
+        type: int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default("triangular"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -2693,12 +2659,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float in_gain: Set input gain. Default is 0.4.
-        :param float out_gain: Set output gain. Default is 0.74
-        :param float delay: Set delay in milliseconds. Default is 3.0.
-        :param float decay: Set decay. Default is 0.4.
-        :param float speed: Set modulation speed in Hz. Default is 0.5.
-        :param int type: Set modulation type. Default is triangular. It accepts the following values: ‘triangular, t’ ‘sinusoidal, s’
+        :param float in_gain: set input gain (from 0 to 1) (default 0.4)
+        :param float out_gain: set output gain (from 0 to 1e+09) (default 0.74)
+        :param float delay: set delay in milliseconds (from 0 to 5) (default 3)
+        :param float decay: set decay (from 0 to 0.99) (default 0.4)
+        :param float speed: set modulation speed (from 0.1 to 2) (default 0.5)
+        :param int type: set modulation type (from 0 to 1) (default triangular)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aphaser
 
@@ -2727,9 +2693,9 @@ class AudioStream(FilterableStream):
     def aphaseshift(
         self,
         *,
-        shift: float | int | str = Default(0.0),
-        level: float | int | str = Default(1.0),
-        order: int | str = Default(8),
+        shift: float | int | str = Default("0"),
+        level: float | int | str = Default("1"),
+        order: int | str = Default("8"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2740,9 +2706,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float shift: Specify phase shift. Allowed range is from -1.0 to 1.0. Default value is 0.0.
-        :param float level: Set output gain applied to final output. Allowed range is from 0.0 to 1.0. Default value is 1.0.
-        :param int order: Set filter order used for filtering. Allowed range is from 1 to 16. Default value is 8.
+        :param float shift: set phase shift (from -1 to 1) (default 0)
+        :param float level: set output level (from 0 to 1) (default 1)
+        :param int order: set filter order (from 1 to 16) (default 8)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aphaseshift
@@ -2811,13 +2777,13 @@ class AudioStream(FilterableStream):
     def apsyclip(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        clip: float | int | str = Default(1.0),
-        diff: bool | int | str = Default(0),
-        adaptive: float | int | str = Default(0.5),
-        iterations: int | str = Default(10),
-        level: bool | int | str = Default(0),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        clip: float | int | str = Default("1"),
+        diff: bool | int | str = Default("false"),
+        adaptive: float | int | str = Default("0.5"),
+        iterations: int | str = Default("10"),
+        level: bool | int | str = Default("false"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2828,13 +2794,13 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input gain. By default it is 1. Range is [0.015625 - 64].
-        :param float level_out: Set output gain. By default it is 1. Range is [0.015625 - 64].
-        :param float clip: Set the clipping start value. Default value is 0dBFS or 1.
-        :param bool diff: Output only difference samples, useful to hear introduced distortions. By default is disabled.
-        :param float adaptive: Set strength of adaptive distortion applied. Default value is 0.5. Allowed range is from 0 to 1.
-        :param int iterations: Set number of iterations of psychoacoustic clipper. Allowed range is from 1 to 20. Default value is 10.
-        :param bool level: Auto level output signal. Default is disabled. This normalizes audio back to 0dBFS if enabled.
+        :param float level_in: set input level (from 0.015625 to 64) (default 1)
+        :param float level_out: set output level (from 0.015625 to 64) (default 1)
+        :param float clip: set clip level (from 0.015625 to 1) (default 1)
+        :param bool diff: enable difference (default false)
+        :param float adaptive: set adaptive distortion (from 0 to 1) (default 0.5)
+        :param int iterations: set iterations (from 1 to 20) (default 10)
+        :param bool level: set auto level (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#apsyclip
@@ -2866,17 +2832,17 @@ class AudioStream(FilterableStream):
     def apulsator(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        mode: int | Literal["sine", "triangle", "square", "sawup", "sawdown"] | Default = Default("SINE"),
-        amount: float | int | str = Default(1.0),
-        offset_l: float | int | str = Default(0.0),
-        offset_r: float | int | str = Default(0.5),
-        width: float | int | str = Default(1.0),
-        timing: int | Literal["bpm", "ms", "hz"] | Default = Default(2),
-        bpm: float | int | str = Default(120.0),
-        ms: int | str = Default(500),
-        hz: float | int | str = Default(2.0),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        mode: int | Literal["sine", "triangle", "square", "sawup", "sawdown"] | Default = Default("sine"),
+        amount: float | int | str = Default("1"),
+        offset_l: float | int | str = Default("0"),
+        offset_r: float | int | str = Default("0.5"),
+        width: float | int | str = Default("1"),
+        timing: int | Literal["bpm", "ms", "hz"] | Default = Default("hz"),
+        bpm: float | int | str = Default("120"),
+        ms: int | str = Default("500"),
+        hz: float | int | str = Default("2"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -2886,17 +2852,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input gain. By default it is 1. Range is [0.015625 - 64].
-        :param float level_out: Set output gain. By default it is 1. Range is [0.015625 - 64].
-        :param int mode: Set waveform shape the LFO will use. Can be one of: sine, triangle, square, sawup or sawdown. Default is sine.
-        :param float amount: Set modulation. Define how much of original signal is affected by the LFO.
-        :param float offset_l: Set left channel offset. Default is 0. Allowed range is [0 - 1].
-        :param float offset_r: Set right channel offset. Default is 0.5. Allowed range is [0 - 1].
-        :param float width: Set pulse width. Default is 1. Allowed range is [0 - 2].
-        :param int timing: Set possible timing mode. Can be one of: bpm, ms or hz. Default is hz.
-        :param float bpm: Set bpm. Default is 120. Allowed range is [30 - 300]. Only used if timing is set to bpm.
-        :param int ms: Set ms. Default is 500. Allowed range is [10 - 2000]. Only used if timing is set to ms.
-        :param float hz: Set frequency in Hz. Default is 2. Allowed range is [0.01 - 100]. Only used if timing is set to hz.
+        :param float level_in: set input gain (from 0.015625 to 64) (default 1)
+        :param float level_out: set output gain (from 0.015625 to 64) (default 1)
+        :param int mode: set mode (from 0 to 4) (default sine)
+        :param float amount: set modulation (from 0 to 1) (default 1)
+        :param float offset_l: set offset L (from 0 to 1) (default 0)
+        :param float offset_r: set offset R (from 0 to 1) (default 0.5)
+        :param float width: set pulse width (from 0 to 2) (default 1)
+        :param int timing: set timing (from 0 to 2) (default hz)
+        :param float bpm: set BPM (from 30 to 300) (default 120)
+        :param int ms: set ms (from 10 to 2000) (default 500)
+        :param float hz: set frequency (from 0.01 to 100) (default 2)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#apulsator
 
@@ -2928,7 +2894,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def arealtime(
-        self, *, limit: int | str = Default(2000000), speed: float | int | str = Default(1.0), **kwargs: Any
+        self, *, limit: str | float | int = Default("2"), speed: float | int | str = Default("1"), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -2937,8 +2903,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int limit: Time limit for the pauses. Any pause longer than that will be considered a timestamp discontinuity and reset the timer. Default is 2 seconds.
-        :param float speed: Speed factor for processing. The value must be a float larger than zero. Values larger than 1.0 will result in faster than realtime processing, smaller will slow processing down. The limit is automatically adapted accordingly. Default is 1.0. A processing speed faster than what is possible without these filters cannot be achieved.
+        :param str limit: sleep time limit (default 2)
+        :param float speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime
 
@@ -2960,7 +2926,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def aresample(self, *, sample_rate: int | str = Default(0), **kwargs: Any) -> "AudioStream":
+    def aresample(self, *, sample_rate: int | str = Default("0"), **kwargs: Any) -> "AudioStream":
         """
 
         Resample audio data.
@@ -2968,7 +2934,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int sample_rate: ((void*)0)
+        :param int sample_rate: (from 0 to INT_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aresample
 
@@ -3099,8 +3065,8 @@ class AudioStream(FilterableStream):
     def arnndn(
         self,
         *,
-        model: str | float | int = Default("((void*)0)"),
-        mix: float | int | str = Default(1.0),
+        model: str | float | int = Default(None),
+        mix: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -3111,8 +3077,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str model: Set train model file to load. This option is always required.
-        :param float mix: Set how much to mix filtered samples into final output. Allowed range is from -1 to 1. Default value is 1. Negative values are special, they set how much to keep filtered noise in the final filter output. Set this option to -1 to hear actual noise removed from input signal.
+        :param str model: set model name
+        :param float mix: set output vs input mix (from -1 to 1) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#arnndn
@@ -3136,9 +3102,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asdr(
-        self, _input1: "AudioStream", *, enable: str | float | int = Default(None), **kwargs: Any
-    ) -> "AudioStream":
+    def asdr(self, _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
         """
 
         Measure Audio Signal-to-Distortion Ratio.
@@ -3146,7 +3110,6 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asdr
 
@@ -3159,22 +3122,15 @@ class AudioStream(FilterableStream):
                 self,
                 _input1,
             ),
-            kwargs=tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                ).items()
-            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
     def asegment(
         self,
         *,
-        timestamps: str | float | int = Default("((void*)0)"),
-        samples: str | float | int = Default("((void*)0)"),
+        timestamps: str | float | int = Default(None),
+        samples: str | float | int = Default(None),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -3184,8 +3140,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str timestamps: Timestamps of output segments separated by ’|’. The first segment will run from the beginning of the input stream. The last segment will run until the end of the input stream
-        :param str samples: Exact frame/sample count to split the segments.
+        :param str timestamps: timestamps of input at which to split input
+        :param str samples: samples at which to split input
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment
 
@@ -3209,7 +3165,7 @@ class AudioStream(FilterableStream):
         return filter_node
 
     def aselect(
-        self, *, expr: str | float | int = Default("1"), outputs: int | str = Default(1), **kwargs: Any
+        self, *, expr: str | float | int = Default('"1"'), outputs: int | str = Default("1"), **kwargs: Any
     ) -> FilterNode:
         """
 
@@ -3218,8 +3174,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str expr: Set expression, which is evaluated for each input frame. If the expression is evaluated to zero, the frame is discarded. If the evaluation result is negative or NaN, the frame is sent to the first output; otherwise it is sent to the output with index ceil(val)-1, assuming that the input index starts from 0. For example a value of 1.2 corresponds to the output with index ceil(1.2)-1 = 2-1 = 1, that is the second output.
-        :param int outputs: Set the number of outputs. The output to which to send the selected frame is based on the result of the evaluation. Default value is 1.
+        :param str expr: set an expression to use for selecting frames (default "1")
+        :param int outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect
 
@@ -3243,11 +3199,7 @@ class AudioStream(FilterableStream):
         return filter_node
 
     def asendcmd(
-        self,
-        *,
-        commands: str | float | int = Default("((void*)0)"),
-        filename: str | float | int = Default("((void*)0)"),
-        **kwargs: Any,
+        self, *, commands: str | float | int = Default(None), filename: str | float | int = Default(None), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -3256,8 +3208,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str commands: Set the commands to be read and sent to the other filters.
-        :param str filename: Set the filename of the commands to be read and sent to the other filters.
+        :param str commands: set commands
+        :param str filename: set commands file
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd
 
@@ -3280,12 +3232,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def asetnsamples(
-        self,
-        *,
-        nb_out_samples: int | str = Default(1024),
-        pad: bool | int | str = Default(1),
-        enable: str | float | int = Default(None),
-        **kwargs: Any,
+        self, *, nb_out_samples: int | str = Default("1024"), pad: bool | int | str = Default("true"), **kwargs: Any
     ) -> "AudioStream":
         """
 
@@ -3294,9 +3241,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int nb_out_samples: Set the number of frames per each output audio frame. The number is intended as the number of samples per each channel. Default value is 1024.
-        :param bool pad: If set to 1, the filter will pad the last audio frame with zeroes, so that the last frame will contain the same number of samples as the previous ones. Default value is 1.
-        :param str enable: timeline editing
+        :param int nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
+        :param bool pad: pad last frame with zeros (default true)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asetnsamples
 
@@ -3311,7 +3257,6 @@ class AudioStream(FilterableStream):
                     {
                         "nb_out_samples": nb_out_samples,
                         "pad": pad,
-                        "enable": enable,
                     }
                     | kwargs
                 ).items()
@@ -3319,7 +3264,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asetpts(self, *, expr: str | float | int = Default("PTS"), **kwargs: Any) -> "AudioStream":
+    def asetpts(self, *, expr: str | float | int = Default('"PTS"'), **kwargs: Any) -> "AudioStream":
         """
 
         Set PTS for the output audio frame.
@@ -3327,7 +3272,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str expr: The expression which is evaluated for each frame to construct its timestamp.
+        :param str expr: Expression determining the frame timestamp (default "PTS")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts
 
@@ -3348,7 +3293,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asetrate(self, *, sample_rate: int | str = Default(44100), **kwargs: Any) -> "AudioStream":
+    def asetrate(self, *, sample_rate: int | str = Default("44100"), **kwargs: Any) -> "AudioStream":
         """
 
         Change the sample rate without altering the data.
@@ -3356,7 +3301,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int sample_rate: Set the output sample rate. Default is 44100 Hz.
+        :param int sample_rate: set the sample rate (from 1 to INT_MAX) (default 44100)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asetrate
 
@@ -3377,7 +3322,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asettb(self, *, expr: str | float | int = Default("intb"), **kwargs: Any) -> "AudioStream":
+    def asettb(self, *, expr: str | float | int = Default('"intb"'), **kwargs: Any) -> "AudioStream":
         """
 
         Set timebase for the audio output link.
@@ -3385,7 +3330,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str expr: The expression which is evaluated into the output timebase.
+        :param str expr: set expression determining the output timebase (default "intb")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb
 
@@ -3430,7 +3375,7 @@ class AudioStream(FilterableStream):
     def asidedata(
         self,
         *,
-        mode: int | Literal["select", "delete"] | Default = Default(0),
+        mode: int | Literal["select", "delete"] | Default = Default("select"),
         type: int
         | Literal[
             "PANSCAN",
@@ -3455,7 +3400,7 @@ class AudioStream(FilterableStream):
             "DETECTION_BOUNDING_BOXES",
             "SEI_UNREGISTERED",
         ]
-        | Default = Default(-1),
+        | Default = Default("-1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -3466,8 +3411,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int mode: Set mode of operation of the filter. Can be one of the following: ‘select’ Select every frame with side data of type. ‘delete’ Delete side data of type. If type is not set, delete all side data in the frame.
-        :param int type: Set side data type used with all modes. Must be set for select mode. For the list of frame side data types, refer to the AVFrameSideDataType enum in libavutil/frame.h. For example, to choose AV_FRAME_DATA_PANSCAN side data, you must specify PANSCAN.
+        :param int mode: set a mode of operation (from 0 to 1) (default select)
+        :param int type: set side data type (from -1 to INT_MAX) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata
@@ -3537,11 +3482,11 @@ class AudioStream(FilterableStream):
         *,
         type: int
         | Literal["hard", "tanh", "atan", "cubic", "exp", "alg", "quintic", "sin", "erf"]
-        | Default = Default(0),
-        threshold: float | int | str = Default(1.0),
-        output: float | int | str = Default(1.0),
-        param: float | int | str = Default(1.0),
-        oversample: int | str = Default(1),
+        | Default = Default("tanh"),
+        threshold: float | int | str = Default("1"),
+        output: float | int | str = Default("1"),
+        param: float | int | str = Default("1"),
+        oversample: int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -3552,11 +3497,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int type: Set type of soft-clipping. It accepts the following values: hard tanh atan cubic exp alg quintic sin erf
-        :param float threshold: Set threshold from where to start clipping. Default value is 0dB or 1.
-        :param float output: Set gain applied to output. Default value is 0dB or 1.
-        :param float param: Set additional parameter which controls sigmoid function.
-        :param int oversample: Set oversampling factor.
+        :param int type: set softclip type (from -1 to 7) (default tanh)
+        :param float threshold: set softclip threshold (from 1e-06 to 1) (default 1)
+        :param float output: set softclip output gain (from 1e-06 to 16) (default 1)
+        :param float param: set softclip parameter (from 0.01 to 3) (default 1)
+        :param int oversample: set oversample factor (from 1 to 64) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asoftclip
@@ -3586,7 +3531,7 @@ class AudioStream(FilterableStream):
     def aspectralstats(
         self,
         *,
-        win_size: int | str = Default(2048),
+        win_size: int | str = Default("2048"),
         win_func: int
         | Literal[
             "rect",
@@ -3612,8 +3557,8 @@ class AudioStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | Default = Default("WFUNC_HANNING"),
-        overlap: float | int | str = Default(0.5),
+        | Default = Default("hann"),
+        overlap: float | int | str = Default("0.5"),
         measure: str
         | Literal[
             "none",
@@ -3632,7 +3577,9 @@ class AudioStream(FilterableStream):
             "decrease",
             "rolloff",
         ]
-        | Default = Default("(2147483647 *2U +1U)"),
+        | Default = Default(
+            "all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff"
+        ),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -3642,10 +3589,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int win_size: Set the window length in samples. Default value is 2048. Allowed range is from 32 to 65536.
-        :param int win_func: Set window function. It accepts the following values: ‘rect’ ‘bartlett’ ‘hann, hanning’ ‘hamming’ ‘blackman’ ‘welch’ ‘flattop’ ‘bharris’ ‘bnuttall’ ‘bhann’ ‘sine’ ‘nuttall’ ‘lanczos’ ‘gauss’ ‘tukey’ ‘dolph’ ‘cauchy’ ‘parzen’ ‘poisson’ ‘bohman’ ‘kaiser’ Default is hann.
-        :param float overlap: Set window overlap. Allowed range is from 0 to 1. Default value is 0.5.
-        :param str measure: Select the parameters which are measured. The metadata keys can be used as flags, default is all which measures everything. none disables all measurement.
+        :param int win_size: set the window size (from 32 to 65536) (default 2048)
+        :param int win_func: set window function (from 0 to 20) (default hann)
+        :param float overlap: set window overlap (from 0 to 1) (default 0.5)
+        :param str measure: select the parameters which are measured (default all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#aspectralstats
 
@@ -3669,7 +3616,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asplit(self, *, outputs: int | str = Default(2), **kwargs: Any) -> FilterNode:
+    def asplit(self, *, outputs: int | str = Default("2"), **kwargs: Any) -> FilterNode:
         """
 
         Pass on the audio input to N audio outputs.
@@ -3677,7 +3624,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int outputs: set number of outputs
+        :param int outputs: set number of outputs (from 1 to INT_MAX) (default 2)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit
 
@@ -3793,9 +3740,9 @@ class AudioStream(FilterableStream):
     def astats(
         self,
         *,
-        length: float | int | str = Default(0.05),
-        metadata: bool | int | str = Default(0),
-        reset: int | str = Default(0),
+        length: float | int | str = Default("0.05"),
+        metadata: bool | int | str = Default("false"),
+        reset: int | str = Default("0"),
         measure_perchannel: str
         | Literal[
             "none",
@@ -3825,9 +3772,10 @@ class AudioStream(FilterableStream):
             "RMS_trough",
             "Zero_crossings",
             "Zero_crossings_rate",
-            "Abs_Peak_count",
         ]
-        | Default = Default("(2147483647 *2U +1U)"),
+        | Default = Default(
+            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate"
+        ),
         measure_overall: str
         | Literal[
             "none",
@@ -3857,9 +3805,10 @@ class AudioStream(FilterableStream):
             "RMS_trough",
             "Zero_crossings",
             "Zero_crossings_rate",
-            "Abs_Peak_count",
         ]
-        | Default = Default("(2147483647 *2U +1U)"),
+        | Default = Default(
+            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate"
+        ),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -3869,11 +3818,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float length: Short window length in seconds, used for peak and trough RMS measurement. Default is 0.05 (50 milliseconds). Allowed range is [0 - 10].
-        :param bool metadata: Set metadata injection. All the metadata keys are prefixed with lavfi.astats.X, where X is channel number starting from 1 or string Overall. Default is disabled. Available keys for each channel are: Bit_depth Crest_factor DC_offset Dynamic_range Entropy Flat_factor Max_difference Max_level Mean_difference Min_difference Min_level Noise_floor Noise_floor_count Number_of_Infs Number_of_NaNs Number_of_denormals Peak_count Abs_Peak_count Peak_level RMS_difference RMS_peak RMS_trough Zero_crossings Zero_crossings_rate and for Overall: Bit_depth DC_offset Entropy Flat_factor Max_difference Max_level Mean_difference Min_difference Min_level Noise_floor Noise_floor_count Number_of_Infs Number_of_NaNs Number_of_denormals Number_of_samples Peak_count Abs_Peak_count Peak_level RMS_difference RMS_level RMS_peak RMS_trough For example, a full key looks like lavfi.astats.1.DC_offset or lavfi.astats.Overall.Peak_count. Read below for the description of the keys.
-        :param int reset: Set the number of frames over which cumulative stats are calculated before being reset. Default is disabled.
-        :param str measure_perchannel: Select the parameters which are measured per channel. The metadata keys can be used as flags, default is all which measures everything. none disables all per channel measurement.
-        :param str measure_overall: Select the parameters which are measured overall. The metadata keys can be used as flags, default is all which measures everything. none disables all overall measurement.
+        :param float length: set the window length (from 0 to 10) (default 0.05)
+        :param bool metadata: inject metadata in the filtergraph (default false)
+        :param int reset: Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)
+        :param str measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)
+        :param str measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#astats
 
@@ -3901,15 +3850,15 @@ class AudioStream(FilterableStream):
     def asubboost(
         self,
         *,
-        dry: float | int | str = Default(1.0),
-        wet: float | int | str = Default(1.0),
-        boost: float | int | str = Default(2.0),
-        decay: float | int | str = Default(0.0),
-        feedback: float | int | str = Default(0.9),
-        cutoff: float | int | str = Default(100.0),
-        slope: float | int | str = Default(0.5),
-        delay: float | int | str = Default(20.0),
-        channels: str | float | int = Default("all"),
+        dry: float | int | str = Default("1"),
+        wet: float | int | str = Default("1"),
+        boost: float | int | str = Default("2"),
+        decay: float | int | str = Default("0"),
+        feedback: float | int | str = Default("0.9"),
+        cutoff: float | int | str = Default("100"),
+        slope: float | int | str = Default("0.5"),
+        delay: float | int | str = Default("20"),
+        channels: str | float | int = Default('"all"'),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -3920,15 +3869,15 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float dry: Set dry gain, how much of original signal is kept. Allowed range is from 0 to 1. Default value is 1.0.
-        :param float wet: Set wet gain, how much of filtered signal is kept. Allowed range is from 0 to 1. Default value is 1.0.
-        :param float boost: Set max boost factor. Allowed range is from 1 to 12. Default value is 2.
-        :param float decay: Set delay line decay gain value. Allowed range is from 0 to 1. Default value is 0.0.
-        :param float feedback: Set delay line feedback gain value. Allowed range is from 0 to 1. Default value is 0.9.
-        :param float cutoff: Set cutoff frequency in Hertz. Allowed range is 50 to 900. Default value is 100.
-        :param float slope: Set slope amount for cutoff frequency. Allowed range is 0.0001 to 1. Default value is 0.5.
-        :param float delay: Set delay. Allowed range is from 1 to 100. Default value is 20.
-        :param str channels: Set the channels to process. Default value is all available.
+        :param float dry: set dry gain (from 0 to 1) (default 1)
+        :param float wet: set wet gain (from 0 to 1) (default 1)
+        :param float boost: set max boost (from 1 to 12) (default 2)
+        :param float decay: set decay (from 0 to 1) (default 0)
+        :param float feedback: set feedback (from 0 to 1) (default 0.9)
+        :param float cutoff: set cutoff (from 50 to 900) (default 100)
+        :param float slope: set slope (from 0.0001 to 1) (default 0.5)
+        :param float delay: set delay (from 1 to 100) (default 20)
+        :param str channels: set channels to filter (default "all")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asubboost
@@ -3962,9 +3911,9 @@ class AudioStream(FilterableStream):
     def asubcut(
         self,
         *,
-        cutoff: float | int | str = Default(20.0),
-        order: int | str = Default(10),
-        level: float | int | str = Default(1.0),
+        cutoff: float | int | str = Default("20"),
+        order: int | str = Default("10"),
+        level: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -3975,9 +3924,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float cutoff: Set cutoff frequency in Hertz. Allowed range is 2 to 200. Default value is 20.
-        :param int order: Set filter order. Available values are from 3 to 20. Default value is 10.
-        :param float level: Set input gain level. Allowed range is from 0 to 1. Default value is 1.
+        :param float cutoff: set cutoff frequency (from 2 to 200) (default 20)
+        :param int order: set filter order (from 3 to 20) (default 10)
+        :param float level: set input level (from 0 to 1) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asubcut
@@ -4005,9 +3954,9 @@ class AudioStream(FilterableStream):
     def asupercut(
         self,
         *,
-        cutoff: float | int | str = Default(20000.0),
-        order: int | str = Default(10),
-        level: float | int | str = Default(1.0),
+        cutoff: float | int | str = Default("20000"),
+        order: int | str = Default("10"),
+        level: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4018,9 +3967,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float cutoff: Set cutoff frequency in Hertz. Allowed range is 20000 to 192000. Default value is 20000.
-        :param int order: Set filter order. Available values are from 3 to 20. Default value is 10.
-        :param float level: Set input gain level. Allowed range is from 0 to 1. Default value is 1.
+        :param float cutoff: set cutoff frequency (from 20000 to 192000) (default 20000)
+        :param int order: set filter order (from 3 to 20) (default 10)
+        :param float level: set input level (from 0 to 1) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asupercut
@@ -4048,10 +3997,10 @@ class AudioStream(FilterableStream):
     def asuperpass(
         self,
         *,
-        centerf: float | int | str = Default(1000.0),
-        order: int | str = Default(4),
-        qfactor: float | int | str = Default(1.0),
-        level: float | int | str = Default(1.0),
+        centerf: float | int | str = Default("1000"),
+        order: int | str = Default("4"),
+        qfactor: float | int | str = Default("1"),
+        level: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4062,10 +4011,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float centerf: Set center frequency in Hertz. Allowed range is 2 to 999999. Default value is 1000.
-        :param int order: Set filter order. Available values are from 4 to 20. Default value is 4.
-        :param float qfactor: Set Q-factor. Allowed range is from 0.01 to 100. Default value is 1.
-        :param float level: Set input gain level. Allowed range is from 0 to 2. Default value is 1.
+        :param float centerf: set center frequency (from 2 to 999999) (default 1000)
+        :param int order: set filter order (from 4 to 20) (default 4)
+        :param float qfactor: set Q-factor (from 0.01 to 100) (default 1)
+        :param float level: set input level (from 0 to 2) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asuperpass
@@ -4094,10 +4043,10 @@ class AudioStream(FilterableStream):
     def asuperstop(
         self,
         *,
-        centerf: float | int | str = Default(1000.0),
-        order: int | str = Default(4),
-        qfactor: float | int | str = Default(1.0),
-        level: float | int | str = Default(1.0),
+        centerf: float | int | str = Default("1000"),
+        order: int | str = Default("4"),
+        qfactor: float | int | str = Default("1"),
+        level: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4108,10 +4057,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float centerf: Set center frequency in Hertz. Allowed range is 2 to 999999. Default value is 1000.
-        :param int order: Set filter order. Available values are from 4 to 20. Default value is 4.
-        :param float qfactor: Set Q-factor. Allowed range is from 0.01 to 100. Default value is 1.
-        :param float level: Set input gain level. Allowed range is from 0 to 2. Default value is 1.
+        :param float centerf: set center frequency (from 2 to 999999) (default 1000)
+        :param int order: set filter order (from 4 to 20) (default 4)
+        :param float qfactor: set Q-factor (from 0.01 to 100) (default 1)
+        :param float level: set input level (from 0 to 2) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#asuperstop
@@ -4137,7 +4086,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def atempo(self, *, tempo: float | int | str = Default(1.0), **kwargs: Any) -> "AudioStream":
+    def atempo(self, *, tempo: float | int | str = Default("1"), **kwargs: Any) -> "AudioStream":
         """
 
         Adjust audio tempo.
@@ -4145,7 +4094,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float tempo: set tempo scale factor
+        :param float tempo: set tempo scale factor (from 0.5 to 100) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#atempo
 
@@ -4169,11 +4118,11 @@ class AudioStream(FilterableStream):
     def atilt(
         self,
         *,
-        freq: float | int | str = Default(10000.0),
-        slope: float | int | str = Default(0.0),
-        width: float | int | str = Default(1000.0),
-        order: int | str = Default(5),
-        level: float | int | str = Default(1.0),
+        freq: float | int | str = Default("10000"),
+        slope: float | int | str = Default("0"),
+        width: float | int | str = Default("1000"),
+        order: int | str = Default("5"),
+        level: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4184,11 +4133,11 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float freq: Set central frequency of tilt in Hz. Default is 10000 Hz.
-        :param float slope: Set slope direction of tilt. Default is 0. Allowed range is from -1 to 1.
-        :param float width: Set width of tilt. Default is 1000. Allowed range is from 100 to 10000.
-        :param int order: Set order of tilt filter.
-        :param float level: Set input volume level. Allowed range is from 0 to 4. Default is 1.
+        :param float freq: set central frequency (from 20 to 192000) (default 10000)
+        :param float slope: set filter slope (from -1 to 1) (default 0)
+        :param float width: set filter width (from 100 to 10000) (default 1000)
+        :param int order: set filter order (from 2 to 30) (default 5)
+        :param float level: set input level (from 0 to 4) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#atilt
@@ -4218,13 +4167,13 @@ class AudioStream(FilterableStream):
     def atrim(
         self,
         *,
-        start: int | str = Default("9223372036854775807LL"),
-        end: int | str = Default("9223372036854775807LL"),
-        start_pts: int | str = Default("((int64_t)(0x8000000000000000ULL))"),
-        end_pts: int | str = Default("((int64_t)(0x8000000000000000ULL))"),
-        duration: int | str = Default(0),
-        start_sample: int | str = Default(-1),
-        end_sample: int | str = Default("9223372036854775807LL"),
+        start: str | float | int = Default("INT64_MAX"),
+        end: str | float | int = Default("INT64_MAX"),
+        start_pts: int | str = Default("I64_MIN"),
+        end_pts: int | str = Default("I64_MIN"),
+        duration: str | float | int = Default("0"),
+        start_sample: int | str = Default("-1"),
+        end_sample: int | str = Default("I64_MAX"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -4234,13 +4183,13 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int start: Timestamp of the first frame that should be passed
-        :param int end: Timestamp of the first frame that should be dropped again
-        :param int start_pts: Timestamp of the first frame that should be passed
-        :param int end_pts: Timestamp of the first frame that should be dropped again
-        :param int duration: Maximum duration of the output
-        :param int start_sample: Number of the first audio sample that should be passed to the output
-        :param int end_sample: Number of the first audio sample that should be dropped again
+        :param str start: Timestamp of the first frame that should be passed (default INT64_MAX)
+        :param str end: Timestamp of the first frame that should be dropped again (default INT64_MAX)
+        :param int start_pts: Timestamp of the first frame that should be passed (from I64_MIN to I64_MAX) (default I64_MIN)
+        :param int end_pts: Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)
+        :param str duration: Maximum duration of the output (default 0)
+        :param int start_sample: Number of the first audio sample that should be passed to the output (from -1 to I64_MAX) (default -1)
+        :param int end_sample: Number of the first audio sample that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#atrim
 
@@ -4270,22 +4219,22 @@ class AudioStream(FilterableStream):
     def avectorscope(
         self,
         *,
-        mode: int | Literal["lissajous", "lissajous_xy", "polar"] | Default = Default("LISSAJOUS"),
-        rate: str | float | int = Default("25"),
-        size: str | float | int = Default("400x400"),
-        rc: int | str = Default(40),
-        gc: int | str = Default(160),
-        bc: int | str = Default(80),
-        ac: int | str = Default(255),
-        rf: int | str = Default(15),
-        gf: int | str = Default(10),
-        bf: int | str = Default(5),
-        af: int | str = Default(5),
-        zoom: float | int | str = Default(1.0),
-        draw: int | Literal["dot", "line", "aaline"] | Default = Default("DOT"),
-        scale: int | Literal["lin", "sqrt", "cbrt", "log"] | Default = Default("LIN"),
-        swap: bool | int | str = Default(1),
-        mirror: int | Literal["none", "x", "y", "xy"] | Default = Default(0),
+        mode: int | Literal["lissajous", "lissajous_xy", "polar"] | Default = Default("lissajous"),
+        rate: str | float | int = Default('"25"'),
+        size: str | float | int = Default('"400x400"'),
+        rc: int | str = Default("40"),
+        gc: int | str = Default("160"),
+        bc: int | str = Default("80"),
+        ac: int | str = Default("255"),
+        rf: int | str = Default("15"),
+        gf: int | str = Default("10"),
+        bf: int | str = Default("5"),
+        af: int | str = Default("5"),
+        zoom: float | int | str = Default("1"),
+        draw: int | Literal["dot", "line", "aaline"] | Default = Default("dot"),
+        scale: int | Literal["lin", "sqrt", "cbrt", "log"] | Default = Default("lin"),
+        swap: bool | int | str = Default("true"),
+        mirror: int | Literal["none", "x", "y", "xy"] | Default = Default("none"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -4295,22 +4244,22 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int mode: Set the vectorscope mode. Available values are: ‘lissajous’ Lissajous rotated by 45 degrees. ‘lissajous_xy’ Same as above but not rotated. ‘polar’ Shape resembling half of circle. Default value is ‘lissajous’.
-        :param str rate: Set the output frame rate. Default value is 25.
-        :param str size: Set the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 400x400.
-        :param int rc: Specify the red, green, blue and alpha contrast. Default values are 40, 160, 80 and 255. Allowed range is [0, 255].
-        :param int gc: Specify the red, green, blue and alpha contrast. Default values are 40, 160, 80 and 255. Allowed range is [0, 255].
-        :param int bc: Specify the red, green, blue and alpha contrast. Default values are 40, 160, 80 and 255. Allowed range is [0, 255].
-        :param int ac: Specify the red, green, blue and alpha contrast. Default values are 40, 160, 80 and 255. Allowed range is [0, 255].
-        :param int rf: Specify the red, green, blue and alpha fade. Default values are 15, 10, 5 and 5. Allowed range is [0, 255].
-        :param int gf: Specify the red, green, blue and alpha fade. Default values are 15, 10, 5 and 5. Allowed range is [0, 255].
-        :param int bf: Specify the red, green, blue and alpha fade. Default values are 15, 10, 5 and 5. Allowed range is [0, 255].
-        :param int af: Specify the red, green, blue and alpha fade. Default values are 15, 10, 5 and 5. Allowed range is [0, 255].
-        :param float zoom: Set the zoom factor. Default value is 1. Allowed range is [0, 10]. Values lower than 1 will auto adjust zoom factor to maximal possible value.
-        :param int draw: Set the vectorscope drawing mode. Available values are: ‘dot’ Draw dot for each sample. ‘line’ Draw line between previous and current sample. ‘aaline’ Draw anti-aliased line between previous and current sample. Default value is ‘dot’.
-        :param int scale: Specify amplitude scale of audio samples. Available values are: ‘lin’ Linear. ‘sqrt’ Square root. ‘cbrt’ Cubic root. ‘log’ Logarithmic.
-        :param bool swap: Swap left channel axis with right channel axis.
-        :param int mirror: Mirror axis. ‘none’ No mirror. ‘x’ Mirror only x axis. ‘y’ Mirror only y axis. ‘xy’ Mirror both axis.
+        :param int mode: set mode (from 0 to 2) (default lissajous)
+        :param str rate: set video rate (default "25")
+        :param str size: set video size (default "400x400")
+        :param int rc: set red contrast (from 0 to 255) (default 40)
+        :param int gc: set green contrast (from 0 to 255) (default 160)
+        :param int bc: set blue contrast (from 0 to 255) (default 80)
+        :param int ac: set alpha contrast (from 0 to 255) (default 255)
+        :param int rf: set red fade (from 0 to 255) (default 15)
+        :param int gf: set green fade (from 0 to 255) (default 10)
+        :param int bf: set blue fade (from 0 to 255) (default 5)
+        :param int af: set alpha fade (from 0 to 255) (default 5)
+        :param float zoom: set zoom factor (from 0 to 10) (default 1)
+        :param int draw: set draw mode (from 0 to 2) (default dot)
+        :param int scale: set amplitude scale mode (from 0 to 3) (default lin)
+        :param bool swap: swap x axis with y axis (default true)
+        :param int mirror: mirror axis (from 0 to 3) (default none)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#avectorscope
 
@@ -4350,8 +4299,8 @@ class AudioStream(FilterableStream):
         self,
         _axcorrelate1: "AudioStream",
         *,
-        size: int | str = Default(256),
-        algo: int | Literal["slow", "fast", "best"] | Default = Default(2),
+        size: int | str = Default("256"),
+        algo: int | Literal["slow", "fast"] | Default = Default("slow"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -4361,8 +4310,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int size: Set size of segment over which cross-correlation is calculated. Default is 256. Allowed range is from 2 to 131072.
-        :param int algo: Set algorithm for cross-correlation. Can be slow or fast or best. Default is best. Fast algorithm assumes mean values over any given segment are always zero and thus need much less calculations to make. This is generally not true, but is valid for typical audio streams.
+        :param int size: set segment size (from 2 to 131072) (default 256)
+        :param int algo: set algorithm (from 0 to 1) (default slow)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#axcorrelate
 
@@ -4387,7 +4336,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def azmq(self, *, bind_address: str | float | int = Default("tcp://*:5555"), **kwargs: Any) -> "AudioStream":
+    def azmq(self, *, bind_address: str | float | int = Default('"tcp://*:5555"'), **kwargs: Any) -> "AudioStream":
         """
 
         Receive commands through ZMQ and broker them to filters.
@@ -4395,7 +4344,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str bind_address: set bind address
+        :param str bind_address: set bind address (default "tcp://*:5555")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq
 
@@ -4419,16 +4368,16 @@ class AudioStream(FilterableStream):
     def bandpass(
         self,
         *,
-        frequency: float | int | str = Default(3000.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.5),
-        csg: bool | int | str = Default(0),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("3000"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.5"),
+        csg: bool | int | str = Default("false"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4439,16 +4388,16 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set the filter’s central frequency. Default is 3000.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Specify the band-width of a filter in width_type units.
-        :param bool csg: Constant skirt gain if set to 1. Defaults to 0.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set central frequency (from 0 to 999999) (default 3000)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.5)
+        :param bool csg: use constant skirt gain (default false)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bandpass
@@ -4483,15 +4432,15 @@ class AudioStream(FilterableStream):
     def bandreject(
         self,
         *,
-        frequency: float | int | str = Default(3000.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.5),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("3000"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.5"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4502,15 +4451,15 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set the filter’s central frequency. Default is 3000.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Specify the band-width of a filter in width_type units.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set central frequency (from 0 to 999999) (default 3000)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.5)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bandreject
@@ -4544,17 +4493,17 @@ class AudioStream(FilterableStream):
     def bass(
         self,
         *,
-        frequency: float | int | str = Default(100.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.5),
-        gain: float | int | str = Default(0.0),
-        poles: int | str = Default(2),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("100"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.5"),
+        gain: float | int | str = Default("0"),
+        poles: int | str = Default("2"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4565,17 +4514,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set the filter’s central frequency and so can be used to extend or reduce the frequency range to be boosted or cut. The default value is 100 Hz.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Determine how steep is the filter’s shelf transition.
-        :param float gain: Give the gain at 0 Hz. Its useful range is about -20 (for a large cut) to +20 (for a large boost). Beware of clipping when using a positive gain.
-        :param int poles: Set number of poles. Default is 2.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set central frequency (from 0 to 999999) (default 100)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.5)
+        :param float gain: set gain (from -900 to 900) (default 0)
+        :param int poles: set number of poles (from 1 to 2) (default 2)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf
@@ -4611,18 +4560,14 @@ class AudioStream(FilterableStream):
     def biquad(
         self,
         *,
-        a0: float | int | str = Default(1.0),
-        a1: float | int | str = Default(0.0),
-        a2: float | int | str = Default(0.0),
-        b0: float | int | str = Default(0.0),
-        b1: float | int | str = Default(0.0),
-        b2: float | int | str = Default(0.0),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        a0: float | int | str = Default("1"),
+        a1: float | int | str = Default("0"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4633,18 +4578,14 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float a0: ((void*)0)
-        :param float a1: ((void*)0)
-        :param float a2: ((void*)0)
-        :param float b0: ((void*)0)
-        :param float b1: ((void*)0)
-        :param float b2: ((void*)0)
-        :param float mix: set mix
-        :param str channels: set channels to filter
-        :param bool normalize: normalize coefficients
-        :param int transform: set transform type
-        :param int precision: set filtering precision
-        :param int blocksize: set the block size
+        :param float a0: (from INT_MIN to INT_MAX) (default 1)
+        :param float a1: (from INT_MIN to INT_MAX) (default 0)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#biquad
@@ -4660,10 +4601,6 @@ class AudioStream(FilterableStream):
                     {
                         "a0": a0,
                         "a1": a1,
-                        "a2": a2,
-                        "b0": b0,
-                        "b1": b1,
-                        "b2": b2,
                         "mix": mix,
                         "channels": channels,
                         "normalize": normalize,
@@ -4754,8 +4691,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str map: Map channels from input to output. The argument is a ’|’-separated list of mappings, each in the in_channel-out_channel or in_channel form. in_channel can be either the name of the input channel (e.g. FL for front left) or its index in the input channel layout. out_channel is the name of the output channel or its index in the output channel layout. If out_channel is not given then it is implicitly an index, starting with zero and increasing by one for each mapping.
-        :param str channel_layout: The channel layout of the output stream.
+        :param str map: A comma-separated list of input channel numbers in output order.
+        :param str channel_layout: Output channel layout.
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#channelmap
 
@@ -4780,8 +4717,8 @@ class AudioStream(FilterableStream):
     def channelsplit(
         self,
         *,
-        channel_layout: str | float | int = Default("stereo"),
-        channels: str | float | int = Default("all"),
+        channel_layout: str | float | int = Default('"stereo"'),
+        channels: str | float | int = Default('"all"'),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -4791,8 +4728,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str channel_layout: The channel layout of the input stream. The default is "stereo".
-        :param str channels: A channel layout describing the channels to be extracted as separate output streams or "all" to extract each input channel as a separate stream. The default is "all". Choosing channels not present in channel layout in the input will result in an error.
+        :param str channel_layout: Input channel layout. (default "stereo")
+        :param str channels: Channels to extract. (default "all")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#channelsplit
 
@@ -4818,12 +4755,12 @@ class AudioStream(FilterableStream):
     def chorus(
         self,
         *,
-        in_gain: float | int | str = Default(0.4),
-        out_gain: float | int | str = Default(0.4),
-        delays: str | float | int = Default("((void*)0)"),
-        decays: str | float | int = Default("((void*)0)"),
-        speeds: str | float | int = Default("((void*)0)"),
-        depths: str | float | int = Default("((void*)0)"),
+        in_gain: float | int | str = Default("0.4"),
+        out_gain: float | int | str = Default("0.4"),
+        delays: str | float | int = Default(None),
+        decays: str | float | int = Default(None),
+        speeds: str | float | int = Default(None),
+        depths: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -4833,12 +4770,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float in_gain: Set input gain. Default is 0.4.
-        :param float out_gain: Set output gain. Default is 0.4.
-        :param str delays: Set delays. A typical delay is around 40ms to 60ms.
-        :param str decays: Set decays.
-        :param str speeds: Set speeds.
-        :param str depths: Set depths.
+        :param float in_gain: set input gain (from 0 to 1) (default 0.4)
+        :param float out_gain: set output gain (from 0 to 1) (default 0.4)
+        :param str delays: set delays
+        :param str decays: set decays
+        :param str speeds: set speeds
+        :param str depths: set depths
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#chorus
 
@@ -4867,13 +4804,13 @@ class AudioStream(FilterableStream):
     def compand(
         self,
         *,
-        attacks: str | float | int = Default("0"),
-        decays: str | float | int = Default("0.8"),
-        points: str | float | int = Default("-70/-70|-60/-20|1/0"),
-        soft_knee: float | int | str = Default(0.01),
-        gain: float | int | str = Default(0.0),
-        volume: float | int | str = Default(0.0),
-        delay: float | int | str = Default(0.0),
+        attacks: str | float | int = Default('"0"'),
+        decays: str | float | int = Default('"0.8"'),
+        points: str | float | int = Default('"-70/-70|-60/-20|1/0"'),
+        soft_knee: float | int | str = Default("0.01"),
+        gain: float | int | str = Default("0"),
+        volume: float | int | str = Default("0"),
+        delay: float | int | str = Default("0"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -4883,13 +4820,13 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str attacks: A list of times in seconds for each channel over which the instantaneous level of the input signal is averaged to determine its volume. attacks refers to increase of volume and decays refers to decrease of volume. For most situations, the attack time (response to the audio getting louder) should be shorter than the decay time, because the human ear is more sensitive to sudden loud audio than sudden soft audio. A typical value for attack is 0.3 seconds and a typical value for decay is 0.8 seconds. If specified number of attacks & decays is lower than number of channels, the last set attack/decay will be used for all remaining channels.
-        :param str decays: A list of times in seconds for each channel over which the instantaneous level of the input signal is averaged to determine its volume. attacks refers to increase of volume and decays refers to decrease of volume. For most situations, the attack time (response to the audio getting louder) should be shorter than the decay time, because the human ear is more sensitive to sudden loud audio than sudden soft audio. A typical value for attack is 0.3 seconds and a typical value for decay is 0.8 seconds. If specified number of attacks & decays is lower than number of channels, the last set attack/decay will be used for all remaining channels.
-        :param str points: A list of points for the transfer function, specified in dB relative to the maximum possible signal amplitude. Each key points list must be defined using the following syntax: x0/y0|x1/y1|x2/y2|.... or x0/y0 x1/y1 x2/y2 .... The input values must be in strictly increasing order but the transfer function does not have to be monotonically rising. The point 0/0 is assumed but may be overridden (by 0/out-dBn). Typical values for the transfer function are -70/-70|-60/-20|1/0.
-        :param float soft_knee: Set the curve radius in dB for all joints. It defaults to 0.01.
-        :param float gain: Set the additional gain in dB to be applied at all points on the transfer function. This allows for easy adjustment of the overall gain. It defaults to 0.
-        :param float volume: Set an initial volume, in dB, to be assumed for each channel when filtering starts. This permits the user to supply a nominal level initially, so that, for example, a very large gain is not applied to initial signal levels before the companding has begun to operate. A typical value for audio which is initially quiet is -90 dB. It defaults to 0.
-        :param float delay: Set a delay, in seconds. The input audio is analyzed immediately, but audio is delayed before being fed to the volume adjuster. Specifying a delay approximately equal to the attack/decay times allows the filter to effectively operate in predictive rather than reactive mode. It defaults to 0.
+        :param str attacks: set time over which increase of volume is determined (default "0")
+        :param str decays: set time over which decrease of volume is determined (default "0.8")
+        :param str points: set points of transfer function (default "-70/-70|-60/-20|1/0")
+        :param float soft_knee: set soft-knee (from 0.01 to 900) (default 0.01)
+        :param float gain: set output gain (from -900 to 900) (default 0)
+        :param float volume: set initial volume (from -900 to 0) (default 0)
+        :param float delay: set delay for samples before sending them to volume adjuster (from 0 to 20) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#compand
 
@@ -4919,12 +4856,12 @@ class AudioStream(FilterableStream):
     def compensationdelay(
         self,
         *,
-        mm: int | str = Default(0),
-        cm: int | str = Default(0),
-        m: int | str = Default(0),
-        dry: float | int | str = Default(0.0),
-        wet: float | int | str = Default(1.0),
-        temp: int | str = Default(20),
+        mm: int | str = Default("0"),
+        cm: int | str = Default("0"),
+        m: int | str = Default("0"),
+        dry: float | int | str = Default("0"),
+        wet: float | int | str = Default("1"),
+        temp: int | str = Default("20"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4935,12 +4872,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int mm: Set millimeters distance. This is compensation distance for fine tuning. Default is 0.
-        :param int cm: Set cm distance. This is compensation distance for tightening distance setup. Default is 0.
-        :param int m: Set meters distance. This is compensation distance for hard distance setup. Default is 0.
-        :param float dry: Set dry amount. Amount of unprocessed (dry) signal. Default is 0.
-        :param float wet: Set wet amount. Amount of processed (wet) signal. Default is 1.
-        :param int temp: Set temperature in degrees Celsius. This is the temperature of the environment. Default is 20.
+        :param int mm: set mm distance (from 0 to 10) (default 0)
+        :param int cm: set cm distance (from 0 to 100) (default 0)
+        :param int m: set meter distance (from 0 to 100) (default 0)
+        :param float dry: set dry amount (from 0 to 1) (default 0)
+        :param float wet: set wet amount (from 0 to 1) (default 1)
+        :param int temp: set temperature °C (from -50 to 50) (default 20)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#compensationdelay
@@ -4971,12 +4908,12 @@ class AudioStream(FilterableStream):
     def crossfeed(
         self,
         *,
-        strength: float | int | str = Default(0.2),
-        range: float | int | str = Default(0.5),
-        slope: float | int | str = Default(0.5),
-        level_in: float | int | str = Default(0.9),
-        level_out: float | int | str = Default(1.0),
-        block_size: int | str = Default(0),
+        strength: float | int | str = Default("0.2"),
+        range: float | int | str = Default("0.5"),
+        slope: float | int | str = Default("0.5"),
+        level_in: float | int | str = Default("0.9"),
+        level_out: float | int | str = Default("1"),
+        block_size: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -4987,12 +4924,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float strength: Set strength of crossfeed. Default is 0.2. Allowed range is from 0 to 1. This sets gain of low shelf filter for side part of stereo image. Default is -6dB. Max allowed is -30db when strength is set to 1.
-        :param float range: Set soundstage wideness. Default is 0.5. Allowed range is from 0 to 1. This sets cut off frequency of low shelf filter. Default is cut off near 1550 Hz. With range set to 1 cut off frequency is set to 2100 Hz.
-        :param float slope: Set curve slope of low shelf filter. Default is 0.5. Allowed range is from 0.01 to 1.
-        :param float level_in: Set input gain. Default is 0.9.
-        :param float level_out: Set output gain. Default is 1.
-        :param int block_size: Set block size used for reverse IIR processing. If this value is set to high enough value (higher than impulse response length truncated when reaches near zero values) filtering will become linear phase otherwise if not big enough it will just produce nasty artifacts. Note that filter delay will be exactly this many samples when set to non-zero value.
+        :param float strength: set crossfeed strength (from 0 to 1) (default 0.2)
+        :param float range: set soundstage wideness (from 0 to 1) (default 0.5)
+        :param float slope: set curve slope (from 0.01 to 1) (default 0.5)
+        :param float level_in: set level in (from 0 to 1) (default 0.9)
+        :param float level_out: set level out (from 0 to 1) (default 1)
+        :param int block_size: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#crossfeed
@@ -5023,8 +4960,8 @@ class AudioStream(FilterableStream):
     def crystalizer(
         self,
         *,
-        i: float | int | str = Default(2.0),
-        c: bool | int | str = Default(1),
+        i: float | int | str = Default("2"),
+        c: bool | int | str = Default("true"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5035,8 +4972,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float i: Sets the intensity of effect (default: 2.0). Must be in range between -10.0 to 0 (unchanged sound) to 10.0 (maximum effect). To inverse filtering use negative value.
-        :param bool c: Enable clipping. By default is enabled.
+        :param float i: set intensity (from -10 to 10) (default 2)
+        :param bool c: enable clipping (default true)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#crystalizer
@@ -5063,8 +5000,8 @@ class AudioStream(FilterableStream):
     def dcshift(
         self,
         *,
-        shift: float | int | str = Default(0.0),
-        limitergain: float | int | str = Default(0.0),
+        shift: float | int | str = Default("0"),
+        limitergain: float | int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5075,8 +5012,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float shift: Set the DC shift, allowed range is [-1, 1]. It indicates the amount to shift the audio.
-        :param float limitergain: Optional. It should have a value much less than 1 (e.g. 0.05 or 0.02) and is used to prevent clipping.
+        :param float shift: set DC shift (from -1 to 1) (default 0)
+        :param float limitergain: set limiter gain (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dcshift
@@ -5103,10 +5040,10 @@ class AudioStream(FilterableStream):
     def deesser(
         self,
         *,
-        i: float | int | str = Default(0.0),
-        m: float | int | str = Default(0.5),
-        f: float | int | str = Default(0.5),
-        s: int | Literal["i", "o", "e"] | Default = Default("OUT_MODE"),
+        i: float | int | str = Default("0"),
+        m: float | int | str = Default("0.5"),
+        f: float | int | str = Default("0.5"),
+        s: int | Literal["i", "o", "e"] | Default = Default("o"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5117,10 +5054,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float i: Set intensity for triggering de-essing. Allowed range is from 0 to 1. Default is 0.
-        :param float m: Set amount of ducking on treble part of sound. Allowed range is from 0 to 1. Default is 0.5.
-        :param float f: How much of original frequency content to keep when de-essing. Allowed range is from 0 to 1. Default is 0.5.
-        :param int s: Set the output mode. It accepts the following values: i Pass input unchanged. o Pass ess filtered out. e Pass only ess. Default value is o.
+        :param float i: set intensity (from 0 to 1) (default 0)
+        :param float m: set max deessing (from 0 to 1) (default 0.5)
+        :param float f: set frequency (from 0 to 1) (default 0.5)
+        :param int s: set output mode (from 0 to 2) (default o)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#deesser
@@ -5149,9 +5086,9 @@ class AudioStream(FilterableStream):
     def dialoguenhance(
         self,
         *,
-        original: float | int | str = Default(1.0),
-        enhance: float | int | str = Default(1.0),
-        voice: float | int | str = Default(2.0),
+        original: float | int | str = Default("1"),
+        enhance: float | int | str = Default("1"),
+        voice: float | int | str = Default("2"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5162,9 +5099,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float original: Set the original center factor to keep in front center channel output. Allowed range is from 0 to 1. Default value is 1.
-        :param float enhance: Set the dialogue enhance factor to put in front center channel output. Allowed range is from 0 to 3. Default value is 1.
-        :param float voice: Set the voice detection factor. Allowed range is from 2 to 32. Default value is 2.
+        :param float original: set original center factor (from 0 to 1) (default 1)
+        :param float enhance: set dialogue enhance factor (from 0 to 3) (default 1)
+        :param float voice: set voice detection factor (from 2 to 32) (default 2)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dialoguenhance
@@ -5189,7 +5126,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def drmeter(self, *, length: float | int | str = Default(3.0), **kwargs: Any) -> "AudioStream":
+    def drmeter(self, *, length: float | int | str = Default("3"), **kwargs: Any) -> "AudioStream":
         """
 
         Measure audio dynamic range.
@@ -5197,7 +5134,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float length: Set window length in seconds used to split audio into segments of equal length. Default is 3 seconds.
+        :param float length: set the window length (from 0.01 to 10) (default 3)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#drmeter
 
@@ -5221,19 +5158,19 @@ class AudioStream(FilterableStream):
     def dynaudnorm(
         self,
         *,
-        framelen: int | str = Default(500),
-        gausssize: int | str = Default(31),
-        peak: float | int | str = Default(0.95),
-        maxgain: float | int | str = Default(10.0),
-        targetrms: float | int | str = Default(0.0),
-        coupling: bool | int | str = Default(1),
-        correctdc: bool | int | str = Default(0),
-        altboundary: bool | int | str = Default(0),
-        compress: float | int | str = Default(0.0),
-        threshold: float | int | str = Default(0.0),
-        channels: str | float | int = Default("all"),
-        overlap: float | int | str = Default(0.0),
-        curve: str | float | int = Default("((void*)0)"),
+        framelen: int | str = Default("500"),
+        gausssize: int | str = Default("31"),
+        peak: float | int | str = Default("0.95"),
+        maxgain: float | int | str = Default("10"),
+        targetrms: float | int | str = Default("0"),
+        coupling: bool | int | str = Default("true"),
+        correctdc: bool | int | str = Default("false"),
+        altboundary: bool | int | str = Default("false"),
+        compress: float | int | str = Default("0"),
+        threshold: float | int | str = Default("0"),
+        channels: str | float | int = Default('"all"'),
+        overlap: float | int | str = Default("0"),
+        curve: str | float | int = Default(None),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5244,18 +5181,18 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int framelen: set the frame length in msec
-        :param int gausssize: set the filter size
-        :param float peak: set the peak value
-        :param float maxgain: set the max amplification
-        :param float targetrms: set the target RMS
-        :param bool coupling: set channel coupling
-        :param bool correctdc: set DC correction
-        :param bool altboundary: set alternative boundary mode
-        :param float compress: set the compress factor
-        :param float threshold: set the threshold value
-        :param str channels: set channels to filter
-        :param float overlap: set the frame overlap
+        :param int framelen: set the frame length in msec (from 10 to 8000) (default 500)
+        :param int gausssize: set the filter size (from 3 to 301) (default 31)
+        :param float peak: set the peak value (from 0 to 1) (default 0.95)
+        :param float maxgain: set the max amplification (from 1 to 100) (default 10)
+        :param float targetrms: set the target RMS (from 0 to 1) (default 0)
+        :param bool coupling: set channel coupling (default true)
+        :param bool correctdc: set DC correction (default false)
+        :param bool altboundary: set alternative boundary mode (default false)
+        :param float compress: set the compress factor (from 0 to 30) (default 0)
+        :param float threshold: set the threshold value (from 0 to 1) (default 0)
+        :param str channels: set channels to filter (default "all")
+        :param float overlap: set the frame overlap (from 0 to 1) (default 0)
         :param str curve: set the custom peak mapping curve
         :param str enable: timeline editing
 
@@ -5315,23 +5252,17 @@ class AudioStream(FilterableStream):
     def ebur128(
         self,
         *,
-        video: bool | int | str = Default(0),
-        size: str | float | int = Default("640x480"),
-        meter: int | str = Default(9),
-        framelog: int | Literal["quiet", "info", "verbose"] | Default = Default(-1),
-        metadata: bool | int | str = Default(0),
-        peak: str | Literal["none", "sample", "true"] | Default = Default("PEAK_MODE_NONE"),
-        dualmono: bool | int | str = Default(0),
-        panlaw: float | int | str = Default(-3.01029995663978),
-        target: int | str = Default(-23),
-        gauge: int | Literal["momentary", "m", "shortterm", "s"] | Default = Default(0),
-        scale: int | Literal["absolute", "LUFS", "relative", "LU"] | Default = Default(0),
-        integrated: float | int | str = Default(0.0),
-        range: float | int | str = Default(0.0),
-        lra_low: float | int | str = Default(0.0),
-        lra_high: float | int | str = Default(0.0),
-        sample_peak: float | int | str = Default(0.0),
-        true_peak: float | int | str = Default(0.0),
+        video: bool | int | str = Default("false"),
+        size: str | float | int = Default('"640x480"'),
+        meter: int | str = Default("9"),
+        framelog: int | Literal["quiet", "info", "verbose"] | Default = Default("-1"),
+        metadata: bool | int | str = Default("false"),
+        peak: str | Literal["none", "sample", "true"] | Default = Default("0"),
+        dualmono: bool | int | str = Default("false"),
+        panlaw: float | int | str = Default("-3.0103"),
+        target: int | str = Default("-23"),
+        gauge: int | Literal["momentary", "m", "shortterm", "s"] | Default = Default("momentary"),
+        scale: int | Literal["absolute", "LUFS", "relative", "LU"] | Default = Default("absolute"),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -5341,23 +5272,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param bool video: Activate the video output. The audio stream is passed unchanged whether this option is set or no. The video stream will be the first output stream if activated. Default is 0.
-        :param str size: Set the video size. This option is for video only. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default and minimum resolution is 640x480.
-        :param int meter: Set the EBU scale meter. Default is 9. Common values are 9 and 18, respectively for EBU scale meter +9 and EBU scale meter +18. Any other integer value between this range is allowed.
-        :param int framelog: Force the frame logging level. Available values are: ‘quiet’ logging disabled ‘info’ information logging level ‘verbose’ verbose logging level By default, the logging level is set to info. If the video or the metadata options are set, it switches to verbose.
-        :param bool metadata: Set metadata injection. If set to 1, the audio input will be segmented into 100ms output frames, each of them containing various loudness information in metadata. All the metadata keys are prefixed with lavfi.r128.. Default is 0.
-        :param str peak: Set peak mode(s). Available modes can be cumulated (the option is a flag type). Possible values are: ‘none’ Disable any peak mode (default). ‘sample’ Enable sample-peak mode. Simple peak mode looking for the higher sample value. It logs a message for sample-peak (identified by SPK). ‘true’ Enable true-peak mode. If enabled, the peak lookup is done on an over-sampled version of the input stream for better peak accuracy. It logs a message for true-peak. (identified by TPK) and true-peak per frame (identified by FTPK). This mode requires a build with libswresample.
-        :param bool dualmono: Treat mono input files as "dual mono". If a mono file is intended for playback on a stereo system, its EBU R128 measurement will be perceptually incorrect. If set to true, this option will compensate for this effect. Multi-channel input files are not affected by this option.
-        :param float panlaw: Set a specific pan law to be used for the measurement of dual mono files. This parameter is optional, and has a default value of -3.01dB.
-        :param int target: Set a specific target level (in LUFS) used as relative zero in the visualization. This parameter is optional and has a default value of -23LUFS as specified by EBU R128. However, material published online may prefer a level of -16LUFS (e.g. for use with podcasts or video platforms).
-        :param int gauge: Set the value displayed by the gauge. Valid values are momentary and s shortterm. By default the momentary value will be used, but in certain scenarios it may be more useful to observe the short term value instead (e.g. live mixing).
-        :param int scale: Sets the display scale for the loudness. Valid parameters are absolute (in LUFS) or relative (LU) relative to the target. This only affects the video output, not the summary or continuous log output.
-        :param float integrated: Read-only exported value for measured integrated loudness, in LUFS.
-        :param float range: Read-only exported value for measured loudness range, in LU.
-        :param float lra_low: Read-only exported value for measured LRA low, in LUFS.
-        :param float lra_high: Read-only exported value for measured LRA high, in LUFS.
-        :param float sample_peak: Read-only exported value for measured sample peak, in dBFS.
-        :param float true_peak: Read-only exported value for measured true peak, in dBFS.
+        :param bool video: set video output (default false)
+        :param str size: set video size (default "640x480")
+        :param int meter: set scale meter (+9 to +18) (from 9 to 18) (default 9)
+        :param int framelog: force frame logging level (from INT_MIN to INT_MAX) (default -1)
+        :param bool metadata: inject metadata in the filtergraph (default false)
+        :param str peak: set peak mode (default 0)
+        :param bool dualmono: treat mono input files as dual-mono (default false)
+        :param float panlaw: set a specific pan law for dual-mono files (from -10 to 0) (default -3.0103)
+        :param int target: set a specific target level in LUFS (-23 to 0) (from -23 to 0) (default -23)
+        :param int gauge: set gauge display type (from 0 to 1) (default momentary)
+        :param int scale: sets display method for the stats (from 0 to 1) (default absolute)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#ebur128
 
@@ -5381,12 +5306,6 @@ class AudioStream(FilterableStream):
                         "target": target,
                         "gauge": gauge,
                         "scale": scale,
-                        "integrated": integrated,
-                        "range": range,
-                        "lra_low": lra_low,
-                        "lra_high": lra_high,
-                        "sample_peak": sample_peak,
-                        "true_peak": true_peak,
                     }
                     | kwargs
                 ).items()
@@ -5398,16 +5317,16 @@ class AudioStream(FilterableStream):
     def equalizer(
         self,
         *,
-        frequency: float | int | str = Default(0.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(1.0),
-        gain: float | int | str = Default(0.0),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("0"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("1"),
+        gain: float | int | str = Default("0"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5418,16 +5337,16 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set the filter’s central frequency in Hz.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Specify the band-width of a filter in width_type units.
-        :param float gain: Set the required gain or attenuation in dB. Beware of clipping when using a positive gain.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set central frequency (from 0 to 999999) (default 0)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 1)
+        :param float gain: set gain (from -900 to 900) (default 0)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#equalizer
@@ -5462,8 +5381,8 @@ class AudioStream(FilterableStream):
     def extrastereo(
         self,
         *,
-        m: float | int | str = Default(2.5),
-        c: bool | int | str = Default(1),
+        m: float | int | str = Default("2.5"),
+        c: bool | int | str = Default("true"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5474,8 +5393,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float m: Sets the difference coefficient (default: 2.5). 0.0 means mono sound (average of both channels), with 1.0 sound will be unchanged, with -1.0 left and right channels will be swapped.
-        :param bool c: Enable clipping. By default is enabled.
+        :param float m: set the difference coefficient (from -10 to 10) (default 2.5)
+        :param bool c: enable clipping (default true)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#extrastereo
@@ -5502,10 +5421,10 @@ class AudioStream(FilterableStream):
     def firequalizer(
         self,
         *,
-        gain: str | float | int = Default("gain_interpolate(f)"),
-        gain_entry: str | float | int = Default("((void*)0)"),
-        delay: float | int | str = Default(0.01),
-        accuracy: float | int | str = Default(5.0),
+        gain: str | float | int = Default('"gain_interpolate(f'),
+        gain_entry: str | float | int = Default(None),
+        delay: float | int | str = Default("0.01"),
+        accuracy: float | int | str = Default("5"),
         wfunc: int
         | Literal[
             "rectangular",
@@ -5519,15 +5438,15 @@ class AudioStream(FilterableStream):
             "bharris",
             "tukey",
         ]
-        | Default = Default("WFUNC_HANN"),
-        fixed: bool | int | str = Default(0),
-        multi: bool | int | str = Default(0),
-        zero_phase: bool | int | str = Default(0),
-        scale: int | Literal["linlin", "linlog", "loglin", "loglog"] | Default = Default("SCALE_LINLOG"),
-        dumpfile: str | float | int = Default("((void*)0)"),
-        dumpscale: int | Literal["linlin", "linlog", "loglin", "loglog"] | Default = Default("SCALE_LINLOG"),
-        fft2: bool | int | str = Default(0),
-        min_phase: bool | int | str = Default(0),
+        | Default = Default("hann"),
+        fixed: bool | int | str = Default("false"),
+        multi: bool | int | str = Default("false"),
+        zero_phase: bool | int | str = Default("false"),
+        scale: int | Literal["linlin", "linlog", "loglin", "loglog"] | Default = Default("linlog"),
+        dumpfile: str | float | int = Default(None),
+        dumpscale: int | Literal["linlin", "linlog", "loglin", "loglog"] | Default = Default("linlog"),
+        fft2: bool | int | str = Default("false"),
+        min_phase: bool | int | str = Default("false"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -5537,19 +5456,19 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str gain: Set gain curve equation (in dB). The expression can contain variables: f the evaluated frequency sr sample rate ch channel number, set to 0 when multichannels evaluation is disabled chid channel id, see libavutil/channel_layout.h, set to the first channel id when multichannels evaluation is disabled chs number of channels chlayout channel_layout, see libavutil/channel_layout.h and functions: gain_interpolate(f) interpolate gain on frequency f based on gain_entry cubic_interpolate(f) same as gain_interpolate, but smoother This option is also available as command. Default is gain_interpolate(f).
-        :param str gain_entry: Set gain entry for gain_interpolate function. The expression can contain functions: entry(f, g) store gain entry at frequency f with value g This option is also available as command.
-        :param float delay: Set filter delay in seconds. Higher value means more accurate. Default is 0.01.
-        :param float accuracy: Set filter accuracy in Hz. Lower value means more accurate. Default is 5.
-        :param int wfunc: Set window function. Acceptable values are: rectangular rectangular window, useful when gain curve is already smooth hann hann window (default) hamming hamming window blackman blackman window nuttall3 3-terms continuous 1st derivative nuttall window mnuttall3 minimum 3-terms discontinuous nuttall window nuttall 4-terms continuous 1st derivative nuttall window bnuttall minimum 4-terms discontinuous nuttall (blackman-nuttall) window bharris blackman-harris window tukey tukey window
-        :param bool fixed: If enabled, use fixed number of audio samples. This improves speed when filtering with large delay. Default is disabled.
-        :param bool multi: Enable multichannels evaluation on gain. Default is disabled.
-        :param bool zero_phase: Enable zero phase mode by subtracting timestamp to compensate delay. Default is disabled.
-        :param int scale: Set scale used by gain. Acceptable values are: linlin linear frequency, linear gain linlog linear frequency, logarithmic (in dB) gain (default) loglin logarithmic (in octave scale where 20 Hz is 0) frequency, linear gain loglog logarithmic frequency, logarithmic gain
-        :param str dumpfile: Set file for dumping, suitable for gnuplot.
-        :param int dumpscale: Set scale for dumpfile. Acceptable values are same with scale option. Default is linlog.
-        :param bool fft2: Enable 2-channel convolution using complex FFT. This improves speed significantly. Default is disabled.
-        :param bool min_phase: Enable minimum phase impulse response. Default is disabled.
+        :param str gain: set gain curve (default "gain_interpolate(f)")
+        :param str gain_entry: set gain entry
+        :param float delay: set delay (from 0 to 1e+10) (default 0.01)
+        :param float accuracy: set accuracy (from 0 to 1e+10) (default 5)
+        :param int wfunc: set window function (from 0 to 9) (default hann)
+        :param bool fixed: set fixed frame samples (default false)
+        :param bool multi: set multi channels mode (default false)
+        :param bool zero_phase: set zero phase mode (default false)
+        :param int scale: set gain scale (from 0 to 3) (default linlog)
+        :param str dumpfile: set dump file
+        :param int dumpscale: set dump scale (from 0 to 3) (default linlog)
+        :param bool fft2: set 2-channels fft (default false)
+        :param bool min_phase: set minimum phase mode (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#firequalizer
 
@@ -5585,14 +5504,14 @@ class AudioStream(FilterableStream):
     def flanger(
         self,
         *,
-        delay: float | int | str = Default(0.0),
-        depth: float | int | str = Default(2.0),
-        regen: float | int | str = Default(0.0),
-        width: float | int | str = Default(71.0),
-        speed: float | int | str = Default(0.5),
-        shape: int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default("WAVE_SIN"),
-        phase: float | int | str = Default(25.0),
-        interp: int | Literal["linear", "quadratic"] | Default = Default(0),
+        delay: float | int | str = Default("0"),
+        depth: float | int | str = Default("2"),
+        regen: float | int | str = Default("0"),
+        width: float | int | str = Default("71"),
+        speed: float | int | str = Default("0.5"),
+        shape: int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default("sinusoidal"),
+        phase: float | int | str = Default("25"),
+        interp: int | Literal["linear", "quadratic"] | Default = Default("linear"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -5602,14 +5521,14 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float delay: Set base delay in milliseconds. Range from 0 to 30. Default value is 0.
-        :param float depth: Set added sweep delay in milliseconds. Range from 0 to 10. Default value is 2.
-        :param float regen: Set percentage regeneration (delayed signal feedback). Range from -95 to 95. Default value is 0.
-        :param float width: Set percentage of delayed signal mixed with original. Range from 0 to 100. Default value is 71.
-        :param float speed: Set sweeps per second (Hz). Range from 0.1 to 10. Default value is 0.5.
-        :param int shape: Set swept wave shape, can be triangular or sinusoidal. Default value is sinusoidal.
-        :param float phase: Set swept wave percentage-shift for multi channel. Range from 0 to 100. Default value is 25.
-        :param int interp: Set delay-line interpolation, linear or quadratic. Default is linear.
+        :param float delay: base delay in milliseconds (from 0 to 30) (default 0)
+        :param float depth: added swept delay in milliseconds (from 0 to 10) (default 2)
+        :param float regen: percentage regeneration (delayed signal feedback) (from -95 to 95) (default 0)
+        :param float width: percentage of delayed signal mixed with original (from 0 to 100) (default 71)
+        :param float speed: sweeps per second (Hz) (from 0.1 to 10) (default 0.5)
+        :param int shape: swept wave shape (from 0 to 1) (default sinusoidal)
+        :param float phase: swept wave percentage phase-shift for multi-channel (from 0 to 100) (default 25)
+        :param int interp: delay-line interpolation (from 0 to 1) (default linear)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#flanger
 
@@ -5640,19 +5559,19 @@ class AudioStream(FilterableStream):
     def haas(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        side_gain: float | int | str = Default(1.0),
-        middle_source: int | Literal["left", "right", "mid", "side"] | Default = Default(2),
-        middle_phase: bool | int | str = Default(0),
-        left_delay: float | int | str = Default(2.05),
-        left_balance: float | int | str = Default(-1.0),
-        left_gain: float | int | str = Default(1.0),
-        left_phase: bool | int | str = Default(0),
-        right_delay: float | int | str = Default(2.12),
-        right_balance: float | int | str = Default(1.0),
-        right_gain: float | int | str = Default(1.0),
-        right_phase: bool | int | str = Default(1),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        side_gain: float | int | str = Default("1"),
+        middle_source: int | Literal["left", "right", "mid", "side"] | Default = Default("mid"),
+        middle_phase: bool | int | str = Default("false"),
+        left_delay: float | int | str = Default("2.05"),
+        left_balance: float | int | str = Default("-1"),
+        left_gain: float | int | str = Default("1"),
+        left_phase: bool | int | str = Default("false"),
+        right_delay: float | int | str = Default("2.12"),
+        right_balance: float | int | str = Default("1"),
+        right_gain: float | int | str = Default("1"),
+        right_phase: bool | int | str = Default("true"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -5662,19 +5581,19 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input level. By default is 1, or 0dB
-        :param float level_out: Set output level. By default is 1, or 0dB.
-        :param float side_gain: Set gain applied to side part of signal. By default is 1.
-        :param int middle_source: Set kind of middle source. Can be one of the following: ‘left’ Pick left channel. ‘right’ Pick right channel. ‘mid’ Pick middle part signal of stereo image. ‘side’ Pick side part signal of stereo image.
-        :param bool middle_phase: Change middle phase. By default is disabled.
-        :param float left_delay: Set left channel delay. By default is 2.05 milliseconds.
-        :param float left_balance: Set left channel balance. By default is -1.
-        :param float left_gain: Set left channel gain. By default is 1.
-        :param bool left_phase: Change left phase. By default is disabled.
-        :param float right_delay: Set right channel delay. By defaults is 2.12 milliseconds.
-        :param float right_balance: Set right channel balance. By default is 1.
-        :param float right_gain: Set right channel gain. By default is 1.
-        :param bool right_phase: Change right phase. By default is enabled.
+        :param float level_in: set level in (from 0.015625 to 64) (default 1)
+        :param float level_out: set level out (from 0.015625 to 64) (default 1)
+        :param float side_gain: set side gain (from 0.015625 to 64) (default 1)
+        :param int middle_source: set middle source (from 0 to 3) (default mid)
+        :param bool middle_phase: set middle phase (default false)
+        :param float left_delay: set left delay (from 0 to 40) (default 2.05)
+        :param float left_balance: set left balance (from -1 to 1) (default -1)
+        :param float left_gain: set left gain (from 0.015625 to 64) (default 1)
+        :param bool left_phase: set left phase (default false)
+        :param float right_delay: set right delay (from 0 to 40) (default 2.12)
+        :param float right_balance: set right balance (from -1 to 1) (default 1)
+        :param float right_gain: set right gain (from 0.015625 to 64) (default 1)
+        :param bool right_phase: set right phase (default true)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#haas
 
@@ -5710,12 +5629,12 @@ class AudioStream(FilterableStream):
     def hdcd(
         self,
         *,
-        disable_autoconvert: bool | int | str = Default(1),
-        process_stereo: bool | int | str = Default(1),
-        cdt_ms: int | str = Default(2000),
-        force_pe: bool | int | str = Default(0),
-        analyze_mode: int | Literal["off", "lle", "pe", "cdt", "tgm"] | Default = Default("HDCD_ANA_OFF"),
-        bits_per_sample: int | Literal["16", "20", "24"] | Default = Default(16),
+        disable_autoconvert: bool | int | str = Default("true"),
+        process_stereo: bool | int | str = Default("true"),
+        cdt_ms: int | str = Default("2000"),
+        force_pe: bool | int | str = Default("false"),
+        analyze_mode: int | Literal["off", "lle", "pe", "cdt", "tgm"] | Default = Default("off"),
+        bits_per_sample: int | Literal["16", "20", "24"] | Default = Default("16"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -5725,12 +5644,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param bool disable_autoconvert: Disable any automatic format conversion or resampling in the filter graph.
-        :param bool process_stereo: Process the stereo channels together. If target_gain does not match between channels, consider it invalid and use the last valid target_gain.
-        :param int cdt_ms: Set the code detect timer period in ms.
-        :param bool force_pe: Always extend peaks above -3dBFS even if PE isn’t signaled.
-        :param int analyze_mode: Replace audio with a solid tone and adjust the amplitude to signal some specific aspect of the decoding process. The output file can be loaded in an audio editor alongside the original to aid analysis. analyze_mode=pe:force_pe=true can be used to see all samples above the PE level. Modes are: ‘0, off’ Disabled ‘1, lle’ Gain adjustment level at each sample ‘2, pe’ Samples where peak extend occurs ‘3, cdt’ Samples where the code detect timer is active ‘4, tgm’ Samples where the target gain does not match between channels
-        :param int bits_per_sample: Valid bits per sample (location of the true LSB).
+        :param bool disable_autoconvert: Disable any format conversion or resampling in the filter graph. (default true)
+        :param bool process_stereo: Process stereo channels together. Only apply target_gain when both channels match. (default true)
+        :param int cdt_ms: Code detect timer period in ms. (from 100 to 60000) (default 2000)
+        :param bool force_pe: Always extend peaks above -3dBFS even when PE is not signaled. (default false)
+        :param int analyze_mode: Replace audio with solid tone and signal some processing aspect in the amplitude. (from 0 to 4) (default off)
+        :param int bits_per_sample: Valid bits per sample (location of the true LSB). (from 16 to 24) (default 16)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hdcd
 
@@ -5759,16 +5678,16 @@ class AudioStream(FilterableStream):
     def highpass(
         self,
         *,
-        frequency: float | int | str = Default(3000.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.707),
-        poles: int | str = Default(2),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("3000"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.707"),
+        poles: int | str = Default("2"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5779,16 +5698,16 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set frequency in Hz. Default is 3000.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Specify the band-width of a filter in width_type units. Applies only to double-pole filter. The default is 0.707q and gives a Butterworth response.
-        :param int poles: Set number of poles. Default is 2.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set frequency (from 0 to 999999) (default 3000)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.707)
+        :param int poles: set number of poles (from 1 to 2) (default 2)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#highpass
@@ -5823,17 +5742,17 @@ class AudioStream(FilterableStream):
     def highshelf(
         self,
         *,
-        frequency: float | int | str = Default(3000.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.5),
-        gain: float | int | str = Default(0.0),
-        poles: int | str = Default(2),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("3000"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.5"),
+        gain: float | int | str = Default("0"),
+        poles: int | str = Default("2"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5844,17 +5763,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set the filter’s central frequency and so can be used to extend or reduce the frequency range to be boosted or cut. The default value is 3000 Hz.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Determine how steep is the filter’s shelf transition.
-        :param float gain: Give the gain at whichever is the lower of ~22 kHz and the Nyquist frequency. Its useful range is about -20 (for a large cut) to +20 (for a large boost). Beware of clipping when using a positive gain.
-        :param int poles: Set number of poles. Default is 2.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set central frequency (from 0 to 999999) (default 3000)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.5)
+        :param float gain: set gain (from -900 to 900) (default 0)
+        :param int poles: set number of poles (from 1 to 2) (default 2)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf
@@ -5890,17 +5809,17 @@ class AudioStream(FilterableStream):
     def loudnorm(
         self,
         *,
-        I: float | int | str = Default(-24.0),
-        LRA: float | int | str = Default(7.0),
-        TP: float | int | str = Default(-2.0),
-        measured_I: float | int | str = Default(0.0),
-        measured_LRA: float | int | str = Default(0.0),
-        measured_TP: float | int | str = Default(99.0),
-        measured_thresh: float | int | str = Default(-70.0),
-        offset: float | int | str = Default(0.0),
-        linear: bool | int | str = Default(1),
-        dual_mono: bool | int | str = Default(0),
-        print_format: int | Literal["none", "json", "summary"] | Default = Default("NONE"),
+        I: float | int | str = Default("-24"),
+        LRA: float | int | str = Default("7"),
+        TP: float | int | str = Default("-2"),
+        measured_I: float | int | str = Default("0"),
+        measured_LRA: float | int | str = Default("0"),
+        measured_TP: float | int | str = Default("99"),
+        measured_thresh: float | int | str = Default("-70"),
+        offset: float | int | str = Default("0"),
+        linear: bool | int | str = Default("true"),
+        dual_mono: bool | int | str = Default("false"),
+        print_format: int | Literal["none", "json", "summary"] | Default = Default("none"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -5910,17 +5829,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float I: Set integrated loudness target. Range is -70.0 - -5.0. Default value is -24.0.
-        :param float LRA: Set loudness range target. Range is 1.0 - 50.0. Default value is 7.0.
-        :param float TP: Set maximum true peak. Range is -9.0 - +0.0. Default value is -2.0.
-        :param float measured_I: Measured IL of input file. Range is -99.0 - +0.0.
-        :param float measured_LRA: Measured LRA of input file. Range is 0.0 - 99.0.
-        :param float measured_TP: Measured true peak of input file. Range is -99.0 - +99.0.
-        :param float measured_thresh: Measured threshold of input file. Range is -99.0 - +0.0.
-        :param float offset: Set offset gain. Gain is applied before the true-peak limiter. Range is -99.0 - +99.0. Default is +0.0.
-        :param bool linear: Normalize by linearly scaling the source audio. measured_I, measured_LRA, measured_TP, and measured_thresh must all be specified. Target LRA shouldn’t be lower than source LRA and the change in integrated loudness shouldn’t result in a true peak which exceeds the target TP. If any of these conditions aren’t met, normalization mode will revert to dynamic. Options are true or false. Default is true.
-        :param bool dual_mono: Treat mono input files as "dual-mono". If a mono file is intended for playback on a stereo system, its EBU R128 measurement will be perceptually incorrect. If set to true, this option will compensate for this effect. Multi-channel input files are not affected by this option. Options are true or false. Default is false.
-        :param int print_format: Set print format for stats. Options are summary, json, or none. Default value is none.
+        :param float I: set integrated loudness target (from -70 to -5) (default -24)
+        :param float LRA: set loudness range target (from 1 to 50) (default 7)
+        :param float TP: set maximum true peak (from -9 to 0) (default -2)
+        :param float measured_I: measured IL of input file (from -99 to 0) (default 0)
+        :param float measured_LRA: measured LRA of input file (from 0 to 99) (default 0)
+        :param float measured_TP: measured true peak of input file (from -99 to 99) (default 99)
+        :param float measured_thresh: measured threshold of input file (from -99 to 0) (default -70)
+        :param float offset: set offset gain (from -99 to 99) (default 0)
+        :param bool linear: normalize linearly if possible (default true)
+        :param bool dual_mono: treat mono input as dual-mono (default false)
+        :param int print_format: set print format for stats (from 0 to 2) (default none)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#loudnorm
 
@@ -5954,16 +5873,16 @@ class AudioStream(FilterableStream):
     def lowpass(
         self,
         *,
-        frequency: float | int | str = Default(500.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.707),
-        poles: int | str = Default(2),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("500"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.707"),
+        poles: int | str = Default("2"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -5974,16 +5893,16 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set frequency in Hz. Default is 500.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Specify the band-width of a filter in width_type units. Applies only to double-pole filter. The default is 0.707q and gives a Butterworth response.
-        :param int poles: Set number of poles. Default is 2.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set frequency (from 0 to 999999) (default 500)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.707)
+        :param int poles: set number of poles (from 1 to 2) (default 2)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lowpass
@@ -6018,17 +5937,17 @@ class AudioStream(FilterableStream):
     def lowshelf(
         self,
         *,
-        frequency: float | int | str = Default(100.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.5),
-        gain: float | int | str = Default(0.0),
-        poles: int | str = Default(2),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("100"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.5"),
+        gain: float | int | str = Default("0"),
+        poles: int | str = Default("2"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -6039,17 +5958,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set the filter’s central frequency and so can be used to extend or reduce the frequency range to be boosted or cut. The default value is 100 Hz.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Determine how steep is the filter’s shelf transition.
-        :param float gain: Give the gain at 0 Hz. Its useful range is about -20 (for a large cut) to +20 (for a large boost). Beware of clipping when using a positive gain.
-        :param int poles: Set number of poles. Default is 2.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set central frequency (from 0 to 999999) (default 100)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.5)
+        :param float gain: set gain (from -900 to 900) (default 0)
+        :param int poles: set number of poles (from 1 to 2) (default 2)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf
@@ -6088,7 +6007,7 @@ class AudioStream(FilterableStream):
         args: str
         | float
         | int = Default(
-            "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000"
+            '"0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000"'
         ),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -6099,7 +6018,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str args: This option syntax is: attack,decay,[attack,decay..] soft-knee points crossover_frequency [delay [initial_volume [gain]]] | attack,decay ... For explanation of each item refer to compand filter documentation.
+        :param str args: set parameters for each band (default "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#mcompand
 
@@ -6120,7 +6039,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def pan(self, *, args: str | float | int = Default("((void*)0)"), **kwargs: Any) -> "AudioStream":
+    def pan(self, *, args: str | float | int = Default(None), **kwargs: Any) -> "AudioStream":
         """
 
         Remix channels with coefficients (panning).
@@ -6128,7 +6047,7 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str args: ((void*)0)
+        :param str args:
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pan
 
@@ -6149,13 +6068,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def replaygain(
-        self,
-        *,
-        track_gain: float | int | str = Default(0.0),
-        track_peak: float | int | str = Default(0.0),
-        **kwargs: Any,
-    ) -> "AudioStream":
+    def replaygain(self, **kwargs: Any) -> "AudioStream":
         """
 
         ReplayGain scanner.
@@ -6163,8 +6076,6 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float track_gain: Exported track gain in dB at end of stream.
-        :param float track_peak: Exported track peak at end of stream.
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#replaygain
 
@@ -6174,31 +6085,23 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=tuple(
-                (
-                    {
-                        "track_gain": track_gain,
-                        "track_peak": track_peak,
-                    }
-                    | kwargs
-                ).items()
-            ),
+            kwargs=tuple(({} | kwargs).items()),
         )
         return filter_node.audio(0)
 
     def rubberband(
         self,
         *,
-        tempo: float | int | str = Default(1.0),
-        pitch: float | int | str = Default(1.0),
-        transients: int | Literal["crisp", "mixed", "smooth"] | Default = Default(0),
-        detector: int | Literal["compound", "percussive", "soft"] | Default = Default(0),
-        phase: int | Literal["laminar", "independent"] | Default = Default(0),
-        window: int | Literal["standard", "short", "long"] | Default = Default(0),
-        smoothing: int | Literal["off", "on"] | Default = Default(0),
-        formant: int | Literal["shifted", "preserved"] | Default = Default(0),
-        pitchq: int | Literal["quality", "speed", "consistency"] | Default = Default(0),
-        channels: int | Literal["apart", "together"] | Default = Default(0),
+        tempo: float | int | str = Default("1"),
+        pitch: float | int | str = Default("1"),
+        transients: int | Literal["crisp", "mixed", "smooth"] | Default = Default("crisp"),
+        detector: int | Literal["compound", "percussive", "soft"] | Default = Default("compound"),
+        phase: int | Literal["laminar", "independent"] | Default = Default("laminar"),
+        window: int | Literal["standard", "short", "long"] | Default = Default("standard"),
+        smoothing: int | Literal["off", "on"] | Default = Default("off"),
+        formant: int | Literal["shifted", "preserved"] | Default = Default("shifted"),
+        pitchq: int | Literal["quality", "speed", "consistency"] | Default = Default("speed"),
+        channels: int | Literal["apart", "together"] | Default = Default("apart"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -6208,16 +6111,16 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float tempo: Set tempo scale factor.
-        :param float pitch: Set pitch scale factor.
-        :param int transients: Set transients detector. Possible values are: crisp mixed smooth
-        :param int detector: Set detector. Possible values are: compound percussive soft
-        :param int phase: Set phase. Possible values are: laminar independent
-        :param int window: Set processing window size. Possible values are: standard short long
-        :param int smoothing: Set smoothing. Possible values are: off on
-        :param int formant: Enable formant preservation when shift pitching. Possible values are: shifted preserved
-        :param int pitchq: Set pitch quality. Possible values are: quality speed consistency
-        :param int channels: Set channels. Possible values are: apart together
+        :param float tempo: set tempo scale factor (from 0.01 to 100) (default 1)
+        :param float pitch: set pitch scale factor (from 0.01 to 100) (default 1)
+        :param int transients: set transients (from 0 to INT_MAX) (default crisp)
+        :param int detector: set detector (from 0 to INT_MAX) (default compound)
+        :param int phase: set phase (from 0 to INT_MAX) (default laminar)
+        :param int window: set window (from 0 to INT_MAX) (default standard)
+        :param int smoothing: set smoothing (from 0 to INT_MAX) (default off)
+        :param int formant: set formant (from 0 to INT_MAX) (default shifted)
+        :param int pitchq: set pitch quality (from 0 to INT_MAX) (default speed)
+        :param int channels: set channels (from 0 to INT_MAX) (default apart)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#rubberband
 
@@ -6250,38 +6153,34 @@ class AudioStream(FilterableStream):
     def showcqt(
         self,
         *,
-        size: str | float | int = Default("1920x1080"),
-        fps: str | float | int = Default("25"),
-        bar_h: int | str = Default(-1),
-        axis_h: int | str = Default(-1),
-        sono_h: int | str = Default(-1),
-        fullhd: bool | int | str = Default(1),
-        sono_v: str | float | int = Default("16"),
-        bar_v: str | float | int = Default("sono_v"),
-        sono_g: float | int | str = Default(3.0),
-        bar_g: float | int | str = Default(1.0),
-        bar_t: float | int | str = Default(1.0),
-        timeclamp: float | int | str = Default(0.17),
-        attack: float | int | str = Default(0.0),
-        basefreq: float | int | str = Default(20.015231264080075),
-        endfreq: float | int | str = Default(20495.596814417997),
-        coeffclamp: float | int | str = Default(1.0),
-        tlength: str | float | int = Default("384*tc/(384+tc*f)"),
-        count: int | str = Default(6),
-        fcount: int | str = Default(0),
-        fontfile: str | float | int = Default("((void*)0)"),
-        font: str | float | int = Default("((void*)0)"),
-        fontcolor: str
-        | float
-        | int = Default(
-            "st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))"
-        ),
-        axisfile: str | float | int = Default("((void*)0)"),
-        axis: bool | int | str = Default(1),
+        size: str | float | int = Default('"1920x1080"'),
+        fps: str | float | int = Default('"25"'),
+        bar_h: int | str = Default("-1"),
+        axis_h: int | str = Default("-1"),
+        sono_h: int | str = Default("-1"),
+        fullhd: bool | int | str = Default("true"),
+        sono_v: str | float | int = Default('"16"'),
+        bar_v: str | float | int = Default('"sono_v"'),
+        sono_g: float | int | str = Default("3"),
+        bar_g: float | int | str = Default("1"),
+        bar_t: float | int | str = Default("1"),
+        timeclamp: float | int | str = Default("0.17"),
+        attack: float | int | str = Default("0"),
+        basefreq: float | int | str = Default("20.0152"),
+        endfreq: float | int | str = Default("20495.6"),
+        coeffclamp: float | int | str = Default("1"),
+        tlength: str | float | int = Default('"384*tc/(384+tc*f'),
+        count: int | str = Default("6"),
+        fcount: int | str = Default("0"),
+        fontfile: str | float | int = Default(None),
+        font: str | float | int = Default(None),
+        fontcolor: str | float | int = Default('"st(0, (midi(f'),
+        axisfile: str | float | int = Default(None),
+        axis: bool | int | str = Default("true"),
         csp: int
         | Literal["unspecified", "bt709", "fcc", "bt470bg", "smpte170m", "smpte240m", "bt2020ncl"]
-        | Default = Default("AVCOL_SPC_UNSPECIFIED"),
-        cscheme: str | float | int = Default("1|0.5|0|0|0.5|1"),
+        | Default = Default("unspecified"),
+        cscheme: str | float | int = Default('"1|0.5|0|0|0.5|1"'),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6291,32 +6190,32 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: Specify the video size for the output. It must be even. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 1920x1080.
-        :param str fps: Set the output frame rate. Default value is 25.
-        :param int bar_h: Set the bargraph height. It must be even. Default value is -1 which computes the bargraph height automatically.
-        :param int axis_h: Set the axis height. It must be even. Default value is -1 which computes the axis height automatically.
-        :param int sono_h: Set the sonogram height. It must be even. Default value is -1 which computes the sonogram height automatically.
-        :param bool fullhd: Set the fullhd resolution. This option is deprecated, use size, s instead. Default value is 1.
-        :param str sono_v: Specify the sonogram volume expression. It can contain variables: bar_v the bar_v evaluated expression frequency, freq, f the frequency where it is evaluated timeclamp, tc the value of timeclamp option and functions: a_weighting(f) A-weighting of equal loudness b_weighting(f) B-weighting of equal loudness c_weighting(f) C-weighting of equal loudness. Default value is 16.
-        :param str bar_v: Specify the bargraph volume expression. It can contain variables: sono_v the sono_v evaluated expression frequency, freq, f the frequency where it is evaluated timeclamp, tc the value of timeclamp option and functions: a_weighting(f) A-weighting of equal loudness b_weighting(f) B-weighting of equal loudness c_weighting(f) C-weighting of equal loudness. Default value is sono_v.
-        :param float sono_g: Specify the sonogram gamma. Lower gamma makes the spectrum more contrast, higher gamma makes the spectrum having more range. Default value is 3. Acceptable range is [1, 7].
-        :param float bar_g: Specify the bargraph gamma. Default value is 1. Acceptable range is [1, 7].
-        :param float bar_t: Specify the bargraph transparency level. Lower value makes the bargraph sharper. Default value is 1. Acceptable range is [0, 1].
-        :param float timeclamp: Specify the transform timeclamp. At low frequency, there is trade-off between accuracy in time domain and frequency domain. If timeclamp is lower, event in time domain is represented more accurately (such as fast bass drum), otherwise event in frequency domain is represented more accurately (such as bass guitar). Acceptable range is [0.002, 1]. Default value is 0.17.
-        :param float attack: Set attack time in seconds. The default is 0 (disabled). Otherwise, it limits future samples by applying asymmetric windowing in time domain, useful when low latency is required. Accepted range is [0, 1].
-        :param float basefreq: Specify the transform base frequency. Default value is 20.01523126408007475, which is frequency 50 cents below E0. Acceptable range is [10, 100000].
-        :param float endfreq: Specify the transform end frequency. Default value is 20495.59681441799654, which is frequency 50 cents above D#10. Acceptable range is [10, 100000].
-        :param float coeffclamp: This option is deprecated and ignored.
-        :param str tlength: Specify the transform length in time domain. Use this option to control accuracy trade-off between time domain and frequency domain at every frequency sample. It can contain variables: frequency, freq, f the frequency where it is evaluated timeclamp, tc the value of timeclamp option. Default value is 384*tc/(384+tc*f).
-        :param int count: Specify the transform count for every video frame. Default value is 6. Acceptable range is [1, 30].
-        :param int fcount: Specify the transform count for every single pixel. Default value is 0, which makes it computed automatically. Acceptable range is [0, 10].
-        :param str fontfile: Specify font file for use with freetype to draw the axis. If not specified, use embedded font. Note that drawing with font file or embedded font is not implemented with custom basefreq and endfreq, use axisfile option instead.
-        :param str font: Specify fontconfig pattern. This has lower priority than fontfile. The : in the pattern may be replaced by | to avoid unnecessary escaping.
-        :param str fontcolor: Specify font color expression. This is arithmetic expression that should return integer value 0xRRGGBB. It can contain variables: frequency, freq, f the frequency where it is evaluated timeclamp, tc the value of timeclamp option and functions: midi(f) midi number of frequency f, some midi numbers: E0(16), C1(24), C2(36), A4(69) r(x), g(x), b(x) red, green, and blue value of intensity x. Default value is st(0, (midi(f)-59.5)/12); st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0)); r(1-ld(1)) + b(ld(1)).
-        :param str axisfile: Specify image file to draw the axis. This option override fontfile and fontcolor option.
-        :param bool axis: Enable/disable drawing text to the axis. If it is set to 0, drawing to the axis is disabled, ignoring fontfile and axisfile option. Default value is 1.
-        :param int csp: Set colorspace. The accepted values are: ‘unspecified’ Unspecified (default) ‘bt709’ BT.709 ‘fcc’ FCC ‘bt470bg’ BT.470BG or BT.601-6 625 ‘smpte170m’ SMPTE-170M or BT.601-6 525 ‘smpte240m’ SMPTE-240M ‘bt2020ncl’ BT.2020 with non-constant luminance
-        :param str cscheme: Set spectrogram color scheme. This is list of floating point values with format left_r|left_g|left_b|right_r|right_g|right_b. The default is 1|0.5|0|0|0.5|1.
+        :param str size: set video size (default "1920x1080")
+        :param str fps: set video rate (default "25")
+        :param int bar_h: set bargraph height (from -1 to INT_MAX) (default -1)
+        :param int axis_h: set axis height (from -1 to INT_MAX) (default -1)
+        :param int sono_h: set sonogram height (from -1 to INT_MAX) (default -1)
+        :param bool fullhd: set fullhd size (default true)
+        :param str sono_v: set sonogram volume (default "16")
+        :param str bar_v: set bargraph volume (default "sono_v")
+        :param float sono_g: set sonogram gamma (from 1 to 7) (default 3)
+        :param float bar_g: set bargraph gamma (from 1 to 7) (default 1)
+        :param float bar_t: set bar transparency (from 0 to 1) (default 1)
+        :param float timeclamp: set timeclamp (from 0.002 to 1) (default 0.17)
+        :param float attack: set attack time (from 0 to 1) (default 0)
+        :param float basefreq: set base frequency (from 10 to 100000) (default 20.0152)
+        :param float endfreq: set end frequency (from 10 to 100000) (default 20495.6)
+        :param float coeffclamp: set coeffclamp (from 0.1 to 10) (default 1)
+        :param str tlength: set tlength (default "384*tc/(384+tc*f)")
+        :param int count: set transform count (from 1 to 30) (default 6)
+        :param int fcount: set frequency count (from 0 to 10) (default 0)
+        :param str fontfile: set axis font file
+        :param str font: set axis font
+        :param str fontcolor: set font color (default "st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))")
+        :param str axisfile: set axis image
+        :param bool axis: draw axis (default true)
+        :param int csp: set color space (from 0 to INT_MAX) (default unspecified)
+        :param str cscheme: set color scheme (default "1|0.5|0|0|0.5|1")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showcqt
 
@@ -6365,24 +6264,17 @@ class AudioStream(FilterableStream):
     def showcwt(
         self,
         *,
-        size: str | float | int = Default("640x512"),
-        rate: str | float | int = Default("25"),
-        scale: int
-        | Literal["linear", "log", "bark", "mel", "erbs", "sqrt", "cbrt", "qdrt", "fm"]
-        | Default = Default(0),
-        iscale: int | Literal["linear", "log", "sqrt", "cbrt", "qdrt"] | Default = Default(0),
-        min: float | int | str = Default(20.0),
-        max: float | int | str = Default(20000.0),
-        imin: float | int | str = Default(0.0),
-        imax: float | int | str = Default(1.0),
-        logb: float | int | str = Default(0.0001),
-        deviation: float | int | str = Default(1.0),
-        pps: int | str = Default(64),
-        mode: int | Literal["magnitude", "phase", "magphase", "channel", "stereo"] | Default = Default(0),
-        slide: int | Literal["replace", "scroll", "frame"] | Default = Default(0),
-        direction: int | Literal["lr", "rl", "ud", "du"] | Default = Default(0),
-        bar: float | int | str = Default(0.0),
-        rotation: float | int | str = Default(0.0),
+        size: str | float | int = Default('"640x512"'),
+        rate: str | float | int = Default('"25"'),
+        scale: int | Literal["linear", "log2", "bark", "mel", "erbs"] | Default = Default("linear"),
+        min: float | int | str = Default("20"),
+        max: float | int | str = Default("20000"),
+        logb: float | int | str = Default("0.0001"),
+        deviation: float | int | str = Default("1"),
+        pps: int | str = Default("64"),
+        mode: int | Literal["magnitude", "phase", "magphase", "channel", "stereo"] | Default = Default("magnitude"),
+        slide: int | Literal["replace", "scroll", "frame"] | Default = Default("replace"),
+        direction: int | Literal["lr", "rl", "ud", "du"] | Default = Default("lr"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6392,22 +6284,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 640x512.
-        :param str rate: Set the output frame rate. Default value is 25.
-        :param int scale: Set the frequency scale used. Allowed values are: linear log bark mel erbs sqrt cbrt qdrt fm Default value is linear.
-        :param int iscale: Set the intensity scale used. Allowed values are: linear log sqrt cbrt qdrt Default value is log.
-        :param float min: Set the minimum frequency that will be used in output. Default is 20 Hz.
-        :param float max: Set the maximum frequency that will be used in output. Default is 20000 Hz. The real frequency upper limit depends on input audio’s sample rate and such will be enforced on this value when it is set to value greater than Nyquist frequency.
-        :param float imin: Set the minimum intensity that will be used in output.
-        :param float imax: Set the maximum intensity that will be used in output.
-        :param float logb: Set the logarithmic basis for brightness strength when mapping calculated magnitude values to pixel values. Allowed range is from 0 to 1. Default value is 0.0001.
-        :param float deviation: Set the frequency deviation. Lower values than 1 are more frequency oriented, while higher values than 1 are more time oriented. Allowed range is from 0 to 10. Default value is 1.
-        :param int pps: Set the number of pixel output per each second in one row. Allowed range is from 1 to 1024. Default value is 64.
-        :param int mode: Set the output visual mode. Allowed values are: magnitude Show magnitude. phase Show only phase. magphase Show combination of magnitude and phase. Magnitude is mapped to brightness and phase to color. channel Show unique color per channel magnitude. stereo Show unique color per stereo difference. Default value is magnitude.
-        :param int slide: Set the output slide method. Allowed values are: replace scroll frame
-        :param int direction: Set the direction method for output slide method. Allowed values are: lr Direction from left to right. rl Direction from right to left. ud Direction from up to down. du Direction from down to up.
-        :param float bar: Set the ratio of bargraph display to display size. Default is 0.
-        :param float rotation: Set color rotation, must be in [-1.0, 1.0] range. Default value is 0.
+        :param str size: set video size (default "640x512")
+        :param str rate: set video rate (default "25")
+        :param int scale: set frequency scale (from 0 to 4) (default linear)
+        :param float min: set minimum frequency (from 1 to 2000) (default 20)
+        :param float max: set maximum frequency (from 0 to 192000) (default 20000)
+        :param float logb: set logarithmic basis (from 0 to 1) (default 0.0001)
+        :param float deviation: set frequency deviation (from 0 to 10) (default 1)
+        :param int pps: set pixels per second (from 1 to 1024) (default 64)
+        :param int mode: set output mode (from 0 to 4) (default magnitude)
+        :param int slide: set slide mode (from 0 to 2) (default replace)
+        :param int direction: set direction mode (from 0 to 3) (default lr)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showcwt
 
@@ -6423,19 +6310,14 @@ class AudioStream(FilterableStream):
                         "size": size,
                         "rate": rate,
                         "scale": scale,
-                        "iscale": iscale,
                         "min": min,
                         "max": max,
-                        "imin": imin,
-                        "imax": imax,
                         "logb": logb,
                         "deviation": deviation,
                         "pps": pps,
                         "mode": mode,
                         "slide": slide,
                         "direction": direction,
-                        "bar": bar,
-                        "rotation": rotation,
                     }
                     | kwargs
                 ).items()
@@ -6446,12 +6328,12 @@ class AudioStream(FilterableStream):
     def showfreqs(
         self,
         *,
-        size: str | float | int = Default("1024x512"),
-        rate: str | float | int = Default("25"),
-        mode: int | Literal["line", "bar", "dot"] | Default = Default("BAR"),
-        ascale: int | Literal["lin", "sqrt", "cbrt", "log"] | Default = Default("AS_LOG"),
-        fscale: int | Literal["lin", "log", "rlog"] | Default = Default("FS_LINEAR"),
-        win_size: int | str = Default(2048),
+        size: str | float | int = Default('"1024x512"'),
+        rate: str | float | int = Default('"25"'),
+        mode: int | Literal["line", "bar", "dot"] | Default = Default("bar"),
+        ascale: int | Literal["lin", "sqrt", "cbrt", "log"] | Default = Default("log"),
+        fscale: int | Literal["lin", "log", "rlog"] | Default = Default("lin"),
+        win_size: int | str = Default("2048"),
         win_func: int
         | Literal[
             "rect",
@@ -6477,14 +6359,14 @@ class AudioStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | Default = Default("WFUNC_HANNING"),
-        overlap: float | int | str = Default(1.0),
-        averaging: int | str = Default(1),
-        colors: str | float | int = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
-        cmode: int | Literal["combined", "separate"] | Default = Default("COMBINED"),
-        minamp: float | int | str = Default(1e-06),
-        data: int | Literal["magnitude", "phase", "delay"] | Default = Default("MAGNITUDE"),
-        channels: str | float | int = Default("all"),
+        | Default = Default("hann"),
+        overlap: float | int | str = Default("1"),
+        averaging: int | str = Default("1"),
+        colors: str | float | int = Default('"red|green|blue|yellow|orange|lime|pink|magenta|brown"'),
+        cmode: int | Literal["combined", "separate"] | Default = Default("combined"),
+        minamp: float | int | str = Default("1e-06"),
+        data: int | Literal["magnitude", "phase", "delay"] | Default = Default("magnitude"),
+        channels: str | float | int = Default('"all"'),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6494,20 +6376,20 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: Specify size of video. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default is 1024x512.
-        :param str rate: Set video rate. Default is 25.
-        :param int mode: Set display mode. This set how each frequency bin will be represented. It accepts the following values: ‘line’ ‘bar’ ‘dot’ Default is bar.
-        :param int ascale: Set amplitude scale. It accepts the following values: ‘lin’ Linear scale. ‘sqrt’ Square root scale. ‘cbrt’ Cubic root scale. ‘log’ Logarithmic scale. Default is log.
-        :param int fscale: Set frequency scale. It accepts the following values: ‘lin’ Linear scale. ‘log’ Logarithmic scale. ‘rlog’ Reverse logarithmic scale. Default is lin.
-        :param int win_size: Set window size. Allowed range is from 16 to 65536. Default is 2048
-        :param int win_func: Set windowing function. It accepts the following values: ‘rect’ ‘bartlett’ ‘hanning’ ‘hamming’ ‘blackman’ ‘welch’ ‘flattop’ ‘bharris’ ‘bnuttall’ ‘bhann’ ‘sine’ ‘nuttall’ ‘lanczos’ ‘gauss’ ‘tukey’ ‘dolph’ ‘cauchy’ ‘parzen’ ‘poisson’ ‘bohman’ ‘kaiser’ Default is hanning.
-        :param float overlap: Set window overlap. In range [0, 1]. Default is 1, which means optimal overlap for selected window function will be picked.
-        :param int averaging: Set time averaging. Setting this to 0 will display current maximal peaks. Default is 1, which means time averaging is disabled.
-        :param str colors: Specify list of colors separated by space or by ’|’ which will be used to draw channel frequencies. Unrecognized or missing colors will be replaced by white color.
-        :param int cmode: Set channel display mode. It accepts the following values: ‘combined’ ‘separate’ Default is combined.
-        :param float minamp: Set minimum amplitude used in log amplitude scaler.
-        :param int data: Set data display mode. It accepts the following values: ‘magnitude’ ‘phase’ ‘delay’ Default is magnitude.
-        :param str channels: Set channels to use when processing audio. By default all are processed.
+        :param str size: set video size (default "1024x512")
+        :param str rate: set video rate (default "25")
+        :param int mode: set display mode (from 0 to 2) (default bar)
+        :param int ascale: set amplitude scale (from 0 to 3) (default log)
+        :param int fscale: set frequency scale (from 0 to 2) (default lin)
+        :param int win_size: set window size (from 16 to 65536) (default 2048)
+        :param int win_func: set window function (from 0 to 20) (default hann)
+        :param float overlap: set window overlap (from 0 to 1) (default 1)
+        :param int averaging: set time averaging (from 0 to INT_MAX) (default 1)
+        :param str colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+        :param int cmode: set channel mode (from 0 to 1) (default combined)
+        :param float minamp: set minimum amplitude (from FLT_MIN to 1e-06) (default 1e-06)
+        :param int data: set data mode (from 0 to 2) (default magnitude)
+        :param str channels: set channels to draw (default "all")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showfreqs
 
@@ -6544,8 +6426,8 @@ class AudioStream(FilterableStream):
     def showspatial(
         self,
         *,
-        size: str | float | int = Default("512x512"),
-        win_size: int | str = Default(4096),
+        size: str | float | int = Default('"512x512"'),
+        win_size: int | str = Default("4096"),
         win_func: int
         | Literal[
             "rect",
@@ -6571,8 +6453,8 @@ class AudioStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | Default = Default("WFUNC_HANNING"),
-        rate: str | float | int = Default("25"),
+        | Default = Default("hann"),
+        rate: str | float | int = Default('"25"'),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6582,10 +6464,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 512x512.
-        :param int win_size: Set window size. Allowed range is from 1024 to 65536. Default size is 4096.
-        :param int win_func: Set window function. It accepts the following values: ‘rect’ ‘bartlett’ ‘hann’ ‘hanning’ ‘hamming’ ‘blackman’ ‘welch’ ‘flattop’ ‘bharris’ ‘bnuttall’ ‘bhann’ ‘sine’ ‘nuttall’ ‘lanczos’ ‘gauss’ ‘tukey’ ‘dolph’ ‘cauchy’ ‘parzen’ ‘poisson’ ‘bohman’ ‘kaiser’ Default value is hann.
-        :param str rate: Set output framerate.
+        :param str size: set video size (default "512x512")
+        :param int win_size: set window size (from 1024 to 65536) (default 4096)
+        :param int win_func: set window function (from 0 to 20) (default hann)
+        :param str rate: set video rate (default "25")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showspatial
 
@@ -6612,9 +6494,9 @@ class AudioStream(FilterableStream):
     def showspectrum(
         self,
         *,
-        size: str | float | int = Default("640x512"),
-        slide: int | Literal["replace", "scroll", "fullframe", "rscroll", "lreplace"] | Default = Default(0),
-        mode: int | Literal["combined", "separate"] | Default = Default("COMBINED"),
+        size: str | float | int = Default('"640x512"'),
+        slide: int | Literal["replace", "scroll", "fullframe", "rscroll", "lreplace"] | Default = Default("replace"),
+        mode: int | Literal["combined", "separate"] | Default = Default("combined"),
         color: int
         | Literal[
             "channel",
@@ -6633,10 +6515,10 @@ class AudioStream(FilterableStream):
             "cividis",
             "terrain",
         ]
-        | Default = Default("CHANNEL"),
-        scale: int | Literal["lin", "sqrt", "cbrt", "log", "4thrt", "5thrt"] | Default = Default("SQRT"),
-        fscale: int | Literal["lin", "log"] | Default = Default("F_LINEAR"),
-        saturation: float | int | str = Default(1.0),
+        | Default = Default("channel"),
+        scale: int | Literal["lin", "sqrt", "cbrt", "log", "4thrt", "5thrt"] | Default = Default("sqrt"),
+        fscale: int | Literal["lin", "log"] | Default = Default("lin"),
+        saturation: float | int | str = Default("1"),
         win_func: int
         | Literal[
             "rect",
@@ -6662,19 +6544,19 @@ class AudioStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | Default = Default("WFUNC_HANNING"),
-        orientation: int | Literal["vertical", "horizontal"] | Default = Default("VERTICAL"),
-        overlap: float | int | str = Default(0.0),
-        gain: float | int | str = Default(1.0),
-        data: int | Literal["magnitude", "phase", "uphase"] | Default = Default(0),
-        rotation: float | int | str = Default(0.0),
-        start: int | str = Default(0),
-        stop: int | str = Default(0),
-        fps: str | float | int = Default("auto"),
-        legend: bool | int | str = Default(0),
-        drange: float | int | str = Default(120.0),
-        limit: float | int | str = Default(0.0),
-        opacity: float | int | str = Default(1.0),
+        | Default = Default("hann"),
+        orientation: int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
+        overlap: float | int | str = Default("0"),
+        gain: float | int | str = Default("1"),
+        data: int | Literal["magnitude", "phase", "uphase"] | Default = Default("magnitude"),
+        rotation: float | int | str = Default("0"),
+        start: int | str = Default("0"),
+        stop: int | str = Default("0"),
+        fps: str | float | int = Default('"auto"'),
+        legend: bool | int | str = Default("false"),
+        drange: float | int | str = Default("120"),
+        limit: float | int | str = Default("0"),
+        opacity: float | int | str = Default("1"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6684,26 +6566,26 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 640x512.
-        :param int slide: Specify how the spectrum should slide along the window. It accepts the following values: ‘replace’ the samples start again on the left when they reach the right ‘scroll’ the samples scroll from right to left ‘fullframe’ frames are only produced when the samples reach the right ‘rscroll’ the samples scroll from left to right ‘lreplace’ the samples start again on the right when they reach the left Default value is replace.
-        :param int mode: Specify display mode. It accepts the following values: ‘combined’ all channels are displayed in the same row ‘separate’ all channels are displayed in separate rows Default value is ‘combined’.
-        :param int color: Specify display color mode. It accepts the following values: ‘channel’ each channel is displayed in a separate color ‘intensity’ each channel is displayed using the same color scheme ‘rainbow’ each channel is displayed using the rainbow color scheme ‘moreland’ each channel is displayed using the moreland color scheme ‘nebulae’ each channel is displayed using the nebulae color scheme ‘fire’ each channel is displayed using the fire color scheme ‘fiery’ each channel is displayed using the fiery color scheme ‘fruit’ each channel is displayed using the fruit color scheme ‘cool’ each channel is displayed using the cool color scheme ‘magma’ each channel is displayed using the magma color scheme ‘green’ each channel is displayed using the green color scheme ‘viridis’ each channel is displayed using the viridis color scheme ‘plasma’ each channel is displayed using the plasma color scheme ‘cividis’ each channel is displayed using the cividis color scheme ‘terrain’ each channel is displayed using the terrain color scheme Default value is ‘channel’.
-        :param int scale: Specify scale used for calculating intensity color values. It accepts the following values: ‘lin’ linear ‘sqrt’ square root, default ‘cbrt’ cubic root ‘log’ logarithmic ‘4thrt’ 4th root ‘5thrt’ 5th root Default value is ‘sqrt’.
-        :param int fscale: Specify frequency scale. It accepts the following values: ‘lin’ linear ‘log’ logarithmic Default value is ‘lin’.
-        :param float saturation: Set saturation modifier for displayed colors. Negative values provide alternative color scheme. 0 is no saturation at all. Saturation must be in [-10.0, 10.0] range. Default value is 1.
-        :param int win_func: Set window function. It accepts the following values: ‘rect’ ‘bartlett’ ‘hann’ ‘hanning’ ‘hamming’ ‘blackman’ ‘welch’ ‘flattop’ ‘bharris’ ‘bnuttall’ ‘bhann’ ‘sine’ ‘nuttall’ ‘lanczos’ ‘gauss’ ‘tukey’ ‘dolph’ ‘cauchy’ ‘parzen’ ‘poisson’ ‘bohman’ ‘kaiser’ Default value is hann.
-        :param int orientation: Set orientation of time vs frequency axis. Can be vertical or horizontal. Default is vertical.
-        :param float overlap: Set ratio of overlap window. Default value is 0. When value is 1 overlap is set to recommended size for specific window function currently used.
-        :param float gain: Set scale gain for calculating intensity color values. Default value is 1.
-        :param int data: Set which data to display. Can be magnitude, default or phase, or unwrapped phase: uphase.
-        :param float rotation: Set color rotation, must be in [-1.0, 1.0] range. Default value is 0.
-        :param int start: Set start frequency from which to display spectrogram. Default is 0.
-        :param int stop: Set stop frequency to which to display spectrogram. Default is 0.
-        :param str fps: Set upper frame rate limit. Default is auto, unlimited.
-        :param bool legend: Draw time and frequency axes and legends. Default is disabled.
-        :param float drange: Set dynamic range used to calculate intensity color values. Default is 120 dBFS. Allowed range is from 10 to 200.
-        :param float limit: Set upper limit of input audio samples volume in dBFS. Default is 0 dBFS. Allowed range is from -100 to 100.
-        :param float opacity: Set opacity strength when using pixel format output with alpha component.
+        :param str size: set video size (default "640x512")
+        :param int slide: set sliding mode (from 0 to 4) (default replace)
+        :param int mode: set channel display mode (from 0 to 1) (default combined)
+        :param int color: set channel coloring (from 0 to 14) (default channel)
+        :param int scale: set display scale (from 0 to 5) (default sqrt)
+        :param int fscale: set frequency scale (from 0 to 1) (default lin)
+        :param float saturation: color saturation multiplier (from -10 to 10) (default 1)
+        :param int win_func: set window function (from 0 to 20) (default hann)
+        :param int orientation: set orientation (from 0 to 1) (default vertical)
+        :param float overlap: set window overlap (from 0 to 1) (default 0)
+        :param float gain: set scale gain (from 0 to 128) (default 1)
+        :param int data: set data mode (from 0 to 2) (default magnitude)
+        :param float rotation: color rotation (from -1 to 1) (default 0)
+        :param int start: start frequency (from 0 to INT_MAX) (default 0)
+        :param int stop: stop frequency (from 0 to INT_MAX) (default 0)
+        :param str fps: set video rate (default "auto")
+        :param bool legend: draw legend (default false)
+        :param float drange: set dynamic range in dBFS (from 10 to 200) (default 120)
+        :param float limit: set upper limit in dBFS (from -100 to 100) (default 0)
+        :param float opacity: set opacity strength (from 0 to 10) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showspectrum
 
@@ -6746,8 +6628,8 @@ class AudioStream(FilterableStream):
     def showspectrumpic(
         self,
         *,
-        size: str | float | int = Default("4096x2048"),
-        mode: int | Literal["combined", "separate"] | Default = Default("COMBINED"),
+        size: str | float | int = Default('"4096x2048"'),
+        mode: int | Literal["combined", "separate"] | Default = Default("combined"),
         color: int
         | Literal[
             "channel",
@@ -6766,10 +6648,10 @@ class AudioStream(FilterableStream):
             "cividis",
             "terrain",
         ]
-        | Default = Default("INTENSITY"),
-        scale: int | Literal["lin", "sqrt", "cbrt", "log", "4thrt", "5thrt"] | Default = Default("LOG"),
-        fscale: int | Literal["lin", "log"] | Default = Default("F_LINEAR"),
-        saturation: float | int | str = Default(1.0),
+        | Default = Default("intensity"),
+        scale: int | Literal["lin", "sqrt", "cbrt", "log", "4thrt", "5thrt"] | Default = Default("log"),
+        fscale: int | Literal["lin", "log"] | Default = Default("lin"),
+        saturation: float | int | str = Default("1"),
         win_func: int
         | Literal[
             "rect",
@@ -6795,16 +6677,16 @@ class AudioStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | Default = Default("WFUNC_HANNING"),
-        orientation: int | Literal["vertical", "horizontal"] | Default = Default("VERTICAL"),
-        gain: float | int | str = Default(1.0),
-        legend: bool | int | str = Default(1),
-        rotation: float | int | str = Default(0.0),
-        start: int | str = Default(0),
-        stop: int | str = Default(0),
-        drange: float | int | str = Default(120.0),
-        limit: float | int | str = Default(0.0),
-        opacity: float | int | str = Default(1.0),
+        | Default = Default("hann"),
+        orientation: int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
+        gain: float | int | str = Default("1"),
+        legend: bool | int | str = Default("true"),
+        rotation: float | int | str = Default("0"),
+        start: int | str = Default("0"),
+        stop: int | str = Default("0"),
+        drange: float | int | str = Default("120"),
+        limit: float | int | str = Default("0"),
+        opacity: float | int | str = Default("1"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6814,22 +6696,22 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 4096x2048.
-        :param int mode: Specify display mode. It accepts the following values: ‘combined’ all channels are displayed in the same row ‘separate’ all channels are displayed in separate rows Default value is ‘combined’.
-        :param int color: Specify display color mode. It accepts the following values: ‘channel’ each channel is displayed in a separate color ‘intensity’ each channel is displayed using the same color scheme ‘rainbow’ each channel is displayed using the rainbow color scheme ‘moreland’ each channel is displayed using the moreland color scheme ‘nebulae’ each channel is displayed using the nebulae color scheme ‘fire’ each channel is displayed using the fire color scheme ‘fiery’ each channel is displayed using the fiery color scheme ‘fruit’ each channel is displayed using the fruit color scheme ‘cool’ each channel is displayed using the cool color scheme ‘magma’ each channel is displayed using the magma color scheme ‘green’ each channel is displayed using the green color scheme ‘viridis’ each channel is displayed using the viridis color scheme ‘plasma’ each channel is displayed using the plasma color scheme ‘cividis’ each channel is displayed using the cividis color scheme ‘terrain’ each channel is displayed using the terrain color scheme Default value is ‘intensity’.
-        :param int scale: Specify scale used for calculating intensity color values. It accepts the following values: ‘lin’ linear ‘sqrt’ square root, default ‘cbrt’ cubic root ‘log’ logarithmic ‘4thrt’ 4th root ‘5thrt’ 5th root Default value is ‘log’.
-        :param int fscale: Specify frequency scale. It accepts the following values: ‘lin’ linear ‘log’ logarithmic Default value is ‘lin’.
-        :param float saturation: Set saturation modifier for displayed colors. Negative values provide alternative color scheme. 0 is no saturation at all. Saturation must be in [-10.0, 10.0] range. Default value is 1.
-        :param int win_func: Set window function. It accepts the following values: ‘rect’ ‘bartlett’ ‘hann’ ‘hanning’ ‘hamming’ ‘blackman’ ‘welch’ ‘flattop’ ‘bharris’ ‘bnuttall’ ‘bhann’ ‘sine’ ‘nuttall’ ‘lanczos’ ‘gauss’ ‘tukey’ ‘dolph’ ‘cauchy’ ‘parzen’ ‘poisson’ ‘bohman’ ‘kaiser’ Default value is hann.
-        :param int orientation: Set orientation of time vs frequency axis. Can be vertical or horizontal. Default is vertical.
-        :param float gain: Set scale gain for calculating intensity color values. Default value is 1.
-        :param bool legend: Draw time and frequency axes and legends. Default is enabled.
-        :param float rotation: Set color rotation, must be in [-1.0, 1.0] range. Default value is 0.
-        :param int start: Set start frequency from which to display spectrogram. Default is 0.
-        :param int stop: Set stop frequency to which to display spectrogram. Default is 0.
-        :param float drange: Set dynamic range used to calculate intensity color values. Default is 120 dBFS. Allowed range is from 10 to 200.
-        :param float limit: Set upper limit of input audio samples volume in dBFS. Default is 0 dBFS. Allowed range is from -100 to 100.
-        :param float opacity: Set opacity strength when using pixel format output with alpha component.
+        :param str size: set video size (default "4096x2048")
+        :param int mode: set channel display mode (from 0 to 1) (default combined)
+        :param int color: set channel coloring (from 0 to 14) (default intensity)
+        :param int scale: set display scale (from 0 to 5) (default log)
+        :param int fscale: set frequency scale (from 0 to 1) (default lin)
+        :param float saturation: color saturation multiplier (from -10 to 10) (default 1)
+        :param int win_func: set window function (from 0 to 20) (default hann)
+        :param int orientation: set orientation (from 0 to 1) (default vertical)
+        :param float gain: set scale gain (from 0 to 128) (default 1)
+        :param bool legend: draw legend (default true)
+        :param float rotation: color rotation (from -1 to 1) (default 0)
+        :param int start: start frequency (from 0 to INT_MAX) (default 0)
+        :param int stop: stop frequency (from 0 to INT_MAX) (default 0)
+        :param float drange: set dynamic range in dBFS (from 10 to 200) (default 120)
+        :param float limit: set upper limit in dBFS (from -100 to 100) (default 0)
+        :param float opacity: set opacity strength (from 0 to 10) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showspectrumpic
 
@@ -6868,21 +6750,21 @@ class AudioStream(FilterableStream):
     def showvolume(
         self,
         *,
-        rate: str | float | int = Default("25"),
-        b: int | str = Default(1),
-        w: int | str = Default(400),
-        h: int | str = Default(20),
-        f: float | int | str = Default(0.95),
-        c: str | float | int = Default("PEAK*255+floor((1-PEAK)*255)*256+0xff000000"),
-        t: bool | int | str = Default(1),
-        v: bool | int | str = Default(1),
-        dm: float | int | str = Default(0.0),
-        dmc: str | float | int = Default("orange"),
-        o: int | Literal["h", "v"] | Default = Default(0),
-        s: int | str = Default(0),
-        p: float | int | str = Default(0.0),
-        m: int | Literal["p", "r"] | Default = Default(0),
-        ds: int | Literal["lin", "log"] | Default = Default("LINEAR"),
+        rate: str | float | int = Default('"25"'),
+        b: int | str = Default("1"),
+        w: int | str = Default("400"),
+        h: int | str = Default("20"),
+        f: float | int | str = Default("0.95"),
+        c: str | float | int = Default('"PEAK*255+floor((1-PEAK'),
+        t: bool | int | str = Default("true"),
+        v: bool | int | str = Default("true"),
+        dm: float | int | str = Default("0"),
+        dmc: str | float | int = Default('"orange"'),
+        o: int | Literal["h", "v"] | Default = Default("h"),
+        s: int | str = Default("0"),
+        p: float | int | str = Default("0"),
+        m: int | Literal["p", "r"] | Default = Default("p"),
+        ds: int | Literal["lin", "log"] | Default = Default("lin"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6892,21 +6774,21 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str rate: Set video rate.
-        :param int b: Set border width, allowed range is [0, 5]. Default is 1.
-        :param int w: Set channel width, allowed range is [80, 8192]. Default is 400.
-        :param int h: Set channel height, allowed range is [1, 900]. Default is 20.
-        :param float f: Set fade, allowed range is [0, 1]. Default is 0.95.
-        :param str c: Set volume color expression. The expression can use the following variables: VOLUME Current max volume of channel in dB. PEAK Current peak. CHANNEL Current channel number, starting from 0.
-        :param bool t: If set, displays channel names. Default is enabled.
-        :param bool v: If set, displays volume values. Default is enabled.
-        :param float dm: In second. If set to > 0., display a line for the max level in the previous seconds. default is disabled: 0.
-        :param str dmc: The color of the max line. Use when dm option is set to > 0. default is: orange
-        :param int o: Set orientation, can be horizontal: h or vertical: v, default is h.
-        :param int s: Set step size, allowed range is [0, 5]. Default is 0, which means step is disabled.
-        :param float p: Set background opacity, allowed range is [0, 1]. Default is 0.
-        :param int m: Set metering mode, can be peak: p or rms: r, default is p.
-        :param int ds: Set display scale, can be linear: lin or log: log, default is lin.
+        :param str rate: set video rate (default "25")
+        :param int b: set border width (from 0 to 5) (default 1)
+        :param int w: set channel width (from 80 to 8192) (default 400)
+        :param int h: set channel height (from 1 to 900) (default 20)
+        :param float f: set fade (from 0 to 1) (default 0.95)
+        :param str c: set volume color expression (default "PEAK*255+floor((1-PEAK)*255)*256+0xff000000")
+        :param bool t: display channel names (default true)
+        :param bool v: display volume value (default true)
+        :param float dm: duration for max value display (from 0 to 9000) (default 0)
+        :param str dmc: set color of the max value line (default "orange")
+        :param int o: set orientation (from 0 to 1) (default h)
+        :param int s: set step size (from 0 to 5) (default 0)
+        :param float p: set background opacity (from 0 to 1) (default 0)
+        :param int m: set mode (from 0 to 1) (default p)
+        :param int ds: set display scale (from 0 to 1) (default lin)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showvolume
 
@@ -6944,14 +6826,14 @@ class AudioStream(FilterableStream):
     def showwaves(
         self,
         *,
-        size: str | float | int = Default("600x240"),
-        mode: int | str = Default("MODE_POINT"),
-        n: float | int | str = Default(0),
-        rate: str | float | int = Default("25"),
-        split_channels: bool | int | str = Default(0),
-        colors: str | float | int = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
-        scale: int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default(0),
-        draw: int | Literal["scale", "full"] | Default = Default("DRAW_SCALE"),
+        size: str | float | int = Default('"600x240"'),
+        mode: int | Literal["point", "line", "p2p", "cline"] | Default = Default("point"),
+        n: int | str = Default("0"),
+        rate: str | float | int = Default('"25"'),
+        split_channels: bool | int | str = Default("false"),
+        colors: str | float | int = Default('"red|green|blue|yellow|orange|lime|pink|magenta|brown"'),
+        scale: int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
+        draw: int | Literal["scale", "full"] | Default = Default("scale"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6961,14 +6843,14 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 600x240.
-        :param int mode: Set display mode. Available values are: ‘point’ Draw a point for each sample. ‘line’ Draw a vertical line for each sample. ‘p2p’ Draw a point for each sample and a line between them. ‘cline’ Draw a centered vertical line for each sample. Default value is point.
-        :param float n: Set the number of samples which are printed on the same column. A larger value will decrease the frame rate. Must be a positive integer. This option can be set only if the value for rate is not explicitly specified.
-        :param str rate: Set the (approximate) output frame rate. This is done by setting the option n. Default value is "25".
-        :param bool split_channels: Set if channels should be drawn separately or overlap. Default value is 0.
-        :param str colors: Set colors separated by ’|’ which are going to be used for drawing of each channel.
-        :param int scale: Set amplitude scale. Available values are: ‘lin’ Linear. ‘log’ Logarithmic. ‘sqrt’ Square root. ‘cbrt’ Cubic root. Default is linear.
-        :param int draw: Set the draw mode. This is mostly useful to set for high n. Available values are: ‘scale’ Scale pixel values for each drawn sample. ‘full’ Draw every sample directly. Default value is scale.
+        :param str size: set video size (default "600x240")
+        :param int mode: select display mode (from 0 to 3) (default point)
+        :param int n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0)
+        :param str rate: set video rate (default "25")
+        :param bool split_channels: draw channels separately (default false)
+        :param str colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+        :param int scale: set amplitude scale (from 0 to 3) (default lin)
+        :param int draw: set draw mode (from 0 to 1) (default scale)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showwaves
 
@@ -6999,12 +6881,12 @@ class AudioStream(FilterableStream):
     def showwavespic(
         self,
         *,
-        size: str | float | int = Default("600x240"),
-        split_channels: bool | int | str = Default(0),
-        colors: str | float | int = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
-        scale: int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default(0),
-        draw: int | Literal["scale", "full"] | Default = Default("DRAW_SCALE"),
-        filter: int | Literal["average", "peak"] | Default = Default("FILTER_AVERAGE"),
+        size: str | float | int = Default('"600x240"'),
+        split_channels: bool | int | str = Default("false"),
+        colors: str | float | int = Default('"red|green|blue|yellow|orange|lime|pink|magenta|brown"'),
+        scale: int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
+        draw: int | Literal["scale", "full"] | Default = Default("scale"),
+        filter: int | Literal["average", "peak"] | Default = Default("average"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -7014,12 +6896,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str size: Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual. Default value is 600x240.
-        :param bool split_channels: Set if channels should be drawn separately or overlap. Default value is 0.
-        :param str colors: Set colors separated by ’|’ which are going to be used for drawing of each channel.
-        :param int scale: Set amplitude scale. Available values are: ‘lin’ Linear. ‘log’ Logarithmic. ‘sqrt’ Square root. ‘cbrt’ Cubic root. Default is linear.
-        :param int draw: Set the draw mode. Available values are: ‘scale’ Scale pixel values for each drawn sample. ‘full’ Draw every sample directly. Default value is scale.
-        :param int filter: Set the filter mode. Available values are: ‘average’ Use average samples values for each drawn sample. ‘peak’ Use peak samples values for each drawn sample. Default value is average.
+        :param str size: set video size (default "600x240")
+        :param bool split_channels: draw channels separately (default false)
+        :param str colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+        :param int scale: set amplitude scale (from 0 to 3) (default lin)
+        :param int draw: set draw mode (from 0 to 1) (default scale)
+        :param int filter: set filter mode (from 0 to 1) (default average)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showwavespic
 
@@ -7049,18 +6931,18 @@ class AudioStream(FilterableStream):
         self,
         _sidechain: "AudioStream",
         *,
-        level_in: float | int | str = Default(1.0),
-        mode: int | Literal["downward", "upward"] | Default = Default(0),
-        threshold: float | int | str = Default(0.125),
-        ratio: float | int | str = Default(2.0),
-        attack: float | int | str = Default(20.0),
-        release: float | int | str = Default(250.0),
-        makeup: float | int | str = Default(1.0),
-        knee: float | int | str = Default(2.82843),
-        link: int | Literal["average", "maximum"] | Default = Default(0),
-        detection: int | Literal["peak", "rms"] | Default = Default(1),
-        level_sc: float | int | str = Default(1.0),
-        mix: float | int | str = Default(1.0),
+        level_in: float | int | str = Default("1"),
+        mode: int | Literal["downward", "upward"] | Default = Default("downward"),
+        threshold: float | int | str = Default("0.125"),
+        ratio: float | int | str = Default("2"),
+        attack: float | int | str = Default("20"),
+        release: float | int | str = Default("250"),
+        makeup: float | int | str = Default("1"),
+        knee: float | int | str = Default("2.82843"),
+        link: int | Literal["average", "maximum"] | Default = Default("average"),
+        detection: int | Literal["peak", "rms"] | Default = Default("rms"),
+        level_sc: float | int | str = Default("1"),
+        mix: float | int | str = Default("1"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -7070,18 +6952,18 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input gain. Default is 1. Range is between 0.015625 and 64.
-        :param int mode: Set mode of compressor operation. Can be upward or downward. Default is downward.
-        :param float threshold: If a signal of second stream raises above this level it will affect the gain reduction of first stream. By default is 0.125. Range is between 0.00097563 and 1.
-        :param float ratio: Set a ratio about which the signal is reduced. 1:2 means that if the level raised 4dB above the threshold, it will be only 2dB above after the reduction. Default is 2. Range is between 1 and 20.
-        :param float attack: Amount of milliseconds the signal has to rise above the threshold before gain reduction starts. Default is 20. Range is between 0.01 and 2000.
-        :param float release: Amount of milliseconds the signal has to fall below the threshold before reduction is decreased again. Default is 250. Range is between 0.01 and 9000.
-        :param float makeup: Set the amount by how much signal will be amplified after processing. Default is 1. Range is from 1 to 64.
-        :param float knee: Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.82843. Range is between 1 and 8.
-        :param int link: Choose if the average level between all channels of side-chain stream or the louder(maximum) channel of side-chain stream affects the reduction. Default is average.
-        :param int detection: Should the exact signal be taken in case of peak or an RMS one in case of rms. Default is rms which is mainly smoother.
-        :param float level_sc: Set sidechain gain. Default is 1. Range is between 0.015625 and 64.
-        :param float mix: How much to use compressed signal in output. Default is 1. Range is between 0 and 1.
+        :param float level_in: set input gain (from 0.015625 to 64) (default 1)
+        :param int mode: set mode (from 0 to 1) (default downward)
+        :param float threshold: set threshold (from 0.000976563 to 1) (default 0.125)
+        :param float ratio: set ratio (from 1 to 20) (default 2)
+        :param float attack: set attack (from 0.01 to 2000) (default 20)
+        :param float release: set release (from 0.01 to 9000) (default 250)
+        :param float makeup: set make up gain (from 1 to 64) (default 1)
+        :param float knee: set knee (from 1 to 8) (default 2.82843)
+        :param int link: set link type (from 0 to 1) (default average)
+        :param int detection: set detection (from 0 to 1) (default rms)
+        :param float level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+        :param float mix: set mix (from 0 to 1) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress
 
@@ -7120,18 +7002,18 @@ class AudioStream(FilterableStream):
         self,
         _sidechain: "AudioStream",
         *,
-        level_in: float | int | str = Default(1.0),
-        mode: int | Literal["downward", "upward"] | Default = Default(0),
-        range: float | int | str = Default(0.06125),
-        threshold: float | int | str = Default(0.125),
-        ratio: float | int | str = Default(2.0),
-        attack: float | int | str = Default(20.0),
-        release: float | int | str = Default(250.0),
-        makeup: float | int | str = Default(1.0),
-        knee: float | int | str = Default(2.828427125),
-        detection: int | Literal["peak", "rms"] | Default = Default(1),
-        link: int | Literal["average", "maximum"] | Default = Default(0),
-        level_sc: float | int | str = Default(1.0),
+        level_in: float | int | str = Default("1"),
+        mode: int | Literal["downward", "upward"] | Default = Default("downward"),
+        range: float | int | str = Default("0.06125"),
+        threshold: float | int | str = Default("0.125"),
+        ratio: float | int | str = Default("2"),
+        attack: float | int | str = Default("20"),
+        release: float | int | str = Default("250"),
+        makeup: float | int | str = Default("1"),
+        knee: float | int | str = Default("2.82843"),
+        detection: int | Literal["peak", "rms"] | Default = Default("rms"),
+        link: int | Literal["average", "maximum"] | Default = Default("average"),
+        level_sc: float | int | str = Default("1"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -7142,18 +7024,18 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input level before filtering. Default is 1. Allowed range is from 0.015625 to 64.
-        :param int mode: Set the mode of operation. Can be upward or downward. Default is downward. If set to upward mode, higher parts of signal will be amplified, expanding dynamic range in upward direction. Otherwise, in case of downward lower parts of signal will be reduced.
-        :param float range: Set the level of gain reduction when the signal is below the threshold. Default is 0.06125. Allowed range is from 0 to 1. Setting this to 0 disables reduction and then filter behaves like expander.
-        :param float threshold: If a signal rises above this level the gain reduction is released. Default is 0.125. Allowed range is from 0 to 1.
-        :param float ratio: Set a ratio about which the signal is reduced. Default is 2. Allowed range is from 1 to 9000.
-        :param float attack: Amount of milliseconds the signal has to rise above the threshold before gain reduction stops. Default is 20 milliseconds. Allowed range is from 0.01 to 9000.
-        :param float release: Amount of milliseconds the signal has to fall below the threshold before the reduction is increased again. Default is 250 milliseconds. Allowed range is from 0.01 to 9000.
-        :param float makeup: Set amount of amplification of signal after processing. Default is 1. Allowed range is from 1 to 64.
-        :param float knee: Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.828427125. Allowed range is from 1 to 8.
-        :param int detection: Choose if exact signal should be taken for detection or an RMS like one. Default is rms. Can be peak or rms.
-        :param int link: Choose if the average level between all channels or the louder channel affects the reduction. Default is average. Can be average or maximum.
-        :param float level_sc: Set sidechain gain. Default is 1. Range is from 0.015625 to 64.
+        :param float level_in: set input level (from 0.015625 to 64) (default 1)
+        :param int mode: set mode (from 0 to 1) (default downward)
+        :param float range: set max gain reduction (from 0 to 1) (default 0.06125)
+        :param float threshold: set threshold (from 0 to 1) (default 0.125)
+        :param float ratio: set ratio (from 1 to 9000) (default 2)
+        :param float attack: set attack (from 0.01 to 9000) (default 20)
+        :param float release: set release (from 0.01 to 9000) (default 250)
+        :param float makeup: set makeup gain (from 1 to 64) (default 1)
+        :param float knee: set knee (from 1 to 8) (default 2.82843)
+        :param int detection: set detection (from 0 to 1) (default rms)
+        :param int link: set link (from 0 to 1) (default average)
+        :param float level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sidechaingate
@@ -7193,9 +7075,9 @@ class AudioStream(FilterableStream):
     def silencedetect(
         self,
         *,
-        n: float | int | str = Default(0.001),
-        d: int | str = Default(2000000),
-        mono: bool | int | str = Default(0),
+        n: float | int | str = Default("0.001"),
+        d: str | float | int = Default("2"),
+        mono: bool | int | str = Default("false"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -7205,9 +7087,9 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float n: Set noise tolerance. Can be specified in dB (in case "dB" is appended to the specified value) or amplitude ratio. Default is -60dB, or 0.001.
-        :param int d: Set silence duration until notification (default is 2 seconds). See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax.
-        :param bool mono: Process each channel separately, instead of combined. By default is disabled.
+        :param float n: set noise tolerance (from 0 to DBL_MAX) (default 0.001)
+        :param str d: set minimum duration in seconds (default 2)
+        :param bool mono: check each channel separately (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#silencedetect
 
@@ -7233,20 +7115,18 @@ class AudioStream(FilterableStream):
     def silenceremove(
         self,
         *,
-        start_periods: int | str = Default(0),
-        start_duration: int | str = Default(0),
-        start_threshold: float | int | str = Default(0.0),
-        start_silence: int | str = Default(0),
-        start_mode: int | Literal["any", "all"] | Default = Default("T_ANY"),
-        stop_periods: int | str = Default(0),
-        stop_duration: int | str = Default(0),
-        stop_threshold: float | int | str = Default(0.0),
-        stop_silence: int | str = Default(0),
-        stop_mode: int | Literal["any", "all"] | Default = Default("T_ALL"),
-        detection: int | Literal["avg", "rms", "peak", "median", "ptp", "dev"] | Default = Default("D_RMS"),
-        window: int | str = Default(20000),
-        timestamp: int | Literal["write", "copy"] | Default = Default("TS_WRITE"),
-        enable: str | float | int = Default(None),
+        start_periods: int | str = Default("0"),
+        start_duration: str | float | int = Default("0"),
+        start_threshold: float | int | str = Default("0"),
+        start_silence: str | float | int = Default("0"),
+        start_mode: int | Literal["any", "all"] | Default = Default("any"),
+        stop_periods: int | str = Default("0"),
+        stop_duration: str | float | int = Default("0"),
+        stop_threshold: float | int | str = Default("0"),
+        stop_silence: str | float | int = Default("0"),
+        stop_mode: int | Literal["any", "all"] | Default = Default("any"),
+        detection: int | Literal["peak", "rms"] | Default = Default("rms"),
+        window: str | float | int = Default("0.02"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -7256,20 +7136,18 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param int start_periods: This value is used to indicate if audio should be trimmed at beginning of the audio. A value of zero indicates no silence should be trimmed from the beginning. When specifying a non-zero value, it trims audio up until it finds non-silence. Normally, when trimming silence from beginning of audio the start_periods will be 1 but it can be increased to higher values to trim all audio up to specific count of non-silence periods. Default value is 0.
-        :param int start_duration: Specify the amount of time that non-silence must be detected before it stops trimming audio. By increasing the duration, bursts of noises can be treated as silence and trimmed off. Default value is 0.
-        :param float start_threshold: This indicates what sample value should be treated as silence. For digital audio, a value of 0 may be fine but for audio recorded from analog, you may wish to increase the value to account for background noise. Can be specified in dB (in case "dB" is appended to the specified value) or amplitude ratio. Default value is 0.
-        :param int start_silence: Specify max duration of silence at beginning that will be kept after trimming. Default is 0, which is equal to trimming all samples detected as silence.
-        :param int start_mode: Specify mode of detection of silence end at start of multi-channel audio. Can be any or all. Default is any. With any, any sample from any channel that is detected as non-silence will trigger end of silence trimming at start of audio stream. With all, only if every sample from every channel is detected as non-silence will trigger end of silence trimming at start of audio stream, limited usage.
-        :param int stop_periods: Set the count for trimming silence from the end of audio. When specifying a positive value, it trims audio after it finds specified silence period. To remove silence from the middle of a file, specify a stop_periods that is negative. This value is then treated as a positive value and is used to indicate the effect should restart processing as specified by stop_periods, making it suitable for removing periods of silence in the middle of the audio. Default value is 0.
-        :param int stop_duration: Specify a duration of silence that must exist before audio is not copied any more. By specifying a higher duration, silence that is wanted can be left in the audio. Default value is 0.
-        :param float stop_threshold: This is the same as start_threshold but for trimming silence from the end of audio. Can be specified in dB (in case "dB" is appended to the specified value) or amplitude ratio. Default value is 0.
-        :param int stop_silence: Specify max duration of silence at end that will be kept after trimming. Default is 0, which is equal to trimming all samples detected as silence.
-        :param int stop_mode: Specify mode of detection of silence start after start of multi-channel audio. Can be any or all. Default is all. With any, any sample from any channel that is detected as silence will trigger start of silence trimming after start of audio stream, limited usage. With all, only if every sample from every channel is detected as silence will trigger start of silence trimming after start of audio stream.
-        :param int detection: Set how is silence detected. avg Mean of absolute values of samples in moving window. rms Root squared mean of absolute values of samples in moving window. peak Maximum of absolute values of samples in moving window. median Median of absolute values of samples in moving window. ptp Absolute of max peak to min peak difference of samples in moving window. dev Standard deviation of values of samples in moving window. Default value is rms.
-        :param int window: Set duration in number of seconds used to calculate size of window in number of samples for detecting silence. Using 0 will effectively disable any windowing and use only single sample per channel for silence detection. In that case it may be needed to also set start_silence and/or stop_silence to nonzero values with also start_duration and/or stop_duration to nonzero values. Default value is 0.02. Allowed range is from 0 to 10.
-        :param int timestamp: Set processing mode of every audio frame output timestamp. write Full timestamps rewrite, keep only the start time for the first output frame. copy Non-dropped frames are left with same timestamp as input audio frame. Defaults value is write.
-        :param str enable: timeline editing
+        :param int start_periods: set periods of silence parts to skip from start (from 0 to 9000) (default 0)
+        :param str start_duration: set start duration of non-silence part (default 0)
+        :param float start_threshold: set threshold for start silence detection (from 0 to DBL_MAX) (default 0)
+        :param str start_silence: set start duration of silence part to keep (default 0)
+        :param int start_mode: set which channel will trigger trimming from start (from 0 to 1) (default any)
+        :param int stop_periods: set periods of silence parts to skip from end (from -9000 to 9000) (default 0)
+        :param str stop_duration: set stop duration of non-silence part (default 0)
+        :param float stop_threshold: set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)
+        :param str stop_silence: set stop duration of silence part to keep (default 0)
+        :param int stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default any)
+        :param int detection: set how silence is detected (from 0 to 1) (default rms)
+        :param str window: set duration of window for silence detection (default 0.02)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#silenceremove
 
@@ -7294,8 +7172,6 @@ class AudioStream(FilterableStream):
                         "stop_mode": stop_mode,
                         "detection": detection,
                         "window": window,
-                        "timestamp": timestamp,
-                        "enable": enable,
                     }
                     | kwargs
                 ).items()
@@ -7448,16 +7324,16 @@ class AudioStream(FilterableStream):
     def speechnorm(
         self,
         *,
-        peak: float | int | str = Default(0.95),
-        expansion: float | int | str = Default(2.0),
-        compression: float | int | str = Default(2.0),
-        threshold: float | int | str = Default(0.0),
-        _raise: float | int | str = Default(0.001),
-        fall: float | int | str = Default(0.001),
-        channels: str | float | int = Default("all"),
-        invert: bool | int | str = Default(0),
-        link: bool | int | str = Default(0),
-        rms: float | int | str = Default(0.0),
+        peak: float | int | str = Default("0.95"),
+        expansion: float | int | str = Default("2"),
+        compression: float | int | str = Default("2"),
+        threshold: float | int | str = Default("0"),
+        _raise: float | int | str = Default("0.001"),
+        fall: float | int | str = Default("0.001"),
+        channels: str | float | int = Default('"all"'),
+        invert: bool | int | str = Default("false"),
+        link: bool | int | str = Default("false"),
+        rms: float | int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -7468,16 +7344,16 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float peak: Set the expansion target peak value. This specifies the highest allowed absolute amplitude level for the normalized audio input. Default value is 0.95. Allowed range is from 0.0 to 1.0.
-        :param float expansion: Set the maximum expansion factor. Allowed range is from 1.0 to 50.0. Default value is 2.0. This option controls maximum local half-cycle of samples expansion. The maximum expansion would be such that local peak value reaches target peak value but never to surpass it and that ratio between new and previous peak value does not surpass this option value.
-        :param float compression: Set the maximum compression factor. Allowed range is from 1.0 to 50.0. Default value is 2.0. This option controls maximum local half-cycle of samples compression. This option is used only if threshold option is set to value greater than 0.0, then in such cases when local peak is lower or same as value set by threshold all samples belonging to that peak’s half-cycle will be compressed by current compression factor.
-        :param float threshold: Set the threshold value. Default value is 0.0. Allowed range is from 0.0 to 1.0. This option specifies which half-cycles of samples will be compressed and which will be expanded. Any half-cycle samples with their local peak value below or same as this option value will be compressed by current compression factor, otherwise, if greater than threshold value they will be expanded with expansion factor so that it could reach peak target value but never surpass it.
-        :param float _raise: Set the expansion raising amount per each half-cycle of samples. Default value is 0.001. Allowed range is from 0.0 to 1.0. This controls how fast expansion factor is raised per each new half-cycle until it reaches expansion value. Setting this options too high may lead to distortions.
-        :param float fall: Set the compression raising amount per each half-cycle of samples. Default value is 0.001. Allowed range is from 0.0 to 1.0. This controls how fast compression factor is raised per each new half-cycle until it reaches compression value.
-        :param str channels: Specify which channels to filter, by default all available channels are filtered.
-        :param bool invert: Enable inverted filtering, by default is disabled. This inverts interpretation of threshold option. When enabled any half-cycle of samples with their local peak value below or same as threshold option will be expanded otherwise it will be compressed.
-        :param bool link: Link channels when calculating gain applied to each filtered channel sample, by default is disabled. When disabled each filtered channel gain calculation is independent, otherwise when this option is enabled the minimum of all possible gains for each filtered channel is used.
-        :param float rms: Set the expansion target RMS value. This specifies the highest allowed RMS level for the normalized audio input. Default value is 0.0, thus disabled. Allowed range is from 0.0 to 1.0.
+        :param float peak: set the peak value (from 0 to 1) (default 0.95)
+        :param float expansion: set the max expansion factor (from 1 to 50) (default 2)
+        :param float compression: set the max compression factor (from 1 to 50) (default 2)
+        :param float threshold: set the threshold value (from 0 to 1) (default 0)
+        :param float _raise: set the expansion raising amount (from 0 to 1) (default 0.001)
+        :param float fall: set the compression raising amount (from 0 to 1) (default 0.001)
+        :param str channels: set channels to filter (default "all")
+        :param bool invert: set inverted filtering (default false)
+        :param bool link: set linked channels filtering (default false)
+        :param float rms: set the RMS value (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#speechnorm
@@ -7512,28 +7388,28 @@ class AudioStream(FilterableStream):
     def stereotools(
         self,
         *,
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        balance_in: float | int | str = Default(0.0),
-        balance_out: float | int | str = Default(0.0),
-        softclip: bool | int | str = Default(0),
-        mutel: bool | int | str = Default(0),
-        muter: bool | int | str = Default(0),
-        phasel: bool | int | str = Default(0),
-        phaser: bool | int | str = Default(0),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        balance_in: float | int | str = Default("0"),
+        balance_out: float | int | str = Default("0"),
+        softclip: bool | int | str = Default("false"),
+        mutel: bool | int | str = Default("false"),
+        muter: bool | int | str = Default("false"),
+        phasel: bool | int | str = Default("false"),
+        phaser: bool | int | str = Default("false"),
         mode: int
-        | Literal["lr>lr", "lr>ms", "ms>lr", "lr>ll", "lr>rr", "lr>l+r", "lr>rl", "ms>ll", "ms>rr", "ms>rl", "lr>l-r"]
-        | Default = Default(0),
-        slev: float | int | str = Default(1.0),
-        sbal: float | int | str = Default(0.0),
-        mlev: float | int | str = Default(1.0),
-        mpan: float | int | str = Default(0.0),
-        base: float | int | str = Default(0.0),
-        delay: float | int | str = Default(0.0),
-        sclevel: float | int | str = Default(1.0),
-        phase: float | int | str = Default(0.0),
-        bmode_in: int | Literal["balance", "amplitude", "power"] | Default = Default(0),
-        bmode_out: int | Literal["balance", "amplitude", "power"] | Default = Default(0),
+        | Literal["lr", "ms", "lr", "ll", "rr", "r", "rl", "ll", "rr", "rl", "r"]
+        | Default = Default("lr>lr"),
+        slev: float | int | str = Default("1"),
+        sbal: float | int | str = Default("0"),
+        mlev: float | int | str = Default("1"),
+        mpan: float | int | str = Default("0"),
+        base: float | int | str = Default("0"),
+        delay: float | int | str = Default("0"),
+        sclevel: float | int | str = Default("1"),
+        phase: float | int | str = Default("0"),
+        bmode_in: int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
+        bmode_out: int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -7544,26 +7420,26 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float level_in: Set input level before filtering for both channels. Defaults is 1. Allowed range is from 0.015625 to 64.
-        :param float level_out: Set output level after filtering for both channels. Defaults is 1. Allowed range is from 0.015625 to 64.
-        :param float balance_in: Set input balance between both channels. Default is 0. Allowed range is from -1 to 1.
-        :param float balance_out: Set output balance between both channels. Default is 0. Allowed range is from -1 to 1.
-        :param bool softclip: Enable softclipping. Results in analog distortion instead of harsh digital 0dB clipping. Disabled by default.
-        :param bool mutel: Mute the left channel. Disabled by default.
-        :param bool muter: Mute the right channel. Disabled by default.
-        :param bool phasel: Change the phase of the left channel. Disabled by default.
-        :param bool phaser: Change the phase of the right channel. Disabled by default.
-        :param int mode: Set stereo mode. Available values are: ‘lr>lr’ Left/Right to Left/Right, this is default. ‘lr>ms’ Left/Right to Mid/Side. ‘ms>lr’ Mid/Side to Left/Right. ‘lr>ll’ Left/Right to Left/Left. ‘lr>rr’ Left/Right to Right/Right. ‘lr>l+r’ Left/Right to Left + Right. ‘lr>rl’ Left/Right to Right/Left. ‘ms>ll’ Mid/Side to Left/Left. ‘ms>rr’ Mid/Side to Right/Right. ‘ms>rl’ Mid/Side to Right/Left. ‘lr>l-r’ Left/Right to Left - Right.
-        :param float slev: Set level of side signal. Default is 1. Allowed range is from 0.015625 to 64.
-        :param float sbal: Set balance of side signal. Default is 0. Allowed range is from -1 to 1.
-        :param float mlev: Set level of the middle signal. Default is 1. Allowed range is from 0.015625 to 64.
-        :param float mpan: Set middle signal pan. Default is 0. Allowed range is from -1 to 1.
-        :param float base: Set stereo base between mono and inversed channels. Default is 0. Allowed range is from -1 to 1.
-        :param float delay: Set delay in milliseconds how much to delay left from right channel and vice versa. Default is 0. Allowed range is from -20 to 20.
-        :param float sclevel: Set S/C level. Default is 1. Allowed range is from 1 to 100.
-        :param float phase: Set the stereo phase in degrees. Default is 0. Allowed range is from 0 to 360.
-        :param int bmode_in: Set balance mode for balance_in/balance_out option. Can be one of the following: ‘balance’ Classic balance mode. Attenuate one channel at time. Gain is raised up to 1. ‘amplitude’ Similar as classic mode above but gain is raised up to 2. ‘power’ Equal power distribution, from -6dB to +6dB range.
-        :param int bmode_out: Set balance mode for balance_in/balance_out option. Can be one of the following: ‘balance’ Classic balance mode. Attenuate one channel at time. Gain is raised up to 1. ‘amplitude’ Similar as classic mode above but gain is raised up to 2. ‘power’ Equal power distribution, from -6dB to +6dB range.
+        :param float level_in: set level in (from 0.015625 to 64) (default 1)
+        :param float level_out: set level out (from 0.015625 to 64) (default 1)
+        :param float balance_in: set balance in (from -1 to 1) (default 0)
+        :param float balance_out: set balance out (from -1 to 1) (default 0)
+        :param bool softclip: enable softclip (default false)
+        :param bool mutel: mute L (default false)
+        :param bool muter: mute R (default false)
+        :param bool phasel: phase L (default false)
+        :param bool phaser: phase R (default false)
+        :param int mode: set stereo mode (from 0 to 10) (default lr>lr)
+        :param float slev: set side level (from 0.015625 to 64) (default 1)
+        :param float sbal: set side balance (from -1 to 1) (default 0)
+        :param float mlev: set middle level (from 0.015625 to 64) (default 1)
+        :param float mpan: set middle pan (from -1 to 1) (default 0)
+        :param float base: set stereo base (from -1 to 1) (default 0)
+        :param float delay: set delay (from -20 to 20) (default 0)
+        :param float sclevel: set S/C level (from 1 to 100) (default 1)
+        :param float phase: set stereo phase (from 0 to 360) (default 0)
+        :param int bmode_in: set balance in mode (from 0 to 2) (default balance)
+        :param int bmode_out: set balance out mode (from 0 to 2) (default balance)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#stereotools
@@ -7608,10 +7484,10 @@ class AudioStream(FilterableStream):
     def stereowiden(
         self,
         *,
-        delay: float | int | str = Default(20.0),
-        feedback: float | int | str = Default(0.3),
-        crossfeed: float | int | str = Default(0.3),
-        drymix: float | int | str = Default(0.8),
+        delay: float | int | str = Default("20"),
+        feedback: float | int | str = Default("0.3"),
+        crossfeed: float | int | str = Default("0.3"),
+        drymix: float | int | str = Default("0.8"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -7622,10 +7498,10 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float delay: Time in milliseconds of the delay of left signal into right and vice versa. Default is 20 milliseconds.
-        :param float feedback: Amount of gain in delayed signal into right and vice versa. Gives a delay effect of left signal in right output and vice versa which gives widening effect. Default is 0.3.
-        :param float crossfeed: Cross feed of left into right with inverted phase. This helps in suppressing the mono. If the value is 1 it will cancel all the signal common to both channels. Default is 0.3.
-        :param float drymix: Set level of input signal of original channel. Default is 0.8.
+        :param float delay: set delay time (from 1 to 100) (default 20)
+        :param float feedback: set feedback gain (from 0 to 0.9) (default 0.3)
+        :param float crossfeed: set cross feed (from 0 to 0.8) (default 0.3)
+        :param float drymix: set dry-mix (from 0 to 1) (default 0.8)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#stereowiden
@@ -7654,24 +7530,24 @@ class AudioStream(FilterableStream):
     def superequalizer(
         self,
         *,
-        _1b: float | int | str = Default(1.0),
-        _2b: float | int | str = Default(1.0),
-        _3b: float | int | str = Default(1.0),
-        _4b: float | int | str = Default(1.0),
-        _5b: float | int | str = Default(1.0),
-        _6b: float | int | str = Default(1.0),
-        _7b: float | int | str = Default(1.0),
-        _8b: float | int | str = Default(1.0),
-        _9b: float | int | str = Default(1.0),
-        _10b: float | int | str = Default(1.0),
-        _11b: float | int | str = Default(1.0),
-        _12b: float | int | str = Default(1.0),
-        _13b: float | int | str = Default(1.0),
-        _14b: float | int | str = Default(1.0),
-        _15b: float | int | str = Default(1.0),
-        _16b: float | int | str = Default(1.0),
-        _17b: float | int | str = Default(1.0),
-        _18b: float | int | str = Default(1.0),
+        _1b: float | int | str = Default("1"),
+        _2b: float | int | str = Default("1"),
+        _3b: float | int | str = Default("1"),
+        _4b: float | int | str = Default("1"),
+        _5b: float | int | str = Default("1"),
+        _6b: float | int | str = Default("1"),
+        _7b: float | int | str = Default("1"),
+        _8b: float | int | str = Default("1"),
+        _9b: float | int | str = Default("1"),
+        _10b: float | int | str = Default("1"),
+        _11b: float | int | str = Default("1"),
+        _12b: float | int | str = Default("1"),
+        _13b: float | int | str = Default("1"),
+        _14b: float | int | str = Default("1"),
+        _15b: float | int | str = Default("1"),
+        _16b: float | int | str = Default("1"),
+        _17b: float | int | str = Default("1"),
+        _18b: float | int | str = Default("1"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -7681,24 +7557,24 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float _1b: Set 65Hz band gain.
-        :param float _2b: Set 92Hz band gain.
-        :param float _3b: Set 131Hz band gain.
-        :param float _4b: Set 185Hz band gain.
-        :param float _5b: Set 262Hz band gain.
-        :param float _6b: Set 370Hz band gain.
-        :param float _7b: Set 523Hz band gain.
-        :param float _8b: Set 740Hz band gain.
-        :param float _9b: Set 1047Hz band gain.
-        :param float _10b: Set 1480Hz band gain.
-        :param float _11b: Set 2093Hz band gain.
-        :param float _12b: Set 2960Hz band gain.
-        :param float _13b: Set 4186Hz band gain.
-        :param float _14b: Set 5920Hz band gain.
-        :param float _15b: Set 8372Hz band gain.
-        :param float _16b: Set 11840Hz band gain.
-        :param float _17b: Set 16744Hz band gain.
-        :param float _18b: Set 20000Hz band gain.
+        :param float _1b: set 65Hz band gain (from 0 to 20) (default 1)
+        :param float _2b: set 92Hz band gain (from 0 to 20) (default 1)
+        :param float _3b: set 131Hz band gain (from 0 to 20) (default 1)
+        :param float _4b: set 185Hz band gain (from 0 to 20) (default 1)
+        :param float _5b: set 262Hz band gain (from 0 to 20) (default 1)
+        :param float _6b: set 370Hz band gain (from 0 to 20) (default 1)
+        :param float _7b: set 523Hz band gain (from 0 to 20) (default 1)
+        :param float _8b: set 740Hz band gain (from 0 to 20) (default 1)
+        :param float _9b: set 1047Hz band gain (from 0 to 20) (default 1)
+        :param float _10b: set 1480Hz band gain (from 0 to 20) (default 1)
+        :param float _11b: set 2093Hz band gain (from 0 to 20) (default 1)
+        :param float _12b: set 2960Hz band gain (from 0 to 20) (default 1)
+        :param float _13b: set 4186Hz band gain (from 0 to 20) (default 1)
+        :param float _14b: set 5920Hz band gain (from 0 to 20) (default 1)
+        :param float _15b: set 8372Hz band gain (from 0 to 20) (default 1)
+        :param float _16b: set 11840Hz band gain (from 0 to 20) (default 1)
+        :param float _17b: set 16744Hz band gain (from 0 to 20) (default 1)
+        :param float _18b: set 20000Hz band gain (from 0 to 20) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#superequalizer
 
@@ -7739,54 +7615,54 @@ class AudioStream(FilterableStream):
     def surround(
         self,
         *,
-        chl_out: str | float | int = Default("5.1"),
-        chl_in: str | float | int = Default("stereo"),
-        level_in: float | int | str = Default(1.0),
-        level_out: float | int | str = Default(1.0),
-        lfe: bool | int | str = Default(1),
-        lfe_low: int | str = Default(128),
-        lfe_high: int | str = Default(256),
-        lfe_mode: int | Literal["add", "sub"] | Default = Default(0),
-        smooth: float | int | str = Default(0.0),
-        angle: float | int | str = Default(90.0),
-        focus: float | int | str = Default(0.0),
-        fc_in: float | int | str = Default(1.0),
-        fc_out: float | int | str = Default(1.0),
-        fl_in: float | int | str = Default(1.0),
-        fl_out: float | int | str = Default(1.0),
-        fr_in: float | int | str = Default(1.0),
-        fr_out: float | int | str = Default(1.0),
-        sl_in: float | int | str = Default(1.0),
-        sl_out: float | int | str = Default(1.0),
-        sr_in: float | int | str = Default(1.0),
-        sr_out: float | int | str = Default(1.0),
-        bl_in: float | int | str = Default(1.0),
-        bl_out: float | int | str = Default(1.0),
-        br_in: float | int | str = Default(1.0),
-        br_out: float | int | str = Default(1.0),
-        bc_in: float | int | str = Default(1.0),
-        bc_out: float | int | str = Default(1.0),
-        lfe_in: float | int | str = Default(1.0),
-        lfe_out: float | int | str = Default(1.0),
-        allx: float | int | str = Default(-1.0),
-        ally: float | int | str = Default(-1.0),
-        fcx: float | int | str = Default(0.5),
-        flx: float | int | str = Default(0.5),
-        frx: float | int | str = Default(0.5),
-        blx: float | int | str = Default(0.5),
-        brx: float | int | str = Default(0.5),
-        slx: float | int | str = Default(0.5),
-        srx: float | int | str = Default(0.5),
-        bcx: float | int | str = Default(0.5),
-        fcy: float | int | str = Default(0.5),
-        fly: float | int | str = Default(0.5),
-        fry: float | int | str = Default(0.5),
-        bly: float | int | str = Default(0.5),
-        bry: float | int | str = Default(0.5),
-        sly: float | int | str = Default(0.5),
-        sry: float | int | str = Default(0.5),
-        bcy: float | int | str = Default(0.5),
-        win_size: int | str = Default(4096),
+        chl_out: str | float | int = Default('"5.1"'),
+        chl_in: str | float | int = Default('"stereo"'),
+        level_in: float | int | str = Default("1"),
+        level_out: float | int | str = Default("1"),
+        lfe: bool | int | str = Default("true"),
+        lfe_low: int | str = Default("128"),
+        lfe_high: int | str = Default("256"),
+        lfe_mode: int | Literal["add", "sub"] | Default = Default("add"),
+        smooth: float | int | str = Default("0"),
+        angle: float | int | str = Default("90"),
+        focus: float | int | str = Default("0"),
+        fc_in: float | int | str = Default("1"),
+        fc_out: float | int | str = Default("1"),
+        fl_in: float | int | str = Default("1"),
+        fl_out: float | int | str = Default("1"),
+        fr_in: float | int | str = Default("1"),
+        fr_out: float | int | str = Default("1"),
+        sl_in: float | int | str = Default("1"),
+        sl_out: float | int | str = Default("1"),
+        sr_in: float | int | str = Default("1"),
+        sr_out: float | int | str = Default("1"),
+        bl_in: float | int | str = Default("1"),
+        bl_out: float | int | str = Default("1"),
+        br_in: float | int | str = Default("1"),
+        br_out: float | int | str = Default("1"),
+        bc_in: float | int | str = Default("1"),
+        bc_out: float | int | str = Default("1"),
+        lfe_in: float | int | str = Default("1"),
+        lfe_out: float | int | str = Default("1"),
+        allx: float | int | str = Default("-1"),
+        ally: float | int | str = Default("-1"),
+        fcx: float | int | str = Default("0.5"),
+        flx: float | int | str = Default("0.5"),
+        frx: float | int | str = Default("0.5"),
+        blx: float | int | str = Default("0.5"),
+        brx: float | int | str = Default("0.5"),
+        slx: float | int | str = Default("0.5"),
+        srx: float | int | str = Default("0.5"),
+        bcx: float | int | str = Default("0.5"),
+        fcy: float | int | str = Default("0.5"),
+        fly: float | int | str = Default("0.5"),
+        fry: float | int | str = Default("0.5"),
+        bly: float | int | str = Default("0.5"),
+        bry: float | int | str = Default("0.5"),
+        sly: float | int | str = Default("0.5"),
+        sry: float | int | str = Default("0.5"),
+        bcy: float | int | str = Default("0.5"),
+        win_size: int | str = Default("4096"),
         win_func: int
         | Literal[
             "rect",
@@ -7812,8 +7688,8 @@ class AudioStream(FilterableStream):
             "bohman",
             "kaiser",
         ]
-        | Default = Default("WFUNC_HANNING"),
-        overlap: float | int | str = Default(0.5),
+        | Default = Default("hann"),
+        overlap: float | int | str = Default("0.5"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -7823,56 +7699,56 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str chl_out: Set output channel layout. By default, this is 5.1. See (ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual for the required syntax.
-        :param str chl_in: Set input channel layout. By default, this is stereo. See (ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual for the required syntax.
-        :param float level_in: Set input volume level. By default, this is 1.
-        :param float level_out: Set output volume level. By default, this is 1.
-        :param bool lfe: Enable LFE channel output if output channel layout has it. By default, this is enabled.
-        :param int lfe_low: Set LFE low cut off frequency. By default, this is 128 Hz.
-        :param int lfe_high: Set LFE high cut off frequency. By default, this is 256 Hz.
-        :param int lfe_mode: Set LFE mode, can be add or sub. Default is add. In add mode, LFE channel is created from input audio and added to output. In sub mode, LFE channel is created from input audio and added to output but also all non-LFE output channels are subtracted with output LFE channel.
-        :param float smooth: Set temporal smoothness strength, used to gradually change factors when transforming stereo sound in time. Allowed range is from 0.0 to 1.0. Useful to improve output quality with focus option values greater than 0.0. Default is 0.0. Only values inside this range and without edges are effective.
-        :param float angle: Set angle of stereo surround transform, Allowed range is from 0 to 360. Default is 90.
-        :param float focus: Set focus of stereo surround transform, Allowed range is from -1 to 1. Default is 0.
-        :param float fc_in: Set front center input volume. By default, this is 1.
-        :param float fc_out: Set front center output volume. By default, this is 1.
-        :param float fl_in: Set front left input volume. By default, this is 1.
-        :param float fl_out: Set front left output volume. By default, this is 1.
-        :param float fr_in: Set front right input volume. By default, this is 1.
-        :param float fr_out: Set front right output volume. By default, this is 1.
-        :param float sl_in: Set side left input volume. By default, this is 1.
-        :param float sl_out: Set side left output volume. By default, this is 1.
-        :param float sr_in: Set side right input volume. By default, this is 1.
-        :param float sr_out: Set side right output volume. By default, this is 1.
-        :param float bl_in: Set back left input volume. By default, this is 1.
-        :param float bl_out: Set back left output volume. By default, this is 1.
-        :param float br_in: Set back right input volume. By default, this is 1.
-        :param float br_out: Set back right output volume. By default, this is 1.
-        :param float bc_in: Set back center input volume. By default, this is 1.
-        :param float bc_out: Set back center output volume. By default, this is 1.
-        :param float lfe_in: Set LFE input volume. By default, this is 1.
-        :param float lfe_out: Set LFE output volume. By default, this is 1.
-        :param float allx: Set spread usage of stereo image across X axis for all channels. Allowed range is from -1 to 15. By default this value is negative -1, and thus unused.
-        :param float ally: Set spread usage of stereo image across Y axis for all channels. Allowed range is from -1 to 15. By default this value is negative -1, and thus unused.
-        :param float fcx: Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float flx: Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float frx: Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float blx: Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float brx: Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float slx: Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float srx: Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float bcx: Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float fcy: Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float fly: Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float fry: Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float bly: Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float bry: Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float sly: Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float sry: Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param float bcy: Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5.
-        :param int win_size: Set window size. Allowed range is from 1024 to 65536. Default size is 4096.
-        :param int win_func: Set window function. It accepts the following values: ‘rect’ ‘bartlett’ ‘hann, hanning’ ‘hamming’ ‘blackman’ ‘welch’ ‘flattop’ ‘bharris’ ‘bnuttall’ ‘bhann’ ‘sine’ ‘nuttall’ ‘lanczos’ ‘gauss’ ‘tukey’ ‘dolph’ ‘cauchy’ ‘parzen’ ‘poisson’ ‘bohman’ ‘kaiser’ Default is hann.
-        :param float overlap: Set window overlap. If set to 1, the recommended overlap for selected window function will be picked. Default is 0.5.
+        :param str chl_out: set output channel layout (default "5.1")
+        :param str chl_in: set input channel layout (default "stereo")
+        :param float level_in: set input level (from 0 to 10) (default 1)
+        :param float level_out: set output level (from 0 to 10) (default 1)
+        :param bool lfe: output LFE (default true)
+        :param int lfe_low: LFE low cut off (from 0 to 256) (default 128)
+        :param int lfe_high: LFE high cut off (from 0 to 512) (default 256)
+        :param int lfe_mode: set LFE channel mode (from 0 to 1) (default add)
+        :param float smooth: set temporal smoothness strength (from 0 to 1) (default 0)
+        :param float angle: set soundfield transform angle (from 0 to 360) (default 90)
+        :param float focus: set soundfield transform focus (from -1 to 1) (default 0)
+        :param float fc_in: set front center channel input level (from 0 to 10) (default 1)
+        :param float fc_out: set front center channel output level (from 0 to 10) (default 1)
+        :param float fl_in: set front left channel input level (from 0 to 10) (default 1)
+        :param float fl_out: set front left channel output level (from 0 to 10) (default 1)
+        :param float fr_in: set front right channel input level (from 0 to 10) (default 1)
+        :param float fr_out: set front right channel output level (from 0 to 10) (default 1)
+        :param float sl_in: set side left channel input level (from 0 to 10) (default 1)
+        :param float sl_out: set side left channel output level (from 0 to 10) (default 1)
+        :param float sr_in: set side right channel input level (from 0 to 10) (default 1)
+        :param float sr_out: set side right channel output level (from 0 to 10) (default 1)
+        :param float bl_in: set back left channel input level (from 0 to 10) (default 1)
+        :param float bl_out: set back left channel output level (from 0 to 10) (default 1)
+        :param float br_in: set back right channel input level (from 0 to 10) (default 1)
+        :param float br_out: set back right channel output level (from 0 to 10) (default 1)
+        :param float bc_in: set back center channel input level (from 0 to 10) (default 1)
+        :param float bc_out: set back center channel output level (from 0 to 10) (default 1)
+        :param float lfe_in: set lfe channel input level (from 0 to 10) (default 1)
+        :param float lfe_out: set lfe channel output level (from 0 to 10) (default 1)
+        :param float allx: set all channel's x spread (from -1 to 15) (default -1)
+        :param float ally: set all channel's y spread (from -1 to 15) (default -1)
+        :param float fcx: set front center channel x spread (from 0.06 to 15) (default 0.5)
+        :param float flx: set front left channel x spread (from 0.06 to 15) (default 0.5)
+        :param float frx: set front right channel x spread (from 0.06 to 15) (default 0.5)
+        :param float blx: set back left channel x spread (from 0.06 to 15) (default 0.5)
+        :param float brx: set back right channel x spread (from 0.06 to 15) (default 0.5)
+        :param float slx: set side left channel x spread (from 0.06 to 15) (default 0.5)
+        :param float srx: set side right channel x spread (from 0.06 to 15) (default 0.5)
+        :param float bcx: set back center channel x spread (from 0.06 to 15) (default 0.5)
+        :param float fcy: set front center channel y spread (from 0.06 to 15) (default 0.5)
+        :param float fly: set front left channel y spread (from 0.06 to 15) (default 0.5)
+        :param float fry: set front right channel y spread (from 0.06 to 15) (default 0.5)
+        :param float bly: set back left channel y spread (from 0.06 to 15) (default 0.5)
+        :param float bry: set back right channel y spread (from 0.06 to 15) (default 0.5)
+        :param float sly: set side left channel y spread (from 0.06 to 15) (default 0.5)
+        :param float sry: set side right channel y spread (from 0.06 to 15) (default 0.5)
+        :param float bcy: set back center channel y spread (from 0.06 to 15) (default 0.5)
+        :param int win_size: set window size (from 1024 to 65536) (default 4096)
+        :param int win_func: set window function (from 0 to 20) (default hann)
+        :param float overlap: set window overlap (from 0 to 1) (default 0.5)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#surround
 
@@ -7945,17 +7821,17 @@ class AudioStream(FilterableStream):
     def tiltshelf(
         self,
         *,
-        frequency: float | int | str = Default(3000.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.5),
-        gain: float | int | str = Default(0.0),
-        poles: int | str = Default(2),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("3000"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.5"),
+        gain: float | int | str = Default("0"),
+        poles: int | str = Default("2"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -7966,17 +7842,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set the filter’s central frequency and so can be used to extend or reduce the frequency range to be boosted or cut. The default value is 3000 Hz.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Determine how steep is the filter’s shelf transition.
-        :param float gain: Give the gain at 0 Hz. Its useful range is about -20 (for a large cut) to +20 (for a large boost). Beware of clipping when using a positive gain.
-        :param int poles: Set number of poles. Default is 2.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set central frequency (from 0 to 999999) (default 3000)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.5)
+        :param float gain: set gain (from -900 to 900) (default 0)
+        :param int poles: set number of poles (from 1 to 2) (default 2)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tiltshelf
@@ -8012,17 +7888,17 @@ class AudioStream(FilterableStream):
     def treble(
         self,
         *,
-        frequency: float | int | str = Default(3000.0),
-        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("QFACTOR"),
-        width: float | int | str = Default(0.5),
-        gain: float | int | str = Default(0.0),
-        poles: int | str = Default(2),
-        mix: float | int | str = Default(1.0),
-        channels: str | float | int = Default("all"),
-        normalize: bool | int | str = Default(0),
-        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("DI"),
-        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(-1),
-        blocksize: int | str = Default(0),
+        frequency: float | int | str = Default("3000"),
+        width_type: int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
+        width: float | int | str = Default("0.5"),
+        gain: float | int | str = Default("0"),
+        poles: int | str = Default("2"),
+        mix: float | int | str = Default("1"),
+        channels: str | float | int = Default('"all"'),
+        normalize: bool | int | str = Default("false"),
+        transform: int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
+        precision: int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        blocksize: int | str = Default("0"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -8033,17 +7909,17 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float frequency: Set the filter’s central frequency and so can be used to extend or reduce the frequency range to be boosted or cut. The default value is 3000 Hz.
-        :param int width_type: Set method to specify band-width of filter. h Hz q Q-Factor o octave s slope k kHz
-        :param float width: Determine how steep is the filter’s shelf transition.
-        :param float gain: Give the gain at whichever is the lower of ~22 kHz and the Nyquist frequency. Its useful range is about -20 (for a large cut) to +20 (for a large boost). Beware of clipping when using a positive gain.
-        :param int poles: Set number of poles. Default is 2.
-        :param float mix: How much to use filtered signal in output. Default is 1. Range is between 0 and 1.
-        :param str channels: Specify which channels to filter, by default all available are filtered.
-        :param bool normalize: Normalize biquad coefficients, by default is disabled. Enabling it will normalize magnitude response at DC to 0dB.
-        :param int transform: Set transform type of IIR filter. di dii tdi tdii latt svf zdf
-        :param int precision: Set precision of filtering. auto Pick automatic sample format depending on surround filters. s16 Always use signed 16-bit. s32 Always use signed 32-bit. f32 Always use float 32-bit. f64 Always use float 64-bit.
-        :param int blocksize: set the block size
+        :param float frequency: set central frequency (from 0 to 999999) (default 3000)
+        :param int width_type: set filter-width type (from 1 to 5) (default q)
+        :param float width: set width (from 0 to 99999) (default 0.5)
+        :param float gain: set gain (from -900 to 900) (default 0)
+        :param int poles: set number of poles (from 1 to 2) (default 2)
+        :param float mix: set mix (from 0 to 1) (default 1)
+        :param str channels: set channels to filter (default "all")
+        :param bool normalize: normalize coefficients (default false)
+        :param int transform: set transform type (from 0 to 6) (default di)
+        :param int precision: set filtering precision (from -1 to 3) (default auto)
+        :param int blocksize: set the block size (from 0 to 32768) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf
@@ -8079,8 +7955,8 @@ class AudioStream(FilterableStream):
     def tremolo(
         self,
         *,
-        f: float | int | str = Default(5.0),
-        d: float | int | str = Default(0.5),
+        f: float | int | str = Default("5"),
+        d: float | int | str = Default("0.5"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -8091,8 +7967,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float f: Modulation frequency in Hertz. Modulation frequencies in the subharmonic range (20 Hz or lower) will result in a tremolo effect. This filter may also be used as a ring modulator by specifying a modulation frequency higher than 20 Hz. Range is 0.1 - 20000.0. Default value is 5.0 Hz.
-        :param float d: Depth of modulation as a percentage. Range is 0.0 - 1.0. Default value is 0.5.
+        :param float f: set frequency in hertz (from 0.1 to 20000) (default 5)
+        :param float d: set depth as percentage (from 0 to 1) (default 0.5)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tremolo
@@ -8119,8 +7995,8 @@ class AudioStream(FilterableStream):
     def vibrato(
         self,
         *,
-        f: float | int | str = Default(5.0),
-        d: float | int | str = Default(0.5),
+        f: float | int | str = Default("5"),
+        d: float | int | str = Default("0.5"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -8131,8 +8007,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float f: Modulation frequency in Hertz. Range is 0.1 - 20000.0. Default value is 5.0 Hz.
-        :param float d: Depth of modulation as a percentage. Range is 0.0 - 1.0. Default value is 0.5.
+        :param float f: set frequency in hertz (from 0.1 to 20000) (default 5)
+        :param float d: set depth as percentage (from 0 to 1) (default 0.5)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vibrato
@@ -8159,8 +8035,8 @@ class AudioStream(FilterableStream):
     def virtualbass(
         self,
         *,
-        cutoff: float | int | str = Default(250.0),
-        strength: float | int | str = Default(3.0),
+        cutoff: float | int | str = Default("250"),
+        strength: float | int | str = Default("3"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -8171,8 +8047,8 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param float cutoff: Set the virtual bass cutoff frequency. Default value is 250 Hz. Allowed range is from 100 to 500 Hz.
-        :param float strength: Set the virtual bass strength. Allowed range is from 0.5 to 3. Default value is 3.
+        :param float cutoff: set virtual bass cutoff (from 100 to 500) (default 250)
+        :param float strength: set virtual bass strength (from 0.5 to 3) (default 3)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#virtualbass
@@ -8199,12 +8075,12 @@ class AudioStream(FilterableStream):
     def volume(
         self,
         *,
-        volume: str | float | int = Default("1.0"),
-        precision: int | Literal["fixed", "float", "double"] | Default = Default("PRECISION_FLOAT"),
-        eval: int | str = Default("EVAL_MODE_ONCE"),
-        replaygain: int | Literal["drop", "ignore", "track", "album"] | Default = Default("REPLAYGAIN_DROP"),
-        replaygain_preamp: float | int | str = Default(0.0),
-        replaygain_noclip: bool | int | str = Default(1),
+        volume: str | float | int = Default('"1.0"'),
+        precision: int | Literal["fixed", "float", "double"] | Default = Default("float"),
+        eval: int | Literal["once", "frame"] | Default = Default("once"),
+        replaygain: int | Literal["drop", "ignore", "track", "album"] | Default = Default("drop"),
+        replaygain_preamp: float | int | str = Default("0"),
+        replaygain_noclip: bool | int | str = Default("true"),
         enable: str | float | int = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -8215,12 +8091,12 @@ class AudioStream(FilterableStream):
         Parameters:
         ----------
 
-        :param str volume: Set audio volume expression. Output values are clipped to the maximum value. The output audio volume is given by the relation: output_volume = volume * input_volume The default value for volume is "1.0".
-        :param int precision: This parameter represents the mathematical precision. It determines which input sample formats will be allowed, which affects the precision of the volume scaling. fixed 8-bit fixed-point; this limits input sample format to U8, S16, and S32. float 32-bit floating-point; this limits input sample format to FLT. (default) double 64-bit floating-point; this limits input sample format to DBL.
-        :param int eval: Set when the volume expression is evaluated. It accepts the following values: ‘once’ only evaluate expression once during the filter initialization, or when the ‘volume’ command is sent ‘frame’ evaluate expression for each incoming frame Default value is ‘once’.
-        :param int replaygain: Choose the behaviour on encountering ReplayGain side data in input frames. drop Remove ReplayGain side data, ignoring its contents (the default). ignore Ignore ReplayGain side data, but leave it in the frame. track Prefer the track gain, if present. album Prefer the album gain, if present.
-        :param float replaygain_preamp: Pre-amplification gain in dB to apply to the selected replaygain gain. Default value for replaygain_preamp is 0.0.
-        :param bool replaygain_noclip: Prevent clipping by limiting the gain applied. Default value for replaygain_noclip is 1.
+        :param str volume: set volume adjustment expression (default "1.0")
+        :param int precision: select mathematical precision (from 0 to 2) (default float)
+        :param int eval: specify when to evaluate expressions (from 0 to 1) (default once)
+        :param int replaygain: Apply replaygain side data when present (from 0 to 3) (default drop)
+        :param float replaygain_preamp: Apply replaygain pre-amplification (from -15 to 15) (default 0)
+        :param bool replaygain_noclip: Apply replaygain clipping prevention (default true)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#volume

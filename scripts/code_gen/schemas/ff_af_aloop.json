@@ -21,8 +21,8 @@
         "loop"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of loops. Setting this value to -1 will result in infinite loops.\nDefault is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "number of loops (from -1 to INT_MAX) (default 0)",
       "name": "loop",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "size"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set maximal number of samples. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "max number of samples to loop (from 0 to INT_MAX) (default 0)",
       "name": "size",
       "required": false,
       "typing": "int"
@@ -43,20 +43,9 @@
         "start"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set first sample of loop. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the loop start sample (from 0 to I64_MAX) (default 0)",
       "name": "start",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "time"
-      ],
-      "choices": [],
-      "default": "9223372036854775807LL",
-      "description": "<dd><p>Set the time of loop start in seconds.\nOnly used if option named <var>start</var> is set to <code>-1</code>.\n</p></dd>",
-      "name": "time",
       "required": false,
       "typing": "int"
     }

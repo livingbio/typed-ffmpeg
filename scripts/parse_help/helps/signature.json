@@ -58,7 +58,7 @@
         "filename"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"\"",
       "description": "filename for output files (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -149,7 +149,7 @@
         "th_it"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "threshold for relation of good to all frames (from 0 to 1) (default 0.5)",
       "flags": "..FV.......",
       "max": "1",

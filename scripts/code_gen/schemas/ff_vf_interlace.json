@@ -20,9 +20,20 @@
       "alias": [
         "scan"
       ],
-      "choices": [],
-      "default": "MODE_TFF",
-      "description": "<dd><p>This determines whether the interlaced frame is taken from the even\n(tff - default) or odd (bff) lines of the progressive frame.\n</p>\n</dd>",
+      "choices": [
+        {
+          "help": "top field first",
+          "name": "tff",
+          "value": "0"
+        },
+        {
+          "help": "bottom field first",
+          "name": "bff",
+          "value": "1"
+        }
+      ],
+      "default": "tff",
+      "description": "scanning mode (from 0 to 1) (default tff)",
       "name": "scan",
       "required": false,
       "typing": "int"
@@ -35,21 +46,21 @@
         {
           "help": "disable vertical low-pass filter",
           "name": "off",
-          "value": "VLPF_OFF"
+          "value": "0"
         },
         {
           "help": "linear vertical low-pass filter",
           "name": "linear",
-          "value": "VLPF_LIN"
+          "value": "1"
         },
         {
           "help": "complex vertical low-pass filter",
           "name": "complex",
-          "value": "VLPF_CMP"
+          "value": "2"
         }
       ],
-      "default": "VLPF_LIN",
-      "description": "<dd><p>Vertical lowpass filter to avoid twitter interlacing and\nreduce moire patterns.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>0, off</samp>\u2019</dt>\n<dd><p>Disable vertical lowpass filter\n</p>\n</dd>\n<dt>\u2018<samp>1, linear</samp>\u2019</dt>\n<dd><p>Enable linear filter (default)\n</p>\n</dd>\n<dt>\u2018<samp>2, complex</samp>\u2019</dt>\n<dd><p>Enable complex filter. This will slightly less reduce twitter and moire\nbut better retain detail and subjective sharpness impression.\n</p>\n</dd>\n</dl>\n</dd>",
+      "default": "linear",
+      "description": "set vertical low-pass filter (from 0 to 2) (default linear)",
       "name": "lowpass",
       "required": false,
       "typing": "int"

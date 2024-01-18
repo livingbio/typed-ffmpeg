@@ -21,8 +21,8 @@
         "qp"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set expression for quantization parameter.\n</p></dd>",
+      "default": null,
+      "description": "set qp expression",
       "name": "qp",
       "required": false,
       "typing": "str"

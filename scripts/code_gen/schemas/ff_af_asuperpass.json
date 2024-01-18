@@ -21,8 +21,8 @@
         "centerf"
       ],
       "choices": [],
-      "default": 1000.0,
-      "description": "<dd><p>Set center frequency in Hertz. Allowed range is 2 to 999999.\nDefault value is 1000.\n</p>\n</dd>",
+      "default": "1000",
+      "description": "set center frequency (from 2 to 999999) (default 1000)",
       "name": "centerf",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "order"
       ],
       "choices": [],
-      "default": 4,
-      "description": "<dd><p>Set filter order. Available values are from 4 to 20.\nDefault value is 4.\n</p>\n</dd>",
+      "default": "4",
+      "description": "set filter order (from 4 to 20) (default 4)",
       "name": "order",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "qfactor"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set Q-factor. Allowed range is from 0.01 to 100. Default value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set Q-factor (from 0.01 to 100) (default 1)",
       "name": "qfactor",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "level"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 2. Default value is 1.\n</p></dd>",
+      "default": "1",
+      "description": "set input level (from 0 to 2) (default 1)",
       "name": "level",
       "required": false,
       "typing": "float"

@@ -21,8 +21,8 @@
       "default": "1",
       "description": "set input level (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_in",
       "typing": "double"
     },
@@ -34,8 +34,8 @@
       "default": "1",
       "description": "set output level (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_out",
       "typing": "double"
     },
@@ -47,8 +47,8 @@
       "default": "1",
       "description": "set clip level (from 0.015625 to 1) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1",
+      "min": "0.015625",
       "name": "clip",
       "typing": "double"
     },
@@ -70,7 +70,7 @@
         "adaptive"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set adaptive distortion (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",

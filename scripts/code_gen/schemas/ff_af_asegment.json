@@ -21,8 +21,8 @@
         "timestamps"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Timestamps of output segments separated by \u2019|\u2019. The first segment will run\nfrom the beginning of the input stream. The last segment will run until\nthe end of the input stream\n</p>\n</dd>",
+      "default": null,
+      "description": "timestamps of input at which to split input",
       "name": "timestamps",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "samples"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Exact frame/sample count to split the segments.\n</p></dd>",
+      "default": null,
+      "description": "samples at which to split input",
       "name": "samples",
       "required": false,
       "typing": "str"

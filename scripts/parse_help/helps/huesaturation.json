@@ -100,7 +100,7 @@
           "value": "a"
         }
       ],
-      "default": null,
+      "default": "r+y+g+c+b+m+a",
       "description": "set colors range (default r+y+g+c+b+m+a)",
       "flags": "..FV.....T.",
       "max": null,
@@ -126,7 +126,7 @@
         "rw"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.333",
       "description": "set the red weight (from 0 to 1) (default 0.333)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -139,7 +139,7 @@
         "gw"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.334",
       "description": "set the green weight (from 0 to 1) (default 0.334)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -152,7 +152,7 @@
         "bw"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.333",
       "description": "set the blue weight (from 0 to 1) (default 0.333)",
       "flags": "..FV.....T.",
       "max": "1",

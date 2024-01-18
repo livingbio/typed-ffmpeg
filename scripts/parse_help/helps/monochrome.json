@@ -47,8 +47,8 @@
       "default": "1",
       "description": "set the color filter size (from 0.1 to 10) (default 1)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "10",
+      "min": "0.1",
       "name": "size",
       "typing": "float"
     },

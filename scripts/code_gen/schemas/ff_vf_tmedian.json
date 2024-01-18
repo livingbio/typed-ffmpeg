@@ -21,8 +21,8 @@
         "radius"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set radius of median filter.\nDefault is 1. Allowed range is from 1 to 127.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set median filter radius (from 1 to 127) (default 1)",
       "name": "radius",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set which planes to filter. Default value is <code>15</code>, by which all planes are processed.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "percentile"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set median percentile. Default value is <code>0.5</code>.\nDefault value of <code>0.5</code> will pick always median values, while <code>0</code> will pick\nminimum values, and <code>1</code> maximum values.\n</p></dd>",
+      "default": "0.5",
+      "description": "set percentile (from 0 to 1) (default 0.5)",
       "name": "percentile",
       "required": false,
       "typing": "float"

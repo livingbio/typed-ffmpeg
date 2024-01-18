@@ -21,8 +21,8 @@
         "high"
       ],
       "choices": [],
-      "default": "30/255.",
-      "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
+      "default": "0.117647",
+      "description": "set high threshold (from 0 to 1) (default 0.117647)",
       "name": "high",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "low"
       ],
       "choices": [],
-      "default": "15/255.",
-      "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
+      "default": "0.0588235",
+      "description": "set low threshold (from 0 to 1) (default 0.0588235)",
       "name": "low",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "radius"
       ],
       "choices": [],
-      "default": 50,
-      "description": "<dd><p>Define the radius to search around an edge pixel for local maxima.\n</p>\n</dd>",
+      "default": "50",
+      "description": "search radius for maxima detection (from 1 to 100) (default 50)",
       "name": "radius",
       "required": false,
       "typing": "int"
@@ -54,31 +54,21 @@
         "block_pct"
       ],
       "choices": [],
-      "default": 80,
-      "description": "<dd><p>Determine blurriness only for the most significant blocks, given in percentage.\n</p>\n</dd>",
+      "default": "80",
+      "description": "block pooling threshold when calculating blurriness (from 1 to 100) (default 80)",
       "name": "block_pct",
       "required": false,
       "typing": "int"
     },
     {
       "alias": [
-        "block_width"
-      ],
-      "choices": [],
-      "default": -1,
-      "description": "<dd><p>Determine blurriness for blocks of width <var>block_width</var>. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of <var>block_height</var>.\n</p>\n</dd>",
-      "name": "block_width",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
+        "block_width",
         "block_height"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Determine blurriness for blocks of height <var>block_height</var>. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of <var>block_width</var>.\n</p>\n</dd>",
-      "name": "block_height",
+      "default": "-1",
+      "description": "block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)",
+      "name": "block_width",
       "required": false,
       "typing": "int"
     },
@@ -87,8 +77,8 @@
         "planes"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set planes to filter. Default is first only.\n</p></dd>",
+      "default": "1",
+      "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
       "typing": "int"

@@ -21,8 +21,8 @@
         "rh"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift red horizontally.\n</p></dd>",
+      "default": "0",
+      "description": "shift red horizontally (from -255 to 255) (default 0)",
       "name": "rh",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "rv"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift red vertically.\n</p></dd>",
+      "default": "0",
+      "description": "shift red vertically (from -255 to 255) (default 0)",
       "name": "rv",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "gh"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift green horizontally.\n</p></dd>",
+      "default": "0",
+      "description": "shift green horizontally (from -255 to 255) (default 0)",
       "name": "gh",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "gv"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift green vertically.\n</p></dd>",
+      "default": "0",
+      "description": "shift green vertically (from -255 to 255) (default 0)",
       "name": "gv",
       "required": false,
       "typing": "int"
@@ -65,8 +65,8 @@
         "bh"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift blue horizontally.\n</p></dd>",
+      "default": "0",
+      "description": "shift blue horizontally (from -255 to 255) (default 0)",
       "name": "bh",
       "required": false,
       "typing": "int"
@@ -76,8 +76,8 @@
         "bv"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift blue vertically.\n</p></dd>",
+      "default": "0",
+      "description": "shift blue vertically (from -255 to 255) (default 0)",
       "name": "bv",
       "required": false,
       "typing": "int"
@@ -87,8 +87,8 @@
         "ah"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift alpha horizontally.\n</p></dd>",
+      "default": "0",
+      "description": "shift alpha horizontally (from -255 to 255) (default 0)",
       "name": "ah",
       "required": false,
       "typing": "int"
@@ -98,8 +98,8 @@
         "av"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift alpha vertically.\n</p></dd>",
+      "default": "0",
+      "description": "shift alpha vertically (from -255 to 255) (default 0)",
       "name": "av",
       "required": false,
       "typing": "int"
@@ -110,18 +110,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "smear",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "wrap",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>",
+      "default": "smear",
+      "description": "set edge operation (from 0 to 1) (default smear)",
       "name": "edge",
       "required": false,
       "typing": "int"

@@ -21,8 +21,8 @@
       "default": "1",
       "description": "set tempo scale factor (from 0.01 to 100) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "100",
+      "min": "0.01",
       "name": "tempo",
       "typing": "double"
     },
@@ -34,8 +34,8 @@
       "default": "1",
       "description": "set pitch scale factor (from 0.01 to 100) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "100",
+      "min": "0.01",
       "name": "pitch",
       "typing": "double"
     },

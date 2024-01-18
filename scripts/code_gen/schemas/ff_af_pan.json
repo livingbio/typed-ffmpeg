@@ -21,8 +21,8 @@
         "args"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "((void*)0)",
+      "default": null,
+      "description": "",
       "name": "args",
       "required": false,
       "typing": "str"

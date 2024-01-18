@@ -21,8 +21,8 @@
         "layout"
       ],
       "choices": [],
-      "default": "6x5",
-      "description": "<dd><p>Set the grid size (i.e. the number of lines and columns). For the syntax of\nthis option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p></dd>",
+      "default": "\"6x5\"",
+      "description": "set grid size (default \"6x5\")",
       "name": "layout",
       "required": false,
       "typing": "str"

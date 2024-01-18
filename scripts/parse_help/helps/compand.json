@@ -18,7 +18,7 @@
         "attacks"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set time over which increase of volume is determined (default \"0\")",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "decays"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0.8\"",
       "description": "set time over which decrease of volume is determined (default \"0.8\")",
       "flags": "..F.A......",
       "max": null,
@@ -44,7 +44,7 @@
         "points"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"-70/-70|-60/-20|1/0\"",
       "description": "set points of transfer function (default \"-70/-70|-60/-20|1/0\")",
       "flags": "..F.A......",
       "max": null,
@@ -57,11 +57,11 @@
         "soft-knee"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.01",
       "description": "set soft-knee (from 0.01 to 900) (default 0.01)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "900",
+      "min": "0.01",
       "name": "soft-knee",
       "typing": "double"
     },

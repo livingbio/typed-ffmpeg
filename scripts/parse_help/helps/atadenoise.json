@@ -18,11 +18,11 @@
         "0a"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.02",
       "description": "set threshold A for 1st plane (from 0 to 0.3) (default 0.02)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "0.3",
+      "min": "0",
       "name": "0a",
       "typing": "float"
     },
@@ -31,7 +31,7 @@
         "0b"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.04",
       "description": "set threshold B for 1st plane (from 0 to 5) (default 0.04)",
       "flags": "..FV.....T.",
       "max": "5",
@@ -44,11 +44,11 @@
         "1a"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.02",
       "description": "set threshold A for 2nd plane (from 0 to 0.3) (default 0.02)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "0.3",
+      "min": "0",
       "name": "1a",
       "typing": "float"
     },
@@ -57,7 +57,7 @@
         "1b"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.04",
       "description": "set threshold B for 2nd plane (from 0 to 5) (default 0.04)",
       "flags": "..FV.....T.",
       "max": "5",
@@ -70,11 +70,11 @@
         "2a"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.02",
       "description": "set threshold A for 3rd plane (from 0 to 0.3) (default 0.02)",
       "flags": "..FV.....T.",
-      "max": null,
-      "min": null,
+      "max": "0.3",
+      "min": "0",
       "name": "2a",
       "typing": "float"
     },
@@ -83,7 +83,7 @@
         "2b"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.04",
       "description": "set threshold B for 3rd plane (from 0 to 5) (default 0.04)",
       "flags": "..FV.....T.",
       "max": "5",

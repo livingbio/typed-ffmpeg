@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set horizontal position of the left box edge (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set vertical position of the top box edge (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -45,7 +45,7 @@
         "w"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set width of the box (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -59,7 +59,7 @@
         "h"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set height of the box (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -73,7 +73,7 @@
         "c"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set color of the box (default \"black\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -87,7 +87,7 @@
         "t"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"3\"",
       "description": "set the box thickness (default \"3\")",
       "flags": "..FV.....T.",
       "max": null,

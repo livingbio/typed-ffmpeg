@@ -21,8 +21,8 @@
         "radius"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set filtering radius. Default is <code>5</code>. Allowed range is from 1 to 127.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set radius (from 1 to 127) (default 5)",
       "name": "radius",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "sigma"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set filtering sigma. Default is <code>0.5</code>. This controls strength of filtering.\nSetting this option to 0 effectively does nothing.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set sigma (from 0 to 1) (default 0.5)",
       "name": "sigma",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes to process. Default is <code>15</code>, which is all available planes.\n</p></dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
       "typing": "int"

@@ -65,7 +65,7 @@
         "fill"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"none\"",
       "description": "set the color for unused pixels (default \"none\")",
       "flags": "..FV.......",
       "max": null,

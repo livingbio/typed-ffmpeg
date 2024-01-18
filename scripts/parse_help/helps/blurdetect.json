@@ -18,7 +18,7 @@
         "high"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.117647",
       "description": "set high threshold (from 0 to 1) (default 0.117647)",
       "flags": "..FV.......",
       "max": "1",
@@ -31,7 +31,7 @@
         "low"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.0588235",
       "description": "set low threshold (from 0 to 1) (default 0.0588235)",
       "flags": "..FV.......",
       "max": "1",

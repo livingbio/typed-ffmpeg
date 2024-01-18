@@ -22,8 +22,8 @@
         "s"
       ],
       "choices": [],
-      "default": "600x240",
-      "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>600x240</code>.\n</p>\n</dd>",
+      "default": "\"600x240\"",
+      "description": "set video size (default \"600x240\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -32,9 +32,30 @@
       "alias": [
         "mode"
       ],
-      "choices": [],
-      "default": "MODE_POINT",
-      "description": "<dd><p>Set display mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>point</samp>\u2019</dt>\n<dd><p>Draw a point for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dd><p>Draw a vertical line for each sample.\n</p>\n</dd>\n<dt>\u2018<samp>p2p</samp>\u2019</dt>\n<dd><p>Draw a point for each sample and a line between them.\n</p>\n</dd>\n<dt>\u2018<samp>cline</samp>\u2019</dt>\n<dd><p>Draw a centered vertical line for each sample.\n</p></dd>\n</dl>\n<p>Default value is <code>point</code>.\n</p>\n</dd>",
+      "choices": [
+        {
+          "help": "draw a point for each sample",
+          "name": "point",
+          "value": "0"
+        },
+        {
+          "help": "draw a line for each sample",
+          "name": "line",
+          "value": "1"
+        },
+        {
+          "help": "draw a line between samples",
+          "name": "p2p",
+          "value": "2"
+        },
+        {
+          "help": "draw a centered line for each sample",
+          "name": "cline",
+          "value": "3"
+        }
+      ],
+      "default": "point",
+      "description": "select display mode (from 0 to 3) (default point)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -44,11 +65,11 @@
         "n"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of samples which are printed on the same column. A\nlarger value will decrease the frame rate. Must be a positive\ninteger. This option can be set only if the value for <var>rate</var>\nis not explicitly specified.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set how many samples to show in the same point (from 0 to INT_MAX) (default 0)",
       "name": "n",
       "required": false,
-      "typing": "float"
+      "typing": "int"
     },
     {
       "alias": [
@@ -56,8 +77,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Set the (approximate) output frame rate. This is done by setting the\noption <var>n</var>. Default value is \"25\".\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"
@@ -67,8 +88,8 @@
         "split_channels"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set if channels should be drawn separately or overlap. Default value is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "draw channels separately (default false)",
       "name": "split_channels",
       "required": false,
       "typing": "bool"
@@ -78,8 +99,8 @@
         "colors"
       ],
       "choices": [],
-      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
-      "description": "<dd><p>Set colors separated by \u2019|\u2019 which are going to be used for drawing of each channel.\n</p>\n</dd>",
+      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
       "typing": "str"
@@ -92,26 +113,26 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": "SCALE_LIN"
+          "value": "0"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "SCALE_LOG"
+          "value": "1"
         },
         {
           "help": "square root",
           "name": "sqrt",
-          "value": "SCALE_SQRT"
+          "value": "2"
         },
         {
           "help": "cubic root",
           "name": "cbrt",
-          "value": "SCALE_CBRT"
+          "value": "3"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set amplitude scale.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n</p></dd>\n</dl>\n<p>Default is linear.\n</p>\n</dd>",
+      "default": "lin",
+      "description": "set amplitude scale (from 0 to 3) (default lin)",
       "name": "scale",
       "required": false,
       "typing": "int"
@@ -124,16 +145,16 @@
         {
           "help": "scale pixel values for each drawn sample",
           "name": "scale",
-          "value": "DRAW_SCALE"
+          "value": "0"
         },
         {
           "help": "draw every pixel for sample directly",
           "name": "full",
-          "value": "DRAW_FULL"
+          "value": "1"
         }
       ],
-      "default": "DRAW_SCALE",
-      "description": "<dd><p>Set the draw mode. This is mostly useful to set for high <var>n</var>.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>scale</samp>\u2019</dt>\n<dd><p>Scale pixel values for each drawn sample.\n</p>\n</dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Draw every sample directly.\n</p></dd>\n</dl>\n<p>Default value is <code>scale</code>.\n</p></dd>",
+      "default": "scale",
+      "description": "set draw mode (from 0 to 1) (default scale)",
       "name": "draw",
       "required": false,
       "typing": "int"

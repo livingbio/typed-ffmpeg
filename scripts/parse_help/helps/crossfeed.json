@@ -18,7 +18,7 @@
         "strength"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.2",
       "description": "set crossfeed strength (from 0 to 1) (default 0.2)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "range"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set soundstage wideness (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -44,11 +44,11 @@
         "slope"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set curve slope (from 0.01 to 1) (default 0.5)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "1",
+      "min": "0.01",
       "name": "slope",
       "typing": "double"
     },
@@ -57,7 +57,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.9",
       "description": "set level in (from 0 to 1) (default 0.9)",
       "flags": "..F.A....T.",
       "max": "1",

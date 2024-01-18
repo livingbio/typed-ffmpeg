@@ -18,7 +18,7 @@
         "decay"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.95",
       "description": "set decay (from 0 to 1) (default 0.95)",
       "flags": "..FV.....T.",
       "max": "1",

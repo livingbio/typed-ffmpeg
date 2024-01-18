@@ -31,11 +31,11 @@
         "feedback"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.3",
       "description": "set feedback gain (from 0 to 0.9) (default 0.3)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "0.9",
+      "min": "0",
       "name": "feedback",
       "typing": "float"
     },
@@ -44,11 +44,11 @@
         "crossfeed"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.3",
       "description": "set cross feed (from 0 to 0.8) (default 0.3)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "0.8",
+      "min": "0",
       "name": "crossfeed",
       "typing": "float"
     },
@@ -57,7 +57,7 @@
         "drymix"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.8",
       "description": "set dry-mix (from 0 to 1) (default 0.8)",
       "flags": "..F.A....T.",
       "max": "1",

@@ -19,7 +19,7 @@
         "w"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"iw\"",
       "description": "set the pad area width expression (default \"iw\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "h"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"ih\"",
       "description": "set the pad area height expression (default \"ih\")",
       "flags": "..FV.......",
       "max": null,
@@ -46,7 +46,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set the x offset expression for the input image position (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -59,7 +59,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set the y offset expression for the input image position (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -72,7 +72,7 @@
         "color"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set the color of the padded area border (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -111,7 +111,7 @@
         "aspect"
       ],
       "choices": [],
-      "default": null,
+      "default": "0/1",
       "description": "pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)",
       "flags": "..FV.......",
       "max": "DBL_MAX",

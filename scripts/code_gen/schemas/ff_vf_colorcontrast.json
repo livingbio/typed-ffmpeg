@@ -21,8 +21,8 @@
         "rc"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the red-cyan contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red-cyan contrast (from -1 to 1) (default 0)",
       "name": "rc",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "gm"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the green-magenta contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the green-magenta contrast (from -1 to 1) (default 0)",
       "name": "gm",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "by"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the blue-yellow contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue-yellow contrast (from -1 to 1) (default 0)",
       "name": "by",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "rcw"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red-cyan weight (from 0 to 1) (default 0)",
       "name": "rcw",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "gmw"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the green-magenta weight (from 0 to 1) (default 0)",
       "name": "gmw",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "byw"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue-yellow weight (from 0 to 1) (default 0)",
       "name": "byw",
       "required": false,
       "typing": "float"
@@ -87,8 +87,8 @@
         "pl"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the amount of preserving lightness. Default value is 0.0. Allowed range is from 0.0 to 1.0.\n</p></dd>",
+      "default": "0",
+      "description": "set the amount of preserving lightness (from 0 to 1) (default 0)",
       "name": "pl",
       "required": false,
       "typing": "float"

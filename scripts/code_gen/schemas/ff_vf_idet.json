@@ -21,8 +21,8 @@
         "intl_thres"
       ],
       "choices": [],
-      "default": 1.04,
-      "description": "<dd><p>Set interlacing threshold.\n</p></dd>",
+      "default": "1.04",
+      "description": "set interlacing threshold (from -1 to FLT_MAX) (default 1.04)",
       "name": "intl_thres",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "prog_thres"
       ],
       "choices": [],
-      "default": 1.5,
-      "description": "<dd><p>Set progressive threshold.\n</p></dd>",
+      "default": "1.5",
+      "description": "set progressive threshold (from -1 to FLT_MAX) (default 1.5)",
       "name": "prog_thres",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "rep_thres"
       ],
       "choices": [],
-      "default": 3.0,
-      "description": "<dd><p>Threshold for repeated field detection.\n</p></dd>",
+      "default": "3",
+      "description": "set repeat threshold (from -1 to FLT_MAX) (default 3)",
       "name": "rep_thres",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "half_life"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Number of frames after which a given frame\u2019s contribution to the\nstatistics is halved (i.e., it contributes only 0.5 to its\nclassification). The default of 0 means that all frames seen are given\nfull weight of 1.0 forever.\n</p></dd>",
+      "default": "0",
+      "description": "half life of cumulative statistics (from -1 to INT_MAX) (default 0)",
       "name": "half_life",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "analyze_interlaced_flag"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>When this is not 0 then idet will use the specified number of frames to determine\nif the interlaced flag is accurate, it will not count undetermined frames.\nIf the flag is found to be accurate it will be used without any further\ncomputations, if it is found to be inaccurate it will be cleared without any\nfurther computations. This allows inserting the idet filter as a low computational\nmethod to clean up the interlaced flag\n</p></dd>",
+      "default": "0",
+      "description": "set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)",
       "name": "analyze_interlaced_flag",
       "required": false,
       "typing": "int"

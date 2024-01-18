@@ -21,8 +21,8 @@
         "level_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input gain. By default it is 1. Range is [0.015625 - 64].\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input gain (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "level_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set output gain. By default it is 1. Range is [0.015625 - 64].\n</p>\n</dd>",
+      "default": "1",
+      "description": "set output gain (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
       "typing": "float"
@@ -44,33 +44,33 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sine",
-          "value": "SINE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "triangle",
-          "value": "TRIANGLE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "square",
-          "value": "SQUARE"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sawup",
-          "value": "SAWUP"
+          "value": "3"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sawdown",
-          "value": "SAWDOWN"
+          "value": "4"
         }
       ],
-      "default": "SINE",
-      "description": "<dd><p>Set waveform shape the LFO will use. Can be one of: sine, triangle, square,\nsawup or sawdown. Default is sine.\n</p>\n</dd>",
+      "default": "sine",
+      "description": "set mode (from 0 to 4) (default sine)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -80,8 +80,8 @@
         "amount"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set modulation. Define how much of original signal is affected by the LFO.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set modulation (from 0 to 1) (default 1)",
       "name": "amount",
       "required": false,
       "typing": "float"
@@ -91,8 +91,8 @@
         "offset_l"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set left channel offset. Default is 0. Allowed range is [0 - 1].\n</p>\n</dd>",
+      "default": "0",
+      "description": "set offset L (from 0 to 1) (default 0)",
       "name": "offset_l",
       "required": false,
       "typing": "float"
@@ -102,8 +102,8 @@
         "offset_r"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set right channel offset. Default is 0.5. Allowed range is [0 - 1].\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set offset R (from 0 to 1) (default 0.5)",
       "name": "offset_r",
       "required": false,
       "typing": "float"
@@ -113,8 +113,8 @@
         "width"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set pulse width. Default is 1. Allowed range is [0 - 2].\n</p>\n</dd>",
+      "default": "1",
+      "description": "set pulse width (from 0 to 2) (default 1)",
       "name": "width",
       "required": false,
       "typing": "float"
@@ -125,23 +125,23 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bpm",
-          "value": "UNIT_BPM"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ms",
-          "value": "UNIT_MS"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "hz",
-          "value": "UNIT_HZ"
+          "value": "2"
         }
       ],
-      "default": 2,
-      "description": "<dd><p>Set possible timing mode. Can be one of: bpm, ms or hz. Default is hz.\n</p>\n</dd>",
+      "default": "hz",
+      "description": "set timing (from 0 to 2) (default hz)",
       "name": "timing",
       "required": false,
       "typing": "int"
@@ -151,8 +151,8 @@
         "bpm"
       ],
       "choices": [],
-      "default": 120.0,
-      "description": "<dd><p>Set bpm. Default is 120. Allowed range is [30 - 300]. Only used if timing\nis set to bpm.\n</p>\n</dd>",
+      "default": "120",
+      "description": "set BPM (from 30 to 300) (default 120)",
       "name": "bpm",
       "required": false,
       "typing": "float"
@@ -162,8 +162,8 @@
         "ms"
       ],
       "choices": [],
-      "default": 500,
-      "description": "<dd><p>Set ms. Default is 500. Allowed range is [10 - 2000]. Only used if timing\nis set to ms.\n</p>\n</dd>",
+      "default": "500",
+      "description": "set ms (from 10 to 2000) (default 500)",
       "name": "ms",
       "required": false,
       "typing": "int"
@@ -173,8 +173,8 @@
         "hz"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "<dd><p>Set frequency in Hz. Default is 2. Allowed range is [0.01 - 100]. Only used\nif timing is set to hz.\n</p></dd>",
+      "default": "2",
+      "description": "set frequency (from 0.01 to 100) (default 2)",
       "name": "hz",
       "required": false,
       "typing": "float"

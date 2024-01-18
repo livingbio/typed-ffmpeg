@@ -141,7 +141,7 @@
         "mcost"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "specify the middle cost for edge matching (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -154,7 +154,7 @@
         "dcost"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "specify the distance cost for edge matching (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",

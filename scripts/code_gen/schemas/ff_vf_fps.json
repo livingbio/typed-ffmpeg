@@ -21,8 +21,8 @@
         "fps"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>The desired output frame rate. It accepts expressions containing the following\nconstants:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>source_fps</samp>\u2019</dt>\n<dd><p>The input\u2019s frame rate\n</p>\n</dd>\n<dt>\u2018<samp>ntsc</samp>\u2019</dt>\n<dd><p>NTSC frame rate of <code>30000/1001</code>\n</p>\n</dd>\n<dt>\u2018<samp>pal</samp>\u2019</dt>\n<dd><p>PAL frame rate of <code>25.0</code>\n</p>\n</dd>\n<dt>\u2018<samp>film</samp>\u2019</dt>\n<dd><p>Film frame rate of <code>24.0</code>\n</p>\n</dd>\n<dt>\u2018<samp>ntsc_film</samp>\u2019</dt>\n<dd><p>NTSC-film frame rate of <code>24000/1001</code>\n</p></dd>\n</dl>\n<p>The default is <code>25</code>.\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "A string describing desired output framerate (default \"25\")",
       "name": "fps",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "start_time"
       ],
       "choices": [],
-      "default": 1.7976931348623157e+308,
-      "description": "<dd><p>Assume the first PTS should be the given value, in seconds. This allows for\npadding/trimming at the start of stream. By default, no assumption is made\nabout the first frame\u2019s expected PTS, so no padding or trimming is done.\nFor example, this could be set to 0 to pad the beginning with duplicates of\nthe first frame if a video stream starts after the audio stream or to trim any\nframes with a negative PTS.\n</p>\n</dd>",
+      "default": "DBL_MAX",
+      "description": "Assume the first PTS should be this value. (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "name": "start_time",
       "required": false,
       "typing": "float"
@@ -46,31 +46,31 @@
         {
           "help": "round towards 0",
           "name": "zero",
-          "value": "AV_ROUND_ZERO"
+          "value": "0"
         },
         {
           "help": "round away from 0",
           "name": "inf",
-          "value": "AV_ROUND_INF"
+          "value": "1"
         },
         {
           "help": "round towards -infty",
           "name": "down",
-          "value": "AV_ROUND_DOWN"
+          "value": "2"
         },
         {
           "help": "round towards +infty",
           "name": "up",
-          "value": "AV_ROUND_UP"
+          "value": "3"
         },
         {
           "help": "round to nearest",
           "name": "near",
-          "value": "AV_ROUND_NEAR_INF"
+          "value": "5"
         }
       ],
-      "default": "AV_ROUND_NEAR_INF",
-      "description": "<dd><p>Timestamp (PTS) rounding method.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><samp>zero</samp></dt>\n<dd><p>round towards 0\n</p></dd>\n<dt><samp>inf</samp></dt>\n<dd><p>round away from 0\n</p></dd>\n<dt><samp>down</samp></dt>\n<dd><p>round towards -infinity\n</p></dd>\n<dt><samp>up</samp></dt>\n<dd><p>round towards +infinity\n</p></dd>\n<dt><samp>near</samp></dt>\n<dd><p>round to nearest\n</p></dd>\n</dl>\n<p>The default is <code>near</code>.\n</p>\n</dd>",
+      "default": "near",
+      "description": "set rounding method for timestamps (from 0 to 5) (default near)",
       "name": "round",
       "required": false,
       "typing": "int"
@@ -83,16 +83,16 @@
         {
           "help": "round similar to other frames",
           "name": "round",
-          "value": "EOF_ACTION_ROUND"
+          "value": "0"
         },
         {
           "help": "pass through last frame",
           "name": "pass",
-          "value": "EOF_ACTION_PASS"
+          "value": "1"
         }
       ],
-      "default": "EOF_ACTION_ROUND",
-      "description": "<dd><p>Action performed when reading the last frame.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><samp>round</samp></dt>\n<dd><p>Use same timestamp rounding method as used for other frames.\n</p></dd>\n<dt><samp>pass</samp></dt>\n<dd><p>Pass through last frame if input duration has not been reached yet.\n</p></dd>\n</dl>\n<p>The default is <code>round</code>.\n</p>\n</dd>",
+      "default": "round",
+      "description": "action performed for last frame (from 0 to 1) (default round)",
       "name": "eof_action",
       "required": false,
       "typing": "int"

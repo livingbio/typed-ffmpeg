@@ -21,8 +21,8 @@
         "strength"
       ],
       "choices": [],
-      "default": 0.2,
-      "description": "<dd><p>Set strength of crossfeed. Default is 0.2. Allowed range is from 0 to 1.\nThis sets gain of low shelf filter for side part of stereo image.\nDefault is -6dB. Max allowed is -30db when strength is set to 1.\n</p>\n</dd>",
+      "default": "0.2",
+      "description": "set crossfeed strength (from 0 to 1) (default 0.2)",
       "name": "strength",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "range"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set soundstage wideness. Default is 0.5. Allowed range is from 0 to 1.\nThis sets cut off frequency of low shelf filter. Default is cut off near\n1550 Hz. With range set to 1 cut off frequency is set to 2100 Hz.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set soundstage wideness (from 0 to 1) (default 0.5)",
       "name": "range",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "slope"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set curve slope of low shelf filter. Default is 0.5.\nAllowed range is from 0.01 to 1.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set curve slope (from 0.01 to 1) (default 0.5)",
       "name": "slope",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "level_in"
       ],
       "choices": [],
-      "default": 0.9,
-      "description": "<dd><p>Set input gain. Default is 0.9.\n</p>\n</dd>",
+      "default": "0.9",
+      "description": "set level in (from 0 to 1) (default 0.9)",
       "name": "level_in",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "level_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set output gain. Default is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set level out (from 0 to 1) (default 1)",
       "name": "level_out",
       "required": false,
       "typing": "float"
@@ -76,8 +76,8 @@
         "block_size"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set block size used for reverse IIR processing. If this value is set to high enough\nvalue (higher than impulse response length truncated when reaches near zero values) filtering\nwill become linear phase otherwise if not big enough it will just produce nasty artifacts.\n</p>\n<p>Note that filter delay will be exactly this many samples when set to non-zero value.\n</p></dd>",
+      "default": "0",
+      "description": "set the block size (from 0 to 32768) (default 0)",
       "name": "block_size",
       "required": false,
       "typing": "int"

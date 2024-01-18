@@ -21,8 +21,8 @@
         "cycle"
       ],
       "choices": [],
-      "default": 4,
-      "description": "<dd><p>Specify the length of the window over which the judder repeats.\n</p>\n<p>Accepts any integer greater than 1. Useful values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>4</samp>\u2019</dt>\n<dd><p>If the original was telecined from 24 to 30 fps (Film to NTSC).\n</p>\n</dd>\n<dt>\u2018<samp>5</samp>\u2019</dt>\n<dd><p>If the original was telecined from 25 to 30 fps (PAL to NTSC).\n</p>\n</dd>\n<dt>\u2018<samp>20</samp>\u2019</dt>\n<dd><p>If a mixture of the two.\n</p></dd>\n</dl>\n<p>The default is \u2018<samp>4</samp>\u2019.\n</p></dd>",
+      "default": "4",
+      "description": "set the length of the cycle to use for dejuddering (from 2 to 240) (default 4)",
       "name": "cycle",
       "required": false,
       "typing": "int"

@@ -21,8 +21,8 @@
         "step"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Select frame after every <code>step</code> frames.\nAllowed values are positive integers higher than 0. Default value is <code>1</code>.\n</p></dd>",
+      "default": "1",
+      "description": "set frame step (from 1 to INT_MAX) (default 1)",
       "name": "step",
       "required": false,
       "typing": "int"

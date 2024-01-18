@@ -21,8 +21,8 @@
         "channel_layout"
       ],
       "choices": [],
-      "default": "stereo",
-      "description": "<dd><p>The channel layout of the input stream. The default is \"stereo\".\n</p></dd>",
+      "default": "\"stereo\"",
+      "description": "Input channel layout. (default \"stereo\")",
       "name": "channel_layout",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "channels"
       ],
       "choices": [],
-      "default": "all",
-      "description": "<dd><p>A channel layout describing the channels to be extracted as separate output streams\nor \"all\" to extract each input channel as a separate stream. The default is \"all\".\n</p>\n<p>Choosing channels not present in channel layout in the input will result in an error.\n</p></dd>",
+      "default": "\"all\"",
+      "description": "Channels to extract. (default \"all\")",
       "name": "channels",
       "required": false,
       "typing": "str"

@@ -24,46 +24,46 @@
         {
           "help": "set BT.709 colorspace",
           "name": "bt709",
-          "value": "COLOR_MODE_BT709"
+          "value": "0"
         },
         {
-          "help": "set FCC colorspace   ",
+          "help": "set FCC colorspace",
           "name": "fcc",
-          "value": "COLOR_MODE_FCC"
+          "value": "1"
         },
         {
           "help": "set BT.601 colorspace",
           "name": "bt601",
-          "value": "COLOR_MODE_BT601"
+          "value": "2"
         },
         {
           "help": "set BT.470 colorspace",
           "name": "bt470",
-          "value": "COLOR_MODE_BT601"
+          "value": "2"
         },
         {
           "help": "set BT.470 colorspace",
           "name": "bt470bg",
-          "value": "COLOR_MODE_BT601"
+          "value": "2"
         },
         {
           "help": "set SMTPE-170M colorspace",
           "name": "smpte170m",
-          "value": "COLOR_MODE_BT601"
+          "value": "2"
         },
         {
           "help": "set SMPTE-240M colorspace",
           "name": "smpte240m",
-          "value": "COLOR_MODE_SMPTE240M"
+          "value": "3"
         },
         {
           "help": "set BT.2020 colorspace",
           "name": "bt2020",
-          "value": "COLOR_MODE_BT2020"
+          "value": "4"
         }
       ],
-      "default": "COLOR_MODE_NONE",
-      "description": "<dd><p>Specify the source and destination color matrix. Both values must be\nspecified.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dd><p>BT.709\n</p>\n</dd>\n<dt>\u2018<samp>fcc</samp>\u2019</dt>\n<dd><p>FCC\n</p>\n</dd>\n<dt>\u2018<samp>bt601</samp>\u2019</dt>\n<dd><p>BT.601\n</p>\n</dd>\n<dt>\u2018<samp>bt470</samp>\u2019</dt>\n<dd><p>BT.470\n</p>\n</dd>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dd><p>BT.470BG\n</p>\n</dd>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dd><p>SMPTE-170M\n</p>\n</dd>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dd><p>SMPTE-240M\n</p>\n</dd>\n<dt>\u2018<samp>bt2020</samp>\u2019</dt>\n<dd><p>BT.2020\n</p></dd>\n</dl>\n</dd>",
+      "default": "-1",
+      "description": "set source color matrix (from -1 to 4) (default -1)",
       "name": "src",
       "required": false,
       "typing": "int"
@@ -76,46 +76,46 @@
         {
           "help": "set BT.709 colorspace",
           "name": "bt709",
-          "value": "COLOR_MODE_BT709"
+          "value": "0"
         },
         {
-          "help": "set FCC colorspace   ",
+          "help": "set FCC colorspace",
           "name": "fcc",
-          "value": "COLOR_MODE_FCC"
+          "value": "1"
         },
         {
           "help": "set BT.601 colorspace",
           "name": "bt601",
-          "value": "COLOR_MODE_BT601"
+          "value": "2"
         },
         {
           "help": "set BT.470 colorspace",
           "name": "bt470",
-          "value": "COLOR_MODE_BT601"
+          "value": "2"
         },
         {
           "help": "set BT.470 colorspace",
           "name": "bt470bg",
-          "value": "COLOR_MODE_BT601"
+          "value": "2"
         },
         {
           "help": "set SMTPE-170M colorspace",
           "name": "smpte170m",
-          "value": "COLOR_MODE_BT601"
+          "value": "2"
         },
         {
           "help": "set SMPTE-240M colorspace",
           "name": "smpte240m",
-          "value": "COLOR_MODE_SMPTE240M"
+          "value": "3"
         },
         {
           "help": "set BT.2020 colorspace",
           "name": "bt2020",
-          "value": "COLOR_MODE_BT2020"
+          "value": "4"
         }
       ],
-      "default": "COLOR_MODE_NONE",
-      "description": "<dd><p>Specify the source and destination color matrix. Both values must be\nspecified.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dd><p>BT.709\n</p>\n</dd>\n<dt>\u2018<samp>fcc</samp>\u2019</dt>\n<dd><p>FCC\n</p>\n</dd>\n<dt>\u2018<samp>bt601</samp>\u2019</dt>\n<dd><p>BT.601\n</p>\n</dd>\n<dt>\u2018<samp>bt470</samp>\u2019</dt>\n<dd><p>BT.470\n</p>\n</dd>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dd><p>BT.470BG\n</p>\n</dd>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dd><p>SMPTE-170M\n</p>\n</dd>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dd><p>SMPTE-240M\n</p>\n</dd>\n<dt>\u2018<samp>bt2020</samp>\u2019</dt>\n<dd><p>BT.2020\n</p></dd>\n</dl>\n</dd>",
+      "default": "-1",
+      "description": "set destination color matrix (from -1 to 4) (default -1)",
       "name": "dst",
       "required": false,
       "typing": "int"

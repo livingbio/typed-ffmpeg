@@ -18,7 +18,7 @@
         "result"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"transforms.trf\"",
       "description": "path to the file used to write the transforms (default \"transforms.trf\")",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "mincontrast"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.25",
       "description": "below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)",
       "flags": "..FV.......",
       "max": "1",

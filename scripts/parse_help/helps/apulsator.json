@@ -21,8 +21,8 @@
       "default": "1",
       "description": "set input gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_in",
       "typing": "double"
     },
@@ -34,8 +34,8 @@
       "default": "1",
       "description": "set output gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_out",
       "typing": "double"
     },
@@ -114,7 +114,7 @@
         "offset_r"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set offset R (from 0 to 1) (default 0.5)",
       "flags": "..F.A......",
       "max": "1",
@@ -201,8 +201,8 @@
       "default": "2",
       "description": "set frequency (from 0.01 to 100) (default 2)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "100",
+      "min": "0.01",
       "name": "hz",
       "typing": "double"
     }

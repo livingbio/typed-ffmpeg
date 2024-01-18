@@ -21,8 +21,8 @@
         "cutoff"
       ],
       "choices": [],
-      "default": 250.0,
-      "description": "<dd><p>Set the virtual bass cutoff frequency. Default value is 250 Hz.\nAllowed range is from 100 to 500 Hz.\n</p>\n</dd>",
+      "default": "250",
+      "description": "set virtual bass cutoff (from 100 to 500) (default 250)",
       "name": "cutoff",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "strength"
       ],
       "choices": [],
-      "default": 3.0,
-      "description": "<dd><p>Set the virtual bass strength. Allowed range is from 0.5 to 3.\nDefault value is 3.\n</p></dd>",
+      "default": "3",
+      "description": "set virtual bass strength (from 0.5 to 3) (default 3)",
       "name": "strength",
       "required": false,
       "typing": "float"

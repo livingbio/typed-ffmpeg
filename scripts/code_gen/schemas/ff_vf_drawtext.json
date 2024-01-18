@@ -21,7 +21,7 @@
         "fontfile"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set font file",
       "name": "fontfile",
       "required": false,
@@ -32,7 +32,7 @@
         "text"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set text",
       "name": "text",
       "required": false,
@@ -43,7 +43,7 @@
         "textfile"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set text file",
       "name": "textfile",
       "required": false,
@@ -54,8 +54,8 @@
         "fontcolor"
       ],
       "choices": [],
-      "default": "black",
-      "description": "set foreground color",
+      "default": "\"black\"",
+      "description": "set foreground color (default \"black\")",
       "name": "fontcolor",
       "required": false,
       "typing": "str"
@@ -65,8 +65,8 @@
         "fontcolor_expr"
       ],
       "choices": [],
-      "default": "",
-      "description": "set foreground color expression",
+      "default": "\"\"",
+      "description": "set foreground color expression (default \"\")",
       "name": "fontcolor_expr",
       "required": false,
       "typing": "str"
@@ -76,8 +76,8 @@
         "boxcolor"
       ],
       "choices": [],
-      "default": "white",
-      "description": "set box color",
+      "default": "\"white\"",
+      "description": "set box color (default \"white\")",
       "name": "boxcolor",
       "required": false,
       "typing": "str"
@@ -87,8 +87,8 @@
         "bordercolor"
       ],
       "choices": [],
-      "default": "black",
-      "description": "set border color",
+      "default": "\"black\"",
+      "description": "set border color (default \"black\")",
       "name": "bordercolor",
       "required": false,
       "typing": "str"
@@ -98,8 +98,8 @@
         "shadowcolor"
       ],
       "choices": [],
-      "default": "black",
-      "description": "set shadow color",
+      "default": "\"black\"",
+      "description": "set shadow color (default \"black\")",
       "name": "shadowcolor",
       "required": false,
       "typing": "str"
@@ -109,8 +109,8 @@
         "box"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set box",
+      "default": "false",
+      "description": "set box (default false)",
       "name": "box",
       "required": false,
       "typing": "bool"
@@ -121,18 +121,18 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "set box borders width",
+      "description": "set box border width (from INT_MIN to INT_MAX) (default 0)",
       "name": "boxborderw",
       "required": false,
-      "typing": "str"
+      "typing": "int"
     },
     {
       "alias": [
         "line_spacing"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set line spacing in pixels",
+      "default": "0",
+      "description": "set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)",
       "name": "line_spacing",
       "required": false,
       "typing": "int"
@@ -142,20 +142,9 @@
         "fontsize"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set font size",
       "name": "fontsize",
-      "required": false,
-      "typing": "str"
-    },
-    {
-      "alias": [
-        "text_align"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "set text alignment",
-      "name": "text_align",
       "required": false,
       "typing": "str"
     },
@@ -164,8 +153,8 @@
         "x"
       ],
       "choices": [],
-      "default": "0",
-      "description": "set x expression",
+      "default": "\"0\"",
+      "description": "set x expression (default \"0\")",
       "name": "x",
       "required": false,
       "typing": "str"
@@ -175,41 +164,19 @@
         "y"
       ],
       "choices": [],
-      "default": "0",
-      "description": "set y expression",
+      "default": "\"0\"",
+      "description": "set y expression (default \"0\")",
       "name": "y",
       "required": false,
       "typing": "str"
     },
     {
       "alias": [
-        "boxw"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "set box width",
-      "name": "boxw",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "boxh"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "set box height",
-      "name": "boxh",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
         "shadowx"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set shadow x offset",
+      "default": "0",
+      "description": "set shadow x offset (from INT_MIN to INT_MAX) (default 0)",
       "name": "shadowx",
       "required": false,
       "typing": "int"
@@ -219,8 +186,8 @@
         "shadowy"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set shadow y offset",
+      "default": "0",
+      "description": "set shadow y offset (from INT_MIN to INT_MAX) (default 0)",
       "name": "shadowy",
       "required": false,
       "typing": "int"
@@ -230,8 +197,8 @@
         "borderw"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set border width",
+      "default": "0",
+      "description": "set border width (from INT_MIN to INT_MAX) (default 0)",
       "name": "borderw",
       "required": false,
       "typing": "int"
@@ -241,8 +208,8 @@
         "tabsize"
       ],
       "choices": [],
-      "default": 4,
-      "description": "set tab size",
+      "default": "4",
+      "description": "set tab size (from 0 to INT_MAX) (default 4)",
       "name": "tabsize",
       "required": false,
       "typing": "int"
@@ -252,11 +219,22 @@
         "basetime"
       ],
       "choices": [],
-      "default": "((int64_t)(0x8000000000000000ULL))",
-      "description": "set base time",
+      "default": "I64_MIN",
+      "description": "set base time (from I64_MIN to I64_MAX) (default I64_MIN)",
       "name": "basetime",
       "required": false,
       "typing": "int"
+    },
+    {
+      "alias": [
+        "font"
+      ],
+      "choices": [],
+      "default": "\"Sans\"",
+      "description": "Font name (default \"Sans\")",
+      "name": "font",
+      "required": false,
+      "typing": "str"
     },
     {
       "alias": [
@@ -266,49 +244,22 @@
         {
           "help": "set no expansion",
           "name": "none",
-          "value": "EXP_NONE"
+          "value": "0"
         },
         {
           "help": "set normal expansion",
           "name": "normal",
-          "value": "EXP_NORMAL"
+          "value": "1"
         },
         {
           "help": "set strftime expansion (deprecated)",
           "name": "strftime",
-          "value": "EXP_STRFTIME"
+          "value": "2"
         }
       ],
-      "default": "EXP_NORMAL",
-      "description": "set the expansion mode",
+      "default": "normal",
+      "description": "set the expansion mode (from 0 to 2) (default normal)",
       "name": "expansion",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "y_align"
-      ],
-      "choices": [
-        {
-          "help": "y is referred to the top of the first text line",
-          "name": "text",
-          "value": "YA_TEXT"
-        },
-        {
-          "help": "y is referred to the baseline of the first line",
-          "name": "baseline",
-          "value": "YA_BASELINE"
-        },
-        {
-          "help": "y is referred to the font defined line metrics",
-          "name": "font",
-          "value": "YA_FONT"
-        }
-      ],
-      "default": "YA_TEXT",
-      "description": "set the y alignment",
-      "name": "y_align",
       "required": false,
       "typing": "int"
     },
@@ -317,7 +268,7 @@
         "timecode"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set initial timecode",
       "name": "timecode",
       "required": false,
@@ -328,8 +279,8 @@
         "tc24hmax"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set 24 hours max (timecode only)",
+      "default": "false",
+      "description": "set 24 hours max (timecode only) (default false)",
       "name": "tc24hmax",
       "required": false,
       "typing": "bool"
@@ -341,19 +292,19 @@
         "rate"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set rate (timecode only)",
+      "default": "0/1",
+      "description": "set rate (timecode only) (from 0 to INT_MAX) (default 0/1)",
       "name": "timecode_rate",
       "required": false,
-      "typing": "float"
+      "typing": "str"
     },
     {
       "alias": [
         "reload"
       ],
       "choices": [],
-      "default": 0,
-      "description": "reload text file at specified frame interval",
+      "default": "0",
+      "description": "reload text file at specified frame interval (from 0 to INT_MAX) (default 0)",
       "name": "reload",
       "required": false,
       "typing": "int"
@@ -363,8 +314,8 @@
         "alpha"
       ],
       "choices": [],
-      "default": "1",
-      "description": "apply alpha while rendering",
+      "default": "\"1\"",
+      "description": "apply alpha while rendering (default \"1\")",
       "name": "alpha",
       "required": false,
       "typing": "str"
@@ -374,8 +325,8 @@
         "fix_bounds"
       ],
       "choices": [],
-      "default": 0,
-      "description": "check and fix text coords to avoid clipping",
+      "default": "false",
+      "description": "check and fix text coords to avoid clipping (default false)",
       "name": "fix_bounds",
       "required": false,
       "typing": "bool"
@@ -385,8 +336,8 @@
         "start_number"
       ],
       "choices": [],
-      "default": 0,
-      "description": "start frame number for n/frame_num variable",
+      "default": "0",
+      "description": "start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)",
       "name": "start_number",
       "required": false,
       "typing": "int"
@@ -396,7 +347,7 @@
         "text_source"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "the source of text",
       "name": "text_source",
       "required": false,
@@ -406,9 +357,85 @@
       "alias": [
         "ft_load_flags"
       ],
-      "choices": [],
-      "default": "FT_LOAD_DEFAULT",
-      "description": "set font loading flags for libfreetype",
+      "choices": [
+        {
+          "help": "",
+          "name": "default",
+          "value": "default"
+        },
+        {
+          "help": "",
+          "name": "no_scale",
+          "value": "no_scale"
+        },
+        {
+          "help": "",
+          "name": "no_hinting",
+          "value": "no_hinting"
+        },
+        {
+          "help": "",
+          "name": "render",
+          "value": "render"
+        },
+        {
+          "help": "",
+          "name": "no_bitmap",
+          "value": "no_bitmap"
+        },
+        {
+          "help": "",
+          "name": "vertical_layout",
+          "value": "vertical_layout"
+        },
+        {
+          "help": "",
+          "name": "force_autohint",
+          "value": "force_autohint"
+        },
+        {
+          "help": "",
+          "name": "crop_bitmap",
+          "value": "crop_bitmap"
+        },
+        {
+          "help": "",
+          "name": "pedantic",
+          "value": "pedantic"
+        },
+        {
+          "help": "",
+          "name": "ignore_global_advance_width",
+          "value": "ignore_global_advance_width"
+        },
+        {
+          "help": "",
+          "name": "no_recurse",
+          "value": "no_recurse"
+        },
+        {
+          "help": "",
+          "name": "ignore_transform",
+          "value": "ignore_transform"
+        },
+        {
+          "help": "",
+          "name": "monochrome",
+          "value": "monochrome"
+        },
+        {
+          "help": "",
+          "name": "linear_design",
+          "value": "linear_design"
+        },
+        {
+          "help": "",
+          "name": "no_autohint",
+          "value": "no_autohint"
+        }
+      ],
+      "default": "0",
+      "description": "set font loading flags for libfreetype (default 0)",
       "name": "ft_load_flags",
       "required": false,
       "typing": "str"

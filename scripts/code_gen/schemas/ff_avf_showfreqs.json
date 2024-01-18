@@ -22,8 +22,8 @@
         "s"
       ],
       "choices": [],
-      "default": "1024x512",
-      "description": "<dd><p>Specify size of video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault is <code>1024x512</code>.\n</p>\n</dd>",
+      "default": "\"1024x512\"",
+      "description": "set video size (default \"1024x512\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -34,8 +34,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Set video rate. Default is <code>25</code>.\n</p>\n</dd>",
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"
@@ -48,21 +48,21 @@
         {
           "help": "show lines",
           "name": "line",
-          "value": "LINE"
+          "value": "0"
         },
         {
           "help": "show bars",
           "name": "bar",
-          "value": "BAR"
+          "value": "1"
         },
         {
           "help": "show dots",
           "name": "dot",
-          "value": "DOT"
+          "value": "2"
         }
       ],
-      "default": "BAR",
-      "description": "<dd><p>Set display mode.\nThis set how each frequency bin will be represented.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dt>\u2018<samp>bar</samp>\u2019</dt>\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n</dl>\n<p>Default is <code>bar</code>.\n</p>\n</dd>",
+      "default": "bar",
+      "description": "set display mode (from 0 to 2) (default bar)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -75,26 +75,26 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": "AS_LINEAR"
+          "value": "0"
         },
         {
           "help": "square root",
           "name": "sqrt",
-          "value": "AS_SQRT"
+          "value": "1"
         },
         {
           "help": "cubic root",
           "name": "cbrt",
-          "value": "AS_CBRT"
+          "value": "2"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "AS_LOG"
+          "value": "3"
         }
       ],
-      "default": "AS_LOG",
-      "description": "<dd><p>Set amplitude scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear scale.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root scale.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root scale.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic scale.\n</p></dd>\n</dl>\n<p>Default is <code>log</code>.\n</p>\n</dd>",
+      "default": "log",
+      "description": "set amplitude scale (from 0 to 3) (default log)",
       "name": "ascale",
       "required": false,
       "typing": "int"
@@ -107,21 +107,21 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": "FS_LINEAR"
+          "value": "0"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "FS_LOG"
+          "value": "1"
         },
         {
           "help": "reverse logarithmic",
           "name": "rlog",
-          "value": "FS_RLOG"
+          "value": "2"
         }
       ],
-      "default": "FS_LINEAR",
-      "description": "<dd><p>Set frequency scale.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear scale.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic scale.\n</p>\n</dd>\n<dt>\u2018<samp>rlog</samp>\u2019</dt>\n<dd><p>Reverse logarithmic scale.\n</p></dd>\n</dl>\n<p>Default is <code>lin</code>.\n</p>\n</dd>",
+      "default": "lin",
+      "description": "set frequency scale (from 0 to 2) (default lin)",
       "name": "fscale",
       "required": false,
       "typing": "int"
@@ -131,8 +131,8 @@
         "win_size"
       ],
       "choices": [],
-      "default": 2048,
-      "description": "<dd><p>Set window size. Allowed range is from 16 to 65536.\n</p>\n<p>Default is <code>2048</code>\n</p>\n</dd>",
+      "default": "2048",
+      "description": "set window size (from 16 to 65536) (default 2048)",
       "name": "win_size",
       "required": false,
       "typing": "int"
@@ -145,116 +145,116 @@
         {
           "help": "Rectangular",
           "name": "rect",
-          "value": "WFUNC_RECT"
+          "value": "0"
         },
         {
           "help": "Bartlett",
           "name": "bartlett",
-          "value": "WFUNC_BARTLETT"
+          "value": "4"
         },
         {
           "help": "Hann",
           "name": "hann",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hanning",
           "name": "hanning",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hamming",
           "name": "hamming",
-          "value": "WFUNC_HAMMING"
+          "value": "2"
         },
         {
           "help": "Blackman",
           "name": "blackman",
-          "value": "WFUNC_BLACKMAN"
+          "value": "3"
         },
         {
           "help": "Welch",
           "name": "welch",
-          "value": "WFUNC_WELCH"
+          "value": "5"
         },
         {
           "help": "Flat-top",
           "name": "flattop",
-          "value": "WFUNC_FLATTOP"
+          "value": "6"
         },
         {
           "help": "Blackman-Harris",
           "name": "bharris",
-          "value": "WFUNC_BHARRIS"
+          "value": "7"
         },
         {
           "help": "Blackman-Nuttall",
           "name": "bnuttall",
-          "value": "WFUNC_BNUTTALL"
+          "value": "8"
         },
         {
           "help": "Bartlett-Hann",
           "name": "bhann",
-          "value": "WFUNC_BHANN"
+          "value": "11"
         },
         {
           "help": "Sine",
           "name": "sine",
-          "value": "WFUNC_SINE"
+          "value": "9"
         },
         {
           "help": "Nuttall",
           "name": "nuttall",
-          "value": "WFUNC_NUTTALL"
+          "value": "10"
         },
         {
           "help": "Lanczos",
           "name": "lanczos",
-          "value": "WFUNC_LANCZOS"
+          "value": "12"
         },
         {
           "help": "Gauss",
           "name": "gauss",
-          "value": "WFUNC_GAUSS"
+          "value": "13"
         },
         {
           "help": "Tukey",
           "name": "tukey",
-          "value": "WFUNC_TUKEY"
+          "value": "14"
         },
         {
           "help": "Dolph-Chebyshev",
           "name": "dolph",
-          "value": "WFUNC_DOLPH"
+          "value": "15"
         },
         {
           "help": "Cauchy",
           "name": "cauchy",
-          "value": "WFUNC_CAUCHY"
+          "value": "16"
         },
         {
           "help": "Parzen",
           "name": "parzen",
-          "value": "WFUNC_PARZEN"
+          "value": "17"
         },
         {
           "help": "Poisson",
           "name": "poisson",
-          "value": "WFUNC_POISSON"
+          "value": "18"
         },
         {
           "help": "Bohman",
           "name": "bohman",
-          "value": "WFUNC_BOHMAN"
+          "value": "19"
         },
         {
           "help": "Kaiser",
           "name": "kaiser",
-          "value": "WFUNC_KAISER"
+          "value": "20"
         }
       ],
-      "default": "WFUNC_HANNING",
-      "description": "<dd><p>Set windowing function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hanning</code>.\n</p>\n</dd>",
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
       "name": "win_func",
       "required": false,
       "typing": "int"
@@ -264,8 +264,8 @@
         "overlap"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set window overlap. In range <code>[0, 1]</code>. Default is <code>1</code>,\nwhich means optimal overlap for selected window function will be picked.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set window overlap (from 0 to 1) (default 1)",
       "name": "overlap",
       "required": false,
       "typing": "float"
@@ -275,8 +275,8 @@
         "averaging"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set time averaging. Setting this to 0 will display current maximal peaks.\nDefault is <code>1</code>, which means time averaging is disabled.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set time averaging (from 0 to INT_MAX) (default 1)",
       "name": "averaging",
       "required": false,
       "typing": "int"
@@ -286,8 +286,8 @@
         "colors"
       ],
       "choices": [],
-      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
-      "description": "<dd><p>Specify list of colors separated by space or by \u2019|\u2019 which will be used to\ndraw channel frequencies. Unrecognized or missing colors will be replaced\nby white color.\n</p>\n</dd>",
+      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
       "typing": "str"
@@ -300,16 +300,16 @@
         {
           "help": "show all channels in same window",
           "name": "combined",
-          "value": "COMBINED"
+          "value": "0"
         },
         {
           "help": "show each channel in own window",
           "name": "separate",
-          "value": "SEPARATE"
+          "value": "1"
         }
       ],
-      "default": "COMBINED",
-      "description": "<dd><p>Set channel display mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>combined</samp>\u2019</dt>\n<dt>\u2018<samp>separate</samp>\u2019</dt>\n</dl>\n<p>Default is <code>combined</code>.\n</p>\n</dd>",
+      "default": "combined",
+      "description": "set channel mode (from 0 to 1) (default combined)",
       "name": "cmode",
       "required": false,
       "typing": "int"
@@ -319,8 +319,8 @@
         "minamp"
       ],
       "choices": [],
-      "default": 1e-06,
-      "description": "<dd><p>Set minimum amplitude used in <code>log</code> amplitude scaler.\n</p>\n</dd>",
+      "default": "1e-06",
+      "description": "set minimum amplitude (from FLT_MIN to 1e-06) (default 1e-06)",
       "name": "minamp",
       "required": false,
       "typing": "float"
@@ -333,21 +333,21 @@
         {
           "help": "show magnitude",
           "name": "magnitude",
-          "value": "MAGNITUDE"
+          "value": "0"
         },
         {
           "help": "show phase",
           "name": "phase",
-          "value": "PHASE"
+          "value": "1"
         },
         {
           "help": "show group delay",
           "name": "delay",
-          "value": "DELAY"
+          "value": "2"
         }
       ],
-      "default": "MAGNITUDE",
-      "description": "<dd><p>Set data display mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>magnitude</samp>\u2019</dt>\n<dt>\u2018<samp>phase</samp>\u2019</dt>\n<dt>\u2018<samp>delay</samp>\u2019</dt>\n</dl>\n<p>Default is <code>magnitude</code>.\n</p>\n</dd>",
+      "default": "magnitude",
+      "description": "set data mode (from 0 to 2) (default magnitude)",
       "name": "data",
       "required": false,
       "typing": "int"
@@ -357,8 +357,8 @@
         "channels"
       ],
       "choices": [],
-      "default": "all",
-      "description": "<dd><p>Set channels to use when processing audio. By default all are processed.\n</p></dd>",
+      "default": "\"all\"",
+      "description": "set channels to draw (default \"all\")",
       "name": "channels",
       "required": false,
       "typing": "str"

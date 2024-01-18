@@ -21,8 +21,8 @@
         "min_val"
       ],
       "choices": [],
-      "default": 16,
-      "description": "<dd><p>Set the minimal luma value. Default is <code>16</code>.\n</p></dd>",
+      "default": "16",
+      "description": "set minimum luminance value for bounding box (from 0 to 65535) (default 16)",
       "name": "min_val",
       "required": false,
       "typing": "int"

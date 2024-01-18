@@ -17,7 +17,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "((void*)0)",
+      "description": "",
       "name": "filename",
       "required": false,
       "typing": "str"
@@ -40,8 +40,8 @@
         "si"
       ],
       "choices": [],
-      "default": -1,
-      "description": "set stream index",
+      "default": "-1",
+      "description": "set stream index (from -1 to INT_MAX) (default -1)",
       "name": "stream_index",
       "required": false,
       "typing": "int"
@@ -52,8 +52,8 @@
         "sp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set seekpoint (seconds)",
+      "default": "0",
+      "description": "set seekpoint (seconds) (from 0 to 9.22337e+12) (default 0)",
       "name": "seek_point",
       "required": false,
       "typing": "float"
@@ -64,7 +64,7 @@
         "s"
       ],
       "choices": [],
-      "default": "0",
+      "default": null,
       "description": "set streams",
       "name": "streams",
       "required": false,
@@ -75,8 +75,8 @@
         "loop"
       ],
       "choices": [],
-      "default": 1,
-      "description": "set loop count",
+      "default": "1",
+      "description": "set loop count (from 0 to INT_MAX) (default 1)",
       "name": "loop",
       "required": false,
       "typing": "int"
@@ -86,19 +86,19 @@
         "discontinuity"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set discontinuity threshold",
+      "default": "0",
+      "description": "set discontinuity threshold (default 0)",
       "name": "discontinuity",
       "required": false,
-      "typing": "int"
+      "typing": "str"
     },
     {
       "alias": [
         "dec_threads"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set the number of threads for decoding",
+      "default": "0",
+      "description": "set the number of threads for decoding (from 0 to INT_MAX) (default 0)",
       "name": "dec_threads",
       "required": false,
       "typing": "int"
@@ -108,7 +108,7 @@
         "format_opts"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set format options for the opened file",
       "name": "format_opts",
       "required": false,

@@ -57,7 +57,7 @@
         "frac"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.33",
       "description": "set fraction dropping threshold (from 0 to 1) (default 0.33)",
       "flags": "..FV.......",
       "max": "1",

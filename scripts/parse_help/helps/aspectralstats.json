@@ -177,7 +177,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set window overlap (from 0 to 1) (default 0.5)",
       "flags": "..F.A......",
       "max": "1",
@@ -281,7 +281,7 @@
           "value": "rolloff"
         }
       ],
-      "default": null,
+      "default": "all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff",
       "description": "select the parameters which are measured (default all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff)",
       "flags": "..F.A......",
       "max": null,

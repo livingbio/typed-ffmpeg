@@ -18,7 +18,7 @@
         "intl_thres"
       ],
       "choices": [],
-      "default": null,
+      "default": "1.04",
       "description": "set interlacing threshold (from -1 to FLT_MAX) (default 1.04)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -31,7 +31,7 @@
         "prog_thres"
       ],
       "choices": [],
-      "default": null,
+      "default": "1.5",
       "description": "set progressive threshold (from -1 to FLT_MAX) (default 1.5)",
       "flags": "..FV.......",
       "max": "FLT_MAX",

@@ -21,8 +21,8 @@
         "dnn_backend"
       ],
       "choices": [],
-      "default": "DNN_OV",
-      "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nonly openvino now, tensorflow backends will be added.\n</p>\n</dd>",
+      "default": "2",
+      "description": "DNN backend (from INT_MIN to INT_MAX) (default 2)",
       "name": "dnn_backend",
       "required": false,
       "typing": "int"
@@ -32,8 +32,8 @@
         "model"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats.\n</p>\n</dd>",
+      "default": null,
+      "description": "path to model file",
       "name": "model",
       "required": false,
       "typing": "str"
@@ -43,8 +43,8 @@
         "input"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the input name of the dnn network.\n</p>\n</dd>",
+      "default": null,
+      "description": "input name of the model",
       "name": "input",
       "required": false,
       "typing": "str"
@@ -54,21 +54,31 @@
         "output"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the output name of the dnn network.\n</p>\n</dd>",
+      "default": null,
+      "description": "output name of the model",
       "name": "output",
       "required": false,
       "typing": "str"
     },
     {
       "alias": [
-        "backend_configs",
+        "backend_configs"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "backend configs",
+      "name": "backend_configs",
+      "required": false,
+      "typing": "str"
+    },
+    {
+      "alias": [
         "options"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the configs to be passed into backend\n</p>\n<p>For tensorflow backend, you can set its configs with <samp>sess_config</samp> options,\nplease use tools/python/tf_sess_config.py to get the configs for your system.\n</p>\n</dd>",
-      "name": "backend_configs",
+      "default": null,
+      "description": "backend configs (deprecated, use backend_configs)",
+      "name": "options",
       "required": false,
       "typing": "str"
     },
@@ -77,8 +87,8 @@
         "async"
       ],
       "choices": [],
-      "default": 1,
-      "description": "use DNN async inference (ignored, use backend_configs='async=1')",
+      "default": "true",
+      "description": "use DNN async inference (ignored, use backend_configs='async=1') (default true)",
       "name": "async",
       "required": false,
       "typing": "bool"
@@ -88,8 +98,8 @@
         "confidence"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set the confidence threshold (default: 0.5).\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "threshold of confidence (from 0 to 1) (default 0.5)",
       "name": "confidence",
       "required": false,
       "typing": "float"
@@ -99,8 +109,8 @@
         "labels"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set path to label file specifying the mapping between label id and name.\nEach label name is written in one line, tailing spaces and empty lines are skipped.\nThe first line is the name of label id 0,\nand the second line is the name of label id 1, etc.\nThe label id is considered as name if the label file is not provided.\n</p>\n</dd>",
+      "default": null,
+      "description": "path to labels file",
       "name": "labels",
       "required": false,
       "typing": "str"
@@ -110,7 +120,7 @@
         "target"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "which one to be classified",
       "name": "target",
       "required": false,

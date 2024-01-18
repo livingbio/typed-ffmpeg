@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"640x512\"",
       "description": "set video size (default \"640x512\")",
       "flags": "..FV.......",
       "max": null,
@@ -564,7 +564,7 @@
         "fps"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"auto\"",
       "description": "set video rate (default \"auto\")",
       "flags": "..FV.......",
       "max": null,

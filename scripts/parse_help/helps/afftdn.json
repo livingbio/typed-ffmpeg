@@ -22,8 +22,8 @@
       "default": "12",
       "description": "set the noise reduction (from 0.01 to 97) (default 12)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "97",
+      "min": "0.01",
       "name": "noise_reduction",
       "typing": "float"
     },
@@ -217,7 +217,7 @@
         "ad"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set adaptivity factor (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -284,11 +284,11 @@
         "bm"
       ],
       "choices": [],
-      "default": null,
+      "default": "1.25",
       "description": "set band multiplier (from 0.2 to 5) (default 1.25)",
       "flags": "..F.A......",
-      "max": null,
-      "min": null,
+      "max": "5",
+      "min": "0.2",
       "name": "band_multiplier",
       "typing": "float"
     },

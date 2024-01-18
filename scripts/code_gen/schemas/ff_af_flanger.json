@@ -21,8 +21,8 @@
         "delay"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set base delay in milliseconds. Range from 0 to 30. Default value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "base delay in milliseconds (from 0 to 30) (default 0)",
       "name": "delay",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "depth"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "<dd><p>Set added sweep delay in milliseconds. Range from 0 to 10. Default value is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "added swept delay in milliseconds (from 0 to 10) (default 2)",
       "name": "depth",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "regen"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set percentage regeneration (delayed signal feedback). Range from -95 to 95.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "percentage regeneration (delayed signal feedback) (from -95 to 95) (default 0)",
       "name": "regen",
       "required": false,
       "typing": "float"
@@ -54,8 +54,8 @@
         "width"
       ],
       "choices": [],
-      "default": 71.0,
-      "description": "<dd><p>Set percentage of delayed signal mixed with original. Range from 0 to 100.\nDefault value is 71.\n</p>\n</dd>",
+      "default": "71",
+      "description": "percentage of delayed signal mixed with original (from 0 to 100) (default 71)",
       "name": "width",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "speed"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set sweeps per second (Hz). Range from 0.1 to 10. Default value is 0.5.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "sweeps per second (Hz) (from 0.1 to 10) (default 0.5)",
       "name": "speed",
       "required": false,
       "typing": "float"
@@ -77,28 +77,28 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "triangular",
-          "value": "WAVE_TRI"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "t",
-          "value": "WAVE_TRI"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sinusoidal",
-          "value": "WAVE_SIN"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "s",
-          "value": "WAVE_SIN"
+          "value": "0"
         }
       ],
-      "default": "WAVE_SIN",
-      "description": "<dd><p>Set swept wave shape, can be <var>triangular</var> or <var>sinusoidal</var>.\nDefault value is <var>sinusoidal</var>.\n</p>\n</dd>",
+      "default": "sinusoidal",
+      "description": "swept wave shape (from 0 to 1) (default sinusoidal)",
       "name": "shape",
       "required": false,
       "typing": "int"
@@ -108,8 +108,8 @@
         "phase"
       ],
       "choices": [],
-      "default": 25.0,
-      "description": "<dd><p>Set swept wave percentage-shift for multi channel. Range from 0 to 100.\nDefault value is 25.\n</p>\n</dd>",
+      "default": "25",
+      "description": "swept wave percentage phase-shift for multi-channel (from 0 to 100) (default 25)",
       "name": "phase",
       "required": false,
       "typing": "float"
@@ -120,18 +120,18 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "linear",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "quadratic",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set delay-line interpolation, <var>linear</var> or <var>quadratic</var>.\nDefault is <var>linear</var>.\n</p></dd>",
+      "default": "linear",
+      "description": "delay-line interpolation (from 0 to 1) (default linear)",
       "name": "interp",
       "required": false,
       "typing": "int"

@@ -18,7 +18,7 @@
         "mapping"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set destination indexes of input frames (default \"0\")",
       "flags": "..FV.......",
       "max": null,

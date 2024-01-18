@@ -25,8 +25,8 @@
         "size"
       ],
       "choices": [],
-      "default": 256,
-      "description": "<dd><p>Set size of segment over which cross-correlation is calculated.\nDefault is 256. Allowed range is from 2 to 131072.\n</p>\n</dd>",
+      "default": "256",
+      "description": "set segment size (from 2 to 131072) (default 256)",
       "name": "size",
       "required": false,
       "typing": "int"
@@ -39,21 +39,16 @@
         {
           "help": "slow algorithm",
           "name": "slow",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "fast algorithm",
           "name": "fast",
-          "value": 1
-        },
-        {
-          "help": "best algorithm",
-          "name": "best",
-          "value": 2
+          "value": "1"
         }
       ],
-      "default": 2,
-      "description": "<dd><p>Set algorithm for cross-correlation. Can be <code>slow</code> or <code>fast</code> or <code>best</code>.\nDefault is <code>best</code>. Fast algorithm assumes mean values over any given segment\nare always zero and thus need much less calculations to make.\nThis is generally not true, but is valid for typical audio streams.\n</p></dd>",
+      "default": "slow",
+      "description": "set algorithm (from 0 to 1) (default slow)",
       "name": "algo",
       "required": false,
       "typing": "int"

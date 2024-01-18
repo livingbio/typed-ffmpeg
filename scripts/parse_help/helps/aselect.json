@@ -19,7 +19,7 @@
         "e"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"1\"",
       "description": "set an expression to use for selecting frames (default \"1\")",
       "flags": "..F.A......",
       "max": null,

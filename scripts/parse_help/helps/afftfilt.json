@@ -18,7 +18,7 @@
         "real"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"re\"",
       "description": "set channels real expressions (default \"re\")",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "imag"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"im\"",
       "description": "set channels imaginary expressions (default \"im\")",
       "flags": "..F.A......",
       "max": null,
@@ -203,7 +203,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.75",
       "description": "set window overlap (from 0 to 1) (default 0.75)",
       "flags": "..F.A......",
       "max": "1",

@@ -22,8 +22,8 @@
         "f"
       ],
       "choices": [],
-      "default": 500,
-      "description": "set the frame length in msec",
+      "default": "500",
+      "description": "set the frame length in msec (from 10 to 8000) (default 500)",
       "name": "framelen",
       "required": false,
       "typing": "int"
@@ -34,8 +34,8 @@
         "g"
       ],
       "choices": [],
-      "default": 31,
-      "description": "set the filter size",
+      "default": "31",
+      "description": "set the filter size (from 3 to 301) (default 31)",
       "name": "gausssize",
       "required": false,
       "typing": "int"
@@ -46,8 +46,8 @@
         "p"
       ],
       "choices": [],
-      "default": 0.95,
-      "description": "set the peak value",
+      "default": "0.95",
+      "description": "set the peak value (from 0 to 1) (default 0.95)",
       "name": "peak",
       "required": false,
       "typing": "float"
@@ -58,8 +58,8 @@
         "m"
       ],
       "choices": [],
-      "default": 10.0,
-      "description": "set the max amplification",
+      "default": "10",
+      "description": "set the max amplification (from 1 to 100) (default 10)",
       "name": "maxgain",
       "required": false,
       "typing": "float"
@@ -70,8 +70,8 @@
         "r"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set the target RMS",
+      "default": "0",
+      "description": "set the target RMS (from 0 to 1) (default 0)",
       "name": "targetrms",
       "required": false,
       "typing": "float"
@@ -82,8 +82,8 @@
         "n"
       ],
       "choices": [],
-      "default": 1,
-      "description": "set channel coupling",
+      "default": "true",
+      "description": "set channel coupling (default true)",
       "name": "coupling",
       "required": false,
       "typing": "bool"
@@ -94,8 +94,8 @@
         "c"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set DC correction",
+      "default": "false",
+      "description": "set DC correction (default false)",
       "name": "correctdc",
       "required": false,
       "typing": "bool"
@@ -106,8 +106,8 @@
         "b"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set alternative boundary mode",
+      "default": "false",
+      "description": "set alternative boundary mode (default false)",
       "name": "altboundary",
       "required": false,
       "typing": "bool"
@@ -118,8 +118,8 @@
         "s"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set the compress factor",
+      "default": "0",
+      "description": "set the compress factor (from 0 to 30) (default 0)",
       "name": "compress",
       "required": false,
       "typing": "float"
@@ -130,8 +130,8 @@
         "t"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set the threshold value",
+      "default": "0",
+      "description": "set the threshold value (from 0 to 1) (default 0)",
       "name": "threshold",
       "required": false,
       "typing": "float"
@@ -142,8 +142,8 @@
         "h"
       ],
       "choices": [],
-      "default": "all",
-      "description": "set channels to filter",
+      "default": "\"all\"",
+      "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
       "typing": "str"
@@ -154,8 +154,8 @@
         "o"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set the frame overlap",
+      "default": "0",
+      "description": "set the frame overlap (from 0 to 1) (default 0)",
       "name": "overlap",
       "required": false,
       "typing": "float"
@@ -166,7 +166,7 @@
         "v"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set the custom peak mapping curve",
       "name": "curve",
       "required": false,

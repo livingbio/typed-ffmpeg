@@ -22,8 +22,8 @@
         "z"
       ],
       "choices": [],
-      "default": "1",
-      "description": "<dd><p>Set the zoom expression. Range is 1-10. Default is 1.\n</p>\n</dd>",
+      "default": "\"1\"",
+      "description": "set the zoom expression (default \"1\")",
       "name": "zoom",
       "required": false,
       "typing": "str"
@@ -33,8 +33,8 @@
         "x"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set the x expression (default \"0\")",
       "name": "x",
       "required": false,
       "typing": "str"
@@ -44,8 +44,8 @@
         "y"
       ],
       "choices": [],
-      "default": "0",
-      "description": "<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>",
+      "default": "\"0\"",
+      "description": "set the y expression (default \"0\")",
       "name": "y",
       "required": false,
       "typing": "str"
@@ -55,8 +55,8 @@
         "d"
       ],
       "choices": [],
-      "default": "90",
-      "description": "<dd><p>Set the duration expression in number of frames.\nThis sets for how many number of frames effect will last for\nsingle input image. Default is 90.\n</p>\n</dd>",
+      "default": "\"90\"",
+      "description": "set the duration expression (default \"90\")",
       "name": "d",
       "required": false,
       "typing": "str"
@@ -66,8 +66,8 @@
         "s"
       ],
       "choices": [],
-      "default": "hd720",
-      "description": "<dd><p>Set the output image size, default is \u2019hd720\u2019.\n</p>\n</dd>",
+      "default": "\"hd720\"",
+      "description": "set the output image size (default \"hd720\")",
       "name": "s",
       "required": false,
       "typing": "str"
@@ -77,8 +77,8 @@
         "fps"
       ],
       "choices": [],
-      "default": "25",
-      "description": "<dd><p>Set the output frame rate, default is \u201925\u2019.\n</p></dd>",
+      "default": "\"25\"",
+      "description": "set the output framerate (default \"25\")",
       "name": "fps",
       "required": false,
       "typing": "str"

@@ -21,8 +21,8 @@
         "blackpt"
       ],
       "choices": [],
-      "default": "black",
-      "description": "<dd><p>Colors which define the output range. The minimum input value is mapped to\nthe <var>blackpt</var>. The maximum input value is mapped to the <var>whitept</var>.\nThe defaults are black and white respectively. Specifying white for\n<var>blackpt</var> and black for <var>whitept</var> will give color-inverted,\nnormalized video. Shades of grey can be used to reduce the dynamic range\n(contrast). Specifying saturated colors here can create some interesting\neffects.\n</p>\n</dd>",
+      "default": "\"black\"",
+      "description": "output color to which darkest input color is mapped (default \"black\")",
       "name": "blackpt",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "whitept"
       ],
       "choices": [],
-      "default": "white",
-      "description": "<dd><p>Colors which define the output range. The minimum input value is mapped to\nthe <var>blackpt</var>. The maximum input value is mapped to the <var>whitept</var>.\nThe defaults are black and white respectively. Specifying white for\n<var>blackpt</var> and black for <var>whitept</var> will give color-inverted,\nnormalized video. Shades of grey can be used to reduce the dynamic range\n(contrast). Specifying saturated colors here can create some interesting\neffects.\n</p>\n</dd>",
+      "default": "\"white\"",
+      "description": "output color to which brightest input color is mapped (default \"white\")",
       "name": "whitept",
       "required": false,
       "typing": "str"
@@ -43,8 +43,8 @@
         "smoothing"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>The number of previous frames to use for temporal smoothing. The input range\nof each channel is smoothed using a rolling average over the current frame\nand the <var>smoothing</var> previous frames. The default is 0 (no temporal\nsmoothing).\n</p>\n</dd>",
+      "default": "0",
+      "description": "amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)",
       "name": "smoothing",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "independence"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Controls the ratio of independent (color shifting) channel normalization to\nlinked (color preserving) normalization. 0.0 is fully linked, 1.0 is fully\nindependent. Defaults to 1.0 (fully independent).\n</p>\n</dd>",
+      "default": "1",
+      "description": "proportion of independent to linked channel normalization (from 0 to 1) (default 1)",
       "name": "independence",
       "required": false,
       "typing": "float"
@@ -65,8 +65,8 @@
         "strength"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Overall strength of the filter. 1.0 is full strength. 0.0 is a rather\nexpensive no-op. Defaults to 1.0 (full strength).\n</p>\n</dd>",
+      "default": "1",
+      "description": "strength of filter, from no effect to full normalization (from 0 to 1) (default 1)",
       "name": "strength",
       "required": false,
       "typing": "float"

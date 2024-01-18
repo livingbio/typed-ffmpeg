@@ -19,7 +19,7 @@
         "w"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"iw\"",
       "description": "set the width crop area expression (default \"iw\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -33,7 +33,7 @@
         "h"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"ih\"",
       "description": "set the height crop area expression (default \"ih\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -46,7 +46,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"(in_w-out_w",
       "description": "set the x crop area expression (default \"(in_w-out_w)/2\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -59,7 +59,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"(in_h-out_h",
       "description": "set the y crop area expression (default \"(in_h-out_h)/2\")",
       "flags": "..FV.....T.",
       "max": null,

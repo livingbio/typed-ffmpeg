@@ -21,8 +21,8 @@
         "high"
       ],
       "choices": [],
-      "default": "50/255.",
-      "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
+      "default": "0.196078",
+      "description": "set high threshold (from 0 to 1) (default 0.196078)",
       "name": "high",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "low"
       ],
       "choices": [],
-      "default": "20/255.",
-      "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
+      "default": "0.0784314",
+      "description": "set low threshold (from 0 to 1) (default 0.0784314)",
       "name": "low",
       "required": false,
       "typing": "float"
@@ -46,21 +46,21 @@
         {
           "help": "white/gray wires on black",
           "name": "wires",
-          "value": "MODE_WIRES"
+          "value": "0"
         },
         {
           "help": "mix colors",
           "name": "colormix",
-          "value": "MODE_COLORMIX"
+          "value": "1"
         },
         {
           "help": "detect edges on planes",
           "name": "canny",
-          "value": "MODE_CANNY"
+          "value": "2"
         }
       ],
-      "default": "MODE_WIRES",
-      "description": "<dd><p>Define the drawing mode.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>wires</samp>\u2019</dt>\n<dd><p>Draw white/gray wires on black background.\n</p>\n</dd>\n<dt>\u2018<samp>colormix</samp>\u2019</dt>\n<dd><p>Mix the colors to create a paint/cartoon effect.\n</p>\n</dd>\n<dt>\u2018<samp>canny</samp>\u2019</dt>\n<dd><p>Apply Canny edge detector on all selected planes.\n</p></dd>\n</dl>\n<p>Default value is <var>wires</var>.\n</p>\n</dd>",
+      "default": "wires",
+      "description": "set mode (from 0 to 2) (default wires)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -73,36 +73,36 @@
         {
           "help": "filter luma plane",
           "name": "y",
-          "value": "0x1"
+          "value": "y"
         },
         {
           "help": "filter u plane",
           "name": "u",
-          "value": "0x2"
+          "value": "u"
         },
         {
           "help": "filter v plane",
           "name": "v",
-          "value": "0x4"
+          "value": "v"
         },
         {
           "help": "filter red plane",
           "name": "r",
-          "value": "0x4"
+          "value": "r"
         },
         {
           "help": "filter green plane",
           "name": "g",
-          "value": "0x1"
+          "value": "g"
         },
         {
           "help": "filter blue plane",
           "name": "b",
-          "value": "0x2"
+          "value": "b"
         }
       ],
-      "default": 7,
-      "description": "<dd><p>Select planes for filtering. By default all available planes are filtered.\n</p></dd>",
+      "default": "y+u+v+r+g+b",
+      "description": "set planes to filter (default y+u+v+r+g+b)",
       "name": "planes",
       "required": false,
       "typing": "str"

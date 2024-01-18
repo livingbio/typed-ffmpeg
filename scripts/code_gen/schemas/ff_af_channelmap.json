@@ -22,7 +22,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>Map channels from input to output. The argument is a \u2019|\u2019-separated list of\nmappings, each in the <code><var>in_channel</var>-<var>out_channel</var></code> or\n<var>in_channel</var> form. <var>in_channel</var> can be either the name of the input\nchannel (e.g. FL for front left) or its index in the input channel layout.\n<var>out_channel</var> is the name of the output channel or its index in the output\nchannel layout. If <var>out_channel</var> is not given then it is implicitly an\nindex, starting with zero and increasing by one for each mapping.\n</p>\n</dd>",
+      "description": "A comma-separated list of input channel numbers in output order.",
       "name": "map",
       "required": false,
       "typing": "str"
@@ -33,7 +33,7 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>The channel layout of the output stream.\n</p></dd>",
+      "description": "Output channel layout.",
       "name": "channel_layout",
       "required": false,
       "typing": "str"

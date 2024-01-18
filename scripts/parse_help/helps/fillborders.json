@@ -126,7 +126,7 @@
         "color"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black\"",
       "description": "set the color for the fixed/fade mode (default \"black\")",
       "flags": "..FV.....T.",
       "max": null,

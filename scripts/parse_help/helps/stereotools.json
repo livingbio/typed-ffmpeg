@@ -21,8 +21,8 @@
       "default": "1",
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_in",
       "typing": "double"
     },
@@ -34,8 +34,8 @@
       "default": "1",
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_out",
       "typing": "double"
     },
@@ -202,7 +202,7 @@
           "value": "10"
         }
       ],
-      "default": null,
+      "default": "lr>lr",
       "description": "set stereo mode (from 0 to 10) (default lr>lr)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -218,8 +218,8 @@
       "default": "1",
       "description": "set side level (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "slev",
       "typing": "double"
     },
@@ -244,8 +244,8 @@
       "default": "1",
       "description": "set middle level (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "mlev",
       "typing": "double"
     },

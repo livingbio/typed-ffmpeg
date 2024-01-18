@@ -21,8 +21,8 @@
         "threshold"
       ],
       "choices": [],
-      "default": 0.08,
-      "description": "<dd><p>Threshold for scene change detection.\n</p></dd>",
+      "default": "0.08",
+      "description": "set the scene change threshold (from 0 to 1) (default 0.08)",
       "name": "threshold",
       "required": false,
       "typing": "float"
@@ -32,8 +32,8 @@
         "similarity"
       ],
       "choices": [],
-      "default": 0.1,
-      "description": "<dd><p>Similarity percentage with the background.\n</p></dd>",
+      "default": "0.1",
+      "description": "set the similarity (from 0 to 1) (default 0.1)",
       "name": "similarity",
       "required": false,
       "typing": "float"
@@ -43,8 +43,8 @@
         "blend"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the blend amount for pixels that are not similar.\n</p></dd>",
+      "default": "0",
+      "description": "set the blend value (from 0 to 1) (default 0)",
       "name": "blend",
       "required": false,
       "typing": "float"

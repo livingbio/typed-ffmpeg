@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "Region distance from left edge of frame. (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "Region distance from top edge of frame. (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "w"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "Region width. (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "h"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "Region height. (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "qoffset"
       ],
       "choices": [],
-      "default": null,
+      "default": "-1/10",
       "description": "Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)",
       "flags": "..FV.......",
       "max": "1",

@@ -25,8 +25,8 @@
         "scale"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the scale applied to second video stream. By default is <code>1</code>.\nAllowed range is from <code>0</code> to <code>9</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set scale (from 0 to 9) (default 1)",
       "name": "scale",
       "required": false,
       "typing": "float"
@@ -36,8 +36,8 @@
         "offset"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set the offset applied to second video stream. By default is <code>0.5</code>.\nAllowed range is from <code>-1</code> to <code>1</code>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set offset (from -1 to 1) (default 0.5)",
       "name": "offset",
       "required": false,
       "typing": "float"
@@ -47,8 +47,8 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Specify planes from input video stream that will be processed.\nBy default all planes are processed.\n</p></dd>",
+      "default": "F",
+      "description": "set planes (default F)",
       "name": "planes",
       "required": false,
       "typing": "str"

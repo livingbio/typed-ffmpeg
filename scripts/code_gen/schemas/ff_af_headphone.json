@@ -16,8 +16,8 @@
         "map"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set mapping of input streams for convolution.\nThe argument is a \u2019|\u2019-separated list of channel names in order as they\nare given as additional stream inputs for filter.\nThis also specify number of input streams. Number of input streams\nmust be not less than number of channels in first stream plus one.\n</p>\n</dd>",
+      "default": null,
+      "description": "set channels convolution mappings",
       "name": "map",
       "required": false,
       "typing": "str"
@@ -27,8 +27,8 @@
         "gain"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set gain applied to audio. Value is in dB. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set gain in dB (from -20 to 40) (default 0)",
       "name": "gain",
       "required": false,
       "typing": "float"
@@ -38,8 +38,8 @@
         "lfe"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set custom gain for LFE channels. Value is in dB. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set lfe gain in dB (from -20 to 40) (default 0)",
       "name": "lfe",
       "required": false,
       "typing": "float"
@@ -52,16 +52,16 @@
         {
           "help": "time domain",
           "name": "time",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "frequency domain",
           "name": "freq",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set processing type. Can be <var>time</var> or <var>freq</var>. <var>time</var> is\nprocessing audio in time domain which is slow.\n<var>freq</var> is processing audio in frequency domain which is fast.\nDefault is <var>freq</var>.\n</p>\n</dd>",
+      "default": "freq",
+      "description": "set processing (from 0 to 1) (default freq)",
       "name": "type",
       "required": false,
       "typing": "int"
@@ -71,8 +71,8 @@
         "size"
       ],
       "choices": [],
-      "default": 1024,
-      "description": "<dd><p>Set size of frame in number of samples which will be processed at once.\nDefault value is <var>1024</var>. Allowed range is from 1024 to 96000.\n</p>\n</dd>",
+      "default": "1024",
+      "description": "set frame size (from 1024 to 96000) (default 1024)",
       "name": "size",
       "required": false,
       "typing": "int"
@@ -85,16 +85,16 @@
         {
           "help": "hrir files have exactly 2 channels",
           "name": "stereo",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "single multichannel hrir file",
           "name": "multich",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set format of hrir stream.\nDefault value is <var>stereo</var>. Alternative value is <var>multich</var>.\nIf value is set to <var>stereo</var>, number of additional streams should\nbe greater or equal to number of input channels in first input stream.\nAlso each additional stream should have stereo number of channels.\nIf value is set to <var>multich</var>, number of additional streams should\nbe exactly one. Also number of input channels of additional stream\nshould be equal or greater than twice number of channels of first input\nstream.\n</p></dd>",
+      "default": "stereo",
+      "description": "set hrir format (from 0 to 1) (default stereo)",
       "name": "hrir",
       "required": false,
       "typing": "int"

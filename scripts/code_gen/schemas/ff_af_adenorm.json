@@ -21,8 +21,8 @@
         "level"
       ],
       "choices": [],
-      "default": -351.0,
-      "description": "<dd><p>Set level of added noise in dB. Default is <code>-351</code>.\nAllowed range is from -451 to -90.\n</p>\n</dd>",
+      "default": "-351",
+      "description": "set level (from -451 to -90) (default -351)",
       "name": "level",
       "required": false,
       "typing": "float"
@@ -33,28 +33,28 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "dc",
-          "value": "DC_TYPE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ac",
-          "value": "AC_TYPE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "square",
-          "value": "SQ_TYPE"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "pulse",
-          "value": "PS_TYPE"
+          "value": "3"
         }
       ],
-      "default": "DC_TYPE",
-      "description": "<dd><p>Set type of added noise.\n</p>\n<dl compact=\"compact\">\n<dt><samp>dc</samp></dt>\n<dd><p>Add DC signal.\n</p></dd>\n<dt><samp>ac</samp></dt>\n<dd><p>Add AC signal.\n</p></dd>\n<dt><samp>square</samp></dt>\n<dd><p>Add square signal.\n</p></dd>\n<dt><samp>pulse</samp></dt>\n<dd><p>Add pulse signal.\n</p></dd>\n</dl>\n<p>Default is <code>dc</code>.\n</p></dd>",
+      "default": "dc",
+      "description": "set type (from 0 to 3) (default dc)",
       "name": "type",
       "required": false,
       "typing": "int"

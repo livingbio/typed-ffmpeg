@@ -18,7 +18,7 @@
         "cx"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set relative center x (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "cy"
       ],
       "choices": [],
-      "default": null,
+      "default": "0.5",
       "description": "set relative center y (from 0 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -96,7 +96,7 @@
         "fc"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"black@0\"",
       "description": "set the color of the unmapped pixels (default \"black@0\")",
       "flags": "..FV.....T.",
       "max": null,

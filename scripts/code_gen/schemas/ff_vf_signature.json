@@ -17,23 +17,23 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "off",
-          "value": "MODE_OFF"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "full",
-          "value": "MODE_FULL"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "fast",
-          "value": "MODE_FAST"
+          "value": "2"
         }
       ],
-      "default": "MODE_OFF",
-      "description": "<dd><p>Enable or disable the matching process.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>off</samp>\u2019</dt>\n<dd><p>Disable the calculation of a matching (default).\n</p></dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Calculate the matching for the whole video and output whether the whole video\nmatches or only parts.\n</p></dd>\n<dt>\u2018<samp>fast</samp>\u2019</dt>\n<dd><p>Calculate only until a matching is found or the video ends. Should be faster in\nsome cases.\n</p></dd>\n</dl>\n</dd>",
+      "default": "off",
+      "description": "set the detectmode (from 0 to 2) (default off)",
       "name": "detectmode",
       "required": false,
       "typing": "int"
@@ -43,8 +43,8 @@
         "nb_inputs"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set the number of inputs. The option value must be a non negative integer.\nDefault value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "number of inputs (from 1 to INT_MAX) (default 1)",
       "name": "nb_inputs",
       "required": false,
       "typing": "int"
@@ -54,8 +54,8 @@
         "filename"
       ],
       "choices": [],
-      "default": "",
-      "description": "<dd><p>Set the path to which the output is written. If there is more than one input,\nthe path must be a prototype, i.e. must contain %d or %0nd (where n is a positive\ninteger), that will be replaced with the input number. If no filename is\nspecified, no output will be written. This is the default.\n</p>\n</dd>",
+      "default": "\"\"",
+      "description": "filename for output files (default \"\")",
       "name": "filename",
       "required": false,
       "typing": "str"
@@ -66,18 +66,18 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "binary",
-          "value": "FORMAT_BINARY"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "xml",
-          "value": "FORMAT_XML"
+          "value": "1"
         }
       ],
-      "default": "FORMAT_BINARY",
-      "description": "<dd><p>Choose the output format.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>binary</samp>\u2019</dt>\n<dd><p>Use the specified binary representation (default).\n</p></dd>\n<dt>\u2018<samp>xml</samp>\u2019</dt>\n<dd><p>Use the specified xml representation.\n</p></dd>\n</dl>\n</dd>",
+      "default": "binary",
+      "description": "set output format (from 0 to 1) (default binary)",
       "name": "format",
       "required": false,
       "typing": "int"
@@ -87,8 +87,8 @@
         "th_d"
       ],
       "choices": [],
-      "default": 9000,
-      "description": "<dd><p>Set threshold to detect one word as similar. The option value must be an integer\ngreater than zero. The default value is 9000.\n</p>\n</dd>",
+      "default": "9000",
+      "description": "threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)",
       "name": "th_d",
       "required": false,
       "typing": "int"
@@ -98,8 +98,8 @@
         "th_dc"
       ],
       "choices": [],
-      "default": 60000,
-      "description": "<dd><p>Set threshold to detect all words as similar. The option value must be an integer\ngreater than zero. The default value is 60000.\n</p>\n</dd>",
+      "default": "60000",
+      "description": "threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)",
       "name": "th_dc",
       "required": false,
       "typing": "int"
@@ -109,8 +109,8 @@
         "th_xh"
       ],
       "choices": [],
-      "default": 116,
-      "description": "<dd><p>Set threshold to detect frames as similar. The option value must be an integer\ngreater than zero. The default value is 116.\n</p>\n</dd>",
+      "default": "116",
+      "description": "threshold to detect frames as similar (from 1 to INT_MAX) (default 116)",
       "name": "th_xh",
       "required": false,
       "typing": "int"
@@ -120,8 +120,8 @@
         "th_di"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the minimum length of a sequence in frames to recognize it as matching\nsequence. The option value must be a non negative integer value.\nThe default value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)",
       "name": "th_di",
       "required": false,
       "typing": "int"
@@ -131,8 +131,8 @@
         "th_it"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set the minimum relation, that matching frames to all frames must have.\nThe option value must be a double value between 0 and 1. The default value is 0.5.\n</p></dd>",
+      "default": "0.5",
+      "description": "threshold for relation of good to all frames (from 0 to 1) (default 0.5)",
       "name": "th_it",
       "required": false,
       "typing": "float"

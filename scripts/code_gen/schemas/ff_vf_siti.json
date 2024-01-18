@@ -21,8 +21,8 @@
         "print_summary"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If set to 1, Summary statistics will be printed to the console. Default 0.\n</p></dd>",
+      "default": "false",
+      "description": "Print summary showing average values (default false)",
       "name": "print_summary",
       "required": false,
       "typing": "bool"

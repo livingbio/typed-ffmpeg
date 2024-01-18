@@ -22,8 +22,8 @@
         "r"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Set the window radius. Default value is 3.\n</p>\n</dd>",
+      "default": "3",
+      "description": "set window radius (from 0 to INT_MAX) (default 3)",
       "name": "radius",
       "required": false,
       "typing": "int"
@@ -34,8 +34,8 @@
         "p"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set which planes to filter. Default is only the first plane.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
       "typing": "int"
@@ -46,8 +46,8 @@
         "s"
       ],
       "choices": [],
-      "default": 128,
-      "description": "<dd><p>Set blur strength. Default value is 128.\n</p></dd>",
+      "default": "128",
+      "description": "set blur strength (from 1 to INT_MAX) (default 128)",
       "name": "sigma",
       "required": false,
       "typing": "int"

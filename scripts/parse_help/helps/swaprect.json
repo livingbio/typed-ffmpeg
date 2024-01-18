@@ -18,7 +18,7 @@
         "w"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"w/2\"",
       "description": "set rect width (default \"w/2\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -31,7 +31,7 @@
         "h"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"h/2\"",
       "description": "set rect height (default \"h/2\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -44,7 +44,7 @@
         "x1"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"w/2\"",
       "description": "set 1st rect x top left coordinate (default \"w/2\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -57,7 +57,7 @@
         "y1"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"h/2\"",
       "description": "set 1st rect y top left coordinate (default \"h/2\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -70,7 +70,7 @@
         "x2"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set 2nd rect x top left coordinate (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -83,7 +83,7 @@
         "y2"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"0\"",
       "description": "set 2nd rect y top left coordinate (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,

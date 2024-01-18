@@ -22,56 +22,27 @@
   "options": [
     {
       "alias": [
-        "x"
+        "x",
+        "y"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the top left crop position.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set top left crop position (from 0 to INT_MAX) (default 0)",
       "name": "x",
       "required": false,
       "typing": "int"
     },
     {
       "alias": [
-        "y"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the top left crop position.\n</p>\n</dd>",
-      "name": "y",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "w"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the crop size.\n</p></dd>",
-      "name": "w",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
+        "w",
         "h"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the crop size.\n</p></dd>",
-      "name": "h",
+      "default": "0",
+      "description": "set crop size (from 0 to INT_MAX) (default 0)",
+      "name": "w",
       "required": false,
       "typing": "int"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": null,
-      "description": "timeline editing",
-      "name": "enable",
-      "required": false,
-      "typing": "str"
     }
   ],
   "output_stream_typings": [

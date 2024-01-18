@@ -21,8 +21,8 @@
         "m1"
       ],
       "choices": [],
-      "default": "",
-      "description": "set 1st metadata key",
+      "default": "\"\"",
+      "description": "set 1st metadata key (default \"\")",
       "name": "m1",
       "required": false,
       "typing": "str"
@@ -32,8 +32,8 @@
         "fg1"
       ],
       "choices": [],
-      "default": "0xffff0000",
-      "description": "set 1st foreground color expression",
+      "default": "\"0xffff0000\"",
+      "description": "set 1st foreground color expression (default \"0xffff0000\")",
       "name": "fg1",
       "required": false,
       "typing": "str"
@@ -43,8 +43,8 @@
         "m2"
       ],
       "choices": [],
-      "default": "",
-      "description": "set 2nd metadata key",
+      "default": "\"\"",
+      "description": "set 2nd metadata key (default \"\")",
       "name": "m2",
       "required": false,
       "typing": "str"
@@ -54,8 +54,8 @@
         "fg2"
       ],
       "choices": [],
-      "default": "0xff00ff00",
-      "description": "set 2nd foreground color expression",
+      "default": "\"0xff00ff00\"",
+      "description": "set 2nd foreground color expression (default \"0xff00ff00\")",
       "name": "fg2",
       "required": false,
       "typing": "str"
@@ -65,8 +65,8 @@
         "m3"
       ],
       "choices": [],
-      "default": "",
-      "description": "set 3rd metadata key",
+      "default": "\"\"",
+      "description": "set 3rd metadata key (default \"\")",
       "name": "m3",
       "required": false,
       "typing": "str"
@@ -76,8 +76,8 @@
         "fg3"
       ],
       "choices": [],
-      "default": "0xffff00ff",
-      "description": "set 3rd foreground color expression",
+      "default": "\"0xffff00ff\"",
+      "description": "set 3rd foreground color expression (default \"0xffff00ff\")",
       "name": "fg3",
       "required": false,
       "typing": "str"
@@ -87,8 +87,8 @@
         "m4"
       ],
       "choices": [],
-      "default": "",
-      "description": "set 4th metadata key",
+      "default": "\"\"",
+      "description": "set 4th metadata key (default \"\")",
       "name": "m4",
       "required": false,
       "typing": "str"
@@ -98,8 +98,8 @@
         "fg4"
       ],
       "choices": [],
-      "default": "0xffffff00",
-      "description": "set 4th foreground color expression",
+      "default": "\"0xffffff00\"",
+      "description": "set 4th foreground color expression (default \"0xffffff00\")",
       "name": "fg4",
       "required": false,
       "typing": "str"
@@ -109,8 +109,8 @@
         "bg"
       ],
       "choices": [],
-      "default": "white",
-      "description": "set background color",
+      "default": "\"white\"",
+      "description": "set background color (default \"white\")",
       "name": "bg",
       "required": false,
       "typing": "str"
@@ -120,8 +120,8 @@
         "min"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "set minimal value",
+      "default": "-1",
+      "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
       "name": "min",
       "required": false,
       "typing": "float"
@@ -131,8 +131,8 @@
         "max"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set maximal value",
+      "default": "1",
+      "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
       "name": "max",
       "required": false,
       "typing": "float"
@@ -145,21 +145,21 @@
         {
           "help": "draw bars",
           "name": "bar",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "draw dots",
           "name": "dot",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "draw lines",
           "name": "line",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 2,
-      "description": "set graph mode",
+      "default": "line",
+      "description": "set graph mode (from 0 to 2) (default line)",
       "name": "mode",
       "required": false,
       "typing": "int"
@@ -172,31 +172,31 @@
         {
           "help": "draw new frames",
           "name": "frame",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "replace old columns with new",
           "name": "replace",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "scroll from right to left",
           "name": "scroll",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "scroll from left to right",
           "name": "rscroll",
-          "value": 3
+          "value": "3"
         },
         {
           "help": "display graph in single frame",
           "name": "picture",
-          "value": 4
+          "value": "4"
         }
       ],
-      "default": 0,
-      "description": "set slide mode",
+      "default": "frame",
+      "description": "set slide mode (from 0 to 4) (default frame)",
       "name": "slide",
       "required": false,
       "typing": "int"
@@ -207,8 +207,8 @@
         "s"
       ],
       "choices": [],
-      "default": "900x256",
-      "description": "set graph size",
+      "default": "\"900x256\"",
+      "description": "set graph size (default \"900x256\")",
       "name": "size",
       "required": false,
       "typing": "str"
@@ -219,8 +219,8 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
-      "description": "set video rate",
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
       "typing": "str"

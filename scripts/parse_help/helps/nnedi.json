@@ -18,7 +18,7 @@
         "weights"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"nnedi3_weights.bin\"",
       "description": "set weights file (default \"nnedi3_weights.bin\")",
       "flags": "..FV.......",
       "max": null,

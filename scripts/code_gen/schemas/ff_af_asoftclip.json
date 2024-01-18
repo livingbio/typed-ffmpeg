@@ -22,53 +22,53 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "hard",
-          "value": "ASC_HARD"
+          "value": "-1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "tanh",
-          "value": "ASC_TANH"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "atan",
-          "value": "ASC_ATAN"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "cubic",
-          "value": "ASC_CUBIC"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "exp",
-          "value": "ASC_EXP"
+          "value": "3"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "alg",
-          "value": "ASC_ALG"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "quintic",
-          "value": "ASC_QUINTIC"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sin",
-          "value": "ASC_SIN"
+          "value": "6"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "erf",
-          "value": "ASC_ERF"
+          "value": "7"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set type of soft-clipping.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>hard</samp></dt>\n<dt><samp>tanh</samp></dt>\n<dt><samp>atan</samp></dt>\n<dt><samp>cubic</samp></dt>\n<dt><samp>exp</samp></dt>\n<dt><samp>alg</samp></dt>\n<dt><samp>quintic</samp></dt>\n<dt><samp>sin</samp></dt>\n<dt><samp>erf</samp></dt>\n</dl>\n</dd>",
+      "default": "tanh",
+      "description": "set softclip type (from -1 to 7) (default tanh)",
       "name": "type",
       "required": false,
       "typing": "int"
@@ -78,8 +78,8 @@
         "threshold"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set threshold from where to start clipping. Default value is 0dB or 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set softclip threshold (from 1e-06 to 1) (default 1)",
       "name": "threshold",
       "required": false,
       "typing": "float"
@@ -89,8 +89,8 @@
         "output"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set gain applied to output. Default value is 0dB or 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set softclip output gain (from 1e-06 to 16) (default 1)",
       "name": "output",
       "required": false,
       "typing": "float"
@@ -100,8 +100,8 @@
         "param"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set additional parameter which controls sigmoid function.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set softclip parameter (from 0.01 to 3) (default 1)",
       "name": "param",
       "required": false,
       "typing": "float"
@@ -111,8 +111,8 @@
         "oversample"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set oversampling factor.\n</p></dd>",
+      "default": "1",
+      "description": "set oversample factor (from 1 to 64) (default 1)",
       "name": "oversample",
       "required": false,
       "typing": "int"

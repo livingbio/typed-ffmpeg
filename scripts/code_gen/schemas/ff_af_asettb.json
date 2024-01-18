@@ -22,8 +22,8 @@
         "tb"
       ],
       "choices": [],
-      "default": "intb",
-      "description": "<dd><p>The expression which is evaluated into the output timebase.\n</p>\n</dd>",
+      "default": "\"intb\"",
+      "description": "set expression determining the output timebase (default \"intb\")",
       "name": "expr",
       "required": false,
       "typing": "str"
