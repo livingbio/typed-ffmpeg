@@ -93,7 +93,7 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
     return output
 
 
-def extract_help_text(filter_name: str):
+def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
     text = help_text(filter_name)
     tree = parse_section_tree(text)
 
