@@ -25,7 +25,7 @@
       "description": "Input channel layout. (default \"stereo\")",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "Channels to extract. (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [],

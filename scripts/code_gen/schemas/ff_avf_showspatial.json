@@ -26,7 +26,7 @@
       "description": "set video size (default \"512x512\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set window size (from 1024 to 65536) (default 4096)",
       "name": "win_size",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -159,7 +159,7 @@
       "description": "set window function (from 0 to 20) (default hann)",
       "name": "win_func",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -171,7 +171,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     }
   ],
   "output_stream_typings": [

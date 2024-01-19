@@ -25,7 +25,7 @@
       "description": "DNN backend (from INT_MIN to INT_MAX) (default 2)",
       "name": "dnn_backend",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "path to model file",
       "name": "model",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "input name of the model",
       "name": "input",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "output name of the model",
       "name": "output",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "backend configs",
       "name": "backend_configs",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "backend configs (deprecated, use backend_configs)",
       "name": "options",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "use DNN async inference (ignored, use backend_configs='async=1') (default true)",
       "name": "async",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "threshold of confidence (from 0 to 1) (default 0.5)",
       "name": "confidence",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "path to labels file",
       "name": "labels",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "which one to be classified",
       "name": "target",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

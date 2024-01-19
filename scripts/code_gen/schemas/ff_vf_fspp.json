@@ -25,7 +25,7 @@
       "description": "set quality (from 4 to 5) (default 4)",
       "name": "quality",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "force a constant quantizer parameter (from 0 to 64) (default 0)",
       "name": "qp",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set filter strength (from -15 to 32) (default 0)",
       "name": "strength",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "use B-frames' QP (default false)",
       "name": "use_bframe_qp",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [],

@@ -26,7 +26,7 @@
       "description": "set minimum detected black duration in seconds (from 0 to DBL_MAX) (default 2)",
       "name": "d",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set the picture black ratio threshold (from 0 to 1) (default 0.98)",
       "name": "picture_black_ratio_th",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set the pixel black threshold (from 0 to 1) (default 0.1)",
       "name": "pixel_black_th",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     }
   ],
   "output_stream_typings": [

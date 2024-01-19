@@ -20,7 +20,7 @@
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "width",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "",
       "name": "video_size",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "height",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "(default none)",
       "name": "pix_fmt",
       "required": false,
-      "typing": "str"
+      "typing": "PIX_FMT"
     },
     {
       "alias": [
@@ -65,7 +65,7 @@
       "description": "sample aspect ratio (from 0 to DBL_MAX) (default 0/1)",
       "name": "sar",
       "required": false,
-      "typing": "str"
+      "typing": "RATIONAL"
     },
     {
       "alias": [
@@ -77,7 +77,7 @@
       "description": "(from 0 to DBL_MAX) (default 0/1)",
       "name": "time_base",
       "required": false,
-      "typing": "str"
+      "typing": "RATIONAL"
     }
   ],
   "output_stream_typings": [

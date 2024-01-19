@@ -25,7 +25,7 @@
       "description": "A string describing desired output framerate (default \"25\")",
       "name": "fps",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "Assume the first PTS should be this value. (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "name": "start_time",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -73,7 +73,7 @@
       "description": "set rounding method for timestamps (from 0 to 5) (default near)",
       "name": "round",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -95,7 +95,7 @@
       "description": "action performed for last frame (from 0 to 1) (default round)",
       "name": "eof_action",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

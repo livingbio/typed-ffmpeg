@@ -25,7 +25,7 @@
       "description": "timestamps of input at which to split input",
       "name": "timestamps",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "frames at which to split input",
       "name": "frames",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [],

@@ -25,7 +25,7 @@
       "description": "sleep time limit (default 2)",
       "name": "limit",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "speed factor (from DBL_MIN to DBL_MAX) (default 1)",
       "name": "speed",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     }
   ],
   "output_stream_typings": [

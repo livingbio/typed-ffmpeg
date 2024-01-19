@@ -37,7 +37,7 @@
       "description": "set mode (from 0 to 1) (default column)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "set intensity (from 0 to 1) (default 0.04)",
       "name": "intensity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -61,7 +61,7 @@
       "description": "set mirroring (default true)",
       "name": "mirror",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -89,7 +89,7 @@
       "description": "set display mode (from 0 to 2) (default stack)",
       "name": "display",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -101,7 +101,7 @@
       "description": "set components to display (from 1 to 15) (default 1)",
       "name": "components",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -134,7 +134,7 @@
       "description": "set envelope to display (from 0 to 3) (default none)",
       "name": "envelope",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -187,7 +187,7 @@
       "description": "set filter (from 0 to 7) (default lowpass)",
       "name": "filter",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -220,7 +220,7 @@
       "description": "set graticule (from 0 to 3) (default none)",
       "name": "graticule",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -232,7 +232,7 @@
       "description": "set graticule opacity (from 0 to 1) (default 0.75)",
       "name": "opacity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -255,7 +255,7 @@
       "description": "set graticule flags (default numbers)",
       "name": "flags",
       "required": false,
-      "typing": "str"
+      "typing": "FLAGS"
     },
     {
       "alias": [
@@ -283,7 +283,7 @@
       "description": "set scale (from 0 to 2) (default digital)",
       "name": "scale",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -295,7 +295,7 @@
       "description": "set background opacity (from 0 to 1) (default 0.75)",
       "name": "bgopacity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -307,7 +307,7 @@
       "description": "set 1st tint (from -1 to 1) (default 0)",
       "name": "tint0",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -319,7 +319,7 @@
       "description": "set 2nd tint (from -1 to 1) (default 0)",
       "name": "tint1",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -342,7 +342,7 @@
       "description": "set fit mode (from 0 to 1) (default none)",
       "name": "fitmode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

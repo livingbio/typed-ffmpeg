@@ -25,7 +25,7 @@
       "description": "set the window length (from 0 to 10) (default 0.05)",
       "name": "length",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "inject metadata in the filtergraph (default false)",
       "name": "metadata",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)",
       "name": "reset",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -194,7 +194,7 @@
       "description": "Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)",
       "name": "measure_perchannel",
       "required": false,
-      "typing": "str"
+      "typing": "FLAGS"
     },
     {
       "alias": [
@@ -341,7 +341,7 @@
       "description": "Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)",
       "name": "measure_overall",
       "required": false,
-      "typing": "str"
+      "typing": "FLAGS"
     }
   ],
   "output_stream_typings": [

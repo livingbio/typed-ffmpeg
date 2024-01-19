@@ -240,7 +240,7 @@
       "description": "set component #0 blend mode (from 0 to 39) (default normal)",
       "name": "c0_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -462,7 +462,7 @@
       "description": "set component #1 blend mode (from 0 to 39) (default normal)",
       "name": "c1_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -684,7 +684,7 @@
       "description": "set component #2 blend mode (from 0 to 39) (default normal)",
       "name": "c2_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -906,7 +906,7 @@
       "description": "set component #3 blend mode (from 0 to 39) (default normal)",
       "name": "c3_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -1128,7 +1128,7 @@
       "description": "set blend mode for all components (from -1 to 39) (default -1)",
       "name": "all_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -1139,7 +1139,7 @@
       "description": "set color component #0 expression",
       "name": "c0_expr",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -1150,7 +1150,7 @@
       "description": "set color component #1 expression",
       "name": "c1_expr",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -1161,7 +1161,7 @@
       "description": "set color component #2 expression",
       "name": "c2_expr",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -1172,7 +1172,7 @@
       "description": "set color component #3 expression",
       "name": "c3_expr",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -1183,7 +1183,7 @@
       "description": "set expression for all color components",
       "name": "all_expr",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -1194,7 +1194,7 @@
       "description": "set color component #0 opacity (from 0 to 1) (default 1)",
       "name": "c0_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -1205,7 +1205,7 @@
       "description": "set color component #1 opacity (from 0 to 1) (default 1)",
       "name": "c1_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -1216,7 +1216,7 @@
       "description": "set color component #2 opacity (from 0 to 1) (default 1)",
       "name": "c2_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -1227,7 +1227,7 @@
       "description": "set color component #3 opacity (from 0 to 1) (default 1)",
       "name": "c3_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -1238,7 +1238,7 @@
       "description": "set opacity for all color components (from 0 to 1) (default 1)",
       "name": "all_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -1265,7 +1265,7 @@
       "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
       "name": "eof_action",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -1276,7 +1276,7 @@
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -1287,7 +1287,7 @@
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -1309,7 +1309,7 @@
       "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
       "name": "ts_sync_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

@@ -25,7 +25,7 @@
       "description": "A '|'-separated list of pixel formats",
       "name": "pix_fmts",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

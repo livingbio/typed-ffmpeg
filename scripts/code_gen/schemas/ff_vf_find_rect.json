@@ -25,7 +25,7 @@
       "description": "object bitmap filename",
       "name": "object",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set threshold (from 0 to 1) (default 0.5)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set mipmaps (from 1 to 5) (default 3)",
       "name": "mipmaps",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -61,7 +61,7 @@
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "xmin",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -72,7 +72,7 @@
       "description": "(default false)",
       "name": "discard",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [

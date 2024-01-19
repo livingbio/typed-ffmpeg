@@ -10,7 +10,7 @@ class Default(str):
     ...
 
 
-BOOLEAN = bool
+BOOLEAN = bool | str
 DURATION = str | int | float
 # https://ffmpeg.org/ffmpeg-utils.html#Time-duration
 
@@ -21,10 +21,10 @@ FLAGS = str
 DICTIONARY = str
 PIX_FMT = str
 
-INT = int
-INT64 = int
-DOUBLE = float
-FLOAT = float
+INT = int | str
+INT64 = int | str
+DOUBLE = float | str
+FLOAT = float | str
 STRING = str | int | float
 
 VIDEO_RATE = str | int | float

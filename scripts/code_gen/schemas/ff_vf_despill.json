@@ -36,7 +36,7 @@
       "description": "set the screen type (from 0 to 1) (default green)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the spillmap mix (from 0 to 1) (default 0.5)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the spillmap expand (from 0 to 1) (default 0)",
       "name": "expand",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set red scale (from -100 to 100) (default 0)",
       "name": "red",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set green scale (from -100 to 100) (default -1)",
       "name": "green",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set blue scale (from -100 to 100) (default 0)",
       "name": "blue",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set brightness (from -10 to 10) (default 0)",
       "name": "brightness",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "change alpha component (default false)",
       "name": "alpha",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [],

@@ -25,7 +25,7 @@
       "description": "set tempo scale factor (from 0.01 to 100) (default 1)",
       "name": "tempo",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set pitch scale factor (from 0.01 to 100) (default 1)",
       "name": "pitch",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -63,7 +63,7 @@
       "description": "set transients (from 0 to INT_MAX) (default crisp)",
       "name": "transients",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -90,7 +90,7 @@
       "description": "set detector (from 0 to INT_MAX) (default compound)",
       "name": "detector",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -112,7 +112,7 @@
       "description": "set phase (from 0 to INT_MAX) (default laminar)",
       "name": "phase",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -139,7 +139,7 @@
       "description": "set window (from 0 to INT_MAX) (default standard)",
       "name": "window",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -161,7 +161,7 @@
       "description": "set smoothing (from 0 to INT_MAX) (default off)",
       "name": "smoothing",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -183,7 +183,7 @@
       "description": "set formant (from 0 to INT_MAX) (default shifted)",
       "name": "formant",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -210,7 +210,7 @@
       "description": "set pitch quality (from 0 to INT_MAX) (default speed)",
       "name": "pitchq",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -232,7 +232,7 @@
       "description": "set channels (from 0 to INT_MAX) (default apart)",
       "name": "channels",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

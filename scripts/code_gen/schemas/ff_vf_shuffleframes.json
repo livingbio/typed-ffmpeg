@@ -25,7 +25,7 @@
       "description": "set destination indexes of input frames (default \"0\")",
       "name": "mapping",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [],

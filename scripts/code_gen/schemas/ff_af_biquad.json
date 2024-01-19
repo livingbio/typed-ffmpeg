@@ -25,7 +25,7 @@
       "description": "(from INT_MIN to INT_MAX) (default 1)",
       "name": "a0",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -40,7 +40,7 @@
       "description": "(from INT_MIN to INT_MAX) (default 0)",
       "name": "a1",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -52,7 +52,7 @@
       "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -76,7 +76,7 @@
       "description": "normalize coefficients (default false)",
       "name": "normalize",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set transform type (from 0 to 6) (default di)",
       "name": "transform",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -162,7 +162,7 @@
       "description": "set filtering precision (from -1 to 3) (default auto)",
       "name": "precision",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -174,7 +174,7 @@
       "description": "set the block size (from 0 to 32768) (default 0)",
       "name": "blocksize",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

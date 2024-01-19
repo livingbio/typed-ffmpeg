@@ -29,7 +29,7 @@
       "description": "set input level (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -51,7 +51,7 @@
       "description": "set mode (from 0 to 1) (default downward)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set max gain reduction (from 0 to 1) (default 0.06125)",
       "name": "range",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -73,7 +73,7 @@
       "description": "set threshold (from 0 to 1) (default 0.125)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -84,7 +84,7 @@
       "description": "set ratio (from 1 to 9000) (default 2)",
       "name": "ratio",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -95,7 +95,7 @@
       "description": "set attack (from 0.01 to 9000) (default 20)",
       "name": "attack",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -106,7 +106,7 @@
       "description": "set release (from 0.01 to 9000) (default 250)",
       "name": "release",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -117,7 +117,7 @@
       "description": "set makeup gain (from 1 to 64) (default 1)",
       "name": "makeup",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -128,7 +128,7 @@
       "description": "set knee (from 1 to 8) (default 2.82843)",
       "name": "knee",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -150,7 +150,7 @@
       "description": "set detection (from 0 to 1) (default rms)",
       "name": "detection",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -172,7 +172,7 @@
       "description": "set link (from 0 to 1) (default average)",
       "name": "link",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -183,7 +183,7 @@
       "description": "set sidechain gain (from 0.015625 to 64) (default 1)",
       "name": "level_sc",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [],

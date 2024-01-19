@@ -70,7 +70,7 @@
       "description": "select dithering mode (from 0 to 8) (default sierra2_4a)",
       "name": "dither",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -81,7 +81,7 @@
       "description": "set scale for bayer dithering (from 0 to 5) (default 2)",
       "name": "bayer_scale",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -98,7 +98,7 @@
       "description": "set frame difference mode (from 0 to 1) (default 0)",
       "name": "diff_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -109,7 +109,7 @@
       "description": "take new palette for each output frame (default false)",
       "name": "new",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -120,7 +120,7 @@
       "description": "set the alpha threshold for transparency (from 0 to 255) (default 128)",
       "name": "alpha_threshold",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -131,7 +131,7 @@
       "description": "save Graphviz graph of the kdtree in specified file",
       "name": "debug_kdtree",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

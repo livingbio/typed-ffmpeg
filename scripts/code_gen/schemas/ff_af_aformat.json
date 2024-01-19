@@ -26,7 +26,7 @@
       "description": "A '|'-separated list of sample formats.",
       "name": "sample_fmts",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "A '|'-separated list of sample rates.",
       "name": "sample_rates",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "A '|'-separated list of channel layouts.",
       "name": "channel_layouts",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

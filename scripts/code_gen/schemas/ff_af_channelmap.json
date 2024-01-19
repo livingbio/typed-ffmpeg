@@ -25,7 +25,7 @@
       "description": "A comma-separated list of input channel numbers in output order.",
       "name": "map",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "Output channel layout.",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

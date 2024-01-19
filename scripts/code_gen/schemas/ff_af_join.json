@@ -20,7 +20,7 @@
       "description": "Number of input streams. (from 1 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "Channel layout of the output stream. (default \"stereo\")",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.",
       "name": "map",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

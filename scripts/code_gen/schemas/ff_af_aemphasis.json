@@ -25,7 +25,7 @@
       "description": "set input gain (from 0 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set output gain (from 0 to 64) (default 1)",
       "name": "level_out",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set filter mode (from 0 to 1) (default reproduction)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -115,7 +115,7 @@
       "description": "set filter type (from 0 to 8) (default cd)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

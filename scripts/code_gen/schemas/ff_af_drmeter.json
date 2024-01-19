@@ -25,7 +25,7 @@
       "description": "set the window length (from 0.01 to 10) (default 3)",
       "name": "length",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     }
   ],
   "output_stream_typings": [

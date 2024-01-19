@@ -25,7 +25,7 @@
       "description": "set the hue value (from -360 to 360) (default 0)",
       "name": "hue",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the saturation value (from -1 to 1) (default 0)",
       "name": "sat",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the value value (from -1 to 1) (default 0)",
       "name": "val",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the hsvhold similarity value (from 1e-05 to 1) (default 0.01)",
       "name": "similarity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set the hsvhold blend value (from 0 to 1) (default 0)",
       "name": "blend",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [],

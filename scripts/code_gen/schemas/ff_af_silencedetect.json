@@ -26,7 +26,7 @@
       "description": "set noise tolerance (from 0 to DBL_MAX) (default 0.001)",
       "name": "n",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set minimum duration in seconds (default 2)",
       "name": "d",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "check each channel separately (default false)",
       "name": "mono",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [

@@ -61,7 +61,7 @@
       "description": "tonemap algorithm selection (from 0 to 6) (default none)",
       "name": "tonemap",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -72,7 +72,7 @@
       "description": "tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)",
       "name": "param",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -83,7 +83,7 @@
       "description": "desaturation strength (from 0 to DBL_MAX) (default 2)",
       "name": "desat",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -94,7 +94,7 @@
       "description": "signal peak override (from 0 to DBL_MAX) (default 0)",
       "name": "peak",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     }
   ],
   "output_stream_typings": [

@@ -25,7 +25,7 @@
       "description": "set input red black point (from -1 to 1) (default 0)",
       "name": "rimin",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set input green black point (from -1 to 1) (default 0)",
       "name": "gimin",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set input blue black point (from -1 to 1) (default 0)",
       "name": "bimin",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set input alpha black point (from -1 to 1) (default 0)",
       "name": "aimin",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set input red white point (from -1 to 1) (default 1)",
       "name": "rimax",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set input green white point (from -1 to 1) (default 1)",
       "name": "gimax",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set input blue white point (from -1 to 1) (default 1)",
       "name": "bimax",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set input alpha white point (from -1 to 1) (default 1)",
       "name": "aimax",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set output red black point (from 0 to 1) (default 0)",
       "name": "romin",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set output green black point (from 0 to 1) (default 0)",
       "name": "gomin",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set output blue black point (from 0 to 1) (default 0)",
       "name": "bomin",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -146,7 +146,7 @@
       "description": "set output alpha black point (from 0 to 1) (default 0)",
       "name": "aomin",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -157,7 +157,7 @@
       "description": "set output red white point (from 0 to 1) (default 1)",
       "name": "romax",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -168,7 +168,7 @@
       "description": "set output green white point (from 0 to 1) (default 1)",
       "name": "gomax",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -179,7 +179,7 @@
       "description": "set output blue white point (from 0 to 1) (default 1)",
       "name": "bomax",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -190,7 +190,7 @@
       "description": "set output alpha white point (from 0 to 1) (default 1)",
       "name": "aomax",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -237,7 +237,7 @@
       "description": "set preserve color mode (from 0 to 6) (default none)",
       "name": "preserve",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

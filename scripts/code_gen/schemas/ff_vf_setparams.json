@@ -46,7 +46,7 @@
       "description": "select interlace mode (from -1 to 2) (default auto)",
       "name": "field_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -103,7 +103,7 @@
       "description": "select color range (from -1 to 2) (default auto)",
       "name": "range",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -185,7 +185,7 @@
       "description": "select color primaries (from -1 to 22) (default auto)",
       "name": "color_primaries",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -287,7 +287,7 @@
       "description": "select color transfer (from -1 to 18) (default auto)",
       "name": "color_trc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -374,7 +374,7 @@
       "description": "select colorspace (from -1 to 14) (default auto)",
       "name": "colorspace",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

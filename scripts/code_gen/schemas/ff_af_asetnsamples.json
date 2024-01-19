@@ -26,7 +26,7 @@
       "description": "set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)",
       "name": "nb_out_samples",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "pad last frame with zeros (default true)",
       "name": "pad",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [

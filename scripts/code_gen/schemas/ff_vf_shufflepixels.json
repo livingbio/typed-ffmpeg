@@ -37,7 +37,7 @@
       "description": "set shuffle direction (from 0 to 1) (default forward)",
       "name": "direction",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -65,7 +65,7 @@
       "description": "set shuffle mode (from 0 to 2) (default horizontal)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -77,7 +77,7 @@
       "description": "set block width (from 1 to 8000) (default 10)",
       "name": "width",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -89,7 +89,7 @@
       "description": "set block height (from 1 to 8000) (default 10)",
       "name": "height",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -101,7 +101,7 @@
       "description": "set random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [],

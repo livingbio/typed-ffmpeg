@@ -25,7 +25,7 @@
       "description": "set the red gain for the red channel (from -2 to 2) (default 1)",
       "name": "rr",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the green gain for the red channel (from -2 to 2) (default 0)",
       "name": "rg",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the blue gain for the red channel (from -2 to 2) (default 0)",
       "name": "rb",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the alpha gain for the red channel (from -2 to 2) (default 0)",
       "name": "ra",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set the red gain for the green channel (from -2 to 2) (default 0)",
       "name": "gr",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set the green gain for the green channel (from -2 to 2) (default 1)",
       "name": "gg",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set the blue gain for the green channel (from -2 to 2) (default 0)",
       "name": "gb",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set the alpha gain for the green channel (from -2 to 2) (default 0)",
       "name": "ga",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set the red gain for the blue channel (from -2 to 2) (default 0)",
       "name": "br",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set the green gain for the blue channel (from -2 to 2) (default 0)",
       "name": "bg",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set the blue gain for the blue channel (from -2 to 2) (default 1)",
       "name": "bb",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -146,7 +146,7 @@
       "description": "set the alpha gain for the blue channel (from -2 to 2) (default 0)",
       "name": "ba",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -157,7 +157,7 @@
       "description": "set the red gain for the alpha channel (from -2 to 2) (default 0)",
       "name": "ar",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -168,7 +168,7 @@
       "description": "set the green gain for the alpha channel (from -2 to 2) (default 0)",
       "name": "ag",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -179,7 +179,7 @@
       "description": "set the blue gain for the alpha channel (from -2 to 2) (default 0)",
       "name": "ab",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -190,7 +190,7 @@
       "description": "set the alpha gain for the alpha channel (from -2 to 2) (default 1)",
       "name": "aa",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -237,7 +237,7 @@
       "description": "set the preserve color mode (from 0 to 6) (default none)",
       "name": "pc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -248,7 +248,7 @@
       "description": "set the preserve color amount (from 0 to 1) (default 0)",
       "name": "pa",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [],

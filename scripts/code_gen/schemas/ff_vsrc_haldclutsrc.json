@@ -20,7 +20,7 @@
       "description": "set level (from 2 to 16) (default 6)",
       "name": "level",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -32,7 +32,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     },
     {
       "alias": [
@@ -44,7 +44,7 @@
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -55,7 +55,7 @@
       "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
       "name": "sar",
       "required": false,
-      "typing": "str"
+      "typing": "RATIONAL"
     }
   ],
   "output_stream_typings": [

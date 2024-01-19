@@ -25,7 +25,7 @@
       "description": "Disable any format conversion or resampling in the filter graph. (default true)",
       "name": "disable_autoconvert",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "Process stereo channels together. Only apply target_gain when both channels match. (default true)",
       "name": "process_stereo",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "Code detect timer period in ms. (from 100 to 60000) (default 2000)",
       "name": "cdt_ms",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "Always extend peaks above -3dBFS even when PE is not signaled. (default false)",
       "name": "force_pe",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -95,7 +95,7 @@
       "description": "Replace audio with solid tone and signal some processing aspect in the amplitude. (from 0 to 4) (default off)",
       "name": "analyze_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -122,7 +122,7 @@
       "description": "Valid bits per sample (location of the true LSB). (from 16 to 24) (default 16)",
       "name": "bits_per_sample",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

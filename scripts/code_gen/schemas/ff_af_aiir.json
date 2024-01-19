@@ -26,7 +26,7 @@
       "description": "set B/numerator/zeros/reflection coefficients (default \"1+0i 1-0i\")",
       "name": "zeros",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set A/denominator/poles/ladder coefficients (default \"1+0i 1-0i\")",
       "name": "poles",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set channels gains (default \"1|1\")",
       "name": "gains",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -61,7 +61,7 @@
       "description": "set dry gain (from 0 to 1) (default 1)",
       "name": "dry",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -72,7 +72,7 @@
       "description": "set wet gain (from 0 to 1) (default 1)",
       "name": "wet",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -120,7 +120,7 @@
       "description": "set coefficients format (from -2 to 4) (default zp)",
       "name": "format",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -148,7 +148,7 @@
       "description": "set kind of processing (from 0 to 2) (default s)",
       "name": "process",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -180,7 +180,7 @@
       "description": "set filtering precision (from 0 to 3) (default dbl)",
       "name": "precision",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -212,7 +212,7 @@
       "description": "set precision (from 0 to 3) (default dbl)",
       "name": "e",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -224,7 +224,7 @@
       "description": "normalize coefficients (default true)",
       "name": "normalize",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -235,7 +235,7 @@
       "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -246,7 +246,7 @@
       "description": "show IR frequency response (default false)",
       "name": "response",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -257,7 +257,7 @@
       "description": "set IR channel to display frequency response (from 0 to 1024) (default 0)",
       "name": "channel",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -268,7 +268,7 @@
       "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -279,7 +279,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     }
   ],
   "output_stream_typings": [],

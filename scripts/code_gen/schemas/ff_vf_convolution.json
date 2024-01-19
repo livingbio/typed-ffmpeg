@@ -25,7 +25,7 @@
       "description": "set matrix for 1st plane (default \"0 0 0 0 1 0 0 0 0\")",
       "name": "0m",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set matrix for 2nd plane (default \"0 0 0 0 1 0 0 0 0\")",
       "name": "1m",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set matrix for 3rd plane (default \"0 0 0 0 1 0 0 0 0\")",
       "name": "2m",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set matrix for 4th plane (default \"0 0 0 0 1 0 0 0 0\")",
       "name": "3m",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set rdiv for 1st plane (from 0 to INT_MAX) (default 0)",
       "name": "0rdiv",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set rdiv for 2nd plane (from 0 to INT_MAX) (default 0)",
       "name": "1rdiv",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set rdiv for 3rd plane (from 0 to INT_MAX) (default 0)",
       "name": "2rdiv",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set rdiv for 4th plane (from 0 to INT_MAX) (default 0)",
       "name": "3rdiv",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set bias for 1st plane (from 0 to INT_MAX) (default 0)",
       "name": "0bias",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set bias for 2nd plane (from 0 to INT_MAX) (default 0)",
       "name": "1bias",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set bias for 3rd plane (from 0 to INT_MAX) (default 0)",
       "name": "2bias",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -146,7 +146,7 @@
       "description": "set bias for 4th plane (from 0 to INT_MAX) (default 0)",
       "name": "3bias",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -173,7 +173,7 @@
       "description": "set matrix mode for 1st plane (from 0 to 2) (default square)",
       "name": "0mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -200,7 +200,7 @@
       "description": "set matrix mode for 2nd plane (from 0 to 2) (default square)",
       "name": "1mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -227,7 +227,7 @@
       "description": "set matrix mode for 3rd plane (from 0 to 2) (default square)",
       "name": "2mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -254,7 +254,7 @@
       "description": "set matrix mode for 4th plane (from 0 to 2) (default square)",
       "name": "3mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

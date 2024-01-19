@@ -20,7 +20,7 @@
       "description": "set the box radius (from 1 to 20) (default 3)",
       "name": "radius",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "set the regularization parameter (with square) (from 0 to 1) (default 0.01)",
       "name": "eps",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "set filtering mode (0: basic mode; 1: fast mode) (from 0 to 1) (default basic)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "subsampling ratio for fast mode (from 2 to 64) (default 4)",
       "name": "sub",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)",
       "name": "guidance",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -97,7 +97,7 @@
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

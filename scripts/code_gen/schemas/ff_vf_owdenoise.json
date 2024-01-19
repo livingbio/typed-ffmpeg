@@ -25,7 +25,7 @@
       "description": "set depth (from 8 to 16) (default 8)",
       "name": "depth",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set luma strength (from 0 to 1000) (default 1)",
       "name": "luma_strength",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "set chroma strength (from 0 to 1000) (default 1)",
       "name": "chroma_strength",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [],

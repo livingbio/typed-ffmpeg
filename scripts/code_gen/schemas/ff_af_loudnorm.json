@@ -26,7 +26,7 @@
       "description": "set integrated loudness target (from -70 to -5) (default -24)",
       "name": "I",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set loudness range target (from 1 to 50) (default 7)",
       "name": "LRA",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set maximum true peak (from -9 to 0) (default -2)",
       "name": "TP",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "measured IL of input file (from -99 to 0) (default 0)",
       "name": "measured_I",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "measured LRA of input file (from 0 to 99) (default 0)",
       "name": "measured_LRA",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "measured true peak of input file (from -99 to 99) (default 99)",
       "name": "measured_TP",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -97,7 +97,7 @@
       "description": "measured threshold of input file (from -99 to 0) (default -70)",
       "name": "measured_thresh",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -108,7 +108,7 @@
       "description": "set offset gain (from -99 to 99) (default 0)",
       "name": "offset",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -119,7 +119,7 @@
       "description": "normalize linearly if possible (default true)",
       "name": "linear",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -130,7 +130,7 @@
       "description": "treat mono input as dual-mono (default false)",
       "name": "dual_mono",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -157,7 +157,7 @@
       "description": "set print format for stats (from 0 to 2) (default none)",
       "name": "print_format",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

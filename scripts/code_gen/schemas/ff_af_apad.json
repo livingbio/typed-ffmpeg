@@ -25,7 +25,7 @@
       "description": "set silence packet size (from 0 to INT_MAX) (default 4096)",
       "name": "packet_size",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set number of samples of silence to add (from -1 to I64_MAX) (default -1)",
       "name": "pad_len",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set minimum target number of samples in the audio stream (from -1 to I64_MAX) (default -1)",
       "name": "whole_len",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set duration of silence to add (default -0.000001)",
       "name": "pad_dur",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set minimum target duration in the audio stream (default -0.000001)",
       "name": "whole_dur",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [],

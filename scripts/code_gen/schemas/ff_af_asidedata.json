@@ -36,7 +36,7 @@
       "description": "set a mode of operation (from 0 to 1) (default select)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -153,7 +153,7 @@
       "description": "set side data type (from -1 to INT_MAX) (default -1)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

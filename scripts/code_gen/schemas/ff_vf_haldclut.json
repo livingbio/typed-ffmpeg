@@ -40,7 +40,7 @@
       "description": "when to process CLUT (from 0 to 1) (default all)",
       "name": "clut",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -77,7 +77,7 @@
       "description": "select interpolation mode (from 0 to 4) (default tetrahedral)",
       "name": "interp",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -104,7 +104,7 @@
       "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
       "name": "eof_action",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -115,7 +115,7 @@
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -126,7 +126,7 @@
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -148,7 +148,7 @@
       "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
       "name": "ts_sync_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

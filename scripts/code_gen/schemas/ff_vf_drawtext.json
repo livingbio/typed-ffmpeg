@@ -25,7 +25,7 @@
       "description": "set font file",
       "name": "fontfile",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set text",
       "name": "text",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set text file",
       "name": "textfile",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set foreground color (default \"black\")",
       "name": "fontcolor",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set foreground color expression (default \"\")",
       "name": "fontcolor_expr",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set box color (default \"white\")",
       "name": "boxcolor",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set border color (default \"black\")",
       "name": "bordercolor",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set shadow color (default \"black\")",
       "name": "shadowcolor",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set box (default false)",
       "name": "box",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set box border width (from INT_MIN to INT_MAX) (default 0)",
       "name": "boxborderw",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)",
       "name": "line_spacing",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -146,7 +146,7 @@
       "description": "set font size",
       "name": "fontsize",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -157,7 +157,7 @@
       "description": "set x expression (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -168,7 +168,7 @@
       "description": "set y expression (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -179,7 +179,7 @@
       "description": "set shadow x offset (from INT_MIN to INT_MAX) (default 0)",
       "name": "shadowx",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -190,7 +190,7 @@
       "description": "set shadow y offset (from INT_MIN to INT_MAX) (default 0)",
       "name": "shadowy",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -201,7 +201,7 @@
       "description": "set border width (from INT_MIN to INT_MAX) (default 0)",
       "name": "borderw",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -212,7 +212,7 @@
       "description": "set tab size (from 0 to INT_MAX) (default 4)",
       "name": "tabsize",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -223,7 +223,7 @@
       "description": "set base time (from I64_MIN to I64_MAX) (default I64_MIN)",
       "name": "basetime",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [
@@ -234,7 +234,7 @@
       "description": "Font name (default \"Sans\")",
       "name": "font",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -261,7 +261,7 @@
       "description": "set the expansion mode (from 0 to 2) (default normal)",
       "name": "expansion",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -272,7 +272,7 @@
       "description": "set initial timecode",
       "name": "timecode",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -283,7 +283,7 @@
       "description": "set 24 hours max (timecode only) (default false)",
       "name": "tc24hmax",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -296,7 +296,7 @@
       "description": "set rate (timecode only) (from 0 to INT_MAX) (default 0/1)",
       "name": "timecode_rate",
       "required": false,
-      "typing": "str"
+      "typing": "RATIONAL"
     },
     {
       "alias": [
@@ -307,7 +307,7 @@
       "description": "reload text file at specified frame interval (from 0 to INT_MAX) (default 0)",
       "name": "reload",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -318,7 +318,7 @@
       "description": "apply alpha while rendering (default \"1\")",
       "name": "alpha",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -329,7 +329,7 @@
       "description": "check and fix text coords to avoid clipping (default false)",
       "name": "fix_bounds",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -340,7 +340,7 @@
       "description": "start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)",
       "name": "start_number",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -351,7 +351,7 @@
       "description": "the source of text",
       "name": "text_source",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -438,7 +438,7 @@
       "description": "set font loading flags for libfreetype (default 0)",
       "name": "ft_load_flags",
       "required": false,
-      "typing": "str"
+      "typing": "FLAGS"
     },
     {
       "alias": [],

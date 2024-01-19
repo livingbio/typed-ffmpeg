@@ -25,7 +25,7 @@
       "description": "set filtering strength (from 0 to DBL_MAX) (default 2)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -52,7 +52,7 @@
       "description": "set filtering method (from 0 to 2) (default garrote)",
       "name": "method",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -63,7 +63,7 @@
       "description": "set number of steps (from 1 to 32) (default 6)",
       "name": "nsteps",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "set percent of full denoising (from 0 to 100) (default 85)",
       "name": "percent",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -85,7 +85,7 @@
       "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -107,7 +107,7 @@
       "description": "set threshold type (from 0 to 1) (default universal)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

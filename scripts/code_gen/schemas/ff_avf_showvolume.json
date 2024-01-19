@@ -26,7 +26,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set border width (from 0 to 5) (default 1)",
       "name": "b",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "set channel width (from 80 to 8192) (default 400)",
       "name": "w",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -59,7 +59,7 @@
       "description": "set channel height (from 1 to 900) (default 20)",
       "name": "h",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -70,7 +70,7 @@
       "description": "set fade (from 0 to 1) (default 0.95)",
       "name": "f",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -81,7 +81,7 @@
       "description": "set volume color expression (default \"PEAK*255+floor((1-PEAK)*255)*256+0xff000000\")",
       "name": "c",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -92,7 +92,7 @@
       "description": "display channel names (default true)",
       "name": "t",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -103,7 +103,7 @@
       "description": "display volume value (default true)",
       "name": "v",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -114,7 +114,7 @@
       "description": "duration for max value display (from 0 to 9000) (default 0)",
       "name": "dm",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -125,7 +125,7 @@
       "description": "set color of the max value line (default \"orange\")",
       "name": "dmc",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [
@@ -147,7 +147,7 @@
       "description": "set orientation (from 0 to 1) (default h)",
       "name": "o",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -158,7 +158,7 @@
       "description": "set step size (from 0 to 5) (default 0)",
       "name": "s",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -169,7 +169,7 @@
       "description": "set background opacity (from 0 to 1) (default 0)",
       "name": "p",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -191,7 +191,7 @@
       "description": "set mode (from 0 to 1) (default p)",
       "name": "m",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -213,7 +213,7 @@
       "description": "set display scale (from 0 to 1) (default lin)",
       "name": "ds",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

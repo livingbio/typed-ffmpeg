@@ -25,7 +25,7 @@
       "description": "Minimum period to search for (from 2 to 32) (default 3)",
       "name": "period_min",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "Maximum period to search for (from 2 to 64) (default 24)",
       "name": "period_max",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

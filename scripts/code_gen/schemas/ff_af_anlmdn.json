@@ -26,7 +26,7 @@
       "description": "set denoising strength (from 1e-05 to 10000) (default 1e-05)",
       "name": "strength",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set patch duration (default 0.002)",
       "name": "patch",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set research duration (default 0.006)",
       "name": "research",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -78,7 +78,7 @@
       "description": "set output mode (from 0 to 2) (default o)",
       "name": "output",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -90,7 +90,7 @@
       "description": "set smooth factor (from 1 to 1000) (default 11)",
       "name": "smooth",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [],

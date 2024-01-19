@@ -25,7 +25,7 @@
       "description": "set input level (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set output level (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set limit (from 0.0625 to 1) (default 1)",
       "name": "limit",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set attack (from 0.1 to 80) (default 5)",
       "name": "attack",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set release (from 1 to 8000) (default 50)",
       "name": "release",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "enable asc (default false)",
       "name": "asc",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set asc level (from 0 to 1) (default 0.5)",
       "name": "asc_level",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "auto level (default true)",
       "name": "level",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "compensate delay (default false)",
       "name": "latency",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [],

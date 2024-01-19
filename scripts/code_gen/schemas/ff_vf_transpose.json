@@ -46,7 +46,7 @@
       "description": "set transpose direction (from 0 to 7) (default cclock_flip)",
       "name": "dir",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -73,7 +73,7 @@
       "description": "do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)",
       "name": "passthrough",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

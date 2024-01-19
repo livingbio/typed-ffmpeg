@@ -33,7 +33,7 @@
       "description": "set undershoot (from 0 to 65535) (default 0)",
       "name": "undershoot",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -44,7 +44,7 @@
       "description": "set overshoot (from 0 to 65535) (default 0)",
       "name": "overshoot",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -55,7 +55,7 @@
       "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

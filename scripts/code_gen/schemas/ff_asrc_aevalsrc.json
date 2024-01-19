@@ -20,7 +20,7 @@
       "description": "set the '|'-separated list of channels expressions",
       "name": "exprs",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -32,7 +32,7 @@
       "description": "set the number of samples per requested frame (from 0 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -44,7 +44,7 @@
       "description": "set the sample rate (default \"44100\")",
       "name": "sample_rate",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -56,7 +56,7 @@
       "description": "set audio duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -68,7 +68,7 @@
       "description": "set channel layout",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

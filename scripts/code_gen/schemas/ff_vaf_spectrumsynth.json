@@ -29,7 +29,7 @@
       "description": "set sample rate (from 15 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -40,7 +40,7 @@
       "description": "set channels (from 1 to 8) (default 1)",
       "name": "channels",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set input amplitude scale (from 0 to 1) (default log)",
       "name": "scale",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -94,7 +94,7 @@
       "description": "set input sliding mode (from 0 to 3) (default fullframe)",
       "name": "slide",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -216,7 +216,7 @@
       "description": "set window function (from 0 to 20) (default rect)",
       "name": "win_func",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -227,7 +227,7 @@
       "description": "set window overlap (from 0 to 1) (default 1)",
       "name": "overlap",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -249,7 +249,7 @@
       "description": "set orientation (from 0 to 1) (default vertical)",
       "name": "orientation",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

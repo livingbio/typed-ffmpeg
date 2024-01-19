@@ -62,7 +62,7 @@
       "description": "set vectorscope mode (from 0 to 5) (default gray)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -73,7 +73,7 @@
       "description": "set color component on X axis (from 0 to 2) (default 1)",
       "name": "x",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -84,7 +84,7 @@
       "description": "set color component on Y axis (from 0 to 2) (default 2)",
       "name": "y",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -96,7 +96,7 @@
       "description": "set intensity (from 0 to 1) (default 0.004)",
       "name": "intensity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -129,7 +129,7 @@
       "description": "set envelope (from 0 to 3) (default none)",
       "name": "envelope",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -162,7 +162,7 @@
       "description": "set graticule (from 0 to 3) (default none)",
       "name": "graticule",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -174,7 +174,7 @@
       "description": "set graticule opacity (from 0 to 1) (default 0.75)",
       "name": "opacity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -202,7 +202,7 @@
       "description": "set graticule flags (default name)",
       "name": "flags",
       "required": false,
-      "typing": "str"
+      "typing": "FLAGS"
     },
     {
       "alias": [
@@ -214,7 +214,7 @@
       "description": "set background opacity (from 0 to 1) (default 0.3)",
       "name": "bgopacity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -226,7 +226,7 @@
       "description": "set low threshold (from 0 to 1) (default 0)",
       "name": "lthreshold",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -238,7 +238,7 @@
       "description": "set high threshold (from 0 to 1) (default 1)",
       "name": "hthreshold",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -266,7 +266,7 @@
       "description": "set colorspace (from 0 to 2) (default auto)",
       "name": "colorspace",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -278,7 +278,7 @@
       "description": "set 1st tint (from -1 to 1) (default 0)",
       "name": "tint0",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -290,7 +290,7 @@
       "description": "set 2nd tint (from -1 to 1) (default 0)",
       "name": "tint1",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     }
   ],
   "output_stream_typings": [

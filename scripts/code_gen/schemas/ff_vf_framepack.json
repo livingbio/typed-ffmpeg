@@ -55,7 +55,7 @@
       "description": "Frame pack output format (from 0 to INT_MAX) (default sbs)",
       "name": "format",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

@@ -25,7 +25,7 @@
       "description": "set scope x position (from 0 to 1) (default 0.5)",
       "name": "x",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set scope y position (from 0 to 1) (default 0.5)",
       "name": "y",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set scope size (from 0 to 1) (default 0.8)",
       "name": "s",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set scope tilt (from 0 to 1) (default 0.5)",
       "name": "t",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set trace opacity (from 0 to 1) (default 0.8)",
       "name": "o",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set trace x position (from 0 to 1) (default 0.5)",
       "name": "tx",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set trace y position (from 0 to 1) (default 0.9)",
       "name": "ty",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set trace width (from 0.1 to 1) (default 0.8)",
       "name": "tw",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set trace height (from 0.1 to 1) (default 0.3)",
       "name": "th",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set components to trace (from 0 to 15) (default 7)",
       "name": "c",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "draw trace grid (default true)",
       "name": "g",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -146,7 +146,7 @@
       "description": "draw statistics (default true)",
       "name": "st",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -157,7 +157,7 @@
       "description": "draw scope (default true)",
       "name": "sc",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [],

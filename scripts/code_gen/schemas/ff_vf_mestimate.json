@@ -71,7 +71,7 @@
       "description": "motion estimation method (from 1 to 9) (default esa)",
       "name": "method",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -82,7 +82,7 @@
       "description": "macroblock size (from 8 to INT_MAX) (default 16)",
       "name": "mb_size",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "search parameter (from 4 to INT_MAX) (default 7)",
       "name": "search_param",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

@@ -29,7 +29,7 @@
       "description": "set first frame to freeze (from 0 to I64_MAX) (default 0)",
       "name": "first",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [
@@ -40,7 +40,7 @@
       "description": "set last frame to freeze (from 0 to I64_MAX) (default 0)",
       "name": "last",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [
@@ -51,7 +51,7 @@
       "description": "set frame to replace (from 0 to I64_MAX) (default 0)",
       "name": "replace",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     }
   ],
   "output_stream_typings": [

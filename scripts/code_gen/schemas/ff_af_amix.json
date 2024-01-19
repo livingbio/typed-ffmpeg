@@ -20,7 +20,7 @@
       "description": "Number of inputs. (from 1 to 32767) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "How to determine the end-of-stream. (from 0 to 2) (default longest)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)",
       "name": "dropout_transition",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "Set weight for each input. (default \"1 1\")",
       "name": "weights",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "Scale inputs (default true)",
       "name": "normalize",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [

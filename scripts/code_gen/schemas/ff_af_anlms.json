@@ -29,7 +29,7 @@
       "description": "set the filter order (from 1 to 32767) (default 256)",
       "name": "order",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -40,7 +40,7 @@
       "description": "set the filter mu (from 0 to 2) (default 0.75)",
       "name": "mu",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -51,7 +51,7 @@
       "description": "set the filter eps (from 0 to 1) (default 1)",
       "name": "eps",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set the filter leakage (from 0 to 1) (default 0)",
       "name": "leakage",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -94,7 +94,7 @@
       "description": "set output mode (from 0 to 3) (default o)",
       "name": "out_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

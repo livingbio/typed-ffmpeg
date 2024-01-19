@@ -25,7 +25,7 @@
       "description": "set the colorkey key color (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the colorkey similarity value (from 1e-05 to 1) (default 0.01)",
       "name": "similarity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the colorkey key blend value (from 0 to 1) (default 0)",
       "name": "blend",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [],

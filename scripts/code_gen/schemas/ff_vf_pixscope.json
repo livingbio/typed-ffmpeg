@@ -25,7 +25,7 @@
       "description": "set scope x offset (from 0 to 1) (default 0.5)",
       "name": "x",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set scope y offset (from 0 to 1) (default 0.5)",
       "name": "y",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set scope width (from 1 to 80) (default 7)",
       "name": "w",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set scope height (from 1 to 80) (default 7)",
       "name": "h",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set window opacity (from 0 to 1) (default 0.5)",
       "name": "o",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set window x offset (from -1 to 1) (default -1)",
       "name": "wx",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set window y offset (from -1 to 1) (default -1)",
       "name": "wy",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [],

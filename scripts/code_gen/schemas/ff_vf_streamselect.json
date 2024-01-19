@@ -20,7 +20,7 @@
       "description": "number of input streams (from 2 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "input indexes to remap to outputs",
       "name": "map",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [],

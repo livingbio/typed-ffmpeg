@@ -265,7 +265,7 @@
       "description": "set cross fade transition (from -1 to 45) (default fade)",
       "name": "transition",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -276,7 +276,7 @@
       "description": "set cross fade duration (default 1)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -287,7 +287,7 @@
       "description": "set cross fade start relative to first input stream (default 0)",
       "name": "offset",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -298,7 +298,7 @@
       "description": "set expression for custom transition",
       "name": "expr",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

@@ -26,7 +26,7 @@
       "description": "set the zoom expression (default \"1\")",
       "name": "zoom",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set the x expression (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "set the y expression (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -59,7 +59,7 @@
       "description": "set the duration expression (default \"90\")",
       "name": "d",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -70,7 +70,7 @@
       "description": "set the output image size (default \"hd720\")",
       "name": "s",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -81,7 +81,7 @@
       "description": "set the output framerate (default \"25\")",
       "name": "fps",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     }
   ],
   "output_stream_typings": [

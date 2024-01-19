@@ -25,7 +25,7 @@
       "description": "Print summary showing average values (default false)",
       "name": "print_summary",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [

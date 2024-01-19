@@ -25,7 +25,7 @@
       "description": "set the supported pixel formats",
       "name": "pix_fmts",
       "required": false,
-      "typing": "str"
+      "typing": "BINARY"
     }
   ],
   "output_stream_typings": [],

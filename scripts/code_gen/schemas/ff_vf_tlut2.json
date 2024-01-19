@@ -25,7 +25,7 @@
       "description": "set component #0 expression (default \"x\")",
       "name": "c0",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set component #1 expression (default \"x\")",
       "name": "c1",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set component #2 expression (default \"x\")",
       "name": "c2",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set component #3 expression (default \"x\")",
       "name": "c3",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [],

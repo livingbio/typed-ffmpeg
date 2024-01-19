@@ -21,7 +21,7 @@
       "description": "set frame size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set frame rate (default \"30\")",
       "name": "framerate",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     },
     {
       "alias": [
@@ -45,7 +45,7 @@
       "description": "set sample rate (from 8000 to 384000) (default 44100)",
       "name": "samplerate",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -57,7 +57,7 @@
       "description": "set beep amplitude (from 0 to 1) (default 0.7)",
       "name": "amplitude",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set beep period (from 1 to 99) (default 3)",
       "name": "period",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -81,7 +81,7 @@
       "description": "set flash delay (from -30 to 30) (default 0)",
       "name": "delay",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "set delay cycle (default false)",
       "name": "cycle",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -105,7 +105,7 @@
       "description": "set duration (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -116,7 +116,7 @@
       "description": "set foreground color (default \"white\")",
       "name": "fg",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [
@@ -127,7 +127,7 @@
       "description": "set background color (default \"black\")",
       "name": "bg",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [
@@ -138,7 +138,7 @@
       "description": "set additional color (default \"gray\")",
       "name": "ag",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     }
   ],
   "output_stream_typings": [

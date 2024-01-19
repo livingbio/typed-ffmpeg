@@ -25,7 +25,7 @@
       "description": "set the threshold (from 0 to 255) (default 10)",
       "name": "thresh",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the map (default false)",
       "name": "map",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the order (default false)",
       "name": "order",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set sharpening (default false)",
       "name": "sharp",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set twoway (default false)",
       "name": "twoway",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [

@@ -32,14 +32,8 @@ Default({{option.default.__repr__()}})
 {% macro default_typing(option) %}
 {% if option.choices %}
 {{option._typing}} | Default = {{ default_value(option) }}
-{% elif option.typing == "int" %}
-int | str = {{ default_value(option) }}
-{% elif option.typing == "str" %}
-str | float | int  = {{ default_value(option) }}
-{% elif option.typing == "float" %}
-float | int | str = {{ default_value(option) }}
-{% elif option.typing == "bool" %}
-bool | int | str = {{ default_value(option) }}
+{% else %}
+{{option._typing}} = {{ default_value(option) }}
 {% endif %}
 {% endmacro %}
 

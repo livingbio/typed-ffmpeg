@@ -26,7 +26,7 @@
       "description": "Timestamp of the first frame that should be passed (default INT64_MAX)",
       "name": "start",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "Timestamp of the first frame that should be dropped again (default INT64_MAX)",
       "name": "end",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "Timestamp of the first frame that should be  passed (from I64_MIN to I64_MAX) (default I64_MIN)",
       "name": "start_pts",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)",
       "name": "end_pts",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [
@@ -72,7 +72,7 @@
       "description": "Maximum duration of the output (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -83,7 +83,7 @@
       "description": "Number of the first audio sample that should be passed to the output (from -1 to I64_MAX) (default -1)",
       "name": "start_sample",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     },
     {
       "alias": [
@@ -94,7 +94,7 @@
       "description": "Number of the first audio sample that should be dropped again (from 0 to I64_MAX) (default I64_MAX)",
       "name": "end_sample",
       "required": false,
-      "typing": "int"
+      "typing": "INT64"
     }
   ],
   "output_stream_typings": [

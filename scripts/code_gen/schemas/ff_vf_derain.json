@@ -36,7 +36,7 @@
       "description": "filter type(derain/dehaze) (from 0 to 1) (default derain)",
       "name": "filter_type",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "DNN backend (from 0 to 1) (default native)",
       "name": "dnn_backend",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "path to model file",
       "name": "model",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -75,7 +75,7 @@
       "description": "input name of the model (default \"x\")",
       "name": "input",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "output name of the model (default \"y\")",
       "name": "output",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [],

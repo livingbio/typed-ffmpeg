@@ -52,7 +52,7 @@
       "description": "select luma mode (from 0 to 2) (default none)",
       "name": "luma_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -90,7 +90,7 @@
       "description": "select chroma mode (from 0 to 2) (default none)",
       "name": "chroma_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -128,7 +128,7 @@
       "description": "select alpha mode (from 0 to 2) (default none)",
       "name": "alpha_mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -140,7 +140,7 @@
       "description": "swap luma fields (default false)",
       "name": "luma_swap",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -152,7 +152,7 @@
       "description": "swap chroma fields (default false)",
       "name": "chroma_swap",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -164,7 +164,7 @@
       "description": "swap alpha fields (default false)",
       "name": "alpha_swap",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [],

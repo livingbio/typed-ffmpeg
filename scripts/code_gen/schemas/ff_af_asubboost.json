@@ -25,7 +25,7 @@
       "description": "set dry gain (from 0 to 1) (default 1)",
       "name": "dry",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set wet gain (from 0 to 1) (default 1)",
       "name": "wet",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set max boost (from 1 to 12) (default 2)",
       "name": "boost",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set decay (from 0 to 1) (default 0)",
       "name": "decay",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set feedback (from 0 to 1) (default 0.9)",
       "name": "feedback",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set cutoff (from 50 to 900) (default 100)",
       "name": "cutoff",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set slope (from 0.0001 to 1) (default 0.5)",
       "name": "slope",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set delay (from 1 to 100) (default 20)",
       "name": "delay",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [],

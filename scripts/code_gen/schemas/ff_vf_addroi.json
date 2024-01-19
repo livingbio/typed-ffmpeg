@@ -25,7 +25,7 @@
       "description": "Region distance from left edge of frame. (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "Region distance from top edge of frame. (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "Region width. (default \"0\")",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "Region height. (default \"0\")",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)",
       "name": "qoffset",
       "required": false,
-      "typing": "str"
+      "typing": "RATIONAL"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "Remove any existing regions of interest before adding the new one. (default false)",
       "name": "clear",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [

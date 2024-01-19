@@ -25,7 +25,7 @@
       "description": "set bit plane to use for measuring noise (from 1 to 16) (default 1)",
       "name": "bitplane",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "show noisy pixels (default false)",
       "name": "filter",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [],

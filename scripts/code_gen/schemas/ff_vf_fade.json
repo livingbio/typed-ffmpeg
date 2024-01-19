@@ -37,7 +37,7 @@
       "description": "set the fade direction (from 0 to 1) (default in)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "Number of the first frame to which to apply the effect. (from 0 to INT_MAX) (default 0)",
       "name": "start_frame",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -61,7 +61,7 @@
       "description": "Number of frames to which the effect should be applied. (from 1 to INT_MAX) (default 25)",
       "name": "nb_frames",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -72,7 +72,7 @@
       "description": "fade alpha if it is available on the input (default false)",
       "name": "alpha",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -84,7 +84,7 @@
       "description": "Number of seconds of the beginning of the effect. (default 0)",
       "name": "start_time",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -96,7 +96,7 @@
       "description": "Duration of the effect in seconds. (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     },
     {
       "alias": [
@@ -108,7 +108,7 @@
       "description": "set color (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [],

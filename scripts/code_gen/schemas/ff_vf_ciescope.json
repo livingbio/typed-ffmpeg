@@ -96,7 +96,7 @@
       "description": "set color system (from 0 to 9) (default hdtv)",
       "name": "system",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -123,7 +123,7 @@
       "description": "set cie system (from 0 to 2) (default xyy)",
       "name": "cie",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -205,7 +205,7 @@
       "description": "set what gamuts to draw (default 0)",
       "name": "gamuts",
       "required": false,
-      "typing": "str"
+      "typing": "FLAGS"
     },
     {
       "alias": [
@@ -217,7 +217,7 @@
       "description": "set ciescope size (from 256 to 8192) (default 512)",
       "name": "size",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -229,7 +229,7 @@
       "description": "set ciescope intensity (from 0 to 1) (default 0.001)",
       "name": "intensity",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -240,7 +240,7 @@
       "description": "(from 0 to 1) (default 0.75)",
       "name": "contrast",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -251,7 +251,7 @@
       "description": "(default true)",
       "name": "corrgamma",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -262,7 +262,7 @@
       "description": "(default false)",
       "name": "showwhite",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -273,7 +273,7 @@
       "description": "(from 0.1 to 6) (default 2.6)",
       "name": "gamma",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -284,7 +284,7 @@
       "description": "fill with CIE colors (default true)",
       "name": "fill",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [

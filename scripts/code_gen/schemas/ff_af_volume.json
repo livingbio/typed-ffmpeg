@@ -25,7 +25,7 @@
       "description": "set volume adjustment expression (default \"1.0\")",
       "name": "volume",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -52,7 +52,7 @@
       "description": "select mathematical precision (from 0 to 2) (default float)",
       "name": "precision",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "specify when to evaluate expressions (from 0 to 1) (default once)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -106,7 +106,7 @@
       "description": "Apply replaygain side data when present (from 0 to 3) (default drop)",
       "name": "replaygain",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -117,7 +117,7 @@
       "description": "Apply replaygain pre-amplification (from -15 to 15) (default 0)",
       "name": "replaygain_preamp",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -128,7 +128,7 @@
       "description": "Apply replaygain clipping prevention (default true)",
       "name": "replaygain_noclip",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [],

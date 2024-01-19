@@ -26,7 +26,7 @@
       "description": "set video size (default \"600x240\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "select display mode (from 0 to 3) (default point)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set how many samples to show in the same point (from 0 to INT_MAX) (default 0)",
       "name": "n",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -81,7 +81,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     },
     {
       "alias": [
@@ -92,7 +92,7 @@
       "description": "draw channels separately (default false)",
       "name": "split_channels",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -103,7 +103,7 @@
       "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set amplitude scale (from 0 to 3) (default lin)",
       "name": "scale",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -157,7 +157,7 @@
       "description": "set draw mode (from 0 to 1) (default scale)",
       "name": "draw",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

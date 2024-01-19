@@ -25,7 +25,7 @@
       "description": "Expression determining the frame timestamp (default \"PTS\")",
       "name": "expr",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

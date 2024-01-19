@@ -26,7 +26,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set video size (default \"800x400\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "set red contrast (from 0 to 255) (default 2)",
       "name": "rc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "set green contrast (from 0 to 255) (default 7)",
       "name": "gc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -71,7 +71,7 @@
       "description": "set blue contrast (from 0 to 255) (default 1)",
       "name": "bc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -82,7 +82,7 @@
       "description": "set median phase color (default \"none\")",
       "name": "mpc",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "set video output (default true)",
       "name": "video",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -104,7 +104,7 @@
       "description": "set mono and out-of-phase detection output (default false)",
       "name": "phasing",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -116,7 +116,7 @@
       "description": "set phase tolerance for mono detection (from 0 to 1) (default 0)",
       "name": "tolerance",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -128,7 +128,7 @@
       "description": "set angle threshold for out-of-phase detection (from 90 to 180) (default 170)",
       "name": "angle",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -140,7 +140,7 @@
       "description": "set minimum mono or out-of-phase duration in seconds (default 2)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "DURATION"
     }
   ],
   "output_stream_typings": [],

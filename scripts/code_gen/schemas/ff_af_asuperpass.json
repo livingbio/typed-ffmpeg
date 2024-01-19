@@ -25,7 +25,7 @@
       "description": "set center frequency (from 2 to 999999) (default 1000)",
       "name": "centerf",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set filter order (from 4 to 20) (default 4)",
       "name": "order",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set Q-factor (from 0.01 to 100) (default 1)",
       "name": "qfactor",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set input level (from 0 to 2) (default 1)",
       "name": "level",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [],

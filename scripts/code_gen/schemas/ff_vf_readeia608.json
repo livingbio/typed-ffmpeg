@@ -25,7 +25,7 @@
       "description": "set from which line to scan for codes (from 0 to INT_MAX) (default 0)",
       "name": "scan_min",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set to which line to scan for codes (from 0 to INT_MAX) (default 29)",
       "name": "scan_max",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)",
       "name": "spw",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "check and apply parity bit (default false)",
       "name": "chp",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "lowpass line prior to processing (default true)",
       "name": "lp",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [],

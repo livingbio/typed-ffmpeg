@@ -25,7 +25,7 @@
       "description": "denoising strength (from 1 to 30) (default 1)",
       "name": "s",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "patch size (from 0 to 99) (default 7)",
       "name": "p",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "patch size for chroma planes (from 0 to 99) (default 0)",
       "name": "pc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "research window (from 0 to 99) (default 15)",
       "name": "r",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "research window for chroma planes (from 0 to 99) (default 0)",
       "name": "rc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

@@ -25,7 +25,7 @@
       "description": "spatial luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_spatial",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "spatial chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_spatial",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "temporal luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_tmp",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "temporal chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_tmp",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [],

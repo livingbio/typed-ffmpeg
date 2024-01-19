@@ -25,7 +25,7 @@
       "description": "list available filters (default false)",
       "name": "list_filters",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "list available generators (default false)",
       "name": "list_generators",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "names and options of filters to apply",
       "name": "filter",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "output rectangle within output image",
       "name": "output_rect",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

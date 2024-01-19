@@ -25,7 +25,7 @@
       "description": "set interlacing threshold (from -1 to FLT_MAX) (default 1.04)",
       "name": "intl_thres",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set progressive threshold (from -1 to FLT_MAX) (default 1.5)",
       "name": "prog_thres",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set repeat threshold (from -1 to FLT_MAX) (default 3)",
       "name": "rep_thres",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "half life of cumulative statistics (from -1 to INT_MAX) (default 0)",
       "name": "half_life",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)",
       "name": "analyze_interlaced_flag",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

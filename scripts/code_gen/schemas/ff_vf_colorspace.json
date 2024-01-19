@@ -66,7 +66,7 @@
       "description": "Set all color properties together (from 0 to 8) (default 0)",
       "name": "all",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -123,7 +123,7 @@
       "description": "Output colorspace (from 0 to 14) (default 2)",
       "name": "space",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -155,7 +155,7 @@
       "description": "Output color range (from 0 to 2) (default 0)",
       "name": "range",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -227,7 +227,7 @@
       "description": "Output color primaries (from 0 to 22) (default 2)",
       "name": "primaries",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -309,7 +309,7 @@
       "description": "Output transfer characteristics (from 0 to 18) (default 2)",
       "name": "trc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -366,7 +366,7 @@
       "description": "Output pixel format (from -1 to 162) (default -1)",
       "name": "format",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -377,7 +377,7 @@
       "description": "Ignore primary chromaticity and gamma correction (default false)",
       "name": "fast",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -399,7 +399,7 @@
       "description": "Dithering mode (from 0 to 1) (default none)",
       "name": "dither",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -426,7 +426,7 @@
       "description": "Whitepoint adaptation method (from 0 to 2) (default bradford)",
       "name": "wpadapt",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -478,7 +478,7 @@
       "description": "Set all input color properties together (from 0 to 8) (default 0)",
       "name": "iall",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -535,7 +535,7 @@
       "description": "Input colorspace (from 0 to 22) (default 2)",
       "name": "ispace",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -567,7 +567,7 @@
       "description": "Input color range (from 0 to 2) (default 0)",
       "name": "irange",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -639,7 +639,7 @@
       "description": "Input color primaries (from 0 to 22) (default 2)",
       "name": "iprimaries",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -721,7 +721,7 @@
       "description": "Input transfer characteristics (from 0 to 18) (default 2)",
       "name": "itrc",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

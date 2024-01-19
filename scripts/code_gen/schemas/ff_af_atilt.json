@@ -25,7 +25,7 @@
       "description": "set central frequency (from 20 to 192000) (default 10000)",
       "name": "freq",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set filter slope (from -1 to 1) (default 0)",
       "name": "slope",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set filter width (from 100 to 10000) (default 1000)",
       "name": "width",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set filter order (from 2 to 30) (default 5)",
       "name": "order",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set input level (from 0 to 4) (default 1)",
       "name": "level",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [],

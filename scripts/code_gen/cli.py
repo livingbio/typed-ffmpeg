@@ -18,25 +18,6 @@ app = typer.Typer()
 def parse_help_options(filter: HelpAVFilter) -> list[FFmpegFilterOption]:
     options: list[FFmpegFilterOption] = []
 
-    MAPPING = {
-        "boolean": "bool",
-        "duration": "str",
-        "color": "str",
-        "flags": "str",
-        "dictionary": "str",
-        "pix_fmt": "str",
-        "int": "int",
-        "int64": "int",
-        "double": "float",
-        "float": "float",
-        "string": "str",
-        "video_rate": "str",
-        "image_size": "str",
-        "rational": "str",
-        "sample_fmt": "str",
-        "binary": "str",
-    }
-
     names = set()
     for option in filter.options:
         if option.name in names:

@@ -25,7 +25,7 @@
       "description": "set DC shift (from -1 to 1) (default 0)",
       "name": "shift",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set limiter gain (from 0 to 1) (default 0)",
       "name": "limitergain",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [],

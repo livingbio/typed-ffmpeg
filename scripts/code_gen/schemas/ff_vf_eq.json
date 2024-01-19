@@ -25,7 +25,7 @@
       "description": "set the contrast adjustment, negative values give a negative image (default \"1.0\")",
       "name": "contrast",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the brightness adjustment (default \"0.0\")",
       "name": "brightness",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the saturation adjustment (default \"1.0\")",
       "name": "saturation",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the initial gamma value (default \"1.0\")",
       "name": "gamma",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "gamma value for red (default \"1.0\")",
       "name": "gamma_r",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "gamma value for green (default \"1.0\")",
       "name": "gamma_g",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "gamma value for blue (default \"1.0\")",
       "name": "gamma_b",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set the gamma weight which reduces the effect of gamma on bright areas (default \"1.0\")",
       "name": "gamma_weight",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

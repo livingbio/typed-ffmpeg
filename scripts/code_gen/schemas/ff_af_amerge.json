@@ -20,7 +20,7 @@
       "description": "specify the number of inputs (from 1 to 64) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

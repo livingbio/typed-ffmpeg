@@ -25,7 +25,7 @@
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set balance in (from -1 to 1) (default 0)",
       "name": "balance_in",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set balance out (from -1 to 1) (default 0)",
       "name": "balance_out",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "enable softclip (default false)",
       "name": "softclip",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "mute L (default false)",
       "name": "mutel",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "mute R (default false)",
       "name": "muter",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "phase L (default false)",
       "name": "phasel",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "phase R (default false)",
       "name": "phaser",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -180,7 +180,7 @@
       "description": "set stereo mode (from 0 to 10) (default lr>lr)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -191,7 +191,7 @@
       "description": "set side level (from 0.015625 to 64) (default 1)",
       "name": "slev",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -202,7 +202,7 @@
       "description": "set side balance (from -1 to 1) (default 0)",
       "name": "sbal",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -213,7 +213,7 @@
       "description": "set middle level (from 0.015625 to 64) (default 1)",
       "name": "mlev",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -224,7 +224,7 @@
       "description": "set middle pan (from -1 to 1) (default 0)",
       "name": "mpan",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -235,7 +235,7 @@
       "description": "set stereo base (from -1 to 1) (default 0)",
       "name": "base",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -246,7 +246,7 @@
       "description": "set delay (from -20 to 20) (default 0)",
       "name": "delay",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -257,7 +257,7 @@
       "description": "set S/C level (from 1 to 100) (default 1)",
       "name": "sclevel",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -268,7 +268,7 @@
       "description": "set stereo phase (from 0 to 360) (default 0)",
       "name": "phase",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -295,7 +295,7 @@
       "description": "set balance in mode (from 0 to 2) (default balance)",
       "name": "bmode_in",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -322,7 +322,7 @@
       "description": "set balance out mode (from 0 to 2) (default balance)",
       "name": "bmode_out",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

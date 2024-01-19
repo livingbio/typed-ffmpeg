@@ -25,7 +25,7 @@
       "description": "set relative center x (from 0 to 1) (default 0.5)",
       "name": "cx",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set relative center y (from 0 to 1) (default 0.5)",
       "name": "cy",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set quadratic distortion factor (from -1 to 1) (default 0)",
       "name": "k1",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set double quadratic distortion factor (from -1 to 1) (default 0)",
       "name": "k2",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set interpolation type (from 0 to 64) (default nearest)",
       "name": "i",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set the color of the unmapped pixels (default \"black@0\")",
       "name": "fc",
       "required": false,
-      "typing": "str"
+      "typing": "COLOR"
     },
     {
       "alias": [],

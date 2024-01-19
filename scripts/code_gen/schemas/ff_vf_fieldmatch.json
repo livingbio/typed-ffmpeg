@@ -36,7 +36,7 @@
       "description": "specify the assumed field order (from -1 to 1) (default auto)",
       "name": "order",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -78,7 +78,7 @@
       "description": "set the matching mode or strategy to use (from 0 to 5) (default pc_n)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -89,7 +89,7 @@
       "description": "mark main input as a pre-processed input and activate clean source input stream (default false)",
       "name": "ppsrc",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -116,7 +116,7 @@
       "description": "set the field to match from (from -1 to 1) (default auto)",
       "name": "field",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -127,7 +127,7 @@
       "description": "set whether or not chroma is included during the match comparisons (default true)",
       "name": "mchroma",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -139,7 +139,7 @@
       "description": "define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)",
       "name": "y0",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -150,7 +150,7 @@
       "description": "set scene change detection threshold (from 0 to 100) (default 12)",
       "name": "scthresh",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -177,7 +177,7 @@
       "description": "set combmatching mode (from 0 to 2) (default sc)",
       "name": "combmatch",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -204,7 +204,7 @@
       "description": "enable comb debug (from 0 to 2) (default none)",
       "name": "combdbg",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -215,7 +215,7 @@
       "description": "set the area combing threshold used for combed frame detection (from -1 to 255) (default 9)",
       "name": "cthresh",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -226,7 +226,7 @@
       "description": "set whether or not chroma is considered in the combed frame decision (default false)",
       "name": "chroma",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -237,7 +237,7 @@
       "description": "set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)",
       "name": "blockx",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -248,7 +248,7 @@
       "description": "set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)",
       "name": "blocky",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -259,7 +259,7 @@
       "description": "set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)",
       "name": "combpel",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

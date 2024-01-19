@@ -25,7 +25,7 @@
       "description": "set the chroma blue spot (from -1 to 1) (default 0)",
       "name": "cb",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the chroma red spot (from -1 to 1) (default 0)",
       "name": "cr",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the color filter size (from 0.1 to 10) (default 1)",
       "name": "size",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the highlights strength (from 0 to 1) (default 0)",
       "name": "high",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [],

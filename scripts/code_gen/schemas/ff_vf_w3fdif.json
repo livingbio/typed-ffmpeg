@@ -36,7 +36,7 @@
       "description": "specify the filter (from 0 to 1) (default complex)",
       "name": "filter",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "specify the interlacing mode (from 0 to 1) (default field)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -85,7 +85,7 @@
       "description": "specify the assumed picture field parity (from -1 to 1) (default auto)",
       "name": "parity",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -107,7 +107,7 @@
       "description": "specify which frames to deinterlace (from 0 to 1) (default all)",
       "name": "deint",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

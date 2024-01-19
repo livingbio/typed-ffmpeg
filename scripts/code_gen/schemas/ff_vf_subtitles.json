@@ -26,7 +26,7 @@
       "description": "set the filename of file to read",
       "name": "filename",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set the size of the original video (used to scale fonts)",
       "name": "original_size",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "set the directory containing the fonts to read",
       "name": "fontsdir",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -59,7 +59,7 @@
       "description": "enable processing of alpha channel (default false)",
       "name": "alpha",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -70,7 +70,7 @@
       "description": "set input character encoding",
       "name": "charenc",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -82,7 +82,7 @@
       "description": "set stream index (from -1 to INT_MAX) (default -1)",
       "name": "stream_index",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "force subtitle style",
       "name": "force_style",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     }
   ],
   "output_stream_typings": [

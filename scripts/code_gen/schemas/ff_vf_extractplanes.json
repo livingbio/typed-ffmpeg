@@ -61,7 +61,7 @@
       "description": "set planes (default r)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "FLAGS"
     }
   ],
   "output_stream_typings": [],

@@ -25,7 +25,7 @@
       "description": "set weights file (default \"nnedi3_weights.bin\")",
       "name": "weights",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set which frames to deinterlace (from 0 to 1) (default all)",
       "name": "deint",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -89,7 +89,7 @@
       "description": "set mode of operation (from -2 to 3) (default a)",
       "name": "field",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -100,7 +100,7 @@
       "description": "set which planes to process (from 0 to 15) (default 7)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -147,7 +147,7 @@
       "description": "set size of local neighborhood around each pixel, used by the predictor neural network (from 0 to 6) (default s32x4)",
       "name": "nsize",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -184,7 +184,7 @@
       "description": "set number of neurons in predictor neural network (from 0 to 4) (default n32)",
       "name": "nns",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -206,7 +206,7 @@
       "description": "set quality (from 1 to 2) (default fast)",
       "name": "qual",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -238,7 +238,7 @@
       "description": "set which set of weights to use in the predictor (from 0 to 1) (default a)",
       "name": "etype",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -275,7 +275,7 @@
       "description": "set prescreening (from 0 to 4) (default new)",
       "name": "pscrn",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

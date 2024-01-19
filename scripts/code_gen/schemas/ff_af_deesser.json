@@ -25,7 +25,7 @@
       "description": "set intensity (from 0 to 1) (default 0)",
       "name": "i",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set max deessing (from 0 to 1) (default 0.5)",
       "name": "m",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set frequency (from 0 to 1) (default 0.5)",
       "name": "f",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "set output mode (from 0 to 2) (default o)",
       "name": "s",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

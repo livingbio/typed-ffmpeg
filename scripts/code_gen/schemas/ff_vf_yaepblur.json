@@ -26,7 +26,7 @@
       "description": "set window radius (from 0 to INT_MAX) (default 3)",
       "name": "radius",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set blur strength (from 1 to INT_MAX) (default 128)",
       "name": "sigma",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

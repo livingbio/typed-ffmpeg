@@ -25,7 +25,7 @@
       "description": "set denoise strength (from 0 to 100) (default 1)",
       "name": "sigma",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set amount of denoising (from 0.01 to 1) (default 1)",
       "name": "amount",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set block size (from 8 to 256) (default 32)",
       "name": "block",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set block overlap (from 0.2 to 0.8) (default 0.5)",
       "name": "overlap",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set method of denoising (from 0 to 1) (default wiener)",
       "name": "method",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set number of previous frames for temporal denoising (from 0 to 1) (default 0)",
       "name": "prev",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set number of next frames for temporal denoising (from 0 to 1) (default 0)",
       "name": "next",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set planes to filter (from 0 to 15) (default 7)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -235,7 +235,7 @@
       "description": "set window function (from 0 to 20) (default hann)",
       "name": "window",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [],

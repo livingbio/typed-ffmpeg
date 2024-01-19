@@ -25,7 +25,7 @@
       "description": "set differentiation order (from 0 to 2) (default 1)",
       "name": "difford",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set Minkowski norm (from 0 to 20) (default 1)",
       "name": "minknorm",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set sigma (from 0 to 1024) (default 1)",
       "name": "sigma",
       "required": false,
-      "typing": "float"
+      "typing": "DOUBLE"
     },
     {
       "alias": [],

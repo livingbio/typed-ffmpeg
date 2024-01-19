@@ -27,7 +27,7 @@
       "description": "set display aspect ratio (default \"0\")",
       "name": "dar",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)",
       "name": "max",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

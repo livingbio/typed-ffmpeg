@@ -26,7 +26,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "VIDEO_RATE"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "IMAGE_SIZE"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "set camera FoV (from 40 to 150) (default 90)",
       "name": "fov",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "set camera roll (from -180 to 180) (default 0)",
       "name": "roll",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -71,7 +71,7 @@
       "description": "set camera pitch (from -180 to 180) (default 0)",
       "name": "pitch",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -82,7 +82,7 @@
       "description": "set camera yaw (from -180 to 180) (default 0)",
       "name": "yaw",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -95,7 +95,7 @@
       "description": "set camera zoom (from 0.01 to 10) (default 1)",
       "name": "xzoom",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -108,7 +108,7 @@
       "description": "set camera position (from -60 to 60) (default 0)",
       "name": "xpos",
       "required": false,
-      "typing": "float"
+      "typing": "FLOAT"
     },
     {
       "alias": [
@@ -119,7 +119,7 @@
       "description": "set length (from 1 to 60) (default 15)",
       "name": "length",
       "required": false,
-      "typing": "int"
+      "typing": "INT"
     }
   ],
   "output_stream_typings": [

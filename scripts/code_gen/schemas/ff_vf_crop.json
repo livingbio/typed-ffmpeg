@@ -26,7 +26,7 @@
       "description": "set the width crop area expression (default \"iw\")",
       "name": "out_w",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set the height crop area expression (default \"ih\")",
       "name": "out_h",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "set the x crop area expression (default \"(in_w-out_w)/2\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "set the y crop area expression (default \"(in_h-out_h)/2\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "STRING"
     },
     {
       "alias": [
@@ -71,7 +71,7 @@
       "description": "keep aspect ratio (default false)",
       "name": "keep_aspect",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     },
     {
       "alias": [
@@ -82,7 +82,7 @@
       "description": "do exact cropping (default false)",
       "name": "exact",
       "required": false,
-      "typing": "bool"
+      "typing": "BOOLEAN"
     }
   ],
   "output_stream_typings": [
