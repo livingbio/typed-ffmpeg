@@ -1,7 +1,6 @@
 import enum
 import json
 import pathlib
-from typing import Literal
 
 from parse_c.schema import AVFilterPad, AVFilterPadType, AVOptionType, Choice, FilterType
 from pydantic import BaseModel, HttpUrl
@@ -43,7 +42,7 @@ class FFmpegFilterOption(BaseModel):
     alias: list[str] = []
     description: str | None = None
 
-    typing: Literal["bool", "int", "float", "str"]
+    typing: str
     default: str | int | float | None = None
     required: bool = False
     choices: list[Choice] = []
